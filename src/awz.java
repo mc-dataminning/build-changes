@@ -1,19 +1,41 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Objects;
 
-public class awz extends azx {
+public class awz extends DataFix {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("structure_references", "empty")
+      .put("biomes", "empty")
+      .put("base", "surface")
+      .put("carved", "carvers")
+      .put("liquid_carved", "liquid_carvers")
+      .put("decorated", "features")
+      .put("lighted", "light")
+      .put("mobs_spawned", "spawn")
+      .put("finalized", "heightmaps")
+      .put("fullchunk", "full")
+      .build();
+
    public awz(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityArmorStandSilentFix", bax.x, "ArmorStand");
+      super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("Silent").asBoolean(false) && !$$0.get("Marker").asBoolean(false) ? $$0.remove("Silent") : $$0;
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bbg.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
+      return this.fixTypeEverywhereTyped("ChunkStatusFix2", $$0, this.getOutputSchema().getType(bbg.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
+            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
+            String $$2x = $$1xx.get("Status").asString("empty");
+            String $$3 = a.getOrDefault($$2x, "empty");
+            return Objects.equals($$2x, $$3) ? $$0xx : $$0xx.set(DSL.remainderFinder(), $$1xx.set("Status", $$1xx.createString($$3)));
+         }));
    }
 }

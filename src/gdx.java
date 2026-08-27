@@ -1,14 +1,29 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gdx implements aol<gdw> {
-   public gdw b(JsonObject $$0) {
-      boolean $$1 = atg.a($$0, "blur", false);
-      boolean $$2 = atg.a($$0, "clamp", false);
-      return new gdw($$1, $$2);
+public class gdx implements gds {
+   public static final Codec<gdx> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gdx::new)
+   );
+   private final String c;
+   private final String d;
+
+   public gdx(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public String a() {
-      return "texture";
+   public void a(aps $$0, gds.a $$1) {
+      agm $$2 = new agm("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         agt $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
+   }
+
+   @Override
+   public gdu a() {
+      return gdv.b;
    }
 }

@@ -1,56 +1,89 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class dro extends dqa<dtc> {
-   public dro(Codec<dtc> $$0) {
+public class dro extends drc<dtn> {
+   public dro(Codec<dtn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dqc<dtc> $$0) {
-      csz $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      dtc $$3 = $$0.f();
-      atw $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+   public boolean a(dre<dtn> $$0) {
+      hv $$1 = $$0.e();
+      auf $$2 = $$0.d();
+      ctt $$3 = $$0.b();
+
+      while ($$3.t($$1) && $$1.v() > $$3.J_() + 2) {
+         $$1 = $$1.d();
+      }
+
+      if (!$$3.a_($$1).a(cwb.dP)) {
          return false;
       } else {
-         hx $$6 = $$2.h($$5.getAsInt());
-         ja $$7 = new ja($$3.c, $$3.c, $$3.c);
-         dxe $$8 = dxe.a($$6.b($$7), $$6.a($$7));
-         return hx.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, cvh.kJ.o(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+         $$1 = $$1.b($$2.a(4));
+         int $$4 = $$2.a(4) + 7;
+         int $$5 = $$4 / 4 + $$2.a(2);
+         if ($$5 > 1 && $$2.a(60) == 0) {
+            $$1 = $$1.b(10 + $$2.a(30));
+         }
 
-   private static OptionalInt a(csz $$0, hx $$1, dtc $$2) {
-      Predicate<dhn> $$3 = $$0x -> $$0x.a(cvh.G);
-      Predicate<dhn> $$4 = $$0x -> !$$0x.a(cvh.G);
-      Optional<dmm> $$5 = dmm.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(dmm::c).orElseGet(OptionalInt::empty);
-   }
+         for (int $$6 = 0; $$6 < $$4; $$6++) {
+            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
+            int $$8 = aty.f($$7);
 
-   private boolean b(csz $$0, hx $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
-         for (ib $$2 : ib.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+               float $$10 = (float)aty.a($$9) - 0.25F;
+
+               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
+                  float $$12 = (float)aty.a($$11) - 0.25F;
+                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
+                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
+                     dip $$13 = $$3.a_($$1.b($$9, $$6, $$11));
+                     if ($$13.i() || b($$13) || $$13.a(cwb.dP) || $$13.a(cwb.dO)) {
+                        this.a($$3, $$1.b($$9, $$6, $$11), cwb.iC.o());
+                     }
+
+                     if ($$6 != 0 && $$8 > 1) {
+                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
+                        if ($$13.i() || b($$13) || $$13.a(cwb.dP) || $$13.a(cwb.dO)) {
+                           this.a($$3, $$1.b($$9, -$$6, $$11), cwb.iC.o());
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         int $$14 = $$5 - 1;
+         if ($$14 < 0) {
+            $$14 = 0;
+         } else if ($$14 > 1) {
+            $$14 = 1;
+         }
+
+         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
+            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
+               hv $$17 = $$1.b($$15, -1, $$16);
+               int $$18 = 50;
+               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
+                  $$18 = $$2.a(5);
+               }
+
+               while ($$17.v() > 50) {
+                  dip $$19 = $$3.a_($$17);
+                  if (!$$19.i() && !b($$19) && !$$19.a(cwb.dP) && !$$19.a(cwb.dO) && !$$19.a(cwb.iC)) {
+                     break;
+                  }
+
+                  this.a($$3, $$17, cwb.iC.o());
+                  $$17 = $$17.d();
+                  if (--$$18 <= 0) {
+                     $$17 = $$17.c($$2.a(5) + 1);
+                     $$18 = $$2.a(5);
+                  }
+               }
             }
          }
 
          return true;
-      } else {
-         return false;
       }
-   }
-
-   private boolean a(csg $$0, hx $$1) {
-      dhn $$2 = $$0.a_($$1);
-      return $$2.a(cvh.G) || $$2.i();
    }
 }

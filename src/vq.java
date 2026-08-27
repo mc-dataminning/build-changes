@@ -1,36 +1,35 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.util.UUID;
-import javax.annotation.Nullable;
+public interface vq {
+   vb a();
 
-public record vq(int b, UUID c, UUID d) {
-   public static final Codec<vq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asy.i.fieldOf("index").forGetter(vq::b), iz.a.fieldOf("sender").forGetter(vq::c), iz.a.fieldOf("session_id").forGetter(vq::d))
-            .apply($$0, vq::new)
-   );
+   void a(amq var1, boolean var2, ux.a var3);
 
-   public static vq a(UUID $$0) {
-      return a($$0, ac.d);
+   static vq a(vr $$0) {
+      return (vq)($$0.g() ? new vq.a($$0.c()) : new vq.b($$0));
    }
 
-   public static vq a(UUID $$0, UUID $$1) {
-      return new vq(0, $$0, $$1);
+   public static record a(vb a) implements vq {
+      @Override
+      public void a(amq $$0, boolean $$1, ux.a $$2) {
+         $$0.c.a(this.a, $$2);
+      }
    }
 
-   public void a(aub.a $$0) throws SignatureException {
-      $$0.update(iz.b(this.c));
-      $$0.update(iz.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
-   }
+   public static record b(vr a) implements vq {
+      @Override
+      public vb a() {
+         return this.a.c();
+      }
 
-   public boolean a(vq $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
-   }
+      @Override
+      public void a(amq $$0, boolean $$1, ux.a $$2) {
+         vr $$3 = this.a.a($$1);
+         if (!$$3.i()) {
+            $$0.c.a($$3, $$2);
+         }
+      }
 
-   @Nullable
-   public vq a() {
-      return this.b == Integer.MAX_VALUE ? null : new vq(this.b + 1, this.c, this.d);
+      public vr b() {
+         return this.a;
+      }
    }
 }

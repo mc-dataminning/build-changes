@@ -1,14 +1,14 @@
 import java.util.concurrent.CompletableFuture;
 
-public class ol extends oe {
-   public ol(kl $$0, CompletableFuture<ii.b> $$1, CompletableFuture<oi.c<clj>> $$2, CompletableFuture<oi.c<cvf>> $$3) {
-      super($$0, $$1, $$2, $$3);
+public class ol extends ob<blj<?>> {
+   public ol(kk $$0, CompletableFuture<ih.b> $$1) {
+      super($$0, kc.u, $$1, $$0x -> $$0x.r().g());
    }
 
    @Override
-   protected void a(ii.b $$0) {
-      this.a(ars.H).a(clr.o, clr.t, clr.x);
-      this.a(ars.I).a(clr.n, clr.s, clr.w);
-      this.a(ars.J).a(clr.p, clr.u, clr.y);
+   protected void a(ih.b $$0) {
+      this.a(aru.o).a(blj.l);
+      this.a(aru.r).a(blj.l);
+      this.a(aru.s).a(blj.l);
    }
 }

@@ -1,107 +1,81 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class cmq extends cmc {
+   private static final jh a = new jg() {
+      private final jg c = new jg();
 
-public class cmq extends clj {
-   private static final n a = n.h;
-   private static final n b = n.j;
-   private static final uv c = uv.c(ac.a("item", new agm("smithing_template.ingredients"))).a(a);
-   private static final uv d = uv.c(ac.a("item", new agm("smithing_template.applies_to"))).a(a);
-   private static final uv e = uv.c(ac.a("upgrade", new agm("netherite_upgrade"))).a(a);
-   private static final uv f = uv.c(ac.a("item", new agm("smithing_template.armor_trim.applies_to"))).a(b);
-   private static final uv g = uv.c(ac.a("item", new agm("smithing_template.armor_trim.ingredients"))).a(b);
-   private static final uv h = uv.c(ac.a("item", new agm("smithing_template.armor_trim.base_slot_description")));
-   private static final uv i = uv.c(ac.a("item", new agm("smithing_template.armor_trim.additions_slot_description")));
-   private static final uv j = uv.c(ac.a("item", new agm("smithing_template.netherite_upgrade.applies_to"))).a(b);
-   private static final uv k = uv.c(ac.a("item", new agm("smithing_template.netherite_upgrade.ingredients"))).a(b);
-   private static final uv r = uv.c(ac.a("item", new agm("smithing_template.netherite_upgrade.base_slot_description")));
-   private static final uv s = uv.c(ac.a("item", new agm("smithing_template.netherite_upgrade.additions_slot_description")));
-   private static final agm t = new agm("item/empty_armor_slot_helmet");
-   private static final agm u = new agm("item/empty_armor_slot_chestplate");
-   private static final agm v = new agm("item/empty_armor_slot_leggings");
-   private static final agm w = new agm("item/empty_armor_slot_boots");
-   private static final agm x = new agm("item/empty_slot_hoe");
-   private static final agm y = new agm("item/empty_slot_axe");
-   private static final agm z = new agm("item/empty_slot_sword");
-   private static final agm A = new agm("item/empty_slot_shovel");
-   private static final agm B = new agm("item/empty_slot_pickaxe");
-   private static final agm C = new agm("item/empty_slot_ingot");
-   private static final agm D = new agm("item/empty_slot_redstone_dust");
-   private static final agm E = new agm("item/empty_slot_quartz");
-   private static final agm F = new agm("item/empty_slot_emerald");
-   private static final agm G = new agm("item/empty_slot_diamond");
-   private static final agm H = new agm("item/empty_slot_lapis_lazuli");
-   private static final agm I = new agm("item/empty_slot_amethyst_shard");
-   private final uv J;
-   private final uv K;
-   private final uv L;
-   private final uv M;
-   private final uv N;
-   private final List<agm> O;
-   private final List<agm> P;
+      @Override
+      public cmh a(je $$0, cmh $$1) {
+         ia $$2 = $$0.d().c(cye.b);
+         amp $$3 = $$0.b();
+         elb $$4 = $$0.a();
+         double $$5 = $$4.a() + (double)$$2.j() * 1.125;
+         double $$6 = Math.floor($$4.b()) + (double)$$2.k();
+         double $$7 = $$4.c() + (double)$$2.l() * 1.125;
+         hv $$8 = $$0.c().a($$2);
+         dip $$9 = $$3.a_($$8);
+         djt $$10 = $$9.b() instanceof cvo ? $$9.c(((cvo)$$9.b()).c()) : djt.a;
+         double $$11;
+         if ($$9.a(arr.N)) {
+            if ($$10.b()) {
+               $$11 = 0.6;
+            } else {
+               $$11 = 0.1;
+            }
+         } else {
+            if (!$$9.i() || !$$3.a_($$8.d()).a(arr.N)) {
+               return this.c.dispense($$0, $$1);
+            }
 
-   public cmq(uv $$0, uv $$1, uv $$2, uv $$3, uv $$4, List<agm> $$5, List<agm> $$6) {
-      super(new clj.a());
-      this.J = $$0;
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.N = $$4;
-      this.O = $$5;
-      this.P = $$6;
-   }
+            dip $$13 = $$3.a_($$8.d());
+            djt $$14 = $$13.b() instanceof cvo ? $$13.c(((cvo)$$13.b()).c()) : djt.a;
+            if ($$2 != ia.a && $$14.b()) {
+               $$11 = -0.4;
+            } else {
+               $$11 = -0.9;
+            }
+         }
 
-   public static cmq a(agl<cnt> $$0) {
-      return a($$0.a());
-   }
+         cgj $$18 = cgj.a($$3, $$5, $$6 + $$11, $$7, ((cmq)$$1.d()).b, $$1, null);
+         $$3.b($$18);
+         $$1.h(1);
+         return $$1;
+      }
 
-   public static cmq a(agm $$0) {
-      return new cmq(f, g, uv.c(ac.a("trim_pattern", $$0)).a(a), h, i, A(), B());
-   }
+      @Override
+      protected void a(je $$0) {
+         $$0.b().c(1000, $$0.c(), 0);
+      }
+   };
+   final cgj.a b;
 
-   public static cmq h() {
-      return new cmq(j, k, e, r, s, C(), D());
-   }
-
-   private static List<agm> A() {
-      return List.of(t, u, v, w);
-   }
-
-   private static List<agm> B() {
-      return List.of(C, D, H, E, G, F, I);
-   }
-
-   private static List<agm> C() {
-      return List.of(t, z, u, B, v, y, w, x, A);
-   }
-
-   private static List<agm> D() {
-      return List.of(C);
+   public cmq(cgj.a $$0, cmc.a $$1) {
+      super($$1);
+      this.b = $$0;
+      cye.a(this, a);
    }
 
    @Override
-   public void a(clo $$0, @Nullable csf $$1, List<uv> $$2, cnf $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$2.add(this.L);
-      $$2.add(uu.a);
-      $$2.add(d);
-      $$2.add(uu.a().b(this.J));
-      $$2.add(c);
-      $$2.add(uu.a().b(this.K));
-   }
+   public bjl a(cos $$0) {
+      csy $$1 = $$0.q();
+      hv $$2 = $$0.a();
+      dip $$3 = $$1.a_($$2);
+      if (!$$3.a(arr.N)) {
+         return bjl.e;
+      } else {
+         cmh $$4 = $$0.n();
+         if ($$1 instanceof amp $$5) {
+            djt $$6 = $$3.b() instanceof cvo ? $$3.c(((cvo)$$3.b()).c()) : djt.a;
+            double $$7 = 0.0;
+            if ($$6.b()) {
+               $$7 = 0.5;
+            }
 
-   public uv i() {
-      return this.M;
-   }
+            cgj $$8 = cgj.a($$5, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$7, (double)$$2.w() + 0.5, this.b, $$4, $$0.o());
+            $$5.b($$8);
+            $$5.a(dmz.t, $$2, dmz.a.a($$0.o(), $$5.a_($$2.d())));
+         }
 
-   public uv x() {
-      return this.N;
-   }
-
-   public List<agm> y() {
-      return this.O;
-   }
-
-   public List<agm> z() {
-      return this.P;
+         $$4.h(1);
+         return bjl.a($$1.B);
+      }
    }
 }

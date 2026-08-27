@@ -1,57 +1,37 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public class fwg extends fwb<blb> {
-   private static final agm a = new agm("textures/entity/experience_orb.png");
-   private static final frh f = frh.g(a);
+public class fwg implements fvt.a {
+   private static final int a = 60;
+   private final Set<ix> b = Sets.newHashSet();
 
-   public fwg(fwc.a $$0) {
-      super($$0);
-      this.d = 0.15F;
-      this.e = 0.75F;
+   fwg() {
    }
 
-   protected int a(blb $$0, hx $$1) {
-      return atq.a(super.a($$0, $$1) + 7, 0, 15);
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public void a(blb $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
-      $$3.a();
-      int $$6 = $$0.s();
-      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
-      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
-      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
-      float $$11 = 1.0F;
-      float $$12 = 0.5F;
-      float $$13 = 0.25F;
-      float $$14 = 255.0F;
-      float $$15 = ((float)$$0.ah + $$2) / 2.0F;
-      int $$16 = (int)((atq.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$17 = 255;
-      int $$18 = (int)((atq.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$3.a(0.0F, 0.1F, 0.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      float $$19 = 0.3F;
-      $$3.b(0.3F, 0.3F, 0.3F);
-      eof $$20 = $$4.getBuffer(f);
-      eob.a $$21 = $$3.c();
-      Matrix4f $$22 = $$21.a();
-      Matrix3f $$23 = $$21.b();
-      a($$20, $$22, $$23, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
-      a($$20, $$22, $$23, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
-      a($$20, $$22, $$23, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
-      a($$20, $$22, $$23, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(ix $$0) {
+      this.b.add($$0);
    }
 
-   private static void a(eof $$0, Matrix4f $$1, Matrix3f $$2, float $$3, float $$4, int $$5, int $$6, int $$7, float $$8, float $$9, int $$10) {
-      $$0.a($$1, $$3, $$4, 0.0F).a($$5, $$6, $$7, 128).a($$8, $$9).c(gbq.d).b($$10).a($$2, 0.0F, 1.0F, 0.0F).e();
+   public void b(ix $$0) {
+      this.b.remove($$0);
    }
 
-   public agm a(blb $$0) {
-      return a;
+   @Override
+   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
+      hv $$5 = hv.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(epd $$0, fsi $$1, ix $$2) {
+      fvt.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

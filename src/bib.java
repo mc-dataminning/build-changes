@@ -1,64 +1,146 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.locks.LockSupport;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public class bib extends big {
-   public static final Codec<bib> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
-               )
-               .apply($$0, bib::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float f;
-   private final int g;
-   private final int h;
+public abstract class bib<R extends Runnable> implements bhj, bid<R>, Executor {
+   private final String b;
+   private static final Logger c = LogUtils.getLogger();
+   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
+   private int e;
 
-   public static bib a(float $$0, float $$1, int $$2, int $$3) {
-      return new bib($$0, $$1, $$2, $$3);
-   }
-
-   private bib(float $$0, float $$1, int $$2, int $$3) {
+   protected bib(String $$0) {
       this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
+      bhh.a.a(this);
+   }
+
+   protected abstract R f(Runnable var1);
+
+   protected abstract boolean e(R var1);
+
+   public boolean bq() {
+      return Thread.currentThread() == this.aw();
+   }
+
+   protected abstract Thread aw();
+
+   protected boolean av() {
+      return !this.bq();
+   }
+
+   public int br() {
+      return this.d.size();
    }
 
    @Override
-   public int a(atw $$0) {
-      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
+   public String bs() {
+      return this.b;
    }
 
-   public static int a(atw $$0, float $$1, float $$2, float $$3, float $$4) {
-      return (int)atq.a(atq.c($$0, $$1, $$2), $$3, $$4);
+   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
+      return this.av() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
+   }
+
+   private CompletableFuture<Void> a(Runnable $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.run();
+         return null;
+      }, this);
+   }
+
+   public CompletableFuture<Void> g(Runnable $$0) {
+      if (this.av()) {
+         return this.a($$0);
+      } else {
+         $$0.run();
+         return CompletableFuture.completedFuture(null);
+      }
+   }
+
+   public void h(Runnable $$0) {
+      if (!this.bq()) {
+         this.a($$0).join();
+      } else {
+         $$0.run();
+      }
+   }
+
+   public void i(R $$0) {
+      this.d.add($$0);
+      LockSupport.unpark(this.aw());
    }
 
    @Override
-   public int a() {
-      return this.g;
+   public void execute(Runnable $$0) {
+      if (this.av()) {
+         this.i(this.f($$0));
+      } else {
+         $$0.run();
+      }
+   }
+
+   public void c(Runnable $$0) {
+      this.execute($$0);
+   }
+
+   protected void bt() {
+      this.d.clear();
+   }
+
+   protected void bu() {
+      while (this.x()) {
+      }
+   }
+
+   public boolean x() {
+      R $$0 = this.d.peek();
+      if ($$0 == null) {
+         return false;
+      } else if (this.e == 0 && !this.e($$0)) {
+         return false;
+      } else {
+         this.d(this.d.remove());
+         return true;
+      }
+   }
+
+   public void c(BooleanSupplier $$0) {
+      this.e++;
+
+      try {
+         while (!$$0.getAsBoolean()) {
+            if (!this.x()) {
+               this.bv();
+            }
+         }
+      } finally {
+         this.e--;
+      }
+   }
+
+   protected void bv() {
+      Thread.yield();
+      LockSupport.parkNanos("waiting for tasks", 100000L);
+   }
+
+   protected void d(R $$0) {
+      try {
+         $$0.run();
+      } catch (Exception var3) {
+         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bs(), var3);
+         throw var3;
+      }
    }
 
    @Override
-   public int b() {
-      return this.h;
-   }
-
-   @Override
-   public bih<?> c() {
-      return bih.f;
-   }
-
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+   public List<bhg> bp() {
+      return ImmutableList.of(bhg.a(this.b + "-pending-tasks", bhf.b, this::br));
    }
 }

@@ -1,88 +1,81 @@
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cxm {
-   public static <S extends dfi> cxm.c<S> a(
-      dfk<S> $$0, Function<dhn, cxm.a> $$1, Function<dhn, ib> $$2, dih $$3, dhn $$4, csg $$5, hx $$6, BiPredicate<csg, hx> $$7
-   ) {
-      S $$8 = $$0.a($$5, $$6);
-      if ($$8 == null) {
-         return cxm.b::b;
-      } else if ($$7.test($$5, $$6)) {
-         return cxm.b::b;
-      } else {
-         cxm.a $$9 = $$1.apply($$4);
-         boolean $$10 = $$9 == cxm.a.a;
-         boolean $$11 = $$9 == cxm.a.b;
-         if ($$10) {
-            return new cxm.c.b<>($$8);
-         } else {
-            hx $$12 = $$6.a($$2.apply($$4));
-            dhn $$13 = $$5.a_($$12);
-            if ($$13.a($$4.b())) {
-               cxm.a $$14 = $$1.apply($$13);
-               if ($$14 != cxm.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
-                  if ($$7.test($$5, $$12)) {
-                     return cxm.b::b;
-                  }
+public class cxm extends cvl implements dcz {
+   public static final MapCodec<cxm> a = b(cxm::new);
+   public static final djg b = djf.C;
+   private static final int d = 3;
+   protected static final elu c = cvz.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
-                  S $$15 = $$0.a($$5, $$12);
-                  if ($$15 != null) {
-                     S $$16 = $$11 ? $$8 : $$15;
-                     S $$17 = $$11 ? $$15 : $$8;
-                     return new cxm.c.a<>($$16, $$17);
-                  }
-               }
-            }
+   @Override
+   public MapCodec<cxm> a() {
+      return a;
+   }
 
-            return new cxm.c.b<>($$8);
+   public cxm(dio.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
+   }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public dgd a(hv $$0, dip $$1) {
+      return new dgp($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dgd> dge<T> a(csy $$0, dip $$1, dgf<T> $$2) {
+      return a($$2, dgf.z, $$0.B ? dgp::a : dgp::b);
+   }
+
+   @Override
+   public dce b_(dip $$0) {
+      return dce.b;
+   }
+
+   @Override
+   public edz c_(dip $$0) {
+      return $$0.c(b) ? eea.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eea.c, eea.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return c;
+   }
+
+   @Override
+   public void a(csy $$0, hv $$1, dip $$2, @Nullable blv $$3, cmh $$4) {
+      if ($$4.A()) {
+         dgd $$5 = $$0.c_($$1);
+         if ($$5 instanceof dfy) {
+            ((dfy)$$5).a($$4.y());
          }
       }
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Nullable
+   @Override
+   public dip a(coq $$0) {
+      edz $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Boolean.valueOf($$1.a(arw.a) && $$1.e() == 8));
    }
 
-   public interface b<S, T> {
-      T a(S var1, S var2);
-
-      T a(S var1);
-
-      T b();
-   }
-
-   public interface c<S> {
-      <T> T apply(cxm.b<? super S, T> var1);
-
-      public static final class a<S> implements cxm.c<S> {
-         private final S a;
-         private final S b;
-
-         public a(S $$0, S $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
-
-         @Override
-         public <T> T apply(cxm.b<? super S, T> $$0) {
-            return $$0.a(this.a, this.b);
-         }
-      }
-
-      public static final class b<S> implements cxm.c<S> {
-         private final S a;
-
-         public b(S $$0) {
-            this.a = $$0;
-         }
-
-         @Override
-         public <T> T apply(cxm.b<? super S, T> $$0) {
-            return $$0.a(this.a);
-         }
-      }
+   @Override
+   public boolean a(dip $$0, cse $$1, hv $$2, eep $$3) {
+      return false;
    }
 }

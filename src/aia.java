@@ -1,89 +1,59 @@
+import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class aia {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("commands.damage.invulnerable"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("commands.banip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("commands.banip.failed"));
 
-   public static void a(CommandDispatcher<du> $$0, dp $$1) {
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("damage").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("ban-ip").requires($$0x -> $$0x.c(3)))
             .then(
-               dv.a("target", eg.a())
-                  .then(
-                     ((RequiredArgumentBuilder)dv.a("amount", FloatArgumentType.floatArg(0.0F))
-                           .executes(
-                              $$0x -> a(
-                                    (du)$$0x.getSource(), eg.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((du)$$0x.getSource()).e().ah().n()
-                                 )
-                           ))
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("damageType", es.a($$1, kd.q))
-                                    .executes(
-                                       $$0x -> a(
-                                             (du)$$0x.getSource(),
-                                             eg.a($$0x, "target"),
-                                             FloatArgumentType.getFloat($$0x, "amount"),
-                                             new bjt(es.a($$0x, "damageType", kd.q))
-                                          )
-                                    ))
-                                 .then(
-                                    dv.a("at")
-                                       .then(
-                                          dv.a("location", ft.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (du)$$0x.getSource(),
-                                                      eg.a($$0x, "target"),
-                                                      FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bjt(es.a($$0x, "damageType", kd.q), ft.a($$0x, "location"))
-                                                   )
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 dv.a("by")
-                                    .then(
-                                       ((RequiredArgumentBuilder)dv.a("entity", eg.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (du)$$0x.getSource(),
-                                                      eg.a($$0x, "target"),
-                                                      FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bjt(es.a($$0x, "damageType", kd.q), eg.a($$0x, "entity"))
-                                                   )
-                                             ))
-                                          .then(
-                                             dv.a("from")
-                                                .then(
-                                                   dv.a("cause", eg.a())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (du)$$0x.getSource(),
-                                                               eg.a($$0x, "target"),
-                                                               FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new bjt(es.a($$0x, "damageType", kd.q), eg.a($$0x, "entity"), eg.a($$0x, "cause"))
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
+               ((RequiredArgumentBuilder)dt.a("target", StringArgumentType.word())
+                     .executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
+                  .then(dt.a("reason", ei.a()).executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), ei.a($$0x, "reason"))))
             )
       );
    }
 
-   private static int a(du $$0, bkv $$1, float $$2, bjt $$3) throws CommandSyntaxException {
-      if ($$1.a($$3, $$2)) {
-         $$0.a(() -> uv.a("commands.damage.success", $$2, $$1.Q_()), true);
-         return 1;
+   private static int a(ds $$0, String $$1, @Nullable vb $$2) throws CommandSyntaxException {
+      if (InetAddresses.isInetAddress($$1)) {
+         return b($$0, $$1, $$2);
       } else {
-         throw a.create();
+         amq $$3 = $$0.l().ae().a($$1);
+         if ($$3 != null) {
+            return b($$0, $$3.A(), $$2);
+         } else {
+            throw a.create();
+         }
+      }
+   }
+
+   private static int b(ds $$0, String $$1, @Nullable vb $$2) throws CommandSyntaxException {
+      aqc $$3 = $$0.l().ae().g();
+      if ($$3.a($$1)) {
+         throw b.create();
+      } else {
+         List<amq> $$4 = $$0.l().ae().b($$1);
+         aqd $$5 = new aqd($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+         $$3.a($$5);
+         $$0.a(() -> vb.a("commands.banip.success", $$1, $$5.d()), true);
+         if (!$$4.isEmpty()) {
+            $$0.a(() -> vb.a("commands.banip.info", $$4.size(), gc.a($$4)), true);
+         }
+
+         for (amq $$6 : $$4) {
+            $$6.c.b(vb.c("multiplayer.disconnect.ip_banned"));
+         }
+
+         return $$4.size();
       }
    }
 }

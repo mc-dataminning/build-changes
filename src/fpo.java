@@ -1,45 +1,49 @@
-public abstract class fpo extends fpb {
-   protected gbz E;
+public class fpo extends fqw {
+   private final fqr a;
 
-   protected fpo(flo $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected fpo(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   protected void a(gbz $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
+   protected fpo(fmt $$0, double $$1, double $$2, double $$3, double $$4, fqr $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
    @Override
-   protected float d() {
-      return this.E.d();
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
-   protected float e() {
-      return this.E.g();
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
    }
 
    @Override
-   protected float f() {
-      return this.E.h();
+   public fqa b() {
+      return fqa.d;
    }
 
-   public void a(fpj $$0) {
-      this.a($$0.a(this.r));
-   }
+   public static class a implements fpz<jy> {
+      private final fqr a;
 
-   public void b(fpj $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+      public a(fqr $$0) {
+         this.a = $$0;
+      }
+
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpo($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

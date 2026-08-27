@@ -1,86 +1,47 @@
-import com.google.common.collect.Lists;
-import java.util.List;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fel {
+public class fel extends fdd {
+   public static final float b = 62.500004F;
+   public static final float c = 0.9765628F;
+   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
    @Nullable
-   private cov<?> a;
-   private final List<fel.a> b = Lists.newArrayList();
-   float c;
+   private fuw.a l;
 
-   public void a() {
-      this.a = null;
-      this.b.clear();
-      this.c = 0.0F;
+   public fel(dhm $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a(coq $$0, int $$1, int $$2) {
-      this.b.add(new fel.a($$0, $$1, $$2));
+   @Override
+   protected void aP_() {
+      super.aP_();
+      this.l = fuw.a(this.f.aO(), this.a);
    }
 
-   public fel.a a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int b() {
-      return this.b.size();
-   }
-
-   @Nullable
-   public cov<?> c() {
-      return this.a;
-   }
-
-   public void a(cov<?> $$0) {
-      this.a = $$0;
-   }
-
-   public void a(eut $$0, eti $$1, int $$2, int $$3, boolean $$4, float $$5) {
-      if (!faz.p()) {
-         this.c += $$5;
-      }
-
-      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
-         fel.a $$7 = this.b.get($$6);
-         int $$8 = $$7.a() + $$2;
-         int $$9 = $$7.b() + $$3;
-         if ($$6 == 0 && $$4) {
-            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
-         } else {
-            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
-         }
-
-         clo $$10 = $$7.c();
-         $$0.b($$10, $$8, $$9);
-         $$0.a(frh.E(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
-         if ($$6 == 0) {
-            $$0.a($$1.h, $$10, $$8, $$9);
-         }
+   @Override
+   protected void b(evw $$0, dip $$1) {
+      super.b($$0, $$1);
+      boolean $$2 = $$1.b() instanceof ddt;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
       }
    }
 
-   public class a {
-      private final coq b;
-      private final int c;
-      private final int d;
-
-      public a(coq $$1, int $$2, int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   @Override
+   protected void a(evw $$0, dip $$1) {
+      if (this.l != null) {
+         boolean $$2 = $$1.b() instanceof ddt;
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         gfs $$3 = fsx.a(this.a);
+         eph $$4 = $$3.a($$0.d(), this.l::a);
+         this.l.b.k = $$2;
+         this.l.a.a($$0.c(), $$4, 15728880, gdf.d);
       }
+   }
 
-      public int a() {
-         return this.c;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public clo c() {
-         clo[] $$0 = this.b.a();
-         return $$0.length == 0 ? clo.b : $$0[atq.d(fel.this.c / 30.0F) % $$0.length];
-      }
+   @Override
+   protected Vector3f l() {
+      return k;
    }
 }

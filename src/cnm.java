@@ -1,199 +1,156 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cnm {
-   public static final int a = 20;
-   private static final List<cnm.a<cnl>> b = Lists.newArrayList();
-   private static final List<cnm.a<clj>> c = Lists.newArrayList();
-   private static final List<coq> d = Lists.newArrayList();
-   private static final Predicate<clo> e = $$0 -> {
-      for (coq $$1 : d) {
-         if ($$1.a($$0)) {
-            return true;
+public class cnm extends cmc {
+   private static final Map<blj<? extends blx>, cnm> a = Maps.newIdentityHashMap();
+   private final int b;
+   private final int c;
+   private final blj<?> d;
+
+   public cnm(blj<? extends blx> $$0, int $$1, int $$2, cmc.a $$3) {
+      super($$3);
+      this.d = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      a.put($$0, this);
+   }
+
+   @Override
+   public bjl a(cos $$0) {
+      csy $$1 = $$0.q();
+      if (!($$1 instanceof amp)) {
+         return bjl.a;
+      } else {
+         cmh $$2 = $$0.n();
+         hv $$3 = $$0.a();
+         ia $$4 = $$0.k();
+         dip $$5 = $$1.a_($$3);
+         if ($$1.c_($$3) instanceof ctq $$6) {
+            blj<?> $$7 = this.a($$2.v());
+            $$6.a($$7, $$1.F_());
+            $$1.a($$3, $$5, $$5, 3);
+            $$1.a($$0.o(), dmz.c, $$3);
+            $$2.h(1);
+            return bjl.b;
+         } else {
+            hv $$8;
+            if ($$5.k($$1, $$3).c()) {
+               $$8 = $$3;
+            } else {
+               $$8 = $$3.a($$4);
+            }
+
+            blj<?> $$10 = this.a($$2.v());
+            if ($$10.a((amp)$$1, $$2, $$0.o(), $$8, blz.m, true, !Objects.equals($$3, $$8) && $$4 == ia.b) != null) {
+               $$2.h(1);
+               $$1.a($$0.o(), dmz.t, $$3);
+            }
+
+            return bjl.b;
+         }
+      }
+   }
+
+   @Override
+   public bjm<cmh> a(csy $$0, cer $$1, bjk $$2) {
+      cmh $$3 = $$1.b($$2);
+      ekx $$4 = a($$0, $$1, csh.b.b);
+      if ($$4.c() != ekz.a.b) {
+         return bjm.c($$3);
+      } else if (!($$0 instanceof amp)) {
+         return bjm.a($$3);
+      } else {
+         hv $$6 = $$4.a();
+         if (!($$0.a_($$6).b() instanceof dao)) {
+            return bjm.c($$3);
+         } else if ($$0.a($$1, $$6) && $$1.a($$6, $$4.b(), $$3)) {
+            blj<?> $$7 = this.a($$3.v());
+            blf $$8 = $$7.a((amp)$$0, $$3, $$1, $$6, blz.m, false, false);
+            if ($$8 == null) {
+               return bjm.c($$3);
+            } else {
+               if (!$$1.fT().d) {
+                  $$3.h(1);
+               }
+
+               $$1.b(arm.c.b(this));
+               $$0.a($$1, dmz.t, $$8.dk());
+               return bjm.b($$3);
+            }
+         } else {
+            return bjm.d($$3);
+         }
+      }
+   }
+
+   public boolean a(@Nullable sj $$0, blj<?> $$1) {
+      return Objects.equals(this.a($$0), $$1);
+   }
+
+   public int a(int $$0) {
+      return $$0 == 0 ? this.b : this.c;
+   }
+
+   @Nullable
+   public static cnm a(@Nullable blj<?> $$0) {
+      return a.get($$0);
+   }
+
+   public static Iterable<cnm> h() {
+      return Iterables.unmodifiableIterable(a.values());
+   }
+
+   public blj<?> a(@Nullable sj $$0) {
+      if ($$0 != null && $$0.b("EntityTag", 10)) {
+         sj $$1 = $$0.p("EntityTag");
+         if ($$1.b("id", 8)) {
+            return blj.a($$1.l("id")).orElse(this.d);
          }
       }
 
-      return false;
-   };
-
-   public static boolean a(clo $$0) {
-      return b($$0) || c($$0);
+      return this.d;
    }
 
-   protected static boolean b(clo $$0) {
-      for (cnm.a<clj> $$1 : c) {
-         if ($$1.b.a($$0)) {
-            return true;
+   @Override
+   public chb m() {
+      return this.d.m();
+   }
+
+   public Optional<blx> a(cer $$0, blx $$1, blj<? extends blx> $$2, amp $$3, elb $$4, cmh $$5) {
+      if (!this.a($$5.v(), $$2)) {
+         return Optional.empty();
+      } else {
+         blx $$6;
+         if ($$1 instanceof bla) {
+            $$6 = ((bla)$$1).a($$3, (bla)$$1);
+         } else {
+            $$6 = $$2.a((csy)$$3);
          }
-      }
 
-      return false;
-   }
+         if ($$6 == null) {
+            return Optional.empty();
+         } else {
+            $$6.a(true);
+            if (!$$6.o_()) {
+               return Optional.empty();
+            } else {
+               $$6.b($$4.a(), $$4.b(), $$4.c(), 0.0F, 0.0F);
+               $$3.a_($$6);
+               if ($$5.A()) {
+                  $$6.b($$5.y());
+               }
 
-   protected static boolean c(clo $$0) {
-      for (cnm.a<cnl> $$1 : b) {
-         if ($$1.b.a($$0)) {
-            return true;
-         }
-      }
+               if (!$$0.fT().d) {
+                  $$5.h(1);
+               }
 
-      return false;
-   }
-
-   public static boolean a(cnl $$0) {
-      for (cnm.a<cnl> $$1 : b) {
-         if ($$1.c == $$0) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean a(clo $$0, clo $$1) {
-      return !e.test($$0) ? false : b($$0, $$1) || c($$0, $$1);
-   }
-
-   protected static boolean b(clo $$0, clo $$1) {
-      clj $$2 = $$0.d();
-
-      for (cnm.a<clj> $$3 : c) {
-         if ($$3.a == $$2 && $$3.b.a($$1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   protected static boolean c(clo $$0, clo $$1) {
-      cnl $$2 = cnn.d($$0);
-
-      for (cnm.a<cnl> $$3 : b) {
-         if ($$3.a == $$2 && $$3.b.a($$1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static clo d(clo $$0, clo $$1) {
-      if (!$$1.b()) {
-         cnl $$2 = cnn.d($$1);
-         clj $$3 = $$1.d();
-
-         for (cnm.a<clj> $$4 : c) {
-            if ($$4.a == $$3 && $$4.b.a($$0)) {
-               return cnn.a(new clo($$4.c), $$2);
+               return Optional.of($$6);
             }
          }
-
-         for (cnm.a<cnl> $$5 : b) {
-            if ($$5.a == $$2 && $$5.b.a($$0)) {
-               return cnn.a(new clo($$3), $$5.c);
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   public static void a() {
-      a(clr.sh);
-      a(clr.vg);
-      a(clr.vj);
-      a(clr.sh, clr.pr, clr.vg);
-      a(clr.vg, clr.vf, clr.vj);
-      a(cno.c, clr.sq, cno.d);
-      a(cno.c, clr.se, cno.d);
-      a(cno.c, clr.uv, cno.d);
-      a(cno.c, clr.sl, cno.d);
-      a(cno.c, clr.sj, cno.d);
-      a(cno.c, clr.rx, cno.d);
-      a(cno.c, clr.sm, cno.d);
-      a(cno.c, clr.qV, cno.e);
-      a(cno.c, clr.lG, cno.d);
-      a(cno.c, clr.sg, cno.f);
-      a(cno.f, clr.uc, cno.g);
-      a(cno.g, clr.lG, cno.h);
-      a(cno.g, clr.sk, cno.i);
-      a(cno.h, clr.sk, cno.j);
-      a(cno.i, clr.lG, cno.j);
-      a(cno.f, clr.sm, cno.n);
-      a(cno.n, clr.lG, cno.o);
-      a(cno.f, clr.uv, cno.k);
-      a(cno.k, clr.lG, cno.l);
-      a(cno.k, clr.qV, cno.m);
-      a(cno.k, clr.sk, cno.s);
-      a(cno.l, clr.sk, cno.t);
-      a(cno.s, clr.lG, cno.t);
-      a(cno.s, clr.qV, cno.u);
-      a(cno.f, clr.on, cno.v);
-      a(cno.v, clr.lG, cno.w);
-      a(cno.v, clr.qV, cno.x);
-      a(cno.p, clr.sk, cno.s);
-      a(cno.q, clr.sk, cno.t);
-      a(cno.f, clr.rx, cno.p);
-      a(cno.p, clr.lG, cno.q);
-      a(cno.p, clr.qV, cno.r);
-      a(cno.f, clr.qZ, cno.y);
-      a(cno.y, clr.lG, cno.z);
-      a(cno.f, clr.sq, cno.A);
-      a(cno.A, clr.qV, cno.B);
-      a(cno.A, clr.sk, cno.C);
-      a(cno.B, clr.sk, cno.D);
-      a(cno.C, clr.qV, cno.D);
-      a(cno.E, clr.sk, cno.C);
-      a(cno.F, clr.sk, cno.C);
-      a(cno.G, clr.sk, cno.D);
-      a(cno.f, clr.sj, cno.E);
-      a(cno.E, clr.lG, cno.F);
-      a(cno.E, clr.qV, cno.G);
-      a(cno.f, clr.se, cno.H);
-      a(cno.H, clr.lG, cno.I);
-      a(cno.H, clr.qV, cno.J);
-      a(cno.f, clr.sl, cno.K);
-      a(cno.K, clr.lG, cno.L);
-      a(cno.K, clr.qV, cno.M);
-      a(cno.c, clr.sk, cno.N);
-      a(cno.N, clr.lG, cno.O);
-      a(cno.f, clr.vI, cno.Q);
-      a(cno.Q, clr.lG, cno.R);
-   }
-
-   private static void a(clj $$0, clj $$1, clj $$2) {
-      if (!($$0 instanceof cmd)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + kc.i.b($$0));
-      } else if (!($$2 instanceof cmd)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + kc.i.b($$2));
-      } else {
-         c.add(new cnm.a<>($$0, coq.a($$1), $$2));
-      }
-   }
-
-   private static void a(clj $$0) {
-      if (!($$0 instanceof cmd)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + kc.i.b($$0));
-      } else {
-         d.add(coq.a($$0));
-      }
-   }
-
-   private static void a(cnl $$0, clj $$1, cnl $$2) {
-      b.add(new cnm.a<>($$0, coq.a($$1), $$2));
-   }
-
-   static class a<T> {
-      final T a;
-      final coq b;
-      final T c;
-
-      public a(T $$0, coq $$1, T $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
    }
 }

@@ -1,58 +1,38 @@
-public class gfc extends gep {
-   public gfc(aqu $$0, aqw $$1, float $$2, float $$3, atw $$4, hx $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class gfc {
+   public static final gfd a = new gfd();
+   public static final String b = "villager";
+   private final gfc.a c;
+
+   public gfc(gfc.a $$0) {
+      this.c = $$0;
    }
 
-   public static gfc a(aqu $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
+   public gfc.a a() {
+      return this.c;
    }
 
-   public static gfc a(ig<aqu> $$0, float $$1) {
-      return a($$0.a(), $$1);
-   }
+   public static enum a {
+      a("none"),
+      b("partial"),
+      c("full");
 
-   public static gfc a(aqu $$0, float $$1, float $$2) {
-      return new gfc($$0.a(), aqw.a, $$2, $$1, gfh.t(), false, 0, gfh.a.a, 0.0, 0.0, 0.0, true);
-   }
+      private static final Map<String, gfc.a> d = Arrays.stream(values()).collect(Collectors.toMap(gfc.a::a, $$0 -> (gfc.a)$$0));
+      private final String e;
 
-   public static gfc a(aqu $$0) {
-      return new gfc($$0.a(), aqw.b, 1.0F, 1.0F, gfh.t(), false, 0, gfh.a.a, 0.0, 0.0, 0.0, true);
-   }
+      private a(String $$0) {
+         this.e = $$0;
+      }
 
-   public static gfc a(aqu $$0, ejz $$1) {
-      return new gfc($$0, aqw.c, 4.0F, 1.0F, gfh.t(), false, 0, gfh.a.b, $$1.c, $$1.d, $$1.e);
-   }
+      public String a() {
+         return this.e;
+      }
 
-   public static gfc b(aqu $$0, float $$1, float $$2) {
-      return new gfc($$0.a(), aqw.i, $$2, $$1, gfh.t(), false, 0, gfh.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gfc b(aqu $$0) {
-      return b($$0, 1.0F, 1.0F);
-   }
-
-   public static gfc a(aqu $$0, atw $$1, double $$2, double $$3, double $$4) {
-      return new gfc($$0, aqw.i, 1.0F, 1.0F, $$1, false, 0, gfh.a.b, $$2, $$3, $$4);
-   }
-
-   public gfc(aqu $$0, aqw $$1, float $$2, float $$3, atw $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, gfh.a.b, $$5, $$6, $$7);
-   }
-
-   private gfc(aqu $$0, aqw $$1, float $$2, float $$3, atw $$4, boolean $$5, int $$6, gfh.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
-   }
-
-   public gfc(agm $$0, aqw $$1, float $$2, float $$3, atw $$4, boolean $$5, int $$6, gfh.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+      public static gfc.a a(String $$0) {
+         return d.getOrDefault($$0, a);
+      }
    }
 }

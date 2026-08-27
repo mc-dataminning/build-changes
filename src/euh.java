@@ -1,8 +1,14 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum euh {
+   a,
+   b,
+   c,
+   d;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface euh {
+   public boolean a() {
+      return this == b;
+   }
+
+   public boolean b() {
+      return this == c || this == d;
+   }
 }

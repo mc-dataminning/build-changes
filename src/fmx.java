@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fmx {
+public record fmx(GameProfile a, gin b, is.b c, chb d, @Nullable String e, @Nullable fne f, @Nullable fcc g) {
 }

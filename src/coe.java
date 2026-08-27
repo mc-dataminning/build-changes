@@ -1,91 +1,52 @@
-public class coe extends cok {
-   public coe(coh $$0) {
-      super($$0);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class coe {
+   @Nullable
+   private final String a;
+   private final ImmutableList<bks> b;
+   private final ie.c<coe> c = kb.i.f(this);
+
+   public static coe a(String $$0) {
+      return kb.i.a(agt.a($$0));
    }
 
-   public boolean a(chh $$0, csf $$1) {
-      int $$2 = 0;
-      clo $$3 = clo.b;
+   public coe(bks... $$0) {
+      this(null, $$0);
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         clo $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(clr.tT)) {
-               if (!$$3.b()) {
-                  return false;
-               }
+   public coe(@Nullable String $$0, bks... $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+   }
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(clr.tS)) {
-                  return false;
-               }
+   public String b(String $$0) {
+      return $$0 + (this.a == null ? kb.i.b(this).a() : this.a);
+   }
 
-               $$2++;
+   public List<bks> a() {
+      return this.b;
+   }
+
+   public boolean b() {
+      if (!this.b.isEmpty()) {
+         UnmodifiableIterator var1 = this.b.iterator();
+
+         while (var1.hasNext()) {
+            bks $$0 = (bks)var1.next();
+            if ($$0.c().a()) {
+               return true;
             }
          }
       }
 
-      return !$$3.b() && $$3.u() && $$2 > 0;
+      return false;
    }
 
-   public clo a(chh $$0, it $$1) {
-      int $$2 = 0;
-      clo $$3 = clo.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         clo $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(clr.tT)) {
-               if (!$$3.b()) {
-                  return clo.b;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(clr.tS)) {
-                  return clo.b;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      if (!$$3.b() && $$3.u() && $$2 >= 1 && cnk.d($$3) < 2) {
-         clo $$6 = new clo(clr.tT, $$2);
-         sd $$7 = $$3.v().h();
-         $$7.a("generation", cnk.d($$3) + 1);
-         $$6.c($$7);
-         return $$6;
-      } else {
-         return clo.b;
-      }
-   }
-
-   public ip<clo> a(chh $$0) {
-      ip<clo> $$1 = ip.a($$0.b(), clo.b);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         clo $$3 = $$0.a($$2);
-         if ($$3.d().t()) {
-            $$1.set($$2, new clo($$3.d().s()));
-         } else if ($$3.d() instanceof cnk) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public cox<?> as_() {
-      return cox.d;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   @Deprecated
+   public ie.c<coe> c() {
+      return this.c;
    }
 }

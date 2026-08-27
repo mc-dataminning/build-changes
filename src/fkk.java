@@ -1,121 +1,70 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-public class fkk<T extends bxz> extends fhl<T> {
-   private static final String a = "real_head";
-   private static final String b = "upper_body";
-   private static final String f = "real_tail";
-   private final fkt g;
-   private final fkt h;
-   private final fkt i;
-   private final fkt j;
-   private final fkt k;
-   private final fkt l;
-   private final fkt m;
-   private final fkt n;
-   private final fkt o;
-   private final fkt p;
-   private static final int q = 8;
+public class fkk extends fjq<cgl> {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "bottom";
+   private final fly g;
+   private final fly h;
+   private final ImmutableList<fly> i;
 
-   public fkk(fkt $$0) {
-      this.g = $$0.b("head");
-      this.h = this.g.b("real_head");
-      this.i = $$0.b("body");
-      this.p = $$0.b("upper_body");
-      this.j = $$0.b("right_hind_leg");
-      this.k = $$0.b("left_hind_leg");
-      this.l = $$0.b("right_front_leg");
-      this.m = $$0.b("left_front_leg");
-      this.n = $$0.b("tail");
-      this.o = this.n.b("real_tail");
+   public fkk(fly $$0) {
+      this.g = $$0.b("left_paddle");
+      this.h = $$0.b("right_paddle");
+      this.i = this.a($$0).build();
    }
 
-   public static fkz c() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      float $$2 = 13.5F;
-      flc $$3 = $$1.a("head", fky.c(), fkv.a(-1.0F, 13.5F, -7.0F));
-      $$3.a(
-         "real_head",
-         fky.c()
-            .a(0, 0)
-            .a(-2.0F, -3.0F, -2.0F, 6.0F, 6.0F, 4.0F)
-            .a(16, 14)
-            .a(-2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F)
-            .a(16, 14)
-            .a(2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F)
-            .a(0, 10)
-            .a(-0.5F, -0.001F, -5.0F, 3.0F, 3.0F, 4.0F),
-         fkv.a
+   protected Builder<fly> a(fly $$0) {
+      Builder<fly> $$1 = new Builder();
+      $$1.add(new fly[]{$$0.b("bottom"), this.g, this.h});
+      return $$1;
+   }
+
+   public static void a(fmh $$0) {
+      $$0.a(
+         "bottom",
+         fmd.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         fma.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
       );
-      $$1.a("body", fky.c().a(18, 14).a(-3.0F, -2.0F, -3.0F, 6.0F, 9.0F, 6.0F), fkv.a(0.0F, 14.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("upper_body", fky.c().a(21, 0).a(-3.0F, -3.0F, -3.0F, 8.0F, 6.0F, 7.0F), fkv.a(-1.0F, 14.0F, -3.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fky $$4 = fky.c().a(0, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F);
-      $$1.a("right_hind_leg", $$4, fkv.a(-2.5F, 16.0F, 7.0F));
-      $$1.a("left_hind_leg", $$4, fkv.a(0.5F, 16.0F, 7.0F));
-      $$1.a("right_front_leg", $$4, fkv.a(-2.5F, 16.0F, -4.0F));
-      $$1.a("left_front_leg", $$4, fkv.a(0.5F, 16.0F, -4.0F));
-      flc $$5 = $$1.a("tail", fky.c(), fkv.a(-1.0F, 12.0F, 8.0F, (float) (Math.PI / 5), 0.0F, 0.0F));
-      $$5.a("real_tail", fky.c().a(9, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F), fkv.a);
-      return fkz.a($$0, 64, 32);
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fmd.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fma.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         fmd.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fma.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   @Override
-   protected Iterable<fkt> a() {
-      return ImmutableList.of(this.g);
+   public static fme b() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      a($$1);
+      return fme.a($$0, 128, 64);
    }
 
-   @Override
-   protected Iterable<fkt> b() {
-      return ImmutableList.of(this.i, this.j, this.k, this.l, this.m, this.n, this.p);
+   public void a(cgl $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.g, $$1);
+      a($$0, 1, this.h, $$1);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      if ($$0.aa_()) {
-         this.n.f = 0.0F;
-      } else {
-         this.n.f = atq.b($$1 * 0.6662F) * 1.4F * $$2;
+   public ImmutableList<fly> c() {
+      return this.i;
+   }
+
+   private static void a(cgl $$0, int $$1, fly $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = aty.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (aty.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = aty.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (aty.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
       }
-
-      if ($$0.A()) {
-         this.p.a(-1.0F, 16.0F, -3.0F);
-         this.p.e = (float) (Math.PI * 2.0 / 5.0);
-         this.p.f = 0.0F;
-         this.i.a(0.0F, 18.0F, 0.0F);
-         this.i.e = (float) (Math.PI / 4);
-         this.n.a(-1.0F, 21.0F, 6.0F);
-         this.j.a(-2.5F, 22.7F, 2.0F);
-         this.j.e = (float) (Math.PI * 3.0 / 2.0);
-         this.k.a(0.5F, 22.7F, 2.0F);
-         this.k.e = (float) (Math.PI * 3.0 / 2.0);
-         this.l.e = 5.811947F;
-         this.l.a(-2.49F, 17.0F, -4.0F);
-         this.m.e = 5.811947F;
-         this.m.a(0.51F, 17.0F, -4.0F);
-      } else {
-         this.i.a(0.0F, 14.0F, 2.0F);
-         this.i.e = (float) (Math.PI / 2);
-         this.p.a(-1.0F, 14.0F, -3.0F);
-         this.p.e = this.i.e;
-         this.n.a(-1.0F, 12.0F, 8.0F);
-         this.j.a(-2.5F, 16.0F, 7.0F);
-         this.k.a(0.5F, 16.0F, 7.0F);
-         this.l.a(-2.5F, 16.0F, -4.0F);
-         this.m.a(0.5F, 16.0F, -4.0F);
-         this.j.e = atq.b($$1 * 0.6662F) * 1.4F * $$2;
-         this.k.e = atq.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-         this.l.e = atq.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-         this.m.e = atq.b($$1 * 0.6662F) * 1.4F * $$2;
-      }
-
-      this.h.g = $$0.F($$3) + $$0.f($$3, 0.0F);
-      this.p.g = $$0.f($$3, -0.08F);
-      this.i.g = $$0.f($$3, -0.16F);
-      this.o.g = $$0.f($$3, -0.2F);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.g.e = $$5 * (float) (Math.PI / 180.0);
-      this.g.f = $$4 * (float) (Math.PI / 180.0);
-      this.n.e = $$3;
    }
 }

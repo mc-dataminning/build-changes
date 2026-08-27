@@ -1,31 +1,40 @@
-public class adr implements wo<acp> {
-   private static final int a = 2;
-   private final boolean b;
+public class adr implements wu<acw> {
+   private final hv a;
+   private final int b;
+   private final boolean c;
 
-   public adr(cdw $$0) {
-      this.b = $$0.b;
+   public adr(hv $$0, int $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public adr(ty $$0) {
-      byte $$1 = $$0.readByte();
-      this.b = ($$1 & 2) != 0;
+   public adr(ue $$0) {
+      this.a = $$0.e();
+      this.b = $$0.n();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(ty $$0) {
-      byte $$1 = 0;
-      if (this.b) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   public void a(ue $$0) {
+      $$0.a(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
+   public hv a() {
+      return this.a;
+   }
+
+   public int d() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

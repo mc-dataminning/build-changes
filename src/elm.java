@@ -1,5 +1,32 @@
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface elm<T> {
-   ta b(long var1, Function<T, String> var3);
+public class elm implements eln {
+   private final DoubleList a;
+
+   public elm(DoubleList $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a(eln.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
+   }
 }

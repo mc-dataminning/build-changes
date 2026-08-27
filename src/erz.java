@@ -1,172 +1,66 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class erz {
-   private erz() {
+public class erz extends gjl {
+   static final vb b = vb.c("mco.warning");
+   static final vb c = vb.c("mco.info");
+   private final erz.a v;
+   private final vb w;
+   private final vb x;
+   protected final BooleanConsumer a;
+   private final boolean y;
+
+   public erz(BooleanConsumer $$0, erz.a $$1, vb $$2, vb $$3, boolean $$4) {
+      super(euc.a);
+      this.a = $$0;
+      this.v = $$1;
+      this.w = $$2;
+      this.x = $$3;
+      this.y = $$4;
    }
 
-   @VisibleForTesting
-   protected static List<String> a(String $$0) {
-      return Arrays.asList($$0.split("\\n"));
-   }
-
-   public static List<erz.a> a(String $$0, erz.b... $$1) {
-      return a($$0, Arrays.asList($$1));
-   }
-
-   private static List<erz.a> a(String $$0, List<erz.b> $$1) {
-      List<String> $$2 = a($$0);
-      return a($$2, $$1);
-   }
-
-   private static List<erz.a> a(List<String> $$0, List<erz.b> $$1) {
-      int $$2 = 0;
-      List<erz.a> $$3 = Lists.newArrayList();
-
-      for (String $$4 : $$0) {
-         List<erz.b> $$5 = Lists.newArrayList();
-
-         for (String $$7 : a($$4, "%link")) {
-            if ("%link".equals($$7)) {
-               $$5.add($$1.get($$2++));
-            } else {
-               $$5.add(erz.b.a($$7));
-            }
-         }
-
-         $$3.add(new erz.a($$5));
-      }
-
-      return $$3;
-   }
-
-   public static List<String> a(String $$0, String $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Delimiter cannot be the empty string");
+   @Override
+   public void aP_() {
+      if (this.y) {
+         this.d(ewh.a(va.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(8), 100, 20).a());
+         this.d(ewh.a(va.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(8), 100, 20).a());
       } else {
-         List<String> $$2 = Lists.newArrayList();
-         int $$3 = 0;
-
-         int $$4;
-         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
-            if ($$4 > $$3) {
-               $$2.add($$0.substring($$3, $$4));
-            }
-
-            $$2.add($$1);
-            $$3 = $$4 + $$1.length();
-         }
-
-         if ($$3 < $$0.length()) {
-            $$2.add($$0.substring($$3));
-         }
-
-         return $$2;
+         this.d(ewh.a(va.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, h(8), 100, 20).a());
       }
    }
 
-   public static class a {
-      public final List<erz.b> a;
+   @Override
+   public vb h() {
+      return va.b(this.v.d, this.w, this.x);
+   }
 
-      a(erz.b... $$0) {
-         this(Arrays.asList($$0));
-      }
-
-      a(List<erz.b> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return "Line{segments=" + this.a + "}";
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            erz.a $$1 = (erz.a)$$0;
-            return Objects.equals(this.a, $$1.a);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.a.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   public static class b {
-      private final String a;
-      @Nullable
-      private final String b;
-      @Nullable
-      private final String c;
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.v.d, this.g / 2, h(2), this.v.c);
+      $$0.a(this.i, this.w, this.g / 2, h(4), -1);
+      $$0.a(this.i, this.x, this.g / 2, h(6), -1);
+   }
 
-      private b(String $$0) {
-         this.a = $$0;
-         this.b = null;
-         this.c = null;
-      }
+   public static enum a {
+      a(erz.b, -65536),
+      b(erz.c, 8226750);
 
-      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+      public final int c;
+      public final vb d;
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            erz.b $$1 = (erz.b)$$0;
-            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b, this.c);
-      }
-
-      @Override
-      public String toString() {
-         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
-      }
-
-      public String a() {
-         return this.b() ? this.b : this.a;
-      }
-
-      public boolean b() {
-         return this.b != null;
-      }
-
-      public String c() {
-         if (!this.b()) {
-            throw new IllegalStateException("Not a link: " + this);
-         } else {
-            return this.c;
-         }
-      }
-
-      public static erz.b a(String $$0, String $$1) {
-         return new erz.b(null, $$0, $$1);
-      }
-
-      @VisibleForTesting
-      protected static erz.b a(String $$0) {
-         return new erz.b($$0);
+      private a(vb $$0, int $$1) {
+         this.d = $$0;
+         this.c = $$1;
       }
    }
 }

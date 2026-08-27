@@ -1,44 +1,31 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cmx extends cjh {
-   protected final cvf d;
-   private final ib c;
+public abstract class cmx extends cmc {
+   public static final Predicate<cmh> c = $$0 -> $$0.a(arz.at);
+   public static final Predicate<cmh> d = c.or($$0 -> $$0.a(cmk.un));
 
-   public cmx(cvf $$0, cvf $$1, clj.a $$2, ib $$3) {
-      super($$0, $$2);
-      this.d = $$1;
-      this.c = $$3;
+   public cmx(cmc.a $$0) {
+      super($$0);
    }
 
-   protected boolean a(csi $$0, dhn $$1, hx $$2) {
-      return $$1.a($$0, $$2);
+   public Predicate<cmh> e() {
+      return this.b();
    }
 
-   @Nullable
-   @Override
-   protected dhn c(cnw $$0) {
-      dhn $$1 = this.d.a($$0);
-      dhn $$2 = null;
-      csi $$3 = $$0.q();
-      hx $$4 = $$0.a();
+   public abstract Predicate<cmh> b();
 
-      for (ib $$5 : $$0.f()) {
-         if ($$5 != this.c.g()) {
-            dhn $$6 = $$5 == this.c ? this.e().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
+   public static cmh a(blv $$0, Predicate<cmh> $$1) {
+      if ($$1.test($$0.b(bjk.b))) {
+         return $$0.b(bjk.b);
+      } else {
+         return $$1.test($$0.b(bjk.a)) ? $$0.b(bjk.a) : cmh.f;
       }
-
-      return $$2 != null && $$3.a($$2, $$4, eke.a()) ? $$2 : null;
    }
 
    @Override
-   public void a(Map<cvf, clj> $$0, clj $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.d, $$1);
+   public int c() {
+      return 1;
    }
+
+   public abstract int d();
 }

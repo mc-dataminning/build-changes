@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gbj<T extends blv> extends gbl<T, fiw<T>> {
+   private static final fsq a = fsq.p(new agt("textures/entity/enderman/enderman_eyes.png"));
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gbj {
+   public gbj(fzj<T, fiw<T>> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public fsq a() {
+      return a;
+   }
 }

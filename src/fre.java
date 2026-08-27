@@ -1,70 +1,26 @@
-public class fre {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
+public class fre extends fon {
+   private static final int a = 12235202;
 
-   public fre(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   protected fre(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fqr $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)ati.b.b(12235202) / 255.0F;
+      this.w = (float)ati.b.c(12235202) / 255.0F;
+      this.x = (float)ati.b.d(12235202) / 255.0F;
    }
 
-   public fre a(fre $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
-   }
+   public static class a implements fpz<jy> {
+      private final fqr a;
 
-   public int a() {
-      return this.a;
-   }
+      public a(fqr $$0) {
+         this.a = $$0;
+      }
 
-   public int b() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(int $$0) {
-      this.b = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public void d(int $$0) {
-      this.d = $$0;
-   }
-
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         auf $$8 = $$1.z;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new fre($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      }
    }
 }

@@ -1,40 +1,40 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dad extends cvf {
-   public static final MapCodec<dad> a = b(dad::new);
-   protected static final eks b = cvf.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+public class dad extends czn implements dap {
+   public static final MapCodec<dad> c = b(dad::new);
 
    @Override
    public MapCodec<dad> a() {
-      return a;
+      return c;
    }
 
-   public dad(dhm.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public eks b(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return b;
+   protected dad(dio.d $$0) {
+      super($$0, ia.b, elr.b(), true);
    }
 
    @Override
-   public eks b_(dhn $$0, crl $$1, hx $$2) {
-      return ekp.b();
+   protected czo c() {
+      return (czo)cwb.mc;
    }
 
    @Override
-   public eks c(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return ekp.b();
+   public edz c_(dip $$0) {
+      return eea.c.a(false);
    }
 
    @Override
-   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
+   protected boolean h(dip $$0) {
+      return this.c().h($$0);
+   }
+
+   @Override
+   public boolean a(@Nullable cer $$0, cse $$1, hv $$2, dip $$3, edy $$4) {
       return false;
    }
 
    @Override
-   public float d(dhn $$0, crl $$1, hx $$2) {
-      return 0.2F;
+   public boolean a(csz $$0, hv $$1, dip $$2, edz $$3) {
+      return false;
    }
 }

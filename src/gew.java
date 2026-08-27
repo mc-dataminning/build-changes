@@ -1,31 +1,74 @@
-public class gew implements ger {
-   private final fqb a;
-   private boolean b;
-   private boolean c = true;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public gew(fqb $$0) {
-      this.a = $$0;
+public class gew implements apt {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gev b = new gev("US", "English", false);
+   private Map<String, gev> c = ImmutableMap.of("en_us", b);
+   private String d;
+
+   public gew(String $$0) {
+      this.d = $$0;
+   }
+
+   private static Map<String, gev> a(Stream<aog> $$0) {
+      Map<String, gev> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            gfi $$2 = $$1x.a(gfi.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.a(), var3);
+         }
+      });
+      return ImmutableMap.copyOf($$1);
    }
 
    @Override
-   public void a() {
-      csf $$0 = this.a.dN();
-      dhn $$1 = $$0.c(this.a.cH().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(cvh.nd)).findFirst().orElse(null);
-      if ($$1 != null) {
-         if (!this.b && !this.c && $$1.a(cvh.nd) && !this.a.P_()) {
-            boolean $$2 = $$1.c(cvl.b);
-            if ($$2) {
-               this.a.a(aqv.cu, 1.0F, 1.0F);
-            } else {
-               this.a.a(aqv.cs, 1.0F, 1.0F);
-            }
+   public void a(aps $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         gev $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
          }
-
-         this.b = true;
-      } else {
-         this.b = false;
       }
 
-      this.c = false;
+      ges $$4 = ges.a($$0, $$1, $$2);
+      geu.a($$4);
+      se.a($$4);
+   }
+
+   public void a(String $$0) {
+      this.d = $$0;
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   public SortedMap<String, gev> b() {
+      return new TreeMap<>(this.c);
+   }
+
+   @Nullable
+   public gev b(String $$0) {
+      return this.c.get($$0);
    }
 }

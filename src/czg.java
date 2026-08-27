@@ -1,78 +1,57 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class czg extends cvf implements cxx, cyn {
-   public static final MapCodec<czg> a = b(czg::new);
-   public static final dil<id> b = did.T;
+public class czg extends cuu {
+   public static final MapCodec<czg> c = b(czg::new);
 
    @Override
    public MapCodec<czg> a() {
-      return a;
+      return c;
    }
 
-   protected czg(dhm.d $$0) {
+   protected czg(dio.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, id.k));
    }
 
    @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(b);
+   public dgd a(hv $$0, dip $$1) {
+      return new dgz($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dgd> dge<T> a(csy $$0, dip $$1, dgf<T> $$2) {
+      return a($$0, $$2, dgf.a);
    }
 
    @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public dhn a(dhn $$0, dab $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public dhn a(cnw $$0) {
-      ib $$1 = $$0.k();
-      ib $$2;
-      if ($$1.o() == ib.a.b) {
-         $$2 = $$0.g().g();
-      } else {
-         $$2 = ib.b;
-      }
-
-      return this.o().a(b, id.a($$1, $$2));
-   }
-
-   @Override
-   public dfi a(hx $$0, dhn $$1) {
-      return new dgi($$0, $$1);
-   }
-
-   @Override
-   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
-      dfi $$6 = $$1.c_($$2);
-      if ($$6 instanceof dgi && $$3.gq()) {
-         $$3.a((dgi)$$6);
-         return bjb.a($$1.B);
-      } else {
-         return bjb.d;
+   protected void a(csy $$0, hv $$1, cer $$2) {
+      dgd $$3 = $$0.c_($$1);
+      if ($$3 instanceof dgz) {
+         $$2.a((bjo)$$3);
+         $$2.a(arm.am);
       }
    }
 
-   public static boolean a(ebm.c $$0, ebm.c $$1) {
-      ib $$2 = h($$0.b());
-      ib $$3 = h($$1.b());
-      ib $$4 = n($$0.b());
-      ib $$5 = n($$1.b());
-      dgi.a $$6 = dgi.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dgi.a.b : dgi.a.a);
-      boolean $$7 = $$6 == dgi.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
-   }
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, auf $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, arc.ju, ard.e, 1.0F, 1.0F, false);
+         }
 
-   public static ib h(dhn $$0) {
-      return $$0.c(b).a();
-   }
-
-   public static ib n(dhn $$0) {
-      return $$0.c(b).b();
+         ia $$7 = $$0.c(a);
+         ia.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ia.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == ia.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(jv.ab, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(jv.E, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

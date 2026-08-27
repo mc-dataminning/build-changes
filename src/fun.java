@@ -1,40 +1,29 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+public class fun implements fui<dgj> {
+   private static final float a = 0.375F;
+   private final fym b;
 
-public class fun implements fui.a {
-   private final eti a;
-   private static final int b = 10;
-
-   public fun(eti $$0) {
-      this.a = $$0;
+   public fun(fuj.a $$0) {
+      this.b = $$0.d();
    }
 
-   @Override
-   public void a(eob $$0, fqz $$1, double $$2, double $$3, double $$4) {
-      csf $$5 = this.a.r;
-      hx $$6 = hx.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
+   public void a(dgj $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
+      ia $$6 = $$0.r().c(cwn.f);
+      io<cmh> $$7 = $$0.c();
+      int $$8 = (int)$$0.aB_().a();
 
-      for (hx $$8 : hx.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(cso.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = atq.h($$10, 0.9F, 0.9F);
-         long $$12 = iy.e($$8.a());
-         if ($$7.add($$12)) {
-            fui.a(
-               $$0,
-               $$1,
-               $$5.K().p().a(cso.a, iy.a($$12)),
-               (double)iy.a(iy.b($$12), 8),
-               (double)iy.a(iy.c($$12), 8),
-               (double)iy.a(iy.d($$12), 8),
-               16711680,
-               0.3F
-            );
-         }
-
-         if ($$9 != 15) {
-            fui.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         cmh $$10 = $$7.get($$9);
+         if ($$10 != cmh.f) {
+            $$2.a();
+            $$2.a(0.5F, 0.44921875F, 0.5F);
+            ia $$11 = ia.b(($$9 + $$6.e()) % 4);
+            float $$12 = -$$11.p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(a.b.rotationDegrees(90.0F));
+            $$2.a(-0.3125F, -0.3125F, 0.0F);
+            $$2.b(0.375F, 0.375F, 0.375F);
+            this.b.a($$10, cme.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
+            $$2.b();
          }
       }
    }

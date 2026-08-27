@@ -1,20 +1,12 @@
-public class fxe extends fxi<byy, fin<byy>> {
-   private static final agm a = new agm("textures/entity/llama/creamy.png");
-   private static final agm i = new agm("textures/entity/llama/white.png");
-   private static final agm j = new agm("textures/entity/llama/brown.png");
-   private static final agm k = new agm("textures/entity/llama/gray.png");
+public class fxe extends fyu<bxq, fit<bxq>> {
+   private static final agt a = new agt("textures/entity/dolphin.png");
 
-   public fxe(fwc.a $$0, fkr $$1) {
-      super($$0, new fin<>($$0.a($$1)), 0.7F);
-      this.a(new gae(this, $$0.f()));
+   public fxe(fxo.a $$0) {
+      super($$0, new fit<>($$0.a(flx.J)), 0.7F);
+      this.a(new gbg(this, $$0.d()));
    }
 
-   public agm a(byy $$0) {
-      return switch ($$0.gr()) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-      };
+   public agt a(bxq $$0) {
+      return a;
    }
 }

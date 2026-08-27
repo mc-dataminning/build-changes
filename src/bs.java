@@ -1,38 +1,53 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record bs(ik<bkz<?>> b) {
-   public static final Codec<bs> a = Codec.either(arz.b(kd.t), kc.h.r())
-      .flatComapMap(
-         $$0 -> (bs)$$0.map($$0x -> new bs(kc.h.a($$0x)), $$0x -> new bs(ik.a($$0x))),
-         $$0 -> {
-            ik<bkz<?>> $$1 = $$0.a();
-            Optional<arz<bkz<?>>> $$2 = $$1.d();
-            if ($$2.isPresent()) {
-               return DataResult.success(Either.left($$2.get()));
-            } else {
-               return $$1.b() == 1
-                  ? DataResult.success(Either.right($$1.a(0)))
-                  : DataResult.error(() -> "Entity type set must have a single element, but got " + $$1.b());
-            }
-         }
-      );
+public class bs<V> {
+   private final Function<blf, Optional<V>> a;
+   private final bq.a b;
 
-   public static bs a(bkz<?> $$0) {
-      return new bs(ik.a($$0.r()));
+   public static <V> bs<V> a(ir<V> $$0, Function<blf, Optional<V>> $$1) {
+      return new bs<>($$0.q(), $$1);
    }
 
-   public static bs a(arz<bkz<?>> $$0) {
-      return new bs(kc.h.a($$0));
+   public static <V> bs<V> a(Codec<V> $$0, Function<blf, Optional<V>> $$1) {
+      return new bs<>($$0, $$1);
    }
 
-   public boolean b(bkz<?> $$0) {
-      return $$0.a(this.b);
+   private bs(Codec<V> $$0, Function<blf, Optional<V>> $$1) {
+      this.a = $$1;
+      MapCodec<bs.a<V>> $$2 = RecordCodecBuilder.mapCodec($$1x -> $$1x.group($$0.fieldOf("variant").forGetter(bs.a::c)).apply($$1x, this::a));
+      this.b = new bq.a($$2);
    }
 
-   public ik<bkz<?>> a() {
+   public bq.a a() {
       return this.b;
+   }
+
+   public bs.a<V> a(V $$0) {
+      return new bs.a<>(this.b, this.a, $$0);
+   }
+
+   public static record a<V>(bq.a b, Function<blf, Optional<V>> c, V d) implements bq {
+      @Override
+      public boolean a(blf $$0, amp $$1, @Nullable elb $$2) {
+         return this.c.apply($$0).filter($$0x -> $$0x.equals(this.d)).isPresent();
+      }
+
+      @Override
+      public bq.a a() {
+         return this.b;
+      }
+
+      public Function<blf, Optional<V>> b() {
+         return this.c;
+      }
+
+      public V c() {
+         return this.d;
+      }
    }
 }

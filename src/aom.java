@@ -1,28 +1,65 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
+import java.io.IOException;
+import java.nio.file.FileStore;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.FileAttributeView;
+import java.nio.file.attribute.FileStoreAttributeView;
+import javax.annotation.Nullable;
 
-public interface aom<T> extends aol<T> {
-   JsonObject a(T var1);
+class aom extends FileStore {
+   private final String a;
 
-   static <T> aom<T> a(final String $$0, final Codec<T> $$1) {
-      return new aom<T>() {
-         @Override
-         public String a() {
-            return $$0;
-         }
+   public aom(String $$0) {
+      this.a = $$0;
+   }
 
-         @Override
-         public T a(JsonObject $$0x) {
-            return ac.a($$1.parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
-         }
+   @Override
+   public String name() {
+      return this.a;
+   }
 
-         @Override
-         public JsonObject a(T $$0x) {
-            return ac.<JsonElement, IllegalArgumentException>a($$1.encodeStart(JsonOps.INSTANCE, $$0), IllegalArgumentException::new).getAsJsonObject();
-         }
-      };
+   @Override
+   public String type() {
+      return "index";
+   }
+
+   @Override
+   public boolean isReadOnly() {
+      return true;
+   }
+
+   @Override
+   public long getTotalSpace() {
+      return 0L;
+   }
+
+   @Override
+   public long getUsableSpace() {
+      return 0L;
+   }
+
+   @Override
+   public long getUnallocatedSpace() {
+      return 0L;
+   }
+
+   @Override
+   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
+      return $$0 == BasicFileAttributeView.class;
+   }
+
+   @Override
+   public boolean supportsFileAttributeView(String $$0) {
+      return "basic".equals($$0);
+   }
+
+   @Nullable
+   @Override
+   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
+      return null;
+   }
+
+   @Override
+   public Object getAttribute(String $$0) throws IOException {
+      throw new UnsupportedOperationException();
    }
 }

@@ -1,12 +1,17 @@
-import java.util.Collection;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.io.InputStream;
 
-public interface gel {
-   Collection<agm> f();
+public class gel {
+   @Deprecated
+   public static int[] a(aps $$0, agt $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         eoe $$3 = eoe.a($$2);
+      ) {
+         var4 = $$3.e();
+      }
 
-   void a(Function<agm, gel> var1);
-
-   @Nullable
-   gea a(gee var1, Function<ged, gbz> var2, gei var3, agm var4);
+      return var4;
+   }
 }

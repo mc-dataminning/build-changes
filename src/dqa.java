@@ -1,143 +1,171 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
-public abstract class dqa<FC extends dse> {
-   public static final dqa<dsl> e = a("no_op", new dqu(dsl.a));
-   public static final dqa<dta> f = a("tree", new drm(dta.a));
-   public static final dqa<dsr> g = a("flower", new dqy(dsr.a));
-   public static final dqa<dsr> h = a("no_bonemeal_flower", new dqy(dsr.a));
-   public static final dqa<dsr> i = a("random_patch", new dqy(dsr.a));
-   public static final dqa<drw> j = a("block_pile", new dpj(drw.a));
-   public static final dqa<dsz> k = a("spring_feature", new drl(dsz.a));
-   public static final dqa<dsl> l = a("chorus_plant", new dpm(dsl.a));
-   public static final dqa<dss> m = a("replace_single_block", new drb(dss.a));
-   public static final dqa<dsl> n = a("void_start_platform", new drr(dsl.a));
-   public static final dqa<dsl> o = a("desert_well", new dpt(dsl.a));
-   public static final dqa<dqf> p = a("fossil", new dqe(dqf.a));
-   public static final dqa<dsg> q = a("huge_red_mushroom", new dql(dsg.a));
-   public static final dqa<dsg> r = a("huge_brown_mushroom", new dqi(dsg.a));
-   public static final dqa<dsl> s = a("ice_spike", new dqm(dsl.a));
-   public static final dqa<dsl> t = a("glowstone_blob", new dqh(dsl.a));
-   public static final dqa<dsl> u = a("freeze_top_layer", new drj(dsl.a));
-   public static final dqa<dsl> v = a("vines", new drq(dsl.a));
-   public static final dqa<drv> w = a("block_column", new dpi(drv.a));
-   public static final dqa<dtd> x = a("vegetation_patch", new drp(dtd.a));
-   public static final dqa<dtd> y = a("waterlogged_vegetation_patch", new drs(dtd.a));
-   public static final dqa<dsu> z = a("root_system", new drc(dsu.a));
-   public static final dqa<dsj> A = a("multiface_growth", new dqs(dsj.a));
-   public static final dqa<dtc> B = a("underwater_magma", new dro(dtc.a));
-   public static final dqa<dsl> C = a("monster_room", new dqr(dsl.a));
-   public static final dqa<dsl> D = a("blue_ice", new dpk(dsl.a));
-   public static final dqa<drx> E = a("iceberg", new dqn(drx.a));
-   public static final dqa<drx> F = a("forest_rock", new dph(drx.a));
-   public static final dqa<dsb> G = a("disk", new dpu(dsb.a));
-   public static final dqa<dqp.a> H = a("lake", new dqp(dqp.a.a));
-   public static final dqa<dsm> I = a("ore", new dqv(dsm.a));
-   public static final dqa<dsy> J = a("end_spike", new drk(dsy.a));
-   public static final dqa<dsl> K = a("end_island", new dpy(dsl.a));
-   public static final dqa<dsd> L = a("end_gateway", new dpx(dsd.a));
-   public static final drg M = a("seagrass", new drg(dso.k));
-   public static final dqa<dsl> N = a("kelp", new dqo(dsl.a));
-   public static final dqa<dsl> O = a("coral_tree", new dpr(dsl.a));
-   public static final dqa<dsl> P = a("coral_mushroom", new dpq(dsl.a));
-   public static final dqa<dsl> Q = a("coral_claw", new dpo(dsl.a));
-   public static final dqa<drz> R = a("sea_pickle", new drf(drz.a));
-   public static final dqa<dsw> S = a("simple_block", new drh(dsw.a));
-   public static final dqa<dso> T = a("bamboo", new dpe(dso.k));
-   public static final dqa<dqj> U = a("huge_fungus", new dqk(dqj.a));
-   public static final dqa<dsk> V = a("nether_forest_vegetation", new dqt(dsk.c));
-   public static final dqa<dsl> W = a("weeping_vines", new drt(dsl.a));
-   public static final dqa<dtb> X = a("twisting_vines", new drn(dtb.a));
-   public static final dqa<dry> Y = a("basalt_columns", new dpf(dry.a));
-   public static final dqa<dsa> Z = a("delta_feature", new dps(dsa.a));
-   public static final dqa<dst> aa = a("netherrack_replace_blobs", new dra(dst.a));
-   public static final dqa<dsi> ab = a("fill_layer", new dqd(dsi.a));
-   public static final dpl ac = a("bonus_chest", new dpl(dsl.a));
-   public static final dqa<dsl> ad = a("basalt_pillar", new dpg(dsl.a));
-   public static final dqa<dsm> ae = a("scattered_ore", new drd(dsm.a));
-   public static final dqa<dsq> af = a("random_selector", new dqz(dsq.a));
-   public static final dqa<dsx> ag = a("simple_random_selector", new dri(dsx.a));
-   public static final dqa<dsp> ah = a("random_boolean_selector", new dqx(dsp.a));
-   public static final dqa<dsf> ai = a("geode", new dqg(dsf.b));
-   public static final dqa<dsc> aj = a("dripstone_cluster", new dpv(dsc.a));
-   public static final dqa<dsh> ak = a("large_dripstone", new dqq(dsh.a));
-   public static final dqa<dsn> al = a("pointed_dripstone", new dqw(dsn.a));
-   public static final dqa<dsv> am = a("sculk_patch", new dre(dsv.a));
-   private final Codec<dpn<FC, dqa<FC>>> a;
-
-   private static <C extends dse, F extends dqa<C>> F a(String $$0, F $$1) {
-      return is.a(kc.R, $$0, $$1);
+public class dqa extends dqd<dpz> {
+   public dqa(Codec<dpz> $$0) {
+      super($$0);
    }
 
-   public dqa(Codec<FC> $$0) {
-      this.a = $$0.fieldOf("config").xmap($$0x -> new dpn<>(this, $$0x), dpn::c).codec();
+   public boolean a(dpz $$0, auf $$1) {
+      return $$1.i() <= $$0.l;
    }
 
-   public Codec<dpn<FC, dqa<FC>>> a() {
-      return this.a;
-   }
+   public boolean a(dpy $$0, dpz $$1, dkl $$2, Function<hv, ie<ctx>> $$3, auf $$4, dnk $$5, csf $$6, dkk $$7) {
+      int $$8 = ix.c(this.d() * 2 - 1);
+      int $$9 = $$4.a($$4.a($$4.a(this.a()) + 1) + 1);
 
-   protected void a(csn $$0, hx $$1, dhn $$2) {
-      $$0.a($$1, $$2, 3);
-   }
+      for (int $$10 = 0; $$10 < $$9; $$10++) {
+         double $$11 = (double)$$6.a($$4.a(16));
+         double $$12 = (double)$$1.e.a($$4, $$0);
+         double $$13 = (double)$$6.b($$4.a(16));
+         double $$14 = (double)$$1.b.a($$4);
+         double $$15 = (double)$$1.c.a($$4);
+         double $$16 = (double)$$1.j.a($$4);
+         dqd.a $$17 = ($$1x, $$2x, $$3x, $$4x, $$5x) -> a($$2x, $$3x, $$4x, $$16);
+         int $$18 = 1;
+         if ($$4.a(4) == 0) {
+            double $$19 = (double)$$1.f.a($$4);
+            float $$20 = 1.0F + $$4.i() * 6.0F;
+            this.a($$0, $$1, $$2, $$3, $$5, $$11, $$12, $$13, $$20, $$19, $$7, $$17);
+            $$18 += $$4.a(4);
+         }
 
-   public static Predicate<dhn> a(arz<cvf> $$0) {
-      return $$1 -> !$$1.a($$0);
-   }
-
-   protected void a(csz $$0, hx $$1, dhn $$2, Predicate<dhn> $$3) {
-      if ($$3.test($$0.a_($$1))) {
-         $$0.a($$1, $$2, 2);
-      }
-   }
-
-   public abstract boolean a(dqc<FC> var1);
-
-   public boolean a(FC $$0, csz $$1, djk $$2, atw $$3, hx $$4) {
-      return $$1.f_($$4) ? this.a(new dqc<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
-   }
-
-   protected static boolean a(dhn $$0) {
-      return $$0.a(ark.bd);
-   }
-
-   public static boolean b(dhn $$0) {
-      return $$0.a(ark.af);
-   }
-
-   public static boolean a(csl $$0, hx $$1) {
-      return $$0.a($$1, dqa::b);
-   }
-
-   public static boolean a(Function<hx, dhn> $$0, hx $$1, Predicate<dhn> $$2) {
-      hx.a $$3 = new hx.a();
-
-      for (ib $$4 : ib.values()) {
-         $$3.a($$1, $$4);
-         if ($$2.test($$0.apply($$3))) {
-            return true;
+         for (int $$21 = 0; $$21 < $$18; $$21++) {
+            float $$22 = $$4.i() * (float) (Math.PI * 2);
+            float $$23 = ($$4.i() - 0.5F) / 4.0F;
+            float $$24 = this.a($$4);
+            int $$25 = $$8 - $$4.a($$8 / 4);
+            int $$26 = 0;
+            this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$11, $$12, $$13, $$14, $$15, $$24, $$22, $$23, 0, $$25, this.b(), $$7, $$17);
          }
       }
 
-      return false;
+      return true;
    }
 
-   public static boolean a(Function<hx, dhn> $$0, hx $$1) {
-      return a($$0, $$1, dhm.a::i);
+   protected int a() {
+      return 15;
    }
 
-   protected void a(csz $$0, hx $$1) {
-      hx.a $$2 = $$1.j();
+   protected float a(auf $$0) {
+      float $$1 = $$0.i() * 2.0F + $$0.i();
+      if ($$0.a(10) == 0) {
+         $$1 *= $$0.i() * $$0.i() * 3.0F + 1.0F;
+      }
 
-      for (int $$3 = 0; $$3 < 2; $$3++) {
-         $$2.c(ib.b);
-         if ($$0.a_($$2).i()) {
+      return $$1;
+   }
+
+   protected double b() {
+      return 1.0;
+   }
+
+   protected void a(
+      dpy $$0, dpz $$1, dkl $$2, Function<hv, ie<ctx>> $$3, dnk $$4, double $$5, double $$6, double $$7, float $$8, double $$9, dkk $$10, dqd.a $$11
+   ) {
+      double $$12 = 1.5 + (double)(aty.a((float) (Math.PI / 2)) * $$8);
+      double $$13 = $$12 * $$9;
+      this.a($$0, $$1, $$2, $$3, $$4, $$5 + 1.0, $$6, $$7, $$12, $$13, $$10, $$11);
+   }
+
+   protected void a(
+      dpy $$0,
+      dpz $$1,
+      dkl $$2,
+      Function<hv, ie<ctx>> $$3,
+      long $$4,
+      dnk $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      double $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      int $$14,
+      int $$15,
+      double $$16,
+      dkk $$17,
+      dqd.a $$18
+   ) {
+      auf $$19 = auf.a($$4);
+      int $$20 = $$19.a($$15 / 2) + $$15 / 4;
+      boolean $$21 = $$19.a(6) == 0;
+      float $$22 = 0.0F;
+      float $$23 = 0.0F;
+
+      for (int $$24 = $$14; $$24 < $$15; $$24++) {
+         double $$25 = 1.5 + (double)(aty.a((float) Math.PI * (float)$$24 / (float)$$15) * $$11);
+         double $$26 = $$25 * $$16;
+         float $$27 = aty.b($$13);
+         $$6 += (double)(aty.b($$12) * $$27);
+         $$7 += (double)aty.a($$13);
+         $$8 += (double)(aty.a($$12) * $$27);
+         $$13 *= $$21 ? 0.92F : 0.7F;
+         $$13 += $$23 * 0.1F;
+         $$12 += $$22 * 0.1F;
+         $$23 *= 0.9F;
+         $$22 *= 0.75F;
+         $$23 += ($$19.i() - $$19.i()) * $$19.i() * 2.0F;
+         $$22 += ($$19.i() - $$19.i()) * $$19.i() * 4.0F;
+         if ($$24 == $$20 && $$11 > 1.0F) {
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 - (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 + (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
             return;
          }
 
-         $$0.x($$2).e($$2);
+         if ($$19.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$24, $$15, $$11)) {
+               return;
+            }
+
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$25 * $$9, $$26 * $$10, $$17, $$18);
+         }
       }
+   }
+
+   private static boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return $$1 <= $$3 ? true : $$0 * $$0 + $$1 * $$1 + $$2 * $$2 >= 1.0;
    }
 }

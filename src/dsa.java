@@ -1,41 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsa implements dse {
-   public static final Codec<dsa> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dhn.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dhn.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               big.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               big.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dsa::new)
-   );
-   private final dhn b;
-   private final dhn c;
-   private final big d;
-   private final big e;
-
-   public dsa(dhn $$0, dhn $$1, big $$2, big $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class dsa extends drc<dtt> {
+   public dsa(Codec<dtt> $$0) {
+      super($$0);
    }
 
-   public dhn a() {
-      return this.b;
-   }
+   @Override
+   public boolean a(dre<dtt> $$0) {
+      dtt $$1 = $$0.f();
+      auf $$2 = $$0.d();
+      hv $$3 = $$0.e();
+      ctt $$4 = $$0.b();
+      int $$5 = 0;
+      hv.a $$6 = new hv.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-   public dhn b() {
-      return this.c;
-   }
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
+         }
+      }
 
-   public big c() {
-      return this.d;
-   }
-
-   public big d() {
-      return this.e;
+      return $$5 > 0;
    }
 }

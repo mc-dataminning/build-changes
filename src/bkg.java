@@ -1,132 +1,93 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.Map.Entry;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public interface bkg {
+   ags<bkf> a = ags.a(kc.r, new agt("in_fire"));
+   ags<bkf> b = ags.a(kc.r, new agt("lightning_bolt"));
+   ags<bkf> c = ags.a(kc.r, new agt("on_fire"));
+   ags<bkf> d = ags.a(kc.r, new agt("lava"));
+   ags<bkf> e = ags.a(kc.r, new agt("hot_floor"));
+   ags<bkf> f = ags.a(kc.r, new agt("in_wall"));
+   ags<bkf> g = ags.a(kc.r, new agt("cramming"));
+   ags<bkf> h = ags.a(kc.r, new agt("drown"));
+   ags<bkf> i = ags.a(kc.r, new agt("starve"));
+   ags<bkf> j = ags.a(kc.r, new agt("cactus"));
+   ags<bkf> k = ags.a(kc.r, new agt("fall"));
+   ags<bkf> l = ags.a(kc.r, new agt("fly_into_wall"));
+   ags<bkf> m = ags.a(kc.r, new agt("out_of_world"));
+   ags<bkf> n = ags.a(kc.r, new agt("generic"));
+   ags<bkf> o = ags.a(kc.r, new agt("magic"));
+   ags<bkf> p = ags.a(kc.r, new agt("wither"));
+   ags<bkf> q = ags.a(kc.r, new agt("dragon_breath"));
+   ags<bkf> r = ags.a(kc.r, new agt("dry_out"));
+   ags<bkf> s = ags.a(kc.r, new agt("sweet_berry_bush"));
+   ags<bkf> t = ags.a(kc.r, new agt("freeze"));
+   ags<bkf> u = ags.a(kc.r, new agt("stalagmite"));
+   ags<bkf> v = ags.a(kc.r, new agt("falling_block"));
+   ags<bkf> w = ags.a(kc.r, new agt("falling_anvil"));
+   ags<bkf> x = ags.a(kc.r, new agt("falling_stalactite"));
+   ags<bkf> y = ags.a(kc.r, new agt("sting"));
+   ags<bkf> z = ags.a(kc.r, new agt("mob_attack"));
+   ags<bkf> A = ags.a(kc.r, new agt("mob_attack_no_aggro"));
+   ags<bkf> B = ags.a(kc.r, new agt("player_attack"));
+   ags<bkf> C = ags.a(kc.r, new agt("arrow"));
+   ags<bkf> D = ags.a(kc.r, new agt("trident"));
+   ags<bkf> E = ags.a(kc.r, new agt("mob_projectile"));
+   ags<bkf> F = ags.a(kc.r, new agt("fireworks"));
+   ags<bkf> G = ags.a(kc.r, new agt("fireball"));
+   ags<bkf> H = ags.a(kc.r, new agt("unattributed_fireball"));
+   ags<bkf> I = ags.a(kc.r, new agt("wither_skull"));
+   ags<bkf> J = ags.a(kc.r, new agt("thrown"));
+   ags<bkf> K = ags.a(kc.r, new agt("indirect_magic"));
+   ags<bkf> L = ags.a(kc.r, new agt("thorns"));
+   ags<bkf> M = ags.a(kc.r, new agt("explosion"));
+   ags<bkf> N = ags.a(kc.r, new agt("player_explosion"));
+   ags<bkf> O = ags.a(kc.r, new agt("sonic_boom"));
+   ags<bkf> P = ags.a(kc.r, new agt("bad_respawn_point"));
+   ags<bkf> Q = ags.a(kc.r, new agt("outside_border"));
+   ags<bkf> R = ags.a(kc.r, new agt("generic_kill"));
 
-public class bkg {
-   private final Map<bmm, bkb> a = Maps.newHashMap();
-   private final bkh b;
-   private final int c;
-   @Nullable
-   private String d;
-   private Supplier<bki.a> e = () -> null;
-   private final ig.c<bkg> f = kc.e.f(this);
-
-   protected bkg(bkh $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public Optional<bki.a> b() {
-      return Optional.ofNullable(this.e.get());
-   }
-
-   public void a(bll $$0, int $$1) {
-   }
-
-   public void a(@Nullable bkv $$0, @Nullable bkv $$1, bll $$2, int $$3, double $$4) {
-      this.a($$2, $$3);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return false;
-   }
-
-   public void b(bll $$0, int $$1) {
-   }
-
-   public boolean a() {
-      return false;
-   }
-
-   protected String c() {
-      if (this.d == null) {
-         this.d = ac.a("effect", kc.e.b(this));
-      }
-
-      return this.d;
-   }
-
-   public String d() {
-      return this.c();
-   }
-
-   public uv e() {
-      return uv.c(this.d());
-   }
-
-   public bkh f() {
-      return this.b;
-   }
-
-   public int g() {
-      return this.c;
-   }
-
-   public bkg a(bmm $$0, String $$1, double $$2, bmp.a $$3) {
-      this.a.put($$0, new bkg.a(UUID.fromString($$1), $$2, $$3));
-      return this;
-   }
-
-   public bkg a(Supplier<bki.a> $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public Map<bmm, bkb> h() {
-      return this.a;
-   }
-
-   public void a(bmo $$0) {
-      for (Entry<bmm, bkb> $$1 : this.a.entrySet()) {
-         bmn $$2 = $$0.a($$1.getKey());
-         if ($$2 != null) {
-            $$2.b($$1.getValue().a());
-         }
-      }
-   }
-
-   public void a(bmo $$0, int $$1) {
-      for (Entry<bmm, bkb> $$2 : this.a.entrySet()) {
-         bmn $$3 = $$0.a($$2.getKey());
-         if ($$3 != null) {
-            $$3.b($$2.getValue().a());
-            $$3.c($$2.getValue().a($$1));
-         }
-      }
-   }
-
-   public boolean i() {
-      return this.b == bkh.a;
-   }
-
-   @Deprecated
-   public ig.c<bkg> j() {
-      return this.f;
-   }
-
-   class a implements bkb {
-      private final UUID b;
-      private final double c;
-      private final bmp.a d;
-
-      public a(UUID $$0, double $$1, bmp.a $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      @Override
-      public UUID a() {
-         return this.b;
-      }
-
-      @Override
-      public bmp a(int $$0) {
-         return new bmp(this.b, bkg.this.d() + " " + $$0, this.c * (double)($$0 + 1), this.d);
-      }
+   static void a(pa<bkf> $$0) {
+      $$0.a(a, new bkf("inFire", 0.1F, bkb.d));
+      $$0.a(b, new bkf("lightningBolt", 0.1F));
+      $$0.a(c, new bkf("onFire", 0.0F, bkb.d));
+      $$0.a(d, new bkf("lava", 0.1F, bkb.d));
+      $$0.a(e, new bkf("hotFloor", 0.1F, bkb.d));
+      $$0.a(f, new bkf("inWall", 0.0F));
+      $$0.a(g, new bkf("cramming", 0.0F));
+      $$0.a(h, new bkf("drown", 0.0F, bkb.c));
+      $$0.a(i, new bkf("starve", 0.0F));
+      $$0.a(j, new bkf("cactus", 0.1F));
+      $$0.a(k, new bkf("fall", bkc.b, 0.0F, bkb.a, bkh.b));
+      $$0.a(l, new bkf("flyIntoWall", 0.0F));
+      $$0.a(m, new bkf("outOfWorld", 0.0F));
+      $$0.a(n, new bkf("generic", 0.0F));
+      $$0.a(o, new bkf("magic", 0.0F));
+      $$0.a(p, new bkf("wither", 0.0F));
+      $$0.a(q, new bkf("dragonBreath", 0.0F));
+      $$0.a(r, new bkf("dryout", 0.1F));
+      $$0.a(s, new bkf("sweetBerryBush", 0.1F, bkb.e));
+      $$0.a(t, new bkf("freeze", 0.0F, bkb.f));
+      $$0.a(u, new bkf("stalagmite", 0.0F));
+      $$0.a(v, new bkf("fallingBlock", 0.1F));
+      $$0.a(w, new bkf("anvil", 0.1F));
+      $$0.a(x, new bkf("fallingStalactite", 0.1F));
+      $$0.a(y, new bkf("sting", 0.1F));
+      $$0.a(z, new bkf("mob", 0.1F));
+      $$0.a(A, new bkf("mob", 0.1F));
+      $$0.a(B, new bkf("player", 0.1F));
+      $$0.a(C, new bkf("arrow", 0.1F));
+      $$0.a(D, new bkf("trident", 0.1F));
+      $$0.a(E, new bkf("mob", 0.1F));
+      $$0.a(F, new bkf("fireworks", 0.1F));
+      $$0.a(H, new bkf("onFire", 0.1F, bkb.d));
+      $$0.a(G, new bkf("fireball", 0.1F, bkb.d));
+      $$0.a(I, new bkf("witherSkull", 0.1F));
+      $$0.a(J, new bkf("thrown", 0.1F));
+      $$0.a(K, new bkf("indirectMagic", 0.0F));
+      $$0.a(L, new bkf("thorns", 0.1F, bkb.b));
+      $$0.a(M, new bkf("explosion", bkc.c, 0.1F));
+      $$0.a(N, new bkf("explosion.player", bkc.c, 0.1F));
+      $$0.a(O, new bkf("sonic_boom", bkc.c, 0.0F));
+      $$0.a(P, new bkf("badRespawnPoint", bkc.c, 0.1F, bkb.a, bkh.c));
+      $$0.a(Q, new bkf("outsideBorder", 0.0F));
+      $$0.a(R, new bkf("genericKill", 0.0F));
    }
 }

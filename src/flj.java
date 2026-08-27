@@ -1,103 +1,84 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class flj<T extends blf> extends fjh<T> implements fjg, fli {
+   private final fly b;
+   private final fly f;
+   private final fly g;
+   private final fly h;
+   private final fly i;
+   private final fly j;
+   protected final fly a;
 
-public class flj {
-   private static final Logger a = LogUtils.getLogger();
-   private final eti b;
-   private final ggy c;
-   private final ak d = new ak();
-   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
-   @Nullable
-   private flj.a f;
-   @Nullable
-   private af g;
-
-   public flj(eti $$0, ggy $$1) {
+   public flj(fly $$0) {
       this.b = $$0;
-      this.c = $$1;
+      this.f = $$0.b("head");
+      this.g = this.f.b("hat");
+      this.h = this.g.b("hat_rim");
+      this.a = this.f.b("nose");
+      this.i = $$0.b("right_leg");
+      this.j = $$0.b("left_leg");
    }
 
-   public void a(aci $$0) {
-      if ($$0.f()) {
-         this.d.a();
-         this.e.clear();
+   public static fmg b() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      float $$2 = 0.5F;
+      fmh $$3 = $$1.a("head", fmd.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fma.a);
+      fmh $$4 = $$3.a("hat", fmd.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new fmc(0.51F)), fma.a);
+      $$4.a("hat_rim", fmd.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), fma.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$3.a("nose", fmd.c().a(24, 0).a(-1.0F, -1.0F, -6.0F, 2.0F, 4.0F, 2.0F), fma.a(0.0F, -2.0F, 0.0F));
+      fmh $$5 = $$1.a("body", fmd.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F), fma.a);
+      $$5.a("jacket", fmd.c().a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fmc(0.5F)), fma.a);
+      $$1.a(
+         "arms",
+         fmd.c()
+            .a(44, 22)
+            .a(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F)
+            .a(44, 22)
+            .a(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, true)
+            .a(40, 38)
+            .a(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F),
+         fma.a(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F)
+      );
+      $$1.a("right_leg", fmd.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fma.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fmd.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fma.a(2.0F, 12.0F, 0.0F));
+      return $$0;
+   }
+
+   @Override
+   public fly a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      boolean $$6 = false;
+      if ($$0 instanceof cdz) {
+         $$6 = ((cdz)$$0).u() > 0;
       }
 
-      this.d.a($$0.d());
-      this.d.a($$0.a());
-
-      for (Entry<agm, ah> $$1 : $$0.e().entrySet()) {
-         ag $$2 = this.d.a($$1.getKey());
-         if ($$2 != null) {
-            ah $$3 = $$1.getValue();
-            $$3.a($$2.a().g());
-            this.e.put($$2.b(), $$3);
-            if (this.f != null) {
-               this.f.a($$2, $$3);
-            }
-
-            if (!$$0.f() && $$3.a()) {
-               if (this.b.r != null) {
-                  this.c.a(this.b.r, $$2.b());
-               }
-
-               Optional<aq> $$4 = $$2.a().d();
-               if ($$4.isPresent() && $$4.get().h()) {
-                  this.b.ax().a(new exj($$2.b()));
-               }
-            }
-         } else {
-            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
-         }
-      }
-   }
-
-   public ak a() {
-      return this.d;
-   }
-
-   public void a(@Nullable af $$0, boolean $$1) {
-      flp $$2 = this.b.I();
-      if ($$2 != null && $$0 != null && $$1) {
-         $$2.b(ady.a($$0));
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
+      if ($$6) {
+         this.f.g = 0.3F * aty.a(0.45F * $$3);
+         this.f.e = 0.4F;
+      } else {
+         this.f.g = 0.0F;
       }
 
-      if (this.g != $$0) {
-         this.g = $$0;
-         if (this.f != null) {
-            this.f.a($$0);
-         }
-      }
+      this.i.e = aty.b($$1 * 0.6662F) * 1.4F * $$2 * 0.5F;
+      this.j.e = aty.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2 * 0.5F;
+      this.i.f = 0.0F;
+      this.j.f = 0.0F;
    }
 
-   public void a(@Nullable flj.a $$0) {
-      this.f = $$0;
-      this.d.a($$0);
-      if ($$0 != null) {
-         this.e.forEach(($$1, $$2) -> {
-            ag $$3 = this.d.a($$1);
-            if ($$3 != null) {
-               $$0.a($$3, $$2);
-            }
-         });
-         $$0.a(this.g);
-      }
+   @Override
+   public fly d() {
+      return this.f;
    }
 
-   @Nullable
-   public af a(agm $$0) {
-      ag $$1 = this.d.a($$0);
-      return $$1 != null ? $$1.b() : null;
-   }
-
-   public interface a extends ak.a {
-      void a(ag var1, ah var2);
-
-      void a(@Nullable af var1);
+   @Override
+   public void a(boolean $$0) {
+      this.f.k = $$0;
+      this.g.k = $$0;
+      this.h.k = $$0;
    }
 }

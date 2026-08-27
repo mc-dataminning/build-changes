@@ -1,29 +1,28 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public abstract class dxl extends dxm {
-   private final dxl.a d;
-   private final int e;
-   private final int f;
+public class dxl extends dxz {
+   public static final Codec<dxl> a = biq.b(0, 256).fieldOf("count").xmap(dxl::new, $$0 -> $$0.c).codec();
+   private final biq c;
 
-   protected dxl(dxl.a $$0, int $$1, int $$2, dxm.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private dxl(biq $$0) {
+      this.c = $$0;
+   }
+
+   public static dxl a(biq $$0) {
+      return new dxl($$0);
+   }
+
+   public static dxl a(int $$0) {
+      return a(bin.a($$0));
    }
 
    @Override
-   public Optional<dxm.b> a(dxm.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, dmw.a.a, $$1 -> this.a($$1, $$0));
+   protected int a(auf $$0, hv $$1) {
+      return this.c.a($$0);
    }
 
-   private void a(dye $$0, dxm.a $$1) {
-      crm $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
-   }
-
-   @FunctionalInterface
-   protected interface a {
-      dxq construct(dnv var1, int var2, int var3);
+   @Override
+   public dxw<?> b() {
+      return dxw.f;
    }
 }

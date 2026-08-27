@@ -1,26 +1,40 @@
-public class fpv extends fni {
-   private static final int a = 12235202;
-
-   protected fpv(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fpj $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)ata.b.b(12235202) / 255.0F;
-      this.w = (float)ata.b.c(12235202) / 255.0F;
-      this.x = (float)ata.b.d(12235202) / 255.0F;
+public class fpv extends fqw {
+   fpv(fmt $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, aty.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, aty.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, aty.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
    }
 
-   public static class a implements foq<jz> {
-      private final fpj a;
+   @Override
+   public fqa b() {
+      return fqa.b;
+   }
 
-      public a(fpj $$0) {
+   @Override
+   public float b(float $$0) {
+      return this.D * aty.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements fpz<jy> {
+      private final fqr a;
+
+      public a(fqr $$0) {
          this.a = $$0;
       }
 
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         atw $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new fpv($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpv $$8 = new fpv($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

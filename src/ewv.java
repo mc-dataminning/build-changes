@@ -1,32 +1,31 @@
-import java.util.Locale;
+import java.util.UUID;
 
-public class ewv extends ews {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 500;
+public class ewv extends bjb {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   public ewv(eur $$0, aty $$1) {
-      super($$0, $$1);
+   public ewv(UUID $$0, vb $$1, float $$2, bjb.a $$3, bjb.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ac.b();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
    @Override
-   protected void a(eut $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
+   public void a(float $$0) {
+      this.b = this.k();
+      this.h = $$0;
+      this.i = ac.b();
    }
 
    @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
-   }
-
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round($$0 * 60.0 / 500.0);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+   public float k() {
+      long $$0 = ac.b() - this.i;
+      float $$1 = aty.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return aty.i($$1, this.b, this.h);
    }
 }

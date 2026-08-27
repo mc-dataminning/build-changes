@@ -1,158 +1,59 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.math.LongMath;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eto extends apq<Map<String, List<eto.a>>> implements AutoCloseable {
-   private static final Codec<Map<String, List<eto.a>>> a = Codec.unboundedMap(
-      Codec.STRING,
-      RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(eto.a::a),
-                     Codec.LONG.fieldOf("period").forGetter(eto.a::b),
-                     Codec.STRING.fieldOf("title").forGetter(eto.a::c),
-                     Codec.STRING.fieldOf("message").forGetter(eto.a::d)
-                  )
-                  .apply($$0, eto.a::new)
-         )
-         .listOf()
-   );
+public abstract class eto extends etk {
    private static final Logger b = LogUtils.getLogger();
-   private final agm c;
-   private final Object2BooleanFunction<String> d;
-   @Nullable
-   private Timer e;
-   @Nullable
-   private eto.b f;
+   private final long c;
+   private final vb d;
+   private final Runnable e;
 
-   public eto(agm $$0, Object2BooleanFunction<String> $$1) {
+   public eto(long $$0, vb $$1, Runnable $$2) {
       this.c = $$0;
       this.d = $$1;
+      this.e = $$2;
    }
 
-   protected Map<String, List<eto.a>> a(apl $$0, bfs $$1) {
-      try {
-         Map var4;
-         try (Reader $$2 = $$0.openAsReader(this.c)) {
-            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
+   protected abstract void a(ept var1, long var2) throws erg;
+
+   @Override
+   public void run() {
+      ept $$0 = ept.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (erh var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
          }
-
-         return var4;
-      } catch (Exception var8) {
-         b.warn("Failed to load {}", this.c, var8);
-         return ImmutableMap.of();
-      }
-   }
-
-   protected void a(Map<String, List<eto.a>> $$0, apl $$1, bfs $$2) {
-      List<eto.a> $$3 = $$0.entrySet()
-         .stream()
-         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
-         .map(Entry::getValue)
-         .flatMap(Collection::stream)
-         .collect(Collectors.toList());
-      if ($$3.isEmpty()) {
-         this.a();
-      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
-         ac.a("A periodic notification in " + this.c + " has a period of zero minutes");
-         this.a();
-      } else {
-         long $$4 = this.a($$3);
-         long $$5 = this.a($$3, $$4);
-         if (this.e == null) {
-            this.e = new Timer();
-         }
-
-         if (this.f == null) {
-            this.f = new eto.b($$3, $$4, $$5);
-         } else {
-            this.f = this.f.a($$3, $$5);
-         }
-
-         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
       }
    }
 
    @Override
-   public void close() {
-      this.a();
-   }
-
-   private void a() {
-      if (this.e != null) {
-         this.e.cancel();
-      }
-   }
-
-   private long a(List<eto.a> $$0, long $$1) {
-      return $$0.stream().mapToLong($$1x -> {
-         long $$2 = $$1x.a - $$1;
-         return LongMath.gcd($$2, $$1x.b);
-      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
-   }
-
-   private long a(List<eto.a> $$0) {
-      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
-   }
-
-   public static record a(long a, long b, String c, String d) {
-
-      public a(long a, long b, String c, String d) {
-         this.a = a != 0L ? a : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
-      }
-   }
-
-   static class b extends TimerTask {
-      private final eti a = eti.N();
-      private final List<eto.a> b;
-      private final long c;
-      private final AtomicLong d;
-
-      public b(List<eto.a> $$0, long $$1, long $$2) {
-         this.b = $$0;
-         this.c = $$2;
-         this.d = new AtomicLong($$1);
-      }
-
-      public eto.b a(List<eto.a> $$0, long $$1) {
-         this.cancel();
-         return new eto.b($$0, this.d.get(), $$1);
-      }
-
-      @Override
-      public void run() {
-         long $$0 = this.d.getAndAdd(this.c);
-         long $$1 = this.d.get();
-
-         for (eto.a $$2 : this.b) {
-            if ($$0 >= $$2.a) {
-               long $$3 = $$0 / $$2.b;
-               long $$4 = $$1 / $$2.b;
-               if ($$3 != $$4) {
-                  this.a.execute(() -> exl.a(eti.N().ax(), exl.a.g, uv.a($$2.c, $$3), uv.a($$2.d, $$3)));
-                  return;
-               }
-            }
-         }
-      }
+   public vb a() {
+      return this.d;
    }
 }

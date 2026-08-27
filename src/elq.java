@@ -1,29 +1,20 @@
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class elq<T> implements elh<T> {
-   private final Function<hx, elo<T>> a;
+public class elq extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
 
-   public elq(Function<hx, elo<T>> $$0) {
+   public elq(DoubleList $$0, double $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public boolean a(hx $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
    }
 
-   @Override
-   public void a(ell<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(hx $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
+   public int size() {
+      return this.a.size();
    }
 }

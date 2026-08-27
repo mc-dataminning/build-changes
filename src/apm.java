@@ -1,17 +1,14 @@
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
-public interface apm extends apf {
-   @Override
-   default CompletableFuture<Void> a(apf.a $$0, apl $$1, bfs $$2, bfs $$3, Executor $$4, Executor $$5) {
-      return $$0.a(aus.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+public interface apm {
+   CompletableFuture<Void> a(apm.a var1, aps var2, bgc var3, bgc var4, Executor var5, Executor var6);
+
+   default String c() {
+      return this.getClass().getSimpleName();
    }
 
-   void a(apl var1);
+   public interface a {
+      <T> CompletableFuture<T> a(T var1);
+   }
 }

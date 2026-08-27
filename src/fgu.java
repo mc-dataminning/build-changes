@@ -1,70 +1,136 @@
-public class fgu {
-   public static void a(fkt $$0, fkt $$1, fkt $$2, boolean $$3) {
-      fkt $$4 = $$3 ? $$0 : $$1;
-      fkt $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+
+public class fgu extends fcc {
+   private static final Logger a = LogUtils.getLogger();
+   private static final vb b = vb.c("selectWorld.enterName").a(n.h);
+   private static final vb c = vb.c("selectWorld.edit.resetIcon");
+   private static final vb k = vb.c("selectWorld.edit.openFolder");
+   private static final vb l = vb.c("selectWorld.edit.backup");
+   private static final vb m = vb.c("selectWorld.edit.backupFolder");
+   private static final vb n = vb.c("selectWorld.edit.optimize");
+   private static final vb o = vb.c("optimizeWorld.confirm.title");
+   private static final vb p = vb.c("optimizeWorld.confirm.description");
+   private static final vb q = vb.c("selectWorld.edit.save");
+   private static final int r = 200;
+   private static final int t = 4;
+   private static final int u = 98;
+   private final ezv v = ezv.d().a(5);
+   private final BooleanConsumer w;
+   private final efu.c x;
+
+   public static fgu a(euk $$0, efu.c $$1, BooleanConsumer $$2) throws IOException {
+      efv $$3 = $$1.a($$1.f());
+      return new fgu($$0, $$1, $$3.b(), $$2);
    }
 
-   public static void a(fkt $$0, fkt $$1, bll $$2, boolean $$3) {
-      fkt $$4 = $$3 ? $$0 : $$1;
-      fkt $$5 = $$3 ? $$1 : $$0;
-      $$4.f = $$3 ? -0.8F : 0.8F;
-      $$4.e = -0.97079635F;
-      $$5.e = $$4.e;
-      float $$6 = (float)cjw.k($$2.fq());
-      float $$7 = atq.a((float)$$2.fs(), 0.0F, $$6);
-      float $$8 = $$7 / $$6;
-      $$5.f = atq.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
-      $$5.e = atq.i($$8, $$5.e, (float) (-Math.PI / 2));
+   private fgu(euk $$0, efu.c $$1, String $$2, BooleanConsumer $$3) {
+      super(vb.c("selectWorld.edit.title"));
+      this.w = $$3;
+      this.x = $$1;
+      evu $$4 = $$0.h;
+      this.v.a(new ezw(200, 20));
+      this.v.a(new exo(b, $$4));
+      ewq $$5 = this.v.a(new ewq($$4, 200, 20, b));
+      $$5.a($$2);
+      ezv $$6 = ezv.e().a(4);
+      ewh $$7 = $$6.a(ewh.a(q, $$1x -> this.a($$5.a())).a(98).a());
+      $$6.a(ewh.a(va.e, $$0x -> this.aF_()).a(98).a());
+      $$5.b($$1x -> $$7.i = !ac.b($$1x));
+      this.v.a(ewh.a(c, $$1x -> {
+         $$1.h().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
+         $$1x.i = false;
+      }).a(200).a()).i = $$1.h().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
+      this.v.a(ewh.a(k, $$1x -> ac.i().a($$1.a(efs.l).toFile())).a(200).a());
+      this.v.a(ewh.a(l, $$1x -> {
+         boolean $$2x = a($$1);
+         this.w.accept(!$$2x);
+      }).a(200).a());
+      this.v.a(ewh.a(m, $$1x -> {
+         efu $$2x = $$0.l();
+         Path $$3x = $$2x.d();
+
+         try {
+            v.c($$3x);
+         } catch (IOException var5x) {
+            throw new RuntimeException(var5x);
+         }
+
+         ac.i().a($$3x.toFile());
+      }).a(200).a());
+      this.v.a(ewh.a(n, $$2x -> $$0.a(new faq(() -> $$0.a(this), ($$2xx, $$3x) -> {
+            if ($$2xx) {
+               a($$1);
+            }
+
+            $$0.a(fgw.a($$0, this.w, $$0.aq(), $$1, $$3x));
+         }, o, p, true))).a(200).a());
+      this.v.a(new ezw(200, 20));
+      this.v.a($$6);
+      this.c($$5);
+      this.v.a($$1x -> {
+         ewf var10000 = this.d($$1x);
+      });
    }
 
-   public static <T extends bln> void a(fkt $$0, fkt $$1, T $$2, float $$3, float $$4) {
-      float $$5 = atq.a($$3 * (float) Math.PI);
-      float $$6 = atq.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2.fn() == blf.b) {
-         $$0.e = -1.8849558F + atq.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + atq.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      } else {
-         $$0.e = -0.0F + atq.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + atq.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+   @Override
+   protected void aP_() {
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.v.a();
+      ezp.a(this.v, this.s());
+   }
+
+   @Override
+   public void aF_() {
+      this.w.accept(false);
+   }
+
+   private void a(String $$0) {
+      try {
+         this.x.a($$0);
+      } catch (su | ta | IOException var3) {
+         a.error("Failed to access world '{}'", this.x.d(), var3);
+         eyo.a(this.f, this.x.d());
       }
 
-      a($$0, $$1, $$4);
+      this.w.accept(true);
    }
 
-   public static void a(fkt $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (atq.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * atq.a($$1 * 0.067F) * 0.05F;
+   public static boolean a(efu.c $$0) {
+      long $$1 = 0L;
+      IOException $$2 = null;
+
+      try {
+         $$1 = $$0.j();
+      } catch (IOException var6) {
+         $$2 = var6;
+      }
+
+      if ($$2 != null) {
+         vb $$4 = vb.c("selectWorld.edit.backupFailed");
+         vb $$5 = vb.b($$2.getMessage());
+         euk.N().ax().a(new eyo(eyo.a.c, $$4, $$5));
+         return false;
+      } else {
+         vb $$6 = vb.a("selectWorld.edit.backupCreated", $$0.d());
+         vb $$7 = vb.a("selectWorld.edit.backupSize", aty.c((double)$$1 / 1048576.0));
+         euk.N().ax().a(new eyo(eyo.a.c, $$6, $$7));
+         return true;
+      }
    }
 
-   public static void a(fkt $$0, fkt $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
-
-   public static void a(fkt $$0, fkt $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = atq.a($$3 * (float) Math.PI);
-      float $$6 = atq.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
    }
 }

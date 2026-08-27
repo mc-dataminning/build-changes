@@ -1,58 +1,51 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.UUID;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import java.util.Collection;
 
-public class ala implements aky {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(uv.c("commands.data.entity.invalid"));
-   public static final Function<String, akz.c> a = $$0 -> new akz.c() {
-         @Override
-         public aky a(CommandContext<du> $$0x) throws CommandSyntaxException {
-            return new ala(eg.a($$0, $$0));
-         }
-
-         @Override
-         public ArgumentBuilder<du, ?> a(ArgumentBuilder<du, ?> $$0x, Function<ArgumentBuilder<du, ?>, ArgumentBuilder<du, ?>> $$1) {
-            return $$0.then(dv.a("entity").then($$1.apply(dv.a($$0, eg.a()))));
-         }
-      };
-   private final bkv c;
-
-   public ala(bkv $$0) {
-      this.c = $$0;
+public class ala {
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
+               .then(dt.a("clear").executes($$0x -> a((ds)$$0x.getSource(), ImmutableList.of(((ds)$$0x.getSource()).h())))))
+            .then(
+               dt.a("set")
+                  .then(
+                     dt.a("warning_level", IntegerArgumentType.integer(0, 4))
+                        .executes(
+                           $$0x -> a((ds)$$0x.getSource(), ImmutableList.of(((ds)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
+                        )
+                  )
+            )
+      );
    }
 
-   @Override
-   public void a(sd $$0) throws CommandSyntaxException {
-      if (this.c instanceof cdz) {
-         throw b.create();
-      } else {
-         UUID $$1 = this.c.cw();
-         this.c.g($$0);
-         this.c.a_($$1);
+   private static int a(ds $$0, Collection<? extends cer> $$1, int $$2) {
+      for (cer $$3 : $$1) {
+         $$3.aa().ifPresent($$1x -> $$1x.a($$2));
       }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> vb.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> vb.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   @Override
-   public sd a() {
-      return cn.b(this.c);
-   }
+   private static int a(ds $$0, Collection<? extends cer> $$1) {
+      for (cer $$2 : $$1) {
+         $$2.aa().ifPresent(cdx::b);
+      }
 
-   @Override
-   public uv b() {
-      return uv.a("commands.data.entity.modified", this.c.Q_());
-   }
+      if ($$1.size() == 1) {
+         $$0.a(() -> vb.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> vb.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
+      }
 
-   @Override
-   public uv a(ta $$0) {
-      return uv.a("commands.data.entity.query", this.c.Q_(), ss.c($$0));
-   }
-
-   @Override
-   public uv a(el.g $$0, double $$1, int $$2) {
-      return uv.a("commands.data.entity.get", $$0.a(), this.c.Q_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      return $$1.size();
    }
 }

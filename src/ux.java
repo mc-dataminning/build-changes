@@ -1,110 +1,98 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ux {
-   public static final Codec<uv> a = asy.a(ux::a);
-   public static final Codec<uv> b = asy.c.flatXmap($$0 -> a.parse(JsonOps.INSTANCE, $$0), $$0 -> a.encodeStart(JsonOps.INSTANCE, $$0));
+public record ux(uy j, uy k) {
+   public static final Codec<ux> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(uy.a.fieldOf("chat").forGetter(ux::a), uy.a.fieldOf("narration").forGetter(ux::b)).apply($$0, ux::new)
+   );
+   public static final uy b = uy.a("chat.type.text");
+   public static final ags<ux> c = a("chat");
+   public static final ags<ux> d = a("say_command");
+   public static final ags<ux> e = a("msg_command_incoming");
+   public static final ags<ux> f = a("msg_command_outgoing");
+   public static final ags<ux> g = a("team_msg_command_incoming");
+   public static final ags<ux> h = a("team_msg_command_outgoing");
+   public static final ags<ux> i = a("emote_command");
 
-   private static vj a(List<uv> $$0) {
-      vj $$1 = $$0.get(0).f();
-
-      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
-         $$1.b($$0.get($$2));
-      }
-
-      return $$1;
+   private static ags<ux> a(String $$0) {
+      return ags.a(kc.at, new agt($$0));
    }
 
-   public static <T extends auk, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
-      MapCodec<E> $$4 = new ux.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
-      Codec<T> $$5 = auk.b((Supplier<T[]>)(() -> $$0));
-      MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1x -> $$1.apply((T)$$1x).codec());
-      MapCodec<E> $$7 = new ux.b($$3, $$6, $$4);
-      return asy.a($$7, $$6);
+   public static void a(pa<ux> $$0) {
+      $$0.a(c, new ux(b, uy.a("chat.type.text.narrate")));
+      $$0.a(d, new ux(uy.a("chat.type.announcement"), uy.a("chat.type.text.narrate")));
+      $$0.a(e, new ux(uy.b("commands.message.display.incoming"), uy.a("chat.type.text.narrate")));
+      $$0.a(f, new ux(uy.c("commands.message.display.outgoing"), uy.a("chat.type.text.narrate")));
+      $$0.a(g, new ux(uy.d("chat.type.team.text"), uy.a("chat.type.text.narrate")));
+      $$0.a(h, new ux(uy.d("chat.type.team.sent"), uy.a("chat.type.text.narrate")));
+      $$0.a(i, new ux(uy.a("chat.type.emote"), uy.a("chat.type.emote")));
    }
 
-   private static Codec<uv> a(Codec<uv> $$0) {
-      uw.a<?>[] $$1 = new uw.a[]{wc.b, wg.c, vz.b, wd.c, we.b, wb.b};
-      MapCodec<uw> $$2 = a($$1, uw.a::a, uw::a, "type");
-      Codec<uv> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group($$2.forGetter(uv::b), asy.a(asy.a($$0.listOf()), "extra", List.of()).forGetter(uv::c), vs.b.a.forGetter(uv::a))
-               .apply($$2x, vj::new)
-      );
-      return Codec.either(Codec.either(Codec.STRING, asy.a($$0.listOf())), $$3)
-         .xmap($$0x -> (uv)$$0x.map($$0xx -> (uv)$$0xx.map(uv::b, ux::a), $$0xx -> $$0xx), $$0x -> {
-            String $$1x = $$0x.d();
-            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
-         });
+   public static ux.a a(ags<ux> $$0, blf $$1) {
+      return a($$0, $$1.dM().I_(), $$1.Q_());
    }
 
-   static class a<T> extends MapCodec<T> {
-      private final List<MapCodec<? extends T>> a;
-      private final Function<T, MapEncoder<? extends T>> b;
+   public static ux.a a(ags<ux> $$0, ds $$1) {
+      return a($$0, $$1.v(), $$1.b());
+   }
 
-      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static ux.a a(ags<ux> $$0, is $$1, vb $$2) {
+      ir<ux> $$3 = $$1.d(kc.at);
+      return $$3.e($$0).a($$2);
+   }
+
+   public ux.a a(vb $$0) {
+      return new ux.a(this, $$0);
+   }
+
+   public uy a() {
+      return this.j;
+   }
+
+   public uy b() {
+      return this.k;
+   }
+
+   public static record a(ux a, vb b, @Nullable vb c) {
+      a(ux $$0, vb $$1) {
+         this($$0, $$1, null);
       }
 
-      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
-         for (MapDecoder<? extends T> $$2 : this.a) {
-            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
-            if ($$3.result().isPresent()) {
-               return (DataResult<T>)$$3;
-            }
-         }
-
-         return DataResult.error(() -> "No matching codec found");
+      public vb a(vb $$0) {
+         return this.a.a().a($$0, this);
       }
 
-      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
-         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
-         return $$3.encode($$0, $$1, $$2);
+      public vb b(vb $$0) {
+         return this.a.b().a($$0, this);
       }
 
-      public <S> Stream<S> keys(DynamicOps<S> $$0) {
-         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
+      public ux.a c(vb $$0) {
+         return new ux.a(this.a, this.b, $$0);
       }
 
-      public String toString() {
-         return "FuzzyCodec[" + this.a + "]";
+      public ux.b a(is $$0) {
+         ir<ux> $$1 = $$0.d(kc.at);
+         return new ux.b($$1.a(this.a), this.b, this.c);
       }
    }
 
-   static class b<T> extends MapCodec<T> {
-      private final String a;
-      private final MapCodec<T> b;
-      private final MapCodec<T> c;
-
-      public b(String $$0, MapCodec<T> $$1, MapCodec<T> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public static record b(int a, vb b, @Nullable vb c) {
+      public b(ue $$0) {
+         this($$0.n(), $$0.m(), $$0.c(ue::m));
       }
 
-      public <O> DataResult<T> decode(DynamicOps<O> $$0, MapLike<O> $$1) {
-         return $$1.get(this.a) != null ? this.b.decode($$0, $$1) : this.c.decode($$0, $$1);
+      public void a(ue $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c, ue::a);
       }
 
-      public <O> RecordBuilder<O> encode(T $$0, DynamicOps<O> $$1, RecordBuilder<O> $$2) {
-         return this.c.encode($$0, $$1, $$2);
-      }
-
-      public <T1> Stream<T1> keys(DynamicOps<T1> $$0) {
-         return Stream.concat(this.b.keys($$0), this.c.keys($$0)).distinct();
+      public Optional<ux.a> a(is $$0) {
+         ir<ux> $$1 = $$0.d(kc.at);
+         ux $$2 = $$1.a(this.a);
+         return Optional.ofNullable($$2).map($$0x -> new ux.a($$0x, this.b, this.c));
       }
    }
 }

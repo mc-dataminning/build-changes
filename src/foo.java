@@ -1,27 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
-
-public class foo {
-   private final List<agm> a;
-
-   private foo(List<agm> $$0) {
-      this.a = $$0;
+public class foo extends fqw {
+   foo(fmt $$0, double $$1, double $$2, double $$3, dip $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(euk.N().am().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
-   public List<agm> a() {
-      return this.a;
+   @Override
+   public fqa b() {
+      return fqa.a;
    }
 
-   public static foo a(JsonObject $$0) {
-      JsonArray $$1 = atg.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new foo(List.of());
-      } else {
-         List<agm> $$2 = Streams.stream($$1).map($$0x -> atg.a($$0x, "texture")).map(agm::new).collect(ImmutableList.toImmutableList());
-         return new foo($$2);
+   @Override
+   public float b(float $$0) {
+      return 0.5F;
+   }
+
+   public static class a implements fpz<jn> {
+      public fpw a(jn $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new foo($$1, $$2, $$3, $$4, $$0.c());
       }
    }
 }

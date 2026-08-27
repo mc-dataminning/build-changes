@@ -2,170 +2,60 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class ot {
-   public static void a(oz<dyv> $$0) {
-      ih<ebk> $$1 = $$0.a(kd.aC);
-      ig<ebk> $$2 = $$1.b(ph.v);
-      ig<ebk> $$3 = $$1.b(ph.u);
-      ih<dyv> $$4 = $$0.a(kd.aE);
-      ig<dyv> $$5 = $$4.b(pg.a);
-      pg.a(
+   public static void a(pa<dzx> $$0) {
+      ig<ecm> $$1 = $$0.a(kc.aD);
+      ie<ecm> $$2 = $$1.b(pi.y);
+      ie<ecm> $$3 = $$1.b(pi.w);
+      ie<ecm> $$4 = $$1.b(pi.z);
+      ie<ecm> $$5 = $$1.b(pi.x);
+      ig<dzx> $$6 = $$0.a(kc.aF);
+      ie<dzx> $$7 = $$6.b(ph.a);
+      ph.a(
          $$0,
-         "bastion/hoglin_stable/starting_pieces",
-         new dyv(
-            $$5,
+         "bastion/bridge/starting_pieces",
+         new dzx(
+            $$7,
             ImmutableList.of(
-               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/starting_stairs_0", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/starting_stairs_1", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/starting_stairs_2", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/starting_stairs_3", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/starting_stairs_4", $$2), 1)
+               Pair.of(dzv.b("bastion/bridge/starting_pieces/entrance", $$2), 1), Pair.of(dzv.b("bastion/bridge/starting_pieces/entrance_face", $$3), 1)
             ),
-            dyv.a.b
+            dzx.a.b
          )
       );
-      pg.a(
+      ph.a($$0, "bastion/bridge/bridge_pieces", new dzx($$7, ImmutableList.of(Pair.of(dzv.b("bastion/bridge/bridge_pieces/bridge", $$4), 1)), dzx.a.b));
+      ph.a(
          $$0,
-         "bastion/hoglin_stable/mirrored_starting_pieces",
-         new dyv(
-            $$5,
+         "bastion/bridge/legs",
+         new dzx($$7, ImmutableList.of(Pair.of(dzv.b("bastion/bridge/legs/leg_0", $$3), 1), Pair.of(dzv.b("bastion/bridge/legs/leg_1", $$3), 1)), dzx.a.b)
+      );
+      ph.a(
+         $$0,
+         "bastion/bridge/walls",
+         new dzx(
+            $$7,
+            ImmutableList.of(Pair.of(dzv.b("bastion/bridge/walls/wall_base_0", $$5), 1), Pair.of(dzv.b("bastion/bridge/walls/wall_base_1", $$5), 1)),
+            dzx.a.b
+         )
+      );
+      ph.a(
+         $$0,
+         "bastion/bridge/ramparts",
+         new dzx(
+            $$7,
+            ImmutableList.of(Pair.of(dzv.b("bastion/bridge/ramparts/rampart_0", $$5), 1), Pair.of(dzv.b("bastion/bridge/ramparts/rampart_1", $$5), 1)),
+            dzx.a.b
+         )
+      );
+      ph.a($$0, "bastion/bridge/rampart_plates", new dzx($$7, ImmutableList.of(Pair.of(dzv.b("bastion/bridge/rampart_plates/plate_0", $$5), 1)), dzx.a.b));
+      ph.a(
+         $$0,
+         "bastion/bridge/connectors",
+         new dzx(
+            $$7,
             ImmutableList.of(
-               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/stairs_0_mirrored", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/stairs_1_mirrored", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/stairs_2_mirrored", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/stairs_3_mirrored", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/stairs_4_mirrored", $$2), 1)
+               Pair.of(dzv.b("bastion/bridge/connectors/back_bridge_top", $$3), 1), Pair.of(dzv.b("bastion/bridge/connectors/back_bridge_bottom", $$3), 1)
             ),
-            dyv.a.b
+            dzx.a.b
          )
-      );
-      pg.a($$0, "bastion/hoglin_stable/wall_bases", new dyv($$5, ImmutableList.of(Pair.of(dyt.b("bastion/hoglin_stable/walls/wall_base", $$2), 1)), dyv.a.b));
-      pg.a(
-         $$0,
-         "bastion/hoglin_stable/walls",
-         new dyv(
-            $$5,
-            ImmutableList.of(
-               Pair.of(dyt.b("bastion/hoglin_stable/walls/side_wall_0", $$3), 1), Pair.of(dyt.b("bastion/hoglin_stable/walls/side_wall_1", $$3), 1)
-            ),
-            dyv.a.b
-         )
-      );
-      pg.a(
-         $$0,
-         "bastion/hoglin_stable/stairs",
-         new dyv(
-            $$5,
-            ImmutableList.of(
-               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_1_0", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_1_1", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_1_2", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_1_3", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_1_4", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_2_0", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_2_1", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_2_2", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_2_3", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_2_4", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_3_0", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_3_1", $$2), 1),
-               new Pair[]{
-                  Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_3_2", $$2), 1),
-                  Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_3_3", $$2), 1),
-                  Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_3_4", $$2), 1)
-               }
-            ),
-            dyv.a.b
-         )
-      );
-      pg.a(
-         $$0,
-         "bastion/hoglin_stable/small_stables/inner",
-         new dyv(
-            $$5,
-            ImmutableList.of(
-               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/inner_0", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/inner_1", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/inner_2", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/inner_3", $$2), 1)
-            ),
-            dyv.a.b
-         )
-      );
-      pg.a(
-         $$0,
-         "bastion/hoglin_stable/small_stables/outer",
-         new dyv(
-            $$5,
-            ImmutableList.of(
-               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/outer_0", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/outer_1", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/outer_2", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/outer_3", $$2), 1)
-            ),
-            dyv.a.b
-         )
-      );
-      pg.a(
-         $$0,
-         "bastion/hoglin_stable/large_stables/inner",
-         new dyv(
-            $$5,
-            ImmutableList.of(
-               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/inner_0", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/inner_1", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/inner_2", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/inner_3", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/inner_4", $$2), 1)
-            ),
-            dyv.a.b
-         )
-      );
-      pg.a(
-         $$0,
-         "bastion/hoglin_stable/large_stables/outer",
-         new dyv(
-            $$5,
-            ImmutableList.of(
-               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/outer_0", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/outer_1", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/outer_2", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/outer_3", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/outer_4", $$2), 1)
-            ),
-            dyv.a.b
-         )
-      );
-      pg.a(
-         $$0,
-         "bastion/hoglin_stable/posts",
-         new dyv(
-            $$5,
-            ImmutableList.of(Pair.of(dyt.b("bastion/hoglin_stable/posts/stair_post", $$2), 1), Pair.of(dyt.b("bastion/hoglin_stable/posts/end_post", $$2), 1)),
-            dyv.a.b
-         )
-      );
-      pg.a(
-         $$0,
-         "bastion/hoglin_stable/ramparts",
-         new dyv(
-            $$5,
-            ImmutableList.of(
-               Pair.of(dyt.b("bastion/hoglin_stable/ramparts/ramparts_1", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/ramparts/ramparts_2", $$2), 1),
-               Pair.of(dyt.b("bastion/hoglin_stable/ramparts/ramparts_3", $$2), 1)
-            ),
-            dyv.a.b
-         )
-      );
-      pg.a(
-         $$0,
-         "bastion/hoglin_stable/rampart_plates",
-         new dyv($$5, ImmutableList.of(Pair.of(dyt.b("bastion/hoglin_stable/rampart_plates/rampart_plate_1", $$2), 1)), dyv.a.b)
-      );
-      pg.a(
-         $$0,
-         "bastion/hoglin_stable/connectors",
-         new dyv($$5, ImmutableList.of(Pair.of(dyt.b("bastion/hoglin_stable/connectors/end_post_connector", $$2), 1)), dyv.a.b)
       );
    }
 }

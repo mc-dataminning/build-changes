@@ -1,31 +1,74 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class dzj extends dxm {
-   public static final Codec<dzj> d = a(dzj::new);
+public class dzj extends dzl {
+   public static final Codec<dzj> a = atg.<dzj>a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> a($$0)
+                  .and(
+                     $$0.group(
+                        Codec.intRange(0, 4096).fieldOf("spacing").forGetter(dzj::a),
+                        Codec.intRange(0, 4096).fieldOf("separation").forGetter(dzj::b),
+                        dzk.c.optionalFieldOf("spread_type", dzk.a).forGetter(dzj::c)
+                     )
+                  )
+                  .apply($$0, dzj::new)
+         ),
+         dzj::a
+      )
+      .codec();
+   private final int c;
+   private final int d;
+   private final dzk e;
 
-   public dzj(dxm.c $$0) {
-      super($$0);
+   private static DataResult<dzj> a(dzj $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   }
+
+   public dzj(iz $$0, dzl.c $$1, float $$2, int $$3, Optional<dzl.a> $$4, int $$5, int $$6, dzk $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+   }
+
+   public dzj(int $$0, int $$1, dzk $$2, int $$3) {
+      this(iz.g, dzl.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public dzk c() {
+      return this.e;
+   }
+
+   public csf a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      dox $$5 = new dox(new dnz(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new csf($$3 * this.c + $$7, $$4 * this.c + $$8);
    }
 
    @Override
-   public Optional<dxm.b> a(dxm.a $$0) {
-      dbr $$1 = dbr.a($$0.f());
-      hx $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dxm.b($$2, (Consumer<dye>)($$3 -> this.a($$3, $$2, $$1, $$0))));
-   }
-
-   private void a(dye $$0, hx $$1, dbr $$2, dxm.a $$3) {
-      List<dxq> $$4 = Lists.newArrayList();
-      dzi.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   protected boolean a(dkn $$0, int $$1, int $$2) {
+      csf $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.e == $$1 && $$3.f == $$2;
    }
 
    @Override
-   public dxv<?> e() {
-      return dxv.c;
+   public dzm<?> e() {
+      return dzm.a;
    }
 }

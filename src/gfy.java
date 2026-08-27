@@ -1,259 +1,110 @@
-import com.google.common.base.MoreObjects;
 import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.BitSet;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.tuple.Pair;
 
-public class gfy extends MinecraftServer {
-   private static final Logger l = LogUtils.getLogger();
-   private static final int m = 2;
-   private final eti n;
-   private boolean o = true;
-   private int p = -1;
-   @Nullable
-   private csc q;
-   @Nullable
-   private ggb r;
-   @Nullable
-   private UUID s;
-   private int t = 0;
+public class gfy implements gfp {
+   private final List<Pair<Predicate<dip>, gfp>> g;
+   protected final boolean a;
+   protected final boolean b;
+   protected final boolean c;
+   protected final gdo d;
+   protected final ftr e;
+   protected final ftp f;
+   private final Map<dip, BitSet> h = new Reference2ObjectOpenHashMap();
 
-   public gfy(Thread $$0, eti $$1, ees.c $$2, aow $$3, ahi $$4, ahf $$5, ams $$6) {
-      super($$0, $$2, $$3, $$4, $$1.W(), $$1.aq(), $$5, $$6);
-      this.b($$1.V());
-      this.c($$1.H());
-      this.a(new gfx(this, this.ba(), this.h));
-      this.n = $$1;
+   public gfy(List<Pair<Predicate<dip>, gfp>> $$0) {
+      this.g = $$0;
+      gfp $$1 = (gfp)$$0.iterator().next().getRight();
+      this.a = $$1.a();
+      this.b = $$1.b();
+      this.c = $$1.c();
+      this.d = $$1.e();
+      this.e = $$1.f();
+      this.f = $$1.g();
    }
 
    @Override
-   public boolean e() {
-      l.info("Starting integrated minecraft server version {}", aa.b().c());
-      this.d(true);
-      this.f(true);
-      this.g(true);
-      this.R();
-      this.u_();
-      GameProfile $$0 = this.P();
-      String $$1 = this.aY().g();
-      this.d($$0 != null ? $$0.getName() + " - " + $$1 : $$1);
-      return true;
-   }
-
-   @Override
-   public boolean A() {
-      return this.o;
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0) {
-      boolean $$1 = this.o;
-      this.o = eti.N().af();
-      bfs $$2 = this.aR();
-      if (!$$1 && this.o) {
-         $$2.a("autoSave");
-         l.info("Saving and pausing game...");
-         this.b(false, false, false);
-         $$2.c();
-      }
-
-      boolean $$3 = eti.N().I() != null;
-      if ($$3 && this.o) {
-         this.a();
+   public List<ftf> a(@Nullable dip $$0, @Nullable ia $$1, auf $$2) {
+      if ($$0 == null) {
+         return Collections.emptyList();
       } else {
-         if ($$1 && !this.o) {
-            this.C();
-         }
+         BitSet $$3 = this.h.get($$0);
+         if ($$3 == null) {
+            $$3 = new BitSet();
 
-         super.a($$0);
-         int $$4 = Math.max(2, this.n.m.e().c());
-         if ($$4 != this.ae().p()) {
-            l.info("Changing view distance to {}, from {}", $$4, this.ae().p());
-            this.ae().a($$4);
-         }
-
-         int $$5 = Math.max(2, this.n.m.f().c());
-         if ($$5 != this.t) {
-            l.info("Changing simulation distance to {}, from {}", $$5, this.t);
-            this.ae().b($$5);
-            this.t = $$5;
-         }
-      }
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.n.aM().b($$0);
-   }
-
-   private void a() {
-      for (amj $$0 : this.ae().t()) {
-         $$0.a(arf.l);
-      }
-   }
-
-   @Override
-   public boolean k() {
-      return true;
-   }
-
-   @Override
-   public boolean W_() {
-      return true;
-   }
-
-   @Override
-   public File z() {
-      return this.n.p;
-   }
-
-   @Override
-   public boolean l() {
-      return false;
-   }
-
-   @Override
-   public int m() {
-      return 0;
-   }
-
-   @Override
-   public boolean n() {
-      return false;
-   }
-
-   @Override
-   public void a(o $$0) {
-      this.n.b($$0);
-   }
-
-   @Override
-   public ab a(ab $$0) {
-      $$0.a("Type", "Integrated Server (map_client.txt)");
-      $$0.a("Is Modded", () -> this.M().b());
-      $$0.a("Launched Version", this.n::h);
-      return $$0;
-   }
-
-   @Override
-   public atp M() {
-      return eti.e().a(super.M());
-   }
-
-   @Override
-   public boolean a(@Nullable csc $$0, boolean $$1, int $$2) {
-      try {
-         this.n.aQ();
-         this.n.v().a().thenAcceptAsync($$0x -> $$0x.ifPresent($$0xx -> {
-               flp $$1x = this.n.I();
-               if ($$1x != null) {
-                  $$1x.a($$0xx);
+            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
+               Pair<Predicate<dip>, gfp> $$5 = this.g.get($$4);
+               if (((Predicate)$$5.getLeft()).test($$0)) {
+                  $$3.set($$4);
                }
-            }), this.n);
-         this.af().a(null, $$2);
-         l.info("Started serving on {}", $$2);
-         this.p = $$2;
-         this.r = new ggb(this.ac(), $$2 + "");
-         this.r.start();
-         this.q = $$0;
-         this.ae().b($$1);
-         int $$3 = this.c(this.n.s.fS());
-         this.n.s.a($$3);
+            }
 
-         for (amj $$4 : this.ae().t()) {
-            this.aE().a($$4);
+            this.h.put($$0, $$3);
          }
 
-         return true;
-      } catch (IOException var7) {
-         return false;
-      }
-   }
+         List<ftf> $$6 = Lists.newArrayList();
+         long $$7 = $$2.g();
 
-   @Override
-   public void t() {
-      super.t();
-      if (this.r != null) {
-         this.r.interrupt();
-         this.r = null;
-      }
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.h(() -> {
-         for (amj $$1 : Lists.newArrayList(this.ae().t())) {
-            if (!$$1.cw().equals(this.s)) {
-               this.ae().c($$1);
+         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
+            if ($$3.get($$8)) {
+               $$6.addAll(((gfp)this.g.get($$8).getRight()).a($$0, $$1, auf.a($$7)));
             }
          }
-      });
-      super.a($$0);
-      if (this.r != null) {
-         this.r.interrupt();
-         this.r = null;
+
+         return $$6;
       }
    }
 
    @Override
-   public boolean p() {
-      return this.p > -1;
+   public boolean a() {
+      return this.a;
    }
 
    @Override
-   public int O() {
-      return this.p;
+   public boolean b() {
+      return this.b;
    }
 
    @Override
-   public void a(csc $$0) {
-      super.a($$0);
-      this.q = null;
+   public boolean c() {
+      return this.c;
    }
 
    @Override
-   public boolean o() {
-      return true;
+   public boolean d() {
+      return false;
    }
 
    @Override
-   public int i() {
-      return 2;
+   public gdo e() {
+      return this.d;
    }
 
    @Override
-   public int j() {
-      return 2;
-   }
-
-   public void a(UUID $$0) {
-      this.s = $$0;
+   public ftr f() {
+      return this.e;
    }
 
    @Override
-   public boolean a(GameProfile $$0) {
-      return this.P() != null && $$0.getName().equalsIgnoreCase(this.P().getName());
+   public ftp g() {
+      return this.f;
    }
 
-   @Override
-   public int b(int $$0) {
-      return (int)(this.n.m.g().c() * (double)$$0);
-   }
+   public static class a {
+      private final List<Pair<Predicate<dip>, gfp>> a = Lists.newArrayList();
 
-   @Override
-   public boolean aW() {
-      return this.n.m.af;
-   }
+      public void a(Predicate<dip> $$0, gfp $$1) {
+         this.a.add(Pair.of($$0, $$1));
+      }
 
-   @Nullable
-   @Override
-   public csc bb() {
-      return this.p() ? (csc)MoreObjects.firstNonNull(this.q, this.k.m()) : null;
+      public gfp a() {
+         return new gfy(this.a);
+      }
    }
 }

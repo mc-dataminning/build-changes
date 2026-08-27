@@ -1,104 +1,166 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public class dot extends dpb<dos> {
-   public dot(Codec<dos> $$0) {
-      super($$0);
-   }
+public record dot(ir<dlz> b) {
+   public static final MapCodec<dot> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(it.b(kc.aM, Lifecycle.stable(), dlz.a).fieldOf("dimensions").forGetter(dot::d)).apply($$0, $$0.stable(dot::new))
+   );
+   private static final Set<ags<dlz>> c = ImmutableSet.of(dlz.b, dlz.c, dlz.d);
+   private static final int d = c.size();
 
-   public boolean a(dos $$0, atw $$1) {
-      return $$1.i() <= $$0.l;
-   }
-
-   public boolean a(dow $$0, dos $$1, djj $$2, Function<hx, ig<ctd>> $$3, atw $$4, dmi $$5, crm $$6, dji $$7) {
-      int $$8 = (this.d() * 2 - 1) * 16;
-      double $$9 = (double)$$6.a($$4.a(16));
-      int $$10 = $$1.e.a($$4, $$0);
-      double $$11 = (double)$$6.b($$4.a(16));
-      float $$12 = $$4.i() * (float) (Math.PI * 2);
-      float $$13 = $$1.b.a($$4);
-      double $$14 = (double)$$1.f.a($$4);
-      float $$15 = $$1.c.c.a($$4);
-      int $$16 = (int)((float)$$8 * $$1.c.b.a($$4));
-      int $$17 = 0;
-      this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$9, (double)$$10, $$11, $$15, $$12, $$13, 0, $$16, $$14, $$7);
-      return true;
-   }
-
-   private void a(
-      dow $$0,
-      dos $$1,
-      djj $$2,
-      Function<hx, ig<ctd>> $$3,
-      long $$4,
-      dmi $$5,
-      double $$6,
-      double $$7,
-      double $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      int $$12,
-      int $$13,
-      double $$14,
-      dji $$15
-   ) {
-      atw $$16 = atw.a($$4);
-      float[] $$17 = this.a($$0, $$1, $$16);
-      float $$18 = 0.0F;
-      float $$19 = 0.0F;
-
-      for (int $$20 = $$12; $$20 < $$13; $$20++) {
-         double $$21 = 1.5 + (double)(atq.a((float)$$20 * (float) Math.PI / (float)$$13) * $$9);
-         double $$22 = $$21 * $$14;
-         $$21 *= (double)$$1.c.e.a($$16);
-         $$22 = this.a($$1, $$16, $$22, (float)$$13, (float)$$20);
-         float $$23 = atq.b($$11);
-         float $$24 = atq.a($$11);
-         $$6 += (double)(atq.b($$10) * $$23);
-         $$7 += (double)$$24;
-         $$8 += (double)(atq.a($$10) * $$23);
-         $$11 *= 0.7F;
-         $$11 += $$19 * 0.05F;
-         $$10 += $$18 * 0.05F;
-         $$19 *= 0.8F;
-         $$18 *= 0.5F;
-         $$19 += ($$16.i() - $$16.i()) * $$16.i() * 2.0F;
-         $$18 += ($$16.i() - $$16.i()) * $$16.i() * 4.0F;
-         if ($$16.a(4) != 0) {
-            if (!a($$2.f(), $$6, $$8, $$20, $$13, $$9)) {
-               return;
-            }
-
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$21, $$22, $$15, ($$1x, $$2x, $$3x, $$4x, $$5x) -> this.a($$1x, $$17, $$2x, $$3x, $$4x, $$5x));
-         }
+   public dot(ir<dlz> b) {
+      dlz $$1 = b.a(dlz.b);
+      if ($$1 == null) {
+         throw new IllegalStateException("Overworld settings missing");
+      } else {
+         this.b = b;
       }
    }
 
-   private float[] a(dow $$0, dos $$1, atw $$2) {
-      int $$3 = $$0.b();
-      float[] $$4 = new float[$$3];
-      float $$5 = 1.0F;
+   public static Stream<ags<dlz>> a(Stream<ags<dlz>> $$0) {
+      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
+   }
 
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         if ($$6 == 0 || $$2.a($$1.c.d) == 0) {
-            $$5 = 1.0F + $$2.i() * $$2.i();
+   public dot a(is $$0, dkm $$1) {
+      ir<dly> $$2 = $$0.d(kc.ax);
+      ir<dlz> $$3 = a($$2, this.b, $$1);
+      return new dot($$3);
+   }
+
+   public static ir<dlz> a(ir<dly> $$0, ir<dlz> $$1, dkm $$2) {
+      dlz $$3 = $$1.a(dlz.b);
+      ie<dly> $$4 = (ie<dly>)($$3 == null ? $$0.f(dlw.a) : $$3.a());
+      return a($$1, $$4, $$2);
+   }
+
+   public static ir<dlz> a(ir<dlz> $$0, ie<dly> $$1, dkm $$2) {
+      ja<dlz> $$3 = new in<>(kc.aM, Lifecycle.experimental());
+      $$3.a(dlz.b, new dlz($$1, $$2), Lifecycle.stable());
+
+      for (Entry<ags<dlz>, dlz> $$4 : $$0.g()) {
+         ags<dlz> $$5 = $$4.getKey();
+         if ($$5 != dlz.b) {
+            $$3.a($$5, $$4.getValue(), $$0.e($$4.getValue()));
          }
-
-         $$4[$$6] = $$5 * $$5;
       }
 
-      return $$4;
+      return $$3.l();
    }
 
-   private double a(dos $$0, atw $$1, double $$2, float $$3, float $$4) {
-      float $$5 = 1.0F - atq.e(0.5F - $$4 / $$3) * 2.0F;
-      float $$6 = $$0.c.f + $$0.c.g * $$5;
-      return (double)$$6 * $$2 * (double)atq.b($$1, 0.75F, 1.0F);
+   public dkm a() {
+      dlz $$0 = this.b.a(dlz.b);
+      if ($$0 == null) {
+         throw new IllegalStateException("Overworld settings missing");
+      } else {
+         return $$0.b();
+      }
    }
 
-   private boolean a(dow $$0, float[] $$1, double $$2, double $$3, double $$4, int $$5) {
-      int $$6 = $$5 - $$0.a();
-      return ($$2 * $$2 + $$4 * $$4) * (double)$$1[$$6 - 1] + $$3 * $$3 / 6.0 >= 1.0;
+   public Optional<dlz> a(ags<dlz> $$0) {
+      return this.b.d($$0);
+   }
+
+   public ImmutableSet<ags<csy>> b() {
+      return this.d().g().stream().map(Entry::getKey).map(kc::a).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public boolean c() {
+      return this.a() instanceof dnp;
+   }
+
+   private static efy.a b(ir<dlz> $$0) {
+      return $$0.d(dlz.b).map($$0x -> {
+         dkm $$1 = $$0x.b();
+         if ($$1 instanceof dnp) {
+            return efy.a.c;
+         } else {
+            return $$1 instanceof dnt ? efy.a.b : efy.a.a;
+         }
+      }).orElse(efy.a.a);
+   }
+
+   static Lifecycle a(ags<dlz> $$0, dlz $$1) {
+      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
+   }
+
+   private static boolean b(ags<dlz> $$0, dlz $$1) {
+      if ($$0 == dlz.b) {
+         return a($$1);
+      } else if ($$0 == dlz.c) {
+         return b($$1);
+      } else {
+         return $$0 == dlz.d ? c($$1) : false;
+      }
+   }
+
+   private static boolean a(dlz $$0) {
+      ie<dly> $$1 = $$0.a();
+      if (!$$1.a(dlw.a) && !$$1.a(dlw.d)) {
+         return false;
+      } else {
+         if ($$0.b().c() instanceof cuk $$2 && !$$2.a(cum.b)) {
+            return false;
+         }
+
+         return true;
+      }
+   }
+
+   private static boolean b(dlz $$0) {
+      return $$0.a().a(dlw.b) && $$0.b() instanceof dob $$1 && $$1.a(dod.f) && $$1.c() instanceof cuk $$2 && $$2.a(cum.a);
+   }
+
+   private static boolean c(dlz $$0) {
+      return $$0.a().a(dlw.c) && $$0.b() instanceof dob $$1 && $$1.a(dod.g) && $$1.c() instanceof cuo;
+   }
+
+   public dot.b a(ir<dlz> $$0) {
+      Stream<ags<dlz>> $$1 = Stream.concat($$0.f().stream(), this.b.f().stream()).distinct();
+
+      record a(ags<dlz> a, dlz b) {
+
+         Lifecycle c() {
+            return dot.a(this.a, this.b);
+         }
+      }
+
+      List<a> $$2 = new ArrayList<>();
+      a($$1).forEach($$2x -> $$0.d($$2x).or(() -> this.b.d($$2x)).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
+      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
+      ja<dlz> $$4 = new in<>(kc.aM, $$3);
+      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
+      ir<dlz> $$5 = $$4.l();
+      efy.a $$6 = b($$5);
+      return new dot.b($$5.l(), $$6);
+   }
+
+   public ir<dlz> d() {
+      return this.b;
+   }
+
+   public static record b(ir<dlz> a, efy.a b) {
+      public Lifecycle a() {
+         return this.a.d();
+      }
+
+      public is.b b() {
+         return new is.c(List.of(this.a)).d();
+      }
+
+      public ir<dlz> c() {
+         return this.a;
+      }
+
+      public efy.a d() {
+         return this.b;
+      }
    }
 }

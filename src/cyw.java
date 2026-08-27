@@ -1,65 +1,109 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cyw extends cvf implements dcf {
+public class cyw extends cvz {
    public static final MapCodec<cyw> a = b(cyw::new);
-   private static final die c = did.C;
-   protected static final eks b = cvf.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+   public static final djp b = djf.aQ;
+   protected static final elu c = cvz.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
+   public static final int d = 7;
 
    @Override
    public MapCodec<cyw> a() {
       return a;
    }
 
-   protected cyw(dhm.d $$0) {
+   protected cyw(dio.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(c);
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$1 == ia.b && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public ecx c_(dhn $$0) {
-      return $$0.c(c) ? ecy.c.a(false) : super.c_($$0);
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      dip $$3 = $$1.a_($$2.c());
+      return !$$3.e() || $$3.b() instanceof cyy || $$3.b() instanceof dih;
    }
 
-   @Nullable
    @Override
-   public dhn a(cnw $$0) {
-      dhn $$1 = super.a($$0);
-      if ($$1 != null) {
-         ecx $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == ecy.c));
-      } else {
-         return null;
+   public dip a(coq $$0) {
+      return !this.o().a((ctb)$$0.q(), $$0.a()) ? cwb.j.o() : super.a($$0);
+   }
+
+   @Override
+   public boolean g_(dip $$0) {
+      return true;
+   }
+
+   @Override
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return c;
+   }
+
+   @Override
+   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
+      if (!$$0.a($$1, $$2)) {
+         a(null, $$0, $$1, $$2);
       }
    }
 
    @Override
-   public boolean a(dhn $$0, csi $$1, hx $$2) {
-      hx $$3 = $$2.c();
-      dhn $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, ib.a);
-   }
-
-   @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return b;
-   }
-
-   @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      if ($$1 == ib.b && !this.a($$0, $$3, $$4)) {
-         return cvh.a.o();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, ecy.c, ecy.c.a($$3));
+   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
+      int $$4 = $$0.c(b);
+      if (!a((ctb)$$1, $$2) && !$$1.q($$2.c())) {
+         if ($$4 > 0) {
+            $$1.a($$2, $$0.a(b, Integer.valueOf($$4 - 1)), 2);
+         } else if (!a((cse)$$1, $$2)) {
+            a(null, $$0, $$1, $$2);
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else if ($$4 < 7) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf(7)), 2);
       }
+   }
+
+   @Override
+   public void a(csy $$0, dip $$1, hv $$2, blf $$3, float $$4) {
+      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof blv && ($$3 instanceof cer || $$0.Y().b(csu.c)) && $$3.dg() * $$3.dg() * $$3.dh() > 0.512F) {
+         a($$3, $$1, $$0, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static void a(@Nullable blf $$0, dip $$1, csy $$2, hv $$3) {
+      dip $$4 = a($$1, cwb.j.o(), $$2, $$3);
+      $$2.b($$3, $$4);
+      $$2.a(dmz.c, $$3, dmz.a.a($$0, $$4));
+   }
+
+   private static boolean a(cse $$0, hv $$1) {
+      return $$0.a_($$1.c()).a(arr.cp);
+   }
+
+   private static boolean a(ctb $$0, hv $$1) {
+      for (hv $$2 : hv.a($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
+         if ($$0.b_($$2).a(arw.a)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public boolean a(dip $$0, cse $$1, hv $$2, eep $$3) {
+      return false;
    }
 }

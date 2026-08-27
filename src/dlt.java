@@ -1,37 +1,58 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
+import javax.annotation.Nullable;
 
-public class dlt implements dmb {
-   public static final Codec<dlt> a = RecordCodecBuilder.create($$0 -> $$0.group(hx.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, dlt::new));
-   final hx c;
+public class dlt {
+   private static final Int2ObjectMap<dlt> d = new Int2ObjectOpenHashMap();
+   public static final dlt a = a(new dlt(1, $$0 -> new ath(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
+   public static final dlt b = a(new dlt(2, $$0 -> new ath(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0))));
+   public static final dlt c = a(new dlt(3, $$0 -> $$0, $$0 -> $$0));
+   private final int e;
+   private final dlt.a<InputStream> f;
+   private final dlt.a<OutputStream> g;
 
-   public dlt(hx $$0) {
-      this.c = $$0;
+   private dlt(int $$0, dlt.a<InputStream> $$1, dlt.a<OutputStream> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public Optional<ejz> a(csf $$0) {
-      return Optional.of(ejz.b(this.c));
+   private static dlt a(dlt $$0) {
+      d.put($$0.e, $$0);
+      return $$0;
    }
 
-   @Override
-   public dmc<?> a() {
-      return dmc.a;
+   @Nullable
+   public static dlt a(int $$0) {
+      return (dlt)d.get($$0);
    }
 
-   public static class a implements dmc<dlt> {
-      public dlt a(ty $$0) {
-         return new dlt($$0.e());
-      }
+   public static boolean b(int $$0) {
+      return d.containsKey($$0);
+   }
 
-      public void a(ty $$0, dlt $$1) {
-         $$0.a($$1.c);
-      }
+   public int a() {
+      return this.e;
+   }
 
-      @Override
-      public Codec<dlt> a() {
-         return dlt.a;
-      }
+   public OutputStream a(OutputStream $$0) throws IOException {
+      return this.g.wrap($$0);
+   }
+
+   public InputStream a(InputStream $$0) throws IOException {
+      return this.f.wrap($$0);
+   }
+
+   @FunctionalInterface
+   interface a<O> {
+      O wrap(O var1) throws IOException;
    }
 }

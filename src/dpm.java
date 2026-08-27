@@ -1,20 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpm extends dqa<dsl> {
-   public dpm(Codec<dsl> $$0) {
+class dpm extends dpq {
+   private final ij<edy> e;
+   public static final Codec<dpm> a = RecordCodecBuilder.create($$0 -> a($$0).and(it.a(kc.y).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dpm::new));
+
+   public dpm(iz $$0, ij<edy> $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public boolean a(dqc<dsl> $$0) {
-      csz $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      atw $$3 = $$0.d();
-      if ($$1.t($$2) && $$1.a_($$2.d()).a(cvh.fz)) {
-         cwk.a($$1, $$2, $$3, 8);
-         return true;
-      } else {
-         return false;
-      }
+   protected boolean a(dip $$0) {
+      return $$0.u().a(this.e);
+   }
+
+   @Override
+   public dpg<?> a() {
+      return dpg.c;
    }
 }

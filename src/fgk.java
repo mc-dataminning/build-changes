@@ -1,112 +1,78 @@
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.mojang.authlib.GameProfile;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public class fgk implements fgf, fgg {
-   private static final agm a = new agm("spectator/teleport_to_team");
-   private static final uv b = uv.c("spectatorMenu.team_teleport");
-   private static final uv c = uv.c("spectatorMenu.team_teleport.prompt");
-   private final List<fgg> d;
+public class fgk {
+   private final euk a;
+   private final Set<UUID> b = Sets.newHashSet();
+   private final UserApiService c;
+   private final Map<String, UUID> d = Maps.newHashMap();
+   private boolean e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
 
-   public fgk() {
-      eti $$0 = eti.N();
-      this.d = a($$0, $$0.r.J());
+   public fgk(euk $$0, UserApiService $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   private static List<fgg> a(eti $$0, eky $$1) {
-      return $$1.g().stream().flatMap($$1x -> fgk.a.a($$0, $$1x).stream()).toList();
+   public void a(UUID $$0) {
+      this.b.add($$0);
    }
 
-   @Override
-   public List<fgg> a() {
-      return this.d;
+   public void b(UUID $$0) {
+      this.b.remove($$0);
    }
 
-   @Override
-   public uv b() {
-      return c;
+   public boolean c(UUID $$0) {
+      return this.d($$0) || this.e($$0);
    }
 
-   @Override
-   public void a(fge $$0) {
-      $$0.a(this);
+   public boolean d(UUID $$0) {
+      return this.b.contains($$0);
    }
 
-   @Override
-   public uv aR_() {
-      return b;
+   public void a() {
+      this.e = true;
+      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.g());
    }
 
-   @Override
-   public void a(eut $$0, float $$1, int $$2) {
-      $$0.a(a, 0, 0, 16, 16);
+   public void b() {
+      this.e = false;
    }
 
-   @Override
-   public boolean aS_() {
-      return !this.d.isEmpty();
-   }
-
-   static class a implements fgg {
-      private final ekw a;
-      private final Supplier<gcz> b;
-      private final List<flx> c;
-
-      private a(ekw $$0, List<flx> $$1, Supplier<gcz> $$2) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
+   public boolean e(UUID $$0) {
+      if (!this.e) {
+         return false;
+      } else {
+         this.f.join();
+         return this.c.isBlockedPlayer($$0);
       }
+   }
 
-      public static Optional<fgg> a(eti $$0, ekw $$1) {
-         List<flx> $$2 = new ArrayList<>();
+   public Set<UUID> c() {
+      return this.b;
+   }
 
-         for (String $$3 : $$1.g()) {
-            flx $$4 = $$0.I().a($$3);
-            if ($$4 != null && $$4.e() != csc.d) {
-               $$2.add($$4);
-            }
-         }
+   public UUID a(String $$0) {
+      return this.d.getOrDefault($$0, ac.d);
+   }
 
-         if ($$2.isEmpty()) {
-            return Optional.empty();
-         } else {
-            GameProfile $$5 = $$2.get(atw.a().a($$2.size())).a();
-            Supplier<gcz> $$6 = $$0.ak().a($$5);
-            return Optional.of(new fgk.a($$1, $$2, $$6));
-         }
+   public void a(fnc $$0) {
+      GameProfile $$1 = $$0.a();
+      this.d.put($$1.getName(), $$1.getId());
+      if (this.a.y instanceof fgm $$2) {
+         $$2.a($$0);
       }
+   }
 
-      @Override
-      public void a(fge $$0) {
-         $$0.a(new fgj(this.c));
-      }
-
-      @Override
-      public uv aR_() {
-         return this.a.c();
-      }
-
-      @Override
-      public void a(eut $$0, float $$1, int $$2) {
-         Integer $$3 = this.a.n().f();
-         if ($$3 != null) {
-            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
-            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
-            float $$6 = (float)($$3 & 0xFF) / 255.0F;
-            $$0.a(1, 1, 15, 15, atq.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
-         }
-
-         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
-         ewd.a($$0, this.b.get(), 2, 2, 12);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      }
-
-      @Override
-      public boolean aS_() {
-         return true;
+   public void f(UUID $$0) {
+      if (this.a.y instanceof fgm $$1) {
+         $$1.a($$0);
       }
    }
 }

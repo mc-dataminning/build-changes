@@ -1,161 +1,59 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.UUID;
 
-public class fge {
-   static final agm b = new agm("spectator/close");
-   static final agm c = new agm("spectator/scroll_left");
-   static final agm d = new agm("spectator/scroll_right");
-   private static final fgg e = new fge.a();
-   private static final fgg f = new fge.b(-1, true);
-   private static final fgg g = new fge.b(1, true);
-   private static final fgg h = new fge.b(1, false);
-   private static final int i = 8;
-   static final uv j = uv.c("spectatorMenu.close");
-   static final uv k = uv.c("spectatorMenu.previous_page");
-   static final uv l = uv.c("spectatorMenu.next_page");
-   public static final fgg a = new fgg() {
-      @Override
-      public void a(fge $$0) {
-      }
+public class fge extends fga<fnr.a> {
+   private static final int r = 120;
+   private static final vb t = vb.c("gui.abuseReport.name.title");
+   private final ezv u = ezv.d().a(8);
+   private ewz v;
+   private ewh w;
 
-      @Override
-      public uv aR_() {
-         return uu.a;
-      }
-
-      @Override
-      public void a(eut $$0, float $$1, int $$2) {
-      }
-
-      @Override
-      public boolean aS_() {
-         return false;
-      }
-   };
-   private final fgh m;
-   private fgf n;
-   private int o = -1;
-   int p;
-
-   public fge(fgh $$0) {
-      this.n = new fgd();
-      this.m = $$0;
+   private fge(fcc $$0, fnw $$1, fnr.a $$2) {
+      super(t, $$0, $$1, $$2);
    }
 
-   public fgg a(int $$0) {
-      int $$1 = $$0 + this.p * 6;
-      if (this.p > 0 && $$0 == 0) {
-         return f;
-      } else if ($$0 == 7) {
-         return $$1 < this.n.a().size() ? g : h;
-      } else if ($$0 == 8) {
-         return e;
-      } else {
-         return $$1 >= 0 && $$1 < this.n.a().size() ? (fgg)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
-      }
+   public fge(fcc $$0, fnw $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new fnr.a($$2, $$3, $$1.a().b()));
    }
 
-   public List<fgg> a() {
-      List<fgg> $$0 = Lists.newArrayList();
-
-      for (int $$1 = 0; $$1 <= 8; $$1++) {
-         $$0.add(this.a($$1));
-      }
-
-      return $$0;
+   public fge(fcc $$0, fnw $$1, fnr $$2) {
+      this($$0, $$1, new fnr.a($$2, $$1.a().b()));
    }
 
-   public fgg b() {
-      return this.a(this.o);
+   @Override
+   protected void aP_() {
+      this.u.c().b();
+      this.u.a(new exo(this.e, this.i));
+      vb $$0 = vb.b(this.q.e().a()).a(n.o);
+      this.u.a(new exo(vb.a("gui.abuseReport.name.reporting", $$0), this.i), $$0x -> $$0x.a().a(0, 8));
+      this.v = this.a(280, 9 * 8, $$0x -> {
+         this.q.a($$0x);
+         this.C();
+      });
+      this.u.a(ezn.a(this.i, this.v, k, $$0x -> $$0x.e(12)));
+      ezv $$1 = this.u.a(ezv.e().a(8));
+      $$1.a(ewh.a(va.k, $$0x -> this.aF_()).a(120).a());
+      this.w = $$1.a(ewh.a(a, $$0x -> this.l()).a(120).a());
+      this.C();
+      this.u.a($$1x -> {
+         ewf var10000 = this.d($$1x);
+      });
+      this.c();
    }
 
-   public fgf c() {
-      return this.n;
+   @Override
+   protected void c() {
+      this.u.a();
+      ezp.a(this.u, this.s());
    }
 
-   public void b(int $$0) {
-      fgg $$1 = this.a($$0);
-      if ($$1 != a) {
-         if (this.o == $$0 && $$1.aS_()) {
-            $$1.a(this);
-         } else {
-            this.o = $$0;
-         }
-      }
+   private void C() {
+      fns.b $$0 = this.q.c();
+      this.w.i = $$0 == null;
+      this.w.a(x.a($$0, fns.b::a));
    }
 
-   public void d() {
-      this.m.a(this);
-   }
-
-   public int e() {
-      return this.o;
-   }
-
-   public void a(fgf $$0) {
-      this.n = $$0;
-      this.o = -1;
-      this.p = 0;
-   }
-
-   public fgi f() {
-      return new fgi(this.a(), this.o);
-   }
-
-   static class a implements fgg {
-      @Override
-      public void a(fge $$0) {
-         $$0.d();
-      }
-
-      @Override
-      public uv aR_() {
-         return fge.j;
-      }
-
-      @Override
-      public void a(eut $$0, float $$1, int $$2) {
-         $$0.a(fge.b, 0, 0, 16, 16);
-      }
-
-      @Override
-      public boolean aS_() {
-         return true;
-      }
-   }
-
-   static class b implements fgg {
-      private final int a;
-      private final boolean b;
-
-      public b(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(fge $$0) {
-         $$0.p = $$0.p + this.a;
-      }
-
-      @Override
-      public uv aR_() {
-         return this.a < 0 ? fge.k : fge.l;
-      }
-
-      @Override
-      public void a(eut $$0, float $$1, int $$2) {
-         if (this.a < 0) {
-            $$0.a(fge.c, 0, 0, 16, 16);
-         } else {
-            $$0.a(fge.d, 0, 0, 16, 16);
-         }
-      }
-
-      @Override
-      public boolean aS_() {
-         return this.b;
-      }
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.v.b($$0, $$1, $$2);
    }
 }

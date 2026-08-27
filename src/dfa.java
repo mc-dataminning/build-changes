@@ -1,91 +1,35 @@
-public class dfa {
-   public static final agl<dez> a = a("base");
-   public static final agl<dez> b = a("square_bottom_left");
-   public static final agl<dez> c = a("square_bottom_right");
-   public static final agl<dez> d = a("square_top_left");
-   public static final agl<dez> e = a("square_top_right");
-   public static final agl<dez> f = a("stripe_bottom");
-   public static final agl<dez> g = a("stripe_top");
-   public static final agl<dez> h = a("stripe_left");
-   public static final agl<dez> i = a("stripe_right");
-   public static final agl<dez> j = a("stripe_center");
-   public static final agl<dez> k = a("stripe_middle");
-   public static final agl<dez> l = a("stripe_downright");
-   public static final agl<dez> m = a("stripe_downleft");
-   public static final agl<dez> n = a("small_stripes");
-   public static final agl<dez> o = a("cross");
-   public static final agl<dez> p = a("straight_cross");
-   public static final agl<dez> q = a("triangle_bottom");
-   public static final agl<dez> r = a("triangle_top");
-   public static final agl<dez> s = a("triangles_bottom");
-   public static final agl<dez> t = a("triangles_top");
-   public static final agl<dez> u = a("diagonal_left");
-   public static final agl<dez> v = a("diagonal_up_right");
-   public static final agl<dez> w = a("diagonal_up_left");
-   public static final agl<dez> x = a("diagonal_right");
-   public static final agl<dez> y = a("circle");
-   public static final agl<dez> z = a("rhombus");
-   public static final agl<dez> A = a("half_vertical");
-   public static final agl<dez> B = a("half_horizontal");
-   public static final agl<dez> C = a("half_vertical_right");
-   public static final agl<dez> D = a("half_horizontal_bottom");
-   public static final agl<dez> E = a("border");
-   public static final agl<dez> F = a("curly_border");
-   public static final agl<dez> G = a("gradient");
-   public static final agl<dez> H = a("gradient_up");
-   public static final agl<dez> I = a("bricks");
-   public static final agl<dez> J = a("globe");
-   public static final agl<dez> K = a("creeper");
-   public static final agl<dez> L = a("skull");
-   public static final agl<dez> M = a("flower");
-   public static final agl<dez> N = a("mojang");
-   public static final agl<dez> O = a("piglin");
+import com.mojang.serialization.MapCodec;
 
-   private static agl<dez> a(String $$0) {
-      return agl.a(kd.c, new agm($$0));
+public class dfa extends cwi {
+   public static final MapCodec<dfa> a = b(dfa::new);
+   protected static final elu b = cvz.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
+
+   @Override
+   public MapCodec<dfa> a() {
+      return a;
    }
 
-   public static dez a(is<dez> $$0) {
-      is.a($$0, a, new dez("b"));
-      is.a($$0, b, new dez("bl"));
-      is.a($$0, c, new dez("br"));
-      is.a($$0, d, new dez("tl"));
-      is.a($$0, e, new dez("tr"));
-      is.a($$0, f, new dez("bs"));
-      is.a($$0, g, new dez("ts"));
-      is.a($$0, h, new dez("ls"));
-      is.a($$0, i, new dez("rs"));
-      is.a($$0, j, new dez("cs"));
-      is.a($$0, k, new dez("ms"));
-      is.a($$0, l, new dez("drs"));
-      is.a($$0, m, new dez("dls"));
-      is.a($$0, n, new dez("ss"));
-      is.a($$0, o, new dez("cr"));
-      is.a($$0, p, new dez("sc"));
-      is.a($$0, q, new dez("bt"));
-      is.a($$0, r, new dez("tt"));
-      is.a($$0, s, new dez("bts"));
-      is.a($$0, t, new dez("tts"));
-      is.a($$0, u, new dez("ld"));
-      is.a($$0, v, new dez("rd"));
-      is.a($$0, w, new dez("lud"));
-      is.a($$0, x, new dez("rud"));
-      is.a($$0, y, new dez("mc"));
-      is.a($$0, z, new dez("mr"));
-      is.a($$0, A, new dez("vh"));
-      is.a($$0, B, new dez("hh"));
-      is.a($$0, C, new dez("vhr"));
-      is.a($$0, D, new dez("hhb"));
-      is.a($$0, E, new dez("bo"));
-      is.a($$0, F, new dez("cbo"));
-      is.a($$0, G, new dez("gra"));
-      is.a($$0, H, new dez("gru"));
-      is.a($$0, I, new dez("bri"));
-      is.a($$0, J, new dez("glb"));
-      is.a($$0, K, new dez("cre"));
-      is.a($$0, L, new dez("sku"));
-      is.a($$0, M, new dez("flo"));
-      is.a($$0, N, new dez("moj"));
-      return is.a($$0, O, new dez("pig"));
+   protected dfa(dio.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, blf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof amp && $$3 instanceof cgl) {
+         $$1.a(new hv($$2), true, $$3);
+      }
+   }
+
+   @Override
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean b(dip $$0, cse $$1, hv $$2) {
+      edz $$3 = $$1.b_($$2);
+      edz $$4 = $$1.b_($$2.c());
+      return ($$3.a() == eea.c || $$0.b() instanceof czw) && $$4.a() == eea.a;
    }
 }

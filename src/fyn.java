@@ -1,40 +1,23 @@
-public class fyn<T extends bkv & ceo> extends fwb<T> {
-   private static final float a = 12.25F;
-   private final fxa f;
-   private final float g;
-   private final boolean h;
+public class fyn extends fxn<cay> {
+   private static final agt a = new agt("textures/entity/lead_knot.png");
+   private final fjp<cay> f;
 
-   public fyn(fwc.a $$0, float $$1, boolean $$2) {
+   public fyn(fxo.a $$0) {
       super($$0);
-      this.f = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+      this.f = new fjp<>($$0.a(flx.at));
    }
 
-   public fyn(fwc.a $$0) {
-      this($$0, 1.0F, false);
+   public void a(cay $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      eph $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, gdf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected int a(T $$0, hx $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
-      if ($$0.ah >= 2 || !(this.c.b.g().f($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.g, this.g, this.g);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         this.f.a($$0.q(), cll.h, $$5, gbq.d, $$3, $$4, $$0.dN(), $$0.aj());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public agm a(bkv $$0) {
-      return gby.e;
+   public agt a(cay $$0) {
+      return a;
    }
 }

@@ -1,53 +1,50 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class esd extends esi {
-   private static final Logger b = LogUtils.getLogger();
-   private static final uv c = uv.c("mco.configure.world.closing");
-   private final epi d;
-   private final eqr e;
+public class esd extends gjl {
+   private static final vb a = vb.c("mco.account.privacy.information");
+   private static final int b = 15;
+   private final ezv c = ezv.d();
+   private final fcc v;
+   @Nullable
+   private exb w;
 
-   public esd(epi $$0, eqr $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public esd(fcc $$0) {
+      super(euc.a);
+      this.v = $$0;
    }
 
    @Override
-   public void run() {
-      eor $$0 = eor.a();
+   public void aP_() {
+      this.c.a(15).c().b();
+      this.w = new exb(a, this.i).b(true);
+      this.c.a(this.w);
+      ezv $$0 = this.c.a(ezv.e().a(8));
+      vb $$1 = vb.c("mco.account.privacy.info.button");
+      $$0.a(ewh.a($$1, fau.b(this, "https://aka.ms/MinecraftGDPR")).a());
+      $$0.a(ewh.a(va.k, $$0x -> this.aF_()).a());
+      this.c.a($$1x -> {
+         ewf var10000 = this.d($$1x);
+      });
+      this.c();
+   }
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
+   @Override
+   public void aF_() {
+      this.f.a(this.v);
+   }
 
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.e();
-               this.d.e = epi.c.a;
-               a(this.e);
-               break;
-            }
-         } catch (eqf var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to close server", var5);
-            this.a(var5);
-         }
+   @Override
+   protected void c() {
+      if (this.w != null) {
+         this.w.j(this.g - 15);
       }
+
+      this.c.a();
+      ezp.a(this.c, this.s());
    }
 
    @Override
-   public uv a() {
-      return c;
+   public vb h() {
+      return a;
    }
 }

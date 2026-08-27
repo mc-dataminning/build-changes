@@ -1,65 +1,54 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class boz {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private static final int d = 4;
-
-   public static bnd<blu> a(float $$0) {
-      Long2LongMap $$1 = new Long2LongOpenHashMap();
-      MutableLong $$2 = new MutableLong(0L);
-      return bqo.a(
-         (Function<bqo.b<blu>, ? extends App<bqo.c<blu>, bqr<blu>>>)($$3 -> $$3.group($$3.c(bum.m), $$3.c(bum.b))
-               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
-                     if ($$4x.W() - $$2.getValue() < 20L) {
-                        return false;
-                     } else {
-                        bwk $$7 = $$4x.x();
-                        Optional<hx> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(bwo.n), $$5.dn(), 48, bwk.b.c);
-                        if (!$$8.isEmpty() && !($$8.get().j($$5.dn()) <= 4.0)) {
-                           MutableInt $$9 = new MutableInt(0);
-                           $$2.setValue($$4x.W() + (long)$$4x.F_().a(20));
-                           Predicate<hx> $$10 = $$3xxx -> {
-                              long $$4xx = $$3xxx.a();
-                              if ($$1.containsKey($$4xx)) {
-                                 return false;
-                              } else if ($$9.incrementAndGet() >= 5) {
-                                 return false;
-                              } else {
-                                 $$1.put($$4xx, $$2.getValue() + 40L);
-                                 return true;
-                              }
-                           };
-                           Set<Pair<ig<bwn>, hx>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(bwo.n), $$10, $$5.dn(), 48, bwk.b.c).collect(Collectors.toSet());
-                           edm $$12 = bmv.a($$5, $$11);
-                           if ($$12 != null && $$12.j()) {
-                              hx $$13 = $$12.l();
-                              Optional<ig<bwn>> $$14 = $$7.c($$13);
-                              if ($$14.isPresent()) {
-                                 $$3x.a(new bup($$13, $$0, 1));
-                                 aco.c($$4x, $$13);
-                              }
-                           } else if ($$9.getValue() < 5) {
-                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
-                           }
-
-                           return true;
-                        } else {
-                           return false;
-                        }
+   public static bnn<cee> a() {
+      return bqz.a(
+         (Function<bqz.b<cee>, ? extends App<bqz.c<cee>, brc<cee>>>)($$0 -> $$0.group($$0.b(bux.c), $$0.b(bux.g))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        id $$6 = $$0.b($$1);
+                        $$3.x()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<blv>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof cee && $$1xxx != $$4)
+                                    .map($$0xxxx -> (cee)$$0xxxx)
+                                    .filter(blv::bx)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, boz::a)
+                           );
+                        return true;
                      }
-                  }))
+               ))
       );
+   }
+
+   private static cee a(cee $$0, cee $$1) {
+      cee $$2;
+      cee $$3;
+      if ($$0.w() > $$1.w()) {
+         $$2 = $$0;
+         $$3 = $$1;
+      } else {
+         $$2 = $$1;
+         $$3 = $$0;
+      }
+
+      $$3.dO().b(bux.c);
+      return $$2;
+   }
+
+   private static boolean a(id $$0, ie<bwz> $$1, cee $$2) {
+      Optional<id> $$3 = $$2.dO().c(bux.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gp().b());
+   }
+
+   private static boolean a(ie<bwz> $$0, ceh $$1) {
+      return $$1.b().test($$0);
    }
 }

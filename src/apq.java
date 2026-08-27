@@ -1,13 +1,55 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 
-public abstract class apq<T> implements apf {
-   @Override
-   public final CompletableFuture<Void> a(apf.a $$0, apl $$1, bfs $$2, bfs $$3, Executor $$4, Executor $$5) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
+public class apq {
+   private final aog a;
+   private final apk<InputStream> b;
+   private final apk<apu> c;
+   @Nullable
+   private apu d;
+
+   public apq(aog $$0, apk<InputStream> $$1, apk<apu> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   protected abstract T b(apl var1, bfs var2);
+   public apq(aog $$0, apk<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = apu.b;
+      this.d = apu.a;
+   }
 
-   protected abstract void a(T var1, apl var2, bfs var3);
+   public aog a() {
+      return this.a;
+   }
+
+   public String b() {
+      return this.a.a();
+   }
+
+   public boolean c() {
+      return this.a.b();
+   }
+
+   public InputStream d() throws IOException {
+      return this.b.get();
+   }
+
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
+   }
+
+   public apu f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
+      }
+
+      return this.d;
+   }
 }

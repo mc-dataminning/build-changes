@@ -1,59 +1,27 @@
-import java.util.List;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public abstract class eql {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class eql extends eqz {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   public eql(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
+   public static eql a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      eql $$2 = new eql();
 
-   public void a(eut $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
-   }
-
-   protected abstract void a(eut var1, int var2, int var3, boolean var4);
-
-   public int a() {
-      return this.c + this.a;
-   }
-
-   public int b() {
-      return this.d + this.b;
-   }
-
-   public abstract void a(int var1);
-
-   public static void a(eut $$0, List<eql> $$1, ghv<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (eql $$7 : $$1) {
-         if ($$2.b() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
-         }
+      try {
+         JsonObject $$3 = $$1.parse($$0).getAsJsonObject();
+         $$2.a = esw.b("address", $$3, null);
+         $$2.b = esw.b("resourcePackUrl", $$3, null);
+         $$2.c = esw.b("resourcePackHash", $$3, null);
+      } catch (Exception var4) {
+         d.error("Could not parse RealmsServerAddress: {}", var4.getMessage());
       }
-   }
 
-   public static void a(ghv<?> $$0, ewa.a<?> $$1, List<eql> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.i().indexOf($$1);
-      if ($$6 > -1) {
-         $$0.a($$6);
-         int $$7 = $$0.o();
-         int $$8 = $$0.h($$6);
-         int $$9 = (int)($$4 - (double)$$7);
-         int $$10 = (int)($$5 - (double)$$8);
-
-         for (eql $$11 : $$2) {
-            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-               $$11.a($$6);
-            }
-         }
-      }
+      return $$2;
    }
 }

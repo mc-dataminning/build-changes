@@ -1,37 +1,49 @@
-import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class dit {
-   private static final atz a = new atz(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
+   private final ctb a;
+   private final hv b;
+   private final boolean c;
+   @Nullable
+   private dip d;
+   @Nullable
+   private dgd e;
+   private boolean f;
 
-   public static int a() {
-      return b;
+   public dit(ctb $$0, hv $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1.i();
+      this.c = $$2;
    }
 
-   public static int a(ib $$0) {
-      return a.a($$0);
+   public dip a() {
+      if (this.d == null && (this.c || this.a.A(this.b))) {
+         this.d = this.a.a_(this.b);
+      }
+
+      return this.d;
    }
 
-   public static int a(float $$0) {
-      return a.b($$0);
+   @Nullable
+   public dgd b() {
+      if (this.e == null && !this.f) {
+         this.e = this.a.c_(this.b);
+         this.f = true;
+      }
+
+      return this.e;
    }
 
-   public static Optional<ib> a(int $$0) {
-      ib $$1 = switch ($$0) {
-         case 0 -> ib.c;
-         case 4 -> ib.f;
-         case 8 -> ib.d;
-         case 12 -> ib.e;
-         default -> null;
-      };
-      return Optional.ofNullable($$1);
+   public ctb c() {
+      return this.a;
    }
 
-   public static float b(int $$0) {
-      return a.b($$0);
+   public hv d() {
+      return this.b;
+   }
+
+   public static Predicate<dit> a(Predicate<dip> $$0) {
+      return $$1 -> $$1 != null && $$0.test($$1.a());
    }
 }

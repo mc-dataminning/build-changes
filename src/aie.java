@@ -1,58 +1,132 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class aie {
-   public static void a(CommandDispatcher<du> $$0) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "localhost";
+   private static final String d = "0.0.0.0";
+   private static final int e = 10000;
+   private static final int f = 100;
+   public static BiMap<String, ags<csy>> a = ImmutableBiMap.of("o", csy.h, "n", csy.i, "e", csy.j);
+   @Nullable
+   private static ahw g;
+   @Nullable
+   private static ahv h;
+
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debugconfig").requires($$0x -> $$0x.c(3)))
-               .then(dv.a("config").then(dv.a("target", eg.c()).executes($$0x -> a((du)$$0x.getSource(), eg.e($$0x, "target"))))))
-            .then(
-               dv.a("unconfig")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("chase")
                   .then(
-                     dv.a("target", fg.a())
-                        .suggests(($$0x, $$1) -> dy.b(a(((du)$$0x.getSource()).l()), $$1))
-                        .executes($$0x -> a((du)$$0x.getSource(), fg.a($$0x, "target")))
-                  )
-            )
+                     ((LiteralArgumentBuilder)dt.a("follow")
+                           .then(
+                              ((RequiredArgumentBuilder)dt.a("host", StringArgumentType.string())
+                                    .executes($$0x -> b((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
+                                 .then(
+                                    dt.a("port", IntegerArgumentType.integer(1, 65535))
+                                       .executes(
+                                          $$0x -> b(
+                                                (ds)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
+                                             )
+                                       )
+                                 )
+                           ))
+                        .executes($$0x -> b((ds)$$0x.getSource(), "localhost", 10000))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)dt.a("lead")
+                        .then(
+                           ((RequiredArgumentBuilder)dt.a("bind_address", StringArgumentType.string())
+                                 .executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
+                              .then(
+                                 dt.a("port", IntegerArgumentType.integer(1024, 65535))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ds)$$0x.getSource(),
+                                             StringArgumentType.getString($$0x, "bind_address"),
+                                             IntegerArgumentType.getInteger($$0x, "port")
+                                          )
+                                    )
+                              )
+                        ))
+                     .executes($$0x -> a((ds)$$0x.getSource(), "0.0.0.0", 10000))
+               ))
+            .then(dt.a("stop").executes($$0x -> a((ds)$$0x.getSource())))
       );
    }
 
-   private static Iterable<String> a(MinecraftServer $$0) {
-      Set<String> $$1 = new HashSet<>();
-
-      for (tw $$2 : $$0.af().e()) {
-         if ($$2.m() instanceof anf $$3) {
-            $$1.add($$3.k().getId().toString());
-         }
+   private static int a(ds $$0) {
+      if (h != null) {
+         h.b();
+         $$0.a(() -> vb.b("You have now stopped chasing"), false);
+         h = null;
       }
 
-      return $$1;
-   }
-
-   private static int a(du $$0, amj $$1) {
-      GameProfile $$2 = $$1.fS();
-      $$1.c.o();
-      $$0.a(() -> uv.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
-      return 1;
-   }
-
-   private static int a(du $$0, UUID $$1) {
-      for (tw $$2 : $$0.l().af().e()) {
-         ue var5 = $$2.m();
-         if (var5 instanceof anf) {
-            anf $$3 = (anf)var5;
-            if ($$3.k().getId().equals($$1)) {
-               $$3.n();
-            }
-         }
+      if (g != null) {
+         g.b();
+         $$0.a(() -> vb.b("You are no longer being chased"), false);
+         g = null;
       }
 
-      $$0.b(uv.b("Can't find player to unconfig"));
       return 0;
+   }
+
+   private static boolean b(ds $$0) {
+      if (g != null) {
+         $$0.b(vb.b("Chase server is already running. Stop it using /chase stop"));
+         return true;
+      } else if (h != null) {
+         $$0.b(vb.b("You are already chasing someone. Stop it using /chase stop"));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static int a(ds $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         g = new ahw($$1, $$2, $$0.l().ae(), 100);
+
+         try {
+            g.a();
+            $$0.a(() -> vb.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
+         } catch (IOException var4) {
+            b.error("Failed to start chase server", var4);
+            $$0.b(vb.b("Failed to start chase server on port " + $$2));
+            g = null;
+         }
+
+         return 0;
+      }
+   }
+
+   private static int b(ds $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         h = new ahv($$1, $$2, $$0.l());
+         h.a();
+         $$0.a(
+            () -> vb.b(
+                  "You are now chasing "
+                     + $$1
+                     + ":"
+                     + $$2
+                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
+               ),
+            false
+         );
+         return 0;
+      }
    }
 }

@@ -1,45 +1,48 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duy extends duw {
-   public static final Codec<duy> a = Codec.unit(() -> duy.b);
-   public static final duy b = new duy();
+public class duy extends dus {
+   public static final Codec<duy> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(biq.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, duy::new)
+   );
+   private final biq b;
 
-   @Override
-   protected dux<?> a() {
-      return dux.a;
+   public duy(biq $$0, biq $$1, biq $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   public void a(duw.a $$0) {
-      atw $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            hx $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, ddy.d);
-            }
-         }
+   protected dut<?> a() {
+      return dut.b;
+   }
 
-         if ($$1.a(3) > 0) {
-            hx $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, ddy.f);
-            }
-         }
+   @Override
+   protected void a(cte $$0, dus.b $$1, auf $$2, duc $$3, int $$4, dus.a $$5, int $$6, int $$7, int $$8) {
+      hv $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
 
-         if ($$1.a(3) > 0) {
-            hx $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, ddy.e);
-            }
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
          }
+      }
+   }
 
-         if ($$1.a(3) > 0) {
-            hx $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, ddy.c);
-            }
-         }
-      });
+   @Override
+   public int a(auf $$0, int $$1, duc $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(auf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

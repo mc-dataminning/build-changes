@@ -1,155 +1,44 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Arrays;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
 public class akp {
-   private static final float a = 10000.0F;
-   private static final String b = String.valueOf(20);
+   public static void a(CommandDispatcher<ds> $$0) {
+      RequiredArgumentBuilder<ds, gc> $$1 = (RequiredArgumentBuilder<ds, gc>)((RequiredArgumentBuilder)dt.a("targets", ee.d())
+            .executes($$0x -> a((ds)$$0x.getSource(), ee.f($$0x, "targets"), null, null)))
+         .then(dt.a("*").then(dt.a("sound", es.a()).suggests(hl.c).executes($$0x -> a((ds)$$0x.getSource(), ee.f($$0x, "targets"), null, es.e($$0x, "sound")))));
 
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
-                                 "tick"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(dv.a("query").executes($$0x -> a((du)$$0x.getSource()))))
-                        .then(
-                           dv.a("rate")
-                              .then(
-                                 dv.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
-                                    .suggests(($$0x, $$1) -> dy.a(new String[]{b}, $$1))
-                                    .executes($$0x -> a((du)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
-                              )
-                        ))
-                     .then(
-                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("step").executes($$0x -> b((du)$$0x.getSource(), 1)))
-                              .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource()))))
-                           .then(
-                              dv.a("time", ff.a(1))
-                                 .suggests(($$0x, $$1) -> dy.a(new String[]{"1t", "1s"}, $$1))
-                                 .executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                           )
-                     ))
-                  .then(
-                     ((LiteralArgumentBuilder)dv.a("sprint").then(dv.a("stop").executes($$0x -> c((du)$$0x.getSource()))))
-                        .then(
-                           dv.a("time", ff.a(1))
-                              .suggests(($$0x, $$1) -> dy.a(new String[]{"60s", "1d", "3d"}, $$1))
-                              .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                        )
-                  ))
-               .then(dv.a("unfreeze").executes($$0x -> a((du)$$0x.getSource(), false))))
-            .then(dv.a("freeze").executes($$0x -> a((du)$$0x.getSource(), true)))
-      );
+      for (ard $$2 : ard.values()) {
+         $$1.then(
+            ((LiteralArgumentBuilder)dt.a($$2.a()).executes($$1x -> a((ds)$$1x.getSource(), ee.f($$1x, "targets"), $$2, null)))
+               .then(dt.a("sound", es.a()).suggests(hl.c).executes($$1x -> a((ds)$$1x.getSource(), ee.f($$1x, "targets"), $$2, es.e($$1x, "sound"))))
+         );
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static String a(long $$0) {
-      return String.format("%.1f", (float)$$0 / (float)aup.b);
-   }
+   private static int a(ds $$0, Collection<amq> $$1, @Nullable ard $$2, @Nullable agt $$3) {
+      ach $$4 = new ach($$3, $$2);
 
-   private static int a(du $$0, float $$1) {
-      ahe $$2 = $$0.l().aO();
-      $$2.a($$1);
-      String $$3 = String.format("%.1f", $$1);
-      $$0.a(() -> uv.a("commands.tick.rate.success", $$3), true);
-      return (int)$$1;
-   }
+      for (amq $$5 : $$1) {
+         $$5.c.b($$4);
+      }
 
-   private static int a(du $$0) {
-      ahe $$1 = $$0.l().aO();
-      String $$2 = a($$0.l().aP());
-      float $$3 = $$1.f();
-      String $$4 = String.format("%.1f", $$3);
-      if ($$1.a()) {
-         $$0.a(() -> uv.c("commands.tick.status.sprinting"), false);
-         $$0.a(() -> uv.a("commands.tick.query.rate.sprinting", $$4, $$2), false);
-      } else {
-         if ($$1.l()) {
-            $$0.a(() -> uv.c("commands.tick.status.frozen"), false);
+      if ($$2 != null) {
+         if ($$3 != null) {
+            $$0.a(() -> vb.a("commands.stopsound.success.source.sound", vb.a($$3), $$2.a()), true);
          } else {
-            $$0.a(() -> uv.c("commands.tick.status.running"), false);
+            $$0.a(() -> vb.a("commands.stopsound.success.source.any", $$2.a()), true);
          }
-
-         String $$5 = a($$1.h());
-         $$0.a(() -> uv.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
-      }
-
-      long[] $$6 = Arrays.copyOf($$0.l().aQ(), $$0.l().aQ().length);
-      Arrays.sort($$6);
-      String $$7 = a($$6[$$6.length / 2]);
-      String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
-      String $$9 = a($$6[(int)((double)$$6.length * 0.99)]);
-      $$0.a(() -> uv.a("commands.tick.query.percentiles", $$7, $$8, $$9, $$6.length), false);
-      return (int)$$3;
-   }
-
-   private static int a(du $$0, int $$1) {
-      boolean $$2 = $$0.l().aO().b($$1);
-      if ($$2) {
-         $$0.a(() -> uv.c("commands.tick.sprint.stop.success"), true);
-      }
-
-      $$0.a(() -> uv.c("commands.tick.status.sprinting"), true);
-      return 1;
-   }
-
-   private static int a(du $$0, boolean $$1) {
-      ahe $$2 = $$0.l().aO();
-      if ($$1) {
-         if ($$2.a()) {
-            $$2.c();
-         }
-
-         if ($$2.j()) {
-            $$2.b();
-         }
-      }
-
-      $$2.a($$1);
-      if ($$1) {
-         $$0.a(() -> uv.c("commands.tick.status.frozen"), true);
+      } else if ($$3 != null) {
+         $$0.a(() -> vb.a("commands.stopsound.success.sourceless.sound", vb.a($$3)), true);
       } else {
-         $$0.a(() -> uv.c("commands.tick.status.running"), true);
+         $$0.a(() -> vb.c("commands.stopsound.success.sourceless.any"), true);
       }
 
-      return $$1 ? 1 : 0;
-   }
-
-   private static int b(du $$0, int $$1) {
-      ahe $$2 = $$0.l().aO();
-      boolean $$3 = $$2.a($$1);
-      if ($$3) {
-         $$0.a(() -> uv.a("commands.tick.step.success", $$1), true);
-      } else {
-         $$0.b(uv.c("commands.tick.step.fail"));
-      }
-
-      return 1;
-   }
-
-   private static int b(du $$0) {
-      ahe $$1 = $$0.l().aO();
-      boolean $$2 = $$1.b();
-      if ($$2) {
-         $$0.a(() -> uv.c("commands.tick.step.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(uv.c("commands.tick.step.stop.fail"));
-         return 0;
-      }
-   }
-
-   private static int c(du $$0) {
-      ahe $$1 = $$0.l().aO();
-      boolean $$2 = $$1.c();
-      if ($$2) {
-         $$0.a(() -> uv.c("commands.tick.sprint.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(uv.c("commands.tick.sprint.stop.fail"));
-         return 0;
-      }
+      return $$1.size();
    }
 }

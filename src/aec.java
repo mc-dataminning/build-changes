@@ -1,79 +1,40 @@
-public class aec implements wo<acp> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private final hx d;
-   private final String e;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final dfs.a i;
+public class aec implements wu<acw> {
+   private final ciy a;
+   private final boolean b;
+   private final boolean c;
 
-   public aec(hx $$0, String $$1, dfs.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$2;
+   public aec(ciy $$0, boolean $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public aec(ty $$0) {
-      this.d = $$0.e();
-      this.e = $$0.s();
-      this.i = $$0.b(dfs.a.class);
-      int $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
+   public aec(ue $$0) {
+      this.a = $$0.b(ciy.class);
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.i);
-      int $$1 = 0;
-      if (this.f) {
-         $$1 |= 1;
-      }
-
-      if (this.g) {
-         $$1 |= 2;
-      }
-
-      if (this.h) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
+   public void a(ue $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
-      return this.d;
+   public ciy a() {
+      return this.a;
    }
 
-   public String d() {
-      return this.e;
+   public boolean d() {
+      return this.b;
    }
 
    public boolean e() {
-      return this.f;
-   }
-
-   public boolean f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return this.h;
-   }
-
-   public dfs.a h() {
-      return this.i;
+      return this.c;
    }
 }

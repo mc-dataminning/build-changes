@@ -1,33 +1,57 @@
-import java.util.List;
+import java.util.UUID;
 
-public record xn(int b, hx c, List<xn.a> d) implements xh {
-   public static final agm a = new agm("debug/goal_selector");
+public record xn(xn.a b) implements xo {
+   public static final agt a = new agt("debug/breeze");
 
-   public xn(ty $$0) {
-      this($$0.readInt(), $$0.e(), $$0.a(xn.a::new));
+   public xn(ue $$0) {
+      this(new xn.a($$0));
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.p(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(ue $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public agm a() {
+   public agt a() {
       return a;
    }
 
-   public static record a(int a, boolean b, String c) {
-      public a(ty $$0) {
-         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+   public static record a(UUID a, int b, Integer c, hv d) {
+      public a(ue $$0) {
+         this($$0.p(), $$0.readInt(), $$0.c(ue::readInt), $$0.c(ue::e));
       }
 
-      public void a(ty $$0) {
-         $$0.p(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
+      public void a(ue $$0) {
+         $$0.a(this.a);
+         $$0.p(this.b);
+         $$0.a(this.c, ue::p);
+         $$0.a(this.d, ue::a);
+      }
+
+      public String a() {
+         return acu.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public Integer d() {
+         return this.c;
+      }
+
+      public hv e() {
+         return this.d;
       }
    }
 }

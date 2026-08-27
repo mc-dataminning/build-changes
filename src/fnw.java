@@ -1,30 +1,73 @@
-public class fnw extends fni {
-   private static final int a = 12235202;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   protected fnw(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fpj $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)ata.b.b(12235202) / 255.0F - $$9;
-      this.w = (float)ata.b.c(12235202) / 255.0F - $$9;
-      this.x = (float)ata.b.d(12235202) / 255.0F - $$9;
+public final class fnw {
+   private static final int a = 1024;
+   private final fnn b;
+   private final fnt c;
+   private final fni d;
+   @Nullable
+   private fns e;
+
+   public fnw(fnn $$0, fnt $$1, fni $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
-      super.a();
+   public static fnw a(fnt $$0, UserApiService $$1) {
+      fni $$2 = new fni(1024);
+      fnn $$3 = fnn.a($$0, $$1);
+      return new fnw($$3, $$0, $$2);
    }
 
-   public static class a implements foq<jz> {
-      private final fpj a;
-
-      public a(fpj $$0) {
-         this.a = $$0;
+   public void a(euk $$0, fcc $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         fns $$4 = this.e.b();
+         $$0.a(
+            new fav(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               vb.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               vb.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               vb.c("gui.abuseReport.draft.edit"),
+               vb.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
       }
+   }
 
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fnw($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
-      }
+   public fnn a() {
+      return this.b;
+   }
+
+   public fni b() {
+      return this.d;
+   }
+
+   public boolean a(fnt $$0) {
+      return Objects.equals(this.c, $$0);
+   }
+
+   public void a(@Nullable fns $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

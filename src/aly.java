@@ -1,42 +1,45 @@
-public record aly(int a, int b) {
-   private static final long c = 32L;
-   private static final long d = 4294967295L;
+public class aly {
+   private static final int b = 33;
+   private static final int c = 32;
+   private static final int d = 31;
+   public static final int a = 33 + dkq.b();
 
-   public crm a() {
-      return new crm(iy.a(this.a), iy.a(this.b));
+   public static dkq a(int $$0) {
+      return $$0 < 33 ? dkq.n : dkq.a($$0 - 33);
    }
 
-   public long b() {
-      return a(this.a, this.b);
+   public static int a(dkq $$0) {
+      return 33 + dkq.a($$0);
    }
 
-   public static long a(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   public static ami b(int $$0) {
+      if ($$0 <= 31) {
+         return ami.d;
+      } else if ($$0 <= 32) {
+         return ami.c;
+      } else {
+         return $$0 <= 33 ? ami.b : ami.a;
+      }
    }
 
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
+   public static int a(ami $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
+      };
    }
 
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
+   public static boolean c(int $$0) {
+      return $$0 <= 31;
    }
 
-   @Override
-   public String toString() {
-      return "[" + this.a + ", " + this.b + "]";
+   public static boolean d(int $$0) {
+      return $$0 <= 32;
    }
 
-   @Override
-   public int hashCode() {
-      return crm.d(this.a, this.b);
-   }
-
-   public int c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
+   public static boolean e(int $$0) {
+      return $$0 <= a;
    }
 }

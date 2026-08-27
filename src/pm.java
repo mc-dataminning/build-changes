@@ -1,202 +1,107 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class pm {
-   private static final dnn.o a = a(cvh.a);
-   private static final dnn.o b = a(cvh.F);
-   private static final dnn.o c = a(cvh.hj);
-   private static final dnn.o d = a(cvh.hk);
-   private static final dnn.o e = a(cvh.iA);
-   private static final dnn.o f = a(cvh.K);
-   private static final dnn.o g = a(cvh.jp);
-   private static final dnn.o h = a(cvh.b);
-   private static final dnn.o i = a(cvh.sJ);
-   private static final dnn.o j = a(cvh.j);
-   private static final dnn.o k = a(cvh.l);
-   private static final dnn.o l = a(cvh.k);
-   private static final dnn.o m = a(cvh.fl);
-   private static final dnn.o n = a(cvh.i);
-   private static final dnn.o o = a(cvh.qN);
-   private static final dnn.o p = a(cvh.L);
-   private static final dnn.o q = a(cvh.I);
-   private static final dnn.o r = a(cvh.aV);
-   private static final dnn.o s = a(cvh.iC);
-   private static final dnn.o t = a(cvh.dP);
-   private static final dnn.o u = a(cvh.sI);
-   private static final dnn.o v = a(cvh.qP);
-   private static final dnn.o w = a(cvh.dO);
-   private static final dnn.o x = a(cvh.G);
-   private static final dnn.o y = a(cvh.H);
-   private static final dnn.o z = a(cvh.dV);
-   private static final dnn.o A = a(cvh.dW);
-   private static final dnn.o B = a(cvh.dX);
-   private static final dnn.o C = a(cvh.dY);
-   private static final dnn.o D = a(cvh.pr);
-   private static final dnn.o E = a(cvh.op);
-   private static final dnn.o F = a(cvh.on);
-   private static final dnn.o G = a(cvh.kK);
-   private static final dnn.o H = a(cvh.ow);
-   private static final dnn.o I = a(cvh.fz);
-
-   private static dnn.o a(cvf $$0) {
-      return dnn.a($$0.o());
+   public static dyo.c a(ij<ctx> $$0, Map<bly, dyv> $$1, dnu.b $$2, dyz $$3) {
+      return new dyo.c($$0, $$1, $$2, $$3);
    }
 
-   public static dnn.o a() {
-      return a(true, false, true);
+   private static dyo.c a(ij<ctx> $$0, dnu.b $$1, dyz $$2) {
+      return a($$0, Map.of(), $$1, $$2);
    }
 
-   public static dnn.o a(boolean $$0, boolean $$1, boolean $$2) {
-      dnn.f $$3 = dnn.a(dnq.a(97), 2);
-      dnn.f $$4 = dnn.a(dnq.a(256), 0);
-      dnn.f $$5 = dnn.b(dnq.a(63), -1);
-      dnn.f $$6 = dnn.b(dnq.a(74), 1);
-      dnn.f $$7 = dnn.a(dnq.a(60), 0);
-      dnn.f $$8 = dnn.a(dnq.a(62), 0);
-      dnn.f $$9 = dnn.a(dnq.a(63), 0);
-      dnn.f $$10 = dnn.a(-1, 0);
-      dnn.f $$11 = dnn.a(0, 0);
-      dnn.f $$12 = dnn.b(-6, -1);
-      dnn.f $$13 = dnn.b();
-      dnn.f $$14 = dnn.a(ctk.W, ctk.X);
-      dnn.f $$15 = dnn.a();
-      dnn.o $$16 = dnn.a(dnn.a($$11, n), j);
-      dnn.o $$17 = dnn.a(dnn.a(dnn.e, r), q);
-      dnn.o $$18 = dnn.a(dnn.a(dnn.e, h), p);
-      dnn.f $$19 = dnn.a(ctk.P, ctk.M, ctk.N);
-      dnn.f $$20 = dnn.a(ctk.f);
-      dnn.o $$21 = dnn.a(
-         dnn.a(dnn.a(ctk.J), dnn.a(dnn.a(dnn.a(dnf.X, -0.0125, 0.0125), o), h)),
-         dnn.a(dnn.a(ctk.O), dnn.a(dnn.a(dnn.a(dnf.Y, -0.05, 0.05), $$18), h)),
-         dnn.a(dnn.a(ctk.t), dnn.a(a(1.0), h)),
-         dnn.a($$19, $$17),
-         dnn.a($$20, $$17),
-         dnn.a(dnn.a(ctk.Z), h)
+   private static dyo.c a(ij<ctx> $$0, dyz $$1) {
+      return a($$0, Map.of(), dnu.b.e, $$1);
+   }
+
+   public static void a(pa<dyo> $$0) {
+      ig<ctx> $$1 = $$0.a(kc.as);
+      ig<dzx> $$2 = $$0.a(kc.aF);
+      $$0.a(
+         dyi.a,
+         new eao(
+            a($$1.b(arq.y), Map.of(bly.a, new dyv(dyv.a.b, bhz.a(new cuj.c(blj.az, 1, 1, 1)))), dnu.b.e, dyz.c), $$2.b(pf.a), 7, dwu.a(dos.a(0)), true, dny.a.a
+         )
       );
-      dnn.o $$22 = dnn.a(dnn.a(dnf.Z, 0.45, 0.58), dnn.a($$11, v));
-      dnn.o $$23 = dnn.a(dnn.a(dnf.Z, 0.35, 0.6), dnn.a($$11, v));
-      dnn.o $$24 = dnn.a(
-         dnn.a(dnn.a(ctk.H), dnn.a(dnn.a($$15, s), dnn.a(dnn.a(dnf.aa, -0.5, 0.2), s), dnn.a(dnn.a(dnf.ab, -0.0625, 0.025), w), dnn.a($$11, t))),
-         dnn.a(dnn.a(ctk.G), dnn.a(dnn.a($$15, h), $$22, dnn.a($$11, t))),
-         dnn.a(dnn.a(ctk.I), h),
-         dnn.a(dnn.a(ctk.F), dnn.a($$22, j)),
-         $$21,
-         dnn.a(dnn.a(ctk.w), dnn.a(a(1.75), h)),
-         dnn.a(dnn.a(ctk.u), dnn.a(dnn.a(a(2.0), $$18), dnn.a(a(1.0), h), dnn.a(a(-1.0), j), $$18)),
-         dnn.a(dnn.a(ctk.h), u),
-         j
-      );
-      dnn.o $$25 = dnn.a(
-         dnn.a(dnn.a(ctk.H), dnn.a(dnn.a($$15, s), dnn.a(dnn.a(dnf.aa, 0.0, 0.2), s), dnn.a(dnn.a(dnf.ab, 0.0, 0.025), w), dnn.a($$11, t))),
-         dnn.a(dnn.a(ctk.G), dnn.a(dnn.a($$15, h), $$23, dnn.a($$11, t))),
-         dnn.a(dnn.a(ctk.I), dnn.a(dnn.a($$15, h), dnn.a($$11, t))),
-         dnn.a(dnn.a(ctk.F), dnn.a($$23, dnn.a($$11, t))),
-         $$21,
-         dnn.a(dnn.a(ctk.w), dnn.a(dnn.a(a(1.75), h), dnn.a(a(-0.5), l))),
-         dnn.a(dnn.a(ctk.u), dnn.a(dnn.a(a(2.0), $$18), dnn.a(a(1.0), h), dnn.a(a(-1.0), $$16), $$18)),
-         dnn.a(dnn.a(ctk.n, ctk.o), dnn.a(dnn.a(a(1.75), l), dnn.a(a(-0.95), k))),
-         dnn.a(dnn.a(ctk.e), dnn.a($$11, t)),
-         dnn.a(dnn.a(ctk.h), u),
-         dnn.a(dnn.a(ctk.Y), m),
-         $$16
-      );
-      dnn.f $$26 = dnn.a(dnf.N, -0.909, -0.5454);
-      dnn.f $$27 = dnn.a(dnf.N, -0.1818, 0.1818);
-      dnn.f $$28 = dnn.a(dnf.N, 0.5454, 0.909);
-      dnn.o $$29 = dnn.a(
-         dnn.a(
-            dnn.a,
-            dnn.a(
-               dnn.a(dnn.a(ctk.C), dnn.a($$3, dnn.a(dnn.a($$26, l), dnn.a($$27, l), dnn.a($$28, l), $$16))),
-               dnn.a(dnn.a(ctk.g), dnn.a($$8, dnn.a(dnn.a($$9), dnn.a(dnn.a(dnf.W, 0.0), x)))),
-               dnn.a(dnn.a(ctk.h), dnn.a($$7, dnn.a(dnn.a($$9), dnn.a(dnn.a(dnf.W, 0.0), x))))
+      $$0.a(dyi.b, new eas(a($$1.b(arq.t), dnu.b.d, dyz.a), eas.a.a));
+      $$0.a(dyi.c, new eas(a($$1.b(arq.u), dnu.b.d, dyz.a), eas.a.b));
+      $$0.a(dyi.d, new ebk(a($$1.b(arq.Q), dyz.a)));
+      $$0.a(dyi.e, new eaq(a($$1.b(arq.s), dyz.a)));
+      $$0.a(dyi.f, new eaj(a($$1.b(arq.q), dyz.a)));
+      $$0.a(dyi.g, new ean(a($$1.b(arq.r), dyz.a)));
+      $$0.a(dyi.h, new ebe(a($$1.b(arq.G), dyz.a), false));
+      $$0.a(dyi.i, new ebe(a($$1.b(arq.F), dyz.a), true));
+      $$0.a(
+         dyi.j,
+         new ebi(
+            a(
+               $$1.b(arq.J),
+               Map.of(bly.a, new dyv(dyv.a.a, bhz.a(new cuj.c(blj.bl, 1, 1, 1))), bly.b, new dyv(dyv.a.a, bhz.a(new cuj.c(blj.n, 1, 1, 1)))),
+               dnu.b.e,
+               dyz.a
             )
-         ),
-         dnn.a(
-            dnn.a(ctk.A, ctk.B, ctk.C),
-            dnn.a(
-               dnn.a(
-                  dnn.a,
-                  dnn.a(
-                     dnn.a($$4, d),
-                     dnn.a($$6, dnn.a(dnn.a($$26, e), dnn.a($$27, e), dnn.a($$28, e), dnn.e())),
-                     dnn.a($$10, dnn.a(dnn.a(dnn.e, g), f)),
-                     dnn.a(dnn.a($$13), d),
-                     dnn.a($$12, c),
-                     $$18
-                  )
-               ),
-               dnn.a($$5, dnn.a(dnn.a($$9, dnn.a(dnn.a($$6), d)), dnn.e())),
-               dnn.a(dnn.b, dnn.a($$12, c))
-            )
-         ),
-         dnn.a(dnn.a, dnn.a($$10, dnn.a(dnn.a($$14, dnn.a($$13, dnn.a(dnn.a($$11, a), dnn.a(dnn.d(), w), x))), $$25))),
-         dnn.a($$12, dnn.a(dnn.a(dnn.a, dnn.a($$14, dnn.a($$13, x))), dnn.a(dnn.b, $$24), dnn.a($$19, dnn.a(dnn.c, r)), dnn.a($$20, dnn.a(dnn.d, r)))),
-         dnn.a(dnn.a, dnn.a(dnn.a(dnn.a(ctk.H, ctk.I), h), dnn.a(dnn.a(ctk.P, ctk.Q, ctk.R), $$17), $$18))
+         )
       );
-      Builder<dnn.o> $$30 = ImmutableList.builder();
-      if ($$1) {
-         $$30.add(dnn.a(dnn.a(dnn.a("bedrock_roof", dnq.c(5), dnq.b())), b));
-      }
-
-      if ($$2) {
-         $$30.add(dnn.a(dnn.a("bedrock_floor", dnq.a(), dnq.b(5)), b));
-      }
-
-      dnn.o $$31 = dnn.a(dnn.c(), $$29);
-      $$30.add($$0 ? $$31 : $$29);
-      $$30.add(dnn.a(dnn.a("deepslate", dnq.a(0), dnq.a(8)), i));
-      return dnn.a((dnn.o[])$$30.build().toArray(dnn.o[]::new));
-   }
-
-   public static dnn.o b() {
-      dnn.f $$0 = dnn.a(dnq.a(31), 0);
-      dnn.f $$1 = dnn.a(dnq.a(32), 0);
-      dnn.f $$2 = dnn.b(dnq.a(30), 0);
-      dnn.f $$3 = dnn.a(dnn.b(dnq.a(35), 0));
-      dnn.f $$4 = dnn.a(dnq.c(5), 0);
-      dnn.f $$5 = dnn.b();
-      dnn.f $$6 = dnn.a(dnf.ac, -0.012);
-      dnn.f $$7 = dnn.a(dnf.ad, -0.012);
-      dnn.f $$8 = dnn.a(dnf.ae, -0.012);
-      dnn.f $$9 = dnn.a(dnf.af, 0.54);
-      dnn.f $$10 = dnn.a(dnf.ag, 1.17);
-      dnn.f $$11 = dnn.a(dnf.ah, 0.0);
-      dnn.o $$12 = dnn.a($$8, dnn.a($$2, dnn.a($$3, p)));
-      return dnn.a(
-         dnn.a(dnn.a("bedrock_floor", dnq.a(), dnq.b(5)), b),
-         dnn.a(dnn.a(dnn.a("bedrock_roof", dnq.c(5), dnq.b())), b),
-         dnn.a($$4, z),
-         dnn.a(dnn.a(ctk.ag), dnn.a(dnn.a(dnn.f, C), dnn.a(dnn.b, dnn.a($$12, dnn.a($$11, C), D)))),
-         dnn.a(dnn.a(ctk.af), dnn.a(dnn.a(dnn.f, dnn.a(dnn.a($$11, A), B)), dnn.a(dnn.b, dnn.a($$12, dnn.a($$11, A), B)))),
-         dnn.a(
-            dnn.a,
-            dnn.a(
-               dnn.a(dnn.a($$1), dnn.a($$5, y)),
-               dnn.a(dnn.a(ctk.ad), dnn.a(dnn.a($$9), dnn.a($$0, dnn.a(dnn.a($$10, E), F)))),
-               dnn.a(dnn.a(ctk.ae), dnn.a(dnn.a($$9), dnn.a($$0, dnn.a(dnn.a($$10, G), H))))
+      $$0.a(dyi.k, new ebg(a($$1.b(arq.H), dyz.b)));
+      $$0.a(
+         dyi.l,
+         new eay(
+            a(
+               $$1.b(arq.v),
+               Map.of(bly.a, new dyv(dyv.a.b, bhz.a(new cuj.c(blj.W, 1, 2, 4))), bly.e, new dyv(dyv.a.b, cuj.a), bly.d, new dyv(dyv.a.b, cuj.a)),
+               dnu.b.e,
+               dyz.a
             )
-         ),
-         dnn.a(
-            dnn.a(ctk.ac),
-            dnn.a(
-               dnn.a(dnn.b, dnn.a($$6, dnn.a(dnn.a(dnn.a($$5), dnn.a($$2, dnn.a($$3, A))), z))),
-               dnn.a(dnn.a, dnn.a($$0, dnn.a($$3, dnn.a($$7, dnn.a(dnn.a($$1, p), dnn.a(dnn.a($$5), p))))))
-            )
-         ),
-         z
+         )
       );
-   }
-
-   public static dnn.o c() {
-      return I;
-   }
-
-   public static dnn.o d() {
-      return a;
-   }
-
-   private static dnn.f a(double $$0) {
-      return dnn.a(dnf.N, $$0 / 8.25, Double.MAX_VALUE);
+      $$0.a(dyi.m, new eba(a($$1.b(arq.w), dyz.a), eba.a.b, 0.3F, 0.9F));
+      $$0.a(dyi.n, new eba(a($$1.b(arq.x), dyz.a), eba.a.a, 0.3F, 0.9F));
+      $$0.a(dyi.o, new eau(a($$1.b(arq.R), Map.of(bly.a, new dyv(dyv.a.a, eau.d)), dnu.b.h, dyz.a)));
+      $$0.a(dyi.p, new eaw(a($$1.b(arq.S), dnu.b.h, dyz.c), dwy.a(dos.a(32), dos.c(2))));
+      $$0.a(dyi.q, new eal(a($$1.b(arq.W), dyz.a)));
+      $$0.a(dyi.r, new eah(a($$1.b(arq.p), dnu.b.d, dyz.a)));
+      $$0.a(dyi.s, new eao(a($$1.b(arq.T), dyz.a), $$2.b(ow.a), 6, dwu.a(dos.a(33)), false));
+      $$0.a(dyi.t, new eao(a($$1.b(arq.L), dyz.c), $$2.b(pg.a), 6, dwu.a(dos.a(0)), true, dny.a.a));
+      $$0.a(dyi.u, new eao(a($$1.b(arq.K), dyz.c), $$2.b(pc.a), 6, dwu.a(dos.a(0)), true, dny.a.a));
+      $$0.a(dyi.v, new eao(a($$1.b(arq.M), dyz.c), $$2.b(pj.a), 6, dwu.a(dos.a(0)), true, dny.a.a));
+      $$0.a(dyi.w, new eao(a($$1.b(arq.N), dyz.c), $$2.b(pk.a), 6, dwu.a(dos.a(0)), true, dny.a.a));
+      $$0.a(dyi.x, new eao(a($$1.b(arq.O), dyz.c), $$2.b(po.a), 6, dwu.a(dos.a(0)), true, dny.a.a));
+      $$0.a(
+         dyi.y,
+         new ebc(
+            a($$1.b(arq.E), dyz.a),
+            List.of(new ebc.a(ebb.b.e, 1.0F, 0.2F, false, false, true, false, 0.5F), new ebc.a(ebb.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+         )
+      );
+      $$0.a(dyi.z, new ebc(a($$1.b(arq.z), dyz.a), new ebc.a(ebb.b.b, 0.0F, 0.0F, false, false, false, false, 1.0F)));
+      $$0.a(dyi.A, new ebc(a($$1.b(arq.A), dyz.a), new ebc.a(ebb.b.a, 0.5F, 0.8F, true, true, false, false, 1.0F)));
+      $$0.a(dyi.B, new ebc(a($$1.b(arq.C), dyz.a), new ebc.a(ebb.b.c, 0.0F, 0.5F, false, true, false, false, 1.0F)));
+      $$0.a(
+         dyi.C,
+         new ebc(
+            a($$1.b(arq.D), dyz.a),
+            List.of(new ebc.a(ebb.b.d, 1.0F, 0.2F, false, false, true, false, 0.5F), new ebc.a(ebb.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+         )
+      );
+      $$0.a(dyi.D, new ebc(a($$1.b(arq.B), dyz.a), new ebc.a(ebb.b.c, 0.0F, 0.8F, false, false, true, false, 1.0F)));
+      $$0.a(dyi.E, new ebc(a($$1.b(arq.V), dyz.a), new ebc.a(ebb.b.f, 0.5F, 0.0F, false, false, false, true, 1.0F)));
+      $$0.a(
+         dyi.F,
+         new eao(
+            a($$1.b(arq.U), Arrays.stream(bly.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new dyv(dyv.a.b, bhz.c()))), dnu.b.h, dyz.d),
+            $$2.b(or.a),
+            Optional.of(new agt("city_anchor")),
+            7,
+            dwu.a(dos.a(-27)),
+            false,
+            Optional.empty(),
+            116,
+            List.of()
+         )
+      );
+      $$0.a(dyi.G, new eao(a($$1.b(arq.P), Map.of(), dnu.b.d, dyz.b), $$2.b(pq.a), 7, dwu.a(dos.a(-15)), false, dny.a.a));
    }
 }

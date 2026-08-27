@@ -1,20 +1,15 @@
 public class cqf extends cpz {
-   protected cqf(cpz.a $$0, cqa $$1, bla... $$2) {
-      super($$0, $$1, $$2);
+   public cqf(String $$0, cpi $$1, cmh $$2) {
+      super(cpq.f, cpp.t, $$0, $$1, $$2);
    }
 
    @Override
-   public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+   public boolean a(bje $$0, csy $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 3;
+   public cmh g() {
+      return new cmh(cwb.oc);
    }
 }

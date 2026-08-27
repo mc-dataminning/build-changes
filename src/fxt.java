@@ -1,16 +1,28 @@
-public class fxt extends fxi<bxo, fja<bxo>> {
-   private static final agm a = new agm("textures/entity/bear/polarbear.png");
+public class fxt extends fxn<cbd> {
+   private final ftc a;
 
-   public fxt(fwc.a $$0) {
-      super($$0, new fja<>($$0.a(fks.aU)), 0.9F);
+   public fxt(fxo.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public agm a(bxo $$0) {
-      return a;
+   public void a(cbd $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
+      dip $$6 = $$0.u();
+      if ($$6.l() == dce.c) {
+         csy $$7 = $$0.dM();
+         if ($$6 != $$7.a_($$0.dm()) && $$6.l() != dce.a) {
+            $$3.a();
+            hv $$8 = hv.a($$0.dr(), $$0.cH().e, $$0.dx());
+            $$3.a(-0.5, 0.0, -0.5);
+            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fsd.b($$6)), false, auf.a(), $$6.a($$0.q()), gdf.d);
+            $$3.b();
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
+      }
    }
 
-   protected void a(bxo $$0, eob $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
-      super.a($$0, $$1, $$2);
+   public agt a(cbd $$0) {
+      return gdn.e;
    }
 }

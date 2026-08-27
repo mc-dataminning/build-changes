@@ -1,62 +1,54 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.function.Function;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class akx implements aky {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(uv.c("commands.data.block.invalid"));
-   public static final Function<String, akz.c> a = $$0 -> new akz.c() {
-         @Override
-         public aky a(CommandContext<du> $$0x) throws CommandSyntaxException {
-            hx $$1 = fm.a($$0, $$0 + "Pos");
-            dfi $$2 = ((du)$$0.getSource()).e().c_($$1);
-            if ($$2 == null) {
-               throw akx.b.create();
-            } else {
-               return new akx($$2, $$1);
-            }
-         }
-
-         @Override
-         public ArgumentBuilder<du, ?> a(ArgumentBuilder<du, ?> $$0x, Function<ArgumentBuilder<du, ?>, ArgumentBuilder<du, ?>> $$1) {
-            return $$0.then(dv.a("block").then($$1.apply(dv.a($$0 + "Pos", fm.a()))));
-         }
-      };
-   private final dfi c;
-   private final hx d;
-
-   public akx(dfi $$0, hx $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class akx {
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("time").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("set")
+                                    .then(dt.a("day").executes($$0x -> a((ds)$$0x.getSource(), 1000))))
+                                 .then(dt.a("noon").executes($$0x -> a((ds)$$0x.getSource(), 6000))))
+                              .then(dt.a("night").executes($$0x -> a((ds)$$0x.getSource(), 13000))))
+                           .then(dt.a("midnight").executes($$0x -> a((ds)$$0x.getSource(), 18000))))
+                        .then(dt.a("time", fd.a()).executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
+                  ))
+               .then(dt.a("add").then(dt.a("time", fd.a()).executes($$0x -> b((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("query")
+                        .then(dt.a("daytime").executes($$0x -> c((ds)$$0x.getSource(), a(((ds)$$0x.getSource()).e())))))
+                     .then(dt.a("gametime").executes($$0x -> c((ds)$$0x.getSource(), (int)(((ds)$$0x.getSource()).e().W() % 2147483647L)))))
+                  .then(dt.a("day").executes($$0x -> c((ds)$$0x.getSource(), (int)(((ds)$$0x.getSource()).e().X() / 24000L % 2147483647L))))
+            )
+      );
    }
 
-   @Override
-   public void a(sd $$0) {
-      dhn $$1 = this.c.i().a_(this.d);
-      this.c.a($$0);
-      this.c.e();
-      this.c.i().a(this.d, $$1, $$1, 3);
+   private static int a(amp $$0) {
+      return (int)($$0.X() % 24000L);
    }
 
-   @Override
-   public sd a() {
-      return this.c.o();
+   private static int c(ds $$0, int $$1) {
+      $$0.a(() -> vb.a("commands.time.query", $$1), false);
+      return $$1;
    }
 
-   @Override
-   public uv b() {
-      return uv.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
+   public static int a(ds $$0, int $$1) {
+      for (amp $$2 : $$0.l().H()) {
+         $$2.b((long)$$1);
+      }
+
+      $$0.a(() -> vb.a("commands.time.set", $$1), true);
+      return a($$0.e());
    }
 
-   @Override
-   public uv a(ta $$0) {
-      return uv.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), ss.c($$0));
-   }
+   public static int b(ds $$0, int $$1) {
+      for (amp $$2 : $$0.l().H()) {
+         $$2.b($$2.X() + (long)$$1);
+      }
 
-   @Override
-   public uv a(el.g $$0, double $$1, int $$2) {
-      return uv.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      int $$3 = a($$0.e());
+      $$0.a(() -> vb.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

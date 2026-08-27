@@ -1,101 +1,47 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Objects;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.EnumSet;
 
-public class fp implements fo {
-   public static final char a = '^';
-   private final double b;
-   private final double c;
-   private final double d;
+public class fp implements ArgumentType<EnumSet<ia.a>> {
+   private static final Collection<String> a = Arrays.asList("xyz", "x");
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("arguments.swizzle.invalid"));
 
-   public fp(double $$0, double $$1, double $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public static fp a() {
+      return new fp();
    }
 
-   @Override
-   public ejz a(du $$0) {
-      ejy $$1 = $$0.k();
-      ejz $$2 = $$0.m().a($$0);
-      float $$3 = atq.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = atq.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = atq.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = atq.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = atq.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = atq.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      ejz $$9 = new ejz((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      ejz $$10 = new ejz((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      ejz $$11 = $$9.c($$10).a(-1.0);
-      double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
-      double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
-      double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new ejz($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+   public static EnumSet<ia.a> a(CommandContext<ds> $$0, String $$1) {
+      return (EnumSet<ia.a>)$$0.getArgument($$1, EnumSet.class);
    }
 
-   @Override
-   public ejy b(du $$0) {
-      return ejy.a;
-   }
+   public EnumSet<ia.a> a(StringReader $$0) throws CommandSyntaxException {
+      EnumSet<ia.a> $$1 = EnumSet.noneOf(ia.a.class);
 
-   @Override
-   public boolean a() {
-      return true;
-   }
+      while ($$0.canRead() && $$0.peek() != ' ') {
+         char $$2 = $$0.read();
 
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public static fp a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      double $$2 = a($$0, $$1);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         double $$3 = a($$0, $$1);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            double $$4 = a($$0, $$1);
-            return new fp($$2, $$3, $$4);
-         } else {
-            $$0.setCursor($$1);
-            throw ft.a.createWithContext($$0);
+         ia.a $$6 = switch ($$2) {
+            case 'x' -> ia.a.a;
+            case 'y' -> ia.a.b;
+            case 'z' -> ia.a.c;
+            default -> throw b.create();
+         };
+         if ($$1.contains($$6)) {
+            throw b.create();
          }
-      } else {
-         $$0.setCursor($$1);
-         throw ft.a.createWithContext($$0);
+
+         $$1.add($$6);
       }
+
+      return $$1;
    }
 
-   private static double a(StringReader $$0, int $$1) throws CommandSyntaxException {
-      if (!$$0.canRead()) {
-         throw fu.a.createWithContext($$0);
-      } else if ($$0.peek() != '^') {
-         $$0.setCursor($$1);
-         throw ft.b.createWithContext($$0);
-      } else {
-         $$0.skip();
-         return $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fp $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.d == $$1.d;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c, this.d);
+   public Collection<String> getExamples() {
+      return a;
    }
 }

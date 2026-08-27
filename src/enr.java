@@ -1,11 +1,8 @@
-public interface enr {
-   int a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void b();
-
-   enp c();
-
-   enp d();
-
-   void e();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@emx
+@emw
+interface enr {
 }

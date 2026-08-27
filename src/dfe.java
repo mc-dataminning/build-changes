@@ -1,25 +1,33 @@
-public class dfe extends dfi {
-   private ckc a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dfe(hx $$0, dhn $$1) {
-      super(dfk.y, $$0, $$1);
-      this.a = ((cuy)$$1.b()).b();
+public class dfe extends cvz implements dfb {
+   public static final MapCodec<dfe> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dfb.a.e.fieldOf("weathering_state").forGetter(cxa::c), u()).apply($$0, dfe::new)
+   );
+   private final dfb.a e;
+
+   @Override
+   public MapCodec<dfe> a() {
+      return d;
    }
 
-   public dfe(hx $$0, dhn $$1, ckc $$2) {
-      super(dfk.y, $$0, $$1);
-      this.a = $$2;
+   public dfe(dfb.a $$0, dio.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
-   public yo c() {
-      return yo.a(this);
+   @Override
+   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
-   public ckc d() {
-      return this.a;
+   @Override
+   public boolean e_(dip $$0) {
+      return dfb.c($$0.b()).isPresent();
    }
 
-   public void a(ckc $$0) {
-      this.a = $$0;
+   public dfb.a g() {
+      return this.e;
    }
 }

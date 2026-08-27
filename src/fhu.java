@@ -1,26 +1,29 @@
 import java.util.function.Function;
 
-public abstract class fhu<T extends bkv> extends fiq {
-   public float c;
-   public boolean d;
-   public boolean e = true;
+public abstract class fhu<E extends blf> extends fjh<E> {
+   private final float a;
+   private final float b;
 
-   protected fhu() {
-      this(frh::e);
+   public fhu(float $$0, float $$1) {
+      this($$0, $$1, fsq::e);
    }
 
-   protected fhu(Function<agm, frh> $$0) {
-      super($$0);
+   public fhu(float $$0, float $$1, Function<agt, fsq> $$2) {
+      super($$2);
+      this.b = $$1;
+      this.a = $$0;
    }
 
-   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-   }
-
-   public void a(fhu<T> $$0) {
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
+   @Override
+   public void a(epd $$0, eph $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         $$0.b(this.a, this.a, this.a);
+         $$0.a(0.0F, this.b / 16.0F, 0.0F);
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
+      } else {
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

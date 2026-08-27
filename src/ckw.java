@@ -1,33 +1,46 @@
-public class ckw<T extends bkv & bli> extends clj {
-   private final bkz<T> a;
-   private final int b;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public ckw(clj.a $$0, bkz<T> $$1, int $$2) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
+public class ckw extends cmc implements cng {
+   private static final Map<ckv, ckw> a = Maps.newEnumMap(ckv.class);
+   private final ckv b;
+
+   public ckw(ckv $$0, cmc.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public bjc<clo> a(csf $$0, cdz $$1, bja $$2) {
-      clo $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bjc.c($$3);
-      } else {
-         bkv $$4 = $$1.db();
-         if ($$1.bO() && $$4 instanceof bli $$5 && $$4.ai() == this.a && $$5.a()) {
-            $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
-            if ($$3.b()) {
-               clo $$6 = new clo(clr.qS);
-               $$6.c($$3.v());
-               return bjc.a($$6);
-            }
-
-            return bjc.a($$3);
+   public bjl a(cmh $$0, cer $$1, blv $$2, bjk $$3) {
+      if ($$2 instanceof bye $$4 && $$4.bx() && !$$4.A() && $$4.w() != this.b) {
+         $$4.dM().a($$1, $$4, arc.hi, ard.h, 1.0F, 1.0F);
+         if (!$$1.dM().B) {
+            $$4.b(this.b);
+            $$0.h(1);
          }
 
-         $$1.b(arf.c.b(this));
-         return bjc.c($$3);
+         return bjl.a($$1.dM().B);
+      }
+
+      return bjl.d;
+   }
+
+   public ckv d() {
+      return this.b;
+   }
+
+   public static ckw a(ckv $$0) {
+      return a.get($$0);
+   }
+
+   @Override
+   public boolean a(csy $$0, dhm $$1, boolean $$2, cer $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.d()), $$2)) {
+         $$0.a(null, $$1.aB_(), arc.hi, ard.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
       }
    }
 }

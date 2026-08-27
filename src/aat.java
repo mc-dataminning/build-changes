@@ -1,61 +1,78 @@
-import it.unimi.dsi.fastutil.shorts.ShortIterator;
-import it.unimi.dsi.fastutil.shorts.ShortSet;
-import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public class aat implements wo<yh> {
-   private static final int a = 12;
-   private final iy b;
-   private final short[] c;
-   private final dhn[] d;
+public class aat implements wu<yo> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final int d;
+   private final ed.a e;
+   private final ed.a f;
+   private final boolean g;
 
-   public aat(iy $$0, ShortSet $$1, djv $$2) {
-      this.b = $$0;
-      int $$3 = $$1.size();
-      this.c = new short[$$3];
-      this.d = new dhn[$$3];
-      int $$4 = 0;
-
-      for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
-         short $$5 = (Short)var6.next();
-         this.c[$$4] = $$5;
-         this.d[$$4] = $$2.a(iy.a($$5), iy.b($$5), iy.c($$5));
-      }
+   public aat(ed.a $$0, double $$1, double $$2, double $$3) {
+      this.e = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = 0;
+      this.g = false;
+      this.f = null;
    }
 
-   public aat(ty $$0) {
-      this.b = iy.a($$0.readLong());
-      int $$1 = $$0.n();
-      this.c = new short[$$1];
-      this.d = new dhn[$$1];
+   public aat(ed.a $$0, blf $$1, ed.a $$2) {
+      this.e = $$0;
+      this.d = $$1.aj();
+      this.f = $$2;
+      elb $$3 = $$2.a($$1);
+      this.a = $$3.c;
+      this.b = $$3.d;
+      this.c = $$3.e;
+      this.g = true;
+   }
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         long $$3 = $$0.o();
-         this.c[$$2] = (short)((int)($$3 & 4095L));
-         this.d[$$2] = cvf.q.a((int)($$3 >>> 12));
+   public aat(ue $$0) {
+      this.e = $$0.b(ed.a.class);
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.g = $$0.readBoolean();
+      if (this.g) {
+         this.d = $$0.n();
+         this.f = $$0.b(ed.a.class);
+      } else {
+         this.d = 0;
+         this.f = null;
       }
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.b(this.b.s());
-      $$0.c(this.c.length);
-
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         $$0.a((long)cvf.i(this.d[$$1]) << 12 | (long)this.c[$$1]);
+   public void a(ue $$0) {
+      $$0.a(this.e);
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.g);
+      if (this.g) {
+         $$0.c(this.d);
+         $$0.a(this.f);
       }
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public void a(BiConsumer<hx, dhn> $$0) {
-      hx.a $$1 = new hx.a();
+   public ed.a a() {
+      return this.e;
+   }
 
-      for (int $$2 = 0; $$2 < this.c.length; $$2++) {
-         short $$3 = this.c[$$2];
-         $$1.d(this.b.d($$3), this.b.e($$3), this.b.f($$3));
-         $$0.accept($$1, this.d[$$2]);
+   @Nullable
+   public elb a(csy $$0) {
+      if (this.g) {
+         blf $$1 = $$0.a(this.d);
+         return $$1 == null ? new elb(this.a, this.b, this.c) : this.f.a($$1);
+      } else {
+         return new elb(this.a, this.b, this.c);
       }
    }
 }

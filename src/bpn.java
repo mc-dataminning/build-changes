@@ -1,34 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bpn {
-   public static <E extends bln> bnd<E> a(Function<E, Optional<? extends bll>> $$0) {
-      return a($$0x -> true, $$0);
-   }
+   private static final int a = 300;
 
-   public static <E extends bln> bnd<E> a(Predicate<E> $$0, Function<E, Optional<? extends bll>> $$1) {
-      return bqo.a(
-         (Function<bqo.b<E>, ? extends App<bqo.c<E>, bqr<E>>>)($$2 -> $$2.group($$2.c(bum.o), $$2.a(bum.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test((E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends bll> $$7 = $$1.apply((E)$$5);
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        bll $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
+   public static bnn<blv> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return bqz.a(
+         (Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$3x -> $$3x.group($$3x.b(bux.C), $$3x.b(bux.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        hv $$11 = $$3x.<id>b($$4).b();
+                        if ($$11.a($$7.dm(), (double)$$1)) {
+                           $$3.increment();
                         }
+
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.dO().a($$6.X(), $$6.W());
+                        $$3.setValue(0);
+                        return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

@@ -1,113 +1,73 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URL;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeoutException;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Consumer;
 
-public class esh extends esi {
-   private static final Logger b = LogUtils.getLogger();
-   private static final uv c = uv.c("mco.connect.connecting");
-   private final epi d;
-   private final faz e;
+public class esh extends gjl {
+   private static final vb b = vb.c("mco.reset.world.seed");
+   public static final vb a = vb.c("mco.reset.world.generate");
+   private static final int c = 10;
+   private static final int v = 210;
+   private final ezr w = new ezr(this);
+   private final Consumer<etd> x;
+   private ewq y;
+   private esx z = esx.a;
+   private boolean A = true;
+   private final Set<String> B = new HashSet<>();
+   private final vb C;
 
-   public esh(faz $$0, epi $$1) {
-      this.e = $$0;
-      this.d = $$1;
+   public esh(Consumer<etd> $$0, vb $$1) {
+      super(a);
+      this.x = $$0;
+      this.C = $$1;
    }
 
    @Override
-   public void run() {
-      epj $$0;
-      try {
-         $$0 = this.f();
-      } catch (CancellationException var4) {
-         b.info("User aborted connecting to realms");
-         return;
-      } catch (eqe var5) {
-         switch (var5.a.a()) {
-            case 6002:
-               a(new erm(this.e, this.d));
-               return;
-            case 6006:
-               boolean $$3 = eti.N().b(this.d.g);
-               a(
-                  (faz)($$3
-                     ? new eqp(this.e, this.d.a, this.d.m == epi.d.b)
-                     : new eqv(uv.c("mco.brokenworld.nonowner.title"), uv.c("mco.brokenworld.nonowner.error"), this.e))
-               );
-               return;
-            default:
-               this.a(var5);
-               b.error("Couldn't connect to world", var5);
-               return;
-         }
-      } catch (TimeoutException var6) {
-         this.a(uv.c("mco.errorMessage.connectionFailure"));
-         return;
-      } catch (Exception var7) {
-         b.error("Couldn't connect to world", var7);
-         this.a(var7);
-         return;
-      }
+   public void aP_() {
+      this.y = new ewq(this.i, 210, 20, vb.c("mco.reset.world.seed"));
+      this.y.l(32);
+      this.c(this.y);
+      this.w.a(new exo(this.e, this.i));
+      ezv $$0 = this.w.c(ezv.d()).a(10);
+      $$0.a(ezn.a(this.i, this.y, b));
+      $$0.a(ewo.a(esx::a).a(esx.values()).a(this.z).a(0, 0, 210, 20, vb.c("selectWorld.mapType"), ($$0x, $$1x) -> this.z = $$1x));
+      $$0.a(ewo.b(this.A).a(0, 0, 210, 20, vb.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.A = $$1x));
+      this.a($$0);
+      ezv $$1 = this.w.b(ezv.e().a(10));
+      $$1.a(ewh.a(this.C, $$0x -> this.x.accept(this.C())).a());
+      $$1.a(ewh.a(va.k, $$0x -> this.aF_()).a());
+      this.w.a($$1x -> {
+         ewf var10000 = this.d($$1x);
+      });
+      this.c();
+   }
 
-      boolean $$7 = $$0.b != null && $$0.c != null;
-      faz $$8 = (faz)($$7 ? this.a($$0, this::a) : this.a($$0));
-      a($$8);
+   private void a(ezv $$0) {
+      apd $$1 = apg.c();
+      $$1.a();
+      $$0.a(ewh.a(vb.c("selectWorld.experiments"), $$1x -> this.f.a(new fgv(this, $$1, $$0xx -> {
+            this.B.clear();
+
+            for (apa $$1xx : $$0xx.f()) {
+               if ($$1xx.j() == ape.d) {
+                  this.B.add($$1xx.f());
+               }
+            }
+
+            this.f.a(this);
+         }))).a(210).a());
+   }
+
+   private etd C() {
+      return new etd(this.y.a(), this.z, this.A, this.B);
    }
 
    @Override
-   public uv a() {
-      return c;
+   protected void c() {
+      this.w.a();
    }
 
-   private epj f() throws eqe, TimeoutException, CancellationException {
-      eor $$0 = eor.a();
-
-      for (int $$1 = 0; $$1 < 40; $$1++) {
-         if (this.d()) {
-            throw new CancellationException();
-         }
-
-         try {
-            return $$0.c(this.d.a);
-         } catch (eqf var4) {
-            a((long)var4.c);
-         }
-      }
-
-      throw new TimeoutException();
-   }
-
-   public eqy a(epj $$0) {
-      return new eqz(this.e, new ese(this.e, this.d, $$0));
-   }
-
-   private eqx a(epj $$0, Function<epj, faz> $$1) {
-      BooleanConsumer $$2 = $$2x -> {
-         if (!$$2x) {
-            a(this.e);
-         } else {
-            this.b($$0).thenRun(() -> a($$1.apply($$0))).exceptionally($$1xx -> {
-               eti.N().ab().a();
-               b.error("Failed to download resource pack from {}", $$0, $$1xx);
-               a(new eqv(uv.c("mco.download.resourcePack.fail"), this.e));
-               return null;
-            });
-         }
-      };
-      return new eqx($$2, eqx.a.b, uv.c("mco.configure.world.resourcepack.question.line1"), uv.c("mco.configure.world.resourcepack.question.line2"), true);
-   }
-
-   private CompletableFuture<?> b(epj $$0) {
-      try {
-         return eti.N().ab().a(new URL($$0.b), $$0.c, false);
-      } catch (Exception var4) {
-         CompletableFuture<Void> $$2 = new CompletableFuture<>();
-         $$2.completeExceptionally(var4);
-         return $$2;
-      }
+   @Override
+   public void aF_() {
+      this.x.accept(null);
    }
 }

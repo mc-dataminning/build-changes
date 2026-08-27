@@ -1,41 +1,34 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class cst {
-   private final List<cst.a> a = Lists.newArrayList();
+public class cst extends efe {
+   public static final String a = "chunks";
+   private static final String b = "Forced";
+   private final LongSet c;
 
-   public void a(hx $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new cst.a($$0, $$1));
-      }
+   public static efe.a<cst> a() {
+      return new efe.a<>(cst::new, cst::b, avg.i);
    }
 
-   public double b(hx $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
-
-         for (cst.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
+   private cst(LongSet $$0) {
+      this.c = $$0;
    }
 
-   static class a {
-      private final hx a;
-      private final double b;
+   public cst() {
+      this(new LongOpenHashSet());
+   }
 
-      public a(hx $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public static cst b(sj $$0) {
+      return new cst(new LongOpenHashSet($$0.o("Forced")));
+   }
 
-      public double a(hx $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
+   @Override
+   public sj a(sj $$0) {
+      $$0.a("Forced", this.c.toLongArray());
+      return $$0;
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

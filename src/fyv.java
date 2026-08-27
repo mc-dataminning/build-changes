@@ -1,17 +1,18 @@
-public class fyv extends fxi<ccb, fkd> {
-   private static final agm a = new agm("textures/entity/illager/vex.png");
-   private static final agm i = new agm("textures/entity/illager/vex_charging.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fyv(fwc.a $$0) {
-      super($$0, new fkd($$0.a(fks.bI)), 0.3F);
-      this.a(new gad<>(this, $$0.d()));
+public class fyv extends fyu<bxv, fir<bxv>> {
+   private static final Map<bxv.a, agt> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(bxv.a.b, new agt("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(bxv.a.a, new agt("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public fyv(fxo.a $$0) {
+      super($$0, new fir<>($$0.a(flx.az)), 0.7F);
+      this.a(new gbu<>(this, $$0.c()));
    }
 
-   protected int a(ccb $$0, hx $$1) {
-      return 15;
-   }
-
-   public agm a(ccb $$0) {
-      return $$0.gg() ? i : a;
+   public agt a(bxv $$0) {
+      return a.get($$0.w());
    }
 }

@@ -1,64 +1,58 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+public class fum implements fui<dgh> {
+   private final fym a;
 
-public class fum implements fui.a {
-   private final eti a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
-
-   public fum(eti $$0) {
-      this.a = $$0;
+   public fum(fuj.a $$0) {
+      this.a = $$0.d();
    }
 
-   @Override
-   public void a(eob $$0, fqz $$1, double $$2, double $$3, double $$4) {
-      csg $$5 = this.a.r;
-      eof $$6 = $$1.getBuffer(frh.y());
-      hx $$7 = hx.a($$2, 0.0, $$4);
-
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            djj $$10 = $$5.x($$7.b($$8 * 16, 0, $$9 * 16));
-
-            for (Entry<dmw.a, dmw> $$11 : $$10.e()) {
-               dmw.a $$12 = $$11.getKey();
-               crm $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = iy.a($$13.e, $$15);
-                     int $$18 = iy.a($$13.f, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     fqx.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
+   public void a(dgh $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
+      if ($$0.i() != null) {
+         int $$6 = $$0.r().c(djf.bv);
+         if ($$6 > 0) {
+            ia $$7 = $$0.f();
+            if ($$7 != null) {
+               cmh $$8 = $$0.g();
+               if (!$$8.b()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$9 = this.a($$7, $$6);
+                  $$2.a($$9[0], $$9[1], $$9[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$10 = $$7 == ia.f || $$7 == ia.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$11 = fsg.a($$0.i(), $$0.r(), $$0.aB_().a($$7));
+                  this.a.a($$8, cme.i, $$11, gdf.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
                }
             }
          }
       }
    }
 
-   private Vector3f a(dmw.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   private float[] a(ia $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
+      }
+
+      return $$2;
    }
 }

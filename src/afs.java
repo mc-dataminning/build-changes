@@ -1,39 +1,24 @@
-public class afs<T> {
-   private final int a;
-   private final aft<T> b;
+public class afs implements wu<ty> {
+   private final long a;
 
-   public afs(int $$0, aft<T> $$1) {
+   public afs(long $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public int a() {
+   public afs(ue $$0) {
+      this.a = $$0.readLong();
+   }
+
+   @Override
+   public void a(ue $$0) {
+      $$0.b(this.a);
+   }
+
+   public void a(ty $$0) {
+      $$0.a(this);
+   }
+
+   public long a() {
       return this.a;
-   }
-
-   public aft<T> b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         afs<?> $$1 = (afs<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
    }
 }

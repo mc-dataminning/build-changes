@@ -1,19 +1,22 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class baz extends azx {
-   public baz(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Remove Golem Gossip Fix", bax.x, "minecraft:villager");
+public class baz extends avk {
+   private final Predicate<String> a;
+
+   public baz(Schema $$0, String $$1, Predicate<String> $$2) {
+      super($$0, $$1);
+      this.a = $$2.negate();
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), baz::a);
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.filter(this::a);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Gossips", $$1 -> $$0.createList($$1.asStream().filter($$0xx -> !$$0xx.get("Type").asString("").equals("golem"))));
+   private <T> boolean a(Dynamic<T> $$0) {
+      return $$0.get("type").asString().result().filter(this.a).isPresent();
    }
 }

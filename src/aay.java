@@ -1,40 +1,31 @@
-public class aay implements wo<yh> {
-   private final double a;
-   private final double b;
-   private final long c;
+public record aay(act d, byte e) implements wu<yo> {
+   public static final byte a = 1;
+   public static final byte b = 2;
+   public static final byte c = 3;
 
-   public aay(dje $$0) {
-      this.a = $$0.i();
-      this.b = $$0.k();
-      this.c = $$0.j();
-   }
-
-   public aay(ty $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.o();
+   public aay(ue $$0) {
+      this(new act($$0), $$0.readByte());
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(ue $$0) {
+      this.d.a($$0);
+      $$0.k(this.e);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
+   public boolean a(byte $$0) {
+      return (this.e & $$0) != 0;
    }
 
-   public double d() {
-      return this.b;
+   public act a() {
+      return this.d;
    }
 
-   public long e() {
-      return this.c;
+   public byte d() {
+      return this.e;
    }
 }

@@ -1,63 +1,62 @@
-import java.util.Collection;
+import javax.annotation.Nullable;
 
-public abstract class ghv<E extends ewa.a<E>> extends ewa<E> {
-   protected ghv(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      super(eti.N(), $$0, $$1, $$2, $$3, $$4);
+public class ghv {
+   private static final int a = 100;
+   private final auf b = auf.a();
+   private final euk c;
+   @Nullable
+   private ggw d;
+   private int e = 100;
+
+   public ghv(euk $$0) {
+      this.c = $$0;
    }
 
-   public void k(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.k() != 0) {
-         this.a(this.d($$0));
+   public void a() {
+      aqz $$0 = this.c.ai();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.ah().b(this.d);
+            this.e = aty.a(this.b, 0, $$0.b() / 2);
+         }
+
+         if (!this.c.ah().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, aty.a(this.b, $$0.b(), $$0.c()));
+         }
+      }
+
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
       }
    }
 
-   @Override
-   public void a(int $$0) {
-      this.k($$0);
+   public void a(aqz $$0) {
+      this.d = ggr.a($$0.a().a());
+      if (this.d.b() != gia.a) {
+         this.c.ah().a(this.d);
+      }
+
+      this.e = Integer.MAX_VALUE;
    }
 
-   @Override
-   public int a() {
-      return 0;
+   public void b(aqz $$0) {
+      if (this.c($$0)) {
+         this.b();
+      }
    }
 
-   @Override
-   public int c() {
-      return this.o() + this.b();
+   public void b() {
+      if (this.d != null) {
+         this.c.ah().b(this.d);
+         this.d = null;
+      }
+
+      this.e += 100;
    }
 
-   @Override
-   public int b() {
-      return (int)((double)this.e * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int k() {
-      return super.k();
-   }
-
-   @Override
-   public int h(int $$0) {
-      return super.h($$0);
-   }
-
-   @Override
-   public int o() {
-      return super.o();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void v() {
-      this.j();
+   public boolean c(aqz $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

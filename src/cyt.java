@@ -1,73 +1,58 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class cyt extends cys implements cvi {
-   protected cyt(dhm.d $$0, ib $$1, eks $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public abstract class cyt extends czu {
+   public static final djn<dja> K = djf.U;
+
+   protected cyt(dio.d $$0) {
+      super($$0);
    }
 
    @Override
    protected abstract MapCodec<? extends cyt> a();
 
-   protected dhn a(dhn $$0, dhn $$1) {
-      return $$1;
+   @Override
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      return b($$1, $$2, h($$0).g());
    }
 
-   @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
+   public static boolean b(ctb $$0, hv $$1, ia $$2) {
+      hv $$3 = $$1.a($$2);
+      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   }
 
-      cyu $$6 = this.c();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, ecy.c, ecy.c.a($$3));
+   @Nullable
+   @Override
+   public dip a(coq $$0) {
+      for (ia $$1 : $$0.f()) {
+         dip $$2;
+         if ($$1.o() == ia.a.b) {
+            $$2 = this.o().a(K, $$1 == ia.b ? dja.c : dja.a).a(aE, $$0.g());
+         } else {
+            $$2 = this.o().a(K, dja.b).a(aE, $$1.g());
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         if ($$2.a((ctb)$$0.q(), $$0.a())) {
+            return $$2;
+         }
       }
+
+      return null;
    }
 
    @Override
-   public clo a(csi $$0, hx $$1, dhn $$2) {
-      return new clo(this.c());
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public boolean b(csi $$0, hx $$1, dhn $$2) {
-      Optional<hx> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
-   }
-
-   @Override
-   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
-      Optional<hx> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dhn $$5 = $$0.a_($$4.get());
-         ((cyu)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+   protected static ia h(dip $$0) {
+      switch ((dja)$$0.c(K)) {
+         case c:
+            return ia.a;
+         case a:
+            return ia.b;
+         default:
+            return $$0.c(aE);
       }
-   }
-
-   private Optional<hx> a(crl $$0, hx $$1, cvf $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
-   }
-
-   @Override
-   public boolean a(dhn $$0, cnw $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().k()) ? false : $$2;
-   }
-
-   @Override
-   protected cvf b() {
-      return this;
    }
 }

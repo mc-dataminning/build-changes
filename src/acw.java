@@ -1,36 +1,98 @@
-import java.time.Instant;
-
-public record acw(String a, Instant b, long c, ea d, vc.b e) implements wo<acp> {
-   public acw(ty $$0) {
-      this($$0.d(256), $$0.w(), $$0.readLong(), new ea($$0), new vc.b($$0));
-   }
-
+public interface acw extends acy, xe {
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.a, 256);
-      $$0.a(this.b);
-      $$0.b(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   default ud b() {
+      return ud.b;
    }
 
-   public void a(acp $$0) {
-      $$0.a(this);
-   }
+   void a(aep var1);
 
-   public Instant d() {
-      return this.b;
-   }
+   void a(ade var1);
 
-   public long e() {
-      return this.c;
-   }
+   void a(add var1);
 
-   public ea f() {
-      return this.d;
-   }
+   void a(adc var1);
 
-   public vc.b g() {
-      return this.e;
-   }
+   void a(adh var1);
+
+   void a(adk var1);
+
+   void a(adl var1);
+
+   void a(adx var1);
+
+   void a(adm var1);
+
+   void a(adq var1);
+
+   void a(adt var1);
+
+   void a(ady var1);
+
+   void a(adz var1);
+
+   void a(aea var1);
+
+   void a(aeb var1);
+
+   void a(aei var1);
+
+   void a(ael var1);
+
+   void a(aeo var1);
+
+   void a(aer var1);
+
+   void a(aes var1);
+
+   void a(aeq var1);
+
+   void a(adv var1);
+
+   void a(adu var1);
+
+   void a(acz var1);
+
+   void a(aed var1);
+
+   void a(aec var1);
+
+   void a(aef var1);
+
+   void a(adi var1);
+
+   void a(aej var1);
+
+   void a(aek var1);
+
+   void a(adw var1);
+
+   void a(aee var1);
+
+   void a(aeh var1);
+
+   void a(aen var1);
+
+   void a(aeg var1);
+
+   void a(ado var1);
+
+   void a(adp var1);
+
+   void a(adn var1);
+
+   void a(ada var1);
+
+   void a(aem var1);
+
+   void a(adr var1);
+
+   void a(adb var1);
+
+   void a(ads var1);
+
+   void a(adf var1);
+
+   void a(adj var1);
+
+   void a(adg var1);
 }

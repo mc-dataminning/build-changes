@@ -1,31 +1,21 @@
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import org.lwjgl.glfw.GLFW;
 import org.lwjgl.system.MemoryUtil;
 
 public class emu {
-   public static ByteBuffer a(int $$0) {
-      return MemoryUtil.memAlloc($$0);
+   public static void a(eno $$0, float $$1) {
+      ConcurrentLinkedQueue<enn> $$2 = $$0.i();
    }
 
-   public static void a(Buffer $$0) {
-      MemoryUtil.memFree($$0);
+   public static void b(eno $$0, float $$1) {
+      ConcurrentLinkedQueue<enn> $$2 = $$0.j();
    }
 
-   public static String a() {
-      return GlStateManager._getString(7936);
+   public static void a() {
+      MemoryUtil.memSet(0L, 0, 1L);
    }
 
-   public static String b() {
-      return GLX._getCpuInfo();
-   }
-
-   public static String c() {
-      return GlStateManager._getString(7937);
-   }
-
-   public static String d() {
-      return GlStateManager._getString(7938);
+   public static double b() {
+      return GLFW.glfwGetTime();
    }
 }

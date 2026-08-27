@@ -1,16 +1,12 @@
-public class fzc extends fyd {
-   private static final agm a = new agm("textures/entity/skeleton/wither_skeleton.png");
+public class fzc extends fyu<bxz, fka<bxz>> {
+   private static final agt a = new agt("textures/entity/pig/pig.png");
 
-   public fzc(fwc.a $$0) {
-      super($$0, fks.bQ, fks.bR, fks.bS);
+   public fzc(fxo.a $$0) {
+      super($$0, new fka<>($$0.a(flx.aF)), 0.7F);
+      this.a(new gca<>(this, new fka<>($$0.a(flx.aN)), new agt("textures/entity/pig/pig_saddle.png")));
    }
 
-   @Override
-   public agm a(caw $$0) {
+   public agt a(bxz $$0) {
       return a;
-   }
-
-   protected void a(caw $$0, eob $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

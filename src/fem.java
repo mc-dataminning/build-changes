@@ -1,244 +1,140 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fem implements ewh, ewz {
-   private static final agm b = new agm("recipe_book/overlay_recipe");
-   static final agm c = new agm("recipe_book/furnace_overlay_highlighted");
-   static final agm d = new agm("recipe_book/furnace_overlay");
-   static final agm e = new agm("recipe_book/crafting_overlay_highlighted");
-   static final agm f = new agm("recipe_book/crafting_overlay");
-   static final agm g = new agm("recipe_book/furnace_overlay_disabled_highlighted");
-   static final agm h = new agm("recipe_book/furnace_overlay_disabled");
-   static final agm i = new agm("recipe_book/crafting_overlay_disabled_highlighted");
-   static final agm j = new agm("recipe_book/crafting_overlay_disabled");
-   private static final int k = 4;
-   private static final int l = 5;
-   private static final float m = 0.375F;
-   public static final int a = 25;
-   private final List<fem.a> n = Lists.newArrayList();
-   private boolean o;
-   private int p;
-   private int q;
-   private eti r;
-   private fer t;
+public class fem extends fec<cjg> {
+   private static final agt x = new agt("container/smithing/error");
+   private static final agt y = new agt("item/empty_slot_smithing_template_armor_trim");
+   private static final agt z = new agt("item/empty_slot_smithing_template_netherite_upgrade");
+   private static final vb A = vb.c("container.upgrade.missing_template_tooltip");
+   private static final vb B = vb.c("container.upgrade.error_tooltip");
+   private static final List<agt> C = List.of(y, z);
+   private static final int D = 44;
+   private static final int E = 15;
+   private static final int F = 28;
+   private static final int G = 21;
+   private static final int H = 65;
+   private static final int I = 46;
+   private static final int J = 115;
+   private static final int K = 210;
+   private static final int L = 25;
+   private static final Vector3f M = new Vector3f();
+   private static final Quaternionf N = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
+   private static final int O = 25;
+   private static final int P = 75;
+   private static final int Q = 141;
+   private final fdr R = new fdr(0);
+   private final fdr S = new fdr(1);
+   private final fdr T = new fdr(2);
    @Nullable
-   private cov<?> u;
-   float v;
-   boolean w;
+   private cau U;
 
-   public void a(eti $$0, fer $$1, int $$2, int $$3, int $$4, int $$5, float $$6) {
-      this.r = $$0;
-      this.t = $$1;
-      if ($$0.s.bS instanceof cgs) {
-         this.w = true;
-      }
-
-      boolean $$7 = $$0.s.m().a((cie<?>)$$0.s.bS);
-      List<cov<?>> $$8 = $$1.b(true);
-      List<cov<?>> $$9 = $$7 ? Collections.emptyList() : $$1.b(false);
-      int $$10 = $$8.size();
-      int $$11 = $$10 + $$9.size();
-      int $$12 = $$11 <= 16 ? 4 : 5;
-      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
-      this.p = $$2;
-      this.q = $$3;
-      float $$14 = (float)(this.p + Math.min($$11, $$12) * 25);
-      float $$15 = (float)($$4 + 50);
-      if ($$14 > $$15) {
-         this.p = (int)((float)this.p - $$6 * (float)((int)(($$14 - $$15) / $$6)));
-      }
-
-      float $$16 = (float)(this.q + $$13 * 25);
-      float $$17 = (float)($$5 + 50);
-      if ($$16 > $$17) {
-         this.q = (int)((float)this.q - $$6 * (float)atq.f(($$16 - $$17) / $$6));
-      }
-
-      float $$18 = (float)this.q;
-      float $$19 = (float)($$5 - 100);
-      if ($$18 < $$19) {
-         this.q = (int)((float)this.q - $$6 * (float)atq.f(($$18 - $$19) / $$6));
-      }
-
-      this.o = true;
-      this.n.clear();
-
-      for (int $$20 = 0; $$20 < $$11; $$20++) {
-         boolean $$21 = $$20 < $$10;
-         cov<?> $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
-         int $$23 = this.p + 4 + 25 * ($$20 % $$12);
-         int $$24 = this.q + 5 + 25 * ($$20 / $$12);
-         if (this.w) {
-            this.n.add(new fem.b($$23, $$24, $$22, $$21));
-         } else {
-            this.n.add(new fem.a($$23, $$24, $$22, $$21));
-         }
-      }
-
-      this.u = null;
-   }
-
-   public fer a() {
-      return this.t;
-   }
-
-   @Nullable
-   public cov<?> b() {
-      return this.u;
+   public fem(cjg $$0, ceq $$1, vb $$2) {
+      super($$0, $$1, $$2, new agt("textures/gui/container/smithing.png"));
+      this.l = 44;
+      this.m = 15;
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 != 0) {
-         return false;
-      } else {
-         for (fem.a $$3 : this.n) {
-            if ($$3.a($$0, $$1, $$2)) {
-               this.u = $$3.c;
-               return true;
-            }
+   protected void E() {
+      this.U = new cau(this.f.r, 0.0, 0.0, 0.0);
+      this.U.s(true);
+      this.U.a(true);
+      this.U.aU = 210.0F;
+      this.U.s(25.0F);
+      this.U.aW = this.U.dC();
+      this.U.aX = this.U.dC();
+      this.b(this.p.b(3).g());
+   }
+
+   @Override
+   public void C() {
+      super.C();
+      Optional<cnj> $$0 = this.F();
+      this.R.a(C);
+      this.S.a($$0.map(cnj::y).orElse(List.of()));
+      this.T.a($$0.map(cnj::z).orElse(List.of()));
+   }
+
+   private Optional<cnj> F() {
+      cmh $$0 = this.p.b(0).g();
+      return !$$0.b() && $$0.d() instanceof cnj $$1 ? Optional.of($$1) : Optional.empty();
+   }
+
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(evw $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.R.a(this.p, $$0, $$1, this.t, this.u);
+      this.S.a(this.p, $$0, $$1, this.t, this.u);
+      this.T.a(this.p, $$0, $$1, this.t, this.u);
+      feb.a($$0, (float)(this.t + 141), (float)(this.u + 75), 25, M, N, null, this.U);
+   }
+
+   @Override
+   public void a(chk $$0, int $$1, cmh $$2) {
+      if ($$1 == 3) {
+         this.b($$2);
+      }
+   }
+
+   private void b(cmh $$0) {
+      if (this.U != null) {
+         for (blk $$1 : blk.values()) {
+            this.U.a($$1, cmh.f);
          }
 
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a_(double $$0, double $$1) {
-      return false;
-   }
-
-   @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      if (this.o) {
-         this.v += $$3;
-         RenderSystem.enableBlend();
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1000.0F);
-         int $$4 = this.n.size() <= 16 ? 4 : 5;
-         int $$5 = Math.min(this.n.size(), $$4);
-         int $$6 = atq.f((float)this.n.size() / (float)$$4);
-         int $$7 = 4;
-         $$0.a(b, this.p, this.q, $$5 * 25 + 8, $$6 * 25 + 8);
-         RenderSystem.disableBlend();
-
-         for (fem.a $$8 : this.n) {
-            $$8.a($$0, $$1, $$2, $$3);
-         }
-
-         $$0.c().b();
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o = $$0;
-   }
-
-   public boolean c() {
-      return this.o;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public boolean aK_() {
-      return false;
-   }
-
-   class a extends evc implements afz<coq> {
-      final cov<?> c;
-      private final boolean d;
-      protected final List<fem.a.a> a = Lists.newArrayList();
-
-      public a(int $$0, int $$1, cov<?> $$2, boolean $$3) {
-         super($$0, $$1, 200, 20, uu.a);
-         this.f = 24;
-         this.g = 24;
-         this.c = $$2;
-         this.d = $$3;
-         this.a($$2);
-      }
-
-      protected void a(cov<?> $$0) {
-         this.a(3, 3, -1, $$0, $$0.b().a().iterator(), 0);
-      }
-
-      @Override
-      public void a(eyx $$0) {
-         this.c($$0);
-      }
-
-      @Override
-      public void a(Iterator<coq> $$0, int $$1, int $$2, int $$3, int $$4) {
-         clo[] $$5 = $$0.next().a();
-         if ($$5.length != 0) {
-            this.a.add(new fem.a.a(3 + $$4 * 7, 3 + $$3 * 7, $$5));
-         }
-      }
-
-      @Override
-      public void b(eut $$0, int $$1, int $$2, float $$3) {
-         agm $$4;
-         if (this.d) {
-            if (fem.this.w) {
-               $$4 = this.n() ? fem.c : fem.d;
+         if (!$$0.b()) {
+            cmh $$2 = $$0.p();
+            if ($$0.d() instanceof cjr $$3) {
+               this.U.a($$3.g(), $$2);
             } else {
-               $$4 = this.n() ? fem.e : fem.f;
+               this.U.a(blk.b, $$2);
             }
-         } else if (fem.this.w) {
-            $$4 = this.n() ? fem.g : fem.h;
-         } else {
-            $$4 = this.n() ? fem.i : fem.j;
-         }
-
-         $$0.a($$4, this.p(), this.r(), this.f, this.g);
-         $$0.c().a();
-         $$0.c().a((double)(this.p() + 2), (double)(this.r() + 2), 150.0);
-
-         for (fem.a.a $$8 : this.a) {
-            $$0.c().a();
-            $$0.c().a((double)$$8.b, (double)$$8.c, 0.0);
-            $$0.c().b(0.375F, 0.375F, 1.0F);
-            $$0.c().a(-8.0, -8.0, 0.0);
-            if ($$8.a.length > 0) {
-               $$0.a($$8.a[atq.d(fem.this.v / 30.0F) % $$8.a.length], 0, 0);
-            }
-
-            $$0.c().b();
-         }
-
-         $$0.c().b();
-      }
-
-      protected class a {
-         public final clo[] a;
-         public final int b;
-         public final int c;
-
-         public a(int $$1, int $$2, clo[] $$3) {
-            this.b = $$1;
-            this.c = $$2;
-            this.a = $$3;
          }
       }
    }
 
-   class b extends fem.a {
-      public b(int $$0, int $$1, cov<?> $$2, boolean $$3) {
-         super($$0, $$1, $$2, $$3);
+   @Override
+   protected void c(evw $$0, int $$1, int $$2) {
+      if (this.G()) {
+         $$0.a(x, $$1 + 65, $$2 + 46, 28, 21);
+      }
+   }
+
+   private void d(evw $$0, int $$1, int $$2) {
+      Optional<vb> $$3 = Optional.empty();
+      if (this.G() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
+         $$3 = Optional.of(B);
       }
 
-      @Override
-      protected void a(cov<?> $$0) {
-         coq $$1 = $$0.b().a().get(0);
-         clo[] $$2 = $$1.a();
-         this.a.add(new fem.a.a(10, 10, $$2));
+      if (this.r != null) {
+         cmh $$4 = this.p.b(0).g();
+         cmh $$5 = this.r.g();
+         if ($$4.b()) {
+            if (this.r.e == 0) {
+               $$3 = Optional.of(A);
+            }
+         } else if ($$4.d() instanceof cnj $$6 && $$5.b()) {
+            if (this.r.e == 1) {
+               $$3 = Optional.of($$6.i());
+            } else if (this.r.e == 2) {
+               $$3 = Optional.of($$6.x());
+            }
+         }
       }
+
+      $$3.ifPresent($$3x -> $$0.b(this.i, this.i.c($$3x, 115), $$1, $$2));
+   }
+
+   private boolean G() {
+      return this.p.b(0).h() && this.p.b(1).h() && this.p.b(2).h() && !this.p.b(this.p.o()).h();
    }
 }

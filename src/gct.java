@@ -1,17 +1,11 @@
-import java.io.IOException;
+import javax.annotation.Nullable;
 
-public class gct extends apq<int[]> {
-   private static final agm a = new agm("textures/colormap/foliage.png");
-
-   protected int[] a(apl $$0, bfs $$1) {
-      try {
-         return gcw.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load foliage color texture", var4);
-      }
+public interface gct extends gcw {
+   @Deprecated
+   @Override
+   default float call(cmh $$0, @Nullable fmt $$1, @Nullable blv $$2, int $$3) {
+      return aty.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
    }
 
-   protected void a(int[] $$0, apl $$1, bfs $$2) {
-      crz.a($$0);
-   }
+   float unclampedCall(cmh var1, @Nullable fmt var2, @Nullable blv var3, int var4);
 }

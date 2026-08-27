@@ -1,103 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+public abstract class cue {
+   public static final ags<ctx> a = a("the_void");
+   public static final ags<ctx> b = a("plains");
+   public static final ags<ctx> c = a("sunflower_plains");
+   public static final ags<ctx> d = a("snowy_plains");
+   public static final ags<ctx> e = a("ice_spikes");
+   public static final ags<ctx> f = a("desert");
+   public static final ags<ctx> g = a("swamp");
+   public static final ags<ctx> h = a("mangrove_swamp");
+   public static final ags<ctx> i = a("forest");
+   public static final ags<ctx> j = a("flower_forest");
+   public static final ags<ctx> k = a("birch_forest");
+   public static final ags<ctx> l = a("dark_forest");
+   public static final ags<ctx> m = a("old_growth_birch_forest");
+   public static final ags<ctx> n = a("old_growth_pine_taiga");
+   public static final ags<ctx> o = a("old_growth_spruce_taiga");
+   public static final ags<ctx> p = a("taiga");
+   public static final ags<ctx> q = a("snowy_taiga");
+   public static final ags<ctx> r = a("savanna");
+   public static final ags<ctx> s = a("savanna_plateau");
+   public static final ags<ctx> t = a("windswept_hills");
+   public static final ags<ctx> u = a("windswept_gravelly_hills");
+   public static final ags<ctx> v = a("windswept_forest");
+   public static final ags<ctx> w = a("windswept_savanna");
+   public static final ags<ctx> x = a("jungle");
+   public static final ags<ctx> y = a("sparse_jungle");
+   public static final ags<ctx> z = a("bamboo_jungle");
+   public static final ags<ctx> A = a("badlands");
+   public static final ags<ctx> B = a("eroded_badlands");
+   public static final ags<ctx> C = a("wooded_badlands");
+   public static final ags<ctx> D = a("meadow");
+   public static final ags<ctx> E = a("cherry_grove");
+   public static final ags<ctx> F = a("grove");
+   public static final ags<ctx> G = a("snowy_slopes");
+   public static final ags<ctx> H = a("frozen_peaks");
+   public static final ags<ctx> I = a("jagged_peaks");
+   public static final ags<ctx> J = a("stony_peaks");
+   public static final ags<ctx> K = a("river");
+   public static final ags<ctx> L = a("frozen_river");
+   public static final ags<ctx> M = a("beach");
+   public static final ags<ctx> N = a("snowy_beach");
+   public static final ags<ctx> O = a("stony_shore");
+   public static final ags<ctx> P = a("warm_ocean");
+   public static final ags<ctx> Q = a("lukewarm_ocean");
+   public static final ags<ctx> R = a("deep_lukewarm_ocean");
+   public static final ags<ctx> S = a("ocean");
+   public static final ags<ctx> T = a("deep_ocean");
+   public static final ags<ctx> U = a("cold_ocean");
+   public static final ags<ctx> V = a("deep_cold_ocean");
+   public static final ags<ctx> W = a("frozen_ocean");
+   public static final ags<ctx> X = a("deep_frozen_ocean");
+   public static final ags<ctx> Y = a("mushroom_fields");
+   public static final ags<ctx> Z = a("dripstone_caves");
+   public static final ags<ctx> aa = a("lush_caves");
+   public static final ags<ctx> ab = a("deep_dark");
+   public static final ags<ctx> ac = a("nether_wastes");
+   public static final ags<ctx> ad = a("warped_forest");
+   public static final ags<ctx> ae = a("crimson_forest");
+   public static final ags<ctx> af = a("soul_sand_valley");
+   public static final ags<ctx> ag = a("basalt_deltas");
+   public static final ags<ctx> ah = a("the_end");
+   public static final ags<ctx> ai = a("end_highlands");
+   public static final ags<ctx> aj = a("end_midlands");
+   public static final ags<ctx> ak = a("small_end_islands");
+   public static final ags<ctx> al = a("end_barrens");
 
-public class cue extends cud implements dcf {
-   public static final MapCodec<cue> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.k), Codec.FLOAT.fieldOf("aabb_offset").forGetter($$0x -> $$0x.l), u())
-            .apply($$0, cue::new)
-   );
-   public static final die c = did.C;
-   public static final dih d = did.P;
-   private final float k;
-   private final float l;
-   protected final eks e;
-   protected final eks f;
-   protected final eks g;
-   protected final eks h;
-   protected final eks i;
-   protected final eks j;
-
-   @Override
-   public MapCodec<cue> a() {
-      return b;
-   }
-
-   public cue(float $$0, float $$1, dhm.d $$2) {
-      super($$2);
-      this.k(this.o().a(c, Boolean.valueOf(false)).a(d, ib.b));
-      this.i = cvf.a((double)$$1, 0.0, (double)$$1, (double)(16.0F - $$1), (double)$$0, (double)(16.0F - $$1));
-      this.j = cvf.a((double)$$1, (double)(16.0F - $$0), (double)$$1, (double)(16.0F - $$1), 16.0, (double)(16.0F - $$1));
-      this.e = cvf.a((double)$$1, (double)$$1, (double)(16.0F - $$0), (double)(16.0F - $$1), (double)(16.0F - $$1), 16.0);
-      this.f = cvf.a((double)$$1, (double)$$1, 0.0, (double)(16.0F - $$1), (double)(16.0F - $$1), (double)$$0);
-      this.g = cvf.a(0.0, (double)$$1, (double)$$1, (double)$$0, (double)(16.0F - $$1), (double)(16.0F - $$1));
-      this.h = cvf.a((double)(16.0F - $$0), (double)$$1, (double)$$1, 16.0, (double)(16.0F - $$1), (double)(16.0F - $$1));
-      this.k = $$0;
-      this.l = $$1;
-   }
-
-   @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      ib $$4 = $$0.c(d);
-      switch ($$4) {
-         case c:
-            return this.e;
-         case d:
-            return this.f;
-         case f:
-            return this.g;
-         case e:
-            return this.h;
-         case a:
-            return this.j;
-         case b:
-         default:
-            return this.i;
-      }
-   }
-
-   @Override
-   public boolean a(dhn $$0, csi $$1, hx $$2) {
-      ib $$3 = $$0.c(d);
-      hx $$4 = $$2.a($$3.g());
-      return $$1.a_($$4).d($$1, $$4, $$3);
-   }
-
-   @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, ecy.c, ecy.c.a($$3));
-      }
-
-      return $$1 == $$0.c(d).g() && !$$0.a($$3, $$4) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public dhn a(cnw $$0) {
-      csg $$1 = $$0.q();
-      hx $$2 = $$0.a();
-      return this.o().a(c, Boolean.valueOf($$1.b_($$2).a() == ecy.c)).a(d, $$0.k());
-   }
-
-   @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   public dhn a(dhn $$0, dab $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   public ecx c_(dhn $$0) {
-      return $$0.c(c) ? ecy.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(c, d);
+   private static ags<ctx> a(String $$0) {
+      return ags.a(kc.as, new agt($$0));
    }
 }

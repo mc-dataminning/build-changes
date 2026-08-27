@@ -1,20 +1,20 @@
-public class cqj extends cpz {
-   public cqj(cpz.a $$0, bla... $$1) {
-      super($$0, cqa.j, $$1);
+public class cqj extends cqs {
+   public cqj(cqs.a $$0, blk... $$1) {
+      super($$0, cqt.k, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 25;
+      return 1 + ($$0 - 1) * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 50;
+      return this.a($$0) + 15;
    }
 
    @Override
-   public boolean b() {
-      return true;
+   public int a() {
+      return 5;
    }
 }

@@ -1,57 +1,34 @@
 import java.util.EnumSet;
 
-public abstract class bsg {
-   private final EnumSet<bsg.a> a = EnumSet.noneOf(bsg.a.class);
+public class bsg extends bsr {
+   private final blx a;
+   private final csy b;
 
-   public abstract boolean a();
-
-   public boolean b() {
-      return this.a();
-   }
-
-   public boolean S_() {
-      return true;
-   }
-
-   public void c() {
-   }
-
-   public void d() {
-   }
-
-   public boolean T_() {
-      return false;
-   }
-
-   public void e() {
-   }
-
-   public void a(EnumSet<bsg.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   public bsg(blx $$0, csy $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(bsr.a.c));
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean a() {
+      boolean $$0 = this.a.aB || this.a.aA;
+      if ($$0 && this.a.ai().a(aru.h)) {
+         hv $$1 = this.a.dm().c();
+         dip $$2 = this.b.a_($$1);
+         return $$2.a(cwb.qP) || $$2.k(this.b, $$1) == elr.a();
+      } else {
+         return false;
+      }
    }
 
-   public EnumSet<bsg.a> j() {
-      return this.a;
+   @Override
+   public boolean T_() {
+      return true;
    }
 
-   protected int a(int $$0) {
-      return this.T_() ? $$0 : b($$0);
-   }
-
-   protected static int b(int $$0) {
-      return atq.e($$0, 2);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void e() {
+      this.a.M().a();
    }
 }

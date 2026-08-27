@@ -1,179 +1,129 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.system.MemoryStack;
 
-public class eph {
-   static final Logger a = LogUtils.getLogger();
-   private static final String b = "notificationUuid";
-   private static final String c = "dismissable";
-   private static final String d = "seen";
-   private static final String e = "type";
-   private static final String f = "visitUrl";
-   private static final String g = "infoPopup";
-   static final uv h = uv.c("mco.notification.visitUrl.buttonText.default");
-   final UUID i;
-   final boolean j;
-   final boolean k;
-   final String l;
+public interface eph {
+   eph a(double var1, double var3, double var5);
 
-   eph(UUID $$0, boolean $$1, boolean $$2, String $$3) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
+   eph a(int var1, int var2, int var3, int var4);
+
+   eph a(float var1, float var2);
+
+   eph a(int var1, int var2);
+
+   eph b(int var1, int var2);
+
+   eph a(float var1, float var2, float var3);
+
+   void e();
+
+   default void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a((double)$$0, (double)$$1, (double)$$2);
+      this.a($$3, $$4, $$5, $$6);
+      this.a($$7, $$8);
+      this.c($$9);
+      this.b($$10);
+      this.a($$11, $$12, $$13);
+      this.e();
    }
 
-   public boolean a() {
-      return this.k;
+   void b(int var1, int var2, int var3, int var4);
+
+   void l();
+
+   default eph a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
    }
 
-   public boolean b() {
-      return this.j;
+   default eph a(int $$0) {
+      return this.a(ati.b.b($$0), ati.b.c($$0), ati.b.d($$0), ati.b.a($$0));
    }
 
-   public UUID c() {
-      return this.i;
+   default eph b(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   public static List<eph> a(String $$0) {
-      List<eph> $$1 = new ArrayList<>();
+   default eph c(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
+   }
+
+   default void a(epd.a $$0, ftf $$1, float $$2, float $$3, float $$4, int $$5, int $$6) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, new int[]{$$5, $$5, $$5, $$5}, $$6, false);
+   }
+
+   default void a(epd.a $$0, ftf $$1, float[] $$2, float $$3, float $$4, float $$5, int[] $$6, int $$7, boolean $$8) {
+      float[] $$9 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
+      int[] $$10 = new int[]{$$6[0], $$6[1], $$6[2], $$6[3]};
+      int[] $$11 = $$1.b();
+      iz $$12 = $$1.e().q();
+      Matrix4f $$13 = $$0.a();
+      Vector3f $$14 = $$0.b().transform(new Vector3f((float)$$12.u(), (float)$$12.v(), (float)$$12.w()));
+      int $$15 = 8;
+      int $$16 = $$11.length / 8;
+      MemoryStack $$17 = MemoryStack.stackPush();
 
       try {
-         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
-            $$1.add(a($$3.getAsJsonObject()));
-         }
-      } catch (Exception var5) {
-         a.error("Could not parse list of RealmsNotifications", var5);
-      }
+         ByteBuffer $$18 = $$17.malloc(epb.j.b());
+         IntBuffer $$19 = $$18.asIntBuffer();
 
-      return $$1;
-   }
-
-   private static eph a(JsonObject $$0) {
-      UUID $$1 = eru.a("notificationUuid", $$0, null);
-      if ($$1 == null) {
-         throw new IllegalStateException("Missing required property notificationUuid");
-      } else {
-         boolean $$2 = eru.a("dismissable", $$0, true);
-         boolean $$3 = eru.a("seen", $$0, false);
-         String $$4 = eru.a("type", $$0);
-         eph $$5 = new eph($$1, $$2, $$3, $$4);
-
-         return (eph)(switch ($$4) {
-            case "visitUrl" -> eph.c.a($$5, $$0);
-            case "infoPopup" -> eph.a.a($$5, $$0);
-            default -> $$5;
-         });
-      }
-   }
-
-   public static class a extends eph {
-      private static final String a = "title";
-      private static final String b = "message";
-      private static final String c = "image";
-      private static final String d = "urlButton";
-      private final epo e;
-      private final epo f;
-      private final agm g;
-      @Nullable
-      private final eph.b h;
-
-      private a(eph $$0, epo $$1, epo $$2, agm $$3, @Nullable eph.b $$4) {
-         super($$0.i, $$0.j, $$0.k, $$0.l);
-         this.e = $$1;
-         this.f = $$2;
-         this.g = $$3;
-         this.h = $$4;
-      }
-
-      public static eph.a a(eph $$0, JsonObject $$1) {
-         epo $$2 = eru.a("title", $$1, epo::a);
-         epo $$3 = eru.a("message", $$1, epo::a);
-         agm $$4 = new agm(eru.a("image", $$1));
-         eph.b $$5 = eru.b("urlButton", $$1, eph.b::a);
-         return new eph.a($$0, $$2, $$3, $$4, $$5);
-      }
-
-      @Nullable
-      public ewg a(faz $$0, Consumer<UUID> $$1) {
-         uv $$2 = this.e.a();
-         if ($$2 == null) {
-            eph.a.warn("Realms info popup had title with no available translation: {}", this.e);
-            return null;
-         } else {
-            ewg.a $$3 = new ewg.a($$0, $$2).a(this.g).a(this.f.a(uu.a));
-            if (this.h != null) {
-               $$3.a(this.h.b.a(eph.h), $$2x -> {
-                  eti $$3x = eti.N();
-                  $$3x.a(new ezr($$3xx -> {
-                     if ($$3xx) {
-                        ac.i().a(this.h.a);
-                        $$3x.a($$0);
-                     } else {
-                        $$3x.a($$2x);
-                     }
-                  }, this.h.a, true));
-                  $$1.accept(this.c());
-               });
+         for (int $$20 = 0; $$20 < $$16; $$20++) {
+            $$19.clear();
+            $$19.put($$11, $$20 * 8, 8);
+            float $$21 = $$18.getFloat(0);
+            float $$22 = $$18.getFloat(4);
+            float $$23 = $$18.getFloat(8);
+            float $$27;
+            float $$28;
+            float $$29;
+            if ($$8) {
+               float $$24 = (float)($$18.get(12) & 255) / 255.0F;
+               float $$25 = (float)($$18.get(13) & 255) / 255.0F;
+               float $$26 = (float)($$18.get(14) & 255) / 255.0F;
+               $$27 = $$24 * $$9[$$20] * $$3;
+               $$28 = $$25 * $$9[$$20] * $$4;
+               $$29 = $$26 * $$9[$$20] * $$5;
+            } else {
+               $$27 = $$9[$$20] * $$3;
+               $$28 = $$9[$$20] * $$4;
+               $$29 = $$9[$$20] * $$5;
             }
 
-            $$3.a(uu.h, $$1x -> {
-               $$1x.aG_();
-               $$1.accept(this.c());
-            });
-            $$3.a(() -> $$1.accept(this.c()));
-            return $$3.a();
+            int $$33 = $$10[$$20];
+            float $$34 = $$18.getFloat(16);
+            float $$35 = $$18.getFloat(20);
+            Vector4f $$36 = $$13.transform(new Vector4f($$21, $$22, $$23, 1.0F));
+            this.a($$36.x(), $$36.y(), $$36.z(), $$27, $$28, $$29, 1.0F, $$34, $$35, $$7, $$33, $$14.x(), $$14.y(), $$14.z());
          }
+      } catch (Throwable var33) {
+         if ($$17 != null) {
+            try {
+               $$17.close();
+            } catch (Throwable var32) {
+               var33.addSuppressed(var32);
+            }
+         }
+
+         throw var33;
+      }
+
+      if ($$17 != null) {
+         $$17.close();
       }
    }
 
-   static record b(String a, epo b) {
-      private static final String c = "url";
-      private static final String d = "urlText";
-
-      public static eph.b a(JsonObject $$0) {
-         String $$1 = eru.a("url", $$0);
-         epo $$2 = eru.a("urlText", $$0, epo::a);
-         return new eph.b($$1, $$2);
-      }
+   default eph a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector4f $$4 = $$0.transform(new Vector4f($$1, $$2, $$3, 1.0F));
+      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
    }
 
-   public static class c extends eph {
-      private static final String a = "url";
-      private static final String b = "buttonText";
-      private static final String c = "message";
-      private final String d;
-      private final epo e;
-      private final epo f;
-
-      private c(eph $$0, String $$1, epo $$2, epo $$3) {
-         super($$0.i, $$0.j, $$0.k, $$0.l);
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-      }
-
-      public static eph.c a(eph $$0, JsonObject $$1) {
-         String $$2 = eru.a("url", $$1);
-         epo $$3 = eru.a("buttonText", $$1, epo::a);
-         epo $$4 = eru.a("message", $$1, epo::a);
-         return new eph.c($$0, $$2, $$3, $$4);
-      }
-
-      public uv d() {
-         return this.f.a(uv.c("mco.notification.visitUrl.message.default"));
-      }
-
-      public eve a(faz $$0) {
-         uv $$1 = this.e.a(eph.h);
-         return eve.a($$1, ezr.b($$0, this.d)).a();
-      }
+   default eph a(Matrix3f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transform(new Vector3f($$1, $$2, $$3));
+      return this.a($$4.x(), $$4.y(), $$4.z());
    }
 }

@@ -1,50 +1,76 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 
-public class cs extends cw<cs.a> {
-   public cs.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      return new cs.a($$1);
+public class cs extends cv<cs.a> {
+   @Override
+   public Codec<cs.a> a() {
+      return cs.a.a;
    }
 
-   public void a(amj $$0) {
-      this.a($$0, $$0x -> true);
+   public void a(amq $$0, agt $$1, List<cmh> $$2) {
+      this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static class a extends at {
-      public a(Optional<bc> $$0) {
-         super($$0);
+   public static record a(Optional<bb> b, agt c, List<ca> d) implements cv.a {
+      public static final Codec<cs.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  atg.a(bp.b, "player").forGetter(cs.a::a),
+                  agt.a.fieldOf("recipe_id").forGetter(cs.a::b),
+                  atg.a(ca.a.listOf(), "ingredients", List.of()).forGetter(cs.a::c)
+               )
+               .apply($$0, cs.a::new)
+      );
+
+      public static an<cs.a> a(agt $$0, List<ca.a> $$1) {
+         return am.aa.a(new cs.a(Optional.empty(), $$0, $$1.stream().map(ca.a::b).toList()));
       }
 
-      public static am<cs.a> a(cj.a $$0) {
-         return al.p.a(new cs.a(Optional.of(bq.a(bq.a.a().a($$0)))));
+      public static an<cs.a> a(agt $$0) {
+         return am.aa.a(new cs.a(Optional.empty(), $$0, List.of()));
       }
 
-      public static am<cs.a> a(bq.a $$0) {
-         return al.p.a(new cs.a(Optional.of(bq.a($$0.b()))));
+      boolean b(agt $$0, List<cmh> $$1) {
+         if (!$$0.equals(this.c)) {
+            return false;
+         } else {
+            List<cmh> $$2 = new ArrayList<>($$1);
+
+            for (ca $$3 : this.d) {
+               boolean $$4 = false;
+               Iterator<cmh> $$5 = $$2.iterator();
+
+               while ($$5.hasNext()) {
+                  if ($$3.a($$5.next())) {
+                     $$5.remove();
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
 
-      public static am<cs.a> a(Optional<bq> $$0) {
-         return al.p.a(new cs.a(bq.a($$0)));
+      @Override
+      public Optional<bb> a() {
+         return this.b;
       }
 
-      public static am<cs.a> c() {
-         return al.q.a(new cs.a(Optional.empty()));
+      public agt b() {
+         return this.c;
       }
 
-      public static am<cs.a> d() {
-         return al.H.a(new cs.a(Optional.empty()));
-      }
-
-      public static am<cs.a> e() {
-         return al.Y.a(new cs.a(Optional.empty()));
-      }
-
-      public static am<cs.a> f() {
-         return al.w.a(new cs.a(Optional.empty()));
-      }
-
-      public static am<cs.a> a(cvf $$0, clj $$1) {
-         return a(bq.a.a().a(bn.a.a().d(cb.a.a().a($$1))).b(cj.a.a().a(av.a.a().a($$0))));
+      public List<ca> c() {
+         return this.d;
       }
    }
 }

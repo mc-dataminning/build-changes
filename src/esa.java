@@ -1,18 +1,92 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class esa {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+public class esa extends gjl {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gjm b = new gjm(Duration.ofSeconds(5L));
+   private final List<etk> c;
+   private final fcc v;
+   private final ezv w = ezv.d();
+   private volatile vb x;
+   @Nullable
+   private eww y;
 
-   public static String a(long $$0) {
-      return (String)a.get($$0);
+   public esa(fcc $$0, etk... $$1) {
+      super(euc.a);
+      this.v = $$0;
+      this.c = List.of($$1);
+      if (this.c.isEmpty()) {
+         throw new IllegalArgumentException("No tasks added");
+      } else {
+         this.x = this.c.get(0).a();
+         Runnable $$2 = () -> {
+            for (etk $$1x : $$1) {
+               this.a($$1x.a());
+               if ($$1x.d()) {
+                  break;
+               }
+
+               $$1x.run();
+            }
+         };
+         Thread $$3 = new Thread($$2, "Realms-long-running-task");
+         $$3.setUncaughtExceptionHandler(new ere(a));
+         $$3.start();
+      }
    }
 
-   public static void b(long $$0) {
-      a.remove($$0);
+   @Override
+   public void d() {
+      super.d();
+      if (this.y != null) {
+         b.a(this.f.aU(), this.y.l());
+      }
    }
 
-   public static void a(long $$0, String $$1) {
-      a.put($$0, $$1);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.e();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void aP_() {
+      this.w.c().b();
+      this.y = new eww(this.i, this.x);
+      this.w.a(this.y, $$0 -> $$0.e(30));
+      this.w.a(ewh.a(va.e, $$0 -> this.e()).a());
+      this.w.a($$1 -> {
+         ewf var10000 = this.d($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.w.a();
+      ezp.a(this.w, this.s());
+   }
+
+   protected void e() {
+      for (etk $$0 : this.c) {
+         $$0.b();
+      }
+
+      this.f.a(this.v);
+   }
+
+   public void a(vb $$0) {
+      if (this.y != null) {
+         this.y.b($$0);
+      }
+
+      this.x = $$0;
    }
 }

@@ -1,64 +1,104 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record vn<S>(List<vn.a<S>> a) {
-   public static <S> vn<S> a(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<vn.a<S>> $$4 = a($$1, $$2);
+public record vn(byte[] c) {
+   public static final Codec<vn> a = atg.n.xmap(vn::new, vn::b);
+   public static final int b = 256;
 
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null) {
-         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
-         if (!$$6) {
-            break;
-         }
-
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new vn<>($$4);
+   public vn(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   private static <S> List<vn.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<vn.a<S>> $$2 = new ArrayList<>();
+   public static vn a(ue $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new vn($$1);
+   }
 
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof ez) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new vn.a<>($$4, $$6));
-               }
-            }
+   public static void a(ue $$0, vn $$1) {
+      $$0.c($$1.c);
+   }
+
+   public boolean a(aul $$0, auk $$1) {
+      return $$0.validate($$1, this.c);
+   }
+
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof vn $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public String toString() {
+      return Base64.getEncoder().encodeToString(this.c);
+   }
+
+   public vn.a a(vo $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new vn.a($$1) : new vn.a(this);
+   }
+
+   public byte[] b() {
+      return this.c;
+   }
+
+   public static record a(int b, @Nullable vn c) {
+      public static final int a = -1;
+
+      public a(vn $$0) {
+         this(-1, $$0);
+      }
+
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static vn.a a(ue $$0) {
+         int $$1 = $$0.n() - 1;
+         return $$1 == -1 ? new vn.a(vn.a($$0)) : new vn.a($$1);
+      }
+
+      public static void a(ue $$0, vn.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            vn.a($$0, $$1.b());
          }
       }
 
-      return $$2;
-   }
-
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
+      public Optional<vn> a(vo $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
       }
 
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
-      }
-
-      public String c() {
+      public int a() {
          return this.b;
+      }
+
+      @Nullable
+      public vn b() {
+         return this.c;
       }
    }
 }

@@ -1,56 +1,43 @@
-public class fpf extends fow {
-   private final fpj b;
-   protected boolean a;
+public class fpf extends fqw {
+   private final fqr a;
 
-   fpf(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fpj $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
+   protected fpf(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fqr $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.1F;
+      this.B = 0.9F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
       this.b($$7);
    }
 
    @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
-   }
-
-   @Override
-   public fos b() {
-      return fos.c;
+   public fqa b() {
+      return fqa.b;
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
+      this.b(this.a);
    }
 
-   public static class a implements foq<jz> {
-      private final fpj a;
+   public static class a implements fpz<jy> {
+      private final fqr a;
 
-      public a(fpj $$0) {
+      public a(fqr $$0) {
          this.a = $$0;
       }
 
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpf $$8 = new fpf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
-      }
-   }
-
-   public static class b implements foq<jz> {
-      private final fpj a;
-
-      public b(fpj $$0) {
-         this.a = $$0;
-      }
-
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpf $$8 = new fpf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         return $$8;
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

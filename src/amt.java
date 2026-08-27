@@ -1,49 +1,60 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Objects;
 
-public class amt implements amr {
-   private static final Logger a = LogUtils.getLogger();
+public final class amt<T> implements Comparable<amt<?>> {
+   private final amu<T> a;
    private final int b;
-   private int c;
+   private final T c;
    private long d;
-   private long e = Long.MAX_VALUE;
 
-   public amt(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.b = $$1 * $$1;
+   protected amt(amu<T> $$0, int $$1, T $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void a(crm $$0) {
-      this.e = ac.b();
-      this.d = this.e;
-   }
-
-   @Override
-   public void a(crm $$0, @Nullable djo $$1) {
-      if ($$1 == djo.n) {
-         this.c++;
-      }
-
-      int $$2 = this.c();
-      if (ac.b() > this.e) {
-         this.e += 500L;
-         a.info(uv.a("menu.preparingSpawn", atq.a($$2, 0, 100)).getString());
+   public int a(amt<?> $$0) {
+      int $$1 = Integer.compare(this.b, $$0.b);
+      if ($$1 != 0) {
+         return $$1;
+      } else {
+         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
+         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
       }
    }
 
    @Override
-   public void a() {
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof amt<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
+      }
    }
 
    @Override
-   public void b() {
-      a.info("Time elapsed: {} ms", ac.b() - this.d);
-      this.e = Long.MAX_VALUE;
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c);
    }
 
-   public int c() {
-      return atq.d((float)this.c * 100.0F / (float)this.b);
+   @Override
+   public String toString() {
+      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
+   }
+
+   public amu<T> a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   protected void a(long $$0) {
+      this.d = $$0;
+   }
+
+   protected boolean b(long $$0) {
+      long $$1 = this.a.b();
+      return $$1 != 0L && $$0 - this.d > $$1;
    }
 }

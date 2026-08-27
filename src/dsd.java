@@ -1,32 +1,23 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dsd implements dse {
-   public static final Codec<dsd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hx.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dsd::new)
-   );
-   private final Optional<hx> b;
-   private final boolean c;
-
-   private dsd(Optional<hx> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class dsd extends drc<dtu> {
+   public dsd(Codec<dtu> $$0) {
+      super($$0);
    }
 
-   public static dsd a(hx $$0, boolean $$1) {
-      return new dsd(Optional.of($$0), $$1);
-   }
+   @Override
+   public boolean a(dre<dtu> $$0) {
+      ctt $$1 = $$0.b();
+      hv $$2 = $$0.e();
+      dtu $$3 = $$0.f();
 
-   public static dsd a() {
-      return new dsd(Optional.empty(), false);
-   }
+      for (dto.a $$4 : $$3.b) {
+         if ($$4.b.a($$1.a_($$2), $$0.d())) {
+            $$1.a($$2, $$4.c, 2);
+            break;
+         }
+      }
 
-   public Optional<hx> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
+      return true;
    }
 }

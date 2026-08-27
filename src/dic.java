@@ -1,95 +1,185 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public record dic(String r, boolean s, boolean t, dic.a u, dcr v, aqu w, aqu x, aqu y, aqu z, aqu A, aqu B, aqu C, aqu D) {
-   private static final Map<String, dic> E = new Object2ObjectArrayMap();
-   public static final Codec<dic> a = asy.a(dic::b, E::get);
-   public static final dic b = a(new dic("iron", false, false, dic.a.a, dcr.g, aqv.me, aqv.mf, aqv.mm, aqv.mn, aqv.nx, aqv.ny, aqv.xM, aqv.xN));
-   public static final dic c = a(new dic("copper", true, false, dic.a.a, dcr.g, aqv.fb, aqv.fc, aqv.fi, aqv.fj, aqv.nx, aqv.ny, aqv.xM, aqv.xN));
-   public static final dic d = a(new dic("gold", false, false, dic.a.a, dcr.g, aqv.me, aqv.mf, aqv.mm, aqv.mn, aqv.nx, aqv.ny, aqv.xM, aqv.xN));
-   public static final dic e = a(new dic("stone", true, false, dic.a.b, dcr.f, aqv.me, aqv.mf, aqv.mm, aqv.mn, aqv.xR, aqv.xS, aqv.xM, aqv.xN));
-   public static final dic f = a(new dic("polished_blackstone", true, false, dic.a.b, dcr.f, aqv.me, aqv.mf, aqv.mm, aqv.mn, aqv.xR, aqv.xS, aqv.xM, aqv.xN));
-   public static final dic g = a(new dic("oak"));
-   public static final dic h = a(new dic("spruce"));
-   public static final dic i = a(new dic("birch"));
-   public static final dic j = a(new dic("acacia"));
-   public static final dic k = a(new dic("cherry", true, true, dic.a.a, dcr.aU, aqv.dX, aqv.dY, aqv.dZ, aqv.ea, aqv.ed, aqv.ee, aqv.eb, aqv.ec));
-   public static final dic l = a(new dic("jungle"));
-   public static final dic m = a(new dic("dark_oak"));
-   public static final dic n = a(new dic("crimson", true, true, dic.a.a, dcr.aT, aqv.pz, aqv.pA, aqv.pB, aqv.pC, aqv.pF, aqv.pG, aqv.pD, aqv.pE));
-   public static final dic o = a(new dic("warped", true, true, dic.a.a, dcr.aT, aqv.pz, aqv.pA, aqv.pB, aqv.pC, aqv.pF, aqv.pG, aqv.pD, aqv.pE));
-   public static final dic p = a(new dic("mangrove"));
-   public static final dic q = a(new dic("bamboo", true, true, dic.a.a, dcr.aS, aqv.aZ, aqv.ba, aqv.bb, aqv.bc, aqv.bf, aqv.bg, aqv.bd, aqv.be));
+public enum dic implements aut {
+   a("inactive", 0, dic.b.a, -1.0, false),
+   b("waiting_for_players", 4, dic.b.b, 200.0, true),
+   c("active", 8, dic.b.c, 1000.0, true),
+   d("waiting_for_reward_ejection", 8, dic.b.b, -1.0, false),
+   e("ejecting_reward", 8, dic.b.b, -1.0, false),
+   f("cooldown", 0, dic.b.d, -1.0, false);
 
-   public dic(String $$0) {
-      this($$0, true, true, dic.a.a, dcr.b, aqv.Bi, aqv.Bj, aqv.Bk, aqv.Bl, aqv.Bo, aqv.Bp, aqv.Bm, aqv.Bn);
+   private static final float g = 40.0F;
+   private static final int h = aty.d(30.0F);
+   private final String i;
+   private final int j;
+   private final double k;
+   private final dic.b l;
+   private final boolean m;
+
+   private dic(String $$0, int $$1, dic.b $$2, double $$3, boolean $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.l = $$2;
+      this.k = $$3;
+      this.m = $$4;
    }
 
-   private static dic a(dic $$0) {
-      E.put($$0.r, $$0);
-      return $$0;
+   dic a(hv $$0, dhz $$1, amp $$2) {
+      dib $$3 = $$1.c();
+      dia $$4 = $$1.b();
+      dhy $$5 = $$1.f();
+
+      return switch (this) {
+         case a -> $$3.a($$1, $$2, b) == null ? this : b;
+         case b -> {
+            if (!$$3.b()) {
+               yield a;
+            } else {
+               $$3.a($$2, $$0, $$5, $$4.a());
+               yield $$3.c.isEmpty() ? this : c;
+            }
+         }
+         case c -> {
+            if (!$$3.b()) {
+               yield a;
+            } else {
+               int $$6 = $$3.a($$0);
+               $$3.a($$2, $$0, $$5, $$4.a());
+               if ($$3.a($$4, $$6)) {
+                  if ($$3.c()) {
+                     $$3.e = $$2.W() + (long)$$4.h();
+                     $$3.g = 0;
+                     $$3.f = 0L;
+                     yield d;
+                  }
+               } else if ($$3.a($$2, $$4, $$6)) {
+                  $$1.a($$2, $$0).ifPresent($$4x -> {
+                     $$3.d.add($$4x);
+                     $$3.g++;
+                     $$3.f = $$2.W() + (long)$$4.g();
+                     $$3.j.b($$2.F_()).ifPresent($$2xx -> {
+                        $$3.h = Optional.of((ctp)$$2xx.b());
+                        $$1.e();
+                     });
+                  });
+               }
+
+               yield this;
+            }
+         }
+         case d -> {
+            if ($$3.a($$2, $$4, 40.0F)) {
+               $$2.a(null, $$0, arc.lw, ard.e);
+               yield e;
+            } else {
+               yield this;
+            }
+         }
+         case e -> {
+            if (!$$3.b($$2, $$4, (float)h)) {
+               yield this;
+            } else if ($$3.c.isEmpty()) {
+               $$2.a(null, $$0, arc.lx, ard.e);
+               $$3.i = Optional.empty();
+               yield f;
+            } else {
+               if ($$3.i.isEmpty()) {
+                  $$3.i = $$4.j().a($$2.F_());
+               }
+
+               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
+               $$3.c.remove($$3.c.iterator().next());
+               yield this;
+            }
+         }
+         case f -> {
+            if ($$3.a($$2)) {
+               $$3.e = 0L;
+               yield b;
+            } else {
+               yield this;
+            }
+         }
+      };
    }
 
-   public static Stream<dic> a() {
-      return E.values().stream();
+   public int a() {
+      return this.j;
    }
 
-   public String b() {
-      return this.r;
-   }
-
-   public boolean c() {
-      return this.s;
+   public double b() {
+      return this.k;
    }
 
    public boolean d() {
-      return this.t;
+      return this.k >= 0.0;
    }
 
-   public dic.a e() {
-      return this.u;
+   public boolean e() {
+      return this.m;
    }
 
-   public dcr f() {
-      return this.v;
+   public void a(csy $$0, hv $$1) {
+      this.l.emit($$0, $$0.F_(), $$1);
    }
 
-   public aqu g() {
-      return this.w;
+   @Override
+   public String c() {
+      return this.i;
    }
 
-   public aqu h() {
-      return this.x;
+   static class a {
+      private static final int a = 0;
+      private static final int b = 4;
+      private static final int c = 8;
+
+      private a() {
+      }
    }
 
-   public aqu i() {
-      return this.y;
+   interface b {
+      dic.b a = ($$0, $$1, $$2) -> {
+      };
+      dic.b b = ($$0, $$1, $$2) -> {
+         if ($$1.a(2) == 0) {
+            elb $$3 = $$2.b().a($$1, 0.9F);
+            a(jv.aG, $$3, $$0);
+         }
+      };
+      dic.b c = ($$0, $$1, $$2) -> {
+         elb $$3 = $$2.b().a($$1, 1.0F);
+         a(jv.ab, $$3, $$0);
+         a(jv.E, $$3, $$0);
+      };
+      dic.b d = ($$0, $$1, $$2) -> {
+         elb $$3 = $$2.b().a($$1, 0.9F);
+         if ($$1.a(3) == 0) {
+            a(jv.ab, $$3, $$0);
+         }
+
+         if ($$0.W() % 20L == 0L) {
+            elb $$4 = $$2.b().b(0.0, 0.5, 0.0);
+            int $$5 = $$0.F_().a(4) + 20;
+
+            for (int $$6 = 0; $$6 < $$5; $$6++) {
+               a(jv.ab, $$4, $$0);
+            }
+         }
+      };
+
+      private static void a(jy $$0, elb $$1, csy $$2) {
+         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
+      }
+
+      void emit(csy var1, auf var2, hv var3);
    }
 
-   public aqu j() {
-      return this.z;
-   }
+   static class c {
+      private static final double a = -1.0;
+      private static final double b = 200.0;
+      private static final double c = 1000.0;
 
-   public aqu k() {
-      return this.A;
-   }
-
-   public aqu l() {
-      return this.B;
-   }
-
-   public aqu m() {
-      return this.C;
-   }
-
-   public aqu n() {
-      return this.D;
-   }
-
-   public static enum a {
-      a,
-      b;
+      private c() {
+      }
    }
 }

@@ -1,20 +1,31 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddx extends cyt {
-   public static final MapCodec<ddx> c = b(ddx::new);
-   public static final eks e = cvf.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public class ddx extends cvz {
+   public static final MapCodec<ddx> a = b(ddx::new);
+   private static final double b = 5.0;
+   private static final elu c = cvz.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
    public MapCodec<ddx> a() {
-      return c;
+      return a;
    }
 
-   public ddx(dhm.d $$0) {
-      super($$0, ib.b, e, false);
+   protected ddx(dio.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected cyu c() {
-      return (cyu)cvh.oB;
+   public dce b_(dip $$0) {
+      return dce.a;
+   }
+
+   @Override
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return c;
+   }
+
+   @Override
+   public float d(dip $$0, cse $$1, hv $$2) {
+      return 1.0F;
    }
 }

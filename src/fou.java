@@ -1,61 +1,18 @@
-public class fou extends fpo {
-   private final double a;
-   private final double b;
-   private final double F;
-
-   protected fou(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+public class fou extends fqw {
+   fou(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
       super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.a = this.g;
-      this.b = this.h;
-      this.F = this.i;
-      this.D = 0.1F * (this.r.i() * 0.2F + 0.5F);
-      float $$7 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$7 * 0.9F;
-      this.w = $$7 * 0.3F;
-      this.x = $$7;
-      this.t = (int)(Math.random() * 10.0) + 40;
-   }
-
-   @Override
-   public fos b() {
-      return fos.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = 1.0F - $$1;
-      $$1 *= $$1;
-      $$1 = 1.0F - $$1;
-      return this.D * $$1;
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      float $$2 = (float)this.s / (float)this.t;
-      $$2 *= $$2;
-      $$2 *= $$2;
-      int $$3 = $$1 & 0xFF;
-      int $$4 = $$1 >> 16 & 0xFF;
-      $$4 += (int)($$2 * 15.0F * 16.0F);
-      if ($$4 > 240) {
-         $$4 = 240;
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
       }
 
-      return $$3 | $$4 << 16;
+      this.u = 3.0E-6F;
+      this.j = $$4;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.l = $$6;
    }
 
    @Override
@@ -63,27 +20,49 @@ public class fou extends fpo {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
+         }
       } else {
-         float $$0 = (float)this.s / (float)this.t;
-         float var3 = -$$0 + $$0 * $$0 * 2.0F;
-         float var4 = 1.0F - var3;
-         this.g = this.a + this.j * (double)var4;
-         this.h = this.b + this.k * (double)var4 + (double)(1.0F - $$0);
-         this.i = this.F + this.l * (double)var4;
+         this.k();
       }
    }
 
-   public static class a implements foq<jz> {
-      private final fpj a;
+   @Override
+   public fqa b() {
+      return fqa.c;
+   }
 
-      public a(fpj $$0) {
+   public static class a implements fpz<jy> {
+      private final fqr a;
+
+      public a(fqr $$0) {
          this.a = $$0;
       }
 
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fou $$8 = new fou($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fou $$8 = new fou($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fpz<jy> {
+      private final fqr a;
+
+      public b(fqr $$0) {
+         this.a = $$0;
+      }
+
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fou $$8 = new fou($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
          $$8.a(this.a);
          return $$8;
       }

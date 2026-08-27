@@ -1,43 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class czx extends cvf {
-   public static final MapCodec<czx> a = b(czx::new);
-   private static final int b = 20;
+public class czx extends cvz {
+   public static final MapCodec<czx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kb.e.q().fieldOf("host").forGetter(czx::b), u()).apply($$0, czx::new));
+   private final cvz b;
+   private static final Map<cvz, cvz> c = Maps.newIdentityHashMap();
+   private static final Map<dip, dip> d = Maps.newIdentityHashMap();
+   private static final Map<dip, dip> e = Maps.newIdentityHashMap();
 
    @Override
-   public MapCodec<czx> a() {
+   public MapCodec<? extends czx> a() {
       return a;
    }
 
-   public czx(dhm.d $$0) {
-      super($$0);
+   public czx(cvz $$0, dio.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   public void a(csf $$0, hx $$1, dhn $$2, bkv $$3) {
-      if (!$$3.bT() && $$3 instanceof bll && !cqb.j((bll)$$3)) {
-         $$3.a($$0.ah().e(), 1.0F);
+   public cvz b() {
+      return this.b;
+   }
+
+   public static boolean h(dip $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(amp $$0, hv $$1) {
+      ccg $$2 = blj.aJ.a((csy)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.S();
       }
-
-      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      cvl.b($$1, $$2.c(), $$0);
-   }
-
-   @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      if ($$1 == ib.b && $$2.a(cvh.G)) {
-         $$3.a($$4, this, 20);
+   public void a(dip $$0, amp $$1, hv $$2, cmh $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.Y().b(csu.h) && cqu.a(cqw.v, $$3) == 0) {
+         this.a($$1, $$2);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public void b(dhn $$0, csf $$1, hx $$2, dhn $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   public static dip n(dip $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).o());
+   }
+
+   public dip o(dip $$0) {
+      return a(e, $$0, () -> this.b().o());
+   }
+
+   private static dip a(Map<dip, dip> $$0, dip $$1, Supplier<dip> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dip $$2x = $$2.get();
+
+         for (djs $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
+         }
+
+         return $$2x;
+      });
    }
 }

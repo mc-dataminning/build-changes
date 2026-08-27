@@ -1,111 +1,110 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
+import com.google.common.base.MoreObjects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class djs<T> implements dka<T> {
-   private final il<T> a;
-   private final aso<T> b;
-   private final dkb<T> c;
-   private final int d;
+public abstract class djs<T extends Comparable<T>> {
+   private final Class<T> a;
+   private final String b;
+   @Nullable
+   private Integer c;
+   private final Codec<T> d = Codec.STRING
+      .comapFlatMap(
+         $$0x -> this.b($$0x)
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
+         this::a
+      );
+   private final Codec<djs.a<T>> e = this.d.xmap(this::b, djs.a::b);
 
-   public djs(il<T> $$0, int $$1, dkb<T> $$2, List<T> $$3) {
-      this($$0, $$1, $$2);
-      $$3.forEach(this.b::c);
+   protected djs(String $$0, Class<T> $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
-   public djs(il<T> $$0, int $$1, dkb<T> $$2) {
-      this($$0, $$1, $$2, aso.c(1 << $$1));
+   public djs.a<T> b(T $$0) {
+      return new djs.a<>(this, $$0);
    }
 
-   private djs(il<T> $$0, int $$1, dkb<T> $$2, aso<T> $$3) {
-      this.a = $$0;
-      this.d = $$1;
-      this.c = $$2;
-      this.b = $$3;
+   public djs.a<T> a(dir<?, ?> $$0) {
+      return new djs.a<>(this, $$0.c(this));
    }
 
-   public static <A> dka<A> a(int $$0, il<A> $$1, dkb<A> $$2, List<A> $$3) {
-      return new djs<>($$1, $$0, $$2, $$3);
+   public Stream<djs.a<T>> c() {
+      return this.a().stream().map(this::b);
+   }
+
+   public Codec<T> d() {
+      return this.d;
+   }
+
+   public Codec<djs.a<T>> e() {
+      return this.e;
+   }
+
+   public String f() {
+      return this.b;
+   }
+
+   public Class<T> g() {
+      return this.a;
+   }
+
+   public abstract Collection<T> a();
+
+   public abstract String a(T var1);
+
+   public abstract Optional<T> b(String var1);
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
    }
 
    @Override
-   public int a(T $$0) {
-      int $$1 = this.b.a($$0);
-      if ($$1 == -1) {
-         $$1 = this.b.c($$0);
-         if ($$1 >= 1 << this.d) {
-            $$1 = this.c.onResize(this.d + 1, $$0);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         if ($$0.test(this.b.a($$1))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         throw new djz($$0);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         return $$1;
+         return !($$0 instanceof djs<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
       }
    }
 
    @Override
-   public void a(ty $$0) {
-      this.b.a();
-      int $$1 = $$0.n();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.b.c(this.a.b($$0.n()));
-      }
-   }
-
-   @Override
-   public void b(ty $$0) {
-      int $$1 = this.b();
-      $$0.c($$1);
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0.c(this.a.a(this.b.a($$2)));
-      }
-   }
-
-   @Override
-   public int a() {
-      int $$0 = um.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += um.a(this.a.a(this.b.a($$1)));
+   public final int hashCode() {
+      if (this.c == null) {
+         this.c = this.b();
       }
 
-      return $$0;
+      return this.c;
    }
 
-   public List<T> d() {
-      ArrayList<T> $$0 = new ArrayList<>();
-      this.b.iterator().forEachRemaining($$0::add);
-      return $$0;
-   }
-
-   @Override
    public int b() {
-      return this.b.b();
+      return 31 * this.a.hashCode() + this.b.hashCode();
    }
 
-   @Override
-   public dka<T> c() {
-      return new djs<>(this.a, this.d, this.c, this.b.c());
+   public <U, S extends dir<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
+      DataResult<T> $$3 = this.d.parse($$0, $$2);
+      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
+   }
+
+   public static record a<T extends Comparable<T>>(djs<T> a, T b) {
+      public a(djs<T> a, T b) {
+         if (!a.a().contains(b)) {
+            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+         } else {
+            this.a = a;
+            this.b = b;
+         }
+      }
+
+      @Override
+      public String toString() {
+         return this.a.f() + "=" + this.a.a(this.b);
+      }
    }
 }

@@ -1,48 +1,39 @@
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class exg {
-   private final Consumer<evc> a;
-   private final Consumer<evc> b;
-   @Nullable
-   private exf c;
-   @Nullable
-   private ezh d;
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-   public exg(Consumer<evc> $$0, Consumer<evc> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static void a(evw $$0, geo $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1.a(), $$2, $$3, $$4);
    }
 
-   public void a(ezh $$0) {
-      this.d = $$0;
-      exf $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
+   public static void a(evw $$0, agt $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, true, false);
+   }
+
+   public static void a(evw $$0, agt $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
+      int $$7 = 8 + ($$6 ? 8 : 0);
+      int $$8 = 8 * ($$6 ? -1 : 1);
+      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6);
       }
    }
 
-   public void a(exf $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
-
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
-
-         if ($$1) {
-            eti.N().ah().a(gfc.a(aqv.yZ, 1.0F));
-         }
-      }
-   }
-
-   @Nullable
-   public exf a() {
-      return this.c;
+   private static void a(evw $$0, agt $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = 8 + ($$5 ? 8 : 0);
+      int $$7 = 8 * ($$5 ? -1 : 1);
+      RenderSystem.enableBlend();
+      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
+      RenderSystem.disableBlend();
    }
 }

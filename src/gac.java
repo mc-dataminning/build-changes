@@ -1,24 +1,33 @@
-public class gac extends gak<bxi, fij<bxi>> {
-   private final frt a;
+public class gac extends fyt<cgv> {
+   private final ftc f;
 
-   public gac(fxx<bxi, fij<bxi>> $$0, frt $$1) {
-      super($$0);
-      this.a = $$1;
+   public gac(fxo.a $$0) {
+      super($$0, flx.bD);
+      this.f = $$0.c();
    }
 
-   public void a(eob $$0, fqz $$1, int $$2, bxi $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gf() != 0) {
-         $$0.a();
-         fkt $$10 = this.c().c();
-         $$10.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$11 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(cvh.bT.o(), $$0, $$1, $$2, gbq.d);
-         $$0.b();
+   protected void a(cgv $$0, float $$1, dip $$2, epd $$3, fsi $$4, int $$5) {
+      int $$6 = $$0.D();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
+         $$7 = aty.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
       }
+
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   }
+
+   public static void a(ftc $$0, dip $$1, epd $$2, fsi $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = gdf.a(gdf.a(1.0F), 10);
+      } else {
+         $$6 = gdf.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

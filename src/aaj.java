@@ -1,37 +1,43 @@
-public class aaj implements wo<yh> {
-   private final int a;
-   private final uv b;
+import javax.annotation.Nullable;
 
-   public aaj(int $$0, uv $$1) {
+public class aaj implements wu<yo> {
+   private final int a;
+   private final cir<?> b;
+   private final vb c;
+
+   public aaj(int $$0, cir<?> $$1, vb $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public aaj(ty $$0) {
+   public aaj(ue $$0) {
       this.a = $$0.n();
-      this.b = $$0.m();
+      this.b = $$0.a(kb.r);
+      this.c = $$0.m();
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
       $$0.c(this.a);
-      $$0.a(this.b);
+      $$0.a(kb.r, this.b);
+      $$0.a(this.c);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean b() {
-      return true;
    }
 
    public int a() {
       return this.a;
    }
 
-   public uv d() {
+   @Nullable
+   public cir<?> d() {
       return this.b;
+   }
+
+   public vb e() {
+      return this.c;
    }
 }

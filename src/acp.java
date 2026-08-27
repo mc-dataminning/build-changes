@@ -1,98 +1,54 @@
-public interface acp extends acr, wy {
-   @Override
-   default tx b() {
-      return tx.b;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class acp implements wu<yo> {
+   private final boolean a;
+   private final List<af> b;
+   private final Set<agt> c;
+   private final Map<agt, ah> d;
+
+   public acp(boolean $$0, Collection<af> $$1, Set<agt> $$2, Map<agt, ah> $$3) {
+      this.a = $$0;
+      this.b = List.copyOf($$1);
+      this.c = Set.copyOf($$2);
+      this.d = Map.copyOf($$3);
    }
 
-   void a(aei var1);
+   public acp(ue $$0) {
+      this.a = $$0.readBoolean();
+      this.b = $$0.a(af::b);
+      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, ue::t);
+      this.d = $$0.a(ue::t, ah::b);
+   }
 
-   void a(acx var1);
+   @Override
+   public void a(ue $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c, ue::a);
+      $$0.a(this.d, ue::a, ($$0x, $$1) -> $$1.a($$0x));
+   }
 
-   void a(acw var1);
+   public void a(yo $$0) {
+      $$0.a(this);
+   }
 
-   void a(acv var1);
+   public List<af> a() {
+      return this.b;
+   }
 
-   void a(ada var1);
+   public Set<agt> d() {
+      return this.c;
+   }
 
-   void a(add var1);
+   public Map<agt, ah> e() {
+      return this.d;
+   }
 
-   void a(ade var1);
-
-   void a(adq var1);
-
-   void a(adf var1);
-
-   void a(adj var1);
-
-   void a(adm var1);
-
-   void a(adr var1);
-
-   void a(ads var1);
-
-   void a(adt var1);
-
-   void a(adu var1);
-
-   void a(aeb var1);
-
-   void a(aee var1);
-
-   void a(aeh var1);
-
-   void a(aek var1);
-
-   void a(ael var1);
-
-   void a(aej var1);
-
-   void a(ado var1);
-
-   void a(adn var1);
-
-   void a(acs var1);
-
-   void a(adw var1);
-
-   void a(adv var1);
-
-   void a(ady var1);
-
-   void a(adb var1);
-
-   void a(aec var1);
-
-   void a(aed var1);
-
-   void a(adp var1);
-
-   void a(adx var1);
-
-   void a(aea var1);
-
-   void a(aeg var1);
-
-   void a(adz var1);
-
-   void a(adh var1);
-
-   void a(adi var1);
-
-   void a(adg var1);
-
-   void a(act var1);
-
-   void a(aef var1);
-
-   void a(adk var1);
-
-   void a(acu var1);
-
-   void a(adl var1);
-
-   void a(acy var1);
-
-   void a(adc var1);
-
-   void a(acz var1);
+   public boolean f() {
+      return this.a;
+   }
 }

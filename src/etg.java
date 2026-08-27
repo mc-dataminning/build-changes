@@ -1,166 +1,34 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
+public class etg extends etk {
+   private static final vb b = vb.c("mco.connect.connecting");
+   private final gji c;
+   private final eqk d;
+   private final eql e;
 
-public class etg implements Comparable<etg> {
-   private static final Map<String, etg> h = Maps.newHashMap();
-   private static final Map<emw.a, etg> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final emw.a m;
-   private final String n;
-   private emw.a o;
-   private boolean p;
-   private int q;
-
-   public static void a(emw.a $$0) {
-      etg $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
-      }
+   public etg(fcc $$0, eqk $$1, eql $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new gji($$0);
    }
 
-   public static void a(emw.a $$0, boolean $$1) {
-      etg $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
+   @Override
+   public void run() {
+      this.c.a(this.d, fof.a(this.e.a));
    }
 
-   public static void a() {
-      for (etg $$0 : h.values()) {
-         if ($$0.o.a() == emw.b.a && $$0.o.b() != emw.bv.b()) {
-            $$0.a(emw.a(eti.N().aL().i(), $$0.o.b()));
-         }
-      }
+   @Override
+   public void b() {
+      super.b();
+      this.c.a();
+      euk.N().ab().a();
    }
 
-   public static void b() {
-      for (etg $$0 : h.values()) {
-         $$0.n();
-      }
+   @Override
+   public void c() {
+      this.c.b();
    }
 
-   public static void c() {
-      for (etg $$0 : h.values()) {
-         if ($$0 instanceof etw $$1) {
-            $$1.n();
-         }
-      }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (etg $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public etg(String $$0, int $$1, String $$2) {
-      this($$0, emw.b.a, $$1, $$2);
-   }
-
-   public etg(String $$0, emw.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
-      } else {
-         this.q--;
-         return true;
-      }
-   }
-
-   private void n() {
-      this.q = 0;
-      this.a(false);
-   }
-
-   public String h() {
-      return this.l;
-   }
-
-   public emw.a i() {
-      return this.m;
-   }
-
-   public void b(emw.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(etg $$0) {
-      return this.n.equals($$0.n) ? gdf.a(this.l).compareTo(gdf.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<uv> a(String $$0) {
-      etg $$1 = h.get($$0);
-      return $$1 == null ? () -> uv.c($$0) : $$1::k;
-   }
-
-   public boolean b(etg $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(emw.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == emw.bv.b() ? this.o.a() == emw.b.b && this.o.b() == $$1 : this.o.a() == emw.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == emw.b.c && this.o.b() == $$0;
-   }
-
-   public uv k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
+   @Override
+   public vb a() {
+      return b;
    }
 }

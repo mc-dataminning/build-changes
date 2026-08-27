@@ -1,58 +1,6 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public interface gdk extends AutoCloseable {
+   void a(int var1, int var2);
 
-public class gdk {
-   public static final gdl a = new gdl();
-   public static final String b = "animation";
-   public static final int c = 1;
-   public static final int d = -1;
-   public static final gdk e = new gdk(Lists.newArrayList(), -1, -1, 1, false) {
-      @Override
-      public gdm a(int $$0, int $$1) {
-         return new gdm($$0, $$1);
-      }
-   };
-   private final List<gdj> f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final boolean j;
-
-   public gdk(List<gdj> $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-   }
-
-   public gdm a(int $$0, int $$1) {
-      if (this.g != -1) {
-         return this.h != -1 ? new gdm(this.g, this.h) : new gdm(this.g, $$1);
-      } else if (this.h != -1) {
-         return new gdm($$0, this.h);
-      } else {
-         int $$2 = Math.min($$0, $$1);
-         return new gdm($$2, $$2);
-      }
-   }
-
-   public int a() {
-      return this.i;
-   }
-
-   public boolean b() {
-      return this.j;
-   }
-
-   public void a(gdk.a $$0) {
-      for (gdj $$1 : this.f) {
-         $$0.accept($$1.a(), $$1.a(this.i));
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void accept(int var1, int var2);
-   }
+   @Override
+   void close();
 }

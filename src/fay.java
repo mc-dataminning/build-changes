@@ -1,132 +1,188 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Instant;
+import java.util.List;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fay extends faz {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 25;
-   private static final uv c = uv.c("recover_world.title").a(n.r);
-   private static final uv k = uv.c("recover_world.bug_tracker");
-   private static final uv l = uv.c("recover_world.restore");
-   private static final uv m = uv.c("recover_world.no_fallback");
-   private static final uv n = uv.c("recover_world.done.title");
-   private static final uv o = uv.c("recover_world.done.success");
-   private static final uv p = uv.c("recover_world.done.failed");
-   private static final uv q = uv.c("recover_world.issue.none").a(n.k);
-   private static final uv r = uv.c("recover_world.issue.missing_file").a(n.m);
-   private final BooleanConsumer t;
-   private final eys u = eys.d().a(10);
-   private final uv v;
-   private final evy w;
-   private final evy x;
-   private final ees.c y;
+public class fay extends fcc {
+   static final agt b = new agt("container/slot");
+   private static final int c = 18;
+   private static final int k = 20;
+   private static final int l = 1;
+   private static final int m = 1;
+   private static final int n = 2;
+   private static final int o = 2;
+   protected final fgs a;
+   private final Consumer<dwr> p;
+   dwr q;
+   private vb r;
+   private vb t;
+   private fay.a u;
+   private ewh v;
 
-   public fay(eti $$0, BooleanConsumer $$1, ees.c $$2) {
-      super(c);
-      this.t = $$1;
-      this.v = uv.a("recover_world.message", uv.b($$2.d()).a(n.h));
-      this.w = new evy(this.v, $$0.h);
-      this.y = $$2;
-      Exception $$3 = this.a($$2, false);
-      Exception $$4 = this.a($$2, true);
-      uv $$5 = uv.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
-      this.x = new evy($$5, $$0.h);
-      boolean $$6 = $$3 != null && $$4 == null;
-      this.u.c().b();
-      this.u.a(new ewl(this.e, $$0.h));
-      this.u.a(this.w.b(true));
-      this.u.a(this.x);
-      eys $$7 = eys.e().a(5);
-      $$7.a(eve.a(k, ezr.b(this, "https://aka.ms/snapshotbugs?ref=game")).b(120, 20).a());
-      $$7.a(eve.a(l, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : ewp.a(m)).a()).i = $$6;
-      this.u.a($$7);
-      this.u.a(eve.a(uu.k, $$0x -> this.aG_()).b(120, 20).a());
-      this.u.a(this::d);
+   public fay(fgs $$0, Consumer<dwr> $$1, dwr $$2) {
+      super(vb.c("createWorld.customize.flat.title"));
+      this.a = $$0;
+      this.p = $$1;
+      this.q = $$2;
    }
 
-   private void a(eti $$0) {
-      Exception $$1 = this.a(this.y, false);
-      Exception $$2 = this.a(this.y, true);
-      if ($$1 != null && $$2 == null) {
-         $$0.d(new faf(uv.c("recover_world.restoring")));
-         ffr.a(this.y);
-         if (this.y.l()) {
-            $$0.a(new ezs(this.t, n, o, uu.j, uu.k));
-         } else {
-            $$0.a(new ezm(() -> this.t.accept(false), n, p));
+   public dwr k() {
+      return this.q;
+   }
+
+   public void a(dwr $$0) {
+      this.q = $$0;
+   }
+
+   @Override
+   protected void aP_() {
+      this.r = vb.c("createWorld.customize.flat.tile");
+      this.t = vb.c("createWorld.customize.flat.height");
+      this.u = new fay.a();
+      this.e(this.u);
+      this.v = this.d(ewh.a(vb.c("createWorld.customize.flat.removeLayer"), $$0 -> {
+         if (this.C()) {
+            List<dwo> $$1 = this.q.e();
+            int $$2 = this.u.i().indexOf(this.u.f());
+            int $$3 = $$1.size() - $$2 - 1;
+            $$1.remove($$3);
+            this.u.a($$1.isEmpty() ? null : this.u.i().get(Math.min($$2, $$1.size() - 1)));
+            this.q.g();
+            this.u.e();
+            this.l();
          }
-      } else {
-         a.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            $$1 != null ? $$1.getMessage() : "no issues",
-            $$2 != null ? $$2.getMessage() : "no issues"
-         );
-         $$0.a(new ezm(() -> this.t.accept(false), n, p));
-      }
+      }).a(this.g / 2 - 155, this.h - 52, 150, 20).a());
+      this.d(ewh.a(vb.c("createWorld.customize.presets"), $$0 -> {
+         this.f.a(new fby(this));
+         this.q.g();
+         this.l();
+      }).a(this.g / 2 + 5, this.h - 52, 150, 20).a());
+      this.d(ewh.a(va.d, $$0 -> {
+         this.p.accept(this.q);
+         this.f.a(this.a);
+         this.q.g();
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
+      this.d(ewh.a(va.e, $$0 -> {
+         this.f.a(this.a);
+         this.q.g();
+      }).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+      this.q.g();
+      this.l();
    }
 
-   private uv a(ees.c $$0, boolean $$1, @Nullable Exception $$2) {
-      if ($$1 && $$2 instanceof FileNotFoundException) {
-         return uv.i();
-      } else {
-         vj $$3 = uv.i();
-         Instant $$4 = $$0.a($$1);
-         vj $$5 = $$4 != null ? uv.b(fga.a.format($$4)) : uv.c("recover_world.state_entry.unknown");
-         $$3.b(uv.a("recover_world.state_entry", $$5.a(n.h)));
-         if ($$2 == null) {
-            $$3.b(q);
-         } else if ($$2 instanceof FileNotFoundException) {
-            $$3.b(r);
-         } else if ($$2 instanceof su) {
-            $$3.b(uv.b($$2.getCause().toString()).a(n.m));
-         } else {
-            $$3.b(uv.b($$2.toString()).a(n.m));
+   void l() {
+      this.v.i = this.C();
+   }
+
+   private boolean C() {
+      return this.u.f() != null;
+   }
+
+   @Override
+   public void aF_() {
+      this.f.a(this.a);
+   }
+
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.u.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      int $$4 = this.g / 2 - 92 - 16;
+      $$0.b(this.i, this.r, $$4, 32, 16777215);
+      $$0.b(this.i, this.t, $$4 + 2 + 213 - this.i.a(this.t), 32, 16777215);
+   }
+
+   class a extends exd<fay.a.a> {
+      private static final agt m = new agt("textures/gui/container/stats_icons.png");
+
+      public a() {
+         super(fay.this.f, fay.this.g, fay.this.h, 43, fay.this.h - 60, 24);
+
+         for (int $$0 = 0; $$0 < fay.this.q.e().size(); $$0++) {
+            this.b(new fay.a.a());
+         }
+      }
+
+      public void a(@Nullable fay.a.a $$0) {
+         super.a($$0);
+         fay.this.l();
+      }
+
+      @Override
+      protected int c() {
+         return this.e - 70;
+      }
+
+      public void e() {
+         int $$0 = this.i().indexOf(this.f());
+         this.j();
+
+         for (int $$1 = 0; $$1 < fay.this.q.e().size(); $$1++) {
+            this.b(new fay.a.a());
          }
 
-         return $$3;
+         List<fay.a.a> $$2 = this.i();
+         if ($$0 >= 0 && $$0 < $$2.size()) {
+            this.a($$2.get($$0));
+         }
       }
-   }
 
-   @Nullable
-   private Exception a(ees.c $$0, boolean $$1) {
-      try {
-         if (!$$1) {
-            $$0.a($$0.f());
-         } else {
-            $$0.a($$0.g());
+      class a extends exd.a<fay.a.a> {
+         @Override
+         public void a(evw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            dwo $$10 = fay.this.q.e().get(fay.this.q.e().size() - $$1 - 1);
+            dip $$11 = $$10.b();
+            cmh $$12 = this.a($$11);
+            this.a($$0, $$3, $$2, $$12);
+            $$0.a(fay.this.i, $$12.y(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
+            vb $$13;
+            if ($$1 == 0) {
+               $$13 = vb.a("createWorld.customize.flat.layer.top", $$10.a());
+            } else if ($$1 == fay.this.q.e().size() - 1) {
+               $$13 = vb.a("createWorld.customize.flat.layer.bottom", $$10.a());
+            } else {
+               $$13 = vb.a("createWorld.customize.flat.layer", $$10.a());
+            }
+
+            $$0.a(fay.this.i, $$13, $$3 + 2 + 213 - fay.this.i.a($$13), $$2 + 3, 16777215, false);
          }
 
-         return null;
-      } catch (so | su | IOException var4) {
-         return var4;
+         private cmh a(dip $$0) {
+            cmc $$1 = $$0.b().k();
+            if ($$1 == cmk.a) {
+               if ($$0.a(cwb.G)) {
+                  $$1 = cmk.qw;
+               } else if ($$0.a(cwb.H)) {
+                  $$1 = cmk.qx;
+               }
+            }
+
+            return new cmh($$1);
+         }
+
+         @Override
+         public vb a() {
+            dwo $$0 = fay.this.q.e().get(fay.this.q.e().size() - a.this.i().indexOf(this) - 1);
+            cmh $$1 = this.a($$0.b());
+            return (vb)(!$$1.b() ? vb.a("narrator.select", $$1.y()) : va.a);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return true;
+         }
+
+         private void a(evw $$0, int $$1, int $$2, cmh $$3) {
+            this.a($$0, $$1 + 1, $$2 + 1);
+            if (!$$3.b()) {
+               $$0.b($$3, $$1 + 2, $$2 + 2);
+            }
+         }
+
+         private void a(evw $$0, int $$1, int $$2) {
+            $$0.a(fay.b, $$1, $$2, 0, 18, 18);
+         }
       }
-   }
-
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.x.j(this.g - 50);
-      this.w.j(this.g - 50);
-      this.u.a();
-      eym.a(this.u, this.s());
-   }
-
-   @Override
-   public uv h() {
-      return uu.a(super.h(), this.v);
-   }
-
-   @Override
-   public void aG_() {
-      this.t.accept(false);
    }
 }

@@ -1,38 +1,42 @@
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
+import java.util.Comparator;
 
-public class amu implements amr {
-   private final amr a;
-   private final bhu<Runnable> b;
+public class amu<T> {
+   private final String i;
+   private final Comparator<T> j;
+   private final long k;
+   public static final amu<avc> a = a("start", ($$0, $$1) -> 0);
+   public static final amu<avc> b = a("dragon", ($$0, $$1) -> 0);
+   public static final amu<csf> c = a("player", Comparator.comparingLong(csf::a));
+   public static final amu<csf> d = a("forced", Comparator.comparingLong(csf::a));
+   public static final amu<csf> e = a("light", Comparator.comparingLong(csf::a));
+   public static final amu<hv> f = a("portal", iz::i, 300);
+   public static final amu<Integer> g = a("post_teleport", Integer::compareTo, 5);
+   public static final amu<csf> h = a("unknown", Comparator.comparingLong(csf::a), 1);
 
-   private amu(amr $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = bhu.a($$1, "progressListener");
+   public static <T> amu<T> a(String $$0, Comparator<T> $$1) {
+      return new amu<>($$0, $$1, 0L);
    }
 
-   public static amu a(amr $$0, Executor $$1) {
-      amu $$2 = new amu($$0, $$1);
-      $$2.a();
-      return $$2;
+   public static <T> amu<T> a(String $$0, Comparator<T> $$1, int $$2) {
+      return new amu<>($$0, $$1, (long)$$2);
    }
 
-   @Override
-   public void a(crm $$0) {
-      this.b.a(() -> this.a.a($$0));
-   }
-
-   @Override
-   public void a(crm $$0, @Nullable djo $$1) {
-      this.b.a(() -> this.a.a($$0, $$1));
-   }
-
-   @Override
-   public void a() {
-      this.b.a(this.a::a);
+   protected amu(String $$0, Comparator<T> $$1, long $$2) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
    }
 
    @Override
-   public void b() {
-      this.b.a(this.a::b);
+   public String toString() {
+      return this.i;
+   }
+
+   public Comparator<T> a() {
+      return this.j;
+   }
+
+   public long b() {
+      return this.k;
    }
 }

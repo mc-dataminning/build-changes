@@ -1,30 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+public class efs {
+   public static final efs a = new efs("advancements");
+   public static final efs b = new efs("stats");
+   public static final efs c = new efs("playerdata");
+   public static final efs d = new efs("players");
+   public static final efs e = new efs("level.dat");
+   public static final efs f = new efs("level.dat_old");
+   public static final efs g = new efs("icon.png");
+   public static final efs h = new efs("session.lock");
+   public static final efs i = new efs("generated");
+   public static final efs j = new efs("datapacks");
+   public static final efs k = new efs("resources.zip");
+   public static final efs l = new efs(".");
+   private final String m;
 
-public class efs extends efx {
-   public static final Codec<efs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kc.i.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, efs::new)
-   );
-   private final ig<clj> j;
+   private efs(String $$0) {
+      this.m = $$0;
+   }
 
-   private efs(ig<clj> $$0, int $$1, int $$2, List<eib> $$3, List<egp> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public String a() {
+      return this.m;
    }
 
    @Override
-   public efw a() {
-      return eft.c;
-   }
-
-   @Override
-   public void a(Consumer<clo> $$0, efc $$1) {
-      $$0.accept(new clo(this.j));
-   }
-
-   public static efx.a<?> a(cse $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new efs($$0.k().j(), $$1, $$2, $$3, $$4));
+   public String toString() {
+      return "/" + this.m;
    }
 }

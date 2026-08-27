@@ -1,47 +1,53 @@
-public class ejv extends ejx {
-   private final ib b;
-   private final hx c;
-   private final boolean d;
-   private final boolean e;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-   public static ejv a(ejz $$0, ib $$1, hx $$2) {
-      return new ejv(true, $$0, $$1, $$2, false);
-   }
+public record ejv(ejy b, ejy c) implements ejy {
+   public static final Codec<ejv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ejz.a.fieldOf("n").forGetter(ejv::c), ejz.a.fieldOf("p").forGetter(ejv::d)).apply($$0, ejv::new)
+   );
 
-   public ejv(ejz $$0, ib $$1, hx $$2, boolean $$3) {
-      this(false, $$0, $$1, $$2, $$3);
-   }
-
-   private ejv(boolean $$0, ejz $$1, ib $$2, hx $$3, boolean $$4) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$4;
-   }
-
-   public ejv a(ib $$0) {
-      return new ejv(this.d, this.a, $$0, this.c, this.e);
-   }
-
-   public ejv a(hx $$0) {
-      return new ejv(this.d, this.a, this.b, $$0, this.e);
-   }
-
-   public hx a() {
-      return this.c;
-   }
-
-   public ib b() {
-      return this.b;
+   @Override
+   public ejx b() {
+      return ejz.d;
    }
 
    @Override
-   public ejx.a c() {
-      return this.d ? ejx.a.a : ejx.a.b;
+   public int a(ege $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      auf $$3 = $$0.b();
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
+         }
+      }
+
+      return $$4;
    }
 
-   public boolean d() {
-      return this.e;
+   @Override
+   public float b(ege $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static ejv a(int $$0, float $$1) {
+      return new ejv(ejw.a((float)$$0), ejw.a($$1));
+   }
+
+   @Override
+   public Set<eim<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public ejy c() {
+      return this.b;
+   }
+
+   public ejy d() {
+      return this.c;
    }
 }

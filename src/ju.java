@@ -1,17 +1,21 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 
-public interface ju {
-   jv<?> b();
+public abstract class ju<T extends jt> {
+   private final boolean a;
+   private final jt.a<T> b;
 
-   void a(ty var1);
-
-   String a();
-
-   @Deprecated
-   public interface a<T extends ju> {
-      T b(jv<T> var1, StringReader var2) throws CommandSyntaxException;
-
-      T b(jv<T> var1, ty var2);
+   protected ju(boolean $$0, jt.a<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
+
+   public boolean c() {
+      return this.a;
+   }
+
+   public jt.a<T> d() {
+      return this.b;
+   }
+
+   public abstract Codec<T> e();
 }

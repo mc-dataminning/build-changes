@@ -1,63 +1,148 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public final class dnl {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+public class dnl implements dns.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ac.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)b($$2 - 12, $$3 - 12, $$1 - 12);
+            }
+         }
+      }
+   });
+   private final ObjectListIterator<dnl.a> h;
+   private final ObjectListIterator<dzq> i;
+
+   public static dnl a(ctr $$0, csf $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<dnl.a> $$4 = new ObjectArrayList(10);
+      ObjectList<dzq> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != dyz.a).forEach($$5x -> {
+         dyz $$6 = $$5x.h().d();
+
+         for (dys $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof dyk) {
+                  dyk $$8 = (dyk)$$7;
+                  dzx.a $$9 = $$8.b().e();
+                  if ($$9 == dzx.a.b) {
+                     $$4.add(new dnl.a($$8.f(), $$6, $$8.d()));
+                  }
+
+                  for (dzq $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new dnl.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new dnl($$4.iterator(), $$5.iterator());
+   }
 
    @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   public dnl(ObjectListIterator<dnl.a> $$0, ObjectListIterator<dzq> $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   public static dnl.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dnl.a($$1, $$2);
+   @Override
+   public double a(dnr.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         dnl.a $$5 = (dnl.a)this.h.next();
+         dyg $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a($$8, $$12, $$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+         };
+      }
+
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         dzq $$13 = (dzq)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
    }
 
-   public static dnl.a c(long $$0) {
-      return b($$0).a();
+   @Override
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
    }
 
-   public static dnl.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dnl.a($$2, $$3);
+   @Override
+   public double b() {
+      return Double.POSITIVE_INFINITY;
    }
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   private static double a(int $$0, int $$1, int $$2) {
+      double $$3 = aty.g((double)$$0, (double)$$1 / 2.0, (double)$$2);
+      return aty.a($$3, 0.0, 6.0, 1.0, 0.0);
    }
 
-   public static record a(long a, long b) {
-      public dnl.a a(long $$0, long $$1) {
-         return new dnl.a(this.a ^ $$0, this.b ^ $$1);
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = aty.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * aty.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
       }
+   }
 
-      public dnl.a a(dnl.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
+   }
 
-      public dnl.a a() {
-         return new dnl.a(dnl.a(this.a), dnl.a(this.b));
-      }
+   private static double b(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
+   }
 
-      public long b() {
-         return this.a;
-      }
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = aty.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
 
-      public long c() {
-         return this.b;
-      }
+   @VisibleForTesting
+   public static record a(dyg a, dyz b, int c) {
    }
 }

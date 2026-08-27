@@ -1,132 +1,110 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Predicate;
 
-public class byn extends bnc<byl> {
-   public static final int c = 100;
-   public static final int d = 6;
-   public static final int e = 10;
-   private static final float h = 1.75F;
-   private static final float i = 0.75F;
-   public static final int f = 100;
-   public static final int g = 5;
-   private int j;
-   private int k;
-   private final aqu l;
-   private final aqu m;
-   private ejz n;
-   private byn.a o = byn.a.d;
+public class byn {
+   private static final float a = 1.0F;
+   private static final float b = 2.25F;
+   private static final float c = 1.75F;
+   private static final float d = 2.5F;
+   private static final int e = 4;
+   private static final int f = 16;
+   private static final int g = 6;
+   private static final int h = 30;
+   private static final int i = 60;
+   private static final int j = 600;
+   private static final int k = 32;
+   private static final int l = 20;
 
-   public byn(aqu $$0, aqu $$1) {
-      super(ImmutableMap.of(bum.m, bun.b, bum.n, bun.c, bum.o, bun.a, bum.Y, bun.b), 100);
-      this.l = $$0;
-      this.m = $$1;
+   protected static bmv<?> a(bmv<bym> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(cgd.a));
+      $$0.b(cgd.b);
+      $$0.f();
+      return $$0;
    }
 
-   protected boolean a(ami $$0, byl $$1) {
-      bll $$2 = $$1.dP().c(bum.o).get();
-      boolean $$3 = this.a($$1, $$2);
-      if (!$$3) {
-         $$1.dP().b(bum.o);
-         this.b($$1, $$2);
+   private static void b(bmv<bym> $$0) {
+      $$0.a(cgd.a, 0, ImmutableList.of(new bqg(0.8F), new bnh(2.5F), new bos(45, 90), new bow(), new bns(bux.aN), new bns(bux.aO)));
+   }
+
+   private static void c(bmv<bym> $$0) {
+      $$0.a(
+         cgd.b,
+         ImmutableList.of(
+            Pair.of(0, bog.a($$0x -> true, 1.75F, true, 32)),
+            Pair.of(1, new boc(byn::b, 2.25F, 20)),
+            Pair.of(2, bqa.a(byn::b, Predicate.not(byn::c), 4, 16, 2.25F)),
+            Pair.of(3, bpm.a(6.0F, biw.a(30, 60))),
+            Pair.of(4, new bpj(ImmutableList.of(Pair.of(bpe.b(1.0F), 2), Pair.of(bpt.a(1.0F, 3), 2), Pair.of(new bnw(30, 60), 1))))
+         ),
+         ImmutableSet.of()
+      );
+   }
+
+   public static void a(bym $$0) {
+      $$0.dO().a(ImmutableList.of(cgd.b));
+   }
+
+   public static void a(blv $$0, hv $$1) {
+      bmv<?> $$2 = $$0.dO();
+      id $$3 = id.a($$0.dM().ad(), $$1);
+      Optional<id> $$4 = $$2.c(bux.aM);
+      if ($$4.isEmpty()) {
+         $$2.a(bux.aM, $$3);
+         $$2.a(bux.aN, 600);
+      } else if ($$4.get().equals($$3)) {
+         $$2.a(bux.aN, 600);
+      }
+   }
+
+   private static Optional<bpa> b(blv $$0) {
+      bmv<?> $$1 = $$0.dO();
+      Optional<id> $$2 = $$1.c(bux.aM);
+      if ($$2.isPresent()) {
+         id $$3 = $$2.get();
+         if (a($$0, $$1, $$3)) {
+            return Optional.of(new bnp($$3.b().c()));
+         }
+
+         $$1.b(bux.aM);
       }
 
-      return $$3 && $$1.ap() != blx.i && byl.j($$2);
+      return d($$0);
    }
 
-   protected boolean a(ami $$0, byl $$1, long $$2) {
-      return $$1.dP().a(bum.o) && this.o != byn.a.d && !$$1.dP().a(bum.Y);
+   private static boolean c(blv $$0) {
+      bmv<?> $$1 = $$0.dO();
+      return $$1.a(bux.K);
    }
 
-   protected void b(ami $$0, byl $$1, long $$2) {
-      bll $$3 = $$1.dP().c(bum.o).get();
-      bne.a($$1, $$3);
-      $$1.a((bkv)$$3);
-      $$1.dP().a(bum.m, new bup($$3.dl(), 2.0F, 0));
-      this.k = 10;
-      this.o = byn.a.a;
+   private static boolean a(blv $$0, bmv<?> $$1, id $$2) {
+      Optional<Integer> $$3 = $$1.c(bux.aN);
+      csy $$4 = $$0.dM();
+      return $$4.ad() == $$2.a() && $$4.a_($$2.b()).a(cwb.aY) && $$3.isPresent();
    }
 
-   protected void c(ami $$0, byl $$1, long $$2) {
-      $$1.dP().b(bum.o);
-      $$1.u();
-      $$1.b(blx.a);
+   private static Optional<bpa> d(blv $$0) {
+      return a($$0).map($$0x -> new bnx($$0x, true));
    }
 
-   private void b(ami $$0, byl $$1) {
-      $$0.a(null, $$1, this.m, aqw.g, 2.0F, 1.0F);
-      Optional<bkv> $$2 = $$1.w();
-      if ($$2.isPresent()) {
-         bkv $$3 = $$2.get();
-         if ($$3.bx()) {
-            $$1.C($$3);
-            if (!$$3.bx()) {
-               $$3.a(bkv.c.a);
+   public static Optional<amq> a(blv $$0) {
+      csy $$1 = $$0.dM();
+      if (!$$1.y_() && $$1 instanceof amp $$2) {
+         Optional<UUID> $$3 = $$0.dO().c(bux.aL);
+         if ($$3.isPresent()) {
+            if ($$2.a($$3.get()) instanceof amq $$5 && ($$5.e.d() || $$5.e.e()) && $$5.a($$0, 64.0)) {
+               return Optional.of($$5);
             }
+
+            return Optional.empty();
          }
       }
-   }
 
-   protected void d(ami $$0, byl $$1, long $$2) {
-      bll $$3 = $$1.dP().c(bum.o).get();
-      $$1.a((bkv)$$3);
-      switch (this.o) {
-         case a:
-            if ($$3.e($$1) < 1.75F) {
-               $$0.a(null, $$1, this.l, aqw.g, 2.0F, 1.0F);
-               $$1.b(blx.j);
-               $$3.g($$3.dl().a($$1.dl()).d().a(0.75));
-               this.n = $$3.dl();
-               this.j = 0;
-               this.o = byn.a.b;
-            } else if (this.k <= 0) {
-               $$1.dP().a(bum.m, new bup($$3.dl(), 2.0F, 0));
-               this.k = 10;
-            } else {
-               this.k--;
-            }
-            break;
-         case b:
-            if (this.j++ >= 6) {
-               this.o = byn.a.c;
-               this.b($$0, $$1);
-            }
-            break;
-         case c:
-            if (this.j >= 10) {
-               this.o = byn.a.d;
-            } else {
-               this.j++;
-            }
-         case d:
-      }
-   }
-
-   private boolean a(byl $$0, bll $$1) {
-      edm $$2 = $$0.N().a($$1, 0);
-      return $$2 != null && $$2.m() < 1.75F;
-   }
-
-   private void b(byl $$0, bll $$1) {
-      List<UUID> $$2 = $$0.dP().c(bum.Z).orElseGet(ArrayList::new);
-      boolean $$3 = !$$2.contains($$1.cw());
-      if ($$2.size() == 5 && $$3) {
-         $$2.remove(0);
-      }
-
-      if ($$3) {
-         $$2.add($$1.cw());
-      }
-
-      $$0.dP().a(bum.Z, $$2, 100L);
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+      return Optional.empty();
    }
 }

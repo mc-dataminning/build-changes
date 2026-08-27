@@ -1,102 +1,87 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bto extends bsg {
-   private static final bvx c = bvx.b().a(10.0).d();
-   private final bvx d;
-   protected final blu a;
-   private final double e;
-   private double f;
-   private double g;
-   private double h;
-   private double i;
-   private double j;
-   @Nullable
-   protected cdz b;
-   private int k;
-   private boolean l;
-   private final coq m;
-   private final boolean n;
+public class bto extends bsr {
+   public static final int a = 120;
+   protected final bme b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public bto(blu $$0, double $$1, coq $$2, boolean $$3) {
-      this.a = $$0;
-      this.e = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.a(EnumSet.of(bsg.a.a, bsg.a.b));
-      this.d = c.c().a(this::a);
+   public bto(bme $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public bto(bme $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public bto(bme $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(bsr.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.k > 0) {
-         this.k--;
+      if (this.b.cO()) {
          return false;
       } else {
-         this.b = this.a.dN().a(this.d, this.a);
-         return this.b != null;
+         if (!this.h) {
+            if (this.i && this.b.el() >= 100) {
+               return false;
+            }
+
+            if (this.b.eg().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         elb $$0 = this.h();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            this.h = false;
+            return true;
+         }
       }
    }
 
-   private boolean a(bll $$0) {
-      return this.m.a($$0.eU()) || this.m.a($$0.eV());
+   @Nullable
+   protected elb h() {
+      return bwn.a(this.b, 10, 7);
    }
 
    @Override
    public boolean b() {
-      if (this.h()) {
-         if (this.a.f(this.b) < 36.0) {
-            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
-               return false;
-            }
-
-            if (Math.abs((double)this.b.dF() - this.i) > 5.0 || Math.abs((double)this.b.dD() - this.j) > 5.0) {
-               return false;
-            }
-         } else {
-            this.f = this.b.ds();
-            this.g = this.b.du();
-            this.h = this.b.dy();
-         }
-
-         this.i = (double)this.b.dF();
-         this.j = (double)this.b.dD();
-      }
-
-      return this.a();
-   }
-
-   protected boolean h() {
-      return this.n;
+      return !this.b.N().l() && !this.b.cO();
    }
 
    @Override
    public void c() {
-      this.f = this.b.ds();
-      this.g = this.b.du();
-      this.h = this.b.dy();
-      this.l = true;
+      this.b.N().a(this.c, this.d, this.e, this.f);
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.a.N().n();
-      this.k = b(100);
-      this.l = false;
+      this.b.N().n();
+      super.d();
    }
 
-   @Override
-   public void e() {
-      this.a.I().a(this.b, (float)(this.a.ab() + 20), (float)this.a.aa());
-      if (this.a.f(this.b) < 6.25) {
-         this.a.N().n();
-      } else {
-         this.a.N().a(this.b, this.e);
-      }
+   public void i() {
+      this.h = true;
    }
 
-   public boolean i() {
-      return this.l;
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

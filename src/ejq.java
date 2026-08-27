@@ -1,4 +1,4 @@
-import java.nio.file.Path;
+import com.mojang.serialization.Codec;
 
-public record ejq(Path a, Path b) {
+public record ejq(Codec<? extends ejr> a) {
 }

@@ -2,19 +2,11 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 public class ako {
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tellraw").requires($$0x -> $$0x.c(2)))
-            .then(dv.a("targets", eg.d()).then(dv.a("message", ec.a()).executes($$0x -> {
-               int $$1 = 0;
-
-               for (amj $$2 : eg.f($$0x, "targets")) {
-                  $$2.b(uy.a((du)$$0x.getSource(), ec.a($$0x, "message"), $$2, 0), false);
-                  $$1++;
-               }
-
-               return $$1;
-            })))
-      );
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("stop").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         ((ds)$$0x.getSource()).a(() -> vb.c("commands.stop.stopping"), true);
+         ((ds)$$0x.getSource()).l().a(false);
+         return 1;
+      }));
    }
 }

@@ -1,46 +1,70 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
-public abstract class app extends apq<Map<agm, JsonElement>> {
+public class app implements aps, AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
-   private final Gson b;
-   private final String c;
+   private api b;
+   private final List<apm> c = Lists.newArrayList();
+   private final aoh d;
 
-   public app(Gson $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public app(aoh $$0) {
+      this.d = $$0;
+      this.b = new apl($$0, List.of());
    }
 
-   protected Map<agm, JsonElement> a(apl $$0, bfs $$1) {
-      Map<agm, JsonElement> $$2 = new HashMap<>();
-      a($$0, this.c, this.b, $$2);
-      return $$2;
+   @Override
+   public void close() {
+      this.b.close();
    }
 
-   public static void a(apl $$0, String $$1, Gson $$2, Map<agm, JsonElement> $$3) {
-      agf $$4 = agf.a($$1);
+   public void a(apm $$0) {
+      this.c.add($$0);
+   }
 
-      for (Entry<agm, apj> $$5 : $$4.a($$0).entrySet()) {
-         agm $$6 = $$5.getKey();
-         agm $$7 = $$4.b($$6);
+   public apo a(Executor $$0, Executor $$1, CompletableFuture<avc> $$2, List<aog> $$3) {
+      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(aog::a).collect(Collectors.joining(", "))));
+      this.b.close();
+      this.b = new apl(this.d, $$3);
+      return apy.a(this.b, this.c, $$0, $$1, $$2, a.isDebugEnabled());
+   }
 
-         try (Reader $$8 = $$5.getValue().e()) {
-            JsonElement $$9 = atg.a($$2, $$8, JsonElement.class);
-            JsonElement $$10 = $$3.put($$7, $$9);
-            if ($$10 != null) {
-               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
-            }
-         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
-            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
-         }
-      }
+   @Override
+   public Optional<apq> getResource(agt $$0) {
+      return this.b.getResource($$0);
+   }
+
+   @Override
+   public Set<String> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public List<apq> a(agt $$0) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   public Map<agt, apq> b(String $$0, Predicate<agt> $$1) {
+      return this.b.b($$0, $$1);
+   }
+
+   @Override
+   public Map<agt, List<apq>> c(String $$0, Predicate<agt> $$1) {
+      return this.b.c($$0, $$1);
+   }
+
+   @Override
+   public Stream<aog> b() {
+      return this.b.b();
    }
 }

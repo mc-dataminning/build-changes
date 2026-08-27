@@ -1,34 +1,27 @@
-@FunctionalInterface
+import java.util.Map;
+import javax.annotation.Nullable;
+
 public interface dq {
    dq a = new dq() {
+      @Nullable
       @Override
-      public void onResult(boolean $$0, int $$1) {
-      }
-
-      @Override
-      public String toString() {
-         return "<empty>";
+      public vr a(String $$0) {
+         return null;
       }
    };
 
-   void onResult(boolean var1, int var2);
+   @Nullable
+   vr a(String var1);
 
-   default void onSuccess(int $$0) {
-      this.onResult(true, $$0);
-   }
+   public static record a(Map<String, vr> b) implements dq {
+      @Nullable
+      @Override
+      public vr a(String $$0) {
+         return this.b.get($$0);
+      }
 
-   default void onFailure() {
-      this.onResult(false, 0);
-   }
-
-   static dq chain(dq $$0, dq $$1) {
-      if ($$0 == a) {
-         return $$1;
-      } else {
-         return $$1 == a ? $$0 : ($$2, $$3) -> {
-            $$0.onResult($$2, $$3);
-            $$1.onResult($$2, $$3);
-         };
+      public Map<String, vr> a() {
+         return this.b;
       }
    }
 }

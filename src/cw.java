@@ -1,74 +1,54 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonObject;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public abstract class cw<T extends cw.a> implements ao<T> {
-   private final Map<agu, Set<ao.a<T>>> a = Maps.newIdentityHashMap();
-
+public class cw extends cv<cw.a> {
    @Override
-   public final void a(agu $$0, ao.a<T> $$1) {
-      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
+   public Codec<cw.a> a() {
+      return cw.a.a;
    }
 
-   @Override
-   public final void b(agu $$0, ao.a<T> $$1) {
-      Set<ao.a<T>> $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         $$2.remove($$1);
-         if ($$2.isEmpty()) {
-            this.a.remove($$0);
-         }
+   public void a(amq $$0, dip $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public static record a(Optional<bb> b, Optional<ie<cvz>> c, Optional<cz> d) implements cv.a {
+      public static final Codec<cw.a> a = atg.a(
+         RecordCodecBuilder.create(
+            $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(cw.a::a), atg.a(kb.e.r(), "block").forGetter(cw.a::b), atg.a(cz.a, "state").forGetter(cw.a::c))
+                  .apply($$0, cw.a::new)
+         ),
+         cw.a::a
+      );
+
+      private static DataResult<cw.a> a(cw.a $$0) {
+         return $$0.c
+            .<DataResult<cw.a>>flatMap(
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((cvz)$$1.a()).n())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
+            )
+            .orElseGet(() -> DataResult.success($$0));
       }
-   }
 
-   @Override
-   public final void a(agu $$0) {
-      this.a.remove($$0);
-   }
-
-   protected abstract T b(JsonObject var1, Optional<bc> var2, bg var3);
-
-   public final T b(JsonObject $$0, bg $$1) {
-      Optional<bc> $$2 = bq.a($$0, "player", $$1);
-      return this.b($$0, $$2, $$1);
-   }
-
-   protected void a(amj $$0, Predicate<T> $$1) {
-      agu $$2 = $$0.Q();
-      Set<ao.a<T>> $$3 = this.a.get($$2);
-      if ($$3 != null && !$$3.isEmpty()) {
-         efc $$4 = bq.b($$0, $$0);
-         List<ao.a<T>> $$5 = null;
-
-         for (ao.a<T> $$6 : $$3) {
-            T $$7 = $$6.a();
-            if ($$1.test($$7)) {
-               Optional<bc> $$8 = $$7.b();
-               if ($$8.isEmpty() || $$8.get().a($$4)) {
-                  if ($$5 == null) {
-                     $$5 = Lists.newArrayList();
-                  }
-
-                  $$5.add($$6);
-               }
-            }
-         }
-
-         if ($$5 != null) {
-            for (ao.a<T> $$9 : $$5) {
-               $$9.a($$2);
-            }
-         }
+      public static an<cw.a> a(cvz $$0) {
+         return am.K.a(new cw.a(Optional.empty(), Optional.of($$0.r()), Optional.empty()));
       }
-   }
 
-   public interface a extends ap {
-      Optional<bc> b();
+      public boolean a(dip $$0) {
+         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
+      }
+
+      @Override
+      public Optional<bb> a() {
+         return this.b;
+      }
+
+      public Optional<ie<cvz>> b() {
+         return this.c;
+      }
+
+      public Optional<cz> c() {
+         return this.d;
+      }
    }
 }

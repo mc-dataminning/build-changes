@@ -1,18 +1,31 @@
-public record xj(agl<dlx> b, ejz c) implements xh {
-   public static final agm a = new agm("debug/game_event");
+public class xj implements wu<xe> {
+   private final xj.a a;
 
-   public xj(ty $$0) {
-      this($$0.a(kd.A), $$0.k());
+   public xj(xj.a $$0) {
+      this.a = $$0;
+   }
+
+   public xj(ue $$0) {
+      this.a = $$0.b(xj.a.class);
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.b(this.b);
-      $$0.a(this.c);
+   public void a(ue $$0) {
+      $$0.a(this.a);
    }
 
-   @Override
-   public agm a() {
-      return a;
+   public void a(xe $$0) {
+      $$0.a(this);
+   }
+
+   public xj.a a() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

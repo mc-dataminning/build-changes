@@ -1,216 +1,228 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import com.google.gson.JsonObject;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.Arrays;
-import it.unimi.dsi.fastutil.Swapper;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntComparator;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Collections;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
-public class gfv<T> {
-   private static final boolean b = Boolean.parseBoolean(System.getProperty("SuffixArray.printComparisons", "false"));
-   private static final boolean c = Boolean.parseBoolean(System.getProperty("SuffixArray.printArray", "false"));
-   private static final Logger d = LogUtils.getLogger();
-   private static final int e = -1;
-   private static final int f = -2;
-   protected final List<T> a = Lists.newArrayList();
-   private final IntList g = new IntArrayList();
-   private final IntList h = new IntArrayList();
-   private IntList i = new IntArrayList();
-   private IntList j = new IntArrayList();
-   private int k;
+public class gfv implements apm, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<agt, agt> b = Map.of(
+      fsx.c,
+      new agt("banner_patterns"),
+      fsx.b,
+      new agt("beds"),
+      fsx.f,
+      new agt("chests"),
+      fsx.d,
+      new agt("shield_patterns"),
+      fsx.e,
+      new agt("signs"),
+      fsx.a,
+      new agt("shulker_boxes"),
+      fsx.g,
+      new agt("armor_trims"),
+      fsx.h,
+      new agt("decorated_pot"),
+      gdn.e,
+      new agt("blocks")
+   );
+   private Map<agt, gfp> c;
+   private final gfo d;
+   private final ftb e;
+   private final evn f;
+   private int g;
+   private gfp h;
+   private Object2IntMap<dip> i;
 
-   public void a(T $$0, String $$1) {
-      this.k = Math.max(this.k, $$1.length());
-      int $$2 = this.a.size();
-      this.a.add($$0);
-      this.h.add(this.g.size());
-
-      for (int $$3 = 0; $$3 < $$1.length(); $$3++) {
-         this.i.add($$2);
-         this.j.add($$3);
-         this.g.add($$1.charAt($$3));
-      }
-
-      this.i.add($$2);
-      this.j.add($$1.length());
-      this.g.add(-1);
+   public gfv(gdp $$0, evn $$1, int $$2) {
+      this.f = $$1;
+      this.g = $$2;
+      this.e = new ftb(this);
+      this.d = new gfo(b, $$0);
    }
 
-   public void a() {
-      int $$0 = this.g.size();
-      int[] $$1 = new int[$$0];
-      int[] $$2 = new int[$$0];
-      int[] $$3 = new int[$$0];
-      int[] $$4 = new int[$$0];
-      IntComparator $$5 = ($$2x, $$3x) -> $$2[$$2x] == $$2[$$3x] ? Integer.compare($$3[$$2x], $$3[$$3x]) : Integer.compare($$2[$$2x], $$2[$$3x]);
-      Swapper $$6 = ($$3x, $$4x) -> {
-         if ($$3x != $$4x) {
-            int $$5x = $$2[$$3x];
-            $$2[$$3x] = $$2[$$4x];
-            $$2[$$4x] = $$5x;
-            $$5x = $$3[$$3x];
-            $$3[$$3x] = $$3[$$4x];
-            $$3[$$4x] = $$5x;
-            $$5x = $$4[$$3x];
-            $$4[$$3x] = $$4[$$4x];
-            $$4[$$4x] = $$5x;
-         }
-      };
-
-      for (int $$7 = 0; $$7 < $$0; $$7++) {
-         $$1[$$7] = this.g.getInt($$7);
-      }
-
-      int $$8 = 1;
-
-      for (int $$9 = Math.min($$0, this.k); $$8 * 2 < $$9; $$8 *= 2) {
-         for (int $$10 = 0; $$10 < $$0; $$4[$$10] = $$10++) {
-            $$2[$$10] = $$1[$$10];
-            $$3[$$10] = $$10 + $$8 < $$0 ? $$1[$$10 + $$8] : -2;
-         }
-
-         Arrays.quickSort(0, $$0, $$5, $$6);
-
-         for (int $$11 = 0; $$11 < $$0; $$11++) {
-            if ($$11 > 0 && $$2[$$11] == $$2[$$11 - 1] && $$3[$$11] == $$3[$$11 - 1]) {
-               $$1[$$4[$$11]] = $$1[$$4[$$11 - 1]];
-            } else {
-               $$1[$$4[$$11]] = $$11;
-            }
-         }
-      }
-
-      IntList $$12 = this.i;
-      IntList $$13 = this.j;
-      this.i = new IntArrayList($$12.size());
-      this.j = new IntArrayList($$13.size());
-
-      for (int $$14 = 0; $$14 < $$0; $$14++) {
-         int $$15 = $$4[$$14];
-         this.i.add($$12.getInt($$15));
-         this.j.add($$13.getInt($$15));
-      }
-
-      if (c) {
-         this.b();
-      }
+   public gfp a(gfw $$0) {
+      return this.c.getOrDefault($$0, this.h);
    }
 
-   private void b() {
-      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
-         d.debug("{} {}", $$0, this.a($$0));
-      }
-
-      d.debug("");
+   public gfp a() {
+      return this.h;
    }
 
-   private String a(int $$0) {
-      int $$1 = this.j.getInt($$0);
-      int $$2 = this.h.getInt(this.i.getInt($$0));
-      StringBuilder $$3 = new StringBuilder();
-
-      for (int $$4 = 0; $$2 + $$4 < this.g.size(); $$4++) {
-         if ($$4 == $$1) {
-            $$3.append('^');
-         }
-
-         int $$5 = this.g.getInt($$2 + $$4);
-         if ($$5 == -1) {
-            break;
-         }
-
-         $$3.append((char)$$5);
-      }
-
-      return $$3.toString();
+   public ftb b() {
+      return this.e;
    }
 
-   private int a(String $$0, int $$1) {
-      int $$2 = this.h.getInt(this.i.getInt($$1));
-      int $$3 = this.j.getInt($$1);
-
-      for (int $$4 = 0; $$4 < $$0.length(); $$4++) {
-         int $$5 = this.g.getInt($$2 + $$3 + $$4);
-         if ($$5 == -1) {
-            return 1;
-         }
-
-         char $$6 = $$0.charAt($$4);
-         char $$7 = (char)$$5;
-         if ($$6 < $$7) {
-            return -1;
-         }
-
-         if ($$6 > $$7) {
-            return 1;
-         }
-      }
-
-      return 0;
+   @Override
+   public final CompletableFuture<Void> a(apm.a $$0, aps $$1, bgc $$2, bgc $$3, Executor $$4, Executor $$5) {
+      $$2.a();
+      CompletableFuture<Map<agt, ftk>> $$6 = a($$1, $$4);
+      CompletableFuture<Map<agt, List<gfu.c>>> $$7 = b($$1, $$4);
+      CompletableFuture<gfu> $$8 = $$6.thenCombineAsync($$7, ($$1x, $$2x) -> new gfu(this.f, $$2, $$1x, $$2x), $$4);
+      Map<agt, CompletableFuture<gfo.b>> $$9 = this.d.a($$1, this.g, $$4);
+      return CompletableFuture.allOf(Stream.concat($$9.values().stream(), Stream.of($$8)).toArray(CompletableFuture[]::new))
+         .thenApplyAsync(
+            $$3x -> this.a(
+                  $$2,
+                  $$9.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$0xx -> (gfo.b)((CompletableFuture)$$0xx.getValue()).join())),
+                  $$8.join()
+               ),
+            $$4
+         )
+         .thenCompose($$0x -> $$0x.e.thenApply($$1x -> $$0x))
+         .thenCompose($$0::a)
+         .thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
    }
 
-   public List<T> a(String $$0) {
-      int $$1 = this.i.size();
-      int $$2 = 0;
-      int $$3 = $$1;
+   private static CompletableFuture<Map<agt, ftk>> a(aps $$0, Executor $$1) {
+      return CompletableFuture.<Map<agt, apq>>supplyAsync(() -> gfu.p.a($$0), $$1).thenCompose($$1x -> {
+         List<CompletableFuture<Pair<agt, ftk>>> $$2 = new ArrayList<>($$1x.size());
 
-      while ($$2 < $$3) {
-         int $$4 = $$2 + ($$3 - $$2) / 2;
-         int $$5 = this.a($$0, $$4);
-         if (b) {
-            d.debug("comparing lower \"{}\" with {} \"{}\": {}", new Object[]{$$0, $$4, this.a($$4), $$5});
+         for (Entry<agt, apq> $$3 : $$1x.entrySet()) {
+            $$2.add(CompletableFuture.supplyAsync(() -> {
+               try {
+                  Pair var2x;
+                  try (Reader $$1xx = $$3.getValue().e()) {
+                     var2x = Pair.of($$3.getKey(), ftk.a($$1xx));
+                  }
+
+                  return var2x;
+               } catch (Exception var6) {
+                  a.error("Failed to load model {}", $$3.getKey(), var6);
+                  return null;
+               }
+            }, $$1));
          }
 
-         if ($$5 > 0) {
-            $$2 = $$4 + 1;
+         return ac.b($$2).thenApply($$0xx -> $$0xx.stream().filter(Objects::nonNull).collect(Collectors.toUnmodifiableMap(Pair::getFirst, Pair::getSecond)));
+      });
+   }
+
+   private static CompletableFuture<Map<agt, List<gfu.c>>> b(aps $$0, Executor $$1) {
+      return CompletableFuture.<Map<agt, List<apq>>>supplyAsync(() -> gfu.o.b($$0), $$1).thenCompose($$1x -> {
+         List<CompletableFuture<Pair<agt, List<gfu.c>>>> $$2 = new ArrayList<>($$1x.size());
+
+         for (Entry<agt, List<apq>> $$3 : $$1x.entrySet()) {
+            $$2.add(CompletableFuture.supplyAsync(() -> {
+               List<apq> $$1xx = $$3.getValue();
+               List<gfu.c> $$2x = new ArrayList<>($$1xx.size());
+
+               for (apq $$3x : $$1xx) {
+                  try (Reader $$4 = $$3x.e()) {
+                     JsonObject $$5 = ato.a($$4);
+                     $$2x.add(new gfu.c($$3x.b(), $$5));
+                  } catch (Exception var10) {
+                     a.error("Failed to load blockstate {} from pack {}", new Object[]{$$3.getKey(), $$3x.b(), var10});
+                  }
+               }
+
+               return Pair.of($$3.getKey(), $$2x);
+            }, $$1));
+         }
+
+         return ac.b($$2).thenApply($$0xx -> $$0xx.stream().filter(Objects::nonNull).collect(Collectors.toUnmodifiableMap(Pair::getFirst, Pair::getSecond)));
+      });
+   }
+
+   private gfv.a a(bgc $$0, Map<agt, gfo.b> $$1, gfu $$2) {
+      $$0.a("load");
+      $$0.b("baking");
+      Multimap<agt, gfs> $$3 = HashMultimap.create();
+      $$2.a(($$2x, $$3x) -> {
+         gfo.b $$4x = $$1.get($$3x.a());
+         gdo $$5x = $$4x.a($$3x.b());
+         if ($$5x != null) {
+            return $$5x;
          } else {
-            $$3 = $$4;
+            $$3.put($$2x, $$3x);
+            return $$4x.a();
          }
+      });
+      $$3.asMap()
+         .forEach(
+            ($$0x, $$1x) -> a.warn(
+                  "Missing textures in model {}:\n{}",
+                  $$0x,
+                  $$1x.stream().sorted(gfs.a).map($$0xx -> "    " + $$0xx.a() + ":" + $$0xx.b()).collect(Collectors.joining("\n"))
+               )
+         );
+      $$0.b("dispatch");
+      Map<agt, gfp> $$4 = $$2.a();
+      gfp $$5 = $$4.get(gfu.n);
+      Map<dip, gfp> $$6 = new IdentityHashMap<>();
+
+      for (cvz $$7 : kb.e) {
+         $$7.n().a().forEach($$3x -> {
+            agt $$4x = $$3x.b().r().g().a();
+            gfp $$5x = $$4.getOrDefault(ftb.a($$4x, $$3x), $$5);
+            $$6.put($$3x, $$5x);
+         });
       }
 
-      if ($$2 >= 0 && $$2 < $$1) {
-         int $$6 = $$2;
-         $$3 = $$1;
+      CompletableFuture<Void> $$8 = CompletableFuture.allOf($$1.values().stream().map(gfo.b::b).toArray(CompletableFuture[]::new));
+      $$0.c();
+      $$0.b();
+      return new gfv.a($$2, $$5, $$6, $$1, $$8);
+   }
 
-         while ($$2 < $$3) {
-            int $$7 = $$2 + ($$3 - $$2) / 2;
-            int $$8 = this.a($$0, $$7);
-            if (b) {
-               d.debug("comparing upper \"{}\" with {} \"{}\": {}", new Object[]{$$0, $$7, this.a($$7), $$8});
-            }
+   private void a(gfv.a $$0, bgc $$1) {
+      $$1.a();
+      $$1.a("upload");
+      $$0.d.values().forEach(gfo.b::c);
+      gfu $$2 = $$0.a;
+      this.c = $$2.a();
+      this.i = $$2.b();
+      this.h = $$0.b;
+      $$1.b("cache");
+      this.e.a($$0.c);
+      $$1.c();
+      $$1.b();
+   }
 
-            if ($$8 >= 0) {
-               $$2 = $$7 + 1;
-            } else {
-               $$3 = $$7;
-            }
-         }
-
-         int $$9 = $$2;
-         IntSet $$10 = new IntOpenHashSet();
-
-         for (int $$11 = $$6; $$11 < $$9; $$11++) {
-            $$10.add(this.i.getInt($$11));
-         }
-
-         int[] $$12 = $$10.toIntArray();
-         java.util.Arrays.sort($$12);
-         Set<T> $$13 = Sets.newLinkedHashSet();
-
-         for (int $$14 : $$12) {
-            $$13.add(this.a.get($$14));
-         }
-
-         return Lists.newArrayList($$13);
+   public boolean a(dip $$0, dip $$1) {
+      if ($$0 == $$1) {
+         return false;
       } else {
-         return Collections.emptyList();
+         int $$2 = this.i.getInt($$0);
+         if ($$2 != -1) {
+            int $$3 = this.i.getInt($$1);
+            if ($$2 == $$3) {
+               edz $$4 = $$0.u();
+               edz $$5 = $$1.u();
+               return $$4 != $$5;
+            }
+         }
+
+         return true;
       }
+   }
+
+   public gdn a(agt $$0) {
+      return this.d.a($$0);
+   }
+
+   @Override
+   public void close() {
+      this.d.close();
+   }
+
+   public void a(int $$0) {
+      this.g = $$0;
+   }
+
+   static record a(gfu a, gfp b, Map<dip, gfp> c, Map<agt, gfo.b> d, CompletableFuture<Void> e) {
    }
 }

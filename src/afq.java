@@ -1,15 +1,8 @@
-public class afq implements wo<afo> {
-   public afq() {
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public afq(ty $$0) {
-   }
-
-   @Override
-   public void a(ty $$0) {
-   }
-
-   public void a(afo $$0) {
-      $$0.a(this);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface afq {
 }

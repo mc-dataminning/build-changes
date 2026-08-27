@@ -1,57 +1,31 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ww implements wo<wr> {
-   public static final int a = 40;
-   private final String b;
-   private final String c;
-   private final boolean d;
-   @Nullable
-   private final uv e;
+public class ww {
+   private static final Logger a = LogUtils.getLogger();
 
-   public ww(String $$0, String $$1, boolean $$2, @Nullable uv $$3) {
-      if ($$1.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + $$1.length() + ")");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
+   public static <T extends uk> void a(wu<T> $$0, T $$1, amp $$2) throws ahe {
+      a($$0, $$1, $$2.n());
+   }
+
+   public static <T extends uk> void a(wu<T> $$0, T $$1, bib<?> $$2) throws ahe {
+      if (!$$2.bq()) {
+         $$2.c(() -> {
+            if ($$1.a($$0)) {
+               try {
+                  $$0.a($$1);
+               } catch (Exception var4) {
+                  if (var4 instanceof y $$3 && $$3.getCause() instanceof OutOfMemoryError || $$1.d()) {
+                     throw var4;
+                  }
+
+                  a.error("Failed to handle packet {}, suppressing error", $$0, var4);
+               }
+            } else {
+               a.debug("Ignoring packet due to disconnection: {}", $$0);
+            }
+         });
+         throw ahe.a;
       }
-   }
-
-   public ww(ty $$0) {
-      this.b = $$0.s();
-      this.c = $$0.d(40);
-      this.d = $$0.readBoolean();
-      this.e = $$0.c(ty::m);
-   }
-
-   @Override
-   public void a(ty $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, ty::a);
-   }
-
-   public void a(wr $$0) {
-      $$0.a(this);
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public boolean e() {
-      return this.d;
-   }
-
-   @Nullable
-   public uv f() {
-      return this.e;
    }
 }

@@ -1,48 +1,39 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.OptionalInt;
 
-public class duk extends dui {
-   public static final Codec<duk> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dhn.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dhn.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dhn.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
+public class duk extends duh {
+   public static final Codec<duk> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
             )
             .apply($$0, duk::new)
    );
-   private final float g;
-   private final float h;
-   private final dhn i;
-   private final List<dhn> j;
-   private final List<dhn> k;
+   private final int e;
+   private final int f;
+   private final int g;
 
-   public duk(long $$0, eca.a $$1, float $$2, float $$3, float $$4, dhn $$5, List<dhn> $$6, List<dhn> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+   public duk(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
+   }
+
+   public duk(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   protected dug<?> a() {
-      return dug.c;
+   protected dui<?> b() {
+      return dui.a;
    }
 
    @Override
-   public dhn a(atw $$0, hx $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ac.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
-      }
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

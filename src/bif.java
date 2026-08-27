@@ -1,14 +1,27 @@
-import com.mojang.serialization.Codec;
+public abstract class bif<R extends Runnable> extends bib<R> {
+   private int b;
 
-public interface bif<P extends bie> {
-   bif<bic> a = a("constant", bic.b);
-   bif<bil> b = a("uniform", bil.a);
-   bif<bia> c = a("clamped_normal", bia.a);
-   bif<bik> d = a("trapezoid", bik.a);
+   public bif(String $$0) {
+      super($$0);
+   }
 
-   Codec<P> codec();
+   @Override
+   public boolean av() {
+      return this.bw() || super.av();
+   }
 
-   static <P extends bie> bif<P> a(String $$0, Codec<P> $$1) {
-      return is.a(kc.M, $$0, () -> $$1);
+   protected boolean bw() {
+      return this.b != 0;
+   }
+
+   @Override
+   public void d(R $$0) {
+      this.b++;
+
+      try {
+         super.d($$0);
+      } finally {
+         this.b--;
+      }
    }
 }

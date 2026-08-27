@@ -1,92 +1,136 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.CompletableFuture;
+import org.slf4j.Logger;
 
 public class ajx {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("commands.schedule.same_tick"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> uv.b("commands.schedule.cleared.failure", $$0));
-   private static final SuggestionProvider<du> c = ($$0, $$1) -> dy.b(((du)$$0.getSource()).l().aY().K().u().a(), $$1);
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("schedule").requires($$0x -> $$0x.c(2)))
-               .then(
-                  dv.a("function")
-                     .then(
-                        dv.a("function", fx.a())
-                           .suggests(air.b)
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("time", ff.a())
-                                       .executes($$0x -> a((du)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
-                                    .then(
-                                       dv.a("append")
-                                          .executes(
-                                             $$0x -> a((du)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
-                                          )
-                                    ))
-                                 .then(
-                                    dv.a("replace")
-                                       .executes($$0x -> a((du)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
-                                 )
-                           )
-                     )
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("resetchunks").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ds)$$0x.getSource(), 0, true)))
             .then(
-               dv.a("clear")
+               ((RequiredArgumentBuilder)dt.a("range", IntegerArgumentType.integer(0, 5))
+                     .executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
                   .then(
-                     dv.a("function", StringArgumentType.greedyString())
-                        .suggests(c)
-                        .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
+                     dt.a("skipOldChunks", BoolArgumentType.bool())
+                        .executes(
+                           $$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
+                        )
                   )
             )
       );
    }
 
-   private static int a(du $$0, Pair<agm, Either<hb<du>, Collection<hb<du>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
-      if ($$2 == 0) {
-         throw a.create();
-      } else {
-         long $$4 = $$0.e().W() + (long)$$2;
-         agm $$5 = (agm)$$1.getFirst();
-         ejm<MinecraftServer> $$6 = $$0.l().aY().K().u();
-         ((Either)$$1.getSecond()).ifLeft($$6x -> {
-            String $$7 = $$5.toString();
-            if ($$3) {
-               $$6.a($$7);
+   private static int a(ds $$0, int $$1, boolean $$2) {
+      amp $$3 = $$0.e();
+      amn $$4 = $$3.k();
+      $$4.a.d();
+      elb $$5 = $$0.d();
+      csf $$6 = new csf(hv.a($$5));
+      int $$7 = $$6.f - $$1;
+      int $$8 = $$6.f + $$1;
+      int $$9 = $$6.e - $$1;
+      int $$10 = $$6.e + $$1;
+
+      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
+         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
+            csf $$13 = new csf($$12, $$11);
+            dkw $$14 = $$4.a($$12, $$11, false);
+            if ($$14 != null && (!$$2 || !$$14.s())) {
+               for (hv $$15 : hv.b($$13.d(), $$3.J_(), $$13.e(), $$13.f(), $$3.ak() - 1, $$13.g())) {
+                  $$3.a($$15, cwb.a.o(), 16);
+               }
             }
+         }
+      }
 
-            $$6.a($$7, $$4, new eji($$5));
-            $$0.a(() -> uv.a("commands.schedule.created.function", uv.a($$5), $$2, $$4), true);
-         }).ifRight($$6x -> {
-            String $$7 = "#" + $$5;
-            if ($$3) {
-               $$6.a($$7);
+      bie<Runnable> $$16 = bie.a(ac.f(), "worldgen-resetchunks");
+      long $$17 = System.currentTimeMillis();
+      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
+      UnmodifiableIterator var33 = ImmutableList.of(dkq.f, dkq.g, dkq.h, dkq.i, dkq.j, dkq.k).iterator();
+
+      while (var33.hasNext()) {
+         dkq $$19 = (dkq)var33.next();
+         long $$20 = System.currentTimeMillis();
+         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
+
+         for (int $$22 = $$6.f - $$1; $$22 <= $$6.f + $$1; $$22++) {
+            for (int $$23 = $$6.e - $$1; $$23 <= $$6.e + $$1; $$23++) {
+               csf $$24 = new csf($$23, $$22);
+               dkw $$25 = $$4.a($$23, $$22, false);
+               if ($$25 != null && (!$$2 || !$$25.s())) {
+                  List<dkl> $$26 = Lists.newArrayList();
+                  int $$27 = Math.max(1, $$19.e());
+
+                  for (int $$28 = $$24.f - $$27; $$28 <= $$24.f + $$27; $$28++) {
+                     for (int $$29 = $$24.e - $$27; $$29 <= $$24.e + $$27; $$29++) {
+                        dkl $$30 = $$4.a($$29, $$28, $$19.d(), true);
+                        dkl $$31;
+                        if ($$30 instanceof dkv) {
+                           $$31 = new dkv(((dkv)$$30).C(), true);
+                        } else if ($$30 instanceof dkw) {
+                           $$31 = new dkv((dkw)$$30, true);
+                        } else {
+                           $$31 = $$30;
+                        }
+
+                        $$26.add($$31);
+                     }
+                  }
+
+                  $$21 = $$21.thenComposeAsync($$5x -> $$19.a($$16::a, $$3, $$4.g(), $$3.p(), $$4.a(), $$0xx -> {
+                        throw new UnsupportedOperationException("Not creating full chunks here");
+                     }, $$26).thenApply($$1xx -> {
+                        if ($$19 == dkq.g) {
+                           $$1xx.left().ifPresent($$0xxx -> dny.a($$0xxx, dkq.b));
+                        }
+
+                        return Unit.INSTANCE;
+                     }), $$16::a);
+               }
             }
+         }
 
-            $$6.a($$7, $$4, new ejj($$5));
-            $$0.a(() -> uv.a("commands.schedule.created.tag", uv.a($$5), $$2, $$4), true);
-         });
-         return Math.floorMod($$4, Integer.MAX_VALUE);
+         $$0.l().c($$21::isDone);
+         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
       }
-   }
 
-   private static int a(du $$0, String $$1) throws CommandSyntaxException {
-      int $$2 = $$0.l().aY().K().u().a($$1);
-      if ($$2 == 0) {
-         throw b.create($$1);
-      } else {
-         $$0.a(() -> uv.a("commands.schedule.cleared.success", $$2, $$1), true);
-         return $$2;
+      long $$34 = System.currentTimeMillis();
+
+      for (int $$35 = $$6.f - $$1; $$35 <= $$6.f + $$1; $$35++) {
+         for (int $$36 = $$6.e - $$1; $$36 <= $$6.e + $$1; $$36++) {
+            csf $$37 = new csf($$36, $$35);
+            dkw $$38 = $$4.a($$36, $$35, false);
+            if ($$38 != null && (!$$2 || !$$38.s())) {
+               for (hv $$39 : hv.b($$37.d(), $$3.J_(), $$37.e(), $$37.f(), $$3.ak() - 1, $$37.g())) {
+                  $$4.a($$39);
+               }
+            }
+         }
       }
+
+      a.debug("blockChanged took " + (System.currentTimeMillis() - $$34) + " ms");
+      long $$40 = System.currentTimeMillis() - $$17;
+      $$0.a(
+         () -> vb.b(
+               String.format(
+                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$40, $$18, (float)$$40 / (float)$$18
+               )
+            ),
+         true
+      );
+      return 1;
    }
 }

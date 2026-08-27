@@ -1,35 +1,120 @@
 import javax.annotation.Nullable;
 
-class bkd extends bkf {
-   private final boolean a;
-
-   public bkd(bkh $$0, int $$1, boolean $$2) {
-      super($$0, $$1);
-      this.a = $$2;
-   }
+public class bkd {
+   private final ie<bkf> a;
+   @Nullable
+   private final blf b;
+   @Nullable
+   private final blf c;
+   @Nullable
+   private final elb d;
 
    @Override
-   public void a(bll $$0, int $$1) {
-      super.a($$0, $$1);
-      if (this.a == $$0.ev()) {
-         $$0.b((float)Math.max(4 << $$1, 0));
+   public String toString() {
+      return "DamageSource (" + this.j().a() + ")";
+   }
+
+   public float a() {
+      return this.j().c();
+   }
+
+   public boolean b() {
+      return this.b != this.c;
+   }
+
+   private bkd(ie<bkf> $$0, @Nullable blf $$1, @Nullable blf $$2, @Nullable elb $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+   }
+
+   public bkd(ie<bkf> $$0, @Nullable blf $$1, @Nullable blf $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public bkd(ie<bkf> $$0, elb $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public bkd(ie<bkf> $$0, @Nullable blf $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bkd(ie<bkf> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public blf c() {
+      return this.c;
+   }
+
+   @Nullable
+   public blf d() {
+      return this.b;
+   }
+
+   public vb a(blv $$0) {
+      String $$1 = "death.attack." + this.j().a();
+      if (this.b == null && this.c == null) {
+         blv $$5 = $$0.eL();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? vb.a($$6, $$0.Q_(), $$5.Q_()) : vb.a($$1, $$0.Q_());
       } else {
-         $$0.a($$0.dO().o(), (float)(6 << $$1));
+         vb $$2 = this.b == null ? this.c.Q_() : this.b.Q_();
+         cmh $$4 = this.b instanceof blv $$3 ? $$3.eT() : cmh.f;
+         return !$$4.b() && $$4.A() ? vb.a($$1 + ".item", $$0.Q_(), $$2, $$4.J()) : vb.a($$1, $$0.Q_(), $$2);
       }
    }
 
-   @Override
-   public void a(@Nullable bkv $$0, @Nullable bkv $$1, bll $$2, int $$3, double $$4) {
-      if (this.a == $$2.ev()) {
-         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
-         $$2.b((float)$$5);
-      } else {
-         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
-         if ($$0 == null) {
-            $$2.a($$2.dO().o(), (float)$$6);
-         } else {
-            $$2.a($$2.dO().c($$0, $$1), (float)$$6);
-         }
+   public String e() {
+      return this.j().a();
+   }
+
+   public boolean f() {
+      return switch (this.j().b()) {
+         case a -> false;
+         case b -> this.b instanceof blv && !(this.b instanceof cer);
+         case c -> true;
+      };
+   }
+
+   public boolean g() {
+      if (this.d() instanceof cer $$0 && $$0.fT().d) {
+         return true;
       }
+
+      return false;
+   }
+
+   @Nullable
+   public elb h() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.dk() : null;
+      }
+   }
+
+   @Nullable
+   public elb i() {
+      return this.d;
+   }
+
+   public boolean a(asg<bkf> $$0) {
+      return this.a.a($$0);
+   }
+
+   public boolean a(ags<bkf> $$0) {
+      return this.a.a($$0);
+   }
+
+   public bkf j() {
+      return this.a.a();
+   }
+
+   public ie<bkf> k() {
+      return this.a;
    }
 }

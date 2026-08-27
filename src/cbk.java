@@ -1,70 +1,55 @@
+import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
-public class cbk extends ccg {
-   public cbk(bkz<? extends cbk> $$0, csf $$1) {
+public class cbk extends cck {
+   public cbk(blj<? extends cbk> $$0, csy $$1) {
       super($$0, $$1);
    }
 
-   public static boolean a(bkz<cbk> $$0, csu $$1, blp $$2, hx $$3, atw $$4) {
-      return b($$0, $$1, $$2, $$3, $$4) && ($$2 == blp.c || $$1.g($$3));
+   public static bna.a u() {
+      return cck.w().a(bnb.l, 12.0);
    }
 
    @Override
-   protected boolean ae_() {
-      return false;
-   }
+   public boolean C(blf $$0) {
+      if (super.C($$0)) {
+         if ($$0 instanceof blv) {
+            int $$1 = 0;
+            if (this.dM().aj() == bji.c) {
+               $$1 = 7;
+            } else if (this.dM().aj() == bji.d) {
+               $$1 = 15;
+            }
 
-   @Override
-   protected aqu y() {
-      return aqv.lR;
-   }
+            if ($$1 > 0) {
+               ((blv)$$0).b(new bks(bku.s, $$1 * 20, 0), this);
+            }
+         }
 
-   @Override
-   protected aqu d(bjt $$0) {
-      return aqv.lU;
-   }
-
-   @Override
-   protected aqu n_() {
-      return aqv.lT;
-   }
-
-   @Override
-   protected aqu A() {
-      return aqv.lV;
-   }
-
-   @Override
-   public boolean C(bkv $$0) {
-      boolean $$1 = super.C($$0);
-      if ($$1 && this.eU().b() && $$0 instanceof bll) {
-         float $$2 = this.dN().d_(this.dn()).b();
-         ((bll)$$0).b(new bki(bkk.q, 140 * (int)$$2), this);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   protected boolean gg() {
-      return true;
-   }
-
-   @Override
-   protected void gi() {
-      this.b(bkz.bp);
-      if (!this.aU()) {
-         this.dN().a(null, 1041, this.dn(), 0);
+         return true;
+      } else {
+         return false;
       }
    }
 
+   @Nullable
    @Override
-   protected clo gf() {
-      return clo.b;
+   public bmo a(ctn $$0, bjj $$1, blz $$2, @Nullable bmo $$3, @Nullable sj $$4) {
+      return $$3;
    }
 
    @Override
-   protected Vector3f a(bkv $$0, bkw $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b + 0.125F * $$2, 0.0F);
+   protected float b(bmh $$0, blg $$1) {
+      return 0.45F;
+   }
+
+   @Override
+   protected Vector3f a(blf $$0, blg $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b, 0.0F);
+   }
+
+   @Override
+   protected float l(blf $$0) {
+      return $$0.dg() <= this.dg() ? -0.21875F : 0.0F;
    }
 }

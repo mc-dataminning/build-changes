@@ -2,61 +2,55 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 import java.util.Optional;
 
 public class aza extends DataFix {
-   public static final String[] a = new String[]{
-      "minecraft:white_shulker_box",
-      "minecraft:orange_shulker_box",
-      "minecraft:magenta_shulker_box",
-      "minecraft:light_blue_shulker_box",
-      "minecraft:yellow_shulker_box",
-      "minecraft:lime_shulker_box",
-      "minecraft:pink_shulker_box",
-      "minecraft:gray_shulker_box",
-      "minecraft:silver_shulker_box",
-      "minecraft:cyan_shulker_box",
-      "minecraft:purple_shulker_box",
-      "minecraft:blue_shulker_box",
-      "minecraft:brown_shulker_box",
-      "minecraft:green_shulker_box",
-      "minecraft:red_shulker_box",
-      "minecraft:black_shulker_box"
-   };
-
    public aza(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bax.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bax.z.typeName(), bcf.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
-      return this.fixTypeEverywhereTyped("ItemShulkerBoxColorFix", $$0, $$3x -> {
-         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
-         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:shulker_box")) {
-            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
-            if ($$5.isPresent()) {
-               Typed<?> $$6 = (Typed<?>)$$5.get();
-               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
-               if ($$7.isPresent()) {
-                  Typed<?> $$8 = (Typed<?>)$$7.get();
-                  Dynamic<?> $$9 = (Dynamic<?>)$$8.get(DSL.remainderFinder());
-                  int $$10 = $$9.get("Color").asInt(0);
-                  $$9.remove("Color");
-                  return $$3x.set($$2, $$6.set($$3, $$8.set(DSL.remainderFinder(), $$9))).set($$1, Pair.of(bax.z.typeName(), a[$$10 % 16]));
-               }
-            }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bbg.c);
+      OpticFinder<?> $$1 = $$0.findField("Level");
+      return this.fixTypeEverywhereTyped("HeightmapRenamingFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("Heightmaps").result();
+      if ($$1.isEmpty()) {
+         return $$0;
+      } else {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Optional<? extends Dynamic<?>> $$3 = $$2.get("LIQUID").result();
+         if ($$3.isPresent()) {
+            $$2 = $$2.remove("LIQUID");
+            $$2 = $$2.set("WORLD_SURFACE_WG", $$3.get());
          }
 
-         return $$3x;
-      });
+         Optional<? extends Dynamic<?>> $$4 = $$2.get("SOLID").result();
+         if ($$4.isPresent()) {
+            $$2 = $$2.remove("SOLID");
+            $$2 = $$2.set("OCEAN_FLOOR_WG", $$4.get());
+            $$2 = $$2.set("OCEAN_FLOOR", $$4.get());
+         }
+
+         Optional<? extends Dynamic<?>> $$5 = $$2.get("LIGHT").result();
+         if ($$5.isPresent()) {
+            $$2 = $$2.remove("LIGHT");
+            $$2 = $$2.set("LIGHT_BLOCKING", $$5.get());
+         }
+
+         Optional<? extends Dynamic<?>> $$6 = $$2.get("RAIN").result();
+         if ($$6.isPresent()) {
+            $$2 = $$2.remove("RAIN");
+            $$2 = $$2.set("MOTION_BLOCKING", $$6.get());
+            $$2 = $$2.set("MOTION_BLOCKING_NO_LEAVES", $$6.get());
+         }
+
+         return $$0.set("Heightmaps", $$2);
+      }
    }
 }

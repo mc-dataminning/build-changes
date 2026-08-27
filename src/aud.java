@@ -1,27 +1,49 @@
-import com.mojang.logging.LogUtils;
-import java.security.PrivateKey;
-import java.security.Signature;
-import org.slf4j.Logger;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
 public interface aud {
-   Logger a = LogUtils.getLogger();
+   aud a(String var1);
 
-   byte[] sign(aub var1);
+   void b(String var1);
 
-   default byte[] a(byte[] $$0) {
-      return this.sign($$1 -> $$1.update($$0));
-   }
+   public static class a implements aud {
+      private final Multimap<String, String> a;
+      private final Supplier<String> b;
+      @Nullable
+      private String c;
 
-   static aud a(PrivateKey $$0, String $$1) {
-      return $$2 -> {
-         try {
-            Signature $$3 = Signature.getInstance($$1);
-            $$3.initSign($$0);
-            $$2.update($$3::update);
-            return $$3.sign();
-         } catch (Exception var4) {
-            throw new IllegalStateException("Failed to sign message", var4);
+      public a() {
+         this(HashMultimap.create(), () -> "");
+      }
+
+      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      private String b() {
+         if (this.c == null) {
+            this.c = this.b.get();
          }
-      };
+
+         return this.c;
+      }
+
+      @Override
+      public aud a(String $$0) {
+         return new aud.a(this.a, () -> this.b() + $$0);
+      }
+
+      @Override
+      public void b(String $$0) {
+         this.a.put(this.b(), $$0);
+      }
+
+      public Multimap<String, String> a() {
+         return ImmutableMultimap.copyOf(this.a);
+      }
    }
 }

@@ -10,22 +10,22 @@ public class aa {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 3688;
+   public static final int b = 3690;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "23w44a";
+   public static final String d = "23w45a";
    @Deprecated
    public static final int e = 765;
    @Deprecated
-   public static final int f = 161;
+   public static final int f = 162;
    public static final int g = 3678;
-   private static final int bj = 30;
+   private static final int bm = 30;
    public static final boolean h = true;
    @Deprecated
-   public static final int i = 20;
+   public static final int i = 21;
    @Deprecated
-   public static final int j = 23;
+   public static final int j = 24;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -85,11 +85,11 @@ public class aa {
    public static final boolean an = false;
    public static final boolean ao = false;
    public static final boolean ap = false;
-   public static boolean aq = false;
-   public static boolean ar = false;
+   public static final boolean aq = false;
+   public static final boolean ar = false;
    public static final boolean as = false;
-   public static final boolean at = false;
-   public static final boolean au = false;
+   public static boolean at = false;
+   public static boolean au = false;
    public static final boolean av = false;
    public static final boolean aw = false;
    public static final boolean ax = false;
@@ -97,41 +97,44 @@ public class aa {
    public static final boolean az = false;
    public static final boolean aA = false;
    public static final boolean aB = false;
-   public static final int aC = 25565;
+   public static final boolean aC = false;
    public static final boolean aD = false;
    public static final boolean aE = false;
-   public static final int aF = 0;
-   public static final int aG = 0;
-   public static final Level aH = Level.DISABLED;
-   public static final boolean aI = false;
-   public static final boolean aJ = false;
-   public static final boolean aK = false;
+   public static final int aF = 25565;
+   public static final boolean aG = false;
+   public static final boolean aH = false;
+   public static final int aI = 0;
+   public static final int aJ = 0;
+   public static final Level aK = Level.DISABLED;
    public static final boolean aL = false;
    public static final boolean aM = false;
    public static final boolean aN = false;
    public static final boolean aO = false;
    public static final boolean aP = false;
-   public static final long aQ = Duration.ofMillis(300L).toNanos();
+   public static final boolean aQ = false;
    public static final boolean aR = false;
-   public static boolean aS = true;
-   public static boolean aT;
-   public static Set<TypeReference> aU = Set.of();
-   public static final int aV = 16;
-   public static final int aW = 256;
-   public static final int aX = 32500;
-   public static final int aY = 1000000;
-   public static final int aZ = 32;
-   public static final char[] ba = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
-   public static final int bb = 20;
-   public static final int bc = 50;
-   public static final int bd = 1200;
-   public static final int be = 24000;
-   public static final float bf = 1365.3334F;
-   public static final float bg = 0.87890625F;
-   public static final float bh = 17.578125F;
-   public static final int bi = 64;
+   public static final boolean aS = false;
+   public static final long aT = Duration.ofMillis(300L).toNanos();
+   public static final boolean aU = false;
+   public static boolean aV = true;
+   public static boolean aW;
+   public static Set<TypeReference> aX = Set.of();
+   public static final int aY = 16;
+   public static final int aZ = 256;
+   public static final int ba = 32500;
+   public static final int bb = 1000000;
+   public static final int bc = 32;
+   public static final char[] bd = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
+   public static final int be = 20;
+   public static final int bf = 50;
+   public static final int bg = 1200;
+   public static final int bh = 24000;
+   public static final float bi = 1365.3334F;
+   public static final float bj = 0.87890625F;
+   public static final float bk = 17.578125F;
+   public static final int bl = 64;
    @Nullable
-   private static ad bk;
+   private static ad bn;
 
    public static boolean a(char $$0) {
       return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
@@ -156,44 +159,44 @@ public class aa {
    }
 
    public static void a(ad $$0) {
-      if (bk == null) {
-         bk = $$0;
-      } else if ($$0 != bk) {
+      if (bn == null) {
+         bn = $$0;
+      } else if ($$0 != bn) {
          throw new IllegalStateException("Cannot override the current game version!");
       }
    }
 
    public static void a() {
-      if (bk == null) {
-         bk = t.a();
+      if (bn == null) {
+         bn = t.a();
       }
    }
 
    public static ad b() {
-      if (bk == null) {
+      if (bn == null) {
          throw new IllegalStateException("Game version not set");
       } else {
-         return bk;
+         return bn;
       }
    }
 
    public static int c() {
-      return 1073741985;
+      return 1073741986;
    }
 
-   public static boolean a(crm $$0) {
+   public static boolean a(csf $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
-      return !aq ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
+      return !at ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
    }
 
    public static void d() {
-      aU = auw.t;
+      aX = avg.t;
    }
 
    static {
-      ResourceLeakDetector.setLevel(aH);
+      ResourceLeakDetector.setLevel(aK);
       CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES = false;
-      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new dm();
+      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new dl();
    }
 }

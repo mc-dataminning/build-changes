@@ -1,26 +1,37 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dmv {
-   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
-   public static final Codec<dmv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
-               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
-               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
-               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dmv::new)
-   );
-   public final double b;
-   public final double c;
-   public final double d;
-   public final double e;
+public class dmv implements dnd {
+   public static final Codec<dmv> a = RecordCodecBuilder.create($$0 -> $$0.group(hv.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, dmv::new));
+   final hv c;
 
-   public dmv(double $$0, double $$1, double $$2, double $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public dmv(hv $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public Optional<elb> a(csy $$0) {
+      return Optional.of(elb.b(this.c));
+   }
+
+   @Override
+   public dne<?> a() {
+      return dne.a;
+   }
+
+   public static class a implements dne<dmv> {
+      public dmv a(ue $$0) {
+         return new dmv($$0.e());
+      }
+
+      public void a(ue $$0, dmv $$1) {
+         $$0.a($$1.c);
+      }
+
+      @Override
+      public Codec<dmv> a() {
+         return dmv.a;
+      }
    }
 }

@@ -1,54 +1,61 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class akq {
-   public static void a(CommandDispatcher<du> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("commands.summon.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("commands.summon.failed.uuid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vb.c("commands.summon.invalidPosition"));
+
+   public static void a(CommandDispatcher<ds> $$0, dn $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("time").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("set")
-                                    .then(dv.a("day").executes($$0x -> a((du)$$0x.getSource(), 1000))))
-                                 .then(dv.a("noon").executes($$0x -> a((du)$$0x.getSource(), 6000))))
-                              .then(dv.a("night").executes($$0x -> a((du)$$0x.getSource(), 13000))))
-                           .then(dv.a("midnight").executes($$0x -> a((du)$$0x.getSource(), 18000))))
-                        .then(dv.a("time", ff.a()).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
-                  ))
-               .then(dv.a("add").then(dv.a("time", ff.a()).executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("summon").requires($$0x -> $$0x.c(2)))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("query")
-                        .then(dv.a("daytime").executes($$0x -> c((du)$$0x.getSource(), a(((du)$$0x.getSource()).e())))))
-                     .then(dv.a("gametime").executes($$0x -> c((du)$$0x.getSource(), (int)(((du)$$0x.getSource()).e().W() % 2147483647L)))))
-                  .then(dv.a("day").executes($$0x -> c((du)$$0x.getSource(), (int)(((du)$$0x.getSource()).e().X() / 24000L % 2147483647L))))
+               ((RequiredArgumentBuilder)dt.a("entity", eq.a($$1, kc.u))
+                     .suggests(hl.d)
+                     .executes($$0x -> b((ds)$$0x.getSource(), eq.e($$0x, "entity"), ((ds)$$0x.getSource()).d(), new sj(), true)))
+                  .then(
+                     ((RequiredArgumentBuilder)dt.a("pos", fr.a())
+                           .executes($$0x -> b((ds)$$0x.getSource(), eq.e($$0x, "entity"), fr.a($$0x, "pos"), new sj(), true)))
+                        .then(dt.a("nbt", eb.a()).executes($$0x -> b((ds)$$0x.getSource(), eq.e($$0x, "entity"), fr.a($$0x, "pos"), eb.a($$0x, "nbt"), false)))
+                  )
             )
       );
    }
 
-   private static int a(ami $$0) {
-      return (int)($$0.X() % 24000L);
-   }
+   public static blf a(ds $$0, ie.c<blj<?>> $$1, elb $$2, sj $$3, boolean $$4) throws CommandSyntaxException {
+      hv $$5 = hv.a($$2);
+      if (!csy.k($$5)) {
+         throw c.create();
+      } else {
+         sj $$6 = $$3.h();
+         $$6.a("id", $$1.g().a().toString());
+         amp $$7 = $$0.e();
+         blf $$8 = blj.a($$6, $$7, $$1x -> {
+            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dC(), $$1x.dE());
+            return $$1x;
+         });
+         if ($$8 == null) {
+            throw a.create();
+         } else {
+            if ($$4 && $$8 instanceof blx) {
+               ((blx)$$8).a($$0.e(), $$0.e().d_($$8.dm()), blz.n, null, null);
+            }
 
-   private static int c(du $$0, int $$1) {
-      $$0.a(() -> uv.a("commands.time.query", $$1), false);
-      return $$1;
-   }
-
-   public static int a(du $$0, int $$1) {
-      for (ami $$2 : $$0.l().H()) {
-         $$2.b((long)$$1);
+            if (!$$7.e($$8)) {
+               throw b.create();
+            } else {
+               return $$8;
+            }
+         }
       }
-
-      $$0.a(() -> uv.a("commands.time.set", $$1), true);
-      return a($$0.e());
    }
 
-   public static int b(du $$0, int $$1) {
-      for (ami $$2 : $$0.l().H()) {
-         $$2.b($$2.X() + (long)$$1);
-      }
-
-      int $$3 = a($$0.e());
-      $$0.a(() -> uv.a("commands.time.set", $$3), true);
-      return $$3;
+   private static int b(ds $$0, ie.c<blj<?>> $$1, elb $$2, sj $$3, boolean $$4) throws CommandSyntaxException {
+      blf $$5 = a($$0, $$1, $$2, $$3, $$4);
+      $$0.a(() -> vb.a("commands.summon.success", $$5.Q_()), true);
+      return 1;
    }
 }

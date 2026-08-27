@@ -1,56 +1,66 @@
-import java.util.function.Supplier;
-
-public enum cnd implements cnb {
-   a(0, 59, 2.0F, 0.0F, 15, () -> coq.a(ars.b)),
-   b(1, 131, 4.0F, 1.0F, 5, () -> coq.a(ars.ax)),
-   c(2, 250, 6.0F, 2.0F, 14, () -> coq.a(clr.oB)),
-   d(3, 1561, 8.0F, 3.0F, 10, () -> coq.a(clr.ov)),
-   e(0, 32, 12.0F, 0.0F, 22, () -> coq.a(clr.oF)),
-   f(4, 2031, 9.0F, 4.0F, 15, () -> coq.a(clr.oG));
-
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
-   private final int k;
-   private final atl<coq> l;
-
-   private cnd(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<coq> $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = new atl<>($$5);
+public class cnd extends cmc {
+   public cnd(cmc.a $$0) {
+      super($$0);
    }
 
    @Override
-   public int a() {
-      return this.h;
+   public boolean a(cmh $$0, csy $$1, dip $$2, hv $$3, blv $$4) {
+      if (!$$1.B && !$$2.a(arr.aJ)) {
+         $$0.a(1, $$4, $$0x -> $$0x.d(blk.a));
+      }
+
+      return !$$2.a(arr.O)
+            && !$$2.a(cwb.bs)
+            && !$$2.a(cwb.bt)
+            && !$$2.a(cwb.bu)
+            && !$$2.a(cwb.bv)
+            && !$$2.a(cwb.sG)
+            && !$$2.a(cwb.ff)
+            && !$$2.a(cwb.fI)
+            && !$$2.a(arr.a)
+         ? super.a($$0, $$1, $$2, $$3, $$4)
+         : true;
    }
 
    @Override
-   public float b() {
-      return this.i;
+   public boolean a_(dip $$0) {
+      return $$0.a(cwb.bs) || $$0.a(cwb.cw) || $$0.a(cwb.fI);
    }
 
    @Override
-   public float c() {
-      return this.j;
+   public float a(cmh $$0, dip $$1) {
+      if ($$1.a(cwb.bs) || $$1.a(arr.O)) {
+         return 15.0F;
+      } else if ($$1.a(arr.a)) {
+         return 5.0F;
+      } else {
+         return !$$1.a(cwb.ff) && !$$1.a(cwb.fg) ? super.a($$0, $$1) : 2.0F;
+      }
    }
 
    @Override
-   public int d() {
-      return this.g;
-   }
+   public bjl a(cos $$0) {
+      csy $$1 = $$0.q();
+      hv $$2 = $$0.a();
+      dip $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof czo $$5 && !$$5.o($$3)) {
+         cer $$6 = $$0.o();
+         cmh $$7 = $$0.n();
+         if ($$6 instanceof amq) {
+            am.N.a((amq)$$6, $$2, $$7);
+         }
 
-   @Override
-   public int e() {
-      return this.k;
-   }
+         $$1.a($$6, $$2, arc.kL, ard.e, 1.0F, 1.0F);
+         dip $$8 = $$5.n($$3);
+         $$1.b($$2, $$8);
+         $$1.a(dmz.c, $$2, dmz.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, $$1x -> $$1x.d($$0.p()));
+         }
 
-   @Override
-   public coq f() {
-      return this.l.a();
+         return bjl.a($$1.B);
+      }
+
+      return super.a($$0);
    }
 }

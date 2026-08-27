@@ -1,53 +1,35 @@
-public class foe extends fpo {
-   foe(flo $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
-   }
+import java.net.InetSocketAddress;
 
-   @Override
-   public fos b() {
-      return fos.b;
-   }
+public interface foe {
+   String a();
 
-   @Override
-   public float b(float $$0) {
-      return this.D * atq.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   String b();
 
-   public static class a implements foq<jz> {
-      private final fpj a;
+   int c();
 
-      public a(fpj $$0) {
-         this.a = $$0;
-      }
+   InetSocketAddress d();
 
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         foe $$8 = new foe($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
+   static foe a(final InetSocketAddress $$0) {
+      return new foe() {
+         @Override
+         public String a() {
+            return $$0.getAddress().getHostName();
+         }
 
-   public static class b implements foq<jz> {
-      private final fpj a;
+         @Override
+         public String b() {
+            return $$0.getAddress().getHostAddress();
+         }
 
-      public b(fpj $$0) {
-         this.a = $$0;
-      }
+         @Override
+         public int c() {
+            return $$0.getPort();
+         }
 
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         foe $$8 = new foe($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
-      }
+         @Override
+         public InetSocketAddress d() {
+            return $$0;
+         }
+      };
    }
 }

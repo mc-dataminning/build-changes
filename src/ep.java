@@ -2,103 +2,47 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
 
-public class ep implements ArgumentType<ep.a> {
-   private static final Collection<String> a = Arrays.asList("=", ">", "<");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(uv.c("arguments.operation.invalid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(uv.c("arguments.operation.div0"));
-
-   public static ep a() {
-      return new ep();
+public interface ep<T extends ck<?>> extends ArgumentType<T> {
+   static ep.b a() {
+      return new ep.b();
    }
 
-   public static ep.a a(CommandContext<du> $$0, String $$1) {
-      return (ep.a)$$0.getArgument($$1, ep.a.class);
+   static ep.a b() {
+      return new ep.a();
    }
 
-   public ep.a a(StringReader $$0) throws CommandSyntaxException {
-      if (!$$0.canRead()) {
-         throw b.create();
-      } else {
-         int $$1 = $$0.getCursor();
+   public static class a implements ep<ck.c> {
+      private static final Collection<String> a = Arrays.asList("0..5.2", "0", "-5.4", "-100.76..", "..100");
 
-         while ($$0.canRead() && $$0.peek() != ' ') {
-            $$0.skip();
-         }
+      public static ck.c a(CommandContext<ds> $$0, String $$1) {
+         return (ck.c)$$0.getArgument($$1, ck.c.class);
+      }
 
-         return a($$0.getString().substring($$1, $$0.getCursor()));
+      public ck.c a(StringReader $$0) throws CommandSyntaxException {
+         return ck.c.a($$0);
+      }
+
+      public Collection<String> getExamples() {
+         return a;
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dy.a(new String[]{"=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><"}, $$1);
-   }
+   public static class b implements ep<ck.d> {
+      private static final Collection<String> a = Arrays.asList("0..5", "0", "-5", "-100..", "..100");
 
-   public Collection<String> getExamples() {
-      return a;
-   }
-
-   private static ep.a a(String $$0) throws CommandSyntaxException {
-      return (ep.a)($$0.equals("><") ? ($$0x, $$1) -> {
-         int $$2 = $$0x.b();
-         $$0x.b($$1.b());
-         $$1.b($$2);
-      } : b($$0));
-   }
-
-   private static ep.b b(String $$0) throws CommandSyntaxException {
-      switch ($$0) {
-         case "=":
-            return ($$0x, $$1) -> $$1;
-         case "+=":
-            return ($$0x, $$1) -> $$0x + $$1;
-         case "-=":
-            return ($$0x, $$1) -> $$0x - $$1;
-         case "*=":
-            return ($$0x, $$1) -> $$0x * $$1;
-         case "/=":
-            return ($$0x, $$1) -> {
-               if ($$1 == 0) {
-                  throw c.create();
-               } else {
-                  return atq.a($$0x, $$1);
-               }
-            };
-         case "%=":
-            return ($$0x, $$1) -> {
-               if ($$1 == 0) {
-                  throw c.create();
-               } else {
-                  return atq.b($$0x, $$1);
-               }
-            };
-         case "<":
-            return Math::min;
-         case ">":
-            return Math::max;
-         default:
-            throw b.create();
+      public static ck.d a(CommandContext<ds> $$0, String $$1) {
+         return (ck.d)$$0.getArgument($$1, ck.d.class);
       }
-   }
 
-   @FunctionalInterface
-   public interface a {
-      void apply(ekx var1, ekx var2) throws CommandSyntaxException;
-   }
+      public ck.d a(StringReader $$0) throws CommandSyntaxException {
+         return ck.d.a($$0);
+      }
 
-   @FunctionalInterface
-   interface b extends ep.a {
-      int apply(int var1, int var2) throws CommandSyntaxException;
-
-      @Override
-      default void apply(ekx $$0, ekx $$1) throws CommandSyntaxException {
-         $$0.b(this.apply($$0.b(), $$1.b()));
+      public Collection<String> getExamples() {
+         return a;
       }
    }
 }

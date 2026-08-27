@@ -1,72 +1,67 @@
-import com.google.gson.JsonObject;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bw extends cw<bw.a> {
-   public bw.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<cb> $$3 = cb.a($$0.get("rod"));
-      Optional<bc> $$4 = bq.a($$0, "entity", $$2);
-      Optional<cb> $$5 = cb.a($$0.get("item"));
-      return new bw.a($$1, $$3, $$4, $$5);
-   }
+public record bw(Optional<asg<edy>> b, Optional<ie<edy>> c, Optional<cz> d) {
+   public static final Codec<bw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(atg.a(asg.a(kc.y), "tag").forGetter(bw::a), atg.a(kb.c.r(), "fluid").forGetter(bw::b), atg.a(cz.a, "state").forGetter(bw::c))
+            .apply($$0, bw::new)
+   );
 
-   public void a(amj $$0, clo $$1, cen $$2, Collection<clo> $$3) {
-      efc $$4 = bq.b($$0, (bkv)($$2.u() != null ? $$2.u() : $$2));
-      this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
-   }
-
-   public static class a extends at {
-      private final Optional<cb> a;
-      private final Optional<bc> b;
-      private final Optional<cb> c;
-
-      public a(Optional<bc> $$0, Optional<cb> $$1, Optional<bc> $$2, Optional<cb> $$3) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
-         this.c = $$3;
-      }
-
-      public static am<bw.a> a(Optional<cb> $$0, Optional<bq> $$1, Optional<cb> $$2) {
-         return al.D.a(new bw.a(Optional.empty(), $$0, bq.a($$1), $$2));
-      }
-
-      public boolean a(clo $$0, efc $$1, Collection<clo> $$2) {
-         if (this.a.isPresent() && !this.a.get().a($$0)) {
-            return false;
-         } else if (this.b.isPresent() && !this.b.get().a($$1)) {
+   public boolean a(amp $$0, hv $$1) {
+      if (!$$0.o($$1)) {
+         return false;
+      } else {
+         edz $$2 = $$0.b_($$1);
+         if (this.b.isPresent() && !$$2.a(this.b.get())) {
             return false;
          } else {
-            if (this.c.isPresent()) {
-               boolean $$3 = false;
-               bkv $$4 = $$1.c(ehn.a);
-               if ($$4 instanceof cas $$5 && this.c.get().a($$5.q())) {
-                  $$3 = true;
-               }
-
-               for (clo $$6 : $$2) {
-                  if (this.c.get().a($$6)) {
-                     $$3 = true;
-                     break;
-                  }
-               }
-
-               if (!$$3) {
-                  return false;
-               }
-            }
-
-            return true;
+            return this.c.isPresent() && !$$2.b(this.c.get().a()) ? false : !this.d.isPresent() || this.d.get().a($$2);
          }
       }
+   }
 
-      @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("rod", $$1.a()));
-         this.b.ifPresent($$1 -> $$0.add("entity", $$1.a()));
-         this.c.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         return $$0;
+   public Optional<asg<edy>> a() {
+      return this.b;
+   }
+
+   public Optional<ie<edy>> b() {
+      return this.c;
+   }
+
+   public Optional<cz> c() {
+      return this.d;
+   }
+
+   public static class a {
+      private Optional<ie<edy>> a = Optional.empty();
+      private Optional<asg<edy>> b = Optional.empty();
+      private Optional<cz> c = Optional.empty();
+
+      private a() {
+      }
+
+      public static bw.a a() {
+         return new bw.a();
+      }
+
+      public bw.a a(edy $$0) {
+         this.a = Optional.of($$0.k());
+         return this;
+      }
+
+      public bw.a a(asg<edy> $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public bw.a a(cz $$0) {
+         this.c = Optional.of($$0);
+         return this;
+      }
+
+      public bw b() {
+         return new bw(this.b, this.a, this.c);
       }
    }
 }

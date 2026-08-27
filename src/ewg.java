@@ -1,146 +1,162 @@
+import com.google.common.collect.Maps;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.UUID;
 
-public class ewg extends faz {
-   private static final agm a = new agm("popup/background");
-   private static final int b = 12;
-   private static final int c = 18;
-   private static final int k = 6;
-   private static final int l = 130;
-   private static final int m = 64;
-   private static final int n = 250;
-   private final faz o;
-   @Nullable
-   private final agm p;
-   private final uv q;
-   private final List<ewg.b> r;
-   @Nullable
-   private final Runnable t;
-   private final int u;
-   private final eys v = eys.d();
+public class ewg {
+   private static final int a = 182;
+   private static final int b = 5;
+   private static final agt[] c = new agt[]{
+      new agt("boss_bar/pink_background"),
+      new agt("boss_bar/blue_background"),
+      new agt("boss_bar/red_background"),
+      new agt("boss_bar/green_background"),
+      new agt("boss_bar/yellow_background"),
+      new agt("boss_bar/purple_background"),
+      new agt("boss_bar/white_background")
+   };
+   private static final agt[] d = new agt[]{
+      new agt("boss_bar/pink_progress"),
+      new agt("boss_bar/blue_progress"),
+      new agt("boss_bar/red_progress"),
+      new agt("boss_bar/green_progress"),
+      new agt("boss_bar/yellow_progress"),
+      new agt("boss_bar/purple_progress"),
+      new agt("boss_bar/white_progress")
+   };
+   private static final agt[] e = new agt[]{
+      new agt("boss_bar/notched_6_background"),
+      new agt("boss_bar/notched_10_background"),
+      new agt("boss_bar/notched_12_background"),
+      new agt("boss_bar/notched_20_background")
+   };
+   private static final agt[] f = new agt[]{
+      new agt("boss_bar/notched_6_progress"),
+      new agt("boss_bar/notched_10_progress"),
+      new agt("boss_bar/notched_12_progress"),
+      new agt("boss_bar/notched_20_progress")
+   };
+   private final euk g;
+   final Map<UUID, ewv> h = Maps.newLinkedHashMap();
 
-   ewg(faz $$0, int $$1, @Nullable agm $$2, uv $$3, uv $$4, List<ewg.b> $$5, @Nullable Runnable $$6) {
-      super($$3);
-      this.o = $$0;
-      this.p = $$2;
-      this.q = $$4;
-      this.r = $$5;
-      this.t = $$6;
-      this.u = $$1 - 36;
+   public ewg(euk $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   protected void aQ_() {
-      this.v.a(12).c().b();
-      this.v.a(new evy(this.e.f().a(n.r), this.i).j(this.u).b(true));
-      if (this.p != null) {
-         this.v.a(evr.a(130, 64, this.p, 130, 64));
-      }
+   public void a(evw $$0) {
+      if (!this.h.isEmpty()) {
+         int $$1 = $$0.a();
+         int $$2 = 12;
 
-      this.v.a(new evy(this.q, this.i).j(this.u).b(true));
-      this.v.a(this.l());
-      this.v.a($$1 -> {
-         evc var10000 = this.d($$1);
-      });
-      this.c();
-   }
-
-   private eys l() {
-      int $$0 = 6 * (this.r.size() - 1);
-      int $$1 = Math.min((this.u - $$0) / this.r.size(), 150);
-      eys $$2 = eys.e();
-      $$2.a(6);
-
-      for (ewg.b $$3 : this.r) {
-         $$2.a(eve.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
-      }
-
-      return $$2;
-   }
-
-   @Override
-   protected void c() {
-      this.o.a(this.f, this.g, this.h);
-      this.v.a();
-      eym.a(this.v, this.s());
-   }
-
-   @Override
-   public void b(eut $$0, int $$1, int $$2, float $$3) {
-      this.o.a($$0, -1, -1, $$3);
-      $$0.e();
-      RenderSystem.clear(256, eti.a);
-      this.a($$0);
-      $$0.a(a, this.v.p() - 18, this.v.r() - 18, this.v.k() + 36, this.v.i() + 36);
-   }
-
-   @Override
-   public uv h() {
-      return uu.a(this.e, this.q);
-   }
-
-   @Override
-   public void aG_() {
-      if (this.t != null) {
-         this.t.run();
-      }
-
-      this.f.a(this.o);
-   }
-
-   public static class a {
-      private final faz a;
-      private final uv b;
-      private uv c = uu.a;
-      private int d = 250;
-      @Nullable
-      private agm e;
-      private final List<ewg.b> f = new ArrayList<>();
-      @Nullable
-      private Runnable g = null;
-
-      public a(faz $$0, uv $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public ewg.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ewg.a a(agm $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ewg.a a(uv $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ewg.a a(uv $$0, Consumer<ewg> $$1) {
-         this.f.add(new ewg.b($$0, $$1));
-         return this;
-      }
-
-      public ewg.a a(Runnable $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public ewg a() {
-         if (this.f.isEmpty()) {
-            throw new IllegalStateException("Popup must have at least one button");
-         } else {
-            return new ewg(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+         for (ewv $$3 : this.h.values()) {
+            int $$4 = $$1 / 2 - 91;
+            this.a($$0, $$4, $$2, $$3);
+            vb $$6 = $$3.j();
+            int $$7 = this.g.h.a($$6);
+            int $$8 = $$1 / 2 - $$7 / 2;
+            int $$9 = $$2 - 9;
+            $$0.b(this.g.h, $$6, $$8, $$9, 16777215);
+            $$2 += 10 + 9;
+            if ($$2 >= $$0.b() / 3) {
+               break;
+            }
          }
       }
    }
 
-   static record b(uv a, Consumer<ewg> b) {
+   private void a(evw $$0, int $$1, int $$2, bjb $$3) {
+      this.a($$0, $$1, $$2, $$3, 182, c, e);
+      int $$4 = aty.b($$3.k(), 0, 182);
+      if ($$4 > 0) {
+         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+      }
+   }
+
+   private void a(evw $$0, int $$1, int $$2, bjb $$3, int $$4, agt[] $$5, agt[] $$6) {
+      $$0.a($$5[$$3.l().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      if ($$3.m() != bjb.b.a) {
+         RenderSystem.enableBlend();
+         $$0.a($$6[$$3.m().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+         RenderSystem.disableBlend();
+      }
+   }
+
+   public void a(yy $$0) {
+      $$0.a(new yy.b() {
+         @Override
+         public void a(UUID $$0, vb $$1, float $$2, bjb.a $$3, bjb.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+            ewg.this.h.put($$0, new ewv($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         }
+
+         @Override
+         public void a(UUID $$0) {
+            ewg.this.h.remove($$0);
+         }
+
+         @Override
+         public void a(UUID $$0, float $$1) {
+            ewg.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, vb $$1) {
+            ewg.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, bjb.a $$1, bjb.b $$2) {
+            ewv $$3 = ewg.this.h.get($$0);
+            $$3.a($$1);
+            $$3.a($$2);
+         }
+
+         @Override
+         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
+            ewv $$4 = ewg.this.h.get($$0);
+            $$4.a($$1);
+            $$4.b($$2);
+            $$4.c($$3);
+         }
+      });
+   }
+
+   public void a() {
+      this.h.clear();
+   }
+
+   public boolean b() {
+      if (!this.h.isEmpty()) {
+         for (bjb $$0 : this.h.values()) {
+            if ($$0.o()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public boolean c() {
+      if (!this.h.isEmpty()) {
+         for (bjb $$0 : this.h.values()) {
+            if ($$0.n()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public boolean d() {
+      if (!this.h.isEmpty()) {
+         for (bjb $$0 : this.h.values()) {
+            if ($$0.p()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 }

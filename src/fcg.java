@@ -1,48 +1,41 @@
-public class fcg extends fby<cgw> {
-   private static final agm x = new agm("container/brewing_stand/fuel_length");
-   private static final agm y = new agm("container/brewing_stand/brew_progress");
-   private static final agm z = new agm("container/brewing_stand/bubbles");
-   private static final agm A = new agm("textures/gui/container/brewing_stand.png");
-   private static final int[] B = new int[]{29, 24, 20, 16, 11, 6, 0};
+import java.util.Arrays;
 
-   public fcg(cgw $$0, cdy $$1, uv $$2) {
-      super($$0, $$1, $$2);
+public class fcg extends fbu {
+   private exe c;
+
+   private static eun<?>[] a(euo $$0) {
+      return new eun[]{$$0.T(), $$0.U()};
+   }
+
+   public fcg(fcc $$0, euo $$1) {
+      super($$0, $$1, vb.c("options.sounds.title"));
    }
 
    @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   protected void aP_() {
+      this.c = new exe(this.f, this.g, this.h, 32, this.h - 32, 25);
+      this.c.a(this.b.b(ard.a));
+      this.c.a(this.l());
+      this.c.a(this.b.aq());
+      this.c.a(a(this.b));
+      this.e(this.c);
+      this.d(ewh.a(va.d, $$0 -> {
+         this.f.m.as();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+   }
+
+   private eun<?>[] l() {
+      return Arrays.stream(ard.values()).filter($$0 -> $$0 != ard.a).map($$0 -> this.b.b($$0)).toArray(eun[]::new);
    }
 
    @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, this.c, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(eut $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
-      int $$6 = this.p.l();
-      int $$7 = atq.a((18 * $$6 + 20 - 1) / 20, 0, 18);
-      if ($$7 > 0) {
-         $$0.a(x, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
-      }
-
-      int $$8 = this.p.m();
-      if ($$8 > 0) {
-         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
-         if ($$9 > 0) {
-            $$0.a(y, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
-         }
-
-         $$9 = B[$$8 / 2 % 7];
-         if ($$9 > 0) {
-            $$0.a(z, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
-         }
-      }
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

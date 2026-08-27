@@ -1,51 +1,55 @@
-import com.mojang.logging.LogUtils;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Properties;
-import org.slf4j.Logger;
+import com.google.common.collect.MapMaker;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentMap;
 
-public class ags {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final boolean c;
+public class ags<T> {
+   private static final ConcurrentMap<ags.a, ags<?>> a = new MapMaker().weakValues().makeMap();
+   private final agt b;
+   private final agt c;
 
-   public ags(Path $$0) {
+   public static <T> Codec<ags<T>> a(ags<? extends ir<T>> $$0) {
+      return agt.a.xmap($$1 -> a($$0, $$1), ags::a);
+   }
+
+   public static <T> ags<T> a(ags<? extends ir<T>> $$0, agt $$1) {
+      return a($$0.c, $$1);
+   }
+
+   public static <T> ags<ir<T>> a(agt $$0) {
+      return a(kc.a, $$0);
+   }
+
+   private static <T> ags<T> a(agt $$0, agt $$1) {
+      return (ags<T>)a.computeIfAbsent(new ags.a($$0, $$1), $$0x -> new ags($$0x.a, $$0x.b));
+   }
+
+   private ags(agt $$0, agt $$1) {
       this.b = $$0;
-      this.c = aa.aT || this.b();
+      this.c = $$1;
    }
 
-   private boolean b() {
-      try {
-         boolean var3;
-         try (InputStream $$0 = Files.newInputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.load($$0);
-            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
-         }
-
-         return var3;
-      } catch (Exception var6) {
-         a.warn("Failed to load {}", this.b);
-         this.c();
-         return false;
-      }
+   @Override
+   public String toString() {
+      return "ResourceKey[" + this.b + " / " + this.c + "]";
    }
 
-   public boolean a() {
+   public boolean b(ags<? extends ir<?>> $$0) {
+      return this.b.equals($$0.a());
+   }
+
+   public <E> Optional<ags<E>> c(ags<? extends ir<E>> $$0) {
+      return this.b($$0) ? Optional.of((ags<E>)this) : Optional.empty();
+   }
+
+   public agt a() {
       return this.c;
    }
 
-   private void c() {
-      if (!aa.aT) {
-         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.setProperty("eula", "false");
-            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (https://aka.ms/MinecraftEULA).");
-         } catch (Exception var6) {
-            a.warn("Failed to save {}", this.b, var6);
-         }
-      }
+   public agt b() {
+      return this.b;
+   }
+
+   static record a(agt a, agt b) {
    }
 }

@@ -1,56 +1,37 @@
-public class fpt extends fpo {
-   private float a;
+public class fpt extends fpw {
+   private final fju a;
+   private final fsq b = fsq.i(fxh.a);
 
-   fpt(flo $$0, double $$1, double $$2, double $$3) {
+   fpt(fmt $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+      this.a = new fjf(euk.N().aO().a(flx.S));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public fos b() {
-      return fos.b;
+   public fqa b() {
+      return fqa.e;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * atq.b(this.a));
-         this.l = this.l + (double)(0.6F * atq.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(hx.a(this.g, this.h, this.i)).a(arp.a) || this.m) {
-            this.k();
-         }
-
-         this.a += 0.08F;
-      }
+   public void a(eph $$0, etv $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * aty.a($$3 * (float) Math.PI);
+      epd $$5 = new epd();
+      $$5.a($$1.f());
+      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$5.b(-1.0F, -1.0F, 1.0F);
+      $$5.a(0.0F, -1.101F, 1.5F);
+      fsi.a $$6 = euk.N().aN().c();
+      eph $$7 = $$6.getBuffer(this.b);
+      this.a.a($$5, $$7, 15728880, gdf.d, 1.0F, 1.0F, 1.0F, $$4);
+      $$6.b();
    }
 
-   public static class a implements foq<jz> {
-      private final fpj a;
-
-      public a(fpj $$0) {
-         this.a = $$0;
-      }
-
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpt $$8 = new fpt($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+   public static class a implements fpz<jy> {
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpt($$1, $$2, $$3, $$4);
       }
    }
 }

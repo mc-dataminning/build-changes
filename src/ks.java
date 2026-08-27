@@ -1,235 +1,112 @@
-import java.util.Optional;
 import java.util.function.Consumer;
 
-public class ks implements kn {
-   private static final bc a = bc.a(
-      eie.a(efc.b.a, bq.a.a().a(bn.a.a().a(cb.a.a().a(clr.pL)))).invert().build(),
-      eie.a(efc.b.a, bq.a.a().a(bn.a.a().b(cb.a.a().a(clr.pM)))).invert().build(),
-      eie.a(efc.b.a, bq.a.a().a(bn.a.a().c(cb.a.a().a(clr.pN)))).invert().build(),
-      eie.a(efc.b.a, bq.a.a().a(bn.a.a().d(cb.a.a().a(clr.pO)))).invert().build()
-   );
-
+public class ks implements km {
    @Override
-   public void a(ii.b $$0, Consumer<af> $$1) {
+   public void a(ih.b $$0, Consumer<af> $$1) {
       af $$2 = ae.a.a()
          .a(
-            cvh.kL,
-            uv.c("advancements.nether.root.title"),
-            uv.c("advancements.nether.root.description"),
-            new agm("textures/gui/advancements/backgrounds/nether.png"),
-            ar.a,
+            cwb.i,
+            vb.c("advancements.story.root.title"),
+            vb.c("advancements.story.root.description"),
+            new agt("textures/gui/advancements/backgrounds/stone.png"),
+            al.a,
             false,
             false,
             false
          )
-         .a("entered_nether", ay.a.a(csf.i))
-         .a($$1, "nether/root");
+         .a("crafting_table", by.a.a(cwb.cA))
+         .a($$1, "story/root");
       af $$3 = ae.a.a()
          .a($$2)
-         .a(clr.tR, uv.c("advancements.nether.return_to_sender.title"), uv.c("advancements.nether.return_to_sender.description"), null, ar.b, true, true, false)
-         .a(aj.a.a(50))
-         .a("killed_ghast", ce.a.a(bq.a.a().a(bkz.Q), bf.a.a().a(dc.a(arm.j)).a(bq.a.a().a(bkz.ag))))
-         .a($$1, "nether/return_to_sender");
+         .a(cmk.oK, vb.c("advancements.story.mine_stone.title"), vb.c("advancements.story.mine_stone.description"), null, al.a, true, true, false)
+         .a("get_stone", by.a.a(ca.a.a().a(arz.ax)))
+         .a($$1, "story/mine_stone");
       af $$4 = ae.a.a()
-         .a($$2)
-         .a(cvh.fn, uv.c("advancements.nether.find_fortress.title"), uv.c("advancements.nether.find_fortress.description"), null, ar.a, true, true, false)
-         .a("fortress", cs.a.a(cj.a.c(dxg.o)))
-         .a($$1, "nether/find_fortress");
-      ae.a.a()
-         .a($$2)
-         .a(clr.ub, uv.c("advancements.nether.fast_travel.title"), uv.c("advancements.nether.fast_travel.description"), null, ar.b, true, true, false)
-         .a(aj.a.a(100))
-         .a("travelled", bi.a.a(bh.a(cl.c.b(7000.0))))
-         .a($$1, "nether/fast_travel");
-      ae.a.a()
          .a($$3)
-         .a(clr.se, uv.c("advancements.nether.uneasy_alliance.title"), uv.c("advancements.nether.uneasy_alliance.description"), null, ar.b, true, true, false)
-         .a(aj.a.a(100))
-         .a("killed_ghast", ce.a.a(bq.a.a().a(bkz.Q).a(cj.a.b(csf.h))))
-         .a($$1, "nether/uneasy_alliance");
+         .a(cmk.oP, vb.c("advancements.story.upgrade_tools.title"), vb.c("advancements.story.upgrade_tools.description"), null, al.a, true, true, false)
+         .a("stone_pickaxe", by.a.a(cmk.oP))
+         .a($$1, "story/upgrade_tools");
       af $$5 = ae.a.a()
          .a($$4)
-         .a(cvh.gG, uv.c("advancements.nether.get_wither_skull.title"), uv.c("advancements.nether.get_wither_skull.description"), null, ar.a, true, true, false)
-         .a("wither_skull", bz.a.a(cvh.gG))
-         .a($$1, "nether/get_wither_skull");
+         .a(cmk.oB, vb.c("advancements.story.smelt_iron.title"), vb.c("advancements.story.smelt_iron.description"), null, al.a, true, true, false)
+         .a("iron", by.a.a(cmk.oB))
+         .a($$1, "story/smelt_iron");
       af $$6 = ae.a.a()
          .a($$5)
-         .a(clr.uk, uv.c("advancements.nether.summon_wither.title"), uv.c("advancements.nether.summon_wither.description"), null, ar.a, true, true, false)
-         .a("summoned", db.a.a(bq.a.a().a(bkz.bk)))
-         .a($$1, "nether/summon_wither");
+         .a(cmk.oZ, vb.c("advancements.story.iron_tools.title"), vb.c("advancements.story.iron_tools.description"), null, al.a, true, true, false)
+         .a("iron_pickaxe", by.a.a(cmk.oZ))
+         .a($$1, "story/iron_tools");
       af $$7 = ae.a.a()
-         .a($$4)
-         .a(clr.sd, uv.c("advancements.nether.obtain_blaze_rod.title"), uv.c("advancements.nether.obtain_blaze_rod.description"), null, ar.a, true, true, false)
-         .a("blaze_rod", bz.a.a(clr.sd))
-         .a($$1, "nether/obtain_blaze_rod");
-      af $$8 = ae.a.a()
          .a($$6)
-         .a(cvh.fO, uv.c("advancements.nether.create_beacon.title"), uv.c("advancements.nether.create_beacon.description"), null, ar.a, true, true, false)
-         .a("beacon", ba.a.a(cl.d.b(1)))
-         .a($$1, "nether/create_beacon");
-      ae.a.a()
-         .a($$8)
-         .a(
-            cvh.fO,
-            uv.c("advancements.nether.create_full_beacon.title"),
-            uv.c("advancements.nether.create_full_beacon.description"),
-            null,
-            ar.c,
-            true,
-            true,
-            false
-         )
-         .a("beacon", ba.a.a(cl.d.a(4)))
-         .a($$1, "nether/create_full_beacon");
+         .a(cmk.ov, vb.c("advancements.story.mine_diamond.title"), vb.c("advancements.story.mine_diamond.description"), null, al.a, true, true, false)
+         .a("diamond", by.a.a(cmk.ov))
+         .a($$1, "story/mine_diamond");
+      af $$8 = ae.a.a()
+         .a($$5)
+         .a(cmk.qx, vb.c("advancements.story.lava_bucket.title"), vb.c("advancements.story.lava_bucket.description"), null, al.a, true, true, false)
+         .a("lava_bucket", by.a.a(cmk.qx))
+         .a($$1, "story/lava_bucket");
       af $$9 = ae.a.a()
+         .a($$5)
+         .a(cmk.pE, vb.c("advancements.story.obtain_armor.title"), vb.c("advancements.story.obtain_armor.description"), null, al.a, true, true, false)
+         .a(ai.a.b)
+         .a("iron_helmet", by.a.a(cmk.pD))
+         .a("iron_chestplate", by.a.a(cmk.pE))
+         .a("iron_leggings", by.a.a(cmk.pF))
+         .a("iron_boots", by.a.a(cmk.pG))
+         .a($$1, "story/obtain_armor");
+      ae.a.a()
          .a($$7)
-         .a(clr.sh, uv.c("advancements.nether.brew_potion.title"), uv.c("advancements.nether.brew_potion.description"), null, ar.a, true, true, false)
-         .a("potion", ax.a.c())
-         .a($$1, "nether/brew_potion");
+         .a(cmk.up, vb.c("advancements.story.enchant_item.title"), vb.c("advancements.story.enchant_item.description"), null, al.a, true, true, false)
+         .a("enchanted_item", bj.a.b())
+         .a($$1, "story/enchant_item");
       af $$10 = ae.a.a()
+         .a($$8)
+         .a(cwb.co, vb.c("advancements.story.form_obsidian.title"), vb.c("advancements.story.form_obsidian.description"), null, al.a, true, true, false)
+         .a("obsidian", by.a.a(cwb.co))
+         .a($$1, "story/form_obsidian");
+      ae.a.a()
          .a($$9)
-         .a(clr.qB, uv.c("advancements.nether.all_potions.title"), uv.c("advancements.nether.all_potions.description"), null, ar.b, true, true, false)
-         .a(aj.a.a(100))
-         .a(
-            "all_effects",
-            bj.a.a(cm.a.a().a(bkk.a).a(bkk.b).a(bkk.e).a(bkk.h).a(bkk.j).a(bkk.l).a(bkk.m).a(bkk.n).a(bkk.p).a(bkk.r).a(bkk.s).a(bkk.B).a(bkk.k))
-         )
-         .a($$1, "nether/all_potions");
+         .a(cmk.vl, vb.c("advancements.story.deflect_arrow.title"), vb.c("advancements.story.deflect_arrow.description"), null, al.a, true, true, false)
+         .a("deflected_projectile", bo.a.a(be.a.a().a(bf.a.a().a(db.a(art.k))).a(true)))
+         .a($$1, "story/deflect_arrow");
       ae.a.a()
-         .a($$10)
-         .a(clr.qv, uv.c("advancements.nether.all_effects.title"), uv.c("advancements.nether.all_effects.description"), null, ar.b, true, true, true)
-         .a(aj.a.a(1000))
-         .a(
-            "all_effects",
-            bj.a.a(
-               cm.a.a()
-                  .a(bkk.a)
-                  .a(bkk.b)
-                  .a(bkk.e)
-                  .a(bkk.h)
-                  .a(bkk.j)
-                  .a(bkk.l)
-                  .a(bkk.m)
-                  .a(bkk.n)
-                  .a(bkk.p)
-                  .a(bkk.r)
-                  .a(bkk.s)
-                  .a(bkk.t)
-                  .a(bkk.c)
-                  .a(bkk.d)
-                  .a(bkk.y)
-                  .a(bkk.x)
-                  .a(bkk.v)
-                  .a(bkk.q)
-                  .a(bkk.i)
-                  .a(bkk.k)
-                  .a(bkk.B)
-                  .a(bkk.C)
-                  .a(bkk.D)
-                  .a(bkk.o)
-                  .a(bkk.E)
-                  .a(bkk.F)
-                  .a(bkk.G)
-            )
-         )
-         .a($$1, "nether/all_effects");
+         .a($$7)
+         .a(cmk.pI, vb.c("advancements.story.shiny_gear.title"), vb.c("advancements.story.shiny_gear.description"), null, al.a, true, true, false)
+         .a(ai.a.b)
+         .a("diamond_helmet", by.a.a(cmk.pH))
+         .a("diamond_chestplate", by.a.a(cmk.pI))
+         .a("diamond_leggings", by.a.a(cmk.pJ))
+         .a("diamond_boots", by.a.a(cmk.pK))
+         .a($$1, "story/shiny_gear");
       af $$11 = ae.a.a()
-         .a($$2)
+         .a($$10)
+         .a(cmk.op, vb.c("advancements.story.enter_the_nether.title"), vb.c("advancements.story.enter_the_nether.description"), null, al.a, true, true, false)
+         .a("entered_nether", ax.a.a(csy.i))
+         .a($$1, "story/enter_the_nether");
+      ae.a.a()
+         .a($$11)
          .a(
-            clr.aC,
-            uv.c("advancements.nether.obtain_ancient_debris.title"),
-            uv.c("advancements.nether.obtain_ancient_debris.description"),
+            cmk.pX,
+            vb.c("advancements.story.cure_zombie_villager.title"),
+            vb.c("advancements.story.cure_zombie_villager.description"),
             null,
-            ar.a,
+            al.c,
             true,
             true,
             false
          )
-         .a("ancient_debris", bz.a.a(clr.aC))
-         .a($$1, "nether/obtain_ancient_debris");
-      ae.a.a()
-         .a($$11)
-         .a(clr.pQ, uv.c("advancements.nether.netherite_armor.title"), uv.c("advancements.nether.netherite_armor.description"), null, ar.b, true, true, false)
-         .a(aj.a.a(100))
-         .a("netherite_armor", bz.a.a(clr.pP, clr.pQ, clr.pR, clr.pS))
-         .a($$1, "nether/netherite_armor");
-      ae.a.a()
-         .a($$11)
-         .a(clr.wr, uv.c("advancements.nether.use_lodestone.title"), uv.c("advancements.nether.use_lodestone.description"), null, ar.a, true, true, false)
-         .a("use_lodestone", cc.a.a(cj.a.a().a(av.a.a().a(cvh.pq)), cb.a.a().a(clr.qP)))
-         .a($$1, "nether/use_lodestone");
+         .a("cured_zombie", bd.a.b())
+         .a($$1, "story/cure_zombie_villager");
       af $$12 = ae.a.a()
-         .a($$2)
-         .a(
-            clr.ws,
-            uv.c("advancements.nether.obtain_crying_obsidian.title"),
-            uv.c("advancements.nether.obtain_crying_obsidian.description"),
-            null,
-            ar.a,
-            true,
-            true,
-            false
-         )
-         .a("crying_obsidian", bz.a.a(clr.ws))
-         .a($$1, "nether/obtain_crying_obsidian");
+         .a($$11)
+         .a(cmk.sp, vb.c("advancements.story.follow_ender_eye.title"), vb.c("advancements.story.follow_ender_eye.description"), null, al.a, true, true, false)
+         .a("in_stronghold", cr.a.a(ci.a.c(dyi.k)))
+         .a($$1, "story/follow_ender_eye");
       ae.a.a()
          .a($$12)
-         .a(
-            clr.wF,
-            uv.c("advancements.nether.charge_respawn_anchor.title"),
-            uv.c("advancements.nether.charge_respawn_anchor.description"),
-            null,
-            ar.a,
-            true,
-            true,
-            false
-         )
-         .a("charge_respawn_anchor", cc.a.a(cj.a.a().a(av.a.a().a(cvh.pl).a(da.a.a().a(dbm.d, 4))), cb.a.a().a(cvh.ec)))
-         .a($$1, "nether/charge_respawn_anchor");
-      af $$13 = ae.a.a()
-         .a($$2)
-         .a(clr.nR, uv.c("advancements.nether.ride_strider.title"), uv.c("advancements.nether.ride_strider.description"), null, ar.a, true, true, false)
-         .a("used_warped_fungus_on_a_stick", ca.a.a(Optional.of(bq.a(bq.a.a().a(bq.a.a().a(bkz.aV)))), Optional.of(cb.a.a().a(clr.nR).b()), cl.d.c))
-         .a($$1, "nether/ride_strider");
-      ae.a.a()
-         .a($$13)
-         .a(
-            clr.nR,
-            uv.c("advancements.nether.ride_strider_in_overworld_lava.title"),
-            uv.c("advancements.nether.ride_strider_in_overworld_lava.description"),
-            null,
-            ar.a,
-            true,
-            true,
-            false
-         )
-         .a("ride_entity_distance", bi.a.a(bq.a.a().a(cj.a.b(csf.h)).a(bq.a.a().a(bkz.aV)), bh.a(cl.c.b(50.0))))
-         .a($$1, "nether/ride_strider_in_overworld_lava");
-      kq.a(ae.a.a(), ctr.a.a.a().toList())
-         .a($$13)
-         .a(clr.pS, uv.c("advancements.nether.explore_nether.title"), uv.c("advancements.nether.explore_nether.description"), null, ar.b, true, true, false)
-         .a(aj.a.a(500))
-         .a($$1, "nether/explore_nether");
-      af $$14 = ae.a.a()
-         .a($$2)
-         .a(clr.wB, uv.c("advancements.nether.find_bastion.title"), uv.c("advancements.nether.find_bastion.description"), null, ar.a, true, true, false)
-         .a("bastion", cs.a.a(cj.a.c(dxg.s)))
-         .a($$1, "nether/find_bastion");
-      ae.a.a()
-         .a($$14)
-         .a(cvh.cv, uv.c("advancements.nether.loot_bastion.title"), uv.c("advancements.nether.loot_bastion.description"), null, ar.a, true, true, false)
-         .a(ai.a.b)
-         .a("loot_bastion_other", ck.a.a(new agm("minecraft:chests/bastion_other")))
-         .a("loot_bastion_treasure", ck.a.a(new agm("minecraft:chests/bastion_treasure")))
-         .a("loot_bastion_hoglin_stable", ck.a.a(new agm("minecraft:chests/bastion_hoglin_stable")))
-         .a("loot_bastion_bridge", ck.a.a(new agm("minecraft:chests/bastion_bridge")))
-         .a($$1, "nether/loot_bastion");
-      ae.a.a()
-         .a($$2)
-         .a(ai.a.b)
-         .a(clr.oF, uv.c("advancements.nether.distract_piglin.title"), uv.c("advancements.nether.distract_piglin.description"), null, ar.a, true, true, false)
-         .a("distract_piglin", co.a.a(a, Optional.of(cb.a.a().a(ars.U).b()), Optional.of(bq.a(bq.a.a().a(bkz.aw).a(bo.a.a().e(false))))))
-         .a("distract_piglin_directly", cq.a.a(Optional.of(a), cb.a.a().a(ccq.c), Optional.of(bq.a(bq.a.a().a(bkz.aw).a(bo.a.a().e(false))))))
-         .a($$1, "nether/distract_piglin");
+         .a(cwb.fz, vb.c("advancements.story.enter_the_end.title"), vb.c("advancements.story.enter_the_end.description"), null, al.a, true, true, false)
+         .a("entered_end", ax.a.a(csy.j))
+         .a($$1, "story/enter_the_end");
    }
 }

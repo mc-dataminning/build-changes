@@ -1,49 +1,38 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class eub {
-   public static void a(fid<?> $$0, etz $$1, long $$2, float $$3, Vector3f $$4) {
-      float $$5 = a($$1, $$2);
+   private final fmu a;
+   private int b = -1;
+   @Nullable
+   private Consumer<sj> c;
 
-      for (Entry<String, List<ety>> $$6 : $$1.c().entrySet()) {
-         Optional<fkt> $$7 = $$0.a($$6.getKey());
-         List<ety> $$8 = $$6.getValue();
-         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
-               eua[] $$5x = $$4xx.b();
-               int $$6x = Math.max(0, atq.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
-               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
-               eua $$8x = $$5x[$$6x];
-               eua $$9 = $$5x[$$7x];
-               float $$10 = $$5 - $$8x.a();
-               float $$11;
-               if ($$7x != $$6x) {
-                  $$11 = atq.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
-               } else {
-                  $$11 = 0.0F;
-               }
+   public eub(fmu $$0) {
+      this.a = $$0;
+   }
 
-               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
-               $$4xx.a().apply($$4x, $$4);
-            }));
+   public boolean a(int $$0, @Nullable sj $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private static float a(etz $$0, long $$1) {
-      float $$2 = (float)$$1 / 1000.0F;
-      return $$0.b() ? $$2 % $$0.a() : $$2;
+   private int a(Consumer<sj> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   public static Vector3f a(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0, -$$1, $$2);
+   public void a(int $$0, Consumer<sj> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new adp($$2, $$0));
    }
 
-   public static Vector3f b(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
-   }
-
-   public static Vector3f a(double $$0, double $$1, double $$2) {
-      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
+   public void a(hv $$0, Consumer<sj> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new ada($$2, $$0));
    }
 }

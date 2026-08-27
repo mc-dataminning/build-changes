@@ -2,26 +2,18 @@ import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
 import java.util.Set;
 
-public abstract class bvk extends bvq<bll> {
-   protected abstract boolean a(bll var1, bll var2);
-
-   protected abstract bum<bll> b();
-
+public class bvk extends bwc<bla> {
    @Override
-   public Set<bum<?>> a() {
-      return ImmutableSet.of(this.b());
+   public Set<bux<?>> a() {
+      return ImmutableSet.of(bux.J, bux.h);
    }
 
-   @Override
-   protected void a(ami $$0, bll $$1) {
-      $$1.dP().a(this.b(), this.b($$1));
+   protected void a(amp $$0, bla $$1) {
+      $$1.dO().c(bux.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   private Optional<bll> b(bll $$0) {
-      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
-   }
-
-   protected Optional<buo> a(bll $$0) {
-      return $$0.dP().c(bum.h);
+   private void a(bla $$0, buz $$1) {
+      Optional<bla> $$2 = $$1.a($$1x -> $$1x.ai() == $$0.ai() && !$$1x.o_()).map(bla.class::cast);
+      $$0.dO().a(bux.J, $$2);
    }
 }

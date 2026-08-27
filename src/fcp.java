@@ -1,26 +1,133 @@
-public class fcp extends fby<chk> {
-   private static final agm x = new agm("textures/gui/container/dispenser.png");
+enum fcp {
+   a(
+      new fcp.a(
+         new agt("advancements/tab_above_left_selected"), new agt("advancements/tab_above_middle_selected"), new agt("advancements/tab_above_right_selected")
+      ),
+      new fcp.a(new agt("advancements/tab_above_left"), new agt("advancements/tab_above_middle"), new agt("advancements/tab_above_right")),
+      28,
+      32,
+      8
+   ),
+   b(
+      new fcp.a(
+         new agt("advancements/tab_below_left_selected"), new agt("advancements/tab_below_middle_selected"), new agt("advancements/tab_below_right_selected")
+      ),
+      new fcp.a(new agt("advancements/tab_below_left"), new agt("advancements/tab_below_middle"), new agt("advancements/tab_below_right")),
+      28,
+      32,
+      8
+   ),
+   c(
+      new fcp.a(
+         new agt("advancements/tab_left_top_selected"), new agt("advancements/tab_left_middle_selected"), new agt("advancements/tab_left_bottom_selected")
+      ),
+      new fcp.a(new agt("advancements/tab_left_top"), new agt("advancements/tab_left_middle"), new agt("advancements/tab_left_bottom")),
+      32,
+      28,
+      5
+   ),
+   d(
+      new fcp.a(
+         new agt("advancements/tab_right_top_selected"), new agt("advancements/tab_right_middle_selected"), new agt("advancements/tab_right_bottom_selected")
+      ),
+      new fcp.a(new agt("advancements/tab_right_top"), new agt("advancements/tab_right_middle"), new agt("advancements/tab_right_bottom")),
+      32,
+      28,
+      5
+   );
 
-   public fcp(chk $$0, cdy $$1, uv $$2) {
-      super($$0, $$1, $$2);
+   private final fcp.a e;
+   private final fcp.a f;
+   private final int g;
+   private final int h;
+   private final int i;
+
+   private fcp(fcp.a $$0, fcp.a $$1, int $$2, int $$3, int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   public int a() {
+      return this.i;
    }
 
-   @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void a(evw $$0, int $$1, int $$2, boolean $$3, int $$4) {
+      fcp.a $$5 = $$3 ? this.e : this.f;
+      agt $$6;
+      if ($$4 == 0) {
+         $$6 = $$5.a();
+      } else if ($$4 == this.i - 1) {
+         $$6 = $$5.c();
+      } else {
+         $$6 = $$5.b();
+      }
+
+      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
    }
 
-   @Override
-   protected void a(eut $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   public void a(evw $$0, int $$1, int $$2, int $$3, cmh $$4) {
+      int $$5 = $$1 + this.a($$3);
+      int $$6 = $$2 + this.b($$3);
+      switch (this) {
+         case a:
+            $$5 += 6;
+            $$6 += 9;
+            break;
+         case b:
+            $$5 += 6;
+            $$6 += 6;
+            break;
+         case c:
+            $$5 += 10;
+            $$6 += 5;
+            break;
+         case d:
+            $$5 += 6;
+            $$6 += 5;
+      }
+
+      $$0.b($$4, $$5, $$6);
+   }
+
+   public int a(int $$0) {
+      switch (this) {
+         case a:
+            return (this.g + 4) * $$0;
+         case b:
+            return (this.g + 4) * $$0;
+         case c:
+            return -this.g + 4;
+         case d:
+            return 248;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      }
+   }
+
+   public int b(int $$0) {
+      switch (this) {
+         case a:
+            return -this.h + 4;
+         case b:
+            return 136;
+         case c:
+            return this.h * $$0;
+         case d:
+            return this.h * $$0;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      }
+   }
+
+   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
+      int $$5 = $$0 + this.a($$2);
+      int $$6 = $$1 + this.b($$2);
+      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   }
+
+   static record a(agt a, agt b, agt c) {
    }
 }

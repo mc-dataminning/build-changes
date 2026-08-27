@@ -1,64 +1,52 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.UnboundedMapCodec;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
-
 public class iw {
-   private static final Map<agl<? extends is<?>>, iw.a<?>> b = ac.a(() -> {
-      Builder<agl<? extends is<?>>, iw.a<?>> $$0 = ImmutableMap.builder();
-      a($$0, kd.ar, ctd.b);
-      a($$0, kd.as, ur.a);
-      a($$0, kd.aG, cnt.a);
-      a($$0, kd.aF, cnr.a);
-      a($$0, kd.aw, dkw.h);
-      a($$0, kd.q, bjv.a);
-      return $$0.build();
-   });
-   public static final Codec<it> a = a();
+   protected final float a;
+   protected final float b;
+   protected final float c;
 
-   private static <E> void a(Builder<agl<? extends is<?>>, iw.a<?>> $$0, agl<? extends is<E>> $$1, Codec<E> $$2) {
-      $$0.put($$1, new iw.a<>($$1, $$2));
+   public iw(float $$0, float $$1, float $$2) {
+      this.a = !Float.isInfinite($$0) && !Float.isNaN($$0) ? $$0 % 360.0F : 0.0F;
+      this.b = !Float.isInfinite($$1) && !Float.isNaN($$1) ? $$1 % 360.0F : 0.0F;
+      this.c = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
    }
 
-   private static Stream<it.d<?>> a(it $$0) {
-      return $$0.b().filter($$0x -> b.containsKey($$0x.a()));
+   public iw(sp $$0) {
+      this($$0.i(0), $$0.i(1), $$0.i(2));
    }
 
-   private static <E> DataResult<? extends Codec<E>> a(agl<? extends is<E>> $$0) {
-      return Optional.ofNullable(b.get($$0))
-         .map($$0x -> $$0x.b())
-         .<DataResult<? extends Codec<E>>>map(DataResult::success)
-         .orElseGet(() -> DataResult.error(() -> "Unknown or not serializable registry: " + $$0));
+   public sp a() {
+      sp $$0 = new sp();
+      $$0.add(sm.a(this.a));
+      $$0.add(sm.a(this.b));
+      $$0.add(sm.a(this.c));
+      return $$0;
    }
 
-   private static <E> Codec<it> a() {
-      Codec<agl<? extends is<E>>> $$0 = agm.a.xmap(agl::a, agl::a);
-      Codec<is<E>> $$1 = $$0.partialDispatch(
-         "type", $$0x -> DataResult.success($$0x.c()), $$0x -> a($$0x).map($$1x -> iu.a($$0x, Lifecycle.experimental(), $$1x))
-      );
-      UnboundedMapCodec<? extends agl<? extends is<?>>, ? extends is<?>> $$2 = Codec.unboundedMap($$0, $$1);
-      return a($$2);
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof iw $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
    }
 
-   private static <K extends agl<? extends is<?>>, V extends is<?>> Codec<it> a(UnboundedMapCodec<K, V> $$0) {
-      return $$0.xmap(it.c::new, $$0x -> a($$0x).collect(ImmutableMap.toImmutableMap($$0xx -> $$0xx.a(), $$0xx -> $$0xx.b())));
+   public float b() {
+      return this.a;
    }
 
-   public static Stream<it.d<?>> a(in<agv> $$0) {
-      return a($$0.c(agv.b));
+   public float c() {
+      return this.b;
    }
 
-   public static Stream<it.d<?>> b(in<agv> $$0) {
-      Stream<it.d<?>> $$1 = $$0.a(agv.a).b();
-      Stream<it.d<?>> $$2 = a($$0);
-      return Stream.concat($$2, $$1);
+   public float d() {
+      return this.c;
    }
 
-   static record a<E>(agl<? extends is<E>> a, Codec<E> b) {
+   public float e() {
+      return aty.g(this.a);
+   }
+
+   public float f() {
+      return aty.g(this.b);
+   }
+
+   public float g() {
+      return aty.g(this.c);
    }
 }

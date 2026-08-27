@@ -1,22 +1,41 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-public class bvc extends bvk {
-   public static final float a = 10.0F;
-
-   @Override
-   protected boolean a(bll $$0, bll $$1) {
-      return !$$0.dP().a(bum.T) && bvq.c($$0, $$1) && byl.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
-   }
-
-   private boolean e(bll $$0, bll $$1) {
-      List<UUID> $$2 = $$0.dP().c(bum.Z).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cw());
+public class bvc extends bvf {
+   public bvc(blx $$0, csy $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected bum<bll> b() {
-      return bum.B;
+   protected eeq a(int $$0) {
+      this.o = new eei(false);
+      this.o.a(true);
+      return new eeq(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a() {
+      return true;
+   }
+
+   @Override
+   protected elb b() {
+      return new elb(this.a.dr(), this.a.e(0.5), this.a.dx());
+   }
+
+   @Override
+   protected double a(elb $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(elb $$0, elb $$1) {
+      return this.a.bd() ? a(this.a, $$0, $$1, false) : false;
+   }
+
+   @Override
+   public boolean a(hv $$0) {
+      return !this.b.a_($$0.d()).i();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

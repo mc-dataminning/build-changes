@@ -1,99 +1,113 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-
-public class eve extends euw {
-   public static final int l = 120;
-   public static final int m = 150;
-   public static final int n = 20;
-   public static final int o = 8;
-   protected static final eve.b p = $$0 -> $$0.get();
-   protected final eve.c q;
-   protected final eve.b r;
-
-   public static eve.a a(uv $$0, eve.c $$1) {
-      return new eve.a($$0, $$1);
-   }
-
-   protected eve(int $$0, int $$1, int $$2, int $$3, uv $$4, eve.c $$5, eve.b $$6) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.q = $$5;
-      this.r = $$6;
-   }
-
-   @Override
-   public void b() {
-      this.q.onPress(this);
-   }
-
-   @Override
-   protected vj aN_() {
-      return this.r.createNarrationMessage(() -> super.aN_());
-   }
-
-   @Override
-   public void a(eyx $$0) {
-      this.c($$0);
-   }
-
-   public static class a {
-      private final uv a;
-      private final eve.c b;
-      @Nullable
-      private ewp c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private eve.b h = eve.p;
-
-      public a(uv $$0, eve.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public eve.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public eve.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public eve.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public eve.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public eve.a a(@Nullable ewp $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eve.a a(eve.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public eve a() {
-         eve $$0 = new eve(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
-      }
-   }
-
-   public interface b {
-      vj createNarrationMessage(Supplier<vj> var1);
-   }
-
-   public interface c {
-      void onPress(eve var1);
-   }
+public class eve {
+   public static final evb a = evb.a.a(0.5F)
+      .a()
+      .a("head", new eva(eva.d.b, new evc(0.0F, evd.b(180.0F, 0.0F, 0.0F), eva.b.a)))
+      .a("head", new eva(eva.d.a, new evc(0.0F, evd.a(0.0F, 0.5F, 0.0F), eva.b.a)))
+      .a("body", new eva(eva.d.b, new evc(0.0F, evd.b(180.0F, 0.0F, 0.0F), eva.b.a)))
+      .a("body", new eva(eva.d.a, new evc(0.0F, evd.a(0.0F, 0.5F, 0.0F), eva.b.a)))
+      .a("feet", new eva(eva.d.b, new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)))
+      .a("right_wing", new eva(eva.d.b, new evc(0.0F, evd.b(0.0F, -10.0F, 0.0F), eva.b.a)))
+      .a("right_wing", new eva(eva.d.a, new evc(0.0F, evd.a(0.0F, 0.0F, 1.0F), eva.b.a)))
+      .a("right_wing_tip", new eva(eva.d.b, new evc(0.0F, evd.b(0.0F, -120.0F, 0.0F), eva.b.a)))
+      .a("left_wing", new eva(eva.d.b, new evc(0.0F, evd.b(0.0F, 10.0F, 0.0F), eva.b.a)))
+      .a("left_wing", new eva(eva.d.a, new evc(0.0F, evd.a(0.0F, 0.0F, 1.0F), eva.b.a)))
+      .a("left_wing_tip", new eva(eva.d.b, new evc(0.0F, evd.b(0.0F, 120.0F, 0.0F), eva.b.a)))
+      .b();
+   public static final evb b = evb.a.a(0.5F)
+      .a()
+      .a(
+         "head",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.125F, evd.b(20.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "head",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.125F, evd.a(0.0F, 2.0F, 0.0F), eva.b.a),
+            new evc(0.25F, evd.a(0.0F, 1.0F, 0.0F), eva.b.a),
+            new evc(0.375F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.4583F, evd.a(0.0F, -1.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "body",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(40.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.25F, evd.b(52.5F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(40.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "body",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.125F, evd.a(0.0F, 2.0F, 0.0F), eva.b.a),
+            new evc(0.25F, evd.a(0.0F, 1.0F, 0.0F), eva.b.a),
+            new evc(0.375F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.4583F, evd.a(0.0F, -1.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "feet",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(10.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.125F, evd.b(-21.25F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.25F, evd.b(-12.5F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(10.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_wing",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 85.0F, 0.0F), eva.b.a),
+            new evc(0.125F, evd.b(0.0F, -55.0F, 0.0F), eva.b.a),
+            new evc(0.25F, evd.b(0.0F, 50.0F, 0.0F), eva.b.a),
+            new evc(0.375F, evd.b(0.0F, 70.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(0.0F, 85.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_wing_tip",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 10.5F, 0.0F), eva.b.a),
+            new evc(0.0417F, evd.b(0.0F, 65.5F, 0.0F), eva.b.a),
+            new evc(0.2083F, evd.b(0.0F, -135.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(0.0F, 10.5F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_wing",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, -85.0F, 0.0F), eva.b.a),
+            new evc(0.125F, evd.b(0.0F, 55.0F, 0.0F), eva.b.a),
+            new evc(0.25F, evd.b(0.0F, -50.0F, 0.0F), eva.b.a),
+            new evc(0.375F, evd.b(0.0F, -70.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(0.0F, -85.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_wing_tip",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, -10.5F, 0.0F), eva.b.a),
+            new evc(0.0417F, evd.b(0.0F, -65.5F, 0.0F), eva.b.a),
+            new evc(0.2083F, evd.b(0.0F, 135.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(0.0F, -10.5F, 0.0F), eva.b.a)
+         )
+      )
+      .b();
 }

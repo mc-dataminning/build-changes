@@ -1,25 +1,24 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class bvz {
-   @Nullable
-   public static ejz a(blu $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = bwc.a($$0, $$1);
-      return bwf.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class bvz extends bwc<blv> {
+   @Override
+   public Set<bux<?>> a() {
+      return ImmutableSet.of(bux.j, bux.k, bux.l);
    }
 
-   @Nullable
-   public static hx a(blu $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      hx $$8 = bwf.a($$0.eh(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         hx $$9 = bwf.a($$0, $$1, $$0.eh(), $$8);
-         if (!bwc.a($$9, $$0) && !bwc.a($$7, $$0, $$9)) {
-            $$9 = bwf.a($$9, $$0.dN().ak(), $$1x -> bwc.c($$0, $$1x));
-            return bwc.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   @Override
+   protected void a(amp $$0, blv $$1) {
+      List<cer> $$2 = $$0.w().stream().filter(bli.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::f)).collect(Collectors.toList());
+      bmv<?> $$3 = $$1.dO();
+      $$3.a(bux.j, $$2);
+      List<cer> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
+      $$3.a(bux.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cer> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
+      $$3.a(bux.l, $$5);
    }
 }

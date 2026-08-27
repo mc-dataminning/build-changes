@@ -1,59 +1,41 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import java.util.Arrays;
+import java.util.Collection;
 
-public record ea(List<ea.a> b) {
-   public static final ea a = new ea(List.of());
-   private static final int c = 8;
-   private static final int d = 16;
+public class ea implements ArgumentType<vb> {
+   private static final Collection<String> b = Arrays.asList("\"hello world\"", "\"\"", "\"{\"text\":\"hello world\"}", "[\"\"]");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vb.b("argument.component.invalid", $$0));
 
-   public ea(ty $$0) {
-      this($$0.a(ty.a(ArrayList::new, 8), ea.a::new));
+   private ea() {
    }
 
-   @Nullable
-   public vh a(String $$0) {
-      for (ea.a $$1 : this.b) {
-         if ($$1.a.equals($$0)) {
-            return $$1.b;
+   public static vb a(CommandContext<ds> $$0, String $$1) {
+      return (vb)$$0.getArgument($$1, vb.class);
+   }
+
+   public static ea a() {
+      return new ea();
+   }
+
+   public vb a(StringReader $$0) throws CommandSyntaxException {
+      try {
+         vb $$1 = vb.a.a($$0);
+         if ($$1 == null) {
+            throw a.createWithContext($$0, "empty");
+         } else {
+            return $$1;
          }
-      }
-
-      return null;
-   }
-
-   public void a(ty $$0) {
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
-   }
-
-   public static ea a(vn<?> $$0, ea.b $$1) {
-      List<ea.a> $$2 = $$0.a().stream().map($$1x -> {
-         vh $$2x = $$1.sign($$1x.c());
-         return $$2x != null ? new ea.a($$1x.a(), $$2x) : null;
-      }).filter(Objects::nonNull).toList();
-      return new ea($$2);
-   }
-
-   public List<ea.a> a() {
-      return this.b;
-   }
-
-   public static record a(String a, vh b) {
-
-      public a(ty $$0) {
-         this($$0.d(16), vh.a($$0));
-      }
-
-      public void a(ty $$0) {
-         $$0.a(this.a, 16);
-         vh.a($$0, this.b);
+      } catch (Exception var4) {
+         String $$3 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
+         throw a.createWithContext($$0, $$3);
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      @Nullable
-      vh sign(String var1);
+   public Collection<String> getExamples() {
+      return b;
    }
 }

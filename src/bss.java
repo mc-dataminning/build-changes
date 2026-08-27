@@ -1,120 +1,68 @@
-import com.google.common.collect.Lists;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class bss extends bsg {
-   protected final blu a;
-   private final double b;
-   @Nullable
-   private edm c;
-   private hx d;
-   private final boolean e;
-   private final List<hx> f = Lists.newArrayList();
-   private final int g;
-   private final BooleanSupplier h;
-
-   public bss(blu $$0, double $$1, boolean $$2, int $$3, BooleanSupplier $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.e = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.a(EnumSet.of(bsg.a.a));
-      if (!bwc.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob for MoveThroughVillageGoal");
+public class bss {
+   private static final Logger a = LogUtils.getLogger();
+   private static final buf b = new buf(Integer.MAX_VALUE, new bsr() {
+      @Override
+      public boolean a() {
+         return false;
       }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<bsr.a, buf> c = new EnumMap<>(bsr.a.class);
+   private final Set<buf> d = Sets.newLinkedHashSet();
+   private final Supplier<bgc> e;
+   private final EnumSet<bsr.a> f = EnumSet.noneOf(bsr.a.class);
+   private int g;
+   private int h = 3;
+
+   public bss(Supplier<bgc> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public boolean a() {
-      if (!bwc.a(this.a)) {
-         return false;
-      } else {
-         this.h();
-         if (this.e && this.a.dN().O()) {
-            return false;
-         } else {
-            ami $$0 = (ami)this.a.dN();
-            hx $$1 = this.a.dn();
-            if (!$$0.a($$1, 6)) {
-               return false;
-            } else {
-               ejz $$2 = bwe.a(this.a, 15, 7, $$2x -> {
-                  if (!$$0.b($$2x)) {
-                     return Double.NEGATIVE_INFINITY;
-                  } else {
-                     Optional<hx> $$3x = $$0.x().d($$0xx -> $$0xx.a(aru.b), this::a, $$2x, 10, bwk.b.b);
-                     return $$3x.<Double>map($$1xx -> -$$1xx.j($$1)).orElse(Double.NEGATIVE_INFINITY);
-                  }
-               });
-               if ($$2 == null) {
-                  return false;
-               } else {
-                  Optional<hx> $$3 = $$0.x().d($$0x -> $$0x.a(aru.b), this::a, hx.a($$2), 10, bwk.b.b);
-                  if ($$3.isEmpty()) {
-                     return false;
-                  } else {
-                     this.d = $$3.get().i();
-                     but $$4 = (but)this.a.N();
-                     boolean $$5 = $$4.f();
-                     $$4.b(this.h.getAsBoolean());
-                     this.c = $$4.a(this.d, 0);
-                     $$4.b($$5);
-                     if (this.c == null) {
-                        ejz $$6 = bwb.a(this.a, 10, 7, ejz.c(this.d), (float) (Math.PI / 2));
-                        if ($$6 == null) {
-                           return false;
-                        }
+   public void a(int $$0, bsr $$1) {
+      this.d.add(new buf($$0, $$1));
+   }
 
-                        $$4.b(this.h.getAsBoolean());
-                        this.c = this.a.N().a($$6.c, $$6.d, $$6.e, 0);
-                        $$4.b($$5);
-                        if (this.c == null) {
-                           return false;
-                        }
-                     }
+   @VisibleForTesting
+   public void a(Predicate<bsr> $$0) {
+      this.d.removeIf($$1 -> $$0.test($$1.k()));
+   }
 
-                     for (int $$7 = 0; $$7 < this.c.e(); $$7++) {
-                        edk $$8 = this.c.a($$7);
-                        hx $$9 = new hx($$8.a, $$8.b + 1, $$8.c);
-                        if (cxl.a(this.a.dN(), $$9)) {
-                           this.c = this.a.N().a((double)$$8.a, (double)$$8.b, (double)$$8.c, 0);
-                           break;
-                        }
-                     }
+   public void a(bsr $$0) {
+      this.d.stream().filter($$1 -> $$1.k() == $$0).filter(buf::h).forEach(buf::d);
+      this.d.removeIf($$1 -> $$1.k() == $$0);
+   }
 
-                     return this.c != null;
-                  }
-               }
-            }
+   private static boolean a(buf $$0, EnumSet<bsr.a> $$1) {
+      for (bsr.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
          }
       }
+
+      return false;
    }
 
-   @Override
-   public boolean b() {
-      return this.a.N().l() ? false : !this.d.a(this.a.dl(), (double)(this.a.dh() + (float)this.g));
-   }
-
-   @Override
-   public void c() {
-      this.a.N().a(this.c, this.b);
-   }
-
-   @Override
-   public void d() {
-      if (this.a.N().l() || this.d.a(this.a.dl(), (double)this.g)) {
-         this.f.add(this.d);
-      }
-   }
-
-   private boolean a(hx $$0) {
-      for (hx $$1 : this.f) {
-         if (Objects.equals($$0, $$1)) {
+   private static boolean a(buf $$0, Map<bsr.a, buf> $$1) {
+      for (bsr.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, b).a($$0)) {
             return false;
          }
       }
@@ -122,9 +70,82 @@ public class bss extends bsg {
       return true;
    }
 
-   private void h() {
-      if (this.f.size() > 15) {
-         this.f.remove(0);
+   public void a() {
+      bgc $$0 = this.e.get();
+      $$0.a("goalCleanup");
+
+      for (buf $$1 : this.d) {
+         if ($$1.h() && (a($$1, this.f) || !$$1.b())) {
+            $$1.d();
+         }
+      }
+
+      Iterator<Entry<bsr.a, buf>> $$2 = this.c.entrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<bsr.a, buf> $$3 = $$2.next();
+         if (!$$3.getValue().h()) {
+            $$2.remove();
+         }
+      }
+
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (buf $$4 : this.d) {
+         if (!$$4.h() && !a($$4, this.f) && a($$4, this.c) && $$4.a()) {
+            for (bsr.a $$5 : $$4.j()) {
+               buf $$6 = this.c.getOrDefault($$5, b);
+               $$6.d();
+               this.c.put($$5, $$4);
+            }
+
+            $$4.c();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      bgc $$1 = this.e.get();
+      $$1.a("goalTick");
+
+      for (buf $$2 : this.d) {
+         if ($$2.h() && ($$0 || $$2.T_())) {
+            $$2.e();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<buf> b() {
+      return this.d;
+   }
+
+   public Stream<buf> c() {
+      return this.d.stream().filter(buf::h);
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void a(bsr.a $$0) {
+      this.f.add($$0);
+   }
+
+   public void b(bsr.a $$0) {
+      this.f.remove($$0);
+   }
+
+   public void a(bsr.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
+      } else {
+         this.a($$0);
       }
    }
 }

@@ -1,63 +1,56 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cac<T extends bzw> {
-   private static cac<?>[] l = new cac[0];
-   public static final cac<bzs> a = a(bzs.class, "HoldingPattern");
-   public static final cac<caa> b = a(caa.class, "StrafePlayer");
-   public static final cac<bzu> c = a(bzu.class, "LandingApproach");
-   public static final cac<bzv> d = a(bzv.class, "Landing");
-   public static final cac<cab> e = a(cab.class, "Takeoff");
-   public static final cac<bzy> f = a(bzy.class, "SittingFlaming");
-   public static final cac<bzz> g = a(bzz.class, "SittingScanning");
-   public static final cac<bzx> h = a(bzx.class, "SittingAttacking");
-   public static final cac<bzq> i = a(bzq.class, "ChargingPlayer");
-   public static final cac<bzr> j = a(bzr.class, "Dying");
-   public static final cac<bzt> k = a(bzt.class, "Hover");
-   private final Class<? extends bzw> m;
-   private final int n;
-   private final String o;
+public class cac extends caa {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
+   @Nullable
+   private elb d;
+   private int e;
 
-   private cac(int $$0, Class<? extends bzw> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public bzw a(bzm $$0) {
-      try {
-         Constructor<? extends bzw> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends bzw> a() throws NoSuchMethodException {
-      return this.m.getConstructor(bzm.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cac(bzy $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void c() {
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.gb().a(cao.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.gb().a(cao.a);
+      } else {
+         double $$0 = this.d.c(this.a.dr(), this.a.dt(), this.a.dx());
+         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
+            this.e++;
+         }
+      }
    }
 
-   public static cac<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void d() {
+      this.d = null;
+      this.e = 0;
    }
 
-   public static int c() {
-      return l.length;
+   public void a(elb $$0) {
+      this.d = $$0;
    }
 
-   private static <T extends bzw> cac<T> a(Class<T> $$0, String $$1) {
-      cac<T> $$2 = new cac<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   public float f() {
+      return 3.0F;
+   }
+
+   @Nullable
+   @Override
+   public elb g() {
+      return this.d;
+   }
+
+   @Override
+   public cao<cac> i() {
+      return cao.i;
    }
 }

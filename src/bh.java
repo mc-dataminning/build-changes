@@ -1,51 +1,55 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record bh(cl.c b, cl.c c, cl.c d, cl.c e, cl.c f) {
-   public static final Codec<bh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               asy.a(cl.c.d, "x", cl.c.c).forGetter(bh::b),
-               asy.a(cl.c.d, "y", cl.c.c).forGetter(bh::c),
-               asy.a(cl.c.d, "z", cl.c.c).forGetter(bh::d),
-               asy.a(cl.c.d, "horizontal", cl.c.c).forGetter(bh::e),
-               asy.a(cl.c.d, "absolute", cl.c.c).forGetter(bh::f)
-            )
-            .apply($$0, bh::new)
-   );
-
-   public static bh a(cl.c $$0) {
-      return new bh(cl.c.c, cl.c.c, cl.c.c, $$0, cl.c.c);
+public class bh extends cv<bh.a> {
+   @Override
+   public Codec<bh.a> a() {
+      return bh.a.a;
    }
 
-   public static bh b(cl.c $$0) {
-      return new bh(cl.c.c, $$0, cl.c.c, cl.c.c, cl.c.c);
+   public void a(amq $$0, elb $$1) {
+      elb $$2 = $$0.dk();
+      this.a($$0, $$3 -> $$3.a($$0.z(), $$1, $$2));
    }
 
-   public static bh c(cl.c $$0) {
-      return new bh(cl.c.c, cl.c.c, cl.c.c, cl.c.c, $$0);
-   }
+   public static record a(Optional<bb> b, Optional<ci> c, Optional<bg> d) implements cv.a {
+      public static final Codec<bh.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  atg.a(bp.b, "player").forGetter(bh.a::a), atg.a(ci.a, "start_position").forGetter(bh.a::b), atg.a(bg.a, "distance").forGetter(bh.a::c)
+               )
+               .apply($$0, bh.a::new)
+      );
 
-   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - $$3);
-      float $$7 = (float)($$1 - $$4);
-      float $$8 = (float)($$2 - $$5);
-      if (!this.b.d((double)atq.e($$6)) || !this.c.d((double)atq.e($$7)) || !this.d.d((double)atq.e($$8))) {
-         return false;
-      } else {
-         return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));
+      public static an<bh.a> a(bp.a $$0, bg $$1, ci.a $$2) {
+         return am.V.a(new bh.a(Optional.of(bp.a($$0)), Optional.of($$2.b()), Optional.of($$1)));
       }
-   }
 
-   public static Optional<bh> a(@Nullable JsonElement $$0) {
-      return $$0 != null && !$$0.isJsonNull() ? Optional.of(ac.a(a.parse(JsonOps.INSTANCE, $$0), JsonParseException::new)) : Optional.empty();
-   }
+      public static an<bh.a> a(bp.a $$0, bg $$1) {
+         return am.W.a(new bh.a(Optional.of(bp.a($$0)), Optional.empty(), Optional.of($$1)));
+      }
 
-   public JsonElement a() {
-      return ac.a(a.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
+      public static an<bh.a> a(bg $$0) {
+         return am.D.a(new bh.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
+      }
+
+      public boolean a(amp $$0, elb $$1, elb $$2) {
+         return this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)
+            ? false
+            : !this.d.isPresent() || this.d.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);
+      }
+
+      @Override
+      public Optional<bb> a() {
+         return this.b;
+      }
+
+      public Optional<ci> b() {
+         return this.c;
+      }
+
+      public Optional<bg> c() {
+         return this.d;
+      }
    }
 }

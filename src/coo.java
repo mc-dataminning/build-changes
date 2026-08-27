@@ -1,68 +1,52 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Optional;
 
-public class coo extends cok {
-   private static final coq a = coq.a(clr.un);
+public class coo {
+   public static final ags<com> a = a("sentry");
+   public static final ags<com> b = a("dune");
+   public static final ags<com> c = a("coast");
+   public static final ags<com> d = a("wild");
+   public static final ags<com> e = a("ward");
+   public static final ags<com> f = a("eye");
+   public static final ags<com> g = a("vex");
+   public static final ags<com> h = a("tide");
+   public static final ags<com> i = a("snout");
+   public static final ags<com> j = a("rib");
+   public static final ags<com> k = a("spire");
+   public static final ags<com> l = a("wayfinder");
+   public static final ags<com> m = a("shaper");
+   public static final ags<com> n = a("silence");
+   public static final ags<com> o = a("raiser");
+   public static final ags<com> p = a("host");
 
-   public coo(coh $$0) {
-      super($$0);
+   public static void a(pa<com> $$0) {
+      a($$0, cmk.xk, a);
+      a($$0, cmk.xl, b);
+      a($$0, cmk.xm, c);
+      a($$0, cmk.xn, d);
+      a($$0, cmk.xo, e);
+      a($$0, cmk.xp, f);
+      a($$0, cmk.xq, g);
+      a($$0, cmk.xr, h);
+      a($$0, cmk.xs, i);
+      a($$0, cmk.xt, j);
+      a($$0, cmk.xu, k);
+      a($$0, cmk.xv, l);
+      a($$0, cmk.xw, m);
+      a($$0, cmk.xx, n);
+      a($$0, cmk.xy, o);
+      a($$0, cmk.xz, p);
    }
 
-   public boolean a(chh $$0, csf $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         clo $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof ckd) {
-               $$2 = true;
-            } else {
-               if (!a.a($$5)) {
-                  return false;
-               }
-
-               if ($$3) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
-         }
-      }
-
-      return $$3 && $$2;
+   public static Optional<ie.c<com>> a(is $$0, cmh $$1) {
+      return $$0.d(kc.aI).h().filter($$1x -> $$1.a(((com)$$1x.a()).b())).findFirst();
    }
 
-   public clo a(chh $$0, it $$1) {
-      List<Integer> $$2 = Lists.newArrayList();
-      clo $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         clo $$5 = $$0.a($$4);
-         clj $$6 = $$5.d();
-         if ($$6 instanceof ckd) {
-            $$2.add(((ckd)$$6).d().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
-         }
-      }
-
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a("Explosion").b("FadeColors", $$2);
-         return $$3;
-      } else {
-         return clo.b;
-      }
+   private static void a(pa<com> $$0, cmc $$1, ags<com> $$2) {
+      com $$3 = new com($$2.a(), kb.h.d($$1), vb.c(ac.a("trim_pattern", $$2.a())), false);
+      $$0.a($$2, $$3);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cox<?> as_() {
-      return cox.i;
+   private static ags<com> a(String $$0) {
+      return ags.a(kc.aI, new agt($$0));
    }
 }

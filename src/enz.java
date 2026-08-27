@@ -1,30 +1,32 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
 public class enz {
-   public static final eoh a = new eoh(0, eoh.a.a, eoh.b.a, 3);
-   public static final eoh b = new eoh(0, eoh.a.b, eoh.b.c, 4);
-   public static final eoh c = new eoh(0, eoh.a.a, eoh.b.d, 2);
-   public static final eoh d = new eoh(1, eoh.a.e, eoh.b.d, 2);
-   public static final eoh e = new eoh(2, eoh.a.e, eoh.b.d, 2);
-   public static final eoh f = new eoh(0, eoh.a.c, eoh.b.b, 3);
-   public static final eoh g = new eoh(0, eoh.a.c, eoh.b.e, 1);
-   public static final eoh h = c;
-   public static final eog i = new eog(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
-   public static final eog j = new eog(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final eog k = new eog(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final eog l = new eog(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
-   public static final eog m = new eog(ImmutableMap.builder().put("Position", a).build());
-   public static final eog n = new eog(ImmutableMap.builder().put("Position", a).put("Color", b).build());
-   public static final eog o = new eog(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
-   public static final eog p = new eog(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
-   public static final eog q = new eog(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
-   public static final eog r = new eog(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
-   public static final eog s = new eog(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
-   public static final eog t = new eog(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
-   public static final eog u = new eog(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
-   public static final eog v = new eog(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
+   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
+   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
+   private static final Vector3f e = new Vector3f(0.2F, -1.0F, -1.0F).normalize();
+   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
+
+   public static void a(Matrix4f $$0) {
+      RenderSystem.setupLevelDiffuseLighting(c, d, $$0);
+   }
+
+   public static void b(Matrix4f $$0) {
+      RenderSystem.setupLevelDiffuseLighting(a, b, $$0);
+   }
+
+   public static void a() {
+      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
+   }
+
+   public static void b() {
+      RenderSystem.setupGui3DDiffuseLighting(a, b);
+   }
+
+   public static void c() {
+      RenderSystem.setShaderLights(e, f);
+   }
 }

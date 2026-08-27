@@ -1,110 +1,154 @@
 import com.google.common.base.MoreObjects;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Decoder;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.MapCodec;
 import java.util.Collection;
-import java.util.Optional;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class diq<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::a
-      );
-   private final Codec<diq.a<T>> e = this.d.xmap(this::b, diq.a::b);
+public class diq<O, S extends dir<O, S>> {
+   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
+   private final O b;
+   private final ImmutableSortedMap<String, djs<?>> c;
+   private final ImmutableList<S> d;
 
-   protected diq(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
+   protected diq(Function<O, S> $$0, O $$1, diq.b<O, S> $$2, Map<String, djs<?>> $$3) {
+      this.b = $$1;
+      this.c = ImmutableSortedMap.copyOf($$3);
+      Supplier<S> $$4 = () -> $$0.apply($$1);
+      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
+      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
+
+      while ($$7.hasNext()) {
+         Entry<String, djs<?>> $$6 = (Entry<String, djs<?>>)$$7.next();
+         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
+      }
+
+      MapCodec<S> $$7x = $$5;
+      Map<Map<djs<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
+      List<S> $$9 = Lists.newArrayList();
+      Stream<List<Pair<djs<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
+      UnmodifiableIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         djs<?> $$11 = (djs<?>)var11.next();
+         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
+               List<Pair<djs<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
+               $$3x.add(Pair.of($$11, $$2x));
+               return $$3x;
+            }));
+      }
+
+      $$10.forEach($$5x -> {
+         ImmutableMap<djs<?>, Comparable<?>> $$6 = $$5x.stream().collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
+         S $$7xx = $$2.create($$1, $$6, $$7);
+         $$8.put($$6, $$7xx);
+         $$9.add($$7xx);
+      });
+
+      for (S $$12 : $$9) {
+         $$12.a($$8);
+      }
+
+      this.d = ImmutableList.copyOf($$9);
    }
 
-   public diq.a<T> b(T $$0) {
-      return new diq.a<>(this, $$0);
+   private static <S extends dir<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, djs<T> $$3) {
+      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
+      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dir)((dir)$$1x.getFirst()).a($$3, ((djs.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
    }
 
-   public diq.a<T> a(dhp<?, ?> $$0) {
-      return new diq.a<>(this, $$0.c(this));
-   }
-
-   public Stream<diq.a<T>> c() {
-      return this.a().stream().map(this::b);
-   }
-
-   public Codec<T> d() {
+   public ImmutableList<S> a() {
       return this.d;
    }
 
-   public Codec<diq.a<T>> e() {
-      return this.e;
+   public S b() {
+      return (S)this.d.get(0);
    }
 
-   public String f() {
+   public O c() {
       return this.b;
    }
 
-   public Class<T> g() {
-      return this.a;
+   public Collection<djs<?>> d() {
+      return this.c.values();
    }
-
-   public abstract Collection<T> a();
-
-   public abstract String a(T var1);
-
-   public abstract Optional<T> b(String var1);
 
    @Override
    public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+      return MoreObjects.toStringHelper(this)
+         .add("block", this.b)
+         .add("properties", this.c.values().stream().map(djs::f).collect(Collectors.toList()))
+         .toString();
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof diq<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+   @Nullable
+   public djs<?> a(String $$0) {
+      return (djs<?>)this.c.get($$0);
+   }
+
+   public static class a<O, S extends dir<O, S>> {
+      private final O a;
+      private final Map<String, djs<?>> b = Maps.newHashMap();
+
+      public a(O $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
+      public diq.a<O, S> a(djs<?>... $$0) {
+         for (djs<?> $$1 : $$0) {
+            this.a($$1);
+            this.b.put($$1.f(), $$1);
+         }
+
+         return this;
       }
 
-      return this.c;
-   }
-
-   public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
-   }
-
-   public <U, S extends dhp<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
-   }
-
-   public static record a<T extends Comparable<T>>(diq<T> a, T b) {
-      public a(diq<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+      private <T extends Comparable<T>> void a(djs<T> $$0) {
+         String $$1 = $$0.f();
+         if (!diq.a.matcher($$1).matches()) {
+            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
          } else {
-            this.a = a;
-            this.b = b;
+            Collection<T> $$2 = $$0.a();
+            if ($$2.size() <= 1) {
+               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
+            } else {
+               for (T $$3 : $$2) {
+                  String $$4 = $$0.a($$3);
+                  if (!diq.a.matcher($$4).matches()) {
+                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
+                  }
+               }
+
+               if (this.b.containsKey($$1)) {
+                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+               }
+            }
          }
       }
 
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.a(this.b);
+      public diq<O, S> a(Function<O, S> $$0, diq.b<O, S> $$1) {
+         return new diq<>($$0, this.a, $$1, this.b);
       }
+   }
+
+   public interface b<O, S> {
+      S create(O var1, ImmutableMap<djs<?>, Comparable<?>> var2, MapCodec<S> var3);
    }
 }

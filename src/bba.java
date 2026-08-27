@@ -1,12 +1,19 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class bba {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:tube_coral_fan", "minecraft:tube_coral_wall_fan")
-      .put("minecraft:brain_coral_fan", "minecraft:brain_coral_wall_fan")
-      .put("minecraft:bubble_coral_fan", "minecraft:bubble_coral_wall_fan")
-      .put("minecraft:fire_coral_fan", "minecraft:fire_coral_wall_fan")
-      .put("minecraft:horn_coral_fan", "minecraft:horn_coral_wall_fan")
-      .build();
+public class bba extends avk {
+   private final Function<String, String> a;
+
+   public bba(Schema $$0, String $$1, Function<String, String> $$2) {
+      super($$0, $$1);
+      this.a = $$2;
+   }
+
+   @Override
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
+   }
 }

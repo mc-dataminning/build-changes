@@ -1,42 +1,45 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class de extends cw<de.a> {
-   public de.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      cl.d $$3 = cl.d.a($$0.get("signal_strength"));
-      Optional<bc> $$4 = bq.a($$0, "projectile", $$2);
-      return new de.a($$1, $$3, $$4);
+public class de extends cv<de.a> {
+   @Override
+   public Codec<de.a> a() {
+      return de.a.a;
    }
 
-   public void a(amj $$0, bkv $$1, ejz $$2, int $$3) {
-      efc $$4 = bq.b($$0, $$1);
-      this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
+   public void a(amq $$0, cdz $$1, cmh $$2) {
+      ege $$3 = bp.b($$0, $$1);
+      this.a($$0, $$2x -> $$2x.a($$3, $$2));
    }
 
-   public static class a extends at {
-      private final cl.d a;
-      private final Optional<bc> b;
+   public static record a(Optional<bb> b, Optional<bb> c, Optional<ca> d) implements cv.a {
+      public static final Codec<de.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(de.a::a), atg.a(bp.b, "villager").forGetter(de.a::c), atg.a(ca.a, "item").forGetter(de.a::d))
+               .apply($$0, de.a::new)
+      );
 
-      public a(Optional<bc> $$0, cl.d $$1, Optional<bc> $$2) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
+      public static an<de.a> b() {
+         return am.t.a(new de.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public static am<de.a> a(cl.d $$0, Optional<bc> $$1) {
-         return al.L.a(new de.a(Optional.empty(), $$0, $$1));
+      public static an<de.a> a(bp.a $$0) {
+         return am.t.a(new de.a(Optional.of(bp.a($$0)), Optional.empty(), Optional.empty()));
+      }
+
+      public boolean a(ege $$0, cmh $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         $$0.add("signal_strength", this.a.e());
-         this.b.ifPresent($$1 -> $$0.add("projectile", $$1.a()));
-         return $$0;
+      public void a(bc $$0) {
+         cv.a.super.a($$0);
+         $$0.a(this.c, ".villager");
       }
 
-      public boolean a(efc $$0, ejz $$1, int $$2) {
-         return !this.a.d($$2) ? false : !this.b.isPresent() || this.b.get().a($$0);
+      @Override
+      public Optional<bb> a() {
+         return this.b;
       }
    }
 }

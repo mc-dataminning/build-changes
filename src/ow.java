@@ -2,41 +2,30 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class ow {
-   public static void a(oz<dyv> $$0) {
-      ih<dyv> $$1 = $$0.a(kd.aE);
-      ig<dyv> $$2 = $$1.b(pg.a);
-      pg.a(
-         $$0,
-         "bastion/mobs/piglin",
-         new dyv(
-            $$2,
+   public static final ags<dzx> a = ph.a("bastion/starts");
+
+   public static void a(pa<dzx> $$0) {
+      ig<ecm> $$1 = $$0.a(kc.aD);
+      ie<ecm> $$2 = $$1.b(pi.w);
+      ig<dzx> $$3 = $$0.a(kc.aF);
+      ie<dzx> $$4 = $$3.b(ph.a);
+      $$0.a(
+         a,
+         new dzx(
+            $$4,
             ImmutableList.of(
-               Pair.of(dyt.b("bastion/mobs/melee_piglin"), 1),
-               Pair.of(dyt.b("bastion/mobs/sword_piglin"), 4),
-               Pair.of(dyt.b("bastion/mobs/crossbow_piglin"), 4),
-               Pair.of(dyt.b("bastion/mobs/empty"), 1)
+               Pair.of(dzv.b("bastion/units/air_base", $$2), 1),
+               Pair.of(dzv.b("bastion/hoglin_stable/air_base", $$2), 1),
+               Pair.of(dzv.b("bastion/treasure/big_air_full", $$2), 1),
+               Pair.of(dzv.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
             ),
-            dyv.a.b
+            dzx.a.b
          )
       );
-      pg.a(
-         $$0, "bastion/mobs/hoglin", new dyv($$2, ImmutableList.of(Pair.of(dyt.b("bastion/mobs/hoglin"), 2), Pair.of(dyt.b("bastion/mobs/empty"), 1)), dyv.a.b)
-      );
-      pg.a(
-         $$0, "bastion/blocks/gold", new dyv($$2, ImmutableList.of(Pair.of(dyt.b("bastion/blocks/air"), 3), Pair.of(dyt.b("bastion/blocks/gold"), 1)), dyv.a.b)
-      );
-      pg.a(
-         $$0,
-         "bastion/mobs/piglin_melee",
-         new dyv(
-            $$2,
-            ImmutableList.of(
-               Pair.of(dyt.b("bastion/mobs/melee_piglin_always"), 1),
-               Pair.of(dyt.b("bastion/mobs/melee_piglin"), 5),
-               Pair.of(dyt.b("bastion/mobs/sword_piglin"), 1)
-            ),
-            dyv.a.b
-         )
-      );
+      ov.a($$0);
+      ou.a($$0);
+      oy.a($$0);
+      ot.a($$0);
+      ox.a($$0);
    }
 }

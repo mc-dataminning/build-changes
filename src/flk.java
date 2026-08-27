@@ -1,218 +1,147 @@
-import com.mojang.logging.LogUtils;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 
-public class flk extends djn {
-   static final Logger a = LogUtils.getLogger();
-   private final dju b;
-   private final ecm c;
-   volatile flk.a d;
-   final flo e;
+public class flk<T extends cdv> extends fjh<T> {
+   private static final float o = 13.0F;
+   private static final float p = 1.0F;
+   private final fly q;
+   protected final fly a;
+   protected final fly b;
+   protected final fly f;
+   protected final fly g;
+   protected final fly h;
+   protected final fly i;
+   protected final fly j;
+   protected final fly k;
+   protected final fly l;
+   protected final fly m;
+   protected final fly n;
+   private final List<fly> r;
+   private final List<fly> s;
+   private final List<fly> t;
+   private final List<fly> u;
 
-   public flk(flo $$0, int $$1) {
-      this.e = $$0;
-      this.b = new djq($$0, new crm(0, 0), $$0.I_().d(kd.ar).f(ctk.b));
-      this.c = new ecm(this, true, $$0.E_().g());
-      this.d = new flk.a(b($$1));
+   public flk(fly $$0) {
+      super(fsq::e);
+      this.q = $$0;
+      this.a = $$0.b("bone");
+      this.b = this.a.b("body");
+      this.f = this.b.b("head");
+      this.m = this.a.b("right_leg");
+      this.i = this.a.b("left_leg");
+      this.l = this.b.b("right_arm");
+      this.j = this.b.b("left_arm");
+      this.g = this.f.b("right_tendril");
+      this.h = this.f.b("left_tendril");
+      this.n = this.b.b("right_ribcage");
+      this.k = this.b.b("left_ribcage");
+      this.r = ImmutableList.of(this.h, this.g);
+      this.s = ImmutableList.of(this.b);
+      this.t = ImmutableList.of(this.f, this.j, this.l, this.i, this.m);
+      this.u = ImmutableList.of(this.b, this.f, this.j, this.l, this.i, this.m);
+   }
+
+   public static fme b() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      fmh $$2 = $$1.a("bone", fmd.c(), fma.a(0.0F, 24.0F, 0.0F));
+      fmh $$3 = $$2.a("body", fmd.c().a(0, 0).a(-9.0F, -13.0F, -4.0F, 18.0F, 21.0F, 11.0F), fma.a(0.0F, -21.0F, 0.0F));
+      $$3.a("right_ribcage", fmd.c().a(90, 11).a(-2.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F), fma.a(-7.0F, -2.0F, -4.0F));
+      $$3.a("left_ribcage", fmd.c().a(90, 11).a().a(-7.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F).a(false), fma.a(7.0F, -2.0F, -4.0F));
+      fmh $$4 = $$3.a("head", fmd.c().a(0, 32).a(-8.0F, -16.0F, -5.0F, 16.0F, 16.0F, 10.0F), fma.a(0.0F, -13.0F, 0.0F));
+      $$4.a("right_tendril", fmd.c().a(52, 32).a(-16.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), fma.a(-8.0F, -12.0F, 0.0F));
+      $$4.a("left_tendril", fmd.c().a(58, 0).a(0.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), fma.a(8.0F, -12.0F, 0.0F));
+      $$3.a("right_arm", fmd.c().a(44, 50).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), fma.a(-13.0F, -13.0F, 1.0F));
+      $$3.a("left_arm", fmd.c().a(0, 58).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), fma.a(13.0F, -13.0F, 1.0F));
+      $$2.a("right_leg", fmd.c().a(76, 48).a(-3.1F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), fma.a(-5.9F, -13.0F, 0.0F));
+      $$2.a("left_leg", fmd.c().a(76, 76).a(-2.9F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), fma.a(5.9F, -13.0F, 0.0F));
+      return fme.a($$0, 128, 128);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fly::c);
+      float $$6 = $$3 - (float)$$0.ah;
+      this.a($$4, $$5);
+      this.b($$1, $$2);
+      this.a($$3);
+      this.a($$0, $$3, $$6);
+      this.a($$0.bT, evj.e, $$3);
+      this.a($$0.bU, evj.f, $$3);
+      this.a($$0.e, evj.b, $$3);
+      this.a($$0.d, evj.a, $$3);
+      this.a($$0.b, evj.c, $$3);
+      this.a($$0.c, evj.d, $$3);
+   }
+
+   private void a(float $$0, float $$1) {
+      this.f.e = $$1 * (float) (Math.PI / 180.0);
+      this.f.f = $$0 * (float) (Math.PI / 180.0);
+   }
+
+   private void a(float $$0) {
+      float $$1 = $$0 * 0.1F;
+      float $$2 = aty.b($$1);
+      float $$3 = aty.a($$1);
+      this.f.g += 0.06F * $$2;
+      this.f.e += 0.06F * $$3;
+      this.b.g += 0.025F * $$3;
+      this.b.e += 0.025F * $$2;
+   }
+
+   private void b(float $$0, float $$1) {
+      float $$2 = Math.min(0.5F, 3.0F * $$1);
+      float $$3 = $$0 * 0.8662F;
+      float $$4 = aty.b($$3);
+      float $$5 = aty.a($$3);
+      float $$6 = Math.min(0.35F, $$2);
+      this.f.g += 0.3F * $$5 * $$2;
+      this.f.e = this.f.e + 1.2F * aty.b($$3 + (float) (Math.PI / 2)) * $$6;
+      this.b.g = 0.1F * $$5 * $$2;
+      this.b.e = 1.0F * $$4 * $$6;
+      this.i.e = 1.0F * $$4 * $$2;
+      this.m.e = 1.0F * aty.b($$3 + (float) Math.PI) * $$2;
+      this.j.e = -(0.8F * $$4 * $$2);
+      this.j.g = 0.0F;
+      this.l.e = -(0.8F * $$5 * $$2);
+      this.l.g = 0.0F;
+      this.g();
+   }
+
+   private void g() {
+      this.j.f = 0.0F;
+      this.j.d = 1.0F;
+      this.j.b = 13.0F;
+      this.j.c = -13.0F;
+      this.l.f = 0.0F;
+      this.l.d = 1.0F;
+      this.l.b = -13.0F;
+      this.l.c = -13.0F;
+   }
+
+   private void a(T $$0, float $$1, float $$2) {
+      float $$3 = $$0.E($$2) * (float)(Math.cos((double)$$1 * 2.25) * Math.PI * 0.1F);
+      this.h.e = $$3;
+      this.g.e = -$$3;
    }
 
    @Override
-   public ecm p() {
-      return this.c;
+   public fly a() {
+      return this.q;
    }
 
-   private static boolean a(@Nullable dju $$0, int $$1, int $$2) {
-      if ($$0 == null) {
-         return false;
-      } else {
-         crm $$3 = $$0.f();
-         return $$3.e == $$1 && $$3.f == $$2;
-      }
+   public List<fly> c() {
+      return this.r;
    }
 
-   public void a(crm $$0) {
-      if (this.d.b($$0.e, $$0.f)) {
-         int $$1 = this.d.a($$0.e, $$0.f);
-         dju $$2 = this.d.a($$1);
-         if (a($$2, $$0.e, $$0.f)) {
-            this.d.a($$1, $$2, null);
-         }
-      }
+   public List<fly> d() {
+      return this.s;
    }
 
-   @Nullable
-   public dju b(int $$0, int $$1, djo $$2, boolean $$3) {
-      if (this.d.b($$0, $$1)) {
-         dju $$4 = this.d.a(this.d.a($$0, $$1));
-         if (a($$4, $$0, $$1)) {
-            return $$4;
-         }
-      }
-
-      return $$3 ? this.b : null;
+   public List<fly> e() {
+      return this.t;
    }
 
-   @Override
-   public crl q() {
-      return this.e;
-   }
-
-   public void a(int $$0, int $$1, ty $$2) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-      } else {
-         int $$3 = this.d.a($$0, $$1);
-         dju $$4 = this.d.b.get($$3);
-         if (!a($$4, $$0, $$1)) {
-            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
-         } else {
-            $$4.a($$2);
-         }
-      }
-   }
-
-   @Nullable
-   public dju a(int $$0, int $$1, ty $$2, sd $$3, Consumer<zq.b> $$4) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-         return null;
-      } else {
-         int $$5 = this.d.a($$0, $$1);
-         dju $$6 = this.d.b.get($$5);
-         crm $$7 = new crm($$0, $$1);
-         if (!a($$6, $$0, $$1)) {
-            $$6 = new dju(this.e, $$7);
-            $$6.a($$2, $$3, $$4);
-            this.d.a($$5, $$6);
-         } else {
-            $$6.a($$2, $$3, $$4);
-         }
-
-         this.e.a($$7);
-         return $$6;
-      }
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0, boolean $$1) {
-   }
-
-   public void d(int $$0, int $$1) {
-      this.d.e = $$0;
-      this.d.f = $$1;
-   }
-
-   public void a(int $$0) {
-      int $$1 = this.d.c;
-      int $$2 = b($$0);
-      if ($$1 != $$2) {
-         flk.a $$3 = new flk.a($$2);
-         $$3.e = this.d.e;
-         $$3.f = this.d.f;
-
-         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
-            dju $$5 = this.d.b.get($$4);
-            if ($$5 != null) {
-               crm $$6 = $$5.f();
-               if ($$3.b($$6.e, $$6.f)) {
-                  $$3.a($$3.a($$6.e, $$6.f), $$5);
-               }
-            }
-         }
-
-         this.d = $$3;
-      }
-   }
-
-   private static int b(int $$0) {
-      return Math.max(2, $$0) + 3;
-   }
-
-   @Override
-   public String e() {
-      return this.d.b.length() + ", " + this.j();
-   }
-
-   @Override
-   public int j() {
-      return this.d.g;
-   }
-
-   @Override
-   public void a(cso $$0, iy $$1) {
-      eti.N().f.b($$1.a(), $$1.b(), $$1.c());
-   }
-
-   final class a {
-      final AtomicReferenceArray<dju> b;
-      final int c;
-      private final int d;
-      volatile int e;
-      volatile int f;
-      int g;
-
-      a(int $$0) {
-         this.c = $$0;
-         this.d = $$0 * 2 + 1;
-         this.b = new AtomicReferenceArray<>(this.d * this.d);
-      }
-
-      int a(int $$0, int $$1) {
-         return Math.floorMod($$1, this.d) * this.d + Math.floorMod($$0, this.d);
-      }
-
-      protected void a(int $$0, @Nullable dju $$1) {
-         dju $$2 = this.b.getAndSet($$0, $$1);
-         if ($$2 != null) {
-            this.g--;
-            flk.this.e.a($$2);
-         }
-
-         if ($$1 != null) {
-            this.g++;
-         }
-      }
-
-      protected dju a(int $$0, dju $$1, @Nullable dju $$2) {
-         if (this.b.compareAndSet($$0, $$1, $$2) && $$2 == null) {
-            this.g--;
-         }
-
-         flk.this.e.a($$1);
-         return $$1;
-      }
-
-      boolean b(int $$0, int $$1) {
-         return Math.abs($$0 - this.e) <= this.c && Math.abs($$1 - this.f) <= this.c;
-      }
-
-      @Nullable
-      protected dju a(int $$0) {
-         return this.b.get($$0);
-      }
-
-      private void a(String $$0) {
-         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
-            int $$2 = flk.this.d.c;
-
-            for (int $$3 = this.f - $$2; $$3 <= this.f + $$2; $$3++) {
-               for (int $$4 = this.e - $$2; $$4 <= this.e + $$2; $$4++) {
-                  dju $$5 = flk.this.d.b.get(flk.this.d.a($$4, $$3));
-                  if ($$5 != null) {
-                     crm $$6 = $$5.f();
-                     $$1.write(($$6.e + "\t" + $$6.f + "\t" + $$5.C() + "\n").getBytes(StandardCharsets.UTF_8));
-                  }
-               }
-            }
-         } catch (IOException var10) {
-            flk.a.error("Failed to dump chunks to file {}", $$0, var10);
-         }
-      }
+   public List<fly> f() {
+      return this.u;
    }
 }

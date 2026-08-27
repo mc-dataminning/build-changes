@@ -1,96 +1,38 @@
-public class fcr {
-   private static final agm a = new agm("minecraft", "alt");
-   private static final vs b = vs.a.a(a);
-   private static final fcr c = new fcr();
-   private final atw d = atw.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+public enum fcr {
+   a(
+      new agt("advancements/box_obtained"),
+      new agt("advancements/task_frame_obtained"),
+      new agt("advancements/challenge_frame_obtained"),
+      new agt("advancements/goal_frame_obtained")
+   ),
+   b(
+      new agt("advancements/box_unobtained"),
+      new agt("advancements/task_frame_unobtained"),
+      new agt("advancements/challenge_frame_unobtained"),
+      new agt("advancements/goal_frame_unobtained")
+   );
 
-   private fcr() {
+   private final agt c;
+   private final agt d;
+   private final agt e;
+   private final agt f;
+
+   private fcr(agt $$0, agt $$1, agt $$2, agt $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public static fcr a() {
-      return c;
+   public agt a() {
+      return this.c;
    }
 
-   public va a(eur $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
-         }
-
-         $$2.append(ac.a(this.e, this.d));
-      }
-
-      return $$0.b().a(uv.b($$2.toString()).c(b), $$1, vs.a);
-   }
-
-   public void a(long $$0) {
-      this.d.b($$0);
+   public agt a(al $$0) {
+      return switch ($$0) {
+         case a -> this.d;
+         case b -> this.e;
+         case c -> this.f;
+      };
    }
 }

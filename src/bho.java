@@ -1,47 +1,30 @@
-import java.util.List;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class bho {
-   private bho() {
-   }
+   private final Set<String> a = new ObjectOpenHashSet();
 
-   public static int a(List<? extends bhn> $$0) {
-      long $$1 = 0L;
+   public Set<bhg> a(Supplier<bga> $$0) {
+      Set<bhg> $$1 = $$0.get()
+         .e()
+         .stream()
+         .filter($$0x -> !this.a.contains($$0x.getLeft()))
+         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bhf)$$1x.getRight()))
+         .collect(Collectors.toSet());
 
-      for (bhn $$2 : $$0) {
-         $$1 += (long)$$2.a().a();
+      for (bhg $$2 : $$1) {
+         this.a.add($$2.d());
       }
 
-      if ($$1 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-      } else {
-         return (int)$$1;
-      }
+      return $$1;
    }
 
-   public static <T extends bhn> Optional<T> a(atw $$0, List<T> $$1, int $$2) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$3 = $$0.a($$2);
-         return a($$1, $$3);
-      }
-   }
-
-   public static <T extends bhn> Optional<T> a(List<T> $$0, int $$1) {
-      for (T $$2 : $$0) {
-         $$1 -= $$2.a().a();
-         if ($$1 < 0) {
-            return Optional.of($$2);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public static <T extends bhn> Optional<T> a(atw $$0, List<T> $$1) {
-      return a($$0, $$1, a($$1));
+   private static bhg a(Supplier<bga> $$0, String $$1, bhf $$2) {
+      return bhg.a($$1, $$2, () -> {
+         bfv.a $$2x = $$0.get().c($$1);
+         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)auz.b;
+      });
    }
 }

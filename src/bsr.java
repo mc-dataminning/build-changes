@@ -1,27 +1,57 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bsr extends btd {
-   private static final int i = 10;
-   private static final int j = 7;
+public abstract class bsr {
+   private final EnumSet<bsr.a> a = EnumSet.noneOf(bsr.a.class);
 
-   public bsr(blu $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public abstract boolean a();
+
+   public boolean b() {
+      return this.a();
+   }
+
+   public boolean S_() {
+      return true;
+   }
+
+   public void c() {
+   }
+
+   public void d() {
+   }
+
+   public boolean T_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<bsr.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   public boolean a() {
-      ami $$0 = (ami)this.b.dN();
-      hx $$1 = this.b.dn();
-      return $$0.b($$1) ? false : super.a();
+   public String toString() {
+      return this.getClass().getSimpleName();
    }
 
-   @Nullable
-   @Override
-   protected ejz h() {
-      ami $$0 = (ami)this.b.dN();
-      hx $$1 = this.b.dn();
-      iy $$2 = iy.a($$1);
-      iy $$3 = bne.a($$0, $$2, 2);
-      return $$3 != $$2 ? bwb.a(this.b, 10, 7, ejz.c($$3.q()), (float) (Math.PI / 2)) : null;
+   public EnumSet<bsr.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.T_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return aty.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,29 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ddq extends cyv {
-   public static final MapCodec<ddq> b = b(ddq::new);
+public class ddq extends dek implements cvq {
+   public static final MapCodec<ddq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ckv.q.fieldOf("color").forGetter(ddq::b), u()).apply($$0, ddq::new));
+   private final ckv c;
 
-   protected ddq(dhm.d $$0) {
-      super($$0);
+   @Override
+   public MapCodec<ddq> a() {
+      return a;
+   }
+
+   public ddq(ckv $$0, dio.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   protected MapCodec<? extends ddq> a() {
-      return b;
-   }
-
-   @Override
-   public eks c(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return ekp.a();
-   }
-
-   @Override
-   public float d(dhn $$0, crl $$1, hx $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   public boolean a_(dhn $$0, crl $$1, hx $$2) {
-      return true;
+   public ckv b() {
+      return this.c;
    }
 }

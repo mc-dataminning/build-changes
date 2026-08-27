@@ -1,74 +1,50 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+public class fuu implements fui<dil> {
+   private final ftc a;
 
-public class fuu implements fui.a {
-   private final eti a;
-   private double b = Double.MIN_VALUE;
-   private List<bkv> c = Collections.emptyList();
+   public fuu(fuj.a $$0) {
+      this.a = $$0.b();
+   }
 
-   public fuu(eti $$0) {
-      this.a = $$0;
+   public void a(dil $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
+      csy $$6 = $$0.i();
+      if ($$6 != null) {
+         hv $$7 = $$0.aB_().a($$0.g().g());
+         dip $$8 = $$0.k();
+         if (!$$8.i()) {
+            fte.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(cwb.bz) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.a(dij.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.f() && !$$0.c()) {
+               djr $$9 = $$8.a(cwb.br) ? djr.b : djr.a;
+               dip $$10 = cwb.bz.o().a(dij.c, $$9).a(dij.a, $$8.c(dii.a));
+               $$10 = $$10.a(dij.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               hv $$11 = $$7.a($$0.g());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.a(dii.c, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            }
+
+            $$2.b();
+            fte.b();
+         }
+      }
+   }
+
+   private void a(hv $$0, dip $$1, epd $$2, fsi $$3, csy $$4, boolean $$5, int $$6) {
+      fsq $$7 = fsd.b($$1);
+      eph $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, auf.a(), $$1.a($$0), $$6);
    }
 
    @Override
-   public void a(eob $$0, fqz $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bkv $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dN().a_($$6, $$6.cH().g(16.0)));
-      }
-
-      cdz $$7 = this.a.s;
-      if ($$7 != null && $$7.aD.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (bkv $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
-         }
-      }
-   }
-
-   private void a(eob $$0, fqz $$1, double $$2, double $$3, double $$4, bkv $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.aD.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         hx $$12 = $$5.aJ();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         hx $$13 = $$5.aH();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
-   }
-
-   private double a(bkv $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.aj() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
-
-   private void a(hx $$0, eob $$1, double $$2, double $$3, double $$4, fqz $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      fqx.a($$1, $$5.getBuffer(frh.w()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      fqx.a(
-         $$1,
-         $$5.getBuffer(frh.w()),
-         this.a.r.a_($$0).b(this.a.r, $$0, eke.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
-         -$$2,
-         -$$3,
-         -$$4,
-         $$7,
-         $$8,
-         $$9,
-         1.0F,
-         false
-      );
+   public int aS_() {
+      return 68;
    }
 }

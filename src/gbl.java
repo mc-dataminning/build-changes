@@ -1,6 +1,13 @@
-import java.io.IOException;
-import java.nio.file.Path;
+public abstract class gbl<T extends blf, M extends fiy<T>> extends gbz<T, M> {
+   public gbl(fzj<T, M> $$0) {
+      super($$0);
+   }
 
-public interface gbl {
-   void a(agm var1, Path var2) throws IOException;
+   @Override
+   public void a(epd $$0, fsi $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      eph $$10 = $$1.getBuffer(this.a());
+      this.c().a($$0, $$10, 15728640, gdf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   public abstract fsq a();
 }

@@ -1,47 +1,45 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+public abstract class fqw extends fqj {
+   protected gdo E;
 
-public class fqw {
-   public final Int2ObjectMap<geh> a = new Int2ObjectOpenHashMap(256);
-   private final Int2ObjectMap<gea> b = new Int2ObjectOpenHashMap(256);
-   private final geg c;
-
-   public fqw(geg $$0) {
-      this.c = $$0;
+   protected fqw(fmt $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public gea a(clo $$0) {
-      gea $$1 = this.a($$0.d());
-      return $$1 == null ? this.c.a() : $$1;
+   protected fqw(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   @Nullable
-   public gea a(clj $$0) {
-      return (gea)this.b.get(b($$0));
+   protected void a(gdo $$0) {
+      this.E = $$0;
    }
 
-   private static int b(clj $$0) {
-      return clj.a($$0);
+   @Override
+   protected float c() {
+      return this.E.c();
    }
 
-   public void a(clj $$0, geh $$1) {
-      this.a.put(b($$0), $$1);
+   @Override
+   protected float d() {
+      return this.E.d();
    }
 
-   public geg a() {
-      return this.c;
+   @Override
+   protected float e() {
+      return this.E.g();
    }
 
-   public void b() {
-      this.b.clear();
-      ObjectIterator var1 = this.a.entrySet().iterator();
+   @Override
+   protected float f() {
+      return this.E.h();
+   }
 
-      while (var1.hasNext()) {
-         Entry<Integer, geh> $$0 = (Entry<Integer, geh>)var1.next();
-         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
+   public void a(fqr $$0) {
+      this.a($$0.a(this.r));
+   }
+
+   public void b(fqr $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
       }
    }
 }

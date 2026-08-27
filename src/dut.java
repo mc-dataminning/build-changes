@@ -1,49 +1,28 @@
 import com.mojang.serialization.Codec;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class dut extends duw {
-   public static final Codec<dut> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dut::new, $$0 -> $$0.d).codec();
-   private static final ib b = ib.d;
-   private static final ib[] c = ib.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ib[]::new);
-   private final float d;
+public class dut<P extends dus> {
+   public static final dut<dun> a = a("blob_foliage_placer", dun.a);
+   public static final dut<duy> b = a("spruce_foliage_placer", duy.a);
+   public static final dut<duw> c = a("pine_foliage_placer", duw.a);
+   public static final dut<dum> d = a("acacia_foliage_placer", dum.a);
+   public static final dut<duo> e = a("bush_foliage_placer", duo.c);
+   public static final dut<dur> f = a("fancy_foliage_placer", dur.c);
+   public static final dut<duu> g = a("jungle_foliage_placer", duu.a);
+   public static final dut<duv> h = a("mega_pine_foliage_placer", duv.a);
+   public static final dut<duq> i = a("dark_oak_foliage_placer", duq.a);
+   public static final dut<dux> j = a("random_spread_foliage_placer", dux.a);
+   public static final dut<dup> k = a("cherry_foliage_placer", dup.a);
+   private final Codec<P> l;
 
-   public dut(float $$0) {
-      this.d = $$0;
+   private static <P extends dus> dut<P> a(String $$0, Codec<P> $$1) {
+      return ir.a(kb.W, $$0, new dut<>($$1));
    }
 
-   @Override
-   protected dux<?> a() {
-      return dux.d;
+   private dut(Codec<P> $$0) {
+      this.l = $$0;
    }
 
-   @Override
-   public void a(duw.a $$0) {
-      atw $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<hx> $$2 = $$0.d();
-         List<hx> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<hx> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<hx> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), cvh.pe.o().a(cuz.b, b));
-               $$0.a().a($$6.get(), dfk.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
-
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     sd $$4x = new sd();
-                     $$4x.a("id", kc.h.b(bkz.h).toString());
-                     $$1x.a($$4x, $$1.a(599), false);
-                  }
-               });
-            }
-         }
-      }
+   public Codec<P> a() {
+      return this.l;
    }
 }

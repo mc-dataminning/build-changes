@@ -1,44 +1,31 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
 
-public class bic extends bie {
-   public static final bic a = new bic(0.0F);
-   public static final Codec<bic> b = asy.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bic::new, bic::d);
-   private final float d;
+public class bic implements ThreadFactory {
+   private static final Logger a = LogUtils.getLogger();
+   private final ThreadGroup b;
+   private final AtomicInteger c = new AtomicInteger(1);
+   private final String d;
 
-   public static bic a(float $$0) {
-      return $$0 == 0.0F ? a : new bic($$0);
-   }
-
-   private bic(float $$0) {
-      this.d = $$0;
-   }
-
-   public float d() {
-      return this.d;
-   }
-
-   @Override
-   public float a(atw $$0) {
-      return this.d;
+   public bic(String $$0) {
+      SecurityManager $$1 = System.getSecurityManager();
+      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
+      this.d = $$0 + "-";
    }
 
    @Override
-   public float a() {
-      return this.d;
-   }
+   public Thread newThread(Runnable $$0) {
+      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
+      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
+         a.error("Caught exception in thread {} from {}", $$1x, $$0);
+         a.error("", $$2);
+      });
+      if ($$1.getPriority() != 5) {
+         $$1.setPriority(5);
+      }
 
-   @Override
-   public float b() {
-      return this.d + 1.0F;
-   }
-
-   @Override
-   public bif<?> c() {
-      return bif.a;
-   }
-
-   @Override
-   public String toString() {
-      return Float.toString(this.d);
+      return $$1;
    }
 }

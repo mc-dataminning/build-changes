@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fbw {
+public abstract class fbw implements exk {
+   public boolean a() {
+      return true;
+   }
 }

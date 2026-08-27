@@ -1,76 +1,61 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class ftw {
-   private final Long2ObjectMap<ftw.a> a = new Long2ObjectOpenHashMap();
+public class ftw implements ftv {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
 
-   @Nullable
-   public ftv a(csf $$0, hx $$1, hx $$2, int $$3) {
-      int $$4 = iy.a($$1.u() - $$3);
-      int $$5 = iy.a($$1.w() - $$3);
-      int $$6 = iy.a($$2.u() + $$3);
-      int $$7 = iy.a($$2.w() + $$3);
-      ftw.a[][] $$8 = new ftw.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
+   public ftw(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
-         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
-            $$8[$$9 - $$4][$$10 - $$5] = (ftw.a)this.a.computeIfAbsent(crm.c($$9, $$10), $$1x -> new ftw.a($$0.d(crm.a($$1x), crm.b($$1x))));
-         }
-      }
-
-      if (a($$1, $$2, $$4, $$5, $$8)) {
-         return null;
+   @Override
+   public Predicate<dip> getPredicate(diq<cvz, dip> $$0) {
+      djs<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
       } else {
-         ftu[][] $$11 = new ftu[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
-            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
-               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
-            }
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
          }
 
-         return new ftv($$0, $$4, $$5, $$11);
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<dip> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               List<Predicate<dip>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
+               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+            }
+
+            return $$3 ? $$5.negate() : $$5;
+         }
       }
    }
 
-   private static boolean a(hx $$0, hx $$1, int $$2, int $$3, ftw.a[][] $$4) {
-      int $$5 = iy.a($$0.u());
-      int $$6 = iy.a($$0.w());
-      int $$7 = iy.a($$1.u());
-      int $$8 = iy.a($$1.w());
-
-      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
-         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-            dju $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
-            if (!$$11.a($$0.v(), $$1.v())) {
-               return false;
-            }
-         }
+   private Predicate<dip> a(diq<cvz, dip> $$0, djs<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
       }
-
-      return true;
    }
 
-   static final class a {
-      private final dju a;
-      @Nullable
-      private ftu b;
-
-      a(dju $$0) {
-         this.a = $$0;
-      }
-
-      public dju a() {
-         return this.a;
-      }
-
-      public ftu b() {
-         if (this.b == null) {
-            this.b = new ftu(this.a);
-         }
-
-         return this.b;
-      }
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

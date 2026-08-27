@@ -1,26 +1,26 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dbp extends cvo {
-   public static final MapCodec<dbp> a = b(dbp::new);
-   protected static final float b = 6.0F;
-   protected static final eks c = cvf.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class dbp extends dey {
+   public static final MapCodec<dbp> b = b(dbp::new);
 
    @Override
    public MapCodec<dbp> a() {
-      return a;
+      return b;
    }
 
-   protected dbp(dhm.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return c;
+   protected dbp(dio.d $$0) {
+      super(dda.b.e, $$0);
    }
 
    @Override
-   protected boolean b(dhn $$0, crl $$1, hx $$2) {
-      return $$0.a(ark.aK) || $$0.a(cvh.dX) || super.b($$0, $$1, $$2);
+   public void a(csy $$0, hv $$1, dip $$2, @Nullable blv $$3, cmh $$4) {
+      cwb.gK.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public List<cmh> a(dip $$0, egk.a $$1) {
+      return cwb.gK.a($$0, $$1);
    }
 }

@@ -1,53 +1,47 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
-public record eit(eiw b, eiw c) implements eiw {
+public record eit(ie<cqs> b, List<Float> c) implements ejd {
    public static final Codec<eit> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eix.a.fieldOf("n").forGetter(eit::c), eix.a.fieldOf("p").forGetter(eit::d)).apply($$0, eit::new)
+      $$0 -> $$0.group(kb.f.r().fieldOf("enchantment").forGetter(eit::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(eit::d)).apply($$0, eit::new)
    );
 
    @Override
-   public eiv b() {
-      return eix.d;
+   public eje b() {
+      return ejf.l;
    }
 
    @Override
-   public int a(efc $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      atw $$3 = $$0.b();
-      int $$4 = 0;
+   public Set<eim<?>> a() {
+      return ImmutableSet.of(eip.i);
+   }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
+   public boolean a(ege $$0) {
+      cmh $$1 = $$0.c(eip.i);
+      int $$2 = $$1 != null ? cqu.a(this.b.a(), $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
+   }
+
+   public static ejd.a a(cqs $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
       }
 
-      return $$4;
+      return () -> new eit($$0.j(), $$2);
    }
 
-   @Override
-   public float b(efc $$0) {
-      return (float)this.a($$0);
-   }
-
-   public static eit a(int $$0, float $$1) {
-      return new eit(eiu.a((float)$$0), eiu.a($$1));
-   }
-
-   @Override
-   public Set<ehk<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public eiw c() {
+   public ie<cqs> c() {
       return this.b;
    }
 
-   public eiw d() {
+   public List<Float> d() {
       return this.c;
    }
 }

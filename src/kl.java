@@ -1,51 +1,46 @@
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
-public class kl {
-   private final Path a;
+public class kl implements ki {
+   private final kk.a d;
+   private final List<km> e;
+   private final CompletableFuture<ih.b> f;
 
-   public kl(Path $$0) {
-      this.a = $$0;
+   public kl(kk $$0, CompletableFuture<ih.b> $$1, List<km> $$2) {
+      this.d = $$0.a(kk.b.a, "advancements");
+      this.e = $$2;
+      this.f = $$1;
    }
 
-   public Path a() {
-      return this.a;
+   @Override
+   public CompletableFuture<?> a(kg $$0) {
+      return this.f.thenCompose($$1 -> {
+         Set<agt> $$2 = new HashSet<>();
+         List<CompletableFuture<?>> $$3 = new ArrayList<>();
+         Consumer<af> $$4 = $$3x -> {
+            if (!$$2.add($$3x.a())) {
+               throw new IllegalStateException("Duplicate advancement " + $$3x.a());
+            } else {
+               Path $$4x = this.d.a($$3x.a());
+               $$3.add(ki.a($$0, ae.a, $$3x.b(), $$4x));
+            }
+         };
+
+         for (km $$5 : this.e) {
+            $$5.a($$1, $$4);
+         }
+
+         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
+      });
    }
 
-   public Path a(kl.b $$0) {
-      return this.a().resolve($$0.d);
-   }
-
-   public kl.a a(kl.b $$0, String $$1) {
-      return new kl.a(this, $$0, $$1);
-   }
-
-   public static class a {
-      private final Path a;
-      private final String b;
-
-      a(kl $$0, kl.b $$1, String $$2) {
-         this.a = $$0.a($$1);
-         this.b = $$2;
-      }
-
-      public Path a(agm $$0, String $$1) {
-         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
-      }
-
-      public Path a(agm $$0) {
-         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
-      }
-   }
-
-   public static enum b {
-      a("data"),
-      b("assets"),
-      c("reports");
-
-      final String d;
-
-      private b(String $$0) {
-         this.d = $$0;
-      }
+   @Override
+   public final String a() {
+      return "Advancements";
    }
 }

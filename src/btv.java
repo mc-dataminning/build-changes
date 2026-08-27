@@ -1,32 +1,67 @@
-public class btv extends bsq {
-   private final ccg b;
-   private int c;
+import java.util.EnumSet;
 
-   public btv(ccg $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class btv extends bsr {
+   private final bzh a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
+
+   public btv(bzh $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(bsr.a.a));
+   }
+
+   @Override
+   public boolean a() {
+      if (!this.a.gt() && this.a.bP()) {
+         elb $$0 = bwn.a(this.a, 5, 4);
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void c() {
-      super.c();
-      this.c = 0;
+      this.a.N().a(this.c, this.d, this.e, this.b);
    }
 
    @Override
-   public void d() {
-      super.d();
-      this.b.v(false);
+   public boolean b() {
+      return !this.a.gt() && !this.a.N().l() && this.a.bP();
    }
 
    @Override
    public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
+      if (!this.a.gt() && this.a.eg().a(this.a(50)) == 0) {
+         blf $$0 = this.a.cQ();
+         if ($$0 == null) {
+            return;
+         }
+
+         if ($$0 instanceof cer $$1) {
+            int $$2 = this.a.gz();
+            int $$3 = this.a.gF();
+            if ($$3 > 0 && this.a.eg().a($$3) < $$2) {
+               this.a.h($$1);
+               return;
+            }
+
+            this.a.v(5);
+         }
+
+         this.a.bB();
+         this.a.gK();
+         this.a.dM().a(this.a, (byte)6);
       }
    }
 }

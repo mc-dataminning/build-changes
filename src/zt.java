@@ -1,102 +1,64 @@
-public class zt implements wo<yh> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final int h;
-   private final boolean i;
-   private final ju j;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-   public <T extends ju> zt(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      this.j = $$0;
-      this.i = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = $$6;
-      this.f = $$7;
-      this.g = $$8;
-      this.h = $$9;
+public class zt implements wu<yo> {
+   public static final zt.a a = new zt.a(0);
+   public static final zt.a b = new zt.a(1);
+   public static final zt.a c = new zt.a(2);
+   public static final zt.a d = new zt.a(3);
+   public static final zt.a e = new zt.a(4);
+   public static final zt.a f = new zt.a(5);
+   public static final zt.a g = new zt.a(6);
+   public static final zt.a h = new zt.a(7);
+   public static final zt.a i = new zt.a(8);
+   public static final zt.a j = new zt.a(9);
+   public static final zt.a k = new zt.a(10);
+   public static final zt.a l = new zt.a(11);
+   public static final zt.a m = new zt.a(12);
+   public static final zt.a n = new zt.a(13);
+   public static final int o = 0;
+   public static final int p = 101;
+   public static final int q = 102;
+   public static final int r = 103;
+   public static final int s = 104;
+   private final zt.a t;
+   private final float u;
+
+   public zt(zt.a $$0, float $$1) {
+      this.t = $$0;
+      this.u = $$1;
    }
 
-   public zt(ty $$0) {
-      jv<?> $$1 = $$0.a(kc.k);
-      this.i = $$0.readBoolean();
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readInt();
-      this.j = this.a($$0, (jv<ju>)$$1);
-   }
-
-   private <T extends ju> T a(ty $$0, jv<T> $$1) {
-      return $$1.d().b($$1, $$0);
+   public zt(ue $$0) {
+      this.t = (zt.a)zt.a.a.get($$0.readUnsignedByte());
+      this.u = $$0.readFloat();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(kc.k, this.j.b());
-      $$0.a(this.i);
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.p(this.h);
-      this.j.a($$0);
+   public void a(ue $$0) {
+      $$0.k(this.t.b);
+      $$0.a(this.u);
    }
 
-   public boolean a() {
-      return this.i;
-   }
-
-   public double d() {
-      return this.a;
-   }
-
-   public double e() {
-      return this.b;
-   }
-
-   public double f() {
-      return this.c;
-   }
-
-   public float g() {
-      return this.d;
-   }
-
-   public float h() {
-      return this.e;
-   }
-
-   public float i() {
-      return this.f;
-   }
-
-   public float j() {
-      return this.g;
-   }
-
-   public int k() {
-      return this.h;
-   }
-
-   public ju l() {
-      return this.j;
-   }
-
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
+   }
+
+   public zt.a a() {
+      return this.t;
+   }
+
+   public float d() {
+      return this.u;
+   }
+
+   public static class a {
+      static final Int2ObjectMap<zt.a> a = new Int2ObjectOpenHashMap();
+      final int b;
+
+      public a(int $$0) {
+         this.b = $$0;
+         a.put($$0, this);
+      }
    }
 }

@@ -1,43 +1,176 @@
+import com.google.common.collect.Iterables;
+import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class ee implements ArgumentType<agm> {
-   private static final Collection<String> a = Stream.of(csf.h, csf.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> uv.b("argument.dimension.invalid", $$0));
+public class ee implements ArgumentType<gc> {
+   private static final Collection<String> g = Arrays.asList("Player", "0123", "@e", "@e[type=foo]", "dd12be42-52a9-4a91-a8a1-11c01849e498");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("argument.entity.toomany"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("argument.player.toomany"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vb.c("argument.player.entities"));
+   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vb.c("argument.entity.notfound.entity"));
+   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vb.c("argument.entity.notfound.player"));
+   public static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(vb.c("argument.entity.selector.not_allowed"));
+   final boolean h;
+   final boolean i;
 
-   public agm a(StringReader $$0) throws CommandSyntaxException {
-      return agm.a($$0);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof dy ? dy.a(((dy)$$0.getSource()).u().stream().map(agl::a), $$1) : Suggestions.empty();
-   }
-
-   public Collection<String> getExamples() {
-      return a;
+   protected ee(boolean $$0, boolean $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    public static ee a() {
-      return new ee();
+      return new ee(true, false);
    }
 
-   public static ami a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      agm $$2 = (agm)$$0.getArgument($$1, agm.class);
-      agl<csf> $$3 = agl.a(kd.aJ, $$2);
-      ami $$4 = ((du)$$0.getSource()).l().a($$3);
-      if ($$4 == null) {
-         throw b.create($$2);
+   public static blf a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return ((gc)$$0.getArgument($$1, gc.class)).a((ds)$$0.getSource());
+   }
+
+   public static ee b() {
+      return new ee(false, false);
+   }
+
+   public static Collection<? extends blf> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends blf> $$2 = c($$0, $$1);
+      if ($$2.isEmpty()) {
+         throw d.create();
       } else {
-         return $$4;
+         return $$2;
+      }
+   }
+
+   public static Collection<? extends blf> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return ((gc)$$0.getArgument($$1, gc.class)).b((ds)$$0.getSource());
+   }
+
+   public static Collection<amq> d(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return ((gc)$$0.getArgument($$1, gc.class)).d((ds)$$0.getSource());
+   }
+
+   public static ee c() {
+      return new ee(true, true);
+   }
+
+   public static amq e(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return ((gc)$$0.getArgument($$1, gc.class)).c((ds)$$0.getSource());
+   }
+
+   public static ee d() {
+      return new ee(false, true);
+   }
+
+   public static Collection<amq> f(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      List<amq> $$2 = ((gc)$$0.getArgument($$1, gc.class)).d((ds)$$0.getSource());
+      if ($$2.isEmpty()) {
+         throw e.create();
+      } else {
+         return $$2;
+      }
+   }
+
+   public gc a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = 0;
+      gd $$2 = new gd($$0);
+      gc $$3 = $$2.t();
+      if ($$3.a() > 1 && this.h) {
+         if (this.i) {
+            $$0.setCursor(0);
+            throw b.createWithContext($$0);
+         } else {
+            $$0.setCursor(0);
+            throw a.createWithContext($$0);
+         }
+      } else if ($$3.b() && this.i && !$$3.c()) {
+         $$0.setCursor(0);
+         throw c.createWithContext($$0);
+      } else {
+         return $$3;
+      }
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if ($$0.getSource() instanceof dw $$2) {
+         StringReader $$3 = new StringReader($$1.getInput());
+         $$3.setCursor($$1.getStart());
+         gd $$4 = new gd($$3, $$2.c(2));
+
+         try {
+            $$4.t();
+         } catch (CommandSyntaxException var7) {
+         }
+
+         return $$4.a($$1, $$1x -> {
+            Collection<String> $$2x = $$2.q();
+            Iterable<String> $$3x = (Iterable<String>)(this.i ? $$2x : Iterables.concat($$2x, $$2.A()));
+            dw.b($$3x, $$1x);
+         });
+      } else {
+         return Suggestions.empty();
+      }
+   }
+
+   public Collection<String> getExamples() {
+      return g;
+   }
+
+   public static class a implements hh<ee, ee.a.a> {
+      private static final byte a = 1;
+      private static final byte b = 2;
+
+      public void a(ee.a.a $$0, ue $$1) {
+         int $$2 = 0;
+         if ($$0.b) {
+            $$2 |= 1;
+         }
+
+         if ($$0.c) {
+            $$2 |= 2;
+         }
+
+         $$1.k($$2);
+      }
+
+      public ee.a.a a(ue $$0) {
+         byte $$1 = $$0.readByte();
+         return new ee.a.a(($$1 & 1) != 0, ($$1 & 2) != 0);
+      }
+
+      public void a(ee.a.a $$0, JsonObject $$1) {
+         $$1.addProperty("amount", $$0.b ? "single" : "multiple");
+         $$1.addProperty("type", $$0.c ? "players" : "entities");
+      }
+
+      public ee.a.a a(ee $$0) {
+         return new ee.a.a($$0.h, $$0.i);
+      }
+
+      public final class a implements hh.a<ee> {
+         final boolean b;
+         final boolean c;
+
+         a(boolean $$1, boolean $$2) {
+            this.b = $$1;
+            this.c = $$2;
+         }
+
+         public ee a(dn $$0) {
+            return new ee(this.b, this.c);
+         }
+
+         @Override
+         public hh<ee, ?> a() {
+            return a.this;
+         }
       }
    }
 }

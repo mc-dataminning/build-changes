@@ -1,131 +1,121 @@
-public abstract class fbx extends faz {
-   private static final uv m = uv.c("advMode.setCommand");
-   private static final uv n = uv.c("advMode.command");
-   private static final uv o = uv.c("advMode.previousOutput");
-   protected evn a;
-   protected evn b;
-   protected eve c;
-   protected eve k;
-   protected evl<Boolean> l;
-   evh p;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public fbx() {
-      super(eta.a);
+public class fbx extends fcc {
+   private static final agt a = new agt("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int k = 4;
+   private static final int l = 204;
+   private static final int m = 98;
+   private static final vb n = vb.c("menu.returnToGame");
+   private static final vb o = vb.c("gui.advancements");
+   private static final vb p = vb.c("gui.stats");
+   private static final vb q = vb.c("menu.sendFeedback");
+   private static final vb r = vb.c("menu.reportBugs");
+   private static final vb t = vb.c("menu.options");
+   private static final vb u = vb.c("menu.shareToLan");
+   private static final vb v = vb.c("menu.playerReporting");
+   private static final vb w = vb.c("menu.returnToMenu");
+   private static final vb x = vb.c("menu.savingLevel");
+   private static final vb y = vb.c("menu.game");
+   private static final vb z = vb.c("menu.paused");
+   private final boolean A;
+   @Nullable
+   private ewh B;
+
+   public fbx(boolean $$0) {
+      super($$0 ? y : z);
+      this.A = $$0;
+   }
+
+   public boolean l() {
+      return this.A;
+   }
+
+   @Override
+   protected void aP_() {
+      if (this.A) {
+         this.C();
+      }
+
+      this.d(new exo(0, this.A ? 40 : 10, this.g, 9, this.e, this.i));
+   }
+
+   private void C() {
+      ezq $$0 = new ezq();
+      $$0.c().a(4, 4, 4, 0);
+      ezq.b $$1 = $$0.d(2);
+      $$1.a(ewh.a(n, $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(o, () -> new fcs(this.f.s.cn.r())));
+      $$1.a(this.a(p, () -> new fcl(this, this.f.s.j())));
+      $$1.a(this.a(q, aa.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
+      $$1.a(this.a(r, "https://aka.ms/snapshotbugs?ref=game")).i = !aa.b().d().a();
+      $$1.a(this.a(t, () -> new fbt(this, this.f.m)));
+      if (this.f.R() && !this.f.S().p()) {
+         $$1.a(this.a(u, () -> new fcd(this)));
+      } else {
+         $$1.a(this.a(v, fgm::new));
+      }
+
+      vb $$2 = this.f.Q() ? w : va.p;
+      this.B = $$1.a(ewh.a($$2, $$0x -> {
+         $$0x.i = false;
+         this.f.aW().a(this.f, this, this::D, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      ezp.a($$0, 0, 0, this.g, this.h, 0.5F, 0.25F);
+      $$0.a(this::d);
+   }
+
+   private void D() {
+      boolean $$0 = this.f.Q();
+      fne $$1 = this.f.P();
+      this.f.r.V();
+      if ($$0) {
+         this.f.b(new fbi(x));
+      } else {
+         this.f.y();
+      }
+
+      fch $$2 = new fch();
+      if ($$0) {
+         this.f.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.f.a(new epo($$2));
+      } else {
+         this.f.a(new ffa($$2));
+      }
    }
 
    @Override
    public void d() {
-      if (!this.l().j()) {
-         this.aG_();
-      }
-   }
-
-   abstract crg l();
-
-   abstract int C();
-
-   @Override
-   protected void aQ_() {
-      this.c = this.d(eve.a(uu.d, $$0x -> this.D()).a(this.g / 2 - 4 - 150, this.h / 4 + 120 + 12, 150, 20).a());
-      this.k = this.d(eve.a(uu.e, $$0x -> this.aG_()).a(this.g / 2 + 4, this.h / 4 + 120 + 12, 150, 20).a());
-      boolean $$0 = this.l().o();
-      this.l = this.d(evl.a(uv.b("O"), uv.b("X")).a($$0).a().a(this.g / 2 + 150 - 20, this.C(), 20, 20, uv.c("advMode.trackOutput"), ($$0x, $$1) -> {
-         crg $$2 = this.l();
-         $$2.a($$1);
-         this.c($$1);
-      }));
-      this.a = new evn(this.i, this.g / 2 - 150, 50, 300, 20, uv.c("advMode.command")) {
-         @Override
-         protected vj aN_() {
-            return super.aN_().b(fbx.this.p.e());
-         }
-      };
-      this.a.l(32500);
-      this.a.b(this::a);
-      this.e(this.a);
-      this.b = new evn(this.i, this.g / 2 - 150, this.C(), 276, 20, uv.c("advMode.previousOutput"));
-      this.b.l(32500);
-      this.b.e(false);
-      this.b.a("-");
-      this.e(this.b);
-      this.c(this.a);
-      this.p = new evh(this.f, this, this.a, this.i, true, true, 0, 7, false, Integer.MIN_VALUE);
-      this.p.a(true);
-      this.p.d();
-      this.c($$0);
+      super.d();
    }
 
    @Override
-   protected uv z() {
-      return this.p.a() ? this.p.b() : super.z();
-   }
-
-   @Override
-   public void a(eti $$0, int $$1, int $$2) {
-      String $$3 = this.a.a();
-      this.b($$0, $$1, $$2);
-      this.a.a($$3);
-      this.p.d();
-   }
-
-   @Override
-   protected void c(boolean $$0) {
-      this.b.a($$0 ? this.l().l().getString() : "-");
-   }
-
-   protected void D() {
-      crg $$0 = this.l();
-      this.a($$0);
-      if (!$$0.o()) {
-         $$0.c(null);
-      }
-
-      this.f.a(null);
-   }
-
-   protected abstract void a(crg var1);
-
-   private void a(String $$0) {
-      this.p.d();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.p.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return false;
-      } else {
-         this.D();
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.p.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return this.p.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, m, this.g / 2, 20, 16777215);
-      $$0.b(this.i, n, this.g / 2 - 150 + 1, 40, 10526880);
-      this.a.a($$0, $$1, $$2, $$3);
-      int $$4 = 75;
-      if (!this.b.a().isEmpty()) {
-         $$4 += 5 * 9 + 1 + this.C() - 135;
-         $$0.b(this.i, o, this.g / 2 - 150 + 1, $$4 + 4, 10526880);
-         this.b.a($$0, $$1, $$2, $$3);
+      if (this.A && this.f != null && this.f.aW().c() && this.B != null) {
+         $$0.a(a, this.B.p() + this.B.k() - 17, this.B.r() + 3, 15, 15);
       }
+   }
 
-      this.p.a($$0, $$1, $$2);
+   @Override
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      if (this.A) {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private ewh a(vb $$0, Supplier<fcc> $$1) {
+      return ewh.a($$0, $$1x -> this.f.a($$1.get())).a(98).a();
+   }
+
+   private ewh a(vb $$0, String $$1) {
+      return ewh.a($$0, fau.b(this, $$1)).a(98).a();
    }
 }

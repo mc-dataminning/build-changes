@@ -1,20 +1,21 @@
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+public enum mt {
+   a("building_blocks"),
+   b("decorations"),
+   c("redstone"),
+   d("transportation"),
+   e("tools"),
+   f("combat"),
+   g("food"),
+   h("brewing"),
+   i("misc");
 
-public interface mt {
-   void a(JsonObject var1);
+   private final String j;
 
-   default JsonObject a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.addProperty("type", kc.u.b(this.c()).toString());
-      this.a($$0);
-      return $$0;
+   private mt(String $$0) {
+      this.j = $$0;
    }
 
-   agm b();
-
-   cox<?> c();
-
-   @Nullable
-   af d();
+   public String a() {
+      return this.j;
+   }
 }

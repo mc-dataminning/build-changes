@@ -1,83 +1,105 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dbj extends dbi {
-   public static final MapCodec<dbj> h = b(dbj::new);
-   public static final dih i = cza.aE;
-   public static final die j = dbi.d;
+public class dbj extends cyc {
+   public static final MapCodec<dbj> b = b(dbj::new);
+   public static final djg c = djf.w;
 
    @Override
    public MapCodec<dbj> a() {
-      return h;
+      return b;
    }
 
-   protected dbj(dhm.d $$0) {
+   public dbj(dio.d $$0) {
       super($$0);
-      this.k(this.E.b().a(i, ib.c).a(j, Boolean.valueOf(true)));
+      this.k(this.E.b().a(a, ia.d).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public String h() {
-      return this.k().a();
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(a, c);
    }
 
    @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return dee.h($$0);
+   public dip a(dip $$0, dcl $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public boolean a(dhn $$0, csi $$1, hx $$2) {
-      return cvh.cq.a($$0, $$1, $$2);
+   public dip a(dip $$0, dav $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
    @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      return cvh.cq.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
+      if ($$0.c(c)) {
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
+      } else {
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
+         $$1.a($$2, this, 2);
+      }
+
+      this.a($$1, $$2, $$0);
    }
 
-   @Nullable
    @Override
-   public dhn a(cnw $$0) {
-      dhn $$1 = cvh.cq.a($$0);
-      return $$1 == null ? null : this.o().a(i, $$1.c(i));
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$0.c(a) == $$1 && !$$0.c(c)) {
+         this.a($$3, $$4);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private void a(csz $$0, hv $$1) {
+      if (!$$0.y_() && !$$0.M().a($$1, this)) {
+         $$0.a($$1, this, 2);
+      }
+   }
+
+   protected void a(csy $$0, hv $$1, dip $$2) {
+      ia $$3 = $$2.c(a);
+      hv $$4 = $$1.a($$3.g());
+      $$0.a($$4, this, $$1);
+      $$0.a($$4, this, $$3);
    }
 
    @Override
-   public void a(dhn $$0, csf $$1, hx $$2, atw $$3) {
-      if ($$0.c(j)) {
-         ib $$4 = $$0.c(i).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(jq.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   public boolean f_(dip $$0) {
+      return true;
+   }
+
+   @Override
+   public int b(dip $$0, cse $$1, hv $$2, ia $$3) {
+      return $$0.b($$1, $$2, $$3);
+   }
+
+   @Override
+   public int a(dip $$0, cse $$1, hv $$2, ia $$3) {
+      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   public void b(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.y_() && $$0.c(c) && !$$1.M().a($$2, this)) {
+            dip $$5 = $$0.a(c, Boolean.valueOf(false));
+            $$1.a($$2, $$5, 18);
+            this.a($$1, $$2, $$5);
+         }
       }
    }
 
    @Override
-   protected boolean a(csf $$0, hx $$1, dhn $$2) {
-      ib $$3 = $$2.c(i).g();
-      return $$0.b($$1.a($$3), $$3);
+   public void a(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.B && $$0.c(c) && $$1.M().a($$2, this)) {
+            this.a($$1, $$2, $$0.a(c, Boolean.valueOf(false)));
+         }
+      }
    }
 
    @Override
-   public int a(dhn $$0, crl $$1, hx $$2, ib $$3) {
-      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
-   }
-
-   @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      return cvh.cq.a($$0, $$1);
-   }
-
-   @Override
-   public dhn a(dhn $$0, dab $$1) {
-      return cvh.cq.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(i, j);
+   public dip a(coq $$0) {
+      return this.o().a(a, $$0.d().g().g());
    }
 }

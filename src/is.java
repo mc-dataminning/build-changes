@@ -1,204 +1,111 @@
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Lifecycle;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.Map.Entry;
-import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface is<T> extends Keyable, il<T> {
-   agl<? extends is<T>> c();
+public interface is extends ih.b {
+   Logger a = LogUtils.getLogger();
+   is.b b = new is.c(Map.of()).d();
 
-   default Codec<T> q() {
-      Codec<T> $$0 = agm.a
-         .flatXmap(
-            $$0x -> Optional.ofNullable(this.a($$0x))
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
-            $$0x -> this.c((T)$$0x)
-                  .map(agl::a)
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
-         );
-      Codec<T> $$1 = asy.a($$0x -> this.c((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
-      return asy.a(asy.b($$0, $$1), this::e, this::e);
-   }
-
-   default Codec<ig<T>> r() {
-      Codec<ig<T>> $$0 = agm.a
-         .flatXmap(
-            $$0x -> this.b(agl.a(this.c(), $$0x))
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
-            $$0x -> $$0x.e()
-                  .map(agl::a)
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
-         );
-      return asy.a($$0, (Function<ig<T>, Lifecycle>)($$0x -> this.e((T)$$0x.a())), $$0x -> this.e((T)$$0x.a()));
-   }
-
-   default <U> Stream<U> keys(DynamicOps<U> $$0) {
-      return this.e().stream().map($$1 -> (U)$$0.createString($$1.toString()));
-   }
-
-   @Nullable
-   agm b(T var1);
-
-   Optional<agl<T>> c(T var1);
+   <E> Optional<ir<E>> c(ags<? extends ir<? extends E>> var1);
 
    @Override
-   int a(@Nullable T var1);
-
-   @Nullable
-   T a(@Nullable agl<T> var1);
-
-   @Nullable
-   T a(@Nullable agm var1);
-
-   Lifecycle e(T var1);
-
-   Lifecycle d();
-
-   default Optional<T> b(@Nullable agm $$0) {
-      return Optional.ofNullable(this.a($$0));
+   default <T> Optional<ih.c<T>> a(ags<? extends ir<? extends T>> $$0) {
+      return this.c($$0).map(ir::p);
    }
 
-   default Optional<T> d(@Nullable agl<T> $$0) {
-      return Optional.ofNullable(this.a($$0));
+   default <E> ir<E> d(ags<? extends ir<? extends E>> $$0) {
+      return this.c($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
    }
 
-   default T e(agl<T> $$0) {
-      T $$1 = this.a($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Missing key in " + this.c() + ": " + $$0);
-      } else {
-         return $$1;
+   Stream<is.d<?>> c();
+
+   @Override
+   default Stream<ags<? extends ir<?>>> a() {
+      return this.c().map(is.d::a);
+   }
+
+   static is.b a(final ir<? extends ir<?>> $$0) {
+      return new is.b() {
+         @Override
+         public <T> Optional<ir<T>> c(ags<? extends ir<? extends T>> $$0x) {
+            ir<ir<T>> $$1 = (ir<ir<T>>)$$0;
+            return $$1.d((ags<ir<T>>)$$0);
+         }
+
+         @Override
+         public Stream<is.d<?>> c() {
+            return $$0.g().stream().map(is.d::a);
+         }
+
+         @Override
+         public is.b d() {
+            return this;
+         }
+      };
+   }
+
+   default is.b d() {
+      class a extends is.c implements is.b {
+         protected a(Stream<is.d<?>> $$1) {
+            super($$1);
+         }
+      }
+
+      return new a(this.c().map(is.d::c));
+   }
+
+   default Lifecycle e() {
+      return this.c().map($$0 -> $$0.b.d()).reduce(Lifecycle.stable(), Lifecycle::add);
+   }
+
+   public interface b extends is {
+   }
+
+   public static class c implements is {
+      private final Map<? extends ags<? extends ir<?>>, ? extends ir<?>> c;
+
+      public c(List<? extends ir<?>> $$0) {
+         this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(ir::c, $$0x -> $$0x));
+      }
+
+      public c(Map<? extends ags<? extends ir<?>>, ? extends ir<?>> $$0) {
+         this.c = Map.copyOf($$0);
+      }
+
+      public c(Stream<is.d<?>> $$0) {
+         this.c = $$0.collect(ImmutableMap.toImmutableMap(is.d::a, is.d::b));
+      }
+
+      @Override
+      public <E> Optional<ir<E>> c(ags<? extends ir<? extends E>> $$0) {
+         return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
+      }
+
+      @Override
+      public Stream<is.d<?>> c() {
+         return this.c.entrySet().stream().map(is.d::a);
       }
    }
 
-   Set<agm> e();
+   public static record d<T>(ags<? extends ir<T>> a, ir<T> b) {
 
-   Set<Entry<agl<T>, T>> g();
+      private static <T, R extends ir<? extends T>> is.d<T> a(Entry<? extends ags<? extends ir<?>>, R> $$0) {
+         return a((ags<? extends ir<?>>)$$0.getKey(), $$0.getValue());
+      }
 
-   Set<agl<T>> f();
+      private static <T> is.d<T> a(ags<? extends ir<?>> $$0, ir<?> $$1) {
+         return new is.d<>((ags<? extends ir<T>>)$$0, (ir<T>)$$1);
+      }
 
-   Optional<ig.c<T>> a(atw var1);
-
-   default Stream<T> s() {
-      return StreamSupport.stream(this.spliterator(), false);
-   }
-
-   boolean c(agm var1);
-
-   boolean c(agl<T> var1);
-
-   static <T> T a(is<? super T> $$0, String $$1, T $$2) {
-      return a($$0, new agm($$1), $$2);
-   }
-
-   static <V, T extends V> T a(is<V> $$0, agm $$1, T $$2) {
-      return a($$0, agl.a($$0.c(), $$1), $$2);
-   }
-
-   static <V, T extends V> T a(is<V> $$0, agl<V> $$1, T $$2) {
-      ((jb)$$0).a($$1, (V)$$2, Lifecycle.stable());
-      return $$2;
-   }
-
-   static <T> ig.c<T> b(is<T> $$0, agl<T> $$1, T $$2) {
-      return ((jb)$$0).a($$1, $$2, Lifecycle.stable());
-   }
-
-   static <T> ig.c<T> b(is<T> $$0, agm $$1, T $$2) {
-      return b($$0, agl.a($$0.c(), $$1), $$2);
-   }
-
-   is<T> l();
-
-   ig.c<T> f(T var1);
-
-   Optional<ig.c<T>> c(int var1);
-
-   Optional<ig.c<T>> b(agl<T> var1);
-
-   ig<T> d(T var1);
-
-   default ig.c<T> f(agl<T> $$0) {
-      return this.b($$0).orElseThrow(() -> new IllegalStateException("Missing key in " + this.c() + ": " + $$0));
-   }
-
-   Stream<ig.c<T>> h();
-
-   Optional<ik.c<T>> b(arz<T> var1);
-
-   default Iterable<ig<T>> c(arz<T> $$0) {
-      return (Iterable<ig<T>>)DataFixUtils.orElse(this.b($$0), List.of());
-   }
-
-   ik.c<T> a(arz<T> var1);
-
-   Stream<Pair<arz<T>, ik.c<T>>> i();
-
-   Stream<arz<T>> j();
-
-   void m();
-
-   void a(Map<arz<T>, List<ig<T>>> var1);
-
-   default il<ig<T>> t() {
-      return new il<ig<T>>() {
-         public int a(ig<T> $$0) {
-            return is.this.a($$0.a());
-         }
-
-         @Nullable
-         public ig<T> c(int $$0) {
-            return (ig<T>)is.this.c($$0).orElse(null);
-         }
-
-         @Override
-         public int b() {
-            return is.this.b();
-         }
-
-         @Override
-         public Iterator<ig<T>> iterator() {
-            return is.this.h().map($$0 -> (ig<T>)$$0).iterator();
-         }
-      };
-   }
-
-   ij<T> o();
-
-   ii.c<T> p();
-
-   default ii.c<T> u() {
-      return new ii.c.a<T>() {
-         @Override
-         protected ii.c<T> a() {
-            return is.this.p();
-         }
-
-         @Override
-         public Optional<ik.c<T>> a(arz<T> $$0) {
-            return Optional.of(this.b($$0));
-         }
-
-         @Override
-         public ik.c<T> b(arz<T> $$0) {
-            return is.this.a($$0);
-         }
-      };
+      private is.d<T> c() {
+         return new is.d<>(this.a, this.b.l());
+      }
    }
 }

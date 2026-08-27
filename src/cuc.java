@@ -1,24 +1,10 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class cuc extends cvf {
-   public static final MapCodec<cuc> a = b(cuc::new);
-
-   @Override
-   public MapCodec<cuc> a() {
-      return a;
-   }
-
-   public cuc(dhm.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dbk b_(dhn $$0) {
-      return dbk.a;
-   }
-
-   @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return ekp.a();
+public class cuc {
+   public static Codec<? extends cub> a(ir<Codec<? extends cub>> $$0) {
+      ir.a($$0, "fixed", cui.b);
+      ir.a($$0, "multi_noise", cuk.c);
+      ir.a($$0, "checkerboard", cuf.b);
+      return ir.a($$0, "the_end", cuo.b);
    }
 }

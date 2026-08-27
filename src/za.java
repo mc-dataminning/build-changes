@@ -1,24 +1,32 @@
-public class za implements wo<yh> {
-   private final int a;
+public class za implements wu<yo> {
+   private final bji a;
+   private final boolean b;
 
-   public za(int $$0) {
+   public za(bji $$0, boolean $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public za(ty $$0) {
-      this.a = $$0.readUnsignedByte();
+   public za(ue $$0) {
+      this.a = bji.a($$0.readUnsignedByte());
+      this.b = $$0.readBoolean();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.k(this.a);
+   public void a(ue $$0) {
+      $$0.k(this.a.a());
+      $$0.a(this.b);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public boolean a() {
+      return this.b;
+   }
+
+   public bji d() {
       return this.a;
    }
 }

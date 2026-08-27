@@ -1,65 +1,39 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
-public class clk {
-   private final Map<clj, clk.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(clj $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+public class clk extends cmc {
+   public clk(cmc.a $$0) {
+      super($$0);
    }
 
-   public float a(clj $$0, float $$1) {
-      clk.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return atq.a($$4 / $$3, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<clj, clk.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<clj, clk.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
-            }
+   @Override
+   public bjl a(cos $$0) {
+      csy $$1 = $$0.q();
+      hv $$2 = $$0.a();
+      dip $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!cwn.h($$3) && !cwo.g($$3) && !cwp.g($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (cvm.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, cvm.a($$1, $$2));
+            $$1.a($$0.o(), dmz.i, $$2);
+            $$4 = true;
          }
+      } else {
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.a(djf.r, Boolean.valueOf(true)));
+         $$1.a($$0.o(), dmz.c, $$2);
+         $$4 = true;
+      }
+
+      if ($$4) {
+         $$0.n().h(1);
+         return bjl.a($$1.B);
+      } else {
+         return bjl.e;
       }
    }
 
-   public void a(clj $$0, int $$1) {
-      this.a.put($$0, new clk.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void b(clj $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(clj $$0, int $$1) {
-   }
-
-   protected void c(clj $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   private void a(csy $$0, hv $$1) {
+      auf $$2 = $$0.F_();
+      $$0.a(null, $$1, arc.ig, ard.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 }

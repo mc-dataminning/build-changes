@@ -1,66 +1,93 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Reference2IntMap;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class im<T> implements il<T> {
-   private int b;
-   private final Reference2IntMap<T> c;
-   private final List<T> d;
+public class im<T> {
+   private final List<T> a;
+   private final List<is.b> b;
+   private final is.b c;
 
-   public im() {
-      this(512);
+   public im(List<T> $$0) {
+      this($$0, ac.a(() -> {
+         is.b[] $$1 = new is.b[$$0.size()];
+         Arrays.fill($$1, is.b);
+         return Arrays.asList($$1);
+      }));
    }
 
-   public im(int $$0) {
-      this.d = Lists.newArrayListWithExpectedSize($$0);
-      this.c = new Reference2IntOpenHashMap($$0);
-      this.c.defaultReturnValue(-1);
+   private im(List<T> $$0, List<is.b> $$1) {
+      this.a = List.copyOf($$0);
+      this.b = List.copyOf($$1);
+      this.c = new is.c(a($$1.stream())).d();
    }
 
-   public void a(T $$0, int $$1) {
-      this.c.put($$0, $$1);
-
-      while (this.d.size() <= $$1) {
-         this.d.add(null);
+   private int d(T $$0) {
+      int $$1 = this.a.indexOf($$0);
+      if ($$1 == -1) {
+         throw new IllegalStateException("Can't find " + $$0 + " inside " + this.a);
+      } else {
+         return $$1;
       }
+   }
 
-      this.d.set($$1, $$0);
-      if (this.b <= $$1) {
-         this.b = $$1 + 1;
+   public is.b a(T $$0) {
+      int $$1 = this.d($$0);
+      return this.b.get($$1);
+   }
+
+   public is.b b(T $$0) {
+      int $$1 = this.d($$0);
+      return this.a(0, $$1);
+   }
+
+   public is.b c(T $$0) {
+      int $$1 = this.d($$0);
+      return this.a($$1, this.b.size());
+   }
+
+   private is.b a(int $$0, int $$1) {
+      return new is.c(a(this.b.subList($$0, $$1).stream())).d();
+   }
+
+   public im<T> a(T $$0, is.b... $$1) {
+      return this.a($$0, Arrays.asList($$1));
+   }
+
+   public im<T> a(T $$0, List<is.b> $$1) {
+      int $$2 = this.d($$0);
+      if ($$1.size() > this.b.size() - $$2) {
+         throw new IllegalStateException("Too many values to replace");
+      } else {
+         List<is.b> $$3 = new ArrayList<>();
+
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(this.b.get($$4));
+         }
+
+         $$3.addAll($$1);
+
+         while ($$3.size() < this.b.size()) {
+            $$3.add(is.b);
+         }
+
+         return new im<>(this.a, $$3);
       }
    }
 
-   public void b(T $$0) {
-      this.a($$0, this.b);
+   public is.b a() {
+      return this.c;
    }
 
-   @Override
-   public int a(T $$0) {
-      return this.c.getInt($$0);
-   }
-
-   @Nullable
-   @Override
-   public final T a(int $$0) {
-      return $$0 >= 0 && $$0 < this.d.size() ? this.d.get($$0) : null;
-   }
-
-   @Override
-   public Iterator<T> iterator() {
-      return Iterators.filter(this.d.iterator(), Objects::nonNull);
-   }
-
-   public boolean c(int $$0) {
-      return this.a($$0) != null;
-   }
-
-   @Override
-   public int b() {
-      return this.c.size();
+   private static Map<ags<? extends ir<?>>, ir<?>> a(Stream<? extends is> $$0) {
+      Map<ags<? extends ir<?>>, ir<?>> $$1 = new HashMap<>();
+      $$0.forEach($$1x -> $$1x.c().forEach($$1xx -> {
+            if ($$1.put($$1xx.a(), $$1xx.b()) != null) {
+               throw new IllegalStateException("Duplicated registry " + $$1xx.a());
+            }
+         }));
+      return $$1;
    }
 }

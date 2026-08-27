@@ -1,83 +1,89 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class ffs extends faz {
-   private static final int a = 310;
-   private final eyo b = new eyo(this);
-   private final faz c;
-   private final aow k;
-   private final Consumer<aow> l;
-   private final Object2BooleanMap<aot> m = new Object2BooleanLinkedOpenHashMap();
+public class ffs extends exn {
+   private static final exu c = new exu(new agt("recipe_book/tab"), new agt("recipe_book/tab_selected"));
+   private final eut d;
+   private static final float e = 15.0F;
+   private float l;
 
-   public ffs(faz $$0, aow $$1, Consumer<aow> $$2) {
-      super(uv.c("experiments_screen.title"));
-      this.c = $$0;
-      this.k = $$1;
-      this.l = $$2;
+   public ffs(eut $$0) {
+      super(0, 0, 35, 27, false);
+      this.d = $$0;
+      this.a(c);
+   }
 
-      for (aot $$3 : $$1.c()) {
-         if ($$3.j() == aox.d) {
-            this.m.put($$3, $$1.f().contains($$3));
+   public void a(euk $$0) {
+      etx $$1 = $$0.s.m();
+      List<ffu> $$2 = $$1.a(this.d);
+      if ($$0.s.bS instanceof cix) {
+         for (ffu $$3 : $$2) {
+            for (cpn<?> $$4 : $$3.a($$1.a((cix<?>)$$0.s.bS))) {
+               if ($$1.d($$4)) {
+                  this.l = 15.0F;
+                  return;
+               }
+            }
          }
       }
    }
 
    @Override
-   protected void aQ_() {
-      this.b.a(new ewl(uv.c("selectWorld.experiments"), this.i));
-      eys $$0 = this.b.c(eys.d());
-      $$0.a(new evy(uv.c("selectWorld.experiments.info").a(n.m), this.i).j(310), $$0x -> $$0x.e(15));
-      ffw.a $$1 = ffw.a(310).a(2, true).b(4);
-      this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.b()));
-      $$1.a($$0::a);
-      eyn.b $$2 = this.b.b(new eyn().a(10)).d(2);
-      $$2.a(eve.a(uu.d, $$0x -> this.l()).a());
-      $$2.a(eve.a(uu.e, $$0x -> this.aG_()).a());
-      this.b.a($$1x -> {
-         evc var10000 = this.d($$1x);
-      });
-      this.c();
-   }
-
-   private static uv a(aot $$0) {
-      String $$1 = "dataPack." + $$0.f() + ".name";
-      return (uv)(gdf.a($$1) ? uv.c($$1) : $$0.a());
-   }
-
-   @Override
-   public void aG_() {
-      this.f.a(this.c);
-   }
-
-   private void l() {
-      List<aot> $$0 = new ArrayList<>(this.k.f());
-      List<aot> $$1 = new ArrayList<>();
-      this.m.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         if (this.l > 0.0F) {
+            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.l / 15.0F * (float) Math.PI));
+            $$0.c().a();
+            $$0.c().a((float)(this.p() + 8), (float)(this.r() + 12), 0.0F);
+            $$0.c().b(1.0F, $$4, 1.0F);
+            $$0.c().a((float)(-(this.p() + 8)), (float)(-(this.r() + 12)), 0.0F);
          }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.k.a($$0.stream().map(aot::f).toList());
-      this.l.accept(this.k);
+
+         euk $$5 = euk.N();
+         RenderSystem.disableDepthTest();
+         agt $$6 = this.a.a(true, this.b);
+         int $$7 = this.p();
+         if (this.b) {
+            $$7 -= 2;
+         }
+
+         $$0.a($$6, $$7, this.r(), this.f, this.g);
+         RenderSystem.enableDepthTest();
+         this.a($$0, $$5.ap());
+         if (this.l > 0.0F) {
+            $$0.c().b();
+            this.l -= $$3;
+         }
+      }
    }
 
-   @Override
-   protected void c() {
-      this.b.a();
+   private void a(evw $$0, fym $$1) {
+      List<cmh> $$2 = this.d.a();
+      int $$3 = this.b ? -2 : 0;
+      if ($$2.size() == 1) {
+         $$0.b($$2.get(0), this.p() + 9 + $$3, this.r() + 5);
+      } else if ($$2.size() == 2) {
+         $$0.b($$2.get(0), this.p() + 3 + $$3, this.r() + 5);
+         $$0.b($$2.get(1), this.p() + 14 + $$3, this.r() + 5);
+      }
    }
 
-   @Override
-   public void b(eut $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      $$0.a(0.125F, 0.125F, 0.125F, 1.0F);
-      int $$4 = 32;
-      $$0.a(d, 0, this.b.c(), 0.0F, 0.0F, this.g, this.h - this.b.c() - this.b.b(), 32, 32);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public eut b() {
+      return this.d;
+   }
+
+   public boolean a(etx $$0) {
+      List<ffu> $$1 = $$0.a(this.d);
+      this.j = false;
+      if ($$1 != null) {
+         for (ffu $$2 : $$1) {
+            if ($$2.b() && $$2.d()) {
+               this.j = true;
+               break;
+            }
+         }
+      }
+
+      return this.j;
    }
 }

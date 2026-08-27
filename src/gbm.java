@@ -1,77 +1,45 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gbm extends gbz<bxs, fja<bxs>> {
+   private final fse a;
 
-public class gbm extends gbk implements gbl {
-   private static final Logger e = LogUtils.getLogger();
-   @Nullable
-   private enc f;
+   public gbm(fzj<bxs, fja<bxs>> $$0, fse $$1) {
+      super($$0);
+      this.a = $$1;
+   }
 
-   public gbm(enc $$0) {
-      this.f = $$0;
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-            this.d();
-         });
+   public void a(epd $$0, fsi $$1, int $$2, bxs $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fD();
+      boolean $$11 = $$3.o_();
+      $$0.a();
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
+      }
+
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.E($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.o_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
+         }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
       } else {
-         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-         this.d();
-      }
-   }
-
-   public gbm(int $$0, int $$1, boolean $$2) {
-      RenderSystem.assertOnGameThreadOrInit();
-      this.f = new enc($$0, $$1, $$2);
-      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-   }
-
-   @Override
-   public void a(apl $$0) {
-   }
-
-   @Override
-   public void d() {
-      if (this.f != null) {
-         this.c();
-         this.f.a(0, 0, 0, false);
-      } else {
-         e.warn("Trying to upload disposed texture {}", this.a());
-      }
-   }
-
-   @Nullable
-   public enc e() {
-      return this.f;
-   }
-
-   public void a(enc $$0) {
-      if (this.f != null) {
-         this.f.close();
+         $$0.a(0.06F, 0.27F, -0.5F);
       }
 
-      this.f = $$0;
-   }
-
-   @Override
-   public void close() {
-      if (this.f != null) {
-         this.f.close();
-         this.b();
-         this.f = null;
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
       }
-   }
 
-   @Override
-   public void a(agm $$0, Path $$1) throws IOException {
-      if (this.f != null) {
-         String $$2 = $$0.c() + ".png";
-         Path $$3 = $$1.resolve($$2);
-         this.f.a($$3);
-      }
+      cmh $$14 = $$3.c(blk.a);
+      this.a.a($$3, $$14, cme.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

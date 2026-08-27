@@ -1,167 +1,66 @@
 import com.mojang.serialization.Codec;
 
-public class dqk extends dqa<dqj> {
-   private static final float a = 0.06F;
-
-   public dqk(Codec<dqj> $$0) {
+public class dqk extends drc<dsx> {
+   public dqk(Codec<dsx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dqc<dqj> $$0) {
-      csz $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      atw $$3 = $$0.d();
-      djk $$4 = $$0.c();
-      dqj $$5 = $$0.f();
-      cvf $$6 = $$5.b.b();
-      hx $$7 = null;
-      dhn $$8 = $$1.a_($$2.d());
-      if ($$8.a($$6)) {
-         $$7 = $$2;
+   public boolean a(dre<dsx> $$0) {
+      ctt $$1 = $$0.b();
+      dsx $$2 = $$0.f();
+      auf $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
+
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
       }
 
-      if ($$7 == null) {
+      if ($$6 == 0) {
          return false;
       } else {
-         int $$9 = atq.a($$3, 4, 13);
-         if ($$3.a(12) == 0) {
-            $$9 *= 2;
+         hv.a $$8 = $$0.e().j();
+         hv.a $$9 = $$8.j().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
          }
 
-         if (!$$5.g) {
-            int $$10 = $$4.d();
-            if ($$7.v() + $$9 + 1 >= $$10) {
-               return false;
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               dsx.a $$13 = $$2.a().get($$11);
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
+               }
             }
          }
 
-         boolean $$11 = !$$5.g && $$3.i() < 0.06F;
-         $$1.a($$2, cvh.a.o(), 4);
-         this.a($$1, $$3, $$5, $$7, $$9, $$11);
-         this.b($$1, $$3, $$5, $$7, $$9, $$11);
          return true;
       }
    }
 
-   private static boolean a(csz $$0, hx $$1, dqj $$2, boolean $$3) {
-      if ($$0.a($$1, dhm.a::r)) {
-         return true;
-      } else {
-         return $$3 ? $$2.f.test($$0, $$1) : false;
-      }
-   }
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
 
-   private void a(csz $$0, atw $$1, dqj $$2, hx $$3, int $$4, boolean $$5) {
-      hx.a $$6 = new hx.a();
-      dhn $$7 = $$2.c;
-      int $$8 = $$5 ? 1 : 0;
-
-      for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-            boolean $$11 = $$5 && atq.a($$9) == $$8 && atq.a($$10) == $$8;
-
-            for (int $$12 = 0; $$12 < $$4; $$12++) {
-               $$6.a($$3, $$9, $$12, $$10);
-               if (a($$0, $$6, $$2, true)) {
-                  if ($$2.g) {
-                     if (!$$0.a_($$6.d()).i()) {
-                        $$0.b($$6, true);
-                     }
-
-                     $$0.a($$6, $$7, 3);
-                  } else if ($$11) {
-                     if ($$1.i() < 0.1F) {
-                        this.a($$0, $$6, $$7);
-                     }
-                  } else {
-                     this.a($$0, $$6, $$7);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void b(csz $$0, atw $$1, dqj $$2, hx $$3, int $$4, boolean $$5) {
-      hx.a $$6 = new hx.a();
-      boolean $$7 = $$2.d.a(cvh.kK);
-      int $$8 = Math.min($$1.a(1 + $$4 / 3) + 5, $$4);
-      int $$9 = $$4 - $$8;
-
-      for (int $$10 = $$9; $$10 <= $$4; $$10++) {
-         int $$11 = $$10 < $$4 - $$1.a(3) ? 2 : 1;
-         if ($$8 > 8 && $$10 < $$9 + 4) {
-            $$11 = 3;
-         }
-
-         if ($$5) {
-            $$11++;
-         }
-
-         for (int $$12 = -$$11; $$12 <= $$11; $$12++) {
-            for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
-               boolean $$14 = $$12 == -$$11 || $$12 == $$11;
-               boolean $$15 = $$13 == -$$11 || $$13 == $$11;
-               boolean $$16 = !$$14 && !$$15 && $$10 != $$4;
-               boolean $$17 = $$14 && $$15;
-               boolean $$18 = $$10 < $$9 + 3;
-               $$6.a($$3, $$12, $$10, $$13);
-               if (a($$0, $$6, $$2, false)) {
-                  if ($$2.g && !$$0.a_($$6.d()).i()) {
-                     $$0.b($$6, true);
-                  }
-
-                  if ($$18) {
-                     if (!$$16) {
-                        this.a($$0, $$1, $$6, $$2.d, $$7);
-                     }
-                  } else if ($$16) {
-                     this.a($$0, $$1, $$2, $$6, 0.1F, 0.2F, $$7 ? 0.1F : 0.0F);
-                  } else if ($$17) {
-                     this.a($$0, $$1, $$2, $$6, 0.01F, 0.7F, $$7 ? 0.083F : 0.0F);
-                  } else {
-                     this.a($$0, $$1, $$2, $$6, 5.0E-4F, 0.98F, $$7 ? 0.07F : 0.0F);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void a(csg $$0, atw $$1, dqj $$2, hx.a $$3, float $$4, float $$5, float $$6) {
-      if ($$1.i() < $$4) {
-         this.a($$0, $$3, $$2.e);
-      } else if ($$1.i() < $$5) {
-         this.a($$0, $$3, $$2.d);
-         if ($$1.i() < $$6) {
-            a($$3, $$0, $$1);
-         }
-      }
-   }
-
-   private void a(csg $$0, atw $$1, hx $$2, dhn $$3, boolean $$4) {
-      if ($$0.a_($$2.d()).a($$3.b())) {
-         this.a($$0, $$2, $$3);
-      } else if ((double)$$1.i() < 0.15) {
-         this.a($$0, $$2, $$3);
-         if ($$4 && $$1.a(11) == 0) {
-            a($$2, $$0, $$1);
-         }
-      }
-   }
-
-   private static void a(hx $$0, csg $$1, atw $$2) {
-      hx.a $$3 = $$0.j().c(ib.a);
-      if ($$1.t($$3)) {
-         int $$4 = atq.a($$2, 1, 5);
-         if ($$2.a(7) == 0) {
-            $$4 *= 2;
-         }
-
-         int $$5 = 23;
-         int $$6 = 25;
-         drt.a($$1, $$2, $$3, $$4, 23, 25);
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
       }
    }
 }

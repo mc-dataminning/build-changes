@@ -1,5 +1,7 @@
-public class rl extends RuntimeException {
-   public rl(String $$0) {
-      super($$0);
-   }
+public interface rl {
+   void a(rk var1);
+
+   void b(rk var1);
+
+   void c(rk var1);
 }

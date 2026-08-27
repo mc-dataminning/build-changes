@@ -1,36 +1,28 @@
-public class bsl extends bsg {
-   private final bxt a;
-   private amj b;
-   private boolean c;
+import java.util.EnumSet;
 
-   public bsl(bxt $$0) {
+public class bsl extends bsr {
+   private final blx a;
+
+   public bsl(blx $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(bsr.a.c));
+      $$0.N().a(true);
    }
 
    @Override
    public boolean a() {
-      amj $$0 = (amj)this.a.R_();
-      boolean $$1 = $$0 != null && !$$0.P_() && !$$0.fU().b && !$$0.aZ() && !$$0.aA;
-      return !this.a.gf() && $$1 && this.a.go();
+      return this.a.aZ() && this.a.b(arw.a) > this.a.df() || this.a.bn();
    }
 
    @Override
-   public boolean S_() {
-      return !this.c;
-   }
-
-   @Override
-   public void c() {
-      this.b = (amj)this.a.R_();
-      this.c = false;
+   public boolean T_() {
+      return true;
    }
 
    @Override
    public void e() {
-      if (!this.c && !this.a.A() && !this.a.fT()) {
-         if (this.a.cH().c(this.b.cH())) {
-            this.c = this.a.b(this.b);
-         }
+      if (this.a.eg().i() < 0.8F) {
+         this.a.M().a();
       }
    }
 }

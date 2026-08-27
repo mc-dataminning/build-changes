@@ -1,59 +1,159 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.sun.jna.Memory;
+import com.sun.jna.Native;
+import com.sun.jna.Platform;
+import com.sun.jna.Pointer;
+import com.sun.jna.platform.win32.Kernel32;
+import com.sun.jna.platform.win32.Kernel32Util;
+import com.sun.jna.platform.win32.Version;
+import com.sun.jna.platform.win32.Win32Exception;
+import com.sun.jna.platform.win32.Tlhelp32.MODULEENTRY32W;
+import com.sun.jna.ptr.IntByReference;
+import com.sun.jna.ptr.PointerByReference;
+import java.nio.charset.StandardCharsets;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+
 public class atz {
-   private final int a;
-   private final int b;
-   private final float c;
-   private final float d;
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 65535;
+   private static final int c = 1033;
+   private static final int d = -65536;
+   private static final int e = 78643200;
 
-   public atz(int $$0) {
-      if ($$0 < 2) {
-         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-      } else if ($$0 > 30) {
-         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
+   public static List<atz.a> a() {
+      if (!Platform.isWindows()) {
+         return ImmutableList.of();
       } else {
-         int $$1 = 1 << $$0;
-         this.a = $$1 - 1;
-         this.b = $$0;
-         this.c = (float)$$1 / 360.0F;
-         this.d = 360.0F / (float)$$1;
+         int $$0 = Kernel32.INSTANCE.GetCurrentProcessId();
+         Builder<atz.a> $$1 = ImmutableList.builder();
+
+         for (MODULEENTRY32W $$3 : Kernel32Util.getModules($$0)) {
+            String $$4 = $$3.szModule();
+            Optional<atz.b> $$5 = a($$3.szExePath());
+            $$1.add(new atz.a($$4, $$5));
+         }
+
+         return $$1.build();
       }
    }
 
-   public boolean a(int $$0, int $$1) {
-      int $$2 = this.a() >> 1;
-      return ($$0 & $$2) == ($$1 & $$2);
-   }
-
-   public int a(ib $$0) {
-      if ($$0.o().b()) {
-         return 0;
-      } else {
-         int $$1 = $$0.e();
-         return $$1 << this.b - 2;
+   private static Optional<atz.b> a(String $$0) {
+      try {
+         IntByReference $$1 = new IntByReference();
+         int $$2 = Version.INSTANCE.GetFileVersionInfoSize($$0, $$1);
+         if ($$2 == 0) {
+            int $$3 = Native.getLastError();
+            if ($$3 != 1813 && $$3 != 1812) {
+               throw new Win32Exception($$3);
+            } else {
+               return Optional.empty();
+            }
+         } else {
+            Pointer $$4 = new Memory((long)$$2);
+            if (!Version.INSTANCE.GetFileVersionInfo($$0, 0, $$2, $$4)) {
+               throw new Win32Exception(Native.getLastError());
+            } else {
+               IntByReference $$5 = new IntByReference();
+               Pointer $$6 = a($$4, "\\VarFileInfo\\Translation", $$5);
+               int[] $$7 = $$6.getIntArray(0L, $$5.getValue() / 4);
+               OptionalInt $$8 = a($$7);
+               if ($$8.isEmpty()) {
+                  return Optional.empty();
+               } else {
+                  int $$9 = $$8.getAsInt();
+                  int $$10 = $$9 & 65535;
+                  int $$11 = ($$9 & -65536) >> 16;
+                  String $$12 = b($$4, a("FileDescription", $$10, $$11), $$5);
+                  String $$13 = b($$4, a("CompanyName", $$10, $$11), $$5);
+                  String $$14 = b($$4, a("FileVersion", $$10, $$11), $$5);
+                  return Optional.of(new atz.b($$12, $$14, $$13));
+               }
+            }
+         }
+      } catch (Exception var14) {
+         a.info("Failed to find module info for {}", $$0, var14);
+         return Optional.empty();
       }
    }
 
-   public int a(float $$0) {
-      return Math.round($$0 * this.c);
+   private static String a(String $$0, int $$1, int $$2) {
+      return String.format(Locale.ROOT, "\\StringFileInfo\\%04x%04x\\%s", $$1, $$2, $$0);
    }
 
-   public int b(float $$0) {
-      return this.c(this.a($$0));
+   private static OptionalInt a(int[] $$0) {
+      OptionalInt $$1 = OptionalInt.empty();
+
+      for (int $$2 : $$0) {
+         if (($$2 & -65536) == 78643200 && ($$2 & 65535) == 1033) {
+            return OptionalInt.of($$2);
+         }
+
+         $$1 = OptionalInt.of($$2);
+      }
+
+      return $$1;
    }
 
-   public float a(int $$0) {
-      return (float)$$0 * this.d;
+   private static Pointer a(Pointer $$0, String $$1, IntByReference $$2) {
+      PointerByReference $$3 = new PointerByReference();
+      if (!Version.INSTANCE.VerQueryValue($$0, $$1, $$3, $$2)) {
+         throw new UnsupportedOperationException("Can't get version value " + $$1);
+      } else {
+         return $$3.getValue();
+      }
    }
 
-   public float b(int $$0) {
-      float $$1 = this.a(this.c($$0));
-      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
+   private static String b(Pointer $$0, String $$1, IntByReference $$2) {
+      try {
+         Pointer $$3 = a($$0, $$1, $$2);
+         byte[] $$4 = $$3.getByteArray(0L, ($$2.getValue() - 1) * 2);
+         return new String($$4, StandardCharsets.UTF_16LE);
+      } catch (Exception var5) {
+         return "";
+      }
    }
 
-   public int c(int $$0) {
-      return $$0 & this.a;
+   public static void a(p $$0) {
+      $$0.a("Modules", () -> a().stream().sorted(Comparator.comparing($$0x -> $$0x.a)).map($$0x -> "\n\t\t" + $$0x).collect(Collectors.joining()));
    }
 
-   public int a() {
-      return this.a;
+   public static class a {
+      public final String a;
+      public final Optional<atz.b> b;
+
+      public a(String $$0, Optional<atz.b> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b.<String>map($$0 -> this.a + ":" + $$0).orElse(this.a);
+      }
+   }
+
+   public static class b {
+      public final String a;
+      public final String b;
+      public final String c;
+
+      public b(String $$0, String $$1, String $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.a + ":" + this.b + ":" + this.c;
+      }
    }
 }

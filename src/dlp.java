@@ -1,409 +1,225 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.nio.file.Path;
+import java.util.BitSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dlp<T extends dle> implements AutoCloseable {
-   static final Logger a = LogUtils.getLogger();
-   final Set<UUID> b = Sets.newHashSet();
-   final dlm<T> c;
-   private final dlh<T> d;
-   private final dlg<T> e;
-   final dlj<T> f;
-   private final dln<T> g;
-   private final Long2ObjectMap<dlr> h = new Long2ObjectOpenHashMap();
-   private final Long2ObjectMap<dlp.b> i = new Long2ObjectOpenHashMap();
-   private final LongSet j = new LongOpenHashSet();
-   private final Queue<dlc<T>> k = Queues.newConcurrentLinkedQueue();
+public class dlp implements dll, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final AtomicBoolean b = new AtomicBoolean();
+   private final bie<big.b> c;
+   private final dls d;
+   private final Map<csf, dlp.a> e = Maps.newLinkedHashMap();
+   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
+   private static final int g = 1024;
 
-   public dlp(Class<T> $$0, dlm<T> $$1, dlh<T> $$2) {
-      this.e = new dlg<>();
-      this.f = new dlj<>($$0, this.h);
-      this.h.defaultReturnValue(dlr.a);
-      this.i.defaultReturnValue(dlp.b.a);
-      this.c = $$1;
-      this.d = $$2;
-      this.g = new dlo<>(this.e, this.f);
+   protected dlp(Path $$0, boolean $$1, String $$2) {
+      this.d = new dls($$0, $$1);
+      this.c = new bie<>(new big.a(dlp.b.values().length), ac.g(), "IOWorker-" + $$2);
    }
 
-   void a(long $$0, dli<T> $$1) {
-      if ($$1.a()) {
-         this.f.e($$0);
+   public boolean a(csf $$0, int $$1) {
+      csf $$2 = new csf($$0.e - $$1, $$0.f - $$1);
+      csf $$3 = new csf($$0.e + $$1, $$0.f + $$1);
+
+      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
+         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
+            BitSet $$6 = this.a($$4, $$5).join();
+            if (!$$6.isEmpty()) {
+               csf $$7 = csf.a($$4, $$5);
+               int $$8 = Math.max($$2.e - $$7.e, 0);
+               int $$9 = Math.max($$2.f - $$7.f, 0);
+               int $$10 = Math.min($$3.e - $$7.e, 31);
+               int $$11 = Math.min($$3.f - $$7.f, 31);
+
+               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
+                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
+                     int $$14 = $$13 * 32 + $$12;
+                     if ($$6.get($$14)) {
+                        return true;
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private CompletableFuture<BitSet> a(int $$0, int $$1) {
+      long $$2 = csf.c($$0, $$1);
+      synchronized (this.f) {
+         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
+         if ($$3 == null) {
+            $$3 = this.b($$0, $$1);
+            this.f.putAndMoveToFirst($$2, $$3);
+            if (this.f.size() > 1024) {
+               this.f.removeLast();
+            }
+         }
+
+         return $$3;
       }
    }
 
-   private boolean b(T $$0) {
-      if (!this.b.add($$0.cw())) {
-         a.warn("UUID of added entity already exists: {}", $$0);
-         return false;
-      } else {
-         return true;
-      }
-   }
+   private CompletableFuture<BitSet> b(int $$0, int $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         csf $$2 = csf.a($$0, $$1);
+         csf $$3 = csf.b($$0, $$1);
+         BitSet $$4 = new BitSet();
+         csf.a($$2, $$3).forEach($$1xx -> {
+            tn $$2x = new tn(new tp(so.a, "DataVersion"), new tp(sj.b, "blending_data"));
 
-   public boolean a(T $$0) {
-      return this.a($$0, false);
-   }
-
-   private boolean a(T $$0, boolean $$1) {
-      if (!this.b($$0)) {
-         return false;
-      } else {
-         long $$2 = iy.c($$0.dn());
-         dli<T> $$3 = this.f.c($$2);
-         $$3.a($$0);
-         $$0.a(new dlp.a($$0, $$2, $$3));
-         if (!$$1) {
-            this.c.g($$0);
-         }
-
-         dlr $$4 = a($$0, $$3.c());
-         if ($$4.b()) {
-            this.e($$0);
-         }
-
-         if ($$4.a()) {
-            this.c($$0);
-         }
-
-         return true;
-      }
-   }
-
-   static <T extends dle> dlr a(T $$0, dlr $$1) {
-      return $$0.dM() ? dlr.c : $$1;
-   }
-
-   public void a(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, true));
-   }
-
-   public void b(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, false));
-   }
-
-   void c(T $$0) {
-      this.c.e($$0);
-   }
-
-   void d(T $$0) {
-      this.c.d($$0);
-   }
-
-   void e(T $$0) {
-      this.e.a($$0);
-      this.c.c($$0);
-   }
-
-   void f(T $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-   }
-
-   public void a(crm $$0, amb $$1) {
-      dlr $$2 = dlr.a($$1);
-      this.a($$0, $$2);
-   }
-
-   public void a(crm $$0, dlr $$1) {
-      long $$2 = $$0.a();
-      if ($$1 == dlr.a) {
-         this.h.remove($$2);
-         this.j.add($$2);
-      } else {
-         this.h.put($$2, $$1);
-         this.j.remove($$2);
-         this.b($$2);
-      }
-
-      this.f.b($$2).forEach($$1x -> {
-         dlr $$2x = $$1x.a($$1);
-         boolean $$3 = $$2x.b();
-         boolean $$4 = $$1.b();
-         boolean $$5 = $$2x.a();
-         boolean $$6 = $$1.a();
-         if ($$5 && !$$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dM()).forEach(this::d);
-         }
-
-         if ($$3 && !$$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dM()).forEach(this::f);
-         } else if (!$$3 && $$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dM()).forEach(this::e);
-         }
-
-         if (!$$5 && $$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dM()).forEach(this::c);
-         }
-      });
-   }
-
-   private void b(long $$0) {
-      dlp.b $$1 = (dlp.b)this.i.get($$0);
-      if ($$1 == dlp.b.a) {
-         this.c($$0);
-      }
-   }
-
-   private boolean a(long $$0, Consumer<T> $$1) {
-      dlp.b $$2 = (dlp.b)this.i.get($$0);
-      if ($$2 == dlp.b.b) {
-         return false;
-      } else {
-         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(dle::dL)).collect(Collectors.toList());
-         if ($$3.isEmpty()) {
-            if ($$2 == dlp.b.c) {
-               this.d.a(new dlc<>(new crm($$0), ImmutableList.of()));
+            try {
+               this.a($$1xx, $$2x).join();
+            } catch (Exception var7) {
+               a.warn("Failed to scan chunk {}", $$1xx, var7);
+               return;
             }
 
-            return true;
-         } else if ($$2 == dlp.b.a) {
-            this.c($$0);
-            return false;
-         } else {
-            this.d.a(new dlc<>(new crm($$0), $$3));
-            $$3.forEach($$1);
-            return true;
-         }
-      }
-   }
-
-   private void c(long $$0) {
-      this.i.put($$0, dlp.b.b);
-      crm $$1 = new crm($$0);
-      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
-         a.error("Failed to read chunk {}", $$1, $$1x);
-         return null;
-      });
-   }
-
-   private boolean d(long $$0) {
-      boolean $$1 = this.a($$0, $$0x -> $$0x.cT().forEach(this::g));
-      if (!$$1) {
-         return false;
-      } else {
-         this.i.remove($$0);
-         return true;
-      }
-   }
-
-   private void g(dle $$0) {
-      $$0.b(bkv.c.c);
-      $$0.a(dlf.a);
-   }
-
-   private void g() {
-      this.j.removeIf($$0 -> this.h.get($$0) != dlr.a ? true : this.d($$0));
-   }
-
-   private void h() {
-      dlc<T> $$0;
-      while (($$0 = this.k.poll()) != null) {
-         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
-         this.i.put($$0.a().a(), dlp.b.c);
-      }
-   }
-
-   public void a() {
-      this.h();
-      this.g();
-   }
-
-   private LongSet i() {
-      LongSet $$0 = this.f.a();
-      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
-
-      while (var2.hasNext()) {
-         Entry<dlp.b> $$1 = (Entry<dlp.b>)var2.next();
-         if ($$1.getValue() == dlp.b.c) {
-            $$0.add($$1.getLongKey());
-         }
-      }
-
-      return $$0;
-   }
-
-   public void b() {
-      this.i().forEach($$0 -> {
-         boolean $$1 = this.h.get($$0) == dlr.a;
-         if ($$1) {
-            this.d($$0);
-         } else {
-            this.a($$0, $$0x -> {
-            });
-         }
-      });
-   }
-
-   public void c() {
-      LongSet $$0 = this.i();
-
-      while (!$$0.isEmpty()) {
-         this.d.a(false);
-         this.h();
-         $$0.removeIf($$0x -> {
-            boolean $$1 = this.h.get($$0x) == dlr.a;
-            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
-            });
+            if ($$2x.d() instanceof sj $$5 && this.a($$5)) {
+               int $$6 = $$1xx.k() * 32 + $$1xx.j();
+               $$4.set($$6);
+            }
          });
-      }
+         return $$4;
+      }, ac.f());
+   }
 
-      this.d.a(true);
+   private boolean a(sj $$0) {
+      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
+   }
+
+   public CompletableFuture<Void> a(csf $$0, @Nullable sj $$1) {
+      return this.a(() -> {
+         dlp.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dlp.a($$1));
+         $$2.a = $$1;
+         return Either.left($$2.b);
+      }).thenCompose(Function.identity());
+   }
+
+   public CompletableFuture<Optional<sj>> a(csf $$0) {
+      return this.a(() -> {
+         dlp.a $$1 = this.e.get($$0);
+         if ($$1 != null) {
+            return Either.left(Optional.ofNullable($$1.a));
+         } else {
+            try {
+               sj $$2 = this.d.a($$0);
+               return Either.left(Optional.ofNullable($$2));
+            } catch (Exception var4) {
+               a.warn("Failed to read chunk {}", $$0, var4);
+               return Either.right(var4);
+            }
+         }
+      });
+   }
+
+   public CompletableFuture<Void> a(boolean $$0) {
+      CompletableFuture<Void> $$1 = this.a(
+            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
+         )
+         .thenCompose(Function.identity());
+      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
+            try {
+               this.d.a();
+               return Either.left(null);
+            } catch (Exception var2x) {
+               a.warn("Failed to synchronize chunks", var2x);
+               return Either.right(var2x);
+            }
+         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
+   }
+
+   @Override
+   public CompletableFuture<Void> a(csf $$0, td $$1) {
+      return this.a(() -> {
+         try {
+            dlp.a $$2 = this.e.get($$0);
+            if ($$2 != null) {
+               if ($$2.a != null) {
+                  $$2.a.b($$1);
+               }
+            } else {
+               this.d.a($$0, $$1);
+            }
+
+            return Either.left(null);
+         } catch (Exception var4) {
+            a.warn("Failed to bulk scan chunk {}", $$0, var4);
+            return Either.right(var4);
+         }
+      });
+   }
+
+   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
+      return this.c.c($$1 -> new big.b(dlp.b.a.ordinal(), () -> {
+            if (!this.b.get()) {
+               $$1.a($$0.get());
+            }
+
+            this.b();
+         }));
+   }
+
+   private void a() {
+      if (!this.e.isEmpty()) {
+         Iterator<Entry<csf, dlp.a>> $$0 = this.e.entrySet().iterator();
+         Entry<csf, dlp.a> $$1 = $$0.next();
+         $$0.remove();
+         this.a($$1.getKey(), $$1.getValue());
+         this.b();
+      }
+   }
+
+   private void b() {
+      this.c.a(new big.b(dlp.b.b.ordinal(), this::a));
+   }
+
+   private void a(csf $$0, dlp.a $$1) {
+      try {
+         this.d.a($$0, $$1.a);
+         $$1.b.complete(null);
+      } catch (Exception var4) {
+         a.error("Failed to store chunk {}", $$0, var4);
+         $$1.b.completeExceptionally(var4);
+      }
    }
 
    @Override
    public void close() throws IOException {
-      this.c();
-      this.d.close();
-   }
+      if (this.b.compareAndSet(false, true)) {
+         this.c.b($$0 -> new big.b(dlp.b.c.ordinal(), () -> $$0.a(avc.a))).join();
+         this.c.close();
 
-   public boolean a(UUID $$0) {
-      return this.b.contains($$0);
-   }
-
-   public dln<T> d() {
-      return this.g;
-   }
-
-   public boolean a(hx $$0) {
-      return ((dlr)this.h.get(crm.a($$0))).a();
-   }
-
-   public boolean a(crm $$0) {
-      return ((dlr)this.h.get($$0.a())).a();
-   }
-
-   public boolean a(long $$0) {
-      return this.i.get($$0) == dlp.b.c;
-   }
-
-   public void a(Writer $$0) throws IOException {
-      asr $$1 = asr.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
-      this.f.a().forEach($$1x -> {
-         dlp.b $$2 = (dlp.b)this.i.get($$1x);
-         this.f.a($$1x).forEach($$2x -> {
-            dli<T> $$3 = this.f.d($$2x);
-            if ($$3 != null) {
-               try {
-                  $$1.a(iy.b($$2x), iy.c($$2x), iy.d($$2x), $$3.c(), $$2, $$3.d());
-               } catch (IOException var7) {
-                  throw new UncheckedIOException(var7);
-               }
-            }
-         });
-      });
-   }
-
-   @aut
-   public String e() {
-      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
-   }
-
-   @aut
-   public int f() {
-      return this.e.b();
-   }
-
-   class a implements dlf {
-      private final T c;
-      private long d;
-      private dli<T> e;
-
-      a(T $$0, long $$1, dli<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      @Override
-      public void a() {
-         hx $$0 = this.c.dn();
-         long $$1 = iy.c($$0);
-         if ($$1 != this.d) {
-            dlr $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               dlp.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, iy.a(this.d), $$1});
-            }
-
-            dlp.this.a(this.d, this.e);
-            dli<T> $$3 = dlp.this.f.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            this.a($$2, $$3.c());
+         try {
+            this.d.close();
+         } catch (Exception var2) {
+            a.error("Failed to close storage", var2);
          }
       }
+   }
 
-      private void a(dlr $$0, dlr $$1) {
-         dlr $$2 = dlp.a(this.c, $$0);
-         dlr $$3 = dlp.a(this.c, $$1);
-         if ($$2 == $$3) {
-            if ($$3.b()) {
-               dlp.this.c.a(this.c);
-            }
-         } else {
-            boolean $$4 = $$2.b();
-            boolean $$5 = $$3.b();
-            if ($$4 && !$$5) {
-               dlp.this.f(this.c);
-            } else if (!$$4 && $$5) {
-               dlp.this.e(this.c);
-            }
+   static class a {
+      @Nullable
+      sj a;
+      final CompletableFuture<Void> b = new CompletableFuture<>();
 
-            boolean $$6 = $$2.a();
-            boolean $$7 = $$3.a();
-            if ($$6 && !$$7) {
-               dlp.this.d(this.c);
-            } else if (!$$6 && $$7) {
-               dlp.this.c(this.c);
-            }
-
-            if ($$5) {
-               dlp.this.c.a(this.c);
-            }
-         }
-      }
-
-      @Override
-      public void a(bkv.c $$0) {
-         if (!this.e.b(this.c)) {
-            dlp.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, iy.a(this.d), $$0});
-         }
-
-         dlr $$1 = dlp.a(this.c, this.e.c());
-         if ($$1.a()) {
-            dlp.this.d(this.c);
-         }
-
-         if ($$1.b()) {
-            dlp.this.f(this.c);
-         }
-
-         if ($$0.a()) {
-            dlp.this.c.f(this.c);
-         }
-
-         dlp.this.b.remove(this.c.cw());
-         this.c.a(a);
-         dlp.this.a(this.d, this.e);
+      public a(@Nullable sj $$0) {
+         this.a = $$0;
       }
    }
 

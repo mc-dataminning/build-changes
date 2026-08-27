@@ -1,25 +1,26 @@
-import java.util.function.Function;
-import java.util.function.Predicate;
+public class gcd<T extends blv> extends gbz<T, fkw<T>> {
+   private final fiy<T> a;
 
-public interface gcd {
-   agf a = new agf("textures", ".png");
-
-   void a(apl var1, gcd.a var2);
-
-   gcf a();
-
-   public interface a {
-      default void a(agm $$0, apj $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
-      }
-
-      void a(agm var1, gcd.b var2);
-
-      void a(Predicate<agm> var1);
+   public gcd(fzj<T, fkw<T>> $$0, flu $$1) {
+      super($$0);
+      this.a = new fkw<>($$1.a(flx.bq));
    }
 
-   public interface b extends Function<gcc, gbt> {
-      default void a() {
+   public void a(epd $$0, fsi $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      euk $$10 = euk.N();
+      boolean $$11 = $$10.b($$3) && $$3.ce();
+      if (!$$3.ce() || $$11) {
+         eph $$12;
+         if ($$11) {
+            $$12 = $$1.getBuffer(fsq.r(this.a($$3)));
+         } else {
+            $$12 = $$1.getBuffer(fsq.i(this.a($$3)));
+         }
+
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         this.a.a($$0, $$12, $$2, fyp.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

@@ -1,74 +1,70 @@
-public class fhx<T extends byl> extends fid<T> {
-   private static final float a = 1.5F;
-   private static final float b = 1.0F;
-   private static final float f = 2.5F;
-   private final fkt g;
-   private final fkt h;
-   private final fkt i;
-   private final fkt j;
-   private final fkt k;
-   private final fkt l;
-   private final fkt m;
-   private final fkt n;
-   private final fkt o;
-   private final fkt p;
-
-   public fhx(fkt $$0) {
-      this.g = $$0.b("root");
-      this.h = this.g.b("body");
-      this.i = this.h.b("head");
-      this.j = this.i.b("eyes");
-      this.k = this.h.b("tongue");
-      this.l = this.h.b("left_arm");
-      this.m = this.h.b("right_arm");
-      this.n = this.g.b("left_leg");
-      this.o = this.g.b("right_leg");
-      this.p = this.h.b("croaking_body");
+public class fhx {
+   public static void a(fly $$0, fly $$1, fly $$2, boolean $$3) {
+      fly $$4 = $$3 ? $$0 : $$1;
+      fly $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   public static fkz b() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      flc $$2 = $$1.a("root", fky.c(), fkv.a(0.0F, 24.0F, 0.0F));
-      flc $$3 = $$2.a(
-         "body", fky.c().a(3, 1).a(-3.5F, -2.0F, -8.0F, 7.0F, 3.0F, 9.0F).a(23, 22).a(-3.5F, -1.0F, -8.0F, 7.0F, 0.0F, 9.0F), fkv.a(0.0F, -2.0F, 4.0F)
-      );
-      flc $$4 = $$3.a(
-         "head", fky.c().a(23, 13).a(-3.5F, -1.0F, -7.0F, 7.0F, 0.0F, 9.0F).a(0, 13).a(-3.5F, -2.0F, -7.0F, 7.0F, 3.0F, 9.0F), fkv.a(0.0F, -2.0F, -1.0F)
-      );
-      flc $$5 = $$4.a("eyes", fky.c(), fkv.a(-0.5F, 0.0F, 2.0F));
-      $$5.a("right_eye", fky.c().a(0, 0).a(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), fkv.a(-1.5F, -3.0F, -6.5F));
-      $$5.a("left_eye", fky.c().a(0, 5).a(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), fkv.a(2.5F, -3.0F, -6.5F));
-      $$3.a("croaking_body", fky.c().a(26, 5).a(-3.5F, -0.1F, -2.9F, 7.0F, 2.0F, 3.0F, new fkx(-0.1F)), fkv.a(0.0F, -1.0F, -5.0F));
-      flc $$6 = $$3.a("tongue", fky.c().a(17, 13).a(-2.0F, 0.0F, -7.1F, 4.0F, 0.0F, 7.0F), fkv.a(0.0F, -1.01F, 1.0F));
-      flc $$7 = $$3.a("left_arm", fky.c().a(0, 32).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), fkv.a(4.0F, -1.0F, -6.5F));
-      $$7.a("left_hand", fky.c().a(18, 40).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), fkv.a(0.0F, 3.0F, -1.0F));
-      flc $$8 = $$3.a("right_arm", fky.c().a(0, 38).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), fkv.a(-4.0F, -1.0F, -6.5F));
-      $$8.a("right_hand", fky.c().a(2, 40).a(-4.0F, 0.01F, -5.0F, 8.0F, 0.0F, 8.0F), fkv.a(0.0F, 3.0F, 0.0F));
-      flc $$9 = $$2.a("left_leg", fky.c().a(14, 25).a(-1.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), fkv.a(3.5F, -3.0F, 4.0F));
-      $$9.a("left_foot", fky.c().a(2, 32).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), fkv.a(2.0F, 3.0F, 0.0F));
-      flc $$10 = $$2.a("right_leg", fky.c().a(0, 25).a(-2.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), fkv.a(-3.5F, -3.0F, 4.0F));
-      $$10.a("right_foot", fky.c().a(18, 32).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), fkv.a(-2.0F, 3.0F, 0.0F));
-      return fkz.a($$0, 48, 48);
+   public static void a(fly $$0, fly $$1, blv $$2, boolean $$3) {
+      fly $$4 = $$3 ? $$0 : $$1;
+      fly $$5 = $$3 ? $$1 : $$0;
+      $$4.f = $$3 ? -0.8F : 0.8F;
+      $$4.e = -0.97079635F;
+      $$5.e = $$4.e;
+      float $$6 = (float)ckp.k($$2.fp());
+      float $$7 = aty.a((float)$$2.fr(), 0.0F, $$6);
+      float $$8 = $$7 / $$6;
+      $$5.f = aty.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
+      $$5.e = aty.i($$8, $$5.e, (float) (-Math.PI / 2));
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fkt::c);
-      this.a($$0.bY, eue.c, $$3);
-      this.a($$0.bZ, eue.a, $$3);
-      this.a($$0.ca, eue.d, $$3);
-      if ($$0.bc()) {
-         this.a(eue.e, $$1, $$2, 1.0F, 2.5F);
+   public static <T extends blx> void a(fly $$0, fly $$1, T $$2, float $$3, float $$4) {
+      float $$5 = aty.a($$3 * (float) Math.PI);
+      float $$6 = aty.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2.fm() == blp.b) {
+         $$0.e = -1.8849558F + aty.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + aty.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
       } else {
-         this.a(eue.b, $$1, $$2, 1.5F, 2.5F);
+         $$0.e = -0.0F + aty.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + aty.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
       }
 
-      this.a($$0.cb, eue.f, $$3);
-      this.p.k = $$0.bZ.c();
+      a($$0, $$1, $$4);
    }
 
-   @Override
-   public fkt a() {
-      return this.g;
+   public static void a(fly $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (aty.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * aty.a($$1 * 0.067F) * 0.05F;
+   }
+
+   public static void a(fly $$0, fly $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
+   }
+
+   public static void a(fly $$0, fly $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = aty.a($$3 * (float) Math.PI);
+      float $$6 = aty.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

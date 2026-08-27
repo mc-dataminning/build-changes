@@ -1,52 +1,93 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class dos extends dou {
-   public static final Codec<dos> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dou.d.forGetter($$0x -> $$0x), bie.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dos.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, dos::new)
-   );
-   public final bie b;
-   public final dos.a c;
+public interface dos {
+   Codec<dos> a = atg.a(dos.b.d, atg.a(dos.a.d, dos.c.d)).xmap(dos::a, dos::a);
+   dos b = b(0);
+   dos c = c(0);
 
-   public dos(float $$0, dvt $$1, bie $$2, dnq $$3, dov $$4, ik<cvf> $$5, bie $$6, dos.a $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
+   static dos a(int $$0) {
+      return new dos.b($$0);
    }
 
-   public dos(dou $$0, bie $$1, dos.a $$2) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   static dos b(int $$0) {
+      return new dos.a($$0);
    }
 
-   public static class a {
-      public static final Codec<dos.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bie.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
-                  bie.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
-                  asy.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
-                  bie.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
-                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dos.a::new)
-      );
-      public final bie b;
-      public final bie c;
-      public final int d;
-      public final bie e;
-      public final float f;
-      public final float g;
+   static dos c(int $$0) {
+      return new dos.c($$0);
+   }
 
-      public a(bie $$0, bie $$1, int $$2, bie $$3, float $$4, float $$5) {
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-         this.b = $$0;
-         this.c = $$1;
+   static dos a() {
+      return b;
+   }
+
+   static dos b() {
+      return c;
+   }
+
+   private static dos a(Either<dos.b, Either<dos.a, dos.c>> $$0) {
+      return (dos)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
+   }
+
+   private static Either<dos.b, Either<dos.a, dos.c>> a(dos $$0) {
+      return $$0 instanceof dos.b ? Either.left((dos.b)$$0) : Either.right($$0 instanceof dos.a ? Either.left((dos.a)$$0) : Either.right((dos.c)$$0));
+   }
+
+   int a(dov var1);
+
+   public static record a(int e) implements dos {
+      public static final Codec<dos.a> d = Codec.intRange(dly.e, dly.d).fieldOf("above_bottom").xmap(dos.a::new, dos.a::c).codec();
+
+      @Override
+      public int a(dov $$0) {
+         return $$0.a() + this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record b(int e) implements dos {
+      public static final Codec<dos.b> d = Codec.intRange(dly.e, dly.d).fieldOf("absolute").xmap(dos.b::new, dos.b::c).codec();
+
+      @Override
+      public int a(dov $$0) {
+         return this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements dos {
+      public static final Codec<dos.c> d = Codec.intRange(dly.e, dly.d).fieldOf("below_top").xmap(dos.c::new, dos.c::c).codec();
+
+      @Override
+      public int a(dov $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 }

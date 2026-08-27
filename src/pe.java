@@ -1,42 +1,72 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-
 public class pe {
-   public static final agl<dyv> a = pg.a("pillager_outpost/base_plates");
+   @Deprecated
+   public static final edc.a a = new edc.a(-3, 1.0, 1.0, 1.0, 0.0);
 
-   public static void a(oz<dyv> $$0) {
-      ih<ebk> $$1 = $$0.a(kd.aC);
-      ig<ebk> $$2 = $$1.b(ph.q);
-      ih<dyv> $$3 = $$0.a(kd.aE);
-      ig<dyv> $$4 = $$3.b(pg.a);
-      $$0.a(a, new dyv($$4, ImmutableList.of(Pair.of(dyt.a("pillager_outpost/base_plate"), 1)), dyv.a.b));
-      pg.a(
-         $$0,
-         "pillager_outpost/towers",
-         new dyv(
-            $$4,
-            ImmutableList.of(Pair.of(dyt.b(ImmutableList.of(dyt.a("pillager_outpost/watchtower"), dyt.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            dyv.a.b
-         )
-      );
-      pg.a($$0, "pillager_outpost/feature_plates", new dyv($$4, ImmutableList.of(Pair.of(dyt.a("pillager_outpost/feature_plate"), 1)), dyv.a.a));
-      pg.a(
-         $$0,
-         "pillager_outpost/features",
-         new dyv(
-            $$4,
-            ImmutableList.of(
-               Pair.of(dyt.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(dyt.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(dyt.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(dyt.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(dyt.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(dyt.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(dyt.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(dyt.g(), 6)
-            ),
-            dyv.a.b
-         )
-      );
+   public static void a(pa<edc.a> $$0) {
+      a($$0, 0, doh.a, doh.b, doh.c, doh.d);
+      a($$0, -2, doh.e, doh.f, doh.g, doh.h);
+      a($$0, doh.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
+      $$0.a(doh.j, a);
+      a($$0, doh.k, -3, 1.0);
+      a($$0, doh.l, -7, 1.0);
+      a($$0, doh.m, -1, 1.0);
+      a($$0, doh.n, -5, 1.0);
+      a($$0, doh.o, -7, 1.0, 1.0);
+      a($$0, doh.p, -8, 1.0);
+      a($$0, doh.q, -8, 1.0);
+      a($$0, doh.r, -7, 1.0);
+      a($$0, doh.s, -8, 1.0);
+      a($$0, doh.t, -11, 1.0);
+      a($$0, doh.u, -11, 1.0);
+      a($$0, doh.v, -7, 1.0);
+      a($$0, doh.w, -7, 1.0);
+      a($$0, doh.x, -11, 1.0);
+      a($$0, doh.y, -8, 1.0);
+      a($$0, doh.z, -5, 1.0);
+      a($$0, doh.A, -8, 1.0);
+      a($$0, doh.B, -7, 0.4, 0.5, 1.0);
+      a($$0, doh.C, -8, 1.0);
+      a($$0, doh.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
+      a($$0, doh.E, -8, 1.0);
+      a($$0, doh.F, -7, 1.0);
+      a($$0, doh.G, -7, 1.0);
+      a($$0, doh.H, -5, 1.0);
+      a($$0, doh.I, -8, 1.0);
+      a($$0, doh.J, -8, 1.0);
+      a($$0, doh.K, -7, 1.0);
+      a($$0, doh.L, -7, 1.0);
+      a($$0, doh.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, doh.N, -6, 1.0, 1.0, 1.0);
+      a($$0, doh.O, -6, 1.0, 1.0, 0.0, 1.0);
+      a($$0, doh.P, -8, 1.0);
+      a($$0, doh.Q, -2, 1.0, 1.0, 1.0, 1.0);
+      a($$0, doh.R, -8, 1.0);
+      a($$0, doh.S, -6, 1.0, 1.0, 1.0);
+      a($$0, doh.T, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, doh.U, -3, 1.0);
+      a($$0, doh.V, -6, 1.0, 1.0, 1.0);
+      a($$0, doh.W, -2, 1.0);
+      a($$0, doh.X, -9, 1.0, 1.0, 1.0, 1.0);
+      a($$0, doh.Y, -8, 1.0, 1.0, 1.0, 1.0);
+      a($$0, doh.Z, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, doh.aa, -7, 1.0, 1.0, 1.0, 1.0);
+      a($$0, doh.ab, -4, 1.0, 1.0, 1.0, 1.0);
+      a($$0, doh.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, doh.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, doh.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, doh.af, -3, 1.0, 0.0, 0.0, 0.35);
+      a($$0, doh.ag, -3, 1.0, 0.0, 0.0, 0.9);
+      a($$0, doh.ah, -4, 1.0);
+   }
+
+   private static void a(pa<edc.a> $$0, int $$1, ags<edc.a> $$2, ags<edc.a> $$3, ags<edc.a> $$4, ags<edc.a> $$5) {
+      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
+      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
+   }
+
+   private static void a(pa<edc.a> $$0, ags<edc.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new edc.a($$2, $$3, $$4));
    }
 }

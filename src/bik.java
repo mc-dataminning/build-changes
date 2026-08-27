@@ -3,66 +3,62 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public class bik extends bie {
+public class bik extends bio {
    public static final Codec<bik> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
                )
                .apply($$0, bik::new)
       )
       .comapFlatMap(
-         $$0 -> {
-            if ($$0.d < $$0.b) {
-               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
-            } else {
-               return $$0.e > $$0.d - $$0.b
-                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
-                  : DataResult.success($$0);
-            }
-         },
+         $$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0),
          Function.identity()
       );
    private final float b;
    private final float d;
    private final float e;
+   private final float f;
 
-   public static bik a(float $$0, float $$1, float $$2) {
-      return new bik($$0, $$1, $$2);
+   public static bik a(float $$0, float $$1, float $$2, float $$3) {
+      return new bik($$0, $$1, $$2, $$3);
    }
 
-   private bik(float $$0, float $$1, float $$2) {
+   private bik(float $$0, float $$1, float $$2, float $$3) {
       this.b = $$0;
       this.d = $$1;
       this.e = $$2;
+      this.f = $$3;
    }
 
    @Override
-   public float a(atw $$0) {
-      float $$1 = this.d - this.b;
-      float $$2 = ($$1 - this.e) / 2.0F;
-      float $$3 = $$1 - $$2;
-      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
+   public float a(auf $$0) {
+      return a($$0, this.b, this.d, this.e, this.f);
+   }
+
+   public static float a(auf $$0, float $$1, float $$2, float $$3, float $$4) {
+      return aty.a(aty.c($$0, $$1, $$2), $$3, $$4);
    }
 
    @Override
    public float a() {
-      return this.b;
+      return this.e;
    }
 
    @Override
    public float b() {
-      return this.d;
+      return this.f;
    }
 
    @Override
-   public bif<?> c() {
-      return bif.d;
+   public bip<?> c() {
+      return bip.c;
    }
 
    @Override
    public String toString() {
-      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
+      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
    }
 }

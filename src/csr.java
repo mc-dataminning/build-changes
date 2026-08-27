@@ -1,25 +1,19 @@
-public final class csr implements djg {
-   private final int a;
-   private final dhn[] b;
+import java.util.Optional;
 
-   public csr(int $$0, dhn[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class csr {
+   public Optional<Float> a(csq $$0, cse $$1, hv $$2, dip $$3, edz $$4) {
+      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
    }
 
-   @Override
-   public dhn a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : cvh.a.o();
+   public boolean a(csq $$0, cse $$1, hv $$2, dip $$3, float $$4) {
+      return true;
    }
 
-   @Override
-   public void a(int $$0, dhn $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
+   public float a(csq $$0, blf $$1) {
+      float $$2 = $$0.a() * 2.0F;
+      elb $$3 = $$0.b();
+      double $$4 = Math.sqrt($$1.f($$3)) / (double)$$2;
+      double $$5 = (1.0 - $$4) * (double)csq.a($$3, $$1);
+      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
    }
 }

@@ -1,22 +1,31 @@
-public class fza extends fxi<ccd, fki<ccd>> {
-   private static final agm a = new agm("textures/entity/witch.png");
+public class fza extends fyu<bxy, fjy> {
+   private static final agt a = new agt("textures/entity/parrot/parrot_red_blue.png");
+   private static final agt i = new agt("textures/entity/parrot/parrot_blue.png");
+   private static final agt j = new agt("textures/entity/parrot/parrot_green.png");
+   private static final agt k = new agt("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final agt l = new agt("textures/entity/parrot/parrot_grey.png");
 
-   public fza(fwc.a $$0) {
-      super($$0, new fki<>($$0.a(fks.bN)), 0.5F);
-      this.a(new gax<>(this, $$0.d()));
+   public fza(fxo.a $$0) {
+      super($$0, new fjy($$0.a(flx.aD)), 0.3F);
    }
 
-   public void a(ccd $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
-      this.f.b(!$$0.eU().b());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public agt a(bxy $$0) {
+      return a($$0.gm());
    }
 
-   public agm a(ccd $$0) {
-      return a;
+   public static agt a(bxy.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
    }
 
-   protected void a(ccd $$0, eob $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public float a(bxy $$0, float $$1) {
+      float $$2 = aty.i($$1, $$0.bZ, $$0.bW);
+      float $$3 = aty.i($$1, $$0.bY, $$0.bX);
+      return (aty.a($$2) + 1.0F) * $$3;
    }
 }

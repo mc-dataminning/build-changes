@@ -1,60 +1,47 @@
-import com.google.common.annotations.VisibleForTesting;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class ob extends od<dlx> {
-   @VisibleForTesting
-   static final dlx[] d = new dlx[]{
-      dlx.b,
-      dlx.c,
-      dlx.d,
-      dlx.f,
-      dlx.g,
-      dlx.h,
-      dlx.i,
-      dlx.a,
-      dlx.e,
-      dlx.j,
-      dlx.k,
-      dlx.l,
-      dlx.m,
-      dlx.n,
-      dlx.o,
-      dlx.p,
-      dlx.q,
-      dlx.r,
-      dlx.s,
-      dlx.t,
-      dlx.u,
-      dlx.v,
-      dlx.w,
-      dlx.y,
-      dlx.z,
-      dlx.A,
-      dlx.B,
-      dlx.C,
-      dlx.G,
-      dlx.H,
-      dlx.I,
-      dlx.J,
-      dlx.K,
-      dlx.M,
-      dlx.O,
-      dlx.P,
-      dlx.Q,
-      dlx.R,
-      dlx.S
-   };
+public abstract class ob<T> extends og<T> {
+   private final Function<T, ags<T>> d;
 
-   public ob(kl $$0, CompletableFuture<ii.b> $$1) {
-      super($$0, kd.A, $$1, $$0x -> $$0x.b().g());
+   public ob(kk $$0, ags<? extends ir<T>> $$1, CompletableFuture<ih.b> $$2, Function<T, ags<T>> $$3) {
+      super($$0, $$1, $$2);
+      this.d = $$3;
    }
 
-   @Override
-   protected void a(ii.b $$0) {
-      this.a(arq.a).a(d).a(dmg.d_).a(dlx.x);
-      this.a(arq.c).a(dlx.L);
-      this.a(arq.b).a(d).a(dmg.d_).a(dlx.N).a(arq.c);
-      this.a(arq.d).a(dlx.A, dlx.K, dlx.P, dlx.Q, dlx.D, dlx.C);
-      this.a(arq.e).a(dlx.H);
+   public ob(kk $$0, ags<? extends ir<T>> $$1, CompletableFuture<ih.b> $$2, CompletableFuture<og.c<T>> $$3, Function<T, ags<T>> $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.d = $$4;
+   }
+
+   protected ob.a<T> a(asg<T> $$0) {
+      asd $$1 = this.c($$0);
+      return new ob.a<>($$1, this.d);
+   }
+
+   protected static class a<T> extends og.b<T> {
+      private final Function<T, ags<T>> a;
+
+      a(asd $$0, Function<T, ags<T>> $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public ob.a<T> a(asg<T> $$0) {
+         super.b($$0);
+         return this;
+      }
+
+      public final ob.a<T> a(T $$0) {
+         this.a(this.a.apply($$0));
+         return this;
+      }
+
+      @SafeVarargs
+      public final ob.a<T> a(T... $$0) {
+         Stream.<T>of($$0).map(this.a).forEach(this::a);
+         return this;
+      }
    }
 }

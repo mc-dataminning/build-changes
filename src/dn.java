@@ -1,31 +1,49 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public interface dn {
+   <T> ih<T> a(ags<? extends ir<T>> var1);
 
-public class dn {
-   public static final dn a = new dn(null);
-   @Nullable
-   private final agm b;
-   private boolean c;
-   private Optional<hb<du>> d = Optional.empty();
-
-   public dn(@Nullable agm $$0) {
-      this.b = $$0;
+   static dn a(final ih.b $$0, final chb $$1) {
+      return new dn() {
+         @Override
+         public <T> ih<T> a(ags<? extends ir<T>> $$0x) {
+            return $$0.b($$0).a($$1);
+         }
+      };
    }
 
-   public Optional<hb<du>> a(aha $$0) {
-      if (!this.c) {
-         if (this.b != null) {
-            this.d = $$0.a(this.b);
+   static dn.a a(final is $$0, final chb $$1) {
+      return new dn.a() {
+         dn.b c = dn.b.b;
+
+         @Override
+         public void a(dn.b $$0x) {
+            this.c = $$0;
          }
 
-         this.c = true;
-      }
-
-      return this.d;
+         @Override
+         public <T> ih<T> a(ags<? extends ir<T>> $$0x) {
+            ir<T> $$1 = $$0.d($$0);
+            final ih.c<T> $$2 = $$1.p();
+            final ih.c<T> $$3 = $$1.u();
+            ih.c<T> $$4 = new ih.c.a<T>() {
+               @Override
+               protected ih.c<T> a() {
+                  return switch (c) {
+                     case b -> $$2;
+                     case a -> $$3;
+                  };
+               }
+            };
+            return $$4.a($$1);
+         }
+      };
    }
 
-   @Nullable
-   public agm a() {
-      return this.d.<agm>map(hb::a).orElse(this.b);
+   public interface a extends dn {
+      void a(dn.b var1);
+   }
+
+   public static enum b {
+      a,
+      b;
    }
 }

@@ -1,71 +1,155 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.stream.Stream;
-import org.joml.Quaternionf;
+import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
+import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
+import java.util.BitSet;
+import java.util.EnumSet;
+import java.util.Set;
 
-public class fvi extends fwb<cfs> {
-   private final Map<cfs.b, Pair<agm, fim<cfs>>> a;
+public class fvi {
+   private static final int a = 4;
+   private static final int b = 16;
+   private static final int c = 15;
+   private static final int d = 4096;
+   private static final int e = 0;
+   private static final int f = 4;
+   private static final int g = 8;
+   private static final int h = (int)Math.pow(16.0, 0.0);
+   private static final int i = (int)Math.pow(16.0, 1.0);
+   private static final int j = (int)Math.pow(16.0, 2.0);
+   private static final int k = -1;
+   private static final ia[] l = ia.values();
+   private final BitSet m = new BitSet(4096);
+   private static final int[] n = ac.a(new int[1352], $$0 -> {
+      int $$1 = 0;
+      int $$2 = 15;
+      int $$3 = 0;
 
-   public fvi(fwc.a $$0, boolean $$1) {
-      super($$0);
-      this.d = 0.8F;
-      this.a = Stream.of(cfs.b.values()).collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$2 -> Pair.of(new agm(a($$2, $$1)), this.a($$0, $$2, $$1))));
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            for (int $$6 = 0; $$6 < 16; $$6++) {
+               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
+                  $$0[$$3++] = a($$4, $$5, $$6);
+               }
+            }
+         }
+      }
+   });
+   private int o = 4096;
+
+   public void a(hv $$0) {
+      this.m.set(b($$0), true);
+      this.o--;
    }
 
-   private fim<cfs> a(fwc.a $$0, cfs.b $$1, boolean $$2) {
-      fkr $$3 = $$2 ? fks.d($$1) : fks.c($$1);
-      fkt $$4 = $$0.a($$3);
-      if ($$1 == cfs.b.i) {
-         return (fim<cfs>)($$2 ? new fhh($$4) : new fjg($$4));
+   private static int b(hv $$0) {
+      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
+   }
+
+   private static int a(int $$0, int $$1, int $$2) {
+      return $$0 << 0 | $$1 << 8 | $$2 << 4;
+   }
+
+   public fvj a() {
+      fvj $$0 = new fvj();
+      if (4096 - this.o < 256) {
+         $$0.a(true);
+      } else if (this.o == 0) {
+         $$0.a(false);
       } else {
-         return (fim<cfs>)($$2 ? new fhg($$4) : new fhc($$4));
-      }
-   }
-
-   private static String a(cfs.b $$0, boolean $$1) {
-      return $$1 ? "textures/entity/chest_boat/" + $$0.a() + ".png" : "textures/entity/boat/" + $$0.a() + ".png";
-   }
-
-   public void a(cfs $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.375F, 0.0F);
-      $$3.a(a.d.rotationDegrees(180.0F - $$1));
-      float $$6 = (float)$$0.O() - $$2;
-      float $$7 = $$0.N() - $$2;
-      if ($$7 < 0.0F) {
-         $$7 = 0.0F;
-      }
-
-      if ($$6 > 0.0F) {
-         $$3.a(a.b.rotationDegrees(atq.a($$6) * $$6 * $$7 / 10.0F * (float)$$0.P()));
-      }
-
-      float $$8 = $$0.a($$2);
-      if (!atq.a($$8, 0.0F)) {
-         $$3.a(new Quaternionf().setAngleAxis($$0.a($$2) * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
-      }
-
-      Pair<agm, fim<cfs>> $$9 = this.a.get($$0.y());
-      agm $$10 = (agm)$$9.getFirst();
-      fim<cfs> $$11 = (fim<cfs>)$$9.getSecond();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      $$11.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      eof $$12 = $$4.getBuffer($$11.a($$10));
-      $$11.a($$3, $$12, $$5, gbq.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      if (!$$0.be()) {
-         eof $$13 = $$4.getBuffer(frh.i());
-         if ($$11 instanceof fkh $$14) {
-            $$14.c().a($$3, $$13, $$5, gbq.d);
+         for (int $$1 : n) {
+            if (!this.m.get($$1)) {
+               $$0.a(this.a($$1));
+            }
          }
       }
 
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$0;
    }
 
-   public agm a(cfs $$0) {
-      return (agm)this.a.get($$0.y()).getFirst();
+   private Set<ia> a(int $$0) {
+      Set<ia> $$1 = EnumSet.noneOf(ia.class);
+      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
+      $$2.enqueue($$0);
+      this.m.set($$0, true);
+
+      while (!$$2.isEmpty()) {
+         int $$3 = $$2.dequeueInt();
+         this.a($$3, $$1);
+
+         for (ia $$4 : l) {
+            int $$5 = this.a($$3, $$4);
+            if ($$5 >= 0 && !this.m.get($$5)) {
+               this.m.set($$5, true);
+               $$2.enqueue($$5);
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private void a(int $$0, Set<ia> $$1) {
+      int $$2 = $$0 >> 0 & 15;
+      if ($$2 == 0) {
+         $$1.add(ia.e);
+      } else if ($$2 == 15) {
+         $$1.add(ia.f);
+      }
+
+      int $$3 = $$0 >> 8 & 15;
+      if ($$3 == 0) {
+         $$1.add(ia.a);
+      } else if ($$3 == 15) {
+         $$1.add(ia.b);
+      }
+
+      int $$4 = $$0 >> 4 & 15;
+      if ($$4 == 0) {
+         $$1.add(ia.c);
+      } else if ($$4 == 15) {
+         $$1.add(ia.d);
+      }
+   }
+
+   private int a(int $$0, ia $$1) {
+      switch ($$1) {
+         case a:
+            if (($$0 >> 8 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - j;
+         case b:
+            if (($$0 >> 8 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + j;
+         case c:
+            if (($$0 >> 4 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - i;
+         case d:
+            if (($$0 >> 4 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + i;
+         case e:
+            if (($$0 >> 0 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - h;
+         case f:
+            if (($$0 >> 0 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + h;
+         default:
+            return -1;
+      }
    }
 }

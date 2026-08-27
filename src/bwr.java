@@ -1,232 +1,119 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
-public class bwr extends bwq {
-   public static final float b = 0.5F;
-   public static final float c = 10.0F;
-   private static final afs<Byte> bS = afv.a(bwr.class, afu.a);
-   private static final int bT = 1;
-   private static final bvx bU = bvx.b().a(4.0);
-   public final bkr d = new bkr();
-   public final bkr e = new bkr();
-   @Nullable
-   private hx bV;
+public class bwr {
+   private static final int a = 10;
 
-   public bwr(bkz<? extends bwr> $$0, csf $$1) {
-      super($$0, $$1);
-      if (!$$1.B) {
-         this.w(true);
-      }
-   }
-
-   @Override
-   public boolean aT() {
-      return !this.w() && (float)this.ah % 10.0F == 0.0F;
-   }
-
-   @Override
-   protected void c_() {
-      super.c_();
-      this.an.a(bS, (byte)0);
-   }
-
-   @Override
-   protected float eX() {
-      return 0.1F;
-   }
-
-   @Override
-   public float eY() {
-      return super.eY() * 0.95F;
+   public static hv a(auf $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new hv($$3, $$4, $$5);
    }
 
    @Nullable
-   @Override
-   public aqu y() {
-      return this.w() && this.ag.a(4) != 0 ? null : aqv.bq;
-   }
-
-   @Override
-   protected aqu d(bjt $$0) {
-      return aqv.bs;
-   }
-
-   @Override
-   protected aqu n_() {
-      return aqv.br;
-   }
-
-   @Override
-   public boolean bu() {
-      return false;
-   }
-
-   @Override
-   protected void D(bkv $$0) {
-   }
-
-   @Override
-   protected void M_() {
-   }
-
-   public static bmq.a u() {
-      return bln.C().a(bmr.l, 6.0);
-   }
-
-   public boolean w() {
-      return (this.an.b(bS) & 1) != 0;
-   }
-
-   public void w(boolean $$0) {
-      byte $$1 = this.an.b(bS);
-      if ($$0) {
-         this.an.b(bS, (byte)($$1 | 1));
+   public static hv a(auf $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = aty.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)aty.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return hv.a($$10, (double)$$12, $$11);
       } else {
-         this.an.b(bS, (byte)($$1 & -2));
+         return null;
       }
    }
 
-   @Override
-   public void l() {
-      super.l();
-      if (this.w()) {
-         this.g(ejz.b);
-         this.p(this.ds(), (double)atq.a(this.du()) + 1.0 - (double)this.di(), this.dy());
+   @VisibleForTesting
+   public static hv a(hv $$0, int $$1, Predicate<hv> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
       } else {
-         this.g(this.dq().d(1.0, 0.6, 1.0));
-      }
+         hv $$3 = $$0.c();
 
-      this.gb();
+         while ($$3.v() < $$1 && $$2.test($$3)) {
+            $$3 = $$3.c();
+         }
+
+         return $$3;
+      }
    }
 
-   @Override
-   protected void Z() {
-      super.Z();
-      hx $$0 = this.dn();
-      hx $$1 = $$0.c();
-      if (this.w()) {
-         boolean $$2 = this.aU();
-         if (this.dN().a_($$1).g(this.dN(), $$0)) {
-            if (this.ag.a(200) == 0) {
-               this.aW = (float)this.ag.a(360);
+   @VisibleForTesting
+   public static hv a(hv $$0, int $$1, int $$2, Predicate<hv> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         hv $$4 = $$0.c();
+
+         while ($$4.v() < $$2 && $$3.test($$4)) {
+            $$4 = $$4.c();
+         }
+
+         hv $$5 = $$4;
+
+         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
+            hv $$6 = $$5.c();
+            if ($$3.test($$6)) {
+               break;
             }
 
-            if (this.dN().a(bU, this) != null) {
-               this.w(false);
-               if (!$$2) {
-                  this.dN().a(null, 1025, $$0, 0);
-               }
+            $$5 = $$6;
+         }
+
+         return $$5;
+      }
+   }
+
+   @Nullable
+   public static elb a(bme $$0, Supplier<hv> $$1) {
+      return a($$1, $$0::h);
+   }
+
+   @Nullable
+   public static elb a(Supplier<hv> $$0, ToDoubleFunction<hv> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      hv $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         hv $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
             }
+         }
+      }
+
+      return $$3 != null ? elb.c($$3) : null;
+   }
+
+   public static hv a(bme $$0, int $$1, auf $$2, hv $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.fQ() && $$1 > 1) {
+         hv $$6 = $$0.fN();
+         if ($$0.dr() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
          } else {
-            this.w(false);
-            if (!$$2) {
-               this.dN().a(null, 1025, $$0, 0);
-            }
-         }
-      } else {
-         if (this.bV != null && (!this.dN().t(this.bV) || this.bV.v() <= this.dN().J_())) {
-            this.bV = null;
+            $$4 += $$2.a($$1 / 2);
          }
 
-         if (this.bV == null || this.ag.a(30) == 0 || this.bV.a(this.dl(), 2.0)) {
-            this.bV = hx.a(
-               this.ds() + (double)this.ag.a(7) - (double)this.ag.a(7),
-               this.du() + (double)this.ag.a(6) - 2.0,
-               this.dy() + (double)this.ag.a(7) - (double)this.ag.a(7)
-            );
-         }
-
-         double $$3 = (double)this.bV.u() + 0.5 - this.ds();
-         double $$4 = (double)this.bV.v() + 0.1 - this.du();
-         double $$5 = (double)this.bV.w() + 0.5 - this.dy();
-         ejz $$6 = this.dq();
-         ejz $$7 = $$6.b((Math.signum($$3) * 0.5 - $$6.c) * 0.1F, (Math.signum($$4) * 0.7F - $$6.d) * 0.1F, (Math.signum($$5) * 0.5 - $$6.e) * 0.1F);
-         this.g($$7);
-         float $$8 = (float)(atq.d($$7.e, $$7.c) * 180.0F / (float)Math.PI) - 90.0F;
-         float $$9 = atq.g($$8 - this.dD());
-         this.bm = 0.5F;
-         this.r(this.dD() + $$9);
-         if (this.ag.a(100) == 0 && this.dN().a_($$1).g(this.dN(), $$1)) {
-            this.w(true);
+         if ($$0.dx() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
          }
       }
-   }
 
-   @Override
-   protected bkv.b aW() {
-      return bkv.b.c;
-   }
-
-   @Override
-   protected void a(double $$0, boolean $$1, dhn $$2, hx $$3) {
-   }
-
-   @Override
-   public boolean r_() {
-      return true;
-   }
-
-   @Override
-   public boolean a(bjt $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
-      } else {
-         if (!this.dN().B && this.w()) {
-            this.w(false);
-         }
-
-         return super.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(sd $$0) {
-      super.a($$0);
-      this.an.b(bS, $$0.f("BatFlags"));
-   }
-
-   @Override
-   public void b(sd $$0) {
-      super.b($$0);
-      $$0.a("BatFlags", this.an.b(bS));
-   }
-
-   public static boolean b(bkz<bwr> $$0, csg $$1, blp $$2, hx $$3, atw $$4) {
-      if ($$3.v() >= $$1.A_()) {
-         return false;
-      } else {
-         int $$5 = $$1.z($$3);
-         int $$6 = 4;
-         if (A()) {
-            $$6 = 7;
-         } else if ($$4.h()) {
-            return false;
-         }
-
-         return $$5 > $$4.a($$6) ? false : a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   private static boolean A() {
-      LocalDate $$0 = LocalDate.now();
-      int $$1 = $$0.get(ChronoField.DAY_OF_MONTH);
-      int $$2 = $$0.get(ChronoField.MONTH_OF_YEAR);
-      return $$2 == 10 && $$1 >= 20 || $$2 == 11 && $$1 <= 3;
-   }
-
-   @Override
-   protected float b(blx $$0, bkw $$1) {
-      return $$1.b / 2.0F;
-   }
-
-   private void gb() {
-      if (this.w()) {
-         this.d.a();
-         this.e.b(this.ah);
-      } else {
-         this.e.a();
-         this.d.b(this.ah);
-      }
+      return hv.a((double)$$4 + $$0.dr(), (double)$$3.v() + $$0.dt(), (double)$$5 + $$0.dx());
    }
 }

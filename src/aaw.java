@@ -1,24 +1,31 @@
-public class aaw implements wo<yh> {
-   private final uv a;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public aaw(uv $$0) {
-      this.a = $$0;
+public class aaw implements wu<yo> {
+   private final IntList a;
+
+   public aaw(IntList $$0) {
+      this.a = new IntArrayList($$0);
    }
 
-   public aaw(ty $$0) {
-      this.a = $$0.m();
+   public aaw(int... $$0) {
+      this.a = new IntArrayList($$0);
+   }
+
+   public aaw(ue $$0) {
+      this.a = $$0.a();
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
       $$0.a(this.a);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public uv a() {
+   public IntList a() {
       return this.a;
    }
 }

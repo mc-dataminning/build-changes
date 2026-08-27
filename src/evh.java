@@ -1,527 +1,390 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.SuggestionContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-
 public class evh {
-   private static final Pattern a = Pattern.compile("(\\s+)");
-   private static final vs b = vs.a.a(n.m);
-   private static final vs c = vs.a.a(n.h);
-   private static final List<vs> d = Stream.of(n.l, n.o, n.k, n.n, n.g).map(vs.a::a).collect(ImmutableList.toImmutableList());
-   final eti e;
-   private final faz f;
-   final evn g;
-   final eur h;
-   private final boolean i;
-   private final boolean j;
-   final int k;
-   final int l;
-   final boolean m;
-   final int n;
-   private final List<atc> o = Lists.newArrayList();
-   private int p;
-   private int q;
-   @Nullable
-   private ParseResults<dy> r;
-   @Nullable
-   private CompletableFuture<Suggestions> s;
-   @Nullable
-   private evh.a t;
-   private boolean u;
-   boolean v;
-   private boolean w = true;
-
-   public evh(eti $$0, faz $$1, evn $$2, eur $$3, boolean $$4, boolean $$5, int $$6, int $$7, boolean $$8, int $$9) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      $$2.a(this::a);
-   }
-
-   public void a(boolean $$0) {
-      this.u = $$0;
-      if (!$$0) {
-         this.t = null;
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.w = $$0;
-   }
-
-   public boolean a(int $$0, int $$1, int $$2) {
-      boolean $$3 = this.t != null;
-      if ($$3 && this.t.b($$0, $$1, $$2)) {
-         return true;
-      } else if (this.f.t() != this.g || $$0 != 258 || this.w && !$$3) {
-         return false;
-      } else {
-         this.c(true);
-         return true;
-      }
-   }
-
-   public boolean a(double $$0) {
-      return this.t != null && this.t.a(atq.a($$0, -1.0, 1.0));
-   }
-
-   public boolean a(double $$0, double $$1, int $$2) {
-      return this.t != null && this.t.a((int)$$0, (int)$$1, $$2);
-   }
-
-   public void c(boolean $$0) {
-      if (this.s != null && this.s.isDone()) {
-         Suggestions $$1 = this.s.join();
-         if (!$$1.isEmpty()) {
-            int $$2 = 0;
-
-            for (Suggestion $$3 : $$1.getList()) {
-               $$2 = Math.max($$2, this.h.b($$3.getText()));
-            }
-
-            int $$4 = atq.a(this.g.p($$1.getRange().getStart()), 0, this.g.p(0) + this.g.h() - $$2);
-            int $$5 = this.m ? this.f.h - 12 : 72;
-            this.t = new evh.a($$4, $$5, $$2, this.a($$1), $$0);
-         }
-      }
-   }
-
-   public boolean a() {
-      return this.t != null;
-   }
-
-   public uv b() {
-      if (this.t != null && this.t.h) {
-         return this.w ? uv.c("narration.suggestion.usage.cycle.hidable") : uv.c("narration.suggestion.usage.cycle.fixed");
-      } else {
-         return this.w ? uv.c("narration.suggestion.usage.fill.hidable") : uv.c("narration.suggestion.usage.fill.fixed");
-      }
-   }
-
-   public void c() {
-      this.t = null;
-   }
-
-   private List<Suggestion> a(Suggestions $$0) {
-      String $$1 = this.g.a().substring(0, this.g.f());
-      int $$2 = a($$1);
-      String $$3 = $$1.substring($$2).toLowerCase(Locale.ROOT);
-      List<Suggestion> $$4 = Lists.newArrayList();
-      List<Suggestion> $$5 = Lists.newArrayList();
-
-      for (Suggestion $$6 : $$0.getList()) {
-         if (!$$6.getText().startsWith($$3) && !$$6.getText().startsWith("minecraft:" + $$3)) {
-            $$5.add($$6);
-         } else {
-            $$4.add($$6);
-         }
-      }
-
-      $$4.addAll($$5);
-      return $$4;
-   }
-
-   public void d() {
-      String $$0 = this.g.a();
-      if (this.r != null && !this.r.getReader().getString().equals($$0)) {
-         this.r = null;
-      }
-
-      if (!this.v) {
-         this.g.c(null);
-         this.t = null;
-      }
-
-      this.o.clear();
-      StringReader $$1 = new StringReader($$0);
-      boolean $$2 = $$1.canRead() && $$1.peek() == '/';
-      if ($$2) {
-         $$1.skip();
-      }
-
-      boolean $$3 = this.i || $$2;
-      int $$4 = this.g.f();
-      if ($$3) {
-         CommandDispatcher<dy> $$5 = this.e.s.cn.s();
-         if (this.r == null) {
-            this.r = $$5.parse($$1, this.e.s.cn.i());
-         }
-
-         int $$6 = this.j ? $$1.getCursor() : 1;
-         if ($$4 >= $$6 && (this.t == null || !this.v)) {
-            this.s = $$5.getCompletionSuggestions(this.r, $$4);
-            this.s.thenRun(() -> {
-               if (this.s.isDone()) {
-                  this.f();
-               }
-            });
-         }
-      } else {
-         String $$7 = $$0.substring(0, $$4);
-         int $$8 = a($$7);
-         Collection<String> $$9 = this.e.s.cn.i().z();
-         this.s = dy.b($$9, new SuggestionsBuilder($$7, $$8));
-      }
-   }
-
-   private static int a(String $$0) {
-      if (Strings.isNullOrEmpty($$0)) {
-         return 0;
-      } else {
-         int $$1 = 0;
-         Matcher $$2 = a.matcher($$0);
-
-         while ($$2.find()) {
-            $$1 = $$2.end();
-         }
-
-         return $$1;
-      }
-   }
-
-   private static atc a(CommandSyntaxException $$0) {
-      uv $$1 = uy.a($$0.getRawMessage());
-      String $$2 = $$0.getContext();
-      return $$2 == null ? $$1.g() : uv.a("command.context.parse_error", $$1, $$0.getCursor(), $$2).g();
-   }
-
-   private void f() {
-      boolean $$0 = false;
-      if (this.g.f() == this.g.a().length()) {
-         if (this.s.join().isEmpty() && !this.r.getExceptions().isEmpty()) {
-            int $$1 = 0;
-
-            for (Entry<CommandNode<dy>, CommandSyntaxException> $$2 : this.r.getExceptions().entrySet()) {
-               CommandSyntaxException $$3 = $$2.getValue();
-               if ($$3.getType() == CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect()) {
-                  $$1++;
-               } else {
-                  this.o.add(a($$3));
-               }
-            }
-
-            if ($$1 > 0) {
-               this.o.add(a(CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().create()));
-            }
-         } else if (this.r.getReader().canRead()) {
-            $$0 = true;
-         }
-      }
-
-      this.p = 0;
-      this.q = this.f.g;
-      if (this.o.isEmpty() && !this.a(n.h) && $$0) {
-         this.o.add(a(dv.b(this.r)));
-      }
-
-      this.t = null;
-      if (this.u && this.e.m.H().c()) {
-         this.c(false);
-      }
-   }
-
-   private boolean a(n $$0) {
-      CommandContextBuilder<dy> $$1 = this.r.getContext();
-      SuggestionContext<dy> $$2 = $$1.findSuggestionContext(this.g.f());
-      Map<CommandNode<dy>, String> $$3 = this.e.s.cn.s().getSmartUsage($$2.parent, this.e.s.cn.i());
-      List<atc> $$4 = Lists.newArrayList();
-      int $$5 = 0;
-      vs $$6 = vs.a.a($$0);
-
-      for (Entry<CommandNode<dy>, String> $$7 : $$3.entrySet()) {
-         if (!($$7.getKey() instanceof LiteralCommandNode)) {
-            $$4.add(atc.forward($$7.getValue(), $$6));
-            $$5 = Math.max($$5, this.h.b($$7.getValue()));
-         }
-      }
-
-      if (!$$4.isEmpty()) {
-         this.o.addAll($$4);
-         this.p = atq.a(this.g.p($$2.startPos), 0, this.g.p(0) + this.g.h() - $$5);
-         this.q = $$5;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private atc a(String $$0, int $$1) {
-      return this.r != null ? a(this.r, $$0, $$1) : atc.forward($$0, vs.a);
-   }
-
-   @Nullable
-   static String a(String $$0, String $$1) {
-      return $$1.startsWith($$0) ? $$1.substring($$0.length()) : null;
-   }
-
-   private static atc a(ParseResults<dy> $$0, String $$1, int $$2) {
-      List<atc> $$3 = Lists.newArrayList();
-      int $$4 = 0;
-      int $$5 = -1;
-      CommandContextBuilder<dy> $$6 = $$0.getContext().getLastChild();
-
-      for (ParsedArgument<dy, ?> $$7 : $$6.getArguments().values()) {
-         if (++$$5 >= d.size()) {
-            $$5 = 0;
-         }
-
-         int $$8 = Math.max($$7.getRange().getStart() - $$2, 0);
-         if ($$8 >= $$1.length()) {
-            break;
-         }
-
-         int $$9 = Math.min($$7.getRange().getEnd() - $$2, $$1.length());
-         if ($$9 > 0) {
-            $$3.add(atc.forward($$1.substring($$4, $$8), c));
-            $$3.add(atc.forward($$1.substring($$8, $$9), d.get($$5)));
-            $$4 = $$9;
-         }
-      }
-
-      if ($$0.getReader().canRead()) {
-         int $$10 = Math.max($$0.getReader().getCursor() - $$2, 0);
-         if ($$10 < $$1.length()) {
-            int $$11 = Math.min($$10 + $$0.getReader().getRemainingLength(), $$1.length());
-            $$3.add(atc.forward($$1.substring($$4, $$10), c));
-            $$3.add(atc.forward($$1.substring($$10, $$11), b));
-            $$4 = $$11;
-         }
-      }
-
-      $$3.add(atc.forward($$1.substring($$4), c));
-      return atc.composite($$3);
-   }
-
-   public void a(eut $$0, int $$1, int $$2) {
-      if (!this.b($$0, $$1, $$2)) {
-         this.a($$0);
-      }
-   }
-
-   public boolean b(eut $$0, int $$1, int $$2) {
-      if (this.t != null) {
-         this.t.a($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void a(eut $$0) {
-      int $$1 = 0;
-
-      for (atc $$2 : this.o) {
-         int $$3 = this.m ? this.f.h - 14 - 13 - 12 * $$1 : 72 + 12 * $$1;
-         $$0.a(this.p - 1, $$3, this.p + this.q + 1, $$3 + 12, this.n);
-         $$0.b(this.h, $$2, this.p, $$3 + 2, -1);
-         $$1++;
-      }
-   }
-
-   public uv e() {
-      return (uv)(this.t != null ? uu.r.f().b(this.t.b()) : uu.a);
-   }
-
-   public class a {
-      private final fre b;
-      private final String c;
-      private final List<Suggestion> d;
-      private int e;
-      private int f;
-      private ejy g = ejy.a;
-      boolean h;
-      private int i;
-
-      a(int $$1, int $$2, int $$3, List<Suggestion> $$4, boolean $$5) {
-         int $$6 = $$1 - (evh.this.g.g() ? 0 : 1);
-         int $$7 = evh.this.m ? $$2 - 3 - Math.min($$4.size(), evh.this.l) * 12 : $$2 - (evh.this.g.g() ? 1 : 0);
-         this.b = new fre($$6, $$7, $$3 + 1, Math.min($$4.size(), evh.this.l) * 12);
-         this.c = evh.this.g.a();
-         this.i = $$5 ? -1 : 0;
-         this.d = $$4;
-         this.b(0);
-      }
-
-      public void a(eut $$0, int $$1, int $$2) {
-         int $$3 = Math.min(this.d.size(), evh.this.l);
-         int $$4 = -5592406;
-         boolean $$5 = this.e > 0;
-         boolean $$6 = this.d.size() > this.e + $$3;
-         boolean $$7 = $$5 || $$6;
-         boolean $$8 = this.g.i != (float)$$1 || this.g.j != (float)$$2;
-         if ($$8) {
-            this.g = new ejy((float)$$1, (float)$$2);
-         }
-
-         if ($$7) {
-            $$0.a(this.b.a(), this.b.b() - 1, this.b.a() + this.b.c(), this.b.b(), evh.this.n);
-            $$0.a(this.b.a(), this.b.b() + this.b.d(), this.b.a() + this.b.c(), this.b.b() + this.b.d() + 1, evh.this.n);
-            if ($$5) {
-               for (int $$9 = 0; $$9 < this.b.c(); $$9++) {
-                  if ($$9 % 2 == 0) {
-                     $$0.a(this.b.a() + $$9, this.b.b() - 1, this.b.a() + $$9 + 1, this.b.b(), -1);
-                  }
-               }
-            }
-
-            if ($$6) {
-               for (int $$10 = 0; $$10 < this.b.c(); $$10++) {
-                  if ($$10 % 2 == 0) {
-                     $$0.a(this.b.a() + $$10, this.b.b() + this.b.d(), this.b.a() + $$10 + 1, this.b.b() + this.b.d() + 1, -1);
-                  }
-               }
-            }
-         }
-
-         boolean $$11 = false;
-
-         for (int $$12 = 0; $$12 < $$3; $$12++) {
-            Suggestion $$13 = this.d.get($$12 + this.e);
-            $$0.a(this.b.a(), this.b.b() + 12 * $$12, this.b.a() + this.b.c(), this.b.b() + 12 * $$12 + 12, evh.this.n);
-            if ($$1 > this.b.a() && $$1 < this.b.a() + this.b.c() && $$2 > this.b.b() + 12 * $$12 && $$2 < this.b.b() + 12 * $$12 + 12) {
-               if ($$8) {
-                  this.b($$12 + this.e);
-               }
-
-               $$11 = true;
-            }
-
-            $$0.b(evh.this.h, $$13.getText(), this.b.a() + 1, this.b.b() + 2 + 12 * $$12, $$12 + this.e == this.f ? -256 : -5592406);
-         }
-
-         if ($$11) {
-            Message $$14 = this.d.get(this.f).getTooltip();
-            if ($$14 != null) {
-               $$0.a(evh.this.h, uy.a($$14), $$1, $$2);
-            }
-         }
-      }
-
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (!this.b.b($$0, $$1)) {
-            return false;
-         } else {
-            int $$3 = ($$1 - this.b.b()) / 12 + this.e;
-            if ($$3 >= 0 && $$3 < this.d.size()) {
-               this.b($$3);
-               this.a();
-            }
-
-            return true;
-         }
-      }
-
-      public boolean a(double $$0) {
-         int $$1 = (int)(evh.this.e.n.e() * (double)evh.this.e.aL().o() / (double)evh.this.e.aL().m());
-         int $$2 = (int)(evh.this.e.n.f() * (double)evh.this.e.aL().p() / (double)evh.this.e.aL().n());
-         if (this.b.b($$1, $$2)) {
-            this.e = atq.a((int)((double)this.e - $$0), 0, Math.max(this.d.size() - evh.this.l, 0));
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public boolean b(int $$0, int $$1, int $$2) {
-         if ($$0 == 265) {
-            this.a(-1);
-            this.h = false;
-            return true;
-         } else if ($$0 == 264) {
-            this.a(1);
-            this.h = false;
-            return true;
-         } else if ($$0 == 258) {
-            if (this.h) {
-               this.a(faz.q() ? -1 : 1);
-            }
-
-            this.a();
-            return true;
-         } else if ($$0 == 256) {
-            evh.this.c();
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public void a(int $$0) {
-         this.b(this.f + $$0);
-         int $$1 = this.e;
-         int $$2 = this.e + evh.this.l - 1;
-         if (this.f < $$1) {
-            this.e = atq.a(this.f, 0, Math.max(this.d.size() - evh.this.l, 0));
-         } else if (this.f > $$2) {
-            this.e = atq.a(this.f + evh.this.k - evh.this.l, 0, Math.max(this.d.size() - evh.this.l, 0));
-         }
-      }
-
-      public void b(int $$0) {
-         this.f = $$0;
-         if (this.f < 0) {
-            this.f = this.f + this.d.size();
-         }
-
-         if (this.f >= this.d.size()) {
-            this.f = this.f - this.d.size();
-         }
-
-         Suggestion $$1 = this.d.get(this.f);
-         evh.this.g.c(evh.a(evh.this.g.a(), $$1.apply(this.c)));
-         if (this.i != this.f) {
-            evh.this.e.aU().c(this.b());
-         }
-      }
-
-      public void a() {
-         Suggestion $$0 = this.d.get(this.f);
-         evh.this.v = true;
-         evh.this.g.a($$0.apply(this.c));
-         int $$1 = $$0.getRange().getStart() + $$0.getText().length();
-         evh.this.g.k($$1);
-         evh.this.g.o($$1);
-         this.b(this.f);
-         evh.this.v = false;
-         this.h = true;
-      }
-
-      uv b() {
-         this.i = this.f;
-         Suggestion $$0 = this.d.get(this.f);
-         Message $$1 = $$0.getTooltip();
-         return $$1 != null
-            ? uv.a("narration.suggestion.tooltip", this.f + 1, this.d.size(), $$0.getText(), uv.a($$1))
-            : uv.a("narration.suggestion", this.f + 1, this.d.size(), $$0.getText());
-      }
-   }
+   public static final evb a = evb.a.a(3.0F)
+      .a(
+         "croaking_body",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.375F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.4167F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.4583F, evd.a(0.0F, 1.0F, 0.0F), eva.b.a),
+            new evc(2.9583F, evd.a(0.0F, 1.0F, 0.0F), eva.b.a),
+            new evc(3.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "croaking_body",
+         new eva(
+            eva.d.c,
+            new evc(0.0F, evd.a(0.0, 0.0, 0.0), eva.b.a),
+            new evc(0.375F, evd.a(0.0, 0.0, 0.0), eva.b.a),
+            new evc(0.4167F, evd.a(1.0, 1.0, 1.0), eva.b.a),
+            new evc(0.4583F, evd.a(1.0, 1.0, 1.0), eva.b.a),
+            new evc(0.5417F, evd.a(1.3F, 2.1F, 1.6F), eva.b.a),
+            new evc(0.625F, evd.a(1.3F, 2.1F, 1.6F), eva.b.a),
+            new evc(0.7083F, evd.a(1.0, 1.0, 1.0), eva.b.a),
+            new evc(2.25F, evd.a(1.0, 1.0, 1.0), eva.b.a),
+            new evc(2.3333F, evd.a(1.3F, 2.1F, 1.6F), eva.b.a),
+            new evc(2.4167F, evd.a(1.3F, 2.1F, 1.6F), eva.b.a),
+            new evc(2.5F, evd.a(1.0, 1.0, 1.0), eva.b.a),
+            new evc(2.5833F, evd.a(1.0, 1.0, 1.0), eva.b.a),
+            new evc(2.6667F, evd.a(1.3F, 2.1F, 1.6F), eva.b.a),
+            new evc(2.875F, evd.a(1.3F, 2.1F, 1.6F), eva.b.a),
+            new evc(2.9583F, evd.a(1.0, 1.0, 1.0), eva.b.a),
+            new evc(3.0F, evd.a(0.0, 0.0, 0.0), eva.b.a)
+         )
+      )
+      .b();
+   public static final evb b = evb.a.a(1.25F)
+      .a()
+      .a(
+         "left_arm",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, -5.0F, 0.0F), eva.b.a),
+            new evc(0.2917F, evd.b(7.5F, -2.67F, -7.5F), eva.b.a),
+            new evc(0.625F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.7917F, evd.b(22.5F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.125F, evd.b(-45.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.25F, evd.b(0.0F, -5.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.1F, -2.0F), eva.b.a),
+            new evc(0.2917F, evd.a(-0.5F, -0.25F, -0.13F), eva.b.a),
+            new evc(0.625F, evd.a(-0.5F, 0.1F, 2.0F), eva.b.a),
+            new evc(0.9583F, evd.a(0.5F, 1.0F, -0.11F), eva.b.a),
+            new evc(1.25F, evd.a(0.0F, 0.1F, -2.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.125F, evd.b(22.5F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.4583F, evd.b(-45.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.625F, evd.b(0.0F, 5.0F, 0.0F), eva.b.a),
+            new evc(0.9583F, evd.b(7.5F, 2.33F, 7.5F), eva.b.a),
+            new evc(1.25F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.5F, 0.1F, 2.0F), eva.b.a),
+            new evc(0.2917F, evd.a(-0.5F, 1.0F, 0.12F), eva.b.a),
+            new evc(0.625F, evd.a(0.0F, 0.1F, -2.0F), eva.b.a),
+            new evc(0.9583F, evd.a(0.5F, -0.25F, -0.13F), eva.b.a),
+            new evc(1.25F, evd.a(0.5F, 0.1F, 2.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.1667F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.2917F, evd.b(45.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.625F, evd.b(-45.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.7917F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.25F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.1F, 1.2F), eva.b.a),
+            new evc(0.1667F, evd.a(0.0F, 0.1F, 2.0F), eva.b.a),
+            new evc(0.4583F, evd.a(0.0F, 2.0F, 1.06F), eva.b.a),
+            new evc(0.7917F, evd.a(0.0F, 0.1F, -1.0F), eva.b.a),
+            new evc(1.25F, evd.a(0.0F, 0.1F, 1.2F), eva.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(-33.75F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.0417F, evd.b(-45.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.1667F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.7917F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.9583F, evd.b(45.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.25F, evd.b(-33.75F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 1.14F, 0.11F), eva.b.a),
+            new evc(0.1667F, evd.a(0.0F, 0.1F, -1.0F), eva.b.a),
+            new evc(0.7917F, evd.a(0.0F, 0.1F, 2.0F), eva.b.a),
+            new evc(1.125F, evd.a(0.0F, 2.0F, 0.95F), eva.b.a),
+            new evc(1.25F, evd.a(0.0F, 1.14F, 0.11F), eva.b.a)
+         )
+      )
+      .a(
+         "body",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 5.0F, 0.0F), eva.b.a),
+            new evc(0.2917F, evd.b(-7.5F, 0.33F, 7.5F), eva.b.a),
+            new evc(0.625F, evd.b(0.0F, -5.0F, 0.0F), eva.b.a),
+            new evc(0.9583F, evd.b(-7.5F, 0.33F, -7.5F), eva.b.a),
+            new evc(1.25F, evd.b(0.0F, 5.0F, 0.0F), eva.b.a)
+         )
+      )
+      .b();
+   public static final evb c = evb.a.a(0.5F)
+      .a("body", new eva(eva.d.b, new evc(0.0F, evd.b(-22.5F, 0.0F, 0.0F), eva.b.a), new evc(0.5F, evd.b(-22.5F, 0.0F, 0.0F), eva.b.a)))
+      .a("body", new eva(eva.d.a, new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a), new evc(0.5F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a)))
+      .a("left_arm", new eva(eva.d.b, new evc(0.0F, evd.b(-56.14F, 0.0F, 0.0F), eva.b.a), new evc(0.5F, evd.b(-56.14F, 0.0F, 0.0F), eva.b.a)))
+      .a("left_arm", new eva(eva.d.a, new evc(0.0F, evd.a(0.0F, 1.0F, 0.0F), eva.b.a), new evc(0.5F, evd.a(0.0F, 1.0F, 0.0F), eva.b.a)))
+      .a("right_arm", new eva(eva.d.b, new evc(0.0F, evd.b(-56.14F, 0.0F, 0.0F), eva.b.a), new evc(0.5F, evd.b(-56.14F, 0.0F, 0.0F), eva.b.a)))
+      .a("right_arm", new eva(eva.d.a, new evc(0.0F, evd.a(0.0F, 1.0F, 0.0F), eva.b.a), new evc(0.5F, evd.a(0.0F, 1.0F, 0.0F), eva.b.a)))
+      .a("left_leg", new eva(eva.d.b, new evc(0.0F, evd.b(45.0F, 0.0F, 0.0F), eva.b.a), new evc(0.5F, evd.b(45.0F, 0.0F, 0.0F), eva.b.a)))
+      .a("left_leg", new eva(eva.d.a, new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a), new evc(0.5F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a)))
+      .a("right_leg", new eva(eva.d.b, new evc(0.0F, evd.b(45.0F, 0.0F, 0.0F), eva.b.a), new evc(0.5F, evd.b(45.0F, 0.0F, 0.0F), eva.b.a)))
+      .a("right_leg", new eva(eva.d.a, new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a), new evc(0.5F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a)))
+      .b();
+   public static final evb d = evb.a.a(0.5F)
+      .a(
+         "head",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.0833F, evd.b(-60.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.4167F, evd.b(-60.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "head",
+         new eva(
+            eva.d.c,
+            new evc(0.0F, evd.b(1.0F, 1.0F, 1.0F), eva.b.a),
+            new evc(0.0833F, evd.b(0.998F, 1.0F, 1.0F), eva.b.a),
+            new evc(0.4167F, evd.b(0.998F, 1.0F, 1.0F), eva.b.a),
+            new evc(0.5F, evd.b(1.0F, 1.0F, 1.0F), eva.b.a)
+         )
+      )
+      .a(
+         "tongue",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.0833F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.4167F, evd.b(-18.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "tongue",
+         new eva(
+            eva.d.c,
+            new evc(0.0833F, evd.a(1.0, 1.0, 1.0), eva.b.a),
+            new evc(0.1667F, evd.a(0.5, 1.0, 5.0), eva.b.a),
+            new evc(0.4167F, evd.a(1.0, 1.0, 1.0), eva.b.a)
+         )
+      )
+      .b();
+   public static final evb e = evb.a.a(1.04167F)
+      .a()
+      .a(
+         "body",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.3333F, evd.b(10.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.6667F, evd.b(-10.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.0417F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(90.0F, 22.5F, 0.0F), eva.b.b),
+            new evc(0.4583F, evd.b(45.0F, 22.5F, 0.0F), eva.b.b),
+            new evc(0.6667F, evd.b(-22.5F, -22.5F, -22.5F), eva.b.b),
+            new evc(0.875F, evd.b(-45.0F, -22.5F, 0.0F), eva.b.b),
+            new evc(0.9583F, evd.b(22.5F, 0.0F, 22.5F), eva.b.b),
+            new evc(1.0417F, evd.b(90.0F, 22.5F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, -0.64F, 2.0F), eva.b.b),
+            new evc(0.4583F, evd.a(0.0F, -0.64F, 0.0F), eva.b.b),
+            new evc(0.6667F, evd.a(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.875F, evd.a(0.0F, -0.27F, -1.14F), eva.b.b),
+            new evc(0.9583F, evd.a(0.0F, -1.45F, 0.43F), eva.b.b),
+            new evc(1.0417F, evd.a(0.0F, -0.64F, 2.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(90.0F, -22.5F, 0.0F), eva.b.b),
+            new evc(0.4583F, evd.b(45.0F, -22.5F, 0.0F), eva.b.b),
+            new evc(0.6667F, evd.b(-22.5F, 22.5F, 22.5F), eva.b.b),
+            new evc(0.875F, evd.b(-45.0F, 22.5F, 0.0F), eva.b.b),
+            new evc(0.9583F, evd.b(22.5F, 0.0F, -22.5F), eva.b.b),
+            new evc(1.0417F, evd.b(90.0F, -22.5F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, -0.64F, 2.0F), eva.b.b),
+            new evc(0.4583F, evd.a(0.0F, -0.64F, 0.0F), eva.b.b),
+            new evc(0.6667F, evd.a(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.875F, evd.a(0.0F, -0.27F, -1.14F), eva.b.b),
+            new evc(0.9583F, evd.a(0.0F, -1.45F, 0.43F), eva.b.b),
+            new evc(1.0417F, evd.a(0.0F, -0.64F, 2.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.25F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.4583F, evd.b(67.5F, -45.0F, 0.0F), eva.b.b),
+            new evc(0.7917F, evd.b(90.0F, 45.0F, 0.0F), eva.b.b),
+            new evc(0.9583F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.0417F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(-2.5F, 0.0F, 1.0F), eva.b.b),
+            new evc(0.25F, evd.a(-2.0F, 0.0F, 1.0F), eva.b.b),
+            new evc(0.4583F, evd.a(1.0F, -2.0F, -1.0F), eva.b.b),
+            new evc(0.7917F, evd.a(0.58F, 0.0F, -2.83F), eva.b.b),
+            new evc(0.9583F, evd.a(-2.5F, 0.0F, 1.0F), eva.b.b),
+            new evc(1.0417F, evd.a(-2.5F, 0.0F, 1.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.25F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.4583F, evd.b(67.5F, 45.0F, 0.0F), eva.b.b),
+            new evc(0.7917F, evd.b(90.0F, -45.0F, 0.0F), eva.b.b),
+            new evc(0.9583F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.0417F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(2.5F, 0.0F, 1.0F), eva.b.b),
+            new evc(0.25F, evd.a(2.0F, 0.0F, 1.0F), eva.b.b),
+            new evc(0.4583F, evd.a(-1.0F, -2.0F, -1.0F), eva.b.b),
+            new evc(0.7917F, evd.a(-0.58F, 0.0F, -2.83F), eva.b.b),
+            new evc(0.9583F, evd.a(2.5F, 0.0F, 1.0F), eva.b.b),
+            new evc(1.0417F, evd.a(2.5F, 0.0F, 1.0F), eva.b.b)
+         )
+      )
+      .b();
+   public static final evb f = evb.a.a(3.0F)
+      .a()
+      .a(
+         "body",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.625F, evd.b(-10.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(3.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, -22.5F), eva.b.b),
+            new evc(2.2083F, evd.b(0.0F, 0.0F, -45.0F), eva.b.b),
+            new evc(3.0F, evd.b(0.0F, 0.0F, -22.5F), eva.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(-1.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(2.2083F, evd.a(-1.0F, -0.5F, 0.0F), eva.b.b),
+            new evc(3.0F, evd.a(-1.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 22.5F), eva.b.b),
+            new evc(2.2083F, evd.b(0.0F, 0.0F, 45.0F), eva.b.b),
+            new evc(3.0F, evd.b(0.0F, 0.0F, 22.5F), eva.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(1.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(2.2083F, evd.a(1.0F, -0.5F, 0.0F), eva.b.b),
+            new evc(3.0F, evd.a(1.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(22.5F, -22.5F, 0.0F), eva.b.b),
+            new evc(1.0F, evd.b(22.5F, -22.5F, -45.0F), eva.b.b),
+            new evc(3.0F, evd.b(22.5F, -22.5F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 1.0F), eva.b.b),
+            new evc(1.0F, evd.a(0.0F, -1.0F, 1.0F), eva.b.b),
+            new evc(3.0F, evd.a(0.0F, 0.0F, 1.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(22.5F, 22.5F, 0.0F), eva.b.b),
+            new evc(1.0F, evd.b(22.5F, 22.5F, 45.0F), eva.b.b),
+            new evc(3.0F, evd.b(22.5F, 22.5F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 1.0F), eva.b.b),
+            new evc(1.0F, evd.a(0.0F, -1.0F, 1.0F), eva.b.b),
+            new evc(3.0F, evd.a(0.0F, 0.0F, 1.0F), eva.b.b)
+         )
+      )
+      .b();
 }

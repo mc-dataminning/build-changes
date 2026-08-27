@@ -1,25 +1,25 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public interface crr extends crw, csi, csk {
-   @Override
-   default <T extends dfi> Optional<T> a(hx $$0, dfk<T> $$1) {
-      return csi.super.a($$0, $$1);
+public class crr extends cqs {
+   public crr(cqs.a $$0, blk... $$1) {
+      super($$0, cqt.b, $$1);
    }
 
    @Override
-   default List<eks> c(@Nullable bkv $$0, eju $$1) {
-      return crw.super.c($$0, $$1);
+   public int a(int $$0) {
+      return $$0 * 10;
    }
 
    @Override
-   default boolean a(@Nullable bkv $$0, eks $$1) {
-      return crw.super.a($$0, $$1);
+   public int b(int $$0) {
+      return this.a($$0) + 15;
    }
 
    @Override
-   default hx a(dmw.a $$0, hx $$1) {
-      return csi.super.a($$0, $$1);
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(cqs $$0) {
+      return super.a($$0) && $$0 != cqw.j;
    }
 }

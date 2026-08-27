@@ -1,63 +1,25 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class cx extends cw<cx.a> {
-   public cx.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      cvf $$3 = a($$0);
-      Optional<da> $$4 = da.a($$0.get("state"));
-      if ($$3 != null) {
-         $$4.ifPresent($$1x -> $$1x.a($$3.n(), $$1xx -> {
-               throw new JsonSyntaxException("Block " + $$3 + " has no property " + $$1xx);
-            }));
-      }
+public record cx(ck.d c) implements bq {
+   public static final MapCodec<cx> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(atg.a(ck.d.d, "size", ck.d.c).forGetter(cx::b)).apply($$0, cx::new));
 
-      return new cx.a($$1, $$3, $$4);
+   public static cx a(ck.d $$0) {
+      return new cx($$0);
    }
 
-   @Nullable
-   private static cvf a(JsonObject $$0) {
-      if ($$0.has("block")) {
-         agm $$1 = new agm(atg.i($$0, "block"));
-         return kc.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
-      } else {
-         return null;
-      }
+   @Override
+   public boolean a(blf $$0, amp $$1, @Nullable elb $$2) {
+      return $$0 instanceof cci $$3 ? this.c.d($$3.gf()) : false;
    }
 
-   public void a(amj $$0, dhn $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   @Override
+   public bq.a a() {
+      return bq.b.e;
    }
 
-   public static class a extends at {
-      @Nullable
-      private final cvf a;
-      private final Optional<da> b;
-
-      public a(Optional<bc> $$0, @Nullable cvf $$1, Optional<da> $$2) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
-      }
-
-      public static am<cx.a> a(cvf $$0) {
-         return al.J.a(new cx.a(Optional.empty(), $$0, Optional.empty()));
-      }
-
-      @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         if (this.a != null) {
-            $$0.addProperty("block", kc.f.b(this.a).toString());
-         }
-
-         this.b.ifPresent($$1 -> $$0.add("state", $$1.a()));
-         return $$0;
-      }
-
-      public boolean a(dhn $$0) {
-         return this.a != null && !$$0.a(this.a) ? false : !this.b.isPresent() || this.b.get().a($$0);
-      }
+   public ck.d b() {
+      return this.c;
    }
 }

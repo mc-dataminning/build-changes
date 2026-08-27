@@ -1,60 +1,58 @@
-import java.util.Optional;
+public abstract class cic {
+   private int a;
 
-public class cic extends cim {
-   public cic(biu $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
+   public static cic a(final chu $$0, final int $$1) {
+      return new cic() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
+         }
+      };
    }
 
-   @Override
-   public void b(clo $$0, clo $$1) {
+   public static cic a(final int[] $$0, final int $$1) {
+      return new cic() {
+         @Override
+         public int b() {
+            return $$0[$$1];
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
+         }
+      };
    }
 
-   @Override
-   public boolean a(cdz $$0) {
-      return false;
+   public static cic a() {
+      return new cic() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
    }
 
-   @Override
-   public Optional<clo> a(int $$0, int $$1, cdz $$2) {
-      return Optional.empty();
-   }
+   public abstract int b();
 
-   @Override
-   public clo b(int $$0, int $$1, cdz $$2) {
-      return clo.b;
-   }
+   public abstract void a(int var1);
 
-   @Override
-   public clo d(clo $$0) {
-      return $$0;
-   }
-
-   @Override
-   public clo b(clo $$0, int $$1) {
-      return this.d($$0);
-   }
-
-   @Override
-   public boolean b(cdz $$0) {
-      return false;
-   }
-
-   @Override
-   public boolean a(clo $$0) {
-      return false;
-   }
-
-   @Override
-   public clo a(int $$0) {
-      return clo.b;
-   }
-
-   @Override
-   public void a(cdz $$0, clo $$1) {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
+      this.a = $$0;
+      return $$1;
    }
 }

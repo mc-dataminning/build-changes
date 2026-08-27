@@ -1,11 +1,22 @@
-public class gan extends gak<cbt, fjn<cbt>> {
-   public gan(fxx<cbt, fjn<cbt>> $$0) {
-      super($$0);
+public class gan extends fyu<ccp, fln<ccp>> {
+   private static final agt a = new agt("textures/entity/witch.png");
+
+   public gan(fxo.a $$0) {
+      super($$0, new fln<>($$0.a(flx.bR)), 0.5F);
+      this.a(new gcm<>(this, $$0.d()));
    }
 
-   public void a(eob $$0, fqz $$1, int $$2, cbt $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      agm $$10 = fyb.a($$3.gg());
-      eof $$11 = $$1.getBuffer(frh.c($$10));
-      this.c().c().a($$0, $$11, $$2, fxd.c($$3, 0.0F));
+   public void a(ccp $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
+      this.f.b(!$$0.eT().b());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public agt a(ccp $$0) {
+      return a;
+   }
+
+   protected void a(ccp $$0, epd $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

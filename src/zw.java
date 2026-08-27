@@ -1,53 +1,68 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+public class zw implements wu<yo> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final long e;
+   private final int f;
+   private final int g;
+   private final int h;
 
-public record zw(int a, boolean b, Set<agl<csf>> c, int d, int e, int f, boolean g, boolean h, boolean i, acm j) implements wo<yh> {
-   public zw(ty $$0) {
-      this(
-         $$0.readInt(),
-         $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(kd.aJ)),
-         $$0.n(),
-         $$0.n(),
-         $$0.n(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         new acm($$0)
-      );
+   public zw(ue $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.o();
+      this.f = $$0.n();
+      this.g = $$0.n();
+      this.h = $$0.n();
+   }
+
+   public zw(dkg $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
+      this.c = $$0.i();
+      this.d = $$0.k();
+      this.e = $$0.j();
+      this.f = $$0.m();
+      this.g = $$0.r();
+      this.h = $$0.q();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.p(this.a);
+   public void a(ue $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
-      $$0.a(this.c, ty::b);
-      $$0.c(this.d);
-      $$0.c(this.e);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
       $$0.c(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      this.j.a($$0);
+      $$0.c(this.g);
+      $$0.c(this.h);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public boolean d() {
+   public double a() {
+      return this.a;
+   }
+
+   public double d() {
       return this.b;
    }
 
-   public Set<agl<csf>> e() {
-      return this.c;
-   }
-
-   public int f() {
+   public double e() {
       return this.d;
    }
 
-   public int g() {
+   public double f() {
+      return this.c;
+   }
+
+   public long g() {
       return this.e;
    }
 
@@ -55,19 +70,11 @@ public record zw(int a, boolean b, Set<agl<csf>> c, int d, int e, int f, boolean
       return this.f;
    }
 
-   public boolean i() {
-      return this.g;
-   }
-
-   public boolean j() {
+   public int i() {
       return this.h;
    }
 
-   public boolean k() {
-      return this.i;
-   }
-
-   public acm l() {
-      return this.j;
+   public int j() {
+      return this.g;
    }
 }

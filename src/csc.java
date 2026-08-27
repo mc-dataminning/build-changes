@@ -1,103 +1,80 @@
-import java.util.function.IntFunction;
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public enum csc implements auk {
-   a(0, "survival"),
-   b(1, "creative"),
-   c(2, "adventure"),
-   d(3, "spectator");
+public class csc<T> extends AbstractIterator<T> {
+   private final ekw a;
+   private final elg b;
+   private final hx c;
+   private final hv.a d;
+   private final elu e;
+   private final csi f;
+   private final boolean g;
+   @Nullable
+   private cse h;
+   private long i;
+   private final BiFunction<hv.a, elu, T> j;
 
-   public static final csc e = a;
-   public static final auk.a<csc> f = auk.a(csc::values);
-   private static final IntFunction<csc> g = asj.a(csc::a, values(), asj.a.a);
-   private static final int h = -1;
-   private final int i;
-   private final String j;
-   private final uv k;
-   private final uv l;
-
-   private csc(int $$0, String $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = uv.c("selectWorld.gameMode." + $$1);
-      this.l = uv.c("gameMode." + $$1);
+   public csc(csi $$0, @Nullable blf $$1, ekw $$2, boolean $$3, BiFunction<hv.a, elu, T> $$4) {
+      this.b = $$1 == null ? elg.a() : elg.a($$1);
+      this.d = new hv.a();
+      this.e = elr.a($$2);
+      this.f = $$0;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = aty.a($$2.a - 1.0E-7) - 1;
+      int $$6 = aty.a($$2.d + 1.0E-7) + 1;
+      int $$7 = aty.a($$2.b - 1.0E-7) - 1;
+      int $$8 = aty.a($$2.e + 1.0E-7) + 1;
+      int $$9 = aty.a($$2.c - 1.0E-7) - 1;
+      int $$10 = aty.a($$2.f + 1.0E-7) + 1;
+      this.c = new hx($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
-   public int a() {
-      return this.i;
-   }
-
-   public String b() {
-      return this.j;
-   }
-
-   @Override
-   public String c() {
-      return this.j;
-   }
-
-   public uv d() {
-      return this.l;
-   }
-
-   public uv e() {
-      return this.k;
-   }
-
-   public void a(cdw $$0) {
-      if (this == b) {
-         $$0.c = true;
-         $$0.d = true;
-         $$0.a = true;
-      } else if (this == d) {
-         $$0.c = true;
-         $$0.d = false;
-         $$0.a = true;
-         $$0.b = true;
+   @Nullable
+   private cse a(int $$0, int $$1) {
+      int $$2 = ix.a($$0);
+      int $$3 = ix.a($$1);
+      long $$4 = csf.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
       } else {
-         $$0.c = false;
-         $$0.d = false;
-         $$0.a = false;
-         $$0.b = false;
+         cse $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
+      }
+   }
+
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            cse $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               dip $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(cwb.bQ))) {
+                  elu $$6 = $$5.b(this.f, this.d, this.b);
+                  if ($$6 == elr.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
+                     }
+                  } else {
+                     elu $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && elr.c($$7, this.e, elf.i)) {
+                        return this.j.apply(this.d, $$7);
+                     }
+                  }
+               }
+            }
+         }
       }
 
-      $$0.e = !this.f();
-   }
-
-   public boolean f() {
-      return this == c || this == d;
-   }
-
-   public boolean g() {
-      return this == b;
-   }
-
-   public boolean h() {
-      return this == a || this == c;
-   }
-
-   public static csc a(int $$0) {
-      return g.apply($$0);
-   }
-
-   public static csc a(String $$0) {
-      return a($$0, a);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static csc a(String $$0, @Nullable csc $$1) {
-      csc $$2 = f.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   public static int a(@Nullable csc $$0) {
-      return $$0 != null ? $$0.i : -1;
-   }
-
-   @Nullable
-   public static csc b(int $$0) {
-      return $$0 == -1 ? null : a($$0);
+      return (T)this.endOfData();
    }
 }

@@ -1,181 +1,33 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dfi {
-   private static final Logger e = LogUtils.getLogger();
-   private final dfk<?> f;
-   @Nullable
-   protected csf o;
-   protected final hx p;
-   protected boolean q;
-   private dhn g;
+public class dfi extends del implements dfb {
+   public static final MapCodec<dfi> m = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dje.a.fieldOf("block_set_type").forGetter(del::g), dfb.a.e.fieldOf("weathering_state").forGetter(dfi::s), u()).apply($$0, dfi::new)
+   );
+   private final dfb.a n;
 
-   public dfi(dfk<?> $$0, hx $$1, dhn $$2) {
-      this.f = $$0;
-      this.p = $$1.i();
-      this.g = $$2;
+   @Override
+   public MapCodec<dfi> a() {
+      return m;
    }
 
-   public static hx c(sd $$0) {
-      return new hx($$0.h("x"), $$0.h("y"), $$0.h("z"));
+   protected dfi(dje $$0, dfb.a $$1, dio.d $$2) {
+      super($$0, $$2);
+      this.n = $$1;
    }
 
-   @Nullable
-   public csf i() {
-      return this.o;
+   @Override
+   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
-   public void a(csf $$0) {
-      this.o = $$0;
+   @Override
+   public boolean e_(dip $$0) {
+      return dfb.c($$0.b()).isPresent();
    }
 
-   public boolean n() {
-      return this.o != null;
-   }
-
-   public void a(sd $$0) {
-   }
-
-   protected void b(sd $$0) {
-   }
-
-   public final sd o() {
-      sd $$0 = this.q();
-      this.e($$0);
-      return $$0;
-   }
-
-   public final sd p() {
-      sd $$0 = this.q();
-      this.d($$0);
-      return $$0;
-   }
-
-   public final sd q() {
-      sd $$0 = new sd();
-      this.b($$0);
-      return $$0;
-   }
-
-   private void d(sd $$0) {
-      agm $$1 = dfk.a(this.v());
-      if ($$1 == null) {
-         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
-      } else {
-         $$0.a("id", $$1.toString());
-      }
-   }
-
-   public static void a(sd $$0, dfk<?> $$1) {
-      $$0.a("id", dfk.a($$1).toString());
-   }
-
-   public void e(clo $$0) {
-      cjh.a($$0, this.v(), this.q());
-   }
-
-   private void e(sd $$0) {
-      this.d($$0);
-      $$0.a("x", this.p.u());
-      $$0.a("y", this.p.v());
-      $$0.a("z", this.p.w());
-   }
-
-   @Nullable
-   public static dfi a(hx $$0, dhn $$1, sd $$2) {
-      String $$3 = $$2.l("id");
-      agm $$4 = agm.a($$3);
-      if ($$4 == null) {
-         e.error("Block entity has invalid type: {}", $$3);
-         return null;
-      } else {
-         return kc.l.b($$4).map($$3x -> {
-            try {
-               return $$3x.a($$0, $$1);
-            } catch (Throwable var5) {
-               e.error("Failed to create block entity {}", $$3, var5);
-               return null;
-            }
-         }).map($$2x -> {
-            try {
-               $$2x.a($$2);
-               return $$2x;
-            } catch (Throwable var4x) {
-               e.error("Failed to load data for block entity {}", $$3, var4x);
-               return null;
-            }
-         }).orElseGet(() -> {
-            e.warn("Skipping BlockEntity with id {}", $$3);
-            return null;
-         });
-      }
-   }
-
-   public void e() {
-      if (this.o != null) {
-         a(this.o, this.p, this.g);
-      }
-   }
-
-   protected static void a(csf $$0, hx $$1, dhn $$2) {
-      $$0.p($$1);
-      if (!$$2.i()) {
-         $$0.c($$1, $$2.b());
-      }
-   }
-
-   public hx aC_() {
-      return this.p;
-   }
-
-   public dhn r() {
-      return this.g;
-   }
-
-   @Nullable
-   public wo<yh> j() {
-      return null;
-   }
-
-   public sd ay_() {
-      return new sd();
-   }
-
-   public boolean s() {
-      return this.q;
-   }
-
-   public void az_() {
-      this.q = true;
-   }
-
-   public void t() {
-      this.q = false;
-   }
-
-   public boolean a_(int $$0, int $$1) {
-      return false;
-   }
-
-   public void a(p $$0) {
-      $$0.a("Name", () -> kc.l.b(this.v()) + " // " + this.getClass().getCanonicalName());
-      if (this.o != null) {
-         p.a($$0, this.o, this.p, this.r());
-         p.a($$0, this.o, this.p, this.o.a_(this.p));
-      }
-   }
-
-   public boolean u() {
-      return false;
-   }
-
-   public dfk<?> v() {
-      return this.f;
-   }
-
-   @Deprecated
-   public void b(dhn $$0) {
-      this.g = $$0;
+   public dfb.a s() {
+      return this.n;
    }
 }

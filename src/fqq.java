@@ -1,51 +1,25 @@
-public enum fqq {
-   a(new fqq.b(fqq.a.f, fqq.a.e, fqq.a.a), new fqq.b(fqq.a.f, fqq.a.e, fqq.a.d), new fqq.b(fqq.a.c, fqq.a.e, fqq.a.d), new fqq.b(fqq.a.c, fqq.a.e, fqq.a.a)),
-   b(new fqq.b(fqq.a.f, fqq.a.b, fqq.a.d), new fqq.b(fqq.a.f, fqq.a.b, fqq.a.a), new fqq.b(fqq.a.c, fqq.a.b, fqq.a.a), new fqq.b(fqq.a.c, fqq.a.b, fqq.a.d)),
-   c(new fqq.b(fqq.a.c, fqq.a.b, fqq.a.d), new fqq.b(fqq.a.c, fqq.a.e, fqq.a.d), new fqq.b(fqq.a.f, fqq.a.e, fqq.a.d), new fqq.b(fqq.a.f, fqq.a.b, fqq.a.d)),
-   d(new fqq.b(fqq.a.f, fqq.a.b, fqq.a.a), new fqq.b(fqq.a.f, fqq.a.e, fqq.a.a), new fqq.b(fqq.a.c, fqq.a.e, fqq.a.a), new fqq.b(fqq.a.c, fqq.a.b, fqq.a.a)),
-   e(new fqq.b(fqq.a.f, fqq.a.b, fqq.a.d), new fqq.b(fqq.a.f, fqq.a.e, fqq.a.d), new fqq.b(fqq.a.f, fqq.a.e, fqq.a.a), new fqq.b(fqq.a.f, fqq.a.b, fqq.a.a)),
-   f(new fqq.b(fqq.a.c, fqq.a.b, fqq.a.a), new fqq.b(fqq.a.c, fqq.a.e, fqq.a.a), new fqq.b(fqq.a.c, fqq.a.e, fqq.a.d), new fqq.b(fqq.a.c, fqq.a.b, fqq.a.d));
-
-   private static final fqq[] g = ac.a(new fqq[6], $$0 -> {
-      $$0[fqq.a.e] = a;
-      $$0[fqq.a.b] = b;
-      $$0[fqq.a.d] = c;
-      $$0[fqq.a.a] = d;
-      $$0[fqq.a.f] = e;
-      $$0[fqq.a.c] = f;
-   });
-   private final fqq.b[] h;
-
-   public static fqq a(ib $$0) {
-      return g[$$0.d()];
+public class fqq extends frd {
+   fqq(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.04F;
+      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
+         this.j = $$4;
+         this.k = 0.1;
+         this.l = $$6;
+      }
    }
 
-   private fqq(fqq.b... $$0) {
-      this.h = $$0;
-   }
+   public static class a implements fpz<jy> {
+      private final fqr a;
 
-   public fqq.b a(int $$0) {
-      return this.h[$$0];
-   }
-
-   public static final class a {
-      public static final int a = ib.d.d();
-      public static final int b = ib.b.d();
-      public static final int c = ib.f.d();
-      public static final int d = ib.c.d();
-      public static final int e = ib.a.d();
-      public static final int f = ib.e.d();
-   }
-
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
+      public a(fqr $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      }
+
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqq $$8 = new fqq($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

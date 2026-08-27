@@ -1,31 +1,41 @@
-public class fvy extends fxi<cbd, fhs<cbd>> {
-   private static final agm a = new agm("textures/entity/enderman/enderman.png");
-   private final atw i = atw.a();
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   public fvy(fwc.a $$0) {
-      super($$0, new fhs<>($$0.a(fks.R)), 0.5F);
-      this.a(new fzu<>(this));
-      this.a(new fzl(this, $$0.c()));
+public class fvy implements fvt.a {
+   private final euk a;
+   private static final int b = 10;
+
+   public fvy(euk $$0) {
+      this.a = $$0;
    }
 
-   public void a(cbd $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
-      dhn $$6 = $$0.gf();
-      fhs<cbd> $$7 = this.a();
-      $$7.a = $$6 != null;
-      $$7.b = $$0.gg();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   @Override
+   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
+      csy $$5 = this.a.r;
+      hv $$6 = hv.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-   public ejz a(cbd $$0, float $$1) {
-      if ($$0.gg()) {
-         double $$2 = 0.02;
-         return new ejz(this.i.k() * 0.02, 0.0, this.i.k() * 0.02);
-      } else {
-         return super.a($$0, $$1);
+      for (hv $$8 : hv.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(cth.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = aty.h($$10, 0.9F, 0.9F);
+         long $$12 = ix.e($$8.a());
+         if ($$7.add($$12)) {
+            fvt.a(
+               $$0,
+               $$1,
+               $$5.K().p().a(cth.a, ix.a($$12)),
+               (double)ix.a(ix.b($$12), 8),
+               (double)ix.a(ix.c($$12), 8),
+               (double)ix.a(ix.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
+
+         if ($$9 != 15) {
+            fvt.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
       }
-   }
-
-   public agm a(cbd $$0) {
-      return a;
    }
 }

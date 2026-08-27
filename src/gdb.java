@@ -1,56 +1,77 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gdb extends apq<List<String>> {
-   private static final agm a = new agm("texts/splashes.txt");
-   private static final atw b = atw.a();
-   private final List<String> c = Lists.newArrayList();
-   private final etx d;
+public class gdb extends gcz implements gda {
+   private static final Logger e = LogUtils.getLogger();
+   @Nullable
+   private eoe f;
 
-   public gdb(etx $$0) {
-      this.d = $$0;
-   }
-
-   protected List<String> a(apl $$0, bfs $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = eti.N().Y().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
-         }
-
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
+   public gdb(eoe $$0) {
+      this.f = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+            this.d();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+         this.d();
       }
    }
 
-   protected void a(List<String> $$0, apl $$1, bfs $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
+   public gdb(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      this.f = new eoe($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+   }
+
+   @Override
+   public void a(aps $$0) {
+   }
+
+   @Override
+   public void d() {
+      if (this.f != null) {
+         this.c();
+         this.f.a(0, 0, 0, false);
+      } else {
+         e.warn("Trying to upload disposed texture {}", this.a());
+      }
    }
 
    @Nullable
-   public ewi a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return ewi.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return ewi.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return ewi.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new ewi(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new ewi(this.c.get(b.a(this.c.size())));
+   public eoe e() {
+      return this.f;
+   }
+
+   public void a(eoe $$0) {
+      if (this.f != null) {
+         this.f.close();
+      }
+
+      this.f = $$0;
+   }
+
+   @Override
+   public void close() {
+      if (this.f != null) {
+         this.f.close();
+         this.b();
+         this.f = null;
+      }
+   }
+
+   @Override
+   public void a(agt $$0, Path $$1) throws IOException {
+      if (this.f != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.f.a($$3);
       }
    }
 }

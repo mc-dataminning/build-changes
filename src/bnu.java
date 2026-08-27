@@ -1,41 +1,83 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
 
-public class bnu extends bnc<cdm> {
-   private static final int d = 1200;
-   final float c;
+public class bnu<E extends blx & cbm, T extends blv> extends bnm<E> {
+   private static final int c = 1200;
+   private int d;
+   private bnu.a e = bnu.a.a;
 
-   public bnu(float $$0) {
-      super(ImmutableMap.of(bum.d, bun.a), 1200);
-      this.c = $$0;
+   public bnu() {
+      super(ImmutableMap.of(bux.n, buy.c, bux.o, buy.a), 1200);
    }
 
-   protected boolean a(ami $$0, cdm $$1) {
-      return $$1.dP().g().map($$0x -> $$0x == cfk.b || $$0x == cfk.c || $$0x == cfk.d).orElse(true);
+   protected boolean a(amp $$0, E $$1) {
+      blv $$2 = b($$1);
+      return $$1.b(cmk.vM) && bno.b($$1, $$2) && bno.a($$1, $$2, 0);
    }
 
-   protected boolean a(ami $$0, cdm $$1, long $$2) {
-      return $$1.dP().a(bum.d);
+   protected boolean a(amp $$0, E $$1, long $$2) {
+      return $$1.dO().a(bux.o) && this.a($$0, $$1);
    }
 
-   protected void b(ami $$0, cdm $$1, long $$2) {
-      bne.a($$1, $$1.dP().c(bum.d).get().b(), this.c, 1);
+   protected void b(amp $$0, E $$1, long $$2) {
+      blv $$3 = b($$1);
+      this.b($$1, $$3);
+      this.a($$1, $$3);
    }
 
-   protected void c(ami $$0, cdm $$1, long $$2) {
-      Optional<ie> $$3 = $$1.dP().c(bum.d);
-      $$3.ifPresent($$1x -> {
-         hx $$2x = $$1x.b();
-         ami $$3x = $$0.n().a($$1x.a());
-         if ($$3x != null) {
-            bwk $$4 = $$3x.x();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
+   protected void c(amp $$0, E $$1, long $$2) {
+      if ($$1.fn()) {
+         $$1.ft();
+      }
 
-            aco.c($$0, $$2x);
+      if ($$1.b(cmk.vM)) {
+         $$1.b(false);
+         ckp.a($$1.fp(), false);
+      }
+   }
+
+   private void a(E $$0, blv $$1) {
+      if (this.e == bnu.a.a) {
+         $$0.c(cfk.a($$0, cmk.vM));
+         this.e = bnu.a.b;
+         $$0.b(true);
+      } else if (this.e == bnu.a.b) {
+         if (!$$0.fn()) {
+            this.e = bnu.a.a;
          }
-      });
-      $$1.dP().b(bum.d);
+
+         int $$2 = $$0.fr();
+         cmh $$3 = $$0.fp();
+         if ($$2 >= ckp.k($$3)) {
+            $$0.fs();
+            this.e = bnu.a.c;
+            this.d = 20 + $$0.eg().a(20);
+            $$0.b(false);
+         }
+      } else if (this.e == bnu.a.c) {
+         this.d--;
+         if (this.d == 0) {
+            this.e = bnu.a.d;
+         }
+      } else if (this.e == bnu.a.d) {
+         $$0.a($$1, 1.0F);
+         cmh $$4 = $$0.b(cfk.a($$0, cmk.vM));
+         ckp.a($$4, false);
+         this.e = bnu.a.a;
+      }
+   }
+
+   private void b(blx $$0, blv $$1) {
+      $$0.dO().a(bux.n, new bnx($$1, true));
+   }
+
+   private static blv b(blv $$0) {
+      return $$0.dO().c(bux.o).get();
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,78 +1,82 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class egh extends ego {
+public class egh implements apm, egi {
    private static final Logger b = LogUtils.getLogger();
-   private static final Codec<ik<cpz>> c = kc.g.r().listOf().xmap(ik::a, $$0 -> $$0.a().toList());
-   public static final Codec<egh> a = RecordCodecBuilder.create($$0 -> a($$0).and(asy.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, egh::new));
-   private final Optional<ik<cpz>> d;
-
-   egh(List<eib> $$0, Optional<ik<cpz>> $$1) {
-      super($$0);
-      this.d = $$1;
-   }
+   private static final Gson c = new GsonBuilder().create();
+   public static final egg<egm> a = new egg<>(egj.c, egc.a);
+   private Map<egg<?>, ?> d = Map.of();
+   private Multimap<egj<?>, agt> e = ImmutableMultimap.of();
 
    @Override
-   public egq b() {
-      return egr.e;
+   public final CompletableFuture<Void> a(apm.a $$0, aps $$1, bgc $$2, bgc $$3, Executor $$4, Executor $$5) {
+      Map<egj<?>, Map<agt, ?>> $$6 = new HashMap<>();
+      CompletableFuture<?>[] $$7 = egj.b().map($$3x -> a($$3x, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
+      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
    }
 
-   @Override
-   public clo a(clo $$0, efc $$1) {
-      atw $$2 = $$1.b();
-      Optional<ig<cpz>> $$3 = this.d.<ig<cpz>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
-         boolean $$2x = $$0.a(clr.qM);
-         List<ig.c<cpz>> $$3x = kc.g.h().filter($$0xx -> ((cpz)$$0xx.a()).i()).filter($$2xx -> $$2x || ((cpz)$$2xx.a()).a($$0)).toList();
-         return ac.b($$3x, $$2);
+   private static <T> CompletableFuture<?> a(egj<T> $$0, aps $$1, Executor $$2, Map<egj<?>, Map<agt, ?>> $$3) {
+      Map<agt, T> $$4 = new HashMap<>();
+      $$3.put($$0, $$4);
+      return CompletableFuture.runAsync(() -> {
+         Map<agt, JsonElement> $$3x = new HashMap<>();
+         apw.a($$1, $$0.a(), c, $$3x);
+         $$3x.forEach(($$2xx, $$3xx) -> $$0.a($$2xx, $$3xx).ifPresent($$2xxx -> $$4.put($$2xx, (T)$$2xxx)));
+      }, $$2);
+   }
+
+   private void a(Map<egj<?>, Map<agt, ?>> $$0) {
+      Object $$1 = $$0.get(egj.c).remove(egc.a);
+      if ($$1 != null) {
+         b.warn("Datapack tried to redefine {} loot table, ignoring", egc.a);
+      }
+
+      Builder<egg<?>, Object> $$2 = ImmutableMap.builder();
+      com.google.common.collect.ImmutableMultimap.Builder<egj<?>, agt> $$3 = ImmutableMultimap.builder();
+      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
+            $$2.put(new egg($$2x, $$3xx), $$4x);
+            $$3.put($$2x, $$3xx);
+         }));
+      $$2.put(a, egm.a);
+      aud.a $$4 = new aud.a();
+      final Map<egg<?>, ?> $$5 = $$2.build();
+      egn $$6 = new egn($$4, eio.n, new egi() {
+         @Nullable
+         @Override
+         public <T> T getElement(egg<T> $$0) {
+            return (T)$$5.get($$0);
+         }
       });
-      if ($$3.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$3.get().a(), $$2);
-      }
+      $$5.forEach(($$1x, $$2x) -> a($$6, $$1x, $$2x));
+      $$4.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
+      this.d = $$5;
+      this.e = $$3.build();
    }
 
-   private static clo a(clo $$0, cpz $$1, atw $$2) {
-      int $$3 = atq.a($$2, $$1.e(), $$1.a());
-      if ($$0.a(clr.qM)) {
-         $$0 = new clo(clr.uo);
-         ckk.a($$0, new cqc($$1, $$3));
-      } else {
-         $$0.a($$1, $$3);
-      }
-
-      return $$0;
+   private static <T> void a(egn $$0, egg<T> $$1, Object $$2) {
+      $$1.a().a($$0, $$1, (T)$$2);
    }
 
-   public static egh.a c() {
-      return new egh.a();
+   @Nullable
+   @Override
+   public <T> T getElement(egg<T> $$0) {
+      return (T)this.d.get($$0);
    }
 
-   public static ego.a<?> d() {
-      return a($$0 -> new egh($$0, Optional.empty()));
-   }
-
-   public static class a extends ego.a<egh.a> {
-      private final List<ig<cpz>> a = new ArrayList<>();
-
-      protected egh.a a() {
-         return this;
-      }
-
-      public egh.a a(cpz $$0) {
-         this.a.add($$0.j());
-         return this;
-      }
-
-      @Override
-      public egp b() {
-         return new egh(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(ik.a(this.a)));
-      }
+   public Collection<agt> a(egj<?> $$0) {
+      return this.e.get($$0);
    }
 }

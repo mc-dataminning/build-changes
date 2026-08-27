@@ -1,145 +1,103 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class deb extends dce {
-   public static final MapCodec<deb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dja.a.fieldOf("wood_type").forGetter(dce::d), u()).apply($$0, deb::new));
-   public static final dih b = cza.aE;
-   public static final eks c = cvf.a(0.0, 14.0, 6.0, 16.0, 16.0, 10.0);
-   public static final eks d = cvf.a(6.0, 14.0, 0.0, 10.0, 16.0, 16.0);
-   public static final eks e = ekp.a(c, cvf.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0));
-   public static final eks i = ekp.a(d, cvf.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0));
-   private static final Map<ib, eks> j = Maps.newEnumMap(ImmutableMap.of(ib.c, e, ib.d, e, ib.f, i, ib.e, i));
+public class deb extends cwi implements cwc {
+   public static final MapCodec<deb> a = b(deb::new);
+   private static final float d = 0.003F;
+   public static final int b = 3;
+   public static final djp c = djf.as;
+   private static final elu e = cvz.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+   private static final elu f = cvz.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<deb> a() {
       return a;
    }
 
-   public deb(dja $$0, dhm.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.k(this.E.b().a(b, ib.c).a(f, Boolean.valueOf(false)));
+   public deb(dio.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
-      if ($$1.c_($$2) instanceof dgr $$6) {
-         clo $$7 = $$3.b($$4);
-         if (this.a($$0, $$3, $$5, $$6, $$7)) {
-            return bjb.d;
-         }
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(dhn $$0, cdz $$1, ejv $$2, dgr $$3, clo $$4) {
-      return !$$3.a($$3.a($$1), $$1) && $$4.d() instanceof cla && !this.a($$2, $$0);
-   }
-
-   private boolean a(ejv $$0, dhn $$1) {
-      return $$0.b().o() == $$1.c(b).o();
+   public cmh a(ctb $$0, hv $$1, dip $$2) {
+      return new cmh(cmk.wi);
    }
 
    @Override
-   public String h() {
-      return this.k().a();
-   }
-
-   @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return j.get($$0.c(b));
-   }
-
-   @Override
-   public eks b_(dhn $$0, crl $$1, hx $$2) {
-      return this.a($$0, $$1, $$2, eke.a());
-   }
-
-   @Override
-   public eks b(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      switch ((ib)$$0.c(b)) {
-         case f:
-         case e:
-            return d;
-         default:
-            return c;
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      if ($$0.c(c) == 0) {
+         return e;
+      } else {
+         return $$0.c(c) < 3 ? f : super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   public boolean b(dhn $$0, csi $$1, hx $$2) {
-      ib $$3 = $$0.c(b).h();
-      ib $$4 = $$0.c(b).i();
-      return this.a($$1, $$0, $$2.a($$3), $$4) || this.a($$1, $$0, $$2.a($$4), $$3);
-   }
-
-   public boolean a(csi $$0, dhn $$1, hx $$2, ib $$3) {
-      dhn $$4 = $$0.a_($$2);
-      return $$4.a(ark.ay) ? $$4.c(b).o().a($$1.c(b)) : $$4.a($$0, $$2, $$3, ddf.a);
-   }
-
-   @Nullable
    @Override
-   public dhn a(cnw $$0) {
-      dhn $$1 = this.o();
-      ecx $$2 = $$0.q().b_($$0.a());
-      csi $$3 = $$0.q();
-      hx $$4 = $$0.a();
+   public boolean e_(dip $$0) {
+      return $$0.c(c) < 3;
+   }
 
-      for (ib $$5 : $$0.f()) {
-         if ($$5.o().d() && !$$5.o().a($$0.k())) {
-            ib $$6 = $$5.g();
-            $$1 = $$1.a(b, $$6);
-            if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
-               return $$1.a(f, Boolean.valueOf($$2.a() == ecy.c));
+   @Override
+   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(5) == 0 && $$1.b($$2.c(), 0) >= 9) {
+         dip $$5 = $$0.a(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$5, 2);
+         $$1.a(dmz.c, $$2, dmz.a.a($$5));
+      }
+   }
+
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, blf $$3) {
+      if ($$3 instanceof blv && $$3.ai() != blj.O && $$3.ai() != blj.h) {
+         $$3.a($$0, new elb(0.8F, 0.75, 0.8F));
+         if (!$$1.B && $$0.c(c) > 0 && ($$3.ac != $$3.dr() || $$3.ae != $$3.dx())) {
+            double $$4 = Math.abs($$3.dr() - $$3.ac);
+            double $$5 = Math.abs($$3.dx() - $$3.ae);
+            if ($$4 >= 0.003F || $$5 >= 0.003F) {
+               $$3.a($$1.ah().s(), 1.0F);
             }
          }
       }
-
-      return null;
    }
 
    @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      return $$1.o() == $$0.c(b).h().o() && !$$0.a($$3, $$4) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
+      int $$6 = $$0.c(c);
+      boolean $$7 = $$6 == 3;
+      if (!$$7 && $$3.b($$4).a(cmk.rv)) {
+         return bjl.d;
+      } else if ($$6 > 1) {
+         int $$8 = 1 + $$1.z.a(2);
+         a($$1, $$2, new cmh(cmk.wi, $$8 + ($$7 ? 1 : 0)));
+         $$1.a(null, $$2, arc.yv, ard.e, 1.0F, 0.8F + $$1.z.i() * 0.4F);
+         dip $$9 = $$0.a(c, Integer.valueOf(1));
+         $$1.a($$2, $$9, 2);
+         $$1.a(dmz.c, $$2, dmz.a.a($$3, $$9));
+         return bjl.a($$1.B);
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   public float g(dhn $$0) {
-      return $$0.c(b).p();
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public boolean b(ctb $$0, hv $$1, dip $$2) {
+      return $$2.c(c) < 3;
    }
 
    @Override
-   public dhn a(dhn $$0, dab $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public boolean a(csy $$0, auf $$1, hv $$2, dip $$3) {
+      return true;
    }
 
    @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(b, f);
-   }
-
-   @Override
-   public dfi a(hx $$0, dhn $$1) {
-      return new dgf($$0, $$1);
-   }
-
-   @Override
-   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public <T extends dfi> dfj<T> a(csf $$0, dhn $$1, dfk<T> $$2) {
-      return a($$2, dfk.i, dgr::a);
+   public void a(amp $$0, auf $$1, hv $$2, dip $$3) {
+      int $$4 = Math.min(3, $$3.c(c) + 1);
+      $$0.a($$2, $$3.a(c, Integer.valueOf($$4)), 2);
    }
 }

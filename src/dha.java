@@ -1,15 +1,23 @@
-public class dha extends dfp {
-   public dha(hx $$0, dhn $$1) {
-      super(dfk.c, $$0, $$1);
+public class dha extends dhm {
+   private static final int a = 60;
+   private static final int b = 9;
+
+   public dha(hv $$0, dip $$1) {
+      super(dgf.i, $$0, $$1);
    }
 
    @Override
-   protected void a(csf $$0, hx $$1, dhn $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$3 != $$4) {
-         cvf $$5 = $$2.b();
-         $$0.a($$1, $$5);
-         $$0.a($$1.d(), $$5);
-      }
+   public int c() {
+      return 9;
+   }
+
+   @Override
+   public int d() {
+      return 60;
+   }
+
+   @Override
+   public arb f() {
+      return arc.AP;
    }
 }

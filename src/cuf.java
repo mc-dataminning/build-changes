@@ -1,110 +1,34 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class cuf extends cyb {
-   public static final MapCodec<cuf> a = b(cuf::new);
-   public static final dih b = cza.aE;
-   private static final eks c = cvf.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-   private static final eks d = cvf.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
-   private static final eks e = cvf.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
-   private static final eks f = cvf.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
-   private static final eks g = cvf.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
-   private static final eks h = cvf.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
-   private static final eks i = cvf.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
-   private static final eks j = ekp.a(c, d, e, f);
-   private static final eks k = ekp.a(c, g, h, i);
-   private static final uv l = uv.c("container.repair");
-   private static final float m = 2.0F;
-   private static final int n = 40;
+public class cuf extends cub {
+   public static final Codec<cuf> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ctx.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
+            .apply($$0, cuf::new)
+   );
+   private final ij<ctx> c;
+   private final int d;
+   private final int e;
 
-   @Override
-   public MapCodec<cuf> a() {
-      return a;
-   }
-
-   public cuf(dhm.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ib.c));
+   public cuf(ij<ctx> $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1 + 2;
+      this.e = $$1;
    }
 
    @Override
-   public dhn a(cnw $$0) {
-      return this.o().a(b, $$0.g().h());
+   protected Stream<ie<ctx>> b() {
+      return this.c.a();
    }
 
    @Override
-   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
-      if ($$1.B) {
-         return bjb.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(arf.aC);
-         return bjb.b;
-      }
-   }
-
-   @Nullable
-   @Override
-   public bje b(dhn $$0, csf $$1, hx $$2) {
-      return new bjk(($$2x, $$3, $$4) -> new cgt($$2x, $$3, chc.a($$1, $$2)), l);
+   protected Codec<? extends cub> a() {
+      return b;
    }
 
    @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      ib $$4 = $$0.c(b);
-      return $$4.o() == ib.a.a ? j : k;
-   }
-
-   @Override
-   protected void a(car $$0) {
-      $$0.b(2.0F, 40);
-   }
-
-   @Override
-   public void a(csf $$0, hx $$1, dhn $$2, dhn $$3, car $$4) {
-      if (!$$4.aU()) {
-         $$0.c(1031, $$1, 0);
-      }
-   }
-
-   @Override
-   public void a(csf $$0, hx $$1, car $$2) {
-      if (!$$2.aU()) {
-         $$0.c(1029, $$1, 0);
-      }
-   }
-
-   @Override
-   public bjt a(bkv $$0) {
-      return $$0.dO().b($$0);
-   }
-
-   @Nullable
-   public static dhn e(dhn $$0) {
-      if ($$0.a(cvh.gS)) {
-         return cvh.gT.o().a(b, $$0.c(b));
-      } else {
-         return $$0.a(cvh.gT) ? cvh.gU.o().a(b, $$0.c(b)) : null;
-      }
-   }
-
-   @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
-      return false;
-   }
-
-   @Override
-   public int b(dhn $$0, crl $$1, hx $$2) {
-      return $$0.d($$1, $$2).ak;
+   public ie<ctx> getNoiseBiome(int $$0, int $$1, int $$2, cug.f $$3) {
+      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
    }
 }

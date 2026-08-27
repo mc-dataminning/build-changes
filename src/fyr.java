@@ -1,34 +1,25 @@
-public class fyr extends fwb<cat> {
-   private final frt a;
+public class fyr extends fxn<cfi> {
+   private static final agt a = new agt("textures/entity/llama/spit.png");
+   private final fjs<cfi> f;
 
-   public fyr(fwc.a $$0) {
+   public fyr(fxo.a $$0) {
       super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+      this.f = new fjs<>($$0.a(flx.aw));
    }
 
-   public void a(cat $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
+   public void a(cfi $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
       $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.s();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = atq.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      fyq.a(this.a, $$0.u(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(aty.i($$2, $$0.N, $$0.dC()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(aty.i($$2, $$0.O, $$0.dE())));
+      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
+      eph $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, gdf.d, 1.0F, 1.0F, 1.0F, 1.0F);
       $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public agm a(cat $$0) {
-      return gby.e;
+   public agt a(cfi $$0) {
+      return a;
    }
 }

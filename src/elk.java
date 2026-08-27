@@ -1,90 +1,219 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public abstract class elk {
+   private static final ia.a[] d = ia.a.values();
+   protected final int a;
+   protected final int b;
+   protected final int c;
 
-public record elk<T>(T b, hx c, int d, elp e) {
-   private static final String f = "i";
-   private static final String g = "x";
-   private static final String h = "y";
-   private static final String i = "z";
-   private static final String j = "t";
-   private static final String k = "p";
-   public static final Strategy<elk<?>> a = new Strategy<elk<?>>() {
-      public int a(elk<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+   protected elk(int $$0, int $$1, int $$2) {
+      if ($$0 >= 0 && $$1 >= 0 && $$2 >= 0) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      } else {
+         throw new IllegalArgumentException("Need all positive sizes: x: " + $$0 + ", y: " + $$1 + ", z: " + $$2);
       }
+   }
 
-      public boolean a(@Nullable elk<?> $$0, @Nullable elk<?> $$1) {
-         if ($$0 == $$1) {
+   public boolean a(ht $$0, int $$1, int $$2, int $$3) {
+      return this.d($$0.a($$1, $$2, $$3, ia.a.a), $$0.a($$1, $$2, $$3, ia.a.b), $$0.a($$1, $$2, $$3, ia.a.c));
+   }
+
+   public boolean d(int $$0, int $$1, int $$2) {
+      if ($$0 < 0 || $$1 < 0 || $$2 < 0) {
+         return false;
+      } else {
+         return $$0 < this.a && $$1 < this.b && $$2 < this.c ? this.b($$0, $$1, $$2) : false;
+      }
+   }
+
+   public boolean b(ht $$0, int $$1, int $$2, int $$3) {
+      return this.b($$0.a($$1, $$2, $$3, ia.a.a), $$0.a($$1, $$2, $$3, ia.a.b), $$0.a($$1, $$2, $$3, ia.a.c));
+   }
+
+   public abstract boolean b(int var1, int var2, int var3);
+
+   public abstract void c(int var1, int var2, int var3);
+
+   public boolean a() {
+      for (ia.a $$0 : d) {
+         if (this.a($$0) >= this.b($$0)) {
             return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
          }
       }
-   };
 
-   public static <T> void a(sj $$0, Function<String, Optional<T>> $$1, crm $$2, Consumer<elk<T>> $$3) {
-      long $$4 = $$2.a();
+      return false;
+   }
 
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         sd $$6 = $$0.a($$5);
-         a($$6, $$1).ifPresent($$2x -> {
-            if (crm.a($$2x.b()) == $$4) {
-               $$3.accept($$2x);
+   public abstract int a(ia.a var1);
+
+   public abstract int b(ia.a var1);
+
+   public int a(ia.a $$0, int $$1, int $$2) {
+      int $$3 = this.c($$0);
+      if ($$1 >= 0 && $$2 >= 0) {
+         ia.a $$4 = ht.b.a($$0);
+         ia.a $$5 = ht.c.a($$0);
+         if ($$1 < this.c($$4) && $$2 < this.c($$5)) {
+            ht $$6 = ht.a(ia.a.a, $$0);
+
+            for (int $$7 = 0; $$7 < $$3; $$7++) {
+               if (this.b($$6, $$7, $$1, $$2)) {
+                  return $$7;
+               }
             }
-         });
+
+            return $$3;
+         } else {
+            return $$3;
+         }
+      } else {
+         return $$3;
       }
    }
 
-   public static <T> Optional<elk<T>> a(sd $$0, Function<String, Optional<T>> $$1) {
-      return $$1.apply($$0.l("i")).map($$1x -> {
-         hx $$2 = new hx($$0.h("x"), $$0.h("y"), $$0.h("z"));
-         return new elk<>((T)$$1x, $$2, $$0.h("t"), elp.a($$0.h("p")));
-      });
+   public int b(ia.a $$0, int $$1, int $$2) {
+      if ($$1 >= 0 && $$2 >= 0) {
+         ia.a $$3 = ht.b.a($$0);
+         ia.a $$4 = ht.c.a($$0);
+         if ($$1 < this.c($$3) && $$2 < this.c($$4)) {
+            int $$5 = this.c($$0);
+            ht $$6 = ht.a(ia.a.a, $$0);
+
+            for (int $$7 = $$5 - 1; $$7 >= 0; $$7--) {
+               if (this.b($$6, $$7, $$1, $$2)) {
+                  return $$7 + 1;
+               }
+            }
+
+            return 0;
+         } else {
+            return 0;
+         }
+      } else {
+         return 0;
+      }
    }
 
-   private static sd a(String $$0, hx $$1, int $$2, elp $$3) {
-      sd $$4 = new sd();
-      $$4.a("i", $$0);
-      $$4.a("x", $$1.u());
-      $$4.a("y", $$1.v());
-      $$4.a("z", $$1.w());
-      $$4.a("t", $$2);
-      $$4.a("p", $$3.a());
-      return $$4;
+   public int c(ia.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
    }
 
-   public static <T> sd a(ell<T> $$0, Function<T, String> $$1, long $$2) {
-      return a($$1.apply($$0.a()), $$0.b(), (int)($$0.c() - $$2), $$0.d());
-   }
-
-   public sd a(Function<T, String> $$0) {
-      return a($$0.apply(this.b), this.c, this.d, this.e);
-   }
-
-   public ell<T> a(long $$0, long $$1) {
-      return new ell<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
-   }
-
-   public static <T> elk<T> a(T $$0, hx $$1) {
-      return new elk<>($$0, $$1, 0, elp.d);
-   }
-
-   public T a() {
-      return this.b;
-   }
-
-   public hx b() {
-      return this.c;
+   public int b() {
+      return this.c(ia.a.a);
    }
 
    public int c() {
-      return this.d;
+      return this.c(ia.a.b);
    }
 
-   public elp d() {
-      return this.e;
+   public int d() {
+      return this.c(ia.a.c);
+   }
+
+   public void a(elk.b $$0, boolean $$1) {
+      this.a($$0, ht.a, $$1);
+      this.a($$0, ht.b, $$1);
+      this.a($$0, ht.c, $$1);
+   }
+
+   private void a(elk.b $$0, ht $$1, boolean $$2) {
+      ht $$3 = $$1.a();
+      int $$4 = this.c($$3.a(ia.a.a));
+      int $$5 = this.c($$3.a(ia.a.b));
+      int $$6 = this.c($$3.a(ia.a.c));
+
+      for (int $$7 = 0; $$7 <= $$4; $$7++) {
+         for (int $$8 = 0; $$8 <= $$5; $$8++) {
+            int $$9 = -1;
+
+            for (int $$10 = 0; $$10 <= $$6; $$10++) {
+               int $$11 = 0;
+               int $$12 = 0;
+
+               for (int $$13 = 0; $$13 <= 1; $$13++) {
+                  for (int $$14 = 0; $$14 <= 1; $$14++) {
+                     if (this.a($$3, $$7 + $$13 - 1, $$8 + $$14 - 1, $$10)) {
+                        $$11++;
+                        $$12 ^= $$13 ^ $$14;
+                     }
+                  }
+               }
+
+               if ($$11 == 1 || $$11 == 3 || $$11 == 2 && ($$12 & 1) == 0) {
+                  if ($$2) {
+                     if ($$9 == -1) {
+                        $$9 = $$10;
+                     }
+                  } else {
+                     $$0.consume(
+                        $$3.a($$7, $$8, $$10, ia.a.a),
+                        $$3.a($$7, $$8, $$10, ia.a.b),
+                        $$3.a($$7, $$8, $$10, ia.a.c),
+                        $$3.a($$7, $$8, $$10 + 1, ia.a.a),
+                        $$3.a($$7, $$8, $$10 + 1, ia.a.b),
+                        $$3.a($$7, $$8, $$10 + 1, ia.a.c)
+                     );
+                  }
+               } else if ($$9 != -1) {
+                  $$0.consume(
+                     $$3.a($$7, $$8, $$9, ia.a.a),
+                     $$3.a($$7, $$8, $$9, ia.a.b),
+                     $$3.a($$7, $$8, $$9, ia.a.c),
+                     $$3.a($$7, $$8, $$10, ia.a.a),
+                     $$3.a($$7, $$8, $$10, ia.a.b),
+                     $$3.a($$7, $$8, $$10, ia.a.c)
+                  );
+                  $$9 = -1;
+               }
+            }
+         }
+      }
+   }
+
+   public void b(elk.b $$0, boolean $$1) {
+      ele.a(this, $$0, $$1);
+   }
+
+   public void a(elk.a $$0) {
+      this.a($$0, ht.a);
+      this.a($$0, ht.b);
+      this.a($$0, ht.c);
+   }
+
+   private void a(elk.a $$0, ht $$1) {
+      ht $$2 = $$1.a();
+      ia.a $$3 = $$2.a(ia.a.c);
+      int $$4 = this.c($$2.a(ia.a.a));
+      int $$5 = this.c($$2.a(ia.a.b));
+      int $$6 = this.c($$3);
+      ia $$7 = ia.a($$3, ia.b.b);
+      ia $$8 = ia.a($$3, ia.b.a);
+
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         for (int $$10 = 0; $$10 < $$5; $$10++) {
+            boolean $$11 = false;
+
+            for (int $$12 = 0; $$12 <= $$6; $$12++) {
+               boolean $$13 = $$12 != $$6 && this.b($$2, $$9, $$10, $$12);
+               if (!$$11 && $$13) {
+                  $$0.consume($$7, $$2.a($$9, $$10, $$12, ia.a.a), $$2.a($$9, $$10, $$12, ia.a.b), $$2.a($$9, $$10, $$12, ia.a.c));
+               }
+
+               if ($$11 && !$$13) {
+                  $$0.consume($$8, $$2.a($$9, $$10, $$12 - 1, ia.a.a), $$2.a($$9, $$10, $$12 - 1, ia.a.b), $$2.a($$9, $$10, $$12 - 1, ia.a.c));
+               }
+
+               $$11 = $$13;
+            }
+         }
+      }
+   }
+
+   public interface a {
+      void consume(ia var1, int var2, int var3, int var4);
+   }
+
+   public interface b {
+      void consume(int var1, int var2, int var3, int var4, int var5, int var6);
    }
 }

@@ -1,38 +1,42 @@
-import com.google.common.collect.ForwardingList;
-import java.util.List;
-
-public class fqd extends ForwardingList<clo> {
-   private final ip<clo> a = ip.a(cdy.g(), clo.b);
-
-   protected List<clo> delegate() {
-      return this.a;
+public class fqd extends fqc {
+   fqd(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.D *= 1.5F;
+      this.t = (int)(Math.random() * 2.0) + 60;
    }
 
-   public sj a() {
-      sj $$0 = new sj();
-
-      for (clo $$1 : this.delegate()) {
-         $$0.add($$1.b(new sd()));
-      }
-
-      return $$0;
+   @Override
+   public float b(float $$0) {
+      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
+      return this.D * $$1;
    }
 
-   public void a(sj $$0) {
-      List<clo> $$1 = this.delegate();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.set($$2, clo.a($$0.a($$2)));
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         this.g = this.g + this.j * (double)$$0;
+         this.h = this.h + this.k * (double)$$0;
+         this.i = this.i + this.l * (double)$$0;
       }
    }
 
-   public boolean isEmpty() {
-      for (clo $$0 : this.delegate()) {
-         if (!$$0.b()) {
-            return false;
-         }
+   public static class a implements fpz<jy> {
+      private final fqr a;
+
+      public a(fqr $$0) {
+         this.a = $$0;
       }
 
-      return true;
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqd $$8 = new fqd($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

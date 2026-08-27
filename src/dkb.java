@@ -1,3 +1,21 @@
-interface dkb<T> {
-   int onResize(int var1, T var2);
+public enum dkb implements aut {
+   a("none"),
+   b("low"),
+   c("tall");
+
+   private final String d;
+
+   private dkb(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

@@ -1,40 +1,36 @@
-public class zy implements wo<yh> {
-   private final int a;
-   private final cre b;
-   private final int c;
-   private final int d;
-   private final boolean e;
-   private final boolean f;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-   public zy(int $$0, cre $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1.b();
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+public class zy implements wu<yo> {
+   private final int a;
+   private final int b;
+   private final zx c;
+   private final aac d;
+
+   public zy(dkw $$0, edo $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      csf $$4 = $$0.f();
+      this.a = $$4.e;
+      this.b = $$4.f;
+      this.c = new zx($$0);
+      this.d = new aac($$4, $$1, $$2, $$3);
    }
 
-   public zy(ty $$0) {
-      this.a = $$0.n();
-      this.b = cre.b($$0);
-      this.c = $$0.n();
-      this.d = $$0.n();
-      this.e = $$0.readBoolean();
-      this.f = $$0.readBoolean();
+   public zy(ue $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = new zx($$0, this.a, this.b);
+      this.d = new aac($$0, this.a, this.b);
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.c(this.a);
-      this.b.a($$0);
-      $$0.c(this.c);
-      $$0.c(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+   public void a(ue $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      this.c.a($$0);
+      this.d.a($$0);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
@@ -42,23 +38,15 @@ public class zy implements wo<yh> {
       return this.a;
    }
 
-   public cre d() {
+   public int d() {
       return this.b;
    }
 
-   public int e() {
+   public zx e() {
       return this.c;
    }
 
-   public int f() {
+   public aac f() {
       return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.f;
    }
 }

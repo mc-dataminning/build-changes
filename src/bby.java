@@ -1,29 +1,23 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
 public class bby extends DataFix {
-   public bby(Schema $$0) {
-      super($$0, false);
+   public bby(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bax.I);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(), $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> {
-               $$0xx.write().map($$0xxx -> $$0xxx.getMapValues().map($$0xxxx -> {
-                     $$0xxxx.forEach(($$0xxxxx, $$1xx) -> {
-                        if ($$1xx.get("type").asString().result().isEmpty()) {
-                           throw new IllegalStateException("Unable load old custom worlds.");
-                        }
-                     });
-                     return $$0xxxx;
-                  }));
-               return $$0xx;
-            })
-      );
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bbg.E.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bbg.E))) {
+         throw new IllegalStateException("Team type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere("TeamDisplayNameFix", $$0, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DisplayName", avf::a)));
+      }
    }
 }

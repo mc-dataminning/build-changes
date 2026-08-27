@@ -1,16 +1,17 @@
-public record xm() implements xh {
-   public static final agm a = new agm("debug/game_test_clear");
+public record xm(String b) implements xo {
+   public static final agt a = new agt("brand");
 
-   public xm(ty $$0) {
-      this();
+   public xm(ue $$0) {
+      this($$0.s());
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public agm a() {
+   public agt a() {
       return a;
    }
 }

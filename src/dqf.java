@@ -1,35 +1,73 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dqf implements dse {
-   public static final Codec<dqf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               agm.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               agm.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               ebl.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               ebl.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dqf::new)
-   );
-   public final List<agm> b;
-   public final List<agm> c;
-   public final ig<ebk> d;
-   public final ig<ebk> e;
-   public final int f;
+public abstract class dqf extends drc<dti> {
+   public dqf(Codec<dti> $$0) {
+      super($$0);
+   }
 
-   public dqf(List<agm> $$0, List<agm> $$1, ig<ebk> $$2, ig<ebk> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+   protected void a(csz $$0, auf $$1, hv $$2, dti $$3, int $$4, hv.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(ia.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
+         }
       }
    }
+
+   protected int a(auf $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(csz $$0, hv $$1, int $$2, hv.a $$3, dti $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.J_() + 1 && $$5 + $$2 + 1 < $$0.ak()) {
+         dip $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(arr.aZ)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dip $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(arr.O)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(dre<dti> $$0) {
+      ctt $$1 = $$0.b();
+      hv $$2 = $$0.e();
+      auf $$3 = $$0.d();
+      dti $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      hv.a $$6 = new hv.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
+   }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(csz var1, auf var2, hv var3, int var4, hv.a var5, dti var6);
 }

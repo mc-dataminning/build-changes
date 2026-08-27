@@ -1,8 +1,8 @@
-public enum wp {
-   a,
-   b;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public wp a() {
-      return this == b ? a : b;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface wp {
 }

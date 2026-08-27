@@ -1,130 +1,77 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.BitSet;
 import java.util.Objects;
-import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
-public class vj implements uv {
-   private final uw c;
-   private final List<uv> d;
-   private vs e;
-   private atc f = atc.a;
+public class vj {
+   private final vl[] a;
+   private int b;
+   private int c;
    @Nullable
-   private ry g;
+   private vn d;
 
-   vj(uw $$0, List<uv> $$1, vs $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public vj(int $$0) {
+      this.a = new vl[$$0];
    }
 
-   public static vj a(uw $$0) {
-      return new vj($$0, Lists.newArrayList(), vs.a);
+   public boolean a(vn $$0, boolean $$1) {
+      if (Objects.equals($$0, this.d)) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.a($$1 ? new vl($$0, true) : null);
+         return true;
+      }
    }
 
-   @Override
-   public uw b() {
+   private void a(@Nullable vl $$0) {
+      int $$1 = this.b;
+      this.b = ($$1 + 1) % this.a.length;
+      this.c++;
+      this.a[$$1] = $$0;
+   }
+
+   public void a(vn $$0) {
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         vl $$2 = this.a[$$1];
+         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
+            this.a[$$1] = null;
+            break;
+         }
+      }
+   }
+
+   public int a() {
+      int $$0 = this.c;
+      this.c = 0;
+      return $$0;
+   }
+
+   public vj.a b() {
+      int $$0 = this.a();
+      BitSet $$1 = new BitSet(this.a.length);
+      ObjectList<vn> $$2 = new ObjectArrayList(this.a.length);
+
+      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
+         int $$4 = (this.b + $$3) % this.a.length;
+         vl $$5 = this.a[$$4];
+         if ($$5 != null) {
+            $$1.set($$3, true);
+            $$2.add($$5.b());
+            this.a[$$4] = $$5.a();
+         }
+      }
+
+      vi $$6 = new vi($$2);
+      vi.b $$7 = new vi.b($$0, $$1);
+      return new vj.a($$6, $$7);
+   }
+
+   public int c() {
       return this.c;
    }
 
-   @Override
-   public List<uv> c() {
-      return this.d;
-   }
-
-   public vj b(vs $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public vs a() {
-      return this.e;
-   }
-
-   public vj f(String $$0) {
-      return this.b(uv.b($$0));
-   }
-
-   public vj b(uv $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public vj a(UnaryOperator<vs> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public vj c(vs $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public vj a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public vj a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public vj b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public atc g() {
-      ry $$0 = ry.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
-      }
-
-      return this.f;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof vj $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.g();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
-
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
-
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
-
-         $$0.append(']');
-      }
-
-      return $$0.toString();
+   public static record a(vi a, vi.b b) {
    }
 }

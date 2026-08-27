@@ -1,24 +1,31 @@
-public class fcu extends fby<chp> {
-   private static final agm x = new agm("container/grindstone/error");
-   private static final agm y = new agm("textures/gui/container/grindstone.png");
+public class fcu extends fbu {
+   private static final int c = 24;
 
-   public fcu(chp $$0, cdy $$1, uv $$2) {
-      super($$0, $$1, $$2);
+   public fcu(fcc $$0, euo $$1) {
+      super($$0, $$1, vb.c("controls.title"));
    }
 
    @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
+   protected void aP_() {
+      super.aP_();
+      int $$0 = this.g / 2 - 155;
+      int $$1 = $$0 + 160;
+      int $$2 = this.h / 6 - 12;
+      this.d(ewh.a(vb.c("options.mouse_settings"), $$0x -> this.f.a(new fbq(this, this.b))).a($$0, $$2, 150, 20).a());
+      this.d(ewh.a(vb.c("controls.keybinds"), $$0x -> this.f.a(new fcw(this, this.b))).a($$1, $$2, 150, 20).a());
+      $$2 += 24;
+      this.d(this.b.Z().a(this.b, $$0, $$2, 150));
+      this.d(this.b.aa().a(this.b, $$1, $$2, 150));
+      $$2 += 24;
+      this.d(this.b.F().a(this.b, $$0, $$2, 150));
+      this.d(this.b.G().a(this.b, $$1, $$2, 150));
+      $$2 += 24;
+      this.d(ewh.a(va.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, $$2, 200, 20).a());
+   }
+
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(eut $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(y, $$4, $$5, 0, 0, this.c, this.k);
-      if ((this.p.b(0).g() || this.p.b(1).g()) && !this.p.b(2).g()) {
-         $$0.a(x, $$4 + 92, $$5 + 31, 28, 21);
-      }
+      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
    }
 }

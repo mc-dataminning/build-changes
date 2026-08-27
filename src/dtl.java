@@ -1,42 +1,62 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
 
-public class dtl extends dtq {
-   public static final Codec<dtl> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dtl::new));
-   protected final int b;
+public class dtl implements dtg {
+   public static final Codec<dtl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kb.e.q().fieldOf("block").flatXmap(dtl::a, DataResult::success).orElse((day)cwb.fg).forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
+               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
+               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
+               it.a(kc.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dtl::new)
+   );
+   public final day b;
+   public final int c;
+   public final boolean d;
+   public final boolean e;
+   public final boolean f;
+   public final float g;
+   public final ij<cvz> h;
+   private final ObjectArrayList<ia> i;
 
-   protected static <P extends dtl> P3<Mu<P>, big, big, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
+   private static DataResult<day> a(cvz $$0) {
+      return $$0 instanceof day $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
    }
 
-   public dtl(big $$0, big $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
+   public dtl(day $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, ij<cvz> $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = new ObjectArrayList(6);
+      if ($$3) {
+         this.i.add(ia.b);
+      }
 
-   @Override
-   protected dtr<?> a() {
-      return dtr.a;
-   }
+      if ($$2) {
+         this.i.add(ia.a);
+      }
 
-   @Override
-   protected void a(csl $$0, dtq.b $$1, atw $$2, dta $$3, int $$4, dtq.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      if ($$4) {
+         ia.c.a.forEach(this.i::add);
       }
    }
 
-   @Override
-   public int a(atw $$0, int $$1, dta $$2) {
-      return this.b;
+   public List<ia> a(auf $$0, ia $$1) {
+      return ac.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
    }
 
-   @Override
-   protected boolean a(atw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   public List<ia> a(auf $$0) {
+      return ac.a(this.i, $$0);
    }
 }

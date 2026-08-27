@@ -1,35 +1,107 @@
-public class fwe extends fwb<cej> {
-   private static final agm a = new agm("textures/entity/illager/evoker_fangs.png");
-   private final fhv<cej> f;
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-   public fwe(fwc.a $$0) {
-      super($$0);
-      this.f = new fhv<>($$0.a(fks.W));
+public class fwe implements fvt.a {
+   private final euk a;
+   private final Map<ags<csy>, Map<String, dyg>> b = Maps.newIdentityHashMap();
+   private final Map<ags<csy>, Map<String, yc.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
+
+   public fwe(euk $$0) {
+      this.a = $$0;
    }
 
-   public void a(cej $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
-      float $$6 = $$0.a($$2);
-      if ($$6 != 0.0F) {
-         float $$7 = 2.0F;
-         if ($$6 > 0.9F) {
-            $$7 *= (1.0F - $$6) / 0.1F;
+   @Override
+   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
+      etv $$5 = this.a.j.m();
+      ags<csy> $$6 = this.a.r.ad();
+      hv $$7 = hv.a($$5.b().c, 0.0, $$5.b().e);
+      eph $$8 = $$1.getBuffer(fsq.w());
+      if (this.b.containsKey($$6)) {
+         for (dyg $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.g(), 500.0)) {
+               fsg.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.h() - $$2,
+                  (double)$$9.i() - $$3,
+                  (double)$$9.j() - $$4,
+                  (double)($$9.k() + 1) - $$2,
+                  (double)($$9.l() + 1) - $$3,
+                  (double)($$9.m() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
          }
+      }
 
-         $$3.a();
-         $$3.a(a.d.rotationDegrees(90.0F - $$0.dD()));
-         $$3.b(-$$7, -$$7, $$7);
-         float $$8 = 0.03125F;
-         $$3.a(0.0, -0.626, 0.0);
-         $$3.b(0.5F, 0.5F, 0.5F);
-         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dD(), $$0.dF());
-         eof $$9 = $$4.getBuffer(this.f.a(a));
-         this.f.a($$3, $$9, $$5, gbq.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      Map<String, yc.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (yc.a $$11 : $$10.values()) {
+            dyg $$12 = $$11.a();
+            if ($$7.a($$12.g(), 500.0)) {
+               if ($$11.b()) {
+                  fsg.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  fsg.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
+         }
       }
    }
 
-   public agm a(cej $$0) {
-      return a;
+   public void a(dyg $$0, List<yc.a> $$1, ags<csy> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, yc.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (yc.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

@@ -1,37 +1,41 @@
-public class fzd extends fwb<cfe> {
-   private static final agm a = new agm("textures/entity/wither/wither_invulnerable.png");
-   private static final agm f = new agm("textures/entity/wither/wither.png");
-   private final fjq g;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public fzd(fwc.a $$0) {
-      super($$0);
-      this.g = new fjq($$0.a(fks.bU));
+public class fzd extends fyf<blx, fkc<blx>> {
+   private static final Map<blj<?>, agt> a = ImmutableMap.of(
+      blj.ax,
+      new agt("textures/entity/piglin/piglin.png"),
+      blj.bu,
+      new agt("textures/entity/piglin/zombified_piglin.png"),
+      blj.ay,
+      new agt("textures/entity/piglin/piglin_brute.png")
+   );
+   private static final float i = 1.0019531F;
+
+   public fzd(fxo.a $$0, flw $$1, flw $$2, flw $$3, boolean $$4) {
+      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
+      this.a(new gbp<>(this, new fjk($$0.a($$2)), new fjk($$0.a($$3)), $$0.g()));
    }
 
-   public static fkz a() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      $$1.a("head", fky.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fkv.a);
-      return fkz.a($$0, 64, 64);
+   private static fkc<blx> a(flu $$0, flw $$1, boolean $$2) {
+      fkc<blx> $$3 = new fkc<>($$0.a($$1));
+      if ($$2) {
+         $$3.a.k = false;
+      }
+
+      return $$3;
    }
 
-   protected int a(cfe $$0, hx $$1) {
-      return 15;
+   public agt b(blx $$0) {
+      agt $$1 = a.get($$0.ai());
+      if ($$1 == null) {
+         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ai());
+      } else {
+         return $$1;
+      }
    }
 
-   public void a(cfe $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      float $$6 = atq.j($$2, $$0.N, $$0.dD());
-      float $$7 = atq.i($$2, $$0.O, $$0.dF());
-      eof $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
-      this.g.a(0.0F, $$6, $$7);
-      this.g.a($$3, $$8, $$5, gbq.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public agm a(cfe $$0) {
-      return $$0.x() ? a : f;
+   protected boolean c(blx $$0) {
+      return super.a($$0) || $$0 instanceof cdg && ((cdg)$$0).ge();
    }
 }

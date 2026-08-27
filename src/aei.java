@@ -1,24 +1,24 @@
-public class aei implements wo<acp> {
-   private final bja a;
+public class aei implements wu<acw> {
+   private final int a;
 
-   public aei(bja $$0) {
+   public aei(int $$0) {
       this.a = $$0;
    }
 
-   public aei(ty $$0) {
-      this.a = $$0.b(bja.class);
+   public aei(ue $$0) {
+      this.a = $$0.readShort();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.a);
+   public void a(ue $$0) {
+      $$0.l(this.a);
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
    }
 
-   public bja a() {
+   public int a() {
       return this.a;
    }
 }

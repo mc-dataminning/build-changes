@@ -1,39 +1,33 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddj extends cvo implements cvi {
-   public static final MapCodec<ddj> a = b(ddj::new);
-   protected static final float b = 6.0F;
-   protected static final eks c = cvf.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class ddj extends cvm {
+   public static final MapCodec<ddj> c = b(ddj::new);
 
    @Override
    public MapCodec<ddj> a() {
-      return a;
-   }
-
-   protected ddj(dhm.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
       return c;
    }
 
-   @Override
-   public boolean b(csi $$0, hx $$1, dhn $$2) {
-      return true;
+   public ddj(dio.d $$0) {
+      super($$0, 2.0F);
    }
 
    @Override
-   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
-      return true;
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      return this.a($$0, $$3, $$4) ? this.o() : cwb.a.o();
    }
 
    @Override
-   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
-      cxn $$4 = (cxn)($$3.a(cvh.bu) ? cvh.iI : cvh.iH);
-      if ($$4.o().a($$0, $$2) && $$0.t($$2.c())) {
-         cxn.a($$0, $$4.o(), $$2, 2);
-      }
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      return h($$1.a_($$2.d()));
+   }
+
+   public static boolean h(dip $$0) {
+      return $$0.a(arr.aS);
+   }
+
+   @Override
+   protected boolean f(dip $$0) {
+      return true;
    }
 }

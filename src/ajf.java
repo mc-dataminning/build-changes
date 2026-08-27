@@ -1,33 +1,32 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class ajf {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("commands.pardon.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("commands.kick.owner.failed"));
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("pardon").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("kick").requires($$0x -> $$0x.c(3)))
             .then(
-               dv.a("targets", ei.a())
-                  .suggests(($$0x, $$1) -> dy.a(((du)$$0x.getSource()).l().ae().f().a(), $$1))
-                  .executes($$0x -> a((du)$$0x.getSource(), ei.a($$0x, "targets")))
+               ((RequiredArgumentBuilder)dt.a("targets", ee.d())
+                     .executes($$0x -> a((ds)$$0x.getSource(), ee.f($$0x, "targets"), vb.c("multiplayer.disconnect.kicked"))))
+                  .then(dt.a("reason", ei.a()).executes($$0x -> a((ds)$$0x.getSource(), ee.f($$0x, "targets"), ei.a($$0x, "reason"))))
             )
       );
    }
 
-   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aqe $$2 = $$0.l().ae().f();
+   private static int a(ds $$0, Collection<amq> $$1, vb $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            $$2.c($$4);
+      for (amq $$4 : $$1) {
+         if (!$$0.l().a($$4.fR())) {
+            $$4.c.b($$2);
+            $$0.a(() -> vb.a("commands.kick.success", $$4.Q_(), $$2), true);
             $$3++;
-            $$0.a(() -> uv.a("commands.pardon.success", uv.b($$4.getName())), true);
          }
       }
 

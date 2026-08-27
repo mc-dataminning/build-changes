@@ -1,24 +1,13 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class bvn extends bvq<bll> {
+public class bvn extends bwc<blv> {
    @Override
-   public Set<bum<?>> a() {
-      return ImmutableSet.of(bum.j, bum.k, bum.l);
+   protected void a(amp $$0, blv $$1) {
    }
 
    @Override
-   protected void a(ami $$0, bll $$1) {
-      List<cdz> $$2 = $$0.w().stream().filter(bky.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::f)).collect(Collectors.toList());
-      bml<?> $$3 = $$1.dP();
-      $$3.a(bum.j, $$2);
-      List<cdz> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
-      $$3.a(bum.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<cdz> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
-      $$3.a(bum.l, $$5);
+   public Set<bux<?>> a() {
+      return ImmutableSet.of();
    }
 }

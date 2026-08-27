@@ -1,39 +1,30 @@
-public class caj extends cal {
-   public caj(bkz<? extends cal> $$0, csf $$1) {
-      super($$0, $$1);
-   }
+public class caj extends cab {
+   private static final int b = 40;
+   private int c;
 
-   public caj(csf $$0, hx $$1, ib $$2) {
-      super(bkz.S, $$0, $$1, $$2);
-   }
-
-   @Override
-   public aqu q() {
-      return aqv.jR;
+   public caj(bzy $$0) {
+      super($$0);
    }
 
    @Override
-   public aqu s() {
-      return aqv.jP;
+   public void b() {
+      this.a.dM().a(this.a.dr(), this.a.dt(), this.a.dx(), arc.hA, this.a.db(), 2.5F, 0.8F + this.a.eg().i() * 0.3F, false);
    }
 
    @Override
-   public aqu u() {
-      return aqv.jQ;
+   public void c() {
+      if (this.c++ >= 40) {
+         this.a.gb().a(cao.f);
+      }
    }
 
    @Override
-   public aqu w() {
-      return aqv.jO;
+   public void d() {
+      this.c = 0;
    }
 
    @Override
-   public aqu x() {
-      return aqv.jS;
-   }
-
-   @Override
-   protected clo y() {
-      return new clo(clr.tV);
+   public cao<caj> i() {
+      return cao.h;
    }
 }

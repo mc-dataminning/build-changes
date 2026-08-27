@@ -1,55 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class eog {
-   private final ImmutableList<eoh> a;
-   private final ImmutableMap<String, eoh> b;
-   private final IntList c = new IntArrayList();
+public final class eog {
+   private final int a;
+   private final int b;
+   private final int c;
    private final int d;
-   @Nullable
-   private eoe e;
+   private final int e;
+   private final int f;
+   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
 
-   public eog(ImmutableMap<String, eoh> $$0) {
-      this.b = $$0;
-      this.a = $$0.values().asList();
-      int $$1 = 0;
-      UnmodifiableIterator var3 = $$0.values().iterator();
-
-      while (var3.hasNext()) {
-         eoh $$2 = (eoh)var3.next();
-         this.c.add($$1);
-         $$1 += $$2.e();
-      }
-
-      this.d = $$1;
+   public eog(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public String toString() {
-      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
+   public eog(Buffer $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
+   }
+
+   public eog(GLFWVidMode $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
    }
 
    public int a() {
-      return this.b() / 4;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ImmutableList<eoh> c() {
       return this.a;
    }
 
-   public ImmutableList<String> d() {
-      return this.b.keySet().asList();
+   public int b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.e;
+   }
+
+   public int f() {
+      return this.f;
    }
 
    @Override
@@ -58,7 +73,7 @@ public class eog {
          return true;
       } else if ($$0 != null && this.getClass() == $$0.getClass()) {
          eog $$1 = (eog)$$0;
-         return this.d != $$1.d ? false : this.b.equals($$1.b);
+         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
       } else {
          return false;
       }
@@ -66,97 +81,50 @@ public class eog {
 
    @Override
    public int hashCode() {
-      return this.b.hashCode();
+      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
    }
 
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::h);
-      } else {
-         this.h();
-      }
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 
-   private void h() {
-      int $$0 = this.b();
-      List<eoh> $$1 = this.c();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
-      }
-   }
-
-   public void f() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::i);
-      } else {
-         this.i();
-      }
-   }
-
-   private void i() {
-      ImmutableList<eoh> $$0 = this.c();
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         eoh $$2 = (eoh)$$0.get($$1);
-         $$2.a($$1);
-      }
-   }
-
-   public eoe g() {
-      eoe $$0 = this.e;
+   public static Optional<eog> a(@Nullable String $$0) {
       if ($$0 == null) {
-         this.e = $$0 = new eoe(eoe.a.b);
-      }
+         return Optional.empty();
+      } else {
+         try {
+            Matcher $$1 = g.matcher($$0);
+            if ($$1.matches()) {
+               int $$2 = Integer.parseInt($$1.group(1));
+               int $$3 = Integer.parseInt($$1.group(2));
+               String $$4 = $$1.group(3);
+               int $$5;
+               if ($$4 == null) {
+                  $$5 = 60;
+               } else {
+                  $$5 = Integer.parseInt($$4);
+               }
 
-      return $$0;
+               String $$7 = $$1.group(4);
+               int $$8;
+               if ($$7 == null) {
+                  $$8 = 24;
+               } else {
+                  $$8 = Integer.parseInt($$7);
+               }
+
+               int $$10 = $$8 / 3;
+               return Optional.of(new eog($$2, $$3, $$10, $$10, $$10, $$5));
+            }
+         } catch (Exception var9) {
+         }
+
+         return Optional.empty();
+      }
    }
 
-   public static enum a {
-      a(5123, 2),
-      b(5125, 4);
-
-      public final int c;
-      public final int d;
-
-      private a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      public static eog.a a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
-      }
-   }
-
-   public static enum b {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
-
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
-
-      private b(int $$0, int $$1, int $$2, boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
-      }
-
-      public int a(int $$0) {
-         return switch (this) {
-            case b, c, d, e, f, g -> $$0;
-            case a, h -> $$0 / 4 * 6;
-            default -> 0;
-         };
-      }
+   public String g() {
+      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 }

@@ -1,43 +1,66 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class ewu extends ews {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 30;
-   private static final double j = 33.333333333333336;
+public abstract class ewu extends ewf {
+   ewu(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3, va.a);
+   }
 
-   public ewu(eur $$0, aty $$1) {
-      super($$0, $$1);
+   public static ewu a(int $$0, int $$1, agt $$2, int $$3, int $$4) {
+      return new ewu.b(0, 0, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static ewu a(int $$0, int $$1, agt $$2) {
+      return new ewu.a(0, 0, $$0, $$1, $$2);
    }
 
    @Override
-   protected void a(eut $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
-      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(frh.C(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = eti.N().m.h().c();
-      if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(frh.C(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
+   protected void a(faa $$0) {
+   }
+
+   @Override
+   public void a(gia $$0) {
+   }
+
+   @Override
+   public boolean aL_() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public evt a(fag $$0) {
+      return null;
+   }
+
+   static class a extends ewu {
+      private final agt a;
+
+      public a(int $$0, int $$1, int $$2, int $$3, agt $$4) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+      }
+
+      @Override
+      public void b(evw $$0, int $$1, int $$2, float $$3) {
+         $$0.a(this.a, this.p(), this.r(), this.k(), this.i());
       }
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
-   }
+   static class b extends ewu {
+      private final agt a;
+      private final int b;
+      private final int c;
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
-   }
+      public b(int $$0, int $$1, int $$2, int $$3, agt $$4, int $$5, int $$6) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+         this.b = $$5;
+         this.c = $$6;
+      }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
-   }
-
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+      @Override
+      protected void b(evw $$0, int $$1, int $$2, float $$3) {
+         $$0.a(this.a, this.p(), this.r(), this.k(), this.i(), 0.0F, 0.0F, this.k(), this.i(), this.b, this.c);
+      }
    }
 }

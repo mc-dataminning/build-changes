@@ -1,55 +1,46 @@
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.JsonOps;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+public class efh {
+   private final hv a;
+   private final int b;
+   private final int c;
 
-public class efh<T> {
-   private static final Logger d = LogUtils.getLogger();
-   public static final efh<eib> a = new efh<>(eid.a, "predicates", c());
-   public static final efh<egp> b = new efh<>(egr.b, "item_modifiers", c());
-   public static final efh<efk> c = new efh<>(efk.c, "loot_tables", d());
-   private final Codec<T> e;
-   private final String f;
-   private final efh.a<T> g;
-
-   private efh(Codec<T> $$0, String $$1, efh.a<T> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public efh(hv $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public String a() {
-      return this.f;
+   public static efh a(sj $$0) {
+      hv $$1 = sy.b($$0.p("Pos"));
+      int $$2 = $$0.h("Rotation");
+      int $$3 = $$0.h("EntityId");
+      return new efh($$1, $$2, $$3);
    }
 
-   public void a(efl $$0, efe<T> $$1, T $$2) {
-      this.g.run($$0, $$1, $$2);
+   public sj a() {
+      sj $$0 = new sj();
+      $$0.a("Pos", sy.a(this.a));
+      $$0.a("Rotation", this.b);
+      $$0.a("EntityId", this.c);
+      return $$0;
    }
 
-   public Optional<T> a(agm $$0, JsonElement $$1) {
-      DataResult<T> $$2 = this.e.parse(JsonOps.INSTANCE, $$1);
-      $$2.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
-      return $$2.result();
+   public hv b() {
+      return this.a;
    }
 
-   public static Stream<efh<?>> b() {
-      return Stream.of(a, b, c);
+   public int c() {
+      return this.b;
    }
 
-   private static <T extends efd> efh.a<T> c() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   public int d() {
+      return this.c;
    }
 
-   private static efh.a<efk> d() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   public String e() {
+      return a(this.a);
    }
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(efl var1, efe<T> var2, T var3);
+   public static String a(hv $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

@@ -1,43 +1,23 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ctw extends cur {
-   private final ckc a;
+public class ctw {
+   public static final Codec<ctw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jv.aX.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, ctw::new)
+   );
+   private final jt b;
+   private final float c;
 
-   protected ctw(ckc $$0, dhm.d $$1) {
-      super($$1);
-      this.a = $$0;
+   public ctw(jt $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   protected abstract MapCodec<? extends ctw> a();
-
-   @Override
-   public boolean a(dhn $$0) {
-      return true;
+   public jt a() {
+      return this.b;
    }
 
-   @Override
-   public dfi a(hx $$0, dhn $$1) {
-      return new dey($$0, $$1, this.a);
-   }
-
-   @Override
-   public void a(csf $$0, hx $$1, dhn $$2, @Nullable bll $$3, clo $$4) {
-      if ($$0.B) {
-         $$0.a($$1, dfk.t).ifPresent($$1x -> $$1x.b($$4));
-      } else if ($$4.A()) {
-         $$0.a($$1, dfk.t).ifPresent($$1x -> $$1x.a($$4.y()));
-      }
-   }
-
-   @Override
-   public clo a(csi $$0, hx $$1, dhn $$2) {
-      dfi $$3 = $$0.c_($$1);
-      return $$3 instanceof dey ? ((dey)$$3).f() : super.a($$0, $$1, $$2);
-   }
-
-   public ckc b() {
-      return this.a;
+   public boolean a(auf $$0) {
+      return $$0.i() <= this.c;
    }
 }

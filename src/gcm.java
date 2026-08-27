@@ -1,21 +1,23 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public class gcm implements gcd {
-   public static final Codec<gcm> b = RecordCodecBuilder.create($$0 -> $$0.group(atx.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gcm::new));
-   private final atx c;
-
-   public gcm(atx $$0) {
-      this.c = $$0;
+public class gcm<T extends blv> extends gbd<T, fln<T>> {
+   public gcm(fzj<T, fln<T>> $$0, fse $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(apl $$0, gcd.a $$1) {
-      $$1.a(this.c.c());
-   }
+   public void a(epd $$0, fsi $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cmh $$10 = $$3.eT();
+      $$0.a();
+      if ($$10.a(cmk.sh)) {
+         this.c().d().a($$0);
+         this.c().e().a($$0);
+         $$0.a(0.0625F, 0.25F, 0.0F);
+         $$0.a(a.f.rotationDegrees(180.0F));
+         $$0.a(a.b.rotationDegrees(140.0F));
+         $$0.a(a.f.rotationDegrees(10.0F));
+         $$0.a(0.0F, -0.4F, 0.4F);
+      }
 
-   @Override
-   public gcf a() {
-      return gcg.c;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      $$0.b();
    }
 }

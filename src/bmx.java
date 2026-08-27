@@ -1,79 +1,194 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class bmx extends bnc<blu> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private static final Predicate<blu> g = $$0 -> $$0.ei() != null || $$0.dC() || $$0.bN();
-   private final float h;
-   private final Predicate<blu> i;
+public class bmx {
+   private final bmw a;
+   private final Map<bmz.a, Set<bmz>> b = Maps.newEnumMap(bmz.a.class);
+   private final Map<UUID, bmz> c = new Object2ObjectArrayMap();
+   private final Set<bmz> d = new ObjectArraySet();
+   private double e;
+   private boolean f = true;
+   private double g;
+   private final Consumer<bmx> h;
 
-   public bmx(float $$0) {
-      this($$0, g);
+   public bmx(bmw $$0, Consumer<bmx> $$1) {
+      this.a = $$0;
+      this.h = $$1;
+      this.e = $$0.a();
    }
 
-   public bmx(float $$0, Predicate<blu> $$1) {
-      super(ImmutableMap.of(bum.Y, bun.c, bum.x, bun.a), 100, 120);
-      this.h = $$0;
-      this.i = $$1;
+   public bmw a() {
+      return this.a;
    }
 
-   protected boolean a(ami $$0, blu $$1) {
-      return this.i.test($$1);
+   public double b() {
+      return this.e;
    }
 
-   protected boolean a(ami $$0, blu $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(ami $$0, blu $$1, long $$2) {
-      $$1.dP().a(bum.Y, true);
-      $$1.dP().b(bum.m);
-   }
-
-   protected void c(ami $$0, blu $$1, long $$2) {
-      bml<?> $$3 = $$1.dP();
-      $$3.b(bum.Y);
-   }
-
-   protected void d(ami $$0, blu $$1, long $$2) {
-      if ($$1.N().l()) {
-         ejz $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.dP().a(bum.m, new bup($$3, this.h, 0));
-         }
+   public void a(double $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.d();
       }
+   }
+
+   public Set<bmz> a(bmz.a $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> Sets.newHashSet());
+   }
+
+   public Set<bmz> c() {
+      return ImmutableSet.copyOf(this.c.values());
    }
 
    @Nullable
-   private ejz a(blu $$0, ami $$1) {
-      if ($$0.bN()) {
-         Optional<ejz> $$2 = this.a((crl)$$1, (bkv)$$0).map(ejz::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return bwe.a($$0, 5, 4);
+   public bmz a(UUID $$0) {
+      return this.c.get($$0);
    }
 
-   private Optional<hx> a(crl $$0, bkv $$1) {
-      hx $$2 = $$1.dn();
-      if (!$$0.a_($$2).k($$0, $$2).c()) {
-         return Optional.empty();
+   public boolean a(bmz $$0) {
+      return this.c.get($$0.a()) != null;
+   }
+
+   private void d(bmz $$0) {
+      bmz $$1 = this.c.putIfAbsent($$0.a(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
       } else {
-         Predicate<hx> $$3;
-         if (atq.f($$1.dh()) == 2) {
-            $$3 = $$1x -> hx.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(arp.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(arp.a);
+         this.a($$0.b()).add($$0);
+         this.d();
+      }
+   }
+
+   public void b(bmz $$0) {
+      this.d($$0);
+   }
+
+   public void c(bmz $$0) {
+      this.d($$0);
+      this.d.add($$0);
+   }
+
+   protected void d() {
+      this.f = true;
+      this.h.accept(this);
+   }
+
+   private void e(bmz $$0) {
+      this.a($$0.b()).remove($$0);
+      this.c.remove($$0.a());
+      this.d.remove($$0);
+      this.d();
+   }
+
+   public void b(UUID $$0) {
+      bmz $$1 = this.a($$0);
+      if ($$1 != null) {
+         this.e($$1);
+      }
+   }
+
+   public boolean c(UUID $$0) {
+      bmz $$1 = this.a($$0);
+      if ($$1 != null && this.d.contains($$1)) {
+         this.e($$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void e() {
+      for (bmz $$0 : this.c()) {
+         this.e($$0);
+      }
+   }
+
+   public double f() {
+      if (this.f) {
+         this.g = this.h();
+         this.f = false;
+      }
+
+      return this.g;
+   }
+
+   private double h() {
+      double $$0 = this.b();
+
+      for (bmz $$1 : this.b(bmz.a.a)) {
+         $$0 += $$1.c();
+      }
+
+      double $$2 = $$0;
+
+      for (bmz $$3 : this.b(bmz.a.b)) {
+         $$2 += $$0 * $$3.c();
+      }
+
+      for (bmz $$4 : this.b(bmz.a.c)) {
+         $$2 *= 1.0 + $$4.c();
+      }
+
+      return this.a.a($$2);
+   }
+
+   private Collection<bmz> b(bmz.a $$0) {
+      return this.b.getOrDefault($$0, Collections.emptySet());
+   }
+
+   public void a(bmx $$0) {
+      this.e = $$0.e;
+      this.c.clear();
+      this.c.putAll($$0.c);
+      this.d.clear();
+      this.d.addAll($$0.d);
+      this.b.clear();
+      $$0.b.forEach(($$0x, $$1) -> this.a($$0x).addAll($$1));
+      this.d();
+   }
+
+   public sj g() {
+      sj $$0 = new sj();
+      $$0.a("Name", kb.u.b(this.a).toString());
+      $$0.a("Base", this.e);
+      if (!this.d.isEmpty()) {
+         sp $$1 = new sp();
+
+         for (bmz $$2 : this.d) {
+            $$1.add($$2.d());
          }
 
-         return hx.a($$2, 5, 1, $$3);
+         $$0.a("Modifiers", $$1);
       }
+
+      return $$0;
+   }
+
+   public void a(sj $$0) {
+      this.e = $$0.k("Base");
+      if ($$0.b("Modifiers", 9)) {
+         sp $$1 = $$0.c("Modifiers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            bmz $$3 = bmz.a($$1.a($$2));
+            if ($$3 != null) {
+               this.c.put($$3.a(), $$3);
+               this.a($$3.b()).add($$3);
+               this.d.add($$3);
+            }
+         }
+      }
+
+      this.d();
    }
 }

@@ -1,47 +1,78 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.Collections;
 
 public class ais {
-   public static final int a = 2;
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vb.b("commands.enchant.failed.entity", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vb.b("commands.enchant.failed.itemless", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vb.b("commands.enchant.failed.incompatible", $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> vb.b("commands.enchant.failed.level", $$0, $$1));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vb.c("commands.enchant.failed"));
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<ds> $$0, dn $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("gamemode").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("enchant").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)dv.a("gamemode", eh.a())
-                     .executes($$0x -> a($$0x, Collections.singleton(((du)$$0x.getSource()).h()), eh.a($$0x, "gamemode"))))
-                  .then(dv.a("target", eg.d()).executes($$0x -> a($$0x, eg.f($$0x, "target"), eh.a($$0x, "gamemode"))))
+               dt.a("targets", ee.b())
+                  .then(
+                     ((RequiredArgumentBuilder)dt.a("enchantment", eq.a($$1, kc.t))
+                           .executes($$0x -> a((ds)$$0x.getSource(), ee.b($$0x, "targets"), eq.g($$0x, "enchantment"), 1)))
+                        .then(
+                           dt.a("level", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a(
+                                       (ds)$$0x.getSource(), ee.b($$0x, "targets"), eq.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static void a(du $$0, amj $$1, csc $$2) {
-      uv $$3 = uv.c("gameMode." + $$2.b());
-      if ($$0.f() == $$1) {
-         $$0.a(() -> uv.a("commands.gamemode.success.self", $$3), true);
+   private static int a(ds $$0, Collection<? extends blf> $$1, ie<cqs> $$2, int $$3) throws CommandSyntaxException {
+      cqs $$4 = $$2.a();
+      if ($$3 > $$4.a()) {
+         throw d.create($$3, $$4.a());
       } else {
-         if ($$0.e().Y().b(csb.p)) {
-            $$1.a(uv.a("gameMode.changed", $$3));
+         int $$5 = 0;
+
+         for (blf $$6 : $$1) {
+            if ($$6 instanceof blv) {
+               blv $$7 = (blv)$$6;
+               cmh $$8 = $$7.eT();
+               if (!$$8.b()) {
+                  if ($$4.a($$8) && cqu.a(cqu.a($$8).keySet(), $$4)) {
+                     $$8.a($$4, $$3);
+                     $$5++;
+                  } else if ($$1.size() == 1) {
+                     throw c.create($$8.d().m($$8).getString());
+                  }
+               } else if ($$1.size() == 1) {
+                  throw b.create($$7.ad().getString());
+               }
+            } else if ($$1.size() == 1) {
+               throw a.create($$6.ad().getString());
+            }
          }
 
-         $$0.a(() -> uv.a("commands.gamemode.success.other", $$1.Q_(), $$3), true);
-      }
-   }
+         if ($$5 == 0) {
+            throw e.create();
+         } else {
+            if ($$1.size() == 1) {
+               $$0.a(() -> vb.a("commands.enchant.success.single", $$4.d($$3), $$1.iterator().next().Q_()), true);
+            } else {
+               $$0.a(() -> vb.a("commands.enchant.success.multiple", $$4.d($$3), $$1.size()), true);
+            }
 
-   private static int a(CommandContext<du> $$0, Collection<amj> $$1, csc $$2) {
-      int $$3 = 0;
-
-      for (amj $$4 : $$1) {
-         if ($$4.a($$2)) {
-            a((du)$$0.getSource(), $$4, $$2);
-            $$3++;
+            return $$5;
          }
       }
-
-      return $$3;
    }
 }

@@ -1,12 +1,19 @@
-public class fxz extends fxi<bxs, fjk<bxs>> {
-   private static final agm a = new agm("textures/entity/sheep/sheep.png");
+public class fxz extends fyu<cbu, fjl<cbu>> {
+   private static final agt a = new agt("textures/entity/zombie/zombie.png");
+   private final float i;
 
-   public fxz(fwc.a $$0) {
-      super($$0, new fjk<>($$0.a(fks.bb)), 0.7F);
-      this.a(new gam(this, $$0.f()));
+   public fxz(fxo.a $$0, float $$1) {
+      super($$0, new fjd($$0.a(flx.ae)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gbs<>(this, $$0.d()));
+      this.a(new gbp<>(this, new fjd($$0.a(flx.af)), new fjd($$0.a(flx.ag)), $$0.g()));
    }
 
-   public agm a(bxs $$0) {
+   protected void a(cbu $$0, epd $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public agt a(cbu $$0) {
       return a;
    }
 }

@@ -1,51 +1,60 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class bjv {
+   public static final float a = 1.0F;
+   protected float b = 20.0F;
+   protected long c = auz.a / 20L;
+   protected int d = 0;
+   protected boolean e = true;
+   protected boolean f = false;
 
-public record bjv(String b, bjs c, float d, bjr e, bjx f) {
-   public static final Codec<bjv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("message_id").forGetter(bjv::a),
-               bjs.d.fieldOf("scaling").forGetter(bjv::b),
-               Codec.FLOAT.fieldOf("exhaustion").forGetter(bjv::c),
-               bjr.g.optionalFieldOf("effects", bjr.a).forGetter(bjv::d),
-               bjx.d.optionalFieldOf("death_message_type", bjx.a).forGetter(bjv::e)
-            )
-            .apply($$0, bjv::new)
-   );
-
-   public bjv(String $$0, bjs $$1, float $$2) {
-      this($$0, $$1, $$2, bjr.a, bjx.a);
+   public void a(float $$0) {
+      this.b = Math.max($$0, 1.0F);
+      this.c = (long)((double)auz.a / (double)this.b);
    }
 
-   public bjv(String $$0, bjs $$1, float $$2, bjr $$3) {
-      this($$0, $$1, $$2, $$3, bjx.a);
-   }
-
-   public bjv(String $$0, float $$1, bjr $$2) {
-      this($$0, bjs.b, $$1, $$2);
-   }
-
-   public bjv(String $$0, float $$1) {
-      this($$0, bjs.b, $$1);
-   }
-
-   public String a() {
+   public float f() {
       return this.b;
    }
 
-   public bjs b() {
+   public float g() {
+      return (float)this.c / (float)auz.b;
+   }
+
+   public long h() {
       return this.c;
    }
 
-   public float c() {
-      return this.d;
-   }
-
-   public bjr d() {
+   public boolean i() {
       return this.e;
    }
 
-   public bjx e() {
+   public boolean j() {
+      return this.d > 0;
+   }
+
+   public void c(int $$0) {
+      this.d = $$0;
+   }
+
+   public int k() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean l() {
       return this.f;
+   }
+
+   public void m() {
+      this.e = !this.f || this.d > 0;
+      if (this.d > 0) {
+         this.d--;
+      }
+   }
+
+   public boolean a(blf $$0) {
+      return !this.i() && !($$0 instanceof cer) && $$0.cU() <= 0;
    }
 }

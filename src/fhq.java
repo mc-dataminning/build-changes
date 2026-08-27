@@ -1,51 +1,96 @@
-public class fhq<T extends ccg> extends fkl<T> {
-   public fhq(fkt $$0) {
-      super($$0);
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+
+public class fhq {
+   public final fhq.d a;
+   public final enu b;
+   public final fhq.a c;
+   public final fhq.b d;
+   public final fhq.c e;
+
+   public fhq(fhq.d $$0, enu $$1, fhq.a $$2, fhq.b $$3, fhq.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static fkz a(fkx $$0) {
-      flb $$1 = fih.a($$0, 0.0F);
-      flc $$2 = $$1.a();
-      $$2.a("left_arm", fky.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fkv.a(5.0F, 2.0F, 0.0F));
-      $$2.a("left_leg", fky.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fkv.a(1.9F, 12.0F, 0.0F));
-      return fkz.a($$1, 64, 64);
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : gek.a(this.c.toPath(), this.d);
+      }
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fih.a.a;
-      this.r = fih.a.a;
-      clo $$4 = $$0.b(bja.a);
-      if ($$4.a(clr.vH) && $$0.fX()) {
-         if ($$0.fn() == blf.b) {
-            this.s = fih.a.e;
-         } else {
-            this.r = fih.a.e;
-         }
-      }
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
 
-      super.a($$0, $$1, $$2, $$3);
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.r == fih.a.e) {
-         this.o.e = this.o.e * 0.5F - (float) Math.PI;
-         this.o.f = 0.0F;
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !ac.b(this.b) || !ac.b(this.c) || !ac.b(this.d);
       }
 
-      if (this.s == fih.a.e) {
-         this.n.e = this.n.e * 0.5F - (float) Math.PI;
-         this.n.f = 0.0F;
+      @Nullable
+      public String b() {
+         return this.a;
       }
 
-      if (this.u > 0.0F) {
-         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * atq.a(0.1F * $$3);
-         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * atq.a(0.1F * $$3);
-         this.n.g = this.a(this.u, this.n.g, -0.15F);
-         this.o.g = this.a(this.u, this.o.g, 0.15F);
-         this.q.e = this.q.e - this.u * 0.55F * atq.a(0.1F * $$3);
-         this.p.e = this.p.e + this.u * 0.55F * atq.a(0.1F * $$3);
-         this.k.e = 0.0F;
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final euz a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(euz $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
    }
 }

@@ -1,127 +1,420 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Arrays;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableDouble;
 
-public final class dnk {
-   final dnj a;
-   private final ih<eca.a> b;
-   private final dnc c;
-   private final ctm.f d;
-   private final dno e;
-   private final dnj f;
-   private final dnj g;
-   private final Map<agl<eca.a>, eca> h;
-   private final Map<agm, dnj> i;
-
-   public static dnk a(ih.a $$0, agl<dnb> $$1, long $$2) {
-      return a($$0.b(kd.ay).b($$1).a(), $$0.b(kd.az), $$2);
+public interface dnk {
+   static dnk a(doc $$0, csf $$1, doe $$2, dol $$3, int $$4, int $$5, dnk.a $$6) {
+      return new dnk.c($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public static dnk a(dnb $$0, ih<eca.a> $$1, long $$2) {
-      return new dnk($$0, $$1, $$2);
-   }
-
-   private dnk(dnb $$0, ih<eca.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(new agm("aquifer")).e();
-      this.g = this.a.a(new agm("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dno(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
-
-      class a implements dmp.f {
-         private final Map<dmp, dmp> d = new HashMap<>();
-
-         private atw a(long $$0) {
-            return new dmx($$2 + $$0);
+   static dnk a(final dnk.a $$0) {
+      return new dnk() {
+         @Nullable
+         @Override
+         public dip a(dnr.b $$0x, double $$1) {
+            return $$1 > 0.0 ? null : $$0.computeFluid($$0.a(), $$0.b(), $$0.c()).a($$0.b());
          }
 
          @Override
-         public dmp.c a(dmp.c $$0) {
-            ig<eca.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dnf.a)) {
-                  eca $$2 = eca.a(this.a(0L), new eca.a(-7, 1.0, 1.0));
-                  return new dmp.c($$1, $$2);
-               }
-
-               if ($$1.a(dnf.b)) {
-                  eca $$3 = eca.a(this.a(1L), new eca.a(-7, 1.0, 1.0));
-                  return new dmp.c($$1, $$3);
-               }
-
-               if ($$1.a(dnf.j)) {
-                  eca $$4 = eca.b(dnk.this.a.a(dnf.j.a()), new eca.a(0, 0.0));
-                  return new dmp.c($$1, $$4);
-               }
-            }
-
-            eca $$5 = dnk.this.a($$1.e().orElseThrow());
-            return new dmp.c($$1, $$5);
+         public boolean a() {
+            return false;
          }
+      };
+   }
 
-         private dmp a(dmp $$0) {
-            if ($$0 instanceof ebx $$1) {
-               atw $$2 = $$3 ? this.a(0L) : dnk.this.a.a(new agm("terrain"));
-               return $$1.a($$2);
+   @Nullable
+   dip a(dnr.b var1, double var2);
+
+   boolean a();
+
+   public interface a {
+      dnk.b computeFluid(int var1, int var2, int var3);
+   }
+
+   public static final class b {
+      final int a;
+      final dip b;
+
+      public b(int $$0, dip $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dip a(int $$0) {
+         return $$0 < this.a ? this.b : cwb.a.o();
+      }
+   }
+
+   public static class c implements dnk {
+      private static final int a = 10;
+      private static final int b = 9;
+      private static final int c = 10;
+      private static final int d = 6;
+      private static final int e = 3;
+      private static final int f = 6;
+      private static final int g = 16;
+      private static final int h = 12;
+      private static final int i = 16;
+      private static final int j = 11;
+      private static final double k = a(aty.h(10), aty.h(12));
+      private final doc l;
+      private final dnr m;
+      private final dnr n;
+      private final dnr o;
+      private final dnr p;
+      private final dol q;
+      private final dnk.b[] r;
+      private final long[] s;
+      private final dnk.a t;
+      private final dnr u;
+      private final dnr v;
+      private boolean w;
+      private final int x;
+      private final int y;
+      private final int z;
+      private final int A;
+      private final int B;
+      private static final int[][] C = new int[][]{
+         {0, 0}, {-2, -1}, {-1, -1}, {0, -1}, {1, -1}, {-3, 0}, {-2, 0}, {-1, 0}, {1, 0}, {-2, 1}, {-1, 1}, {0, 1}, {1, 1}
+      };
+
+      c(doc $$0, csf $$1, doe $$2, dol $$3, int $$4, int $$5, dnk.a $$6) {
+         this.l = $$0;
+         this.m = $$2.a();
+         this.n = $$2.b();
+         this.o = $$2.c();
+         this.p = $$2.d();
+         this.u = $$2.h();
+         this.v = $$2.i();
+         this.q = $$3;
+         this.x = this.a($$1.d()) - 1;
+         this.t = $$6;
+         int $$7 = this.a($$1.f()) + 1;
+         this.A = $$7 - this.x + 1;
+         this.y = this.b($$4) - 1;
+         int $$8 = this.b($$4 + $$5) + 1;
+         int $$9 = $$8 - this.y + 1;
+         this.z = this.c($$1.e()) - 1;
+         int $$10 = this.c($$1.g()) + 1;
+         this.B = $$10 - this.z + 1;
+         int $$11 = this.A * $$9 * this.B;
+         this.r = new dnk.b[$$11];
+         this.s = new long[$$11];
+         Arrays.fill(this.s, Long.MAX_VALUE);
+      }
+
+      private int a(int $$0, int $$1, int $$2) {
+         int $$3 = $$0 - this.x;
+         int $$4 = $$1 - this.y;
+         int $$5 = $$2 - this.z;
+         return ($$4 * this.B + $$5) * this.A + $$3;
+      }
+
+      @Nullable
+      @Override
+      public dip a(dnr.b $$0, double $$1) {
+         int $$2 = $$0.a();
+         int $$3 = $$0.b();
+         int $$4 = $$0.c();
+         if ($$1 > 0.0) {
+            this.w = false;
+            return null;
+         } else {
+            dnk.b $$5 = this.t.computeFluid($$2, $$3, $$4);
+            if ($$5.a($$3).a(cwb.H)) {
+               this.w = false;
+               return cwb.H.o();
             } else {
-               return (dmp)($$0 instanceof dmq.i ? new dmq.i($$2) : $$0);
-            }
-         }
+               int $$6 = Math.floorDiv($$2 - 5, 16);
+               int $$7 = Math.floorDiv($$3 + 1, 12);
+               int $$8 = Math.floorDiv($$4 - 5, 16);
+               int $$9 = Integer.MAX_VALUE;
+               int $$10 = Integer.MAX_VALUE;
+               int $$11 = Integer.MAX_VALUE;
+               long $$12 = 0L;
+               long $$13 = 0L;
+               long $$14 = 0L;
 
-         @Override
-         public dmp apply(dmp $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
+               for (int $$15 = 0; $$15 <= 1; $$15++) {
+                  for (int $$16 = -1; $$16 <= 1; $$16++) {
+                     for (int $$17 = 0; $$17 <= 1; $$17++) {
+                        int $$18 = $$6 + $$15;
+                        int $$19 = $$7 + $$16;
+                        int $$20 = $$8 + $$17;
+                        int $$21 = this.a($$18, $$19, $$20);
+                        long $$22 = this.s[$$21];
+                        long $$23;
+                        if ($$22 != Long.MAX_VALUE) {
+                           $$23 = $$22;
+                        } else {
+                           auf $$24 = this.q.a($$18, $$19, $$20);
+                           $$23 = hv.a($$18 * 16 + $$24.a(10), $$19 * 12 + $$24.a(9), $$20 * 16 + $$24.a(10));
+                           this.s[$$21] = $$23;
+                        }
+
+                        int $$26 = hv.a($$23) - $$2;
+                        int $$27 = hv.b($$23) - $$3;
+                        int $$28 = hv.c($$23) - $$4;
+                        int $$29 = $$26 * $$26 + $$27 * $$27 + $$28 * $$28;
+                        if ($$9 >= $$29) {
+                           $$14 = $$13;
+                           $$13 = $$12;
+                           $$12 = $$23;
+                           $$11 = $$10;
+                           $$10 = $$9;
+                           $$9 = $$29;
+                        } else if ($$10 >= $$29) {
+                           $$14 = $$13;
+                           $$13 = $$23;
+                           $$11 = $$10;
+                           $$10 = $$29;
+                        } else if ($$11 >= $$29) {
+                           $$14 = $$23;
+                           $$11 = $$29;
+                        }
+                     }
+                  }
+               }
+
+               dnk.b $$30 = this.a($$12);
+               double $$31 = a($$9, $$10);
+               dip $$32 = $$30.a($$3);
+               if ($$31 <= 0.0) {
+                  this.w = $$31 >= k;
+                  return $$32;
+               } else if ($$32.a(cwb.G) && this.t.computeFluid($$2, $$3 - 1, $$4).a($$3 - 1).a(cwb.H)) {
+                  this.w = true;
+                  return $$32;
+               } else {
+                  MutableDouble $$34 = new MutableDouble(Double.NaN);
+                  dnk.b $$35 = this.a($$13);
+                  double $$36 = $$31 * this.a($$0, $$34, $$30, $$35);
+                  if ($$1 + $$36 > 0.0) {
+                     this.w = false;
+                     return null;
+                  } else {
+                     dnk.b $$37 = this.a($$14);
+                     double $$38 = a($$9, $$11);
+                     if ($$38 > 0.0) {
+                        double $$39 = $$31 * $$38 * this.a($$0, $$34, $$30, $$37);
+                        if ($$1 + $$39 > 0.0) {
+                           this.w = false;
+                           return null;
+                        }
+                     }
+
+                     double $$40 = a($$10, $$11);
+                     if ($$40 > 0.0) {
+                        double $$41 = $$31 * $$40 * this.a($$0, $$34, $$35, $$37);
+                        if ($$1 + $$41 > 0.0) {
+                           this.w = false;
+                           return null;
+                        }
+                     }
+
+                     this.w = true;
+                     return $$32;
+                  }
+               }
+            }
          }
       }
 
-      this.c = $$0.i().a(new a());
-      dmp.f $$4 = new dmp.f() {
-         private final Map<dmp, dmp> b = new HashMap<>();
+      @Override
+      public boolean a() {
+         return this.w;
+      }
 
-         private dmp a(dmp $$0) {
-            if ($$0 instanceof dmq.j $$1) {
-               return $$1.j().a();
+      private static double a(int $$0, int $$1) {
+         double $$2 = 25.0;
+         return 1.0 - (double)Math.abs($$1 - $$0) / 25.0;
+      }
+
+      private double a(dnr.b $$0, MutableDouble $$1, dnk.b $$2, dnk.b $$3) {
+         int $$4 = $$0.b();
+         dip $$5 = $$2.a($$4);
+         dip $$6 = $$3.a($$4);
+         if ((!$$5.a(cwb.H) || !$$6.a(cwb.G)) && (!$$5.a(cwb.G) || !$$6.a(cwb.H))) {
+            int $$7 = Math.abs($$2.a - $$3.a);
+            if ($$7 == 0) {
+               return 0.0;
             } else {
-               return $$0 instanceof dmq.l $$2 ? $$2.k() : $$0;
+               double $$8 = 0.5 * (double)($$2.a + $$3.a);
+               double $$9 = (double)$$4 + 0.5 - $$8;
+               double $$10 = (double)$$7 / 2.0;
+               double $$11 = 0.0;
+               double $$12 = 2.5;
+               double $$13 = 1.5;
+               double $$14 = 3.0;
+               double $$15 = 10.0;
+               double $$16 = 3.0;
+               double $$17 = $$10 - Math.abs($$9);
+               double $$19;
+               if ($$9 > 0.0) {
+                  double $$18 = 0.0 + $$17;
+                  if ($$18 > 0.0) {
+                     $$19 = $$18 / 1.5;
+                  } else {
+                     $$19 = $$18 / 2.5;
+                  }
+               } else {
+                  double $$21 = 3.0 + $$17;
+                  if ($$21 > 0.0) {
+                     $$19 = $$21 / 3.0;
+                  } else {
+                     $$19 = $$21 / 10.0;
+                  }
+               }
+
+               double $$24 = 2.0;
+               double $$28;
+               if (!($$19 < -2.0) && !($$19 > 2.0)) {
+                  double $$26 = $$1.getValue();
+                  if (Double.isNaN($$26)) {
+                     double $$27 = this.m.a($$0);
+                     $$1.setValue($$27);
+                     $$28 = $$27;
+                  } else {
+                     $$28 = $$26;
+                  }
+               } else {
+                  $$28 = 0.0;
+               }
+
+               return 2.0 * ($$28 + $$19);
+            }
+         } else {
+            return 2.0;
+         }
+      }
+
+      private int a(int $$0) {
+         return Math.floorDiv($$0, 16);
+      }
+
+      private int b(int $$0) {
+         return Math.floorDiv($$0, 12);
+      }
+
+      private int c(int $$0) {
+         return Math.floorDiv($$0, 16);
+      }
+
+      private dnk.b a(long $$0) {
+         int $$1 = hv.a($$0);
+         int $$2 = hv.b($$0);
+         int $$3 = hv.c($$0);
+         int $$4 = this.a($$1);
+         int $$5 = this.b($$2);
+         int $$6 = this.c($$3);
+         int $$7 = this.a($$4, $$5, $$6);
+         dnk.b $$8 = this.r[$$7];
+         if ($$8 != null) {
+            return $$8;
+         } else {
+            dnk.b $$9 = this.b($$1, $$2, $$3);
+            this.r[$$7] = $$9;
+            return $$9;
+         }
+      }
+
+      private dnk.b b(int $$0, int $$1, int $$2) {
+         dnk.b $$3 = this.t.computeFluid($$0, $$1, $$2);
+         int $$4 = Integer.MAX_VALUE;
+         int $$5 = $$1 + 12;
+         int $$6 = $$1 - 12;
+         boolean $$7 = false;
+
+         for (int[] $$8 : C) {
+            int $$9 = $$0 + ix.c($$8[0]);
+            int $$10 = $$2 + ix.c($$8[1]);
+            int $$11 = this.l.a($$9, $$10);
+            int $$12 = $$11 + 8;
+            boolean $$13 = $$8[0] == 0 && $$8[1] == 0;
+            if ($$13 && $$6 > $$12) {
+               return $$3;
+            }
+
+            boolean $$14 = $$5 > $$12;
+            if ($$14 || $$13) {
+               dnk.b $$15 = this.t.computeFluid($$9, $$12, $$10);
+               if (!$$15.a($$12).i()) {
+                  if ($$13) {
+                     $$7 = true;
+                  }
+
+                  if ($$14) {
+                     return $$15;
+                  }
+               }
+            }
+
+            $$4 = Math.min($$4, $$11);
+         }
+
+         int $$16 = this.a($$0, $$1, $$2, $$3, $$4, $$7);
+         return new dnk.b($$16, this.a($$0, $$1, $$2, $$3, $$16));
+      }
+
+      private int a(int $$0, int $$1, int $$2, dnk.b $$3, int $$4, boolean $$5) {
+         dnr.e $$6 = new dnr.e($$0, $$1, $$2);
+         double $$7;
+         double $$8;
+         if (cun.a(this.u, this.v, $$6)) {
+            $$7 = -1.0;
+            $$8 = -1.0;
+         } else {
+            int $$9 = $$4 + 8 - $$1;
+            int $$10 = 64;
+            double $$11 = $$5 ? aty.a((double)$$9, 0.0, 64.0, 1.0, 0.0) : 0.0;
+            double $$12 = aty.a(this.n.a($$6), -1.0, 1.0);
+            double $$13 = aty.b($$11, 1.0, 0.0, -0.3, 0.8);
+            double $$14 = aty.b($$11, 1.0, 0.0, -0.8, 0.4);
+            $$7 = $$12 - $$14;
+            $$8 = $$12 - $$13;
+         }
+
+         int $$17;
+         if ($$8 > 0.0) {
+            $$17 = $$3.a;
+         } else if ($$7 > 0.0) {
+            $$17 = this.a($$0, $$1, $$2, $$4);
+         } else {
+            $$17 = dly.g;
+         }
+
+         return $$17;
+      }
+
+      private int a(int $$0, int $$1, int $$2, int $$3) {
+         int $$4 = 16;
+         int $$5 = 40;
+         int $$6 = Math.floorDiv($$0, 16);
+         int $$7 = Math.floorDiv($$1, 40);
+         int $$8 = Math.floorDiv($$2, 16);
+         int $$9 = $$7 * 40 + 20;
+         int $$10 = 10;
+         double $$11 = this.o.a(new dnr.e($$6, $$7, $$8)) * 10.0;
+         int $$12 = aty.a($$11, 3);
+         int $$13 = $$9 + $$12;
+         return Math.min($$3, $$13);
+      }
+
+      private dip a(int $$0, int $$1, int $$2, dnk.b $$3, int $$4) {
+         dip $$5 = $$3.b;
+         if ($$4 <= -10 && $$4 != dly.g && $$3.b != cwb.H.o()) {
+            int $$6 = 64;
+            int $$7 = 40;
+            int $$8 = Math.floorDiv($$0, 64);
+            int $$9 = Math.floorDiv($$1, 40);
+            int $$10 = Math.floorDiv($$2, 64);
+            double $$11 = this.p.a(new dnr.e($$8, $$9, $$10));
+            if (Math.abs($$11) > 0.3) {
+               $$5 = cwb.H.o();
             }
          }
 
-         @Override
-         public dmp apply(dmp $$0) {
-            return this.b.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new ctm.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
-   }
-
-   public eca a(agl<eca.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dnf.a(this.b, this.a, $$0));
-   }
-
-   public dnj a(agm $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
-   }
-
-   public dnc a() {
-      return this.c;
-   }
-
-   public ctm.f b() {
-      return this.d;
-   }
-
-   public dno c() {
-      return this.e;
-   }
-
-   public dnj d() {
-      return this.f;
-   }
-
-   public dnj e() {
-      return this.g;
+         return $$5;
+      }
    }
 }

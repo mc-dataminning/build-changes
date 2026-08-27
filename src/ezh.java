@@ -1,97 +1,28 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public record ezh(ezg a, int b, int c) {
-   private static final ezh d = new ezh(0, 0, 0, 0);
+public enum ezh implements aut {
+   a("bitmap", ezf.a.a),
+   b("ttf", ezj.a),
+   c("space", eni.a.a),
+   d("unihex", ezk.b.a),
+   e("reference", ezi.a);
 
-   public ezh(int $$0, int $$1, int $$2, int $$3) {
-      this(new ezg($$0, $$1), $$2, $$3);
+   public static final Codec<ezh> f = aut.a(ezh::values);
+   private final String g;
+   private final MapCodec<? extends ezg> h;
+
+   private ezh(String $$0, MapCodec<? extends ezg> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static ezh a() {
-      return d;
+   @Override
+   public String c() {
+      return this.g;
    }
 
-   public static ezh a(eze $$0, int $$1, int $$2, int $$3, int $$4) {
-      return switch ($$0) {
-         case a -> new ezh($$1, $$2, $$3, $$4);
-         case b -> new ezh($$2, $$1, $$4, $$3);
-      };
-   }
-
-   public ezh a(ezf $$0) {
-      return new ezh(this.a.a($$0), this.b, this.c);
-   }
-
-   public int a(eze $$0) {
-      return switch ($$0) {
-         case a -> this.b;
-         case b -> this.c;
-      };
-   }
-
-   public int b(ezf $$0) {
-      eze $$1 = $$0.a();
-      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
-   }
-
-   public ezh c(ezf $$0) {
-      int $$1 = this.b($$0);
-      eze $$2 = $$0.a().a();
-      int $$3 = this.b($$2.c());
-      int $$4 = this.a($$2);
-      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
-   }
-
-   public boolean a(ezh $$0) {
-      return this.a($$0, eze.a) && this.a($$0, eze.b);
-   }
-
-   public boolean a(ezh $$0, eze $$1) {
-      int $$2 = this.b($$1.c());
-      int $$3 = $$0.b($$1.c());
-      int $$4 = this.b($$1.b());
-      int $$5 = $$0.b($$1.b());
-      return Math.max($$2, $$3) <= Math.min($$4, $$5);
-   }
-
-   public int b(eze $$0) {
-      return (this.b($$0.b()) + this.b($$0.c())) / 2;
-   }
-
-   @Nullable
-   public ezh b(ezh $$0) {
-      int $$1 = Math.max(this.d(), $$0.d());
-      int $$2 = Math.max(this.b(), $$0.b());
-      int $$3 = Math.min(this.e(), $$0.e());
-      int $$4 = Math.min(this.c(), $$0.c());
-      return $$1 < $$3 && $$2 < $$4 ? new ezh($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
-   }
-
-   public int b() {
-      return this.a.b();
-   }
-
-   public int c() {
-      return this.a.b() + this.c;
-   }
-
-   public int d() {
-      return this.a.a();
-   }
-
-   public int e() {
-      return this.a.a() + this.b;
-   }
-
-   public ezg f() {
-      return this.a;
-   }
-
-   public int g() {
-      return this.b;
-   }
-
-   public int h() {
-      return this.c;
+   public MapCodec<? extends ezg> a() {
+      return this.h;
    }
 }

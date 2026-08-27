@@ -1,95 +1,143 @@
 import com.google.common.collect.Lists;
-import java.util.Collection;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class zx implements wo<yh> {
-   private final int a;
-   private final byte b;
-   private final boolean c;
-   @Nullable
-   private final List<eee> d;
-   @Nullable
-   private final eeh.b e;
+public class zx {
+   private static final int a = 2097152;
+   private final sj b;
+   private final byte[] c;
+   private final List<zx.a> d;
 
-   public zx(int $$0, byte $$1, boolean $$2, @Nullable Collection<eee> $$3, @Nullable eeh.b $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3 != null ? Lists.newArrayList($$3) : null;
-      this.e = $$4;
+   public zx(dkw $$0) {
+      this.b = new sj();
+
+      for (Entry<dny.a, dny> $$1 : $$0.e()) {
+         if ($$1.getKey().b()) {
+            this.b.a($$1.getKey().a(), new sq($$1.getValue().a()));
+         }
+      }
+
+      this.c = new byte[a($$0)];
+      a(new ue(this.c()), $$0);
+      this.d = Lists.newArrayList();
+
+      for (Entry<hv, dgd> $$2 : $$0.G().entrySet()) {
+         this.d.add(zx.a.a($$2.getValue()));
+      }
    }
 
-   public zx(ty $$0) {
-      this.a = $$0.n();
-      this.b = $$0.readByte();
-      this.c = $$0.readBoolean();
-      this.d = $$0.c($$0x -> $$0x.a((ty.a)($$0xx -> {
-            eee.a $$1x = $$0xx.b(eee.a.class);
-            byte $$2x = $$0xx.readByte();
-            byte $$3x = $$0xx.readByte();
-            byte $$4x = (byte)($$0xx.readByte() & 15);
-            uv $$5x = $$0xx.c(ty::m);
-            return new eee($$1x, $$2x, $$3x, $$4x, $$5x);
-         })));
-      int $$1 = $$0.readUnsignedByte();
-      if ($$1 > 0) {
-         int $$2 = $$0.readUnsignedByte();
-         int $$3 = $$0.readUnsignedByte();
-         int $$4 = $$0.readUnsignedByte();
-         byte[] $$5 = $$0.b();
-         this.e = new eeh.b($$3, $$4, $$1, $$2, $$5);
+   public zx(ue $$0, int $$1, int $$2) {
+      this.b = $$0.q();
+      if (this.b == null) {
+         throw new RuntimeException("Can't read heightmap in packet for [" + $$1 + ", " + $$2 + "]");
       } else {
-         this.e = null;
+         int $$3 = $$0.n();
+         if ($$3 > 2097152) {
+            throw new RuntimeException("Chunk Packet trying to allocate too much memory on read.");
+         } else {
+            this.c = new byte[$$3];
+            $$0.b(this.c);
+            this.d = $$0.a(zx.a::new);
+         }
       }
    }
 
-   @Override
-   public void a(ty $$0) {
-      $$0.c(this.a);
-      $$0.k(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d, ($$0x, $$1) -> $$0x.a($$1, ($$0xx, $$1x) -> {
-            $$0xx.a($$1x.c());
-            $$0xx.k($$1x.d());
-            $$0xx.k($$1x.e());
-            $$0xx.k($$1x.f() & 15);
-            $$0xx.a($$1x.g(), ty::a);
-         }));
-      if (this.e != null) {
-         $$0.k(this.e.c);
-         $$0.k(this.e.d);
-         $$0.k(this.e.a);
-         $$0.k(this.e.b);
-         $$0.a(this.e.e);
-      } else {
-         $$0.k(0);
+   public void a(ue $$0) {
+      $$0.a((tg)this.b);
+      $$0.c(this.c.length);
+      $$0.c(this.c);
+      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   private static int a(dkw $$0) {
+      int $$1 = 0;
+
+      for (dkx $$2 : $$0.d()) {
+         $$1 += $$2.j();
+      }
+
+      return $$1;
+   }
+
+   private ByteBuf c() {
+      ByteBuf $$0 = Unpooled.wrappedBuffer(this.c);
+      $$0.writerIndex(0);
+      return $$0;
+   }
+
+   public static void a(ue $$0, dkw $$1) {
+      for (dkx $$2 : $$1.d()) {
+         $$2.c($$0);
       }
    }
 
-   public void a(yh $$0) {
-      $$0.a(this);
+   public Consumer<zx.b> a(int $$0, int $$1) {
+      return $$2 -> this.a($$2, $$0, $$1);
    }
 
-   public int a() {
-      return this.a;
-   }
+   private void a(zx.b $$0, int $$1, int $$2) {
+      int $$3 = 16 * $$1;
+      int $$4 = 16 * $$2;
+      hv.a $$5 = new hv.a();
 
-   public void a(eeh $$0) {
-      if (this.d != null) {
-         $$0.a(this.d);
+      for (zx.a $$6 : this.d) {
+         int $$7 = $$3 + ix.b($$6.a >> 4);
+         int $$8 = $$4 + ix.b($$6.a);
+         $$5.d($$7, $$6.b, $$8);
+         $$0.accept($$5, $$6.c, $$6.d);
       }
-
-      if (this.e != null) {
-         this.e.a($$0);
-      }
    }
 
-   public byte d() {
+   public ue a() {
+      return new ue(Unpooled.wrappedBuffer(this.c));
+   }
+
+   public sj b() {
       return this.b;
    }
 
-   public boolean e() {
-      return this.c;
+   static class a {
+      final int a;
+      final int b;
+      final dgf<?> c;
+      @Nullable
+      final sj d;
+
+      private a(int $$0, int $$1, dgf<?> $$2, @Nullable sj $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      private a(ue $$0) {
+         this.a = $$0.readByte();
+         this.b = $$0.readShort();
+         this.c = $$0.a(kb.k);
+         this.d = $$0.q();
+      }
+
+      void a(ue $$0) {
+         $$0.k(this.a);
+         $$0.l(this.b);
+         $$0.a(kb.k, this.c);
+         $$0.a((tg)this.d);
+      }
+
+      static zx.a a(dgd $$0) {
+         sj $$1 = $$0.ax_();
+         hv $$2 = $$0.aB_();
+         int $$3 = ix.b($$2.u()) << 4 | ix.b($$2.w());
+         return new zx.a($$3, $$2.v(), $$0.v(), $$1.g() ? null : $$1);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void accept(hv var1, dgf<?> var2, @Nullable sj var3);
    }
 }

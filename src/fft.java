@@ -1,102 +1,136 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class fft extends faz {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<agl<csf>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(csf.h, -13408734);
-      $$0.put(csf.i, -10075085);
-      $$0.put(csf.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bip k;
+public class fft extends ewf {
+   private static final agt b = new agt("recipe_book/slot_many_craftable");
+   private static final agt c = new agt("recipe_book/slot_craftable");
+   private static final agt d = new agt("recipe_book/slot_many_uncraftable");
+   private static final agt e = new agt("recipe_book/slot_uncraftable");
+   private static final float l = 15.0F;
+   private static final int m = 25;
+   public static final int a = 30;
+   private static final vb n = vb.c("gui.recipebook.moreRecipes");
+   private cix<?> o;
+   private arf p;
+   private ffu q;
+   private float r;
+   private float t;
+   private int u;
 
-   @Nullable
-   public static fft a(eti $$0, BooleanConsumer $$1, DataFixer $$2, ees.c $$3, boolean $$4) {
-      try {
-         ffz $$5 = $$0.w();
-         aow $$6 = aoz.a($$3);
+   public fft() {
+      super(0, 0, 25, 25, va.a);
+   }
 
-         fft var10;
-         try (ahi $$7 = $$5.a($$3.f(), false, $$6)) {
-            eey $$8 = $$7.d();
-            it.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new fft($$1, $$2, $$3, $$8.L(), $$4, $$9.d(kd.aK));
+   public void a(ffu $$0, ffr $$1) {
+      this.q = $$0;
+      this.o = (cix<?>)$$1.d().s.bS;
+      this.p = $$1.e();
+      List<cpn<?>> $$2 = $$0.a(this.p.a(this.o));
+
+      for (cpn<?> $$3 : $$2) {
+         if (this.p.d($$3)) {
+            $$1.a($$2);
+            this.t = 15.0F;
+            break;
          }
-
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
       }
    }
 
-   private fft(BooleanConsumer $$0, DataFixer $$1, ees.c $$2, csj $$3, boolean $$4, is<dkx> $$5) {
-      super(uv.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.k = new bip($$2, $$1, $$5, $$4);
+   public ffu a() {
+      return this.q;
    }
 
    @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.d(eve.a(uu.e, $$0 -> {
-         this.k.a();
-         this.c.accept(false);
-      }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
-   }
-
-   @Override
-   public void d() {
-      if (this.k.b()) {
-         this.c.accept(true);
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      if (!fcc.p()) {
+         this.r += $$3;
       }
-   }
 
-   @Override
-   public void aG_() {
-      this.c.accept(false);
-   }
-
-   @Override
-   public void aH_() {
-      this.k.a();
-   }
-
-   @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      int $$4 = this.g / 2 - 150;
-      int $$5 = this.g / 2 + 150;
-      int $$6 = this.h / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
-      if (this.k.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.i, uv.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
-         $$0.b(this.i, uv.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.i, uv.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
-
-         for (agl<csf> $$9 : this.k.c()) {
-            int $$10 = atq.d(this.k.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
+      agt $$4;
+      if (this.q.c()) {
+         if (this.q.a(this.p.a(this.o)).size() > 1) {
+            $$4 = b;
+         } else {
+            $$4 = c;
          }
-
-         int $$11 = this.k.f() + this.k.g();
-         uv $$12 = uv.a("optimizeWorld.progress.counter", $$11, this.k.e());
-         uv $$13 = uv.a("optimizeWorld.progress.percentage", atq.d(this.k.d() * 100.0F));
-         $$0.a(this.i, $$12, this.g / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.i, $$13, this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+      } else if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$4 = d;
+      } else {
+         $$4 = e;
       }
+
+      boolean $$8 = this.t > 0.0F;
+      if ($$8) {
+         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.t / 15.0F * (float) Math.PI));
+         $$0.c().a();
+         $$0.c().a((float)(this.p() + 8), (float)(this.r() + 12), 0.0F);
+         $$0.c().b($$9, $$9, 1.0F);
+         $$0.c().a((float)(-(this.p() + 8)), (float)(-(this.r() + 12)), 0.0F);
+         this.t -= $$3;
+      }
+
+      $$0.a($$4, this.p(), this.r(), this.f, this.g);
+      List<cpn<?>> $$10 = this.g();
+      this.u = aty.d(this.r / 30.0F) % $$10.size();
+      cmh $$11 = $$10.get(this.u).b().a(this.q.a());
+      int $$12 = 4;
+      if (this.q.f() && this.g().size() > 1) {
+         $$0.a($$11, this.p() + $$12 + 1, this.r() + $$12 + 1, 0, 10);
+         $$12--;
+      }
+
+      $$0.b($$11, this.p() + $$12, this.r() + $$12);
+      if ($$8) {
+         $$0.c().b();
+      }
+   }
+
+   private List<cpn<?>> g() {
+      List<cpn<?>> $$0 = this.q.b(true);
+      if (!this.p.a(this.o)) {
+         $$0.addAll(this.q.b(false));
+      }
+
+      return $$0;
+   }
+
+   public boolean b() {
+      return this.g().size() == 1;
+   }
+
+   public cpn<?> e() {
+      List<cpn<?>> $$0 = this.g();
+      return $$0.get(this.u);
+   }
+
+   public List<vb> f() {
+      cmh $$0 = this.g().get(this.u).b().a(this.q.a());
+      List<vb> $$1 = Lists.newArrayList(fcc.a(euk.N(), $$0));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$1.add(n);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void a(faa $$0) {
+      cmh $$1 = this.g().get(this.u).b().a(this.q.a());
+      $$0.a(ezz.a, vb.a("narration.recipe", $$1.y()));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$0.a(ezz.d, vb.c("narration.button.usage.hovered"), vb.c("narration.recipe.usage.more"));
+      } else {
+         $$0.a(ezz.d, vb.c("narration.button.usage.hovered"));
+      }
+   }
+
+   @Override
+   public int k() {
+      return 25;
+   }
+
+   @Override
+   protected boolean c(int $$0) {
+      return $$0 == 0 || $$0 == 1;
    }
 }

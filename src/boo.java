@@ -1,54 +1,48 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
-public class boo {
-   public static bnd<cdm> a() {
-      return bqo.a(
-         (Function<bqo.b<cdm>, ? extends App<bqo.c<cdm>, bqr<cdm>>>)($$0 -> $$0.group($$0.b(bum.c), $$0.b(bum.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        ie $$6 = $$0.b($$1);
-                        $$3.x()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<bll>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof cdm && $$1xxx != $$4)
-                                    .map($$0xxxx -> (cdm)$$0xxxx)
-                                    .filter(bll::bx)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, boo::a)
-                           );
-                        return true;
-                     }
-               ))
-      );
+public class boo<E extends blx> extends bop<E> {
+   private final asg<cvz> m;
+   private final float n;
+   private final List<bop.a> o = new ArrayList<>();
+   private boolean p;
+
+   public boo(biw $$0, int $$1, int $$2, float $$3, Function<E, arb> $$4, asg<cvz> $$5, float $$6, BiPredicate<E, hv> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   private static cdm a(cdm $$0, cdm $$1) {
-      cdm $$2;
-      cdm $$3;
-      if ($$0.w() > $$1.w()) {
-         $$2 = $$0;
-         $$3 = $$1;
+   @Override
+   protected void a(amp $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.eg().i() < this.n;
+   }
+
+   @Override
+   protected Optional<bop.a> a(amp $$0) {
+      if (!this.p) {
+         return super.a($$0);
       } else {
-         $$2 = $$1;
-         $$3 = $$0;
+         hv.a $$1 = new hv.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<bop.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               bop.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), ia.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
       }
-
-      $$3.dP().b(bum.c);
-      return $$2;
-   }
-
-   private static boolean a(ie $$0, ig<bwn> $$1, cdm $$2) {
-      Optional<ie> $$3 = $$2.dP().c(bum.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gq().b());
-   }
-
-   private static boolean a(ig<bwn> $$0, cdp $$1) {
-      return $$1.b().test($$0);
    }
 }

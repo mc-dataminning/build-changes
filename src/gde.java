@@ -1,31 +1,50 @@
-import com.google.common.collect.Lists;
-import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.text.ArabicShaping;
-import com.ibm.icu.text.Bidi;
-import com.ibm.icu.text.BidiRun;
-import java.util.List;
+import com.google.common.collect.ImmutableList;
+import javax.annotation.Nullable;
 
-public class gde {
-   public static atc a(va $$0, boolean $$1) {
-      vt $$2 = vt.a($$0, UCharacter::getMirror, gde::a);
-      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
-      $$3.setReorderingMode(0);
-      List<atc> $$4 = Lists.newArrayList();
-      int $$5 = $$3.countRuns();
+public final class gde {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final agt d = new agt("missingno");
+   private static final apu e = new apu.a().a(gez.a, new gez(ImmutableList.of(new gey(0, -1)), 16, 16, 1, false)).a();
+   @Nullable
+   private static gdb f;
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         BidiRun $$7 = $$3.getVisualRun($$6);
-         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+   private static eoe a(int $$0, int $$1) {
+      eoe $$2 = new eoe($$0, $$1, false);
+      int $$3 = -16777216;
+      int $$4 = -524040;
+
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         for (int $$6 = 0; $$6 < $$0; $$6++) {
+            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
+               $$2.a($$6, $$5, -524040);
+            } else {
+               $$2.a($$6, $$5, -16777216);
+            }
+         }
       }
 
-      return atc.composite($$4);
+      return $$2;
    }
 
-   private static String a(String $$0) {
-      try {
-         return new ArabicShaping(8).shape($$0);
-      } catch (Exception var2) {
-         return $$0;
+   public static gdi a() {
+      eoe $$0 = a(16, 16);
+      return new gdi(d, new gfb(16, 16), $$0, e);
+   }
+
+   public static agt b() {
+      return d;
+   }
+
+   public static gdb c() {
+      if (f == null) {
+         eoe $$0 = a(16, 16);
+         $$0.i();
+         f = new gdb($$0);
+         euk.N().X().a(d, f);
       }
+
+      return f;
    }
 }

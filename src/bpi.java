@@ -1,22 +1,26 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bpi {
-   public static bom<bll> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
-   }
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-   public static bom<bll> a(Predicate<bll> $$0, Function<bll, Float> $$1, int $$2) {
-      return bqo.a(
-         (Function<bqo.b<bll>, ? extends App<bqo.c<bll>, bqr<bll>>>)($$3 -> $$3.group($$3.c(bum.m), $$3.b(bum.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
-                  } else {
-                     $$4.a(new bup($$3.b($$5), $$1.apply($$7), $$2));
-                     return true;
+   public static bnn<blv> a() {
+      return bqz.a((Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$0 -> $$0.group($$0.b(bux.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.z.i() <= 0.95F) {
+                  return false;
+               } else {
+                  hv $$5 = $$0.<id>b($$1).b();
+                  if ($$5.a($$3.dm(), 3.0)) {
+                     dip $$6 = $$2.a_($$5);
+                     if ($$6.a(cwb.od)) {
+                        cvv $$7 = (cvv)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
+                     }
                   }
-               }))
-      );
+
+                  return true;
+               }
+            })));
    }
 }

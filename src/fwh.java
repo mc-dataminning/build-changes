@@ -1,28 +1,44 @@
-public class fwh extends fwb<car> {
-   private final frt a;
+public class fwh implements fvt.a {
+   private final euk a;
 
-   public fwh(fwc.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public fwh(euk $$0) {
+      this.a = $$0;
    }
 
-   public void a(car $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
-      dhn $$6 = $$0.u();
-      if ($$6.l() == dbk.c) {
-         csf $$7 = $$0.dN();
-         if ($$6 != $$7.a_($$0.dn()) && $$6.l() != dbk.a) {
-            $$3.a();
-            hx $$8 = hx.a($$0.ds(), $$0.cH().e, $$0.dy());
-            $$3.a(-0.5, 0.0, -0.5);
-            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fqu.b($$6)), false, atw.a(), $$6.a($$0.q()), gbq.d);
-            $$3.b();
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
+      hv $$5 = this.a.s.dm();
+      ctb $$6 = this.a.s.dM();
+
+      for (hv $$7 : hv.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         edz $$8 = $$6.b_($$7);
+         if ($$8.a(arw.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            fvt.a(
+               $$0,
+               $$1,
+               new ekw(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
          }
       }
-   }
 
-   public agm a(car $$0) {
-      return gby.e;
+      for (hv $$10 : hv.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         edz $$11 = $$6.b_($$10);
+         if ($$11.a(arw.a)) {
+            fvt.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
+      }
    }
 }

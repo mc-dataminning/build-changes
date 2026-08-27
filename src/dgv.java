@@ -1,72 +1,79 @@
-import javax.annotation.Nullable;
+public class dgv extends dhh {
+   public static final int e = 9;
+   private io<cmh> f = io.a(9, cmh.f);
 
-public class dgv extends dfi {
-   private final crh a = new crh() {
-      @Override
-      public void a(csf $$0, hx $$1, int $$2) {
-         $$0.a($$1, cvh.ct, $$2, 0);
-      }
+   protected dgv(dgf<?> $$0, hv $$1, dip $$2) {
+      super($$0, $$1, $$2);
+   }
 
-      @Override
-      public void a(@Nullable csf $$0, hx $$1, csw $$2) {
-         super.a($$0, $$1, $$2);
-         if ($$0 != null) {
-            dhn $$3 = $$0.a_($$1);
-            $$0.a($$1, $$3, $$3, 4);
+   public dgv(hv $$0, dip $$1) {
+      this(dgf.f, $$0, $$1);
+   }
+
+   @Override
+   public int b() {
+      return 9;
+   }
+
+   public int a(auf $$0) {
+      this.e_(null);
+      int $$1 = -1;
+      int $$2 = 1;
+
+      for (int $$3 = 0; $$3 < this.f.size(); $$3++) {
+         if (!this.f.get($$3).b() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
          }
       }
-   };
 
-   public dgv(hx $$0, dhn $$1) {
-      super(dfk.j, $$0, $$1);
+      return $$1;
+   }
+
+   public int a(cmh $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         if (this.f.get($$1).b()) {
+            this.a($$1, $$0);
+            return $$1;
+         }
+      }
+
+      return -1;
    }
 
    @Override
-   public void a(sd $$0) {
+   protected vb l() {
+      return vb.c("container.dispenser");
+   }
+
+   @Override
+   public void a(sj $$0) {
       super.a($$0);
-      this.a.a(this.o, this.p, $$0);
+      this.f = io.a(this.b(), cmh.f);
+      if (!this.c_($$0)) {
+         bjf.b($$0, this.f);
+      }
    }
 
    @Override
-   protected void b(sd $$0) {
+   protected void b(sj $$0) {
       super.b($$0);
-      this.a.a($$0);
-   }
-
-   public static void a(csf $$0, hx $$1, dhn $$2, dgv $$3) {
-      $$3.a.a($$0, $$1);
-   }
-
-   public static void b(csf $$0, hx $$1, dhn $$2, dgv $$3) {
-      $$3.a.a((ami)$$0, $$1);
-   }
-
-   public yo c() {
-      return yo.a(this);
+      if (!this.d_($$0)) {
+         bjf.a($$0, this.f);
+      }
    }
 
    @Override
-   public sd ay_() {
-      sd $$0 = this.q();
-      $$0.r("SpawnPotentials");
-      return $$0;
+   protected io<cmh> k() {
+      return this.f;
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      return this.a.a(this.o, $$0) ? true : super.a_($$0, $$1);
+   protected void a(io<cmh> $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public boolean u() {
-      return true;
-   }
-
-   public void a(bkz<?> $$0, atw $$1) {
-      this.a.a($$0, this.o, $$1, this.p);
-   }
-
-   public crh d() {
-      return this.a;
+   protected chk a(int $$0, ceq $$1) {
+      return new cid($$0, $$1, this);
    }
 }

@@ -1,26 +1,39 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@FunctionalInterface
-public interface dya<C extends dse> {
-   Optional<dxz<C>> createGenerator(dya.a<C> var1);
+public class dya extends dxu {
+   public static final Codec<dya> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dny.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dya::new)
+   );
+   private final dny.a c;
+   private final int d;
+   private final int e;
 
-   static <C extends dse> dya<C> simple(Predicate<dya.a<C>> $$0, dxz<C> $$1) {
-      Optional<dxz<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   private dya(dny.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   static <C extends dse> Predicate<dya.a<C>> checkForBiomeOnTop(dmw.a $$0) {
-      return $$1 -> $$1.a($$0);
+   public static dya a(dny.a $$0, int $$1, int $$2) {
+      return new dya($$0, $$1, $$2);
    }
 
-   public static record a<C extends dse>(djk a, cth b, dnk c, long d, crm e, C f, csh g, Predicate<ig<ctd>> h, ebn i, it j) {
-      public boolean a(dmw.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         ig<ctd> $$4 = this.a.c().getNoiseBiome(ir.a($$1), ir.a($$3), ir.a($$2), this.c.b());
-         return this.h.test($$4);
-      }
+   @Override
+   protected boolean a(dxt $$0, auf $$1, hv $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   }
+
+   @Override
+   public dxw<?> b() {
+      return dxw.c;
    }
 }

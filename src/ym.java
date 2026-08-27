@@ -1,14 +1,18 @@
-public record ym(int a) implements wo<yh> {
-   public ym(ty $$0) {
-      this($$0.n());
+public record ym() implements wu<yl> {
+   public ym(ue $$0) {
+      this();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.c(this.a);
+   public void a(ue $$0) {
    }
 
-   public void a(yh $$0) {
+   public void a(yl $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public ud c() {
+      return ud.b;
    }
 }

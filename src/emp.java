@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface emp<T> {
+   void a(emn<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@elv
-@elu
-interface emp {
+   boolean a(hv var1, T var2);
+
+   int a();
 }

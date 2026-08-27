@@ -1,29 +1,23 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eji implements ejk<MinecraftServer> {
-   final agm a;
+public record eji(float b) implements ejd {
+   public static final Codec<eji> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(eji::c)).apply($$0, eji::new));
 
-   public eji(agm $$0) {
-      this.a = $$0;
+   @Override
+   public eje b() {
+      return ejf.e;
    }
 
-   public void a(MinecraftServer $$0, ejm<MinecraftServer> $$1, long $$2) {
-      aha $$3 = $$0.aC();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   public boolean a(ege $$0) {
+      return $$0.b().i() < this.b;
    }
 
-   public static class a extends ejk.a<MinecraftServer, eji> {
-      public a() {
-         super(new agm("function"), eji.class);
-      }
+   public static ejd.a a(float $$0) {
+      return () -> new eji($$0);
+   }
 
-      public void a(sd $$0, eji $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public eji a(sd $$0) {
-         agm $$1 = new agm($$0.l("Name"));
-         return new eji($$1);
-      }
+   public float c() {
+      return this.b;
    }
 }

@@ -1,49 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtv extends dtq {
+public class dtv implements dtg {
    public static final Codec<dtv> a = RecordCodecBuilder.create(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  big.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
-               )
+      $$0 -> $$0.group(
+               dip.b.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dip.b.fieldOf("state").forGetter($$0x -> $$0x.c),
+               biq.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, dtv::new)
    );
-   private final big b;
-   private final int c;
+   public final dip b;
+   public final dip c;
+   private final biq d;
 
-   public dtv(big $$0, big $$1, big $$2, int $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
+   public dtv(dip $$0, dip $$1, biq $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   protected dtr<?> a() {
-      return dtr.j;
-   }
-
-   @Override
-   protected void a(csl $$0, dtq.b $$1, atw $$2, dta $$3, int $$4, dtq.a $$5, int $$6, int $$7, int $$8) {
-      hx $$9 = $$5.a();
-      hx.a $$10 = $$9.j();
-
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
-      }
-   }
-
-   @Override
-   public int a(atw $$0, int $$1, dta $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(atw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+   public biq a() {
+      return this.d;
    }
 }

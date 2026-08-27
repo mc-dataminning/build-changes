@@ -1,47 +1,27 @@
-public class btc extends bsg {
-   private final byv a;
-   private int b;
+import javax.annotation.Nullable;
 
-   public btc(byv $$0) {
-      this.a = $$0;
-      this.a($$0);
-   }
+public class btc extends bto {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   @Override
-   public void c() {
-      this.a.gK();
-      this.h();
-   }
-
-   private void h() {
-      aqu $$0 = this.a.gJ();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return false;
+   public btc(bme $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean a() {
-      this.b++;
-      if (this.b > 0 && this.a.eh().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.eZ() && this.a.eh().a(10) == 0;
-      } else {
-         return false;
-      }
+      amp $$0 = (amp)this.b.dM();
+      hv $$1 = this.b.dm();
+      return $$0.b($$1) ? false : super.a();
    }
 
-   private void a(byv $$0) {
-      this.b = -$$0.gQ();
-   }
-
+   @Nullable
    @Override
-   public boolean T_() {
-      return true;
+   protected elb h() {
+      amp $$0 = (amp)this.b.dM();
+      hv $$1 = this.b.dm();
+      ix $$2 = ix.a($$1);
+      ix $$3 = bno.a($$0, $$2, 2);
+      return $$3 != $$2 ? bwn.a(this.b, 10, 7, elb.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

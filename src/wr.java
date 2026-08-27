@@ -1,13 +1,10 @@
-public interface wr extends tt {
-   void a(wu var1);
+public class wr<T extends uk> implements wu<T> {
+   @Override
+   public final void a(ue $$0) {
+   }
 
-   void a(wv var1);
-
-   void a(ws var1);
-
-   void a(wt var1);
-
-   void a(ww var1);
-
-   void a(wx var1);
+   @Override
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
+   }
 }

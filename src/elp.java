@@ -1,29 +1,53 @@
-public enum elp {
-   a(-3),
-   b(-2),
-   c(-1),
-   d(0),
-   e(1),
-   f(2),
-   g(3);
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   private final int h;
+public class elp extends AbstractDoubleList implements eln {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-   private elp(int $$0) {
-      this.h = $$0;
+   protected elp(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static elp a(int $$0) {
-      for (elp $$1 : values()) {
-         if ($$1.h == $$0) {
-            return $$1;
+   @Override
+   public int size() {
+      return this.a.size() + this.b.size();
+   }
+
+   @Override
+   public boolean a(eln.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   }
+
+   private boolean b(eln.a $$0) {
+      int $$1 = this.a.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
          }
       }
 
-      return $$0 < a.h ? a : g;
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public int a() {
-      return this.h;
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
+   }
+
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

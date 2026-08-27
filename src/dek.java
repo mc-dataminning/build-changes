@@ -1,33 +1,29 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dek extends ddq implements deg {
-   public static final MapCodec<dek> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(deg.a.e.fieldOf("weathering_state").forGetter(dek::g), u()).apply($$0, dek::new)
-   );
-   private final deg.a f;
+public class dek extends czp {
+   public static final MapCodec<dek> b = b(dek::new);
 
-   @Override
-   protected MapCodec<dek> a() {
-      return e;
-   }
-
-   protected dek(deg.a $$0, dhm.d $$1) {
-      super($$1);
-      this.f = $$0;
+   protected dek(dio.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void b(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected MapCodec<? extends dek> a() {
+      return b;
    }
 
    @Override
-   public boolean e_(dhn $$0) {
-      return deg.c($$0.b()).isPresent();
+   public elu c(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return elr.a();
    }
 
-   public deg.a g() {
-      return this.f;
+   @Override
+   public float d(dip $$0, cse $$1, hv $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   public boolean a_(dip $$0, cse $$1, hv $$2) {
+      return true;
    }
 }

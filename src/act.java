@@ -1,32 +1,22 @@
-public class act implements wo<acp> {
-   private final int a;
-   private final hx b;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public act(int $$0, hx $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public record act(ags<dly> a, ags<csy> b, long c, csv d, @Nullable csv e, boolean f, boolean g, Optional<id> h, int i) {
+   public act(ue $$0) {
+      this(
+         $$0.a(kc.ax), $$0.a(kc.aL), $$0.readLong(), csv.a($$0.readByte()), csv.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(ue::h), $$0.n()
+      );
    }
 
-   public act(ty $$0) {
-      this.a = $$0.n();
-      this.b = $$0.e();
-   }
-
-   @Override
-   public void a(ty $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-   }
-
-   public void a(acp $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public hx d() {
-      return this.b;
+   public void a(ue $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.k(this.d.a());
+      $$0.k(csv.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, ue::a);
+      $$0.c(this.i);
    }
 }

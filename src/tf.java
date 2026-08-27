@@ -1,238 +1,138 @@
-import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.bytes.ByteCollection;
-import it.unimi.dsi.fastutil.bytes.ByteOpenHashSet;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
-import org.slf4j.Logger;
 
-public class tf implements te {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 8;
-   private static final ByteCollection c = new ByteOpenHashSet(Arrays.asList((byte)1, (byte)2, (byte)3, (byte)4, (byte)5, (byte)6));
-   private static final n d = n.l;
-   private static final n e = n.k;
-   private static final n f = n.g;
-   private static final n g = n.m;
-   private static final Pattern h = Pattern.compile("[A-Za-z0-9._+-]+");
-   private static final String i = String.valueOf(':');
-   private static final String j = String.valueOf(',');
-   private static final String k = "[";
-   private static final String l = "]";
-   private static final String m = ";";
-   private static final String n = " ";
-   private static final String o = "{";
-   private static final String p = "}";
-   private static final String q = "\n";
-   private final String r;
-   private final int s;
-   private uv t = uu.a;
+public class tf implements tk {
+   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
+   private final StringBuilder b = new StringBuilder();
 
-   public tf(String $$0, int $$1) {
-      this.r = $$0;
-      this.s = $$1;
-   }
-
-   public uv a(ta $$0) {
+   public String a(tg $$0) {
       $$0.a(this);
-      return this.t;
+      return this.b.toString();
    }
 
    @Override
-   public void a(sy $$0) {
-      String $$1 = sy.b($$0.t_());
-      String $$2 = $$1.substring(0, 1);
-      uv $$3 = uv.b($$1.substring(1, $$1.length() - 1)).a(e);
-      this.t = uv.b($$2).b($$3).f($$2);
-   }
-
-   @Override
-   public void a(sb $$0) {
-      uv $$1 = uv.b("b").a(g);
-      this.t = uv.b(String.valueOf($$0.l())).b($$1).a(f);
-   }
-
-   @Override
-   public void a(sv $$0) {
-      uv $$1 = uv.b("s").a(g);
-      this.t = uv.b(String.valueOf($$0.l())).b($$1).a(f);
-   }
-
-   @Override
-   public void a(si $$0) {
-      this.t = uv.b(String.valueOf($$0.l())).a(f);
-   }
-
-   @Override
-   public void a(sl $$0) {
-      uv $$1 = uv.b("L").a(g);
-      this.t = uv.b(String.valueOf($$0.l())).b($$1).a(f);
-   }
-
-   @Override
-   public void a(sg $$0) {
-      uv $$1 = uv.b("f").a(g);
-      this.t = uv.b(String.valueOf($$0.k())).b($$1).a(f);
-   }
-
-   @Override
-   public void a(se $$0) {
-      uv $$1 = uv.b("d").a(g);
-      this.t = uv.b(String.valueOf($$0.j())).b($$1).a(f);
-   }
-
-   @Override
-   public void a(sa $$0) {
-      uv $$1 = uv.b("B").a(g);
-      vj $$2 = uv.b("[").b($$1).f(";");
-      byte[] $$3 = $$0.e();
-
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         vj $$5 = uv.b(String.valueOf($$3[$$4])).a(f);
-         $$2.f(" ").b($$5).b($$1);
-         if ($$4 != $$3.length - 1) {
-            $$2.f(j);
-         }
-      }
-
-      $$2.f("]");
-      this.t = $$2;
+   public void a(te $$0) {
+      this.b.append(te.b($$0.t_()));
    }
 
    @Override
    public void a(sh $$0) {
-      uv $$1 = uv.b("I").a(g);
-      vj $$2 = uv.b("[").b($$1).f(";");
-      int[] $$3 = $$0.g();
+      this.b.append($$0.l()).append('b');
+   }
 
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         $$2.f(" ").b(uv.b(String.valueOf($$3[$$4])).a(f));
-         if ($$4 != $$3.length - 1) {
-            $$2.f(j);
-         }
-      }
+   @Override
+   public void a(tb $$0) {
+      this.b.append($$0.l()).append('s');
+   }
 
-      $$2.f("]");
-      this.t = $$2;
+   @Override
+   public void a(so $$0) {
+      this.b.append($$0.l());
+   }
+
+   @Override
+   public void a(sr $$0) {
+      this.b.append($$0.l()).append('L');
+   }
+
+   @Override
+   public void a(sm $$0) {
+      this.b.append($$0.k()).append('f');
    }
 
    @Override
    public void a(sk $$0) {
-      uv $$1 = uv.b("L").a(g);
-      vj $$2 = uv.b("[").b($$1).f(";");
-      long[] $$3 = $$0.g();
+      this.b.append($$0.j()).append('d');
+   }
 
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         uv $$5 = uv.b(String.valueOf($$3[$$4])).a(f);
-         $$2.f(" ").b($$5).b($$1);
-         if ($$4 != $$3.length - 1) {
-            $$2.f(j);
+   @Override
+   public void a(sg $$0) {
+      this.b.append("[B;");
+      byte[] $$1 = $$0.e();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
          }
+
+         this.b.append($$1[$$2]).append('B');
       }
 
-      $$2.f("]");
-      this.t = $$2;
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(sn $$0) {
+      this.b.append("[I;");
+      int[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]);
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(sq $$0) {
+      this.b.append("[L;");
+      long[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]).append('L');
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(sp $$0) {
+      this.b.append('[');
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         if ($$1 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append(new tf().a($$0.k($$1)));
+      }
+
+      this.b.append(']');
    }
 
    @Override
    public void a(sj $$0) {
-      if ($$0.isEmpty()) {
-         this.t = uv.b("[]");
-      } else if (c.contains($$0.f()) && $$0.size() <= 8) {
-         String $$1 = j + " ";
-         vj $$2 = uv.b("[");
+      this.b.append('{');
+      List<String> $$1 = Lists.newArrayList($$0.e());
+      Collections.sort($$1);
 
-         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-            if ($$3 != 0) {
-               $$2.f($$1);
-            }
-
-            $$2.b(new tf(this.r, this.s).a($$0.k($$3)));
+      for (String $$2 : $$1) {
+         if (this.b.length() != 1) {
+            this.b.append(',');
          }
 
-         $$2.f("]");
-         this.t = $$2;
-      } else {
-         vj $$4 = uv.b("[");
-         if (!this.r.isEmpty()) {
-            $$4.f("\n");
-         }
-
-         for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-            vj $$6 = uv.b(Strings.repeat(this.r, this.s + 1));
-            $$6.b(new tf(this.r, this.s + 1).a($$0.k($$5)));
-            if ($$5 != $$0.size() - 1) {
-               $$6.f(j).f(this.r.isEmpty() ? " " : "\n");
-            }
-
-            $$4.b($$6);
-         }
-
-         if (!this.r.isEmpty()) {
-            $$4.f("\n").f(Strings.repeat(this.r, this.s));
-         }
-
-         $$4.f("]");
-         this.t = $$4;
+         this.b.append(a($$2)).append(':').append(new tf().a($$0.c($$2)));
       }
+
+      this.b.append('}');
+   }
+
+   protected static String a(String $$0) {
+      return a.matcher($$0).matches() ? $$0 : te.b($$0);
    }
 
    @Override
-   public void a(sd $$0) {
-      if ($$0.g()) {
-         this.t = uv.b("{}");
-      } else {
-         vj $$1 = uv.b("{");
-         Collection<String> $$2 = $$0.e();
-         if (a.isDebugEnabled()) {
-            List<String> $$3 = Lists.newArrayList($$0.e());
-            Collections.sort($$3);
-            $$2 = $$3;
-         }
-
-         if (!this.r.isEmpty()) {
-            $$1.f("\n");
-         }
-
-         Iterator<String> $$4 = $$2.iterator();
-
-         while ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            vj $$6 = uv.b(Strings.repeat(this.r, this.s + 1)).b(a($$5)).f(i).f(" ").b(new tf(this.r, this.s + 1).a($$0.c($$5)));
-            if ($$4.hasNext()) {
-               $$6.f(j).f(this.r.isEmpty() ? " " : "\n");
-            }
-
-            $$1.b($$6);
-         }
-
-         if (!this.r.isEmpty()) {
-            $$1.f("\n").f(Strings.repeat(this.r, this.s));
-         }
-
-         $$1.f("}");
-         this.t = $$1;
-      }
-   }
-
-   protected static uv a(String $$0) {
-      if (h.matcher($$0).matches()) {
-         return uv.b($$0).a(d);
-      } else {
-         String $$1 = sy.b($$0);
-         String $$2 = $$1.substring(0, 1);
-         uv $$3 = uv.b($$1.substring(1, $$1.length() - 1)).a(d);
-         return uv.b($$2).b($$3).f($$2);
-      }
-   }
-
-   @Override
-   public void a(sf $$0) {
-      this.t = uu.a;
+   public void a(sl $$0) {
+      this.b.append("END");
    }
 }

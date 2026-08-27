@@ -1,231 +1,153 @@
-import com.google.common.collect.UnmodifiableIterator;
 import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
-public class bxn extends bww implements bli, bmb {
-   private static final afs<Boolean> bT = afv.a(bxn.class, afu.k);
-   private static final afs<Integer> bU = afv.a(bxn.class, afu.b);
-   private static final coq bW = coq.a(clr.tX, clr.tY, clr.vc);
-   private final blh bX = new blh(this.an, bU, bT);
+public class bxn extends bxi {
+   private static final cpi cb = cpi.a(cmk.ps, cmk.rW, cmk.rV, cmk.ve, cmk.vb, cmk.vc);
+   public float bT;
+   public float bU;
+   public float bW;
+   public float bX;
+   public float bY = 1.0F;
+   private float cc = 1.0F;
+   public int bZ = this.ag.a(6000) + 6000;
+   public boolean ca;
 
-   public bxn(bkz<? extends bxn> $$0, csf $$1) {
+   public bxn(blj<? extends bxn> $$0, csy $$1) {
       super($$0, $$1);
+      this.a(eek.j, 0.0F);
    }
 
    @Override
    protected void B() {
-      this.bO.a(0, new bsa(this));
-      this.bO.a(1, new bsz(this, 1.25));
-      this.bO.a(3, new brs(this, 1.0));
-      this.bO.a(4, new bto(this, 1.2, coq.a(clr.nQ), false));
-      this.bO.a(4, new bto(this, 1.2, bW, false));
-      this.bO.a(5, new bsf(this, 1.1));
-      this.bO.a(6, new btt(this, 1.0));
-      this.bO.a(7, new bso(this, cdz.class, 6.0F));
-      this.bO.a(8, new btb(this));
+      this.bO.a(0, new bsl(this));
+      this.bO.a(1, new btk(this, 1.4));
+      this.bO.a(2, new bsd(this, 1.0));
+      this.bO.a(3, new btz(this, 1.0, cb, false));
+      this.bO.a(4, new bsq(this, 1.1));
+      this.bO.a(5, new bue(this, 1.0));
+      this.bO.a(6, new bsz(this, cer.class, 6.0F));
+      this.bO.a(7, new btm(this));
    }
 
-   public static bmq.a u() {
-      return bln.C().a(bmr.l, 10.0).a(bmr.m, 0.25);
+   @Override
+   protected float b(bmh $$0, blg $$1) {
+      return this.o_() ? $$1.b * 0.85F : $$1.b * 0.92F;
+   }
+
+   public static bna.a u() {
+      return blx.C().a(bnb.l, 4.0).a(bnb.m, 0.25);
+   }
+
+   @Override
+   public void d_() {
+      super.d_();
+      this.bX = this.bT;
+      this.bW = this.bU;
+      this.bU = this.bU + (this.aC() ? -1.0F : 4.0F) * 0.3F;
+      this.bU = aty.a(this.bU, 0.0F, 1.0F);
+      if (!this.aC() && this.bY < 1.0F) {
+         this.bY = 1.0F;
+      }
+
+      this.bY *= 0.9F;
+      elb $$0 = this.dp();
+      if (!this.aC() && $$0.d < 0.0) {
+         this.g($$0.d(1.0, 0.6, 1.0));
+      }
+
+      this.bT = this.bT + this.bY * 2.0F;
+      if (!this.dM().B && this.bx() && !this.o_() && !this.w() && --this.bZ <= 0) {
+         this.a(arc.ev, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
+         this.a(cmk.qO);
+         this.a(dmz.t);
+         this.bZ = this.ag.a(6000) + 6000;
+      }
+   }
+
+   @Override
+   protected boolean aT() {
+      return this.aa > this.cc;
+   }
+
+   @Override
+   protected void aS() {
+      this.cc = this.aa + this.bU / 2.0F;
+   }
+
+   @Override
+   protected arb y() {
+      return arc.et;
+   }
+
+   @Override
+   protected arb d(bkd $$0) {
+      return arc.ew;
+   }
+
+   @Override
+   protected arb n_() {
+      return arc.eu;
+   }
+
+   @Override
+   protected void b(hv $$0, dip $$1) {
+      this.a(arc.ex, 0.15F, 1.0F);
    }
 
    @Nullable
-   @Override
-   public bll cO() {
-      return (bll)(this.i() && this.cR() instanceof cdz $$0 && $$0.b(clr.nQ) ? $$0 : super.cO());
+   public bxn b(amp $$0, bla $$1) {
+      return blj.r.a((csy)$$0);
    }
 
    @Override
-   public void a(afs<?> $$0) {
-      if (bU.equals($$0) && this.dN().B) {
-         this.bX.a();
-      }
+   public boolean m(cmh $$0) {
+      return cb.a($$0);
+   }
 
+   @Override
+   public int ee() {
+      return this.w() ? 10 : super.ee();
+   }
+
+   @Override
+   public void a(sj $$0) {
       super.a($$0);
+      this.ca = $$0.q("IsChickenJockey");
+      if ($$0.e("EggLayTime")) {
+         this.bZ = $$0.h("EggLayTime");
+      }
    }
 
    @Override
-   protected void c_() {
-      super.c_();
-      this.an.a(bT, false);
-      this.an.a(bU, 0);
-   }
-
-   @Override
-   public void b(sd $$0) {
+   public void b(sj $$0) {
       super.b($$0);
-      this.bX.a($$0);
+      $$0.a("IsChickenJockey", this.ca);
+      $$0.a("EggLayTime", this.bZ);
    }
 
    @Override
-   public void a(sd $$0) {
-      super.a($$0);
-      this.bX.b($$0);
+   public boolean h(double $$0) {
+      return this.w();
    }
 
    @Override
-   protected aqu y() {
-      return aqv.si;
-   }
-
-   @Override
-   protected aqu d(bjt $$0) {
-      return aqv.sk;
-   }
-
-   @Override
-   protected aqu n_() {
-      return aqv.sj;
-   }
-
-   @Override
-   protected void b(hx $$0, dhn $$1) {
-      this.a(aqv.sm, 0.15F, 1.0F);
-   }
-
-   @Override
-   public bjb b(cdz $$0, bja $$1) {
-      boolean $$2 = this.m($$0.b($$1));
-      if (!$$2 && this.i() && !this.bP() && !$$0.fJ()) {
-         if (!this.dN().B) {
-            $$0.n(this);
-         }
-
-         return bjb.a(this.dN().B);
-      } else {
-         bjb $$3 = super.b($$0, $$1);
-         if (!$$3.a()) {
-            clo $$4 = $$0.b($$1);
-            return $$4.a(clr.nK) ? $$4.a($$0, this, $$1) : bjb.d;
-         } else {
-            return $$3;
-         }
-      }
-   }
-
-   @Override
-   public boolean g() {
-      return this.bx() && !this.o_();
-   }
-
-   @Override
-   protected void ez() {
-      super.ez();
-      if (this.i()) {
-         this.a(clr.nK);
-      }
-   }
-
-   @Override
-   public boolean i() {
-      return this.bX.d();
-   }
-
-   @Override
-   public void a(@Nullable aqw $$0) {
-      this.bX.a(true);
-      if ($$0 != null) {
-         this.dN().a(null, this, aqv.sl, $$0, 0.5F, 1.0F);
-      }
-   }
-
-   @Override
-   public ejz b(bll $$0) {
-      ib $$1 = this.cF();
-      if ($$1.o() == ib.a.b) {
-         return super.b($$0);
-      } else {
-         int[][] $$2 = cfv.a($$1);
-         hx $$3 = this.dn();
-         hx.a $$4 = new hx.a();
-         UnmodifiableIterator var6 = $$0.fB().iterator();
-
-         while (var6.hasNext()) {
-            blx $$5 = (blx)var6.next();
-            eju $$6 = $$0.e($$5);
-
-            for (int[] $$7 : $$2) {
-               $$4.d($$3.u() + $$7[0], $$3.v(), $$3.w() + $$7[1]);
-               double $$8 = this.dN().i($$4);
-               if (cfv.a($$8)) {
-                  ejz $$9 = ejz.a($$4, $$8);
-                  if (cfv.a(this.dN(), $$0, $$6.c($$9))) {
-                     $$0.b($$5);
-                     return $$9;
-                  }
-               }
-            }
-         }
-
-         return super.b($$0);
-      }
-   }
-
-   @Override
-   public void a(ami $$0, blk $$1) {
-      if ($$0.aj() != biy.a) {
-         cci $$2 = bkz.bs.a((csf)$$0);
-         if ($$2 != null) {
-            $$2.a(bla.a, new clo(clr.oS));
-            $$2.b(this.ds(), this.du(), this.dy(), this.dD(), this.dF());
-            $$2.t(this.fV());
-            $$2.a(this.o_());
-            if (this.ae()) {
-               $$2.b(this.af());
-               $$2.n(this.cB());
-            }
-
-            $$2.fK();
-            $$0.b($$2);
-            this.am();
-         } else {
-            super.a($$0, $$1);
-         }
-      } else {
-         super.a($$0, $$1);
-      }
-   }
-
-   @Override
-   protected void a(cdz $$0, ejz $$1) {
+   protected void a(blf $$0, blf.a $$1) {
       super.a($$0, $$1);
-      this.a($$0.dD(), $$0.dF() * 0.5F);
-      this.N = this.aU = this.aW = this.dD();
-      this.bX.b();
+      if ($$0 instanceof blv) {
+         ((blv)$$0).aU = this.aU;
+      }
    }
 
    @Override
-   protected ejz b(cdz $$0, ejz $$1) {
-      return new ejz(0.0, 0.0, 1.0);
+   protected Vector3f a(blf $$0, blg $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b, -0.1F * $$2);
    }
 
-   @Override
-   protected float e(cdz $$0) {
-      return (float)(this.b(bmr.m) * 0.225 * (double)this.bX.c());
+   public boolean w() {
+      return this.ca;
    }
 
-   @Override
-   public boolean a() {
-      return this.bX.a(this.eh());
-   }
-
-   @Nullable
-   public bxn b(ami $$0, bkq $$1) {
-      return bkz.av.a((csf)$$0);
-   }
-
-   @Override
-   public boolean m(clo $$0) {
-      return bW.a($$0);
-   }
-
-   @Override
-   public ejz cJ() {
-      return new ejz(0.0, (double)(0.6F * this.cI()), (double)(this.dh() * 0.4F));
-   }
-
-   @Override
-   protected Vector3f a(bkv $$0, bkw $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b - 0.03125F * $$2, 0.0F);
+   public void w(boolean $$0) {
+      this.ca = $$0;
    }
 }

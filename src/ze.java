@@ -1,32 +1,24 @@
-public class ze implements wo<yh> {
-   private final clj a;
-   private final int b;
+public class ze implements wu<yo> {
+   private final boolean a;
 
-   public ze(clj $$0, int $$1) {
+   public ze(boolean $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public ze(ty $$0) {
-      this.a = $$0.a(kc.i);
-      this.b = $$0.n();
+   public ze(ue $$0) {
+      this.a = $$0.readBoolean();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(kc.i, this.a);
-      $$0.c(this.b);
+   public void a(ue $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public clj a() {
+   public boolean a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
    }
 }

@@ -1,45 +1,51 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class cfn {
-   private final cfm a;
-   private final List<cfn.a> b = Lists.newArrayList();
-
-   public cfn(cfm $$0) {
-      this.a = $$0;
+public class cfn extends cfp {
+   public cfn(blj<? extends cfn> $$0, csy $$1) {
+      super($$0, $$1);
    }
 
-   public cfn a(int $$0, cfk $$1) {
-      this.b.add(new cfn.a($$0, $$1));
-      return this;
+   public cfn(csy $$0, blv $$1) {
+      super(blj.aQ, $$1, $$0);
    }
 
-   public cfm a() {
-      this.b.stream().map(cfn.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cfk $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   public cfn(csy $$0, double $$1, double $$2, double $$3) {
+      super(blj.aQ, $$1, $$2, $$3, $$0);
    }
 
-   static class a {
-      private final int a;
-      private final cfk b;
+   @Override
+   protected cmc s() {
+      return cmk.qz;
+   }
 
-      public a(int $$0, cfk $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private jt y() {
+      cmh $$0 = this.u();
+      return (jt)($$0.b() ? jv.T : new jr(jv.Q, $$0));
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         jt $$1 = this.y();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dM().a($$1, this.dr(), this.dt(), this.dx(), 0.0, 0.0, 0.0);
+         }
       }
+   }
 
-      public int a() {
-         return this.a;
-      }
+   @Override
+   protected void a(eky $$0) {
+      super.a($$0);
+      blf $$1 = $$0.a();
+      int $$2 = $$1 instanceof cbj ? 3 : 0;
+      $$1.a(this.dN().b(this, this.w()), (float)$$2);
+   }
 
-      public cfk b() {
-         return this.b;
+   @Override
+   protected void a(ekz $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.dM().a(this, (byte)3);
+         this.am();
       }
    }
 }

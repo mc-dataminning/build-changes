@@ -1,29 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.OptionalInt;
 
-public abstract class dtf {
-   public static final Codec<dtf> a = kc.ab.q().dispatch(dtf::b, dtg::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class dtf implements dtg {
+   public static final Codec<dtf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hv.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dtf::new)
+   );
+   private final Optional<hv> b;
+   private final boolean c;
 
-   protected static <S extends dtf> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   private dtf(Optional<hv> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public dtf(OptionalInt $$0) {
-      this.c = $$0;
+   public static dtf a(hv $$0, boolean $$1) {
+      return new dtf(Optional.of($$0), $$1);
    }
 
-   protected abstract dtg<?> b();
+   public static dtf a() {
+      return new dtf(Optional.empty(), false);
+   }
 
-   public abstract int a(int var1, int var2);
+   public Optional<hv> b() {
+      return this.b;
+   }
 
-   public OptionalInt c() {
+   public boolean c() {
       return this.c;
    }
 }

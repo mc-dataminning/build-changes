@@ -1,83 +1,68 @@
-import java.util.Set;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public interface biu extends bis {
-   int m_ = 64;
-   int n_ = 8;
+public class biu extends bio {
+   public static final Codec<biu> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, biu::new)
+      )
+      .comapFlatMap(
+         $$0 -> {
+            if ($$0.d < $$0.b) {
+               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
+            } else {
+               return $$0.e > $$0.d - $$0.b
+                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
+                  : DataResult.success($$0);
+            }
+         },
+         Function.identity()
+      );
+   private final float b;
+   private final float d;
+   private final float e;
 
-   int b();
-
-   boolean aj_();
-
-   clo a(int var1);
-
-   clo a(int var1, int var2);
-
-   clo b(int var1);
-
-   void a(int var1, clo var2);
-
-   default int al_() {
-      return 64;
+   public static biu a(float $$0, float $$1, float $$2) {
+      return new biu($$0, $$1, $$2);
    }
 
-   void e();
-
-   boolean a(cdz var1);
-
-   default void d_(cdz $$0) {
+   private biu(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   default void c(cdz $$0) {
+   @Override
+   public float a(auf $$0) {
+      float $$1 = this.d - this.b;
+      float $$2 = ($$1 - this.e) / 2.0F;
+      float $$3 = $$1 - $$2;
+      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
    }
 
-   default boolean b(int $$0, clo $$1) {
-      return true;
+   @Override
+   public float a() {
+      return this.b;
    }
 
-   default boolean a(biu $$0, int $$1, clo $$2) {
-      return true;
+   @Override
+   public float b() {
+      return this.d;
    }
 
-   default int a_(clj $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         clo $$3 = this.a($$2);
-         if ($$3.d().equals($$0)) {
-            $$1 += $$3.L();
-         }
-      }
-
-      return $$1;
+   @Override
+   public bip<?> c() {
+      return bip.d;
    }
 
-   default boolean a(Set<clj> $$0) {
-      return this.a_($$1 -> !$$1.b() && $$0.contains($$1.d()));
-   }
-
-   default boolean a_(Predicate<clo> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         clo $$2 = this.a($$1);
-         if ($$0.test($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   static boolean a(dfi $$0, cdz $$1) {
-      return a($$0, $$1, 8);
-   }
-
-   static boolean a(dfi $$0, cdz $$1, int $$2) {
-      csf $$3 = $$0.i();
-      hx $$4 = $$0.aC_();
-      if ($$3 == null) {
-         return false;
-      } else {
-         return $$3.c_($$4) != $$0 ? false : $$1.i((double)$$4.u() + 0.5, (double)$$4.v() + 0.5, (double)$$4.w() + 0.5) <= (double)($$2 * $$2);
-      }
+   @Override
+   public String toString() {
+      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
    }
 }

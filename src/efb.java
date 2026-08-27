@@ -1,106 +1,44 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.Locale;
 import javax.annotation.Nullable;
 
-public class efb {
-   private static final Codec<efb> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asy.a(eix.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), asy.a(eix.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
-            .apply($$0, efb::new)
-   );
-   public static final Codec<efb> a = Codec.either(Codec.INT, b).xmap($$0 -> (efb)$$0.map(efb::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
-   @Nullable
-   private final eiw c;
-   @Nullable
-   private final eiw d;
-   private final efb.b e;
-   private final efb.a f;
+public interface efb {
+   ia[] a = new ia[]{ia.e, ia.f, ia.a, ia.b, ia.c, ia.d};
 
-   public Set<ehk<?>> a() {
-      Builder<ehk<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
+   void a(ia var1, dip var2, hv var3, hv var4, int var5, int var6);
 
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
+   void a(hv var1, cvz var2, hv var3);
 
-      return $$0.build();
-   }
+   void a(dip var1, hv var2, cvz var3, hv var4, boolean var5);
 
-   private efb(Optional<eiw> $$0, Optional<eiw> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
-   }
-
-   private efb(@Nullable eiw $$0, @Nullable eiw $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+   default void a(hv $$0, cvz $$1, @Nullable ia $$2) {
+      for (ia $$3 : a) {
+         if ($$3 != $$2) {
+            this.a($$0.a($$3), $$1, $$0);
          }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> atq.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public static efb a(int $$0) {
-      eiu $$1 = eiu.a((float)$$0);
-      return new efb(Optional.of($$1), Optional.of($$1));
+   static void a(csz $$0, ia $$1, dip $$2, hv $$3, hv $$4, int $$5, int $$6) {
+      dip $$7 = $$0.a_($$3);
+      dip $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
+      cvz.a($$7, $$8, $$0, $$3, $$5, $$6);
    }
 
-   public static efb a(int $$0, int $$1) {
-      return new efb(Optional.of(eiu.a((float)$$0)), Optional.of(eiu.a((float)$$1)));
-   }
-
-   public static efb b(int $$0) {
-      return new efb(Optional.of(eiu.a((float)$$0)), Optional.empty());
-   }
-
-   public static efb c(int $$0) {
-      return new efb(Optional.empty(), Optional.of(eiu.a((float)$$0)));
-   }
-
-   public int a(efc $$0, int $$1) {
-      return this.e.apply($$0, $$1);
-   }
-
-   public boolean b(efc $$0, int $$1) {
-      return this.f.test($$0, $$1);
-   }
-
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof eiu $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
-   }
-
-   @FunctionalInterface
-   interface a {
-      boolean test(efc var1, int var2);
-   }
-
-   @FunctionalInterface
-   interface b {
-      int apply(efc var1, int var2);
+   static void a(csy $$0, dip $$1, hv $$2, cvz $$3, hv $$4, boolean $$5) {
+      try {
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", kb.e.b($$3), $$3.h(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + kb.e.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new y($$7);
+      }
    }
 }

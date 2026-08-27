@@ -1,10 +1,8 @@
-public class aro {
-   public static final arz<dvn> a = a("visible");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private aro() {
-   }
-
-   private static arz<dvn> a(String $$0) {
-      return arz.a(kd.ax, new agm($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aro {
 }

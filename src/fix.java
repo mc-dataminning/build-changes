@@ -1,31 +1,52 @@
-public class fix extends fjr {
-   private final fkt a;
-   private final fkt b;
-   private final fkt c;
+public class fix<T extends blf> extends fjh<T> {
+   private static final int a = 4;
+   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
+   private static final int[][] f = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
+   private final fly g;
+   private final fly[] h;
 
-   public fix(fkt $$0) {
-      this.a = $$0.b("head");
-      this.b = this.a.b("left_ear");
-      this.c = this.a.b("right_ear");
+   public fix(fly $$0) {
+      this.g = $$0;
+      this.h = new fly[4];
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.h[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static flb a() {
-      flb $$0 = new flb();
-      fiy.a(fkx.a, $$0);
-      return $$0;
+   private static String a(int $$0) {
+      return "segment" + $$0;
+   }
+
+   public static fme b() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      float $$2 = -3.5F;
+
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         $$1.a(
+            a($$3),
+            fmd.c().a(f[$$3][0], f[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
+            fma.a(0.0F, (float)(24 - b[$$3][1]), $$2)
+         );
+         if ($$3 < 3) {
+            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
+         }
+      }
+
+      return fme.a($$0, 64, 32);
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-      float $$3 = 1.2F;
-      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
-      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+   public fly a() {
+      return this.g;
    }
 
    @Override
-   public void a(eob $$0, eof $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (int $$6 = 0; $$6 < this.h.length; $$6++) {
+         this.h[$$6].f = aty.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$6 - 2));
+         this.h[$$6].b = aty.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$6 - 2);
+      }
    }
 }

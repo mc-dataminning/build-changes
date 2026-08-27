@@ -1,20 +1,18 @@
-public class cpq extends cpz {
-   public cpq(cpz.a $$0, bla... $$1) {
-      super($$0, cqa.k, $$1);
-   }
+public interface cpq<T extends cpl<?>> {
+   cpq<cpc> a = a("crafting");
+   cpq<cqa> b = a("smelting");
+   cpq<cox> c = a("blasting");
+   cpq<cqe> d = a("smoking");
+   cpq<coz> e = a("campfire_cooking");
+   cpq<cqf> f = a("stonecutting");
+   cpq<cqb> g = a("smithing");
 
-   @Override
-   public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
-   }
-
-   @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public int a() {
-      return 5;
+   static <T extends cpl<?>> cpq<T> a(final String $$0) {
+      return ir.a(kb.s, new agt($$0), new cpq<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

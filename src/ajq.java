@@ -1,136 +1,218 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Optional;
 
 public class ajq {
-   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("commands.place.feature.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("commands.place.jigsaw.failed"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vb.c("commands.place.structure.failed"));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vb.b("commands.place.template.invalid", $$0));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vb.c("commands.place.template.failed"));
+   private static final SuggestionProvider<ds> f = ($$0, $$1) -> {
+      ecp $$2 = ((ds)$$0.getSource()).e().p();
+      return dw.a($$2.a(), $$1);
+   };
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("resetchunks").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), 0, true)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("range", IntegerArgumentType.integer(0, 5))
-                     .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("place")
+                        .requires($$0x -> $$0x.c(2)))
+                     .then(
+                        dt.a("feature")
+                           .then(
+                              ((RequiredArgumentBuilder)dt.a("feature", er.a(kc.av))
+                                    .executes($$0x -> a((ds)$$0x.getSource(), er.a($$0x, "feature"), hv.a(((ds)$$0x.getSource()).d()))))
+                                 .then(dt.a("pos", fk.a()).executes($$0x -> a((ds)$$0x.getSource(), er.a($$0x, "feature"), fk.a($$0x, "pos"))))
+                           )
+                     ))
                   .then(
-                     dv.a("skipOldChunks", BoolArgumentType.bool())
-                        .executes(
-                           $$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
+                     dt.a("jigsaw")
+                        .then(
+                           dt.a("pool", er.a(kc.aF))
+                              .then(
+                                 dt.a("target", es.a())
+                                    .then(
+                                       ((RequiredArgumentBuilder)dt.a("max_depth", IntegerArgumentType.integer(1, 7))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ds)$$0x.getSource(),
+                                                      er.c($$0x, "pool"),
+                                                      es.e($$0x, "target"),
+                                                      IntegerArgumentType.getInteger($$0x, "max_depth"),
+                                                      hv.a(((ds)$$0x.getSource()).d())
+                                                   )
+                                             ))
+                                          .then(
+                                             dt.a("position", fk.a())
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (ds)$$0x.getSource(),
+                                                         er.c($$0x, "pool"),
+                                                         es.e($$0x, "target"),
+                                                         IntegerArgumentType.getInteger($$0x, "max_depth"),
+                                                         fk.a($$0x, "position")
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  ))
+               .then(
+                  dt.a("structure")
+                     .then(
+                        ((RequiredArgumentBuilder)dt.a("structure", er.a(kc.aC))
+                              .executes($$0x -> b((ds)$$0x.getSource(), er.b($$0x, "structure"), hv.a(((ds)$$0x.getSource()).d()))))
+                           .then(dt.a("pos", fk.a()).executes($$0x -> b((ds)$$0x.getSource(), er.b($$0x, "structure"), fk.a($$0x, "pos"))))
+                     )
+               ))
+            .then(
+               dt.a("template")
+                  .then(
+                     ((RequiredArgumentBuilder)dt.a("template", es.a())
+                           .suggests(f)
+                           .executes($$0x -> a((ds)$$0x.getSource(), es.e($$0x, "template"), hv.a(((ds)$$0x.getSource()).d()), dcl.a, dav.a, 1.0F, 0)))
+                        .then(
+                           ((RequiredArgumentBuilder)dt.a("pos", fk.a())
+                                 .executes($$0x -> a((ds)$$0x.getSource(), es.e($$0x, "template"), fk.a($$0x, "pos"), dcl.a, dav.a, 1.0F, 0)))
+                              .then(
+                                 ((RequiredArgumentBuilder)dt.a("rotation", fc.a())
+                                       .executes(
+                                          $$0x -> a((ds)$$0x.getSource(), es.e($$0x, "template"), fk.a($$0x, "pos"), fc.a($$0x, "rotation"), dav.a, 1.0F, 0)
+                                       ))
+                                    .then(
+                                       ((RequiredArgumentBuilder)dt.a("mirror", fb.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ds)$$0x.getSource(),
+                                                      es.e($$0x, "template"),
+                                                      fk.a($$0x, "pos"),
+                                                      fc.a($$0x, "rotation"),
+                                                      fb.a($$0x, "mirror"),
+                                                      1.0F,
+                                                      0
+                                                   )
+                                             ))
+                                          .then(
+                                             ((RequiredArgumentBuilder)dt.a("integrity", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ds)$$0x.getSource(),
+                                                            es.e($$0x, "template"),
+                                                            fk.a($$0x, "pos"),
+                                                            fc.a($$0x, "rotation"),
+                                                            fb.a($$0x, "mirror"),
+                                                            FloatArgumentType.getFloat($$0x, "integrity"),
+                                                            0
+                                                         )
+                                                   ))
+                                                .then(
+                                                   dt.a("seed", IntegerArgumentType.integer())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ds)$$0x.getSource(),
+                                                               es.e($$0x, "template"),
+                                                               fk.a($$0x, "pos"),
+                                                               fc.a($$0x, "rotation"),
+                                                               fb.a($$0x, "mirror"),
+                                                               FloatArgumentType.getFloat($$0x, "integrity"),
+                                                               IntegerArgumentType.getInteger($$0x, "seed")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
                         )
                   )
             )
       );
    }
 
-   private static int a(du $$0, int $$1, boolean $$2) {
-      ami $$3 = $$0.e();
-      amg $$4 = $$3.k();
-      $$4.a.d();
-      ejz $$5 = $$0.d();
-      crm $$6 = new crm(hx.a($$5));
-      int $$7 = $$6.f - $$1;
-      int $$8 = $$6.f + $$1;
-      int $$9 = $$6.e - $$1;
-      int $$10 = $$6.e + $$1;
+   public static int a(ds $$0, ie.c<dqp<?, ?>> $$1, hv $$2) throws CommandSyntaxException {
+      amp $$3 = $$0.e();
+      dqp<?, ?> $$4 = $$1.a();
+      csf $$5 = new csf($$2);
+      a($$3, new csf($$5.e - 1, $$5.f - 1), new csf($$5.e + 1, $$5.f + 1));
+      if (!$$4.a($$3, $$3.k().g(), $$3.F_(), $$2)) {
+         throw a.create();
+      } else {
+         String $$6 = $$1.g().a().toString();
+         $$0.a(() -> vb.a("commands.place.feature.success", $$6, $$2.u(), $$2.v(), $$2.w()), true);
+         return 1;
+      }
+   }
 
-      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
-         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
-            crm $$13 = new crm($$12, $$11);
-            dju $$14 = $$4.a($$12, $$11, false);
-            if ($$14 != null && (!$$2 || !$$14.s())) {
-               for (hx $$15 : hx.b($$13.d(), $$3.J_(), $$13.e(), $$13.f(), $$3.ak() - 1, $$13.g())) {
-                  $$3.a($$15, cvh.a.o(), 16);
-               }
-            }
-         }
+   public static int a(ds $$0, ie<dzx> $$1, agt $$2, int $$3, hv $$4) throws CommandSyntaxException {
+      amp $$5 = $$0.e();
+      if (!dzr.a($$5, $$1, $$2, $$3, $$4, false)) {
+         throw b.create();
+      } else {
+         $$0.a(() -> vb.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
+         return 1;
+      }
+   }
+
+   public static int b(ds $$0, ie.c<dyo> $$1, hv $$2) throws CommandSyntaxException {
+      amp $$3 = $$0.e();
+      dyo $$4 = $$1.a();
+      dkm $$5 = $$3.k().g();
+      dyw $$6 = $$4.a($$0.v(), $$5, $$5.c(), $$3.k().i(), $$3.p(), $$3.B(), new csf($$2), 0, $$3, $$0x -> true);
+      if (!$$6.b()) {
+         throw c.create();
+      } else {
+         dyg $$7 = $$6.a();
+         csf $$8 = new csf(ix.a($$7.h()), ix.a($$7.j()));
+         csf $$9 = new csf(ix.a($$7.k()), ix.a($$7.m()));
+         a($$3, $$8, $$9);
+         csf.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.F_(), new dyg($$3x.d(), $$3.J_(), $$3x.e(), $$3x.f(), $$3.ak(), $$3x.g()), $$3x));
+         String $$10 = $$1.g().a().toString();
+         $$0.a(() -> vb.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
+         return 1;
+      }
+   }
+
+   public static int a(ds $$0, agt $$1, hv $$2, dcl $$3, dav $$4, float $$5, int $$6) throws CommandSyntaxException {
+      amp $$7 = $$0.e();
+      ecp $$8 = $$7.p();
+
+      Optional<eco> $$9;
+      try {
+         $$9 = $$8.b($$1);
+      } catch (z var13) {
+         throw d.create($$1);
       }
 
-      bhu<Runnable> $$16 = bhu.a(ac.f(), "worldgen-resetchunks");
-      long $$17 = System.currentTimeMillis();
-      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
-      UnmodifiableIterator var33 = ImmutableList.of(djo.f, djo.g, djo.h, djo.i, djo.j, djo.k).iterator();
-
-      while (var33.hasNext()) {
-         djo $$19 = (djo)var33.next();
-         long $$20 = System.currentTimeMillis();
-         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
-
-         for (int $$22 = $$6.f - $$1; $$22 <= $$6.f + $$1; $$22++) {
-            for (int $$23 = $$6.e - $$1; $$23 <= $$6.e + $$1; $$23++) {
-               crm $$24 = new crm($$23, $$22);
-               dju $$25 = $$4.a($$23, $$22, false);
-               if ($$25 != null && (!$$2 || !$$25.s())) {
-                  List<djj> $$26 = Lists.newArrayList();
-                  int $$27 = Math.max(1, $$19.e());
-
-                  for (int $$28 = $$24.f - $$27; $$28 <= $$24.f + $$27; $$28++) {
-                     for (int $$29 = $$24.e - $$27; $$29 <= $$24.e + $$27; $$29++) {
-                        djj $$30 = $$4.a($$29, $$28, $$19.d(), true);
-                        djj $$31;
-                        if ($$30 instanceof djt) {
-                           $$31 = new djt(((djt)$$30).C(), true);
-                        } else if ($$30 instanceof dju) {
-                           $$31 = new djt((dju)$$30, true);
-                        } else {
-                           $$31 = $$30;
-                        }
-
-                        $$26.add($$31);
-                     }
-                  }
-
-                  $$21 = $$21.thenComposeAsync($$5x -> $$19.a($$16::a, $$3, $$4.g(), $$3.p(), $$4.a(), $$0xx -> {
-                        throw new UnsupportedOperationException("Not creating full chunks here");
-                     }, $$26).thenApply($$1xx -> {
-                        if ($$19 == djo.g) {
-                           $$1xx.left().ifPresent($$0xxx -> dmw.a($$0xxx, djo.b));
-                        }
-
-                        return Unit.INSTANCE;
-                     }), $$16::a);
-               }
-            }
+      if ($$9.isEmpty()) {
+         throw d.create($$1);
+      } else {
+         eco $$12 = $$9.get();
+         a($$7, new csf($$2), new csf($$2.a($$12.a())));
+         eck $$13 = new eck().a($$4).a($$3);
+         if ($$5 < 1.0F) {
+            $$13.b().a(new ebs($$5)).a(dhr.b((long)$$6));
          }
 
-         $$0.l().c($$21::isDone);
-         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
-      }
-
-      long $$34 = System.currentTimeMillis();
-
-      for (int $$35 = $$6.f - $$1; $$35 <= $$6.f + $$1; $$35++) {
-         for (int $$36 = $$6.e - $$1; $$36 <= $$6.e + $$1; $$36++) {
-            crm $$37 = new crm($$36, $$35);
-            dju $$38 = $$4.a($$36, $$35, false);
-            if ($$38 != null && (!$$2 || !$$38.s())) {
-               for (hx $$39 : hx.b($$37.d(), $$3.J_(), $$37.e(), $$37.f(), $$3.ak() - 1, $$37.g())) {
-                  $$4.a($$39);
-               }
-            }
+         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dhr.b((long)$$6), 2);
+         if (!$$14) {
+            throw e.create();
+         } else {
+            $$0.a(() -> vb.a("commands.place.template.success", vb.a($$1), $$2.u(), $$2.v(), $$2.w()), true);
+            return 1;
          }
       }
+   }
 
-      a.debug("blockChanged took " + (System.currentTimeMillis() - $$34) + " ms");
-      long $$40 = System.currentTimeMillis() - $$17;
-      $$0.a(
-         () -> uv.b(
-               String.format(
-                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$40, $$18, (float)$$40 / (float)$$18
-               )
-            ),
-         true
-      );
-      return 1;
+   private static void a(amp $$0, csf $$1, csf $$2) throws CommandSyntaxException {
+      if (csf.a($$1, $$2).filter($$1x -> !$$0.o($$1x.l())).findAny().isPresent()) {
+         throw fk.a.create();
+      }
    }
 }

@@ -1,62 +1,22 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+public class frf extends fon {
+   private static final int a = 12235202;
 
-public class frf {
-   private final frk a = new frk();
-   private final frl b;
-   private final fqz.a c;
-   private final fqz.a d;
-   private final fra e;
-
-   public frf(int $$0) {
-      this.b = frl.a($$0);
-      SortedMap<frh, enw> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(fro.h(), this.a.a(frh.c()));
-         $$0x.put(fro.i(), this.a.a(frh.e()));
-         $$0x.put(fro.a(), this.a.a(frh.d()));
-         $$0x.put(fro.k(), this.a.a(frh.f()));
-         a($$0x, fro.b());
-         a($$0x, fro.c());
-         a($$0x, fro.d());
-         a($$0x, fro.e());
-         a($$0x, fro.f());
-         $$0x.put(fro.g(), new enw(786432));
-         a($$0x, frh.j());
-         a($$0x, frh.k());
-         a($$0x, frh.m());
-         a($$0x, frh.n());
-         a($$0x, frh.l());
-         a($$0x, frh.o());
-         a($$0x, frh.p());
-         a($$0x, frh.i());
-         gef.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = fqz.a(new enw(1536));
-      this.c = fqz.a($$1, new enw(786432));
-      this.e = new fra(this.c);
+   protected frf(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fqr $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+      this.v = 0.7294118F;
+      this.w = 0.69411767F;
+      this.x = 0.7607843F;
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<frh, enw> $$0, frh $$1) {
-      $$0.put($$1, new enw($$1.G()));
-   }
+   public static class a implements fpz<jy> {
+      private final fqr a;
 
-   public frk a() {
-      return this.a;
-   }
+      public a(fqr $$0) {
+         this.a = $$0;
+      }
 
-   public frl b() {
-      return this.b;
-   }
-
-   public fqz.a c() {
-      return this.c;
-   }
-
-   public fqz.a d() {
-      return this.d;
-   }
-
-   public fra e() {
-      return this.e;
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new frf($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      }
    }
 }

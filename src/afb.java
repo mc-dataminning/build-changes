@@ -1,41 +1,31 @@
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.util.Arrays;
-import javax.crypto.SecretKey;
+import com.mojang.authlib.GameProfile;
 
-public class afb implements wo<aey> {
-   private final byte[] a;
-   private final byte[] b;
+public class afb implements wu<aez> {
+   private final GameProfile a;
 
-   public afb(SecretKey $$0, PublicKey $$1, byte[] $$2) throws asq {
-      this.a = asp.a($$1, $$0.getEncoded());
-      this.b = asp.a($$1, $$2);
+   public afb(GameProfile $$0) {
+      this.a = $$0;
    }
 
-   public afb(ty $$0) {
-      this.a = $$0.b();
-      this.b = $$0.b();
+   public afb(ue $$0) {
+      this.a = $$0.A();
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
    }
 
-   public void a(aey $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public SecretKey a(PrivateKey $$0) throws asq {
-      return asp.a($$0, this.a);
+   public GameProfile a() {
+      return this.a;
    }
 
-   public boolean a(byte[] $$0, PrivateKey $$1) {
-      try {
-         return Arrays.equals($$0, asp.b($$1, this.b));
-      } catch (asq var4) {
-         return false;
-      }
+   @Override
+   public ud c() {
+      return ud.e;
    }
 }

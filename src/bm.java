@@ -1,63 +1,108 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bm extends cw<bm.a> {
-   public bm.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      cvf $$3 = a($$0);
-      Optional<da> $$4 = da.a($$0.get("state"));
-      if ($$3 != null) {
-         $$4.ifPresent($$1x -> $$1x.a($$3.n(), $$1xx -> {
-               throw new JsonSyntaxException("Block " + $$3 + " has no property " + $$1xx);
-            }));
-      }
+public record bm(Optional<ca> c, Optional<ca> d, Optional<ca> e, Optional<ca> f, Optional<ca> g, Optional<ca> h) {
+   public static final Codec<bm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atg.a(ca.a, "head").forGetter(bm::a),
+               atg.a(ca.a, "chest").forGetter(bm::b),
+               atg.a(ca.a, "legs").forGetter(bm::c),
+               atg.a(ca.a, "feet").forGetter(bm::d),
+               atg.a(ca.a, "mainhand").forGetter(bm::e),
+               atg.a(ca.a, "offhand").forGetter(bm::f)
+            )
+            .apply($$0, bm::new)
+   );
+   public static final bm b = bm.a.a().a(ca.a.a().a(cmk.uI).a(cfz.s().v())).b();
 
-      return new bm.a($$1, $$3, $$4);
-   }
-
-   @Nullable
-   private static cvf a(JsonObject $$0) {
-      if ($$0.has("block")) {
-         agm $$1 = new agm(atg.i($$0, "block"));
-         return kc.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
-      } else {
-         return null;
-      }
-   }
-
-   public void a(amj $$0, dhn $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
-   }
-
-   public static class a extends at {
-      @Nullable
-      private final cvf a;
-      private final Optional<da> b;
-
-      public a(Optional<bc> $$0, @Nullable cvf $$1, Optional<da> $$2) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
-      }
-
-      public static am<bm.a> a(cvf $$0) {
-         return al.d.a(new bm.a(Optional.empty(), $$0, Optional.empty()));
-      }
-
-      @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         if (this.a != null) {
-            $$0.addProperty("block", kc.f.b(this.a).toString());
+   public boolean a(@Nullable blf $$0) {
+      if ($$0 instanceof blv $$1) {
+         if (this.c.isPresent() && !this.c.get().a($$1.c(blk.f))) {
+            return false;
+         } else if (this.d.isPresent() && !this.d.get().a($$1.c(blk.e))) {
+            return false;
+         } else if (this.e.isPresent() && !this.e.get().a($$1.c(blk.d))) {
+            return false;
+         } else if (this.f.isPresent() && !this.f.get().a($$1.c(blk.c))) {
+            return false;
+         } else {
+            return this.g.isPresent() && !this.g.get().a($$1.c(blk.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.c(blk.b));
          }
+      } else {
+         return false;
+      }
+   }
 
-         this.b.ifPresent($$1 -> $$0.add("state", $$1.a()));
-         return $$0;
+   public Optional<ca> a() {
+      return this.c;
+   }
+
+   public Optional<ca> b() {
+      return this.d;
+   }
+
+   public Optional<ca> c() {
+      return this.e;
+   }
+
+   public Optional<ca> d() {
+      return this.f;
+   }
+
+   public Optional<ca> e() {
+      return this.g;
+   }
+
+   public Optional<ca> f() {
+      return this.h;
+   }
+
+   public static class a {
+      private Optional<ca> a = Optional.empty();
+      private Optional<ca> b = Optional.empty();
+      private Optional<ca> c = Optional.empty();
+      private Optional<ca> d = Optional.empty();
+      private Optional<ca> e = Optional.empty();
+      private Optional<ca> f = Optional.empty();
+
+      public static bm.a a() {
+         return new bm.a();
       }
 
-      public boolean a(dhn $$0) {
-         return this.a != null && !$$0.a(this.a) ? false : !this.b.isPresent() || this.b.get().a($$0);
+      public bm.a a(ca.a $$0) {
+         this.a = Optional.of($$0.b());
+         return this;
+      }
+
+      public bm.a b(ca.a $$0) {
+         this.b = Optional.of($$0.b());
+         return this;
+      }
+
+      public bm.a c(ca.a $$0) {
+         this.c = Optional.of($$0.b());
+         return this;
+      }
+
+      public bm.a d(ca.a $$0) {
+         this.d = Optional.of($$0.b());
+         return this;
+      }
+
+      public bm.a e(ca.a $$0) {
+         this.e = Optional.of($$0.b());
+         return this;
+      }
+
+      public bm.a f(ca.a $$0) {
+         this.f = Optional.of($$0.b());
+         return this;
+      }
+
+      public bm b() {
+         return new bm(this.a, this.b, this.c, this.d, this.e, this.f);
       }
    }
 }

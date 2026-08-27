@@ -1,120 +1,65 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
 
-public class edp extends edl {
-   private final boolean k;
-   private final Long2ObjectMap<edi> l = new Long2ObjectOpenHashMap();
+public class edp {
+   private final int a;
+   private final LongLinkedOpenHashSet[] b;
+   private int c;
 
-   public edp(boolean $$0) {
-      this.k = $$0;
-   }
+   public edp(int $$0, final int $$1) {
+      this.a = $$0;
+      this.b = new LongLinkedOpenHashSet[$$0];
 
-   @Override
-   public void a(css $$0, bln $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
-   }
-
-   @Override
-   public void b() {
-      super.b();
-      this.l.clear();
-   }
-
-   @Override
-   public edk a() {
-      return this.b(atq.a(this.b.cH().a), atq.a(this.b.cH().b + 0.5), atq.a(this.b.cH().c));
-   }
-
-   @Override
-   public edq a(double $$0, double $$1, double $$2) {
-      return this.a(this.b(atq.a($$0), atq.a($$1), atq.a($$2)));
-   }
-
-   @Override
-   public int a(edk[] $$0, edk $$1) {
-      int $$2 = 0;
-      Map<ib, edk> $$3 = Maps.newEnumMap(ib.class);
-
-      for (ib $$4 : ib.values()) {
-         edk $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.b($$5)) {
-            $$0[$$2++] = $$5;
-         }
-      }
-
-      for (ib $$6 : ib.c.a) {
-         ib $$7 = $$6.h();
-         edk $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-         if (this.a($$8, $$3.get($$6), $$3.get($$7))) {
-            $$0[$$2++] = $$8;
-         }
-      }
-
-      return $$2;
-   }
-
-   protected boolean b(@Nullable edk $$0) {
-      return $$0 != null && !$$0.i;
-   }
-
-   protected boolean a(@Nullable edk $$0, @Nullable edk $$1, @Nullable edk $$2) {
-      return this.b($$0) && $$1 != null && $$1.k >= 0.0F && $$2 != null && $$2.k >= 0.0F;
-   }
-
-   @Nullable
-   protected edk a(int $$0, int $$1, int $$2) {
-      edk $$3 = null;
-      edi $$4 = this.c($$0, $$1, $$2);
-      if (this.k && $$4 == edi.u || $$4 == edi.j) {
-         float $$5 = this.b.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.b($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.a.b_(new hx($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   protected edi c(int $$0, int $$1, int $$2) {
-      return (edi)this.l.computeIfAbsent(hx.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
-   }
-
-   @Override
-   public edi a(crl $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.b);
-   }
-
-   @Override
-   public edi a(crl $$0, int $$1, int $$2, int $$3, bln $$4) {
-      hx.a $$5 = new hx.a();
-
-      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
-               ecx $$9 = $$0.b_($$5.d($$6, $$7, $$8));
-               dhn $$10 = $$0.a_($$5.d($$6, $$7, $$8));
-               if ($$9.c() && $$10.a($$0, $$5.d(), edn.b) && $$10.i()) {
-                  return edi.u;
-               }
-
-               if (!$$9.a(arp.a)) {
-                  return edi.a;
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$1) {
+                  super.rehash($$0);
                }
             }
-         }
+         };
       }
 
-      dhn $$11 = $$0.a_($$5);
-      return $$11.a($$0, $$5, edn.b) ? edi.j : edi.a;
+      this.c = $$0;
+   }
+
+   public long a() {
+      LongLinkedOpenHashSet $$0 = this.b[this.c];
+      long $$1 = $$0.removeFirstLong();
+      if ($$0.isEmpty()) {
+         this.a(this.a);
+      }
+
+      return $$1;
+   }
+
+   public boolean b() {
+      return this.c >= this.a;
+   }
+
+   public void a(long $$0, int $$1, int $$2) {
+      LongLinkedOpenHashSet $$3 = this.b[$$1];
+      $$3.remove($$0);
+      if ($$3.isEmpty() && this.c == $$1) {
+         this.a($$2);
+      }
+   }
+
+   public void a(long $$0, int $$1) {
+      this.b[$$1].add($$0);
+      if (this.c > $$1) {
+         this.c = $$1;
+      }
+   }
+
+   private void a(int $$0) {
+      int $$1 = this.c;
+      this.c = $$0;
+
+      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
+         if (!this.b[$$2].isEmpty()) {
+            this.c = $$2;
+            break;
+         }
+      }
    }
 }

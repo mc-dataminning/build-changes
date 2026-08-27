@@ -1,59 +1,65 @@
-import java.util.concurrent.locks.LockSupport;
+public abstract class ggj extends ggf {
+   private static final float o = 0.0F;
+   private static final float p = 1.2F;
+   private static final float q = 0.0F;
+   protected final bxj n;
+   private boolean r;
 
-public class ggj extends bhr<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
-
-   public ggj() {
-      super("Sound executor");
-   }
-
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
-   }
-
-   @Override
-   protected Runnable f(Runnable $$0) {
-      return $$0;
+   public ggj(bxj $$0, arb $$1, ard $$2) {
+      super($$1, $$2, ggw.t());
+      this.n = $$0;
+      this.f = (double)((float)$$0.dr());
+      this.g = (double)((float)$$0.dt());
+      this.h = (double)((float)$$0.dx());
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
    @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
-   }
+   public void q() {
+      boolean $$0 = this.p();
+      if ($$0 && !this.m()) {
+         euk.N().ah().a((ggx)this.o());
+         this.r = true;
+      }
 
-   @Override
-   protected Thread aw() {
-      return this.a;
-   }
-
-   private void c() {
-      while (!this.b) {
-         this.c(() -> this.b);
+      if (!this.n.dH() && !this.r) {
+         this.f = (double)((float)this.n.dr());
+         this.g = (double)((float)this.n.dt());
+         this.h = (double)((float)this.n.dx());
+         float $$1 = (float)this.n.dp().h();
+         if ($$1 >= 0.01F) {
+            this.e = aty.i(aty.a($$1, this.u(), this.v()), this.u(), this.v());
+            this.d = aty.i(aty.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
+         } else {
+            this.e = 0.0F;
+            this.d = 0.0F;
+         }
+      } else {
+         this.n();
       }
    }
 
+   private float u() {
+      return this.n.o_() ? 1.1F : 0.7F;
+   }
+
+   private float v() {
+      return this.n.o_() ? 1.5F : 1.1F;
+   }
+
    @Override
-   protected void bv() {
-      LockSupport.park("waiting for tasks");
+   public boolean r() {
+      return true;
    }
 
-   public void a() {
-      this.b = true;
-      this.a.interrupt();
-
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
-      }
-
-      this.bt();
-      this.b = false;
-      this.a = this.b();
+   @Override
+   public boolean s() {
+      return !this.n.aU();
    }
+
+   protected abstract ggf o();
+
+   protected abstract boolean p();
 }

@@ -1,36 +1,31 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class esq extends esi {
-   private static final Logger b = LogUtils.getLogger();
-   private static final uv c = uv.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
+public class esq {
+   public final int a;
+   @Nullable
+   public final String b;
 
-   public esq(long $$0, String $$1, String $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   esq(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void run() {
-      eor $$0 = eor.a();
+   public static class a {
+      private int a = -1;
+      private String b;
 
-      try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (eqe var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
+      public esq.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
-   }
 
-   @Override
-   public uv a() {
-      return c;
+      public esq.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public esq a() {
+         return new esq(this.a, this.b);
+      }
    }
 }

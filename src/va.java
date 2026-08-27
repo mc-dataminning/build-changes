@@ -1,99 +1,75 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
+import java.util.Arrays;
+import java.util.Collection;
 
-public interface va {
-   Optional<aus> a = Optional.of(aus.a);
-   va b = new va() {
-      @Override
-      public <T> Optional<T> a(va.a<T> $$0) {
-         return Optional.empty();
+public class va {
+   public static final vb a = vb.i();
+   public static final vb b = vb.c("options.on");
+   public static final vb c = vb.c("options.off");
+   public static final vb d = vb.c("gui.done");
+   public static final vb e = vb.c("gui.cancel");
+   public static final vb f = vb.c("gui.yes");
+   public static final vb g = vb.c("gui.no");
+   public static final vb h = vb.c("gui.ok");
+   public static final vb i = vb.c("gui.proceed");
+   public static final vb j = vb.c("gui.continue");
+   public static final vb k = vb.c("gui.back");
+   public static final vb l = vb.c("gui.toTitle");
+   public static final vb m = vb.c("gui.acknowledge");
+   public static final vb n = vb.c("chat.link.open");
+   public static final vb o = vb.c("gui.copy_link_to_clipboard");
+   public static final vb p = vb.c("menu.disconnect");
+   public static final vb q = vb.c("connect.failed");
+   public static final vb r = vb.b("\n");
+   public static final vb s = vb.b(". ");
+   public static final vb t = vb.b("...");
+   public static final vb u = a();
+
+   public static vp a() {
+      return vb.b(" ");
+   }
+
+   public static vp a(long $$0) {
+      return vb.a("gui.days", $$0);
+   }
+
+   public static vp b(long $$0) {
+      return vb.a("gui.hours", $$0);
+   }
+
+   public static vp c(long $$0) {
+      return vb.a("gui.minutes", $$0);
+   }
+
+   public static vb a(boolean $$0) {
+      return $$0 ? b : c;
+   }
+
+   public static vp a(vb $$0, boolean $$1) {
+      return vb.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   }
+
+   public static vp a(vb $$0, vb $$1) {
+      return vb.a("options.generic_value", $$0, $$1);
+   }
+
+   public static vp a(vb... $$0) {
+      vp $$1 = vb.i();
+
+      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+         $$1.b($$0[$$2]);
+         if ($$2 != $$0.length - 1) {
+            $$1.b(s);
+         }
       }
 
-      @Override
-      public <T> Optional<T> a(va.b<T> $$0, vs $$1) {
-         return Optional.empty();
-      }
-   };
-
-   <T> Optional<T> a(va.a<T> var1);
-
-   <T> Optional<T> a(va.b<T> var1, vs var2);
-
-   static va e(final String $$0) {
-      return new va() {
-         @Override
-         public <T> Optional<T> a(va.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(va.b<T> $$0x, vs $$1) {
-            return $$0.accept($$1, $$0);
-         }
-      };
+      return $$1;
    }
 
-   static va a(final String $$0, final vs $$1) {
-      return new va() {
-         @Override
-         public <T> Optional<T> a(va.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(va.b<T> $$0x, vs $$1x) {
-            return $$0.accept($$1.a($$1), $$0);
-         }
-      };
+   public static vb b(vb... $$0) {
+      return a(Arrays.asList($$0));
    }
 
-   static va a(va... $$0) {
-      return a(ImmutableList.copyOf($$0));
-   }
-
-   static va a(final List<? extends va> $$0) {
-      return new va() {
-         @Override
-         public <T> Optional<T> a(va.a<T> $$0x) {
-            for (va $$1 : $$0) {
-               Optional<T> $$2 = $$1.a($$0);
-               if ($$2.isPresent()) {
-                  return $$2;
-               }
-            }
-
-            return Optional.empty();
-         }
-
-         @Override
-         public <T> Optional<T> a(va.b<T> $$0x, vs $$1) {
-            for (va $$2 : $$0) {
-               Optional<T> $$3 = $$2.a($$0, $$1);
-               if ($$3.isPresent()) {
-                  return $$3;
-               }
-            }
-
-            return Optional.empty();
-         }
-      };
-   }
-
-   default String getString() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a($$1 -> {
-         $$0.append($$1);
-         return Optional.empty();
-      });
-      return $$0.toString();
-   }
-
-   public interface a<T> {
-      Optional<T> accept(String var1);
-   }
-
-   public interface b<T> {
-      Optional<T> accept(vs var1, String var2);
+   public static vb a(Collection<? extends vb> $$0) {
+      return ve.a($$0, r);
    }
 }

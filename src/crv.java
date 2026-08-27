@@ -1,19 +1,41 @@
-import java.util.Optional;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class crv extends cry {
-   private final bkv a;
+public interface crv {
+   void f(@Nullable cer var1);
 
-   public crv(bkv $$0) {
-      this.a = $$0;
+   @Nullable
+   cer ge();
+
+   crx gg();
+
+   void a(crx var1);
+
+   void a(crw var1);
+
+   void l(cmh var1);
+
+   int w();
+
+   void t(int var1);
+
+   boolean gh();
+
+   arb gi();
+
+   default boolean gq() {
+      return false;
    }
 
-   @Override
-   public Optional<Float> a(crx $$0, crl $$1, hx $$2, dhn $$3, ecx $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   default void a(cer $$0, vb $$1, int $$2) {
+      OptionalInt $$3 = $$0.a(new bju(($$0x, $$1x, $$2x) -> new cit($$0x, $$1x, this), $$1));
+      if ($$3.isPresent()) {
+         crx $$4 = this.gg();
+         if (!$$4.isEmpty()) {
+            $$0.a($$3.getAsInt(), $$4, $$2, this.w(), this.gh(), this.gq());
+         }
+      }
    }
 
-   @Override
-   public boolean a(crx $$0, crl $$1, hx $$2, dhn $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
-   }
+   boolean gm();
 }

@@ -1,34 +1,51 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
 import org.joml.Vector3f;
 
-public class jq extends jr {
-   public static final Vector3f a = ejz.a(16711680).j();
-   public static final jq b = new jq(a, 1.0F);
-   public static final Codec<jq> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asy.d.fieldOf("color").forGetter($$0x -> $$0x.g), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)).apply($$0, jq::new)
-   );
-   public static final ju.a<jq> d = new ju.a<jq>() {
-      public jq a(jv<jq> $$0, StringReader $$1) throws CommandSyntaxException {
-         Vector3f $$2 = jr.a($$1);
-         $$1.expect(' ');
-         float $$3 = $$1.readFloat();
-         return new jq($$2, $$3);
-      }
-
-      public jq a(jv<jq> $$0, ty $$1) {
-         return new jq(jr.b($$1), $$1.readFloat());
-      }
-   };
+public abstract class jq implements jt {
+   public static final float e = 0.01F;
+   public static final float f = 4.0F;
+   protected final Vector3f g;
+   protected final float h;
 
    public jq(Vector3f $$0, float $$1) {
-      super($$0, $$1);
+      this.g = $$0;
+      this.h = aty.a($$1, 0.01F, 4.0F);
+   }
+
+   public static Vector3f a(StringReader $$0) throws CommandSyntaxException {
+      $$0.expect(' ');
+      float $$1 = $$0.readFloat();
+      $$0.expect(' ');
+      float $$2 = $$0.readFloat();
+      $$0.expect(' ');
+      float $$3 = $$0.readFloat();
+      return new Vector3f($$1, $$2, $$3);
+   }
+
+   public static Vector3f b(ue $$0) {
+      return new Vector3f($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
    @Override
-   public jv<jq> b() {
-      return jw.o;
+   public void a(ue $$0) {
+      $$0.a(this.g.x());
+      $$0.a(this.g.y());
+      $$0.a(this.g.z());
+      $$0.a(this.h);
+   }
+
+   @Override
+   public String a() {
+      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %.2f", kb.j.b(this.b()), this.g.x(), this.g.y(), this.g.z(), this.h);
+   }
+
+   public Vector3f e() {
+      return this.g;
+   }
+
+   public float f() {
+      return this.h;
    }
 }

@@ -1,24 +1,24 @@
-public class abd implements wo<yh> {
-   private final int a;
+public class abd implements wu<yo> {
+   private final vb a;
 
-   public abd(int $$0) {
+   public abd(vb $$0) {
       this.a = $$0;
    }
 
-   public abd(ty $$0) {
-      this.a = $$0.readByte();
+   public abd(ue $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.k(this.a);
+   public void a(ue $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public vb a() {
       return this.a;
    }
 }

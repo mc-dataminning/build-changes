@@ -1,147 +1,94 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class cpz {
-   private final bla[] a;
-   private final cpz.a b;
-   public final cqa e;
-   @Nullable
-   protected String f;
-   private final ig.c<cpz> c = kc.g.f(this);
+public abstract class cpz implements cpl<bje> {
+   protected final cpi a;
+   protected final cmh b;
+   private final cpq<?> d;
+   private final cpp<?> e;
+   protected final String c;
 
-   @Nullable
-   public static cpz c(int $$0) {
-      return kc.g.a($$0);
-   }
-
-   protected cpz(cpz.a $$0, cqa $$1, bla[] $$2) {
-      this.b = $$0;
+   public cpz(cpq<?> $$0, cpp<?> $$1, String $$2, cpi $$3, cmh $$4) {
+      this.d = $$0;
       this.e = $$1;
-      this.a = $$2;
+      this.c = $$2;
+      this.a = $$3;
+      this.b = $$4;
    }
 
-   public Map<bla, clo> a(bll $$0) {
-      Map<bla, clo> $$1 = Maps.newEnumMap(bla.class);
-
-      for (bla $$2 : this.a) {
-         clo $$3 = $$0.c($$2);
-         if (!$$3.b()) {
-            $$1.put($$2, $$3);
-         }
-      }
-
-      return $$1;
+   @Override
+   public cpq<?> e() {
+      return this.d;
    }
 
-   public cpz.a d() {
-      return this.b;
+   @Override
+   public cpp<?> ar_() {
+      return this.e;
    }
 
-   public int e() {
-      return 1;
-   }
-
-   public int a() {
-      return 1;
-   }
-
-   public int a(int $$0) {
-      return 1 + $$0 * 10;
-   }
-
-   public int b(int $$0) {
-      return this.a($$0) + 5;
-   }
-
-   public int a(int $$0, bjt $$1) {
-      return 0;
-   }
-
-   public float a(int $$0, blq $$1) {
-      return 0.0F;
-   }
-
-   public final boolean b(cpz $$0) {
-      return this.a($$0) && $$0.a(this);
-   }
-
-   protected boolean a(cpz $$0) {
-      return this != $$0;
-   }
-
-   protected String f() {
-      if (this.f == null) {
-         this.f = ac.a("enchantment", kc.g.b(this));
-      }
-
-      return this.f;
-   }
-
-   public String g() {
-      return this.f();
-   }
-
-   public uv d(int $$0) {
-      vj $$1 = uv.c(this.g());
-      if (this.c()) {
-         $$1.a(n.m);
-      } else {
-         $$1.a(n.h);
-      }
-
-      if ($$0 != 1 || this.a() != 1) {
-         $$1.b(uu.u).b(uv.c("enchantment.level." + $$0));
-      }
-
-      return $$1;
-   }
-
-   public boolean a(clo $$0) {
-      return this.e.a($$0.d());
-   }
-
-   public void a(bll $$0, bkv $$1, int $$2) {
-   }
-
-   public void b(bll $$0, bkv $$1, int $$2) {
-   }
-
-   public boolean b() {
-      return false;
-   }
-
-   public boolean c() {
-      return false;
-   }
-
-   public boolean h() {
-      return true;
-   }
-
-   public boolean i() {
-      return true;
-   }
-
-   @Deprecated
-   public ig.c<cpz> j() {
+   @Override
+   public String c() {
       return this.c;
    }
 
-   public static enum a {
-      a(10),
-      b(5),
-      c(2),
-      d(1);
+   @Override
+   public cmh a(is $$0) {
+      return this.b;
+   }
 
-      private final int e;
+   @Override
+   public io<cpi> a() {
+      io<cpi> $$0 = io.a();
+      $$0.add(this.a);
+      return $$0;
+   }
 
-      private a(int $$0) {
-         this.e = $$0;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public cmh a(bje $$0, is $$1) {
+      return this.b.p();
+   }
+
+   public interface a<T extends cpz> {
+      T create(String var1, cpi var2, cmh var3);
+   }
+
+   public static class b<T extends cpz> implements cpp<T> {
+      final cpz.a<T> x;
+      private final Codec<T> y;
+
+      protected b(cpz.a<T> $$0) {
+         this.x = $$0;
+         this.y = RecordCodecBuilder.create(
+            $$1 -> $$1.group(
+                     atg.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                     cpi.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
+                     cmh.e.forGetter($$0xx -> $$0xx.b)
+                  )
+                  .apply($$1, $$0::create)
+         );
       }
 
-      public int a() {
-         return this.e;
+      @Override
+      public Codec<T> a() {
+         return this.y;
+      }
+
+      public T b(ue $$0) {
+         String $$1 = $$0.s();
+         cpi $$2 = cpi.b($$0);
+         cmh $$3 = $$0.r();
+         return this.x.create($$1, $$2, $$3);
+      }
+
+      public void a(ue $$0, T $$1) {
+         $$0.a($$1.c);
+         $$1.a.a($$0);
+         $$0.a($$1.b);
       }
    }
 }

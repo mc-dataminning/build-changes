@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface afr extends ty, tz {
+   @Override
+   default ud b() {
+      return ud.c;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface afr {
+   void a(aft var1);
 }

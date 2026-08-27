@@ -1,70 +1,25 @@
-public abstract class ctk {
-   public static final agl<ctd> a = a("the_void");
-   public static final agl<ctd> b = a("plains");
-   public static final agl<ctd> c = a("sunflower_plains");
-   public static final agl<ctd> d = a("snowy_plains");
-   public static final agl<ctd> e = a("ice_spikes");
-   public static final agl<ctd> f = a("desert");
-   public static final agl<ctd> g = a("swamp");
-   public static final agl<ctd> h = a("mangrove_swamp");
-   public static final agl<ctd> i = a("forest");
-   public static final agl<ctd> j = a("flower_forest");
-   public static final agl<ctd> k = a("birch_forest");
-   public static final agl<ctd> l = a("dark_forest");
-   public static final agl<ctd> m = a("old_growth_birch_forest");
-   public static final agl<ctd> n = a("old_growth_pine_taiga");
-   public static final agl<ctd> o = a("old_growth_spruce_taiga");
-   public static final agl<ctd> p = a("taiga");
-   public static final agl<ctd> q = a("snowy_taiga");
-   public static final agl<ctd> r = a("savanna");
-   public static final agl<ctd> s = a("savanna_plateau");
-   public static final agl<ctd> t = a("windswept_hills");
-   public static final agl<ctd> u = a("windswept_gravelly_hills");
-   public static final agl<ctd> v = a("windswept_forest");
-   public static final agl<ctd> w = a("windswept_savanna");
-   public static final agl<ctd> x = a("jungle");
-   public static final agl<ctd> y = a("sparse_jungle");
-   public static final agl<ctd> z = a("bamboo_jungle");
-   public static final agl<ctd> A = a("badlands");
-   public static final agl<ctd> B = a("eroded_badlands");
-   public static final agl<ctd> C = a("wooded_badlands");
-   public static final agl<ctd> D = a("meadow");
-   public static final agl<ctd> E = a("cherry_grove");
-   public static final agl<ctd> F = a("grove");
-   public static final agl<ctd> G = a("snowy_slopes");
-   public static final agl<ctd> H = a("frozen_peaks");
-   public static final agl<ctd> I = a("jagged_peaks");
-   public static final agl<ctd> J = a("stony_peaks");
-   public static final agl<ctd> K = a("river");
-   public static final agl<ctd> L = a("frozen_river");
-   public static final agl<ctd> M = a("beach");
-   public static final agl<ctd> N = a("snowy_beach");
-   public static final agl<ctd> O = a("stony_shore");
-   public static final agl<ctd> P = a("warm_ocean");
-   public static final agl<ctd> Q = a("lukewarm_ocean");
-   public static final agl<ctd> R = a("deep_lukewarm_ocean");
-   public static final agl<ctd> S = a("ocean");
-   public static final agl<ctd> T = a("deep_ocean");
-   public static final agl<ctd> U = a("cold_ocean");
-   public static final agl<ctd> V = a("deep_cold_ocean");
-   public static final agl<ctd> W = a("frozen_ocean");
-   public static final agl<ctd> X = a("deep_frozen_ocean");
-   public static final agl<ctd> Y = a("mushroom_fields");
-   public static final agl<ctd> Z = a("dripstone_caves");
-   public static final agl<ctd> aa = a("lush_caves");
-   public static final agl<ctd> ab = a("deep_dark");
-   public static final agl<ctd> ac = a("nether_wastes");
-   public static final agl<ctd> ad = a("warped_forest");
-   public static final agl<ctd> ae = a("crimson_forest");
-   public static final agl<ctd> af = a("soul_sand_valley");
-   public static final agl<ctd> ag = a("basalt_deltas");
-   public static final agl<ctd> ah = a("the_end");
-   public static final agl<ctd> ai = a("end_highlands");
-   public static final agl<ctd> aj = a("end_midlands");
-   public static final agl<ctd> ak = a("small_end_islands");
-   public static final agl<ctd> al = a("end_barrens");
+public final class ctk implements dki {
+   private final int a;
+   private final dip[] b;
 
-   private static agl<ctd> a(String $$0) {
-      return agl.a(kd.ar, new agm($$0));
+   public ctk(int $$0, dip[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public dip a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : cwb.a.o();
+   }
+
+   @Override
+   public void a(int $$0, dip $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
+      } else {
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
+      }
    }
 }

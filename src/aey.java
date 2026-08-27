@@ -1,14 +1,8 @@
-public interface aey extends acq {
-   @Override
-   default tx b() {
-      return tx.d;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(afa var1);
-
-   void a(afb var1);
-
-   void a(aez var1);
-
-   void a(afc var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aey {
 }

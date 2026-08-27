@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ghg {
+public interface ghg<T> extends ghj<T> {
+   static <T> ghg<T> b() {
+      return $$0 -> List.of();
+   }
+
+   default void a() {
+   }
 }

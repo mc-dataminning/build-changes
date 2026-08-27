@@ -1,54 +1,45 @@
-import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.logging.LogUtils;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Collection;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
-public interface auc {
-   auc a = ($$0, $$1) -> true;
-   Logger b = LogUtils.getLogger();
+public record auc(int a, int b) {
+   private static final long c = -8552249625308161526L;
+   private static final int d = 1229472850;
+   private static final int e = 13;
 
-   boolean validate(aub var1, byte[] var2);
-
-   default boolean a(byte[] $$0, byte[] $$1) {
-      return this.validate($$1x -> $$1x.update($$0), $$1);
+   public static auc a(InputStream $$0) throws IOException {
+      DataInputStream $$1 = new DataInputStream($$0);
+      if ($$1.readLong() != -8552249625308161526L) {
+         throw new IOException("Bad PNG Signature");
+      } else if ($$1.readInt() != 13) {
+         throw new IOException("Bad length for IHDR chunk!");
+      } else if ($$1.readInt() != 1229472850) {
+         throw new IOException("Bad type for IHDR chunk!");
+      } else {
+         int $$2 = $$1.readInt();
+         int $$3 = $$1.readInt();
+         return new auc($$2, $$3);
+      }
    }
 
-   private static boolean a(aub $$0, byte[] $$1, Signature $$2) throws SignatureException {
-      $$0.update($$2::update);
-      return $$2.verify($$1);
+   public static auc a(byte[] $$0) throws IOException {
+      return a(new ByteArrayInputStream($$0));
    }
 
-   static auc a(PublicKey $$0, String $$1) {
-      return ($$2, $$3) -> {
-         try {
-            Signature $$4 = Signature.getInstance($$1);
-            $$4.initVerify($$0);
-            return a($$2, $$3, $$4);
-         } catch (Exception var5) {
-            b.error("Failed to verify signature", var5);
-            return false;
-         }
-      };
-   }
-
-   @Nullable
-   static auc a(ServicesKeySet $$0, ServicesKeyType $$1) {
-      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
-      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
-            Signature $$3 = $$2xx.signature();
-
-            try {
-               return a($$1x, $$2x, $$3);
-            } catch (SignatureException var5) {
-               b.error("Failed to verify Services signature", var5);
-               return false;
-            }
-         });
+   public static void a(ByteBuffer $$0) throws IOException {
+      ByteOrder $$1 = $$0.order();
+      $$0.order(ByteOrder.BIG_ENDIAN);
+      if ($$0.getLong(0) != -8552249625308161526L) {
+         throw new IOException("Bad PNG Signature");
+      } else if ($$0.getInt(8) != 13) {
+         throw new IOException("Bad length for IHDR chunk!");
+      } else if ($$0.getInt(12) != 1229472850) {
+         throw new IOException("Bad type for IHDR chunk!");
+      } else {
+         $$0.order($$1);
+      }
    }
 }

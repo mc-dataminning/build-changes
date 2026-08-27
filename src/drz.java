@@ -1,18 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public class drz implements dse {
-   public static final Codec<drz> a = big.b(0, 256).fieldOf("count").xmap(drz::new, drz::a).codec();
-   private final big b;
-
-   public drz(int $$0) {
-      this.b = bid.a($$0);
+public class drz extends drc<dtr> {
+   public drz(Codec<dtr> $$0) {
+      super($$0);
    }
 
-   public drz(big $$0) {
-      this.b = $$0;
-   }
-
-   public big a() {
-      return this.b;
+   @Override
+   public boolean a(dre<dtr> $$0) {
+      auf $$1 = $$0.d();
+      dtr $$2 = $$0.f();
+      ctt $$3 = $$0.b();
+      dkm $$4 = $$0.c();
+      hv $$5 = $$0.e();
+      boolean $$6 = $$1.h();
+      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
    }
 }

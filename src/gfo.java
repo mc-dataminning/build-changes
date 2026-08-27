@@ -1,35 +1,70 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class gfo<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
+public class gfo implements AutoCloseable {
+   private final Map<agt, gfo.a> a;
 
-   public gfo(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   public gfo(Map<agt, agt> $$0, gdp $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         gdn $$2 = new gdn((agt)$$1x.getKey());
+         $$1.a((agt)$$1x.getKey(), $$2);
+         return new gfo.a($$2, (agt)$$1x.getValue());
+      }));
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
+   public gdn a(agt $$0) {
+      return this.a.get($$0).a();
+   }
 
-         if ($$0 < 0) {
-            this.a.next();
-         } else {
-            this.b.next();
-         }
+   @Override
+   public void close() {
+      this.a.values().forEach(gfo.a::close);
+      this.a.clear();
+   }
+
+   public Map<agt, CompletableFuture<gfo.b>> a(aps $$0, int $$1, Executor $$2) {
+      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
+         gfo.a $$4 = $$3.getValue();
+         return gdj.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new gfo.b($$4.a, $$1xx));
+      }));
+   }
+
+   static record a(gdn a, agt b) implements AutoCloseable {
+
+      @Override
+      public void close() {
+         this.a.f();
+      }
+   }
+
+   public static class b {
+      private final gdn a;
+      private final gdj.a b;
+
+      public b(gdn $$0, gdj.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return (T)this.endOfData();
+      @Nullable
+      public gdo a(agt $$0) {
+         return this.b.f().get($$0);
+      }
+
+      public gdo a() {
+         return this.b.e();
+      }
+
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
+
+      public void c() {
+         this.a.a(this.b);
+      }
    }
 }

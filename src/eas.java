@@ -1,64 +1,96 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Optional;
+import java.util.function.IntFunction;
 
-public class eas extends ebj {
-   public static final Codec<eas> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ebl.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), big.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, eas::new)
+public class eas extends dyo {
+   public static final Codec<eas> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), eas.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, eas::new)
    );
-   private final ebj b;
-   private final big c;
+   private final eas.a e;
 
-   public eas(ebj $$0, big $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public eas(dyo.c $$0, eas.a $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   protected ebl<?> a() {
-      return ebl.o;
+   public Optional<dyo.b> a(dyo.a $$0) {
+      $$0.f().j();
+      csf $$1 = $$0.h();
+      hv $$2 = new hv($$1.b(), 50, $$1.e());
+      dzg $$3 = new dzg();
+      int $$4 = this.a($$3, $$0);
+      return Optional.of(new dyo.b($$2.b(0, $$4, 0), Either.right($$3)));
    }
 
-   @Override
-   public final List<ebm.c> a(csu $$0, hx $$1, hx $$2, List<ebm.c> $$3, List<ebm.c> $$4, ebi $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ac.a(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            atw $$6 = atw.a($$0.D().B()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  ebm.c $$12 = $$3.get($$11);
-                  ebm.c $$13 = $$4.get($$11);
-                  ebm.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
-         }
+   private int a(dzg $$0, dyo.a $$1) {
+      csf $$2 = $$1.h();
+      dox $$3 = $$1.f();
+      dkm $$4 = $$1.b();
+      ear.d $$5 = new ear.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
+      $$0.a($$5);
+      $$5.a($$5, $$0, $$3);
+      int $$6 = $$4.e();
+      if (this.e == eas.a.b) {
+         hv $$7 = $$0.d().g();
+         int $$8 = $$4.a($$7.u(), $$7.w(), dny.a.a, $$1.i(), $$1.d());
+         int $$9 = $$8 <= $$6 ? $$6 : aty.b($$3, $$6, $$8);
+         int $$10 = $$9 - $$7.v();
+         $$0.a($$10);
+         return $$10;
       } else {
-         return $$4;
+         return $$0.a($$6, $$4.f(), $$3, 10);
+      }
+   }
+
+   @Override
+   public dyx<?> e() {
+      return dyx.h;
+   }
+
+   public static enum a implements aut {
+      a("normal", cwb.U, cwb.n, cwb.dU),
+      b("mesa", cwb.aa, cwb.t, cwb.ki);
+
+      public static final Codec<eas.a> c = aut.a(eas.a::values);
+      private static final IntFunction<eas.a> d = asq.a(Enum::ordinal, values(), asq.a.a);
+      private final String e;
+      private final dip f;
+      private final dip g;
+      private final dip h;
+
+      private a(String $$0, cvz $$1, cvz $$2, cvz $$3) {
+         this.e = $$0;
+         this.f = $$1.o();
+         this.g = $$2.o();
+         this.h = $$3.o();
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      public static eas.a a(int $$0) {
+         return d.apply($$0);
+      }
+
+      public dip b() {
+         return this.f;
+      }
+
+      public dip d() {
+         return this.g;
+      }
+
+      public dip e() {
+         return this.h;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

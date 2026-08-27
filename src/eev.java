@@ -1,69 +1,162 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Comparator;
+import java.util.Optional;
 
 public class eev {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
+   private static final int a = 3;
+   private static final int b = 128;
+   private static final int c = 16;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = -1;
+   private static final int h = 4;
+   private static final int i = -1;
+   private static final int j = 3;
+   private static final int k = -1;
+   private static final int l = 2;
+   private static final int m = -1;
+   private final amp n;
 
-   public eev(ees.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(eeq.c).toFile();
-      this.c.mkdirs();
+   public eev(amp $$0) {
+      this.n = $$0;
    }
 
-   public void a(cdz $$0) {
-      try {
-         sd $$1 = $$0.f(new sd());
-         Path $$2 = this.c.toPath();
-         Path $$3 = Files.createTempFile($$2, $$0.cx() + "-", ".dat");
-         sq.a($$1, $$3);
-         Path $$4 = $$2.resolve($$0.cx() + ".dat");
-         Path $$5 = $$2.resolve($$0.cx() + ".dat_old");
-         ac.a($$4, $$3, $$5);
-      } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.ad().getString());
-      }
+   public Optional<l.a> a(hv $$0, boolean $$1, dkg $$2) {
+      bww $$3 = this.n.x();
+      int $$4 = $$1 ? 16 : 128;
+      $$3.a(this.n, $$0, $$4);
+      Optional<bwx> $$5 = $$3.b($$0x -> $$0x.a(bxa.r), $$0, $$4, bww.b.c)
+         .filter($$1x -> $$2.a($$1x.f()))
+         .sorted(Comparator.<bwx>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
+         .filter($$0x -> this.n.a_($$0x.f()).b(djf.H))
+         .findFirst();
+      return $$5.map($$0x -> {
+         hv $$1x = $$0x.f();
+         this.n.k().a(amu.f, new csf($$1x), 3, $$1x);
+         dip $$2x = this.n.a_($$1x);
+         return l.a($$1x, $$2x.c(djf.H), 21, ia.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
+      });
    }
 
-   @Nullable
-   public sd b(cdz $$0) {
-      sd $$1 = null;
+   public Optional<l.a> a(hv $$0, ia.a $$1) {
+      ia $$2 = ia.a(ia.b.a, $$1);
+      double $$3 = -1.0;
+      hv $$4 = null;
+      double $$5 = -1.0;
+      hv $$6 = null;
+      dkg $$7 = this.n.D_();
+      int $$8 = Math.min(this.n.ak(), this.n.J_() + this.n.j()) - 1;
+      hv.a $$9 = $$0.j();
 
-      try {
-         File $$2 = new File(this.c, $$0.cx() + ".dat");
-         if ($$2.exists() && $$2.isFile()) {
-            $$1 = sq.a($$2.toPath(), sm.a());
+      for (hv.a $$10 : hv.a($$0, 16, ia.f, ia.d)) {
+         int $$11 = Math.min($$8, this.n.a(dny.a.e, $$10.u(), $$10.w()));
+         int $$12 = 1;
+         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
+            $$10.c($$2.g(), 1);
+
+            for (int $$13 = $$11; $$13 >= this.n.J_(); $$13--) {
+               $$10.q($$13);
+               if (this.a($$10)) {
+                  int $$14 = $$13;
+
+                  while ($$13 > this.n.J_() && this.a($$10.c(ia.a))) {
+                     $$13--;
+                  }
+
+                  if ($$13 + 4 <= $$8) {
+                     int $$15 = $$14 - $$13;
+                     if ($$15 <= 0 || $$15 >= 3) {
+                        $$10.q($$13);
+                        if (this.a($$10, $$9, $$2, 0)) {
+                           double $$16 = $$0.j($$10);
+                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
+                              $$3 = $$16;
+                              $$4 = $$10.i();
+                           }
+
+                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
+                              $$5 = $$16;
+                              $$6 = $$10.i();
+                           }
+                        }
+                     }
+                  }
+               }
+            }
          }
-      } catch (Exception var4) {
-         b.warn("Failed to load player data for {}", $$0.ad().getString());
       }
 
-      if ($$1 != null) {
-         int $$4 = ss.b($$1, -1);
-         $$0.g(auw.b.a(this.a, $$1, $$4));
+      if ($$3 == -1.0 && $$5 != -1.0) {
+         $$4 = $$6;
+         $$3 = $$5;
       }
 
-      return $$1;
-   }
+      if ($$3 == -1.0) {
+         int $$17 = Math.max(this.n.J_() - -1, 70);
+         int $$18 = $$8 - 9;
+         if ($$18 < $$17) {
+            return Optional.empty();
+         }
 
-   public String[] a() {
-      String[] $$0 = this.c.list();
-      if ($$0 == null) {
-         $$0 = new String[0];
-      }
+         $$4 = new hv($$0.u(), aty.a($$0.v(), $$17, $$18), $$0.w()).i();
+         ia $$19 = $$2.h();
+         if (!$$7.a($$4)) {
+            return Optional.empty();
+         }
 
-      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-         if ($$0[$$1].endsWith(".dat")) {
-            $$0[$$1] = $$0[$$1].substring(0, $$0[$$1].length() - 4);
+         for (int $$20 = -1; $$20 < 2; $$20++) {
+            for (int $$21 = 0; $$21 < 2; $$21++) {
+               for (int $$22 = -1; $$22 < 3; $$22++) {
+                  dip $$23 = $$22 < 0 ? cwb.co.o() : cwb.a.o();
+                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
+                  this.n.b($$9, $$23);
+               }
+            }
          }
       }
 
-      return $$0;
+      for (int $$24 = -1; $$24 < 3; $$24++) {
+         for (int $$25 = -1; $$25 < 4; $$25++) {
+            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
+               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
+               this.n.a($$9, cwb.co.o(), 3);
+            }
+         }
+      }
+
+      dip $$26 = cwb.ed.o().a(dbc.b, $$1);
+
+      for (int $$27 = 0; $$27 < 2; $$27++) {
+         for (int $$28 = 0; $$28 < 3; $$28++) {
+            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
+            this.n.a($$9, $$26, 18);
+         }
+      }
+
+      return Optional.of(new l.a($$4.i(), 2, 3));
+   }
+
+   private boolean a(hv.a $$0) {
+      dip $$1 = this.n.a_($$0);
+      return $$1.r() && $$1.u().c();
+   }
+
+   private boolean a(hv $$0, hv.a $$1, ia $$2, int $$3) {
+      ia $$4 = $$2.h();
+
+      for (int $$5 = -1; $$5 < 3; $$5++) {
+         for (int $$6 = -1; $$6 < 4; $$6++) {
+            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
+            if ($$6 < 0 && !this.n.a_($$1).e()) {
+               return false;
+            }
+
+            if ($$6 >= 0 && !this.a($$1)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 }

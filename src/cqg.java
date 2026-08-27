@@ -1,52 +1,60 @@
-public class cqg extends cpz {
-   public cqg(cpz.a $$0, bla... $$1) {
-      super($$0, cqa.b, $$1);
+public class cqg extends cpd {
+   public cqg(cpb $$0) {
+      super($$0);
    }
 
-   @Override
-   public int a(int $$0) {
-      return $$0 * 10;
-   }
+   public boolean a(cia $$0, csy $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
 
-   @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public int a() {
-      return 2;
-   }
-
-   public static void a(bll $$0, csf $$1, hx $$2, int $$3) {
-      if ($$0.aC()) {
-         dhn $$4 = cvh.kI.o();
-         int $$5 = Math.min(16, 2 + $$3);
-         hx.a $$6 = new hx.a();
-
-         for (hx $$7 : hx.a($$2.b(-$$5, -1, -$$5), $$2.b($$5, -1, $$5))) {
-            if ($$7.a($$0.dl(), (double)$$5)) {
-               $$6.d($$7.u(), $$7.v() + 1, $$7.w());
-               dhn $$8 = $$1.a_($$6);
-               if ($$8.i()) {
-                  dhn $$9 = $$1.a_($$7);
-                  if ($$9 == cyk.b() && $$4.a((csi)$$1, $$7) && $$1.a($$4, $$7, eke.a())) {
-                     $$1.b($$7, $$4);
-                     $$1.a($$7, cvh.kI, atq.a($$0.eh(), 60, 120));
-                  }
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cmh $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if ($$7.a(cwb.cf.k()) && !$$4) {
+               $$4 = true;
+            } else if ($$7.a(cwb.cg.k()) && !$$3) {
+               $$3 = true;
+            } else if ($$7.a(arz.O) && !$$2) {
+               $$2 = true;
+            } else {
+               if (!$$7.a(cmk.pn) || $$5) {
+                  return false;
                }
+
+               $$5 = true;
             }
          }
       }
+
+      return $$2 && $$4 && $$3 && $$5;
+   }
+
+   public cmh a(cia $$0, is $$1) {
+      cmh $$2 = new cmh(cmk.vN, 1);
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cmh $$4 = $$0.a($$3);
+         if (!$$4.b()) {
+            dea $$5 = dea.a($$4.d());
+            if ($$5 != null) {
+               cnr.a($$2, $$5.b());
+               break;
+            }
+         }
+      }
+
+      return $$2;
    }
 
    @Override
-   public boolean a(cpz $$0) {
-      return super.a($$0) && $$0 != cqd.i;
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 2 && $$1 >= 2;
+   }
+
+   @Override
+   public cpp<?> ar_() {
+      return cpp.n;
    }
 }

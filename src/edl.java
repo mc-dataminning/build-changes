@@ -1,83 +1,166 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.util.function.LongPredicate;
 
 public abstract class edl {
-   protected css a;
-   protected bln b;
-   protected final Int2ObjectMap<edk> c = new Int2ObjectOpenHashMap();
-   protected int d;
-   protected int e;
-   protected int f;
-   protected boolean g;
-   protected boolean h;
-   protected boolean i;
-   protected boolean j;
+   public static final long e = Long.MAX_VALUE;
+   private static final int a = 255;
+   protected final int f;
+   private final edp b;
+   private final Long2ByteMap c;
+   private volatile boolean d;
 
-   public void a(css $$0, bln $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c.clear();
-      this.d = atq.d($$1.dh() + 1.0F);
-      this.e = atq.d($$1.di() + 1.0F);
-      this.f = atq.d($$1.dh() + 1.0F);
+   protected edl(int $$0, int $$1, final int $$2) {
+      if ($$0 >= 254) {
+         throw new IllegalArgumentException("Level count must be < 254.");
+      } else {
+         this.f = $$0;
+         this.b = new edp($$0, $$1);
+         this.c = new Long2ByteOpenHashMap($$2, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$2) {
+                  super.rehash($$0);
+               }
+            }
+         };
+         this.c.defaultReturnValue((byte)-1);
+      }
    }
 
-   public void b() {
-      this.a = null;
-      this.b = null;
+   protected void e(long $$0) {
+      int $$1 = this.c.remove($$0) & 255;
+      if ($$1 != 255) {
+         int $$2 = this.c($$0);
+         int $$3 = this.a($$2, $$1);
+         this.b.a($$0, $$3, this.f);
+         this.d = !this.b.b();
+      }
    }
 
-   protected edk b(hx $$0) {
-      return this.b($$0.u(), $$0.v(), $$0.w());
+   public void a(LongPredicate $$0) {
+      LongList $$1 = new LongArrayList();
+      this.c.keySet().forEach($$2 -> {
+         if ($$0.test($$2)) {
+            $$1.add($$2);
+         }
+      });
+      $$1.forEach(this::e);
    }
 
-   protected edk b(int $$0, int $$1, int $$2) {
-      return (edk)this.c.computeIfAbsent(edk.b($$0, $$1, $$2), $$3 -> new edk($$0, $$1, $$2));
+   private int a(int $$0, int $$1) {
+      return Math.min(Math.min($$0, $$1), this.f - 1);
    }
 
-   public abstract edk a();
-
-   public abstract edq a(double var1, double var3, double var5);
-
-   protected edq a(edk $$0) {
-      return new edq($$0);
+   protected void f(long $$0) {
+      this.a($$0, $$0, this.f - 1, false);
    }
 
-   public abstract int a(edk[] var1, edk var2);
-
-   public abstract edi a(crl var1, int var2, int var3, int var4, bln var5);
-
-   public abstract edi a(crl var1, int var2, int var3, int var4);
-
-   public void a(boolean $$0) {
-      this.g = $$0;
+   protected void a(long $$0, long $$1, int $$2, boolean $$3) {
+      this.a($$0, $$1, $$2, this.c($$1), this.c.get($$1) & 255, $$3);
+      this.d = !this.b.b();
    }
 
-   public void b(boolean $$0) {
-      this.h = $$0;
+   private void a(long $$0, long $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if (!this.a($$1)) {
+         $$2 = aty.a($$2, 0, this.f - 1);
+         $$3 = aty.a($$3, 0, this.f - 1);
+         boolean $$6 = $$4 == 255;
+         if ($$6) {
+            $$4 = $$3;
+         }
+
+         int $$7;
+         if ($$5) {
+            $$7 = Math.min($$4, $$2);
+         } else {
+            $$7 = aty.a(this.a($$1, $$0, $$2), 0, this.f - 1);
+         }
+
+         int $$9 = this.a($$3, $$4);
+         if ($$3 != $$7) {
+            int $$10 = this.a($$3, $$7);
+            if ($$9 != $$10 && !$$6) {
+               this.b.a($$1, $$9, $$10);
+            }
+
+            this.b.a($$1, $$10);
+            this.c.put($$1, (byte)$$7);
+         } else if (!$$6) {
+            this.b.a($$1, $$9, this.f);
+            this.c.remove($$1);
+         }
+      }
    }
 
-   public void c(boolean $$0) {
-      this.i = $$0;
+   protected final void b(long $$0, long $$1, int $$2, boolean $$3) {
+      int $$4 = this.c.get($$1) & 255;
+      int $$5 = aty.a(this.b($$0, $$1, $$2), 0, this.f - 1);
+      if ($$3) {
+         this.a($$0, $$1, $$5, this.c($$1), $$4, $$3);
+      } else {
+         boolean $$6 = $$4 == 255;
+         int $$7;
+         if ($$6) {
+            $$7 = aty.a(this.c($$1), 0, this.f - 1);
+         } else {
+            $$7 = $$4;
+         }
+
+         if ($$5 == $$7) {
+            this.a($$0, $$1, this.f - 1, $$6 ? $$7 : this.c($$1), $$4, $$3);
+         }
+      }
    }
 
-   public void d(boolean $$0) {
-      this.j = $$0;
+   protected final boolean b() {
+      return this.d;
    }
 
-   public boolean d() {
-      return this.g;
+   protected final int b(int $$0) {
+      if (this.b.b()) {
+         return $$0;
+      } else {
+         while (!this.b.b() && $$0 > 0) {
+            $$0--;
+            long $$1 = this.b.a();
+            int $$2 = aty.a(this.c($$1), 0, this.f - 1);
+            int $$3 = this.c.remove($$1) & 255;
+            if ($$3 < $$2) {
+               this.a($$1, $$3);
+               this.a($$1, $$3, true);
+            } else if ($$3 > $$2) {
+               this.a($$1, this.f - 1);
+               if ($$3 != this.f - 1) {
+                  this.b.a($$1, this.a(this.f - 1, $$3));
+                  this.c.put($$1, (byte)$$3);
+               }
+
+               this.a($$1, $$2, false);
+            }
+         }
+
+         this.d = !this.b.b();
+         return $$0;
+      }
    }
 
-   public boolean e() {
-      return this.h;
+   public int c() {
+      return this.c.size();
    }
 
-   public boolean f() {
-      return this.i;
+   protected boolean a(long $$0) {
+      return $$0 == Long.MAX_VALUE;
    }
 
-   public boolean g() {
-      return this.j;
-   }
+   protected abstract int a(long var1, long var3, int var5);
+
+   protected abstract void a(long var1, int var3, boolean var4);
+
+   protected abstract int c(long var1);
+
+   protected abstract void a(long var1, int var3);
+
+   protected abstract int b(long var1, long var3, int var5);
 }

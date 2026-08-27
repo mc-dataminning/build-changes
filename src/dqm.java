@@ -1,89 +1,58 @@
 import com.mojang.serialization.Codec;
 
-public class dqm extends dqa<dsl> {
-   public dqm(Codec<dsl> $$0) {
+public class dqm extends drc<dtn> {
+   public dqm(Codec<dtn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dqc<dsl> $$0) {
-      hx $$1 = $$0.e();
-      atw $$2 = $$0.d();
-      csz $$3 = $$0.b();
-
-      while ($$3.t($$1) && $$1.v() > $$3.J_() + 2) {
-         $$1 = $$1.d();
-      }
-
-      if (!$$3.a_($$1).a(cvh.dP)) {
+   public boolean a(dre<dtn> $$0) {
+      hv $$1 = $$0.e();
+      ctt $$2 = $$0.b();
+      auf $$3 = $$0.d();
+      if ($$1.v() > $$2.A_() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(cwb.G) && !$$2.a_($$1.d()).a(cwb.G)) {
          return false;
       } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
+         boolean $$4 = false;
+
+         for (ia $$5 : ia.values()) {
+            if ($$5 != ia.a && $$2.a_($$1.a($$5)).a(cwb.iC)) {
+               $$4 = true;
+               break;
+            }
          }
 
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = atq.f($$7);
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, cwb.mW.o(), 2);
 
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)atq.a($$9) - 0.25F;
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
 
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)atq.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dhn $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.i() || b($$13) || $$13.a(cvh.dP) || $$13.a(cvh.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), cvh.iC.o());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.i() || b($$13) || $$13.a(cvh.dP) || $$13.a(cvh.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), cvh.iC.o());
+               if ($$8 >= 1) {
+                  hv $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  dip $$10 = $$2.a_($$9);
+                  if ($$10.i() || $$10.a(cwb.G) || $$10.a(cwb.iC) || $$10.a(cwb.dO)) {
+                     for (ia $$11 : ia.values()) {
+                        dip $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(cwb.mW)) {
+                           $$2.a($$9, cwb.mW.o(), 2);
+                           break;
                         }
                      }
                   }
                }
             }
+
+            return true;
          }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               hx $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dhn $$19 = $$3.a_($$17);
-                  if (!$$19.i() && !b($$19) && !$$19.a(cvh.dP) && !$$19.a(cvh.dO) && !$$19.a(cvh.iC)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, cvh.iC.o());
-                  $$17 = $$17.d();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
-            }
-         }
-
-         return true;
       }
    }
 }

@@ -1,42 +1,61 @@
-public class ezw extends faz {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final uv c = uv.c("credits_and_attribution.screen.title");
-   private static final uv k = uv.c("credits_and_attribution.button.credits");
-   private static final uv l = uv.c("credits_and_attribution.button.attribution");
-   private static final uv m = uv.c("credits_and_attribution.button.licenses");
-   private final faz n;
-   private final eyo o = new eyo(this);
+import java.util.function.Consumer;
 
-   public ezw(faz $$0) {
-      super(c);
-      this.n = $$0;
+public class ezw implements ezt {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
+
+   public ezw(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public ezw(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public static ezw a(int $$0) {
+      return new ezw($$0, 0);
+   }
+
+   public static ezw b(int $$0) {
+      return new ezw(0, $$0);
    }
 
    @Override
-   protected void aQ_() {
-      this.o.a(new ewl(this.m(), this.i));
-      eys $$0 = this.o.c(eys.d()).a(8);
-      $$0.c().b();
-      $$0.a(eve.a(k, $$0x -> this.l()).a(210).a());
-      $$0.a(eve.a(l, ezr.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
-      $$0.a(eve.a(m, ezr.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
-      this.o.b(eve.a(uu.d, $$0x -> this.aG_()).a());
-      this.o.a();
-      this.o.a(this::d);
+   public void f(int $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void c() {
-      this.o.a();
-   }
-
-   private void l() {
-      this.f.a(new fbh(false, () -> this.f.a(this)));
+   public void g(int $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void aG_() {
-      this.f.a(this.n);
+   public int p() {
+      return this.a;
+   }
+
+   @Override
+   public int r() {
+      return this.b;
+   }
+
+   @Override
+   public int k() {
+      return this.c;
+   }
+
+   @Override
+   public int i() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<ewf> $$0) {
    }
 }

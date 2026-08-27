@@ -1,121 +1,45 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.google.common.base.Splitter;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-public class gek implements gea {
-   protected final List<frw> a;
-   protected final Map<ib, List<frw>> b;
-   protected final boolean c;
-   protected final boolean d;
-   protected final boolean e;
-   protected final gbz f;
-   protected final fsi g;
-   protected final fsg h;
+public class gek {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Splitter a = Splitter.on('/');
 
-   public gek(List<frw> $$0, Map<ib, List<frw>> $$1, boolean $$2, boolean $$3, boolean $$4, gbz $$5, fsi $$6, fsg $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$4;
-      this.e = $$3;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-   }
+   public static Path a(Path $$0, String $$1) {
+      Path $$2 = $$0.resolve("objects");
+      aop.a $$3 = aop.c();
+      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
 
-   @Override
-   public List<frw> a(@Nullable dhn $$0, @Nullable ib $$1, atw $$2) {
-      return $$1 == null ? this.a : this.b.get($$1);
-   }
-
-   @Override
-   public boolean a() {
-      return this.c;
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public boolean c() {
-      return this.e;
-   }
-
-   @Override
-   public boolean d() {
-      return false;
-   }
-
-   @Override
-   public gbz e() {
-      return this.f;
-   }
-
-   @Override
-   public fsi f() {
-      return this.g;
-   }
-
-   @Override
-   public fsg g() {
-      return this.h;
-   }
-
-   public static class a {
-      private final List<frw> a = Lists.newArrayList();
-      private final Map<ib, List<frw>> b = Maps.newEnumMap(ib.class);
-      private final fsg c;
-      private final boolean d;
-      private gbz e;
-      private final boolean f;
-      private final boolean g;
-      private final fsi h;
-
-      public a(fsb $$0, fsg $$1, boolean $$2) {
-         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
-      }
-
-      private a(boolean $$0, boolean $$1, boolean $$2, fsi $$3, fsg $$4) {
-         for (ib $$5 : ib.values()) {
-            this.b.put($$5, Lists.newArrayList());
+      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
+         JsonObject $$6 = ato.a($$5);
+         JsonObject $$7 = ato.a($$6, "objects", null);
+         if ($$7 != null) {
+            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
+               JsonObject $$9 = (JsonObject)$$8.getValue();
+               String $$10 = $$8.getKey();
+               List<String> $$11 = a.splitToList($$10);
+               String $$12 = ato.i($$9, "hash");
+               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
+               $$3.a($$11, $$13);
+            }
          }
-
-         this.c = $$4;
-         this.d = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.h = $$3;
+      } catch (JsonParseException var17) {
+         b.error("Unable to parse resource index file: {}", $$4);
+      } catch (IOException var18) {
+         b.error("Can't open the resource index file: {}", $$4);
       }
 
-      public gek.a a(ib $$0, frw $$1) {
-         this.b.get($$0).add($$1);
-         return this;
-      }
-
-      public gek.a a(frw $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public gek.a a(gbz $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public gek.a a() {
-         return this;
-      }
-
-      public gea b() {
-         if (this.e == null) {
-            throw new RuntimeException("Missing particle!");
-         } else {
-            return new gek(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
-         }
-      }
+      return $$3.a("index-" + $$1).getPath("/");
    }
 }

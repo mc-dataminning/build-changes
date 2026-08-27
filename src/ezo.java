@@ -1,91 +1,163 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class ezo {
-   private static final uv b = uv.c("gui.banned.title.temporary").a(n.r);
-   private static final uv c = uv.c("gui.banned.title.permanent").a(n.r);
-   public static final uv a = uv.c("gui.banned.name.title").a(n.r);
-   private static final uv d = uv.c("gui.banned.skin.title").a(n.r);
-   private static final uv e = uv.a("gui.banned.skin.description", uv.b("https://aka.ms/mcjavamoderation"));
+public class ezo extends ezm {
+   private final ezo.b c;
+   private final List<ezo.a> d = new ArrayList<>();
+   private final ezu e = ezu.i();
 
-   public static ezr a(BooleanConsumer $$0, BanDetails $$1) {
-      return new ezr($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", uu.m, true);
+   public ezo(int $$0, int $$1, ezo.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
    }
 
-   public static ezr a(Runnable $$0) {
-      String $$1 = "https://aka.ms/mcjavamoderation";
-      return new ezr($$1x -> {
-         if ($$1x) {
-            ac.i().a("https://aka.ms/mcjavamoderation");
+   public ezo(int $$0, int $$1, int $$2, int $$3, ezo.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
+
+         for (ezo.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
          }
 
-         $$0.run();
-      }, d, e, "https://aka.ms/mcjavamoderation", uu.m, true);
-   }
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<ezo.a> $$5 = this.d.iterator();
+         ezo.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
 
-   public static ezr a(String $$0, Runnable $$1) {
-      String $$2 = "https://aka.ms/mcjavamoderation";
-      return new ezr($$1x -> {
-         if ($$1x) {
-            ac.i().a("https://aka.ms/mcjavamoderation");
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               ezo.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
          }
 
-         $$1.run();
-      }, a, uv.a("gui.banned.name.description", uv.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", uu.m, true);
-   }
+         int $$9 = this.c.d(this);
 
-   private static uv a(BanDetails $$0) {
-      return f($$0) ? b : c;
-   }
-
-   private static uv b(BanDetails $$0) {
-      return uv.a("gui.banned.description", c($$0), d($$0), uv.b("https://aka.ms/mcjavamoderation"));
-   }
-
-   private static uv c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         fmj $$4 = fmj.a($$3);
-         uv $$5;
-         if ($$4 != null) {
-            $$5 = uy.a($$4.a().f(), vs.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = uv.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
-         } else {
-            $$5 = uv.a("gui.banned.description.reason_id", $$3).a(n.r);
+         for (ezo.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
          }
 
-         return uv.a("gui.banned.description.reason", $$5);
-      } else {
-         return uv.c("gui.banned.description.unknownreason");
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
       }
    }
 
-   private static uv d(BanDetails $$0) {
-      if (f($$0)) {
-         uv $$1 = e($$0);
-         return uv.a("gui.banned.description.temporary", uv.a("gui.banned.description.temporary.duration", $$1).a(n.r));
-      } else {
-         return uv.c("gui.banned.description.permanent").a(n.r);
+   @Override
+   public void b(Consumer<ezt> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
+   }
+
+   public ezu b() {
+      return this.e.g();
+   }
+
+   public ezu c() {
+      return this.e;
+   }
+
+   public <T extends ezt> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends ezt> T a(T $$0, ezu $$1) {
+      this.d.add(new ezo.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends ezt> T a(T $$0, Consumer<ezu> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
+   }
+
+   static class a extends ezm.a {
+      protected a(ezt $$0, ezu $$1) {
+         super($$0, $$1);
       }
    }
 
-   private static uv e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return uu.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? uu.c($$1.toMinutes()) : uu.b($$1.toHours());
-      }
-   }
+   public static enum b {
+      a,
+      b;
 
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
+      int a(ezt $$0) {
+         return switch (this) {
+            case a -> $$0.k();
+            case b -> $$0.i();
+         };
+      }
+
+      int a(ezo.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(ezt $$0) {
+         return switch (this) {
+            case a -> $$0.i();
+            case b -> $$0.k();
+         };
+      }
+
+      int b(ezo.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(ezo.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(ezo.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(ezt $$0) {
+         return switch (this) {
+            case a -> $$0.p();
+            case b -> $$0.r();
+         };
+      }
+
+      int d(ezt $$0) {
+         return switch (this) {
+            case a -> $$0.r();
+            case b -> $$0.p();
+         };
+      }
    }
 }

@@ -1,59 +1,66 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import org.apache.commons.lang3.Validate;
 
-public class ggv implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bfe d;
-   @Nullable
-   private CompletableFuture<Optional<ggr>> e;
+public class ggv implements JsonDeserializer<ggu> {
+   private static final bio a = bim.a(1.0F);
 
-   private ggv(bfe $$0) {
-      this.d = $$0;
+   public ggu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+      JsonObject $$3 = ato.m($$0, "entry");
+      boolean $$4 = ato.a($$3, "replace", false);
+      String $$5 = ato.a($$3, "subtitle", null);
+      List<ggt> $$6 = this.a($$3);
+      return new ggu($$6, $$4, $$5);
    }
 
-   public static CompletableFuture<Optional<ggv>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bfe $$1 = bfe.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new ggv($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
-         }
-      }, ac.f());
-   }
+   private List<ggt> a(JsonObject $$0) {
+      List<ggt> $$1 = Lists.newArrayList();
+      if ($$0.has("sounds")) {
+         JsonArray $$2 = ato.v($$0, "sounds");
 
-   public CompletableFuture<Optional<ggs>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bfe.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new ggr($$1, ac.f()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
+         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+            JsonElement $$4 = $$2.get($$3);
+            if (ato.a($$4)) {
+               String $$5 = ato.a($$4, "sound");
+               $$1.add(new ggt($$5, a, a, 1, ggt.a.a, false, false, 16));
+            } else {
+               $$1.add(this.b(ato.m($$4, "sound")));
             }
-         }, ac.f());
+         }
       }
 
-      return this.e.thenApply($$0 -> $$0.map(ggr::a));
+      return $$1;
    }
 
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(ggr::close));
+   private ggt b(JsonObject $$0) {
+      String $$1 = ato.i($$0, "name");
+      ggt.a $$2 = this.a($$0, ggt.a.a);
+      float $$3 = ato.a($$0, "volume", 1.0F);
+      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
+      float $$4 = ato.a($$0, "pitch", 1.0F);
+      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
+      int $$5 = ato.a($$0, "weight", 1);
+      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
+      boolean $$6 = ato.a($$0, "preload", false);
+      boolean $$7 = ato.a($$0, "stream", false);
+      int $$8 = ato.a($$0, "attenuation_distance", 16);
+      return new ggt($$1, bim.a($$3), bim.a($$4), $$5, $$2, $$7, $$6, $$8);
+   }
+
+   private ggt.a a(JsonObject $$0, ggt.a $$1) {
+      ggt.a $$2 = $$1;
+      if ($$0.has("type")) {
+         $$2 = ggt.a.a(ato.i($$0, "type"));
+         Validate.notNull($$2, "Invalid type", new Object[0]);
       }
+
+      return $$2;
    }
 }

@@ -1,20 +1,30 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+public class efn {
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-@FunctionalInterface
-interface efn {
-   efn b = ($$0, $$1) -> false;
-   efn c = ($$0, $$1) -> true;
-
-   boolean expand(efc var1, Consumer<efu> var2);
-
-   default efn and(efn $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
+   public efn(int $$0) {
+      this($$0, a);
    }
 
-   default efn or(efn $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
+   public efn(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public boolean a() {
+      return !this.c.equals(a);
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public boolean a(efn $$0) {
+      return this.b().equals($$0.b());
    }
 }

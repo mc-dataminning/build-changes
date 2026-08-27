@@ -1,47 +1,60 @@
-public class fhv<T extends bkv> extends fid<T> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String f = "lower_jaw";
-   private final fkt g;
-   private final fkt h;
-   private final fkt i;
-   private final fkt j;
+import java.util.function.Function;
 
-   public fhv(fkt $$0) {
-      this.g = $$0;
-      this.h = $$0.b("base");
-      this.i = $$0.b("upper_jaw");
-      this.j = $$0.b("lower_jaw");
+public abstract class fhv<E extends blf> extends fiy<E> {
+   private final boolean a;
+   private final float b;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
+
+   protected fhv(boolean $$0, float $$1, float $$2) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
    }
 
-   public static fkz b() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      $$1.a("base", fky.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), fkv.a(-5.0F, 24.0F, -5.0F));
-      fky $$2 = fky.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$1.a("upper_jaw", $$2, fkv.a(1.5F, 24.0F, -4.0F));
-      $$1.a("lower_jaw", $$2, fkv.a(-1.5F, 24.0F, 4.0F, 0.0F, (float) Math.PI, 0.0F));
-      return fkz.a($$0, 64, 32);
+   protected fhv(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this(fsq::e, $$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected fhv(Function<agt, fsq> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+   }
+
+   protected fhv() {
+      this(false, 5.0F, 2.0F);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$1 * 2.0F;
-      if ($$6 > 1.0F) {
-         $$6 = 1.0F;
+   public void a(epd $$0, eph $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         if (this.a) {
+            float $$8 = 1.5F / this.g;
+            $$0.b($$8, $$8, $$8);
+         }
+
+         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
+         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+         $$0.a();
+         float $$9 = 1.0F / this.h;
+         $$0.b($$9, $$9, $$9);
+         $$0.a(0.0F, this.i / 16.0F, 0.0F);
+         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+      } else {
+         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       }
-
-      $$6 = 1.0F - $$6 * $$6 * $$6;
-      this.i.g = (float) Math.PI - $$6 * 0.35F * (float) Math.PI;
-      this.j.g = (float) Math.PI + $$6 * 0.35F * (float) Math.PI;
-      float $$7 = ($$1 + atq.a($$1 * 2.7F)) * 0.6F * 12.0F;
-      this.i.c = 24.0F - $$7;
-      this.j.c = this.i.c;
-      this.h.c = this.i.c;
    }
 
-   @Override
-   public fkt a() {
-      return this.g;
-   }
+   protected abstract Iterable<fly> a();
+
+   protected abstract Iterable<fly> b();
 }

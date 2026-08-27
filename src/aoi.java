@@ -1,181 +1,148 @@
-import com.google.common.base.Splitter;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.FileStore;
-import java.nio.file.FileSystem;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.NotDirectoryException;
 import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.WatchService;
-import java.nio.file.attribute.UserPrincipalLookupService;
-import java.nio.file.spi.FileSystemProvider;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class aoi extends FileSystem {
-   private static final Set<String> b = Set.of("basic");
-   public static final String a = "/";
-   private static final Splitter c = Splitter.on('/');
-   private final FileStore d;
-   private final FileSystemProvider e = new aoh();
-   private final aog f;
+public class aoi extends aoa {
+   private static final Logger c = LogUtils.getLogger();
+   private static final Joiner d = Joiner.on("/");
+   private final Path e;
 
-   aoi(String $$0, aoi.b $$1) {
-      this.d = new aof($$0);
-      this.f = a($$1, this, "", null);
+   public aoi(String $$0, Path $$1, boolean $$2) {
+      super($$0, $$2);
+      this.e = $$1;
    }
 
-   private static aog a(aoi.b $$0, aoi $$1, String $$2, @Nullable aog $$3) {
-      Object2ObjectOpenHashMap<String, aog> $$4 = new Object2ObjectOpenHashMap();
-      aog $$5 = new aog($$1, $$2, $$3, new aoj.a($$4));
-      $$0.b.forEach(($$3x, $$4x) -> $$4.put($$3x, new aog($$1, $$3x, $$5, new aoj.b($$4x))));
-      $$0.a.forEach(($$3x, $$4x) -> $$4.put($$3x, a($$4x, $$1, $$3x, $$5)));
-      $$4.trim();
-      return $$5;
+   @Nullable
+   @Override
+   public apk<InputStream> a(String... $$0) {
+      v.a($$0);
+      Path $$1 = v.a(this.e, List.of($$0));
+      return Files.exists($$1) ? apk.create($$1) : null;
+   }
+
+   public static boolean a(Path $$0) {
+      return true;
+   }
+
+   @Nullable
+   @Override
+   public apk<InputStream> a(aoh $$0, agt $$1) {
+      Path $$2 = this.e.resolve($$0.a()).resolve($$1.b());
+      return a($$1, $$2);
+   }
+
+   public static apk<InputStream> a(agt $$0, Path $$1) {
+      return (apk<InputStream>)v.c($$0.a()).get().map($$1x -> {
+         Path $$2 = v.a($$1, $$1x);
+         return b($$2);
+      }, $$1x -> {
+         c.error("Invalid path {}: {}", $$0, $$1x.message());
+         return null;
+      });
+   }
+
+   @Nullable
+   private static apk<InputStream> b(Path $$0) {
+      return Files.exists($$0) && a($$0) ? apk.create($$0) : null;
    }
 
    @Override
-   public FileSystemProvider provider() {
-      return this.e;
+   public void a(aoh $$0, String $$1, String $$2, aog.a $$3) {
+      v.c($$2).get().ifLeft($$3x -> {
+         Path $$4 = this.e.resolve($$0.a()).resolve($$1);
+         a($$1, $$4, $$3x, $$3);
+      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
+   }
+
+   public static void a(String $$0, Path $$1, List<String> $$2, aog.a $$3) {
+      Path $$4 = v.a($$1, $$2);
+
+      try (Stream<Path> $$5 = Files.find($$4, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
+         $$5.forEach($$3x -> {
+            String $$4x = d.join($$1.relativize($$3x));
+            agt $$5x = agt.a($$0, $$4x);
+            if ($$5x == null) {
+               ac.a(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
+            } else {
+               $$3.accept($$5x, apk.create($$3x));
+            }
+         });
+      } catch (NotDirectoryException | NoSuchFileException var10) {
+      } catch (IOException var11) {
+         c.error("Failed to list path {}", $$4, var11);
+      }
+   }
+
+   @Override
+   public Set<String> a(aoh $$0) {
+      Set<String> $$1 = Sets.newHashSet();
+      Path $$2 = this.e.resolve($$0.a());
+
+      try (DirectoryStream<Path> $$3 = Files.newDirectoryStream($$2)) {
+         for (Path $$4 : $$3) {
+            String $$5 = $$4.getFileName().toString();
+            if (agt.h($$5)) {
+               $$1.add($$5);
+            } else {
+               c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$5, this.e);
+            }
+         }
+      } catch (NotDirectoryException | NoSuchFileException var10) {
+      } catch (IOException var11) {
+         c.error("Failed to list path {}", $$2, var11);
+      }
+
+      return $$1;
    }
 
    @Override
    public void close() {
    }
 
-   @Override
-   public boolean isOpen() {
-      return true;
-   }
+   public static class a implements apa.c {
+      private final Path a;
+      private final boolean b;
 
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public String getSeparator() {
-      return "/";
-   }
-
-   @Override
-   public Iterable<Path> getRootDirectories() {
-      return List.of(this.f);
-   }
-
-   @Override
-   public Iterable<FileStore> getFileStores() {
-      return List.of(this.d);
-   }
-
-   @Override
-   public Set<String> supportedFileAttributeViews() {
-      return b;
-   }
-
-   @Override
-   public Path getPath(String $$0, String... $$1) {
-      Stream<String> $$2 = Stream.of($$0);
-      if ($$1.length > 0) {
-         $$2 = Stream.concat($$2, Stream.of($$1));
+      public a(Path $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      String $$3 = $$2.collect(Collectors.joining("/"));
-      if ($$3.equals("/")) {
-         return this.f;
-      } else if ($$3.startsWith("/")) {
-         aog $$4 = this.f;
+      @Override
+      public aog a(String $$0) {
+         return new aoi($$0, this.a, this.b);
+      }
 
-         for (String $$5 : c.split($$3.substring(1))) {
-            if ($$5.isEmpty()) {
-               throw new IllegalArgumentException("Empty paths not allowed");
+      @Override
+      public aog a(String $$0, apa.a $$1) {
+         aog $$2 = this.a($$0);
+         List<String> $$3 = $$1.d();
+         if ($$3.isEmpty()) {
+            return $$2;
+         } else {
+            List<aog> $$4 = new ArrayList<>($$3.size());
+
+            for (String $$5 : $$3) {
+               Path $$6 = this.a.resolve($$5);
+               $$4.add(new aoi($$0, $$6, this.b));
             }
 
-            $$4 = $$4.a($$5);
+            return new aoc($$2, $$4);
          }
-
-         return $$4;
-      } else {
-         aog $$6 = null;
-
-         for (String $$7 : c.split($$3)) {
-            if ($$7.isEmpty()) {
-               throw new IllegalArgumentException("Empty paths not allowed");
-            }
-
-            $$6 = new aog(this, $$7, $$6, aoj.b);
-         }
-
-         if ($$6 == null) {
-            throw new IllegalArgumentException("Empty paths not allowed");
-         } else {
-            return $$6;
-         }
-      }
-   }
-
-   @Override
-   public PathMatcher getPathMatcher(String $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public UserPrincipalLookupService getUserPrincipalLookupService() {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public WatchService newWatchService() {
-      throw new UnsupportedOperationException();
-   }
-
-   public FileStore a() {
-      return this.d;
-   }
-
-   public aog b() {
-      return this.f;
-   }
-
-   public static aoi.a c() {
-      return new aoi.a();
-   }
-
-   public static class a {
-      private final aoi.b a = new aoi.b();
-
-      public aoi.a a(List<String> $$0, String $$1, Path $$2) {
-         aoi.b $$3 = this.a;
-
-         for (String $$4 : $$0) {
-            $$3 = $$3.a.computeIfAbsent($$4, $$0x -> new aoi.b());
-         }
-
-         $$3.b.put($$1, $$2);
-         return this;
-      }
-
-      public aoi.a a(List<String> $$0, Path $$1) {
-         if ($$0.isEmpty()) {
-            throw new IllegalArgumentException("Path can't be empty");
-         } else {
-            int $$2 = $$0.size() - 1;
-            return this.a($$0.subList(0, $$2), $$0.get($$2), $$1);
-         }
-      }
-
-      public FileSystem a(String $$0) {
-         return new aoi($$0, this.a);
-      }
-   }
-
-   static record b(Map<String, aoi.b> a, Map<String, Path> b) {
-
-      public b() {
-         this(new HashMap<>(), new HashMap<>());
       }
    }
 }

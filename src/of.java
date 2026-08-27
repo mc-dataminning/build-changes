@@ -1,40 +1,23 @@
 import java.util.concurrent.CompletableFuture;
 
-public class of extends oi<cao> {
-   public of(kl $$0, CompletableFuture<ii.b> $$1) {
-      super($$0, kd.Q, $$1);
+public class of extends og<dyo> {
+   public of(kk $$0, CompletableFuture<ih.b> $$1) {
+      super($$0, kc.aC, $$1);
    }
 
    @Override
-   protected void a(ii.b $$0) {
-      this.b(art.a)
-         .a(
-            cap.a,
-            cap.b,
-            cap.c,
-            cap.d,
-            cap.e,
-            cap.f,
-            cap.g,
-            cap.h,
-            cap.i,
-            cap.j,
-            cap.k,
-            cap.l,
-            cap.m,
-            cap.n,
-            cap.o,
-            cap.p,
-            cap.q,
-            cap.r,
-            cap.s,
-            cap.t,
-            cap.u,
-            cap.v,
-            cap.w,
-            cap.x,
-            cap.y,
-            cap.z
-         );
+   protected void a(ih.b $$0) {
+      this.b(asc.o).a(dyi.t).a(dyi.u).a(dyi.v).a(dyi.w).a(dyi.x);
+      this.b(asc.p).a(dyi.b).a(dyi.c);
+      this.b(asc.s).a(dyi.m).a(dyi.n);
+      this.b(asc.q).a(dyi.h).a(dyi.i);
+      this.b(asc.r).a(dyi.z).a(dyi.A).a(dyi.C).a(dyi.E).a(dyi.D).a(dyi.y).a(dyi.B);
+      this.b(asc.m).a(dyi.j);
+      this.b(asc.n).a(dyi.j);
+      this.b(asc.a).a(dyi.k);
+      this.b(asc.b).b(asc.s).b(asc.q);
+      this.b(asc.c).a(dyi.d);
+      this.b(asc.d).a(dyi.l);
+      this.b(asc.l).a(dyi.r);
    }
 }

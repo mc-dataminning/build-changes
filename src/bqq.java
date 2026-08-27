@@ -1,53 +1,33 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface bqq<F extends K1, Value> {
-   bum<Value> a();
+public class bqq {
+   private static final int a = 10;
+   private static final int b = 7;
 
-   bun b();
-
-   @Nullable
-   bqp<F, Value> a(bml<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(bum<Value> a) implements bqq<Mu<Unit>, Value> {
-      @Override
-      public bun b() {
-         return bun.b;
-      }
-
-      @Override
-      public bqp<Mu<Unit>, Value> a(bml<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new bqp<>($$0, this.a, Const.create(Unit.INSTANCE));
-      }
+   public static box<bme> a(float $$0) {
+      return a($$0, 10, 7);
    }
 
-   public static record b<Value>(bum<Value> a) implements bqq<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public bun b() {
-         return bun.a;
-      }
+   public static box<bme> a(float $$0, int $$1, int $$2) {
+      return bqz.a((Function<bqz.b<bme>, ? extends App<bqz.c<bme>, brc<bme>>>)($$3 -> $$3.group($$3.c(bux.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               hv $$7 = $$5.dm();
+               elb $$8;
+               if ($$4.b($$7)) {
+                  $$8 = bwq.a($$5, $$1, $$2);
+               } else {
+                  ix $$9 = ix.a($$7);
+                  ix $$10 = bno.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = bwn.a($$5, $$1, $$2, elb.c($$10.q()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = bwq.a($$5, $$1, $$2);
+                  }
+               }
 
-      @Override
-      public bqp<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bml<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new bqp<>($$0, this.a, IdF.create($$1.get()));
-      }
-   }
-
-   public static record c<Value>(bum<Value> a) implements bqq<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public bun b() {
-         return bun.c;
-      }
-
-      @Override
-      public bqp<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bml<?> $$0, Optional<Value> $$1) {
-         return new bqp<>($$0, this.a, OptionalBox.create($$1));
-      }
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new bva($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

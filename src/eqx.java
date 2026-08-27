@@ -1,66 +1,40 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class eqx extends ghw {
-   static final uv b = uv.c("mco.warning");
-   static final uv c = uv.c("mco.info");
-   private final eqx.a v;
-   private final uv w;
-   private final uv x;
-   protected final BooleanConsumer a;
-   private final boolean y;
+public class eqx extends eqz {
+   private static final Logger d = LogUtils.getLogger();
+   public long a;
+   public int b;
+   public eqx.a c = eqx.a.a;
 
-   public eqx(BooleanConsumer $$0, eqx.a $$1, uv $$2, uv $$3, boolean $$4) {
-      super(eta.a);
-      this.a = $$0;
-      this.v = $$1;
-      this.w = $$2;
-      this.x = $$3;
-      this.y = $$4;
-   }
+   public static eqx a(String $$0) {
+      eqx $$1 = new eqx();
 
-   @Override
-   public void aQ_() {
-      if (this.y) {
-         this.d(eve.a(uu.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(8), 100, 20).a());
-         this.d(eve.a(uu.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(8), 100, 20).a());
-      } else {
-         this.d(eve.a(uu.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, h(8), 100, 20).a());
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = esw.a("startDate", $$3, 0L);
+         $$1.b = esw.a("daysLeft", $$3, 0);
+         $$1.c = b(esw.b("subscriptionType", $$3, eqx.a.a.name()));
+      } catch (Exception var4) {
+         d.error("Could not parse Subscription: {}", var4.getMessage());
       }
+
+      return $$1;
    }
 
-   @Override
-   public uv h() {
-      return uu.b(this.v.d, this.w, this.x);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.a.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   private static eqx.a b(String $$0) {
+      try {
+         return eqx.a.valueOf($$0);
+      } catch (Exception var2) {
+         return eqx.a.a;
       }
-   }
-
-   @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.v.d, this.g / 2, h(2), this.v.c);
-      $$0.a(this.i, this.w, this.g / 2, h(4), -1);
-      $$0.a(this.i, this.x, this.g / 2, h(6), -1);
    }
 
    public static enum a {
-      a(eqx.b, -65536),
-      b(eqx.c, 8226750);
-
-      public final int c;
-      public final uv d;
-
-      private a(uv $$0, int $$1) {
-         this.d = $$0;
-         this.c = $$1;
-      }
+      a,
+      b;
    }
 }

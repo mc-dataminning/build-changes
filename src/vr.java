@@ -1,73 +1,129 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.SignatureException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface vr {
-   Logger a = LogUtils.getLogger();
-   vr b = $$0 -> {
-      if ($$0.h()) {
-         a.error("Received chat message with signature from {}, but they have no chat session initialized", $$0.f());
-         return false;
-      } else {
-         return true;
-      }
-   };
-   vr c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.f());
-      return false;
-   };
+public record vr(vw d, @Nullable vn e, vu f, @Nullable vb g, vf h) {
+   public static final MapCodec<vr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               vw.a.fieldOf("link").forGetter(vr::j),
+               vn.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
+               vu.a.forGetter(vr::l),
+               vd.a.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
+               vf.a.optionalFieldOf("filter_mask", vf.c).forGetter(vr::n)
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new vr($$0x, (vn)$$1.orElse(null), $$2, (vb)$$3.orElse(null), $$4))
+   );
+   private static final UUID i = ac.d;
+   public static final Duration b = Duration.ofMinutes(5L);
+   public static final Duration c = b.plus(Duration.ofMinutes(2L));
 
-   boolean updateAndValidate(vl var1);
+   public static vr a(String $$0) {
+      return a(i, $$0);
+   }
 
-   public static class a implements vr {
-      private final auc d;
-      private final BooleanSupplier e;
-      @Nullable
-      private vl f;
-      private boolean g = true;
+   public static vr a(UUID $$0, String $$1) {
+      vu $$2 = vu.a($$1);
+      vw $$3 = vw.a($$0);
+      return new vr($$3, null, $$2, null, vf.c);
+   }
 
-      public a(auc $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   public vr a(vb $$0) {
+      vb $$1 = !$$0.equals(vb.b(this.b())) ? $$0 : null;
+      return new vr(this.d, this.e, this.f, $$1, this.h);
+   }
 
-      private boolean a(vl $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.j().a(this.f.j())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.f(), this.f.j().b(), this.f.j().d(), $$0.j().b(), $$0.j().d()}
-            );
-            return false;
-         } else {
-            return true;
-         }
-      }
+   public vr a() {
+      return this.g != null ? new vr(this.d, this.e, this.f, null, this.h) : this;
+   }
 
-      private boolean b(vl $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.f());
-            return false;
-         } else {
-            return this.a($$0);
-         }
-      }
+   public vr a(vf $$0) {
+      return this.h.equals($$0) ? this : new vr(this.d, this.e, this.f, this.g, $$0);
+   }
 
-      @Override
-      public boolean updateAndValidate(vl $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return false;
-         } else {
-            this.f = $$0;
-            return true;
-         }
-      }
+   public vr a(boolean $$0) {
+      return this.a($$0 ? this.h : vf.c);
+   }
+
+   public static void a(auk.a $$0, vw $$1, vu $$2) throws SignatureException {
+      $$0.update(Ints.toByteArray(1));
+      $$1.a($$0);
+      $$2.a($$0);
+   }
+
+   public boolean a(aul $$0) {
+      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
+   }
+
+   public String b() {
+      return this.f.a();
+   }
+
+   public vb c() {
+      return Objects.requireNonNullElseGet(this.g, () -> vb.b(this.b()));
+   }
+
+   public Instant d() {
+      return this.f.b();
+   }
+
+   public long e() {
+      return this.f.c();
+   }
+
+   public boolean a(Instant $$0) {
+      return $$0.isAfter(this.d().plus(b));
+   }
+
+   public boolean b(Instant $$0) {
+      return $$0.isAfter(this.d().plus(c));
+   }
+
+   public UUID f() {
+      return this.d.c();
+   }
+
+   public boolean g() {
+      return this.f().equals(i);
+   }
+
+   public boolean h() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.h() && this.d.c().equals($$0);
+   }
+
+   public boolean i() {
+      return this.h.b();
+   }
+
+   public vw j() {
+      return this.d;
+   }
+
+   @Nullable
+   public vn k() {
+      return this.e;
+   }
+
+   public vu l() {
+      return this.f;
+   }
+
+   @Nullable
+   public vb m() {
+      return this.g;
+   }
+
+   public vf n() {
+      return this.h;
    }
 }

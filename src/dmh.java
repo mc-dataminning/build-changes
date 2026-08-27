@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface dmh {
+   dmh a = new dmh() {
+      @Override
+      public void a() {
+      }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dmh {
+      @Override
+      public void a(blf.c $$0) {
+      }
+   };
+
+   void a();
+
+   void a(blf.c var1);
 }

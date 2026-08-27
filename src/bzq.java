@@ -1,56 +1,35 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class bzq extends bzo {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   @Nullable
-   private ejz d;
-   private int e;
+public enum bzq implements aut {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
 
-   public bzq(bzm $$0) {
-      super($$0);
+   public static final Codec<bzq> h = aut.a(bzq::values);
+   private static final IntFunction<bzq> i = asq.a(bzq::a, values(), asq.a.b);
+   private final int j;
+   private final String k;
+
+   private bzq(int $$0, String $$1) {
+      this.j = $$0;
+      this.k = $$1;
+   }
+
+   public int a() {
+      return this.j;
+   }
+
+   public static bzq a(int $$0) {
+      return i.apply($$0);
    }
 
    @Override
-   public void c() {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.gc().a(cac.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.gc().a(cac.a);
-      } else {
-         double $$0 = this.d.c(this.a.ds(), this.a.du(), this.a.dy());
-         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
-            this.e++;
-         }
-      }
-   }
-
-   @Override
-   public void d() {
-      this.d = null;
-      this.e = 0;
-   }
-
-   public void a(ejz $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public float f() {
-      return 3.0F;
-   }
-
-   @Nullable
-   @Override
-   public ejz g() {
-      return this.d;
-   }
-
-   @Override
-   public cac<bzq> i() {
-      return cac.i;
+   public String c() {
+      return this.k;
    }
 }

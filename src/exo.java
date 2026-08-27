@@ -1,84 +1,56 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public class exo extends ewe {
+   private float a = 0.5F;
 
-public class exo implements exm {
-   private static final agm g = new agm("toast/tutorial");
-   public static final int a = 154;
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final int f = 28;
-   private final exo.a h;
-   private final uv i;
-   @Nullable
-   private final uv j;
-   private exm.a k = exm.a.a;
-   private long l;
-   private float m;
-   private float n;
-   private final boolean o;
+   public exo(vb $$0, evu $$1) {
+      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+   }
 
-   public exo(exo.a $$0, uv $$1, @Nullable uv $$2, boolean $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.o = $$3;
+   public exo(int $$0, int $$1, vb $$2, evu $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
+   }
+
+   public exo(int $$0, int $$1, int $$2, int $$3, vb $$4, evu $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.i = false;
+   }
+
+   public exo i(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   private exo b(float $$0) {
+      this.a = $$0;
+      return this;
+   }
+
+   public exo e() {
+      return this.b(0.0F);
+   }
+
+   public exo f() {
+      return this.b(0.5F);
+   }
+
+   public exo g() {
+      return this.b(1.0F);
    }
 
    @Override
-   public exm.a a(eut $$0, exn $$1, long $$2) {
-      $$0.a(g, 0, 0, this.a(), this.b());
-      this.h.a($$0, 6, 6);
-      if (this.j == null) {
-         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
-      } else {
-         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
-      }
-
-      if (this.o) {
-         $$0.a(3, 28, 157, 29, -1);
-         float $$3 = atq.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
-         int $$4;
-         if (this.n >= this.m) {
-            $$4 = -16755456;
-         } else {
-            $$4 = -11206656;
-         }
-
-         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
-         this.m = $$3;
-         this.l = $$2;
-      }
-
-      return this.k;
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      vb $$4 = this.l();
+      evu $$5 = this.a();
+      int $$6 = this.k();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.p() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.r() + (this.i() - 9) / 2;
+      atk $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
    }
 
-   public void c() {
-      this.k = exm.a.b;
-   }
-
-   public void a(float $$0) {
-      this.n = $$0;
-   }
-
-   public static enum a {
-      a(new agm("toast/movement_keys")),
-      b(new agm("toast/mouse")),
-      c(new agm("toast/tree")),
-      d(new agm("toast/recipe_book")),
-      e(new agm("toast/wooden_planks")),
-      f(new agm("toast/social_interactions")),
-      g(new agm("toast/right_click"));
-
-      private final agm h;
-
-      private a(agm $$0) {
-         this.h = $$0;
-      }
-
-      public void a(eut $$0, int $$1, int $$2) {
-         RenderSystem.enableBlend();
-         $$0.a(this.h, $$1, $$2, 20, 20);
-      }
+   private atk a(vb $$0, int $$1) {
+      evu $$2 = this.a();
+      vg $$3 = $$2.a($$0, $$1 - $$2.a(va.t));
+      return se.a().a(vg.a($$3, va.t));
    }
 }

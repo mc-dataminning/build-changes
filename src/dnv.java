@@ -1,84 +1,38 @@
-import java.util.function.LongFunction;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dnv extends dmx {
-   private final atw d;
-   private int e;
+public class dnv {
+   public final dvh a;
+   public final dvh b;
+   public final dvh c;
+   public final dvh d;
+   public final dvh e;
+   public final List<dip> f;
+   public final asg<cvz> g;
+   public final asg<cvz> h;
+   public static final Codec<dnv> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dvh.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
+               dvh.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
+               dvh.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
+               dvh.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
+               dvh.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
+               atg.a(dip.b.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
+               asg.b(kc.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
+               asg.b(kc.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dnv::new)
+   );
 
-   public dnv(atw $$0) {
-      super(0L);
-      this.d = $$0;
-   }
-
-   public int l() {
-      return this.e;
-   }
-
-   @Override
-   public atw d() {
-      return this.d.d();
-   }
-
-   @Override
-   public dnj e() {
-      return this.d.e();
-   }
-
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof dmx $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
-   }
-
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
-
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static atw a(int $$0, int $$1, long $$2, long $$3) {
-      return atw.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(dmx::new),
-      b(dnx::new);
-
-      private final LongFunction<atw> c;
-
-      private a(LongFunction<atw> $$0) {
-         this.c = $$0;
-      }
-
-      public atw a(long $$0) {
-         return this.c.apply($$0);
-      }
+   public dnv(dvh $$0, dvh $$1, dvh $$2, dvh $$3, dvh $$4, List<dip> $$5, asg<cvz> $$6, asg<cvz> $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 }

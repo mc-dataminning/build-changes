@@ -1,23 +1,33 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class eix {
-   private static final Codec<eiw> f = kc.J.q().dispatch(eiw::b, eiv::a);
-   public static final Codec<eiw> a = asy.a(
-      (Supplier<Codec<eiw>>)(() -> {
-         Codec<eiw> $$0 = asy.e(f, eiz.a);
-         return Codec.either(eiu.b, $$0)
-            .xmap($$0x -> (eiw)$$0x.map(Function.identity(), Function.identity()), $$0x -> $$0x instanceof eiu $$1 ? Either.left($$1) : Either.right($$0x));
-      })
-   );
-   public static final eiv b = a("constant", eiu.a);
-   public static final eiv c = a("uniform", eiz.a);
-   public static final eiv d = a("binomial", eit.a);
-   public static final eiv e = a("score", eiy.a);
+public record eix(Optional<bf> b) implements ejd {
+   public static final Codec<eix> a = RecordCodecBuilder.create($$0 -> $$0.group(atg.a(bf.a, "predicate").forGetter(eix::c)).apply($$0, eix::new));
 
-   private static eiv a(String $$0, Codec<? extends eiw> $$1) {
-      return is.a(kc.J, new agm($$0), new eiv($$1));
+   @Override
+   public eje b() {
+      return ejf.n;
+   }
+
+   @Override
+   public Set<eim<?>> a() {
+      return ImmutableSet.of(eip.f, eip.c);
+   }
+
+   public boolean a(ege $$0) {
+      bkd $$1 = $$0.c(eip.c);
+      elb $$2 = $$0.c(eip.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   }
+
+   public static ejd.a a(bf.a $$0) {
+      return () -> new eix(Optional.of($$0.b()));
+   }
+
+   public Optional<bf> c() {
+      return this.b;
    }
 }

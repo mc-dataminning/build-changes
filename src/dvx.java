@@ -1,53 +1,59 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class dvx extends dvt {
-   public static final Codec<dvx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dnq.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dnq.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dvx::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dnq d;
-   private final dnq e;
-   private final int f;
+public class dvx extends dvy {
+   public static final Codec<dvx> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dvx::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   private dvx(dnq $$0, dnq $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   @Override
+   protected dvz<?> a() {
+      return dvz.b;
    }
 
-   public static dvx a(dnq $$0, dnq $$1, int $$2) {
-      return new dvx($$0, $$1, $$2);
+   public dvx(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public int a(atw $$0, dnt $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = atq.a($$0, $$2 + this.f, $$3);
-         int $$5 = atq.a($$0, $$2, $$4 - 1);
-         return atq.a($$0, $$2, $$5 - 1 + this.f);
+   public void a(dvy.a $$0) {
+      auf $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            hv $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               a($$3, det.d, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            hv $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               a($$4, det.f, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            hv $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               a($$5, det.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            hv $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               a($$6, det.c, $$0);
+            }
+         }
+      });
+   }
+
+   private static void a(hv $$0, djg $$1, dvy.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (hv var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.d();
       }
-   }
-
-   @Override
-   public dvu<?> a() {
-      return dvu.d;
-   }
-
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

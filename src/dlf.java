@@ -1,15 +1,31 @@
-public interface dlf {
-   dlf a = new dlf() {
-      @Override
-      public void a() {
-      }
+import com.mojang.serialization.DataResult;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 
-      @Override
-      public void a(bkv.c $$0) {
-      }
-   };
+public interface dlf<T> {
+   T a(int var1, int var2, int var3);
 
-   void a();
+   void a(Consumer<T> var1);
 
-   void a(bkv.c var1);
+   void b(ue var1);
+
+   int c();
+
+   boolean a(Predicate<T> var1);
+
+   void a(dle.b<T> var1);
+
+   dle<T> e();
+
+   dlf.a<T> a(ik<T> var1, dle.d var2);
+
+   public static record a<T>(List<T> a, Optional<LongStream> b) {
+   }
+
+   public interface b<T, C extends dlf<T>> {
+      DataResult<C> read(ik<T> var1, dle.d var2, dlf.a<T> var3);
+   }
 }

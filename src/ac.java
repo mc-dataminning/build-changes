@@ -3,11 +3,13 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DataResult.PartialResult;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
@@ -62,6 +64,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -81,7 +84,7 @@ public class ac {
    private static final DateTimeFormatter m = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
    private static final int n = 8;
    public static final long a = 1000000L;
-   public static auo.a b = System::nanoTime;
+   public static auy.a b = System::nanoTime;
    public static final Ticker c = new Ticker() {
       public long read() {
          return ac.b.getAsLong();
@@ -100,11 +103,11 @@ public class ac {
       return Collectors.toMap(Entry::getKey, Entry::getValue);
    }
 
-   public static <T extends Comparable<T>> String a(diq<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(djs<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable agm $$1) {
+   public static String a(String $$0, @Nullable agt $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -125,7 +128,7 @@ public class ac {
    }
 
    private static ExecutorService c(String $$0) {
-      int $$1 = atq.a(Runtime.getRuntime().availableProcessors() - 1, 1, l());
+      int $$1 = aty.a(Runtime.getRuntime().availableProcessors() - 1, 1, l());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -217,7 +220,7 @@ public class ac {
       }
 
       if ($$1 instanceof y $$2) {
-         ago.a($$2.a().e());
+         agv.a($$2.a().e());
          System.exit(-1);
       }
 
@@ -226,7 +229,7 @@ public class ac {
 
    @Nullable
    public static Type<?> a(TypeReference $$0, String $$1) {
-      return !aa.aS ? null : b($$0, $$1);
+      return !aa.aV ? null : b($$0, $$1);
    }
 
    @Nullable
@@ -234,10 +237,10 @@ public class ac {
       Type<?> $$2 = null;
 
       try {
-         $$2 = auy.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = avh.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          f.error("No data fixer registered for {}", $$1);
-         if (aa.aT) {
+         if (aa.aW) {
             throw var4;
          }
       }
@@ -246,7 +249,7 @@ public class ac {
    }
 
    public static Runnable a(String $$0, Runnable $$1) {
-      return aa.aT ? () -> {
+      return aa.aW ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -260,7 +263,7 @@ public class ac {
    }
 
    public static <V> Supplier<V> a(String $$0, Supplier<V> $$1) {
-      return aa.aT ? () -> {
+      return aa.aW ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -414,20 +417,20 @@ public class ac {
 
    public static void a(String $$0) {
       f.error($$0);
-      if (aa.aT) {
+      if (aa.aW) {
          d($$0);
       }
    }
 
    public static void a(String $$0, Throwable $$1) {
       f.error($$0, $$1);
-      if (aa.aT) {
+      if (aa.aW) {
          d($$0);
       }
    }
 
    public static <T extends Throwable> T b(T $$0) {
-      if (aa.aT) {
+      if (aa.aW) {
          f.error("Trying to throw a fatal exception, pausing in IDE", $$0);
          d($$0.getMessage());
       }
@@ -456,19 +459,19 @@ public class ac {
       }
    }
 
-   public static <T> T a(T[] $$0, atw $$1) {
+   public static <T> T a(T[] $$0, auf $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, atw $$1) {
+   public static int a(int[] $$0, auf $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, atw $$1) {
+   public static <T> T a(List<T> $$0, auf $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, atw $$1) {
+   public static <T> Optional<T> b(List<T> $$0, auf $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -663,8 +666,8 @@ public class ac {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> auf<K, V> a(Function<K, V> $$0) {
-      return new auf<>($$0);
+   public static <K, V> auo<K, V> a(Function<K, V> $$0) {
+      return new auo<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -699,13 +702,13 @@ public class ac {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, atw $$1) {
+   public static <T> List<T> a(Stream<T> $$0, auf $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       c($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, atw $$1) {
+   public static IntArrayList a(IntStream $$0, auf $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -717,19 +720,19 @@ public class ac {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, atw $$1) {
+   public static <T> List<T> b(T[] $$0, auf $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, atw $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, auf $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> void c(List<T> $$0, atw $$1) {
+   public static <T> void c(List<T> $$0, auf $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {
@@ -805,6 +808,25 @@ public class ac {
          throw $$1.apply($$2.get().message());
       } else {
          return (T)$$0.result().orElseThrow();
+      }
+   }
+
+   public static <A, B> Typed<B> a(Typed<A> $$0, Type<B> $$1, UnaryOperator<Dynamic<?>> $$2) {
+      Dynamic<?> $$3 = a($$0.write(), IllegalStateException::new);
+      return a($$1, $$2.apply($$3));
+   }
+
+   public static <T> Typed<T> a(Type<T> $$0, Dynamic<?> $$1) {
+      DataResult<Typed<T>> $$2 = $$0.readTyped($$1).map(Pair::getFirst);
+      Optional<PartialResult<Typed<T>>> $$3 = $$2.error();
+      if ($$3.isPresent()) {
+         o $$4 = o.a(new IllegalStateException($$3.get().message()), "Reading type");
+         p $$5 = $$4.a("Info");
+         $$5.a("Data", $$1);
+         $$5.a("Type", $$0);
+         throw new y($$4);
+      } else {
+         return (Typed<T>)$$2.result().orElseThrow();
       }
    }
 

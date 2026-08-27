@@ -1,75 +1,47 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class czb extends cvf {
-   public static final MapCodec<czb> a = b(czb::new);
-   public static final die b = das.b;
-   public static final die c = das.c;
-   public static final die d = das.d;
-   public static final die e = das.e;
-   public static final die f = das.f;
-   public static final die g = das.g;
-   private static final Map<ib, die> h = das.h;
+public class czb extends cwi implements dea {
+   protected static final MapCodec<List<dea.a>> a = dea.a.b.fieldOf("suspicious_stew_effects");
+   public static final MapCodec<czb> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(czb::b), u()).apply($$0, czb::new));
+   protected static final float c = 3.0F;
+   protected static final elu d = cvz.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
+   private final List<dea.a> e;
 
    @Override
-   public MapCodec<czb> a() {
-      return a;
+   public MapCodec<? extends czb> a() {
+      return b;
    }
 
-   public czb(dhm.d $$0) {
-      super($$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(true))
-            .a(c, Boolean.valueOf(true))
-            .a(d, Boolean.valueOf(true))
-            .a(e, Boolean.valueOf(true))
-            .a(f, Boolean.valueOf(true))
-            .a(g, Boolean.valueOf(true))
-      );
+   public czb(bkq $$0, int $$1, dio.d $$2) {
+      this(a($$0, $$1), $$2);
    }
 
-   @Override
-   public dhn a(cnw $$0) {
-      crl $$1 = $$0.q();
-      hx $$2 = $$0.a();
-      return this.o()
-         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
-         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
-         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
+   public czb(List<dea.a> $$0, dio.d $$1) {
+      super($$1);
+      this.e = $$0;
+   }
+
+   protected static List<dea.a> a(bkq $$0, int $$1) {
+      int $$2;
+      if ($$0.a()) {
+         $$2 = $$1;
+      } else {
+         $$2 = $$1 * 20;
+      }
+
+      return List.of(new dea.a($$0, $$2));
    }
 
    @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      elb $$4 = $$0.n($$1, $$2);
+      return d.a($$4.c, $$4.d, $$4.e);
    }
 
    @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      return $$0.a(h.get($$1.a(ib.c)), $$0.c(b))
-         .a(h.get($$1.a(ib.d)), $$0.c(d))
-         .a(h.get($$1.a(ib.f)), $$0.c(c))
-         .a(h.get($$1.a(ib.e)), $$0.c(e))
-         .a(h.get($$1.a(ib.b)), $$0.c(f))
-         .a(h.get($$1.a(ib.a)), $$0.c(g));
-   }
-
-   @Override
-   public dhn a(dhn $$0, dab $$1) {
-      return $$0.a(h.get($$1.b(ib.c)), $$0.c(b))
-         .a(h.get($$1.b(ib.d)), $$0.c(d))
-         .a(h.get($$1.b(ib.f)), $$0.c(c))
-         .a(h.get($$1.b(ib.e)), $$0.c(e))
-         .a(h.get($$1.b(ib.b)), $$0.c(f))
-         .a(h.get($$1.b(ib.a)), $$0.c(g));
-   }
-
-   @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(f, g, b, c, d, e);
+   public List<dea.a> b() {
+      return this.e;
    }
 }

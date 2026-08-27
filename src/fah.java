@@ -1,71 +1,29 @@
-public class fah extends ezq {
-   private eve c;
+public enum fah {
+   a,
+   b;
 
-   public fah() {
-      super("");
+   public fah a() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+      };
    }
 
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.c = eve.a(uv.c("multiplayer.stopSleeping"), $$0 -> this.C()).a(this.g / 2 - 100, this.h - 40, 200, 20).a();
-      this.d(this.c);
+   public fai b() {
+      return switch (this) {
+         case a -> fai.d;
+         case b -> fai.b;
+      };
    }
 
-   @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      if (!this.f.G().a(this.f.Q())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public fai c() {
+      return switch (this) {
+         case a -> fai.c;
+         case b -> fai.a;
+      };
    }
 
-   @Override
-   public void b(eut $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   public void aG_() {
-      this.C();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.f.G().a(this.f.Q()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.C();
-      }
-
-      if (!this.f.G().a(this.f.Q())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         if (this.b(this.b.a(), true)) {
-            this.f.a(null);
-            this.b.a("");
-            this.f.l.d().d();
-         }
-
-         return true;
-      }
-   }
-
-   private void C() {
-      flp $$0 = this.f.s.cn;
-      $$0.b(new adt(this.f.s, adt.a.c));
-   }
-
-   public void l() {
-      if (this.b.a().isEmpty()) {
-         this.f.a(null);
-      } else {
-         this.f.a(new ezq(this.b.a()));
-      }
+   public fai a(boolean $$0) {
+      return $$0 ? this.b() : this.c();
    }
 }

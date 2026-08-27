@@ -1,37 +1,44 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dqt extends dqa<dsk> {
-   public dqt(Codec<dsk> $$0) {
+public class dqt extends dqr {
+   public dqt(Codec<dtn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dqc<dsk> $$0) {
-      csz $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      dhn $$3 = $$1.a_($$2.d());
-      dsk $$4 = $$0.f();
-      atw $$5 = $$0.d();
-      if (!$$3.a(ark.aK)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.J_() + 1 && $$6 + 1 < $$1.ak()) {
-            int $$7 = 0;
+   protected boolean a(csz $$0, auf $$1, hv $$2, dip $$3) {
+      hv.a $$4 = $$2.j();
+      int $$5 = $$1.a(3) + 1;
 
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               hx $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               dhn $$10 = $$4.b.a($$5, $$9);
-               if ($$1.t($$9) && $$9.v() > $$1.J_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
-               }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
+         }
+
+         $$4.c(ia.b);
+      }
+
+      hv $$7 = $$4.i();
+      int $$8 = $$1.a(3) + 2;
+      List<ia> $$9 = ia.c.a.c($$1);
+
+      for (ia $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(ia.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
             }
-
-            return $$7 > 0;
-         } else {
-            return false;
          }
       }
+
+      return true;
    }
 }

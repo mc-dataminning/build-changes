@@ -1,28 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtp extends dtl {
-   public static final Codec<dtp> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dtp::new));
+public class dtp implements dtg {
+   public static final Codec<dtp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dtp::new)
+   );
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   public dtp(big $$0, big $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   protected dtr<?> a() {
-      return dtr.f;
-   }
-
-   @Override
-   protected void a(csl $$0, dtq.b $$1, atw $$2, dta $$3, int $$4, dtq.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(atw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return atq.k((float)$$1 + 0.5F) + atq.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public dtp(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

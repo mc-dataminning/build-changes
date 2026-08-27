@@ -1,51 +1,52 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
+public class ggz {
+   public static class a extends ggf {
+      private final frk n;
 
-public abstract class ggz {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
-   @Nullable
-   private Instant e;
-
-   public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
-   }
-
-   public void a(ggt $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
+      protected a(frk $$0, arb $$1) {
+         super($$1, ard.i, ggw.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
       }
 
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
+      @Override
+      public void q() {
+         if (this.n.dH() || !this.n.be()) {
+            this.n();
+         }
       }
    }
 
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
+   public static class b extends ggf {
+      public static final int n = 40;
+      private final frk o;
+      private int p;
+
+      public b(frk $$0) {
+         super(arc.z, ard.i, ggw.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (!this.o.dH() && this.p >= 0) {
+            if (this.o.be()) {
+               this.p++;
+            } else {
+               this.p -= 2;
+            }
+
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
+      }
    }
-
-   public boolean c() {
-      return this.c >= 10;
-   }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(ggt var1);
 }

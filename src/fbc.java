@@ -1,28 +1,49 @@
-public class fbc extends far {
-   public fbc(faz $$0, etm $$1) {
-      super($$0, $$1, uv.c("options.skinCustomisation.title"));
+public class fbc extends fcc {
+   private static final agt a = new agt("textures/gui/demo_background.png");
+   private exa b = exa.a;
+   private exa c = exa.a;
+
+   public fbc() {
+      super(vb.c("demo.help.title"));
    }
 
    @Override
-   protected void aQ_() {
-      int $$0 = 0;
-
-      for (cea $$1 : cea.values()) {
-         this.d(evl.b(this.b.a($$1)).a(this.g / 2 - 155 + $$0 % 2 * 160, this.h / 6 + 24 * ($$0 >> 1), 150, 20, $$1.d(), ($$1x, $$2) -> this.b.a($$1, $$2)));
-         $$0++;
-      }
-
-      this.d(this.b.t().a(this.b, this.g / 2 - 155 + $$0 % 2 * 160, this.h / 6 + 24 * ($$0 >> 1), 150));
-      if (++$$0 % 2 == 1) {
-         $$0++;
-      }
-
-      this.d(eve.a(uu.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h / 6 + 24 * ($$0 >> 1), 200, 20).a());
+   protected void aP_() {
+      int $$0 = -16;
+      this.d(ewh.a(vb.c("demo.help.buy"), $$0x -> {
+         $$0x.i = false;
+         ac.i().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
+      this.d(ewh.a(vb.c("demo.help.later"), $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
+      euo $$1 = this.f.m;
+      this.b = exa.a(
+         this.i,
+         vb.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         vb.c("demo.help.movementMouse"),
+         vb.a("demo.help.jump", $$1.B.k()),
+         vb.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = exa.a(this.i, vb.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2;
+      int $$5 = (this.h - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
+   }
+
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+      int $$4 = (this.g - 248) / 2 + 10;
+      int $$5 = (this.h - 166) / 2 + 8;
+      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

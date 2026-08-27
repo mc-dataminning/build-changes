@@ -1,124 +1,106 @@
 import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
 
-public class czo extends cvf implements dcf {
-   public static final MapCodec<czo> b = b(czo::new);
-   public static final int c = 7;
-   public static final din d = did.aC;
-   public static final die e = did.v;
-   public static final die f = did.C;
-   private static final int a = 1;
+public abstract class czo extends czm implements cwc {
+   public static final djp e = djf.ax;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<? extends czo> a() {
-      return b;
-   }
-
-   public czo(dhm.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+   protected czo(dio.d $$0, ia $$1, elu $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.k(this.E.b().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   public eks b_(dhn $$0, crl $$1, hx $$2) {
-      return ekp.a();
+   protected abstract MapCodec<? extends czo> a();
+
+   @Override
+   public dip a(csz $$0) {
+      return this.o().a(e, Integer.valueOf($$0.F_().a(25)));
    }
 
    @Override
-   public boolean e_(dhn $$0) {
-      return $$0.c(d) == 7 && !$$0.c(e);
+   public boolean e_(dip $$0) {
+      return $$0.c(e) < 25;
    }
 
    @Override
-   public void b(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      if (this.h($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
+   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         hv $$4 = $$2.a(this.a);
+         if (this.g($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
+         }
       }
    }
 
-   protected boolean h(dhn $$0) {
-      return !$$0.c(e) && $$0.c(d) == 7;
+   protected dip a(dip $$0, auf $$1) {
+      return $$0.a(e);
+   }
+
+   public dip n(dip $$0) {
+      return $$0.a(e, Integer.valueOf(25));
+   }
+
+   public boolean o(dip $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected dip a(dip $$0, dip $$1) {
+      return $$1;
    }
 
    @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
-   }
-
-   @Override
-   public int g(dhn $$0, crl $$1, hx $$2) {
-      return 1;
-   }
-
-   @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, ecy.c, ecy.c.a($$3));
-      }
-
-      int $$6 = o($$2) + 1;
-      if ($$6 != 1 || $$0.c(d) != $$6) {
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
          $$3.a($$4, this, 1);
       }
 
-      return $$0;
-   }
-
-   private static dhn a(dhn $$0, csg $$1, hx $$2) {
-      int $$3 = 7;
-      hx.a $$4 = new hx.a();
-
-      for (ib $$5 : ib.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
+         if (this.b) {
+            $$3.a($$4, eea.c, eea.c.a($$3));
          }
-      }
 
-      return $$0.a(d, Integer.valueOf($$3));
-   }
-
-   private static int o(dhn $$0) {
-      return n($$0).orElse(7);
-   }
-
-   public static OptionalInt n(dhn $$0) {
-      if ($$0.a(ark.t)) {
-         return OptionalInt.of(0);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
+         return this.a($$0, this.b().o());
       }
    }
 
    @Override
-   public ecx c_(dhn $$0) {
-      return $$0.c(f) ? ecy.c.a(false) : super.c_($$0);
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(e);
    }
 
    @Override
-   public void a(dhn $$0, csf $$1, hx $$2, atw $$3) {
-      if ($$1.q($$2.c())) {
-         if ($$3.a(15) == 1) {
-            hx $$4 = $$2.d();
-            dhn $$5 = $$1.a_($$4);
-            if (!$$5.p() || !$$5.d($$1, $$4, ib.b)) {
-               att.a($$1, $$2, $$3, jw.m);
-            }
-         }
+   public boolean b(ctb $$0, hv $$1, dip $$2) {
+      return this.g($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(csy $$0, auf $$1, hv $$2, dip $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(amp $$0, auf $$1, hv $$2, dip $$3) {
+      hv $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
       }
    }
 
-   @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(d, e, f);
-   }
+   protected abstract int a(auf var1);
+
+   protected abstract boolean g(dip var1);
 
    @Override
-   public dhn a(cnw $$0) {
-      ecx $$1 = $$0.q().b_($$0.a());
-      dhn $$2 = this.o().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == ecy.c));
-      return a($$2, $$0.q(), $$0.a());
+   protected czo c() {
+      return this;
    }
 }

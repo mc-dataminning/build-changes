@@ -1,160 +1,255 @@
-import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class ffi extends evk<ffg> {
-   private final ffj a;
-   private final List<ffg> m = Lists.newArrayList();
-   @Nullable
-   private String n;
+public class ffi {
+   private final apd a;
+   final List<apa> b;
+   final List<apa> c;
+   final Function<apa, agt> d;
+   final Runnable e;
+   private final Consumer<apd> f;
 
-   public ffi(ffj $$0, eti $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$0;
-      this.b(false);
+   public ffi(Runnable $$0, Function<apa, agt> $$1, apd $$2, Consumer<apd> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   @Override
-   protected void a(eut $$0) {
-      $$0.c(this.j, this.g + 4, this.i, this.h);
+   public Stream<ffi.a> a() {
+      return this.c.stream().map($$0 -> new ffi.d($$0));
    }
 
-   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
-      Map<UUID, ffg> $$3 = new HashMap<>();
-      this.a($$0, $$3);
-      this.a($$3, $$2);
-      this.a($$3.values(), $$1);
+   public Stream<ffi.a> b() {
+      return this.b.stream().map($$0 -> new ffi.c($$0));
    }
 
-   private void a(Collection<UUID> $$0, Map<UUID, ffg> $$1) {
-      flp $$2 = this.c.s.cn;
+   void e() {
+      this.a.a(Lists.reverse(this.b).stream().map(apa::f).collect(ImmutableList.toImmutableList()));
+   }
 
-      for (UUID $$3 : $$0) {
-         flx $$4 = $$2.a($$3);
-         if ($$4 != null) {
-            boolean $$5 = $$4.d();
-            $$1.put($$3, new ffg(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
+   }
+
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      agt a();
+
+      apb b();
+
+      String c();
+
+      vb d();
+
+      vb e();
+
+      ape f();
+
+      default vb g() {
+         return this.f().a(this.e());
+      }
+
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements ffi.a {
+      private final apa b;
+
+      public b(apa $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<apa> s();
+
+      protected abstract List<apa> t();
+
+      @Override
+      public agt a() {
+         return ffi.this.d.apply(this.b);
+      }
+
+      @Override
+      public apb b() {
+         return this.b.c();
+      }
+
+      @Override
+      public String c() {
+         return this.b.f();
+      }
+
+      @Override
+      public vb d() {
+         return this.b.a();
+      }
+
+      @Override
+      public vb e() {
+         return this.b.b();
+      }
+
+      @Override
+      public ape f() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.h();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.g();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.i().a(this.t(), this.b, Function.identity(), true);
+         ffi.this.e.run();
+         ffi.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.f().equals("high_contrast")) {
+            eun<Boolean> $$0 = euk.N().m.r();
+            $$0.a(!$$0.c());
          }
+      }
+
+      protected void a(int $$0) {
+         List<apa> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         ffi.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<apa> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).h();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<apa> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).h();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
       }
    }
 
-   private void a(Map<UUID, ffg> $$0, boolean $$1) {
-      for (GameProfile $$3 : a(this.c.aW().b())) {
-         ffg $$4;
-         if ($$1) {
-            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
-               ffg $$2 = new ffg(this.c, this.a, $$3.getId(), $$3.getName(), this.c.ak().a($$3), true);
-               $$2.c(true);
-               return $$2;
-            });
-         } else {
-            $$4 = $$0.get($$3.getId());
-            if ($$4 == null) {
-               continue;
-            }
-         }
+   class c extends ffi.b {
+      public c(apa $$0) {
+         super($$0);
+      }
 
-         $$4.d(true);
+      @Override
+      protected List<apa> s() {
+         return ffi.this.b;
+      }
+
+      @Override
+      protected List<apa> t() {
+         return ffi.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
       }
    }
 
-   private static Collection<GameProfile> a(fmd $$0) {
-      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
-
-      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
-         fmf $$3 = $$0.b($$2);
-         if ($$3 instanceof fmg.a) {
-            fmg.a $$4 = (fmg.a)$$3;
-            if ($$4.g().h()) {
-               $$1.add($$4.f());
-            }
-         }
+   class d extends ffi.b {
+      public d(apa $$0) {
+         super($$0);
       }
 
-      return $$1;
-   }
-
-   private void v() {
-      this.m.sort(Comparator.<ffg, Integer>comparing($$0 -> {
-         if (this.c.b($$0.e())) {
-            return 0;
-         } else if (this.c.aW().a($$0.e())) {
-            return 1;
-         } else if ($$0.e().version() == 2) {
-            return 4;
-         } else {
-            return $$0.h() ? 2 : 3;
-         }
-      }).thenComparing($$0 -> {
-         if (!$$0.c().isBlank()) {
-            int $$1 = $$0.c().codePointAt(0);
-            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
-               return 0;
-            }
-         }
-
-         return 1;
-      }).thenComparing(ffg::c, String::compareToIgnoreCase));
-   }
-
-   private void a(Collection<ffg> $$0, double $$1) {
-      this.m.clear();
-      this.m.addAll($$0);
-      this.v();
-      this.w();
-      this.a(this.m);
-      this.a($$1);
-   }
-
-   private void w() {
-      if (this.n != null) {
-         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
-         this.a(this.m);
-      }
-   }
-
-   public void a(String $$0) {
-      this.n = $$0;
-   }
-
-   public boolean e() {
-      return this.m.isEmpty();
-   }
-
-   public void a(flx $$0, ffj.a $$1) {
-      UUID $$2 = $$0.a().getId();
-
-      for (ffg $$3 : this.m) {
-         if ($$3.e().equals($$2)) {
-            $$3.c(false);
-            return;
-         }
+      @Override
+      protected List<apa> s() {
+         return ffi.this.c;
       }
 
-      if (($$1 == ffj.a.a || this.c.aJ().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
-         boolean $$4 = $$0.d();
-         ffg $$5 = new ffg(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
-         this.b($$5);
-         this.m.add($$5);
+      @Override
+      protected List<apa> t() {
+         return ffi.this.b;
       }
-   }
 
-   public void a(UUID $$0) {
-      for (ffg $$1 : this.m) {
-         if ($$1.e().equals($$0)) {
-            $$1.c(true);
-            return;
-         }
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
       }
    }
 }

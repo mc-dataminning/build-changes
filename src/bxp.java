@@ -1,186 +1,77 @@
-import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class bxp extends bwt {
-   private static final afs<Integer> e = afv.a(bxp.class, afu.b);
-   int bT;
-   int bU;
-   private static final Predicate<bll> bV = $$0 -> $$0 instanceof cdz && ((cdz)$$0).f() ? false : $$0.ai() == bkz.f || $$0.eT() != blq.e;
-   static final bvx bW = bvx.b().e().d().a(bV);
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-
-   public bxp(bkz<? extends bxp> $$0, csf $$1) {
+public class bxp extends bxi {
+   public bxp(blj<? extends bxp> $$0, csy $$1) {
       super($$0, $$1);
-      this.k_();
-   }
-
-   @Override
-   protected void c_() {
-      super.c_();
-      this.an.a(e, 0);
-   }
-
-   public int gh() {
-      return this.an.b(e);
-   }
-
-   public void c(int $$0) {
-      this.an.b(e, $$0);
-   }
-
-   @Override
-   public void a(afs<?> $$0) {
-      if (e.equals($$0)) {
-         this.k_();
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   public void b(sd $$0) {
-      super.b($$0);
-      $$0.a("PuffState", this.gh());
-   }
-
-   @Override
-   public void a(sd $$0) {
-      super.a($$0);
-      this.c(Math.min($$0.h("PuffState"), 2));
-   }
-
-   @Override
-   public clo b() {
-      return new clo(clr.qC);
    }
 
    @Override
    protected void B() {
-      super.B();
-      this.bO.a(1, new bxp.a(this));
+      this.bO.a(0, new bsl(this));
+      this.bO.a(1, new btk(this, 2.0));
+      this.bO.a(2, new bsd(this, 1.0));
+      this.bO.a(3, new btz(this, 1.25, cpi.a(cmk.pt), false));
+      this.bO.a(4, new bsq(this, 1.25));
+      this.bO.a(5, new bue(this, 1.0));
+      this.bO.a(6, new bsz(this, cer.class, 6.0F));
+      this.bO.a(7, new btm(this));
+   }
+
+   public static bna.a u() {
+      return blx.C().a(bnb.l, 10.0).a(bnb.m, 0.2F);
    }
 
    @Override
-   public void l() {
-      if (!this.dN().B && this.bx() && this.cZ()) {
-         if (this.bT > 0) {
-            if (this.gh() == 0) {
-               this.a(aqv.tz, this.eX(), this.eY());
-               this.c(1);
-            } else if (this.bT > 40 && this.gh() == 1) {
-               this.a(aqv.tz, this.eX(), this.eY());
-               this.c(2);
-            }
-
-            this.bT++;
-         } else if (this.gh() != 0) {
-            if (this.bU > 60 && this.gh() == 2) {
-               this.a(aqv.ty, this.eX(), this.eY());
-               this.c(1);
-            } else if (this.bU > 100 && this.gh() == 1) {
-               this.a(aqv.ty, this.eX(), this.eY());
-               this.c(0);
-            }
-
-            this.bU++;
-         }
-      }
-
-      super.l();
+   protected arb y() {
+      return arc.fy;
    }
 
    @Override
-   public void d_() {
-      super.d_();
-      if (this.bx() && this.gh() > 0) {
-         for (bln $$1 : this.dN().a(bln.class, this.cH().g(0.3), $$0 -> bW.a(this, $$0))) {
-            if ($$1.bx()) {
-               this.a($$1);
-            }
-         }
-      }
-   }
-
-   private void a(bln $$0) {
-      int $$1 = this.gh();
-      if ($$0.a(this.dO().b((bll)this), (float)(1 + $$1))) {
-         $$0.b(new bki(bkk.s, 60 * $$1, 0), this);
-         this.a(aqv.tD, 1.0F, 1.0F);
-      }
+   protected arb d(bkd $$0) {
+      return arc.fA;
    }
 
    @Override
-   public void b_(cdz $$0) {
-      int $$1 = this.gh();
-      if ($$0 instanceof amj && $$1 > 0 && $$0.a(this.dO().b((bll)this), (float)(1 + $$1))) {
-         if (!this.aU()) {
-            ((amj)$$0).c.b(new zm(zm.j, 0.0F));
-         }
-
-         $$0.b(new bki(bkk.s, 60 * $$1, 0), this);
-      }
+   protected arb n_() {
+      return arc.fz;
    }
 
    @Override
-   protected aqu y() {
-      return aqv.tx;
+   protected void b(hv $$0, dip $$1) {
+      this.a(arc.fC, 0.15F, 1.0F);
    }
 
    @Override
-   protected aqu n_() {
-      return aqv.tA;
+   protected float eW() {
+      return 0.4F;
    }
 
    @Override
-   protected aqu d(bjt $$0) {
-      return aqv.tC;
+   public bjl b(cer $$0, bjk $$1) {
+      cmh $$2 = $$0.b($$1);
+      if ($$2.a(cmk.qv) && !this.o_()) {
+         $$0.a(arc.fB, 1.0F, 1.0F);
+         cmh $$3 = cmj.a($$2, $$0, cmk.qB.am_());
+         $$0.a($$1, $$3);
+         return bjl.a(this.dM().B);
+      } else {
+         return super.b($$0, $$1);
+      }
+   }
+
+   @Nullable
+   public bxp b(amp $$0, bla $$1) {
+      return blj.u.a((csy)$$0);
    }
 
    @Override
-   protected aqu gg() {
-      return aqv.tB;
+   protected float b(bmh $$0, blg $$1) {
+      return this.o_() ? $$1.b * 0.95F : 1.3F;
    }
 
    @Override
-   public bkw a(blx $$0) {
-      return super.a($$0).a(s(this.gh()));
-   }
-
-   private static float s(int $$0) {
-      switch ($$0) {
-         case 0:
-            return 0.5F;
-         case 1:
-            return 0.7F;
-         default:
-            return 1.0F;
-      }
-   }
-
-   static class a extends bsg {
-      private final bxp a;
-
-      public a(bxp $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public boolean a() {
-         List<bll> $$0 = this.a.dN().a(bll.class, this.a.cH().g(2.0), $$0x -> bxp.bW.a(this.a, $$0x));
-         return !$$0.isEmpty();
-      }
-
-      @Override
-      public void c() {
-         this.a.bT = 1;
-         this.a.bU = 0;
-      }
-
-      @Override
-      public void d() {
-         this.a.bT = 0;
-      }
+   protected Vector3f a(blf $$0, blg $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b - 0.03125F * $$2, 0.0F);
    }
 }

@@ -1,45 +1,36 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+public class fur implements fui<dgx> {
+   public static final gfs a = new gfs(gdn.e, new agt("entity/enchanting_table_book"));
+   private final fig b;
 
-public class fur implements fui.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final eti c;
-   private Collection<hx> d = Lists.newArrayList();
-
-   public fur(eti $$0) {
-      this.c = $$0;
+   public fur(fuj.a $$0) {
+      this.b = new fig($$0.a(flx.m));
    }
 
-   public void a(Collection<hx> $$0) {
-      this.d = $$0;
-   }
+   public void a(dgx $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + aty.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
 
-   @Override
-   public void a(eob $$0, fqz $$1, double $$2, double $$3, double $$4) {
-      hx $$5 = this.b().c();
-
-      for (hx $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
-         }
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
-   }
 
-   private static void a(eob $$0, fqz $$1, hx $$2) {
-      fui.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
+      }
 
-   private static void a(eob $$0, fqz $$1, String $$2, hx $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      fui.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private est b() {
-      return this.c.j.m();
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = aty.i($$1, $$0.c, $$0.b);
+      float $$10 = aty.h($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = aty.h($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = aty.i($$1, $$0.g, $$0.f);
+      this.b.a($$6, aty.a($$10, 0.0F, 1.0F), aty.a($$11, 0.0F, 1.0F), $$12);
+      eph $$13 = a.a($$3, fsq::c);
+      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

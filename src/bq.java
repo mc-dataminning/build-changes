@@ -1,273 +1,77 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record bq(
-   Optional<bs> b,
-   Optional<bh> c,
-   Optional<cj> d,
-   Optional<cj> e,
-   Optional<cm> f,
-   Optional<cn> g,
-   Optional<bo> h,
-   Optional<bn> i,
-   Optional<br> j,
-   Optional<bq> k,
-   Optional<bq> l,
-   Optional<bq> m,
-   Optional<String> n
-) {
-   public static final Codec<bq> a = asy.a(
-      (Function<Codec<bq>, Codec<bq>>)($$0 -> RecordCodecBuilder.create(
-            $$1 -> $$1.group(
-                     asy.a(bs.a, "type").forGetter(bq::b),
-                     asy.a(bh.a, "distance").forGetter(bq::c),
-                     asy.a(cj.a, "location").forGetter(bq::d),
-                     asy.a(cj.a, "stepping_on").forGetter(bq::e),
-                     asy.a(cm.a, "effects").forGetter(bq::f),
-                     asy.a(cn.a, "nbt").forGetter(bq::g),
-                     asy.a(bo.a, "flags").forGetter(bq::h),
-                     asy.a(bn.a, "equipment").forGetter(bq::i),
-                     asy.a(br.a, "type_specific").forGetter(bq::j),
-                     asy.a($$0, "vehicle").forGetter(bq::k),
-                     asy.a($$0, "passenger").forGetter(bq::l),
-                     asy.a($$0, "targeted_entity").forGetter(bq::m),
-                     asy.a(Codec.STRING, "team").forGetter(bq::n)
-                  )
-                  .apply($$1, bq::new)
-         ))
-   );
+public interface bq {
+   Codec<bq> a = bq.b.t.dispatch(bq::a, $$0 -> $$0.a().codec());
 
-   public static Optional<bc> a(JsonObject $$0, String $$1, bg $$2) {
-      JsonElement $$3 = $$0.get($$1);
-      return a($$1, $$2, $$3);
+   boolean a(blf var1, amp var2, @Nullable elb var3);
+
+   bq.a a();
+
+   static bq a(bxm $$0) {
+      return bq.b.f.a($$0);
    }
 
-   public static List<bc> b(JsonObject $$0, String $$1, bg $$2) {
-      JsonElement $$3 = $$0.get($$1);
-      if ($$3 != null && !$$3.isJsonNull()) {
-         JsonArray $$4 = atg.n($$3, $$1);
-         List<bc> $$5 = new ArrayList<>($$4.size());
+   static bq a(bxt $$0) {
+      return bq.b.g.a($$0);
+   }
 
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            a($$1 + "[" + $$6 + "]", $$2, $$4.get($$6)).ifPresent($$5::add);
+   public static record a(MapCodec<? extends bq> a) {
+   }
+
+   public static final class b {
+      public static final bq.a a = new bq.a(MapCodec.unit(new bq() {
+         @Override
+         public boolean a(blf $$0, amp $$1, @Nullable elb $$2) {
+            return true;
          }
 
-         return List.copyOf($$5);
-      } else {
-         return List.of();
-      }
-   }
-
-   private static Optional<bc> a(String $$0, bg $$1, @Nullable JsonElement $$2) {
-      Optional<Optional<bc>> $$3 = bc.a($$0, $$1, $$2, ehm.l);
-      if ($$3.isPresent()) {
-         return $$3.get();
-      } else {
-         Optional<bq> $$4 = a($$2);
-         return a($$4);
-      }
-   }
-
-   public static bc a(bq.a $$0) {
-      return a($$0.b());
-   }
-
-   public static Optional<bc> a(Optional<bq> $$0) {
-      return $$0.map(bq::a);
-   }
-
-   public static List<bc> a(bq.a... $$0) {
-      return Stream.of($$0).map(bq::a).toList();
-   }
-
-   public static bc a(bq $$0) {
-      eib $$1 = eie.a(efc.b.a, $$0).build();
-      return new bc(List.of($$1));
-   }
-
-   public boolean a(amj $$0, @Nullable bkv $$1) {
-      return this.a($$0.z(), $$0.dl(), $$1);
-   }
-
-   public boolean a(ami $$0, @Nullable ejz $$1, @Nullable bkv $$2) {
-      if ($$2 == null) {
-         return false;
-      } else if (this.b.isPresent() && !this.b.get().b($$2.ai())) {
-         return false;
-      } else {
-         if ($$1 == null) {
-            if (this.c.isPresent()) {
-               return false;
-            }
-         } else if (this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$2.ds(), $$2.du(), $$2.dy())) {
-            return false;
+         @Override
+         public bq.a a() {
+            return bq.b.a;
          }
-
-         if (this.d.isPresent() && !this.d.get().a($$0, $$2.ds(), $$2.du(), $$2.dy())) {
-            return false;
-         } else {
-            if (this.e.isPresent()) {
-               ejz $$3 = ejz.b($$2.aJ());
-               if (!this.e.get().a($$0, $$3.a(), $$3.b(), $$3.c())) {
-                  return false;
-               }
-            }
-
-            if (this.f.isPresent() && !this.f.get().a($$2)) {
-               return false;
-            } else if (this.g.isPresent() && !this.g.get().a($$2)) {
-               return false;
-            } else if (this.h.isPresent() && !this.h.get().a($$2)) {
-               return false;
-            } else if (this.i.isPresent() && !this.i.get().a($$2)) {
-               return false;
-            } else if (this.j.isPresent() && !this.j.get().a($$2, $$0, $$1)) {
-               return false;
-            } else if (this.k.isPresent() && !this.k.get().a($$0, $$1, $$2.da())) {
-               return false;
-            } else if (this.l.isPresent() && $$2.cQ().stream().noneMatch($$2x -> this.l.get().a($$0, $$1, $$2x))) {
-               return false;
-            } else if (this.m.isPresent() && !this.m.get().a($$0, $$1, $$2 instanceof bln ? ((bln)$$2).q() : null)) {
-               return false;
-            } else {
-               if (this.n.isPresent()) {
-                  ela $$4 = $$2.cg();
-                  if ($$4 == null || !this.n.get().equals($$4.b())) {
-                     return false;
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-   }
-
-   public static Optional<bq> a(@Nullable JsonElement $$0) {
-      return $$0 != null && !$$0.isJsonNull() ? Optional.of(ac.a(a.parse(JsonOps.INSTANCE, $$0), JsonParseException::new)) : Optional.empty();
-   }
-
-   public JsonElement a() {
-      return ac.a(a.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
-   }
-
-   public static efc b(amj $$0, bkv $$1) {
-      efi $$2 = new efi.a($$0.z()).a(ehn.a, $$1).a(ehn.f, $$0.dl()).a(ehm.l);
-      return new efc.a($$2).a(Optional.empty());
-   }
-
-   public static class a {
-      private Optional<bs> a = Optional.empty();
-      private Optional<bh> b = Optional.empty();
-      private Optional<cj> c = Optional.empty();
-      private Optional<cj> d = Optional.empty();
-      private Optional<cm> e = Optional.empty();
-      private Optional<cn> f = Optional.empty();
-      private Optional<bo> g = Optional.empty();
-      private Optional<bn> h = Optional.empty();
-      private Optional<br> i = Optional.empty();
-      private Optional<bq> j = Optional.empty();
-      private Optional<bq> k = Optional.empty();
-      private Optional<bq> l = Optional.empty();
-      private Optional<String> m = Optional.empty();
-
-      public static bq.a a() {
-         return new bq.a();
-      }
-
-      public bq.a a(bkz<?> $$0) {
-         this.a = Optional.of(bs.a($$0));
-         return this;
-      }
-
-      public bq.a a(arz<bkz<?>> $$0) {
-         this.a = Optional.of(bs.a($$0));
-         return this;
-      }
-
-      public bq.a a(bs $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public bq.a a(bh $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public bq.a a(cj.a $$0) {
-         this.c = Optional.of($$0.b());
-         return this;
-      }
-
-      public bq.a b(cj.a $$0) {
-         this.d = Optional.of($$0.b());
-         return this;
-      }
-
-      public bq.a a(cm.a $$0) {
-         this.e = $$0.b();
-         return this;
-      }
-
-      public bq.a a(cn $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public bq.a a(bo.a $$0) {
-         this.g = Optional.of($$0.b());
-         return this;
-      }
-
-      public bq.a a(bn.a $$0) {
-         this.h = Optional.of($$0.b());
-         return this;
-      }
-
-      public bq.a a(bn $$0) {
-         this.h = Optional.of($$0);
-         return this;
-      }
-
-      public bq.a a(br $$0) {
-         this.i = Optional.of($$0);
-         return this;
-      }
-
-      public bq.a a(bq.a $$0) {
-         this.j = Optional.of($$0.b());
-         return this;
-      }
-
-      public bq.a b(bq.a $$0) {
-         this.k = Optional.of($$0.b());
-         return this;
-      }
-
-      public bq.a c(bq.a $$0) {
-         this.l = Optional.of($$0.b());
-         return this;
-      }
-
-      public bq.a a(String $$0) {
-         this.m = Optional.of($$0);
-         return this;
-      }
-
-      public bq b() {
-         return new bq(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m);
-      }
+      }));
+      public static final bq.a b = new bq.a(cg.b);
+      public static final bq.a c = new bq.a(bu.c);
+      public static final bq.a d = new bq.a(cq.c);
+      public static final bq.a e = new bq.a(cx.b);
+      public static final bs<bxm> f = bs.a(kb.ak, $$0 -> $$0 instanceof bxl $$1 ? Optional.of($$1.gl()) : Optional.empty());
+      public static final bs<bxt> g = bs.a(kb.al, $$0 -> $$0 instanceof byx $$1 ? Optional.of($$1.A()) : Optional.empty());
+      public static final bs<byp.d> h = bs.a(byp.d.f, $$0 -> $$0 instanceof byp $$1 ? Optional.of($$1.ge()) : Optional.empty());
+      public static final bs<cgl.b> i = bs.a(cgl.b.j, $$0 -> $$0 instanceof cgl $$1 ? Optional.of($$1.y()) : Optional.empty());
+      public static final bs<bxs.v> j = bs.a(bxs.v.c, $$0 -> $$0 instanceof bxs $$1 ? Optional.of($$1.w()) : Optional.empty());
+      public static final bs<bxv.a> k = bs.a(bxv.a.c, $$0 -> $$0 instanceof bxv $$1 ? Optional.of($$1.w()) : Optional.empty());
+      public static final bs<ie<cba>> l = bs.a(kb.l.r(), $$0 -> $$0 instanceof caz $$1 ? Optional.of($$1.q()) : Optional.empty());
+      public static final bs<byc.g> m = bs.a(byc.g.h, $$0 -> $$0 instanceof byc $$1 ? Optional.of($$1.ge()) : Optional.empty());
+      public static final bs<bzq> n = bs.a(bzq.h, $$0 -> $$0 instanceof bzj $$1 ? Optional.of($$1.w()) : Optional.empty());
+      public static final bs<bzk.d> o = bs.a(bzk.d.e, $$0 -> $$0 instanceof bzk $$1 ? Optional.of($$1.gq()) : Optional.empty());
+      public static final bs<cej> p = bs.a(kb.y.q(), $$0 -> $$0 instanceof ceg $$1 ? Optional.of($$1.a()) : Optional.empty());
+      public static final bs<bxy.b> q = bs.a(bxy.b.f, $$0 -> $$0 instanceof bxy $$1 ? Optional.of($$1.gm()) : Optional.empty());
+      public static final bs<byi.b> r = bs.a(byi.b.m, $$0 -> $$0 instanceof byi $$1 ? Optional.of($$1.gp()) : Optional.empty());
+      public static final BiMap<String, bq.a> s = ImmutableBiMap.builder()
+         .put("any", a)
+         .put("lightning", b)
+         .put("fishing_hook", c)
+         .put("player", d)
+         .put("slime", e)
+         .put("cat", f.a())
+         .put("frog", g.a())
+         .put("axolotl", h.a())
+         .put("boat", i.a())
+         .put("fox", j.a())
+         .put("mooshroom", k.a())
+         .put("painting", l.a())
+         .put("rabbit", m.a())
+         .put("horse", n.a())
+         .put("llama", o.a())
+         .put("villager", p.a())
+         .put("parrot", q.a())
+         .put("tropical_fish", r.a())
+         .buildOrThrow();
+      public static final Codec<bq.a> t = atg.a(s.inverse()::get, s::get);
    }
 }

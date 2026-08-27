@@ -1,32 +1,32 @@
-public class abe implements wo<yh> {
-   private final int a;
-   private final int b;
+public class abe implements wu<yo> {
+   private final double a;
+   private final double b;
 
-   public abe(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public abe(dkg $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
    }
 
-   public abe(ty $$0) {
-      this.a = $$0.n();
-      this.b = $$0.n();
+   public abe(ue $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
+   public void a(ue $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public double a() {
+      return this.b;
    }
 
-   public int d() {
-      return this.b;
+   public double d() {
+      return this.a;
    }
 }

@@ -1,39 +1,50 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public class dwy extends dws {
+public class dwy extends dwv {
    public static final Codec<dwy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dmw.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dwy::new)
+      $$0 -> $$0.group(dos.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dos.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, dwy::new)
    );
-   private final dmw.a c;
-   private final int d;
-   private final int e;
+   private static final Logger b = LogUtils.getLogger();
+   private final dos d;
+   private final dos e;
+   private final LongSet f = new LongOpenHashSet();
 
-   private dwy(dmw.a $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private dwy(dos $$0, dos $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static dwy a(dmw.a $$0, int $$1, int $$2) {
-      return new dwy($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(dwr $$0, atw $$1, hx $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public static dwy a(dos $$0, dos $$1) {
+      return new dwy($$0, $$1);
    }
 
    @Override
-   public dwu<?> b() {
-      return dwu.c;
+   public int a(auf $$0, dov $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
+            b.warn("Empty height range: {}", this);
+         }
+
+         return $$2;
+      } else {
+         return aty.b($$0, $$2, $$3);
+      }
+   }
+
+   @Override
+   public dww<?> a() {
+      return dww.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.d + "-" + this.e + "]";
    }
 }

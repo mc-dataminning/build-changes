@@ -1,46 +1,19 @@
-import java.time.Instant;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class an {
-   @Nullable
-   private Instant a;
+public record an<T extends aq>(ap<T> b, T c) {
+   private static final MapCodec<an<?>> d = atg.a("trigger", "conditions", (Codec<ap<T>>)am.a, an::a, an::a);
+   public static final Codec<an<?>> a = d.codec();
 
-   public an() {
+   private static <T extends aq> Codec<an<T>> a(ap<T> $$0) {
+      return $$0.a().xmap($$1 -> new an<>($$0, (T)$$1), an::b);
    }
 
-   public an(Instant $$0) {
-      this.a = $$0;
+   public ap<T> a() {
+      return this.b;
    }
 
-   public boolean a() {
-      return this.a != null;
-   }
-
-   public void b() {
-      this.a = Instant.now();
-   }
-
-   public void c() {
-      this.a = null;
-   }
-
-   @Nullable
-   public Instant d() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "CriterionProgress{obtained=" + (this.a == null ? "false" : this.a) + "}";
-   }
-
-   public void a(ty $$0) {
-      $$0.a(this.a, ty::a);
-   }
-
-   public static an b(ty $$0) {
-      an $$1 = new an();
-      $$1.a = $$0.c(ty::w);
-      return $$1;
+   public T b() {
+      return this.c;
    }
 }

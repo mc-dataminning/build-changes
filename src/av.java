@@ -1,100 +1,63 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record av(Optional<arz<cvf>> b, Optional<ik<cvf>> c, Optional<da> d, Optional<cn> e) {
-   private static final Codec<ik<cvf>> f = kc.f.r().listOf().xmap(ik::a, $$0 -> $$0.a().toList());
-   public static final Codec<av> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               asy.a(arz.a(kd.e), "tag").forGetter(av::a),
-               asy.a(f, "blocks").forGetter(av::b),
-               asy.a(da.a, "state").forGetter(av::c),
-               asy.a(cn.a, "nbt").forGetter(av::d)
-            )
-            .apply($$0, av::new)
-   );
-
-   public boolean a(ami $$0, hx $$1) {
-      if (!$$0.o($$1)) {
-         return false;
-      } else {
-         dhn $$2 = $$0.a_($$1);
-         if (this.b.isPresent() && !$$2.a(this.b.get())) {
-            return false;
-         } else if (this.c.isPresent() && !$$2.a(this.c.get())) {
-            return false;
-         } else if (this.d.isPresent() && !this.d.get().a($$2)) {
-            return false;
-         } else {
-            if (this.e.isPresent()) {
-               dfi $$3 = $$0.c_($$1);
-               if ($$3 == null || !this.e.get().a($$3.o())) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      }
+public class av extends cv<av.a> {
+   @Override
+   public Codec<av.a> a() {
+      return av.a.a;
    }
 
-   public Optional<arz<cvf>> a() {
-      return this.b;
+   public void a(amq $$0, bxi $$1, bxi $$2, @Nullable bla $$3) {
+      ege $$4 = bp.b($$0, $$1);
+      ege $$5 = bp.b($$0, $$2);
+      ege $$6 = $$3 != null ? bp.b($$0, $$3) : null;
+      this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
-   public Optional<ik<cvf>> b() {
-      return this.c;
-   }
+   public static record a(Optional<bb> b, Optional<bb> c, Optional<bb> d, Optional<bb> e) implements cv.a {
+      public static final Codec<av.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  atg.a(bp.b, "player").forGetter(av.a::a),
+                  atg.a(bp.b, "parent").forGetter(av.a::c),
+                  atg.a(bp.b, "partner").forGetter(av.a::d),
+                  atg.a(bp.b, "child").forGetter(av.a::e)
+               )
+               .apply($$0, av.a::new)
+      );
 
-   public Optional<da> c() {
-      return this.d;
-   }
-
-   public Optional<cn> d() {
-      return this.e;
-   }
-
-   public static class a {
-      private Optional<ik<cvf>> a = Optional.empty();
-      private Optional<arz<cvf>> b = Optional.empty();
-      private Optional<da> c = Optional.empty();
-      private Optional<cn> d = Optional.empty();
-
-      private a() {
+      public static an<av.a> b() {
+         return am.p.a(new av.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public static av.a a() {
-         return new av.a();
+      public static an<av.a> a(bp.a $$0) {
+         return am.p.a(new av.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(bp.a($$0))));
       }
 
-      public av.a a(cvf... $$0) {
-         this.a = Optional.of(ik.a(cvf::r, $$0));
-         return this;
+      public static an<av.a> a(Optional<bp> $$0, Optional<bp> $$1, Optional<bp> $$2) {
+         return am.p.a(new av.a(Optional.empty(), bp.a($$0), bp.a($$1), bp.a($$2)));
       }
 
-      public av.a a(Collection<cvf> $$0) {
-         this.a = Optional.of(ik.a(cvf::r, $$0));
-         return this;
+      public boolean a(ege $$0, ege $$1, @Nullable ege $$2) {
+         return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      public av.a a(arz<cvf> $$0) {
-         this.b = Optional.of($$0);
-         return this;
+      private static boolean a(Optional<bb> $$0, ege $$1) {
+         return $$0.isEmpty() || $$0.get().a($$1);
       }
 
-      public av.a a(sd $$0) {
-         this.d = Optional.of(new cn($$0));
-         return this;
+      @Override
+      public void a(bc $$0) {
+         cv.a.super.a($$0);
+         $$0.a(this.c, ".parent");
+         $$0.a(this.d, ".partner");
+         $$0.a(this.e, ".child");
       }
 
-      public av.a a(da.a $$0) {
-         this.c = $$0.b();
-         return this;
-      }
-
-      public av b() {
-         return new av(this.b, this.a, this.c, this.d);
+      @Override
+      public Optional<bb> a() {
+         return this.b;
       }
    }
 }

@@ -1,41 +1,37 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dh extends cw<dh.a> {
-   public dh.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<cb> $$3 = cb.a($$0.get("item"));
-      return new dh.a($$1, $$3);
+public class dh extends cv<dh.a> {
+   @Override
+   public Codec<dh.a> a() {
+      return dh.a.a;
    }
 
-   public void a(amj $$0, clo $$1) {
+   public void a(amq $$0, cmh $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static class a extends at {
-      private final Optional<cb> a;
+   public static record a(Optional<bb> b, Optional<ca> c) implements cv.a {
+      public static final Codec<dh.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(dh.a::a), atg.a(ca.a, "item").forGetter(dh.a::b)).apply($$0, dh.a::new)
+      );
 
-      public a(Optional<bc> $$0, Optional<cb> $$1) {
-         super($$0);
-         this.a = $$1;
+      public static an<dh.a> a(bp.a $$0, ca.a $$1) {
+         return am.U.a(new dh.a(Optional.of(bp.a($$0)), Optional.of($$1.b())));
       }
 
-      public static am<dh.a> a(cb $$0) {
-         return al.B.a(new dh.a(Optional.empty(), Optional.of($$0)));
-      }
-
-      public static am<dh.a> a(cse $$0) {
-         return al.B.a(new dh.a(Optional.empty(), Optional.of(cb.a.a().a($$0).b())));
-      }
-
-      public boolean a(clo $$0) {
-         return this.a.isEmpty() || this.a.get().a($$0);
+      public boolean a(cmh $$0) {
+         return !this.c.isPresent() || this.c.get().a($$0);
       }
 
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         return $$0;
+      public Optional<bb> a() {
+         return this.b;
+      }
+
+      public Optional<ca> b() {
+         return this.c;
       }
    }
 }

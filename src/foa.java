@@ -1,79 +1,77 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-public class foa extends fpo {
-   private final float a;
-   private final fpj b;
+public class foa implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<foa.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
 
-   foa(flo $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fpj $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
+   public void a(hv $$0, dip $$1, frk $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new foa.a(this.b, $$1, $$2.dk()));
    }
 
-   @Override
-   public fos b() {
-      return fos.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * atq.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public boolean a(hv $$0, dip $$1) {
+      foa.a $$2 = (foa.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
       } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
-
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
+         $$2.a($$1);
+         return true;
       }
    }
 
-   public static class a implements foq<jo> {
-      private final fpj a;
+   public void a(int $$0, fmt $$1) {
+      ObjectIterator<Entry<foa.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
 
-      public a(fpj $$0) {
-         this.a = $$0;
+      while ($$2.hasNext()) {
+         Entry<foa.a> $$3 = (Entry<foa.a>)$$2.next();
+         foa.a $$4 = (foa.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            hv $$5 = hv.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
+         }
+      }
+   }
+
+   public foa a() {
+      this.b++;
+      this.c = true;
+      return this;
+   }
+
+   @Override
+   public void close() {
+      this.c = false;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   static class a {
+      final elb a;
+      int b;
+      dip c;
+
+      a(int $$0, dip $$1, elb $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      @Nullable
-      public fon a(jo $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dhn $$8 = $$0.c();
-         if (!$$8.i() && $$8.l() == dbk.a) {
-            return null;
-         } else {
-            hx $$9 = hx.a($$2, $$3, $$4);
-            int $$10 = eti.N().at().a($$8, $$1, $$9);
-            if ($$8.b() instanceof cyb) {
-               $$10 = ((cyb)$$8.b()).b($$8, $$1, $$9);
-            }
+      foa.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new foa($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+      void a(dip $$0) {
+         this.c = $$0;
       }
    }
 }

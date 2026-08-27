@@ -1,15 +1,17 @@
-public enum djd {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum djd implements aut {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final int d;
+   private final String e;
 
-   private djd(int $$0) {
-      this.d = $$0;
+   private djd(String $$0) {
+      this.e = $$0;
    }
 
-   public int a() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.e;
    }
 }

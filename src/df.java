@@ -1,46 +1,36 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class df extends cw<df.a> {
-   public df.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<bc> $$3 = bq.a($$0, "villager", $$2);
-      Optional<cb> $$4 = cb.a($$0.get("item"));
-      return new df.a($$1, $$3, $$4);
+public class df extends cv<df.a> {
+   @Override
+   public Codec<df.a> a() {
+      return df.a.a;
    }
 
-   public void a(amj $$0, cdh $$1, clo $$2) {
-      efc $$3 = bq.b($$0, $$1);
-      this.a($$0, $$2x -> $$2x.a($$3, $$2));
+   public void a(amq $$0, hv $$1) {
+      double $$2 = $$0.dr() - (double)$$1.u();
+      double $$3 = $$0.dx() - (double)$$1.w();
+      double $$4 = $$2 * $$2 + $$3 * $$3;
+      this.a($$0, $$1x -> $$1x.a($$4));
    }
 
-   public static class a extends at {
-      private final Optional<bc> a;
-      private final Optional<cb> b;
+   public static record a(Optional<bb> b, ck.c c) implements cv.a {
+      public static final Codec<df.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(df.a::a), atg.a(ck.c.d, "distance", ck.c.c).forGetter(df.a::b)).apply($$0, df.a::new)
+      );
 
-      public a(Optional<bc> $$0, Optional<bc> $$1, Optional<cb> $$2) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
-      }
-
-      public static am<df.a> c() {
-         return al.s.a(new df.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static am<df.a> a(bq.a $$0) {
-         return al.s.a(new df.a(Optional.of(bq.a($$0)), Optional.empty(), Optional.empty()));
-      }
-
-      public boolean a(efc $$0, clo $$1) {
-         return this.a.isPresent() && !this.a.get().a($$0) ? false : !this.b.isPresent() || this.b.get().a($$1);
+      public boolean a(double $$0) {
+         return this.c.e($$0);
       }
 
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.b.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         this.a.ifPresent($$1 -> $$0.add("villager", $$1.a()));
-         return $$0;
+      public Optional<bb> a() {
+         return this.b;
+      }
+
+      public ck.c b() {
+         return this.c;
       }
    }
 }

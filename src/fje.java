@@ -1,53 +1,41 @@
-import com.google.common.collect.ImmutableList;
-
-public class fje<T extends bkv> extends fgs<T> {
-   protected final fkt a;
-   protected final fkt b;
-   protected final fkt f;
-   protected final fkt g;
-   protected final fkt h;
-   protected final fkt i;
-
-   protected fje(fkt $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, int $$6) {
-      super($$1, $$2, $$3, $$4, $$5, (float)$$6);
-      this.a = $$0.b("head");
-      this.b = $$0.b("body");
-      this.f = $$0.b("right_hind_leg");
-      this.g = $$0.b("left_hind_leg");
-      this.h = $$0.b("right_front_leg");
-      this.i = $$0.b("left_front_leg");
+public class fje<T extends bzd> extends fki<T> {
+   public fje(fly $$0) {
+      super($$0, true, 19.0F, 1.0F, 2.5F, 2.0F, 24);
    }
 
-   public static flb a(int $$0, fkx $$1) {
-      flb $$2 = new flb();
-      flc $$3 = $$2.a();
-      $$3.a("head", fky.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), fkv.a(0.0F, (float)(18 - $$0), -6.0F));
-      $$3.a("body", fky.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), fkv.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fky $$4 = fky.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
-      $$3.a("right_hind_leg", $$4, fkv.a(-3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("left_hind_leg", $$4, fkv.a(3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("right_front_leg", $$4, fkv.a(-3.0F, (float)(24 - $$0), -5.0F));
-      $$3.a("left_front_leg", $$4, fkv.a(3.0F, (float)(24 - $$0), -5.0F));
-      return $$2;
+   public static fme c() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      fmh $$2 = $$1.a(
+         "head",
+         fmd.c()
+            .a(2, 61)
+            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(2, 61)
+            .a()
+            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(23, 52)
+            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
+         fma.a(1.0F, 14.0F, 0.0F)
+      );
+      $$2.a("left_horn", fmd.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fma.a(0.0F, 0.0F, 0.0F));
+      $$2.a("right_horn", fmd.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fma.a(0.0F, 0.0F, 0.0F));
+      $$2.a("nose", fmd.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), fma.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
+      $$1.a("body", fmd.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), fma.a(0.0F, 24.0F, 0.0F));
+      $$1.a("left_hind_leg", fmd.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fma.a(1.0F, 14.0F, 4.0F));
+      $$1.a("right_hind_leg", fmd.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fma.a(-3.0F, 14.0F, 4.0F));
+      $$1.a("left_front_leg", fmd.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fma.a(1.0F, 14.0F, -6.0F));
+      $$1.a("right_front_leg", fmd.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fma.a(-3.0F, 14.0F, -6.0F));
+      return fme.a($$0, 64, 64);
    }
 
-   @Override
-   protected Iterable<fkt> a() {
-      return ImmutableList.of(this.a);
-   }
-
-   @Override
-   protected Iterable<fkt> b() {
-      return ImmutableList.of(this.b, this.f, this.g, this.h, this.i);
-   }
-
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.e = $$5 * (float) (Math.PI / 180.0);
-      this.a.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = atq.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = atq.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = atq.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = atq.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.a.b("left_horn").k = $$0.ge();
+      this.a.b("right_horn").k = $$0.gk();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.gp();
+      if ($$6 != 0.0F) {
+         this.a.e = $$6;
+      }
    }
 }

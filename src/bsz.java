@@ -1,79 +1,86 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bsz extends bsg {
-   public static final int a = 1;
-   protected final blu b;
-   protected final double c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected boolean g;
+public class bsz extends bsr {
+   public static final float a = 0.02F;
+   protected final blx b;
+   @Nullable
+   protected blf c;
+   protected final float d;
+   private int h;
+   protected final float e;
+   private final boolean i;
+   protected final Class<? extends blv> f;
+   protected final bwj g;
 
-   public bsz(blu $$0, double $$1) {
+   public bsz(blx $$0, Class<? extends blv> $$1, float $$2) {
+      this($$0, $$1, $$2, 0.02F);
+   }
+
+   public bsz(blx $$0, Class<? extends blv> $$1, float $$2, float $$3) {
+      this($$0, $$1, $$2, $$3, false);
+   }
+
+   public bsz(blx $$0, Class<? extends blv> $$1, float $$2, float $$3, boolean $$4) {
       this.b = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bsg.a.a));
+      this.f = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.i = $$4;
+      this.a(EnumSet.of(bsr.a.b));
+      if ($$1 == cer.class) {
+         this.g = bwj.b().a((double)$$2).a($$1x -> bli.b($$0).test($$1x));
+      } else {
+         this.g = bwj.b().a((double)$$2);
+      }
    }
 
    @Override
    public boolean a() {
-      if (!this.h()) {
+      if (this.b.eg().i() >= this.e) {
          return false;
       } else {
-         if (this.b.bN()) {
-            hx $$0 = this.a(this.b.dN(), this.b, 5);
-            if ($$0 != null) {
-               this.d = (double)$$0.u();
-               this.e = (double)$$0.v();
-               this.f = (double)$$0.w();
-               return true;
-            }
+         if (this.b.q() != null) {
+            this.c = this.b.q();
          }
 
-         return this.i();
+         if (this.f == cer.class) {
+            this.c = this.b.dM().a(this.g, this.b, this.b.dr(), this.b.dv(), this.b.dx());
+         } else {
+            this.c = this.b
+               .dM()
+               .a(this.b.dM().a(this.f, this.b.cH().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.dr(), this.b.dv(), this.b.dx());
+         }
+
+         return this.c != null;
       }
-   }
-
-   protected boolean h() {
-      return this.b.ei() != null || this.b.dC() || this.b.bN();
-   }
-
-   protected boolean i() {
-      ejz $$0 = bwb.a(this.b, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.d = $$0.c;
-         this.e = $$0.d;
-         this.f = $$0.e;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.g;
-   }
-
-   @Override
-   public void c() {
-      this.b.N().a(this.d, this.e, this.f, this.c);
-      this.g = true;
-   }
-
-   @Override
-   public void d() {
-      this.g = false;
    }
 
    @Override
    public boolean b() {
-      return !this.b.N().l();
+      if (!this.c.bx()) {
+         return false;
+      } else {
+         return this.b.f(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
+      }
    }
 
-   @Nullable
-   protected hx a(crl $$0, bkv $$1, int $$2) {
-      hx $$3 = $$1.dn();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : hx.a($$1.dn(), $$2, 1, $$1x -> $$0.b_($$1x).a(arp.a)).orElse(null);
+   @Override
+   public void c() {
+      this.h = this.a(40 + this.b.eg().a(40));
+   }
+
+   @Override
+   public void d() {
+      this.c = null;
+   }
+
+   @Override
+   public void e() {
+      if (this.c.bx()) {
+         double $$0 = this.i ? this.b.dv() : this.c.dv();
+         this.b.I().a(this.c.dr(), $$0, this.c.dx());
+         this.h--;
+      }
    }
 }

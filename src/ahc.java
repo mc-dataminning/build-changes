@@ -1,17 +1,15 @@
-public interface ahc extends ahb {
-   alg a();
+import java.util.List;
 
-   String b();
+public enum ahc {
+   a,
+   b,
+   c,
+   d;
 
-   int d();
+   private static final List<ahc> e = List.of(values());
+   private static final is.b f = is.a(kb.ar);
 
-   String f();
-
-   String[] L();
-
-   String q();
-
-   String s();
-
-   String a(String var1);
+   public static im<ahc> a() {
+      return new im<>(e).a(a, f);
+   }
 }

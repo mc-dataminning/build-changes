@@ -1,26 +1,76 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import com.mojang.serialization.DynamicOps;
+import java.util.Set;
 
-public class avg extends DataFix {
-   private final String a;
-   private final Function<String, String> b;
+public enum avg {
+   a(bbg.a),
+   b(bbg.b),
+   c(bbg.c),
+   d(bbg.d),
+   e(bbg.e),
+   f(bbg.f),
+   g(bbg.g),
+   h(bbg.h),
+   i(bbg.i),
+   j(bbg.j),
+   k(bbg.k),
+   l(bbg.l),
+   m(bbg.m),
+   n(bbg.o),
+   o(bbg.n),
+   p(bbg.p),
+   q(bbg.q),
+   r(bbg.I),
+   s(bbg.r);
 
-   public avg(Schema $$0, boolean $$1, String $$2, Function<String, String> $$3) {
-      super($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
+
+   private avg(TypeReference $$0) {
+      this.u = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.a, this.getInputSchema().getType(bax.p), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.updateMapValues($$1 -> {
-                  String $$2 = ((Dynamic)$$1.getFirst()).asString("");
-                  return $$1.mapFirst($$2x -> $$0x.createString(this.b.apply($$2)));
-               }))
-      );
+   static int a() {
+      return aa.b().d().c();
+   }
+
+   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
+      return new Codec<A>() {
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
+            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(avg.a())));
+         }
+
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
+            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
+            Dynamic<T> $$4 = avg.this.a($$1, $$3, $$2);
+            return $$0.decode($$4);
+         }
+      };
+   }
+
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
+   }
+
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   public sj a(DataFixer $$0, sj $$1, int $$2, int $$3) {
+      return (sj)this.a($$0, new Dynamic(sx.a, $$1), $$2, $$3).getValue();
+   }
+
+   public sj a(DataFixer $$0, sj $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   static {
+      t = Set.of(a.u);
    }
 }

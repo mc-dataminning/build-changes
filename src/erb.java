@@ -1,50 +1,46 @@
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class erb extends ghw {
-   private static final uv a = uv.c("mco.account.privacy.information");
-   private static final int b = 15;
-   private final eys c = eys.d();
-   private final faz v;
+public class erb extends eqz {
+   private static final Logger j = LogUtils.getLogger();
+   public String a = "";
+   public String b = "";
+   public String c = "";
+   public String d = "";
+   public String e = "";
    @Nullable
-   private evy w;
+   public String f;
+   public String g = "";
+   public String h = "";
+   public erb.a i = erb.a.a;
 
-   public erb(faz $$0) {
-      super(eta.a);
-      this.v = $$0;
-   }
+   public static erb a(JsonObject $$0) {
+      erb $$1 = new erb();
 
-   @Override
-   public void aQ_() {
-      this.c.a(15).c().b();
-      this.w = new evy(a, this.i).b(true);
-      this.c.a(this.w);
-      eys $$0 = this.c.a(eys.e().a(8));
-      uv $$1 = uv.c("mco.account.privacy.info.button");
-      $$0.a(eve.a($$1, ezr.b(this, "https://aka.ms/MinecraftGDPR")).a());
-      $$0.a(eve.a(uu.k, $$0x -> this.aG_()).a());
-      this.c.a($$1x -> {
-         evc var10000 = this.d($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   public void aG_() {
-      this.f.a(this.v);
-   }
-
-   @Override
-   protected void c() {
-      if (this.w != null) {
-         this.w.j(this.g - 15);
+      try {
+         $$1.a = esw.b("id", $$0, "");
+         $$1.b = esw.b("name", $$0, "");
+         $$1.c = esw.b("version", $$0, "");
+         $$1.d = esw.b("author", $$0, "");
+         $$1.e = esw.b("link", $$0, "");
+         $$1.f = esw.b("image", $$0, null);
+         $$1.g = esw.b("trailer", $$0, "");
+         $$1.h = esw.b("recommendedPlayers", $$0, "");
+         $$1.i = erb.a.valueOf(esw.b("type", $$0, erb.a.a.name()));
+      } catch (Exception var3) {
+         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
       }
 
-      this.c.a();
-      eym.a(this.c, this.s());
+      return $$1;
    }
 
-   @Override
-   public uv h() {
-      return a;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

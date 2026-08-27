@@ -1,25 +1,37 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
+
 public class aug {
-   private double a;
-   private double b;
-   private double c;
+   public static final Codec<aug> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(atg.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), atg.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+            .apply($$0, aug::new)
+   );
+   private final Optional<Pattern> b;
+   private final Predicate<String> c;
+   private final Optional<Pattern> d;
+   private final Predicate<String> e;
+   private final Predicate<agt> f;
 
-   public double a(double $$0, double $$1) {
-      this.a += $$0;
-      double $$2 = this.a - this.b;
-      double $$3 = atq.d(0.5, this.c, $$2);
-      double $$4 = Math.signum($$2);
-      if ($$4 * $$2 > $$4 * this.c) {
-         $$2 = $$3;
-      }
-
-      this.c = $$3;
-      this.b += $$2 * $$1;
-      return $$2 * $$1;
+   private aug(Optional<Pattern> $$0, Optional<Pattern> $$1) {
+      this.b = $$0;
+      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.d = $$1;
+      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
    }
 
-   public void a() {
-      this.a = 0.0;
-      this.b = 0.0;
-      this.c = 0.0;
+   public Predicate<String> a() {
+      return this.c;
+   }
+
+   public Predicate<String> b() {
+      return this.e;
+   }
+
+   public Predicate<agt> c() {
+      return this.f;
    }
 }

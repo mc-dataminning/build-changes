@@ -1,25 +1,31 @@
-public class cpy extends cpz {
-   protected cpy(cpz.a $$0, bla... $$1) {
-      super($$0, cqa.g, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class cpy<T extends cpc> implements cpp<T> {
+   private final cpy.a<T> x;
+   private final Codec<T> y;
+
+   public cpy(cpy.a<T> $$0) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create($$1 -> $$1.group(cpb.e.fieldOf("category").orElse(cpb.d).forGetter(cpc::d)).apply($$1, $$0::create));
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + 10 * ($$0 - 1);
+   public Codec<T> a() {
+      return this.y;
    }
 
-   @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
+   public T b(ue $$0) {
+      cpb $$1 = $$0.b(cpb.class);
+      return this.x.create($$1);
    }
 
-   @Override
-   public int a() {
-      return 5;
+   public void a(ue $$0, T $$1) {
+      $$0.a($$1.d());
    }
 
-   @Override
-   public boolean a(clo $$0) {
-      return $$0.a(clr.rS) ? true : super.a($$0);
+   @FunctionalInterface
+   public interface a<T extends cpc> {
+      T create(cpb var1);
    }
 }

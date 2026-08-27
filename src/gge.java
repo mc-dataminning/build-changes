@@ -1,87 +1,107 @@
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public abstract class gge implements ggw {
+   protected ggt a;
+   protected final ard b;
+   protected final agt c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected ggw.a k = ggw.a.b;
+   protected boolean l;
+   protected auf m;
 
-public class gge {
-   private final Set<gge.a> a = Sets.newIdentityHashSet();
-   final elx b;
-   final Executor c;
-
-   public gge(elx $$0, Executor $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   protected gge(arb $$0, ard $$1, auf $$2) {
+      this($$0.a(), $$1, $$2);
    }
 
-   public CompletableFuture<gge.a> a(elx.c $$0) {
-      CompletableFuture<gge.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         elw $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            gge.a $$3 = new gge.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
+   protected gge(agt $$0, ard $$1, auf $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
+   }
+
+   @Override
+   public agt a() {
+      return this.c;
+   }
+
+   @Override
+   public gib a(gia $$0) {
+      if (this.c.equals(gia.b)) {
+         this.a = gia.d;
+         return gia.c;
+      } else {
+         gib $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = gia.a;
          } else {
-            $$1.complete(null);
+            this.a = $$1.a(this.m);
          }
-      });
-      return $$1;
+
+         return $$1;
+      }
    }
 
-   public void a(Consumer<Stream<elw>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   @Override
+   public ggt b() {
+      return this.a;
    }
 
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<gge.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            gge.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
-         }
-      });
+   @Override
+   public ard c() {
+      return this.b;
    }
 
-   public void b() {
-      this.a.forEach(gge.a::b);
-      this.a.clear();
+   @Override
+   public boolean d() {
+      return this.i;
    }
 
-   public class a {
-      @Nullable
-      elw b;
-      private boolean c;
+   @Override
+   public int e() {
+      return this.j;
+   }
 
-      public boolean a() {
-         return this.c;
-      }
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
 
-      public a(elw $$1) {
-         this.b = $$1;
-      }
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
 
-      public void a(Consumer<elw> $$0) {
-         gge.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
-            }
-         });
-      }
+   @Override
+   public double h() {
+      return this.f;
+   }
 
-      public void b() {
-         this.c = true;
-         gge.this.b.a(this.b);
-         this.b = null;
-      }
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public ggw.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

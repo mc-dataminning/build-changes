@@ -1,46 +1,42 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class ekb extends eks {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
+public record ekb(ejy b, ejy c) implements ejy {
+   public static final Codec<ekb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ejz.a.fieldOf("min").forGetter(ekb::c), ejz.a.fieldOf("max").forGetter(ekb::d)).apply($$0, ekb::new)
+   );
 
-   protected ekb(eki $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
+   @Override
+   public ejx b() {
+      return ejz.c;
    }
 
-   ekb(eki $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
+   public static ekb a(float $$0, float $$1) {
+      return new ekb(ejw.a($$0), ejw.a($$1));
    }
 
    @Override
-   protected DoubleList a(ib.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
-      }
+   public int a(ege $$0) {
+      return aty.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   }
+
+   @Override
+   public float b(ege $$0) {
+      return aty.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
+
+   @Override
+   public Set<eim<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public ejy c() {
+      return this.b;
+   }
+
+   public ejy d() {
+      return this.c;
    }
 }

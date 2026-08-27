@@ -1,24 +1,16 @@
-public class wu implements wo<wr> {
-   private final long a;
+import javax.annotation.Nullable;
 
-   public wu(long $$0) {
-      this.a = $$0;
+public interface wu<T extends uk> {
+   void a(ue var1);
+
+   void a(T var1);
+
+   default boolean b() {
+      return false;
    }
 
-   public wu(ty $$0) {
-      this.a = $$0.readLong();
-   }
-
-   @Override
-   public void a(ty $$0) {
-      $$0.b(this.a);
-   }
-
-   public void a(wr $$0) {
-      $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
+   @Nullable
+   default ud c() {
+      return null;
    }
 }

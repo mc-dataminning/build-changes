@@ -1,57 +1,47 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public class dqw extends dqa<dsn> {
-   public dqw(Codec<dsn> $$0) {
+public class dqw extends drc<dtd> {
+   public dqw(Codec<dtd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dqc<dsn> $$0) {
-      csg $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      atw $$3 = $$0.d();
-      dsn $$4 = $$0.f();
-      Optional<ib> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         hx $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && dpw.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         dpw.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
-      }
-   }
+   public boolean a(dre<dtd> $$0) {
+      dtd $$1 = $$0.f();
+      hv $$2 = $$0.e();
+      ctt $$3 = $$0.b();
+      auf $$4 = $$0.d();
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      hv.a $$10 = new hv.a();
 
-   private static Optional<ib> a(csg $$0, hx $$1, atw $$2) {
-      boolean $$3 = dpw.b($$0.a_($$1.c()));
-      boolean $$4 = dpw.b($$0.a_($$1.d()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? ib.a : ib.b);
-      } else if ($$3) {
-         return Optional.of(ib.a);
-      } else {
-         return $$4 ? Optional.of(ib.b) : Optional.empty();
-      }
-   }
-
-   private static void a(csg $$0, atw $$1, hx $$2, dsn $$3) {
-      dpw.c($$0, $$2);
-
-      for (ib $$4 : ib.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            hx $$5 = $$2.a($$4);
-            dpw.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               hx $$6 = $$5.a(ib.b($$1));
-               dpw.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  hx $$7 = $$6.a(ib.b($$1));
-                  dpw.c($$0, $$7);
-               }
-            }
+      for (hv $$11 : hv.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
          }
       }
+
+      return $$5;
+   }
+
+   protected boolean a(dtd $$0, ctt $$1, auf $$2, int $$3, int $$4, hv.a $$5) {
+      boolean $$6 = false;
+
+      for (int $$7 = $$3; $$7 > $$4; $$7--) {
+         $$5.q($$7);
+         if ($$0.b().test($$1, $$5)) {
+            dip $$8 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$8, 2);
+            this.a($$1, $$5);
+            $$6 = true;
+         }
+      }
+
+      return $$6;
    }
 }

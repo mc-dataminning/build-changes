@@ -1,7 +1,10 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class cyb extends cvf implements cya {
-   public cyb(dhm.d $$0) {
+public abstract class cyb extends czu {
+   protected static final elu c = cvz.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   public static final djg d = djf.w;
+
+   protected cyb(dio.d $$0) {
       super($$0);
    }
 
@@ -9,46 +12,164 @@ public abstract class cyb extends cvf implements cya {
    protected abstract MapCodec<? extends cyb> a();
 
    @Override
-   public void b(dhn $$0, csf $$1, hx $$2, dhn $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return c;
    }
 
    @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      $$3.a($$4, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      hv $$3 = $$2.d();
+      return this.b($$1, $$3, $$1.a_($$3));
+   }
+
+   protected boolean b(ctb $$0, hv $$1, dip $$2) {
+      return $$2.a($$0, $$1, ia.b, ddz.c);
    }
 
    @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      if (h($$1.a_($$2.d())) && $$2.v() >= $$1.J_()) {
-         car $$4 = car.a($$1, $$2, $$0);
-         this.a($$4);
-      }
-   }
-
-   protected void a(car $$0) {
-   }
-
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean h(dhn $$0) {
-      return $$0.i() || $$0.a(ark.aJ) || $$0.k() || $$0.r();
-   }
-
-   @Override
-   public void a(dhn $$0, csf $$1, hx $$2, atw $$3) {
-      if ($$3.a(16) == 0) {
-         hx $$4 = $$2.d();
-         if (h($$1.a_($$4))) {
-            att.a($$1, $$2, $$3, new jo(jw.z, $$0));
+   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
+      if (!this.c((ctb)$$1, $$2, $$0)) {
+         boolean $$4 = $$0.c(d);
+         boolean $$5 = this.a((csy)$$1, $$2, $$0);
+         if ($$4 && !$$5) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 2);
+         } else if (!$$4) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 2);
+            if (!$$5) {
+               $$1.a($$2, this, this.g($$0), emr.b);
+            }
          }
       }
    }
 
-   public int b(dhn $$0, crl $$1, hx $$2) {
-      return -16777216;
+   @Override
+   public int b(dip $$0, cse $$1, hv $$2, ia $$3) {
+      return $$0.b($$1, $$2, $$3);
    }
+
+   @Override
+   public int a(dip $$0, cse $$1, hv $$2, ia $$3) {
+      if (!$$0.c(d)) {
+         return 0;
+      } else {
+         return $$0.c(aE) == $$3 ? this.a($$1, $$2, $$0) : 0;
+      }
+   }
+
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, cvz $$3, hv $$4, boolean $$5) {
+      if ($$0.a((ctb)$$1, $$2)) {
+         this.c($$1, $$2, $$0);
+      } else {
+         dgd $$6 = $$0.t() ? $$1.c_($$2) : null;
+         a($$0, $$1, $$2, $$6);
+         $$1.a($$2, false);
+
+         for (ia $$7 : ia.values()) {
+            $$1.a($$2.a($$7), this);
+         }
+      }
+   }
+
+   protected void c(csy $$0, hv $$1, dip $$2) {
+      if (!this.c((ctb)$$0, $$1, $$2)) {
+         boolean $$3 = $$2.c(d);
+         boolean $$4 = this.a($$0, $$1, $$2);
+         if ($$3 != $$4 && !$$0.M().b($$1, this)) {
+            emr $$5 = emr.c;
+            if (this.b((cse)$$0, $$1, $$2)) {
+               $$5 = emr.a;
+            } else if ($$3) {
+               $$5 = emr.b;
+            }
+
+            $$0.a($$1, this, this.g($$2), $$5);
+         }
+      }
+   }
+
+   public boolean c(ctb $$0, hv $$1, dip $$2) {
+      return false;
+   }
+
+   protected boolean a(csy $$0, hv $$1, dip $$2) {
+      return this.b($$0, $$1, $$2) > 0;
+   }
+
+   protected int b(csy $$0, hv $$1, dip $$2) {
+      ia $$3 = $$2.c(aE);
+      hv $$4 = $$1.a($$3);
+      int $$5 = $$0.c($$4, $$3);
+      if ($$5 >= 15) {
+         return $$5;
+      } else {
+         dip $$6 = $$0.a_($$4);
+         return Math.max($$5, $$6.a(cwb.cw) ? $$6.c(dca.f) : 0);
+      }
+   }
+
+   protected int a(cto $$0, hv $$1, dip $$2) {
+      ia $$3 = $$2.c(aE);
+      ia $$4 = $$3.h();
+      ia $$5 = $$3.i();
+      boolean $$6 = this.b();
+      return Math.max($$0.a($$1.a($$4), $$4, $$6), $$0.a($$1.a($$5), $$5, $$6));
+   }
+
+   @Override
+   public boolean f_(dip $$0) {
+      return true;
+   }
+
+   @Override
+   public dip a(coq $$0) {
+      return this.o().a(aE, $$0.g().g());
+   }
+
+   @Override
+   public void a(csy $$0, hv $$1, dip $$2, blv $$3, cmh $$4) {
+      if (this.a($$0, $$1, $$2)) {
+         $$0.a($$1, this, 1);
+      }
+   }
+
+   @Override
+   public void b(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
+      this.d($$1, $$2, $$0);
+   }
+
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         this.d($$1, $$2, $$0);
+      }
+   }
+
+   protected void d(csy $$0, hv $$1, dip $$2) {
+      ia $$3 = $$2.c(aE);
+      hv $$4 = $$1.a($$3.g());
+      $$0.a($$4, this, $$1);
+      $$0.a($$4, this, $$3);
+   }
+
+   protected boolean b() {
+      return false;
+   }
+
+   protected int a(cse $$0, hv $$1, dip $$2) {
+      return 15;
+   }
+
+   public static boolean h(dip $$0) {
+      return $$0.b() instanceof cyb;
+   }
+
+   public boolean b(cse $$0, hv $$1, dip $$2) {
+      ia $$3 = $$2.c(aE).g();
+      dip $$4 = $$0.a_($$1.a($$3));
+      return h($$4) && $$4.c(aE) != $$3;
+   }
+
+   protected abstract int g(dip var1);
 }

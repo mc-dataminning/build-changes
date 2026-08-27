@@ -1,42 +1,28 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record eih(float b, float c) implements eib {
-   public static final Codec<eih> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(eih::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(eih::d)).apply($$0, eih::new)
-   );
+public class eih extends ehq {
+   public static final Codec<eih> a = RecordCodecBuilder.create($$0 -> a($$0).and(kb.i.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eih::new));
+   private final ie<coe> b;
 
-   @Override
-   public eic b() {
-      return eid.f;
+   private eih(List<ejd> $$0, ie<coe> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<ehk<?>> a() {
-      return ImmutableSet.of(ehn.d);
+   public ehs b() {
+      return eht.z;
    }
 
-   public boolean a(efc $$0) {
-      bkv $$1 = $$0.c(ehn.d);
-      int $$2 = 0;
-      if ($$1 instanceof bll) {
-         $$2 = cqb.h((bll)$$1);
-      }
-
-      return $$0.b().i() < this.b + (float)$$2 * this.c;
+   @Override
+   public cmh a(cmh $$0, ege $$1) {
+      cog.a($$0, this.b.a());
+      return $$0;
    }
 
-   public static eib.a a(float $$0, float $$1) {
-      return () -> new eih($$0, $$1);
-   }
-
-   public float c() {
-      return this.b;
-   }
-
-   public float d() {
-      return this.c;
+   public static ehq.a<?> a(coe $$0) {
+      return a($$1 -> new eih($$1, $$0.c()));
    }
 }

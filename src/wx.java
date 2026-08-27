@@ -1,26 +1,13 @@
-import java.util.Map;
+public interface wx extends tz {
+   void a(xa var1);
 
-public class wx implements wo<wr> {
-   private final Map<agl<? extends is<?>>, asc.a> a;
+   void a(xb var1);
 
-   public wx(Map<agl<? extends is<?>>, asc.a> $$0) {
-      this.a = $$0;
-   }
+   void a(wy var1);
 
-   public wx(ty $$0) {
-      this.a = $$0.a(ty::u, asc.a::b);
-   }
+   void a(wz var1);
 
-   @Override
-   public void a(ty $$0) {
-      $$0.a(this.a, ty::b, ($$0x, $$1) -> $$1.a($$0x));
-   }
+   void a(xc var1);
 
-   public void a(wr $$0) {
-      $$0.a(this);
-   }
-
-   public Map<agl<? extends is<?>>, asc.a> a() {
-      return this.a;
-   }
+   void a(xd var1);
 }

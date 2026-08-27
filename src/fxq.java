@@ -1,12 +1,35 @@
-public class fxq extends fxi<bxn, fiw<bxn>> {
-   private static final agm a = new agm("textures/entity/pig/pig.png");
+public class fxq extends fxn<cfb> {
+   private static final agt a = new agt("textures/entity/illager/evoker_fangs.png");
+   private final fiz<cfb> f;
 
-   public fxq(fwc.a $$0) {
-      super($$0, new fiw<>($$0.a(fks.aC)), 0.7F);
-      this.a(new gal<>(this, new fiw<>($$0.a(fks.aK)), new agm("textures/entity/pig/pig_saddle.png")));
+   public fxq(fxo.a $$0) {
+      super($$0);
+      this.f = new fiz<>($$0.a(flx.Z));
    }
 
-   public agm a(bxn $$0) {
+   public void a(cfb $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
+      float $$6 = $$0.a($$2);
+      if ($$6 != 0.0F) {
+         float $$7 = 2.0F;
+         if ($$6 > 0.9F) {
+            $$7 *= (1.0F - $$6) / 0.1F;
+         }
+
+         $$3.a();
+         $$3.a(a.d.rotationDegrees(90.0F - $$0.dC()));
+         $$3.b(-$$7, -$$7, $$7);
+         float $$8 = 0.03125F;
+         $$3.a(0.0, -0.626, 0.0);
+         $$3.b(0.5F, 0.5F, 0.5F);
+         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dC(), $$0.dE());
+         eph $$9 = $$4.getBuffer(this.f.a(a));
+         this.f.a($$3, $$9, $$5, gdf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   public agt a(cfb $$0) {
       return a;
    }
 }

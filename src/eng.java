@@ -1,7 +1,15 @@
-public interface eng {
-   void a(boolean var1);
+import it.unimi.dsi.fastutil.ints.IntSet;
+import javax.annotation.Nullable;
 
-   void a();
+public interface eng extends AutoCloseable {
+   @Override
+   default void close() {
+   }
 
-   void b();
+   @Nullable
+   default enf a(int $$0) {
+      return null;
+   }
+
+   IntSet a();
 }

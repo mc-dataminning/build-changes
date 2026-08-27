@@ -1,8 +1,8 @@
-public interface coi extends cot<chh> {
-   @Override
-   default coy<?> e() {
-      return coy.a;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   coh d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface coi {
 }

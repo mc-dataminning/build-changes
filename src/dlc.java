@@ -1,24 +1,24 @@
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.function.Predicate;
 
-public class dlc<T> {
-   private final crm a;
-   private final List<T> b;
+public interface dlc<T> {
+   int a(T var1);
 
-   public dlc(crm $$0, List<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   boolean a(Predicate<T> var1);
 
-   public crm a() {
-      return this.a;
-   }
+   T a(int var1);
 
-   public Stream<T> b() {
-      return this.b.stream();
-   }
+   void a(ue var1);
 
-   public boolean c() {
-      return this.b.isEmpty();
+   void b(ue var1);
+
+   int a();
+
+   int b();
+
+   dlc<T> c();
+
+   public interface a {
+      <A> dlc<A> create(int var1, ik<A> var2, dld<A> var3, List<A> var4);
    }
 }

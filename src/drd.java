@@ -1,44 +1,80 @@
-import com.mojang.serialization.Codec;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
-public class drd extends dqa<dsm> {
-   private static final int a = 7;
-
-   drd(Codec<dsm> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(dqc<dsm> $$0) {
-      csz $$1 = $$0.b();
-      atw $$2 = $$0.d();
-      dsm $$3 = $$0.f();
-      hx $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      hx.a $$6 = new hx.a();
-
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dhn $$8 = $$1.a_($$6);
-
-         for (dsm.a $$9 : $$3.b) {
-            if (dqv.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
-            }
+public class drd {
+   private static final Logger a = LogUtils.getLogger();
+   private static final LoadingCache<amp, drd.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<amp, drd.b>() {
+         public drd.b a(amp $$0) {
+            return new drd.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
          }
+      });
+
+   public static void a(amp $$0) {
+      try {
+         ((drd.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
       }
-
-      return true;
    }
 
-   private void a(hx.a $$0, atw $$1, hx $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
+   public static void a(amp $$0, dqp<?, ?> $$1, Optional<dxs> $$2) {
+      try {
+         ((drd.b)b.get($$0)).a().computeInt(new drd.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
+      }
    }
 
-   private int a(atw $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
+   }
+
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.ad().a().toString();
+               boolean $$3 = $$0.n().v();
+               ir<dxs> $$4 = $$0.I_().d(kc.aB);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::c).<agt>map(ags::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
+            }
+         );
+   }
+
+   static record a(dqp<?, ?> a, Optional<dxs> b) {
+   }
+
+   static record b(Object2IntMap<drd.a> a, MutableInt b) {
    }
 }

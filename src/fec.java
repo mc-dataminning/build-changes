@@ -1,59 +1,50 @@
-import javax.annotation.Nullable;
+public abstract class fec<T extends cim> extends fdb<T> implements chw {
+   private final agt x;
 
-public abstract class fec extends faz {
-   private final uv b;
-   @Nullable
-   private final uv c;
-   private final uv k;
-   @Nullable
-   protected evg a;
-   private evx l = evx.a;
-
-   protected fec(uv $$0, uv $$1, uv $$2) {
-      this($$0, $$1, null, $$2);
+   public fec(T $$0, ceq $$1, vb $$2, agt $$3) {
+      super($$0, $$1, $$2);
+      this.x = $$3;
    }
 
-   protected fec(uv $$0, uv $$1, @Nullable uv $$2, uv $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.k = $$3;
-   }
-
-   protected abstract void a(int var1);
-
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.l = evx.a(this.i, this.b, this.g - 100);
-      int $$0 = (this.l.a() + 1) * this.l();
-      if (this.c != null) {
-         int $$1 = this.i.a(this.c);
-         this.a = evg.a(this.c, this.i).a(this.g / 2 - $$1 / 2 - 8, 76 + $$0).a();
-         this.d(this.a);
-      }
-
-      this.a($$0);
+   protected void E() {
    }
 
    @Override
-   public uv h() {
-      return this.k;
+   protected void aP_() {
+      super.aP_();
+      this.E();
+      this.p.a(this);
    }
 
    @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
+   public void aG_() {
+      super.aG_();
+      this.p.b(this);
+   }
+
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      int $$4 = this.g / 2 - this.l.b() / 2;
-      this.l.b($$0, $$4, 70, this.l(), 16777215);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   protected void c(eut $$0) {
-      $$0.b(this.i, this.e, 25, 30, 16777215);
+   protected void d(evw $$0, int $$1, int $$2, float $$3) {
    }
 
-   protected int l() {
-      return 9 * 2;
+   @Override
+   protected void a(evw $$0, float $$1, int $$2, int $$3) {
+      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
+      this.c($$0, this.t, this.u);
+   }
+
+   protected abstract void c(evw var1, int var2, int var3);
+
+   @Override
+   public void a(chk $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(chk $$0, int $$1, cmh $$2) {
    }
 }

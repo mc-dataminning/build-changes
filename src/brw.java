@@ -1,85 +1,68 @@
-public class brw extends bsk {
-   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
-   private final bxe b;
-   private final int c;
-   private boolean d;
+public class brw extends bru {
+   private static final float l = 10.0F;
+   private static final float m = 60.0F;
+   private final int n;
+   private final int o;
+   private final float p;
+   private final float q;
+   private final boolean r;
 
-   public brw(bxe $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
+   public brw(blx $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
+      super($$0);
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
    }
 
    @Override
-   public boolean a() {
-      if (this.b.eh().a(this.c) != 0) {
-         return false;
-      } else {
-         ib $$0 = this.b.cF();
-         int $$1 = $$0.j();
-         int $$2 = $$0.l();
-         hx $$3 = this.b.dn();
+   public void a() {
+      if (this.r && this.d.aZ()) {
+         this.d.g(this.d.dp().b(0.0, 0.005, 0.0));
+      }
 
-         for (int $$4 : a) {
-            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
-               return false;
+      if (this.k == bru.a.b && !this.d.N().l()) {
+         double $$0 = this.e - this.d.dr();
+         double $$1 = this.f - this.d.dt();
+         double $$2 = this.g - this.d.dx();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.A(0.0F);
+         } else {
+            float $$4 = (float)(aty.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+            this.d.r(this.a(this.d.dC(), $$4, (float)this.o));
+            this.d.aU = this.d.dC();
+            this.d.aW = this.d.dC();
+            float $$5 = (float)(this.h * this.d.b(bnb.m));
+            if (this.d.aZ()) {
+               this.d.w($$5 * this.p);
+               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
+                  float $$7 = -((float)(aty.d($$1, $$6) * 180.0F / (float)Math.PI));
+                  $$7 = aty.a(aty.g($$7), (float)(-this.n), (float)this.n);
+                  this.d.s(this.a(this.d.dE(), $$7, 5.0F));
+               }
+
+               float $$8 = aty.b(this.d.dE() * (float) (Math.PI / 180.0));
+               float $$9 = aty.a(this.d.dE() * (float) (Math.PI / 180.0));
+               this.d.bm = $$8 * $$5;
+               this.d.bl = -$$9 * $$5;
+            } else {
+               float $$10 = Math.abs(aty.g(this.d.dC() - $$4));
+               float $$11 = a($$10);
+               this.d.w($$5 * this.q * $$11);
             }
          }
-
-         return true;
+      } else {
+         this.d.w(0.0F);
+         this.d.C(0.0F);
+         this.d.B(0.0F);
+         this.d.A(0.0F);
       }
    }
 
-   private boolean a(hx $$0, int $$1, int $$2, int $$3) {
-      hx $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dN().b_($$4).a(arp.a) && !this.b.dN().a_($$4).d();
-   }
-
-   private boolean b(hx $$0, int $$1, int $$2, int $$3) {
-      return this.b.dN().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dN().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
-   }
-
-   @Override
-   public boolean b() {
-      double $$0 = this.b.dq().d;
-      return (!($$0 * $$0 < 0.03F) || this.b.dF() == 0.0F || !(Math.abs(this.b.dF()) < 10.0F) || !this.b.aZ()) && !this.b.aC();
-   }
-
-   @Override
-   public boolean S_() {
-      return false;
-   }
-
-   @Override
-   public void c() {
-      ib $$0 = this.b.cF();
-      this.b.g(this.b.dq().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
-      this.b.N().n();
-   }
-
-   @Override
-   public void d() {
-      this.b.s(0.0F);
-   }
-
-   @Override
-   public void e() {
-      boolean $$0 = this.d;
-      if (!$$0) {
-         ecx $$1 = this.b.dN().b_(this.b.dn());
-         this.d = $$1.a(arp.a);
-      }
-
-      if (this.d && !$$0) {
-         this.b.a(aqv.gp, 1.0F, 1.0F);
-      }
-
-      ejz $$2 = this.b.dq();
-      if ($$2.d * $$2.d < 0.03F && this.b.dF() != 0.0F) {
-         this.b.s(atq.j(0.2F, this.b.dF(), 0.0F));
-      } else if ($$2.f() > 1.0E-5F) {
-         double $$3 = $$2.h();
-         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
-         this.b.s((float)$$4);
-      }
+   private static float a(float $$0) {
+      return 1.0F - aty.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

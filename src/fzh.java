@@ -1,17 +1,31 @@
-public class fzh extends fwt<cch, fkm<cch>> {
-   private static final agm a = new agm("textures/entity/zombie_villager/zombie_villager.png");
+public class fzh extends fyu<byc, fkj<byc>> {
+   private static final agt a = new agt("textures/entity/rabbit/brown.png");
+   private static final agt i = new agt("textures/entity/rabbit/white.png");
+   private static final agt j = new agt("textures/entity/rabbit/black.png");
+   private static final agt k = new agt("textures/entity/rabbit/gold.png");
+   private static final agt l = new agt("textures/entity/rabbit/salt.png");
+   private static final agt m = new agt("textures/entity/rabbit/white_splotched.png");
+   private static final agt n = new agt("textures/entity/rabbit/toast.png");
+   private static final agt o = new agt("textures/entity/rabbit/caerbannog.png");
 
-   public fzh(fwc.a $$0) {
-      super($$0, new fkm<>($$0.a(fks.cc)), 0.5F);
-      this.a(new gaa<>(this, new fkm($$0.a(fks.cd)), new fkm($$0.a(fks.ce)), $$0.g()));
-      this.a(new gav<>(this, $$0.e(), "zombie_villager"));
+   public fzh(fxo.a $$0) {
+      super($$0, new fkj<>($$0.a(flx.bb)), 0.3F);
    }
 
-   public agm a(cch $$0) {
-      return a;
-   }
-
-   protected boolean b(cch $$0) {
-      return super.a($$0) || $$0.gp();
+   public agt a(byc $$0) {
+      String $$1 = n.a($$0.ad().getString());
+      if ("Toast".equals($$1)) {
+         return n;
+      } else {
+         return switch ($$0.ge()) {
+            case a -> a;
+            case b -> i;
+            case c -> j;
+            case e -> k;
+            case f -> l;
+            case d -> m;
+            case g -> o;
+         };
+      }
    }
 }

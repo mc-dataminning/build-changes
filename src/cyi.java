@@ -1,90 +1,68 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class cyi extends cvf {
-   public static final MapCodec<cyi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kc.f.q().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, cyi::new)
-   );
-   private static final Map<cvf, cvf> d = Maps.newHashMap();
-   public static final float b = 3.0F;
-   protected static final eks c = cvf.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final cvf e;
+public class cyi extends cyv {
+   public static final MapCodec<cyi> a = b(cyi::new);
+   protected static final elu b = cvz.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<cyi> a() {
       return a;
    }
 
-   public cyi(cvf $$0, dhm.d $$1) {
-      super($$1);
-      this.e = $$0;
-      d.put($$0, this);
+   public cyi(dio.d $$0) {
+      super($$0);
    }
 
    @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return c;
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return b;
    }
 
    @Override
-   public dbk b_(dhn $$0) {
-      return dbk.c;
+   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
+      this.d($$0, $$1, $$2);
+      return bjl.a($$1.B);
    }
 
    @Override
-   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
-      clo $$6 = $$3.b($$4);
-      clj $$7 = $$6.d();
-      dhn $$8 = ($$7 instanceof cjh ? d.getOrDefault(((cjh)$$7).e(), cvh.a) : cvh.a).o();
-      boolean $$9 = $$8.a(cvh.a);
-      boolean $$10 = this.g();
-      if ($$9 != $$10) {
-         if ($$10) {
-            $$1.a($$2, $$8, 3);
-            $$3.a(arf.ah);
-            if (!$$3.fU().d) {
-               $$6.h(1);
+   public void a(dip $$0, csy $$1, hv $$2, cer $$3) {
+      this.d($$0, $$1, $$2);
+   }
+
+   private void d(dip $$0, csy $$1, hv $$2) {
+      dkg $$3 = $$1.D_();
+
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         hv $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = aty.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = aty.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = aty.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(jv.Z, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
             }
-         } else {
-            clo $$11 = new clo(this.e);
-            if ($$6.b()) {
-               $$3.a($$4, $$11);
-            } else if (!$$3.i($$11)) {
-               $$3.a($$11, false);
-            }
 
-            $$1.a($$2, cvh.fR.o(), 3);
+            return;
          }
-
-         $$1.a($$3, dlx.c, $$2);
-         return bjb.a($$1.B);
-      } else {
-         return bjb.b;
       }
    }
 
    @Override
-   public clo a(csi $$0, hx $$1, dhn $$2) {
-      return this.g() ? super.a($$0, $$1, $$2) : new clo(this.e);
-   }
-
-   private boolean g() {
-      return this.e == cvh.a;
+   protected int b() {
+      return 5;
    }
 
    @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      return $$1 == ib.a && !$$0.a($$3, $$4) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public cvf b() {
-      return this.e;
-   }
-
-   @Override
-   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
+   public boolean a(dip $$0, cse $$1, hv $$2, eep $$3) {
       return false;
    }
 }

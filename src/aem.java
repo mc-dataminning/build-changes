@@ -1,51 +1,80 @@
-import org.jetbrains.annotations.VisibleForTesting;
+public class aem implements wu<acw> {
+   private final hv a;
+   private final agt b;
+   private final agt c;
+   private final agt d;
+   private final String e;
+   private final dhd.a f;
+   private final int g;
+   private final int h;
 
-public class aem {
-   private static final double a = 4096.0;
-   private ejz b;
-
-   public aem() {
-      this.b = ejz.b;
+   public aem(hv $$0, agt $$1, agt $$2, agt $$3, String $$4, dhd.a $$5, int $$6, int $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
+   public aem(ue $$0) {
+      this.a = $$0.e();
+      this.b = $$0.t();
+      this.c = $$0.t();
+      this.d = $$0.t();
+      this.e = $$0.s();
+      this.f = dhd.a.a($$0.s()).orElse(dhd.a.b);
+      this.g = $$0.n();
+      this.h = $$0.n();
    }
 
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
+   @Override
+   public void a(ue $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f.c());
+      $$0.c(this.g);
+      $$0.c(this.h);
    }
 
-   public ejz a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
-         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
-         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new ejz($$3, $$4, $$5);
-      }
+   public void a(acw $$0) {
+      $$0.a(this);
    }
 
-   public long a(ejz $$0) {
-      return a($$0.c) - a(this.b.c);
+   public hv a() {
+      return this.a;
    }
 
-   public long b(ejz $$0) {
-      return a($$0.d) - a(this.b.d);
+   public agt d() {
+      return this.b;
    }
 
-   public long c(ejz $$0) {
-      return a($$0.e) - a(this.b.e);
+   public agt e() {
+      return this.c;
    }
 
-   public ejz d(ejz $$0) {
-      return $$0.d(this.b);
+   public agt f() {
+      return this.d;
    }
 
-   public void e(ejz $$0) {
-      this.b = $$0;
+   public String g() {
+      return this.e;
+   }
+
+   public dhd.a h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.h;
    }
 }

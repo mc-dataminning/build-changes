@@ -1,25 +1,35 @@
-public class bva extends bvk {
-   public static final float a = 8.0F;
+public class bva {
+   private final bpa a;
+   private final float b;
+   private final int c;
 
-   @Override
-   protected boolean a(bll $$0, bll $$1) {
-      return this.f($$0, $$1) && $$1.bc() && (this.b($$1) || this.e($$0, $$1)) && bvq.c($$0, $$1);
+   public bva(hv $$0, float $$1, int $$2) {
+      this(new bnp($$0), $$1, $$2);
    }
 
-   private boolean e(bll $$0, bll $$1) {
-      return !$$0.dP().a(bum.T) && $$1.ai().a(arn.j);
+   public bva(elb $$0, float $$1, int $$2) {
+      this(new bnp(hv.a($$0)), $$1, $$2);
    }
 
-   private boolean b(bll $$0) {
-      return $$0.ai().a(arn.i);
+   public bva(blf $$0, float $$1, int $$2) {
+      this(new bnx($$0, false), $$1, $$2);
    }
 
-   private boolean f(bll $$0, bll $$1) {
-      return $$1.f((bkv)$$0) <= 64.0;
+   public bva(bpa $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected bum<bll> b() {
-      return bum.B;
+   public bpa a() {
+      return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
    }
 }

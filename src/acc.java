@@ -1,32 +1,24 @@
-public class acc implements wo<yh> {
-   private final uv a;
-   private final uv b;
+public class acc implements wu<yo> {
+   private final vb a;
 
-   public acc(uv $$0, uv $$1) {
+   public acc(vb $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public acc(ty $$0) {
+   public acc(ue $$0) {
       this.a = $$0.m();
-      this.b = $$0.m();
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public uv a() {
+   public vb a() {
       return this.a;
-   }
-
-   public uv d() {
-      return this.b;
    }
 }

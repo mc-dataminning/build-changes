@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class ma implements ly {
-   private final cvf a;
+   private final cvz a;
    private final List<ma.b> b = Lists.newArrayList();
 
-   private ma(cvf $$0) {
+   private ma(cvz $$0) {
       this.a = $$0;
    }
 
    @Override
-   public cvf a() {
+   public cvz a() {
       return this.a;
    }
 
-   public static ma a(cvf $$0) {
+   public static ma a(cvz $$0) {
       return new ma($$0);
    }
 
@@ -46,7 +46,7 @@ public class ma implements ly {
    }
 
    public JsonElement b() {
-      dho<cvf, dhn> $$0 = this.a.n();
+      diq<cvz, dip> $$0 = this.a.n();
       this.b.forEach($$1x -> $$1x.a($$0));
       JsonArray $$1 = new JsonArray();
       this.b.stream().map(ma.b::a).forEach($$1::add);
@@ -64,7 +64,7 @@ public class ma implements ly {
       }
 
       @Override
-      public void a(dho<?, ?> $$0) {
+      public void a(diq<?, ?> $$0) {
          this.a.a($$0);
       }
 
@@ -81,7 +81,7 @@ public class ma implements ly {
          this.a = $$0;
       }
 
-      public void a(dho<?, ?> $$0) {
+      public void a(diq<?, ?> $$0) {
       }
 
       public void a(JsonObject $$0) {

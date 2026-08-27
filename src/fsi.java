@@ -1,90 +1,94 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
-public class fsi {
-   public static final fsi a = new fsi();
-   public final fsh b;
-   public final fsh c;
-   public final fsh d;
-   public final fsh e;
-   public final fsh f;
-   public final fsh g;
-   public final fsh h;
-   public final fsh i;
-
-   private fsi() {
-      this(fsh.a, fsh.a, fsh.a, fsh.a, fsh.a, fsh.a, fsh.a, fsh.a);
+public interface fsi {
+   static fsi.a a(eoy $$0) {
+      return a(ImmutableMap.of(), $$0);
    }
 
-   public fsi(fsi $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
+   static fsi.a a(Map<fsq, eoy> $$0, eoy $$1) {
+      return new fsi.a($$1, $$0);
    }
 
-   public fsi(fsh $$0, fsh $$1, fsh $$2, fsh $$3, fsh $$4, fsh $$5, fsh $$6, fsh $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
+   eph getBuffer(fsq var1);
 
-   public fsh a(cll $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> fsh.a;
-      };
-   }
+   public static class a implements fsi {
+      protected final eoy a;
+      protected final Map<fsq, eoy> b;
+      protected Optional<fsq> c = Optional.empty();
+      protected final Set<eoy> d = Sets.newHashSet();
 
-   public boolean b(cll $$0) {
-      return this.a($$0) != fsh.a;
-   }
-
-   protected static class a implements JsonDeserializer<fsi> {
-      public fsi a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         fsh $$4 = this.a($$2, $$3, cll.c);
-         fsh $$5 = this.a($$2, $$3, cll.b);
-         if ($$5 == fsh.a) {
-            $$5 = $$4;
-         }
-
-         fsh $$6 = this.a($$2, $$3, cll.e);
-         fsh $$7 = this.a($$2, $$3, cll.d);
-         if ($$7 == fsh.a) {
-            $$7 = $$6;
-         }
-
-         fsh $$8 = this.a($$2, $$3, cll.f);
-         fsh $$9 = this.a($$2, $$3, cll.g);
-         fsh $$10 = this.a($$2, $$3, cll.h);
-         fsh $$11 = this.a($$2, $$3, cll.i);
-         return new fsi($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+      protected a(eoy $$0, Map<fsq, eoy> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      private fsh a(JsonDeserializationContext $$0, JsonObject $$1, cll $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (fsh)$$0.deserialize($$1.get($$3), fsh.class) : fsh.a;
+      @Override
+      public eph getBuffer(fsq $$0) {
+         Optional<fsq> $$1 = $$0.N();
+         eoy $$2 = this.b($$0);
+         if (!Objects.equals(this.c, $$1) || !$$0.M()) {
+            if (this.c.isPresent()) {
+               fsq $$3 = this.c.get();
+               if (!this.b.containsKey($$3)) {
+                  this.a($$3);
+               }
+            }
+
+            if (this.d.add($$2)) {
+               $$2.a($$0.I(), $$0.H());
+            }
+
+            this.c = $$1;
+         }
+
+         return $$2;
+      }
+
+      private eoy b(fsq $$0) {
+         return this.b.getOrDefault($$0, this.a);
+      }
+
+      public void a() {
+         if (this.c.isPresent()) {
+            fsq $$0 = this.c.get();
+            if (!this.b.containsKey($$0)) {
+               this.a($$0);
+            }
+
+            this.c = Optional.empty();
+         }
+      }
+
+      public void b() {
+         this.c.ifPresent($$0x -> {
+            eph $$1 = this.getBuffer($$0x);
+            if ($$1 == this.a) {
+               this.a($$0x);
+            }
+         });
+
+         for (fsq $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
+
+      public void a(fsq $$0) {
+         eoy $$1 = this.b($$0);
+         boolean $$2 = Objects.equals(this.c, $$0.N());
+         if ($$2 || $$1 != this.a) {
+            if (this.d.remove($$1)) {
+               $$0.a($$1, RenderSystem.getVertexSorting());
+               if ($$2) {
+                  this.c = Optional.empty();
+               }
+            }
+         }
       }
    }
 }

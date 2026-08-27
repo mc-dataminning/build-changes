@@ -1,28 +1,47 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import java.util.Collection;
+import java.util.Collections;
 
 public class aiz {
-   public static void a(CommandDispatcher<du> $$0) {
+   public static final int a = 2;
+
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), ImmutableList.of(((du)$$0x.getSource()).g()))))
-            .then(dv.a("targets", eg.b()).executes($$0x -> a((du)$$0x.getSource(), eg.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)dt.a("gamemode", ef.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((ds)$$0x.getSource()).h()), ef.a($$0x, "gamemode"))))
+                  .then(dt.a("target", ee.d()).executes($$0x -> a($$0x, ee.f($$0x, "target"), ef.a($$0x, "gamemode"))))
+            )
       );
    }
 
-   private static int a(du $$0, Collection<? extends bkv> $$1) {
-      for (bkv $$2 : $$1) {
-         $$2.al();
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> uv.a("commands.kill.success.single", $$1.iterator().next().Q_()), true);
+   private static void a(ds $$0, amq $$1, csv $$2) {
+      vb $$3 = vb.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> vb.a("commands.gamemode.success.self", $$3), true);
       } else {
-         $$0.a(() -> uv.a("commands.kill.success.multiple", $$1.size()), true);
+         if ($$0.e().Y().b(csu.p)) {
+            $$1.a(vb.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> vb.a("commands.gamemode.success.other", $$1.Q_(), $$3), true);
+      }
+   }
+
+   private static int a(CommandContext<ds> $$0, Collection<amq> $$1, csv $$2) {
+      int $$3 = 0;
+
+      for (amq $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((ds)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
       }
 
-      return $$1.size();
+      return $$3;
    }
 }

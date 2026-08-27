@@ -1,42 +1,36 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record eiz(eiw b, eiw c) implements eiw {
-   public static final Codec<eiz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eix.a.fieldOf("min").forGetter(eiz::c), eix.a.fieldOf("max").forGetter(eiz::d)).apply($$0, eiz::new)
-   );
+public class eiz implements ejd {
+   private static final eiz b = new eiz();
+   public static final Codec<eiz> a = Codec.unit(b);
 
-   @Override
-   public eiv b() {
-      return eix.c;
-   }
-
-   public static eiz a(float $$0, float $$1) {
-      return new eiz(eiu.a($$0), eiu.a($$1));
+   private eiz() {
    }
 
    @Override
-   public int a(efc $$0) {
-      return atq.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public eje b() {
+      return ejf.m;
    }
 
    @Override
-   public float b(efc $$0) {
-      return atq.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public Set<eim<?>> a() {
+      return ImmutableSet.of(eip.j);
    }
 
-   @Override
-   public Set<ehk<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public boolean a(ege $$0) {
+      Float $$1 = $$0.c(eip.j);
+      if ($$1 != null) {
+         auf $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public eiw c() {
-      return this.b;
-   }
-
-   public eiw d() {
-      return this.c;
+   public static ejd.a c() {
+      return () -> b;
    }
 }

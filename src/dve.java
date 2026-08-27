@@ -1,77 +1,61 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
-public class dve extends dvi {
-   public static final Codec<dve> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dve::new));
+public abstract class dve {
+   public static final Codec<dve> d = kb.Y.q().dispatch(dve::a, dvf::a);
+   protected final biq e;
+   protected final dvh f;
+   protected final Optional<dvb> g;
 
-   public dve(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   protected static <P extends dve> P3<Mu<P>, biq, dvh, Optional<dvb>> a(Instance<P> $$0) {
+      return $$0.group(
+         biq.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         dvh.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         dvb.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   @Override
-   protected dvj<?> a() {
-      return dvj.b;
+   public dve(biq $$0, dvh $$1, Optional<dvb> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public List<dtq.a> a(csl $$0, BiConsumer<hx, dhn> $$1, atw $$2, int $$3, hx $$4, dta $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      List<dtq.a> $$6 = Lists.newArrayList();
-      ib $$7 = ib.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      hx.a $$10 = new hx.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
+   protected abstract dvf<?> a();
 
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
+   public abstract boolean a(cte var1, BiConsumer<hv, dip> var2, auf var3, hv var4, hv var5, duc var6);
 
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
-      }
+   protected boolean a(cte $$0, hv $$1) {
+      return dso.c($$0, $$1);
+   }
 
-      if ($$13.isPresent()) {
-         $$6.add(new dtq.a(new hx($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      ib $$16 = ib.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
+   protected void a(cte $$0, BiConsumer<hv, dip> $$1, auf $$2, hv $$3, duc $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            dvb $$5 = this.g.get();
+            hv $$6 = $$3.c();
+            if ($$2.i() < $$5.b() && $$0.a($$6, dio.a::i)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
             }
-
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new dtq.a(new hx($$11, $$13.getAsInt(), $$12), 0, false));
          }
       }
+   }
 
-      return $$6;
+   protected dip a(cte $$0, hv $$1, dip $$2) {
+      if ($$2.b(djf.C)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(arw.a));
+         return $$2.a(djf.C, Boolean.valueOf($$3));
+      } else {
+         return $$2;
+      }
+   }
+
+   public hv a(hv $$0, auf $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

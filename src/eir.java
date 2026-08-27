@@ -1,29 +1,41 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record eir(agm b) implements eip {
-   public static final Codec<eir> a = RecordCodecBuilder.create($$0 -> $$0.group(agm.a.fieldOf("source").forGetter(eir::c)).apply($$0, eir::new));
+public class eir extends eiu {
+   public static final Codec<eir> a = a(eir::new);
+   public static final Codec<eir> b = b(eir::new);
 
-   @Override
-   public eio a() {
-      return eiq.b;
+   eir(List<ejd> $$0) {
+      super($$0, ejf.a($$0));
    }
 
-   @Nullable
-   @Override
-   public ta a(efc $$0) {
-      return $$0.d().n().aI().a(this.b);
+   public static eir a(List<ejd> $$0) {
+      return new eir(List.copyOf($$0));
    }
 
    @Override
-   public Set<ehk<?>> b() {
-      return ImmutableSet.of();
+   public eje b() {
+      return ejf.d;
    }
 
-   public agm c() {
-      return this.b;
+   public static eir.a a(ejd.a... $$0) {
+      return new eir.a($$0);
+   }
+
+   public static class a extends eiu.a {
+      public a(ejd.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public eir.a and(ejd.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected ejd a(List<ejd> $$0) {
+         return new eir($$0);
+      }
    }
 }

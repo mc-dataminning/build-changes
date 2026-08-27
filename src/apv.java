@@ -1,43 +1,27 @@
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-public class apv extends aqd<String, apw> {
-   public apv(File $$0) {
-      super($$0);
+@FunctionalInterface
+public interface apv {
+   Optional<apq> getResource(agt var1);
+
+   default apq getResourceOrThrow(agt $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   @Override
-   protected aqc<String> a(JsonObject $$0) {
-      return new apw($$0);
+   default InputStream open(agt $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
    }
 
-   public boolean a(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.d($$1);
+   default BufferedReader openAsReader(agt $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
    }
 
-   public boolean a(String $$0) {
-      return this.d($$0);
-   }
-
-   @Nullable
-   public apw b(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.b($$1);
-   }
-
-   private String c(SocketAddress $$0) {
-      String $$1 = $$0.toString();
-      if ($$1.contains("/")) {
-         $$1 = $$1.substring($$1.indexOf(47) + 1);
-      }
-
-      if ($$1.contains(":")) {
-         $$1 = $$1.substring(0, $$1.indexOf(58));
-      }
-
-      return $$1;
+   static apv fromMap(Map<agt, apq> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
    }
 }

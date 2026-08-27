@@ -1,122 +1,86 @@
-import java.util.EnumSet;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public abstract class bst extends bsg {
-   private static final int g = 1200;
-   private static final int h = 1200;
-   private static final int i = 200;
-   protected final blu a;
-   public final double b;
-   protected int c;
-   protected int d;
-   private int j;
-   protected hx e = hx.b;
-   private boolean k;
-   private final int l;
-   private final int m;
-   protected int f;
+public class bst extends bto {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
 
-   public bst(blu $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, 1);
+   public bst(bme $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
-   public bst(blu $$0, double $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.l = $$2;
-      this.f = 0;
-      this.m = $$3;
-      this.a(EnumSet.of(bsg.a.a, bsg.a.c));
-   }
-
+   @Nullable
    @Override
-   public boolean a() {
-      if (this.c > 0) {
-         this.c--;
-         return false;
+   protected elb h() {
+      float $$0 = this.b.dM().z.i();
+      if (this.b.dM().z.i() < 0.3F) {
+         return this.k();
       } else {
-         this.c = this.a(this.a);
-         return this.n();
-      }
-   }
-
-   protected int a(blu $$0) {
-      return b(200 + $$0.eh().a(200));
-   }
-
-   @Override
-   public boolean b() {
-      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dN(), this.e);
-   }
-
-   @Override
-   public void c() {
-      this.h();
-      this.d = 0;
-      this.j = this.a.eh().a(this.a.eh().a(1200) + 1200) + 1200;
-   }
-
-   protected void h() {
-      this.a.N().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, this.b);
-   }
-
-   public double i() {
-      return 1.0;
-   }
-
-   protected hx k() {
-      return this.e.c();
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      hx $$0 = this.k();
-      if (!$$0.a(this.a.dl(), this.i())) {
-         this.k = false;
-         this.d++;
-         if (this.l()) {
-            this.a.N().a((double)$$0.u() + 0.5, (double)$$0.v(), (double)$$0.w() + 0.5, this.b);
-         }
-      } else {
-         this.k = true;
-         this.d--;
-      }
-   }
-
-   public boolean l() {
-      return this.d % 40 == 0;
-   }
-
-   protected boolean m() {
-      return this.k;
-   }
-
-   protected boolean n() {
-      int $$0 = this.l;
-      int $$1 = this.m;
-      hx $$2 = this.a.dn();
-      hx.a $$3 = new hx.a();
-
-      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
-               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
-                  $$3.a($$2, $$6, $$4 - 1, $$7);
-                  if (this.a.a($$3) && this.a(this.a.dN(), $$3)) {
-                     this.e = $$3;
-                     return true;
-                  }
-               }
+         elb $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
+         } else {
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
             }
          }
-      }
 
-      return false;
+         return $$1 == null ? this.k() : $$1;
+      }
    }
 
-   protected abstract boolean a(csi var1, hx var2);
+   @Nullable
+   private elb k() {
+      return bwq.a(this.b, 10, 7);
+   }
+
+   @Nullable
+   private elb l() {
+      amp $$0 = (amp)this.b.dM();
+      List<cee> $$1 = $$0.a(blj.bg, this.b.cH().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         cee $$2 = $$1.get(this.b.dM().z.a($$1.size()));
+         elb $$3 = $$2.dk();
+         return bwq.a(this.b, 10, 7, $$3);
+      }
+   }
+
+   @Nullable
+   private elb m() {
+      ix $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         hv $$1 = this.a($$0);
+         return $$1 == null ? null : bwq.a(this.b, 10, 7, elb.c($$1));
+      }
+   }
+
+   @Nullable
+   private ix n() {
+      amp $$0 = (amp)this.b.dM();
+      List<ix> $$1 = ix.a(ix.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
+   }
+
+   @Nullable
+   private hv a(ix $$0) {
+      amp $$1 = (amp)this.b.dM();
+      bww $$2 = $$1.x();
+      List<hv> $$3 = $$2.c($$0x -> true, $$0.q(), 8, bww.b.b).map(bwx::f).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
+   }
+
+   private boolean a(cee $$0) {
+      return $$0.a(this.b.dM().W());
+   }
 }

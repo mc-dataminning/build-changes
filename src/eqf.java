@@ -1,13 +1,10 @@
-public class eqf extends eqe {
-   public static final int b = 5;
-   public final int c;
+import com.google.common.collect.Lists;
+import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
-   public eqf(int $$0, int $$1) {
-      super(eot.b.a($$1));
-      if ($$0 >= 0 && $$0 <= 120) {
-         this.c = $$0;
-      } else {
-         this.c = 5;
-      }
-   }
+public class eqf extends eqz implements eqt {
+   @SerializedName("pingResults")
+   public List<equ> a = Lists.newArrayList();
+   @SerializedName("worldIds")
+   public List<Long> b = Lists.newArrayList();
 }

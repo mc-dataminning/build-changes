@@ -1,16 +1,16 @@
-public class cqo extends cpz {
-   public cqo(cpz.a $$0, bla... $$1) {
-      super($$0, cqa.b, $$1);
+public class cqo extends cqs {
+   public cqo(cqs.a $$0, blk... $$1) {
+      super($$0, cqt.l, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 25;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
+      return 50;
    }
 
    @Override
@@ -19,17 +19,12 @@ public class cqo extends cpz {
    }
 
    @Override
-   public boolean h() {
-      return false;
+   public boolean c() {
+      return true;
    }
 
    @Override
-   public boolean i() {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 3;
+   public boolean a(cmh $$0) {
+      return !$$0.a(cmk.vl) && super.a($$0);
    }
 }

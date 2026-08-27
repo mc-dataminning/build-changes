@@ -1,15 +1,6 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.Map;
+import org.joml.Vector3f;
 
 public interface blt {
-   @Nullable
-   UUID d();
-
-   crw e();
-
-   @Nullable
-   default bll R_() {
-      UUID $$0 = this.d();
-      return $$0 == null ? null : this.e().b($$0);
-   }
+   Map<String, Vector3f> a();
 }

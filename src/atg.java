@@ -1,572 +1,697 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
+import com.mojang.authlib.properties.PropertyMap;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Decoder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.Codec.ResultFunction;
+import com.mojang.serialization.DataResult.PartialResult;
+import com.mojang.serialization.MapCodec.MapCodecCodec;
+import com.mojang.serialization.codecs.BaseMapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.floats.FloatArrayList;
+import it.unimi.dsi.fastutil.floats.FloatList;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.BitSet;
 import java.util.Collection;
-import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.jetbrains.annotations.Contract;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalLong;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.mutable.MutableObject;
+import org.joml.AxisAngle4f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class atg {
-   private static final Gson a = new GsonBuilder().create();
-
-   public static boolean a(JsonObject $$0, String $$1) {
-      return !f($$0, $$1) ? false : $$0.getAsJsonPrimitive($$1).isString();
-   }
-
-   public static boolean a(JsonElement $$0) {
-      return !$$0.isJsonPrimitive() ? false : $$0.getAsJsonPrimitive().isString();
-   }
-
-   public static boolean b(JsonObject $$0, String $$1) {
-      return !f($$0, $$1) ? false : $$0.getAsJsonPrimitive($$1).isNumber();
-   }
-
-   public static boolean b(JsonElement $$0) {
-      return !$$0.isJsonPrimitive() ? false : $$0.getAsJsonPrimitive().isNumber();
-   }
-
-   public static boolean c(JsonObject $$0, String $$1) {
-      return !f($$0, $$1) ? false : $$0.getAsJsonPrimitive($$1).isBoolean();
-   }
-
-   public static boolean c(JsonElement $$0) {
-      return !$$0.isJsonPrimitive() ? false : $$0.getAsJsonPrimitive().isBoolean();
-   }
-
-   public static boolean d(JsonObject $$0, String $$1) {
-      return !g($$0, $$1) ? false : $$0.get($$1).isJsonArray();
-   }
-
-   public static boolean e(JsonObject $$0, String $$1) {
-      return !g($$0, $$1) ? false : $$0.get($$1).isJsonObject();
-   }
-
-   public static boolean f(JsonObject $$0, String $$1) {
-      return !g($$0, $$1) ? false : $$0.get($$1).isJsonPrimitive();
-   }
-
-   public static boolean g(@Nullable JsonObject $$0, String $$1) {
-      return $$0 == null ? false : $$0.get($$1) != null;
-   }
-
-   public static JsonElement h(JsonObject $$0, String $$1) {
-      JsonElement $$2 = $$0.get($$1);
-      if ($$2 != null && !$$2.isJsonNull()) {
-         return $$2;
-      } else {
-         throw new JsonSyntaxException("Missing field " + $$1);
+   public static final Codec<JsonElement> a = a(JsonOps.INSTANCE);
+   public static final Codec<Object> b = a(atr.a);
+   public static final Codec<JsonElement> c = Codec.STRING.flatXmap($$0 -> {
+      try {
+         return DataResult.success(JsonParser.parseString($$0));
+      } catch (JsonParseException var2) {
+         return DataResult.error(var2::getMessage);
       }
-   }
-
-   public static String a(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive()) {
-         return $$0.getAsString();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a string, was " + d($$0));
+   }, $$0 -> {
+      try {
+         return DataResult.success(ato.e($$0));
+      } catch (IllegalArgumentException var2) {
+         return DataResult.error(var2::getMessage);
       }
-   }
+   });
+   public static final Codec<Vector3f> d = Codec.FLOAT
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 3).map($$0x -> new Vector3f((Float)$$0x.get(0), (Float)$$0x.get(1), (Float)$$0x.get(2))), $$0 -> List.of($$0.x(), $$0.y(), $$0.z())
+      );
+   public static final Codec<Quaternionf> e = Codec.FLOAT
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 4).map($$0x -> new Quaternionf((Float)$$0x.get(0), (Float)$$0x.get(1), (Float)$$0x.get(2), (Float)$$0x.get(3))),
+         $$0 -> List.of($$0.x, $$0.y, $$0.z, $$0.w)
+      );
+   public static final Codec<AxisAngle4f> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("angle").forGetter($$0x -> $$0x.angle), d.fieldOf("axis").forGetter($$0x -> new Vector3f($$0x.x, $$0x.y, $$0x.z)))
+            .apply($$0, AxisAngle4f::new)
+   );
+   public static final Codec<Quaternionf> g = e(e, f.xmap(Quaternionf::new, AxisAngle4f::new));
+   public static Codec<Matrix4f> h = Codec.FLOAT.listOf().comapFlatMap($$0 -> ac.a($$0, 16).map($$0x -> {
+         Matrix4f $$1 = new Matrix4f();
 
-   public static String i(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return a($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a string");
+         for (int $$2 = 0; $$2 < $$0x.size(); $$2++) {
+            $$1.setRowColumn($$2 >> 2, $$2 & 3, (Float)$$0x.get($$2));
+         }
+
+         return $$1.determineProperties();
+      }), $$0 -> {
+      FloatList $$1 = new FloatArrayList(16);
+
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         $$1.add($$0.getRowColumn($$2 >> 2, $$2 & 3));
       }
-   }
 
-   @Nullable
-   @Contract("_,_,!null->!null;_,_,null->_")
-   public static String a(JsonObject $$0, String $$1, @Nullable String $$2) {
-      return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
-   }
-
-   public static ig<clj> b(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive()) {
-         String $$2 = $$0.getAsString();
-         return kc.i
-            .b(agl.a(kd.E, new agm($$2)))
-            .orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be an item, was " + d($$0));
+      return $$1;
+   });
+   public static final Codec<Integer> i = a(0, Integer.MAX_VALUE, $$0 -> "Value must be non-negative: " + $$0);
+   public static final Codec<Integer> j = a(1, Integer.MAX_VALUE, $$0 -> "Value must be positive: " + $$0);
+   public static final Codec<Float> k = a(0.0F, Float.MAX_VALUE, $$0 -> "Value must be positive: " + $$0);
+   public static final Codec<Pattern> l = Codec.STRING.comapFlatMap($$0 -> {
+      try {
+         return DataResult.success(Pattern.compile($$0));
+      } catch (PatternSyntaxException var2) {
+         return DataResult.error(() -> "Invalid regex pattern '" + $$0 + "': " + var2.getMessage());
       }
-   }
-
-   public static ig<clj> j(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return b($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find an item");
+   }, Pattern::pattern);
+   public static final Codec<Instant> m = a(DateTimeFormatter.ISO_INSTANT).xmap(Instant::from, Function.identity());
+   public static final Codec<byte[]> n = Codec.STRING.comapFlatMap($$0 -> {
+      try {
+         return DataResult.success(Base64.getDecoder().decode($$0));
+      } catch (IllegalArgumentException var2) {
+         return DataResult.error(() -> "Malformed base64 string");
       }
-   }
-
-   @Nullable
-   @Contract("_,_,!null->!null;_,_,null->_")
-   public static ig<clj> a(JsonObject $$0, String $$1, @Nullable ig<clj> $$2) {
-      return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
-   }
-
-   public static boolean c(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive()) {
-         return $$0.getAsBoolean();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Boolean, was " + d($$0));
-      }
-   }
-
-   public static boolean k(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return c($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Boolean");
-      }
-   }
-
-   public static boolean a(JsonObject $$0, String $$1, boolean $$2) {
-      return $$0.has($$1) ? c($$0.get($$1), $$1) : $$2;
-   }
-
-   public static double d(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsDouble();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Double, was " + d($$0));
-      }
-   }
-
-   public static double l(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return d($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Double");
-      }
-   }
-
-   public static double a(JsonObject $$0, String $$1, double $$2) {
-      return $$0.has($$1) ? d($$0.get($$1), $$1) : $$2;
-   }
-
-   public static float e(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsFloat();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Float, was " + d($$0));
-      }
-   }
-
-   public static float m(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return e($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Float");
-      }
-   }
-
-   public static float a(JsonObject $$0, String $$1, float $$2) {
-      return $$0.has($$1) ? e($$0.get($$1), $$1) : $$2;
-   }
-
-   public static long f(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsLong();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Long, was " + d($$0));
-      }
-   }
-
-   public static long n(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return f($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Long");
-      }
-   }
-
-   public static long a(JsonObject $$0, String $$1, long $$2) {
-      return $$0.has($$1) ? f($$0.get($$1), $$1) : $$2;
-   }
-
-   public static int g(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsInt();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Int, was " + d($$0));
-      }
-   }
-
-   public static int o(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return g($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Int");
-      }
-   }
-
-   public static int a(JsonObject $$0, String $$1, int $$2) {
-      return $$0.has($$1) ? g($$0.get($$1), $$1) : $$2;
-   }
-
-   public static byte h(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsByte();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Byte, was " + d($$0));
-      }
-   }
-
-   public static byte p(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return h($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Byte");
-      }
-   }
-
-   public static byte a(JsonObject $$0, String $$1, byte $$2) {
-      return $$0.has($$1) ? h($$0.get($$1), $$1) : $$2;
-   }
-
-   public static char i(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsCharacter();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Character, was " + d($$0));
-      }
-   }
-
-   public static char q(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return i($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Character");
-      }
-   }
-
-   public static char a(JsonObject $$0, String $$1, char $$2) {
-      return $$0.has($$1) ? i($$0.get($$1), $$1) : $$2;
-   }
-
-   public static BigDecimal j(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsBigDecimal();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a BigDecimal, was " + d($$0));
-      }
-   }
-
-   public static BigDecimal r(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return j($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a BigDecimal");
-      }
-   }
-
-   public static BigDecimal a(JsonObject $$0, String $$1, BigDecimal $$2) {
-      return $$0.has($$1) ? j($$0.get($$1), $$1) : $$2;
-   }
-
-   public static BigInteger k(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsBigInteger();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a BigInteger, was " + d($$0));
-      }
-   }
-
-   public static BigInteger s(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return k($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a BigInteger");
-      }
-   }
-
-   public static BigInteger a(JsonObject $$0, String $$1, BigInteger $$2) {
-      return $$0.has($$1) ? k($$0.get($$1), $$1) : $$2;
-   }
-
-   public static short l(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsShort();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Short, was " + d($$0));
-      }
-   }
-
-   public static short t(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return l($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Short");
-      }
-   }
-
-   public static short a(JsonObject $$0, String $$1, short $$2) {
-      return $$0.has($$1) ? l($$0.get($$1), $$1) : $$2;
-   }
-
-   public static JsonObject m(JsonElement $$0, String $$1) {
-      if ($$0.isJsonObject()) {
-         return $$0.getAsJsonObject();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a JsonObject, was " + d($$0));
-      }
-   }
-
-   public static JsonObject u(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return m($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a JsonObject");
-      }
-   }
-
-   @Nullable
-   @Contract("_,_,!null->!null;_,_,null->_")
-   public static JsonObject a(JsonObject $$0, String $$1, @Nullable JsonObject $$2) {
-      return $$0.has($$1) ? m($$0.get($$1), $$1) : $$2;
-   }
-
-   public static JsonArray n(JsonElement $$0, String $$1) {
-      if ($$0.isJsonArray()) {
-         return $$0.getAsJsonArray();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a JsonArray, was " + d($$0));
-      }
-   }
-
-   public static JsonArray v(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return n($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a JsonArray");
-      }
-   }
-
-   @Nullable
-   @Contract("_,_,!null->!null;_,_,null->_")
-   public static JsonArray a(JsonObject $$0, String $$1, @Nullable JsonArray $$2) {
-      return $$0.has($$1) ? n($$0.get($$1), $$1) : $$2;
-   }
-
-   public static <T> T a(@Nullable JsonElement $$0, String $$1, JsonDeserializationContext $$2, Class<? extends T> $$3) {
-      if ($$0 != null) {
-         return (T)$$2.deserialize($$0, $$3);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1);
-      }
-   }
-
-   public static <T> T a(JsonObject $$0, String $$1, JsonDeserializationContext $$2, Class<? extends T> $$3) {
-      if ($$0.has($$1)) {
-         return a($$0.get($$1), $$1, $$2, $$3);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1);
-      }
-   }
-
-   @Nullable
-   @Contract("_,_,!null,_,_->!null;_,_,null,_,_->_")
-   public static <T> T a(JsonObject $$0, String $$1, @Nullable T $$2, JsonDeserializationContext $$3, Class<? extends T> $$4) {
-      return $$0.has($$1) ? a($$0.get($$1), $$1, $$3, $$4) : $$2;
-   }
-
-   public static String d(@Nullable JsonElement $$0) {
-      String $$1 = StringUtils.abbreviateMiddle(String.valueOf($$0), "...", 10);
-      if ($$0 == null) {
-         return "null (missing)";
-      } else if ($$0.isJsonNull()) {
-         return "null (json)";
-      } else if ($$0.isJsonArray()) {
-         return "an array (" + $$1 + ")";
-      } else if ($$0.isJsonObject()) {
-         return "an object (" + $$1 + ")";
-      } else {
-         if ($$0.isJsonPrimitive()) {
-            JsonPrimitive $$2 = $$0.getAsJsonPrimitive();
-            if ($$2.isNumber()) {
-               return "a number (" + $$1 + ")";
+   }, $$0 -> Base64.getEncoder().encodeToString($$0));
+   public static final Codec<String> o = Codec.STRING
+      .comapFlatMap($$0 -> DataResult.success(StringEscapeUtils.unescapeJava($$0)), StringEscapeUtils::escapeJava);
+   public static final Codec<atg.f> p = Codec.STRING
+      .comapFlatMap(
+         $$0 -> $$0.startsWith("#") ? agt.b($$0.substring(1)).map($$0x -> new atg.f($$0x, true)) : agt.b($$0).map($$0x -> new atg.f($$0x, false)), atg.f::c
+      );
+   public static final Function<Optional<Long>, OptionalLong> q = $$0 -> $$0.map(OptionalLong::of).orElseGet(OptionalLong::empty);
+   public static final Function<OptionalLong, Optional<Long>> r = $$0 -> $$0.isPresent() ? Optional.of($$0.getAsLong()) : Optional.empty();
+   public static final Codec<BitSet> s = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> Arrays.stream($$0.toLongArray()));
+   private static final Codec<Property> y = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("name").forGetter(Property::name),
+               Codec.STRING.fieldOf("value").forGetter(Property::value),
+               Codec.STRING.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.signature()))
+            )
+            .apply($$0, ($$0x, $$1, $$2) -> new Property($$0x, $$1, (String)$$2.orElse(null)))
+   );
+   @VisibleForTesting
+   public static final Codec<PropertyMap> t = Codec.either(Codec.unboundedMap(Codec.STRING, Codec.STRING.listOf()), y.listOf()).xmap($$0 -> {
+      PropertyMap $$1 = new PropertyMap();
+      $$0.ifLeft($$1x -> $$1x.forEach(($$1xx, $$2) -> {
+            for (String $$3 : $$2) {
+               $$1.put($$1xx, new Property($$1xx, $$3));
             }
+         })).ifRight($$1x -> {
+         for (Property $$2 : $$1x) {
+            $$1.put($$2.name(), $$2);
+         }
+      });
+      return $$1;
+   }, $$0 -> Either.right($$0.values().stream().toList()));
+   private static final MapCodec<GameProfile> z = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(iy.d.fieldOf("id").forGetter(GameProfile::getId), Codec.STRING.fieldOf("name").forGetter(GameProfile::getName))
+            .apply($$0, GameProfile::new)
+   );
+   public static final Codec<GameProfile> u = RecordCodecBuilder.create(
+      $$0 -> $$0.group(z.forGetter(Function.identity()), t.optionalFieldOf("properties", new PropertyMap()).forGetter(GameProfile::getProperties))
+            .apply($$0, ($$0x, $$1) -> {
+               $$1.forEach(($$1x, $$2) -> $$0x.getProperties().put($$1x, $$2));
+               return $$0x;
+            })
+   );
+   public static final Codec<String> v = a(Codec.STRING, $$0 -> $$0.isEmpty() ? DataResult.error(() -> "Expected non-empty string") : DataResult.success($$0));
+   public static final Codec<Integer> w = Codec.STRING.comapFlatMap($$0 -> {
+      int[] $$1 = $$0.codePoints().toArray();
+      return $$1.length != 1 ? DataResult.error(() -> "Expected one codepoint, got: " + $$0) : DataResult.success($$1[0]);
+   }, Character::toString);
+   public static Codec<String> x = a(
+      Codec.STRING, $$0 -> !agt.g($$0) ? DataResult.error(() -> "Invalid string to use as a resource path element: " + $$0) : DataResult.success($$0)
+   );
 
-            if ($$2.isBoolean()) {
-               return "a boolean (" + $$1 + ")";
+   public static <T> Codec<T> a(DynamicOps<T> $$0) {
+      return Codec.PASSTHROUGH.xmap($$1 -> $$1.convert($$0).getValue(), $$1 -> new Dynamic($$0, $$1));
+   }
+
+   public static <F, S> Codec<Either<F, S>> a(Codec<F> $$0, Codec<S> $$1) {
+      return new atg.g($$0, $$1);
+   }
+
+   public static <P, I> Codec<I> a(Codec<P> $$0, String $$1, String $$2, BiFunction<P, P, DataResult<I>> $$3, Function<I, P> $$4, Function<I, P> $$5) {
+      Codec<I> $$6 = Codec.list($$0).comapFlatMap($$1x -> ac.a($$1x, 2).flatMap($$1xx -> {
+            P $$2x = (P)$$1xx.get(0);
+            P $$3x = (P)$$1xx.get(1);
+            return $$3.apply($$2x, $$3x);
+         }), $$2x -> ImmutableList.of($$4.apply((I)$$2x), $$5.apply((I)$$2x)));
+      Codec<I> $$7 = RecordCodecBuilder.create(
+            $$3x -> $$3x.group($$0.fieldOf($$1).forGetter(Pair::getFirst), $$0.fieldOf($$2).forGetter(Pair::getSecond)).apply($$3x, Pair::of)
+         )
+         .comapFlatMap($$1x -> $$3.apply((P)$$1x.getFirst(), (P)$$1x.getSecond()), $$2x -> Pair.of($$4.apply((I)$$2x), $$5.apply((I)$$2x)));
+      Codec<I> $$8 = e($$6, $$7);
+      return Codec.either($$0, $$8).comapFlatMap($$1x -> (DataResult)$$1x.map($$1xx -> $$3.apply((P)$$1xx, (P)$$1xx), DataResult::success), $$2x -> {
+         P $$3x = $$4.apply((I)$$2x);
+         P $$4x = $$5.apply((I)$$2x);
+         return Objects.equals($$3x, $$4x) ? Either.left($$3x) : Either.right($$2x);
+      });
+   }
+
+   public static <A> ResultFunction<A> a(final A $$0) {
+      return new ResultFunction<A>() {
+         public <T> DataResult<Pair<A, T>> apply(DynamicOps<T> $$0x, T $$1, DataResult<Pair<A, T>> $$2) {
+            MutableObject<String> $$3 = new MutableObject();
+            Optional<Pair<A, T>> $$4 = $$2.resultOrPartial($$3::setValue);
+            return $$4.isPresent() ? $$2 : DataResult.error(() -> "(" + (String)$$3.getValue() + " -> using default)", Pair.of($$0, $$1));
+         }
+
+         public <T> DataResult<T> coApply(DynamicOps<T> $$0x, A $$1, DataResult<T> $$2) {
+            return $$2;
+         }
+
+         @Override
+         public String toString() {
+            return "OrElsePartial[" + $$0 + "]";
+         }
+      };
+   }
+
+   public static <E> Codec<E> a(ToIntFunction<E> $$0, IntFunction<E> $$1, int $$2) {
+      return Codec.INT
+         .flatXmap(
+            $$1x -> Optional.ofNullable($$1.apply($$1x))
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Unknown element id: " + $$1x)),
+            $$2x -> {
+               int $$3 = $$0.applyAsInt((E)$$2x);
+               return $$3 == $$2 ? DataResult.error(() -> "Element with unknown id: " + $$2x) : DataResult.success($$3);
+            }
+         );
+   }
+
+   public static <E> Codec<E> a(Function<E, String> $$0, Function<String, E> $$1) {
+      return Codec.STRING
+         .flatXmap(
+            $$1x -> Optional.ofNullable($$1.apply($$1x))
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Unknown element name:" + $$1x)),
+            $$1x -> Optional.ofNullable($$0.apply((E)$$1x))
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Element with unknown name: " + $$1x))
+         );
+   }
+
+   public static <E> Codec<E> b(final Codec<E> $$0, final Codec<E> $$1) {
+      return new Codec<E>() {
+         public <T> DataResult<T> encode(E $$0x, DynamicOps<T> $$1x, T $$2) {
+            return $$1.compressMaps() ? $$1.encode($$0, $$1, $$2) : $$0.encode($$0, $$1, $$2);
+         }
+
+         public <T> DataResult<Pair<E, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            return $$0.compressMaps() ? $$1.decode($$0, $$1) : $$0.decode($$0, $$1);
+         }
+
+         @Override
+         public String toString() {
+            return $$0 + " orCompressed " + $$1;
+         }
+      };
+   }
+
+   public static <E> MapCodec<E> a(final MapCodec<E> $$0, final MapCodec<E> $$1) {
+      return new MapCodec<E>() {
+         public <T> RecordBuilder<T> encode(E $$0x, DynamicOps<T> $$1x, RecordBuilder<T> $$2) {
+            return $$1.compressMaps() ? $$1.encode($$0, $$1, $$2) : $$0.encode($$0, $$1, $$2);
+         }
+
+         public <T> DataResult<E> decode(DynamicOps<T> $$0x, MapLike<T> $$1x) {
+            return $$0.compressMaps() ? $$1.decode($$0, $$1) : $$0.decode($$0, $$1);
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$1.keys($$0);
+         }
+
+         public String toString() {
+            return $$0 + " orCompressed " + $$1;
+         }
+      };
+   }
+
+   public static <E> Codec<E> a(Codec<E> $$0, final Function<E, Lifecycle> $$1, final Function<E, Lifecycle> $$2) {
+      return $$0.mapResult(new ResultFunction<E>() {
+         public <T> DataResult<Pair<E, T>> apply(DynamicOps<T> $$0, T $$1x, DataResult<Pair<E, T>> $$2x) {
+            return $$2.result().map($$2xxx -> $$2.setLifecycle($$1.apply((E)$$2xxx.getFirst()))).orElse($$2);
+         }
+
+         public <T> DataResult<T> coApply(DynamicOps<T> $$0, E $$1x, DataResult<T> $$2x) {
+            return $$2.setLifecycle($$2.apply($$1));
+         }
+
+         @Override
+         public String toString() {
+            return "WithLifecycle[" + $$1 + " " + $$2 + "]";
+         }
+      });
+   }
+
+   public static <F, S> atg.b<F, S> c(Codec<F> $$0, Codec<S> $$1) {
+      return new atg.b<>($$0, $$1);
+   }
+
+   public static <K, V> atg.e<K, V> d(Codec<K> $$0, Codec<V> $$1) {
+      return new atg.e<>($$0, $$1);
+   }
+
+   public static <T> Codec<T> a(Codec<T> $$0, Function<T, DataResult<T>> $$1) {
+      return $$0 instanceof MapCodecCodec<T> $$2 ? a($$2.codec(), $$1).codec() : $$0.flatXmap($$1, $$1);
+   }
+
+   public static <T> MapCodec<T> a(MapCodec<T> $$0, Function<T, DataResult<T>> $$1) {
+      return $$0.flatXmap($$1, $$1);
+   }
+
+   private static Codec<Integer> a(int $$0, int $$1, Function<Integer, String> $$2) {
+      return a(Codec.INT, $$3 -> $$3.compareTo($$0) >= 0 && $$3.compareTo($$1) <= 0 ? DataResult.success($$3) : DataResult.error(() -> $$2.apply($$3)));
+   }
+
+   public static Codec<Integer> a(int $$0, int $$1) {
+      return a($$0, $$1, $$2 -> "Value must be within range [" + $$0 + ";" + $$1 + "]: " + $$2);
+   }
+
+   private static Codec<Float> a(float $$0, float $$1, Function<Float, String> $$2) {
+      return a(Codec.FLOAT, $$3 -> $$3.compareTo($$0) > 0 && $$3.compareTo($$1) <= 0 ? DataResult.success($$3) : DataResult.error(() -> $$2.apply($$3)));
+   }
+
+   public static <T> Codec<List<T>> a(Codec<List<T>> $$0) {
+      return a(
+         $$0, (Function<List<T>, DataResult<List<T>>>)($$0x -> $$0x.isEmpty() ? DataResult.error(() -> "List must have contents") : DataResult.success($$0x))
+      );
+   }
+
+   public static <T> Codec<ij<T>> b(Codec<ij<T>> $$0) {
+      return a(
+         $$0,
+         (Function<ij<T>, DataResult<ij<T>>>)($$0x -> $$0x.c().right().filter(List::isEmpty).isPresent()
+               ? DataResult.error(() -> "List must have contents")
+               : DataResult.success($$0x))
+      );
+   }
+
+   public static <T> Codec<T> a(String $$0, Function<Codec<T>, Codec<T>> $$1) {
+      return new atg.c<>($$0, $$1);
+   }
+
+   public static <A> Codec<A> a(Supplier<Codec<A>> $$0) {
+      return new atg.c<>($$0.toString(), $$1 -> $$0.get());
+   }
+
+   public static <A> MapCodec<Optional<A>> a(Codec<A> $$0, String $$1) {
+      return new atg.d<>($$1, $$0);
+   }
+
+   public static <A> MapCodec<A> a(Codec<A> $$0, String $$1, A $$2) {
+      return a($$0, $$1).xmap($$1x -> $$1x.orElse($$2), $$1x -> Objects.equals($$1x, $$2) ? Optional.empty() : Optional.of($$1x));
+   }
+
+   public static <E> MapCodec<E> a(final Function<DynamicOps<?>, DataResult<E>> $$0) {
+      class a extends MapCodec<E> {
+         public <T> RecordBuilder<T> encode(E $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            return $$2;
+         }
+
+         public <T> DataResult<E> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            return $$0.apply($$0);
+         }
+
+         public String toString() {
+            return "ContextRetrievalCodec[" + $$0 + "]";
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return Stream.empty();
+         }
+      }
+
+      return new a();
+   }
+
+   public static <E, L extends Collection<E>, T> Function<L, DataResult<L>> b(Function<E, T> $$0) {
+      return $$1 -> {
+         Iterator<E> $$2 = $$1.iterator();
+         if ($$2.hasNext()) {
+            T $$3 = $$0.apply($$2.next());
+
+            while ($$2.hasNext()) {
+               E $$4 = $$2.next();
+               T $$5 = $$0.apply($$4);
+               if ($$5 != $$3) {
+                  return DataResult.error(() -> "Mixed type list: element " + $$4 + " had type " + $$5 + ", but list is of type " + $$3);
+               }
             }
          }
 
-         return $$1;
-      }
+         return DataResult.success($$1, Lifecycle.stable());
+      };
    }
 
-   @Nullable
-   public static <T> T a(Gson $$0, Reader $$1, Class<T> $$2, boolean $$3) {
-      try {
-         JsonReader $$4 = new JsonReader($$1);
-         $$4.setLenient($$3);
-         return (T)$$0.getAdapter($$2).read($$4);
-      } catch (IOException var5) {
-         throw new JsonParseException(var5);
-      }
+   public static <A> Codec<A> c(final Codec<A> $$0) {
+      return Codec.of($$0, new Decoder<A>() {
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1) {
+            try {
+               return $$0.decode($$0, $$1);
+            } catch (Exception var4) {
+               return DataResult.error(() -> "Caught exception decoding " + $$1 + ": " + var4.getMessage());
+            }
+         }
+      });
    }
 
-   public static <T> T b(Gson $$0, Reader $$1, Class<T> $$2, boolean $$3) {
-      T $$4 = a($$0, $$1, $$2, $$3);
-      if ($$4 == null) {
-         throw new JsonParseException("JSON data was null or empty");
-      } else {
-         return $$4;
-      }
+   public static Codec<TemporalAccessor> a(DateTimeFormatter $$0) {
+      return Codec.STRING.comapFlatMap($$1 -> {
+         try {
+            return DataResult.success($$0.parse($$1));
+         } catch (Exception var3) {
+            return DataResult.error(var3::getMessage);
+         }
+      }, $$0::format);
    }
 
-   @Nullable
-   public static <T> T a(Gson $$0, Reader $$1, TypeToken<T> $$2, boolean $$3) {
-      try {
-         JsonReader $$4 = new JsonReader($$1);
-         $$4.setLenient($$3);
-         return (T)$$0.getAdapter($$2).read($$4);
-      } catch (IOException var5) {
-         throw new JsonParseException(var5);
-      }
+   public static MapCodec<OptionalLong> a(MapCodec<Optional<Long>> $$0) {
+      return $$0.xmap(q, r);
    }
 
-   public static <T> T b(Gson $$0, Reader $$1, TypeToken<T> $$2, boolean $$3) {
-      T $$4 = a($$0, $$1, $$2, $$3);
-      if ($$4 == null) {
-         throw new JsonParseException("JSON data was null or empty");
-      } else {
-         return $$4;
-      }
+   public static Codec<String> b(int $$0, int $$1) {
+      return a(
+         Codec.STRING,
+         $$2 -> {
+            int $$3 = $$2.length();
+            if ($$3 < $$0) {
+               return DataResult.error(() -> "String \"" + $$2 + "\" is too short: " + $$3 + ", expected range [" + $$0 + "-" + $$1 + "]");
+            } else {
+               return $$3 > $$1
+                  ? DataResult.error(() -> "String \"" + $$2 + "\" is too long: " + $$3 + ", expected range [" + $$0 + "-" + $$1 + "]")
+                  : DataResult.success($$2);
+            }
+         }
+      );
    }
 
-   @Nullable
-   public static <T> T a(Gson $$0, String $$1, TypeToken<T> $$2, boolean $$3) {
-      return a($$0, new StringReader($$1), $$2, $$3);
+   public static <T> Codec<T> e(Codec<T> $$0, Codec<? extends T> $$1) {
+      return Codec.either($$0, $$1).xmap($$0x -> $$0x.map($$0xx -> $$0xx, $$0xx -> $$0xx), Either::left);
    }
 
-   public static <T> T a(Gson $$0, String $$1, Class<T> $$2, boolean $$3) {
-      return b($$0, new StringReader($$1), $$2, $$3);
+   public static <T, U> Codec<T> a(Codec<T> $$0, Codec<U> $$1, Function<U, T> $$2) {
+      return Codec.either($$0, $$1).xmap($$1x -> $$1x.map($$0xx -> $$0xx, $$2), Either::left);
    }
 
-   @Nullable
-   public static <T> T b(Gson $$0, String $$1, Class<T> $$2, boolean $$3) {
-      return a($$0, new StringReader($$1), $$2, $$3);
+   public static <T> Codec<Object2BooleanMap<T>> d(Codec<T> $$0) {
+      return Codec.unboundedMap($$0, Codec.BOOL).xmap(Object2BooleanOpenHashMap::new, Object2ObjectOpenHashMap::new);
    }
 
-   public static <T> T a(Gson $$0, Reader $$1, TypeToken<T> $$2) {
-      return b($$0, $$1, $$2, false);
+   @Deprecated
+   public static <K, V> MapCodec<V> a(
+      final String $$0,
+      final String $$1,
+      final Codec<K> $$2,
+      final Function<? super V, ? extends K> $$3,
+      final Function<? super K, ? extends Codec<? extends V>> $$4
+   ) {
+      return new MapCodec<V>() {
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return Stream.of((T[])(new Object[]{$$0.createString($$0), $$0.createString($$1)}));
+         }
+
+         public <T> DataResult<V> decode(DynamicOps<T> $$0x, MapLike<T> $$1x) {
+            T $$2 = (T)$$1.get($$0);
+            return $$2 == null ? DataResult.error(() -> "Missing \"" + $$0 + "\" in: " + $$1) : $$2.decode($$0, $$2).flatMap($$4xx -> {
+               T $$5 = Objects.requireNonNullElseGet((T)$$1.get($$1), $$0::emptyMap);
+               return $$4.apply((K)$$4xx.getFirst()).decode($$0, $$5).map(Pair::getFirst);
+            });
+         }
+
+         public <T> RecordBuilder<T> encode(V $$0x, DynamicOps<T> $$1x, RecordBuilder<T> $$2x) {
+            K $$3 = (K)$$3.apply($$0);
+            $$2.add($$0, $$2.encodeStart($$1, $$3));
+            DataResult<T> $$4 = this.a($$4.apply($$3), $$0, $$1);
+            if ($$4.result().isEmpty() || !Objects.equals($$4.result().get(), $$1.emptyMap())) {
+               $$2.add($$1, $$4);
+            }
+
+            return $$2;
+         }
+
+         private <T, V2 extends V> DataResult<T> a(Codec<V2> $$0x, V $$1x, DynamicOps<T> $$2x) {
+            return $$0.encodeStart($$2, $$1);
+         }
+      };
    }
 
-   @Nullable
-   public static <T> T a(Gson $$0, String $$1, TypeToken<T> $$2) {
-      return a($$0, $$1, $$2, false);
-   }
+   public static final class b<F, S> implements Codec<Either<F, S>> {
+      private final Codec<F> a;
+      private final Codec<S> b;
 
-   public static <T> T a(Gson $$0, Reader $$1, Class<T> $$2) {
-      return b($$0, $$1, $$2, false);
-   }
-
-   public static <T> T a(Gson $$0, String $$1, Class<T> $$2) {
-      return a($$0, $$1, $$2, false);
-   }
-
-   public static JsonObject a(String $$0, boolean $$1) {
-      return a(new StringReader($$0), $$1);
-   }
-
-   public static JsonObject a(Reader $$0, boolean $$1) {
-      return b(a, $$0, JsonObject.class, $$1);
-   }
-
-   public static JsonObject a(String $$0) {
-      return a($$0, false);
-   }
-
-   public static JsonObject a(Reader $$0) {
-      return a($$0, false);
-   }
-
-   public static JsonArray b(String $$0) {
-      return b(new StringReader($$0));
-   }
-
-   public static JsonArray b(Reader $$0) {
-      return b(a, $$0, JsonArray.class, false);
-   }
-
-   public static String e(JsonElement $$0) {
-      StringWriter $$1 = new StringWriter();
-      JsonWriter $$2 = new JsonWriter($$1);
-
-      try {
-         a($$2, $$0, Comparator.naturalOrder());
-      } catch (IOException var4) {
-         throw new AssertionError(var4);
+      public b(Codec<F> $$0, Codec<S> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$1.toString();
-   }
-
-   public static void a(JsonWriter $$0, @Nullable JsonElement $$1, @Nullable Comparator<String> $$2) throws IOException {
-      if ($$1 == null || $$1.isJsonNull()) {
-         $$0.nullValue();
-      } else if ($$1.isJsonPrimitive()) {
-         JsonPrimitive $$3 = $$1.getAsJsonPrimitive();
-         if ($$3.isNumber()) {
-            $$0.value($$3.getAsNumber());
-         } else if ($$3.isBoolean()) {
-            $$0.value($$3.getAsBoolean());
+      public <T> DataResult<Pair<Either<F, S>, T>> decode(DynamicOps<T> $$0, T $$1) {
+         DataResult<Pair<Either<F, S>, T>> $$2 = this.a.decode($$0, $$1).map($$0x -> $$0x.mapFirst(Either::left));
+         if ($$2.error().isEmpty()) {
+            return $$2;
          } else {
-            $$0.value($$3.getAsString());
+            DataResult<Pair<Either<F, S>, T>> $$3 = this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(Either::right));
+            return $$3.error().isEmpty() ? $$3 : $$2.apply2(($$0x, $$1x) -> $$1x, $$3);
          }
-      } else if ($$1.isJsonArray()) {
-         $$0.beginArray();
+      }
 
-         for (JsonElement $$4 : $$1.getAsJsonArray()) {
-            a($$0, $$4, $$2);
+      public <T> DataResult<T> a(Either<F, S> $$0, DynamicOps<T> $$1, T $$2) {
+         return (DataResult<T>)$$0.map($$2x -> this.a.encode($$2x, $$1, $$2), $$2x -> this.b.encode($$2x, $$1, $$2));
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            atg.b<?, ?> $$1 = (atg.b<?, ?>)$$0;
+            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+         } else {
+            return false;
          }
+      }
 
-         $$0.endArray();
-      } else {
-         if (!$$1.isJsonObject()) {
-            throw new IllegalArgumentException("Couldn't write " + $$1.getClass());
-         }
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b);
+      }
 
-         $$0.beginObject();
-
-         for (Entry<String, JsonElement> $$5 : a($$1.getAsJsonObject().entrySet(), $$2)) {
-            $$0.name($$5.getKey());
-            a($$0, $$5.getValue(), $$2);
-         }
-
-         $$0.endObject();
+      @Override
+      public String toString() {
+         return "EitherCodec[" + this.a + ", " + this.b + "]";
       }
    }
 
-   private static Collection<Entry<String, JsonElement>> a(Collection<Entry<String, JsonElement>> $$0, @Nullable Comparator<String> $$1) {
-      if ($$1 == null) {
-         return $$0;
-      } else {
-         List<Entry<String, JsonElement>> $$2 = new ArrayList<>($$0);
-         $$2.sort(Entry.comparingByKey($$1));
-         return $$2;
+   static class c<T> implements Codec<T> {
+      private final String a;
+      private final Supplier<Codec<T>> b;
+
+      c(String $$0, Function<Codec<T>, Codec<T>> $$1) {
+         this.a = $$0;
+         this.b = Suppliers.memoize(() -> $$1.apply(this));
+      }
+
+      public <S> DataResult<Pair<T, S>> decode(DynamicOps<S> $$0, S $$1) {
+         return this.b.get().decode($$0, $$1);
+      }
+
+      public <S> DataResult<S> encode(T $$0, DynamicOps<S> $$1, S $$2) {
+         return this.b.get().encode($$0, $$1, $$2);
+      }
+
+      @Override
+      public String toString() {
+         return "RecursiveCodec[" + this.a + "]";
+      }
+   }
+
+   static final class d<A> extends MapCodec<Optional<A>> {
+      private final String a;
+      private final Codec<A> b;
+
+      public d(String $$0, Codec<A> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public <T> DataResult<Optional<A>> decode(DynamicOps<T> $$0, MapLike<T> $$1) {
+         T $$2 = (T)$$1.get(this.a);
+         return $$2 == null ? DataResult.success(Optional.empty()) : this.b.parse($$0, $$2).map(Optional::of);
+      }
+
+      public <T> RecordBuilder<T> a(Optional<A> $$0, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+         return $$0.isPresent() ? $$2.add(this.a, this.b.encodeStart($$1, $$0.get())) : $$2;
+      }
+
+      public <T> Stream<T> keys(DynamicOps<T> $$0) {
+         return Stream.of((T)$$0.createString(this.a));
+      }
+
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return !($$0 instanceof atg.d<?> $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+         }
+      }
+
+      public int hashCode() {
+         return Objects.hash(this.a, this.b);
+      }
+
+      public String toString() {
+         return "StrictOptionalFieldCodec[" + this.a + ": " + this.b + "]";
+      }
+   }
+
+   public static record e<K, V>(Codec<K> a, Codec<V> b) implements Codec<Map<K, V>>, BaseMapCodec<K, V> {
+      public <T> DataResult<Map<K, V>> decode(DynamicOps<T> $$0, MapLike<T> $$1) {
+         Builder<K, V> $$2 = ImmutableMap.builder();
+
+         for (Pair<T, T> $$3 : $$1.entries().toList()) {
+            DataResult<K> $$4 = this.keyCodec().parse($$0, $$3.getFirst());
+            DataResult<V> $$5 = this.elementCodec().parse($$0, $$3.getSecond());
+            DataResult<Pair<K, V>> $$6 = $$4.apply2stable(Pair::of, $$5);
+            if ($$6.error().isPresent()) {
+               return DataResult.error(() -> {
+                  PartialResult<Pair<K, V>> $$2x = (PartialResult<Pair<K, V>>)$$6.error().get();
+                  String $$3x;
+                  if ($$4.result().isPresent()) {
+                     $$3x = "Map entry '" + $$4.result().get() + "' : " + $$2x.message();
+                  } else {
+                     $$3x = $$2x.message();
+                  }
+
+                  return $$3x;
+               });
+            }
+
+            if (!$$6.result().isPresent()) {
+               return DataResult.error(() -> "Empty or invalid map contents are not allowed");
+            }
+
+            Pair<K, V> $$7 = (Pair<K, V>)$$6.result().get();
+            $$2.put($$7.getFirst(), $$7.getSecond());
+         }
+
+         Map<K, V> $$8 = $$2.build();
+         return DataResult.success($$8);
+      }
+
+      public <T> DataResult<Pair<Map<K, V>, T>> decode(DynamicOps<T> $$0, T $$1) {
+         return $$0.getMap($$1).setLifecycle(Lifecycle.stable()).flatMap($$1x -> this.decode($$0, $$1x)).map($$1x -> Pair.of($$1x, $$1));
+      }
+
+      public <T> DataResult<T> a(Map<K, V> $$0, DynamicOps<T> $$1, T $$2) {
+         return this.encode($$0, $$1, $$1.mapBuilder()).build($$2);
+      }
+
+      @Override
+      public String toString() {
+         return "StrictUnboundedMapCodec[" + this.a + " -> " + this.b + "]";
+      }
+
+      public Codec<K> keyCodec() {
+         return this.a;
+      }
+
+      public Codec<V> elementCodec() {
+         return this.b;
+      }
+   }
+
+   public static record f(agt a, boolean b) {
+      @Override
+      public String toString() {
+         return this.c();
+      }
+
+      private String c() {
+         return this.b ? "#" + this.a : this.a.toString();
+      }
+   }
+
+   static record g<F, S>(Codec<F> a, Codec<S> b) implements Codec<Either<F, S>> {
+      public <T> DataResult<Pair<Either<F, S>, T>> decode(DynamicOps<T> $$0, T $$1) {
+         DataResult<Pair<Either<F, S>, T>> $$2 = this.a.decode($$0, $$1).map($$0x -> $$0x.mapFirst(Either::left));
+         DataResult<Pair<Either<F, S>, T>> $$3 = this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(Either::right));
+         Optional<Pair<Either<F, S>, T>> $$4 = $$2.result();
+         Optional<Pair<Either<F, S>, T>> $$5 = $$3.result();
+         if ($$4.isPresent() && $$5.isPresent()) {
+            return DataResult.error(
+               () -> "Both alternatives read successfully, can not pick the correct one; first: " + $$4.get() + " second: " + $$5.get(), $$4.get()
+            );
+         } else if ($$4.isPresent()) {
+            return $$2;
+         } else {
+            return $$5.isPresent() ? $$3 : $$2.apply2(($$0x, $$1x) -> $$1x, $$3);
+         }
+      }
+
+      public <T> DataResult<T> a(Either<F, S> $$0, DynamicOps<T> $$1, T $$2) {
+         return (DataResult<T>)$$0.map($$2x -> this.a.encode($$2x, $$1, $$2), $$2x -> this.b.encode($$2x, $$1, $$2));
+      }
+
+      @Override
+      public String toString() {
+         return "XorCodec[" + this.a + ", " + this.b + "]";
       }
    }
 }

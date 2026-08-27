@@ -1,19 +1,64 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.PrivateKey;
-import java.time.Instant;
+import javax.annotation.Nullable;
 
-public record ceb(PrivateKey b, cec c, Instant d) {
-   public static final Codec<ceb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               asp.g.fieldOf("private_key").forGetter(ceb::b),
-               cec.c.fieldOf("public_key").forGetter(ceb::c),
-               asy.m.fieldOf("refreshed_after").forGetter(ceb::d)
-            )
-            .apply($$0, ceb::new)
-   );
+public class ceb implements crv {
+   private final cer a;
+   private crx b = new crx();
+   private int c;
 
-   public boolean a() {
-      return this.d.isBefore(Instant.now());
+   public ceb(cer $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public cer ge() {
+      return this.a;
+   }
+
+   @Override
+   public void f(@Nullable cer $$0) {
+   }
+
+   @Override
+   public crx gg() {
+      return this.b;
+   }
+
+   @Override
+   public void a(crx $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(crw $$0) {
+      $$0.j();
+   }
+
+   @Override
+   public void l(cmh $$0) {
+   }
+
+   @Override
+   public boolean gm() {
+      return this.a.dM().B;
+   }
+
+   @Override
+   public int w() {
+      return this.c;
+   }
+
+   @Override
+   public void t(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public boolean gh() {
+      return true;
+   }
+
+   @Override
+   public arb gi() {
+      return arc.zN;
    }
 }

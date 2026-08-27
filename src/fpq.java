@@ -1,41 +1,52 @@
-public class fpq extends fol {
-   private final bkv a;
-   private int b;
-   private final int D;
-   private final ju E;
+public class fpq extends fpw {
+   private static final int a = 3;
+   private final fso b;
+   private final blf D;
+   private final blf E;
+   private int F;
+   private final fxm G;
 
-   public fpq(flo $$0, bkv $$1, ju $$2) {
-      this($$0, $$1, $$2, 3);
+   public fpq(fxm $$0, fso $$1, fmt $$2, blf $$3, blf $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.dp());
    }
 
-   public fpq(flo $$0, bkv $$1, ju $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.dq());
+   private fpq(fxm $$0, fso $$1, fmt $$2, blf $$3, blf $$4, elb $$5) {
+      super($$2, $$3.dr(), $$3.dt(), $$3.dx(), $$5.c, $$5.d, $$5.e);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
    }
 
-   private fpq(flo $$0, bkv $$1, ju $$2, int $$3, ejz $$4) {
-      super($$0, $$1.ds(), $$1.e(0.5), $$1.dy(), $$4.c, $$4.d, $$4.e);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+   private blf a(blf $$0) {
+      return (blf)(!($$0 instanceof cbe) ? $$0 : ((cbe)$$0).D());
+   }
+
+   @Override
+   public fqa b() {
+      return fqa.e;
+   }
+
+   @Override
+   public void a(eph $$0, etv $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = aty.d((double)$$2, this.E.ac, this.E.dr());
+      double $$5 = aty.d((double)$$2, this.E.ad, (this.E.dt() + this.E.dv()) / 2.0);
+      double $$6 = aty.d((double)$$2, this.E.ae, this.E.dx());
+      double $$7 = aty.d((double)$$3, this.D.dr(), $$4);
+      double $$8 = aty.d((double)$$3, this.D.dt(), $$5);
+      double $$9 = aty.d((double)$$3, this.D.dx(), $$6);
+      fsi.a $$10 = this.b.c();
+      elb $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dC(), $$2, new epd(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
-      }
-
-      this.b++;
-      if (this.b >= this.D) {
+      this.F++;
+      if (this.F == 3) {
          this.k();
       }
    }

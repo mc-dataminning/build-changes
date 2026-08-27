@@ -1,51 +1,78 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.serialization.Dynamic;
 import java.util.Map;
 
 public class avq extends DataFix {
-   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("Airportal", "minecraft:end_portal");
-      $$0.put("Banner", "minecraft:banner");
-      $$0.put("Beacon", "minecraft:beacon");
-      $$0.put("Cauldron", "minecraft:brewing_stand");
-      $$0.put("Chest", "minecraft:chest");
-      $$0.put("Comparator", "minecraft:comparator");
-      $$0.put("Control", "minecraft:command_block");
-      $$0.put("DLDetector", "minecraft:daylight_detector");
-      $$0.put("Dropper", "minecraft:dropper");
-      $$0.put("EnchantTable", "minecraft:enchanting_table");
-      $$0.put("EndGateway", "minecraft:end_gateway");
-      $$0.put("EnderChest", "minecraft:ender_chest");
-      $$0.put("FlowerPot", "minecraft:flower_pot");
-      $$0.put("Furnace", "minecraft:furnace");
-      $$0.put("Hopper", "minecraft:hopper");
-      $$0.put("MobSpawner", "minecraft:mob_spawner");
-      $$0.put("Music", "minecraft:noteblock");
-      $$0.put("Piston", "minecraft:piston");
-      $$0.put("RecordPlayer", "minecraft:jukebox");
-      $$0.put("Sign", "minecraft:sign");
-      $$0.put("Skull", "minecraft:skull");
-      $$0.put("Structure", "minecraft:structure_block");
-      $$0.put("Trap", "minecraft:dispenser");
-   });
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("generic.maxHealth", "generic.max_health")
+      .put("Max Health", "generic.max_health")
+      .put("zombie.spawnReinforcements", "zombie.spawn_reinforcements")
+      .put("Spawn Reinforcements Chance", "zombie.spawn_reinforcements")
+      .put("horse.jumpStrength", "horse.jump_strength")
+      .put("Jump Strength", "horse.jump_strength")
+      .put("generic.followRange", "generic.follow_range")
+      .put("Follow Range", "generic.follow_range")
+      .put("generic.knockbackResistance", "generic.knockback_resistance")
+      .put("Knockback Resistance", "generic.knockback_resistance")
+      .put("generic.movementSpeed", "generic.movement_speed")
+      .put("Movement Speed", "generic.movement_speed")
+      .put("generic.flyingSpeed", "generic.flying_speed")
+      .put("Flying Speed", "generic.flying_speed")
+      .put("generic.attackDamage", "generic.attack_damage")
+      .put("generic.attackKnockback", "generic.attack_knockback")
+      .put("generic.attackSpeed", "generic.attack_speed")
+      .put("generic.armorToughness", "generic.armor_toughness")
+      .build();
 
-   public avq(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public avq(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bax.t);
-      Type<?> $$1 = this.getOutputSchema().getType(bax.t);
-      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bax.s);
-      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bax.s);
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bbg.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
       return TypeRewriteRule.seq(
-         this.convertUnchecked("item stack block entity name hook converter", $$0, $$1),
-         this.fixTypeEverywhere("BlockEntityIdFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
+         this.fixTypeEverywhereTyped("Rename ItemStack Attributes", $$0, $$1x -> $$1x.updateTyped($$1, avq::a)),
+         new TypeRewriteRule[]{
+            this.fixTypeEverywhereTyped("Rename Entity Attributes", this.getInputSchema().getType(bbg.x), avq::b),
+            this.fixTypeEverywhereTyped("Rename Player Attributes", this.getInputSchema().getType(bbg.b), avq::b)
+         }
+      );
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map($$0x -> a.getOrDefault($$0x, $$0x)).map($$0::createString), $$0);
+   }
+
+   private static Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "AttributeModifiers",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", avq::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
+   }
+
+   private static Typed<?> b(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "Attributes",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", avq::a))).map($$0xx::createList), $$0xx
+                  )
+            )
       );
    }
 }

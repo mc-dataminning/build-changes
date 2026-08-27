@@ -1,71 +1,146 @@
+import com.mojang.datafixers.Products.P2;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dus extends duw {
-   public static final Codec<dus> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
-               duf.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
-               asy.a(ib.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dus::new)
-   );
-   protected final float b;
-   protected final int c;
-   protected final int d;
-   protected final duf e;
-   protected final int f;
-   protected final List<ib> g;
+public abstract class dus {
+   public static final Codec<dus> d = kb.W.q().dispatch(dus::a, dut::a);
+   protected final biq e;
+   protected final biq f;
 
-   public dus(float $$0, int $$1, int $$2, duf $$3, int $$4, List<ib> $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   protected static <P extends dus> P2<Mu<P>, biq, biq> b(Instance<P> $$0) {
+      return $$0.group(biq.b(0, 16).fieldOf("radius").forGetter($$0x -> $$0x.e), biq.b(0, 16).fieldOf("offset").forGetter($$0x -> $$0x.f));
    }
 
-   @Override
-   public void a(duw.a $$0) {
-      Set<hx> $$1 = new HashSet<>();
-      atw $$2 = $$0.b();
+   public dus(biq $$0, biq $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
 
-      for (hx $$3 : ac.a($$0.d(), $$2)) {
-         ib $$4 = ac.a(this.g, $$2);
-         hx $$5 = $$3.a($$4);
-         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
-            hx $$6 = $$5.b(-this.c, -this.d, -this.c);
-            hx $$7 = $$5.b(this.c, this.d, this.c);
+   protected abstract dut<?> a();
 
-            for (hx $$8 : hx.a($$6, $$7)) {
-               $$1.add($$8.i());
+   public void a(cte $$0, dus.b $$1, auf $$2, duc $$3, int $$4, dus.a $$5, int $$6, int $$7) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$2));
+   }
+
+   protected abstract void a(cte var1, dus.b var2, auf var3, duc var4, int var5, dus.a var6, int var7, int var8, int var9);
+
+   public abstract int a(auf var1, int var2, duc var3);
+
+   public int a(auf $$0, int $$1) {
+      return this.e.a($$0);
+   }
+
+   private int a(auf $$0) {
+      return this.f.a($$0);
+   }
+
+   protected abstract boolean a(auf var1, int var2, int var3, int var4, int var5, boolean var6);
+
+   protected boolean b(auf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6;
+      int $$7;
+      if ($$5) {
+         $$6 = Math.min(Math.abs($$1), Math.abs($$1 - 1));
+         $$7 = Math.min(Math.abs($$3), Math.abs($$3 - 1));
+      } else {
+         $$6 = Math.abs($$1);
+         $$7 = Math.abs($$3);
+      }
+
+      return this.a($$0, $$6, $$2, $$7, $$4, $$5);
+   }
+
+   protected void a(cte $$0, dus.b $$1, auf $$2, duc $$3, hv $$4, int $$5, int $$6, boolean $$7) {
+      int $$8 = $$7 ? 1 : 0;
+      hv.a $$9 = new hv.a();
+
+      for (int $$10 = -$$5; $$10 <= $$5 + $$8; $$10++) {
+         for (int $$11 = -$$5; $$11 <= $$5 + $$8; $$11++) {
+            if (!this.b($$2, $$10, $$6, $$11, $$5, $$7)) {
+               $$9.a($$4, $$10, $$6, $$11);
+               a($$0, $$1, $$2, $$3, $$9);
+            }
+         }
+      }
+   }
+
+   protected final void a(cte $$0, dus.b $$1, auf $$2, duc $$3, hv $$4, int $$5, int $$6, boolean $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      int $$10 = $$7 ? 1 : 0;
+      hv $$11 = $$4.d();
+      hv.a $$12 = new hv.a();
+
+      for (ia $$13 : ia.c.a) {
+         ia $$14 = $$13.h();
+         int $$15 = $$14.f() == ia.b.a ? $$5 + $$10 : $$5;
+         $$12.a($$4, 0, $$6 - 1, 0).c($$14, $$15).c($$13, -$$5);
+         int $$16 = -$$5;
+
+         while ($$16 < $$5 + $$10) {
+            boolean $$17 = $$1.a($$12.c(ia.b));
+            $$12.c(ia.a);
+            if ($$17 && a($$0, $$1, $$2, $$3, $$8, $$11, $$12)) {
+               $$12.c(ia.a);
+               a($$0, $$1, $$2, $$3, $$9, $$11, $$12);
+               $$12.c(ia.b);
             }
 
-            $$0.a($$5, this.e.a($$2, $$5));
+            $$16++;
+            $$12.c($$13);
          }
       }
    }
 
-   private boolean a(duw.a $$0, hx $$1, ib $$2) {
-      for (int $$3 = 1; $$3 <= this.f; $$3++) {
-         hx $$4 = $$1.a($$2, $$3);
-         if (!$$0.a($$4)) {
-            return false;
-         }
+   private static boolean a(cte $$0, dus.b $$1, auf $$2, duc $$3, float $$4, hv $$5, hv.a $$6) {
+      if ($$6.k($$5) >= 7) {
+         return false;
+      } else {
+         return $$2.i() > $$4 ? false : a($$0, $$1, $$2, $$3, $$6);
       }
-
-      return true;
    }
 
-   @Override
-   protected dux<?> a() {
-      return dux.f;
+   protected static boolean a(cte $$0, dus.b $$1, auf $$2, duc $$3, hv $$4) {
+      if (!dso.c($$0, $$4)) {
+         return false;
+      } else {
+         dip $$5 = $$3.e.a($$2, $$4);
+         if ($$5.b(djf.C)) {
+            $$5 = $$5.a(djf.C, Boolean.valueOf($$0.b($$4, $$0x -> $$0x.a(eea.c))));
+         }
+
+         $$1.a($$4, $$5);
+         return true;
+      }
+   }
+
+   public static final class a {
+      private final hv a;
+      private final int b;
+      private final boolean c;
+
+      public a(hv $$0, int $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public hv a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public boolean c() {
+         return this.c;
+      }
+   }
+
+   public interface b {
+      void a(hv var1, dip var2);
+
+      boolean a(hv var1);
    }
 }

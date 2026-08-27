@@ -1,51 +1,39 @@
 import java.util.EnumSet;
 
-public class bth<T extends cbn & cbr & cba> extends bsg {
-   public static final bim a = aup.a(1, 2);
-   private final T b;
-   private bth.a c = bth.a.a;
-   private final double d;
-   private final float e;
-   private int f;
-   private int g;
-   private int h;
+public class bth extends bsr {
+   private final blx a;
+   private blv b;
+   private int c;
 
-   public bth(T $$0, double $$1, float $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2 * $$2;
-      this.a(EnumSet.of(bsg.a.a, bsg.a.b));
+   public bth(blx $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bsr.a.a, bsr.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.i() && this.h();
-   }
-
-   private boolean h() {
-      return this.b.b(clr.vL);
+      blv $$0 = this.a.q();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
    }
 
    @Override
    public boolean b() {
-      return this.i() && (this.a() || !this.b.N().l()) && this.h();
-   }
-
-   private boolean i() {
-      return this.b.q() != null && this.b.q().bx();
+      if (!this.b.bx()) {
+         return false;
+      } else {
+         return this.a.f(this.b) > 225.0 ? false : !this.a.N().l() || this.a();
+      }
    }
 
    @Override
    public void d() {
-      super.d();
-      this.b.v(false);
-      this.b.h(null);
-      this.f = 0;
-      if (this.b.fo()) {
-         this.b.fu();
-         this.b.b(false);
-         cjw.a(this.b.fq(), false);
-      }
+      this.b = null;
+      this.a.N().n();
    }
 
    @Override
@@ -55,75 +43,23 @@ public class bth<T extends cbn & cbr & cba> extends bsg {
 
    @Override
    public void e() {
-      bll $$0 = this.b.q();
-      if ($$0 != null) {
-         boolean $$1 = this.b.O().a($$0);
-         boolean $$2 = this.f > 0;
-         if ($$1 != $$2) {
-            this.f = 0;
-         }
+      this.a.I().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dg() * 2.0F * this.a.dg() * 2.0F);
+      double $$1 = this.a.i(this.b.dr(), this.b.dt(), this.b.dx());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
 
-         if ($$1) {
-            this.f++;
-         } else {
-            this.f--;
-         }
-
-         double $$3 = this.b.f($$0);
-         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
-         if ($$4) {
-            this.h--;
-            if (this.h <= 0) {
-               this.b.N().a($$0, this.k() ? this.d : this.d * 0.5);
-               this.h = a.a(this.b.eh());
-            }
-         } else {
-            this.h = 0;
-            this.b.N().n();
-         }
-
-         this.b.I().a($$0, 30.0F, 30.0F);
-         if (this.c == bth.a.a) {
-            if (!$$4) {
-               this.b.c(ces.a(this.b, clr.vL));
-               this.c = bth.a.b;
-               this.b.b(true);
-            }
-         } else if (this.c == bth.a.b) {
-            if (!this.b.fo()) {
-               this.c = bth.a.a;
-            }
-
-            int $$5 = this.b.fs();
-            clo $$6 = this.b.fq();
-            if ($$5 >= cjw.k($$6)) {
-               this.b.ft();
-               this.c = bth.a.c;
-               this.g = 20 + this.b.eh().a(20);
-               this.b.b(false);
-            }
-         } else if (this.c == bth.a.c) {
-            this.g--;
-            if (this.g == 0) {
-               this.c = bth.a.d;
-            }
-         } else if (this.c == bth.a.d && $$1) {
-            this.b.a($$0, 1.0F);
-            clo $$7 = this.b.b(ces.a(this.b, clr.vL));
-            cjw.a($$7, false);
-            this.c = bth.a.a;
+      this.a.N().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.C(this.b);
          }
       }
-   }
-
-   private boolean k() {
-      return this.c == bth.a.a;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

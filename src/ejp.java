@@ -1,79 +1,92 @@
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ejp {
-   private final PathMatcher a;
-
-   public ejp(PathMatcher $$0) {
-      this.a = $$0;
-   }
-
-   public void a(Path $$0, List<ejq> $$1) throws IOException {
-      Path $$2 = Files.readSymbolicLink($$0);
-      if (!this.a.matches($$2)) {
-         $$1.add(new ejq($$0, $$2));
-      }
-   }
-
-   public List<ejq> a(Path $$0) throws IOException {
-      List<ejq> $$1 = new ArrayList<>();
-      this.a($$0, $$1);
-      return $$1;
-   }
-
-   public List<ejq> a(Path $$0, boolean $$1) throws IOException {
-      List<ejq> $$2 = new ArrayList<>();
-
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return $$2;
+public class ejp implements ejr {
+   private static final String d = "block_entity";
+   private static final ejp.a e = new ejp.a() {
+      @Override
+      public tg a(ege $$0) {
+         dgd $$1 = $$0.c(eip.h);
+         return $$1 != null ? $$1.o() : null;
       }
 
-      if ($$3.isRegularFile()) {
-         throw new IOException("Path " + $$0 + " is not a directory");
+      @Override
+      public String a() {
+         return "block_entity";
+      }
+
+      @Override
+      public Set<eim<?>> b() {
+         return ImmutableSet.of(eip.h);
+      }
+   };
+   public static final ejp a = new ejp(e);
+   private static final Codec<ejp.a> f = Codec.STRING.xmap($$0 -> {
+      if ($$0.equals("block_entity")) {
+         return e;
       } else {
-         if ($$3.isSymbolicLink()) {
-            if (!$$1) {
-               this.a($$0, $$2);
-               return $$2;
-            }
+         ege.b $$1 = ege.b.a($$0);
+         return b($$1);
+      }
+   }, ejp.a::a);
+   public static final Codec<ejp> b = RecordCodecBuilder.create($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, ejp::new));
+   public static final Codec<ejp> c = f.xmap(ejp::new, $$0 -> $$0.g);
+   private final ejp.a g;
 
-            $$0 = Files.readSymbolicLink($$0);
+   private static ejp.a b(final ege.b $$0) {
+      return new ejp.a() {
+         @Nullable
+         @Override
+         public tg a(ege $$0x) {
+            blf $$1 = $$0.c($$0.a());
+            return $$1 != null ? cm.b($$1) : null;
          }
 
-         this.b($$0, $$2);
-         return $$2;
-      }
+         @Override
+         public String a() {
+            return $$0.name();
+         }
+
+         @Override
+         public Set<eim<?>> b() {
+            return ImmutableSet.of($$0.a());
+         }
+      };
    }
 
-   public void b(Path $$0, final List<ejq> $$1) throws IOException {
-      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            if ($$1.isSymbolicLink()) {
-               ejp.this.a($$0, $$1);
-            }
-         }
+   private ejp(ejp.a $$0) {
+      this.g = $$0;
+   }
 
-         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.preVisitDirectory($$0, $$1);
-         }
+   @Override
+   public ejq a() {
+      return ejs.c;
+   }
 
-         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.visitFile($$0, $$1);
-         }
-      });
+   @Nullable
+   @Override
+   public tg a(ege $$0) {
+      return this.g.a($$0);
+   }
+
+   @Override
+   public Set<eim<?>> b() {
+      return this.g.b();
+   }
+
+   public static ejr a(ege.b $$0) {
+      return new ejp(b($$0));
+   }
+
+   interface a {
+      @Nullable
+      tg a(ege var1);
+
+      String a();
+
+      Set<eim<?>> b();
    }
 }

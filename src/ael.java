@@ -1,32 +1,32 @@
-public class ael implements wo<acp> {
-   private final bja a;
-   private final int b;
+public class ael implements wu<acw> {
+   private final int a;
+   private final cmh b;
 
-   public ael(bja $$0, int $$1) {
+   public ael(int $$0, cmh $$1) {
       this.a = $$0;
-      this.b = $$1;
+      this.b = $$1.p();
    }
 
-   public ael(ty $$0) {
-      this.a = $$0.b(bja.class);
-      this.b = $$0.n();
-   }
-
-   @Override
-   public void a(ty $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-   }
-
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
    }
 
-   public bja a() {
+   public ael(ue $$0) {
+      this.a = $$0.readShort();
+      this.b = $$0.r();
+   }
+
+   @Override
+   public void a(ue $$0) {
+      $$0.l(this.a);
+      $$0.a(this.b);
+   }
+
+   public int a() {
       return this.a;
    }
 
-   public int d() {
+   public cmh d() {
       return this.b;
    }
 }

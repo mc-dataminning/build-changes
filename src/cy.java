@@ -1,25 +1,27 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public record cy(cl.d c) implements br {
-   public static final MapCodec<cy> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(asy.a(cl.d.d, "size", cl.d.c).forGetter(cy::b)).apply($$0, cy::new));
-
-   public static cy a(cl.d $$0) {
-      return new cy($$0);
-   }
-
+public class cy extends cv<cy.a> {
    @Override
-   public boolean a(bkv $$0, ami $$1, @Nullable ejz $$2) {
-      return $$0 instanceof cbw $$3 ? this.c.d($$3.gg()) : false;
+   public Codec<cy.a> a() {
+      return cy.a.a;
    }
 
-   @Override
-   public br.a a() {
-      return br.b.e;
+   public void a(amq $$0) {
+      this.a($$0, $$0x -> true);
    }
 
-   public cl.d b() {
-      return this.c;
+   public static record a(Optional<bb> b) implements cv.a {
+      public static final Codec<cy.a> a = RecordCodecBuilder.create($$0 -> $$0.group(atg.a(bp.b, "player").forGetter(cy.a::a)).apply($$0, cy.a::new));
+
+      public static an<cy.a> a(bp.a $$0) {
+         return am.S.a(new cy.a(Optional.of(bp.a($$0))));
+      }
+
+      @Override
+      public Optional<bb> a() {
+         return this.b;
+      }
    }
 }

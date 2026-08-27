@@ -1,56 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cve extends cua {
-   public static final MapCodec<cve> c = b(cve::new);
+public class cve extends cuq {
+   public static final MapCodec<cve> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ckv.q.fieldOf("color").forGetter(cuq::b), u()).apply($$0, cve::new));
+   public static final djp b = djf.ba;
+   private static final Map<ckv, cvz> c = Maps.newHashMap();
+   private static final elu d = cvz.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<cve> a() {
-      return c;
+      return a;
    }
 
-   protected cve(dhm.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dfi a(hx $$0, dhn $$1) {
-      return new dfh($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dfi> dfj<T> a(csf $$0, dhn $$1, dfk<T> $$2) {
-      return a($$0, $$2, dfk.C);
+   public cve(ckv $$0, dio.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   protected void a(csf $$0, hx $$1, cdz $$2) {
-      dfi $$3 = $$0.c_($$1);
-      if ($$3 instanceof dfh) {
-         $$2.a((bje)$$3);
-         $$2.a(arf.as);
-      }
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   public void a(dhn $$0, csf $$1, hx $$2, atw $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, aqv.cg, aqw.e, 1.0F, 1.0F, false);
-         }
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return d;
+   }
 
-         ib $$7 = $$0.c(a);
-         ib.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == ib.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == ib.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(jw.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   @Override
+   public dip a(coq $$0) {
+      return this.o().a(b, Integer.valueOf(djv.a($$0.i() + 180.0F)));
+   }
+
+   @Override
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      return $$1 == ia.a && !$$0.a($$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public dip a(dip $$0, dcl $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   public dip a(dip $$0, dav $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(b);
+   }
+
+   public static cvz a(ckv $$0) {
+      return c.getOrDefault($$0, cwb.iJ);
    }
 }

@@ -1,147 +1,85 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class aoc implements anz {
-   private static final Logger c = LogUtils.getLogger();
-   private final anu d;
-   private final Set<String> e;
-   private final List<Path> f;
-   private final Map<aoa, List<Path>> g;
+public class aoc implements aog {
+   private final aog c;
+   private final List<aog> d;
 
-   aoc(anu $$0, Set<String> $$1, List<Path> $$2, Map<aoa, List<Path>> $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public aoc(aog $$0, List<aog> $$1) {
+      this.c = $$0;
+      List<aog> $$2 = new ArrayList<>($$1.size() + 1);
+      $$2.addAll(Lists.reverse($$1));
+      $$2.add($$0);
+      this.d = List.copyOf($$2);
    }
 
    @Nullable
    @Override
-   public apd<InputStream> a(String... $$0) {
-      v.a($$0);
-      List<String> $$1 = List.of($$0);
+   public apk<InputStream> a(String... $$0) {
+      return this.c.a($$0);
+   }
 
-      for (Path $$2 : this.f) {
-         Path $$3 = v.a($$2, $$1);
-         if (Files.exists($$3) && aob.a($$3)) {
-            return apd.create($$3);
+   @Nullable
+   @Override
+   public apk<InputStream> a(aoh $$0, agt $$1) {
+      for (aog $$2 : this.d) {
+         apk<InputStream> $$3 = $$2.a($$0, $$1);
+         if ($$3 != null) {
+            return $$3;
          }
       }
 
       return null;
    }
 
-   public void a(aoa $$0, agm $$1, Consumer<Path> $$2) {
-      v.c($$1.a()).get().ifLeft($$3 -> {
-         String $$4 = $$1.b();
-
-         for (Path $$5 : this.g.get($$0)) {
-            Path $$6 = $$5.resolve($$4);
-            $$2.accept(v.a($$6, $$3));
-         }
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$1, $$1x.message()));
-   }
-
    @Override
-   public void a(aoa $$0, String $$1, String $$2, anz.a $$3) {
-      v.c($$2).get().ifLeft($$3x -> {
-         List<Path> $$4 = this.g.get($$0);
-         int $$5 = $$4.size();
-         if ($$5 == 1) {
-            a($$3, $$1, $$4.get(0), $$3x);
-         } else if ($$5 > 1) {
-            Map<agm, apd<InputStream>> $$6 = new HashMap<>();
+   public void a(aoh $$0, String $$1, String $$2, aog.a $$3) {
+      Map<agt, apk<InputStream>> $$4 = new HashMap<>();
 
-            for (int $$7 = 0; $$7 < $$5 - 1; $$7++) {
-               a($$6::putIfAbsent, $$1, $$4.get($$7), $$3x);
-            }
-
-            Path $$8 = $$4.get($$5 - 1);
-            if ($$6.isEmpty()) {
-               a($$3, $$1, $$8, $$3x);
-            } else {
-               a($$6::putIfAbsent, $$1, $$8, $$3x);
-               $$6.forEach($$3);
-            }
-         }
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
-   }
-
-   private static void a(anz.a $$0, String $$1, Path $$2, List<String> $$3) {
-      Path $$4 = $$2.resolve($$1);
-      aob.a($$1, $$4, $$3, $$0);
-   }
-
-   @Nullable
-   @Override
-   public apd<InputStream> a(aoa $$0, agm $$1) {
-      return (apd<InputStream>)v.c($$1.a()).get().map($$2 -> {
-         String $$3 = $$1.b();
-
-         for (Path $$4 : this.g.get($$0)) {
-            Path $$5 = v.a($$4.resolve($$3), $$2);
-            if (Files.exists($$5) && aob.a($$5)) {
-               return apd.create($$5);
-            }
-         }
-
-         return null;
-      }, $$1x -> {
-         c.error("Invalid path {}: {}", $$1, $$1x.message());
-         return null;
-      });
-   }
-
-   @Override
-   public Set<String> a(aoa $$0) {
-      return this.e;
-   }
-
-   @Nullable
-   @Override
-   public <T> T a(aol<T> $$0) {
-      apd<InputStream> $$1 = this.a("pack.mcmeta");
-      if ($$1 != null) {
-         try (InputStream $$2 = $$1.get()) {
-            T $$3 = ant.a($$0, $$2);
-            if ($$3 != null) {
-               return $$3;
-            }
-
-            return this.d.a($$0);
-         } catch (IOException var8) {
-         }
+      for (aog $$5 : this.d) {
+         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
       }
 
-      return this.d.a($$0);
+      $$4.forEach($$3);
+   }
+
+   @Override
+   public Set<String> a(aoh $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (aog $$2 : this.d) {
+         $$1.addAll($$2.a($$0));
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(aos<T> $$0) throws IOException {
+      return this.c.a($$0);
    }
 
    @Override
    public String a() {
-      return "vanilla";
+      return this.c.a();
    }
 
    @Override
    public boolean b() {
-      return true;
+      return this.c.b();
    }
 
    @Override
    public void close() {
-   }
-
-   public apo c() {
-      return $$0 -> Optional.ofNullable(this.a(aoa.a, $$0)).map($$0x -> new apj(this, $$0x));
+      this.d.forEach(aog::close);
    }
 }

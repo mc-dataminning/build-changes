@@ -1,17 +1,24 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 
-public class ayi extends bbh {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
-
-   public ayi(Schema $$0) {
-      super("EntityZombifiedPiglinRenameFix", $$0, true);
+public class ayi extends bbp {
+   public ayi(Schema $$0, boolean $$1) {
+      super("EntitySkeletonSplitFix", $$0, $$1);
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      if (Objects.equals($$0, "Skeleton")) {
+         int $$2 = $$1.get("SkeletonType").asInt(0);
+         if ($$2 == 1) {
+            $$0 = "WitherSkeleton";
+         } else if ($$2 == 2) {
+            $$0 = "Stray";
+         }
+      }
+
+      return Pair.of($$0, $$1);
    }
 }

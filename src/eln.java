@@ -1,7 +1,13 @@
-public interface eln<T> {
-   void a(ell<T> var1);
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   boolean a(hx var1, T var2);
+interface eln {
+   DoubleList a();
 
-   int a();
+   boolean a(eln.a var1);
+
+   int size();
+
+   public interface a {
+      boolean merge(int var1, int var2, int var3);
+   }
 }

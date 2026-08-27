@@ -1,19 +1,40 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bua<T extends bll> extends btz<T> {
-   private boolean i = true;
+public class bua extends bsr {
+   private final cdz a;
 
-   public bua(cfh $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bll> $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public bua(cdz $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bsr.a.c, bsr.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.i && super.a();
+      if (!this.a.bx()) {
+         return false;
+      } else if (this.a.aZ()) {
+         return false;
+      } else if (!this.a.aC()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         cer $$0 = this.a.ge();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.f($$0) > 16.0 ? false : $$0.bS != null;
+         }
+      }
+   }
+
+   @Override
+   public void c() {
+      this.a.N().n();
+   }
+
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

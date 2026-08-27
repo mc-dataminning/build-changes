@@ -1,22 +1,30 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface eib extends efd, Predicate<efc> {
-   eic b();
+public class eib extends ehq {
+   public static final Codec<eib> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and(asg.b(kc.D).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, eib::new)
+   );
+   private final asg<clz> b;
 
-   @FunctionalInterface
-   public interface a {
-      eib build();
+   private eib(List<ejd> $$0, asg<clz> $$1) {
+      super($$0);
+      this.b = $$1;
+   }
 
-      default eib.a invert() {
-         return ehy.a(this);
-      }
+   @Override
+   public ehs b() {
+      return eht.A;
+   }
 
-      default ehq.a or(eib.a $$0) {
-         return ehq.a(this, $$0);
-      }
+   @Override
+   public cmh a(cmh $$0, ege $$1) {
+      cma.a($$0, this.b, $$1.b());
+      return $$0;
+   }
 
-      default ehp.a and(eib.a $$0) {
-         return ehp.a(this, $$0);
-      }
+   public static ehq.a<?> a(asg<clz> $$0) {
+      return a($$1 -> new eib($$1, $$0));
    }
 }

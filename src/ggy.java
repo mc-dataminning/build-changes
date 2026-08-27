@@ -1,65 +1,32 @@
-import java.time.Duration;
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class ggy implements ggg {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final frk e;
+   private final gia f;
+   private int g = 0;
 
-public class ggy {
-   private final UUID a = UUID.randomUUID();
-   private final ggt b;
-   private final ghc c;
-   private final ghe d = new ghe();
-   private final ghb e;
-   private final ghd f;
-
-   public ggy(ggt $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
-      this.c = new ghc($$3);
-      this.e = new ghb();
-      this.f = new ghd($$1, $$2);
-      this.b = $$0.decorate($$0x -> {
-         this.c.a($$0x);
-         $$0x.a(ggw.i, this.a);
-      });
+   public ggy(frk $$0, gia $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
+   @Override
    public void a() {
-      this.e.a(this.b);
-   }
-
-   public void a(csc $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-      this.d.a();
-      this.b();
-   }
-
-   public void a(String $$0) {
-      this.c.a($$0);
-      this.b();
-   }
-
-   public void a(long $$0) {
-      this.d.a($$0);
-   }
-
-   public void b() {
-      if (this.c.a(this.b)) {
-         this.f.a(this.b);
-         this.e.a();
-      }
-   }
-
-   public void c() {
-      this.c.a(this.b);
-      this.e.d();
-      this.d.a(this.b);
-   }
-
-   public void a(csf $$0, af $$1) {
-      agm $$2 = $$1.a();
-      if ($$1.b().h() && "minecraft".equals($$2.b())) {
-         long $$3 = $$0.W();
-         this.b.send(ggu.f, $$2x -> {
-            $$2x.a(ggw.D, $$2.toString());
-            $$2x.a(ggw.E, $$3);
-         });
+      this.g--;
+      if (this.g <= 0 && this.e.be()) {
+         float $$0 = this.e.dM().z.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((ggw)(new ggz.a(this.e, arc.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((ggw)(new ggz.a(this.e, arc.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((ggw)(new ggz.a(this.e, arc.A)));
+         }
       }
    }
 }

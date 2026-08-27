@@ -1,30 +1,19 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public abstract class dui extends duf {
-   protected final long c;
-   protected final eca.a d;
-   protected final float e;
-   protected final eca f;
+public class dui<P extends duh> {
+   public static final dui<duk> a = a("two_layers_feature_size", duk.d);
+   public static final dui<duj> b = a("three_layers_feature_size", duj.d);
+   private final Codec<P> c;
 
-   protected static <P extends dui> P3<Mu<P>, Long, eca.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         eca.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         asy.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   private static <P extends duh> dui<P> a(String $$0, Codec<P> $$1) {
+      return ir.a(kb.aa, $$0, new dui<>($$1));
    }
 
-   protected dui(long $$0, eca.a $$1, float $$2) {
+   private dui(Codec<P> $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = eca.b(new dnv(new dmx($$0)), $$1);
    }
 
-   protected double a(hx $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   public Codec<P> a() {
+      return this.c;
    }
 }

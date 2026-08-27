@@ -1,8 +1,8 @@
-public interface afo extends acq, acr {
-   @Override
-   default tx b() {
-      return tx.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(afq var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface afo {
 }

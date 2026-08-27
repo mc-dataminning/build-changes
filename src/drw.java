@@ -1,10 +1,12 @@
 import com.mojang.serialization.Codec;
 
-public class drw implements dse {
-   public static final Codec<drw> a = duf.a.fieldOf("state_provider").xmap(drw::new, $$0 -> $$0.b).codec();
-   public final duf b;
+public class drw extends drc<dtn> {
+   public drw(Codec<dtn> $$0) {
+      super($$0);
+   }
 
-   public drw(duf $$0) {
-      this.b = $$0;
+   @Override
+   public boolean a(dre<dtn> $$0) {
+      return true;
    }
 }

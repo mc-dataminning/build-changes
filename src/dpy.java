@@ -1,29 +1,31 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class dpy extends dqa<dsl> {
-   public dpy(Codec<dsl> $$0) {
-      super($$0);
+public class dpy extends dov {
+   private final is a;
+   private final doc b;
+   private final dom c;
+   private final dop.o d;
+
+   public dpy(dob $$0, is $$1, cta $$2, doc $$3, dom $$4, dop.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   public boolean a(dqc<dsl> $$0) {
-      csz $$1 = $$0.b();
-      atw $$2 = $$0.d();
-      hx $$3 = $$0.e();
-      float $$4 = (float)$$2.a(3) + 4.0F;
+   @Deprecated
+   public Optional<dip> a(Function<hv, ie<ctx>> $$0, dkl $$1, hv $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   }
 
-      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
-         for (int $$6 = atq.d(-$$4); $$6 <= atq.f($$4); $$6++) {
-            for (int $$7 = atq.d(-$$4); $$7 <= atq.f($$4); $$7++) {
-               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
-                  this.a($$1, $$3.b($$6, $$5, $$7), cvh.fz.o());
-               }
-            }
-         }
+   @Deprecated
+   public is c() {
+      return this.a;
+   }
 
-         $$4 -= (float)$$2.a(2) + 0.5F;
-      }
-
-      return true;
+   public dom d() {
+      return this.c;
    }
 }

@@ -1,36 +1,51 @@
-public record aet(int a, afe b) implements wo<aes> {
-   private static final int c = 1048576;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   public aet(ty $$0) {
-      this($$0.n(), a($$0.t(), $$0));
+public class aet {
+   private static final double a = 4096.0;
+   private elb b;
+
+   public aet() {
+      this.b = elb.b;
    }
 
-   private static afe a(agm $$0, ty $$1) {
-      return b($$0, $$1);
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   private static afg b(agm $$0, ty $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 1048576) {
-         $$1.j($$2);
-         return new afg($$0);
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
+   }
+
+   public elb a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
       } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
+         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
+         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
+         return new elb($$3, $$4, $$5);
       }
    }
 
-   @Override
-   public void a(ty $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b.a());
-      this.b.a($$0);
+   public long a(elb $$0) {
+      return a($$0.c) - a(this.b.c);
    }
 
-   public void a(aes $$0) {
-      $$0.a(this);
+   public long b(elb $$0) {
+      return a($$0.d) - a(this.b.d);
    }
 
-   public afe d() {
-      return this.b;
+   public long c(elb $$0) {
+      return a($$0.e) - a(this.b.e);
+   }
+
+   public elb d(elb $$0) {
+      return $$0.d(this.b);
+   }
+
+   public void e(elb $$0) {
+      this.b = $$0;
    }
 }

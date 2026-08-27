@@ -1,30 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+public class bvl extends bvw {
+   public static final float a = 8.0F;
 
-public class bvl extends bvq<bll> {
    @Override
-   public Set<bum<?>> a() {
-      return ImmutableSet.of(bum.h, bum.L, bum.am);
+   protected boolean a(blv $$0, blv $$1) {
+      return this.f($$0, $$1) && $$1.bc() && (this.b($$1) || this.e($$0, $$1)) && bwc.c($$0, $$1);
+   }
+
+   private boolean e(blv $$0, blv $$1) {
+      return !$$0.dO().a(bux.T) && $$1.ai().a(aru.j);
+   }
+
+   private boolean b(blv $$0) {
+      return $$0.ai().a(aru.i);
+   }
+
+   private boolean f(blv $$0, blv $$1) {
+      return $$1.f((blf)$$0) <= 64.0;
    }
 
    @Override
-   protected void a(ami $$0, bll $$1) {
-      bml<?> $$2 = $$1.dP();
-      List<cco> $$3 = Lists.newArrayList();
-      buo $$4 = $$2.c(bum.h).orElse(buo.a());
-      Optional<bln> $$5 = $$4.a($$0x -> $$0x instanceof cce || $$0x instanceof cag).map(bln.class::cast);
-
-      for (bll $$7 : $$2.c(bum.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof cco && ((cco)$$7).gg()) {
-            $$3.add((cco)$$7);
-         }
-      }
-
-      $$2.a(bum.L, $$5);
-      $$2.a(bum.am, $$3);
+   protected bux<blv> b() {
+      return bux.B;
    }
 }

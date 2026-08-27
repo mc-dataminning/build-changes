@@ -1,14 +1,24 @@
-public record acz(float a) implements wo<acp> {
-   public acz(ty $$0) {
-      this($$0.readFloat());
+public class acz implements wu<acw> {
+   private final int a;
+
+   public acz(int $$0) {
+      this.a = $$0;
+   }
+
+   public acz(ue $$0) {
+      this.a = $$0.n();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.a);
+   public void a(ue $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
    }
 }

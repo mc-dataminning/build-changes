@@ -1,8 +1,42 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ctv {
+public class ctv {
+   public static final Codec<ctv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arb.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ctv::new)
+   );
+   public static final ctv b = new ctv(arc.h, 6000, 8, 2.0);
+   private final ie<arb> c;
+   private final int d;
+   private final int e;
+   private final double f;
+
+   public ctv(ie<arb> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public ie<arb> a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public double d() {
+      return this.f;
+   }
 }

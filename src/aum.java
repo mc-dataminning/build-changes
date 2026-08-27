@@ -1,28 +1,27 @@
 import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+import java.security.PrivateKey;
+import java.security.Signature;
 import org.slf4j.Logger;
 
-@FunctionalInterface
 public interface aum {
    Logger a = LogUtils.getLogger();
 
-   static aum immediate(final Executor $$0) {
-      return new aum() {
-         @Override
-         public <T> void append(CompletableFuture<T> $$0x, Consumer<T> $$1) {
-            $$0.thenAcceptAsync($$1, $$0).exceptionally($$0xx -> {
-               a.error("Task failed", $$0xx);
-               return null;
-            });
+   byte[] sign(auk var1);
+
+   default byte[] a(byte[] $$0) {
+      return this.sign($$1 -> $$1.update($$0));
+   }
+
+   static aum a(PrivateKey $$0, String $$1) {
+      return $$2 -> {
+         try {
+            Signature $$3 = Signature.getInstance($$1);
+            $$3.initSign($$0);
+            $$2.update($$3::update);
+            return $$3.sign();
+         } catch (Exception var4) {
+            throw new IllegalStateException("Failed to sign message", var4);
          }
       };
    }
-
-   default void append(Runnable $$0) {
-      this.append(CompletableFuture.completedFuture(null), $$1 -> $$0.run());
-   }
-
-   <T> void append(CompletableFuture<T> var1, Consumer<T> var2);
 }

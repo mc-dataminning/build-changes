@@ -1,31 +1,26 @@
-public class xd implements wo<wy> {
-   private final xd.a a;
+import java.util.Map;
 
-   public xd(xd.a $$0) {
+public class xd implements wu<wx> {
+   private final Map<ags<? extends ir<?>>, asj.a> a;
+
+   public xd(Map<ags<? extends ir<?>>, asj.a> $$0) {
       this.a = $$0;
    }
 
-   public xd(ty $$0) {
-      this.a = $$0.b(xd.a.class);
+   public xd(ue $$0) {
+      this.a = $$0.a(ue::u, asj.a::b);
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.a);
+   public void a(ue $$0) {
+      $$0.a(this.a, ue::b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(wy $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public xd.a a() {
+   public Map<ags<? extends ir<?>>, asj.a> a() {
       return this.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

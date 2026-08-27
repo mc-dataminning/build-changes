@@ -1,51 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.ArgumentType;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 
-public class hm<A extends ArgumentType<?>> implements hj<A, hm<A>.a> {
-   private final hm<A>.a a;
+public class hm implements hh<DoubleArgumentType, hm.a> {
+   public void a(hm.a $$0, ue $$1) {
+      boolean $$2 = $$0.b != -Double.MAX_VALUE;
+      boolean $$3 = $$0.c != Double.MAX_VALUE;
+      $$1.k(hj.a($$2, $$3));
+      if ($$2) {
+         $$1.a($$0.b);
+      }
 
-   private hm(Function<dp, A> $$0) {
-      this.a = new hm.a($$0);
+      if ($$3) {
+         $$1.a($$0.c);
+      }
    }
 
-   public static <T extends ArgumentType<?>> hm<T> a(Supplier<T> $$0) {
-      return new hm<>($$1 -> $$0.get());
+   public hm.a a(ue $$0) {
+      byte $$1 = $$0.readByte();
+      double $$2 = hj.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
+      double $$3 = hj.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
+      return new hm.a($$2, $$3);
    }
 
-   public static <T extends ArgumentType<?>> hm<T> a(Function<dp, T> $$0) {
-      return new hm<>($$0);
+   public void a(hm.a $$0, JsonObject $$1) {
+      if ($$0.b != -Double.MAX_VALUE) {
+         $$1.addProperty("min", $$0.b);
+      }
+
+      if ($$0.c != Double.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
    }
 
-   public void a(hm<A>.a $$0, ty $$1) {
+   public hm.a a(DoubleArgumentType $$0) {
+      return new hm.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public void a(hm<A>.a $$0, JsonObject $$1) {
-   }
+   public final class a implements hh.a<DoubleArgumentType> {
+      final double b;
+      final double c;
 
-   public hm<A>.a a(ty $$0) {
-      return this.a;
-   }
-
-   public hm<A>.a b(A $$0) {
-      return this.a;
-   }
-
-   public final class a implements hj.a<A> {
-      private final Function<dp, A> b;
-
-      public a(Function<dp, A> $$1) {
+      a(double $$1, double $$2) {
          this.b = $$1;
+         this.c = $$2;
+      }
+
+      public DoubleArgumentType a(dn $$0) {
+         return DoubleArgumentType.doubleArg(this.b, this.c);
       }
 
       @Override
-      public A b(dp $$0) {
-         return this.b.apply($$0);
-      }
-
-      @Override
-      public hj<A, ?> a() {
+      public hh<DoubleArgumentType, ?> a() {
          return hm.this;
       }
    }

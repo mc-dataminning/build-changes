@@ -1,14 +1,24 @@
-public class cla extends cmo {
-   public cla(cvf $$0, cvf $$1, clj.a $$2) {
-      super($$2, $$0, $$1, ib.b);
+public class cla extends cmc {
+   public cla(cmc.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(csi $$0, dhn $$1, hx $$2) {
-      if ($$1.b() instanceof deb $$3 && !$$3.b($$1, $$0, $$2)) {
-         return false;
+   public bjm<cmh> a(csy $$0, cer $$1, bjk $$2) {
+      cmh $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arc.hj, ard.h, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cfr $$4 = new cfr($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      return super.a($$0, $$1, $$2);
+      $$1.b(arm.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
+      }
+
+      return bjm.a($$3, $$0.y_());
    }
 }

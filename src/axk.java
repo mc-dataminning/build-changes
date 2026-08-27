@@ -1,38 +1,27 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import java.util.Optional;
 
-public class axk extends axv {
-   public axk(Schema $$0, boolean $$1) {
-      super("EntityHorseSplitFix", $$0, $$1);
+public class axk extends bag {
+   public axk(Schema $$0) {
+      super($$0, false, "EntityBrushableBlockFieldsRenameFix", bbg.s, "minecraft:brushable_block");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return this.a(this.a($$0, "loot_table", "LootTable"), "loot_table_seed", "LootTableSeed");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2) {
+      Optional<? extends Dynamic<?>> $$3 = $$0.get($$1).result();
+      Optional<? extends Dynamic<?>> $$4 = $$3.map($$3x -> $$0.remove($$1).set($$2, $$3x));
+      return (Dynamic<?>)DataFixUtils.orElse($$4, $$0);
    }
 
    @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-      if (Objects.equals("EntityHorse", $$0)) {
-         int $$3 = $$2.get("Type").asInt(0);
-
-         String $$8 = switch ($$3) {
-            default -> "Horse";
-            case 1 -> "Donkey";
-            case 2 -> "Mule";
-            case 3 -> "ZombieHorse";
-            case 4 -> "SkeletonHorse";
-         };
-         $$2.remove("Type");
-         Type<?> $$9 = (Type<?>)this.getOutputSchema().findChoiceType(bax.x).types().get($$8);
-         return Pair.of(
-            $$8,
-            (Typed)((Pair)$$1.write().flatMap($$9::readTyped).result().orElseThrow(() -> new IllegalStateException("Could not parse the new horse")))
-               .getFirst()
-         );
-      } else {
-         return Pair.of($$0, $$1);
-      }
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

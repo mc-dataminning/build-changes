@@ -1,44 +1,125 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cvn extends cud {
-   public static final MapCodec<cvn> b = b(cvn::new);
-   public static final int c = 5;
-   private static final ib[] d = ib.values();
+public abstract class cvn extends cvz {
+   protected static final elu a = cvz.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
+   protected static final elu b = cvz.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
+   protected static final ekw c = new ekw(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
+   protected final dje d;
 
-   @Override
-   public MapCodec<cvn> a() {
-      return b;
-   }
-
-   public cvn(dhm.d $$0) {
-      super($$0);
+   protected cvn(dio.d $$0, dje $$1) {
+      super($$0.a($$1.g()));
+      this.d = $$1;
    }
 
    @Override
-   public void b(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      if ($$3.a(5) == 0) {
-         ib $$4 = d[$$3.a(d.length)];
-         hx $$5 = $$2.a($$4);
-         dhn $$6 = $$1.a_($$5);
-         cvf $$7 = null;
-         if (g($$6)) {
-            $$7 = cvh.qy;
-         } else if ($$6.a(cvh.qy) && $$6.c(cue.d) == $$4) {
-            $$7 = cvh.qx;
-         } else if ($$6.a(cvh.qx) && $$6.c(cue.d) == $$4) {
-            $$7 = cvh.qw;
-         } else if ($$6.a(cvh.qw) && $$6.c(cue.d) == $$4) {
-            $$7 = cvh.qv;
-         }
+   protected abstract MapCodec<? extends cvn> a();
 
-         if ($$7 != null) {
-            dhn $$8 = $$7.o().a(cue.d, $$4).a(cue.c, Boolean.valueOf($$6.u().a() == ecy.c));
-            $$1.b($$5, $$8);
+   @Override
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return this.g($$0) > 0 ? a : b;
+   }
+
+   protected int b() {
+      return 20;
+   }
+
+   @Override
+   public boolean a(dip $$0) {
+      return true;
+   }
+
+   @Override
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      return $$1 == ia.a && !$$0.a($$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      hv $$3 = $$2.d();
+      return c($$1, $$3) || a($$1, $$3, ia.b);
+   }
+
+   @Override
+   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
+      int $$4 = this.g($$0);
+      if ($$4 > 0) {
+         this.a(null, $$1, $$2, $$0, $$4);
+      }
+   }
+
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, blf $$3) {
+      if (!$$1.B) {
+         int $$4 = this.g($$0);
+         if ($$4 == 0) {
+            this.a($$3, $$1, $$2, $$0, $$4);
          }
       }
    }
 
-   public static boolean g(dhn $$0) {
-      return $$0.i() || $$0.a(cvh.G) && $$0.u().e() == 8;
+   private void a(@Nullable blf $$0, csy $$1, hv $$2, dip $$3, int $$4) {
+      int $$5 = this.b($$1, $$2);
+      boolean $$6 = $$4 > 0;
+      boolean $$7 = $$5 > 0;
+      if ($$4 != $$5) {
+         dip $$8 = this.a($$3, $$5);
+         $$1.a($$2, $$8, 2);
+         this.a($$1, $$2);
+         $$1.b($$2, $$3, $$8);
+      }
+
+      if (!$$7 && $$6) {
+         $$1.a(null, $$2, this.d.l(), ard.e);
+         $$1.a($$0, dmz.e, $$2);
+      } else if ($$7 && !$$6) {
+         $$1.a(null, $$2, this.d.m(), ard.e);
+         $$1.a($$0, dmz.a, $$2);
+      }
+
+      if ($$7) {
+         $$1.a(new hv($$2), this, this.b());
+      }
    }
+
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if (this.g($$0) > 0) {
+            this.a($$1, $$2);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected void a(csy $$0, hv $$1) {
+      $$0.a($$1, this);
+      $$0.a($$1.d(), this);
+   }
+
+   @Override
+   public int a(dip $$0, cse $$1, hv $$2, ia $$3) {
+      return this.g($$0);
+   }
+
+   @Override
+   public int b(dip $$0, cse $$1, hv $$2, ia $$3) {
+      return $$3 == ia.b ? this.g($$0) : 0;
+   }
+
+   @Override
+   public boolean f_(dip $$0) {
+      return true;
+   }
+
+   protected static int a(csy $$0, ekw $$1, Class<? extends blf> $$2) {
+      return $$0.a($$2, $$1, bli.f.and($$0x -> !$$0x.r_())).size();
+   }
+
+   protected abstract int b(csy var1, hv var2);
+
+   protected abstract int g(dip var1);
+
+   protected abstract dip a(dip var1, int var2);
 }

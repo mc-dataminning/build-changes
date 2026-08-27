@@ -1,53 +1,39 @@
-import java.util.Iterator;
+public class afz<T> {
+   private final int a;
+   private final aga<T> b;
 
-public interface afz<T> {
-   default void a(int $$0, int $$1, int $$2, cov<?> $$3, Iterator<T> $$4, int $$5) {
-      int $$6 = $$0;
-      int $$7 = $$1;
-      if ($$3.b() instanceof cpa $$9) {
-         $$6 = $$9.j();
-         $$7 = $$9.k();
-      }
+   public afz(int $$0, aga<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      int $$10 = 0;
+   public int a() {
+      return this.a;
+   }
 
-      for (int $$11 = 0; $$11 < $$1; $$11++) {
-         if ($$10 == $$2) {
-            $$10++;
-         }
+   public aga<T> b() {
+      return this.b;
+   }
 
-         boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
-         int $$13 = atq.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
-         if ($$12 && $$13 > $$11) {
-            $$10 += $$0;
-            $$11++;
-         }
-
-         for (int $$14 = 0; $$14 < $$0; $$14++) {
-            if (!$$4.hasNext()) {
-               return;
-            }
-
-            $$12 = (float)$$6 < (float)$$0 / 2.0F;
-            $$13 = atq.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
-            int $$15 = $$6;
-            boolean $$16 = $$14 < $$6;
-            if ($$12) {
-               $$15 = $$13 + $$6;
-               $$16 = $$13 <= $$14 && $$14 < $$13 + $$6;
-            }
-
-            if ($$16) {
-               this.a($$4, $$10, $$5, $$11, $$14);
-            } else if ($$15 == $$14) {
-               $$10 += $$0 - $$14;
-               break;
-            }
-
-            $$10++;
-         }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         afz<?> $$1 = (afz<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
       }
    }
 
-   void a(Iterator<T> var1, int var2, int var3, int var4, int var5);
+   @Override
+   public int hashCode() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
+   }
 }

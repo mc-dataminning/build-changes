@@ -1,44 +1,27 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bog extends bnc<cdm> {
-   private final float c;
-
-   public bog(float $$0) {
-      super(ImmutableMap.of(bum.m, bun.c, bum.n, bun.c), Integer.MAX_VALUE);
-      this.c = $$0;
+public class bog {
+   public static bnn<blv> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
    }
 
-   protected boolean a(ami $$0, cdm $$1) {
-      cdz $$2 = $$1.gf();
-      return $$1.bx() && $$2 != null && !$$1.aZ() && !$$1.T && $$1.f($$2) <= 16.0 && $$2.bS != null;
-   }
-
-   protected boolean a(ami $$0, cdm $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(ami $$0, cdm $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(ami $$0, cdm $$1, long $$2) {
-      bml<?> $$3 = $$1.dP();
-      $$3.b(bum.m);
-      $$3.b(bum.n);
-   }
-
-   protected void d(ami $$0, cdm $$1, long $$2) {
-      this.a($$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   private void a(cdm $$0) {
-      bml<?> $$1 = $$0.dP();
-      $$1.a(bum.m, new bup(new bnn($$0.gf(), false), this.c, 2));
-      $$1.a(bum.n, new bnn($$0.gf(), true));
+   public static <E extends blv> bnn<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return bqz.a((Function<bqz.b<E>, ? extends App<bqz.c<E>, brc<E>>>)($$4 -> {
+         bqz<E, ? extends bra<? extends K1, bva>> $$5 = $$2 ? $$4.a(bux.m) : $$4.c(bux.m);
+         return $$4.group($$4.a(bux.n), $$5, $$4.b(bux.K), $$4.a(bux.aO)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               cbe $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dM().D_().a($$11.dm())) {
+                  bva $$12 = new bva(new bnx($$11, false), $$1, 0);
+                  $$4x.a(new bnx($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+      }));
    }
 }

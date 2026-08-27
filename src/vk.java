@@ -1,35 +1,72 @@
-public interface vk {
-   uv a();
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   void a(amj var1, boolean var2, ur.a var3);
+public class vk {
+   private final int a;
+   private final ObjectList<vl> b = new ObjectArrayList();
+   @Nullable
+   private vn c;
 
-   static vk a(vl $$0) {
-      return (vk)($$0.g() ? new vk.a($$0.c()) : new vk.b($$0));
-   }
+   public vk(int $$0) {
+      this.a = $$0;
 
-   public static record a(uv a) implements vk {
-      @Override
-      public void a(amj $$0, boolean $$1, ur.a $$2) {
-         $$0.c.a(this.a, $$2);
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.b.add(null);
       }
    }
 
-   public static record b(vl a) implements vk {
-      @Override
-      public uv a() {
-         return this.a.c();
+   public void a(vn $$0) {
+      if (!$$0.equals(this.c)) {
+         this.b.add(new vl($$0, true));
+         this.c = $$0;
       }
+   }
 
-      @Override
-      public void a(amj $$0, boolean $$1, ur.a $$2) {
-         vl $$3 = this.a.a($$1);
-         if (!$$3.i()) {
-            $$0.c.a($$3, $$2);
+   public int a() {
+      return this.b.size();
+   }
+
+   public boolean a(int $$0) {
+      int $$1 = this.b.size() - this.a;
+      if ($$0 >= 0 && $$0 <= $$1) {
+         this.b.removeElements(0, $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public Optional<vi> a(vi.b $$0) {
+      if (!this.a($$0.a())) {
+         return Optional.empty();
+      } else {
+         ObjectList<vn> $$1 = new ObjectArrayList($$0.b().cardinality());
+         if ($$0.b().length() > this.a) {
+            return Optional.empty();
+         } else {
+            for (int $$2 = 0; $$2 < this.a; $$2++) {
+               boolean $$3 = $$0.b().get($$2);
+               vl $$4 = (vl)this.b.get($$2);
+               if ($$3) {
+                  if ($$4 == null) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, $$4.a());
+                  $$1.add($$4.b());
+               } else {
+                  if ($$4 != null && !$$4.c()) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, null);
+               }
+            }
+
+            return Optional.of(new vi($$1));
          }
-      }
-
-      public vl b() {
-         return this.a;
       }
    }
 }

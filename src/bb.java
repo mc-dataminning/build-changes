@@ -1,44 +1,29 @@
-import com.google.gson.JsonObject;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class bb extends cw<bb.a> {
-   public bb.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      return new bb.a($$1, cb.a($$0.get("item")));
+public class bb {
+   public static final Codec<bb> a = ejf.a.listOf().xmap(bb::new, $$0 -> $$0.b);
+   private final List<ejd> b;
+   private final Predicate<ege> c;
+
+   bb(List<ejd> $$0) {
+      this.b = $$0;
+      this.c = ejf.a($$0);
    }
 
-   public void a(amj $$0, clo $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public static bb a(ejd... $$0) {
+      return new bb(List.of($$0));
    }
 
-   public static class a extends at {
-      private final Optional<cb> a;
+   public boolean a(ege $$0) {
+      return this.c.test($$0);
+   }
 
-      public a(Optional<bc> $$0, Optional<cb> $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public static am<bb.a> c() {
-         return al.z.a(new bb.a(Optional.empty(), Optional.empty()));
-      }
-
-      public static am<bb.a> a(cse $$0) {
-         return a(cb.a.a().a($$0.k()));
-      }
-
-      public static am<bb.a> a(cb.a $$0) {
-         return al.z.a(new bb.a(Optional.empty(), Optional.of($$0.b())));
-      }
-
-      public boolean a(clo $$0) {
-         return this.a.isEmpty() || this.a.get().a($$0);
-      }
-
-      @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         return $$0;
+   public void a(egn $$0) {
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         ejd $$2 = this.b.get($$1);
+         $$2.a($$0.a("[" + $$1 + "]"));
       }
    }
 }

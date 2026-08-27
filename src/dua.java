@@ -1,40 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record dua(ik<cvf> b, ik<cvf> c, duf d, int e, int f, float g) {
+public class dua implements dtg {
    public static final Codec<dua> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               iu.a(kd.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               iu.a(kd.e).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               duf.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               dsm.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               hv.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, dua::new)
    );
+   private final boolean b;
+   private final List<dsm.a> c;
+   @Nullable
+   private final hv d;
 
-   public ik<cvf> a() {
+   public dua(boolean $$0, List<dsm.a> $$1, @Nullable hv $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
+   }
+
+   private dua(boolean $$0, List<dsm.a> $$1, Optional<hv> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
+   }
+
+   public boolean a() {
       return this.b;
    }
 
-   public ik<cvf> b() {
+   public List<dsm.a> b() {
       return this.c;
    }
 
-   public duf c() {
+   @Nullable
+   public hv c() {
       return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
    }
 }

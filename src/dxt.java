@@ -1,33 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dxt(dxt.a b, bhp<ctp.c> c) {
-   public static final Codec<dxt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dxt.a.c.fieldOf("bounding_box").forGetter(dxt::a), bhp.c(ctp.c.a).fieldOf("spawns").forGetter(dxt::b)).apply($$0, dxt::new)
-   );
+public class dxt extends dov {
+   private final ctt a;
+   private final dkm b;
+   private final Optional<dxs> c;
 
-   public dxt.a a() {
-      return this.b;
+   public dxt(ctt $$0, dkm $$1, Optional<dxs> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public bhp<ctp.c> b() {
+   public int a(dny.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   public dkk a(csf $$0, dnu.a $$1) {
+      return ((dlg)this.a.a($$0.e, $$0.f)).b($$1);
+   }
+
+   public dip a(hv $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.J_();
+   }
+
+   public ctt d() {
+      return this.a;
+   }
+
+   public Optional<dxs> e() {
       return this.c;
    }
 
-   public static enum a implements auk {
-      a("piece"),
-      b("full");
-
-      public static final Codec<dxt.a> c = auk.a(dxt.a::values);
-      private final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public dkm f() {
+      return this.b;
    }
 }

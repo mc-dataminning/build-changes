@@ -1,53 +1,37 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.google.common.collect.ImmutableList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public final class ghb extends ggz {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class ghb<T> extends ghc<T> {
+   private final List<T> c;
+   private final Function<T, Stream<String>> d;
+   private ghf<T> e = ghf.a();
 
-   @Override
-   public void a(ggt $$0) {
-      if (eti.N().z()) {
-         super.a($$0);
-      }
-   }
-
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
+   public ghb(Function<T, Stream<String>> $$0, Function<T, Stream<agt>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = $$2;
+      this.d = $$0;
    }
 
    @Override
-   public void f() {
-      this.b.add((long)eti.N().n());
-      this.h();
-      this.c.add(eti.N().o());
-   }
-
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
+   public void a() {
+      super.a();
+      this.e = ghf.a(this.c, this.d);
    }
 
    @Override
-   public void b(ggt $$0) {
-      $$0.send(ggu.c, $$0x -> {
-         $$0x.a(ggw.r, new LongArrayList(this.b));
-         $$0x.a(ggw.s, new LongArrayList(this.c));
-         $$0x.a(ggw.t, new LongArrayList(this.d));
-         $$0x.a(ggw.u, this.e());
-         $$0x.a(ggw.v, eti.N().m.aA());
-         $$0x.a(ggw.w, (int)a);
-      });
-      this.g();
+   protected List<T> a(String $$0) {
+      return this.e.search($$0);
    }
 
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   @Override
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.e.search($$1);
+      Iterator<T> $$5 = new ghe<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new ghd<T>($$2.iterator(), $$5, this.a));
    }
 }

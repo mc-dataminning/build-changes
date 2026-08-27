@@ -1,32 +1,14 @@
-public class yt implements wo<yh> {
-   private final biy a;
-   private final boolean b;
-
-   public yt(biy $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public yt(ty $$0) {
-      this.a = biy.a($$0.readUnsignedByte());
-      this.b = $$0.readBoolean();
+public record yt(int a) implements wu<yo> {
+   public yt(ue $$0) {
+      this($$0.n());
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.k(this.a.a());
-      $$0.a(this.b);
+   public void a(ue $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
-   }
-
-   public boolean a() {
-      return this.b;
-   }
-
-   public biy d() {
-      return this.a;
    }
 }

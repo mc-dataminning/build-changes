@@ -1,11 +1,35 @@
-public class asd {
-   public static final arz<dxb> a = a("normal");
-   public static final arz<dxb> b = a("extended");
+import java.util.ArrayList;
+import java.util.List;
 
-   private asd() {
+public class asd {
+   private final List<ase> a = new ArrayList<>();
+
+   public static asd a() {
+      return new asd();
    }
 
-   private static arz<dxb> a(String $$0) {
-      return arz.a(kd.aH, new agm($$0));
+   public List<ase> b() {
+      return List.copyOf(this.a);
+   }
+
+   public asd a(ase $$0) {
+      this.a.add($$0);
+      return this;
+   }
+
+   public asd a(agt $$0) {
+      return this.a(ase.a($$0));
+   }
+
+   public asd b(agt $$0) {
+      return this.a(ase.b($$0));
+   }
+
+   public asd c(agt $$0) {
+      return this.a(ase.c($$0));
+   }
+
+   public asd d(agt $$0) {
+      return this.a(ase.d($$0));
    }
 }

@@ -1,20 +1,16 @@
-public enum dip implements auk {
-   a("normal"),
-   b("sticky");
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   private final String c;
+public class dip extends dio.a {
+   public static final Codec<dip> b = a(kb.e.q(), cvz::o).stable();
 
-   private dip(String $$0) {
-      this.c = $$0;
+   public dip(cvz $$0, ImmutableMap<djs<?>, Comparable<?>> $$1, MapCodec<dip> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public String toString() {
-      return this.c;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
+   protected dip x() {
+      return this;
    }
 }

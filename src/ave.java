@@ -1,37 +1,63 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Locale;
+import java.util.Arrays;
+import java.util.function.IntConsumer;
+import org.apache.commons.lang3.Validate;
 
-public class ave extends DataFix {
-   private final String a;
-   private final TypeReference b;
+public class ave implements aso {
+   public static final long[] a = new long[0];
+   private final int b;
 
-   public ave(Schema $$0, String $$1, TypeReference $$2) {
-      super($$0, true);
-      this.a = $$1;
-      this.b = $$2;
+   public ave(int $$0) {
+      this.b = $$0;
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
-      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
-      return this.a(this.a, $$0, $$1);
+   @Override
+   public int a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+      return 0;
    }
 
-   protected final <K> TypeRewriteRule a(String $$0, TaggedChoiceType<K> $$1, TaggedChoiceType<?> $$2) {
-      if ($$1.getKeyType() != $$2.getKeyType()) {
-         throw new IllegalStateException("Could not inject: key type is not the same");
-      } else {
-         return this.fixTypeEverywhere($$0, $$1, $$2, $$1x -> $$1xx -> {
-               if (!$$2.hasType($$1xx.getFirst())) {
-                  throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown type %s in %s ", $$1xx.getFirst(), this.b));
-               } else {
-                  return $$1xx;
-               }
-            });
+   @Override
+   public void b(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+   }
+
+   @Override
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      return 0;
+   }
+
+   @Override
+   public long[] a() {
+      return a;
+   }
+
+   @Override
+   public int b() {
+      return this.b;
+   }
+
+   @Override
+   public int c() {
+      return 0;
+   }
+
+   @Override
+   public void a(IntConsumer $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         $$0.accept(0);
       }
+   }
+
+   @Override
+   public void a(int[] $$0) {
+      Arrays.fill($$0, 0, this.b, 0);
+   }
+
+   @Override
+   public aso d() {
+      return this;
    }
 }

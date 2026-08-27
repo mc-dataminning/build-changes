@@ -1,96 +1,44 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class ce extends cw<ce.a> {
-   public ce.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      return new ce.a($$1, bq.a($$0, "entity", $$2), bf.a($$0.get("killing_blow")));
+public class ce extends cv<ce.a> {
+   @Override
+   public Codec<ce.a> a() {
+      return ce.a.a;
    }
 
-   public void a(amj $$0, bkv $$1, bjt $$2) {
-      efc $$3 = bq.b($$0, $$1);
-      this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
+   public void a(amq $$0, elb $$1, int $$2) {
+      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
-   public static class a extends at {
-      private final Optional<bc> a;
-      private final Optional<bf> b;
+   public static record a(Optional<bb> b, Optional<bg> c, ck.d d) implements cv.a {
+      public static final Codec<ce.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  atg.a(bp.b, "player").forGetter(ce.a::a), atg.a(bg.a, "distance").forGetter(ce.a::b), atg.a(ck.d.d, "duration", ck.d.c).forGetter(ce.a::c)
+               )
+               .apply($$0, ce.a::new)
+      );
 
-      public a(Optional<bc> $$0, Optional<bc> $$1, Optional<bf> $$2) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
+      public static an<ce.a> a(bg $$0) {
+         return am.v.a(new ce.a(Optional.empty(), Optional.of($$0), ck.d.c));
       }
 
-      public static am<ce.a> a(Optional<bq> $$0) {
-         return al.b.a(new ce.a(Optional.empty(), bq.a($$0), Optional.empty()));
-      }
-
-      public static am<ce.a> a(bq.a $$0) {
-         return al.b.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), Optional.empty()));
-      }
-
-      public static am<ce.a> c() {
-         return al.b.a(new ce.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static am<ce.a> a(Optional<bq> $$0, Optional<bf> $$1) {
-         return al.b.a(new ce.a(Optional.empty(), bq.a($$0), $$1));
-      }
-
-      public static am<ce.a> a(bq.a $$0, Optional<bf> $$1) {
-         return al.b.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), $$1));
-      }
-
-      public static am<ce.a> a(Optional<bq> $$0, bf.a $$1) {
-         return al.b.a(new ce.a(Optional.empty(), bq.a($$0), Optional.of($$1.b())));
-      }
-
-      public static am<ce.a> a(bq.a $$0, bf.a $$1) {
-         return al.b.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), Optional.of($$1.b())));
-      }
-
-      public static am<ce.a> d() {
-         return al.W.a(new ce.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static am<ce.a> b(Optional<bq> $$0) {
-         return al.c.a(new ce.a(Optional.empty(), bq.a($$0), Optional.empty()));
-      }
-
-      public static am<ce.a> b(bq.a $$0) {
-         return al.c.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), Optional.empty()));
-      }
-
-      public static am<ce.a> e() {
-         return al.c.a(new ce.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static am<ce.a> b(Optional<bq> $$0, Optional<bf> $$1) {
-         return al.c.a(new ce.a(Optional.empty(), bq.a($$0), $$1));
-      }
-
-      public static am<ce.a> b(bq.a $$0, Optional<bf> $$1) {
-         return al.c.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), $$1));
-      }
-
-      public static am<ce.a> b(Optional<bq> $$0, bf.a $$1) {
-         return al.c.a(new ce.a(Optional.empty(), bq.a($$0), Optional.of($$1.b())));
-      }
-
-      public static am<ce.a> b(bq.a $$0, bf.a $$1) {
-         return al.c.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), Optional.of($$1.b())));
-      }
-
-      public boolean a(amj $$0, efc $$1, bjt $$2) {
-         return this.b.isPresent() && !this.b.get().a($$0, $$2) ? false : this.a.isEmpty() || this.a.get().a($$1);
+      public boolean a(amq $$0, elb $$1, int $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.dr(), $$0.dt(), $$0.dx()) ? false : this.d.d($$2);
       }
 
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("entity", $$1.a()));
-         this.b.ifPresent($$1 -> $$0.add("killing_blow", $$1.a()));
-         return $$0;
+      public Optional<bb> a() {
+         return this.b;
+      }
+
+      public Optional<bg> b() {
+         return this.c;
+      }
+
+      public ck.d c() {
+         return this.d;
       }
    }
 }

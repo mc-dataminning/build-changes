@@ -1,46 +1,29 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bpz {
-   public static bnd<blu> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return bqo.a(
-         (Function<bqo.b<blu>, ? extends App<bqo.c<blu>, bqr<blu>>>)($$3 -> $$3.group($$3.c(bum.o), $$3.c(bum.m), $$3.a(bum.n))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dn()).a(arp.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           eke $$8 = eke.a($$6);
-                           hx $$9 = $$6.dn();
-                           hx.a $$10 = new hx.a();
-
-                           label45:
-                           for (hx $$11 : hx.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
-                                 && !$$5x.a_($$10.a($$11, ib.a)).b($$5x, $$11, $$8).c()) {
-                                 for (ib $$12 : ib.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(ib.a)).a(cvh.G)) {
-                                       $$5.a(new bnf($$11));
-                                       $$4.a(new bup(new bnf($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
-                           }
-
-                           $$2.setValue($$7 + 40L);
-                           return true;
+   public static bnn<blv> a(int $$0, BiPredicate<blv, blv> $$1) {
+      return bqz.a(
+         (Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$2 -> $$2.group($$2.b(bux.o), $$2.a(bux.aa), $$2.c(bux.ah), $$2.a(bux.ai))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     blv $$10 = $$2.b($$3);
+                     if (!$$10.ew()) {
+                        return false;
+                     } else {
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
                         }
+
+                        $$5.a($$10.dm(), (long)$$0);
+                        if ($$10.ai() != blj.bv || $$7.Y().b(csu.N)) {
+                           $$3.b();
+                           $$4.b();
+                        }
+
+                        return true;
                      }
-               ))
+                  }))
       );
    }
 }

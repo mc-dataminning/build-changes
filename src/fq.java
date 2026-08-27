@@ -3,35 +3,65 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 
-public class fq implements ArgumentType<fo> {
-   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~-5 ~5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("argument.rotation.incomplete"));
+public class fq implements ArgumentType<fm> {
+   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "0.1 -0.5", "~1 ~-2");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("argument.pos2d.incomplete"));
+   private final boolean c;
+
+   public fq(boolean $$0) {
+      this.c = $$0;
+   }
 
    public static fq a() {
-      return new fq();
+      return new fq(true);
    }
 
-   public static fo a(CommandContext<du> $$0, String $$1) {
-      return (fo)$$0.getArgument($$1, fo.class);
+   public static fq a(boolean $$0) {
+      return new fq($$0);
    }
 
-   public fo a(StringReader $$0) throws CommandSyntaxException {
+   public static ela a(CommandContext<ds> $$0, String $$1) {
+      elb $$2 = ((fm)$$0.getArgument($$1, fm.class)).a((ds)$$0.getSource());
+      return new ela((float)$$2.c, (float)$$2.e);
+   }
+
+   public fm a(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
       if (!$$0.canRead()) {
          throw a.createWithContext($$0);
       } else {
-         fu $$2 = fu.a($$0, false);
+         fs $$2 = fs.a($$0, this.c);
          if ($$0.canRead() && $$0.peek() == ' ') {
             $$0.skip();
-            fu $$3 = fu.a($$0, false);
-            return new fv($$3, $$2, new fu(true, 0.0));
+            fs $$3 = fs.a($$0, this.c);
+            return new ft($$2, new fs(true, 0.0), $$3);
          } else {
             $$0.setCursor($$1);
             throw a.createWithContext($$0);
          }
+      }
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if (!($$0.getSource() instanceof dw)) {
+         return Suggestions.empty();
+      } else {
+         String $$2 = $$1.getRemaining();
+         Collection<dw.b> $$3;
+         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
+            $$3 = Collections.singleton(dw.b.a);
+         } else {
+            $$3 = ((dw)$$0.getSource()).C();
+         }
+
+         return dw.b($$2, $$3, $$1, dt.a(this::a));
       }
    }
 

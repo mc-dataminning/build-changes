@@ -1,45 +1,26 @@
-public class fzx extends gak<bxg, fhw<bxg>> {
-   private final fqv a;
+public class fzx extends fyu<ccm, flb<ccm>> {
+   private static final agt a = new agt("textures/entity/strider/strider.png");
+   private static final agt i = new agt("textures/entity/strider/strider_cold.png");
 
-   public fzx(fxx<bxg, fhw<bxg>> $$0, fqv $$1) {
-      super($$0);
-      this.a = $$1;
+   public fzx(fxo.a $$0) {
+      super($$0, new flb<>($$0.a(flx.bA)), 0.5F);
+      this.a(new gca<>(this, new flb<>($$0.a(flx.bB)), new agt("textures/entity/strider/strider_saddle.png")));
    }
 
-   public void a(eob $$0, fqz $$1, int $$2, bxg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fE();
-      boolean $$11 = $$3.o_();
-      $$0.a();
-      if ($$11) {
-         float $$12 = 0.75F;
-         $$0.b(0.75F, 0.75F, 0.75F);
-         $$0.a(0.0F, 0.5F, 0.209375F);
-      }
+   public agt a(ccm $$0) {
+      return $$0.u() ? i : a;
+   }
 
-      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
-      float $$13 = $$3.E($$6);
-      $$0.a(a.f.rotation($$13));
-      $$0.a(a.d.rotationDegrees($$8));
-      $$0.a(a.b.rotationDegrees($$9));
-      if ($$3.o_()) {
-         if ($$10) {
-            $$0.a(0.4F, 0.26F, 0.15F);
-         } else {
-            $$0.a(0.06F, 0.26F, -0.5F);
-         }
-      } else if ($$10) {
-         $$0.a(0.46F, 0.26F, 0.22F);
+   protected void a(ccm $$0, epd $$1, float $$2) {
+      if ($$0.o_()) {
+         $$1.b(0.5F, 0.5F, 0.5F);
+         this.d = 0.25F;
       } else {
-         $$0.a(0.06F, 0.27F, -0.5F);
+         this.d = 0.5F;
       }
+   }
 
-      $$0.a(a.b.rotationDegrees(90.0F));
-      if ($$10) {
-         $$0.a(a.f.rotationDegrees(90.0F));
-      }
-
-      clo $$14 = $$3.c(bla.a);
-      this.a.a($$3, $$14, cll.h, false, $$0, $$1, $$2);
-      $$0.b();
+   protected boolean b(ccm $$0) {
+      return super.a($$0) || $$0.u();
    }
 }

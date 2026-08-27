@@ -1,73 +1,64 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
 
-public class vt {
-   private final String a;
-   private final List<vs> b;
-   private final Int2IntFunction c;
+public record vt<S>(List<vt.a<S>> a) {
+   public static <S> vt<S> a(ParseResults<S> $$0) {
+      String $$1 = $$0.getReader().getString();
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2;
+      List<vt.a<S>> $$4 = a($$1, $$2);
 
-   private vt(String $$0, List<vs> $$1, Int2IntFunction $$2) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      this.c = $$2;
-   }
-
-   public String a() {
-      return this.a;
-   }
-
-   public List<atc> a(int $$0, int $$1, boolean $$2) {
-      if ($$1 == 0) {
-         return ImmutableList.of();
-      } else {
-         List<atc> $$3 = Lists.newArrayList();
-         vs $$4 = this.b.get($$0);
-         int $$5 = $$0;
-
-         for (int $$6 = 1; $$6 < $$1; $$6++) {
-            int $$7 = $$0 + $$6;
-            vs $$8 = this.b.get($$7);
-            if (!$$8.equals($$4)) {
-               String $$9 = this.a.substring($$5, $$7);
-               $$3.add($$2 ? atc.backward($$9, $$4, this.c) : atc.forward($$9, $$4));
-               $$4 = $$8;
-               $$5 = $$7;
-            }
+      CommandContextBuilder<S> $$5;
+      while (($$5 = $$3.getChild()) != null) {
+         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
+         if (!$$6) {
+            break;
          }
 
-         if ($$5 < $$0 + $$1) {
-            String $$10 = this.a.substring($$5, $$0 + $$1);
-            $$3.add($$2 ? atc.backward($$10, $$4, this.c) : atc.forward($$10, $$4));
-         }
-
-         return $$2 ? Lists.reverse($$3) : $$3;
+         $$4.addAll(a($$1, $$5));
+         $$3 = $$5;
       }
+
+      return new vt<>($$4);
    }
 
-   public static vt a(va $$0) {
-      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
-   }
+   private static <S> List<vt.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
+      List<vt.a<S>> $$2 = new ArrayList<>();
 
-   public static vt a(va $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
-      StringBuilder $$3 = new StringBuilder();
-      List<vs> $$4 = Lists.newArrayList();
-      $$0.a(($$2x, $$3x) -> {
-         auj.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
-            $$3.appendCodePoint($$4x);
-            int $$5 = Character.charCount($$4x);
-
-            for (int $$6 = 0; $$6 < $$5; $$6++) {
-               $$4.add($$3xx);
+      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
+         CommandNode $$5 = $$3.getNode();
+         if ($$5 instanceof ArgumentCommandNode) {
+            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
+            if ($$4.getType() instanceof ex) {
+               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
+               if ($$5x != null) {
+                  String $$6 = $$5x.getRange().get($$0);
+                  $$2.add(new vt.a<>($$4, $$6));
+               }
             }
+         }
+      }
 
-            return true;
-         });
-         return Optional.empty();
-      }, vs.a);
-      return new vt($$2.apply($$3.toString()), $$4, $$1);
+      return $$2;
+   }
+
+   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
+      public String a() {
+         return this.a.getName();
+      }
+
+      public ArgumentCommandNode<S, ?> b() {
+         return this.a;
+      }
+
+      public String c() {
+         return this.b;
+      }
    }
 }

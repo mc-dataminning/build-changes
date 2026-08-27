@@ -1,78 +1,35 @@
-public class com extends cok {
-   private static final coq a = coq.a(clr.qL);
-   private static final coq b = coq.a(clr.pr);
-   private static final coq c = coq.a(clr.un);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public com(coh $$0) {
-      super($$0);
+public record com(agt c, ie<cmc> d, vb e, boolean f) {
+   public static final Codec<com> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               agt.a.fieldOf("asset_id").forGetter(com::a),
+               agq.a(kc.F).fieldOf("template_item").forGetter(com::b),
+               vd.a.fieldOf("description").forGetter(com::c),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(com::d)
+            )
+            .apply($$0, com::new)
+   );
+   public static final Codec<ie<com>> b = agp.a(kc.aI, a);
+
+   public vb a(ie<cok> $$0) {
+      return this.e.f().c($$0.a().e().a());
    }
 
-   public boolean a(chh $$0, csf $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         clo $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if (a.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!c.a($$5)) {
-               return false;
-            }
-         }
-      }
-
-      return $$2 && $$3 >= 1;
+   public agt a() {
+      return this.c;
    }
 
-   public clo a(chh $$0, it $$1) {
-      clo $$2 = new clo(clr.um, 3);
-      sd $$3 = $$2.a("Fireworks");
-      sj $$4 = new sj();
-      int $$5 = 0;
-
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         clo $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if (b.a($$7)) {
-               $$5++;
-            } else if (c.a($$7)) {
-               sd $$8 = $$7.b("Explosion");
-               if ($$8 != null) {
-                  $$4.add($$8);
-               }
-            }
-         }
-      }
-
-      $$3.a("Flight", (byte)$$5);
-      if (!$$4.isEmpty()) {
-         $$3.a("Explosions", $$4);
-      }
-
-      return $$2;
+   public ie<cmc> b() {
+      return this.d;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public vb c() {
+      return this.e;
    }
 
-   @Override
-   public clo a(it $$0) {
-      return new clo(clr.um);
-   }
-
-   @Override
-   public cox<?> as_() {
-      return cox.g;
+   public boolean d() {
+      return this.f;
    }
 }

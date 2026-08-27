@@ -1,131 +1,92 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class uy {
-   public static final String a = ", ";
-   public static final uv b = uv.b(", ").a(n.h);
-   public static final uv c = uv.b(", ");
+public record uy(String b, List<uy.a> c, vy d) {
+   public static final Codec<uy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(uy::a),
+               uy.a.d.listOf().fieldOf("parameters").forGetter(uy::b),
+               vy.b.b.optionalFieldOf("style", vy.a).forGetter(uy::c)
+            )
+            .apply($$0, uy::new)
+   );
 
-   public static vj a(vj $$0, vs $$1) {
-      if ($$1.g()) {
-         return $$0;
-      } else {
-         vs $$2 = $$0.a();
-         if ($$2.g()) {
-            return $$0.b($$1);
-         } else {
-            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
-         }
-      }
+   public static uy a(String $$0) {
+      return new uy($$0, List.of(uy.a.a, uy.a.c), vy.a);
    }
 
-   public static Optional<vj> a(@Nullable du $$0, Optional<uv> $$1, @Nullable bkv $$2, int $$3) throws CommandSyntaxException {
-      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
+   public static uy b(String $$0) {
+      vy $$1 = vy.a.a(n.h).b(true);
+      return new uy($$0, List.of(uy.a.a, uy.a.c), $$1);
    }
 
-   public static vj a(@Nullable du $$0, uv $$1, @Nullable bkv $$2, int $$3) throws CommandSyntaxException {
-      if ($$3 > 100) {
-         return $$1.f();
-      } else {
-         vj $$4 = $$1.b().a($$0, $$2, $$3 + 1);
-
-         for (uv $$5 : $$1.c()) {
-            $$4.b(a($$0, $$5, $$2, $$3 + 1));
-         }
-
-         return $$4.c(a($$0, $$1.a(), $$2, $$3));
-      }
+   public static uy c(String $$0) {
+      vy $$1 = vy.a.a(n.h).b(true);
+      return new uy($$0, List.of(uy.a.b, uy.a.c), $$1);
    }
 
-   private static vs a(@Nullable du $$0, vs $$1, @Nullable bkv $$2, int $$3) throws CommandSyntaxException {
-      vb $$4 = $$1.i();
-      if ($$4 != null) {
-         uv $$5 = $$4.a(vb.a.a);
-         if ($$5 != null) {
-            vb $$6 = new vb(vb.a.a, a($$0, $$5, $$2, $$3 + 1));
-            return $$1.a($$6);
-         }
+   public static uy d(String $$0) {
+      return new uy($$0, List.of(uy.a.b, uy.a.a, uy.a.c), vy.a);
+   }
+
+   public vb a(vb $$0, ux.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return vb.a(this.b, $$2).c(this.d);
+   }
+
+   private vb[] b(vb $$0, ux.a $$1) {
+      vb[] $$2 = new vb[this.c.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         uy.a $$4 = this.c.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
       }
 
-      return $$1;
+      return $$2;
    }
 
-   public static uv a(Collection<String> $$0) {
-      return a($$0, $$0x -> uv.b($$0x).a(n.k));
+   public String a() {
+      return this.b;
    }
 
-   public static <T extends Comparable<T>> uv a(Collection<T> $$0, Function<T, uv> $$1) {
-      if ($$0.isEmpty()) {
-         return uu.a;
-      } else if ($$0.size() == 1) {
-         return $$1.apply($$0.iterator().next());
-      } else {
-         List<T> $$2 = Lists.newArrayList($$0);
-         $$2.sort(Comparable::compareTo);
-         return b($$2, $$1);
+   public List<uy.a> b() {
+      return this.c;
+   }
+
+   public vy c() {
+      return this.d;
+   }
+
+   public static enum a implements aut {
+      a("sender", ($$0, $$1) -> $$1.b()),
+      b("target", ($$0, $$1) -> $$1.c()),
+      c("content", ($$0, $$1) -> $$0);
+
+      public static final Codec<uy.a> d = aut.a(uy.a::values);
+      private final String e;
+      private final uy.a.a f;
+
+      private a(String $$0, uy.a.a $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
-   }
 
-   public static <T> uv b(Collection<? extends T> $$0, Function<T, uv> $$1) {
-      return a($$0, b, $$1);
-   }
-
-   public static <T> vj a(Collection<? extends T> $$0, Optional<? extends uv> $$1, Function<T, uv> $$2) {
-      return a($$0, (uv)DataFixUtils.orElse($$1, b), $$2);
-   }
-
-   public static uv a(Collection<? extends uv> $$0, uv $$1) {
-      return a($$0, $$1, Function.identity());
-   }
-
-   public static <T> vj a(Collection<? extends T> $$0, uv $$1, Function<T, uv> $$2) {
-      if ($$0.isEmpty()) {
-         return uv.i();
-      } else if ($$0.size() == 1) {
-         return $$2.apply((T)$$0.iterator().next()).f();
-      } else {
-         vj $$3 = uv.i();
-         boolean $$4 = true;
-
-         for (T $$5 : $$0) {
-            if (!$$4) {
-               $$3.b($$1);
-            }
-
-            $$3.b($$2.apply($$5));
-            $$4 = false;
-         }
-
-         return $$3;
+      public vb a(vb $$0, ux.a $$1) {
+         vb $$2 = this.f.select($$0, $$1);
+         return Objects.requireNonNullElse($$2, va.a);
       }
-   }
 
-   public static vj a(uv $$0) {
-      return uv.a("chat.square_brackets", $$0);
-   }
-
-   public static uv a(Message $$0) {
-      return (uv)($$0 instanceof uv ? (uv)$$0 : uv.b($$0.getString()));
-   }
-
-   public static boolean b(@Nullable uv $$0) {
-      if ($$0 != null && $$0.b() instanceof wg $$1) {
-         String $$2 = $$1.b();
-         String $$3 = $$1.c();
-         return $$3 != null || ry.a().b($$2);
-      } else {
-         return true;
+      @Override
+      public String c() {
+         return this.e;
       }
-   }
 
-   public static vj a(String $$0) {
-      return a((uv)uv.b($$0).a($$1 -> $$1.a(n.k).a(new ut(ut.a.f, $$0)).a(new vb(vb.a.a, uv.c("chat.copy.click"))).a($$0)));
+      public interface a {
+         @Nullable
+         vb select(vb var1, ux.a var2);
+      }
    }
 }

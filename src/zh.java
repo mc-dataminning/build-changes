@@ -1,14 +1,24 @@
-public record zh(vh.a a) implements wo<yh> {
-   public zh(ty $$0) {
-      this(vh.a.a($$0));
+public class zh implements wu<yo> {
+   private final int a;
+
+   public zh(int $$0) {
+      this.a = $$0;
+   }
+
+   public zh(ue $$0) {
+      this.a = $$0.readUnsignedByte();
    }
 
    @Override
-   public void a(ty $$0) {
-      vh.a.a($$0, this.a);
+   public void a(ue $$0) {
+      $$0.k(this.a);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
    }
 }

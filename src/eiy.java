@@ -1,60 +1,84 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public record eiy(eje b, String c, float d) implements eiw {
+public record eiy(Map<String, egd> b, ege.b c) implements ejd {
    public static final Codec<eiy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ejf.a.fieldOf("target").forGetter(eiy::c),
-               Codec.STRING.fieldOf("score").forGetter(eiy::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(eiy::e)
-            )
+      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, egd.a).fieldOf("scores").forGetter(eiy::c), ege.b.e.fieldOf("entity").forGetter(eiy::d))
             .apply($$0, eiy::new)
    );
 
    @Override
-   public eiv b() {
-      return eix.e;
+   public eje b() {
+      return ejf.i;
    }
 
    @Override
-   public Set<ehk<?>> a() {
-      return this.b.b();
+   public Set<eim<?>> a() {
+      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
    }
 
-   public static eiy a(efc.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static eiy a(efc.b $$0, String $$1, float $$2) {
-      return new eiy(ejb.a($$0), $$1, $$2);
-   }
-
-   @Override
-   public float b(efc $$0) {
-      String $$1 = this.b.a($$0);
+   public boolean a(ege $$0) {
+      blf $$1 = $$0.c(this.c.a());
       if ($$1 == null) {
-         return 0.0F;
+         return false;
       } else {
-         eky $$2 = $$0.d().f();
-         ekv $$3 = $$2.b(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            return !$$2.b($$1, $$3) ? 0.0F : (float)$$2.c($$1, $$3).b() * this.d;
+         ema $$2 = $$1.dM().J();
+
+         for (Entry<String, egd> $$3 : this.b.entrySet()) {
+            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
+               return false;
+            }
          }
+
+         return true;
       }
    }
 
-   public eje c() {
+   protected boolean a(ege $$0, blf $$1, ema $$2, String $$3, egd $$4) {
+      elx $$5 = $$2.b($$3);
+      if ($$5 == null) {
+         return false;
+      } else {
+         String $$6 = $$1.cy();
+         return !$$2.b($$6, $$5) ? false : $$4.b($$0, $$2.c($$6, $$5).b());
+      }
+   }
+
+   public static eiy.a a(ege.b $$0) {
+      return new eiy.a($$0);
+   }
+
+   public Map<String, egd> c() {
       return this.b;
    }
 
-   public String d() {
+   public ege.b d() {
       return this.c;
    }
 
-   public float e() {
-      return this.d;
+   public static class a implements ejd.a {
+      private final Builder<String, egd> a = ImmutableMap.builder();
+      private final ege.b b;
+
+      public a(ege.b $$0) {
+         this.b = $$0;
+      }
+
+      public eiy.a a(String $$0, egd $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public ejd build() {
+         return new eiy(this.a.build(), this.b);
+      }
    }
 }

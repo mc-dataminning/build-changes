@@ -1,41 +1,71 @@
-import com.google.gson.JsonObject;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class cv extends cw<cv.a> {
-   public cv.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<cb> $$3 = cb.a($$0.get("item"));
-      return new cv.a($$1, $$3);
+public abstract class cv<T extends cv.a> implements ap<T> {
+   private final Map<ahb, Set<ap.a<T>>> a = Maps.newIdentityHashMap();
+
+   @Override
+   public final void a(ahb $$0, ap.a<T> $$1) {
+      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
    }
 
-   public void a(amj $$0, clo $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   @Override
+   public final void b(ahb $$0, ap.a<T> $$1) {
+      Set<ap.a<T>> $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         $$2.remove($$1);
+         if ($$2.isEmpty()) {
+            this.a.remove($$0);
+         }
+      }
    }
 
-   public static class a extends at {
-      private final Optional<cb> a;
+   @Override
+   public final void a(ahb $$0) {
+      this.a.remove($$0);
+   }
 
-      public a(Optional<bc> $$0, Optional<cb> $$1) {
-         super($$0);
-         this.a = $$1;
+   protected void a(amq $$0, Predicate<T> $$1) {
+      ahb $$2 = $$0.Q();
+      Set<ap.a<T>> $$3 = this.a.get($$2);
+      if ($$3 != null && !$$3.isEmpty()) {
+         ege $$4 = bp.b($$0, $$0);
+         List<ap.a<T>> $$5 = null;
+
+         for (ap.a<T> $$6 : $$3) {
+            T $$7 = $$6.a();
+            if ($$1.test($$7)) {
+               Optional<bb> $$8 = $$7.a();
+               if ($$8.isEmpty() || $$8.get().a($$4)) {
+                  if ($$5 == null) {
+                     $$5 = Lists.newArrayList();
+                  }
+
+                  $$5.add($$6);
+               }
+            }
+         }
+
+         if ($$5 != null) {
+            for (ap.a<T> $$9 : $$5) {
+               $$9.a($$2);
+            }
+         }
       }
+   }
 
-      public static am<cv.a> a(Optional<cb> $$0) {
-         return al.F.a(new cv.a(Optional.empty(), $$0));
-      }
-
-      public static am<cv.a> a(cse $$0) {
-         return al.F.a(new cv.a(Optional.empty(), Optional.of(cb.a.a().a($$0).b())));
-      }
-
-      public boolean a(clo $$0) {
-         return this.a.isEmpty() || this.a.get().a($$0);
-      }
-
+   public interface a extends aq {
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         return $$0;
+      default void a(bc $$0) {
+         $$0.a(this.a(), ".player");
       }
+
+      Optional<bb> a();
    }
 }

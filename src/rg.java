@@ -1,149 +1,108 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongArraySet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.Collection;
-import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class rg {
-   private static final Collection<ru> a = Lists.newArrayList();
-   private static final Set<String> b = Sets.newHashSet();
-   private static final Map<String, Consumer<ami>> c = Maps.newHashMap();
-   private static final Map<String, Consumer<ami>> d = Maps.newHashMap();
-   private static final Collection<ru> e = Sets.newHashSet();
+   private static final Logger a = LogUtils.getLogger();
+   private final hv b;
+   final amp c;
+   private final rq d;
+   private final int e;
+   private final List<rk> f;
+   private final List<Pair<rf, Collection<rk>>> g;
+   private int h;
+   private ekw i;
+   private final hv.a j;
 
-   public static void a(Class<?> $$0) {
-      Arrays.stream($$0.getDeclaredMethods()).sorted(Comparator.comparing(Method::getName)).forEach(rg::a);
+   public rg(Collection<rf> $$0, hv $$1, dcl $$2, amp $$3, rq $$4, int $$5) {
+      this.j = $$1.j();
+      this.i = new ekw(this.j);
+      this.b = $$1;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
+      this.g = $$0.stream().map($$2x -> {
+         Collection<rk> $$3x = $$2x.b().stream().map($$2xx -> new rk($$2xx, $$2, $$3)).collect(ImmutableList.toImmutableList());
+         return Pair.of($$2x, $$3x);
+      }).collect(ImmutableList.toImmutableList());
+      this.f = this.g.stream().flatMap($$0x -> ((Collection)$$0x.getSecond()).stream()).collect(ImmutableList.toImmutableList());
    }
 
-   public static void a(Method $$0) {
-      String $$1 = $$0.getDeclaringClass().getSimpleName();
-      qw $$2 = $$0.getAnnotation(qw.class);
-      if ($$2 != null) {
-         a.add(c($$0));
-         b.add($$1);
-      }
-
-      rc $$3 = $$0.getAnnotation(rc.class);
-      if ($$3 != null) {
-         a.addAll(b($$0));
-         b.add($$1);
-      }
-
-      a($$0, qu.class, qu::a, c);
-      a($$0, qt.class, qt::a, d);
+   public List<rk> a() {
+      return this.f;
    }
 
-   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<ami>> $$3) {
-      T $$4 = $$0.getAnnotation($$1);
-      if ($$4 != null) {
-         String $$5 = $$2.apply($$4);
-         Consumer<ami> $$6 = $$3.putIfAbsent($$5, (Consumer<ami>)d($$0));
-         if ($$6 != null) {
-            throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
-         }
-      }
+   public void b() {
+      this.a(0);
    }
 
-   public static Collection<ru> a(String $$0) {
-      return a.stream().filter($$1 -> a($$1, $$0)).collect(Collectors.toList());
-   }
-
-   public static Collection<ru> a() {
-      return a;
-   }
-
-   public static Collection<String> b() {
-      return b;
-   }
-
-   public static boolean b(String $$0) {
-      return b.contains($$0);
-   }
-
-   @Nullable
-   public static Consumer<ami> c(String $$0) {
-      return c.get($$0);
-   }
-
-   @Nullable
-   public static Consumer<ami> d(String $$0) {
-      return d.get($$0);
-   }
-
-   public static Optional<ru> e(String $$0) {
-      return a().stream().filter($$1 -> $$1.a().equalsIgnoreCase($$0)).findFirst();
-   }
-
-   public static ru f(String $$0) {
-      Optional<ru> $$1 = e($$0);
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Can't find the test function for " + $$0);
-      } else {
-         return $$1.get();
-      }
-   }
-
-   private static Collection<ru> b(Method $$0) {
-      try {
-         Object $$1 = $$0.getDeclaringClass().newInstance();
-         return (Collection<ru>)$$0.invoke($$1);
-      } catch (ReflectiveOperationException var2) {
-         throw new RuntimeException(var2);
-      }
-   }
-
-   private static ru c(Method $$0) {
-      qw $$1 = $$0.getAnnotation(qw.class);
-      String $$2 = $$0.getDeclaringClass().getSimpleName();
-      String $$3 = $$2.toLowerCase();
-      String $$4 = $$3 + "." + $$0.getName().toLowerCase();
-      String $$5 = $$1.e().isEmpty() ? $$4 : $$3 + "." + $$1.e();
-      String $$6 = $$1.b();
-      dbr $$7 = rr.a($$1.c());
-      return new ru($$6, $$4, $$5, $$7, $$1.a(), $$1.f(), $$1.d(), $$1.h(), $$1.g(), (Consumer<rd>)d($$0));
-   }
-
-   private static Consumer<?> d(Method $$0) {
-      return $$1 -> {
-         try {
-            Object $$2 = $$0.getDeclaringClass().newInstance();
-            $$0.invoke($$2, $$1);
-         } catch (InvocationTargetException var3) {
-            if (var3.getCause() instanceof RuntimeException) {
-               throw (RuntimeException)var3.getCause();
-            } else {
-               throw new RuntimeException(var3.getCause());
+   void a(final int $$0) {
+      if ($$0 < this.g.size()) {
+         Pair<rf, Collection<rk>> $$1 = this.g.get($$0);
+         final rf $$2 = (rf)$$1.getFirst();
+         Collection<rk> $$3 = (Collection<rk>)$$1.getSecond();
+         Map<rk, hv> $$4 = this.a($$3);
+         String $$5 = $$2.a();
+         a.info("Running test batch '{}' ({} tests)...", $$5, $$3.size());
+         $$2.a(this.c);
+         final rv $$6 = new rv();
+         $$3.forEach($$6::a);
+         $$6.a(new rl() {
+            private void a() {
+               if ($$6.i()) {
+                  $$2.b(rg.this.c);
+                  LongSet $$0 = new LongArraySet(rg.this.c.v());
+                  $$0.forEach($$0xxx -> rg.this.c.a(csf.a($$0xxx), csf.b($$0xxx), false));
+                  rg.this.a($$0 + 1);
+               }
             }
-         } catch (ReflectiveOperationException var4) {
-            throw new RuntimeException(var4);
+
+            @Override
+            public void a(rk $$0x) {
+            }
+
+            @Override
+            public void b(rk $$0x) {
+               this.a();
+            }
+
+            @Override
+            public void c(rk $$0x) {
+               this.a();
+            }
+         });
+         $$3.forEach($$1x -> {
+            hv $$2x = $$4.get($$1x);
+            rn.a($$1x, $$2x, this.d);
+         });
+      }
+   }
+
+   private Map<rk, hv> a(Collection<rk> $$0) {
+      Map<rk, hv> $$1 = Maps.newHashMap();
+
+      for (rk $$2 : $$0) {
+         hv $$3 = new hv(this.j);
+         dhr $$4 = rx.a($$2, $$3, $$2.v(), this.c);
+         ekw $$5 = rx.a($$4);
+         $$2.a($$4.aB_());
+         $$1.put($$2, new hv(this.j));
+         this.i = this.i.b($$5);
+         this.j.e((int)$$5.b() + 5, 0, 0);
+         if (this.h++ % this.e == this.e - 1) {
+            this.j.e(0, 0, (int)this.i.d() + 6);
+            this.j.p(this.b.u());
+            this.i = new ekw(this.j);
          }
-      };
-   }
+      }
 
-   private static boolean a(ru $$0, String $$1) {
-      return $$0.a().toLowerCase().startsWith($$1.toLowerCase() + ".");
-   }
-
-   public static Collection<ru> c() {
-      return e;
-   }
-
-   public static void a(ru $$0) {
-      e.add($$0);
-   }
-
-   public static void d() {
-      e.clear();
+      return $$1;
    }
 }

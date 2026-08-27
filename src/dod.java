@@ -1,119 +1,117 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiPredicate;
 
-public interface dod extends BiPredicate<csz, hx> {
-   Codec<dod> b = kc.P.q().dispatch(dod::a, doe::codec);
-   dod c = a(cvh.a);
-   dod d = a(cvh.a, cvh.G);
+public record dod(dog j, dip k, dip l, doe m, dop.o n, List<cug.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<dod> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dog.a.fieldOf("noise").forGetter(dod::f),
+               dip.b.fieldOf("default_block").forGetter(dod::g),
+               dip.b.fieldOf("default_fluid").forGetter(dod::h),
+               doe.a.fieldOf("noise_router").forGetter(dod::i),
+               dop.o.b.fieldOf("surface_rule").forGetter(dod::j),
+               cug.d.a.listOf().fieldOf("spawn_target").forGetter(dod::k),
+               Codec.INT.fieldOf("sea_level").forGetter(dod::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dod::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dod::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dod::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dod::n)
+            )
+            .apply($$0, dod::new)
+   );
+   public static final Codec<ie<dod>> b = agp.a(kc.az, a);
+   public static final ags<dod> c = ags.a(kc.az, new agt("overworld"));
+   public static final ags<dod> d = ags.a(kc.az, new agt("large_biomes"));
+   public static final ags<dod> e = ags.a(kc.az, new agt("amplified"));
+   public static final ags<dod> f = ags.a(kc.az, new agt("nether"));
+   public static final ags<dod> g = ags.a(kc.az, new agt("end"));
+   public static final ags<dod> h = ags.a(kc.az, new agt("caves"));
+   public static final ags<dod> i = ags.a(kc.az, new agt("floating_islands"));
 
-   doe<?> a();
-
-   static dod a(List<dod> $$0) {
-      return new dob($$0);
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   static dod a(dod... $$0) {
-      return a(List.of($$0));
+   public boolean b() {
+      return this.r;
    }
 
-   static dod a(dod $$0, dod $$1) {
-      return a(List.of($$0, $$1));
+   public boolean c() {
+      return this.s;
    }
 
-   static dod b(List<dod> $$0) {
-      return new doc($$0);
+   public dox.a d() {
+      return this.t ? dox.a.a : dox.a.b;
    }
 
-   static dod b(dod... $$0) {
-      return b(List.of($$0));
+   public static void a(pa<dod> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
    }
 
-   static dod b(dod $$0, dod $$1) {
-      return b(List.of($$0, $$1));
+   private static dod b(pa<?> $$0) {
+      return new dod(dog.d, cwb.fz.o(), cwb.a.o(), dof.a($$0.a(kc.aw)), pn.c(), List.of(), 0, true, false, false, true);
    }
 
-   static dod a(ja $$0, List<cvf> $$1) {
-      return new doj($$0, ik.a(cvf::r, $$1));
+   private static dod c(pa<?> $$0) {
+      return new dod(dog.c, cwb.dV.o(), cwb.H.o(), dof.a($$0.a(kc.aw), $$0.a(kc.aA)), pn.b(), List.of(), 32, false, false, false, true);
    }
 
-   static dod c(List<cvf> $$0) {
-      return a(ja.g, $$0);
+   private static dod a(pa<?> $$0, boolean $$1, boolean $$2) {
+      return new dod(dog.b, cwb.b.o(), cwb.G.o(), dof.a($$0.a(kc.aw), $$0.a(kc.aA), $$2, $$1), pn.a(), new cun().a(), 63, false, true, true, false);
    }
 
-   static dod a(ja $$0, cvf... $$1) {
-      return a($$0, List.of($$1));
+   private static dod d(pa<?> $$0) {
+      return new dod(dog.e, cwb.b.o(), cwb.G.o(), dof.b($$0.a(kc.aw), $$0.a(kc.aA)), pn.a(false, true, true), List.of(), 32, false, false, false, true);
    }
 
-   static dod a(cvf... $$0) {
-      return a(ja.g, $$0);
+   private static dod e(pa<?> $$0) {
+      return new dod(dog.f, cwb.b.o(), cwb.G.o(), dof.c($$0.a(kc.aw), $$0.a(kc.aA)), pn.a(false, false, false), List.of(), -64, false, false, false, true);
    }
 
-   static dod a(ja $$0, arz<cvf> $$1) {
-      return new doi($$0, $$1);
+   public static dod e() {
+      return new dod(dog.b, cwb.b.o(), cwb.a.o(), dof.a(), pn.d(), List.of(), 63, true, false, false, false);
    }
 
-   static dod a(arz<cvf> $$0) {
-      return a(ja.g, $$0);
+   public dog f() {
+      return this.j;
    }
 
-   static dod b(ja $$0, List<ecw> $$1) {
-      return new dok($$0, ik.a(ecw::k, $$1));
+   public dip g() {
+      return this.k;
    }
 
-   static dod a(ja $$0, ecw... $$1) {
-      return b($$0, List.of($$1));
+   public dip h() {
+      return this.l;
    }
 
-   static dod a(ecw... $$0) {
-      return a(ja.g, $$0);
+   public doe i() {
+      return this.m;
    }
 
-   static dod a(dod $$0) {
-      return new dol($$0);
+   public dop.o j() {
+      return this.n;
    }
 
-   static dod a(ja $$0) {
-      return new dom($$0);
+   public List<cug.d> k() {
+      return this.o;
    }
 
-   static dod b() {
-      return a(ja.g);
+   public int l() {
+      return this.p;
    }
 
-   static dod a(dhn $$0, ja $$1) {
-      return new doq($$1, $$0);
+   public boolean m() {
+      return this.r;
    }
 
-   static dod a(ja $$0, ib $$1) {
-      return new dog($$0, $$1);
-   }
-
-   static dod a(ib $$0) {
-      return a(ja.g, $$0);
-   }
-
-   static dod b(ja $$0) {
-      return new don($$0);
-   }
-
-   static dod c() {
-      return b(ja.g);
-   }
-
-   static dod d() {
-      return c(ja.g);
-   }
-
-   static dod c(ja $$0) {
-      return a($$0, ecy.a);
-   }
-
-   static dod d(ja $$0) {
-      return new doh($$0);
-   }
-
-   static dod e() {
-      return dop.a;
+   public boolean n() {
+      return this.t;
    }
 }

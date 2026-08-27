@@ -1,68 +1,70 @@
-public final class dng {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   private dng() {
+public record dng(dmz b, float c, elb d, @Nullable UUID e, @Nullable UUID f, @Nullable blf g) {
+   public static final Codec<dng> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kb.a.q().fieldOf("game_event").forGetter(dng::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dng::b),
+               elb.a.fieldOf("pos").forGetter(dng::c),
+               iy.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               iy.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dng($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
+   );
+
+   public dng(dmz $$0, float $$1, elb $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   protected static dna.c a(dmp $$0, dmp $$1, dmp $$2, dnj $$3) {
-      dhn $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         dng.a $$8 = $$6 > 0.0 ? dng.a.a : dng.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = atq.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               atw $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = atq.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
+   public dng(dmz $$0, float $$1, elb $$2, @Nullable blf $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cw(), a($$3), $$3);
    }
 
-   protected static enum a {
-      a(cvh.ra.o(), cvh.tg.o(), cvh.c.o(), 0, 50),
-      b(cvh.Q.o(), cvh.tf.o(), cvh.qz.o(), -60, -8);
-
-      final dhn e;
-      final dhn f;
-      final dhn g;
-      protected final int c;
-      protected final int d;
-
-      private a(dhn $$0, dhn $$1, dhn $$2, int $$3, int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+   @Nullable
+   private static UUID a(@Nullable blf $$0) {
+      if ($$0 instanceof cfj $$1 && $$1.w() != null) {
+         return $$1.w().cw();
       }
+
+      return null;
+   }
+
+   public Optional<blf> a(amp $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
+   }
+
+   public Optional<blf> b(amp $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof cfj).map($$0x -> (cfj)$$0x).map(cfj::w).or(() -> Optional.ofNullable(this.f).map($$0::a));
+   }
+
+   public dmz a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public elb c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public blf f() {
+      return this.g;
    }
 }

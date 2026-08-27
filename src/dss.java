@@ -1,19 +1,26 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dss implements dse {
-   public static final Codec<dss> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(dsm.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, dss::new)
-   );
-   public final List<dsm.a> b;
-
-   public dss(dhn $$0, dhn $$1) {
-      this(ImmutableList.of(dsm.a(new ear($$0), $$1)));
+public class dss extends drc<dtn> {
+   public dss(Codec<dtn> $$0) {
+      super($$0);
    }
 
-   public dss(List<dsm.a> $$0) {
-      this.b = $$0;
+   @Override
+   public boolean a(dre<dtn> $$0) {
+      ctt $$1 = $$0.b();
+      hv $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.t($$2)) {
+         return false;
+      } else {
+         for (ia $$3 : ia.values()) {
+            if ($$3 != ia.a && det.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, cwb.ff.o().a(det.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 }

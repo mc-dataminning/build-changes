@@ -1,79 +1,38 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.function.IntFunction;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-public class ade implements wo<acp> {
-   private static final int a = 128;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final cha f;
-   private final clo g;
-   private final Int2ObjectMap<clo> h;
-
-   public ade(int $$0, int $$1, int $$2, int $$3, cha $$4, clo $$5, Int2ObjectMap<clo> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = Int2ObjectMaps.unmodifiable($$6);
-   }
-
-   public ade(ty $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.n();
-      this.d = $$0.readShort();
-      this.e = $$0.readByte();
-      this.f = $$0.b(cha.class);
-      IntFunction<Int2ObjectOpenHashMap<clo>> $$1 = ty.a(Int2ObjectOpenHashMap::new, 128);
-      this.h = Int2ObjectMaps.unmodifiable($$0.a($$1, $$0x -> Integer.valueOf($$0x.readShort()), ty::r));
-      this.g = $$0.r();
+public record ade(String a, Instant b, long c, @Nullable vn d, vi.b e) implements wu<acw> {
+   public ade(ue $$0) {
+      this($$0.d(256), $$0.w(), $$0.readLong(), $$0.c(vn::a), new vi.b($$0));
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.k(this.b);
-      $$0.c(this.c);
-      $$0.l(this.d);
-      $$0.k(this.e);
-      $$0.a(this.f);
-      $$0.a(this.h, ty::l, ty::a);
-      $$0.a(this.g);
+   public void a(ue $$0) {
+      $$0.a(this.a, 256);
+      $$0.a(this.b);
+      $$0.b(this.c);
+      $$0.a(this.d, vn::a);
+      this.e.a($$0);
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public Instant d() {
       return this.b;
    }
 
-   public int d() {
+   public long e() {
+      return this.c;
+   }
+
+   @Nullable
+   public vn f() {
       return this.d;
    }
 
-   public int e() {
+   public vi.b g() {
       return this.e;
-   }
-
-   public clo f() {
-      return this.g;
-   }
-
-   public Int2ObjectMap<clo> g() {
-      return this.h;
-   }
-
-   public cha h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.c;
    }
 }

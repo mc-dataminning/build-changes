@@ -1,45 +1,42 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eau extends ebj {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<eau> a = Codec.unit(() -> eau.b);
-   public static final eau b = new eau();
+public class eau extends dyo {
+   public static final bhz<cuj.c> d = bhz.a(
+      new cuj.c(blj.i, 10, 2, 3), new cuj.c(blj.bu, 5, 4, 4), new cuj.c(blj.bn, 8, 5, 5), new cuj.c(blj.aK, 2, 5, 5), new cuj.c(blj.am, 3, 4, 4)
+   );
+   public static final Codec<eau> e = a(eau::new);
 
-   private eau() {
+   public eau(dyo.c $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   public ebm.c a(csi $$0, hx $$1, hx $$2, ebm.c $$3, ebm.c $$4, ebi $$5) {
-      dhn $$6 = $$4.b();
-      if ($$6.a(cvh.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
+   public Optional<dyo.b> a(dyo.a $$0) {
+      csf $$1 = $$0.h();
+      hv $$2 = new hv($$1.d(), 64, $$1.e());
+      return Optional.of(new dyo.b($$2, (Consumer<dzg>)($$1x -> a($$1x, $$0))));
+   }
 
-            dhn $$9;
-            try {
-               fk.a $$8 = fk.a($$0.a(kd.e), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               throw new RuntimeException(var11);
-            }
+   private static void a(dzg $$0, dyo.a $$1) {
+      eat.q $$2 = new eat.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<dys> $$3 = $$2.d;
 
-            return $$9.a(cvh.kN) ? null : new ebm.c($$4.a(), $$9, null);
-         }
-      } else {
-         return $$4;
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         dys $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
+
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   protected ebl<?> a() {
-      return ebl.h;
+   public dyx<?> e() {
+      return dyx.d;
    }
 }

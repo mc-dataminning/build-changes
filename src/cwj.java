@@ -1,149 +1,122 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class cwj extends cur {
-   public static final MapCodec<cwj> a = b(cwj::new);
-   private static final int d = 6;
-   public static final int b = 3;
-   public static final List<die> c = List.of(did.bp, did.bq, did.br, did.bs, did.bt, did.bu);
+public class cwj extends cyt {
+   public static final MapCodec<cwj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dje.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.N),
+               Codec.intRange(1, 1024).fieldOf("ticks_to_stay_pressed").forGetter($$0x -> $$0x.O),
+               u()
+            )
+            .apply($$0, cwj::new)
+   );
+   public static final djg b = djf.w;
+   private static final int L = 1;
+   private static final int M = 2;
+   protected static final int c = 2;
+   protected static final int d = 3;
+   protected static final elu e = cvz.a(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final elu f = cvz.a(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final elu g = cvz.a(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
+   protected static final elu h = cvz.a(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
+   protected static final elu i = cvz.a(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
+   protected static final elu j = cvz.a(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
+   protected static final elu k = cvz.a(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final elu l = cvz.a(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
+   protected static final elu m = cvz.a(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final elu n = cvz.a(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final elu o = cvz.a(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
+   protected static final elu F = cvz.a(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
+   protected static final elu G = cvz.a(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
+   protected static final elu H = cvz.a(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
+   protected static final elu I = cvz.a(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final elu J = cvz.a(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
+   private final dje N;
+   private final int O;
 
    @Override
    public MapCodec<cwj> a() {
       return a;
    }
 
-   public cwj(dhm.d $$0) {
-      super($$0);
-      dhn $$1 = this.E.b().a(cza.aE, ib.c);
-
-      for (die $$2 : c) {
-         $$1 = $$1.a($$2, Boolean.valueOf(false));
-      }
-
-      this.k($$1);
+   protected cwj(dje $$0, int $$1, dio.d $$2) {
+      super($$2.a($$0.g()));
+      this.N = $$0;
+      this.k(this.E.b().a(aE, ia.c).a(b, Boolean.valueOf(false)).a(K, dja.b));
+      this.O = $$1;
    }
 
    @Override
-   public dbk b_(dhn $$0) {
-      return dbk.c;
-   }
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      ia $$4 = $$0.c(aE);
+      boolean $$5 = $$0.c(b);
+      switch ((dja)$$0.c(K)) {
+         case a:
+            if ($$4.o() == ia.a.a) {
+               return $$5 ? o : g;
+            }
 
-   @Override
-   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
-      if ($$1.c_($$2) instanceof dfr $$6) {
-         Optional<ejy> $$8 = a($$5, $$0.c(cza.aE));
-         if ($$8.isEmpty()) {
-            return bjb.d;
-         } else {
-            int $$9 = a($$8.get());
-            if ($$0.c(c.get($$9))) {
-               a($$1, $$2, $$3, $$6, $$9);
-               return bjb.a($$1.B);
+            return $$5 ? F : h;
+         case b:
+            return switch ($$4) {
+               case f -> $$5 ? J : l;
+               case e -> $$5 ? I : k;
+               case d -> $$5 ? H : j;
+               case c, b, a -> $$5 ? G : i;
+            };
+         case c:
+         default:
+            if ($$4.o() == ia.a.a) {
+               return $$5 ? m : e;
             } else {
-               clo $$10 = $$3.b($$4);
-               if ($$10.a(ars.av)) {
-                  a($$1, $$2, $$3, $$6, $$10, $$9);
-                  return bjb.a($$1.B);
-               } else {
-                  return bjb.b;
-               }
+               return $$5 ? n : f;
             }
-         }
-      } else {
-         return bjb.d;
       }
-   }
-
-   private static Optional<ejy> a(ejv $$0, ib $$1) {
-      ib $$2 = $$0.b();
-      if ($$1 != $$2) {
-         return Optional.empty();
-      } else {
-         hx $$3 = $$0.a().a($$2);
-         ejz $$4 = $$0.e().a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
-         double $$5 = $$4.a();
-         double $$6 = $$4.b();
-         double $$7 = $$4.c();
-
-         return switch ($$2) {
-            case c -> Optional.of(new ejy((float)(1.0 - $$5), (float)$$6));
-            case d -> Optional.of(new ejy((float)$$5, (float)$$6));
-            case e -> Optional.of(new ejy((float)$$7, (float)$$6));
-            case f -> Optional.of(new ejy((float)(1.0 - $$7), (float)$$6));
-            case a, b -> Optional.empty();
-         };
-      }
-   }
-
-   private static int a(ejy $$0) {
-      int $$1 = $$0.j >= 0.5F ? 0 : 1;
-      int $$2 = a($$0.i);
-      return $$2 + $$1 * 3;
-   }
-
-   private static int a(float $$0) {
-      float $$1 = 0.0625F;
-      float $$2 = 0.375F;
-      if ($$0 < 0.375F) {
-         return 0;
-      } else {
-         float $$3 = 0.6875F;
-         return $$0 < 0.6875F ? 1 : 2;
-      }
-   }
-
-   private static void a(csf $$0, hx $$1, cdz $$2, dfr $$3, clo $$4, int $$5) {
-      if (!$$0.B) {
-         $$2.b(arf.c.b($$4.d()));
-         aqu $$6 = $$4.a(clr.uo) ? aqv.et : aqv.es;
-         $$3.a($$5, $$4.a(1));
-         $$0.a(null, $$1, $$6, aqw.e, 1.0F, 1.0F);
-         if ($$2.f()) {
-            $$4.g(1);
-         }
-      }
-   }
-
-   private static void a(csf $$0, hx $$1, cdz $$2, dfr $$3, int $$4) {
-      if (!$$0.B) {
-         clo $$5 = $$3.a($$4, 1);
-         aqu $$6 = $$5.a(clr.uo) ? aqv.ew : aqv.ev;
-         $$0.a(null, $$1, $$6, aqw.e, 1.0F, 1.0F);
-         if (!$$2.fT().e($$5)) {
-            $$2.a($$5, false);
-         }
-
-         $$0.a($$2, dlx.c, $$1);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dfi a(hx $$0, dhn $$1) {
-      return new dfr($$0, $$1);
    }
 
    @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(cza.aE);
-      c.forEach($$1 -> $$0.a($$1));
+   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
+      if ($$0.c(b)) {
+         return bjl.b;
+      } else {
+         this.d($$0, $$1, $$2);
+         this.a($$3, $$1, $$2, true);
+         $$1.a($$3, dmz.a, $$2);
+         return bjl.a($$1.B);
+      }
    }
 
    @Override
-   public void a(dhn $$0, csf $$1, hx $$2, dhn $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dfr $$6 && !$$6.aj_()) {
-            for (int $$7 = 0; $$7 < 6; $$7++) {
-               clo $$8 = $$6.a($$7);
-               if (!$$8.b()) {
-                  bix.a($$1, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$8);
-               }
-            }
+   public void a(dip $$0, csy $$1, hv $$2, csq $$3, BiConsumer<cmh, hv> $$4) {
+      if ($$3.j() == csq.a.d && !$$1.y_() && !$$0.c(b)) {
+         this.d($$0, $$1, $$2);
+      }
 
-            $$6.a();
-            $$1.c($$2, this);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public void d(dip $$0, csy $$1, hv $$2) {
+      $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
+      this.f($$0, $$1, $$2);
+      $$1.a($$2, this, this.O);
+   }
+
+   protected void a(@Nullable cer $$0, csz $$1, hv $$2, boolean $$3) {
+      $$1.a($$3 ? $$0 : null, $$2, this.a($$3), ard.e);
+   }
+
+   protected arb a(boolean $$0) {
+      return $$0 ? this.N.o() : this.N.n();
+   }
+
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if ($$0.c(b)) {
+            this.f($$0, $$1, $$2);
          }
 
          super.a($$0, $$1, $$2, $$3, $$4);
@@ -151,31 +124,57 @@ public class cwj extends cur {
    }
 
    @Override
-   public dhn a(cnw $$0) {
-      return this.o().a(cza.aE, $$0.g().g());
+   public int a(dip $$0, cse $$1, hv $$2, ia $$3) {
+      return $$0.c(b) ? 15 : 0;
    }
 
    @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      return $$0.a(cza.aE, $$1.a($$0.c(cza.aE)));
+   public int b(dip $$0, cse $$1, hv $$2, ia $$3) {
+      return $$0.c(b) && h($$0) == $$3 ? 15 : 0;
    }
 
    @Override
-   public dhn a(dhn $$0, dab $$1) {
-      return $$0.a($$1.a($$0.c(cza.aE)));
-   }
-
-   @Override
-   public boolean d_(dhn $$0) {
+   public boolean f_(dip $$0) {
       return true;
    }
 
    @Override
-   public int a(dhn $$0, csf $$1, hx $$2) {
-      if ($$1.y_()) {
-         return 0;
-      } else {
-         return $$1.c_($$2) instanceof dfr $$3 ? $$3.g() + 1 : 0;
+   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
+      if ($$0.c(b)) {
+         this.e($$0, $$1, $$2);
       }
+   }
+
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, blf $$3) {
+      if (!$$1.B && this.N.e() && !$$0.c(b)) {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   protected void e(dip $$0, csy $$1, hv $$2) {
+      cex $$3 = this.N.e() ? $$1.a(cex.class, $$0.j($$1, $$2).a().a($$2)).stream().findFirst().orElse(null) : null;
+      boolean $$4 = $$3 != null;
+      boolean $$5 = $$0.c(b);
+      if ($$4 != $$5) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf($$4)), 3);
+         this.f($$0, $$1, $$2);
+         this.a(null, $$1, $$2, $$4);
+         $$1.a($$3, $$4 ? dmz.a : dmz.e, $$2);
+      }
+
+      if ($$4) {
+         $$1.a(new hv($$2), this, this.O);
+      }
+   }
+
+   private void f(dip $$0, csy $$1, hv $$2) {
+      $$1.a($$2, this);
+      $$1.a($$2.a(h($$0).g()), this);
+   }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(aE, b, K);
    }
 }

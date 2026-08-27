@@ -1,76 +1,43 @@
-import org.joml.Matrix4f;
+import java.util.Locale;
 
-public class exx {
-   private final exv a;
-   private final float b;
-   private final float c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public class exx extends exv {
+   private static final int f = -65536;
+   private static final int g = -256;
+   private static final int h = -16711936;
+   private static final int i = 30;
+   private static final double j = 33.333333333333336;
 
-   public exx(exv $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public exx(evu $$0, auh $$1) {
+      super($$0, $$1);
    }
 
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, eof $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      int $$10 = 3;
-      float $$11 = $$1 + this.f;
-      float $$12 = $$1 + this.g;
-      float $$13 = this.h - 3.0F;
-      float $$14 = this.i - 3.0F;
-      float $$15 = $$2 + $$13;
-      float $$16 = $$2 + $$14;
-      float $$17 = $$0 ? 1.0F - 0.25F * $$13 : 0.0F;
-      float $$18 = $$0 ? 1.0F - 0.25F * $$14 : 0.0F;
-      $$4.a($$3, $$11 + $$17, $$15, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).b($$9).e();
-      $$4.a($$3, $$11 + $$18, $$16, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).b($$9).e();
-      $$4.a($$3, $$12 + $$18, $$16, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).b($$9).e();
-      $$4.a($$3, $$12 + $$17, $$15, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
-   }
-
-   public void a(exx.a $$0, Matrix4f $$1, eof $$2, int $$3) {
-      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
-      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
-      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
-      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
-   }
-
-   public frh a(eur.a $$0) {
-      return this.a.a($$0);
-   }
-
-   public static class a {
-      protected final float a;
-      protected final float b;
-      protected final float c;
-      protected final float d;
-      protected final float e;
-      protected final float f;
-      protected final float g;
-      protected final float h;
-      protected final float i;
-
-      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
+   @Override
+   protected void a(evw $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
+      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
+      $$0.a(fsq.C(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
+      int $$4 = euk.N().m.h().c();
+      if ($$4 > 0 && $$4 <= 250) {
+         $$0.a(fsq.C(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
       }
+   }
+
+   @Override
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   }
+
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
+   }
+
+   @Override
+   protected int a(long $$0) {
+      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
+   }
+
+   private static double c(double $$0) {
+      return $$0 / 1000000.0;
    }
 }

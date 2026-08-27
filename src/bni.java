@@ -1,37 +1,38 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
+import java.util.function.Function;
+import net.minecraft.server.MinecraftServer;
 
-public class bni extends bnc<bll> {
-   private final bum<Integer> c;
-
-   public bni(bum<Integer> $$0) {
-      super(ImmutableMap.of($$0, bun.a));
-      this.c = $$0;
-   }
-
-   private Optional<Integer> b(bll $$0) {
-      return $$0.dP().c(this.c);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(ami $$0, bll $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
-   }
-
-   @Override
-   protected void c(ami $$0, bll $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dP().a(this.c, $$3.get() - 1);
-   }
-
-   @Override
-   protected void b(ami $$0, bll $$1, long $$2) {
-      $$1.dP().b(this.c);
+public class bni {
+   public static bnn<cee> a() {
+      return bqz.a(
+         (Function<bqz.b<cee>, ? extends App<bqz.c<cee>, brc<cee>>>)($$0 -> $$0.group($$0.b(bux.d), $$0.a(bux.c))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        id $$6 = $$0.b($$1);
+                        if (!$$6.b().a($$4.dk(), 2.0) && !$$4.go()) {
+                           return false;
+                        } else {
+                           $$1.b();
+                           $$2.a($$6);
+                           $$3.a($$4, (byte)14);
+                           if ($$4.gp().b() != ceh.b) {
+                              return true;
+                           } else {
+                              MinecraftServer $$7 = $$3.n();
+                              Optional.ofNullable($$7.a($$6.a()))
+                                 .flatMap($$1xx -> $$1xx.x().c($$6.b()))
+                                 .flatMap($$0xxx -> kb.z.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
+                                 .ifPresent($$2xx -> {
+                                    $$4.a($$4.gp().a($$2xx));
+                                    $$4.c($$3);
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
    }
 }

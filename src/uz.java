@@ -1,119 +1,27 @@
 import com.mojang.serialization.Codec;
-import java.util.BitSet;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class uz {
-   public static final Codec<uz> a = auk.a(uz.a::values).dispatch(uz::c, uz.a::a);
-   public static final uz b = new uz(new BitSet(0), uz.a.b);
-   public static final uz c = new uz(new BitSet(0), uz.a.a);
-   public static final vs d = vs.a.a(n.i).a(new vb(vb.a.a, uv.c("chat.filtered")));
-   static final Codec<uz> e = Codec.unit(c);
-   static final Codec<uz> f = Codec.unit(b);
-   static final Codec<uz> g = asy.s.xmap(uz::new, uz::d);
-   private static final char h = '#';
-   private final BitSet i;
-   private final uz.a j;
+   public static final Codec<uz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(uz.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, uz::new)
+   );
+   private final uz.a b;
+   private final String c;
 
-   private uz(BitSet $$0, uz.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   public uz(uz.a $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private uz(BitSet $$0) {
-      this.i = $$0;
-      this.j = uz.a.c;
+   public uz.a a() {
+      return this.b;
    }
 
-   public uz(int $$0) {
-      this(new BitSet($$0), uz.a.c);
-   }
-
-   private uz.a c() {
-      return this.j;
-   }
-
-   private BitSet d() {
-      return this.i;
-   }
-
-   public static uz a(ty $$0) {
-      uz.a $$1 = $$0.b(uz.a.class);
-
-      return switch ($$1) {
-         case a -> c;
-         case b -> b;
-         case c -> new uz($$0.z(), uz.a.c);
-      };
-   }
-
-   public static void a(ty $$0, uz $$1) {
-      $$0.a($$1.j);
-      if ($$1.j == uz.a.c) {
-         $$0.a($$1.i);
-      }
-   }
-
-   public void a(int $$0) {
-      this.i.set($$0);
-   }
-
-   @Nullable
-   public String a(String $$0) {
-      return switch (this.j) {
-         case a -> $$0;
-         case b -> null;
-         case c -> {
-            char[] $$1 = $$0.toCharArray();
-
-            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
-               if (this.i.get($$2)) {
-                  $$1[$$2] = '#';
-               }
-            }
-
-            yield new String($$1);
-         }
-      };
-   }
-
-   @Nullable
-   public uv b(String $$0) {
-      return switch (this.j) {
-         case a -> uv.b($$0);
-         case b -> null;
-         case c -> {
-            vj $$1 = uv.i();
-            int $$2 = 0;
-            boolean $$3 = this.i.get(0);
-
-            while (true) {
-               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
-               $$4 = $$4 < 0 ? $$0.length() : $$4;
-               if ($$4 == $$2) {
-                  yield $$1;
-               }
-
-               if ($$3) {
-                  $$1.b(uv.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
-               } else {
-                  $$1.f($$0.substring($$2, $$4));
-               }
-
-               $$3 = !$$3;
-               $$2 = $$4;
-            }
-         }
-      };
-   }
-
-   public boolean a() {
-      return this.j == uz.a.a;
-   }
-
-   public boolean b() {
-      return this.j == uz.a.b;
+   public String b() {
+      return this.c;
    }
 
    @Override
@@ -122,38 +30,52 @@ public class uz {
          return true;
       } else if ($$0 != null && this.getClass() == $$0.getClass()) {
          uz $$1 = (uz)$$0;
-         return this.i.equals($$1.i) && this.j == $$1.j;
+         return this.b == $$1.b && this.c.equals($$1.c);
       } else {
          return false;
       }
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.i.hashCode();
-      return 31 * $$0 + this.j.hashCode();
+   public String toString() {
+      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
    }
 
-   static enum a implements auk {
-      a("pass_through", () -> uz.e),
-      b("fully_filtered", () -> uz.f),
-      c("partially_filtered", () -> uz.g);
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
+   }
 
-      private final String d;
-      private final Supplier<Codec<uz>> e;
+   public static enum a implements aut {
+      a("open_url", true),
+      b("open_file", false),
+      c("run_command", true),
+      d("suggest_command", true),
+      e("change_page", true),
+      f("copy_to_clipboard", true);
 
-      private a(String $$0, Supplier<Codec<uz>> $$1) {
-         this.d = $$0;
-         this.e = $$1;
+      public static final MapCodec<uz.a> g = aut.a(uz.a::values).fieldOf("action");
+      public static final MapCodec<uz.a> h = atg.a(g, uz.a::a);
+      private final boolean i;
+      private final String j;
+
+      private a(String $$0, boolean $$1) {
+         this.j = $$0;
+         this.i = $$1;
+      }
+
+      public boolean a() {
+         return this.i;
       }
 
       @Override
       public String c() {
-         return this.d;
+         return this.j;
       }
 
-      private Codec<uz> a() {
-         return this.e.get();
+      public static DataResult<uz.a> a(uz.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
       }
    }
 }

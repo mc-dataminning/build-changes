@@ -1,54 +1,67 @@
-import java.util.List;
-import java.util.Locale;
+import java.util.Comparator;
+import java.util.Objects;
 import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface gfs<T> {
-   static <T> gfs<T> a() {
-      return new gfs<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
+public class gfs {
+   public static final Comparator<gfs> a = Comparator.<gfs, agt>comparing(gfs::a).thenComparing(gfs::b);
+   private final agt b;
+   private final agt c;
+   @Nullable
+   private fsq d;
 
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+   public gfs(agt $$0, agt $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   static <T> gfs<T> a(List<T> $$0, Function<T, Stream<agm>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
+   public agt a() {
+      return this.b;
+   }
+
+   public agt b() {
+      return this.c;
+   }
+
+   public gdo c() {
+      return euk.N().a(this.a()).apply(this.b());
+   }
+
+   public fsq a(Function<agt, fsq> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
+      }
+
+      return this.d;
+   }
+
+   public eph a(fsi $$0, Function<agt, fsq> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
+   }
+
+   public eph a(fsi $$0, Function<agt, fsq> $$1, boolean $$2) {
+      return this.c().a(fym.c($$0, this.a($$1), true, $$2));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         gfs $$1 = (gfs)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
       } else {
-         final gfv<T> $$2 = new gfv<>();
-         final gfv<T> $$3 = new gfv<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
-
-         $$2.a();
-         $$3.a();
-         return new gfs<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
+         return false;
       }
    }
 
-   List<T> a(String var1);
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
+   }
 
-   List<T> b(String var1);
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+   }
 }

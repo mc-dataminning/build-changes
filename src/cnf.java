@@ -1,32 +1,59 @@
-public interface cnf {
-   cnf.a a = new cnf.a(false, false);
-   cnf.a b = new cnf.a(true, false);
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   boolean a();
+public class cnf extends ckr {
+   protected static final Map<cvz, dip> a = Maps.newHashMap(
+      new Builder()
+         .put(cwb.i, cwb.kE.o())
+         .put(cwb.j, cwb.kE.o())
+         .put(cwb.l, cwb.kE.o())
+         .put(cwb.k, cwb.kE.o())
+         .put(cwb.fl, cwb.kE.o())
+         .put(cwb.sH, cwb.kE.o())
+         .build()
+   );
 
-   boolean b();
+   public cnf(cnu $$0, float $$1, float $$2, cmc.a $$3) {
+      super($$1, $$2, $$0, arr.bC, $$3);
+   }
 
-   public static record a(boolean c, boolean d) implements cnf {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
+   @Override
+   public bjl a(cos $$0) {
+      csy $$1 = $$0.q();
+      hv $$2 = $$0.a();
+      dip $$3 = $$1.a_($$2);
+      if ($$0.k() == ia.a) {
+         return bjl.d;
+      } else {
+         cer $$4 = $$0.o();
+         dip $$5 = a.get($$3.b());
+         dip $$6 = null;
+         if ($$5 != null && $$1.a_($$2.c()).i()) {
+            $$1.a($$4, $$2, arc.vN, ard.e, 1.0F, 1.0F);
+            $$6 = $$5;
+         } else if ($$3.b() instanceof cwn && $$3.c(cwn.c)) {
+            if (!$$1.y_()) {
+               $$1.a(null, 1009, $$2, 0);
+            }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
+            cwn.a($$0.o(), $$1, $$2, $$3);
+            $$6 = $$3.a(cwn.c, Boolean.valueOf(false));
+         }
 
-      public cnf.a c() {
-         return new cnf.a(this.c, true);
-      }
+         if ($$6 != null) {
+            if (!$$1.B) {
+               $$1.a($$2, $$6, 11);
+               $$1.a(dmz.c, $$2, dmz.a.a($$4, $$6));
+               if ($$4 != null) {
+                  $$0.n().a(1, $$4, $$1x -> $$1x.d($$0.p()));
+               }
+            }
 
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
+            return bjl.a($$1.B);
+         } else {
+            return bjl.d;
+         }
       }
    }
 }

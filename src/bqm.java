@@ -1,48 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bqm extends bnc<cdm> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
+public class bqm {
+   public static bnn<blv> a(cvz $$0) {
+      return bqz.a(
+         (Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$1 -> $$1.group($$1.c(bux.o), $$1.b(bux.m), $$1.b(bux.X))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.aZ() && $$3x.aC()) {
+                        hv $$5 = $$3x.dm().d();
 
-   public bqm() {
-      super(ImmutableMap.of(bum.c, bun.a, bum.n, bun.c));
-   }
+                        for (ia $$6 : ia.c.a) {
+                           hv $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).k($$2x, $$7).a(ia.b).c() && $$2x.b_($$7).b(eea.c)) {
+                              hv $$8 = $$7.c();
+                              if ($$2x.a_($$8).i()) {
+                                 dip $$9 = $$0.o();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(dmz.i, $$8, dmz.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, arc.jl, ard.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-   protected boolean b(ami $$0, cdm $$1) {
-      if ($$0.W() - this.e < 300L) {
-         return false;
-      } else if ($$0.z.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.W();
-         ie $$2 = $$1.dP().c(bum.c).get();
-         return $$2.a() == $$0.ad() && $$2.b().a($$1.dl(), 1.73);
-      }
-   }
-
-   protected void a(ami $$0, cdm $$1, long $$2) {
-      bml<cdm> $$3 = $$1.dP();
-      $$3.a(bum.I, $$2);
-      $$3.c(bum.c).ifPresent($$1x -> $$3.a(bum.n, new bnf($$1x.b())));
-      $$1.gu();
-      this.a($$0, $$1);
-      if ($$1.gt()) {
-         $$1.gs();
-      }
-   }
-
-   protected void a(ami $$0, cdm $$1) {
-   }
-
-   protected boolean b(ami $$0, cdm $$1, long $$2) {
-      Optional<ie> $$3 = $$1.dP().c(bum.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         ie $$4 = $$3.get();
-         return $$4.a() == $$0.ad() && $$4.b().a($$1.dl(), 1.73);
-      }
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

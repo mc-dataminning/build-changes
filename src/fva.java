@@ -1,16 +1,41 @@
-public abstract class fva<T extends ccg, M extends fkl<T>> extends fwt<T, M> {
-   private static final agm a = new agm("textures/entity/zombie/zombie.png");
+public class fva extends fvb<dhs> {
+   private static final agt c = new agt("textures/entity/end_gateway_beam.png");
 
-   protected fva(fwc.a $$0, M $$1, M $$2, M $$3) {
-      super($$0, $$1, 0.5F);
-      this.a(new gaa<>(this, $$2, $$3, $$0.g()));
+   public fva(fuj.a $$0) {
+      super($$0);
    }
 
-   public agm a(ccg $$0) {
-      return a;
+   public void a(dhs $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
+      if ($$0.c() || $$0.d()) {
+         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.c() ? (double)$$0.i().ak() : 50.0;
+         $$6 = aty.a($$6 * (float) Math.PI);
+         int $$8 = aty.a((double)$$6 * $$7);
+         float[] $$9 = $$0.c() ? ckv.c.d() : ckv.k.d();
+         long $$10 = $$0.i().W();
+         fue.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected boolean b(T $$0) {
-      return super.a($$0) || $$0.gm();
+   @Override
+   protected float b() {
+      return 1.0F;
+   }
+
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   protected fsq d() {
+      return fsq.v();
+   }
+
+   @Override
+   public int aS_() {
+      return 256;
    }
 }

@@ -1,11 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
 
-public record anw(cgi b) {
-   private static final Codec<anw> c = RecordCodecBuilder.create($$0 -> $$0.group(cgk.f.fieldOf("enabled").forGetter(anw::a)).apply($$0, anw::new));
-   public static final aom<anw> a = aom.a("features", c);
+public class anw implements anf {
+   public static final anf.a a = new anf.a("server_resource_pack");
+   private final MinecraftServer.b b;
 
-   public cgi a() {
-      return this.b;
+   public anw(MinecraftServer.b $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(Consumer<wu<?>> $$0) {
+      $$0.accept(new xc(this.b.a(), this.b.b(), this.b.c(), this.b.d()));
+   }
+
+   @Override
+   public anf.a a() {
+      return a;
    }
 }

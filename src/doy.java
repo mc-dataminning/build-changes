@@ -1,171 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import java.util.stream.LongStream;
 
-public class doy extends dpb<dox> {
-   public doy(Codec<dox> $$0) {
-      super($$0);
+public class doy {
+   private long b;
+   private long c;
+   public static final Codec<doy> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new doy($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+
+   public doy(don.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   public boolean a(dox $$0, atw $$1) {
-      return $$1.i() <= $$0.l;
-   }
-
-   public boolean a(dow $$0, dox $$1, djj $$2, Function<hx, ig<ctd>> $$3, atw $$4, dmi $$5, crm $$6, dji $$7) {
-      int $$8 = iy.c(this.d() * 2 - 1);
-      int $$9 = $$4.a($$4.a($$4.a(this.a()) + 1) + 1);
-
-      for (int $$10 = 0; $$10 < $$9; $$10++) {
-         double $$11 = (double)$$6.a($$4.a(16));
-         double $$12 = (double)$$1.e.a($$4, $$0);
-         double $$13 = (double)$$6.b($$4.a(16));
-         double $$14 = (double)$$1.b.a($$4);
-         double $$15 = (double)$$1.c.a($$4);
-         double $$16 = (double)$$1.j.a($$4);
-         dpb.a $$17 = ($$1x, $$2x, $$3x, $$4x, $$5x) -> a($$2x, $$3x, $$4x, $$16);
-         int $$18 = 1;
-         if ($$4.a(4) == 0) {
-            double $$19 = (double)$$1.f.a($$4);
-            float $$20 = 1.0F + $$4.i() * 6.0F;
-            this.a($$0, $$1, $$2, $$3, $$5, $$11, $$12, $$13, $$20, $$19, $$7, $$17);
-            $$18 += $$4.a(4);
-         }
-
-         for (int $$21 = 0; $$21 < $$18; $$21++) {
-            float $$22 = $$4.i() * (float) (Math.PI * 2);
-            float $$23 = ($$4.i() - 0.5F) / 4.0F;
-            float $$24 = this.a($$4);
-            int $$25 = $$8 - $$4.a($$8 / 4);
-            int $$26 = 0;
-            this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$11, $$12, $$13, $$14, $$15, $$24, $$22, $$23, 0, $$25, this.b(), $$7, $$17);
-         }
-      }
-
-      return true;
-   }
-
-   protected int a() {
-      return 15;
-   }
-
-   protected float a(atw $$0) {
-      float $$1 = $$0.i() * 2.0F + $$0.i();
-      if ($$0.a(10) == 0) {
-         $$1 *= $$0.i() * $$0.i() * 3.0F + 1.0F;
-      }
-
-      return $$1;
-   }
-
-   protected double b() {
-      return 1.0;
-   }
-
-   protected void a(
-      dow $$0, dox $$1, djj $$2, Function<hx, ig<ctd>> $$3, dmi $$4, double $$5, double $$6, double $$7, float $$8, double $$9, dji $$10, dpb.a $$11
-   ) {
-      double $$12 = 1.5 + (double)(atq.a((float) (Math.PI / 2)) * $$8);
-      double $$13 = $$12 * $$9;
-      this.a($$0, $$1, $$2, $$3, $$4, $$5 + 1.0, $$6, $$7, $$12, $$13, $$10, $$11);
-   }
-
-   protected void a(
-      dow $$0,
-      dox $$1,
-      djj $$2,
-      Function<hx, ig<ctd>> $$3,
-      long $$4,
-      dmi $$5,
-      double $$6,
-      double $$7,
-      double $$8,
-      double $$9,
-      double $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      int $$14,
-      int $$15,
-      double $$16,
-      dji $$17,
-      dpb.a $$18
-   ) {
-      atw $$19 = atw.a($$4);
-      int $$20 = $$19.a($$15 / 2) + $$15 / 4;
-      boolean $$21 = $$19.a(6) == 0;
-      float $$22 = 0.0F;
-      float $$23 = 0.0F;
-
-      for (int $$24 = $$14; $$24 < $$15; $$24++) {
-         double $$25 = 1.5 + (double)(atq.a((float) Math.PI * (float)$$24 / (float)$$15) * $$11);
-         double $$26 = $$25 * $$16;
-         float $$27 = atq.b($$13);
-         $$6 += (double)(atq.b($$12) * $$27);
-         $$7 += (double)atq.a($$13);
-         $$8 += (double)(atq.a($$12) * $$27);
-         $$13 *= $$21 ? 0.92F : 0.7F;
-         $$13 += $$23 * 0.1F;
-         $$12 += $$22 * 0.1F;
-         $$23 *= 0.9F;
-         $$22 *= 0.75F;
-         $$23 += ($$19.i() - $$19.i()) * $$19.i() * 2.0F;
-         $$22 += ($$19.i() - $$19.i()) * $$19.i() * 4.0F;
-         if ($$24 == $$20 && $$11 > 1.0F) {
-            this.a(
-               $$0,
-               $$1,
-               $$2,
-               $$3,
-               $$19.g(),
-               $$5,
-               $$6,
-               $$7,
-               $$8,
-               $$9,
-               $$10,
-               $$19.i() * 0.5F + 0.5F,
-               $$12 - (float) (Math.PI / 2),
-               $$13 / 3.0F,
-               $$24,
-               $$15,
-               1.0,
-               $$17,
-               $$18
-            );
-            this.a(
-               $$0,
-               $$1,
-               $$2,
-               $$3,
-               $$19.g(),
-               $$5,
-               $$6,
-               $$7,
-               $$8,
-               $$9,
-               $$10,
-               $$19.i() * 0.5F + 0.5F,
-               $$12 + (float) (Math.PI / 2),
-               $$13 / 3.0F,
-               $$24,
-               $$15,
-               1.0,
-               $$17,
-               $$18
-            );
-            return;
-         }
-
-         if ($$19.a(4) != 0) {
-            if (!a($$2.f(), $$6, $$8, $$24, $$15, $$11)) {
-               return;
-            }
-
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$25 * $$9, $$26 * $$10, $$17, $$18);
-         }
+   public doy(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
       }
    }
 
-   private static boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return $$1 <= $$3 ? true : $$0 * $$0 + $$1 * $$1 + $$2 * $$2 >= 1.0;
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

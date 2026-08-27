@@ -1,181 +1,63 @@
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public abstract class dmm {
-   public static dmm.b a(int $$0, int $$1) {
-      return new dmm.b($$0 - 1, $$1 + 1);
-   }
+public class dmm {
+   private Int2ObjectMap<blf> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<blf> b = new Int2ObjectLinkedOpenHashMap();
+   @Nullable
+   private Int2ObjectMap<blf> c;
 
-   public static dmm.b b(int $$0, int $$1) {
-      return new dmm.b($$0, $$1);
-   }
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
 
-   public static dmm a(int $$0) {
-      return new dmm.c($$0, false);
-   }
-
-   public static dmm b(int $$0) {
-      return new dmm.c($$0 + 1, false);
-   }
-
-   public static dmm c(int $$0) {
-      return new dmm.c($$0, true);
-   }
-
-   public static dmm d(int $$0) {
-      return new dmm.c($$0 - 1, true);
-   }
-
-   public static dmm a() {
-      return dmm.a.a;
-   }
-
-   public static dmm a(OptionalInt $$0, OptionalInt $$1) {
-      if ($$0.isPresent() && $$1.isPresent()) {
-         return b($$0.getAsInt(), $$1.getAsInt());
-      } else if ($$0.isPresent()) {
-         return c($$0.getAsInt());
-      } else {
-         return $$1.isPresent() ? a($$1.getAsInt()) : a();
-      }
-   }
-
-   public abstract OptionalInt b();
-
-   public abstract OptionalInt c();
-
-   public abstract OptionalInt d();
-
-   public dmm a(OptionalInt $$0) {
-      return a($$0, this.b());
-   }
-
-   public dmm b(OptionalInt $$0) {
-      return a(this.c(), $$0);
-   }
-
-   public static Optional<dmm> a(csl $$0, hx $$1, int $$2, Predicate<dhn> $$3, Predicate<dhn> $$4) {
-      hx.a $$5 = $$1.j();
-      if (!$$0.a($$1, $$3)) {
-         return Optional.empty();
-      } else {
-         int $$6 = $$1.v();
-         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ib.b);
-         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ib.a);
-         return Optional.of(a($$8, $$7));
-      }
-   }
-
-   private static OptionalInt a(csl $$0, int $$1, Predicate<dhn> $$2, Predicate<dhn> $$3, hx.a $$4, int $$5, ib $$6) {
-      $$4.q($$5);
-
-      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
-         $$4.c($$6);
-      }
-
-      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
-   }
-
-   public static final class a extends dmm {
-      static final dmm.a a = new dmm.a();
-
-      private a() {
-      }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "C(-)";
-      }
-   }
-
-   public static final class b extends dmm {
-      private final int a;
-      private final int b;
-
-      protected b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         if (this.g() < 0) {
-            throw new IllegalArgumentException("Column of negative height: " + this);
+         while ($$1.hasNext()) {
+            Entry<blf> $$0 = (Entry<blf>)$$1.next();
+            this.b.put($$0.getIntKey(), (blf)$$0.getValue());
          }
-      }
 
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.of(this.b);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.of(this.g());
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.a;
-      }
-
-      public int g() {
-         return this.b - this.a - 1;
-      }
-
-      @Override
-      public String toString() {
-         return "C(" + this.b + "-" + this.a + ")";
+         Int2ObjectMap<blf> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
       }
    }
 
-   public static final class c extends dmm {
-      private final int a;
-      private final boolean b;
+   public void a(blf $$0) {
+      this.a();
+      this.a.put($$0.aj(), $$0);
+   }
 
-      public c(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public void b(blf $$0) {
+      this.a();
+      this.a.remove($$0.aj());
+   }
 
-      @Override
-      public OptionalInt b() {
-         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
-      }
+   public boolean c(blf $$0) {
+      return this.a.containsKey($$0.aj());
+   }
 
-      @Override
-      public OptionalInt c() {
-         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
-      }
+   public void a(Consumer<blf> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+      } else {
+         this.c = this.a;
 
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
 
-      @Override
-      public String toString() {
-         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+            while (var2.hasNext()) {
+               blf $$1 = (blf)var2.next();
+               $$0.accept($$1);
+            }
+         } finally {
+            this.c = null;
+         }
       }
    }
 }

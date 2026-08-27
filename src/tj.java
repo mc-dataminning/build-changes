@@ -1,15 +1,7 @@
-import java.util.List;
+public class tj {
+   private static final ti<?>[] a = new ti[]{sl.a, sh.a, tb.a, so.a, sr.a, sm.b, sk.b, sg.a, te.a, sp.a, sj.b, sn.a, sq.a};
 
-public record tj(List<String> a, tc<?> b, String c) {
-   public tj(tc<?> $$0, String $$1) {
-      this(List.of(), $$0, $$1);
-   }
-
-   public tj(String $$0, tc<?> $$1, String $$2) {
-      this(List.of($$0), $$1, $$2);
-   }
-
-   public tj(String $$0, String $$1, tc<?> $$2, String $$3) {
-      this(List.of($$0, $$1), $$2, $$3);
+   public static ti<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < a.length ? a[$$0] : ti.a($$0);
    }
 }

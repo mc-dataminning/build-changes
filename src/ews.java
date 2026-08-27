@@ -1,71 +1,41 @@
-public abstract class ews {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final eur d;
-   protected final aty e;
+public class ews extends exb {
+   private static final int a = 1426063360;
+   private static final int b = 4;
+   private final boolean c;
 
-   protected ews(eur $$0, aty $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public ews(int $$0, vb $$1, evu $$2) {
+      this($$0, $$1, $$2, true);
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.a() + 2, $$0);
+   public ews(int $$0, vb $$1, evu $$2, boolean $$3) {
+      super($$1, $$2);
+      this.j($$0);
+      this.b(true);
+      this.i = true;
+      this.c = $$3;
    }
 
-   public void a(eut $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(frh.C(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.a() - ($$2 - 2));
-      int $$8 = this.e.b() - $$7;
+   @Override
+   protected void a(faa $$0) {
+      $$0.a(ezz.a, this.l());
+   }
 
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         long $$11 = this.e.a($$7 + $$9);
-         $$5 = Math.min($$5, $$11);
-         $$6 = Math.max($$6, $$11);
-         $$4 += $$11;
-         int $$12 = this.b((double)$$11);
-         int $$13 = this.a($$11);
-         $$0.a(frh.C(), $$10, $$3 - $$12, $$10 + 1, $$3, $$13);
+   @Override
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      if (this.aJ_() || this.c) {
+         int $$4 = this.p() - 4;
+         int $$5 = this.r() - 4;
+         int $$6 = this.k() + 8;
+         int $$7 = this.i() + 8;
+         int $$8 = this.c ? (this.aJ_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, 1426063360);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
       }
 
-      $$0.a(frh.C(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(frh.C(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(frh.C(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(frh.C(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$14 = this.a((double)$$5) + " min";
-         String $$15 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$16 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$14, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$15, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$16, $$1 + $$2 - this.d.b($$16) - 2, $$3 - 60 - 9, 14737632);
-      }
-
-      this.a($$0, $$1, $$2, $$3);
+      super.b($$0, $$1, $$2, $$3);
    }
 
-   protected void a(eut $$0, int $$1, int $$2, int $$3) {
-   }
-
-   protected void a(eut $$0, String $$1, int $$2, int $$3) {
-      $$0.a(frh.C(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
-   }
-
-   protected abstract String a(double var1);
-
-   protected abstract int b(double var1);
-
-   protected abstract int a(long var1);
-
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = atq.a($$0, $$1, $$5);
-      return $$0 < $$3 ? ata.b.a((float)($$0 / ($$3 - $$1)), $$2, $$4) : ata.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
+   @Override
+   public void a(gia $$0) {
    }
 }

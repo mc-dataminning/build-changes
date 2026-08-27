@@ -1,49 +1,29 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+public class adh implements wu<acw> {
+   private final adh.a a;
 
-public class adh implements wo<acp> {
-   public static final int a = 4;
-   private static final int b = 128;
-   private static final int c = 8192;
-   private static final int d = 200;
-   private final int e;
-   private final List<String> f;
-   private final Optional<String> g;
-
-   public adh(int $$0, List<String> $$1, Optional<String> $$2) {
-      this.e = $$0;
-      this.f = ImmutableList.copyOf($$1);
-      this.g = $$2;
+   public adh(adh.a $$0) {
+      this.a = $$0;
    }
 
-   public adh(ty $$0) {
-      this.e = $$0.n();
-      this.f = $$0.a(ty.a(Lists::newArrayListWithCapacity, 200), $$0x -> $$0x.d(8192));
-      this.g = $$0.b((ty.a<String>)($$0x -> $$0x.d(128)));
+   public adh(ue $$0) {
+      this.a = $$0.b(adh.a.class);
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.c(this.e);
-      $$0.a(this.f, ($$0x, $$1) -> $$0x.a($$1, 8192));
-      $$0.a(this.g, ($$0x, $$1) -> $$0x.a($$1, 128));
+   public void a(ue $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
    }
 
-   public List<String> a() {
-      return this.f;
+   public adh.a a() {
+      return this.a;
    }
 
-   public Optional<String> d() {
-      return this.g;
-   }
-
-   public int e() {
-      return this.e;
+   public static enum a {
+      a,
+      b;
    }
 }

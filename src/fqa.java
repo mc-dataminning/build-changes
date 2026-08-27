@@ -1,31 +1,117 @@
-public class fqa extends fpz {
-   private final etm i;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   public fqa(etm $$0) {
-      this.i = $$0;
-   }
-
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
+public interface fqa {
+   fqa a = new fqa() {
+      @Override
+      public void a(eoy $$0, gdp $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gdn.e);
+         $$0.a(epi.b.h, epb.l);
       }
-   }
 
-   @Override
-   public void a(boolean $$0, float $$1) {
-      this.c = this.i.x.e();
-      this.d = this.i.z.e();
-      this.e = this.i.y.e();
-      this.f = this.i.A.e();
-      this.b = a(this.c, this.d);
-      this.a = a(this.e, this.f);
-      this.g = this.i.B.e();
-      this.h = this.i.C.e();
-      if ($$0) {
-         this.a *= $$1;
-         this.b *= $$1;
+      @Override
+      public void a(epf $$0) {
+         $$0.c();
       }
-   }
+
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
+      }
+   };
+   fqa b = new fqa() {
+      @Override
+      public void a(eoy $$0, gdp $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(fsb::u);
+         RenderSystem.setShaderTexture(0, gdn.f);
+         $$0.a(epi.b.h, epb.l);
+      }
+
+      @Override
+      public void a(epf $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   fqa c = new fqa() {
+      @Override
+      public void a(eoy $$0, gdp $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gdn.f);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         $$0.a(epi.b.h, epb.l);
+      }
+
+      @Override
+      public void a(epf $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   fqa d = new fqa() {
+      @Override
+      public void a(eoy $$0, gdp $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gdn.f);
+         $$0.a(epi.b.h, epb.l);
+      }
+
+      @Override
+      public void a(epf $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_LIT";
+      }
+   };
+   fqa e = new fqa() {
+      @Override
+      public void a(eoy $$0, gdp $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+      }
+
+      @Override
+      public void a(epf $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   fqa f = new fqa() {
+      @Override
+      public void a(eoy $$0, gdp $$1) {
+      }
+
+      @Override
+      public void a(epf $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   void a(eoy var1, gdp var2);
+
+   void a(epf var1);
 }

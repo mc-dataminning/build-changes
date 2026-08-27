@@ -1,53 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class dql extends dpd {
-   public dql(Codec<dsg> $$0) {
+public class dql extends drc<dsy> {
+   public dql(Codec<dsy> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(csg $$0, atw $$1, hx $$2, int $$3, hx.a $$4, dsg $$5) {
-      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
-         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
-         int $$8 = $$5.d - 2;
+   public boolean a(dre<dsy> $$0) {
+      hv $$1 = $$0.e();
+      ctt $$2 = $$0.b();
+      auf $$3 = $$0.d();
+      dsy $$4 = $$0.f();
+      if ($$1.v() < $$2.J_() + 5) {
+         return false;
+      } else {
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
-            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
-               boolean $$11 = $$9 == -$$7;
-               boolean $$12 = $$9 == $$7;
-               boolean $$13 = $$10 == -$$7;
-               boolean $$14 = $$10 == $$7;
-               boolean $$15 = $$11 || $$12;
-               boolean $$16 = $$13 || $$14;
-               if ($$6 >= $$3 || $$15 != $$16) {
-                  $$4.a($$2, $$9, $$6, $$10);
-                  if (!$$0.a_($$4).i($$0, $$4)) {
-                     dhn $$17 = $$5.b.a($$1, $$2);
-                     if ($$17.b(czb.e) && $$17.b(czb.c) && $$17.b(czb.b) && $$17.b(czb.d) && $$17.b(czb.f)) {
-                        $$17 = $$17.a(czb.f, Boolean.valueOf($$6 >= $$3 - 1))
-                           .a(czb.e, Boolean.valueOf($$9 < -$$8))
-                           .a(czb.c, Boolean.valueOf($$9 > $$8))
-                           .a(czb.b, Boolean.valueOf($$10 < -$$8))
-                           .a(czb.d, Boolean.valueOf($$10 > $$8));
-                     }
-
-                     this.a($$0, $$4, $$17);
-                  }
-               }
+         for (hv $$7 : hv.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
+
+         return true;
       }
    }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-      if ($$3 < $$1 && $$3 >= $$1 - 3) {
-         $$4 = $$2;
-      } else if ($$3 == $$1) {
-         $$4 = $$2;
-      }
+   private boolean a(csz $$0, hv $$1, auf $$2) {
+      hv $$3 = $$1.d();
+      dip $$4 = $$0.a_($$3);
+      return $$4.a(cwb.kE) ? $$2.h() : $$4.d($$0, $$3, ia.b);
+   }
 
-      return $$4;
+   private void a(csz $$0, hv $$1, auf $$2, dsy $$3) {
+      if ($$0.t($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
+      }
    }
 }

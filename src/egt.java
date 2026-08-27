@@ -1,40 +1,70 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
 
-public class egt implements egp {
-   public static final Codec<egt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egr.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, egt::new)
-   );
-   public static final Codec<egt> b = egr.b.listOf().xmap(egt::new, $$0 -> $$0.c);
-   private final List<egp> c;
-   private final BiFunction<clo, efc, clo> d;
+public class egt extends egq {
+   public static final Codec<egt> a = a(egt::new);
 
-   private egt(List<egp> $$0) {
-      this.c = $$0;
-      this.d = egr.a($$0);
-   }
-
-   public static egt a(List<egp> $$0) {
-      return new egt(List.copyOf($$0));
-   }
-
-   public clo a(clo $$0, efc $$1) {
-      return this.d.apply($$0, $$1);
+   egt(List<egx> $$0, List<ejd> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(efl $$0) {
-      egp.super.a($$0);
+   public egy a() {
+      return egv.i;
+   }
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".function[" + $$1 + "]"));
+   @Override
+   protected egp a(List<? extends egp> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (egp)$$0.get(0);
+         case 2 -> {
+            egp $$1 = $$0.get(0);
+            egp $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (egp $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
+   }
+
+   public static egt.a a(egx.a<?>... $$0) {
+      return new egt.a($$0);
+   }
+
+   public static class a extends egx.a<egt.a> {
+      private final Builder<egx> a = ImmutableList.builder();
+
+      public a(egx.a<?>... $$0) {
+         for (egx.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
-   }
 
-   @Override
-   public egq b() {
-      return egr.C;
+      protected egt.a a() {
+         return this;
+      }
+
+      @Override
+      public egt.a b(egx.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public egx b() {
+         return new egt(this.a.build(), this.f());
+      }
    }
 }

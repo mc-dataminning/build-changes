@@ -1,100 +1,62 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SortedMap;
 
-public class fso implements gel {
-   private final dho<cvf, dhn> a;
-   private final List<fsq> b;
+public class fso {
+   private final fst a = new fst();
+   private final fsu b;
+   private final fsi.a c;
+   private final fsi.a d;
+   private final fsj e;
 
-   public fso(dho<cvf, dhn> $$0, List<fsq> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fso(int $$0) {
+      this.b = fsu.a($$0);
+      SortedMap<fsq, eoy> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
+         $$0x.put(fsx.h(), this.a.a(fsq.c()));
+         $$0x.put(fsx.i(), this.a.a(fsq.e()));
+         $$0x.put(fsx.a(), this.a.a(fsq.d()));
+         $$0x.put(fsx.k(), this.a.a(fsq.f()));
+         a($$0x, fsx.b());
+         a($$0x, fsx.c());
+         a($$0x, fsx.d());
+         a($$0x, fsx.e());
+         a($$0x, fsx.f());
+         $$0x.put(fsx.g(), new eoy(786432));
+         a($$0x, fsq.j());
+         a($$0x, fsq.k());
+         a($$0x, fsq.m());
+         a($$0x, fsq.n());
+         a($$0x, fsq.l());
+         a($$0x, fsq.o());
+         a($$0x, fsq.p());
+         a($$0x, fsq.i());
+         gfu.l.forEach($$1x -> a($$0x, $$1x));
+      });
+      this.d = fsi.a(new eoy(1536));
+      this.c = fsi.a($$1, new eoy(786432));
+      this.e = new fsj(this.c);
    }
 
-   public List<fsq> a() {
+   private static void a(Object2ObjectLinkedOpenHashMap<fsq, eoy> $$0, fsq $$1) {
+      $$0.put($$1, new eoy($$1.G()));
+   }
+
+   public fst a() {
+      return this.a;
+   }
+
+   public fsu b() {
       return this.b;
    }
 
-   public Set<fsj> b() {
-      Set<fsj> $$0 = Sets.newHashSet();
-
-      for (fsq $$1 : this.b) {
-         $$0.add($$1.a());
-      }
-
-      return $$0;
+   public fsi.a c() {
+      return this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fso $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
-      }
+   public fsi.a d() {
+      return this.d;
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b);
-   }
-
-   @Override
-   public Collection<agm> f() {
-      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
-   }
-
-   @Override
-   public void a(Function<agm, gel> $$0) {
-      this.a().forEach($$1 -> $$1.a().a($$0));
-   }
-
-   @Nullable
-   @Override
-   public gea a(gee $$0, Function<ged, gbz> $$1, gei $$2, agm $$3) {
-      gej.a $$4 = new gej.a();
-
-      for (fsq $$5 : this.a()) {
-         gea $$6 = $$5.a().a($$0, $$1, $$2, $$3);
-         if ($$6 != null) {
-            $$4.a($$5.a(this.a), $$6);
-         }
-      }
-
-      return $$4.a();
-   }
-
-   public static class a implements JsonDeserializer<fso> {
-      private final fsc.a a;
-
-      public a(fsc.a $$0) {
-         this.a = $$0;
-      }
-
-      public fso a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new fso(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
-      }
-
-      private List<fsq> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<fsq> $$2 = Lists.newArrayList();
-
-         for (JsonElement $$3 : $$1) {
-            $$2.add((fsq)$$0.deserialize($$3, fsq.class));
-         }
-
-         return $$2;
-      }
+   public fsj e() {
+      return this.e;
    }
 }

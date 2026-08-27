@@ -1,7 +1,14 @@
-public record aff() implements afd {
-   public static final aff a = new aff();
-
+public interface aff extends acx {
    @Override
-   public void a(ty $$0) {
+   default ud b() {
+      return ud.d;
    }
+
+   void a(afh var1);
+
+   void a(afi var1);
+
+   void a(afg var1);
+
+   void a(afj var1);
 }

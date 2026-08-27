@@ -1,29 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class czy extends czo implements cvi {
-   public static final MapCodec<czy> a = b(czy::new);
+public class czy extends czx {
+   public static final MapCodec<czy> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kb.e.q().fieldOf("host").forGetter(czx::b), u()).apply($$0, czy::new));
 
    @Override
    public MapCodec<czy> a() {
-      return a;
+      return b;
    }
 
-   public czy(dhm.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(csi $$0, hx $$1, dhn $$2) {
-      return $$0.a_($$1.d()).i();
+   public czy(cvz $$0, dio.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(dck.i, ia.a.b));
    }
 
    @Override
-   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
-      return true;
+   public dip a(dip $$0, dcl $$1) {
+      return dck.b($$0, $$1);
    }
 
    @Override
-   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
-      $$0.a($$2.d(), czz.c(), 2);
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(dck.i);
+   }
+
+   @Override
+   public dip a(coq $$0) {
+      return this.o().a(dck.i, $$0.k().o());
    }
 }

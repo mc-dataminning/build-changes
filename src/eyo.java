@@ -1,122 +1,153 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class eyo implements eyp {
-   public static final int a = 36;
-   private static final int b = 30;
-   private final eym c = new eym();
-   private final eym d = new eym();
-   private final eym e = new eym();
-   private final faz f;
-   private int g;
-   private int h;
+   private static final agt a = new agt("toast/system");
+   private static final int d = 200;
+   private static final int e = 12;
+   private static final int f = 10;
+   private final eyo.a g;
+   private vb h;
+   private List<atk> i;
+   private long j;
+   private boolean k;
+   private final int l;
 
-   public eyo(faz $$0) {
-      this($$0, 36);
+   public eyo(eyo.a $$0, vb $$1, @Nullable vb $$2) {
+      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(euk.N().h.a($$1), $$2 == null ? 0 : euk.N().h.a($$2))));
    }
 
-   public eyo(faz $$0, int $$1) {
-      this($$0, $$1, $$1);
+   public static eyo a(euk $$0, eyo.a $$1, vb $$2, vb $$3) {
+      evu $$4 = $$0.h;
+      List<atk> $$5 = $$4.c($$3, 200);
+      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
+      return new eyo($$1, $$2, $$5, $$6 + 30);
    }
 
-   public eyo(faz $$0, int $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.c.c().a(0.5F, 0.5F);
-      this.d.c().a(0.5F, 0.5F);
-   }
-
-   @Override
-   public void f(int $$0) {
-   }
-
-   @Override
-   public void g(int $$0) {
-   }
-
-   @Override
-   public int p() {
-      return 0;
-   }
-
-   @Override
-   public int r() {
-      return 0;
-   }
-
-   @Override
-   public int k() {
-      return this.f.g;
-   }
-
-   @Override
-   public int i() {
-      return this.f.h;
-   }
-
-   public int b() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public void b(int $$0) {
+   private eyo(eyo.a $$0, vb $$1, List<atk> $$2, int $$3) {
       this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.l = $$3;
    }
 
-   public int c() {
+   private static ImmutableList<atk> a(@Nullable vb $$0) {
+      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
+   }
+
+   @Override
+   public int a() {
+      return this.l;
+   }
+
+   @Override
+   public int b() {
+      return 20 + Math.max(this.i.size(), 1) * 12;
+   }
+
+   @Override
+   public eyp.a a(evw $$0, eyq $$1, long $$2) {
+      if (this.k) {
+         this.j = $$2;
+         this.k = false;
+      }
+
+      int $$3 = this.a();
+      if ($$3 == 160 && this.i.size() <= 1) {
+         $$0.a(a, 0, 0, $$3, this.b());
+      } else {
+         int $$4 = this.b();
+         int $$5 = 28;
+         int $$6 = Math.min(4, $$4 - 28);
+         this.a($$0, $$3, 0, 0, 28);
+
+         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
+            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
+         }
+
+         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
+      }
+
+      if (this.i == null) {
+         $$0.a($$1.b().h, this.h, 18, 12, -256, false);
+      } else {
+         $$0.a($$1.b().h, this.h, 18, 7, -256, false);
+
+         for (int $$8 = 0; $$8 < this.i.size(); $$8++) {
+            $$0.a($$1.b().h, this.i.get($$8), 18, 18 + $$8 * 12, -1, false);
+         }
+      }
+
+      return (double)($$2 - this.j) < (double)this.g.i * $$1.c() ? eyp.a.a : eyp.a.b;
+   }
+
+   private void a(evw $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$2 == 0 ? 20 : 5;
+      int $$6 = Math.min(60, $$1 - $$5);
+      agt $$7 = a;
+      $$0.a($$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
+
+      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
+         $$0.a($$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
+      }
+
+      $$0.a($$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
+   }
+
+   public void a(vb $$0, @Nullable vb $$1) {
+      this.h = $$0;
+      this.i = a($$1);
+      this.k = true;
+   }
+
+   public eyo.a c() {
       return this.g;
    }
 
-   @Override
-   public void b(Consumer<eyq> $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-      this.d.b($$0);
+   public static void a(eyq $$0, eyo.a $$1, vb $$2, @Nullable vb $$3) {
+      $$0.a(new eyo($$1, $$2, $$3));
    }
 
-   @Override
-   public void a() {
-      int $$0 = this.c();
-      int $$1 = this.b();
-      this.c.b(this.f.g);
-      this.c.a($$0);
-      this.c.b(0, 0);
-      this.c.a();
-      this.d.b(this.f.g);
-      this.d.a($$1);
-      this.d.a();
-      this.d.g(this.f.h - $$1);
-      this.e.b(this.f.g);
-      this.e.a();
-      int $$2 = $$0 + 30;
-      int $$3 = this.f.h - $$1 - this.e.i();
-      this.e.b(0, Math.min($$2, $$3));
+   public static void b(eyq $$0, eyo.a $$1, vb $$2, @Nullable vb $$3) {
+      eyo $$4 = $$0.a(eyo.class, $$1);
+      if ($$4 == null) {
+         a($$0, $$1, $$2, $$3);
+      } else {
+         $$4.a($$2, $$3);
+      }
    }
 
-   public <T extends eyq> T a(T $$0) {
-      return this.c.a($$0);
+   public static void a(euk $$0, String $$1) {
+      a($$0.ax(), eyo.a.e, vb.c("selectWorld.access_failure"), vb.b($$1));
    }
 
-   public <T extends eyq> T a(T $$0, Consumer<eyr> $$1) {
-      return this.c.a($$0, $$1);
+   public static void b(euk $$0, String $$1) {
+      a($$0.ax(), eyo.a.e, vb.c("selectWorld.delete_failure"), vb.b($$1));
    }
 
-   public <T extends eyq> T b(T $$0) {
-      return this.d.a($$0);
+   public static void c(euk $$0, String $$1) {
+      a($$0.ax(), eyo.a.f, vb.c("pack.copyFailure"), vb.b($$1));
    }
 
-   public <T extends eyq> T b(T $$0, Consumer<eyr> $$1) {
-      return this.d.a($$0, $$1);
-   }
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h(10000L);
 
-   public <T extends eyq> T c(T $$0) {
-      return this.e.a($$0);
-   }
+      final long i;
 
-   public <T extends eyq> T c(T $$0, Consumer<eyr> $$1) {
-      return this.e.a($$0, $$1);
+      private a(long $$0) {
+         this.i = $$0;
+      }
+
+      private a() {
+         this(5000L);
+      }
    }
 }

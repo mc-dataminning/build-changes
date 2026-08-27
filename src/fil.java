@@ -1,28 +1,30 @@
-public class fil<T extends bkv> extends fid<T> {
-   private static final String a = "knot";
-   private final fkt b;
-   private final fkt f;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public fil(fkt $$0) {
-      this.b = $$0;
-      this.f = $$0.b("knot");
-   }
+public class fil extends fkk {
+   private static final String a = "chest_bottom";
+   private static final String b = "chest_lid";
+   private static final String f = "chest_lock";
 
-   public static fkz b() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      $$1.a("knot", fky.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fkv.a);
-      return fkz.a($$0, 32, 32);
+   public fil(fly $$0) {
+      super($$0);
    }
 
    @Override
-   public fkt a() {
-      return this.b;
+   protected Builder<fly> a(fly $$0) {
+      Builder<fly> $$1 = super.a($$0);
+      $$1.add($$0.b("chest_bottom"));
+      $$1.add($$0.b("chest_lid"));
+      $$1.add($$0.b("chest_lock"));
+      return $$1;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+   public static fme a() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      fkk.a($$1);
+      $$1.a("chest_bottom", fmd.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fma.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", fmd.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fma.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", fmd.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fma.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return fme.a($$0, 128, 128);
    }
 }

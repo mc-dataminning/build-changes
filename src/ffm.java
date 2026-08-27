@@ -1,117 +1,60 @@
-import java.nio.file.Path;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class ffm extends faz {
-   private static final int a = 8;
-   private static final uv b = uv.c("telemetry_info.screen.title");
-   private static final uv c = uv.c("telemetry_info.screen.description").a(n.h);
-   private static final uv k = uv.c("telemetry_info.button.privacy_statement");
-   private static final uv l = uv.c("telemetry_info.button.give_feedback");
-   private static final uv m = uv.c("telemetry_info.button.show_data");
-   private static final uv n = uv.c("telemetry_info.opt_in.description");
-   private final faz o;
-   private final etm p;
+public abstract class ffm extends ffq {
+   private static final exu i = new exu(
+      new agt("recipe_book/furnace_filter_enabled"),
+      new agt("recipe_book/furnace_filter_disabled"),
+      new agt("recipe_book/furnace_filter_enabled_highlighted"),
+      new agt("recipe_book/furnace_filter_disabled_highlighted")
+   );
    @Nullable
-   private ffl q;
-   private double r;
+   private cpi j;
 
-   public ffm(faz $$0, etm $$1) {
-      super(b);
-      this.o = $$0;
-      this.p = $$1;
+   @Override
+   protected void a() {
+      this.f.a(i);
    }
 
    @Override
-   public uv h() {
-      return uu.a(super.h(), c);
-   }
-
-   @Override
-   protected void aQ_() {
-      eym $$0 = new eym();
-      $$0.c().a(8);
-      $$0.a(this.h);
-      eys $$1 = $$0.a(eys.d(), $$0.b().a(0.5F, 0.0F));
-      $$1.c().b().e(8);
-      $$1.a(new ewl(this.m(), this.i));
-      $$1.a(new evy(c, this.i).j(this.g - 16).b(true));
-      eyn $$2 = this.a(eve.a(k, this::b).a(), eve.a(l, this::c).a());
-      $$1.a($$2);
-      eyp $$3 = this.l();
-      $$0.a();
-      $$3.a();
-      int $$4 = $$2.r() + $$2.i();
-      int $$5 = $$3.i();
-      int $$6 = this.h - $$4 - $$5 - 16;
-      this.q = new ffl(0, 0, this.g - 40, $$6, this.f.h);
-      this.q.a(this.r);
-      this.q.a($$0x -> this.r = $$0x);
-      this.c(this.q);
-      $$1.a(this.q);
-      $$1.a($$3);
-      $$0.a();
-      eym.a($$0, 0, 0, this.g, this.h, 0.5F, 0.0F);
-      $$0.a($$1x -> {
-         evc var10000 = this.d($$1x);
-      });
-   }
-
-   private eyp l() {
-      eys $$0 = eys.d();
-      $$0.c().b().e(4);
-      if (this.f.A()) {
-         $$0.a(this.C());
-      }
-
-      $$0.a(this.a(eve.a(m, this::d).a(), eve.a(uu.d, this::a).a()));
-      return $$0;
-   }
-
-   private evc C() {
-      etl<Boolean> $$0 = this.p.af();
-      evg $$1 = evg.a(n, this.f.h).a($$0).a(this::a).a();
-      $$1.i = this.f.A();
-      return $$1;
-   }
-
-   private void a(evc $$0, boolean $$1) {
-      if (this.q != null) {
-         this.q.b($$1);
+   public void a(@Nullable cjf $$0) {
+      super.a($$0);
+      if ($$0 != null && $$0.e < this.g.p()) {
+         this.e.a();
       }
    }
 
-   private void a(eve $$0) {
-      this.f.a(this.o);
-   }
-
-   private void b(eve $$0) {
-      ezr.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
-   }
-
-   private void c(eve $$0) {
-      ezr.a(this, "https://aka.ms/javafeedback?ref=game");
-   }
-
-   private void d(eve $$0) {
-      Path $$1 = this.f.t().b();
-      ac.i().a($$1.toUri());
-   }
-
    @Override
-   public void aG_() {
-      this.f.a(this.o);
+   public void a(cpn<?> $$0, List<cjf> $$1) {
+      cmh $$2 = $$0.b().a(this.h.r.I_());
+      this.e.a($$0);
+      this.e.a(cpi.a($$2), $$1.get(2).f, $$1.get(2).g);
+      io<cpi> $$3 = $$0.b().a();
+      cjf $$4 = $$1.get(1);
+      if ($$4.g().b()) {
+         if (this.j == null) {
+            this.j = cpi.a(this.b().stream().filter($$0x -> $$0x.a(this.h.r.H())).map(cmh::new));
+         }
+
+         this.e.a(this.j, $$4.f, $$4.g);
+      }
+
+      Iterator<cpi> $$5 = $$3.iterator();
+
+      for (int $$6 = 0; $$6 < 2; $$6++) {
+         if (!$$5.hasNext()) {
+            return;
+         }
+
+         cpi $$7 = $$5.next();
+         if (!$$7.c()) {
+            cjf $$8 = $$1.get($$6);
+            this.e.a($$7, $$8.f, $$8.g);
+         }
+      }
    }
 
-   @Override
-   public void b(eut $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   private eyn a(evc $$0, evc $$1) {
-      eyn $$2 = new eyn();
-      $$2.c().b().f(4);
-      $$2.a($$0, 0, 0);
-      $$2.a($$1, 0, 1);
-      return $$2;
-   }
+   protected abstract Set<cmc> b();
 }

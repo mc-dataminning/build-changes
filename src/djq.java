@@ -1,69 +1,62 @@
-import javax.annotation.Nullable;
+public enum djq implements aut {
+   a("harp", arc.rd, djq.a.a),
+   b("basedrum", arc.qX, djq.a.a),
+   c("snare", arc.rg, djq.a.a),
+   d("hat", arc.re, djq.a.a),
+   e("bass", arc.qY, djq.a.a),
+   f("flute", arc.rb, djq.a.a),
+   g("bell", arc.qZ, djq.a.a),
+   h("guitar", arc.rc, djq.a.a),
+   i("chime", arc.ra, djq.a.a),
+   j("xylophone", arc.rh, djq.a.a),
+   k("iron_xylophone", arc.ri, djq.a.a),
+   l("cow_bell", arc.rj, djq.a.a),
+   m("didgeridoo", arc.rk, djq.a.a),
+   n("bit", arc.rl, djq.a.a),
+   o("banjo", arc.rm, djq.a.a),
+   p("pling", arc.rf, djq.a.a),
+   q("zombie", arc.rn, djq.a.b),
+   r("skeleton", arc.ro, djq.a.b),
+   s("creeper", arc.rp, djq.a.b),
+   t("dragon", arc.rq, djq.a.b),
+   u("wither_skeleton", arc.rr, djq.a.b),
+   v("piglin", arc.rs, djq.a.b),
+   w("custom_head", arc.zu, djq.a.c);
 
-public class djq extends dju {
-   private final ig<ctd> n;
+   private final String x;
+   private final ie<arb> y;
+   private final djq.a z;
 
-   public djq(csf $$0, crm $$1, ig<ctd> $$2) {
-      super($$0, $$1);
-      this.n = $$2;
+   private djq(String $$0, ie<arb> $$1, djq.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
    }
 
    @Override
-   public dhn a_(hx $$0) {
-      return cvh.nb.o();
+   public String c() {
+      return this.x;
    }
 
-   @Nullable
-   @Override
-   public dhn a(hx $$0, dhn $$1, boolean $$2) {
-      return null;
+   public ie<arb> a() {
+      return this.y;
    }
 
-   @Override
-   public ecx b_(hx $$0) {
-      return ecy.a.g();
+   public boolean b() {
+      return this.z == djq.a.a;
    }
 
-   @Override
-   public int h(hx $$0) {
-      return 0;
+   public boolean d() {
+      return this.z == djq.a.c;
    }
 
-   @Nullable
-   @Override
-   public dfi a(hx $$0, dju.b $$1) {
-      return null;
+   public boolean e() {
+      return this.z != djq.a.a;
    }
 
-   @Override
-   public void b(dfi $$0) {
-   }
-
-   @Override
-   public void a(dfi $$0) {
-   }
-
-   @Override
-   public void d(hx $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public amb D() {
-      return amb.b;
-   }
-
-   @Override
-   public ig<ctd> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n;
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

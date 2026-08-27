@@ -1,92 +1,99 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.List;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eqy extends ghw {
+public class eqy extends eqz {
    private static final Logger a = LogUtils.getLogger();
-   private static final ghx b = new ghx(Duration.ofSeconds(5L));
-   private final List<esi> c;
-   private final faz v;
-   private final eys w = eys.d();
-   private volatile uv x;
+   private static final String b = "http://";
+   private static final int c = 8080;
+   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
+   private final boolean e;
    @Nullable
-   private evt y;
+   private final String f;
+   private final URI g;
 
-   public eqy(faz $$0, esi... $$1) {
-      super(eta.a);
-      this.v = $$0;
-      this.c = List.of($$1);
-      if (this.c.isEmpty()) {
-         throw new IllegalArgumentException("No tasks added");
-      } else {
-         this.x = this.c.get(0).a();
-         Runnable $$2 = () -> {
-            for (esi $$1x : $$1) {
-               this.a($$1x.a());
-               if ($$1x.d()) {
-                  break;
-               }
+   private eqy(boolean $$0, @Nullable String $$1, URI $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
 
-               $$1x.run();
+   @Nullable
+   public static eqy a(String $$0) {
+      try {
+         JsonParser $$1 = new JsonParser();
+         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+         String $$3 = esw.b("uploadEndpoint", $$2, null);
+         if ($$3 != null) {
+            int $$4 = esw.a("port", $$2, -1);
+            URI $$5 = a($$3, $$4);
+            if ($$5 != null) {
+               boolean $$6 = esw.a("worldClosed", $$2, false);
+               String $$7 = esw.b("token", $$2, null);
+               return new eqy($$6, $$7, $$5);
             }
-         };
-         Thread $$3 = new Thread($$2, "Realms-long-running-task");
-         $$3.setUncaughtExceptionHandler(new eqc(a));
-         $$3.start();
+         }
+      } catch (Exception var8) {
+         a.error("Could not parse UploadInfo: {}", var8.getMessage());
+      }
+
+      return null;
+   }
+
+   @Nullable
+   @VisibleForTesting
+   public static URI a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      String $$3 = a($$0, $$2);
+
+      try {
+         URI $$4 = new URI($$3);
+         int $$5 = a($$1, $$4.getPort());
+         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
+      } catch (URISyntaxException var6) {
+         a.warn("Failed to parse URI {}", $$3, var6);
+         return null;
       }
    }
 
-   @Override
-   public void d() {
-      super.d();
-      if (this.y != null) {
-         b.a(this.f.aU(), this.y.l());
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.e();
-         return true;
+   private static int a(int $$0, int $$1) {
+      if ($$0 != -1) {
+         return $$0;
       } else {
-         return super.a($$0, $$1, $$2);
+         return $$1 != -1 ? $$1 : 8080;
       }
    }
 
-   @Override
-   public void aQ_() {
-      this.w.c().b();
-      this.y = new evt(this.i, this.x);
-      this.w.a(this.y, $$0 -> $$0.e(30));
-      this.w.a(eve.a(uu.e, $$0 -> this.e()).a());
-      this.w.a($$1 -> {
-         evc var10000 = this.d($$1);
-      });
-      this.c();
+   private static String a(String $$0, Matcher $$1) {
+      return $$1.find() ? $$0 : "http://" + $$0;
    }
 
-   @Override
-   protected void c() {
-      this.w.a();
-      eym.a(this.w, this.s());
-   }
-
-   protected void e() {
-      for (esi $$0 : this.c) {
-         $$0.b();
+   public static String b(@Nullable String $$0) {
+      JsonObject $$1 = new JsonObject();
+      if ($$0 != null) {
+         $$1.addProperty("token", $$0);
       }
 
-      this.f.a(this.v);
+      return $$1.toString();
    }
 
-   public void a(uv $$0) {
-      if (this.y != null) {
-         this.y.b($$0);
-      }
+   @Nullable
+   public String a() {
+      return this.f;
+   }
 
-      this.x = $$0;
+   public URI b() {
+      return this.g;
+   }
+
+   public boolean c() {
+      return this.e;
    }
 }

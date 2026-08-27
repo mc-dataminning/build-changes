@@ -1,21 +1,11 @@
-public class fpz {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public boolean h;
+import javax.annotation.Nullable;
 
-   public void a(boolean $$0, float $$1) {
-   }
+public interface fpz<T extends jt> {
+   @Nullable
+   fpw createParticle(T var1, fmt var2, double var3, double var5, double var7, double var9, double var11, double var13);
 
-   public ejy a() {
-      return new ejy(this.a, this.b);
-   }
-
-   public boolean b() {
-      return this.b > 1.0E-5F;
+   public interface a<T extends jt> {
+      @Nullable
+      fqw createParticle(T var1, fmt var2, double var3, double var5, double var7, double var9, double var11, double var13);
    }
 }

@@ -1,97 +1,51 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Properties;
 import org.slf4j.Logger;
 
-public class agz implements apf {
+public class agz {
    private static final Logger a = LogUtils.getLogger();
-   private static final agf b = new agf("functions", ".mcfunction");
-   private volatile Map<agm, hb<du>> c = ImmutableMap.of();
-   private final asa<hb<du>> d = new asa<>(this::a, "tags/functions");
-   private volatile Map<agm, Collection<hb<du>>> e = Map.of();
-   private final int f;
-   private final CommandDispatcher<du> g;
+   private final Path b;
+   private final boolean c;
 
-   public Optional<hb<du>> a(agm $$0) {
-      return Optional.ofNullable(this.c.get($$0));
+   public agz(Path $$0) {
+      this.b = $$0;
+      this.c = aa.aW || this.b();
    }
 
-   public Map<agm, hb<du>> a() {
+   private boolean b() {
+      try {
+         boolean var3;
+         try (InputStream $$0 = Files.newInputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.load($$0);
+            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
+         }
+
+         return var3;
+      } catch (Exception var6) {
+         a.warn("Failed to load {}", this.b);
+         this.c();
+         return false;
+      }
+   }
+
+   public boolean a() {
       return this.c;
    }
 
-   public Collection<hb<du>> b(agm $$0) {
-      return this.e.getOrDefault($$0, List.of());
-   }
-
-   public Iterable<agm> b() {
-      return this.e.keySet();
-   }
-
-   public agz(int $$0, CommandDispatcher<du> $$1) {
-      this.f = $$0;
-      this.g = $$1;
-   }
-
-   @Override
-   public CompletableFuture<Void> a(apf.a $$0, apl $$1, bfs $$2, bfs $$3, Executor $$4, Executor $$5) {
-      CompletableFuture<Map<agm, List<asa.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
-      CompletableFuture<Map<agm, CompletableFuture<hb<du>>>> $$7 = CompletableFuture.<Map<agm, apj>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
-         Map<agm, CompletableFuture<hb<du>>> $$2x = Maps.newHashMap();
-         du $$3x = new du(dt.a, ejz.b, ejy.a, null, this.f, "", uu.a, null, null);
-
-         for (Entry<agm, apj> $$4x : $$1x.entrySet()) {
-            agm $$5x = $$4x.getKey();
-            agm $$6x = b.b($$5x);
-            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
-               List<String> $$3xx = a($$4x.getValue());
-               return hb.a($$6x, this.g, $$3x, $$3xx);
-            }, $$4));
+   private void c() {
+      if (!aa.aW) {
+         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.setProperty("eula", "false");
+            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (https://aka.ms/MinecraftEULA).");
+         } catch (Exception var6) {
+            a.warn("Failed to save {}", this.b, var6);
          }
-
-         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
-         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
-      });
-      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
-         Map<agm, CompletableFuture<hb<du>>> $$1x = (Map<agm, CompletableFuture<hb<du>>>)$$0x.getSecond();
-         Builder<agm, hb<du>> $$2x = ImmutableMap.builder();
-         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
-               if ($$3x != null) {
-                  a.error("Failed to load function {}", $$1xx, $$3x);
-               } else {
-                  $$2x.put($$1xx, $$2xxx);
-               }
-
-               return null;
-            }).join());
-         this.c = $$2x.build();
-         this.e = this.d.a((Map<agm, List<asa.a>>)$$0x.getFirst());
-      }, $$5);
-   }
-
-   private static List<String> a(apj $$0) {
-      try {
-         List var2;
-         try (BufferedReader $$1 = $$0.e()) {
-            var2 = $$1.lines().toList();
-         }
-
-         return var2;
-      } catch (IOException var6) {
-         throw new CompletionException(var6);
       }
    }
 }

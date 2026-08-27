@@ -1,18 +1,19 @@
-public record yb() implements wo<ya> {
-   public yb(ty $$0) {
-      this();
+import java.util.List;
+
+public record yb(List<hv> b) implements xo {
+   public static final agt a = new agt("debug/raids");
+
+   public yb(ue $$0) {
+      this($$0.a(ue::e));
    }
 
    @Override
-   public void a(ty $$0) {
-   }
-
-   public void a(ya $$0) {
-      $$0.a(this);
+   public void a(ue $$0) {
+      $$0.a(this.b, ue::a);
    }
 
    @Override
-   public tx c() {
-      return tx.b;
+   public agt a() {
+      return a;
    }
 }

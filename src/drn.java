@@ -1,79 +1,53 @@
 import com.mojang.serialization.Codec;
 
-public class drn extends dqa<dtb> {
-   public drn(Codec<dtb> $$0) {
+public class drn extends dqf {
+   public drn(Codec<dti> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dqc<dtb> $$0) {
-      csz $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      if (a($$1, $$2)) {
-         return false;
-      } else {
-         atw $$3 = $$0.d();
-         dtb $$4 = $$0.f();
-         int $$5 = $$4.a();
-         int $$6 = $$4.b();
-         int $$7 = $$4.c();
-         hx.a $$8 = new hx.a();
+   protected void a(csz $$0, auf $$1, hv $$2, int $$3, hv.a $$4, dti $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
 
-         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
-            $$8.g($$2).e(atq.a($$3, -$$5, $$5), atq.a($$3, -$$6, $$6), atq.a($$3, -$$5, $$5));
-            if (a($$1, $$8) && !a($$1, (hx)$$8)) {
-               int $$10 = atq.a($$3, 1, $$7);
-               if ($$3.a(6) == 0) {
-                  $$10 *= 2;
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  if (!$$0.a_($$4).i($$0, $$4)) {
+                     dip $$17 = $$5.b.a($$1, $$2);
+                     if ($$17.b(czv.e) && $$17.b(czv.c) && $$17.b(czv.b) && $$17.b(czv.d) && $$17.b(czv.f)) {
+                        $$17 = $$17.a(czv.f, Boolean.valueOf($$6 >= $$3 - 1))
+                           .a(czv.e, Boolean.valueOf($$9 < -$$8))
+                           .a(czv.c, Boolean.valueOf($$9 > $$8))
+                           .a(czv.b, Boolean.valueOf($$10 < -$$8))
+                           .a(czv.d, Boolean.valueOf($$10 > $$8));
+                     }
+
+                     this.a($$0, $$4, $$17);
+                  }
                }
-
-               if ($$3.a(5) == 0) {
-                  $$10 = 1;
-               }
-
-               int $$11 = 17;
-               int $$12 = 25;
-               a($$1, $$3, $$8, $$10, 17, 25);
             }
          }
-
-         return true;
       }
    }
 
-   private static boolean a(csg $$0, hx.a $$1) {
-      do {
-         $$1.e(0, -1, 0);
-         if ($$0.r($$1)) {
-            return false;
-         }
-      } while ($$0.a_($$1).i());
-
-      $$1.e(0, 1, 0);
-      return true;
-   }
-
-   public static void a(csg $$0, atw $$1, hx.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 1; $$6 <= $$3; $$6++) {
-         if ($$0.t($$2)) {
-            if ($$6 == $$3 || !$$0.t($$2.c())) {
-               $$0.a($$2, cvh.oB.o().a(cyu.e, Integer.valueOf(atq.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, cvh.oC.o(), 2);
-         }
-
-         $$2.c(ib.b);
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
       }
-   }
 
-   private static boolean a(csg $$0, hx $$1) {
-      if (!$$0.t($$1)) {
-         return true;
-      } else {
-         dhn $$2 = $$0.a_($$1.d());
-         return !$$2.a(cvh.dV) && !$$2.a(cvh.on) && !$$2.a(cvh.op);
-      }
+      return $$4;
    }
 }

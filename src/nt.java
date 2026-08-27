@@ -1,8 +1,139 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.concurrent.CompletableFuture;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface nt {
+public class nt extends og<ctx> {
+   public nt(kk $$0, CompletableFuture<ih.b> $$1) {
+      super($$0, kc.as, $$1);
+   }
+
+   @Override
+   protected void a(ih.b $$0) {
+      this.b(arq.a).a(cue.X).a(cue.V).a(cue.T).a(cue.R);
+      this.b(arq.b).b(arq.a).a(cue.W).a(cue.S).a(cue.U).a(cue.Q).a(cue.P);
+      this.b(arq.c).a(cue.M).a(cue.N);
+      this.b(arq.d).a(cue.K).a(cue.L);
+      this.b(arq.e).a(cue.D).a(cue.H).a(cue.I).a(cue.J).a(cue.G).a(cue.E);
+      this.b(arq.f).a(cue.A).a(cue.B).a(cue.C);
+      this.b(arq.g).a(cue.t).a(cue.v).a(cue.u);
+      this.b(arq.h).a(cue.p).a(cue.q).a(cue.n).a(cue.o);
+      this.b(arq.i).a(cue.z).a(cue.x).a(cue.y);
+      this.b(arq.j).a(cue.i).a(cue.j).a(cue.k).a(cue.m).a(cue.l).a(cue.F);
+      this.b(arq.k).a(cue.r).a(cue.s).a(cue.w);
+      og.b<ctx> $$1 = this.b(arq.m);
+      cul.a.a.a().forEach($$1::a);
+      og.b<ctx> $$2 = this.b(arq.l);
+      cul.a.b.a().forEach($$2::a);
+      this.b(arq.n).a(cue.ah).a(cue.ai).a(cue.aj).a(cue.ak).a(cue.al);
+      this.b(arq.p).b(arq.c);
+      this.b(arq.q).a(cue.f);
+      this.b(arq.r).a(cue.q).a(cue.d).a(cue.G);
+      this.b(arq.s).a(cue.z).a(cue.x);
+      this.b(arq.t)
+         .b(arq.b)
+         .b(arq.d)
+         .b(arq.c)
+         .b(arq.e)
+         .b(arq.g)
+         .b(arq.h)
+         .b(arq.i)
+         .b(arq.j)
+         .a(cue.O)
+         .a(cue.Y)
+         .a(cue.e)
+         .a(cue.w)
+         .a(cue.f)
+         .a(cue.r)
+         .a(cue.d)
+         .a(cue.b)
+         .a(cue.c)
+         .a(cue.g)
+         .a(cue.h)
+         .a(cue.s)
+         .a(cue.Z)
+         .a(cue.aa);
+      this.b(arq.u).b(arq.f);
+      this.b(arq.Y).a(cue.ab);
+      this.b(arq.v).b(arq.a);
+      this.b(arq.X).b(arq.b).b(arq.d);
+      this.b(arq.w).a(cue.W).a(cue.U).a(cue.S).a(cue.X).a(cue.V).a(cue.T);
+      this.b(arq.x).a(cue.Q).a(cue.P).a(cue.R);
+      this.b(arq.y).a(cue.f).a(cue.b).a(cue.r).a(cue.d).a(cue.p).b(arq.e).a(cue.F);
+      this.b(arq.z).a(cue.f);
+      this.b(arq.A).b(arq.i);
+      this.b(arq.B).b(arq.b);
+      this.b(arq.C).a(cue.g).a(cue.h);
+      this.b(arq.D).b(arq.f).b(arq.g).a(cue.s).a(cue.w).a(cue.O).b(arq.e);
+      this.b(arq.E).b(arq.c).b(arq.d).b(arq.h).b(arq.j).a(cue.Y).a(cue.e).a(cue.Z).a(cue.aa).a(cue.r).a(cue.d).a(cue.b).a(cue.c);
+      this.b(arq.F).b(arq.c);
+      this.b(arq.G).b(arq.b);
+      this.b(arq.J).a(cue.g);
+      this.b(arq.K).a(cue.f);
+      this.b(arq.L).a(cue.b).a(cue.D);
+      this.b(arq.M).a(cue.r);
+      this.b(arq.N).a(cue.d);
+      this.b(arq.O).a(cue.p);
+      this.b(arq.P).a(cue.p).a(cue.q).a(cue.n).a(cue.o).a(cue.m).a(cue.x);
+      this.b(arq.Q).a(cue.l);
+      this.b(arq.o)
+         .a(cue.b)
+         .a(cue.c)
+         .a(cue.d)
+         .a(cue.e)
+         .a(cue.f)
+         .a(cue.i)
+         .a(cue.j)
+         .a(cue.k)
+         .a(cue.l)
+         .a(cue.m)
+         .a(cue.n)
+         .a(cue.o)
+         .a(cue.p)
+         .a(cue.q)
+         .a(cue.r)
+         .a(cue.s)
+         .a(cue.t)
+         .a(cue.u)
+         .a(cue.v)
+         .a(cue.w)
+         .a(cue.x)
+         .a(cue.y)
+         .a(cue.z)
+         .a(cue.A)
+         .a(cue.B)
+         .a(cue.C)
+         .a(cue.D)
+         .a(cue.F)
+         .a(cue.G)
+         .a(cue.H)
+         .a(cue.I)
+         .a(cue.J)
+         .a(cue.Y)
+         .a(cue.Z)
+         .a(cue.aa);
+      this.b(arq.H).b(arq.l);
+      this.b(arq.R).b(arq.m);
+      this.b(arq.S).a(cue.af);
+      this.b(arq.T).a(cue.ae).a(cue.ac).a(cue.af).a(cue.ad);
+      this.b(arq.U).a(cue.ab);
+      this.b(arq.V).b(arq.m);
+      this.b(arq.W).a(cue.ai).a(cue.aj);
+      this.b(arq.ac).a(cue.P);
+      this.b(arq.Z).b(arq.b).b(arq.d);
+      this.b(arq.aa).a(cue.g).a(cue.h);
+      this.b(arq.ab).b(arq.b).b(arq.d).a(cue.g).a(cue.h);
+      this.b(arq.af).a(cue.Y);
+      this.b(arq.ag).a(cue.Y);
+      this.b(arq.ah).a(cue.a);
+      this.b(arq.ai).a(cue.d).a(cue.e).a(cue.H).a(cue.I).a(cue.G).a(cue.W).a(cue.X).a(cue.F).a(cue.ab).a(cue.L).a(cue.q).a(cue.N).b(arq.n);
+      this.b(arq.aj).a(cue.f).a(cue.P).b(arq.i).b(arq.k).b(arq.m).b(arq.f).a(cue.h);
+      this.b(arq.ak).a(cue.f);
+      this.b(arq.al).a(cue.d).a(cue.e).a(cue.W).a(cue.q).a(cue.L).a(cue.N).a(cue.H).a(cue.I).a(cue.G).a(cue.F);
+      this.b(arq.am).b(arq.d);
+      this.b(arq.an).a(cue.aa);
+      this.b(arq.ao).a(cue.W).a(cue.X);
+      this.b(arq.ap).b(arq.d);
+      this.b(arq.aq).a(cue.g).a(cue.h);
+      this.b(arq.ar).a(cue.d).a(cue.e).a(cue.W).a(cue.q).a(cue.L).a(cue.N).a(cue.H).a(cue.I).a(cue.G).a(cue.F);
+      this.b(arq.ad).a(cue.z).a(cue.Y).a(cue.h).a(cue.G).a(cue.H).a(cue.I).a(cue.g).a(cue.x);
+      this.b(arq.ae).a(cue.A).a(cue.ag).a(cue.ae).a(cue.f).a(cue.B).a(cue.ac).a(cue.r).a(cue.s).a(cue.af).a(cue.ad).a(cue.w).a(cue.C);
+   }
 }

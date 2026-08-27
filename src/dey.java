@@ -1,162 +1,78 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dey extends dfi implements bjf {
-   public static final int a = 6;
-   public static final String b = "Patterns";
-   public static final String c = "Pattern";
-   public static final String d = "Color";
-   @Nullable
-   private uv e;
-   private ckc f;
-   @Nullable
-   private sj g;
-   @Nullable
-   private List<Pair<ig<dez>, ckc>> h;
+public class dey extends cuv {
+   public static final MapCodec<dey> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dda.a.b.fieldOf("kind").forGetter(cuv::b), u()).apply($$0, dey::new));
+   public static final djj d = czu.aE;
+   private static final Map<ia, elu> b = Maps.newEnumMap(
+      ImmutableMap.of(
+         ia.c,
+         cvz.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         ia.d,
+         cvz.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
+         ia.f,
+         cvz.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         ia.e,
+         cvz.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+      )
+   );
 
-   public dey(hx $$0, dhn $$1) {
-      super(dfk.t, $$0, $$1);
-      this.f = ((ctw)$$1.b()).b();
+   @Override
+   public MapCodec<? extends dey> a() {
+      return c;
    }
 
-   public dey(hx $$0, dhn $$1, ckc $$2) {
-      this($$0, $$1);
-      this.f = $$2;
+   protected dey(dda.a $$0, dio.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(d, ia.c));
    }
 
-   @Nullable
-   public static sj a(clo $$0) {
-      sj $$1 = null;
-      sd $$2 = cjh.a($$0);
-      if ($$2 != null && $$2.b("Patterns", 9)) {
-         $$1 = $$2.c("Patterns", 10).e();
+   @Override
+   public String h() {
+      return this.k().a();
+   }
+
+   @Override
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return b.get($$0.c(d));
+   }
+
+   @Override
+   public dip a(coq $$0) {
+      dip $$1 = super.a($$0);
+      cse $$2 = $$0.q();
+      hv $$3 = $$0.a();
+      ia[] $$4 = $$0.f();
+
+      for (ia $$5 : $$4) {
+         if ($$5.o().d()) {
+            ia $$6 = $$5.g();
+            $$1 = $$1.a(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
+            }
+         }
       }
 
-      return $$1;
-   }
-
-   public void a(clo $$0, ckc $$1) {
-      this.f = $$1;
-      this.b($$0);
-   }
-
-   public void b(clo $$0) {
-      this.g = a($$0);
-      this.h = null;
-      this.e = $$0.A() ? $$0.y() : null;
+      return null;
    }
 
    @Override
-   public uv ad() {
-      return (uv)(this.e != null ? this.e : uv.c("block.minecraft.banner"));
-   }
-
-   @Nullable
-   @Override
-   public uv af() {
-      return this.e;
-   }
-
-   public void a(uv $$0) {
-      this.e = $$0;
+   public dip a(dip $$0, dcl $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   protected void b(sd $$0) {
-      super.b($$0);
-      if (this.g != null) {
-         $$0.a("Patterns", this.g);
-      }
-
-      if (this.e != null) {
-         $$0.a("CustomName", uv.a.a(this.e));
-      }
+   public dip a(dip $$0, dav $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
    @Override
-   public void a(sd $$0) {
+   protected void a(diq.a<cvz, dip> $$0) {
       super.a($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.e = uv.a.a($$0.l("CustomName"));
-      }
-
-      this.g = $$0.c("Patterns", 10);
-      this.h = null;
-   }
-
-   public yo a() {
-      return yo.a(this);
-   }
-
-   @Override
-   public sd ay_() {
-      return this.q();
-   }
-
-   public static int c(clo $$0) {
-      sd $$1 = cjh.a($$0);
-      return $$1 != null && $$1.e("Patterns") ? $$1.c("Patterns", 10).size() : 0;
-   }
-
-   public List<Pair<ig<dez>, ckc>> c() {
-      if (this.h == null) {
-         this.h = a(this.f, this.g);
-      }
-
-      return this.h;
-   }
-
-   public static List<Pair<ig<dez>, ckc>> a(ckc $$0, @Nullable sj $$1) {
-      List<Pair<ig<dez>, ckc>> $$2 = Lists.newArrayList();
-      $$2.add(Pair.of(kc.an.f(dfa.a), $$0));
-      if ($$1 != null) {
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            sd $$4 = $$1.a($$3);
-            ig<dez> $$5 = dez.a($$4.l("Pattern"));
-            if ($$5 != null) {
-               int $$6 = $$4.h("Color");
-               $$2.add(Pair.of($$5, ckc.a($$6)));
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   public static void d(clo $$0) {
-      sd $$1 = cjh.a($$0);
-      if ($$1 != null && $$1.b("Patterns", 9)) {
-         sj $$2 = $$1.c("Patterns", 10);
-         if (!$$2.isEmpty()) {
-            $$2.c($$2.size() - 1);
-            if ($$2.isEmpty()) {
-               $$1.r("Patterns");
-            }
-         }
-
-         $$1.r("id");
-         cjh.a($$0, dfk.t, $$1);
-      }
-   }
-
-   public clo f() {
-      clo $$0 = new clo(cuk.a(this.f));
-      if (this.g != null && !this.g.isEmpty()) {
-         sd $$1 = new sd();
-         $$1.a("Patterns", this.g.e());
-         cjh.a($$0, this.v(), $$1);
-      }
-
-      if (this.e != null) {
-         $$0.a(this.e);
-      }
-
-      return $$0;
-   }
-
-   public ckc g() {
-      return this.f;
+      $$0.a(d);
    }
 }

@@ -1,39 +1,61 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
-public class cfm {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final cfm c = a("empty").a(0, cfk.b).a();
-   public static final cfm d = a("simple").a(5000, cfk.c).a(11000, cfk.e).a();
-   public static final cfm e = a("villager_baby").a(10, cfk.b).a(3000, cfk.d).a(6000, cfk.b).a(10000, cfk.d).a(12000, cfk.e).a();
-   public static final cfm f = a("villager_default").a(10, cfk.b).a(2000, cfk.c).a(9000, cfk.f).a(11000, cfk.b).a(12000, cfk.e).a();
-   private final Map<cfk, cfo> g = Maps.newHashMap();
-
-   protected static cfn a(String $$0) {
-      cfm $$1 = is.a(kc.E, $$0, new cfm());
-      return new cfn($$1);
+public class cfm extends cfd {
+   public cfm(blj<? extends cfm> $$0, csy $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(cfk $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new cfo());
+   public cfm(csy $$0, blv $$1, double $$2, double $$3, double $$4) {
+      super(blj.aN, $$1, $$2, $$3, $$4, $$0);
+   }
+
+   public cfm(csy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super(blj.aN, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
+   }
+
+   @Override
+   protected void a(eky $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         blf $$1 = $$0.a();
+         blf $$2 = this.w();
+         int $$3 = $$1.az();
+         $$1.g(5);
+         if (!$$1.a(this.dN().a((cfd)this, $$2), 5.0F)) {
+            $$1.h($$3);
+         } else if ($$2 instanceof blv) {
+            this.a((blv)$$2, $$1);
+         }
       }
    }
 
-   protected cfo b(cfk $$0) {
-      return this.g.get($$0);
+   @Override
+   protected void a(ekx $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         blf $$1 = this.w();
+         if (!($$1 instanceof blx) || this.dM().Y().b(csu.c)) {
+            hv $$2 = $$0.a().a($$0.b());
+            if (this.dM().t($$2)) {
+               this.dM().b($$2, cvm.a(this.dM(), $$2));
+            }
+         }
+      }
    }
 
-   protected List<cfo> c(cfk $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   @Override
+   protected void a(ekz $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.am();
+      }
    }
 
-   public cfk a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cfk.b);
+   @Override
+   public boolean bt() {
+      return false;
+   }
+
+   @Override
+   public boolean a(bkd $$0, float $$1) {
+      return false;
    }
 }

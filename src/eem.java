@@ -1,210 +1,143 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import javax.annotation.Nullable;
 
-public class eem implements eex {
-   private final eey a;
-   private final eex b;
+public class eem {
+   public final int a;
+   public final int b;
+   public final int c;
+   private final int m;
+   public int d = -1;
+   public float e;
+   public float f;
+   public float g;
+   @Nullable
+   public eem h;
+   public boolean i;
+   public float j;
+   public float k;
+   public eek l = eek.a;
 
-   public eem(eey $$0, eex $$1) {
+   public eem(int $$0, int $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.m = b($$0, $$1, $$2);
+   }
+
+   public eem a(int $$0, int $$1, int $$2) {
+      eem $$3 = new eem($$0, $$1, $$2);
+      $$3.d = this.d;
+      $$3.e = this.e;
+      $$3.f = this.f;
+      $$3.g = this.g;
+      $$3.h = this.h;
+      $$3.i = this.i;
+      $$3.j = this.j;
+      $$3.k = this.k;
+      $$3.l = this.l;
+      return $$3;
+   }
+
+   public static int b(int $$0, int $$1, int $$2) {
+      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
+   }
+
+   public float a(eem $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return aty.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   }
+
+   public float b(eem $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.c - this.c);
+      return aty.c($$1 * $$1 + $$2 * $$2);
+   }
+
+   public float a(hv $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return aty.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   }
+
+   public float c(eem $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public float b(hv $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public float d(eem $$0) {
+      float $$1 = (float)Math.abs($$0.a - this.a);
+      float $$2 = (float)Math.abs($$0.b - this.b);
+      float $$3 = (float)Math.abs($$0.c - this.c);
+      return $$1 + $$2 + $$3;
+   }
+
+   public float c(hv $$0) {
+      float $$1 = (float)Math.abs($$0.u() - this.a);
+      float $$2 = (float)Math.abs($$0.v() - this.b);
+      float $$3 = (float)Math.abs($$0.w() - this.c);
+      return $$1 + $$2 + $$3;
+   }
+
+   public hv a() {
+      return new hv(this.a, this.b, this.c);
+   }
+
+   public elb b() {
+      return new elb((double)this.a, (double)this.b, (double)this.c);
    }
 
    @Override
-   public int a() {
-      return this.b.a();
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof eem $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
    }
 
    @Override
-   public int b() {
-      return this.b.b();
+   public int hashCode() {
+      return this.m;
+   }
+
+   public boolean c() {
+      return this.d >= 0;
    }
 
    @Override
-   public int c() {
-      return this.b.c();
+   public String toString() {
+      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
    }
 
-   @Override
-   public float d() {
-      return this.b.d();
+   public void a(ue $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
+      $$0.a(this.j);
+      $$0.a(this.k);
+      $$0.a(this.i);
+      $$0.a(this.l);
+      $$0.a(this.g);
    }
 
-   @Override
-   public long e() {
-      return this.b.e();
+   public static eem b(ue $$0) {
+      eem $$1 = new eem($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 
-   @Override
-   public long f() {
-      return this.b.f();
-   }
-
-   @Override
-   public String g() {
-      return this.a.g();
-   }
-
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public void a(int $$0) {
-   }
-
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
-
-   @Override
-   public int j() {
-      return this.b.j();
-   }
-
-   @Override
-   public boolean k() {
-      return this.b.k();
-   }
-
-   @Override
-   public int l() {
-      return this.b.l();
-   }
-
-   @Override
-   public csc m() {
-      return this.a.m();
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public void a(float $$0) {
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(hx $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void f(int $$0) {
-   }
-
-   @Override
-   public void a(csc $$0) {
-   }
-
-   @Override
-   public boolean n() {
-      return this.a.n();
-   }
-
-   @Override
-   public boolean o() {
-      return this.a.o();
-   }
-
-   @Override
-   public boolean p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public csb q() {
-      return this.a.q();
-   }
-
-   @Override
-   public dje.c r() {
-      return this.b.r();
-   }
-
-   @Override
-   public void a(dje.c $$0) {
-   }
-
-   @Override
-   public biy s() {
-      return this.a.s();
-   }
-
-   @Override
-   public boolean t() {
-      return this.a.t();
-   }
-
-   @Override
-   public ejm<MinecraftServer> u() {
-      return this.b.u();
-   }
-
-   @Override
-   public int v() {
-      return 0;
-   }
-
-   @Override
-   public void g(int $$0) {
-   }
-
-   @Override
-   public int w() {
-      return 0;
-   }
-
-   @Override
-   public void h(int $$0) {
-   }
-
-   @Override
-   public UUID x() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, csh $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+   protected static void a(ue $$0, eem $$1) {
+      $$1.j = $$0.readFloat();
+      $$1.k = $$0.readFloat();
+      $$1.i = $$0.readBoolean();
+      $$1.l = $$0.b(eek.class);
+      $$1.g = $$0.readFloat();
    }
 }

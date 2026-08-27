@@ -1,63 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class egi extends ego {
-   public static final Codec<egi> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(eix.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, egi::new)
-   );
-   private final eiw b;
-   private final boolean c;
+@FunctionalInterface
+public interface egi {
+   @Nullable
+   <T> T getElement(egg<T> var1);
 
-   egi(List<eib> $$0, eiw $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   @Nullable
+   default <T> T getElement(egj<T> $$0, agt $$1) {
+      return this.getElement(new egg<>($$0, $$1));
    }
 
-   @Override
-   public egq b() {
-      return egr.d;
+   default <T> Optional<T> getElementOptional(egg<T> $$0) {
+      return Optional.ofNullable(this.getElement($$0));
    }
 
-   @Override
-   public Set<ehk<?>> a() {
-      return this.b.a();
+   default <T> Optional<T> getElementOptional(egj<T> $$0, agt $$1) {
+      return this.getElementOptional(new egg<>($$0, $$1));
    }
 
-   @Override
-   public clo a(clo $$0, efc $$1) {
-      atw $$2 = $$1.b();
-      return cqb.a($$2, $$0, this.b.a($$1), this.c);
-   }
-
-   public static egi.a a(eiw $$0) {
-      return new egi.a($$0);
-   }
-
-   public static class a extends ego.a<egi.a> {
-      private final eiw a;
-      private boolean b;
-
-      public a(eiw $$0) {
-         this.a = $$0;
-      }
-
-      protected egi.a a() {
-         return this;
-      }
-
-      public egi.a e() {
-         this.b = true;
-         return this;
-      }
-
-      @Override
-      public egp b() {
-         return new egi(this.g(), this.a, this.b);
-      }
+   default egm getLootTable(agt $$0) {
+      return this.getElementOptional(egj.c, $$0).orElse(egm.a);
    }
 }

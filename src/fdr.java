@@ -1,25 +1,50 @@
-import org.joml.Matrix4f;
+import java.util.List;
 
-public interface fdr {
-   static fdr a(atc $$0) {
-      return new fdq($$0);
+public class fdr {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<agt> e = List.of();
+   private int f;
+   private int g;
+
+   public fdr(int $$0) {
+      this.d = $$0;
    }
 
-   static fdr a(ciu $$0) {
-      if ($$0 instanceof cit) {
-         return new fdp((cit)$$0);
-      } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
+   public void a(List<agt> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
+      }
+
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
       }
    }
 
-   int a();
+   public void a(chk $$0, evw $$1, float $$2, int $$3, int $$4) {
+      cjf $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.h()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+         }
 
-   int a(eur var1);
-
-   default void a(eur $$0, int $$1, int $$2, Matrix4f $$3, fqz.a $$4) {
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      }
    }
 
-   default void a(eur $$0, int $$1, int $$2, eut $$3) {
+   private void a(cjf $$0, agt $$1, float $$2, evw $$3, int $$4, int $$5) {
+      gdo $$6 = euk.N().a(gdn.e).apply($$1);
+      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
+   }
+
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

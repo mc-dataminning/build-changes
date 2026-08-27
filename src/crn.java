@@ -1,25 +1,20 @@
-import java.util.function.Predicate;
-
-public class crn {
-   private final ejz a;
-   private final ejz b;
-   private final Predicate<dhn> c;
-
-   public crn(ejz $$0, ejz $$1, Predicate<dhn> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class crn extends cqs {
+   public crn(cqs.a $$0, blk... $$1) {
+      super($$0, cqt.i, $$1);
    }
 
-   public ejz a() {
-      return this.b;
+   @Override
+   public int a(int $$0) {
+      return 5 + $$0 * 7;
    }
 
-   public ejz b() {
-      return this.a;
+   @Override
+   public int b(int $$0) {
+      return 50;
    }
 
-   public Predicate<dhn> c() {
-      return this.c;
+   @Override
+   public int a() {
+      return 3;
    }
 }

@@ -1,32 +1,95 @@
-public class aae implements wo<yh> {
-   private final int a;
-   private final agm b;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public aae(int $$0, cov<?> $$1) {
+public class aae implements wu<yo> {
+   private final int a;
+   private final byte b;
+   private final boolean c;
+   @Nullable
+   private final List<efg> d;
+   @Nullable
+   private final efj.b e;
+
+   public aae(int $$0, byte $$1, boolean $$2, @Nullable Collection<efg> $$3, @Nullable efj.b $$4) {
       this.a = $$0;
-      this.b = $$1.a();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3 != null ? Lists.newArrayList($$3) : null;
+      this.e = $$4;
    }
 
-   public aae(ty $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.t();
+   public aae(ue $$0) {
+      this.a = $$0.n();
+      this.b = $$0.readByte();
+      this.c = $$0.readBoolean();
+      this.d = $$0.c($$0x -> $$0x.a((ue.a)($$0xx -> {
+            efg.a $$1x = $$0xx.b(efg.a.class);
+            byte $$2x = $$0xx.readByte();
+            byte $$3x = $$0xx.readByte();
+            byte $$4x = (byte)($$0xx.readByte() & 15);
+            vb $$5x = $$0xx.c(ue::m);
+            return new efg($$1x, $$2x, $$3x, $$4x, $$5x);
+         })));
+      int $$1 = $$0.readUnsignedByte();
+      if ($$1 > 0) {
+         int $$2 = $$0.readUnsignedByte();
+         int $$3 = $$0.readUnsignedByte();
+         int $$4 = $$0.readUnsignedByte();
+         byte[] $$5 = $$0.b();
+         this.e = new efj.b($$3, $$4, $$1, $$2, $$5);
+      } else {
+         this.e = null;
+      }
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.k(this.a);
-      $$0.a(this.b);
+   public void a(ue $$0) {
+      $$0.c(this.a);
+      $$0.k(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, ($$0x, $$1) -> $$0x.a($$1, ($$0xx, $$1x) -> {
+            $$0xx.a($$1x.c());
+            $$0xx.k($$1x.d());
+            $$0xx.k($$1x.e());
+            $$0xx.k($$1x.f() & 15);
+            $$0xx.a($$1x.g(), ue::a);
+         }));
+      if (this.e != null) {
+         $$0.k(this.e.c);
+         $$0.k(this.e.d);
+         $$0.k(this.e.a);
+         $$0.k(this.e.b);
+         $$0.a(this.e.e);
+      } else {
+         $$0.k(0);
+      }
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public agm a() {
+   public int a() {
+      return this.a;
+   }
+
+   public void a(efj $$0) {
+      if (this.d != null) {
+         $$0.a(this.d);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0);
+      }
+   }
+
+   public byte d() {
       return this.b;
    }
 
-   public int d() {
-      return this.a;
+   public boolean e() {
+      return this.c;
    }
 }

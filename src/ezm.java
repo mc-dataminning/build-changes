@@ -1,47 +1,83 @@
-public class ezm extends faz {
-   private static final int a = 90;
-   private final uv b;
-   private evx c = evx.a;
-   private final Runnable k;
-   private final uv l;
-   private final boolean m;
+public abstract class ezm implements ezs {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
-   public ezm(Runnable $$0, uv $$1, uv $$2) {
-      this($$0, $$1, $$2, uu.k, true);
-   }
-
-   public ezm(Runnable $$0, uv $$1, uv $$2, uv $$3, boolean $$4) {
-      super($$1);
-      this.k = $$0;
-      this.b = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public ezm(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
    }
 
    @Override
-   public uv h() {
-      return uu.a(super.h(), this.b);
+   public void f(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.p() + ($$0 - this.p());
+         $$1.f($$2);
+      });
+      this.c = $$0;
    }
 
    @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.c = evx.a(this.i, this.b, this.g - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = atq.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
-      int $$2 = 150;
-      this.d(eve.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
+   public void g(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.r() + ($$0 - this.r());
+         $$1.g($$2);
+      });
+      this.d = $$0;
    }
 
    @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
-      this.c.a($$0, this.g / 2, 90);
+   public int p() {
+      return this.c;
    }
 
    @Override
-   public boolean aF_() {
-      return this.m;
+   public int r() {
+      return this.d;
+   }
+
+   @Override
+   public int k() {
+      return this.a;
+   }
+
+   @Override
+   public int i() {
+      return this.b;
+   }
+
+   protected abstract static class a {
+      public final ezt a;
+      public final ezu.a b;
+
+      protected a(ezt $$0, ezu $$1) {
+         this.a = $$0;
+         this.b = $$1.h();
+      }
+
+      public int a() {
+         return this.a.i() + this.b.b + this.b.d;
+      }
+
+      public int b() {
+         return this.a.k() + this.b.a + this.b.c;
+      }
+
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.k() - this.b.c);
+         int $$4 = (int)aty.i(this.b.e, $$2, $$3);
+         this.a.f($$4 + $$0);
+      }
+
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.i() - this.b.d);
+         int $$4 = Math.round(aty.i(this.b.f, $$2, $$3));
+         this.a.g($$4 + $$0);
+      }
    }
 }

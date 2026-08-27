@@ -1,108 +1,11 @@
-public final class ars {
-   public static final arz<clj> a = a("wool");
-   public static final arz<clj> b = a("planks");
-   public static final arz<clj> c = a("stone_bricks");
-   public static final arz<clj> d = a("wooden_buttons");
-   public static final arz<clj> e = a("stone_buttons");
-   public static final arz<clj> f = a("buttons");
-   public static final arz<clj> g = a("wool_carpets");
-   public static final arz<clj> h = a("wooden_doors");
-   public static final arz<clj> i = a("wooden_stairs");
-   public static final arz<clj> j = a("wooden_slabs");
-   public static final arz<clj> k = a("wooden_fences");
-   public static final arz<clj> l = a("fence_gates");
-   public static final arz<clj> m = a("wooden_pressure_plates");
-   public static final arz<clj> n = a("wooden_trapdoors");
-   public static final arz<clj> o = a("doors");
-   public static final arz<clj> p = a("saplings");
-   public static final arz<clj> q = a("logs_that_burn");
-   public static final arz<clj> r = a("logs");
-   public static final arz<clj> s = a("dark_oak_logs");
-   public static final arz<clj> t = a("oak_logs");
-   public static final arz<clj> u = a("birch_logs");
-   public static final arz<clj> v = a("acacia_logs");
-   public static final arz<clj> w = a("cherry_logs");
-   public static final arz<clj> x = a("jungle_logs");
-   public static final arz<clj> y = a("spruce_logs");
-   public static final arz<clj> z = a("mangrove_logs");
-   public static final arz<clj> A = a("crimson_stems");
-   public static final arz<clj> B = a("warped_stems");
-   public static final arz<clj> C = a("bamboo_blocks");
-   public static final arz<clj> D = a("wart_blocks");
-   public static final arz<clj> E = a("banners");
-   public static final arz<clj> F = a("sand");
-   public static final arz<clj> G = a("smelts_to_glass");
-   public static final arz<clj> H = a("stairs");
-   public static final arz<clj> I = a("slabs");
-   public static final arz<clj> J = a("walls");
-   public static final arz<clj> K = a("anvil");
-   public static final arz<clj> L = a("rails");
-   public static final arz<clj> M = a("leaves");
-   public static final arz<clj> N = a("trapdoors");
-   public static final arz<clj> O = a("small_flowers");
-   public static final arz<clj> P = a("beds");
-   public static final arz<clj> Q = a("fences");
-   public static final arz<clj> R = a("tall_flowers");
-   public static final arz<clj> S = a("flowers");
-   public static final arz<clj> T = a("piglin_repellents");
-   public static final arz<clj> U = a("piglin_loved");
-   public static final arz<clj> V = a("ignored_by_piglin_babies");
-   public static final arz<clj> W = a("piglin_food");
-   public static final arz<clj> X = a("fox_food");
-   public static final arz<clj> Y = a("gold_ores");
-   public static final arz<clj> Z = a("iron_ores");
-   public static final arz<clj> aa = a("diamond_ores");
-   public static final arz<clj> ab = a("redstone_ores");
-   public static final arz<clj> ac = a("lapis_ores");
-   public static final arz<clj> ad = a("coal_ores");
-   public static final arz<clj> ae = a("emerald_ores");
-   public static final arz<clj> af = a("copper_ores");
-   public static final arz<clj> ag = a("non_flammable_wood");
-   public static final arz<clj> ah = a("soul_fire_base_blocks");
-   public static final arz<clj> ai = a("candles");
-   public static final arz<clj> aj = a("dirt");
-   public static final arz<clj> ak = a("terracotta");
-   public static final arz<clj> al = a("completes_find_tree_tutorial");
-   public static final arz<clj> am = a("boats");
-   public static final arz<clj> an = a("chest_boats");
-   public static final arz<clj> ao = a("fishes");
-   public static final arz<clj> ap = a("signs");
-   public static final arz<clj> aq = a("music_discs");
-   public static final arz<clj> ar = a("creeper_drop_music_discs");
-   public static final arz<clj> as = a("coals");
-   public static final arz<clj> at = a("arrows");
-   public static final arz<clj> au = a("lectern_books");
-   public static final arz<clj> av = a("bookshelf_books");
-   public static final arz<clj> aw = a("beacon_payment_items");
-   public static final arz<clj> ax = a("stone_tool_materials");
-   public static final arz<clj> ay = a("stone_crafting_materials");
-   public static final arz<clj> az = a("freeze_immune_wearables");
-   public static final arz<clj> aA = a("axolotl_tempt_items");
-   public static final arz<clj> aB = a("dampens_vibrations");
-   public static final arz<clj> aC = a("cluster_max_harvestables");
-   public static final arz<clj> aD = a("compasses");
-   public static final arz<clj> aE = a("hanging_signs");
-   public static final arz<clj> aF = a("creeper_igniters");
-   public static final arz<clj> aG = a("noteblock_top_instruments");
-   public static final arz<clj> aH = a("trimmable_armor");
-   public static final arz<clj> aI = a("trim_materials");
-   public static final arz<clj> aJ = a("trim_templates");
-   public static final arz<clj> aK = a("sniffer_food");
-   public static final arz<clj> aL = a("decorated_pot_sherds");
-   public static final arz<clj> aM = a("decorated_pot_ingredients");
-   public static final arz<clj> aN = a("swords");
-   public static final arz<clj> aO = a("axes");
-   public static final arz<clj> aP = a("hoes");
-   public static final arz<clj> aQ = a("pickaxes");
-   public static final arz<clj> aR = a("shovels");
-   public static final arz<clj> aS = a("tools");
-   public static final arz<clj> aT = a("breaks_decorated_pots");
-   public static final arz<clj> aU = a("villager_plantable_seeds");
+public class ars {
+   public static final asg<bxm> a = a("default_spawns");
+   public static final asg<bxm> b = a("full_moon_spawns");
 
    private ars() {
    }
 
-   private static arz<clj> a(String $$0) {
-      return arz.a(kd.E, new agm($$0));
+   private static asg<bxm> a(String $$0) {
+      return asg.a(kc.l, new agt($$0));
    }
 }

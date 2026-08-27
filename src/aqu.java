@@ -1,59 +1,58 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class aqu {
-   public static final Codec<aqu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(agm.a.fieldOf("sound_id").forGetter(aqu::a), Codec.FLOAT.optionalFieldOf("range").forGetter(aqu::b)).apply($$0, aqu::a)
-   );
-   public static final Codec<ig<aqu>> b = agi.a(kd.ae, a);
-   private static final float c = 16.0F;
-   private final agm d;
-   private final float e;
-   private final boolean f;
+public abstract class aqu implements Runnable {
+   private static final Logger d = LogUtils.getLogger();
+   private static final AtomicInteger e = new AtomicInteger(0);
+   private static final int f = 5;
+   protected volatile boolean a;
+   protected final String b;
+   @Nullable
+   protected Thread c;
 
-   private static aqu a(agm $$0, Optional<Float> $$1) {
-      return $$1.<aqu>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   protected aqu(String $$0) {
+      this.b = $$0;
    }
 
-   public static aqu a(agm $$0) {
-      return new aqu($$0, 16.0F, false);
-   }
-
-   public static aqu a(agm $$0, float $$1) {
-      return new aqu($$0, $$1, true);
-   }
-
-   private aqu(agm $$0, float $$1, boolean $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public agm a() {
-      return this.d;
-   }
-
-   public float a(float $$0) {
-      if (this.f) {
-         return this.e;
+   public synchronized boolean a() {
+      if (this.a) {
+         return true;
       } else {
-         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+         this.a = true;
+         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
+         this.c.setUncaughtExceptionHandler(new s(d));
+         this.c.start();
+         d.info("Thread {} started", this.b);
+         return true;
       }
    }
 
-   private Optional<Float> b() {
-      return this.f ? Optional.of(this.e) : Optional.empty();
+   public synchronized void b() {
+      this.a = false;
+      if (null != this.c) {
+         int $$0 = 0;
+
+         while (this.c.isAlive()) {
+            try {
+               this.c.join(1000L);
+               if (++$$0 >= 5) {
+                  d.warn("Waited {} seconds attempting force stop!", $$0);
+               } else if (this.c.isAlive()) {
+                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
+                  this.c.interrupt();
+               }
+            } catch (InterruptedException var3) {
+            }
+         }
+
+         d.info("Thread {} stopped", this.b);
+         this.c = null;
+      }
    }
 
-   public void a(ty $$0) {
-      $$0.a(this.d);
-      $$0.a(this.b(), ty::a);
-   }
-
-   public static aqu b(ty $$0) {
-      agm $$1 = $$0.t();
-      Optional<Float> $$2 = $$0.b(ty::readFloat);
-      return a($$1, $$2);
+   public boolean c() {
+      return this.a;
    }
 }

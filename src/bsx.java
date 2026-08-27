@@ -1,49 +1,48 @@
 import java.util.EnumSet;
 
-public class bsx extends bsg {
-   private static final bvx b = bvx.b().a(6.0);
-   public static final int a = 400;
-   private final bxi c;
-   private cdm d;
-   private int e;
+public class bsx extends bsr {
+   private final blx a;
+   private blv b;
+   private final float c;
 
-   public bsx(bxi $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(bsg.a.a, bsg.a.b));
+   public bsx(blx $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(bsr.a.c, bsr.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.c.dN().O()) {
-         return false;
-      } else if (this.c.eh().a(8000) != 0) {
+      if (this.a.cO()) {
          return false;
       } else {
-         this.d = this.c.dN().a(cdm.class, b, this.c, this.c.ds(), this.c.du(), this.c.dy(), this.c.cH().c(6.0, 2.0, 6.0));
-         return this.d != null;
+         this.b = this.a.q();
+         if (this.b == null) {
+            return false;
+         } else {
+            double $$0 = this.a.f(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aC() ? false : this.a.eg().a(b(5)) == 0;
+            }
+         }
       }
    }
 
    @Override
    public boolean b() {
-      return this.e > 0;
+      return !this.a.aC();
    }
 
    @Override
    public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
-   }
+      elb $$0 = this.a.dp();
+      elb $$1 = new elb(this.b.dr() - this.a.dr(), 0.0, this.b.dx() - this.a.dx());
+      if ($$1.g() > 1.0E-7) {
+         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
+      }
 
-   @Override
-   public void d() {
-      this.c.w(false);
-      this.d = null;
-   }
-
-   @Override
-   public void e() {
-      this.c.I().a(this.d, 30.0F, 30.0F);
-      this.e--;
+      this.a.o($$1.c, (double)this.c, $$1.e);
    }
 }

@@ -1,74 +1,119 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
+import java.io.Closeable;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.stream.Stream;
+import java.io.InputStream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gdh implements apm {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gdg b = new gdg("US", "English", false);
-   private Map<String, gdg> c = ImmutableMap.of("en_us", b);
-   private String d;
+public class gdh extends gcz {
+   static final Logger f = LogUtils.getLogger();
+   protected final agt e;
 
-   public gdh(String $$0) {
-      this.d = $$0;
-   }
-
-   private static Map<String, gdg> a(Stream<anz> $$0) {
-      Map<String, gdg> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            gdt $$2 = $$1x.a(gdt.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.a(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
+   public gdh(agt $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public void a(apl $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         gdg $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
+   public void a(aps $$0) throws IOException {
+      gdh.a $$1 = this.b($$0);
+      $$1.c();
+      gfl $$2 = $$1.a();
+      boolean $$3;
+      boolean $$4;
+      if ($$2 != null) {
+         $$3 = $$2.a();
+         $$4 = $$2.b();
+      } else {
+         $$3 = false;
+         $$4 = false;
+      }
+
+      eoe $$7 = $$1.b();
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> this.a($$7, $$3, $$4));
+      } else {
+         this.a($$7, $$3, $$4);
+      }
+   }
+
+   private void a(eoe $$0, boolean $$1, boolean $$2) {
+      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
+   }
+
+   protected gdh.a b(aps $$0) {
+      return gdh.a.a($$0, this.e);
+   }
+
+   protected static class a implements Closeable {
+      @Nullable
+      private final gfl a;
+      @Nullable
+      private final eoe b;
+      @Nullable
+      private final IOException c;
+
+      public a(IOException $$0) {
+         this.c = $$0;
+         this.a = null;
+         this.b = null;
+      }
+
+      public a(@Nullable gfl $$0, eoe $$1) {
+         this.c = null;
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public static gdh.a a(aps $$0, agt $$1) {
+         try {
+            apq $$2 = $$0.getResourceOrThrow($$1);
+
+            eoe $$4;
+            try (InputStream $$3 = $$2.d()) {
+               $$4 = eoe.a($$3);
+            }
+
+            gfl $$6 = null;
+
+            try {
+               $$6 = $$2.f().a(gfl.a).orElse(null);
+            } catch (RuntimeException var8) {
+               gdh.f.warn("Failed reading metadata of: {}", $$1, var8);
+            }
+
+            return new gdh.a($$6, $$4);
+         } catch (IOException var10) {
+            return new gdh.a(var10);
          }
       }
 
-      gdd $$4 = gdd.a($$0, $$1, $$2);
-      gdf.a($$4);
-      ry.a($$4);
-   }
+      @Nullable
+      public gfl a() {
+         return this.a;
+      }
 
-   public void a(String $$0) {
-      this.d = $$0;
-   }
+      public eoe b() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         } else {
+            return this.b;
+         }
+      }
 
-   public String a() {
-      return this.d;
-   }
+      @Override
+      public void close() {
+         if (this.b != null) {
+            this.b.close();
+         }
+      }
 
-   public SortedMap<String, gdg> b() {
-      return new TreeMap<>(this.c);
-   }
-
-   @Nullable
-   public gdg b(String $$0) {
-      return this.c.get($$0);
+      public void c() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         }
+      }
    }
 }

@@ -1,81 +1,53 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.Iterator;
 
-public class agg<E> implements Codec<ik<E>> {
-   private final agl<? extends is<E>> a;
-   private final Codec<ig<E>> b;
-   private final Codec<List<ig<E>>> c;
-   private final Codec<Either<arz<E>, List<ig<E>>>> d;
-
-   private static <E> Codec<List<ig<E>>> a(Codec<ig<E>> $$0, boolean $$1) {
-      Codec<List<ig<E>>> $$2 = asy.a($$0.listOf(), asy.c(ig::f));
-      return $$1
-         ? $$2
-         : Codec.either($$2, $$0)
-            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((ig)$$0x.get(0)) : Either.left($$0x));
-   }
-
-   public static <E> Codec<ik<E>> a(agl<? extends is<E>> $$0, Codec<ig<E>> $$1, boolean $$2) {
-      return new agg<>($$0, $$1, $$2);
-   }
-
-   private agg(agl<? extends is<E>> $$0, Codec<ig<E>> $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = a($$1, $$2);
-      this.d = Codec.either(arz.b($$0), this.c);
-   }
-
-   public <T> DataResult<Pair<ik<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
-      if ($$0 instanceof agk<T> $$2) {
-         Optional<ih<E>> $$3 = $$2.b(this.a);
-         if ($$3.isPresent()) {
-            ih<E> $$4 = $$3.get();
-            return this.d.decode($$0, $$1).map($$1x -> $$1x.mapFirst($$1xx -> (ik)$$1xx.map($$4::b, ik::a)));
-         }
+public interface agg<T> {
+   default void a(int $$0, int $$1, int $$2, cpn<?> $$3, Iterator<T> $$4, int $$5) {
+      int $$6 = $$0;
+      int $$7 = $$1;
+      if ($$3.b() instanceof cps $$9) {
+         $$6 = $$9.j();
+         $$7 = $$9.k();
       }
 
-      return this.a($$0, $$1);
-   }
+      int $$10 = 0;
 
-   public <T> DataResult<T> a(ik<E> $$0, DynamicOps<T> $$1, T $$2) {
-      if ($$1 instanceof agk<T> $$3) {
-         Optional<ij<E>> $$4 = $$3.a(this.a);
-         if ($$4.isPresent()) {
-            if (!$$0.a($$4.get())) {
-               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
+      for (int $$11 = 0; $$11 < $$1; $$11++) {
+         if ($$10 == $$2) {
+            $$10++;
+         }
+
+         boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
+         int $$13 = aty.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
+         if ($$12 && $$13 > $$11) {
+            $$10 += $$0;
+            $$11++;
+         }
+
+         for (int $$14 = 0; $$14 < $$0; $$14++) {
+            if (!$$4.hasNext()) {
+               return;
             }
 
-            return this.d.encode($$0.c().mapRight(List::copyOf), $$1, $$2);
+            $$12 = (float)$$6 < (float)$$0 / 2.0F;
+            $$13 = aty.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
+            int $$15 = $$6;
+            boolean $$16 = $$14 < $$6;
+            if ($$12) {
+               $$15 = $$13 + $$6;
+               $$16 = $$13 <= $$14 && $$14 < $$13 + $$6;
+            }
+
+            if ($$16) {
+               this.a($$4, $$10, $$5, $$11, $$14);
+            } else if ($$15 == $$14) {
+               $$10 += $$0 - $$14;
+               break;
+            }
+
+            $$10++;
          }
       }
-
-      return this.b($$0, $$1, $$2);
    }
 
-   private <T> DataResult<Pair<ik<E>, T>> a(DynamicOps<T> $$0, T $$1) {
-      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
-         List<ig.a<E>> $$1x = new ArrayList<>();
-
-         for (ig<E> $$2 : (List)$$0x.getFirst()) {
-            if (!($$2 instanceof ig.a<E> $$3)) {
-               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
-            }
-
-            $$1x.add($$3);
-         }
-
-         return DataResult.success(new Pair(ik.a($$1x), $$0x.getSecond()));
-      });
-   }
-
-   private <T> DataResult<T> b(ik<E> $$0, DynamicOps<T> $$1, T $$2) {
-      return this.c.encode($$0.a().toList(), $$1, $$2);
-   }
+   void a(Iterator<T> var1, int var2, int var3, int var4, int var5);
 }

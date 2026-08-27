@@ -1,123 +1,86 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ffo extends faz {
-   private static final uv a = uv.c("selectWorld.experimental.title");
-   private static final uv b = uv.c("selectWorld.experimental.message");
-   private static final uv c = uv.c("selectWorld.experimental.details");
-   private static final int k = 10;
-   private static final int l = 100;
-   private final BooleanConsumer m;
-   final Collection<aot> n;
-   private final eyn o = new eyn().a(10).b(20);
+public class ffo {
+   @Nullable
+   private cpn<?> a;
+   private final List<ffo.a> b = Lists.newArrayList();
+   float c;
 
-   public ffo(Collection<aot> $$0, BooleanConsumer $$1) {
-      super(a);
-      this.n = $$0;
-      this.m = $$1;
+   public void a() {
+      this.a = null;
+      this.b.clear();
+      this.c = 0.0F;
    }
 
-   @Override
-   public uv h() {
-      return uu.a(super.h(), b);
+   public void a(cpi $$0, int $$1, int $$2) {
+      this.b.add(new ffo.a($$0, $$1, $$2));
    }
 
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      eyn.b $$0 = this.o.d(2);
-      eyr $$1 = $$0.b().b();
-      $$0.a(new ewl(this.e, this.i), 2, $$1);
-      evy $$2 = $$0.a(new evy(b, this.i).b(true), 2, $$1);
-      $$2.j(310);
-      $$0.a(eve.a(c, $$0x -> this.f.a(new ffo.a())).a(100).a(), 2, $$1);
-      $$0.a(eve.a(uu.i, $$0x -> this.m.accept(true)).a());
-      $$0.a(eve.a(uu.k, $$0x -> this.m.accept(false)).a());
-      this.o.a($$1x -> {
-         evc var10000 = this.d($$1x);
-      });
-      this.o.a();
-      this.c();
+   public ffo.a a(int $$0) {
+      return this.b.get($$0);
    }
 
-   @Override
-   protected void c() {
-      eym.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
+   public int b() {
+      return this.b.size();
    }
 
-   @Override
-   public void aG_() {
-      this.m.accept(false);
+   @Nullable
+   public cpn<?> c() {
+      return this.a;
    }
 
-   class a extends faz {
-      private ffo.a.a b;
+   public void a(cpn<?> $$0) {
+      this.a = $$0;
+   }
 
-      a() {
-         super(uv.c("selectWorld.experimental.details.title"));
+   public void a(evw $$0, euk $$1, int $$2, int $$3, boolean $$4, float $$5) {
+      if (!fcc.p()) {
+         this.c += $$5;
       }
 
-      @Override
-      public void aG_() {
-         this.f.a(ffo.this);
-      }
-
-      @Override
-      protected void aQ_() {
-         super.aQ_();
-         this.d(eve.a(uu.k, $$0 -> this.aG_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
-         this.b = new ffo.a.a(this.f, ffo.this.n);
-         this.e(this.b);
-      }
-
-      @Override
-      public void a(eut $$0, int $$1, int $$2, float $$3) {
-         super.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
-      }
-
-      class a extends ewa<ffo.a.b> {
-         public a(eti $$0, Collection<aot> $$1) {
-            super($$0, a.this.g, a.this.h, 32, a.this.h - 64, (9 + 2) * 3);
-
-            for (aot $$2 : $$1) {
-               String $$3 = cgk.a(cgk.g, $$2.d());
-               if (!$$3.isEmpty()) {
-                  uv $$4 = uy.a($$2.a().f(), vs.a.a(true));
-                  uv $$5 = uv.a("selectWorld.experimental.details.entry", $$3);
-                  this.b(a.this.new b($$4, $$5, evx.a(a.this.i, $$5, this.b())));
-               }
-            }
+      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
+         ffo.a $$7 = this.b.get($$6);
+         int $$8 = $$7.a() + $$2;
+         int $$9 = $$7.b() + $$3;
+         if ($$6 == 0 && $$4) {
+            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
+         } else {
+            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
          }
 
-         @Override
-         public int b() {
-            return this.e * 3 / 4;
+         cmh $$10 = $$7.c();
+         $$0.b($$10, $$8, $$9);
+         $$0.a(fsq.E(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
+         if ($$6 == 0) {
+            $$0.a($$1.h, $$10, $$8, $$9);
          }
       }
+   }
 
-      class b extends ewa.a<ffo.a.b> {
-         private final uv b;
-         private final uv c;
-         private final evx d;
+   public class a {
+      private final cpi b;
+      private final int c;
+      private final int d;
 
-         b(uv $$0, uv $$1, evx $$2) {
-            this.b = $$0;
-            this.c = $$1;
-            this.d = $$2;
-         }
+      public a(cpi $$1, int $$2, int $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
 
-         @Override
-         public void a(eut $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
-            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
-         }
+      public int a() {
+         return this.c;
+      }
 
-         @Override
-         public uv a() {
-            return uv.a("narrator.select", uu.a(this.b, this.c));
-         }
+      public int b() {
+         return this.d;
+      }
+
+      public cmh c() {
+         cmh[] $$0 = this.b.a();
+         return $$0.length == 0 ? cmh.f : $$0[aty.d(ffo.this.c / 30.0F) % $$0.length];
       }
    }
 }

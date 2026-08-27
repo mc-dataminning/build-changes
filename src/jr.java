@@ -1,51 +1,48 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Locale;
-import org.joml.Vector3f;
+import com.mojang.serialization.Codec;
 
-public abstract class jr implements ju {
-   public static final float e = 0.01F;
-   public static final float f = 4.0F;
-   protected final Vector3f g;
-   protected final float h;
+public class jr implements jt {
+   public static final jt.a<jr> a = new jt.a<jr>() {
+      public jr a(ju<jr> $$0, StringReader $$1) throws CommandSyntaxException {
+         $$1.expect(' ');
+         fy.a $$2 = fy.a(kb.h.p(), $$1);
+         cmh $$3 = new fx($$2.a(), $$2.b()).a(1, false);
+         return new jr($$0, $$3);
+      }
 
-   public jr(Vector3f $$0, float $$1) {
-      this.g = $$0;
-      this.h = atq.a($$1, 0.01F, 4.0F);
+      public jr a(ju<jr> $$0, ue $$1) {
+         return new jr($$0, $$1.r());
+      }
+   };
+   private final ju<jr> b;
+   private final cmh c;
+
+   public static Codec<jr> a(ju<jr> $$0) {
+      return cmh.a.xmap($$1 -> new jr($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public static Vector3f a(StringReader $$0) throws CommandSyntaxException {
-      $$0.expect(' ');
-      float $$1 = $$0.readFloat();
-      $$0.expect(' ');
-      float $$2 = $$0.readFloat();
-      $$0.expect(' ');
-      float $$3 = $$0.readFloat();
-      return new Vector3f($$1, $$2, $$3);
-   }
-
-   public static Vector3f b(ty $$0) {
-      return new Vector3f($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+   public jr(ju<jr> $$0, cmh $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.g.x());
-      $$0.a(this.g.y());
-      $$0.a(this.g.z());
-      $$0.a(this.h);
+   public void a(ue $$0) {
+      $$0.a(this.c);
    }
 
    @Override
    public String a() {
-      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %.2f", kc.k.b(this.b()), this.g.x(), this.g.y(), this.g.z(), this.h);
+      return kb.j.b(this.b()) + " " + new fx(this.c.e(), this.c.v()).b();
    }
 
-   public Vector3f e() {
-      return this.g;
+   @Override
+   public ju<jr> b() {
+      return this.b;
    }
 
-   public float f() {
-      return this.h;
+   public cmh c() {
+      return this.c;
    }
 }

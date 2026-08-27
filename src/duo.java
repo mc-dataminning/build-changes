@@ -1,20 +1,28 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duo extends duf {
-   public static final Codec<duo> b = dhn.b.fieldOf("state").xmap(duo::new, $$0 -> $$0.c).codec();
-   private final dhn c;
+public class duo extends dun {
+   public static final Codec<duo> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, duo::new));
 
-   protected duo(dhn $$0) {
-      this.c = $$0;
+   public duo(biq $$0, biq $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected dug<?> a() {
-      return dug.a;
+   protected dut<?> a() {
+      return dut.e;
    }
 
    @Override
-   public dhn a(atw $$0, hx $$1) {
-      return this.c;
+   protected void a(cte $$0, dus.b $$1, auf $$2, duc $$3, int $$4, dus.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   protected boolean a(auf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

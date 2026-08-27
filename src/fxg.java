@@ -1,27 +1,23 @@
-public class fxg extends fxi<cbm, fik<cbm>> {
-   private static final agm a = new agm("textures/entity/slime/magmacube.png");
+public class fxg extends fwl<cbn, fiu<cbn>> {
+   private static final agt a = new agt("textures/entity/zombie/drowned.png");
 
-   public fxg(fwc.a $$0) {
-      super($$0, new fik<>($$0.a(fks.au)), 0.25F);
+   public fxg(fxo.a $$0) {
+      super($$0, new fiu<>($$0.a(flx.O)), new fiu<>($$0.a(flx.P)), new fiu<>($$0.a(flx.Q)));
+      this.a(new gbh<>(this, $$0.f()));
    }
 
-   protected int a(cbm $$0, hx $$1) {
-      return 15;
-   }
-
-   public agm a(cbm $$0) {
+   @Override
+   public agt a(ccs $$0) {
       return a;
    }
 
-   public void a(cbm $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.gg();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(cbm $$0, eob $$1, float $$2) {
-      int $$3 = $$0.gg();
-      float $$4 = atq.i($$2, $$0.bS, $$0.e) / ((float)$$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
+   protected void a(cbn $$0, epd $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = $$0.a($$4);
+      if ($$5 > 0.0F) {
+         float $$6 = -10.0F - $$0.dE();
+         float $$7 = aty.i($$5, 0.0F, $$6);
+         $$1.a(a.b.rotationDegrees($$7), 0.0F, $$0.dh() / 2.0F, 0.0F);
+      }
    }
 }

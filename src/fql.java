@@ -1,21 +1,44 @@
-public class fql {
-   public static final crq a = ctd::a;
-   public static final crq b = ($$0, $$1, $$2) -> $$0.f();
-   public static final crq c = ($$0, $$1, $$2) -> $$0.i();
+public class fql extends fqw {
+   private final fqr a;
 
-   private static int a(cri $$0, hx $$1, crq $$2) {
-      return $$0.a($$1, $$2);
+   protected fql(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fqr $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
-   public static int a(cri $$0, hx $$1) {
-      return a($$0, $$1, a);
+   @Override
+   public fqa b() {
+      return fqa.b;
    }
 
-   public static int b(cri $$0, hx $$1) {
-      return a($$0, $$1, b);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   public static int c(cri $$0, hx $$1) {
-      return a($$0, $$1, c);
+   public static class a implements fpz<jy> {
+      private final fqr a;
+
+      public a(fqr $$0) {
+         this.a = $$0;
+      }
+
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fql $$8 = new fql($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
+         return $$8;
+      }
    }
 }

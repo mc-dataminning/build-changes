@@ -1,15 +1,44 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface dyu<P extends dyt> {
-   dyu<dys> a = a("single_pool_element", dys.b);
-   dyu<dyr> b = a("list_pool_element", dyr.a);
-   dyu<dyn> c = a("feature_pool_element", dyn.a);
-   dyu<dym> d = a("empty_pool_element", dym.a);
-   dyu<dyq> e = a("legacy_single_pool_element", dyq.a);
+public record dyu(List<dyu.a> c, dzl d) {
+   public static final Codec<dyu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dyu.a.a.listOf().fieldOf("structures").forGetter(dyu::a), dzl.b.fieldOf("placement").forGetter(dyu::b)).apply($$0, dyu::new)
+   );
+   public static final Codec<ie<dyu>> b = agp.a(kc.aE, a);
 
-   Codec<P> codec();
+   public dyu(ie<dyo> $$0, dzl $$1) {
+      this(List.of(new dyu.a($$0, 1)), $$1);
+   }
 
-   static <P extends dyt> dyu<P> a(String $$0, Codec<P> $$1) {
-      return is.a(kc.aj, $$0, () -> $$1);
+   public static dyu.a a(ie<dyo> $$0, int $$1) {
+      return new dyu.a($$0, $$1);
+   }
+
+   public static dyu.a a(ie<dyo> $$0) {
+      return new dyu.a($$0, 1);
+   }
+
+   public List<dyu.a> a() {
+      return this.c;
+   }
+
+   public dzl b() {
+      return this.d;
+   }
+
+   public static record a(ie<dyo> b, int c) {
+      public static final Codec<dyu.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dyo.b.fieldOf("structure").forGetter(dyu.a::a), atg.j.fieldOf("weight").forGetter(dyu.a::b)).apply($$0, dyu.a::new)
+      );
+
+      public ie<dyo> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

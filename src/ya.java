@@ -1,12 +1,18 @@
-public interface ya extends wr {
-   @Override
-   default tx b() {
-      return tx.e;
+public record ya(hv b, int c) implements xo {
+   public static final agt a = new agt("debug/poi_ticket_count");
+
+   public ya(ue $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
-   void a(yb var1);
+   @Override
+   public void a(ue $$0) {
+      $$0.a(this.b);
+      $$0.p(this.c);
+   }
 
-   void a(yc var1);
-
-   void a(yd var1);
+   @Override
+   public agt a() {
+      return a;
+   }
 }

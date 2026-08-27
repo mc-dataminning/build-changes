@@ -1,160 +1,76 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class daf {
-   public static final daf.e[] a = new daf.e[]{daf.e.a, daf.e.b, daf.e.c};
-   private final daf.b b;
+public class daf extends cvz implements dcz {
+   public static final MapCodec<daf> a = b(daf::new);
+   public static final djg b = djf.j;
+   public static final djg c = djf.C;
+   protected static final elu d = elr.a(cvz.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), cvz.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
+   protected static final elu e = elr.a(cvz.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), cvz.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
 
-   public daf(dae $$0) {
-      this(new daf.a($$0));
+   @Override
+   public MapCodec<daf> a() {
+      return a;
    }
 
-   public daf(daf.b $$0) {
-      this.b = $$0;
+   public daf(dio.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
    }
 
-   public boolean a(dhn $$0, crl $$1, hx $$2, ib $$3) {
-      return ib.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
-   }
+   @Nullable
+   @Override
+   public dip a(coq $$0) {
+      edz $$1 = $$0.q().b_($$0.a());
 
-   public Optional<daf.c> a(dhn $$0, csg $$1, hx $$2, atw $$3) {
-      return ib.a($$3)
-         .stream()
-         .filter($$1x -> this.b.b($$0, $$1x))
-         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
-         .filter(Optional::isPresent)
-         .findFirst()
-         .orElse(Optional.empty());
-   }
-
-   public long a(dhn $$0, csg $$1, hx $$2, boolean $$3) {
-      return ib.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
-   }
-
-   public Optional<daf.c> a(dhn $$0, csg $$1, hx $$2, ib $$3, atw $$4, boolean $$5) {
-      return ib.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
-   }
-
-   private long a(dhn $$0, csg $$1, hx $$2, ib $$3, boolean $$4) {
-      return ib.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
-   }
-
-   @VisibleForTesting
-   public Optional<daf.c> a(dhn $$0, csg $$1, hx $$2, ib $$3, ib $$4, boolean $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
-   }
-
-   public Optional<daf.c> a(dhn $$0, crl $$1, hx $$2, ib $$3, ib $$4, daf.d $$5) {
-      if ($$4.o() == $$3.o()) {
-         return Optional.empty();
-      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
-         for (daf.e $$6 : this.b.a()) {
-            daf.c $$7 = $$6.a($$2, $$4, $$3);
-            if ($$5.test($$1, $$2, $$7)) {
-               return Optional.of($$7);
+      for (ia $$2 : $$0.f()) {
+         if ($$2.o() == ia.a.b) {
+            dip $$3 = this.o().a(b, Boolean.valueOf($$2 == ia.b));
+            if ($$3.a((ctb)$$0.q(), $$0.a())) {
+               return $$3.a(c, Boolean.valueOf($$1.a() == eea.c));
             }
          }
-
-         return Optional.empty();
-      } else {
-         return Optional.empty();
       }
+
+      return null;
    }
 
-   public Optional<daf.c> a(csg $$0, daf.c $$1, boolean $$2) {
-      dhn $$3 = $$0.a_($$1.a());
-      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
+   @Override
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return $$0.c(b) ? e : d;
    }
 
-   public static class a implements daf.b {
-      protected dae a;
-
-      public a(dae $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public dhn a(dhn $$0, crl $$1, hx $$2, ib $$3) {
-         return this.a.c($$0, $$1, $$2, $$3);
-      }
-
-      protected boolean a(crl $$0, hx $$1, hx $$2, ib $$3, dhn $$4) {
-         return $$4.i() || $$4.a(this.a) || $$4.a(cvh.G) && $$4.u().b();
-      }
-
-      @Override
-      public boolean a(crl $$0, hx $$1, daf.c $$2) {
-         dhn $$3 = $$0.a_($$2.a());
-         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
-      }
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(b, c);
    }
 
-   public interface b {
-      @Nullable
-      dhn a(dhn var1, crl var2, hx var3, ib var4);
-
-      boolean a(crl var1, hx var2, daf.c var3);
-
-      default daf.e[] a() {
-         return daf.a;
-      }
-
-      default boolean a(dhn $$0, ib $$1) {
-         return dae.a($$0, $$1);
-      }
-
-      default boolean a(dhn $$0) {
-         return false;
-      }
-
-      default boolean b(dhn $$0, ib $$1) {
-         return this.a($$0) || this.a($$0, $$1);
-      }
-
-      default boolean a(csg $$0, daf.c $$1, dhn $$2, boolean $$3) {
-         dhn $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
-         if ($$4 != null) {
-            if ($$3) {
-               $$0.x($$1.a()).e($$1.a());
-            }
-
-            return $$0.a($$1.a(), $$4, 2);
-         } else {
-            return false;
-         }
-      }
+   @Override
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      ia $$3 = h($$0).g();
+      return cvz.a($$1, $$2.a($$3), $$3.g());
    }
 
-   public static record c(hx a, ib b) {
+   protected static ia h(dip $$0) {
+      return $$0.c(b) ? ia.a : ia.b;
    }
 
-   @FunctionalInterface
-   public interface d {
-      boolean test(crl var1, hx var2, daf.c var3);
+   @Override
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eea.c, eea.c.a($$3));
+      }
+
+      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static enum e {
-      a {
-         @Override
-         public daf.c a(hx $$0, ib $$1, ib $$2) {
-            return new daf.c($$0, $$1);
-         }
-      },
-      b {
-         @Override
-         public daf.c a(hx $$0, ib $$1, ib $$2) {
-            return new daf.c($$0.a($$1), $$2);
-         }
-      },
-      c {
-         @Override
-         public daf.c a(hx $$0, ib $$1, ib $$2) {
-            return new daf.c($$0.a($$1).a($$2), $$1.g());
-         }
-      };
+   @Override
+   public edz c_(dip $$0) {
+      return $$0.c(c) ? eea.c.a(false) : super.c_($$0);
+   }
 
-      public abstract daf.c a(hx var1, ib var2, ib var3);
+   @Override
+   public boolean a(dip $$0, cse $$1, hv $$2, eep $$3) {
+      return false;
    }
 }

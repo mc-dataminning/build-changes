@@ -1,67 +1,62 @@
-public class cor extends cok {
-   public cor(coh $$0) {
-      super($$0);
-   }
+public class cor extends coq {
+   private final ia b;
 
-   public boolean a(chh $$0, csf $$1) {
-      int $$2 = 0;
-      clo $$3 = clo.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         clo $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(clr.rR)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(clr.ub)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 > 0;
-   }
-
-   public clo a(chh $$0, it $$1) {
-      int $$2 = 0;
-      clo $$3 = clo.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         clo $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(clr.rR)) {
-               if (!$$3.b()) {
-                  return clo.b;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(clr.ub)) {
-                  return clo.b;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : clo.b;
+   public cor(csy $$0, hv $$1, ia $$2, cmh $$3, ia $$4) {
+      super($$0, null, bjk.a, $$3, new ekx(elb.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   public hv a() {
+      return this.j().a();
    }
 
    @Override
-   public cox<?> as_() {
-      return cox.e;
+   public boolean b() {
+      return this.q().a_(this.j().a()).a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public ia d() {
+      return ia.a;
+   }
+
+   @Override
+   public ia[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new ia[]{ia.a, ia.c, ia.f, ia.d, ia.e, ia.b};
+         case b:
+            return new ia[]{ia.a, ia.b, ia.c, ia.f, ia.d, ia.e};
+         case c:
+            return new ia[]{ia.a, ia.c, ia.f, ia.e, ia.b, ia.d};
+         case d:
+            return new ia[]{ia.a, ia.d, ia.f, ia.e, ia.b, ia.c};
+         case e:
+            return new ia[]{ia.a, ia.e, ia.d, ia.b, ia.c, ia.f};
+         case f:
+            return new ia[]{ia.a, ia.f, ia.d, ia.b, ia.c, ia.e};
+      }
+   }
+
+   @Override
+   public ia g() {
+      return this.b.o() == ia.a.b ? ia.c : this.b;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

@@ -1,23 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record eig(float b) implements eib {
-   public static final Codec<eig> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(eig::c)).apply($$0, eig::new));
+public class eig extends ehq {
+   public static final Codec<eig> a = RecordCodecBuilder.create($$0 -> a($$0).and(th.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, eig::new));
+   private final sj b;
+
+   private eig(List<ejd> $$0, sj $$1) {
+      super($$0);
+      this.b = $$1;
+   }
 
    @Override
-   public eic b() {
-      return eid.e;
+   public ehs b() {
+      return eht.g;
    }
 
-   public boolean a(efc $$0) {
-      return $$0.b().i() < this.b;
+   @Override
+   public cmh a(cmh $$0, ege $$1) {
+      $$0.w().a(this.b);
+      return $$0;
    }
 
-   public static eib.a a(float $$0) {
-      return () -> new eig($$0);
-   }
-
-   public float c() {
-      return this.b;
+   @Deprecated
+   public static ehq.a<?> a(sj $$0) {
+      return a($$1 -> new eig($$1, $$0));
    }
 }

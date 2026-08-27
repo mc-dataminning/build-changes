@@ -1,28 +1,12 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gff {
-   private final List<gfe> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
+public record gff(gfg d) {
+   public static final gff a = new gff(gfg.b);
+   public static final Codec<gff> b = RecordCodecBuilder.create($$0 -> $$0.group(atg.a(gfg.a, "scaling", gfg.b).forGetter(gff::a)).apply($$0, gff::new));
+   public static final aot<gff> c = aot.a("gui", b);
 
-   public gff(List<gfe> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public List<gfe> a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   public gfg a() {
+      return this.d;
    }
 }

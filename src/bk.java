@@ -1,41 +1,46 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Optional;
 
-public class bk extends cw<bk.a> {
-   public bk.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<cb> $$3 = cb.a($$0.get("item"));
-      cl.d $$4 = cl.d.a($$0.get("levels"));
-      return new bk.a($$1, $$3, $$4);
+public record bk(Optional<ie<cqs>> b, ck.d c) {
+   public static final Codec<bk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(atg.a(kb.f.r(), "enchantment").forGetter(bk::a), atg.a(ck.d.d, "levels", ck.d.c).forGetter(bk::b)).apply($$0, bk::new)
+   );
+
+   public bk(cqs $$0, ck.d $$1) {
+      this(Optional.of($$0.j()), $$1);
    }
 
-   public void a(amj $$0, clo $$1, int $$2) {
-      this.a($$0, $$2x -> $$2x.a($$1, $$2));
+   public boolean a(Map<cqs, Integer> $$0) {
+      if (this.b.isPresent()) {
+         cqs $$1 = this.b.get().a();
+         if (!$$0.containsKey($$1)) {
+            return false;
+         }
+
+         int $$2 = $$0.get($$1);
+         if (this.c != ck.d.c && !this.c.d($$2)) {
+            return false;
+         }
+      } else if (this.c != ck.d.c) {
+         for (Integer $$3 : $$0.values()) {
+            if (this.c.d($$3)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+
+      return true;
    }
 
-   public static class a extends at {
-      private final Optional<cb> a;
-      private final cl.d b;
+   public Optional<ie<cqs>> a() {
+      return this.b;
+   }
 
-      public a(Optional<bc> $$0, Optional<cb> $$1, cl.d $$2) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
-      }
-
-      public static am<bk.a> c() {
-         return al.i.a(new bk.a(Optional.empty(), Optional.empty(), cl.d.c));
-      }
-
-      public boolean a(clo $$0, int $$1) {
-         return this.a.isPresent() && !this.a.get().a($$0) ? false : this.b.d($$1);
-      }
-
-      @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         $$0.add("levels", this.b.e());
-         return $$0;
-      }
+   public ck.d b() {
+      return this.c;
    }
 }

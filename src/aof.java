@@ -1,65 +1,34 @@
-import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.regex.Pattern;
 
-class aof extends FileStore {
-   private final String a;
+public record aof(List<aof.a> b) {
+   private static final Pattern c = Pattern.compile("[-_a-zA-Z0-9.]+");
+   private static final Codec<aof> d = RecordCodecBuilder.create($$0 -> $$0.group(aof.a.c.listOf().fieldOf("entries").forGetter(aof::a)).apply($$0, aof::new));
+   public static final aot<aof> a = aot.a("overlays", d);
 
-   public aof(String $$0) {
-      this.a = $$0;
+   private static DataResult<String> a(String $$0) {
+      return !c.matcher($$0).matches() ? DataResult.error(() -> $$0 + " is not accepted directory name") : DataResult.success($$0);
    }
 
-   @Override
-   public String name() {
-      return this.a;
+   public List<String> a(int $$0) {
+      return this.b.stream().filter($$1 -> $$1.a($$0)).map(aof.a::b).toList();
    }
 
-   @Override
-   public String type() {
-      return "index";
+   public List<aof.a> a() {
+      return this.b;
    }
 
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
+   public static record a(atq<Integer> a, String b) {
+      static final Codec<aof.a> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(atq.a(Codec.INT).fieldOf("formats").forGetter(aof.a::a), atg.<String>a(Codec.STRING, aof::a).fieldOf("directory").forGetter(aof.a::b))
+               .apply($$0, aof.a::new)
+      );
 
-   @Override
-   public long getTotalSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUsableSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUnallocatedSpace() {
-      return 0L;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
-      return $$0 == BasicFileAttributeView.class;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(String $$0) {
-      return "basic".equals($$0);
-   }
-
-   @Nullable
-   @Override
-   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
-      return null;
-   }
-
-   @Override
-   public Object getAttribute(String $$0) throws IOException {
-      throw new UnsupportedOperationException();
+      public boolean a(int $$0) {
+         return this.a.a($$0);
+      }
    }
 }

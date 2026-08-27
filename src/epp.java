@@ -1,154 +1,43 @@
-import com.google.gson.JsonObject;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class epp extends epx {
-   public final boolean a;
-   public final boolean b;
-   public final boolean c;
-   public final boolean d;
-   public final int e;
-   public final boolean f;
-   public final boolean g;
-   public final int h;
-   public final int i;
-   private final String o;
-   public final String j;
-   public final epi.a k;
-   public long l;
-   @Nullable
-   public String m;
-   public boolean n;
-   private static final boolean p = false;
-   private static final boolean q = true;
-   private static final boolean r = true;
-   private static final boolean s = true;
-   private static final boolean t = true;
-   private static final int u = 0;
-   private static final boolean v = false;
-   private static final int w = 2;
-   private static final int x = 0;
-   private static final String y = "";
-   private static final String z = "";
-   private static final epi.a A = epi.a.a;
-   private static final long B = -1L;
-   private static final String C = null;
+public enum epp {
+   a,
+   b,
+   c,
+   d;
 
-   public epp(boolean $$0, boolean $$1, boolean $$2, boolean $$3, int $$4, boolean $$5, int $$6, int $$7, boolean $$8, String $$9, String $$10, epi.a $$11) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.g = $$8;
-      this.o = $$9;
-      this.j = $$10;
-      this.k = $$11;
-   }
+   private static final int e = 1024;
 
-   public static epp a() {
-      return new epp(true, true, true, true, 0, false, 2, 0, false, "", "", A);
-   }
-
-   public static epp b() {
-      epp $$0 = a();
-      $$0.a(true);
-      return $$0;
-   }
-
-   public void a(boolean $$0) {
-      this.n = $$0;
-   }
-
-   public static epp a(JsonObject $$0) {
-      epp $$1 = new epp(
-         eru.a("pvp", $$0, true),
-         eru.a("spawnAnimals", $$0, true),
-         eru.a("spawnMonsters", $$0, true),
-         eru.a("spawnNPCs", $$0, true),
-         eru.a("spawnProtection", $$0, 0),
-         eru.a("commandBlocks", $$0, false),
-         eru.a("difficulty", $$0, 2),
-         eru.a("gameMode", $$0, 0),
-         eru.a("forceGameMode", $$0, false),
-         eru.a("slotName", $$0, ""),
-         eru.a("version", $$0, ""),
-         epi.d(eru.a("compatibility", $$0, epi.a.a.name()))
-      );
-      $$1.l = eru.a("worldTemplateId", $$0, -1L);
-      $$1.m = eru.b("worldTemplateImage", $$0, C);
-      return $$1;
-   }
-
-   public String a(int $$0) {
-      if (ac.b(this.o)) {
-         return this.n ? gdf.a("mco.configure.world.slot.empty") : this.b($$0);
+   public static epp a(long $$0) {
+      if ($$0 < 1024L) {
+         return a;
       } else {
-         return this.o;
+         try {
+            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
+            return valueOf($$2 + "B");
+         } catch (Exception var4) {
+            return d;
+         }
       }
    }
 
-   public String b(int $$0) {
-      return gdf.a("mco.configure.world.slot", $$0);
+   public static double a(long $$0, epp $$1) {
+      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
    }
 
-   public String c() {
-      JsonObject $$0 = new JsonObject();
-      if (!this.a) {
-         $$0.addProperty("pvp", this.a);
+   public static String b(long $$0) {
+      int $$1 = 1024;
+      if ($$0 < 1024L) {
+         return $$0 + " B";
+      } else {
+         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
+         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
       }
-
-      if (!this.b) {
-         $$0.addProperty("spawnAnimals", this.b);
-      }
-
-      if (!this.c) {
-         $$0.addProperty("spawnMonsters", this.c);
-      }
-
-      if (!this.d) {
-         $$0.addProperty("spawnNPCs", this.d);
-      }
-
-      if (this.e != 0) {
-         $$0.addProperty("spawnProtection", this.e);
-      }
-
-      if (this.f) {
-         $$0.addProperty("commandBlocks", this.f);
-      }
-
-      if (this.h != 2) {
-         $$0.addProperty("difficulty", this.h);
-      }
-
-      if (this.i != 0) {
-         $$0.addProperty("gameMode", this.i);
-      }
-
-      if (this.g) {
-         $$0.addProperty("forceGameMode", this.g);
-      }
-
-      if (!Objects.equals(this.o, "")) {
-         $$0.addProperty("slotName", this.o);
-      }
-
-      if (!Objects.equals(this.j, "")) {
-         $$0.addProperty("version", this.j);
-      }
-
-      if (this.k != A) {
-         $$0.addProperty("compatibility", this.k.name());
-      }
-
-      return $$0.toString();
    }
 
-   public epp d() {
-      return new epp(this.a, this.b, this.c, this.d, this.e, this.f, this.h, this.i, this.g, this.o, this.j, this.k);
+   public static String b(long $$0, epp $$1) {
+      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
    }
 }

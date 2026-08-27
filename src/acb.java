@@ -1,24 +1,40 @@
-public record acb(uv a, boolean b) implements wo<yh> {
-   public acb(ty $$0) {
-      this($$0.m(), $$0.readBoolean());
+public class acb implements wu<yo> {
+   private final long a;
+   private final long b;
+
+   public acb(long $$0, long $$1, boolean $$2) {
+      this.a = $$0;
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.b = $$3;
+   }
+
+   public acb(ue $$0) {
+      this.a = $$0.readLong();
+      this.b = $$0.readLong();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(ue $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
+   public long a() {
+      return this.a;
    }
 
-   public boolean d() {
+   public long d() {
       return this.b;
    }
 }

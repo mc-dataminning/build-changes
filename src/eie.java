@@ -1,47 +1,129 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record eie(Optional<bq> b, efc.b c) implements eib {
+public class eie extends ehq {
    public static final Codec<eie> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asy.a(bq.a, "predicate").forGetter(eie::c), efc.b.e.fieldOf("entity").forGetter(eie::d)).apply($$0, eie::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.BOOL.fieldOf("replace").orElse(false).forGetter($$0x -> $$0x.b),
+                  vd.a.listOf().fieldOf("lore").forGetter($$0x -> $$0x.c),
+                  atg.a(ege.b.e, "entity").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, eie::new)
    );
+   private final boolean b;
+   private final List<vb> c;
+   private final Optional<ege.b> d;
 
-   @Override
-   public eic b() {
-      return eid.g;
+   public eie(List<ejd> $$0, boolean $$1, List<vb> $$2, Optional<ege.b> $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = List.copyOf($$2);
+      this.d = $$3;
    }
 
    @Override
-   public Set<ehk<?>> a() {
-      return ImmutableSet.of(ehn.f, this.c.a());
+   public ehs b() {
+      return eht.u;
    }
 
-   public boolean a(efc $$0) {
-      bkv $$1 = $$0.c(this.c.a());
-      ejz $$2 = $$0.c(ehn.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   @Override
+   public Set<eim<?>> a() {
+      return this.d.<Set<eim<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
    }
 
-   public static eib.a a(efc.b $$0) {
-      return a($$0, bq.a.a());
+   @Override
+   public cmh a(cmh $$0, ege $$1) {
+      sp $$2 = this.a($$0, !this.c.isEmpty());
+      if ($$2 != null) {
+         if (this.b) {
+            $$2.clear();
+         }
+
+         UnaryOperator<vb> $$3 = eif.a($$1, this.d.orElse(null));
+         this.c.stream().map($$3).map(vb.a::a).map(te::a).forEach($$2::add);
+      }
+
+      return $$0;
    }
 
-   public static eib.a a(efc.b $$0, bq.a $$1) {
-      return () -> new eie(Optional.of($$1.b()), $$0);
+   @Nullable
+   private sp a(cmh $$0, boolean $$1) {
+      sj $$2;
+      if ($$0.u()) {
+         $$2 = $$0.v();
+      } else {
+         if (!$$1) {
+            return null;
+         }
+
+         $$2 = new sj();
+         $$0.c($$2);
+      }
+
+      sj $$5;
+      if ($$2.b("display", 10)) {
+         $$5 = $$2.p("display");
+      } else {
+         if (!$$1) {
+            return null;
+         }
+
+         $$5 = new sj();
+         $$2.a("display", $$5);
+      }
+
+      if ($$5.b("Lore", 9)) {
+         return $$5.c("Lore", 8);
+      } else if ($$1) {
+         sp $$8 = new sp();
+         $$5.a("Lore", $$8);
+         return $$8;
+      } else {
+         return null;
+      }
    }
 
-   public static eib.a a(efc.b $$0, bq $$1) {
-      return () -> new eie(Optional.of($$1), $$0);
+   public static eie.a c() {
+      return new eie.a();
    }
 
-   public Optional<bq> c() {
-      return this.b;
-   }
+   public static class a extends ehq.a<eie.a> {
+      private boolean a;
+      private Optional<ege.b> b = Optional.empty();
+      private final Builder<vb> c = ImmutableList.builder();
 
-   public efc.b d() {
-      return this.c;
+      public eie.a a(boolean $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public eie.a a(ege.b $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public eie.a a(vb $$0) {
+         this.c.add($$0);
+         return this;
+      }
+
+      protected eie.a a() {
+         return this;
+      }
+
+      @Override
+      public ehr b() {
+         return new eie(this.g(), this.a, this.c.build(), this.b);
+      }
    }
 }

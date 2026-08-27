@@ -1,8 +1,240 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gc {
+public class gc {
+   public static final int a = Integer.MAX_VALUE;
+   public static final BiConsumer<elb, List<? extends blf>> b = ($$0, $$1) -> {
+   };
+   private static final dmn<blf, ?> c = new dmn<blf, blf>() {
+      public blf a(blf $$0) {
+         return $$0;
+      }
+
+      @Override
+      public Class<? extends blf> a() {
+         return blf.class;
+      }
+   };
+   private final int d;
+   private final boolean e;
+   private final boolean f;
+   private final Predicate<blf> g;
+   private final ck.c h;
+   private final Function<elb, elb> i;
+   @Nullable
+   private final ekw j;
+   private final BiConsumer<elb, List<? extends blf>> k;
+   private final boolean l;
+   @Nullable
+   private final String m;
+   @Nullable
+   private final UUID n;
+   private final dmn<blf, ?> o;
+   private final boolean p;
+
+   public gc(
+      int $$0,
+      boolean $$1,
+      boolean $$2,
+      Predicate<blf> $$3,
+      ck.c $$4,
+      Function<elb, elb> $$5,
+      @Nullable ekw $$6,
+      BiConsumer<elb, List<? extends blf>> $$7,
+      boolean $$8,
+      @Nullable String $$9,
+      @Nullable UUID $$10,
+      @Nullable blj<?> $$11,
+      boolean $$12
+   ) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$8;
+      this.m = $$9;
+      this.n = $$10;
+      this.o = (dmn<blf, ?>)($$11 == null ? c : $$11);
+      this.p = $$12;
+   }
+
+   public int a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.l;
+   }
+
+   public boolean d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   private void e(ds $$0) throws CommandSyntaxException {
+      if (this.p && !$$0.c(2)) {
+         throw ee.f.create();
+      }
+   }
+
+   public blf a(ds $$0) throws CommandSyntaxException {
+      this.e($$0);
+      List<? extends blf> $$1 = this.b($$0);
+      if ($$1.isEmpty()) {
+         throw ee.d.create();
+      } else if ($$1.size() > 1) {
+         throw ee.a.create();
+      } else {
+         return $$1.get(0);
+      }
+   }
+
+   public List<? extends blf> b(ds $$0) throws CommandSyntaxException {
+      return this.f($$0).stream().filter($$1 -> $$1.ai().a($$0.w())).toList();
+   }
+
+   private List<? extends blf> f(ds $$0) throws CommandSyntaxException {
+      this.e($$0);
+      if (!this.e) {
+         return this.d($$0);
+      } else if (this.m != null) {
+         amq $$1 = $$0.l().ae().a(this.m);
+         return (List<? extends blf>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new amq[]{$$1}));
+      } else if (this.n != null) {
+         for (amp $$2 : $$0.l().H()) {
+            blf $$3 = $$2.a(this.n);
+            if ($$3 != null) {
+               return Lists.newArrayList(new blf[]{$$3});
+            }
+         }
+
+         return Collections.emptyList();
+      } else {
+         elb $$4 = this.i.apply($$0.d());
+         Predicate<blf> $$5 = this.a($$4);
+         if (this.l) {
+            return (List<? extends blf>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new blf[]{$$0.f()}) : Collections.emptyList());
+         } else {
+            List<blf> $$6 = Lists.newArrayList();
+            if (this.d()) {
+               this.a($$6, $$0.e(), $$4, $$5);
+            } else {
+               for (amp $$7 : $$0.l().H()) {
+                  this.a($$6, $$7, $$4, $$5);
+               }
+            }
+
+            return this.a($$4, $$6);
+         }
+      }
+   }
+
+   private void a(List<blf> $$0, amp $$1, elb $$2, Predicate<blf> $$3) {
+      int $$4 = this.f();
+      if ($$0.size() < $$4) {
+         if (this.j != null) {
+            $$1.a(this.o, this.j.c($$2), $$3, $$0, $$4);
+         } else {
+            $$1.a(this.o, $$3, $$0, $$4);
+         }
+      }
+   }
+
+   private int f() {
+      return this.k == b ? this.d : Integer.MAX_VALUE;
+   }
+
+   public amq c(ds $$0) throws CommandSyntaxException {
+      this.e($$0);
+      List<amq> $$1 = this.d($$0);
+      if ($$1.size() != 1) {
+         throw ee.e.create();
+      } else {
+         return $$1.get(0);
+      }
+   }
+
+   public List<amq> d(ds $$0) throws CommandSyntaxException {
+      this.e($$0);
+      if (this.m != null) {
+         amq $$1 = $$0.l().ae().a(this.m);
+         return (List<amq>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new amq[]{$$1}));
+      } else if (this.n != null) {
+         amq $$2 = $$0.l().ae().a(this.n);
+         return (List<amq>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new amq[]{$$2}));
+      } else {
+         elb $$3 = this.i.apply($$0.d());
+         Predicate<blf> $$4 = this.a($$3);
+         if (this.l) {
+            if ($$0.f() instanceof amq $$5 && $$4.test($$5)) {
+               return Lists.newArrayList(new amq[]{$$5});
+            }
+
+            return Collections.emptyList();
+         } else {
+            int $$6 = this.f();
+            List<amq> $$7;
+            if (this.d()) {
+               $$7 = $$0.e().a($$4, $$6);
+            } else {
+               $$7 = Lists.newArrayList();
+
+               for (amq $$9 : $$0.l().ae().t()) {
+                  if ($$4.test($$9)) {
+                     $$7.add($$9);
+                     if ($$7.size() >= $$6) {
+                        return $$7;
+                     }
+                  }
+               }
+            }
+
+            return this.a($$3, $$7);
+         }
+      }
+   }
+
+   private Predicate<blf> a(elb $$0) {
+      Predicate<blf> $$1 = this.g;
+      if (this.j != null) {
+         ekw $$2 = this.j.c($$0);
+         $$1 = $$1.and($$1x -> $$2.c($$1x.cH()));
+      }
+
+      if (!this.h.c()) {
+         $$1 = $$1.and($$1x -> this.h.e($$1x.f($$0)));
+      }
+
+      return $$1;
+   }
+
+   private <T extends blf> List<T> a(elb $$0, List<T> $$1) {
+      if ($$1.size() > 1) {
+         this.k.accept($$0, $$1);
+      }
+
+      return $$1.subList(0, Math.min(this.d, $$1.size()));
+   }
+
+   public static vb a(List<? extends blf> $$0) {
+      return ve.b($$0, blf::Q_);
+   }
 }

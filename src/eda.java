@@ -1,213 +1,194 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public abstract class eda extends ecv {
-   public static final float e = 0.44444445F;
+public final class eda {
+   private static final float d = 1.0E-7F;
+   private final byte[] e;
+   public final double a;
+   public final double b;
+   public final double c;
 
-   @Override
-   public ecw d() {
-      return ecy.d;
-   }
+   public eda(auf $$0) {
+      this.a = $$0.j() * 256.0;
+      this.b = $$0.j() * 256.0;
+      this.c = $$0.j() * 256.0;
+      this.e = new byte[256];
 
-   @Override
-   public ecw e() {
-      return ecy.e;
-   }
+      for (int $$1 = 0; $$1 < 256; $$1++) {
+         this.e[$$1] = (byte)$$1;
+      }
 
-   @Override
-   public clj a() {
-      return clr.qx;
-   }
-
-   @Override
-   public void a(csf $$0, hx $$1, ecx $$2, atw $$3) {
-      hx $$4 = $$1.c();
-      if ($$0.a_($$4).i() && !$$0.a_($$4).i($$0, $$4)) {
-         if ($$3.a(100) == 0) {
-            double $$5 = (double)$$1.u() + $$3.j();
-            double $$6 = (double)$$1.v() + 1.0;
-            double $$7 = (double)$$1.w() + $$3.j();
-            $$0.a(jw.T, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-            $$0.a($$5, $$6, $$7, aqv.mJ, aqw.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-
-         if ($$3.a(200) == 0) {
-            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), aqv.mH, aqw.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         int $$3 = $$0.a(256 - $$2);
+         byte $$4 = this.e[$$2];
+         this.e[$$2] = this.e[$$2 + $$3];
+         this.e[$$2 + $$3] = $$4;
       }
    }
 
-   @Override
-   public void b(csf $$0, hx $$1, ecx $$2, atw $$3) {
-      if ($$0.Y().b(csb.b)) {
-         int $$4 = $$3.a(3);
-         if ($$4 > 0) {
-            hx $$5 = $$1;
+   public double a(double $$0, double $$1, double $$2) {
+      return this.a($$0, $$1, $$2, 0.0, 0.0);
+   }
 
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
-               if (!$$0.o($$5)) {
-                  return;
-               }
-
-               dhn $$7 = $$0.a_($$5);
-               if ($$7.i()) {
-                  if (this.a((csi)$$0, $$5)) {
-                     $$0.b($$5, cus.a($$0, $$5));
-                     return;
-                  }
-               } else if ($$7.d()) {
-                  return;
-               }
-            }
+   @Deprecated
+   public double a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      double $$5 = $$0 + this.a;
+      double $$6 = $$1 + this.b;
+      double $$7 = $$2 + this.c;
+      int $$8 = aty.a($$5);
+      int $$9 = aty.a($$6);
+      int $$10 = aty.a($$7);
+      double $$11 = $$5 - (double)$$8;
+      double $$12 = $$6 - (double)$$9;
+      double $$13 = $$7 - (double)$$10;
+      double $$16;
+      if ($$3 != 0.0) {
+         double $$14;
+         if ($$4 >= 0.0 && $$4 < $$12) {
+            $$14 = $$4;
          } else {
-            for (int $$8 = 0; $$8 < 3; $$8++) {
-               hx $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
-               if (!$$0.o($$9)) {
-                  return;
-               }
-
-               if ($$0.t($$9.c()) && this.b($$0, $$9)) {
-                  $$0.b($$9.c(), cus.a($$0, $$9));
-               }
-            }
+            $$14 = $$12;
          }
-      }
-   }
 
-   private boolean a(csi $$0, hx $$1) {
-      for (ib $$2 : ib.values()) {
-         if (this.b($$0, $$1.a($$2))) {
-            return true;
-         }
+         $$16 = (double)aty.a($$14 / $$3 + 1.0E-7F) * $$3;
+      } else {
+         $$16 = 0.0;
       }
 
-      return false;
+      return this.a($$8, $$9, $$10, $$11, $$12 - $$16, $$13, $$12);
    }
 
-   private boolean b(csi $$0, hx $$1) {
-      return $$1.v() >= $$0.J_() && $$1.v() < $$0.ak() && !$$0.A($$1) ? false : $$0.a_($$1).j();
+   public double a(double $$0, double $$1, double $$2, double[] $$3) {
+      double $$4 = $$0 + this.a;
+      double $$5 = $$1 + this.b;
+      double $$6 = $$2 + this.c;
+      int $$7 = aty.a($$4);
+      int $$8 = aty.a($$5);
+      int $$9 = aty.a($$6);
+      double $$10 = $$4 - (double)$$7;
+      double $$11 = $$5 - (double)$$8;
+      double $$12 = $$6 - (double)$$9;
+      return this.a($$7, $$8, $$9, $$10, $$11, $$12, $$3);
    }
 
-   @Nullable
-   @Override
-   public ju h() {
-      return jw.j;
+   private static double a(int $$0, double $$1, double $$2, double $$3) {
+      return edf.a(edf.a[$$0 & 15], $$1, $$2, $$3);
    }
 
-   @Override
-   protected void a(csg $$0, hx $$1, dhn $$2) {
-      this.a($$0, $$1);
+   private int a(int $$0) {
+      return this.e[$$0 & 0xFF] & 0xFF;
    }
 
-   @Override
-   public int b(csi $$0) {
-      return $$0.E_().i() ? 4 : 2;
+   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double $$6) {
+      int $$7 = this.a($$0);
+      int $$8 = this.a($$0 + 1);
+      int $$9 = this.a($$7 + $$1);
+      int $$10 = this.a($$7 + $$1 + 1);
+      int $$11 = this.a($$8 + $$1);
+      int $$12 = this.a($$8 + $$1 + 1);
+      double $$13 = a(this.a($$9 + $$2), $$3, $$4, $$5);
+      double $$14 = a(this.a($$11 + $$2), $$3 - 1.0, $$4, $$5);
+      double $$15 = a(this.a($$10 + $$2), $$3, $$4 - 1.0, $$5);
+      double $$16 = a(this.a($$12 + $$2), $$3 - 1.0, $$4 - 1.0, $$5);
+      double $$17 = a(this.a($$9 + $$2 + 1), $$3, $$4, $$5 - 1.0);
+      double $$18 = a(this.a($$11 + $$2 + 1), $$3 - 1.0, $$4, $$5 - 1.0);
+      double $$19 = a(this.a($$10 + $$2 + 1), $$3, $$4 - 1.0, $$5 - 1.0);
+      double $$20 = a(this.a($$12 + $$2 + 1), $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
+      double $$21 = aty.h($$3);
+      double $$22 = aty.h($$6);
+      double $$23 = aty.h($$5);
+      return aty.a($$21, $$22, $$23, $$13, $$14, $$15, $$16, $$17, $$18, $$19, $$20);
    }
 
-   @Override
-   public dhn b(ecx $$0) {
-      return cvh.H.o().a(czu.b, Integer.valueOf(e($$0)));
+   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double[] $$6) {
+      int $$7 = this.a($$0);
+      int $$8 = this.a($$0 + 1);
+      int $$9 = this.a($$7 + $$1);
+      int $$10 = this.a($$7 + $$1 + 1);
+      int $$11 = this.a($$8 + $$1);
+      int $$12 = this.a($$8 + $$1 + 1);
+      int $$13 = this.a($$9 + $$2);
+      int $$14 = this.a($$11 + $$2);
+      int $$15 = this.a($$10 + $$2);
+      int $$16 = this.a($$12 + $$2);
+      int $$17 = this.a($$9 + $$2 + 1);
+      int $$18 = this.a($$11 + $$2 + 1);
+      int $$19 = this.a($$10 + $$2 + 1);
+      int $$20 = this.a($$12 + $$2 + 1);
+      int[] $$21 = edf.a[$$13 & 15];
+      int[] $$22 = edf.a[$$14 & 15];
+      int[] $$23 = edf.a[$$15 & 15];
+      int[] $$24 = edf.a[$$16 & 15];
+      int[] $$25 = edf.a[$$17 & 15];
+      int[] $$26 = edf.a[$$18 & 15];
+      int[] $$27 = edf.a[$$19 & 15];
+      int[] $$28 = edf.a[$$20 & 15];
+      double $$29 = edf.a($$21, $$3, $$4, $$5);
+      double $$30 = edf.a($$22, $$3 - 1.0, $$4, $$5);
+      double $$31 = edf.a($$23, $$3, $$4 - 1.0, $$5);
+      double $$32 = edf.a($$24, $$3 - 1.0, $$4 - 1.0, $$5);
+      double $$33 = edf.a($$25, $$3, $$4, $$5 - 1.0);
+      double $$34 = edf.a($$26, $$3 - 1.0, $$4, $$5 - 1.0);
+      double $$35 = edf.a($$27, $$3, $$4 - 1.0, $$5 - 1.0);
+      double $$36 = edf.a($$28, $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
+      double $$37 = aty.h($$3);
+      double $$38 = aty.h($$4);
+      double $$39 = aty.h($$5);
+      double $$40 = aty.a(
+         $$37,
+         $$38,
+         $$39,
+         (double)$$21[0],
+         (double)$$22[0],
+         (double)$$23[0],
+         (double)$$24[0],
+         (double)$$25[0],
+         (double)$$26[0],
+         (double)$$27[0],
+         (double)$$28[0]
+      );
+      double $$41 = aty.a(
+         $$37,
+         $$38,
+         $$39,
+         (double)$$21[1],
+         (double)$$22[1],
+         (double)$$23[1],
+         (double)$$24[1],
+         (double)$$25[1],
+         (double)$$26[1],
+         (double)$$27[1],
+         (double)$$28[1]
+      );
+      double $$42 = aty.a(
+         $$37,
+         $$38,
+         $$39,
+         (double)$$21[2],
+         (double)$$22[2],
+         (double)$$23[2],
+         (double)$$24[2],
+         (double)$$25[2],
+         (double)$$26[2],
+         (double)$$27[2],
+         (double)$$28[2]
+      );
+      double $$43 = aty.a($$38, $$39, $$30 - $$29, $$32 - $$31, $$34 - $$33, $$36 - $$35);
+      double $$44 = aty.a($$39, $$37, $$31 - $$29, $$35 - $$33, $$32 - $$30, $$36 - $$34);
+      double $$45 = aty.a($$37, $$38, $$33 - $$29, $$34 - $$30, $$35 - $$31, $$36 - $$32);
+      double $$46 = aty.i($$3);
+      double $$47 = aty.i($$4);
+      double $$48 = aty.i($$5);
+      double $$49 = $$40 + $$46 * $$43;
+      double $$50 = $$41 + $$47 * $$44;
+      double $$51 = $$42 + $$48 * $$45;
+      $$6[0] += $$49;
+      $$6[1] += $$50;
+      $$6[2] += $$51;
+      return aty.a($$37, $$38, $$39, $$29, $$30, $$31, $$32, $$33, $$34, $$35, $$36);
    }
 
-   @Override
-   public boolean a(ecw $$0) {
-      return $$0 == ecy.e || $$0 == ecy.d;
-   }
-
-   @Override
-   public int c(csi $$0) {
-      return $$0.E_().i() ? 1 : 2;
-   }
-
-   @Override
-   public boolean a(ecx $$0, crl $$1, hx $$2, ecw $$3, ib $$4) {
-      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(arp.a);
-   }
-
-   @Override
-   public int a(csi $$0) {
-      return $$0.E_().i() ? 10 : 30;
-   }
-
-   @Override
-   public int a(csf $$0, hx $$1, ecx $$2, ecx $$3) {
-      int $$4 = this.a((csi)$$0);
-      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a((crl)$$0, $$1) > $$2.a((crl)$$0, $$1) && $$0.F_().a(4) != 0) {
-         $$4 *= 4;
-      }
-
-      return $$4;
-   }
-
-   private void a(csg $$0, hx $$1) {
-      $$0.c(1501, $$1, 0);
-   }
-
-   @Override
-   protected boolean a(csf $$0) {
-      return $$0.Y().b(csb.V);
-   }
-
-   @Override
-   protected void a(csg $$0, hx $$1, dhn $$2, ib $$3, ecx $$4) {
-      if ($$3 == ib.a) {
-         ecx $$5 = $$0.b_($$1);
-         if (this.a(arp.b) && $$5.a(arp.a)) {
-            if ($$2.b() instanceof czu) {
-               $$0.a($$1, cvh.b.o(), 3);
-            }
-
-            this.a($$0, $$1);
-            return;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected boolean i() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<aqu> j() {
-      return Optional.of(aqv.cE);
-   }
-
-   public static class a extends eda {
-      @Override
-      protected void a(dho.a<ecw, ecx> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(ecx $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(ecx $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends eda {
-      @Override
-      public int d(ecx $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(ecx $$0) {
-         return true;
-      }
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      edb.a($$0, this.a, this.b, this.c, this.e);
    }
 }

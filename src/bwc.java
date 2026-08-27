@@ -1,33 +1,47 @@
-public class bwc {
-   public static boolean a(bln $$0) {
-      return $$0.N() instanceof but;
+import java.util.Set;
+
+public abstract class bwc<E extends blv> {
+   private static final auf a = auf.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final bwj d = bwj.b().a(16.0);
+   private static final bwj e = bwj.b().a(16.0).e();
+   private static final bwj f = bwj.a().a(16.0);
+   private static final bwj g = bwj.a().a(16.0).e();
+   private static final bwj h = bwj.a().a(16.0).d();
+   private static final bwj i = bwj.a().a(16.0).d().e();
+   private final int j;
+   private long k;
+
+   public bwc(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   public static boolean a(blu $$0, int $$1) {
-      return $$0.fR() && $$0.fO().a($$0.dl(), (double)($$0.fP() + (float)$$1) + 1.0);
+   public bwc() {
+      this(20);
    }
 
-   public static boolean a(hx $$0, blu $$1) {
-      return $$0.v() < $$1.dN().J_() || $$0.v() > $$1.dN().ak();
+   public final void b(amp $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
+      }
    }
 
-   public static boolean a(boolean $$0, blu $$1, hx $$2) {
-      return $$0 && !$$1.a($$2);
+   protected abstract void a(amp var1, E var2);
+
+   public abstract Set<bux<?>> a();
+
+   public static boolean b(blv $$0, blv $$1) {
+      return $$0.dO().b(bux.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
    }
 
-   public static boolean a(buu $$0, hx $$1) {
-      return !$$0.a($$1);
+   public static boolean c(blv $$0, blv $$1) {
+      return $$0.dO().b(bux.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
    }
 
-   public static boolean a(blu $$0, hx $$1) {
-      return $$0.dN().b_($$1).a(arp.a);
-   }
-
-   public static boolean b(blu $$0, hx $$1) {
-      return $$0.a(edr.a($$0.dN(), $$1.j())) != 0.0F;
-   }
-
-   public static boolean c(blu $$0, hx $$1) {
-      return $$0.dN().a_($$1).e();
+   public static boolean d(blv $$0, blv $$1) {
+      return $$0.dO().b(bux.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

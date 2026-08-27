@@ -1,55 +1,121 @@
-public interface dml extends atw {
-   float b = 5.9604645E-8F;
-   double c = 1.110223E-16F;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-   int c(int var1);
+public class dml<T extends dmg> {
+   private final Class<T> a;
+   private final Long2ObjectFunction<dmt> b;
+   private final Long2ObjectMap<dmk<T>> c = new Long2ObjectOpenHashMap();
+   private final LongSortedSet d = new LongAVLTreeSet();
 
-   @Override
-   default int f() {
-      return this.c(32);
+   public dml(Class<T> $$0, Long2ObjectFunction<dmt> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   default int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else if (($$0 & $$0 - 1) == 0) {
-         return (int)((long)$$0 * (long)this.c(31) >> 31);
-      } else {
-         int $$1;
-         int $$2;
-         do {
-            $$1 = this.c(31);
-            $$2 = $$1 % $$0;
-         } while ($$1 - $$2 + ($$0 - 1) < 0);
+   public void a(ekw $$0, asm<dmk<T>> $$1) {
+      int $$2 = 2;
+      int $$3 = ix.a($$0.a - 2.0);
+      int $$4 = ix.a($$0.b - 4.0);
+      int $$5 = ix.a($$0.c - 2.0);
+      int $$6 = ix.a($$0.d + 2.0);
+      int $$7 = ix.a($$0.e + 0.0);
+      int $$8 = ix.a($$0.f + 2.0);
 
-         return $$2;
+      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
+         long $$10 = ix.b($$9, 0, 0);
+         long $$11 = ix.b($$9, -1, -1);
+         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
+
+         while ($$12.hasNext()) {
+            long $$13 = $$12.nextLong();
+            int $$14 = ix.c($$13);
+            int $$15 = ix.d($$13);
+            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
+               dmk<T> $$16 = (dmk<T>)this.c.get($$13);
+               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
+                  return;
+               }
+            }
+         }
       }
    }
 
-   @Override
-   default long g() {
-      int $$0 = this.c(32);
-      int $$1 = this.c(32);
-      long $$2 = (long)$$0 << 32;
-      return $$2 + (long)$$1;
+   public LongStream a(long $$0) {
+      int $$1 = csf.a($$0);
+      int $$2 = csf.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
+      } else {
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+      }
    }
 
-   @Override
-   default boolean h() {
-      return this.c(1) != 0;
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = ix.b($$0, 0, $$1);
+      long $$3 = ix.b($$0, -1, $$1);
+      return this.d.subSet($$2, $$3 + 1L);
    }
 
-   @Override
-   default float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
+   public Stream<dmk<T>> b(long $$0) {
+      return this.a($$0).<dmk<T>>mapToObj(this.c::get).filter(Objects::nonNull);
    }
 
-   @Override
-   default double j() {
-      int $$0 = this.c(26);
-      int $$1 = this.c(27);
-      long $$2 = ((long)$$0 << 27) + (long)$$1;
-      return (double)$$2 * 1.110223E-16F;
+   private static long f(long $$0) {
+      return csf.c(ix.b($$0), ix.d($$0));
+   }
+
+   public dmk<T> c(long $$0) {
+      return (dmk<T>)this.c.computeIfAbsent($$0, this::g);
+   }
+
+   @Nullable
+   public dmk<T> d(long $$0) {
+      return (dmk<T>)this.c.get($$0);
+   }
+
+   private dmk<T> g(long $$0) {
+      long $$1 = f($$0);
+      dmt $$2 = (dmt)this.b.get($$1);
+      this.d.add($$0);
+      return new dmk<>(this.a, $$2);
+   }
+
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
+      return $$0;
+   }
+
+   public void b(ekw $$0, asm<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   }
+
+   public <U extends T> void a(dmn<T, U> $$0, ekw $$1, asm<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   }
+
+   public void e(long $$0) {
+      this.c.remove($$0);
+      this.d.remove($$0);
+   }
+
+   @avd
+   public int b() {
+      return this.d.size();
    }
 }

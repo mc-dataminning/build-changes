@@ -1,185 +1,193 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dhk {
-   public static final int a = 12;
-   private final csf b;
-   private final hx c;
-   private final boolean d;
-   private final hx e;
-   private final ib f;
-   private final List<hx> g = Lists.newArrayList();
-   private final List<hx> h = Lists.newArrayList();
-   private final ib i;
+public class dhk extends dgd implements dnb.b<dni.b>, dni {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 5;
+   private static final int g = 6;
+   private static final int h = 40;
+   private static final int i = 90;
+   private static final Int2ObjectMap<arb> j = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, arc.AG);
+      $$0.put(2, arc.AH);
+      $$0.put(3, arc.AI);
+      $$0.put(4, arc.AF);
+   });
+   private int k;
+   private final dni.d l = new dhk.a();
+   private dni.a m = new dni.a();
+   private final dni.b n = new dni.b(this);
 
-   public dhk(csf $$0, hx $$1, ib $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.i = $$2;
-      this.d = $$3;
-      if ($$3) {
-         this.f = $$2;
-         this.e = $$1.a($$2);
-      } else {
-         this.f = $$2.g();
-         this.e = $$1.a($$2, 2);
+   public dhk(hv $$0, dip $$1) {
+      super(dgf.L, $$0, $$1);
+   }
+
+   @Override
+   public dni.a gg() {
+      return this.m;
+   }
+
+   @Override
+   public dni.d gh() {
+      return this.l;
+   }
+
+   @Override
+   public void a(sj $$0) {
+      super.a($$0);
+      if ($$0.b("warning_level", 99)) {
+         this.k = $$0.h("warning_level");
+      }
+
+      if ($$0.b("listener", 10)) {
+         dni.a.a.parse(new Dynamic(sx.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.m = $$0x);
       }
    }
 
-   public boolean a() {
-      this.g.clear();
-      this.h.clear();
-      dhn $$0 = this.b.a_(this.e);
-      if (!dhg.a($$0, this.b, this.e, this.f, false, this.i)) {
-         if (this.d && $$0.o() == edc.b) {
-            this.h.add(this.e);
-            return true;
-         } else {
-            return false;
-         }
-      } else if (!this.a(this.e, this.f)) {
-         return false;
+   @Override
+   protected void b(sj $$0) {
+      super.b($$0);
+      $$0.a("warning_level", this.k);
+      dni.a.a.encodeStart(sx.a, this.m).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
+   }
+
+   @Nullable
+   public static amq a(@Nullable blf $$0) {
+      if ($$0 instanceof amq) {
+         return (amq)$$0;
       } else {
-         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-            hx $$2 = this.g.get($$1);
-            if (a(this.b.a_($$2)) && !this.a($$2)) {
-               return false;
+         if ($$0 != null) {
+            blv $$6 = $$0.cN();
+            if ($$6 instanceof amq) {
+               return (amq)$$6;
             }
          }
 
-         return true;
+         if ($$0 instanceof cfj $$3) {
+            blf var3 = $$3.w();
+            if (var3 instanceof amq) {
+               return (amq)var3;
+            }
+         }
+
+         if ($$0 instanceof cbe $$5) {
+            blf var9 = $$5.w();
+            if (var9 instanceof amq) {
+               return (amq)var9;
+            }
+         }
+
+         return null;
       }
    }
 
-   private static boolean a(dhn $$0) {
-      return $$0.a(cvh.hV) || $$0.a(cvh.pg);
-   }
-
-   private static boolean a(dhn $$0, dhn $$1) {
-      if ($$0.a(cvh.pg) && $$1.a(cvh.hV)) {
-         return false;
-      } else {
-         return $$0.a(cvh.hV) && $$1.a(cvh.pg) ? false : a($$0) || a($$1);
-      }
-   }
-
-   private boolean a(hx $$0, ib $$1) {
-      dhn $$2 = this.b.a_($$0);
-      if ($$2.i()) {
-         return true;
-      } else if (!dhg.a($$2, this.b, $$0, this.f, false, $$1)) {
-         return true;
-      } else if ($$0.equals(this.c)) {
-         return true;
-      } else if (this.g.contains($$0)) {
-         return true;
-      } else {
-         int $$3 = 1;
-         if ($$3 + this.g.size() > 12) {
-            return false;
-         } else {
-            while (a($$2)) {
-               hx $$4 = $$0.a(this.f.g(), $$3);
-               dhn $$5 = $$2;
-               $$2 = this.b.a_($$4);
-               if ($$2.i() || !a($$5, $$2) || !dhg.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
-                  break;
-               }
-
-               if (++$$3 + this.g.size() > 12) {
-                  return false;
-               }
-            }
-
-            int $$6 = 0;
-
-            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
-               this.g.add($$0.a(this.f.g(), $$7));
-               $$6++;
-            }
-
-            int $$8 = 1;
-
-            while (true) {
-               hx $$9 = $$0.a(this.f, $$8);
-               int $$10 = this.g.indexOf($$9);
-               if ($$10 > -1) {
-                  this.a($$6, $$10);
-
-                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
-                     hx $$12 = this.g.get($$11);
-                     if (a(this.b.a_($$12)) && !this.a($$12)) {
-                        return false;
-                     }
-                  }
-
-                  return true;
-               }
-
-               $$2 = this.b.a_($$9);
-               if ($$2.i()) {
-                  return true;
-               }
-
-               if (!dhg.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
-                  return false;
-               }
-
-               if ($$2.o() == edc.b) {
-                  this.h.add($$9);
-                  return true;
-               }
-
-               if (this.g.size() >= 12) {
-                  return false;
-               }
-
-               this.g.add($$9);
-               $$6++;
-               $$8++;
+   public void a(amp $$0, @Nullable amq $$1) {
+      if ($$1 != null) {
+         dip $$2 = this.r();
+         if (!$$2.c(dcs.b)) {
+            this.k = 0;
+            if (!this.b($$0) || this.b($$0, $$1)) {
+               this.a($$0, (blf)$$1);
             }
          }
       }
    }
 
-   private void a(int $$0, int $$1) {
-      List<hx> $$2 = Lists.newArrayList();
-      List<hx> $$3 = Lists.newArrayList();
-      List<hx> $$4 = Lists.newArrayList();
-      $$2.addAll(this.g.subList(0, $$1));
-      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
-      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
-      this.g.clear();
-      this.g.addAll($$2);
-      this.g.addAll($$3);
-      this.g.addAll($$4);
+   private boolean b(amp $$0, amq $$1) {
+      OptionalInt $$2 = cdx.a($$0, this.aB_(), $$1);
+      $$2.ifPresent($$0x -> this.k = $$0x);
+      return $$2.isPresent();
    }
 
-   private boolean a(hx $$0) {
-      dhn $$1 = this.b.a_($$0);
+   private void a(amp $$0, @Nullable blf $$1) {
+      hv $$2 = this.aB_();
+      dip $$3 = this.r();
+      $$0.a($$2, $$3.a(dcs.b, Boolean.valueOf(true)), 2);
+      $$0.a($$2, $$3.b(), 90);
+      $$0.c(3007, $$2, 0);
+      $$0.a(dmz.N, $$2, dmz.a.a($$1));
+   }
 
-      for (ib $$2 : ib.values()) {
-         if ($$2.o() != this.f.o()) {
-            hx $$3 = $$0.a($$2);
-            dhn $$4 = this.b.a_($$3);
-            if (a($$4, $$1) && !this.a($$3, $$2)) {
-               return false;
-            }
+   private boolean b(amp $$0) {
+      return this.r().c(dcs.d) && $$0.aj() != bji.a && $$0.Y().b(csu.M);
+   }
+
+   public void a(amp $$0) {
+      if (this.b($$0) && this.k > 0) {
+         if (!this.c($$0)) {
+            this.b((csy)$$0);
          }
+
+         cdv.a($$0, elb.b(this.aB_()), null, 40);
+      }
+   }
+
+   private void b(csy $$0) {
+      arb $$1 = (arb)j.get(this.k);
+      if ($$1 != null) {
+         hv $$2 = this.aB_();
+         int $$3 = $$2.u() + aty.b($$0.z, -10, 10);
+         int $$4 = $$2.v() + aty.b($$0.z, -10, 10);
+         int $$5 = $$2.w() + aty.b($$0.z, -10, 10);
+         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, ard.f, 5.0F, 1.0F);
+      }
+   }
+
+   private boolean c(amp $$0) {
+      return this.k < 4 ? false : aur.a(blj.bj, blz.k, $$0, this.aB_(), 20, 5, 6, aur.a.b).isPresent();
+   }
+
+   public dni.b c() {
+      return this.n;
+   }
+
+   class a implements dni.d {
+      private static final int b = 8;
+      private final dnd c = new dmv(dhk.this.p);
+
+      public a() {
       }
 
-      return true;
-   }
+      @Override
+      public int a() {
+         return 8;
+      }
 
-   public ib b() {
-      return this.f;
-   }
+      @Override
+      public dnd b() {
+         return this.c;
+      }
 
-   public List<hx> c() {
-      return this.g;
-   }
+      @Override
+      public asg<dmz> c() {
+         return arx.c;
+      }
 
-   public List<hx> d() {
-      return this.h;
+      @Override
+      public boolean a(amp $$0, hv $$1, dmz $$2, dmz.a $$3) {
+         return !dhk.this.r().c(dcs.b) && dhk.a($$3.a()) != null;
+      }
+
+      @Override
+      public void a(amp $$0, hv $$1, dmz $$2, @Nullable blf $$3, @Nullable blf $$4, float $$5) {
+         dhk.this.a($$0, dhk.a($$4 != null ? $$4 : $$3));
+      }
+
+      @Override
+      public void e() {
+         dhk.this.e();
+      }
+
+      @Override
+      public boolean f() {
+         return true;
+      }
    }
 }

@@ -1,77 +1,9 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public abstract class eci<M extends eci<M>> {
-   private static final int b = 2;
-   private final long[] c = new long[2];
-   private final djp[] d = new djp[2];
-   private boolean e;
-   protected final Long2ObjectOpenHashMap<djp> a;
+public abstract class eci {
+   public static final Codec<eci> c = kb.o.q().dispatch("predicate_type", eci::a, ecj::codec);
 
-   protected eci(Long2ObjectOpenHashMap<djp> $$0) {
-      this.a = $$0;
-      this.c();
-      this.e = true;
-   }
+   public abstract boolean a(dip var1, auf var2);
 
-   public abstract M b();
-
-   public djp a(long $$0) {
-      djp $$1 = ((djp)this.a.get($$0)).b();
-      this.a.put($$0, $$1);
-      this.c();
-      return $$1;
-   }
-
-   public boolean b(long $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   @Nullable
-   public djp c(long $$0) {
-      if (this.e) {
-         for (int $$1 = 0; $$1 < 2; $$1++) {
-            if ($$0 == this.c[$$1]) {
-               return this.d[$$1];
-            }
-         }
-      }
-
-      djp $$2 = (djp)this.a.get($$0);
-      if ($$2 == null) {
-         return null;
-      } else {
-         if (this.e) {
-            for (int $$3 = 1; $$3 > 0; $$3--) {
-               this.c[$$3] = this.c[$$3 - 1];
-               this.d[$$3] = this.d[$$3 - 1];
-            }
-
-            this.c[0] = $$0;
-            this.d[0] = $$2;
-         }
-
-         return $$2;
-      }
-   }
-
-   @Nullable
-   public djp d(long $$0) {
-      return (djp)this.a.remove($$0);
-   }
-
-   public void a(long $$0, djp $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   public void c() {
-      for (int $$0 = 0; $$0 < 2; $$0++) {
-         this.c[$$0] = Long.MAX_VALUE;
-         this.d[$$0] = null;
-      }
-   }
-
-   public void d() {
-      this.e = false;
-   }
+   protected abstract ecj<?> a();
 }

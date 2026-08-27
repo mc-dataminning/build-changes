@@ -1,49 +1,61 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class ftb {
-   private static final Map<dfk<?>, fta<?>> a = Maps.newHashMap();
+   private Map<dip, gfp> a = Map.of();
+   private final gfv b;
 
-   private static <T extends dfi> void a(dfk<? extends T> $$0, fta<T> $$1) {
-      a.put($$0, $$1);
+   public ftb(gfv $$0) {
+      this.b = $$0;
    }
 
-   public static Map<dfk<?>, fsz<?>> a(fta.a $$0) {
-      Builder<dfk<?>, fsz<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + kc.l.b((dfk<?>)$$2), var5);
+   public gdo a(dip $$0) {
+      return this.b($$0).e();
+   }
+
+   public gfp b(dip $$0) {
+      gfp $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
+      }
+
+      return $$1;
+   }
+
+   public gfv a() {
+      return this.b;
+   }
+
+   public void a(Map<dip, gfp> $$0) {
+      this.a = $$0;
+   }
+
+   public static gfw c(dip $$0) {
+      return a(kb.e.b($$0.b()), $$0);
+   }
+
+   public static gfw a(agt $$0, dip $$1) {
+      return new gfw($$0, b($$1.C()));
+   }
+
+   public static String b(Map<djs<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (Entry<djs<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
          }
-      });
-      return $$1.build();
+
+         djs<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
+      }
+
+      return $$1.toString();
    }
 
-   static {
-      a(dfk.h, ftn::new);
-      a(dfk.i, ftj::new);
-      a(dfk.j, ftp::new);
-      a(dfk.k, ftl::new);
-      a(dfk.b, ftf::new);
-      a(dfk.d, ftf::new);
-      a(dfk.c, ftf::new);
-      a(dfk.m, fti::new);
-      a(dfk.D, ftk::new);
-      a(dfk.n, fts::new);
-      a(dfk.v, ftr::new);
-      a(dfk.o, fsv::new);
-      a(dfk.p, fto::new);
-      a(dfk.t, fsu::new);
-      a(dfk.u, ftq::new);
-      a(dfk.x, ftm::new);
-      a(dfk.y, fsw::new);
-      a(dfk.z, ftg::new);
-      a(dfk.E, fsx::new);
-      a(dfk.G, fte::new);
-      a(dfk.N, ftd::new);
-      a(dfk.O, fth::new);
+   private static <T extends Comparable<T>> String a(djs<T> $$0, Comparable<?> $$1) {
+      return $$0.a((T)$$1);
    }
 }

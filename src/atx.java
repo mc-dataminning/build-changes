@@ -1,37 +1,49 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.ObjectUtils;
 
-public class atx {
-   public static final Codec<atx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asy.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), asy.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
-            .apply($$0, atx::new)
-   );
-   private final Optional<Pattern> b;
-   private final Predicate<String> c;
-   private final Optional<Pattern> d;
-   private final Predicate<String> e;
-   private final Predicate<agm> f;
-
-   private atx(Optional<Pattern> $$0, Optional<Pattern> $$1) {
-      this.b = $$0;
-      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.d = $$1;
-      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
+public record atx(atx.a a, String b) {
+   public static atx a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
+      String $$4 = $$1.get();
+      if (!$$0.equals($$4)) {
+         return new atx(atx.a.c, $$2 + " brand changed to '" + $$4 + "'");
+      } else {
+         return $$3.getSigners() == null
+            ? new atx(atx.a.b, $$2 + " jar signature invalidated")
+            : new atx(atx.a.a, $$2 + " jar signature and brand is untouched");
+      }
    }
 
-   public Predicate<String> a() {
-      return this.c;
+   public boolean a() {
+      return this.a.e;
    }
 
-   public Predicate<String> b() {
-      return this.e;
+   public atx a(atx $$0) {
+      return new atx((atx.a)ObjectUtils.max(new atx.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
    }
 
-   public Predicate<agm> c() {
-      return this.f;
+   public String b() {
+      return this.a.d + " " + this.b;
+   }
+
+   public atx.a c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a("Probably not.", false),
+      b("Very likely;", true),
+      c("Definitely;", true);
+
+      final String d;
+      final boolean e;
+
+      private a(String $$0, boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
    }
 }

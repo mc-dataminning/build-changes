@@ -1,15 +1,19 @@
-public enum bkh {
-   a(n.j),
-   b(n.m),
-   c(n.j);
+import com.mojang.serialization.Codec;
 
-   private final n d;
+public enum bkh implements aut {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
 
-   private bkh(n $$0) {
-      this.d = $$0;
+   public static final Codec<bkh> d = aut.a(bkh::values);
+   private final String e;
+
+   private bkh(String $$0) {
+      this.e = $$0;
    }
 
-   public n a() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.e;
    }
 }

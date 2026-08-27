@@ -1,41 +1,45 @@
-public interface ccl {
-   int l_ = 10;
-
-   int gf();
-
-   static boolean a(bll $$0, bll $$1) {
-      float $$2 = (float)$$0.b(bmr.c);
-      float $$3;
-      if (!$$0.o_() && (int)$$2 > 0) {
-         $$3 = $$2 / 2.0F + (float)$$0.dN().z.a((int)$$2);
-      } else {
-         $$3 = $$2;
-      }
-
-      boolean $$5 = $$1.a($$0.dO().b($$0), $$3);
-      if ($$5) {
-         $$0.a($$0, $$1);
-         if (!$$0.o_()) {
-            b($$0, $$1);
-         }
-      }
-
-      return $$5;
+public class ccl extends cbi {
+   public ccl(blj<? extends ccl> $$0, csy $$1) {
+      super($$0, $$1);
    }
 
-   static void b(bll $$0, bll $$1) {
-      double $$2 = $$0.b(bmr.d);
-      double $$3 = $$1.b(bmr.i);
-      double $$4 = $$2 - $$3;
-      if (!($$4 <= 0.0)) {
-         double $$5 = $$1.ds() - $$0.ds();
-         double $$6 = $$1.dy() - $$0.dy();
-         float $$7 = (float)($$0.dN().z.a(21) - 10);
-         double $$8 = $$4 * (double)($$0.dN().z.i() * 0.5F + 0.2F);
-         ejz $$9 = new ejz($$5, 0.0, $$6).d().a($$8).b($$7);
-         double $$10 = $$4 * (double)$$0.dN().z.i() * 0.5;
-         $$1.j($$9.c, $$10, $$9.e);
-         $$1.T = true;
+   public static boolean a(blj<ccl> $$0, ctn $$1, blz $$2, hv $$3, auf $$4) {
+      hv $$5 = $$3;
+
+      do {
+         $$5 = $$5.c();
+      } while ($$1.a_($$5).a(cwb.qP));
+
+      return b($$0, $$1, $$2, $$3, $$4) && (blz.a($$2) || $$1.g($$5.d()));
+   }
+
+   @Override
+   protected arb y() {
+      return arc.yp;
+   }
+
+   @Override
+   protected arb d(bkd $$0) {
+      return arc.yr;
+   }
+
+   @Override
+   protected arb n_() {
+      return arc.yq;
+   }
+
+   @Override
+   arb w() {
+      return arc.ys;
+   }
+
+   @Override
+   protected cex b(cmh $$0, float $$1) {
+      cex $$2 = super.b($$0, $$1);
+      if ($$2 instanceof cez) {
+         ((cez)$$2).a(new bks(bku.b, 600));
       }
+
+      return $$2;
    }
 }

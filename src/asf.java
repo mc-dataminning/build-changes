@@ -1,22 +1,17 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-@FunctionalInterface
-public interface asf<T> {
-   asf.a accept(T var1);
+public record asf(List<ase> b, boolean c) {
+   public static final Codec<asf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ase.a.listOf().fieldOf("values").forGetter(asf::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(asf::b)).apply($$0, asf::new)
+   );
 
-   static <T> asf<T> forConsumer(Consumer<T> $$0) {
-      return $$1 -> {
-         $$0.accept($$1);
-         return asf.a.a;
-      };
+   public List<ase> a() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b;
-
-      public boolean a() {
-         return this == b;
-      }
+   public boolean b() {
+      return this.c;
    }
 }

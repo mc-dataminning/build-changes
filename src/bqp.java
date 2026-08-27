@@ -1,35 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public final class bqp<F extends K1, Value> {
-   private final bml<?> a;
-   private final bum<Value> b;
-   private final App<F, Value> c;
+public class bqp {
+   private static final int a = 16;
 
-   public bqp(bml<?> $$0, bum<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static bnn<blv> a(Predicate<ie<bwz>> $$0, bux<id> $$1) {
+      return bqz.a((Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               id $$6 = $$2.b($$2x);
+               hv $$7 = $$6.b();
+               if ($$3.ad() == $$6.a() && $$7.a($$4.dk(), 16.0)) {
+                  amp $$8 = $$3.n().a($$6.a());
+                  if ($$8 == null || !$$8.x().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     $$3.x().b($$7);
+                     acv.c($$3, $$7);
+                  }
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 
-   public App<F, Value> a() {
-      return this.c;
-   }
-
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
-   }
-
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
-   }
-
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
-   }
-
-   public void b() {
-      this.a.b(this.b);
+   private static boolean a(amp $$0, hv $$1, blv $$2) {
+      dip $$3 = $$0.a_($$1);
+      return $$3.a(arr.R) && $$3.c(cvs.c) && !$$2.fD();
    }
 }

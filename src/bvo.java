@@ -1,42 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.UUID;
 
-public class bvo extends bvq<cdm> {
-   private static final int a = 40;
+public class bvo extends bvw {
+   public static final float a = 10.0F;
 
-   public bvo() {
-      super(40);
+   @Override
+   protected boolean a(blv $$0, blv $$1) {
+      return !$$0.dO().a(bux.T) && bwc.c($$0, $$1) && byx.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
    }
 
-   protected void a(ami $$0, cdm $$1) {
-      agl<csf> $$2 = $$0.ad();
-      hx $$3 = $$1.dn();
-      List<ie> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               hx $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gq().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(ie.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bml<?> $$10 = $$1.dP();
-      if (!$$4.isEmpty()) {
-         $$10.a(bum.f, $$4);
-      } else {
-         $$10.b(bum.f);
-      }
+   private boolean e(blv $$0, blv $$1) {
+      List<UUID> $$2 = $$0.dO().c(bux.Z).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cw());
    }
 
    @Override
-   public Set<bum<?>> a() {
-      return ImmutableSet.of(bum.f);
+   protected bux<blv> b() {
+      return bux.B;
    }
 }

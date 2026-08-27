@@ -1,97 +1,81 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class bpw extends bnc<cdm> {
-   private static final int c = 5;
-   private static final float d = 0.5F;
-   private Set<clj> e = ImmutableSet.of();
+public class bpw extends bnm<blv> {
+   public static final int c = 100;
+   private long d;
 
    public bpw() {
-      super(ImmutableMap.of(bum.q, bun.a, bum.h, bun.a));
+      super(ImmutableMap.of(bux.b, buy.a, bux.H, buy.c));
    }
 
-   protected boolean a(ami $$0, cdm $$1) {
-      return bne.a($$1.dP(), bum.q, bkz.bf);
-   }
-
-   protected boolean a(ami $$0, cdm $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(ami $$0, cdm $$1, long $$2) {
-      cdm $$3 = (cdm)$$1.dP().c(bum.q).get();
-      bne.a($$1, $$3, 0.5F);
-      this.e = a($$1, $$3);
-   }
-
-   protected void c(ami $$0, cdm $$1, long $$2) {
-      cdm $$3 = (cdm)$$1.dP().c(bum.q).get();
-      if (!($$1.f($$3) > 5.0)) {
-         bne.a($$1, $$3, 0.5F);
-         $$1.a($$0, $$3, $$2);
-         if ($$1.gx() && ($$1.gq().b() == cdp.g || $$3.gy())) {
-            a($$1, cdm.bW.keySet(), $$3);
-         }
-
-         if ($$3.gq().b() == cdp.g && $$1.A().a_(clr.pt) > clr.pt.l() / 2) {
-            a($$1, ImmutableSet.of(clr.pt), $$3);
-         }
-
-         if (!this.e.isEmpty() && $$1.A().a(this.e)) {
-            a($$1, this.e, $$3);
-         }
-      }
-   }
-
-   protected void d(ami $$0, cdm $$1, long $$2) {
-      $$1.dP().b(bum.q);
-   }
-
-   private static Set<clj> a(cdm $$0, cdm $$1) {
-      ImmutableSet<clj> $$2 = $$1.gq().b().d();
-      ImmutableSet<clj> $$3 = $$0.gq().b().d();
-      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
-   }
-
-   private static void a(cdm $$0, Set<clj> $$1, bll $$2) {
-      bjj $$3 = $$0.A();
-      clo $$4 = clo.b;
-      int $$5 = 0;
-
-      while ($$5 < $$3.b()) {
-         clo $$6;
-         clj $$7;
-         int $$8;
-         label28: {
-            $$6 = $$3.a($$5);
-            if (!$$6.b()) {
-               $$7 = $$6.d();
-               if ($$1.contains($$7)) {
-                  if ($$6.L() > $$6.g() / 2) {
-                     $$8 = $$6.L() / 2;
-                     break label28;
-                  }
-
-                  if ($$6.L() > 24) {
-                     $$8 = $$6.L() - 24;
-                     break label28;
-                  }
+   @Override
+   protected boolean a(amp $$0, blv $$1) {
+      if ($$1.bO()) {
+         return false;
+      } else {
+         bmv<?> $$2 = $$1.dO();
+         id $$3 = $$2.c(bux.b).get();
+         if ($$0.ad() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(bux.H);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.W() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
                }
             }
 
-            $$5++;
-            continue;
+            dip $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dk(), 2.0) && $$6.a(arr.R) && !$$6.c(cvs.c);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(amp $$0, blv $$1, long $$2) {
+      Optional<id> $$3 = $$1.dO().c(bux.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         hv $$4 = $$3.get().b();
+         return $$1.dO().c(cgd.e) && $$1.dt() > (double)$$4.v() + 0.4 && $$4.a($$1.dk(), 1.14);
+      }
+   }
+
+   @Override
+   protected void d(amp $$0, blv $$1, long $$2) {
+      if ($$2 > this.d) {
+         bmv<?> $$3 = $$1.dO();
+         if ($$3.a(bux.v)) {
+            Set<id> $$4 = $$3.c(bux.v).get();
+            Optional<List<blv>> $$5;
+            if ($$3.a(bux.g)) {
+               $$5 = $$3.c(bux.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            bok.a($$0, $$1, null, null, $$4, $$5);
          }
 
-         $$6.h($$8);
-         $$4 = new clo($$7, $$8);
-         break;
+         $$1.b($$1.dO().c(bux.b).get().b());
       }
+   }
 
-      if (!$$4.b()) {
-         bne.a($$0, $$4, $$2.dl());
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(amp $$0, blv $$1, long $$2) {
+      if ($$1.fD()) {
+         $$1.fE();
+         this.d = $$2 + 40L;
       }
    }
 }

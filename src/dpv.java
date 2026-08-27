@@ -1,173 +1,104 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.function.Function;
 
-public class dpv extends dqa<dsc> {
-   public dpv(Codec<dsc> $$0) {
+public class dpv extends dqd<dpu> {
+   public dpv(Codec<dpu> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(dqc<dsc> $$0) {
-      csz $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      dsc $$3 = $$0.f();
-      atw $$4 = $$0.d();
-      if (!dpw.a($$1, $$2)) {
-         return false;
-      } else {
-         int $$5 = $$3.c.a($$4);
-         float $$6 = $$3.i.a($$4);
-         float $$7 = $$3.h.a($$4);
-         int $$8 = $$3.d.a($$4);
-         int $$9 = $$3.d.a($$4);
-
-         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-            for (int $$11 = -$$9; $$11 <= $$9; $$11++) {
-               double $$12 = this.a($$8, $$9, $$10, $$11, $$3);
-               hx $$13 = $$2.b($$10, 0, $$11);
-               this.a($$1, $$4, $$13, $$10, $$11, $$6, $$12, $$5, $$7, $$3);
-            }
-         }
-
-         return true;
-      }
+   public boolean a(dpu $$0, auf $$1) {
+      return $$1.i() <= $$0.l;
    }
 
-   private void a(csz $$0, atw $$1, hx $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, dsc $$9) {
-      Optional<dmm> $$10 = dmm.a($$0, $$2, $$9.b, dpw::c, dpw::d);
-      if (!$$10.isEmpty()) {
-         OptionalInt $$11 = $$10.get().b();
-         OptionalInt $$12 = $$10.get().c();
-         if (!$$11.isEmpty() || !$$12.isEmpty()) {
-            boolean $$13 = $$1.i() < $$5;
-            dmm $$15;
-            if ($$13 && $$12.isPresent() && this.b($$0, $$2.h($$12.getAsInt()))) {
-               int $$14 = $$12.getAsInt();
-               $$15 = $$10.get().a(OptionalInt.of($$14 - 1));
-               $$0.a($$2.h($$14), cvh.G.o(), 2);
-            } else {
-               $$15 = $$10.get();
+   public boolean a(dpy $$0, dpu $$1, dkl $$2, Function<hv, ie<ctx>> $$3, auf $$4, dnk $$5, csf $$6, dkk $$7) {
+      int $$8 = (this.d() * 2 - 1) * 16;
+      double $$9 = (double)$$6.a($$4.a(16));
+      int $$10 = $$1.e.a($$4, $$0);
+      double $$11 = (double)$$6.b($$4.a(16));
+      float $$12 = $$4.i() * (float) (Math.PI * 2);
+      float $$13 = $$1.b.a($$4);
+      double $$14 = (double)$$1.f.a($$4);
+      float $$15 = $$1.c.c.a($$4);
+      int $$16 = (int)((float)$$8 * $$1.c.b.a($$4));
+      int $$17 = 0;
+      this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$9, (double)$$10, $$11, $$15, $$12, $$13, 0, $$16, $$14, $$7);
+      return true;
+   }
+
+   private void a(
+      dpy $$0,
+      dpu $$1,
+      dkl $$2,
+      Function<hv, ie<ctx>> $$3,
+      long $$4,
+      dnk $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      int $$12,
+      int $$13,
+      double $$14,
+      dkk $$15
+   ) {
+      auf $$16 = auf.a($$4);
+      float[] $$17 = this.a($$0, $$1, $$16);
+      float $$18 = 0.0F;
+      float $$19 = 0.0F;
+
+      for (int $$20 = $$12; $$20 < $$13; $$20++) {
+         double $$21 = 1.5 + (double)(aty.a((float)$$20 * (float) Math.PI / (float)$$13) * $$9);
+         double $$22 = $$21 * $$14;
+         $$21 *= (double)$$1.c.e.a($$16);
+         $$22 = this.a($$1, $$16, $$22, (float)$$13, (float)$$20);
+         float $$23 = aty.b($$11);
+         float $$24 = aty.a($$11);
+         $$6 += (double)(aty.b($$10) * $$23);
+         $$7 += (double)$$24;
+         $$8 += (double)(aty.a($$10) * $$23);
+         $$11 *= 0.7F;
+         $$11 += $$19 * 0.05F;
+         $$10 += $$18 * 0.05F;
+         $$19 *= 0.8F;
+         $$18 *= 0.5F;
+         $$19 += ($$16.i() - $$16.i()) * $$16.i() * 2.0F;
+         $$18 += ($$16.i() - $$16.i()) * $$16.i() * 4.0F;
+         if ($$16.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$20, $$13, $$9)) {
+               return;
             }
 
-            OptionalInt $$17 = $$15.c();
-            boolean $$18 = $$1.j() < $$6;
-            int $$22;
-            if ($$11.isPresent() && $$18 && !this.a((csi)$$0, $$2.h($$11.getAsInt()))) {
-               int $$19 = $$9.g.a($$1);
-               this.a($$0, $$2.h($$11.getAsInt()), $$19, ib.b);
-               int $$20;
-               if ($$17.isPresent()) {
-                  $$20 = Math.min($$7, $$11.getAsInt() - $$17.getAsInt());
-               } else {
-                  $$20 = $$7;
-               }
-
-               $$22 = this.a($$1, $$3, $$4, $$8, $$20, $$9);
-            } else {
-               $$22 = 0;
-            }
-
-            boolean $$24 = $$1.j() < $$6;
-            int $$26;
-            if ($$17.isPresent() && $$24 && !this.a((csi)$$0, $$2.h($$17.getAsInt()))) {
-               int $$25 = $$9.g.a($$1);
-               this.a($$0, $$2.h($$17.getAsInt()), $$25, ib.a);
-               if ($$11.isPresent()) {
-                  $$26 = Math.max(0, $$22 + atq.b($$1, -$$9.e, $$9.e));
-               } else {
-                  $$26 = this.a($$1, $$3, $$4, $$8, $$7, $$9);
-               }
-            } else {
-               $$26 = 0;
-            }
-
-            int $$36;
-            int $$35;
-            if ($$11.isPresent() && $$17.isPresent() && $$11.getAsInt() - $$22 <= $$17.getAsInt() + $$26) {
-               int $$29 = $$17.getAsInt();
-               int $$30 = $$11.getAsInt();
-               int $$31 = Math.max($$30 - $$22, $$29 + 1);
-               int $$32 = Math.min($$29 + $$26, $$30 - 1);
-               int $$33 = atq.b($$1, $$31, $$32 + 1);
-               int $$34 = $$33 - 1;
-               $$35 = $$30 - $$33;
-               $$36 = $$34 - $$29;
-            } else {
-               $$35 = $$22;
-               $$36 = $$26;
-            }
-
-            boolean $$39 = $$1.h() && $$35 > 0 && $$36 > 0 && $$15.d().isPresent() && $$35 + $$36 == $$15.d().getAsInt();
-            if ($$11.isPresent()) {
-               dpw.a($$0, $$2.h($$11.getAsInt() - 1), ib.a, $$35, $$39);
-            }
-
-            if ($$17.isPresent()) {
-               dpw.a($$0, $$2.h($$17.getAsInt() + 1), ib.b, $$36, $$39);
-            }
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$21, $$22, $$15, ($$1x, $$2x, $$3x, $$4x, $$5x) -> this.a($$1x, $$17, $$2x, $$3x, $$4x, $$5x));
          }
       }
    }
 
-   private boolean a(csi $$0, hx $$1) {
-      return $$0.a_($$1).a(cvh.H);
-   }
+   private float[] a(dpy $$0, dpu $$1, auf $$2) {
+      int $$3 = $$0.b();
+      float[] $$4 = new float[$$3];
+      float $$5 = 1.0F;
 
-   private int a(atw $$0, int $$1, int $$2, float $$3, int $$4, dsc $$5) {
-      if ($$0.i() > $$3) {
-         return 0;
-      } else {
-         int $$6 = Math.abs($$1) + Math.abs($$2);
-         float $$7 = (float)atq.a((double)$$6, 0.0, (double)$$5.l, (double)$$4 / 2.0, 0.0);
-         return (int)a($$0, 0.0F, (float)$$4, $$7, (float)$$5.f);
-      }
-   }
-
-   private boolean b(csz $$0, hx $$1) {
-      dhn $$2 = $$0.a_($$1);
-      if (!$$2.a(cvh.G) && !$$2.a(cvh.su) && !$$2.a(cvh.st)) {
-         if ($$0.a_($$1.c()).u().a(arp.a)) {
-            return false;
-         } else {
-            for (ib $$3 : ib.c.a) {
-               if (!this.a((csg)$$0, $$1.a($$3))) {
-                  return false;
-               }
-            }
-
-            return this.a((csg)$$0, $$1.d());
-         }
-      } else {
-         return false;
-      }
-   }
-
-   private boolean a(csg $$0, hx $$1) {
-      dhn $$2 = $$0.a_($$1);
-      return $$2.a(ark.bd) || $$2.u().a(arp.a);
-   }
-
-   private void a(csz $$0, hx $$1, int $$2, ib $$3) {
-      hx.a $$4 = $$1.j();
-
-      for (int $$5 = 0; $$5 < $$2; $$5++) {
-         if (!dpw.c($$0, $$4)) {
-            return;
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         if ($$6 == 0 || $$2.a($$1.c.d) == 0) {
+            $$5 = 1.0F + $$2.i() * $$2.i();
          }
 
-         $$4.c($$3);
+         $$4[$$6] = $$5 * $$5;
       }
+
+      return $$4;
    }
 
-   private double a(int $$0, int $$1, int $$2, int $$3, dsc $$4) {
-      int $$5 = $$0 - Math.abs($$2);
-      int $$6 = $$1 - Math.abs($$3);
-      int $$7 = Math.min($$5, $$6);
-      return (double)atq.b((float)$$7, 0.0F, (float)$$4.k, $$4.j, 1.0F);
+   private double a(dpu $$0, auf $$1, double $$2, float $$3, float $$4) {
+      float $$5 = 1.0F - aty.e(0.5F - $$4 / $$3) * 2.0F;
+      float $$6 = $$0.c.f + $$0.c.g * $$5;
+      return (double)$$6 * $$2 * (double)aty.b($$1, 0.75F, 1.0F);
    }
 
-   private static float a(atw $$0, float $$1, float $$2, float $$3, float $$4) {
-      return bia.a($$0, $$3, $$4, $$1, $$2);
+   private boolean a(dpy $$0, float[] $$1, double $$2, double $$3, double $$4, int $$5) {
+      int $$6 = $$5 - $$0.a();
+      return ($$2 * $$2 + $$4 * $$4) * (double)$$1[$$6 - 1] + $$3 * $$3 / 6.0 >= 1.0;
    }
 }

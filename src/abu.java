@@ -1,40 +1,40 @@
-public class abu implements wo<yh> {
-   private final long a;
-   private final long b;
+public class abu implements wu<yo> {
+   private final float a;
+   private final int b;
+   private final float c;
 
-   public abu(long $$0, long $$1, boolean $$2) {
+   public abu(float $$0, int $$1, float $$2) {
       this.a = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
-      }
-
-      this.b = $$3;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public abu(ty $$0) {
-      this.a = $$0.readLong();
-      this.b = $$0.readLong();
+   public abu(ue $$0) {
+      this.a = $$0.readFloat();
+      this.b = $$0.n();
+      this.c = $$0.readFloat();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
+   public void a(ue $$0) {
+      $$0.a(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public long a() {
+   public float a() {
       return this.a;
    }
 
-   public long d() {
+   public int d() {
       return this.b;
+   }
+
+   public float e() {
+      return this.c;
    }
 }

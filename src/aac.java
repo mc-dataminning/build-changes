@@ -1,43 +1,86 @@
+import com.google.common.collect.Lists;
+import java.util.BitSet;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class aac implements wo<yh> {
-   private final int a;
-   private final chy<?> b;
-   private final uv c;
+public class aac {
+   private final BitSet a;
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final List<byte[]> e;
+   private final List<byte[]> f;
 
-   public aac(int $$0, chy<?> $$1, uv $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public aac(csf $$0, edo $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.a = new BitSet();
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = Lists.newArrayList();
+      this.f = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, cth.a, $$4, this.a, this.c, this.e);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, cth.b, $$4, this.b, this.d, this.f);
+         }
+      }
    }
 
-   public aac(ty $$0) {
-      this.a = $$0.n();
-      this.b = $$0.a(kc.s);
-      this.c = $$0.m();
+   public aac(ue $$0, int $$1, int $$2) {
+      this.a = $$0.z();
+      this.b = $$0.z();
+      this.c = $$0.z();
+      this.d = $$0.z();
+      this.e = $$0.a((ue.a<byte[]>)($$0x -> $$0x.a(2048)));
+      this.f = $$0.a((ue.a<byte[]>)($$0x -> $$0x.a(2048)));
    }
 
-   @Override
-   public void a(ty $$0) {
-      $$0.c(this.a);
-      $$0.a(kc.s, this.b);
+   public void a(ue $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, ue::a);
+      $$0.a(this.f, ue::a);
    }
 
-   public void a(yh $$0) {
-      $$0.a(this);
+   private void a(csf $$0, edo $$1, cth $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dkr $$7 = $$1.a($$2).a(ix.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public int a() {
+   public BitSet a() {
       return this.a;
    }
 
-   @Nullable
-   public chy<?> d() {
+   public BitSet b() {
+      return this.c;
+   }
+
+   public List<byte[]> c() {
+      return this.e;
+   }
+
+   public BitSet d() {
       return this.b;
    }
 
-   public uv e() {
-      return this.c;
+   public BitSet e() {
+      return this.d;
+   }
+
+   public List<byte[]> f() {
+      return this.f;
    }
 }

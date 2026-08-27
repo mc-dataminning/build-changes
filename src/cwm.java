@@ -1,125 +1,61 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cwm extends cza implements cvi {
+public class cwm extends dcr {
    public static final MapCodec<cwm> a = b(cwm::new);
-   public static final int b = 2;
-   public static final din c = did.ar;
-   protected static final int d = 4;
-   protected static final int e = 5;
-   protected static final int f = 2;
-   protected static final int g = 6;
-   protected static final int h = 7;
-   protected static final int i = 3;
-   protected static final int j = 8;
-   protected static final int k = 9;
-   protected static final int l = 4;
-   protected static final eks[] m = new eks[]{
-      cvf.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), cvf.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), cvf.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
-   };
-   protected static final eks[] n = new eks[]{
-      cvf.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), cvf.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), cvf.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
-   };
-   protected static final eks[] o = new eks[]{
-      cvf.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), cvf.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), cvf.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
-   };
-   protected static final eks[] F = new eks[]{
-      cvf.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), cvf.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), cvf.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
-   };
+   public static final djj b = djf.R;
 
    @Override
    public MapCodec<cwm> a() {
       return a;
    }
 
-   public cwm(dhm.d $$0) {
+   public cwm(dio.d $$0) {
       super($$0);
-      this.k(this.E.b().a(aE, ib.c).a(c, Integer.valueOf(0)));
-   }
-
-   @Override
-   public boolean e_(dhn $$0) {
-      return $$0.c(c) < 2;
-   }
-
-   @Override
-   public void b(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      if ($$1.z.a(5) == 0) {
-         int $$4 = $$0.c(c);
-         if ($$4 < 2) {
-            $$1.a($$2, $$0.a(c, Integer.valueOf($$4 + 1)), 2);
-         }
-      }
-   }
-
-   @Override
-   public boolean a(dhn $$0, csi $$1, hx $$2) {
-      dhn $$3 = $$1.a_($$2.a($$0.c(aE)));
-      return $$3.a(ark.z);
-   }
-
-   @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      int $$4 = $$0.c(c);
-      switch ((ib)$$0.c(aE)) {
-         case d:
-            return F[$$4];
-         case c:
-         default:
-            return o[$$4];
-         case e:
-            return n[$$4];
-         case f:
-            return m[$$4];
-      }
+      this.k(this.o().a(b, ia.c));
    }
 
    @Nullable
    @Override
-   public dhn a(cnw $$0) {
-      dhn $$1 = this.o();
-      csi $$2 = $$0.q();
-      hx $$3 = $$0.a();
+   public dgd a(hv $$0, dip $$1) {
+      return new dgi($$0, $$1);
+   }
 
-      for (ib $$4 : $$0.f()) {
-         if ($$4.o().d()) {
-            $$1 = $$1.a(aE, $$4);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
-         }
-      }
+   @Nullable
+   @Override
+   public <T extends dgd> dge<T> a(csy $$0, dip $$1, dgf<T> $$2) {
+      return !$$0.B ? a($$2, dgf.J, ($$0x, $$1x, $$2x, $$3) -> dni.c.a($$0x, $$3.gg(), $$3.gh())) : null;
+   }
 
-      return null;
+   @Nullable
+   @Override
+   public dip a(coq $$0) {
+      return super.a($$0).a(b, $$0.g());
    }
 
    @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      return $$1 == $$0.c(aE) && !$$0.a($$3, $$4) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public int a(dip $$0, cse $$1, hv $$2, ia $$3) {
+      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
    }
 
    @Override
-   public boolean b(csi $$0, hx $$1, dhn $$2) {
-      return $$2.c(c) < 2;
+   protected void a(diq.a<cvz, dip> $$0) {
+      super.a($$0);
+      $$0.a(b);
    }
 
    @Override
-   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
-      return true;
+   public dip a(dip $$0, dcl $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
-      $$0.a($$2, $$3.a(c, Integer.valueOf($$3.c(c) + 1)), 2);
+   public dip a(dip $$0, dav $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(aE, c);
-   }
-
-   @Override
-   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
-      return false;
+   public int c() {
+      return 10;
    }
 }

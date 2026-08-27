@@ -1,56 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class bvh extends bvf {
+   private boolean p;
 
-public class bvh extends bvq<bln> {
-   private static final int a = 40;
-   private static final int c = 5;
-   private static final int d = 20;
-   private final Long2LongMap e = new Long2LongOpenHashMap();
-   private int f;
-   private long g;
-
-   public bvh() {
-      super(20);
+   public bvh(blx $$0, csy $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<bum<?>> a() {
-      return ImmutableSet.of(bum.w);
+   protected eeq a(int $$0) {
+      this.p = this.a.ai() == blj.w;
+      this.o = new eer(this.p);
+      return new eeq(this.o, $$0);
    }
 
-   protected void a(ami $$0, bln $$1) {
-      if ($$1.o_()) {
-         this.f = 0;
-         this.g = $$0.W() + (long)$$0.F_().a(20);
-         bwk $$2 = $$0.x();
-         Predicate<hx> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.e.containsKey($$1x)) {
-               return false;
-            } else if (++this.f >= 5) {
-               return false;
-            } else {
-               this.e.put($$1x, this.g + 40L);
-               return true;
-            }
-         };
-         Set<Pair<ig<bwn>, hx>> $$4 = $$2.b($$0x -> $$0x.a(bwo.n), $$3, $$1.dn(), 48, bwk.b.c).collect(Collectors.toSet());
-         edm $$5 = bmv.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            hx $$6 = $$5.l();
-            Optional<ig<bwn>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.dP().a(bum.w, $$6);
-            }
-         } else if (this.f < 5) {
-            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
-         }
-      }
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bd();
+   }
+
+   @Override
+   protected elb b() {
+      return new elb(this.a.dr(), this.a.e(0.5), this.a.dx());
+   }
+
+   @Override
+   protected double a(elb $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(elb $$0, elb $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(hv $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

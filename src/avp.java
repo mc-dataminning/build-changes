@@ -1,23 +1,26 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Objects;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
 
 public class avp extends DataFix {
-   public avp(Schema $$0, boolean $$1) {
+   private final String a;
+   private final Function<String, String> b;
+
+   public avp(Schema $$0, boolean $$1, String $$2, Function<String, String> $$3) {
       super($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bcf.a());
+   protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "BlockEntityCustomNameToComponentFix", this.getInputSchema().getType(bax.s), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
-               Optional<String> $$3 = $$1.getOptional($$0);
-               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:command_block") ? $$2 : axe.a($$2);
-            })
+         this.a, this.getInputSchema().getType(bbg.p), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.updateMapValues($$1 -> {
+                  String $$2 = ((Dynamic)$$1.getFirst()).asString("");
+                  return $$1.mapFirst($$2x -> $$0x.createString(this.b.apply($$2)));
+               }))
       );
    }
 }

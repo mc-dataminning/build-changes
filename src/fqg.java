@@ -1,36 +1,38 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+public class fqg extends fqw {
+   private final fqr a;
 
-public class fqg implements bgy {
-   private final fqx a;
-   private final Set<bgw> b = new ObjectOpenHashSet();
-   private final bhe c = new bhe();
-
-   public fqg(LongSupplier $$0, fqx $$1) {
-      this.a = $$1;
-      this.b.add(bhf.a($$0));
-      this.a();
-   }
-
-   private void a() {
-      this.b.addAll(bhf.a());
-      this.b.add(bgw.a("totalChunks", bgv.f, this.a, fqx::i));
-      this.b.add(bgw.a("renderedChunks", bgv.f, this.a, fqx::k));
-      this.b.add(bgw.a("lastViewDistance", bgv.f, this.a, fqx::j));
-      ftx $$0 = this.a.h();
-      this.b.add(bgw.a("toUpload", bgv.g, $$0, ftx::c));
-      this.b.add(bgw.a("freeBufferCount", bgv.g, $$0, ftx::d));
-      this.b.add(bgw.a("toBatchCount", bgv.g, $$0, ftx::b));
-      if (enu.a().isPresent()) {
-         this.b.add(bgw.a("gpuUtilization", bgv.i, eti.N(), eti::u));
-      }
+   fqg(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fqr $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public Set<bgw> a(Supplier<bfq> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fqa b() {
+      return fqa.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   public static record a(fqr a) implements fpz<jy> {
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqg $$8 = new fqg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.z.a(4) + 6);
+         return $$8;
+      }
    }
 }

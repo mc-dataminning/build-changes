@@ -20,7 +20,7 @@ public class as {
    private float l;
 
    public as(ag $$0, @Nullable as $$1, @Nullable as $$2, int $$3, int $$4) {
-      if ($$0.a().d().isEmpty()) {
+      if ($$0.a().c().isEmpty()) {
          throw new IllegalArgumentException("Can't position an invisible advancement!");
       } else {
          this.a = $$0;
@@ -40,7 +40,7 @@ public class as {
 
    @Nullable
    private as a(ag $$0, @Nullable as $$1) {
-      if ($$0.a().d().isPresent()) {
+      if ($$0.a().c().isPresent()) {
          $$1 = new as($$0, this, $$1, this.e.size() + 1, this.h + 1);
          this.e.add($$1);
       } else {
@@ -195,7 +195,7 @@ public class as {
    }
 
    private void e() {
-      this.a.a().d().ifPresent($$0x -> $$0x.a((float)this.h, this.i));
+      this.a.a().c().ifPresent($$0x -> $$0x.a((float)this.h, this.i));
       if (!this.e.isEmpty()) {
          for (as $$0 : this.e) {
             $$0.e();
@@ -204,7 +204,7 @@ public class as {
    }
 
    public static void a(ag $$0) {
-      if ($$0.a().d().isEmpty()) {
+      if ($$0.a().c().isEmpty()) {
          throw new IllegalArgumentException("Can't position children of an invisible root!");
       } else {
          as $$1 = new as($$0, null, null, 1, 0);

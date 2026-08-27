@@ -1,53 +1,158 @@
-import com.google.gson.JsonObject;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
-public class ca extends cw<ca.a> {
-   public ca.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<cb> $$3 = cb.a($$0.get("item"));
-      cl.d $$4 = cl.d.a($$0.get("durability"));
-      cl.d $$5 = cl.d.a($$0.get("delta"));
-      return new ca.a($$1, $$3, $$4, $$5);
-   }
+public record ca(Optional<asg<cmc>> b, Optional<ij<cmc>> c, ck.d d, ck.d e, List<bk> f, List<bk> g, Optional<ie<coe>> h, Optional<cm> i) {
+   private static final Codec<ij<cmc>> j = kb.h.r().listOf().xmap(ij::a, $$0 -> $$0.a().toList());
+   public static final Codec<ca> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atg.a(asg.a(kc.F), "tag").forGetter(ca::a),
+               atg.a(j, "items").forGetter(ca::b),
+               atg.a(ck.d.d, "count", ck.d.c).forGetter(ca::c),
+               atg.a(ck.d.d, "durability", ck.d.c).forGetter(ca::d),
+               atg.a(bk.a.listOf(), "enchantments", List.of()).forGetter(ca::e),
+               atg.a(bk.a.listOf(), "stored_enchantments", List.of()).forGetter(ca::f),
+               atg.a(kb.i.r(), "potion").forGetter(ca::g),
+               atg.a(cm.a, "nbt").forGetter(ca::h)
+            )
+            .apply($$0, ca::new)
+   );
 
-   public void a(amj $$0, clo $$1, int $$2) {
-      this.a($$0, $$2x -> $$2x.a($$1, $$2));
-   }
+   public boolean a(cmh $$0) {
+      if (this.b.isPresent() && !$$0.a(this.b.get())) {
+         return false;
+      } else if (this.c.isPresent() && !$$0.a(this.c.get())) {
+         return false;
+      } else if (!this.d.d($$0.L())) {
+         return false;
+      } else if (!this.e.c() && !$$0.i()) {
+         return false;
+      } else if (!this.e.d($$0.l() - $$0.k())) {
+         return false;
+      } else if (this.i.isPresent() && !this.i.get().a($$0)) {
+         return false;
+      } else {
+         if (!this.f.isEmpty()) {
+            Map<cqs, Integer> $$1 = cqu.a($$0.x());
 
-   public static class a extends at {
-      private final Optional<cb> a;
-      private final cl.d b;
-      private final cl.d c;
-
-      public a(Optional<bc> $$0, Optional<cb> $$1, cl.d $$2, cl.d $$3) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
-         this.c = $$3;
-      }
-
-      public static am<ca.a> a(Optional<cb> $$0, cl.d $$1) {
-         return a(Optional.empty(), $$0, $$1);
-      }
-
-      public static am<ca.a> a(Optional<bc> $$0, Optional<cb> $$1, cl.d $$2) {
-         return al.t.a(new ca.a($$0, $$1, $$2, cl.d.c));
-      }
-
-      public boolean a(clo $$0, int $$1) {
-         if (this.a.isPresent() && !this.a.get().a($$0)) {
-            return false;
-         } else {
-            return !this.b.d($$0.l() - $$1) ? false : this.c.d($$0.k() - $$1);
+            for (bk $$2 : this.f) {
+               if (!$$2.a($$1)) {
+                  return false;
+               }
+            }
          }
+
+         if (!this.g.isEmpty()) {
+            Map<cqs, Integer> $$3 = cqu.a(cld.d($$0));
+
+            for (bk $$4 : this.g) {
+               if (!$$4.a($$3)) {
+                  return false;
+               }
+            }
+         }
+
+         return !this.h.isPresent() || this.h.get().a() == cog.d($$0);
+      }
+   }
+
+   public Optional<asg<cmc>> a() {
+      return this.b;
+   }
+
+   public Optional<ij<cmc>> b() {
+      return this.c;
+   }
+
+   public ck.d c() {
+      return this.d;
+   }
+
+   public ck.d d() {
+      return this.e;
+   }
+
+   public List<bk> e() {
+      return this.f;
+   }
+
+   public List<bk> f() {
+      return this.g;
+   }
+
+   public Optional<ie<coe>> g() {
+      return this.h;
+   }
+
+   public Optional<cm> h() {
+      return this.i;
+   }
+
+   public static class a {
+      private final Builder<bk> a = ImmutableList.builder();
+      private final Builder<bk> b = ImmutableList.builder();
+      private Optional<ij<cmc>> c = Optional.empty();
+      private Optional<asg<cmc>> d = Optional.empty();
+      private ck.d e = ck.d.c;
+      private ck.d f = ck.d.c;
+      private Optional<ie<coe>> g = Optional.empty();
+      private Optional<cm> h = Optional.empty();
+
+      private a() {
       }
 
-      @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         $$0.add("durability", this.b.e());
-         $$0.add("delta", this.c.e());
-         return $$0;
+      public static ca.a a() {
+         return new ca.a();
+      }
+
+      public ca.a a(csx... $$0) {
+         this.c = Optional.of(ij.a($$0x -> $$0x.k().j(), $$0));
+         return this;
+      }
+
+      public ca.a a(asg<cmc> $$0) {
+         this.d = Optional.of($$0);
+         return this;
+      }
+
+      public ca.a a(ck.d $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public ca.a b(ck.d $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public ca.a a(coe $$0) {
+         this.g = Optional.of($$0.c());
+         return this;
+      }
+
+      public ca.a a(sj $$0) {
+         this.h = Optional.of(new cm($$0));
+         return this;
+      }
+
+      public ca.a a(bk $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public ca.a b(bk $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      public ca b() {
+         List<bk> $$0 = this.a.build();
+         List<bk> $$1 = this.b.build();
+         return new ca(this.d, this.c, this.e, this.f, $$0, $$1, this.g, this.h);
       }
    }
 }

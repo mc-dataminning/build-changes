@@ -1,25 +1,52 @@
-public class fjz extends fiq {
-   public static final agm a = new agm("textures/entity/trident.png");
-   private final fkt b;
+public class fjz<T extends ccb> extends fjh<T> {
+   private static final String a = "tail_base";
+   private static final String b = "tail_tip";
+   private final fly f;
+   private final fly g;
+   private final fly h;
+   private final fly i;
+   private final fly j;
+   private final fly k;
+   private final fly l;
 
-   public fjz(fkt $$0) {
-      super(frh::c);
-      this.b = $$0;
+   public fjz(fly $$0) {
+      this.f = $$0;
+      fly $$1 = $$0.b("body");
+      this.k = $$1.b("tail_base");
+      this.l = this.k.b("tail_tip");
+      this.g = $$1.b("left_wing_base");
+      this.h = this.g.b("left_wing_tip");
+      this.i = $$1.b("right_wing_base");
+      this.j = this.i.b("right_wing_tip");
    }
 
-   public static fkz a() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      flc $$2 = $$1.a("pole", fky.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), fkv.a);
-      $$2.a("base", fky.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), fkv.a);
-      $$2.a("left_spike", fky.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), fkv.a);
-      $$2.a("middle_spike", fky.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), fkv.a);
-      $$2.a("right_spike", fky.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), fkv.a);
-      return fkz.a($$0, 32, 32);
+   public static fme b() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      fmh $$2 = $$1.a("body", fmd.c().a(0, 8).a(-3.0F, -2.0F, -8.0F, 5.0F, 3.0F, 9.0F), fma.b(-0.1F, 0.0F, 0.0F));
+      fmh $$3 = $$2.a("tail_base", fmd.c().a(3, 20).a(-2.0F, 0.0F, 0.0F, 3.0F, 2.0F, 6.0F), fma.a(0.0F, -2.0F, 1.0F));
+      $$3.a("tail_tip", fmd.c().a(4, 29).a(-1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 6.0F), fma.a(0.0F, 0.5F, 6.0F));
+      fmh $$4 = $$2.a("left_wing_base", fmd.c().a(23, 12).a(0.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), fma.a(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.1F));
+      $$4.a("left_wing_tip", fmd.c().a(16, 24).a(0.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), fma.a(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F));
+      fmh $$5 = $$2.a("right_wing_base", fmd.c().a(23, 12).a().a(-6.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), fma.a(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.1F));
+      $$5.a("right_wing_tip", fmd.c().a(16, 24).a().a(-13.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), fma.a(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1F));
+      $$2.a("head", fmd.c().a(0, 0).a(-4.0F, -2.0F, -5.0F, 7.0F, 3.0F, 5.0F), fma.a(0.0F, 1.0F, -7.0F, 0.2F, 0.0F, 0.0F));
+      return fme.a($$0, 64, 64);
    }
 
    @Override
-   public void a(eob $$0, eof $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public fly a() {
+      return this.f;
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = ((float)$$0.w() + $$3) * 7.448451F * (float) (Math.PI / 180.0);
+      float $$7 = 16.0F;
+      this.g.g = aty.b($$6) * 16.0F * (float) (Math.PI / 180.0);
+      this.h.g = aty.b($$6) * 16.0F * (float) (Math.PI / 180.0);
+      this.i.g = -this.g.g;
+      this.j.g = -this.h.g;
+      this.k.e = -(5.0F + aty.b($$6 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
+      this.l.e = -(5.0F + aty.b($$6 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
    }
 }

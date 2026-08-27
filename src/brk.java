@@ -1,32 +1,20 @@
-public class brk extends bri {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-   public brk(bln $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
-   }
-
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dF(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.N().l()) {
-            this.a.s(this.a(this.a.dF(), 0.0F, 5.0F));
-         }
-
-         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
-      }
-
-      float $$0 = atq.g(this.a.aW - this.a.aU);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aU -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aU += 4.0F;
-      }
+public class brk {
+   public static bnn<blv> a() {
+      return bqz.a(
+         (Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$0 -> $$0.group($$0.a(bux.n), $$0.a(bux.ay), $$0.a(bux.ax), $$0.c(bux.o))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<hv> $$7 = $$0.<blv>a($$3).map(blf::dm).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        $$1.a(new bnp($$7.get()));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

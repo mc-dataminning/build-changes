@@ -1,61 +1,97 @@
-import com.mojang.datafixers.Products.P3;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.BiConsumer;
 
-public abstract class duc {
-   public static final Codec<duc> d = kc.Z.q().dispatch(duc::a, dud::a);
-   protected final big e;
-   protected final duf f;
-   protected final Optional<dtz> g;
+public class duc implements dtg {
+   public static final Codec<duc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dvh.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
+               dwk.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
+               dvh.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
+               dus.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
+               dve.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
+               dvh.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
+               duh.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
+               dvy.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
+               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
+               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, duc::new)
+   );
+   public final dvh b;
+   public final dvh c;
+   public final dwk d;
+   public final dvh e;
+   public final dus f;
+   public final Optional<dve> g;
+   public final duh h;
+   public final List<dvy> i;
+   public final boolean j;
+   public final boolean k;
 
-   protected static <P extends duc> P3<Mu<P>, big, duf, Optional<dtz>> a(Instance<P> $$0) {
-      return $$0.group(
-         big.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         duf.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         dtz.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   protected duc(dvh $$0, dwk $$1, dvh $$2, dus $$3, Optional<dve> $$4, dvh $$5, duh $$6, List<dvy> $$7, boolean $$8, boolean $$9) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.c = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 
-   public duc(big $$0, duf $$1, Optional<dtz> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
+   public static class a {
+      public final dvh a;
+      private final dwk c;
+      public final dvh b;
+      private final dus d;
+      private final Optional<dve> e;
+      private dvh f;
+      private final duh g;
+      private List<dvy> h = ImmutableList.of();
+      private boolean i;
+      private boolean j;
 
-   protected abstract dud<?> a();
-
-   public abstract boolean a(csl var1, BiConsumer<hx, dhn> var2, atw var3, hx var4, hx var5, dta var6);
-
-   protected boolean a(csl $$0, hx $$1) {
-      return drm.c($$0, $$1);
-   }
-
-   protected void a(csl $$0, BiConsumer<hx, dhn> $$1, atw $$2, hx $$3, dta $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            dtz $$5 = this.g.get();
-            hx $$6 = $$3.c();
-            if ($$2.i() < $$5.b() && $$0.a($$6, dhm.a::i)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
+      public a(dvh $$0, dwk $$1, dvh $$2, dus $$3, Optional<dve> $$4, duh $$5) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+         this.f = dvh.a(cwb.j);
+         this.d = $$3;
+         this.e = $$4;
+         this.g = $$5;
       }
-   }
 
-   protected dhn a(csl $$0, hx $$1, dhn $$2) {
-      if ($$2.b(did.C)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(arp.a));
-         return $$2.a(did.C, Boolean.valueOf($$3));
-      } else {
-         return $$2;
+      public a(dvh $$0, dwk $$1, dvh $$2, dus $$3, duh $$4) {
+         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
       }
-   }
 
-   public hx a(hx $$0, atw $$1) {
-      return $$0.b(this.e.a($$1));
+      public duc.a a(dvh $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public duc.a a(List<dvy> $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public duc.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public duc.a b() {
+         this.j = true;
+         return this;
+      }
+
+      public duc c() {
+         return new duc(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+      }
    }
 }

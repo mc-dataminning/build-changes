@@ -1,71 +1,32 @@
-import javax.annotation.Nullable;
+public interface cny {
+   cny.a a = new cny.a(false, false);
+   cny.a b = new cny.a(true, false);
 
-public class cny {
-   @Nullable
-   private final cdz a;
-   private final bja b;
-   private final ejv c;
-   private final csf d;
-   private final clo e;
+   boolean a();
 
-   public cny(cdz $$0, bja $$1, ejv $$2) {
-      this($$0.dN(), $$0, $$1, $$0.b($$1), $$2);
-   }
+   boolean b();
 
-   protected cny(csf $$0, @Nullable cdz $$1, bja $$2, clo $$3, ejv $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
-   }
+   public static record a(boolean c, boolean d) implements cny {
+      @Override
+      public boolean a() {
+         return this.c;
+      }
 
-   protected final ejv j() {
-      return this.c;
-   }
+      @Override
+      public boolean b() {
+         return this.d;
+      }
 
-   public hx a() {
-      return this.c.a();
-   }
+      public cny.a c() {
+         return new cny.a(this.c, true);
+      }
 
-   public ib k() {
-      return this.c.b();
-   }
+      public boolean d() {
+         return this.c;
+      }
 
-   public ejz l() {
-      return this.c.e();
-   }
-
-   public boolean m() {
-      return this.c.d();
-   }
-
-   public clo n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cdz o() {
-      return this.a;
-   }
-
-   public bja p() {
-      return this.b;
-   }
-
-   public csf q() {
-      return this.d;
-   }
-
-   public ib g() {
-      return this.a == null ? ib.c : this.a.cE();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fJ();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dD();
+      public boolean e() {
+         return this.d;
+      }
    }
 }

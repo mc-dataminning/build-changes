@@ -1,32 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class eac extends dxm {
-   public static final Codec<eac> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, eac::new)
+record eac(ags<dzx> c, bhv<ags<dzx>> d) implements dzz {
+   static Codec<eac> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ags.a(kc.aF).fieldOf("alias").forGetter(eac::c), bhv.b(ags.a(kc.aF)).fieldOf("targets").forGetter(eac::d)).apply($$0, eac::new)
    );
-   public final boolean e;
 
-   public eac(dxm.c $$0, boolean $$1) {
-      super($$0);
-      this.e = $$1;
+   @Override
+   public void a(auf $$0, BiConsumer<ags<dzx>, ags<dzx>> $$1) {
+      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (ags<dzx>)$$1x.b()));
    }
 
    @Override
-   public Optional<dxm.b> a(dxm.a $$0) {
-      dmw.a $$1 = this.e ? dmw.a.a : dmw.a.c;
-      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
-   }
-
-   private void a(dye $$0, dxm.a $$1) {
-      dbr $$2 = dbr.a($$1.f());
-      hx $$3 = new hx($$1.h().d(), 90, $$1.h().e());
-      eab.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
+   public Stream<ags<dzx>> a() {
+      return this.d.e().stream().map(bhx.b::b);
    }
 
    @Override
-   public dxv<?> e() {
-      return dxv.m;
+   public Codec<eac> b() {
+      return a;
    }
 }

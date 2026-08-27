@@ -1,16 +1,69 @@
-public class ges extends geu {
-   public ges(bwx $$0) {
-      super($$0, aqv.bB, aqw.g);
-      this.j = 0;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
+
+public class ges extends se {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
+
+   private ges(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public static ges a(aps $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = Maps.newHashMap();
+
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
+
+         for (String $$6 : $$0.a()) {
+            try {
+               agt $$7 = new agt($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+            }
+         }
+      }
+
+      return new ges(ImmutableMap.copyOf($$3), $$2);
+   }
+
+   private static void a(String $$0, List<apq> $$1, Map<String, String> $$2) {
+      for (apq $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            se.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
+      }
    }
 
    @Override
-   protected geq o() {
-      return new get(this.n);
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
    }
 
    @Override
-   protected boolean p() {
-      return !this.n.aa_();
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
+   }
+
+   @Override
+   public boolean b() {
+      return this.d;
+   }
+
+   @Override
+   public atk a(vg $$0) {
+      return get.a($$0, this.d);
    }
 }

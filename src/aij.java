@@ -1,193 +1,41 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import javax.annotation.Nullable;
 
 public class aij {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("commands.effect.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(uv.c("commands.effect.clear.everything.failed"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(uv.c("commands.effect.clear.specific.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("commands.deop.failed"));
 
-   public static void a(CommandDispatcher<du> $$0, dp $$1) {
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("effect").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ((LiteralArgumentBuilder)dv.a("clear").executes($$0x -> a((du)$$0x.getSource(), ImmutableList.of(((du)$$0x.getSource()).g()))))
-                     .then(
-                        ((RequiredArgumentBuilder)dv.a("targets", eg.b()).executes($$0x -> a((du)$$0x.getSource(), eg.b($$0x, "targets"))))
-                           .then(dv.a("effect", es.a($$1, kd.P)).executes($$0x -> a((du)$$0x.getSource(), eg.b($$0x, "targets"), es.f($$0x, "effect"))))
-                     )
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("deop").requires($$0x -> $$0x.c(3)))
             .then(
-               dv.a("give")
-                  .then(
-                     dv.a("targets", eg.b())
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("effect", es.a($$1, kd.P))
-                                    .executes($$0x -> a((du)$$0x.getSource(), eg.b($$0x, "targets"), es.f($$0x, "effect"), null, 0, true)))
-                                 .then(
-                                    ((RequiredArgumentBuilder)dv.a("seconds", IntegerArgumentType.integer(1, 1000000))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (du)$$0x.getSource(),
-                                                   eg.b($$0x, "targets"),
-                                                   es.f($$0x, "effect"),
-                                                   IntegerArgumentType.getInteger($$0x, "seconds"),
-                                                   0,
-                                                   true
-                                                )
-                                          ))
-                                       .then(
-                                          ((RequiredArgumentBuilder)dv.a("amplifier", IntegerArgumentType.integer(0, 255))
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (du)$$0x.getSource(),
-                                                         eg.b($$0x, "targets"),
-                                                         es.f($$0x, "effect"),
-                                                         IntegerArgumentType.getInteger($$0x, "seconds"),
-                                                         IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                         true
-                                                      )
-                                                ))
-                                             .then(
-                                                dv.a("hideParticles", BoolArgumentType.bool())
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (du)$$0x.getSource(),
-                                                            eg.b($$0x, "targets"),
-                                                            es.f($$0x, "effect"),
-                                                            IntegerArgumentType.getInteger($$0x, "seconds"),
-                                                            IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                            !BoolArgumentType.getBool($$0x, "hideParticles")
-                                                         )
-                                                   )
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 ((LiteralArgumentBuilder)dv.a("infinite")
-                                       .executes($$0x -> a((du)$$0x.getSource(), eg.b($$0x, "targets"), es.f($$0x, "effect"), -1, 0, true)))
-                                    .then(
-                                       ((RequiredArgumentBuilder)dv.a("amplifier", IntegerArgumentType.integer(0, 255))
-                                             .executes(
-                                                $$0x -> a(
-                                                      (du)$$0x.getSource(),
-                                                      eg.b($$0x, "targets"),
-                                                      es.f($$0x, "effect"),
-                                                      -1,
-                                                      IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                      true
-                                                   )
-                                             ))
-                                          .then(
-                                             dv.a("hideParticles", BoolArgumentType.bool())
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (du)$$0x.getSource(),
-                                                         eg.b($$0x, "targets"),
-                                                         es.f($$0x, "effect"),
-                                                         -1,
-                                                         IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                         !BoolArgumentType.getBool($$0x, "hideParticles")
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
+               dt.a("targets", eg.a())
+                  .suggests(($$0x, $$1) -> dw.a(((ds)$$0x.getSource()).l().ae().l(), $$1))
+                  .executes($$0x -> a((ds)$$0x.getSource(), eg.a($$0x, "targets")))
             )
       );
    }
 
-   private static int a(du $$0, Collection<? extends bkv> $$1, ig<bkg> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
-      bkg $$6 = $$2.a();
-      int $$7 = 0;
-      int $$8;
-      if ($$3 != null) {
-         if ($$6.a()) {
-            $$8 = $$3;
-         } else if ($$3 == -1) {
-            $$8 = -1;
-         } else {
-            $$8 = $$3 * 20;
-         }
-      } else if ($$6.a()) {
-         $$8 = 1;
-      } else {
-         $$8 = 600;
-      }
+   private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      aqf $$2 = $$0.l().ae();
+      int $$3 = 0;
 
-      for (bkv $$13 : $$1) {
-         if ($$13 instanceof bll) {
-            bki $$14 = new bki($$6, $$8, $$4, false, $$5);
-            if (((bll)$$13).b($$14, $$0.f())) {
-               $$7++;
-            }
+      for (GameProfile $$4 : $$1) {
+         if ($$2.f($$4)) {
+            $$2.b($$4);
+            $$3++;
+            $$0.a(() -> vb.a("commands.deop.success", $$1.iterator().next().getName()), true);
          }
       }
 
-      if ($$7 == 0) {
+      if ($$3 == 0) {
          throw a.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> uv.a("commands.effect.give.success.single", $$6.e(), $$1.iterator().next().Q_(), $$8 / 20), true);
-         } else {
-            $$0.a(() -> uv.a("commands.effect.give.success.multiple", $$6.e(), $$1.size(), $$8 / 20), true);
-         }
-
-         return $$7;
-      }
-   }
-
-   private static int a(du $$0, Collection<? extends bkv> $$1) throws CommandSyntaxException {
-      int $$2 = 0;
-
-      for (bkv $$3 : $$1) {
-         if ($$3 instanceof bll && ((bll)$$3).es()) {
-            $$2++;
-         }
-      }
-
-      if ($$2 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> uv.a("commands.effect.clear.everything.success.single", $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> uv.a("commands.effect.clear.everything.success.multiple", $$1.size()), true);
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int a(du $$0, Collection<? extends bkv> $$1, ig<bkg> $$2) throws CommandSyntaxException {
-      bkg $$3 = $$2.a();
-      int $$4 = 0;
-
-      for (bkv $$5 : $$1) {
-         if ($$5 instanceof bll && ((bll)$$5).d($$3)) {
-            $$4++;
-         }
-      }
-
-      if ($$4 == 0) {
-         throw c.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> uv.a("commands.effect.clear.specific.success.single", $$3.e(), $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> uv.a("commands.effect.clear.specific.success.multiple", $$3.e(), $$1.size()), true);
-         }
-
-         return $$4;
+         $$0.l().a($$0);
+         return $$3;
       }
    }
 }

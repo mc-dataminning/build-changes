@@ -1,49 +1,42 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public record dun(duf b, List<dun.a> c) {
-   public static final Codec<dun> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(duf.a.fieldOf("fallback").forGetter(dun::a), dun.a.a.listOf().fieldOf("rules").forGetter(dun::b)).apply($$0, dun::new)
-   );
+public class dun extends dus {
+   public static final Codec<dun> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dun::new));
+   protected final int b;
 
-   public static dun a(duf $$0) {
-      return new dun($$0, List.of());
+   protected static <P extends dun> P3<Mu<P>, biq, biq, Integer> a(Instance<P> $$0) {
+      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
    }
 
-   public static dun a(cvf $$0) {
-      return a(duf.a($$0));
+   public dun(biq $$0, biq $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public dhn a(csz $$0, atw $$1, hx $$2) {
-      for (dun.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
+   @Override
+   protected dut<?> a() {
+      return dut.a;
+   }
+
+   @Override
+   protected void a(cte $$0, dus.b $$1, auf $$2, duc $$3, int $$4, dus.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
-
-      return this.b.a($$1, $$2);
    }
 
-   public duf a() {
+   @Override
+   public int a(auf $$0, int $$1, duc $$2) {
       return this.b;
    }
 
-   public List<dun.a> b() {
-      return this.c;
-   }
-
-   public static record a(dod b, duf c) {
-      public static final Codec<dun.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dod.b.fieldOf("if_true").forGetter(dun.a::a), duf.a.fieldOf("then").forGetter(dun.a::b)).apply($$0, dun.a::new)
-      );
-
-      public dod a() {
-         return this.b;
-      }
-
-      public duf b() {
-         return this.c;
-      }
+   @Override
+   protected boolean a(auf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
    }
 }

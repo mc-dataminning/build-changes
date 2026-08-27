@@ -1,81 +1,105 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonObject;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
 
-public class cd extends cw<cd.a> {
-   public cd.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      List<bc> $$3 = bq.b($$0, "victims", $$2);
-      cl.d $$4 = cl.d.a($$0.get("unique_entity_types"));
-      return new cd.a($$1, $$3, $$4);
+public class cd extends cv<cd.a> {
+   @Override
+   public Codec<cd.a> a() {
+      return cd.a.a;
    }
 
-   public void a(amj $$0, Collection<bkv> $$1) {
-      List<efc> $$2 = Lists.newArrayList();
-      Set<bkz<?>> $$3 = Sets.newHashSet();
-
-      for (bkv $$4 : $$1) {
-         $$3.add($$4.ai());
-         $$2.add(bq.b($$0, $$4));
-      }
-
-      this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
+   public void a(amq $$0, blf $$1, bkd $$2) {
+      ege $$3 = bp.b($$0, $$1);
+      this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
-   public static class a extends at {
-      private final List<bc> a;
-      private final cl.d b;
+   public static record a(Optional<bb> b, Optional<bb> c, Optional<bf> d) implements cv.a {
+      public static final Codec<cd.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(cd.a::a), atg.a(bp.b, "entity").forGetter(cd.a::e), atg.a(bf.a, "killing_blow").forGetter(cd.a::f))
+               .apply($$0, cd.a::new)
+      );
 
-      public a(Optional<bc> $$0, List<bc> $$1, cl.d $$2) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
+      public static an<cd.a> a(Optional<bp> $$0) {
+         return am.c.a(new cd.a(Optional.empty(), bp.a($$0), Optional.empty()));
       }
 
-      public static am<cd.a> a(bq.a... $$0) {
-         return al.G.a(new cd.a(Optional.empty(), bq.a($$0), cl.d.c));
+      public static an<cd.a> a(bp.a $$0) {
+         return am.c.a(new cd.a(Optional.empty(), Optional.of(bp.a($$0)), Optional.empty()));
       }
 
-      public static am<cd.a> a(cl.d $$0) {
-         return al.G.a(new cd.a(Optional.empty(), List.of(), $$0));
+      public static an<cd.a> b() {
+         return am.c.a(new cd.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(Collection<efc> $$0, int $$1) {
-         if (!this.a.isEmpty()) {
-            List<efc> $$2 = Lists.newArrayList($$0);
+      public static an<cd.a> a(Optional<bp> $$0, Optional<bf> $$1) {
+         return am.c.a(new cd.a(Optional.empty(), bp.a($$0), $$1));
+      }
 
-            for (bc $$3 : this.a) {
-               boolean $$4 = false;
-               Iterator<efc> $$5 = $$2.iterator();
+      public static an<cd.a> a(bp.a $$0, Optional<bf> $$1) {
+         return am.c.a(new cd.a(Optional.empty(), Optional.of(bp.a($$0)), $$1));
+      }
 
-               while ($$5.hasNext()) {
-                  efc $$6 = $$5.next();
-                  if ($$3.a($$6)) {
-                     $$5.remove();
-                     $$4 = true;
-                     break;
-                  }
-               }
+      public static an<cd.a> a(Optional<bp> $$0, bf.a $$1) {
+         return am.c.a(new cd.a(Optional.empty(), bp.a($$0), Optional.of($$1.b())));
+      }
 
-               if (!$$4) {
-                  return false;
-               }
-            }
-         }
+      public static an<cd.a> a(bp.a $$0, bf.a $$1) {
+         return am.c.a(new cd.a(Optional.empty(), Optional.of(bp.a($$0)), Optional.of($$1.b())));
+      }
 
-         return this.b.d($$1);
+      public static an<cd.a> c() {
+         return am.X.a(new cd.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static an<cd.a> b(Optional<bp> $$0) {
+         return am.d.a(new cd.a(Optional.empty(), bp.a($$0), Optional.empty()));
+      }
+
+      public static an<cd.a> b(bp.a $$0) {
+         return am.d.a(new cd.a(Optional.empty(), Optional.of(bp.a($$0)), Optional.empty()));
+      }
+
+      public static an<cd.a> d() {
+         return am.d.a(new cd.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static an<cd.a> b(Optional<bp> $$0, Optional<bf> $$1) {
+         return am.d.a(new cd.a(Optional.empty(), bp.a($$0), $$1));
+      }
+
+      public static an<cd.a> b(bp.a $$0, Optional<bf> $$1) {
+         return am.d.a(new cd.a(Optional.empty(), Optional.of(bp.a($$0)), $$1));
+      }
+
+      public static an<cd.a> b(Optional<bp> $$0, bf.a $$1) {
+         return am.d.a(new cd.a(Optional.empty(), bp.a($$0), Optional.of($$1.b())));
+      }
+
+      public static an<cd.a> b(bp.a $$0, bf.a $$1) {
+         return am.d.a(new cd.a(Optional.empty(), Optional.of(bp.a($$0)), Optional.of($$1.b())));
+      }
+
+      public boolean a(amq $$0, ege $$1, bkd $$2) {
+         return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
       }
 
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         $$0.add("victims", bc.a(this.a));
-         $$0.add("unique_entity_types", this.b.e());
-         return $$0;
+      public void a(bc $$0) {
+         cv.a.super.a($$0);
+         $$0.a(this.c, ".entity");
+      }
+
+      @Override
+      public Optional<bb> a() {
+         return this.b;
+      }
+
+      public Optional<bb> e() {
+         return this.c;
+      }
+
+      public Optional<bf> f() {
+         return this.d;
       }
    }
 }

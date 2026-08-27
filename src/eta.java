@@ -1,104 +1,41 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.text2speech.Narrator;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
-import org.slf4j.Logger;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.Date;
+import java.util.UUID;
 
 public class eta {
-   public static final uv a = uu.a;
-   private static final Logger b = LogUtils.getLogger();
-   private final eti c;
-   private final Narrator d = Narrator.getNarrator();
+   private static final vb a = vb.c("mco.util.time.now");
+   private static final int b = 60;
+   private static final int c = 3600;
+   private static final int d = 86400;
 
-   public eta(eti $$0) {
-      this.c = $$0;
-   }
-
-   public void a(uv $$0) {
-      if (this.d().c()) {
-         String $$1 = $$0.getString();
-         this.b($$1);
-         this.d.say($$1, false);
-      }
-   }
-
-   public void b(uv $$0) {
-      String $$1 = $$0.getString();
-      if (this.d().d() && !$$1.isEmpty()) {
-         this.b($$1);
-         this.d.say($$1, false);
-      }
-   }
-
-   public void c(uv $$0) {
-      this.a($$0.getString());
-   }
-
-   public void a(String $$0) {
-      if (this.d().d() && !$$0.isEmpty()) {
-         this.b($$0);
-         if (this.d.active()) {
-            this.d.clear();
-            this.d.say($$0, true);
-         }
-      }
-   }
-
-   private etk d() {
-      return this.c.m.ap().c();
-   }
-
-   private void b(String $$0) {
-      if (aa.aT) {
-         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
-      }
-   }
-
-   public void a(etk $$0) {
-      this.b();
-      this.d.say(uv.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
-      exn $$1 = eti.N().ax();
-      if (this.d.active()) {
-         if ($$0 == etk.a) {
-            exl.b($$1, exl.a.b, uv.c("narrator.toast.disabled"), null);
-         } else {
-            exl.b($$1, exl.a.b, uv.c("narrator.toast.enabled"), $$0.b());
-         }
+   public static vb a(long $$0) {
+      if ($$0 < 0L) {
+         return a;
       } else {
-         exl.b($$1, exl.a.b, uv.c("narrator.toast.disabled"), uv.c("options.narrator.notavailable"));
+         long $$1 = $$0 / 1000L;
+         if ($$1 < 60L) {
+            return vb.a("mco.time.secondsAgo", $$1);
+         } else if ($$1 < 3600L) {
+            long $$2 = $$1 / 60L;
+            return vb.a("mco.time.minutesAgo", $$2);
+         } else if ($$1 < 86400L) {
+            long $$3 = $$1 / 3600L;
+            return vb.a("mco.time.hoursAgo", $$3);
+         } else {
+            long $$4 = $$1 / 86400L;
+            return vb.a("mco.time.daysAgo", $$4);
+         }
       }
    }
 
-   public boolean a() {
-      return this.d.active();
+   public static vb a(Date $$0) {
+      return a(System.currentTimeMillis() - $$0.getTime());
    }
 
-   public void b() {
-      if (this.d() != etk.a && this.d.active()) {
-         this.d.clear();
-      }
-   }
-
-   public void c() {
-      this.d.destroy();
-   }
-
-   public void a(boolean $$0) {
-      if ($$0
-         && !this.a()
-         && !TinyFileDialogs.tinyfd_messageBox(
-            "Minecraft",
-            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
-            "yesno",
-            "error",
-            true
-         )) {
-         throw new eta.a("Narrator library is not active");
-      }
-   }
-
-   public static class a extends fgo {
-      public a(String $$0) {
-         super($$0);
-      }
+   public static void a(evw $$0, int $$1, int $$2, int $$3, UUID $$4) {
+      euk $$5 = euk.N();
+      ProfileResult $$6 = $$5.aj().fetchProfile($$4, false);
+      geo $$7 = $$6 != null ? $$5.ak().b($$6.profile()) : geg.a($$4);
+      exg.a($$0, $$7.a(), $$1, $$2, $$3);
    }
 }

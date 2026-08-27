@@ -1,27 +1,28 @@
-import javax.annotation.Nullable;
-
-public class acd implements wo<yh> {
+public class acd implements wu<yo> {
    private final int a;
-   @Nullable
-   private final sd b;
+   private final int b;
+   private final int c;
 
-   public acd(int $$0, @Nullable sd $$1) {
+   public acd(int $$0, int $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public acd(ty $$0) {
-      this.a = $$0.n();
-      this.b = $$0.q();
+   public acd(ue $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.c(this.a);
-      $$0.a((ta)this.b);
+   public void a(ue $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
@@ -29,13 +30,11 @@ public class acd implements wo<yh> {
       return this.a;
    }
 
-   @Nullable
-   public sd d() {
+   public int d() {
       return this.b;
    }
 
-   @Override
-   public boolean b() {
-      return true;
+   public int e() {
+      return this.c;
    }
 }

@@ -1,66 +1,92 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.util.Arrays;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
-public class cc extends cw<cc.a> {
-   public cc.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<Optional<bc>> $$3 = bc.a("location", $$2, $$0.get("location"), ehm.m);
-      if ($$3.isEmpty()) {
-         throw new JsonParseException("Failed to parse 'location' field");
-      } else {
-         return new cc.a($$1, $$3.get());
-      }
+public class cc extends cv<cc.a> {
+   @Override
+   public Codec<cc.a> a() {
+      return cc.a.a;
    }
 
-   public void a(amj $$0, hx $$1, clo $$2) {
-      ami $$3 = $$0.z();
-      dhn $$4 = $$3.a_($$1);
-      efi $$5 = new efi.a($$3).a(ehn.f, $$1.b()).a(ehn.a, $$0).a(ehn.g, $$4).a(ehn.i, $$2).a(ehm.m);
-      efc $$6 = new efc.a($$5).a(Optional.empty());
-      this.a($$0, $$1x -> $$1x.a($$6));
+   public void a(amq $$0, Collection<blf> $$1) {
+      List<ege> $$2 = Lists.newArrayList();
+      Set<blj<?>> $$3 = Sets.newHashSet();
+
+      for (blf $$4 : $$1) {
+         $$3.add($$4.ai());
+         $$2.add(bp.b($$0, $$4));
+      }
+
+      this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
    }
 
-   public static class a extends at {
-      private final Optional<bc> a;
+   public static record a(Optional<bb> b, List<bb> c, ck.d d) implements cv.a {
+      public static final Codec<cc.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  atg.a(bp.b, "player").forGetter(cc.a::a),
+                  atg.a(bp.b.listOf(), "victims", List.of()).forGetter(cc.a::b),
+                  atg.a(ck.d.d, "unique_entity_types", ck.d.c).forGetter(cc.a::c)
+               )
+               .apply($$0, cc.a::new)
+      );
 
-      public a(Optional<bc> $$0, Optional<bc> $$1) {
-         super($$0);
-         this.a = $$1;
+      public static an<cc.a> a(bp.a... $$0) {
+         return am.H.a(new cc.a(Optional.empty(), bp.a($$0), ck.d.c));
       }
 
-      public static am<cc.a> a(cvf $$0) {
-         bc $$1 = bc.a(eia.a($$0).build());
-         return al.y.a(new cc.a(Optional.empty(), Optional.of($$1)));
+      public static an<cc.a> a(ck.d $$0) {
+         return am.H.a(new cc.a(Optional.empty(), List.of(), $$0));
       }
 
-      public static am<cc.a> a(eib.a... $$0) {
-         bc $$1 = bc.a(Arrays.stream($$0).map(eib.a::build).toArray(eib[]::new));
-         return al.y.a(new cc.a(Optional.empty(), Optional.of($$1)));
-      }
+      public boolean a(Collection<ege> $$0, int $$1) {
+         if (!this.c.isEmpty()) {
+            List<ege> $$2 = Lists.newArrayList($$0);
 
-      private static cc.a c(cj.a $$0, cb.a $$1) {
-         bc $$2 = bc.a(ehz.a($$0).build(), eii.a($$1).build());
-         return new cc.a(Optional.empty(), Optional.of($$2));
-      }
+            for (bb $$3 : this.c) {
+               boolean $$4 = false;
+               Iterator<ege> $$5 = $$2.iterator();
 
-      public static am<cc.a> a(cj.a $$0, cb.a $$1) {
-         return al.M.a(c($$0, $$1));
-      }
+               while ($$5.hasNext()) {
+                  ege $$6 = $$5.next();
+                  if ($$3.a($$6)) {
+                     $$5.remove();
+                     $$4 = true;
+                     break;
+                  }
+               }
 
-      public static am<cc.a> b(cj.a $$0, cb.a $$1) {
-         return al.X.a(c($$0, $$1));
-      }
+               if (!$$4) {
+                  return false;
+               }
+            }
+         }
 
-      public boolean a(efc $$0) {
-         return this.a.isEmpty() || this.a.get().a($$0);
+         return this.d.d($$1);
       }
 
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("location", $$1.a()));
-         return $$0;
+      public void a(bc $$0) {
+         cv.a.super.a($$0);
+         $$0.a(this.c, ".victims");
+      }
+
+      @Override
+      public Optional<bb> a() {
+         return this.b;
+      }
+
+      public List<bb> b() {
+         return this.c;
+      }
+
+      public ck.d c() {
+         return this.d;
       }
    }
 }

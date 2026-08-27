@@ -1,28 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 
-public record asi(int d, int e) {
-   public static final Codec<Integer> a = asy.a(0, 15);
-   public static final Codec<asi> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a.fieldOf("block").forGetter(asi::b), a.fieldOf("sky").forGetter(asi::c)).apply($$0, asi::new)
+public class asi implements apm {
+   private static final Map<ags<? extends ir<?>>, String> a = Map.of(
+      kc.f, "tags/blocks", kc.u, "tags/entity_types", kc.y, "tags/fluids", kc.B, "tags/game_events", kc.F, "tags/items"
    );
-   public static asi c = new asi(15, 15);
+   private final is b;
+   private List<asi.a<?>> c = List.of();
 
-   public int a() {
-      return this.d << 4 | this.e << 20;
+   public asi(is $$0) {
+      this.b = $$0;
    }
 
-   public static asi a(int $$0) {
-      int $$1 = $$0 >> 4 & 65535;
-      int $$2 = $$0 >> 20 & 65535;
-      return new asi($$1, $$2);
+   public List<asi.a<?>> a() {
+      return this.c;
    }
 
-   public int b() {
-      return this.d;
+   public static String a(ags<? extends ir<?>> $$0) {
+      String $$1 = a.get($$0);
+      return $$1 != null ? $$1 : "tags/" + $$0.a().a();
    }
 
-   public int c() {
-      return this.e;
+   @Override
+   public CompletableFuture<Void> a(apm.a $$0, aps $$1, bgc $$2, bgc $$3, Executor $$4, Executor $$5) {
+      List<? extends CompletableFuture<? extends asi.a<?>>> $$6 = this.b.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
+      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
+         .thenCompose($$0::a)
+         .thenAcceptAsync($$1x -> this.c = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
+   }
+
+   private <T> CompletableFuture<asi.a<T>> a(aps $$0, Executor $$1, is.d<T> $$2) {
+      ags<? extends ir<T>> $$3 = $$2.a();
+      ir<T> $$4 = $$2.b();
+      ash<ie<T>> $$5 = new ash<>($$2x -> $$4.b(ags.a($$3, $$2x)), a($$3));
+      return CompletableFuture.supplyAsync(() -> new asi.a<>($$3, $$5.b($$0)), $$1);
+   }
+
+   public static record a<T>(ags<? extends ir<T>> a, Map<agt, Collection<ie<T>>> b) {
    }
 }

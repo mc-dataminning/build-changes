@@ -1,24 +1,32 @@
-public class btj extends bsg {
-   private final blu a;
+public class btj extends bsi {
+   private final boolean a;
+   private int b;
 
-   public btj(blu $$0) {
-      this.a = $$0;
+   public btj(blx $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public boolean a() {
-      return this.a.dN().O() && this.a.c(bla.f).b() && bwc.a(this.a);
+   public boolean b() {
+      return this.a && this.b > 0 && super.b();
    }
 
    @Override
    public void c() {
-      ((but)this.a.N()).d(true);
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
    public void d() {
-      if (bwc.a(this.a)) {
-         ((but)this.a.N()).d(false);
-      }
+      this.a(false);
+   }
+
+   @Override
+   public void e() {
+      this.b--;
+      super.e();
    }
 }

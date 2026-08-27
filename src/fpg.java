@@ -1,115 +1,79 @@
-public class fpg extends fpo {
-   private static final atw a = atw.a();
-   private final fpj b;
+import javax.annotation.Nullable;
 
-   fpg(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fpj $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
+public class fpg extends fqw {
+   private final float a;
+   private final fqr b;
+
+   fpg(fmt $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fqr $$7) {
+      super($$0, $$1, $$2, $$3);
       this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
-
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
       this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
-      }
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public fos b() {
-      return fos.c;
+   public fqa b() {
+      return fqa.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * aty.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.b);
-      if (this.g()) {
-         this.e(0.0F);
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         this.e(atq.i(0.05F, this.y, 1.0F));
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   private boolean g() {
-      eti $$0 = eti.N();
-      fqb $$1 = $$0.s;
-      return $$1 != null && $$1.br().c(this.g, this.h, this.i) <= 9.0 && $$0.m.ax().a() && $$1.gr();
-   }
+   public static class a implements fpz<jn> {
+      private final fqr a;
 
-   public static class a implements foq<jz> {
-      private final fpj a;
-
-      public a(fpj $$0) {
+      public a(fqr $$0) {
          this.a = $$0;
       }
 
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fon $$8 = new fpg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(0.15F);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
+      @Nullable
+      public fpw a(jn $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dip $$8 = $$0.c();
+         if (!$$8.i() && $$8.l() == dce.a) {
+            return null;
+         } else {
+            hv $$9 = hv.a($$2, $$3, $$4);
+            int $$10 = euk.N().at().a($$8, $$1, $$9);
+            if ($$8.b() instanceof cyv) {
+               $$10 = ((cyv)$$8.b()).b($$8, $$1, $$9);
+            }
 
-   public static class b implements foq<jz> {
-      private final fpj a;
-
-      public b(fpj $$0) {
-         this.a = $$0;
-      }
-
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class c implements foq<jz> {
-      private final fpj a;
-
-      public c(fpj $$0) {
-         this.a = $$0;
-      }
-
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fon $$8 = new fpg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
-
-   public static class d implements foq<jz> {
-      private final fpj a;
-
-      public d(fpj $$0) {
-         this.a = $$0;
-      }
-
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class e implements foq<jz> {
-      private final fpj a;
-
-      public e(fpj $$0) {
-         this.a = $$0;
-      }
-
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpg $$8 = new fpg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.z.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
-         return $$8;
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new fpg($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

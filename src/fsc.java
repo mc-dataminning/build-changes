@@ -1,166 +1,168 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
 import java.io.Reader;
-import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fsc {
-   private final Map<String, fsj> a = Maps.newLinkedHashMap();
-   private fso b;
+public class fsc extends apx<fsc.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final agt b = new agt("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
 
-   public static fsc a(fsc.a $$0, Reader $$1) {
-      return atg.a($$0.a, $$1, fsc.class);
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   public static fsc a(fsc.a $$0, JsonElement $$1) {
-      return (fsc)$$0.a.fromJson($$1, fsc.class);
+   public boolean b() {
+      return this.a() && !this.e;
    }
 
-   public fsc(Map<String, fsj> $$0, fso $$1) {
-      this.b = $$1;
-      this.a.putAll($$0);
+   public void d() {
+      this.d = true;
    }
 
-   public fsc(List<fsc> $$0) {
-      fsc $$1 = null;
+   public void e() {
+      this.e = true;
+   }
 
-      for (fsc $$2 : $$0) {
-         if ($$2.c()) {
-            this.a.clear();
-            $$1 = $$2;
-         }
+   public void f() {
+      this.e = true;
+      this.f = true;
+   }
 
-         this.a.putAll($$2.a);
+   public boolean g() {
+      return this.d && !this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
+
+   @Nullable
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected fsc.a a(aps $$0, bgc $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      $$1.a();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         $$1.a("compile_regex");
+         a($$5.getAsJsonArray("renderer"), $$2);
+         a($$5.getAsJsonArray("version"), $$3);
+         a($$5.getAsJsonArray("vendor"), $$4);
+         $$1.c();
       }
 
-      if ($$1 != null) {
-         this.b = $$1.b;
-      }
+      $$1.b();
+      return new fsc.a($$2, $$3, $$4);
    }
 
-   @VisibleForTesting
-   public boolean a(String $$0) {
-      return this.a.get($$0) != null;
+   protected void a(fsc.a $$0, aps $$1, bgc $$2) {
+      this.c = $$0.a();
    }
 
-   @VisibleForTesting
-   public fsj b(String $$0) {
-      fsj $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new fsc.c();
-      } else {
-         return $$1;
-      }
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof fsc $$1 && this.a.equals($$1.a)) {
-            return this.c() ? this.b.equals($$1.b) : !$$1.c();
-         }
+   @Nullable
+   private static JsonObject c(aps $$0, bgc $$1) {
+      $$1.a("parse_json");
+      JsonObject $$2 = null;
 
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
-   }
-
-   public Map<String, fsj> a() {
-      return this.a;
-   }
-
-   @VisibleForTesting
-   public Set<fsj> b() {
-      Set<fsj> $$0 = Sets.newHashSet(this.a.values());
-      if (this.c()) {
-         $$0.addAll(this.b.b());
+      try (Reader $$3 = $$0.openAsReader(b)) {
+         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
+      } catch (JsonSyntaxException | IOException var8) {
+         a.warn("Failed to load GPU warnlist");
       }
 
-      return $$0;
+      $$1.c();
+      return $$2;
    }
 
-   public boolean c() {
-      return this.b != null;
-   }
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
 
-   public fso d() {
-      return this.b;
-   }
-
-   public static final class a {
-      protected final Gson a = new GsonBuilder()
-         .registerTypeAdapter(fsc.class, new fsc.b())
-         .registerTypeAdapter(fsk.class, new fsk.a())
-         .registerTypeAdapter(fsj.class, new fsj.a())
-         .registerTypeAdapter(fso.class, new fso.a(this))
-         .registerTypeAdapter(fsq.class, new fsq.a())
-         .create();
-      private dho<cvf, dhn> b;
-
-      public dho<cvf, dhn> a() {
-         return this.b;
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      public void a(dho<cvf, dhn> $$0) {
-         this.b = $$0;
-      }
-   }
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
 
-   public static class b implements JsonDeserializer<fsc> {
-      public fsc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Map<String, fsj> $$4 = this.a($$2, $$3);
-         fso $$5 = this.b($$2, $$3);
-         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
-            return new fsc($$4, $$5);
-         } else {
-            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
-         }
-      }
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
 
-      protected Map<String, fsj> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<String, fsj> $$2 = Maps.newHashMap();
-         if ($$1.has("variants")) {
-            JsonObject $$3 = atg.u($$1, "variants");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), (fsj)$$0.deserialize($$4.getValue(), fsj.class));
+            while ($$4.find()) {
+               $$2.add($$4.group());
             }
          }
 
-         return $$2;
+         return String.join(", ", $$2);
       }
 
-      @Nullable
-      protected fso b(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("multipart")) {
-            return null;
-         } else {
-            JsonArray $$2 = atg.v($$1, "multipart");
-            return (fso)$$0.deserialize($$2, fso.class);
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, enw.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
          }
-      }
-   }
 
-   protected class c extends RuntimeException {
+         String $$2 = a(this.b, enw.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
+
+         String $$3 = a(this.c, enw.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
+      }
    }
 }

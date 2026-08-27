@@ -1,166 +1,113 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Set;
-import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class ahl extends amf {
-   private final agm h;
-   private final Set<UUID> i = Sets.newHashSet();
-   private int j;
-   private int k = 100;
+public class ahl extends bjv {
+   private long g = 0L;
+   private long h = 0L;
+   private long i = 0L;
+   private long j = 0L;
+   private boolean k = false;
+   private final MinecraftServer l;
 
-   public ahl(agm $$0, uv $$1) {
-      super($$1, bir.a.g, bir.b.a);
-      this.h = $$0;
-      this.a(0.0F);
+   public ahl(MinecraftServer $$0) {
+      this.l = $$0;
    }
 
-   public agm a() {
-      return this.h;
+   public boolean a() {
+      return this.j > 0L;
    }
 
    @Override
-   public void a(amj $$0) {
+   public void a(boolean $$0) {
       super.a($$0);
-      this.i.add($$0.cw());
+      this.n();
    }
 
-   public void a(UUID $$0) {
-      this.i.add($$0);
+   private void n() {
+      this.l.ae().a(acn.a(this));
+   }
+
+   private void o() {
+      this.l.ae().a(aco.a(this));
+   }
+
+   public boolean a(int $$0) {
+      if (!this.l()) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.o();
+         return true;
+      }
+   }
+
+   public boolean b() {
+      if (this.d > 0) {
+         this.d = 0;
+         this.o();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean c() {
+      if (this.g > 0L) {
+         this.p();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(int $$0) {
+      boolean $$1 = this.g > 0L;
+      this.i = 0L;
+      this.j = (long)$$0;
+      this.g = (long)$$0;
+      this.k = this.l();
+      this.a(false);
+      return $$1;
+   }
+
+   private void p() {
+      long $$0 = this.j - this.g;
+      double $$1 = Math.max(1.0, (double)this.i) / (double)auz.b;
+      int $$2 = (int)((double)(auz.c * $$0) / $$1);
+      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
+      this.j = 0L;
+      this.i = 0L;
+      this.l.aF().a(() -> vb.a("commands.tick.sprint.report", $$2, $$3), true);
+      this.g = 0L;
+      this.a(this.k);
+      this.l.B();
+   }
+
+   public boolean d() {
+      if (!this.e) {
+         return false;
+      } else if (this.g > 0L) {
+         this.h = System.nanoTime();
+         this.g--;
+         return true;
+      } else {
+         this.p();
+         return false;
+      }
+   }
+
+   public void e() {
+      this.i = this.i + (System.nanoTime() - this.h);
    }
 
    @Override
-   public void b(amj $$0) {
-      super.b($$0);
-      this.i.remove($$0.cw());
+   public void a(float $$0) {
+      super.a($$0);
+      this.l.B();
+      this.n();
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.i.clear();
-   }
-
-   public int c() {
-      return this.j;
-   }
-
-   public int d() {
-      return this.k;
-   }
-
-   public void a(int $$0) {
-      this.j = $$0;
-      this.a(atq.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
-   }
-
-   public void b(int $$0) {
-      this.k = $$0;
-      this.a(atq.a((float)this.j / (float)$$0, 0.0F, 1.0F));
-   }
-
-   public final uv e() {
-      return uy.a(this.j()).a($$0 -> $$0.a(this.l().a()).a(new vb(vb.a.a, uv.b(this.a().toString()))).a(this.a().toString()));
-   }
-
-   public boolean a(Collection<amj> $$0) {
-      Set<UUID> $$1 = Sets.newHashSet();
-      Set<amj> $$2 = Sets.newHashSet();
-
-      for (UUID $$3 : this.i) {
-         boolean $$4 = false;
-
-         for (amj $$5 : $$0) {
-            if ($$5.cw().equals($$3)) {
-               $$4 = true;
-               break;
-            }
-         }
-
-         if (!$$4) {
-            $$1.add($$3);
-         }
-      }
-
-      for (amj $$6 : $$0) {
-         boolean $$7 = false;
-
-         for (UUID $$8 : this.i) {
-            if ($$6.cw().equals($$8)) {
-               $$7 = true;
-               break;
-            }
-         }
-
-         if (!$$7) {
-            $$2.add($$6);
-         }
-      }
-
-      for (UUID $$9 : $$1) {
-         for (amj $$10 : this.h()) {
-            if ($$10.cw().equals($$9)) {
-               this.b($$10);
-               break;
-            }
-         }
-
-         this.i.remove($$9);
-      }
-
-      for (amj $$11 : $$2) {
-         this.a($$11);
-      }
-
-      return !$$1.isEmpty() || !$$2.isEmpty();
-   }
-
-   public sd f() {
-      sd $$0 = new sd();
-      $$0.a("Name", uv.a.a(this.a));
-      $$0.a("Visible", this.g());
-      $$0.a("Value", this.j);
-      $$0.a("Max", this.k);
-      $$0.a("Color", this.l().b());
-      $$0.a("Overlay", this.m().a());
-      $$0.a("DarkenScreen", this.n());
-      $$0.a("PlayBossMusic", this.o());
-      $$0.a("CreateWorldFog", this.p());
-      sj $$1 = new sj();
-
-      for (UUID $$2 : this.i) {
-         $$1.add(ss.a($$2));
-      }
-
-      $$0.a("Players", $$1);
-      return $$0;
-   }
-
-   public static ahl a(sd $$0, agm $$1) {
-      ahl $$2 = new ahl($$1, uv.a.a($$0.l("Name")));
-      $$2.d($$0.q("Visible"));
-      $$2.a($$0.h("Value"));
-      $$2.b($$0.h("Max"));
-      $$2.a(bir.a.a($$0.l("Color")));
-      $$2.a(bir.b.a($$0.l("Overlay")));
-      $$2.a($$0.q("DarkenScreen"));
-      $$2.b($$0.q("PlayBossMusic"));
-      $$2.c($$0.q("CreateWorldFog"));
-
-      for (ta $$4 : $$0.c("Players", 11)) {
-         $$2.a(ss.a($$4));
-      }
-
-      return $$2;
-   }
-
-   public void c(amj $$0) {
-      if (this.i.contains($$0.cw())) {
-         this.a($$0);
-      }
-   }
-
-   public void d(amj $$0) {
-      super.b($$0);
+   public void a(amq $$0) {
+      $$0.c.b(acn.a(this));
+      $$0.c.b(aco.a(this));
    }
 }

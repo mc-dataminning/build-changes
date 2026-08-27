@@ -1,143 +1,84 @@
-public interface eyr {
-   eyr a(int var1);
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   eyr a(int var1, int var2);
+public class eyr implements eyp {
+   private static final agt g = new agt("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
+   private final eyr.a h;
+   private final vb i;
+   @Nullable
+   private final vb j;
+   private eyp.a k = eyp.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
 
-   eyr a(int var1, int var2, int var3, int var4);
-
-   eyr b(int var1);
-
-   eyr c(int var1);
-
-   eyr d(int var1);
-
-   eyr e(int var1);
-
-   eyr f(int var1);
-
-   eyr g(int var1);
-
-   eyr a(float var1, float var2);
-
-   eyr a(float var1);
-
-   eyr b(float var1);
-
-   default eyr a() {
-      return this.a(0.0F);
+   public eyr(eyr.a $$0, vb $$1, @Nullable vb $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
    }
 
-   default eyr b() {
-      return this.a(0.5F);
+   @Override
+   public eyp.a a(evw $$0, eyq $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
+      } else {
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
+      }
+
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = aty.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
+         } else {
+            $$4 = -11206656;
+         }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
+      }
+
+      return this.k;
    }
 
-   default eyr c() {
-      return this.a(1.0F);
+   public void c() {
+      this.k = eyp.a.b;
    }
 
-   default eyr d() {
-      return this.b(0.0F);
+   public void a(float $$0) {
+      this.n = $$0;
    }
 
-   default eyr e() {
-      return this.b(0.5F);
-   }
+   public static enum a {
+      a(new agt("toast/movement_keys")),
+      b(new agt("toast/mouse")),
+      c(new agt("toast/tree")),
+      d(new agt("toast/recipe_book")),
+      e(new agt("toast/wooden_planks")),
+      f(new agt("toast/social_interactions")),
+      g(new agt("toast/right_click"));
 
-   default eyr f() {
-      return this.b(1.0F);
-   }
+      private final agt h;
 
-   eyr g();
-
-   eyr.a h();
-
-   static eyr i() {
-      return new eyr.a();
-   }
-
-   public static class a implements eyr {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
-
-      public a() {
+      private a(agt $$0) {
+         this.h = $$0;
       }
 
-      public a(eyr.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
-      }
-
-      public eyr.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
-
-      public eyr.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
-
-      public eyr.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
-
-      public eyr.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public eyr.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public eyr.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eyr.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eyr.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public eyr.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public eyr.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public eyr.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public eyr.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public eyr.a j() {
-         return new eyr.a(this);
-      }
-
-      @Override
-      public eyr.a h() {
-         return this;
+      public void a(evw $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
       }
    }
 }

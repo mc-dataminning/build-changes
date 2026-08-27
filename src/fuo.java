@@ -1,151 +1,112 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import java.util.Calendar;
 
-public class fuo implements fui.a {
-   private static final Duration a = Duration.ofMillis(500L);
-   private static final int b = 10;
-   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
-   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
-   private final eti e;
-   private final cso f;
-   private Instant g = Instant.now();
-   @Nullable
-   private fuo.a h;
+public class fuo<T extends dgd & dhg> implements fui<T> {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final fly d;
+   private final fly e;
+   private final fly f;
+   private final fly g;
+   private final fly h;
+   private final fly i;
+   private final fly j;
+   private final fly k;
+   private final fly l;
+   private boolean m;
 
-   public fuo(eti $$0, cso $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fuo(fuj.a $$0) {
+      Calendar $$1 = Calendar.getInstance();
+      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
+         this.m = true;
+      }
+
+      fly $$2 = $$0.a(flx.u);
+      this.e = $$2.b("bottom");
+      this.d = $$2.b("lid");
+      this.f = $$2.b("lock");
+      fly $$3 = $$0.a(flx.L);
+      this.h = $$3.b("bottom");
+      this.g = $$3.b("lid");
+      this.i = $$3.b("lock");
+      fly $$4 = $$0.a(flx.M);
+      this.k = $$4.b("bottom");
+      this.j = $$4.b("lid");
+      this.l = $$4.b("lock");
+   }
+
+   public static fme b() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      $$1.a("bottom", fmd.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), fma.a);
+      $$1.a("lid", fmd.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), fma.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fmd.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), fma.a(0.0F, 9.0F, 1.0F));
+      return fme.a($$0, 64, 64);
+   }
+
+   public static fme c() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      $$1.a("bottom", fmd.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fma.a);
+      $$1.a("lid", fmd.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fma.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fmd.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fma.a(0.0F, 9.0F, 1.0F));
+      return fme.a($$0, 64, 64);
+   }
+
+   public static fme d() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      $$1.a("bottom", fmd.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fma.a);
+      $$1.a("lid", fmd.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fma.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fmd.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fma.a(0.0F, 9.0F, 1.0F));
+      return fme.a($$0, 64, 64);
    }
 
    @Override
-   public void a(eob $$0, fqz $$1, double $$2, double $$3, double $$4) {
-      Instant $$5 = Instant.now();
-      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
-         this.g = $$5;
-         this.h = new fuo.a(this.e.r.z_(), iy.a(this.e.s.dn()), 10, this.f);
-      }
-
-      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
-      eof $$6 = $$1.getBuffer(frh.A());
-      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
-   }
-
-   private static void a(eob $$0, eki $$1, iy $$2, eof $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10) -> {
-         int $$11 = $$8 + $$2.u();
-         int $$12 = $$9 + $$2.v();
-         int $$13 = $$10 + $$2.w();
-         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
-      });
-   }
-
-   private static void a(eob $$0, eki $$1, iy $$2, fqz $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
-         int $$13 = $$7x + $$2.u();
-         int $$14 = $$8 + $$2.v();
-         int $$15 = $$9 + $$2.w();
-         int $$16 = $$10 + $$2.u();
-         int $$17 = $$11 + $$2.v();
-         int $$18 = $$12 + $$2.w();
-         eof $$19 = $$3.getBuffer(frh.a(1.0));
-         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
-      }, true);
-   }
-
-   private static void a(eob $$0, eof $$1, ib $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
-      float $$10 = (float)((double)iy.c($$6) - $$3);
-      float $$11 = (float)((double)iy.c($$7) - $$4);
-      float $$12 = (float)((double)iy.c($$8) - $$5);
-      float $$13 = $$10 + 16.0F;
-      float $$14 = $$11 + 16.0F;
-      float $$15 = $$12 + 16.0F;
-      float $$16 = $$9.x();
-      float $$17 = $$9.y();
-      float $$18 = $$9.z();
-      float $$19 = $$9.w();
-      Matrix4f $$20 = $$0.c().a();
-      switch ($$2) {
-         case a:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            break;
-         case b:
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case c:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case d:
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            break;
-         case e:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case f:
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-      }
-   }
-
-   private static void a(eob $$0, eof $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
-      float $$12 = (float)((double)iy.c($$5) - $$2);
-      float $$13 = (float)((double)iy.c($$6) - $$3);
-      float $$14 = (float)((double)iy.c($$7) - $$4);
-      float $$15 = (float)((double)iy.c($$8) - $$2);
-      float $$16 = (float)((double)iy.c($$9) - $$3);
-      float $$17 = (float)((double)iy.c($$10) - $$4);
-      Matrix4f $$18 = $$0.c().a();
-      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F).e();
-      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F).e();
-   }
-
-   static final class a {
-      final eki a;
-      final eki b;
-      final iy c;
-
-      a(ecm $$0, iy $$1, int $$2, cso $$3) {
-         int $$4 = $$2 * 2 + 1;
-         this.a = new ekc($$4, $$4, $$4);
-         this.b = new ekc($$4, $$4, $$4);
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               for (int $$7 = 0; $$7 < $$4; $$7++) {
-                  iy $$8 = iy.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
-                  ecl.b $$9 = $$0.b($$3, $$8);
-                  if ($$9 == ecl.b.c) {
-                     this.a.c($$7, $$6, $$5);
-                     this.b.c($$7, $$6, $$5);
-                  } else if ($$9 == ecl.b.b) {
-                     this.b.c($$7, $$6, $$5);
-                  }
-               }
-            }
+   public void a(T $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
+      csy $$6 = $$0.i();
+      boolean $$7 = $$6 != null;
+      dip $$8 = $$7 ? $$0.r() : cwb.cv.o().a(cxc.c, ia.d);
+      djh $$9 = $$8.b(cxc.d) ? $$8.c(cxc.d) : djh.a;
+      if ($$8.b() instanceof cut<?> $$11) {
+         boolean $$12 = $$9 != djh.a;
+         $$2.a();
+         float $$13 = $$8.c(cxc.c).p();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(a.d.rotationDegrees(-$$13));
+         $$2.a(-0.5F, -0.5F, -0.5F);
+         cyg.c<? extends dgk> $$14;
+         if ($$7) {
+            $$14 = $$11.a($$8, $$6, $$0.aB_(), true);
+         } else {
+            $$14 = cyg.b::b;
          }
 
-         this.c = iy.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
+         float $$16 = $$14.apply(cxc.a($$0)).get($$1);
+         $$16 = 1.0F - $$16;
+         $$16 = 1.0F - $$16 * $$16 * $$16;
+         int $$17 = $$14.apply(new ful<>()).applyAsInt($$4);
+         gfs $$18 = fsx.a($$0, $$9, this.m);
+         eph $$19 = $$18.a($$3, fsq::d);
+         if ($$12) {
+            if ($$9 == djh.b) {
+               this.a($$2, $$19, this.g, this.i, this.h, $$16, $$17, $$5);
+            } else {
+               this.a($$2, $$19, this.j, this.l, this.k, $$16, $$17, $$5);
+            }
+         } else {
+            this.a($$2, $$19, this.d, this.f, this.e, $$16, $$17, $$5);
+         }
+
+         $$2.b();
       }
+   }
+
+   private void a(epd $$0, eph $$1, fly $$2, fly $$3, fly $$4, float $$5, int $$6, int $$7) {
+      $$2.e = -($$5 * (float) (Math.PI / 2));
+      $$3.e = $$2.e;
+      $$2.a($$0, $$1, $$6, $$7);
+      $$3.a($$0, $$1, $$6, $$7);
+      $$4.a($$0, $$1, $$6, $$7);
    }
 }

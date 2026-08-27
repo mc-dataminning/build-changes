@@ -1,56 +1,48 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType.StringType;
 
-public class hq implements hj<IntegerArgumentType, hq.a> {
-   public void a(hq.a $$0, ty $$1) {
-      boolean $$2 = $$0.b != Integer.MIN_VALUE;
-      boolean $$3 = $$0.c != Integer.MAX_VALUE;
-      $$1.k(hl.a($$2, $$3));
-      if ($$2) {
-         $$1.p($$0.b);
-      }
-
-      if ($$3) {
-         $$1.p($$0.c);
-      }
+public class hq implements hh<StringArgumentType, hq.a> {
+   public void a(hq.a $$0, ue $$1) {
+      $$1.a((Enum<?>)$$0.b);
    }
 
-   public hq.a a(ty $$0) {
-      byte $$1 = $$0.readByte();
-      int $$2 = hl.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
-      int $$3 = hl.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
-      return new hq.a($$2, $$3);
+   public hq.a a(ue $$0) {
+      StringType $$1 = $$0.b(StringType.class);
+      return new hq.a($$1);
    }
 
    public void a(hq.a $$0, JsonObject $$1) {
-      if ($$0.b != Integer.MIN_VALUE) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      if ($$0.c != Integer.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
-      }
+      $$1.addProperty("type", switch ($$0.b) {
+         case SINGLE_WORD -> "word";
+         case QUOTABLE_PHRASE -> "phrase";
+         case GREEDY_PHRASE -> "greedy";
+         default -> throw new IncompatibleClassChangeError();
+      });
    }
 
-   public hq.a a(IntegerArgumentType $$0) {
-      return new hq.a($$0.getMinimum(), $$0.getMaximum());
+   public hq.a a(StringArgumentType $$0) {
+      return new hq.a($$0.getType());
    }
 
-   public final class a implements hj.a<IntegerArgumentType> {
-      final int b;
-      final int c;
+   public final class a implements hh.a<StringArgumentType> {
+      final StringType b;
 
-      a(int $$1, int $$2) {
+      public a(StringType $$1) {
          this.b = $$1;
-         this.c = $$2;
       }
 
-      public IntegerArgumentType a(dp $$0) {
-         return IntegerArgumentType.integer(this.b, this.c);
+      public StringArgumentType a(dn $$0) {
+         return switch (this.b) {
+            case SINGLE_WORD -> StringArgumentType.word();
+            case QUOTABLE_PHRASE -> StringArgumentType.string();
+            case GREEDY_PHRASE -> StringArgumentType.greedyString();
+            default -> throw new IncompatibleClassChangeError();
+         };
       }
 
       @Override
-      public hj<IntegerArgumentType, ?> a() {
+      public hh<StringArgumentType, ?> a() {
          return hq.this;
       }
    }

@@ -1,61 +1,33 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class aw extends cw<aw.a> {
-   public aw.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<bc> $$3 = bq.a($$0, "parent", $$2);
-      Optional<bc> $$4 = bq.a($$0, "partner", $$2);
-      Optional<bc> $$5 = bq.a($$0, "child", $$2);
-      return new aw.a($$1, $$3, $$4, $$5);
+public class aw extends cv<aw.a> {
+   @Override
+   public Codec<aw.a> a() {
+      return aw.a.a;
    }
 
-   public void a(amj $$0, bww $$1, bww $$2, @Nullable bkq $$3) {
-      efc $$4 = bq.b($$0, $$1);
-      efc $$5 = bq.b($$0, $$2);
-      efc $$6 = $$3 != null ? bq.b($$0, $$3) : null;
-      this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
+   public void a(amq $$0, ie<coe> $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static class a extends at {
-      private final Optional<bc> a;
-      private final Optional<bc> b;
-      private final Optional<bc> c;
+   public static record a(Optional<bb> b, Optional<ie<coe>> c) implements cv.a {
+      public static final Codec<aw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(aw.a::a), atg.a(kb.i.r(), "potion").forGetter(aw.a::c)).apply($$0, aw.a::new)
+      );
 
-      public a(Optional<bc> $$0, Optional<bc> $$1, Optional<bc> $$2, Optional<bc> $$3) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
-         this.c = $$3;
+      public static an<aw.a> b() {
+         return am.l.a(new aw.a(Optional.empty(), Optional.empty()));
       }
 
-      public static am<aw.a> c() {
-         return al.o.a(new aw.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static am<aw.a> a(bq.a $$0) {
-         return al.o.a(new aw.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(bq.a($$0))));
-      }
-
-      public static am<aw.a> a(Optional<bq> $$0, Optional<bq> $$1, Optional<bq> $$2) {
-         return al.o.a(new aw.a(Optional.empty(), bq.a($$0), bq.a($$1), bq.a($$2)));
-      }
-
-      public boolean a(efc $$0, efc $$1, @Nullable efc $$2) {
-         return !this.c.isPresent() || $$2 != null && this.c.get().a($$2) ? a(this.a, $$0) && a(this.b, $$1) || a(this.a, $$1) && a(this.b, $$0) : false;
-      }
-
-      private static boolean a(Optional<bc> $$0, efc $$1) {
-         return $$0.isEmpty() || $$0.get().a($$1);
+      public boolean a(ie<coe> $$0) {
+         return !this.c.isPresent() || this.c.get().equals($$0);
       }
 
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("parent", $$1.a()));
-         this.b.ifPresent($$1 -> $$0.add("partner", $$1.a()));
-         this.c.ifPresent($$1 -> $$0.add("child", $$1.a()));
-         return $$0;
+      public Optional<bb> a() {
+         return this.b;
       }
    }
 }

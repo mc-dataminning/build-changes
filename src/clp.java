@@ -1,30 +1,33 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
-import java.util.Set;
-import javax.annotation.Nullable;
+public class clp<T extends blf & bls> extends cmc {
+   private final blj<T> a;
+   private final int b;
 
-public class clp {
-   private static final Strategy<? super clo> a = new Strategy<clo>() {
-      public int a(@Nullable clo $$0) {
-         return clp.a($$0);
-      }
-
-      public boolean a(@Nullable clo $$0, @Nullable clo $$1) {
-         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.b() == $$1.b() && clo.c($$0, $$1);
-      }
-   };
-
-   static int a(@Nullable clo $$0) {
-      if ($$0 != null) {
-         sd $$1 = $$0.v();
-         int $$2 = 31 + $$0.d().hashCode();
-         return 31 * $$2 + ($$1 == null ? 0 : $$1.hashCode());
-      } else {
-         return 0;
-      }
+   public clp(cmc.a $$0, blj<T> $$1, int $$2) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public static Set<clo> a() {
-      return new ObjectLinkedOpenCustomHashSet(a);
+   @Override
+   public bjm<cmh> a(csy $$0, cer $$1, bjk $$2) {
+      cmh $$3 = $$1.b($$2);
+      if ($$0.B) {
+         return bjm.c($$3);
+      } else {
+         blf $$4 = $$1.da();
+         if ($$1.bO() && $$4 instanceof bls $$5 && $$4.ai() == this.a && $$5.a()) {
+            $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
+            if ($$3.b()) {
+               cmh $$6 = new cmh(cmk.qS);
+               $$6.c($$3.v());
+               return bjm.a($$6);
+            }
+
+            return bjm.a($$3);
+         }
+
+         $$1.b(arm.c.b(this));
+         return bjm.c($$3);
+      }
    }
 }

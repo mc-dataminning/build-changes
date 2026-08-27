@@ -1,92 +1,241 @@
-import java.io.DataInput;
-import java.io.IOException;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Pattern;
 
-public interface tc<T extends ta> {
-   T c(DataInput var1, sm var2) throws IOException;
+public class tc implements tk {
+   private static final Map<String, List<String>> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("{}", Lists.newArrayList(new String[]{"DataVersion", "author", "size", "data", "entities", "palette", "palettes"}));
+      $$0.put("{}.data.[].{}", Lists.newArrayList(new String[]{"pos", "state", "nbt"}));
+      $$0.put("{}.entities.[].{}", Lists.newArrayList(new String[]{"blockPos", "pos"}));
+   });
+   private static final Set<String> b = Sets.newHashSet(new String[]{"{}.size.[]", "{}.data.[].{}", "{}.palette.[].{}", "{}.entities.[].{}"});
+   private static final Pattern c = Pattern.compile("[A-Za-z0-9._+-]+");
+   private static final String d = String.valueOf(':');
+   private static final String e = String.valueOf(',');
+   private static final String f = "[";
+   private static final String g = "]";
+   private static final String h = ";";
+   private static final String i = " ";
+   private static final String j = "{";
+   private static final String k = "}";
+   private static final String l = "\n";
+   private final String m;
+   private final int n;
+   private final List<String> o;
+   private String p = "";
 
-   sx.b a(DataInput var1, sx var2, sm var3) throws IOException;
+   public tc() {
+      this("    ", 0, Lists.newArrayList());
+   }
 
-   default void b(DataInput $$0, sx $$1, sm $$2) throws IOException {
-      switch ($$1.b(this)) {
-         case a:
-            this.a($$0, $$1, $$2);
-         case c:
-         default:
-            break;
-         case b:
-            this.b($$0, $$2);
+   public tc(String $$0, int $$1, List<String> $$2) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+   }
+
+   public String a(tg $$0) {
+      $$0.a(this);
+      return this.p;
+   }
+
+   @Override
+   public void a(te $$0) {
+      this.p = te.b($$0.t_());
+   }
+
+   @Override
+   public void a(sh $$0) {
+      this.p = $$0.l() + "b";
+   }
+
+   @Override
+   public void a(tb $$0) {
+      this.p = $$0.l() + "s";
+   }
+
+   @Override
+   public void a(so $$0) {
+      this.p = String.valueOf($$0.l());
+   }
+
+   @Override
+   public void a(sr $$0) {
+      this.p = $$0.l() + "L";
+   }
+
+   @Override
+   public void a(sm $$0) {
+      this.p = $$0.k() + "f";
+   }
+
+   @Override
+   public void a(sk $$0) {
+      this.p = $$0.j() + "d";
+   }
+
+   @Override
+   public void a(sg $$0) {
+      StringBuilder $$1 = new StringBuilder("[").append("B").append(";");
+      byte[] $$2 = $$0.e();
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$1.append(" ").append($$2[$$3]).append("B");
+         if ($$3 != $$2.length - 1) {
+            $$1.append(e);
+         }
+      }
+
+      $$1.append("]");
+      this.p = $$1.toString();
+   }
+
+   @Override
+   public void a(sn $$0) {
+      StringBuilder $$1 = new StringBuilder("[").append("I").append(";");
+      int[] $$2 = $$0.g();
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$1.append(" ").append($$2[$$3]);
+         if ($$3 != $$2.length - 1) {
+            $$1.append(e);
+         }
+      }
+
+      $$1.append("]");
+      this.p = $$1.toString();
+   }
+
+   @Override
+   public void a(sq $$0) {
+      String $$1 = "L";
+      StringBuilder $$2 = new StringBuilder("[").append("L").append(";");
+      long[] $$3 = $$0.g();
+
+      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+         $$2.append(" ").append($$3[$$4]).append("L");
+         if ($$4 != $$3.length - 1) {
+            $$2.append(e);
+         }
+      }
+
+      $$2.append("]");
+      this.p = $$2.toString();
+   }
+
+   @Override
+   public void a(sp $$0) {
+      if ($$0.isEmpty()) {
+         this.p = "[]";
+      } else {
+         StringBuilder $$1 = new StringBuilder("[");
+         this.b("[]");
+         String $$2 = b.contains(this.a()) ? "" : this.m;
+         if (!$$2.isEmpty()) {
+            $$1.append("\n");
+         }
+
+         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+            $$1.append(Strings.repeat($$2, this.n + 1));
+            $$1.append(new tc($$2, this.n + 1, this.o).a($$0.k($$3)));
+            if ($$3 != $$0.size() - 1) {
+               $$1.append(e).append($$2.isEmpty() ? " " : "\n");
+            }
+         }
+
+         if (!$$2.isEmpty()) {
+            $$1.append("\n").append(Strings.repeat($$2, this.n));
+         }
+
+         $$1.append("]");
+         this.p = $$1.toString();
+         this.b();
       }
    }
 
-   void a(DataInput var1, int var2, sm var3) throws IOException;
+   @Override
+   public void a(sj $$0) {
+      if ($$0.g()) {
+         this.p = "{}";
+      } else {
+         StringBuilder $$1 = new StringBuilder("{");
+         this.b("{}");
+         String $$2 = b.contains(this.a()) ? "" : this.m;
+         if (!$$2.isEmpty()) {
+            $$1.append("\n");
+         }
 
-   void b(DataInput var1, sm var2) throws IOException;
+         Collection<String> $$3 = this.b($$0);
+         Iterator<String> $$4 = $$3.iterator();
 
-   default boolean d() {
-      return false;
+         while ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            tg $$6 = $$0.c($$5);
+            this.b($$5);
+            $$1.append(Strings.repeat($$2, this.n + 1)).append(a($$5)).append(d).append(" ").append(new tc($$2, this.n + 1, this.o).a($$6));
+            this.b();
+            if ($$4.hasNext()) {
+               $$1.append(e).append($$2.isEmpty() ? " " : "\n");
+            }
+         }
+
+         if (!$$2.isEmpty()) {
+            $$1.append("\n").append(Strings.repeat($$2, this.n));
+         }
+
+         $$1.append("}");
+         this.p = $$1.toString();
+         this.b();
+      }
    }
 
-   String a();
-
-   String b();
-
-   static tc<sf> a(final int $$0) {
-      return new tc<sf>() {
-         private IOException c() {
-            return new IOException("Invalid tag id: " + $$0);
-         }
-
-         public sf a(DataInput $$0x, sm $$1) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public sx.b a(DataInput $$0x, sx $$1, sm $$2) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public void a(DataInput $$0x, int $$1, sm $$2) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public void b(DataInput $$0x, sm $$1) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public String a() {
-            return "INVALID[" + $$0 + "]";
-         }
-
-         @Override
-         public String b() {
-            return "UNKNOWN_" + $$0;
-         }
-      };
+   private void b() {
+      this.o.remove(this.o.size() - 1);
    }
 
-   public interface a<T extends ta> extends tc<T> {
-      @Override
-      default void b(DataInput $$0, sm $$1) throws IOException {
-         $$0.skipBytes(this.c());
-      }
-
-      @Override
-      default void a(DataInput $$0, int $$1, sm $$2) throws IOException {
-         $$0.skipBytes(this.c() * $$1);
-      }
-
-      int c();
+   private void b(String $$0) {
+      this.o.add($$0);
    }
 
-   public interface b<T extends ta> extends tc<T> {
-      @Override
-      default void a(DataInput $$0, int $$1, sm $$2) throws IOException {
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            this.b($$0, $$2);
+   protected List<String> b(sj $$0) {
+      Set<String> $$1 = Sets.newHashSet($$0.e());
+      List<String> $$2 = Lists.newArrayList();
+      List<String> $$3 = a.get(this.a());
+      if ($$3 != null) {
+         for (String $$4 : $$3) {
+            if ($$1.remove($$4)) {
+               $$2.add($$4);
+            }
          }
+
+         if (!$$1.isEmpty()) {
+            $$1.stream().sorted().forEach($$2::add);
+         }
+      } else {
+         $$2.addAll($$1);
+         Collections.sort($$2);
       }
+
+      return $$2;
+   }
+
+   public String a() {
+      return String.join(".", this.o);
+   }
+
+   protected static String a(String $$0) {
+      return c.matcher($$0).matches() ? $$0 : te.b($$0);
+   }
+
+   @Override
+   public void a(sl $$0) {
    }
 }

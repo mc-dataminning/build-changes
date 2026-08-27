@@ -1,28 +1,56 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class bvt extends bvq<bll> {
-   @Override
-   public Set<bum<?>> a() {
-      return ImmutableSet.of(bum.i);
+public class bvt extends bwc<blx> {
+   private static final int a = 40;
+   private static final int c = 5;
+   private static final int d = 20;
+   private final Long2LongMap e = new Long2LongOpenHashMap();
+   private int f;
+   private long g;
+
+   public bvt() {
+      super(20);
    }
 
    @Override
-   protected void a(ami $$0, bll $$1) {
-      $$1.dP().a(bum.i, this.a($$1));
+   public Set<bux<?>> a() {
+      return ImmutableSet.of(bux.w);
    }
 
-   private List<bll> a(bll $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
-
-   private boolean b(bll $$0) {
-      return $$0.ai() == bkz.bf && $$0.o_();
-   }
-
-   private buo c(bll $$0) {
-      return $$0.dP().c(bum.h).orElse(buo.a());
+   protected void a(amp $$0, blx $$1) {
+      if ($$1.o_()) {
+         this.f = 0;
+         this.g = $$0.W() + (long)$$0.F_().a(20);
+         bww $$2 = $$0.x();
+         Predicate<hv> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.e.containsKey($$1x)) {
+               return false;
+            } else if (++this.f >= 5) {
+               return false;
+            } else {
+               this.e.put($$1x, this.g + 40L);
+               return true;
+            }
+         };
+         Set<Pair<ie<bwz>, hv>> $$4 = $$2.b($$0x -> $$0x.a(bxa.n), $$3, $$1.dm(), 48, bww.b.c).collect(Collectors.toSet());
+         eeo $$5 = bnf.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            hv $$6 = $$5.l();
+            Optional<ie<bwz>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dO().a(bux.w, $$6);
+            }
+         } else if (this.f < 5) {
+            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+         }
+      }
    }
 }

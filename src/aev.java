@@ -1,42 +1,29 @@
-import java.security.PublicKey;
+public enum aev {
+   a,
+   b;
 
-public class aev implements wo<aes> {
-   private final String a;
-   private final byte[] b;
-   private final byte[] c;
+   private static final int c = 1;
+   private static final int d = 2;
 
-   public aev(String $$0, byte[] $$1, byte[] $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static aev a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   public aev(ty $$0) {
-      this.a = $$0.d(20);
-      this.b = $$0.b();
-      this.c = $$0.b();
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+      };
    }
 
-   @Override
-   public void a(ty $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(aes $$0) {
-      $$0.a(this);
-   }
-
-   public String a() {
-      return this.a;
-   }
-
-   public PublicKey d() throws asq {
-      return asp.a(this.b);
-   }
-
-   public byte[] e() {
-      return this.c;
+   public ud b() {
+      return switch (this) {
+         case a -> ud.c;
+         case b -> ud.d;
+      };
    }
 }

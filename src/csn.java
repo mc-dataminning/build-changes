@@ -1,25 +1,31 @@
 import javax.annotation.Nullable;
 
-public interface csn {
-   boolean a(hx var1, dhn var2, int var3, int var4);
+public enum csn implements cse {
+   a;
 
-   default boolean a(hx $$0, dhn $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   @Nullable
+   @Override
+   public dgd c_(hv $$0) {
+      return null;
    }
 
-   boolean a(hx var1, boolean var2);
-
-   default boolean b(hx $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   @Override
+   public dip a_(hv $$0) {
+      return cwb.a.o();
    }
 
-   default boolean a(hx $$0, boolean $$1, @Nullable bkv $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   @Override
+   public edz b_(hv $$0) {
+      return eea.a.g();
    }
 
-   boolean a(hx var1, boolean var2, @Nullable bkv var3, int var4);
+   @Override
+   public int J_() {
+      return 0;
+   }
 
-   default boolean b(bkv $$0) {
-      return false;
+   @Override
+   public int K_() {
+      return 0;
    }
 }

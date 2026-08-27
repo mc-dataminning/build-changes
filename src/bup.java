@@ -1,35 +1,40 @@
-public class bup {
-   private final bop a;
-   private final float b;
-   private final int c;
+import java.util.EnumSet;
 
-   public bup(hx $$0, float $$1, int $$2) {
-      this(new bnf($$0), $$1, $$2);
-   }
+public class bup extends bur {
+   private final bmq a;
+   private blv b;
+   private int c;
 
-   public bup(ejz $$0, float $$1, int $$2) {
-      this(new bnf(hx.a($$0)), $$1, $$2);
-   }
-
-   public bup(bkv $$0, float $$1, int $$2) {
-      this(new bnn($$0, false), $$1, $$2);
-   }
-
-   public bup(bop $$0, float $$1, int $$2) {
+   public bup(bmq $$0) {
+      super($$0, false);
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      this.a(EnumSet.of(bsr.a.d));
    }
 
-   public bop a() {
-      return this.a;
+   @Override
+   public boolean a() {
+      if (this.a.u() && !this.a.ge()) {
+         blv $$0 = this.a.R_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.ej();
+            int $$1 = $$0.ek();
+            return $$1 != this.c && this.a(this.b, bwj.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
-   public float b() {
-      return this.b;
-   }
+   @Override
+   public void c() {
+      this.e.h(this.b);
+      blv $$0 = this.a.R_();
+      if ($$0 != null) {
+         this.c = $$0.ek();
+      }
 
-   public int c() {
-      return this.c;
+      super.c();
    }
 }

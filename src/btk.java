@@ -1,67 +1,79 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class btk extends bsg {
-   private final byv a;
-   private final double b;
-   private double c;
-   private double d;
-   private double e;
+public class btk extends bsr {
+   public static final int a = 1;
+   protected final bme b;
+   protected final double c;
+   protected double d;
+   protected double e;
+   protected double f;
+   protected boolean g;
 
-   public btk(byv $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bsg.a.a));
+   public btk(bme $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(bsr.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.gu() && this.a.bP()) {
-         ejz $$0 = bwb.a(this.a, 5, 4);
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            return true;
-         }
-      } else {
+      if (!this.h()) {
          return false;
+      } else {
+         if (this.b.bN()) {
+            hv $$0 = this.a(this.b.dM(), this.b, 5);
+            if ($$0 != null) {
+               this.d = (double)$$0.u();
+               this.e = (double)$$0.v();
+               this.f = (double)$$0.w();
+               return true;
+            }
+         }
+
+         return this.i();
       }
+   }
+
+   protected boolean h() {
+      return this.b.eh() != null || this.b.dB() || this.b.bN();
+   }
+
+   protected boolean i() {
+      elb $$0 = bwn.a(this.b, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.d = $$0.c;
+         this.e = $$0.d;
+         this.f = $$0.e;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.g;
    }
 
    @Override
    public void c() {
-      this.a.N().a(this.c, this.d, this.e, this.b);
+      this.b.N().a(this.d, this.e, this.f, this.c);
+      this.g = true;
+   }
+
+   @Override
+   public void d() {
+      this.g = false;
    }
 
    @Override
    public boolean b() {
-      return !this.a.gu() && !this.a.N().l() && this.a.bP();
+      return !this.b.N().l();
    }
 
-   @Override
-   public void e() {
-      if (!this.a.gu() && this.a.eh().a(this.a(50)) == 0) {
-         bkv $$0 = this.a.cR();
-         if ($$0 == null) {
-            return;
-         }
-
-         if ($$0 instanceof cdz $$1) {
-            int $$2 = this.a.gA();
-            int $$3 = this.a.gG();
-            if ($$3 > 0 && this.a.eh().a($$3) < $$2) {
-               this.a.h($$1);
-               return;
-            }
-
-            this.a.v(5);
-         }
-
-         this.a.bB();
-         this.a.gL();
-         this.a.dN().a(this.a, (byte)6);
-      }
+   @Nullable
+   protected hv a(cse $$0, blf $$1, int $$2) {
+      hv $$3 = $$1.dm();
+      return !$$0.a_($$3).k($$0, $$3).c() ? null : hv.a($$1.dm(), $$2, 1, $$1x -> $$0.b_($$1x).a(arw.a)).orElse(null);
    }
 }

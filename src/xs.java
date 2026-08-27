@@ -1,17 +1,20 @@
-public record xs(hx b) implements xh {
-   public static final agm a = new agm("debug/poi_removed");
+public record xs(hv b, int c, String d, int e) implements xo {
+   public static final agt a = new agt("debug/game_test_add_marker");
 
-   public xs(ty $$0) {
-      this($$0.e());
+   public xs(ue $$0) {
+      this($$0.e(), $$0.readInt(), $$0.s(), $$0.readInt());
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
       $$0.a(this.b);
+      $$0.p(this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
    }
 
    @Override
-   public agm a() {
+   public agt a() {
       return a;
    }
 }

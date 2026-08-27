@@ -1,96 +1,102 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
-import java.util.function.Function;
+import java.util.stream.Collectors;
 
-public class ehg extends ego {
-   private static final Codec<List<ehg.b>> b = asy.a(ehg.b.a.listOf(), (Function<List<ehg.b>, DataResult<List<ehg.b>>>)($$0 -> {
-      Set<ig<bkg>> $$1 = new ObjectOpenHashSet();
-
-      for (ehg.b $$2 : $$0) {
-         if (!$$1.add($$2.a())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
-         }
-      }
-
-      return DataResult.success($$0);
-   }));
+public class ehg extends ehq {
    public static final Codec<ehg> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(asy.a(b, "effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, ehg::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  kb.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(djs::f).toList())
+               )
+            )
+            .apply($$0, ehg::new)
    );
-   private final List<ehg.b> c;
+   private final ie<cvz> b;
+   private final Set<djs<?>> c;
 
-   ehg(List<eib> $$0, List<ehg.b> $$1) {
+   ehg(List<ejd> $$0, ie<cvz> $$1, Set<djs<?>> $$2) {
       super($$0);
-      this.c = $$1;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private ehg(List<ejd> $$0, ie<cvz> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().n()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public egq b() {
-      return egr.n;
+   public ehs b() {
+      return eht.x;
    }
 
    @Override
-   public Set<ehk<?>> a() {
-      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   public Set<eim<?>> a() {
+      return ImmutableSet.of(eip.g);
    }
 
    @Override
-   public clo a(clo $$0, efc $$1) {
-      if ($$0.a(clr.vM) && !this.c.isEmpty()) {
-         ehg.b $$2 = ac.a(this.c, $$1.b());
-         bkg $$3 = $$2.a().a();
-         int $$4 = $$2.b().a($$1);
-         if (!$$3.a()) {
-            $$4 *= 20;
+   protected cmh a(cmh $$0, ege $$1) {
+      dip $$2 = $$1.c(eip.g);
+      if ($$2 != null) {
+         sj $$3 = $$0.w();
+         sj $$4;
+         if ($$3.b("BlockStateTag", 10)) {
+            $$4 = $$3.p("BlockStateTag");
+         } else {
+            $$4 = new sj();
+            $$3.a("BlockStateTag", $$4);
          }
 
-         cmy.b($$0, List.of(new ddg.a($$3, $$4)));
-         return $$0;
-      } else {
-         return $$0;
+         for (djs<?> $$6 : this.c) {
+            if ($$2.b($$6)) {
+               $$4.a($$6.f(), a($$2, $$6));
+            }
+         }
       }
+
+      return $$0;
    }
 
-   public static ehg.a c() {
-      return new ehg.a();
+   public static ehg.a a(cvz $$0) {
+      return new ehg.a($$0);
    }
 
-   public static class a extends ego.a<ehg.a> {
-      private final Builder<ehg.b> a = ImmutableList.builder();
+   private static <T extends Comparable<T>> String a(dip $$0, djs<T> $$1) {
+      T $$2 = $$0.c($$1);
+      return $$1.a($$2);
+   }
+
+   public static class a extends ehq.a<ehg.a> {
+      private final ie<cvz> a;
+      private final Builder<djs<?>> b = ImmutableSet.builder();
+
+      a(cvz $$0) {
+         this.a = $$0.r();
+      }
+
+      public ehg.a a(djs<?> $$0) {
+         if (!this.a.a().n().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
 
       protected ehg.a a() {
          return this;
       }
 
-      public ehg.a a(bkg $$0, eiw $$1) {
-         this.a.add(new ehg.b($$0.j(), $$1));
-         return this;
-      }
-
       @Override
-      public egp b() {
-         return new ehg(this.g(), this.a.build());
-      }
-   }
-
-   static record b(ig<bkg> b, eiw c) {
-      public static final Codec<ehg.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(kc.e.r().fieldOf("type").forGetter(ehg.b::a), eix.a.fieldOf("duration").forGetter(ehg.b::b)).apply($$0, ehg.b::new)
-      );
-
-      public ig<bkg> a() {
-         return this.b;
-      }
-
-      public eiw b() {
-         return this.c;
+      public ehr b() {
+         return new ehg(this.g(), this.a, this.b.build());
       }
    }
 }

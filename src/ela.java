@@ -1,83 +1,60 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public class ela {
+   public static final ela a = new ela(0.0F, 0.0F);
+   public static final ela b = new ela(1.0F, 1.0F);
+   public static final ela c = new ela(1.0F, 0.0F);
+   public static final ela d = new ela(-1.0F, 0.0F);
+   public static final ela e = new ela(0.0F, 1.0F);
+   public static final ela f = new ela(0.0F, -1.0F);
+   public static final ela g = new ela(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final ela h = new ela(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-public abstract class ela {
-   public boolean a(@Nullable ela $$0) {
-      return $$0 == null ? false : this == $$0;
+   public ela(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   public abstract String b();
-
-   public abstract vj d(uv var1);
-
-   public abstract boolean i();
-
-   public abstract boolean h();
-
-   public abstract ela.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract ela.b k();
-
-   public abstract ela.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, ela.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (ela.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static ela.a a(String $$0) {
-         return g.get($$0);
-      }
-
-      private a(String $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public uv a() {
-         return uv.c("team.collision." + this.e);
-      }
+   public ela a(float $$0) {
+      return new ela(this.i * $$0, this.j * $$0);
    }
 
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
+   public float a(ela $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
+   }
 
-      private static final Map<String, ela.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (ela.b)$$0));
-      public final String e;
-      public final int f;
+   public ela b(ela $$0) {
+      return new ela(this.i + $$0.i, this.j + $$0.j);
+   }
 
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
-      }
+   public ela b(float $$0) {
+      return new ela(this.i + $$0, this.j + $$0);
+   }
 
-      @Nullable
-      public static ela.b a(String $$0) {
-         return g.get($$0);
-      }
+   public boolean c(ela $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
+   }
 
-      private b(String $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
+   public ela a() {
+      float $$0 = aty.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new ela(this.i / $$0, this.j / $$0);
+   }
 
-      public uv b() {
-         return uv.c("team.visibility." + this.e);
-      }
+   public float b() {
+      return aty.c(this.i * this.i + this.j * this.j);
+   }
+
+   public float c() {
+      return this.i * this.i + this.j * this.j;
+   }
+
+   public float d(ela $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
+   }
+
+   public ela d() {
+      return new ela(-this.i, -this.j);
    }
 }

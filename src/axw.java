@@ -1,87 +1,55 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 public class axw extends DataFix {
+   private static final List<String> a = Lists.newArrayList(new String[]{"MinecartRideable", "MinecartChest", "MinecartFurnace"});
+
    public axw(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Schema $$1 = this.getOutputSchema();
-      Type<?> $$2 = $$0.getTypeRaw(bax.w);
-      Type<?> $$3 = $$1.getTypeRaw(bax.w);
-      Type<?> $$4 = $$0.getTypeRaw(bax.x);
-      return this.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   private <OldEntityTree, NewEntityTree, Entity> TypeRewriteRule a(Schema $$0, Schema $$1, Type<OldEntityTree> $$2, Type<NewEntityTree> $$3, Type<Entity> $$4) {
-      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(bax.w.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
-      Type<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$6 = DSL.named(
-         bax.w.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
-      );
-      Type<?> $$7 = $$0.getType(bax.w);
-      Type<?> $$8 = $$1.getType(bax.w);
-      if (!Objects.equals($$7, $$5)) {
-         throw new IllegalStateException("Old entity type is not what was expected.");
-      } else if (!$$8.equals($$6, true, true)) {
-         throw new IllegalStateException("New entity type is not what was expected.");
-      } else {
-         OpticFinder<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$9 = DSL.typeFinder($$5);
-         OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$10 = DSL.typeFinder($$6);
-         OpticFinder<NewEntityTree> $$11 = DSL.typeFinder($$3);
-         Type<?> $$12 = $$0.getType(bax.b);
-         Type<?> $$13 = $$1.getType(bax.b);
-         return TypeRewriteRule.seq(
-            this.fixTypeEverywhere(
-               "EntityRidingToPassengerFix",
-               $$5,
-               $$6,
-               $$5x -> $$6x -> {
-                     Optional<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$7x = Optional.empty();
-                     Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>> $$8x = $$6x;
-
-                     while (true) {
-                        Either<List<NewEntityTree>, Unit> $$9x = (Either<List<NewEntityTree>, Unit>)DataFixUtils.orElse(
-                           $$7x.map(
-                              $$4xxx -> {
-                                 Typed<NewEntityTree> $$5xxx = (Typed<NewEntityTree>)$$3.pointTyped($$5x)
-                                    .orElseThrow(() -> new IllegalStateException("Could not create new entity tree"));
-                                 NewEntityTree $$6xx = (NewEntityTree)$$5xxx.set($$10, $$4xxx)
-                                    .getOptional($$11)
-                                    .orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                                 return Either.left(ImmutableList.of($$6xx));
-                              }
-                           ),
-                           Either.right(DSL.unit())
-                        );
-                        $$7x = Optional.of(Pair.of(bax.w.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
-                        Optional<OldEntityTree> $$10x = ((Either)((Pair)$$8x.getSecond()).getFirst()).left();
-                        if ($$10x.isEmpty()) {
-                           return $$7x.orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                        }
-
-                        $$8x = (Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>)new Typed($$2, $$5x, $$10x.get())
-                           .getOptional($$9)
-                           .orElseThrow(() -> new IllegalStateException("Should always have an entity here"));
-                     }
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbg.x);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbg.x);
+      return this.fixTypeEverywhere(
+         "EntityMinecartIdentifiersFix",
+         $$0,
+         $$1,
+         $$2 -> $$3 -> {
+               if (!Objects.equals($$3.getFirst(), "Minecart")) {
+                  return $$3;
+               } else {
+                  Typed<? extends Pair<String, ?>> $$4 = (Typed<? extends Pair<String, ?>>)$$0.point($$2, "Minecart", $$3.getSecond())
+                     .orElseThrow(IllegalStateException::new);
+                  Dynamic<?> $$5 = (Dynamic<?>)$$4.getOrCreate(DSL.remainderFinder());
+                  int $$6 = $$5.get("Type").asInt(0);
+                  String $$7;
+                  if ($$6 > 0 && $$6 < a.size()) {
+                     $$7 = a.get($$6);
+                  } else {
+                     $$7 = "MinecartRideable";
                   }
-            ),
-            this.writeAndRead("player RootVehicle injecter", $$12, $$13)
-         );
-      }
+
+                  return Pair.of(
+                     $$7,
+                     (DataResult)$$4.write()
+                        .map($$2xx -> ((Type)$$1.types().get($$7)).read($$2xx))
+                        .result()
+                        .orElseThrow(() -> new IllegalStateException("Could not read the new minecart."))
+                  );
+               }
+            }
+      );
    }
 }

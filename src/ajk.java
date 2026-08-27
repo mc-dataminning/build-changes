@@ -1,118 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
 
 public class ajk {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("commands.playsound.failed"));
-
-   public static void a(CommandDispatcher<du> $$0) {
-      RequiredArgumentBuilder<du, agm> $$1 = dv.a("sound", eu.a()).suggests(hn.c);
-
-      for (aqw $$2 : aqw.values()) {
-         $$1.then(a($$2));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
-   }
-
-   private static LiteralArgumentBuilder<du> a(aqw $$0) {
-      return (LiteralArgumentBuilder<du>)dv.a($$0.a())
-         .then(
-            ((RequiredArgumentBuilder)dv.a("targets", eg.d())
-                  .executes($$1 -> a((du)$$1.getSource(), eg.f($$1, "targets"), eu.e($$1, "sound"), $$0, ((du)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
-               .then(
-                  ((RequiredArgumentBuilder)dv.a("pos", ft.a())
-                        .executes($$1 -> a((du)$$1.getSource(), eg.f($$1, "targets"), eu.e($$1, "sound"), $$0, ft.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
-                     .then(
-                        ((RequiredArgumentBuilder)dv.a("volume", FloatArgumentType.floatArg(0.0F))
-                              .executes(
-                                 $$1 -> a(
-                                       (du)$$1.getSource(),
-                                       eg.f($$1, "targets"),
-                                       eu.e($$1, "sound"),
-                                       $$0,
-                                       ft.a($$1, "pos"),
-                                       (Float)$$1.getArgument("volume", Float.class),
-                                       1.0F,
-                                       0.0F
-                                    )
-                              ))
-                           .then(
-                              ((RequiredArgumentBuilder)dv.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
-                                    .executes(
-                                       $$1 -> a(
-                                             (du)$$1.getSource(),
-                                             eg.f($$1, "targets"),
-                                             eu.e($$1, "sound"),
-                                             $$0,
-                                             ft.a($$1, "pos"),
-                                             (Float)$$1.getArgument("volume", Float.class),
-                                             (Float)$$1.getArgument("pitch", Float.class),
-                                             0.0F
-                                          )
-                                    ))
-                                 .then(
-                                    dv.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
-                                       .executes(
-                                          $$1 -> a(
-                                                (du)$$1.getSource(),
-                                                eg.f($$1, "targets"),
-                                                eu.e($$1, "sound"),
-                                                $$0,
-                                                ft.a($$1, "pos"),
-                                                (Float)$$1.getArgument("volume", Float.class),
-                                                (Float)$$1.getArgument("pitch", Float.class),
-                                                (Float)$$1.getArgument("minVolume", Float.class)
-                                             )
-                                       )
-                                 )
-                           )
-                     )
-               )
-         );
-   }
-
-   private static int a(du $$0, Collection<amj> $$1, agm $$2, aqw $$3, ejz $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
-      ig<aqu> $$8 = ig.a(aqu.a($$2));
-      double $$9 = (double)atq.k($$8.a().a($$5));
-      int $$10 = 0;
-      long $$11 = $$0.e().F_().g();
-
-      for (amj $$12 : $$1) {
-         double $$13 = $$4.c - $$12.ds();
-         double $$14 = $$4.d - $$12.du();
-         double $$15 = $$4.e - $$12.dy();
-         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         ejz $$17 = $$4;
-         float $$18 = $$5;
-         if ($$16 > $$9) {
-            if ($$7 <= 0.0F) {
-               continue;
+   public static void a(CommandDispatcher<ds> $$0) {
+      LiteralCommandNode<ds> $$1 = $$0.register(
+         (LiteralArgumentBuilder)dt.a("msg").then(dt.a("targets", ee.d()).then(dt.a("message", ei.a()).executes($$0x -> {
+            Collection<amq> $$1x = ee.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               ei.a($$0x, "message", $$2 -> a((ds)$$0x.getSource(), $$1x, $$2));
             }
 
-            double $$19 = Math.sqrt($$16);
-            $$17 = new ejz($$12.ds() + $$13 / $$19 * 2.0, $$12.du() + $$14 / $$19 * 2.0, $$12.dy() + $$15 / $$19 * 2.0);
-            $$18 = $$7;
-         }
+            return $$1x.size();
+         })))
+      );
+      $$0.register((LiteralArgumentBuilder)dt.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)dt.a("w").redirect($$1));
+   }
 
-         $$12.c.b(new aby($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
-         $$10++;
+   private static void a(ds $$0, Collection<amq> $$1, vr $$2) {
+      ux.a $$3 = ux.a(ux.e, $$0);
+      vq $$4 = vq.a($$2);
+      boolean $$5 = false;
+
+      for (amq $$6 : $$1) {
+         ux.a $$7 = ux.a(ux.f, $$0).c($$6.Q_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.i();
       }
 
-      if ($$10 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> uv.a("commands.playsound.success.single", uv.a($$2), $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> uv.a("commands.playsound.success.multiple", uv.a($$2), $$1.size()), true);
-         }
-
-         return $$10;
+      if ($$5) {
+         $$0.a(aqf.f);
       }
    }
 }

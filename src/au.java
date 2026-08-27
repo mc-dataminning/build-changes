@@ -1,65 +1,100 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class au extends cw<au.a> {
-   public au.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      cvf $$3 = a($$0);
-      Optional<cb> $$4 = cb.a($$0.get("item"));
-      cl.d $$5 = cl.d.a($$0.get("num_bees_inside"));
-      return new au.a($$1, $$3, $$4, $$5);
-   }
+public record au(Optional<asg<cvz>> b, Optional<ij<cvz>> c, Optional<cz> d, Optional<cm> e) {
+   private static final Codec<ij<cvz>> f = kb.e.r().listOf().xmap(ij::a, $$0 -> $$0.a().toList());
+   public static final Codec<au> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atg.a(asg.a(kc.f), "tag").forGetter(au::a),
+               atg.a(f, "blocks").forGetter(au::b),
+               atg.a(cz.a, "state").forGetter(au::c),
+               atg.a(cm.a, "nbt").forGetter(au::d)
+            )
+            .apply($$0, au::new)
+   );
 
-   @Nullable
-   private static cvf a(JsonObject $$0) {
-      if ($$0.has("block")) {
-         agm $$1 = new agm(atg.i($$0, "block"));
-         return kc.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
+   public boolean a(amp $$0, hv $$1) {
+      if (!$$0.o($$1)) {
+         return false;
       } else {
-         return null;
-      }
-   }
-
-   public void a(amj $$0, dhn $$1, clo $$2, int $$3) {
-      this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
-   }
-
-   public static class a extends at {
-      @Nullable
-      private final cvf a;
-      private final Optional<cb> b;
-      private final cl.d c;
-
-      public a(Optional<bc> $$0, @Nullable cvf $$1, Optional<cb> $$2, cl.d $$3) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
-         this.c = $$3;
-      }
-
-      public static am<au.a> a(cvf $$0, cb.a $$1, cl.d $$2) {
-         return al.K.a(new au.a(Optional.empty(), $$0, Optional.of($$1.b()), $$2));
-      }
-
-      public boolean a(dhn $$0, clo $$1, int $$2) {
-         if (this.a != null && !$$0.a(this.a)) {
+         dip $$2 = $$0.a_($$1);
+         if (this.b.isPresent() && !$$2.a(this.b.get())) {
+            return false;
+         } else if (this.c.isPresent() && !$$2.a(this.c.get())) {
+            return false;
+         } else if (this.d.isPresent() && !this.d.get().a($$2)) {
             return false;
          } else {
-            return this.b.isPresent() && !this.b.get().a($$1) ? false : this.c.d($$2);
+            if (this.e.isPresent()) {
+               dgd $$3 = $$0.c_($$1);
+               if ($$3 == null || !this.e.get().a($$3.o())) {
+                  return false;
+               }
+            }
+
+            return true;
          }
       }
+   }
 
-      @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         if (this.a != null) {
-            $$0.addProperty("block", kc.f.b(this.a).toString());
-         }
+   public Optional<asg<cvz>> a() {
+      return this.b;
+   }
 
-         this.b.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         $$0.add("num_bees_inside", this.c.e());
-         return $$0;
+   public Optional<ij<cvz>> b() {
+      return this.c;
+   }
+
+   public Optional<cz> c() {
+      return this.d;
+   }
+
+   public Optional<cm> d() {
+      return this.e;
+   }
+
+   public static class a {
+      private Optional<ij<cvz>> a = Optional.empty();
+      private Optional<asg<cvz>> b = Optional.empty();
+      private Optional<cz> c = Optional.empty();
+      private Optional<cm> d = Optional.empty();
+
+      private a() {
+      }
+
+      public static au.a a() {
+         return new au.a();
+      }
+
+      public au.a a(cvz... $$0) {
+         this.a = Optional.of(ij.a(cvz::r, $$0));
+         return this;
+      }
+
+      public au.a a(Collection<cvz> $$0) {
+         this.a = Optional.of(ij.a(cvz::r, $$0));
+         return this;
+      }
+
+      public au.a a(asg<cvz> $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public au.a a(sj $$0) {
+         this.d = Optional.of(new cm($$0));
+         return this;
+      }
+
+      public au.a a(cz.a $$0) {
+         this.c = $$0.b();
+         return this;
+      }
+
+      public au b() {
+         return new au(this.b, this.a, this.c, this.d);
       }
    }
 }

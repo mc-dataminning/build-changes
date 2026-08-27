@@ -1,216 +1,266 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Collection;
-import java.util.Locale;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.Collections;
 
 public class aid {
-   static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(uv.c("commands.debug.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(uv.c("commands.debug.alreadyRunning"));
-   static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(uv.c("commands.debug.function.noRecursion"));
-   static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(uv.c("commands.debug.function.noReturnRun"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vb.b("commands.bossbar.create.failed", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vb.b("commands.bossbar.unknown", $$0));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vb.c("commands.bossbar.set.players.unchanged"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vb.c("commands.bossbar.set.name.unchanged"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(vb.c("commands.bossbar.set.color.unchanged"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(vb.c("commands.bossbar.set.style.unchanged"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(vb.c("commands.bossbar.set.value.unchanged"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(vb.c("commands.bossbar.set.max.unchanged"));
+   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(vb.c("commands.bossbar.set.visibility.unchanged.hidden"));
+   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(vb.c("commands.bossbar.set.visibility.unchanged.visible"));
+   public static final SuggestionProvider<ds> a = ($$0, $$1) -> dw.a(((ds)$$0.getSource()).l().aL().a(), $$1);
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debug").requires($$0x -> $$0x.c(3)))
-                  .then(dv.a("start").executes($$0x -> a((du)$$0x.getSource()))))
-               .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource()))))
-            .then(((LiteralArgumentBuilder)dv.a("function").requires($$0x -> $$0x.c(3))).then(dv.a("name", fx.a()).suggests(air.b).executes(new aid.a())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
+                              "bossbar"
+                           )
+                           .requires($$0x -> $$0x.c(2)))
+                        .then(
+                           dt.a("add")
+                              .then(
+                                 dt.a("id", es.a()).then(dt.a("name", ea.a()).executes($$0x -> a((ds)$$0x.getSource(), es.e($$0x, "id"), ea.a($$0x, "name"))))
+                              )
+                        ))
+                     .then(dt.a("remove").then(dt.a("id", es.a()).suggests(a).executes($$0x -> e((ds)$$0x.getSource(), a($$0x))))))
+                  .then(dt.a("list").executes($$0x -> a((ds)$$0x.getSource()))))
+               .then(
+                  dt.a("set")
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a(
+                                                "id", es.a()
+                                             )
+                                             .suggests(a)
+                                             .then(
+                                                dt.a("name").then(dt.a("name", ea.a()).executes($$0x -> a((ds)$$0x.getSource(), a($$0x), ea.a($$0x, "name"))))
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
+                                                                     "color"
+                                                                  )
+                                                                  .then(dt.a("pink").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjb.a.a))))
+                                                               .then(dt.a("blue").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjb.a.b))))
+                                                            .then(dt.a("red").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjb.a.c))))
+                                                         .then(dt.a("green").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjb.a.d))))
+                                                      .then(dt.a("yellow").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjb.a.e))))
+                                                   .then(dt.a("purple").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjb.a.f))))
+                                                .then(dt.a("white").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjb.a.g)))
+                                          ))
+                                       .then(
+                                          ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("style")
+                                                         .then(dt.a("progress").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjb.b.a))))
+                                                      .then(dt.a("notched_6").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjb.b.b))))
+                                                   .then(dt.a("notched_10").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjb.b.c))))
+                                                .then(dt.a("notched_12").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjb.b.d))))
+                                             .then(dt.a("notched_20").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), bjb.b.e)))
+                                       ))
+                                    .then(
+                                       dt.a("value")
+                                          .then(
+                                             dt.a("value", IntegerArgumentType.integer(0))
+                                                .executes($$0x -> a((ds)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "value")))
+                                          )
+                                    ))
+                                 .then(
+                                    dt.a("max")
+                                       .then(
+                                          dt.a("max", IntegerArgumentType.integer(1))
+                                             .executes($$0x -> b((ds)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "max")))
+                                       )
+                                 ))
+                              .then(
+                                 dt.a("visible")
+                                    .then(
+                                       dt.a("visible", BoolArgumentType.bool())
+                                          .executes($$0x -> a((ds)$$0x.getSource(), a($$0x), BoolArgumentType.getBool($$0x, "visible")))
+                                    )
+                              ))
+                           .then(
+                              ((LiteralArgumentBuilder)dt.a("players").executes($$0x -> a((ds)$$0x.getSource(), a($$0x), Collections.emptyList())))
+                                 .then(dt.a("targets", ee.d()).executes($$0x -> a((ds)$$0x.getSource(), a($$0x), ee.d($$0x, "targets"))))
+                           )
+                     )
+               ))
+            .then(
+               dt.a("get")
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("id", es.a())
+                                 .suggests(a)
+                                 .then(dt.a("value").executes($$0x -> a((ds)$$0x.getSource(), a($$0x)))))
+                              .then(dt.a("max").executes($$0x -> b((ds)$$0x.getSource(), a($$0x)))))
+                           .then(dt.a("visible").executes($$0x -> c((ds)$$0x.getSource(), a($$0x)))))
+                        .then(dt.a("players").executes($$0x -> d((ds)$$0x.getSource(), a($$0x))))
+                  )
+            )
       );
    }
 
-   private static int a(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.be()) {
-         throw c.create();
+   private static int a(ds $$0, ahs $$1) {
+      $$0.a(() -> vb.a("commands.bossbar.get.value", $$1.e(), $$1.c()), true);
+      return $$1.c();
+   }
+
+   private static int b(ds $$0, ahs $$1) {
+      $$0.a(() -> vb.a("commands.bossbar.get.max", $$1.e(), $$1.d()), true);
+      return $$1.d();
+   }
+
+   private static int c(ds $$0, ahs $$1) {
+      if ($$1.g()) {
+         $$0.a(() -> vb.a("commands.bossbar.get.visible.visible", $$1.e()), true);
+         return 1;
       } else {
-         $$1.bf();
-         $$0.a(() -> uv.c("commands.debug.started"), true);
+         $$0.a(() -> vb.a("commands.bossbar.get.visible.hidden", $$1.e()), true);
          return 0;
       }
    }
 
-   private static int b(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.be()) {
-         throw b.create();
+   private static int d(ds $$0, ahs $$1) {
+      if ($$1.h().isEmpty()) {
+         $$0.a(() -> vb.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         bfr $$2 = $$1.bg();
-         double $$3 = (double)$$2.g() / (double)aup.a;
-         double $$4 = (double)$$2.f() / $$3;
-         $$0.a(() -> uv.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
-         return (int)$$4;
+         $$0.a(() -> vb.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), ve.b($$1.h(), cer::Q_)), true);
+      }
+
+      return $$1.h().size();
+   }
+
+   private static int a(ds $$0, ahs $$1, boolean $$2) throws CommandSyntaxException {
+      if ($$1.g() == $$2) {
+         if ($$2) {
+            throw k.create();
+         } else {
+            throw j.create();
+         }
+      } else {
+         $$1.d($$2);
+         if ($$2) {
+            $$0.a(() -> vb.a("commands.bossbar.set.visible.success.visible", $$1.e()), true);
+         } else {
+            $$0.a(() -> vb.a("commands.bossbar.set.visible.success.hidden", $$1.e()), true);
+         }
+
+         return 0;
       }
    }
 
-   static class a extends gl.b<du> implements gl.a<du> {
-      public void a(du $$0, ContextChain<du> $$1, gj $$2, gp<du> $$3) throws CommandSyntaxException {
-         if ($$2.c()) {
-            throw aid.e.create();
-         } else if ($$3.a() != null) {
-            throw aid.d.create();
-         } else {
-            CommandContext<du> $$4 = $$1.getTopContext();
-            Collection<hb<du>> $$5 = fx.a($$4, "name");
-            MinecraftServer $$6 = $$0.l();
-            String $$7 = "debug-trace-" + ac.e() + ".txt";
-            CommandDispatcher<du> $$8 = $$0.l().aC().a();
-            int $$9 = 0;
-
-            try {
-               Path $$10 = $$6.c("debug").toPath();
-               Files.createDirectories($$10);
-               final PrintWriter $$11 = new PrintWriter(Files.newBufferedWriter($$10.resolve($$7), StandardCharsets.UTF_8));
-               aid.b $$12 = new aid.b($$11);
-               $$3.a($$12);
-
-               for (final hb<du> $$13 : $$5) {
-                  try {
-                     du $$14 = $$0.a($$12).b(2);
-                     hd<du> $$15 = $$13.a(null, $$8, $$14);
-                     $$3.a((new gv<du>($$15, dq.a, false) {
-                        public void a(du $$0, go<du> $$1, gq $$2) {
-                           $$11.println($$13.a());
-                           super.a($$0, $$1, $$2);
-                        }
-                     }).bind($$14));
-                     $$9 += $$15.b().size();
-                  } catch (dx var18) {
-                     $$0.b(var18.a());
-                  }
-               }
-            } catch (IOException | UncheckedIOException var19) {
-               aid.a.warn("Tracing failed", var19);
-               $$0.b(uv.c("commands.debug.function.traceFailed"));
-            }
-
-            int $$18 = $$9;
-            $$3.a(($$4x, $$5x) -> {
-               if ($$5.size() == 1) {
-                  $$0.a(() -> uv.a("commands.debug.function.success.single", $$18, uv.a($$5.iterator().next().a()), $$7), true);
-               } else {
-                  $$0.a(() -> uv.a("commands.debug.function.success.multiple", $$18, $$5.size(), $$7), true);
-               }
-            });
-         }
+   private static int a(ds $$0, ahs $$1, int $$2) throws CommandSyntaxException {
+      if ($$1.c() == $$2) {
+         throw h.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> vb.a("commands.bossbar.set.value.success", $$1.e(), $$2), true);
+         return $$2;
       }
    }
 
-   static class b implements dt, gr {
-      public static final int b = 1;
-      private final PrintWriter c;
-      private int d;
-      private boolean e;
-
-      b(PrintWriter $$0) {
-         this.c = $$0;
+   private static int b(ds $$0, ahs $$1, int $$2) throws CommandSyntaxException {
+      if ($$1.d() == $$2) {
+         throw i.create();
+      } else {
+         $$1.b($$2);
+         $$0.a(() -> vb.a("commands.bossbar.set.max.success", $$1.e(), $$2), true);
+         return $$2;
       }
+   }
 
-      private void a(int $$0) {
-         this.b($$0);
-         this.d = $$0;
+   private static int a(ds $$0, ahs $$1, bjb.a $$2) throws CommandSyntaxException {
+      if ($$1.l().equals($$2)) {
+         throw f.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> vb.a("commands.bossbar.set.color.success", $$1.e()), true);
+         return 0;
       }
+   }
 
-      private void b(int $$0) {
-         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
-            this.c.write("    ");
-         }
+   private static int a(ds $$0, ahs $$1, bjb.b $$2) throws CommandSyntaxException {
+      if ($$1.m().equals($$2)) {
+         throw g.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> vb.a("commands.bossbar.set.style.success", $$1.e()), true);
+         return 0;
       }
+   }
 
-      private void e() {
-         if (this.e) {
-            this.c.println();
-            this.e = false;
-         }
+   private static int a(ds $$0, ahs $$1, vb $$2) throws CommandSyntaxException {
+      vb $$3 = ve.a($$0, $$2, null, 0);
+      if ($$1.j().equals($$3)) {
+         throw e.create();
+      } else {
+         $$1.a($$3);
+         $$0.a(() -> vb.a("commands.bossbar.set.name.success", $$1.e()), true);
+         return 0;
       }
+   }
 
-      @Override
-      public void a(int $$0, String $$1) {
-         this.e();
-         this.a($$0);
-         this.c.print("[C] ");
-         this.c.print($$1);
-         this.e = true;
-      }
-
-      @Override
-      public void a(int $$0, String $$1, int $$2) {
-         if (this.e) {
-            this.c.print(" -> ");
-            this.c.println($$2);
-            this.e = false;
+   private static int a(ds $$0, ahs $$1, Collection<amq> $$2) throws CommandSyntaxException {
+      boolean $$3 = $$1.a($$2);
+      if (!$$3) {
+         throw d.create();
+      } else {
+         if ($$1.h().isEmpty()) {
+            $$0.a(() -> vb.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            this.a($$0);
-            this.c.print("[R = ");
-            this.c.print($$2);
-            this.c.print("] ");
-            this.c.println($$1);
+            $$0.a(() -> vb.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), ve.b($$2, cer::Q_)), true);
          }
+
+         return $$1.h().size();
+      }
+   }
+
+   private static int a(ds $$0) {
+      Collection<ahs> $$1 = $$0.l().aL().b();
+      if ($$1.isEmpty()) {
+         $$0.a(() -> vb.c("commands.bossbar.list.bars.none"), false);
+      } else {
+         $$0.a(() -> vb.a("commands.bossbar.list.bars.some", $$1.size(), ve.b($$1, ahs::e)), false);
       }
 
-      @Override
-      public void a(int $$0, agm $$1, int $$2) {
-         this.e();
-         this.a($$0);
-         this.c.print("[F] ");
-         this.c.print($$1);
-         this.c.print(" size=");
-         this.c.println($$2);
-      }
+      return $$1.size();
+   }
 
-      @Override
-      public void a(String $$0) {
-         this.e();
-         this.a(this.d + 1);
-         this.c.print("[E] ");
-         this.c.print($$0);
+   private static int a(ds $$0, agt $$1, vb $$2) throws CommandSyntaxException {
+      aht $$3 = $$0.l().aL();
+      if ($$3.a($$1) != null) {
+         throw b.create($$1.toString());
+      } else {
+         ahs $$4 = $$3.a($$1, ve.a($$0, $$2, null, 0));
+         $$0.a(() -> vb.a("commands.bossbar.create.success", $$4.e()), true);
+         return $$3.b().size();
       }
+   }
 
-      @Override
-      public void a(uv $$0) {
-         this.e();
-         this.b(this.d + 1);
-         this.c.print("[M] ");
-         this.c.println($$0.getString());
-      }
+   private static int e(ds $$0, ahs $$1) {
+      aht $$2 = $$0.l().aL();
+      $$1.b();
+      $$2.a($$1);
+      $$0.a(() -> vb.a("commands.bossbar.remove.success", $$1.e()), true);
+      return $$2.b().size();
+   }
 
-      @Override
-      public boolean l_() {
-         return true;
-      }
-
-      @Override
-      public boolean x_() {
-         return true;
-      }
-
-      @Override
-      public boolean W_() {
-         return false;
-      }
-
-      @Override
-      public boolean m_() {
-         return true;
-      }
-
-      @Override
-      public void close() {
-         IOUtils.closeQuietly(this.c);
+   public static ahs a(CommandContext<ds> $$0) throws CommandSyntaxException {
+      agt $$1 = es.e($$0, "id");
+      ahs $$2 = ((ds)$$0.getSource()).l().aL().a($$1);
+      if ($$2 == null) {
+         throw c.create($$1.toString());
+      } else {
+         return $$2;
       }
    }
 }

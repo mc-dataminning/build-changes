@@ -1,197 +1,187 @@
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.DataInput;
-import java.io.DataInputStream;
 import java.io.DataOutput;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class sq {
-   public static sd a(Path $$0, sm $$1) throws IOException {
-      sd var3;
-      try (InputStream $$2 = Files.newInputStream($$0)) {
-         var3 = a($$2, $$1);
+public class sq extends si<sr> {
+   private static final int b = 24;
+   public static final ti<sq> a = new ti.b<sq>() {
+      public sq a(DataInput $$0, ss $$1) throws IOException {
+         return new sq(d($$0, $$1));
       }
 
-      return var3;
-   }
-
-   private static DataInputStream a(InputStream $$0) throws IOException {
-      return new DataInputStream(new asz(new GZIPInputStream($$0)));
-   }
-
-   private static DataOutputStream a(OutputStream $$0) throws IOException {
-      return new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream($$0)));
-   }
-
-   public static sd a(InputStream $$0, sm $$1) throws IOException {
-      sd var3;
-      try (DataInputStream $$2 = a($$0)) {
-         var3 = a((DataInput)$$2, $$1);
+      @Override
+      public td.b a(DataInput $$0, td $$1, ss $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
       }
 
-      return var3;
-   }
+      private static long[] d(DataInput $$0, ss $$1) throws IOException {
+         $$1.b(24L);
+         int $$2 = $$0.readInt();
+         $$1.a(8L, (long)$$2);
+         long[] $$3 = new long[$$2];
 
-   public static void a(Path $$0, sx $$1, sm $$2) throws IOException {
-      try (InputStream $$3 = Files.newInputStream($$0)) {
-         a($$3, $$1, $$2);
-      }
-   }
-
-   public static void a(InputStream $$0, sx $$1, sm $$2) throws IOException {
-      try (DataInputStream $$3 = a($$0)) {
-         a((DataInput)$$3, $$1, $$2);
-      }
-   }
-
-   public static byte[] a(sd $$0) throws IOException {
-      ByteArrayOutputStream $$1 = new ByteArrayOutputStream();
-
-      try (DataOutputStream $$2 = a($$1)) {
-         a($$0, (DataOutput)$$2);
-      }
-
-      return $$1.toByteArray();
-   }
-
-   public static byte[] b(sd $$0) throws IOException {
-      ByteArrayOutputStream $$1 = new ByteArrayOutputStream();
-
-      try (DataOutputStream $$2 = new DataOutputStream($$1)) {
-         a($$0, (DataOutput)$$2);
-      }
-
-      return $$1.toByteArray();
-   }
-
-   public static void a(sd $$0, Path $$1) throws IOException {
-      try (
-         OutputStream $$2 = Files.newOutputStream($$1, StandardOpenOption.SYNC);
-         OutputStream $$3 = new BufferedOutputStream($$2);
-      ) {
-         a($$0, $$3);
-      }
-   }
-
-   public static void a(sd $$0, OutputStream $$1) throws IOException {
-      try (DataOutputStream $$2 = a($$1)) {
-         a($$0, (DataOutput)$$2);
-      }
-   }
-
-   public static void b(sd $$0, Path $$1) throws IOException {
-      try (
-         OutputStream $$2 = Files.newOutputStream($$1, StandardOpenOption.SYNC);
-         OutputStream $$3 = new BufferedOutputStream($$2);
-         DataOutputStream $$4 = new DataOutputStream($$3);
-      ) {
-         a($$0, (DataOutput)$$4);
-      }
-   }
-
-   @Nullable
-   public static sd a(Path $$0) throws IOException {
-      if (Files.exists($$0)) {
-         return null;
-      } else {
-         sd var3;
-         try (
-            InputStream $$1 = Files.newInputStream($$0);
-            DataInputStream $$2 = new DataInputStream($$1);
-         ) {
-            var3 = a((DataInput)$$2, sm.a());
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3[$$4] = $$0.readLong();
          }
 
-         return var3;
+         return $$3;
+      }
+
+      @Override
+      public void b(DataInput $$0, ss $$1) throws IOException {
+         $$0.skipBytes($$0.readInt() * 8);
+      }
+
+      @Override
+      public String a() {
+         return "LONG[]";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Long_Array";
+      }
+   };
+   private long[] c;
+
+   public sq(long[] $$0) {
+      this.c = $$0;
+   }
+
+   public sq(LongSet $$0) {
+      this.c = $$0.toLongArray();
+   }
+
+   public sq(List<Long> $$0) {
+      this(a($$0));
+   }
+
+   private static long[] a(List<Long> $$0) {
+      long[] $$1 = new long[$$0.size()];
+
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         Long $$3 = $$0.get($$2);
+         $$1[$$2] = $$3 == null ? 0L : $$3;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeInt(this.c.length);
+
+      for (long $$1 : this.c) {
+         $$0.writeLong($$1);
       }
    }
 
-   public static sd a(DataInput $$0) throws IOException {
-      return a($$0, sm.a());
+   @Override
+   public int a() {
+      return 24 + 8 * this.c.length;
    }
 
-   public static sd a(DataInput $$0, sm $$1) throws IOException {
-      ta $$2 = c($$0, $$1);
-      if ($$2 instanceof sd) {
-         return (sd)$$2;
+   @Override
+   public byte b() {
+      return 12;
+   }
+
+   @Override
+   public ti<sq> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.t_();
+   }
+
+   public sq e() {
+      long[] $$0 = new long[this.c.length];
+      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
+      return new sq($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof sq && Arrays.equals(this.c, ((sq)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public void a(tk $$0) {
+      $$0.a(this);
+   }
+
+   public long[] g() {
+      return this.c;
+   }
+
+   @Override
+   public int size() {
+      return this.c.length;
+   }
+
+   public sr a(int $$0) {
+      return sr.a(this.c[$$0]);
+   }
+
+   public sr a(int $$0, sr $$1) {
+      long $$2 = this.c[$$0];
+      this.c[$$0] = $$1.f();
+      return sr.a($$2);
+   }
+
+   public void b(int $$0, sr $$1) {
+      this.c = ArrayUtils.add(this.c, $$0, $$1.f());
+   }
+
+   @Override
+   public boolean a(int $$0, tg $$1) {
+      if ($$1 instanceof sz) {
+         this.c[$$0] = ((sz)$$1).f();
+         return true;
       } else {
-         throw new IOException("Root tag must be a named compound tag");
+         return false;
       }
    }
 
-   public static void a(sd $$0, DataOutput $$1) throws IOException {
-      b($$0, $$1);
-   }
-
-   public static void a(DataInput $$0, sx $$1, sm $$2) throws IOException {
-      tc<?> $$3 = td.a($$0.readByte());
-      if ($$3 == sf.a) {
-         if ($$1.b(sf.a) == sx.b.a) {
-            $$1.a();
-         }
+   @Override
+   public boolean b(int $$0, tg $$1) {
+      if ($$1 instanceof sz) {
+         this.c = ArrayUtils.add(this.c, $$0, ((sz)$$1).f());
+         return true;
       } else {
-         switch ($$1.b($$3)) {
-            case c:
-            default:
-               break;
-            case b:
-               sy.a($$0);
-               $$3.b($$0, $$2);
-               break;
-            case a:
-               sy.a($$0);
-               $$3.a($$0, $$1, $$2);
-         }
+         return false;
       }
    }
 
-   public static ta b(DataInput $$0, sm $$1) throws IOException {
-      byte $$2 = $$0.readByte();
-      return (ta)($$2 == 0 ? sf.b : a($$0, $$1, $$2));
+   public sr b(int $$0) {
+      long $$1 = this.c[$$0];
+      this.c = ArrayUtils.remove(this.c, $$0);
+      return sr.a($$1);
    }
 
-   public static void a(ta $$0, DataOutput $$1) throws IOException {
-      $$1.writeByte($$0.b());
-      if ($$0.b() != 0) {
-         $$0.a($$1);
-      }
+   @Override
+   public byte f() {
+      return 4;
    }
 
-   public static void b(ta $$0, DataOutput $$1) throws IOException {
-      $$1.writeByte($$0.b());
-      if ($$0.b() != 0) {
-         $$1.writeUTF("");
-         $$0.a($$1);
-      }
+   @Override
+   public void clear() {
+      this.c = new long[0];
    }
 
-   private static ta c(DataInput $$0, sm $$1) throws IOException {
-      byte $$2 = $$0.readByte();
-      if ($$2 == 0) {
-         return sf.b;
-      } else {
-         sy.a($$0);
-         return a($$0, $$1, $$2);
-      }
-   }
-
-   private static ta a(DataInput $$0, sm $$1, byte $$2) {
-      try {
-         return td.a($$2).c($$0, $$1);
-      } catch (IOException var6) {
-         o $$4 = o.a(var6, "Loading NBT data");
-         p $$5 = $$4.a("NBT Tag");
-         $$5.a("Tag type", $$2);
-         throw new su($$4);
-      }
+   @Override
+   public td.b a(td $$0) {
+      return $$0.a(this.c);
    }
 }

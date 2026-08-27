@@ -1,77 +1,111 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public abstract class cty extends cvf {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final eks h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final eks b = ekp.a(
-      ekp.b(), ekp.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), ekd.e
+public class cty {
+   private static final Logger c = LogUtils.getLogger();
+   public static final cty a = new cty(ImmutableMap.of(), ImmutableList.of());
+   public static final MapCodec<cty> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.simpleMap(dnu.a.c, dqb.c.promotePartial(ac.a("Carver: ", c::error)), aut.a(dnu.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               dxs.d.promotePartial(ac.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, cty::new)
    );
-   protected final jc.a c;
+   private final Map<dnu.a, ij<dqb<?>>> d;
+   private final List<ij<dxs>> e;
+   private final Supplier<List<dqp<?, ?>>> f;
+   private final Supplier<Set<dxs>> g;
 
-   @Override
-   protected abstract MapCodec<? extends cty> a();
-
-   public cty(dhm.d $$0, jc.a $$1) {
-      super($$0);
-      this.c = $$1;
+   cty(Map<dnu.a, ij<dqb<?>>> $$0, List<ij<dxs>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(ij::a).map(ie::a).flatMap(dxs::a).filter($$0xx -> $$0xx.b() == drc.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(ij::a).map(ie::a).collect(Collectors.toSet()));
    }
 
-   protected double b(dhn $$0) {
-      return 0.0;
+   public Iterable<ie<dqb<?>>> a(dnu.a $$0) {
+      return Objects.requireNonNullElseGet(this.d.get($$0), List::of);
    }
 
-   protected boolean a(dhn $$0, hx $$1, bkv $$2) {
-      return $$2.du() < (double)$$1.v() + this.b($$0) && $$2.cH().e > (double)$$1.v() + 0.25;
+   public List<dqp<?, ?>> a() {
+      return this.f.get();
    }
 
-   @Override
-   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
-      clo $$6 = $$3.b($$4);
-      jc $$7 = this.c.b().get($$6.d());
-      return $$7.interact($$0, $$1, $$2, $$3, $$4, $$6);
+   public List<ij<dxs>> b() {
+      return this.e;
    }
 
-   @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return b;
+   public boolean a(dxs $$0) {
+      return this.g.get().contains($$0);
    }
 
-   @Override
-   public eks a(dhn $$0, crl $$1, hx $$2) {
-      return h;
-   }
+   public static class a extends cty.b {
+      private final ig<dxs> a;
+      private final ig<dqb<?>> b;
 
-   @Override
-   public boolean d_(dhn $$0) {
-      return true;
-   }
+      public a(ig<dxs> $$0, ig<dqb<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
-      return false;
-   }
+      public cty.a a(dnu.b $$0, ags<dxs> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
 
-   public abstract boolean d(dhn var1);
-
-   @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      hx $$4 = daw.a((csf)$$1, $$2);
-      if ($$4 != null) {
-         ecw $$5 = daw.a($$1, $$4);
-         if ($$5 != ecy.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
-         }
+      public cty.a a(dnu.a $$0, ags<dqb<?>> $$1) {
+         this.a($$0, this.b.b($$1));
+         return this;
       }
    }
 
-   protected boolean a(ecw $$0) {
-      return false;
-   }
+   public static class b {
+      private final Map<dnu.a, List<ie<dqb<?>>>> a = Maps.newLinkedHashMap();
+      private final List<List<ie<dxs>>> b = Lists.newArrayList();
 
-   protected void a(dhn $$0, csf $$1, hx $$2, ecw $$3) {
+      public cty.b a(dnu.b $$0, ie<dxs> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public cty.b a(int $$0, ie<dxs> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public cty.b a(dnu.a $$0, ie<dqb<?>> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public cty a() {
+         return new cty(
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ij.a((List)$$0.getValue()))),
+            this.b.stream().map(ij::a).collect(ImmutableList.toImmutableList())
+         );
+      }
    }
 }

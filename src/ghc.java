@@ -1,60 +1,33 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Stream;
 
-public class ghc {
-   private boolean a;
-   @Nullable
-   private ggw.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+public class ghc<T> implements ghg<T> {
+   protected final Comparator<T> a;
+   protected final ghh<T> b;
 
-   public ghc(@Nullable String $$0) {
-      this.d = $$0;
+   public ghc(Function<T, Stream<agt>> $$0, List<T> $$1) {
+      ToIntFunction<T> $$2 = ac.e($$1);
+      this.a = Comparator.comparingInt($$2);
+      this.b = ghh.a($$1, $$0);
    }
 
-   public void a(ggx.a $$0) {
-      if (this.c != null) {
-         $$0.a(ggw.j, !this.c.equals("vanilla"));
-      }
-
-      $$0.a(ggw.k, this.a());
+   @Override
+   public List<T> search(String $$0) {
+      int $$1 = $$0.indexOf(58);
+      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
    }
 
-   private ggw.c a() {
-      flz $$0 = eti.N().P();
-      if ($$0 != null && $$0.e()) {
-         return ggw.c.a;
-      } else {
-         return eti.N().R() ? ggw.c.b : ggw.c.c;
-      }
+   protected List<T> a(String $$0) {
+      return this.b.b($$0);
    }
 
-   public boolean a(ggt $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(ggu.b, $$0x -> {
-            $$0x.a(ggw.n, this.b);
-            if (this.d != null) {
-               $$0x.a(ggw.o, this.d);
-            }
-         });
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void a(csc $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? ggw.b.e : ggw.b.a;
-         case b -> ggw.b.b;
-         case c -> ggw.b.c;
-         case d -> ggw.b.d;
-      };
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      return ImmutableList.copyOf(new ghd<T>($$2.iterator(), $$3.iterator(), this.a));
    }
 }

@@ -1,58 +1,141 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
+import java.util.Arrays;
 import javax.annotation.Nullable;
 
 public class dkr {
-   private static final Int2ObjectMap<dkr> d = new Int2ObjectOpenHashMap();
-   public static final dkr a = a(new dkr(1, $$0 -> new asz(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
-   public static final dkr b = a(new dkr(2, $$0 -> new asz(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0))));
-   public static final dkr c = a(new dkr(3, $$0 -> $$0, $$0 -> $$0));
-   private final int e;
-   private final dkr.a<InputStream> f;
-   private final dkr.a<OutputStream> g;
-
-   private dkr(int $$0, dkr.a<InputStream> $$1, dkr.a<OutputStream> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   private static dkr a(dkr $$0) {
-      d.put($$0.e, $$0);
-      return $$0;
-   }
-
+   public static final int a = 16;
+   public static final int b = 128;
+   public static final int c = 2048;
+   private static final int e = 4;
    @Nullable
-   public static dkr a(int $$0) {
-      return (dkr)d.get($$0);
+   protected byte[] d;
+   private int f;
+
+   public dkr() {
+      this(0);
    }
 
-   public static boolean b(int $$0) {
-      return d.containsKey($$0);
+   public dkr(int $$0) {
+      this.f = $$0;
    }
 
-   public int a() {
-      return this.e;
+   public dkr(byte[] $$0) {
+      this.d = $$0;
+      this.f = 0;
+      if ($$0.length != 2048) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
+      }
    }
 
-   public OutputStream a(OutputStream $$0) throws IOException {
-      return this.g.wrap($$0);
+   public int a(int $$0, int $$1, int $$2) {
+      return this.d(b($$0, $$1, $$2));
    }
 
-   public InputStream a(InputStream $$0) throws IOException {
-      return this.f.wrap($$0);
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.a(b($$0, $$1, $$2), $$3);
    }
 
-   @FunctionalInterface
-   interface a<O> {
-      O wrap(O var1) throws IOException;
+   private static int b(int $$0, int $$1, int $$2) {
+      return $$1 << 8 | $$2 << 4 | $$0;
+   }
+
+   private int d(int $$0) {
+      if (this.d == null) {
+         return this.f;
+      } else {
+         int $$1 = f($$0);
+         int $$2 = e($$0);
+         return this.d[$$1] >> 4 * $$2 & 15;
+      }
+   }
+
+   private void a(int $$0, int $$1) {
+      byte[] $$2 = this.a();
+      int $$3 = f($$0);
+      int $$4 = e($$0);
+      int $$5 = ~(15 << 4 * $$4);
+      int $$6 = ($$1 & 15) << 4 * $$4;
+      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
+   }
+
+   private static int e(int $$0) {
+      return $$0 & 1;
+   }
+
+   private static int f(int $$0) {
+      return $$0 >> 1;
+   }
+
+   public void a(int $$0) {
+      this.f = $$0;
+      this.d = null;
+   }
+
+   private static byte g(int $$0) {
+      byte $$1 = (byte)$$0;
+
+      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
+         $$1 = (byte)($$1 | $$0 << $$2);
+      }
+
+      return $$1;
+   }
+
+   public byte[] a() {
+      if (this.d == null) {
+         this.d = new byte[2048];
+         if (this.f != 0) {
+            Arrays.fill(this.d, g(this.f));
+         }
+      }
+
+      return this.d;
+   }
+
+   public dkr b() {
+      return this.d == null ? new dkr(this.f) : new dkr((byte[])this.d.clone());
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (int $$1 = 0; $$1 < 4096; $$1++) {
+         $$0.append(Integer.toHexString(this.d($$1)));
+         if (($$1 & 15) == 15) {
+            $$0.append("\n");
+         }
+
+         if (($$1 & 0xFF) == 255) {
+            $$0.append("\n");
+         }
+      }
+
+      return $$0.toString();
+   }
+
+   @avd
+   public String b(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         $$1.append(Integer.toHexString(this.d($$2)));
+         if (($$2 & 15) == 15) {
+            $$1.append("\n");
+         }
+      }
+
+      return $$1.toString();
+   }
+
+   public boolean c() {
+      return this.d == null;
+   }
+
+   public boolean c(int $$0) {
+      return this.d == null && this.f == $$0;
+   }
+
+   public boolean d() {
+      return this.d == null && this.f == 0;
    }
 }

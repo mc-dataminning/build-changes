@@ -1,26 +1,5 @@
-public class faf extends faz {
-   public faf(uv $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean aF_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aP_() {
-      return false;
-   }
-
-   @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
-   }
-
-   @Override
-   public void b(eut $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+public class faf {
+   public static boolean a(int $$0) {
+      return $$0 == 257 || $$0 == 32 || $$0 == 335;
    }
 }

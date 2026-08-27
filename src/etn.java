@@ -1,30 +1,13 @@
-import java.util.function.IntFunction;
+public class etn extends eto {
+   private final erb b;
 
-public enum etn implements ats {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
-
-   private static final IntFunction<etn> d = asj.a(etn::a, values(), asj.a.b);
-   private final int e;
-   private final String f;
-
-   private etn(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public etn(erb $$0, long $$1, vb $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public String b() {
-      return this.f;
-   }
-
-   @Override
-   public int a() {
-      return this.e;
-   }
-
-   public static etn a(int $$0) {
-      return d.apply($$0);
+   protected void a(ept $$0, long $$1) throws erg {
+      $$0.d($$1, this.b.a);
    }
 }

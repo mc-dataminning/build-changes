@@ -1,15 +1,81 @@
-public class cpm extends cpg {
-   public cpm(String $$0, coq $$1, clo $$2) {
-      super(coy.f, cox.t, $$0, $$1, $$2);
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class cpm {
+   private final cpm.a[] a;
+   private WeakReference<cpo> b = new WeakReference<>(null);
+
+   public cpm(int $$0) {
+      this.a = new cpm.a[$$0];
    }
 
-   @Override
-   public boolean a(biu $$0, csf $$1) {
-      return this.a.a($$0.a(0));
+   public Optional<cpc> a(csy $$0, cia $$1) {
+      if ($$1.ai_()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
+
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            cpm.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1.h())) {
+               this.a($$2);
+               return Optional.ofNullable($$3.b());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
    }
 
-   @Override
-   public clo g() {
-      return new clo(cvh.oc);
+   private void a(csy $$0) {
+      cpo $$1 = $$0.q();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
+   }
+
+   private Optional<cpc> a(cia $$0, csy $$1) {
+      Optional<cpn<cpc>> $$2 = $$1.q().a(cpq.a, $$0, $$1);
+      this.a($$0.h(), $$2.map(cpn::b).orElse(null));
+      return $$2.map(cpn::b);
+   }
+
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         cpm.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
+   }
+
+   private void a(List<cmh> $$0, @Nullable cpc $$1) {
+      io<cmh> $$2 = io.a($$0.size(), cmh.f);
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         $$2.set($$3, $$0.get($$3).c(1));
+      }
+
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new cpm.a($$2, $$1);
+   }
+
+   static record a(io<cmh> a, @Nullable cpc b) {
+      public boolean a(List<cmh> $$0) {
+         if (this.a.size() != $$0.size()) {
+            return false;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cmh.c(this.a.get($$1), $$0.get($$1))) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

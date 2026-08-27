@@ -1,55 +1,44 @@
-import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.util.Attribute;
-import io.netty.util.AttributeKey;
-import java.io.IOException;
-import java.util.List;
-import org.slf4j.Logger;
+import io.netty.handler.codec.MessageToByteEncoder;
+import java.util.zip.Deflater;
 
-public class ub extends ByteToMessageDecoder implements ug {
-   private static final Logger a = LogUtils.getLogger();
-   private final AttributeKey<tx.a<?>> b;
+public class ub extends MessageToByteEncoder<ByteBuf> {
+   private final byte[] a = new byte[8192];
+   private final Deflater b;
+   private int c;
 
-   public ub(AttributeKey<tx.a<?>> $$0) {
-      this.b = $$0;
+   public ub(int $$0) {
+      this.c = $$0;
+      this.b = new Deflater();
    }
 
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
       int $$3 = $$1.readableBytes();
-      if ($$3 != 0) {
-         Attribute<tx.a<?>> $$4 = $$0.channel().attr(this.b);
-         tx.a<?> $$5 = (tx.a<?>)$$4.get();
-         ty $$6 = new ty($$1);
-         int $$7 = $$6.n();
-         wo<?> $$8 = $$5.a($$7, $$6);
-         if ($$8 == null) {
-            throw new IOException("Bad packet id " + $$7);
-         } else {
-            bfy.e.a($$5.a(), $$7, $$0.channel().remoteAddress(), $$3);
-            if ($$6.readableBytes() > 0) {
-               throw new IOException(
-                  "Packet "
-                     + $$5.a().a()
-                     + "/"
-                     + $$7
-                     + " ("
-                     + $$8.getClass().getSimpleName()
-                     + ") was larger than I expected, found "
-                     + $$6.readableBytes()
-                     + " bytes extra whilst reading packet "
-                     + $$7
-               );
-            } else {
-               $$2.add($$8);
-               if (a.isDebugEnabled()) {
-                  a.debug(tw.c, " IN: [{}:{}] {}", new Object[]{$$5.a().a(), $$7, $$8.getClass().getName()});
-               }
+      if ($$3 < this.c) {
+         us.a($$2, 0);
+         $$2.writeBytes($$1);
+      } else {
+         byte[] $$4 = new byte[$$3];
+         $$1.readBytes($$4);
+         us.a($$2, $$4.length);
+         this.b.setInput($$4, 0, $$3);
+         this.b.finish();
 
-               ug.a($$4, $$8);
-            }
+         while (!this.b.finished()) {
+            int $$5 = this.b.deflate(this.a);
+            $$2.writeBytes(this.a, 0, $$5);
          }
+
+         this.b.reset();
       }
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public void a(int $$0) {
+      this.c = $$0;
    }
 }

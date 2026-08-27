@@ -1,27 +1,15 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.Objects;
 
-public class axo extends azx {
-   public axo(Schema $$0) {
-      super($$0, false, "EntityPaintingFieldsRenameFix", bax.x, "minecraft:painting");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return this.a(this.a($$0, "Motive", "variant"), "Facing", "facing");
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2) {
-      Optional<? extends Dynamic<?>> $$3 = $$0.get($$1).result();
-      Optional<? extends Dynamic<?>> $$4 = $$3.map($$3x -> $$0.remove($$1).set($$2, $$3x));
-      return (Dynamic<?>)DataFixUtils.orElse($$4, $$0);
+public class axo extends bbp {
+   public axo(Schema $$0, boolean $$1) {
+      super("EntityElderGuardianSplitFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      return Pair.of(Objects.equals($$0, "Guardian") && $$1.get("Elder").asBoolean(false) ? "ElderGuardian" : $$0, $$1);
    }
 }

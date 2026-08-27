@@ -1,7 +1,21 @@
-import java.util.function.BiConsumer;
+public enum djw implements aut {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
-public interface djw extends crl {
-   void a(BiConsumer<hx, dhn> var1);
+   private final String d;
 
-   ech B();
+   private djw(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

@@ -1,26 +1,77 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.function.BiConsumer;
 
-public class dwg extends dwt {
-   public static final Codec<dwg> a = dms.a.c.fieldOf("step").xmap(dwg::new, $$0 -> $$0.c).codec();
-   private final dms.a c;
+public class dwg extends dwk {
+   public static final Codec<dwg> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dwg::new));
 
-   private dwg(dms.a $$0) {
-      this.c = $$0;
-   }
-
-   public static dwg a(dms.a $$0) {
-      return new dwg($$0);
-   }
-
-   @Override
-   public Stream<hx> a_(dwr $$0, atw $$1, hx $$2) {
-      crm $$3 = new crm($$2);
-      return $$0.a($$3, this.c).a($$3);
+   public dwg(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public dwu<?> b() {
-      return dwu.o;
+   protected dwl<?> a() {
+      return dwl.b;
+   }
+
+   @Override
+   public List<dus.a> a(cte $$0, BiConsumer<hv, dip> $$1, auf $$2, int $$3, hv $$4, duc $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      List<dus.a> $$6 = Lists.newArrayList();
+      ia $$7 = ia.c.a.a($$2);
+      int $$8 = $$3 - $$2.a(4) - 1;
+      int $$9 = 3 - $$2.a(3);
+      hv.a $$10 = new hv.a();
+      int $$11 = $$4.u();
+      int $$12 = $$4.w();
+      OptionalInt $$13 = OptionalInt.empty();
+
+      for (int $$14 = 0; $$14 < $$3; $$14++) {
+         int $$15 = $$4.v() + $$14;
+         if ($$14 >= $$8 && $$9 > 0) {
+            $$11 += $$7.j();
+            $$12 += $$7.l();
+            $$9--;
+         }
+
+         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
+            $$13 = OptionalInt.of($$15 + 1);
+         }
+      }
+
+      if ($$13.isPresent()) {
+         $$6.add(new dus.a(new hv($$11, $$13.getAsInt(), $$12), 1, false));
+      }
+
+      $$11 = $$4.u();
+      $$12 = $$4.w();
+      ia $$16 = ia.c.a.a($$2);
+      if ($$16 != $$7) {
+         int $$17 = $$8 - $$2.a(2) - 1;
+         int $$18 = 1 + $$2.a(3);
+         $$13 = OptionalInt.empty();
+
+         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
+            if ($$19 >= 1) {
+               int $$20 = $$4.v() + $$19;
+               $$11 += $$16.j();
+               $$12 += $$16.l();
+               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
+                  $$13 = OptionalInt.of($$20 + 1);
+               }
+            }
+
+            $$19++;
+         }
+
+         if ($$13.isPresent()) {
+            $$6.add(new dus.a(new hv($$11, $$13.getAsInt(), $$12), 0, false));
+         }
+      }
+
+      return $$6;
    }
 }

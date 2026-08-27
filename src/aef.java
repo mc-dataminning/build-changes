@@ -1,80 +1,55 @@
-public class aef implements wo<acp> {
-   private final hx a;
-   private final agm b;
-   private final agm c;
-   private final agm d;
-   private final String e;
-   private final dgi.a f;
-   private final int g;
-   private final int h;
+import javax.annotation.Nullable;
 
-   public aef(hx $$0, agm $$1, agm $$2, agm $$3, String $$4, dgi.a $$5, int $$6, int $$7) {
+public class aef implements wu<acw> {
+   private final aef.a a;
+   @Nullable
+   private final agt b;
+
+   public aef(aef.a $$0, @Nullable agt $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
    }
 
-   public aef(ty $$0) {
-      this.a = $$0.e();
-      this.b = $$0.t();
-      this.c = $$0.t();
-      this.d = $$0.t();
-      this.e = $$0.s();
-      this.f = dgi.a.a($$0.s()).orElse(dgi.a.b);
-      this.g = $$0.n();
-      this.h = $$0.n();
+   public static aef a(af $$0) {
+      return new aef(aef.a.a, $$0.a());
+   }
+
+   public static aef a() {
+      return new aef(aef.a.b, null);
+   }
+
+   public aef(ue $$0) {
+      this.a = $$0.b(aef.a.class);
+      if (this.a == aef.a.a) {
+         this.b = $$0.t();
+      } else {
+         this.b = null;
+      }
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f.c());
-      $$0.c(this.g);
-      $$0.c(this.h);
+      if (this.a == aef.a.a) {
+         $$0.a(this.b);
+      }
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
+   public aef.a d() {
       return this.a;
    }
 
-   public agm d() {
+   @Nullable
+   public agt e() {
       return this.b;
    }
 
-   public agm e() {
-      return this.c;
-   }
-
-   public agm f() {
-      return this.d;
-   }
-
-   public String g() {
-      return this.e;
-   }
-
-   public dgi.a h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.h;
+   public static enum a {
+      a,
+      b;
    }
 }

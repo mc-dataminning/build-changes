@@ -1,50 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cww extends cup {
-   public static final MapCodec<cww> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwu.a.forGetter($$0x -> $$0x.e), u()).apply($$0, cww::new));
-   private final cvf e;
-   protected static final float b = 6.0F;
-   protected static final eks c = cvf.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
+public class cww extends czo implements cwc, cwv {
+   public static final MapCodec<cww> c = b(cww::new);
+   private static final float g = 0.11F;
 
    @Override
    public MapCodec<cww> a() {
-      return a;
-   }
-
-   protected cww(cvf $$0, dhm.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   public void b(dhn $$0, csf $$1, hx $$2, dhn $$3, boolean $$4) {
-      this.a($$0, (csg)$$1, $$2);
-   }
-
-   @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.e.o().a(d, Boolean.valueOf(false)), 2);
-      }
-   }
-
-   @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      if ($$1 == ib.a && !$$0.a($$3, $$4)) {
-         return cvh.a.o();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, ecy.c, ecy.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
       return c;
+   }
+
+   public cww(dio.d $$0) {
+      super($$0, ia.a, r_, false, 0.1);
+      this.k(this.E.b().a(e, Integer.valueOf(0)).a(s_, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected int a(auf $$0) {
+      return 1;
+   }
+
+   @Override
+   protected boolean g(dip $$0) {
+      return $$0.i();
+   }
+
+   @Override
+   protected cvz b() {
+      return cwb.sw;
+   }
+
+   @Override
+   protected dip a(dip $$0, dip $$1) {
+      return $$1.a(s_, $$0.c(s_));
+   }
+
+   @Override
+   protected dip a(dip $$0, auf $$1) {
+      return super.a($$0, $$1).a(s_, Boolean.valueOf($$1.i() < 0.11F));
+   }
+
+   @Override
+   public cmh a(ctb $$0, hv $$1, dip $$2) {
+      return new cmh(cmk.wj);
+   }
+
+   @Override
+   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
+      return cwv.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      super.a($$0);
+      $$0.a(s_);
+   }
+
+   @Override
+   public boolean b(ctb $$0, hv $$1, dip $$2) {
+      return !$$2.c(s_);
+   }
+
+   @Override
+   public boolean a(csy $$0, auf $$1, hv $$2, dip $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(amp $$0, auf $$1, hv $$2, dip $$3) {
+      $$0.a($$2, $$3.a(s_, Boolean.valueOf(true)), 2);
    }
 }

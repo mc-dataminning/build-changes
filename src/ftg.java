@@ -1,103 +1,174 @@
-import org.joml.Quaternionf;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
-public class ftg implements fsz<dfu> {
-   public static final ged a = new ged(gby.e, new agm("entity/conduit/base"));
-   public static final ged b = new ged(gby.e, new agm("entity/conduit/cage"));
-   public static final ged c = new ged(gby.e, new agm("entity/conduit/wind"));
-   public static final ged d = new ged(gby.e, new agm("entity/conduit/wind_vertical"));
-   public static final ged e = new ged(gby.e, new agm("entity/conduit/open_eye"));
-   public static final ged f = new ged(gby.e, new agm("entity/conduit/closed_eye"));
-   private final fkt g;
-   private final fkt h;
-   private final fkt i;
-   private final fkt j;
-   private final fsy k;
+public class ftg {
+   private static final boolean f = false;
+   private static final float g = -16.0F;
+   private static final float h = 32.0F;
+   public final Vector3f a;
+   public final Vector3f b;
+   public final Map<ia, fth> c;
+   public final fti d;
+   public final boolean e;
 
-   public ftg(fta.a $$0) {
-      this.k = $$0.a();
-      this.g = $$0.a(fks.x);
-      this.h = $$0.a(fks.z);
-      this.i = $$0.a(fks.y);
-      this.j = $$0.a(fks.w);
+   public ftg(Vector3f $$0, Vector3f $$1, Map<ia, fth> $$2, @Nullable fti $$3, boolean $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.a();
    }
 
-   public static fkz b() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      $$1.a("eye", fky.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new fkx(0.01F)), fkv.a);
-      return fkz.a($$0, 16, 16);
+   private void a() {
+      for (Entry<ia, fth> $$0 : this.c.entrySet()) {
+         float[] $$1 = this.a($$0.getKey());
+         $$0.getValue().e.a($$1);
+      }
    }
 
-   public static fkz c() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      $$1.a("wind", fky.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fkv.a);
-      return fkz.a($$0, 64, 32);
+   private float[] a(ia $$0) {
+      switch ($$0) {
+         case a:
+            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
+         case b:
+            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
+         case c:
+         default:
+            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
+         case d:
+            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
+         case e:
+            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
+         case f:
+            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
+      }
    }
 
-   public static fkz d() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      $$1.a("shell", fky.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fkv.a);
-      return fkz.a($$0, 32, 16);
-   }
+   protected static class a implements JsonDeserializer<ftg> {
+      private static final boolean a = true;
 
-   public static fkz e() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      $$1.a("shell", fky.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fkv.a);
-      return fkz.a($$0, 32, 16);
-   }
+      public ftg a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.e($$3);
+         Vector3f $$5 = this.d($$3);
+         fti $$6 = this.a($$3);
+         Map<ia, fth> $$7 = this.a($$2, $$3);
+         if ($$3.has("shade") && !ato.c($$3, "shade")) {
+            throw new JsonParseException("Expected shade to be a Boolean");
+         } else {
+            boolean $$8 = ato.a($$3, "shade", true);
+            return new ftg($$4, $$5, $$7, $$6, $$8);
+         }
+      }
 
-   public void a(dfu $$0, float $$1, eob $$2, fqz $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      if (!$$0.d()) {
-         float $$7 = $$0.a(0.0F);
-         eof $$8 = a.a($$3, frh::c);
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
-         this.i.a($$2, $$8, $$4, $$5);
-         $$2.b();
-      } else {
-         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
-         float $$10 = atq.a($$6 * 0.1F) / 2.0F + 0.5F;
-         $$10 = $$10 * $$10 + $$10;
-         $$2.a();
-         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
-         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
-         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
-         this.j.a($$2, b.a($$3, frh::e), $$4, $$5);
-         $$2.b();
-         int $$12 = $$0.a / 66 % 3;
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         if ($$12 == 1) {
-            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
-         } else if ($$12 == 2) {
-            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
+      @Nullable
+      private fti a(JsonObject $$0) {
+         fti $$1 = null;
+         if ($$0.has("rotation")) {
+            JsonObject $$2 = ato.u($$0, "rotation");
+            Vector3f $$3 = this.a($$2, "origin");
+            $$3.mul(0.0625F);
+            ia.a $$4 = this.c($$2);
+            float $$5 = this.b($$2);
+            boolean $$6 = ato.a($$2, "rescale", false);
+            $$1 = new fti($$3, $$4, $$5, $$6);
          }
 
-         eof $$13 = ($$12 == 1 ? d : c).a($$3, frh::e);
-         this.h.a($$2, $$13, $$4, $$5);
-         $$2.b();
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.b(0.875F, 0.875F, 0.875F);
-         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
-         this.h.a($$2, $$13, $$4, $$5);
-         $$2.b();
-         est $$14 = this.k.b;
-         $$2.a();
-         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
-         $$2.b(0.5F, 0.5F, 0.5F);
-         float $$15 = -$$14.e();
-         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
-         float $$16 = 1.3333334F;
-         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
-         this.g.a($$2, ($$0.f() ? e : f).a($$3, frh::e), $$4, $$5);
-         $$2.b();
+         return $$1;
+      }
+
+      private float b(JsonObject $$0) {
+         float $$1 = ato.m($$0, "angle");
+         if ($$1 != 0.0F && aty.e($$1) != 22.5F && aty.e($$1) != 45.0F) {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
+         } else {
+            return $$1;
+         }
+      }
+
+      private ia.a c(JsonObject $$0) {
+         String $$1 = ato.i($$0, "axis");
+         ia.a $$2 = ia.a.a($$1.toLowerCase(Locale.ROOT));
+         if ($$2 == null) {
+            throw new JsonParseException("Invalid rotation axis: " + $$1);
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<ia, fth> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<ia, fth> $$2 = this.b($$0, $$1);
+         if ($$2.isEmpty()) {
+            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<ia, fth> b(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<ia, fth> $$2 = Maps.newEnumMap(ia.class);
+         JsonObject $$3 = ato.u($$1, "faces");
+
+         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+            ia $$5 = this.a($$4.getKey());
+            $$2.put($$5, (fth)$$0.deserialize($$4.getValue(), fth.class));
+         }
+
+         return $$2;
+      }
+
+      private ia a(String $$0) {
+         ia $$1 = ia.a($$0);
+         if ($$1 == null) {
+            throw new JsonParseException("Unknown facing: " + $$0);
+         } else {
+            return $$1;
+         }
+      }
+
+      private Vector3f d(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "to");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f e(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "from");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1) {
+         JsonArray $$2 = ato.v($$0, $$1);
+         if ($$2.size() != 3) {
+            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
+         } else {
+            float[] $$3 = new float[3];
+
+            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+               $$3[$$4] = ato.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+            }
+
+            return new Vector3f($$3[0], $$3[1], $$3[2]);
+         }
       }
    }
 }

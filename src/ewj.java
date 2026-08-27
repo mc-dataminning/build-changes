@@ -1,104 +1,135 @@
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public abstract class ewj extends eve {
-   protected final agm a;
-   protected final int b;
-   protected final int c;
+public class ewj extends evz {
+   private static final agt a = new agt("widget/checkbox_selected_highlighted");
+   private static final agt b = new agt("widget/checkbox_selected");
+   private static final agt c = new agt("widget/checkbox_highlighted");
+   private static final agt d = new agt("widget/checkbox");
+   private static final int l = 14737632;
+   private static final int m = 4;
+   private static final int n = 8;
+   private boolean o;
+   private final ewj.b p;
 
-   ewj(int $$0, int $$1, uv $$2, int $$3, int $$4, agm $$5, eve.c $$6) {
-      super(0, 0, $$0, $$1, $$2, $$6, p);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   ewj(int $$0, int $$1, vb $$2, evu $$3, boolean $$4, ewj.b $$5) {
+      super($$0, $$1, a($$3) + 4 + $$3.a($$2), a($$3), $$2);
+      this.o = $$4;
+      this.p = $$5;
    }
 
-   public static ewj.a a(uv $$0, eve.c $$1, boolean $$2) {
-      return new ewj.a($$0, $$1, $$2);
+   public static ewj.a a(vb $$0, evu $$1) {
+      return new ewj.a($$0, $$1);
    }
 
-   public static class a {
-      private final uv a;
-      private final eve.c b;
-      private final boolean c;
-      private int d = 150;
-      private int e = 20;
-      @Nullable
-      private agm f;
-      private int g;
-      private int h;
+   private static int a(evu $$0) {
+      return 9 + 8;
+   }
 
-      public a(uv $$0, eve.c $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   @Override
+   public void b() {
+      this.o = !this.o;
+      this.p.onValueChange(this, this.o);
+   }
 
-      public ewj.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
+   public boolean a() {
+      return this.o;
+   }
 
-      public ewj.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public ewj.a a(agm $$0, int $$1, int $$2) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h = $$2;
-         return this;
-      }
-
-      public ewj a() {
-         if (this.f == null) {
-            throw new IllegalStateException("Sprite not set");
+   @Override
+   public void a(faa $$0) {
+      $$0.a(ezz.a, this.aM_());
+      if (this.i) {
+         if (this.aJ_()) {
+            $$0.a(ezz.d, vb.c("narration.checkbox.usage.focused"));
          } else {
-            return (ewj)(this.c
-               ? new ewj.b(this.d, this.e, this.a, this.g, this.h, this.f, this.b)
-               : new ewj.c(this.d, this.e, this.a, this.g, this.h, this.f, this.b));
+            $$0.a(ezz.d, vb.c("narration.checkbox.usage.hovered"));
          }
       }
    }
 
-   public static class b extends ewj {
-      protected b(int $$0, int $$1, uv $$2, int $$3, int $$4, agm $$5, eve.c $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   @Override
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      euk $$4 = euk.N();
+      RenderSystem.enableDepthTest();
+      evu $$5 = $$4.h;
+      $$0.a(1.0F, 1.0F, 1.0F, this.k);
+      RenderSystem.enableBlend();
+      agt $$6;
+      if (this.o) {
+         $$6 = this.aJ_() ? a : b;
+      } else {
+         $$6 = this.aJ_() ? c : d;
       }
 
-      @Override
-      public void b(eut $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.p() + this.k() / 2 - this.b / 2;
-         int $$5 = this.r() + this.i() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      int $$8 = a($$5);
+      int $$9 = this.p() + $$8 + 4;
+      int $$10 = this.r() + (this.g >> 1) - (9 >> 1);
+      $$0.a($$6, this.p(), this.r(), $$8, $$8);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      $$0.b($$5, this.l(), $$9, $$10, 14737632 | aty.f(this.k * 255.0F) << 24);
+   }
+
+   public static class a {
+      private final vb a;
+      private final evu b;
+      private int c = 0;
+      private int d = 0;
+      private ewj.b e = ewj.b.a;
+      private boolean f = false;
+      @Nullable
+      private eun<Boolean> g = null;
+      @Nullable
+      private exs h = null;
+
+      a(vb $$0, evu $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      @Override
-      public void a(eut $$0, eur $$1, int $$2) {
+      public ewj.a a(int $$0, int $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         return this;
+      }
+
+      public ewj.a a(ewj.b $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public ewj.a a(boolean $$0) {
+         this.f = $$0;
+         this.g = null;
+         return this;
+      }
+
+      public ewj.a a(eun<Boolean> $$0) {
+         this.g = $$0;
+         this.f = $$0.c();
+         return this;
+      }
+
+      public ewj.a a(exs $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public ewj a() {
+         ewj.b $$0 = this.g == null ? this.e : ($$0x, $$1x) -> {
+            this.g.a($$1x);
+            this.e.onValueChange($$0x, $$1x);
+         };
+         ewj $$1 = new ewj(this.c, this.d, this.a, this.b, this.f, $$0);
+         $$1.a(this.h);
+         return $$1;
       }
    }
 
-   public static class c extends ewj {
-      protected c(int $$0, int $$1, uv $$2, int $$3, int $$4, agm $$5, eve.c $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   public interface b {
+      ewj.b a = ($$0, $$1) -> {
+      };
 
-      @Override
-      public void b(eut $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.p() + this.k() - this.b - 2;
-         int $$5 = this.r() + this.i() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(eut $$0, eur $$1, int $$2) {
-         int $$3 = this.p() + 2;
-         int $$4 = this.p() + this.k() - this.b - 4;
-         int $$5 = this.p() + this.k() / 2;
-         a($$0, $$1, this.l(), $$5, $$3, this.r(), $$4, this.r() + this.i(), $$2);
-      }
+      void onValueChange(ewj var1, boolean var2);
    }
 }

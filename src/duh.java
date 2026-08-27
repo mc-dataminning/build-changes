@@ -1,50 +1,29 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class duh extends duj {
-   public static final Codec<duh> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ati.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               eca.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               asy.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, duh::new)
-   );
-   private final ati<Integer> i;
-   private final eca.a j;
-   private final float k;
-   private final eca l;
+public abstract class duh {
+   public static final Codec<duh> a = kb.aa.q().dispatch(duh::b, dui::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public duh(ati<Integer> $$0, eca.a $$1, float $$2, long $$3, eca.a $$4, float $$5, List<dhn> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = eca.b(new dnv(new dmx($$3)), $$1);
+   protected static <S extends duh> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   @Override
-   protected dug<?> a() {
-      return dug.e;
+   public duh(OptionalInt $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public dhn a(atw $$0, hx $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)atq.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dhn> $$4 = Lists.newArrayListWithCapacity($$3);
+   protected abstract dui<?> b();
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
-      }
+   public abstract int a(int var1, int var2);
 
-      return this.a($$4, $$1, (double)this.e);
-   }
-
-   protected double a(hx $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   public OptionalInt c() {
+      return this.c;
    }
 }

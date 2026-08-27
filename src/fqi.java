@@ -1,72 +1,53 @@
-public class fqi {
-   public static final uv a = uv.c("quickplay.error.title");
-   private static final uv b = uv.c("quickplay.error.invalid_identifier");
-   private static final uv c = uv.c("quickplay.error.realm_connect");
-   private static final uv d = uv.c("quickplay.error.realm_permission");
-   private static final uv e = uv.c("gui.toTitle");
-   private static final uv f = uv.c("gui.toWorld");
-   private static final uv g = uv.c("gui.toRealms");
+public class fqi extends fqw {
+   protected final fqr a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
 
-   public static void a(eti $$0, fgn.c $$1, eor $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!ac.b($$3)) {
-         a($$0, $$3);
-      } else if (!ac.b($$4)) {
-         b($$0, $$4);
-      } else if (!ac.b($$5)) {
-         a($$0, $$2, $$5);
+   protected fqi(fmt $$0, double $$1, double $$2, double $$3, fqr $$4, float $$5) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
+   }
+
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
+   }
+
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
+   }
+
+   @Override
+   public fqa b() {
+      return fqa.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
+         }
       }
    }
 
-   private static void a(eti $$0, String $$1) {
-      if (!$$0.l().b($$1)) {
-         faz $$2 = new ffv(new fbe());
-         $$0.a(new fab($$2, a, b, f));
-      } else {
-         $$0.w().a($$1, () -> $$0.a(new fbe()));
-      }
-   }
-
-   private static void b(eti $$0, String $$1) {
-      fma $$2 = new fma($$0);
-      $$2.a();
-      flz $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new flz(gdf.a("selectServer.defaultName"), $$1, flz.b.c);
-         $$2.a($$3, true);
-         $$2.b();
-      }
-
-      fna $$4 = fna.a($$1);
-      ezt.a(new fdx(new fbe()), $$0, $$4, $$3, true);
-   }
-
-   private static void a(eti $$0, eor $$1, String $$2) {
-      long $$3;
-      epk $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         faz $$6 = new eom(new fbe());
-         $$0.a(new fab($$6, a, b, g));
-         return;
-      } catch (eqe var10) {
-         faz $$8 = new fbe();
-         $$0.a(new fab($$8, a, c, e));
-         return;
-      }
-
-      epi $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         faz $$12 = new eom(new fbe());
-         $$0.a(new fab($$12, a, d, g));
-      } else {
-         fbe $$13 = new fbe();
-         esh $$14 = new esh($$13, $$11);
-         $$0.a(new eqy($$13, $$14));
-      }
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 }

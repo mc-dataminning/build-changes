@@ -1,33 +1,23 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bqe {
-   private static final int a = 16;
-
-   public static bnd<bll> a(Predicate<ig<bwn>> $$0, bum<ie> $$1) {
-      return bqo.a((Function<bqo.b<bll>, ? extends App<bqo.c<bll>, bqr<bll>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               ie $$6 = $$2.b($$2x);
-               hx $$7 = $$6.b();
-               if ($$3.ad() == $$6.a() && $$7.a($$4.dl(), 16.0)) {
-                  ami $$8 = $$3.n().a($$6.a());
-                  if ($$8 == null || !$$8.x().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.x().b($$7);
-                     aco.c($$3, $$7);
+   public static bnn<bme> a(bux<id> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return bqz.a(
+         (Function<bqz.b<bme>, ? extends App<bqz.c<bme>, brc<bme>>>)($$5 -> $$5.group($$5.a(bux.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  id $$10 = $$5.b($$6);
+                  if ($$7.ad() != $$10.a() || !$$10.b().a($$8.dk(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new bva($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
                   }
-
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
-   }
-
-   private static boolean a(ami $$0, hx $$1, bll $$2) {
-      dhn $$3 = $$0.a_($$1);
-      return $$3.a(ark.R) && $$3.c(cuy.c) && !$$2.fE();
+               }))
+      );
    }
 }

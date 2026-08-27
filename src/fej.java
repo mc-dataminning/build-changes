@@ -1,60 +1,33 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+public class fej extends ewh {
+   private static final agt a = new agt("widget/page_forward_highlighted");
+   private static final agt b = new agt("widget/page_forward");
+   private static final agt c = new agt("widget/page_backward_highlighted");
+   private static final agt d = new agt("widget/page_backward");
+   private final boolean t;
+   private final boolean u;
 
-public abstract class fej extends fen {
-   private static final ewr i = new ewr(
-      new agm("recipe_book/furnace_filter_enabled"),
-      new agm("recipe_book/furnace_filter_disabled"),
-      new agm("recipe_book/furnace_filter_enabled_highlighted"),
-      new agm("recipe_book/furnace_filter_disabled_highlighted")
-   );
-   @Nullable
-   private coq j;
-
-   @Override
-   protected void a() {
-      this.f.a(i);
+   public fej(int $$0, int $$1, boolean $$2, ewh.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, va.a, $$3, p);
+      this.t = $$2;
+      this.u = $$4;
    }
 
    @Override
-   public void a(@Nullable cim $$0) {
-      super.a($$0);
-      if ($$0 != null && $$0.e < this.g.p()) {
-         this.e.a();
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      agt $$4;
+      if (this.t) {
+         $$4 = this.n() ? a : b;
+      } else {
+         $$4 = this.n() ? c : d;
       }
+
+      $$0.a($$4, this.p(), this.r(), 23, 13);
    }
 
    @Override
-   public void a(cov<?> $$0, List<cim> $$1) {
-      clo $$2 = $$0.b().a(this.h.r.I_());
-      this.e.a($$0);
-      this.e.a(coq.a($$2), $$1.get(2).f, $$1.get(2).g);
-      ip<coq> $$3 = $$0.b().a();
-      cim $$4 = $$1.get(1);
-      if ($$4.f().b()) {
-         if (this.j == null) {
-            this.j = coq.a(this.b().stream().filter($$0x -> $$0x.a(this.h.r.H())).map(clo::new));
-         }
-
-         this.e.a(this.j, $$4.f, $$4.g);
-      }
-
-      Iterator<coq> $$5 = $$3.iterator();
-
-      for (int $$6 = 0; $$6 < 2; $$6++) {
-         if (!$$5.hasNext()) {
-            return;
-         }
-
-         coq $$7 = $$5.next();
-         if (!$$7.c()) {
-            cim $$8 = $$1.get($$6);
-            this.e.a($$7, $$8.f, $$8.g);
-         }
+   public void a(gia $$0) {
+      if (this.u) {
+         $$0.a(ggr.a(arc.ce, 1.0F));
       }
    }
-
-   protected abstract Set<clj> b();
 }

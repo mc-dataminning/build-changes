@@ -1,125 +1,253 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class day extends cvf implements cvm {
-   public static final MapCodec<day> a = b(day::new);
-   private static final float b = 0.083333336F;
-   private static final float c = 0.9F;
-   private static final float d = 1.5F;
-   private static final float e = 2.5F;
-   private static final eks f = ekp.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
-   private static final double g = 4.0;
-   private static final double h = 7.0;
+public abstract class day extends cvz {
+   private static final float a = 1.0F;
+   private static final elu c = cvz.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
+   private static final elu d = cvz.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   private static final elu e = cvz.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
+   private static final elu f = cvz.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   private static final elu g = cvz.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
+   private static final elu h = cvz.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
+   private static final Map<ia, djg> i = dbm.h;
+   private static final Map<ia, elu> j = ac.a(Maps.newEnumMap(ia.class), $$0 -> {
+      $$0.put(ia.c, g);
+      $$0.put(ia.f, f);
+      $$0.put(ia.d, h);
+      $$0.put(ia.e, e);
+      $$0.put(ia.b, c);
+      $$0.put(ia.a, d);
+   });
+   protected static final ia[] b = ia.values();
+   private final ImmutableMap<dip, elu> k;
+   private final boolean l;
+   private final boolean m;
+   private final boolean n;
 
-   @Override
-   public MapCodec<day> a() {
-      return a;
-   }
-
-   public day(dhm.d $$0) {
+   public day(dio.d $$0) {
       super($$0);
+      this.k(a(this.E));
+      this.k = this.a(day::o);
+      this.l = ia.c.a.a().allMatch(this::a);
+      this.m = ia.c.a.a().filter(ia.a.a).filter(this::a).count() % 2L == 0L;
+      this.n = ia.c.a.a().filter(ia.a.c).filter(this::a).count() % 2L == 0L;
    }
 
    @Override
-   public boolean a(dhn $$0, dhn $$1, ib $$2) {
-      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
-   }
+   protected abstract MapCodec<? extends day> a();
 
-   @Override
-   public eks f(dhn $$0, crl $$1, hx $$2) {
-      return ekp.a();
-   }
-
-   @Override
-   public void a(dhn $$0, csf $$1, hx $$2, bkv $$3) {
-      if (!($$3 instanceof bll) || $$3.do().a(this)) {
-         $$3.a($$0, new ejz(0.9F, 1.5, 0.9F));
-         if ($$1.B) {
-            atw $$4 = $$1.F_();
-            boolean $$5 = $$3.ac != $$3.ds() || $$3.ae != $$3.dy();
-            if ($$5 && $$4.h()) {
-               $$1.a(
-                  jw.aF,
-                  $$3.ds(),
-                  (double)($$2.v() + 1),
-                  $$3.dy(),
-                  (double)(atq.b($$4, -1.0F, 1.0F) * 0.083333336F),
-                  0.05F,
-                  (double)(atq.b($$4, -1.0F, 1.0F) * 0.083333336F)
-               );
-            }
-         }
-      }
-
-      $$3.o(true);
-      if (!$$1.B) {
-         if ($$3.bN() && ($$1.Y().b(csb.c) || $$3 instanceof cdz) && $$3.a($$1, $$2)) {
-            $$1.b($$2, false);
-         }
-
-         $$3.a_(false);
-      }
-   }
-
-   @Override
-   public void a(csf $$0, dhn $$1, hx $$2, bkv $$3, float $$4) {
-      if (!((double)$$4 < 4.0) && $$3 instanceof bll $$5) {
-         bll.a $$7 = $$5.eH();
-         aqu $$8 = (double)$$4 < 7.0 ? $$7.a() : $$7.b();
-         $$3.a($$8, 1.0F, 1.0F);
-      }
-   }
-
-   @Override
-   public eks b(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      if ($$3 instanceof ekj $$4) {
-         bkv $$5 = $$4.c();
-         if ($$5 != null) {
-            if ($$5.ab > 2.5F) {
-               return f;
-            }
-
-            boolean $$6 = $$5 instanceof car;
-            if ($$6 || a($$5) && $$3.a(ekp.b(), $$2, false) && !$$3.b()) {
-               return super.b($$0, $$1, $$2, $$3);
-            }
-         }
-      }
-
-      return ekp.a();
-   }
-
-   @Override
-   public eks c(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return ekp.a();
-   }
-
-   public static boolean a(bkv $$0) {
-      if ($$0.ai().a(arn.h)) {
-         return true;
+   public static Set<ia> h(dip $$0) {
+      if (!($$0.b() instanceof day)) {
+         return Set.of();
       } else {
-         return $$0 instanceof bll ? ((bll)$$0).c(bla.c).a(clr.py) : false;
+         Set<ia> $$1 = EnumSet.noneOf(ia.class);
+
+         for (ia $$2 : ia.values()) {
+            if (a($$0, $$2)) {
+               $$1.add($$2);
+            }
+         }
+
+         return $$1;
       }
    }
 
-   @Override
-   public clo a(@Nullable cdz $$0, csg $$1, hx $$2, dhn $$3) {
-      $$1.a($$2, cvh.a.o(), 11);
-      if (!$$1.y_()) {
-         $$1.c(2001, $$2, cvf.i($$3));
+   public static Set<ia> a(byte $$0) {
+      Set<ia> $$1 = EnumSet.noneOf(ia.class);
+
+      for (ia $$2 : ia.values()) {
+         if (($$0 & (byte)(1 << $$2.ordinal())) > 0) {
+            $$1.add($$2);
+         }
       }
 
-      return new clo(clr.qy);
+      return $$1;
    }
 
-   @Override
-   public Optional<aqu> av_() {
-      return Optional.of(aqv.cF);
+   public static byte a(Collection<ia> $$0) {
+      byte $$1 = 0;
+
+      for (ia $$2 : $$0) {
+         $$1 = (byte)($$1 | 1 << $$2.ordinal());
+      }
+
+      return $$1;
    }
 
-   @Override
-   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
+   protected boolean a(ia $$0) {
       return true;
    }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      for (ia $$1 : b) {
+         if (this.a($$1)) {
+            $$0.a(b($$1));
+         }
+      }
+   }
+
+   @Override
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if (!n($$0)) {
+         return cwb.a.o();
+      } else {
+         return a($$0, $$1) && !a($$3, $$1, $$5, $$2) ? a($$0, b($$1)) : $$0;
+      }
+   }
+
+   @Override
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return (elu)this.k.get($$0);
+   }
+
+   @Override
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      boolean $$3 = false;
+
+      for (ia $$4 : b) {
+         if (a($$0, $$4)) {
+            hv $$5 = $$2.a($$4);
+            if (!a($$1, $$4, $$5, $$1.a_($$5))) {
+               return false;
+            }
+
+            $$3 = true;
+         }
+      }
+
+      return $$3;
+   }
+
+   @Override
+   public boolean a(dip $$0, coq $$1) {
+      return p($$0);
+   }
+
+   @Nullable
+   @Override
+   public dip a(coq $$0) {
+      csy $$1 = $$0.q();
+      hv $$2 = $$0.a();
+      dip $$3 = $$1.a_($$2);
+      return Arrays.stream($$0.f()).map($$3x -> this.c($$3, $$1, $$2, $$3x)).filter(Objects::nonNull).findFirst().orElse(null);
+   }
+
+   public boolean a(cse $$0, dip $$1, hv $$2, ia $$3) {
+      if (this.a($$3) && (!$$1.a(this) || !a($$1, $$3))) {
+         hv $$4 = $$2.a($$3);
+         return a($$0, $$3, $$4, $$0.a_($$4));
+      } else {
+         return false;
+      }
+   }
+
+   @Nullable
+   public dip c(dip $$0, cse $$1, hv $$2, ia $$3) {
+      if (!this.a($$1, $$0, $$2, $$3)) {
+         return null;
+      } else {
+         dip $$4;
+         if ($$0.a(this)) {
+            $$4 = $$0;
+         } else if (this.g() && $$0.u().a(eea.c)) {
+            $$4 = this.o().a(djf.C, Boolean.valueOf(true));
+         } else {
+            $$4 = this.o();
+         }
+
+         return $$4.a(b($$3), Boolean.valueOf(true));
+      }
+   }
+
+   @Override
+   public dip a(dip $$0, dcl $$1) {
+      return !this.l ? $$0 : this.a($$0, $$1::a);
+   }
+
+   @Override
+   public dip a(dip $$0, dav $$1) {
+      if ($$1 == dav.c && !this.m) {
+         return $$0;
+      } else {
+         return $$1 == dav.b && !this.n ? $$0 : this.a($$0, $$1::b);
+      }
+   }
+
+   private dip a(dip $$0, Function<ia, ia> $$1) {
+      dip $$2 = $$0;
+
+      for (ia $$3 : b) {
+         if (this.a($$3)) {
+            $$2 = $$2.a(b($$1.apply($$3)), $$0.c(b($$3)));
+         }
+      }
+
+      return $$2;
+   }
+
+   public static boolean a(dip $$0, ia $$1) {
+      djg $$2 = b($$1);
+      return $$0.b($$2) && $$0.c($$2);
+   }
+
+   public static boolean a(cse $$0, ia $$1, hv $$2, dip $$3) {
+      return cvz.a($$3.l($$0, $$2), $$1.g()) || cvz.a($$3.k($$0, $$2), $$1.g());
+   }
+
+   private boolean g() {
+      return this.E.d().contains(djf.C);
+   }
+
+   private static dip a(dip $$0, djg $$1) {
+      dip $$2 = $$0.a($$1, Boolean.valueOf(false));
+      return n($$2) ? $$2 : cwb.a.o();
+   }
+
+   public static djg b(ia $$0) {
+      return i.get($$0);
+   }
+
+   private static dip a(diq<cvz, dip> $$0) {
+      dip $$1 = $$0.b();
+
+      for (djg $$2 : i.values()) {
+         if ($$1.b($$2)) {
+            $$1 = $$1.a($$2, Boolean.valueOf(false));
+         }
+      }
+
+      return $$1;
+   }
+
+   private static elu o(dip $$0) {
+      elu $$1 = elr.a();
+
+      for (ia $$2 : b) {
+         if (a($$0, $$2)) {
+            $$1 = elr.a($$1, j.get($$2));
+         }
+      }
+
+      return $$1.c() ? elr.b() : $$1;
+   }
+
+   protected static boolean n(dip $$0) {
+      return Arrays.stream(b).anyMatch($$1 -> a($$0, $$1));
+   }
+
+   private static boolean p(dip $$0) {
+      return Arrays.stream(b).anyMatch($$1 -> !a($$0, $$1));
+   }
+
+   public abstract daz c();
 }

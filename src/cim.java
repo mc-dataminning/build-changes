@@ -1,152 +1,183 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cim {
-   private final int a;
-   public final biu d;
-   public int e;
-   public final int f;
-   public final int g;
+public abstract class cim extends chk {
+   private static final int k = 9;
+   private static final int l = 3;
+   protected final chv o;
+   protected final cer p;
+   protected final bje q;
+   private final List<Integer> m;
+   protected final cja r = new cja();
+   private final int n;
 
-   public cim(biu $$0, int $$1, int $$2, int $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   protected abstract boolean a(cer var1, boolean var2);
+
+   protected abstract void a(cer var1, cmh var2);
+
+   protected abstract boolean a(dip var1);
+
+   public cim(@Nullable cir<?> $$0, int $$1, ceq $$2, chv $$3) {
+      super($$0, $$1);
+      this.o = $$3;
+      this.p = $$2.m;
+      cin $$4 = this.l();
+      this.q = this.e($$4.d());
+      this.m = $$4.f();
+      this.n = $$4.e();
+      this.a($$4);
+      this.b($$4);
+      this.a($$2);
    }
 
-   public void b(clo $$0, clo $$1) {
-      int $$2 = $$1.L() - $$0.L();
-      if ($$2 > 0) {
-         this.a($$1, $$2);
+   private void a(cin $$0) {
+      for (final cin.b $$1 : $$0.c()) {
+         this.a(new cjf(this.q, $$1.a(), $$1.b(), $$1.c()) {
+            @Override
+            public boolean a(cmh $$0) {
+               return $$1.d().test($$0);
+            }
+         });
       }
    }
 
-   protected void a(clo $$0, int $$1) {
+   private void b(cin $$0) {
+      this.a(new cjf(this.r, $$0.b().a(), $$0.b().b(), $$0.b().c()) {
+         @Override
+         public boolean a(cmh $$0) {
+            return false;
+         }
+
+         @Override
+         public boolean a(cer $$0) {
+            return cim.this.a($$0, this.h());
+         }
+
+         @Override
+         public void a(cer $$0, cmh $$1) {
+            cim.this.a($$0, $$1);
+         }
+      });
    }
 
-   protected void b(int $$0) {
+   private void a(ceq $$0) {
+      for (int $$1 = 0; $$1 < 3; $$1++) {
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.a(new cjf($$0, $$2 + $$1 * 9 + 9, 8 + $$2 * 18, 84 + $$1 * 18));
+         }
+      }
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         this.a(new cjf($$0, $$3, 8 + $$3 * 18, 142));
+      }
    }
 
-   protected void b_(clo $$0) {
+   public abstract void m();
+
+   protected abstract cin l();
+
+   private bjt e(int $$0) {
+      return new bjt($$0) {
+         @Override
+         public void e() {
+            super.e();
+            cim.this.a(this);
+         }
+      };
    }
 
-   public void a(cdz $$0, clo $$1) {
-      this.b();
+   @Override
+   public void a(bje $$0) {
+      super.a($$0);
+      if ($$0 == this.q) {
+         this.m();
+      }
    }
 
-   public boolean a(clo $$0) {
-      return true;
+   @Override
+   public void b(cer $$0) {
+      super.b($$0);
+      this.o.a(($$1, $$2) -> this.a($$0, this.q));
    }
 
-   public clo f() {
-      return this.d.a(this.a);
+   @Override
+   public boolean a(cer $$0) {
+      return this.o.a(($$1, $$2) -> !this.a($$1.a_($$2)) ? false : $$0.i((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5) <= 64.0, true);
    }
 
-   public boolean g() {
-      return !this.f().b();
-   }
-
-   public void e(clo $$0) {
-      this.a($$0, this.f());
-   }
-
-   public void a(clo $$0, clo $$1) {
-      this.f($$0);
-   }
-
-   public void f(clo $$0) {
-      this.d.a(this.a, $$0);
-      this.b();
-   }
-
-   public void b() {
-      this.d.e();
-   }
-
-   public int a() {
-      return this.d.al_();
-   }
-
-   public int a_(clo $$0) {
-      return Math.min(this.a(), $$0.g());
-   }
-
-   @Nullable
-   public Pair<agm, agm> c() {
-      return null;
-   }
-
-   public clo a(int $$0) {
-      return this.d.a(this.a, $$0);
-   }
-
-   public boolean a(cdz $$0) {
-      return true;
-   }
-
-   public boolean d() {
-      return true;
-   }
-
-   public Optional<clo> a(int $$0, int $$1, cdz $$2) {
-      if (!this.a($$2)) {
-         return Optional.empty();
-      } else if (!this.b($$2) && $$1 < this.f().L()) {
-         return Optional.empty();
-      } else {
-         $$0 = Math.min($$0, $$1);
-         clo $$3 = this.a($$0);
-         if ($$3.b()) {
-            return Optional.empty();
-         } else {
-            if (this.f().b()) {
-               this.a(clo.b, $$3);
+   @Override
+   public cmh a(cer $$0, int $$1) {
+      cmh $$2 = cmh.f;
+      cjf $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cmh $$4 = $$3.g();
+         $$2 = $$4.p();
+         int $$5 = this.n();
+         int $$6 = this.r();
+         if ($$1 == this.o()) {
+            if (!this.a($$4, $$5, $$6, true)) {
+               return cmh.f;
             }
 
-            return Optional.of($$3);
-         }
-      }
-   }
-
-   public clo b(int $$0, int $$1, cdz $$2) {
-      Optional<clo> $$3 = this.a($$0, $$1, $$2);
-      $$3.ifPresent($$1x -> this.a($$2, $$1x));
-      return $$3.orElse(clo.b);
-   }
-
-   public clo d(clo $$0) {
-      return this.b($$0, $$0.L());
-   }
-
-   public clo b(clo $$0, int $$1) {
-      if (!$$0.b() && this.a($$0)) {
-         clo $$2 = this.f();
-         int $$3 = Math.min(Math.min($$1, $$0.L()), this.a_($$0) - $$2.L());
-         if ($$2.b()) {
-            this.e($$0.a($$3));
-         } else if (clo.c($$2, $$0)) {
-            $$0.h($$3);
-            $$2.g($$3);
-            this.e($$2);
+            $$3.b($$4, $$2);
+         } else if (this.m.contains($$1)) {
+            if (!this.a($$4, $$5, $$6, false)) {
+               return cmh.f;
+            }
+         } else if (this.c($$4) && $$1 >= this.n() && $$1 < this.r()) {
+            int $$7 = this.d($$2);
+            if (!this.a($$4, $$7, this.o(), false)) {
+               return cmh.f;
+            }
+         } else if ($$1 >= this.n() && $$1 < this.p()) {
+            if (!this.a($$4, this.q(), this.r(), false)) {
+               return cmh.f;
+            }
+         } else if ($$1 >= this.q() && $$1 < this.r() && !this.a($$4, this.n(), this.p(), false)) {
+            return cmh.f;
          }
 
-         return $$0;
-      } else {
-         return $$0;
+         if ($$4.b()) {
+            $$3.e(cmh.f);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.L() == $$2.L()) {
+            return cmh.f;
+         }
+
+         $$3.a($$0, $$4);
       }
+
+      return $$2;
    }
 
-   public boolean b(cdz $$0) {
-      return this.a($$0) && this.a(this.f());
-   }
-
-   public int h() {
-      return this.a;
-   }
-
-   public boolean e() {
+   protected boolean c(cmh $$0) {
       return true;
+   }
+
+   public int d(cmh $$0) {
+      return this.q.ai_() ? 0 : this.m.get(0);
+   }
+
+   public int o() {
+      return this.n;
+   }
+
+   private int n() {
+      return this.o() + 1;
+   }
+
+   private int p() {
+      return this.n() + 27;
+   }
+
+   private int q() {
+      return this.p();
+   }
+
+   private int r() {
+      return this.q() + 9;
    }
 }

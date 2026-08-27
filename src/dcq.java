@@ -1,60 +1,55 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dcq extends cvf {
+public class dcq extends cvl {
    public static final MapCodec<dcq> a = b(dcq::new);
-   protected static final eks b = cvf.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int c = 20;
+   public static final djg b = djf.E;
+   private final biq c = bin.a(5);
 
    @Override
    public MapCodec<dcq> a() {
       return a;
    }
 
-   public dcq(dhm.d $$0) {
+   public dcq(dio.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public eks b(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return b;
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   public eks b_(dhn $$0, crl $$1, hx $$2) {
-      return ekp.b();
-   }
-
-   @Override
-   public eks c(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return ekp.b();
-   }
-
-   @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      cvl.b($$1, $$2.c(), $$0);
-   }
-
-   @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      if ($$1 == ib.b && $$2.a(cvh.G)) {
-         $$3.a($$4, this, 20);
+   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
       }
+   }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Nullable
+   @Override
+   public dgd a(hv $$0, dip $$1) {
+      return new dhi($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dgd> dge<T> a(csy $$0, dip $$1, dgf<T> $$2) {
+      return $$0.B ? null : a($$2, dgf.K, dhi::a);
    }
 
    @Override
-   public void b(dhn $$0, csf $$1, hx $$2, dhn $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   public dce b_(dip $$0) {
+      return dce.c;
    }
 
    @Override
-   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
-      return false;
-   }
-
-   @Override
-   public float d(dhn $$0, crl $$1, hx $$2) {
-      return 0.2F;
+   public void a(dip $$0, amp $$1, hv $$2, cmh $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.c);
+      }
    }
 }

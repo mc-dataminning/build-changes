@@ -1,46 +1,52 @@
 import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class etq {
-   private static final Logger a = LogUtils.getLogger();
-   private final eti b;
-   @Nullable
-   private CompletableFuture<Boolean> c;
-   private boolean d;
+public class etq extends etk {
+   private static final Logger b = LogUtils.getLogger();
+   private static final vb c = vb.c("mco.minigame.world.starting.screen.title");
+   private final long d;
+   private final erb e;
+   private final ert f;
 
-   public etq(eti $$0) {
-      this.b = $$0;
+   public etq(long $$0, erb $$1, ert $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public void a(faz $$0) {
-      if (!this.b.ae() && !this.b.m.w && !this.d && this.a()) {
-         this.b.a(new fdy($$0));
-         this.d = true;
+   @Override
+   public void run() {
+      ept $$0 = ept.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
+               break;
+            }
+         } catch (erh var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't start mini game!");
+            this.a(var5);
+         }
       }
    }
 
-   private Boolean a() {
-      if (this.c == null) {
-         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
-      }
-
-      try {
-         return this.c.getNow(false);
-      } catch (CompletionException var2) {
-         a.warn("Failed to retrieve realms subscriptions", var2);
-         this.d = true;
-         return false;
-      }
-   }
-
-   private boolean b() {
-      try {
-         return eor.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
-      } catch (eqe var2) {
-         return false;
-      }
+   @Override
+   public vb a() {
+      return c;
    }
 }

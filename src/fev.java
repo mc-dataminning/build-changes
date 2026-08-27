@@ -1,15 +1,5 @@
-import java.util.Set;
+import org.joml.Vector2ic;
 
-public class fev extends fej {
-   private static final uv i = uv.c("gui.recipebook.toggleRecipes.smokable");
-
-   @Override
-   protected uv c() {
-      return i;
-   }
-
-   @Override
-   protected Set<clj> b() {
-      return dex.f().keySet();
-   }
+public interface fev {
+   Vector2ic a(int var1, int var2, int var3, int var4, int var5, int var6);
 }

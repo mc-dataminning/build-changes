@@ -1,87 +1,38 @@
-import java.util.Collection;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class cjx extends clj {
-   public cjx(clj.a $$0) {
-      super($$0);
+public class cjx extends cnq {
+   private static final String c = "block.minecraft.banner.";
+
+   public cjx(cvz $$0, cvz $$1, cmc.a $$2) {
+      super($$0, $$1, $$2, ia.a);
+      Validate.isInstanceOf(cuq.class, $$0);
+      Validate.isInstanceOf(cuq.class, $$1);
    }
 
-   @Override
-   public boolean i(clo $$0) {
-      return true;
-   }
+   public static void a(cmh $$0, List<vb> $$1) {
+      sj $$2 = cka.a($$0);
+      if ($$2 != null && $$2.e("Patterns")) {
+         sp $$3 = $$2.c("Patterns", 10);
 
-   @Override
-   public boolean a(dhn $$0, csf $$1, hx $$2, cdz $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(bja.a));
-      }
-
-      return false;
-   }
-
-   @Override
-   public bjb a(cny $$0) {
-      cdz $$1 = $$0.o();
-      csf $$2 = $$0.q();
-      if (!$$2.B && $$1 != null) {
-         hx $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bjb.e;
-         }
-      }
-
-      return bjb.a($$2.B);
-   }
-
-   private boolean a(cdz $$0, dhn $$1, csg $$2, hx $$3, boolean $$4, clo $$5) {
-      if (!$$0.gq()) {
-         return false;
-      } else {
-         cvf $$6 = $$1.b();
-         dho<cvf, dhn> $$7 = $$6.n();
-         Collection<diq<?>> $$8 = $$7.d();
-         String $$9 = kc.f.b($$6).toString();
-         if ($$8.isEmpty()) {
-            a($$0, uv.a(this.a() + ".empty", $$9));
-            return false;
-         } else {
-            sd $$10 = $$5.a("DebugProperty");
-            String $$11 = $$10.l($$9);
-            diq<?> $$12 = $$7.a($$11);
-            if ($$4) {
-               if ($$12 == null) {
-                  $$12 = $$8.iterator().next();
-               }
-
-               dhn $$13 = a($$1, $$12, $$0.fJ());
-               $$2.a($$3, $$13, 18);
-               a($$0, uv.a(this.a() + ".update", $$12.f(), a($$13, $$12)));
-            } else {
-               $$12 = a($$8, $$12, $$0.fJ());
-               String $$14 = $$12.f();
-               $$10.a($$9, $$14);
-               a($$0, uv.a(this.a() + ".select", $$14, a($$1, $$12)));
+         for (int $$4 = 0; $$4 < $$3.size() && $$4 < 6; $$4++) {
+            sj $$5 = $$3.a($$4);
+            ckv $$6 = ckv.a($$5.h("Color"));
+            ie<dfu> $$7 = dfu.a($$5.l("Pattern"));
+            if ($$7 != null) {
+               $$7.e().map($$0x -> $$0x.a().e()).ifPresent($$2x -> $$1.add(vb.c("block.minecraft.banner." + $$2x + "." + $$6.b()).a(n.h)));
             }
-
-            return true;
          }
       }
    }
 
-   private static <T extends Comparable<T>> dhn a(dhn $$0, diq<T> $$1, boolean $$2) {
-      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
+   public ckv b() {
+      return ((cuq)this.e()).b();
    }
 
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
-   }
-
-   private static void a(cdz $$0, uv $$1) {
-      ((amj)$$0).b($$1, true);
-   }
-
-   private static <T extends Comparable<T>> String a(dhn $$0, diq<T> $$1) {
-      return $$1.a($$0.c($$1));
+   @Override
+   public void a(cmh $$0, @Nullable csy $$1, List<vb> $$2, cny $$3) {
+      a($$0, $$2);
    }
 }

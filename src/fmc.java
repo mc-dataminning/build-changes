@@ -1,200 +1,24 @@
-import com.google.common.collect.Queues;
-import com.mojang.authlib.GameProfile;
-import java.time.Instant;
-import java.util.Deque;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-
 public class fmc {
-   private static final uv a = uv.c("chat.validation_error").a(n.m, n.u);
-   private final eti b;
-   private final Deque<fmc.a> c = Queues.newArrayDeque();
-   private long d;
-   private long e;
+   public static final fmc a = new fmc(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-   public fmc(eti $$0) {
+   public fmc(float $$0, float $$1, float $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a() {
-      if (this.d != 0L) {
-         if (ac.b() >= this.e + this.d) {
-            fmc.a $$0 = this.c.poll();
-
-            while ($$0 != null && !$$0.a()) {
-               $$0 = this.c.poll();
-            }
-         }
-      }
+   public fmc(float $$0) {
+      this($$0, $$0, $$0);
    }
 
-   public void a(double $$0) {
-      long $$1 = (long)($$0 * 1000.0);
-      if ($$1 == 0L && this.d > 0L) {
-         this.c.forEach(fmc.a::a);
-         this.c.clear();
-      }
-
-      this.d = $$1;
+   public fmc a(float $$0) {
+      return new fmc(this.b + $$0, this.c + $$0, this.d + $$0);
    }
 
-   public void b() {
-      this.c.remove().a();
-   }
-
-   public long c() {
-      return (long)this.c.size();
-   }
-
-   public void d() {
-      this.c.forEach(fmc.a::a);
-      this.c.clear();
-   }
-
-   public boolean a(vh $$0) {
-      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
-   }
-
-   private boolean e() {
-      return this.d > 0L && ac.b() < this.e + this.d;
-   }
-
-   private void a(@Nullable vh $$0, BooleanSupplier $$1) {
-      if (this.e()) {
-         this.c.add(new fmc.a($$0, $$1));
-      } else {
-         $$1.getAsBoolean();
-      }
-   }
-
-   public void a(vl $$0, GameProfile $$1, ur.a $$2) {
-      boolean $$3 = this.b.m.ad().c();
-      vl $$4 = $$3 ? $$0.a() : $$0;
-      uv $$5 = $$2.a($$4.c());
-      Instant $$6 = Instant.now();
-      this.a($$0.k(), () -> {
-         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
-         flp $$7 = this.b.I();
-         if ($$7 != null) {
-            $$7.a($$0, $$6x);
-         }
-
-         return $$6x;
-      });
-   }
-
-   public void a(UUID $$0, ur.a $$1) {
-      this.a(null, () -> {
-         if (this.b.a($$0)) {
-            return false;
-         } else {
-            uv $$2 = $$1.a(a);
-            this.b.l.d().a($$2, null, etd.d());
-            this.e = ac.b();
-            return true;
-         }
-      });
-   }
-
-   public void a(uv $$0, ur.a $$1) {
-      Instant $$2 = Instant.now();
-      this.a(null, () -> {
-         uv $$3 = $$1.a($$0);
-         this.b.l.d().a($$3);
-         this.a($$1, $$0);
-         this.a($$3, $$2);
-         this.e = ac.b();
-         return true;
-      });
-   }
-
-   private boolean a(ur.a $$0, vl $$1, uv $$2, GameProfile $$3, boolean $$4, Instant $$5) {
-      fme $$6 = this.a($$1, $$2, $$5);
-      if ($$4 && $$6.a()) {
-         return false;
-      } else if (!this.b.a($$1.f()) && !$$1.i()) {
-         etd $$7 = $$6.a($$1);
-         vh $$8 = $$1.k();
-         uz $$9 = $$1.n();
-         if ($$9.a()) {
-            this.b.l.d().a($$2, $$8, $$7);
-            this.a($$0, $$1.c());
-         } else {
-            uv $$10 = $$9.b($$1.b());
-            if ($$10 != null) {
-               this.b.l.d().a($$0.a($$10), $$8, $$7);
-               this.a($$0, $$10);
-            }
-         }
-
-         this.a($$1, $$0, $$3, $$6);
-         this.e = ac.b();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(ur.a $$0, uv $$1) {
-      this.b.aU().a($$0.b($$1));
-   }
-
-   private fme a(vl $$0, uv $$1, Instant $$2) {
-      return this.a($$0.f()) ? fme.a : fme.a($$0, $$1, $$2);
-   }
-
-   private void a(vl $$0, ur.a $$1, GameProfile $$2, fme $$3) {
-      fmd $$4 = this.b.aW().b();
-      $$4.a(fmg.a($$2, $$0, $$3));
-   }
-
-   private void a(uv $$0, Instant $$1) {
-      fmd $$2 = this.b.aW().b();
-      $$2.a(fmg.a($$0, $$1));
-   }
-
-   public void a(uv $$0, boolean $$1) {
-      if (!this.b.m.ab().c() || !this.b.a(this.a($$0))) {
-         if ($$1) {
-            this.b.l.a($$0, false);
-         } else {
-            this.b.l.d().a($$0);
-            this.a($$0, Instant.now());
-         }
-
-         this.b.aU().b($$0);
-      }
-   }
-
-   private UUID a(uv $$0) {
-      String $$1 = auj.a($$0);
-      String $$2 = StringUtils.substringBetween($$1, "<", ">");
-      return $$2 == null ? ac.d : this.b.aJ().a($$2);
-   }
-
-   private boolean a(UUID $$0) {
-      if (this.b.Q() && this.b.s != null) {
-         UUID $$1 = this.b.s.fS().getId();
-         return $$1.equals($$0);
-      } else {
-         return false;
-      }
-   }
-
-   static record a(@Nullable vh a, BooleanSupplier b) {
-      public boolean a() {
-         return this.b.getAsBoolean();
-      }
-
-      @Nullable
-      public vh b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
+   public fmc a(float $$0, float $$1, float $$2) {
+      return new fmc(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

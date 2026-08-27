@@ -1,19 +1,24 @@
-public interface cri extends crl {
-   float a(ib var1, boolean var2);
-
-   ecm z_();
-
-   int a(hx var1, crq var2);
-
-   default int a(cso $$0, hx $$1) {
-      return this.z_().a($$0).b($$1);
+public class cri extends cqs {
+   public cri(cqs.a $$0, blk... $$1) {
+      super($$0, cqt.f, $$1);
    }
 
-   default int b(hx $$0, int $$1) {
-      return this.z_().a($$0, $$1);
+   @Override
+   public int a(int $$0) {
+      return 5 + ($$0 - 1) * 9;
    }
 
-   default boolean g(hx $$0) {
-      return this.a(cso.a, $$0) >= this.N();
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + 15;
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   public static float e(int $$0) {
+      return 1.0F - 1.0F / (float)($$0 + 1);
    }
 }

@@ -1,12 +1,17 @@
-public class jt {
-   private final int b;
-   public static final jt a = new jt(1000);
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-   public jt(int $$0) {
-      this.b = $$0;
-   }
+public interface jt {
+   ju<?> b();
 
-   public int a() {
-      return this.b;
+   void a(ue var1);
+
+   String a();
+
+   @Deprecated
+   public interface a<T extends jt> {
+      T b(ju<T> var1, StringReader var2) throws CommandSyntaxException;
+
+      T b(ju<T> var1, ue var2);
    }
 }

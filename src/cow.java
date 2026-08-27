@@ -1,177 +1,90 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class cow extends app {
-   private static final Gson a = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-   private static final Logger b = LogUtils.getLogger();
-   private Map<coy<?>, Map<agm, cov<?>>> c = ImmutableMap.of();
-   private Map<agm, cov<?>> d = ImmutableMap.of();
-   private boolean e;
-
-   public cow() {
-      super(a, "recipes");
+public class cow extends cpd {
+   public cow(cpb $$0) {
+      super($$0);
    }
 
-   protected void a(Map<agm, JsonElement> $$0, apl $$1, bfs $$2) {
-      this.e = false;
-      Map<coy<?>, Builder<agm, cov<?>>> $$3 = Maps.newHashMap();
-      Builder<agm, cov<?>> $$4 = ImmutableMap.builder();
+   public boolean a(cia $$0, csy $$1) {
+      ckv $$2 = null;
+      cmh $$3 = null;
+      cmh $$4 = null;
 
-      for (Entry<agm, JsonElement> $$5 : $$0.entrySet()) {
-         agm $$6 = $$5.getKey();
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         cmh $$6 = $$0.a($$5);
+         if (!$$6.b()) {
+            cmc $$7 = $$6.d();
+            if (!($$7 instanceof cjx)) {
+               return false;
+            }
 
-         try {
-            cov<?> $$7 = a($$6, atg.m($$5.getValue(), "top element"));
-            $$3.computeIfAbsent($$7.b().e(), $$0x -> ImmutableMap.builder()).put($$6, $$7);
-            $$4.put($$6, $$7);
-         } catch (IllegalArgumentException | JsonParseException var10) {
-            b.error("Parsing error loading recipe {}", $$6, var10);
-         }
-      }
+            cjx $$8 = (cjx)$$7;
+            if ($$2 == null) {
+               $$2 = $$8.b();
+            } else if ($$2 != $$8.b()) {
+               return false;
+            }
 
-      this.c = $$3.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0x -> ((Builder)$$0x.getValue()).build()));
-      this.d = $$4.build();
-      b.info("Loaded {} recipes", $$3.size());
-   }
+            int $$9 = dft.c($$6);
+            if ($$9 > 6) {
+               return false;
+            }
 
-   public boolean a() {
-      return this.e;
-   }
+            if ($$9 > 0) {
+               if ($$3 != null) {
+                  return false;
+               }
 
-   public <C extends biu, T extends cot<C>> Optional<cov<T>> a(coy<T> $$0, C $$1, csf $$2) {
-      return this.c($$0).values().stream().filter($$2x -> $$2x.b().a($$1, $$2)).findFirst();
-   }
-
-   public <C extends biu, T extends cot<C>> Optional<Pair<agm, cov<T>>> a(coy<T> $$0, C $$1, csf $$2, @Nullable agm $$3) {
-      Map<agm, cov<T>> $$4 = this.c($$0);
-      if ($$3 != null) {
-         cov<T> $$5 = $$4.get($$3);
-         if ($$5 != null && $$5.b().a($$1, $$2)) {
-            return Optional.of(Pair.of($$3, $$5));
-         }
-      }
-
-      return $$4.entrySet()
-         .stream()
-         .filter($$2x -> ((cov)$$2x.getValue()).b().a($$1, $$2))
-         .findFirst()
-         .map($$0x -> Pair.of((agm)$$0x.getKey(), (cov)$$0x.getValue()));
-   }
-
-   public <C extends biu, T extends cot<C>> List<cov<T>> a(coy<T> $$0) {
-      return List.copyOf(this.c($$0).values());
-   }
-
-   public <C extends biu, T extends cot<C>> List<cov<T>> b(coy<T> $$0, C $$1, csf $$2) {
-      return this.c($$0)
-         .values()
-         .stream()
-         .filter($$2x -> $$2x.b().a($$1, $$2))
-         .sorted(Comparator.comparing($$1x -> $$1x.b().a($$2.I_()).q()))
-         .collect(Collectors.toList());
-   }
-
-   private <C extends biu, T extends cot<C>> Map<agm, cov<T>> c(coy<T> $$0) {
-      return (Map<agm, cov<T>>)this.c.getOrDefault($$0, Collections.emptyMap());
-   }
-
-   public <C extends biu, T extends cot<C>> ip<clo> c(coy<T> $$0, C $$1, csf $$2) {
-      Optional<cov<T>> $$3 = this.a($$0, $$1, $$2);
-      if ($$3.isPresent()) {
-         return $$3.get().b().a($$1);
-      } else {
-         ip<clo> $$4 = ip.a($$1.b(), clo.b);
-
-         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-            $$4.set($$5, $$1.a($$5));
-         }
-
-         return $$4;
-      }
-   }
-
-   public Optional<cov<?>> a(agm $$0) {
-      return Optional.ofNullable(this.d.get($$0));
-   }
-
-   public Collection<cov<?>> b() {
-      return this.c.values().stream().flatMap($$0 -> $$0.values().stream()).collect(Collectors.toSet());
-   }
-
-   public Stream<agm> d() {
-      return this.c.values().stream().flatMap($$0 -> $$0.keySet().stream());
-   }
-
-   protected static cov<?> a(agm $$0, JsonObject $$1) {
-      String $$2 = atg.i($$1, "type");
-      Codec<? extends cot<?>> $$3 = (Codec<? extends cot<?>>)kc.u
-         .b(new agm($$2))
-         .orElseThrow(() -> new JsonSyntaxException("Invalid or unsupported recipe type '" + $$2 + "'"))
-         .a();
-      cot<?> $$4 = ac.a($$3.parse(JsonOps.INSTANCE, $$1), JsonParseException::new);
-      return new cov<>($$0, $$4);
-   }
-
-   public void a(Iterable<cov<?>> $$0) {
-      this.e = false;
-      Map<coy<?>, Map<agm, cov<?>>> $$1 = Maps.newHashMap();
-      Builder<agm, cov<?>> $$2 = ImmutableMap.builder();
-      $$0.forEach($$2x -> {
-         Map<agm, cov<?>> $$3 = $$1.computeIfAbsent($$2x.b().e(), $$0xx -> Maps.newHashMap());
-         agm $$4 = $$2x.a();
-         cov<?> $$5 = $$3.put($$4, $$2x);
-         $$2.put($$4, $$2x);
-         if ($$5 != null) {
-            throw new IllegalStateException("Duplicate recipe ignored with ID " + $$4);
-         }
-      });
-      this.c = ImmutableMap.copyOf($$1);
-      this.d = $$2.build();
-   }
-
-   public static <C extends biu, T extends cot<C>> cow.a<C, T> b(final coy<T> $$0) {
-      return new cow.a<C, T>() {
-         @Nullable
-         private agm b;
-
-         @Override
-         public Optional<cov<T>> a(C $$0x, csf $$1) {
-            cow $$2 = $$1.q();
-            Optional<Pair<agm, cov<T>>> $$3 = $$2.a($$0, $$0, $$1, this.b);
-            if ($$3.isPresent()) {
-               Pair<agm, cov<T>> $$4 = $$3.get();
-               this.b = (agm)$$4.getFirst();
-               return Optional.of((cov<T>)$$4.getSecond());
+               $$3 = $$6;
             } else {
-               return Optional.empty();
+               if ($$4 != null) {
+                  return false;
+               }
+
+               $$4 = $$6;
             }
          }
-      };
+      }
+
+      return $$3 != null && $$4 != null;
    }
 
-   public interface a<C extends biu, T extends cot<C>> {
-      Optional<cov<T>> a(C var1, csf var2);
+   public cmh a(cia $$0, is $$1) {
+      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+         cmh $$3 = $$0.a($$2);
+         if (!$$3.b()) {
+            int $$4 = dft.c($$3);
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
+            }
+         }
+      }
+
+      return cmh.f;
+   }
+
+   public io<cmh> a(cia $$0) {
+      io<cmh> $$1 = io.a($$0.b(), cmh.f);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cmh $$3 = $$0.a($$2);
+         if (!$$3.b()) {
+            if ($$3.d().t()) {
+               $$1.set($$2, new cmh($$3.d().s()));
+            } else if ($$3.u() && dft.c($$3) > 0) {
+               $$1.set($$2, $$3.c(1));
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public cpp<?> ar_() {
+      return cpp.k;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 }

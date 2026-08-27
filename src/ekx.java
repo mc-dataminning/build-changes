@@ -1,74 +1,47 @@
-import java.util.Comparator;
+public class ekx extends ekz {
+   private final ia b;
+   private final hv c;
+   private final boolean d;
+   private final boolean e;
 
-public class ekx {
-   public static final Comparator<ekx> a = ($$0, $$1) -> {
-      if ($$0.b() > $$1.b()) {
-         return 1;
-      } else {
-         return $$0.b() < $$1.b() ? -1 : $$1.e().compareToIgnoreCase($$0.e());
-      }
-   };
-   private final eky b;
-   private final ekv c;
-   private final String d;
-   private int e;
-   private boolean f;
-   private boolean g;
-
-   public ekx(eky $$0, ekv $$1, String $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.f = true;
-      this.g = true;
+   public static ekx a(elb $$0, ia $$1, hv $$2) {
+      return new ekx(true, $$0, $$1, $$2, false);
    }
 
-   public void a(int $$0) {
-      if (this.c.c().e()) {
-         throw new IllegalStateException("Cannot modify read-only score");
-      } else {
-         this.b(this.b() + $$0);
-      }
+   public ekx(elb $$0, ia $$1, hv $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3);
    }
 
-   public void a() {
-      this.a(1);
+   private ekx(boolean $$0, elb $$1, ia $$2, hv $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
    }
 
-   public int b() {
-      return this.e;
+   public ekx a(ia $$0) {
+      return new ekx(this.d, this.a, $$0, this.c, this.e);
    }
 
-   public void c() {
-      this.b(0);
+   public ekx a(hv $$0) {
+      return new ekx(this.d, this.a, this.b, $$0, this.e);
    }
 
-   public void b(int $$0) {
-      int $$1 = this.e;
-      this.e = $$0;
-      if ($$1 != $$0 || this.g) {
-         this.g = false;
-         this.f().a(this);
-      }
-   }
-
-   public ekv d() {
+   public hv a() {
       return this.c;
    }
 
-   public String e() {
-      return this.d;
-   }
-
-   public eky f() {
+   public ia b() {
       return this.b;
    }
 
-   public boolean g() {
-      return this.f;
+   @Override
+   public ekz.a c() {
+      return this.d ? ekz.a.a : ekz.a.b;
    }
 
-   public void a(boolean $$0) {
-      this.f = $$0;
+   public boolean d() {
+      return this.e;
    }
 }

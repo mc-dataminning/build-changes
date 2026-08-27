@@ -1,68 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.util.Map.Entry;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class fsf {
-   private final agm a;
-   private final List<fsf.b> b;
+   public final Int2ObjectMap<gfw> a = new Int2ObjectOpenHashMap(256);
+   private final Int2ObjectMap<gfp> b = new Int2ObjectOpenHashMap(256);
+   private final gfv c;
 
-   public fsf(agm $$0, List<fsf.b> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
+   public fsf(gfv $$0) {
+      this.c = $$0;
    }
 
-   public agm a() {
-      return this.a;
+   public gfp a(cmh $$0) {
+      gfp $$1 = this.a($$0.d());
+      return $$1 == null ? this.c.a() : $$1;
    }
 
-   public Stream<fsf.b> b() {
-      return this.b.stream();
+   @Nullable
+   public gfp a(cmc $$0) {
+      return (gfp)this.b.get(b($$0));
    }
 
-   protected static class a implements JsonDeserializer<fsf> {
-      public fsf a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         agm $$4 = new agm(atg.i($$3, "model"));
-         List<fsf.b> $$5 = this.a($$3);
-         return new fsf($$4, $$5);
-      }
-
-      protected List<fsf.b> a(JsonObject $$0) {
-         Map<agm, Float> $$1 = Maps.newLinkedHashMap();
-         JsonObject $$2 = atg.u($$0, "predicate");
-
-         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-            $$1.put(new agm($$3.getKey()), atg.e($$3.getValue(), $$3.getKey()));
-         }
-
-         return $$1.entrySet().stream().map($$0x -> new fsf.b((agm)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
-      }
+   private static int b(cmc $$0) {
+      return cmc.a($$0);
    }
 
-   public static class b {
-      private final agm a;
-      private final float b;
+   public void a(cmc $$0, gfw $$1) {
+      this.a.put(b($$0), $$1);
+   }
 
-      public b(agm $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public gfv a() {
+      return this.c;
+   }
 
-      public agm a() {
-         return this.a;
-      }
+   public void b() {
+      this.b.clear();
+      ObjectIterator var1 = this.a.entrySet().iterator();
 
-      public float b() {
-         return this.b;
+      while (var1.hasNext()) {
+         Entry<Integer, gfw> $$0 = (Entry<Integer, gfw>)var1.next();
+         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
       }
    }
 }

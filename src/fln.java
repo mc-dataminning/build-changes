@@ -1,177 +1,44 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
-import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
-import com.mojang.authlib.exceptions.InvalidCredentialsException;
-import com.mojang.authlib.exceptions.UserBannedException;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import net.minecraft.client.ClientBrandRetriever;
-import org.slf4j.Logger;
+public class fln<T extends blf> extends flj<T> {
+   private boolean b;
 
-public class fln implements aes {
-   private static final Logger a = LogUtils.getLogger();
-   private final eti b;
-   @Nullable
-   private final flz c;
-   @Nullable
-   private final faz d;
-   private final Consumer<uv> e;
-   private final tw f;
-   private final boolean g;
-   @Nullable
-   private final Duration h;
-   @Nullable
-   private String i;
-   private final AtomicReference<fln.a> j = new AtomicReference<>(fln.a.a);
-
-   public fln(tw $$0, eti $$1, @Nullable flz $$2, @Nullable faz $$3, boolean $$4, @Nullable Duration $$5, Consumer<uv> $$6) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$6;
-      this.g = $$4;
-      this.h = $$5;
+   public fln(fly $$0) {
+      super($$0);
    }
 
-   private void a(fln.a $$0) {
-      fln.a $$1 = this.j.updateAndGet($$1x -> {
-         if (!$$0.f.contains($$1x)) {
-            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
-         } else {
-            return $$0;
-         }
-      });
-      this.e.accept($$1.e);
+   public static fme c() {
+      fmg $$0 = flj.b();
+      fmh $$1 = $$0.a();
+      fmh $$2 = $$1.a("head", fmd.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fma.a);
+      fmh $$3 = $$2.a("hat", fmd.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), fma.a(-5.0F, -10.03125F, -5.0F));
+      fmh $$4 = $$3.a("hat2", fmd.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), fma.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
+      fmh $$5 = $$4.a("hat3", fmd.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), fma.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
+      $$5.a(
+         "hat4", fmd.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new fmc(0.25F)), fma.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
+      );
+      fmh $$6 = $$2.a("nose");
+      $$6.a("mole", fmd.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new fmc(-0.25F)), fma.a(0.0F, -2.0F, 0.0F));
+      return fme.a($$0, 64, 128);
    }
 
    @Override
-   public void a(aev $$0) {
-      this.a(fln.a.b);
-
-      Cipher $$4;
-      Cipher $$5;
-      String $$3;
-      afb $$7;
-      try {
-         SecretKey $$1 = asp.a();
-         PublicKey $$2 = $$0.d();
-         $$3 = new BigInteger(asp.a($$0.a(), $$2, $$1)).toString(16);
-         $$4 = asp.a(2, $$1);
-         $$5 = asp.a(1, $$1);
-         byte[] $$6 = $$0.e();
-         $$7 = new afb($$1, $$2, $$6);
-      } catch (Exception var9) {
-         throw new IllegalStateException("Protocol error", var9);
-      }
-
-      ath.a.submit(() -> {
-         uv $$4x = this.b($$3);
-         if ($$4x != null) {
-            if (this.c == null || !this.c.d()) {
-               this.f.a($$4x);
-               return;
-            }
-
-            a.warn($$4x.getString());
-         }
-
-         this.a(fln.a.c);
-         this.f.a($$7, uf.a(() -> this.f.a($$4, $$5)));
-      });
-   }
-
-   @Nullable
-   private uv b(String $$0) {
-      try {
-         this.e().joinServer(this.b.U().b(), this.b.U().d(), $$0);
-         return null;
-      } catch (AuthenticationUnavailableException var3) {
-         return uv.a("disconnect.loginFailedInfo", uv.c("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException var4) {
-         return uv.a("disconnect.loginFailedInfo", uv.c("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException var5) {
-         return uv.a("disconnect.loginFailedInfo", uv.c("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (ForcedUsernameChangeException | UserBannedException var6) {
-         return uv.a("disconnect.loginFailedInfo", uv.c("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException var7) {
-         return uv.a("disconnect.loginFailedInfo", var7.getMessage());
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.a(0.0F, -2.0F, 0.0F);
+      float $$6 = 0.01F * (float)($$0.aj() % 10);
+      this.a.e = aty.a((float)$$0.ah * $$6) * 4.5F * (float) (Math.PI / 180.0);
+      this.a.f = 0.0F;
+      this.a.g = aty.b((float)$$0.ah * $$6) * 2.5F * (float) (Math.PI / 180.0);
+      if (this.b) {
+         this.a.a(0.0F, 1.0F, -1.5F);
+         this.a.e = -0.9F;
       }
    }
 
-   private MinecraftSessionService e() {
-      return this.b.aj();
+   public fly e() {
+      return this.a;
    }
 
-   @Override
-   public void a(aeu $$0) {
-      this.a(fln.a.d);
-      GameProfile $$1 = $$0.a();
-      this.f.a(new afc());
-      this.f.a(new flm(this.b, this.f, new fls($$1, this.b.t().a(this.g, this.h, this.i), flq.a().a(), cgk.h, null, this.c, this.d)));
-      this.f.a(new xa(new xg(ClientBrandRetriever.getClientModName())));
-      this.f.a(new wz(this.b.m.at()));
-   }
-
-   @Override
-   public void a(uv $$0) {
-      if (this.c != null && this.c.e()) {
-         this.b.a(new ghs(this.d, uu.q, $$0));
-      } else {
-         this.b.a(new fab(this.d, uu.q, $$0));
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.f.k();
-   }
-
-   @Override
-   public void a(aex $$0) {
-      this.f.a($$0.a());
-   }
-
-   @Override
-   public void a(aew $$0) {
-      if (!this.f.g()) {
-         this.f.a($$0.a(), false);
-      }
-   }
-
-   @Override
-   public void a(aet $$0) {
-      this.e.accept(uv.c("connect.negotiating"));
-      this.f.a(new aez($$0.a(), null));
-   }
-
-   public void a(String $$0) {
-      this.i = $$0;
-   }
-
-   static enum a {
-      a(uv.c("connect.connecting"), Set.of()),
-      b(uv.c("connect.authorizing"), Set.of(a)),
-      c(uv.c("connect.encrypting"), Set.of(b)),
-      d(uv.c("connect.joining"), Set.of(c, a));
-
-      final uv e;
-      final Set<fln.a> f;
-
-      private a(uv $$0, Set<fln.a> $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
+   public void b(boolean $$0) {
+      this.b = $$0;
    }
 }

@@ -1,35 +1,34 @@
-public class gar<T extends bll> extends gak<T, fiz<T>> {
-   public static final agm a = new agm("textures/entity/trident_riptide.png");
-   public static final String b = "box";
-   private final fkt c;
+public class gar extends fyu<byl, flp<byl>> {
+   private static final agt a = new agt("textures/entity/wolf/wolf.png");
+   private static final agt i = new agt("textures/entity/wolf/wolf_tame.png");
+   private static final agt j = new agt("textures/entity/wolf/wolf_angry.png");
 
-   public gar(fxx<T, fiz<T>> $$0, fkp $$1) {
-      super($$0);
-      fkt $$2 = $$1.a(fks.aT);
-      this.c = $$2.b("box");
+   public gar(fxo.a $$0) {
+      super($$0, new flp<>($$0.a(flx.bZ)), 0.5F);
+      this.a(new gco(this));
    }
 
-   public static fkz a() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      $$1.a("box", fky.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fkv.a);
-      return fkz.a($$0, 64, 64);
+   protected float a(byl $$0, float $$1) {
+      return $$0.gm();
    }
 
-   public void a(eob $$0, fqz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.fk()) {
-         eof $$10 = $$1.getBuffer(frh.e(a));
+   public void a(byl $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
+      if ($$0.gl()) {
+         float $$6 = $$0.E($$2);
+         this.f.a($$6, $$6, $$6);
+      }
 
-         for (int $$11 = 0; $$11 < 3; $$11++) {
-            $$0.a();
-            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
-            $$0.a(a.d.rotationDegrees($$12));
-            float $$13 = 0.75F * (float)$$11;
-            $$0.b($$13, $$13, $$13);
-            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
-            this.c.a($$0, $$10, $$2, gbq.d);
-            $$0.b();
-         }
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gl()) {
+         this.f.a(1.0F, 1.0F, 1.0F);
+      }
+   }
+
+   public agt a(byl $$0) {
+      if ($$0.u()) {
+         return i;
+      } else {
+         return $$0.aa_() ? j : a;
       }
    }
 }

@@ -1,50 +1,74 @@
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
 
-public class kw implements kj {
-   private static final Logger d = LogUtils.getLogger();
-   private final Path e;
-   private final CompletableFuture<ii.b> f;
-   private static final MapCodec<agl<ctd>> g = agl.a(kd.ar).fieldOf("biome");
-   private static final Codec<ctm.c<agl<ctd>>> h = ctm.c.a(g).fieldOf("biomes").codec();
+public class kw implements ki {
+   private final kk d;
 
-   public kw(kl $$0, CompletableFuture<ii.b> $$1) {
-      this.e = $$0.a(kl.b.c).resolve("biome_parameters");
-      this.f = $$1;
+   public kw(kk $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public CompletableFuture<?> a(kh $$0) {
-      return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = agk.a(JsonOps.INSTANCE, $$1);
-         List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         ctr.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
-         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
-      });
-   }
+   public CompletableFuture<?> a(kg $$0) {
+      JsonObject $$1 = new JsonObject();
 
-   private static <E> CompletableFuture<?> a(Path $$0, kh $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
-      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
-      return $$5.isPresent() ? kj.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
-   }
+      for (cvz $$2 : kb.e) {
+         agt $$3 = kb.e.b($$2);
+         JsonObject $$4 = new JsonObject();
+         diq<cvz, dip> $$5 = $$2.n();
+         if (!$$5.d().isEmpty()) {
+            JsonObject $$6 = new JsonObject();
 
-   private Path a(agm $$0) {
-      return this.e.resolve($$0.b()).resolve($$0.a() + ".json");
+            for (djs<?> $$7 : $$5.d()) {
+               JsonArray $$8 = new JsonArray();
+
+               for (Comparable<?> $$9 : $$7.a()) {
+                  $$8.add(ac.a($$7, $$9));
+               }
+
+               $$6.add($$7.f(), $$8);
+            }
+
+            $$4.add("properties", $$6);
+         }
+
+         JsonArray $$10 = new JsonArray();
+         UnmodifiableIterator var17 = $$5.a().iterator();
+
+         while (var17.hasNext()) {
+            dip $$11 = (dip)var17.next();
+            JsonObject $$12 = new JsonObject();
+            JsonObject $$13 = new JsonObject();
+
+            for (djs<?> $$14 : $$5.d()) {
+               $$13.addProperty($$14.f(), ac.a($$14, $$11.c($$14)));
+            }
+
+            if ($$13.size() > 0) {
+               $$12.add("properties", $$13);
+            }
+
+            $$12.addProperty("id", cvz.i($$11));
+            if ($$11 == $$2.o()) {
+               $$12.addProperty("default", true);
+            }
+
+            $$10.add($$12);
+         }
+
+         $$4.add("states", $$10);
+         $$1.add($$3.toString(), $$4);
+      }
+
+      Path $$15 = this.d.a(kk.b.c).resolve("blocks.json");
+      return ki.a($$0, $$1, $$15);
    }
 
    @Override
    public final String a() {
-      return "Biome Parameters";
+      return "Block List";
    }
 }

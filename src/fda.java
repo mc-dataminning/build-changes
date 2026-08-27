@@ -1,184 +1,131 @@
-public class fda extends faz {
-   private static final int a = 7;
-   private static final uv b = uv.c("jigsaw_block.joint_label");
-   private static final uv c = uv.c("jigsaw_block.pool");
-   private static final uv k = uv.c("jigsaw_block.name");
-   private static final uv l = uv.c("jigsaw_block.target");
-   private static final uv m = uv.c("jigsaw_block.final_state");
-   private static final uv n = uv.c("jigsaw_block.placement_priority");
-   private static final uv o = uv.c("jigsaw_block.placement_priority.tooltip");
-   private static final uv p = uv.c("jigsaw_block.selection_priority");
-   private static final uv q = uv.c("jigsaw_block.selection_priority.tooltip");
-   private final dgi r;
-   private evn t;
-   private evn u;
-   private evn v;
-   private evn w;
-   private evn x;
-   private evn y;
-   int z;
-   private boolean A = true;
-   private evl<dgi.a> B;
-   private eve C;
-   private eve D;
-   private dgi.a E;
+public abstract class fda extends fcc {
+   private static final vb m = vb.c("advMode.setCommand");
+   private static final vb n = vb.c("advMode.command");
+   private static final vb o = vb.c("advMode.previousOutput");
+   protected ewq a;
+   protected ewq b;
+   protected ewh c;
+   protected ewh k;
+   protected ewo<Boolean> l;
+   ewk p;
 
-   public fda(dgi $$0) {
-      super(eta.a);
-      this.r = $$0;
+   public fda() {
+      super(euc.a);
    }
 
-   private void l() {
-      this.D();
-      this.f.a(null);
-   }
-
-   private void C() {
-      this.f.a(null);
-   }
-
-   private void D() {
-      this.f
-         .I()
-         .b(new aef(this.r.aC_(), new agm(this.t.a()), new agm(this.u.a()), new agm(this.v.a()), this.w.a(), this.E, this.a(this.x.a()), this.a(this.y.a())));
-   }
-
-   private int a(String $$0) {
-      try {
-         return Integer.parseInt($$0);
-      } catch (NumberFormatException var3) {
-         return 0;
+   @Override
+   public void d() {
+      if (!this.l().j()) {
+         this.aF_();
       }
    }
 
-   private void E() {
-      this.f.I().b(new adk(this.r.aC_(), this.z, this.A));
-   }
+   abstract crz l();
+
+   abstract int C();
 
    @Override
-   public void aG_() {
-      this.C();
-   }
-
-   @Override
-   protected void aQ_() {
-      this.v = new evn(this.i, this.g / 2 - 153, 20, 300, 20, c);
-      this.v.l(128);
-      this.v.a(this.r.f().a().toString());
-      this.v.b($$0x -> this.F());
-      this.e(this.v);
-      this.t = new evn(this.i, this.g / 2 - 153, 55, 300, 20, k);
-      this.t.l(128);
-      this.t.a(this.r.c().toString());
-      this.t.b($$0x -> this.F());
-      this.e(this.t);
-      this.u = new evn(this.i, this.g / 2 - 153, 90, 300, 20, l);
-      this.u.l(128);
-      this.u.a(this.r.d().toString());
-      this.u.b($$0x -> this.F());
-      this.e(this.u);
-      this.w = new evn(this.i, this.g / 2 - 153, 125, 300, 20, m);
-      this.w.l(256);
-      this.w.a(this.r.g());
-      this.e(this.w);
-      this.x = new evn(this.i, this.g / 2 - 153, 160, 98, 20, p);
-      this.x.l(3);
-      this.x.a(Integer.toString(this.r.m()));
-      this.x.a(ewp.a(q));
-      this.e(this.x);
-      this.y = new evn(this.i, this.g / 2 - 50, 160, 98, 20, n);
-      this.y.l(3);
-      this.y.a(Integer.toString(this.r.l()));
-      this.y.a(ewp.a(o));
-      this.e(this.y);
-      this.E = this.r.k();
-      this.B = this.d(evl.<dgi.a>a(dgi.a::a).a(dgi.a.values()).a(this.E).a().a(this.g / 2 + 54, 160, 100, 20, b, ($$0x, $$1) -> this.E = $$1));
-      boolean $$0 = czg.h(this.r.r()).o().b();
-      this.B.i = $$0;
-      this.B.j = $$0;
-      this.d(new eva(this.g / 2 - 154, 185, 100, 20, uu.a, 0.0) {
-         {
-            this.b();
-         }
-
+   protected void aP_() {
+      this.c = this.d(ewh.a(va.d, $$0x -> this.D()).a(this.g / 2 - 4 - 150, this.h / 4 + 120 + 12, 150, 20).a());
+      this.k = this.d(ewh.a(va.e, $$0x -> this.aF_()).a(this.g / 2 + 4, this.h / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.l().o();
+      this.l = this.d(ewo.a(vb.b("O"), vb.b("X")).a($$0).a().a(this.g / 2 + 150 - 20, this.C(), 20, 20, vb.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         crz $$2 = this.l();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new ewq(this.i, this.g / 2 - 150, 50, 300, 20, vb.c("advMode.command")) {
          @Override
-         protected void b() {
-            this.b(uv.a("jigsaw_block.levels", fda.this.z));
+         protected vp aM_() {
+            return super.aM_().b(fda.this.p.e());
          }
-
-         @Override
-         protected void a() {
-            fda.this.z = atq.a(atq.b(0.0, 7.0, this.c));
-         }
-      });
-      this.d(evl.b(this.A).a(this.g / 2 - 50, 185, 100, 20, uv.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1) -> this.A = $$1));
-      this.D = this.d(eve.a(uv.c("jigsaw_block.generate"), $$0x -> {
-         this.l();
-         this.E();
-      }).a(this.g / 2 + 54, 185, 100, 20).a());
-      this.C = this.d(eve.a(uu.d, $$0x -> this.l()).a(this.g / 2 - 4 - 150, 210, 150, 20).a());
-      this.d(eve.a(uu.e, $$0x -> this.C()).a(this.g / 2 + 4, 210, 150, 20).a());
-      this.c(this.v);
-      this.F();
-   }
-
-   private void F() {
-      boolean $$0 = agm.i(this.t.a()) && agm.i(this.u.a()) && agm.i(this.v.a());
-      this.C.i = $$0;
-      this.D.i = $$0;
+      };
+      this.a.l(32500);
+      this.a.b(this::a);
+      this.e(this.a);
+      this.b = new ewq(this.i, this.g / 2 - 150, this.C(), 276, 20, vb.c("advMode.previousOutput"));
+      this.b.l(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.e(this.b);
+      this.c(this.a);
+      this.p = new ewk(this.f, this, this.a, this.i, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.p.a(true);
+      this.p.d();
+      this.c($$0);
    }
 
    @Override
-   public void a(eti $$0, int $$1, int $$2) {
-      String $$3 = this.t.a();
-      String $$4 = this.u.a();
-      String $$5 = this.v.a();
-      String $$6 = this.w.a();
-      String $$7 = this.x.a();
-      String $$8 = this.y.a();
-      int $$9 = this.z;
-      dgi.a $$10 = this.E;
+   protected vb z() {
+      return this.p.a() ? this.p.b() : super.z();
+   }
+
+   @Override
+   public void a(euk $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
       this.b($$0, $$1, $$2);
-      this.t.a($$3);
-      this.u.a($$4);
-      this.v.a($$5);
-      this.w.a($$6);
-      this.z = $$9;
-      this.E = $$10;
-      this.B.a($$10);
-      this.x.a($$7);
-      this.y.a($$8);
+      this.a.a($$3);
+      this.p.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.l().l().getString() : "-");
+   }
+
+   protected void D() {
+      crz $$0 = this.l();
+      this.a($$0);
+      if (!$$0.o()) {
+         $$0.c(null);
+      }
+
+      this.f.a(null);
+   }
+
+   protected abstract void a(crz var1);
+
+   private void a(String $$0) {
+      this.p.d();
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
+      if (this.p.a($$0, $$1, $$2)) {
          return true;
-      } else if (!this.C.i || $$0 != 257 && $$0 != 335) {
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
          return false;
       } else {
-         this.l();
+         this.D();
          return true;
       }
    }
 
    @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.p.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.p.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.b(this.i, c, this.g / 2 - 153, 10, 10526880);
-      this.v.a($$0, $$1, $$2, $$3);
-      $$0.b(this.i, k, this.g / 2 - 153, 45, 10526880);
-      this.t.a($$0, $$1, $$2, $$3);
-      $$0.b(this.i, l, this.g / 2 - 153, 80, 10526880);
-      this.u.a($$0, $$1, $$2, $$3);
-      $$0.b(this.i, m, this.g / 2 - 153, 115, 10526880);
-      this.w.a($$0, $$1, $$2, $$3);
-      $$0.b(this.i, p, this.g / 2 - 153, 150, 10526880);
-      this.y.a($$0, $$1, $$2, $$3);
-      $$0.b(this.i, n, this.g / 2 - 50, 150, 10526880);
-      this.x.a($$0, $$1, $$2, $$3);
-      if (czg.h(this.r.r()).o().b()) {
-         $$0.b(this.i, b, this.g / 2 + 53, 150, 10526880);
+      $$0.a(this.i, m, this.g / 2, 20, 16777215);
+      $$0.b(this.i, n, this.g / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.C() - 135;
+         $$0.b(this.i, o, this.g / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
       }
+
+      this.p.a($$0, $$1, $$2);
    }
 }

@@ -1,136 +1,23 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
-
 public class gho {
-   private final eti a;
-   @Nullable
-   private ghp b;
-   private final List<gho.a> c = Lists.newArrayList();
-   private final ghh d;
+   private final String a;
+   private final String b;
+   private long c;
 
-   public gho(eti $$0, etm $$1) {
+   public gho(String $$0, String $$1) {
       this.a = $$0;
-      this.d = new ghh(this, $$1);
+      this.b = $$1;
+      this.c = ac.b();
    }
 
-   public void a(fpz $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(@Nullable flo $$0, @Nullable ejx $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(flo $$0, hx $$1, dhn $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public void a() {
-      if (this.b != null) {
-         this.b.c();
-      }
-   }
-
-   public void a(clo $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
-      }
-   }
-
-   public void c() {
-      if (this.b != null) {
-         this.b();
-      }
-
-      this.b = this.a.m.r.a(this);
-   }
-
-   public void a(exo $$0, int $$1) {
-      this.c.add(new gho.a($$0, $$1));
-      this.a.ax().a($$0);
-   }
-
-   public void a(exo $$0) {
-      this.c.removeIf($$1 -> $$1.a == $$0);
-      $$0.c();
-   }
-
-   public void d() {
-      this.c.removeIf(gho.a::a);
-      if (this.b != null) {
-         if (this.a.r != null) {
-            this.b.a();
-         } else {
-            this.b();
-         }
-      } else if (this.a.r != null) {
-         this.c();
-      }
-   }
-
-   public void a(ghq $$0) {
-      this.a.m.r = $$0;
-      this.a.m.as();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
-      }
-   }
-
-   public eti e() {
+   public String a() {
       return this.a;
    }
 
-   public boolean f() {
-      return this.a.q == null ? false : this.a.q.l() == csc.a;
+   public String b() {
+      return this.b;
    }
 
-   public static uv a(String $$0) {
-      return uv.d("key." + $$0).a(n.r);
-   }
-
-   public void a(clo $$0, clo $$1, cgz $$2) {
-      this.d.a($$0, $$1, $$2);
-   }
-
-   static final class a {
-      final exo a;
-      private final int b;
-      private int c;
-
-      a(exo $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private boolean a() {
-         this.a.a(Math.min((float)(++this.c) / (float)this.b, 1.0F));
-         if (this.c > this.b) {
-            this.a.c();
-            return true;
-         } else {
-            return false;
-         }
-      }
+   public void c() {
+      this.c = ac.b();
    }
 }

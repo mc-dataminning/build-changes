@@ -1,72 +1,24 @@
+import java.util.OptionalLong;
+
 public class pd {
-   @Deprecated
-   public static final eca.a a = new eca.a(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void a(oz<eca.a> $$0) {
-      a($$0, 0, dnf.a, dnf.b, dnf.c, dnf.d);
-      a($$0, -2, dnf.e, dnf.f, dnf.g, dnf.h);
-      a($$0, dnf.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dnf.j, a);
-      a($$0, dnf.k, -3, 1.0);
-      a($$0, dnf.l, -7, 1.0);
-      a($$0, dnf.m, -1, 1.0);
-      a($$0, dnf.n, -5, 1.0);
-      a($$0, dnf.o, -7, 1.0, 1.0);
-      a($$0, dnf.p, -8, 1.0);
-      a($$0, dnf.q, -8, 1.0);
-      a($$0, dnf.r, -7, 1.0);
-      a($$0, dnf.s, -8, 1.0);
-      a($$0, dnf.t, -11, 1.0);
-      a($$0, dnf.u, -11, 1.0);
-      a($$0, dnf.v, -7, 1.0);
-      a($$0, dnf.w, -7, 1.0);
-      a($$0, dnf.x, -11, 1.0);
-      a($$0, dnf.y, -8, 1.0);
-      a($$0, dnf.z, -5, 1.0);
-      a($$0, dnf.A, -8, 1.0);
-      a($$0, dnf.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dnf.C, -8, 1.0);
-      a($$0, dnf.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dnf.E, -8, 1.0);
-      a($$0, dnf.F, -7, 1.0);
-      a($$0, dnf.G, -7, 1.0);
-      a($$0, dnf.H, -5, 1.0);
-      a($$0, dnf.I, -8, 1.0);
-      a($$0, dnf.J, -8, 1.0);
-      a($$0, dnf.K, -7, 1.0);
-      a($$0, dnf.L, -7, 1.0);
-      a($$0, dnf.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dnf.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dnf.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dnf.P, -8, 1.0);
-      a($$0, dnf.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dnf.R, -8, 1.0);
-      a($$0, dnf.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dnf.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dnf.U, -3, 1.0);
-      a($$0, dnf.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dnf.W, -2, 1.0);
-      a($$0, dnf.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dnf.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dnf.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dnf.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dnf.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dnf.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dnf.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dnf.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dnf.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dnf.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dnf.ah, -4, 1.0);
-   }
-
-   private static void a(oz<eca.a> $$0, int $$1, agl<eca.a> $$2, agl<eca.a> $$3, agl<eca.a> $$4, agl<eca.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(oz<eca.a> $$0, agl<eca.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new eca.a($$2, $$3, $$4));
+   public static void a(pa<dly> $$0) {
+      $$0.a(
+         dlw.a,
+         new dly(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, arr.ba, dlw.e, 0.0F, new dly.a(false, true, biw.a(0, 7), 0))
+      );
+      $$0.a(
+         dlw.b,
+         new dly(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, arr.bb, dlw.f, 0.1F, new dly.a(true, false, bin.a(7), 15))
+      );
+      $$0.a(
+         dlw.c,
+         new dly(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, arr.bc, dlw.g, 0.0F, new dly.a(false, true, biw.a(0, 7), 0)
+         )
+      );
+      $$0.a(
+         dlw.d,
+         new dly(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, arr.ba, dlw.e, 0.0F, new dly.a(false, true, biw.a(0, 7), 0))
+      );
    }
 }

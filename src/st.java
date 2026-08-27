@@ -1,23 +1,5 @@
-public abstract class st implements ta {
-   protected st() {
-   }
-
-   public abstract long f();
-
-   public abstract int g();
-
-   public abstract short h();
-
-   public abstract byte i();
-
-   public abstract double j();
-
-   public abstract float k();
-
-   public abstract Number l();
-
-   @Override
-   public String toString() {
-      return this.t_();
+public class st extends su {
+   public st(String $$0) {
+      super($$0);
    }
 }

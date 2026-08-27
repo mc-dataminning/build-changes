@@ -1,46 +1,50 @@
+import com.google.common.collect.Maps;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
+import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
 import org.slf4j.Logger;
 
-public class epz extends epx {
-   private static final Logger j = LogUtils.getLogger();
-   public String a = "";
-   public String b = "";
-   public String c = "";
-   public String d = "";
-   public String e = "";
-   @Nullable
-   public String f;
-   public String g = "";
-   public String h = "";
-   public epz.a i = epz.a.a;
+public class epz extends eqz {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public Date b;
+   public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
 
-   public static epz a(JsonObject $$0) {
-      epz $$1 = new epz();
+   public static epz a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      epz $$2 = new epz();
 
       try {
-         $$1.a = eru.b("id", $$0, "");
-         $$1.b = eru.b("name", $$0, "");
-         $$1.c = eru.b("version", $$0, "");
-         $$1.d = eru.b("author", $$0, "");
-         $$1.e = eru.b("link", $$0, "");
-         $$1.f = eru.b("image", $$0, null);
-         $$1.g = eru.b("trailer", $$0, "");
-         $$1.h = eru.b("recommendedPlayers", $$0, "");
-         $$1.i = epz.a.valueOf(eru.b("type", $$0, epz.a.a.name()));
-      } catch (Exception var3) {
-         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
+         $$2.a = esw.b("backupId", $$1, "");
+         $$2.b = esw.b("lastModifiedDate", $$1);
+         $$2.c = esw.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
+            }
+         }
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
       }
 
-      return $$1;
+      return $$2;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public boolean a() {
+      return this.g;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 }

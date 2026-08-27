@@ -1,47 +1,52 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpu extends dqa<dsb> {
-   public dpu(Codec<dsb> $$0) {
-      super($$0);
+public class dpu extends dpw {
+   public static final Codec<dpu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dpw.d.forGetter($$0x -> $$0x), bio.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dpu.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, dpu::new)
+   );
+   public final bio b;
+   public final dpu.a c;
+
+   public dpu(float $$0, dwv $$1, bio $$2, dos $$3, dpx $$4, ij<cvz> $$5, bio $$6, dpu.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   @Override
-   public boolean a(dqc<dsb> $$0) {
-      dsb $$1 = $$0.f();
-      hx $$2 = $$0.e();
-      csz $$3 = $$0.b();
-      atw $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      hx.a $$10 = new hx.a();
-
-      for (hx $$11 : hx.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
+   public dpu(dpw $$0, bio $$1, dpu.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
    }
 
-   protected boolean a(dsb $$0, csz $$1, atw $$2, int $$3, int $$4, hx.a $$5) {
-      boolean $$6 = false;
+   public static class a {
+      public static final Codec<dpu.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bio.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  bio.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  atg.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  bio.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, dpu.a::new)
+      );
+      public final bio b;
+      public final bio c;
+      public final int d;
+      public final bio e;
+      public final float f;
+      public final float g;
 
-      for (int $$7 = $$3; $$7 > $$4; $$7--) {
-         $$5.q($$7);
-         if ($$0.b().test($$1, $$5)) {
-            dhn $$8 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$8, 2);
-            this.a($$1, $$5);
-            $$6 = true;
-         }
+      public a(bio $$0, bio $$1, int $$2, bio $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
       }
-
-      return $$6;
    }
 }

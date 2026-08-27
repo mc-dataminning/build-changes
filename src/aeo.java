@@ -1,29 +1,48 @@
-public enum aeo {
-   a,
-   b;
+public class aeo implements wu<acw> {
+   private static final int a = 384;
+   private final hv b;
+   private final String[] c;
+   private final boolean d;
 
-   private static final int c = 1;
-   private static final int d = 2;
-
-   public static aeo a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public aeo(hv $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-      };
+   public aeo(ue $$0) {
+      this.b = $$0.e();
+      this.d = $$0.readBoolean();
+      this.c = new String[4];
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.c[$$1] = $$0.d(384);
+      }
    }
 
-   public tx b() {
-      return switch (this) {
-         case a -> tx.c;
-         case b -> tx.d;
-      };
+   @Override
+   public void a(ue $$0) {
+      $$0.a(this.b);
+      $$0.a(this.d);
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         $$0.a(this.c[$$1]);
+      }
+   }
+
+   public void a(acw $$0) {
+      $$0.a(this);
+   }
+
+   public hv a() {
+      return this.b;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public String[] e() {
+      return this.c;
    }
 }

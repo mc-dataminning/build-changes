@@ -1,25 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Locale;
 
-public class efq extends efx {
-   public static final Codec<efq> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, efq::new));
+public interface efq {
+   int a();
 
-   private efq(int $$0, int $$1, List<eib> $$2, List<egp> $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
+   int b();
 
-   @Override
-   public efw a() {
-      return eft.b;
-   }
+   int c();
 
-   @Override
-   public void a(Consumer<clo> $$0, efc $$1) {
-   }
+   float d();
 
-   public static efx.a<?> b() {
-      return a(efq::new);
+   long e();
+
+   long f();
+
+   boolean i();
+
+   boolean k();
+
+   void b(boolean var1);
+
+   boolean n();
+
+   csu q();
+
+   bji s();
+
+   boolean t();
+
+   default void a(p $$0, cta $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a(), this.b(), this.c()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.e(), this.f()));
    }
 }

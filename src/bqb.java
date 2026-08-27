@@ -1,34 +1,42 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bqb {
-   public static bnd<bll> a(cvf $$0) {
-      return bqo.a(
-         (Function<bqo.b<bll>, ? extends App<bqo.c<bll>, bqr<bll>>>)($$1 -> $$1.group($$1.c(bum.o), $$1.b(bum.m), $$1.b(bum.X))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.aZ() && $$3x.aC()) {
-                        hx $$5 = $$3x.dn().d();
+   private static final int a = 200;
 
-                        for (ib $$6 : ib.c.a) {
-                           hx $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).k($$2x, $$7).a(ib.b).c() && $$2x.b_($$7).b(ecy.c)) {
-                              hx $$8 = $$7.c();
-                              if ($$2x.a_($$8).i()) {
-                                 dhn $$9 = $$0.o();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(dlx.i, $$8, dlx.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, aqv.jc, aqw.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
-                              }
-                           }
-                        }
+   public static <E extends blx> bnn<E> a(BiConsumer<E, blv> $$0) {
+      return a($$0x -> false, $$0, true);
+   }
 
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
+   public static <E extends blx> bnn<E> a(Predicate<blv> $$0) {
+      return a($$0, ($$0x, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends blx> bnn<E> a() {
+      return a($$0 -> false, ($$0, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends blx> bnn<E> a(Predicate<blv> $$0, BiConsumer<E, blv> $$1, boolean $$2) {
+      return bqz.a(
+         (Function<bqz.b<E>, ? extends App<bqz.c<E>, brc<E>>>)($$3 -> $$3.group($$3.b(bux.o), $$3.a(bux.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  blv $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bx() && $$9.dM() == $$7.dM() && !$$0.test($$9)) {
+                     return true;
+                  } else {
+                     $$1.accept((E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
       );
+   }
+
+   private static boolean a(blv $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dM().W() - $$1.get() > 200L;
    }
 }

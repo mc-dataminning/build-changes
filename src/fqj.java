@@ -1,125 +1,80 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fqj {
-   private static final fqj a = new fqj("") {
-      @Override
-      public void a(eti $$0) {
-      }
+public abstract class fqj extends fpw {
+   protected float D;
+   private final Quaternionf a = new Quaternionf();
 
-      @Override
-      public void a(fqj.c $$0, String $$1, String $$2) {
-      }
-   };
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   private final Path d;
-   @Nullable
-   private fqj.b e;
-
-   fqj(String $$0) {
-      this.d = eti.N().p.toPath().resolve($$0);
+   protected fqj(fmt $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
    }
 
-   public static fqj a(@Nullable String $$0) {
-      return $$0 == null ? a : new fqj($$0);
+   protected fqj(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
    }
 
-   public void a(fqj.c $$0, String $$1, String $$2) {
-      this.e = new fqj.b($$0, $$1, $$2);
+   public fqj.a p() {
+      return fqj.a.a;
    }
 
-   public void a(eti $$0) {
-      if ($$0.q != null && this.e != null) {
-         ac.g().execute(() -> {
-            try {
-               Files.deleteIfExists(this.d);
-            } catch (IOException var3) {
-               b.error("Failed to delete quickplay log file {}", this.d, var3);
-            }
-
-            fqj.a $$2 = new fqj.a(this.e, Instant.now(), $$0.q.l());
-            Codec.list(fqj.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
-               try {
-                  Files.createDirectories(this.d.getParent());
-                  Files.writeString(this.d, c.toJson($$0xx));
-               } catch (IOException var3x) {
-                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
-               }
-            });
-         });
-      } else {
-         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+   @Override
+   public void a(eph $$0, etv $$1, float $$2) {
+      elb $$3 = $$1.b();
+      float $$4 = (float)(aty.d((double)$$2, this.d, this.g) - $$3.a());
+      float $$5 = (float)(aty.d((double)$$2, this.e, this.h) - $$3.b());
+      float $$6 = (float)(aty.d((double)$$2, this.f, this.i) - $$3.c());
+      this.p().setRotation(this.a, $$1, $$2);
+      if (this.z != 0.0F) {
+         this.a.rotateZ(aty.i($$2, this.A, this.z));
       }
+
+      Vector3f[] $$7 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$8 = this.b($$2);
+
+      for (int $$9 = 0; $$9 < 4; $$9++) {
+         Vector3f $$10 = $$7[$$9];
+         $$10.rotate(this.a);
+         $$10.mul($$8);
+         $$10.add($$4, $$5, $$6);
+      }
+
+      float $$11 = this.c();
+      float $$12 = this.d();
+      float $$13 = this.e();
+      float $$14 = this.f();
+      int $$15 = this.a($$2);
+      $$0.a((double)$$7[0].x(), (double)$$7[0].y(), (double)$$7[0].z()).a($$12, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[1].x(), (double)$$7[1].y(), (double)$$7[1].z()).a($$12, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[2].x(), (double)$$7[2].y(), (double)$$7[2].z()).a($$11, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[3].x(), (double)$$7[3].y(), (double)$$7[3].z()).a($$11, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
    }
 
-   static record a(fqj.b b, Instant c, csc d) {
-      public static final Codec<fqj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fqj.b.a.forGetter(fqj.a::a), asy.m.fieldOf("lastPlayedTime").forGetter(fqj.a::b), csc.f.fieldOf("gamemode").forGetter(fqj.a::c))
-               .apply($$0, fqj.a::new)
-      );
-
-      public fqj.b a() {
-         return this.b;
-      }
-
-      public Instant b() {
-         return this.c;
-      }
-
-      public csc c() {
-         return this.d;
-      }
+   public float b(float $$0) {
+      return this.D;
    }
 
-   static record b(fqj.c b, String c, String d) {
-      public static final MapCodec<fqj.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  fqj.c.d.fieldOf("type").forGetter(fqj.b::a), asy.o.fieldOf("id").forGetter(fqj.b::b), Codec.STRING.fieldOf("name").forGetter(fqj.b::c)
-               )
-               .apply($$0, fqj.b::new)
-      );
-
-      public fqj.c a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.d;
-      }
+   @Override
+   public fpw d(float $$0) {
+      this.D *= $$0;
+      return super.d($$0);
    }
 
-   public static enum c implements auk {
-      a("singleplayer"),
-      b("multiplayer"),
-      c("realms");
+   protected abstract float c();
 
-      static final Codec<fqj.c> d = auk.a(fqj.c::values);
-      private final String e;
+   protected abstract float d();
 
-      private c(String $$0) {
-         this.e = $$0;
-      }
+   protected abstract float e();
 
-      @Override
-      public String c() {
-         return this.e;
-      }
+   protected abstract float f();
+
+   public interface a {
+      fqj.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
+      fqj.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
+
+      void setRotation(Quaternionf var1, etv var2, float var3);
    }
 }

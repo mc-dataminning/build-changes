@@ -1,59 +1,60 @@
 import javax.annotation.Nullable;
 
-public class bzr extends bzo {
-   @Nullable
-   private ejz b;
-   private int c;
+public class bzr extends bzh {
+   public bzr(blj<? extends bzr> $$0, csy $$1) {
+      super($$0, $$1);
+   }
 
-   public bzr(bzm $$0) {
-      super($$0);
+   public static bna.a u() {
+      return gE().a(bnb.l, 15.0).a(bnb.m, 0.2F);
+   }
+
+   public static boolean c(blj<? extends bxi> $$0, csz $$1, blz $$2, hv $$3, auf $$4) {
+      return !blz.a($$2) ? bxi.b($$0, $$1, $$2, $$3, $$4) : blz.b($$2) || a($$1, $$3);
    }
 
    @Override
-   public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.eh().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.eh().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.eh().i() - 0.5F) * 8.0F;
-         this.a.dN().a(jw.w, this.a.ds() + (double)$$0, this.a.du() + 2.0 + (double)$$1, this.a.dy() + (double)$$2, 0.0, 0.0, 0.0);
-      }
+   protected void a(auf $$0) {
+      this.a(bnb.h).a(a($$0::j));
    }
 
    @Override
-   public void c() {
-      this.c++;
-      if (this.b == null) {
-         hx $$0 = this.a.dN().a(dmw.a.e, dpz.a(this.a.u()));
-         this.b = ejz.c($$0);
-      }
-
-      double $$1 = this.b.c(this.a.ds(), this.a.du(), this.a.dy());
-      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.P && !this.a.Q) {
-         this.a.c(1.0F);
-      } else {
-         this.a.c(0.0F);
-      }
+   public bma eS() {
+      return bma.b;
    }
 
    @Override
-   public void d() {
-      this.b = null;
-      this.c = 0;
+   protected arb y() {
+      return arc.Cj;
    }
 
    @Override
-   public float f() {
-      return 3.0F;
+   protected arb n_() {
+      return arc.Ck;
+   }
+
+   @Override
+   protected arb d(bkd $$0) {
+      return arc.Cl;
    }
 
    @Nullable
    @Override
-   public ejz g() {
-      return this.b;
+   public bla a(amp $$0, bla $$1) {
+      return blj.bs.a((csy)$$0);
    }
 
    @Override
-   public cac<bzr> i() {
-      return cac.j;
+   public bjl b(cer $$0, bjk $$1) {
+      return !this.gt() ? bjl.d : super.b($$0, $$1);
+   }
+
+   @Override
+   protected void gu() {
+   }
+
+   @Override
+   protected float a(blg $$0, float $$1) {
+      return $$0.b - (this.o_() ? 0.03125F : 0.28125F) * $$1;
    }
 }

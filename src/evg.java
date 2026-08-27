@@ -1,135 +1,544 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
-
-public class evg extends euw {
-   private static final agm a = new agm("widget/checkbox_selected_highlighted");
-   private static final agm b = new agm("widget/checkbox_selected");
-   private static final agm c = new agm("widget/checkbox_highlighted");
-   private static final agm d = new agm("widget/checkbox");
-   private static final int l = 14737632;
-   private static final int m = 4;
-   private static final int n = 8;
-   private boolean o;
-   private final evg.b p;
-
-   evg(int $$0, int $$1, uv $$2, eur $$3, boolean $$4, evg.b $$5) {
-      super($$0, $$1, a($$3) + 4 + $$3.a($$2), a($$3), $$2);
-      this.o = $$4;
-      this.p = $$5;
-   }
-
-   public static evg.a a(uv $$0, eur $$1) {
-      return new evg.a($$0, $$1);
-   }
-
-   private static int a(eur $$0) {
-      return 9 + 8;
-   }
-
-   @Override
-   public void b() {
-      this.o = !this.o;
-      this.p.onValueChange(this, this.o);
-   }
-
-   public boolean a() {
-      return this.o;
-   }
-
-   @Override
-   public void a(eyx $$0) {
-      $$0.a(eyw.a, this.aN_());
-      if (this.i) {
-         if (this.aK_()) {
-            $$0.a(eyw.d, uv.c("narration.checkbox.usage.focused"));
-         } else {
-            $$0.a(eyw.d, uv.c("narration.checkbox.usage.hovered"));
-         }
-      }
-   }
-
-   @Override
-   public void b(eut $$0, int $$1, int $$2, float $$3) {
-      eti $$4 = eti.N();
-      RenderSystem.enableDepthTest();
-      eur $$5 = $$4.h;
-      $$0.a(1.0F, 1.0F, 1.0F, this.k);
-      RenderSystem.enableBlend();
-      agm $$6;
-      if (this.o) {
-         $$6 = this.aK_() ? a : b;
-      } else {
-         $$6 = this.aK_() ? c : d;
-      }
-
-      int $$8 = a($$5);
-      int $$9 = this.p() + $$8 + 4;
-      int $$10 = this.r() + (this.g >> 1) - (9 >> 1);
-      $$0.a($$6, this.p(), this.r(), $$8, $$8);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      $$0.b($$5, this.l(), $$9, $$10, 14737632 | atq.f(this.k * 255.0F) << 24);
-   }
-
-   public static class a {
-      private final uv a;
-      private final eur b;
-      private int c = 0;
-      private int d = 0;
-      private evg.b e = evg.b.a;
-      private boolean f = false;
-      @Nullable
-      private etl<Boolean> g = null;
-      @Nullable
-      private ewp h = null;
-
-      a(uv $$0, eur $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public evg.a a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         return this;
-      }
-
-      public evg.a a(evg.b $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public evg.a a(boolean $$0) {
-         this.f = $$0;
-         this.g = null;
-         return this;
-      }
-
-      public evg.a a(etl<Boolean> $$0) {
-         this.g = $$0;
-         this.f = $$0.c();
-         return this;
-      }
-
-      public evg.a a(ewp $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public evg a() {
-         evg.b $$0 = this.g == null ? this.e : ($$0x, $$1x) -> {
-            this.g.a($$1x);
-            this.e.onValueChange($$0x, $$1x);
-         };
-         evg $$1 = new evg(this.c, this.d, this.a, this.b, this.f, $$0);
-         $$1.a(this.h);
-         return $$1;
-      }
-   }
-
-   public interface b {
-      evg.b a = ($$0, $$1) -> {
-      };
-
-      void onValueChange(evg var1, boolean var2);
-   }
+public class evg {
+   public static final evb a = evb.a.a(1.5F)
+      .a()
+      .a(
+         "root",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 2.5F), eva.b.b),
+            new evc(1.0F, evd.b(0.0F, 0.0F, -2.5F), eva.b.b),
+            new evc(1.5F, evd.b(0.0F, 0.0F, 2.5F), eva.b.b)
+         )
+      )
+      .a(
+         "head",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(2.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.375F, evd.b(-2.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.75F, evd.b(2.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.125F, evd.b(-2.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.5F, evd.b(2.5F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(22.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.75F, evd.b(-22.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.5F, evd.b(22.5F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.4583F, evd.a(0.0F, 4.0F, 0.0F), eva.b.b),
+            new evc(0.75F, evd.a(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.5F, evd.a(0.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(-22.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.75F, evd.b(22.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.5F, evd.b(-22.5F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.75F, evd.a(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.2083F, evd.a(0.0F, 4.0F, 0.0F), eva.b.b),
+            new evc(1.5F, evd.a(0.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(-20.4F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.75F, evd.b(22.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.375F, evd.b(-22.5F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.5F, evd.b(-20.4F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, -0.21F, 0.0F), eva.b.b),
+            new evc(0.75F, evd.a(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.0833F, evd.a(0.0F, 4.0F, 0.0F), eva.b.b),
+            new evc(1.375F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.5F, evd.a(0.0F, -0.21F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(22.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.625F, evd.b(-22.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.5F, evd.b(22.5F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.375F, evd.a(0.0F, 4.0F, 0.0F), eva.b.b),
+            new evc(0.625F, evd.a(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.5F, evd.a(0.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.375F, evd.b(0.0F, 0.0F, -22.5F), eva.b.b),
+            new evc(0.75F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.125F, evd.b(0.0F, 0.0F, -22.5F), eva.b.b),
+            new evc(1.5F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.375F, evd.b(0.0F, 0.0F, 22.5F), eva.b.b),
+            new evc(0.75F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.125F, evd.b(0.0F, 0.0F, 22.5F), eva.b.b),
+            new evc(1.5F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "tail",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(15.94102F, -8.42106F, 20.94102F), eva.b.b),
+            new evc(0.75F, evd.b(15.94102F, 8.42106F, -20.94102F), eva.b.b),
+            new evc(1.5F, evd.b(15.94102F, -8.42106F, 20.94102F), eva.b.b)
+         )
+      )
+      .b();
+   public static final evb b = evb.a.a(2.0F)
+      .a(
+         "body",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.3F, evd.b(30.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.8F, evd.b(24.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "body",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.3F, evd.a(0.0F, 0.0F, 1.0F), eva.b.a),
+            new evc(1.8F, evd.a(0.0F, -6.0F, 1.0F), eva.b.a),
+            new evc(2.0F, evd.a(0.0F, -19.9F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.0F, evd.b(-30.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.5F, evd.b(-30.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.0F, evd.b(-90.0F, 10.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.0F, evd.a(0.0F, -2.0F, 11.0F), eva.b.a),
+            new evc(1.5F, evd.a(0.0F, -2.0F, 11.0F), eva.b.a),
+            new evc(1.7F, evd.a(0.0F, -8.4F, 11.4F), eva.b.a),
+            new evc(2.0F, evd.a(0.0F, -20.6F, 12.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.0F, evd.b(-30.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.5F, evd.b(-30.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.0F, evd.b(-90.0F, -10.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.0F, evd.a(0.0F, -2.0F, 11.0F), eva.b.a),
+            new evc(1.5F, evd.a(0.0F, -2.0F, 11.0F), eva.b.a),
+            new evc(1.7F, evd.a(0.0F, -8.4F, 11.4F), eva.b.a),
+            new evc(2.0F, evd.a(0.0F, -20.6F, 12.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.5F, evd.b(-10.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.7F, evd.b(-15.0F, -3.0F, 0.0F), eva.b.a),
+            new evc(1.9F, evd.b(-65.0F, -9.0F, 0.0F), eva.b.a),
+            new evc(2.0F, evd.b(-90.0F, -15.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.5F, evd.a(0.0F, 0.0F, 1.0F), eva.b.a),
+            new evc(1.7F, evd.a(1.0F, -0.62F, 0.25F), eva.b.a),
+            new evc(1.9F, evd.a(0.5F, -11.25F, 2.5F), eva.b.a),
+            new evc(2.0F, evd.a(1.0F, -20.5F, 5.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.5F, evd.b(-10.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.7F, evd.b(-15.0F, 3.0F, 0.0F), eva.b.a),
+            new evc(1.9F, evd.b(-65.0F, 9.0F, 0.0F), eva.b.a),
+            new evc(2.0F, evd.b(-90.0F, 15.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.5F, evd.a(0.0F, 0.0F, 1.0F), eva.b.a),
+            new evc(1.7F, evd.a(-1.0F, -0.62F, 0.25F), eva.b.a),
+            new evc(1.9F, evd.a(-0.5F, -11.25F, 2.5F), eva.b.a),
+            new evc(2.0F, evd.a(-1.0F, -20.5F, 5.0F), eva.b.a)
+         )
+      )
+      .a(
+         "head",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.7F, evd.b(-27.5F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.5F, evd.b(-21.25F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "tail",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(5.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.7F, evd.b(5.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.9F, evd.b(80.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.0F, evd.b(50.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .b();
+   public static final evb c = evb.a.a(1.0F)
+      .a("body", new eva(eva.d.b, new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a), new evc(1.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)))
+      .a("body", new eva(eva.d.a, new evc(0.0F, evd.a(0.0F, -19.9F, 0.0F), eva.b.a), new evc(1.0F, evd.a(0.0F, -19.9F, 0.0F), eva.b.a)))
+      .a("right_front_leg", new eva(eva.d.b, new evc(0.0F, evd.b(-90.0F, 10.0F, 0.0F), eva.b.a), new evc(1.0F, evd.b(-90.0F, 10.0F, 0.0F), eva.b.a)))
+      .a("right_front_leg", new eva(eva.d.a, new evc(0.0F, evd.a(0.0F, -20.6F, 12.0F), eva.b.a), new evc(1.0F, evd.a(0.0F, -20.6F, 12.0F), eva.b.a)))
+      .a("left_front_leg", new eva(eva.d.b, new evc(0.0F, evd.b(-90.0F, -10.0F, 0.0F), eva.b.a), new evc(1.0F, evd.b(-90.0F, -10.0F, 0.0F), eva.b.a)))
+      .a("left_front_leg", new eva(eva.d.a, new evc(0.0F, evd.a(0.0F, -20.6F, 12.0F), eva.b.a), new evc(1.0F, evd.a(0.0F, -20.6F, 12.0F), eva.b.a)))
+      .a("left_hind_leg", new eva(eva.d.b, new evc(0.0F, evd.b(-90.0F, -15.0F, 0.0F), eva.b.a), new evc(1.0F, evd.b(-90.0F, -15.0F, 0.0F), eva.b.a)))
+      .a("left_hind_leg", new eva(eva.d.a, new evc(0.0F, evd.a(1.0F, -20.5F, 5.0F), eva.b.a), new evc(1.0F, evd.a(1.0F, -20.5F, 5.0F), eva.b.a)))
+      .a("right_hind_leg", new eva(eva.d.b, new evc(0.0F, evd.b(-90.0F, 15.0F, 0.0F), eva.b.a), new evc(1.0F, evd.b(-90.0F, 15.0F, 0.0F), eva.b.a)))
+      .a("right_hind_leg", new eva(eva.d.a, new evc(0.0F, evd.a(-1.0F, -20.5F, 5.0F), eva.b.a), new evc(1.0F, evd.a(-1.0F, -20.5F, 5.0F), eva.b.a)))
+      .a("head", new eva(eva.d.b, new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a), new evc(1.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)))
+      .a("tail", new eva(eva.d.b, new evc(0.0F, evd.b(50.0F, 0.0F, 0.0F), eva.b.a), new evc(1.0F, evd.b(50.0F, 0.0F, 0.0F), eva.b.a)))
+      .b();
+   public static final evb d = evb.a.a(2.6F)
+      .a(
+         "body",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.7F, evd.b(-17.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.8F, evd.b(-17.83F, 0.0F, 0.0F), eva.b.b),
+            new evc(2.3F, evd.b(-5.83F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.6F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "body",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, -19.9F, 0.0F), eva.b.a),
+            new evc(0.7F, evd.a(0.0F, -19.9F, -3.0F), eva.b.a),
+            new evc(1.4F, evd.a(0.0F, -12.76F, -4.0F), eva.b.b),
+            new evc(1.8F, evd.a(0.0F, -10.1F, -4.0F), eva.b.b),
+            new evc(2.3F, evd.a(0.0F, -2.9F, -2.0F), eva.b.a),
+            new evc(2.6F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(-90.0F, 10.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(-90.0F, 10.0F, 0.0F), eva.b.a),
+            new evc(1.1F, evd.b(-49.06F, 10.0F, 0.0F), eva.b.a),
+            new evc(1.8F, evd.b(-22.5F, 10.0F, 0.0F), eva.b.a),
+            new evc(2.3F, evd.b(-25.0F, 10.0F, 0.0F), eva.b.a),
+            new evc(2.6F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, -20.6F, 12.0F), eva.b.a),
+            new evc(0.5F, evd.a(0.0F, -20.6F, 8.0F), eva.b.a),
+            new evc(1.1F, evd.a(0.0F, -7.14F, 4.42F), eva.b.a),
+            new evc(1.8F, evd.a(0.0F, -1.27F, -1.33F), eva.b.a),
+            new evc(2.3F, evd.a(0.0F, -1.27F, -0.33F), eva.b.a),
+            new evc(2.6F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(-90.0F, -10.0F, 0.0F), eva.b.a),
+            new evc(0.5F, evd.b(-90.0F, -10.0F, 0.0F), eva.b.a),
+            new evc(1.1F, evd.b(-49.06F, -10.0F, 0.0F), eva.b.a),
+            new evc(1.8F, evd.b(-22.5F, -10.0F, 0.0F), eva.b.a),
+            new evc(2.3F, evd.b(-25.0F, -10.0F, 0.0F), eva.b.a),
+            new evc(2.6F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(0.0F, -20.6F, 12.0F), eva.b.a),
+            new evc(0.5F, evd.a(0.0F, -20.6F, 8.0F), eva.b.a),
+            new evc(1.1F, evd.a(0.0F, -7.14F, 4.42F), eva.b.a),
+            new evc(1.8F, evd.a(0.0F, -1.27F, -1.33F), eva.b.a),
+            new evc(2.3F, evd.a(0.0F, -1.27F, -0.33F), eva.b.a),
+            new evc(2.6F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(-90.0F, -15.0F, 0.0F), eva.b.a),
+            new evc(0.3F, evd.b(-90.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.6F, evd.b(-90.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.1F, evd.b(-60.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.9F, evd.b(35.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.2F, evd.b(30.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.6F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(1.0F, -20.5F, 5.0F), eva.b.a),
+            new evc(0.3F, evd.a(-2.0F, -20.5F, 3.0F), eva.b.a),
+            new evc(0.6F, evd.a(-2.0F, -20.5F, 3.0F), eva.b.a),
+            new evc(1.1F, evd.a(-2.0F, -10.5F, 2.0F), eva.b.a),
+            new evc(1.5F, evd.a(-2.0F, -0.4F, -3.9F), eva.b.a),
+            new evc(1.9F, evd.a(-2.0F, -4.3F, -9.8F), eva.b.a),
+            new evc(2.2F, evd.a(-1.0F, -2.5F, -5.0F), eva.b.a),
+            new evc(2.6F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(-90.0F, 15.0F, 0.0F), eva.b.a),
+            new evc(0.3F, evd.b(-90.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.6F, evd.b(-90.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.1F, evd.b(-60.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.9F, evd.b(35.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.2F, evd.b(30.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.6F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new eva(
+            eva.d.a,
+            new evc(0.0F, evd.a(-1.0F, -20.5F, 5.0F), eva.b.a),
+            new evc(0.3F, evd.a(2.0F, -20.5F, 3.0F), eva.b.a),
+            new evc(0.6F, evd.a(2.0F, -20.5F, 3.0F), eva.b.a),
+            new evc(1.1F, evd.a(2.0F, -10.5F, 2.0F), eva.b.a),
+            new evc(1.5F, evd.a(2.0F, -0.4F, -3.9F), eva.b.a),
+            new evc(1.9F, evd.a(2.0F, -4.3F, -9.8F), eva.b.a),
+            new evc(2.2F, evd.a(1.0F, -2.5F, -5.0F), eva.b.a),
+            new evc(2.6F, evd.a(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "head",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.3F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.8F, evd.b(55.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.0F, evd.b(65.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.4F, evd.b(0.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .a(
+         "tail",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(50.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.4F, evd.b(55.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(0.9F, evd.b(55.0F, 0.0F, 0.0F), eva.b.a),
+            new evc(1.5F, evd.b(17.5F, 0.0F, 0.0F), eva.b.a),
+            new evc(2.6F, evd.b(5.0F, 0.0F, 0.0F), eva.b.a)
+         )
+      )
+      .b();
+   public static final evb e = evb.a.a(0.5F)
+      .a()
+      .a("body", new eva(eva.d.b, new evc(0.0F, evd.b(5.0F, 0.0F, 0.0F), eva.b.a), new evc(0.5F, evd.b(5.0F, 0.0F, 0.0F), eva.b.a)))
+      .a(
+         "tail",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(67.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.125F, evd.b(112.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.25F, evd.b(67.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.375F, evd.b(112.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.5F, evd.b(67.5F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "head",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(10.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.125F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.25F, evd.b(10.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.375F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.5F, evd.b(10.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(44.97272F, 1.76749F, -1.76833F), eva.b.b),
+            new evc(0.125F, evd.b(-90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.25F, evd.b(44.97272F, 1.76749F, -1.76833F), eva.b.b),
+            new evc(0.375F, evd.b(-90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.5F, evd.b(44.97272F, 1.76749F, -1.76833F), eva.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(-90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.125F, evd.b(44.97272F, -1.76749F, 1.76833F), eva.b.b),
+            new evc(0.25F, evd.b(-90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.375F, evd.b(44.97272F, -1.76749F, 1.76833F), eva.b.b),
+            new evc(0.5F, evd.b(-90.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.125F, evd.b(-45.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.25F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.375F, evd.b(-45.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.5F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(-45.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.125F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.25F, evd.b(-45.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.375F, evd.b(90.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(0.5F, evd.b(-45.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a("left_ear", new eva(eva.d.b, new evc(0.0F, evd.b(0.0F, -67.5F, 0.0F), eva.b.a), new evc(0.5F, evd.b(0.0F, -67.5F, 0.0F), eva.b.a)))
+      .a("right_ear", new eva(eva.d.b, new evc(0.0F, evd.b(0.0F, 67.5F, 0.0F), eva.b.a), new evc(0.5F, evd.b(0.0F, 67.5F, 0.0F), eva.b.a)))
+      .b();
+   public static final evb f = evb.a.a(4.0F)
+      .a(
+         "tail",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(5.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(1.0F, evd.b(4.98107F, 0.43523F, -4.98107F), eva.b.b),
+            new evc(3.0F, evd.b(4.9872F, -0.29424F, 3.36745F), eva.b.b),
+            new evc(4.0F, evd.b(5.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "head",
+         new eva(
+            eva.d.b,
+            new evc(0.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b),
+            new evc(2.0F, evd.b(-2.5F, 0.0F, 0.0F), eva.b.b),
+            new evc(4.0F, evd.b(0.0F, 0.0F, 0.0F), eva.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new eva(
+            eva.d.b,
+            new evc(2.5F, evd.b(0.0F, 0.0F, -45.0F), eva.b.b),
+            new evc(2.625F, evd.b(0.0F, 0.0F, 22.5F), eva.b.b),
+            new evc(2.75F, evd.b(0.0F, 0.0F, -45.0F), eva.b.b),
+            new evc(2.875F, evd.b(0.0F, 0.0F, 22.5F), eva.b.b),
+            new evc(3.0F, evd.b(0.0F, 0.0F, -45.0F), eva.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new eva(
+            eva.d.b,
+            new evc(2.5F, evd.b(0.0F, 0.0F, 45.0F), eva.b.b),
+            new evc(2.625F, evd.b(0.0F, 0.0F, -22.5F), eva.b.b),
+            new evc(2.75F, evd.b(0.0F, 0.0F, 45.0F), eva.b.b),
+            new evc(2.875F, evd.b(0.0F, 0.0F, -22.5F), eva.b.b),
+            new evc(3.0F, evd.b(0.0F, 0.0F, 45.0F), eva.b.b)
+         )
+      )
+      .b();
 }

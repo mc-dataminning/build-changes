@@ -1,17 +1,21 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public record yd(Set<agm> a) implements wo<ya> {
-   public yd(ty $$0) {
-      this($$0.a(HashSet::new, ty::t));
+public record yd(Set<ix> b, Set<ix> c) implements xo {
+   public static final agt a = new agt("debug/village_sections");
+
+   public yd(ue $$0) {
+      this($$0.a(HashSet::new, ue::g), $$0.a(HashSet::new, ue::g));
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.a, ty::a);
+   public void a(ue $$0) {
+      $$0.a(this.b, ue::a);
+      $$0.a(this.c, ue::a);
    }
 
-   public void a(ya $$0) {
-      $$0.a(this);
+   @Override
+   public agt a() {
+      return a;
    }
 }

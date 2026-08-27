@@ -1,37 +1,30 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bub extends bsr {
+   private final bme a;
 
-public class bub<T extends bll> extends btz<T> {
-   private static final int i = 200;
-   private int j = 0;
-
-   public bub(cfh $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bll> $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
-   }
-
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
+   public bub(bme $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      if (this.j > 0 || !this.e.eh().h()) {
-         return false;
-      } else if (!((cfh)this.e).gu()) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
+      return this.a.aC() && !this.a.dM().b_(this.a.dm()).a(arw.a);
    }
 
    @Override
    public void c() {
-      this.j = b(200);
-      super.c();
+      hv $$0 = null;
+
+      for (hv $$2 : hv.b(
+         aty.a(this.a.dr() - 2.0), aty.a(this.a.dt() - 2.0), aty.a(this.a.dx() - 2.0), aty.a(this.a.dr() + 2.0), this.a.ds(), aty.a(this.a.dx() + 2.0)
+      )) {
+         if (this.a.dM().b_($$2).a(arw.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.K().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

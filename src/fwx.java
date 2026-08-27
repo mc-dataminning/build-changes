@@ -1,23 +1,17 @@
-public class fwx extends fxi<bxi, fij<bxi>> {
-   private static final agm a = new agm("textures/entity/iron_golem/iron_golem.png");
+public class fwx extends fzu<cbk> {
+   private static final agt a = new agt("textures/entity/spider/cave_spider.png");
+   private static final float i = 0.7F;
 
-   public fwx(fwc.a $$0) {
-      super($$0, new fij<>($$0.a(fks.ap)), 0.7F);
-      this.a(new gab(this));
-      this.a(new gac(this, $$0.c()));
+   public fwx(fxo.a $$0) {
+      super($$0, flx.t);
+      this.d *= 0.7F;
    }
 
-   public agm a(bxi $$0) {
+   protected void a(cbk $$0, epd $$1, float $$2) {
+      $$1.b(0.7F, 0.7F, 0.7F);
+   }
+
+   public agt a(cbk $$0) {
       return a;
-   }
-
-   protected void a(bxi $$0, eob $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if (!((double)$$0.aQ.a() < 0.01)) {
-         float $$5 = 13.0F;
-         float $$6 = $$0.aQ.c($$4) + 6.0F;
-         float $$7 = (Math.abs($$6 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$7));
-      }
    }
 }

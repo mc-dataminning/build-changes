@@ -1,57 +1,96 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public enum dab implements auk {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class dab extends cvl {
+   public static final MapCodec<dab> a = b(dab::new);
+   public static final djg b = djf.n;
 
-   public static final Codec<dab> d = auk.a(dab::values);
-   private final String e;
-   private final uv f;
-   private final h g;
-
-   private dab(String $$0, h $$1) {
-      this.e = $$0;
-      this.f = uv.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<dab> a() {
+      return a;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case c:
-            return ($$1 - $$3) % $$1;
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dbr a(ib $$0) {
-      ib.a $$1 = $$0.o();
-      return (this != b || $$1 != ib.a.c) && (this != c || $$1 != ib.a.a) ? dbr.a : dbr.c;
-   }
-
-   public ib b(ib $$0) {
-      if (this == c && $$0.o() == ib.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == ib.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public uv b() {
-      return this.f;
+   protected dab(dio.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public void a(csy $$0, hv $$1, dip $$2, @Nullable blv $$3, cmh $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      sj $$5 = cka.a($$4);
+      if ($$5 != null && $$5.e("RecordItem")) {
+         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+      }
+   }
+
+   @Override
+   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dhe $$6) {
+         $$6.k();
+         return bjl.a($$1.B);
+      } else {
+         return bjl.d;
+      }
+   }
+
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dhe $$5) {
+            $$5.k();
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public dgd a(hv $$0, dip $$1) {
+      return new dhe($$0, $$1);
+   }
+
+   @Override
+   public boolean f_(dip $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dip $$0, cse $$1, hv $$2, ia $$3) {
+      if ($$1.c_($$2) instanceof dhe $$4 && $$4.f()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   public boolean d_(dip $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dip $$0, csy $$1, hv $$2) {
+      if ($$1.c_($$2) instanceof dhe $$3 && $$3.x().d() instanceof cmz $$4) {
+         return $$4.h();
+      }
+
+      return 0;
+   }
+
+   @Override
+   public dce b_(dip $$0) {
+      return dce.c;
+   }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dgd> dge<T> a(csy $$0, dip $$1, dgf<T> $$2) {
+      return $$1.c(b) ? a($$2, dgf.e, dhe::a) : null;
    }
 }

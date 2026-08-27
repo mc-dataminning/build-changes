@@ -1,126 +1,116 @@
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.function.Function;
+import java.util.Set;
 
 public class akr {
-   public static void a(CommandDispatcher<du> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("commands.tag.remove.failed"));
+
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("title").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("tag").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a(
-                                    "targets", eg.d()
-                                 )
-                                 .then(dv.a("clear").executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets")))))
-                              .then(dv.a("reset").executes($$0x -> b((du)$$0x.getSource(), eg.f($$0x, "targets")))))
-                           .then(
-                              dv.a("title")
-                                 .then(
-                                    dv.a("title", ec.a())
-                                       .executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), ec.a($$0x, "title"), "title", abv::new))
-                                 )
-                           ))
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("targets", ee.b())
                         .then(
-                           dv.a("subtitle")
+                           dt.a("add")
                               .then(
-                                 dv.a("title", ec.a())
-                                    .executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), ec.a($$0x, "title"), "subtitle", abt::new))
+                                 dt.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((ds)$$0x.getSource(), ee.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
                               )
                         ))
                      .then(
-                        dv.a("actionbar")
+                        dt.a("remove")
                            .then(
-                              dv.a("title", ec.a())
-                                 .executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), ec.a($$0x, "title"), "actionbar", aaw::new))
+                              dt.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> dw.b(a(ee.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((ds)$$0x.getSource(), ee.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
                            )
                      ))
-                  .then(
-                     dv.a("times")
-                        .then(
-                           dv.a("fadeIn", ff.a())
-                              .then(
-                                 dv.a("stay", ff.a())
-                                    .then(
-                                       dv.a("fadeOut", ff.a())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (du)$$0x.getSource(),
-                                                   eg.f($$0x, "targets"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
-                                                   IntegerArgumentType.getInteger($$0x, "stay"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
+                  .then(dt.a("list").executes($$0x -> a((ds)$$0x.getSource(), ee.b($$0x, "targets"))))
             )
       );
    }
 
-   private static int a(du $$0, Collection<amj> $$1) {
-      yx $$2 = new yx(false);
+   private static Collection<String> a(Collection<? extends blf> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
 
-      for (amj $$3 : $$1) {
-         $$3.c.b($$2);
+      for (blf $$2 : $$0) {
+         $$1.addAll($$2.ak());
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> uv.a("commands.title.cleared.single", $$1.iterator().next().Q_()), true);
-      } else {
-         $$0.a(() -> uv.a("commands.title.cleared.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+      return $$1;
    }
 
-   private static int b(du $$0, Collection<amj> $$1) {
-      yx $$2 = new yx(true);
+   private static int a(ds $$0, Collection<? extends blf> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-      for (amj $$3 : $$1) {
-         $$3.c.b($$2);
+      for (blf $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
+         }
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> uv.a("commands.title.reset.single", $$1.iterator().next().Q_()), true);
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         $$0.a(() -> uv.a("commands.title.reset.multiple", $$1.size()), true);
-      }
+         if ($$1.size() == 1) {
+            $$0.a(() -> vb.a("commands.tag.add.success.single", $$2, $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> vb.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+         }
 
-      return $$1.size();
+         return $$3;
+      }
    }
 
-   private static int a(du $$0, Collection<amj> $$1, uv $$2, String $$3, Function<uv, wo<?>> $$4) throws CommandSyntaxException {
-      for (amj $$5 : $$1) {
-         $$5.c.b($$4.apply(uy.a($$0, $$2, $$5, 0)));
+   private static int b(ds $$0, Collection<? extends blf> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (blf $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
+         }
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> uv.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().Q_()), true);
+      if ($$3 == 0) {
+         throw b.create();
       } else {
-         $$0.a(() -> uv.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
-      }
+         if ($$1.size() == 1) {
+            $$0.a(() -> vb.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> vb.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
 
-      return $$1.size();
+         return $$3;
+      }
    }
 
-   private static int a(du $$0, Collection<amj> $$1, int $$2, int $$3, int $$4) {
-      abw $$5 = new abw($$2, $$3, $$4);
+   private static int a(ds $$0, Collection<? extends blf> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
 
-      for (amj $$6 : $$1) {
-         $$6.c.b($$5);
+      for (blf $$3 : $$1) {
+         $$2.addAll($$3.ak());
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> uv.a("commands.title.times.single", $$1.iterator().next().Q_()), true);
+         blf $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> vb.a("commands.tag.list.single.empty", $$4.Q_()), false);
+         } else {
+            $$0.a(() -> vb.a("commands.tag.list.single.success", $$4.Q_(), $$2.size(), ve.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> vb.a("commands.tag.list.multiple.empty", $$1.size()), false);
       } else {
-         $$0.a(() -> uv.a("commands.title.times.multiple", $$1.size()), true);
+         $$0.a(() -> vb.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), ve.a($$2)), false);
       }
 
-      return $$1.size();
+      return $$2.size();
    }
 }

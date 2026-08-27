@@ -1,66 +1,32 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class flm extends fjh<cfw> {
+   private final fly a;
 
-public class flm extends fll implements uk, ya {
-   private static final Logger g = LogUtils.getLogger();
-   private final GameProfile h;
-   private it.b i;
-   private cgi j;
+   public flm(fly $$0) {
+      super(fsq::i);
+      this.a = $$0.b("bone");
+   }
 
-   public flm(eti $$0, tw $$1, fls $$2) {
-      super($$0, $$1, $$2);
-      this.h = $$2.a();
-      this.i = $$2.c();
-      this.j = $$2.d();
+   public static fme b() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      fmh $$2 = $$1.a("bone", fmd.c(), fma.a(0.0F, 0.0F, 0.0F));
+      fmh $$3 = $$2.a("projectile", fmd.c(), fma.a(0.0F, 0.0F, 0.0F));
+      fmh $$4 = $$3.a(
+         "wind",
+         fmd.c().a(20, 112).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fmc(0.0F)).a(0, 8).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fmc(0.0F)),
+         fma.a(0.0F, 0.0F, 0.0F)
+      );
+      $$4.a("cube_r1", fmd.c().a(32, 24).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fmc(-0.6F)), fma.a(0.0F, 0.0F, 0.0F, -1.5708F, 0.0F, 1.5708F));
+      $$4.a("cube_r2", fmd.c().a(16, 40).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fmc(-0.3F)), fma.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.5708F));
+      $$3.a("wind_charge", fmd.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new fmc(0.0F)), fma.a(0.0F, 0.0F, 0.0F));
+      return fme.a($$0, 64, 64);
+   }
+
+   public void a(cfw $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
    }
 
    @Override
-   public boolean c() {
-      return this.b.k();
-   }
-
-   @Override
-   protected it.b f() {
-      return this.i;
-   }
-
-   @Override
-   protected void a(xh $$0) {
-      this.b($$0);
-   }
-
-   private void b(xh $$0) {
-      g.warn("Unknown custom packet payload: {}", $$0.a());
-   }
-
-   @Override
-   public void a(yc $$0) {
-      wq.a($$0, this, this.a);
-      it.b $$1 = flq.a().a(flq.b, $$0.a()).a();
-      if (!this.b.g()) {
-         $$1.b().forEach($$0x -> $$0x.b().m());
-      }
-
-      this.i = $$1;
-   }
-
-   @Override
-   public void a(yd $$0) {
-      this.j = cgk.e.a($$0.a());
-   }
-
-   @Override
-   public void a(yb $$0) {
-      this.b.a();
-      wq.a($$0, this, this.a);
-      this.b.a(new flp(this.a, this.b, new fls(this.h, this.e, this.i, this.j, this.d, this.c, this.f)));
-      this.b.b();
-      this.b.a(new yf());
-   }
-
-   @Override
-   public void e() {
-      this.g();
+   public fly a() {
+      return this.a;
    }
 }

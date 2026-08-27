@@ -1,67 +1,53 @@
-public class fpn extends fpo {
-   private final hx a;
-   private final float b;
-   private final float F;
-
-   public fpn(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dhn $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, hx.a($$1, $$2, $$3));
+public class fpn extends fqw {
+   fpn(fmt $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
-   public fpn(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dhn $$7, hx $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(eti.N().am().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(cvh.i)) {
-         int $$9 = eti.N().at().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
+   @Override
+   public fqa b() {
+      return fqa.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * aty.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements fpz<jy> {
+      private final fqr a;
+
+      public a(fqr $$0) {
+         this.a = $$0;
       }
 
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpn $$8 = new fpn($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
    }
 
-   @Override
-   public fos b() {
-      return fos.a;
-   }
+   public static class b implements fpz<jy> {
+      private final fqr a;
 
-   @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
-   }
+      public b(fqr $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.A(this.a) ? fqx.a(this.c, this.a) : $$1;
-   }
-
-   public static class a implements foq<jo> {
-      public fon a(jo $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dhn $$8 = $$0.c();
-         return !$$8.i() && !$$8.a(cvh.bQ) && $$8.z() ? new fpn($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpn $$8 = new fpn($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

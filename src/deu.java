@@ -1,75 +1,87 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class deu extends dcg {
-   public static final MapCodec<deu> b = b(deu::new);
-   @Nullable
-   private static dhs h;
-   @Nullable
-   private static dhs i;
+public class deu extends cuq {
+   public static final MapCodec<deu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ckv.q.fieldOf("color").forGetter(cuq::b), u()).apply($$0, deu::new));
+   public static final djj b = czu.aE;
+   private static final Map<ia, elu> c = Maps.newEnumMap(
+      ImmutableMap.of(
+         ia.c,
+         cvz.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
+         ia.d,
+         cvz.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
+         ia.e,
+         cvz.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
+         ia.f,
+         cvz.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
+      )
+   );
 
    @Override
    public MapCodec<deu> a() {
-      return b;
+      return a;
    }
 
-   protected deu(dhm.d $$0) {
-      super(dcg.b.d, $$0);
+   public deu(ckv $$0, dio.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, ia.c));
    }
 
    @Override
-   public void a(csf $$0, hx $$1, dhn $$2, @Nullable bll $$3, clo $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dfi $$5 = $$0.c_($$1);
-      if ($$5 instanceof dgt) {
-         a($$0, $$1, (dgt)$$5);
-      }
+   public String h() {
+      return this.k().a();
    }
 
-   public static void a(csf $$0, hx $$1, dgt $$2) {
-      if (!$$0.B) {
-         dhn $$3 = $$2.r();
-         boolean $$4 = $$3.a(cvh.gG) || $$3.a(cvh.gH);
-         if ($$4 && $$1.v() >= $$0.J_() && $$0.aj() != biy.a) {
-            dhs.b $$5 = s().a($$0, $$1);
-            if ($$5 != null) {
-               cag $$6 = bkz.bk.a($$0);
-               if ($$6 != null) {
-                  cvz.a($$0, $$5);
-                  hx $$7 = $$5.a(1, 2, 0).d();
-                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ib.a.a ? 0.0F : 90.0F, 0.0F);
-                  $$6.aU = $$5.b().o() == ib.a.a ? 0.0F : 90.0F;
-                  $$6.u();
+   @Override
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
 
-                  for (amj $$8 : $$0.a(amj.class, $$6.cH().g(50.0))) {
-                     al.n.a($$8, $$6);
-                  }
+   @Override
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-                  $$0.b($$6);
-                  cvz.b($$0, $$5);
-               }
+   @Override
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return c.get($$0.c(b));
+   }
+
+   @Override
+   public dip a(coq $$0) {
+      dip $$1 = this.o();
+      ctb $$2 = $$0.q();
+      hv $$3 = $$0.a();
+      ia[] $$4 = $$0.f();
+
+      for (ia $$5 : $$4) {
+         if ($$5.o().d()) {
+            ia $$6 = $$5.g();
+            $$1 = $$1.a(b, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
          }
       }
+
+      return null;
    }
 
-   public static boolean b(csf $$0, hx $$1, clo $$2) {
-      return $$2.a(clr.ue) && $$1.v() >= $$0.J_() + 2 && $$0.aj() != biy.a && !$$0.B ? y().a($$0, $$1) != null : false;
+   @Override
+   public dip a(dip $$0, dcl $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
-   private static dhs s() {
-      if (h == null) {
-         h = dht.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(ark.aE)).a('^', dhr.a(dhw.a(cvh.gG).or(dhw.a(cvh.gH)))).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return h;
+   @Override
+   public dip a(dip $$0, dav $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
-   private static dhs y() {
-      if (i == null) {
-         i = dht.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(ark.aE)).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return i;
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(b);
    }
 }

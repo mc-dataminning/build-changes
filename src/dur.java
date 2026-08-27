@@ -1,75 +1,28 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dur extends duw {
-   public static final Codec<dur> a = duf.a.fieldOf("provider").xmap(dur::new, $$0 -> $$0.b).codec();
-   private final duf b;
+public class dur extends dun {
+   public static final Codec<dur> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dur::new));
 
-   public dur(duf $$0) {
-      this.b = $$0;
+   public dur(biq $$0, biq $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected dux<?> a() {
-      return dux.e;
+   protected dut<?> a() {
+      return dut.f;
    }
 
    @Override
-   public void a(duw.a $$0) {
-      List<hx> $$1 = Lists.newArrayList();
-      List<hx> $$2 = $$0.e();
-      List<hx> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
-
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.g().e());
-            this.a($$0, $$1x.g(2).e());
-            this.a($$0, $$1x.g().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
+   protected void a(cte $$0, dus.b $$1, auf $$2, duc $$3, int $$4, dus.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
    }
 
-   private void a(duw.a $$0, hx $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(duw.a $$0, hx $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         hx $$3 = $$1.b($$2);
-         if (dqa.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   @Override
+   protected boolean a(auf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return aty.k((float)$$1 + 0.5F) + aty.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

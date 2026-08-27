@@ -1,53 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsf implements dse {
-   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
-   public static final Codec<dsf> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dmt.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
-               dmv.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
-               dmu.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
-               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
-               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
-               big.b(1, 20).fieldOf("outer_wall_distance").orElse(bim.a(4, 5)).forGetter($$0x -> $$0x.i),
-               big.b(1, 20).fieldOf("distribution_points").orElse(bim.a(3, 4)).forGetter($$0x -> $$0x.j),
-               big.b(0, 10).fieldOf("point_offset").orElse(bim.a(1, 2)).forGetter($$0x -> $$0x.k),
-               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
-               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
-               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
-               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
-            )
-            .apply($$0, dsf::new)
-   );
-   public final dmt c;
-   public final dmv d;
-   public final dmu e;
-   public final double f;
-   public final double g;
-   public final boolean h;
-   public final big i;
-   public final big j;
-   public final big k;
-   public final int l;
-   public final int n;
-   public final double o;
-   public final int p;
+public class dsf extends drc<dto> {
+   private static final int a = 7;
 
-   public dsf(dmt $$0, dmv $$1, dmu $$2, double $$3, double $$4, boolean $$5, big $$6, big $$7, big $$8, int $$9, int $$10, double $$11, int $$12) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
+   dsf(Codec<dto> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(dre<dto> $$0) {
+      ctt $$1 = $$0.b();
+      auf $$2 = $$0.d();
+      dto $$3 = $$0.f();
+      hv $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      hv.a $$6 = new hv.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dip $$8 = $$1.a_($$6);
+
+         for (dto.a $$9 : $$3.b) {
+            if (drx.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   private void a(hv.a $$0, auf $$1, hv $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(auf $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

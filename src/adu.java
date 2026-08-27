@@ -1,59 +1,56 @@
-public class adu implements wo<acp> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private final float c;
+public class adu implements wu<acw> {
+   private final double a;
+   private final double b;
+   private final double c;
    private final float d;
-   private final boolean e;
-   private final boolean f;
+   private final float e;
 
-   public adu(float $$0, float $$1, boolean $$2, boolean $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public adu(blf $$0) {
+      this.a = $$0.dr();
+      this.b = $$0.dt();
+      this.c = $$0.dx();
+      this.d = $$0.dC();
+      this.e = $$0.dE();
    }
 
-   public adu(ty $$0) {
-      this.c = $$0.readFloat();
+   public adu(ue $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
       this.d = $$0.readFloat();
-      byte $$1 = $$0.readByte();
-      this.e = ($$1 & 1) > 0;
-      this.f = ($$1 & 2) > 0;
+      this.e = $$0.readFloat();
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      byte $$1 = 0;
-      if (this.e) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.f) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+      $$0.a(this.e);
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
    }
 
-   public float a() {
+   public double a() {
+      return this.a;
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
       return this.c;
    }
 
-   public float d() {
+   public float f() {
       return this.d;
    }
 
-   public boolean e() {
+   public float g() {
       return this.e;
-   }
-
-   public boolean f() {
-      return this.f;
    }
 }

@@ -1,22 +1,58 @@
-public class ghu implements ewh {
-   private final uv a;
-   private final int b;
-   private final int c;
-   private final int d;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-   public ghu(uv $$0, int $$1, int $$2, int $$3) {
+public class ghu implements ghs {
+   private final ghu.a a;
+   private ghs b;
+   private final BufferedInputStream c;
+
+   public ghu(ghu.a $$0, InputStream $$1) throws IOException {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new ghu.b(this.c));
    }
 
    @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      $$0.a(eti.N().h, this.a, this.b, this.c, this.d);
+   public AudioFormat a() {
+      return this.b.a();
    }
 
-   public uv a() {
-      return this.a;
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new ghu.b(this.c));
+         $$1 = this.b.a($$0);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      ghs create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
+      }
+
+      @Override
+      public void close() {
+      }
    }
 }

@@ -1,104 +1,15 @@
-public enum cqa {
-   a {
-      @Override
-      public boolean a(clj $$0) {
-         return $$0 instanceof ciy;
-      }
-   },
-   b {
-      @Override
-      public boolean a(clj $$0) {
-         if ($$0 instanceof ciy $$1 && $$1.g() == bla.c) {
-            return true;
-         }
+public class cqa extends cou {
+   public cqa(String $$0, cpa $$1, cpi $$2, cmh $$3, float $$4, int $$5) {
+      super(cpq.b, $$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-         return false;
-      }
-   },
-   c {
-      @Override
-      public boolean a(clj $$0) {
-         if ($$0 instanceof ciy $$1 && $$1.g() == bla.d) {
-            return true;
-         }
+   @Override
+   public cmh g() {
+      return new cmh(cwb.cD);
+   }
 
-         return false;
-      }
-   },
-   d {
-      @Override
-      public boolean a(clj $$0) {
-         if ($$0 instanceof ciy $$1 && $$1.g() == bla.e) {
-            return true;
-         }
-
-         return false;
-      }
-   },
-   e {
-      @Override
-      public boolean a(clj $$0) {
-         if ($$0 instanceof ciy $$1 && $$1.g() == bla.f) {
-            return true;
-         }
-
-         return false;
-      }
-   },
-   f {
-      @Override
-      public boolean a(clj $$0) {
-         return $$0 instanceof cmz;
-      }
-   },
-   g {
-      @Override
-      public boolean a(clj $$0) {
-         return $$0 instanceof cjy;
-      }
-   },
-   h {
-      @Override
-      public boolean a(clj $$0) {
-         return $$0 instanceof cku;
-      }
-   },
-   i {
-      @Override
-      public boolean a(clj $$0) {
-         return $$0 instanceof cng;
-      }
-   },
-   j {
-      @Override
-      public boolean a(clj $$0) {
-         return $$0.o();
-      }
-   },
-   k {
-      @Override
-      public boolean a(clj $$0) {
-         return $$0 instanceof cjm;
-      }
-   },
-   l {
-      @Override
-      public boolean a(clj $$0) {
-         return $$0 instanceof ckp || cvf.a($$0) instanceof ckp;
-      }
-   },
-   m {
-      @Override
-      public boolean a(clj $$0) {
-         return $$0 instanceof cjw;
-      }
-   },
-   n {
-      @Override
-      public boolean a(clj $$0) {
-         return $$0 instanceof cni || cvf.a($$0) instanceof cni || j.a($$0);
-      }
-   };
-
-   public abstract boolean a(clj var1);
+   @Override
+   public cpp<?> ar_() {
+      return cpp.p;
+   }
 }

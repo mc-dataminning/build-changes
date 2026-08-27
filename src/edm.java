@@ -1,201 +1,49 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import javax.annotation.Nullable;
 
-public class edm {
-   private final List<edk> a;
+public interface edm extends edr {
    @Nullable
-   private edm.a b;
-   private int c;
-   private final hx d;
-   private final float e;
-   private final boolean f;
+   dkr a(ix var1);
 
-   public edm(List<edk> $$0, hx $$1, boolean $$2) {
-      this.a = $$0;
-      this.d = $$1;
-      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
-      this.f = $$2;
-   }
+   int b(hv var1);
 
-   public void a() {
-      this.c++;
-   }
+   public static enum a implements edm {
+      a;
 
-   public boolean b() {
-      return this.c <= 0;
-   }
-
-   public boolean c() {
-      return this.c >= this.a.size();
-   }
-
-   @Nullable
-   public edk d() {
-      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
-   }
-
-   public edk a(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public void b(int $$0) {
-      if (this.a.size() > $$0) {
-         this.a.subList($$0, this.a.size()).clear();
+      @Nullable
+      @Override
+      public dkr a(ix $$0) {
+         return null;
       }
-   }
 
-   public void a(int $$0, edk $$1) {
-      this.a.set($$0, $$1);
-   }
+      @Override
+      public int b(hv $$0) {
+         return 0;
+      }
 
-   public int e() {
-      return this.a.size();
-   }
+      @Override
+      public void a(hv $$0) {
+      }
 
-   public int f() {
-      return this.c;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public ejz a(bkv $$0, int $$1) {
-      edk $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.dh() + 1.0F)) * 0.5;
-      double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.dh() + 1.0F)) * 0.5;
-      return new ejz($$3, $$4, $$5);
-   }
-
-   public hx d(int $$0) {
-      return this.a.get($$0).a();
-   }
-
-   public ejz a(bkv $$0) {
-      return this.a($$0, this.c);
-   }
-
-   public hx g() {
-      return this.a.get(this.c).a();
-   }
-
-   public edk h() {
-      return this.a.get(this.c);
-   }
-
-   @Nullable
-   public edk i() {
-      return this.c > 0 ? this.a.get(this.c - 1) : null;
-   }
-
-   public boolean a(@Nullable edm $$0) {
-      if ($$0 == null) {
+      @Override
+      public boolean L_() {
          return false;
-      } else if ($$0.a.size() != this.a.size()) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-            edk $$2 = this.a.get($$1);
-            edk $$3 = $$0.a.get($$1);
-            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   @aut
-   void a(edk[] $$0, edk[] $$1, Set<edq> $$2) {
-      this.b = new edm.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   public edm.a k() {
-      return this.b;
-   }
-
-   public void a(ty $$0) {
-      if (this.b != null && !this.b.c.isEmpty()) {
-         $$0.a(this.f);
-         $$0.p(this.c);
-         $$0.a(this.d);
-         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
-         this.b.a($$0);
-      }
-   }
-
-   public static edm b(ty $$0) {
-      boolean $$1 = $$0.readBoolean();
-      int $$2 = $$0.readInt();
-      hx $$3 = $$0.e();
-      List<edk> $$4 = $$0.a(edk::b);
-      edm.a $$5 = edm.a.b($$0);
-      edm $$6 = new edm($$4, $$3, $$1);
-      $$6.b = $$5;
-      $$6.c = $$2;
-      return $$6;
-   }
-
-   @Override
-   public String toString() {
-      return "Path(length=" + this.a.size() + ")";
-   }
-
-   public hx l() {
-      return this.d;
-   }
-
-   public float m() {
-      return this.e;
-   }
-
-   static edk[] c(ty $$0) {
-      edk[] $$1 = new edk[$$0.n()];
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$1[$$2] = edk.b($$0);
       }
 
-      return $$1;
-   }
-
-   static void a(ty $$0, edk[] $$1) {
-      $$0.c($$1.length);
-
-      for (edk $$2 : $$1) {
-         $$2.a($$0);
-      }
-   }
-
-   public edm n() {
-      edm $$0 = new edm(this.a, this.d, this.f);
-      $$0.b = this.b;
-      $$0.c = this.c;
-      return $$0;
-   }
-
-   public static record a(edk[] a, edk[] b, Set<edq> c) {
-
-      public void a(ty $$0) {
-         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-         edm.a($$0, this.a);
-         edm.a($$0, this.b);
+      @Override
+      public int a() {
+         return 0;
       }
 
-      public static edm.a b(ty $$0) {
-         HashSet<edq> $$1 = $$0.a(HashSet::new, edq::c);
-         edk[] $$2 = edm.c($$0);
-         edk[] $$3 = edm.c($$0);
-         return new edm.a($$2, $$3, $$1);
+      @Override
+      public void a(ix $$0, boolean $$1) {
+      }
+
+      @Override
+      public void a(csf $$0, boolean $$1) {
+      }
+
+      @Override
+      public void b(csf $$0) {
       }
    }
 }

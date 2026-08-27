@@ -1,96 +1,119 @@
 import com.mojang.serialization.MapCodec;
 
-public class cwl extends das {
+public class cwl extends cvz {
    public static final MapCodec<cwl> a = b(cwl::new);
+   public static final int b = 6;
+   public static final djp c = djf.ay;
+   public static final int d = b(0);
+   protected static final float e = 1.0F;
+   protected static final float f = 2.0F;
+   protected static final elu[] g = new elu[]{
+      cvz.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      cvz.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      cvz.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      cvz.a(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      cvz.a(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      cvz.a(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      cvz.a(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
+   };
 
    @Override
    public MapCodec<cwl> a() {
       return a;
    }
 
-   protected cwl(dhm.d $$0) {
-      super(0.3125F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-            .a(f, Boolean.valueOf(false))
-            .a(g, Boolean.valueOf(false))
-      );
+   protected cwl(dio.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public dhn a(cnw $$0) {
-      return a($$0.q(), $$0.a(), this.o());
-   }
-
-   public static dhn a(crl $$0, hx $$1, dhn $$2) {
-      dhn $$3 = $$0.a_($$1.d());
-      dhn $$4 = $$0.a_($$1.c());
-      dhn $$5 = $$0.a_($$1.e());
-      dhn $$6 = $$0.a_($$1.h());
-      dhn $$7 = $$0.a_($$1.f());
-      dhn $$8 = $$0.a_($$1.g());
-      cvf $$9 = $$2.b();
-      return $$2.b(g, Boolean.valueOf($$3.a($$9) || $$3.a(cvh.kv) || $$3.a(cvh.fz)))
-         .b(f, Boolean.valueOf($$4.a($$9) || $$4.a(cvh.kv)))
-         .b(b, Boolean.valueOf($$5.a($$9) || $$5.a(cvh.kv)))
-         .b(c, Boolean.valueOf($$6.a($$9) || $$6.a(cvh.kv)))
-         .b(d, Boolean.valueOf($$7.a($$9) || $$7.a(cvh.kv)))
-         .b(e, Boolean.valueOf($$8.a($$9) || $$8.a(cvh.kv)));
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return g[$$0.c(c)];
    }
 
    @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         boolean $$6 = $$2.a(this) || $$2.a(cvh.kv) || $$1 == ib.a && $$2.a(cvh.fz);
-         return $$0.a(h.get($$1), Boolean.valueOf($$6));
-      }
-   }
-
-   @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   public boolean a(dhn $$0, csi $$1, hx $$2) {
-      dhn $$3 = $$1.a_($$2.d());
-      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
-
-      for (ib $$5 : ib.c.a) {
-         hx $$6 = $$2.a($$5);
-         dhn $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
+   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
+      cmh $$6 = $$3.b($$4);
+      cmc $$7 = $$6.d();
+      if ($$6.a(arz.ai) && $$0.c(c) == 0) {
+         cvz $$8 = cvz.a($$7);
+         if ($$8 instanceof cwo) {
+            if (!$$3.f()) {
+               $$6.h(1);
             }
 
-            dhn $$8 = $$1.a_($$6.d());
-            if ($$8.a(this) || $$8.a(cvh.fz)) {
-               return true;
-            }
+            $$1.a(null, $$2, arc.cT, ard.e, 1.0F, 1.0F);
+            $$1.b($$2, cwp.a($$8));
+            $$1.a($$3, dmz.c, $$2);
+            $$3.b(arm.c.b($$7));
+            return bjl.a;
          }
       }
 
-      return $$3.a(this) || $$3.a(cvh.fz);
+      if ($$1.B) {
+         if (a($$1, $$2, $$0, $$3).a()) {
+            return bjl.a;
+         }
+
+         if ($$6.b()) {
+            return bjl.b;
+         }
+      }
+
+      return a($$1, $$2, $$0, $$3);
+   }
+
+   protected static bjl a(csz $$0, hv $$1, dip $$2, cer $$3) {
+      if (!$$3.t(false)) {
+         return bjl.d;
+      } else {
+         $$3.a(arm.U);
+         $$3.gc().a(2, 0.1F);
+         int $$4 = $$2.c(c);
+         $$0.a($$3, dmz.m, $$1);
+         if ($$4 < 6) {
+            $$0.a($$1, $$2.a(c, Integer.valueOf($$4 + 1)), 3);
+         } else {
+            $$0.a($$1, false);
+            $$0.a($$3, dmz.f, $$1);
+         }
+
+         return bjl.a;
+      }
    }
 
    @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(b, c, d, e, f, g);
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      return $$1 == ia.a && !$$0.a($$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      return $$1.a_($$2.d()).e();
+   }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public int a(dip $$0, csy $$1, hv $$2) {
+      return b($$0.c(c));
+   }
+
+   public static int b(int $$0) {
+      return (7 - $$0) * 2;
+   }
+
+   @Override
+   public boolean d_(dip $$0) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dip $$0, cse $$1, hv $$2, eep $$3) {
       return false;
    }
 }

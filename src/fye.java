@@ -1,27 +1,24 @@
-public class fye extends fxi<cbw, fjs<cbw>> {
-   private static final agm a = new agm("textures/entity/slime/slime.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fye(fwc.a $$0) {
-      super($$0, new fjs<>($$0.a(fks.bm)), 0.25F);
-      this.a(new gao<>(this, $$0.f()));
+public final class fye extends fwk<bzj, fjj<bzj>> {
+   private static final Map<bzq, agt> a = ac.a(Maps.newEnumMap(bzq.class), $$0 -> {
+      $$0.put(bzq.a, new agt("textures/entity/horse/horse_white.png"));
+      $$0.put(bzq.b, new agt("textures/entity/horse/horse_creamy.png"));
+      $$0.put(bzq.c, new agt("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(bzq.d, new agt("textures/entity/horse/horse_brown.png"));
+      $$0.put(bzq.e, new agt("textures/entity/horse/horse_black.png"));
+      $$0.put(bzq.f, new agt("textures/entity/horse/horse_gray.png"));
+      $$0.put(bzq.g, new agt("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public fye(fxo.a $$0) {
+      super($$0, new fjj<>($$0.a(flx.am)), 1.1F);
+      this.a(new gbo(this));
+      this.a(new gbn(this, $$0.f()));
    }
 
-   public void a(cbw $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.gg();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(cbw $$0, eob $$1, float $$2) {
-      float $$3 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$4 = (float)$$0.gg();
-      float $$5 = atq.i($$2, $$0.bS, $$0.e) / ($$4 * 0.5F + 1.0F);
-      float $$6 = 1.0F / ($$5 + 1.0F);
-      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
-   }
-
-   public agm a(cbw $$0) {
-      return a;
+   public agt a(bzj $$0) {
+      return a.get($$0.w());
    }
 }

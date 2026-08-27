@@ -1,38 +1,22 @@
-import com.google.gson.JsonObject;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class db extends cw<db.a> {
-   public db.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<bc> $$3 = bq.a($$0, "entity", $$2);
-      return new db.a($$1, $$3);
+public record db<T>(asg<T> a, boolean b) {
+   public static <T> Codec<db<T>> a(ags<? extends ir<T>> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(asg.a($$0).fieldOf("id").forGetter(db::a), Codec.BOOL.fieldOf("expected").forGetter(db::b)).apply($$1, db::new)
+      );
    }
 
-   public void a(amj $$0, bkv $$1) {
-      efc $$2 = bq.b($$0, $$1);
-      this.a($$0, $$1x -> $$1x.a($$2));
+   public static <T> db<T> a(asg<T> $$0) {
+      return new db<>($$0, true);
    }
 
-   public static class a extends at {
-      private final Optional<bc> a;
+   public static <T> db<T> b(asg<T> $$0) {
+      return new db<>($$0, false);
+   }
 
-      public a(Optional<bc> $$0, Optional<bc> $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public static am<db.a> a(bq.a $$0) {
-         return al.n.a(new db.a(Optional.empty(), Optional.of(bq.a($$0))));
-      }
-
-      public boolean a(efc $$0) {
-         return this.a.isEmpty() || this.a.get().a($$0);
-      }
-
-      @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("entity", $$1.a()));
-         return $$0;
-      }
+   public boolean a(ie<T> $$0) {
+      return $$0.a(this.a) == this.b;
    }
 }

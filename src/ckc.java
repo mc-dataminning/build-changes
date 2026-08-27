@@ -1,99 +1,151 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public enum ckc implements auk {
-   a(0, "white", 16383998, edb.i, 15790320, 16777215),
-   b(1, "orange", 16351261, edb.p, 15435844, 16738335),
-   c(2, "magenta", 13061821, edb.q, 12801229, 16711935),
-   d(3, "light_blue", 3847130, edb.r, 6719955, 10141901),
-   e(4, "yellow", 16701501, edb.s, 14602026, 16776960),
-   f(5, "lime", 8439583, edb.t, 4312372, 12582656),
-   g(6, "pink", 15961002, edb.u, 14188952, 16738740),
-   h(7, "gray", 4673362, edb.v, 4408131, 8421504),
-   i(8, "light_gray", 10329495, edb.w, 11250603, 13882323),
-   j(9, "cyan", 1481884, edb.x, 2651799, 65535),
-   k(10, "purple", 8991416, edb.y, 8073150, 10494192),
-   l(11, "blue", 3949738, edb.z, 2437522, 255),
-   m(12, "brown", 8606770, edb.A, 5320730, 9127187),
-   n(13, "green", 6192150, edb.B, 3887386, 65280),
-   o(14, "red", 11546150, edb.C, 11743532, 16711680),
-   p(15, "black", 1908001, edb.D, 1973019, 0);
+public class ckc extends cmc {
+   public static final int a = 3;
+   public static final int b = 1;
+   public static final int c = 3;
 
-   private static final IntFunction<ckc> r = asj.a(ckc::a, values(), asj.a.a);
-   private static final Int2ObjectOpenHashMap<ckc> s = new Int2ObjectOpenHashMap(
-      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.x, $$0 -> (ckc)$$0))
-   );
-   public static final auk.a<ckc> q = auk.a(ckc::values);
-   private final int t;
-   private final String u;
-   private final edb v;
-   private final float[] w;
-   private final int x;
-   private final int y;
-
-   private ckc(int $$0, String $$1, int $$2, edb $$3, int $$4, int $$5) {
-      this.t = $$0;
-      this.u = $$1;
-      this.v = $$3;
-      this.y = $$5;
-      int $$6 = ($$2 & 0xFF0000) >> 16;
-      int $$7 = ($$2 & 0xFF00) >> 8;
-      int $$8 = ($$2 & 0xFF) >> 0;
-      this.w = new float[]{(float)$$6 / 255.0F, (float)$$7 / 255.0F, (float)$$8 / 255.0F};
-      this.x = $$4;
-   }
-
-   public int a() {
-      return this.t;
-   }
-
-   public String b() {
-      return this.u;
-   }
-
-   public float[] d() {
-      return this.w;
-   }
-
-   public edb e() {
-      return this.v;
-   }
-
-   public int f() {
-      return this.x;
-   }
-
-   public int g() {
-      return this.y;
-   }
-
-   public static ckc a(int $$0) {
-      return r.apply($$0);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static ckc a(String $$0, @Nullable ckc $$1) {
-      ckc $$2 = q.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   @Nullable
-   public static ckc b(int $$0) {
-      return (ckc)s.get($$0);
+   public ckc(cmc.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.u;
+   public bjl a(cos $$0) {
+      csy $$1 = $$0.q();
+      hv $$2 = $$0.a();
+      hv $$3 = $$2.a($$0.k());
+      if (a($$0.n(), $$1, $$2)) {
+         if (!$$1.B) {
+            $$0.o().a(dmz.C);
+            $$1.c(1505, $$2, 0);
+         }
+
+         return bjl.a($$1.B);
+      } else {
+         dip $$4 = $$1.a_($$2);
+         boolean $$5 = $$4.d($$1, $$2, $$0.k());
+         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
+            if (!$$1.B) {
+               $$0.o().a(dmz.C);
+               $$1.c(1505, $$3, 0);
+            }
+
+            return bjl.a($$1.B);
+         } else {
+            return bjl.d;
+         }
+      }
    }
 
-   @Override
-   public String c() {
-      return this.u;
+   public static boolean a(cmh $$0, csy $$1, hv $$2) {
+      dip $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof cwc $$4 && $$4.b($$1, $$2, $$3)) {
+         if ($$1 instanceof amp) {
+            if ($$4.a($$1, $$1.z, $$2, $$3)) {
+               $$4.a((amp)$$1, $$1.z, $$2, $$3);
+            }
+
+            $$0.h(1);
+         }
+
+         return true;
+      }
+
+      return false;
+   }
+
+   public static boolean a(cmh $$0, csy $$1, hv $$2, @Nullable ia $$3) {
+      if ($$1.a_($$2).a(cwb.G) && $$1.b_($$2).e() == 8) {
+         if (!($$1 instanceof amp)) {
+            return true;
+         } else {
+            auf $$4 = $$1.F_();
+
+            label78:
+            for (int $$5 = 0; $$5 < 128; $$5++) {
+               hv $$6 = $$2;
+               dip $$7 = cwb.bw.o();
+
+               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
+                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
+                  if ($$1.a_($$6).r($$1, $$6)) {
+                     continue label78;
+                  }
+               }
+
+               ie<ctx> $$9 = $$1.s($$6);
+               if ($$9.a(arq.ac)) {
+                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
+                     $$7 = kb.e.b(arr.aq).flatMap($$1x -> $$1x.a($$1.z)).map($$0x -> ((cvz)$$0x.a()).o()).orElse($$7);
+                     if ($$7.b(cvk.c)) {
+                        $$7 = $$7.a(cvk.c, $$3);
+                     }
+                  } else if ($$4.a(4) == 0) {
+                     $$7 = kb.e.b(arr.ao).flatMap($$1x -> $$1x.a($$1.z)).map($$0x -> ((cvz)$$0x.a()).o()).orElse($$7);
+                  }
+               }
+
+               if ($$7.a(arr.aq, $$0x -> $$0x.b(cvk.c))) {
+                  for (int $$10 = 0; !$$7.a((ctb)$$1, $$6) && $$10 < 4; $$10++) {
+                     $$7 = $$7.a(cvk.c, ia.c.a.a($$4));
+                  }
+               }
+
+               if ($$7.a((ctb)$$1, $$6)) {
+                  dip $$11 = $$1.a_($$6);
+                  if ($$11.a(cwb.G) && $$1.b_($$6).e() == 8) {
+                     $$1.a($$6, $$7, 3);
+                  } else if ($$11.a(cwb.bw) && $$4.a(10) == 0) {
+                     ((cwc)cwb.bw).a((amp)$$1, $$4, $$6, $$11);
+                  }
+               }
+            }
+
+            $$0.h(1);
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public static void a(csz $$0, hv $$1, int $$2) {
+      if ($$2 == 0) {
+         $$2 = 15;
+      }
+
+      dip $$3 = $$0.a_($$1);
+      if (!$$3.i()) {
+         double $$4 = 0.5;
+         double $$5;
+         if ($$3.a(cwb.G)) {
+            $$2 *= 3;
+            $$5 = 1.0;
+            $$4 = 3.0;
+         } else if ($$3.i($$0, $$1)) {
+            $$1 = $$1.c();
+            $$2 *= 3;
+            $$4 = 3.0;
+            $$5 = 1.0;
+         } else {
+            $$5 = $$3.j($$0, $$1).c(ia.a.b);
+         }
+
+         $$0.a(jv.M, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 0.0, 0.0, 0.0);
+         auf $$8 = $$0.F_();
+
+         for (int $$9 = 0; $$9 < $$2; $$9++) {
+            double $$10 = $$8.k() * 0.02;
+            double $$11 = $$8.k() * 0.02;
+            double $$12 = $$8.k() * 0.02;
+            double $$13 = 0.5 - $$4;
+            double $$14 = (double)$$1.u() + $$13 + $$8.j() * $$4 * 2.0;
+            double $$15 = (double)$$1.v() + $$8.j() * $$5;
+            double $$16 = (double)$$1.w() + $$13 + $$8.j() * $$4 * 2.0;
+            if (!$$0.a_(hv.a($$14, $$15, $$16).d()).i()) {
+               $$0.a(jv.M, $$14, $$15, $$16, $$10, $$11, $$12);
+            }
+         }
+      }
    }
 }

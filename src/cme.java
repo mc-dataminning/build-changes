@@ -1,31 +1,37 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public abstract class cme extends clj {
-   public static final Predicate<clo> c = $$0 -> $$0.a(ars.at);
-   public static final Predicate<clo> d = c.or($$0 -> $$0.a(clr.um));
+public enum cme implements aut {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
 
-   public cme(clj.a $$0) {
-      super($$0);
-   }
+   public static final Codec<cme> j = aut.a(cme::values);
+   public static final IntFunction<cme> k = asq.a(cme::a, values(), asq.a.a);
+   private final byte l;
+   private final String m;
 
-   public Predicate<clo> e() {
-      return this.b();
-   }
-
-   public abstract Predicate<clo> b();
-
-   public static clo a(bll $$0, Predicate<clo> $$1) {
-      if ($$1.test($$0.b(bja.b))) {
-         return $$0.b(bja.b);
-      } else {
-         return $$1.test($$0.b(bja.a)) ? $$0.b(bja.a) : clo.b;
-      }
+   private cme(int $$0, String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
    @Override
-   public int c() {
-      return 1;
+   public String c() {
+      return this.m;
    }
 
-   public abstract int d();
+   public byte a() {
+      return this.l;
+   }
+
+   public boolean b() {
+      return this == d || this == e;
+   }
 }

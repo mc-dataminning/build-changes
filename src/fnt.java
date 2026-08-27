@@ -1,43 +1,67 @@
-import org.joml.Vector3f;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class fnt extends fnv<jp> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected fnt(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, jp $$7, fpj $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.c(), $$9);
-      this.b = this.a($$7.d(), $$9);
+public record fnt(String a, @Nullable fnt.a b) {
+   public static fnt a() {
+      return a(null);
    }
 
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   public static fnt a(String $$0) {
+      return a(new fnt.a.b($$0));
    }
 
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+   public static fnt a(eqk $$0) {
+      return a(new fnt.a.a($$0));
    }
 
-   @Override
-   public void a(eof $$0, est $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public static fnt a(@Nullable fnt.a $$0) {
+      return new fnt(g(), $$0);
    }
 
-   public static class a implements foq<jp> {
-      private final fpj a;
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
 
-      public a(fpj $$0) {
-         this.a = $$0;
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof fnt.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof fnt.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("23w45a");
+      if (euk.e().a()) {
+         $$0.append(" (modded)");
       }
 
-      public fon a(jp $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fnt($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public fnt.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements fnt.a {
+         public a(eqk $$0) {
+            this($$0.a, $$0.n);
+         }
+      }
+
+      public static record b(String a) implements fnt.a {
       }
    }
 }

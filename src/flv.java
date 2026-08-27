@@ -1,432 +1,228 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class flv {
-   private static final Logger a = LogUtils.getLogger();
-   private final eti b;
-   private final flp c;
-   private hx d = new hx(-1, -1, -1);
-   private clo e = clo.b;
-   private float f;
-   private float g;
-   private int h;
-   private boolean i;
-   private csc j = csc.e;
-   @Nullable
-   private csc k;
-   private int l;
+   private static final fmc a = new fmc(0.008F);
+   private static final fmc b = new fmc(1.0F);
+   private static final fmc c = new fmc(0.5F);
 
-   public flv(eti $$0, flp $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   public static Map<flw, fme> a() {
+      Builder<flw, fme> $$0 = ImmutableMap.builder();
+      fme $$1 = fme.a(fjl.a(fmc.a, 0.0F), 64, 64);
+      fme $$2 = fme.a(fjk.a(b), 64, 32);
+      fme $$3 = fme.a(fjk.a(new fmc(1.02F)), 64, 32);
+      fme $$4 = fme.a(fjk.a(c), 64, 32);
+      fme $$5 = fjt.b();
+      fme $$6 = fku.c();
+      fme $$7 = fme.a(fjj.a(fmc.a), 64, 64);
+      fme $$8 = fjm.b();
+      fme $$9 = fir.c();
+      fme $$10 = fme.a(fjw.a(fmc.a), 64, 32);
+      fme $$11 = fme.a(fkc.a(fmc.a), 64, 64);
+      fme $$12 = fme.a(fkb.a(), 64, 64);
+      fme $$13 = fku.b();
+      fme $$14 = fjr.a(fmc.a);
+      fme $$15 = flb.b();
+      fme $$16 = fji.c();
+      fme $$17 = fkt.c();
+      fme $$18 = fme.a(flj.b(), 64, 64);
+      fme $$19 = fkz.b();
+      $$0.put(flx.a, fhw.b());
+      $$0.put(flx.b, fia.c());
+      $$0.put(flx.c, fhz.a(c));
+      $$0.put(flx.d, fhz.a(b));
+      $$0.put(flx.e, fib.c());
+      $$0.put(flx.f, fud.a());
+      $$0.put(flx.g, fic.b());
+      $$0.put(flx.h, fuf.c());
+      $$0.put(flx.i, fuf.b());
+      $$0.put(flx.j, fid.c());
+      $$0.put(flx.k, fug.b());
+      $$0.put(flx.l, fie.b());
+      $$0.put(flx.m, fig.a());
+      $$0.put(flx.n, fih.b());
+      $$0.put(flx.p, fih.c());
+      $$0.put(flx.o, fih.d());
+      $$0.put(flx.q, $$10);
+      $$0.put(flx.r, fme.a(fjw.a(new fmc(0.01F)), 64, 32));
+      $$0.put(flx.s, fii.b());
+      $$0.put(flx.t, $$19);
+      $$0.put(flx.u, fuo.b());
+      $$0.put(flx.v, $$5);
+      $$0.put(flx.w, fin.c());
+      $$0.put(flx.x, fio.b());
+      $$0.put(flx.y, $$5);
+      $$0.put(flx.A, fup.b());
+      $$0.put(flx.C, fup.c());
+      $$0.put(flx.B, fup.d());
+      $$0.put(flx.z, fup.e());
+      $$0.put(flx.D, $$9);
+      $$0.put(flx.E, fis.a(fmc.a));
+      $$0.put(flx.F, fis.a(new fmc(2.0F)));
+      $$0.put(flx.G, $$6);
+      $$0.put(flx.H, fuq.b());
+      $$0.put(flx.I, fuq.c());
+      $$0.put(flx.J, fit.b());
+      $$0.put(flx.K, fim.c());
+      $$0.put(flx.L, fuo.d());
+      $$0.put(flx.M, fuo.c());
+      $$0.put(flx.N, fls.a());
+      $$0.put(flx.O, fiu.a(fmc.a));
+      $$0.put(flx.P, $$4);
+      $$0.put(flx.Q, $$4);
+      $$0.put(flx.R, fiu.a(new fmc(0.25F)));
+      $$0.put(flx.S, fjf.b());
+      $$0.put(flx.T, fiv.c());
+      $$0.put(flx.U, fiw.c());
+      $$0.put(flx.V, fix.b());
+      $$0.put(flx.W, fxj.a());
+      $$0.put(flx.X, fxi.a());
+      $$0.put(flx.Y, $$8);
+      $$0.put(flx.Z, fiz.b());
+      $$0.put(flx.aa, fja.c());
+      $$0.put(flx.ab, fjb.b());
+      $$0.put(flx.ac, $$5);
+      $$0.put(flx.ad, fjc.b());
+      $$0.put(flx.ae, $$1);
+      $$0.put(flx.af, $$4);
+      $$0.put(flx.ag, $$2);
+      $$0.put(flx.ah, fla.b());
+      $$0.put(flx.ai, fje.c());
+      $$0.put(flx.aj, fjf.b());
+      $$0.put(flx.ak, $$16);
+      $$0.put(flx.al, $$5);
+      $$0.put(flx.am, $$7);
+      $$0.put(flx.an, fme.a(fjj.a(new fmc(0.1F)), 64, 64));
+      $$0.put(flx.ao, $$1);
+      $$0.put(flx.ap, $$4);
+      $$0.put(flx.aq, $$2);
+      $$0.put(flx.ar, $$8);
+      $$0.put(flx.as, fjn.b());
+      $$0.put(flx.at, fjp.b());
+      $$0.put(flx.au, $$14);
+      $$0.put(flx.av, fjr.a(new fmc(0.5F)));
+      $$0.put(flx.aw, fjs.b());
+      $$0.put(flx.ax, fjo.b());
+      $$0.put(flx.ay, $$5);
+      $$0.put(flx.az, $$9);
+      $$0.put(flx.aA, fim.c());
+      $$0.put(flx.aB, $$10);
+      $$0.put(flx.aC, fjx.c());
+      $$0.put(flx.aD, fjy.b());
+      $$0.put(flx.aE, fjz.b());
+      $$0.put(flx.aF, fka.a(fmc.a));
+      $$0.put(flx.aN, fka.a(new fmc(0.5F)));
+      $$0.put(flx.aG, $$11);
+      $$0.put(flx.aL, $$4);
+      $$0.put(flx.aM, $$3);
+      $$0.put(flx.aH, $$11);
+      $$0.put(flx.aI, $$4);
+      $$0.put(flx.aJ, $$3);
+      $$0.put(flx.aK, $$12);
+      $$0.put(flx.aO, $$8);
+      $$0.put(flx.aP, fme.a(fkd.a(fmc.a, false), 64, 64));
+      $$0.put(flx.aQ, $$13);
+      $$0.put(flx.aR, $$4);
+      $$0.put(flx.aS, $$2);
+      $$0.put(flx.aT, fme.a(fkd.a(fmc.a, true), 64, 64));
+      $$0.put(flx.aU, $$4);
+      $$0.put(flx.aV, $$2);
+      $$0.put(flx.aW, gcg.a());
+      $$0.put(flx.aX, fke.c());
+      $$0.put(flx.aY, fkf.b());
+      $$0.put(flx.aZ, fkg.b());
+      $$0.put(flx.ba, fkh.b());
+      $$0.put(flx.bb, fkj.a());
+      $$0.put(flx.bc, fkl.b());
+      $$0.put(flx.bd, fkm.b());
+      $$0.put(flx.be, fko.c());
+      $$0.put(flx.bf, fkn.c());
+      $$0.put(flx.bg, fkp.a());
+      $$0.put(flx.bh, fkr.a());
+      $$0.put(flx.bi, fkq.b());
+      $$0.put(flx.bj, fks.b());
+      $$0.put(flx.bk, $$17);
+      $$0.put(flx.bm, $$4);
+      $$0.put(flx.bn, $$2);
+      $$0.put(flx.bl, $$7);
+      $$0.put(flx.bo, $$6);
+      $$0.put(flx.bp, fkw.c());
+      $$0.put(flx.bq, fkw.b());
+      $$0.put(flx.br, fkx.b());
+      $$0.put(flx.bs, fky.b());
+      $$0.put(flx.bt, $$5);
+      $$0.put(flx.bu, $$19);
+      $$0.put(flx.bv, fla.b());
+      $$0.put(flx.bw, $$17);
+      $$0.put(flx.bx, $$4);
+      $$0.put(flx.by, $$2);
+      $$0.put(flx.bz, fme.a(fjl.a(new fmc(0.25F), 0.0F), 64, 32));
+      $$0.put(flx.bA, $$15);
+      $$0.put(flx.bB, $$15);
+      $$0.put(flx.bC, flc.c());
+      $$0.put(flx.bD, $$5);
+      $$0.put(flx.bE, $$14);
+      $$0.put(flx.bF, fld.a());
+      $$0.put(flx.bG, flf.a(fmc.a));
+      $$0.put(flx.bH, flf.a(a));
+      $$0.put(flx.bI, fle.a(fmc.a));
+      $$0.put(flx.bJ, fle.a(a));
+      $$0.put(flx.bK, flg.c());
+      $$0.put(flx.bL, flh.b());
+      $$0.put(flx.bM, $$18);
+      $$0.put(flx.bN, $$8);
+      $$0.put(flx.bO, flk.b());
+      $$0.put(flx.bP, $$18);
+      $$0.put(flx.bQ, flm.b());
+      $$0.put(flx.bR, fln.c());
+      $$0.put(flx.bS, flo.a(fmc.a));
+      $$0.put(flx.bT, flo.a(c));
+      $$0.put(flx.bY, gaq.a());
+      $$0.put(flx.bU, $$17);
+      $$0.put(flx.bV, $$4);
+      $$0.put(flx.bW, $$2);
+      $$0.put(flx.bX, $$6);
+      $$0.put(flx.bZ, flp.c());
+      $$0.put(flx.ca, $$16);
+      $$0.put(flx.cb, $$1);
+      $$0.put(flx.ce, $$4);
+      $$0.put(flx.cf, $$2);
+      $$0.put(flx.cc, $$13);
+      $$0.put(flx.cd, $$7);
+      $$0.put(flx.cg, flr.c());
+      $$0.put(flx.ch, flr.a(c));
+      $$0.put(flx.ci, flr.a(b));
+      $$0.put(flx.cj, $$11);
+      $$0.put(flx.ck, $$4);
+      $$0.put(flx.cl, $$3);
+      fme $$20 = fif.a();
+      fme $$21 = fik.e();
+      fme $$22 = fkk.b();
+      fme $$23 = fil.a();
 
-   public void a(cdz $$0) {
-      this.j.a($$0.fU());
-   }
-
-   public void a(csc $$0, @Nullable csc $$1) {
-      this.j = $$0;
-      this.k = $$1;
-      this.j.a(this.b.s.fU());
-   }
-
-   public void a(csc $$0) {
-      if ($$0 != this.j) {
-         this.k = this.j;
-      }
-
-      this.j = $$0;
-      this.j.a(this.b.s.fU());
-   }
-
-   public boolean a() {
-      return this.j.h();
-   }
-
-   public boolean a(hx $$0) {
-      if (this.b.s.a(this.b.r, $$0, this.j)) {
-         return false;
-      } else {
-         csf $$1 = this.b.r;
-         dhn $$2 = $$1.a_($$0);
-         if (!this.b.s.eU().d().a($$2, $$1, $$0, this.b.s)) {
-            return false;
+      for (cgl.b $$24 : cgl.b.values()) {
+         if ($$24 == cgl.b.i) {
+            $$0.put(flx.c($$24), $$22);
+            $$0.put(flx.d($$24), $$23);
          } else {
-            cvf $$3 = $$2.b();
-            if ($$3 instanceof cyn && !this.b.s.gq()) {
-               return false;
-            } else if ($$2.i()) {
-               return false;
-            } else {
-               $$3.a($$1, $$0, $$2, (cdz)this.b.s);
-               ecx $$4 = $$1.b_($$0);
-               boolean $$5 = $$1.a($$0, $$4.g(), 11);
-               if ($$5) {
-                  $$3.a((csg)$$1, $$0, $$2);
-               }
-
-               return $$5;
-            }
+            $$0.put(flx.c($$24), $$20);
+            $$0.put(flx.d($$24), $$21);
          }
       }
-   }
 
-   public boolean a(hx $$0, ib $$1) {
-      if (this.b.s.a(this.b.r, $$0, this.j)) {
-         return false;
-      } else if (!this.b.r.D_().a($$0)) {
-         return false;
+      fme $$25 = fuw.f();
+      dkc.a().forEach($$2x -> $$0.put(flx.a($$2x), $$25));
+      fme $$26 = fus.e();
+      dkc.a().forEach($$2x -> $$0.put(flx.b($$2x), $$26));
+      ImmutableMap<flw, fme> $$27 = $$0.build();
+      List<flw> $$28 = flx.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$28.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$28);
       } else {
-         if (this.j.g()) {
-            dhn $$2 = this.b.r.a_($$0);
-            this.b.ay().a(this.b.r, $$0, $$2, 1.0F);
-            this.a(this.b.r, $$2x -> {
-               this.a($$0);
-               return new ads(ads.a.a, $$0, $$1, $$2x);
-            });
-            this.h = 5;
-         } else if (!this.i || !this.b($$0)) {
-            if (this.i) {
-               this.c.b(new ads(ads.a.b, this.d, $$1));
-            }
-
-            dhn $$3 = this.b.r.a_($$0);
-            this.b.ay().a(this.b.r, $$0, $$3, 0.0F);
-            this.a(this.b.r, $$3x -> {
-               boolean $$4 = !$$3.i();
-               if ($$4 && this.f == 0.0F) {
-                  $$3.a(this.b.r, $$0, this.b.s);
-               }
-
-               if ($$4 && $$3.a(this.b.s, this.b.s.dN(), $$0) >= 1.0F) {
-                  this.a($$0);
-               } else {
-                  this.i = true;
-                  this.d = $$0;
-                  this.e = this.b.s.eU();
-                  this.f = 0.0F;
-                  this.g = 0.0F;
-                  this.b.r.a(this.b.s.aj(), this.d, this.n());
-               }
-
-               return new ads(ads.a.a, $$0, $$1, $$3x);
-            });
-         }
-
-         return true;
+         return $$27;
       }
-   }
-
-   public void b() {
-      if (this.i) {
-         dhn $$0 = this.b.r.a_(this.d);
-         this.b.ay().a(this.b.r, this.d, $$0, -1.0F);
-         this.c.b(new ads(ads.a.b, this.d, ib.a));
-         this.i = false;
-         this.f = 0.0F;
-         this.b.r.a(this.b.s.aj(), this.d, -1);
-         this.b.s.gn();
-      }
-   }
-
-   public boolean b(hx $$0, ib $$1) {
-      this.o();
-      if (this.h > 0) {
-         this.h--;
-         return true;
-      } else if (this.j.g() && this.b.r.D_().a($$0)) {
-         this.h = 5;
-         dhn $$2 = this.b.r.a_($$0);
-         this.b.ay().a(this.b.r, $$0, $$2, 1.0F);
-         this.a(this.b.r, $$2x -> {
-            this.a($$0);
-            return new ads(ads.a.a, $$0, $$1, $$2x);
-         });
-         return true;
-      } else if (this.b($$0)) {
-         dhn $$3 = this.b.r.a_($$0);
-         if ($$3.i()) {
-            this.i = false;
-            return false;
-         } else {
-            this.f = this.f + $$3.a(this.b.s, this.b.s.dN(), $$0);
-            if (this.g % 4.0F == 0.0F) {
-               dcr $$4 = $$3.w();
-               this.b.ah().a(new gfc($$4.f(), aqw.e, ($$4.a() + 1.0F) / 8.0F, $$4.b() * 0.5F, gfh.t(), $$0));
-            }
-
-            this.g++;
-            this.b.ay().a(this.b.r, $$0, $$3, atq.a(this.f, 0.0F, 1.0F));
-            if (this.f >= 1.0F) {
-               this.i = false;
-               this.a(this.b.r, $$2 -> {
-                  this.a($$0);
-                  return new ads(ads.a.c, $$0, $$1, $$2);
-               });
-               this.f = 0.0F;
-               this.g = 0.0F;
-               this.h = 5;
-            }
-
-            this.b.r.a(this.b.s.aj(), this.d, this.n());
-            return true;
-         }
-      } else {
-         return this.a($$0, $$1);
-      }
-   }
-
-   private void a(flo $$0, fmw $$1) {
-      try (fmv $$2 = $$0.a().a()) {
-         int $$3 = $$2.b();
-         wo<acp> $$4 = $$1.predict($$3);
-         this.c.b($$4);
-      }
-   }
-
-   public float c() {
-      return cdz.v(this.j.g());
-   }
-
-   public void d() {
-      this.o();
-      if (this.c.m().k()) {
-         this.c.m().d();
-      } else {
-         this.c.m().p();
-      }
-   }
-
-   private boolean b(hx $$0) {
-      clo $$1 = this.b.s.eU();
-      return $$0.equals(this.d) && clo.c($$1, this.e);
-   }
-
-   private void o() {
-      int $$0 = this.b.s.fT().l;
-      if ($$0 != this.l) {
-         this.l = $$0;
-         this.c.b(new aeb(this.l));
-      }
-   }
-
-   public bjb a(fqb $$0, bja $$1, ejv $$2) {
-      this.o();
-      if (!this.b.r.D_().a($$2.a())) {
-         return bjb.e;
-      } else {
-         MutableObject<bjb> $$3 = new MutableObject();
-         this.a(this.b.r, $$4 -> {
-            $$3.setValue(this.b($$0, $$1, $$2));
-            return new aek($$1, $$2, $$4);
-         });
-         return (bjb)$$3.getValue();
-      }
-   }
-
-   private bjb b(fqb $$0, bja $$1, ejv $$2) {
-      hx $$3 = $$2.a();
-      clo $$4 = $$0.b($$1);
-      if (this.j == csc.d) {
-         return bjb.a;
-      } else {
-         boolean $$5 = !$$0.eU().b() || !$$0.eV().b();
-         boolean $$6 = $$0.fJ() && $$5;
-         if (!$$6) {
-            dhn $$7 = this.b.r.a_($$3);
-            if (!this.c.a($$7.b().m())) {
-               return bjb.e;
-            }
-
-            bjb $$8 = $$7.a(this.b.r, $$0, $$1, $$2);
-            if ($$8.a()) {
-               return $$8;
-            }
-         }
-
-         if (!$$4.b() && !$$0.go().a($$4.d())) {
-            cny $$9 = new cny($$0, $$1, $$2);
-            bjb $$11;
-            if (this.j.g()) {
-               int $$10 = $$4.L();
-               $$11 = $$4.a($$9);
-               $$4.f($$10);
-            } else {
-               $$11 = $$4.a($$9);
-            }
-
-            return $$11;
-         } else {
-            return bjb.d;
-         }
-      }
-   }
-
-   public bjb a(cdz $$0, bja $$1) {
-      if (this.j == csc.d) {
-         return bjb.d;
-      } else {
-         this.o();
-         this.c.b(new adm.b($$0.ds(), $$0.du(), $$0.dy(), $$0.dD(), $$0.dF(), $$0.aC()));
-         MutableObject<bjb> $$2 = new MutableObject();
-         this.a(this.b.r, $$3 -> {
-            ael $$4 = new ael($$1, $$3);
-            clo $$5 = $$0.b($$1);
-            if ($$0.go().a($$5.d())) {
-               $$2.setValue(bjb.d);
-               return $$4;
-            } else {
-               bjc<clo> $$6 = $$5.a(this.b.r, $$0, $$1);
-               clo $$7 = $$6.b();
-               if ($$7 != $$5) {
-                  $$0.a($$1, $$7);
-               }
-
-               $$2.setValue($$6.a());
-               return $$4;
-            }
-         });
-         return (bjb)$$2.getValue();
-      }
-   }
-
-   public fqb a(flo $$0, arg $$1, esv $$2) {
-      return this.a($$0, $$1, $$2, false, false);
-   }
-
-   public fqb a(flo $$0, arg $$1, esv $$2, boolean $$3, boolean $$4) {
-      return new fqb(this.b, $$0, this.c, $$1, $$2, $$3, $$4);
-   }
-
-   public void a(cdz $$0, bkv $$1) {
-      this.o();
-      this.c.b(adj.a($$1, $$0.bS()));
-      if (this.j != csc.d) {
-         $$0.d($$1);
-         $$0.gn();
-      }
-   }
-
-   public bjb a(cdz $$0, bkv $$1, bja $$2) {
-      this.o();
-      this.c.b(adj.a($$1, $$0.bS(), $$2));
-      return this.j == csc.d ? bjb.d : $$0.a($$1, $$2);
-   }
-
-   public bjb a(cdz $$0, bkv $$1, ejw $$2, bja $$3) {
-      this.o();
-      ejz $$4 = $$2.e().a($$1.ds(), $$1.du(), $$1.dy());
-      this.c.b(adj.a($$1, $$0.bS(), $$3, $$4));
-      return this.j == csc.d ? bjb.d : $$1.a($$0, $$4, $$3);
-   }
-
-   public void a(int $$0, int $$1, int $$2, cha $$3, cdz $$4) {
-      cgr $$5 = $$4.bS;
-      if ($$0 != $$5.j) {
-         a.warn("Ignoring click in mismatching container. Click in {}, player has {}.", $$0, $$5.j);
-      } else {
-         ip<cim> $$6 = $$5.i;
-         int $$7 = $$6.size();
-         List<clo> $$8 = Lists.newArrayListWithCapacity($$7);
-
-         for (cim $$9 : $$6) {
-            $$8.add($$9.f().p());
-         }
-
-         $$5.a($$1, $$2, $$3, $$4);
-         Int2ObjectMap<clo> $$10 = new Int2ObjectOpenHashMap();
-
-         for (int $$11 = 0; $$11 < $$7; $$11++) {
-            clo $$12 = $$8.get($$11);
-            clo $$13 = $$6.get($$11).f();
-            if (!clo.a($$12, $$13)) {
-               $$10.put($$11, $$13.p());
-            }
-         }
-
-         this.c.b(new ade($$0, $$5.j(), $$1, $$2, $$3, $$5.g().p(), $$10));
-      }
-   }
-
-   public void a(int $$0, cov<?> $$1, boolean $$2) {
-      this.c.b(new adq($$0, $$1, $$2));
-   }
-
-   public void a(int $$0, int $$1) {
-      this.c.b(new add($$0, $$1));
-   }
-
-   public void a(clo $$0, int $$1) {
-      if (this.j.g() && this.c.a($$0.d().m())) {
-         this.c.b(new aee($$1, $$0));
-      }
-   }
-
-   public void a(clo $$0) {
-      if (this.j.g() && !$$0.b() && this.c.a($$0.d().m())) {
-         this.c.b(new aee(-1, $$0));
-      }
-   }
-
-   public void b(cdz $$0) {
-      this.o();
-      this.c.b(new ads(ads.a.f, hx.b, ib.a));
-      $$0.ft();
-   }
-
-   public boolean e() {
-      return this.j.h();
-   }
-
-   public boolean f() {
-      return !this.j.g();
-   }
-
-   public boolean g() {
-      return this.j.g();
-   }
-
-   public boolean h() {
-      return this.j.g();
-   }
-
-   public boolean i() {
-      return this.b.s.bO() && this.b.s.da() instanceof ble;
-   }
-
-   public boolean j() {
-      return this.j == csc.d;
-   }
-
-   @Nullable
-   public csc k() {
-      return this.k;
-   }
-
-   public csc l() {
-      return this.j;
-   }
-
-   public boolean m() {
-      return this.i;
-   }
-
-   public int n() {
-      return this.f > 0.0F ? (int)(this.f * 10.0F) : -1;
-   }
-
-   public void a(int $$0) {
-      this.c.b(new adp($$0));
-   }
-
-   public void a(int $$0, int $$1, boolean $$2) {
-      this.c.b(new adg($$0, $$1, $$2));
    }
 }

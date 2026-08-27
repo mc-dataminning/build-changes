@@ -1,12 +1,10 @@
-public enum cmf {
-   a(n.p),
-   b(n.o),
-   c(n.l),
-   d(n.n);
+public class cmf extends cls {
+   public cmf(blj<? extends caw> $$0, cmc.a $$1) {
+      super($$0, $$1);
+   }
 
-   public final n e;
-
-   private cmf(n $$0) {
-      this.e = $$0;
+   @Override
+   protected boolean a(cer $$0, ia $$1, cmh $$2, hv $$3) {
+      return !$$0.dM().r($$3) && $$0.a($$3, $$1, $$2);
    }
 }

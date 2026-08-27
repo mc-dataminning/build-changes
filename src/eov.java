@@ -1,4 +1,8 @@
-public class eov {
-   public volatile long a;
-   public volatile long b;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@emx
+@emw
+interface eov {
 }

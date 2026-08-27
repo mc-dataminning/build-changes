@@ -1,44 +1,38 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
-public class flc {
-   private final List<fkw> a;
-   private final fkv b;
-   private final Map<String, flc> c = Maps.newHashMap();
+public class flc<T extends bza> extends fhv<T> {
+   private final fly a;
+   private final fly b;
 
-   flc(List<fkw> $$0, fkv $$1) {
+   public flc(fly $$0) {
+      super(true, 8.0F, 3.35F);
       this.a = $$0;
-      this.b = $$1;
+      this.b = $$0.b("tail");
    }
 
-   public flc a(String $$0, fky $$1, fkv $$2) {
-      flc $$3 = new flc($$1.b(), $$2);
-      flc $$4 = this.c.put($$0, $$3);
-      if ($$4 != null) {
-         $$3.c.putAll($$4.c);
-      }
-
-      return $$3;
+   public static fme c() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      float $$2 = 0.0F;
+      float $$3 = 22.0F;
+      float $$4 = -3.0F;
+      $$1.a("body", fmd.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), fma.a(0.0F, 22.0F, -3.0F));
+      $$1.a("tail", fmd.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), fma.a(0.0F, 22.0F, 0.0F));
+      return fme.a($$0, 16, 16);
    }
 
-   public fkt a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, fkt> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((flc)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<fkt.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
-      fkt $$4 = new fkt($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
+   @Override
+   protected Iterable<fly> a() {
+      return ImmutableList.of(this.a);
    }
 
-   public flc a(String $$0) {
-      return this.c.get($$0);
+   @Override
+   protected Iterable<fly> b() {
+      return ImmutableList.of(this.b);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$0.aZ() ? 1.0F : 1.5F;
+      this.b.f = -$$6 * 0.25F * aty.a(0.3F * $$3);
    }
 }

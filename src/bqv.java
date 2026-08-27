@@ -1,22 +1,15 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bqv<E extends cdd> extends bnc<E> {
-   public bqv(int $$0) {
-      super(ImmutableMap.of(bum.aB, bun.a, bum.m, bun.b, bum.n, bun.c), $$0);
-   }
-
-   protected boolean a(ami $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(ami $$0, E $$1, long $$2) {
-      $$1.b(blx.n);
-      $$1.a(aqv.Ag, 5.0F, 1.0F);
-   }
-
-   protected void c(ami $$0, E $$1, long $$2) {
-      if ($$1.c(blx.n)) {
-         $$1.b(blx.a);
-      }
+public class bqv {
+   public static bnn<blv> a() {
+      return bqz.a((Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$0 -> $$0.a((brc<blv>)(($$0x, $$1, $$2) -> {
+            if (!$$1.dO().c(cgd.e) && $$1.fD()) {
+               $$1.fE();
+               return true;
+            } else {
+               return false;
+            }
+         }))));
    }
 }

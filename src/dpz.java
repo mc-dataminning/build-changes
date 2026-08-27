@@ -1,56 +1,32 @@
-public class dpz extends dqa<dsl> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final hx an = hx.b;
-   private final boolean ao;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static hx a(hx $$0) {
-      return an.a((ja)$$0);
+public class dpz extends dpw {
+   public static final Codec<dpz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dpw.d.forGetter($$0x -> $$0x),
+               bio.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bio.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bio.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, dpz::new)
+   );
+   public final bio b;
+   public final bio c;
+   final bio j;
+
+   public dpz(float $$0, dwv $$1, bio $$2, dos $$3, dpx $$4, ij<cvz> $$5, bio $$6, bio $$7, bio $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   public dpz(boolean $$0) {
-      super(dsl.a);
-      this.ao = $$0;
+   public dpz(float $$0, dwv $$1, bio $$2, dos $$3, ij<cvz> $$4, bio $$5, bio $$6, bio $$7) {
+      this($$0, $$1, $$2, $$3, dpx.a, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   public boolean a(dqc<dsl> $$0) {
-      hx $$1 = $$0.e();
-      csz $$2 = $$0.b();
-
-      for (hx $$3 : hx.a(new hx($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new hx($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, cvh.F.o());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, cvh.fz.o());
-               }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, cvh.a.o());
-            } else if (!$$4) {
-               this.a($$2, $$3, cvh.F.o());
-            } else if (this.ao) {
-               this.a($$2, new hx($$3), cvh.fx.o());
-            } else {
-               this.a($$2, new hx($$3), cvh.a.o());
-            }
-         }
-      }
-
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), cvh.F.o());
-      }
-
-      hx $$6 = $$1.b(2);
-
-      for (ib $$7 : ib.c.a) {
-         this.a($$2, $$6.a($$7), cvh.cq.o().a(dee.g, $$7));
-      }
-
-      return true;
+   public dpz(dpw $$0, bio $$1, bio $$2, bio $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

@@ -1,136 +1,115 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import javax.annotation.Nullable;
+public class fqo extends fqw {
+   private static final auf a = auf.a();
+   private final fqr b;
 
-public abstract class fqo {
-   private static final Object2ObjectMap<agm, fqo> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
-      fqo.c $$1 = new fqo.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dku.e, $$1);
-      $$0.put(dku.f, new fqo.b());
-      $$0.put(dku.g, new fqo.a());
-   });
-   private final float[] b = new float[4];
-   private final float c;
-   private final boolean d;
-   private final fqo.d e;
-   private final boolean f;
-   private final boolean g;
+   fqo(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fqr $$7) {
+      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.b = $$7;
+      this.k *= 0.2F;
+      if ($$4 == 0.0 && $$6 == 0.0) {
+         this.j *= 0.1F;
+         this.l *= 0.1F;
+      }
 
-   public fqo(float $$0, boolean $$1, fqo.d $$2, boolean $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+      this.D *= 0.75F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.b($$7);
+      if (this.g()) {
+         this.e(0.0F);
+      }
    }
 
-   public static fqo a(dkw $$0) {
-      return (fqo)a.get($$0.r());
+   @Override
+   public fqa b() {
+      return fqa.c;
    }
 
-   @Nullable
-   public float[] a(float $$0, float $$1) {
-      float $$2 = 0.4F;
-      float $$3 = atq.b($$0 * (float) (Math.PI * 2)) - 0.0F;
-      float $$4 = -0.0F;
-      if ($$3 >= -0.4F && $$3 <= 0.4F) {
-         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
-         float $$6 = 1.0F - (1.0F - atq.a($$5 * (float) Math.PI)) * 0.99F;
-         $$6 *= $$6;
-         this.b[0] = $$5 * 0.3F + 0.7F;
-         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
-         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
-         this.b[3] = $$6;
-         return this.b;
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+      if (this.g()) {
+         this.e(0.0F);
       } else {
-         return null;
+         this.e(aty.i(0.05F, this.y, 1.0F));
       }
    }
 
-   public float a() {
-      return this.c;
+   private boolean g() {
+      euk $$0 = euk.N();
+      frk $$1 = $$0.s;
+      return $$1 != null && $$1.br().c(this.g, this.h, this.i) <= 9.0 && $$0.m.ax().a() && $$1.gq();
    }
 
-   public boolean b() {
-      return this.d;
-   }
+   public static class a implements fpz<jy> {
+      private final fqr a;
 
-   public abstract ejz a(ejz var1, float var2);
-
-   public abstract boolean a(int var1, int var2);
-
-   public fqo.d c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public static class a extends fqo {
-      public a() {
-         super(Float.NaN, false, fqo.d.c, true, false);
+      public a(fqr $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public ejz a(ejz $$0, float $$1) {
-         return $$0.a(0.15F);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public float[] a(float $$0, float $$1) {
-         return null;
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpw $$8 = new fqo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(0.15F);
+         $$8.a((float)$$5, (float)$$6, (float)$$7);
+         return $$8;
       }
    }
 
-   public static class b extends fqo {
-      public b() {
-         super(Float.NaN, true, fqo.d.a, false, true);
+   public static class b implements fpz<jy> {
+      private final fqr a;
+
+      public b(fqr $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public ejz a(ejz $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fqo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 
-   public static class c extends fqo {
-      public static final int a = 192;
+   public static class c implements fpz<jy> {
+      private final fqr a;
 
-      public c() {
-         super(192.0F, true, fqo.d.b, false, false);
+      public c(fqr $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public ejz a(ejz $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpw $$8 = new fqo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a((float)$$5, (float)$$6, (float)$$7);
+         return $$8;
       }
    }
 
-   public static enum d {
-      a,
-      b,
-      c;
+   public static class d implements fpz<jy> {
+      private final fqr a;
+
+      public d(fqr $$0) {
+         this.a = $$0;
+      }
+
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fqo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class e implements fpz<jy> {
+      private final fqr a;
+
+      public e(fqr $$0) {
+         this.a = $$0;
+      }
+
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqo $$8 = new fqo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         float $$9 = $$1.z.i() * 0.5F + 0.35F;
+         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+         return $$8;
+      }
    }
 }

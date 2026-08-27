@@ -1,24 +1,24 @@
-public class xb implements wo<wy> {
-   private final long a;
+public class xb implements wu<wx> {
+   private final int a;
 
-   public xb(long $$0) {
+   public xb(int $$0) {
       this.a = $$0;
    }
 
-   public void a(wy $$0) {
-      $$0.a(this);
-   }
-
-   public xb(ty $$0) {
-      this.a = $$0.readLong();
+   public xb(ue $$0) {
+      this.a = $$0.readInt();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.b(this.a);
+   public void a(ue $$0) {
+      $$0.p(this.a);
    }
 
-   public long a() {
+   public void a(wx $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
       return this.a;
    }
 }

@@ -1,205 +1,68 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Set;
+import com.google.common.collect.ImmutableSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class ceh extends cef {
-   private static final int f = 600;
-   private static final int g = -1;
-   private static final afs<Integer> h = afv.a(ceh.class, afu.b);
-   private static final byte i = 0;
-   private static final clo j = new clo(clr.os);
-   private cnl k = cno.b;
-   private final Set<bki> l = Sets.newHashSet();
-   private boolean m;
-
-   public ceh(bkz<? extends ceh> $$0, csf $$1) {
-      super($$0, $$1, j);
-   }
-
-   public ceh(csf $$0, double $$1, double $$2, double $$3, clo $$4) {
-      super(bkz.e, $$1, $$2, $$3, $$0, $$4);
-   }
-
-   public ceh(csf $$0, bll $$1, clo $$2) {
-      super(bkz.e, $$1, $$0, $$2);
-   }
-
-   public void a(clo $$0) {
-      if ($$0.a(clr.vi)) {
-         this.k = cnn.d($$0);
-         Collection<bki> $$1 = cnn.b($$0);
-         if (!$$1.isEmpty()) {
-            for (bki $$2 : $$1) {
-               this.l.add(new bki($$2));
-            }
-         }
-
-         int $$3 = c($$0);
-         if ($$3 == -1) {
-            this.K();
-         } else {
-            this.d($$3);
-         }
-      } else if ($$0.a(clr.os)) {
-         this.k = cno.b;
-         this.l.clear();
-         this.an.b(h, -1);
-      }
-   }
-
-   public static int c(clo $$0) {
-      sd $$1 = $$0.v();
-      return $$1 != null && $$1.b("CustomPotionColor", 99) ? $$1.h("CustomPotionColor") : -1;
-   }
-
-   private void K() {
-      this.m = false;
-      if (this.k == cno.b && this.l.isEmpty()) {
-         this.an.b(h, -1);
-      } else {
-         this.an.b(h, cnn.a(cnn.a(this.k, this.l)));
-      }
-   }
-
-   public void a(bki $$0) {
-      this.l.add($$0);
-      this.an().b(h, cnn.a(cnn.a(this.k, this.l)));
-   }
+public record ceh(String q, Predicate<ie<bwz>> r, Predicate<ie<bwz>> s, ImmutableSet<cmc> t, ImmutableSet<cvz> u, @Nullable arb v) {
+   public static final Predicate<ie<bwz>> a = $$0 -> $$0.a(asb.a);
+   public static final ceh b = a("none", bwz.a, a, null);
+   public static final ceh c = a("armorer", bxa.a, arc.zO);
+   public static final ceh d = a("butcher", bxa.b, arc.zP);
+   public static final ceh e = a("cartographer", bxa.c, arc.zQ);
+   public static final ceh f = a("cleric", bxa.d, arc.zR);
+   public static final ceh g = a("farmer", bxa.e, ImmutableSet.of(cmk.pt, cmk.ps, cmk.ve, cmk.rv), ImmutableSet.of(cwb.cC), arc.zS);
+   public static final ceh h = a("fisherman", bxa.f, arc.zT);
+   public static final ceh i = a("fletcher", bxa.g, arc.zU);
+   public static final ceh j = a("leatherworker", bxa.h, arc.zV);
+   public static final ceh k = a("librarian", bxa.i, arc.zW);
+   public static final ceh l = a("mason", bxa.j, arc.zX);
+   public static final ceh m = a("nitwit", bwz.a, bwz.a, null);
+   public static final ceh n = a("shepherd", bxa.k, arc.zY);
+   public static final ceh o = a("toolsmith", bxa.l, arc.zZ);
+   public static final ceh p = a("weaponsmith", bxa.m, arc.Aa);
 
    @Override
-   protected void c_() {
-      super.c_();
-      this.an.a(h, -1);
+   public String toString() {
+      return this.q;
    }
 
-   @Override
-   public void l() {
-      super.l();
-      if (this.dN().B) {
-         if (this.b) {
-            if (this.c % 5 == 0) {
-               this.c(1);
-            }
-         } else {
-            this.c(2);
-         }
-      } else if (this.b && this.c != 0 && !this.l.isEmpty() && this.c >= 600) {
-         this.dN().a(this, (byte)0);
-         this.k = cno.b;
-         this.l.clear();
-         this.an.b(h, -1);
-      }
+   private static ceh a(String $$0, ags<bwz> $$1, @Nullable arb $$2) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
    }
 
-   private void c(int $$0) {
-      int $$1 = this.H();
-      if ($$1 != -1 && $$0 > 0) {
-         double $$2 = (double)($$1 >> 16 & 0xFF) / 255.0;
-         double $$3 = (double)($$1 >> 8 & 0xFF) / 255.0;
-         double $$4 = (double)($$1 >> 0 & 0xFF) / 255.0;
-
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            this.dN().a(jw.v, this.d(0.5), this.dv(), this.g(0.5), $$2, $$3, $$4);
-         }
-      }
+   private static ceh a(String $$0, Predicate<ie<bwz>> $$1, Predicate<ie<bwz>> $$2, @Nullable arb $$3) {
+      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
    }
 
-   public int H() {
-      return this.an.b(h);
+   private static ceh a(String $$0, ags<bwz> $$1, ImmutableSet<cmc> $$2, ImmutableSet<cvz> $$3, @Nullable arb $$4) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
    }
 
-   private void d(int $$0) {
-      this.m = true;
-      this.an.b(h, $$0);
+   private static ceh a(String $$0, Predicate<ie<bwz>> $$1, Predicate<ie<bwz>> $$2, ImmutableSet<cmc> $$3, ImmutableSet<cvz> $$4, @Nullable arb $$5) {
+      return ir.a(kb.z, new agt($$0), new ceh($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   @Override
-   public void b(sd $$0) {
-      super.b($$0);
-      if (this.k != cno.b) {
-         $$0.a("Potion", kc.j.b(this.k).toString());
-      }
-
-      if (this.m) {
-         $$0.a("Color", this.H());
-      }
-
-      if (!this.l.isEmpty()) {
-         sj $$1 = new sj();
-
-         for (bki $$2 : this.l) {
-            $$1.add($$2.a(new sd()));
-         }
-
-         $$0.a("custom_potion_effects", $$1);
-      }
+   public String a() {
+      return this.q;
    }
 
-   @Override
-   public void a(sd $$0) {
-      super.a($$0);
-      if ($$0.b("Potion", 8)) {
-         this.k = cnn.c($$0);
-      }
-
-      for (bki $$1 : cnn.b($$0)) {
-         this.a($$1);
-      }
-
-      if ($$0.b("Color", 99)) {
-         this.d($$0.h("Color"));
-      } else {
-         this.K();
-      }
+   public Predicate<ie<bwz>> b() {
+      return this.r;
    }
 
-   @Override
-   protected void a(bll $$0) {
-      super.a($$0);
-      bkv $$1 = this.I();
-
-      for (bki $$2 : this.k.a()) {
-         $$0.b(new bki($$2.c(), Math.max($$2.a($$0x -> $$0x / 8), 1), $$2.e(), $$2.f(), $$2.g()), $$1);
-      }
-
-      if (!this.l.isEmpty()) {
-         for (bki $$3 : this.l) {
-            $$0.b($$3, $$1);
-         }
-      }
+   public Predicate<ie<bwz>> c() {
+      return this.s;
    }
 
-   @Override
-   protected clo x() {
-      clo $$0 = super.x();
-      if (this.l.isEmpty() && this.k == cno.b) {
-         return $$0;
-      } else {
-         cnn.a($$0, this.k);
-         cnn.a($$0, this.l);
-         if (this.m) {
-            $$0.w().a("CustomPotionColor", this.H());
-         }
-
-         return $$0;
-      }
+   public ImmutableSet<cmc> d() {
+      return this.t;
    }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 0) {
-         int $$1 = this.H();
-         if ($$1 != -1) {
-            double $$2 = (double)($$1 >> 16 & 0xFF) / 255.0;
-            double $$3 = (double)($$1 >> 8 & 0xFF) / 255.0;
-            double $$4 = (double)($$1 >> 0 & 0xFF) / 255.0;
+   public ImmutableSet<cvz> e() {
+      return this.u;
+   }
 
-            for (int $$5 = 0; $$5 < 20; $$5++) {
-               this.dN().a(jw.v, this.d(0.5), this.dv(), this.g(0.5), $$2, $$3, $$4);
-            }
-         }
-      } else {
-         super.b($$0);
-      }
+   @Nullable
+   public arb f() {
+      return this.v;
    }
 }

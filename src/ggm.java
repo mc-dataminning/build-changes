@@ -1,58 +1,44 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public class ggm extends ggf {
+   public static final int n = 20;
+   private final frk o;
+   private int p;
 
-public class ggm implements ggn<gfe> {
-   private final List<ggn<gfe>> a = Lists.newArrayList();
-   @Nullable
-   private final uv b;
-
-   public ggm(agm $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : uv.c($$1);
+   public ggm(frk $$0) {
+      super(arc.hs, ard.h, ggw.t());
+      this.o = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.1F;
    }
 
    @Override
-   public int e() {
-      int $$0 = 0;
-
-      for (ggn<gfe> $$1 : this.a) {
-         $$0 += $$1.e();
-      }
-
-      return $$0;
-   }
-
-   public gfe a(atw $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
-
-         for (ggn<gfe> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
-            }
+   public void q() {
+      this.p++;
+      if (!this.o.dH() && (this.p <= 20 || this.o.fw())) {
+         this.f = (double)((float)this.o.dr());
+         this.g = (double)((float)this.o.dt());
+         this.h = (double)((float)this.o.dx());
+         float $$0 = (float)this.o.dp().g();
+         if ((double)$$0 >= 1.0E-7) {
+            this.d = aty.a($$0 / 4.0F, 0.0F, 1.0F);
+         } else {
+            this.d = 0.0F;
          }
 
-         return ggl.a;
+         if (this.p < 20) {
+            this.d = 0.0F;
+         } else if (this.p < 40) {
+            this.d = this.d * ((float)(this.p - 20) / 20.0F);
+         }
+
+         float $$1 = 0.8F;
+         if (this.d > 0.8F) {
+            this.e = 1.0F + (this.d - 0.8F);
+         } else {
+            this.e = 1.0F;
+         }
       } else {
-         return ggl.a;
-      }
-   }
-
-   public void a(ggn<gfe> $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   public uv a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(ggi $$0) {
-      for (ggn<gfe> $$1 : this.a) {
-         $$1.a($$0);
+         this.n();
       }
    }
 }

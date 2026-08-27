@@ -1,5 +1,95 @@
-class qv extends Throwable {
-   public qv(int $$0, int $$1, re $$2) {
-      super("Not enough successes: " + $$1 + " out of " + $$0 + " attempts. Required successes: " + $$2.A() + ". max attempts: " + $$2.z() + ".", $$2.o());
+import java.util.List;
+
+public class qv {
+   public static final ags<dxs> a = qu.a("crimson_fungi");
+   public static final ags<dxs> b = qu.a("warped_fungi");
+   public static final ags<dxs> c = qu.a("oak_checked");
+   public static final ags<dxs> d = qu.a("dark_oak_checked");
+   public static final ags<dxs> e = qu.a("birch_checked");
+   public static final ags<dxs> f = qu.a("acacia_checked");
+   public static final ags<dxs> g = qu.a("spruce_checked");
+   public static final ags<dxs> h = qu.a("mangrove_checked");
+   public static final ags<dxs> i = qu.a("cherry_checked");
+   public static final ags<dxs> j = qu.a("pine_on_snow");
+   public static final ags<dxs> k = qu.a("spruce_on_snow");
+   public static final ags<dxs> l = qu.a("pine_checked");
+   public static final ags<dxs> m = qu.a("jungle_tree");
+   public static final ags<dxs> n = qu.a("fancy_oak_checked");
+   public static final ags<dxs> o = qu.a("mega_jungle_tree_checked");
+   public static final ags<dxs> p = qu.a("mega_spruce_checked");
+   public static final ags<dxs> q = qu.a("mega_pine_checked");
+   public static final ags<dxs> r = qu.a("tall_mangrove_checked");
+   public static final ags<dxs> s = qu.a("jungle_bush");
+   public static final ags<dxs> t = qu.a("super_birch_bees_0002");
+   public static final ags<dxs> u = qu.a("super_birch_bees");
+   public static final ags<dxs> v = qu.a("oak_bees_0002");
+   public static final ags<dxs> w = qu.a("oak_bees_002");
+   public static final ags<dxs> x = qu.a("birch_bees_0002");
+   public static final ags<dxs> y = qu.a("birch_bees_002");
+   public static final ags<dxs> z = qu.a("fancy_oak_bees_0002");
+   public static final ags<dxs> A = qu.a("fancy_oak_bees_002");
+   public static final ags<dxs> B = qu.a("fancy_oak_bees");
+   public static final ags<dxs> C = qu.a("cherry_bees_005");
+
+   public static void a(pa<dxs> $$0) {
+      ig<dqp<?, ?>> $$1 = $$0.a(kc.av);
+      ie<dqp<?, ?>> $$2 = $$1.b(qk.a);
+      ie<dqp<?, ?>> $$3 = $$1.b(qk.c);
+      ie<dqp<?, ?>> $$4 = $$1.b(qk.g);
+      ie<dqp<?, ?>> $$5 = $$1.b(qk.h);
+      ie<dqp<?, ?>> $$6 = $$1.b(qk.i);
+      ie<dqp<?, ?>> $$7 = $$1.b(qk.j);
+      ie<dqp<?, ?>> $$8 = $$1.b(qk.k);
+      ie<dqp<?, ?>> $$9 = $$1.b(qk.x);
+      ie<dqp<?, ?>> $$10 = $$1.b(qk.z);
+      ie<dqp<?, ?>> $$11 = $$1.b(qk.l);
+      ie<dqp<?, ?>> $$12 = $$1.b(qk.m);
+      ie<dqp<?, ?>> $$13 = $$1.b(qk.n);
+      ie<dqp<?, ?>> $$14 = $$1.b(qk.p);
+      ie<dqp<?, ?>> $$15 = $$1.b(qk.q);
+      ie<dqp<?, ?>> $$16 = $$1.b(qk.r);
+      ie<dqp<?, ?>> $$17 = $$1.b(qk.y);
+      ie<dqp<?, ?>> $$18 = $$1.b(qk.v);
+      ie<dqp<?, ?>> $$19 = $$1.b(qk.s);
+      ie<dqp<?, ?>> $$20 = $$1.b(qk.t);
+      ie<dqp<?, ?>> $$21 = $$1.b(qk.A);
+      ie<dqp<?, ?>> $$22 = $$1.b(qk.B);
+      ie<dqp<?, ?>> $$23 = $$1.b(qk.D);
+      ie<dqp<?, ?>> $$24 = $$1.b(qk.E);
+      ie<dqp<?, ?>> $$25 = $$1.b(qk.G);
+      ie<dqp<?, ?>> $$26 = $$1.b(qk.H);
+      ie<dqp<?, ?>> $$27 = $$1.b(qk.J);
+      ie<dqp<?, ?>> $$28 = $$1.b(qk.K);
+      qu.a($$0, a, $$2, dxk.a(8), dxg.a());
+      qu.a($$0, b, $$3, dxk.a(8), dxg.a());
+      qu.a($$0, c, $$4, qu.a(cwb.x));
+      qu.a($$0, d, $$5, qu.a(cwb.D));
+      qu.a($$0, e, $$6, qu.a(cwb.z));
+      qu.a($$0, f, $$7, qu.a(cwb.B));
+      qu.a($$0, g, $$8, qu.a(cwb.y));
+      qu.a($$0, h, $$9, qu.a(cwb.E));
+      qu.a($$0, i, $$10, qu.a(cwb.C));
+      dpf $$29 = dpf.a(ia.a.q(), cwb.dP, cwb.qP);
+      List<dxv> $$30 = List.of(dxm.a(ia.b, dpf.a(dpf.a(cwb.qP)), 8), dxh.a($$29));
+      qu.a($$0, j, $$11, $$30);
+      qu.a($$0, k, $$8, $$30);
+      qu.a($$0, l, $$11, qu.a(cwb.y));
+      qu.a($$0, m, $$12, qu.a(cwb.A));
+      qu.a($$0, n, $$13, qu.a(cwb.x));
+      qu.a($$0, o, $$14, qu.a(cwb.A));
+      qu.a($$0, p, $$15, qu.a(cwb.y));
+      qu.a($$0, q, $$16, qu.a(cwb.y));
+      qu.a($$0, r, $$17, qu.a(cwb.E));
+      qu.a($$0, s, $$18, qu.a(cwb.x));
+      qu.a($$0, t, $$19, qu.a(cwb.z));
+      qu.a($$0, u, $$20, qu.a(cwb.z));
+      qu.a($$0, v, $$21, qu.a(cwb.x));
+      qu.a($$0, w, $$22, qu.a(cwb.x));
+      qu.a($$0, x, $$23, qu.a(cwb.z));
+      qu.a($$0, y, $$24, qu.a(cwb.z));
+      qu.a($$0, z, $$25, qu.a(cwb.x));
+      qu.a($$0, A, $$26, qu.a(cwb.x));
+      qu.a($$0, B, $$27, qu.a(cwb.x));
+      qu.a($$0, C, $$28, qu.a(cwb.C));
    }
 }

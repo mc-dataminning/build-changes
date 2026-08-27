@@ -1,16 +1,49 @@
-public abstract class fhm<E extends bkv> extends fid<E> {
-   private float a = 1.0F;
-   private float b = 1.0F;
-   private float f = 1.0F;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.f = $$2;
+public class fhm implements fhi, fhj {
+   private static final agt a = new agt("spectator/teleport_to_player");
+   private static final Comparator<fnc> b = Comparator.comparing($$0 -> $$0.a().getId());
+   private static final vb c = vb.c("spectatorMenu.teleport");
+   private static final vb d = vb.c("spectatorMenu.teleport.prompt");
+   private final List<fhj> e;
+
+   public fhm() {
+      this(euk.N().I().n());
+   }
+
+   public fhm(Collection<fnc> $$0) {
+      this.e = $$0.stream().filter($$0x -> $$0x.e() != csv.d).sorted(b).map($$0x -> new fhf($$0x.a())).toList();
    }
 
    @Override
-   public void a(eob $$0, eof $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      super.a($$0, $$1, $$2, $$3, this.a * $$4, this.b * $$5, this.f * $$6, $$7);
+   public List<fhj> a() {
+      return this.e;
+   }
+
+   @Override
+   public vb b() {
+      return d;
+   }
+
+   @Override
+   public void a(fhh $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public vb aQ_() {
+      return c;
+   }
+
+   @Override
+   public void a(evw $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aR_() {
+      return !this.e.isEmpty();
    }
 }

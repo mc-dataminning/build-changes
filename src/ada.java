@@ -1,29 +1,32 @@
-public class ada implements wo<acp> {
-   private final ada.a a;
+public class ada implements wu<acw> {
+   private final int a;
+   private final hv b;
 
-   public ada(ada.a $$0) {
+   public ada(int $$0, hv $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public ada(ty $$0) {
-      this.a = $$0.b(ada.a.class);
+   public ada(ue $$0) {
+      this.a = $$0.n();
+      this.b = $$0.e();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.a);
+   public void a(ue $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
    }
 
-   public ada.a a() {
+   public int a() {
       return this.a;
    }
 
-   public static enum a {
-      a,
-      b;
+   public hv d() {
+      return this.b;
    }
 }

@@ -1,18 +1,97 @@
-public class ahg implements Runnable {
-   private final int a;
-   private final Runnable b;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-   public ahg(int $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class ahg implements apm {
+   private static final Logger a = LogUtils.getLogger();
+   private static final agm b = new agm("functions", ".mcfunction");
+   private volatile Map<agt, gz<ds>> c = ImmutableMap.of();
+   private final ash<gz<ds>> d = new ash<>(this::a, "tags/functions");
+   private volatile Map<agt, Collection<gz<ds>>> e = Map.of();
+   private final int f;
+   private final CommandDispatcher<ds> g;
+
+   public Optional<gz<ds>> a(agt $$0) {
+      return Optional.ofNullable(this.c.get($$0));
    }
 
-   public int a() {
-      return this.a;
+   public Map<agt, gz<ds>> a() {
+      return this.c;
+   }
+
+   public Collection<gz<ds>> b(agt $$0) {
+      return this.e.getOrDefault($$0, List.of());
+   }
+
+   public Iterable<agt> b() {
+      return this.e.keySet();
+   }
+
+   public ahg(int $$0, CommandDispatcher<ds> $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
    @Override
-   public void run() {
-      this.b.run();
+   public CompletableFuture<Void> a(apm.a $$0, aps $$1, bgc $$2, bgc $$3, Executor $$4, Executor $$5) {
+      CompletableFuture<Map<agt, List<ash.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
+      CompletableFuture<Map<agt, CompletableFuture<gz<ds>>>> $$7 = CompletableFuture.<Map<agt, apq>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
+         Map<agt, CompletableFuture<gz<ds>>> $$2x = Maps.newHashMap();
+         ds $$3x = new ds(dr.a, elb.b, ela.a, null, this.f, "", va.a, null, null);
+
+         for (Entry<agt, apq> $$4x : $$1x.entrySet()) {
+            agt $$5x = $$4x.getKey();
+            agt $$6x = b.b($$5x);
+            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
+               List<String> $$3xx = a($$4x.getValue());
+               return gz.a($$6x, this.g, $$3x, $$3xx);
+            }, $$4));
+         }
+
+         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
+         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
+      });
+      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
+         Map<agt, CompletableFuture<gz<ds>>> $$1x = (Map<agt, CompletableFuture<gz<ds>>>)$$0x.getSecond();
+         Builder<agt, gz<ds>> $$2x = ImmutableMap.builder();
+         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
+               if ($$3x != null) {
+                  a.error("Failed to load function {}", $$1xx, $$3x);
+               } else {
+                  $$2x.put($$1xx, $$2xxx);
+               }
+
+               return null;
+            }).join());
+         this.c = $$2x.build();
+         this.e = this.d.a((Map<agt, List<ash.a>>)$$0x.getFirst());
+      }, $$5);
+   }
+
+   private static List<String> a(apq $$0) {
+      try {
+         List var2;
+         try (BufferedReader $$1 = $$0.e()) {
+            var2 = $$1.lines().toList();
+         }
+
+         return var2;
+      } catch (IOException var6) {
+         throw new CompletionException(var6);
+      }
    }
 }

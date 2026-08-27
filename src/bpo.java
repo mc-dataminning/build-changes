@@ -1,26 +1,20 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bpo {
-   public static bnd<bll> a(int $$0, BiPredicate<bll, bll> $$1) {
-      return bqo.a(
-         (Function<bqo.b<bll>, ? extends App<bqo.c<bll>, bqr<bll>>>)($$2 -> $$2.group($$2.b(bum.o), $$2.a(bum.aa), $$2.c(bum.ah), $$2.a(bum.ai))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bll $$10 = $$2.b($$3);
-                     if (!$$10.ex()) {
+   public static bnn<blv> a(blj<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return bqz.a(
+         (Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$2x -> $$2x.group($$2x.a(bux.n), $$2x.c(bux.q), $$2x.b(bux.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<blv> $$9 = $$2x.<buz>b($$5).a($$3xx -> $$3xx.f((blf)$$7) <= (double)$$2 && $$0.equals($$3xx.ai()));
+                     if ($$9.isEmpty()) {
                         return false;
                      } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
-
-                        $$5.a($$10.dn(), (long)$$0);
-                        if ($$10.ai() != bkz.bt || $$7.Y().b(csb.N)) {
-                           $$3.b();
-                           $$4.b();
-                        }
-
+                        blv $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bnx($$10, true));
                         return true;
                      }
                   }))

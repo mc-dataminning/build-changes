@@ -1,60 +1,45 @@
-@FunctionalInterface
-public interface fwc<T extends bkv> {
-   fwb<T> create(fwc.a var1);
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-   public static class a {
-      private final fwa a;
-      private final fxa b;
-      private final frt c;
-      private final fqv d;
-      private final apl e;
-      private final fkp f;
-      private final eur g;
+public class fwc implements fvt.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final euk c;
+   private Collection<hv> d = Lists.newArrayList();
 
-      public a(fwa $$0, fxa $$1, frt $$2, fqv $$3, apl $$4, fkp $$5, eur $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
+   public fwc(euk $$0) {
+      this.c = $$0;
+   }
+
+   public void a(Collection<hv> $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
+      hv $$5 = this.b().c();
+
+      for (hv $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
+         }
       }
+   }
 
-      public fwa a() {
-         return this.a;
-      }
+   private static void a(epd $$0, fsi $$1, hv $$2) {
+      fvt.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      int $$3 = -65536;
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
 
-      public fxa b() {
-         return this.b;
-      }
+   private static void a(epd $$0, fsi $$1, String $$2, hv $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      fvt.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
 
-      public frt c() {
-         return this.c;
-      }
-
-      public fqv d() {
-         return this.d;
-      }
-
-      public apl e() {
-         return this.e;
-      }
-
-      public fkp f() {
-         return this.f;
-      }
-
-      public geg g() {
-         return this.c.a().a();
-      }
-
-      public fkt a(fkr $$0) {
-         return this.f.a($$0);
-      }
-
-      public eur h() {
-         return this.g;
-      }
+   private etv b() {
+      return this.c.j.m();
    }
 }

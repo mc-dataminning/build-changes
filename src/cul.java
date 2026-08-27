@@ -1,99 +1,89 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class cul extends cur {
-   public static final MapCodec<cul> a = b(cul::new);
-   public static final dih b = did.P;
-   public static final die c = did.u;
+public class cul {
+   public static final Codec<cul> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cul.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), agr.c(kc.as)).apply($$0, cul::new)
+   );
+   public static final Codec<ie<cul>> b = agp.a(kc.aK, a);
+   private final cul.a c;
+   private final cug.c<ie<ctx>> d;
 
-   @Override
-   public MapCodec<cul> a() {
-      return a;
+   public cul(cul.a $$0, ig<ctx> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   public cul(dhm.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ib.c).a(c, Boolean.valueOf(false)));
+   public cug.c<ie<ctx>> a() {
+      return this.d;
    }
 
-   @Override
-   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
-      if ($$1.B) {
-         return bjb.a;
-      } else {
-         dfi $$6 = $$1.c_($$2);
-         if ($$6 instanceof dfb) {
-            $$3.a((dfb)$$6);
-            $$3.a(arf.ar);
-            ccq.a($$3, true);
+   public static Map<cul.a, cug.c<ags<ctx>>> b() {
+      return cul.a.f.values().stream().collect(Collectors.toMap($$0 -> (cul.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
+   }
+
+   public static record a(agt d, cul.a.a e) {
+      public static final cul.a a = new cul.a(
+         new agt("nether"),
+         new cul.a.a() {
+            @Override
+            public <T> cug.c<T> apply(Function<ags<ctx>, T> $$0) {
+               return new cug.c<>(
+                  List.of(
+                     Pair.of(cug.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cue.ac)),
+                     Pair.of(cug.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cue.af)),
+                     Pair.of(cug.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cue.ae)),
+                     Pair.of(cug.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(cue.ad)),
+                     Pair.of(cug.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(cue.ag))
+                  )
+               );
+            }
          }
-
-         return bjb.b;
-      }
-   }
-
-   @Override
-   public void a(dhn $$0, csf $$1, hx $$2, dhn $$3, boolean $$4) {
-      bix.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      dfi $$4 = $$1.c_($$2);
-      if ($$4 instanceof dfb) {
-         ((dfb)$$4).m();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dfi a(hx $$0, dhn $$1) {
-      return new dfb($$0, $$1);
-   }
-
-   @Override
-   public dbk b_(dhn $$0) {
-      return dbk.c;
-   }
-
-   @Override
-   public void a(csf $$0, hx $$1, dhn $$2, @Nullable bll $$3, clo $$4) {
-      if ($$4.A()) {
-         dfi $$5 = $$0.c_($$1);
-         if ($$5 instanceof dfb) {
-            ((dfb)$$5).a($$4.y());
+      );
+      public static final cul.a b = new cul.a(new agt("overworld"), new cul.a.a() {
+         @Override
+         public <T> cug.c<T> apply(Function<ags<ctx>, T> $$0) {
+            return cul.a.a($$0);
          }
+      });
+      static final Map<agt, cul.a> f = Stream.of(a, b).collect(Collectors.toMap(cul.a::b, $$0 -> (cul.a)$$0));
+      public static final Codec<cul.a> c = agt.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> cug.c<T> a(Function<ags<ctx>, T> $$0) {
+         Builder<Pair<cug.d, T>> $$1 = ImmutableList.builder();
+         new cun().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new cug.c<>($$1.build());
       }
-   }
 
-   @Override
-   public boolean d_(dhn $$0) {
-      return true;
-   }
+      public Stream<ags<ctx>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<ags<ctx>>map(Pair::getSecond).distinct();
+      }
 
-   @Override
-   public int a(dhn $$0, csf $$1, hx $$2) {
-      return cgr.a($$1.c_($$2));
-   }
+      public agt b() {
+         return this.d;
+      }
 
-   @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
+      public cul.a.a c() {
+         return this.e;
+      }
 
-   @Override
-   public dhn a(dhn $$0, dab $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dhn a(cnw $$0) {
-      return this.o().a(b, $$0.d().g());
+      @FunctionalInterface
+      interface a {
+         <T> cug.c<T> apply(Function<ags<ctx>, T> var1);
+      }
    }
 }

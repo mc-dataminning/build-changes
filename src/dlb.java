@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dlb {
+public class dlb extends RuntimeException {
+   public dlb(int $$0) {
+      super("Missing Palette entry for index " + $$0 + ".");
+   }
 }

@@ -1,14 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import java.util.Objects;
 
-public class ayl extends azx {
-   public ayl(Schema $$0) {
-      super($$0, false, "Remove filtered text from signs", bax.s, "minecraft:sign");
+public class ayl extends bbq {
+   public ayl(Schema $$0, boolean $$1) {
+      super("EntityTippedArrowFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.remove("FilteredText1").remove("FilteredText2").remove("FilteredText3").remove("FilteredText4"));
+   protected String a(String $$0) {
+      return Objects.equals($$0, "TippedArrow") ? "Arrow" : $$0;
    }
 }

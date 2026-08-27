@@ -1,70 +1,132 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cyq extends dcv implements cvi {
-   public static final MapCodec<cyq> a = b(cyq::new);
+public class cyq extends cut<dgy> implements dcz {
+   public static final MapCodec<cyq> b = b(cyq::new);
+   public static final djj c = czu.aE;
+   public static final djg d = djf.C;
+   protected static final elu e = cvz.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
+   private static final vb f = vb.c("container.enderchest");
 
    @Override
    public MapCodec<cyq> a() {
-      return a;
+      return b;
    }
 
-   public cyq(dhm.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(csi $$0, hx $$1, dhn $$2) {
-      return $$0.a_($$1.c()).i();
+   protected cyq(dio.d $$0) {
+      super($$0, () -> dgf.d);
+      this.k(this.E.b().a(c, ia.c).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
-      return true;
+   public cyg.c<? extends dgk> a(dip $$0, csy $$1, hv $$2, boolean $$3) {
+      return cyg.b::b;
    }
 
    @Override
-   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
-      hx $$4 = $$2.c();
-      dhn $$5 = cvh.bt.o();
-      Optional<ig.c<dwq>> $$6 = $$0.I_().d(kd.aA).b(qq.n);
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return e;
+   }
 
-      label49:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         hx $$8 = $$4;
+   @Override
+   public dce b_(dip $$0) {
+      return dce.b;
+   }
 
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
-               continue label49;
-            }
+   @Override
+   public dip a(coq $$0) {
+      edz $$1 = $$0.q().b_($$0.a());
+      return this.o().a(c, $$0.g().g()).a(d, Boolean.valueOf($$1.a() == eea.c));
+   }
+
+   @Override
+   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
+      ciw $$6 = $$3.gf();
+      dgd $$7 = $$1.c_($$2);
+      if ($$6 != null && $$7 instanceof dgy) {
+         hv $$8 = $$2.c();
+         if ($$1.a_($$8).g($$1, $$8)) {
+            return bjl.a($$1.B);
+         } else if ($$1.B) {
+            return bjl.a;
+         } else {
+            dgy $$9 = (dgy)$$7;
+            $$6.a($$9);
+            $$3.a(new bju(($$1x, $$2x, $$3x) -> chr.a($$1x, $$2x, $$6), f));
+            $$3.a(arm.aj);
+            cdi.a($$3, true);
+            return bjl.b;
          }
+      } else {
+         return bjl.a($$1.B);
+      }
+   }
 
-         dhn $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            ((cvi)$$5.b()).a($$0, $$1, $$8, $$10);
-         }
+   @Override
+   public dgd a(hv $$0, dip $$1) {
+      return new dgy($$0, $$1);
+   }
 
-         if ($$10.i()) {
-            ig<dwq> $$12;
-            if ($$1.a(8) == 0) {
-               List<dpn<?, ?>> $$11 = $$0.s($$8).a().d().a();
-               if ($$11.isEmpty()) {
-                  continue;
-               }
+   @Nullable
+   @Override
+   public <T extends dgd> dge<T> a(csy $$0, dip $$1, dgf<T> $$2) {
+      return $$0.B ? a($$2, dgf.d, dgy::a) : null;
+   }
 
-               $$12 = ((dsr)$$11.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, auf $$3) {
+      for (int $$4 = 0; $$4 < 3; $$4++) {
+         int $$5 = $$3.a(2) * 2 - 1;
+         int $$6 = $$3.a(2) * 2 - 1;
+         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
+         double $$8 = (double)((float)$$2.v() + $$3.i());
+         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
+         double $$10 = (double)($$3.i() * (float)$$5);
+         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
+         double $$12 = (double)($$3.i() * (float)$$6);
+         $$1.a(jv.Z, $$7, $$8, $$9, $$10, $$11, $$12);
+      }
+   }
 
-               $$12 = $$6.get();
-            }
+   @Override
+   public dip a(dip $$0, dcl $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
+   }
 
-            $$12.a().a($$0, $$0.k().g(), $$1, $$8);
-         }
+   @Override
+   public dip a(dip $$0, dav $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   public edz c_(dip $$0) {
+      return $$0.c(d) ? eea.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eea.c, eea.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dip $$0, cse $$1, hv $$2, eep $$3) {
+      return false;
+   }
+
+   @Override
+   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
+      dgd $$4 = $$1.c_($$2);
+      if ($$4 instanceof dgy) {
+         ((dgy)$$4).c();
       }
    }
 }

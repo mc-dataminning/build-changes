@@ -1,48 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dtu extends dtq {
+public class dtu implements dtg {
    public static final Codec<dtu> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(big.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dtu::new)
+      $$0 -> $$0.group(Codec.list(dto.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, dtu::new)
    );
-   private final big b;
+   public final List<dto.a> b;
 
-   public dtu(big $$0, big $$1, big $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public dtu(dip $$0, dip $$1) {
+      this(ImmutableList.of(dto.a(new ebt($$0), $$1)));
    }
 
-   @Override
-   protected dtr<?> a() {
-      return dtr.c;
-   }
-
-   @Override
-   protected void a(csl $$0, dtq.b $$1, atw $$2, dta $$3, int $$4, dtq.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
-         }
-      }
-   }
-
-   @Override
-   public int a(atw $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
-   }
-
-   @Override
-   public int a(atw $$0, int $$1, dta $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(atw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public dtu(List<dto.a> $$0) {
+      this.b = $$0;
    }
 }

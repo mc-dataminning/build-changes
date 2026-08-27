@@ -1,71 +1,65 @@
-public class czq {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1003;
-   public static final int e = 1004;
-   public static final int f = 1009;
-   public static final int g = 1010;
-   public static final int h = 1011;
-   public static final int i = 1015;
-   public static final int j = 1016;
-   public static final int k = 1017;
-   public static final int l = 1018;
-   public static final int m = 1019;
-   public static final int n = 1020;
-   public static final int o = 1021;
-   public static final int p = 1022;
-   public static final int q = 1023;
-   public static final int r = 1024;
-   public static final int s = 1025;
-   public static final int t = 1026;
-   public static final int u = 1027;
-   public static final int v = 1028;
-   public static final int w = 1029;
-   public static final int x = 1030;
-   public static final int y = 1031;
-   public static final int z = 1032;
-   public static final int A = 1033;
-   public static final int B = 1034;
-   public static final int C = 1035;
-   public static final int D = 1038;
-   public static final int E = 1039;
-   public static final int F = 1040;
-   public static final int G = 1041;
-   public static final int H = 1042;
-   public static final int I = 1043;
-   public static final int J = 1044;
-   public static final int K = 1045;
-   public static final int L = 1046;
-   public static final int M = 1047;
-   public static final int N = 1048;
-   public static final int O = 1049;
-   public static final int P = 1050;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2005;
-   public static final int ac = 2006;
-   public static final int ad = 2007;
-   public static final int ae = 2008;
-   public static final int af = 2009;
-   public static final int ag = 2010;
-   public static final int ah = 3000;
-   public static final int ai = 3001;
-   public static final int aj = 3002;
-   public static final int ak = 3003;
-   public static final int al = 3004;
-   public static final int am = 3005;
-   public static final int an = 3006;
-   public static final int ao = 3007;
-   public static final int ap = 3008;
-   public static final int aq = 3009;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public class czq extends cvz implements dcz {
+   public static final MapCodec<czq> a = b(czq::new);
+   private static final djg c = djf.C;
+   protected static final elu b = cvz.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+
+   @Override
+   public MapCodec<czq> a() {
+      return a;
+   }
+
+   protected czq(dio.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public edz c_(dip $$0) {
+      return $$0.c(c) ? eea.c.a(false) : super.c_($$0);
+   }
+
+   @Nullable
+   @Override
+   public dip a(coq $$0) {
+      dip $$1 = super.a($$0);
+      if ($$1 != null) {
+         edz $$2 = $$0.q().b_($$0.a());
+         return $$1.a(c, Boolean.valueOf($$2.a() == eea.c));
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      hv $$3 = $$2.c();
+      dip $$4 = $$1.a_($$3);
+      return $$4.d($$1, $$3, ia.a);
+   }
+
+   @Override
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return b;
+   }
+
+   @Override
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$1 == ia.b && !this.a($$0, $$3, $$4)) {
+         return cwb.a.o();
+      } else {
+         if ($$0.c(c)) {
+            $$3.a($$4, eea.c, eea.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
 }

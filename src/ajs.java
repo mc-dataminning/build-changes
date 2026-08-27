@@ -1,56 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import javax.annotation.Nullable;
 
 public class ajs {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> uv.b("commands.ride.not_riding", $$0));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> uv.b("commands.ride.already_riding", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> uv.b("commands.ride.mount.failure.generic", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(uv.c("commands.ride.mount.failure.cant_ride_players"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(uv.c("commands.ride.mount.failure.loop"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(uv.c("commands.ride.mount.failure.wrong_dimension"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("commands.publish.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vb.b("commands.publish.alreadyPublished", $$0));
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("ride").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("publish").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((ds)$$0x.getSource(), atp.a(), false, null)))
             .then(
-               ((RequiredArgumentBuilder)dv.a("target", eg.a())
-                     .then(dv.a("mount").then(dv.a("vehicle", eg.a()).executes($$0x -> a((du)$$0x.getSource(), eg.a($$0x, "target"), eg.a($$0x, "vehicle"))))))
-                  .then(dv.a("dismount").executes($$0x -> a((du)$$0x.getSource(), eg.a($$0x, "target"))))
+               ((RequiredArgumentBuilder)dt.a("allowCommands", BoolArgumentType.bool())
+                     .executes($$0x -> a((ds)$$0x.getSource(), atp.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
+                  .then(
+                     ((RequiredArgumentBuilder)dt.a("gamemode", ef.a())
+                           .executes($$0x -> a((ds)$$0x.getSource(), atp.a(), BoolArgumentType.getBool($$0x, "allowCommands"), ef.a($$0x, "gamemode"))))
+                        .then(
+                           dt.a("port", IntegerArgumentType.integer(0, 65535))
+                              .executes(
+                                 $$0x -> a(
+                                       (ds)$$0x.getSource(),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       BoolArgumentType.getBool($$0x, "allowCommands"),
+                                       ef.a($$0x, "gamemode")
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(du $$0, bkv $$1, bkv $$2) throws CommandSyntaxException {
-      bkv $$3 = $$1.da();
-      if ($$3 != null) {
-         throw b.create($$1.Q_(), $$3.Q_());
-      } else if ($$2.ai() == bkz.bt) {
-         throw d.create();
-      } else if ($$1.cS().anyMatch($$1x -> $$1x == $$2)) {
-         throw e.create();
-      } else if ($$1.dN() != $$2.dN()) {
-         throw f.create();
-      } else if (!$$1.a($$2, true)) {
-         throw c.create($$1.Q_(), $$2.Q_());
+   private static int a(ds $$0, int $$1, boolean $$2, @Nullable csv $$3) throws CommandSyntaxException {
+      if ($$0.l().p()) {
+         throw b.create($$0.l().O());
+      } else if (!$$0.l().a($$3, $$2, $$1)) {
+         throw a.create();
       } else {
-         $$0.a(() -> uv.a("commands.ride.mount.success", $$1.Q_(), $$2.Q_()), true);
-         return 1;
+         $$0.a(() -> a($$1), true);
+         return $$1;
       }
    }
 
-   private static int a(du $$0, bkv $$1) throws CommandSyntaxException {
-      bkv $$2 = $$1.da();
-      if ($$2 == null) {
-         throw a.create($$1.Q_());
-      } else {
-         $$1.ac();
-         $$0.a(() -> uv.a("commands.ride.dismount.success", $$1.Q_(), $$2.Q_()), true);
-         return 1;
-      }
+   public static vp a(int $$0) {
+      vb $$1 = ve.a(String.valueOf($$0));
+      return vb.a("commands.publish.started", $$1);
    }
 }

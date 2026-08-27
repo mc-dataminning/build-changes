@@ -1,31 +1,32 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 
-public class bah extends DataFix {
-   public bah(Schema $$0) {
-      super($$0, false);
+public abstract class bah extends DataFix {
+   private final String a;
+   private final String b;
+   private final TypeReference c;
+
+   public bah(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
+      super($$0, $$1);
+      this.a = $$2;
+      this.c = $$3;
+      this.b = $$4;
    }
 
    public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAmbientOcclusionFix",
-         this.getInputSchema().getType(bax.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get("ao").asString().map($$1 -> $$0x.set("ao", $$0x.createString(a($$1)))).result(), $$0x)
-            )
-      );
+      Type<?> $$0 = this.getInputSchema().getType(this.c);
+      Type<?> $$1 = this.getInputSchema().getChoiceType(this.c, this.b);
+      Type<?> $$2 = this.getOutputSchema().getType(this.c);
+      Type<?> $$3 = this.getOutputSchema().getChoiceType(this.c, this.b);
+      OpticFinder<?> $$4 = DSL.namedChoice(this.b, $$1);
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$2, $$2x -> $$2x.updateTyped($$4, $$3, $$1xx -> ac.a($$1xx, $$3, this::a)));
    }
 
-   private static String a(String $$0) {
-      return switch ($$0) {
-         case "0" -> "false";
-         case "1", "2" -> "true";
-         default -> $$0;
-      };
-   }
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

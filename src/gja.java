@@ -1,0 +1,110 @@
+public class gja implements gje {
+   private static final int a = 40;
+   private static final int b = 40;
+   private static final int c = 100;
+   private static final int d = 20;
+   private static final int e = -1;
+   private static final vb f = vb.a("tutorial.move.title", gjd.a("forward"), gjd.a("left"), gjd.a("back"), gjd.a("right"));
+   private static final vb g = vb.a("tutorial.move.description", gjd.a("jump"));
+   private static final vb h = vb.c("tutorial.look.title");
+   private static final vb i = vb.c("tutorial.look.description");
+   private final gjd j;
+   private eyr k;
+   private eyr l;
+   private int m;
+   private int n;
+   private int o;
+   private boolean p;
+   private boolean q;
+   private int r = -1;
+   private int s = -1;
+
+   public gja(gjd $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.m++;
+      if (this.p) {
+         this.n++;
+         this.p = false;
+      }
+
+      if (this.q) {
+         this.o++;
+         this.q = false;
+      }
+
+      if (this.r == -1 && this.n > 40) {
+         if (this.k != null) {
+            this.k.c();
+            this.k = null;
+         }
+
+         this.r = this.m;
+      }
+
+      if (this.s == -1 && this.o > 40) {
+         if (this.l != null) {
+            this.l.c();
+            this.l = null;
+         }
+
+         this.s = this.m;
+      }
+
+      if (this.r != -1 && this.s != -1) {
+         if (this.j.f()) {
+            this.j.a(gjf.b);
+         } else {
+            this.j.a(gjf.f);
+         }
+      }
+
+      if (this.k != null) {
+         this.k.a((float)this.n / 40.0F);
+      }
+
+      if (this.l != null) {
+         this.l.a((float)this.o / 40.0F);
+      }
+
+      if (this.m >= 100) {
+         if (this.r == -1 && this.k == null) {
+            this.k = new eyr(eyr.a.a, f, g, true);
+            this.j.e().ax().a(this.k);
+         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
+            this.l = new eyr(eyr.a.b, h, i, true);
+            this.j.e().ax().a(this.l);
+         }
+      }
+   }
+
+   @Override
+   public void b() {
+      if (this.k != null) {
+         this.k.c();
+         this.k = null;
+      }
+
+      if (this.l != null) {
+         this.l.c();
+         this.l = null;
+      }
+   }
+
+   @Override
+   public void a(fri $$0) {
+      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
+         this.p = true;
+      }
+   }
+
+   @Override
+   public void a(double $$0, double $$1) {
+      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
+         this.q = true;
+      }
+   }
+}

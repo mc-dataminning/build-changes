@@ -1,63 +1,38 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
 
-public abstract class awa extends avz {
-   private final String a;
-
-   public awa(Schema $$0, String $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+public class awa extends bag {
+   public awa(Schema $$0, boolean $$1) {
+      super($$0, $$1, "BlockEntityJukeboxFix", bbg.s, "minecraft:jukebox");
    }
 
    @Override
-   public TypeRewriteRule makeRule() {
-      TypeReference $$0 = bax.s;
-      String $$1 = "minecraft:jigsaw";
-      OpticFinder<?> $$2 = DSL.namedChoice("minecraft:jigsaw", this.getInputSchema().getChoiceType($$0, "minecraft:jigsaw"));
-      TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
-         this.a + " for jigsaw state",
-         this.getInputSchema().getType($$0),
-         this.getOutputSchema().getType($$0),
-         $$2x -> $$2x.updateTyped(
-               $$2,
-               this.getOutputSchema().getChoiceType($$0, "minecraft:jigsaw"),
-               $$0xx -> $$0xx.update(
-                     DSL.remainderFinder(),
-                     $$0xxx -> $$0xxx.update("final_state", $$1xx -> (Dynamic)DataFixUtils.orElse($$1xx.asString().result().map($$0xxxxx -> {
-                              int $$1xxx = $$0xxxxx.indexOf(91);
-                              int $$2xx = $$0xxxxx.indexOf(123);
-                              int $$3x = $$0xxxxx.length();
-                              if ($$1xxx > 0) {
-                                 $$3x = Math.min($$3x, $$1xxx);
-                              }
-
-                              if ($$2xx > 0) {
-                                 $$3x = Math.min($$3x, $$2xx);
-                              }
-
-                              String $$4 = $$0xxxxx.substring(0, $$3x);
-                              String $$5 = this.a($$4);
-                              return $$5 + $$0xxxxx.substring($$3x);
-                           }).map($$0xxx::createString), $$1xx))
-                  )
-            )
-      );
-      return TypeRewriteRule.seq(super.makeRule(), $$3);
-   }
-
-   public static DataFix b(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new awa($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
+   protected Typed<?> a(Typed<?> $$0) {
+      Type<?> $$1 = this.getInputSchema().getChoiceType(bbg.s, "minecraft:jukebox");
+      Type<?> $$2 = $$1.findFieldType("RecordItem");
+      OpticFinder<?> $$3 = DSL.fieldFinder("RecordItem", $$2);
+      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      int $$5 = $$4.get("Record").asInt(0);
+      if ($$5 > 0) {
+         $$4.remove("Record");
+         String $$6 = azp.a(aze.a($$5), 0);
+         if ($$6 != null) {
+            Dynamic<?> $$7 = $$4.emptyMap();
+            $$7 = $$7.set("id", $$7.createString($$6));
+            $$7 = $$7.set("Count", $$7.createByte((byte)1));
+            return $$0.set(
+                  $$3,
+                  (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not create record item stack."))).getFirst()
+               )
+               .set(DSL.remainderFinder(), $$4);
          }
-      };
+      }
+
+      return $$0;
    }
 }

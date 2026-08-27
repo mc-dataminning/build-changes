@@ -1,34 +1,58 @@
-public class gez extends geq {
-   private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final cbj r;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public gez(cbj $$0) {
-      super(aqv.kF, aqw.f, gfh.t());
-      this.r = $$0;
-      this.k = gfh.a.a;
-      this.i = true;
-      this.j = 0;
-   }
-
-   @Override
-   public boolean s() {
-      return !this.r.aU();
-   }
-
-   @Override
-   public void q() {
-      if (!this.r.dI() && this.r.q() == null) {
-         this.f = (double)((float)this.r.ds());
-         this.g = (double)((float)this.r.du());
-         this.h = (double)((float)this.r.dy());
-         float $$0 = this.r.G(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
-      } else {
-         this.n();
+public class gez {
+   public static final gfa a = new gfa();
+   public static final String b = "animation";
+   public static final int c = 1;
+   public static final int d = -1;
+   public static final gez e = new gez(Lists.newArrayList(), -1, -1, 1, false) {
+      @Override
+      public gfb a(int $$0, int $$1) {
+         return new gfb($$0, $$1);
       }
+   };
+   private final List<gey> f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final boolean j;
+
+   public gez(List<gey> $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
+   }
+
+   public gfb a(int $$0, int $$1) {
+      if (this.g != -1) {
+         return this.h != -1 ? new gfb(this.g, this.h) : new gfb(this.g, $$1);
+      } else if (this.h != -1) {
+         return new gfb($$0, this.h);
+      } else {
+         int $$2 = Math.min($$0, $$1);
+         return new gfb($$2, $$2);
+      }
+   }
+
+   public int a() {
+      return this.i;
+   }
+
+   public boolean b() {
+      return this.j;
+   }
+
+   public void a(gez.a $$0) {
+      for (gey $$1 : this.f) {
+         $$0.accept($$1.a(), $$1.a(this.i));
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(int var1, int var2);
    }
 }

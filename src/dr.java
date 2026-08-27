@@ -1,14 +1,34 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+public interface dr {
+   dr a = new dr() {
+      @Override
+      public void a(vb $$0) {
+      }
 
-public class dr extends RuntimeException {
-   private final uv a;
+      @Override
+      public boolean l_() {
+         return false;
+      }
 
-   public dr(uv $$0) {
-      super($$0.getString(), null, CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES, CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES);
-      this.a = $$0;
-   }
+      @Override
+      public boolean x_() {
+         return false;
+      }
 
-   public uv a() {
-      return this.a;
+      @Override
+      public boolean W_() {
+         return false;
+      }
+   };
+
+   void a(vb var1);
+
+   boolean l_();
+
+   boolean x_();
+
+   boolean W_();
+
+   default boolean m_() {
+      return false;
    }
 }

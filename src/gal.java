@@ -1,21 +1,20 @@
-public class gal<T extends bkv & bmb, M extends fhu<T>> extends gak<T, M> {
-   private final agm a;
-   private final M b;
+public class gal extends fyu<cdv, flk<cdv>> {
+   private static final agt a = new agt("textures/entity/warden/warden.png");
+   private static final agt i = new agt("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final agt j = new agt("textures/entity/warden/warden_heart.png");
+   private static final agt k = new agt("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final agt l = new agt("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public gal(fxx<T, M> $$0, M $$1, agm $$2) {
-      super($$0);
-      this.b = $$1;
-      this.a = $$2;
+   public gal(fxo.a $$0) {
+      super($$0, new flk<>($$0.a(flx.bO)), 0.9F);
+      this.a(new gcl<>(this, i, ($$0x, $$1, $$2) -> 1.0F, flk::e));
+      this.a(new gcl<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, aty.b($$2 * 0.045F) * 0.25F), flk::f));
+      this.a(new gcl<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, aty.b($$2 * 0.045F + (float) Math.PI) * 0.25F), flk::f));
+      this.a(new gcl<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), flk::c));
+      this.a(new gcl<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), flk::d));
    }
 
-   @Override
-   public void a(eob $$0, fqz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         eof $$10 = $$1.getBuffer(frh.e(this.a));
-         this.b.a($$0, $$10, $$2, gbq.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      }
+   public agt a(cdv $$0) {
+      return a;
    }
 }

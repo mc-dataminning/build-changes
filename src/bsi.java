@@ -1,86 +1,95 @@
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public abstract class bsi extends bsr {
+   protected blx d;
+   protected hv e = hv.b;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-public class bsi extends btd {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
-
-   public bsi(blu $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public bsi(blx $$0) {
+      this.d = $$0;
+      if (!bwo.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
+      }
    }
 
-   @Nullable
-   @Override
-   protected ejz h() {
-      float $$0 = this.b.dN().z.i();
-      if (this.b.dN().z.i() < 0.3F) {
-         return this.k();
+   protected boolean h() {
+      if (!this.f) {
+         return false;
       } else {
-         ejz $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
+         dip $$0 = this.d.dM().a_(this.e);
+         if (!($$0.b() instanceof cyf)) {
+            this.f = false;
+            return false;
          } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
+            return $$0.c(cyf.c);
          }
-
-         return $$1 == null ? this.k() : $$1;
       }
    }
 
-   @Nullable
-   private ejz k() {
-      return bwe.a(this.b, 10, 7);
+   protected void a(boolean $$0) {
+      if (this.f) {
+         dip $$1 = this.d.dM().a_(this.e);
+         if ($$1.b() instanceof cyf) {
+            ((cyf)$$1.b()).a(this.d, this.d.dM(), $$1, this.e, $$0);
+         }
+      }
    }
 
-   @Nullable
-   private ejz l() {
-      ami $$0 = (ami)this.b.dN();
-      List<cdm> $$1 = $$0.a(bkz.bf, this.b.cH().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
+   @Override
+   public boolean a() {
+      if (!bwo.a(this.d)) {
+         return false;
+      } else if (!this.d.P) {
+         return false;
       } else {
-         cdm $$2 = $$1.get(this.b.dN().z.a($$1.size()));
-         ejz $$3 = $$2.dl();
-         return bwe.a(this.b, 10, 7, $$3);
+         bve $$0 = (bve)this.d.N();
+         eeo $$1 = $$0.j();
+         if ($$1 != null && !$$1.c() && $$0.f()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               eem $$3 = $$1.a($$2);
+               this.e = new hv($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.i((double)this.e.u(), this.d.dt(), (double)this.e.w()) > 2.25)) {
+                  this.f = cyf.a(this.d.dM(), this.e);
+                  if (this.f) {
+                     return true;
+                  }
+               }
+            }
+
+            this.e = this.d.dm().c();
+            this.f = cyf.a(this.d.dM(), this.e);
+            return this.f;
+         } else {
+            return false;
+         }
       }
    }
 
-   @Nullable
-   private ejz m() {
-      iy $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         hx $$1 = this.a($$0);
-         return $$1 == null ? null : bwe.a(this.b, 10, 7, ejz.c($$1));
+   @Override
+   public boolean b() {
+      return !this.a;
+   }
+
+   @Override
+   public void c() {
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.dr());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dx());
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dr());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dx());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
       }
-   }
-
-   @Nullable
-   private iy n() {
-      ami $$0 = (ami)this.b.dN();
-      List<iy> $$1 = iy.a(iy.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
-   }
-
-   @Nullable
-   private hx a(iy $$0) {
-      ami $$1 = (ami)this.b.dN();
-      bwk $$2 = $$1.x();
-      List<hx> $$3 = $$2.c($$0x -> true, $$0.q(), 8, bwk.b.b).map(bwl::f).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
-   }
-
-   private boolean a(cdm $$0) {
-      return $$0.a(this.b.dN().W());
    }
 }

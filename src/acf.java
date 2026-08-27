@@ -1,73 +1,81 @@
-public class acf implements wo<yh> {
-   private final int a;
-   private final double b;
-   private final double c;
-   private final double d;
-   private final byte e;
-   private final byte f;
-   private final boolean g;
+public class acf implements wu<yo> {
+   public static final float a = 8.0F;
+   private final ie<arb> b;
+   private final ard c;
+   private final int d;
+   private final int e;
+   private final int f;
+   private final float g;
+   private final float h;
+   private final long i;
 
-   public acf(bkv $$0) {
-      this.a = $$0.aj();
-      ejz $$1 = $$0.dm();
-      this.b = $$1.c;
-      this.c = $$1.d;
-      this.d = $$1.e;
-      this.e = (byte)((int)($$0.dD() * 256.0F / 360.0F));
-      this.f = (byte)((int)($$0.dF() * 256.0F / 360.0F));
-      this.g = $$0.aC();
+   public acf(ie<arb> $$0, ard $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = (int)($$2 * 8.0);
+      this.e = (int)($$3 * 8.0);
+      this.f = (int)($$4 * 8.0);
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   public acf(ty $$0) {
-      this.a = $$0.n();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readByte();
-      this.f = $$0.readByte();
-      this.g = $$0.readBoolean();
+   public acf(ue $$0) {
+      this.b = $$0.a(kb.b.t(), arb::b);
+      this.c = $$0.b(ard.class);
+      this.d = $$0.readInt();
+      this.e = $$0.readInt();
+      this.f = $$0.readInt();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readLong();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   public void a(ue $$0) {
+      $$0.a(kb.b.t(), this.b, ($$0x, $$1) -> $$1.a($$0x));
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.k(this.e);
-      $$0.k(this.f);
+      $$0.p(this.d);
+      $$0.p(this.e);
+      $$0.p(this.f);
       $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.b(this.i);
    }
 
-   public void a(yh $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public double d() {
+   public ie<arb> a() {
       return this.b;
    }
 
-   public double e() {
+   public ard d() {
       return this.c;
    }
 
+   public double e() {
+      return (double)((float)this.d / 8.0F);
+   }
+
    public double f() {
-      return this.d;
+      return (double)((float)this.e / 8.0F);
    }
 
-   public byte g() {
-      return this.e;
+   public double g() {
+      return (double)((float)this.f / 8.0F);
    }
 
-   public byte h() {
-      return this.f;
-   }
-
-   public boolean i() {
+   public float h() {
       return this.g;
+   }
+
+   public float i() {
+      return this.h;
+   }
+
+   public long j() {
+      return this.i;
+   }
+
+   public void a(yo $$0) {
+      $$0.a(this);
    }
 }

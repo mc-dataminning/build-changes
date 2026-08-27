@@ -1,148 +1,92 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.io.DataInput;
+import java.io.IOException;
 
-public class ti implements sx {
-   private String a = "";
-   @Nullable
-   private ta b;
-   private final Deque<Consumer<ta>> c = new ArrayDeque<>();
+public interface ti<T extends tg> {
+   T c(DataInput var1, ss var2) throws IOException;
 
-   @Nullable
-   public ta d() {
-      return this.b;
-   }
+   td.b a(DataInput var1, td var2, ss var3) throws IOException;
 
-   protected int e() {
-      return this.c.size();
-   }
-
-   private void a(ta $$0) {
-      this.c.getLast().accept($$0);
-   }
-
-   @Override
-   public sx.b a() {
-      this.a(sf.b);
-      return sx.b.a;
-   }
-
-   @Override
-   public sx.b a(String $$0) {
-      this.a(sy.a($$0));
-      return sx.b.a;
-   }
-
-   @Override
-   public sx.b a(byte $$0) {
-      this.a(sb.a($$0));
-      return sx.b.a;
-   }
-
-   @Override
-   public sx.b a(short $$0) {
-      this.a(sv.a($$0));
-      return sx.b.a;
-   }
-
-   @Override
-   public sx.b a(int $$0) {
-      this.a(si.a($$0));
-      return sx.b.a;
-   }
-
-   @Override
-   public sx.b a(long $$0) {
-      this.a(sl.a($$0));
-      return sx.b.a;
-   }
-
-   @Override
-   public sx.b a(float $$0) {
-      this.a(sg.a($$0));
-      return sx.b.a;
-   }
-
-   @Override
-   public sx.b a(double $$0) {
-      this.a(se.a($$0));
-      return sx.b.a;
-   }
-
-   @Override
-   public sx.b a(byte[] $$0) {
-      this.a(new sa($$0));
-      return sx.b.a;
-   }
-
-   @Override
-   public sx.b a(int[] $$0) {
-      this.a(new sh($$0));
-      return sx.b.a;
-   }
-
-   @Override
-   public sx.b a(long[] $$0) {
-      this.a(new sk($$0));
-      return sx.b.a;
-   }
-
-   @Override
-   public sx.b a(tc<?> $$0, int $$1) {
-      return sx.b.a;
-   }
-
-   @Override
-   public sx.a b(tc<?> $$0, int $$1) {
-      this.c($$0);
-      return sx.a.a;
-   }
-
-   @Override
-   public sx.a a(tc<?> $$0) {
-      return sx.a.a;
-   }
-
-   @Override
-   public sx.a a(tc<?> $$0, String $$1) {
-      this.a = $$1;
-      this.c($$0);
-      return sx.a.a;
-   }
-
-   private void c(tc<?> $$0) {
-      if ($$0 == sj.a) {
-         sj $$1 = new sj();
-         this.a($$1);
-         this.c.addLast($$1::add);
-      } else if ($$0 == sd.b) {
-         sd $$2 = new sd();
-         this.a($$2);
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+   default void b(DataInput $$0, td $$1, ss $$2) throws IOException {
+      switch ($$1.b(this)) {
+         case a:
+            this.a($$0, $$1, $$2);
+         case c:
+         default:
+            break;
+         case b:
+            this.b($$0, $$2);
       }
    }
 
-   @Override
-   public sx.b b() {
-      this.c.removeLast();
-      return sx.b.a;
+   void a(DataInput var1, int var2, ss var3) throws IOException;
+
+   void b(DataInput var1, ss var2) throws IOException;
+
+   default boolean d() {
+      return false;
    }
 
-   @Override
-   public sx.b b(tc<?> $$0) {
-      if ($$0 == sj.a) {
-         sj $$1 = new sj();
-         this.b = $$1;
-         this.c.addLast($$1::add);
-      } else if ($$0 == sd.b) {
-         sd $$2 = new sd();
-         this.b = $$2;
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
-      } else {
-         this.c.addLast($$0x -> this.b = $$0x);
+   String a();
+
+   String b();
+
+   static ti<sl> a(final int $$0) {
+      return new ti<sl>() {
+         private IOException c() {
+            return new IOException("Invalid tag id: " + $$0);
+         }
+
+         public sl a(DataInput $$0x, ss $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public td.b a(DataInput $$0x, td $$1, ss $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void a(DataInput $$0x, int $$1, ss $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void b(DataInput $$0x, ss $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public String a() {
+            return "INVALID[" + $$0 + "]";
+         }
+
+         @Override
+         public String b() {
+            return "UNKNOWN_" + $$0;
+         }
+      };
+   }
+
+   public interface a<T extends tg> extends ti<T> {
+      @Override
+      default void b(DataInput $$0, ss $$1) throws IOException {
+         $$0.skipBytes(this.c());
       }
 
-      return sx.b.a;
+      @Override
+      default void a(DataInput $$0, int $$1, ss $$2) throws IOException {
+         $$0.skipBytes(this.c() * $$1);
+      }
+
+      int c();
+   }
+
+   public interface b<T extends tg> extends ti<T> {
+      @Override
+      default void a(DataInput $$0, int $$1, ss $$2) throws IOException {
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            this.b($$0, $$2);
+         }
+      }
    }
 }

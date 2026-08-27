@@ -1,32 +1,36 @@
-public class add implements wo<acp> {
-   private final int a;
-   private final int b;
+import java.time.Instant;
 
-   public add(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a(acp $$0) {
-      $$0.a(this);
-   }
-
-   public add(ty $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.readByte();
+public record add(String a, Instant b, long c, dy d, vi.b e) implements wu<acw> {
+   public add(ue $$0) {
+      this($$0.d(256), $$0.w(), $$0.readLong(), new dy($$0), new vi.b($$0));
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.k(this.a);
-      $$0.k(this.b);
+   public void a(ue $$0) {
+      $$0.a(this.a, 256);
+      $$0.a(this.b);
+      $$0.b(this.c);
+      this.d.a($$0);
+      this.e.a($$0);
    }
 
-   public int a() {
-      return this.a;
+   public void a(acw $$0) {
+      $$0.a(this);
    }
 
-   public int d() {
+   public Instant d() {
       return this.b;
+   }
+
+   public long e() {
+      return this.c;
+   }
+
+   public dy f() {
+      return this.d;
+   }
+
+   public vi.b g() {
+      return this.e;
    }
 }

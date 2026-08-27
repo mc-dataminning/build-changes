@@ -1,178 +1,214 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class crw {
+   private final cmh a;
+   private final cmh b;
+   private final cmh c;
+   private int d;
+   private final int e;
+   private boolean f = true;
+   private int g;
+   private int h;
+   private float i;
+   private int j = 1;
 
-public interface crw {
-   List<bkv> a(@Nullable bkv var1, eju var2, Predicate<? super bkv> var3);
+   public crw(sj $$0) {
+      this.a = cmh.a($$0.p("buy"));
+      this.b = cmh.a($$0.p("buyB"));
+      this.c = cmh.a($$0.p("sell"));
+      this.d = $$0.h("uses");
+      if ($$0.b("maxUses", 99)) {
+         this.e = $$0.h("maxUses");
+      } else {
+         this.e = 4;
+      }
 
-   <T extends bkv> List<T> a(dll<bkv, T> var1, eju var2, Predicate<? super T> var3);
+      if ($$0.b("rewardExp", 1)) {
+         this.f = $$0.q("rewardExp");
+      }
 
-   default <T extends bkv> List<T> a(Class<T> $$0, eju $$1, Predicate<? super T> $$2) {
-      return this.a(dll.a($$0), $$1, $$2);
+      if ($$0.b("xp", 3)) {
+         this.j = $$0.h("xp");
+      }
+
+      if ($$0.b("priceMultiplier", 5)) {
+         this.i = $$0.j("priceMultiplier");
+      }
+
+      this.g = $$0.h("specialPrice");
+      this.h = $$0.h("demand");
    }
 
-   List<? extends cdz> w();
-
-   default List<bkv> a_(@Nullable bkv $$0, eju $$1) {
-      return this.a($$0, $$1, bky.f);
+   public crw(cmh $$0, cmh $$1, int $$2, int $$3, float $$4) {
+      this($$0, cmh.f, $$1, $$2, $$3, $$4);
    }
 
-   default boolean a(@Nullable bkv $$0, eks $$1) {
-      if ($$1.c()) {
+   public crw(cmh $$0, cmh $$1, cmh $$2, int $$3, int $$4, float $$5) {
+      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
+   }
+
+   public crw(cmh $$0, cmh $$1, cmh $$2, int $$3, int $$4, int $$5, float $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
+   }
+
+   public crw(cmh $$0, cmh $$1, cmh $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.j = $$5;
+      this.i = $$6;
+      this.h = $$7;
+   }
+
+   private crw(crw $$0) {
+      this.a = $$0.a.p();
+      this.b = $$0.b.p();
+      this.c = $$0.c.p();
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.j = $$0.j;
+   }
+
+   public cmh a() {
+      return this.a;
+   }
+
+   public cmh b() {
+      if (this.a.b()) {
+         return cmh.f;
+      } else {
+         int $$0 = this.a.L();
+         int $$1 = Math.max(0, aty.d((float)($$0 * this.h) * this.i));
+         return this.a.c(aty.a($$0 + $$1 + this.g, 1, this.a.d().l()));
+      }
+   }
+
+   public cmh c() {
+      return this.b;
+   }
+
+   public cmh d() {
+      return this.c;
+   }
+
+   public void e() {
+      this.h = this.h + this.d - (this.e - this.d);
+   }
+
+   public cmh f() {
+      return this.c.p();
+   }
+
+   public int g() {
+      return this.d;
+   }
+
+   public void h() {
+      this.d = 0;
+   }
+
+   public int i() {
+      return this.e;
+   }
+
+   public void j() {
+      this.d++;
+   }
+
+   public int k() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.g += $$0;
+   }
+
+   public void l() {
+      this.g = 0;
+   }
+
+   public int m() {
+      return this.g;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public float n() {
+      return this.i;
+   }
+
+   public int o() {
+      return this.j;
+   }
+
+   public boolean p() {
+      return this.d >= this.e;
+   }
+
+   public void q() {
+      this.d = this.e;
+   }
+
+   public boolean r() {
+      return this.d > 0;
+   }
+
+   public boolean s() {
+      return this.f;
+   }
+
+   public sj t() {
+      sj $$0 = new sj();
+      $$0.a("buy", this.a.b(new sj()));
+      $$0.a("sell", this.c.b(new sj()));
+      $$0.a("buyB", this.b.b(new sj()));
+      $$0.a("uses", this.d);
+      $$0.a("maxUses", this.e);
+      $$0.a("rewardExp", this.f);
+      $$0.a("xp", this.j);
+      $$0.a("priceMultiplier", this.i);
+      $$0.a("specialPrice", this.g);
+      $$0.a("demand", this.h);
+      return $$0;
+   }
+
+   public boolean a(cmh $$0, cmh $$1) {
+      return this.c($$0, this.b()) && $$0.L() >= this.b().L() && this.c($$1, this.b) && $$1.L() >= this.b.L();
+   }
+
+   private boolean c(cmh $$0, cmh $$1) {
+      if ($$1.b() && $$0.b()) {
          return true;
       } else {
-         for (bkv $$2 : this.a_($$0, $$1.a())) {
-            if (!$$2.dI() && $$2.I && ($$0 == null || !$$2.y($$0)) && ekp.c($$1, ekp.a($$2.cH()), ekd.i)) {
-               return false;
-            }
+         cmh $$2 = $$0.p();
+         if ($$2.d().o()) {
+            $$2.b($$2.k());
+         }
+
+         return cmh.b($$2, $$1) && (!$$1.u() || $$2.u() && sy.a($$1.v(), $$2.v(), false));
+      }
+   }
+
+   public boolean b(cmh $$0, cmh $$1) {
+      if (!this.a($$0, $$1)) {
+         return false;
+      } else {
+         $$0.h(this.b().L());
+         if (!this.c().b()) {
+            $$1.h(this.c().L());
          }
 
          return true;
       }
    }
 
-   default <T extends bkv> List<T> a(Class<T> $$0, eju $$1) {
-      return this.a($$0, $$1, bky.f);
-   }
-
-   default List<eks> c(@Nullable bkv $$0, eju $$1) {
-      if ($$1.a() < 1.0E-7) {
-         return List.of();
-      } else {
-         Predicate<bkv> $$2 = $$0 == null ? bky.g : bky.f.and($$0::h);
-         List<bkv> $$3 = this.a($$0, $$1.g(1.0E-7), $$2);
-         if ($$3.isEmpty()) {
-            return List.of();
-         } else {
-            Builder<eks> $$4 = ImmutableList.builderWithExpectedSize($$3.size());
-
-            for (bkv $$5 : $$3) {
-               $$4.add(ekp.a($$5.cH()));
-            }
-
-            return $$4.build();
-         }
-      }
-   }
-
-   @Nullable
-   default cdz a(double $$0, double $$1, double $$2, double $$3, @Nullable Predicate<bkv> $$4) {
-      double $$5 = -1.0;
-      cdz $$6 = null;
-
-      for (cdz $$7 : this.w()) {
-         if ($$4 == null || $$4.test($$7)) {
-            double $$8 = $$7.i($$0, $$1, $$2);
-            if (($$3 < 0.0 || $$8 < $$3 * $$3) && ($$5 == -1.0 || $$8 < $$5)) {
-               $$5 = $$8;
-               $$6 = $$7;
-            }
-         }
-      }
-
-      return $$6;
-   }
-
-   @Nullable
-   default cdz a(bkv $$0, double $$1) {
-      return this.a($$0.ds(), $$0.du(), $$0.dy(), $$1, false);
-   }
-
-   @Nullable
-   default cdz a(double $$0, double $$1, double $$2, double $$3, boolean $$4) {
-      Predicate<bkv> $$5 = $$4 ? bky.e : bky.f;
-      return this.a($$0, $$1, $$2, $$3, $$5);
-   }
-
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      for (cdz $$4 : this.w()) {
-         if (bky.f.test($$4) && bky.b.test($$4)) {
-            double $$5 = $$4.i($$0, $$1, $$2);
-            if ($$3 < 0.0 || $$5 < $$3 * $$3) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Nullable
-   default cdz a(bvx $$0, bll $$1) {
-      return this.a(this.w(), $$0, $$1, $$1.ds(), $$1.du(), $$1.dy());
-   }
-
-   @Nullable
-   default cdz a(bvx $$0, bll $$1, double $$2, double $$3, double $$4) {
-      return this.a(this.w(), $$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   default cdz a(bvx $$0, double $$1, double $$2, double $$3) {
-      return this.a(this.w(), $$0, null, $$1, $$2, $$3);
-   }
-
-   @Nullable
-   default <T extends bll> T a(Class<? extends T> $$0, bvx $$1, @Nullable bll $$2, double $$3, double $$4, double $$5, eju $$6) {
-      return this.a(this.a($$0, $$6, $$0x -> true), $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   default <T extends bll> T a(List<? extends T> $$0, bvx $$1, @Nullable bll $$2, double $$3, double $$4, double $$5) {
-      double $$6 = -1.0;
-      T $$7 = null;
-
-      for (T $$8 : $$0) {
-         if ($$1.a($$2, $$8)) {
-            double $$9 = $$8.i($$3, $$4, $$5);
-            if ($$6 == -1.0 || $$9 < $$6) {
-               $$6 = $$9;
-               $$7 = $$8;
-            }
-         }
-      }
-
-      return $$7;
-   }
-
-   default List<cdz> a(bvx $$0, bll $$1, eju $$2) {
-      List<cdz> $$3 = Lists.newArrayList();
-
-      for (cdz $$4 : this.w()) {
-         if ($$2.e($$4.ds(), $$4.du(), $$4.dy()) && $$0.a($$1, $$4)) {
-            $$3.add($$4);
-         }
-      }
-
-      return $$3;
-   }
-
-   default <T extends bll> List<T> a(Class<T> $$0, bvx $$1, bll $$2, eju $$3) {
-      List<T> $$4 = this.a($$0, $$3, $$0x -> true);
-      List<T> $$5 = Lists.newArrayList();
-
-      for (T $$6 : $$4) {
-         if ($$1.a($$2, $$6)) {
-            $$5.add($$6);
-         }
-      }
-
-      return $$5;
-   }
-
-   @Nullable
-   default cdz b(UUID $$0) {
-      for (int $$1 = 0; $$1 < this.w().size(); $$1++) {
-         cdz $$2 = this.w().get($$1);
-         if ($$0.equals($$2.cw())) {
-            return $$2;
-         }
-      }
-
-      return null;
+   public crw u() {
+      return new crw(this);
    }
 }

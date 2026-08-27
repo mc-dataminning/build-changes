@@ -1,253 +1,99 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dba extends cuu {
-   public static final MapCodec<dba> d = b(dba::new);
-   public static final dil<dir> e = did.ah;
-   public static final die f = did.w;
+public class dba extends cwi implements cwc {
+   public static final MapCodec<dba> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ags.a(kc.av).fieldOf("feature").forGetter($$0x -> $$0x.d), u()).apply($$0, dba::new)
+   );
+   protected static final float b = 3.0F;
+   protected static final elu c = cvz.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final ags<dqp<?, ?>> d;
 
    @Override
    public MapCodec<dba> a() {
-      return d;
+      return a;
    }
 
-   protected dba(dhm.d $$0) {
-      super(true, $$0);
-      this.k(this.E.b().a(e, dir.a).a(f, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+   public dba(ags<dqp<?, ?>> $$0, dio.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
-   protected boolean a(csf $$0, hx $$1, dhn $$2, boolean $$3, int $$4) {
-      if ($$4 >= 8) {
-         return false;
-      } else {
-         int $$5 = $$1.u();
-         int $$6 = $$1.v();
-         int $$7 = $$1.w();
-         boolean $$8 = true;
-         dir $$9 = $$2.c(e);
-         switch ($$9) {
-            case a:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-               }
-               break;
-            case b:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-               }
-               break;
-            case c:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-                  $$6++;
-                  $$8 = false;
-               }
+   @Override
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return c;
+   }
 
-               $$9 = dir.b;
-               break;
-            case d:
-               if ($$3) {
-                  $$5--;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$5++;
-               }
+   @Override
+   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
 
-               $$9 = dir.b;
-               break;
-            case e:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-                  $$6++;
-                  $$8 = false;
+         for (hv $$6 : hv.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
                }
-
-               $$9 = dir.a;
-               break;
-            case f:
-               if ($$3) {
-                  $$7++;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$7--;
-               }
-
-               $$9 = dir.a;
+            }
          }
 
-         return this.a($$0, new hx($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new hx($$5, $$6 - 1, $$7), $$3, $$4, $$9);
+         hv $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.t($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
+
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
+
+         if ($$1.t($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
       }
    }
 
-   protected boolean a(csf $$0, hx $$1, boolean $$2, int $$3, dir $$4) {
-      dhn $$5 = $$0.a_($$1);
-      if (!$$5.a(this)) {
+   @Override
+   protected boolean b(dip $$0, cse $$1, hv $$2) {
+      return $$0.i($$1, $$2);
+   }
+
+   @Override
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      hv $$3 = $$2.d();
+      dip $$4 = $$1.a_($$3);
+      return $$4.a(arr.aZ) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+   }
+
+   public boolean a(amp $$0, hv $$1, dip $$2, auf $$3) {
+      Optional<? extends ie<dqp<?, ?>>> $$4 = $$0.I_().d(kc.av).b(this.d);
+      if ($$4.isEmpty()) {
          return false;
       } else {
-         dir $$6 = $$5.c(e);
-         if ($$4 != dir.b || $$6 != dir.a && $$6 != dir.e && $$6 != dir.f) {
-            if ($$4 != dir.a || $$6 != dir.b && $$6 != dir.c && $$6 != dir.d) {
-               if (!$$5.c(f)) {
-                  return false;
-               } else {
-                  return $$0.B($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
-               }
-            } else {
-               return false;
-            }
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.k().g(), $$3, $$1)) {
+            return true;
          } else {
+            $$0.a($$1, $$2, 3);
             return false;
          }
       }
    }
 
    @Override
-   protected void a(dhn $$0, csf $$1, hx $$2, cvf $$3) {
-      boolean $$4 = $$0.c(f);
-      boolean $$5 = $$1.B($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
-      if ($$5 != $$4) {
-         $$1.a($$2, $$0.a(f, Boolean.valueOf($$5)), 3);
-         $$1.a($$2.d(), this);
-         if ($$0.c(e).b()) {
-            $$1.a($$2.c(), this);
-         }
-      }
+   public boolean b(ctb $$0, hv $$1, dip $$2) {
+      return true;
    }
 
    @Override
-   public diq<dir> c() {
-      return e;
+   public boolean a(csy $$0, auf $$1, hv $$2, dip $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      switch ($$1) {
-         case c:
-            switch ((dir)$$0.c(e)) {
-               case c:
-                  return $$0.a(e, dir.d);
-               case d:
-                  return $$0.a(e, dir.c);
-               case e:
-                  return $$0.a(e, dir.f);
-               case f:
-                  return $$0.a(e, dir.e);
-               case g:
-                  return $$0.a(e, dir.i);
-               case h:
-                  return $$0.a(e, dir.j);
-               case i:
-                  return $$0.a(e, dir.g);
-               case j:
-                  return $$0.a(e, dir.h);
-            }
-         case d:
-            switch ((dir)$$0.c(e)) {
-               case a:
-                  return $$0.a(e, dir.b);
-               case b:
-                  return $$0.a(e, dir.a);
-               case c:
-                  return $$0.a(e, dir.e);
-               case d:
-                  return $$0.a(e, dir.f);
-               case e:
-                  return $$0.a(e, dir.d);
-               case f:
-                  return $$0.a(e, dir.c);
-               case g:
-                  return $$0.a(e, dir.j);
-               case h:
-                  return $$0.a(e, dir.g);
-               case i:
-                  return $$0.a(e, dir.h);
-               case j:
-                  return $$0.a(e, dir.i);
-            }
-         case b:
-            switch ((dir)$$0.c(e)) {
-               case a:
-                  return $$0.a(e, dir.b);
-               case b:
-                  return $$0.a(e, dir.a);
-               case c:
-                  return $$0.a(e, dir.f);
-               case d:
-                  return $$0.a(e, dir.e);
-               case e:
-                  return $$0.a(e, dir.c);
-               case f:
-                  return $$0.a(e, dir.d);
-               case g:
-                  return $$0.a(e, dir.h);
-               case h:
-                  return $$0.a(e, dir.i);
-               case i:
-                  return $$0.a(e, dir.j);
-               case j:
-                  return $$0.a(e, dir.g);
-            }
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   public dhn a(dhn $$0, dab $$1) {
-      dir $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.a(e, dir.f);
-               case f:
-                  return $$0.a(e, dir.e);
-               case g:
-                  return $$0.a(e, dir.j);
-               case h:
-                  return $$0.a(e, dir.i);
-               case i:
-                  return $$0.a(e, dir.h);
-               case j:
-                  return $$0.a(e, dir.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.a(e, dir.d);
-               case d:
-                  return $$0.a(e, dir.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.a(e, dir.h);
-               case h:
-                  return $$0.a(e, dir.g);
-               case i:
-                  return $$0.a(e, dir.j);
-               case j:
-                  return $$0.a(e, dir.i);
-            }
-      }
-
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(e, f, c);
+   public void a(amp $$0, auf $$1, hv $$2, dip $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

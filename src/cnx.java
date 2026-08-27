@@ -1,62 +1,23 @@
-public class cnx extends cnw {
-   private final ib b;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cnx(csf $$0, hx $$1, ib $$2, clo $$3, ib $$4) {
-      super($$0, null, bja.a, $$3, new ejv(ejz.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public class cnx extends cjv {
+   public cnx(cmc.a $$0) {
+      super($$0);
    }
 
    @Override
-   public hx a() {
-      return this.j().a();
+   public cmh am_() {
+      return cog.a(super.am_(), coh.E);
    }
 
    @Override
-   public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
+   public void a(cmh $$0, @Nullable csy $$1, List<vb> $$2, cny $$3) {
+      cog.a($$0, $$2, 0.125F);
    }
 
    @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public ib d() {
-      return ib.a;
-   }
-
-   @Override
-   public ib[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new ib[]{ib.a, ib.c, ib.f, ib.d, ib.e, ib.b};
-         case b:
-            return new ib[]{ib.a, ib.b, ib.c, ib.f, ib.d, ib.e};
-         case c:
-            return new ib[]{ib.a, ib.c, ib.f, ib.e, ib.b, ib.d};
-         case d:
-            return new ib[]{ib.a, ib.d, ib.f, ib.e, ib.b, ib.c};
-         case e:
-            return new ib[]{ib.a, ib.e, ib.d, ib.b, ib.c, ib.f};
-         case f:
-            return new ib[]{ib.a, ib.f, ib.d, ib.b, ib.c, ib.e};
-      }
-   }
-
-   @Override
-   public ib g() {
-      return this.b.o() == ib.a.b ? ib.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public String j(cmh $$0) {
+      return cog.d($$0).b(this.a() + ".effect.");
    }
 }

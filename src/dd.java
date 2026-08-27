@@ -1,42 +1,53 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dd extends cw<dd.a> {
-   public dd.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<bc> $$3 = bq.a($$0, "entity", $$2);
-      return new dd.a($$1, $$3);
+public class dd extends cv<dd.a> {
+   @Override
+   public Codec<dd.a> a() {
+      return dd.a.a;
    }
 
-   public void a(amj $$0, bww $$1) {
-      efc $$2 = bq.b($$0, $$1);
-      this.a($$0, $$1x -> $$1x.a($$2));
+   public void a(amq $$0, blf $$1, elb $$2, int $$3) {
+      ege $$4 = bp.b($$0, $$1);
+      this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
    }
 
-   public static class a extends at {
-      private final Optional<bc> a;
+   public static record a(Optional<bb> b, ck.d c, Optional<bb> d) implements cv.a {
+      public static final Codec<dd.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  atg.a(bp.b, "player").forGetter(dd.a::a),
+                  atg.a(ck.d.d, "signal_strength", ck.d.c).forGetter(dd.a::b),
+                  atg.a(bp.b, "projectile").forGetter(dd.a::c)
+               )
+               .apply($$0, dd.a::new)
+      );
 
-      public a(Optional<bc> $$0, Optional<bc> $$1) {
-         super($$0);
-         this.a = $$1;
+      public static an<dd.a> a(ck.d $$0, Optional<bb> $$1) {
+         return am.M.a(new dd.a(Optional.empty(), $$0, $$1));
       }
 
-      public static am<dd.a> c() {
-         return al.x.a(new dd.a(Optional.empty(), Optional.empty()));
-      }
-
-      public static am<dd.a> a(bq.a $$0) {
-         return al.x.a(new dd.a(Optional.empty(), Optional.of(bq.a($$0))));
-      }
-
-      public boolean a(efc $$0) {
-         return this.a.isEmpty() || this.a.get().a($$0);
+      public boolean a(ege $$0, elb $$1, int $$2) {
+         return !this.c.d($$2) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("entity", $$1.a()));
-         return $$0;
+      public void a(bc $$0) {
+         cv.a.super.a($$0);
+         $$0.a(this.d, ".projectile");
+      }
+
+      @Override
+      public Optional<bb> a() {
+         return this.b;
+      }
+
+      public ck.d b() {
+         return this.c;
+      }
+
+      public Optional<bb> c() {
+         return this.d;
       }
    }
 }

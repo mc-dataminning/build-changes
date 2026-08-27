@@ -1,24 +1,25 @@
-public abstract class fzv<T extends bkv & bly, M extends fhu<T>> extends gak<T, M> {
-   public fzv(fxx<T, M> $$0) {
-      super($$0);
+public class fzv<T extends byh> extends fyu<T, fla<T>> {
+   private static final agt a = new agt("textures/entity/squid/squid.png");
+
+   public fzv(fxo.a $$0, fla<T> $$1) {
+      super($$0, $$1, 0.7F);
    }
 
-   @Override
-   public void a(eob $$0, fqz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ah + $$6;
-         fhu<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         eof $$12 = $$1.getBuffer(frh.a(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, gbq.d, 0.5F, 0.5F, 0.5F, 1.0F);
-      }
+   public agt a(T $$0) {
+      return a;
    }
 
-   protected abstract float a(float var1);
+   protected void a(T $$0, epd $$1, float $$2, float $$3, float $$4) {
+      float $$5 = aty.i($$4, $$0.c, $$0.b);
+      float $$6 = aty.i($$4, $$0.e, $$0.d);
+      $$1.a(0.0F, 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      $$1.a(a.b.rotationDegrees($$5));
+      $$1.a(a.d.rotationDegrees($$6));
+      $$1.a(0.0F, -1.2F, 0.0F);
+   }
 
-   protected abstract agm a();
-
-   protected abstract fhu<T> b();
+   protected float a(T $$0, float $$1) {
+      return aty.i($$1, $$0.bW, $$0.bV);
+   }
 }

@@ -1,96 +1,115 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class drt extends dqa<dsl> {
-   private static final ib[] a = ib.values();
+public class drt extends drc<dtn> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final blj<?>[] b = new blj[]{blj.aK, blj.br, blj.br, blj.aT};
+   private static final dip c = cwb.nc.o();
 
-   public drt(Codec<dsl> $$0) {
+   public drt(Codec<dtn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dqc<dsl> $$0) {
-      csz $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      atw $$3 = $$0.d();
-      if (!$$1.t($$2)) {
-         return false;
-      } else {
-         dhn $$4 = $$1.a_($$2.c());
-         if (!$$4.a(cvh.dV) && !$$4.a(cvh.kK)) {
-            return false;
+   public boolean a(dre<dtn> $$0) {
+      Predicate<dip> $$1 = drc.a(arr.bH);
+      hv $$2 = $$0.e();
+      auf $$3 = $$0.d();
+      ctt $$4 = $$0.b();
+      int $$5 = 3;
+      int $$6 = $$3.a(2) + 2;
+      int $$7 = -$$6 - 1;
+      int $$8 = $$6 + 1;
+      int $$9 = -1;
+      int $$10 = 4;
+      int $$11 = $$3.a(2) + 2;
+      int $$12 = -$$11 - 1;
+      int $$13 = $$11 + 1;
+      int $$14 = 0;
+
+      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
+         for (int $$16 = -1; $$16 <= 4; $$16++) {
+            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
+               hv $$18 = $$2.b($$15, $$16, $$17);
+               boolean $$19 = $$4.a_($$18).e();
+               if ($$16 == -1 && !$$19) {
+                  return false;
+               }
+
+               if ($$16 == 4 && !$$19) {
+                  return false;
+               }
+
+               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.t($$18) && $$4.t($$18.c())) {
+                  $$14++;
+               }
+            }
+         }
+      }
+
+      if ($$14 >= 1 && $$14 <= 5) {
+         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
+            for (int $$21 = 3; $$21 >= -1; $$21--) {
+               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
+                  hv $$23 = $$2.b($$20, $$21, $$22);
+                  dip $$24 = $$4.a_($$23);
+                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
+                     if ($$23.v() >= $$4.J_() && !$$4.a_($$23.d()).e()) {
+                        $$4.a($$23, c, 2);
+                     } else if ($$24.e() && !$$24.a(cwb.cv)) {
+                        if ($$21 == -1 && $$3.a(4) != 0) {
+                           this.a($$4, $$23, cwb.cn.o(), $$1);
+                        } else {
+                           this.a($$4, $$23, cwb.m.o(), $$1);
+                        }
+                     }
+                  } else if (!$$24.a(cwb.cv) && !$$24.a(cwb.ct)) {
+                     this.a($$4, $$23, c, $$1);
+                  }
+               }
+            }
+         }
+
+         for (int $$25 = 0; $$25 < 2; $$25++) {
+            for (int $$26 = 0; $$26 < 3; $$26++) {
+               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
+               int $$28 = $$2.v();
+               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
+               hv $$30 = new hv($$27, $$28, $$29);
+               if ($$4.t($$30)) {
+                  int $$31 = 0;
+
+                  for (ia $$32 : ia.c.a) {
+                     if ($$4.a_($$30.a($$32)).e()) {
+                        $$31++;
+                     }
+                  }
+
+                  if ($$31 == 1) {
+                     this.a($$4, $$30, dys.a($$4, $$30, cwb.cv.o()), $$1);
+                     bjs.a($$4, $$3, $$30, egc.d);
+                     break;
+                  }
+               }
+            }
+         }
+
+         this.a($$4, $$2, cwb.ct.o(), $$1);
+         if ($$4.c_($$2) instanceof dhq $$34) {
+            $$34.a(this.a($$3), $$3);
          } else {
-            this.a($$1, $$3, $$2);
-            this.b($$1, $$3, $$2);
-            return true;
+            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
          }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private void a(csg $$0, atw $$1, hx $$2) {
-      $$0.a($$2, cvh.kK.o(), 2);
-      hx.a $$3 = new hx.a();
-      hx.a $$4 = new hx.a();
-
-      for (int $$5 = 0; $$5 < 200; $$5++) {
-         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
-         if ($$0.t($$3)) {
-            int $$6 = 0;
-
-            for (ib $$7 : a) {
-               dhn $$8 = $$0.a_($$4.a($$3, $$7));
-               if ($$8.a(cvh.dV) || $$8.a(cvh.kK)) {
-                  $$6++;
-               }
-
-               if ($$6 > 1) {
-                  break;
-               }
-            }
-
-            if ($$6 == 1) {
-               $$0.a($$3, cvh.kK.o(), 2);
-            }
-         }
-      }
-   }
-
-   private void b(csg $$0, atw $$1, hx $$2) {
-      hx.a $$3 = new hx.a();
-
-      for (int $$4 = 0; $$4 < 100; $$4++) {
-         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
-         if ($$0.t($$3)) {
-            dhn $$5 = $$0.a_($$3.c());
-            if ($$5.a(cvh.dV) || $$5.a(cvh.kK)) {
-               int $$6 = atq.a($$1, 1, 8);
-               if ($$1.a(6) == 0) {
-                  $$6 *= 2;
-               }
-
-               if ($$1.a(5) == 0) {
-                  $$6 = 1;
-               }
-
-               int $$7 = 17;
-               int $$8 = 25;
-               a($$0, $$1, $$3, $$6, 17, 25);
-            }
-         }
-      }
-   }
-
-   public static void a(csg $$0, atw $$1, hx.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 <= $$3; $$6++) {
-         if ($$0.t($$2)) {
-            if ($$6 == $$3 || !$$0.t($$2.d())) {
-               $$0.a($$2, cvh.oz.o().a(cyu.e, Integer.valueOf(atq.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, cvh.oA.o(), 2);
-         }
-
-         $$2.c(ib.a);
-      }
+   private blj<?> a(auf $$0) {
+      return ac.a(b, $$0);
    }
 }

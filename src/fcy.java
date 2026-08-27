@@ -1,174 +1,214 @@
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import java.util.List;
 
-public class fcy extends fcq<chs> implements fet {
-   private float x;
-   private float y;
-   private final fen z = new fen();
-   private boolean A;
-   private boolean B;
+public class fcy extends fcc {
+   static final agt a = new agt("gamemode_switcher/slot");
+   static final agt b = new agt("gamemode_switcher/selection");
+   private static final agt c = new agt("textures/gui/container/gamemode_switcher.png");
+   private static final int k = 128;
+   private static final int l = 128;
+   private static final int m = 26;
+   private static final int n = 5;
+   private static final int o = 31;
+   private static final int p = 5;
+   private static final int q = fcy.a.values().length * 31 - 5;
+   private static final vb r = vb.a("debug.gamemodes.select_next", vb.c("debug.gamemodes.press_f4").a(n.l));
+   private final fcy.a t;
+   private fcy.a u;
+   private int v;
+   private int w;
+   private boolean x;
+   private final List<fcy.b> y = Lists.newArrayList();
 
-   public fcy(cdz $$0) {
-      super($$0.bR, $$0.fT(), uv.c("container.crafting"));
-      this.l = 97;
+   public fcy() {
+      super(euc.a);
+      this.t = fcy.a.a(this.l());
+      this.u = this.t;
    }
 
-   @Override
-   public void C() {
-      if (this.f.q.g()) {
-         this.f.a(new fcn(this.f.s, this.f.s.cn.y(), this.f.m.G().c()));
+   private csv l() {
+      fna $$0 = euk.N().q;
+      csv $$1 = $$0.k();
+      if ($$1 != null) {
+         return $$1;
       } else {
-         this.z.h();
+         return $$0.l() == csv.b ? csv.a : csv.b;
       }
    }
 
    @Override
-   protected void aQ_() {
-      if (this.f.q.g()) {
-         this.f.a(new fcn(this.f.s, this.f.s.cn.y(), this.f.m.G().c()));
-      } else {
-         super.aQ_();
-         this.A = this.g < 379;
-         this.z.a(this.g, this.h, this.f, this.A, this.p);
-         this.t = this.z.a(this.g, this.c);
-         this.d(new evq(this.t + 104, this.h / 2 - 22, 20, 18, fen.a, $$0 -> {
-            this.z.f();
-            this.t = this.z.a(this.g, this.c);
-            $$0.b(this.t + 104, this.h / 2 - 22);
-            this.B = true;
-         }));
-         this.e(this.z);
-         this.c(this.z);
+   protected void aP_() {
+      super.aP_();
+      this.u = this.t;
+
+      for (int $$0 = 0; $$0 < fcy.a.e.length; $$0++) {
+         fcy.a $$1 = fcy.a.e[$$0];
+         this.y.add(new fcy.b($$1, this.g / 2 - q / 2 + $$0 * 31, this.h / 2 - 31));
       }
    }
 
    @Override
-   protected void b(eut $$0, int $$1, int $$2) {
-      $$0.a(this.i, this.e, this.l, this.m, 4210752, false);
-   }
-
-   @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      if (this.z.g() && this.A) {
-         this.b($$0, $$1, $$2, $$3);
-         this.z.a($$0, $$1, $$2, $$3);
-      } else {
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
+      if (!this.D()) {
+         $$0.c().a();
+         RenderSystem.enableBlend();
+         int $$4 = this.g / 2 - 62;
+         int $$5 = this.h / 2 - 31 - 27;
+         $$0.a(c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
+         $$0.c().b();
          super.a($$0, $$1, $$2, $$3);
-         this.z.a($$0, $$1, $$2, $$3);
-         this.z.a($$0, this.t, this.u, false, $$3);
+         $$0.a(this.i, this.u.a(), this.g / 2, this.h / 2 - 31 - 20, -1);
+         $$0.a(this.i, r, this.g / 2, this.h / 2 + 5, 16777215);
+         if (!this.x) {
+            this.v = $$1;
+            this.w = $$2;
+            this.x = true;
+         }
+
+         boolean $$6 = this.v == $$1 && this.w == $$2;
+
+         for (fcy.b $$7 : this.y) {
+            $$7.a($$0, $$1, $$2, $$3);
+            $$7.b(this.u == $$7.b);
+            if (!$$6 && $$7.n()) {
+               this.u = $$7.b;
+            }
+         }
       }
-
-      this.a($$0, $$1, $$2);
-      this.z.a($$0, this.t, this.u, $$1, $$2);
-      this.x = (float)$$1;
-      this.y = (float)$$2;
    }
 
    @Override
-   protected void a(eut $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.t;
-      int $$5 = this.u;
-      $$0.a(a, $$4, $$5, 0, 0, this.c, this.k);
-      a($$0, $$4 + 26, $$5 + 8, $$4 + 75, $$5 + 78, 30, 0.0625F, this.x, this.y, this.f.s);
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
    }
 
-   public static void a(eut $$0, int $$1, int $$2, int $$3, int $$4, int $$5, float $$6, float $$7, float $$8, bll $$9) {
-      float $$10 = (float)($$1 + $$3) / 2.0F;
-      float $$11 = (float)($$2 + $$4) / 2.0F;
-      $$0.c($$1, $$2, $$3, $$4);
-      float $$12 = (float)Math.atan((double)(($$10 - $$7) / 40.0F));
-      float $$13 = (float)Math.atan((double)(($$11 - $$8) / 40.0F));
-      Quaternionf $$14 = new Quaternionf().rotateZ((float) Math.PI);
-      Quaternionf $$15 = new Quaternionf().rotateX($$13 * 20.0F * (float) (Math.PI / 180.0));
-      $$14.mul($$15);
-      float $$16 = $$9.aU;
-      float $$17 = $$9.dD();
-      float $$18 = $$9.dF();
-      float $$19 = $$9.aX;
-      float $$20 = $$9.aW;
-      $$9.aU = 180.0F + $$12 * 20.0F;
-      $$9.r(180.0F + $$12 * 40.0F);
-      $$9.s(-$$13 * 20.0F);
-      $$9.aW = $$9.dD();
-      $$9.aX = $$9.dD();
-      Vector3f $$21 = new Vector3f(0.0F, $$9.di() / 2.0F + $$6, 0.0F);
-      a($$0, $$10, $$11, $$5, $$21, $$14, $$15, $$9);
-      $$9.aU = $$16;
-      $$9.r($$17);
-      $$9.s($$18);
-      $$9.aX = $$19;
-      $$9.aW = $$20;
-      $$0.f();
+   private void C() {
+      a(this.f, this.u);
    }
 
-   public static void a(eut $$0, float $$1, float $$2, int $$3, Vector3f $$4, Quaternionf $$5, @Nullable Quaternionf $$6, bll $$7) {
-      $$0.c().a();
-      $$0.c().a((double)$$1, (double)$$2, 50.0);
-      $$0.c().a(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
-      $$0.c().a($$4.x, $$4.y, $$4.z);
-      $$0.c().a($$5);
-      emx.c();
-      fwa $$8 = eti.N().an();
-      if ($$6 != null) {
-         $$6.conjugate();
-         $$8.a($$6);
+   private static void a(euk $$0, fcy.a $$1) {
+      if ($$0.q != null && $$0.s != null) {
+         fcy.a $$2 = fcy.a.a($$0.q.l());
+         if ($$0.s.l(2) && $$1 != $$2) {
+            $$0.s.cn.d($$1.b());
+         }
       }
-
-      $$8.a(false);
-      RenderSystem.runAsFancy(() -> $$8.a($$7, 0.0, 0.0, 0.0, 0.0F, 1.0F, $$0.c(), $$0.d(), 15728880));
-      $$0.e();
-      $$8.a(true);
-      $$0.c().b();
-      emx.b();
    }
 
-   @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.A || !this.z.g()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.z.a($$0, $$1, $$2)) {
-         this.a(this.z);
+   private boolean D() {
+      if (!eny.a(this.f.aL().i(), 292)) {
+         this.C();
+         this.f.a(null);
          return true;
       } else {
-         return this.A && this.z.g() ? false : super.a($$0, $$1, $$2);
+         return false;
       }
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (this.B) {
-         this.B = false;
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 293) {
+         this.x = false;
+         this.u = this.u.c();
          return true;
       } else {
-         return super.b($$0, $$1, $$2);
+         return super.a($$0, $$1, $$2);
       }
    }
 
    @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
-      return this.z.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
+   public boolean j() {
+      return false;
    }
 
-   @Override
-   protected void a(cim $$0, int $$1, int $$2, cha $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.z.a($$0);
+   static enum a {
+      a(vb.c("gameMode.creative"), "gamemode creative", new cmh(cwb.i)),
+      b(vb.c("gameMode.survival"), "gamemode survival", new cmh(cmk.oX)),
+      c(vb.c("gameMode.adventure"), "gamemode adventure", new cmh(cmk.uc)),
+      d(vb.c("gameMode.spectator"), "gamemode spectator", new cmh(cmk.sp));
+
+      protected static final fcy.a[] e = values();
+      private static final int j = 16;
+      protected static final int f = 5;
+      final vb g;
+      final String h;
+      final cmh i;
+
+      private a(vb $$0, String $$1, cmh $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+      }
+
+      void a(evw $$0, int $$1, int $$2) {
+         $$0.a(this.i, $$1, $$2);
+      }
+
+      vb a() {
+         return this.g;
+      }
+
+      String b() {
+         return this.h;
+      }
+
+      fcy.a c() {
+         return switch (this) {
+            case a -> b;
+            case b -> c;
+            case c -> d;
+            case d -> a;
+         };
+      }
+
+      static fcy.a a(csv $$0) {
+         return switch ($$0) {
+            case d -> d;
+            case a -> b;
+            case b -> a;
+            case c -> c;
+         };
+      }
    }
 
-   @Override
-   public void E() {
-      this.z.i();
-   }
+   public class b extends ewf {
+      final fcy.a b;
+      private boolean c;
 
-   @Override
-   public fen F() {
-      return this.z;
+      public b(fcy.a $$1, int $$2, int $$3) {
+         super($$2, $$3, 26, 26, $$1.a());
+         this.b = $$1;
+      }
+
+      @Override
+      public void b(evw $$0, int $$1, int $$2, float $$3) {
+         this.a($$0);
+         this.b.a($$0, this.p() + 5, this.r() + 5);
+         if (this.c) {
+            this.b($$0);
+         }
+      }
+
+      @Override
+      public void a(faa $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public boolean n() {
+         return super.n() || this.c;
+      }
+
+      public void b(boolean $$0) {
+         this.c = $$0;
+      }
+
+      private void a(evw $$0) {
+         $$0.a(fcy.a, this.p(), this.r(), 26, 26);
+      }
+
+      private void b(evw $$0) {
+         $$0.a(fcy.b, this.p(), this.r(), 26, 26);
+      }
    }
 }

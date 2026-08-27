@@ -1,20 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
 
-class dol implements dod {
-   public static final Codec<dol> a = RecordCodecBuilder.create($$0 -> $$0.group(dod.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dol::new));
-   private final dod e;
-
-   public dol(dod $$0) {
-      this.e = $$0;
+public interface dol {
+   default auf a(hv $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
    }
 
-   public boolean a(csz $$0, hx $$1) {
-      return !this.e.test($$0, $$1);
+   default auf a(agt $$0) {
+      return this.a($$0.toString());
    }
 
-   @Override
-   public doe<?> a() {
-      return doe.k;
-   }
+   auf a(String var1);
+
+   auf a(int var1, int var2, int var3);
+
+   @VisibleForTesting
+   void a(StringBuilder var1);
 }

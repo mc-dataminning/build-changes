@@ -1,316 +1,271 @@
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongMaps;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
+import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Collections;
-import java.util.Comparator;
+import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.ObjectUtils;
+import java.util.ListIterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class bfo implements bfr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bft b = new bft() {
-      @Override
-      public long a() {
-         return 0L;
-      }
+public class bfo {
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 4096;
+   private static final String c = ".gz";
+   private final Path d;
+   private final String e;
 
-      @Override
-      public long b() {
-         return 0L;
-      }
-
-      @Override
-      public long c() {
-         return 0L;
-      }
-
-      @Override
-      public Object2LongMap<String> d() {
-         return Object2LongMaps.emptyMap();
-      }
-   };
-   private static final Splitter c = Splitter.on('\u001e');
-   private static final Comparator<Entry<String, bfo.a>> e = Entry.<String, bfo.a>comparingByValue(Comparator.comparingLong($$0 -> $$0.b)).reversed();
-   private final Map<String, ? extends bft> f;
-   private final long g;
-   private final int h;
-   private final long i;
-   private final int j;
-   private final int k;
-
-   public bfo(Map<String, ? extends bft> $$0, long $$1, int $$2, long $$3, int $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$4 - $$2;
+   private bfo(Path $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private bft c(String $$0) {
-      bft $$1 = this.f.get($$0);
-      return $$1 != null ? $$1 : b;
+   public static bfo a(Path $$0, String $$1) throws IOException {
+      Files.createDirectories($$0);
+      return new bfo($$0, $$1);
    }
 
-   @Override
-   public List<bfu> a(String $$0) {
-      String $$1 = $$0;
-      bft $$2 = this.c("root");
-      long $$3 = $$2.a();
-      bft $$4 = this.c($$0);
-      long $$5 = $$4.a();
-      long $$6 = $$4.c();
-      List<bfu> $$7 = Lists.newArrayList();
-      if (!$$0.isEmpty()) {
-         $$0 = $$0 + "\u001e";
+   public bfo.d a() throws IOException {
+      bfo.d var2;
+      try (Stream<Path> $$0 = Files.list(this.d)) {
+         var2 = new bfo.d($$0.filter($$0x -> Files.isRegularFile($$0x)).map(this::a).filter(Objects::nonNull).toList());
       }
 
-      long $$8 = 0L;
+      return var2;
+   }
 
-      for (String $$9 : this.f.keySet()) {
-         if (a($$0, $$9)) {
-            $$8 += this.c($$9).a();
+   @Nullable
+   private bfo.b a(Path $$0) {
+      String $$1 = $$0.getFileName().toString();
+      int $$2 = $$1.indexOf(46);
+      if ($$2 == -1) {
+         return null;
+      } else {
+         bfo.c $$3 = bfo.c.a($$1.substring(0, $$2));
+         if ($$3 != null) {
+            String $$4 = $$1.substring($$2);
+            if ($$4.equals(this.e)) {
+               return new bfo.e($$0, $$3);
+            }
+
+            if ($$4.equals(this.e + ".gz")) {
+               return new bfo.a($$0, $$3);
+            }
+         }
+
+         return null;
+      }
+   }
+
+   static void a(Path $$0, Path $$1) throws IOException {
+      if (Files.exists($$1)) {
+         throw new IOException("Compressed target file already exists: " + $$1);
+      } else {
+         try (FileChannel $$2 = FileChannel.open($$0, StandardOpenOption.WRITE, StandardOpenOption.READ)) {
+            FileLock $$3 = $$2.tryLock();
+            if ($$3 == null) {
+               throw new IOException("Raw log file is already locked, cannot compress: " + $$0);
+            }
+
+            a($$2, $$1);
+            $$2.truncate(0L);
+         }
+
+         Files.delete($$0);
+      }
+   }
+
+   private static void a(ReadableByteChannel $$0, Path $$1) throws IOException {
+      try (OutputStream $$2 = new GZIPOutputStream(Files.newOutputStream($$1))) {
+         byte[] $$3 = new byte[4096];
+         ByteBuffer $$4 = ByteBuffer.wrap($$3);
+
+         while ($$0.read($$4) >= 0) {
+            $$4.flip();
+            $$2.write($$3, 0, $$4.limit());
+            $$4.clear();
          }
       }
+   }
 
-      float $$10 = (float)$$8;
-      if ($$8 < $$5) {
-         $$8 = $$5;
+   public bfo.e a(LocalDate $$0) throws IOException {
+      int $$1 = 1;
+      Set<bfo.c> $$2 = this.a().c();
+
+      bfo.c $$3;
+      do {
+         $$3 = new bfo.c($$0, $$1++);
+      } while ($$2.contains($$3));
+
+      bfo.e $$4 = new bfo.e(this.d.resolve($$3.b(this.e)), $$3);
+      Files.createFile($$4.c());
+      return $$4;
+   }
+
+   public static record a(Path a, bfo.c b) implements bfo.b {
+      @Nullable
+      @Override
+      public Reader a() throws IOException {
+         return !Files.exists(this.a) ? null : new BufferedReader(new InputStreamReader(new GZIPInputStream(Files.newInputStream(this.a))));
       }
 
-      if ($$3 < $$8) {
-         $$3 = $$8;
+      @Override
+      public bfo.a b() {
+         return this;
       }
 
-      for (String $$11 : this.f.keySet()) {
-         if (a($$0, $$11)) {
-            bft $$12 = this.c($$11);
-            long $$13 = $$12.a();
-            double $$14 = (double)$$13 * 100.0 / (double)$$8;
-            double $$15 = (double)$$13 * 100.0 / (double)$$3;
-            String $$16 = $$11.substring($$0.length());
-            $$7.add(new bfu($$16, $$14, $$15, $$12.c()));
-         }
+      @Override
+      public Path c() {
+         return this.a;
       }
 
-      if ((float)$$8 > $$10) {
-         $$7.add(new bfu("unspecified", (double)((float)$$8 - $$10) * 100.0 / (double)$$8, (double)((float)$$8 - $$10) * 100.0 / (double)$$3, $$6));
+      @Override
+      public bfo.c d() {
+         return this.b;
       }
-
-      Collections.sort($$7);
-      $$7.add(0, new bfu($$1, 100.0, (double)$$8 * 100.0 / (double)$$3, $$6));
-      return $$7;
    }
 
-   private static boolean a(String $$0, String $$1) {
-      return $$1.length() > $$0.length() && $$1.startsWith($$0) && $$1.indexOf(30, $$0.length() + 1) < 0;
+   public interface b {
+      Path c();
+
+      bfo.c d();
+
+      @Nullable
+      Reader a() throws IOException;
+
+      bfo.a b() throws IOException;
    }
 
-   private Map<String, bfo.a> h() {
-      Map<String, bfo.a> $$0 = Maps.newTreeMap();
-      this.f.forEach(($$1, $$2) -> {
-         Object2LongMap<String> $$3 = $$2.d();
-         if (!$$3.isEmpty()) {
-            List<String> $$4 = c.splitToList($$1);
-            $$3.forEach(($$2x, $$3x) -> $$0.computeIfAbsent($$2x, $$0xxx -> new bfo.a()).a($$4.iterator(), $$3x));
-         }
-      });
-      return $$0;
-   }
+   public static record c(LocalDate a, int b) {
+      private static final DateTimeFormatter c = DateTimeFormatter.BASIC_ISO_DATE;
 
-   @Override
-   public long a() {
-      return this.g;
-   }
+      @Nullable
+      public static bfo.c a(String $$0) {
+         int $$1 = $$0.indexOf("-");
+         if ($$1 == -1) {
+            return null;
+         } else {
+            String $$2 = $$0.substring(0, $$1);
+            String $$3 = $$0.substring($$1 + 1);
 
-   @Override
-   public int b() {
-      return this.h;
-   }
-
-   @Override
-   public long c() {
-      return this.i;
-   }
-
-   @Override
-   public int d() {
-      return this.j;
-   }
-
-   @Override
-   public boolean a(Path $$0) {
-      Writer $$1 = null;
-
-      boolean var4;
-      try {
-         Files.createDirectories($$0.getParent());
-         $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8);
-         $$1.write(this.a(this.g(), this.f()));
-         return true;
-      } catch (Throwable var8) {
-         a.error("Could not save profiler results to {}", $$0, var8);
-         var4 = false;
-      } finally {
-         IOUtils.closeQuietly($$1);
-      }
-
-      return var4;
-   }
-
-   protected String a(long $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      $$2.append("---- Minecraft Profiler Results ----\n");
-      $$2.append("// ");
-      $$2.append(i());
-      $$2.append("\n\n");
-      $$2.append("Version: ").append(aa.b().b()).append('\n');
-      $$2.append("Time span: ").append($$0 / 1000000L).append(" ms\n");
-      $$2.append("Tick span: ").append($$1).append(" ticks\n");
-      $$2.append("// This is approximately ")
-         .append(String.format(Locale.ROOT, "%.2f", (float)$$1 / ((float)$$0 / 1.0E9F)))
-         .append(" ticks per second. It should be ")
-         .append(20)
-         .append(" ticks per second\n\n");
-      $$2.append("--- BEGIN PROFILE DUMP ---\n\n");
-      this.a(0, "root", $$2);
-      $$2.append("--- END PROFILE DUMP ---\n\n");
-      Map<String, bfo.a> $$3 = this.h();
-      if (!$$3.isEmpty()) {
-         $$2.append("--- BEGIN COUNTER DUMP ---\n\n");
-         this.a($$3, $$2, $$1);
-         $$2.append("--- END COUNTER DUMP ---\n\n");
-      }
-
-      return $$2.toString();
-   }
-
-   @Override
-   public String e() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a(0, "root", $$0);
-      return $$0.toString();
-   }
-
-   private static StringBuilder a(StringBuilder $$0, int $$1) {
-      $$0.append(String.format(Locale.ROOT, "[%02d] ", $$1));
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0.append("|   ");
-      }
-
-      return $$0;
-   }
-
-   private void a(int $$0, String $$1, StringBuilder $$2) {
-      List<bfu> $$3 = this.a($$1);
-      Object2LongMap<String> $$4 = ((bft)ObjectUtils.firstNonNull(new bft[]{this.f.get($$1), b})).d();
-      $$4.forEach(($$2x, $$3x) -> a($$2, $$0).append('#').append($$2x).append(' ').append($$3x).append('/').append($$3x / (long)this.k).append('\n'));
-      if ($$3.size() >= 3) {
-         for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
-            bfu $$6 = $$3.get($$5);
-            a($$2, $$0)
-               .append($$6.d)
-               .append('(')
-               .append($$6.c)
-               .append('/')
-               .append(String.format(Locale.ROOT, "%.0f", (float)$$6.c / (float)this.k))
-               .append(')')
-               .append(" - ")
-               .append(String.format(Locale.ROOT, "%.2f", $$6.a))
-               .append("%/")
-               .append(String.format(Locale.ROOT, "%.2f", $$6.b))
-               .append("%\n");
-            if (!"unspecified".equals($$6.d)) {
-               try {
-                  this.a($$0 + 1, $$1 + "\u001e" + $$6.d, $$2);
-               } catch (Exception var9) {
-                  $$2.append("[[ EXCEPTION ").append(var9).append(" ]]");
-               }
+            try {
+               return new bfo.c(LocalDate.parse($$2, c), Integer.parseInt($$3));
+            } catch (DateTimeParseException | NumberFormatException var5) {
+               return null;
             }
          }
       }
-   }
 
-   private void a(int $$0, String $$1, bfo.a $$2, int $$3, StringBuilder $$4) {
-      a($$4, $$0)
-         .append($$1)
-         .append(" total:")
-         .append($$2.a)
-         .append('/')
-         .append($$2.b)
-         .append(" average: ")
-         .append($$2.a / (long)$$3)
-         .append('/')
-         .append($$2.b / (long)$$3)
-         .append('\n');
-      $$2.c.entrySet().stream().sorted(e).forEach($$3x -> this.a($$0 + 1, (String)$$3x.getKey(), (bfo.a)$$3x.getValue(), $$3, $$4));
-   }
+      @Override
+      public String toString() {
+         return c.format(this.a) + "-" + this.b;
+      }
 
-   private void a(Map<String, bfo.a> $$0, StringBuilder $$1, int $$2) {
-      $$0.forEach(($$2x, $$3) -> {
-         $$1.append("-- Counter: ").append($$2x).append(" --\n");
-         this.a(0, "root", $$3.c.get("root"), $$2, $$1);
-         $$1.append("\n\n");
-      });
-   }
-
-   private static String i() {
-      String[] $$0 = new String[]{
-         "I'd Rather Be Surfing",
-         "Shiny numbers!",
-         "Am I not running fast enough? :(",
-         "I'm working as hard as I can!",
-         "Will I ever be good enough for you? :(",
-         "Speedy. Zoooooom!",
-         "Hello world",
-         "40% better than a crash report.",
-         "Now with extra numbers",
-         "Now with less numbers",
-         "Now with the same numbers",
-         "You should add flames to things, it makes them go faster!",
-         "Do you feel the need for... optimization?",
-         "*cracks redstone whip*",
-         "Maybe if you treated it better then it'll have more motivation to work faster! Poor server."
-      };
-
-      try {
-         return $$0[(int)(ac.c() % (long)$$0.length)];
-      } catch (Throwable var2) {
-         return "Witty comment unavailable :(";
+      public String b(String $$0) {
+         return this + $$0;
       }
    }
 
-   @Override
-   public int f() {
-      return this.k;
+   public static class d implements Iterable<bfo.b> {
+      private final List<bfo.b> a;
+
+      d(List<bfo.b> $$0) {
+         this.a = new ArrayList<>($$0);
+      }
+
+      public bfo.d a(LocalDate $$0, int $$1) {
+         this.a.removeIf($$2 -> {
+            bfo.c $$3 = $$2.d();
+            LocalDate $$4 = $$3.a().plusDays((long)$$1);
+            if (!$$0.isBefore($$4)) {
+               try {
+                  Files.delete($$2.c());
+                  return true;
+               } catch (IOException var6) {
+                  bfo.a.warn("Failed to delete expired event log file: {}", $$2.c(), var6);
+               }
+            }
+
+            return false;
+         });
+         return this;
+      }
+
+      public bfo.d a() {
+         ListIterator<bfo.b> $$0 = this.a.listIterator();
+
+         while ($$0.hasNext()) {
+            bfo.b $$1 = $$0.next();
+
+            try {
+               $$0.set($$1.b());
+            } catch (IOException var4) {
+               bfo.a.warn("Failed to compress event log file: {}", $$1.c(), var4);
+            }
+         }
+
+         return this;
+      }
+
+      @Override
+      public Iterator<bfo.b> iterator() {
+         return this.a.iterator();
+      }
+
+      public Stream<bfo.b> b() {
+         return this.a.stream();
+      }
+
+      public Set<bfo.c> c() {
+         return this.a.stream().map(bfo.b::d).collect(Collectors.toSet());
+      }
    }
 
-   static class a {
-      long a;
-      long b;
-      final Map<String, bfo.a> c = Maps.newHashMap();
+   public static record e(Path a, bfo.c b) implements bfo.b {
+      public FileChannel e() throws IOException {
+         return FileChannel.open(this.a, StandardOpenOption.WRITE, StandardOpenOption.READ);
+      }
 
-      public void a(Iterator<String> $$0, long $$1) {
-         this.b += $$1;
-         if (!$$0.hasNext()) {
-            this.a += $$1;
-         } else {
-            this.c.computeIfAbsent($$0.next(), $$0x -> new bfo.a()).a($$0, $$1);
-         }
+      @Nullable
+      @Override
+      public Reader a() throws IOException {
+         return Files.exists(this.a) ? Files.newBufferedReader(this.a) : null;
+      }
+
+      @Override
+      public bfo.a b() throws IOException {
+         Path $$0 = this.a.resolveSibling(this.a.getFileName().toString() + ".gz");
+         bfo.a(this.a, $$0);
+         return new bfo.a($$0, this.b);
+      }
+
+      @Override
+      public Path c() {
+         return this.a;
+      }
+
+      @Override
+      public bfo.c d() {
+         return this.b;
       }
    }
 }

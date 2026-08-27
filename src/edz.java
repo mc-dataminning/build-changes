@@ -1,44 +1,118 @@
-import java.util.Locale;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public interface edz {
-   ib[] a = new ib[]{ib.e, ib.f, ib.a, ib.b, ib.c, ib.d};
+public final class edz extends dir<edy, edz> {
+   public static final Codec<edz> a = a(kb.c.q(), edy::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
 
-   void a(ib var1, dhn var2, hx var3, hx var4, int var5, int var6);
+   public edz(edy $$0, ImmutableMap<djs<?>, Comparable<?>> $$1, MapCodec<edz> $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   void a(hx var1, cvf var2, hx var3);
+   public edy a() {
+      return this.e;
+   }
 
-   void a(dhn var1, hx var2, cvf var3, hx var4, boolean var5);
+   public boolean b() {
+      return this.a().c(this);
+   }
 
-   default void a(hx $$0, cvf $$1, @Nullable ib $$2) {
-      for (ib $$3 : a) {
-         if ($$3 != $$2) {
-            this.a($$0.a($$3), $$1, $$0);
+   public boolean a(edy $$0) {
+      return this.e == $$0 && this.e.c(this);
+   }
+
+   public boolean c() {
+      return this.a().b();
+   }
+
+   public float a(cse $$0, hv $$1) {
+      return this.a().a(this, $$0, $$1);
+   }
+
+   public float d() {
+      return this.a().a(this);
+   }
+
+   public int e() {
+      return this.a().d(this);
+   }
+
+   public boolean b(cse $$0, hv $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            hv $$4 = $$1.b($$2, 0, $$3);
+            edz $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
+            }
          }
       }
+
+      return false;
    }
 
-   static void a(csg $$0, ib $$1, dhn $$2, hx $$3, hx $$4, int $$5, int $$6) {
-      dhn $$7 = $$0.a_($$3);
-      dhn $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
-      cvf.a($$7, $$8, $$0, $$3, $$5, $$6);
+   public void a(csy $$0, hv $$1) {
+      this.a().b($$0, $$1, this);
    }
 
-   static void a(csf $$0, dhn $$1, hx $$2, cvf $$3, hx $$4, boolean $$5) {
-      try {
-         $$1.a($$0, $$2, $$3, $$4, $$5);
-      } catch (Throwable var9) {
-         o $$7 = o.a(var9, "Exception while updating neighbours");
-         p $$8 = $$7.a("Block being updated");
-         $$8.a("Source block type", () -> {
-            try {
-               return String.format(Locale.ROOT, "ID #%s (%s // %s)", kc.f.b($$3), $$3.h(), $$3.getClass().getCanonicalName());
-            } catch (Throwable var2x) {
-               return "ID #" + kc.f.b($$3);
-            }
-         });
-         p.a($$8, $$0, $$2, $$1);
-         throw new y($$7);
-      }
+   public void a(csy $$0, hv $$1, auf $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public boolean f() {
+      return this.a().i();
+   }
+
+   public void b(csy $$0, hv $$1, auf $$2) {
+      this.a().b($$0, $$1, this, $$2);
+   }
+
+   public elb c(cse $$0, hv $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public dip g() {
+      return this.a().b(this);
+   }
+
+   @Nullable
+   public jt h() {
+      return this.a().h();
+   }
+
+   public boolean a(asg<edy> $$0) {
+      return this.a().k().a($$0);
+   }
+
+   public boolean a(ij<edy> $$0) {
+      return $$0.a(this.a().k());
+   }
+
+   public boolean b(edy $$0) {
+      return this.a() == $$0;
+   }
+
+   public float i() {
+      return this.a().c();
+   }
+
+   public boolean a(cse $$0, hv $$1, edy $$2, ia $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
+   }
+
+   public elu d(cse $$0, hv $$1) {
+      return this.a().b(this, $$0, $$1);
+   }
+
+   public ie<edy> j() {
+      return this.e.k();
+   }
+
+   public Stream<asg<edy>> k() {
+      return this.e.k().c();
    }
 }

@@ -1,40 +1,42 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bqj extends bnc<cdm> {
-   public bqj() {
-      super(ImmutableMap.of());
-   }
+public class bqj {
+   private static final int a = 60;
 
-   protected boolean a(ami $$0, cdm $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
+   public static bnn<bme> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bqz.a(
+         (Function<bqz.b<bme>, ? extends App<bqz.c<bme>, brc<bme>>>)($$3 -> $$3.group($$3.c(bux.o), $$3.c(bux.m), $$3.a(bux.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if (!$$5x.b_($$6.dm()).a(arw.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     } else {
+                        hv $$8 = $$6.dm();
+                        hv.a $$9 = new hv.a();
+                        elg $$10 = elg.a($$6);
 
-   protected void b(ami $$0, cdm $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bml<?> $$3 = $$1.dP();
-         if (!$$3.c(cfk.g)) {
-            $$3.b(bum.t);
-            $$3.b(bum.m);
-            $$3.b(bum.n);
-            $$3.b(bum.r);
-            $$3.b(bum.q);
-         }
+                        for (hv $$11 : hv.a($$8, $$0, $$0, $$0)) {
+                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
+                              dip $$12 = $$5x.a_($$11);
+                              dip $$13 = $$5x.a_($$9.a($$11, ia.a));
+                              if (!$$12.a(cwb.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, ia.b)) {
+                                 hv $$14 = $$11.i();
+                                 $$5.a(new bnp($$14));
+                                 $$4.a(new bva(new bnp($$14), $$1, 1));
+                                 break;
+                              }
+                           }
+                        }
 
-         $$3.a(cfk.g);
-      }
-   }
-
-   protected void c(ami $$0, cdm $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bll $$0) {
-      return $$0.dP().a(bum.A);
-   }
-
-   public static boolean c(bll $$0) {
-      return $$0.dP().a(bum.x);
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

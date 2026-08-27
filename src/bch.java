@@ -1,41 +1,29 @@
-import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.types.templates.Hook.HookFunction;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
 
-public class bch extends Schema {
-   public bch(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bch extends DataFix {
+   public bch(Schema $$0) {
+      super($$0, false);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         true,
-         bax.t,
-         () -> DSL.hook(
-               DSL.optionalFields(
-                  "id",
-                  bax.z.in($$0),
-                  "tag",
-                  DSL.optionalFields(
-                     "EntityTag",
-                     bax.w.in($$0),
-                     "BlockEntityTag",
-                     bax.s.in($$0),
-                     "CanDestroy",
-                     DSL.list(bax.y.in($$0)),
-                     "CanPlaceOn",
-                     DSL.list(bax.y.in($$0)),
-                     "Items",
-                     DSL.list(bax.t.in($$0))
-                  )
-               ),
-               bfc.a,
-               HookFunction.IDENTITY
-            )
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bbg.I);
+      OpticFinder<?> $$1 = $$0.findField("dimensions");
+      return this.fixTypeEverywhereTyped(
+         "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(), $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> {
+               $$0xx.write().map($$0xxx -> $$0xxx.getMapValues().map($$0xxxx -> {
+                     $$0xxxx.forEach(($$0xxxxx, $$1xx) -> {
+                        if ($$1xx.get("type").asString().result().isEmpty()) {
+                           throw new IllegalStateException("Unable load old custom worlds.");
+                        }
+                     });
+                     return $$0xxxx;
+                  }));
+               return $$0xx;
+            })
       );
    }
 }

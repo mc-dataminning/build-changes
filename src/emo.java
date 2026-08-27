@@ -1,9 +1,5 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.function.Function;
 
-public class emo extends emn {
-   public emo(int $$0, int $$1, boolean $$2, boolean $$3) {
-      super($$2);
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.a($$0, $$1, $$3);
-   }
+public interface emo<T> {
+   tg b(long var1, Function<T, String> var3);
 }

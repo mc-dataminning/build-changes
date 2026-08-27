@@ -1,29 +1,17 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class bpg {
-   private static final int a = 1;
-
-   public static bnd<bln> a(float $$0) {
-      return a($$1 -> $$0);
-   }
-
-   public static bnd<bln> a(Function<bll, Float> $$0) {
-      return bqo.a(
-         (Function<bqo.b<bln>, ? extends App<bqo.c<bln>, bqr<bln>>>)($$1 -> $$1.group($$1.a(bum.m), $$1.a(bum.n), $$1.b(bum.o), $$1.a(bum.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bll $$9 = $$1.b($$4);
-                     Optional<buo> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bne.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new bnn($$9, true));
-                        $$2.a(new bup(new bnn($$9, false), $$0.apply($$7), 0));
-                     }
-
-                     return true;
-                  }))
-      );
+   public static bnn<cee> a() {
+      return bqz.a((Function<bqz.b<cee>, ? extends App<bqz.c<cee>, brc<cee>>>)($$0 -> $$0.group($$0.c(bux.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               cef $$3 = $$1.gp();
+               if ($$3.b() != ceh.b && $$3.b() != ceh.m && $$1.w() == 0 && $$3.c() <= 1) {
+                  $$1.a($$1.gp().a(ceh.b));
+                  $$1.c($$0xx);
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

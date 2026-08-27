@@ -1,39 +1,18 @@
-public class fjq extends fjr {
-   private final fkt b;
-   protected final fkt a;
+import java.util.function.Function;
 
-   public fjq(fkt $$0) {
-      this.b = $$0;
-      this.a = $$0.b("head");
+public abstract class fjq<E extends blf> extends fiy<E> {
+   public fjq() {
+      this(fsq::e);
    }
 
-   public static flb a() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      $$1.a("head", fky.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fkv.a);
-      return $$0;
-   }
-
-   public static fkz b() {
-      flb $$0 = a();
-      flc $$1 = $$0.a();
-      $$1.a("head").a("hat", fky.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fkx(0.25F)), fkv.a);
-      return fkz.a($$0, 64, 64);
-   }
-
-   public static fkz c() {
-      flb $$0 = a();
-      return fkz.a($$0, 64, 32);
+   public fjq(Function<agt, fsq> $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   public void a(epd $$0, eph $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   @Override
-   public void a(eob $$0, eof $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   public abstract Iterable<fly> d();
 }

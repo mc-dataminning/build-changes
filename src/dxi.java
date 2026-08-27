@@ -1,106 +1,26 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Locale;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class dxi extends dxq {
-   private static final Logger d = LogUtils.getLogger();
-   protected final dyt a;
-   protected hx b;
-   private final int h;
-   protected final dbr c;
-   private final List<dyo> i = Lists.newArrayList();
-   private final ebn j;
+public class dxi extends dxv {
+   public static final Codec<dxi> a = dnu.a.c.fieldOf("step").xmap(dxi::new, $$0 -> $$0.c).codec();
+   private final dnu.a c;
 
-   public dxi(ebn $$0, dyt $$1, hx $$2, int $$3, dbr $$4, dxe $$5) {
-      super(dyd.ad, 0, $$5);
-      this.j = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.h = $$3;
-      this.c = $$4;
+   private dxi(dnu.a $$0) {
+      this.c = $$0;
    }
 
-   public dxi(dyc $$0, sd $$1) {
-      super(dyd.ad, $$1);
-      this.j = $$0.c();
-      this.b = new hx($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
-      this.h = $$1.h("ground_level_delta");
-      DynamicOps<ta> $$2 = agk.a(sr.a, $$0.b());
-      this.a = (dyt)dyt.e
-         .parse($$2, $$1.p("pool_element"))
-         .resultOrPartial(d::error)
-         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
-      this.c = dbr.valueOf($$1.l("rotation"));
-      this.f = this.a.a(this.j, this.b, this.c);
-      sj $$3 = $$1.c("junctions", 10);
-      this.i.clear();
-      $$3.forEach($$1x -> this.i.add(dyo.a(new Dynamic($$2, $$1x))));
+   public static dxi a(dnu.a $$0) {
+      return new dxi($$0);
    }
 
    @Override
-   protected void a(dyc $$0, sd $$1) {
-      $$1.a("PosX", this.b.u());
-      $$1.a("PosY", this.b.v());
-      $$1.a("PosZ", this.b.w());
-      $$1.a("ground_level_delta", this.h);
-      DynamicOps<ta> $$2 = agk.a(sr.a, $$0.b());
-      dyt.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
-      $$1.a("rotation", this.c.name());
-      sj $$3 = new sj();
-
-      for (dyo $$4 : this.i) {
-         $$3.add((ta)$$4.a($$2).getValue());
-      }
-
-      $$1.a("junctions", $$3);
+   public Stream<hv> a_(dxt $$0, auf $$1, hv $$2) {
+      csf $$3 = new csf($$2);
+      return $$0.a($$3, this.c).a($$3);
    }
 
    @Override
-   public void a(csz $$0, csx $$1, djk $$2, atw $$3, dxe $$4, crm $$5, hx $$6) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
-   }
-
-   public void a(csz $$0, csx $$1, djk $$2, atw $$3, dxe $$4, hx $$5, boolean $$6) {
-      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.b = this.b.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public dbr a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
-   }
-
-   public dyt b() {
-      return this.a;
-   }
-
-   public hx c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public void a(dyo $$0) {
-      this.i.add($$0);
-   }
-
-   public List<dyo> e() {
-      return this.i;
+   public dxw<?> b() {
+      return dxw.o;
    }
 }

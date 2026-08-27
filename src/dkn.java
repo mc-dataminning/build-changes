@@ -1,57 +1,158 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
+import com.google.common.base.Stopwatch;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.BitSet;
-import java.util.Iterator;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dkn implements dkj, AutoCloseable {
+public class dkn {
    private static final Logger a = LogUtils.getLogger();
-   private final AtomicBoolean b = new AtomicBoolean();
-   private final bhu<bhw.b> c;
-   private final dkq d;
-   private final Map<crm, dkn.a> e = Maps.newLinkedHashMap();
-   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
-   private static final int g = 1024;
+   private final dom b;
+   private final cub c;
+   private final long d;
+   private final long e;
+   private final Map<dyo, List<dzl>> f = new Object2ObjectOpenHashMap();
+   private final Map<dzi, CompletableFuture<List<csf>>> g = new Object2ObjectArrayMap();
+   private boolean h;
+   private final List<ie<dyu>> i;
 
-   protected dkn(Path $$0, boolean $$1, String $$2) {
-      this.d = new dkq($$0, $$1);
-      this.c = new bhu<>(new bhw.a(dkn.b.values().length), ac.g(), "IOWorker-" + $$2);
+   public static dkn a(dom $$0, long $$1, cub $$2, Stream<ie<dyu>> $$3) {
+      List<ie<dyu>> $$4 = $$3.filter($$1x -> a((dyu)$$1x.a(), $$2)).toList();
+      return new dkn($$0, $$2, $$1, 0L, $$4);
    }
 
-   public boolean a(crm $$0, int $$1) {
-      crm $$2 = new crm($$0.e - $$1, $$0.f - $$1);
-      crm $$3 = new crm($$0.e + $$1, $$0.f + $$1);
+   public static dkn a(dom $$0, long $$1, cub $$2, ih<dyu> $$3) {
+      List<ie<dyu>> $$4 = $$3.b().filter($$1x -> a((dyu)$$1x.a(), $$2)).collect(Collectors.toUnmodifiableList());
+      return new dkn($$0, $$2, $$1, $$1, $$4);
+   }
 
-      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
-         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
-            BitSet $$6 = this.a($$4, $$5).join();
-            if (!$$6.isEmpty()) {
-               crm $$7 = crm.a($$4, $$5);
-               int $$8 = Math.max($$2.e - $$7.e, 0);
-               int $$9 = Math.max($$2.f - $$7.f, 0);
-               int $$10 = Math.min($$3.e - $$7.e, 31);
-               int $$11 = Math.min($$3.f - $$7.f, 31);
+   private static boolean a(dyu $$0, cub $$1) {
+      Stream<ie<ctx>> $$2 = $$0.a().stream().flatMap($$0x -> {
+         dyo $$1x = $$0x.a().a();
+         return $$1x.a().a();
+      });
+      return $$2.anyMatch($$1.c()::contains);
+   }
 
-               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
-                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
-                     int $$14 = $$13 * 32 + $$12;
-                     if ($$6.get($$14)) {
-                        return true;
-                     }
-                  }
+   private dkn(dom $$0, cub $$1, long $$2, long $$3, List<ie<dyu>> $$4) {
+      this.b = $$0;
+      this.d = $$2;
+      this.c = $$1;
+      this.e = $$3;
+      this.i = $$4;
+   }
+
+   public List<ie<dyu>> a() {
+      return this.i;
+   }
+
+   private void e() {
+      Set<ie<ctx>> $$0 = this.c.c();
+      this.a().forEach($$1 -> {
+         dyu $$2 = $$1.a();
+         boolean $$3 = false;
+
+         for (dyu.a $$4 : $$2.a()) {
+            dyo $$5 = $$4.a().a();
+            if ($$5.a().a().anyMatch($$0::contains)) {
+               this.f.computeIfAbsent($$5, $$0xx -> new ArrayList<>()).add($$2.b());
+               $$3 = true;
+            }
+         }
+
+         if ($$3 && $$2.b() instanceof dzi $$7) {
+            this.g.put($$7, this.a((ie<dyu>)$$1, $$7));
+         }
+      });
+   }
+
+   private CompletableFuture<List<csf>> a(ie<dyu> $$0, dzi $$1) {
+      if ($$1.c() == 0) {
+         return CompletableFuture.completedFuture(List.of());
+      } else {
+         Stopwatch $$2 = Stopwatch.createStarted(ac.c);
+         int $$3 = $$1.a();
+         int $$4 = $$1.c();
+         List<CompletableFuture<csf>> $$5 = new ArrayList<>($$4);
+         int $$6 = $$1.b();
+         ij<ctx> $$7 = $$1.d();
+         auf $$8 = auf.a();
+         $$8.b(this.e);
+         double $$9 = $$8.j() * Math.PI * 2.0;
+         int $$10 = 0;
+         int $$11 = 0;
+
+         for (int $$12 = 0; $$12 < $$4; $$12++) {
+            double $$13 = (double)(4 * $$3 + $$3 * $$11 * 6) + ($$8.j() - 0.5) * (double)$$3 * 2.5;
+            int $$14 = (int)Math.round(Math.cos($$9) * $$13);
+            int $$15 = (int)Math.round(Math.sin($$9) * $$13);
+            auf $$16 = $$8.d();
+            $$5.add(CompletableFuture.supplyAsync(() -> {
+               Pair<hv, ie<ctx>> $$4x = this.c.a(ix.a($$14, 8), 0, ix.a($$15, 8), 112, $$7::a, $$16, this.b.b());
+               if ($$4x != null) {
+                  hv $$5x = (hv)$$4x.getFirst();
+                  return new csf(ix.a($$5x.u()), ix.a($$5x.w()));
+               } else {
+                  return new csf($$14, $$15);
                }
+            }, ac.f()));
+            $$9 += (Math.PI * 2) / (double)$$6;
+            if (++$$10 == $$6) {
+               $$11++;
+               $$10 = 0;
+               $$6 += 2 * $$6 / ($$11 + 1);
+               $$6 = Math.min($$6, $$4 - $$12);
+               $$9 += $$8.j() * Math.PI * 2.0;
+            }
+         }
+
+         return ac.b($$5).thenApply($$2x -> {
+            double $$3x = (double)$$2.stop().elapsed(TimeUnit.MILLISECONDS) / 1000.0;
+            a.debug("Calculation for {} took {}s", $$0, $$3x);
+            return $$2x;
+         });
+      }
+   }
+
+   public void b() {
+      if (!this.h) {
+         this.e();
+         this.h = true;
+      }
+   }
+
+   @Nullable
+   public List<csf> a(dzi $$0) {
+      this.b();
+      CompletableFuture<List<csf>> $$1 = this.g.get($$0);
+      return $$1 != null ? $$1.join() : null;
+   }
+
+   public List<dzl> a(ie<dyo> $$0) {
+      this.b();
+      return this.f.getOrDefault($$0.a(), List.of());
+   }
+
+   public dom c() {
+      return this.b;
+   }
+
+   public boolean a(ie<dyu> $$0, int $$1, int $$2, int $$3) {
+      dzl $$4 = $$0.a().b();
+
+      for (int $$5 = $$1 - $$3; $$5 <= $$1 + $$3; $$5++) {
+         for (int $$6 = $$2 - $$3; $$6 <= $$2 + $$3; $$6++) {
+            if ($$4.b(this, $$5, $$6)) {
+               return true;
             }
          }
       }
@@ -59,173 +160,7 @@ public class dkn implements dkj, AutoCloseable {
       return false;
    }
 
-   private CompletableFuture<BitSet> a(int $$0, int $$1) {
-      long $$2 = crm.c($$0, $$1);
-      synchronized (this.f) {
-         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
-         if ($$3 == null) {
-            $$3 = this.b($$0, $$1);
-            this.f.putAndMoveToFirst($$2, $$3);
-            if (this.f.size() > 1024) {
-               this.f.removeLast();
-            }
-         }
-
-         return $$3;
-      }
-   }
-
-   private CompletableFuture<BitSet> b(int $$0, int $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         crm $$2 = crm.a($$0, $$1);
-         crm $$3 = crm.b($$0, $$1);
-         BitSet $$4 = new BitSet();
-         crm.a($$2, $$3).forEach($$1xx -> {
-            th $$2x = new th(new tj(si.a, "DataVersion"), new tj(sd.b, "blending_data"));
-
-            try {
-               this.a($$1xx, $$2x).join();
-            } catch (Exception var7) {
-               a.warn("Failed to scan chunk {}", $$1xx, var7);
-               return;
-            }
-
-            if ($$2x.d() instanceof sd $$5 && this.a($$5)) {
-               int $$6 = $$1xx.k() * 32 + $$1xx.j();
-               $$4.set($$6);
-            }
-         });
-         return $$4;
-      }, ac.f());
-   }
-
-   private boolean a(sd $$0) {
-      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
-   }
-
-   public CompletableFuture<Void> a(crm $$0, @Nullable sd $$1) {
-      return this.a(() -> {
-         dkn.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dkn.a($$1));
-         $$2.a = $$1;
-         return Either.left($$2.b);
-      }).thenCompose(Function.identity());
-   }
-
-   public CompletableFuture<Optional<sd>> a(crm $$0) {
-      return this.a(() -> {
-         dkn.a $$1 = this.e.get($$0);
-         if ($$1 != null) {
-            return Either.left(Optional.ofNullable($$1.a));
-         } else {
-            try {
-               sd $$2 = this.d.a($$0);
-               return Either.left(Optional.ofNullable($$2));
-            } catch (Exception var4) {
-               a.warn("Failed to read chunk {}", $$0, var4);
-               return Either.right(var4);
-            }
-         }
-      });
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      CompletableFuture<Void> $$1 = this.a(
-            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
-         )
-         .thenCompose(Function.identity());
-      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
-            try {
-               this.d.a();
-               return Either.left(null);
-            } catch (Exception var2x) {
-               a.warn("Failed to synchronize chunks", var2x);
-               return Either.right(var2x);
-            }
-         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
-   }
-
-   @Override
-   public CompletableFuture<Void> a(crm $$0, sx $$1) {
-      return this.a(() -> {
-         try {
-            dkn.a $$2 = this.e.get($$0);
-            if ($$2 != null) {
-               if ($$2.a != null) {
-                  $$2.a.b($$1);
-               }
-            } else {
-               this.d.a($$0, $$1);
-            }
-
-            return Either.left(null);
-         } catch (Exception var4) {
-            a.warn("Failed to bulk scan chunk {}", $$0, var4);
-            return Either.right(var4);
-         }
-      });
-   }
-
-   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
-      return this.c.c($$1 -> new bhw.b(dkn.b.a.ordinal(), () -> {
-            if (!this.b.get()) {
-               $$1.a($$0.get());
-            }
-
-            this.b();
-         }));
-   }
-
-   private void a() {
-      if (!this.e.isEmpty()) {
-         Iterator<Entry<crm, dkn.a>> $$0 = this.e.entrySet().iterator();
-         Entry<crm, dkn.a> $$1 = $$0.next();
-         $$0.remove();
-         this.a($$1.getKey(), $$1.getValue());
-         this.b();
-      }
-   }
-
-   private void b() {
-      this.c.a(new bhw.b(dkn.b.b.ordinal(), this::a));
-   }
-
-   private void a(crm $$0, dkn.a $$1) {
-      try {
-         this.d.a($$0, $$1.a);
-         $$1.b.complete(null);
-      } catch (Exception var4) {
-         a.error("Failed to store chunk {}", $$0, var4);
-         $$1.b.completeExceptionally(var4);
-      }
-   }
-
-   @Override
-   public void close() throws IOException {
-      if (this.b.compareAndSet(false, true)) {
-         this.c.b($$0 -> new bhw.b(dkn.b.c.ordinal(), () -> $$0.a(aus.a))).join();
-         this.c.close();
-
-         try {
-            this.d.close();
-         } catch (Exception var2) {
-            a.error("Failed to close storage", var2);
-         }
-      }
-   }
-
-   static class a {
-      @Nullable
-      sd a;
-      final CompletableFuture<Void> b = new CompletableFuture<>();
-
-      public a(@Nullable sd $$0) {
-         this.a = $$0;
-      }
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
+   public long d() {
+      return this.d;
    }
 }

@@ -1,119 +1,39 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gbs<T extends blv, M extends fiy<T> & fhy> extends gbz<T, M> {
+   private final fse a;
 
-public class gbs extends gbk {
-   static final Logger f = LogUtils.getLogger();
-   protected final agm e;
-
-   public gbs(agm $$0) {
-      this.e = $$0;
+   public gbs(fzj<T, M> $$0, fse $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(apl $$0) throws IOException {
-      gbs.a $$1 = this.b($$0);
-      $$1.c();
-      gdw $$2 = $$1.a();
-      boolean $$3;
-      boolean $$4;
-      if ($$2 != null) {
-         $$3 = $$2.a();
-         $$4 = $$2.b();
-      } else {
-         $$3 = false;
-         $$4 = false;
-      }
+   public void a(epd $$0, fsi $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fm() == blp.b;
+      cmh $$11 = $$10 ? $$3.eU() : $$3.eT();
+      cmh $$12 = $$10 ? $$3.eT() : $$3.eU();
+      if (!$$11.b() || !$$12.b()) {
+         $$0.a();
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
+         }
 
-      enc $$7 = $$1.b();
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> this.a($$7, $$3, $$4));
-      } else {
-         this.a($$7, $$3, $$4);
+         this.a($$3, $$12, cme.c, blp.b, $$0, $$1, $$2);
+         this.a($$3, $$11, cme.b, blp.a, $$0, $$1, $$2);
+         $$0.b();
       }
    }
 
-   private void a(enc $$0, boolean $$1, boolean $$2) {
-      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
-   }
-
-   protected gbs.a b(apl $$0) {
-      return gbs.a.a($$0, this.e);
-   }
-
-   protected static class a implements Closeable {
-      @Nullable
-      private final gdw a;
-      @Nullable
-      private final enc b;
-      @Nullable
-      private final IOException c;
-
-      public a(IOException $$0) {
-         this.c = $$0;
-         this.a = null;
-         this.b = null;
-      }
-
-      public a(@Nullable gdw $$0, enc $$1) {
-         this.c = null;
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public static gbs.a a(apl $$0, agm $$1) {
-         try {
-            apj $$2 = $$0.getResourceOrThrow($$1);
-
-            enc $$4;
-            try (InputStream $$3 = $$2.d()) {
-               $$4 = enc.a($$3);
-            }
-
-            gdw $$6 = null;
-
-            try {
-               $$6 = $$2.f().a(gdw.a).orElse(null);
-            } catch (RuntimeException var8) {
-               gbs.f.warn("Failed reading metadata of: {}", $$1, var8);
-            }
-
-            return new gbs.a($$6, $$4);
-         } catch (IOException var10) {
-            return new gbs.a(var10);
-         }
-      }
-
-      @Nullable
-      public gdw a() {
-         return this.a;
-      }
-
-      public enc b() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         } else {
-            return this.b;
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.b != null) {
-            this.b.close();
-         }
-      }
-
-      public void c() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         }
+   protected void a(blv $$0, cmh $$1, cme $$2, blp $$3, epd $$4, fsi $$5, int $$6) {
+      if (!$$1.b()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == blp.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
       }
    }
 }

@@ -1,86 +1,77 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class bsb extends bsg {
-   private int a;
-   private final blu b;
-   @Nullable
-   private cdz c;
-   private brp d;
+public class bsb extends bsi {
+   private static final int g = 240;
+   private final Predicate<bji> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public bsb(blu $$0) {
-      this.b = $$0;
+   public bsb(blx $$0, Predicate<bji> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public bsb(blx $$0, int $$1, Predicate<bji> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean a() {
-      List<cfs> $$0 = this.b.dN().a(cfs.class, this.b.cH().g(5.0));
-      boolean $$1 = false;
-
-      for (cfs $$2 : $$0) {
-         bkv $$3 = $$2.cO();
-         if ($$3 instanceof cdz && (atq.e(((cdz)$$3).bk) > 0.0F || atq.e(((cdz)$$3).bm) > 0.0F)) {
-            $$1 = true;
-            break;
-         }
+      if (!super.a()) {
+         return false;
+      } else {
+         return !this.d.dM().Y().b(csu.c) ? false : this.a(this.d.dM().aj()) && !this.h();
       }
-
-      return this.c != null && (atq.e(this.c.bk) > 0.0F || atq.e(this.c.bm) > 0.0F) || $$1;
-   }
-
-   @Override
-   public boolean S_() {
-      return true;
-   }
-
-   @Override
-   public boolean b() {
-      return this.c != null && this.c.bO() && (atq.e(this.c.bk) > 0.0F || atq.e(this.c.bm) > 0.0F);
    }
 
    @Override
    public void c() {
-      for (cfs $$1 : this.b.dN().a(cfs.class, this.b.cH().g(5.0))) {
-         if ($$1.cO() instanceof cdz $$2) {
-            this.c = $$2;
-            break;
-         }
-      }
-
+      super.c();
       this.a = 0;
-      this.d = brp.a;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dk(), 2.0) && this.a(this.d.dM().aj());
    }
 
    @Override
    public void d() {
-      this.c = null;
+      super.d();
+      this.d.dM().a(this.d.aj(), this.e, -1);
    }
 
    @Override
    public void e() {
-      boolean $$0 = atq.e(this.c.bk) > 0.0F || atq.e(this.c.bm) > 0.0F;
-      float $$1 = this.d == brp.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new ejz((double)this.b.bk, (double)this.b.bl, (double)this.b.bm));
-      this.b.a(blr.a, this.b.dq());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == brp.a) {
-            hx $$2 = this.c.dn().a(this.c.cE().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.N().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.e((bkv)this.c) < 4.0F) {
-               this.a = 0;
-               this.d = brp.b;
-            }
-         } else if (this.d == brp.b) {
-            ib $$3 = this.c.cF();
-            hx $$4 = this.c.dn().a($$3, 10);
-            this.b.N().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.e((bkv)this.c) > 12.0F) {
-               this.a = 0;
-               this.d = brp.a;
-            }
+      super.e();
+      if (this.d.eg().a(20) == 0) {
+         this.d.dM().c(1019, this.e, 0);
+         if (!this.d.aF) {
+            this.d.a(this.d.fo());
          }
       }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dM().a(this.d.aj(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dM().aj())) {
+         this.d.dM().a(this.e, false);
+         this.d.dM().c(1021, this.e, 0);
+         this.d.dM().c(2001, this.e, cvz.i(this.d.dM().a_(this.e)));
+      }
+   }
+
+   private boolean a(bji $$0) {
+      return this.h.test($$0);
    }
 }

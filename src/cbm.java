@@ -1,98 +1,45 @@
-public class cbm extends cbw {
-   public cbm(bkz<? extends cbm> $$0, csf $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public static bmq.a u() {
-      return cbn.gl().a(bmr.m, 0.2F);
-   }
+public interface cbm extends ccd {
+   void b(boolean var1);
 
-   public static boolean b(bkz<cbm> $$0, csg $$1, blp $$2, hx $$3, atw $$4) {
-      return $$1.aj() != biy.a;
-   }
+   void a(blv var1, cmh var2, cfj var3, float var4);
 
-   @Override
-   public boolean a(csi $$0) {
-      return $$0.f(this) && !$$0.d(this.cH());
-   }
+   @Nullable
+   blv q();
 
-   @Override
-   public void a(int $$0, boolean $$1) {
-      super.a($$0, $$1);
-      this.a(bmr.a).a((double)($$0 * 3));
-   }
+   void a();
 
-   @Override
-   public float bo() {
-      return 1.0F;
-   }
-
-   @Override
-   protected ju w() {
-      return jw.C;
-   }
-
-   @Override
-   public boolean bN() {
-      return false;
-   }
-
-   @Override
-   protected int A() {
-      return super.A() * 4;
-   }
-
-   @Override
-   protected void gb() {
-      this.d *= 0.9F;
-   }
-
-   @Override
-   protected void fc() {
-      ejz $$0 = this.dq();
-      float $$1 = (float)this.gg() * 0.1F;
-      this.o($$0.c, (double)(this.fa() + $$1), $$0.e);
-      this.au = true;
-   }
-
-   @Override
-   protected void c(arz<ecw> $$0) {
-      if ($$0 == arp.b) {
-         ejz $$1 = this.dq();
-         this.o($$1.c, (double)(0.22F + (float)this.gg() * 0.05F), $$1.e);
-         this.au = true;
-      } else {
-         super.c($$0);
+   default void b(blv $$0, float $$1) {
+      bjk $$2 = cfk.a($$0, cmk.vM);
+      cmh $$3 = $$0.b($$2);
+      if ($$0.b(cmk.vM)) {
+         ckp.a($$0.dM(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dM().aj().a() * 4));
       }
+
+      this.a();
    }
 
-   @Override
-   protected boolean gc() {
-      return this.cZ();
+   default void a(blv $$0, blv $$1, cfj $$2, float $$3, float $$4) {
+      double $$5 = $$1.dr() - $$0.dr();
+      double $$6 = $$1.dx() - $$0.dx();
+      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
+      double $$8 = $$1.e(0.3333333333333333) - $$2.dt() + $$7 * 0.2F;
+      Vector3f $$9 = this.a($$0, new elb($$5, $$8, $$6), $$3);
+      $$2.c((double)$$9.x(), (double)$$9.y(), (double)$$9.z(), $$4, (float)(14 - $$0.dM().aj().a() * 4));
+      $$0.a(arc.fR, 1.0F, 1.0F / ($$0.eg().i() * 0.4F + 0.8F));
    }
 
-   @Override
-   protected float gd() {
-      return super.gd() + 2.0F;
-   }
+   default Vector3f a(blv $$0, elb $$1, float $$2) {
+      Vector3f $$3 = $$1.j().normalize();
+      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
+      if ((double)$$4.lengthSquared() <= 1.0E-7) {
+         elb $$5 = $$0.i(1.0F);
+         $$4 = new Vector3f($$3).cross($$5.j());
+      }
 
-   @Override
-   protected aqu d(bjt $$0) {
-      return this.gh() ? aqv.ni : aqv.nh;
-   }
-
-   @Override
-   protected aqu n_() {
-      return this.gh() ? aqv.mZ : aqv.ng;
-   }
-
-   @Override
-   protected aqu ge() {
-      return this.gh() ? aqv.nl : aqv.nk;
-   }
-
-   @Override
-   protected aqu gf() {
-      return aqv.nj;
+      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
+      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
    }
 }

@@ -1,35 +1,35 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.Optional;
 
-public class bra<E extends cdd> extends bnc<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
+public final class bra<F extends K1, Value> {
+   private final bmv<?> a;
+   private final bux<Value> b;
+   private final App<F, Value> c;
 
-   public bra(int $$0) {
-      super(ImmutableMap.of(bum.aA, bun.a, bum.o, bun.b, bum.m, bun.b, bum.n, bun.c, bum.B, bun.c, bum.ay, bun.c, bum.aF, bun.c), $$0);
+   public bra(bmv<?> $$0, bux<Value> $$1, App<F, Value> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   protected boolean a(ami $$0, E $$1, long $$2) {
-      return true;
+   public App<F, Value> a() {
+      return this.c;
    }
 
-   protected void b(ami $$0, E $$1, long $$2) {
-      $$1.a(aqv.Ap, 5.0F, 1.0F);
+   public void a(Value $$0) {
+      this.a.a(this.b, Optional.of($$0));
    }
 
-   protected void c(ami $$0, E $$1, long $$2) {
-      if ($$1.c(blx.m)) {
-         $$1.b(blx.a);
-      }
+   public void a(Optional<Value> $$0) {
+      this.a.a(this.b, $$0);
+   }
 
-      $$1.dP().b(bum.aA);
-      $$1.dP().c(bum.B).filter($$1::a).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.c($$1x);
-         }
+   public void a(Value $$0, long $$1) {
+      this.a.a(this.b, $$0, $$1);
+   }
 
-         if (!$$1.dP().a(bum.ay)) {
-            cde.a($$1, $$1x.dn());
-         }
-      });
+   public void b() {
+      this.a.b(this.b);
    }
 }

@@ -1,92 +1,56 @@
-import com.google.common.collect.Streams;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadInfo;
-import java.lang.management.ThreadMXBean;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import java.util.function.Function;
 
-public class ali implements Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final long b = 10000L;
-   private static final int c = 1;
-   private final alf d;
-   private final long e;
+public class ali implements alf {
+   static final SuggestionProvider<ds> b = ($$0, $$1) -> dw.a(a($$0).a(), $$1);
+   public static final Function<String, alg.c> a = $$0 -> new alg.c() {
+         @Override
+         public alf a(CommandContext<ds> $$0x) {
+            return new ali(ali.a($$0), es.e($$0, $$0));
+         }
 
-   public ali(alf $$0) {
-      this.d = $$0;
-      this.e = $$0.bo() * aup.b;
+         @Override
+         public ArgumentBuilder<ds, ?> a(ArgumentBuilder<ds, ?> $$0x, Function<ArgumentBuilder<ds, ?>, ArgumentBuilder<ds, ?>> $$1) {
+            return $$0.then(dt.a("storage").then($$1.apply(dt.a($$0, es.a()).suggests(ali.b))));
+         }
+      };
+   private final efm c;
+   private final agt d;
+
+   static efm a(CommandContext<ds> $$0) {
+      return ((ds)$$0.getSource()).l().aI();
+   }
+
+   ali(efm $$0, agt $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void run() {
-      while (this.d.v()) {
-         long $$0 = this.d.az();
-         long $$1 = ac.c();
-         long $$2 = $$1 - $$0;
-         if ($$2 > this.e) {
-            a.error(
-               LogUtils.FATAL_MARKER,
-               "A single server tick took {} seconds (should be max {})",
-               String.format(Locale.ROOT, "%.2f", (float)$$2 / (float)aup.a),
-               String.format(Locale.ROOT, "%.2f", this.d.aO().g() / (float)aup.c)
-            );
-            a.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
-            ThreadMXBean $$3 = ManagementFactory.getThreadMXBean();
-            ThreadInfo[] $$4 = $$3.dumpAllThreads(true, true);
-            StringBuilder $$5 = new StringBuilder();
-            Error $$6 = new Error("Watchdog");
-
-            for (ThreadInfo $$7 : $$4) {
-               if ($$7.getThreadId() == this.d.aw().getId()) {
-                  $$6.setStackTrace($$7.getStackTrace());
-               }
-
-               $$5.append($$7);
-               $$5.append("\n");
-            }
-
-            o $$8 = new o("Watching Server", $$6);
-            this.d.b($$8.g());
-            p $$9 = $$8.a("Thread Dump");
-            $$9.a("Threads", $$5);
-            p $$10 = $$8.a("Performance stats");
-            $$10.a("Random tick rate", () -> this.d.aY().q().a(csb.o).toString());
-            $$10.a("Level stats", () -> Streams.stream(this.d.H()).map($$0x -> $$0x.ad() + ": " + $$0x.E()).collect(Collectors.joining(",\n")));
-            ago.a("Crash report:\n" + $$8.e());
-            File $$11 = new File(new File(this.d.z(), "crash-reports"), "crash-" + ac.e() + "-server.txt");
-            if ($$8.a($$11)) {
-               a.error("This crash report has been saved to: {}", $$11.getAbsolutePath());
-            } else {
-               a.error("We were unable to save this crash report to disk.");
-            }
-
-            this.a();
-         }
-
-         try {
-            Thread.sleep(($$0 + this.e - $$1) / aup.b);
-         } catch (InterruptedException var15) {
-         }
-      }
+   public void a(sj $$0) {
+      this.c.a(this.d, $$0);
    }
 
-   private void a() {
-      try {
-         Timer $$0 = new Timer();
-         $$0.schedule(new TimerTask() {
-            @Override
-            public void run() {
-               Runtime.getRuntime().halt(1);
-            }
-         }, 10000L);
-         System.exit(1);
-      } catch (Throwable var2) {
-         Runtime.getRuntime().halt(1);
-      }
+   @Override
+   public sj a() {
+      return this.c.a(this.d);
+   }
+
+   @Override
+   public vb b() {
+      return vb.a("commands.data.storage.modified", vb.a(this.d));
+   }
+
+   @Override
+   public vb a(tg $$0) {
+      return vb.a("commands.data.storage.query", vb.a(this.d), sy.c($$0));
+   }
+
+   @Override
+   public vb a(ej.g $$0, double $$1, int $$2) {
+      return vb.a("commands.data.storage.get", $$0.a(), vb.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

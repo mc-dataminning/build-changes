@@ -1,6 +1,6 @@
-public class cqk extends cpz {
-   public cqk(cpz.a $$0, bla... $$1) {
-      super($$0, cqa.m, $$1);
+public class cqk extends cqs {
+   public cqk(cqs.a $$0, blk... $$1) {
+      super($$0, cqt.k, $$1);
    }
 
    @Override
@@ -11,10 +11,5 @@ public class cqk extends cpz {
    @Override
    public int b(int $$0) {
       return 50;
-   }
-
-   @Override
-   public boolean a(cpz $$0) {
-      return super.a($$0) && $$0 != cqd.K;
    }
 }

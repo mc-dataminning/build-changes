@@ -1,26 +1,34 @@
-public abstract class evb extends evc {
-   private final eur a;
-   private int b = 16777215;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
+import org.apache.commons.compress.utils.Lists;
 
-   public evb(int $$0, int $$1, int $$2, int $$3, uv $$4, eur $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-   }
+public record evb(float a, boolean b, Map<String, List<eva>> c) {
+   public static class a {
+      private final float a;
+      private final Map<String, List<eva>> b = Maps.newHashMap();
+      private boolean c;
 
-   @Override
-   protected void a(eyx $$0) {
-   }
+      public static evb.a a(float $$0) {
+         return new evb.a($$0);
+      }
 
-   public evb a(int $$0) {
-      this.b = $$0;
-      return this;
-   }
+      private a(float $$0) {
+         this.a = $$0;
+      }
 
-   protected final eur a() {
-      return this.a;
-   }
+      public evb.a a() {
+         this.c = true;
+         return this;
+      }
 
-   protected final int b() {
-      return this.b;
+      public evb.a a(String $$0, eva $$1) {
+         this.b.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+         return this;
+      }
+
+      public evb b() {
+         return new evb(this.a, this.c, this.b);
+      }
    }
 }

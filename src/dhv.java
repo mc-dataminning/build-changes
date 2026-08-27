@@ -1,18 +1,15 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
-public class dhv implements Predicate<dhn> {
-   private final cvf a;
-
-   public dhv(cvf $$0) {
-      this.a = $$0;
+public class dhv extends dgk {
+   public dhv(hv $$0, dip $$1) {
+      super(dgf.c, $$0, $$1);
    }
 
-   public static dhv a(cvf $$0) {
-      return new dhv($$0);
-   }
-
-   public boolean a(@Nullable dhn $$0) {
-      return $$0 != null && $$0.a(this.a);
+   @Override
+   protected void a(csy $$0, hv $$1, dip $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$3 != $$4) {
+         cvz $$5 = $$2.b();
+         $$0.a($$1, $$5);
+         $$0.a($$1.d(), $$5);
+      }
    }
 }

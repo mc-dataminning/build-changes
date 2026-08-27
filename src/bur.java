@@ -1,41 +1,127 @@
-public class bur extends buu {
-   public bur(bln $$0, csf $$1) {
-      super($$0, $$1);
+import javax.annotation.Nullable;
+
+public abstract class bur extends bsr {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int c = 2;
+   protected final blx e;
+   protected final boolean f;
+   private final boolean d;
+   private int i;
+   private int j;
+   private int k;
+   @Nullable
+   protected blv g;
+   protected int h = 60;
+
+   public bur(blx $$0, boolean $$1) {
+      this($$0, $$1, false);
+   }
+
+   public bur(blx $$0, boolean $$1, boolean $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.d = $$2;
    }
 
    @Override
-   protected edo a(int $$0) {
-      this.o = new edg(false);
-      this.o.a(true);
-      return new edo(this.o, $$0);
+   public boolean b() {
+      blv $$0 = this.e.q();
+      if ($$0 == null) {
+         $$0 = this.g;
+      }
+
+      if ($$0 == null) {
+         return false;
+      } else if (!this.e.c($$0)) {
+         return false;
+      } else {
+         emc $$1 = this.e.cg();
+         emc $$2 = $$0.cg();
+         if ($$1 != null && $$2 == $$1) {
+            return false;
+         } else {
+            double $$3 = this.l();
+            if (this.e.f($$0) > $$3 * $$3) {
+               return false;
+            } else {
+               if (this.f) {
+                  if (this.e.O().a($$0)) {
+                     this.k = 0;
+                  } else if (++this.k > b(this.h)) {
+                     return false;
+                  }
+               }
+
+               this.e.h($$0);
+               return true;
+            }
+         }
+      }
+   }
+
+   protected double l() {
+      return this.e.b(bnb.g);
    }
 
    @Override
-   protected boolean a() {
-      return true;
+   public void c() {
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
    }
 
    @Override
-   protected ejz b() {
-      return new ejz(this.a.ds(), this.a.e(0.5), this.a.dy());
+   public void d() {
+      this.e.h(null);
+      this.g = null;
    }
 
-   @Override
-   protected double a(ejz $$0) {
-      return $$0.d;
+   protected boolean a(@Nullable blv $$0, bwj $$1) {
+      if ($$0 == null) {
+         return false;
+      } else if (!$$1.a(this.e, $$0)) {
+         return false;
+      } else if (!this.e.a($$0.dm())) {
+         return false;
+      } else {
+         if (this.d) {
+            if (--this.j <= 0) {
+               this.i = 0;
+            }
+
+            if (this.i == 0) {
+               this.i = this.a($$0) ? 1 : 2;
+            }
+
+            if (this.i == 2) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   @Override
-   protected boolean a(ejz $$0, ejz $$1) {
-      return this.a.bd() ? a(this.a, $$0, $$1, false) : false;
+   private boolean a(blv $$0) {
+      this.j = b(10 + this.e.eg().a(5));
+      eeo $$1 = this.e.N().a($$0, 0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         eem $$2 = $$1.d();
+         if ($$2 == null) {
+            return false;
+         } else {
+            int $$3 = $$2.a - $$0.dq();
+            int $$4 = $$2.c - $$0.dw();
+            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
+         }
+      }
    }
 
-   @Override
-   public boolean a(hx $$0) {
-      return !this.b.a_($$0.d()).i();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public bur c(int $$0) {
+      this.h = $$0;
+      return this;
    }
 }

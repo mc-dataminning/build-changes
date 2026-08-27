@@ -1,40 +1,39 @@
-import java.util.Locale;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class eww extends ews {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private final Supplier<Float> i;
+public class eww extends ewf {
+   private final evu a;
 
-   public eww(eur $$0, aty $$1, Supplier<Float> $$2) {
-      super($$0, $$1);
-      this.i = $$2;
+   public eww(evu $$0, vb $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
    }
 
    @Override
-   protected void a(eut $$0, int $$1, int $$2, int $$3) {
-      float $$4 = (float)aup.c / this.i.get();
-      this.a($$0, String.format("%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
+   protected void b(evw $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.p() + this.k() / 2;
+      int $$5 = this.r() + this.i() / 2;
+      vb $$6 = this.l();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = fbn.a(ac.b());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
    }
 
    @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   protected void a(faa $$0) {
    }
 
    @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / (double)this.i.get().floatValue());
+   public void a(gia $$0) {
    }
 
    @Override
-   protected int a(long $$0) {
-      float $$1 = this.i.get();
-      return this.a(c((double)$$0), 0.0, -16711936, (double)$$1 / 2.0, -256, (double)$$1, -65536);
+   public boolean aL_() {
+      return false;
    }
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   @Nullable
+   @Override
+   public evt a(fag $$0) {
+      return null;
    }
 }

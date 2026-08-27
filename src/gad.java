@@ -1,39 +1,34 @@
-public class gad<T extends bll, M extends fhu<T> & fgv> extends gak<T, M> {
-   private final fqv a;
+public class gad extends fxn<cbf> {
+   private final ftc a;
 
-   public gad(fxx<T, M> $$0, fqv $$1) {
+   public gad(fxo.a $$0) {
       super($$0);
-      this.a = $$1;
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public void a(eob $$0, fqz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fn() == blf.b;
-      clo $$11 = $$10 ? $$3.eV() : $$3.eU();
-      clo $$12 = $$10 ? $$3.eU() : $$3.eV();
-      if (!$$11.b() || !$$12.b()) {
-         $$0.a();
-         if (this.c().e) {
-            float $$13 = 0.5F;
-            $$0.a(0.0F, 0.75F, 0.0F);
-            $$0.b(0.5F, 0.5F, 0.5F);
-         }
-
-         this.a($$3, $$12, cll.c, blf.b, $$0, $$1, $$2);
-         this.a($$3, $$11, cll.b, blf.a, $$0, $$1, $$2);
-         $$0.b();
+   public void a(cbf $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.5F, 0.0F);
+      int $$6 = $$0.s();
+      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
+         $$7 = aty.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
       }
+
+      $$3.a(a.d.rotationDegrees(-90.0F));
+      $$3.a(-0.5F, -0.5F, 0.5F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      gac.a(this.a, $$0.u(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected void a(bll $$0, clo $$1, cll $$2, blf $$3, eob $$4, fqz $$5, int $$6) {
-      if (!$$1.b()) {
-         $$4.a();
-         this.c().a($$3, $$4);
-         $$4.a(a.b.rotationDegrees(-90.0F));
-         $$4.a(a.d.rotationDegrees(180.0F));
-         boolean $$7 = $$3 == blf.a;
-         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
-         $$4.b();
-      }
+   public agt a(cbf $$0) {
+      return gdn.e;
    }
 }

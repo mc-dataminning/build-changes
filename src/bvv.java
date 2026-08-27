@@ -1,35 +1,29 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 
-public class bvv extends bvj<cdd> {
+public class bvv<T extends blv> extends bwc<T> {
    @Override
-   public Set<bum<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bum.B)));
+   protected void a(amp $$0, T $$1) {
+      ekw $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<blv> $$3 = $$0.a(blv.class, $$2, $$1x -> $$1x != $$1 && $$1x.bx());
+      $$3.sort(Comparator.comparingDouble($$1::f));
+      bmv<?> $$4 = $$1.dO();
+      $$4.a(bux.g, $$3);
+      $$4.a(bux.h, new buz($$1, $$3));
    }
 
-   protected void a(ami $$0, cdd $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ai() == bkz.bt)
-         .or(() -> a($$1, $$0xx -> $$0xx.ai() != bkz.bt))
-         .ifPresentOrElse($$1x -> $$1.dP().a(bum.B, $$1x), () -> $$1.dP().b(bum.B));
-   }
-
-   private static Optional<bll> a(cdd $$0, Predicate<bll> $$1) {
-      return $$0.dP().c(bum.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
-   }
-
-   @Override
    protected int b() {
-      return 24;
+      return 16;
+   }
+
+   protected int c() {
+      return 16;
    }
 
    @Override
-   protected int c() {
-      return 24;
+   public Set<bux<?>> a() {
+      return ImmutableSet.of(bux.g, bux.h);
    }
 }

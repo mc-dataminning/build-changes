@@ -1,35 +1,140 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class cvo extends cvf {
-   protected cvo(dhm.d $$0) {
-      super($$0);
+public abstract class cvo extends cvz implements dcz {
+   protected static final elu a = cvz.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   protected static final elu b = cvz.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   public static final djg c = djf.C;
+   private final boolean d;
+
+   public static boolean a(csy $$0, hv $$1) {
+      return g($$0.a_($$1));
+   }
+
+   public static boolean g(dip $$0) {
+      return $$0.a(arr.N) && $$0.b() instanceof cvo;
+   }
+
+   protected cvo(boolean $$0, dio.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
    protected abstract MapCodec<? extends cvo> a();
 
-   protected boolean b(dhn $$0, crl $$1, hx $$2) {
-      return $$0.a(ark.af) || $$0.a(cvh.cC);
+   public boolean b() {
+      return this.d;
    }
 
    @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      return !$$0.a($$3, $$4) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      djt $$4 = $$0.a(this) ? $$0.c(this.c()) : null;
+      return $$4 != null && $$4.b() ? b : a;
    }
 
    @Override
-   public boolean a(dhn $$0, csi $$1, hx $$2) {
-      hx $$3 = $$2.d();
-      return this.b($$1.a_($$3), $$1, $$3);
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      return c($$1, $$2.d());
    }
 
    @Override
-   public boolean a_(dhn $$0, crl $$1, hx $$2) {
-      return $$0.u().c();
+   public void b(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$0, $$1, $$2, $$4);
+      }
+   }
+
+   protected dip a(dip $$0, csy $$1, hv $$2, boolean $$3) {
+      $$0 = this.a($$1, $$2, $$0, true);
+      if (this.d) {
+         $$1.a($$0, $$2, this, $$2, $$3);
+      }
+
+      return $$0;
    }
 
    @Override
-   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
-      return $$3 == edn.c && !this.aG ? true : super.a($$0, $$1, $$2, $$3);
+   public void a(dip $$0, csy $$1, hv $$2, cvz $$3, hv $$4, boolean $$5) {
+      if (!$$1.B && $$1.a_($$2).a(this)) {
+         djt $$6 = $$0.c(this.c());
+         if (a($$2, $$1, $$6)) {
+            c($$0, $$1, $$2);
+            $$1.a($$2, $$5);
+         } else {
+            this.a($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   private static boolean a(hv $$0, csy $$1, djt $$2) {
+      if (!c($$1, $$0.d())) {
+         return true;
+      } else {
+         switch ($$2) {
+            case c:
+               return !c($$1, $$0.h());
+            case d:
+               return !c($$1, $$0.g());
+            case e:
+               return !c($$1, $$0.e());
+            case f:
+               return !c($$1, $$0.f());
+            default:
+               return false;
+         }
+      }
+   }
+
+   protected void a(dip $$0, csy $$1, hv $$2, cvz $$3) {
+   }
+
+   protected dip a(csy $$0, hv $$1, dip $$2, boolean $$3) {
+      if ($$0.B) {
+         return $$2;
+      } else {
+         djt $$4 = $$2.c(this.c());
+         return new dby($$0, $$1, $$2).a($$0.B($$1), $$3, $$4).c();
+      }
+   }
+
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
+      if (!$$4) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         if ($$0.c(this.c()).b()) {
+            $$1.a($$2.c(), this);
+         }
+
+         if (this.d) {
+            $$1.a($$2, this);
+            $$1.a($$2.d(), this);
+         }
+      }
+   }
+
+   @Override
+   public dip a(coq $$0) {
+      edz $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eea.c;
+      dip $$3 = super.o();
+      ia $$4 = $$0.g();
+      boolean $$5 = $$4 == ia.f || $$4 == ia.e;
+      return $$3.a(this.c(), $$5 ? djt.b : djt.a).a(c, Boolean.valueOf($$2));
+   }
+
+   public abstract djs<djt> c();
+
+   @Override
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eea.c, eea.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public edz c_(dip $$0) {
+      return $$0.c(c) ? eea.c.a(false) : super.c_($$0);
    }
 }

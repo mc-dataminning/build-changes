@@ -1,52 +1,19 @@
-public class gaf<T extends bxj> extends gak<T, fhn<T>> {
-   private final frt a;
+public class gaf extends fyu<byj, flg<byj>> {
+   private static final agt a = new agt("textures/entity/turtle/big_sea_turtle.png");
 
-   public gaf(fxx<T, fhn<T>> $$0, frt $$1) {
-      super($$0);
-      this.a = $$1;
+   public gaf(fxo.a $$0) {
+      super($$0, new flg<>($$0.a(flx.bK)), 0.7F);
    }
 
-   public void a(eob $$0, fqz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.o_()) {
-         eti $$10 = eti.N();
-         boolean $$11 = $$10.b($$3) && $$3.ce();
-         if (!$$3.ce() || $$11) {
-            dhn $$12 = $$3.w().a();
-            int $$13 = fxd.c($$3, 0.0F);
-            gea $$14 = this.a.a($$12);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            this.c().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-         }
+   public void a(byj $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
+      if ($$0.o_()) {
+         this.d *= 0.5F;
       }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(eob $$0, fqz $$1, int $$2, boolean $$3, dhn $$4, int $$5, gea $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(frh.q(gby.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
-      }
+   public agt a(byj $$0) {
+      return a;
    }
 }

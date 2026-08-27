@@ -1,118 +1,49 @@
-import java.util.EnumSet;
-import java.util.Objects;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import javax.annotation.Nullable;
 
-public class fth implements fsz<dfy> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final fkt h;
-   private final fkt i;
-   private final fkt j;
-   private final fkt k;
-   private final fkt l;
-   private final fkt m;
-   private final fkt n;
-   private final ged o = Objects.requireNonNull(fro.c(dfz.a));
-   private static final float p = 0.125F;
+public class fth {
+   public static final int a = -1;
+   public final ia b;
+   public final int c;
+   public final String d;
+   public final ftj e;
 
-   public fth(fta.a $$0) {
-      fkt $$1 = $$0.a(fks.E);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      fkt $$2 = $$0.a(fks.F);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
+   public fth(@Nullable ia $$0, int $$1, String $$2, ftj $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public static fkz b() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      fkx $$2 = new fkx(0.2F);
-      fkx $$3 = new fkx(-0.1F);
-      $$1.a(
-         "neck",
-         fky.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         fkv.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      fky $$4 = fky.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, fkv.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, fkv.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return fkz.a($$0, 32, 32);
-   }
+   protected static class a implements JsonDeserializer<fth> {
+      private static final int a = -1;
 
-   public static fkz c() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      fky $$2 = fky.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(ib.c));
-      $$1.a("back", $$2, fkv.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, fkv.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, fkv.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, fkv.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return fkz.a($$0, 16, 16);
-   }
-
-   @Nullable
-   private static ged a(clj $$0) {
-      ged $$1 = fro.c(dfz.a($$0));
-      if ($$1 == null) {
-         $$1 = fro.c(dfz.a(clr.qI));
+      public fth a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         ia $$4 = this.c($$3);
+         int $$5 = this.a($$3);
+         String $$6 = this.b($$3);
+         ftj $$7 = (ftj)$$2.deserialize($$3, ftj.class);
+         return new fth($$4, $$5, $$6, $$7);
       }
 
-      return $$1;
-   }
-
-   public void a(dfy $$0, float $$1, eob $$2, fqz $$3, int $$4, int $$5) {
-      $$2.a();
-      ib $$6 = $$0.l();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      dfy.b $$7 = $$0.i;
-      if ($$7 != null && $$0.i() != null) {
-         float $$8 = ((float)($$0.i().W() - $$0.h) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == dfy.b.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (atq.b($$10) + 0.5F) * atq.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = atq.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
-            } else {
-               float $$13 = atq.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
-            }
-         }
+      protected int a(JsonObject $$0) {
+         return ato.a($$0, "tintindex", -1);
       }
 
-      eof $$15 = this.o.a($$3, frh::c);
-      this.h.a($$2, $$15, $$4, $$5);
-      this.m.a($$2, $$15, $$4, $$5);
-      this.n.a($$2, $$15, $$4, $$5);
-      dfy.a $$16 = $$0.m();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
-      $$2.b();
-   }
-
-   private void a(fkt $$0, eob $$1, fqz $$2, int $$3, int $$4, @Nullable ged $$5) {
-      if ($$5 == null) {
-         $$5 = a(clr.qI);
+      private String b(JsonObject $$0) {
+         return ato.i($$0, "texture");
       }
 
-      if ($$5 != null) {
-         $$0.a($$1, $$5.a($$2, frh::c), $$3, $$4);
+      @Nullable
+      private ia c(JsonObject $$0) {
+         String $$1 = ato.a($$0, "cullface", "");
+         return ia.a($$1);
       }
    }
 }

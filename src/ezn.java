@@ -1,57 +1,20 @@
-public class ezn extends faz {
-   private final Runnable c;
-   protected final ezn.a a;
-   private final uv k;
-   private final boolean l;
-   private evx m = evx.a;
-   protected int b;
-   private evg n;
+import java.util.function.Consumer;
 
-   public ezn(Runnable $$0, ezn.a $$1, uv $$2, uv $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.k = $$3;
-      this.l = $$4;
+public class ezn {
+   private static final int a = 4;
+
+   private ezn() {
    }
 
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.m = evx.a(this.i, this.k, this.g - 50);
-      int $$0 = (this.m.a() + 1) * 9;
-      this.d(eve.a(uv.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.n.a())).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(eve.a(uv.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.n.a())).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.d(eve.a(uu.e, $$0x -> this.c.run()).a(this.g / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.n = evg.a(uv.c("selectWorld.backupEraseCache"), this.i).a(this.g / 2 - 155 + 80, 76 + $$0).a();
-      if (this.l) {
-         this.d(this.n);
-      }
+   public static ezs a(evu $$0, ezt $$1, vb $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      this.m.a($$0, this.g / 2, 70);
-   }
-
-   @Override
-   public boolean aF_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.run();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   public static ezs a(evu $$0, ezt $$1, vb $$2, Consumer<ezu> $$3) {
+      ezv $$4 = ezv.d().a(4);
+      $$4.a(new exo($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

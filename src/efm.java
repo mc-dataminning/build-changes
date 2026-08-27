@@ -1,81 +1,84 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class efm extends efo {
-   public static final Codec<efm> a = a(efm::new);
+public class efm {
+   private static final String a = "command_storage_";
+   private final Map<String, efm.a> b = Maps.newHashMap();
+   private final efp c;
 
-   efm(List<efv> $$0, List<eib> $$1) {
-      super($$0, $$1);
+   public efm(efp $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public efw a() {
-      return eft.g;
+   private efm.a a(String $$0) {
+      efm.a $$1 = new efm.a();
+      this.b.put($$0, $$1);
+      return $$1;
    }
 
-   @Override
-   protected efn a(List<? extends efn> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (efn)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (efn $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
-            }
+   private efe.a<efm.a> b(String $$0) {
+      return new efe.a<>(() -> this.a($$0), $$1 -> this.a($$0).b($$1), avg.h);
+   }
+
+   public sj a(agt $$0) {
+      String $$1 = $$0.b();
+      efm.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new sj();
+   }
+
+   public void a(agt $$0, sj $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   }
+
+   public Stream<agt> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   }
+
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
+
+   static class a extends efe {
+      private static final String a = "contents";
+      private final Map<String, sj> b = Maps.newHashMap();
+
+      efm.a b(sj $$0) {
+         sj $$1 = $$0.p("contents");
+
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
          }
 
-         return false;
-      };
-      };
-   }
-
-   @Override
-   public void a(efl $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.a("Unreachable entry!");
-         }
-      }
-   }
-
-   public static efm.a a(efv.a<?>... $$0) {
-      return new efm.a($$0);
-   }
-
-   public static <E> efm.a a(Collection<E> $$0, Function<E, efv.a<?>> $$1) {
-      return new efm.a($$0.stream().map($$1::apply).toArray(efv.a[]::new));
-   }
-
-   public static class a extends efv.a<efm.a> {
-      private final Builder<efv> a = ImmutableList.builder();
-
-      public a(efv.a<?>... $$0) {
-         for (efv.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected efm.a a() {
          return this;
       }
 
       @Override
-      public efm.a a(efv.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
+      public sj a(sj $$0) {
+         sj $$1 = new sj();
+         this.b.forEach(($$1x, $$2) -> $$1.a($$1x, $$2.h()));
+         $$0.a("contents", $$1);
+         return $$0;
       }
 
-      @Override
-      public efv b() {
-         return new efm(this.a.build(), this.f());
+      public sj a(String $$0) {
+         sj $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new sj();
+      }
+
+      public void a(String $$0, sj $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         this.c();
+      }
+
+      public Stream<agt> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> new agt($$0, $$1));
       }
    }
 }

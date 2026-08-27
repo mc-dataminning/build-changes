@@ -1,77 +1,76 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fbf extends faz {
-   private static final int a = 20;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final uv k;
-   private final va l;
-   private final ImmutableList<fbf.a> m;
-   private evx n = evx.a;
-   private int o;
-   private int p;
+public class fbf extends fcc {
+   private static final vb a = vb.c("addServer.enterName");
+   private static final vb b = vb.c("addServer.enterIp");
+   private ewh c;
+   private final BooleanConsumer k;
+   private final fne l;
+   private ewq m;
+   private ewq n;
+   private final fcc o;
 
-   protected fbf(uv $$0, List<uv> $$1, ImmutableList<fbf.a> $$2) {
-      super($$0);
-      this.l = va.a($$1);
-      this.k = uu.a($$0, uy.a($$1, uu.a));
-      this.m = $$2;
+   public fbf(fcc $$0, BooleanConsumer $$1, fne $$2) {
+      super(vb.c("addServer.title"));
+      this.o = $$0;
+      this.k = $$1;
+      this.l = $$2;
    }
 
    @Override
-   public uv h() {
-      return this.k;
+   protected void aP_() {
+      this.n = new ewq(this.i, this.g / 2 - 100, 66, 200, 20, vb.c("addServer.enterName"));
+      this.n.a(this.l.a);
+      this.n.b($$0 -> this.C());
+      this.e(this.n);
+      this.m = new ewq(this.i, this.g / 2 - 100, 106, 200, 20, vb.c("addServer.enterIp"));
+      this.m.l(128);
+      this.m.a(this.l.b);
+      this.m.b($$0 -> this.C());
+      this.e(this.m);
+      this.d(
+         ewo.a(fne.a::a)
+            .a(fne.a.values())
+            .a(this.l.b())
+            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, vb.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
+      );
+      this.c = this.d(ewh.a(vb.c("addServer.add"), $$0 -> this.l()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
+      this.d(ewh.a(va.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
+      this.c(this.n);
+      this.C();
    }
 
    @Override
-   public void aQ_() {
-      UnmodifiableIterator $$1 = this.m.iterator();
+   public void a(euk $$0, int $$1, int $$2) {
+      String $$3 = this.m.a();
+      String $$4 = this.n.a();
+      this.b($$0, $$1, $$2);
+      this.m.a($$3);
+      this.n.a($$4);
+   }
 
-      while ($$1.hasNext()) {
-         fbf.a $$0 = (fbf.a)$$1.next();
-         this.p = Math.max(this.p, 20 + this.i.a($$0.a) + 20);
-      }
-
-      int $$1x = 5 + this.p + 5;
-      int $$2 = $$1x * this.m.size();
-      this.n = evx.a(this.i, this.l, $$2);
-      int $$3 = this.n.a() * 9;
-      this.o = (int)((double)this.h / 2.0 - (double)$$3 / 2.0);
-      int $$4 = this.o + $$3 + 9 * 2;
-      int $$5 = (int)((double)this.g / 2.0 - (double)$$2 / 2.0);
-
-      for (UnmodifiableIterator var6 = this.m.iterator(); var6.hasNext(); $$5 += $$1x) {
-         fbf.a $$6 = (fbf.a)var6.next();
-         this.d(eve.a($$6.a, $$6.b).a($$5, $$4, this.p, 20).a());
-      }
+   private void l() {
+      this.l.a = this.n.a();
+      this.l.b = this.m.a();
+      this.k.accept(true);
    }
 
    @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
+   public void aF_() {
+      this.f.a(this.o);
+   }
+
+   private void C() {
+      this.c.i = fof.b(this.m.a()) && !this.n.a().isEmpty();
+   }
+
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.o - 9 * 2, -1);
-      this.n.a($$0, this.g / 2, this.o);
-   }
-
-   @Override
-   public void b(eut $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   @Override
-   public boolean aF_() {
-      return false;
-   }
-
-   public static final class a {
-      final uv a;
-      final eve.c b;
-
-      public a(uv $$0, eve.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
+      $$0.b(this.i, a, this.g / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.i, b, this.g / 2 - 100 + 1, 94, 10526880);
+      this.n.a($$0, $$1, $$2, $$3);
+      this.m.a($$0, $$1, $$2, $$3);
    }
 }

@@ -1,58 +1,40 @@
-public class abo implements wo<yh> {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   private final String d;
-   private final uv e;
-   private final elb.a f;
-   private final int g;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public abo(ekv $$0, int $$1) {
-      this.d = $$0.b();
-      this.e = $$0.d();
-      this.f = $$0.f();
-      this.g = $$1;
+public class abo implements wu<yo> {
+   private final elw a;
+   private final String b;
+
+   public abo(elw $$0, @Nullable elx $$1) {
+      this.a = $$0;
+      if ($$1 == null) {
+         this.b = "";
+      } else {
+         this.b = $$1.b();
+      }
    }
 
-   public abo(ty $$0) {
-      this.d = $$0.s();
-      this.g = $$0.readByte();
-      if (this.g != 0 && this.g != 2) {
-         this.e = uu.a;
-         this.f = elb.a.a;
-      } else {
-         this.e = $$0.m();
-         this.f = $$0.b(elb.a.class);
-      }
+   public abo(ue $$0) {
+      this.a = $$0.a(elw.u);
+      this.b = $$0.s();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.d);
-      $$0.k(this.g);
-      if (this.g == 0 || this.g == 2) {
-         $$0.a(this.e);
-         $$0.a(this.f);
-      }
+   public void a(ue $$0) {
+      $$0.a(elw::a, this.a);
+      $$0.a(this.b);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public String a() {
-      return this.d;
+   public elw a() {
+      return this.a;
    }
 
-   public uv d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.g;
-   }
-
-   public elb.a f() {
-      return this.f;
+   @Nullable
+   public String d() {
+      return Objects.equals(this.b, "") ? null : this.b;
    }
 }

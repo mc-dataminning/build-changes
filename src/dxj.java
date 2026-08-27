@@ -1,7 +1,30 @@
-@FunctionalInterface
-public interface dxj {
-   dxj a = ($$0, $$1, $$2, $$3, $$4, $$5, $$6) -> {
-   };
+import com.mojang.serialization.Codec;
 
-   void afterPlace(csz var1, csx var2, djk var3, atw var4, dxe var5, crm var6, dyb var7);
+public enum dxj implements aut {
+   a(ia.b, 1, "ceiling"),
+   b(ia.a, -1, "floor");
+
+   public static final Codec<dxj> c = aut.a(dxj::values);
+   private final ia d;
+   private final int e;
+   private final String f;
+
+   private dxj(ia $$0, int $$1, String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public ia a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
+   }
 }

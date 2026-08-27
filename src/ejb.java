@@ -1,31 +1,45 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public record ejb(efc.b c) implements eje {
-   public static final Codec<ejb> a = RecordCodecBuilder.create($$0 -> $$0.group(efc.b.e.fieldOf("target").forGetter(ejb::c)).apply($$0, ejb::new));
-   public static final Codec<ejb> b = efc.b.e.xmap(ejb::new, ejb::c);
-
-   public static eje a(efc.b $$0) {
-      return new ejb($$0);
-   }
-
-   @Override
-   public ejd a() {
-      return ejf.c;
-   }
-
-   @Nullable
-   @Override
-   public String a(efc $$0) {
-      bkv $$1 = $$0.c(this.c.a());
-      return $$1 != null ? $$1.cy() : null;
-   }
+public record ejb(Optional<ci> b, hv c) implements ejd {
+   private static final MapCodec<hv> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               atg.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(iz::u),
+               atg.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(iz::v),
+               atg.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(iz::w)
+            )
+            .apply($$0, hv::new)
+   );
+   public static final Codec<ejb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(atg.a(ci.a, "predicate").forGetter(ejb::c), d.forGetter(ejb::d)).apply($$0, ejb::new)
+   );
 
    @Override
-   public Set<ehk<?>> b() {
-      return ImmutableSet.of(this.c.a());
+   public eje b() {
+      return ejf.o;
+   }
+
+   public boolean a(ege $$0) {
+      elb $$1 = $$0.c(eip.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   }
+
+   public static ejd.a a(ci.a $$0) {
+      return () -> new ejb(Optional.of($$0.b()), hv.b);
+   }
+
+   public static ejd.a a(ci.a $$0, hv $$1) {
+      return () -> new ejb(Optional.of($$0.b()), $$1);
+   }
+
+   public Optional<ci> c() {
+      return this.b;
+   }
+
+   public hv d() {
+      return this.c;
    }
 }

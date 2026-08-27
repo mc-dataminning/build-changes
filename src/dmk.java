@@ -1,97 +1,72 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public final class dmk {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<djo> e = kc.o
-      .q()
-      .comapFlatMap($$0 -> $$0 == djo.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
-   public static final Codec<dmk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(dmk::a),
-               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
-            )
-            .apply($$0, dmk::new)
-   );
-   private static final Set<agl<ctd>> f = Set.of(ctk.aa, ctk.Z, ctk.ab);
-   public static final csh b = new csh() {
-      @Override
-      public int K_() {
-         return 64;
-      }
+public class dmk<T extends dmg> {
+   private static final Logger a = LogUtils.getLogger();
+   private final asr<T> b;
+   private dmt c;
 
-      @Override
-      public int J_() {
-         return -64;
-      }
-   };
-   private final djo g;
-   private final BitSet h;
-
-   private dmk(djo $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
+   public dmk(Class<T> $$0, dmt $$1) {
+      this.c = $$1;
+      this.b = new asr<>($$0);
    }
 
-   @Nullable
-   public static dmk a(sd $$0) {
-      djo $$1 = djo.a($$0.l("target_status"));
-      return $$1 == djo.c ? null : new dmk($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   public void a(T $$0) {
+      this.b.add($$0);
    }
 
-   public static void a(dke $$0) {
-      int $$1 = 4;
-      hx.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(cvh.F)) {
-            $$0.a($$1x, cvh.sJ.o(), false);
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
+   }
+
+   public asm.a a(ekw $$0, asm<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cH().c($$0) && $$1.accept($$2).a()) {
+            return asm.a.b;
          }
-      });
+      }
+
+      return asm.a.a;
    }
 
-   public void b(dke $$0) {
-      csh $$1 = $$0.z();
-      int $$2 = $$1.J_();
-      int $$3 = $$1.ak() - 1;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               hx.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, cvh.a.o(), false));
+   public <U extends T> asm.a a(dmn<T, U> $$0, ekw $$1, asm<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
+      if ($$3.isEmpty()) {
+         return asm.a.a;
+      } else {
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cH().c($$1) && $$2.accept($$5).a()) {
+               return asm.a.b;
             }
          }
+
+         return asm.a.a;
       }
    }
 
-   public djo a() {
-      return this.g;
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   public boolean b() {
-      return !this.h.isEmpty();
+   public Stream<T> b() {
+      return this.b.stream();
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   public dmt c() {
+      return this.c;
    }
 
-   public static ctg a(ctg $$0, djj $$1) {
-      if (!$$1.y()) {
-         return $$0;
-      } else {
-         Predicate<agl<ctd>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            ig<ctd> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
-         };
-      }
+   public dmt a(dmt $$0) {
+      dmt $$1 = this.c;
+      this.c = $$0;
+      return $$1;
+   }
+
+   @avd
+   public int d() {
+      return this.b.size();
    }
 }

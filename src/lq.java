@@ -1,18 +1,18 @@
 import java.util.List;
 
 public class lq {
-   public static ld a(kl $$0) {
-      return new ld(
+   public static lc a(kk $$0) {
+      return new lc(
          $$0,
-         efa.a(),
+         egc.a(),
          List.of(
-            new ld.a(lo::new, ehm.f),
-            new ld.a(lm::new, ehm.c),
-            new ld.a(ln::new, ehm.g),
-            new ld.a(ll::new, ehm.o),
-            new ld.a(lr::new, ehm.j),
-            new ld.a(lp::new, ehm.i),
-            new ld.a(lk::new, ehm.h)
+            new lc.a(lo::new, eio.f),
+            new lc.a(lm::new, eio.c),
+            new lc.a(ln::new, eio.g),
+            new lc.a(ll::new, eio.o),
+            new lc.a(lr::new, eio.j),
+            new lc.a(lp::new, eio.i),
+            new lc.a(lk::new, eio.h)
          )
       );
    }

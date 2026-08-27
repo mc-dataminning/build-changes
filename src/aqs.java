@@ -1,41 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.server.MinecraftServer;
 
-public class aqs {
-   public static final Codec<aqs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aqu.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, aqs::new)
-   );
-   private final ig<aqu> b;
-   private final int c;
-   private final int d;
-   private final boolean e;
+public class aqs implements dr {
+   private static final String b = "Rcon";
+   private static final vb c = vb.b("Rcon");
+   private final StringBuffer d = new StringBuffer();
+   private final MinecraftServer e;
 
-   public aqs(ig<aqu> $$0, int $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public aqs(MinecraftServer $$0) {
+      this.e = $$0;
    }
 
-   public ig<aqu> a() {
-      return this.b;
+   public void e() {
+      this.d.setLength(0);
    }
 
-   public int b() {
-      return this.c;
+   public String f() {
+      return this.d.toString();
    }
 
-   public int c() {
-      return this.d;
+   public ds g() {
+      amp $$0 = this.e.F();
+      return new ds(this, elb.a($$0.S()), ela.a, $$0, 4, "Rcon", c, this.e, null);
    }
 
-   public boolean d() {
-      return this.e;
+   @Override
+   public void a(vb $$0) {
+      this.d.append($$0.getString());
+   }
+
+   @Override
+   public boolean l_() {
+      return true;
+   }
+
+   @Override
+   public boolean x_() {
+      return true;
+   }
+
+   @Override
+   public boolean W_() {
+      return this.e.k();
    }
 }

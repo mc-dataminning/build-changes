@@ -1,89 +1,130 @@
-import com.mojang.logging.LogUtils;
-import java.time.Instant;
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class vp {
-   private static final Logger a = LogUtils.getLogger();
+public class vp implements vb {
+   private final vc c;
+   private final List<vb> d;
+   private vy e;
+   private atk f = atk.a;
    @Nullable
-   private vq b;
+   private se g;
 
-   public vp(UUID $$0, UUID $$1) {
-      this.b = vq.a($$0, $$1);
+   vp(vc $$0, List<vb> $$1, vy $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public vp.c a(aud $$0) {
-      return $$1 -> {
-         vq $$2 = this.a();
-         return $$2 == null ? null : new vh($$0.sign($$2x -> vl.a($$2x, $$2, $$1)));
-      };
+   public static vp a(vc $$0) {
+      return new vp($$0, Lists.newArrayList(), vy.a);
    }
 
-   public vp.b a(cec $$0) {
-      auc $$1 = $$0.a();
-      return ($$2, $$3) -> {
-         vq $$4 = this.a();
-         if ($$4 == null) {
-            throw new vp.a(uv.c("chat.disabled.chain_broken"), false);
-         } else if ($$0.b().a()) {
-            throw new vp.a(uv.c("chat.disabled.expiredProfileKey"), false);
-         } else {
-            vl $$5 = new vl($$4, $$2, $$3, null, uz.c);
-            if (!$$5.a($$1)) {
-               throw new vp.a(uv.c("multiplayer.disconnect.unsigned_chat"), true);
-            } else {
-               if ($$5.a(Instant.now())) {
-                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
-               }
+   @Override
+   public vc b() {
+      return this.c;
+   }
 
-               return $$5;
-            }
+   @Override
+   public List<vb> c() {
+      return this.d;
+   }
+
+   public vp b(vy $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   @Override
+   public vy a() {
+      return this.e;
+   }
+
+   public vp f(String $$0) {
+      return this.b(vb.b($$0));
+   }
+
+   public vp b(vb $$0) {
+      this.d.add($$0);
+      return this;
+   }
+
+   public vp a(UnaryOperator<vy> $$0) {
+      this.b($$0.apply(this.a()));
+      return this;
+   }
+
+   public vp c(vy $$0) {
+      this.b($$0.a(this.a()));
+      return this;
+   }
+
+   public vp a(n... $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   public vp a(n $$0) {
+      this.b(this.a().b($$0));
+      return this;
+   }
+
+   public vp b(int $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   @Override
+   public atk g() {
+      se $$0 = se.a();
+      if (this.g != $$0) {
+         this.f = $$0.a(this);
+         this.g = $$0;
+      }
+
+      return this.f;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof vp $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.e, this.d);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder(this.c.toString());
+      boolean $$1 = !this.e.g();
+      boolean $$2 = !this.d.isEmpty();
+      if ($$1 || $$2) {
+         $$0.append('[');
+         if ($$1) {
+            $$0.append("style=");
+            $$0.append(this.e);
          }
-      };
-   }
 
-   @Nullable
-   private vq a() {
-      vq $$0 = this.b;
-      if ($$0 != null) {
-         this.b = $$0.a();
+         if ($$1 && $$2) {
+            $$0.append(", ");
+         }
+
+         if ($$2) {
+            $$0.append("siblings=");
+            $$0.append(this.d);
+         }
+
+         $$0.append(']');
       }
 
-      return $$0;
-   }
-
-   public static class a extends vv {
-      private final boolean a;
-
-      public a(uv $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public boolean a() {
-         return this.a;
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      vp.b a = ($$0, $$1) -> {
-         throw new vp.a(uv.c("chat.disabled.missingProfileKey"), false);
-      };
-
-      static vp.b unsigned(UUID $$0) {
-         return ($$1, $$2) -> vl.a($$0, $$2.a());
-      }
-
-      vl unpack(@Nullable vh var1, vo var2) throws vp.a;
-   }
-
-   @FunctionalInterface
-   public interface c {
-      vp.c a = $$0 -> null;
-
-      @Nullable
-      vh pack(vo var1);
+      return $$0.toString();
    }
 }

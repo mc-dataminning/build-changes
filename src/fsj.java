@@ -1,85 +1,125 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class fsj implements gel {
-   private final List<fsk> a;
+public class fsj implements fsi {
+   private final fsi.a a;
+   private final fsi.a b = fsi.a(new eoy(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public fsj(List<fsk> $$0) {
+   public fsj(fsi.a $$0) {
       this.a = $$0;
    }
 
-   public List<fsk> a() {
-      return this.a;
-   }
-
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public eph getBuffer(fsq $$0) {
+      if ($$0.K()) {
+         eph $$1 = this.b.getBuffer($$0);
+         return new fsj.a($$1, this.c, this.d, this.e, this.f);
       } else {
-         return $$0 instanceof fsj $$1 ? this.a.equals($$1.a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
-   }
-
-   @Override
-   public Collection<agm> f() {
-      return this.a().stream().map(fsk::a).collect(Collectors.toSet());
-   }
-
-   @Override
-   public void a(Function<agm, gel> $$0) {
-      this.a().stream().map(fsk::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
-   }
-
-   @Nullable
-   @Override
-   public gea a(gee $$0, Function<ged, gbz> $$1, gei $$2, agm $$3) {
-      if (this.a().isEmpty()) {
-         return null;
-      } else {
-         gem.a $$4 = new gem.a();
-
-         for (fsk $$5 : this.a()) {
-            gea $$6 = $$0.a($$5.a(), $$5);
-            $$4.a($$6, $$5.d());
-         }
-
-         return $$4.a();
-      }
-   }
-
-   public static class a implements JsonDeserializer<fsj> {
-      public fsj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<fsk> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.size() == 0) {
-               throw new JsonParseException("Empty variant array");
-            }
-
-            for (JsonElement $$5 : $$4) {
-               $$3.add((fsk)$$2.deserialize($$5, fsk.class));
-            }
+         eph $$2 = this.a.getBuffer($$0);
+         Optional<fsq> $$3 = $$0.J();
+         if ($$3.isPresent()) {
+            eph $$4 = this.b.getBuffer($$3.get());
+            fsj.a $$5 = new fsj.a($$4, this.c, this.d, this.e, this.f);
+            return epk.a($$5, $$2);
          } else {
-            $$3.add((fsk)$$2.deserialize($$0, fsk.class));
+            return $$2;
          }
+      }
+   }
 
-         return new fsj($$3);
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public void a() {
+      this.b.b();
+   }
+
+   static class a extends epc {
+      private final eph f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
+
+      a(eph $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+      }
+
+      @Override
+      public void l() {
+      }
+
+      @Override
+      public eph a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      @Override
+      public eph a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public eph a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public eph a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public eph b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public eph a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
       }
    }
 }

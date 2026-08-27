@@ -1,59 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
+public class cfo extends cex {
+   private static final cmh f = new cmh(cmk.vi);
+   private int g = 200;
 
-public class cfo {
-   private final List<cfl> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<cfl> a() {
-      return ImmutableList.copyOf(this.a);
+   public cfo(blj<? extends cfo> $$0, csy $$1) {
+      super($$0, $$1, f);
    }
 
-   public cfo a(int $$0, float $$1) {
-      this.a.add(new cfl($$0, $$1));
-      this.b();
-      return this;
+   public cfo(csy $$0, blv $$1, cmh $$2) {
+      super(blj.aS, $$1, $$0, $$2);
    }
 
-   public cfo a(Collection<cfl> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   public cfo(csy $$0, double $$1, double $$2, double $$3, cmh $$4) {
+      super(blj.aS, $$1, $$2, $$3, $$0, $$4);
    }
 
-   private void b() {
-      Int2ObjectSortedMap<cfl> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cfl $$1 = this.a.get(this.b);
-         cfl $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cfl $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+   @Override
+   public void l() {
+      super.l();
+      if (this.dM().B && !this.b) {
+         this.dM().a(jv.P, this.dr(), this.dt(), this.dx(), 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   protected void a(blv $$0) {
+      super.a($$0);
+      bks $$1 = new bks(bku.x, this.g, 0);
+      $$0.b($$1, this.J());
+   }
+
+   @Override
+   public void a(sj $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.g = $$0.h("Duration");
+      }
+   }
+
+   @Override
+   public void b(sj $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.g);
    }
 }

@@ -1,59 +1,49 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duv extends duw {
-   public static final Codec<duv> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(duv::new, $$0 -> $$0.b).codec();
-   private final float b;
+public class duv extends dus {
+   public static final Codec<duv> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(biq.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, duv::new)
+   );
+   private final biq b;
+
+   public duv(biq $$0, biq $$1, biq $$2) {
+      super($$0, $$1);
+      this.b = $$2;
+   }
 
    @Override
-   protected dux<?> a() {
-      return dux.b;
-   }
-
-   public duv(float $$0) {
-      this.b = $$0;
+   protected dut<?> a() {
+      return dut.h;
    }
 
    @Override
-   public void a(duw.a $$0) {
-      atw $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            hx $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               a($$3, ddy.d, $$0);
-            }
+   protected void a(cte $$0, dus.b $$1, auf $$2, duc $$3, int $$4, dus.a $$5, int $$6, int $$7, int $$8) {
+      hv $$9 = $$5.a();
+      int $$10 = 0;
+
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + aty.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
          }
 
-         if ($$1.i() < this.b) {
-            hx $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               a($$4, ddy.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            hx $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               a($$5, ddy.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            hx $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               a($$6, ddy.c, $$0);
-            }
-         }
-      });
-   }
-
-   private static void a(hx $$0, die $$1, duw.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
-
-      for (hx var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.d();
+         this.a($$0, $$1, $$2, $$3, new hv($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
       }
+   }
+
+   @Override
+   public int a(auf $$0, int $$1, duc $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(auf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

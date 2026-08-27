@@ -1,37 +1,41 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class cu extends cw<cu.a> {
-   public cu.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      agm $$3 = new agm(atg.i($$0, "recipe"));
-      return new cu.a($$1, $$3);
+public class cu extends cv<cu.a> {
+   @Override
+   public Codec<cu.a> a() {
+      return cu.a.a;
    }
 
-   public void a(amj $$0, cov<?> $$1) {
+   public void a(amq $$0, cmh $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static am<cu.a> a(agm $$0) {
-      return al.f.a(new cu.a(Optional.empty(), $$0));
-   }
+   public static record a(Optional<bb> b, Optional<ca> c) implements cv.a {
+      public static final Codec<cu.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(cu.a::a), atg.a(ca.a, "item").forGetter(cu.a::b)).apply($$0, cu.a::new)
+      );
 
-   public static class a extends at {
-      private final agm a;
+      public static an<cu.a> a(Optional<ca> $$0) {
+         return am.G.a(new cu.a(Optional.empty(), $$0));
+      }
 
-      public a(Optional<bc> $$0, agm $$1) {
-         super($$0);
-         this.a = $$1;
+      public static an<cu.a> a(csx $$0) {
+         return am.G.a(new cu.a(Optional.empty(), Optional.of(ca.a.a().a($$0).b())));
+      }
+
+      public boolean a(cmh $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         $$0.addProperty("recipe", this.a.toString());
-         return $$0;
+      public Optional<bb> a() {
+         return this.b;
       }
 
-      public boolean a(cov<?> $$0) {
-         return this.a.equals($$0.a());
+      public Optional<ca> b() {
+         return this.c;
       }
    }
 }

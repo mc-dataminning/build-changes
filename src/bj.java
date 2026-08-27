@@ -1,47 +1,34 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class bj extends cw<bj.a> {
-   public bj.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<cm> $$3 = cm.a($$0.get("effects"));
-      Optional<bc> $$4 = bq.a($$0, "source", $$2);
-      return new bj.a($$1, $$3, $$4);
+public class bj extends cv<bj.a> {
+   @Override
+   public Codec<bj.a> a() {
+      return bj.a.a;
    }
 
-   public void a(amj $$0, @Nullable bkv $$1) {
-      efc $$2 = $$1 != null ? bq.b($$0, $$1) : null;
-      this.a($$0, $$2x -> $$2x.a($$0, $$2));
+   public void a(amq $$0, cmh $$1, int $$2) {
+      this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
-   public static class a extends at {
-      private final Optional<cm> a;
-      private final Optional<bc> b;
+   public static record a(Optional<bb> b, Optional<ca> c, ck.d d) implements cv.a {
+      public static final Codec<bj.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(bj.a::a), atg.a(ca.a, "item").forGetter(bj.a::c), atg.a(ck.d.d, "levels", ck.d.c).forGetter(bj.a::d))
+               .apply($$0, bj.a::new)
+      );
 
-      public a(Optional<bc> $$0, Optional<cm> $$1, Optional<bc> $$2) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
+      public static an<bj.a> b() {
+         return am.j.a(new bj.a(Optional.empty(), Optional.empty(), ck.d.c));
       }
 
-      public static am<bj.a> a(cm.a $$0) {
-         return al.A.a(new bj.a(Optional.empty(), $$0.b(), Optional.empty()));
-      }
-
-      public static am<bj.a> a(bq.a $$0) {
-         return al.A.a(new bj.a(Optional.empty(), Optional.empty(), Optional.of(bq.a($$0.b()))));
-      }
-
-      public boolean a(amj $$0, @Nullable efc $$1) {
-         return this.a.isPresent() && !this.a.get().a((bll)$$0) ? false : !this.b.isPresent() || $$1 != null && this.b.get().a($$1);
+      public boolean a(cmh $$0, int $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
       }
 
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("effects", $$1.a()));
-         this.b.ifPresent($$1 -> $$0.add("source", $$1.a()));
-         return $$0;
+      public Optional<bb> a() {
+         return this.b;
       }
    }
 }

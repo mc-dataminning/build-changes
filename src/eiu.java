@@ -1,35 +1,59 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record eiu(float c) implements eiw {
-   public static final Codec<eiu> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(eiu::c)).apply($$0, eiu::new));
-   public static final Codec<eiu> b = Codec.FLOAT.xmap(eiu::new, eiu::c);
+public abstract class eiu implements ejd {
+   protected final List<ejd> c;
+   private final Predicate<ege> a;
 
-   @Override
-   public eiv b() {
-      return eix.b;
+   protected eiu(List<ejd> $$0, Predicate<ege> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends eiu> Codec<T> a(Function<List<ejd>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(ejf.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends eiu> Codec<T> b(Function<List<ejd>, T> $$0) {
+      return ejf.a.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(ege $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public float b(efc $$0) {
-      return this.c;
-   }
+   public void a(egn $$0) {
+      ejd.super.a($$0);
 
-   public static eiu a(float $$0) {
-      return new eiu($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((eiu)$$0).c, this.c) == 0 : false;
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public abstract static class a implements ejd.a {
+      private final Builder<ejd> a = ImmutableList.builder();
+
+      protected a(ejd.a... $$0) {
+         for (ejd.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
+      }
+
+      public void a(ejd.a $$0) {
+         this.a.add($$0.build());
+      }
+
+      @Override
+      public ejd build() {
+         return this.a(this.a.build());
+      }
+
+      protected abstract ejd a(List<ejd> var1);
    }
 }

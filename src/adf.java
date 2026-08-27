@@ -1,24 +1,14 @@
-public class adf implements wo<acp> {
-   private final int a;
-
-   public adf(int $$0) {
-      this.a = $$0;
-   }
-
-   public void a(acp $$0) {
-      $$0.a(this);
-   }
-
-   public adf(ty $$0) {
-      this.a = $$0.readByte();
+public record adf(vs.a a) implements wu<acw> {
+   public adf(ue $$0) {
+      this(vs.a.a($$0));
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.k(this.a);
+   public void a(ue $$0) {
+      vs.a.a($$0, this.a);
    }
 
-   public int a() {
-      return this.a;
+   public void a(acw $$0) {
+      $$0.a(this);
    }
 }

@@ -1,194 +1,137 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.List;
+import java.util.function.ToIntFunction;
 
-public class cwo extends cur implements cyn {
-   public static final MapCodec<cwo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.fieldOf("automatic").forGetter($$0x -> $$0x.e), u()).apply($$0, cwo::new)
-   );
-   private static final Logger d = LogUtils.getLogger();
-   public static final dih b = cxi.a;
-   public static final die c = did.c;
-   private final boolean e;
+public class cwo extends cur implements dcz {
+   public static final MapCodec<cwo> c = b(cwo::new);
+   public static final int d = 1;
+   public static final int e = 4;
+   public static final djp f = djf.az;
+   public static final djg g = cur.b;
+   public static final djg h = djf.C;
+   public static final ToIntFunction<dip> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
+   private static final Int2ObjectMap<List<elb>> j = ac.a(() -> {
+      Int2ObjectMap<List<elb>> $$0 = new Int2ObjectOpenHashMap();
+      $$0.defaultReturnValue(ImmutableList.of());
+      $$0.put(1, ImmutableList.of(new elb(0.5, 0.5, 0.5)));
+      $$0.put(2, ImmutableList.of(new elb(0.375, 0.44, 0.5), new elb(0.625, 0.5, 0.44)));
+      $$0.put(3, ImmutableList.of(new elb(0.5, 0.313, 0.625), new elb(0.375, 0.44, 0.5), new elb(0.56, 0.5, 0.44)));
+      $$0.put(4, ImmutableList.of(new elb(0.44, 0.313, 0.56), new elb(0.625, 0.44, 0.56), new elb(0.375, 0.44, 0.375), new elb(0.56, 0.5, 0.375)));
+      return Int2ObjectMaps.unmodifiable($$0);
+   });
+   private static final elu k = cvz.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
+   private static final elu l = cvz.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
+   private static final elu m = cvz.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
+   private static final elu n = cvz.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
 
    @Override
    public MapCodec<cwo> a() {
-      return a;
+      return c;
    }
 
-   public cwo(boolean $$0, dhm.d $$1) {
-      super($$1);
-      this.k(this.E.b().a(b, ib.c).a(c, Boolean.valueOf(false)));
-      this.e = $$0;
-   }
-
-   @Override
-   public dfi a(hx $$0, dhn $$1) {
-      dfs $$2 = new dfs($$0, $$1);
-      $$2.b(this.e);
-      return $$2;
+   public cwo(dio.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(f, Integer.valueOf(1)).a(g, Boolean.valueOf(false)).a(h, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(dhn $$0, csf $$1, hx $$2, cvf $$3, hx $$4, boolean $$5) {
-      if (!$$1.B) {
-         if ($$1.c_($$2) instanceof dfs $$7) {
-            boolean $$8 = $$1.B($$2);
-            boolean $$9 = $$7.d();
-            $$7.a($$8);
-            if (!$$9 && !$$7.f() && $$7.m() != dfs.a.a) {
-               if ($$8) {
-                  $$7.l();
-                  $$1.a($$2, this, 1);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      if ($$1.c_($$2) instanceof dfs $$5) {
-         crg $$6 = $$5.c();
-         boolean $$7 = !aul.b($$6.m());
-         dfs.a $$8 = $$5.m();
-         boolean $$9 = $$5.k();
-         if ($$8 == dfs.a.b) {
-            $$5.l();
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.w()) {
-               $$6.a(0);
-            }
-
-            if ($$5.d() || $$5.f()) {
-               $$1.a($$2, this, 1);
-            }
-         } else if ($$8 == dfs.a.c) {
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.w()) {
-               $$6.a(0);
-            }
-         }
-
-         $$1.c($$2, this);
-      }
-   }
-
-   private void a(dhn $$0, csf $$1, hx $$2, crg $$3, boolean $$4) {
-      if ($$4) {
-         $$3.a($$1);
+   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
+      if ($$3.fT().e && $$3.b($$4).b() && $$0.c(g)) {
+         a($$3, $$0, $$1, $$2);
+         return bjl.a($$1.B);
       } else {
-         $$3.a(0);
+         return bjl.d;
       }
-
-      a($$1, $$2, $$0.c(b));
    }
 
    @Override
-   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
-      dfi $$6 = $$1.c_($$2);
-      if ($$6 instanceof dfs && $$3.gq()) {
-         $$3.a((dfs)$$6);
-         return bjb.a($$1.B);
+   public boolean a(dip $$0, coq $$1) {
+      return !$$1.h() && $$1.n().d() == this.k() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public dip a(coq $$0) {
+      dip $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(f);
       } else {
-         return bjb.d;
+         edz $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == eea.c;
+         return super.a($$0).a(h, Boolean.valueOf($$3));
       }
    }
 
    @Override
-   public boolean d_(dhn $$0) {
-      return true;
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$0.c(h)) {
+         $$3.a($$4, eea.c, eea.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(dhn $$0, csf $$1, hx $$2) {
-      dfi $$3 = $$1.c_($$2);
-      return $$3 instanceof dfs ? ((dfs)$$3).c().k() : 0;
+   public edz c_(dip $$0) {
+      return $$0.c(h) ? eea.c.a(false) : super.c_($$0);
    }
 
    @Override
-   public void a(csf $$0, hx $$1, dhn $$2, bll $$3, clo $$4) {
-      if ($$0.c_($$1) instanceof dfs $$6) {
-         crg $$7 = $$6.c();
-         if ($$4.A()) {
-            $$7.b($$4.y());
-         }
-
-         if (!$$0.B) {
-            if (cjh.a($$4) == null) {
-               $$7.a($$0.Y().b(csb.p));
-               $$6.b(this.e);
-            }
-
-            if ($$6.m() == dfs.a.a) {
-               boolean $$8 = $$0.B($$1);
-               $$6.a($$8);
-            }
-         }
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      switch ($$0.c(f)) {
+         case 1:
+         default:
+            return k;
+         case 2:
+            return l;
+         case 3:
+            return m;
+         case 4:
+            return n;
       }
    }
 
    @Override
-   public dbk b_(dhn $$0) {
-      return dbk.c;
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(f, g, h);
    }
 
    @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dhn a(dhn $$0, dab $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dhn a(cnw $$0) {
-      return this.o().a(b, $$0.d().g());
-   }
-
-   private static void a(csf $$0, hx $$1, ib $$2) {
-      hx.a $$3 = $$1.j();
-      csb $$4 = $$0.Y();
-      int $$5 = $$4.c(csb.x);
-
-      while ($$5-- > 0) {
-         $$3.c($$2);
-         dhn $$6 = $$0.a_($$3);
-         cvf $$7 = $$6.b();
-         if (!$$6.a(cvh.kH) || !($$0.c_($$3) instanceof dfs $$9) || $$9.m() != dfs.a.a) {
-            break;
+   public boolean a(csz $$0, hv $$1, dip $$2, edz $$3) {
+      if (!$$2.c(h) && $$3.a() == eea.c) {
+         dip $$4 = $$2.a(h, Boolean.valueOf(true));
+         if ($$2.c(g)) {
+            a(null, $$4, $$0, $$1);
+         } else {
+            $$0.a($$1, $$4, 3);
          }
 
-         if ($$9.d() || $$9.f()) {
-            crg $$10 = $$9.c();
-            if ($$9.l()) {
-               if (!$$10.a($$0)) {
-                  break;
-               }
-
-               $$0.c($$3, $$7);
-            } else if ($$9.w()) {
-               $$10.a(0);
-            }
-         }
-
-         $$2 = $$6.c(b);
+         $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      if ($$5 <= 0) {
-         int $$11 = Math.max($$4.c(csb.x), 0);
-         d.warn("Command Block chain tried to execute more than {} steps!", $$11);
-      }
+   public static boolean g(dip $$0) {
+      return $$0.a(arr.ae, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
+   }
+
+   @Override
+   protected Iterable<elb> b(dip $$0) {
+      return (Iterable<elb>)j.get($$0.c(f));
+   }
+
+   @Override
+   protected boolean d(dip $$0) {
+      return !$$0.c(h) && super.d($$0);
+   }
+
+   @Override
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      return cvz.a($$1, $$2.d(), ia.b);
    }
 }

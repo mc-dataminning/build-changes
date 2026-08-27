@@ -1,186 +1,121 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class fbl extends fbu {
+   private static final vb c = vb.c("options.languageAccuracyWarning").a(n.h);
+   private fbl.a k;
+   final gew l;
 
-public class fbl {
-   private final eti a;
-   private final fbp b;
-   private final fbm c;
-   private final int d;
-   private final ag e;
-   private final aq f;
-   private final clo g;
-   private final uv h;
-   private final fbn i;
-   private final Map<af, fbn> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
-   private float q;
-   private boolean r;
-
-   public fbl(eti $$0, fbp $$1, fbm $$2, int $$3, ag $$4, aq $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new fbn(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
+   public fbl(fcc $$0, euo $$1, gew $$2) {
+      super($$0, $$1, vb.c("options.language.title"));
+      this.l = $$2;
    }
 
-   public fbm a() {
-      return this.c;
+   @Override
+   protected void aP_() {
+      this.k = new fbl.a(this.f);
+      this.e(this.k);
+      this.d(this.b.N().a(this.b, this.g / 2 - 155, this.h - 38, 150));
+      this.d(ewh.a(va.d, $$0 -> this.l()).a(this.g / 2 - 155 + 160, this.h - 38, 150, 20).a());
+      super.aP_();
    }
 
-   public int b() {
-      return this.d;
-   }
-
-   public ag c() {
-      return this.e;
-   }
-
-   public uv d() {
-      return this.h;
-   }
-
-   public aq e() {
-      return this.f;
-   }
-
-   public void a(eut $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
-   }
-
-   public void a(eut $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
-   }
-
-   public void b(eut $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
+   void l() {
+      fbl.a.a $$0 = this.k.f();
+      if ($$0 != null && !$$0.b.equals(this.l.a())) {
+         this.l.a($$0.b);
+         this.b.ad = $$0.b;
+         this.f.k();
+         this.b.as();
       }
 
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      agm $$3 = Objects.requireNonNullElse(this.f.d(), gca.a);
-      int $$4 = atq.a(this.k);
-      int $$5 = atq.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
+      this.f.a(this.a);
+   }
 
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (faf.a($$0)) {
+         fbl.a.a $$3 = this.k.f();
+         if ($$3 != null) {
+            $$3.b();
+            this.l();
+            return true;
          }
       }
 
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.f();
+      return super.a($$0, $$1, $$2);
    }
 
-   public void a(eut $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, atq.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = atq.a(this.k);
-      int $$7 = atq.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (fbn $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.k.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      $$0.a(this.i, c, this.g / 2, this.h - 56, -8355712);
+   }
+
+   @Override
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   class a extends exd<fbl.a.a> {
+      public a(euk $$0) {
+         super($$0, fbl.this.g, fbl.this.h, 32, fbl.this.h - 65 + 4, 18);
+         String $$1 = fbl.this.l.a();
+         fbl.this.l.b().forEach(($$1x, $$2) -> {
+            fbl.a.a $$3 = new fbl.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
             }
+         });
+         if (this.f() != null) {
+            this.e(this.f());
          }
       }
 
-      $$0.c().b();
-      if ($$5) {
-         this.q = atq.a(this.q + 0.02F, 0.0F, 0.3F);
-      } else {
-         this.q = atq.a(this.q - 0.04F, 0.0F, 1.0F);
+      @Override
+      protected int c() {
+         return super.c() + 20;
       }
-   }
 
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
-   }
+      @Override
+      public int b() {
+         return super.b() + 50;
+      }
 
-   @Nullable
-   public static fbl a(eti $$0, fbp $$1, int $$2, ag $$3) {
-      Optional<aq> $$4 = $$3.a().d();
-      if ($$4.isEmpty()) {
-         return null;
-      } else {
-         for (fbm $$5 : fbm.values()) {
-            if ($$2 < $$5.a()) {
-               return new fbl($$0, $$1, $$5, $$2, $$3, $$4.get());
+      public class a extends exd.a<fbl.a.a> {
+         final String b;
+         private final vb c;
+         private long d;
+
+         public a(String $$1, gev $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
+
+         @Override
+         public void a(evw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(fbl.this.i, this.c, a.this.e / 2, $$2 + 1, 16777215);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (ac.b() - this.d < 250L) {
+               fbl.this.l();
             }
 
-            $$2 -= $$5.a();
+            this.d = ac.b();
+            return true;
          }
 
-         return null;
+         void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public vb a() {
+            return vb.a("narrator.select", this.c);
+         }
       }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = atq.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
-      }
-
-      if (this.p - this.n > 113) {
-         this.l = atq.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
-      }
-   }
-
-   public void a(ag $$0) {
-      Optional<aq> $$1 = $$0.a().d();
-      if (!$$1.isEmpty()) {
-         fbn $$2 = new fbn(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
-      }
-   }
-
-   private void a(fbn $$0, af $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
-
-      for (fbn $$6 : this.j.values()) {
-         $$6.b();
-      }
-   }
-
-   @Nullable
-   public fbn a(af $$0) {
-      return this.j.get($$0);
-   }
-
-   public fbp f() {
-      return this.b;
    }
 }

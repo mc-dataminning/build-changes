@@ -1,20 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public record dtz(duf b, float c) {
-   public static final Codec<dtz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               duf.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, dtz::new)
-   );
+public class dtz implements dtg {
+   public static final Codec<dtz> a = atg.b(dxs.c).fieldOf("features").xmap(dtz::new, $$0 -> $$0.b).codec();
+   public final ij<dxs> b;
 
-   public duf a() {
-      return this.b;
+   public dtz(ij<dxs> $$0) {
+      this.b = $$0;
    }
 
-   public float b() {
-      return this.c;
+   @Override
+   public Stream<dqp<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

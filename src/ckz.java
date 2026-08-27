@@ -1,86 +1,81 @@
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class ckz extends clj {
-   private static final uv a = uv.c("painting.random").a(n.h);
-   private final bkz<? extends cak> b;
+public interface ckz {
+   String o_ = "color";
+   String p_ = "display";
+   int q_ = 10511680;
 
-   public ckz(bkz<? extends cak> $$0, clj.a $$1) {
-      super($$1);
-      this.b = $$0;
+   default boolean a(cmh $$0) {
+      sj $$1 = $$0.b("display");
+      return $$1 != null && $$1.b("color", 99);
    }
 
-   @Override
-   public bjb a(cny $$0) {
-      hx $$1 = $$0.a();
-      ib $$2 = $$0.k();
-      hx $$3 = $$1.a($$2);
-      cdz $$4 = $$0.o();
-      clo $$5 = $$0.n();
-      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
-         return bjb.e;
-      } else {
-         csf $$6 = $$0.q();
-         cak $$8;
-         if (this.b == bkz.ar) {
-            Optional<can> $$7 = can.a($$6, $$3, $$2);
-            if ($$7.isEmpty()) {
-               return bjb.b;
-            }
+   default int e_(cmh $$0) {
+      sj $$1 = $$0.b("display");
+      return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
+   }
 
-            $$8 = $$7.get();
-         } else if (this.b == bkz.af) {
-            $$8 = new cal($$6, $$3, $$2);
-         } else {
-            if (this.b != bkz.S) {
-               return bjb.a($$6.B);
-            }
-
-            $$8 = new caj($$6, $$3, $$2);
-         }
-
-         sd $$12 = $$5.v();
-         if ($$12 != null) {
-            bkz.a($$6, $$4, $$8, $$12);
-         }
-
-         if ($$8.A()) {
-            if (!$$6.B) {
-               $$8.D();
-               $$6.a($$4, dlx.t, $$8.dl());
-               $$6.b($$8);
-            }
-
-            $$5.h(1);
-            return bjb.a($$6.B);
-         } else {
-            return bjb.b;
-         }
+   default void f_(cmh $$0) {
+      sj $$1 = $$0.b("display");
+      if ($$1 != null && $$1.e("color")) {
+         $$1.r("color");
       }
    }
 
-   protected boolean a(cdz $$0, ib $$1, clo $$2, hx $$3) {
-      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   default void a(cmh $$0, int $$1) {
+      $$0.a("display").a("color", $$1);
    }
 
-   @Override
-   public void a(clo $$0, @Nullable csf $$1, List<uv> $$2, cnf $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.b == bkz.ar) {
-         sd $$4 = $$0.v();
-         if ($$4 != null && $$4.b("EntityTag", 10)) {
-            sd $$5 = $$4.p("EntityTag");
-            can.c($$5).ifPresentOrElse($$1x -> {
-               $$1x.e().ifPresent($$1xx -> {
-                  $$2.add(uv.c($$1xx.a().b("painting", "title")).a(n.o));
-                  $$2.add(uv.c($$1xx.a().b("painting", "author")).a(n.h));
-               });
-               $$2.add(uv.a("painting.dimensions", atq.e(((cao)$$1x.a()).a(), 16), atq.e(((cao)$$1x.a()).b(), 16)));
-            }, () -> $$2.add(a));
-         } else if ($$3.b()) {
-            $$2.add(a);
+   static cmh a(cmh $$0, List<ckw> $$1) {
+      cmh $$2 = cmh.f;
+      int[] $$3 = new int[3];
+      int $$4 = 0;
+      int $$5 = 0;
+      ckz $$6 = null;
+      cmc $$7 = $$0.d();
+      if ($$7 instanceof ckz) {
+         $$6 = (ckz)$$7;
+         $$2 = $$0.c(1);
+         if ($$6.a($$0)) {
+            int $$8 = $$6.e_($$2);
+            float $$9 = (float)($$8 >> 16 & 0xFF) / 255.0F;
+            float $$10 = (float)($$8 >> 8 & 0xFF) / 255.0F;
+            float $$11 = (float)($$8 & 0xFF) / 255.0F;
+            $$4 += (int)(Math.max($$9, Math.max($$10, $$11)) * 255.0F);
+            $$3[0] += (int)($$9 * 255.0F);
+            $$3[1] += (int)($$10 * 255.0F);
+            $$3[2] += (int)($$11 * 255.0F);
+            $$5++;
          }
+
+         for (ckw $$12 : $$1) {
+            float[] $$13 = $$12.d().d();
+            int $$14 = (int)($$13[0] * 255.0F);
+            int $$15 = (int)($$13[1] * 255.0F);
+            int $$16 = (int)($$13[2] * 255.0F);
+            $$4 += Math.max($$14, Math.max($$15, $$16));
+            $$3[0] += $$14;
+            $$3[1] += $$15;
+            $$3[2] += $$16;
+            $$5++;
+         }
+      }
+
+      if ($$6 == null) {
+         return cmh.f;
+      } else {
+         int $$17 = $$3[0] / $$5;
+         int $$18 = $$3[1] / $$5;
+         int $$19 = $$3[2] / $$5;
+         float $$20 = (float)$$4 / (float)$$5;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int var26 = ($$17 << 8) + $$18;
+         var26 = (var26 << 8) + $$19;
+         $$6.a($$2, var26);
+         return $$2;
       }
    }
 }

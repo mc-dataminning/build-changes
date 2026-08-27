@@ -1,35 +1,23 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cnt(agm c, ig<clj> d, uv e, boolean f) {
-   public static final Codec<cnt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               agm.a.fieldOf("asset_id").forGetter(cnt::a),
-               agj.a(kd.E).fieldOf("template_item").forGetter(cnt::b),
-               ux.a.fieldOf("description").forGetter(cnt::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cnt::d)
-            )
-            .apply($$0, cnt::new)
-   );
-   public static final Codec<ig<cnt>> b = agi.a(kd.aG, a);
-
-   public uv a(ig<cnr> $$0) {
-      return this.e.f().c($$0.a().e().a());
+public class cnt extends cmw {
+   public cnt(cmc.a $$0) {
+      super($$0);
    }
 
-   public agm a() {
-      return this.c;
-   }
+   @Override
+   public bjm<cmh> a(csy $$0, cer $$1, bjk $$2) {
+      cmh $$3 = $$1.b($$2);
+      if (!$$0.B) {
+         cfu $$4 = new cfu($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), -20.0F, 0.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   public ig<clj> b() {
-      return this.d;
-   }
+      $$1.b(arm.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
+      }
 
-   public uv c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
+      return bjm.a($$3, $$0.y_());
    }
 }

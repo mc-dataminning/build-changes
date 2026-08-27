@@ -1,11 +1,11 @@
-public class cqn extends cpz {
-   public cqn(cpz.a $$0, bla... $$1) {
-      super($$0, cqa.m, $$1);
+public class cqn extends cqs {
+   public cqn(cqs.a $$0, blk... $$1) {
+      super($$0, cqt.m, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 12 + ($$0 - 1) * 20;
+      return 1 + ($$0 - 1) * 10;
    }
 
    @Override
@@ -15,6 +15,11 @@ public class cqn extends cpz {
 
    @Override
    public int a() {
-      return 3;
+      return 4;
+   }
+
+   @Override
+   public boolean a(cqs $$0) {
+      return super.a($$0) && $$0 != cqw.I;
    }
 }

@@ -1,245 +1,180 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 
-public abstract class fxd<T extends bll, M extends fhu<T>> extends fwb<T> implements fxx<T, M> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final float h = 0.1F;
-   protected M f;
-   protected final List<gak<T, M>> g = Lists.newArrayList();
+public abstract class fxd<T extends ble, S> extends fxn<T> {
+   private final fxm a;
 
-   public fxd(fwc.a $$0, M $$1, float $$2) {
+   protected fxd(fxo.a $$0) {
       super($$0);
-      this.f = $$1;
-      this.d = $$2;
+      this.a = $$0.a();
    }
 
-   protected final boolean a(gak<T, M> $$0) {
-      return this.g.add($$0);
+   public agt a(T $$0) {
+      return gdn.e;
    }
 
-   @Override
-   public M a() {
-      return this.f;
+   public void a(T $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
+      ble.k $$6 = $$0.q();
+      if ($$6 != null) {
+         S $$7 = this.b($$0);
+         if ($$7 != null) {
+            float $$8 = $$0.a($$2);
+            this.d = $$6.d().get($$8);
+            this.e = $$6.e().get($$8);
+            int $$9 = $$6.c();
+            int $$10 = $$9 != -1 ? $$9 : $$5;
+            super.a($$0, $$1, $$2, $$3, $$4, $$10);
+            $$3.a();
+            $$3.a(this.a($$6, $$0, $$2, new Quaternionf()));
+            j $$11 = $$6.a().get($$8);
+            $$3.a($$11.c());
+            $$3.c().b().rotate($$11.e()).rotate($$11.g());
+            this.a($$0, $$7, $$3, $$4, $$10, $$8);
+            $$3.b();
+         }
+      }
    }
 
-   public void a(T $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
-      $$3.a();
-      this.f.c = this.d($$0, $$2);
-      this.f.d = $$0.bO();
-      this.f.e = $$0.o_();
-      float $$6 = atq.j($$2, $$0.aV, $$0.aU);
-      float $$7 = atq.j($$2, $$0.aX, $$0.aW);
-      float $$8 = $$7 - $$6;
-      if ($$0.bO() && $$0.da() instanceof bll $$9) {
-         $$6 = atq.j($$2, $$9.aV, $$9.aU);
-         $$8 = $$7 - $$6;
-         float $$10 = atq.g($$8);
-         if ($$10 < -85.0F) {
-            $$10 = -85.0F;
-         }
+   private Quaternionf a(ble.k $$0, T $$1, float $$2, Quaternionf $$3) {
+      etv $$4 = this.a.b;
 
-         if ($$10 >= 85.0F) {
-            $$10 = 85.0F;
-         }
+      return switch ($$0.b()) {
+         case a -> $$3.rotationYXZ((float) (-Math.PI / 180.0) * a($$1, $$2), (float) (Math.PI / 180.0) * b($$1, $$2), 0.0F);
+         case c -> $$3.rotationYXZ((float) (-Math.PI / 180.0) * a($$1, $$2), (float) (Math.PI / 180.0) * b($$4), 0.0F);
+         case b -> $$3.rotationYXZ((float) (-Math.PI / 180.0) * a($$4), (float) (Math.PI / 180.0) * b($$1, $$2), 0.0F);
+         case d -> $$3.rotationYXZ((float) (-Math.PI / 180.0) * a($$4), (float) (Math.PI / 180.0) * b($$4), 0.0F);
+      };
+   }
 
-         $$6 = $$7 - $$10;
-         if ($$10 * $$10 > 2500.0F) {
-            $$6 += $$10 * 0.2F;
-         }
+   private static float a(etv $$0) {
+      return $$0.e() - 180.0F;
+   }
 
-         $$8 = $$7 - $$6;
-      }
+   private static float b(etv $$0) {
+      return -$$0.d();
+   }
 
-      float $$11 = atq.i($$2, $$0.O, $$0.dF());
-      if (e($$0)) {
-         $$11 *= -1.0F;
-         $$8 *= -1.0F;
-      }
+   private static <T extends ble> float a(T $$0, float $$1) {
+      return aty.j($$1, $$0.N, $$0.dC());
+   }
 
-      if ($$0.c(blx.c)) {
-         ib $$12 = $$0.fG();
-         if ($$12 != null) {
-            float $$13 = $$0.d(blx.a) - 0.1F;
-            $$3.a((float)(-$$12.j()) * $$13, 0.0F, (float)(-$$12.l()) * $$13);
-         }
-      }
-
-      float $$14 = this.a($$0, $$2);
-      this.a($$0, $$3, $$14, $$6, $$2);
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.a($$0, $$3, $$2);
-      $$3.a(0.0F, -1.501F, 0.0F);
-      float $$15 = 0.0F;
-      float $$16 = 0.0F;
-      if (!$$0.bO() && $$0.bx()) {
-         $$15 = $$0.aQ.b($$2);
-         $$16 = $$0.aQ.c($$2);
-         if ($$0.o_()) {
-            $$16 *= 3.0F;
-         }
-
-         if ($$15 > 1.0F) {
-            $$15 = 1.0F;
-         }
-      }
-
-      this.f.a($$0, $$16, $$15, $$2);
-      this.f.a($$0, $$16, $$15, $$14, $$8, $$11);
-      eti $$17 = eti.N();
-      boolean $$18 = this.d($$0);
-      boolean $$19 = !$$18 && !$$0.d($$17.s);
-      boolean $$20 = $$17.b($$0);
-      frh $$21 = this.a($$0, $$18, $$19, $$20);
-      if ($$21 != null) {
-         eof $$22 = $$4.getBuffer($$21);
-         int $$23 = c($$0, this.b($$0, $$2));
-         this.f.a($$3, $$22, $$5, $$23, 1.0F, 1.0F, 1.0F, $$19 ? 0.15F : 1.0F);
-      }
-
-      if (!$$0.P_()) {
-         for (gak<T, M> $$24 : this.g) {
-            $$24.a($$3, $$4, $$5, $$0, $$16, $$15, $$2, $$14, $$8, $$11);
-         }
-      }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private static <T extends ble> float b(T $$0, float $$1) {
+      return aty.i($$1, $$0.O, $$0.dE());
    }
 
    @Nullable
-   protected frh a(T $$0, boolean $$1, boolean $$2, boolean $$3) {
-      agm $$4 = this.a($$0);
-      if ($$2) {
-         return frh.g($$4);
-      } else if ($$1) {
-         return this.f.a($$4);
-      } else {
-         return $$3 ? frh.q($$4) : null;
+   protected abstract S b(T var1);
+
+   protected abstract void a(T var1, S var2, epd var3, fsi var4, int var5, float var6);
+
+   public static class a extends fxd<ble.b, ble.b.a> {
+      private final ftc a;
+
+      protected a(fxo.a $$0) {
+         super($$0);
+         this.a = $$0.c();
+      }
+
+      @Nullable
+      protected ble.b.a a(ble.b $$0) {
+         return $$0.s();
+      }
+
+      public void a(ble.b $$0, ble.b.a $$1, epd $$2, fsi $$3, int $$4, float $$5) {
+         this.a.a($$1.a(), $$2, $$3, $$4, gdf.d);
       }
    }
 
-   public static int c(bll $$0, float $$1) {
-      return gbq.a(gbq.a($$1), gbq.a($$0.aK > 0 || $$0.aM > 0));
-   }
+   public static class b extends fxd<ble.g, ble.g.a> {
+      private final fym a;
 
-   protected boolean d(T $$0) {
-      return !$$0.ce();
-   }
+      protected b(fxo.a $$0) {
+         super($$0);
+         this.a = $$0.b();
+      }
 
-   private static float a(ib $$0) {
-      switch ($$0) {
-         case d:
-            return 90.0F;
-         case e:
-            return 0.0F;
-         case c:
-            return 270.0F;
-         case f:
-            return 180.0F;
-         default:
-            return 0.0F;
+      @Nullable
+      protected ble.g.a a(ble.g $$0) {
+         return $$0.s();
+      }
+
+      public void a(ble.g $$0, ble.g.a $$1, epd $$2, fsi $$3, int $$4, float $$5) {
+         $$2.a(a.d.rotation((float) Math.PI));
+         this.a.a($$1.a(), $$1.b(), $$4, gdf.d, $$2, $$3, $$0.dM(), $$0.aj());
       }
    }
 
-   protected boolean a(T $$0) {
-      return $$0.cl();
-   }
+   public static class c extends fxd<ble.l, ble.l.e> {
+      private final evu a;
 
-   protected void a(T $$0, eob $$1, float $$2, float $$3, float $$4) {
-      if (this.a($$0)) {
-         $$3 += (float)(Math.cos((double)$$0.ah * 3.25) * Math.PI * 0.4F);
+      protected c(fxo.a $$0) {
+         super($$0);
+         this.a = $$0.h();
       }
 
-      if (!$$0.c(blx.c)) {
-         $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      }
+      private ble.l.b a(vb $$0, int $$1) {
+         List<atk> $$2 = this.a.c($$0, $$1);
+         List<ble.l.c> $$3 = new ArrayList<>($$2.size());
+         int $$4 = 0;
 
-      if ($$0.aM > 0) {
-         float $$5 = ((float)$$0.aM + $$4 - 1.0F) / 20.0F * 1.6F;
-         $$5 = atq.c($$5);
-         if ($$5 > 1.0F) {
-            $$5 = 1.0F;
+         for (atk $$5 : $$2) {
+            int $$6 = this.a.a($$5);
+            $$4 = Math.max($$4, $$6);
+            $$3.add(new ble.l.c($$5, $$6));
          }
 
-         $$1.a(a.f.rotationDegrees($$5 * this.c($$0)));
-      } else if ($$0.fk()) {
-         $$1.a(a.b.rotationDegrees(-90.0F - $$0.dF()));
-         $$1.a(a.d.rotationDegrees(((float)$$0.ah + $$4) * -75.0F));
-      } else if ($$0.c(blx.c)) {
-         ib $$6 = $$0.fG();
-         float $$7 = $$6 != null ? a($$6) : $$3;
-         $$1.a(a.d.rotationDegrees($$7));
-         $$1.a(a.f.rotationDegrees(this.c($$0)));
-         $$1.a(a.d.rotationDegrees(270.0F));
-      } else if (e($$0)) {
-         $$1.a(0.0F, $$0.di() + 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(180.0F));
+         return new ble.l.b($$3, $$4);
       }
-   }
 
-   protected float d(T $$0, float $$1) {
-      return $$0.x($$1);
-   }
+      @Nullable
+      protected ble.l.e a(ble.l $$0) {
+         return $$0.s();
+      }
 
-   protected float a(T $$0, float $$1) {
-      return (float)$$0.ah + $$1;
-   }
-
-   protected float c(T $$0) {
-      return 90.0F;
-   }
-
-   protected float b(T $$0, float $$1) {
-      return 0.0F;
-   }
-
-   protected void a(T $$0, eob $$1, float $$2) {
-   }
-
-   protected boolean b(T $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.bV() ? 32.0F : 64.0F;
-      if ($$1 >= (double)($$2 * $$2)) {
-         return false;
-      } else {
-         eti $$3 = eti.N();
-         fqb $$4 = $$3.s;
-         boolean $$5 = !$$0.d($$4);
-         if ($$0 != $$4) {
-            ela $$6 = $$0.cg();
-            ela $$7 = $$4.cg();
-            if ($$6 != null) {
-               ela.b $$8 = $$6.j();
-               switch ($$8) {
-                  case a:
-                     return $$5;
-                  case b:
-                     return false;
-                  case c:
-                     return $$7 == null ? $$5 : $$6.a($$7) && ($$6.i() || $$5);
-                  case d:
-                     return $$7 == null ? $$5 : !$$6.a($$7) && $$5;
-                  default:
-                     return true;
-               }
-            }
+      public void a(ble.l $$0, ble.l.e $$1, epd $$2, fsi $$3, int $$4, float $$5) {
+         byte $$6 = $$1.e();
+         boolean $$7 = ($$6 & 2) != 0;
+         boolean $$8 = ($$6 & 4) != 0;
+         boolean $$9 = ($$6 & 1) != 0;
+         ble.l.a $$10 = ble.l.a($$6);
+         byte $$11 = (byte)$$1.c().get($$5);
+         int $$13;
+         if ($$8) {
+            float $$12 = euk.N().m.a(0.25F);
+            $$13 = (int)($$12 * 255.0F) << 24;
+         } else {
+            $$13 = $$1.d().get($$5);
          }
 
-         return eti.J() && $$0 != $$3.al() && $$5 && !$$0.bP();
-      }
-   }
+         float $$15 = 0.0F;
+         Matrix4f $$16 = $$2.c().a();
+         $$16.rotate((float) Math.PI, 0.0F, 1.0F, 0.0F);
+         $$16.scale(-0.025F, -0.025F, -0.025F);
+         ble.l.b $$17 = $$0.a(this::a);
+         int $$18 = 9 + 1;
+         int $$19 = $$17.b();
+         int $$20 = $$17.a().size() * $$18;
+         $$16.translate(1.0F - (float)$$19 / 2.0F, (float)(-$$20), 0.0F);
+         if ($$13 != 0) {
+            eph $$21 = $$3.getBuffer($$7 ? fsq.r() : fsq.q());
+            $$21.a($$16, -1.0F, -1.0F, 0.0F).a($$13).b($$4).e();
+            $$21.a($$16, -1.0F, (float)$$20, 0.0F).a($$13).b($$4).e();
+            $$21.a($$16, (float)$$19, (float)$$20, 0.0F).a($$13).b($$4).e();
+            $$21.a($$16, (float)$$19, -1.0F, 0.0F).a($$13).b($$4).e();
+         }
 
-   public static boolean e(bll $$0) {
-      if ($$0 instanceof cdz || $$0.ae()) {
-         String $$1 = n.a($$0.ad().getString());
-         if ("Dinnerbone".equals($$1) || "Grumm".equals($$1)) {
-            return !($$0 instanceof cdz) || ((cdz)$$0).a(cea.a);
+         for (ble.l.c $$22 : $$17.a()) {
+            float $$23 = switch ($$10) {
+               case b -> 0.0F;
+               case c -> (float)($$19 - $$22.b());
+               case a -> (float)$$19 / 2.0F - (float)$$22.b() / 2.0F;
+            };
+            this.a.a($$22.a(), $$23, $$15, $$11 << 24 | 16777215, $$9, $$16, $$3, $$7 ? evu.a.b : evu.a.c, 0, $$4);
+            $$15 += (float)$$18;
          }
       }
-
-      return false;
    }
 }

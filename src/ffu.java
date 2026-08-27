@@ -1,32 +1,116 @@
-import java.util.Map;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Set;
 
-public interface ffu {
-   Map<Optional<agl<dxb>>, ffu> a = Map.of(Optional.of(dxc.b), ($$0, $$1) -> {
-      djk $$2 = $$1.d().a();
-      it $$3 = $$1.a();
-      ih<ctd> $$4 = $$3.b(kd.ar);
-      ih<dxs> $$5 = $$3.b(kd.aD);
-      ih<dwq> $$6 = $$3.b(kd.aA);
-      return new ezv($$0, $$1x -> $$0.l().a(a($$1x)), $$2 instanceof dmr ? ((dmr)$$2).g() : dvp.a($$4, $$5, $$6));
-   }, Optional.of(dxc.e), ($$0, $$1) -> new ezu($$0, $$1, $$1x -> $$0.l().a(a($$1x))));
+public class ffu {
+   private final is a;
+   private final List<cpn<?>> b;
+   private final boolean c;
+   private final Set<cpn<?>> d = Sets.newHashSet();
+   private final Set<cpn<?>> e = Sets.newHashSet();
+   private final Set<cpn<?>> f = Sets.newHashSet();
 
-   faz createEditScreen(ffp var1, ffx var2);
-
-   private static ffx.a a(dvp $$0) {
-      return ($$1, $$2) -> {
-         djk $$3 = new dmr($$0);
-         return $$2.a($$1, $$3);
-      };
+   public ffu(is $$0, List<cpn<?>> $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      if ($$1.size() <= 1) {
+         this.c = true;
+      } else {
+         this.c = a($$0, $$1);
+      }
    }
 
-   private static ffx.a a(ig<ctd> $$0) {
-      return ($$1, $$2) -> {
-         is<dnb> $$3 = $$1.d(kd.ay);
-         ig<dnb> $$4 = $$3.f(dnb.c);
-         cth $$5 = new cto($$0);
-         djk $$6 = new dmz($$5, $$4);
-         return $$2.a($$1, $$6);
-      };
+   private static boolean a(is $$0, List<cpn<?>> $$1) {
+      int $$2 = $$1.size();
+      cmh $$3 = $$1.get(0).b().a($$0);
+
+      for (int $$4 = 1; $$4 < $$2; $$4++) {
+         cmh $$5 = $$1.get($$4).b().a($$0);
+         if (!cmh.c($$3, $$5)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public is a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return !this.f.isEmpty();
+   }
+
+   public void a(arf $$0) {
+      for (cpn<?> $$1 : this.b) {
+         if ($$0.b($$1)) {
+            this.f.add($$1);
+         }
+      }
+   }
+
+   public void a(cev $$0, int $$1, int $$2, arf $$3) {
+      for (cpn<?> $$4 : this.b) {
+         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
+         if ($$5) {
+            this.e.add($$4);
+         } else {
+            this.e.remove($$4);
+         }
+
+         if ($$5 && $$0.a($$4.b(), null)) {
+            this.d.add($$4);
+         } else {
+            this.d.remove($$4);
+         }
+      }
+   }
+
+   public boolean a(cpn<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean c() {
+      return !this.d.isEmpty();
+   }
+
+   public boolean d() {
+      return !this.e.isEmpty();
+   }
+
+   public List<cpn<?>> e() {
+      return this.b;
+   }
+
+   public List<cpn<?>> a(boolean $$0) {
+      List<cpn<?>> $$1 = Lists.newArrayList();
+      Set<cpn<?>> $$2 = $$0 ? this.d : this.e;
+
+      for (cpn<?> $$3 : this.b) {
+         if ($$2.contains($$3)) {
+            $$1.add($$3);
+         }
+      }
+
+      return $$1;
+   }
+
+   public List<cpn<?>> b(boolean $$0) {
+      List<cpn<?>> $$1 = Lists.newArrayList();
+
+      for (cpn<?> $$2 : this.b) {
+         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public boolean f() {
+      return this.c;
    }
 }

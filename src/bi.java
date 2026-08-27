@@ -1,52 +1,54 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bi extends cw<bi.a> {
-   public bi.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<cj> $$3 = cj.a($$0.get("start_position"));
-      Optional<bh> $$4 = bh.a($$0.get("distance"));
-      return new bi.a($$1, $$3, $$4);
+public class bi extends cv<bi.a> {
+   @Override
+   public Codec<bi.a> a() {
+      return bi.a.a;
    }
 
-   public void a(amj $$0, ejz $$1) {
-      ejz $$2 = $$0.dl();
-      this.a($$0, $$3 -> $$3.a($$0.z(), $$1, $$2));
+   public void a(amq $$0, @Nullable blf $$1) {
+      ege $$2 = $$1 != null ? bp.b($$0, $$1) : null;
+      this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
-   public static class a extends at {
-      private final Optional<cj> a;
-      private final Optional<bh> b;
+   public static record a(Optional<bb> b, Optional<cl> c, Optional<bb> d) implements cv.a {
+      public static final Codec<bi.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(bi.a::a), atg.a(cl.a, "effects").forGetter(bi.a::b), atg.a(bp.b, "source").forGetter(bi.a::c))
+               .apply($$0, bi.a::new)
+      );
 
-      public a(Optional<bc> $$0, Optional<cj> $$1, Optional<bh> $$2) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
+      public static an<bi.a> a(cl.a $$0) {
+         return am.B.a(new bi.a(Optional.empty(), $$0.b(), Optional.empty()));
       }
 
-      public static am<bi.a> a(bq.a $$0, bh $$1, cj.a $$2) {
-         return al.U.a(new bi.a(Optional.of(bq.a($$0)), Optional.of($$2.b()), Optional.of($$1)));
+      public static an<bi.a> a(bp.a $$0) {
+         return am.B.a(new bi.a(Optional.empty(), Optional.empty(), Optional.of(bp.a($$0.b()))));
       }
 
-      public static am<bi.a> a(bq.a $$0, bh $$1) {
-         return al.V.a(new bi.a(Optional.of(bq.a($$0)), Optional.empty(), Optional.of($$1)));
-      }
-
-      public static am<bi.a> a(bh $$0) {
-         return al.C.a(new bi.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
+      public boolean a(amq $$0, @Nullable ege $$1) {
+         return this.c.isPresent() && !this.c.get().a((blv)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("start_position", $$1.a()));
-         this.b.ifPresent($$1 -> $$0.add("distance", $$1.a()));
-         return $$0;
+      public void a(bc $$0) {
+         cv.a.super.a($$0);
+         $$0.a(this.d, ".source");
       }
 
-      public boolean a(ami $$0, ejz $$1, ejz $$2) {
-         return this.a.isPresent() && !this.a.get().a($$0, $$1.c, $$1.d, $$1.e)
-            ? false
-            : !this.b.isPresent() || this.b.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);
+      @Override
+      public Optional<bb> a() {
+         return this.b;
+      }
+
+      public Optional<cl> b() {
+         return this.c;
+      }
+
+      public Optional<bb> c() {
+         return this.d;
       }
    }
 }

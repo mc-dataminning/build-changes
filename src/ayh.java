@@ -2,34 +2,21 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.List;
 
-public class ayh extends azx {
-   private static final int a = 6;
-   private static final atw b = atw.a();
-
-   public ayh(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityZombieVillagerTypeFix", bax.x, "Zombie");
+public class ayh extends bag {
+   public ayh(Schema $$0) {
+      super($$0, false, "EntityShulkerRotationFix", bbg.x, "minecraft:shulker");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("IsVillager").asBoolean(false)) {
-         if ($$0.get("ZombieType").result().isEmpty()) {
-            int $$1 = this.a($$0.get("VillagerProfession").asInt(-1));
-            if ($$1 == -1) {
-               $$1 = this.a(b.a(6));
-            }
-
-            $$0 = $$0.set("ZombieType", $$0.createInt($$1));
-         }
-
-         $$0 = $$0.remove("IsVillager");
+      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
+      if (!$$1.isEmpty()) {
+         $$1.set(0, $$1.get(0) - 180.0);
+         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
+      } else {
+         return $$0;
       }
-
-      return $$0;
-   }
-
-   private int a(int $$0) {
-      return $$0 >= 0 && $$0 < 6 ? $$0 : -1;
    }
 
    @Override

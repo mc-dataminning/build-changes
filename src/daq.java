@@ -1,33 +1,41 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class daq extends ded {
-   public static final MapCodec<daq> b = b(daq::new);
-   private static final Map<ib, eks> e = Maps.immutableEnumMap(
-      Map.of(
-         ib.c,
-         cvf.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         ib.d,
-         cvf.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         ib.f,
-         cvf.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         ib.e,
-         cvf.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
-   );
+public class daq extends czu {
+   public static final MapCodec<daq> a = b(daq::new);
+   private static final vb b = vb.c("container.loom");
 
    @Override
    public MapCodec<daq> a() {
-      return b;
+      return a;
    }
 
-   public daq(dhm.d $$0) {
-      super(dcg.b.h, $$0);
+   protected daq(dio.d $$0) {
+      super($$0);
    }
 
    @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return e.get($$0.c(d));
+   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
+      if ($$1.B) {
+         return bjl.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(arm.ax);
+         return bjl.b;
+      }
+   }
+
+   @Override
+   public bjo b(dip $$0, csy $$1, hv $$2) {
+      return new bju(($$2x, $$3, $$4) -> new cip($$2x, $$3, chv.a($$1, $$2)), b);
+   }
+
+   @Override
+   public dip a(coq $$0) {
+      return this.o().a(aE, $$0.g().g());
+   }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(aE);
    }
 }

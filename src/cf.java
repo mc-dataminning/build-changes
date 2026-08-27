@@ -1,41 +1,31 @@
-import com.google.gson.JsonObject;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cf extends cw<cf.a> {
-   public cf.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<bh> $$3 = bh.a($$0.get("distance"));
-      cl.d $$4 = cl.d.a($$0.get("duration"));
-      return new cf.a($$1, $$3, $$4);
+public record cf(ck.d b) {
+   public static final Codec<cf> a = RecordCodecBuilder.create($$0 -> $$0.group(atg.a(ck.d.d, "light", ck.d.c).forGetter(cf::a)).apply($$0, cf::new));
+
+   public boolean a(amp $$0, hv $$1) {
+      return !$$0.o($$1) ? false : this.b.d($$0.z($$1));
    }
 
-   public void a(amj $$0, ejz $$1, int $$2) {
-      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
+   public ck.d a() {
+      return this.b;
    }
 
-   public static class a extends at {
-      private final Optional<bh> a;
-      private final cl.d b;
+   public static class a {
+      private ck.d a = ck.d.c;
 
-      public a(Optional<bc> $$0, Optional<bh> $$1, cl.d $$2) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
+      public static cf.a a() {
+         return new cf.a();
       }
 
-      public static am<cf.a> a(bh $$0) {
-         return al.u.a(new cf.a(Optional.empty(), Optional.of($$0), cl.d.c));
+      public cf.a a(ck.d $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      public boolean a(amj $$0, ejz $$1, int $$2) {
-         return this.a.isPresent() && !this.a.get().a($$1.c, $$1.d, $$1.e, $$0.ds(), $$0.du(), $$0.dy()) ? false : this.b.d($$2);
-      }
-
-      @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("distance", $$1.a()));
-         $$0.add("duration", this.b.e());
-         return $$0;
+      public cf b() {
+         return new cf(this.a);
       }
    }
 }

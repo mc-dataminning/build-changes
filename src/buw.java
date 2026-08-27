@@ -1,43 +1,59 @@
-public class buw extends buu {
-   private boolean p;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   public buw(bln $$0, csf $$1) {
-      super($$0, $$1);
+public class buw<T> {
+   private final T a;
+   private long b;
+
+   public buw(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public void a() {
+      if (this.e()) {
+         this.b--;
+      }
+   }
+
+   public static <T> buw<T> a(T $$0) {
+      return new buw<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> buw<T> a(T $$0, long $$1) {
+      return new buw<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
    }
 
    @Override
-   protected edo a(int $$0) {
-      this.p = this.a.ai() == bkz.v;
-      this.o = new edp(this.p);
-      return new edo(this.o, $$0);
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
    }
 
-   @Override
-   protected boolean a() {
-      return this.p || this.a.bd();
+   @avd
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
    }
 
-   @Override
-   protected ejz b() {
-      return new ejz(this.a.ds(), this.a.e(0.5), this.a.dy());
-   }
-
-   @Override
-   protected double a(ejz $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(ejz $$0, ejz $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
-
-   @Override
-   public boolean a(hx $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public static <T> Codec<buw<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new buw<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

@@ -1,26 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class drq extends dqa<dsl> {
-   public drq(Codec<dsl> $$0) {
+public class drq extends drc<dtn> {
+   public drq(Codec<dtn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dqc<dsl> $$0) {
-      csz $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      $$0.f();
-      if (!$$1.t($$2)) {
-         return false;
-      } else {
-         for (ib $$3 : ib.values()) {
-            if ($$3 != ib.a && ddy.a($$1, $$2.a($$3), $$3)) {
-               $$1.a($$2, cvh.ff.o().a(ddy.a($$3), Boolean.valueOf(true)), 2);
-               return true;
-            }
-         }
+   public boolean a(dre<dtn> $$0) {
+      int $$1 = 0;
+      ctt $$2 = $$0.b();
+      hv $$3 = $$0.e();
+      auf $$4 = $$0.d();
+      int $$5 = $$2.a(dny.a.d, $$3.u(), $$3.w());
+      hv $$6 = new hv($$3.u(), $$5, $$3.w());
+      if ($$2.a_($$6).a(cwb.G)) {
+         dip $$7 = cwb.mc.o();
+         dip $$8 = cwb.md.o();
+         int $$9 = 1 + $$4.a(10);
 
-         return false;
+         for (int $$10 = 0; $$10 <= $$9; $$10++) {
+            if ($$2.a_($$6).a(cwb.G) && $$2.a_($$6.c()).a(cwb.G) && $$8.a($$2, $$6)) {
+               if ($$10 == $$9) {
+                  $$2.a($$6, $$7.a(dac.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               } else {
+                  $$2.a($$6, $$8, 2);
+               }
+            } else if ($$10 > 0) {
+               hv $$11 = $$6.d();
+               if ($$7.a($$2, $$11) && !$$2.a_($$11.d()).a(cwb.mc)) {
+                  $$2.a($$11, $$7.a(dac.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               }
+               break;
+            }
+
+            $$6 = $$6.c();
+         }
       }
+
+      return $$1 > 0;
    }
 }

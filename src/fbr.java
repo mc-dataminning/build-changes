@@ -1,31 +1,59 @@
-public class fbr extends far {
-   private static final int c = 24;
+public class fbr extends fcc {
+   private static final vb a = vb.c("symlink_warning.title.world").a(n.r);
+   private static final vb b = vb.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
+   private static final vb c = vb.c("symlink_warning.title.pack").a(n.r);
+   private static final vb k = vb.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+   private final vb l;
+   private final String m;
+   private final Runnable n;
+   private final ezq o = new ezq().b(10);
 
-   public fbr(faz $$0, etm $$1) {
-      super($$0, $$1, uv.c("controls.title"));
+   public fbr(vb $$0, vb $$1, String $$2, Runnable $$3) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+   }
+
+   public static fcc a(Runnable $$0) {
+      return new fbr(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
+   }
+
+   public static fcc b(Runnable $$0) {
+      return new fbr(c, k, "https://aka.ms/MinecraftSymLinks", $$0);
    }
 
    @Override
-   protected void aQ_() {
-      super.aQ_();
-      int $$0 = this.g / 2 - 155;
-      int $$1 = $$0 + 160;
-      int $$2 = this.h / 6 - 12;
-      this.d(eve.a(uv.c("options.mouse_settings"), $$0x -> this.f.a(new fan(this, this.b))).a($$0, $$2, 150, 20).a());
-      this.d(eve.a(uv.c("controls.keybinds"), $$0x -> this.f.a(new fbt(this, this.b))).a($$1, $$2, 150, 20).a());
-      $$2 += 24;
-      this.d(this.b.Z().a(this.b, $$0, $$2, 150));
-      this.d(this.b.aa().a(this.b, $$1, $$2, 150));
-      $$2 += 24;
-      this.d(this.b.F().a(this.b, $$0, $$2, 150));
-      this.d(this.b.G().a(this.b, $$1, $$2, 150));
-      $$2 += 24;
-      this.d(eve.a(uu.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, $$2, 200, 20).a());
+   protected void aP_() {
+      super.aP_();
+      this.o.c().b();
+      ezq.b $$0 = this.o.d(1);
+      $$0.a(new exo(this.e, this.i));
+      $$0.a(new exb(this.l, this.i).j(this.g - 50).b(true));
+      int $$1 = 120;
+      ezq $$2 = new ezq().a(5);
+      ezq.b $$3 = $$2.d(3);
+      $$3.a(ewh.a(va.n, $$0x -> ac.i().a(this.m)).b(120, 20).a());
+      $$3.a(ewh.a(va.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
+      $$3.a(ewh.a(va.k, $$0x -> this.aF_()).b(120, 20).a());
+      $$0.a($$2);
+      this.c();
+      this.o.a(this::d);
    }
 
    @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
+   protected void c() {
+      this.o.a();
+      ezp.a(this.o, this.s());
+   }
+
+   @Override
+   public vb h() {
+      return va.a(super.h(), this.l);
+   }
+
+   @Override
+   public void aF_() {
+      this.n.run();
    }
 }

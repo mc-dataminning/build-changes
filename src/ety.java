@@ -1,37 +1,33 @@
-import org.joml.Vector3f;
+import com.mojang.serialization.Codec;
 
-public record ety(ety.c a, eua... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, eua[] var3, int var4, int var5, float var6);
+public enum ety implements aua, aut {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
+
+   public static final Codec<ety> d = aut.a(ety::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private ety(int $$0, String $$1, String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static class b {
-      public static final ety.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
-      };
-      public static final ety.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            atq.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            atq.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            atq.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
+   @Override
+   public String c() {
+      return this.f;
    }
 
-   public interface c {
-      void apply(fkt var1, Vector3f var2);
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public static class d {
-      public static final ety.c a = fkt::a;
-      public static final ety.c b = fkt::b;
-      public static final ety.c c = fkt::c;
+   @Override
+   public String b() {
+      return this.g;
    }
 }

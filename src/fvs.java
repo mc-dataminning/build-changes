@@ -1,12 +1,29 @@
-public class fvs extends fxi<bxe, fhp<bxe>> {
-   private static final agm a = new agm("textures/entity/dolphin.png");
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-   public fvs(fwc.a $$0) {
-      super($$0, new fhp<>($$0.a(fks.G)), 0.7F);
-      this.a(new fzr(this, $$0.d()));
+public class fvs implements fvt.a {
+   private final euk a;
+   private double b = Double.MIN_VALUE;
+   private List<elu> c = Collections.emptyList();
+
+   public fvs(euk $$0) {
+      this.a = $$0;
    }
 
-   public agm a(bxe $$0) {
-      return a;
+   @Override
+   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         blf $$6 = this.a.j.m().g();
+         this.c = ImmutableList.copyOf($$6.dM().d($$6, $$6.cH().g(6.0)));
+      }
+
+      eph $$7 = $$1.getBuffer(fsq.w());
+
+      for (elu $$8 : this.c) {
+         fsg.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      }
    }
 }

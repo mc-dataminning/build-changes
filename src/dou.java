@@ -1,31 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dou extends dso {
-   public static final MapCodec<dou> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
-               dvt.c.fieldOf("y").forGetter($$0x -> $$0x.e),
-               bie.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
-               dnq.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
-               dov.b.optionalFieldOf("debug_settings", dov.a).forGetter($$0x -> $$0x.h),
-               iu.a(kd.e).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dou::new)
+public record dou(dow b, dot c) {
+   public static final Codec<dou> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dow.a.forGetter(dou::a), dot.a.forGetter(dou::b)).apply($$0, $$0.stable(dou::new))
    );
-   public final dvt e;
-   public final bie f;
-   public final dnq g;
-   public final dov h;
-   public final ik<cvf> i;
 
-   public dou(float $$0, dvt $$1, bie $$2, dnq $$3, dov $$4, ik<cvf> $$5) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dow $$1, dot $$2) {
+      return a.encodeStart($$0, new dou($$1, $$2));
+   }
+
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dow $$1, is $$2) {
+      return a($$0, $$1, new dot($$2.d(kc.aM)));
+   }
+
+   public dow a() {
+      return this.b;
+   }
+
+   public dot b() {
+      return this.c;
    }
 }

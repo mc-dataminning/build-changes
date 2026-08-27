@@ -1,36 +1,27 @@
-import java.util.HashMap;
-import java.util.Map;
+public interface tk {
+   void a(te var1);
 
-public record tk(int a, Map<String, tc<?>> b, Map<String, tk> c) {
-   private tk(int $$0) {
-      this($$0, new HashMap<>(), new HashMap<>());
-   }
+   void a(sh var1);
 
-   public static tk a() {
-      return new tk(1);
-   }
+   void a(tb var1);
 
-   public void a(tj $$0) {
-      if (this.a <= $$0.a().size()) {
-         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new tk(this.a + 1)).a($$0);
-      } else {
-         this.b.put($$0.c(), $$0.b());
-      }
-   }
+   void a(so var1);
 
-   public boolean a(tc<?> $$0, String $$1) {
-      return $$0.equals(this.c().get($$1));
-   }
+   void a(sr var1);
 
-   public int b() {
-      return this.a;
-   }
+   void a(sm var1);
 
-   public Map<String, tc<?>> c() {
-      return this.b;
-   }
+   void a(sk var1);
 
-   public Map<String, tk> d() {
-      return this.c;
-   }
+   void a(sg var1);
+
+   void a(sn var1);
+
+   void a(sq var1);
+
+   void a(sp var1);
+
+   void a(sj var1);
+
+   void a(sl var1);
 }

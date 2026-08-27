@@ -1,33 +1,27 @@
-public enum aou {
-   a("old"),
-   b("new"),
-   c("compatible");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   private final uv d;
-   private final uv e;
+public record aou(vb c, int d, Optional<atq<Integer>> e) {
+   public static final Codec<aou> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               vd.a.fieldOf("description").forGetter(aou::a),
+               Codec.INT.fieldOf("pack_format").forGetter(aou::b),
+               atq.a(Codec.INT).optionalFieldOf("supported_formats").forGetter(aou::c)
+            )
+            .apply($$0, aou::new)
+   );
+   public static final aot<aou> b = aot.a("pack", a);
 
-   private aou(String $$0) {
-      this.d = uv.c("pack.incompatible." + $$0).a(n.h);
-      this.e = uv.c("pack.incompatible.confirm." + $$0);
+   public vb a() {
+      return this.c;
    }
 
-   public boolean a() {
-      return this == c;
-   }
-
-   public static aou a(ati<Integer> $$0, int $$1) {
-      if ($$0.b() < $$1) {
-         return a;
-      } else {
-         return $$1 < $$0.a() ? b : c;
-      }
-   }
-
-   public uv b() {
+   public int b() {
       return this.d;
    }
 
-   public uv c() {
+   public Optional<atq<Integer>> c() {
       return this.e;
    }
 }

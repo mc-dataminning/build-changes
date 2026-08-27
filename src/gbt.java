@@ -1,316 +1,46 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gbt extends gbz<bzk, fjr<bzk>> {
+   private static final agt[] a = new agt[]{
+      new agt("textures/entity/llama/decor/white.png"),
+      new agt("textures/entity/llama/decor/orange.png"),
+      new agt("textures/entity/llama/decor/magenta.png"),
+      new agt("textures/entity/llama/decor/light_blue.png"),
+      new agt("textures/entity/llama/decor/yellow.png"),
+      new agt("textures/entity/llama/decor/lime.png"),
+      new agt("textures/entity/llama/decor/pink.png"),
+      new agt("textures/entity/llama/decor/gray.png"),
+      new agt("textures/entity/llama/decor/light_gray.png"),
+      new agt("textures/entity/llama/decor/cyan.png"),
+      new agt("textures/entity/llama/decor/purple.png"),
+      new agt("textures/entity/llama/decor/blue.png"),
+      new agt("textures/entity/llama/decor/brown.png"),
+      new agt("textures/entity/llama/decor/green.png"),
+      new agt("textures/entity/llama/decor/red.png"),
+      new agt("textures/entity/llama/decor/black.png")
+   };
+   private static final agt b = new agt("textures/entity/llama/decor/trader_llama.png");
+   private final fjr<bzk> c;
 
-public class gbt implements gbw.a, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final agm b;
-   final int c;
-   final int d;
-   private final enc e;
-   enc[] f;
-   @Nullable
-   private final gbt.a g;
-   private final apn h;
-
-   public gbt(agm $$0, gdm $$1, enc $$2, apn $$3) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$1.b();
-      this.h = $$3;
-      gdk $$4 = $$3.a(gdk.a).orElse(gdk.e);
-      this.g = this.a($$1, $$2.a(), $$2.b(), $$4);
-      this.e = $$2;
-      this.f = new enc[]{this.e};
+   public gbt(fzj<bzk, fjr<bzk>> $$0, flu $$1) {
+      super($$0);
+      this.c = new fjr<>($$1.a(flx.av));
    }
 
-   public void a(int $$0) {
-      try {
-         this.f = gbo.a(this.f, $$0);
-      } catch (Throwable var6) {
-         o $$2 = o.a(var6, "Generating mipmaps for frame");
-         p $$3 = $$2.a("Sprite being mipmapped");
-         $$3.a("First frame", () -> {
-            StringBuilder $$0x = new StringBuilder();
-            if ($$0x.length() > 0) {
-               $$0x.append(", ");
-            }
-
-            $$0x.append(this.e.a()).append("x").append(this.e.b());
-            return $$0x.toString();
-         });
-         p $$4 = $$2.a("Frame being iterated");
-         $$4.a("Sprite name", this.b);
-         $$4.a("Sprite size", () -> this.c + " x " + this.d);
-         $$4.a("Sprite frames", () -> this.g() + " frames");
-         $$4.a("Mipmap levels", $$0);
-         throw new y($$2);
-      }
-   }
-
-   private int g() {
-      return this.g != null ? this.g.b.size() : 1;
-   }
-
-   @Nullable
-   private gbt.a a(gdm $$0, int $$1, int $$2, gdk $$3) {
-      int $$4 = $$1 / $$0.a();
-      int $$5 = $$2 / $$0.b();
-      int $$6 = $$4 * $$5;
-      List<gbt.b> $$7 = new ArrayList<>();
-      $$3.a(($$1x, $$2x) -> $$7.add(new gbt.b($$1x, $$2x)));
-      if ($$7.isEmpty()) {
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            $$7.add(new gbt.b($$8, $$3.a()));
-         }
+   public void a(epd $$0, fsi $$1, int $$2, bzk $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ckv $$10 = $$3.gr();
+      agt $$11;
+      if ($$10 != null) {
+         $$11 = a[$$10.a()];
       } else {
-         int $$9 = 0;
-         IntSet $$10 = new IntOpenHashSet();
-
-         for (Iterator<gbt.b> $$11 = $$7.iterator(); $$11.hasNext(); $$9++) {
-            gbt.b $$12 = $$11.next();
-            boolean $$13 = true;
-            if ($$12.b <= 0) {
-               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.b});
-               $$13 = false;
-            }
-
-            if ($$12.a < 0 || $$12.a >= $$6) {
-               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.a});
-               $$13 = false;
-            }
-
-            if ($$13) {
-               $$10.add($$12.a);
-            } else {
-               $$11.remove();
-            }
+         if (!$$3.gn()) {
+            return;
          }
 
-         int[] $$14 = IntStream.range(0, $$6).filter($$1x -> !$$10.contains($$1x)).toArray();
-         if ($$14.length > 0) {
-            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$14));
-         }
+         $$11 = b;
       }
 
-      return $$7.size() <= 1 ? null : new gbt.a(ImmutableList.copyOf($$7), $$4, $$3.b());
-   }
-
-   void a(int $$0, int $$1, int $$2, int $$3, enc[] $$4) {
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, this.f.length > 1, false);
-      }
-   }
-
-   @Override
-   public int a() {
-      return this.c;
-   }
-
-   @Override
-   public int b() {
-      return this.d;
-   }
-
-   @Override
-   public agm c() {
-      return this.b;
-   }
-
-   public IntStream d() {
-      return this.g != null ? this.g.b() : IntStream.of(1);
-   }
-
-   @Nullable
-   public gbv e() {
-      return this.g != null ? this.g.a() : null;
-   }
-
-   public apn f() {
-      return this.h;
-   }
-
-   @Override
-   public void close() {
-      for (enc $$0 : this.f) {
-         $$0.close();
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
-   }
-
-   public boolean a(int $$0, int $$1, int $$2) {
-      int $$3 = $$1;
-      int $$4 = $$2;
-      if (this.g != null) {
-         $$3 = $$1 + this.g.a($$0) * this.c;
-         $$4 = $$2 + this.g.b($$0) * this.d;
-      }
-
-      return (this.e.a($$3, $$4) >> 24 & 0xFF) == 0;
-   }
-
-   public void a(int $$0, int $$1) {
-      if (this.g != null) {
-         this.g.a($$0, $$1);
-      } else {
-         this.a($$0, $$1, 0, 0, this.f);
-      }
-   }
-
-   class a {
-      final List<gbt.b> b;
-      private final int c;
-      private final boolean d;
-
-      a(List<gbt.b> $$0, int $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      int a(int $$0) {
-         return $$0 % this.c;
-      }
-
-      int b(int $$0) {
-         return $$0 / this.c;
-      }
-
-      void a(int $$0, int $$1, int $$2) {
-         int $$3 = this.a($$2) * gbt.this.c;
-         int $$4 = this.b($$2) * gbt.this.d;
-         gbt.this.a($$0, $$1, $$3, $$4, gbt.this.f);
-      }
-
-      public gbv a() {
-         return gbt.this.new d(this, this.d ? gbt.this.new c() : null);
-      }
-
-      public void a(int $$0, int $$1) {
-         this.a($$0, $$1, this.b.get(0).a);
-      }
-
-      public IntStream b() {
-         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
-      }
-   }
-
-   static class b {
-      final int a;
-      final int b;
-
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
-
-   final class c implements AutoCloseable {
-      private final enc[] b = new enc[gbt.this.f.length];
-
-      c() {
-         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
-            int $$1 = gbt.this.c >> $$0;
-            int $$2 = gbt.this.d >> $$0;
-            this.b[$$0] = new enc($$1, $$2, false);
-         }
-      }
-
-      void a(int $$0, int $$1, gbt.d $$2) {
-         gbt.a $$3 = $$2.d;
-         List<gbt.b> $$4 = $$3.b;
-         gbt.b $$5 = $$4.get($$2.b);
-         double $$6 = 1.0 - (double)$$2.c / (double)$$5.b;
-         int $$7 = $$5.a;
-         int $$8 = $$4.get(($$2.b + 1) % $$4.size()).a;
-         if ($$7 != $$8) {
-            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
-               int $$10 = gbt.this.c >> $$9;
-               int $$11 = gbt.this.d >> $$9;
-
-               for (int $$12 = 0; $$12 < $$11; $$12++) {
-                  for (int $$13 = 0; $$13 < $$10; $$13++) {
-                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
-                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
-                     int $$16 = this.a($$6, $$14 >> 16 & 0xFF, $$15 >> 16 & 0xFF);
-                     int $$17 = this.a($$6, $$14 >> 8 & 0xFF, $$15 >> 8 & 0xFF);
-                     int $$18 = this.a($$6, $$14 & 0xFF, $$15 & 0xFF);
-                     this.b[$$9].a($$13, $$12, $$14 & 0xFF000000 | $$16 << 16 | $$17 << 8 | $$18);
-                  }
-               }
-            }
-
-            gbt.this.a($$0, $$1, 0, 0, this.b);
-         }
-      }
-
-      private int a(gbt.a $$0, int $$1, int $$2, int $$3, int $$4) {
-         return gbt.this.f[$$2].a($$3 + ($$0.a($$1) * gbt.this.c >> $$2), $$4 + ($$0.b($$1) * gbt.this.d >> $$2));
-      }
-
-      private int a(double $$0, int $$1, int $$2) {
-         return (int)($$0 * (double)$$1 + (1.0 - $$0) * (double)$$2);
-      }
-
-      @Override
-      public void close() {
-         for (enc $$0 : this.b) {
-            $$0.close();
-         }
-      }
-   }
-
-   class d implements gbv {
-      int b;
-      int c;
-      final gbt.a d;
-      @Nullable
-      private final gbt.c e;
-
-      d(gbt.a $$0, @Nullable gbt.c $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         this.c++;
-         gbt.b $$2 = this.d.b.get(this.b);
-         if (this.c >= $$2.b) {
-            int $$3 = $$2.a;
-            this.b = (this.b + 1) % this.d.b.size();
-            this.c = 0;
-            int $$4 = this.d.b.get(this.b).a;
-            if ($$3 != $$4) {
-               this.d.a($$0, $$1, $$4);
-            }
-         } else if (this.e != null) {
-            if (!RenderSystem.isOnRenderThread()) {
-               RenderSystem.recordRenderCall(() -> this.e.a($$0, $$1, this));
-            } else {
-               this.e.a($$0, $$1, this);
-            }
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.e != null) {
-            this.e.close();
-         }
-      }
+      this.c().a(this.c);
+      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
+      eph $$14 = $$1.getBuffer(fsq.e($$11));
+      this.c.a($$0, $$14, $$2, gdf.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

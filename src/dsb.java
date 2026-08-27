@@ -1,30 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dsb(dun b, dod c, big d, int e) implements dse {
-   public static final Codec<dsb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dun.a.fieldOf("state_provider").forGetter(dsb::a),
-               dod.b.fieldOf("target").forGetter(dsb::b),
-               big.b(0, 8).fieldOf("radius").forGetter(dsb::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dsb::d)
-            )
-            .apply($$0, dsb::new)
-   );
-
-   public dun a() {
-      return this.b;
+public class dsb extends drc<dts> {
+   public dsb(Codec<dts> $$0) {
+      super($$0);
    }
 
-   public dod b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(dre<dts> $$0) {
+      dts $$1 = $$0.f();
+      auf $$2 = $$0.d();
+      ctt $$3 = $$0.b();
+      dkm $$4 = $$0.c();
+      hv $$5 = $$0.e();
 
-   public big c() {
-      return this.d;
-   }
+      for (dsw $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
+         }
+      }
 
-   public int d() {
-      return this.e;
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

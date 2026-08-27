@@ -1,15 +1,18 @@
-public class fwr extends fxi<ccj, fie<ccj>> {
-   private static final agm a = new agm("textures/entity/hoglin/hoglin.png");
+public class fwr extends fyu<bxj, fid<bxj>> {
+   private static final agt a = new agt("textures/entity/bee/bee_angry.png");
+   private static final agt i = new agt("textures/entity/bee/bee_angry_nectar.png");
+   private static final agt j = new agt("textures/entity/bee/bee.png");
+   private static final agt k = new agt("textures/entity/bee/bee_nectar.png");
 
-   public fwr(fwc.a $$0) {
-      super($$0, new fie<>($$0.a(fks.ah)), 0.7F);
+   public fwr(fxo.a $$0) {
+      super($$0, new fid<>($$0.a(flx.j)), 0.4F);
    }
 
-   public agm a(ccj $$0) {
-      return a;
-   }
-
-   protected boolean b(ccj $$0) {
-      return super.a($$0) || $$0.A();
+   public agt a(bxj $$0) {
+      if ($$0.aa_()) {
+         return $$0.go() ? i : a;
+      } else {
+         return $$0.go() ? k : j;
+      }
    }
 }

@@ -1,42 +1,34 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class bpy {
-   private static final int a = 60;
+   public static <E extends blx> bnn<E> a(Function<E, Optional<? extends blv>> $$0) {
+      return a($$0x -> true, $$0);
+   }
 
-   public static bnd<blu> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return bqo.a(
-         (Function<bqo.b<blu>, ? extends App<bqo.c<blu>, bqr<blu>>>)($$3 -> $$3.group($$3.c(bum.o), $$3.c(bum.m), $$3.a(bum.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dn()).a(arp.a)) {
+   public static <E extends blx> bnn<E> a(Predicate<E> $$0, Function<E, Optional<? extends blv>> $$1) {
+      return bqz.a(
+         (Function<bqz.b<E>, ? extends App<bqz.c<E>, brc<E>>>)($$2 -> $$2.group($$2.c(bux.o), $$2.a(bux.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test((E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends blv> $$7 = $$1.apply((E)$$5);
+                     if ($$7.isEmpty()) {
                         return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
                      } else {
-                        hx $$8 = $$6.dn();
-                        hx.a $$9 = new hx.a();
-                        eke $$10 = eke.a($$6);
-
-                        for (hx $$11 : hx.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              dhn $$12 = $$5x.a_($$11);
-                              dhn $$13 = $$5x.a_($$9.a($$11, ib.a));
-                              if (!$$12.a(cvh.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, ib.b)) {
-                                 hx $$14 = $$11.i();
-                                 $$5.a(new bnf($$14));
-                                 $$4.a(new bup(new bnf($$14), $$1, 1));
-                                 break;
-                              }
-                           }
+                        blv $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
+                           return false;
+                        } else {
+                           $$2x.a($$8);
+                           $$3.b();
+                           return true;
                         }
-
-                        $$2.setValue($$7 + 60L);
-                        return true;
                      }
-                  }))
+                  }
+               }))
       );
    }
 }

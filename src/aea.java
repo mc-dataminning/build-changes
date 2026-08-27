@@ -1,34 +1,56 @@
-import java.util.Optional;
+public class aea implements wu<acw> {
+   private final int a;
+   private final aea.a b;
+   private final int c;
 
-public class aea implements wo<acp> {
-   private final Optional<bkg> a;
-   private final Optional<bkg> b;
-
-   public aea(Optional<bkg> $$0, Optional<bkg> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aea(blf $$0, aea.a $$1) {
+      this($$0, $$1, 0);
    }
 
-   public aea(ty $$0) {
-      this.a = $$0.b((ty.a<bkg>)($$0x -> $$0x.a(kc.e)));
-      this.b = $$0.b((ty.a<bkg>)($$0x -> $$0x.a(kc.e)));
+   public aea(blf $$0, aea.a $$1, int $$2) {
+      this.a = $$0.aj();
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public aea(ue $$0) {
+      this.a = $$0.n();
+      this.b = $$0.b(aea.a.class);
+      this.c = $$0.n();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(kc.e, $$1));
-      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(kc.e, $$1));
+   public void a(ue $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
    }
 
-   public Optional<bkg> a() {
+   public int a() {
       return this.a;
    }
 
-   public Optional<bkg> d() {
+   public aea.a d() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

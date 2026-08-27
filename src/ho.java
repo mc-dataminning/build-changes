@@ -1,56 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 
-public class ho implements hj<DoubleArgumentType, ho.a> {
-   public void a(ho.a $$0, ty $$1) {
-      boolean $$2 = $$0.b != -Double.MAX_VALUE;
-      boolean $$3 = $$0.c != Double.MAX_VALUE;
-      $$1.k(hl.a($$2, $$3));
+public class ho implements hh<IntegerArgumentType, ho.a> {
+   public void a(ho.a $$0, ue $$1) {
+      boolean $$2 = $$0.b != Integer.MIN_VALUE;
+      boolean $$3 = $$0.c != Integer.MAX_VALUE;
+      $$1.k(hj.a($$2, $$3));
       if ($$2) {
-         $$1.a($$0.b);
+         $$1.p($$0.b);
       }
 
       if ($$3) {
-         $$1.a($$0.c);
+         $$1.p($$0.c);
       }
    }
 
-   public ho.a a(ty $$0) {
+   public ho.a a(ue $$0) {
       byte $$1 = $$0.readByte();
-      double $$2 = hl.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
-      double $$3 = hl.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
+      int $$2 = hj.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
+      int $$3 = hj.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
       return new ho.a($$2, $$3);
    }
 
    public void a(ho.a $$0, JsonObject $$1) {
-      if ($$0.b != -Double.MAX_VALUE) {
+      if ($$0.b != Integer.MIN_VALUE) {
          $$1.addProperty("min", $$0.b);
       }
 
-      if ($$0.c != Double.MAX_VALUE) {
+      if ($$0.c != Integer.MAX_VALUE) {
          $$1.addProperty("max", $$0.c);
       }
    }
 
-   public ho.a a(DoubleArgumentType $$0) {
+   public ho.a a(IntegerArgumentType $$0) {
       return new ho.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public final class a implements hj.a<DoubleArgumentType> {
-      final double b;
-      final double c;
+   public final class a implements hh.a<IntegerArgumentType> {
+      final int b;
+      final int c;
 
-      a(double $$1, double $$2) {
+      a(int $$1, int $$2) {
          this.b = $$1;
          this.c = $$2;
       }
 
-      public DoubleArgumentType a(dp $$0) {
-         return DoubleArgumentType.doubleArg(this.b, this.c);
+      public IntegerArgumentType a(dn $$0) {
+         return IntegerArgumentType.integer(this.b, this.c);
       }
 
       @Override
-      public hj<DoubleArgumentType, ?> a() {
+      public hh<IntegerArgumentType, ?> a() {
          return ho.this;
       }
    }

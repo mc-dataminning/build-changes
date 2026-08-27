@@ -1,102 +1,120 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public abstract class dgm extends dfc implements bji {
-   @Nullable
-   protected agm m;
-   protected long n;
+public class dgm extends dgd implements bje {
+   public static final int c = 6;
+   private static final Logger d = LogUtils.getLogger();
+   private final io<cmh> e = io.a(6, cmh.f);
+   private int f = -1;
 
-   protected dgm(dfk<?> $$0, hx $$1, dhn $$2) {
-      super($$0, $$1, $$2);
+   public dgm(hv $$0, dip $$1) {
+      super(dgf.M, $$0, $$1);
    }
 
-   @Nullable
-   @Override
-   public agm aA_() {
-      return this.m;
-   }
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.f = $$0;
+         dip $$1 = this.r();
 
-   @Override
-   public void a(@Nullable agm $$0) {
-      this.m = $$0;
-   }
+         for (int $$2 = 0; $$2 < cxd.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).b();
+            djg $$4 = cxd.c.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
+         }
 
-   @Override
-   public long aB_() {
-      return this.n;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   public boolean aj_() {
-      this.e_(null);
-      return this.k().stream().allMatch(clo::b);
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(dmz.c, this.p, dmz.a.a($$1));
+      } else {
+         d.error("Expected slot 0-5, got {}", $$0);
+      }
    }
 
    @Override
-   public clo a(int $$0) {
-      this.e_(null);
-      return this.k().get($$0);
+   public void a(sj $$0) {
+      this.e.clear();
+      bjf.b($$0, this.e);
+      this.f = $$0.h("last_interacted_slot");
    }
 
    @Override
-   public clo a(int $$0, int $$1) {
-      this.e_(null);
-      clo $$2 = biv.a(this.k(), $$0, $$1);
+   protected void b(sj $$0) {
+      bjf.a($$0, this.e, true);
+      $$0.a("last_interacted_slot", this.f);
+   }
+
+   public int f() {
+      return (int)this.e.stream().filter(Predicate.not(cmh::b)).count();
+   }
+
+   @Override
+   public void a() {
+      this.e.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean ai_() {
+      return this.e.stream().allMatch(cmh::b);
+   }
+
+   @Override
+   public cmh a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Override
+   public cmh a(int $$0, int $$1) {
+      cmh $$2 = Objects.requireNonNullElse(this.e.get($$0), cmh.f);
+      this.e.set($$0, cmh.f);
       if (!$$2.b()) {
-         this.e();
+         this.c($$0);
       }
 
       return $$2;
    }
 
    @Override
-   public clo b(int $$0) {
-      this.e_(null);
-      return biv.a(this.k(), $$0);
+   public cmh b(int $$0) {
+      return this.a($$0, 1);
    }
 
    @Override
-   public void a(int $$0, clo $$1) {
-      this.e_(null);
-      this.k().set($$0, $$1);
-      if ($$1.L() > this.al_()) {
-         $$1.f(this.al_());
+   public void a(int $$0, cmh $$1) {
+      if ($$1.a(arz.av)) {
+         this.e.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.b()) {
+         this.a($$0, 1);
       }
-
-      this.e();
    }
 
    @Override
-   public boolean a(cdz $$0) {
-      return biu.a(this, $$0);
+   public boolean a(bje $$0, int $$1, cmh $$2) {
+      return $$0.a_($$2x -> $$2x.b() ? true : cmh.c($$2, $$2x) && $$2x.L() + $$2.L() <= Math.min($$2x.g(), $$0.ak_()));
    }
 
    @Override
-   public void a() {
-      this.k().clear();
+   public int ak_() {
+      return 1;
    }
 
-   protected abstract ip<clo> k();
-
-   protected abstract void a(ip<clo> var1);
-
    @Override
-   public boolean d(cdz $$0) {
-      return super.d($$0) && (this.m == null || !$$0.P_());
+   public boolean a(cer $$0) {
+      return bje.a(this, $$0);
    }
 
-   @Nullable
    @Override
-   public cgr createMenu(int $$0, cdy $$1, cdz $$2) {
-      if (this.d($$2)) {
-         this.e_($$1.m);
-         return this.a($$0, $$1);
-      } else {
-         return null;
-      }
+   public boolean b(int $$0, cmh $$1) {
+      return $$1.a(arz.av) && this.a($$0).b();
+   }
+
+   public int g() {
+      return this.f;
    }
 }

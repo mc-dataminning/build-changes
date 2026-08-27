@@ -1,20 +1,5 @@
-import javax.annotation.Nullable;
-
-public class asx<T extends Throwable> {
-   @Nullable
-   private T a;
-
-   public void a(T $$0) {
-      if (this.a == null) {
-         this.a = $$0;
-      } else {
-         this.a.addSuppressed($$0);
-      }
-   }
-
-   public void a() throws T {
-      if (this.a != null) {
-         throw this.a;
-      }
+public class asx extends Exception {
+   public asx(Throwable $$0) {
+      super($$0);
    }
 }

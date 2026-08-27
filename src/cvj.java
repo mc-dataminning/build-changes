@@ -1,98 +1,72 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cvj extends cur {
-   public static final MapCodec<cvj> a = b(cvj::new);
-   public static final die[] b = new die[]{did.k, did.l, did.m};
-   protected static final eks c = ekp.a(cvf.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), cvf.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
+public abstract class cvj extends cvz implements dcz {
+   public static final djg d = djf.C;
+   private static final elu a = cvz.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
-   @Override
-   public MapCodec<cvj> a() {
-      return a;
-   }
-
-   public cvj(dhm.d $$0) {
+   protected cvj(dio.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b[0], Boolean.valueOf(false)).a(b[1], Boolean.valueOf(false)).a(b[2], Boolean.valueOf(false)));
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public dbk b_(dhn $$0) {
-      return dbk.c;
+   protected abstract MapCodec<? extends cvj> a();
+
+   protected void a(dip $$0, csz $$1, hv $$2) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this, 60 + $$1.F_().a(40));
+      }
    }
 
-   @Override
-   public dfi a(hx $$0, dhn $$1) {
-      return new dfl($$0, $$1);
+   protected static boolean e(dip $$0, cse $$1, hv $$2) {
+      if ($$0.c(d)) {
+         return true;
+      } else {
+         for (ia $$3 : ia.values()) {
+            if ($$1.b_($$2.a($$3)).a(arw.a)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
    @Nullable
    @Override
-   public <T extends dfi> dfj<T> a(csf $$0, dhn $$1, dfk<T> $$2) {
-      return $$0.B ? null : a($$2, dfk.l, dfl::a);
+   public dip a(coq $$0) {
+      edz $$1 = $$0.q().b_($$0.a());
+      return this.o().a(d, Boolean.valueOf($$1.a(arw.a) && $$1.e() == 8));
    }
 
    @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      return c;
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return a;
    }
 
    @Override
-   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
-      if ($$1.B) {
-         return bjb.a;
-      } else {
-         dfi $$6 = $$1.c_($$2);
-         if ($$6 instanceof dfl) {
-            $$3.a((dfl)$$6);
-            $$3.a(arf.aa);
-         }
-
-         return bjb.b;
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eea.c, eea.c.a($$3));
       }
+
+      return $$1 == ia.a && !this.a($$0, (ctb)$$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(csf $$0, hx $$1, dhn $$2, bll $$3, clo $$4) {
-      if ($$4.A()) {
-         dfi $$5 = $$0.c_($$1);
-         if ($$5 instanceof dfl) {
-            ((dfl)$$5).a($$4.y());
-         }
-      }
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      hv $$3 = $$2.d();
+      return $$1.a_($$3).d($$1, $$3, ia.b);
    }
 
    @Override
-   public void a(dhn $$0, csf $$1, hx $$2, atw $$3) {
-      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
-      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
-      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
-      $$1.a(jw.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(d);
    }
 
    @Override
-   public void a(dhn $$0, csf $$1, hx $$2, dhn $$3, boolean $$4) {
-      bix.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public boolean d_(dhn $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dhn $$0, csf $$1, hx $$2) {
-      return cgr.a($$1.c_($$2));
-   }
-
-   @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(b[0], b[1], b[2]);
-   }
-
-   @Override
-   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
-      return false;
+   public edz c_(dip $$0) {
+      return $$0.c(d) ? eea.c.a(false) : super.c_($$0);
    }
 }

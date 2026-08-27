@@ -1,24 +1,24 @@
-public class adi implements wo<acp> {
+public class adi implements wu<acw> {
    private final int a;
-   private final int b;
+   private final String b;
 
-   public adi(int $$0, int $$1) {
+   public adi(int $$0, String $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public adi(ty $$0) {
+   public adi(ue $$0) {
       this.a = $$0.n();
-      this.b = $$0.n();
+      this.b = $$0.d(32500);
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
       $$0.c(this.a);
-      $$0.c(this.b);
+      $$0.a(this.b, 32500);
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
    }
 
@@ -26,7 +26,7 @@ public class adi implements wo<acp> {
       return this.a;
    }
 
-   public int d() {
+   public String d() {
       return this.b;
    }
 }

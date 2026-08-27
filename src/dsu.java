@@ -1,52 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class dsu implements dse {
-   public static final Codec<dsu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dwq.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
-               arz.b(kd.e).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
-               duf.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
-               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
-               duf.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
-               dod.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
-            )
-            .apply($$0, dsu::new)
-   );
-   public final ig<dwq> b;
-   public final int c;
-   public final int d;
-   public final arz<cvf> e;
-   public final duf f;
-   public final int g;
-   public final int h;
-   public final int i;
-   public final int j;
-   public final duf k;
-   public final int l;
-   public final int n;
-   public final dod o;
+public class dsu extends dsr {
+   public dsu(Codec<duf> $$0) {
+      super($$0);
+   }
 
-   public dsu(ig<dwq> $$0, int $$1, int $$2, arz<cvf> $$3, duf $$4, int $$5, int $$6, int $$7, int $$8, duf $$9, int $$10, int $$11, dod $$12) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.n = $$11;
-      this.o = $$12;
+   @Override
+   protected Set<hv> a(ctt $$0, duf $$1, auf $$2, hv $$3, Predicate<dip> $$4, int $$5, int $$6) {
+      Set<hv> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<hv> $$8 = new HashSet<>();
+      hv.a $$9 = new hv.a();
+
+      for (hv $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (hv $$11 : $$8) {
+         $$0.a($$11, cwb.G.o(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(ctt $$0, Set<hv> $$1, hv $$2, hv.a $$3) {
+      return a($$0, $$2, $$3, ia.c) || a($$0, $$2, $$3, ia.f) || a($$0, $$2, $$3, ia.d) || a($$0, $$2, $$3, ia.e) || a($$0, $$2, $$3, ia.a);
+   }
+
+   private static boolean a(ctt $$0, hv $$1, hv.a $$2, ia $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(ctt $$0, duf $$1, dkm $$2, auf $$3, hv $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         dip $$5 = $$0.a_($$4);
+         if ($$5.b(djf.C) && !$$5.c(djf.C)) {
+            $$0.a($$4, $$5.a(djf.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

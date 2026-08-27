@@ -1,60 +1,127 @@
-import java.util.Objects;
+import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+import java.util.function.Function;
 
-public final class amm<T> implements Comparable<amm<?>> {
-   private final amn<T> a;
-   private final int b;
-   private final T c;
-   private long d;
+public class amm extends bjb {
+   private final Set<amq> h = Sets.newHashSet();
+   private final Set<amq> i = Collections.unmodifiableSet(this.h);
+   private boolean j = true;
 
-   protected amm(amn<T> $$0, int $$1, T $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public amm(vb $$0, bjb.a $$1, bjb.b $$2) {
+      super(aty.a(), $$0, $$1, $$2);
    }
 
-   public int a(amm<?> $$0) {
-      int $$1 = Integer.compare(this.b, $$0.b);
-      if ($$1 != 0) {
-         return $$1;
-      } else {
-         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
-         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
+   @Override
+   public void a(float $$0) {
+      if ($$0 != this.b) {
+         super.a($$0);
+         this.a(yy::b);
       }
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof amm<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
+   public void a(bjb.a $$0) {
+      if ($$0 != this.c) {
+         super.a($$0);
+         this.a(yy::d);
       }
    }
 
    @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c);
+   public void a(bjb.b $$0) {
+      if ($$0 != this.d) {
+         super.a($$0);
+         this.a(yy::d);
+      }
    }
 
    @Override
-   public String toString() {
-      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
+   public bjb a(boolean $$0) {
+      if ($$0 != this.e) {
+         super.a($$0);
+         this.a(yy::e);
+      }
+
+      return this;
    }
 
-   public amn<T> a() {
-      return this.a;
+   @Override
+   public bjb b(boolean $$0) {
+      if ($$0 != this.f) {
+         super.b($$0);
+         this.a(yy::e);
+      }
+
+      return this;
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public bjb c(boolean $$0) {
+      if ($$0 != this.g) {
+         super.c($$0);
+         this.a(yy::e);
+      }
+
+      return this;
    }
 
-   protected void a(long $$0) {
-      this.d = $$0;
+   @Override
+   public void a(vb $$0) {
+      if (!Objects.equal($$0, this.a)) {
+         super.a($$0);
+         this.a(yy::c);
+      }
    }
 
-   protected boolean b(long $$0) {
-      long $$1 = this.a.b();
-      return $$1 != 0L && $$0 - this.d > $$1;
+   private void a(Function<bjb, yy> $$0) {
+      if (this.j) {
+         yy $$1 = $$0.apply(this);
+
+         for (amq $$2 : this.h) {
+            $$2.c.b($$1);
+         }
+      }
+   }
+
+   public void a(amq $$0) {
+      if (this.h.add($$0) && this.j) {
+         $$0.c.b(yy.a(this));
+      }
+   }
+
+   public void b(amq $$0) {
+      if (this.h.remove($$0) && this.j) {
+         $$0.c.b(yy.a(this.i()));
+      }
+   }
+
+   public void b() {
+      if (!this.h.isEmpty()) {
+         for (amq $$0 : Lists.newArrayList(this.h)) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public boolean g() {
+      return this.j;
+   }
+
+   public void d(boolean $$0) {
+      if ($$0 != this.j) {
+         this.j = $$0;
+
+         for (amq $$1 : this.h) {
+            $$1.c.b($$0 ? yy.a(this) : yy.a(this.i()));
+         }
+      }
+   }
+
+   public Collection<amq> h() {
+      return this.i;
    }
 }

@@ -1,13 +1,9 @@
-import java.util.List;
+public class flq<T extends ccs> extends fht<T> {
+   public flq(fly $$0) {
+      super($$0);
+   }
 
-public enum flq {
-   a,
-   b;
-
-   private static final List<flq> c = List.of(values());
-   private static final it.b d = it.a(kc.ar);
-
-   public static in<flq> a() {
-      return new in<>(c).a(a, d);
+   public boolean a(T $$0) {
+      return $$0.fW();
    }
 }

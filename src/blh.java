@@ -1,61 +1,59 @@
 public class blh {
-   private static final int a = 140;
-   private static final int b = 700;
-   private final afv c;
-   private final afs<Integer> d;
-   private final afs<Boolean> e;
-   private boolean f;
-   private int g;
-
-   public blh(afv $$0, afs<Integer> $$1, afs<Boolean> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public void a() {
-      this.f = true;
-      this.g = 0;
-   }
-
-   public boolean a(atw $$0) {
-      if (this.f) {
-         return false;
-      } else {
-         this.f = true;
-         this.g = 0;
-         this.c.b(this.d, $$0.a(841) + 140);
-         return true;
-      }
-   }
-
-   public void b() {
-      if (this.f && this.g++ > this.e()) {
-         this.f = false;
-      }
-   }
-
-   public float c() {
-      return this.f ? 1.0F + 1.15F * atq.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
-   }
-
-   private int e() {
-      return this.c.b(this.d);
-   }
-
-   public void a(sd $$0) {
-      $$0.a("Saddle", this.d());
-   }
-
-   public void b(sd $$0) {
-      this.a($$0.q("Saddle"));
-   }
-
-   public void a(boolean $$0) {
-      this.c.b(this.e, $$0);
-   }
-
-   public boolean d() {
-      return this.c.b(this.e);
-   }
+   public static final byte a = 1;
+   public static final byte b = 3;
+   public static final byte c = 4;
+   public static final byte d = 5;
+   public static final byte e = 6;
+   public static final byte f = 7;
+   public static final byte g = 8;
+   public static final byte h = 9;
+   public static final byte i = 10;
+   public static final byte j = 11;
+   public static final byte k = 12;
+   public static final byte l = 13;
+   public static final byte m = 14;
+   public static final byte n = 15;
+   public static final byte o = 16;
+   public static final byte p = 17;
+   public static final byte q = 18;
+   public static final byte r = 19;
+   public static final byte s = 20;
+   public static final byte t = 21;
+   public static final byte u = 22;
+   public static final byte v = 23;
+   public static final byte w = 24;
+   public static final byte x = 25;
+   public static final byte y = 26;
+   public static final byte z = 27;
+   public static final byte A = 28;
+   public static final byte B = 29;
+   public static final byte C = 30;
+   public static final byte D = 31;
+   public static final byte E = 32;
+   public static final byte F = 34;
+   public static final byte G = 35;
+   public static final byte H = 38;
+   public static final byte I = 39;
+   public static final byte J = 40;
+   public static final byte K = 41;
+   public static final byte L = 42;
+   public static final byte M = 43;
+   public static final byte N = 45;
+   public static final byte O = 46;
+   public static final byte P = 47;
+   public static final byte Q = 48;
+   public static final byte R = 49;
+   public static final byte S = 50;
+   public static final byte T = 51;
+   public static final byte U = 52;
+   public static final byte V = 53;
+   public static final byte W = 54;
+   public static final byte X = 55;
+   public static final byte Y = 56;
+   public static final byte Z = 58;
+   public static final byte aa = 59;
+   public static final byte ab = 60;
+   public static final byte ac = 61;
+   public static final byte ad = 62;
+   public static final byte ae = 63;
 }

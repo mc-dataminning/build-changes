@@ -1,111 +1,53 @@
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class eym extends eyj {
-   private final List<eym.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final eyr f = eyr.i().a(0.5F, 0.5F);
+public class eym implements eyp {
+   private static final agt d = new agt("toast/advancement");
+   public static final int a = 5000;
+   private final af e;
+   private boolean f;
 
-   public eym() {
-      this(0, 0, 0, 0);
-   }
-
-   public eym(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public eym(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
-   }
-
-   public eym a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
-   }
-
-   public eym a(int $$0) {
+   public eym(af $$0) {
       this.e = $$0;
-      return this;
-   }
-
-   public eym b(int $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public eyr b() {
-      return this.f.g();
-   }
-
-   public eyr c() {
-      return this.f;
    }
 
    @Override
-   public void a() {
-      super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
+   public eyp.a a(evw $$0, eyq $$1, long $$2) {
+      ar $$3 = this.e.b().c().orElse(null);
+      $$0.a(d, 0, 0, this.a(), this.b());
+      if ($$3 != null) {
+         List<atk> $$4 = $$1.b().h.c($$3.a(), 125);
+         int $$5 = $$3.e() == al.b ? 16746751 : 16776960;
+         if ($$4.size() == 1) {
+            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
+            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = aty.d(aty.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = aty.d(aty.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
 
-      for (eym.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
-      }
+               for (atk $$11 : $$4) {
+                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
+         }
 
-      for (eym.a $$3 : this.c) {
-         $$3.a(this.p(), $$0);
-         $$3.b(this.r(), $$1);
-      }
+         if (!this.f && $$2 > 0L) {
+            this.f = true;
+            if ($$3.e() == al.b) {
+               $$1.b().ah().a(ggr.a(arc.zA, 1.0F, 1.0F));
+            }
+         }
 
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public <T extends eyq> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends eyq> T a(T $$0, eyr $$1) {
-      this.c.add(new eym.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends eyq> T a(T $$0, Consumer<eyr> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<eyq> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
-   }
-
-   public static void a(eyq $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
-   }
-
-   public static void a(eyq $$0, ezh $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
-   }
-
-   public static void a(eyq $$0, ezh $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
-   }
-
-   public static void a(eyq $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.k(), $$0::f, $$5);
-      a($$2, $$4, $$0.i(), $$0::g, $$6);
-   }
-
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)atq.i($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
-   }
-
-   static class a extends eyj.a {
-      protected a(eyq $$0, eyr $$1) {
-         super($$0, $$1);
+         $$0.b($$3.c(), 8, 8);
+         return (double)$$2 >= 5000.0 * $$1.c() ? eyp.a.b : eyp.a.a;
+      } else {
+         return eyp.a.b;
       }
    }
 }

@@ -1,49 +1,45 @@
-public class jg extends jh {
-   private final jh c = new jh();
-   private final cfs.b d;
-   private final boolean e;
-
-   public jg(cfs.b $$0) {
-      this($$0, false);
-   }
-
-   public jg(cfs.b $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
+public class jg implements jh {
    @Override
-   public clo a(jf $$0, clo $$1) {
-      ib $$2 = $$0.d().c(cxk.b);
-      ami $$3 = $$0.b();
-      ejz $$4 = $$0.a();
-      double $$5 = 0.5625 + (double)bkz.k.k() / 2.0;
-      double $$6 = $$4.a() + (double)$$2.j() * $$5;
-      double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);
-      double $$8 = $$4.c() + (double)$$2.l() * $$5;
-      hx $$9 = $$0.c().a($$2);
-      double $$10;
-      if ($$3.b_($$9).a(arp.a)) {
-         $$10 = 1.0;
-      } else {
-         if (!$$3.a_($$9).i() || !$$3.b_($$9.d()).a(arp.a)) {
-            return this.c.dispense($$0, $$1);
-         }
+   public final cmh dispense(je $$0, cmh $$1) {
+      cmh $$2 = this.a($$0, $$1);
+      this.a($$0);
+      this.a($$0, $$0.d().c(cye.b));
+      return $$2;
+   }
 
-         $$10 = 0.0;
-      }
-
-      cfs $$13 = (cfs)(this.e ? new cft($$3, $$6, $$7 + $$10, $$8) : new cfs($$3, $$6, $$7 + $$10, $$8));
-      bkz.<cfs>a($$3, $$1, null).accept($$13);
-      $$13.a(this.d);
-      $$13.r($$2.p());
-      $$3.b($$13);
-      $$1.h(1);
+   protected cmh a(je $$0, cmh $$1) {
+      ia $$2 = $$0.d().c(cye.b);
+      ip $$3 = cye.a($$0);
+      cmh $$4 = $$1.a(1);
+      a($$0.b(), $$4, 6, $$2, $$3);
       return $$1;
    }
 
-   @Override
-   protected void a(jf $$0) {
+   public static void a(csy $$0, cmh $$1, int $$2, ia $$3, ip $$4) {
+      double $$5 = $$4.a();
+      double $$6 = $$4.b();
+      double $$7 = $$4.c();
+      if ($$3.o() == ia.a.b) {
+         $$6 -= 0.125;
+      } else {
+         $$6 -= 0.15625;
+      }
+
+      cbe $$8 = new cbe($$0, $$5, $$6, $$7, $$1);
+      double $$9 = $$0.z.j() * 0.1 + 0.2;
+      $$8.o(
+         $$0.z.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
+         $$0.z.a(0.2, 0.0172275 * (double)$$2),
+         $$0.z.a((double)$$3.l() * $$9, 0.0172275 * (double)$$2)
+      );
+      $$0.b($$8);
+   }
+
+   protected void a(je $$0) {
       $$0.b().c(1000, $$0.c(), 0);
+   }
+
+   protected void a(je $$0, ia $$1) {
+      $$0.b().c(2000, $$0.c(), $$1.d());
    }
 }

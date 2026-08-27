@@ -1,64 +1,88 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
 
-public class frl {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 4;
-   private final Queue<frk> c;
-   private volatile int d;
+public class frl extends frh {
+   private elb cm = elb.b;
+   private int cn;
 
-   private frl(List<frk> $$0) {
-      this.c = Queues.newArrayDeque($$0);
-      this.d = this.c.size();
+   public frl(fmt $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.t(1.0F);
+      this.af = true;
    }
 
-   public static frl a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / frk.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<frk> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new frk());
-         }
-      } catch (OutOfMemoryError var7) {
-         b.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cH().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
       }
 
-      return new frl($$3);
+      $$1 *= 64.0 * cA();
+      return $$0 < $$1 * $$1;
    }
 
-   @Nullable
-   public frk a() {
-      frk $$0 = this.c.poll();
-      if ($$0 != null) {
-         this.d = this.c.size();
-         return $$0;
+   @Override
+   public boolean a(bkd $$0, float $$1) {
+      return true;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.q(false);
+   }
+
+   @Override
+   public void d_() {
+      if (this.bn > 0) {
+         this.a(this.bn, this.bo, this.bp, this.bq, this.br, this.bs);
+         this.bn--;
+      }
+
+      if (this.bu > 0) {
+         this.a(this.bu, this.bt);
+         this.bu--;
+      }
+
+      if (this.cn > 0) {
+         this.h(new elb((this.cm.c - this.dp().c) / (double)this.cn, (this.cm.d - this.dp().d) / (double)this.cn, (this.cm.e - this.dp().e) / (double)this.cn));
+         this.cn--;
+      }
+
+      this.bV = this.bW;
+      this.eQ();
+      float $$1;
+      if (this.aC() && !this.ew()) {
+         $$1 = (float)Math.min(0.1, this.dp().h());
       } else {
-         return null;
+         $$1 = 0.0F;
       }
+
+      this.bW = this.bW + ($$1 - this.bW) * 0.4F;
+      this.dM().ae().a("push");
+      this.M_();
+      this.dM().ae().c();
    }
 
-   public void a(frk $$0) {
-      this.c.add($$0);
-      this.d = this.c.size();
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.cm = new elb($$0, $$1, $$2);
+      this.cn = this.ai().p() + 1;
    }
 
-   public boolean b() {
-      return this.c.isEmpty();
+   @Override
+   protected void fM() {
    }
 
-   public int c() {
-      return this.d;
+   @Override
+   public void a(vb $$0) {
+      euk $$1 = euk.N();
+      $$1.l.d().a($$0);
+   }
+
+   @Override
+   public void a(yp $$0) {
+      super.a($$0);
+      this.bp();
    }
 }

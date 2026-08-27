@@ -1,38 +1,34 @@
-public class ghm implements ghp {
-   private static final int a = 600;
-   private static final uv b = uv.c("tutorial.open_inventory.title");
-   private static final uv c = uv.a("tutorial.open_inventory.description", gho.a("inventory"));
-   private final gho d;
-   private exo e;
-   private int f;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
 
-   public ghm(gho $$0) {
-      this.d = $$0;
+public class ghm extends aqf {
+   private sj a;
+
+   public ghm(ghn $$0, im<ahc> $$1, efx $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(ghq.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new exo(exo.a.d, b, c, false);
-            this.d.e().ax().a(this.e);
-         }
+   protected void b(amq $$0) {
+      if (this.b().a($$0.fR())) {
+         this.a = $$0.f(new sj());
       }
+
+      super.b($$0);
    }
 
    @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public vb a(SocketAddress $$0, GameProfile $$1) {
+      return (vb)(this.b().a($$1) && this.a($$1.getName()) != null ? vb.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
+   }
+
+   public ghn b() {
+      return (ghn)super.c();
    }
 
    @Override
-   public void c() {
-      this.d.a(ghq.e);
+   public sj r() {
+      return this.a;
    }
 }

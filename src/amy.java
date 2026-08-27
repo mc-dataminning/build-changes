@@ -1,14 +1,11 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public interface amy {
-   void a(Consumer<wo<?>> var1);
+   void a(csf var1);
 
-   amy.a a();
+   void a(csf var1, @Nullable dkq var2);
 
-   public static record a(String a) {
-      @Override
-      public String toString() {
-         return this.a;
-      }
-   }
+   void a();
+
+   void b();
 }

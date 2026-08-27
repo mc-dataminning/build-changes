@@ -1,154 +1,40 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class ajm {
-   public static void a(CommandDispatcher<du> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("commands.pardon.failed"));
+
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
-                                    "raid"
-                                 )
-                                 .requires($$0x -> $$0x.c(3)))
-                              .then(
-                                 dv.a("start")
-                                    .then(
-                                       dv.a("omenlvl", IntegerArgumentType.integer(0))
-                                          .executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
-                                    )
-                              ))
-                           .then(dv.a("stop").executes($$0x -> c((du)$$0x.getSource()))))
-                        .then(dv.a("check").executes($$0x -> d((du)$$0x.getSource()))))
-                     .then(dv.a("sound").then(dv.a("type", ec.a()).executes($$0x -> a((du)$$0x.getSource(), ec.a($$0x, "type"))))))
-                  .then(dv.a("spawnleader").executes($$0x -> b((du)$$0x.getSource()))))
-               .then(
-                  dv.a("setomen")
-                     .then(
-                        dv.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
-                     )
-               ))
-            .then(dv.a("glow").executes($$0x -> a((du)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("pardon").requires($$0x -> $$0x.c(3)))
+            .then(
+               dt.a("targets", eg.a())
+                  .suggests(($$0x, $$1) -> dw.a(((ds)$$0x.getSource()).l().ae().f().a(), $$1))
+                  .executes($$0x -> a((ds)$$0x.getSource(), eg.a($$0x, "targets")))
+            )
       );
    }
 
-   private static int a(du $$0) throws CommandSyntaxException {
-      cfg $$1 = a($$0.h());
-      if ($$1 != null) {
-         for (cfh $$3 : $$1.h()) {
-            $$3.b(new bki(bkk.x, 1000, 1));
+   private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      aql $$2 = $$0.l().ae().f();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            $$2.c($$4);
+            $$3++;
+            $$0.a(() -> vb.a("commands.pardon.success", vb.b($$4.getName())), true);
          }
       }
 
-      return 1;
-   }
-
-   private static int a(du $$0, int $$1) throws CommandSyntaxException {
-      cfg $$2 = a($$0.h());
-      if ($$2 != null) {
-         int $$3 = $$2.l();
-         if ($$1 > $$3) {
-            $$0.b(uv.b("Sorry, the max bad omen level you can set is " + $$3));
-         } else {
-            int $$4 = $$2.m();
-            $$2.a($$1);
-            $$0.a(() -> uv.b("Changed village's bad omen level from " + $$4 + " to " + $$1), false);
-         }
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         $$0.b(uv.b("No raid found here"));
+         return $$3;
       }
-
-      return 1;
-   }
-
-   private static int b(du $$0) {
-      $$0.a(() -> uv.b("Spawned a raid captain"), false);
-      cfh $$1 = bkz.ay.a((csf)$$0.e());
-      if ($$1 == null) {
-         $$0.b(uv.b("Pillager failed to spawn"));
-         return 0;
-      } else {
-         $$1.w(true);
-         $$1.a(bla.f, cfg.s());
-         $$1.a_($$0.d().c, $$0.d().d, $$0.d().e);
-         $$1.a($$0.e(), $$0.e().d_(hx.a($$0.d())), blp.n, null, null);
-         $$0.e().a_($$1);
-         return 1;
-      }
-   }
-
-   private static int a(du $$0, @Nullable uv $$1) {
-      if ($$1 != null && $$1.getString().equals("local")) {
-         ami $$2 = $$0.e();
-         ejz $$3 = $$0.d().b(5.0, 0.0, 0.0);
-         $$2.a(null, $$3.c, $$3.d, $$3.e, aqv.tK, aqw.g, 2.0F, 1.0F, $$2.z.g());
-      }
-
-      return 1;
-   }
-
-   private static int b(du $$0, int $$1) throws CommandSyntaxException {
-      amj $$2 = $$0.h();
-      hx $$3 = $$2.dn();
-      if ($$2.z().d($$3)) {
-         $$0.b(uv.b("Raid already started close by"));
-         return -1;
-      } else {
-         cfi $$4 = $$2.z().y();
-         cfg $$5 = $$4.a($$2);
-         if ($$5 != null) {
-            $$5.a($$1);
-            $$4.c();
-            $$0.a(() -> uv.b("Created a raid in your local village"), false);
-         } else {
-            $$0.b(uv.b("Failed to create a raid in your local village"));
-         }
-
-         return 1;
-      }
-   }
-
-   private static int c(du $$0) throws CommandSyntaxException {
-      amj $$1 = $$0.h();
-      hx $$2 = $$1.dn();
-      cfg $$3 = $$1.z().c($$2);
-      if ($$3 != null) {
-         $$3.n();
-         $$0.a(() -> uv.b("Stopped raid"), false);
-         return 1;
-      } else {
-         $$0.b(uv.b("No raid here"));
-         return -1;
-      }
-   }
-
-   private static int d(du $$0) throws CommandSyntaxException {
-      cfg $$1 = a($$0.h());
-      if ($$1 != null) {
-         StringBuilder $$2 = new StringBuilder();
-         $$2.append("Found a started raid! ");
-         $$0.a(() -> uv.b($$2.toString()), false);
-         StringBuilder $$3 = new StringBuilder();
-         $$3.append("Num groups spawned: ");
-         $$3.append($$1.k());
-         $$3.append(" Bad omen level: ");
-         $$3.append($$1.m());
-         $$3.append(" Num mobs: ");
-         $$3.append($$1.r());
-         $$3.append(" Raid health: ");
-         $$3.append($$1.q());
-         $$3.append(" / ");
-         $$3.append($$1.g());
-         $$0.a(() -> uv.b($$3.toString()), false);
-         return 1;
-      } else {
-         $$0.b(uv.b("Found no started raids"));
-         return 0;
-      }
-   }
-
-   @Nullable
-   private static cfg a(amj $$0) {
-      return $$0.z().c($$0.dn());
    }
 }

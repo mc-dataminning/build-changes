@@ -1,20 +1,15 @@
-public class cqe extends cpz {
-   protected cqe(cpz.a $$0, bla... $$1) {
-      super($$0, cqa.f, $$1);
+public class cqe extends cou {
+   public cqe(String $$0, cpa $$1, cpi $$2, cmh $$3, float $$4, int $$5) {
+      super(cpq.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 10 + 20 * ($$0 - 1);
+   public cmh g() {
+      return new cmh(cwb.nV);
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 2;
+   public cpp<?> ar_() {
+      return cpp.r;
    }
 }

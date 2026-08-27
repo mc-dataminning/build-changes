@@ -1,77 +1,56 @@
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class cnw extends cny {
-   private final hx b;
-   protected boolean a = true;
+public enum cnw implements cnu {
+   a(0, 59, 2.0F, 0.0F, 15, () -> cpi.a(arz.b)),
+   b(1, 131, 4.0F, 1.0F, 5, () -> cpi.a(arz.ax)),
+   c(2, 250, 6.0F, 2.0F, 14, () -> cpi.a(cmk.oB)),
+   d(3, 1561, 8.0F, 3.0F, 10, () -> cpi.a(cmk.ov)),
+   e(0, 32, 12.0F, 0.0F, 22, () -> cpi.a(cmk.oF)),
+   f(4, 2031, 9.0F, 4.0F, 15, () -> cpi.a(cmk.oG));
 
-   public cnw(cdz $$0, bja $$1, clo $$2, ejv $$3) {
-      this($$0.dN(), $$0, $$1, $$2, $$3);
-   }
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final att<cpi> l;
 
-   public cnw(cny $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
-   }
-
-   protected cnw(csf $$0, @Nullable cdz $$1, bja $$2, clo $$3, ejv $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.a().a($$4.b());
-      this.a = $$0.a_($$4.a()).a(this);
-   }
-
-   public static cnw a(cnw $$0, hx $$1, ib $$2) {
-      return new cnw(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new ejv(
-            new ejz((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+   private cnw(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cpi> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = new att<>($$5);
    }
 
    @Override
-   public hx a() {
-      return this.a ? super.a() : this.b;
+   public int a() {
+      return this.h;
    }
 
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
+   @Override
+   public float b() {
+      return this.i;
    }
 
-   public boolean c() {
-      return this.a;
+   @Override
+   public float c() {
+      return this.j;
    }
 
-   public ib d() {
-      return ib.a(this.o())[0];
+   @Override
+   public int d() {
+      return this.g;
    }
 
-   public ib e() {
-      return ib.a(this.o(), ib.a.b);
+   @Override
+   public int e() {
+      return this.k;
    }
 
-   public ib[] f() {
-      ib[] $$0 = ib.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         ib $$1 = this.k();
-         int $$2 = 0;
-
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
-
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
-      }
+   @Override
+   public cpi f() {
+      return this.l.a();
    }
 }

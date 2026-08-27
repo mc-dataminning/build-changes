@@ -1,44 +1,18 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import javax.annotation.Nullable;
 
 public class aki {
-   public static void a(CommandDispatcher<du> $$0) {
-      RequiredArgumentBuilder<du, ge> $$1 = (RequiredArgumentBuilder<du, ge>)((RequiredArgumentBuilder)dv.a("targets", eg.d())
-            .executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), null, null)))
-         .then(dv.a("*").then(dv.a("sound", eu.a()).suggests(hn.c).executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), null, eu.e($$0x, "sound")))));
-
-      for (aqw $$2 : aqw.values()) {
-         $$1.then(
-            ((LiteralArgumentBuilder)dv.a($$2.a()).executes($$1x -> a((du)$$1x.getSource(), eg.f($$1x, "targets"), $$2, null)))
-               .then(dv.a("sound", eu.a()).suggests(hn.c).executes($$1x -> a((du)$$1x.getSource(), eg.f($$1x, "targets"), $$2, eu.e($$1x, "sound"))))
-         );
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("setidletimeout").requires($$0x -> $$0x.c(3)))
+            .then(dt.a("minutes", IntegerArgumentType.integer(0)).executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "minutes"))))
+      );
    }
 
-   private static int a(du $$0, Collection<amj> $$1, @Nullable aqw $$2, @Nullable agm $$3) {
-      aca $$4 = new aca($$3, $$2);
-
-      for (amj $$5 : $$1) {
-         $$5.c.b($$4);
-      }
-
-      if ($$2 != null) {
-         if ($$3 != null) {
-            $$0.a(() -> uv.a("commands.stopsound.success.source.sound", uv.a($$3), $$2.a()), true);
-         } else {
-            $$0.a(() -> uv.a("commands.stopsound.success.source.any", $$2.a()), true);
-         }
-      } else if ($$3 != null) {
-         $$0.a(() -> uv.a("commands.stopsound.success.sourceless.sound", uv.a($$3)), true);
-      } else {
-         $$0.a(() -> uv.c("commands.stopsound.success.sourceless.any"), true);
-      }
-
-      return $$1.size();
+   private static int a(ds $$0, int $$1) {
+      $$0.l().c($$1);
+      $$0.a(() -> vb.a("commands.setidletimeout.success", $$1), true);
+      return $$1;
    }
 }

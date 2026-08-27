@@ -1,23 +1,20 @@
-public class dfq {
-   private boolean a;
-   private float b;
-   private float c;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   public void a() {
-      this.c = this.b;
-      float $$0 = 0.1F;
-      if (!this.a && this.b > 0.0F) {
-         this.b = Math.max(this.b - 0.1F, 0.0F);
-      } else if (this.a && this.b < 1.0F) {
-         this.b = Math.min(this.b + 0.1F, 1.0F);
-      }
+public class dfq extends dey {
+   public static final MapCodec<dfq> b = b(dfq::new);
+
+   @Override
+   public MapCodec<dfq> a() {
+      return b;
    }
 
-   public float a(float $$0) {
-      return atq.i($$0, this.c, this.b);
+   protected dfq(dio.d $$0) {
+      super(dda.b.d, $$0);
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   public void a(csy $$0, hv $$1, dip $$2, @Nullable blv $$3, cmh $$4) {
+      cwb.gG.a($$0, $$1, $$2, $$3, $$4);
    }
 }

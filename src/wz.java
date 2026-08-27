@@ -1,14 +1,24 @@
-public record wz(alx a) implements wo<wy> {
-   public wz(ty $$0) {
-      this(new alx($$0));
+public class wz implements wu<wx> {
+   private final vb a;
+
+   public wz(vb $$0) {
+      this.a = $$0;
+   }
+
+   public wz(ue $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(ty $$0) {
-      this.a.a($$0);
+   public void a(ue $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(wy $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
+   }
+
+   public vb a() {
+      return this.a;
    }
 }

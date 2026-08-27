@@ -1,50 +1,54 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class ghh {
-   private final gho a;
-   private final etm b;
-   @Nullable
-   private exo c;
-
-   public ghh(gho $$0, etm $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   private void a() {
-      if (this.c != null) {
-         this.a.a(this.c);
-      }
-
-      uv $$0 = uv.c("tutorial.bundleInsert.title");
-      uv $$1 = uv.c("tutorial.bundleInsert.description");
-      this.c = new exo(exo.a.g, $$0, $$1, true);
-      this.a.a(this.c, 160);
-   }
-
-   private void b() {
-      if (this.c != null) {
-         this.a.a(this.c);
-         this.c = null;
-      }
-
-      if (!this.b.t) {
-         this.b.t = true;
-         this.b.as();
-      }
-   }
-
-   public void a(clo $$0, clo $$1, cgz $$2) {
-      if (!this.b.t) {
-         if (!$$0.b() && $$1.a(clr.qR)) {
-            if ($$2 == cgz.a) {
-               this.a();
-            } else if ($$2 == cgz.b) {
-               this.b();
-            }
-         } else if ($$0.a(clr.qR) && !$$1.b() && $$2 == cgz.b) {
-            this.b();
+public interface ghh<T> {
+   static <T> ghh<T> a() {
+      return new ghh<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
          }
+
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
+   }
+
+   static <T> ghh<T> a(List<T> $$0, Function<T, Stream<agt>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final ghk<T> $$2 = new ghk<>();
+         final ghk<T> $$3 = new ghk<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new ghh<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
    }
+
+   List<T> a(String var1);
+
+   List<T> b(String var1);
 }

@@ -1,69 +1,55 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record be(cl.c a, cl.c b, Optional<bq> c, Optional<Boolean> d, Optional<bf> e) {
-   public boolean a(amj $$0, bjt $$1, float $$2, float $$3, boolean $$4) {
-      if (!this.a.d((double)$$2)) {
+public record be(ck.c b, ck.c c, Optional<bp> d, Optional<Boolean> e, Optional<bf> f) {
+   public static final Codec<be> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atg.a(ck.c.d, "dealt", ck.c.c).forGetter(be::a),
+               atg.a(ck.c.d, "taken", ck.c.c).forGetter(be::b),
+               atg.a(bp.a, "source_entity").forGetter(be::c),
+               atg.a(Codec.BOOL, "blocked").forGetter(be::d),
+               atg.a(bf.a, "type").forGetter(be::e)
+            )
+            .apply($$0, be::new)
+   );
+
+   public boolean a(amq $$0, bkd $$1, float $$2, float $$3, boolean $$4) {
+      if (!this.b.d((double)$$2)) {
          return false;
-      } else if (!this.b.d((double)$$3)) {
+      } else if (!this.c.d((double)$$3)) {
          return false;
-      } else if (this.c.isPresent() && !this.c.get().a($$0, $$1.d())) {
+      } else if (this.d.isPresent() && !this.d.get().a($$0, $$1.d())) {
          return false;
       } else {
-         return this.d.isPresent() && this.d.get() != $$4 ? false : !this.e.isPresent() || this.e.get().a($$0, $$1);
+         return this.e.isPresent() && this.e.get() != $$4 ? false : !this.f.isPresent() || this.f.get().a($$0, $$1);
       }
    }
 
-   public static Optional<be> a(@Nullable JsonElement $$0) {
-      if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = atg.m($$0, "damage");
-         cl.c $$2 = cl.c.a($$1.get("dealt"));
-         cl.c $$3 = cl.c.a($$1.get("taken"));
-         Optional<Boolean> $$4 = $$1.has("blocked") ? Optional.of(atg.k($$1, "blocked")) : Optional.empty();
-         Optional<bq> $$5 = bq.a($$1.get("source_entity"));
-         Optional<bf> $$6 = bf.a($$1.get("type"));
-         return $$2.c() && $$3.c() && $$5.isEmpty() && $$4.isEmpty() && $$6.isEmpty() ? Optional.empty() : Optional.of(new be($$2, $$3, $$5, $$4, $$6));
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   public JsonElement a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.add("dealt", this.a.e());
-      $$0.add("taken", this.b.e());
-      this.c.ifPresent($$1 -> $$0.add("source_entity", $$1.a()));
-      this.e.ifPresent($$1 -> $$0.add("type", $$1.a()));
-      this.d.ifPresent($$1 -> $$0.addProperty("blocked", $$1));
-      return $$0;
-   }
-
-   public cl.c b() {
-      return this.a;
-   }
-
-   public cl.c c() {
+   public ck.c a() {
       return this.b;
    }
 
-   public Optional<bq> d() {
+   public ck.c b() {
       return this.c;
    }
 
-   public Optional<Boolean> e() {
+   public Optional<bp> c() {
       return this.d;
    }
 
-   public Optional<bf> f() {
+   public Optional<Boolean> d() {
       return this.e;
    }
 
+   public Optional<bf> e() {
+      return this.f;
+   }
+
    public static class a {
-      private cl.c a = cl.c.c;
-      private cl.c b = cl.c.c;
-      private Optional<bq> c = Optional.empty();
+      private ck.c a = ck.c.c;
+      private ck.c b = ck.c.c;
+      private Optional<bp> c = Optional.empty();
       private Optional<Boolean> d = Optional.empty();
       private Optional<bf> e = Optional.empty();
 
@@ -71,17 +57,17 @@ public record be(cl.c a, cl.c b, Optional<bq> c, Optional<Boolean> d, Optional<b
          return new be.a();
       }
 
-      public be.a a(cl.c $$0) {
+      public be.a a(ck.c $$0) {
          this.a = $$0;
          return this;
       }
 
-      public be.a b(cl.c $$0) {
+      public be.a b(ck.c $$0) {
          this.b = $$0;
          return this;
       }
 
-      public be.a a(bq $$0) {
+      public be.a a(bp $$0) {
          this.c = Optional.of($$0);
          return this;
       }

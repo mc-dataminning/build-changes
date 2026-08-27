@@ -1,111 +1,415 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Queue;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class dmr extends djk {
-   public static final Codec<dmr> c = RecordCodecBuilder.create($$0 -> $$0.group(dvp.a.fieldOf("settings").forGetter(dmr::g)).apply($$0, $$0.stable(dmr::new)));
-   private final dvp d;
+public class dmr<T extends dmg> implements AutoCloseable {
+   static final Logger a = LogUtils.getLogger();
+   final Set<UUID> b = Sets.newHashSet();
+   final dmo<T> c;
+   private final dmj<T> d;
+   private final dmi<T> e;
+   final dml<T> f;
+   private final dmp<T> g;
+   private final Long2ObjectMap<dmt> h = new Long2ObjectOpenHashMap();
+   private final Long2ObjectMap<dmr.b> i = new Long2ObjectOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   private final Queue<dme<T>> k = Queues.newConcurrentLinkedQueue();
 
-   public dmr(dvp $$0) {
-      super(new cto($$0.d()), ac.b($$0::a));
-      this.d = $$0;
+   public dmr(Class<T> $$0, dmo<T> $$1, dmj<T> $$2) {
+      this.e = new dmi<>();
+      this.f = new dml<>($$0, this.h);
+      this.h.defaultReturnValue(dmt.a);
+      this.i.defaultReturnValue(dmr.b.a);
+      this.c = $$1;
+      this.d = $$2;
+      this.g = new dmq<>(this.e, this.f);
+   }
+
+   void a(long $$0, dmk<T> $$1) {
+      if ($$1.a()) {
+         this.f.e($$0);
+      }
+   }
+
+   private boolean b(T $$0) {
+      if (!this.b.add($$0.cw())) {
+         a.warn("UUID of added entity already exists: {}", $$0);
+         return false;
+      } else {
+         return true;
+      }
+   }
+
+   public boolean a(T $$0) {
+      return this.a($$0, false);
+   }
+
+   private boolean a(T $$0, boolean $$1) {
+      if (!this.b($$0)) {
+         return false;
+      } else {
+         long $$2 = ix.c($$0.dm());
+         dmk<T> $$3 = this.f.c($$2);
+         $$3.a($$0);
+         $$0.a(new dmr.a($$0, $$2, $$3));
+         if (!$$1) {
+            this.c.g($$0);
+         }
+
+         dmt $$4 = a($$0, $$3.c());
+         if ($$4.b()) {
+            this.e($$0);
+         }
+
+         if ($$4.a()) {
+            this.c($$0);
+         }
+
+         return true;
+      }
+   }
+
+   static <T extends dmg> dmt a(T $$0, dmt $$1) {
+      return $$0.dL() ? dmt.c : $$1;
+   }
+
+   public void a(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, true));
+   }
+
+   public void b(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, false));
+   }
+
+   void c(T $$0) {
+      this.c.e($$0);
+   }
+
+   void d(T $$0) {
+      this.c.d($$0);
+   }
+
+   void e(T $$0) {
+      this.e.a($$0);
+      this.c.c($$0);
+   }
+
+   void f(T $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+   }
+
+   public void a(csf $$0, ami $$1) {
+      dmt $$2 = dmt.a($$1);
+      this.a($$0, $$2);
+   }
+
+   public void a(csf $$0, dmt $$1) {
+      long $$2 = $$0.a();
+      if ($$1 == dmt.a) {
+         this.h.remove($$2);
+         this.j.add($$2);
+      } else {
+         this.h.put($$2, $$1);
+         this.j.remove($$2);
+         this.b($$2);
+      }
+
+      this.f.b($$2).forEach($$1x -> {
+         dmt $$2x = $$1x.a($$1);
+         boolean $$3 = $$2x.b();
+         boolean $$4 = $$1.b();
+         boolean $$5 = $$2x.a();
+         boolean $$6 = $$1.a();
+         if ($$5 && !$$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dL()).forEach(this::d);
+         }
+
+         if ($$3 && !$$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dL()).forEach(this::f);
+         } else if (!$$3 && $$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dL()).forEach(this::e);
+         }
+
+         if (!$$5 && $$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dL()).forEach(this::c);
+         }
+      });
+   }
+
+   private void b(long $$0) {
+      dmr.b $$1 = (dmr.b)this.i.get($$0);
+      if ($$1 == dmr.b.a) {
+         this.c($$0);
+      }
+   }
+
+   private boolean a(long $$0, Consumer<T> $$1) {
+      dmr.b $$2 = (dmr.b)this.i.get($$0);
+      if ($$2 == dmr.b.b) {
+         return false;
+      } else {
+         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(dmg::dK)).collect(Collectors.toList());
+         if ($$3.isEmpty()) {
+            if ($$2 == dmr.b.c) {
+               this.d.a(new dme<>(new csf($$0), ImmutableList.of()));
+            }
+
+            return true;
+         } else if ($$2 == dmr.b.a) {
+            this.c($$0);
+            return false;
+         } else {
+            this.d.a(new dme<>(new csf($$0), $$3));
+            $$3.forEach($$1);
+            return true;
+         }
+      }
+   }
+
+   private void c(long $$0) {
+      this.i.put($$0, dmr.b.b);
+      csf $$1 = new csf($$0);
+      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
+         a.error("Failed to read chunk {}", $$1, $$1x);
+         return null;
+      });
+   }
+
+   private boolean d(long $$0) {
+      boolean $$1 = this.a($$0, $$0x -> $$0x.cS().forEach(this::g));
+      if (!$$1) {
+         return false;
+      } else {
+         this.i.remove($$0);
+         return true;
+      }
+   }
+
+   private void g(dmg $$0) {
+      $$0.b(blf.c.c);
+      $$0.a(dmh.a);
+   }
+
+   private void g() {
+      this.j.removeIf($$0 -> this.h.get($$0) != dmt.a ? true : this.d($$0));
+   }
+
+   private void h() {
+      dme<T> $$0;
+      while (($$0 = this.k.poll()) != null) {
+         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
+         this.i.put($$0.a().a(), dmr.b.c);
+      }
+   }
+
+   public void a() {
+      this.h();
+      this.g();
+   }
+
+   private LongSet i() {
+      LongSet $$0 = this.f.a();
+      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
+
+      while (var2.hasNext()) {
+         Entry<dmr.b> $$1 = (Entry<dmr.b>)var2.next();
+         if ($$1.getValue() == dmr.b.c) {
+            $$0.add($$1.getLongKey());
+         }
+      }
+
+      return $$0;
+   }
+
+   public void b() {
+      this.i().forEach($$0 -> {
+         boolean $$1 = this.h.get($$0) == dmt.a;
+         if ($$1) {
+            this.d($$0);
+         } else {
+            this.a($$0, $$0x -> {
+            });
+         }
+      });
+   }
+
+   public void c() {
+      LongSet $$0 = this.i();
+
+      while (!$$0.isEmpty()) {
+         this.d.a(false);
+         this.h();
+         $$0.removeIf($$0x -> {
+            boolean $$1 = this.h.get($$0x) == dmt.a;
+            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
+            });
+         });
+      }
+
+      this.d.a(true);
    }
 
    @Override
-   public djl a(ii<dxs> $$0, dnk $$1, long $$2) {
-      Stream<ig<dxs>> $$3 = this.d.c().map(ik::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
-      return djl.a($$1, $$2, this.b, $$3);
+   public void close() throws IOException {
+      this.c();
+      this.d.close();
    }
 
-   @Override
-   protected Codec<? extends djk> a() {
-      return c;
+   public boolean a(UUID $$0) {
+      return this.b.contains($$0);
    }
 
-   public dvp g() {
-      return this.d;
+   public dmp<T> d() {
+      return this.g;
    }
 
-   @Override
-   public void a(amp $$0, csx $$1, dnk $$2, djj $$3) {
+   public boolean a(hv $$0) {
+      return ((dmt)this.h.get(csf.a($$0))).a();
    }
 
-   @Override
-   public int a(csh $$0) {
-      return $$0.J_() + Math.min($$0.K_(), this.d.f().size());
+   public boolean a(csf $$0) {
+      return ((dmt)this.h.get($$0.a())).a();
    }
 
-   @Override
-   public CompletableFuture<djj> a(Executor $$0, dny $$1, dnk $$2, csx $$3, djj $$4) {
-      List<dhn> $$5 = this.d.f();
-      hx.a $$6 = new hx.a();
-      dmw $$7 = $$4.a(dmw.a.c);
-      dmw $$8 = $$4.a(dmw.a.a);
+   public boolean a(long $$0) {
+      return this.i.get($$0) == dmr.b.c;
+   }
 
-      for (int $$9 = 0; $$9 < Math.min($$4.K_(), $$5.size()); $$9++) {
-         dhn $$10 = $$5.get($$9);
-         if ($$10 != null) {
-            int $$11 = $$4.J_() + $$9;
-
-            for (int $$12 = 0; $$12 < 16; $$12++) {
-               for (int $$13 = 0; $$13 < 16; $$13++) {
-                  $$4.a($$6.d($$12, $$11, $$13), $$10, false);
-                  $$7.a($$12, $$11, $$13, $$10);
-                  $$8.a($$12, $$11, $$13, $$10);
+   public void a(Writer $$0) throws IOException {
+      asy $$1 = asy.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
+      this.f.a().forEach($$1x -> {
+         dmr.b $$2 = (dmr.b)this.i.get($$1x);
+         this.f.a($$1x).forEach($$2x -> {
+            dmk<T> $$3 = this.f.d($$2x);
+            if ($$3 != null) {
+               try {
+                  $$1.a(ix.b($$2x), ix.c($$2x), ix.d($$2x), $$3.c(), $$2, $$3.d());
+               } catch (IOException var7) {
+                  throw new UncheckedIOException(var7);
                }
+            }
+         });
+      });
+   }
+
+   @avd
+   public String e() {
+      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
+   }
+
+   @avd
+   public int f() {
+      return this.e.b();
+   }
+
+   class a implements dmh {
+      private final T c;
+      private long d;
+      private dmk<T> e;
+
+      a(T $$0, long $$1, dmk<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      @Override
+      public void a() {
+         hv $$0 = this.c.dm();
+         long $$1 = ix.c($$0);
+         if ($$1 != this.d) {
+            dmt $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               dmr.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, ix.a(this.d), $$1});
+            }
+
+            dmr.this.a(this.d, this.e);
+            dmk<T> $$3 = dmr.this.f.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            this.a($$2, $$3.c());
+         }
+      }
+
+      private void a(dmt $$0, dmt $$1) {
+         dmt $$2 = dmr.a(this.c, $$0);
+         dmt $$3 = dmr.a(this.c, $$1);
+         if ($$2 == $$3) {
+            if ($$3.b()) {
+               dmr.this.c.a(this.c);
+            }
+         } else {
+            boolean $$4 = $$2.b();
+            boolean $$5 = $$3.b();
+            if ($$4 && !$$5) {
+               dmr.this.f(this.c);
+            } else if (!$$4 && $$5) {
+               dmr.this.e(this.c);
+            }
+
+            boolean $$6 = $$2.a();
+            boolean $$7 = $$3.a();
+            if ($$6 && !$$7) {
+               dmr.this.d(this.c);
+            } else if (!$$6 && $$7) {
+               dmr.this.c(this.c);
+            }
+
+            if ($$5) {
+               dmr.this.c.a(this.c);
             }
          }
       }
 
-      return CompletableFuture.completedFuture($$4);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, dmw.a $$2, csh $$3, dnk $$4) {
-      List<dhn> $$5 = this.d.f();
-
-      for (int $$6 = Math.min($$5.size(), $$3.ak()) - 1; $$6 >= 0; $$6--) {
-         dhn $$7 = $$5.get($$6);
-         if ($$7 != null && $$2.e().test($$7)) {
-            return $$3.J_() + $$6 + 1;
+      @Override
+      public void a(blf.c $$0) {
+         if (!this.e.b(this.c)) {
+            dmr.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, ix.a(this.d), $$0});
          }
+
+         dmt $$1 = dmr.a(this.c, this.e.c());
+         if ($$1.a()) {
+            dmr.this.d(this.c);
+         }
+
+         if ($$1.b()) {
+            dmr.this.f(this.c);
+         }
+
+         if ($$0.a()) {
+            dmr.this.c.f(this.c);
+         }
+
+         dmr.this.b.remove(this.c.cw());
+         this.c.a(a);
+         dmr.this.a(this.d, this.e);
       }
-
-      return $$3.J_();
    }
 
-   @Override
-   public csr a(int $$0, int $$1, csh $$2, dnk $$3) {
-      return new csr($$2.J_(), this.d.f().stream().limit((long)$$2.K_()).map($$0x -> $$0x == null ? cvh.a.o() : $$0x).toArray(dhn[]::new));
-   }
-
-   @Override
-   public void a(List<String> $$0, dnk $$1, hx $$2) {
-   }
-
-   @Override
-   public void a(amp $$0, long $$1, dnk $$2, ctf $$3, csx $$4, djj $$5, dms.a $$6) {
-   }
-
-   @Override
-   public void a(amp $$0) {
-   }
-
-   @Override
-   public int f() {
-      return 0;
-   }
-
-   @Override
-   public int d() {
-      return 384;
-   }
-
-   @Override
-   public int e() {
-      return -63;
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

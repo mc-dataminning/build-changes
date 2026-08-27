@@ -1,55 +1,50 @@
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class cml extends clj implements ckp {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-   public static final String c = "Base";
+public class cml extends cmc {
+   private static final String a = "Recipes";
+   private static final Logger b = LogUtils.getLogger();
 
-   public cml(clj.a $$0) {
+   public cml(cmc.a $$0) {
       super($$0);
-      cxk.a(this, ciy.a);
    }
 
    @Override
-   public String j(clo $$0) {
-      return cjh.a($$0) != null ? this.a() + "." + d($$0).b() : super.j($$0);
-   }
+   public bjm<cmh> a(csy $$0, cer $$1, bjk $$2) {
+      cmh $$3 = $$1.b($$2);
+      sj $$4 = $$3.v();
+      if (!$$1.fT().d) {
+         $$1.a($$2, cmh.f);
+      }
 
-   @Override
-   public void a(clo $$0, @Nullable csf $$1, List<uv> $$2, cnf $$3) {
-      cje.a($$0, $$2);
-   }
+      if ($$4 != null && $$4.b("Recipes", 9)) {
+         if (!$$0.B) {
+            sp $$5 = $$4.c("Recipes", 8);
+            List<cpn<?>> $$6 = Lists.newArrayList();
+            cpo $$7 = $$0.n().aG();
 
-   @Override
-   public cnh c(clo $$0) {
-      return cnh.d;
-   }
+            for (int $$8 = 0; $$8 < $$5.size(); $$8++) {
+               String $$9 = $$5.j($$8);
+               Optional<cpn<?>> $$10 = $$7.a(new agt($$9));
+               if (!$$10.isPresent()) {
+                  b.error("Invalid recipe: {}", $$9);
+                  return bjm.d($$3);
+               }
 
-   @Override
-   public int b(clo $$0) {
-      return 72000;
-   }
+               $$6.add($$10.get());
+            }
 
-   @Override
-   public bjc<clo> a(csf $$0, cdz $$1, bja $$2) {
-      clo $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return bjc.b($$3);
-   }
+            $$1.a($$6);
+            $$1.b(arm.c.b(this));
+         }
 
-   @Override
-   public boolean a(clo $$0, clo $$1) {
-      return $$1.a(ars.b) || super.a($$0, $$1);
-   }
-
-   public static ckc d(clo $$0) {
-      sd $$1 = cjh.a($$0);
-      return $$1 != null ? ckc.a($$1.h("Base")) : ckc.a;
-   }
-
-   @Override
-   public bla g() {
-      return bla.b;
+         return bjm.a($$3, $$0.y_());
+      } else {
+         b.error("Tag not valid: {}", $$4);
+         return bjm.d($$3);
+      }
    }
 }

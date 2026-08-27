@@ -1,20 +1,33 @@
-public class dfh extends dex {
-   public dfh(hx $$0, dhn $$1) {
-      super(dfk.C, $$0, $$1, coy.c);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class dfh extends dds implements dfb {
+   public static final MapCodec<dfh> I = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dfb.a.e.fieldOf("weathering_state").forGetter(cxa::c), dip.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, dfh::new)
+   );
+   private final dfb.a J;
+
+   @Override
+   public MapCodec<dfh> a() {
+      return I;
+   }
+
+   public dfh(dfb.a $$0, dip $$1, dio.d $$2) {
+      super($$1, $$2);
+      this.J = $$0;
    }
 
    @Override
-   protected uv l() {
-      return uv.c("container.blast_furnace");
+   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected int a(clo $$0) {
-      return super.a($$0) / 2;
+   public boolean e_(dip $$0) {
+      return dfb.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected cgr a(int $$0, cdy $$1) {
-      return new cgv($$0, $$1, this, this.n);
+   public dfb.a g() {
+      return this.J;
    }
 }

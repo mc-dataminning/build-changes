@@ -1,6 +1,8 @@
-public interface tt extends ue {
-   @Override
-   default wp a() {
-      return wp.b;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface tt {
 }

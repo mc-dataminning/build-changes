@@ -1,20 +1,19 @@
-public interface dlz {
-   dmb a();
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   int b();
+public record dlz(ie<dly> e, dkm f) {
+   public static final Codec<dlz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dly.j.fieldOf("type").forGetter(dlz::a), dkm.a.fieldOf("generator").forGetter(dlz::b)).apply($$0, $$0.stable(dlz::new))
+   );
+   public static final ags<dlz> b = ags.a(kc.aM, new agt("overworld"));
+   public static final ags<dlz> c = ags.a(kc.aM, new agt("the_nether"));
+   public static final ags<dlz> d = ags.a(kc.aM, new agt("the_end"));
 
-   boolean a(ami var1, dlx var2, dlx.a var3, ejz var4);
-
-   default dlz.a c() {
-      return dlz.a.a;
+   public ie<dly> a() {
+      return this.e;
    }
 
-   public static enum a {
-      a,
-      b;
-   }
-
-   public interface b<T extends dlz> {
-      T d();
+   public dkm b() {
+      return this.f;
    }
 }

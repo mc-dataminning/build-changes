@@ -1,188 +1,46 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.Iterator;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class aga<C extends biu> implements afz<Integer> {
-   private static final Logger d = LogUtils.getLogger();
-   protected final ced a = new ced();
-   protected cdy b;
-   protected cie<C> c;
+public interface aga<T> {
+   void a(ue var1, T var2);
 
-   public aga(cie<C> $$0) {
-      this.c = $$0;
+   T a(ue var1);
+
+   default afz<T> a(int $$0) {
+      return new afz<>($$0, this);
    }
 
-   public void a(amj $$0, @Nullable cov<? extends cot<C>> $$1, boolean $$2) {
-      if ($$1 != null && $$0.I().b($$1)) {
-         this.b = $$0.fT();
-         if (this.b() || $$0.f()) {
-            this.a.a();
-            $$0.fT().a(this.a);
-            this.c.a(this.a);
-            if (this.a.a((cot<?>)$$1.b(), null)) {
-               this.a($$1, $$2);
-            } else {
-               this.a();
-               $$0.c.b(new aae($$0.bS.j, $$1));
-            }
+   T a(T var1);
 
-            $$0.fT().e();
+   static <T> aga<T> a(final ue.b<T> $$0, final ue.a<T> $$1) {
+      return new aga.a<T>() {
+         @Override
+         public void a(ue $$0x, T $$1x) {
+            $$0.accept($$0, $$1);
          }
-      }
+
+         @Override
+         public T a(ue $$0x) {
+            return $$1.apply($$0);
+         }
+      };
    }
 
-   protected void a() {
-      for (int $$0 = 0; $$0 < this.c.p(); $$0++) {
-         if (this.c.e($$0)) {
-            clo $$1 = this.c.b($$0).f().p();
-            this.b.a($$1, false);
-            this.c.b($$0).f($$1);
-         }
-      }
-
-      this.c.l();
+   static <T> aga<Optional<T>> b(ue.b<T> $$0, ue.a<T> $$1) {
+      return a($$0.asOptional(), $$1.asOptional());
    }
 
-   protected void a(cov<? extends cot<C>> $$0, boolean $$1) {
-      boolean $$2 = this.c.a($$0);
-      int $$3 = this.a.a($$0, null);
-      if ($$2) {
-         for (int $$4 = 0; $$4 < this.c.o() * this.c.n() + 1; $$4++) {
-            if ($$4 != this.c.m()) {
-               clo $$5 = this.c.b($$4).f();
-               if (!$$5.b() && Math.min($$3, $$5.g()) < $$5.L() + 1) {
-                  return;
-               }
-            }
-         }
-      }
-
-      int $$6 = this.a($$1, $$3, $$2);
-      IntList $$7 = new IntArrayList();
-      if (this.a.a((cot<?>)$$0.b(), $$7, $$6)) {
-         int $$8 = $$6;
-         IntListIterator var8 = $$7.iterator();
-
-         while (var8.hasNext()) {
-            int $$9 = (Integer)var8.next();
-            int $$10 = ced.a($$9).g();
-            if ($$10 < $$8) {
-               $$8 = $$10;
-            }
-         }
-
-         if (this.a.a((cot<?>)$$0.b(), $$7, $$8)) {
-            this.a();
-            this.a(this.c.n(), this.c.o(), this.c.m(), $$0, $$7.iterator(), $$8);
-         }
-      }
+   static <T extends Enum<T>> aga<T> a(Class<T> $$0) {
+      return a(ue::a, $$1 -> $$1.b($$0));
    }
 
-   @Override
-   public void a(Iterator<Integer> $$0, int $$1, int $$2, int $$3, int $$4) {
-      cim $$5 = this.c.b($$1);
-      clo $$6 = ced.a($$0.next());
-      if (!$$6.b()) {
-         for (int $$7 = 0; $$7 < $$2; $$7++) {
-            this.a($$5, $$6);
-         }
-      }
+   static <T> aga<T> a(ik<T> $$0) {
+      return a(($$1, $$2) -> $$1.a($$0, (T)$$2), $$1 -> $$1.a($$0));
    }
 
-   protected int a(boolean $$0, int $$1, boolean $$2) {
-      int $$3 = 1;
-      if ($$0) {
-         $$3 = $$1;
-      } else if ($$2) {
-         $$3 = 64;
-
-         for (int $$4 = 0; $$4 < this.c.n() * this.c.o() + 1; $$4++) {
-            if ($$4 != this.c.m()) {
-               clo $$5 = this.c.b($$4).f();
-               if (!$$5.b() && $$3 > $$5.L()) {
-                  $$3 = $$5.L();
-               }
-            }
-         }
-
-         if ($$3 < 64) {
-            $$3++;
-         }
+   public interface a<T> extends aga<T> {
+      @Override
+      default T a(T $$0) {
+         return $$0;
       }
-
-      return $$3;
-   }
-
-   protected void a(cim $$0, clo $$1) {
-      int $$2 = this.b.c($$1);
-      if ($$2 != -1) {
-         clo $$3 = this.b.a($$2);
-         if (!$$3.b()) {
-            if ($$3.L() > 1) {
-               this.b.a($$2, 1);
-            } else {
-               this.b.b($$2);
-            }
-
-            if ($$0.f().b()) {
-               $$0.f($$3.c(1));
-            } else {
-               $$0.f().g(1);
-            }
-         }
-      }
-   }
-
-   private boolean b() {
-      List<clo> $$0 = Lists.newArrayList();
-      int $$1 = this.c();
-
-      for (int $$2 = 0; $$2 < this.c.n() * this.c.o() + 1; $$2++) {
-         if ($$2 != this.c.m()) {
-            clo $$3 = this.c.b($$2).f().p();
-            if (!$$3.b()) {
-               int $$4 = this.b.d($$3);
-               if ($$4 == -1 && $$0.size() <= $$1) {
-                  for (clo $$5 : $$0) {
-                     if (clo.b($$5, $$3) && $$5.L() != $$5.g() && $$5.L() + $$3.L() <= $$5.g()) {
-                        $$5.g($$3.L());
-                        $$3.f(0);
-                        break;
-                     }
-                  }
-
-                  if (!$$3.b()) {
-                     if ($$0.size() >= $$1) {
-                        return false;
-                     }
-
-                     $$0.add($$3);
-                  }
-               } else if ($$4 == -1) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private int c() {
-      int $$0 = 0;
-
-      for (clo $$1 : this.b.i) {
-         if ($$1.b()) {
-            $$0++;
-         }
-      }
-
-      return $$0;
    }
 }

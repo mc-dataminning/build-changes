@@ -1,4 +1,3 @@
-@FunctionalInterface
-public interface dld {
-   void onChunkStatusChange(crm var1, amb var2);
+interface dld<T> {
+   int onResize(int var1, T var2);
 }

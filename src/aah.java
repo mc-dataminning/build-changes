@@ -1,24 +1,56 @@
-public class aah implements wo<yh> {
-   private final int a;
+public class aah implements wu<yo> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
 
-   public aah(bjq $$0) {
-      this($$0.b());
+   public aah(blf $$0) {
+      this.a = $$0.dr();
+      this.b = $$0.dt();
+      this.c = $$0.dx();
+      this.d = $$0.dC();
+      this.e = $$0.dE();
    }
 
-   public aah(int $$0) {
-      this.a = $$0;
-   }
-
-   public aah(ty $$0) {
-      this.a = $$0.n();
+   public aah(ue $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.c(this.a);
+   public void a(ue $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
+   }
+
+   public double a() {
+      return this.a;
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

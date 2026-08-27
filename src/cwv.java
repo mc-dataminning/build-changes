@@ -1,43 +1,29 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class cwv extends cun {
-   public static final MapCodec<cwv> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwu.a.forGetter($$0x -> $$0x.c), u()).apply($$0, cwv::new));
-   private final cvf c;
+public interface cwv {
+   elu r_ = cvz.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   djg s_ = djf.D;
 
-   @Override
-   public MapCodec<cwv> a() {
-      return b;
-   }
-
-   protected cwv(cvf $$0, dhm.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
-
-   @Override
-   public void b(dhn $$0, csf $$1, hx $$2, dhn $$3, boolean $$4) {
-      this.a($$0, (csg)$$1, $$2);
-   }
-
-   @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.o().a(d, Boolean.valueOf(false)), 2);
-      }
-   }
-
-   @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      if ($$1 == ib.a && !$$0.a($$3, $$4)) {
-         return cvh.a.o();
+   static bjl a(@Nullable blf $$0, dip $$1, csy $$2, hv $$3) {
+      if ($$1.c(s_)) {
+         cvz.a($$2, $$3, new cmh(cmk.wj, 1));
+         float $$4 = aty.b($$2.z, 0.8F, 1.2F);
+         $$2.a(null, $$3, arc.dG, ard.e, 1.0F, $$4);
+         dip $$5 = $$1.a(s_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(dmz.c, $$3, dmz.a.a($$0, $$5));
+         return bjl.a($$2.B);
       } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, ecy.c, ecy.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         return bjl.d;
       }
+   }
+
+   static boolean h_(dip $$0) {
+      return $$0.b(s_) && $$0.c(s_);
+   }
+
+   static ToIntFunction<dip> h_(int $$0) {
+      return $$1 -> $$1.c(djf.D) ? $$0 : 0;
    }
 }

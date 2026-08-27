@@ -1,5 +1,9 @@
-public interface fxx<T extends bkv, M extends fhu<T>> {
-   M a();
+public class fxx extends fyu<byx, fjb<byx>> {
+   public fxx(fxo.a $$0) {
+      super($$0, new fjb<>($$0.a(flx.ab)), 0.3F);
+   }
 
-   agm a(T var1);
+   public agt a(byx $$0) {
+      return $$0.A().a();
+   }
 }

@@ -1,86 +1,181 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-public abstract class fwb<T extends bkv> {
-   protected static final float b = 0.025F;
-   protected final fwa c;
-   private final eur a;
-   protected float d;
-   protected float e = 1.0F;
+public class fwb implements fvt.a {
+   private final Map<Integer, eeo> a = Maps.newHashMap();
+   private final Map<Integer, Float> b = Maps.newHashMap();
+   private final Map<Integer, Long> c = Maps.newHashMap();
+   private static final long d = 5000L;
+   private static final float e = 80.0F;
+   private static final boolean f = true;
+   private static final boolean g = false;
+   private static final boolean h = false;
+   private static final boolean i = true;
+   private static final boolean j = true;
+   private static final float k = 0.02F;
 
-   protected fwb(fwc.a $$0) {
-      this.c = $$0.a();
-      this.a = $$0.h();
+   public void a(int $$0, eeo $$1, float $$2) {
+      this.a.put($$0, $$1);
+      this.c.put($$0, ac.b());
+      this.b.put($$0, $$2);
    }
 
-   public final int b(T $$0, float $$1) {
-      hx $$2 = hx.a($$0.k($$1));
-      return fqy.a(this.a($$0, $$2), this.b($$0, $$2));
-   }
+   @Override
+   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
+      if (!this.a.isEmpty()) {
+         long $$5 = ac.b();
 
-   protected int b(T $$0, hx $$1) {
-      return $$0.dN().a(cso.a, $$1);
-   }
-
-   protected int a(T $$0, hx $$1) {
-      return $$0.bN() ? 15 : $$0.dN().a(cso.b, $$1);
-   }
-
-   public boolean a(T $$0, fub $$1, double $$2, double $$3, double $$4) {
-      if (!$$0.k($$2, $$3, $$4)) {
-         return false;
-      } else if ($$0.at) {
-         return true;
-      } else {
-         eju $$5 = $$0.i_().g(0.5);
-         if ($$5.e() || $$5.a() == 0.0) {
-            $$5 = new eju($$0.ds() - 2.0, $$0.du() - 2.0, $$0.dy() - 2.0, $$0.ds() + 2.0, $$0.du() + 2.0, $$0.dy() + 2.0);
+         for (Integer $$6 : this.a.keySet()) {
+            eeo $$7 = this.a.get($$6);
+            float $$8 = this.b.get($$6);
+            a($$0, $$1, $$7, $$8, true, true, $$2, $$3, $$4);
          }
 
-         return $$1.a($$5);
+         for (Integer $$9 : this.c.keySet().toArray(new Integer[0])) {
+            if ($$5 - this.c.get($$9) > 5000L) {
+               this.a.remove($$9);
+               this.c.remove($$9);
+            }
+         }
       }
    }
 
-   public ejz a(T $$0, float $$1) {
-      return ejz.b;
-   }
+   public static void a(epd $$0, fsi $$1, eeo $$2, float $$3, boolean $$4, boolean $$5, double $$6, double $$7, double $$8) {
+      a($$0, $$1.getBuffer(fsq.a(6.0)), $$2, $$6, $$7, $$8);
+      hv $$9 = $$2.l();
+      if (a($$9, $$6, $$7, $$8) <= 80.0F) {
+         fvt.a(
+            $$0,
+            $$1,
+            new ekw(
+                  (double)((float)$$9.u() + 0.25F),
+                  (double)((float)$$9.v() + 0.25F),
+                  (double)$$9.w() + 0.25,
+                  (double)((float)$$9.u() + 0.75F),
+                  (double)((float)$$9.v() + 0.75F),
+                  (double)((float)$$9.w() + 0.75F)
+               )
+               .d(-$$6, -$$7, -$$8),
+            0.0F,
+            1.0F,
+            0.0F,
+            0.5F
+         );
 
-   public void a(T $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
-      if (this.b($$0)) {
-         this.a($$0, $$0.Q_(), $$3, $$4, $$5);
+         for (int $$10 = 0; $$10 < $$2.e(); $$10++) {
+            eem $$11 = $$2.a($$10);
+            if (a($$11.a(), $$6, $$7, $$8) <= 80.0F) {
+               float $$12 = $$10 == $$2.f() ? 1.0F : 0.0F;
+               float $$13 = $$10 == $$2.f() ? 0.0F : 1.0F;
+               fvt.a(
+                  $$0,
+                  $$1,
+                  new ekw(
+                        (double)((float)$$11.a + 0.5F - $$3),
+                        (double)((float)$$11.b + 0.01F * (float)$$10),
+                        (double)((float)$$11.c + 0.5F - $$3),
+                        (double)((float)$$11.a + 0.5F + $$3),
+                        (double)((float)$$11.b + 0.25F + 0.01F * (float)$$10),
+                        (double)((float)$$11.c + 0.5F + $$3)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  $$12,
+                  0.0F,
+                  $$13,
+                  0.5F
+               );
+            }
+         }
       }
-   }
 
-   protected boolean b(T $$0) {
-      return $$0.cC() || $$0.ae() && $$0 == this.c.c;
-   }
-
-   public abstract agm a(T var1);
-
-   public eur b() {
-      return this.a;
-   }
-
-   protected void a(T $$0, uv $$1, eob $$2, fqz $$3, int $$4) {
-      double $$5 = this.c.b($$0);
-      if (!($$5 > 4096.0)) {
-         boolean $$6 = !$$0.bV();
-         float $$7 = $$0.dj();
-         int $$8 = "deadmau5".equals($$1.getString()) ? -10 : 0;
-         $$2.a();
-         $$2.a(0.0F, $$7, 0.0F);
-         $$2.a(this.c.b());
-         $$2.b(-0.025F, -0.025F, 0.025F);
-         Matrix4f $$9 = $$2.c().a();
-         float $$10 = eti.N().m.a(0.25F);
-         int $$11 = (int)($$10 * 255.0F) << 24;
-         eur $$12 = this.b();
-         float $$13 = (float)(-$$12.a($$1) / 2);
-         $$12.a($$1, $$13, (float)$$8, 553648127, false, $$9, $$3, $$6 ? eur.a.b : eur.a.a, $$11, $$4);
-         if ($$6) {
-            $$12.a($$1, $$13, (float)$$8, -1, false, $$9, $$3, eur.a.a, 0, $$4);
+      eeo.a $$14 = $$2.k();
+      if ($$4 && $$14 != null) {
+         for (eem $$15 : $$14.b()) {
+            if (a($$15.a(), $$6, $$7, $$8) <= 80.0F) {
+               fvt.a(
+                  $$0,
+                  $$1,
+                  new ekw(
+                        (double)((float)$$15.a + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$15.b + 0.01F),
+                        (double)((float)$$15.c + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$15.a + 0.5F + $$3 / 2.0F),
+                        (double)$$15.b + 0.1,
+                        (double)((float)$$15.c + 0.5F + $$3 / 2.0F)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  1.0F,
+                  0.8F,
+                  0.8F,
+                  0.5F
+               );
+            }
          }
 
-         $$2.b();
+         for (eem $$16 : $$14.a()) {
+            if (a($$16.a(), $$6, $$7, $$8) <= 80.0F) {
+               fvt.a(
+                  $$0,
+                  $$1,
+                  new ekw(
+                        (double)((float)$$16.a + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$16.b + 0.01F),
+                        (double)((float)$$16.c + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$16.a + 0.5F + $$3 / 2.0F),
+                        (double)$$16.b + 0.1,
+                        (double)((float)$$16.c + 0.5F + $$3 / 2.0F)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  0.8F,
+                  1.0F,
+                  1.0F,
+                  0.5F
+               );
+            }
+         }
       }
+
+      if ($$5) {
+         for (int $$17 = 0; $$17 < $$2.e(); $$17++) {
+            eem $$18 = $$2.a($$17);
+            if (a($$18.a(), $$6, $$7, $$8) <= 80.0F) {
+               fvt.a($$0, $$1, String.valueOf($$18.l), (double)$$18.a + 0.5, (double)$$18.b + 0.75, (double)$$18.c + 0.5, -1, 0.02F, true, 0.0F, true);
+               fvt.a(
+                  $$0,
+                  $$1,
+                  String.format(Locale.ROOT, "%.2f", $$18.k),
+                  (double)$$18.a + 0.5,
+                  (double)$$18.b + 0.25,
+                  (double)$$18.c + 0.5,
+                  -1,
+                  0.02F,
+                  true,
+                  0.0F,
+                  true
+               );
+            }
+         }
+      }
+   }
+
+   public static void a(epd $$0, eph $$1, eeo $$2, double $$3, double $$4, double $$5) {
+      for (int $$6 = 0; $$6 < $$2.e(); $$6++) {
+         eem $$7 = $$2.a($$6);
+         if (!(a($$7.a(), $$3, $$4, $$5) > 80.0F)) {
+            float $$8 = (float)$$6 / (float)$$2.e() * 0.33F;
+            int $$9 = $$6 == 0 ? 0 : aty.h($$8, 0.9F, 0.9F);
+            int $$10 = $$9 >> 16 & 0xFF;
+            int $$11 = $$9 >> 8 & 0xFF;
+            int $$12 = $$9 & 0xFF;
+            $$1.a($$0.c().a(), (float)((double)$$7.a - $$3 + 0.5), (float)((double)$$7.b - $$4 + 0.5), (float)((double)$$7.c - $$5 + 0.5))
+               .a($$10, $$11, $$12, 255)
+               .e();
+         }
+      }
+   }
+
+   private static float a(hv $$0, double $$1, double $$2, double $$3) {
+      return (float)(Math.abs((double)$$0.u() - $$1) + Math.abs((double)$$0.v() - $$2) + Math.abs((double)$$0.w() - $$3));
    }
 }

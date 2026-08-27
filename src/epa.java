@@ -1,28 +1,104 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.Set;
+public interface epa extends eph {
+   epj j();
 
-public class epa extends epx {
-   public Set<String> a = Sets.newHashSet();
+   void f();
 
-   public static epa a(String $$0) {
-      epa $$1 = new epa();
-      JsonParser $$2 = new JsonParser();
+   void a(int var1, byte var2);
 
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         JsonElement $$5 = $$4.get("ops");
-         if ($$5.isJsonArray()) {
-            for (JsonElement $$6 : $$5.getAsJsonArray()) {
-               $$1.a.add($$6.getAsString());
-            }
-         }
-      } catch (Exception var8) {
+   void a(int var1, short var2);
+
+   void a(int var1, float var2);
+
+   @Override
+   default eph a(double $$0, double $$1, double $$2) {
+      if (this.j().b() != epj.b.a) {
+         return this;
+      } else if (this.j().a() == epj.a.a && this.j().c() == 3) {
+         this.a(0, (float)$$0);
+         this.a(4, (float)$$1);
+         this.a(8, (float)$$2);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
       }
+   }
 
-      return $$1;
+   @Override
+   default eph a(int $$0, int $$1, int $$2, int $$3) {
+      epj $$4 = this.j();
+      if ($$4.b() != epj.b.c) {
+         return this;
+      } else if ($$4.a() == epj.a.b && $$4.c() == 4) {
+         this.a(0, (byte)$$0);
+         this.a(1, (byte)$$1);
+         this.a(2, (byte)$$2);
+         this.a(3, (byte)$$3);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
+   }
+
+   @Override
+   default eph a(float $$0, float $$1) {
+      epj $$2 = this.j();
+      if ($$2.b() == epj.b.d && $$2.d() == 0) {
+         if ($$2.a() == epj.a.a && $$2.c() == 2) {
+            this.a(0, $$0);
+            this.a(4, $$1);
+            this.f();
+            return this;
+         } else {
+            throw new IllegalStateException();
+         }
+      } else {
+         return this;
+      }
+   }
+
+   @Override
+   default eph a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 1);
+   }
+
+   @Override
+   default eph b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 2);
+   }
+
+   default eph a(short $$0, short $$1, int $$2) {
+      epj $$3 = this.j();
+      if ($$3.b() != epj.b.d || $$3.d() != $$2) {
+         return this;
+      } else if ($$3.a() == epj.a.e && $$3.c() == 2) {
+         this.a(0, $$0);
+         this.a(2, $$1);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
+   }
+
+   @Override
+   default eph a(float $$0, float $$1, float $$2) {
+      epj $$3 = this.j();
+      if ($$3.b() != epj.b.b) {
+         return this;
+      } else if ($$3.a() == epj.a.c && $$3.c() == 3) {
+         this.a(0, a($$0));
+         this.a(1, a($$1));
+         this.a(2, a($$2));
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
+   }
+
+   static byte a(float $$0) {
+      return (byte)((int)(aty.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
    }
 }

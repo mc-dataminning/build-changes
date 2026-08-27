@@ -1,57 +1,92 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public interface cto extends cse {
+   ia[] C = ia.values();
 
-public class cto extends cth implements ctf.a {
-   public static final Codec<cto> b = ctd.c.fieldOf("biome").xmap(cto::new, $$0 -> $$0.c).stable().codec();
-   private final ig<ctd> c;
-
-   public cto(ig<ctd> $$0) {
-      this.c = $$0;
+   default int a(hv $$0, ia $$1) {
+      return this.a_($$0).c(this, $$0, $$1);
    }
 
-   @Override
-   protected Stream<ig<ctd>> b() {
-      return Stream.of(this.c);
-   }
-
-   @Override
-   protected Codec<? extends cth> a() {
-      return b;
-   }
-
-   @Override
-   public ig<ctd> getNoiseBiome(int $$0, int $$1, int $$2, ctm.f $$3) {
-      return this.c;
-   }
-
-   @Override
-   public ig<ctd> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.c;
-   }
-
-   @Nullable
-   @Override
-   public Pair<hx, ig<ctd>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ig<ctd>> $$5, atw $$6, boolean $$7, ctm.f $$8) {
-      if ($$5.test(this.c)) {
-         return $$7 ? Pair.of(new hx($$0, $$1, $$2), this.c) : Pair.of(new hx($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+   default int e_(hv $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.d(), ia.a));
+      if ($$1 >= 15) {
+         return $$1;
       } else {
-         return null;
+         $$1 = Math.max($$1, this.a($$0.c(), ia.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.e(), ia.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.f(), ia.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.g(), ia.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.h(), ia.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
       }
    }
 
-   @Nullable
-   @Override
-   public Pair<hx, ig<ctd>> a(hx $$0, int $$1, int $$2, int $$3, Predicate<ig<ctd>> $$4, ctm.f $$5, csi $$6) {
-      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   default int a(hv $$0, ia $$1, boolean $$2) {
+      dip $$3 = this.a_($$0);
+      if ($$2) {
+         return cyb.h($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(cwb.ha)) {
+         return 15;
+      } else if ($$3.a(cwb.cw)) {
+         return $$3.c(dca.f);
+      } else {
+         return $$3.m() ? this.a($$0, $$1) : 0;
+      }
    }
 
-   @Override
-   public Set<ig<ctd>> a(int $$0, int $$1, int $$2, int $$3, ctm.f $$4) {
-      return Sets.newHashSet(Set.of(this.c));
+   default boolean b(hv $$0, ia $$1) {
+      return this.c($$0, $$1) > 0;
+   }
+
+   default int c(hv $$0, ia $$1) {
+      dip $$2 = this.a_($$0);
+      int $$3 = $$2.b(this, $$0, $$1);
+      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   }
+
+   default boolean B(hv $$0) {
+      if (this.c($$0.d(), ia.a) > 0) {
+         return true;
+      } else if (this.c($$0.c(), ia.b) > 0) {
+         return true;
+      } else if (this.c($$0.e(), ia.c) > 0) {
+         return true;
+      } else if (this.c($$0.f(), ia.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.g(), ia.e) > 0 ? true : this.c($$0.h(), ia.f) > 0;
+      }
+   }
+
+   default int C(hv $$0) {
+      int $$1 = 0;
+
+      for (ia $$2 : C) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1;
    }
 }

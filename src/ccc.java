@@ -1,188 +1,210 @@
 import com.google.common.collect.Maps;
-import java.util.EnumSet;
 import java.util.Map;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class ccc extends cav {
-   private static final String b = "Johnny";
-   static final Predicate<biy> e = $$0 -> $$0 == biy.c || $$0 == biy.d;
-   boolean bT;
+public class ccc extends cbh implements cbm, cec {
+   private static final afz<Boolean> b = agc.a(ccc.class, agb.k);
+   private static final int e = 5;
+   private static final int bT = 300;
+   private static final float bU = 1.6F;
+   private final bjt bV = new bjt(5);
 
-   public ccc(bkz<? extends ccc> $$0, csf $$1) {
+   public ccc(blj<? extends ccc> $$0, csy $$1) {
       super($$0, $$1);
    }
 
    @Override
    protected void B() {
       super.B();
-      this.bO.a(0, new bsa(this));
-      this.bO.a(1, new ccc.a(this));
-      this.bO.a(2, new cav.b(this));
-      this.bO.a(3, new cfh.a(this, 10.0F));
-      this.bO.a(4, new bsq(this, 1.0, false));
-      this.bP.a(1, new bty(this, cfh.class).a());
-      this.bP.a(2, new btz<>(this, cdz.class, true));
-      this.bP.a(3, new btz<>(this, cdh.class, true));
-      this.bP.a(3, new btz<>(this, bxi.class, true));
-      this.bP.a(4, new ccc.b(this));
-      this.bO.a(8, new btd(this, 0.6));
-      this.bO.a(9, new bso(this, cdz.class, 3.0F, 1.0F));
-      this.bO.a(10, new bso(this, bln.class, 8.0F));
+      this.bO.a(0, new bsl(this));
+      this.bO.a(2, new cga.a(this, 10.0F));
+      this.bO.a(3, new bts<>(this, 1.0, 8.0F));
+      this.bO.a(8, new bto(this, 0.6));
+      this.bO.a(9, new bsz(this, cer.class, 15.0F, 1.0F));
+      this.bO.a(10, new bsz(this, blx.class, 15.0F));
+      this.bP.a(1, new buj(this, cga.class).a());
+      this.bP.a(2, new buk<>(this, cer.class, true));
+      this.bP.a(3, new buk<>(this, cdz.class, false));
+      this.bP.a(3, new buk<>(this, bxu.class, true));
+   }
+
+   public static bna.a w() {
+      return cbz.gk().a(bnb.m, 0.35F).a(bnb.l, 24.0).a(bnb.c, 5.0).a(bnb.g, 32.0);
    }
 
    @Override
-   protected void Z() {
-      if (!this.fV() && bwc.a(this)) {
-         boolean $$0 = ((ami)this.dN()).d(this.dn());
-         ((but)this.N()).b($$0);
-      }
-
-      super.Z();
-   }
-
-   public static bmq.a w() {
-      return cbn.gl().a(bmr.m, 0.35F).a(bmr.g, 12.0).a(bmr.l, 24.0).a(bmr.c, 5.0);
+   protected void c_() {
+      super.c_();
+      this.an.a(b, false);
    }
 
    @Override
-   public void b(sd $$0) {
+   public boolean a(cmx $$0) {
+      return $$0 == cmk.vM;
+   }
+
+   public boolean ge() {
+      return this.an.b(b);
+   }
+
+   @Override
+   public void b(boolean $$0) {
+      this.an.b(b, $$0);
+   }
+
+   @Override
+   public void a() {
+      this.bb = 0;
+   }
+
+   @Override
+   public void b(sj $$0) {
       super.b($$0);
-      if (this.bT) {
-         $$0.a("Johnny", true);
-      }
+      this.a_($$0);
    }
 
    @Override
-   public cav.a u() {
-      if (this.fX()) {
-         return cav.a.b;
+   public cbh.a u() {
+      if (this.ge()) {
+         return cbh.a.f;
+      } else if (this.b(cmk.vM)) {
+         return cbh.a.e;
       } else {
-         return this.gw() ? cav.a.g : cav.a.a;
+         return this.fW() ? cbh.a.b : cbh.a.h;
       }
    }
 
    @Override
-   public void a(sd $$0) {
+   public void a(sj $$0) {
       super.a($$0);
-      if ($$0.b("Johnny", 99)) {
-         this.bT = $$0.q("Johnny");
-      }
+      this.c($$0);
+      this.s(true);
    }
 
    @Override
-   public aqu af_() {
-      return aqv.zH;
+   public float a(hv $$0, ctb $$1) {
+      return 0.0F;
+   }
+
+   @Override
+   public int fI() {
+      return 1;
    }
 
    @Nullable
    @Override
-   public bme a(csu $$0, biz $$1, blp $$2, @Nullable bme $$3, @Nullable sd $$4) {
-      bme $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      ((but)this.N()).b(true);
-      atw $$6 = $$0.F_();
-      this.a($$6, $$1);
-      this.b($$6, $$1);
-      return $$5;
+   public bmo a(ctn $$0, bjj $$1, blz $$2, @Nullable bmo $$3, @Nullable sj $$4) {
+      auf $$5 = $$0.F_();
+      this.a($$5, $$1);
+      this.b($$5, $$1);
+      return super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected void a(atw $$0, biz $$1) {
-      if (this.gt() == null) {
-         this.a(bla.a, new clo(clr.pa));
+   protected void a(auf $$0, bjj $$1) {
+      this.a(blk.a, new cmh(cmk.vM));
+   }
+
+   @Override
+   protected void a(auf $$0, float $$1) {
+      super.a($$0, $$1);
+      if ($$0.a(300) == 0) {
+         cmh $$2 = this.eT();
+         if ($$2.a(cmk.vM)) {
+            Map<cqs, Integer> $$3 = cqu.a($$2);
+            $$3.putIfAbsent(cqw.K, 1);
+            cqu.a($$3, $$2);
+            this.a(blk.a, $$2);
+         }
       }
    }
 
    @Override
-   public boolean s(bkv $$0) {
+   public boolean s(blf $$0) {
       if (super.s($$0)) {
          return true;
       } else {
-         return $$0 instanceof bll && ((bll)$$0).eT() == blq.d ? this.cg() == null && $$0.cg() == null : false;
+         return $$0 instanceof blv && ((blv)$$0).eS() == bma.d ? this.cg() == null && $$0.cg() == null : false;
       }
    }
 
    @Override
-   public void b(@Nullable uv $$0) {
-      super.b($$0);
-      if (!this.bT && $$0 != null && $$0.getString().equals("Johnny")) {
-         this.bT = true;
+   protected arb y() {
+      return arc.sY;
+   }
+
+   @Override
+   protected arb n_() {
+      return arc.ta;
+   }
+
+   @Override
+   protected arb d(bkd $$0) {
+      return arc.tb;
+   }
+
+   @Override
+   public void a(blv $$0, float $$1) {
+      this.b(this, 1.6F);
+   }
+
+   @Override
+   public void a(blv $$0, cmh $$1, cfj $$2, float $$3) {
+      this.a(this, $$0, $$2, $$3, 1.6F);
+   }
+
+   @Override
+   public bjt A() {
+      return this.bV;
+   }
+
+   @Override
+   protected void b(cbe $$0) {
+      cmh $$1 = $$0.q();
+      if ($$1.d() instanceof cjx) {
+         super.b($$0);
+      } else if (this.l($$1)) {
+         this.a($$0);
+         cmh $$2 = this.bV.a($$1);
+         if ($$2.b()) {
+            $$0.am();
+         } else {
+            $$1.f($$2.L());
+         }
       }
    }
 
-   @Override
-   protected aqu y() {
-      return aqv.zG;
+   private boolean l(cmh $$0) {
+      return this.gt() && $$0.a(cmk.uI);
    }
 
    @Override
-   protected aqu n_() {
-      return aqv.zI;
-   }
-
-   @Override
-   protected aqu d(bjt $$0) {
-      return aqv.zJ;
+   public bmn a_(int $$0) {
+      int $$1 = $$0 - 300;
+      return $$1 >= 0 && $$1 < this.bV.b() ? bmn.a(this.bV, $$1) : super.a_($$0);
    }
 
    @Override
    public void a(int $$0, boolean $$1) {
-      clo $$2 = new clo(clr.pa);
-      cfg $$3 = this.gt();
-      int $$4 = 1;
-      if ($$0 > $$3.a(biy.c)) {
-         $$4 = 2;
-      }
+      cfz $$2 = this.gs();
+      boolean $$3 = this.ag.i() <= $$2.w();
+      if ($$3) {
+         cmh $$4 = new cmh(cmk.vM);
+         Map<cqs, Integer> $$5 = Maps.newHashMap();
+         if ($$0 > $$2.a(bji.c)) {
+            $$5.put(cqw.J, 2);
+         } else if ($$0 > $$2.a(bji.b)) {
+            $$5.put(cqw.J, 1);
+         }
 
-      boolean $$5 = this.ag.i() <= $$3.w();
-      if ($$5) {
-         Map<cpz, Integer> $$6 = Maps.newHashMap();
-         $$6.put(cqd.n, $$4);
-         cqb.a($$6, $$2);
-      }
-
-      this.a(bla.a, $$2);
-   }
-
-   static class a extends brq {
-      public a(bln $$0) {
-         super($$0, 6, ccc.e);
-         this.a(EnumSet.of(bsg.a.a));
-      }
-
-      @Override
-      public boolean b() {
-         ccc $$0 = (ccc)this.d;
-         return $$0.gu() && super.b();
-      }
-
-      @Override
-      public boolean a() {
-         ccc $$0 = (ccc)this.d;
-         return $$0.gu() && $$0.ag.a(b(10)) == 0 && super.a();
-      }
-
-      @Override
-      public void c() {
-         super.c();
-         this.d.o(0);
+         $$5.put(cqw.I, 1);
+         cqu.a($$5, $$4);
+         this.a(blk.a, $$4);
       }
    }
 
-   static class b extends btz<bll> {
-      public b(ccc $$0) {
-         super($$0, bll.class, 0, true, true, bll::fA);
-      }
-
-      @Override
-      public boolean a() {
-         return ((ccc)this.e).bT && super.a();
-      }
-
-      @Override
-      public void c() {
-         super.c();
-         this.e.o(0);
-      }
+   @Override
+   public arb af_() {
+      return arc.sZ;
    }
 }

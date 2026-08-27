@@ -1,108 +1,95 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record bn(Optional<cb> c, Optional<cb> d, Optional<cb> e, Optional<cb> f, Optional<cb> g, Optional<cb> h) {
+public record bn(Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, Optional<Boolean> e, Optional<Boolean> f) {
    public static final Codec<bn> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               asy.a(cb.a, "head").forGetter(bn::a),
-               asy.a(cb.a, "chest").forGetter(bn::b),
-               asy.a(cb.a, "legs").forGetter(bn::c),
-               asy.a(cb.a, "feet").forGetter(bn::d),
-               asy.a(cb.a, "mainhand").forGetter(bn::e),
-               asy.a(cb.a, "offhand").forGetter(bn::f)
+               atg.a(Codec.BOOL, "is_on_fire").forGetter(bn::a),
+               atg.a(Codec.BOOL, "is_sneaking").forGetter(bn::b),
+               atg.a(Codec.BOOL, "is_sprinting").forGetter(bn::c),
+               atg.a(Codec.BOOL, "is_swimming").forGetter(bn::d),
+               atg.a(Codec.BOOL, "is_baby").forGetter(bn::e)
             )
             .apply($$0, bn::new)
    );
-   public static final bn b = bn.a.a().a(cb.a.a().a(clr.uH).a(cfg.s().v())).b();
 
-   public boolean a(@Nullable bkv $$0) {
-      if ($$0 instanceof bll $$1) {
-         if (this.c.isPresent() && !this.c.get().a($$1.c(bla.f))) {
-            return false;
-         } else if (this.d.isPresent() && !this.d.get().a($$1.c(bla.e))) {
-            return false;
-         } else if (this.e.isPresent() && !this.e.get().a($$1.c(bla.d))) {
-            return false;
-         } else if (this.f.isPresent() && !this.f.get().a($$1.c(bla.c))) {
-            return false;
-         } else {
-            return this.g.isPresent() && !this.g.get().a($$1.c(bla.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.c(bla.b));
-         }
-      } else {
+   public boolean a(blf $$0) {
+      if (this.b.isPresent() && $$0.bN() != this.b.get()) {
          return false;
+      } else if (this.c.isPresent() && $$0.bX() != this.c.get()) {
+         return false;
+      } else if (this.d.isPresent() && $$0.bY() != this.d.get()) {
+         return false;
+      } else if (this.e.isPresent() && $$0.bZ() != this.e.get()) {
+         return false;
+      } else {
+         if (this.f.isPresent() && $$0 instanceof blv $$1 && $$1.o_() != this.f.get()) {
+            return false;
+         }
+
+         return true;
       }
    }
 
-   public Optional<cb> a() {
+   public Optional<Boolean> a() {
+      return this.b;
+   }
+
+   public Optional<Boolean> b() {
       return this.c;
    }
 
-   public Optional<cb> b() {
+   public Optional<Boolean> c() {
       return this.d;
    }
 
-   public Optional<cb> c() {
+   public Optional<Boolean> d() {
       return this.e;
    }
 
-   public Optional<cb> d() {
+   public Optional<Boolean> e() {
       return this.f;
    }
 
-   public Optional<cb> e() {
-      return this.g;
-   }
-
-   public Optional<cb> f() {
-      return this.h;
-   }
-
    public static class a {
-      private Optional<cb> a = Optional.empty();
-      private Optional<cb> b = Optional.empty();
-      private Optional<cb> c = Optional.empty();
-      private Optional<cb> d = Optional.empty();
-      private Optional<cb> e = Optional.empty();
-      private Optional<cb> f = Optional.empty();
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+      private Optional<Boolean> c = Optional.empty();
+      private Optional<Boolean> d = Optional.empty();
+      private Optional<Boolean> e = Optional.empty();
 
       public static bn.a a() {
          return new bn.a();
       }
 
-      public bn.a a(cb.a $$0) {
-         this.a = Optional.of($$0.b());
+      public bn.a a(Boolean $$0) {
+         this.a = Optional.of($$0);
          return this;
       }
 
-      public bn.a b(cb.a $$0) {
-         this.b = Optional.of($$0.b());
+      public bn.a b(Boolean $$0) {
+         this.b = Optional.of($$0);
          return this;
       }
 
-      public bn.a c(cb.a $$0) {
-         this.c = Optional.of($$0.b());
+      public bn.a c(Boolean $$0) {
+         this.c = Optional.of($$0);
          return this;
       }
 
-      public bn.a d(cb.a $$0) {
-         this.d = Optional.of($$0.b());
+      public bn.a d(Boolean $$0) {
+         this.d = Optional.of($$0);
          return this;
       }
 
-      public bn.a e(cb.a $$0) {
-         this.e = Optional.of($$0.b());
-         return this;
-      }
-
-      public bn.a f(cb.a $$0) {
-         this.f = Optional.of($$0.b());
+      public bn.a e(Boolean $$0) {
+         this.e = Optional.of($$0);
          return this;
       }
 
       public bn b() {
-         return new bn(this.a, this.b, this.c, this.d, this.e, this.f);
+         return new bn(this.a, this.b, this.c, this.d, this.e);
       }
    }
 }

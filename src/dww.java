@@ -1,24 +1,16 @@
 import com.mojang.serialization.Codec;
 
-public class dww extends dws {
-   public static final Codec<dww> a = asy.j.fieldOf("chance").xmap(dww::new, $$0 -> $$0.c).codec();
-   private final int c;
+public interface dww<P extends dwv> {
+   dww<dwu> a = a("constant", dwu.b);
+   dww<dwy> b = a("uniform", dwy.a);
+   dww<dwt> c = a("biased_to_bottom", dwt.a);
+   dww<dwz> d = a("very_biased_to_bottom", dwz.a);
+   dww<dwx> e = a("trapezoid", dwx.a);
+   dww<dxa> f = a("weighted_list", dxa.a);
 
-   private dww(int $$0) {
-      this.c = $$0;
-   }
+   Codec<P> codec();
 
-   public static dww a(int $$0) {
-      return new dww($$0);
-   }
-
-   @Override
-   protected boolean a(dwr $$0, atw $$1, hx $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
-   }
-
-   @Override
-   public dwu<?> b() {
-      return dwu.b;
+   private static <P extends dwv> dww<P> a(String $$0, Codec<P> $$1) {
+      return ir.a(kb.N, $$0, () -> $$1);
    }
 }

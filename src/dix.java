@@ -1,23 +1,18 @@
-public enum dix implements auk {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String e;
-   private final uv f;
+public class dix implements Predicate<dip> {
+   private final cvz a;
 
-   private dix(String $$0) {
-      this.e = $$0;
-      this.f = uv.c("structure_block.mode_info." + $$0);
+   public dix(cvz $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static dix a(cvz $$0) {
+      return new dix($$0);
    }
 
-   public uv a() {
-      return this.f;
+   public boolean a(@Nullable dip $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

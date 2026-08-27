@@ -1,60 +1,39 @@
-import com.google.common.collect.Maps;
-import java.util.Collection;
-import java.util.Map;
+import com.mojang.authlib.GameProfileRepository;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+import java.io.File;
 import javax.annotation.Nullable;
 
-public class ahm {
-   private final Map<agm, ahl> a = Maps.newHashMap();
+public record ahm(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, aqb d) {
+   private static final String e = "usercache.json";
+
+   public static ahm a(YggdrasilAuthenticationService $$0, File $$1) {
+      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
+      GameProfileRepository $$3 = $$0.createProfileRepository();
+      aqb $$4 = new aqb($$3, new File($$1, "usercache.json"));
+      return new ahm($$2, $$0.getServicesKeySet(), $$3, $$4);
+   }
 
    @Nullable
-   public ahl a(agm $$0) {
-      return this.a.get($$0);
+   public aul a() {
+      return aul.a(this.b, ServicesKeyType.PROFILE_KEY);
    }
 
-   public ahl a(agm $$0, uv $$1) {
-      ahl $$2 = new ahl($$0, $$1);
-      this.a.put($$0, $$2);
-      return $$2;
+   public MinecraftSessionService b() {
+      return this.a;
    }
 
-   public void a(ahl $$0) {
-      this.a.remove($$0.a());
+   public ServicesKeySet c() {
+      return this.b;
    }
 
-   public Collection<agm> a() {
-      return this.a.keySet();
+   public GameProfileRepository d() {
+      return this.c;
    }
 
-   public Collection<ahl> b() {
-      return this.a.values();
-   }
-
-   public sd c() {
-      sd $$0 = new sd();
-
-      for (ahl $$1 : this.a.values()) {
-         $$0.a($$1.a().toString(), $$1.f());
-      }
-
-      return $$0;
-   }
-
-   public void a(sd $$0) {
-      for (String $$1 : $$0.e()) {
-         agm $$2 = new agm($$1);
-         this.a.put($$2, ahl.a($$0.p($$1), $$2));
-      }
-   }
-
-   public void a(amj $$0) {
-      for (ahl $$1 : this.a.values()) {
-         $$1.c($$0);
-      }
-   }
-
-   public void b(amj $$0) {
-      for (ahl $$1 : this.a.values()) {
-         $$1.d($$0);
-      }
+   public aqb e() {
+      return this.d;
    }
 }

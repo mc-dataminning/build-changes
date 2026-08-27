@@ -1,81 +1,64 @@
-public class aby implements wo<yh> {
-   public static final float a = 8.0F;
-   private final ig<aqu> b;
-   private final aqw c;
-   private final int d;
-   private final int e;
-   private final int f;
-   private final float g;
-   private final float h;
-   private final long i;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public aby(ig<aqu> $$0, aqw $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = (int)($$2 * 8.0);
-      this.e = (int)($$3 * 8.0);
-      this.f = (int)($$4 * 8.0);
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+public class aby implements wu<yo> {
+   private final String a;
+   @Nullable
+   private final String b;
+   private final int c;
+   private final ahk.a d;
+
+   public aby(ahk.a $$0, @Nullable String $$1, String $$2, int $$3) {
+      if ($$0 != ahk.a.b && $$1 == null) {
+         throw new IllegalArgumentException("Need an objective name");
+      } else {
+         this.a = $$2;
+         this.b = $$1;
+         this.c = $$3;
+         this.d = $$0;
+      }
    }
 
-   public aby(ty $$0) {
-      this.b = $$0.a(kc.c.t(), aqu::b);
-      this.c = $$0.b(aqw.class);
-      this.d = $$0.readInt();
-      this.e = $$0.readInt();
-      this.f = $$0.readInt();
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
-      this.i = $$0.readLong();
+   public aby(ue $$0) {
+      this.a = $$0.s();
+      this.d = $$0.b(ahk.a.class);
+      String $$1 = $$0.s();
+      this.b = Objects.equals($$1, "") ? null : $$1;
+      if (this.d != ahk.a.b) {
+         this.c = $$0.n();
+      } else {
+         this.c = 0;
+      }
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(kc.c.t(), this.b, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.p(this.e);
-      $$0.p(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.b(this.i);
+   public void a(ue $$0) {
+      $$0.a(this.a);
+      $$0.a(this.d);
+      $$0.a(this.b == null ? "" : this.b);
+      if (this.d != ahk.a.b) {
+         $$0.c(this.c);
+      }
    }
 
-   public ig<aqu> a() {
+   public void a(yo $$0) {
+      $$0.a(this);
+   }
+
+   public String a() {
+      return this.a;
+   }
+
+   @Nullable
+   public String d() {
       return this.b;
    }
 
-   public aqw d() {
+   public int e() {
       return this.c;
    }
 
-   public double e() {
-      return (double)((float)this.d / 8.0F);
-   }
-
-   public double f() {
-      return (double)((float)this.e / 8.0F);
-   }
-
-   public double g() {
-      return (double)((float)this.f / 8.0F);
-   }
-
-   public float h() {
-      return this.g;
-   }
-
-   public float i() {
-      return this.h;
-   }
-
-   public long j() {
-      return this.i;
-   }
-
-   public void a(yh $$0) {
-      $$0.a(this);
+   public ahk.a f() {
+      return this.d;
    }
 }

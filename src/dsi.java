@@ -1,16 +1,40 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsi implements dse {
-   public static final Codec<dsi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dkw.c).fieldOf("height").forGetter($$0x -> $$0x.b), dhn.b.fieldOf("state").forGetter($$0x -> $$0x.c))
-            .apply($$0, dsi::new)
-   );
-   public final int b;
-   public final dhn c;
+public class dsi extends drc<dtq> {
+   public dsi(Codec<dtq> $$0) {
+      super($$0);
+   }
 
-   public dsi(int $$0, dhn $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   @Override
+   public boolean a(dre<dtq> $$0) {
+      boolean $$1 = false;
+      auf $$2 = $$0.d();
+      ctt $$3 = $$0.b();
+      hv $$4 = $$0.e();
+      dtq $$5 = $$0.f();
+      int $$6 = $$2.a(8) - $$2.a(8);
+      int $$7 = $$2.a(8) - $$2.a(8);
+      int $$8 = $$3.a(dny.a.d, $$4.u() + $$6, $$4.w() + $$7);
+      hv $$9 = new hv($$4.u() + $$6, $$8, $$4.w() + $$7);
+      if ($$3.a_($$9).a(cwb.G)) {
+         boolean $$10 = $$2.j() < (double)$$5.l;
+         dip $$11 = $$10 ? cwb.bx.o() : cwb.bw.o();
+         if ($$11.a($$3, $$9)) {
+            if ($$10) {
+               dip $$12 = $$11.a(dee.d, djl.a);
+               hv $$13 = $$9.c();
+               if ($$3.a_($$13).a(cwb.G)) {
+                  $$3.a($$9, $$11, 2);
+                  $$3.a($$13, $$12, 2);
+               }
+            } else {
+               $$3.a($$9, $$11, 2);
+            }
+
+            $$1 = true;
+         }
+      }
+
+      return $$1;
    }
 }

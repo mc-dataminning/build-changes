@@ -1,80 +1,24 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class dqb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<ami, dqb.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<ami, dqb.b>() {
-         public dqb.b a(ami $$0) {
-            return new dqb.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
-         }
-      });
+public record dqb<WC extends dpw>(dqd<WC> d, WC e) {
+   public static final Codec<dqb<?>> a = kb.P.q().dispatch($$0 -> $$0.d, dqd::c);
+   public static final Codec<ie<dqb<?>>> b = agp.a(kc.au, a);
+   public static final Codec<ij<dqb<?>>> c = it.a(kc.au, a);
 
-   public static void a(ami $$0) {
-      try {
-         ((dqb.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
-      }
+   public boolean a(auf $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   public static void a(ami $$0, dpn<?, ?> $$1, Optional<dwq> $$2) {
-      try {
-         ((dqb.b)b.get($$0)).a().computeInt(new dqb.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
+   public boolean a(dpy $$0, dkl $$1, Function<hv, ie<ctx>> $$2, auf $$3, dnk $$4, csf $$5, dkk $$6) {
+      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
+   public dqd<WC> a() {
+      return this.d;
    }
 
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.ad().a().toString();
-               boolean $$3 = $$0.n().v();
-               is<dwq> $$4 = $$0.I_().d(kd.aA);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::c).<agm>map(agl::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
-            }
-         );
-   }
-
-   static record a(dpn<?, ?> a, Optional<dwq> b) {
-   }
-
-   static record b(Object2IntMap<dqb.a> a, MutableInt b) {
+   public WC b() {
+      return this.e;
    }
 }

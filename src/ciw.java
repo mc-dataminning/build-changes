@@ -1,58 +1,74 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class ciw {
-   private final String a;
+public class ciw extends bjt {
    @Nullable
-   private dhr b;
-   private boolean c;
-   private boolean d;
+   private dgy c;
 
-   public ciw(String $$0) {
-      this.a = $$0;
+   public ciw() {
+      super(27);
    }
 
-   private static boolean a(dhr $$0, @Nullable dhr $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else {
-         return $$0.b() != null && $$1.b() != null ? Objects.equals($$0.b().p(), $$1.b().p()) : false;
+   public void a(dgy $$0) {
+      this.c = $$0;
+   }
+
+   public boolean b(dgy $$0) {
+      return this.c == $$0;
+   }
+
+   @Override
+   public void a(sp $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         this.a($$1, cmh.f);
       }
-   }
 
-   public boolean a(clo $$0, is<cvf> $$1, dhr $$2) {
-      if (a($$2, this.b, this.d)) {
-         return this.c;
-      } else {
-         this.b = $$2;
-         this.d = false;
-         sd $$3 = $$0.v();
-         if ($$3 != null && $$3.b(this.a, 9)) {
-            sj $$4 = $$3.c(this.a, 8);
-
-            for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-               String $$6 = $$4.j($$5);
-
-               try {
-                  fi.b $$7 = fi.a($$1.p(), new StringReader($$6));
-                  this.d = this.d | $$7.a();
-                  if ($$7.test($$2)) {
-                     this.c = true;
-                     return true;
-                  }
-               } catch (CommandSyntaxException var9) {
-               }
-            }
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         sj $$3 = $$0.a($$2);
+         int $$4 = $$3.f("Slot") & 255;
+         if ($$4 >= 0 && $$4 < this.b()) {
+            this.a($$4, cmh.a($$3));
          }
-
-         this.c = false;
-         return false;
       }
+   }
+
+   @Override
+   public sp g() {
+      sp $$0 = new sp();
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cmh $$2 = this.a($$1);
+         if (!$$2.b()) {
+            sj $$3 = new sj();
+            $$3.a("Slot", (byte)$$1);
+            $$2.b($$3);
+            $$0.add($$3);
+         }
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public boolean a(cer $$0) {
+      return this.c != null && !this.c.c($$0) ? false : super.a($$0);
+   }
+
+   @Override
+   public void d_(cer $$0) {
+      if (this.c != null) {
+         this.c.a($$0);
+      }
+
+      super.d_($$0);
+   }
+
+   @Override
+   public void c(cer $$0) {
+      if (this.c != null) {
+         this.c.b($$0);
+      }
+
+      super.c($$0);
+      this.c = null;
    }
 }

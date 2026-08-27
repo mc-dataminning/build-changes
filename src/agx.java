@@ -1,13 +1,9 @@
-public final class agx extends RuntimeException {
-   public static final agx a = new agx();
+public class agx {
+   public final String a;
+   public final ds b;
 
-   private agx() {
-      this.setStackTrace(new StackTraceElement[0]);
-   }
-
-   @Override
-   public synchronized Throwable fillInStackTrace() {
-      this.setStackTrace(new StackTraceElement[0]);
-      return this;
+   public agx(String $$0, ds $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 }

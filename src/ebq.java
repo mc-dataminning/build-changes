@@ -1,28 +1,27 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ebq implements ebu {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<ebq> a = RecordCodecBuilder.create($$0 -> $$0.group(agm.a.fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, ebq::new));
-   private final agm d;
+public class ebq extends ecl {
+   public static final Codec<ebq> a = dip.b.xmap(dio.a::b, cvz::o).listOf().fieldOf("blocks").xmap(ebq::new, $$0 -> $$0.e).codec();
+   public static final ebq b = new ebq(ImmutableList.of(cwb.pa));
+   public static final ebq c = new ebq(ImmutableList.of(cwb.a));
+   public static final ebq d = new ebq(ImmutableList.of(cwb.a, cwb.pa));
+   private final ImmutableList<cvz> e;
 
-   public ebq(agm $$0) {
-      this.d = $$0;
+   public ebq(List<cvz> $$0) {
+      this.e = ImmutableList.copyOf($$0);
+   }
+
+   @Nullable
+   @Override
+   public eco.c a(ctb $$0, hv $$1, hv $$2, eco.c $$3, eco.c $$4, eck $$5) {
+      return this.e.contains($$4.b().b()) ? null : $$4;
    }
 
    @Override
-   public sd a(atw $$0, @Nullable sd $$1) {
-      sd $$2 = $$1 == null ? new sd() : $$1.h();
-      agm.a.encodeStart(sr.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
-   }
-
-   @Override
-   public ebv<?> a() {
-      return ebv.d;
+   protected ecn<?> a() {
+      return ecn.e;
    }
 }

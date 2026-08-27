@@ -1,42 +1,96 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-public class fan extends far {
-   private ewb c;
+public class fan extends fcc {
+   private static final vb a = vb.c("accessibility.onboarding.screen.narrator");
+   private static final int b = 4;
+   private static final int c = 16;
+   private final fsk k = new fsk(fch.b);
+   private final ewy l;
+   private final euo m;
+   private final boolean n;
+   private boolean o;
+   private float p;
+   private final Runnable q;
+   @Nullable
+   private ews r;
 
-   private static etl<?>[] a(etm $$0) {
-      return new etl[]{$$0.d(), $$0.O(), $$0.D(), $$0.P(), $$0.W()};
-   }
-
-   public fan(faz $$0, etm $$1) {
-      super($$0, $$1, uv.c("options.mouse_settings.title"));
+   public fan(euo $$0, Runnable $$1) {
+      super(vb.c("accessibility.onboarding.screen.title"));
+      this.m = $$0;
+      this.q = $$1;
+      this.l = new ewy(true);
+      this.n = euk.N().aU().a();
    }
 
    @Override
-   protected void aQ_() {
-      this.c = new ewb(this.f, this.g, this.h, 32, this.h - 32, 25);
-      if (emw.a()) {
-         this.c.a(Stream.concat(Arrays.stream(a(this.b)), Stream.of(this.b.E())).toArray(etl[]::new));
-      } else {
-         this.c.a(a(this.b));
+   public void aP_() {
+      int $$0 = this.l();
+      ezp $$1 = new ezp(this.g, this.h - $$0);
+      $$1.c().d().a(4);
+      ezv $$2 = $$1.a(ezv.d());
+      $$2.c().b().a(2);
+      this.r = new ews(this.g - 16, this.e, this.i);
+      $$2.a(this.r, $$0x -> $$0x.e(16));
+      ewf $$3 = this.m.ap().a(this.m, 0, 0, 150);
+      $$3.i = this.n;
+      $$2.a($$3);
+      if (this.n) {
+         this.c($$3);
       }
 
-      this.e(this.c);
-      this.d(eve.a(uu.d, $$0 -> {
-         this.b.as();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+      $$2.a(ewl.b(150, $$0x -> this.a(new fao(this, this.f.m)), false));
+      $$2.a(ewl.a(150, $$0x -> this.a(new fbl(this, this.f.m, this.f.ad())), false));
+      $$1.a(ewh.a(va.j, $$0x -> this.aF_()).a(), $$1.b().f().a(8));
+      $$1.a();
+      ezp.a($$1, 0, $$0, this.g, this.h, 0.5F, 0.0F);
+      $$1.a(this::d);
+   }
+
+   private int l() {
+      return 90;
    }
 
    @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
+   public void aF_() {
+      this.a(this.q);
+   }
+
+   private void a(fcc $$0) {
+      this.a(() -> this.f.a($$0));
+   }
+
+   private void a(Runnable $$0) {
+      this.m.ae = false;
+      this.m.as();
+      Narrator.getNarrator().clear();
+      $$0.run();
+   }
+
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 5, 16777215);
+      this.C();
+      this.l.a($$0, this.g, 1.0F);
+      if (this.r != null) {
+         this.r.a($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   public void b(eut $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      this.k.a(0.0F, 1.0F);
+      $$0.a(0, 0, this.g, this.h, -1877995504);
+   }
+
+   private void C() {
+      if (!this.o && this.n) {
+         if (this.p < 40.0F) {
+            this.p++;
+         } else if (this.f.az()) {
+            Narrator.getNarrator().say(a.getString(), true);
+            this.o = true;
+         }
+      }
    }
 }

@@ -1,37 +1,24 @@
-public enum edi {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F);
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-   private final float z;
-
-   private edi(float $$0) {
-      this.z = $$0;
+public class edi extends edn<edi.a> {
+   protected edi(dkz $$0) {
+      super(cth.b, $$0, new edi.a(new Long2ObjectOpenHashMap()));
    }
 
-   public float a() {
-      return this.z;
+   @Override
+   protected int a(long $$0) {
+      long $$1 = ix.e($$0);
+      dkr $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(ix.b(hv.a($$0)), ix.b(hv.b($$0)), ix.b(hv.c($$0)));
+   }
+
+   protected static final class a extends edk<edi.a> {
+      public a(Long2ObjectOpenHashMap<dkr> $$0) {
+         super($$0);
+      }
+
+      public edi.a a() {
+         return new edi.a(this.a.clone());
+      }
    }
 }

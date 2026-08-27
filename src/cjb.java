@@ -1,42 +1,80 @@
-import java.util.function.Consumer;
+public class cjb extends cjf {
+   private final cia a;
+   private final cer b;
+   private int c;
 
-public class cjb extends clj {
-   public cjb(clj.a $$0) {
-      super($$0);
+   public cjb(cer $$0, cia $$1, bje $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public bjb a(cny $$0) {
-      ib $$1 = $$0.k();
-      if ($$1 == ib.a) {
-         return bjb.e;
-      } else {
-         csf $$2 = $$0.q();
-         cnw $$3 = new cnw($$0);
-         hx $$4 = $$3.a();
-         clo $$5 = $$0.n();
-         ejz $$6 = ejz.c($$4);
-         eju $$7 = bkz.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof ami $$8) {
-               Consumer<cai> $$9 = bkz.a($$8, $$5, $$0.o());
-               cai $$10 = bkz.d.b($$8, $$5.v(), $$9, $$4, blp.m, true, true);
-               if ($$10 == null) {
-                  return bjb.e;
-               }
+   public boolean a(cmh $$0) {
+      return false;
+   }
 
-               float $$11 = (float)atq.d((atq.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.ds(), $$10.du(), $$10.dy(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.ds(), $$10.du(), $$10.dy(), aqv.ao, aqw.e, 0.75F, 0.8F);
-               $$10.a(dlx.t, $$0.o());
+   @Override
+   public cmh a(int $$0) {
+      if (this.h()) {
+         this.c = this.c + Math.min($$0, this.g().L());
+      }
+
+      return super.a($$0);
+   }
+
+   @Override
+   protected void a(cmh $$0, int $$1) {
+      this.c += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b(int $$0) {
+      this.c += $$0;
+   }
+
+   @Override
+   protected void b_(cmh $$0) {
+      if (this.c > 0) {
+         $$0.a(this.b.dM(), this.b, this.c);
+      }
+
+      if (this.d instanceof ciz $$1) {
+         $$1.a(this.b, this.a.h());
+      }
+
+      this.c = 0;
+   }
+
+   @Override
+   public void a(cer $$0, cmh $$1) {
+      this.b_($$1);
+      io<cmh> $$2 = $$0.dM().q().c(cpq.a, this.a, $$0.dM());
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         cmh $$4 = this.a.a($$3);
+         cmh $$5 = $$2.get($$3);
+         if (!$$4.b()) {
+            this.a.a($$3, 1);
+            $$4 = this.a.a($$3);
+         }
+
+         if (!$$5.b()) {
+            if ($$4.b()) {
+               this.a.a($$3, $$5);
+            } else if (cmh.c($$4, $$5)) {
+               $$5.g($$4.L());
+               this.a.a($$3, $$5);
+            } else if (!this.b.fS().e($$5)) {
+               this.b.a($$5, false);
             }
-
-            $$5.h(1);
-            return bjb.a($$2.B);
-         } else {
-            return bjb.e;
          }
       }
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

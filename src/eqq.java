@@ -1,43 +1,54 @@
-public class eqq extends ghw {
-   private static final uv a = uv.c("mco.client.incompatible.title");
-   private static final uv[] b = new uv[]{
-      uv.c("mco.client.incompatible.msg.line1"), uv.c("mco.client.incompatible.msg.line2"), uv.c("mco.client.incompatible.msg.line3")
-   };
-   private static final uv[] c = new uv[]{uv.c("mco.client.incompatible.msg.line1"), uv.c("mco.client.incompatible.msg.line2")};
-   private final faz v;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public eqq(faz $$0) {
-      super(a);
-      this.v = $$0;
+public class eqq {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final String[] d;
+
+   private eqq(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   @Override
-   public void aQ_() {
-      this.d(eve.a(uu.k, $$0 -> this.f.a(this.v)).a(this.g / 2 - 100, h(12), 200, 20).a());
+   public vb a(vb $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
    }
 
-   @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, h(3), -65536);
-      uv[] $$4 = this.C();
-
-      for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-         $$0.a(this.i, $$4[$$5], this.g / 2, h(5) + $$5 * 12, -1);
-      }
-   }
-
-   private uv[] C() {
-      return aa.b().g() ? c : b;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 != 257 && $$0 != 335 && $$0 != 256) {
-         return super.a($$0, $$1, $$2);
+   @Nullable
+   public vb a() {
+      if (!geu.a(this.c)) {
+         return null;
       } else {
-         this.f.a(this.v);
-         return true;
+         return this.d == null ? vb.c(this.c) : vb.a(this.c, this.d);
       }
+   }
+
+   public static eqq a(JsonObject $$0) {
+      String $$1 = esw.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
+
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
+         }
+      } else {
+         $$5 = null;
+      }
+
+      return new eqq($$1, $$5);
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

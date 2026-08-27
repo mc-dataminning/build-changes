@@ -1,39 +1,54 @@
 import javax.annotation.Nullable;
 
-public class evt extends evc {
-   private final eur a;
-
-   public evt(eur $$0, uv $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
-   }
-
-   @Override
-   protected void b(eut $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.p() + this.k() / 2;
-      int $$5 = this.r() + this.i() / 2;
-      uv $$6 = this.l();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = fak.a(ac.b());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
-   }
-
-   @Override
-   protected void a(eyx $$0) {
-   }
-
-   @Override
-   public void a(ggl $$0) {
-   }
-
-   @Override
-   public boolean aM_() {
-      return false;
+public interface evt {
+   static evt a(eyc $$0) {
+      return new evt.a($$0);
    }
 
    @Nullable
-   @Override
-   public euq a(ezd $$0) {
-      return null;
+   static evt a(eyb $$0, @Nullable evt $$1) {
+      return $$1 == null ? null : new evt.b($$0, $$1);
+   }
+
+   static evt a(eyc $$0, eyb... $$1) {
+      evt $$2 = a($$0);
+
+      for (eyb $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
+   }
+
+   eyc a();
+
+   void a(boolean var1);
+
+   public static record a(eyc a) implements evt {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
+   }
+
+   public static record b(eyb a, evt b) implements evt {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public eyb b() {
+         return this.a;
+      }
+
+      public evt c() {
+         return this.b;
+      }
    }
 }

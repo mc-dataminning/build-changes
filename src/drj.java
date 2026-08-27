@@ -1,39 +1,47 @@
 import com.mojang.serialization.Codec;
 
-public class drj extends dqa<dsl> {
-   public drj(Codec<dsl> $$0) {
+public class drj extends drc<dtn> {
+   public drj(Codec<dtn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dqc<dsl> $$0) {
-      csz $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      hx.a $$3 = new hx.a();
-      hx.a $$4 = new hx.a();
+   public boolean a(dre<dtn> $$0) {
+      ctt $$1 = $$0.b();
+      hv $$2 = $$0.e();
+      auf $$3 = $$0.d();
+      if (!$$1.t($$2)) {
+         return false;
+      } else {
+         dip $$4 = $$1.a_($$2.c());
+         if (!$$4.a(cwb.dV) && !$$4.a(cwb.dY) && !$$4.a(cwb.pr)) {
+            return false;
+         } else {
+            $$1.a($$2, cwb.ec.o(), 2);
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(dmw.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(ib.a, 1);
-            ctd $$10 = $$1.s($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, cvh.dO.o(), 2);
-            }
+            for (int $$5 = 0; $$5 < 1500; $$5++) {
+               hv $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
+               if ($$1.a_($$6).i()) {
+                  int $$7 = 0;
 
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, cvh.dN.o(), 2);
-               dhn $$11 = $$1.a_($$4);
-               if ($$11.b(dco.c)) {
-                  $$1.a($$4, $$11.a(dco.c, Boolean.valueOf(true)), 2);
+                  for (ia $$8 : ia.values()) {
+                     if ($$1.a_($$6.a($$8)).a(cwb.ec)) {
+                        $$7++;
+                     }
+
+                     if ($$7 > 1) {
+                        break;
+                     }
+                  }
+
+                  if ($$7 == 1) {
+                     $$1.a($$6, cwb.ec.o(), 2);
+                  }
                }
             }
+
+            return true;
          }
       }
-
-      return true;
    }
 }

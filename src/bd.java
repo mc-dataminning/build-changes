@@ -1,43 +1,43 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bd extends cw<bd.a> {
-   public bd.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<bc> $$3 = bq.a($$0, "zombie", $$2);
-      Optional<bc> $$4 = bq.a($$0, "villager", $$2);
-      return new bd.a($$1, $$3, $$4);
+public class bd extends cv<bd.a> {
+   @Override
+   public Codec<bd.a> a() {
+      return bd.a.a;
    }
 
-   public void a(amj $$0, ccg $$1, cdm $$2) {
-      efc $$3 = bq.b($$0, $$1);
-      efc $$4 = bq.b($$0, $$2);
+   public void a(amq $$0, ccs $$1, cee $$2) {
+      ege $$3 = bp.b($$0, $$1);
+      ege $$4 = bp.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
-   public static class a extends at {
-      private final Optional<bc> a;
-      private final Optional<bc> b;
+   public static record a(Optional<bb> b, Optional<bb> c, Optional<bb> d) implements cv.a {
+      public static final Codec<bd.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(bd.a::a), atg.a(bp.b, "zombie").forGetter(bd.a::c), atg.a(bp.b, "villager").forGetter(bd.a::d))
+               .apply($$0, bd.a::new)
+      );
 
-      public a(Optional<bc> $$0, Optional<bc> $$1, Optional<bc> $$2) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
+      public static an<bd.a> b() {
+         return am.s.a(new bd.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public static am<bd.a> c() {
-         return al.r.a(new bd.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public boolean a(efc $$0, efc $$1) {
-         return this.a.isPresent() && !this.a.get().a($$0) ? false : !this.b.isPresent() || this.b.get().a($$1);
+      public boolean a(ege $$0, ege $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 
       @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("zombie", $$1.a()));
-         this.b.ifPresent($$1 -> $$0.add("villager", $$1.a()));
-         return $$0;
+      public void a(bc $$0) {
+         cv.a.super.a($$0);
+         $$0.a(this.c, ".zombie");
+         $$0.a(this.d, ".villager");
+      }
+
+      @Override
+      public Optional<bb> a() {
+         return this.b;
       }
    }
 }

@@ -1,50 +1,74 @@
-public class zd implements wo<yh> {
-   public static final int a = -1;
-   public static final int b = -2;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final clo f;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import java.util.List;
 
-   public zd(int $$0, int $$1, int $$2, clo $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3.p();
+public record zd(List<zd.a> a) implements wu<yo> {
+   private static final int b = 2097152;
+
+   public zd(ue $$0) {
+      this($$0.a(zd.a::new));
    }
 
-   public zd(ty $$0) {
-      this.c = $$0.readByte();
-      this.d = $$0.n();
-      this.e = $$0.readShort();
-      this.f = $$0.r();
+   public static zd a(List<dkw> $$0) {
+      return new zd($$0.stream().map(zd.a::new).toList());
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.k(this.c);
-      $$0.c(this.d);
-      $$0.l(this.e);
-      $$0.a(this.f);
+   public void a(ue $$0) {
+      $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.c;
-   }
+   public static record a(csf a, byte[] b) {
+      public a(dkw $$0) {
+         this($$0.f(), new byte[a($$0)]);
+         a(new ue(this.d()), $$0);
+      }
 
-   public int d() {
-      return this.e;
-   }
+      public a(ue $$0) {
+         this($$0.f(), $$0.a(2097152));
+      }
 
-   public clo e() {
-      return this.f;
-   }
+      private static int a(dkw $$0) {
+         int $$1 = 0;
 
-   public int f() {
-      return this.d;
+         for (dkx $$2 : $$0.d()) {
+            $$1 += $$2.i().c();
+         }
+
+         return $$1;
+      }
+
+      public ue a() {
+         return new ue(Unpooled.wrappedBuffer(this.b));
+      }
+
+      private ByteBuf d() {
+         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
+         $$0.writerIndex(0);
+         return $$0;
+      }
+
+      public static void a(ue $$0, dkw $$1) {
+         for (dkx $$2 : $$1.d()) {
+            $$2.i().b($$0);
+         }
+      }
+
+      public void a(ue $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+      }
+
+      public csf b() {
+         return this.a;
+      }
+
+      public byte[] c() {
+         return this.b;
+      }
    }
 }

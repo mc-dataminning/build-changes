@@ -1,26 +1,26 @@
-import java.util.function.BooleanSupplier;
+public enum etw {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public class etw extends etg {
-   private final BooleanSupplier h;
+   private static final etw[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   public etw(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, emw.b.a, $$1, $$2);
-      this.h = $$3;
+   private etw(boolean $$0, boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
-      }
+   public boolean a() {
+      return this.e;
    }
 
-   @Override
-   protected void n() {
-      super.a(false);
+   public boolean b() {
+      return this.f;
+   }
+
+   public etw c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

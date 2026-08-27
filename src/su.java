@@ -1,5 +1,5 @@
-public class su extends y {
-   public su(o $$0) {
+public class su extends RuntimeException {
+   public su(String $$0) {
       super($$0);
    }
 }

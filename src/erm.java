@@ -1,76 +1,164 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class erm extends ghw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final uv b = uv.c("mco.terms.title");
-   private static final uv c = uv.c("mco.terms.sentence.1");
-   private static final uv v = uu.a().b(uv.c("mco.terms.sentence.2").c(vs.a.c(true)));
-   private final faz w;
-   private final epi x;
-   private boolean y;
+public class erm extends ewh {
+   private static final agt t = new agt("widget/slot_frame");
+   private static final agt u = new agt("icon/checkmark");
+   public static final agt a = new agt("textures/gui/realms/empty_frame.png");
+   public static final agt b = new agt("minecraft", "textures/gui/title/background/panorama_0.png");
+   public static final agt c = new agt("minecraft", "textures/gui/title/background/panorama_2.png");
+   public static final agt d = new agt("minecraft", "textures/gui/title/background/panorama_3.png");
+   private static final vb v = vb.c("mco.configure.world.slot.tooltip.active");
+   private static final vb w = vb.c("mco.configure.world.slot.tooltip.minigame");
+   private static final vb x = vb.c("mco.configure.world.slot.tooltip");
+   static final vb y = vb.c("mco.worldSlot.minigame");
+   private final int z;
+   @Nullable
+   private erm.b A;
+   @Nullable
+   private exs B;
 
-   public erm(faz $$0, epi $$1) {
-      super(b);
-      this.w = $$0;
-      this.x = $$1;
+   public erm(int $$0, int $$1, int $$2, int $$3, int $$4, ewh.c $$5) {
+      super($$0, $$1, $$2, $$3, va.a, $$5, p);
+      this.z = $$4;
    }
 
-   @Override
-   public void aQ_() {
-      int $$0 = this.g / 4 - 2;
-      this.d(eve.a(uv.c("mco.terms.buttons.agree"), $$0x -> this.C()).a(this.g / 4, h(12), $$0, 20).a());
-      this.d(eve.a(uv.c("mco.terms.buttons.disagree"), $$0x -> this.f.a(this.w)).a(this.g / 2 + 4, h(12), $$0, 20).a());
+   @Nullable
+   public erm.b a() {
+      return this.A;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.w);
-         return true;
+   public void a(eqk $$0) {
+      this.A = new erm.b($$0, this.z);
+      this.a(this.A, $$0.o);
+   }
+
+   private void a(erm.b $$0, String $$1) {
+      vb $$2 = switch ($$0.c) {
+         case c -> v;
+         case b -> $$0.b ? w : x;
+         default -> null;
+      };
+      if ($$2 == null) {
+         this.b(vb.b($$0.e));
       } else {
-         return super.a($$0, $$1, $$2);
+         this.B = exs.a($$2);
+         if ($$0.a) {
+            this.b($$2);
+         } else {
+            vp $$3 = $$2.f().b(va.a()).b(vb.b($$0.e));
+            if ($$0.b) {
+               $$3 = $$3.b(va.u).f($$1);
+            }
+
+            this.b($$3);
+         }
       }
    }
 
-   private void C() {
-      eor $$0 = eor.a();
-
-      try {
-         $$0.j();
-         this.f.a(new eqy(this.w, new esh(this.w, this.x)));
-      } catch (eqe var3) {
-         a.error("Couldn't agree to TOS", var3);
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.y) {
-         this.f.o.a("https://aka.ms/MinecraftRealmsTerms");
-         ac.i().a("https://aka.ms/MinecraftRealmsTerms");
-         return true;
+   static erm.a a(eqk $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != eqk.c.c) {
+         return erm.a.c;
       } else {
-         return super.a($$0, $$1, $$2);
+         return $$1 || $$2 && $$0.j ? erm.a.a : erm.a.b;
       }
    }
 
    @Override
-   public uv h() {
-      return uu.a(super.h(), c).b(uu.u).b(v);
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      if (this.A != null) {
+         int $$4 = this.p();
+         int $$5 = this.r();
+         boolean $$6 = this.n();
+         if (this.B != null) {
+            this.B.a(this.m(), this.aJ_(), this.s());
+         }
+
+         agt $$7;
+         if (this.A.b) {
+            $$7 = esz.a(String.valueOf(this.A.h), this.A.i);
+         } else if (this.A.a) {
+            $$7 = a;
+         } else if (this.A.i != null && this.A.h != -1L) {
+            $$7 = esz.a(String.valueOf(this.A.h), this.A.i);
+         } else if (this.z == 1) {
+            $$7 = b;
+         } else if (this.z == 2) {
+            $$7 = c;
+         } else if (this.z == 3) {
+            $$7 = d;
+         } else {
+            $$7 = a;
+         }
+
+         if (this.A.d) {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a($$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
+         boolean $$14 = $$6 && this.A.c != erm.a.a;
+         if ($$14) {
+            $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         } else if (this.A.d) {
+            $$0.a(0.8F, 0.8F, 0.8F, 1.0F);
+         } else {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a(t, $$4, $$5, 80, 80);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         if (this.A.d) {
+            RenderSystem.enableBlend();
+            $$0.a(u, $$4 + 67, $$5 + 4, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         evu $$15 = euk.N().h;
+         $$0.a($$15, this.A.e, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, epo.a(this.A.f, this.A.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
+      }
    }
 
-   @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      $$0.a(this.i, c, this.g / 2 - 120, h(5), -1, false);
-      int $$4 = this.i.a(c);
-      int $$5 = this.g / 2 - 121 + $$4;
-      int $$6 = h(5);
-      int $$7 = $$5 + this.i.a(v) + 1;
-      int $$8 = $$6 + 1 + 9;
-      this.y = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
-      $$0.a(this.i, v, this.g / 2 - 120 + $$4, h(5), this.y ? 7107012 : 3368635, false);
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public static class b {
+      final boolean d;
+      final String e;
+      final String f;
+      final eqk.a g;
+      final long h;
+      @Nullable
+      final String i;
+      public final boolean a;
+      public final boolean b;
+      public final erm.a c;
+
+      public b(eqk $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.d = $$0.m == eqk.d.b;
+            this.e = erm.y.getString();
+            this.h = (long)$$0.p;
+            this.i = $$0.q;
+            this.a = $$0.p == -1;
+            this.f = "";
+            this.g = eqk.a.a;
+         } else {
+            eqr $$2 = $$0.i.get($$1);
+            this.d = $$0.n == $$1 && $$0.m != eqk.d.b;
+            this.e = $$2.a($$1);
+            this.h = $$2.l;
+            this.i = $$2.m;
+            this.a = $$2.n;
+            this.f = $$2.j;
+            this.g = $$2.k;
+         }
+
+         this.c = erm.a($$0, this.d, this.b);
+      }
    }
 }

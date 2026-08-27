@@ -1,34 +1,56 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public abstract class ghw extends faz {
-   protected static final int k = 17;
-   protected static final int l = 7;
-   protected static final long m = 5368709120L;
-   protected static final int n = 5000268;
-   protected static final int o = 7105644;
-   protected static final int p = 8388479;
-   protected static final int q = 3368635;
-   protected static final int r = 7107012;
-   protected static final int t = 8226750;
-   protected static final int u = 8;
-   private final List<ghu> a = Lists.newArrayList();
+public class ghw {
+   private final apv a;
+   private final Map<agt, CompletableFuture<end>> b = Maps.newHashMap();
 
-   public ghw(uv $$0) {
-      super($$0);
+   public ghw(apv $$0) {
+      this.a = $$0;
    }
 
-   protected static int h(int $$0) {
-      return 40 + $$0 * 13;
+   public CompletableFuture<end> a(agt $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               end var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  enb $$2 = new enb($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new end($$3, $$2.a());
+               }
+
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
+            }
+         }, ac.f()));
    }
 
-   protected ghu a(ghu $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   public CompletableFuture<ghs> a(agt $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (ghs)($$1 ? new ghu(enb::new, $$2) : new enb($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
+         }
+      }, ac.f());
    }
 
-   public uv l() {
-      return uu.a(this.a.stream().map(ghu::a).collect(Collectors.toList()));
+   public void a() {
+      this.b.values().forEach($$0 -> $$0.thenAccept(end::b));
+      this.b.clear();
+   }
+
+   public CompletableFuture<?> a(Collection<ggt> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

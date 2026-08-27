@@ -1,41 +1,48 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eaw extends eaz {
-   public static final Codec<eaw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eaw::new)
+public class eaw extends dyo {
+   public static final Codec<eaw> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), dwv.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, eaw::new)
    );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+   public final dwv e;
 
-   public eaw(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   public eaw(dyo.c $$0, dwv $$1) {
+      super($$0);
+      this.e = $$1;
+   }
+
+   @Override
+   public Optional<dyo.b> a(dyo.a $$0) {
+      dox $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().e();
+      dov $$5 = new dov($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      ctk $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      hv.a $$8 = new hv.a($$2, $$6, $$3);
+
+      while ($$6 > $$4) {
+         dip $$9 = $$7.a($$6);
+         dip $$10 = $$7.a(--$$6);
+         if ($$9.i() && ($$10.a(cwb.dW) || $$10.d(csn.a, $$8.q($$6), ia.b))) {
+            break;
+         }
+      }
+
+      if ($$6 <= $$4) {
+         return Optional.empty();
       } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+         hv $$11 = new hv($$2, $$6, $$3);
+         return Optional.of(new dyo.b($$11, (Consumer<dzg>)($$3x -> eav.a($$0.e(), $$3x, $$1, $$11))));
       }
    }
 
    @Override
-   public boolean a(hx $$0, hx $$1, hx $$2, atw $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= atq.b(this.b, this.d, atq.g((float)$$4, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected eba<?> a() {
-      return eba.b;
+   public dyx<?> e() {
+      return dyx.i;
    }
 }

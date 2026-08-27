@@ -1,58 +1,39 @@
-import org.joml.Vector3f;
-
-public abstract class cav extends cfh {
-   protected cav(bkz<? extends cav> $$0, csf $$1) {
+public class cav extends cax {
+   public cav(blj<? extends cax> $$0, csy $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void B() {
-      super.B();
+   public cav(csy $$0, hv $$1, ia $$2) {
+      super(blj.T, $$0, $$1, $$2);
    }
 
    @Override
-   public blq eT() {
-      return blq.d;
-   }
-
-   public cav.a u() {
-      return cav.a.a;
+   public arb q() {
+      return arc.ka;
    }
 
    @Override
-   public boolean c(bll $$0) {
-      return $$0 instanceof cdh && $$0.o_() ? false : super.c($$0);
+   public arb s() {
+      return arc.jY;
    }
 
    @Override
-   protected float l(bkv $$0) {
-      return -0.6F;
+   public arb u() {
+      return arc.jZ;
    }
 
    @Override
-   protected Vector3f a(bkv $$0, bkw $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b + 0.05F * $$2, 0.0F);
+   public arb w() {
+      return arc.jX;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
+   @Override
+   public arb x() {
+      return arc.kb;
    }
 
-   protected class b extends bsy {
-      public b(cfh $$1) {
-         super($$1, false);
-      }
-
-      @Override
-      public boolean a() {
-         return super.a() && cav.this.gu();
-      }
+   @Override
+   protected cmh y() {
+      return new cmh(cmk.tW);
    }
 }

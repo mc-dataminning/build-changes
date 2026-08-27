@@ -1,37 +1,32 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bu extends cw<bu.a> {
-   public bu.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<cb> $$3 = cb.a($$0.get("item"));
-      return new bu.a($$1, $$3);
+public record bu(Optional<Boolean> d) implements bq {
+   public static final bu b = new bu(Optional.empty());
+   public static final MapCodec<bu> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(atg.a(Codec.BOOL, "in_open_water").forGetter(bu::b)).apply($$0, bu::new));
+
+   public static bu a(boolean $$0) {
+      return new bu(Optional.of($$0));
    }
 
-   public void a(amj $$0, clo $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   @Override
+   public bq.a a() {
+      return bq.b.c;
    }
 
-   public static class a extends at {
-      private final Optional<cb> a;
-
-      public a(Optional<bc> $$0, Optional<cb> $$1) {
-         super($$0);
-         this.a = $$1;
+   @Override
+   public boolean a(blf $$0, amp $$1, @Nullable elb $$2) {
+      if (this.d.isEmpty()) {
+         return true;
+      } else {
+         return $$0 instanceof cff $$3 ? this.d.get() == $$3.q() : false;
       }
+   }
 
-      public static am<bu.a> a(cb.a $$0) {
-         return al.j.a(new bu.a(Optional.empty(), Optional.of($$0.b())));
-      }
-
-      public boolean a(clo $$0) {
-         return !this.a.isPresent() || this.a.get().a($$0);
-      }
-
-      @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         return $$0;
-      }
+   public Optional<Boolean> b() {
+      return this.d;
    }
 }

@@ -1,11 +1,39 @@
-public class arl {
-   public static final arz<bxa> a = a("default_spawns");
-   public static final arz<bxa> b = a("full_moon_spawns");
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private arl() {
+public class arl<T> implements Iterable<arj<T>> {
+   private final ir<T> a;
+   private final Map<T, arj<T>> b = new IdentityHashMap<>();
+   private final vb c;
+
+   public arl(ir<T> $$0, vb $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   private static arz<bxa> a(String $$0) {
-      return arz.a(kd.k, new agm($$0));
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public arj<T> a(T $$0, ark $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new arj<>(this, (T)$$1x, $$1));
+   }
+
+   public ir<T> a() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<arj<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public arj<T> b(T $$0) {
+      return this.a($$0, ark.b);
+   }
+
+   public vb b() {
+      return this.c;
    }
 }

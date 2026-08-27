@@ -1,35 +1,41 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class gcl implements gcd {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<gcl> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(agm.a.fieldOf("resource").forGetter($$0x -> $$0x.d), agm.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gcl::new)
-   );
-   private final agm d;
-   private final Optional<agm> e;
+public class gcl<T extends cdv, M extends flk<T>> extends gbz<T, M> {
+   private final agt a;
+   private final gcl.a<T> b;
+   private final gcl.b<T, M> c;
 
-   public gcl(agm $$0, Optional<agm> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public gcl(fzj<T, M> $$0, agt $$1, gcl.a<T> $$2, gcl.b<T, M> $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   @Override
-   public void a(apl $$0, gcd.a $$1) {
-      agm $$2 = a.a(this.d);
-      Optional<apj> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
-      } else {
-         c.warn("Missing sprite: {}", $$2);
+   public void a(epd $$0, fsi $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ce()) {
+         this.a();
+         eph $$10 = $$1.getBuffer(fsq.j(this.a));
+         this.c().a($$0, $$10, $$2, fyp.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
+         this.b();
       }
    }
 
-   @Override
-   public gcf a() {
-      return gcg.a;
+   private void a() {
+      List<fly> $$0 = this.c.getPartsToDraw(this.c());
+      this.c().a().e().forEach($$0x -> $$0x.l = true);
+      $$0.forEach($$0x -> $$0x.l = false);
+   }
+
+   private void b() {
+      this.c().a().e().forEach($$0 -> $$0.l = false);
+   }
+
+   public interface a<T extends cdv> {
+      float apply(T var1, float var2, float var3);
+   }
+
+   public interface b<T extends cdv, M extends fiy<T>> {
+      List<fly> getPartsToDraw(M var1);
    }
 }

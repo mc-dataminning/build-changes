@@ -1,30 +1,70 @@
-import net.minecraft.server.MinecraftServer;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class anc implements aeq {
-   private final MinecraftServer a;
-   private final tw b;
+public class anc implements amy {
+   private final ana a;
+   private final Long2ObjectOpenHashMap<dkq> b;
+   private csf c = new csf(0, 0);
+   private final int d;
+   private final int e;
+   private final int f;
+   private boolean g;
 
-   public anc(MinecraftServer $$0, tw $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public anc(int $$0) {
+      this.a = new ana($$0);
+      this.d = $$0 * 2 + 1;
+      this.e = $$0 + dkq.b();
+      this.f = this.e * 2 + 1;
+      this.b = new Long2ObjectOpenHashMap();
    }
 
    @Override
-   public void a(aep $$0) {
-      if ($$0.f() != aeo.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.f());
-      } else {
-         this.b.a(aeo.b);
-         this.b.a(new anj(this.a, this.b));
+   public void a(csf $$0) {
+      if (this.g) {
+         this.a.a($$0);
+         this.c = $$0;
       }
    }
 
    @Override
-   public void a(uv $$0) {
+   public void a(csf $$0, @Nullable dkq $$1) {
+      if (this.g) {
+         this.a.a($$0, $$1);
+         if ($$1 == null) {
+            this.b.remove($$0.a());
+         } else {
+            this.b.put($$0.a(), $$1);
+         }
+      }
    }
 
    @Override
-   public boolean c() {
-      return this.b.k();
+   public void a() {
+      this.g = true;
+      this.b.clear();
+      this.a.a();
+   }
+
+   @Override
+   public void b() {
+      this.g = false;
+      this.a.b();
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   public int e() {
+      return this.a.c();
+   }
+
+   @Nullable
+   public dkq a(int $$0, int $$1) {
+      return (dkq)this.b.get(csf.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
    }
 }

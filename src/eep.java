@@ -1,2 +1,5 @@
-public record eep(eey a, dnr.b b) {
+public enum eep {
+   a,
+   b,
+   c;
 }

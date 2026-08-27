@@ -1,46 +1,54 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dsc implements dse {
-   public static final Codec<dsc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               big.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               big.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               big.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bie.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bie.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, dsc::new)
-   );
-   public final int b;
-   public final big c;
-   public final big d;
-   public final int e;
-   public final int f;
-   public final big g;
-   public final bie h;
-   public final bie i;
-   public final float j;
-   public final int k;
-   public final int l;
+public class dsc extends drc<dtv> {
+   public dsc(Codec<dtv> $$0) {
+      super($$0);
+   }
 
-   public dsc(int $$0, big $$1, big $$2, int $$3, int $$4, big $$5, bie $$6, bie $$7, float $$8, int $$9, int $$10) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   @Override
+   public boolean a(dre<dtv> $$0) {
+      dtv $$1 = $$0.f();
+      ctt $$2 = $$0.b();
+      auf $$3 = $$0.d();
+      cvz $$4 = $$1.b.b();
+      hv $$5 = a($$2, $$0.e().j().a(ia.a.b, $$2.J_() + 1, $$2.ak() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (hv $$11 : hv.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
+
+            dip $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
+         }
+
+         return $$10;
+      }
+   }
+
+   @Nullable
+   private static hv a(csz $$0, hv.a $$1, cvz $$2) {
+      while ($$1.v() > $$0.J_() + 1) {
+         dip $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(ia.a);
+      }
+
+      return null;
    }
 }

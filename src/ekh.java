@@ -1,38 +1,18 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public final class ekh implements ekl {
-   private final ekf a;
-   private final int b;
-   private final int c;
+public class ekh {
+   private static final Codec<ekg> d = kb.K.q().dispatch(ekg::a, ekf::a);
+   public static final Codec<ekg> a = atg.a(
+      (Supplier<Codec<ekg>>)(() -> Codec.either(ekd.b, d)
+            .xmap($$0 -> (ekg)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof ekd $$1 ? Either.left($$1) : Either.right($$0)))
+   );
+   public static final ekf b = a("fixed", eke.a);
+   public static final ekf c = a("context", ekd.a);
 
-   ekh(int $$0, int $$1) {
-      this.a = new ekf((int)ekp.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
-   }
-
-   @Override
-   public boolean a(ekl.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+   private static ekf a(String $$0, Codec<? extends ekg> $$1) {
+      return ir.a(kb.K, new agt($$0), new ekf($$1));
    }
 }

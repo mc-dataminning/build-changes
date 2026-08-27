@@ -1,33 +1,56 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cvy extends cvf {
-   public static final MapCodec<cvy> a = b(cvy::new);
-   private static final uv b = uv.c("container.cartography_table");
+public class cvy extends cuu {
+   public static final MapCodec<cvy> c = b(cvy::new);
 
    @Override
    public MapCodec<cvy> a() {
-      return a;
+      return c;
    }
 
-   protected cvy(dhm.d $$0) {
+   protected cvy(dio.d $$0) {
       super($$0);
    }
 
    @Override
-   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
-      if ($$1.B) {
-         return bjb.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(arf.aw);
-         return bjb.b;
-      }
+   public dgd a(hv $$0, dip $$1) {
+      return new dgc($$0, $$1);
    }
 
    @Nullable
    @Override
-   public bje b(dhn $$0, csf $$1, hx $$2) {
-      return new bjk(($$2x, $$3, $$4) -> new cgx($$2x, $$3, chc.a($$1, $$2)), b);
+   public <T extends dgd> dge<T> a(csy $$0, dip $$1, dgf<T> $$2) {
+      return a($$0, $$2, dgf.C);
+   }
+
+   @Override
+   protected void a(csy $$0, hv $$1, cer $$2) {
+      dgd $$3 = $$0.c_($$1);
+      if ($$3 instanceof dgc) {
+         $$2.a((bjo)$$3);
+         $$2.a(arm.as);
+      }
+   }
+
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, auf $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, arc.cg, ard.e, 1.0F, 1.0F, false);
+         }
+
+         ia $$7 = $$0.c(a);
+         ia.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ia.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 9.0 / 16.0;
+         double $$13 = $$8 == ia.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(jv.ab, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

@@ -1,29 +1,41 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dg extends cw<dg.a> {
-   public dg.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      cl.c $$3 = cl.c.a($$0.get("distance"));
-      return new dg.a($$1, $$3);
+public class dg extends cv<dg.a> {
+   @Override
+   public Codec<dg.a> a() {
+      return dg.a.a;
    }
 
-   public void a(amj $$0, hx $$1) {
-      double $$2 = $$0.ds() - (double)$$1.u();
-      double $$3 = $$0.dy() - (double)$$1.w();
-      double $$4 = $$2 * $$2 + $$3 * $$3;
-      this.a($$0, $$1x -> $$1x.a($$4));
+   public void a(amq $$0, cmh $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static class a extends at {
-      private final cl.c a;
+   public static record a(Optional<bb> b, Optional<ca> c) implements cv.a {
+      public static final Codec<dg.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(dg.a::a), atg.a(ca.a, "item").forGetter(dg.a::b)).apply($$0, dg.a::new)
+      );
 
-      public a(Optional<bc> $$0, cl.c $$1) {
-         super($$0);
-         this.a = $$1;
+      public static an<dg.a> a(ca $$0) {
+         return am.C.a(new dg.a(Optional.empty(), Optional.of($$0)));
       }
 
-      public boolean a(double $$0) {
-         return this.a.e($$0);
+      public static an<dg.a> a(csx $$0) {
+         return am.C.a(new dg.a(Optional.empty(), Optional.of(ca.a.a().a($$0).b())));
+      }
+
+      public boolean a(cmh $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
+      }
+
+      @Override
+      public Optional<bb> a() {
+         return this.b;
+      }
+
+      public Optional<ca> b() {
+         return this.c;
       }
    }
 }

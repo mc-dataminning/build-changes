@@ -1,36 +1,56 @@
-public class yq implements wo<yh> {
-   private final hx a;
-   private final dhn b;
+public class yq implements wu<yo> {
+   private final int a;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final int e;
 
-   public yq(hx $$0, dhn $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public yq(bll $$0) {
+      this.a = $$0.aj();
+      this.b = $$0.dr();
+      this.c = $$0.dt();
+      this.d = $$0.dx();
+      this.e = $$0.q();
    }
 
-   public yq(crl $$0, hx $$1) {
-      this($$1, $$0.a_($$1));
-   }
-
-   public yq(ty $$0) {
-      this.a = $$0.e();
-      this.b = $$0.a(cvf.q);
+   public yq(ue $$0) {
+      this.a = $$0.n();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readShort();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.a);
-      $$0.a(cvf.q, this.b);
+   public void a(ue $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.l(this.e);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public dhn a() {
+   public int a() {
+      return this.a;
+   }
+
+   public double d() {
       return this.b;
    }
 
-   public hx d() {
-      return this.a;
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
    }
 }

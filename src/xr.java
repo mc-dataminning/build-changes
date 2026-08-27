@@ -1,19 +1,18 @@
-public record xr(hx b, String c, int d) implements xh {
-   public static final agm a = new agm("debug/poi_added");
+public record xr(dnd b, int c) implements xo {
+   public static final agt a = new agt("debug/game_event_listeners");
 
-   public xr(ty $$0) {
-      this($$0.e(), $$0.s(), $$0.readInt());
+   public xr(ue $$0) {
+      this(dne.c($$0), $$0.n());
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.p(this.d);
+   public void a(ue $$0) {
+      dne.a(this.b, $$0);
+      $$0.c(this.c);
    }
 
    @Override
-   public agm a() {
+   public agt a() {
       return a;
    }
 }

@@ -1,98 +1,256 @@
-public class fgt extends fid<bya> implements fgv {
-   private final fkt a;
-   private final fkt b;
-   private final fkt f;
-   private final fkt g;
-   private final fkt h;
-   private final fkt i;
-   private final fkt j;
-   private static final float k = (float) (Math.PI / 4);
-   private static final float l = -1.134464F;
-   private static final float m = (float) (-Math.PI / 3);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public fgt(fkt $$0) {
-      super(frh::i);
-      this.a = $$0.b("root");
-      this.b = this.a.b("head");
-      this.f = this.a.b("body");
-      this.g = this.f.b("right_arm");
-      this.h = this.f.b("left_arm");
-      this.i = this.f.b("right_wing");
-      this.j = this.f.b("left_wing");
+public class fgt extends fcc {
+   private final Consumer<Optional<csu>> a;
+   private fgt.g b;
+   private final Set<fgt.f> c = Sets.newHashSet();
+   private ewh k;
+   @Nullable
+   private List<atk> l;
+   private final csu m;
+
+   public fgt(csu $$0, Consumer<Optional<csu>> $$1) {
+      super(vb.c("editGamerule.title"));
+      this.m = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public fkt a() {
-      return this.a;
+   protected void aP_() {
+      this.b = new fgt.g(this.m);
+      this.e(this.b);
+      ezq.b $$0 = new ezq().a(10).d(2);
+      this.k = $$0.a(ewh.a(va.d, $$0x -> this.a.accept(Optional.of(this.m))).a());
+      $$0.a(ewh.a(va.e, $$0x -> this.a.accept(Optional.empty())).a());
+      $$0.a().a($$1 -> {
+         ewf var10000 = this.d($$1);
+      });
+      $$0.a().b(this.g / 2 - 155, this.h - 28);
+      $$0.a().a();
    }
 
-   public static fkz b() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      flc $$2 = $$1.a("root", fky.c(), fkv.a(0.0F, 23.5F, 0.0F));
-      $$2.a("head", fky.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new fkx(0.0F)), fkv.a(0.0F, -3.99F, 0.0F));
-      flc $$3 = $$2.a(
-         "body",
-         fky.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new fkx(0.0F)).a(0, 16).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fkx(-0.2F)),
-         fkv.a(0.0F, -4.0F, 0.0F)
-      );
-      $$3.a("right_arm", fky.c().a(23, 0).a(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new fkx(-0.01F)), fkv.a(-1.75F, 0.5F, 0.0F));
-      $$3.a("left_arm", fky.c().a(23, 6).a(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new fkx(-0.01F)), fkv.a(1.75F, 0.5F, 0.0F));
-      $$3.a("right_wing", fky.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fkx(0.0F)), fkv.a(-0.5F, 0.0F, 0.6F));
-      $$3.a("left_wing", fky.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fkx(0.0F)), fkv.a(0.5F, 0.0F, 0.6F));
-      return fkz.a($$0, 32, 32);
+   @Override
+   public void aF_() {
+      this.a.accept(Optional.empty());
    }
 
-   public void a(bya $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fkt::c);
-      float $$6 = $$3 * 20.0F * (float) (Math.PI / 180.0) + $$1;
-      float $$7 = atq.b($$6) * (float) Math.PI * 0.15F + $$2;
-      float $$8 = $$3 - (float)$$0.ah;
-      float $$9 = $$3 * 9.0F * (float) (Math.PI / 180.0);
-      float $$10 = Math.min($$2 / 0.3F, 1.0F);
-      float $$11 = 1.0F - $$10;
-      float $$12 = $$0.E($$8);
-      if ($$0.gf()) {
-         float $$13 = $$3 * 8.0F * (float) (Math.PI / 180.0) + $$2;
-         float $$14 = atq.b($$13) * 16.0F * (float) (Math.PI / 180.0);
-         float $$15 = $$0.F($$8);
-         float $$16 = atq.b($$13) * 14.0F * (float) (Math.PI / 180.0);
-         float $$17 = atq.b($$13) * 30.0F * (float) (Math.PI / 180.0);
-         this.a.f = $$0.gg() ? (float) (Math.PI * 4) * $$15 : this.a.f;
-         this.a.g = $$14 * (1.0F - $$15);
-         this.b.f = $$17 * (1.0F - $$15);
-         this.b.g = $$16 * (1.0F - $$15);
-      } else {
-         this.b.e = $$5 * (float) (Math.PI / 180.0);
-         this.b.f = $$4 * (float) (Math.PI / 180.0);
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.l = null;
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+   }
+
+   private void l() {
+      this.k.i = this.c.isEmpty();
+   }
+
+   void a(fgt.f $$0) {
+      this.c.add($$0);
+      this.l();
+   }
+
+   void b(fgt.f $$0) {
+      this.c.remove($$0);
+      this.l();
+   }
+
+   public class a extends fgt.d {
+      private final ewo<Boolean> d;
+
+      public a(vb $$1, List<atk> $$2, String $$3, csu.a $$4) {
+         super($$2, $$1);
+         this.d = ewo.b($$4.a()).a().a($$1x -> $$1x.e().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
+         this.b.add(this.d);
       }
 
-      this.i.e = 0.43633232F * (1.0F - $$10);
-      this.i.f = (float) (-Math.PI / 4) + $$7;
-      this.j.e = 0.43633232F * (1.0F - $$10);
-      this.j.f = (float) (Math.PI / 4) - $$7;
-      this.f.e = $$10 * (float) (Math.PI / 4);
-      float $$18 = $$12 * atq.i($$10, (float) (-Math.PI / 3), -1.134464F);
-      this.a.c = this.a.c + (float)Math.cos((double)$$9) * 0.25F * $$11;
-      this.g.e = $$18;
-      this.h.e = $$18;
-      float $$19 = $$11 * (1.0F - $$12);
-      float $$20 = 0.43633232F - atq.b($$9 + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * $$19;
-      this.h.g = -$$20;
-      this.g.g = $$20;
-      this.g.f = 0.27925268F * $$12;
-      this.h.f = -0.27925268F * $$12;
+      @Override
+      public void a(evw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.d.f($$3 + $$4 - 45);
+         this.d.g($$2);
+         this.d.a($$0, $$6, $$7, $$9);
+      }
    }
 
-   @Override
-   public void a(blf $$0, eob $$1) {
-      float $$2 = 1.0F;
-      float $$3 = 3.0F;
-      this.a.a($$1);
-      this.f.a($$1);
-      $$1.a(0.0F, 0.0625F, 0.1875F);
-      $$1.a(a.b.rotation(this.g.e));
-      $$1.b(0.7F, 0.7F, 0.7F);
-      $$1.a(0.0625F, 0.0F, 0.0F);
+   public class b extends fgt.f {
+      final vb b;
+
+      public b(vb $$1) {
+         super(null);
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(evw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(fgt.this.f.h, this.b, $$3 + $$4 / 2, $$2 + 5, 16777215);
+      }
+
+      @Override
+      public List<? extends eyc> i() {
+         return ImmutableList.of();
+      }
+
+      @Override
+      public List<? extends ezy> b() {
+         return ImmutableList.of(new ezy() {
+            @Override
+            public ezy.a q() {
+               return ezy.a.b;
+            }
+
+            @Override
+            public void b(faa $$0) {
+               $$0.a(ezz.a, b.this.b);
+            }
+         });
+      }
+   }
+
+   @FunctionalInterface
+   interface c<T extends csu.g<T>> {
+      fgt.f create(vb var1, List<atk> var2, String var3, T var4);
+   }
+
+   public abstract class d extends fgt.f {
+      private final List<atk> a;
+      protected final List<ewf> b = Lists.newArrayList();
+
+      public d(@Nullable List<atk> $$1, vb $$2) {
+         super($$1);
+         this.a = fgt.this.f.h.c($$2, 175);
+      }
+
+      @Override
+      public List<? extends eyc> i() {
+         return this.b;
+      }
+
+      @Override
+      public List<? extends ezy> b() {
+         return this.b;
+      }
+
+      protected void a(evw $$0, int $$1, int $$2) {
+         if (this.a.size() == 1) {
+            $$0.a(fgt.this.f.h, this.a.get(0), $$2, $$1 + 5, 16777215, false);
+         } else if (this.a.size() >= 2) {
+            $$0.a(fgt.this.f.h, this.a.get(0), $$2, $$1, 16777215, false);
+            $$0.a(fgt.this.f.h, this.a.get(1), $$2, $$1 + 10, 16777215, false);
+         }
+      }
+   }
+
+   public class e extends fgt.d {
+      private final ewq d;
+
+      public e(vb $$1, List<atk> $$2, String $$3, csu.d $$4) {
+         super($$2, $$1);
+         this.d = new ewq(fgt.this.f.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
+         this.d.a(Integer.toString($$4.a()));
+         this.d.b($$1x -> {
+            if ($$4.b($$1x)) {
+               this.d.m(14737632);
+               fgt.this.b(this);
+            } else {
+               this.d.m(16711680);
+               fgt.this.a(this);
+            }
+         });
+         this.b.add(this.d);
+      }
+
+      @Override
+      public void a(evw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.d.f($$3 + $$4 - 45);
+         this.d.g($$2);
+         this.d.a($$0, $$6, $$7, $$9);
+      }
+   }
+
+   public abstract static class f extends ewn.a<fgt.f> {
+      @Nullable
+      final List<atk> a;
+
+      public f(@Nullable List<atk> $$0) {
+         this.a = $$0;
+      }
+   }
+
+   public class g extends ewn<fgt.f> {
+      public g(final csu $$1) {
+         super(fgt.this.f, fgt.this.g, fgt.this.h, 43, fgt.this.h - 32, 24);
+         final Map<csu.b, Map<csu.e<?>, fgt.f>> $$2 = Maps.newHashMap();
+         csu.a(new csu.c() {
+            @Override
+            public void b(csu.e<csu.a> $$0, csu.f<csu.a> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fgt.this.new a($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            @Override
+            public void c(csu.e<csu.d> $$0, csu.f<csu.d> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fgt.this.new e($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            private <T extends csu.g<T>> void a(csu.e<T> $$0, fgt.c<T> $$1x) {
+               vb $$2 = vb.c($$0.b());
+               vb $$3 = vb.b($$0.a()).a(n.o);
+               T $$4 = $$1.a($$0);
+               String $$5 = $$4.b();
+               vb $$6 = vb.a("editGamerule.default", vb.b($$5)).a(n.h);
+               String $$7 = $$0.b() + ".description";
+               List<atk> $$10;
+               String $$11;
+               if (geu.a($$7)) {
+                  Builder<atk> $$8 = ImmutableList.builder().add($$3.g());
+                  vb $$9 = vb.c($$7);
+                  fgt.this.i.c($$9, 150).forEach($$8::add);
+                  $$10 = $$8.add($$6.g()).build();
+                  $$11 = $$9.getString() + "\n" + $$6.getString();
+               } else {
+                  $$10 = ImmutableList.of($$3.g(), $$6.g());
+                  $$11 = $$6.getString();
+               }
+
+               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
+            }
+         });
+         $$2.entrySet()
+            .stream()
+            .sorted(Entry.comparingByKey())
+            .forEach(
+               $$0x -> {
+                  this.b(fgt.this.new b(vb.c(((csu.b)$$0x.getKey()).a()).a(n.r, n.o)));
+                  ((Map)$$0x.getValue())
+                     .entrySet()
+                     .stream()
+                     .sorted(Entry.comparingByKey(Comparator.comparing(csu.e::a)))
+                     .forEach($$0xx -> this.b((fgt.f)$$0xx.getValue()));
+               }
+            );
+      }
+
+      @Override
+      public void a(evw $$0, int $$1, int $$2, float $$3) {
+         super.a($$0, $$1, $$2, $$3);
+         fgt.f $$4 = this.r();
+         if ($$4 != null && $$4.a != null) {
+            fgt.this.b($$4.a);
+         }
+      }
    }
 }

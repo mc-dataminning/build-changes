@@ -1,71 +1,73 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonObject;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.Optional;
+import com.google.common.base.Stopwatch;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import org.slf4j.Logger;
 
-public interface apn {
-   apn a = new apn() {
-      @Override
-      public <T> Optional<T> a(aol<T> $$0) {
-         return Optional.empty();
-      }
-   };
-   apd<apn> b = () -> a;
+public class apn extends apy<apn.a> {
+   private static final Logger c = LogUtils.getLogger();
+   private final Stopwatch d = Stopwatch.createUnstarted();
 
-   static apn a(InputStream $$0) throws IOException {
-      apn var3;
-      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = atg.a($$1);
-         var3 = new apn() {
-            @Override
-            public <T> Optional<T> a(aol<T> $$0) {
-               String $$1 = $$0.a();
-               return $$2.has($$1) ? Optional.of($$0.a(atg.u($$2, $$1))) : Optional.empty();
-            }
-         };
-      }
-
-      return var3;
+   public apn(aps $$0, List<apm> $$1, Executor $$2, Executor $$3, CompletableFuture<avc> $$4) {
+      super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
+         AtomicLong $$6 = new AtomicLong();
+         AtomicLong $$7 = new AtomicLong();
+         bfv $$8 = new bfv(ac.b, () -> 0, false);
+         bfv $$9 = new bfv(ac.b, () -> 0, false);
+         CompletableFuture<Void> $$10 = $$3x.a($$1x, $$2x, $$8, $$9, $$2xx -> $$4x.execute(() -> {
+               long $$2xxx = ac.c();
+               $$2xx.run();
+               $$6.addAndGet(ac.c() - $$2xxx);
+            }), $$2xx -> $$5.execute(() -> {
+               long $$2xxx = ac.c();
+               $$2xx.run();
+               $$7.addAndGet(ac.c() - $$2xxx);
+            }));
+         return $$10.thenApplyAsync($$5x -> {
+            c.debug("Finished reloading " + $$3x.c());
+            return new apn.a($$3x.c(), $$8.d(), $$9.d(), $$6, $$7);
+         }, $$3);
+      }, $$4);
+      this.d.start();
+      this.b = this.b.thenApplyAsync(this::a, $$3);
    }
 
-   <T> Optional<T> a(aol<T> var1);
+   private List<apn.a> a(List<apn.a> $$0) {
+      this.d.stop();
+      long $$1 = 0L;
+      c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
 
-   default apn a(Collection<aol<?>> $$0) {
-      apn.a $$1 = new apn.a();
-
-      for (aol<?> $$2 : $$0) {
-         this.a($$1, $$2);
+      for (apn.a $$2 : $$0) {
+         bgb $$3 = $$2.b;
+         bgb $$4 = $$2.c;
+         long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
+         long $$6 = TimeUnit.NANOSECONDS.toMillis($$2.e.get());
+         long $$7 = $$5 + $$6;
+         String $$8 = $$2.a;
+         c.info("{} took approximately {} ms ({} ms preparing, {} ms applying)", new Object[]{$$8, $$7, $$5, $$6});
+         $$1 += $$6;
       }
 
-      return $$1.a();
-   }
-
-   private <T> void a(apn.a $$0, aol<T> $$1) {
-      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
+      c.info("Total blocking time: {} ms", $$1);
+      return $$0;
    }
 
    public static class a {
-      private final Builder<aol<?>, Object> a = ImmutableMap.builder();
+      final String a;
+      final bgb b;
+      final bgb c;
+      final AtomicLong d;
+      final AtomicLong e;
 
-      public <T> apn.a a(aol<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public apn a() {
-         final ImmutableMap<aol<?>, Object> $$0 = this.a.build();
-         return $$0.isEmpty() ? apn.a : new apn() {
-            @Override
-            public <T> Optional<T> a(aol<T> $$0x) {
-               return Optional.ofNullable((T)$$0.get($$0));
-            }
-         };
+      a(String $$0, bgb $$1, bgb $$2, AtomicLong $$3, AtomicLong $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
       }
    }
 }

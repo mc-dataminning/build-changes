@@ -1,24 +1,8 @@
-public class aex implements wo<aes> {
-   private final uv a;
-
-   public aex(uv $$0) {
-      this.a = $$0;
-   }
-
-   public aex(ty $$0) {
-      this.a = uv.a.b($$0.d(262144));
-   }
-
+public interface aex extends acx {
    @Override
-   public void a(ty $$0) {
-      $$0.a(uv.a.a(this.a));
+   default ud b() {
+      return ud.a;
    }
 
-   public void a(aes $$0) {
-      $$0.a(this);
-   }
-
-   public uv a() {
-      return this.a;
-   }
+   void a(aew var1);
 }

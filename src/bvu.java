@@ -1,36 +1,24 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class bvu extends bvk {
-   private static final ImmutableMap<bkz<?>, Float> a = ImmutableMap.builder()
-      .put(bkz.y, 8.0F)
-      .put(bkz.G, 12.0F)
-      .put(bkz.Z, 8.0F)
-      .put(bkz.aa, 12.0F)
-      .put(bkz.ay, 15.0F)
-      .put(bkz.aD, 12.0F)
-      .put(bkz.be, 8.0F)
-      .put(bkz.bg, 10.0F)
-      .put(bkz.bo, 10.0F)
-      .put(bkz.bp, 8.0F)
-      .put(bkz.br, 8.0F)
-      .build();
+public class bvu extends bwc<blx> {
+   private static final long c = 32L;
+   private static final long d = 16L;
+   public static final int a = 32;
 
    @Override
-   protected boolean a(bll $$0, bll $$1) {
-      return this.b($$1) && this.e($$0, $$1);
+   public Set<bux<?>> a() {
+      return ImmutableSet.of(bux.K);
    }
 
-   private boolean e(bll $$0, bll $$1) {
-      float $$2 = (Float)a.get($$1.ai());
-      return $$1.f((bkv)$$0) <= (double)($$2 * $$2);
-   }
-
-   @Override
-   protected bum<bll> b() {
-      return bum.A;
-   }
-
-   private boolean b(bll $$0) {
-      return a.containsKey($$0.ai());
+   protected void a(amp $$0, blx $$1) {
+      bmv<?> $$2 = $$1.dO();
+      List<cbe> $$3 = $$0.a(cbe.class, $$1.cH().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::f));
+      Optional<cbe> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.q())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(bux.K, $$4);
    }
 }

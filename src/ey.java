@@ -1,3 +1,4 @@
+import com.google.common.collect.Maps;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -7,38 +8,71 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-public class ey implements ArgumentType<eku> {
-   private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> uv.b("argument.scoreboardDisplaySlot.invalid", $$0));
+public class ey implements ArgumentType<Integer> {
+   private static final Collection<String> a = Arrays.asList("container.5", "12", "weapon");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vb.b("slot.unknown", $$0));
+   private static final Map<String, Integer> c = ac.a(Maps.newHashMap(), $$0 -> {
+      for (int $$1 = 0; $$1 < 54; $$1++) {
+         $$0.put("container." + $$1, $$1);
+      }
 
-   private ey() {
-   }
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         $$0.put("hotbar." + $$2, $$2);
+      }
+
+      for (int $$3 = 0; $$3 < 27; $$3++) {
+         $$0.put("inventory." + $$3, 9 + $$3);
+      }
+
+      for (int $$4 = 0; $$4 < 27; $$4++) {
+         $$0.put("enderchest." + $$4, 200 + $$4);
+      }
+
+      for (int $$5 = 0; $$5 < 8; $$5++) {
+         $$0.put("villager." + $$5, 300 + $$5);
+      }
+
+      for (int $$6 = 0; $$6 < 15; $$6++) {
+         $$0.put("horse." + $$6, 500 + $$6);
+      }
+
+      $$0.put("weapon", blk.a.a(98));
+      $$0.put("weapon.mainhand", blk.a.a(98));
+      $$0.put("weapon.offhand", blk.b.a(98));
+      $$0.put("armor.head", blk.f.a(100));
+      $$0.put("armor.chest", blk.e.a(100));
+      $$0.put("armor.legs", blk.d.a(100));
+      $$0.put("armor.feet", blk.c.a(100));
+      $$0.put("horse.saddle", 400);
+      $$0.put("horse.armor", 401);
+      $$0.put("horse.chest", 499);
+   });
 
    public static ey a() {
       return new ey();
    }
 
-   public static eku a(CommandContext<du> $$0, String $$1) {
-      return (eku)$$0.getArgument($$1, eku.class);
+   public static int a(CommandContext<ds> $$0, String $$1) {
+      return (Integer)$$0.getArgument($$1, Integer.class);
    }
 
-   public eku a(StringReader $$0) throws CommandSyntaxException {
+   public Integer a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      eku $$2 = eku.t.a($$1);
-      if ($$2 == null) {
-         throw a.create($$1);
+      if (!c.containsKey($$1)) {
+         throw b.create($$1);
       } else {
-         return $$2;
+         return c.get($$1);
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dy.b(Arrays.stream(eku.values()).map(eku::c), $$1);
+      return dw.b(c.keySet(), $$1);
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return a;
    }
 }

@@ -1,53 +1,46 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class azr extends avc {
-   private static final Logger b = LogUtils.getLogger();
-
-   public azr(Schema $$0) {
-      super($$0, bax.a);
+public class azr extends DataFix {
+   public azr(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bbg.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bbg.z.typeName(), bco.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
       return this.fixTypeEverywhereTyped(
-         "LevelUUIDFix",
-         this.getInputSchema().getType(this.a),
-         $$0 -> $$0.updateTyped(DSL.remainderFinder(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-                  $$0xx = this.d($$0xx);
-                  $$0xx = this.c($$0xx);
-                  return this.b($$0xx);
-               }))
-      );
-   }
+         "ItemWaterPotionFix",
+         $$0,
+         $$2x -> {
+            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+            if ($$3.isPresent()) {
+               String $$4 = (String)$$3.get().getSecond();
+               if ("minecraft:potion".equals($$4)
+                  || "minecraft:splash_potion".equals($$4)
+                  || "minecraft:lingering_potion".equals($$4)
+                  || "minecraft:tipped_arrow".equals($$4)) {
+                  Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
+                  Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
+                  if ($$6.get("Potion").asString().result().isEmpty()) {
+                     $$6 = $$6.set("Potion", $$6.createString("minecraft:water"));
+                  }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return a($$0, "WanderingTraderId", "WanderingTraderId").orElse($$0);
-   }
+                  return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
+               }
+            }
 
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.update(
-         "DimensionData",
-         $$0x -> $$0x.updateMapValues(
-               $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DragonFight", $$0xxxx -> c($$0xxxx, "DragonUUID", "Dragon").orElse($$0xxxx)))
-            )
-      );
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      return $$0.update(
-         "CustomBossEvents",
-         $$0x -> $$0x.updateMapValues(
-               $$0xx -> $$0xx.mapSecond(
-                     $$0xxx -> $$0xxx.update("Players", $$1 -> $$0xxx.createList($$1.asStream().map($$0xxxxx -> (Dynamic)a($$0xxxxx).orElseGet(() -> {
-                                 b.warn("CustomBossEvents contains invalid UUIDs.");
-                                 return $$0xxxxx;
-                              }))))
-                  )
-            )
+            return $$2x;
+         }
       );
    }
 }

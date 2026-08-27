@@ -1,95 +1,73 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class czn extends cty {
-   public static final MapCodec<czn> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ctd.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), jc.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
-            .apply($$0, czn::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final din g = did.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final ctd.c j;
-
-   @Override
-   public MapCodec<czn> a() {
-      return d;
-   }
-
-   public czn(ctd.c $$0, jc.a $$1, dhm.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.k(this.E.b().a(g, Integer.valueOf(1)));
+public abstract class czn extends czm implements cwc {
+   protected czn(dio.d $$0, ia $$1, elu $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean d(dhn $$0) {
-      return $$0.c(g) == 3;
+   protected abstract MapCodec<? extends czn> a();
+
+   protected dip a(dip $$0, dip $$1) {
+      return $$1;
    }
 
    @Override
-   protected boolean a(ecw $$0) {
-      return $$0 == ecy.c && this.j == ctd.c.b;
-   }
-
-   @Override
-   protected double b(dhn $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
-   }
-
-   @Override
-   public void a(dhn $$0, csf $$1, hx $$2, bkv $$3) {
-      if (!$$1.B && $$3.bN() && this.a($$0, $$2, $$3)) {
-         $$3.aA();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
-         }
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
-   }
 
-   private void e(dhn $$0, csf $$1, hx $$2) {
-      if (this.j == ctd.c.c) {
-         d(cvh.fu.o().a(g, $$0.c(g)), $$1, $$2);
+      czo $$6 = this.c();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
       } else {
-         d($$0, $$1, $$2);
-      }
-   }
+         if (this.b) {
+            $$3.a($$4, eea.c, eea.c.a($$3));
+         }
 
-   public static void d(dhn $$0, csf $$1, hx $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dhn $$4 = $$3 == 0 ? cvh.ft.o() : $$0.a(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(dlx.c, $$2, dlx.a.a($$4));
-   }
-
-   @Override
-   public void a(dhn $$0, csf $$1, hx $$2, ctd.c $$3) {
-      if (cwa.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dhn $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(dlx.c, $$2, dlx.a.a($$4));
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   public int a(dhn $$0, csf $$1, hx $$2) {
-      return $$0.c(g);
+   public cmh a(ctb $$0, hv $$1, dip $$2) {
+      return new cmh(this.c());
    }
 
    @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(g);
+   public boolean b(ctb $$0, hv $$1, dip $$2) {
+      Optional<hv> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
    }
 
    @Override
-   protected void a(dhn $$0, csf $$1, hx $$2, ecw $$3) {
-      if (!this.d($$0)) {
-         dhn $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(dlx.c, $$2, dlx.a.a($$4));
-         $$1.c(1047, $$2, 0);
+   public boolean a(csy $$0, auf $$1, hv $$2, dip $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(amp $$0, auf $$1, hv $$2, dip $$3) {
+      Optional<hv> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dip $$5 = $$0.a_($$4.get());
+         ((czo)$$5.b()).a($$0, $$1, $$4.get(), $$5);
       }
+   }
+
+   private Optional<hv> a(cse $$0, hv $$1, cvz $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
+   }
+
+   @Override
+   public boolean a(dip $$0, coq $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().k()) ? false : $$2;
+   }
+
+   @Override
+   protected cvz b() {
+      return this;
    }
 }

@@ -1,21 +1,8 @@
-import com.google.common.base.MoreObjects;
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fgi {
-   public static final int a = -1;
-   private final List<fgg> b;
-   private final int c;
-
-   public fgi(List<fgg> $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public fgg a(int $$0) {
-      return $$0 >= 0 && $$0 < this.b.size() ? (fgg)MoreObjects.firstNonNull(this.b.get($$0), fge.a) : fge.a;
-   }
-
-   public int a() {
-      return this.c;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fgi {
 }

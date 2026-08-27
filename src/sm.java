@@ -1,60 +1,131 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class sm {
-   private static final int a = 512;
-   private final long b;
-   private long c;
-   private final int d;
-   private int e;
-
-   public sm(long $$0, int $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
-
-   public static sm a(long $$0) {
-      return new sm($$0, 512);
-   }
-
-   public static sm a() {
-      return new sm(Long.MAX_VALUE, 512);
-   }
-
-   public void a(long $$0, long $$1) {
-      this.b($$0 * $$1);
-   }
-
-   public void b(long $$0) {
-      if (this.c + $$0 > this.b) {
-         throw new sn("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
-      } else {
-         this.c += $$0;
+public class sm extends sz {
+   private static final int c = 12;
+   public static final sm a = new sm(0.0F);
+   public static final ti<sm> b = new ti.a<sm>() {
+      public sm a(DataInput $$0, ss $$1) throws IOException {
+         return sm.a(d($$0, $$1));
       }
-   }
 
-   public void b() {
-      if (this.e >= this.d) {
-         throw new sn("Tried to read NBT tag with too high complexity, depth > " + this.d);
-      } else {
-         this.e++;
+      @Override
+      public td.b a(DataInput $$0, td $$1, ss $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
       }
-   }
 
-   public void c() {
-      if (this.e <= 0) {
-         throw new sn("NBT-Accounter tried to pop stack-depth at top-level");
-      } else {
-         this.e--;
+      private static float d(DataInput $$0, ss $$1) throws IOException {
+         $$1.b(12L);
+         return $$0.readFloat();
       }
+
+      @Override
+      public int c() {
+         return 4;
+      }
+
+      @Override
+      public String a() {
+         return "FLOAT";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Float";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final float w;
+
+   private sm(float $$0) {
+      this.w = $$0;
    }
 
-   @VisibleForTesting
-   public long d() {
-      return this.c;
+   public static sm a(float $$0) {
+      return $$0 == 0.0F ? a : new sm($$0);
    }
 
-   @VisibleForTesting
-   public int e() {
-      return this.e;
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeFloat(this.w);
+   }
+
+   @Override
+   public int a() {
+      return 12;
+   }
+
+   @Override
+   public byte b() {
+      return 5;
+   }
+
+   @Override
+   public ti<sm> c() {
+      return b;
+   }
+
+   public sm e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof sm && this.w == ((sm)$$0).w;
+   }
+
+   @Override
+   public int hashCode() {
+      return Float.floatToIntBits(this.w);
+   }
+
+   @Override
+   public void a(tk $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return (long)this.w;
+   }
+
+   @Override
+   public int g() {
+      return aty.d(this.w);
+   }
+
+   @Override
+   public short h() {
+      return (short)(aty.d(this.w) & 65535);
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(aty.d(this.w) & 0xFF);
+   }
+
+   @Override
+   public double j() {
+      return (double)this.w;
+   }
+
+   @Override
+   public float k() {
+      return this.w;
+   }
+
+   @Override
+   public Number l() {
+      return this.w;
+   }
+
+   @Override
+   public td.b a(td $$0) {
+      return $$0.a(this.w);
    }
 }

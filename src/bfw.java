@@ -1,20 +1,33 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public enum bfw {
-   a("client"),
-   b("server");
+public class bfw {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bga c = bfz.a;
 
-   private final String c;
-
-   private bfw(String $$0) {
-      this.c = $$0;
+   public bfw(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static bfw a(MinecraftServer $$0) {
-      return $$0.l() ? b : a;
+   public boolean a() {
+      return this.c != bfz.a;
    }
 
-   public String a() {
+   public void b() {
+      this.c = bfz.a;
+   }
+
+   public void c() {
+      this.c = new bfv(this.a, this.b, true);
+   }
+
+   public bgc d() {
       return this.c;
+   }
+
+   public bgb e() {
+      return this.c.d();
    }
 }

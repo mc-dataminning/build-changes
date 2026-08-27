@@ -1,18 +1,16 @@
-public record xt(hx b, int c) implements xh {
-   public static final agm a = new agm("debug/poi_ticket_count");
+public record xt() implements xo {
+   public static final agt a = new agt("debug/game_test_clear");
 
-   public xt(ty $$0) {
-      this($$0.e(), $$0.readInt());
+   public xt(ue $$0) {
+      this();
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.b);
-      $$0.p(this.c);
+   public void a(ue $$0) {
    }
 
    @Override
-   public agm a() {
+   public agt a() {
       return a;
    }
 }

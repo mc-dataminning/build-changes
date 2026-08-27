@@ -1,17 +1,17 @@
-public class brh implements brf {
-   private final bln b;
-   protected boolean a;
+import com.google.common.collect.ImmutableMap;
 
-   public brh(bln $$0) {
-      this.b = $$0;
+public class brh extends bnm<blv> {
+   public brh() {
+      super(ImmutableMap.of());
    }
 
-   public void a() {
-      this.a = true;
+   @Override
+   protected boolean a(amp $$0, blv $$1) {
+      return $$1.bO();
    }
 
-   public void b() {
-      this.b.r(this.a);
-      this.a = false;
+   @Override
+   protected void d(amp $$0, blv $$1, long $$2) {
+      $$1.ag();
    }
 }

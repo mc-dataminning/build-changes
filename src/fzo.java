@@ -1,17 +1,15 @@
-public class fzo<T extends bll, M extends fhu<T>> extends gak<T, M> {
-   private final fqv a;
+public class fzo extends fyu<ccg, fks<ccg>> {
+   private static final agt a = new agt("textures/entity/silverfish.png");
 
-   public fzo(fxx<T, M> $$0, fqv $$1) {
-      super($$0);
-      this.a = $$1;
+   public fzo(fxo.a $$0) {
+      super($$0, new fks<>($$0.a(flx.bj)), 0.3F);
    }
 
-   public void a(eob $$0, fqz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      clo $$10 = $$3.c(bla.a);
-      this.a.a($$3, $$10, cll.h, false, $$0, $$1, $$2);
-      $$0.b();
+   protected float a(ccg $$0) {
+      return 180.0F;
+   }
+
+   public agt b(ccg $$0) {
+      return a;
    }
 }

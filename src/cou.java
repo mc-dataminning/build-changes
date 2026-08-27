@@ -1,81 +1,72 @@
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public abstract class cou implements cpl<bje> {
+   protected final cpq<?> a;
+   protected final cpa b;
+   protected final String c;
+   protected final cpi d;
+   protected final cmh e;
+   protected final float f;
+   protected final int g;
 
-public class cou {
-   private final cou.a[] a;
-   private WeakReference<cow> b = new WeakReference<>(null);
-
-   public cou(int $$0) {
-      this.a = new cou.a[$$0];
+   public cou(cpq<?> $$0, String $$1, cpa $$2, cpi $$3, cmh $$4, float $$5, int $$6) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public Optional<coi> a(csf $$0, chh $$1) {
-      if ($$1.aj_()) {
-         return Optional.empty();
-      } else {
-         this.a($$0);
-
-         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
-            cou.a $$3 = this.a[$$2];
-            if ($$3 != null && $$3.a($$1.h())) {
-               this.a($$2);
-               return Optional.ofNullable($$3.b());
-            }
-         }
-
-         return this.a($$1, $$0);
-      }
+   @Override
+   public boolean a(bje $$0, csy $$1) {
+      return this.d.a($$0.a(0));
    }
 
-   private void a(csf $$0) {
-      cow $$1 = $$0.q();
-      if ($$1 != this.b.get()) {
-         this.b = new WeakReference<>($$1);
-         Arrays.fill(this.a, null);
-      }
+   @Override
+   public cmh a(bje $$0, is $$1) {
+      return this.e.p();
    }
 
-   private Optional<coi> a(chh $$0, csf $$1) {
-      Optional<cov<coi>> $$2 = $$1.q().a(coy.a, $$0, $$1);
-      this.a($$0.h(), $$2.map(cov::b).orElse(null));
-      return $$2.map(cov::b);
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 
-   private void a(int $$0) {
-      if ($$0 > 0) {
-         cou.a $$1 = this.a[$$0];
-         System.arraycopy(this.a, 0, this.a, 1, $$0);
-         this.a[0] = $$1;
-      }
+   @Override
+   public io<cpi> a() {
+      io<cpi> $$0 = io.a();
+      $$0.add(this.d);
+      return $$0;
    }
 
-   private void a(List<clo> $$0, @Nullable coi $$1) {
-      ip<clo> $$2 = ip.a($$0.size(), clo.b);
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         $$2.set($$3, $$0.get($$3).c(1));
-      }
-
-      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
-      this.a[0] = new cou.a($$2, $$1);
+   public float b() {
+      return this.f;
    }
 
-   static record a(ip<clo> a, @Nullable coi b) {
-      public boolean a(List<clo> $$0) {
-         if (this.a.size() != $$0.size()) {
-            return false;
-         } else {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (!clo.c(this.a.get($$1), $$0.get($$1))) {
-                  return false;
-               }
-            }
+   @Override
+   public cmh a(is $$0) {
+      return this.e;
+   }
 
-            return true;
-         }
-      }
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public cpq<?> e() {
+      return this.a;
+   }
+
+   public cpa f() {
+      return this.b;
+   }
+
+   public interface a<T extends cou> {
+      T create(String var1, cpa var2, cpi var3, cmh var4, float var5, int var6);
    }
 }

@@ -1,107 +1,59 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
 
 public class cgh {
-   private static final Logger a = LogUtils.getLogger();
-   private final cgj b;
-   private final Map<agm, cgg> c;
-   private final cgi d;
+   private final List<cge> a = Lists.newArrayList();
+   private int b;
 
-   cgh(cgj $$0, cgi $$1, Map<agm, cgg> $$2) {
-      this.b = $$0;
-      this.c = $$2;
-      this.d = $$1;
+   public ImmutableList<cge> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public boolean a(cgi $$0) {
-      return $$0.a(this.d);
+   public cgh a(int $$0, float $$1) {
+      this.a.add(new cge($$0, $$1));
+      this.b();
+      return this;
    }
 
-   public cgi a() {
-      return this.d;
+   public cgh a(Collection<cge> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   public cgi a(Iterable<agm> $$0) {
-      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
+   private void b() {
+      Int2ObjectSortedMap<cge> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
    }
 
-   public cgi a(cgg... $$0) {
-      return cgi.a(this.b, Arrays.asList($$0));
-   }
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         cge $$1 = this.a.get(this.b);
+         cge $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
 
-   public cgi a(Iterable<agm> $$0, Consumer<agm> $$1) {
-      Set<cgg> $$2 = Sets.newIdentityHashSet();
-
-      for (agm $$3 : $$0) {
-         cgg $$4 = this.c.get($$3);
-         if ($$4 == null) {
-            $$1.accept($$3);
-         } else {
-            $$2.add($$4);
-         }
-      }
-
-      return cgi.a(this.b, $$2);
-   }
-
-   public Set<agm> b(cgi $$0) {
-      Set<agm> $$1 = new HashSet<>();
-      this.c.forEach(($$2, $$3) -> {
-         if ($$0.b($$3)) {
-            $$1.add($$2);
-         }
-      });
-      return $$1;
-   }
-
-   public Codec<cgi> b() {
-      return agm.a.listOf().comapFlatMap($$0 -> {
-         Set<agm> $$1 = new HashSet<>();
-         cgi $$2 = this.a($$0, $$1::add);
-         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
-      }, $$0 -> List.copyOf(this.b($$0)));
-   }
-
-   public static class a {
-      private final cgj a;
-      private int b;
-      private final Map<agm, cgg> c = new LinkedHashMap<>();
-
-      public a(String $$0) {
-         this.a = new cgj($$0);
-      }
-
-      public cgg a(String $$0) {
-         return this.a(new agm("minecraft", $$0));
-      }
-
-      public cgg a(agm $$0) {
-         if (this.b >= 64) {
-            throw new IllegalStateException("Too many feature flags");
-         } else {
-            cgg $$1 = new cgg(this.a, this.b++);
-            cgg $$2 = this.c.put($$0, $$1);
-            if ($$2 != null) {
-               throw new IllegalStateException("Duplicate feature flag " + $$0);
-            } else {
-               return $$1;
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cge $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
             }
-         }
-      }
 
-      public cgh a() {
-         cgi $$0 = cgi.a(this.a, this.c.values());
-         return new cgh(this.a, $$0, Map.copyOf(this.c));
+            this.b = $$6;
+            $$5 = $$7.b();
+         }
+
+         return $$5;
       }
    }
 }

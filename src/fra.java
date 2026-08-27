@@ -1,125 +1,122 @@
 import java.util.Optional;
+import java.util.function.Consumer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fra implements fqz {
-   private final fqz.a a;
-   private final fqz.a b = fqz.a(new enw(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
+public class fra extends fqw {
+   private final dnd a;
+   private float b;
+   private float F;
+   private float G;
+   private float H;
 
-   public fra(fqz.a $$0) {
-      this.a = $$0;
+   fra(fmt $$0, double $$1, double $$2, double $$3, dnd $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.3F;
+      this.a = $$4;
+      this.t = $$5;
+      Optional<elb> $$6 = $$4.a($$0);
+      if ($$6.isPresent()) {
+         elb $$7 = $$6.get();
+         double $$8 = $$1 - $$7.a();
+         double $$9 = $$2 - $$7.b();
+         double $$10 = $$3 - $$7.c();
+         this.F = this.b = (float)aty.d($$8, $$10);
+         this.H = this.G = (float)aty.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
+      }
    }
 
    @Override
-   public eof getBuffer(frh $$0) {
-      if ($$0.K()) {
-         eof $$1 = this.b.getBuffer($$0);
-         return new fra.a($$1, this.c, this.d, this.e, this.f);
+   public void a(eph $$0, etv $$1, float $$2) {
+      float $$3 = aty.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
+      float $$4 = aty.i($$2, this.F, this.b);
+      float $$5 = aty.i($$2, this.H, this.G) + (float) (Math.PI / 2);
+      this.a($$0, $$1, $$2, $$3x -> $$3x.rotateY($$4).rotateX(-$$5).rotateY($$3));
+      this.a($$0, $$1, $$2, $$3x -> $$3x.rotateY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3));
+   }
+
+   private void a(eph $$0, etv $$1, float $$2, Consumer<Quaternionf> $$3) {
+      elb $$4 = $$1.b();
+      float $$5 = (float)(aty.d((double)$$2, this.d, this.g) - $$4.a());
+      float $$6 = (float)(aty.d((double)$$2, this.e, this.h) - $$4.b());
+      float $$7 = (float)(aty.d((double)$$2, this.f, this.i) - $$4.c());
+      Vector3f $$8 = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
+      Quaternionf $$9 = new Quaternionf().setAngleAxis(0.0F, $$8.x(), $$8.y(), $$8.z());
+      $$3.accept($$9);
+      Vector3f[] $$10 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$11 = this.b($$2);
+
+      for (int $$12 = 0; $$12 < 4; $$12++) {
+         Vector3f $$13 = $$10[$$12];
+         $$13.rotate($$9);
+         $$13.mul($$11);
+         $$13.add($$5, $$6, $$7);
+      }
+
+      float $$14 = this.c();
+      float $$15 = this.d();
+      float $$16 = this.e();
+      float $$17 = this.f();
+      int $$18 = this.a($$2);
+      $$0.a((double)$$10[0].x(), (double)$$10[0].y(), (double)$$10[0].z()).a($$15, $$17).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[1].x(), (double)$$10[1].y(), (double)$$10[1].z()).a($$15, $$16).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[2].x(), (double)$$10[2].y(), (double)$$10[2].z()).a($$14, $$16).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[3].x(), (double)$$10[3].y(), (double)$$10[3].z()).a($$14, $$17).a(this.v, this.w, this.x, this.y).b($$18).e();
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fqa b() {
+      return fqa.c;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         eof $$2 = this.a.getBuffer($$0);
-         Optional<frh> $$3 = $$0.J();
-         if ($$3.isPresent()) {
-            eof $$4 = this.b.getBuffer($$3.get());
-            fra.a $$5 = new fra.a($$4, this.c, this.d, this.e, this.f);
-            return eoi.a($$5, $$2);
+         Optional<elb> $$0 = this.a.a(this.c);
+         if ($$0.isEmpty()) {
+            this.k();
          } else {
-            return $$2;
+            int $$1 = this.t - this.s;
+            double $$2 = 1.0 / (double)$$1;
+            elb $$3 = $$0.get();
+            this.g = aty.d($$2, this.g, $$3.a());
+            this.h = aty.d($$2, this.h, $$3.b());
+            this.i = aty.d($$2, this.i, $$3.c());
+            double $$4 = this.g - $$3.a();
+            double $$5 = this.h - $$3.b();
+            double $$6 = this.i - $$3.c();
+            this.F = this.b;
+            this.b = (float)aty.d($$4, $$6);
+            this.H = this.G;
+            this.G = (float)aty.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
          }
       }
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
+   public static class a implements fpz<jz> {
+      private final fqr a;
 
-   public void a() {
-      this.b.b();
-   }
-
-   static class a extends eoa {
-      private final eof f;
-      private double g;
-      private double h;
-      private double i;
-      private float j;
-      private float k;
-
-      a(eof $$0, int $$1, int $$2, int $$3, int $$4) {
-         this.f = $$0;
-         super.b($$1, $$2, $$3, $$4);
+      public a(fqr $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-      }
-
-      @Override
-      public void l() {
-      }
-
-      @Override
-      public eof a(double $$0, double $$1, double $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      @Override
-      public eof a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public eof a(float $$0, float $$1) {
-         this.j = $$0;
-         this.k = $$1;
-         return this;
-      }
-
-      @Override
-      public eof a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public eof b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public eof a(float $$0, float $$1, float $$2) {
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
-      }
-
-      @Override
-      public void e() {
-         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      public fpw a(jz $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fra $$8 = new fra($$1, $$2, $$3, $$4, $$0.c(), $$0.d());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

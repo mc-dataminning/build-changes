@@ -1,32 +1,29 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import net.minecraft.server.MinecraftServer;
 
-public class ekk implements ekl {
-   private final DoubleList a;
+public class ekk implements ekm<MinecraftServer> {
+   final agt a;
 
-   public ekk(DoubleList $$0) {
+   public ekk(agt $$0) {
       this.a = $$0;
    }
 
-   @Override
-   public boolean a(ekl.a $$0) {
-      int $$1 = this.a.size() - 1;
+   public void a(MinecraftServer $$0, eko<MinecraftServer> $$1, long $$2) {
+      ahh $$3 = $$0.aC();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   }
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
+   public static class a extends ekm.a<MinecraftServer, ekk> {
+      public a() {
+         super(new agt("function"), ekk.class);
       }
 
-      return true;
-   }
+      public void a(sj $$0, ekk $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
 
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+      public ekk a(sj $$0) {
+         agt $$1 = new agt($$0.l("Name"));
+         return new ekk($$1);
+      }
    }
 }

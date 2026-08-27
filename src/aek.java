@@ -1,40 +1,44 @@
-public class aek implements wo<acp> {
-   private final ejv a;
-   private final bja b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public aek(bja $$0, ejv $$1, int $$2) {
-      this.b = $$0;
-      this.a = $$1;
+public class aek implements wu<acw> {
+   private final int a;
+   private final String b;
+   private final boolean c;
+
+   public aek(int $$0, String $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
       this.c = $$2;
    }
 
-   public aek(ty $$0) {
-      this.b = $$0.b(bja.class);
-      this.a = $$0.y();
-      this.c = $$0.n();
+   public aek(ue $$0) {
+      this.a = $$0.n();
+      this.b = $$0.s();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
+      $$0.c(this.a);
       $$0.a(this.b);
-      $$0.a(this.a);
-      $$0.c(this.c);
+      $$0.a(this.c);
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
    }
 
-   public bja a() {
+   @Nullable
+   public crz a(csy $$0) {
+      blf $$1 = $$0.a(this.a);
+      return $$1 instanceof cgr ? ((cgr)$$1).C() : null;
+   }
+
+   public String a() {
       return this.b;
    }
 
-   public ejv d() {
-      return this.a;
-   }
-
-   public int e() {
+   public boolean d() {
       return this.c;
    }
 }

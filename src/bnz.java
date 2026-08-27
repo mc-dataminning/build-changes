@@ -1,32 +1,73 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
-public class bnz {
-   public static <T extends bll> bnd<bll> a(bkz<? extends T> $$0, int $$1, bum<T> $$2, float $$3, int $$4) {
-      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+public class bnz extends bnm<bme> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<blv, Float> f;
+   private final Function<blv, Double> g;
+
+   public bnz(Function<blv, Float> $$0) {
+      this($$0, $$0x -> 2.5);
    }
 
-   public static <E extends bll, T extends bll> bnd<E> a(bkz<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, bum<T> $$4, float $$5, int $$6) {
-      int $$7 = $$1 * $$1;
-      Predicate<bll> $$8 = $$2x -> $$0.equals($$2x.ai()) && $$3.test((T)$$2x);
-      return bqo.a(
-         (Function<bqo.b<E>, ? extends App<bqo.c<E>, bqr<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(bum.n), $$6x.c(bum.m), $$6x.b(bum.h))
-               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
-                     buo $$13 = $$6x.b($$9);
-                     if ($$2.test((E)$$11) && $$13.d($$8)) {
-                        Optional<bll> $$14 = $$13.a($$3xxxx -> $$3xxxx.f((bkv)$$11) <= (double)$$7 && $$8.test($$3xxxx));
-                        $$14.ifPresent($$5xxxx -> {
-                           $$6xx.a($$5xxxx);
-                           $$7x.a(new bnn($$5xxxx, true));
-                           $$8x.a(new bup(new bnn($$5xxxx, false), $$5, $$6));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public bnz(Function<blv, Float> $$0, Function<blv, Double> $$1) {
+      super(ac.a(() -> {
+         Builder<bux<?>, buy> $$0x = ImmutableMap.builder();
+         $$0x.put(bux.n, buy.c);
+         $$0x.put(bux.m, buy.c);
+         $$0x.put(bux.O, buy.b);
+         $$0x.put(bux.Q, buy.c);
+         $$0x.put(bux.N, buy.a);
+         $$0x.put(bux.r, buy.b);
+         $$0x.put(bux.Y, buy.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
+   }
+
+   protected float a(bme $$0) {
+      return this.f.apply($$0);
+   }
+
+   private Optional<cer> b(bme $$0) {
+      return $$0.dO().c(bux.N);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected boolean a(amp $$0, bme $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.dO().a(bux.r) && !$$1.dO().a(bux.Y);
+   }
+
+   protected void b(amp $$0, bme $$1, long $$2) {
+      $$1.dO().a(bux.Q, true);
+   }
+
+   protected void c(amp $$0, bme $$1, long $$2) {
+      bmv<?> $$3 = $$1.dO();
+      $$3.a(bux.O, 100);
+      $$3.a(bux.Q, false);
+      $$3.b(bux.m);
+      $$3.b(bux.n);
+   }
+
+   protected void d(amp $$0, bme $$1, long $$2) {
+      cer $$3 = this.b($$1).get();
+      bmv<?> $$4 = $$1.dO();
+      $$4.a(bux.n, new bnx($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.f($$3) < aty.k($$5)) {
+         $$4.b(bux.m);
+      } else {
+         $$4.a(bux.m, new bva(new bnx($$3, false), this.a($$1), 2));
+      }
    }
 }

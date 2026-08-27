@@ -1,151 +1,85 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+public class bsh extends bsv {
+   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
+   private final bxq b;
+   private final int c;
+   private boolean d;
 
-public class bsh {
-   private static final Logger a = LogUtils.getLogger();
-   private static final btu b = new btu(Integer.MAX_VALUE, new bsg() {
-      @Override
-      public boolean a() {
+   public bsh(bxq $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
+   }
+
+   @Override
+   public boolean a() {
+      if (this.b.eg().a(this.c) != 0) {
          return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<bsg.a, btu> c = new EnumMap<>(bsg.a.class);
-   private final Set<btu> d = Sets.newLinkedHashSet();
-   private final Supplier<bfs> e;
-   private final EnumSet<bsg.a> f = EnumSet.noneOf(bsg.a.class);
-   private int g;
-   private int h = 3;
+      } else {
+         ia $$0 = this.b.cF();
+         int $$1 = $$0.j();
+         int $$2 = $$0.l();
+         hv $$3 = this.b.dm();
 
-   public bsh(Supplier<bfs> $$0) {
-      this.e = $$0;
-   }
-
-   public void a(int $$0, bsg $$1) {
-      this.d.add(new btu($$0, $$1));
-   }
-
-   @VisibleForTesting
-   public void a(Predicate<bsg> $$0) {
-      this.d.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(bsg $$0) {
-      this.d.stream().filter($$1 -> $$1.k() == $$0).filter(btu::h).forEach(btu::d);
-      this.d.removeIf($$1 -> $$1.k() == $$0);
-   }
-
-   private static boolean a(btu $$0, EnumSet<bsg.a> $$1) {
-      for (bsg.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
+         for (int $$4 : a) {
+            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
+               return false;
+            }
          }
-      }
 
+         return true;
+      }
+   }
+
+   private boolean a(hv $$0, int $$1, int $$2, int $$3) {
+      hv $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
+      return this.b.dM().b_($$4).a(arw.a) && !this.b.dM().a_($$4).d();
+   }
+
+   private boolean b(hv $$0, int $$1, int $$2, int $$3) {
+      return this.b.dM().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dM().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
+   }
+
+   @Override
+   public boolean b() {
+      double $$0 = this.b.dp().d;
+      return (!($$0 * $$0 < 0.03F) || this.b.dE() == 0.0F || !(Math.abs(this.b.dE()) < 10.0F) || !this.b.aZ()) && !this.b.aC();
+   }
+
+   @Override
+   public boolean S_() {
       return false;
    }
 
-   private static boolean a(btu $$0, Map<bsg.a, btu> $$1) {
-      for (bsg.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, b).a($$0)) {
-            return false;
-         }
+   @Override
+   public void c() {
+      ia $$0 = this.b.cF();
+      this.b.g(this.b.dp().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      this.b.N().n();
+   }
+
+   @Override
+   public void d() {
+      this.b.s(0.0F);
+   }
+
+   @Override
+   public void e() {
+      boolean $$0 = this.d;
+      if (!$$0) {
+         edz $$1 = this.b.dM().b_(this.b.dm());
+         this.d = $$1.a(arw.a);
       }
 
-      return true;
-   }
-
-   public void a() {
-      bfs $$0 = this.e.get();
-      $$0.a("goalCleanup");
-
-      for (btu $$1 : this.d) {
-         if ($$1.h() && (a($$1, this.f) || !$$1.b())) {
-            $$1.d();
-         }
+      if (this.d && !$$0) {
+         this.b.a(arc.gy, 1.0F, 1.0F);
       }
 
-      Iterator<Entry<bsg.a, btu>> $$2 = this.c.entrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<bsg.a, btu> $$3 = $$2.next();
-         if (!$$3.getValue().h()) {
-            $$2.remove();
-         }
-      }
-
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (btu $$4 : this.d) {
-         if (!$$4.h() && !a($$4, this.f) && a($$4, this.c) && $$4.a()) {
-            for (bsg.a $$5 : $$4.j()) {
-               btu $$6 = this.c.getOrDefault($$5, b);
-               $$6.d();
-               this.c.put($$5, $$4);
-            }
-
-            $$4.c();
-         }
-      }
-
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      bfs $$1 = this.e.get();
-      $$1.a("goalTick");
-
-      for (btu $$2 : this.d) {
-         if ($$2.h() && ($$0 || $$2.T_())) {
-            $$2.e();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<btu> b() {
-      return this.d;
-   }
-
-   public Stream<btu> c() {
-      return this.d.stream().filter(btu::h);
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public void a(bsg.a $$0) {
-      this.f.add($$0);
-   }
-
-   public void b(bsg.a $$0) {
-      this.f.remove($$0);
-   }
-
-   public void a(bsg.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
-      } else {
-         this.a($$0);
+      elb $$2 = this.b.dp();
+      if ($$2.d * $$2.d < 0.03F && this.b.dE() != 0.0F) {
+         this.b.s(aty.j(0.2F, this.b.dE(), 0.0F));
+      } else if ($$2.f() > 1.0E-5F) {
+         double $$3 = $$2.h();
+         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
+         this.b.s((float)$$4);
       }
    }
 }

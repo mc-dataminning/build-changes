@@ -1,32 +1,36 @@
-public class aax implements wo<yh> {
-   private final double a;
-   private final double b;
+import javax.annotation.Nullable;
 
-   public aax(dje $$0) {
-      this.a = $$0.a();
-      this.b = $$0.b();
+public class aax implements wu<yo> {
+   private final int a;
+   private final bkq b;
+
+   public aax(int $$0, bkq $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public aax(ty $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
+   public aax(ue $$0) {
+      this.a = $$0.n();
+      this.b = $$0.a(kb.d);
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(ue $$0) {
+      $$0.c(this.a);
+      $$0.a(kb.d, this.b);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.b;
+   @Nullable
+   public blf a(csy $$0) {
+      return $$0.a(this.a);
    }
 
-   public double d() {
-      return this.a;
+   @Nullable
+   public bkq a() {
+      return this.b;
    }
 }

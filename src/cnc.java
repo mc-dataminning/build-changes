@@ -1,22 +1,19 @@
-public class cnc extends clj {
-   private final cnb a;
+public class cnc extends cmd {
+   private final amq a;
 
-   public cnc(cnb $$0, clj.a $$1) {
-      super($$1.b($$0.a()));
+   public cnc(amq $$0) {
       this.a = $$0;
    }
 
-   public cnb i() {
-      return this.a;
+   @Override
+   protected void b(cmc $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.c.b(new zl($$0, $$1));
    }
 
    @Override
-   public int c() {
-      return this.a.e();
-   }
-
-   @Override
-   public boolean a(clo $$0, clo $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+   protected void c(cmc $$0) {
+      super.c($$0);
+      this.a.c.b(new zl($$0, 0));
    }
 }

@@ -1,104 +1,89 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cvk extends cur implements cya {
-   public static final MapCodec<cvk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kc.f.q().fieldOf("turns_into").forGetter(cvk::b),
-               kc.c.q().fieldOf("brush_sound").forGetter(cvk::c),
-               kc.c.q().fieldOf("brush_comleted_sound").forGetter(cvk::d),
-               u()
-            )
-            .apply($$0, cvk::new)
+public class cvk extends cvh {
+   public static final MapCodec<cvk> b = b(cvk::new);
+   public static final djj c = czu.aE;
+   private static final Map<ia, elu> e = Maps.newEnumMap(
+      ImmutableMap.of(
+         ia.c,
+         cvz.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         ia.d,
+         cvz.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         ia.e,
+         cvz.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         ia.f,
+         cvz.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
    );
-   private static final din c = did.bv;
-   public static final int b = 2;
-   private final cvf d;
-   private final aqu e;
-   private final aqu f;
 
    @Override
-   public MapCodec<cvk> a() {
-      return a;
+   public MapCodec<? extends cvk> a() {
+      return b;
    }
 
-   public cvk(cvf $$0, aqu $$1, aqu $$2, dhm.d $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   protected cvk(dio.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, ia.c).a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(c);
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return e.get($$0.c(c));
    }
 
    @Override
-   public dbk b_(dhn $$0) {
-      return dbk.c;
+   public dip a(dip $$0, dcl $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
    }
 
    @Override
-   public void b(dhn $$0, csf $$1, hx $$2, dhn $$3, boolean $$4) {
-      $$1.a($$2, this, 2);
+   public dip a(dip $$0, dav $$1) {
+      return $$0.a($$1.a($$0.c(c)));
    }
 
    @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      $$3.a($$4, this, 2);
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(c, d);
    }
 
    @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      if ($$1.c_($$2) instanceof dfm $$4) {
-         $$4.c();
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eea.c, eea.c.a($$3));
       }
 
-      if (cyb.h($$1.a_($$2.d())) && $$2.v() >= $$1.J_()) {
-         car $$5 = car.a($$1, $$2, $$0);
-         $$5.s();
-      }
+      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? cwb.a.o() : $$0;
    }
 
    @Override
-   public void a(csf $$0, hx $$1, car $$2) {
-      ejz $$3 = $$2.cH().f();
-      $$0.c(2001, hx.a($$3), cvf.i($$2.u()));
-      $$0.a($$2, dlx.f, $$3);
-   }
-
-   @Override
-   public void a(dhn $$0, csf $$1, hx $$2, atw $$3) {
-      if ($$3.a(16) == 0) {
-         hx $$4 = $$2.d();
-         if (cyb.h($$1.a_($$4))) {
-            double $$5 = (double)$$2.u() + $$3.j();
-            double $$6 = (double)$$2.v() - 0.05;
-            double $$7 = (double)$$2.w() + $$3.j();
-            $$1.a(new jo(jw.z, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
-         }
-      }
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      ia $$3 = $$0.c(c);
+      hv $$4 = $$2.a($$3.g());
+      dip $$5 = $$1.a_($$4);
+      return $$5.d($$1, $$4, $$3);
    }
 
    @Nullable
    @Override
-   public dfi a(hx $$0, dhn $$1) {
-      return new dfm($$0, $$1);
-   }
+   public dip a(coq $$0) {
+      dip $$1 = super.a($$0);
+      ctb $$2 = $$0.q();
+      hv $$3 = $$0.a();
+      ia[] $$4 = $$0.f();
 
-   public cvf b() {
-      return this.d;
-   }
+      for (ia $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.a(c, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
 
-   public aqu c() {
-      return this.e;
-   }
-
-   public aqu d() {
-      return this.f;
+      return null;
    }
 }

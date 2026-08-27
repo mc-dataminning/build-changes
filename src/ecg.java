@@ -1,24 +1,26 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecg extends ecl<ecg.a> {
-   protected ecg(djx $$0) {
-      super(cso.b, $$0, new ecg.a(new Long2ObjectOpenHashMap()));
+public class ecg extends eci {
+   public static final Codec<ecg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dip.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, ecg::new)
+   );
+   private final dip b;
+   private final float d;
+
+   public ecg(dip $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected int a(long $$0) {
-      long $$1 = iy.e($$0);
-      djp $$2 = this.a($$1, false);
-      return $$2 == null ? 0 : $$2.a(iy.b(hx.a($$0)), iy.b(hx.b($$0)), iy.b(hx.c($$0)));
+   public boolean a(dip $$0, auf $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
    }
 
-   protected static final class a extends eci<ecg.a> {
-      public a(Long2ObjectOpenHashMap<djp> $$0) {
-         super($$0);
-      }
-
-      public ecg.a a() {
-         return new ecg.a(this.a.clone());
-      }
+   @Override
+   protected ecj<?> a() {
+      return ecj.f;
    }
 }

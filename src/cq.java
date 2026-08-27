@@ -1,46 +1,254 @@
-import com.google.gson.JsonObject;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMaps;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class cq extends cw<cq.a> {
-   protected cq.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<cb> $$3 = cb.a($$0.get("item"));
-      Optional<bc> $$4 = bq.a($$0, "entity", $$2);
-      return new cq.a($$1, $$3, $$4);
+public record cq(ck.d d, Optional<csv> e, List<cq.e<?>> f, Object2BooleanMap<agt> g, Map<agt, cq.c> h, Optional<bp> i) implements bq {
+   public static final int b = 100;
+   public static final MapCodec<cq> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               atg.a(ck.d.d, "level", ck.d.c).forGetter(cq::b),
+               csv.f.optionalFieldOf("gamemode").forGetter(cq::c),
+               atg.a(cq.e.a.listOf(), "stats", List.of()).forGetter(cq::d),
+               atg.a(atg.d(agt.a), "recipes", Object2BooleanMaps.emptyMap()).forGetter(cq::e),
+               atg.a(Codec.unboundedMap(agt.a, cq.c.b), "advancements", Map.of()).forGetter(cq::f),
+               atg.a(bp.a, "looking_at").forGetter(cq::g)
+            )
+            .apply($$0, cq::new)
+   );
+
+   @Override
+   public boolean a(blf $$0, amp $$1, @Nullable elb $$2) {
+      if (!($$0 instanceof amq $$3)) {
+         return false;
+      } else if (!this.d.d($$3.cf)) {
+         return false;
+      } else if (this.e.isPresent() && this.e.get() != $$3.e.b()) {
+         return false;
+      } else {
+         arn $$5 = $$3.H();
+
+         for (cq.e<?> $$6 : this.f) {
+            if (!$$6.a($$5)) {
+               return false;
+            }
+         }
+
+         arf $$7 = $$3.I();
+         ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
+
+         while (var13.hasNext()) {
+            Entry<agt> $$8 = (Entry<agt>)var13.next();
+            if ($$7.b((agt)$$8.getKey()) != $$8.getBooleanValue()) {
+               return false;
+            }
+         }
+
+         if (!this.h.isEmpty()) {
+            ahb $$9 = $$3.Q();
+            ahf $$10 = $$3.cL().aB();
+
+            for (java.util.Map.Entry<agt, cq.c> $$11 : this.h.entrySet()) {
+               af $$12 = $$10.a($$11.getKey());
+               if ($$12 == null || !$$11.getValue().test($$9.b($$12))) {
+                  return false;
+               }
+            }
+         }
+
+         if (this.i.isPresent()) {
+            elb $$13 = $$3.br();
+            elb $$14 = $$3.f(1.0F);
+            elb $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
+            eky $$16 = cfk.a($$3.dM(), $$3, $$13, $$15, new ekw($$13, $$15).g(1.0), $$0x -> !$$0x.P_(), 0.0F);
+            if ($$16 == null || $$16.c() != ekz.a.c) {
+               return false;
+            }
+
+            blf $$17 = $$16.a();
+            if (!this.i.get().a($$3, $$17) || !$$3.E($$17)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   public void a(amj $$0, clo $$1, bkv $$2) {
-      efc $$3 = bq.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$1, $$3));
+   @Override
+   public bq.a a() {
+      return bq.b.d;
    }
 
-   public static class a extends at {
-      private final Optional<cb> a;
-      private final Optional<bc> b;
+   public ck.d b() {
+      return this.d;
+   }
 
-      public a(Optional<bc> $$0, Optional<cb> $$1, Optional<bc> $$2) {
-         super($$0);
-         this.a = $$1;
-         this.b = $$2;
+   public Optional<csv> c() {
+      return this.e;
+   }
+
+   public List<cq.e<?>> d() {
+      return this.f;
+   }
+
+   public Object2BooleanMap<agt> e() {
+      return this.g;
+   }
+
+   public Map<agt, cq.c> f() {
+      return this.h;
+   }
+
+   public Optional<bp> g() {
+      return this.i;
+   }
+
+   static record a(Object2BooleanMap<String> c) implements cq.c {
+      public static final Codec<cq.a> a = atg.d(Codec.STRING).xmap(cq.a::new, cq.a::a);
+
+      public boolean a(ah $$0) {
+         ObjectIterator var2 = this.c.object2BooleanEntrySet().iterator();
+
+         while (var2.hasNext()) {
+            Entry<String> $$1 = (Entry<String>)var2.next();
+            ao $$2 = $$0.c((String)$$1.getKey());
+            if ($$2 == null || $$2.a() != $$1.getBooleanValue()) {
+               return false;
+            }
+         }
+
+         return true;
       }
 
-      public static am<cq.a> a(Optional<bc> $$0, cb.a $$1, Optional<bc> $$2) {
-         return al.Q.a(new cq.a($$0, Optional.of($$1.b()), $$2));
+      public Object2BooleanMap<String> a() {
+         return this.c;
+      }
+   }
+
+   static record b(boolean c) implements cq.c {
+      public static final Codec<cq.b> a = Codec.BOOL.xmap(cq.b::new, cq.b::a);
+
+      public boolean a(ah $$0) {
+         return $$0.a() == this.c;
       }
 
-      public static am<cq.a> a(cb.a $$0, Optional<bc> $$1) {
-         return a(Optional.empty(), $$0, $$1);
+      public boolean a() {
+         return this.c;
+      }
+   }
+
+   interface c extends Predicate<ah> {
+      Codec<cq.c> b = Codec.either(cq.b.a, cq.a.a).xmap($$0 -> (cq.c)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> {
+         if ($$0 instanceof cq.b $$1) {
+            return Either.left($$1);
+         } else if ($$0 instanceof cq.a $$2) {
+            return Either.right($$2);
+         } else {
+            throw new UnsupportedOperationException();
+         }
+      });
+   }
+
+   public static class d {
+      private ck.d a = ck.d.c;
+      private Optional<csv> b = Optional.empty();
+      private final Builder<cq.e<?>> c = ImmutableList.builder();
+      private final Object2BooleanMap<agt> d = new Object2BooleanOpenHashMap();
+      private final Map<agt, cq.c> e = Maps.newHashMap();
+      private Optional<bp> f = Optional.empty();
+
+      public static cq.d a() {
+         return new cq.d();
       }
 
-      public boolean a(clo $$0, efc $$1) {
-         return this.a.isPresent() && !this.a.get().a($$0) ? false : this.b.isEmpty() || this.b.get().a($$1);
+      public cq.d a(ck.d $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      @Override
-      public JsonObject a() {
-         JsonObject $$0 = super.a();
-         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         this.b.ifPresent($$1 -> $$0.add("entity", $$1.a()));
-         return $$0;
+      public <T> cq.d a(arl<T> $$0, ie.c<T> $$1, ck.d $$2) {
+         this.c.add(new cq.e<>($$0, $$1, $$2));
+         return this;
+      }
+
+      public cq.d a(agt $$0, boolean $$1) {
+         this.d.put($$0, $$1);
+         return this;
+      }
+
+      public cq.d a(csv $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public cq.d a(bp.a $$0) {
+         this.f = Optional.of($$0.b());
+         return this;
+      }
+
+      public cq.d b(agt $$0, boolean $$1) {
+         this.e.put($$0, new cq.b($$1));
+         return this;
+      }
+
+      public cq.d a(agt $$0, Map<String, Boolean> $$1) {
+         this.e.put($$0, new cq.a(new Object2BooleanOpenHashMap($$1)));
+         return this;
+      }
+
+      public cq b() {
+         return new cq(this.a, this.b, this.c.build(), this.d, this.e, this.f);
+      }
+   }
+
+   static record e<T>(arl<T> b, ie<T> c, ck.d d, Supplier<arj<T>> e) {
+      public static final Codec<cq.e<?>> a = kb.x.q().dispatch(cq.e::a, cq.e::a);
+
+      public e(arl<T> $$0, ie<T> $$1, ck.d $$2) {
+         this($$0, $$1, $$2, Suppliers.memoize(() -> $$0.b($$1.a())));
+      }
+
+      private static <T> Codec<cq.e<T>> a(arl<T> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.a().r().fieldOf("stat").forGetter(cq.e::b), atg.a(ck.d.d, "value", ck.d.c).forGetter(cq.e::c))
+                  .apply($$1, ($$1x, $$2) -> new cq.e<>($$0, $$1x, $$2))
+         );
+      }
+
+      public boolean a(arn $$0) {
+         return this.d.d($$0.a(this.e.get()));
+      }
+
+      public arl<T> a() {
+         return this.b;
+      }
+
+      public ie<T> b() {
+         return this.c;
+      }
+
+      public ck.d c() {
+         return this.d;
+      }
+
+      public Supplier<arj<T>> d() {
+         return this.e;
       }
    }
 }

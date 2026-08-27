@@ -1,57 +1,35 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.mojang.serialization.JsonOps;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
 public class bc {
-   private final List<eib> a;
-   private final Predicate<efc> b;
+   private final aud a;
+   private final egi b;
 
-   bc(List<eib> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("ContextAwarePredicate must have at least one condition");
-      } else {
-         this.a = $$0;
-         this.b = eid.a($$0);
-      }
+   public bc(aud $$0, egi $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static bc a(eib... $$0) {
-      return new bc(List.of($$0));
+   public void a(Optional<bb> $$0, String $$1) {
+      $$0.ifPresent($$1x -> this.a($$1x, $$1));
    }
 
-   public static Optional<Optional<bc>> a(String $$0, bg $$1, @Nullable JsonElement $$2, ehl $$3) {
-      if ($$2 != null && $$2.isJsonArray()) {
-         List<eib> $$4 = $$1.a($$2.getAsJsonArray(), $$1.a() + "/" + $$0, $$3);
-         return $$4.isEmpty() ? Optional.of(Optional.empty()) : Optional.of(Optional.of(new bc($$4)));
-      } else {
-         return Optional.empty();
-      }
+   public void a(List<bb> $$0, String $$1) {
+      this.a($$0, eio.l, $$1);
    }
 
-   public boolean a(efc $$0) {
-      return this.b.test($$0);
+   public void a(bb $$0, String $$1) {
+      this.a($$0, eio.l, $$1);
    }
 
-   public JsonElement a() {
-      return ac.a(eid.a.listOf().encodeStart(JsonOps.INSTANCE, this.a), IllegalStateException::new);
+   public void a(bb $$0, ein $$1, String $$2) {
+      $$0.a(new egn(this.a.a($$2), $$1, this.b));
    }
 
-   public static JsonElement a(List<bc> $$0) {
-      if ($$0.isEmpty()) {
-         return JsonNull.INSTANCE;
-      } else {
-         JsonArray $$1 = new JsonArray();
-
-         for (bc $$2 : $$0) {
-            $$1.add($$2.a());
-         }
-
-         return $$1;
+   public void a(List<bb> $$0, ein $$1, String $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         bb $$4 = $$0.get($$3);
+         $$4.a(new egn(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
       }
    }
 }

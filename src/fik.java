@@ -1,57 +1,30 @@
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList.Builder;
 
-public class fik<T extends cbw> extends fid<T> {
-   private static final int a = 8;
-   private final fkt b;
-   private final fkt[] f = new fkt[8];
+public class fik extends fif {
+   private static final String a = "chest_bottom";
+   private static final String b = "chest_lid";
+   private static final String f = "chest_lock";
 
-   public fik(fkt $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
-   }
-
-   private static String a(int $$0) {
-      return "cube" + $$0;
-   }
-
-   public static fkz b() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         int $$3 = 0;
-         int $$4 = $$2;
-         if ($$2 == 2) {
-            $$3 = 24;
-            $$4 = 10;
-         } else if ($$2 == 3) {
-            $$3 = 24;
-            $$4 = 19;
-         }
-
-         $$1.a(a($$2), fky.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), fkv.a);
-      }
-
-      $$1.a("inside_cube", fky.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), fkv.a);
-      return fkz.a($$0, 64, 32);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      float $$4 = atq.i($$3, $$0.bS, $$0.e);
-      if ($$4 < 0.0F) {
-         $$4 = 0.0F;
-      }
-
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
-      }
+   public fik(fly $$0) {
+      super($$0);
    }
 
    @Override
-   public fkt a() {
-      return this.b;
+   protected Builder<fly> a(fly $$0) {
+      Builder<fly> $$1 = super.a($$0);
+      $$1.add($$0.b("chest_bottom"));
+      $$1.add($$0.b("chest_lid"));
+      $$1.add($$0.b("chest_lock"));
+      return $$1;
+   }
+
+   public static fme e() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      fif.a($$1);
+      $$1.a("chest_bottom", fmd.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fma.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", fmd.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fma.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", fmd.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fma.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return fme.a($$0, 128, 128);
    }
 }

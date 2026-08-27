@@ -1,41 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class ehp extends ehs {
-   public static final Codec<ehp> a = a(ehp::new);
-   public static final Codec<ehp> b = b(ehp::new);
+public class ehp extends ehq {
+   public static final Codec<ehp> a = RecordCodecBuilder.create($$0 -> a($$0).and(egd.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, ehp::new));
+   private final egd b;
 
-   ehp(List<eib> $$0) {
-      super($$0, eid.a($$0));
-   }
-
-   public static ehp a(List<eib> $$0) {
-      return new ehp(List.copyOf($$0));
+   private ehp(List<ejd> $$0, egd $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public eic b() {
-      return eid.d;
+   public ehs b() {
+      return eht.q;
    }
 
-   public static ehp.a a(eib.a... $$0) {
-      return new ehp.a($$0);
+   @Override
+   public Set<eim<?>> a() {
+      return this.b.a();
    }
 
-   public static class a extends ehs.a {
-      public a(eib.a... $$0) {
-         super($$0);
-      }
+   @Override
+   public cmh a(cmh $$0, ege $$1) {
+      int $$2 = this.b.a($$1, $$0.L());
+      $$0.f($$2);
+      return $$0;
+   }
 
-      @Override
-      public ehp.a and(eib.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected eib a(List<eib> $$0) {
-         return new ehp($$0);
-      }
+   public static ehq.a<?> a(egd $$0) {
+      return a($$1 -> new ehp($$1, $$0));
    }
 }

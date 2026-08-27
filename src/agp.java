@@ -1,80 +1,71 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
 
-public class agp extends IOException {
-   private final List<agp.a> a = Lists.newArrayList();
-   private final String b;
+public final class agp<E> implements Codec<ie<E>> {
+   private final ags<? extends ir<E>> a;
+   private final Codec<E> b;
+   private final boolean c;
 
-   public agp(String $$0) {
-      this.a.add(new agp.a());
-      this.b = $$0;
+   public static <E> agp<E> a(ags<? extends ir<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, true);
    }
 
-   public agp(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new agp.a());
-      this.b = $$0;
+   public static <E> agp<E> a(ags<? extends ir<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return new agp<>($$0, $$1, $$2);
    }
 
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
+   private agp(ags<? extends ir<E>> $$0, Codec<E> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new agp.a());
+   public <T> DataResult<T> a(ie<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof agr<?> $$3) {
+         Optional<ii<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
+
+            return (DataResult<T>)$$0.d().map($$2x -> agt.a.encode($$2x.a(), $$1, $$2), $$2x -> this.b.encode($$2x, $$1, $$2));
+         }
+      }
+
+      return this.b.encode($$0.a(), $$1, $$2);
+   }
+
+   public <T> DataResult<Pair<ie<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof agr<?> $$2) {
+         Optional<ig<E>> $$3 = $$2.b(this.a);
+         if ($$3.isEmpty()) {
+            return DataResult.error(() -> "Registry does not exist: " + this.a);
+         } else {
+            ig<E> $$4 = $$3.get();
+            DataResult<Pair<agt, T>> $$5 = agt.a.decode($$0, $$1);
+            if ($$5.result().isEmpty()) {
+               return !this.c ? DataResult.error(() -> "Inline definitions not allowed here") : this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(ie::a));
+            } else {
+               Pair<agt, T> $$6 = (Pair<agt, T>)$$5.result().get();
+               ags<E> $$7 = ags.a(this.a, (agt)$$6.getFirst());
+               return $$4.a($$7)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$7))
+                  .map($$1x -> Pair.of($$1x, $$6.getSecond()))
+                  .setLifecycle(Lifecycle.stable());
+            }
+         }
+      } else {
+         return this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(ie::a));
+      }
    }
 
    @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
-   }
-
-   public static agp a(Exception $$0) {
-      if ($$0 instanceof agp) {
-         return (agp)$$0;
-      } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
-         }
-
-         return new agp($$1, $$0);
-      }
-   }
-
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
-
-      a() {
-      }
-
-      void a(String $$0) {
-         this.b.add(0, $$0);
-      }
-
-      @Nullable
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return StringUtils.join(this.b, "->");
-      }
-
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
-         } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
-         }
-      }
+   public String toString() {
+      return "RegistryFileCodec[" + this.a + " " + this.b + "]";
    }
 }

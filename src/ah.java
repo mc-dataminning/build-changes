@@ -18,23 +18,23 @@ import javax.annotation.Nullable;
 
 public class ah implements Comparable<ah> {
    private static final DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   private static final Codec<Instant> c = asy.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
-   private static final Codec<Map<String, an>> d = Codec.unboundedMap(Codec.STRING, c)
+   private static final Codec<Instant> c = atg.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
+   private static final Codec<Map<String, ao>> d = Codec.unboundedMap(Codec.STRING, c)
       .xmap(
-         $$0 -> $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$0x -> new an((Instant)$$0x.getValue()))),
+         $$0 -> $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$0x -> new ao((Instant)$$0x.getValue()))),
          $$0 -> $$0.entrySet()
                .stream()
-               .filter($$0x -> ((an)$$0x.getValue()).a())
-               .collect(Collectors.toMap(Entry::getKey, $$0x -> Objects.requireNonNull(((an)$$0x.getValue()).d())))
+               .filter($$0x -> ((ao)$$0x.getValue()).a())
+               .collect(Collectors.toMap(Entry::getKey, $$0x -> Objects.requireNonNull(((ao)$$0x.getValue()).d())))
       );
    public static final Codec<ah> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asy.a(d, "criteria", Map.of()).forGetter($$0x -> $$0x.e), Codec.BOOL.fieldOf("done").orElse(true).forGetter(ah::a))
+      $$0 -> $$0.group(atg.a(d, "criteria", Map.of()).forGetter($$0x -> $$0x.e), Codec.BOOL.fieldOf("done").orElse(true).forGetter(ah::a))
             .apply($$0, ($$0x, $$1) -> new ah(new HashMap<>($$0x)))
    );
-   private final Map<String, an> e;
-   private ai f = ai.a;
+   private final Map<String, ao> e;
+   private ai f = ai.b;
 
-   private ah(Map<String, an> $$0) {
+   private ah(Map<String, ao> $$0) {
       this.e = $$0;
    }
 
@@ -43,11 +43,11 @@ public class ah implements Comparable<ah> {
    }
 
    public void a(ai $$0) {
-      Set<String> $$1 = $$0.d();
+      Set<String> $$1 = $$0.c();
       this.e.entrySet().removeIf($$1x -> !$$1.contains($$1x.getKey()));
 
       for (String $$2 : $$1) {
-         this.e.putIfAbsent($$2, new an());
+         this.e.putIfAbsent($$2, new ao());
       }
 
       this.f = $$0;
@@ -58,7 +58,7 @@ public class ah implements Comparable<ah> {
    }
 
    public boolean b() {
-      for (an $$0 : this.e.values()) {
+      for (ao $$0 : this.e.values()) {
          if ($$0.a()) {
             return true;
          }
@@ -68,7 +68,7 @@ public class ah implements Comparable<ah> {
    }
 
    public boolean a(String $$0) {
-      an $$1 = this.e.get($$0);
+      ao $$1 = this.e.get($$0);
       if ($$1 != null && !$$1.a()) {
          $$1.b();
          return true;
@@ -78,7 +78,7 @@ public class ah implements Comparable<ah> {
    }
 
    public boolean b(String $$0) {
-      an $$1 = this.e.get($$0);
+      ao $$1 = this.e.get($$0);
       if ($$1 != null && $$1.a()) {
          $$1.c();
          return true;
@@ -92,22 +92,22 @@ public class ah implements Comparable<ah> {
       return "AdvancementProgress{criteria=" + this.e + ", requirements=" + this.f + "}";
    }
 
-   public void a(ty $$0) {
-      $$0.a(this.e, ty::a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(ue $$0) {
+      $$0.a(this.e, ue::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static ah b(ty $$0) {
-      Map<String, an> $$1 = $$0.a(ty::s, an::b);
+   public static ah b(ue $$0) {
+      Map<String, ao> $$1 = $$0.a(ue::s, ao::b);
       return new ah($$1);
    }
 
    @Nullable
-   public an c(String $$0) {
+   public ao c(String $$0) {
       return this.e.get($$0);
    }
 
    private boolean d(String $$0) {
-      an $$1 = this.c($$0);
+      ao $$1 = this.c($$0);
       return $$1 != null && $$1.a();
    }
 
@@ -122,7 +122,7 @@ public class ah implements Comparable<ah> {
    }
 
    @Nullable
-   public uv d() {
+   public vb d() {
       if (this.e.isEmpty()) {
          return null;
       } else {
@@ -131,7 +131,7 @@ public class ah implements Comparable<ah> {
             return null;
          } else {
             int $$1 = this.h();
-            return uv.a("advancements.progress", $$1, $$0);
+            return vb.a("advancements.progress", $$1, $$0);
          }
       }
    }
@@ -143,7 +143,7 @@ public class ah implements Comparable<ah> {
    public Iterable<String> e() {
       List<String> $$0 = Lists.newArrayList();
 
-      for (Entry<String, an> $$1 : this.e.entrySet()) {
+      for (Entry<String, ao> $$1 : this.e.entrySet()) {
          if (!$$1.getValue().a()) {
             $$0.add($$1.getKey());
          }
@@ -155,7 +155,7 @@ public class ah implements Comparable<ah> {
    public Iterable<String> f() {
       List<String> $$0 = Lists.newArrayList();
 
-      for (Entry<String, an> $$1 : this.e.entrySet()) {
+      for (Entry<String, ao> $$1 : this.e.entrySet()) {
          if ($$1.getValue().a()) {
             $$0.add($$1.getKey());
          }
@@ -166,7 +166,7 @@ public class ah implements Comparable<ah> {
 
    @Nullable
    public Instant g() {
-      return this.e.values().stream().map(an::d).filter(Objects::nonNull).min(Comparator.naturalOrder()).orElse(null);
+      return this.e.values().stream().map(ao::d).filter(Objects::nonNull).min(Comparator.naturalOrder()).orElse(null);
    }
 
    public int a(ah $$0) {

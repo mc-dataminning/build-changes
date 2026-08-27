@@ -1,107 +1,71 @@
-public abstract class fbz<T extends cgs> extends fby<T> implements fet {
-   public final fej x;
-   private boolean y;
-   private final agm z;
-   private final agm A;
-   private final agm B;
+import javax.annotation.Nullable;
 
-   public fbz(T $$0, fej $$1, cdy $$2, uv $$3, agm $$4, agm $$5, agm $$6) {
-      super($$0, $$2, $$3);
-      this.x = $$1;
-      this.z = $$4;
-      this.A = $$5;
-      this.B = $$6;
+public class fbz extends fcc implements aue {
+   @Nullable
+   private vb a;
+   @Nullable
+   private vb b;
+   private int c;
+   private boolean k;
+   private final boolean l;
+
+   public fbz(boolean $$0) {
+      super(euc.a);
+      this.l = $$0;
    }
 
    @Override
-   public void aQ_() {
-      super.aQ_();
-      this.y = this.g < 379;
-      this.x.a(this.g, this.h, this.f, this.y, this.p);
-      this.t = this.x.a(this.g, this.c);
-      this.d(new evq(this.t + 20, this.h / 2 - 49, 20, 18, fen.a, $$0 -> {
-         this.x.f();
-         this.t = this.x.a(this.g, this.c);
-         $$0.b(this.t + 20, this.h / 2 - 49);
-      }));
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   public boolean aE_() {
+      return false;
    }
 
    @Override
-   public void C() {
-      super.C();
-      this.x.h();
+   protected boolean aO_() {
+      return false;
    }
 
    @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      if (this.x.g() && this.y) {
-         this.b($$0, $$1, $$2, $$3);
-         this.x.a($$0, $$1, $$2, $$3);
+   public void a(vb $$0) {
+      this.b($$0);
+   }
+
+   @Override
+   public void b(vb $$0) {
+      this.a = $$0;
+      this.c(vb.c("menu.working"));
+   }
+
+   @Override
+   public void c(vb $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.k = true;
+   }
+
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (this.l) {
+            this.f.a(null);
+         }
       } else {
          super.a($$0, $$1, $$2, $$3);
-         this.x.a($$0, $$1, $$2, $$3);
-         this.x.a($$0, this.t, this.u, true, $$3);
+         if (this.a != null) {
+            $$0.a(this.i, this.a, this.g / 2, 70, 16777215);
+         }
+
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.i, vb.i().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
+         }
       }
-
-      this.a($$0, $$1, $$2);
-      this.x.a($$0, this.t, this.u, $$1, $$2);
-   }
-
-   @Override
-   protected void a(eut $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.t;
-      int $$5 = this.u;
-      $$0.a(this.z, $$4, $$5, 0, 0, this.c, this.k);
-      if (this.p.s()) {
-         int $$6 = 14;
-         int $$7 = atq.f(this.p.r() * 13.0F) + 1;
-         $$0.a(this.A, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
-      }
-
-      int $$8 = 24;
-      int $$9 = atq.f(this.p.q() * 24.0F);
-      $$0.a(this.B, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.x.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         return this.y && this.x.g() ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void a(cim $$0, int $$1, int $$2, cha $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.x.a($$0);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.x.a($$0, $$1, $$2) ? false : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
-      return this.x.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.x.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public void E() {
-      this.x.i();
-   }
-
-   @Override
-   public fen F() {
-      return this.x;
    }
 }

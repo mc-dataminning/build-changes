@@ -3,9 +3,9 @@ import com.google.gson.JsonObject;
 import java.util.function.Supplier;
 
 public class mi implements Supplier<JsonElement> {
-   private final agm a;
+   private final agt a;
 
-   public mi(agm $$0) {
+   public mi(agt $$0) {
       this.a = $$0;
    }
 

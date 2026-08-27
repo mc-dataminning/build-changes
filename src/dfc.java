@@ -1,73 +1,33 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dfc extends dfi implements biu, bje, bjf {
-   private bjd e = bjd.a;
-   @Nullable
-   private uv f;
+public class dfc extends cxn implements dfb {
+   public static final MapCodec<dfc> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dfb.a.e.fieldOf("weathering_state").forGetter(dfc::g), u()).apply($$0, dfc::new)
+   );
+   private final dfb.a e;
 
-   protected dfc(dfk<?> $$0, hx $$1, dhn $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected MapCodec<dfc> a() {
+      return d;
+   }
+
+   public dfc(dfb.a $$0, dio.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public void a(sd $$0) {
-      super.a($$0);
-      this.e = bjd.b($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.f = uv.a.a($$0.l("CustomName"));
-      }
+   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void b(sd $$0) {
-      super.b($$0);
-      this.e.a($$0);
-      if (this.f != null) {
-         $$0.a("CustomName", uv.a.a(this.f));
-      }
+   public boolean e_(dip $$0) {
+      return dfb.c($$0.b()).isPresent();
    }
 
-   public void a(uv $$0) {
-      this.f = $$0;
+   public dfb.a g() {
+      return this.e;
    }
-
-   @Override
-   public uv ad() {
-      return this.f != null ? this.f : this.l();
-   }
-
-   @Override
-   public uv Q_() {
-      return this.ad();
-   }
-
-   @Nullable
-   @Override
-   public uv af() {
-      return this.f;
-   }
-
-   protected abstract uv l();
-
-   public boolean d(cdz $$0) {
-      return a($$0, this.e, this.Q_());
-   }
-
-   public static boolean a(cdz $$0, bjd $$1, uv $$2) {
-      if (!$$0.P_() && !$$1.a($$0.eU())) {
-         $$0.a(uv.a("container.isLocked", $$2), true);
-         $$0.a(aqv.ei, aqw.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   @Nullable
-   @Override
-   public cgr createMenu(int $$0, cdy $$1, cdz $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract cgr a(int var1, cdy var2);
 }

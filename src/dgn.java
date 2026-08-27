@@ -1,96 +1,146 @@
-import com.google.common.annotations.VisibleForTesting;
+public class dgn extends dgd {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final crz d = new crz() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         dgn.this.e();
+      }
 
-public class dgn extends dfi implements dlz.b<dgn.a> {
-   private final dgn.a a;
+      @Override
+      public amp e() {
+         return (amp)dgn.this.o;
+      }
 
-   public dgn(hx $$0, dhn $$1) {
-      super(dfk.K, $$0, $$1);
-      this.a = new dgn.a($$1, new dlt($$0));
-   }
+      @Override
+      public void f() {
+         dip $$0 = dgn.this.o.a_(dgn.this.p);
+         this.e().a(dgn.this.p, $$0, $$0, 3);
+      }
 
-   public static void a(csf $$0, hx $$1, dhn $$2, dgn $$3) {
-      $$3.a.d().a($$0, $$1, $$0.F_(), true);
+      @Override
+      public elb g() {
+         return elb.b(dgn.this.p);
+      }
+
+      @Override
+      public ds i() {
+         ia $$0 = dgn.this.r().c(cxi.b);
+         return new ds(this, elb.b(dgn.this.p), new ela(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().n(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !dgn.this.s();
+      }
+   };
+
+   public dgn(hv $$0, dip $$1) {
+      super(dgf.w, $$0, $$1);
    }
 
    @Override
-   public void a(sd $$0) {
-      this.a.b.a($$0);
-   }
-
-   @Override
-   protected void b(sd $$0) {
-      this.a.b.b($$0);
+   protected void b(sj $$0) {
       super.b($$0);
+      this.d.a($$0);
+      $$0.a("powered", this.d());
+      $$0.a("conditionMet", this.k());
+      $$0.a("auto", this.f());
    }
 
-   public dgn.a c() {
+   @Override
+   public void a(sj $$0) {
+      super.a($$0);
+      this.d.b($$0);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
+   }
+
+   @Override
+   public boolean u() {
+      return true;
+   }
+
+   public crz c() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean d() {
       return this.a;
    }
 
-   public static class a implements dlz {
-      public static final int a = 8;
-      final dbz b;
-      private final dhn c;
-      private final dmb d;
+   public boolean f() {
+      return this.b;
+   }
 
-      public a(dhn $$0, dmb $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = dbz.a();
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.m() != dgn.a.a) {
+         this.x();
       }
+   }
 
-      @Override
-      public dmb a() {
-         return this.d;
+   public void g() {
+      dgn.a $$0 = this.m();
+      if ($$0 == dgn.a.b && (this.a || this.b) && this.o != null) {
+         this.x();
       }
+   }
 
-      @Override
-      public int b() {
-         return 8;
+   private void x() {
+      cvz $$0 = this.r().b();
+      if ($$0 instanceof cxi) {
+         this.l();
+         this.o.a(this.p, $$0, 1);
       }
+   }
 
-      @Override
-      public dlz.a c() {
-         return dlz.a.b;
-      }
+   public boolean k() {
+      return this.c;
+   }
 
-      @Override
-      public boolean a(ami $$0, dlx $$1, dlx.a $$2, ejz $$3) {
-         if ($$1 == dlx.p && $$2.a() instanceof bll $$4) {
-            if (!$$4.eE()) {
-               int $$5 = $$4.ef();
-               if ($$4.ed() && $$5 > 0) {
-                  this.b.a(hx.a($$3.a(ib.b, 0.5)), $$5);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eD();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, hx.a($$1x), this.c, $$0.F_()));
-            }
-
-            return true;
+   public boolean l() {
+      this.c = true;
+      if (this.w()) {
+         hv $$0 = this.p.a(this.o.a_(this.p).c(cxi.b).g());
+         if (this.o.a_($$0).b() instanceof cxi) {
+            dgd $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof dgn && ((dgn)$$1).c().k() > 0;
          } else {
-            return false;
+            this.c = false;
          }
       }
 
-      @VisibleForTesting
-      public dbz d() {
-         return this.b;
-      }
+      return this.c;
+   }
 
-      private void a(ami $$0, hx $$1, dhn $$2, atw $$3) {
-         $$0.a($$1, $$2.a(dbw.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(jw.E, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, aqv.uI, aqw.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+   public dgn.a m() {
+      dip $$0 = this.r();
+      if ($$0.a(cwb.fN)) {
+         return dgn.a.c;
+      } else if ($$0.a(cwb.kG)) {
+         return dgn.a.b;
+      } else {
+         return $$0.a(cwb.kH) ? dgn.a.a : dgn.a.c;
       }
+   }
 
-      private void a(csf $$0, bll $$1) {
-         if ($$1.ei() instanceof amj $$3) {
-            bjt $$4 = $$1.ey() == null ? $$0.ah().a((cdz)$$3) : $$1.ey();
-            al.W.a($$3, $$1, $$4);
-         }
-      }
+   public boolean w() {
+      dip $$0 = this.o.a_(this.aB_());
+      return $$0.b() instanceof cxi ? $$0.c(cxi.c) : false;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -1,136 +1,267 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import java.util.EnumSet;
+import java.util.List;
+import org.joml.Vector3f;
 
-public class elb {
-   private static final Map<String, elb> n = Maps.newHashMap();
-   private static final Map<String, elb> o = Maps.newHashMap();
-   public static final elb a = b("dummy");
-   public static final elb b = b("trigger");
-   public static final elb c = b("deathCount");
-   public static final elb d = b("playerKillCount");
-   public static final elb e = b("totalKillCount");
-   public static final elb f = a("health", true, elb.a.b);
-   public static final elb g = a("food", true, elb.a.a);
-   public static final elb h = a("air", true, elb.a.a);
-   public static final elb i = a("armor", true, elb.a.a);
-   public static final elb j = a("xp", true, elb.a.a);
-   public static final elb k = a("level", true, elb.a.a);
-   public static final elb[] l = new elb[]{
-      b("teamkill." + n.a.g()),
-      b("teamkill." + n.b.g()),
-      b("teamkill." + n.c.g()),
-      b("teamkill." + n.d.g()),
-      b("teamkill." + n.e.g()),
-      b("teamkill." + n.f.g()),
-      b("teamkill." + n.g.g()),
-      b("teamkill." + n.h.g()),
-      b("teamkill." + n.i.g()),
-      b("teamkill." + n.j.g()),
-      b("teamkill." + n.k.g()),
-      b("teamkill." + n.l.g()),
-      b("teamkill." + n.m.g()),
-      b("teamkill." + n.n.g()),
-      b("teamkill." + n.o.g()),
-      b("teamkill." + n.p.g())
-   };
-   public static final elb[] m = new elb[]{
-      b("killedByTeam." + n.a.g()),
-      b("killedByTeam." + n.b.g()),
-      b("killedByTeam." + n.c.g()),
-      b("killedByTeam." + n.d.g()),
-      b("killedByTeam." + n.e.g()),
-      b("killedByTeam." + n.f.g()),
-      b("killedByTeam." + n.g.g()),
-      b("killedByTeam." + n.h.g()),
-      b("killedByTeam." + n.i.g()),
-      b("killedByTeam." + n.j.g()),
-      b("killedByTeam." + n.k.g()),
-      b("killedByTeam." + n.l.g()),
-      b("killedByTeam." + n.m.g()),
-      b("killedByTeam." + n.n.g()),
-      b("killedByTeam." + n.o.g()),
-      b("killedByTeam." + n.p.g())
-   };
-   private final String p;
-   private final boolean q;
-   private final elb.a r;
+public class elb implements ip {
+   public static final Codec<elb> a = Codec.DOUBLE
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 3).map($$0x -> new elb((Double)$$0x.get(0), (Double)$$0x.get(1), (Double)$$0x.get(2))), $$0 -> List.of($$0.a(), $$0.b(), $$0.c())
+      );
+   public static final elb b = new elb(0.0, 0.0, 0.0);
+   public final double c;
+   public final double d;
+   public final double e;
 
-   private static elb a(String $$0, boolean $$1, elb.a $$2) {
-      elb $$3 = new elb($$0, $$1, $$2);
-      n.put($$0, $$3);
-      return $$3;
+   public static elb a(int $$0) {
+      double $$1 = (double)($$0 >> 16 & 0xFF) / 255.0;
+      double $$2 = (double)($$0 >> 8 & 0xFF) / 255.0;
+      double $$3 = (double)($$0 & 0xFF) / 255.0;
+      return new elb($$1, $$2, $$3);
    }
 
-   private static elb b(String $$0) {
-      return a($$0, false, elb.a.a);
+   public static elb a(iz $$0) {
+      return new elb((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
    }
 
-   protected elb(String $$0) {
-      this($$0, false, elb.a.a);
+   public static elb a(iz $$0, double $$1, double $$2, double $$3) {
+      return new elb((double)$$0.u() + $$1, (double)$$0.v() + $$2, (double)$$0.w() + $$3);
    }
 
-   protected elb(String $$0, boolean $$1, elb.a $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      o.put($$0, this);
+   public static elb b(iz $$0) {
+      return a($$0, 0.5, 0.5, 0.5);
    }
 
-   public static Set<String> c() {
-      return ImmutableSet.copyOf(n.keySet());
+   public static elb c(iz $$0) {
+      return a($$0, 0.5, 0.0, 0.5);
    }
 
-   public static Optional<elb> a(String $$0) {
-      elb $$1 = o.get($$0);
-      if ($$1 != null) {
-         return Optional.of($$1);
+   public static elb a(iz $$0, double $$1) {
+      return a($$0, 0.5, $$1, 0.5);
+   }
+
+   public elb(double $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public elb(Vector3f $$0) {
+      this((double)$$0.x(), (double)$$0.y(), (double)$$0.z());
+   }
+
+   public elb a(elb $$0) {
+      return new elb($$0.c - this.c, $$0.d - this.d, $$0.e - this.e);
+   }
+
+   public elb d() {
+      double $$0 = Math.sqrt(this.c * this.c + this.d * this.d + this.e * this.e);
+      return $$0 < 1.0E-4 ? b : new elb(this.c / $$0, this.d / $$0, this.e / $$0);
+   }
+
+   public double b(elb $$0) {
+      return this.c * $$0.c + this.d * $$0.d + this.e * $$0.e;
+   }
+
+   public elb c(elb $$0) {
+      return new elb(this.d * $$0.e - this.e * $$0.d, this.e * $$0.c - this.c * $$0.e, this.c * $$0.d - this.d * $$0.c);
+   }
+
+   public elb d(elb $$0) {
+      return this.a($$0.c, $$0.d, $$0.e);
+   }
+
+   public elb a(double $$0, double $$1, double $$2) {
+      return this.b(-$$0, -$$1, -$$2);
+   }
+
+   public elb e(elb $$0) {
+      return this.b($$0.c, $$0.d, $$0.e);
+   }
+
+   public elb b(double $$0, double $$1, double $$2) {
+      return new elb(this.c + $$0, this.d + $$1, this.e + $$2);
+   }
+
+   public boolean a(ip $$0, double $$1) {
+      return this.c($$0.a(), $$0.b(), $$0.c()) < $$1 * $$1;
+   }
+
+   public double f(elb $$0) {
+      double $$1 = $$0.c - this.c;
+      double $$2 = $$0.d - this.d;
+      double $$3 = $$0.e - this.e;
+      return Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   }
+
+   public double g(elb $$0) {
+      double $$1 = $$0.c - this.c;
+      double $$2 = $$0.d - this.d;
+      double $$3 = $$0.e - this.e;
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public double c(double $$0, double $$1, double $$2) {
+      double $$3 = $$0 - this.c;
+      double $$4 = $$1 - this.d;
+      double $$5 = $$2 - this.e;
+      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
+   }
+
+   public boolean a(elb $$0, double $$1, double $$2) {
+      double $$3 = $$0.a() - this.c;
+      double $$4 = $$0.b() - this.d;
+      double $$5 = $$0.c() - this.e;
+      return aty.e($$3, $$5) < aty.k($$1) && Math.abs($$4) < $$2;
+   }
+
+   public elb a(double $$0) {
+      return this.d($$0, $$0, $$0);
+   }
+
+   public elb e() {
+      return this.a(-1.0);
+   }
+
+   public elb h(elb $$0) {
+      return this.d($$0.c, $$0.d, $$0.e);
+   }
+
+   public elb d(double $$0, double $$1, double $$2) {
+      return new elb(this.c * $$0, this.d * $$1, this.e * $$2);
+   }
+
+   public elb a(auf $$0, float $$1) {
+      return this.b((double)(($$0.i() - 0.5F) * $$1), (double)(($$0.i() - 0.5F) * $$1), (double)(($$0.i() - 0.5F) * $$1));
+   }
+
+   public double f() {
+      return Math.sqrt(this.c * this.c + this.d * this.d + this.e * this.e);
+   }
+
+   public double g() {
+      return this.c * this.c + this.d * this.d + this.e * this.e;
+   }
+
+   public double h() {
+      return Math.sqrt(this.c * this.c + this.e * this.e);
+   }
+
+   public double i() {
+      return this.c * this.c + this.e * this.e;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof elb $$1)) {
+         return false;
+      } else if (Double.compare($$1.c, this.c) != 0) {
+         return false;
       } else {
-         int $$2 = $$0.indexOf(58);
-         return $$2 < 0 ? Optional.empty() : kc.y.b(agm.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, agm.a($$0.substring($$2 + 1), '.')));
+         return Double.compare($$1.d, this.d) != 0 ? false : Double.compare($$1.e, this.e) == 0;
       }
    }
 
-   private static <T> Optional<elb> a(are<T> $$0, agm $$1) {
-      return $$0.a().b($$1).map($$0::b);
+   @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.c);
+      int $$1 = (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.d);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.e);
+      return 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
    }
 
-   public String d() {
-      return this.p;
+   @Override
+   public String toString() {
+      return "(" + this.c + ", " + this.d + ", " + this.e + ")";
    }
 
-   public boolean e() {
-      return this.q;
+   public elb a(elb $$0, double $$1) {
+      return new elb(aty.d($$1, this.c, $$0.c), aty.d($$1, this.d, $$0.d), aty.d($$1, this.e, $$0.e));
    }
 
-   public elb.a f() {
-      return this.r;
+   public elb a(float $$0) {
+      float $$1 = aty.b($$0);
+      float $$2 = aty.a($$0);
+      double $$3 = this.c;
+      double $$4 = this.d * (double)$$1 + this.e * (double)$$2;
+      double $$5 = this.e * (double)$$1 - this.d * (double)$$2;
+      return new elb($$3, $$4, $$5);
    }
 
-   public static enum a implements auk {
-      a("integer"),
-      b("hearts");
+   public elb b(float $$0) {
+      float $$1 = aty.b($$0);
+      float $$2 = aty.a($$0);
+      double $$3 = this.c * (double)$$1 + this.e * (double)$$2;
+      double $$4 = this.d;
+      double $$5 = this.e * (double)$$1 - this.c * (double)$$2;
+      return new elb($$3, $$4, $$5);
+   }
 
-      private final String d;
-      public static final auk.a<elb.a> c = auk.a(elb.a::values);
+   public elb c(float $$0) {
+      float $$1 = aty.b($$0);
+      float $$2 = aty.a($$0);
+      double $$3 = this.c * (double)$$1 + this.d * (double)$$2;
+      double $$4 = this.d * (double)$$1 - this.c * (double)$$2;
+      double $$5 = this.e;
+      return new elb($$3, $$4, $$5);
+   }
 
-      private a(String $$0) {
-         this.d = $$0;
-      }
+   public static elb a(ela $$0) {
+      return a($$0.i, $$0.j);
+   }
 
-      public String a() {
-         return this.d;
-      }
+   public static elb a(float $$0, float $$1) {
+      float $$2 = aty.b(-$$1 * (float) (Math.PI / 180.0) - (float) Math.PI);
+      float $$3 = aty.a(-$$1 * (float) (Math.PI / 180.0) - (float) Math.PI);
+      float $$4 = -aty.b(-$$0 * (float) (Math.PI / 180.0));
+      float $$5 = aty.a(-$$0 * (float) (Math.PI / 180.0));
+      return new elb((double)($$3 * $$4), (double)$$5, (double)($$2 * $$4));
+   }
 
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public elb a(EnumSet<ia.a> $$0) {
+      double $$1 = $$0.contains(ia.a.a) ? (double)aty.a(this.c) : this.c;
+      double $$2 = $$0.contains(ia.a.b) ? (double)aty.a(this.d) : this.d;
+      double $$3 = $$0.contains(ia.a.c) ? (double)aty.a(this.e) : this.e;
+      return new elb($$1, $$2, $$3);
+   }
 
-      public static elb.a a(String $$0) {
-         return c.a($$0, a);
-      }
+   public double a(ia.a $$0) {
+      return $$0.a(this.c, this.d, this.e);
+   }
+
+   public elb a(ia.a $$0, double $$1) {
+      double $$2 = $$0 == ia.a.a ? $$1 : this.c;
+      double $$3 = $$0 == ia.a.b ? $$1 : this.d;
+      double $$4 = $$0 == ia.a.c ? $$1 : this.e;
+      return new elb($$2, $$3, $$4);
+   }
+
+   public elb a(ia $$0, double $$1) {
+      iz $$2 = $$0.q();
+      return new elb(this.c + $$1 * (double)$$2.u(), this.d + $$1 * (double)$$2.v(), this.e + $$1 * (double)$$2.w());
+   }
+
+   @Override
+   public final double a() {
+      return this.c;
+   }
+
+   @Override
+   public final double b() {
+      return this.d;
+   }
+
+   @Override
+   public final double c() {
+      return this.e;
+   }
+
+   public Vector3f j() {
+      return new Vector3f((float)this.c, (float)this.d, (float)this.e);
    }
 }

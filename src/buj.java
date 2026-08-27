@@ -1,32 +1,102 @@
-import com.mojang.serialization.Codec;
+import java.util.EnumSet;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum buj implements auk {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class buj extends bur {
+   private static final bwj a = bwj.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
+   @Nullable
+   private Class<?>[] j;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<buj> n = auk.a(buj::values);
-
-   private buj(String $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public buj(bme $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(bsr.a.d));
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean a() {
+      int $$0 = this.e.ei();
+      blv $$1 = this.e.eh();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.ai() == blj.bv && this.e.dM().Y().b(csu.O)) {
+            return false;
+         } else {
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
+               }
+            }
+
+            return this.a($$1, a);
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public buj a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
+   }
+
+   @Override
+   public void c() {
+      this.e.h(this.e.eh());
+      this.g = this.e.q();
+      this.d = this.e.ei();
+      this.h = 300;
+      if (this.c) {
+         this.h();
+      }
+
+      super.c();
+   }
+
+   protected void h() {
+      double $$0 = this.l();
+      ekw $$1 = ekw.a(this.e.dk()).c($$0, 10.0, $$0);
+      List<? extends blx> $$2 = this.e.dM().a((Class<? extends blx>)this.e.getClass(), $$1, bli.f);
+      Iterator var5 = $$2.iterator();
+
+      while (true) {
+         blx $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
+            }
+
+            $$3 = (blx)var5.next();
+            if (this.e != $$3 && $$3.q() == null && (!(this.e instanceof bmq) || ((bmq)this.e).R_() == ((bmq)$$3).R_()) && !$$3.s(this.e.eh())) {
+               if (this.j == null) {
+                  break;
+               }
+
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
+            }
+         }
+
+         this.a($$3, this.e.eh());
+      }
+   }
+
+   protected void a(blx $$0, blv $$1) {
+      $$0.h($$1);
    }
 }

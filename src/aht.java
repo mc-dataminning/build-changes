@@ -1,59 +1,60 @@
-import com.google.common.net.InetAddresses;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Collection;
+import java.util.Map;
 import javax.annotation.Nullable;
 
 public class aht {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("commands.banip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(uv.c("commands.banip.failed"));
+   private final Map<agt, ahs> a = Maps.newHashMap();
 
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("ban-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("target", StringArgumentType.word())
-                     .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
-                  .then(dv.a("reason", ek.a()).executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), ek.a($$0x, "reason"))))
-            )
-      );
+   @Nullable
+   public ahs a(agt $$0) {
+      return this.a.get($$0);
    }
 
-   private static int a(du $$0, String $$1, @Nullable uv $$2) throws CommandSyntaxException {
-      if (InetAddresses.isInetAddress($$1)) {
-         return b($$0, $$1, $$2);
-      } else {
-         amj $$3 = $$0.l().ae().a($$1);
-         if ($$3 != null) {
-            return b($$0, $$3.A(), $$2);
-         } else {
-            throw a.create();
-         }
+   public ahs a(agt $$0, vb $$1) {
+      ahs $$2 = new ahs($$0, $$1);
+      this.a.put($$0, $$2);
+      return $$2;
+   }
+
+   public void a(ahs $$0) {
+      this.a.remove($$0.a());
+   }
+
+   public Collection<agt> a() {
+      return this.a.keySet();
+   }
+
+   public Collection<ahs> b() {
+      return this.a.values();
+   }
+
+   public sj c() {
+      sj $$0 = new sj();
+
+      for (ahs $$1 : this.a.values()) {
+         $$0.a($$1.a().toString(), $$1.f());
+      }
+
+      return $$0;
+   }
+
+   public void a(sj $$0) {
+      for (String $$1 : $$0.e()) {
+         agt $$2 = new agt($$1);
+         this.a.put($$2, ahs.a($$0.p($$1), $$2));
       }
    }
 
-   private static int b(du $$0, String $$1, @Nullable uv $$2) throws CommandSyntaxException {
-      apv $$3 = $$0.l().ae().g();
-      if ($$3.a($$1)) {
-         throw b.create();
-      } else {
-         List<amj> $$4 = $$0.l().ae().b($$1);
-         apw $$5 = new apw($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-         $$3.a($$5);
-         $$0.a(() -> uv.a("commands.banip.success", $$1, $$5.d()), true);
-         if (!$$4.isEmpty()) {
-            $$0.a(() -> uv.a("commands.banip.info", $$4.size(), ge.a($$4)), true);
-         }
+   public void a(amq $$0) {
+      for (ahs $$1 : this.a.values()) {
+         $$1.c($$0);
+      }
+   }
 
-         for (amj $$6 : $$4) {
-            $$6.c.b(uv.c("multiplayer.disconnect.ip_banned"));
-         }
-
-         return $$4.size();
+   public void b(amq $$0) {
+      for (ahs $$1 : this.a.values()) {
+         $$1.d($$0);
       }
    }
 }

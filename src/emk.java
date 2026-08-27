@@ -1,140 +1,268 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongMaps;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
+import java.util.LongSummaryStatistics;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.LongPredicate;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class emk extends emn {
-   public static final int a = 854;
-   public static final int b = 480;
-   static final emk.b l = new emk.b(854, 480);
+public class emk<T> implements emj<T> {
+   private static final Comparator<emi<?>> a = ($$0, $$1) -> emn.b.compare($$0.b(), $$1.b());
+   private final LongPredicate b;
+   private final Supplier<bgc> c;
+   private final Long2ObjectMap<emi<T>> d = new Long2ObjectOpenHashMap();
+   private final Long2LongMap e = ac.a(new Long2LongOpenHashMap(), $$0x -> $$0x.defaultReturnValue(Long.MAX_VALUE));
+   private final Queue<emi<T>> f = new PriorityQueue<>(a);
+   private final Queue<emn<T>> g = new ArrayDeque<>();
+   private final List<emn<T>> h = new ArrayList<>();
+   private final Set<emn<?>> i = new ObjectOpenCustomHashSet(emn.c);
+   private final BiConsumer<emi<T>, emn<T>> j = ($$0x, $$1x) -> {
+      if ($$1x.equals($$0x.b())) {
+         this.b($$1x);
+      }
+   };
 
-   public emk(int $$0, int $$1) {
-      super(true);
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0, $$1));
+   public emk(LongPredicate $$0, Supplier<bgc> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public void a(csf $$0, emi<T> $$1) {
+      long $$2 = $$0.a();
+      this.d.put($$2, $$1);
+      emn<T> $$3 = $$1.b();
+      if ($$3 != null) {
+         this.e.put($$2, $$3.c());
+      }
+
+      $$1.a(this.j);
+   }
+
+   public void a(csf $$0) {
+      long $$1 = $$0.a();
+      emi<T> $$2 = (emi<T>)this.d.remove($$1);
+      this.e.remove($$1);
+      if ($$2 != null) {
+         $$2.a(null);
+      }
+   }
+
+   @Override
+   public void a(emn<T> $$0) {
+      long $$1 = csf.a($$0.b());
+      emi<T> $$2 = (emi<T>)this.d.get($$1);
+      if ($$2 == null) {
+         ac.b(new IllegalStateException("Trying to schedule tick in not loaded position " + $$0.b()));
       } else {
-         this.b($$0, $$1);
+         $$2.a($$0);
       }
    }
 
-   private void b(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      emk.b $$2 = this.c($$0, $$1);
-      this.h = GlStateManager.glGenFramebuffers();
-      GlStateManager._glBindFramebuffer(36160, this.h);
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texParameter(3553, 34892, 0);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
-      GlStateManager._bindTexture(0);
-      this.e = $$2.a;
-      this.f = $$2.b;
-      this.c = $$2.a;
-      this.d = $$2.b;
+   public void a(long $$0, int $$1, BiConsumer<hv, T> $$2) {
+      bgc $$3 = this.c.get();
+      $$3.a("collect");
+      this.a($$0, $$1, $$3);
+      $$3.b("run");
+      $$3.a("ticksToRun", this.g.size());
+      this.a($$2);
+      $$3.b("cleanup");
+      this.c();
+      $$3.c();
+   }
+
+   private void a(long $$0, int $$1, bgc $$2) {
+      this.a($$0);
+      $$2.a("containersToTick", this.f.size());
+      this.a($$0, $$1);
       this.b();
-      GlStateManager._glBindFramebuffer(36160, 0);
    }
 
-   private emk.b c(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.i = TextureUtil.generateTextureId();
-      this.j = TextureUtil.generateTextureId();
-      emk.a $$2 = emk.a.a;
+   private void a(long $$0) {
+      ObjectIterator<Entry> $$1 = Long2LongMaps.fastIterator(this.e);
 
-      for (emk.b $$3 : emk.b.a($$0, $$1)) {
-         $$2 = emk.a.a;
-         if (this.a($$3)) {
-            $$2 = $$2.a(emk.a.b);
-         }
-
-         if (this.b($$3)) {
-            $$2 = $$2.a(emk.a.c);
-         }
-
-         if ($$2 == emk.a.d) {
-            return $$3;
-         }
-      }
-
-      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
-   }
-
-   private boolean a(emk.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   private boolean b(emk.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
-
-      private static final emk.a[] e = values();
-
-      emk.a a(emk.a $$0) {
-         return e[this.ordinal() | $$0.ordinal()];
-      }
-   }
-
-   static class b {
-      public final int a;
-      public final int b;
-
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      static List<emk.b> a(int $$0, int $$1) {
-         RenderSystem.assertOnRenderThreadOrInit();
-         int $$2 = RenderSystem.maxSupportedTextureSize();
-         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new emk.b($$0, $$1), emk.l) : ImmutableList.of(emk.l);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            emk.b $$1 = (emk.b)$$0;
-            return this.a == $$1.a && this.b == $$1.b;
-         } else {
-            return false;
+      while ($$1.hasNext()) {
+         Entry $$2 = (Entry)$$1.next();
+         long $$3 = $$2.getLongKey();
+         long $$4 = $$2.getLongValue();
+         if ($$4 <= $$0) {
+            emi<T> $$5 = (emi<T>)this.d.get($$3);
+            if ($$5 == null) {
+               $$1.remove();
+            } else {
+               emn<T> $$6 = $$5.b();
+               if ($$6 == null) {
+                  $$1.remove();
+               } else if ($$6.c() > $$0) {
+                  $$2.setValue($$6.c());
+               } else if (this.b.test($$3)) {
+                  $$1.remove();
+                  this.f.add($$5);
+               }
+            }
          }
       }
+   }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b);
+   private void a(long $$0, int $$1) {
+      emi<T> $$2;
+      while (this.a($$1) && ($$2 = this.f.poll()) != null) {
+         emn<T> $$3 = $$2.c();
+         this.c($$3);
+         this.a(this.f, $$2, $$0, $$1);
+         emn<T> $$4 = $$2.b();
+         if ($$4 != null) {
+            if ($$4.c() <= $$0 && this.a($$1)) {
+               this.f.add($$2);
+            } else {
+               this.b($$4);
+            }
+         }
       }
+   }
 
-      @Override
-      public String toString() {
-         return this.a + "x" + this.b;
+   private void b() {
+      for (emi<T> $$0 : this.f) {
+         this.b($$0.b());
       }
+   }
+
+   private void b(emn<T> $$0) {
+      this.e.put(csf.a($$0.b()), $$0.c());
+   }
+
+   private void a(Queue<emi<T>> $$0, emi<T> $$1, long $$2, int $$3) {
+      if (this.a($$3)) {
+         emi<T> $$4 = $$0.peek();
+         emn<T> $$5 = $$4 != null ? $$4.b() : null;
+
+         while (this.a($$3)) {
+            emn<T> $$6 = $$1.b();
+            if ($$6 == null || $$6.c() > $$2 || $$5 != null && emn.b.compare($$6, $$5) > 0) {
+               break;
+            }
+
+            $$1.c();
+            this.c($$6);
+         }
+      }
+   }
+
+   private void c(emn<T> $$0) {
+      this.g.add($$0);
+   }
+
+   private boolean a(int $$0) {
+      return this.g.size() < $$0;
+   }
+
+   private void a(BiConsumer<hv, T> $$0) {
+      while (!this.g.isEmpty()) {
+         emn<T> $$1 = this.g.poll();
+         if (!this.i.isEmpty()) {
+            this.i.remove($$1);
+         }
+
+         this.h.add($$1);
+         $$0.accept($$1.b(), $$1.a());
+      }
+   }
+
+   private void c() {
+      this.g.clear();
+      this.f.clear();
+      this.h.clear();
+      this.i.clear();
+   }
+
+   @Override
+   public boolean a(hv $$0, T $$1) {
+      emi<T> $$2 = (emi<T>)this.d.get(csf.a($$0));
+      return $$2 != null && $$2.a($$0, $$1);
+   }
+
+   @Override
+   public boolean b(hv $$0, T $$1) {
+      this.d();
+      return this.i.contains(emn.a($$1, $$0));
+   }
+
+   private void d() {
+      if (this.i.isEmpty() && !this.g.isEmpty()) {
+         this.i.addAll(this.g);
+      }
+   }
+
+   private void a(dyg $$0, emk.a<T> $$1) {
+      int $$2 = ix.a((double)$$0.h());
+      int $$3 = ix.a((double)$$0.j());
+      int $$4 = ix.a((double)$$0.k());
+      int $$5 = ix.a((double)$$0.m());
+
+      for (int $$6 = $$2; $$6 <= $$4; $$6++) {
+         for (int $$7 = $$3; $$7 <= $$5; $$7++) {
+            long $$8 = csf.c($$6, $$7);
+            emi<T> $$9 = (emi<T>)this.d.get($$8);
+            if ($$9 != null) {
+               $$1.accept($$8, $$9);
+            }
+         }
+      }
+   }
+
+   public void a(dyg $$0) {
+      Predicate<emn<T>> $$1 = $$1x -> $$0.b($$1x.b());
+      this.a($$0, ($$1x, $$2) -> {
+         emn<T> $$3 = $$2.b();
+         $$2.a($$1);
+         emn<T> $$4 = $$2.b();
+         if ($$4 != $$3) {
+            if ($$4 != null) {
+               this.b($$4);
+            } else {
+               this.e.remove($$1x);
+            }
+         }
+      });
+      this.h.removeIf($$1);
+      this.g.removeIf($$1);
+   }
+
+   public void a(dyg $$0, iz $$1) {
+      this.a(this, $$0, $$1);
+   }
+
+   public void a(emk<T> $$0, dyg $$1, iz $$2) {
+      List<emn<T>> $$3 = new ArrayList<>();
+      Predicate<emn<T>> $$4 = $$1x -> $$1.b($$1x.b());
+      $$0.h.stream().filter($$4).forEach($$3::add);
+      $$0.g.stream().filter($$4).forEach($$3::add);
+      $$0.a($$1, ($$2x, $$3x) -> $$3x.d().filter($$4).forEach($$3::add));
+      LongSummaryStatistics $$5 = $$3.stream().mapToLong(emn::e).summaryStatistics();
+      long $$6 = $$5.getMin();
+      long $$7 = $$5.getMax();
+      $$3.forEach($$3x -> this.a(new emn<>((T)$$3x.a(), $$3x.b().a($$2), $$3x.c(), $$3x.d(), $$3x.e() - $$6 + $$7 + 1L)));
+   }
+
+   @Override
+   public int a() {
+      return this.d.values().stream().mapToInt(emp::a).sum();
+   }
+
+   @FunctionalInterface
+   interface a<T> {
+      void accept(long var1, emi<T> var3);
    }
 }

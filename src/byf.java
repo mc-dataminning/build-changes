@@ -1,22 +1,30 @@
-import com.google.common.collect.ImmutableMap;
+public abstract class byf extends bmq {
+   private static final int bW = 100;
+   private int bX;
 
-public class byf extends bnc<byd> {
-   public byf() {
-      super(ImmutableMap.of(bum.M, bun.a, bum.y, bun.a), 200);
+   protected byf(blj<? extends byf> $$0, csy $$1) {
+      super($$0, $$1);
    }
 
-   protected boolean a(ami $$0, byd $$1) {
-      return $$1.bc();
+   public boolean b(amq $$0) {
+      sj $$1 = new sj();
+      $$1.a("id", this.bw());
+      this.f($$1);
+      if ($$0.h($$1)) {
+         this.am();
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   protected boolean a(ami $$0, byd $$1, long $$2) {
-      return $$1.bc() && $$1.dP().a(bum.M);
+   @Override
+   public void l() {
+      this.bX++;
+      super.l();
    }
 
-   protected void b(ami $$0, byd $$1, long $$2) {
-      bml<byd> $$3 = $$1.dP();
-      $$3.b(bum.m);
-      $$3.b(bum.n);
-      $$1.b(new bki(bkk.j, 200, 0));
+   public boolean gn() {
+      return this.bX > 100;
    }
 }

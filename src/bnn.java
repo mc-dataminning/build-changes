@@ -1,44 +1,11 @@
-import java.util.Optional;
+public interface bnn<E extends blv> {
+   bnm.a a();
 
-public class bnn implements bop {
-   private final bkv a;
-   private final boolean b;
+   boolean e(amp var1, E var2, long var3);
 
-   public bnn(bkv $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   void f(amp var1, E var2, long var3);
 
-   @Override
-   public ejz a() {
-      return this.b ? this.a.dl().b(0.0, (double)this.a.cI(), 0.0) : this.a.dl();
-   }
+   void g(amp var1, E var2, long var3);
 
-   @Override
-   public hx b() {
-      return this.a.dn();
-   }
-
-   @Override
-   public boolean a(bll $$0) {
-      if (this.a instanceof bll $$1) {
-         if (!$$1.bx()) {
-            return false;
-         } else {
-            Optional<buo> $$3 = $$0.dP().c(bum.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
-      }
-   }
-
-   public bkv c() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
-   }
+   String b();
 }

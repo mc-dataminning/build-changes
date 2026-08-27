@@ -1,193 +1,132 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cwy extends cur {
-   public static final MapCodec<cwy> a = b(cwy::new);
-   public static final die b = did.bx;
-   public static final die c = did.A;
-   private static final dil<id> d = did.T;
-   private static final int e = 6;
-   private static final cou f = new cou(10);
-
-   public cwy(dhm.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, id.k).a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
-   }
+public class cwy extends dcy {
+   public static final MapCodec<cwy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dkc.a.fieldOf("wood_type").forGetter(dcy::d), u()).apply($$0, cwy::new));
+   public static final djp b = djf.ba;
+   public static final djg c = djf.a;
+   protected static final float d = 5.0F;
+   protected static final elu e = cvz.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
+   private static final Map<Integer, elu> i = Maps.newHashMap(
+      ImmutableMap.of(
+         0,
+         cvz.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
+         4,
+         cvz.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
+         8,
+         cvz.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
+         12,
+         cvz.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
+      )
+   );
 
    @Override
-   protected MapCodec<cwy> a() {
+   public MapCodec<cwy> a() {
       return a;
    }
 
-   @Override
-   public boolean d_(dhn $$0) {
-      return true;
+   public cwy(dkc $$0, dio.d $$1) {
+      super($$0, $$1.a($$0.e()));
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public int a(dhn $$0, csf $$1, hx $$2) {
-      return $$1.c_($$2) instanceof dfw $$4 ? $$4.w() : 0;
-   }
-
-   @Override
-   public void a(dhn $$0, csf $$1, hx $$2, cvf $$3, hx $$4, boolean $$5) {
-      boolean $$6 = $$1.B($$2);
-      boolean $$7 = $$0.c(c);
-      dfi $$8 = $$1.c_($$2);
-      if ($$6 && !$$7) {
-         $$1.a($$2, this, 1);
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
-         this.a($$8, true);
-      } else if (!$$6 && $$7) {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)), 2);
-         this.a($$8, false);
+   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
+      if ($$1.c_($$2) instanceof dhm $$6) {
+         cmh $$7 = $$3.b($$4);
+         if (this.a($$3, $$5, $$6, $$7)) {
+            return bjl.d;
+         }
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(cer $$0, ekx $$1, dhm $$2, cmh $$3) {
+      return !$$2.a($$2.a($$0), $$0) && $$3.d() instanceof clt && $$1.b().equals(ia.a);
    }
 
    @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      this.a($$0, $$1, $$2);
+   public boolean a(dip $$0, ctb $$1, hv $$2) {
+      return $$1.a_($$2.c()).a($$1, $$2.c(), ia.a, ddz.b);
+   }
+
+   @Override
+   public dip a(coq $$0) {
+      csy $$1 = $$0.q();
+      edz $$2 = $$1.b_($$0.a());
+      hv $$3 = $$0.a().c();
+      dip $$4 = $$1.a_($$3);
+      boolean $$5 = $$4.a(arr.az);
+      ia $$6 = ia.a((double)$$0.i());
+      boolean $$7 = !cvz.a($$4.k($$1, $$3), ia.a) || $$0.h();
+      if ($$5 && !$$0.h()) {
+         if ($$4.b(dew.b)) {
+            ia $$8 = $$4.c(dew.b);
+            if ($$8.o().a($$6)) {
+               $$7 = false;
+            }
+         } else if ($$4.b(b)) {
+            Optional<ia> $$9 = djv.a($$4.c(b));
+            if ($$9.isPresent() && $$9.get().o().a($$6)) {
+               $$7 = false;
+            }
+         }
+      }
+
+      int $$10 = !$$7 ? djv.a($$6.g()) : djv.a($$0.i() + 180.0F);
+      return this.o().a(c, Boolean.valueOf($$7)).a(b, Integer.valueOf($$10)).a(f, Boolean.valueOf($$2.a() == eea.c));
+   }
+
+   @Override
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      elu $$4 = i.get($$0.c(b));
+      return $$4 == null ? e : $$4;
+   }
+
+   @Override
+   public elu b_(dip $$0, cse $$1, hv $$2) {
+      return this.a($$0, $$1, $$2, elg.a());
+   }
+
+   @Override
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      return $$1 == ia.b && !this.a($$0, $$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public float g(dip $$0) {
+      return djv.b($$0.c(b));
+   }
+
+   @Override
+   public dip a(dip $$0, dcl $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   public dip a(dip $$0, dav $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(b, c, f);
+   }
+
+   @Override
+   public dgd a(hv $$0, dip $$1) {
+      return new dha($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dfi> dfj<T> a(csf $$0, dhn $$1, dfk<T> $$2) {
-      return $$0.B ? null : a($$2, dfk.P, dfw::a);
-   }
-
-   private void a(@Nullable dfi $$0, boolean $$1) {
-      if ($$0 instanceof dfw $$2) {
-         $$2.a($$1);
-      }
-   }
-
-   @Override
-   public dfi a(hx $$0, dhn $$1) {
-      dfw $$2 = new dfw($$0, $$1);
-      $$2.a($$1.b(c) && $$1.c(c));
-      return $$2;
-   }
-
-   @Override
-   public dhn a(cnw $$0) {
-      ib $$1 = $$0.d().g();
-
-      ib $$2 = switch ($$1) {
-         case a -> $$0.g().g();
-         case b -> $$0.g();
-         case c, d, e, f -> ib.b;
-      };
-      return this.o().a(d, id.a($$1, $$2)).a(c, Boolean.valueOf($$0.q().B($$0.a())));
-   }
-
-   @Override
-   public void a(csf $$0, hx $$1, dhn $$2, bll $$3, clo $$4) {
-      if ($$4.A() && $$0.c_($$1) instanceof dfw $$5) {
-         $$5.a($$4.y());
-      }
-
-      if ($$2.c(c)) {
-         $$0.a($$1, this, 1);
-      }
-   }
-
-   @Override
-   public void a(dhn $$0, csf $$1, hx $$2, dhn $$3, boolean $$4) {
-      bix.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
-      if ($$1.B) {
-         return bjb.a;
-      } else {
-         dfi $$6 = $$1.c_($$2);
-         if ($$6 instanceof dfw) {
-            $$3.a((dfw)$$6);
-         }
-
-         return bjb.b;
-      }
-   }
-
-   protected void a(dhn $$0, ami $$1, hx $$2) {
-      if ($$1.c_($$2) instanceof dfw $$3) {
-         Optional<coi> $$5 = a($$1, $$3);
-         if ($$5.isEmpty()) {
-            $$1.c(1050, $$2, 0);
-         } else {
-            $$3.d(6);
-            $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 2);
-            coi $$6 = $$5.get();
-            clo $$7 = $$6.a($$3, $$1.I_());
-            $$7.a($$1);
-            this.a($$1, $$2, $$3, $$7, $$0);
-            $$6.a($$3).forEach($$4x -> this.a($$1, $$2, $$3, $$4x, $$0));
-            $$3.k().forEach($$0x -> {
-               if (!$$0x.b()) {
-                  $$0x.h(1);
-               }
-            });
-            $$3.e();
-         }
-      }
-   }
-
-   public static Optional<coi> a(csf $$0, chh $$1) {
-      return f.a($$0, $$1);
-   }
-
-   private void a(csf $$0, hx $$1, dfw $$2, clo $$3, dhn $$4) {
-      ib $$5 = $$4.c(d).a();
-      biu $$6 = dgh.a($$0, $$1.a($$5));
-      clo $$7 = $$3.p();
-      if ($$6 instanceof dfw) {
-         while (!$$7.b()) {
-            clo $$8 = $$7.c(1);
-            clo $$9 = dgh.a($$2, $$6, $$8, $$5.g());
-            if (!$$9.b()) {
-               break;
-            }
-
-            $$7.h(1);
-         }
-      } else if ($$6 != null) {
-         while (!$$7.b()) {
-            int $$10 = $$7.L();
-            $$7 = dgh.a($$2, $$6, $$7, $$5.g());
-            if ($$10 == $$7.L()) {
-               break;
-            }
-         }
-      }
-
-      if (!$$7.b()) {
-         ejz $$11 = ejz.b($$1).a($$5, 0.7);
-         jh.a($$0, $$7, 6, $$5, $$11);
-         $$0.c(1049, $$1, 0);
-         $$0.c(2010, $$1, $$5.d());
-      }
-   }
-
-   @Override
-   public dbk b_(dhn $$0) {
-      return dbk.c;
-   }
-
-   @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      return $$0.a(d, $$1.a().a($$0.c(d)));
-   }
-
-   @Override
-   public dhn a(dhn $$0, dab $$1) {
-      return $$0.a(d, $$1.a().a($$0.c(d)));
-   }
-
-   @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(d, c, b);
+   public <T extends dgd> dge<T> a(csy $$0, dip $$1, dgf<T> $$2) {
+      return a($$2, dgf.i, dhm::a);
    }
 }

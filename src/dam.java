@@ -1,63 +1,84 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public class dam extends cvf implements cvi {
+public class dam extends cvz implements dcz {
    public static final MapCodec<dam> a = b(dam::new);
+   public static final int b = 15;
+   public static final djp c = djf.aP;
+   public static final djg d = djf.C;
+   public static final ToIntFunction<dip> e = $$0 -> $$0.c(c);
 
    @Override
    public MapCodec<dam> a() {
       return a;
    }
 
-   public dam(dhm.d $$0) {
+   public dam(dio.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean b(csi $$0, hx $$1, dhn $$2) {
-      if (!$$0.a_($$1.c()).a((crl)$$0, $$1)) {
-         return false;
-      } else {
-         for (hx $$3 : hx.a($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(ark.aK)) {
-               return true;
-            }
-         }
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(c, d);
+   }
 
-         return false;
+   @Override
+   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
+      if (!$$1.B && $$3.gp()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return bjl.a;
+      } else {
+         return bjl.b;
       }
    }
 
    @Override
-   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
+   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+      return $$3.a(cmk.hB) ? elr.b() : elr.a();
+   }
+
+   @Override
+   public boolean a_(dip $$0, cse $$1, hv $$2) {
       return true;
    }
 
    @Override
-   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
+   public dce b_(dip $$0) {
+      return dce.a;
+   }
 
-      for (hx $$6 : hx.a($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dhn $$7 = $$0.a_($$6);
-         if ($$7.a(cvh.on)) {
-            $$5 = true;
-         }
+   @Override
+   public float d(dip $$0, cse $$1, hv $$2) {
+      return 1.0F;
+   }
 
-         if ($$7.a(cvh.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
+   @Override
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eea.c, eea.c.a($$3));
       }
 
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? cvh.on.o() : cvh.ow.o(), 3);
-      } else if ($$5) {
-         $$0.a($$2, cvh.on.o(), 3);
-      } else if ($$4) {
-         $$0.a($$2, cvh.ow.o(), 3);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public edz c_(dip $$0) {
+      return $$0.c(d) ? eea.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public cmh a(ctb $$0, hv $$1, dip $$2) {
+      return a(super.a($$0, $$1, $$2), $$2.c(c));
+   }
+
+   public static cmh a(cmh $$0, int $$1) {
+      if ($$1 != 15) {
+         sj $$2 = new sj();
+         $$2.a(c.f(), String.valueOf($$1));
+         $$0.a("BlockStateTag", $$2);
       }
+
+      return $$0;
    }
 }

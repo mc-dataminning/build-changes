@@ -1,33 +1,58 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.util.List;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bg {
-   private static final Logger a = LogUtils.getLogger();
-   private final agm b;
-   private final eff c;
+public record bg(ck.c b, ck.c c, ck.c d, ck.c e, ck.c f) {
+   public static final Codec<bg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atg.a(ck.c.d, "x", ck.c.c).forGetter(bg::a),
+               atg.a(ck.c.d, "y", ck.c.c).forGetter(bg::b),
+               atg.a(ck.c.d, "z", ck.c.c).forGetter(bg::c),
+               atg.a(ck.c.d, "horizontal", ck.c.c).forGetter(bg::d),
+               atg.a(ck.c.d, "absolute", ck.c.c).forGetter(bg::e)
+            )
+            .apply($$0, bg::new)
+   );
 
-   public bg(agm $$0, eff $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static bg a(ck.c $$0) {
+      return new bg(ck.c.c, ck.c.c, ck.c.c, $$0, ck.c.c);
    }
 
-   public final List<eib> a(JsonArray $$0, String $$1, ehl $$2) {
-      List<eib> $$3 = ac.a(eid.a.listOf().parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
-      efl $$4 = new efl($$2, this.c);
+   public static bg b(ck.c $$0) {
+      return new bg(ck.c.c, $$0, ck.c.c, ck.c.c, ck.c.c);
+   }
 
-      for (eib $$5 : $$3) {
-         $$5.a($$4);
-         $$4.a().forEach(($$1x, $$2x) -> a.warn("Found validation problem in advancement trigger {}/{}: {}", new Object[]{$$1, $$1x, $$2x}));
+   public static bg c(ck.c $$0) {
+      return new bg(ck.c.c, ck.c.c, ck.c.c, ck.c.c, $$0);
+   }
+
+   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - $$3);
+      float $$7 = (float)($$1 - $$4);
+      float $$8 = (float)($$2 - $$5);
+      if (!this.b.d((double)aty.e($$6)) || !this.c.d((double)aty.e($$7)) || !this.d.d((double)aty.e($$8))) {
+         return false;
+      } else {
+         return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));
       }
-
-      return $$3;
    }
 
-   public agm a() {
+   public ck.c a() {
       return this.b;
+   }
+
+   public ck.c b() {
+      return this.c;
+   }
+
+   public ck.c c() {
+      return this.d;
+   }
+
+   public ck.c d() {
+      return this.e;
+   }
+
+   public ck.c e() {
+      return this.f;
    }
 }

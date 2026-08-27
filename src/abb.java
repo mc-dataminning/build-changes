@@ -1,24 +1,28 @@
-public class abb implements wo<yh> {
-   private final int a;
+import javax.annotation.Nullable;
 
-   public abb(dje $$0) {
-      this.a = $$0.r();
+public class abb implements wu<yo> {
+   @Nullable
+   private final agt a;
+
+   public abb(@Nullable agt $$0) {
+      this.a = $$0;
    }
 
-   public abb(ty $$0) {
-      this.a = $$0.n();
-   }
-
-   @Override
-   public void a(ty $$0) {
-      $$0.c(this.a);
-   }
-
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public abb(ue $$0) {
+      this.a = $$0.c(ue::t);
+   }
+
+   @Override
+   public void a(ue $$0) {
+      $$0.a(this.a, ue::a);
+   }
+
+   @Nullable
+   public agt a() {
       return this.a;
    }
 }

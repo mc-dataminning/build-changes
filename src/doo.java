@@ -1,21 +1,40 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+public class doo implements dnn {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final doa i = new doa(this);
 
-public abstract class doo implements dod {
-   protected final ja f;
-
-   protected static <P extends doo> P1<Mu<P>, ja> a(Instance<P> $$0) {
-      return $$0.group(ja.v(16).optionalFieldOf("offset", ja.g).forGetter($$0x -> $$0x.f));
+   public doo(long $$0) {
+      this.b($$0);
    }
 
-   protected doo(ja $$0) {
-      this.f = $$0;
+   @Override
+   public auf d() {
+      return new doo(this.g());
    }
 
-   public final boolean a(csz $$0, hx $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public dol e() {
+      return new dnz.a(this.g());
    }
 
-   protected abstract boolean a(dhn var1);
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
+   }
 }

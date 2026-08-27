@@ -1,24 +1,18 @@
-public record ezg(int a, int b) {
-   public static ezg a(eze $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new ezg($$1, $$2);
-         case b -> new ezg($$2, $$1);
-      };
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.io.IOException;
+
+public interface ezg {
+   Codec<ezg> b = ezh.f.dispatch(ezg::a, $$0 -> $$0.a().codec());
+
+   ezh a();
+
+   Either<ezg.a, ezg.b> b();
+
+   public interface a {
+      eng load(aps var1) throws IOException;
    }
 
-   public ezg a(ezf $$0) {
-      return switch ($$0) {
-         case b -> new ezg(this.a, this.b + 1);
-         case a -> new ezg(this.a, this.b - 1);
-         case c -> new ezg(this.a - 1, this.b);
-         case d -> new ezg(this.a + 1, this.b);
-      };
-   }
-
-   public int a(eze $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-      };
+   public static record b(agt a) {
    }
 }

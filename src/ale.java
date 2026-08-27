@@ -1,127 +1,62 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import org.slf4j.Logger;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Locale;
+import java.util.function.Function;
 
-public class ale extends apy {
-   private static final Logger a = LogUtils.getLogger();
+public class ale implements alf {
+   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("commands.data.block.invalid"));
+   public static final Function<String, alg.c> a = $$0 -> new alg.c() {
+         @Override
+         public alf a(CommandContext<ds> $$0x) throws CommandSyntaxException {
+            hv $$1 = fk.a($$0, $$0 + "Pos");
+            dgd $$2 = ((ds)$$0.getSource()).e().c_($$1);
+            if ($$2 == null) {
+               throw ale.b.create();
+            } else {
+               return new ale($$2, $$1);
+            }
+         }
 
-   public ale(alf $$0, in<agv> $$1, eev $$2) {
-      super($$0, $$1, $$2, $$0.a().H);
-      alg $$3 = $$0.a();
-      this.a($$3.F);
-      this.b($$3.G);
-      super.a($$3.V.get());
-      this.z();
-      this.x();
-      this.y();
-      this.w();
-      this.A();
-      this.C();
-      this.B();
-      if (!this.i().b().exists()) {
-         this.D();
-      }
+         @Override
+         public ArgumentBuilder<ds, ?> a(ArgumentBuilder<ds, ?> $$0x, Function<ArgumentBuilder<ds, ?>, ArgumentBuilder<ds, ?>> $$1) {
+            return $$0.then(dt.a("block").then($$1.apply(dt.a($$0 + "Pos", fk.a()))));
+         }
+      };
+   private final dgd c;
+   private final hv d;
+
+   public ale(dgd $$0, hv $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.b().i($$0);
+   public void a(sj $$0) {
+      dip $$1 = this.c.i().a_(this.d);
+      this.c.a($$0);
+      this.c.e();
+      this.c.i().a(this.d, $$1, $$1, 3);
    }
 
    @Override
-   public void a(GameProfile $$0) {
-      super.a($$0);
-      this.B();
+   public sj a() {
+      return this.c.o();
    }
 
    @Override
-   public void b(GameProfile $$0) {
-      super.b($$0);
-      this.B();
+   public vb b() {
+      return vb.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
    }
 
    @Override
-   public void a() {
-      this.C();
-   }
-
-   private void w() {
-      try {
-         this.g().e();
-      } catch (IOException var2) {
-         a.warn("Failed to save ip banlist: ", var2);
-      }
-   }
-
-   private void x() {
-      try {
-         this.f().e();
-      } catch (IOException var2) {
-         a.warn("Failed to save user banlist: ", var2);
-      }
-   }
-
-   private void y() {
-      try {
-         this.g().f();
-      } catch (IOException var2) {
-         a.warn("Failed to load ip banlist: ", var2);
-      }
-   }
-
-   private void z() {
-      try {
-         this.f().f();
-      } catch (IOException var2) {
-         a.warn("Failed to load user banlist: ", var2);
-      }
-   }
-
-   private void A() {
-      try {
-         this.k().f();
-      } catch (Exception var2) {
-         a.warn("Failed to load operators list: ", var2);
-      }
-   }
-
-   private void B() {
-      try {
-         this.k().e();
-      } catch (Exception var2) {
-         a.warn("Failed to save operators list: ", var2);
-      }
-   }
-
-   private void C() {
-      try {
-         this.i().f();
-      } catch (Exception var2) {
-         a.warn("Failed to load white-list: ", var2);
-      }
-   }
-
-   private void D() {
-      try {
-         this.i().e();
-      } catch (Exception var2) {
-         a.warn("Failed to save white-list: ", var2);
-      }
+   public vb a(tg $$0) {
+      return vb.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), sy.c($$0));
    }
 
    @Override
-   public boolean c(GameProfile $$0) {
-      return !this.o() || this.f($$0) || this.i().a($$0);
-   }
-
-   public alf b() {
-      return (alf)super.c();
-   }
-
-   @Override
-   public boolean d(GameProfile $$0) {
-      return this.k().a($$0);
+   public vb a(ej.g $$0, double $$1, int $$2) {
+      return vb.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

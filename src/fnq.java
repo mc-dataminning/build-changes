@@ -1,83 +1,102 @@
-public class fnq extends fpo {
-   fnq(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-      this.n = false;
-      this.a();
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+public class fnq {
+   final int a;
+   private final List<fnq.a> b = new ArrayList<>();
+
+   public fnq(int $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * atq.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public void a(fni $$0, IntCollection $$1, fnq.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
 
-   @Override
-   public void a() {
-      super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
-   }
-
-   @Override
-   public fos b() {
-      return fos.b;
-   }
-
-   public static class a implements foq<jz> {
-      private final fpj a;
-
-      public a(fpj $$0) {
-         this.a = $$0;
-      }
-
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fnq $$8 = new fnq($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
-         $$8.a(this.a);
-         return $$8;
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         fnk $$6 = $$0.b($$4);
+         if ($$6 instanceof fnl.a) {
+            fnl.a $$5 = (fnl.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
+         }
       }
    }
 
-   public static class b implements foq<jz> {
-      private final fpj a;
+   public void a(vr $$0) {
+      this.b.add(new fnq.a($$0));
+   }
 
-      public b(fpj $$0) {
-         this.a = $$0;
+   public boolean b(vr $$0) {
+      boolean $$1 = false;
+      Iterator<fnq.a> $$2 = this.b.iterator();
+
+      while ($$2.hasNext()) {
+         fnq.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
       }
 
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fnq $$8 = new fnq($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
-         $$8.a(this.a);
-         return $$8;
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<vn> b;
+      private vr c;
+      private boolean d = true;
+      private int e;
+
+      a(vr $$0) {
+         this.b = new ObjectOpenHashSet($$0.l().d().a());
+         this.c = $$0;
+      }
+
+      boolean a(vr $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.k());
+            if (this.d && this.c.f().equals($$0.f())) {
+               if (this.c.j().a($$0.j())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= fnq.this.a || !this.d && this.b.isEmpty();
       }
    }
 
-   public static class c implements foq<jz> {
-      private final fpj a;
-
-      public c(fpj $$0) {
-         this.a = $$0;
-      }
-
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fnq $$8 = new fnq($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public interface b {
+      void accept(int var1, fnl.a var2);
    }
 }

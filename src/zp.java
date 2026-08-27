@@ -1,80 +1,24 @@
-public class zp implements wo<yh> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final double d;
-   private final long e;
-   private final int f;
-   private final int g;
-   private final int h;
-
-   public zp(ty $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.o();
-      this.f = $$0.n();
-      this.g = $$0.n();
-      this.h = $$0.n();
-   }
-
-   public zp(dje $$0) {
-      this.a = $$0.a();
-      this.b = $$0.b();
-      this.c = $$0.i();
-      this.d = $$0.k();
-      this.e = $$0.j();
-      this.f = $$0.m();
-      this.g = $$0.r();
-      this.h = $$0.q();
+public record zp(vb a, ux.b b) implements wu<yo> {
+   public zp(ue $$0) {
+      this($$0.m(), new ux.b($$0));
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.c(this.f);
-      $$0.c(this.g);
-      $$0.c(this.h);
+      this.b.a($$0);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public double d() {
+   public ux.b d() {
       return this.b;
-   }
-
-   public double e() {
-      return this.d;
-   }
-
-   public double f() {
-      return this.c;
-   }
-
-   public long g() {
-      return this.e;
-   }
-
-   public int h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.h;
-   }
-
-   public int j() {
-      return this.g;
    }
 }

@@ -1,21 +1,34 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dum extends duf {
-   public static final Codec<dum> b = dhn.b.fieldOf("state").xmap(dhm.a::b, cvf::o).xmap(dum::new, $$0 -> $$0.c).codec();
-   private final cvf c;
+public class dum extends dus {
+   public static final Codec<dum> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dum::new));
 
-   public dum(cvf $$0) {
-      this.c = $$0;
+   public dum(biq $$0, biq $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected dug<?> a() {
-      return dug.f;
+   protected dut<?> a() {
+      return dut.d;
    }
 
    @Override
-   public dhn a(atw $$0, hx $$1) {
-      ib.a $$2 = ib.a.a($$0);
-      return this.c.o().a(dbq.i, $$2);
+   protected void a(cte $$0, dus.b $$1, auf $$2, duc $$3, int $$4, dus.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      hv $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   }
+
+   @Override
+   public int a(auf $$0, int $$1, duc $$2) {
+      return 0;
+   }
+
+   @Override
+   protected boolean a(auf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

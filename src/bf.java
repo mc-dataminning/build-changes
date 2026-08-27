@@ -1,30 +1,26 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record bf(List<dc<bjv>> b, Optional<bq> c, Optional<bq> d) {
+public record bf(List<db<bkf>> b, Optional<bp> c, Optional<bp> d) {
    public static final Codec<bf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               asy.a(dc.a(kd.q).listOf(), "tags", List.of()).forGetter(bf::b),
-               asy.a(bq.a, "direct_entity").forGetter(bf::c),
-               asy.a(bq.a, "source_entity").forGetter(bf::d)
+               atg.a(db.a(kc.r).listOf(), "tags", List.of()).forGetter(bf::a),
+               atg.a(bp.a, "direct_entity").forGetter(bf::b),
+               atg.a(bp.a, "source_entity").forGetter(bf::c)
             )
             .apply($$0, bf::new)
    );
 
-   public boolean a(amj $$0, bjt $$1) {
-      return this.a($$0.z(), $$0.dl(), $$1);
+   public boolean a(amq $$0, bkd $$1) {
+      return this.a($$0.z(), $$0.dk(), $$1);
    }
 
-   public boolean a(ami $$0, ejz $$1, bjt $$2) {
-      for (dc<bjv> $$3 : this.b) {
+   public boolean a(amp $$0, elb $$1, bkd $$2) {
+      for (db<bkf> $$3 : this.b) {
          if (!$$3.a($$2.k())) {
             return false;
          }
@@ -33,34 +29,38 @@ public record bf(List<dc<bjv>> b, Optional<bq> c, Optional<bq> d) {
       return this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c()) ? false : !this.d.isPresent() || this.d.get().a($$0, $$1, $$2.d());
    }
 
-   public static Optional<bf> a(@Nullable JsonElement $$0) {
-      return $$0 != null && !$$0.isJsonNull() ? Optional.of(ac.a(a.parse(JsonOps.INSTANCE, $$0), JsonParseException::new)) : Optional.empty();
+   public List<db<bkf>> a() {
+      return this.b;
    }
 
-   public JsonElement a() {
-      return ac.a(a.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
+   public Optional<bp> b() {
+      return this.c;
+   }
+
+   public Optional<bp> c() {
+      return this.d;
    }
 
    public static class a {
-      private final Builder<dc<bjv>> a = ImmutableList.builder();
-      private Optional<bq> b = Optional.empty();
-      private Optional<bq> c = Optional.empty();
+      private final Builder<db<bkf>> a = ImmutableList.builder();
+      private Optional<bp> b = Optional.empty();
+      private Optional<bp> c = Optional.empty();
 
       public static bf.a a() {
          return new bf.a();
       }
 
-      public bf.a a(dc<bjv> $$0) {
+      public bf.a a(db<bkf> $$0) {
          this.a.add($$0);
          return this;
       }
 
-      public bf.a a(bq.a $$0) {
+      public bf.a a(bp.a $$0) {
          this.b = Optional.of($$0.b());
          return this;
       }
 
-      public bf.a b(bq.a $$0) {
+      public bf.a b(bp.a $$0) {
          this.c = Optional.of($$0.b());
          return this;
       }

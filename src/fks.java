@@ -1,225 +1,67 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.Arrays;
 
-public class fks {
-   private static final String ci = "main";
-   private static final Set<fkr> cj = Sets.newHashSet();
-   public static final fkr a = a("allay");
-   public static final fkr b = a("armor_stand");
-   public static final fkr c = b("armor_stand");
-   public static final fkr d = c("armor_stand");
-   public static final fkr e = a("axolotl");
-   public static final fkr f = a("banner");
-   public static final fkr g = a("bat");
-   public static final fkr h = a("bed_foot");
-   public static final fkr i = a("bed_head");
-   public static final fkr j = a("bee");
-   public static final fkr k = a("bell");
-   public static final fkr l = a("blaze");
-   public static final fkr m = a("book");
-   public static final fkr n = a("cat");
-   public static final fkr o = a("cat", "collar");
-   public static final fkr p = a("camel");
-   public static final fkr q = a("cave_spider");
-   public static final fkr r = a("chest");
-   public static final fkr s = a("chest_minecart");
-   public static final fkr t = a("chicken");
-   public static final fkr u = a("cod");
-   public static final fkr v = a("command_block_minecart");
-   public static final fkr w = a("conduit", "cage");
-   public static final fkr x = a("conduit", "eye");
-   public static final fkr y = a("conduit", "shell");
-   public static final fkr z = a("conduit", "wind");
-   public static final fkr A = a("cow");
-   public static final fkr B = a("creeper");
-   public static final fkr C = a("creeper", "armor");
-   public static final fkr D = a("creeper_head");
-   public static final fkr E = a("decorated_pot_base");
-   public static final fkr F = a("decorated_pot_sides");
-   public static final fkr G = a("dolphin");
-   public static final fkr H = a("donkey");
-   public static final fkr I = a("double_chest_left");
-   public static final fkr J = a("double_chest_right");
-   public static final fkr K = a("dragon_skull");
-   public static final fkr L = a("drowned");
-   public static final fkr M = b("drowned");
-   public static final fkr N = c("drowned");
-   public static final fkr O = a("drowned", "outer");
-   public static final fkr P = a("elder_guardian");
-   public static final fkr Q = a("elytra");
-   public static final fkr R = a("enderman");
-   public static final fkr S = a("endermite");
-   public static final fkr T = a("ender_dragon");
-   public static final fkr U = a("end_crystal");
-   public static final fkr V = a("evoker");
-   public static final fkr W = a("evoker_fangs");
-   public static final fkr X = a("fox");
-   public static final fkr Y = a("frog");
-   public static final fkr Z = a("furnace_minecart");
-   public static final fkr aa = a("ghast");
-   public static final fkr ab = a("giant");
-   public static final fkr ac = b("giant");
-   public static final fkr ad = c("giant");
-   public static final fkr ae = a("glow_squid");
-   public static final fkr af = a("goat");
-   public static final fkr ag = a("guardian");
-   public static final fkr ah = a("hoglin");
-   public static final fkr ai = a("hopper_minecart");
-   public static final fkr aj = a("horse");
-   public static final fkr ak = a("horse_armor");
-   public static final fkr al = a("husk");
-   public static final fkr am = b("husk");
-   public static final fkr an = c("husk");
-   public static final fkr ao = a("illusioner");
-   public static final fkr ap = a("iron_golem");
-   public static final fkr aq = a("leash_knot");
-   public static final fkr ar = a("llama");
-   public static final fkr as = a("llama", "decor");
-   public static final fkr at = a("llama_spit");
-   public static final fkr au = a("magma_cube");
-   public static final fkr av = a("minecart");
-   public static final fkr aw = a("mooshroom");
-   public static final fkr ax = a("mule");
-   public static final fkr ay = a("ocelot");
-   public static final fkr az = a("panda");
-   public static final fkr aA = a("parrot");
-   public static final fkr aB = a("phantom");
-   public static final fkr aC = a("pig");
-   public static final fkr aD = a("piglin");
-   public static final fkr aE = a("piglin_brute");
-   public static final fkr aF = b("piglin_brute");
-   public static final fkr aG = c("piglin_brute");
-   public static final fkr aH = a("piglin_head");
-   public static final fkr aI = b("piglin");
-   public static final fkr aJ = c("piglin");
-   public static final fkr aK = a("pig", "saddle");
-   public static final fkr aL = a("pillager");
-   public static final fkr aM = a("player");
-   public static final fkr aN = a("player_head");
-   public static final fkr aO = b("player");
-   public static final fkr aP = c("player");
-   public static final fkr aQ = a("player_slim");
-   public static final fkr aR = b("player_slim");
-   public static final fkr aS = c("player_slim");
-   public static final fkr aT = a("spin_attack");
-   public static final fkr aU = a("polar_bear");
-   public static final fkr aV = a("pufferfish_big");
-   public static final fkr aW = a("pufferfish_medium");
-   public static final fkr aX = a("pufferfish_small");
-   public static final fkr aY = a("rabbit");
-   public static final fkr aZ = a("ravager");
-   public static final fkr ba = a("salmon");
-   public static final fkr bb = a("sheep");
-   public static final fkr bc = a("sheep", "fur");
-   public static final fkr bd = a("shield");
-   public static final fkr be = a("shulker");
-   public static final fkr bf = a("shulker_bullet");
-   public static final fkr bg = a("silverfish");
-   public static final fkr bh = a("skeleton");
-   public static final fkr bi = a("skeleton_horse");
-   public static final fkr bj = b("skeleton");
-   public static final fkr bk = c("skeleton");
-   public static final fkr bl = a("skeleton_skull");
-   public static final fkr bm = a("slime");
-   public static final fkr bn = a("slime", "outer");
-   public static final fkr bo = a("sniffer");
-   public static final fkr bp = a("snow_golem");
-   public static final fkr bq = a("spawner_minecart");
-   public static final fkr br = a("spider");
-   public static final fkr bs = a("squid");
-   public static final fkr bt = a("stray");
-   public static final fkr bu = b("stray");
-   public static final fkr bv = c("stray");
-   public static final fkr bw = a("stray", "outer");
-   public static final fkr bx = a("strider");
-   public static final fkr by = a("strider", "saddle");
-   public static final fkr bz = a("tadpole");
-   public static final fkr bA = a("tnt_minecart");
-   public static final fkr bB = a("trader_llama");
-   public static final fkr bC = a("trident");
-   public static final fkr bD = a("tropical_fish_large");
-   public static final fkr bE = a("tropical_fish_large", "pattern");
-   public static final fkr bF = a("tropical_fish_small");
-   public static final fkr bG = a("tropical_fish_small", "pattern");
-   public static final fkr bH = a("turtle");
-   public static final fkr bI = a("vex");
-   public static final fkr bJ = a("villager");
-   public static final fkr bK = a("vindicator");
-   public static final fkr bL = a("warden");
-   public static final fkr bM = a("wandering_trader");
-   public static final fkr bN = a("witch");
-   public static final fkr bO = a("wither");
-   public static final fkr bP = a("wither", "armor");
-   public static final fkr bQ = a("wither_skeleton");
-   public static final fkr bR = b("wither_skeleton");
-   public static final fkr bS = c("wither_skeleton");
-   public static final fkr bT = a("wither_skeleton_skull");
-   public static final fkr bU = a("wither_skull");
-   public static final fkr bV = a("wolf");
-   public static final fkr bW = a("zoglin");
-   public static final fkr bX = a("zombie");
-   public static final fkr bY = a("zombie_head");
-   public static final fkr bZ = a("zombie_horse");
-   public static final fkr ca = b("zombie");
-   public static final fkr cb = c("zombie");
-   public static final fkr cc = a("zombie_villager");
-   public static final fkr cd = b("zombie_villager");
-   public static final fkr ce = c("zombie_villager");
-   public static final fkr cf = a("zombified_piglin");
-   public static final fkr cg = b("zombified_piglin");
-   public static final fkr ch = c("zombified_piglin");
+public class fks<T extends blf> extends fjh<T> {
+   private static final int a = 7;
+   private final fly b;
+   private final fly[] f = new fly[7];
+   private final fly[] g = new fly[3];
+   private static final int[][] h = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
+   private static final int[][] i = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
 
-   private static fkr a(String $$0) {
-      return a($$0, "main");
+   public fks(fly $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.f, $$1 -> $$0.b(b($$1)));
+      Arrays.setAll(this.g, $$1 -> $$0.b(a($$1)));
    }
 
-   private static fkr a(String $$0, String $$1) {
-      fkr $$2 = b($$0, $$1);
-      if (!cj.add($$2)) {
-         throw new IllegalStateException("Duplicate registration for " + $$2);
-      } else {
-         return $$2;
+   private static String a(int $$0) {
+      return "layer" + $$0;
+   }
+
+   private static String b(int $$0) {
+      return "segment" + $$0;
+   }
+
+   public static fme b() {
+      fmg $$0 = new fmg();
+      fmh $$1 = $$0.a();
+      float[] $$2 = new float[7];
+      float $$3 = -3.5F;
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         $$1.a(
+            b($$4),
+            fmd.c().a(i[$$4][0], i[$$4][1]).a((float)h[$$4][0] * -0.5F, 0.0F, (float)h[$$4][2] * -0.5F, (float)h[$$4][0], (float)h[$$4][1], (float)h[$$4][2]),
+            fma.a(0.0F, (float)(24 - h[$$4][1]), $$3)
+         );
+         $$2[$$4] = $$3;
+         if ($$4 < 6) {
+            $$3 += (float)(h[$$4][2] + h[$$4 + 1][2]) * 0.5F;
+         }
       }
+
+      $$1.a(a(0), fmd.c().a(20, 0).a(-5.0F, 0.0F, (float)h[2][2] * -0.5F, 10.0F, 8.0F, (float)h[2][2]), fma.a(0.0F, 16.0F, $$2[2]));
+      $$1.a(a(1), fmd.c().a(20, 11).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 4.0F, (float)h[4][2]), fma.a(0.0F, 20.0F, $$2[4]));
+      $$1.a(a(2), fmd.c().a(20, 18).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 5.0F, (float)h[1][2]), fma.a(0.0F, 19.0F, $$2[1]));
+      return fme.a($$0, 64, 32);
    }
 
-   private static fkr b(String $$0, String $$1) {
-      return new fkr(new agm("minecraft", $$0), $$1);
+   @Override
+   public fly a() {
+      return this.b;
    }
 
-   private static fkr b(String $$0) {
-      return a($$0, "inner_armor");
-   }
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
+         this.f[$$6].f = aty.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$6 - 2));
+         this.f[$$6].b = aty.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$6 - 2);
+      }
 
-   private static fkr c(String $$0) {
-      return a($$0, "outer_armor");
-   }
-
-   public static fkr a(cfs.b $$0) {
-      return b("raft/" + $$0.a(), "main");
-   }
-
-   public static fkr b(cfs.b $$0) {
-      return b("chest_raft/" + $$0.a(), "main");
-   }
-
-   public static fkr c(cfs.b $$0) {
-      return b("boat/" + $$0.a(), "main");
-   }
-
-   public static fkr d(cfs.b $$0) {
-      return b("chest_boat/" + $$0.a(), "main");
-   }
-
-   public static fkr a(dja $$0) {
-      return b("sign/" + $$0.b(), "main");
-   }
-
-   public static fkr b(dja $$0) {
-      return b("hanging_sign/" + $$0.b(), "main");
-   }
-
-   public static Stream<fkr> a() {
-      return cj.stream();
+      this.g[0].f = this.f[2].f;
+      this.g[1].f = this.f[4].f;
+      this.g[1].b = this.f[4].b;
+      this.g[2].f = this.f[1].f;
+      this.g[2].b = this.f[1].b;
    }
 }

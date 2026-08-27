@@ -1,26 +1,63 @@
 import javax.annotation.Nullable;
 
-public interface bzw {
-   boolean a();
+public class bzw extends blf {
+   public final bzy b;
+   public final String c;
+   private final blg d;
 
-   void b();
+   public bzw(bzy $$0, String $$1, float $$2, float $$3) {
+      super($$0.ai(), $$0.dM());
+      this.d = blg.b($$2, $$3);
+      this.k_();
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   void c();
+   @Override
+   protected void c_() {
+   }
 
-   void a(bzl var1, hx var2, bjt var3, @Nullable cdz var4);
+   @Override
+   protected void a(sj $$0) {
+   }
 
-   void d();
+   @Override
+   protected void b(sj $$0) {
+   }
 
-   void e();
-
-   float f();
-
-   float h();
-
-   cac<? extends bzw> i();
+   @Override
+   public boolean bt() {
+      return true;
+   }
 
    @Nullable
-   ejz g();
+   @Override
+   public cmh dz() {
+      return this.b.dz();
+   }
 
-   float a(bjt var1, float var2);
+   @Override
+   public boolean a(bkd $$0, float $$1) {
+      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
+   }
+
+   @Override
+   public boolean t(blf $$0) {
+      return this == $$0 || this.b == $$0;
+   }
+
+   @Override
+   public wu<yo> dj() {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public blg a(bmh $$0) {
+      return this.d;
+   }
+
+   @Override
+   public boolean dK() {
+      return false;
+   }
 }

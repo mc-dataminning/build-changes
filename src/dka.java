@@ -1,24 +1,23 @@
-import java.util.List;
-import java.util.function.Predicate;
+public enum dka implements aut {
+   a("none", true),
+   b("unstable", false),
+   c("partial", true),
+   d("full", true);
 
-public interface dka<T> {
-   int a(T var1);
+   private final String e;
+   private final boolean f;
 
-   boolean a(Predicate<T> var1);
+   private dka(String $$0, boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
 
-   T a(int var1);
+   @Override
+   public String c() {
+      return this.e;
+   }
 
-   void a(ty var1);
-
-   void b(ty var1);
-
-   int a();
-
-   int b();
-
-   dka<T> c();
-
-   public interface a {
-      <A> dka<A> create(int var1, il<A> var2, dkb<A> var3, List<A> var4);
+   public boolean a() {
+      return this.f;
    }
 }

@@ -1,32 +1,22 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class dnw {
-   private long b;
-   private long c;
-   public static final Codec<dnw> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dnw($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+   public static final Codec<dnw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dth.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
+               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dnw::new)
+   );
+   public final double b;
+   public final double c;
+   public final int d;
 
-   public dnw(dnl.a $$0) {
-      this($$0.b(), $$0.c());
-   }
-
-   public dnw(long $$0, long $$1) {
+   public dnw(double $$0, double $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
-      }
-   }
-
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
+      this.d = $$2;
    }
 }

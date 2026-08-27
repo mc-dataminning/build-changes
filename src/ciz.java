@@ -1,17 +1,30 @@
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+
 public interface ciz {
-   int a(ciy.a var1);
+   void a(@Nullable cpn<?> var1);
 
-   int b(ciy.a var1);
+   @Nullable
+   cpn<?> d();
 
-   int a();
+   default void a(cer $$0, List<cmh> $$1) {
+      cpn<?> $$2 = this.d();
+      if ($$2 != null) {
+         $$0.a($$2, $$1);
+         if (!$$2.b().aq_()) {
+            $$0.a(Collections.singleton($$2));
+            this.a(null);
+         }
+      }
+   }
 
-   aqu b();
-
-   coq d();
-
-   String e();
-
-   float f();
-
-   float g();
+   default boolean a(csy $$0, amq $$1, cpn<?> $$2) {
+      if (!$$2.b().aq_() && $$0.Y().b(csu.w) && !$$1.I().b($$2)) {
+         return false;
+      } else {
+         this.a($$2);
+         return true;
+      }
+   }
 }

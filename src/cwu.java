@@ -1,56 +1,62 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class cwu extends cvf {
-   public static final MapCodec<cvf> a = kc.f.q().fieldOf("dead");
-   public static final MapCodec<cwu> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, cwu::new));
-   private final cvf c;
-
-   public cwu(cvf $$0, dhm.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+public class cwu extends cus {
+   public static final MapCodec<cwu> d = b(cwu::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
    @Override
    public MapCodec<cwu> a() {
-      return b;
+      return d;
+   }
+
+   public cwu(dio.d $$0) {
+      super($$0, jb.c);
    }
 
    @Override
-   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.o(), 2);
-      }
-   }
-
-   @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.F_().a(40));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected boolean a(crl $$0, hx $$1) {
-      for (ib $$2 : ib.values()) {
-         ecx $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(arp.a)) {
-            return true;
-         }
-      }
-
+   public boolean d(dip $$0) {
       return false;
    }
 
-   @Nullable
-   @Override
-   public dhn a(cnw $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().F_().a(40));
+   protected static boolean a(csy $$0, ctx.c $$1) {
+      if ($$1 == ctx.c.b) {
+         return $$0.F_().i() < 0.05F;
+      } else {
+         return $$1 == ctx.c.c ? $$0.F_().i() < 0.1F : false;
       }
+   }
 
-      return this.o();
+   @Override
+   public void a(dip $$0, csy $$1, hv $$2, ctx.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == ctx.c.b) {
+            $$1.b($$2, cwb.fu.o());
+            $$1.a(null, dmz.c, $$2);
+         } else if ($$3 == ctx.c.c) {
+            $$1.b($$2, cwb.fw.o());
+            $$1.a(null, dmz.c, $$2);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(edy $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dip $$0, csy $$1, hv $$2, edy $$3) {
+      if ($$3 == eea.c) {
+         dip $$4 = cwb.fu.o();
+         $$1.b($$2, $$4);
+         $$1.a(dmz.c, $$2, dmz.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == eea.e) {
+         dip $$5 = cwb.fv.o();
+         $$1.b($$2, $$5);
+         $$1.a(dmz.c, $$2, dmz.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

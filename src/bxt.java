@@ -1,30 +1,13 @@
-public abstract class bxt extends bmg {
-   private static final int bW = 100;
-   private int bX;
+public record bxt(agt d) {
+   public static final bxt a = a("temperate", "textures/entity/frog/temperate_frog.png");
+   public static final bxt b = a("warm", "textures/entity/frog/warm_frog.png");
+   public static final bxt c = a("cold", "textures/entity/frog/cold_frog.png");
 
-   protected bxt(bkz<? extends bxt> $$0, csf $$1) {
-      super($$0, $$1);
+   private static bxt a(String $$0, String $$1) {
+      return ir.a(kb.al, $$0, new bxt(new agt($$1)));
    }
 
-   public boolean b(amj $$0) {
-      sd $$1 = new sd();
-      $$1.a("id", this.bw());
-      this.f($$1);
-      if ($$0.h($$1)) {
-         this.am();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void l() {
-      this.bX++;
-      super.l();
-   }
-
-   public boolean go() {
-      return this.bX > 100;
+   public agt a() {
+      return this.d;
    }
 }

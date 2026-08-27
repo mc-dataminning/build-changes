@@ -1,66 +1,48 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class duw {
-   public static final Codec<duw> h = kc.aa.q().dispatch(duw::a, dux::a);
+public class duw extends dus {
+   public static final Codec<duw> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(biq.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, duw::new)
+   );
+   private final biq b;
 
-   protected abstract dux<?> a();
+   public duw(biq $$0, biq $$1, biq $$2) {
+      super($$0, $$1);
+      this.b = $$2;
+   }
 
-   public abstract void a(duw.a var1);
+   @Override
+   protected dut<?> a() {
+      return dut.c;
+   }
 
-   public static final class a {
-      private final csl a;
-      private final BiConsumer<hx, dhn> b;
-      private final atw c;
-      private final ObjectArrayList<hx> d;
-      private final ObjectArrayList<hx> e;
-      private final ObjectArrayList<hx> f;
+   @Override
+   protected void a(cte $$0, dus.b $$1, auf $$2, duc $$3, int $$4, dus.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
 
-      public a(csl $$0, BiConsumer<hx, dhn> $$1, atw $$2, Set<hx> $$3, Set<hx> $$4, Set<hx> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(ja::v));
-         this.e.sort(Comparator.comparingInt(ja::v));
-         this.f.sort(Comparator.comparingInt(ja::v));
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
+         }
       }
+   }
 
-      public void a(hx $$0, die $$1) {
-         this.a($$0, cvh.ff.o().a($$1, Boolean.valueOf(true)));
-      }
+   @Override
+   public int a(auf $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   }
 
-      public void a(hx $$0, dhn $$1) {
-         this.b.accept($$0, $$1);
-      }
+   @Override
+   public int a(auf $$0, int $$1, duc $$2) {
+      return this.b.a($$0);
+   }
 
-      public boolean a(hx $$0) {
-         return this.a.a($$0, dhm.a::i);
-      }
-
-      public csl a() {
-         return this.a;
-      }
-
-      public atw b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<hx> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<hx> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<hx> e() {
-         return this.f;
-      }
+   @Override
+   protected boolean a(auf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

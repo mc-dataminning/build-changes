@@ -1,14 +1,23 @@
-public class cts {
-   public static final agl<ctr> a = a("nether");
-   public static final agl<ctr> b = a("overworld");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static void a(oz<ctr> $$0) {
-      ih<ctd> $$1 = $$0.a(kd.ar);
-      $$0.a(a, new ctr(ctr.a.a, $$1));
-      $$0.a(b, new ctr(ctr.a.b, $$1));
+public record cts(csm d, chb e) {
+   public static final String a = "enabled_features";
+   public static final Codec<cts> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(csm.b.optionalFieldOf("DataPacks", csm.a).forGetter(cts::a), chd.f.optionalFieldOf("enabled_features", chd.h).forGetter(cts::b))
+            .apply($$0, cts::new)
+   );
+   public static final cts c = new cts(csm.a, chd.h);
+
+   public cts a(chb $$0) {
+      return new cts(this.d, this.e.b($$0));
    }
 
-   private static agl<ctr> a(String $$0) {
-      return agl.a(kd.aI, new agm($$0));
+   public csm a() {
+      return this.d;
+   }
+
+   public chb b() {
+      return this.e;
    }
 }

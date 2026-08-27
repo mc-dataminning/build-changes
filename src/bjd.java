@@ -1,26 +1,86 @@
-import javax.annotation.concurrent.Immutable;
+public class bjd implements bje {
+   private final bje c;
+   private final bje d;
 
-@Immutable
-public class bjd {
-   public static final bjd a = new bjd("");
-   public static final String b = "Lock";
-   private final String c;
-
-   public bjd(String $$0) {
+   public bjd(bje $$0, bje $$1) {
       this.c = $$0;
+      this.d = $$1;
    }
 
-   public boolean a(clo $$0) {
-      return this.c.isEmpty() || !$$0.b() && $$0.A() && this.c.equals($$0.y().getString());
+   @Override
+   public int b() {
+      return this.c.b() + this.d.b();
    }
 
-   public void a(sd $$0) {
-      if (!this.c.isEmpty()) {
-         $$0.a("Lock", this.c);
+   @Override
+   public boolean ai_() {
+      return this.c.ai_() && this.d.ai_();
+   }
+
+   public boolean a(bje $$0) {
+      return this.c == $$0 || this.d == $$0;
+   }
+
+   @Override
+   public cmh a(int $$0) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
+   }
+
+   @Override
+   public cmh a(int $$0, int $$1) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
+   }
+
+   @Override
+   public cmh b(int $$0) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, cmh $$1) {
+      if ($$0 >= this.c.b()) {
+         this.d.a($$0 - this.c.b(), $$1);
+      } else {
+         this.c.a($$0, $$1);
       }
    }
 
-   public static bjd b(sd $$0) {
-      return $$0.b("Lock", 8) ? new bjd($$0.l("Lock")) : a;
+   @Override
+   public int ak_() {
+      return this.c.ak_();
+   }
+
+   @Override
+   public void e() {
+      this.c.e();
+      this.d.e();
+   }
+
+   @Override
+   public boolean a(cer $$0) {
+      return this.c.a($$0) && this.d.a($$0);
+   }
+
+   @Override
+   public void d_(cer $$0) {
+      this.c.d_($$0);
+      this.d.d_($$0);
+   }
+
+   @Override
+   public void c(cer $$0) {
+      this.c.c($$0);
+      this.d.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cmh $$1) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.c.a();
+      this.d.a();
    }
 }

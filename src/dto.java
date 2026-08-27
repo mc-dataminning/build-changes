@@ -1,51 +1,53 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dto extends dtq {
-   public static final Codec<dto> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dto::new));
+public class dto implements dtg {
+   public static final Codec<dto> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.list(dto.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dto::new)
+   );
+   public final List<dto.a> b;
+   public final int c;
+   public final float d;
 
-   public dto(big $$0, big $$1) {
-      super($$0, $$1);
+   public dto(List<dto.a> $$0, int $$1, float $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = $$2;
    }
 
-   @Override
-   protected dtr<?> a() {
-      return dtr.i;
+   public dto(List<dto.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
    }
 
-   @Override
-   protected void a(csl $$0, dtq.b $$1, atw $$2, dta $$3, int $$4, dtq.a $$5, int $$6, int $$7, int $$8) {
-      hx $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
-         }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
-      }
+   public dto(eci $$0, dip $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new dto.a($$0, $$1)), $$2, $$3);
    }
 
-   @Override
-   public int a(atw $$0, int $$1, dta $$2) {
-      return 4;
+   public dto(eci $$0, dip $$1, int $$2) {
+      this(ImmutableList.of(new dto.a($$0, $$1)), $$2, 0.0F);
    }
 
-   @Override
-   protected boolean b(atw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   public static dto.a a(eci $$0, dip $$1) {
+      return new dto.a($$0, $$1);
    }
 
-   @Override
-   protected boolean a(atw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+   public static class a {
+      public static final Codec<dto.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eci.c.fieldOf("target").forGetter($$0x -> $$0x.b), dip.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, dto.a::new)
+      );
+      public final eci b;
+      public final dip c;
+
+      a(eci $$0, dip $$1) {
+         this.b = $$0;
+         this.c = $$1;
       }
    }
 }

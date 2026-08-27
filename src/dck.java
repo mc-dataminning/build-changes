@@ -1,31 +1,48 @@
 import com.mojang.serialization.MapCodec;
 
-public class dck extends cwz {
-   public static final MapCodec<dck> b = b(dck::new);
-   private static final uv c = uv.c("container.upgrade");
+public class dck extends cvz {
+   public static final MapCodec<dck> h = b(dck::new);
+   public static final djn<ia.a> i = djf.I;
 
    @Override
-   public MapCodec<dck> a() {
-      return b;
+   public MapCodec<? extends dck> a() {
+      return h;
    }
 
-   protected dck(dhm.d $$0) {
+   public dck(dio.d $$0) {
       super($$0);
+      this.k(this.o().a(i, ia.a.b));
    }
 
    @Override
-   public bje b(dhn $$0, csf $$1, hx $$2) {
-      return new bjk(($$2x, $$3, $$4) -> new cin($$2x, $$3, chc.a($$1, $$2)), c);
+   public dip a(dip $$0, dcl $$1) {
+      return b($$0, $$1);
    }
 
-   @Override
-   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
-      if ($$1.B) {
-         return bjb.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(arf.aF);
-         return bjb.b;
+   public static dip b(dip $$0, dcl $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((ia.a)$$0.c(i)) {
+               case a:
+                  return $$0.a(i, ia.a.c);
+               case c:
+                  return $$0.a(i, ia.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
       }
+   }
+
+   @Override
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(i);
+   }
+
+   @Override
+   public dip a(coq $$0) {
+      return this.o().a(i, $$0.k().o());
    }
 }

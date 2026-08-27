@@ -1,92 +1,70 @@
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Sets;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public class ein implements eip {
-   private static final String d = "block_entity";
-   private static final ein.a e = new ein.a() {
-      @Override
-      public ta a(efc $$0) {
-         dfi $$1 = $$0.c(ehn.h);
-         return $$1 != null ? $$1.o() : null;
-      }
+public class ein {
+   private final Set<eim<?>> a;
+   private final Set<eim<?>> b;
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<ehk<?>> b() {
-         return ImmutableSet.of(ehn.h);
-      }
-   };
-   public static final ein a = new ein(e);
-   private static final Codec<ein.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
-      } else {
-         efc.b $$1 = efc.b.a($$0);
-         return b($$1);
-      }
-   }, ein.a::a);
-   public static final Codec<ein> b = RecordCodecBuilder.create($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, ein::new));
-   public static final Codec<ein> c = f.xmap(ein::new, $$0 -> $$0.g);
-   private final ein.a g;
-
-   private static ein.a b(final efc.b $$0) {
-      return new ein.a() {
-         @Nullable
-         @Override
-         public ta a(efc $$0x) {
-            bkv $$1 = $$0.c($$0.a());
-            return $$1 != null ? cn.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<ehk<?>> b() {
-            return ImmutableSet.of($$0.a());
-         }
-      };
+   ein(Set<eim<?>> $$0, Set<eim<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
    }
 
-   private ein(ein.a $$0) {
-      this.g = $$0;
+   public boolean a(eim<?> $$0) {
+      return this.b.contains($$0);
+   }
+
+   public Set<eim<?>> a() {
+      return this.a;
+   }
+
+   public Set<eim<?>> b() {
+      return this.b;
    }
 
    @Override
-   public eio a() {
-      return eiq.c;
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
    }
 
-   @Nullable
-   @Override
-   public ta a(efc $$0) {
-      return this.g.a($$0);
+   public void a(egn $$0, egf $$1) {
+      Set<eim<?>> $$2 = $$1.a();
+      Set<eim<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.b("Parameters " + $$3 + " are not provided in this context");
+      }
    }
 
-   @Override
-   public Set<ehk<?>> b() {
-      return this.g.b();
+   public static ein.a c() {
+      return new ein.a();
    }
 
-   public static eip a(efc.b $$0) {
-      return new ein(b($$0));
-   }
+   public static class a {
+      private final Set<eim<?>> a = Sets.newIdentityHashSet();
+      private final Set<eim<?>> b = Sets.newIdentityHashSet();
 
-   interface a {
-      @Nullable
-      ta a(efc var1);
+      public ein.a a(eim<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
+      }
 
-      String a();
+      public ein.a b(eim<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
 
-      Set<ehk<?>> b();
+      public ein a() {
+         return new ein(this.a, this.b);
+      }
    }
 }

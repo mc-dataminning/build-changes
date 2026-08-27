@@ -1,32 +1,24 @@
-public class abg implements wo<yh> {
-   private final hx a;
-   private final float b;
+public class abg implements wu<yo> {
+   private final double a;
 
-   public abg(hx $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public abg(dkg $$0) {
+      this.a = $$0.k();
    }
 
-   public abg(ty $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readFloat();
+   public abg(ue $$0) {
+      this.a = $$0.readDouble();
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
+   public double a() {
       return this.a;
-   }
-
-   public float d() {
-      return this.b;
    }
 }

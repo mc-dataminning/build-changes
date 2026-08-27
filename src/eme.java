@@ -1,15 +1,8 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface eme extends AutoCloseable {
-   @Override
-   default void close() {
-   }
-
-   @Nullable
-   default emd a(int $$0) {
-      return null;
-   }
-
-   IntSet a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eme {
 }

@@ -1,57 +1,57 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+public class erx extends gjl {
+   private final fcc a;
+   private final erx.a b;
+   private exa c = exa.a;
 
-public class erx {
-   private static final Map<String, erx.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final agm c = new agm("textures/gui/presets/isles.png");
-
-   public static agm a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
+   public erx(erg $$0, fcc $$1) {
+      super(euc.a);
+      this.a = $$1;
+      this.b = a($$0);
    }
 
-   private static agm b(String $$0, String $$1) {
-      erx.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         enc $$3 = a($$1);
-         if ($$3 == null) {
-            agm $$4 = gbp.b();
-            a.put($$0, new erx.a($$1, $$4));
-            return $$4;
-         } else {
-            agm $$5 = new agm("realms", "dynamic/" + $$0);
-            eti.N().X().a($$5, new gbm($$3));
-            a.put($$0, new erx.a($$1, $$5));
-            return $$5;
-         }
-      }
+   public erx(vb $$0, fcc $$1) {
+      super(euc.a);
+      this.a = $$1;
+      this.b = a($$0);
    }
 
-   @Nullable
-   private static enc a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
-
-      try {
-         return enc.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
-      }
-
-      return null;
+   public erx(vb $$0, vb $$1, fcc $$2) {
+      super(euc.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
    }
 
-   public static record a(String a, agm b) {
+   private static erx.a a(erg $$0) {
+      epv $$1 = $$0.a;
+      return a(vb.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   }
+
+   private static erx.a a(vb $$0) {
+      return a(vb.c("mco.errorMessage.generic"), $$0);
+   }
+
+   private static erx.a a(vb $$0, vb $$1) {
+      return new erx.a($$0, $$1);
+   }
+
+   @Override
+   public void aP_() {
+      this.d(ewh.a(va.h, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
+      this.c = exa.a(this.i, this.b.b, this.g * 3 / 4);
+   }
+
+   @Override
+   public vb h() {
+      return vb.i().b(this.b.a).f(": ").b(this.b.b);
+   }
+
+   @Override
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.b.a, this.g / 2, 80, -1);
+      this.c.a($$0, this.g / 2, 100, 9, -2142128);
+   }
+
+   static record a(vb a, vb b) {
    }
 }

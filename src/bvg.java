@@ -1,18 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class bvg extends bvq<bll> {
-   @Override
-   public Set<bum<?>> a() {
-      return ImmutableSet.of(bum.W);
+public class bvg extends bve {
+   @Nullable
+   private hv p;
+
+   public bvg(blx $$0, csy $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(ami $$0, bll $$1) {
-      if ($$1.aZ()) {
-         $$1.dP().a(bum.W, aus.a);
+   public eeo a(hv $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public eeo a(blf $$0, int $$1) {
+      this.p = $$0.dm();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(blf $$0, double $$1) {
+      eeo $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
       } else {
-         $$1.dP().b(bum.W);
+         this.p = $$0.dm();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dk(), (double)this.a.dg())
+               && (!(this.a.dt() > (double)this.p.v()) || !hv.a((double)this.p.u(), this.a.dt(), (double)this.p.w()).a(this.a.dk(), (double)this.a.dg()))) {
+               this.a.K().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
       }
    }
 }

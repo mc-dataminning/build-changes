@@ -1,264 +1,254 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class bzj {
-   private static final Logger c = LogUtils.getLogger();
-   private static final int d = 6;
-   static final List<bvr<? extends bvq<? super bzi>>> a = ImmutableList.of(bvr.c, bvr.f, bvr.d, bvr.w);
-   static final List<bum<?>> b = ImmutableList.of(
-      bum.n, bum.m, bum.E, bum.t, bum.Y, bum.aQ, bum.aR, bum.aS, bum.aF, bum.aP, bum.h, bum.r, new bum[]{bum.N, bum.O, bum.Q}
-   );
-   private static final int e = 9600;
-   private static final float f = 1.0F;
-   private static final float g = 2.0F;
-   private static final float h = 1.25F;
-   private static final float i = 1.25F;
+public class bzj extends bzh implements bmt<bzq> {
+   private static final UUID bT = UUID.fromString("556E1665-8B10-40C8-8F9D-CF9B1667F295");
+   private static final afz<Integer> bU = agc.a(bzj.class, agb.b);
 
-   public static coq a() {
-      return coq.a(clr.va);
+   public bzj(blj<? extends bzj> $$0, csy $$1) {
+      super($$0, $$1);
    }
 
-   protected static bml<?> a(bml<bzi> $$0) {
-      b($$0);
-      e($$0);
-      c($$0);
-      d($$0);
-      $$0.a(Set.of(cfk.a));
-      $$0.b(cfk.b);
-      $$0.f();
-      return $$0;
+   @Override
+   protected void a(auf $$0) {
+      this.a(bnb.l).a((double)a($$0::a));
+      this.a(bnb.m).a(b($$0::j));
+      this.a(bnb.h).a(a($$0::j));
    }
 
-   static bzi b(bzi $$0) {
-      $$0.dP().b(bum.aR);
-      $$0.dP().b(bum.aQ);
-      return $$0.a(bzi.a.a);
+   @Override
+   protected void c_() {
+      super.c_();
+      this.an.a(bU, 0);
    }
 
-   private static void b(bml<bzi> $$0) {
-      $$0.a(cfk.a, 0, ImmutableList.of(new bpv(0.8F), new bmx(2.0F) {
-         @Override
-         protected void b(ami $$0, blu $$1, long $$2) {
-            bzj.b((bzi)$$1);
-            super.b($$0, $$1, $$2);
+   @Override
+   public void b(sj $$0) {
+      super.b($$0);
+      $$0.a("Variant", this.gm());
+      if (!this.cp.a(1).b()) {
+         $$0.a("ArmorItem", this.cp.a(1).b(new sj()));
+      }
+   }
+
+   public cmh u() {
+      return this.c(blk.e);
+   }
+
+   private void n(cmh $$0) {
+      this.a(blk.e, $$0);
+      this.a(blk.e, 0.0F);
+   }
+
+   @Override
+   public void a(sj $$0) {
+      super.a($$0);
+      this.w($$0.h("Variant"));
+      if ($$0.b("ArmorItem", 10)) {
+         cmh $$1 = cmh.a($$0.p("ArmorItem"));
+         if (!$$1.b() && this.l($$1)) {
+            this.cp.a(1, $$1);
          }
-      }, new bol(500, 700), new bni(bum.O)));
-   }
-
-   private static void c(bml<bzi> $$0) {
-      $$0.a(cfk.v, ImmutableList.of(Pair.of(0, new bzj.e())), Set.of(Pair.of(bum.Y, bun.b), Pair.of(bum.aQ, bun.a), Pair.of(bum.m, bun.a)));
-   }
-
-   private static void d(bml<bzi> $$0) {
-      $$0.a(
-         cfk.z,
-         ImmutableList.of(Pair.of(0, new bzj.a(160, 180)), Pair.of(0, new bzj.c(40))),
-         Set.of(Pair.of(bum.Y, bun.b), Pair.of(bum.m, bun.b), Pair.of(bum.aR, bun.a))
-      );
-   }
-
-   private static void e(bml<bzi> $$0) {
-      $$0.a(
-         cfk.b,
-         ImmutableList.of(
-            Pair.of(0, new bmw(bkz.aN, 1.0F) {
-               @Override
-               protected void a(ami $$0, bww $$1, long $$2) {
-                  bzj.b((bzi)$$1);
-                  super.a($$0, $$1, $$2);
-               }
-            }),
-            Pair.of(1, new bnp($$0x -> 1.25F, $$0x -> $$0x.o_() ? 2.5 : 3.5) {
-               @Override
-               protected void b(ami $$0, blu $$1, long $$2) {
-                  bzj.b((bzi)$$1);
-                  super.b($$0, $$1, $$2);
-               }
-            }),
-            Pair.of(2, new boh(45, 90)),
-            Pair.of(3, new bzj.b(40, 100)),
-            Pair.of(
-               4,
-               new boy(
-                  ImmutableList.of(
-                     Pair.of(bpi.a(1.0F, 3), 2),
-                     Pair.of(new bzj.d(40, 80), 1),
-                     Pair.of(new bzj.f(40, 80), 1),
-                     Pair.of(bpa.a(bkz.bt, 6.0F), 1),
-                     Pair.of(bot.a(1.0F), 1),
-                     Pair.of(new bnm(5, 20), 2)
-                  )
-               )
-            )
-         ),
-         Set.of(Pair.of(bum.aR, bun.b))
-      );
-   }
-
-   static void a(bzi $$0) {
-      $$0.dP().a(ImmutableList.of(cfk.z, cfk.v, cfk.b));
-   }
-
-   static class a extends bnc<bzi> {
-      a(int $$0, int $$1) {
-         super(Map.of(bum.Y, bun.b, bum.m, bun.b, bum.aR, bun.a, bum.aF, bun.b), $$0, $$1);
       }
 
-      protected boolean a(ami $$0, bzi $$1) {
-         return $$1.gf();
-      }
+      this.gB();
+   }
 
-      protected boolean a(ami $$0, bzi $$1, long $$2) {
-         return $$1.dP().c(bum.aR).isPresent() && $$1.gn() && !$$1.gj();
-      }
+   private void w(int $$0) {
+      this.an.b(bU, $$0);
+   }
 
-      protected void b(ami $$0, bzi $$1, long $$2) {
-         $$1.a(bzi.a.f);
-      }
+   private int gm() {
+      return this.an.b(bU);
+   }
 
-      protected void c(ami $$0, bzi $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         if ($$3) {
-            $$1.dP().a(bum.aF, aus.a, 9600L);
-         } else {
-            bzj.b($$1);
+   private void a(bzq $$0, bzl $$1) {
+      this.w($$0.a() & 0xFF | $$1.a() << 8 & 0xFF00);
+   }
+
+   public bzq w() {
+      return bzq.a(this.gm() & 0xFF);
+   }
+
+   public void a(bzq $$0) {
+      this.w($$0.a() & 0xFF | this.gm() & -256);
+   }
+
+   public bzl ge() {
+      return bzl.a((this.gm() & 0xFF00) >> 8);
+   }
+
+   @Override
+   protected void gB() {
+      if (!this.dM().B) {
+         super.gB();
+         this.o(this.cp.a(1));
+         this.a(blk.e, 0.0F);
+      }
+   }
+
+   private void o(cmh $$0) {
+      this.n($$0);
+      if (!this.dM().B) {
+         this.a(bnb.a).b(bT);
+         if (this.l($$0)) {
+            int $$1 = ((clx)$$0.d()).i();
+            if ($$1 != 0) {
+               this.a(bnb.a).b(new bmz(bT, "Horse armor bonus", (double)$$1, bmz.a.a));
+            }
          }
       }
    }
 
-   static class b extends bnc<bzi> {
-      b(int $$0, int $$1) {
-         super(Map.of(bum.aS, bun.a), $$0, $$1);
-      }
-
-      protected boolean a(ami $$0, bzi $$1, long $$2) {
-         return true;
-      }
-
-      protected void b(ami $$0, bzi $$1, long $$2) {
-         $$1.a(bzi.a.b);
-      }
-
-      protected void c(ami $$0, bzi $$1, long $$2) {
-         $$1.a(bzi.a.a);
-         $$1.dP().b(bum.aS);
+   @Override
+   public void a(bje $$0) {
+      cmh $$1 = this.u();
+      super.a($$0);
+      cmh $$2 = this.u();
+      if (this.ah > 20 && this.l($$2) && $$1 != $$2) {
+         this.a(arc.lU, 0.5F, 1.0F);
       }
    }
 
-   static class c extends bnc<bzi> {
-      c(int $$0) {
-         super(Map.of(bum.Y, bun.b, bum.m, bun.b, bum.aR, bun.a, bum.aF, bun.a), $$0, $$0);
-      }
-
-      protected boolean a(ami $$0, bzi $$1) {
-         return true;
-      }
-
-      protected boolean a(ami $$0, bzi $$1, long $$2) {
-         return $$1.dP().c(bum.aR).isPresent();
-      }
-
-      protected void b(ami $$0, bzi $$1, long $$2) {
-         $$1.a(bzi.a.g);
-      }
-
-      protected void c(ami $$0, bzi $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         $$1.a(bzi.a.a).w($$3);
-         $$1.dP().b(bum.aR);
-         $$1.dP().a(bum.aS, true);
+   @Override
+   protected void a(ddl $$0) {
+      super.a($$0);
+      if (this.ag.a(10) == 0) {
+         this.a(arc.lV, $$0.a() * 0.6F, $$0.b());
       }
    }
 
-   static class d extends bnc<bzi> {
-      d(int $$0, int $$1) {
-         super(Map.of(bum.Y, bun.b, bum.aR, bun.b, bum.aQ, bun.b, bum.aS, bun.b, bum.r, bun.b), $$0, $$1);
-      }
-
-      protected boolean a(ami $$0, bzi $$1) {
-         return !$$1.A();
-      }
-
-      protected boolean a(ami $$0, bzi $$1, long $$2) {
-         return true;
-      }
-
-      protected void b(ami $$0, bzi $$1, long $$2) {
-         $$1.a(bzi.a.c);
-      }
-
-      protected void c(ami $$0, bzi $$1, long $$2) {
-         $$1.a(bzi.a.a);
-      }
+   @Override
+   protected arb y() {
+      return arc.lS;
    }
 
-   static class e extends bnc<bzi> {
-      e() {
-         super(Map.of(bum.m, bun.a, bum.Y, bun.b, bum.aQ, bun.a), 600);
-      }
+   @Override
+   protected arb n_() {
+      return arc.lW;
+   }
 
-      protected boolean a(ami $$0, bzi $$1) {
-         return $$1.gf();
-      }
+   @Nullable
+   @Override
+   protected arb gl() {
+      return arc.lX;
+   }
 
-      protected boolean a(ami $$0, bzi $$1, long $$2) {
-         if (!$$1.gf()) {
-            $$1.a(bzi.a.a);
-            return false;
-         } else {
-            Optional<hx> $$3 = $$1.dP().c(bum.m).map(bup::a).map(bop::b);
-            Optional<hx> $$4 = $$1.dP().c(bum.aQ);
-            return !$$3.isEmpty() && !$$4.isEmpty() ? $$4.get().equals($$3.get()) : false;
-         }
-      }
+   @Override
+   protected arb d(bkd $$0) {
+      return arc.lZ;
+   }
 
-      protected void b(ami $$0, bzi $$1, long $$2) {
-         $$1.a(bzi.a.e);
-      }
+   @Override
+   protected arb gD() {
+      return arc.lT;
+   }
 
-      protected void c(ami $$0, bzi $$1, long $$2) {
-         if ($$1.gn() && $$1.gf()) {
-            $$1.dP().a(bum.aR, true);
+   @Override
+   public bjl b(cer $$0, bjk $$1) {
+      boolean $$2 = !this.o_() && this.gt() && $$0.fI();
+      if (!this.bP() && !$$2) {
+         cmh $$3 = $$0.b($$1);
+         if (!$$3.b()) {
+            if (this.m($$3)) {
+               return this.c($$0, $$3);
+            }
+
+            if (!this.gt()) {
+               this.gK();
+               return bjl.a(this.dM().B);
+            }
          }
 
-         $$1.dP().b(bum.m);
-         $$1.dP().b(bum.aQ);
+         return super.b($$0, $$1);
+      } else {
+         return super.b($$0, $$1);
       }
    }
 
-   static class f extends bnc<bzi> {
-      f(int $$0, int $$1) {
-         super(Map.of(bum.m, bun.b, bum.aQ, bun.b, bum.aF, bun.b), $$0, $$1);
+   @Override
+   public boolean a(bxi $$0) {
+      if ($$0 == this) {
+         return false;
+      } else {
+         return !($$0 instanceof bzi) && !($$0 instanceof bzj) ? false : this.gM() && ((bzh)$$0).gM();
       }
+   }
 
-      protected boolean a(ami $$0, bzi $$1) {
-         return !$$1.o_() && $$1.gf();
-      }
-
-      protected boolean a(ami $$0, bzi $$1, long $$2) {
-         return $$1.gf();
-      }
-
-      protected void b(ami $$0, bzi $$1, long $$2) {
-         $$1.a(bzi.a.d);
-      }
-
-      protected void c(ami $$0, bzi $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         $$1.a(bzi.a.a);
-         if ($$3) {
-            $$1.gm().ifPresent($$1x -> {
-               $$1.dP().a(bum.aQ, $$1x);
-               $$1.dP().a(bum.m, new bup($$1x, 1.25F, 0));
-            });
+   @Nullable
+   @Override
+   public bla a(amp $$0, bla $$1) {
+      if ($$1 instanceof bzi) {
+         bzm $$2 = blj.aq.a((csy)$$0);
+         if ($$2 != null) {
+            this.a($$1, $$2);
          }
+
+         return $$2;
+      } else {
+         bzj $$3 = (bzj)$$1;
+         bzj $$4 = blj.Z.a((csy)$$0);
+         if ($$4 != null) {
+            int $$5 = this.ag.a(9);
+            bzq $$6;
+            if ($$5 < 4) {
+               $$6 = this.w();
+            } else if ($$5 < 8) {
+               $$6 = $$3.w();
+            } else {
+               $$6 = ac.a(bzq.values(), this.ag);
+            }
+
+            int $$9 = this.ag.a(5);
+            bzl $$10;
+            if ($$9 < 2) {
+               $$10 = this.ge();
+            } else if ($$9 < 4) {
+               $$10 = $$3.ge();
+            } else {
+               $$10 = ac.a(bzl.values(), this.ag);
+            }
+
+            $$4.a($$6, $$10);
+            this.a($$1, $$4);
+         }
+
+         return $$4;
+      }
+   }
+
+   @Override
+   public boolean gN() {
+      return true;
+   }
+
+   @Override
+   public boolean l(cmh $$0) {
+      return $$0.d() instanceof clx;
+   }
+
+   @Nullable
+   @Override
+   public bmo a(ctn $$0, bjj $$1, blz $$2, @Nullable bmo $$3, @Nullable sj $$4) {
+      auf $$5 = $$0.F_();
+      bzq $$6;
+      if ($$3 instanceof bzj.a) {
+         $$6 = ((bzj.a)$$3).a;
+      } else {
+         $$6 = ac.a(bzq.values(), $$5);
+         $$3 = new bzj.a($$6);
+      }
+
+      this.a($$6, ac.a(bzl.values(), $$5));
+      return super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static class a extends bla.a {
+      public final bzq a;
+
+      public a(bzq $$0) {
+         super(true);
+         this.a = $$0;
       }
    }
 }

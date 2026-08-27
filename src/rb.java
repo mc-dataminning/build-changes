@@ -1,20 +1,5 @@
-import javax.annotation.Nullable;
-
-class rb {
-   @Nullable
-   public final Long a;
-   public final Runnable b;
-
-   private rb(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   static rb a(Runnable $$0) {
-      return new rb(null, $$0);
-   }
-
-   static rb a(long $$0, Runnable $$1) {
-      return new rb($$0, $$1);
+class rb extends Throwable {
+   public rb(int $$0, int $$1, rk $$2) {
+      super("Not enough successes: " + $$1 + " out of " + $$0 + " attempts. Required successes: " + $$2.A() + ". max attempts: " + $$2.z() + ".", $$2.o());
    }
 }

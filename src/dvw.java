@@ -1,50 +1,36 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class dvw extends dvt {
-   public static final Codec<dvw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dnq.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dnq.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, dvw::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dnq d;
-   private final dnq e;
-   private final LongSet f = new LongOpenHashSet();
+public class dvw extends dvy {
+   public static final Codec<dvw> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dvw::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   private dvw(dnq $$0, dnq $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static dvw a(dnq $$0, dnq $$1) {
-      return new dvw($$0, $$1);
+   public dvw(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public int a(atw $$0, dnt $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
-         }
+   protected dvz<?> a() {
+      return dvz.c;
+   }
 
-         return $$2;
-      } else {
-         return atq.b($$0, $$2, $$3);
+   @Override
+   public void a(dvy.a $$0) {
+      auf $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<hv> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (ia $$3x : ia.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  ia $$4 = $$3x.g();
+                  hv $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, cwb.fC.o().a(cxg.c, Integer.valueOf($$1.a(3))).a(cxg.aE, $$3x));
+                  }
+               }
+            }
+         });
       }
-   }
-
-   @Override
-   public dvu<?> a() {
-      return dvu.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
    }
 }

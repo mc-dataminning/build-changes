@@ -1,37 +1,26 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public interface dyx {
-   Codec<dyx> b = kc.ak.q().dispatch(dyx::b, Function.identity());
+public interface dyx<S extends dyo> {
+   dyx<eah> a = a("buried_treasure", eah.d);
+   dyx<eaj> b = a("desert_pyramid", eaj.d);
+   dyx<eal> c = a("end_city", eal.d);
+   dyx<eau> d = a("fortress", eau.e);
+   dyx<ean> e = a("igloo", ean.d);
+   dyx<eao> f = a("jigsaw", eao.f);
+   dyx<eaq> g = a("jungle_temple", eaq.d);
+   dyx<eas> h = a("mineshaft", eas.d);
+   dyx<eaw> i = a("nether_fossil", eaw.d);
+   dyx<eay> j = a("ocean_monument", eay.d);
+   dyx<eba> k = a("ocean_ruin", eba.d);
+   dyx<ebc> l = a("ruined_portal", ebc.d);
+   dyx<ebe> m = a("shipwreck", ebe.d);
+   dyx<ebg> n = a("stronghold", ebg.d);
+   dyx<ebi> o = a("swamp_hut", ebi.d);
+   dyx<ebk> p = a("woodland_mansion", ebk.d);
 
-   void a(atw var1, BiConsumer<agl<dyv>, agl<dyv>> var2);
+   Codec<S> codec();
 
-   Stream<agl<dyv>> a();
-
-   static dyw a(String $$0, String $$1) {
-      return a(pg.a($$0), pg.a($$1));
+   private static <S extends dyo> dyx<S> a(String $$0, Codec<S> $$1) {
+      return ir.a(kb.T, $$0, () -> $$1);
    }
-
-   static dyw a(agl<dyv> $$0, agl<dyv> $$1) {
-      return new dyw($$0, $$1);
-   }
-
-   static dza a(String $$0, bhl<String> $$1) {
-      bhl.a<agl<dyv>> $$2 = bhl.a();
-      $$1.e().forEach($$1x -> $$2.a(pg.a((String)$$1x.b()), $$1x.a().a()));
-      return a(pg.a($$0), $$2.a());
-   }
-
-   static dza a(agl<dyv> $$0, bhl<agl<dyv>> $$1) {
-      return new dza($$0, $$1);
-   }
-
-   static dzb a(bhl<List<dyx>> $$0) {
-      return new dzb($$0);
-   }
-
-   Codec<? extends dyx> b();
 }

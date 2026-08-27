@@ -1,60 +1,71 @@
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cmz extends cnc implements cni {
-   private final float a;
-   private final Multimap<bmm, bmp> b;
+public class cmz extends cmc {
+   private static final Map<arb, cmz> a = Maps.newHashMap();
+   private final int b;
+   private final arb c;
+   private final int d;
 
-   public cmz(cnb $$0, int $$1, float $$2, clj.a $$3) {
-      super($$0, $$3);
-      this.a = (float)$$1 + $$0.c();
-      Builder<bmm, bmp> $$4 = ImmutableMultimap.builder();
-      $$4.put(bmr.c, new bmp(m, "Weapon modifier", (double)this.a, bmp.a.a));
-      $$4.put(bmr.e, new bmp(n, "Weapon modifier", (double)$$2, bmp.a.a));
-      this.b = $$4.build();
-   }
-
-   public float h() {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(dhn $$0, csf $$1, hx $$2, cdz $$3) {
-      return !$$3.f();
+   protected cmz(int $$0, arb $$1, cmc.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3 * 20;
+      a.put(this.c, this);
    }
 
    @Override
-   public float a(clo $$0, dhn $$1) {
-      if ($$1.a(cvh.bs)) {
-         return 15.0F;
+   public bjl a(cos $$0) {
+      csy $$1 = $$0.q();
+      hv $$2 = $$0.a();
+      dip $$3 = $$1.a_($$2);
+      if ($$3.a(cwb.dT) && !$$3.c(dab.b)) {
+         cmh $$4 = $$0.n();
+         if (!$$1.B) {
+            cer $$5 = $$0.o();
+            if ($$1.c_($$2) instanceof dhe $$6) {
+               $$6.b($$4.p());
+               $$1.a(dmz.c, $$2, dmz.a.a($$5, $$3));
+            }
+
+            $$4.h(1);
+            if ($$5 != null) {
+               $$5.a(arm.al);
+            }
+         }
+
+         return bjl.a($$1.B);
       } else {
-         return $$1.a(ark.bD) ? 1.5F : 1.0F;
+         return bjl.d;
       }
    }
 
-   @Override
-   public boolean a(clo $$0, bll $$1, bll $$2) {
-      $$0.a(1, $$2, $$0x -> $$0x.d(bla.a));
-      return true;
+   public int h() {
+      return this.b;
    }
 
    @Override
-   public boolean a(clo $$0, csf $$1, dhn $$2, hx $$3, bll $$4) {
-      if ($$2.h($$1, $$3) != 0.0F) {
-         $$0.a(2, $$4, $$0x -> $$0x.d(bla.a));
-      }
-
-      return true;
+   public void a(cmh $$0, @Nullable csy $$1, List<vb> $$2, cny $$3) {
+      $$2.add(this.i().a(n.h));
    }
 
-   @Override
-   public boolean a_(dhn $$0) {
-      return $$0.a(cvh.bs);
+   public vp i() {
+      return vb.c(this.a() + ".desc");
    }
 
-   @Override
-   public Multimap<bmm, bmp> a(bla $$0) {
-      return $$0 == bla.a ? this.b : super.a($$0);
+   @Nullable
+   public static cmz a(arb $$0) {
+      return a.get($$0);
+   }
+
+   public arb x() {
+      return this.c;
+   }
+
+   public int y() {
+      return this.d;
    }
 }

@@ -1,21 +1,18 @@
-import java.util.HashSet;
-import java.util.Set;
+public record xw(long b, hv c) implements xo {
+   public static final agt a = new agt("debug/neighbors_update");
 
-public record xw(Set<iy> b, Set<iy> c) implements xh {
-   public static final agm a = new agm("debug/village_sections");
-
-   public xw(ty $$0) {
-      this($$0.a(HashSet::new, ty::g), $$0.a(HashSet::new, ty::g));
+   public xw(ue $$0) {
+      this($$0.o(), $$0.e());
    }
 
    @Override
-   public void a(ty $$0) {
-      $$0.a(this.b, ty::a);
-      $$0.a(this.c, ty::a);
+   public void a(ue $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public agm a() {
+   public agt a() {
       return a;
    }
 }

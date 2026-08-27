@@ -1,9 +1,15 @@
-public interface dgz {
-   void a();
+public class dgz extends dfs {
+   public dgz(hv $$0, dip $$1) {
+      super(dgf.a, $$0, $$1, cpq.b);
+   }
 
-   boolean b();
+   @Override
+   protected vb l() {
+      return vb.c("container.furnace");
+   }
 
-   hx c();
-
-   String d();
+   @Override
+   protected chk a(int $$0, ceq $$1) {
+      return new cig($$0, $$1, this, this.n);
+   }
 }

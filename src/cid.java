@@ -1,74 +1,77 @@
-import javax.annotation.Nullable;
+public class cid extends chk {
+   private static final int k = 9;
+   private static final int l = 9;
+   private static final int m = 36;
+   private static final int n = 36;
+   private static final int o = 45;
+   private final bje p;
 
-public class cid extends bjj {
-   @Nullable
-   private dgd c;
-
-   public cid() {
-      super(27);
+   public cid(int $$0, ceq $$1) {
+      this($$0, $$1, new bjt(9));
    }
 
-   public void a(dgd $$0) {
-      this.c = $$0;
-   }
+   public cid(int $$0, ceq $$1, bje $$2) {
+      super(cir.g, $$0);
+      a($$2, 9);
+      this.p = $$2;
+      $$2.d_($$1.m);
 
-   public boolean b(dgd $$0) {
-      return this.c == $$0;
-   }
-
-   @Override
-   public void a(sj $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         this.a($$1, clo.b);
-      }
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         sd $$3 = $$0.a($$2);
-         int $$4 = $$3.f("Slot") & 255;
-         if ($$4 >= 0 && $$4 < this.b()) {
-            this.a($$4, clo.a($$3));
-         }
-      }
-   }
-
-   @Override
-   public sj g() {
-      sj $$0 = new sj();
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         clo $$2 = this.a($$1);
-         if (!$$2.b()) {
-            sd $$3 = new sd();
-            $$3.a("Slot", (byte)$$1);
-            $$2.b($$3);
-            $$0.add($$3);
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            this.a(new cjf($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
          }
       }
 
-      return $$0;
-   }
-
-   @Override
-   public boolean a(cdz $$0) {
-      return this.c != null && !this.c.c($$0) ? false : super.a($$0);
-   }
-
-   @Override
-   public void d_(cdz $$0) {
-      if (this.c != null) {
-         this.c.a($$0);
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cjf($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
+         }
       }
 
-      super.d_($$0);
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new cjf($$1, $$7, 8 + $$7 * 18, 142));
+      }
    }
 
    @Override
-   public void c(cdz $$0) {
-      if (this.c != null) {
-         this.c.b($$0);
+   public boolean a(cer $$0) {
+      return this.p.a($$0);
+   }
+
+   @Override
+   public cmh a(cer $$0, int $$1) {
+      cmh $$2 = cmh.f;
+      cjf $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cmh $$4 = $$3.g();
+         $$2 = $$4.p();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cmh.f;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cmh.f;
+         }
+
+         if ($$4.b()) {
+            $$3.e(cmh.f);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.L() == $$2.L()) {
+            return cmh.f;
+         }
+
+         $$3.a($$0, $$4);
       }
 
-      super.c($$0);
-      this.c = null;
+      return $$2;
+   }
+
+   @Override
+   public void b(cer $$0) {
+      super.b($$0);
+      this.p.c($$0);
    }
 }

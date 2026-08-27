@@ -1,25 +1,34 @@
 import com.mojang.serialization.Codec;
 
-public interface dwu<P extends dwt> {
-   dwu<dwf> a = a("block_predicate_filter", dwf.a);
-   dwu<dww> b = a("rarity_filter", dww.a);
-   dwu<dwy> c = a("surface_relative_threshold_filter", dwy.a);
-   dwu<dwz> d = a("surface_water_depth_filter", dwz.a);
-   dwu<dwe> e = a("biome", dwe.a);
-   dwu<dwj> f = a("count", dwj.a);
-   dwu<dwo> g = a("noise_based_count", dwo.a);
-   dwu<dwp> h = a("noise_threshold_count", dwp.a);
-   dwu<dwi> i = a("count_on_every_layer", dwi.a);
-   dwu<dwk> j = a("environment_scan", dwk.a);
-   dwu<dwm> k = a("heightmap", dwm.a);
-   dwu<dwl> l = a("height_range", dwl.a);
-   dwu<dwn> m = a("in_square", dwn.a);
-   dwu<dwv> n = a("random_offset", dwv.a);
-   dwu<dwg> o = a("carving_mask", dwg.a);
+public class dwu extends dwv {
+   public static final dwu a = new dwu(dos.a(0));
+   public static final Codec<dwu> b = atg.e(dos.a, dos.a.fieldOf("value").codec()).xmap(dwu::new, dwu::b);
+   private final dos d;
 
-   Codec<P> codec();
+   public static dwu a(dos $$0) {
+      return new dwu($$0);
+   }
 
-   private static <P extends dwt> dwu<P> a(String $$0, Codec<P> $$1) {
-      return is.a(kc.V, $$0, () -> $$1);
+   private dwu(dos $$0) {
+      this.d = $$0;
+   }
+
+   public dos b() {
+      return this.d;
+   }
+
+   @Override
+   public int a(auf $$0, dov $$1) {
+      return this.d.a($$1);
+   }
+
+   @Override
+   public dww<?> a() {
+      return dww.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

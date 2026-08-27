@@ -1,22 +1,17 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.Optional;
-import org.slf4j.Logger;
+public class fnb {
+   private final fmu a;
+   private final auh b;
 
-@FunctionalInterface
-public interface fnb {
-   Logger a = LogUtils.getLogger();
-   fnb b = $$0 -> {
-      try {
-         InetAddress $$1 = InetAddress.getByName($$0.a());
-         return Optional.of(fmz.a(new InetSocketAddress($$1, $$0.b())));
-      } catch (UnknownHostException var2) {
-         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
-         return Optional.empty();
-      }
-   };
+   public fnb(fmu $$0, auh $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   Optional<fmz> resolve(fna var1);
+   public void a() {
+      this.a.b(new afw(ac.b()));
+   }
+
+   public void a(afs $$0) {
+      this.b.a(ac.b() - $$0.a());
+   }
 }

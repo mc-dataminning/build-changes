@@ -1,65 +1,76 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class dwk extends dwt {
-   private final ib c;
-   private final dod d;
-   private final dod e;
-   private final int f;
-   public static final Codec<dwk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ib.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
-               dod.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
-               dod.b.optionalFieldOf("allowed_search_condition", dod.e()).forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dwk::new)
-   );
+public abstract class dwk {
+   public static final Codec<dwk> c = kb.X.q().dispatch(dwk::a, dwl::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   private dwk(ib $$0, dod $$1, dod $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   protected static <P extends dwk> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   public static dwk a(ib $$0, dod $$1, dod $$2, int $$3) {
-      return new dwk($$0, $$1, $$2, $$3);
+   public dwk(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static dwk a(ib $$0, dod $$1, int $$2) {
-      return a($$0, $$1, dod.e(), $$2);
+   protected abstract dwl<?> a();
+
+   public abstract List<dus.a> a(cte var1, BiConsumer<hv, dip> var2, auf var3, int var4, hv var5, duc var6);
+
+   public int a(auf $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
    }
 
-   @Override
-   public Stream<hx> a_(dwr $$0, atw $$1, hx $$2) {
-      hx.a $$3 = $$2.j();
-      csz $$4 = $$0.d();
-      if (!this.e.test($$4, $$3)) {
-         return Stream.of();
-      } else {
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            if (this.d.test($$4, $$3)) {
-               return Stream.of($$3);
-            }
+   private static boolean c(cte $$0, hv $$1) {
+      return $$0.a($$1, $$0x -> drc.b($$0x) && !$$0x.a(cwb.i) && !$$0x.a(cwb.fl));
+   }
 
-            $$3.c(this.c);
-            if ($$4.d($$3.v())) {
-               return Stream.of();
-            }
-
-            if (!this.e.test($$4, $$3)) {
-               break;
-            }
-         }
-
-         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
+   protected static void a(cte $$0, BiConsumer<hv, dip> $$1, auf $$2, hv $$3, duc $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
       }
    }
 
-   @Override
-   public dwu<?> b() {
-      return dwu.j;
+   protected boolean b(cte $$0, BiConsumer<hv, dip> $$1, auf $$2, hv $$3, duc $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   }
+
+   protected boolean a(cte $$0, BiConsumer<hv, dip> $$1, auf $$2, hv $$3, duc $$4, Function<dip, dip> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(cte $$0, BiConsumer<hv, dip> $$1, auf $$2, hv.a $$3, duc $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(cte $$0, hv $$1) {
+      return dso.c($$0, $$1);
+   }
+
+   public boolean b(cte $$0, hv $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(arr.t));
    }
 }

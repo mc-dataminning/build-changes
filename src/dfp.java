@@ -1,159 +1,75 @@
-public class dfp extends dgm implements dgl {
-   private static final int e = 1;
-   private ip<clo> f = ip.a(27, clo.b);
-   private final dfv g = new dfv() {
-      @Override
-      protected void a(csf $$0, hx $$1, dhn $$2) {
-         dfp.a($$0, $$1, $$2, aqv.ej);
-      }
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-      @Override
-      protected void b(csf $$0, hx $$1, dhn $$2) {
-         dfp.a($$0, $$1, $$2, aqv.eh);
-      }
+public class dfp extends dda {
+   public static final MapCodec<dfp> b = b(dfp::new);
+   @Nullable
+   private static diu h;
+   @Nullable
+   private static diu i;
 
-      @Override
-      protected void a(csf $$0, hx $$1, dhn $$2, int $$3, int $$4) {
-         dfp.this.a($$0, $$1, $$2, $$3, $$4);
-      }
+   @Override
+   public MapCodec<dfp> a() {
+      return b;
+   }
 
-      @Override
-      protected boolean a(cdz $$0) {
-         if (!($$0.bS instanceof cgy)) {
-            return false;
-         } else {
-            biu $$1 = ((cgy)$$0.bS).l();
-            return $$1 == dfp.this || $$1 instanceof bit && ((bit)$$1).a(dfp.this);
+   protected dfp(dio.d $$0) {
+      super(dda.b.d, $$0);
+   }
+
+   @Override
+   public void a(csy $$0, hv $$1, dip $$2, @Nullable blv $$3, cmh $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dgd $$5 = $$0.c_($$1);
+      if ($$5 instanceof dho) {
+         a($$0, $$1, (dho)$$5);
+      }
+   }
+
+   public static void a(csy $$0, hv $$1, dho $$2) {
+      if (!$$0.B) {
+         dip $$3 = $$2.r();
+         boolean $$4 = $$3.a(cwb.gG) || $$3.a(cwb.gH);
+         if ($$4 && $$1.v() >= $$0.J_() && $$0.aj() != bji.a) {
+            diu.b $$5 = s().a($$0, $$1);
+            if ($$5 != null) {
+               cas $$6 = blj.bm.a($$0);
+               if ($$6 != null) {
+                  cwt.a($$0, $$5);
+                  hv $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ia.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aU = $$5.b().o() == ia.a.a ? 0.0F : 90.0F;
+                  $$6.u();
+
+                  for (amq $$8 : $$0.a(amq.class, $$6.cH().g(50.0))) {
+                     am.o.a($$8, $$6);
+                  }
+
+                  $$0.b($$6);
+                  cwt.b($$0, $$5);
+               }
+            }
          }
       }
-   };
-   private final dfq h = new dfq();
-
-   protected dfp(dfk<?> $$0, hx $$1, dhn $$2) {
-      super($$0, $$1, $$2);
    }
 
-   public dfp(hx $$0, dhn $$1) {
-      this(dfk.b, $$0, $$1);
+   public static boolean b(csy $$0, hv $$1, cmh $$2) {
+      return $$2.a(cmk.uf) && $$1.v() >= $$0.J_() + 2 && $$0.aj() != bji.a && !$$0.B ? y().a($$0, $$1) != null : false;
    }
 
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected uv l() {
-      return uv.c("container.chest");
-   }
-
-   @Override
-   public void a(sd $$0) {
-      super.a($$0);
-      this.f = ip.a(this.b(), clo.b);
-      if (!this.c_($$0)) {
-         biv.b($$0, this.f);
-      }
-   }
-
-   @Override
-   protected void b(sd $$0) {
-      super.b($$0);
-      if (!this.d_($$0)) {
-         biv.a($$0, this.f);
-      }
-   }
-
-   public static void a(csf $$0, hx $$1, dhn $$2, dfp $$3) {
-      $$3.h.a();
-   }
-
-   static void a(csf $$0, hx $$1, dhn $$2, aqu $$3) {
-      dif $$4 = $$2.c(cwi.d);
-      if ($$4 != dif.b) {
-         double $$5 = (double)$$1.u() + 0.5;
-         double $$6 = (double)$$1.v() + 0.5;
-         double $$7 = (double)$$1.w() + 0.5;
-         if ($$4 == dif.c) {
-            ib $$8 = cwi.h($$2);
-            $$5 += (double)$$8.j() * 0.5;
-            $$7 += (double)$$8.l() * 0.5;
-         }
-
-         $$0.a(null, $$5, $$6, $$7, $$3, aqw.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.h.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   @Override
-   public void d_(cdz $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.g.a($$0, this.i(), this.aC_(), this.r());
-      }
-   }
-
-   @Override
-   public void c(cdz $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.g.b($$0, this.i(), this.aC_(), this.r());
-      }
-   }
-
-   @Override
-   protected ip<clo> k() {
-      return this.f;
-   }
-
-   @Override
-   protected void a(ip<clo> $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.h.a($$0);
-   }
-
-   public static int a(crl $$0, hx $$1) {
-      dhn $$2 = $$0.a_($$1);
-      if ($$2.t()) {
-         dfi $$3 = $$0.c_($$1);
-         if ($$3 instanceof dfp) {
-            return ((dfp)$$3).g.a();
-         }
+   private static diu s() {
+      if (h == null) {
+         h = div.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(arr.aE)).a('^', dit.a(diy.a(cwb.gG).or(diy.a(cwb.gH)))).a('~', $$0 -> $$0.a().i()).b();
       }
 
-      return 0;
+      return h;
    }
 
-   public static void a(dfp $$0, dfp $$1) {
-      ip<clo> $$2 = $$0.k();
-      $$0.a($$1.k());
-      $$1.a($$2);
-   }
-
-   @Override
-   protected cgr a(int $$0, cdy $$1) {
-      return cgy.a($$0, $$1, this);
-   }
-
-   public void m() {
-      if (!this.q) {
-         this.g.c(this.i(), this.aC_(), this.r());
+   private static diu y() {
+      if (i == null) {
+         i = div.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(arr.aE)).a('~', $$0 -> $$0.a().i()).b();
       }
-   }
 
-   protected void a(csf $$0, hx $$1, dhn $$2, int $$3, int $$4) {
-      cvf $$5 = $$2.b();
-      $$0.a($$1, $$5, 1, $$4);
+      return i;
    }
 }

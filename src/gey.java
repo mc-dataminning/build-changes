@@ -1,29 +1,22 @@
-public class gey extends geq {
-   private final bkv n;
+public class gey {
+   public static final int a = -1;
+   private final int b;
+   private final int c;
 
-   public gey(aqu $$0, aqw $$1, float $$2, float $$3, bkv $$4, long $$5) {
-      super($$0, $$1, atw.a($$5));
-      this.d = $$2;
-      this.e = $$3;
-      this.n = $$4;
-      this.f = (double)((float)this.n.ds());
-      this.g = (double)((float)this.n.du());
-      this.h = (double)((float)this.n.dy());
+   public gey(int $$0) {
+      this($$0, -1);
    }
 
-   @Override
-   public boolean s() {
-      return !this.n.aU();
+   public gey(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public void q() {
-      if (this.n.dI()) {
-         this.n();
-      } else {
-         this.f = (double)((float)this.n.ds());
-         this.g = (double)((float)this.n.du());
-         this.h = (double)((float)this.n.dy());
-      }
+   public int a(int $$0) {
+      return this.c == -1 ? $$0 : this.c;
+   }
+
+   public int a() {
+      return this.b;
    }
 }

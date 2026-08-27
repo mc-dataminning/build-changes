@@ -1,16 +1,53 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dsx implements dse {
-   public static final Codec<dsx> a = asy.b(dwq.c).fieldOf("features").xmap(dsx::new, $$0 -> $$0.b).codec();
-   public final ik<dwq> b;
+public record dsx(List<dsx.a> b, ia c, dpf d, boolean e) implements dtg {
+   public static final Codec<dsx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dsx.a.a.listOf().fieldOf("layers").forGetter(dsx::a),
+               ia.g.fieldOf("direction").forGetter(dsx::b),
+               dpf.b.fieldOf("allowed_placement").forGetter(dsx::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dsx::d)
+            )
+            .apply($$0, dsx::new)
+   );
 
-   public dsx(ik<dwq> $$0) {
-      this.b = $$0;
+   public static dsx.a a(biq $$0, dvh $$1) {
+      return new dsx.a($$0, $$1);
    }
 
-   @Override
-   public Stream<dpn<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public static dsx b(biq $$0, dvh $$1) {
+      return new dsx(List.of(a($$0, $$1)), ia.b, dpf.c, false);
+   }
+
+   public List<dsx.a> a() {
+      return this.b;
+   }
+
+   public ia b() {
+      return this.c;
+   }
+
+   public dpf c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static record a(biq b, dvh c) {
+      public static final Codec<dsx.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(biq.d.fieldOf("height").forGetter(dsx.a::a), dvh.a.fieldOf("provider").forGetter(dsx.a::b)).apply($$0, dsx.a::new)
+      );
+
+      public biq a() {
+         return this.b;
+      }
+
+      public dvh b() {
+         return this.c;
+      }
    }
 }

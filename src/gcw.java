@@ -1,17 +1,6 @@
-import java.io.IOException;
-import java.io.InputStream;
+import javax.annotation.Nullable;
 
-public class gcw {
-   @Deprecated
-   public static int[] a(apl $$0, agm $$1) throws IOException {
-      int[] var4;
-      try (
-         InputStream $$2 = $$0.open($$1);
-         enc $$3 = enc.a($$2);
-      ) {
-         var4 = $$3.e();
-      }
-
-      return var4;
-   }
+@Deprecated
+public interface gcw {
+   float call(cmh var1, @Nullable fmt var2, @Nullable blv var3, int var4);
 }

@@ -1,142 +1,47 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 
-public class bzb extends byv {
-   private final bzc bT = new bzc(this);
-   private static final int bU = 18000;
-   private boolean bW;
-   private int bX;
+public class bzb {
+   private static final float a = 2.0F;
+   private static final float b = 0.5F;
+   private static final float c = 1.25F;
 
-   public bzb(bkz<? extends bzb> $$0, csf $$1) {
-      super($$0, $$1);
+   protected static bmv<?> a(bmv<bza> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(cgd.a));
+      $$0.b(cgd.b);
+      $$0.f();
+      return $$0;
    }
 
-   public static bmq.a u() {
-      return gF().a(bmr.l, 15.0).a(bmr.m, 0.2F);
+   private static void b(bmv<bza> $$0) {
+      $$0.a(cgd.a, 0, ImmutableList.of(new bnh(2.0F), new bos(45, 90), new bow(), new bns(bux.O)));
    }
 
-   @Override
-   protected void a(atw $$0) {
-      this.a(bmr.h).a(a($$0::j));
+   private static void c(bmv<bza> $$0) {
+      $$0.a(
+         cgd.b,
+         ImmutableList.of(
+            Pair.of(0, bpm.a(blj.bv, 6.0F, biw.a(30, 60))),
+            Pair.of(1, new bnz($$0x -> 1.25F)),
+            Pair.of(
+               2,
+               new boa(
+                  ImmutableMap.of(bux.m, buy.b),
+                  ImmutableSet.of(),
+                  boa.a.a,
+                  boa.b.b,
+                  ImmutableList.of(Pair.of(bpe.c(0.5F), 2), Pair.of(bpt.a(0.5F, 3), 3), Pair.of(bqz.a(blf::bc), 5))
+               )
+            )
+         )
+      );
    }
 
-   @Override
-   protected void gv() {
-   }
-
-   @Override
-   protected aqu y() {
-      return this.a(arp.a) ? aqv.vQ : aqv.vM;
-   }
-
-   @Override
-   protected aqu n_() {
-      return aqv.vN;
-   }
-
-   @Override
-   protected aqu d(bjt $$0) {
-      return aqv.vO;
-   }
-
-   @Override
-   protected aqu aN() {
-      if (this.aC()) {
-         if (!this.bP()) {
-            return aqv.vT;
-         }
-
-         this.cu++;
-         if (this.cu > 5 && this.cu % 3 == 0) {
-            return aqv.vR;
-         }
-
-         if (this.cu <= 5) {
-            return aqv.vT;
-         }
-      }
-
-      return aqv.vP;
-   }
-
-   @Override
-   protected void e(float $$0) {
-      if (this.aC()) {
-         super.e(0.3F);
-      } else {
-         super.e(Math.min(0.1F, $$0 * 25.0F));
-      }
-   }
-
-   @Override
-   protected void gM() {
-      if (this.aZ()) {
-         this.a(aqv.vS, 0.4F, 1.0F);
-      } else {
-         super.gM();
-      }
-   }
-
-   @Override
-   public blq eT() {
-      return blq.b;
-   }
-
-   @Override
-   protected Vector3f a(bkv $$0, bkw $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b - (this.o_() ? 0.03125F : 0.28125F) * $$2, 0.0F);
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      if (this.w() && this.bX++ >= 18000) {
-         this.am();
-      }
-   }
-
-   @Override
-   public void b(sd $$0) {
-      super.b($$0);
-      $$0.a("SkeletonTrap", this.w());
-      $$0.a("SkeletonTrapTime", this.bX);
-   }
-
-   @Override
-   public void a(sd $$0) {
-      super.a($$0);
-      this.w($$0.q("SkeletonTrap"));
-      this.bX = $$0.h("SkeletonTrapTime");
-   }
-
-   @Override
-   protected float fe() {
-      return 0.96F;
-   }
-
-   public boolean w() {
-      return this.bW;
-   }
-
-   public void w(boolean $$0) {
-      if ($$0 != this.bW) {
-         this.bW = $$0;
-         if ($$0) {
-            this.bO.a(1, this.bT);
-         } else {
-            this.bO.a(this.bT);
-         }
-      }
-   }
-
-   @Nullable
-   @Override
-   public bkq a(ami $$0, bkq $$1) {
-      return bkz.aK.a((csf)$$0);
-   }
-
-   @Override
-   public bjb b(cdz $$0, bja $$1) {
-      return !this.gu() ? bjb.d : super.b($$0, $$1);
+   public static void a(bza $$0) {
+      $$0.dO().a(ImmutableList.of(cgd.b));
    }
 }

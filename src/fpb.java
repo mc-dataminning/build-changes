@@ -1,69 +1,41 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class fpb<T extends jq> extends fqw {
+   private final fqr a;
 
-public abstract class fpb extends fon {
-   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-
-   protected fpb(flo $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected fpb(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   protected fpb(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, fqr $$8) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.C = true;
+      this.a = $$8;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.v = this.a($$7.e().x(), $$9);
+      this.w = this.a($$7.e().y(), $$9);
+      this.x = this.a($$7.e().z(), $$9);
+      this.D = this.D * 0.75F * $$7.f();
+      int $$10 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$10 * $$7.f(), 1.0F);
+      this.b($$8);
+   }
+
+   protected float a(float $$0, float $$1) {
+      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
    }
 
    @Override
-   public void a(eof $$0, est $$1, float $$2) {
-      ejz $$3 = $$1.b();
-      float $$4 = (float)(atq.d((double)$$2, this.d, this.g) - $$3.a());
-      float $$5 = (float)(atq.d((double)$$2, this.e, this.h) - $$3.b());
-      float $$6 = (float)(atq.d((double)$$2, this.f, this.i) - $$3.c());
-      Quaternionf $$7;
-      if (this.z == 0.0F) {
-         $$7 = $$1.f();
-      } else {
-         $$7 = new Quaternionf($$1.f());
-         $$7.rotateZ(atq.i($$2, this.A, this.z));
-      }
-
-      Vector3f[] $$9 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$10 = this.b($$2);
-
-      for (int $$11 = 0; $$11 < 4; $$11++) {
-         Vector3f $$12 = $$9[$$11];
-         $$12.rotate($$7);
-         $$12.mul($$10);
-         $$12.add($$4, $$5, $$6);
-      }
-
-      float $$13 = this.c();
-      float $$14 = this.d();
-      float $$15 = this.e();
-      float $$16 = this.f();
-      int $$17 = this.a($$2);
-      $$0.a((double)$$9[0].x(), (double)$$9[0].y(), (double)$$9[0].z()).a($$14, $$16).a(this.v, this.w, this.x, this.y).b($$17).e();
-      $$0.a((double)$$9[1].x(), (double)$$9[1].y(), (double)$$9[1].z()).a($$14, $$15).a(this.v, this.w, this.x, this.y).b($$17).e();
-      $$0.a((double)$$9[2].x(), (double)$$9[2].y(), (double)$$9[2].z()).a($$13, $$15).a(this.v, this.w, this.x, this.y).b($$17).e();
-      $$0.a((double)$$9[3].x(), (double)$$9[3].y(), (double)$$9[3].z()).a($$13, $$16).a(this.v, this.w, this.x, this.y).b($$17).e();
+   public fqa b() {
+      return fqa.b;
    }
 
+   @Override
    public float b(float $$0) {
-      return this.D;
+      return this.D * aty.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
-   public fon d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
-
-   protected abstract float c();
-
-   protected abstract float d();
-
-   protected abstract float e();
-
-   protected abstract float f();
 }

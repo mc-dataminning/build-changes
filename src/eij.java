@@ -1,60 +1,42 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public record eij(Optional<Long> b, efb c) implements eib {
-   public static final Codec<eij> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asy.a(Codec.LONG, "period").forGetter(eij::c), efb.a.fieldOf("value").forGetter(eij::d)).apply($$0, eij::new)
-   );
+public class eij extends ehq {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<eij> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eij::new));
 
-   @Override
-   public eic b() {
-      return eid.r;
+   private eij(List<ejd> $$0) {
+      super($$0);
    }
 
    @Override
-   public Set<ehk<?>> a() {
-      return this.c.a();
+   public ehs b() {
+      return eht.h;
    }
 
-   public boolean a(efc $$0) {
-      ami $$1 = $$0.d();
-      long $$2 = $$1.X();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
+   @Override
+   public cmh a(cmh $$0, ege $$1) {
+      if ($$0.b()) {
+         return $$0;
+      } else {
+         Optional<cpn<cqa>> $$2 = $$1.d().q().a(cpq.b, new bjt($$0), $$1.d());
+         if ($$2.isPresent()) {
+            cmh $$3 = $$2.get().b().a($$1.d().I_());
+            if (!$$3.b()) {
+               return $$3.c($$0.L());
+            }
+         }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
       }
-
-      return this.c.b($$0, (int)$$2);
    }
 
-   public static eij.a a(efb $$0) {
-      return new eij.a($$0);
-   }
-
-   public Optional<Long> c() {
-      return this.b;
-   }
-
-   public efb d() {
-      return this.c;
-   }
-
-   public static class a implements eib.a {
-      private Optional<Long> a = Optional.empty();
-      private final efb b;
-
-      public a(efb $$0) {
-         this.b = $$0;
-      }
-
-      public eij.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public eij a() {
-         return new eij(this.a, this.b);
-      }
+   public static ehq.a<?> c() {
+      return a(eij::new);
    }
 }

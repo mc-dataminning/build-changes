@@ -1,69 +1,181 @@
-public class dgd extends dfi implements dgl {
-   private final dfq a = new dfq();
-   private final dfv b = new dfv() {
-      @Override
-      protected void a(csf $$0, hx $$1, dhn $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aqv.hm, aqw.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-      @Override
-      protected void b(csf $$0, hx $$1, dhn $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aqv.hl, aqw.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+public abstract class dgd {
+   private static final Logger e = LogUtils.getLogger();
+   private final dgf<?> f;
+   @Nullable
+   protected csy o;
+   protected final hv p;
+   protected boolean q;
+   private dip g;
 
-      @Override
-      protected void a(csf $$0, hx $$1, dhn $$2, int $$3, int $$4) {
-         $$0.a(dgd.this.p, cvh.fG, 1, $$4);
-      }
-
-      @Override
-      protected boolean a(cdz $$0) {
-         return $$0.gg().b(dgd.this);
-      }
-   };
-
-   public dgd(hx $$0, dhn $$1) {
-      super(dfk.d, $$0, $$1);
+   public dgd(dgf<?> $$0, hv $$1, dip $$2) {
+      this.f = $$0;
+      this.p = $$1.i();
+      this.g = $$2;
    }
 
-   public static void a(csf $$0, hx $$1, dhn $$2, dgd $$3) {
-      $$3.a.a();
+   public static hv c(sj $$0) {
+      return new hv($$0.h("x"), $$0.h("y"), $$0.h("z"));
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a.a($$1 > 0);
-         return true;
+   @Nullable
+   public csy i() {
+      return this.o;
+   }
+
+   public void a(csy $$0) {
+      this.o = $$0;
+   }
+
+   public boolean n() {
+      return this.o != null;
+   }
+
+   public void a(sj $$0) {
+   }
+
+   protected void b(sj $$0) {
+   }
+
+   public final sj o() {
+      sj $$0 = this.q();
+      this.e($$0);
+      return $$0;
+   }
+
+   public final sj p() {
+      sj $$0 = this.q();
+      this.d($$0);
+      return $$0;
+   }
+
+   public final sj q() {
+      sj $$0 = new sj();
+      this.b($$0);
+      return $$0;
+   }
+
+   private void d(sj $$0) {
+      agt $$1 = dgf.a(this.v());
+      if ($$1 == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
       } else {
-         return super.a_($$0, $$1);
+         $$0.a("id", $$1.toString());
       }
    }
 
-   public void a(cdz $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.b.a($$0, this.i(), this.aC_(), this.r());
+   public static void a(sj $$0, dgf<?> $$1) {
+      $$0.a("id", dgf.a($$1).toString());
+   }
+
+   public void e(cmh $$0) {
+      cka.a($$0, this.v(), this.q());
+   }
+
+   private void e(sj $$0) {
+      this.d($$0);
+      $$0.a("x", this.p.u());
+      $$0.a("y", this.p.v());
+      $$0.a("z", this.p.w());
+   }
+
+   @Nullable
+   public static dgd a(hv $$0, dip $$1, sj $$2) {
+      String $$3 = $$2.l("id");
+      agt $$4 = agt.a($$3);
+      if ($$4 == null) {
+         e.error("Block entity has invalid type: {}", $$3);
+         return null;
+      } else {
+         return kb.k.b($$4).map($$3x -> {
+            try {
+               return $$3x.a($$0, $$1);
+            } catch (Throwable var5) {
+               e.error("Failed to create block entity {}", $$3, var5);
+               return null;
+            }
+         }).map($$2x -> {
+            try {
+               $$2x.a($$2);
+               return $$2x;
+            } catch (Throwable var4x) {
+               e.error("Failed to load data for block entity {}", $$3, var4x);
+               return null;
+            }
+         }).orElseGet(() -> {
+            e.warn("Skipping BlockEntity with id {}", $$3);
+            return null;
+         });
       }
    }
 
-   public void b(cdz $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.b.b($$0, this.i(), this.aC_(), this.r());
+   public void e() {
+      if (this.o != null) {
+         a(this.o, this.p, this.g);
       }
    }
 
-   public boolean c(cdz $$0) {
-      return biu.a(this, $$0);
-   }
-
-   public void c() {
-      if (!this.q) {
-         this.b.c(this.i(), this.aC_(), this.r());
+   protected static void a(csy $$0, hv $$1, dip $$2) {
+      $$0.p($$1);
+      if (!$$2.i()) {
+         $$0.c($$1, $$2.b());
       }
    }
 
-   @Override
-   public float a(float $$0) {
-      return this.a.a($$0);
+   public hv aB_() {
+      return this.p;
+   }
+
+   public dip r() {
+      return this.g;
+   }
+
+   @Nullable
+   public wu<yo> j() {
+      return null;
+   }
+
+   public sj ax_() {
+      return new sj();
+   }
+
+   public boolean s() {
+      return this.q;
+   }
+
+   public void ay_() {
+      this.q = true;
+   }
+
+   public void t() {
+      this.q = false;
+   }
+
+   public boolean a_(int $$0, int $$1) {
+      return false;
+   }
+
+   public void a(p $$0) {
+      $$0.a("Name", () -> kb.k.b(this.v()) + " // " + this.getClass().getCanonicalName());
+      if (this.o != null) {
+         p.a($$0, this.o, this.p, this.r());
+         p.a($$0, this.o, this.p, this.o.a_(this.p));
+      }
+   }
+
+   public boolean u() {
+      return false;
+   }
+
+   public dgf<?> v() {
+      return this.f;
+   }
+
+   @Deprecated
+   public void b(dip $$0) {
+      this.g = $$0;
    }
 }

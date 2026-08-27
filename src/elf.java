@@ -1,55 +1,20 @@
-public interface elf extends biu {
-   clo x();
+public interface elf {
+   elf a = ($$0, $$1) -> false;
+   elf b = ($$0, $$1) -> !$$0 && !$$1;
+   elf c = ($$0, $$1) -> $$1 && !$$0;
+   elf d = ($$0, $$1) -> !$$0;
+   elf e = ($$0, $$1) -> $$0 && !$$1;
+   elf f = ($$0, $$1) -> !$$1;
+   elf g = ($$0, $$1) -> $$0 != $$1;
+   elf h = ($$0, $$1) -> !$$0 || !$$1;
+   elf i = ($$0, $$1) -> $$0 && $$1;
+   elf j = ($$0, $$1) -> $$0 == $$1;
+   elf k = ($$0, $$1) -> $$1;
+   elf l = ($$0, $$1) -> !$$0 || $$1;
+   elf m = ($$0, $$1) -> $$0;
+   elf n = ($$0, $$1) -> $$0 || !$$1;
+   elf o = ($$0, $$1) -> $$0 || $$1;
+   elf p = ($$0, $$1) -> true;
 
-   clo c(int var1);
-
-   void b(clo var1);
-
-   dfi y();
-
-   default clo h() {
-      return this.c(this.al_());
-   }
-
-   @Override
-   default int b() {
-      return 1;
-   }
-
-   @Override
-   default boolean aj_() {
-      return this.x().b();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default clo b(int $$0) {
-      return this.a($$0, this.al_());
-   }
-
-   @Override
-   default clo a(int $$0) {
-      return $$0 == 0 ? this.x() : clo.b;
-   }
-
-   @Override
-   default clo a(int $$0, int $$1) {
-      return $$0 != 0 ? clo.b : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, clo $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
-      }
-   }
-
-   @Override
-   default boolean a(cdz $$0) {
-      return biu.a(this.y(), $$0);
-   }
+   boolean apply(boolean var1, boolean var2);
 }

@@ -1,18 +1,14 @@
-public record adc() implements wo<acp> {
-   public adc(ty $$0) {
-      this();
+public record adc(int a) implements wu<acw> {
+   public adc(ue $$0) {
+      this($$0.n());
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(acp $$0) {
+   public void a(acw $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public tx c() {
-      return tx.e;
    }
 }

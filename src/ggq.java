@@ -1,29 +1,44 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+public class ggq extends ggf {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cer p;
+   private final cgj q;
+   private final boolean r;
 
-public record ggq(ggu b, ggx c) {
-   public static final Codec<ggq> a = ggu.a.dispatchStable(ggq::a, ggu::c);
+   public ggq(cer $$0, cgj $$1, boolean $$2) {
+      super($$2 ? arc.nU : arc.nV, ard.g, ggw.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = ggw.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+   }
 
-   public ggq(ggu b, ggx c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+   @Override
+   public boolean s() {
+      return !this.q.aU();
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.q.dH() || !this.p.bO() || this.p.cZ() != this.q) {
+         this.n();
+      } else if (this.r != this.p.be()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dp().h();
+         if ($$0 >= 0.01F) {
+            this.d = aty.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
          }
-      });
-      this.b = b;
-      this.c = c;
-   }
-
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
-   }
-
-   public ggu a() {
-      return this.b;
-   }
-
-   public ggx b() {
-      return this.c;
+      }
    }
 }

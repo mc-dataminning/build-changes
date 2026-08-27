@@ -1,11 +1,15 @@
-public class fxl extends fxi<bxk, fis<bxk>> {
-   private static final agm a = new agm("textures/entity/cat/ocelot.png");
+public class fxl extends fyu<cbq, fix<cbq>> {
+   private static final agt a = new agt("textures/entity/endermite.png");
 
-   public fxl(fwc.a $$0) {
-      super($$0, new fis<>($$0.a(fks.ay)), 0.4F);
+   public fxl(fxo.a $$0) {
+      super($$0, new fix<>($$0.a(flx.V)), 0.3F);
    }
 
-   public agm a(bxk $$0) {
+   protected float a(cbq $$0) {
+      return 180.0F;
+   }
+
+   public agt b(cbq $$0) {
       return a;
    }
 }

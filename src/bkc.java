@@ -1,25 +1,19 @@
-class bkc extends bkg {
-   protected bkc(bkh $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bkc implements aut {
+   a("never"),
+   b("when_caused_by_living_non_player"),
+   c("always");
+
+   public static final Codec<bkc> d = aut.a(bkc::values);
+   private final String e;
+
+   private bkc(String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void a(bll $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0 instanceof amj $$2 && !$$0.P_()) {
-         ami $$3 = $$2.z();
-         if ($$3.aj() == biy.a) {
-            return;
-         }
-
-         if ($$3.b($$0.dn())) {
-            $$3.y().a($$2);
-         }
-      }
+   public String c() {
+      return this.e;
    }
 }

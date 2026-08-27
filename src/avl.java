@@ -1,53 +1,69 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Map;
+import java.util.Arrays;
 import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
 
-public class avl extends DataFix {
-   private final String a;
-   private static final Set<String> b = Set.of("minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes");
+public abstract class avl extends DataFix {
+   protected TypeReference a;
 
-   public avl(Schema $$0) {
+   public avl(Schema $$0, TypeReference $$1) {
       super($$0, false);
-      this.a = "Blending Data Fix v" + $$0.getVersionKey();
+      this.a = $$1;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bax.c);
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
+   protected Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(this.a, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(this.a, $$1);
+      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      $$0 = $$0.remove("blending_data");
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
-      if ($$2 && $$3.isPresent()) {
-         String $$4 = bcf.a($$3.get().asString("empty"));
-         Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
-         if (!b.contains($$4)) {
-            $$0 = a($$0, 384, -64);
-         } else if ($$5.isPresent()) {
-            Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
-            String $$7 = bcf.a($$6.get("target_status").asString("empty"));
-            if (!b.contains($$7)) {
-               $$0 = a($$0, 256, 0);
+   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, String $$1, String $$2) {
+      return a($$0, $$1).map($$3 -> $$0.remove($$1).set($$2, $$3));
+   }
+
+   protected static Optional<Dynamic<?>> b(Dynamic<?> $$0, String $$1, String $$2) {
+      return $$0.get($$1).result().flatMap(avl::a).map($$3 -> $$0.remove($$1).set($$2, $$3));
+   }
+
+   protected static Optional<Dynamic<?>> c(Dynamic<?> $$0, String $$1, String $$2) {
+      String $$3 = $$1 + "Most";
+      String $$4 = $$1 + "Least";
+      return d($$0, $$3, $$4).map($$4x -> $$0.remove($$3).remove($$4).set($$2, $$4x));
+   }
+
+   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, String $$1) {
+      return $$0.get($$1).result().flatMap($$1x -> {
+         String $$2 = $$1x.asString(null);
+         if ($$2 != null) {
+            try {
+               UUID $$3 = UUID.fromString($$2);
+               return a($$0, $$3.getMostSignificantBits(), $$3.getLeastSignificantBits());
+            } catch (IllegalArgumentException var4) {
             }
          }
-      }
 
-      return $$0;
+         return Optional.empty();
+      });
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
-      return $$0.set(
-         "blending_data",
-         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(iy.a($$2)), $$0.createString("max_section"), $$0.createInt(iy.a($$2 + $$1))))
-      );
+   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0) {
+      return d($$0, "M", "L");
+   }
+
+   protected static Optional<Dynamic<?>> d(Dynamic<?> $$0, String $$1, String $$2) {
+      long $$3 = $$0.get($$1).asLong(0L);
+      long $$4 = $$0.get($$2).asLong(0L);
+      return $$3 != 0L && $$4 != 0L ? a($$0, $$3, $$4) : Optional.empty();
+   }
+
+   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, long $$1, long $$2) {
+      return Optional.of($$0.createIntList(Arrays.stream(new int[]{(int)($$1 >> 32), (int)$$1, (int)($$2 >> 32), (int)$$2})));
    }
 }

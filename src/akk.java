@@ -1,116 +1,22 @@
-import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Set;
 
 public class akk {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("commands.tag.add.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(uv.c("commands.tag.remove.failed"));
-
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tag").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("setworldspawn").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ds)$$0x.getSource(), hv.a(((ds)$$0x.getSource()).d()), 0.0F)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("targets", eg.b())
-                        .then(
-                           dv.a("add")
-                              .then(
-                                 dv.a("name", StringArgumentType.word())
-                                    .executes($$0x -> a((du)$$0x.getSource(), eg.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                              )
-                        ))
-                     .then(
-                        dv.a("remove")
-                           .then(
-                              dv.a("name", StringArgumentType.word())
-                                 .suggests(($$0x, $$1) -> dy.b(a(eg.b($$0x, "targets")), $$1))
-                                 .executes($$0x -> b((du)$$0x.getSource(), eg.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                           )
-                     ))
-                  .then(dv.a("list").executes($$0x -> a((du)$$0x.getSource(), eg.b($$0x, "targets"))))
+               ((RequiredArgumentBuilder)dt.a("pos", fk.a()).executes($$0x -> a((ds)$$0x.getSource(), fk.c($$0x, "pos"), 0.0F)))
+                  .then(dt.a("angle", dx.a()).executes($$0x -> a((ds)$$0x.getSource(), fk.c($$0x, "pos"), dx.a($$0x, "angle"))))
             )
       );
    }
 
-   private static Collection<String> a(Collection<? extends bkv> $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-
-      for (bkv $$2 : $$0) {
-         $$1.addAll($$2.ak());
-      }
-
-      return $$1;
-   }
-
-   private static int a(du $$0, Collection<? extends bkv> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bkv $$4 : $$1) {
-         if ($$4.a($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> uv.a("commands.tag.add.success.single", $$2, $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> uv.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int b(du $$0, Collection<? extends bkv> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bkv $$4 : $$1) {
-         if ($$4.b($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> uv.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> uv.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int a(du $$0, Collection<? extends bkv> $$1) {
-      Set<String> $$2 = Sets.newHashSet();
-
-      for (bkv $$3 : $$1) {
-         $$2.addAll($$3.ak());
-      }
-
-      if ($$1.size() == 1) {
-         bkv $$4 = $$1.iterator().next();
-         if ($$2.isEmpty()) {
-            $$0.a(() -> uv.a("commands.tag.list.single.empty", $$4.Q_()), false);
-         } else {
-            $$0.a(() -> uv.a("commands.tag.list.single.success", $$4.Q_(), $$2.size(), uy.a($$2)), false);
-         }
-      } else if ($$2.isEmpty()) {
-         $$0.a(() -> uv.a("commands.tag.list.multiple.empty", $$1.size()), false);
-      } else {
-         $$0.a(() -> uv.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), uy.a($$2)), false);
-      }
-
-      return $$2.size();
+   private static int a(ds $$0, hv $$1, float $$2) {
+      $$0.e().a($$1, $$2);
+      $$0.a(() -> vb.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
+      return 1;
    }
 }

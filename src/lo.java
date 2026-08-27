@@ -1,60 +1,60 @@
 import java.util.function.BiConsumer;
 
-public class lo implements le {
-   public static final eib.a a = ehz.a(cj.a.a().d(ctk.x));
-   public static final eib.a b = ehz.a(cj.a.a().d(ctk.y));
-   public static final eib.a c = ehz.a(cj.a.a().d(ctk.z));
+public class lo implements ld {
+   public static final ejd.a a = ejb.a(ci.a.a().d(cue.x));
+   public static final ejd.a b = ejb.a(ci.a.a().d(cue.y));
+   public static final ejd.a c = ejb.a(ci.a.a().d(cue.z));
 
    @Override
-   public void generate(BiConsumer<agm, efk.a> $$0) {
+   public void generate(BiConsumer<agt, egm.a> $$0) {
       $$0.accept(
-         efa.ai,
-         efk.b()
+         egc.as,
+         egm.b()
             .a(
-               efj.a()
-                  .a(eiu.a(1.0F))
-                  .a(efy.a(efa.aj).a(10).b(-2))
-                  .a(efy.a(efa.ak).a(5).b(2).a(eie.a(efc.b.a, bq.a.a().a(bv.a(true)))))
-                  .a(efy.a(efa.al).a(85).b(-1))
+               egl.a()
+                  .a(ejw.a(1.0F))
+                  .a(eha.a(egc.at).a(10).b(-2))
+                  .a(eha.a(egc.au).a(5).b(2).a(ejg.a(ege.b.a, bp.a.a().a(bu.a(true)))))
+                  .a(eha.a(egc.av).a(85).b(-1))
             )
       );
-      $$0.accept(efa.al, a());
+      $$0.accept(egc.av, a());
       $$0.accept(
-         efa.aj,
-         efk.b()
+         egc.at,
+         egm.b()
             .a(
-               efj.a()
-                  .a(efs.a(cvh.fm).a(17))
-                  .a(efs.a(clr.py).a(10).a(ehb.a(eiz.a(0.0F, 0.9F))))
-                  .a(efs.a(clr.qA).a(10))
-                  .a(efs.a(clr.rw).a(10))
-                  .a(efs.a(clr.sh).a(10).a(ehf.a(cno.c)))
-                  .a(efs.a(clr.pp).a(5))
-                  .a(efs.a(clr.qS).a(2).a(ehb.a(eiz.a(0.0F, 0.9F))))
-                  .a(efs.a(clr.pn).a(10))
-                  .a(efs.a(clr.pm).a(5))
-                  .a(efs.a(clr.rc).a(1).a(eha.a(eiu.a(10.0F))))
-                  .a(efs.a(cvh.fH).a(10))
-                  .a(efs.a(clr.sb).a(10))
-                  .a(efs.a(cvh.mZ).a(a.or(b).or(c)).a(10))
+               egl.a()
+                  .a(egu.a(cwb.fm).a(17))
+                  .a(egu.a(cmk.py).a(10).a(eid.a(ekb.a(0.0F, 0.9F))))
+                  .a(egu.a(cmk.qA).a(10))
+                  .a(egu.a(cmk.rw).a(10))
+                  .a(egu.a(cmk.sh).a(10).a(eih.a(coh.c)))
+                  .a(egu.a(cmk.pp).a(5))
+                  .a(egu.a(cmk.qS).a(2).a(eid.a(ekb.a(0.0F, 0.9F))))
+                  .a(egu.a(cmk.pn).a(10))
+                  .a(egu.a(cmk.pm).a(5))
+                  .a(egu.a(cmk.rc).a(1).a(eic.a(ejw.a(10.0F))))
+                  .a(egu.a(cwb.fH).a(10))
+                  .a(egu.a(cmk.sb).a(10))
+                  .a(egu.a(cwb.mZ).a(a.or(b).or(c)).a(10))
             )
       );
       $$0.accept(
-         efa.ak,
-         efk.b()
+         egc.au,
+         egm.b()
             .a(
-               efj.a()
-                  .a(efs.a(clr.uD))
-                  .a(efs.a(clr.nK))
-                  .a(efs.a(clr.or).a(ehb.a(eiz.a(0.0F, 0.25F))).a(egi.a(eiu.a(30.0F)).e()))
-                  .a(efs.a(clr.qS).a(ehb.a(eiz.a(0.0F, 0.25F))).a(egi.a(eiu.a(30.0F)).e()))
-                  .a(efs.a(clr.qM).a(egi.a(eiu.a(30.0F)).e()))
-                  .a(efs.a(clr.vJ))
+               egl.a()
+                  .a(egu.a(cmk.uE))
+                  .a(egu.a(cmk.nK))
+                  .a(egu.a(cmk.or).a(eid.a(ekb.a(0.0F, 0.25F))).a(ehk.a(ejw.a(30.0F)).e()))
+                  .a(egu.a(cmk.qS).a(eid.a(ekb.a(0.0F, 0.25F))).a(ehk.a(ejw.a(30.0F)).e()))
+                  .a(egu.a(cmk.qM).a(ehk.a(ejw.a(30.0F)).e()))
+                  .a(egu.a(cmk.vK))
             )
       );
    }
 
-   public static efk.a a() {
-      return efk.b().a(efj.a().a(efs.a(clr.qW).a(60)).a(efs.a(clr.qX).a(25)).a(efs.a(clr.qY).a(2)).a(efs.a(clr.qZ).a(13)));
+   public static egm.a a() {
+      return egm.b().a(egl.a().a(egu.a(cmk.qW).a(60)).a(egu.a(cmk.qX).a(25)).a(egu.a(cmk.qY).a(2)).a(egu.a(cmk.qZ).a(13)));
    }
 }

@@ -1,63 +1,24 @@
-import javax.annotation.Nullable;
+public class aca implements wu<yo> {
+   private final vb a;
 
-public class aca implements wo<yh> {
-   private static final int a = 1;
-   private static final int b = 2;
-   @Nullable
-   private final agm c;
-   @Nullable
-   private final aqw d;
-
-   public aca(@Nullable agm $$0, @Nullable aqw $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public aca(vb $$0) {
+      this.a = $$0;
    }
 
-   public aca(ty $$0) {
-      int $$1 = $$0.readByte();
-      if (($$1 & 1) > 0) {
-         this.d = $$0.b(aqw.class);
-      } else {
-         this.d = null;
-      }
-
-      if (($$1 & 2) > 0) {
-         this.c = $$0.t();
-      } else {
-         this.c = null;
-      }
+   public aca(ue $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(ty $$0) {
-      if (this.d != null) {
-         if (this.c != null) {
-            $$0.k(3);
-            $$0.a(this.d);
-            $$0.a(this.c);
-         } else {
-            $$0.k(1);
-            $$0.a(this.d);
-         }
-      } else if (this.c != null) {
-         $$0.k(2);
-         $$0.a(this.c);
-      } else {
-         $$0.k(0);
-      }
+   public void a(ue $$0) {
+      $$0.a(this.a);
    }
 
-   @Nullable
-   public agm a() {
-      return this.c;
-   }
-
-   @Nullable
-   public aqw d() {
-      return this.d;
-   }
-
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
+   }
+
+   public vb a() {
+      return this.a;
    }
 }

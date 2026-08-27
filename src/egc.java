@@ -1,181 +1,122 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import com.google.common.collect.Sets;
+import java.util.Collections;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class egc extends ego {
-   private static final Map<agm, egc.c> b = Stream.of(egc.a.a, egc.d.b, egc.e.b).collect(Collectors.toMap(egc.c::a, Function.identity()));
-   static final Codec<egc.c> c = agm.a.comapFlatMap($$0 -> {
-      egc.c $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
-   }, egc.c::a);
-   private static final MapCodec<egc.b> d = new MapCodec<egc.b>() {
-      private static final String a = "formula";
-      private static final String b = "parameters";
+public class egc {
+   private static final Set<agt> aU = Sets.newHashSet();
+   private static final Set<agt> aV = Collections.unmodifiableSet(aU);
+   public static final agt a = new agt("empty");
+   public static final agt b = a("chests/spawn_bonus_chest");
+   public static final agt c = a("chests/end_city_treasure");
+   public static final agt d = a("chests/simple_dungeon");
+   public static final agt e = a("chests/village/village_weaponsmith");
+   public static final agt f = a("chests/village/village_toolsmith");
+   public static final agt g = a("chests/village/village_armorer");
+   public static final agt h = a("chests/village/village_cartographer");
+   public static final agt i = a("chests/village/village_mason");
+   public static final agt j = a("chests/village/village_shepherd");
+   public static final agt k = a("chests/village/village_butcher");
+   public static final agt l = a("chests/village/village_fletcher");
+   public static final agt m = a("chests/village/village_fisher");
+   public static final agt n = a("chests/village/village_tannery");
+   public static final agt o = a("chests/village/village_temple");
+   public static final agt p = a("chests/village/village_desert_house");
+   public static final agt q = a("chests/village/village_plains_house");
+   public static final agt r = a("chests/village/village_taiga_house");
+   public static final agt s = a("chests/village/village_snowy_house");
+   public static final agt t = a("chests/village/village_savanna_house");
+   public static final agt u = a("chests/abandoned_mineshaft");
+   public static final agt v = a("chests/nether_bridge");
+   public static final agt w = a("chests/stronghold_library");
+   public static final agt x = a("chests/stronghold_crossing");
+   public static final agt y = a("chests/stronghold_corridor");
+   public static final agt z = a("chests/desert_pyramid");
+   public static final agt A = a("chests/jungle_temple");
+   public static final agt B = a("chests/jungle_temple_dispenser");
+   public static final agt C = a("chests/igloo_chest");
+   public static final agt D = a("chests/woodland_mansion");
+   public static final agt E = a("chests/underwater_ruin_small");
+   public static final agt F = a("chests/underwater_ruin_big");
+   public static final agt G = a("chests/buried_treasure");
+   public static final agt H = a("chests/shipwreck_map");
+   public static final agt I = a("chests/shipwreck_supply");
+   public static final agt J = a("chests/shipwreck_treasure");
+   public static final agt K = a("chests/pillager_outpost");
+   public static final agt L = a("chests/bastion_treasure");
+   public static final agt M = a("chests/bastion_other");
+   public static final agt N = a("chests/bastion_bridge");
+   public static final agt O = a("chests/bastion_hoglin_stable");
+   public static final agt P = a("chests/ancient_city");
+   public static final agt Q = a("chests/ancient_city_ice_box");
+   public static final agt R = a("chests/ruined_portal");
+   public static final agt S = a("chests/trial_chambers/reward");
+   public static final agt T = a("chests/trial_chambers/supply");
+   public static final agt U = a("chests/trial_chambers/corridor");
+   public static final agt V = a("chests/trial_chambers/intersection");
+   public static final agt W = a("chests/trial_chambers/intersection_barrel");
+   public static final agt X = a("chests/trial_chambers/entrance");
+   public static final agt Y = a("dispensers/trial_chambers/corridor");
+   public static final agt Z = a("dispensers/trial_chambers/chamber");
+   public static final agt aa = a("dispensers/trial_chambers/water");
+   public static final agt ab = a("pots/trial_chambers/corridor");
+   public static final agt ac = a("entities/sheep/white");
+   public static final agt ad = a("entities/sheep/orange");
+   public static final agt ae = a("entities/sheep/magenta");
+   public static final agt af = a("entities/sheep/light_blue");
+   public static final agt ag = a("entities/sheep/yellow");
+   public static final agt ah = a("entities/sheep/lime");
+   public static final agt ai = a("entities/sheep/pink");
+   public static final agt aj = a("entities/sheep/gray");
+   public static final agt ak = a("entities/sheep/light_gray");
+   public static final agt al = a("entities/sheep/cyan");
+   public static final agt am = a("entities/sheep/purple");
+   public static final agt an = a("entities/sheep/blue");
+   public static final agt ao = a("entities/sheep/brown");
+   public static final agt ap = a("entities/sheep/green");
+   public static final agt aq = a("entities/sheep/red");
+   public static final agt ar = a("entities/sheep/black");
+   public static final agt as = a("gameplay/fishing");
+   public static final agt at = a("gameplay/fishing/junk");
+   public static final agt au = a("gameplay/fishing/treasure");
+   public static final agt av = a("gameplay/fishing/fish");
+   public static final agt aw = a("gameplay/cat_morning_gift");
+   public static final agt ax = a("gameplay/hero_of_the_village/armorer_gift");
+   public static final agt ay = a("gameplay/hero_of_the_village/butcher_gift");
+   public static final agt az = a("gameplay/hero_of_the_village/cartographer_gift");
+   public static final agt aA = a("gameplay/hero_of_the_village/cleric_gift");
+   public static final agt aB = a("gameplay/hero_of_the_village/farmer_gift");
+   public static final agt aC = a("gameplay/hero_of_the_village/fisherman_gift");
+   public static final agt aD = a("gameplay/hero_of_the_village/fletcher_gift");
+   public static final agt aE = a("gameplay/hero_of_the_village/leatherworker_gift");
+   public static final agt aF = a("gameplay/hero_of_the_village/librarian_gift");
+   public static final agt aG = a("gameplay/hero_of_the_village/mason_gift");
+   public static final agt aH = a("gameplay/hero_of_the_village/shepherd_gift");
+   public static final agt aI = a("gameplay/hero_of_the_village/toolsmith_gift");
+   public static final agt aJ = a("gameplay/hero_of_the_village/weaponsmith_gift");
+   public static final agt aK = a("gameplay/sniffer_digging");
+   public static final agt aL = a("gameplay/piglin_bartering");
+   public static final agt aM = a("spawners/trial_chamber/key");
+   public static final agt aN = a("spawners/trial_chamber/consumables");
+   public static final agt aO = a("archaeology/desert_well");
+   public static final agt aP = a("archaeology/desert_pyramid");
+   public static final agt aQ = a("archaeology/trail_ruins_common");
+   public static final agt aR = a("archaeology/trail_ruins_rare");
+   public static final agt aS = a("archaeology/ocean_ruin_warm");
+   public static final agt aT = a("archaeology/ocean_ruin_cold");
 
-      public <T> Stream<T> keys(DynamicOps<T> $$0) {
-         return Stream.of((T[])(new Object[]{$$0.createString("formula"), $$0.createString("parameters")}));
-      }
-
-      public <T> DataResult<egc.b> decode(DynamicOps<T> $$0, MapLike<T> $$1) {
-         T $$2 = (T)$$1.get("formula");
-         return $$2 == null ? DataResult.error(() -> "Missing type for formula in: " + $$1) : egc.c.decode($$0, $$2).flatMap($$2x -> {
-            T $$3 = Objects.requireNonNullElseGet((T)$$1.get("parameters"), $$0::emptyMap);
-            return ((egc.c)$$2x.getFirst()).b().decode($$0, $$3).map(Pair::getFirst);
-         });
-      }
-
-      public <T> RecordBuilder<T> a(egc.b $$0, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-         egc.c $$3 = $$0.a();
-         $$2.add("formula", egc.c.encodeStart($$1, $$3));
-         DataResult<T> $$4 = this.a($$3.b(), $$0, $$1);
-         if ($$4.result().isEmpty() || !Objects.equals($$4.result().get(), $$1.emptyMap())) {
-            $$2.add("parameters", $$4);
-         }
-
-         return $$2;
-      }
-
-      private <T, F extends egc.b> DataResult<T> a(Codec<F> $$0, egc.b $$1, DynamicOps<T> $$2) {
-         return $$0.encodeStart($$2, $$1);
-      }
-   };
-   public static final Codec<egc> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(kc.g.r().fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, egc::new)
-   );
-   private final ig<cpz> e;
-   private final egc.b f;
-
-   private egc(List<eib> $$0, ig<cpz> $$1, egc.b $$2) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
+   private static agt a(String $$0) {
+      return a(new agt($$0));
    }
 
-   @Override
-   public egq b() {
-      return egr.r;
-   }
-
-   @Override
-   public Set<ehk<?>> a() {
-      return ImmutableSet.of(ehn.i);
-   }
-
-   @Override
-   public clo a(clo $$0, efc $$1) {
-      clo $$2 = $$1.c(ehn.i);
-      if ($$2 != null) {
-         int $$3 = cqb.a(this.e.a(), $$2);
-         int $$4 = this.f.a($$1.b(), $$0.L(), $$3);
-         $$0.f($$4);
-      }
-
-      return $$0;
-   }
-
-   public static ego.a<?> a(cpz $$0, float $$1, int $$2) {
-      return a($$3 -> new egc($$3, $$0.j(), new egc.a($$2, $$1)));
-   }
-
-   public static ego.a<?> a(cpz $$0) {
-      return a($$1 -> new egc($$1, $$0.j(), new egc.d()));
-   }
-
-   public static ego.a<?> b(cpz $$0) {
-      return a($$1 -> new egc($$1, $$0.j(), new egc.e(1)));
-   }
-
-   public static ego.a<?> a(cpz $$0, int $$1) {
-      return a($$2 -> new egc($$2, $$0.j(), new egc.e($$1)));
-   }
-
-   static record a(int b, float c) implements egc.b {
-      private static final Codec<egc.a> d = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(egc.a::b), Codec.FLOAT.fieldOf("probability").forGetter(egc.a::c)).apply($$0, egc.a::new)
-      );
-      public static final egc.c a = new egc.c(new agm("binomial_with_bonus_count"), d);
-
-      @Override
-      public int a(atw $$0, int $$1, int $$2) {
-         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
-            if ($$0.i() < this.c) {
-               $$1++;
-            }
-         }
-
-         return $$1;
-      }
-
-      @Override
-      public egc.c a() {
-         return a;
-      }
-   }
-
-   interface b {
-      int a(atw var1, int var2, int var3);
-
-      egc.c a();
-   }
-
-   static record c(agm a, Codec<? extends egc.b> b) {
-   }
-
-   static record d() implements egc.b {
-      public static final Codec<egc.d> a = Codec.unit(egc.d::new);
-      public static final egc.c b = new egc.c(new agm("ore_drops"), a);
-
-      @Override
-      public int a(atw $$0, int $$1, int $$2) {
-         if ($$2 > 0) {
-            int $$3 = $$0.a($$2 + 2) - 1;
-            if ($$3 < 0) {
-               $$3 = 0;
-            }
-
-            return $$1 * ($$3 + 1);
-         } else {
-            return $$1;
-         }
-      }
-
-      @Override
-      public egc.c a() {
-         return b;
+   private static agt a(agt $$0) {
+      if (aU.add($$0)) {
+         return $$0;
+      } else {
+         throw new IllegalArgumentException($$0 + " is already a registered built-in loot table");
       }
    }
 
-   static record e(int c) implements egc.b {
-      public static final Codec<egc.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(egc.e::b)).apply($$0, egc.e::new)
-      );
-      public static final egc.c b = new egc.c(new agm("uniform_bonus_count"), a);
-
-      @Override
-      public int a(atw $$0, int $$1, int $$2) {
-         return $$1 + $$0.a(this.c * $$2 + 1);
-      }
-
-      @Override
-      public egc.c a() {
-         return b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   public static Set<agt> a() {
+      return aV;
    }
 }

@@ -1,71 +1,80 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class agw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final CompletableFuture<aus> b = CompletableFuture.completedFuture(aus.a);
-   private final dp.a c;
-   private final dv d;
-   private final cow e = new cow();
-   private final asb f;
-   private final eff g = new eff();
-   private final agy h = new agy(this.g);
-   private final agz i;
+public class agw extends IOException {
+   private final List<agw.a> a = Lists.newArrayList();
+   private final String b;
 
-   public agw(it.b $$0, cgi $$1, dv.a $$2, int $$3) {
-      this.f = new asb($$0);
-      this.c = dp.a((it)$$0, $$1);
-      this.d = new dv($$2, this.c);
-      this.c.a(dp.b.a);
-      this.i = new agz($$3, this.d.a());
+   public agw(String $$0) {
+      this.a.add(new agw.a());
+      this.b = $$0;
    }
 
-   public agz a() {
-      return this.i;
+   public agw(String $$0, Throwable $$1) {
+      super($$1);
+      this.a.add(new agw.a());
+      this.b = $$0;
    }
 
-   public eff b() {
-      return this.g;
+   public void a(String $$0) {
+      this.a.get(0).a($$0);
    }
 
-   public cow c() {
-      return this.e;
+   public void b(String $$0) {
+      this.a.get(0).a = $$0;
+      this.a.add(0, new agw.a());
    }
 
-   public dv d() {
-      return this.d;
+   @Override
+   public String getMessage() {
+      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
    }
 
-   public agy e() {
-      return this.h;
+   public static agw a(Exception $$0) {
+      if ($$0 instanceof agw) {
+         return (agw)$$0;
+      } else {
+         String $$1 = $$0.getMessage();
+         if ($$0 instanceof FileNotFoundException) {
+            $$1 = "File not found";
+         }
+
+         return new agw($$1, $$0);
+      }
    }
 
-   public List<apf> f() {
-      return List.of(this.f, this.g, this.e, this.i, this.h);
-   }
+   public static class a {
+      @Nullable
+      String a;
+      private final List<String> b = Lists.newArrayList();
 
-   public static CompletableFuture<agw> a(apl $$0, it.b $$1, cgi $$2, dv.a $$3, int $$4, Executor $$5, Executor $$6) {
-      agw $$7 = new agw($$1, $$2, $$3, $$4);
-      return apr.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1x, $$2x) -> $$7.c.a(dp.b.b)).thenApply($$1x -> $$7);
-   }
+      a() {
+      }
 
-   public void a(it $$0) {
-      this.f.a().forEach($$1 -> a($$0, (asb.a<?>)$$1));
-      cvh.a();
-   }
+      void a(String $$0) {
+         this.b.add(0, $$0);
+      }
 
-   private static <T> void a(it $$0, asb.a<T> $$1) {
-      agl<? extends is<T>> $$2 = $$1.a();
-      Map<arz<T>, List<ig<T>>> $$3 = $$1.b()
-         .entrySet()
-         .stream()
-         .collect(Collectors.toUnmodifiableMap($$1x -> arz.a($$2, (agm)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends ig<T>>)$$0x.getValue())));
-      $$0.d($$2).a($$3);
+      @Nullable
+      public String a() {
+         return this.a;
+      }
+
+      public String b() {
+         return StringUtils.join(this.b, "->");
+      }
+
+      @Override
+      public String toString() {
+         if (this.a != null) {
+            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
+         } else {
+            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+         }
+      }
    }
 }

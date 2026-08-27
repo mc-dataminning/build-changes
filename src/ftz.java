@@ -1,57 +1,82 @@
-import java.util.BitSet;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class ftz {
-   private static final int a = ib.values().length;
-   private final BitSet b = new BitSet(a * a);
+   private final ftv a;
+   private final fts b;
 
-   public void a(Set<ib> $$0) {
-      for (ib $$1 : $$0) {
-         for (ib $$2 : $$0) {
-            this.a($$1, $$2, true);
-         }
+   public ftz(ftv $$0, fts $$1) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
+      } else {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   public void a(ib $$0, ib $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   public fts a() {
+      return this.b;
    }
 
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
-   }
-
-   public boolean a(ib $$0, ib $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
+   public Predicate<dip> a(diq<cvz, dip> $$0) {
+      return this.a.getPredicate($$0);
    }
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
+   public boolean equals(Object $$0) {
+      return this == $$0;
+   }
 
-      for (ib $$1 : ib.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<ftz> {
+      public ftz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new ftz(this.b($$3), (fts)$$2.deserialize($$3.get("apply"), fts.class));
       }
 
-      $$0.append('\n');
+      private ftv b(JsonObject $$0) {
+         return $$0.has("when") ? a(ato.u($$0, "when")) : ftv.b;
+      }
 
-      for (ib $$2 : ib.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
-
-         for (ib $$3 : ib.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
+      @VisibleForTesting
+      static ftv a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<ftv> $$2 = Streams.stream(ato.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fty($$2);
+            } else if ($$0.has("AND")) {
+               List<ftv> $$3 = Streams.stream(ato.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new ftu($$3);
             } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+               return a($$1.iterator().next());
             }
+         } else {
+            return new ftu($$1.stream().map(ftz.a::a).collect(Collectors.toList()));
          }
-
-         $$0.append('\n');
       }
 
-      return $$0.toString();
+      private static ftv a(Entry<String, JsonElement> $$0) {
+         return new ftw($$0.getKey(), $$0.getValue().getAsString());
+      }
    }
 }

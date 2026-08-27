@@ -1,109 +1,70 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public class czk extends cvf implements dcf {
+public class czk extends ddp implements cwc {
    public static final MapCodec<czk> a = b(czk::new);
-   public static final dih b = cza.aE;
-   public static final die c = did.C;
-   protected static final float d = 3.0F;
-   protected static final eks e = cvf.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
-   protected static final eks f = cvf.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final eks g = cvf.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
-   protected static final eks h = cvf.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
 
    @Override
    public MapCodec<czk> a() {
       return a;
    }
 
-   protected czk(dhm.d $$0) {
+   public czk(dio.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ib.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
-      switch ((ib)$$0.c(b)) {
-         case c:
-            return h;
-         case d:
-            return g;
-         case e:
-            return f;
-         case f:
-         default:
-            return e;
-      }
-   }
-
-   private boolean a(crl $$0, hx $$1, ib $$2) {
-      dhn $$3 = $$0.a_($$1);
-      return $$3.d($$0, $$1, $$2);
+   public boolean b(ctb $$0, hv $$1, dip $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   public boolean a(dhn $$0, csi $$1, hx $$2) {
-      ib $$3 = $$0.c(b);
-      return this.a($$1, $$2.a($$3.g()), $$3);
+   public boolean a(csy $$0, auf $$1, hv $$2, dip $$3) {
+      return true;
    }
 
    @Override
-   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
-      if ($$1.g() == $$0.c(b) && !$$0.a($$3, $$4)) {
-         return cvh.a.o();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, ecy.c, ecy.c.a($$3));
-         }
+   public void a(amp $$0, auf $$1, hv $$2, dip $$3) {
+      hv $$4 = $$2.c();
+      dip $$5 = cwb.bt.o();
+      Optional<ie.c<dxs>> $$6 = $$0.I_().d(kc.aB).b(qw.n);
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
+      label49:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         hv $$8 = $$4;
 
-   @Nullable
-   @Override
-   public dhn a(cnw $$0) {
-      if (!$$0.c()) {
-         dhn $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
-         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
-            return null;
-         }
-      }
-
-      dhn $$2 = this.o();
-      csi $$3 = $$0.q();
-      hx $$4 = $$0.a();
-      ecx $$5 = $$0.q().b_($$0.a());
-
-      for (ib $$6 : $$0.f()) {
-         if ($$6.o().d()) {
-            $$2 = $$2.a(b, $$6.g());
-            if ($$2.a($$3, $$4)) {
-               return $$2.a(c, Boolean.valueOf($$5.a() == ecy.c));
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
+               continue label49;
             }
          }
+
+         dip $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            ((cwc)$$5.b()).a($$0, $$1, $$8, $$10);
+         }
+
+         if ($$10.i()) {
+            ie<dxs> $$12;
+            if ($$1.a(8) == 0) {
+               List<dqp<?, ?>> $$11 = $$0.s($$8).a().d().a();
+               if ($$11.isEmpty()) {
+                  continue;
+               }
+
+               $$12 = ((dtt)$$11.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$12 = $$6.get();
+            }
+
+            $$12.a().a($$0, $$0.k().g(), $$1, $$8);
+         }
       }
-
-      return null;
-   }
-
-   @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dhn a(dhn $$0, dab $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dho.a<cvf, dhn> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public ecx c_(dhn $$0) {
-      return $$0.c(c) ? ecy.c.a(false) : super.c_($$0);
    }
 }

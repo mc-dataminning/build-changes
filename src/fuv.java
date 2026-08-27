@@ -1,37 +1,39 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+public class fuv implements fui<dhl> {
+   private final fkr<?> a;
 
-public class fuv implements fui.a {
-   private static final int a = 60;
-   private final Set<iy> b = Sets.newHashSet();
-
-   fuv() {
+   public fuv(fuj.a $$0) {
+      this.a = new fkr($$0.a(flx.bh));
    }
 
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   public void a(iy $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(iy $$0) {
-      this.b.remove($$0);
-   }
-
-   @Override
-   public void a(eob $$0, fqz $$1, double $$2, double $$3, double $$4) {
-      hx $$5 = hx.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.q(), 60.0)) {
-            a($$0, $$1, $$3x);
+   public void a(dhl $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
+      ia $$6 = ia.b;
+      if ($$0.n()) {
+         dip $$7 = $$0.i().a_($$0.aB_());
+         if ($$7.b() instanceof dcx) {
+            $$6 = $$7.c(dcx.b);
          }
-      });
-   }
+      }
 
-   private static void a(eob $$0, fqz $$1, iy $$2) {
-      fui.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
+      ckv $$8 = $$0.w();
+      gfs $$9;
+      if ($$8 == null) {
+         $$9 = fsx.i;
+      } else {
+         $$9 = fsx.j.get($$8.a());
+      }
+
+      $$2.a();
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      fly $$12 = this.a.b();
+      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
+      eph $$13 = $$9.a($$3, fsq::e);
+      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

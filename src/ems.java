@@ -1,17 +1,29 @@
-import java.util.OptionalInt;
+import java.util.function.Function;
 
-public class ems {
-   public final int a;
-   public final int b;
-   public final OptionalInt c;
-   public final OptionalInt d;
-   public final boolean e;
+public class ems<T> implements emj<T> {
+   private final Function<hv, emq<T>> a;
 
-   public ems(int $$0, int $$1, OptionalInt $$2, OptionalInt $$3, boolean $$4) {
+   public ems(Function<hv, emq<T>> $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   }
+
+   @Override
+   public boolean a(hv $$0, T $$1) {
+      return this.a.apply($$0).a($$0, $$1);
+   }
+
+   @Override
+   public void a(emn<T> $$0) {
+      this.a.apply($$0.b()).a($$0);
+   }
+
+   @Override
+   public boolean b(hv $$0, T $$1) {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 0;
    }
 }

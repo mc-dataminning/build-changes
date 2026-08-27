@@ -1,17 +1,33 @@
-public interface eke {
-   static eke a() {
-      return ekj.a;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
+
+public record eke(String b) implements ekg {
+   public static final Codec<eke> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(eke::c)).apply($$0, eke::new));
+
+   public static ekg a(String $$0) {
+      return new eke($$0);
    }
 
-   static eke a(bkv $$0) {
-      return new ekj($$0);
+   @Override
+   public ekf a() {
+      return ekh.b;
    }
 
-   boolean b();
+   @Nullable
+   @Override
+   public String a(ege $$0) {
+      return this.b;
+   }
 
-   boolean a(eks var1, hx var2, boolean var3);
+   @Override
+   public Set<eim<?>> b() {
+      return ImmutableSet.of();
+   }
 
-   boolean a(clj var1);
-
-   boolean a(ecx var1, ecx var2);
+   public String c() {
+      return this.b;
+   }
 }

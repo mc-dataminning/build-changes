@@ -1,62 +1,49 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class dvv extends dvt {
-   public static final Codec<dvv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dnq.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dnq.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dvv::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dnq d;
-   private final dnq e;
-   private final int f;
+public class dvv extends dvy {
+   public static final Codec<dvv> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dvv::new, $$0 -> $$0.d).codec();
+   private static final ia b = ia.d;
+   private static final ia[] c = ia.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ia[]::new);
+   private final float d;
 
-   private dvv(dnq $$0, dnq $$1, int $$2) {
+   public dvv(float $$0) {
       this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static dvv a(dnq $$0, dnq $$1, int $$2) {
-      return new dvv($$0, $$1, $$2);
-   }
-
-   public static dvv a(dnq $$0, dnq $$1) {
-      return a($$0, $$1, 0);
    }
 
    @Override
-   public int a(atw $$0, dnt $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return atq.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + atq.b($$0, 0, $$6) + atq.b($$0, 0, $$5);
+   protected dvz<?> a() {
+      return dvz.d;
+   }
+
+   @Override
+   public void a(dvy.a $$0) {
+      auf $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<hv> $$2 = $$0.d();
+         List<hv> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<hv> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<hv> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), cwb.pe.o().a(cvt.b, b));
+               $$0.a().a($$6.get(), dgf.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
+
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     sj $$4x = new sj();
+                     $$4x.a("id", kb.g.b(blj.h).toString());
+                     $$1x.a($$4x, $$1.a(599), false);
+                  }
+               });
+            }
          }
       }
-   }
-
-   @Override
-   public dvu<?> a() {
-      return dvu.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
    }
 }

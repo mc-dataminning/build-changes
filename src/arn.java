@@ -1,26 +1,28 @@
-public final class arn {
-   public static final arz<bkz<?>> a = a("skeletons");
-   public static final arz<bkz<?>> b = a("zombies");
-   public static final arz<bkz<?>> c = a("raiders");
-   public static final arz<bkz<?>> d = a("undead");
-   public static final arz<bkz<?>> e = a("beehive_inhabitors");
-   public static final arz<bkz<?>> f = a("arrows");
-   public static final arz<bkz<?>> g = a("impact_projectiles");
-   public static final arz<bkz<?>> h = a("powder_snow_walkable_mobs");
-   public static final arz<bkz<?>> i = a("axolotl_always_hostiles");
-   public static final arz<bkz<?>> j = a("axolotl_hunt_targets");
-   public static final arz<bkz<?>> k = a("freeze_immune_entity_types");
-   public static final arz<bkz<?>> l = a("freeze_hurts_extra_types");
-   public static final arz<bkz<?>> m = a("can_breathe_under_water");
-   public static final arz<bkz<?>> n = a("frog_food");
-   public static final arz<bkz<?>> o = a("fall_damage_immune");
-   public static final arz<bkz<?>> p = a("dismounts_underwater");
-   public static final arz<bkz<?>> q = a("non_controlling_rider");
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private arn() {
+public class arn {
+   protected final Object2IntMap<arj<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+
+   public arn() {
+      this.a.defaultReturnValue(0);
    }
 
-   private static arz<bkz<?>> a(String $$0) {
-      return arz.a(kd.t, new agm($$0));
+   public void b(cer $$0, arj<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
+   }
+
+   public void a(cer $$0, arj<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
+   }
+
+   public <T> int a(arl<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   }
+
+   public int a(arj<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

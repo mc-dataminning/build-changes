@@ -1,56 +1,173 @@
-public class fgz extends fid<bwr> {
-   private final fkt a;
-   private final fkt b;
-   private final fkt f;
-   private final fkt g;
-   private final fkt h;
-   private final fkt i;
-   private final fkt j;
-   private final fkt k;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public fgz(fkt $$0) {
-      super(frh::d);
-      this.a = $$0;
-      this.f = $$0.b("body");
-      this.b = $$0.b("head");
-      this.g = this.f.b("right_wing");
-      this.i = this.g.b("right_wing_tip");
-      this.h = this.f.b("left_wing");
-      this.j = this.h.b("left_wing_tip");
-      this.k = this.f.b("feet");
+class fgz {
+   private static final int a = 44;
+   private final List<fgz.c> b;
+
+   fgz(List<fgz.c> $$0) {
+      this.b = $$0;
    }
 
-   public static fkz b() {
-      flb $$0 = new flb();
-      flc $$1 = $$0.a();
-      flc $$2 = $$1.a("body", fky.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), fkv.a(0.0F, 17.0F, 0.0F));
-      flc $$3 = $$1.a("head", fky.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), fkv.a(0.0F, 17.0F, 0.0F));
-      $$3.a("right_ear", fky.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), fkv.a(-1.5F, -2.0F, 0.0F));
-      $$3.a("left_ear", fky.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), fkv.a(1.1F, -3.0F, 0.0F));
-      flc $$4 = $$2.a("right_wing", fky.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fkv.a(-1.5F, 0.0F, 0.0F));
-      $$4.a("right_wing_tip", fky.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fkv.a(-2.0F, 0.0F, 0.0F));
-      flc $$5 = $$2.a("left_wing", fky.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fkv.a(1.5F, 0.0F, 0.0F));
-      $$5.a("left_wing_tip", fky.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fkv.a(2.0F, 0.0F, 0.0F));
-      $$2.a("feet", fky.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), fkv.a(0.0F, 5.0F, 0.0F));
-      return fkz.a($$0, 32, 32);
+   public void a() {
+      this.b.forEach(fgz.c::a);
    }
 
-   @Override
-   public fkt a() {
-      return this.a;
+   public static fgz.a a(int $$0) {
+      return new fgz.a($$0);
    }
 
-   public void a(bwr $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fkt::c);
-      if ($$0.w()) {
-         this.a($$4);
+   public static class a {
+      final int a;
+      private final List<fgz.d> b = new ArrayList<>();
+      int c;
+      int d = 4;
+      int e;
+      Optional<fgz.b> f = Optional.empty();
+
+      public a(int $$0) {
+         this.a = $$0;
       }
 
-      this.a($$0.d, euc.b, $$3, 1.0F);
-      this.a($$0.e, euc.a, $$3, 1.0F);
+      void a() {
+         this.e++;
+      }
+
+      public fgz.d a(vb $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
+         fgz.d $$3 = new fgz.d($$0, $$1, $$2, 44);
+         this.b.add($$3);
+         return $$3;
+      }
+
+      public fgz.a a(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fgz.a b(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fgz a(Consumer<ezt> $$0) {
+         ezq $$1 = new ezq().b(this.d);
+         $$1.a(ezw.a(this.a - 44), 0, 0);
+         $$1.a(ezw.a(44), 0, 1);
+         List<fgz.c> $$2 = new ArrayList<>();
+         this.e = 0;
+
+         for (fgz.d $$3 : this.b) {
+            $$2.add($$3.a(this, $$1, 0));
+         }
+
+         $$1.a();
+         $$0.accept($$1);
+         fgz $$4 = new fgz($$2);
+         $$4.a();
+         return $$4;
+      }
+
+      public fgz.a a(int $$0, boolean $$1) {
+         this.f = Optional.of(new fgz.b($$0, $$1));
+         return this;
+      }
    }
 
-   private void a(float $$0) {
-      this.b.f = $$0 * (float) (Math.PI / 180.0);
+   static record b(int a, boolean b) {
+   }
+
+   static record c(ewo<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
+      public void a() {
+         this.a.a(this.b.getAsBoolean());
+         if (this.c != null) {
+            this.a.i = this.c.getAsBoolean();
+         }
+      }
+
+      public ewo<Boolean> b() {
+         return this.a;
+      }
+
+      public BooleanSupplier c() {
+         return this.b;
+      }
+
+      @Nullable
+      public BooleanSupplier d() {
+         return this.c;
+      }
+   }
+
+   public static class d {
+      private final vb a;
+      private final BooleanSupplier b;
+      private final Consumer<Boolean> c;
+      @Nullable
+      private vb d;
+      @Nullable
+      private BooleanSupplier e;
+      private final int f;
+
+      d(vb $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = $$3;
+      }
+
+      public fgz.d a(BooleanSupplier $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fgz.d a(vb $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      fgz.c a(fgz.a $$0, ezq $$1, int $$2) {
+         $$0.a();
+         exo $$3 = new exo(this.a, euk.N().h).e();
+         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
+         Optional<fgz.b> $$4 = $$0.f;
+         ewo.a<Boolean> $$5 = ewo.b(this.b.getAsBoolean());
+         $$5.a();
+         boolean $$6 = this.d != null && $$4.isEmpty();
+         if ($$6) {
+            exs $$7 = exs.a(this.d);
+            $$5.a($$1x -> $$7);
+         }
+
+         if (this.d != null && !$$6) {
+            $$5.a($$0x -> va.a(this.a, $$0x.e(), this.d));
+         } else {
+            $$5.a($$0x -> va.a(this.a, $$0x.e()));
+         }
+
+         ewo<Boolean> $$8 = $$5.a(0, 0, this.f, 20, vb.i(), ($$0x, $$1x) -> this.c.accept($$1x));
+         if (this.e != null) {
+            $$8.i = this.e.getAsBoolean();
+         }
+
+         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
+         if (this.d != null) {
+            $$4.ifPresent($$3x -> {
+               vb $$4x = this.d.f().a(n.h);
+               evu $$5x = euk.N().h;
+               exb $$6x = new exb($$4x, $$5x);
+               $$6x.j($$0.a - $$0.c - this.f);
+               $$6x.k($$3x.a());
+               $$0.a();
+               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.i() : 0;
+               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
+            });
+         }
+
+         return new fgz.c($$8, this.b, this.e);
+      }
    }
 }

@@ -1,77 +1,60 @@
-import com.google.common.base.Stopwatch;
-import java.io.File;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
-import java.util.concurrent.TimeUnit;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Streams;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class rn implements rw {
-   private final Document a;
-   private final Element b;
-   private final Stopwatch c;
-   private final File d;
+public class rn {
+   private static final int d = 50;
+   public static final int a = 5;
+   public static final int b = 6;
+   public static final int c = 8;
 
-   public rn(File $$0) throws ParserConfigurationException {
-      this.d = $$0;
-      this.a = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-      this.b = this.a.createElement("testsuite");
-      Element $$1 = this.a.createElement("testsuite");
-      $$1.appendChild(this.b);
-      this.a.appendChild($$1);
-      this.b.setAttribute("timestamp", DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
-      this.c = Stopwatch.createStarted();
+   public static void a(rk $$0, hv $$1, rq $$2) {
+      $$2.a($$0);
+      $$0.a(new rw($$0, $$2, $$1));
+      $$0.b($$1);
    }
 
-   private Element a(re $$0, String $$1) {
-      Element $$2 = this.a.createElement("testcase");
-      $$2.setAttribute("name", $$1);
-      $$2.setAttribute("classname", $$0.u());
-      $$2.setAttribute("time", String.valueOf((double)$$0.m() / 1000.0));
-      this.b.appendChild($$2);
-      return $$2;
+   public static Collection<rk> a(Collection<rf> $$0, hv $$1, dcl $$2, amp $$3, rq $$4, int $$5) {
+      rg $$6 = new rg($$0, $$1, $$2, $$3, $$4, $$5);
+      $$6.b();
+      return $$6.a();
    }
 
-   @Override
-   public void a(re $$0) {
-      String $$1 = $$0.c();
-      String $$2 = $$0.o().getMessage();
-      Element $$3 = this.a.createElement($$0.s() ? "failure" : "skipped");
-      $$3.setAttribute("message", "(" + $$0.d().x() + ") " + $$2);
-      Element $$4 = this.a($$0, $$1);
-      $$4.appendChild($$3);
+   public static Collection<rk> b(Collection<sa> $$0, hv $$1, dcl $$2, amp $$3, rq $$4, int $$5) {
+      return a(a($$0), $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public void b(re $$0) {
-      String $$1 = $$0.c();
-      this.a($$0, $$1);
+   public static Collection<rf> a(Collection<sa> $$0) {
+      Map<String, List<sa>> $$1 = $$0.stream().collect(Collectors.groupingBy(sa::e, LinkedHashMap::new, Collectors.toList()));
+      return $$1.entrySet().stream().flatMap($$0x -> {
+         String $$1x = (String)$$0x.getKey();
+         Consumer<amp> $$2 = rm.c($$1x);
+         Consumer<amp> $$3 = rm.d($$1x);
+         MutableInt $$4 = new MutableInt();
+         Collection<sa> $$5 = (Collection<sa>)$$0x.getValue();
+         return Streams.stream(Iterables.partition($$5, 50)).map($$4x -> new rf($$1x + ":" + $$4.incrementAndGet(), ImmutableList.copyOf($$4x), $$2, $$3));
+      }).collect(ImmutableList.toImmutableList());
    }
 
-   @Override
-   public void a() {
-      this.c.stop();
-      this.b.setAttribute("time", String.valueOf((double)this.c.elapsed(TimeUnit.MILLISECONDS) / 1000.0));
-
-      try {
-         this.a(this.d);
-      } catch (TransformerException var2) {
-         throw new Error("Couldn't save test report", var2);
-      }
+   public static void a(amp $$0, hv $$1, rq $$2, int $$3) {
+      $$2.a();
+      hv $$4 = $$1.b(-$$3, 0, -$$3);
+      hv $$5 = $$1.b($$3, 0, $$3);
+      hv.b($$4, $$5).filter($$1x -> $$0.a_($$1x).a(cwb.pa)).forEach($$1x -> {
+         dhr $$2x = (dhr)$$0.c_($$1x);
+         dyg $$3x = rx.b($$2x);
+         rx.a($$3x, $$0);
+      });
    }
 
-   public void a(File $$0) throws TransformerException {
-      TransformerFactory $$1 = TransformerFactory.newInstance();
-      Transformer $$2 = $$1.newTransformer();
-      DOMSource $$3 = new DOMSource(this.a);
-      StreamResult $$4 = new StreamResult($$0);
-      $$2.transform($$3, $$4);
+   public static void a(amp $$0) {
+      acv.a($$0);
    }
 }

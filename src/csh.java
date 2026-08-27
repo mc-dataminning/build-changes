@@ -1,55 +1,76 @@
-public interface csh {
-   int K_();
+import java.util.function.Predicate;
 
-   int J_();
+public class csh {
+   private final elb a;
+   private final elb b;
+   private final csh.a c;
+   private final csh.b d;
+   private final elg e;
 
-   default int ak() {
-      return this.J_() + this.K_();
+   public csh(elb $$0, elb $$1, csh.a $$2, csh.b $$3, blf $$4) {
+      this($$0, $$1, $$2, $$3, elg.a($$4));
    }
 
-   default int al() {
-      return this.an() - this.am();
+   public csh(elb $$0, elb $$1, csh.a $$2, csh.b $$3, elg $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   default int am() {
-      return iy.a(this.J_());
+   public elb a() {
+      return this.b;
    }
 
-   default int an() {
-      return iy.a(this.ak() - 1) + 1;
+   public elb b() {
+      return this.a;
    }
 
-   default boolean r(hx $$0) {
-      return this.d($$0.v());
+   public elu a(dip $$0, cse $$1, hv $$2) {
+      return this.c.get($$0, $$1, $$2, this.e);
    }
 
-   default boolean d(int $$0) {
-      return $$0 < this.J_() || $$0 >= this.ak();
+   public elu a(edz $$0, cse $$1, hv $$2) {
+      return this.d.a($$0) ? $$0.d($$1, $$2) : elr.a();
    }
 
-   default int e(int $$0) {
-      return this.f(iy.a($$0));
+   public static enum a implements csh.c {
+      a(dio.a::b),
+      b(dio.a::a),
+      c(dio.a::c),
+      d(($$0, $$1, $$2, $$3) -> $$0.a(arr.aP) ? elr.b() : elr.a());
+
+      private final csh.c e;
+
+      private a(csh.c $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public elu get(dip $$0, cse $$1, hv $$2, elg $$3) {
+         return this.e.get($$0, $$1, $$2, $$3);
+      }
    }
 
-   default int f(int $$0) {
-      return $$0 - this.am();
+   public static enum b {
+      a($$0 -> false),
+      b(edz::b),
+      c($$0 -> !$$0.c()),
+      d($$0 -> $$0.a(arw.a));
+
+      private final Predicate<edz> e;
+
+      private b(Predicate<edz> $$0) {
+         this.e = $$0;
+      }
+
+      public boolean a(edz $$0) {
+         return this.e.test($$0);
+      }
    }
 
-   default int g(int $$0) {
-      return $$0 + this.am();
-   }
-
-   static csh e(final int $$0, final int $$1) {
-      return new csh() {
-         @Override
-         public int K_() {
-            return $$1;
-         }
-
-         @Override
-         public int J_() {
-            return $$0;
-         }
-      };
+   public interface c {
+      elu get(dip var1, cse var2, hv var3, elg var4);
    }
 }

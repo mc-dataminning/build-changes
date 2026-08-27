@@ -1,29 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.brigadier.context.CommandContext;
 
 public class aja {
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("list").executes($$0x -> a((du)$$0x.getSource())))
-            .then(dv.a("uuids").executes($$0x -> b((du)$$0x.getSource())))
+   public static void a(CommandDispatcher<ds> $$0) {
+      final LiteralArgumentBuilder<ds> $$1 = (LiteralArgumentBuilder<ds>)dt.a("gamerule").requires($$0x -> $$0x.c(2));
+      csu.a(
+         new csu.c() {
+            @Override
+            public <T extends csu.g<T>> void a(csu.e<T> $$0, csu.f<T> $$1x) {
+               $$1.then(
+                  ((LiteralArgumentBuilder)dt.a($$0.a()).executes($$1xxx -> aja.a((ds)$$1xxx.getSource(), $$0)))
+                     .then($$1.a("value").executes($$1xxx -> aja.a($$1xxx, $$0)))
+               );
+            }
+         }
       );
+      $$0.register($$1);
    }
 
-   private static int a(du $$0) {
-      return a($$0, cdz::Q_);
+   static <T extends csu.g<T>> int a(CommandContext<ds> $$0, csu.e<T> $$1) {
+      ds $$2 = (ds)$$0.getSource();
+      T $$3 = $$2.l().aK().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> vb.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
    }
 
-   private static int b(du $$0) {
-      return a($$0, $$0x -> uv.a("commands.list.nameAndId", $$0x.ad(), uv.a($$0x.fS().getId())));
-   }
-
-   private static int a(du $$0, Function<amj, uv> $$1) {
-      apy $$2 = $$0.l().ae();
-      List<amj> $$3 = $$2.t();
-      uv $$4 = uy.b($$3, $$1);
-      $$0.a(() -> uv.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
-      return $$3.size();
+   static <T extends csu.g<T>> int a(ds $$0, csu.e<T> $$1) {
+      T $$2 = $$0.l().aK().a($$1);
+      $$0.a(() -> vb.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

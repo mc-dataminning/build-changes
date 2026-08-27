@@ -1,77 +1,71 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
-public class dmx implements dml {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dmy i = new dmy(this);
+public class dmx implements dnd {
+   public static final Codec<dmx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(iy.a.fieldOf("source_entity").forGetter(dmx::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.d))
+            .apply($$0, ($$0x, $$1) -> new dmx(Either.right(Either.left($$0x)), $$1))
+   );
+   private Either<blf, Either<UUID, Integer>> c;
+   final float d;
 
-   public dmx(long $$0) {
-      this.b($$0);
+   public dmx(blf $$0, float $$1) {
+      this(Either.left($$0), $$1);
+   }
+
+   dmx(Either<blf, Either<UUID, Integer>> $$0, float $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public atw d() {
-      return new dmx(this.g());
-   }
-
-   @Override
-   public dnj e() {
-      return new dmx.a(this.g());
-   }
-
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw aun.a("LegacyRandomSource", null);
-      } else {
-         this.i.a();
+   public Optional<elb> a(csy $$0) {
+      if (this.c.left().isEmpty()) {
+         this.b($$0);
       }
+
+      return this.c.left().map($$0x -> $$0x.dk().b(0.0, (double)this.d, 0.0));
+   }
+
+   private void b(csy $$0) {
+      ((Optional)this.c.map(Optional::of, $$1 -> Optional.ofNullable((blf)$$1.map($$1x -> $$0 instanceof amp $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.c = Either.left($$0x));
+   }
+
+   private UUID b() {
+      return (UUID)this.c.map(blf::cw, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
+   }
+
+   int c() {
+      return (Integer)this.c.map(blf::aj, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
    }
 
    @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw aun.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
+   public dne<?> a() {
+      return dne.b;
+   }
+
+   public static class a implements dne<dmx> {
+      public dmx a(ue $$0) {
+         return new dmx(Either.right(Either.right($$0.n())), $$0.readFloat());
       }
-   }
 
-   @Override
-   public double k() {
-      return this.i.b();
-   }
-
-   public static class a implements dnj {
-      private final long a;
-
-      public a(long $$0) {
-         this.a = $$0;
+      public void a(ue $$0, dmx $$1) {
+         $$0.c($$1.c());
+         $$0.a($$1.d);
       }
 
       @Override
-      public atw a(int $$0, int $$1, int $$2) {
-         long $$3 = atq.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dmx($$4);
-      }
-
-      @Override
-      public atw a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new dmx((long)$$1 ^ this.a);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      public Codec<dmx> a() {
+         return dmx.a;
       }
    }
 }

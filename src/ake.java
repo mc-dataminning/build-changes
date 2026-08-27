@@ -1,106 +1,92 @@
-import com.google.common.collect.Maps;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.function.ToIntFunction;
+import java.util.Collection;
+import net.minecraft.server.MinecraftServer;
 
 public class ake {
-   private static final Map<Pair<ciz, bla>, clj> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(Pair.of(cja.b, bla.f), clr.pz);
-      $$0.put(Pair.of(cja.b, bla.e), clr.pA);
-      $$0.put(Pair.of(cja.b, bla.d), clr.pB);
-      $$0.put(Pair.of(cja.b, bla.c), clr.pC);
-      $$0.put(Pair.of(cja.c, bla.f), clr.pD);
-      $$0.put(Pair.of(cja.c, bla.e), clr.pE);
-      $$0.put(Pair.of(cja.c, bla.d), clr.pF);
-      $$0.put(Pair.of(cja.c, bla.c), clr.pG);
-      $$0.put(Pair.of(cja.d, bla.f), clr.pL);
-      $$0.put(Pair.of(cja.d, bla.e), clr.pM);
-      $$0.put(Pair.of(cja.d, bla.d), clr.pN);
-      $$0.put(Pair.of(cja.d, bla.c), clr.pO);
-      $$0.put(Pair.of(cja.g, bla.f), clr.pP);
-      $$0.put(Pair.of(cja.g, bla.e), clr.pQ);
-      $$0.put(Pair.of(cja.g, bla.d), clr.pR);
-      $$0.put(Pair.of(cja.g, bla.c), clr.pS);
-      $$0.put(Pair.of(cja.e, bla.f), clr.pH);
-      $$0.put(Pair.of(cja.e, bla.e), clr.pI);
-      $$0.put(Pair.of(cja.e, bla.d), clr.pJ);
-      $$0.put(Pair.of(cja.e, bla.c), clr.pK);
-      $$0.put(Pair.of(cja.f, bla.f), clr.on);
-   });
-   private static final List<agl<cnt>> b = List.of(
-      cnu.a, cnu.b, cnu.c, cnu.d, cnu.e, cnu.f, cnu.g, cnu.h, cnu.i, cnu.j, cnu.k, cnu.l, cnu.m, cnu.n, cnu.o, cnu.p
-   );
-   private static final List<agl<cnr>> c = List.of(cns.a, cns.b, cns.c, cns.d, cns.e, cns.f, cns.g, cns.h, cns.i, cns.j);
-   private static final ToIntFunction<agl<cnt>> d = ac.e(b);
-   private static final ToIntFunction<agl<cnr>> e = ac.e(c);
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("commands.schedule.same_tick"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vb.b("commands.schedule.cleared.failure", $$0));
+   private static final SuggestionProvider<ds> c = ($$0, $$1) -> dw.b(((ds)$$0.getSource()).l().aY().K().u().a(), $$1);
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("spawn_armor_trims").requires($$0x -> $$0x.c(2)))
-            .executes($$0x -> a((du)$$0x.getSource(), ((du)$$0x.getSource()).h()))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("schedule").requires($$0x -> $$0x.c(2)))
+               .then(
+                  dt.a("function")
+                     .then(
+                        dt.a("function", fv.a())
+                           .suggests(aiy.b)
+                           .then(
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("time", fd.a())
+                                       .executes($$0x -> a((ds)$$0x.getSource(), fv.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
+                                    .then(
+                                       dt.a("append")
+                                          .executes(
+                                             $$0x -> a((ds)$$0x.getSource(), fv.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
+                                          )
+                                    ))
+                                 .then(
+                                    dt.a("replace")
+                                       .executes($$0x -> a((ds)$$0x.getSource(), fv.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
+                                 )
+                           )
+                     )
+               ))
+            .then(
+               dt.a("clear")
+                  .then(
+                     dt.a("function", StringArgumentType.greedyString())
+                        .suggests(c)
+                        .executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
+                  )
+            )
       );
    }
 
-   private static int a(du $$0, cdz $$1) {
-      csf $$2 = $$1.dN();
-      ip<cnq> $$3 = ip.a();
-      is<cnt> $$4 = $$2.I_().d(kd.aG);
-      is<cnr> $$5 = $$2.I_().d(kd.aF);
-      $$4.s()
-         .sorted(Comparator.comparing($$1x -> d.applyAsInt($$4.c($$1x).orElse(null))))
-         .forEachOrdered(
-            $$3x -> $$5.s()
-                  .sorted(Comparator.comparing($$1xx -> e.applyAsInt($$5.c($$1xx).orElse(null))))
-                  .forEachOrdered($$4x -> $$3.add(new cnq($$5.d($$4x), $$4.d($$3x))))
-         );
-      hx $$6 = $$1.dn().a($$1.cE(), 5);
-      int $$7 = cja.values().length - 1;
-      double $$8 = 3.0;
-      int $$9 = 0;
-      int $$10 = 0;
-
-      for (cnq $$11 : $$3) {
-         for (ciz $$12 : cja.values()) {
-            if ($$12 != cja.a) {
-               double $$13 = (double)$$6.u() + 0.5 - (double)($$9 % $$5.b()) * 3.0;
-               double $$14 = (double)$$6.v() + 0.5 + (double)($$10 % $$7) * 3.0;
-               double $$15 = (double)$$6.w() + 0.5 + (double)($$9 / $$5.b() * 10);
-               cai $$16 = new cai($$2, $$13, $$14, $$15);
-               $$16.r(180.0F);
-               $$16.e(true);
-
-               for (bla $$17 : bla.values()) {
-                  clj $$18 = a.get(Pair.of($$12, $$17));
-                  if ($$18 != null) {
-                     clo $$19 = new clo($$18);
-                     cnq.a($$2.I_(), $$19, $$11);
-                     $$16.a($$17, $$19);
-                     if ($$18 instanceof ciy) {
-                        ciy $$20 = (ciy)$$18;
-                        if ($$20.d() == cja.f) {
-                           $$16.b($$11.a().a().a($$11.b()).f().f(" ").b($$11.b().a().e()));
-                           $$16.n(true);
-                           continue;
-                        }
-                     }
-
-                     $$16.j(true);
-                  }
-               }
-
-               $$2.b($$16);
-               $$10++;
+   private static int a(ds $$0, Pair<agt, Either<gz<ds>, Collection<gz<ds>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
+      if ($$2 == 0) {
+         throw a.create();
+      } else {
+         long $$4 = $$0.e().W() + (long)$$2;
+         agt $$5 = (agt)$$1.getFirst();
+         eko<MinecraftServer> $$6 = $$0.l().aY().K().u();
+         ((Either)$$1.getSecond()).ifLeft($$6x -> {
+            String $$7 = $$5.toString();
+            if ($$3) {
+               $$6.a($$7);
             }
-         }
 
-         $$9++;
+            $$6.a($$7, $$4, new ekk($$5));
+            $$0.a(() -> vb.a("commands.schedule.created.function", vb.a($$5), $$2, $$4), true);
+         }).ifRight($$6x -> {
+            String $$7 = "#" + $$5;
+            if ($$3) {
+               $$6.a($$7);
+            }
+
+            $$6.a($$7, $$4, new ekl($$5));
+            $$0.a(() -> vb.a("commands.schedule.created.tag", vb.a($$5), $$2, $$4), true);
+         });
+         return Math.floorMod($$4, Integer.MAX_VALUE);
       }
+   }
 
-      $$0.a(() -> uv.b("Armorstands with trimmed armor spawned around you"), true);
-      return 1;
+   private static int a(ds $$0, String $$1) throws CommandSyntaxException {
+      int $$2 = $$0.l().aY().K().u().a($$1);
+      if ($$2 == 0) {
+         throw b.create($$1);
+      } else {
+         $$0.a(() -> vb.a("commands.schedule.cleared.success", $$2, $$1), true);
+         return $$2;
+      }
    }
 }

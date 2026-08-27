@@ -1,9 +1,13 @@
-public interface ats {
-   int a();
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   String b();
+public record ats<A>(Codec<A> a) {
+   @Deprecated
+   public static <A> ats<A> a(Codec<A> $$0) {
+      return new ats<>($$0);
+   }
 
-   default uv d() {
-      return uv.c(this.b());
+   public static <A> ats<A> a(MapCodec<A> $$0) {
+      return new ats<>($$0.codec());
    }
 }

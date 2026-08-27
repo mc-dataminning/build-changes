@@ -1,11 +1,21 @@
-import javax.annotation.Nullable;
+public enum djx implements aut {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-public interface djx {
-   @Nullable
-   djw c(int var1, int var2);
+   private final String d;
 
-   default void a(cso $$0, iy $$1) {
+   private djx(String $$0) {
+      this.d = $$0;
    }
 
-   crl q();
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

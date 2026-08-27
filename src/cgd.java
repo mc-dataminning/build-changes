@@ -1,87 +1,65 @@
-public abstract class cgd extends bkv {
-   protected static final afs<Integer> f = afv.a(cgd.class, afu.b);
-   protected static final afs<Integer> g = afv.a(cgd.class, afu.b);
-   protected static final afs<Float> h = afv.a(cgd.class, afu.d);
+public class cgd {
+   public static final cgd a = a("core");
+   public static final cgd b = a("idle");
+   public static final cgd c = a("work");
+   public static final cgd d = a("play");
+   public static final cgd e = a("rest");
+   public static final cgd f = a("meet");
+   public static final cgd g = a("panic");
+   public static final cgd h = a("raid");
+   public static final cgd i = a("pre_raid");
+   public static final cgd j = a("hide");
+   public static final cgd k = a("fight");
+   public static final cgd l = a("celebrate");
+   public static final cgd m = a("admire_item");
+   public static final cgd n = a("avoid");
+   public static final cgd o = a("ride");
+   public static final cgd p = a("play_dead");
+   public static final cgd q = a("long_jump");
+   public static final cgd r = a("ram");
+   public static final cgd s = a("tongue");
+   public static final cgd t = a("swim");
+   public static final cgd u = a("lay_spawn");
+   public static final cgd v = a("sniff");
+   public static final cgd w = a("investigate");
+   public static final cgd x = a("roar");
+   public static final cgd y = a("emerge");
+   public static final cgd z = a("dig");
+   private final String A;
+   private final int B;
 
-   public cgd(bkz<?> $$0, csf $$1) {
-      super($$0, $$1);
+   private cgd(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
+   }
+
+   public String a() {
+      return this.A;
+   }
+
+   private static cgd a(String $$0) {
+      return ir.a(kb.E, $$0, new cgd($$0));
    }
 
    @Override
-   public boolean a(bjt $$0, float $$1) {
-      if (this.dN().B || this.dI()) {
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
-      } else if (this.b($$0)) {
-         return false;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cgd $$1 = (cgd)$$0;
+         return this.A.equals($$1.A);
       } else {
-         this.m(-this.P());
-         this.d(10);
-         this.bq();
-         this.b(this.N() + $$1 * 10.0F);
-         this.a(dlx.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof cdz && ((cdz)$$0.d()).fU().d;
-         if (($$2 || !(this.N() > 40.0F)) && (!$$2 || !this.ai_())) {
-            if ($$2) {
-               this.am();
-            }
-         } else {
-            this.a($$0);
-         }
-
-         return true;
-      }
-   }
-
-   boolean ai_() {
-      return false;
-   }
-
-   public void b(clj $$0) {
-      this.al();
-      if (this.dN().Y().b(csb.i)) {
-         clo $$1 = new clo($$0);
-         if (this.ae()) {
-            $$1.a(this.af());
-         }
-
-         this.b($$1);
+         return false;
       }
    }
 
    @Override
-   protected void c_() {
-      this.an.a(f, 0);
-      this.an.a(g, 1);
-      this.an.a(h, 0.0F);
+   public int hashCode() {
+      return this.B;
    }
 
-   public void d(int $$0) {
-      this.an.b(f, $$0);
+   @Override
+   public String toString() {
+      return this.a();
    }
-
-   public void m(int $$0) {
-      this.an.b(g, $$0);
-   }
-
-   public void b(float $$0) {
-      this.an.b(h, $$0);
-   }
-
-   public float N() {
-      return this.an.b(h);
-   }
-
-   public int O() {
-      return this.an.b(f);
-   }
-
-   public int P() {
-      return this.an.b(g);
-   }
-
-   protected void a(bjt $$0) {
-      this.b(this.ah_());
-   }
-
-   abstract clj ah_();
 }

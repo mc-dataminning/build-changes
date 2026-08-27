@@ -1,285 +1,561 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fcc extends fby<cgu> {
-   private static final agm x = new agm("textures/gui/container/beacon.png");
-   static final agm y = new agm("container/beacon/button_disabled");
-   static final agm z = new agm("container/beacon/button_selected");
-   static final agm A = new agm("container/beacon/button_highlighted");
-   static final agm B = new agm("container/beacon/button");
-   static final agm C = new agm("container/beacon/confirm");
-   static final agm D = new agm("container/beacon/cancel");
-   private static final uv E = uv.c("block.minecraft.beacon.primary");
-   private static final uv F = uv.c("block.minecraft.beacon.secondary");
-   private final List<fcc.a> G = Lists.newArrayList();
+public abstract class fcc extends eya implements exk {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Set<String> b = Sets.newHashSet(new String[]{"http", "https"});
+   private static final vb c = vb.c("narrator.screen.usage");
+   public static final agt d = new agt("textures/gui/options_background.png");
+   protected final vb e;
+   private final List<eyc> k = Lists.newArrayList();
+   private final List<ezy> l = Lists.newArrayList();
    @Nullable
-   bkg H;
+   protected euk f;
+   private boolean m;
+   public int g;
+   public int h;
+   private final List<exk> n = Lists.newArrayList();
+   protected evu i;
    @Nullable
-   bkg I;
-
-   public fcc(final cgu $$0, cdy $$1, uv $$2) {
-      super($$0, $$1, $$2);
-      this.c = 230;
-      this.k = 219;
-      $$0.a(new chd() {
-         @Override
-         public void a(cgr $$0x, int $$1, clo $$2) {
-         }
-
-         @Override
-         public void a(cgr $$0x, int $$1, int $$2) {
-            fcc.this.H = $$0.m();
-            fcc.this.I = $$0.n();
+   private URI o;
+   private static final long p = TimeUnit.SECONDS.toMillis(2L);
+   private static final long q = p;
+   private static final long r = 750L;
+   private static final long t = 200L;
+   private static final long u = 200L;
+   private final fad v = new fad();
+   private long w = Long.MIN_VALUE;
+   private long x = Long.MAX_VALUE;
+   @Nullable
+   private ezy y;
+   @Nullable
+   private fcc.a z;
+   protected final Executor j = $$0x -> this.f.execute(() -> {
+         if (this.f.y == this) {
+            $$0x.run();
          }
       });
+
+   protected fcc(vb $$0) {
+      this.e = $$0;
    }
 
-   private <T extends evc & fcc.a> void a(T $$0) {
-      this.d($$0);
-      this.G.add($$0);
+   public vb m() {
+      return this.e;
+   }
+
+   public vb h() {
+      return this.m();
+   }
+
+   public final void c(evw $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$1, $$2, $$3);
+      if (this.z != null) {
+         $$0.a(this.i, this.z.a(), this.z.b(), $$1, $$2);
+         this.z = null;
+      }
    }
 
    @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.G.clear();
-      this.a(new fcc.c(this.t + 164, this.u + 107));
-      this.a(new fcc.b(this.t + 190, this.u + 107));
+   public void a(evw $$0, int $$1, int $$2, float $$3) {
+      this.b($$0, $$1, $$2, $$3);
 
-      for (int $$0 = 0; $$0 <= 2; $$0++) {
-         int $$1 = dfd.a[$$0].length;
-         int $$2 = $$1 * 22 + ($$1 - 1) * 2;
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            bkg $$4 = dfd.a[$$0][$$3];
-            fcc.d $$5 = new fcc.d(this.t + 76 + $$3 * 24 - $$2 / 2, this.u + 22 + $$0 * 25, $$4, true, $$0);
-            $$5.i = false;
-            this.a($$5);
-         }
+      for (exk $$4 : this.n) {
+         $$4.a($$0, $$1, $$2, $$3);
       }
-
-      int $$6 = 3;
-      int $$7 = dfd.a[3].length + 1;
-      int $$8 = $$7 * 22 + ($$7 - 1) * 2;
-
-      for (int $$9 = 0; $$9 < $$7 - 1; $$9++) {
-         bkg $$10 = dfd.a[3][$$9];
-         fcc.d $$11 = new fcc.d(this.t + 167 + $$9 * 24 - $$8 / 2, this.u + 47, $$10, false, 3);
-         $$11.i = false;
-         this.a($$11);
-      }
-
-      fcc.d $$12 = new fcc.g(this.t + 167 + ($$7 - 1) * 24 - $$8 / 2, this.u + 47, dfd.a[0][0]);
-      $$12.j = false;
-      this.a($$12);
    }
 
    @Override
-   public void C() {
-      super.C();
-      this.E();
-   }
-
-   void E() {
-      int $$0 = this.p.l();
-      this.G.forEach($$1 -> $$1.a($$0));
-   }
-
-   @Override
-   protected void b(eut $$0, int $$1, int $$2) {
-      $$0.a(this.i, E, 62, 10, 14737632);
-      $$0.a(this.i, F, 169, 10, 14737632);
-   }
-
-   @Override
-   protected void a(eut $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 100.0F);
-      $$0.a(new clo(clr.oG), $$4 + 20, $$5 + 109);
-      $$0.a(new clo(clr.ow), $$4 + 41, $$5 + 109);
-      $$0.a(new clo(clr.ov), $$4 + 41 + 22, $$5 + 109);
-      $$0.a(new clo(clr.oF), $$4 + 42 + 44, $$5 + 109);
-      $$0.a(new clo(clr.oB), $$4 + 42 + 66, $$5 + 109);
-      $$0.c().b();
-   }
-
-   @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   interface a {
-      void a(int var1);
-   }
-
-   class b extends fcc.f {
-      public b(int $$0, int $$1) {
-         super($$0, $$1, fcc.D, uu.e);
-      }
-
-      @Override
-      public void b() {
-         fcc.this.f.s.r();
-      }
-
-      @Override
-      public void a(int $$0) {
-      }
-   }
-
-   class c extends fcc.f {
-      public c(int $$0, int $$1) {
-         super($$0, $$1, fcc.C, uu.d);
-      }
-
-      @Override
-      public void b() {
-         fcc.this.f.I().b(new aea(Optional.ofNullable(fcc.this.H), Optional.ofNullable(fcc.this.I)));
-         fcc.this.f.s.r();
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.i = fcc.this.p.o() && fcc.this.H != null;
-      }
-   }
-
-   class d extends fcc.e {
-      private final boolean c;
-      protected final int a;
-      private bkg d;
-      private gbz l;
-
-      public d(int $$0, int $$1, bkg $$2, boolean $$3, int $$4) {
-         super($$0, $$1);
-         this.c = $$3;
-         this.a = $$4;
-         this.a($$2);
-      }
-
-      protected void a(bkg $$0) {
-         this.d = $$0;
-         this.l = eti.N().aD().a($$0);
-         this.a(ewp.a(this.b($$0), null));
-      }
-
-      protected vj b(bkg $$0) {
-         return uv.c($$0.d());
-      }
-
-      @Override
-      public void b() {
-         if (!this.a()) {
-            if (this.c) {
-               fcc.this.H = this.d;
-            } else {
-               fcc.this.I = this.d;
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256 && this.aE_()) {
+         this.aF_();
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         fag $$3 = (fag)(switch ($$0) {
+            case 258 -> this.l();
+            default -> null;
+            case 262 -> this.a(fai.d);
+            case 263 -> this.a(fai.c);
+            case 264 -> this.a(fai.b);
+            case 265 -> this.a(fai.a);
+         });
+         if ($$3 != null) {
+            evt $$4 = super.a($$3);
+            if ($$4 == null && $$3 instanceof fag.c) {
+               this.C();
+               $$4 = super.a($$3);
             }
 
-            fcc.this.E();
+            if ($$4 != null) {
+               this.a($$4);
+            }
          }
-      }
 
-      @Override
-      protected void a(eut $$0) {
-         $$0.a(this.p() + 2, this.r() + 2, 0, 18, 18, this.l);
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.i = this.a < $$0;
-         this.b(this.d == (this.c ? fcc.this.H : fcc.this.I));
-      }
-
-      @Override
-      protected vj aN_() {
-         return this.b(this.d);
+         return false;
       }
    }
 
-   abstract static class e extends euw implements fcc.a {
-      private boolean a;
+   private fag.c l() {
+      boolean $$0 = !q();
+      return new fag.c($$0);
+   }
 
-      protected e(int $$0, int $$1) {
-         super($$0, $$1, 22, 22, uu.a);
+   private fag.a a(fai $$0) {
+      return new fag.a($$0);
+   }
+
+   protected void c(eyc $$0) {
+      evt $$1 = evt.a(this, $$0.a(new fag.b()));
+      if ($$1 != null) {
+         this.a($$1);
+      }
+   }
+
+   private void C() {
+      evt $$0 = this.aN_();
+      if ($$0 != null) {
+         $$0.a(false);
+      }
+   }
+
+   @VisibleForTesting
+   protected void a(evt $$0) {
+      this.C();
+      $$0.a(true);
+   }
+
+   public boolean aE_() {
+      return true;
+   }
+
+   public void aF_() {
+      this.f.a(null);
+   }
+
+   protected <T extends eyc & exk & ezy> T d(T $$0) {
+      this.n.add($$0);
+      return this.e($$0);
+   }
+
+   protected <T extends exk> T a(T $$0) {
+      this.n.add($$0);
+      return $$0;
+   }
+
+   protected <T extends eyc & ezy> T e(T $$0) {
+      this.k.add($$0);
+      this.l.add($$0);
+      return $$0;
+   }
+
+   protected void f(eyc $$0) {
+      if ($$0 instanceof exk) {
+         this.n.remove((exk)$$0);
       }
 
-      protected e(int $$0, int $$1, uv $$2) {
-         super($$0, $$1, 22, 22, $$2);
+      if ($$0 instanceof ezy) {
+         this.l.remove((ezy)$$0);
       }
 
-      @Override
-      public void b(eut $$0, int $$1, int $$2, float $$3) {
-         agm $$4;
-         if (!this.i) {
-            $$4 = fcc.y;
-         } else if (this.a) {
-            $$4 = fcc.z;
-         } else if (this.n()) {
-            $$4 = fcc.A;
-         } else {
-            $$4 = fcc.B;
+      this.k.remove($$0);
+   }
+
+   protected void n() {
+      this.n.clear();
+      this.k.clear();
+      this.l.clear();
+   }
+
+   public static List<vb> a(euk $$0, cmh $$1) {
+      return $$1.a($$0.s, $$0.m.m ? cny.a.b : cny.a.a);
+   }
+
+   protected void a_(String $$0, boolean $$1) {
+   }
+
+   public boolean a(@Nullable vy $$0) {
+      if ($$0 == null) {
+         return false;
+      } else {
+         uz $$1 = $$0.h();
+         if (q()) {
+            if ($$0.j() != null) {
+               this.a_($$0.j(), false);
+            }
+         } else if ($$1 != null) {
+            if ($$1.a() == uz.a.a) {
+               if (!this.f.m.J().c()) {
+                  return false;
+               }
+
+               try {
+                  URI $$2 = new URI($$1.b());
+                  String $$3 = $$2.getScheme();
+                  if ($$3 == null) {
+                     throw new URISyntaxException($$1.b(), "Missing protocol");
+                  }
+
+                  if (!b.contains($$3.toLowerCase(Locale.ROOT))) {
+                     throw new URISyntaxException($$1.b(), "Unsupported protocol: " + $$3.toLowerCase(Locale.ROOT));
+                  }
+
+                  if (this.f.m.K().c()) {
+                     this.o = $$2;
+                     this.f.a(new fau(this::c, $$1.b(), false));
+                  } else {
+                     this.a($$2);
+                  }
+               } catch (URISyntaxException var5) {
+                  a.error("Can't open url for {}", $$1, var5);
+               }
+            } else if ($$1.a() == uz.a.b) {
+               URI $$5 = new File($$1.b()).toURI();
+               this.a($$5);
+            } else if ($$1.a() == uz.a.d) {
+               this.a_(aa.a($$1.b()), true);
+            } else if ($$1.a() == uz.a.c) {
+               String $$6 = aa.a($$1.b());
+               if ($$6.startsWith("/")) {
+                  if (!this.f.s.cn.d($$6.substring(1))) {
+                     a.error("Not allowed to run command with signed argument from click event: '{}'", $$6);
+                  }
+               } else {
+                  a.error("Failed to run command without '/' prefix from click event: '{}'", $$6);
+               }
+            } else if ($$1.a() == uz.a.f) {
+               this.f.o.a($$1.b());
+            } else {
+               a.error("Don't know how to handle {}", $$1);
+            }
+
+            return true;
          }
 
-         $$0.a($$4, this.p(), this.r(), this.f, this.g);
+         return false;
+      }
+   }
+
+   public final void b(euk $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.i = $$0.h;
+      this.g = $$1;
+      this.h = $$2;
+      if (!this.m) {
+         this.aP_();
+      } else {
+         this.c();
+      }
+
+      this.m = true;
+      this.d(false);
+      this.a(p);
+   }
+
+   protected void o() {
+      this.n();
+      this.C();
+      this.aP_();
+   }
+
+   @Override
+   public List<? extends eyc> i() {
+      return this.k;
+   }
+
+   protected void aP_() {
+   }
+
+   public void d() {
+   }
+
+   public void aG_() {
+   }
+
+   public void aH_() {
+   }
+
+   public void b(evw $$0, int $$1, int $$2, float $$3) {
+      if (this.f.r != null) {
          this.a($$0);
-      }
-
-      protected abstract void a(eut var1);
-
-      public boolean a() {
-         return this.a;
-      }
-
-      public void b(boolean $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(eyx $$0) {
-         this.c($$0);
+      } else {
+         this.b($$0);
       }
    }
 
-   abstract static class f extends fcc.e {
-      private final agm a;
+   public void a(evw $$0) {
+      $$0.b(0, 0, this.g, this.h, -1072689136, -804253680);
+   }
 
-      protected f(int $$0, int $$1, agm $$2, uv $$3) {
-         super($$0, $$1, $$3);
-         this.a = $$2;
+   public void b(evw $$0) {
+      $$0.a(0.25F, 0.25F, 0.25F, 1.0F);
+      int $$1 = 32;
+      $$0.a(d, 0, 0, 0, 0.0F, 0.0F, this.g, this.h, 32, 32);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   public boolean j() {
+      return true;
+   }
+
+   private void c(boolean $$0) {
+      if ($$0) {
+         this.a(this.o);
       }
 
-      @Override
-      protected void a(eut $$0) {
-         $$0.a(this.a, this.p() + 2, this.r() + 2, 18, 18);
+      this.o = null;
+      this.f.a(this);
+   }
+
+   private void a(URI $$0) {
+      ac.i().a($$0);
+   }
+
+   public static boolean p() {
+      return euk.a ? eny.a(euk.N().aL().i(), 343) || eny.a(euk.N().aL().i(), 347) : eny.a(euk.N().aL().i(), 341) || eny.a(euk.N().aL().i(), 345);
+   }
+
+   public static boolean q() {
+      return eny.a(euk.N().aL().i(), 340) || eny.a(euk.N().aL().i(), 344);
+   }
+
+   public static boolean r() {
+      return eny.a(euk.N().aL().i(), 342) || eny.a(euk.N().aL().i(), 346);
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 == 88 && p() && !q() && !r();
+   }
+
+   public static boolean e(int $$0) {
+      return $$0 == 86 && p() && !q() && !r();
+   }
+
+   public static boolean f(int $$0) {
+      return $$0 == 67 && p() && !q() && !r();
+   }
+
+   public static boolean g(int $$0) {
+      return $$0 == 65 && p() && !q() && !r();
+   }
+
+   protected void c() {
+      this.o();
+   }
+
+   public void a(euk $$0, int $$1, int $$2) {
+      this.g = $$1;
+      this.h = $$2;
+      this.c();
+   }
+
+   public static void a(Runnable $$0, String $$1, String $$2) {
+      try {
+         $$0.run();
+      } catch (Throwable var6) {
+         o $$4 = o.a(var6, $$1);
+         p $$5 = $$4.a("Affected screen");
+         $$5.a("Screen name", () -> $$2);
+         throw new y($$4);
       }
    }
 
-   class g extends fcc.d {
-      public g(int $$0, int $$1, bkg $$2) {
-         super($$0, $$1, $$2, false, 3);
+   protected boolean a(String $$0, char $$1, int $$2) {
+      int $$3 = $$0.indexOf(58);
+      int $$4 = $$0.indexOf(47);
+      if ($$1 == ':') {
+         return ($$4 == -1 || $$2 <= $$4) && $$3 == -1;
+      } else {
+         return $$1 == '/' ? $$2 > $$3 : $$1 == '_' || $$1 == '-' || $$1 >= 'a' && $$1 <= 'z' || $$1 >= '0' && $$1 <= '9' || $$1 == '.';
       }
+   }
 
-      @Override
-      protected vj b(bkg $$0) {
-         return uv.c($$0.d()).f(" II");
+   @Override
+   public boolean a_(double $$0, double $$1) {
+      return true;
+   }
+
+   public void a(List<Path> $$0) {
+   }
+
+   private void a(long $$0, boolean $$1) {
+      this.x = ac.b() + $$0;
+      if ($$1) {
+         this.w = Long.MIN_VALUE;
       }
+   }
 
-      @Override
-      public void a(int $$0) {
-         if (fcc.this.H != null) {
-            this.j = true;
-            this.a(fcc.this.H);
-            super.a($$0);
-         } else {
-            this.j = false;
+   private void a(long $$0) {
+      this.w = ac.b() + $$0;
+   }
+
+   public void v() {
+      this.a(750L, false);
+   }
+
+   public void w() {
+      this.a(200L, true);
+   }
+
+   public void x() {
+      this.a(200L, true);
+   }
+
+   private boolean G() {
+      return this.f.aU().a();
+   }
+
+   public void y() {
+      if (this.G()) {
+         long $$0 = ac.b();
+         if ($$0 > this.x && $$0 > this.w) {
+            this.e(true);
+            this.x = Long.MAX_VALUE;
          }
+      }
+   }
+
+   public void d(boolean $$0) {
+      if (this.G()) {
+         this.e($$0);
+      }
+   }
+
+   private void e(boolean $$0) {
+      this.v.a(this::a);
+      String $$1 = this.v.a(!$$0);
+      if (!$$1.isEmpty()) {
+         this.f.aU().a($$1);
+      }
+   }
+
+   protected boolean aO_() {
+      return true;
+   }
+
+   protected void a(faa $$0) {
+      $$0.a(ezz.a, this.h());
+      if (this.aO_()) {
+         $$0.a(ezz.d, c);
+      }
+
+      this.b($$0);
+   }
+
+   protected void b(faa $$0) {
+      List<ezy> $$1 = this.l.stream().filter(ezy::aL_).collect(Collectors.toList());
+      Collections.sort($$1, Comparator.comparingInt(exr::aK_));
+      fcc.b $$2 = a($$1, this.y);
+      if ($$2 != null) {
+         if ($$2.c.a()) {
+            this.y = $$2.a;
+         }
+
+         if ($$1.size() > 1) {
+            $$0.a(ezz.b, vb.a("narrator.position.screen", $$2.b + 1, $$1.size()));
+            if ($$2.c == ezy.a.c) {
+               $$0.a(ezz.d, this.z());
+            }
+         }
+
+         $$2.a.b($$0.a());
+      }
+   }
+
+   protected vb z() {
+      return vb.c("narration.component_list.usage");
+   }
+
+   @Nullable
+   public static fcc.b a(List<? extends ezy> $$0, @Nullable ezy $$1) {
+      fcc.b $$2 = null;
+      fcc.b $$3 = null;
+      int $$4 = 0;
+
+      for (int $$5 = $$0.size(); $$4 < $$5; $$4++) {
+         ezy $$6 = $$0.get($$4);
+         ezy.a $$7 = $$6.q();
+         if ($$7.a()) {
+            if ($$6 != $$1) {
+               return new fcc.b($$6, $$4, $$7);
+            }
+
+            $$3 = new fcc.b($$6, $$4, $$7);
+         } else if ($$7.compareTo($$2 != null ? $$2.c : ezy.a.a) > 0) {
+            $$2 = new fcc.b($$6, $$4, $$7);
+         }
+      }
+
+      return $$2 != null ? $$2 : $$3;
+   }
+
+   public void A() {
+      this.a(q, false);
+   }
+
+   public void b(List<atk> $$0) {
+      this.a($$0, few.a, true);
+   }
+
+   public void a(List<atk> $$0, fev $$1, boolean $$2) {
+      if (this.z == null || $$2) {
+         this.z = new fcc.a($$0, $$1);
+      }
+   }
+
+   protected void d(vb $$0) {
+      this.b(exs.a(this.f, $$0));
+   }
+
+   public void a(exs $$0, fev $$1, boolean $$2) {
+      this.a($$0.a(this.f), $$1, $$2);
+   }
+
+   protected static void a(ewf... $$0) {
+      for (ewf $$1 : $$0) {
+         $$1.j = false;
+      }
+   }
+
+   @Override
+   public fak s() {
+      return new fak(0, 0, this.g, this.h);
+   }
+
+   @Nullable
+   public aqz B() {
+      return null;
+   }
+
+   static record a(List<atk> a, fev b) {
+   }
+
+   public static class b {
+      public final ezy a;
+      public final int b;
+      public final ezy.a c;
+
+      public b(ezy $$0, int $$1, ezy.a $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

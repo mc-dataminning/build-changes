@@ -1,117 +1,132 @@
-public class fcb extends fcz<cgt> {
-   private static final agm x = new agm("container/anvil/text_field");
-   private static final agm y = new agm("container/anvil/text_field_disabled");
-   private static final agm z = new agm("container/anvil/error");
-   private static final agm A = new agm("textures/gui/container/anvil.png");
-   private static final uv B = uv.c("container.repair.expensive");
-   private evn C;
-   private final cdz D;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.Instant;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fcb(cgt $$0, cdy $$1, uv $$2) {
-      super($$0, $$1, $$2, A);
-      this.D = $$1.m;
-      this.l = 60;
+public class fcb extends fcc {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 25;
+   private static final vb c = vb.c("recover_world.title").a(n.r);
+   private static final vb k = vb.c("recover_world.bug_tracker");
+   private static final vb l = vb.c("recover_world.restore");
+   private static final vb m = vb.c("recover_world.no_fallback");
+   private static final vb n = vb.c("recover_world.done.title");
+   private static final vb o = vb.c("recover_world.done.success");
+   private static final vb p = vb.c("recover_world.done.failed");
+   private static final vb q = vb.c("recover_world.issue.none").a(n.k);
+   private static final vb r = vb.c("recover_world.issue.missing_file").a(n.m);
+   private final BooleanConsumer t;
+   private final ezv u = ezv.d().a(10);
+   private final vb v;
+   private final exb w;
+   private final exb x;
+   private final efu.c y;
+
+   public fcb(euk $$0, BooleanConsumer $$1, efu.c $$2) {
+      super(c);
+      this.t = $$1;
+      this.v = vb.a("recover_world.message", vb.b($$2.d()).a(n.h));
+      this.w = new exb(this.v, $$0.h);
+      this.y = $$2;
+      Exception $$3 = this.a($$2, false);
+      Exception $$4 = this.a($$2, true);
+      vb $$5 = vb.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
+      this.x = new exb($$5, $$0.h);
+      boolean $$6 = $$3 != null && $$4 == null;
+      this.u.c().b();
+      this.u.a(new exo(this.e, $$0.h));
+      this.u.a(this.w.b(true));
+      this.u.a(this.x);
+      ezv $$7 = ezv.e().a(5);
+      $$7.a(ewh.a(k, fau.b(this, "https://aka.ms/snapshotbugs?ref=game")).b(120, 20).a());
+      $$7.a(ewh.a(l, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : exs.a(m)).a()).i = $$6;
+      this.u.a($$7);
+      this.u.a(ewh.a(va.k, $$0x -> this.aF_()).b(120, 20).a());
+      this.u.a(this::d);
    }
 
-   @Override
-   protected void E() {
-      int $$0 = (this.g - this.c) / 2;
-      int $$1 = (this.h - this.k) / 2;
-      this.C = new evn(this.i, $$0 + 62, $$1 + 24, 103, 12, uv.c("container.repair"));
-      this.C.f(false);
-      this.C.m(-1);
-      this.C.n(-1);
-      this.C.d(false);
-      this.C.l(50);
-      this.C.b(this::a);
-      this.C.a("");
-      this.e(this.C);
-      this.c(this.C);
-      this.C.e(this.p.b(0).g());
-   }
-
-   @Override
-   public void a(eti $$0, int $$1, int $$2) {
-      String $$3 = this.C.a();
-      this.b($$0, $$1, $$2);
-      this.C.a($$3);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.s.r();
-      }
-
-      return !this.C.a($$0, $$1, $$2) && !this.C.e() ? super.a($$0, $$1, $$2) : true;
-   }
-
-   private void a(String $$0) {
-      cim $$1 = this.p.b(0);
-      if ($$1.g()) {
-         String $$2 = $$0;
-         if (!$$1.f().A() && $$0.equals($$1.f().y().getString())) {
-            $$2 = "";
-         }
-
-         if (this.p.a($$2)) {
-            this.f.s.cn.b(new adx($$2));
-         }
-      }
-   }
-
-   @Override
-   protected void b(eut $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.p.n();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         uv $$5;
-         if ($$3 >= 40 && !this.f.s.fU().d) {
-            $$5 = B;
-            $$4 = 16736352;
-         } else if (!this.p.b(2).g()) {
-            $$5 = null;
+   private void a(euk $$0) {
+      Exception $$1 = this.a(this.y, false);
+      Exception $$2 = this.a(this.y, true);
+      if ($$1 != null && $$2 == null) {
+         $$0.d(new fbi(vb.c("recover_world.restoring")));
+         fgu.a(this.y);
+         if (this.y.l()) {
+            $$0.a(new fav(this.t, n, o, va.j, va.k));
          } else {
-            $$5 = uv.a("container.repair.cost", $$3);
-            if (!this.p.b(2).a(this.D)) {
-               $$4 = 16736352;
-            }
+            $$0.a(new fap(() -> this.t.accept(false), n, p));
+         }
+      } else {
+         a.error(
+            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
+            $$1 != null ? $$1.getMessage() : "no issues",
+            $$2 != null ? $$2.getMessage() : "no issues"
+         );
+         $$0.a(new fap(() -> this.t.accept(false), n, p));
+      }
+   }
+
+   private vb a(efu.c $$0, boolean $$1, @Nullable Exception $$2) {
+      if ($$1 && $$2 instanceof FileNotFoundException) {
+         return vb.i();
+      } else {
+         vp $$3 = vb.i();
+         Instant $$4 = $$0.a($$1);
+         vp $$5 = $$4 != null ? vb.b(fhd.a.format($$4)) : vb.c("recover_world.state_entry.unknown");
+         $$3.b(vb.a("recover_world.state_entry", $$5.a(n.h)));
+         if ($$2 == null) {
+            $$3.b(q);
+         } else if ($$2 instanceof FileNotFoundException) {
+            $$3.b(r);
+         } else if ($$2 instanceof ta) {
+            $$3.b(vb.b($$2.getCause().toString()).a(n.m));
+         } else {
+            $$3.b(vb.b($$2.toString()).a(n.m));
          }
 
-         if ($$5 != null) {
-            int $$8 = this.c - 8 - this.i.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
-            $$0.b(this.i, $$5, $$8, 69, $$4);
+         return $$3;
+      }
+   }
+
+   @Nullable
+   private Exception a(efu.c $$0, boolean $$1) {
+      try {
+         if (!$$1) {
+            $$0.a($$0.f());
+         } else {
+            $$0.a($$0.g());
          }
+
+         return null;
+      } catch (su | ta | IOException var4) {
+         return var4;
       }
    }
 
    @Override
-   protected void a(eut $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p.b(0).g() ? x : y, this.t + 59, this.u + 20, 110, 16);
+   protected void aP_() {
+      super.aP_();
+      this.c();
    }
 
    @Override
-   public void d(eut $$0, int $$1, int $$2, float $$3) {
-      this.C.a($$0, $$1, $$2, $$3);
+   protected void c() {
+      this.x.j(this.g - 50);
+      this.w.j(this.g - 50);
+      this.u.a();
+      ezp.a(this.u, this.s());
    }
 
    @Override
-   protected void c(eut $$0, int $$1, int $$2) {
-      if ((this.p.b(0).g() || this.p.b(1).g()) && !this.p.b(this.p.o()).g()) {
-         $$0.a(z, $$1 + 99, $$2 + 45, 28, 21);
-      }
+   public vb h() {
+      return va.a(super.h(), this.v);
    }
 
    @Override
-   public void a(cgr $$0, int $$1, clo $$2) {
-      if ($$1 == 0) {
-         this.C.a($$2.b() ? "" : $$2.y().getString());
-         this.C.e(!$$2.b());
-         this.a(this.C);
-      }
+   public void aF_() {
+      this.t.accept(false);
    }
 }

@@ -1,29 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddi extends cxn implements cvi {
-   public static final MapCodec<ddi> c = b(ddi::new);
+public class ddi extends cvz {
+   public static final MapCodec<ddi> b = b(ddi::new);
+   public static final djg c = djf.z;
 
    @Override
-   public MapCodec<ddi> a() {
-      return c;
+   protected MapCodec<? extends ddi> a() {
+      return b;
    }
 
-   public ddi(dhm.d $$0) {
+   protected ddi(dio.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean b(csi $$0, hx $$1, dhn $$2) {
-      return true;
+   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
+      return $$1 == ia.b ? $$0.a(c, Boolean.valueOf(h($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
-      return true;
+   public dip a(coq $$0) {
+      dip $$1 = $$0.q().a_($$0.a().c());
+      return this.o().a(c, Boolean.valueOf(h($$1)));
+   }
+
+   private static boolean h(dip $$0) {
+      return $$0.a(arr.by);
    }
 
    @Override
-   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
-      a($$0, $$2, new clo(this));
+   protected void a(diq.a<cvz, dip> $$0) {
+      $$0.a(c);
    }
 }

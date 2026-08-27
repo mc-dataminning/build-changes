@@ -1,49 +1,60 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class ejl<C> {
-   private static final Logger b = LogUtils.getLogger();
-   public static final ejl<MinecraftServer> a = new ejl<MinecraftServer>().a(new eji.a()).a(new ejj.a());
-   private final Map<agm, ejk.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, ejk.a<C, ?>> d = Maps.newHashMap();
+public record ejl(Optional<Long> b, egd c) implements ejd {
+   public static final Codec<ejl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(atg.a(Codec.LONG, "period").forGetter(ejl::c), egd.a.fieldOf("value").forGetter(ejl::d)).apply($$0, ejl::new)
+   );
 
-   public ejl<C> a(ejk.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
+   @Override
+   public eje b() {
+      return ejf.r;
    }
 
-   private <T extends ejk<C>> ejk.a<C, T> a(Class<?> $$0) {
-      return (ejk.a<C, T>)this.d.get($$0);
+   @Override
+   public Set<eim<?>> a() {
+      return this.c.a();
    }
 
-   public <T extends ejk<C>> sd a(T $$0) {
-      ejk.a<C, T> $$1 = this.a($$0.getClass());
-      sd $$2 = new sd();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
+   public boolean a(ege $$0) {
+      amp $$1 = $$0.d();
+      long $$2 = $$1.X();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
    }
 
-   @Nullable
-   public ejk<C> a(sd $$0) {
-      agm $$1 = agm.a($$0.l("Type"));
-      ejk.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
-         }
+   public static ejl.a a(egd $$0) {
+      return new ejl.a($$0);
+   }
+
+   public Optional<Long> c() {
+      return this.b;
+   }
+
+   public egd d() {
+      return this.c;
+   }
+
+   public static class a implements ejd.a {
+      private Optional<Long> a = Optional.empty();
+      private final egd b;
+
+      public a(egd $$0) {
+         this.b = $$0;
+      }
+
+      public ejl.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public ejl a() {
+         return new ejl(this.a, this.b);
       }
    }
 }

@@ -1,23 +1,55 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface cta {
+   int K_();
 
-public class cta {
-   public static final Codec<cta> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aqu.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, cta::new)
-   );
-   private final ig<aqu> b;
-   private final double c;
+   int J_();
 
-   public cta(ig<aqu> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   default int ak() {
+      return this.J_() + this.K_();
    }
 
-   public ig<aqu> a() {
-      return this.b;
+   default int al() {
+      return this.an() - this.am();
    }
 
-   public double b() {
-      return this.c;
+   default int am() {
+      return ix.a(this.J_());
+   }
+
+   default int an() {
+      return ix.a(this.ak() - 1) + 1;
+   }
+
+   default boolean r(hv $$0) {
+      return this.d($$0.v());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 < this.J_() || $$0 >= this.ak();
+   }
+
+   default int e(int $$0) {
+      return this.f(ix.a($$0));
+   }
+
+   default int f(int $$0) {
+      return $$0 - this.am();
+   }
+
+   default int g(int $$0) {
+      return $$0 + this.am();
+   }
+
+   static cta e(final int $$0, final int $$1) {
+      return new cta() {
+         @Override
+         public int K_() {
+            return $$1;
+         }
+
+         @Override
+         public int J_() {
+            return $$0;
+         }
+      };
    }
 }

@@ -1,50 +1,86 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
 import java.util.List;
 import java.util.Optional;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class cls extends clj {
-   private static final String a = "Recipes";
-   private static final Logger b = LogUtils.getLogger();
+public class cls extends cmc {
+   private static final vb a = vb.c("painting.random").a(n.h);
+   private final blj<? extends caw> b;
 
-   public cls(clj.a $$0) {
-      super($$0);
+   public cls(blj<? extends caw> $$0, cmc.a $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   public bjc<clo> a(csf $$0, cdz $$1, bja $$2) {
-      clo $$3 = $$1.b($$2);
-      sd $$4 = $$3.v();
-      if (!$$1.fU().d) {
-         $$1.a($$2, clo.b);
-      }
-
-      if ($$4 != null && $$4.b("Recipes", 9)) {
-         if (!$$0.B) {
-            sj $$5 = $$4.c("Recipes", 8);
-            List<cov<?>> $$6 = Lists.newArrayList();
-            cow $$7 = $$0.n().aG();
-
-            for (int $$8 = 0; $$8 < $$5.size(); $$8++) {
-               String $$9 = $$5.j($$8);
-               Optional<cov<?>> $$10 = $$7.a(new agm($$9));
-               if (!$$10.isPresent()) {
-                  b.error("Invalid recipe: {}", $$9);
-                  return bjc.d($$3);
-               }
-
-               $$6.add($$10.get());
+   public bjl a(cos $$0) {
+      hv $$1 = $$0.a();
+      ia $$2 = $$0.k();
+      hv $$3 = $$1.a($$2);
+      cer $$4 = $$0.o();
+      cmh $$5 = $$0.n();
+      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
+         return bjl.e;
+      } else {
+         csy $$6 = $$0.q();
+         caw $$8;
+         if (this.b == blj.as) {
+            Optional<caz> $$7 = caz.a($$6, $$3, $$2);
+            if ($$7.isEmpty()) {
+               return bjl.b;
             }
 
-            $$1.a($$6);
-            $$1.b(arf.c.b(this));
+            $$8 = $$7.get();
+         } else if (this.b == blj.ag) {
+            $$8 = new cax($$6, $$3, $$2);
+         } else {
+            if (this.b != blj.T) {
+               return bjl.a($$6.B);
+            }
+
+            $$8 = new cav($$6, $$3, $$2);
          }
 
-         return bjc.a($$3, $$0.y_());
-      } else {
-         b.error("Tag not valid: {}", $$4);
-         return bjc.d($$3);
+         sj $$12 = $$5.v();
+         if ($$12 != null) {
+            blj.a($$6, $$4, $$8, $$12);
+         }
+
+         if ($$8.A()) {
+            if (!$$6.B) {
+               $$8.D();
+               $$6.a($$4, dmz.t, $$8.dk());
+               $$6.b($$8);
+            }
+
+            $$5.h(1);
+            return bjl.a($$6.B);
+         } else {
+            return bjl.b;
+         }
+      }
+   }
+
+   protected boolean a(cer $$0, ia $$1, cmh $$2, hv $$3) {
+      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   }
+
+   @Override
+   public void a(cmh $$0, @Nullable csy $$1, List<vb> $$2, cny $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.b == blj.as) {
+         sj $$4 = $$0.v();
+         if ($$4 != null && $$4.b("EntityTag", 10)) {
+            sj $$5 = $$4.p("EntityTag");
+            caz.c($$5).ifPresentOrElse($$1x -> {
+               $$1x.e().ifPresent($$1xx -> {
+                  $$2.add(vb.c($$1xx.a().b("painting", "title")).a(n.o));
+                  $$2.add(vb.c($$1xx.a().b("painting", "author")).a(n.h));
+               });
+               $$2.add(vb.a("painting.dimensions", aty.e(((cba)$$1x.a()).a(), 16), aty.e(((cba)$$1x.a()).b(), 16)));
+            }, () -> $$2.add(a));
+         } else if ($$3.b()) {
+            $$2.add(a);
+         }
       }
    }
 }

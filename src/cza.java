@@ -1,22 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class cza extends cvf {
-   public static final dih aE = did.R;
+public class cza extends cxt {
+   public static final MapCodec<cza> b = b(cza::new);
 
-   protected cza(dhm.d $$0) {
+   @Override
+   public MapCodec<cza> a() {
+      return b;
+   }
+
+   protected cza(dio.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends cza> a();
-
-   @Override
-   public dhn a(dhn $$0, dbr $$1) {
-      return $$0.a(aE, $$1.a($$0.c(aE)));
-   }
-
-   @Override
-   public dhn a(dhn $$0, dab $$1) {
-      return $$0.a($$1.a($$0.c(aE)));
+   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
+      return bjl.d;
    }
 }

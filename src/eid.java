@@ -1,69 +1,55 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.Set;
+import org.slf4j.Logger;
 
-public class eid {
-   private static final Codec<eib> t = kc.I.q().dispatch("condition", eib::b, eic::a);
-   public static final Codec<eib> a = asy.a((Supplier<Codec<eib>>)(() -> asy.e(t, ehp.b)));
-   public static final eic b = a("inverted", ehy.a);
-   public static final eic c = a("any_of", ehq.a);
-   public static final eic d = a("all_of", ehp.a);
-   public static final eic e = a("random_chance", eig.a);
-   public static final eic f = a("random_chance_with_looting", eih.a);
-   public static final eic g = a("entity_properties", eie.a);
-   public static final eic h = a("killed_by_player", eif.a);
-   public static final eic i = a("entity_scores", ehw.a);
-   public static final eic j = a("block_state_property", eia.a);
-   public static final eic k = a("match_tool", eii.a);
-   public static final eic l = a("table_bonus", ehr.a);
-   public static final eic m = a("survives_explosion", ehx.a);
-   public static final eic n = a("damage_source_properties", ehv.a);
-   public static final eic o = a("location_check", ehz.a);
-   public static final eic p = a("weather_check", eil.a);
-   public static final eic q = a("reference", eht.a);
-   public static final eic r = a("time_check", eij.a);
-   public static final eic s = a("value_check", eik.a);
+public class eid extends ehq {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<eid> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(ejz.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .apply($$0, eid::new)
+   );
+   private final ejy c;
+   private final boolean d;
 
-   private static eic a(String $$0, Codec<? extends eib> $$1) {
-      return is.a(kc.I, new agm($$0), new eic($$1));
+   private eid(List<ejd> $$0, ejy $$1, boolean $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static <T> Predicate<T> a(List<? extends Predicate<T>> $$0) {
-      List<Predicate<T>> $$1 = List.copyOf($$0);
-
-      return switch ($$1.size()) {
-         case 0 -> $$0x -> true;
-         case 1 -> (Predicate)$$1.get(0);
-         case 2 -> $$1.get(0).and($$1.get(1));
-         default -> $$1x -> {
-         for (Predicate<T> $$2 : $$1) {
-            if (!$$2.test((T)$$1x)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   @Override
+   public ehs b() {
+      return eht.j;
    }
 
-   public static <T> Predicate<T> b(List<? extends Predicate<T>> $$0) {
-      List<Predicate<T>> $$1 = List.copyOf($$0);
+   @Override
+   public Set<eim<?>> a() {
+      return this.c.a();
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> $$0x -> false;
-         case 1 -> (Predicate)$$1.get(0);
-         case 2 -> $$1.get(0).or($$1.get(1));
-         default -> $$1x -> {
-         for (Predicate<T> $$2 : $$1) {
-            if ($$2.test((T)$$1x)) {
-               return true;
-            }
-         }
+   @Override
+   public cmh a(cmh $$0, ege $$1) {
+      if ($$0.i()) {
+         int $$2 = $$0.l();
+         float $$3 = this.d ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - aty.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(aty.d($$4 * (float)$$2));
+      } else {
+         b.warn("Couldn't set damage of loot item {}", $$0);
+      }
 
-         return false;
-      };
-      };
+      return $$0;
+   }
+
+   public static ehq.a<?> a(ejy $$0) {
+      return a($$1 -> new eid($$1, $$0, false));
+   }
+
+   public static ehq.a<?> a(ejy $$0, boolean $$1) {
+      return a($$2 -> new eid($$2, $$0, $$1));
    }
 }

@@ -1,9 +1,8 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class nm {
-   private static final iv a = new iv();
-
-   public static CompletableFuture<ii.b> a(CompletableFuture<ii.b> $$0) {
-      return nl.a($$0, a);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface nm {
 }

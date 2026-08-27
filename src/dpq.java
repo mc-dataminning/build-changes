@@ -1,34 +1,21 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dpq extends dpp {
-   public dpq(Codec<dsl> $$0) {
-      super($$0);
+public abstract class dpq implements dpf {
+   protected final iz f;
+
+   protected static <P extends dpq> P1<Mu<P>, iz> a(Instance<P> $$0) {
+      return $$0.group(iz.v(16).optionalFieldOf("offset", iz.g).forGetter($$0x -> $$0x.f));
    }
 
-   @Override
-   protected boolean a(csg $$0, atw $$1, hx $$2, dhn $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      hx.a $$8 = $$2.j();
-
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(ib.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
-               }
-            }
-         }
-      }
-
-      return true;
+   protected dpq(iz $$0) {
+      this.f = $$0;
    }
+
+   public final boolean a(ctt $$0, hv $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
+   }
+
+   protected abstract boolean a(dip var1);
 }

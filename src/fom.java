@@ -1,40 +1,49 @@
-public class fom extends fpo {
-   fom(flo $$0, double $$1, double $$2, double $$3, double $$4) {
+public class fom extends fqw {
+   private final fqr a;
+
+   fom(fmt $$0, double $$1, double $$2, double $$3, double $$4, fqr $$5) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
-      this.C = true;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, atq.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, atq.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, atq.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.D *= 1.5F;
-      this.t = 6;
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
    }
 
    @Override
-   public fos b() {
-      return fos.b;
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * atq.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
    }
 
-   public static class a implements foq<jz> {
-      private final fpj a;
+   @Override
+   public fqa b() {
+      return fqa.d;
+   }
 
-      public a(fpj $$0) {
+   public static class a implements fpz<jy> {
+      private final fqr a;
+
+      public a(fqr $$0) {
          this.a = $$0;
       }
 
-      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fom $$8 = new fom($$1, $$2, $$3, $$4, $$5);
-         $$8.a(this.a);
-         return $$8;
+      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fom($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

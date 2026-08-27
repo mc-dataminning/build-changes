@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class bkp extends bkq {
+   public bkp(bkr $$0, int $$1) {
+      super($$0, $$1);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bkp {
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 1;
+   }
 }

@@ -1,64 +1,66 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class efz extends efo {
-   public static final Codec<efz> a = a(efz::new);
+public interface efz extends egb {
+   @Override
+   String g();
 
-   efz(List<efv> $$0, List<eib> $$1) {
-      super($$0, $$1);
-   }
+   void a(boolean var1);
+
+   int l();
+
+   void f(int var1);
+
+   void e(int var1);
+
+   int j();
 
    @Override
-   public efw a() {
-      return eft.h;
+   default void a(p $$0, cta $$1) {
+      egb.super.a($$0, $$1);
+      $$0.a("Level name", this::g);
+      $$0.a(
+         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
    }
 
-   @Override
-   protected efn a(List<? extends efn> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (efn)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (efn $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
+   int h();
 
-         return true;
-      };
-      };
-   }
+   void a(int var1);
 
-   public static efz.a a(efv.a<?>... $$0) {
-      return new efz.a($$0);
-   }
+   int v();
 
-   public static class a extends efv.a<efz.a> {
-      private final Builder<efv> a = ImmutableList.builder();
+   void g(int var1);
 
-      public a(efv.a<?>... $$0) {
-         for (efv.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   int w();
 
-      protected efz.a a() {
-         return this;
-      }
+   void h(int var1);
 
-      @Override
-      public efz.a c(efv.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   @Nullable
+   UUID x();
 
-      @Override
-      public efv b() {
-         return new efz(this.a.build(), this.f());
-      }
-   }
+   void a(UUID var1);
+
+   csv m();
+
+   void a(dkg.c var1);
+
+   dkg.c r();
+
+   boolean p();
+
+   void c(boolean var1);
+
+   boolean o();
+
+   void a(csv var1);
+
+   eko<MinecraftServer> u();
+
+   void a(long var1);
+
+   void b(long var1);
 }

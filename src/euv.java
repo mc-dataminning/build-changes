@@ -1,147 +1,136 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import org.joml.Matrix4f;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class euv implements AutoCloseable {
-   private static final agm a = new agm("textures/map/map_icons.png");
-   static final frh b = frh.s(a);
-   private static final int c = 128;
-   private static final int d = 128;
-   final gca e;
-   private final Int2ObjectMap<euv.a> f = new Int2ObjectOpenHashMap();
+public class euv {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "screenshots";
+   private int c;
+   private final DataOutputStream d;
+   private final byte[] e;
+   private final int f;
+   private final int g;
+   private File h;
 
-   public euv(gca $$0) {
-      this.e = $$0;
+   public static void a(File $$0, enp $$1, Consumer<vb> $$2) {
+      a($$0, null, $$1, $$2);
    }
 
-   public void a(int $$0, eeh $$1) {
-      this.b($$0, $$1).a();
+   public static void a(File $$0, @Nullable String $$1, enp $$2, Consumer<vb> $$3) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
+      } else {
+         b($$0, $$1, $$2, $$3);
+      }
    }
 
-   public void a(eob $$0, fqz $$1, int $$2, eeh $$3, boolean $$4, int $$5) {
-      this.b($$2, $$3).a($$0, $$1, $$4, $$5);
-   }
+   private static void b(File $$0, @Nullable String $$1, enp $$2, Consumer<vb> $$3) {
+      eoe $$4 = a($$2);
+      File $$5 = new File($$0, "screenshots");
+      $$5.mkdir();
+      File $$6;
+      if ($$1 == null) {
+         $$6 = a($$5);
+      } else {
+         $$6 = new File($$5, $$1);
+      }
 
-   private euv.a b(int $$0, eeh $$1) {
-      return (euv.a)this.f.compute($$0, ($$1x, $$2) -> {
-         if ($$2 == null) {
-            return new euv.a($$1x, $$1);
-         } else {
-            $$2.a($$1);
-            return $$2;
+      ac.g().execute(() -> {
+         try {
+            $$4.a($$6);
+            vb $$3x = vb.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new uz(uz.a.b, $$6.getAbsolutePath())));
+            $$3.accept(vb.a("screenshot.success", $$3x));
+         } catch (Exception var7) {
+            b.warn("Couldn't save screenshot", var7);
+            $$3.accept(vb.a("screenshot.failure", var7.getMessage()));
+         } finally {
+            $$4.close();
          }
       });
    }
 
-   public void a() {
-      ObjectIterator var1 = this.f.values().iterator();
-
-      while (var1.hasNext()) {
-         euv.a $$0 = (euv.a)var1.next();
-         $$0.close();
-      }
-
-      this.f.clear();
+   public static eoe a(enp $$0) {
+      int $$1 = $$0.c;
+      int $$2 = $$0.d;
+      eoe $$3 = new eoe($$1, $$2, false);
+      RenderSystem.bindTexture($$0.f());
+      $$3.a(0, true);
+      $$3.h();
+      return $$3;
    }
 
-   @Override
-   public void close() {
-      this.a();
+   private static File a(File $$0) {
+      String $$1 = ac.e();
+      int $$2 = 1;
+
+      while (true) {
+         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
+         if (!$$3.exists()) {
+            return $$3;
+         }
+
+         $$2++;
+      }
    }
 
-   class a implements AutoCloseable {
-      private eeh b;
-      private final gbm c;
-      private final frh d;
-      private boolean e = true;
+   public euv(File $$0, int $$1, int $$2, int $$3) throws IOException {
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      File $$4 = new File($$0, "screenshots");
+      $$4.mkdir();
+      String $$5 = "huge_" + ac.e();
+      int $$6 = 1;
 
-      a(int $$0, eeh $$1) {
-         this.b = $$1;
-         this.c = new gbm(128, 128, true);
-         agm $$2 = euv.this.e.a("map/" + $$0, this.c);
-         this.d = frh.s($$2);
+      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
+         $$6++;
       }
 
-      void a(eeh $$0) {
-         boolean $$1 = this.b != $$0;
-         this.b = $$0;
-         this.e |= $$1;
+      byte[] $$7 = new byte[18];
+      $$7[2] = 2;
+      $$7[12] = (byte)($$1 % 256);
+      $$7[13] = (byte)($$1 / 256);
+      $$7[14] = (byte)($$2 % 256);
+      $$7[15] = (byte)($$2 / 256);
+      $$7[16] = 24;
+      this.e = new byte[$$1 * $$3 * 3];
+      this.d = new DataOutputStream(new FileOutputStream(this.h));
+      this.d.write($$7);
+   }
+
+   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$3;
+      int $$6 = $$4;
+      if ($$3 > this.f - $$1) {
+         $$5 = this.f - $$1;
       }
 
-      public void a() {
-         this.e = true;
+      if ($$4 > this.g - $$2) {
+         $$6 = this.g - $$2;
       }
 
-      private void b() {
-         for (int $$0 = 0; $$0 < 128; $$0++) {
-            for (int $$1 = 0; $$1 < 128; $$1++) {
-               int $$2 = $$1 + $$0 * 128;
-               this.c.e().a($$1, $$0, edb.b(this.b.g[$$2]));
-            }
-         }
+      this.c = $$6;
 
-         this.c.d();
+      for (int $$7 = 0; $$7 < $$6; $$7++) {
+         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
+         int $$8 = ($$1 + $$7 * this.f) * 3;
+         $$0.get(this.e, $$8, $$5 * 3);
       }
+   }
 
-      void a(eob $$0, fqz $$1, boolean $$2, int $$3) {
-         if (this.e) {
-            this.b();
-            this.e = false;
-         }
+   public void a() throws IOException {
+      this.d.write(this.e, 0, this.f * 3 * this.c);
+   }
 
-         int $$4 = 0;
-         int $$5 = 0;
-         float $$6 = 0.0F;
-         Matrix4f $$7 = $$0.c().a();
-         eof $$8 = $$1.getBuffer(this.d);
-         $$8.a($$7, 0.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 1.0F).b($$3).e();
-         $$8.a($$7, 128.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 1.0F).b($$3).e();
-         $$8.a($$7, 128.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 0.0F).b($$3).e();
-         $$8.a($$7, 0.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 0.0F).b($$3).e();
-         int $$9 = 0;
-
-         for (eee $$10 : this.b.g()) {
-            if (!$$2 || $$10.b()) {
-               $$0.a();
-               $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F, -0.02F);
-               $$0.a(a.f.rotationDegrees((float)($$10.f() * 360) / 16.0F));
-               $$0.b(4.0F, 4.0F, 3.0F);
-               $$0.a(-0.125F, 0.125F, 0.0F);
-               byte $$11 = $$10.a();
-               float $$12 = (float)($$11 % 16 + 0) / 16.0F;
-               float $$13 = (float)($$11 / 16 + 0) / 16.0F;
-               float $$14 = (float)($$11 % 16 + 1) / 16.0F;
-               float $$15 = (float)($$11 / 16 + 1) / 16.0F;
-               Matrix4f $$16 = $$0.c().a();
-               float $$17 = -0.001F;
-               eof $$18 = $$1.getBuffer(euv.b);
-               $$18.a($$16, -1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$12, $$13).b($$3).e();
-               $$18.a($$16, 1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$13).b($$3).e();
-               $$18.a($$16, 1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$15).b($$3).e();
-               $$18.a($$16, -1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$12, $$15).b($$3).e();
-               $$0.b();
-               if ($$10.g() != null) {
-                  eur $$19 = eti.N().h;
-                  uv $$20 = $$10.g();
-                  float $$21 = (float)$$19.a($$20);
-                  float $$22 = atq.a(25.0F / $$21, 0.0F, 6.0F / 9.0F);
-                  $$0.a();
-                  $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F - $$21 * $$22 / 2.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F + 4.0F, -0.025F);
-                  $$0.b($$22, $$22, 1.0F);
-                  $$0.a(0.0F, 0.0F, -0.1F);
-                  $$19.a($$20, 0.0F, 0.0F, -1, false, $$0.c().a(), $$1, eur.a.a, Integer.MIN_VALUE, $$3);
-                  $$0.b();
-               }
-
-               $$9++;
-            }
-         }
-      }
-
-      @Override
-      public void close() {
-         this.c.close();
-      }
+   public File b() throws IOException {
+      this.d.close();
+      return this.h;
    }
 }

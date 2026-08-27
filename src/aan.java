@@ -1,74 +1,54 @@
-import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class aan implements wo<yh> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
-   private final Set<blz> f;
-   private final int g;
-
-   public aan(double $$0, double $$1, double $$2, float $$3, float $$4, Set<blz> $$5, int $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-   }
-
-   public aan(ty $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = blz.a($$0.readUnsignedByte());
-      this.g = $$0.n();
+public record aan(UUID a, int b, @Nullable vn c, vu.a d, @Nullable vb e, vf f, ux.b g) implements wu<yo> {
+   public aan(ue $$0) {
+      this($$0.p(), $$0.n(), $$0.c(vn::a), new vu.a($$0), $$0.c(ue::m), vf.a($$0), new ux.b($$0));
    }
 
    @Override
-   public void a(ty $$0) {
+   public void a(ue $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(blz.a(this.f));
-      $$0.c(this.g);
+      $$0.c(this.b);
+      $$0.a(this.c, vn::a);
+      this.d.a($$0);
+      $$0.a(this.e, ue::a);
+      vf.a($$0, this.f);
+      this.g.a($$0);
    }
 
-   public void a(yh $$0) {
+   public void a(yo $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public double d() {
+   public int d() {
       return this.b;
    }
 
-   public double e() {
+   @Nullable
+   public vn e() {
       return this.c;
    }
 
-   public float f() {
+   public vu.a f() {
       return this.d;
    }
 
-   public float g() {
+   @Nullable
+   public vb g() {
       return this.e;
    }
 
-   public int h() {
-      return this.g;
+   public vf h() {
+      return this.f;
    }
 
-   public Set<blz> i() {
-      return this.f;
+   public ux.b i() {
+      return this.g;
    }
 }

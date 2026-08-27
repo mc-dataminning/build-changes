@@ -1,17 +1,56 @@
-public abstract class geq extends gep implements gfi {
-   private boolean n;
+import com.google.common.collect.Lists;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   protected geq(aqu $$0, aqw $$1, atw $$2) {
-      super($$0, $$1, $$2);
+public class geq extends apx<List<String>> {
+   private static final agt a = new agt("texts/splashes.txt");
+   private static final auf b = auf.a();
+   private final List<String> c = Lists.newArrayList();
+   private final euz d;
+
+   public geq(euz $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public boolean m() {
-      return this.n;
+   protected List<String> a(aps $$0, bgc $$1) {
+      try {
+         List var4;
+         try (BufferedReader $$2 = euk.N().Y().openAsReader(a)) {
+            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
+         }
+
+         return var4;
+      } catch (IOException var8) {
+         return Collections.emptyList();
+      }
    }
 
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   protected void a(List<String> $$0, aps $$1, bgc $$2) {
+      this.c.clear();
+      this.c.addAll($$0);
+   }
+
+   @Nullable
+   public exl a() {
+      Calendar $$0 = Calendar.getInstance();
+      $$0.setTime(new Date());
+      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
+         return exl.a;
+      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
+         return exl.b;
+      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
+         return exl.c;
+      } else if (this.c.isEmpty()) {
+         return null;
+      } else {
+         return this.d != null && b.a(this.c.size()) == 42 ? new exl(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new exl(this.c.get(b.a(this.c.size())));
+      }
    }
 }

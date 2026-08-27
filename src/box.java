@@ -1,26 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public abstract class box<E extends blv> implements bnn<E>, brc<E> {
+   private bnm.a a;
 
-public class box {
-   private static final float b = 0.95F;
-   public static final int a = 3;
+   public box() {
+      this.a = bnm.a.a;
+   }
 
-   public static bnd<bll> a() {
-      return bqo.a((Function<bqo.b<bll>, ? extends App<bqo.c<bll>, bqr<bll>>>)($$0 -> $$0.group($$0.b(bum.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.z.i() <= 0.95F) {
-                  return false;
-               } else {
-                  hx $$5 = $$0.<ie>b($$1).b();
-                  if ($$5.a($$3.dn(), 3.0)) {
-                     dhn $$6 = $$2.a_($$5);
-                     if ($$6.a(cvh.od)) {
-                        cvb $$7 = (cvb)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
-                     }
-                  }
+   @Override
+   public final bnm.a a() {
+      return this.a;
+   }
 
-                  return true;
-               }
-            })));
+   @Override
+   public final boolean e(amp $$0, E $$1, long $$2) {
+      if (this.trigger($$0, $$1, $$2)) {
+         this.a = bnm.a.b;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public final void f(amp $$0, E $$1, long $$2) {
+      this.g($$0, $$1, $$2);
+   }
+
+   @Override
+   public final void g(amp $$0, E $$1, long $$2) {
+      this.a = bnm.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

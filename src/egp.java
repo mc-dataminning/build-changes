@@ -1,14 +1,20 @@
-import java.util.function.BiFunction;
+import java.util.Objects;
 import java.util.function.Consumer;
 
-public interface egp extends efd, BiFunction<clo, efc, clo> {
-   egq b();
+@FunctionalInterface
+interface egp {
+   egp b = ($$0, $$1) -> false;
+   egp c = ($$0, $$1) -> true;
 
-   static Consumer<clo> a(BiFunction<clo, efc, clo> $$0, Consumer<clo> $$1, efc $$2) {
-      return $$3 -> $$1.accept($$0.apply($$3, $$2));
+   boolean expand(ege var1, Consumer<egw> var2);
+
+   default egp and(egp $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
    }
 
-   public interface a {
-      egp b();
+   default egp or(egp $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
    }
 }

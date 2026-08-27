@@ -1,54 +1,38 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class elj<T> implements elm<T>, elo<T> {
-   private final List<elk<T>> a = Lists.newArrayList();
-   private final Set<elk<?>> b = new ObjectOpenCustomHashSet(elk.a);
+public final class elj implements eln {
+   private final elh a;
+   private final int b;
+   private final int c;
 
-   @Override
-   public void a(ell<T> $$0) {
-      elk<T> $$1 = new elk<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   elj(int $$0, int $$1) {
+      this.a = new elh((int)elr.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
    }
 
-   private void a(elk<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+   @Override
+   public boolean a(eln.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
+         }
       }
+
+      return true;
    }
 
    @Override
-   public boolean a(hx $$0, T $$1) {
-      return this.b.contains(elk.a($$1, $$0));
-   }
-
-   @Override
-   public int a() {
+   public int size() {
       return this.a.size();
    }
 
    @Override
-   public ta b(long $$0, Function<T, String> $$1) {
-      sj $$2 = new sj();
-
-      for (elk<T> $$3 : this.a) {
-         $$2.add($$3.a($$1));
-      }
-
-      return $$2;
-   }
-
-   public List<elk<T>> b() {
-      return List.copyOf(this.a);
-   }
-
-   public static <T> elj<T> a(sj $$0, Function<String, Optional<T>> $$1, crm $$2) {
-      elj<T> $$3 = new elj<>();
-      elk.a($$0, $$1, $$2, $$3::a);
-      return $$3;
+   public DoubleList a() {
+      return this.a;
    }
 }

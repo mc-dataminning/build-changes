@@ -1,157 +1,50 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class ffd extends fcc {
+   private static final int a = 600;
+   private final uc b;
+   private ewh c;
+   private int k;
+   private final ezv l = ezv.d();
 
-public class ffd extends faz {
-   private static final uv a = uv.c("gui.abuseReport.reason.title");
-   private static final uv b = uv.c("gui.abuseReport.reason.description");
-   private static final uv c = uv.c("gui.abuseReport.read_info");
-   private static final int k = 95;
-   private static final int l = 150;
-   private static final int m = 20;
-   private static final int n = 320;
-   private static final int o = 4;
-   @Nullable
-   private final faz p;
-   @Nullable
-   private ffd.a q;
-   @Nullable
-   fmp r;
-   private final Consumer<fmp> t;
-
-   public ffd(@Nullable faz $$0, @Nullable fmp $$1, Consumer<fmp> $$2) {
-      super(a);
-      this.p = $$0;
-      this.r = $$1;
-      this.t = $$2;
+   public ffd(vb $$0, uc $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   protected void aQ_() {
-      this.q = new ffd.a(this.f);
-      this.e(this.q);
-      ffd.a.a $$0 = x.a(this.r, this.q::a);
-      this.q.a($$0);
-      int $$1 = this.g / 2 - 150 - 5;
-      this.d(eve.a(c, ezr.b(this, "https://aka.ms/aboutjavareporting")).a($$1, this.l(), 150, 20).a());
-      int $$2 = this.g / 2 + 5;
-      this.d(eve.a(uu.d, $$0x -> {
-         ffd.a.a $$1x = this.q.f();
-         if ($$1x != null) {
-            this.t.accept($$1x.b());
-         }
-
-         this.f.a(this.p);
-      }).a($$2, this.l(), 150, 20).a());
-      super.aQ_();
+   public boolean aE_() {
+      return false;
    }
 
    @Override
-   public void a(eut $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.q.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      $$0.a(this.C(), this.E(), this.D(), this.F(), 2130706432);
-      $$0.b(this.i, b, this.C() + 4, this.E() + 4, -8421505);
-      ffd.a.a $$4 = this.q.f();
-      if ($$4 != null) {
-         int $$5 = this.C() + 4 + 16;
-         int $$6 = this.D() - 4;
-         int $$7 = this.E() + 4 + 9 + 2;
-         int $$8 = this.F() - 4;
-         int $$9 = $$6 - $$5;
-         int $$10 = $$8 - $$7;
-         int $$11 = this.i.b($$4.b.c(), $$9);
-         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
-      }
+   protected void aP_() {
+      this.l.c().b().a(10);
+      this.l.a(new exo(this.e, this.i));
+      this.c = this.l.a(ewh.a(va.p, $$0 -> this.b.a(faw.a)).a());
+      this.c.i = false;
+      this.l.a();
+      this.l.a($$1 -> {
+         ewf var10000 = this.d($$1);
+      });
+      this.c();
    }
 
    @Override
-   public void b(eut $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   private int l() {
-      return this.h - 20 - 4;
-   }
-
-   private int C() {
-      return (this.g - 320) / 2;
-   }
-
-   private int D() {
-      return (this.g + 320) / 2;
-   }
-
-   private int E() {
-      return this.h - 95 + 4;
-   }
-
-   private int F() {
-      return this.l() - 4;
+   protected void c() {
+      ezp.a(this.l, this.s());
    }
 
    @Override
-   public void aG_() {
-      this.f.a(this.p);
-   }
-
-   public class a extends ewa<ffd.a.a> {
-      public a(eti $$1) {
-         super($$1, ffd.this.g, ffd.this.h, 40, ffd.this.h - 95, 18);
-
-         for (fmp $$2 : fmp.values()) {
-            this.b(new ffd.a.a($$2));
-         }
+   public void d() {
+      super.d();
+      this.k++;
+      if (this.k == 600) {
+         this.c.i = true;
       }
 
-      @Nullable
-      public ffd.a.a a(fmp $$0) {
-         return this.i().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
-      }
-
-      @Override
-      public int b() {
-         return 320;
-      }
-
-      @Override
-      protected int c() {
-         return this.p() - 2;
-      }
-
-      public void a(@Nullable ffd.a.a $$0) {
-         super.a($$0);
-         ffd.this.r = $$0 != null ? $$0.b() : null;
-      }
-
-      public class a extends ewa.a<ffd.a.a> {
-         final fmp b;
-
-         public a(fmp $$1) {
-            this.b = $$1;
-         }
-
-         @Override
-         public void a(eut $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$3 + 1;
-            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
-            $$0.b(ffd.this.i, this.b.b(), $$10, $$11, -1);
-         }
-
-         @Override
-         public uv a() {
-            return uv.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return true;
-         }
-
-         public fmp b() {
-            return this.b;
-         }
+      if (this.b.k()) {
+         this.b.d();
+      } else {
+         this.b.p();
       }
    }
 }
