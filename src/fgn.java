@@ -1,61 +1,70 @@
-import java.util.Locale;
-import java.util.function.Supplier;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class fgn extends fgj {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = -6745839;
-   private static final int j = -4548257;
-   private static final int k = -10547572;
-   private final Supplier<Float> l;
+public class fgn extends ffc {
+   private static final fgr a = new fgr(
+      new akh("widget/tab_selected"), new akh("widget/tab"), new akh("widget/tab_selected_highlighted"), new akh("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int f = 2;
+   private final fhh m;
+   private final fhg n;
 
-   public fgn(fef $$0, bko $$1, Supplier<Float> $$2) {
-      super($$0, $$1);
-      this.l = $$2;
+   public fgn(fhh $$0, fhg $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
    @Override
-   protected void d(feh $$0, int $$1, int $$2, int $$3) {
-      float $$4 = (float)ayv.c / this.l.get();
-      this.a($$0, String.format("%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
+   public void b(fer $$0, int $$1, int $$2, float $$3) {
+      RenderSystem.enableBlend();
+      $$0.a(a.a(this.b(), this.A()), this.C(), this.D(), this.g, this.h);
+      RenderSystem.disableBlend();
+      fep $$4 = fde.Q().h;
+      int $$5 = this.j ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.a($$0, this.C() + 2, this.D() + 2, this.E() - 2, this.F());
+         this.b($$0, $$4, $$5);
+      }
+   }
+
+   protected void a(fer $$0, int $$1, int $$2, int $$3, int $$4) {
+      fld.a($$0, fld.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
+   }
+
+   public void a(fer $$0, fep $$1, int $$2) {
+      int $$3 = this.C() + 1;
+      int $$4 = this.D() + (this.b() ? 0 : 3);
+      int $$5 = this.C() + this.x() - 1;
+      int $$6 = this.D() + this.v();
+      a($$0, $$1, this.y(), $$3, $$4, $$5, $$6, $$2);
+   }
+
+   private void b(fer $$0, fep $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.y()), this.x() - 4);
+      int $$4 = this.C() + (this.x() - $$3) / 2;
+      int $$5 = this.D() + this.v() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
    }
 
    @Override
-   protected void c(feh $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3, bkp.b.ordinal());
-      int $$5 = this.b((double)$$4);
-      $$0.a(gbm.E(), $$2, $$1 - $$5, $$2 + 1, $$1, -6745839);
-      long $$6 = this.e.a($$3, bkp.c.ordinal());
-      int $$7 = this.b((double)$$6);
-      $$0.a(gbm.E(), $$2, $$1 - $$5 - $$7, $$2 + 1, $$1 - $$5, -4548257);
-      long $$8 = this.e.a($$3) - this.e.a($$3, bkp.d.ordinal()) - $$4 - $$6;
-      int $$9 = this.b((double)$$8);
-      $$0.a(gbm.E(), $$2, $$1 - $$9 - $$7 - $$5, $$2 + 1, $$1 - $$7 - $$5, -10547572);
+   protected void a(fja $$0) {
+      $$0.a(fiz.a, wu.a("gui.narrate.tab", this.n.a()));
    }
 
    @Override
-   protected long b(int $$0) {
-      return this.e.a($$0) - this.e.a($$0, bkp.d.ordinal());
+   public void a(grq $$0) {
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   public fhg a() {
+      return this.n;
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / (double)this.l.get().floatValue());
-   }
-
-   @Override
-   protected int a(long $$0) {
-      float $$1 = this.l.get();
-      return this.a(c((double)$$0), (double)$$1, -16711936, (double)$$1 * 1.125, -256, (double)$$1 * 1.25, -65536);
-   }
-
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

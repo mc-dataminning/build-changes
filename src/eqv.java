@@ -1,41 +1,42 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class eqv extends eqy {
-   public static final Codec<eqv> a = a(eqv::new);
-   public static final Codec<eqv> b = b(eqv::new);
+public class eqv extends epw {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<eqv> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eqv::new));
 
-   eqv(List<erh> $$0) {
-      super($$0, ac.a($$0));
-   }
-
-   public static eqv a(List<erh> $$0) {
-      return new eqv(List.copyOf($$0));
+   private eqv(List<erq> $$0) {
+      super($$0);
    }
 
    @Override
-   public eri b() {
-      return erj.d;
+   public epy b() {
+      return epz.k;
    }
 
-   public static eqv.a a(erh.a... $$0) {
-      return new eqv.a($$0);
+   @Override
+   public csz a(csz $$0, eol $$1) {
+      if ($$0.d()) {
+         return $$0;
+      } else {
+         Optional<cxf<cxs>> $$2 = $$1.d().r().a(cxi.b, new bpv($$0), $$1.d());
+         if ($$2.isPresent()) {
+            csz $$3 = $$2.get().b().a($$1.d().H_());
+            if (!$$3.d()) {
+               return $$3.c($$0.G());
+            }
+         }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
+      }
    }
 
-   public static class a extends eqy.a {
-      public a(erh.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public eqv.a and(erh.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected erh a(List<erh> $$0) {
-         return new eqv($$0);
-      }
+   public static epw.a<?> c() {
+      return a(eqv::new);
    }
 }

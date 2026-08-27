@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ekj {
+public abstract class ekj {
+   public static final Codec<ekj> c = ld.o.q().dispatch("predicate_type", ekj::a, ekk::codec);
+
+   public abstract boolean a(dqh var1, ayg var2);
+
+   protected abstract ekk<?> a();
 }

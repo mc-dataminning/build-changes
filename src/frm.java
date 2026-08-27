@@ -1,53 +1,80 @@
-public class frm<T extends bql> extends fsa<T> {
-   private final fur a;
-   private final fur b;
-   private final fur f;
-   private final fur g;
+public class frm<T extends cds> extends fsz<T> {
+   private float q;
+   private float r;
+   private float s;
 
-   public frm(fur $$0) {
-      this.a = $$0;
-      this.b = $$0.b("body");
-      this.f = this.b.b("tail");
-      this.g = this.f.b("tail_fin");
+   public frm(fvb $$0) {
+      super($$0);
    }
 
-   public static fux b() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      float $$2 = 18.0F;
-      float $$3 = -8.0F;
-      fva $$4 = $$1.a("body", fuw.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), fut.a(0.0F, 22.0F, -5.0F));
-      $$4.a("back_fin", fuw.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), fut.b((float) (Math.PI / 3), 0.0F, 0.0F));
-      $$4.a(
-         "left_fin",
-         fuw.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         fut.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
-      );
-      $$4.a(
-         "right_fin",
-         fuw.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         fut.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
-      );
-      fva $$5 = $$4.a("tail", fuw.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), fut.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
-      $$5.a("tail_fin", fuw.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), fut.a(0.0F, 0.0F, 9.0F));
-      fva $$6 = $$4.a("head", fuw.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), fut.a(0.0F, -4.0F, -3.0F));
-      $$6.a("nose", fuw.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), fut.a);
-      return fux.a($$0, 64, 64);
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.q = $$0.G($$3);
+      this.r = $$0.H($$3);
+      this.s = $$0.I($$3);
+      if (this.q <= 0.0F) {
+         this.n.e = 0.0F;
+         this.n.g = 0.0F;
+         this.j.e = 0.0F;
+         this.j.g = 0.0F;
+         this.k.e = 0.0F;
+         this.k.g = 0.0F;
+         this.k.b = -1.2F;
+         this.h.e = 0.0F;
+         this.i.e = 0.0F;
+         this.i.g = 0.0F;
+         this.i.b = -1.1F;
+         this.i.c = 18.0F;
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+      if ($$0.y()) {
+         this.o.e = (float) (Math.PI / 4);
+         this.o.c += -4.0F;
+         this.o.d += 5.0F;
+         this.n.c += -3.3F;
+         this.n.d++;
+         this.l.c += 8.0F;
+         this.l.d += -2.0F;
+         this.m.c += 2.0F;
+         this.m.d += -0.8F;
+         this.l.e = 1.7278761F;
+         this.m.e = 2.670354F;
+         this.j.e = (float) (-Math.PI / 20);
+         this.j.c = 16.1F;
+         this.j.d = -7.0F;
+         this.k.e = (float) (-Math.PI / 20);
+         this.k.c = 16.1F;
+         this.k.d = -7.0F;
+         this.h.e = (float) (-Math.PI / 2);
+         this.h.c = 21.0F;
+         this.h.d = 1.0F;
+         this.i.e = (float) (-Math.PI / 2);
+         this.i.c = 21.0F;
+         this.i.d = 1.0F;
+         this.p = 3;
+      }
    }
 
-   @Override
-   public fur a() {
-      return this.a;
-   }
-
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      if ($$0.dq().i() > 1.0E-7) {
-         this.b.e = this.b.e + (-0.05F - 0.05F * axw.b($$3 * 0.3F));
-         this.f.e = -0.1F * axw.b($$3 * 0.3F);
-         this.g.e = -0.2F * axw.b($$3 * 0.3F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (this.q > 0.0F) {
+         this.n.g = fsy.a(this.n.g, -1.2707963F, this.q);
+         this.n.f = fsy.a(this.n.f, 1.2707963F, this.q);
+         this.j.e = -1.2707963F;
+         this.k.e = -0.47079635F;
+         this.k.g = -0.2F;
+         this.k.b = -0.2F;
+         this.h.e = -0.4F;
+         this.i.e = 0.5F;
+         this.i.g = -0.5F;
+         this.i.b = -0.3F;
+         this.i.c = 20.0F;
+         this.l.e = fsy.a(this.l.e, 0.8F, this.r);
+         this.m.e = fsy.a(this.m.e, -0.4F, this.r);
+      }
+
+      if (this.s > 0.0F) {
+         this.n.e = fsy.a(this.n.e, -0.58177644F, this.s);
       }
    }
 }

@@ -1,57 +1,48 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Optional;
 
-public class boa extends bnt {
-   public static final Codec<boa> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, boa::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
+public class boa<E extends bny> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   private boa(float $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   boa(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = bnz.a($$0);
    }
 
-   public static boa b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
+   public static <E extends bny> boa<E> c() {
+      return new boa<>(ImmutableList.of());
+   }
+
+   @SafeVarargs
+   public static <E extends bny> boa<E> a(E... $$0) {
+      return new boa<>(ImmutableList.copyOf($$0));
+   }
+
+   public static <E extends bny> boa<E> a(List<E> $$0) {
+      return new boa<>($$0);
+   }
+
+   public boolean d() {
+      return this.b.isEmpty();
+   }
+
+   public Optional<E> b(ayg $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
       } else {
-         return new boa($$0, $$1);
+         int $$1 = $$0.a(this.a);
+         return bnz.a(this.b, $$1);
       }
    }
 
-   @Override
-   public float a(ayd $$0) {
-      return axw.b($$0, this.b, this.d);
-   }
-
-   @Override
-   public float a() {
+   public List<E> e() {
       return this.b;
    }
 
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public bnu<?> c() {
-      return bnu.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
+   public static <E extends bny> Codec<boa<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(boa::a, boa::e);
    }
 }

@@ -1,29 +1,48 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public class eso implements esq<MinecraftServer> {
-   final akf a;
+public record eso(akh b, ev.g c) implements esl {
+   public static final Codec<eso> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akh.a.fieldOf("storage").forGetter(eso::c), ev.g.a.fieldOf("path").forGetter(eso::d)).apply($$0, eso::new)
+   );
 
-   public eso(akf $$0) {
-      this.a = $$0;
+   @Override
+   public esk b() {
+      return esm.f;
    }
 
-   public void a(MinecraftServer $$0, ess<MinecraftServer> $$1, long $$2) {
-      akt $$3 = $$0.aF();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   private Optional<uq> c(eol $$0) {
+      ua $$1 = $$0.d().o().aL().a(this.b);
+
+      try {
+         List<ux> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof uq $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return Optional.empty();
    }
 
-   public static class a extends esq.a<MinecraftServer, eso> {
-      public a() {
-         super(new akf("function"), eso.class);
-      }
+   @Override
+   public float b(eol $$0) {
+      return this.c($$0).map(uq::k).orElse(0.0F);
+   }
 
-      public void a(ty $$0, eso $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   @Override
+   public int a(eol $$0) {
+      return this.c($$0).map(uq::g).orElse(0);
+   }
 
-      public eso a(ty $$0) {
-         akf $$1 = new akf($$0.l("Name"));
-         return new eso($$1);
-      }
+   public akh c() {
+      return this.b;
+   }
+
+   public ev.g d() {
+      return this.c;
    }
 }

@@ -1,19 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public class ejs extends ejt {
-   public static final Codec<ejs> a = Codec.unit(() -> ejs.b);
-   public static final ejs b = new ejs();
+public class ejs extends ekj {
+   public static final Codec<ejs> a = ld.e.q().fieldOf("block").xmap(ejs::new, $$0 -> $$0.b).codec();
+   private final dde b;
 
-   private ejs() {
+   public ejs(dde $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public boolean a(im $$0, im $$1, im $$2, ayd $$3) {
-      return true;
+   public boolean a(dqh $$0, ayg $$1) {
+      return $$0.a(this.b);
    }
 
    @Override
-   protected eju<?> a() {
-      return eju.a;
+   protected ekk<?> a() {
+      return ekk.b;
    }
 }

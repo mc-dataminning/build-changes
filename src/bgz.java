@@ -1,42 +1,23 @@
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.Const.PrimitiveType;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.PrimitiveCodec;
+import java.util.Optional;
 
-public class bgz extends Schema {
-   public static final PrimitiveCodec<String> a = new PrimitiveCodec<String>() {
-      public <T> DataResult<String> read(DynamicOps<T> $$0, T $$1) {
-         return $$0.getStringValue($$1).map(bgz::a);
-      }
-
-      public <T> T a(DynamicOps<T> $$0, String $$1) {
-         return (T)$$0.createString($$1);
-      }
-
-      @Override
-      public String toString() {
-         return "NamespacedString";
-      }
-   };
-   private static final Type<String> b = new PrimitiveType(a);
-
-   public bgz(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bgz extends ber {
+   public bgz(Schema $$0, boolean $$1) {
+      super($$0, $$1, "Zombie Villager XP rebuild", bfs.z, "minecraft:zombie_villager");
    }
 
-   public static String a(String $$0) {
-      akf $$1 = akf.a($$0);
-      return $$1 != null ? $$1.toString() : $$0;
-   }
-
-   public static Type<String> a() {
-      return b;
-   }
-
-   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
-      return super.getChoiceType($$0, a($$1));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
+         if ($$1.isEmpty()) {
+            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
+            return $$0x.set("Xp", $$0x.createInt(bgr.a($$2)));
+         } else {
+            return $$0x;
+         }
+      });
    }
 }

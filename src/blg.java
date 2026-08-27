@@ -1,25 +1,31 @@
-public final class blg implements Comparable<blg> {
-   public final double a;
-   public final double b;
-   public final long c;
-   public final String d;
+import java.util.Optional;
 
-   public blg(String $$0, double $$1, double $$2, long $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public interface blg<S, T> {
+   Optional<T> a(blf<S> var1);
+
+   static <S, T> blg<S, T> a(blj<S> $$0, blg.a<S, T> $$1) {
+      return new blg.c<>($$1, $$0);
    }
 
-   public int a(blg $$0) {
-      if ($$0.a < this.a) {
-         return -1;
-      } else {
-         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
+   static <S, T> blg<S, T> a(blj<S> $$0, blg.b<T> $$1) {
+      return new blg.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
+   }
+
+   @FunctionalInterface
+   public interface a<S, T> {
+      Optional<T> run(blf<S> var1, blh var2);
+   }
+
+   @FunctionalInterface
+   public interface b<T> {
+      T run(blh var1);
+   }
+
+   public static record c<S, T>(blg.a<S, T> a, blj<S> b) implements blg<S, T> {
+      @Override
+      public Optional<T> a(blf<S> $$0) {
+         blh $$1 = new blh();
+         return this.b.a($$0, $$1, blb.a) ? this.a.run($$0, $$1) : Optional.empty();
       }
-   }
-
-   public int a() {
-      return (this.d.hashCode() & 11184810) + 4473924;
    }
 }

@@ -1,15 +1,21 @@
-public enum dro {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dro implements ayt {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
-   private final int d;
+   private final String d;
 
-   private dro(int $$0) {
+   private dro(String $$0) {
       this.d = $$0;
    }
 
-   public int a() {
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
       return this.d;
    }
 }

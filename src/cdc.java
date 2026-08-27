@@ -1,3 +1,8 @@
-public interface cdc {
-   boolean gC();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cdc {
 }

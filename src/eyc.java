@@ -1,73 +1,162 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import org.apache.commons.io.IOUtils;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class eyc {
-   public static List<eze> a(eyc.a... $$0) {
-      for (eyc.a $$1 : $$0) {
-         a($$1.j);
+   private final ImmutableList<eyd> a;
+   private final ImmutableMap<String, eyd> b;
+   private final IntList c = new IntArrayList();
+   private final int d;
+   @Nullable
+   private eya e;
+
+   public eyc(ImmutableMap<String, eyd> $$0) {
+      this.b = $$0;
+      this.a = $$0.values().asList();
+      int $$1 = 0;
+      UnmodifiableIterator var3 = $$0.values().iterator();
+
+      while (var3.hasNext()) {
+         eyd $$2 = (eyd)var3.next();
+         this.c.add($$1);
+         $$1 += $$2.e();
       }
 
-      List<eze> $$2 = Lists.newArrayList();
+      this.d = $$1;
+   }
 
-      for (eyc.a $$3 : $$0) {
-         $$2.add(new eze($$3.i, a($$3.j)));
+   @Override
+   public String toString() {
+      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
+   }
+
+   public int a() {
+      return this.b() / 4;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public ImmutableList<eyd> c() {
+      return this.a;
+   }
+
+   public ImmutableList<String> d() {
+      return this.b.keySet().asList();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         eyc $$1 = (eyc)$$0;
+         return this.d != $$1.d ? false : this.b.equals($$1.b);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::h);
+      } else {
+         this.h();
+      }
+   }
+
+   private void h() {
+      int $$0 = this.b();
+      List<eyd> $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
+      }
+   }
+
+   public void f() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::i);
+      } else {
+         this.i();
+      }
+   }
+
+   private void i() {
+      ImmutableList<eyd> $$0 = this.c();
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         eyd $$2 = (eyd)$$0.get($$1);
+         $$2.a($$1);
+      }
+   }
+
+   public eya g() {
+      eya $$0 = this.e;
+      if ($$0 == null) {
+         this.e = $$0 = new eya(eya.a.b);
       }
 
-      $$2.sort(Comparator.comparingInt(eze::a));
-      return $$2;
+      return $$0;
    }
 
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
+   public static enum a {
+      a(5123, 2),
+      b(5125, 4);
 
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
-         }
+      public final int c;
+      public final int d;
+
+      private a(int $$0, int $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      return (int)((double)$$2 / 5.0);
+      public static eyc.a a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
+      }
    }
 
-   private static long b() {
-      return ac.b();
-   }
+   public static enum b {
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
 
-   public static List<eze> a() {
-      return a(eyc.a.values());
-   }
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
 
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
-
-      final String i;
-      final String j;
-
-      private a(String $$0, String $$1) {
+      private b(int $$0, int $$1, int $$2, boolean $$3) {
          this.i = $$0;
          this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
+      }
+
+      public int a(int $$0) {
+         return switch (this) {
+            case b, c, d, e, f, g -> $$0;
+            case a, h -> $$0 / 4 * 6;
+            default -> 0;
+         };
       }
    }
 }

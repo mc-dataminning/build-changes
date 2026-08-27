@@ -1,30 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddm extends dcv {
-   public static final MapCodec<ddm> a = b(ddm::new);
-   protected static final ety b = dcv.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+public class ddm extends dcc {
+   public static final MapCodec<ddm> b = b(ddm::new);
+   public static final int c = 5;
+   private static final is[] d = is.values();
 
    @Override
-   public MapCodec<? extends ddm> a() {
-      return a;
+   public MapCodec<ddm> a() {
+      return b;
    }
 
-   public ddm(dpx.d $$0) {
+   public ddm(dqg.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      return b;
+   protected void b(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      if ($$3.a(5) == 0) {
+         is $$4 = d[$$3.a(d.length)];
+         in $$5 = $$2.a($$4);
+         dqh $$6 = $$1.a_($$5);
+         dde $$7 = null;
+         if (g($$6)) {
+            $$7 = ddg.qy;
+         } else if ($$6.a(ddg.qy) && $$6.c(dcd.d) == $$4) {
+            $$7 = ddg.qx;
+         } else if ($$6.a(ddg.qx) && $$6.c(dcd.d) == $$4) {
+            $$7 = ddg.qw;
+         } else if ($$6.a(ddg.qw) && $$6.c(dcd.d) == $$4) {
+            $$7 = ddg.qv;
+         }
+
+         if ($$7 != null) {
+            dqh $$8 = $$7.n().a(dcd.d, $$4).a(dcd.c, Boolean.valueOf($$6.u().a() == emb.c));
+            $$1.b($$5, $$8);
+         }
+      }
    }
 
-   @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      return !$$0.a($$3, $$4) ? dcx.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dpy $$0, czx $$1, im $$2) {
-      return !$$1.u($$2.d());
+   public static boolean g(dqh $$0) {
+      return $$0.i() || $$0.a(ddg.G) && $$0.u().e() == 8;
    }
 }

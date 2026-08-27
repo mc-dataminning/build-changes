@@ -1,176 +1,79 @@
-import com.google.common.collect.Iterables;
-import com.google.gson.JsonObject;
+import com.google.common.collect.Maps;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.BiFunction;
+import javax.annotation.Nullable;
 
-public class ep implements ArgumentType<gr> {
-   private static final Collection<String> g = Arrays.asList("Player", "0123", "@e", "@e[type=foo]", "dd12be42-52a9-4a91-a8a1-11c01849e498");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ws.c("argument.entity.toomany"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ws.c("argument.player.toomany"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ws.c("argument.player.entities"));
-   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(ws.c("argument.entity.notfound.entity"));
-   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(ws.c("argument.entity.notfound.player"));
-   public static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(ws.c("argument.entity.selector.not_allowed"));
-   final boolean h;
-   final boolean i;
+public class ep implements ArgumentType<ep.a> {
+   private static final Collection<String> a = Arrays.asList("eyes", "feet");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("argument.anchor.invalid", $$0));
 
-   protected ep(boolean $$0, boolean $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public static ep.a a(CommandContext<ed> $$0, String $$1) {
+      return (ep.a)$$0.getArgument($$1, ep.a.class);
    }
 
    public static ep a() {
-      return new ep(true, false);
+      return new ep();
    }
 
-   public static bql a(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
-      return ((gr)$$0.getArgument($$1, gr.class)).a((ec)$$0.getSource());
-   }
-
-   public static ep b() {
-      return new ep(false, false);
-   }
-
-   public static Collection<? extends bql> b(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends bql> $$2 = c($$0, $$1);
-      if ($$2.isEmpty()) {
-         throw d.create();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static Collection<? extends bql> c(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
-      return ((gr)$$0.getArgument($$1, gr.class)).b((ec)$$0.getSource());
-   }
-
-   public static Collection<aqf> d(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
-      return ((gr)$$0.getArgument($$1, gr.class)).d((ec)$$0.getSource());
-   }
-
-   public static ep c() {
-      return new ep(true, true);
-   }
-
-   public static aqf e(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
-      return ((gr)$$0.getArgument($$1, gr.class)).c((ec)$$0.getSource());
-   }
-
-   public static ep d() {
-      return new ep(false, true);
-   }
-
-   public static Collection<aqf> f(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
-      List<aqf> $$2 = ((gr)$$0.getArgument($$1, gr.class)).d((ec)$$0.getSource());
-      if ($$2.isEmpty()) {
-         throw e.create();
-      } else {
-         return $$2;
-      }
-   }
-
-   public gr a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = 0;
-      gs $$2 = new gs($$0);
-      gr $$3 = $$2.t();
-      if ($$3.a() > 1 && this.h) {
-         if (this.i) {
-            $$0.setCursor(0);
-            throw b.createWithContext($$0);
-         } else {
-            $$0.setCursor(0);
-            throw a.createWithContext($$0);
-         }
-      } else if ($$3.b() && this.i && !$$3.c()) {
-         $$0.setCursor(0);
-         throw c.createWithContext($$0);
+   public ep.a a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = $$0.readUnquotedString();
+      ep.a $$3 = ep.a.a($$2);
+      if ($$3 == null) {
+         $$0.setCursor($$1);
+         throw b.createWithContext($$0, $$2);
       } else {
          return $$3;
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if ($$0.getSource() instanceof eh $$2) {
-         StringReader $$3 = new StringReader($$1.getInput());
-         $$3.setCursor($$1.getStart());
-         gs $$4 = new gs($$3, $$2.c(2));
-
-         try {
-            $$4.t();
-         } catch (CommandSyntaxException var7) {
-         }
-
-         return $$4.a($$1, $$1x -> {
-            Collection<String> $$2x = $$2.q();
-            Iterable<String> $$3x = (Iterable<String>)(this.i ? $$2x : Iterables.concat($$2x, $$2.A()));
-            eh.b($$3x, $$1x);
-         });
-      } else {
-         return Suggestions.empty();
-      }
+      return ei.b(ep.a.c.keySet(), $$1);
    }
 
    public Collection<String> getExamples() {
-      return g;
+      return a;
    }
 
-   public static class a implements hw<ep, ep.a.a> {
-      private static final byte a = 1;
-      private static final byte b = 2;
+   public static enum a {
+      a("feet", ($$0, $$1) -> $$0),
+      b("eyes", ($$0, $$1) -> new etp($$0.c, $$0.d + (double)$$1.cJ(), $$0.e));
 
-      public void a(ep.a.a $$0, vs $$1) {
-         int $$2 = 0;
-         if ($$0.b) {
-            $$2 |= 1;
+      static final Map<String, ep.a> c = ac.a(Maps.newHashMap(), $$0 -> {
+         for (ep.a $$1 : values()) {
+            $$0.put($$1.d, $$1);
          }
+      });
+      private final String d;
+      private final BiFunction<etp, brh, etp> e;
 
-         if ($$0.c) {
-            $$2 |= 2;
-         }
-
-         $$1.k($$2);
+      private a(String $$0, BiFunction<etp, brh, etp> $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      public ep.a.a a(vs $$0) {
-         byte $$1 = $$0.readByte();
-         return new ep.a.a(($$1 & 1) != 0, ($$1 & 2) != 0);
+      @Nullable
+      public static ep.a a(String $$0) {
+         return c.get($$0);
       }
 
-      public void a(ep.a.a $$0, JsonObject $$1) {
-         $$1.addProperty("amount", $$0.b ? "single" : "multiple");
-         $$1.addProperty("type", $$0.c ? "players" : "entities");
+      public etp a(brh $$0) {
+         return this.e.apply($$0.dl(), $$0);
       }
 
-      public ep.a.a a(ep $$0) {
-         return new ep.a.a($$0.h, $$0.i);
-      }
-
-      public final class a implements hw.a<ep> {
-         final boolean b;
-         final boolean c;
-
-         a(boolean $$1, boolean $$2) {
-            this.b = $$1;
-            this.c = $$2;
-         }
-
-         public ep a(dy $$0) {
-            return new ep(this.b, this.c);
-         }
-
-         @Override
-         public hw<ep, ?> a() {
-            return a.this;
-         }
+      public etp a(ed $$0) {
+         brh $$1 = $$0.f();
+         return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
       }
    }
 }

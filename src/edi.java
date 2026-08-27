@@ -1,20 +1,17 @@
 import com.mojang.serialization.Codec;
 
-public class edi extends ecz {
-   public static final Codec<edi> b = dpy.b.fieldOf("state").xmap(edi::new, $$0 -> $$0.c).codec();
-   private final dpy c;
+public abstract class edi {
+   public static final Codec<edi> a = ld.V.q().dispatch(edi::a, edj::a);
 
-   protected edi(dpy $$0) {
-      this.c = $$0;
+   public static edr a(dqh $$0) {
+      return new edr($$0);
    }
 
-   @Override
-   protected eda<?> a() {
-      return eda.a;
+   public static edr a(dde $$0) {
+      return new edr($$0.n());
    }
 
-   @Override
-   public dpy a(ayd $$0, im $$1) {
-      return this.c;
-   }
+   protected abstract edj<?> a();
+
+   public abstract dqh a(ayg var1, in var2);
 }

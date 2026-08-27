@@ -1,49 +1,148 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.locks.LockSupport;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
+import javax.annotation.CheckReturnValue;
+import org.slf4j.Logger;
 
-public class boc extends bnv {
-   public static final Codec<boc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bna.b(bnv.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, boc::new)
-   );
-   private final bna<bnv> b;
-   private final int f;
-   private final int g;
+public abstract class boc<R extends Runnable> implements bnk, boe<R>, Executor {
+   private final String b;
+   private static final Logger c = LogUtils.getLogger();
+   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
+   private int e;
 
-   public boc(bna<bnv> $$0) {
+   protected boc(String $$0) {
       this.b = $$0;
-      List<bnc.b<bnv>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
+      bni.a.a(this);
+   }
 
-      for (bnc.b<bnv> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
+   protected abstract R f(Runnable var1);
+
+   protected abstract boolean e(R var1);
+
+   public boolean bv() {
+      return Thread.currentThread() == this.az();
+   }
+
+   protected abstract Thread az();
+
+   protected boolean ay() {
+      return !this.bv();
+   }
+
+   public int bw() {
+      return this.d.size();
+   }
+
+   @Override
+   public String bx() {
+      return this.b;
+   }
+
+   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
+      return this.ay() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
+   }
+
+   private CompletableFuture<Void> a(Runnable $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.run();
+         return null;
+      }, this);
+   }
+
+   @CheckReturnValue
+   public CompletableFuture<Void> g(Runnable $$0) {
+      if (this.ay()) {
+         return this.a($$0);
+      } else {
+         $$0.run();
+         return CompletableFuture.completedFuture(null);
       }
+   }
 
-      this.f = $$2;
-      this.g = $$3;
+   public void h(Runnable $$0) {
+      if (!this.bv()) {
+         this.a($$0).join();
+      } else {
+         $$0.run();
+      }
+   }
+
+   public void i(R $$0) {
+      this.d.add($$0);
+      LockSupport.unpark(this.az());
    }
 
    @Override
-   public int a(ayd $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+   public void execute(Runnable $$0) {
+      if (this.ay()) {
+         this.i(this.f($$0));
+      } else {
+         $$0.run();
+      }
+   }
+
+   public void c(Runnable $$0) {
+      this.execute($$0);
+   }
+
+   protected void by() {
+      this.d.clear();
+   }
+
+   protected void bz() {
+      while (this.A()) {
+      }
+   }
+
+   public boolean A() {
+      R $$0 = this.d.peek();
+      if ($$0 == null) {
+         return false;
+      } else if (this.e == 0 && !this.e($$0)) {
+         return false;
+      } else {
+         this.d(this.d.remove());
+         return true;
+      }
+   }
+
+   public void c(BooleanSupplier $$0) {
+      this.e++;
+
+      try {
+         while (!$$0.getAsBoolean()) {
+            if (!this.A()) {
+               this.z();
+            }
+         }
+      } finally {
+         this.e--;
+      }
+   }
+
+   public void z() {
+      Thread.yield();
+      LockSupport.parkNanos("waiting for tasks", 100000L);
+   }
+
+   protected void d(R $$0) {
+      try {
+         $$0.run();
+      } catch (Exception var3) {
+         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bx(), var3);
+         throw var3;
+      }
    }
 
    @Override
-   public int a() {
-      return this.f;
-   }
-
-   @Override
-   public int b() {
-      return this.g;
-   }
-
-   @Override
-   public bnw<?> c() {
-      return bnw.e;
+   public List<bnh> bu() {
+      return ImmutableList.of(bnh.a(this.b + "-pending-tasks", bng.b, this::bw));
    }
 }

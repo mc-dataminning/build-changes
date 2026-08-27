@@ -1,23 +1,20 @@
-public enum drj implements ayq {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+public enum drj implements ayt {
+   a("normal"),
+   b("sticky");
 
-   private final String e;
-   private final boolean f;
+   private final String c;
 
-   private drj(String $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   private drj(String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public boolean a() {
-      return this.f;
+      return this.c;
    }
 }

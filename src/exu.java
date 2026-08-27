@@ -1,207 +1,104 @@
-import java.util.function.Consumer;
+public interface exu extends eyb {
+   eyd j();
 
-public class exu {
-   public static exr a() {
-      throw new IllegalArgumentException();
+   void f();
+
+   void a(int var1, byte var2);
+
+   void a(int var1, short var2);
+
+   void a(int var1, float var2);
+
+   @Override
+   default eyb a(double $$0, double $$1, double $$2) {
+      if (this.j().b() != eyd.b.a) {
+         return this;
+      } else if (this.j().a() == eyd.a.a && this.j().c() == 3) {
+         this.a(0, (float)$$0);
+         this.a(4, (float)$$1);
+         this.a(8, (float)$$2);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
    }
 
-   public static exr a(exr $$0) {
-      return $$0;
+   @Override
+   default eyb a(int $$0, int $$1, int $$2, int $$3) {
+      eyd $$4 = this.j();
+      if ($$4.b() != eyd.b.c) {
+         return this;
+      } else if ($$4.a() == eyd.a.b && $$4.c() == 4) {
+         this.a(0, (byte)$$0);
+         this.a(1, (byte)$$1);
+         this.a(2, (byte)$$2);
+         this.a(3, (byte)$$3);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
    }
 
-   public static exr a(exr $$0, exr $$1) {
-      return new exu.a($$0, $$1);
-   }
-
-   public static exr a(exr... $$0) {
-      return new exu.b($$0);
-   }
-
-   static class a implements exr {
-      private final exr a;
-      private final exr b;
-
-      public a(exr $$0, exr $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
+   @Override
+   default eyb a(float $$0, float $$1) {
+      eyd $$2 = this.j();
+      if ($$2.b() == eyd.b.d && $$2.d() == 0) {
+         if ($$2.a() == eyd.a.a && $$2.c() == 2) {
+            this.a(0, $$0);
+            this.a(4, $$1);
+            this.f();
+            return this;
          } else {
-            this.a = $$0;
-            this.b = $$1;
+            throw new IllegalStateException();
          }
-      }
-
-      @Override
-      public exr a(double $$0, double $$1, double $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
+      } else {
          return this;
-      }
-
-      @Override
-      public exr a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public exr a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public exr a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public exr b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public exr a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-      }
-
-      @Override
-      public void e() {
-         this.a.e();
-         this.b.e();
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-         this.a.b($$0, $$1, $$2, $$3);
-         this.b.b($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public void l() {
-         this.a.l();
-         this.b.l();
       }
    }
 
-   static class b implements exr {
-      private final exr[] a;
+   @Override
+   default eyb a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 1);
+   }
 
-      public b(exr[] $$0) {
-         for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < $$0.length; $$2++) {
-               if ($$0[$$1] == $$0[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
-               }
-            }
-         }
+   @Override
+   default eyb b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 2);
+   }
 
-         this.a = $$0;
-      }
-
-      private void a(Consumer<exr> $$0) {
-         for (exr $$1 : this.a) {
-            $$0.accept($$1);
-         }
-      }
-
-      @Override
-      public exr a(double $$0, double $$1, double $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
+   default eyb a(short $$0, short $$1, int $$2) {
+      eyd $$3 = this.j();
+      if ($$3.b() != eyd.b.d || $$3.d() != $$2) {
          return this;
-      }
-
-      @Override
-      public exr a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
+      } else if ($$3.a() == eyd.a.e && $$3.c() == 2) {
+         this.a(0, $$0);
+         this.a(2, $$1);
+         this.f();
          return this;
+      } else {
+         throw new IllegalStateException();
       }
+   }
 
-      @Override
-      public exr a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
+   @Override
+   default eyb a(float $$0, float $$1, float $$2) {
+      eyd $$3 = this.j();
+      if ($$3.b() != eyd.b.b) {
          return this;
-      }
-
-      @Override
-      public exr a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
+      } else if ($$3.a() == eyd.a.c && $$3.c() == 3) {
+         this.a(0, a($$0));
+         this.a(1, a($$1));
+         this.a(2, a($$2));
+         this.f();
          return this;
+      } else {
+         throw new IllegalStateException();
       }
+   }
 
-      @Override
-      public exr b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public exr a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.a($$14 -> $$14.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13));
-      }
-
-      @Override
-      public void e() {
-         this.a(exr::e);
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.b($$0, $$1, $$2, $$3));
-      }
-
-      @Override
-      public void l() {
-         this.a(exr::l);
-      }
+   static byte a(float $$0) {
+      return (byte)((int)(axz.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
    }
 }

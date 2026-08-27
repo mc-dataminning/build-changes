@@ -1,37 +1,20 @@
-public class agq implements yz<afx> {
-   public static final yq<vs, agq> a = yz.a(agq::a, agq::new);
-   private final int b;
-   private final int c;
+public record agq(bkn b) implements zb<afz> {
+   public static final ys<vu, agq> a = zb.a(agq::a, agq::new);
 
-   public agq(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private agq(vu $$0) {
+      this($$0.b(bkn.class));
    }
 
-   private agq(vs $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(vs $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(vu $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zb<agq> a() {
-      return afv.bv;
+   public zd<agq> a() {
+      return afx.bt;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

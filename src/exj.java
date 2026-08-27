@@ -1,66 +1,40 @@
 import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.io.InputStream;
 
-public class exj {
-   @Nullable
-   private static exq a;
-
-   public static void a() {
-      if (a != null) {
-         b();
-         exq.b();
+public class exj extends exl {
+   private static final exe a = new exe() {
+      @Override
+      public String a(boolean $$0, String $$1) {
+         return "#error Import statement not supported";
       }
+   };
+   private int b;
+
+   private exj(exl.a $$0, int $$1, String $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static void b() {
-      a = null;
-   }
-
-   public static void a(exi.b $$0) {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> c($$0));
-      } else {
-         c($$0);
-      }
-   }
-
-   private static void c(exi.b $$0) {
-      exq $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      }
-   }
-
-   public static void b(exi.b $$0) {
-      exq $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.c();
-      }
-   }
-
-   @Nullable
-   private static exq d(exi.b $$0) {
+   public void a(exi $$0) {
       RenderSystem.assertOnRenderThread();
-      if ($$0.d()) {
-         $$0.e();
-         return null;
-      } else {
-         exq $$1 = a($$0.c().g());
-         $$1.a($$0);
-         return $$1;
+      this.b++;
+      this.a($$0);
+   }
+
+   @Override
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      this.b--;
+      if (this.b <= 0) {
+         super.a();
       }
    }
 
-   private static exq a(exs $$0) {
-      exq $$1 = $$0.g();
-      a($$1);
-      return $$1;
-   }
-
-   private static void a(exq $$0) {
-      if ($$0 != a) {
-         $$0.a();
-         a = $$0;
-      }
+   public static exj a(exl.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$4 = b($$0, $$1, $$2, $$3, a);
+      exj $$5 = new exj($$0, $$4, $$1);
+      $$0.c().put($$1, $$5);
+      return $$5;
    }
 }

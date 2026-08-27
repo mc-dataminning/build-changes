@@ -1,37 +1,70 @@
-public class fqy extends ftm<chb> {
-   private final fur a;
-
-   public fqy(fur $$0) {
-      super($$0);
-      this.a = $$0.b("head").b("mushrooms");
+public class fqy {
+   public static void a(fvb $$0, fvb $$1, fvb $$2, boolean $$3) {
+      fvb $$4 = $$3 ? $$0 : $$1;
+      fvb $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   public static fux c() {
-      fuz $$0 = fse.a(fuv.a, 0.0F);
-      fva $$1 = $$0.a();
-      ftm.a($$1);
-      fva $$2 = $$1.a("head").a("mushrooms", fuw.c(), fut.a);
-      $$2.a("red_mushroom_1", fuw.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fut.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("red_mushroom_2", fuw.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fut.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
-      $$2.a("brown_mushroom_1", fuw.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fut.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a(
-         "brown_mushroom_2", fuw.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fut.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
-      );
-      $$2.a(
-         "brown_mushroom_3",
-         fuw.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         fut.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
-      );
-      $$2.a(
-         "brown_mushroom_4",
-         fuw.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         fut.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
-      );
-      return fux.a($$0, 64, 32);
+   public static void a(fvb $$0, fvb $$1, bsa $$2, boolean $$3) {
+      fvb $$4 = $$3 ? $$0 : $$1;
+      fvb $$5 = $$3 ? $$1 : $$0;
+      $$4.f = $$3 ? -0.8F : 0.8F;
+      $$4.e = -0.97079635F;
+      $$5.e = $$4.e;
+      float $$6 = (float)crm.l($$2.fv());
+      float $$7 = axz.a((float)$$2.fx(), 0.0F, $$6);
+      float $$8 = $$7 / $$6;
+      $$5.f = axz.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
+      $$5.e = axz.i($$8, $$5.e, (float) (-Math.PI / 2));
    }
 
-   public void a(chb $$0, float $$1, float $$2, float $$3) {
-      this.a.k = !$$0.gt();
-      super.a($$0, $$1, $$2, $$3);
+   public static <T extends bsc> void a(fvb $$0, fvb $$1, T $$2, float $$3, float $$4) {
+      float $$5 = axz.a($$3 * (float) Math.PI);
+      float $$6 = axz.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2.fs() == bru.b) {
+         $$0.e = -1.8849558F + axz.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + axz.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      } else {
+         $$0.e = -0.0F + axz.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + axz.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+      }
+
+      a($$0, $$1, $$4);
+   }
+
+   public static void a(fvb $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (axz.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * axz.a($$1 * 0.067F) * 0.05F;
+   }
+
+   public static void a(fvb $$0, fvb $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
+   }
+
+   public static void a(fvb $$0, fvb $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = axz.a($$3 * (float) Math.PI);
+      float $$6 = axz.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

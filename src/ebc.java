@@ -1,16 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebc implements eay {
-   public static final Codec<ebc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dtq.c).fieldOf("height").forGetter($$0x -> $$0x.b), dpy.b.fieldOf("state").forGetter($$0x -> $$0x.c))
-            .apply($$0, ebc::new)
-   );
-   public final int b;
-   public final dpy c;
+public class ebc implements ebh {
+   public static final Codec<ebc> a = bor.b(0, 256).fieldOf("count").xmap(ebc::new, ebc::a).codec();
+   private final bor b;
 
-   public ebc(int $$0, dpy $$1) {
+   public ebc(int $$0) {
+      this.b = boo.a($$0);
+   }
+
+   public ebc(bor $$0) {
       this.b = $$0;
-      this.c = $$1;
+   }
+
+   public bor a() {
+      return this.b;
    }
 }

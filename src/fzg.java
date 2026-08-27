@@ -1,17 +1,117 @@
-public class fzg extends fxl {
-   protected fzg(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fzn $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
-   }
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   public static class a implements fyv<kz> {
-      private final fzn a;
-
-      public a(fzn $$0) {
-         this.a = $$0;
+public interface fzg {
+   fzg a = new fzg() {
+      @Override
+      public void a(exs $$0, gmz $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gmx.e);
+         $$0.a(eyc.b.h, exv.l);
       }
 
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzg($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      @Override
+      public void a(exz $$0) {
+         $$0.c();
       }
-   }
+
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
+      }
+   };
+   fzg b = new fzg() {
+      @Override
+      public void a(exs $$0, gmz $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gbh::u);
+         RenderSystem.setShaderTexture(0, gmx.f);
+         $$0.a(eyc.b.h, exv.l);
+      }
+
+      @Override
+      public void a(exz $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   fzg c = new fzg() {
+      @Override
+      public void a(exs $$0, gmz $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gmx.f);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         $$0.a(eyc.b.h, exv.l);
+      }
+
+      @Override
+      public void a(exz $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   fzg d = new fzg() {
+      @Override
+      public void a(exs $$0, gmz $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gmx.f);
+         $$0.a(eyc.b.h, exv.l);
+      }
+
+      @Override
+      public void a(exz $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_LIT";
+      }
+   };
+   fzg e = new fzg() {
+      @Override
+      public void a(exs $$0, gmz $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+      }
+
+      @Override
+      public void a(exz $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   fzg f = new fzg() {
+      @Override
+      public void a(exs $$0, gmz $$1) {
+      }
+
+      @Override
+      public void a(exz $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   void a(exs var1, gmz var2);
+
+   void a(exz var1);
 }

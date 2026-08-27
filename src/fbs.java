@@ -1,70 +1,58 @@
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class fbs extends fbu {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ws c = ws.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final fkt f;
-   private final String g;
+public class fbs {
+   private static final String a = "realms_persistence.json";
+   private static final eyv b = new eyv();
+   private static final Logger c = LogUtils.getLogger();
 
-   public fbs(long $$0, int $$1, String $$2, fkt $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public fbs.a a() {
+      return b();
    }
 
-   @Override
-   public void run() {
-      eyd $$0 = eyd.a();
-      int $$1 = 0;
+   public void a(fbs.a $$0) {
+      b($$0);
+   }
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
+   public static fbs.a b() {
+      Path $$0 = c();
 
-            ezk $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new fag(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (ezr var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (ezq var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new fah(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fbs.a $$2 = b.a($$1, fbs.a.class);
+         if ($$2 != null) {
+            return $$2;
          }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new fbs.a();
+   }
+
+   public static void b(fbs.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   @Override
-   public ws a() {
-      return c;
+   private static Path c() {
+      return fde.Q().p.toPath().resolve("realms_persistence.json");
+   }
+
+   public static class a implements ezn {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

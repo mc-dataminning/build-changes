@@ -1,67 +1,27 @@
-public class cwe extends cvy {
-   public cwe(cvw $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Consumer;
 
-   public boolean a(cnx $$0, czu $$1) {
-      int $$2 = 0;
-      csd $$3 = csd.i;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         csd $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if ($$5.a(csg.rU)) {
-               if (!$$3.d()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(csg.uj)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.d() && $$2 > 0;
-   }
-
-   public csd a(cnx $$0, jj $$1) {
-      int $$2 = 0;
-      csd $$3 = csd.i;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         csd $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if ($$5.a(csg.rU)) {
-               if (!$$3.d()) {
-                  return csd.i;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(csg.uj)) {
-                  return csd.i;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.d() && $$2 >= 1 ? $$3.c($$2 + 1) : csd.i;
-   }
+public record cwe(boolean c) implements cwd {
+   public static final Codec<cwe> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axh.a(Codec.BOOL, "show_in_tooltip", true).forGetter(cwe::a)).apply($$0, cwe::new)
+   );
+   public static final ys<ByteBuf, cwe> b = yq.b.a(cwe::new, cwe::a);
+   private static final wu d = wu.c("item.unbreakable").a(n.j);
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   public void a(Consumer<wu> $$0, cuq $$1) {
+      if (this.c) {
+         $$0.accept(d);
+      }
    }
 
-   @Override
-   public cwk<?> ao_() {
-      return cwk.e;
+   public cwe a(boolean $$0) {
+      return new cwe($$0);
+   }
+
+   public boolean a() {
+      return this.c;
    }
 }

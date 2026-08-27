@@ -1,57 +1,101 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.google.common.hash.Hashing;
 
-public class dbe extends dax implements dav.a {
-   public static final Codec<dbe> b = dat.c.fieldOf("biome").xmap(dbe::new, $$0 -> $$0.c).stable().codec();
-   private final iv<dat> c;
+public class dbe {
+   public static final int a = jh.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final dbe.a e;
+   private final long f;
 
-   public dbe(iv<dat> $$0) {
-      this.c = $$0;
+   public dbe(dbe.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Override
-   protected Stream<iv<dat>> b() {
-      return Stream.of(this.c);
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
    }
 
-   @Override
-   protected Codec<? extends dax> a() {
-      return b;
+   public dbe a(dbe.a $$0) {
+      return new dbe($$0, this.f);
    }
 
-   @Override
-   public iv<dat> getNoiseBiome(int $$0, int $$1, int $$2, dbc.f $$3) {
-      return this.c;
-   }
+   public iw<dbc> a(in $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
 
-   @Override
-   public iv<dat> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.c;
-   }
-
-   @Nullable
-   @Override
-   public Pair<im, iv<dat>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<iv<dat>> $$5, ayd $$6, boolean $$7, dbc.f $$8) {
-      if ($$5.test(this.c)) {
-         return $$7 ? Pair.of(new im($$0, $$1, $$2), this.c) : Pair.of(new im($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
-      } else {
-         return null;
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
+         }
       }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
    }
 
-   @Nullable
-   @Override
-   public Pair<im, iv<dat>> a(im $$0, int $$1, int $$2, int $$3, Predicate<iv<dat>> $$4, dbc.f $$5, czx $$6) {
-      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   public iw<dbc> a(double $$0, double $$1, double $$2) {
+      int $$3 = jh.a(axz.a($$0));
+      int $$4 = jh.a(axz.a($$1));
+      int $$5 = jh.a(axz.a($$2));
+      return this.a($$3, $$4, $$5);
    }
 
-   @Override
-   public Set<iv<dat>> a(int $$0, int $$1, int $$2, int $$3, dbc.f $$4) {
-      return Sets.newHashSet(Set.of(this.c));
+   public iw<dbc> b(in $$0) {
+      int $$1 = jh.a($$0.u());
+      int $$2 = jh.a($$0.v());
+      int $$3 = jh.a($$0.w());
+      return this.a($$1, $$2, $$3);
+   }
+
+   public iw<dbc> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = axv.a($$0, (long)$$1);
+      $$7 = axv.a($$7, (long)$$2);
+      $$7 = axv.a($$7, (long)$$3);
+      $$7 = axv.a($$7, (long)$$1);
+      $$7 = axv.a($$7, (long)$$2);
+      $$7 = axv.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = axv.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = axv.a($$7, $$0);
+      double $$10 = b($$7);
+      return axz.k($$6 + $$10) + axz.k($$5 + $$9) + axz.k($$4 + $$8);
+   }
+
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
+   }
+
+   public interface a {
+      iw<dbc> getNoiseBiome(int var1, int var2, int var3);
    }
 }

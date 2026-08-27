@@ -1,54 +1,53 @@
-public class fzo extends fze {
-   fzo(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, fzn $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)axg.b.b($$7), (float)axg.b.c($$7), (float)axg.b.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+public class fzo extends gac {
+   protected final fzx a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
+
+   protected fzo(fvw $$0, double $$1, double $$2, double $$3, fzx $$4, float $$5) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
+   }
+
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
+   }
+
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
+   }
+
+   @Override
+   public fzg b() {
+      return fzg.c;
    }
 
    @Override
    public void a() {
       super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(im.a(this.g, this.h, this.i)).i()) {
-            this.k -= 0.0074F;
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
          }
       }
    }
 
-   public static class a implements fyv<kz> {
-      private final fzn a;
-
-      public a(fzn $$0) {
-         this.a = $$0;
-      }
-
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzo($$1, $$2, $$3, $$4, $$5, $$6, $$7, axg.b.a(255, 204, 31, 102), this.a);
-      }
-   }
-
-   public static class b implements fyv<kz> {
-      private final fzn a;
-
-      public b(fzn $$0) {
-         this.a = $$0;
-      }
-
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzo($$1, $$2, $$3, $$4, $$5, $$6, $$7, axg.b.a(255, 255, 255, 255), this.a);
-      }
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 }

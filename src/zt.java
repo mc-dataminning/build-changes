@@ -1,29 +1,20 @@
-public class zt implements yz<zq> {
-   public static final yq<vs, zt> a = yz.a(zt::a, zt::new);
-   private final long b;
+public record zt(apw b) implements zb<zs> {
+   public static final ys<vu, zt> a = zb.a(zt::a, zt::new);
 
-   public zt(long $$0) {
-      this.b = $$0;
+   private zt(vu $$0) {
+      this(new apw($$0));
    }
 
-   private zt(vs $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vs $$0) {
-      $$0.b(this.b);
+   private void a(vu $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public zb<zt> a() {
-      return zp.l;
+   public zd<zt> a() {
+      return zr.j;
    }
 
-   public void a(zq $$0) {
+   public void a(zs $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

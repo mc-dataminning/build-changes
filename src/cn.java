@@ -1,31 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record cn(cs.d b) {
-   public static final Codec<cn> a = RecordCodecBuilder.create($$0 -> $$0.group(axe.a(cs.d.d, "light", cs.d.c).forGetter(cn::a)).apply($$0, cn::new));
-
-   public boolean a(aqe $$0, im $$1) {
-      return !$$0.p($$1) ? false : this.b.d($$0.A($$1));
+public class cn extends de<cn.a> {
+   @Override
+   public Codec<cn.a> a() {
+      return cn.a.a;
    }
 
-   public cs.d a() {
-      return this.b;
+   public void a(aqi $$0, etp $$1, int $$2) {
+      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
-   public static class a {
-      private cs.d a = cs.d.c;
+   public static record a(Optional<bc> b, Optional<bi> c, ct.d d) implements de.a {
+      public static final Codec<cn.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  axh.a(br.b, "player").forGetter(cn.a::a), axh.a(bi.a, "distance").forGetter(cn.a::b), axh.a(ct.d.d, "duration", ct.d.c).forGetter(cn.a::c)
+               )
+               .apply($$0, cn.a::new)
+      );
 
-      public static cn.a a() {
-         return new cn.a();
+      public static an<cn.a> a(bi $$0) {
+         return am.v.a(new cn.a(Optional.empty(), Optional.of($$0), ct.d.c));
       }
 
-      public cn.a a(cs.d $$0) {
-         this.a = $$0;
-         return this;
+      public boolean a(aqi $$0, etp $$1, int $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.ds(), $$0.du(), $$0.dy()) ? false : this.d.d($$2);
       }
 
-      public cn b() {
-         return new cn(this.a);
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
+
+      public Optional<bi> b() {
+         return this.c;
+      }
+
+      public ct.d c() {
+         return this.d;
       }
    }
 }

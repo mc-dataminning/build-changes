@@ -1,62 +1,15 @@
-public class fsx<T extends cdl> extends ftb<T> {
-   public fsx(fur $$0) {
-      super($$0, true, 16.0F, 4.0F, 2.25F, 2.0F, 24);
+import java.util.function.Function;
+
+public abstract class fsx {
+   protected final Function<akh, gbw> v;
+
+   public fsx(Function<akh, gbw> $$0) {
+      this.v = $$0;
    }
 
-   public static fux c() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      $$1.a(
-         "head",
-         fuw.c()
-            .a(0, 0)
-            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
-            .a(0, 44)
-            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
-            .a(26, 0)
-            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
-            .a(26, 0)
-            .a()
-            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
-         fut.a(0.0F, 10.0F, -16.0F)
-      );
-      $$1.a(
-         "body",
-         fuw.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
-         fut.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      int $$2 = 10;
-      fuw $$3 = fuw.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
-      $$1.a("right_hind_leg", $$3, fut.a(-4.5F, 14.0F, 6.0F));
-      $$1.a("left_hind_leg", $$3, fut.a(4.5F, 14.0F, 6.0F));
-      fuw $$4 = fuw.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
-      $$1.a("right_front_leg", $$4, fut.a(-3.5F, 14.0F, -8.0F));
-      $$1.a("left_front_leg", $$4, fut.a(3.5F, 14.0F, -8.0F));
-      return fux.a($$0, 128, 64);
+   public final gbw a(akh $$0) {
+      return this.v.apply($$0);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$3 - (float)$$0.ai;
-      float $$7 = $$0.G($$6);
-      $$7 *= $$7;
-      float $$8 = 1.0F - $$7;
-      this.b.e = (float) (Math.PI / 2) - $$7 * (float) Math.PI * 0.35F;
-      this.b.c = 9.0F * $$8 + 11.0F * $$7;
-      this.h.c = 14.0F * $$8 - 6.0F * $$7;
-      this.h.d = -8.0F * $$8 - 4.0F * $$7;
-      this.h.e -= $$7 * (float) Math.PI * 0.45F;
-      this.i.c = this.h.c;
-      this.i.d = this.h.d;
-      this.i.e -= $$7 * (float) Math.PI * 0.45F;
-      if (this.e) {
-         this.a.c = 10.0F * $$8 - 9.0F * $$7;
-         this.a.d = -16.0F * $$8 - 7.0F * $$7;
-      } else {
-         this.a.c = 10.0F * $$8 - 14.0F * $$7;
-         this.a.d = -16.0F * $$8 - 3.0F * $$7;
-      }
-
-      this.a.e += $$7 * (float) Math.PI * 0.15F;
-   }
+   public abstract void a(exx var1, eyb var2, int var3, int var4, float var5, float var6, float var7, float var8);
 }

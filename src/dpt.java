@@ -1,22 +1,76 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 public class dpt {
-   public static eta a(eta $$0, ir $$1, double $$2) {
-      double $$3 = $$2 * (double)$$1.f().a();
-      double $$4 = Math.min($$3, 0.0);
-      double $$5 = Math.max($$3, 0.0);
-      switch ($$1) {
-         case e:
-            return new eta($$0.a + $$4, $$0.b, $$0.c, $$0.a + $$5, $$0.e, $$0.f);
-         case f:
-            return new eta($$0.d + $$4, $$0.b, $$0.c, $$0.d + $$5, $$0.e, $$0.f);
-         case a:
-            return new eta($$0.a, $$0.b + $$4, $$0.c, $$0.d, $$0.b + $$5, $$0.f);
-         case b:
-         default:
-            return new eta($$0.a, $$0.e + $$4, $$0.c, $$0.d, $$0.e + $$5, $$0.f);
-         case c:
-            return new eta($$0.a, $$0.b, $$0.c + $$4, $$0.d, $$0.e, $$0.c + $$5);
-         case d:
-            return new eta($$0.a, $$0.b, $$0.f + $$4, $$0.d, $$0.e, $$0.f + $$5);
+   static final String a = "shared_data";
+   static Codec<dpt> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               csz.a("display_item").forGetter($$0x -> $$0x.d),
+               jq.c.optionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.optionalFieldOf("connected_particles_range", dpr.b.d()).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dpt::new)
+   );
+   private csz d = csz.i;
+   private Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private double f = dpr.b.d();
+   boolean c;
+
+   dpt(csz $$0, Set<UUID> $$1, double $$2) {
+      this.d = $$0;
+      this.e.addAll($$1);
+      this.f = $$2;
+   }
+
+   dpt() {
+   }
+
+   public csz a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return !this.d.d();
+   }
+
+   public void a(csz $$0) {
+      if (!csz.a(this.d, $$0)) {
+         this.d = $$0.r();
+         this.f();
       }
+   }
+
+   boolean c() {
+      return !this.e.isEmpty();
+   }
+
+   Set<UUID> d() {
+      return this.e;
+   }
+
+   double e() {
+      return this.f;
+   }
+
+   void a(aqh $$0, in $$1, dps $$2, dpr $$3, double $$4) {
+      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
+      if (!this.e.equals($$5)) {
+         this.e = $$5;
+         this.f();
+      }
+   }
+
+   private void f() {
+      this.c = true;
+   }
+
+   void a(dpt $$0) {
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
    }
 }

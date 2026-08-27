@@ -3,36 +3,39 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class fm implements ArgumentType<xp> {
-   private static final Collection<String> b = List.of("{\"bold\": true}\n");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ws.b("argument.style.invalid", $$0));
-   private final ix.a c;
+public class fm implements ArgumentType<cqa> {
+   private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("slot.unknown", $$0));
 
-   private fm(ix.a $$0) {
-      this.c = $$0;
+   public static fm a() {
+      return new fm();
    }
 
-   public static xp a(CommandContext<ec> $$0, String $$1) {
-      return (xp)$$0.getArgument($$1, xp.class);
+   public static cqa a(CommandContext<ed> $$0, String $$1) {
+      return (cqa)$$0.getArgument($$1, cqa.class);
    }
 
-   public static fm a(dy $$0) {
-      return new fm($$0);
-   }
-
-   public xp a(StringReader $$0) throws CommandSyntaxException {
-      try {
-         return eg.a(this.c, $$0, xp.b.b);
-      } catch (Exception var4) {
-         String $$2 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
-         throw a.createWithContext($$0, $$2);
+   public cqa a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = eh.a($$0, $$0x -> $$0x != ' ');
+      cqa $$2 = cqb.a($$1);
+      if ($$2 == null) {
+         throw b.createWithContext($$0, $$1);
+      } else {
+         return $$2;
       }
    }
 
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return ei.b(cqb.a(), $$1);
+   }
+
    public Collection<String> getExamples() {
-      return b;
+      return a;
    }
 }

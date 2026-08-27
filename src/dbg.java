@@ -1,84 +1,141 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dbg extends dax {
-   private static final MapCodec<iv<dat>> d = dat.c.fieldOf("biome");
-   public static final MapCodec<dbc.c<iv<dat>>> b = dbc.c.a(d).fieldOf("biomes");
-   private static final MapCodec<iv<dbh>> e = dbh.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final Codec<dbg> c = Codec.mapEither(b, e).xmap(dbg::new, $$0 -> $$0.f).codec();
-   private final Either<dbc.c<iv<dat>>, iv<dbh>> f;
+public abstract class dbg implements dbf {
+   public static final Codec<dbg> a = ld.ab.q().dispatchStable(dbg::a, Function.identity());
+   private final Supplier<Set<iw<dbc>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
 
-   private dbg(Either<dbc.c<iv<dat>>, iv<dbh>> $$0) {
-      this.f = $$0;
+   protected dbg() {
    }
 
-   public static dbg a(dbc.c<iv<dat>> $$0) {
-      return new dbg(Either.left($$0));
+   protected abstract Codec<? extends dbg> a();
+
+   protected abstract Stream<iw<dbc>> b();
+
+   public Set<iw<dbc>> c() {
+      return this.b.get();
    }
 
-   public static dbg a(iv<dbh> $$0) {
-      return new dbg(Either.right($$0));
+   public Set<iw<dbc>> a(int $$0, int $$1, int $$2, int $$3, dbl.f $$4) {
+      int $$5 = jh.a($$0 - $$3);
+      int $$6 = jh.a($$1 - $$3);
+      int $$7 = jh.a($$2 - $$3);
+      int $$8 = jh.a($$0 + $$3);
+      int $$9 = jh.a($$1 + $$3);
+      int $$10 = jh.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<iw<dbc>> $$14 = Sets.newHashSet();
+
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
+            }
+         }
+      }
+
+      return $$14;
    }
 
-   private dbc.c<iv<dat>> d() {
-      return (dbc.c<iv<dat>>)this.f.map($$0 -> $$0, $$0 -> ((dbh)$$0.a()).a());
+   @Nullable
+   public Pair<in, iw<dbc>> a(int $$0, int $$1, int $$2, int $$3, Predicate<iw<dbc>> $$4, ayg $$5, dbl.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   }
+
+   @Nullable
+   public Pair<in, iw<dbc>> a(in $$0, int $$1, int $$2, int $$3, Predicate<iw<dbc>> $$4, dbl.f $$5, dag $$6) {
+      Set<iw<dbc>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
+      } else {
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = axz.a($$0.v(), $$6.I_() + 1, $$6.al(), $$3).toArray();
+
+         for (in.a $$10 : in.a(in.c, $$8, is.f, is.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = jh.a($$11);
+            int $$14 = jh.a($$12);
+
+            for (int $$15 : $$9) {
+               int $$16 = jh.a($$15);
+               iw<dbc> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new in($$11, $$15, $$12), $$17);
+               }
+            }
+         }
+
+         return null;
+      }
+   }
+
+   @Nullable
+   public Pair<in, iw<dbc>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<iw<dbc>> $$5, ayg $$6, boolean $$7, dbl.f $$8) {
+      int $$9 = jh.a($$0);
+      int $$10 = jh.a($$2);
+      int $$11 = jh.a($$3);
+      int $$12 = jh.a($$1);
+      Pair<in, iw<dbc>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
+
+      while ($$16 <= $$11) {
+         for (int $$17 = aa.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
+
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
+
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               iw<dbc> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     in $$24 = new in(jh.c($$21), $$1, jh.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
+         }
+
+         $$16 += $$4;
+      }
+
+      return $$13;
    }
 
    @Override
-   protected Stream<iv<dat>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
-   }
+   public abstract iw<dbc> getNoiseBiome(int var1, int var2, int var3, dbl.f var4);
 
-   @Override
-   protected Codec<? extends dax> a() {
-      return c;
-   }
-
-   public boolean a(ake<dbh> $$0) {
-      Optional<iv<dbh>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
-   }
-
-   @Override
-   public iv<dat> getNoiseBiome(int $$0, int $$1, int $$2, dbc.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @ayz
-   public iv<dat> a(dbc.h $$0) {
-      return this.d().a($$0);
-   }
-
-   @Override
-   public void a(List<String> $$0, im $$1, dbc.f $$2) {
-      int $$3 = jg.a($$1.u());
-      int $$4 = jg.a($$1.v());
-      int $$5 = jg.a($$1.w());
-      dbc.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = dbc.a($$6.d());
-      float $$8 = dbc.a($$6.e());
-      float $$9 = dbc.a($$6.b());
-      float $$10 = dbc.a($$6.c());
-      float $$11 = dbc.a($$6.g());
-      double $$12 = (double)dvx.a($$11);
-      dbj $$13 = new dbj();
-      $$0.add(
-         "Biome builder PV: "
-            + dbj.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   public void a(List<String> $$0, in $$1, dbl.f $$2) {
    }
 }

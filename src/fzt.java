@@ -1,29 +1,56 @@
-public class fzt extends fze {
-   fzt(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fzn $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
+public class fzt extends fzk {
+   private final fzx b;
+   protected boolean a;
+
+   fzt(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fzx $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.b = $$7;
+      this.d(1.5F);
       this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      }
    }
 
-   public static class a implements fyv<kz> {
-      private final fzn a;
+   @Override
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
+   }
 
-      public a(fzn $$0) {
+   @Override
+   public fzg b() {
+      return fzg.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+   }
+
+   public static class a implements fzf<la> {
+      private final fzx a;
+
+      public a(fzx $$0) {
          this.a = $$0;
       }
 
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzt $$8 = new fzt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
+      }
+   }
+
+   public static class b implements fzf<la> {
+      private final fzx a;
+
+      public b(fzx $$0) {
+         this.a = $$0;
+      }
+
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzt $$8 = new fzt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

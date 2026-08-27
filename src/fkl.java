@@ -1,42 +1,64 @@
-public class fkl extends fkt {
-   protected final fkt b;
-   protected final fcy c;
-   public final fih d = new fih(this);
+public class fkl extends fjt {
+   private ffe c;
 
-   public fkl(fkt $$0, fcy $$1, ws $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
+   public fkl() {
+      super("");
    }
 
    @Override
    protected void aM_() {
-      this.m();
-      this.h();
-      this.d.a(this::c);
-      this.c();
-   }
-
-   protected void m() {
-      this.d.a(this.l, this.p);
-   }
-
-   protected void h() {
-      this.d.b(feu.a(wr.d, $$0 -> this.d()).a(200).a());
+      super.aM_();
+      this.c = ffe.a(wu.c("multiplayer.stopSleeping"), $$0 -> this.C()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
+      this.c(this.c);
    }
 
    @Override
-   protected void c() {
-      this.d.a();
-   }
-
-   @Override
-   public void j() {
-      this.m.m.av();
+   public void a(fer $$0, int $$1, int $$2, float $$3) {
+      if (!this.m.J().a(this.m.T())) {
+         this.c.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
    public void d() {
-      this.m.a(this.b);
+      this.C();
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.C();
+      }
+
+      if (!this.m.J().a(this.m.T())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.m.l.d().d();
+         return true;
+      }
+   }
+
+   private void C() {
+      fvx $$0 = this.m.s.h;
+      $$0.b(new ahd(this.m.s, ahd.a.c));
+   }
+
+   public void m() {
+      if (this.b.a().isEmpty()) {
+         this.m.a(null);
+      } else {
+         this.m.a(new fjt(this.b.a()));
+      }
    }
 }

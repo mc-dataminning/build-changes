@@ -1,43 +1,32 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.Codec;
 
-public class cba extends cbn<civ> {
+public enum cba implements ayt {
+   a("major_negative", -5, 100, 10, 10),
+   b("minor_negative", -1, 200, 20, 20),
+   c("minor_positive", 1, 25, 1, 5),
+   d("major_positive", 5, 20, 0, 20),
+   e("trading", 1, 25, 2, 20);
+
+   public static final int f = 25;
+   public static final int g = 20;
+   public static final int h = 2;
+   public final String i;
+   public final int j;
+   public final int k;
+   public final int l;
+   public final int m;
+   public static final Codec<cba> n = ayt.a(cba::values);
+
+   private cba(String $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+   }
+
    @Override
-   public Set<cah<?>> a() {
-      return ImmutableSet.of(cah.h, cah.aw, cah.aq, cah.ap, cah.as, cah.at, new cah[0]);
-   }
-
-   protected void a(aqe $$0, civ $$1) {
-      bsf<?> $$2 = $$1.dQ();
-      $$2.a(cah.aw, this.b($$0, $$1));
-      Optional<cjb> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<civ> $$5 = Lists.newArrayList();
-      caj $$6 = $$2.c(cah.h).orElse(caj.a());
-
-      for (bre $$7 : $$6.b($$0x -> !$$0x.p_() && ($$0x instanceof cjb || $$0x instanceof civ))) {
-         if ($$7 instanceof cjb $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
-            }
-         }
-
-         if ($$7 instanceof civ $$9) {
-            $$5.add($$9);
-         }
-      }
-
-      $$2.a(cah.aq, $$3);
-      $$2.a(cah.ap, $$5);
-      $$2.a(cah.as, $$4);
-      $$2.a(cah.at, $$5.size());
-   }
-
-   private Optional<im> b(aqe $$0, civ $$1) {
-      return im.a($$1.dn(), 8, 4, $$1x -> $$0.a_($$1x).a(avo.aS));
+   public String c() {
+      return this.i;
    }
 }

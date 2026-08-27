@@ -1,65 +1,42 @@
-public class bkk extends bki implements bko {
-   public static final int c = 240;
-   private final long[][] d;
-   private int e;
-   private int f;
+public abstract class bkk implements bkp {
+   protected final long[] a;
+   protected final long[] b;
 
-   public bkk(int $$0) {
-      this($$0, new long[$$0]);
-   }
-
-   public bkk(int $$0, long[] $$1) {
-      super($$0, $$1);
-      this.d = new long[240][$$0];
-   }
-
-   @Override
-   protected void a() {
-      int $$0 = this.b(this.e + this.f);
-      System.arraycopy(this.b, 0, this.d[$$0], 0, this.b.length);
-      if (this.f < 240) {
-         this.f++;
+   protected bkk(int $$0, long[] $$1) {
+      if ($$1.length != $$0) {
+         throw new IllegalArgumentException("defaults have incorrect length of " + $$1.length);
       } else {
-         this.e = this.b(this.e + 1);
+         this.b = new long[$$0];
+         this.a = $$1;
       }
    }
 
    @Override
-   public int c() {
-      return this.d.length;
+   public void a(long[] $$0) {
+      System.arraycopy($$0, 0, this.b, 0, $$0.length);
+      this.a();
+      this.b();
    }
 
    @Override
-   public int d() {
-      return this.f;
+   public void a(long $$0) {
+      this.b[0] = $$0;
+      this.a();
+      this.b();
    }
 
    @Override
-   public long a(int $$0) {
-      return this.a($$0, 0);
-   }
-
-   @Override
-   public long a(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 < this.f) {
-         long[] $$2 = this.d[this.b(this.e + $$0)];
-         if ($$1 >= 0 && $$1 < $$2.length) {
-            return $$2[$$1];
-         } else {
-            throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + $$2.length);
-         }
+   public void a(long $$0, int $$1) {
+      if ($$1 >= 1 && $$1 < this.b.length) {
+         this.b[$$1] = $$0;
       } else {
-         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.f);
+         throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + this.b.length);
       }
    }
 
-   private int b(int $$0) {
-      return $$0 % 240;
-   }
+   protected abstract void a();
 
-   @Override
-   public void e() {
-      this.e = 0;
-      this.f = 0;
+   protected void b() {
+      System.arraycopy(this.a, 0, this.b, 0, this.a.length);
    }
 }

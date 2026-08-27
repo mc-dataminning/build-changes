@@ -1,40 +1,76 @@
 import com.mojang.serialization.MapCodec;
 
-public class dbx extends dde implements dcy {
-   public static final MapCodec<dbx> a = b(dbx::new);
-   private static final ety b = etv.a(dcv.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dcv.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
+public abstract class dbx extends dde {
+   private static final int d = 2;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 2;
+   protected static final int a = 4;
+   private static final eui h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final eui b = euf.a(
+      euf.b(), euf.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), ett.e
+   );
+   protected final jt.a c;
 
    @Override
-   public MapCodec<dbx> a() {
-      return a;
-   }
+   protected abstract MapCodec<? extends dbx> a();
 
-   protected dbx(dpx.d $$0) {
+   public dbx(dqg.d $$0, jt.a $$1) {
       super($$0);
+      this.c = $$1;
+   }
+
+   protected double b(dqh $$0) {
+      return 0.0;
+   }
+
+   protected boolean a(dqh $$0, in $$1, brh $$2) {
+      return $$2.du() < (double)$$1.v() + this.b($$0) && $$2.cI().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+   protected bpo a(csz $$0, dqh $$1, dad $$2, in $$3, clh $$4, bpl $$5, etl $$6) {
+      jt $$7 = this.c.b().get($$0.f());
+      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
+   }
+
+   @Override
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
       return b;
    }
 
    @Override
-   protected boolean b(dpy $$0, cza $$1, im $$2) {
-      return $$0.a(dcx.dR) || super.b($$0, $$1, $$2);
+   protected eui a(dqh $$0, czj $$1, in $$2) {
+      return h;
    }
 
    @Override
-   public boolean b(czx $$0, im $$1, dpy $$2) {
-      return $$0.b_($$1.c()).c();
+   protected boolean c_(dqh $$0) {
+      return true;
    }
 
    @Override
-   public boolean a(czu $$0, ayd $$1, im $$2, dpy $$3) {
-      return (double)$$0.z.i() < 0.45;
+   protected boolean a(dqh $$0, emp $$1) {
+      return false;
    }
 
+   public abstract boolean d(dqh var1);
+
    @Override
-   public void a(aqe $$0, ayd $$1, im $$2, dpy $$3) {
-      dpn.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
+   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      in $$4 = diw.a((dad)$$1, $$2);
+      if ($$4 != null) {
+         elz $$5 = diw.a($$1, $$4);
+         if ($$5 != emb.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
+         }
+      }
+   }
+
+   protected boolean a(elz $$0) {
+      return false;
+   }
+
+   protected void a(dqh $$0, dad $$1, in $$2, elz $$3) {
    }
 }

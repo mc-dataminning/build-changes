@@ -1,63 +1,28 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public final class cup {
-   public static final cup a = new cup(List.of());
-   public static final Codec<cup> b = csd.a.listOf().xmap(cup::new, $$0 -> $$0.d);
-   public static final yq<wd, cup> c = csd.f.a(yo.a()).a(cup::new, $$0 -> $$0.d);
-   private final List<csd> d;
-
-   private cup(List<csd> $$0) {
-      this.d = $$0;
-   }
-
-   public static cup a(csd $$0) {
-      return new cup(List.of($$0.r()));
-   }
-
-   public static cup a(List<csd> $$0) {
-      return new cup(Lists.transform($$0, csd::r));
-   }
-
-   public boolean a(cry $$0) {
-      for (csd $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public List<csd> a() {
-      return Lists.transform(this.d, csd::r);
-   }
-
-   public boolean b() {
-      return this.d.isEmpty();
+public class cup extends cqs {
+   public cup(csu.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cup $$1 && csd.a(this.d, $$1.d)) {
-            return true;
-         }
+   public csz v() {
+      csz $$0 = super.v();
+      $$0.b(ka.E, new cuy(cuz.C));
+      return $$0;
+   }
 
-         return false;
+   @Override
+   public void a(csz $$0, @Nullable dad $$1, List<wu> $$2, cuq $$3) {
+      cuy $$4 = $$0.a(ka.E);
+      if ($$4 != null) {
+         $$4.a($$2::add, 0.125F, $$1 == null ? 20.0F : $$1.s().f());
       }
    }
 
    @Override
-   public int hashCode() {
-      return csd.a(this.d);
-   }
-
-   @Override
-   public String toString() {
-      return "ChargedProjectiles[items=" + this.d + "]";
+   public String i(csz $$0) {
+      return cuw.a($$0.a(ka.E, cuy.a).f(), this.a() + ".effect.");
    }
 }

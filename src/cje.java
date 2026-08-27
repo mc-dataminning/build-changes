@@ -1,118 +1,86 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
 
-public class cje extends cja {
-   private static final int bZ = 50;
-   private static final float ca = 0.35F;
-   private static final int cb = 7;
-   protected static final ImmutableList<cbo<? extends cbn<? super cje>>> e = ImmutableList.of(cbo.c, cbo.d, cbo.b, cbo.f, cbo.m);
-   protected static final ImmutableList<cah<?>> bY = ImmutableList.of(
-      cah.n, cah.v, cah.g, cah.h, cah.k, cah.l, cah.ao, cah.an, cah.x, cah.y, cah.m, cah.E, new cah[]{cah.o, cah.p, cah.q, cah.t, cah.ab, cah.M, cah.b}
-   );
-
-   public cje(bqr<? extends cje> $$0, czu $$1) {
+public class cje extends chv {
+   public cje(brn<? extends cje> $$0, dad $$1) {
       super($$0, $$1);
-      this.bN = 20;
-   }
-
-   public static bsk.a y() {
-      return chr.gv().a(bsl.q, 50.0).a(bsl.r, 0.35F).a(bsl.c, 7.0);
-   }
-
-   @Nullable
-   @Override
-   public brw a(daj $$0, boo $$1, bri $$2, @Nullable brw $$3) {
-      cjf.a(this);
-      this.a($$0.E_(), $$1);
-      return super.a($$0, $$1, $$2, $$3);
+      this.a(emr.i, 8.0F);
    }
 
    @Override
-   protected void a(ayd $$0, boo $$1) {
-      this.a(bqs.a, new csd(csg.oY));
+   protected void z() {
+      this.bT.a(3, new caq<>(this, cjw.class, true));
+      super.z();
    }
 
    @Override
-   protected bsf.b<cje> dR() {
-      return bsf.a(bY, e);
+   protected avb v() {
+      return avc.Co;
    }
 
    @Override
-   protected bsf<?> a(Dynamic<?> $$0) {
-      return cjf.a(this, this.dR().a($$0));
+   protected avb d(bqf $$0) {
+      return avc.Cq;
    }
 
    @Override
-   public bsf<cje> dQ() {
-      return (bsf<cje>)super.dQ();
+   protected avb o_() {
+      return avc.Cp;
    }
 
    @Override
-   public boolean r() {
-      return false;
+   avb u() {
+      return avc.Cr;
    }
 
    @Override
-   public boolean k(csd $$0) {
-      return $$0.a(csg.oY) ? super.k($$0) : false;
-   }
-
-   @Override
-   protected void Y() {
-      this.dN().af().a("piglinBruteBrain");
-      this.dQ().a((aqe)this.dN(), this);
-      this.dN().af().c();
-      cjf.b(this);
-      cjf.c(this);
-      super.Y();
-   }
-
-   @Override
-   public cjd gr() {
-      return this.gh() && this.gs() ? cjd.a : cjd.f;
-   }
-
-   @Override
-   public boolean a(bpj $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if (this.dN().B) {
-         return false;
-      } else {
-         if ($$2 && $$0.d() instanceof bre) {
-            cjf.a(this, (bre)$$0.d());
-         }
-
-         return $$2;
+   protected void a(bqf $$0, int $$1, boolean $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$0.d() instanceof chz $$4 && $$4.gq()) {
+         $$4.gr();
+         this.a((dac)ctc.um);
       }
    }
 
    @Override
-   protected auy v() {
-      return auz.tA;
+   protected void a(ayg $$0, bpk $$1) {
+      this.a(bro.a, new csz(ctc.oQ));
    }
 
    @Override
-   protected auy d(bpj $$0) {
-      return auz.tD;
+   protected void b(ayg $$0, bpk $$1) {
+   }
+
+   @Nullable
+   @Override
+   public bss a(das $$0, bpk $$1, bse $$2, @Nullable bss $$3) {
+      bss $$4 = super.a($$0, $$1, $$2, $$3);
+      this.f(bth.c).a(4.0);
+      this.y();
+      return $$4;
    }
 
    @Override
-   protected auy o_() {
-      return auz.tC;
+   public boolean C(brh $$0) {
+      if (!super.C($$0)) {
+         return false;
+      } else {
+         if ($$0 instanceof bsa) {
+            ((bsa)$$0).b(new bqt(bqv.t, 200), this);
+         }
+
+         return true;
+      }
    }
 
    @Override
-   protected void b(im $$0, dpy $$1) {
-      this.a(auz.tE, 0.15F, 1.0F);
-   }
-
-   protected void gw() {
-      this.b(auz.tB);
+   protected cln b(csz $$0, float $$1) {
+      cln $$2 = super.b($$0, $$1);
+      $$2.g(100);
+      return $$2;
    }
 
    @Override
-   protected void gt() {
-      this.b(auz.tF);
+   public boolean c(bqt $$0) {
+      return $$0.a(bqv.t) ? false : super.c($$0);
    }
 }

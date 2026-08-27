@@ -1,89 +1,67 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class fwq {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
+public class fwq {
+   private final fws[] a;
+   private int b;
+
+   public static Codec<fwq> a(int $$0) {
+      return Codec.list(fws.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new fwq($$0, $$1));
+            },
+            fwq::c
+         );
+   }
+
+   public fwq(int $$0) {
+      this.a = new fws[$$0];
+   }
+
+   private fwq(int $$0, List<fws> $$1) {
+      this.a = $$1.toArray(fws[]::new);
+      this.b = $$1.size();
+   }
+
+   private List<fws> c() {
+      List<fws> $$0 = new ArrayList<>(this.d());
+
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
+      }
+
+      return $$0;
+   }
+
+   public void a(fws $$0) {
+      this.a[this.c(this.b++)] = $$0;
+   }
+
    @Nullable
-   protected fws e;
-
-   public fwq(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fws b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
+   private int c(int $$0) {
+      return $$0 % this.a.length;
    }
 
-   public abstract fwq b();
-
-   public abstract fkt a(fkt var1, fwu var2);
-
-   public abstract static class a<R extends fwq> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public R e() {
-         return this.a;
-      }
-
-      public UUID f() {
-         return this.a.c;
-      }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
-      }
-
-      @Nullable
-      public fws h() {
-         return this.a.e;
-      }
-
-      public void a(fws $$0) {
-         this.a.e = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public abstract fwq.b c();
-
-      public abstract Either<fwq.c, fwq.b> a(fwu var1);
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
    }
 
-   public static record b(ws e) {
-      public static final fwq.b a = new fwq.b(ws.c("gui.abuseReport.send.no_reason"));
-      public static final fwq.b b = new fwq.b(ws.c("gui.chatReport.send.no_reported_messages"));
-      public static final fwq.b c = new fwq.b(ws.c("gui.chatReport.send.too_many_messages"));
-      public static final fwq.b d = new fwq.b(ws.c("gui.abuseReport.send.comment_too_long"));
-
-      public fgf a() {
-         return fgf.a(this.e);
-      }
-
-      public ws b() {
-         return this.e;
-      }
+   public int b() {
+      return this.b - 1;
    }
 
-   public static record c(UUID a, fwt b, AbuseReport c) {
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

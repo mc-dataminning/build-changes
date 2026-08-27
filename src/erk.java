@@ -4,44 +4,30 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record erk(Optional<br> b, eoa.b c) implements erh {
-   public static final Codec<erk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axe.a(br.a, "predicate").forGetter(erk::c), eoa.b.e.fieldOf("entity").forGetter(erk::d)).apply($$0, erk::new)
-   );
+public record erk(Optional<bg> b) implements erq {
+   public static final Codec<erk> a = RecordCodecBuilder.create($$0 -> $$0.group(axh.a(bg.a, "predicate").forGetter(erk::c)).apply($$0, erk::new));
 
    @Override
-   public eri b() {
-      return erj.g;
+   public err b() {
+      return ers.o;
    }
 
    @Override
-   public Set<eqq<?>> a() {
-      return ImmutableSet.of(eqt.f, this.c.a());
+   public Set<eqz<?>> a() {
+      return ImmutableSet.of(erc.f, erc.c);
    }
 
-   public boolean a(eoa $$0) {
-      bql $$1 = $$0.c(this.c.a());
-      etf $$2 = $$0.c(eqt.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   public boolean a(eol $$0) {
+      bqf $$1 = $$0.c(erc.c);
+      etp $$2 = $$0.c(erc.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
    }
 
-   public static erh.a a(eoa.b $$0) {
-      return a($$0, br.a.a());
+   public static erq.a a(bg.a $$0) {
+      return () -> new erk(Optional.of($$0.b()));
    }
 
-   public static erh.a a(eoa.b $$0, br.a $$1) {
-      return () -> new erk(Optional.of($$1.b()), $$0);
-   }
-
-   public static erh.a a(eoa.b $$0, br $$1) {
-      return () -> new erk(Optional.of($$1), $$0);
-   }
-
-   public Optional<br> c() {
+   public Optional<bg> c() {
       return this.b;
-   }
-
-   public eoa.b d() {
-      return this.c;
    }
 }

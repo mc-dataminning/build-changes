@@ -1,163 +1,242 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fie extends fic {
-   private final fie.b c;
-   private final List<fie.a> d = new ArrayList<>();
-   private final fik e = fik.i();
+public class fie implements ewa {
+   static final Logger b = LogUtils.getLogger();
+   private final ewy c;
+   private final fhs<fie.b> d;
 
-   public fie(int $$0, int $$1, fie.b $$2) {
-      this(0, 0, $$0, $$1, $$2);
-   }
-
-   public fie(int $$0, int $$1, int $$2, int $$3, fie.b $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
+   fie(ewy $$0, fhs<fie.b> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.d.isEmpty()) {
-         int $$0 = 0;
-         int $$1 = this.c.b(this);
+   public void close() {
+      this.c.close();
+   }
 
-         for (fie.a $$2 : this.d) {
-            $$0 += this.c.a($$2);
-            $$1 = Math.max($$1, this.c.b($$2));
+   @Nullable
+   @Override
+   public evz a(int $$0) {
+      return this.d.a($$0);
+   }
+
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.d.b());
+   }
+
+   public static record a(akh c, int d, int e, int[][] f) implements fig {
+      private static final Codec<int[][]> g = axh.b(Codec.STRING.listOf().xmap($$0 -> {
+         int $$1 = $$0.size();
+         int[][] $$2 = new int[$$1][];
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
          }
 
-         int $$3 = this.c.a(this) - $$0;
-         int $$4 = this.c.c(this);
-         Iterator<fie.a> $$5 = this.d.iterator();
-         fie.a $$6 = $$5.next();
-         this.c.a($$6, $$4);
-         $$4 += this.c.a($$6);
-         if (this.d.size() >= 2) {
-            c $$7 = new c($$3, this.d.size() - 1);
+         return $$2;
+      }, $$0 -> {
+         List<String> $$1 = new ArrayList<>($$0.length);
 
-            while ($$7.hasNext()) {
-               $$4 += $$7.nextInt();
-               fie.a $$8 = $$5.next();
-               this.c.a($$8, $$4);
-               $$4 += this.c.a($$8);
+         for (int[] $$2 : $$0) {
+            $$1.add(new String($$2, 0, $$2.length));
+         }
+
+         return $$1;
+      }), fie.a::a);
+      public static final MapCodec<fie.a> a = axh.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     akh.a.fieldOf("file").forGetter(fie.a::c),
+                     Codec.INT.optionalFieldOf("height", 8).forGetter(fie.a::d),
+                     Codec.INT.fieldOf("ascent").forGetter(fie.a::e),
+                     g.fieldOf("chars").forGetter(fie.a::f)
+                  )
+                  .apply($$0, fie.a::new)
+         ),
+         fie.a::a
+      );
+
+      private static DataResult<int[][]> a(int[][] $$0) {
+         int $$1 = $$0.length;
+         if ($$1 == 0) {
+            return DataResult.error(() -> "Expected to find data in codepoint grid");
+         } else {
+            int[] $$2 = $$0[0];
+            int $$3 = $$2.length;
+            if ($$3 == 0) {
+               return DataResult.error(() -> "Expected to find data in codepoint grid");
+            } else {
+               for (int $$4 = 1; $$4 < $$1; $$4++) {
+                  int[] $$5 = $$0[$$4];
+                  if ($$5.length != $$3) {
+                     return DataResult.error(
+                        () -> "Lines in codepoint grid have to be the same length (found: "
+                              + $$5.length
+                              + " codepoints, expected: "
+                              + $$3
+                              + "), pad with \\u0000"
+                     );
+                  }
+               }
+
+               return DataResult.success($$0);
+            }
+         }
+      }
+
+      private static DataResult<fie.a> a(fie.a $$0) {
+         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
+      }
+
+      @Override
+      public fih a() {
+         return fih.a;
+      }
+
+      @Override
+      public Either<fig.b, fig.c> b() {
+         return Either.left(this::a);
+      }
+
+      private ewa a(atr $$0) throws IOException {
+         akh $$1 = this.c.d("textures/");
+
+         fie var22;
+         try (InputStream $$2 = $$0.open($$1)) {
+            ewy $$3 = ewy.a(ewy.a.a, $$2);
+            int $$4 = $$3.a();
+            int $$5 = $$3.b();
+            int $$6 = $$4 / this.f[0].length;
+            int $$7 = $$5 / this.f.length;
+            float $$8 = (float)this.d / (float)$$7;
+            fhs<fie.b> $$9 = new fhs<>(fie.b[]::new, fie.b[][]::new);
+
+            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
+               int $$11 = 0;
+
+               for (int $$12 : this.f[$$10]) {
+                  int $$13 = $$11++;
+                  if ($$12 != 0) {
+                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
+                     fie.b $$15 = $$9.a($$12, new fie.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
+                     if ($$15 != null) {
+                        fie.b.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
+                     }
+                  }
+               }
+            }
+
+            var22 = new fie($$3, $$9);
+         }
+
+         return var22;
+      }
+
+      private int a(ewy $$0, int $$1, int $$2, int $$3, int $$4) {
+         int $$5;
+         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
+            int $$6 = $$3 * $$1 + $$5;
+
+            for (int $$7 = 0; $$7 < $$2; $$7++) {
+               int $$8 = $$4 * $$2 + $$7;
+               if ($$0.e($$6, $$8) != 0) {
+                  return $$5 + 1;
+               }
             }
          }
 
-         int $$9 = this.c.d(this);
-
-         for (fie.a $$10 : this.d) {
-            this.c.a($$10, $$9, $$1);
-         }
-
-         switch (this.c) {
-            case a:
-               this.b = $$1;
-               break;
-            case b:
-               this.a = $$1;
-         }
+         return $$5 + 1;
       }
    }
 
-   @Override
-   public void b(Consumer<fij> $$0) {
-      this.d.forEach($$1 -> $$0.accept($$1.a));
-   }
+   static record b(float a, ewy b, int c, int d, int e, int f, int g, int h) implements evz {
 
-   public fik b() {
-      return this.e.g();
-   }
-
-   public fik c() {
-      return this.e;
-   }
-
-   public <T extends fij> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fij> T a(T $$0, fik $$1) {
-      this.d.add(new fie.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends fij> T a(T $$0, Consumer<fik> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
-
-   static class a extends fic.a {
-      protected a(fij $$0, fik $$1) {
-         super($$0, $$1);
-      }
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      int a(fij $$0) {
-         return switch (this) {
-            case a -> $$0.x();
-            case b -> $$0.v();
-         };
+      @Override
+      public float getAdvance() {
+         return (float)this.g;
       }
 
-      int a(fie.a $$0) {
-         return switch (this) {
-            case a -> $$0.b();
-            case b -> $$0.a();
-         };
+      @Override
+      public fhz bake(Function<ewb, fhz> $$0) {
+         return $$0.apply(new ewb() {
+            @Override
+            public float d() {
+               return 1.0F / b.this.a;
+            }
+
+            @Override
+            public int a() {
+               return b.this.e;
+            }
+
+            @Override
+            public int b() {
+               return b.this.f;
+            }
+
+            @Override
+            public float j() {
+               return (float)b.this.h;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
+            }
+
+            @Override
+            public boolean c() {
+               return b.this.b.c().a() > 1;
+            }
+         });
       }
 
-      int b(fij $$0) {
-         return switch (this) {
-            case a -> $$0.v();
-            case b -> $$0.x();
-         };
+      public float c() {
+         return this.a;
       }
 
-      int b(fie.a $$0) {
-         return switch (this) {
-            case a -> $$0.a();
-            case b -> $$0.b();
-         };
+      public ewy d() {
+         return this.b;
       }
 
-      void a(fie.a $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1, $$0.b());
-               break;
-            case b:
-               $$0.b($$1, $$0.a());
-         }
+      public int e() {
+         return this.c;
       }
 
-      void a(fie.a $$0, int $$1, int $$2) {
-         switch (this) {
-            case a:
-               $$0.b($$1, $$2);
-               break;
-            case b:
-               $$0.a($$1, $$2);
-         }
+      public int f() {
+         return this.d;
       }
 
-      int c(fij $$0) {
-         return switch (this) {
-            case a -> $$0.C();
-            case b -> $$0.D();
-         };
+      public int g() {
+         return this.e;
       }
 
-      int d(fij $$0) {
-         return switch (this) {
-            case a -> $$0.D();
-            case b -> $$0.C();
-         };
+      public int h() {
+         return this.f;
+      }
+
+      public int i() {
+         return this.g;
+      }
+
+      public int j() {
+         return this.h;
       }
    }
 }

@@ -1,35 +1,31 @@
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class fkw extends fld {
+   private static final wu a = wu.c("outOfMemory.title");
+   private static final wu b = wu.c("outOfMemory.message");
+   private static final int c = 300;
+   private final fir d = new fir(this);
 
-public class fkw extends fkl {
-   private static final ws a = ws.c("options.skinCustomisation.title");
-   @Nullable
-   private ffr r;
-
-   public fkw(fkt $$0, fcy $$1) {
-      super($$0, $$1, a);
+   public fkw() {
+      super(a);
    }
 
    @Override
    protected void aM_() {
-      this.r = this.c(new ffr(this.m, this.n, this.o, this));
-      List<fes> $$0 = new ArrayList<>();
-
-      for (ckm $$1 : ckm.values()) {
-         $$0.add(ffb.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
-      }
-
-      $$0.add(this.c.v().a(this.c));
-      this.r.a($$0);
-      super.aM_();
+      this.d.a(a, this.p);
+      this.d.c(new ffp(300, b, this.p));
+      fiv $$0 = this.d.b(fiv.e().a(8));
+      $$0.a(ffe.a(wt.l, $$0x -> this.m.a(new fli())).a());
+      $$0.a(ffe.a(wu.c("menu.quit"), $$0x -> this.m.q()).a());
+      this.d.a(this::c);
+      this.c();
    }
 
    @Override
    protected void c() {
-      super.c();
-      if (this.r != null) {
-         this.r.a(this.n, this.d);
-      }
+      this.d.a();
+   }
+
+   @Override
+   public boolean aD_() {
+      return false;
    }
 }

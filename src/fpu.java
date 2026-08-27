@@ -1,531 +1,262 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Date;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
 
-public class fpu extends ffq<fpu.a> {
-   public static final DateTimeFormatter a = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withZone(ZoneId.systemDefault());
-   static final akf m = new akf("world_list/error_highlighted");
-   static final akf n = new akf("world_list/error");
-   static final akf o = new akf("world_list/marked_join_highlighted");
-   static final akf p = new akf("world_list/marked_join");
-   static final akf q = new akf("world_list/warning_highlighted");
-   static final akf r = new akf("world_list/warning");
-   static final akf s = new akf("world_list/join_highlighted");
-   static final akf u = new akf("world_list/join");
-   static final Logger v = LogUtils.getLogger();
-   static final ws w = ws.c("selectWorld.tooltip.fromNewerVersion1").a(n.m);
-   static final ws x = ws.c("selectWorld.tooltip.fromNewerVersion2").a(n.m);
-   static final ws y = ws.c("selectWorld.tooltip.snapshot1").a(n.g);
-   static final ws z = ws.c("selectWorld.tooltip.snapshot2").a(n.g);
-   static final ws A = ws.c("selectWorld.locked").a(n.m);
-   static final ws B = ws.c("selectWorld.conversion.tooltip").a(n.m);
-   static final ws C = ws.c("selectWorld.incompatible.tooltip").a(n.m);
-   static final ws D = ws.c("selectWorld.experimental");
-   private final fpp E;
-   private CompletableFuture<List<enr>> F;
+public class fpu extends fld {
+   private static final wu a = wu.c("editGamerule.title");
+   private static final int b = 8;
+   final fir c = new fir(this);
+   private final Consumer<Optional<czz>> d;
+   private final Set<fpu.f> r = Sets.newHashSet();
+   private final czz s;
    @Nullable
-   private List<enr> G;
-   private String H;
-   private final fpu.b I;
+   private fpu.g u;
+   @Nullable
+   private ffe v;
 
-   public fpu(fpp $$0, fcu $$1, int $$2, int $$3, int $$4, int $$5, String $$6, @Nullable fpu $$7) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.E = $$0;
-      this.I = new fpu.b($$1);
-      this.H = $$6;
-      if ($$7 != null) {
-         this.F = $$7.F;
-      } else {
-         this.F = this.L();
-      }
-
-      this.a(this.J());
+   public fpu(czz $$0, Consumer<Optional<czz>> $$1) {
+      super(a);
+      this.s = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected void k() {
-      this.aE_().forEach(fpu.a::close);
-      super.k();
-   }
-
-   @Nullable
-   private List<enr> J() {
-      try {
-         return this.F.getNow(null);
-      } catch (CancellationException | CompletionException var2) {
-         return null;
-      }
-   }
-
-   void K() {
-      this.F = this.L();
+   protected void aM_() {
+      this.c.a(a, this.p);
+      this.u = this.c.c(new fpu.g(this.s));
+      fiv $$0 = this.c.b(fiv.e().a(8));
+      this.v = $$0.a(ffe.a(wt.d, $$0x -> this.d.accept(Optional.of(this.s))).a());
+      $$0.a(ffe.a(wt.e, $$0x -> this.d()).a());
+      this.c.a($$1 -> {
+         ffc var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (fiv.a($$0)) {
-         Optional<fpu.c> $$3 = this.d();
-         if ($$3.isPresent()) {
-            if ($$3.get().b()) {
-               this.c.ak().a(gpw.a(auz.Ac, 1.0F));
-               $$3.get().c();
+   protected void c() {
+      this.c.a();
+      if (this.u != null) {
+         this.u.a(this.n, this.c);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.d.accept(Optional.empty());
+   }
+
+   private void m() {
+      if (this.v != null) {
+         this.v.j = this.r.isEmpty();
+      }
+   }
+
+   void a(fpu.f $$0) {
+      this.r.add($$0);
+      this.m();
+   }
+
+   void b(fpu.f $$0) {
+      this.r.remove($$0);
+      this.m();
+   }
+
+   public class a extends fpu.d {
+      private final ffl<Boolean> d;
+
+      public a(wu $$1, List<axl> $$2, String $$3, czz.a $$4) {
+         super($$2, $$1);
+         this.d = ffl.b($$4.a()).a().a($$1x -> $$1x.d().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
+         this.b.add(this.d);
+      }
+
+      @Override
+      public void a(fer $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.d.m($$3 + $$4 - 45);
+         this.d.n($$2);
+         this.d.a($$0, $$6, $$7, $$9);
+      }
+   }
+
+   public class b extends fpu.f {
+      final wu b;
+
+      public b(wu $$1) {
+         super(null);
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(fer $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(fpu.this.m.h, this.b, $$3 + $$4 / 2, $$2 + 5, -1);
+      }
+
+      @Override
+      public List<? extends fha> aE_() {
+         return ImmutableList.of();
+      }
+
+      @Override
+      public List<? extends fiy> b() {
+         return ImmutableList.of(new fiy() {
+            @Override
+            public fiy.a t() {
+               return fiy.a.b;
             }
 
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void b(feh $$0, int $$1, int $$2, float $$3) {
-      List<enr> $$4 = this.J();
-      if ($$4 != this.G) {
-         this.a($$4);
-      }
-
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   private void a(@Nullable List<enr> $$0) {
-      if ($$0 == null) {
-         this.M();
-      } else {
-         this.a(this.H, $$0);
-      }
-
-      this.G = $$0;
-   }
-
-   public void a(String $$0) {
-      if (this.G != null && !$$0.equals(this.H)) {
-         this.a($$0, this.G);
-      }
-
-      this.H = $$0;
-   }
-
-   private CompletableFuture<List<enr>> L() {
-      enq.a $$0;
-      try {
-         $$0 = this.c.m().b();
-      } catch (enp var3) {
-         v.error("Couldn't load level list", var3);
-         this.c(var3.a());
-         return CompletableFuture.completedFuture(List.of());
-      }
-
-      if ($$0.a()) {
-         fpj.a(this.c, null);
-         return CompletableFuture.completedFuture(List.of());
-      } else {
-         return this.c.m().a($$0).exceptionally($$0x -> {
-            this.c.a(o.a($$0x, "Couldn't load level list"));
-            return List.of();
+            @Override
+            public void b(fja $$0) {
+               $$0.a(fiz.a, b.this.b);
+            }
          });
       }
    }
 
-   private void a(String $$0, List<enr> $$1) {
-      this.k();
-      $$0 = $$0.toLowerCase(Locale.ROOT);
+   @FunctionalInterface
+   interface c<T extends czz.g<T>> {
+      fpu.f create(wu var1, List<axl> var2, String var3, T var4);
+   }
 
-      for (enr $$2 : $$1) {
-         if (this.a($$0, $$2)) {
-            this.b(new fpu.c(this, $$2));
+   public abstract class d extends fpu.f {
+      private final List<axl> a;
+      protected final List<ffc> b = Lists.newArrayList();
+
+      public d(@Nullable List<axl> $$1, wu $$2) {
+         super($$1);
+         this.a = fpu.this.m.h.c($$2, 175);
+      }
+
+      @Override
+      public List<? extends fha> aE_() {
+         return this.b;
+      }
+
+      @Override
+      public List<? extends fiy> b() {
+         return this.b;
+      }
+
+      protected void a(fer $$0, int $$1, int $$2) {
+         if (this.a.size() == 1) {
+            $$0.a(fpu.this.m.h, this.a.get(0), $$2, $$1 + 5, -1, false);
+         } else if (this.a.size() >= 2) {
+            $$0.a(fpu.this.m.h, this.a.get(0), $$2, $$1, -1, false);
+            $$0.a(fpu.this.m.h, this.a.get(1), $$2, $$1 + 10, -1, false);
          }
       }
-
-      this.N();
    }
 
-   private boolean a(String $$0, enr $$1) {
-      return $$1.b().toLowerCase(Locale.ROOT).contains($$0) || $$1.a().toLowerCase(Locale.ROOT).contains($$0);
-   }
+   public class e extends fpu.d {
+      private final ffn d;
 
-   private void M() {
-      this.k();
-      this.b(this.I);
-      this.N();
-   }
-
-   private void N() {
-      this.a(this.n());
-      this.E.d(true);
-   }
-
-   private void c(ws $$0) {
-      this.c.a(new fjw(ws.c("selectWorld.unable_to_load"), $$0));
-   }
-
-   @Override
-   public int b() {
-      return 270;
-   }
-
-   public void a(@Nullable fpu.a $$0) {
-      super.a($$0);
-      this.E.a($$0 instanceof fpu.c $$1 ? $$1.f : null);
-   }
-
-   public Optional<fpu.c> d() {
-      fpu.a $$0 = this.h();
-      return $$0 instanceof fpu.c $$1 ? Optional.of($$1) : Optional.empty();
-   }
-
-   public fpp I() {
-      return this.E;
-   }
-
-   @Override
-   public void a(fiq $$0) {
-      if (this.aE_().contains(this.I)) {
-         this.I.b($$0);
-      } else {
-         super.a($$0);
-      }
-   }
-
-   public abstract static class a extends ffq.a<fpu.a> implements AutoCloseable {
-      @Override
-      public void close() {
-      }
-   }
-
-   public static class b extends fpu.a {
-      private static final ws a = ws.c("selectWorld.loading_list");
-      private final fcu b;
-
-      public b(fcu $$0) {
-         this.b = $$0;
+      public e(wu $$1, List<axl> $$2, String $$3, czz.d $$4) {
+         super($$2, $$1);
+         this.d = new ffn(fpu.this.m.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
+         this.d.a(Integer.toString($$4.a()));
+         this.d.b($$1x -> {
+            if ($$4.b($$1x)) {
+               this.d.g(14737632);
+               fpu.this.b(this);
+            } else {
+               this.d.g(-65536);
+               fpu.this.a(this);
+            }
+         });
+         this.b.add(this.d);
       }
 
       @Override
-      public void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = (this.b.y.n - this.b.h.a(a)) / 2;
-         int $$11 = $$2 + ($$5 - 9) / 2;
-         $$0.a(this.b.h, a, $$10, $$11, 16777215, false);
-         String $$12 = fke.a(ac.b());
-         int $$13 = (this.b.y.n - this.b.h.b($$12)) / 2;
-         int $$14 = $$11 + 9;
-         $$0.a(this.b.h, $$12, $$13, $$14, -8355712, false);
-      }
-
-      @Override
-      public ws a() {
-         return a;
+      public void a(fer $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.d.m($$3 + $$4 - 45);
+         this.d.n($$2);
+         this.d.a($$0, $$6, $$7, $$9);
       }
    }
 
-   public final class c extends fpu.a implements AutoCloseable {
-      private static final int b = 32;
-      private static final int c = 32;
-      private final fcu d;
-      private final fpp e;
-      final enr f;
-      private final fjx g;
+   public abstract static class f extends ffk.a<fpu.f> {
       @Nullable
-      private Path h;
-      private long i;
+      final List<axl> a;
 
-      public c(fpu $$1, enr $$2) {
-         this.d = $$1.c;
-         this.e = $$1.I();
-         this.f = $$2;
-         this.g = fjx.a(this.d.aa(), $$2.a());
-         this.h = $$2.c();
-         this.j();
-         this.l();
+      public f(@Nullable List<axl> $$0) {
+         this.a = $$0;
       }
+   }
 
-      private void j() {
-         if (this.h != null) {
-            try {
-               BasicFileAttributes $$0 = Files.readAttributes(this.h, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-               if ($$0.isSymbolicLink()) {
-                  List<esw> $$1 = this.d.be().a(this.h);
-                  if (!$$1.isEmpty()) {
-                     fpu.v.warn("{}", esu.a(this.h, $$1));
-                     this.h = null;
-                  } else {
-                     $$0 = Files.readAttributes(this.h, BasicFileAttributes.class);
-                  }
-               }
+   public class g extends ffk<fpu.f> {
+      private static final int m = 24;
 
-               if (!$$0.isRegularFile()) {
-                  this.h = null;
-               }
-            } catch (NoSuchFileException var3) {
-               this.h = null;
-            } catch (IOException var4) {
-               fpu.v.error("could not validate symlink", var4);
-               this.h = null;
+      public g(final czz $$1) {
+         super(fde.Q(), fpu.this.n, fpu.this.c.d(), fpu.this.c.c(), 24);
+         final Map<czz.b, Map<czz.e<?>, fpu.f>> $$2 = Maps.newHashMap();
+         czz.a(new czz.c() {
+            @Override
+            public void b(czz.e<czz.a> $$0, czz.f<czz.a> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fpu.this.new a($$0x, $$1xxx, $$2xx, $$3));
             }
-         }
+
+            @Override
+            public void c(czz.e<czz.d> $$0, czz.f<czz.d> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fpu.this.new e($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            private <T extends czz.g<T>> void a(czz.e<T> $$0, fpu.c<T> $$1x) {
+               wu $$2 = wu.c($$0.b());
+               wu $$3 = wu.b($$0.a()).a(n.o);
+               T $$4 = $$1.a($$0);
+               String $$5 = $$4.b();
+               wu $$6 = wu.a("editGamerule.default", wu.b($$5)).a(n.h);
+               String $$7 = $$0.b() + ".description";
+               List<axl> $$10;
+               String $$11;
+               if (goe.a($$7)) {
+                  Builder<axl> $$8 = ImmutableList.builder().add($$3.g());
+                  wu $$9 = wu.c($$7);
+                  fpu.this.p.c($$9, 150).forEach($$8::add);
+                  $$10 = $$8.add($$6.g()).build();
+                  $$11 = $$9.getString() + "\n" + $$6.getString();
+               } else {
+                  $$10 = ImmutableList.of($$3.g(), $$6.g());
+                  $$11 = $$6.getString();
+               }
+
+               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
+            }
+         });
+         $$2.entrySet()
+            .stream()
+            .sorted(Entry.comparingByKey())
+            .forEach(
+               $$0x -> {
+                  this.b(fpu.this.new b(wu.c(((czz.b)$$0x.getKey()).a()).a(n.r, n.o)));
+                  ((Map)$$0x.getValue())
+                     .entrySet()
+                     .stream()
+                     .sorted(Entry.comparingByKey(Comparator.comparing(czz.e::a)))
+                     .forEach($$0xx -> this.b((fpu.f)$$0xx.getValue()));
+               }
+            );
       }
 
       @Override
-      public ws a() {
-         ws $$0 = ws.a("narrator.select.world_info", this.f.b(), ws.a(new Date(this.f.f())), this.f.s());
-         if (this.f.p()) {
-            $$0 = wr.a($$0, fpu.A);
+      public void b(fer $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         fpu.f $$4 = this.u();
+         if ($$4 != null && $$4.a != null) {
+            fpu.this.b($$4.a);
          }
-
-         if (this.f.e()) {
-            $$0 = wr.a($$0, fpu.D);
-         }
-
-         return ws.a("narrator.select", $$0);
-      }
-
-      @Override
-      public void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         String $$10 = this.f.b();
-         String $$11 = this.f.a();
-         long $$12 = this.f.f();
-         if ($$12 != -1L) {
-            $$11 = $$11 + " (" + fpu.a.format(Instant.ofEpochMilli($$12)) + ")";
-         }
-
-         if (StringUtils.isEmpty($$10)) {
-            $$10 = gnt.a("selectWorld.world") + " " + ($$1 + 1);
-         }
-
-         ws $$13 = this.f.s();
-         $$0.a(this.d.h, $$10, $$3 + 32 + 3, $$2 + 1, 16777215, false);
-         $$0.a(this.d.h, $$11, $$3 + 32 + 3, $$2 + 9 + 3, -8355712, false);
-         $$0.a(this.d.h, $$13, $$3 + 32 + 3, $$2 + 9 + 9 + 3, -8355712, false);
-         RenderSystem.enableBlend();
-         $$0.a(this.g.b(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         RenderSystem.disableBlend();
-         if (this.d.m.Z().c() || $$8) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$14 = $$6 - $$3;
-            boolean $$15 = $$14 < 32;
-            akf $$16 = $$15 ? fpu.s : fpu.u;
-            akf $$17 = $$15 ? fpu.q : fpu.r;
-            akf $$18 = $$15 ? fpu.m : fpu.n;
-            akf $$19 = $$15 ? fpu.o : fpu.p;
-            if (this.f instanceof enr.c || this.f instanceof enr.b) {
-               $$0.a($$18, $$3, $$2, 32, 32);
-               $$0.a($$19, $$3, $$2, 32, 32);
-               return;
-            }
-
-            if (this.f.p()) {
-               $$0.a($$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fpu.A, 175));
-               }
-            } else if (this.f.d()) {
-               $$0.a($$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fpu.B, 175));
-               }
-            } else if (!this.f.r()) {
-               $$0.a($$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fpu.C, 175));
-               }
-            } else if (this.f.m()) {
-               $$0.a($$19, $$3, $$2, 32, 32);
-               if (this.f.n()) {
-                  $$0.a($$18, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(fpu.w.g(), fpu.x.g()));
-                  }
-               } else if (!aa.b().g()) {
-                  $$0.a($$17, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(fpu.y.g(), fpu.z.g()));
-                  }
-               }
-            } else {
-               $$0.a($$16, $$3, $$2, 32, 32);
-            }
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (!this.f.u()) {
-            return true;
-         } else {
-            fpu.this.a((fpu.a)this);
-            if (!($$0 - (double)fpu.this.r() <= 32.0) && ac.b() - this.i >= 250L) {
-               this.i = ac.b();
-               return super.a($$0, $$1, $$2);
-            } else {
-               if (this.b()) {
-                  this.d.ak().a(gpw.a(auz.Ac, 1.0F));
-                  this.c();
-               }
-
-               return true;
-            }
-         }
-      }
-
-      public boolean b() {
-         return this.f.u();
-      }
-
-      public void c() {
-         if (this.f.u()) {
-            if (this.f instanceof enr.c) {
-               this.d.a(fki.a(() -> this.d.a(this.e)));
-            } else {
-               this.d.x().a(this.f.a(), () -> {
-                  fpu.this.K();
-                  this.d.a(this.e);
-               });
-            }
-         }
-      }
-
-      public void d() {
-         this.d.a(new fjl($$0 -> {
-            if ($$0) {
-               this.d.a(new fkq(true));
-               this.e();
-            }
-
-            this.d.a(this.e);
-         }, ws.c("selectWorld.deleteQuestion"), ws.a("selectWorld.deleteWarning", this.f.b()), ws.c("selectWorld.deleteButton"), wr.e));
-      }
-
-      public void e() {
-         enq $$0 = this.d.m();
-         String $$1 = this.f.a();
-
-         try (enq.c $$2 = $$0.e($$1)) {
-            $$2.k();
-         } catch (IOException var8) {
-            fhc.b(this.d, $$1);
-            fpu.v.error("Failed to delete world {}", $$1, var8);
-         }
-
-         fpu.this.K();
-      }
-
-      public void f() {
-         this.k();
-         String $$0 = this.f.a();
-
-         enq.c $$1;
-         try {
-            $$1 = this.d.m().d($$0);
-         } catch (IOException var6) {
-            fhc.a(this.d, $$0);
-            fpu.v.error("Failed to access level {}", $$0, var6);
-            fpu.this.K();
-            return;
-         } catch (esu var7) {
-            fpu.v.warn("{}", var7.getMessage());
-            this.d.a(fki.a(() -> this.d.a(this.e)));
-            return;
-         }
-
-         fpl $$5;
-         try {
-            $$5 = fpl.a(this.d, $$1, $$1x -> {
-               $$1.c();
-               if ($$1x) {
-                  fpu.this.K();
-               }
-
-               this.d.a(this.e);
-            });
-         } catch (uj | up | IOException var5) {
-            $$1.c();
-            fhc.a(this.d, $$0);
-            fpu.v.error("Failed to load world data {}", $$0, var5);
-            fpu.this.K();
-            return;
-         }
-
-         this.d.a($$5);
-      }
-
-      public void h() {
-         this.k();
-
-         try (enq.c $$0 = this.d.m().d(this.f.a())) {
-            Pair<czy, fpr> $$1 = this.d.x().a($$0);
-            czy $$2 = (czy)$$1.getFirst();
-            fpr $$3 = (fpr)$$1.getSecond();
-            Path $$4 = fpj.a($$0.a(eno.j), this.d);
-            if ($$3.b().e()) {
-               this.d
-                  .a(
-                     new fjl(
-                        $$3x -> this.d.a((fkt)($$3x ? fpj.a(this.d, this.e, $$2, $$3, $$4) : this.e)),
-                        ws.c("selectWorld.recreate.customized.title"),
-                        ws.c("selectWorld.recreate.customized.text"),
-                        wr.i,
-                        wr.e
-                     )
-                  );
-            } else {
-               this.d.a(fpj.a(this.d, this.e, $$2, $$3, $$4));
-            }
-         } catch (esu var8) {
-            fpu.v.warn("{}", var8.getMessage());
-            this.d.a(fki.a(() -> this.d.a(this.e)));
-         } catch (Exception var9) {
-            fpu.v.error("Unable to recreate world", var9);
-            this.d.a(new fjf(() -> this.d.a(this.e), ws.c("selectWorld.recreate.error.title"), ws.c("selectWorld.recreate.error.text")));
-         }
-      }
-
-      private void k() {
-         this.d.d(new fjz(ws.c("selectWorld.data_read")));
-      }
-
-      private void l() {
-         boolean $$0 = this.h != null && Files.isRegularFile(this.h);
-         if ($$0) {
-            try (InputStream $$1 = Files.newInputStream(this.h)) {
-               this.g.a(ewo.a($$1));
-            } catch (Throwable var7) {
-               fpu.v.error("Invalid icon for world {}", this.f.a(), var7);
-               this.h = null;
-            }
-         } else {
-            this.g.a();
-         }
-      }
-
-      @Override
-      public void close() {
-         this.g.close();
-      }
-
-      public String i() {
-         return this.f.b();
       }
    }
 }

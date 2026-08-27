@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface est {
+public record est(Codec<? extends esu> a) {
 }

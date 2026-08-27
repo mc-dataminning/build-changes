@@ -1,29 +1,29 @@
-public class agk implements yz<afx> {
-   public static final yq<vs, agk> a = yz.a(agk::a, agk::new);
+public class agk implements zb<afz> {
+   public static final ys<vu, agk> a = zb.a(agk::a, agk::new);
    private final int b;
-   private final int c;
+   private final String c;
 
-   public agk(int $$0, int $$1) {
+   public agk(int $$0, String $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   private agk(vs $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.readByte();
+   private agk(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.d(32500);
    }
 
-   private void a(vs $$0) {
-      $$0.k(this.b);
-      $$0.k(this.c);
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, 32500);
    }
 
    @Override
-   public zb<agk> a() {
-      return afv.bp;
+   public zd<agk> a() {
+      return afx.bn;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 
@@ -31,7 +31,7 @@ public class agk implements yz<afx> {
       return this.b;
    }
 
-   public int e() {
+   public String e() {
       return this.c;
    }
 }

@@ -1,136 +1,316 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+import org.lwjgl.glfw.GLFWDropCallback;
 
 public class fdf {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "screenshots";
-   private int c;
-   private final DataOutputStream d;
-   private final byte[] e;
-   private final int f;
-   private final int g;
-   private File h;
+   private final fde a;
+   private boolean b;
+   private boolean c;
+   private boolean d;
+   private double e;
+   private double f;
+   private int g;
+   private int h = -1;
+   private boolean i = true;
+   private int j;
+   private double k;
+   private final ayp l = new ayp();
+   private final ayp m = new ayp();
+   private double n;
+   private double o;
+   private double p;
+   private double q;
+   private double r = Double.MIN_VALUE;
+   private boolean s;
 
-   public static void a(File $$0, evz $$1, Consumer<ws> $$2) {
-      a($$0, null, $$1, $$2);
+   public fdf(fde $$0) {
+      this.a = $$0;
    }
 
-   public static void a(File $$0, @Nullable String $$1, evz $$2, Consumer<ws> $$3) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
-      } else {
-         b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private static void b(File $$0, @Nullable String $$1, evz $$2, Consumer<ws> $$3) {
-      ewo $$4 = a($$2);
-      File $$5 = new File($$0, "screenshots");
-      $$5.mkdir();
-      File $$6;
-      if ($$1 == null) {
-         $$6 = a($$5);
-      } else {
-         $$6 = new File($$5, $$1);
-      }
-
-      ac.g().execute(() -> {
-         try {
-            $$4.a($$6);
-            ws $$3x = ws.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new wq(wq.a.b, $$6.getAbsolutePath())));
-            $$3.accept(ws.a("screenshot.success", $$3x));
-         } catch (Exception var7) {
-            b.warn("Couldn't save screenshot", var7);
-            $$3.accept(ws.a("screenshot.failure", var7.getMessage()));
-         } finally {
-            $$4.close();
-         }
-      });
-   }
-
-   public static ewo a(evz $$0) {
-      int $$1 = $$0.c;
-      int $$2 = $$0.d;
-      ewo $$3 = new ewo($$1, $$2, false);
-      RenderSystem.bindTexture($$0.f());
-      $$3.a(0, true);
-      $$3.h();
-      return $$3;
-   }
-
-   private static File a(File $$0) {
-      String $$1 = ac.e();
-      int $$2 = 1;
-
-      while (true) {
-         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
-         if (!$$3.exists()) {
-            return $$3;
+   private void a(long $$0, int $$1, int $$2, int $$3) {
+      if ($$0 == this.a.aP().i()) {
+         if (this.a.y != null) {
+            this.a.a(fdb.b);
          }
 
-         $$2++;
+         boolean $$4 = $$2 == 1;
+         if (fde.a && $$1 == 0) {
+            if ($$4) {
+               if (($$3 & 2) == 2) {
+                  $$1 = 1;
+                  this.g++;
+               }
+            } else if (this.g > 0) {
+               $$1 = 1;
+               this.g--;
+            }
+         }
+
+         int $$5 = $$1;
+         if ($$4) {
+            if (this.a.m.Z().c() && this.j++ > 0) {
+               return;
+            }
+
+            this.h = $$5;
+            this.k = evn.b();
+         } else if (this.h != -1) {
+            if (this.a.m.Z().c() && --this.j > 0) {
+               return;
+            }
+
+            this.h = -1;
+         }
+
+         boolean[] $$6 = new boolean[]{false};
+         if (this.a.aM() == null) {
+            if (this.a.y == null) {
+               if (!this.s && $$4) {
+                  this.i();
+               }
+            } else {
+               double $$7 = this.e * (double)this.a.aP().o() / (double)this.a.aP().m();
+               double $$8 = this.f * (double)this.a.aP().p() / (double)this.a.aP().n();
+               fld $$9 = this.a.y;
+               if ($$4) {
+                  $$9.w();
+                  fld.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
+               } else {
+                  fld.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
+               }
+            }
+         }
+
+         if (!$$6[0] && this.a.y == null && this.a.aM() == null) {
+            if ($$5 == 0) {
+               this.b = $$4;
+            } else if ($$5 == 2) {
+               this.c = $$4;
+            } else if ($$5 == 1) {
+               this.d = $$4;
+            }
+
+            fdc.a(ews.b.c.a($$5), $$4);
+            if ($$4) {
+               if (this.a.s.N_() && $$5 == 2) {
+                  this.a.l.g().b();
+               } else {
+                  fdc.a(ews.b.c.a($$5));
+               }
+            }
+         }
       }
    }
 
-   public fdf(File $$0, int $$1, int $$2, int $$3) throws IOException {
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      File $$4 = new File($$0, "screenshots");
-      $$4.mkdir();
-      String $$5 = "huge_" + ac.e();
-      int $$6 = 1;
+   private void a(long $$0, double $$1, double $$2) {
+      if ($$0 == fde.Q().aP().i()) {
+         boolean $$3 = this.a.m.S().c();
+         double $$4 = this.a.m.F().c();
+         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
+         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
+         if (this.a.aM() == null) {
+            if (this.a.y != null) {
+               double $$7 = this.e * (double)this.a.aP().o() / (double)this.a.aP().m();
+               double $$8 = this.f * (double)this.a.aP().p() / (double)this.a.aP().n();
+               this.a.y.a($$7, $$8, $$5, $$6);
+               this.a.y.w();
+            } else if (this.a.s != null) {
+               if (this.p != 0.0 && Math.signum($$5) != Math.signum(this.p)) {
+                  this.p = 0.0;
+               }
 
-      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
-         $$6++;
+               if (this.q != 0.0 && Math.signum($$6) != Math.signum(this.q)) {
+                  this.q = 0.0;
+               }
+
+               this.p += $$5;
+               this.q += $$6;
+               int $$9 = (int)this.p;
+               int $$10 = (int)this.q;
+               if ($$9 == 0 && $$10 == 0) {
+                  return;
+               }
+
+               this.p -= (double)$$9;
+               this.q -= (double)$$10;
+               int $$11 = $$10 == 0 ? -$$9 : $$10;
+               if (this.a.s.N_()) {
+                  if (this.a.l.g().a()) {
+                     this.a.l.g().b(-$$11);
+                  } else {
+                     float $$12 = axz.a(this.a.s.gb().a() + (float)$$10 * 0.005F, 0.0F, 0.2F);
+                     this.a.s.gb().a($$12);
+                  }
+               } else {
+                  this.a.s.ga().a((double)$$11);
+               }
+            }
+         }
       }
-
-      byte[] $$7 = new byte[18];
-      $$7[2] = 2;
-      $$7[12] = (byte)($$1 % 256);
-      $$7[13] = (byte)($$1 / 256);
-      $$7[14] = (byte)($$2 % 256);
-      $$7[15] = (byte)($$2 / 256);
-      $$7[16] = 24;
-      this.e = new byte[$$1 * $$3 * 3];
-      this.d = new DataOutputStream(new FileOutputStream(this.h));
-      this.d.write($$7);
    }
 
-   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$3;
-      int $$6 = $$4;
-      if ($$3 > this.f - $$1) {
-         $$5 = this.f - $$1;
-      }
-
-      if ($$4 > this.g - $$2) {
-         $$6 = this.g - $$2;
-      }
-
-      this.c = $$6;
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
-         int $$8 = ($$1 + $$7 * this.f) * 3;
-         $$0.get(this.e, $$8, $$5 * 3);
+   private void a(long $$0, List<Path> $$1) {
+      if (this.a.y != null) {
+         this.a.y.a($$1);
       }
    }
 
-   public void a() throws IOException {
-      this.d.write(this.e, 0, this.f * 3 * this.c);
+   public void a(long $$0) {
+      ews.a(
+         $$0,
+         ($$0x, $$1, $$2) -> this.a.execute(() -> this.b($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2, $$3) -> this.a.execute(() -> this.a($$0x, $$1, $$2, $$3)),
+         ($$0x, $$1, $$2) -> this.a.execute(() -> this.a($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2) -> {
+            Path[] $$3 = new Path[$$1];
+
+            for (int $$4 = 0; $$4 < $$1; $$4++) {
+               $$3[$$4] = Paths.get(GLFWDropCallback.getName($$2, $$4));
+            }
+
+            this.a.execute(() -> this.a($$0x, Arrays.asList($$3)));
+         }
+      );
    }
 
-   public File b() throws IOException {
-      this.d.close();
-      return this.h;
+   private void b(long $$0, double $$1, double $$2) {
+      if ($$0 == fde.Q().aP().i()) {
+         if (this.i) {
+            this.e = $$1;
+            this.f = $$2;
+            this.i = false;
+         } else {
+            if (this.a.aC()) {
+               this.n = this.n + ($$1 - this.e);
+               this.o = this.o + ($$2 - this.f);
+            }
+
+            this.e = $$1;
+            this.f = $$2;
+         }
+      }
+   }
+
+   public void a() {
+      double $$0 = evn.b();
+      double $$1 = $$0 - this.r;
+      this.r = $$0;
+      if (this.a.aC()) {
+         fld $$2 = this.a.y;
+         if ($$2 != null && this.a.aM() == null && (this.n != 0.0 || this.o != 0.0)) {
+            double $$3 = this.e * (double)this.a.aP().o() / (double)this.a.aP().m();
+            double $$4 = this.f * (double)this.a.aP().p() / (double)this.a.aP().n();
+            fld.a(() -> $$2.f($$3, $$4), "mouseMoved event handler", $$2.getClass().getCanonicalName());
+            if (this.h != -1 && this.k > 0.0) {
+               double $$5 = this.n * (double)this.a.aP().o() / (double)this.a.aP().m();
+               double $$6 = this.o * (double)this.a.aP().p() / (double)this.a.aP().n();
+               fld.a(() -> $$2.a($$3, $$4, this.h, $$5, $$6), "mouseDragged event handler", $$2.getClass().getCanonicalName());
+            }
+
+            $$2.u();
+         }
+
+         if (this.h() && this.a.s != null) {
+            this.a($$1);
+         }
+      }
+
+      this.n = 0.0;
+      this.o = 0.0;
+   }
+
+   private void a(double $$0) {
+      double $$1 = this.a.m.d().c() * 0.6F + 0.2F;
+      double $$2 = $$1 * $$1 * $$1;
+      double $$3 = $$2 * 8.0;
+      double $$6;
+      double $$7;
+      if (this.a.m.ab) {
+         double $$4 = this.l.a(this.n * $$3, $$0 * $$3);
+         double $$5 = this.m.a(this.o * $$3, $$0 * $$3);
+         $$6 = $$4;
+         $$7 = $$5;
+      } else if (this.a.m.aA().a() && this.a.s.gy()) {
+         this.l.a();
+         this.m.a();
+         $$6 = this.n * $$2;
+         $$7 = this.o * $$2;
+      } else {
+         this.l.a();
+         this.m.a();
+         $$6 = this.n * $$3;
+         $$7 = this.o * $$3;
+      }
+
+      int $$12 = 1;
+      if (this.a.m.R().c()) {
+         $$12 = -1;
+      }
+
+      this.a.aB().a($$6, $$7);
+      if (this.a.s != null) {
+         this.a.s.b($$6, $$7 * (double)$$12);
+      }
+   }
+
+   public boolean b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public void g() {
+      this.i = true;
+   }
+
+   public boolean h() {
+      return this.s;
+   }
+
+   public void i() {
+      if (this.a.aC()) {
+         if (!this.s) {
+            if (!fde.a) {
+               fdc.a();
+            }
+
+            this.s = true;
+            this.e = (double)(this.a.aP().m() / 2);
+            this.f = (double)(this.a.aP().n() / 2);
+            ews.a(this.a.aP().i(), 212995, this.e, this.f);
+            this.a.a(null);
+            this.a.w = 10000;
+            this.i = true;
+         }
+      }
+   }
+
+   public void j() {
+      if (this.s) {
+         this.s = false;
+         this.e = (double)(this.a.aP().m() / 2);
+         this.f = (double)(this.a.aP().n() / 2);
+         ews.a(this.a.aP().i(), 212993, this.e, this.f);
+      }
+   }
+
+   public void k() {
+      this.i = true;
    }
 }

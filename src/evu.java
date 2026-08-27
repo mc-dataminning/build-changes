@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record evu(etp b, etp c, etp d) {
+   public static final evu a = new evu(etp.b, new etp(0.0, 0.0, -1.0), new etp(0.0, 1.0, 0.0));
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@evg
-@evf
-interface evu {
+   public etp a() {
+      return this.c.c(this.d);
+   }
 }

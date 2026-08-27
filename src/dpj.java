@@ -1,124 +1,51 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
+import java.util.function.Predicate;
 
-public class dpj {
-   static final String a = "server_data";
-   static Codec<dpj> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jp.c.optionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.optionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               csd.a.listOf().optionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.optionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dpj::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<csd> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
+public interface dpj {
+   dpj a = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dn().a($$2, $$3) && !$$2x.f() && !$$2x.N_()).stream().map(brh::cx).toList();
+   dpj b = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dn().a($$2, $$3) && !$$2x.N_()).stream().map(brh::cx).toList();
+   dpj c = ($$0, $$1, $$2, $$3) -> {
+      etk $$4 = new etk($$2).g($$3);
+      return $$1.a($$0, brn.aI, $$4, bsa::bB).stream().map(brh::cx).toList();
+   };
 
-   dpj(Set<UUID> $$0, long $$1, List<csd> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
-   }
+   List<UUID> detect(aqh var1, dpj.a var2, in var3, double var4);
 
-   dpj() {
-   }
-
-   void a(long $$0) {
-      this.h = $$0;
-   }
-
-   long a() {
-      return this.h;
-   }
-
-   Set<UUID> b() {
-      return this.e;
-   }
-
-   boolean a(ckl $$0) {
-      return this.e.contains($$0.cx());
-   }
-
-   @VisibleForTesting
-   public void b(ckl $$0) {
-      this.e.add($$0.cx());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
+   public interface a {
+      dpj.a a = new dpj.a() {
+         @Override
+         public List<aqi> a(aqh $$0, Predicate<? super clh> $$1) {
+            return $$0.a($$1);
          }
+
+         @Override
+         public <T extends brh> List<T> a(aqh $$0, duo<brh, T> $$1, etk $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
+         }
+      };
+
+      List<? extends clh> a(aqh var1, Predicate<? super clh> var2);
+
+      <T extends brh> List<T> a(aqh var1, duo<brh, T> var2, etk var3, Predicate<? super T> var4);
+
+      static dpj.a a(clh $$0) {
+         return a(List.of($$0));
       }
 
-      this.i();
-   }
+      static dpj.a a(final List<clh> $$0) {
+         return new dpj.a() {
+            @Override
+            public List<clh> a(aqh $$0x, Predicate<? super clh> $$1) {
+               return $$0.stream().filter($$1).toList();
+            }
 
-   long c() {
-      return this.f;
-   }
-
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
-   }
-
-   List<csd> d() {
-      return this.g;
-   }
-
-   void e() {
-      this.i = 0;
-      this.i();
-   }
-
-   void a(List<csd> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
-   }
-
-   csd f() {
-      return this.g.isEmpty() ? csd.i : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), csd.i);
-   }
-
-   csd g() {
-      if (this.g.isEmpty()) {
-         return csd.i;
-      } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), csd.i);
+            @Override
+            public <T extends brh> List<T> a(aqh $$0x, duo<brh, T> $$1, etk $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
       }
-   }
-
-   void a(dpj $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
-   }
-
-   private void i() {
-      this.c = true;
-   }
-
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - axw.g((float)this.d().size(), 1.0F, (float)this.i);
    }
 }

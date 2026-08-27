@@ -1,53 +1,32 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class cp extends dd<cp.a> {
+public record cp(ct.d c, Optional<br> d) implements bs {
+   public static final MapCodec<cp> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(axh.a(ct.d.d, "blocks_set_on_fire", ct.d.c).forGetter(cp::b), axh.a(br.a, "entity_struck").forGetter(cp::c)).apply($$0, cp::new)
+   );
+
+   public static cp a(ct.d $$0) {
+      return new cp($$0, Optional.empty());
+   }
+
    @Override
-   public Codec<cp.a> a() {
-      return cp.a.a;
+   public MapCodec<cp> a() {
+      return bt.a;
    }
 
-   public void a(aqf $$0, brd $$1, List<bql> $$2) {
-      List<eoa> $$3 = $$2.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
-      eoa $$4 = br.b($$0, $$1);
-      this.a($$0, $$2x -> $$2x.a($$4, $$3));
+   @Override
+   public boolean a(brh $$0, aqh $$1, @Nullable etp $$2) {
+      return !($$0 instanceof brz $$3) ? false : this.c.d($$3.r()) && (this.d.isEmpty() || $$3.u().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
-   public static record a(Optional<bc> b, Optional<bc> c, Optional<bc> d) implements dd.a {
-      public static final Codec<cp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(axe.a(br.b, "player").forGetter(cp.a::a), axe.a(br.b, "lightning").forGetter(cp.a::b), axe.a(br.b, "bystander").forGetter(cp.a::c))
-               .apply($$0, cp.a::new)
-      );
+   public ct.d b() {
+      return this.c;
+   }
 
-      public static an<cp.a> a(Optional<br> $$0, Optional<br> $$1) {
-         return am.V.a(new cp.a(Optional.empty(), br.a($$0), br.a($$1)));
-      }
-
-      public boolean a(eoa $$0, List<eoa> $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
-      }
-
-      @Override
-      public void a(bd $$0) {
-         dd.a.super.a($$0);
-         $$0.a(this.c, ".lightning");
-         $$0.a(this.d, ".bystander");
-      }
-
-      @Override
-      public Optional<bc> a() {
-         return this.b;
-      }
-
-      public Optional<bc> b() {
-         return this.c;
-      }
-
-      public Optional<bc> c() {
-         return this.d;
-      }
+   public Optional<br> c() {
+      return this.d;
    }
 }

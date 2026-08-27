@@ -1,33 +1,8 @@
-import java.util.List;
-import java.util.Map;
-
 public class ajy {
-   private final String a;
-   private final String b;
+   public static final akg<csu> a = a("pumpkin_seeds");
+   public static final akg<csu> b = a("melon_seeds");
 
-   public ajy(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public static ajy a(String $$0) {
-      return new ajy($$0, ".json");
-   }
-
-   public akf a(akf $$0) {
-      return $$0.c(this.a + "/" + $$0.a() + this.b);
-   }
-
-   public akf b(akf $$0) {
-      String $$1 = $$0.a();
-      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
-   }
-
-   public Map<akf, atm> a(ato $$0) {
-      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
-   }
-
-   public Map<akf, List<atm>> b(ato $$0) {
-      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   private static akg<csu> a(String $$0) {
+      return akg.a(le.G, new akh($$0));
    }
 }

@@ -1,40 +1,34 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bwe extends bsw<cjy> {
-   public bwe() {
-      super(ImmutableMap.of());
+public class bwe {
+   public static <E extends bsc> btt<E> a(Function<E, Optional<? extends bsa>> $$0) {
+      return a($$0x -> true, $$0);
    }
 
-   protected boolean a(aqe $$0, cjy $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
-
-   protected void b(aqe $$0, cjy $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bsf<?> $$3 = $$1.dQ();
-         if (!$$3.c(cma.g)) {
-            $$3.b(cah.t);
-            $$3.b(cah.m);
-            $$3.b(cah.n);
-            $$3.b(cah.r);
-            $$3.b(cah.q);
-         }
-
-         $$3.a(cma.g);
-      }
-   }
-
-   protected void c(aqe $$0, cjy $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bre $$0) {
-      return $$0.dQ().a(cah.A);
-   }
-
-   public static boolean c(bre $$0) {
-      return $$0.dQ().a(cah.x);
+   public static <E extends bsc> btt<E> a(Predicate<E> $$0, Function<E, Optional<? extends bsa>> $$1) {
+      return bxf.a(
+         (Function<bxf.b<E>, ? extends App<bxf.c<E>, bxi<E>>>)($$2 -> $$2.group($$2.c(cbd.o), $$2.a(cbd.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test((E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends bsa> $$7 = $$1.apply((E)$$5);
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        bsa $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
+                           return false;
+                        } else {
+                           $$2x.a($$8);
+                           $$3.b();
+                           return true;
+                        }
+                     }
+                  }
+               }))
+      );
    }
 }

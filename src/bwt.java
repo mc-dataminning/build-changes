@@ -1,21 +1,11 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class bwt {
-   public static <E extends cjp> bsx<E> a(Function<E, Optional<? extends bre>> $$0) {
-      return bwj.a(
-         (Function<bwj.b<E>, ? extends App<bwj.c<E>, bwm<E>>>)($$1 -> $$1.group($$1.c(cah.ay), $$1.c(cah.o), $$1.a(cah.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends bre> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::b).isEmpty()) {
-                        return false;
-                     } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
-                        return true;
-                     }
-                  }))
-      );
+   public static btt<bsa> a() {
+      return bxf.a((Function<bxf.b<bsa>, ? extends App<bxf.c<bsa>, bxi<bsa>>>)($$0 -> $$0.a((bxi<bsa>)(($$0x, $$1, $$2) -> {
+            $$1.dQ().a($$0x.Z(), $$0x.Y());
+            return true;
+         }))));
    }
 }

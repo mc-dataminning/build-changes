@@ -1,64 +1,30 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class gbq {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 4;
-   private final Queue<gbp> c;
-   private volatile int d;
+   public static final akh a = new akh("textures/gui/title/background/panorama_overlay.png");
+   private final fde b;
+   private final gbc c;
+   private float d;
+   private float e;
 
-   private gbq(List<gbp> $$0) {
-      this.c = Queues.newArrayDeque($$0);
-      this.d = this.c.size();
+   public gbq(gbc $$0) {
+      this.c = $$0;
+      this.b = fde.Q();
    }
 
-   public static gbq a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / gbp.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<gbp> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new gbp());
-         }
-      } catch (OutOfMemoryError var7) {
-         b.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
-      }
-
-      return new gbq($$3);
+   public void a(fer $$0, int $$1, int $$2, float $$3, float $$4) {
+      float $$5 = (float)((double)$$4 * this.b.m.s().c());
+      this.d = a(this.d + $$5 * 0.1F, 360.0F);
+      this.e = a(this.e + $$5 * 0.001F, (float) (Math.PI * 2));
+      this.c.a(this.b, 10.0F, -this.d, $$3);
+      RenderSystem.enableBlend();
+      $$0.a(1.0F, 1.0F, 1.0F, $$3);
+      $$0.a(a, 0, 0, $$1, $$2, 0.0F, 0.0F, 16, 128, 16, 128);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
    }
 
-   @Nullable
-   public gbp a() {
-      gbp $$0 = this.c.poll();
-      if ($$0 != null) {
-         this.d = this.c.size();
-         return $$0;
-      } else {
-         return null;
-      }
-   }
-
-   public void a(gbp $$0) {
-      this.c.add($$0);
-      this.d = this.c.size();
-   }
-
-   public boolean b() {
-      return this.c.isEmpty();
-   }
-
-   public int c() {
-      return this.d;
+   private static float a(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

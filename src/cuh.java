@@ -1,45 +1,40 @@
-import java.util.Map;
-import java.util.Optional;
+public class cuh extends csu {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class cuh {
-   public static final ake<cug> a = a("quartz");
-   public static final ake<cug> b = a("iron");
-   public static final ake<cug> c = a("netherite");
-   public static final ake<cug> d = a("redstone");
-   public static final ake<cug> e = a("copper");
-   public static final ake<cug> f = a("gold");
-   public static final ake<cug> g = a("emerald");
-   public static final ake<cug> h = a("diamond");
-   public static final ake<cug> i = a("lapis");
-   public static final ake<cug> j = a("amethyst");
-
-   public static void a(qj<cug> $$0) {
-      a($$0, a, csg.oB, xp.a.a(14931140), 0.1F);
-      a($$0, b, csg.oE, xp.a.a(15527148), 0.2F, Map.of(cpu.c, "iron_darker"));
-      a($$0, c, csg.oJ, xp.a.a(6445145), 0.3F, Map.of(cpu.g, "netherite_darker"));
-      a($$0, d, csg.lH, xp.a.a(9901575), 0.4F);
-      a($$0, e, csg.oG, xp.a.a(11823181), 0.5F);
-      a($$0, f, csg.oI, xp.a.a(14594349), 0.6F, Map.of(cpu.d, "gold_darker"));
-      a($$0, g, csg.oz, xp.a.a(1155126), 0.7F);
-      a($$0, h, csg.oy, xp.a.a(7269586), 0.8F, Map.of(cpu.e, "diamond_darker"));
-      a($$0, i, csg.oA, xp.a.a(4288151), 0.9F);
-      a($$0, j, csg.oC, xp.a.a(10116294), 1.0F);
+   public cuh(csu.a $$0) {
+      super($$0);
    }
 
-   public static Optional<iv.c<cug>> a(jj $$0, csd $$1) {
-      return $$0.d(ld.aN).h().filter($$1x -> $$1.a(((cug)$$1x.a()).b())).findFirst();
+   @Override
+   public int b(csz $$0) {
+      return 1200;
    }
 
-   private static void a(qj<cug> $$0, ake<cug> $$1, cry $$2, xp $$3, float $$4) {
-      a($$0, $$1, $$2, $$3, $$4, Map.of());
+   @Override
+   public cus c(csz $$0) {
+      return cus.h;
    }
 
-   private static void a(qj<cug> $$0, ake<cug> $$1, cry $$2, xp $$3, float $$4, Map<iv<cpt>, String> $$5) {
-      cug $$6 = cug.a($$1.a().a(), $$2, $$4, ws.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
-      $$0.a($$1, $$6);
+   @Override
+   public bpn<csz> a(dad $$0, clh $$1, bpl $$2) {
+      $$1.a(avc.yJ, 1.0F, 1.0F);
+      $$1.b(avm.c.b(this));
+      return ctb.a($$0, $$1, $$2);
    }
 
-   private static ake<cug> a(String $$0) {
-      return ake.a(ld.aN, new akf($$0));
+   @Override
+   public csz a(csz $$0, dad $$1, bsa $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(csz $$0, dad $$1, bsa $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(bsa $$0) {
+      $$0.a(avc.yK, 1.0F, 1.0F);
    }
 }

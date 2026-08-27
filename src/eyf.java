@@ -1,178 +1,36 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
 public interface eyf {
-   ws a = ws.c("mco.errorMessage.noDetails");
-   Logger b = LogUtils.getLogger();
+   eyf a = a(0.0F, 0.0F, 0.0F);
+   eyf b = a((eyf.a)($$0 -> -$$0.z()));
 
-   int a();
+   static eyf a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
+   }
 
-   ws b();
+   static eyf a(Vector3f $$0) {
+      return a($$0::distanceSquared);
+   }
 
-   String c();
+   static eyf a(eyf.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
 
-   static eyf a(int $$0, String $$1) {
-      if ($$0 == 429) {
-         return eyf.b.c;
-      } else if (Strings.isNullOrEmpty($$1)) {
-         return eyf.b.b($$0);
-      } else {
-         try {
-            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
-            String $$3 = axm.a($$2, "reason", null);
-            String $$4 = axm.a($$2, "errorMsg", null);
-            int $$5 = axm.a($$2, "errorCode", -1);
-            if ($$4 != null || $$3 != null || $$5 != -1) {
-               return new eyf.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
-            }
-         } catch (Exception var6) {
-            b.error("Could not parse RealmsError", var6);
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
          }
 
-         return new eyf.d($$0, $$1);
-      }
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
    }
 
-   public static record a(String d) implements eyf {
-      public static final int c = 401;
+   int[] sort(Vector3f[] var1);
 
-      @Override
-      public int a() {
-         return 401;
-      }
-
-      @Override
-      public ws b() {
-         return ws.b(this.d);
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
-      }
-   }
-
-   public static record b(int e, @Nullable ws f) implements eyf {
-      public static final eyf.b c = new eyf.b(429, ws.c("mco.errorMessage.serviceBusy"));
-      public static final ws d = ws.c("mco.errorMessage.retry");
-
-      public static eyf.b a(String $$0) {
-         return new eyf.b(500, ws.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
-      }
-
-      public static eyf.b a(ezp $$0) {
-         return new eyf.b(500, ws.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
-      }
-
-      public static eyf.b a(int $$0) {
-         return new eyf.b($$0, d);
-      }
-
-      public static eyf.b b(int $$0) {
-         return new eyf.b($$0, null);
-      }
-
-      @Override
-      public int a() {
-         return this.e;
-      }
-
-      @Override
-      public ws b() {
-         return this.f != null ? this.f : a;
-      }
-
-      @Override
-      public String c() {
-         return this.f != null
-            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
-            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      @Nullable
-      public ws e() {
-         return this.f;
-      }
-   }
-
-   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements eyf {
-      @Override
-      public int a() {
-         return this.d;
-      }
-
-      @Override
-      public ws b() {
-         String $$0 = "mco.errorMessage." + this.d;
-         if (gnt.a($$0)) {
-            return ws.c($$0);
-         } else {
-            if (this.e != null) {
-               String $$1 = "mco.errorReason." + this.e;
-               if (gnt.a($$1)) {
-                  return ws.c($$1);
-               }
-            }
-
-            return (ws)(this.f != null ? ws.b(this.f) : a);
-         }
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public int e() {
-         return this.d;
-      }
-
-      @Nullable
-      public String f() {
-         return this.e;
-      }
-
-      @Nullable
-      public String g() {
-         return this.f;
-      }
-   }
-
-   public static record d(int c, String d) implements eyf {
-      @Override
-      public int a() {
-         return this.c;
-      }
-
-      @Override
-      public ws b() {
-         return ws.b(this.d);
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public String e() {
-         return this.d;
-      }
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

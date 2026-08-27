@@ -1,99 +1,121 @@
-public class fme extends flr<cny> implements fom {
-   private static final akf D = new akf("textures/gui/container/crafting_table.png");
-   private final fog E = new fog();
-   private boolean F;
+public class fme extends fnc<cof> {
+   private static final akh D = new akh("container/anvil/text_field");
+   private static final akh E = new akh("container/anvil/text_field_disabled");
+   private static final akh F = new akh("container/anvil/error");
+   private static final akh G = new akh("textures/gui/container/anvil.png");
+   private static final wu H = wu.c("container.repair.expensive");
+   private ffn I;
+   private final clh J;
 
-   public fme(cny $$0, ckk $$1, ws $$2) {
-      super($$0, $$1, $$2);
+   public fme(cof $$0, clg $$1, wu $$2) {
+      super($$0, $$1, $$2, G);
+      this.J = $$1.l;
+      this.r = 60;
    }
 
    @Override
-   protected void aM_() {
-      super.aM_();
-      this.F = this.n < 379;
-      this.E.a(this.n, this.o, this.m, this.F, this.w);
-      this.z = this.E.a(this.n, this.c);
-      this.c(new ffg(this.z + 5, this.o / 2 - 49, 20, 18, fog.a, $$0 -> {
-         this.E.e();
-         this.z = this.E.a(this.n, this.c);
-         $$0.c(this.z + 5, this.o / 2 - 49);
-      }));
-      this.d(this.E);
-      this.r = 29;
+   protected void E() {
+      int $$0 = (this.n - this.c) / 2;
+      int $$1 = (this.o - this.d) / 2;
+      this.I = new ffn(this.p, $$0 + 62, $$1 + 24, 103, 12, wu.c("container.repair"));
+      this.I.f(false);
+      this.I.g(-1);
+      this.I.h(-1);
+      this.I.d(false);
+      this.I.f(50);
+      this.I.b(this::a);
+      this.I.a("");
+      this.d(this.I);
+      this.I.e(this.w.b(0).h());
    }
 
    @Override
-   public void C() {
-      super.C();
-      this.E.h();
+   protected void aC_() {
+      this.b(this.I);
    }
 
    @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      if (this.E.f() && this.F) {
-         this.b($$0, $$1, $$2, $$3);
-         this.E.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.E.a($$0, $$1, $$2, $$3);
-         this.E.a($$0, this.z, this.A, true, $$3);
-      }
-
-      this.a($$0, $$1, $$2);
-      this.E.a($$0, this.z, this.A, $$1, $$2);
-   }
-
-   @Override
-   protected void a(feh $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.z;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   public void a(fde $$0, int $$1, int $$2) {
+      String $$3 = this.I.a();
+      this.b($$0, $$1, $$2);
+      this.I.a($$3);
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      return this.E.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      if ($$0 == 256) {
+         this.m.s.r();
+      }
+
+      return !this.I.a($$0, $$1, $$2) && !this.I.d() ? super.a($$0, $$1, $$2) : true;
    }
 
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.E.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
+   private void a(String $$0) {
+      cpz $$1 = this.w.b(0);
+      if ($$1.h()) {
+         String $$2 = $$0;
+         if (!$$1.g().b(ka.f) && $$0.equals($$1.g().w().getString())) {
+            $$2 = "";
+         }
 
-   @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.F || !this.E.f()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.E.a($$0, $$1, $$2)) {
-         this.a(this.E);
-         return true;
-      } else {
-         return this.F && this.E.f() ? true : super.a($$0, $$1, $$2);
+         if (this.w.a($$2)) {
+            this.m.s.h.b(new ahh($$2));
+         }
       }
    }
 
    @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.d);
-      return this.E.a($$0, $$1, this.z, this.A, this.c, this.d, $$4) && $$5;
+   protected void b(fer $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.w.n();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         wu $$5;
+         if ($$3 >= 40 && !this.m.s.gb().d) {
+            $$5 = H;
+            $$4 = 16736352;
+         } else if (!this.w.b(2).h()) {
+            $$5 = null;
+         } else {
+            $$5 = wu.a("container.repair.cost", $$3);
+            if (!this.w.b(2).a(this.J)) {
+               $$4 = 16736352;
+            }
+         }
+
+         if ($$5 != null) {
+            int $$8 = this.c - 8 - this.p.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
+            $$0.b(this.p, $$5, $$8, 69, $$4);
+         }
+      }
    }
 
    @Override
-   protected void a(cpd $$0, int $$1, int $$2, cnq $$3) {
+   protected void a(fer $$0, float $$1, int $$2, int $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.E.a($$0);
+      $$0.a(this.w.b(0).h() ? D : E, this.z + 59, this.A + 20, 110, 16);
    }
 
    @Override
-   public void E() {
-      this.E.i();
+   public void d(fer $$0, int $$1, int $$2, float $$3) {
+      this.I.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public fog F() {
-      return this.E;
+   protected void c(fer $$0, int $$1, int $$2) {
+      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(this.w.o()).h()) {
+         $$0.a(F, $$1 + 99, $$2 + 45, 28, 21);
+      }
+   }
+
+   @Override
+   public void a(cod $$0, int $$1, csz $$2) {
+      if ($$1 == 0) {
+         this.I.a($$2.d() ? "" : $$2.w().getString());
+         this.I.e(!$$2.d());
+         this.a(this.I);
+      }
    }
 }

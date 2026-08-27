@@ -1,100 +1,41 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class glu implements glt {
-   public static final int a = 0;
-   private final glu.b c = new glu.b();
-   private final glu.b d = new glu.b();
-   public final glu.a b;
+public class glu<T extends ckl, M extends fun<T>> extends gli<T, M> {
+   private final akh a;
+   private final glu.a<T> b;
+   private final glu.b<T, M> c;
 
-   public glu(glu.a $$0) {
-      this.b = $$0;
+   public glu(gis<T, M> $$0, akh $$1, glu.a<T> $$2, glu.b<T, M> $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   @Override
-   public float unclampedCall(csd $$0, @Nullable fvm $$1, @Nullable bre $$2, int $$3) {
-      bql $$4 = (bql)($$2 != null ? $$2 : $$0.D());
-      if ($$4 == null) {
-         return 0.0F;
-      } else {
-         $$1 = this.a($$4, $$1);
-         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+   public void a(exx $$0, gbo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.cf()) {
+         this.a();
+         eyb $$10 = $$1.getBuffer(gbw.j(this.a));
+         this.c().a($$0, $$10, $$2, ghy.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
+         this.b();
       }
    }
 
-   private float a(csd $$0, fvm $$1, int $$2, bql $$3) {
-      iu $$4 = this.b.getPos($$1, $$0, $$3);
-      long $$5 = $$1.Y();
-      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
+   private void a() {
+      List<fvb> $$0 = this.c.getPartsToDraw(this.c());
+      this.c().a().e().forEach($$0x -> $$0x.l = true);
+      $$0.forEach($$0x -> $$0x.l = false);
    }
 
-   private float a(int $$0, long $$1) {
-      if (this.d.a($$1)) {
-         this.d.a($$1, Math.random());
-      }
-
-      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
-      return axw.b((float)$$2, 1.0F);
+   private void b() {
+      this.c().a().e().forEach($$0 -> $$0.l = false);
    }
 
-   private float a(bql $$0, long $$1, im $$2) {
-      double $$3 = this.a($$0, $$2);
-      double $$4 = this.a($$0);
-      if ($$0 instanceof ckl $$5 && $$5.g() && $$5.dN().s().i()) {
-         if (this.c.a($$1)) {
-            this.c.a($$1, 0.5 - ($$4 - 0.25));
-         }
-
-         double $$6 = $$3 + this.c.a;
-         return axw.b((float)$$6, 1.0F);
-      }
-
-      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
-      return axw.b((float)$$7, 1.0F);
+   public interface a<T extends ckl> {
+      float apply(T var1, float var2, float var3);
    }
 
-   @Nullable
-   private fvm a(bql $$0, @Nullable fvm $$1) {
-      return $$1 == null && $$0.dN() instanceof fvm ? (fvm)$$0.dN() : $$1;
-   }
-
-   private boolean a(bql $$0, @Nullable iu $$1) {
-      return $$1 != null && $$1.a() == $$0.dN().ae() && !($$1.b().b($$0.dl()) < 1.0E-5F);
-   }
-
-   private double a(bql $$0, im $$1) {
-      etf $$2 = etf.b($$1);
-      return Math.atan2($$2.c() - $$0.dy(), $$2.a() - $$0.ds()) / (float) (Math.PI * 2);
-   }
-
-   private double a(bql $$0) {
-      return axw.c((double)($$0.dE() / 360.0F), 1.0);
-   }
-
-   private int a(int $$0) {
-      return $$0 * 1327217883;
-   }
-
-   public interface a {
-      @Nullable
-      iu getPos(fvm var1, csd var2, bql var3);
-   }
-
-   static class b {
-      double a;
-      private double b;
-      private long c;
-
-      boolean a(long $$0) {
-         return this.c != $$0;
-      }
-
-      void a(long $$0, double $$1) {
-         this.c = $$0;
-         double $$2 = $$1 - this.a;
-         $$2 = axw.c($$2 + 0.5, 1.0) - 0.5;
-         this.b += $$2 * 0.1;
-         this.b *= 0.8;
-         this.a = axw.c(this.a + this.b, 1.0);
-      }
+   public interface b<T extends ckl, M extends fsb<T>> {
+      List<fvb> getPartsToDraw(M var1);
    }
 }

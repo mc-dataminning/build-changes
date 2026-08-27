@@ -1,66 +1,85 @@
-public class fxn extends fzs {
-   private final float a;
-   private final float b;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
 
-   fxn(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, csd $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+public final class fxn {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final fxn c = new fxn(HostAndPort.fromParts("server.invalid", 25565));
+
+   public fxn(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
    }
 
-   @Override
-   public fyw b() {
-      return fyw.a;
+   private fxn(HostAndPort $$0) {
+      this.b = $$0;
    }
 
-   protected fxn(fvm $$0, double $$1, double $$2, double $$3, csd $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(fcu.Q().as().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements fyv<ks> {
-      public fys a(ks $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fxn($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
       }
    }
 
-   public static class b implements fyv<kz> {
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fxn($$1, $$2, $$3, $$4, new csd(csg.qQ));
+   public int b() {
+      return this.b.getPort();
+   }
+
+   public static fxn a(String $$0) {
+      if ($$0 == null) {
+         return c;
+      } else {
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new fxn($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
+         }
       }
    }
 
-   public static class c implements fyv<kz> {
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fxn($$1, $$2, $$3, $$4, new csd(csg.qC));
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
       }
+
+      return false;
+   }
+
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
+      }
+   }
+
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fxn ? this.b.equals(((fxn)$$0).b) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

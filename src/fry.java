@@ -1,138 +1,80 @@
-public class fry extends fsa<chn> {
-   private static final float[] a = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
-   private static final float[] b = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
-   private static final float[] f = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
-   private static final float[] g = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
-   private static final float[] h = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
-   private static final float[] i = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
-   private static final String j = "eye";
-   private static final String k = "tail0";
-   private static final String l = "tail1";
-   private static final String m = "tail2";
-   private final fur n;
-   private final fur o;
-   private final fur p;
-   private final fur[] q;
-   private final fur[] r;
+import com.google.common.collect.ImmutableList;
 
-   public fry(fur $$0) {
-      this.n = $$0;
-      this.q = new fur[12];
-      this.o = $$0.b("head");
+public class fry<T extends bsa> extends fqw<T> {
+   private final fvb a;
+   private final fvb b;
 
-      for (int $$1 = 0; $$1 < this.q.length; $$1++) {
-         this.q[$$1] = this.o.b(a($$1));
-      }
-
-      this.p = this.o.b("eye");
-      this.r = new fur[3];
-      this.r[0] = this.o.b("tail0");
-      this.r[1] = this.r[0].b("tail1");
-      this.r[2] = this.r[1].b("tail2");
+   public fry(fvb $$0) {
+      this.b = $$0.b("left_wing");
+      this.a = $$0.b("right_wing");
    }
 
-   private static String a(int $$0) {
-      return "spike" + $$0;
-   }
-
-   public static fux b() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      fva $$2 = $$1.a(
-         "head",
-         fuw.c()
-            .a(0, 0)
-            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
-            .a(0, 28)
-            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
-            .a(0, 28)
-            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
-            .a(16, 40)
-            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
-            .a(16, 40)
-            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
-         fut.a
+   public static fvh c() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      fvf $$2 = new fvf(1.0F);
+      $$1.a(
+         "left_wing",
+         fvg.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         fvd.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
       );
-      fuw $$3 = fuw.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
-
-      for (int $$4 = 0; $$4 < 12; $$4++) {
-         float $$5 = b($$4, 0.0F, 0.0F);
-         float $$6 = c($$4, 0.0F, 0.0F);
-         float $$7 = d($$4, 0.0F, 0.0F);
-         float $$8 = (float) Math.PI * a[$$4];
-         float $$9 = (float) Math.PI * b[$$4];
-         float $$10 = (float) Math.PI * f[$$4];
-         $$2.a(a($$4), $$3, fut.a($$5, $$6, $$7, $$8, $$9, $$10));
-      }
-
-      $$2.a("eye", fuw.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), fut.a(0.0F, 0.0F, -8.25F));
-      fva $$11 = $$2.a("tail0", fuw.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), fut.a);
-      fva $$12 = $$11.a("tail1", fuw.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), fut.a(-1.5F, 0.5F, 14.0F));
-      $$12.a("tail2", fuw.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), fut.a(0.5F, 0.5F, 6.0F));
-      return fux.a($$0, 64, 64);
+      $$1.a(
+         "right_wing",
+         fvg.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         fvd.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
+      );
+      return fvh.a($$0, 64, 32);
    }
 
    @Override
-   public fur a() {
-      return this.n;
+   protected Iterable<fvb> a() {
+      return ImmutableList.of();
    }
 
-   public void a(chn $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 - (float)$$0.ai;
-      this.o.f = $$4 * (float) (Math.PI / 180.0);
-      this.o.e = $$5 * (float) (Math.PI / 180.0);
-      float $$7 = (1.0F - $$0.H($$6)) * 0.55F;
-      this.a($$3, $$7);
-      bql $$8 = fcu.Q().ao();
-      if ($$0.gr()) {
-         $$8 = $$0.gs();
-      }
+   @Override
+   protected Iterable<fvb> b() {
+      return ImmutableList.of(this.b, this.a);
+   }
 
-      if ($$8 != null) {
-         etf $$9 = $$8.j(0.0F);
-         etf $$10 = $$0.j(0.0F);
-         double $$11 = $$9.d - $$10.d;
-         if ($$11 > 0.0) {
-            this.p.c = 0.0F;
-         } else {
-            this.p.c = 1.0F;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = (float) (Math.PI / 12);
+      float $$7 = (float) (-Math.PI / 12);
+      float $$8 = 0.0F;
+      float $$9 = 0.0F;
+      if ($$0.fC()) {
+         float $$10 = 1.0F;
+         etp $$11 = $$0.dq();
+         if ($$11.d < 0.0) {
+            etp $$12 = $$11.d();
+            $$10 = 1.0F - (float)Math.pow(-$$12.d, 1.5);
          }
 
-         etf $$12 = $$0.f(0.0F);
-         $$12 = new etf($$12.c, 0.0, $$12.e);
-         etf $$13 = new etf($$10.c - $$9.c, 0.0, $$10.e - $$9.e).d().b((float) (Math.PI / 2));
-         double $$14 = $$12.b($$13);
-         this.p.b = axw.c((float)Math.abs($$14)) * 2.0F * (float)Math.signum($$14);
+         $$6 = $$10 * (float) (Math.PI / 9) + (1.0F - $$10) * $$6;
+         $$7 = $$10 * (float) (-Math.PI / 2) + (1.0F - $$10) * $$7;
+      } else if ($$0.bY()) {
+         $$6 = (float) (Math.PI * 2.0 / 9.0);
+         $$7 = (float) (-Math.PI / 4);
+         $$8 = 3.0F;
+         $$9 = 0.08726646F;
       }
 
-      this.p.k = true;
-      float $$15 = $$0.G($$6);
-      this.r[0].f = axw.a($$15) * (float) Math.PI * 0.05F;
-      this.r[1].f = axw.a($$15) * (float) Math.PI * 0.1F;
-      this.r[2].f = axw.a($$15) * (float) Math.PI * 0.15F;
-   }
-
-   private void a(float $$0, float $$1) {
-      for (int $$2 = 0; $$2 < 12; $$2++) {
-         this.q[$$2].b = b($$2, $$0, $$1);
-         this.q[$$2].c = c($$2, $$0, $$1);
-         this.q[$$2].d = d($$2, $$0, $$1);
+      this.b.c = $$8;
+      if ($$0 instanceof gan $$13) {
+         $$13.c = $$13.c + ($$6 - $$13.c) * 0.1F;
+         $$13.d = $$13.d + ($$9 - $$13.d) * 0.1F;
+         $$13.e = $$13.e + ($$7 - $$13.e) * 0.1F;
+         this.b.e = $$13.c;
+         this.b.f = $$13.d;
+         this.b.g = $$13.e;
+      } else {
+         this.b.e = $$6;
+         this.b.g = $$7;
+         this.b.f = $$9;
       }
-   }
 
-   private static float a(int $$0, float $$1, float $$2) {
-      return 1.0F + axw.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
-   }
-
-   private static float b(int $$0, float $$1, float $$2) {
-      return g[$$0] * a($$0, $$1, $$2);
-   }
-
-   private static float c(int $$0, float $$1, float $$2) {
-      return 16.0F + h[$$0] * a($$0, $$1, $$2);
-   }
-
-   private static float d(int $$0, float $$1, float $$2) {
-      return i[$$0] * a($$0, $$1, $$2);
+      this.a.f = -this.b.f;
+      this.a.c = this.b.c;
+      this.a.e = this.b.e;
+      this.a.g = -this.b.g;
    }
 }

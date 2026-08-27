@@ -1,27 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public record cvi(List<aqv<String>> f) implements cun<String, cvi> {
-   public static final cvi a = new cvi(List.of());
-   public static final int b = 1024;
-   private static final Codec<aqv<String>> g = aqv.a(axe.b(0, 1024));
-   public static final Codec<List<aqv<String>>> c = axe.a(g.listOf(), 100);
-   public static final Codec<cvi> d = RecordCodecBuilder.create($$0 -> $$0.group(axe.a(c, "pages", List.of()).forGetter(cvi::a)).apply($$0, cvi::new));
-   public static final yq<ByteBuf, cvi> e = aqv.a(yo.b(1024)).a(yo.c(100)).a(cvi::new, cvi::a);
+public record cvi(Map<String, String> d) {
+   public static final cvi a = new cvi(Map.of());
+   public static final Codec<cvi> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(cvi::new, cvi::b);
+   private static final ys<ByteBuf, Map<String, String>> e = yq.a(Object2ObjectOpenHashMap::new, yq.k, yq.k);
+   public static final ys<ByteBuf, cvi> c = e.a(cvi::new, cvi::b);
 
-   public Stream<String> a(boolean $$0) {
-      return this.f.stream().map($$1 -> $$1.a($$0));
+   public <T extends Comparable<T>> cvi a(drk<T> $$0, T $$1) {
+      return new cvi(ac.a(this.d, $$0.f(), $$0.a($$1)));
    }
 
-   public cvi b(List<aqv<String>> $$0) {
-      return new cvi($$0);
+   public <T extends Comparable<T>> cvi a(drk<T> $$0, dqh $$1) {
+      return this.a($$0, $$1.c($$0));
    }
 
-   @Override
-   public List<aqv<String>> a() {
-      return this.f;
+   @Nullable
+   public <T extends Comparable<T>> T a(drk<T> $$0) {
+      String $$1 = this.d.get($$0.f());
+      return $$1 == null ? null : $$0.b($$1).orElse(null);
+   }
+
+   public dqh a(dqh $$0) {
+      dqi<dde, dqh> $$1 = $$0.b().l();
+
+      for (Entry<String, String> $$2 : this.d.entrySet()) {
+         drk<?> $$3 = $$1.a($$2.getKey());
+         if ($$3 != null) {
+            $$0 = a($$0, $$3, $$2.getValue());
+         }
+      }
+
+      return $$0;
+   }
+
+   private static <T extends Comparable<T>> dqh a(dqh $$0, drk<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
+   }
+
+   public boolean a() {
+      return this.d.isEmpty();
+   }
+
+   public Map<String, String> b() {
+      return this.d;
    }
 }

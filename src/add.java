@@ -1,57 +1,53 @@
-public class add implements yz<abk> {
-   public static final yq<wd, add> a = yz.a(add::a, add::new);
-   private final int b;
-   private final cyt c;
-   private final int d;
-   private final int e;
-   private final boolean f;
-   private final boolean g;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public add(int $$0, cyt $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+public record add(int b, boolean c, Set<akg<dad>> d, int e, int f, int g, boolean h, boolean i, boolean j, afu k, boolean l) implements zb<abm> {
+   public static final ys<wf, add> a = zb.a(add::a, add::new);
+
+   private add(wf $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(le.aS)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new afu($$0),
+         $$0.readBoolean()
+      );
    }
 
-   private add(wd $$0) {
-      this.b = $$0.l();
-      this.c = cyt.b.decode($$0);
-      this.d = $$0.l();
-      this.e = $$0.l();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
-   }
-
-   private void a(wd $$0) {
-      $$0.c(this.b);
-      cyt.b.encode($$0, this.c);
-      $$0.c(this.d);
+   private void a(wf $$0) {
+      $$0.p(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, vu::b);
       $$0.c(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public zb<add> a() {
-      return afv.Q;
+   public zd<add> a() {
+      return afx.O;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public cyt e() {
+   public boolean e() {
       return this.c;
    }
 
-   public int f() {
+   public Set<akg<dad>> f() {
       return this.d;
    }
 
@@ -59,11 +55,31 @@ public class add implements yz<abk> {
       return this.e;
    }
 
-   public boolean h() {
+   public int h() {
       return this.f;
    }
 
-   public boolean i() {
+   public int i() {
       return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public boolean l() {
+      return this.j;
+   }
+
+   public afu m() {
+      return this.k;
+   }
+
+   public boolean n() {
+      return this.l;
    }
 }

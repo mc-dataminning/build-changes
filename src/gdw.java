@@ -1,41 +1,121 @@
-public class gdw extends gdx<dot> {
-   private static final akf c = new akf("textures/entity/end_gateway_beam.png");
+import java.util.EnumSet;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public gdw(gdf.a $$0) {
-      super($$0);
+public class gdw implements gdo<doc> {
+   private static final String a = "neck";
+   private static final String b = "front";
+   private static final String c = "back";
+   private static final String d = "left";
+   private static final String e = "right";
+   private static final String f = "top";
+   private static final String g = "bottom";
+   private final fvb h;
+   private final fvb i;
+   private final fvb j;
+   private final fvb k;
+   private final fvb l;
+   private final fvb m;
+   private final fvb n;
+   private final gpc o = Objects.requireNonNull(gcd.a(dod.a));
+   private static final float p = 0.125F;
+
+   public gdw(gdp.a $$0) {
+      fvb $$1 = $$0.a(fva.K);
+      this.h = $$1.b("neck");
+      this.m = $$1.b("top");
+      this.n = $$1.b("bottom");
+      fvb $$2 = $$0.a(fva.L);
+      this.i = $$2.b("front");
+      this.j = $$2.b("back");
+      this.k = $$2.b("left");
+      this.l = $$2.b("right");
    }
 
-   public void a(dot $$0, float $$1, exn $$2, gbe $$3, int $$4, int $$5) {
-      if ($$0.b() || $$0.c()) {
-         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.b() ? (double)$$0.i().al() : 50.0;
-         $$6 = axw.a($$6 * (float) Math.PI);
-         int $$8 = axw.a((double)$$6 * $$7);
-         float[] $$9 = $$0.b() ? cqw.c.d() : cqw.k.d();
-         long $$10 = $$0.i().Y();
-         gda.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   public static fvh b() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      fvf $$2 = new fvf(0.2F);
+      fvf $$3 = new fvf(-0.1F);
+      $$1.a(
+         "neck",
+         fvg.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
+         fvd.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
+      );
+      fvg $$4 = fvg.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
+      $$1.a("top", $$4, fvd.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      $$1.a("bottom", $$4, fvd.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      return fvh.a($$0, 32, 32);
+   }
+
+   public static fvh c() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      fvg $$2 = fvg.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(is.c));
+      $$1.a("back", $$2, fvd.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
+      $$1.a("left", $$2, fvd.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
+      $$1.a("right", $$2, fvd.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
+      $$1.a("front", $$2, fvd.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
+      return fvh.a($$0, 16, 16);
+   }
+
+   @Nullable
+   private static gpc a(Optional<csu> $$0) {
+      if ($$0.isPresent()) {
+         gpc $$1 = gcd.a(dod.a($$0.get()));
+         if ($$1 != null) {
+            return $$1;
+         }
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return gcd.a(dod.a(ctc.qL));
    }
 
-   @Override
-   protected float b() {
-      return 1.0F;
+   public void a(doc $$0, float $$1, exx $$2, gbo $$3, int $$4, int $$5) {
+      $$2.a();
+      is $$6 = $$0.k();
+      $$2.a(0.5, 0.0, 0.5);
+      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
+      $$2.a(-0.5, 0.0, -0.5);
+      doc.a $$7 = $$0.h;
+      if ($$7 != null && $$0.i() != null) {
+         float $$8 = ((float)($$0.i().Y() - $$0.g) + $$1) / (float)$$7.c;
+         if ($$8 >= 0.0F && $$8 <= 1.0F) {
+            if ($$7 == doc.a.a) {
+               float $$9 = 0.015625F;
+               float $$10 = $$8 * (float) (Math.PI * 2);
+               float $$11 = -1.5F * (axz.b($$10) + 0.5F) * axz.a($$10 / 2.0F);
+               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
+               float $$12 = axz.a($$10);
+               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+            } else {
+               float $$13 = axz.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
+               float $$14 = 1.0F - $$8;
+               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+            }
+         }
+      }
+
+      eyb $$15 = this.o.a($$3, gbw::c);
+      this.h.a($$2, $$15, $$4, $$5);
+      this.m.a($$2, $$15, $$4, $$5);
+      this.n.a($$2, $$15, $$4, $$5);
+      doq $$16 = $$0.l();
+      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
+      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
+      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
+      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
+      $$2.b();
    }
 
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
+   private void a(fvb $$0, exx $$1, gbo $$2, int $$3, int $$4, @Nullable gpc $$5) {
+      if ($$5 == null) {
+         $$5 = a(Optional.empty());
+      }
 
-   @Override
-   protected gbm d() {
-      return gbm.v();
-   }
-
-   @Override
-   public int aP_() {
-      return 256;
+      if ($$5 != null) {
+         $$0.a($$1, $$5.a($$2, gbw::c), $$3, $$4);
+      }
    }
 }

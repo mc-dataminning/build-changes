@@ -1,3 +1,3 @@
-public interface bou extends coo {
-   ws O_();
+public interface bou {
+   float a(ayg var1);
 }

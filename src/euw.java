@@ -1,69 +1,136 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
-public record euw<T>(T d, im e, long f, eva g, long h) {
-   public static final Comparator<euw<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
+public class euw {
+   private static final Map<String, euw> a = Maps.newHashMap();
+   private static final Map<String, euw> o = Maps.newHashMap();
+   public static final euw b = b("dummy");
+   public static final euw c = b("trigger");
+   public static final euw d = b("deathCount");
+   public static final euw e = b("playerKillCount");
+   public static final euw f = b("totalKillCount");
+   public static final euw g = a("health", true, euw.a.b);
+   public static final euw h = a("food", true, euw.a.a);
+   public static final euw i = a("air", true, euw.a.a);
+   public static final euw j = a("armor", true, euw.a.a);
+   public static final euw k = a("xp", true, euw.a.a);
+   public static final euw l = a("level", true, euw.a.a);
+   public static final euw[] m = new euw[]{
+      b("teamkill." + n.a.g()),
+      b("teamkill." + n.b.g()),
+      b("teamkill." + n.c.g()),
+      b("teamkill." + n.d.g()),
+      b("teamkill." + n.e.g()),
+      b("teamkill." + n.f.g()),
+      b("teamkill." + n.g.g()),
+      b("teamkill." + n.h.g()),
+      b("teamkill." + n.i.g()),
+      b("teamkill." + n.j.g()),
+      b("teamkill." + n.k.g()),
+      b("teamkill." + n.l.g()),
+      b("teamkill." + n.m.g()),
+      b("teamkill." + n.n.g()),
+      b("teamkill." + n.o.g()),
+      b("teamkill." + n.p.g())
+   };
+   public static final euw[] n = new euw[]{
+      b("killedByTeam." + n.a.g()),
+      b("killedByTeam." + n.b.g()),
+      b("killedByTeam." + n.c.g()),
+      b("killedByTeam." + n.d.g()),
+      b("killedByTeam." + n.e.g()),
+      b("killedByTeam." + n.f.g()),
+      b("killedByTeam." + n.g.g()),
+      b("killedByTeam." + n.h.g()),
+      b("killedByTeam." + n.i.g()),
+      b("killedByTeam." + n.j.g()),
+      b("killedByTeam." + n.k.g()),
+      b("killedByTeam." + n.l.g()),
+      b("killedByTeam." + n.m.g()),
+      b("killedByTeam." + n.n.g()),
+      b("killedByTeam." + n.o.g()),
+      b("killedByTeam." + n.p.g())
+   };
+   private final String p;
+   private final boolean q;
+   private final euw.a r;
+
+   private static euw a(String $$0, boolean $$1, euw.a $$2) {
+      euw $$3 = new euw($$0, $$1, $$2);
+      a.put($$0, $$3);
+      return $$3;
+   }
+
+   private static euw b(String $$0) {
+      return a($$0, false, euw.a.a);
+   }
+
+   protected euw(String $$0) {
+      this($$0, false, euw.a.a);
+   }
+
+   protected euw(String $$0, boolean $$1, euw.a $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      o.put($$0, this);
+   }
+
+   public static Set<String> c() {
+      return ImmutableSet.copyOf(a.keySet());
+   }
+
+   public static Optional<euw> a(String $$0) {
+      euw $$1 = o.get($$0);
+      if ($$1 != null) {
+         return Optional.of($$1);
       } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+         int $$2 = $$0.indexOf(58);
+         return $$2 < 0 ? Optional.empty() : ld.x.b(akh.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, akh.a($$0.substring($$2 + 1), '.')));
       }
-   };
-   public static final Comparator<euw<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<euw<?>> c = new Strategy<euw<?>>() {
-      public int a(euw<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+   }
+
+   private static <T> Optional<euw> a(avl<T> $$0, akh $$1) {
+      return $$0.b().b($$1).map($$0::b);
+   }
+
+   public String d() {
+      return this.p;
+   }
+
+   public boolean e() {
+      return this.q;
+   }
+
+   public euw.a f() {
+      return this.r;
+   }
+
+   public static enum a implements ayt {
+      a("integer"),
+      b("hearts");
+
+      private final String d;
+      public static final ayt.a<euw.a> c = ayt.a(euw.a::values);
+
+      private a(String $$0) {
+         this.d = $$0;
       }
 
-      public boolean a(@Nullable euw<?> $$0, @Nullable euw<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
-         }
+      public String a() {
+         return this.d;
       }
-   };
 
-   public euw(T $$0, im $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, eva.d, $$3);
-   }
+      @Override
+      public String c() {
+         return this.d;
+      }
 
-   public euw(T d, im e, long f, eva g, long h) {
-      e = e.i();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
-   }
-
-   public static <T> euw<T> a(T $$0, im $$1) {
-      return new euw<>($$0, $$1, 0L, eva.d, 0L);
-   }
-
-   public T a() {
-      return this.d;
-   }
-
-   public im b() {
-      return this.e;
-   }
-
-   public long c() {
-      return this.f;
-   }
-
-   public eva d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
+      public static euw.a a(String $$0) {
+         return c.a($$0, a);
+      }
    }
 }

@@ -1,19 +1,13 @@
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bzv<T extends bre> extends bzu<T> {
-   private boolean i = true;
-
-   public bzv(clx $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bre> $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+public class bzv extends bzu {
+   public bzv(bsi $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a(boolean $$0) {
-      this.i = $$0;
-   }
-
+   @Nullable
    @Override
-   public boolean a() {
-      return this.i && super.a();
+   protected etp h() {
+      return btu.a(this.b, 10, 7);
    }
 }

@@ -1,29 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class cwt<T extends cvx> implements cwk<T> {
-   private final cwt.a<T> x;
-   private final Codec<T> y;
-   private final yq<wd, T> z;
+public enum cwt implements ayt {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
 
-   public cwt(cwt.a<T> $$0) {
-      this.x = $$0;
-      this.y = RecordCodecBuilder.create($$1 -> $$1.group(cvw.e.fieldOf("category").orElse(cvw.d).forGetter(cvx::d)).apply($$1, $$0::create));
-      this.z = yq.a(cvw.g, cvx::d, $$0::create);
+   public static final Codec<cwt> e = ayt.a(cwt::values);
+   public static final IntFunction<cwt> f = awq.a(cwt::a, values(), awq.a.a);
+   public static final ys<ByteBuf, cwt> g = yq.a(f, cwt::a);
+   private final String h;
+   private final int i;
+
+   private cwt(String $$0, int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public Codec<T> a() {
-      return this.y;
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public yq<wd, T> b() {
-      return this.z;
-   }
-
-   @FunctionalInterface
-   public interface a<T extends cvx> {
-      T create(cvw var1);
+   private int a() {
+      return this.i;
    }
 }

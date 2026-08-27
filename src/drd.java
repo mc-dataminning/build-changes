@@ -1,12 +1,15 @@
-public enum drd implements ayq {
-   a("up"),
-   b("side"),
-   c("none");
+public enum drd implements ayt {
+   a(is.a),
+   b(is.b);
 
-   private final String d;
+   private final is c;
 
-   private drd(String $$0) {
-      this.d = $$0;
+   private drd(is $$0) {
+      this.c = $$0;
+   }
+
+   public is a() {
+      return this.c;
    }
 
    @Override
@@ -16,10 +19,10 @@ public enum drd implements ayq {
 
    @Override
    public String c() {
-      return this.d;
+      return this == a ? "upper" : "lower";
    }
 
-   public boolean a() {
-      return this != c;
+   public drd b() {
+      return this == a ? b : a;
    }
 }

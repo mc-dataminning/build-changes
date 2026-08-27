@@ -1,205 +1,221 @@
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
 public class czb {
-   private static final int g = 1056;
-   public static final long a = c(1875066, 1875066);
-   public static final czb b = new czb(0, 0);
-   private static final long h = 32L;
-   private static final long i = 4294967295L;
-   private static final int j = 5;
-   public static final int c = 32;
-   private static final int k = 31;
-   public static final int d = 31;
-   public final int e;
-   public final int f;
-   private static final int l = 1664525;
-   private static final int m = 1013904223;
-   private static final int n = -559038737;
+   public static final Codec<czb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cyz.a.fieldOf("buy").forGetter($$0x -> $$0x.c),
+               cyz.a.optionalFieldOf("buyB").forGetter($$0x -> $$0x.d),
+               csz.a.fieldOf("sell").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("uses", 0).forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("maxUses", 4).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.optionalFieldOf("rewardExp", true).forGetter($$0x -> $$0x.h),
+               Codec.INT.optionalFieldOf("specialPrice", 0).forGetter($$0x -> $$0x.i),
+               Codec.INT.optionalFieldOf("demand", 0).forGetter($$0x -> $$0x.j),
+               Codec.FLOAT.optionalFieldOf("priceMultiplier", 0.0F).forGetter($$0x -> $$0x.k),
+               Codec.INT.optionalFieldOf("xp", 1).forGetter($$0x -> $$0x.l)
+            )
+            .apply($$0, czb::new)
+   );
+   public static final ys<wf, czb> b = ys.a(czb::a, czb::a);
+   private final cyz c;
+   private final Optional<cyz> d;
+   private final csz e;
+   private int f;
+   private final int g;
+   private final boolean h;
+   private int i;
+   private int j;
+   private final float k;
+   private final int l;
 
-   public czb(int $$0, int $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   private czb(cyz $$0, Optional<cyz> $$1, csz $$2, int $$3, int $$4, boolean $$5, int $$6, int $$7, float $$8, int $$9) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
    }
 
-   public czb(im $$0) {
-      this.e = jo.a($$0.u());
-      this.f = jo.a($$0.w());
+   public czb(cyz $$0, csz $$1, int $$2, int $$3, float $$4) {
+      this($$0, Optional.empty(), $$1, $$2, $$3, $$4);
    }
 
-   public czb(long $$0) {
-      this.e = (int)$$0;
-      this.f = (int)($$0 >> 32);
+   public czb(cyz $$0, Optional<cyz> $$1, csz $$2, int $$3, int $$4, float $$5) {
+      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
    }
 
-   public static czb a(int $$0, int $$1) {
-      return new czb($$0 << 5, $$1 << 5);
+   public czb(cyz $$0, Optional<cyz> $$1, csz $$2, int $$3, int $$4, int $$5, float $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
    }
 
-   public static czb b(int $$0, int $$1) {
-      return new czb(($$0 << 5) + 31, ($$1 << 5) + 31);
+   public czb(cyz $$0, Optional<cyz> $$1, csz $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
+      this($$0, $$1, $$2, $$3, $$4, true, 0, $$7, $$6, $$5);
    }
 
-   public long a() {
-      return c(this.e, this.f);
+   private czb(czb $$0) {
+      this($$0.c, $$0.d, $$0.e.r(), $$0.f, $$0.g, $$0.h, $$0.i, $$0.j, $$0.k, $$0.l);
    }
 
-   public static long c(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   public csz a() {
+      return this.c.d();
    }
 
-   public static long a(im $$0) {
-      return c(jo.a($$0.u()), jo.a($$0.w()));
+   public csz b() {
+      return this.c.d().c(this.a(this.c));
    }
 
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
+   private int a(cyz $$0) {
+      int $$1 = $$0.b();
+      int $$2 = Math.max(0, axz.d((float)($$1 * this.j) * this.k));
+      return axz.a($$1 + $$2 + this.i, 1, $$0.d().i());
    }
 
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
+   public csz c() {
+      return this.d.map(cyz::d).orElse(csz.i);
    }
 
-   @Override
-   public int hashCode() {
-      return d(this.e, this.f);
+   public cyz d() {
+      return this.c;
    }
 
-   public static int d(int $$0, int $$1) {
-      int $$2 = 1664525 * $$0 + 1013904223;
-      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
-      return $$2 ^ $$3;
+   public Optional<cyz> e() {
+      return this.d;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof czb $$1) ? false : this.e == $$1.e && this.f == $$1.f;
-      }
+   public csz f() {
+      return this.e;
    }
 
-   public int b() {
-      return this.a(8);
+   public void g() {
+      this.j = this.j + this.f - (this.g - this.f);
    }
 
-   public int c() {
-      return this.b(8);
-   }
-
-   public int d() {
-      return jo.c(this.e);
-   }
-
-   public int e() {
-      return jo.c(this.f);
-   }
-
-   public int f() {
-      return this.a(15);
-   }
-
-   public int g() {
-      return this.b(15);
-   }
-
-   public int h() {
-      return this.e >> 5;
+   public csz h() {
+      return this.e.r();
    }
 
    public int i() {
-      return this.f >> 5;
+      return this.f;
    }
 
-   public int j() {
-      return this.e & 31;
+   public void j() {
+      this.f = 0;
    }
 
    public int k() {
-      return this.f & 31;
+      return this.g;
    }
 
-   public im a(int $$0, int $$1, int $$2) {
-      return new im(this.a($$0), $$1, this.b($$2));
+   public void l() {
+      this.f++;
    }
 
-   public int a(int $$0) {
-      return jo.a(this.e, $$0);
+   public int m() {
+      return this.j;
    }
 
-   public int b(int $$0) {
-      return jo.a(this.f, $$0);
+   public void a(int $$0) {
+      this.i += $$0;
    }
 
-   public im c(int $$0) {
-      return new im(this.b(), $$0, this.c());
+   public void n() {
+      this.i = 0;
    }
 
-   @Override
-   public String toString() {
-      return "[" + this.e + ", " + this.f + "]";
+   public int o() {
+      return this.i;
    }
 
-   public im l() {
-      return new im(this.d(), 0, this.e());
+   public void b(int $$0) {
+      this.i = $$0;
    }
 
-   public int a(czb $$0) {
-      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
+   public float p() {
+      return this.k;
    }
 
-   public int b(czb $$0) {
-      return this.e($$0.e, $$0.f);
+   public int q() {
+      return this.l;
    }
 
-   public int c(long $$0) {
-      return this.e(a($$0), b($$0));
+   public boolean r() {
+      return this.f >= this.g;
    }
 
-   private int e(int $$0, int $$1) {
-      int $$2 = $$0 - this.e;
-      int $$3 = $$1 - this.f;
-      return $$2 * $$2 + $$3 * $$3;
+   public void s() {
+      this.f = this.g;
    }
 
-   public static Stream<czb> a(czb $$0, int $$1) {
-      return a(new czb($$0.e - $$1, $$0.f - $$1), new czb($$0.e + $$1, $$0.f + $$1));
+   public boolean t() {
+      return this.f > 0;
    }
 
-   public static Stream<czb> a(final czb $$0, final czb $$1) {
-      int $$2 = Math.abs($$0.e - $$1.e) + 1;
-      int $$3 = Math.abs($$0.f - $$1.f) + 1;
-      final int $$4 = $$0.e < $$1.e ? 1 : -1;
-      final int $$5 = $$0.f < $$1.f ? 1 : -1;
-      return StreamSupport.stream(new AbstractSpliterator<czb>((long)($$2 * $$3), 64) {
-         @Nullable
-         private czb e;
+   public boolean u() {
+      return this.h;
+   }
 
-         @Override
-         public boolean tryAdvance(Consumer<? super czb> $$0x) {
-            if (this.e == null) {
-               this.e = $$0;
-            } else {
-               int $$1 = this.e.e;
-               int $$2 = this.e.f;
-               if ($$1 == $$1.e) {
-                  if ($$2 == $$1.f) {
-                     return false;
-                  }
+   public boolean a(csz $$0, csz $$1) {
+      if (!this.c.a($$0) || $$0.G() < this.a(this.c)) {
+         return false;
+      } else {
+         return !this.d.isPresent() ? $$1.d() : this.d.get().a($$1) && $$1.G() >= this.d.get().b();
+      }
+   }
 
-                  this.e = new czb($$0.e, $$2 + $$5);
-               } else {
-                  this.e = new czb($$1 + $$4, $$2);
-               }
-            }
-
-            $$0.accept(this.e);
-            return true;
+   public boolean b(csz $$0, csz $$1) {
+      if (!this.a($$0, $$1)) {
+         return false;
+      } else {
+         $$0.h(this.b().G());
+         if (!this.c().d()) {
+            $$1.h(this.c().G());
          }
-      }, false);
+
+         return true;
+      }
+   }
+
+   public czb v() {
+      return new czb(this);
+   }
+
+   private static void a(wf $$0, czb $$1) {
+      cyz.b.encode($$0, $$1.d());
+      csz.f.encode($$0, $$1.f());
+      cyz.c.encode($$0, $$1.e());
+      $$0.a($$1.r());
+      $$0.p($$1.i());
+      $$0.p($$1.k());
+      $$0.p($$1.q());
+      $$0.p($$1.o());
+      $$0.a($$1.p());
+      $$0.p($$1.m());
+   }
+
+   public static czb a(wf $$0) {
+      cyz $$1 = cyz.b.decode($$0);
+      csz $$2 = csz.f.decode($$0);
+      Optional<cyz> $$3 = cyz.c.decode($$0);
+      boolean $$4 = $$0.readBoolean();
+      int $$5 = $$0.readInt();
+      int $$6 = $$0.readInt();
+      int $$7 = $$0.readInt();
+      int $$8 = $$0.readInt();
+      float $$9 = $$0.readFloat();
+      int $$10 = $$0.readInt();
+      czb $$11 = new czb($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
+      if ($$4) {
+         $$11.s();
+      }
+
+      $$11.b($$8);
+      return $$11;
    }
 }

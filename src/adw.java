@@ -1,28 +1,36 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public record adw(String b, @Nullable String c) implements yz<abk> {
-   public static final yq<vs, adw> a = yz.a(adw::a, adw::new);
+public class adw implements zb<abm> {
+   public static final ys<vu, adw> a = zb.a(adw::a, adw::new);
+   private final IntList b;
 
-   private adw(vs $$0) {
-      this($$0.p(), $$0.c(vs::p));
+   public adw(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(vs $$0) {
+   public adw(int... $$0) {
+      this.b = new IntArrayList($$0);
+   }
+
+   private adw(vu $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(vu $$0) {
       $$0.a(this.b);
-      $$0.a(this.c, vs::a);
    }
 
    @Override
-   public zb<adw> a() {
-      return afv.cc;
+   public zd<adw> a() {
+      return afx.aj;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public String e() {
-      return this.c;
+   public IntList b() {
+      return this.b;
    }
 }

@@ -1,93 +1,24 @@
-import java.util.UUID;
+import java.util.Collection;
+import java.util.List;
 
-public class aft {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
+public class aft implements zb<abm> {
+   public static final ys<wf, aft> a = ys.a(cxf.a.a(yq.a()), $$0 -> $$0.b, aft::new);
+   private final List<cxf<?>> b;
 
-   public static String a(bql $$0) {
-      if ($$0 instanceof ckl) {
-         return $$0.ad().getString();
-      } else {
-         ws $$1 = $$0.af();
-         return $$1 != null ? $$1.getString() : a($$0.cx());
-      }
+   public aft(Collection<cxf<?>> $$0) {
+      this.b = List.copyOf($$0);
    }
 
-   public static String a(UUID $$0) {
-      ayd $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   @Override
+   public zd<aft> a() {
+      return afx.bd;
    }
 
-   private static String a(ayd $$0, String[] $$1) {
-      return ac.a($$1, $$0);
+   public void a(abm $$0) {
+      $$0.a(this);
    }
 
-   private static ayd b(UUID $$0) {
-      return ayd.a((long)($$0.hashCode() >> 2));
+   public List<cxf<?>> b() {
+      return this.b;
    }
 }

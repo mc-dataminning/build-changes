@@ -1,42 +1,22 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class ecf extends eck {
-   public static final Codec<ecf> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ecf::new));
-   protected final int b;
+public class ecf implements ebh {
+   public static final Codec<ecf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, ecf::new)
+   );
+   public final int b;
+   public final int c;
+   public final float d;
 
-   protected static <P extends ecf> P3<Mu<P>, bnv, bnv, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
-   }
-
-   public ecf(bnv $$0, bnv $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected ecl<?> a() {
-      return ecl.a;
-   }
-
-   @Override
-   protected void a(daa $$0, eck.b $$1, ayd $$2, ebu $$3, int $$4, eck.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(ayd $$0, int $$1, ebu $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(ayd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   public ecf(int $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

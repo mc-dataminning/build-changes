@@ -1,20 +1,29 @@
-public record ago(bkl b) implements yz<afx> {
-   public static final yq<vs, ago> a = yz.a(ago::a, ago::new);
+public class ago implements zb<afz> {
+   public static final ys<vu, ago> a = zb.a(ago::a, ago::new);
+   private final int b;
 
-   private ago(vs $$0) {
-      this($$0.b(bkl.class));
+   public ago(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
+   private ago(vu $$0) {
+      this.b = $$0.readByte();
+   }
+
+   private void a(vu $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public zb<ago> a() {
-      return afv.bt;
+   public zd<ago> a() {
+      return afx.br;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

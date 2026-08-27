@@ -1,43 +1,125 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class del extends dcd {
-   public static final MapCodec<del> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dek.a.forGetter($$0x -> $$0x.c), u()).apply($$0, del::new));
-   private final dcv c;
+public class del extends dha implements ddh {
+   public static final MapCodec<del> a = b(del::new);
+   public static final int b = 2;
+   public static final drh c = dqx.ar;
+   protected static final int d = 4;
+   protected static final int e = 5;
+   protected static final int f = 2;
+   protected static final int g = 6;
+   protected static final int h = 7;
+   protected static final int i = 3;
+   protected static final int j = 8;
+   protected static final int k = 9;
+   protected static final int l = 4;
+   protected static final eui[] m = new eui[]{
+      dde.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), dde.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), dde.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final eui[] n = new eui[]{
+      dde.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), dde.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), dde.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final eui[] o = new eui[]{
+      dde.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), dde.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), dde.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final eui[] F = new eui[]{
+      dde.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), dde.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), dde.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
 
    @Override
    public MapCodec<del> a() {
-      return b;
+      return a;
    }
 
-   protected del(dcv $$0, dpx.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
-
-   @Override
-   protected void b(dpy $$0, czu $$1, im $$2, dpy $$3, boolean $$4) {
-      this.a($$0, (czv)$$1, $$2);
+   public del(dqg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(aE, is.c).a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.n().a(d, Boolean.valueOf(false)), 2);
-      }
+   protected boolean d_(dqh $$0) {
+      return $$0.c(c) < 2;
    }
 
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      if ($$1 == ir.a && !$$0.a($$3, $$4)) {
-         return dcx.a.n();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, els.c, els.c.a($$3));
+   protected void b(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      if ($$1.z.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.a(c, Integer.valueOf($$4 + 1)), 2);
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+   }
+
+   @Override
+   protected boolean a(dqh $$0, dag $$1, in $$2) {
+      dqh $$3 = $$1.a_($$2.a($$0.c(aE)));
+      return $$3.a(avr.z);
+   }
+
+   @Override
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      int $$4 = $$0.c(c);
+      switch ((is)$$0.c(aE)) {
+         case d:
+            return F[$$4];
+         case c:
+         default:
+            return o[$$4];
+         case e:
+            return n[$$4];
+         case f:
+            return m[$$4];
+      }
+   }
+
+   @Nullable
+   @Override
+   public dqh a(cwi $$0) {
+      dqh $$1 = this.n();
+      dag $$2 = $$0.q();
+      in $$3 = $$0.a();
+
+      for (is $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.a(aE, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      return $$1 == $$0.c(aE) && !$$0.a($$3, $$4) ? ddg.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean b(dag $$0, in $$1, dqh $$2) {
+      return $$2.c(c) < 2;
+   }
+
+   @Override
+   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
+      $$0.a($$2, $$3.a(c, Integer.valueOf($$3.c(c) + 1)), 2);
+   }
+
+   @Override
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(aE, c);
+   }
+
+   @Override
+   protected boolean a(dqh $$0, emp $$1) {
+      return false;
    }
 }

@@ -1,54 +1,35 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dml extends dcj {
-   public static final MapCodec<dml> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dqn.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u())
-            .apply($$0, dml::new)
+public class dml extends dfk implements dmj {
+   public static final MapCodec<dml> l = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dqw.a.fieldOf("block_set_type").forGetter(dfk::b), dmj.a.e.fieldOf("weathering_state").forGetter(dml::k), u()).apply($$0, dml::new)
    );
-   public static final dqy f = dqo.aT;
-   private final int g;
+   private final dmj.a m;
 
    @Override
    public MapCodec<dml> a() {
-      return e;
+      return l;
    }
 
-   protected dml(int $$0, dqn $$1, dpx.d $$2) {
-      super($$2, $$1);
-      this.k(this.E.b().a(f, Integer.valueOf(0)));
-      this.g = $$0;
+   protected dml(dqw $$0, dmj.a $$1, dqg.d $$2) {
+      super($$0, $$2);
+      this.m = $$1;
    }
 
    @Override
-   protected int b(czu $$0, im $$1) {
-      int $$2 = Math.min(a($$0, c.a($$1), bql.class), this.g);
-      if ($$2 > 0) {
-         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
-         return axw.f($$3 * 15.0F);
-      } else {
-         return 0;
+   protected void b(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      if ($$0.c(dfk.f) == drd.b) {
+         this.a_($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected int g(dpy $$0) {
-      return $$0.c(f);
+   protected boolean d_(dqh $$0) {
+      return dmj.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected dpy a(dpy $$0, int $$1) {
-      return $$0.a(f, Integer.valueOf($$1));
-   }
-
-   @Override
-   protected int b() {
-      return 10;
-   }
-
-   @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(f);
+   public dmj.a k() {
+      return this.m;
    }
 }

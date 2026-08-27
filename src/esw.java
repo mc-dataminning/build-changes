@@ -1,4 +1,8 @@
-import java.nio.file.Path;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record esw(Path a, Path b) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface esw {
 }

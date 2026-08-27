@@ -1,78 +1,152 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class fpb {
-   private final fcu a;
-   private final Set<UUID> b = Sets.newHashSet();
-   private final UserApiService c;
-   private final Map<String, UUID> d = Maps.newHashMap();
-   private boolean e;
-   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
+public abstract class fpb<B extends fxa.a<?>> extends fld {
+   private static final wu y = wu.c("gui.abuseReport.report_sent_msg");
+   private static final wu z = wu.c("gui.abuseReport.sending.title").a(n.r);
+   private static final wu A = wu.c("gui.abuseReport.sent.title").a(n.r);
+   private static final wu B = wu.c("gui.abuseReport.error.title").a(n.r);
+   private static final wu C = wu.c("gui.abuseReport.send.generic_error");
+   protected static final wu a = wu.c("gui.abuseReport.send");
+   protected static final wu b = wu.c("gui.abuseReport.observed_what");
+   protected static final wu c = wu.c("gui.abuseReport.select_reason");
+   private static final wu D = wu.c("gui.abuseReport.describe");
+   protected static final wu d = wu.c("gui.abuseReport.more_comments");
+   private static final wu E = wu.c("gui.abuseReport.comments");
+   protected static final int r = 20;
+   protected static final int s = 280;
+   protected static final int u = 8;
+   private static final Logger F = LogUtils.getLogger();
+   protected final fld v;
+   protected final fxe w;
+   protected B x;
 
-   public fpb(fcu $$0, UserApiService $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   protected fpb(wu $$0, fld $$1, fxe $$2, B $$3) {
+      super($$0);
+      this.v = $$1;
+      this.w = $$2;
+      this.x = $$3;
    }
 
-   public void a(UUID $$0) {
-      this.b.add($$0);
+   protected ffw a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.w.a().b();
+      ffw $$4 = new ffw(this.p, 0, 0, $$0, $$1, D, E);
+      $$4.a(this.x.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
    }
 
-   public void b(UUID $$0) {
-      this.b.remove($$0);
+   protected void m() {
+      this.x.a(this.w).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.w.a().a($$0.a(), $$0.b(), $$0.c());
+         this.m.a(fkk.a(z, wt.e, () -> {
+            this.m.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.C();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
+
+               this.a($$1x);
+            }
+
+            return null;
+         }, this.m);
+      }).ifRight($$0 -> this.a($$0.b()));
    }
 
-   public boolean c(UUID $$0) {
-      return this.d($$0) || this.e($$0);
+   private void C() {
+      this.E();
+      this.m.a(fkk.a(A, y, wt.d, () -> this.m.a(null)));
    }
 
-   public boolean d(UUID $$0) {
-      return this.b.contains($$0);
-   }
-
-   public void a() {
-      this.e = true;
-      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.g());
-   }
-
-   public void b() {
-      this.e = false;
-   }
-
-   public boolean e(UUID $$0) {
-      if (!this.e) {
-         return false;
+   private void a(Throwable $$0) {
+      F.error("Encountered error while sending abuse report", $$0);
+      wu $$2;
+      if ($$0.getCause() instanceof xu $$1) {
+         $$2 = $$1.b();
       } else {
-         this.f.join();
-         return this.c.isBlockedPlayer($$0);
+         $$2 = C;
+      }
+
+      this.a($$2);
+   }
+
+   private void a(wu $$0) {
+      wu $$1 = $$0.f().a(n.m);
+      this.m.a(fkk.a(B, $$1, wt.k, () -> this.m.a(this)));
+   }
+
+   void D() {
+      if (this.x.b()) {
+         this.w.a(this.x.e().b());
       }
    }
 
-   public Set<UUID> c() {
-      return this.b;
+   void E() {
+      this.w.a(null);
    }
 
-   public UUID a(String $$0) {
-      return this.d.getOrDefault($$0, ac.e);
-   }
-
-   public void a(fvx $$0) {
-      GameProfile $$1 = $$0.a();
-      this.d.put($$1.getName(), $$1.getId());
-      if (this.a.y instanceof fpd $$2) {
-         $$2.a($$0);
+   @Override
+   public void d() {
+      if (this.x.b()) {
+         this.m.a(new fpb.a());
+      } else {
+         this.m.a(this.v);
       }
    }
 
-   public void f(UUID $$0) {
-      if (this.a.y instanceof fpd $$1) {
-         $$1.a($$0);
+   @Override
+   public void j() {
+      this.D();
+      super.j();
+   }
+
+   class a extends fof {
+      private static final wu c = wu.c("gui.abuseReport.discard.title").a(n.r);
+      private static final wu d = wu.c("gui.abuseReport.discard.content");
+      private static final wu r = wu.c("gui.abuseReport.discard.return");
+      private static final wu s = wu.c("gui.abuseReport.discard.draft");
+      private static final wu u = wu.c("gui.abuseReport.discard.discard");
+
+      protected a() {
+         super(c, d, d);
+      }
+
+      @Override
+      protected fis m() {
+         fiv $$0 = fiv.d().a(8);
+         $$0.c().b();
+         fiv $$1 = $$0.a(fiv.e().a(8));
+         $$1.a(ffe.a(r, $$0x -> this.d()).a());
+         $$1.a(ffe.a(s, $$0x -> {
+            fpb.this.D();
+            this.m.a(fpb.this.v);
+         }).a());
+         $$0.a(ffe.a(u, $$0x -> {
+            fpb.this.E();
+            this.m.a(fpb.this.v);
+         }).a());
+         return $$0;
+      }
+
+      @Override
+      public void d() {
+         this.m.a(fpb.this);
+      }
+
+      @Override
+      public boolean aD_() {
+         return false;
       }
    }
 }

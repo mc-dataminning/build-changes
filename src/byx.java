@@ -1,47 +1,57 @@
-public class byx extends byb {
-   private final cex a;
-   private int b;
+import java.util.EnumSet;
 
-   public byx(cex $$0) {
-      this.a = $$0;
-      this.a($$0);
-   }
+public abstract class byx {
+   private final EnumSet<byx.a> a = EnumSet.noneOf(byx.a.class);
 
-   @Override
-   public void c() {
-      this.a.gT();
-      this.h();
-   }
+   public abstract boolean a();
 
-   private void h() {
-      auy $$0 = this.a.gS();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
    public boolean b() {
+      return this.a();
+   }
+
+   public boolean Q_() {
+      return true;
+   }
+
+   public void c() {
+   }
+
+   public void d() {
+   }
+
+   public boolean R_() {
       return false;
    }
 
-   @Override
-   public boolean a() {
-      this.b++;
-      if (this.b > 0 && this.a.ej().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fe() && this.a.ej().a(10) == 0;
-      } else {
-         return false;
-      }
+   public void e() {
    }
 
-   private void a(cex $$0) {
-      this.b = -$$0.gX();
+   public void a(EnumSet<byx.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   public boolean R_() {
-      return true;
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
+
+   public EnumSet<byx.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.R_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return axz.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

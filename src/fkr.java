@@ -1,48 +1,34 @@
-import java.util.function.BooleanSupplier;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-public class fkr extends fkt {
-   private static final ws a = ws.c("multiplayer.downloadingTerrain");
-   private static final long b = 30000L;
-   private final long c;
-   private final BooleanSupplier d;
+public class fkr extends fkv {
+   private static final wu a = wu.c("options.mouse_settings.title");
+   private final fir r = new fir(this);
+   private fgb s;
 
-   public fkr(BooleanSupplier $$0) {
-      super(fcm.a);
-      this.d = $$0;
-      this.c = System.currentTimeMillis();
+   private static fdh<?>[] a(fdi $$0) {
+      return new fdh[]{$$0.d(), $$0.R(), $$0.F(), $$0.S(), $$0.Z()};
+   }
+
+   public fkr(fld $$0, fdi $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   public boolean aD_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aL_() {
-      return false;
-   }
-
-   @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, a, this.n / 2, this.o / 2 - 50, 16777215);
-   }
-
-   @Override
-   public void e() {
-      if (this.d.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
-         this.d();
+   protected void aM_() {
+      this.s = this.c(new fgb(this.m, this.n, this.o, this));
+      if (ews.a()) {
+         this.s.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.G())).toArray(fdh[]::new));
+      } else {
+         this.s.a(a(this.c));
       }
+
+      super.aM_();
    }
 
    @Override
-   public void d() {
-      this.m.aY().c(ws.c("narrator.ready_to_play"));
-      super.d();
-   }
-
-   @Override
-   public boolean k() {
-      return false;
+   protected void c() {
+      super.c();
+      this.s.a(this.n, this.r);
    }
 }

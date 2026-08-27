@@ -1,95 +1,76 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
 
-public class cwx implements cww {
-   final cwd a;
-   final cwd b;
-   final cwd c;
-   final csd d;
+public class cwx extends cwv {
+   private static final cxa a = cxa.a(ctc.qO);
+   private static final cxa b = cxa.a(ctc.pu);
+   private static final cxa c = cxa.a(ctc.uv);
 
-   public cwx(cwd $$0, cwd $$1, cwd $$2, csd $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public cwx(cwt $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean a(boj $$0, czu $$1) {
-      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
-   }
+   public boolean a(cou $$0, dad $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
 
-   @Override
-   public csd a(boj $$0, jj $$1) {
-      return $$0.a(1).a(this.d.f(), this.d.G());
-   }
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         csz $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
 
-   @Override
-   public csd a(jj $$0) {
-      return this.d;
-   }
-
-   @Override
-   public boolean a(csd $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public boolean b(csd $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean c(csd $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public cwk<?> ao_() {
-      return cwk.u;
-   }
-
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cwd::c);
-   }
-
-   public static class a implements cwk<cwx> {
-      private static final Codec<cwx> y = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  cwd.c.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cwd.c.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cwd.c.fieldOf("addition").forGetter($$0x -> $$0x.c),
-                  csd.a.fieldOf("result").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, cwx::new)
-      );
-      public static final yq<wd, cwx> x = yq.a(cwx.a::a, cwx.a::a);
-
-      @Override
-      public Codec<cwx> a() {
-         return y;
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
+                  return false;
+               }
+            } else if (!c.a($$5)) {
+               return false;
+            }
+         }
       }
 
-      @Override
-      public yq<wd, cwx> b() {
-         return x;
+      return $$2 && $$3 >= 1;
+   }
+
+   public csz a(cou $$0, iy.a $$1) {
+      List<cvq> $$2 = new ArrayList<>();
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         csz $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if (b.a($$5)) {
+               $$3++;
+            } else if (c.a($$5)) {
+               cvq $$6 = $$5.a(ka.Q);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
+         }
       }
 
-      private static cwx a(wd $$0) {
-         cwd $$1 = cwd.b.decode($$0);
-         cwd $$2 = cwd.b.decode($$0);
-         cwd $$3 = cwd.b.decode($$0);
-         csd $$4 = csd.f.decode($$0);
-         return new cwx($$1, $$2, $$3, $$4);
-      }
+      csz $$7 = new csz(ctc.uu, 3);
+      $$7.b(ka.R, new cvr($$3, $$2));
+      return $$7;
+   }
 
-      private static void a(wd $$0, cwx $$1) {
-         cwd.b.encode($$0, $$1.a);
-         cwd.b.encode($$0, $$1.b);
-         cwd.b.encode($$0, $$1.c);
-         csd.f.encode($$0, $$1.d);
-      }
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public csz a(iy.a $$0) {
+      return new csz(ctc.uu);
+   }
+
+   @Override
+   public cxh<?> ao_() {
+      return cxh.g;
    }
 }

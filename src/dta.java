@@ -1,438 +1,390 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import it.unimi.dsi.fastutil.shorts.ShortListIterator;
-import java.util.Arrays;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import java.util.EnumSet;
+import java.util.IdentityHashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
 public class dta {
-   private static final Codec<dsm<dpy>> h = dsm.a(dcv.q, dpy.b, dsm.d.d, dcx.a.n());
-   private static final Logger i = LogUtils.getLogger();
-   private static final String j = "UpgradeData";
-   private static final String k = "block_ticks";
-   private static final String l = "fluid_ticks";
-   public static final String a = "xPos";
-   public static final String b = "zPos";
-   public static final String c = "Heightmaps";
-   public static final String d = "isLightOn";
-   public static final String e = "sections";
-   public static final String f = "BlockLight";
-   public static final String g = "SkyLight";
+   private static final Logger b = LogUtils.getLogger();
+   public static final dta a = new dta(czs.a);
+   private static final String c = "Indices";
+   private static final it[] d = it.values();
+   private final EnumSet<it> e = EnumSet.noneOf(it.class);
+   private final List<evf<dde>> f = Lists.newArrayList();
+   private final List<evf<elz>> g = Lists.newArrayList();
+   private final int[][] h;
+   static final Map<dde, dta.a> i = new IdentityHashMap<>();
+   static final Set<dta.a> j = Sets.newHashSet();
 
-   public static dso a(aqe $$0, cch $$1, czb $$2, ty $$3) {
-      czb $$4 = new czb($$3.h("xPos"), $$3.h("zPos"));
-      if (!Objects.equals($$2, $$4)) {
-         i.error("Chunk file at {} is in the wrong location; relocating. (Expected {}, got {})", new Object[]{$$2, $$2, $$4});
-      }
+   private dta(daf $$0) {
+      this.h = new int[$$0.am()][];
+   }
 
-      dsr $$5 = $$3.b("UpgradeData", 10) ? new dsr($$3.p("UpgradeData"), $$0) : dsr.a;
-      boolean $$6 = $$3.q("isLightOn");
-      ue $$7 = $$3.c("sections", 10);
-      int $$8 = $$0.am();
-      dsf[] $$9 = new dsf[$$8];
-      boolean $$10 = $$0.D_().g();
-      dry $$11 = $$0.l();
-      elg $$12 = $$11.p();
-      ji<dat> $$13 = $$0.H_().d(ld.ay);
-      Codec<dsn<iv<dat>>> $$14 = a($$13);
-      boolean $$15 = false;
+   public dta(ua $$0, daf $$1) {
+      this($$1);
+      if ($$0.b("Indices", 10)) {
+         ua $$2 = $$0.p("Indices");
 
-      for (int $$16 = 0; $$16 < $$7.size(); $$16++) {
-         ty $$17 = $$7.a($$16);
-         int $$18 = $$17.f("Y");
-         int $$19 = $$0.f($$18);
-         if ($$19 >= 0 && $$19 < $$9.length) {
-            dsm<dpy> $$20;
-            if ($$17.b("block_states", 10)) {
-               $$20 = ac.a(h.parse(um.a, $$17.p("block_states")).promotePartial($$2x -> a($$2, $$18, $$2x)), dta.a::new);
-            } else {
-               $$20 = new dsm<>(dcv.q, dcx.a.n(), dsm.d.d);
-            }
-
-            dsn<iv<dat>> $$22;
-            if ($$17.b("biomes", 10)) {
-               $$22 = ac.a($$14.parse(um.a, $$17.p("biomes")).promotePartial($$2x -> a($$2, $$18, $$2x)), dta.a::new);
-            } else {
-               $$22 = new dsm<>($$13.t(), $$13.g(dba.b), dsm.d.e);
-            }
-
-            dsf $$24 = new dsf($$20, $$22);
-            $$9[$$19] = $$24;
-            jo $$25 = jo.a($$2, $$18);
-            $$1.a($$25, $$24);
-         }
-
-         boolean $$26 = $$17.b("BlockLight", 7);
-         boolean $$27 = $$10 && $$17.b("SkyLight", 7);
-         if ($$26 || $$27) {
-            if (!$$15) {
-               $$12.b($$2, true);
-               $$15 = true;
-            }
-
-            if ($$26) {
-               $$12.a(dad.b, jo.a($$2, $$18), new drz($$17.m("BlockLight")));
-            }
-
-            if ($$27) {
-               $$12.a(dad.a, jo.a($$2, $$18), new drz($$17.m("SkyLight")));
+         for (int $$3 = 0; $$3 < this.h.length; $$3++) {
+            String $$4 = String.valueOf($$3);
+            if ($$2.b($$4, 11)) {
+               this.h[$$3] = $$2.n($$4);
             }
          }
       }
 
-      long $$28 = $$3.i("InhabitedTime");
-      dsv $$29 = a($$3);
-      dwt $$30;
-      if ($$3.b("blending_data", 10)) {
-         $$30 = (dwt)dwt.e.parse(new Dynamic(um.a, $$3.p("blending_data"))).resultOrPartial(i::error).orElse(null);
-      } else {
-         $$30 = null;
-      }
+      int $$5 = $$0.h("Sides");
 
-      dru $$34;
-      if ($$29 == dsv.b) {
-         eur<dcv> $$32 = eur.a($$3.c("block_ticks", 10), $$0x -> lc.e.b(akf.a($$0x)), $$2);
-         eur<elq> $$33 = eur.a($$3.c("fluid_ticks", 10), $$0x -> lc.c.b(akf.a($$0x)), $$2);
-         $$34 = new dse($$0.E(), $$2, $$5, $$32, $$33, $$28, $$9, a($$0, $$3), $$30);
-      } else {
-         euu<dcv> $$35 = euu.a($$3.c("block_ticks", 10), $$0x -> lc.e.b(akf.a($$0x)), $$2);
-         euu<elq> $$36 = euu.a($$3.c("fluid_ticks", 10), $$0x -> lc.c.b(akf.a($$0x)), $$2);
-         dso $$37 = new dso($$2, $$5, $$9, $$35, $$36, $$0, $$13, $$30);
-         $$34 = $$37;
-         $$37.b($$28);
-         if ($$3.b("below_zero_retrogen", 10)) {
-            dve.a.parse(new Dynamic(um.a, $$3.p("below_zero_retrogen"))).resultOrPartial(i::error).ifPresent($$37::a);
-         }
-
-         dst $$39 = dst.a($$3.l("Status"));
-         $$37.a($$39);
-         if ($$39.b(dst.k)) {
-            $$37.a($$12);
+      for (it $$6 : it.values()) {
+         if (($$5 & 1 << $$6.ordinal()) != 0) {
+            this.e.add($$6);
          }
       }
 
-      $$34.b($$6);
-      ty $$40 = $$3.p("Heightmaps");
-      EnumSet<dvq.a> $$41 = EnumSet.noneOf(dvq.a.class);
+      a($$0, "neighbor_block_ticks", $$0x -> ld.e.b(akh.a($$0x)).or(() -> Optional.of(ddg.a)), this.f);
+      a($$0, "neighbor_fluid_ticks", $$0x -> ld.c.b(akh.a($$0x)).or(() -> Optional.of(emb.a)), this.g);
+   }
 
-      for (dvq.a $$42 : $$34.j().h()) {
-         String $$43 = $$42.a();
-         if ($$40.b($$43, 12)) {
-            $$34.a($$42, $$40.o($$43));
-         } else {
-            $$41.add($$42);
+   private static <T> void a(ua $$0, String $$1, Function<String, Optional<T>> $$2, List<evf<T>> $$3) {
+      if ($$0.b($$1, 9)) {
+         for (ux $$5 : $$0.c($$1, 10)) {
+            evf.a((ua)$$5, $$2).ifPresent($$3::add);
          }
-      }
-
-      dvq.a($$34, $$41);
-      ty $$44 = $$3.p("structures");
-      $$34.a(a(egw.a($$0), $$44, $$0.C()));
-      $$34.b(a($$0.H_(), $$2, $$44));
-      if ($$3.q("shouldSave")) {
-         $$34.a(true);
-      }
-
-      ue $$45 = $$3.c("PostProcessing", 9);
-
-      for (int $$46 = 0; $$46 < $$45.size(); $$46++) {
-         ue $$47 = $$45.b($$46);
-
-         for (int $$48 = 0; $$48 < $$47.size(); $$48++) {
-            $$34.a($$47.d($$48), $$46);
-         }
-      }
-
-      if ($$29 == dsv.b) {
-         return new dsd((dse)$$34, false);
-      } else {
-         dso $$49 = (dso)$$34;
-         ue $$50 = $$3.c("entities", 10);
-
-         for (int $$51 = 0; $$51 < $$50.size(); $$51++) {
-            $$49.b($$50.a($$51));
-         }
-
-         ue $$52 = $$3.c("block_entities", 10);
-
-         for (int $$53 = 0; $$53 < $$52.size(); $$53++) {
-            ty $$54 = $$52.a($$53);
-            $$34.a($$54);
-         }
-
-         ty $$55 = $$3.p("CarvingMasks");
-
-         for (String $$56 : $$55.e()) {
-            dvm.a $$57 = dvm.a.valueOf($$56);
-            $$49.a($$57, new drt($$55.o($$56), $$34.I_()));
-         }
-
-         return $$49;
       }
    }
 
-   private static void a(czb $$0, int $$1, String $$2) {
-      i.error("Recoverable errors when loading section [" + $$0.e + ", " + $$1 + ", " + $$0.f + "]: " + $$2);
+   public void a(dsn $$0) {
+      this.b($$0);
+
+      for (it $$1 : d) {
+         a($$0, $$1);
+      }
+
+      dad $$2 = $$0.F();
+      this.f.forEach($$1x -> {
+         dde $$2x = $$1x.a() == ddg.a ? $$2.a_($$1x.b()).b() : (dde)$$1x.a();
+         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
+      });
+      this.g.forEach($$1x -> {
+         elz $$2x = $$1x.a() == emb.a ? $$2.b_($$1x.b()).a() : (elz)$$1x.a();
+         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
+      });
+      j.forEach($$1x -> $$1x.a($$2));
    }
 
-   private static Codec<dsn<iv<dat>>> a(ji<dat> $$0) {
-      return dsm.b($$0.t(), $$0.r(), dsm.d.e, $$0.g(dba.b));
+   private static void a(dsn $$0, it $$1) {
+      dad $$2 = $$0.F();
+      if ($$0.r().e.remove($$1)) {
+         Set<is> $$3 = $$1.a();
+         int $$4 = 0;
+         int $$5 = 15;
+         boolean $$6 = $$3.contains(is.f);
+         boolean $$7 = $$3.contains(is.e);
+         boolean $$8 = $$3.contains(is.d);
+         boolean $$9 = $$3.contains(is.c);
+         boolean $$10 = $$3.size() == 1;
+         czk $$11 = $$0.f();
+         int $$12 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 1);
+         int $$13 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 14);
+         int $$14 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 1);
+         int $$15 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 14);
+         is[] $$16 = is.values();
+         in.a $$17 = new in.a();
+
+         for (in $$18 : in.b($$12, $$2.I_(), $$14, $$13, $$2.al() - 1, $$15)) {
+            dqh $$19 = $$2.a_($$18);
+            dqh $$20 = $$19;
+
+            for (is $$21 : $$16) {
+               $$17.a($$18, $$21);
+               $$20 = a($$20, $$21, $$2, $$18, $$17);
+            }
+
+            dde.a($$19, $$20, $$2, $$18, 18);
+         }
+      }
    }
 
-   public static ty a(aqe $$0, dru $$1) {
-      czb $$2 = $$1.f();
-      ty $$3 = un.e(new ty());
-      $$3.a("xPos", $$2.e);
-      $$3.a("yPos", $$1.an());
-      $$3.a("zPos", $$2.f);
-      $$3.a("LastUpdate", $$0.Y());
-      $$3.a("InhabitedTime", $$1.u());
-      $$3.a("Status", lc.n.b($$1.j()).toString());
-      dwt $$4 = $$1.t();
-      if ($$4 != null) {
-         dwt.e.encodeStart(um.a, $$4).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("blending_data", $$1x));
+   private static dqh a(dqh $$0, is $$1, dae $$2, in $$3, in $$4) {
+      return i.getOrDefault($$0.b(), dta.b.b).a($$0, $$1, $$2.a_($$4), $$2, $$3, $$4);
+   }
+
+   private void b(dsn $$0) {
+      in.a $$1 = new in.a();
+      in.a $$2 = new in.a();
+      czk $$3 = $$0.f();
+      dae $$4 = $$0.F();
+
+      for (int $$5 = 0; $$5 < this.h.length; $$5++) {
+         dso $$6 = $$0.b($$5);
+         int[] $$7 = this.h[$$5];
+         this.h[$$5] = null;
+         if ($$7 != null && $$7.length > 0) {
+            is[] $$8 = is.values();
+            dsv<dqh> $$9 = $$6.h();
+            int $$10 = $$0.g($$5);
+            int $$11 = jp.c($$10);
+
+            for (int $$12 : $$7) {
+               int $$13 = $$12 & 15;
+               int $$14 = $$12 >> 8 & 15;
+               int $$15 = $$12 >> 4 & 15;
+               $$1.d($$3.d() + $$13, $$11 + $$14, $$3.e() + $$15);
+               dqh $$16 = $$9.a($$12);
+               dqh $$17 = $$16;
+
+               for (is $$18 : $$8) {
+                  $$2.a($$1, $$18);
+                  if (jp.a($$1.u()) == $$3.e && jp.a($$1.w()) == $$3.f) {
+                     $$17 = a($$17, $$18, $$4, $$1, $$2);
+                  }
+               }
+
+               dde.a($$16, $$17, $$4, $$1, 18);
+            }
+         }
       }
 
-      dve $$5 = $$1.x();
-      if ($$5 != null) {
-         dve.a.encodeStart(um.a, $$5).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("below_zero_retrogen", $$1x));
+      for (int $$19 = 0; $$19 < this.h.length; $$19++) {
+         if (this.h[$$19] != null) {
+            b.warn("Discarding update data for section {} for chunk ({} {})", new Object[]{$$4.g($$19), $$3.e, $$3.f});
+         }
+
+         this.h[$$19] = null;
       }
+   }
 
-      dsr $$6 = $$1.r();
-      if (!$$6.a()) {
-         $$3.a("UpgradeData", $$6.b());
-      }
-
-      dsf[] $$7 = $$1.d();
-      ue $$8 = new ue();
-      elg $$9 = $$0.l().a();
-      ji<dat> $$10 = $$0.H_().d(ld.ay);
-      Codec<dsn<iv<dat>>> $$11 = a($$10);
-      boolean $$12 = $$1.v();
-
-      for (int $$13 = $$9.d(); $$13 < $$9.e(); $$13++) {
-         int $$14 = $$1.f($$13);
-         boolean $$15 = $$14 >= 0 && $$14 < $$7.length;
-         drz $$16 = $$9.a(dad.b).a(jo.a($$2, $$13));
-         drz $$17 = $$9.a(dad.a).a(jo.a($$2, $$13));
-         if ($$15 || $$16 != null || $$17 != null) {
-            ty $$18 = new ty();
-            if ($$15) {
-               dsf $$19 = $$7[$$14];
-               $$18.a("block_states", (uv)h.encodeStart(um.a, $$19.h()).getOrThrow(false, i::error));
-               $$18.a("biomes", (uv)$$11.encodeStart(um.a, $$19.i()).getOrThrow(false, i::error));
-            }
-
-            if ($$16 != null && !$$16.d()) {
-               $$18.a("BlockLight", $$16.a());
-            }
-
-            if ($$17 != null && !$$17.d()) {
-               $$18.a("SkyLight", $$17.a());
-            }
-
-            if (!$$18.g()) {
-               $$18.a("Y", (byte)$$13);
-               $$8.add($$18);
-            }
+   public boolean a() {
+      for (int[] $$0 : this.h) {
+         if ($$0 != null) {
+            return false;
          }
       }
 
-      $$3.a("sections", $$8);
-      if ($$12) {
-         $$3.a("isLightOn", true);
-      }
+      return this.e.isEmpty();
+   }
 
-      ue $$20 = new ue();
+   public ua b() {
+      ua $$0 = new ua();
+      ua $$1 = new ua();
 
-      for (im $$21 : $$1.c()) {
-         ty $$22 = $$1.a($$21, $$0.H_());
-         if ($$22 != null) {
-            $$20.add($$22);
+      for (int $$2 = 0; $$2 < this.h.length; $$2++) {
+         String $$3 = String.valueOf($$2);
+         if (this.h[$$2] != null && this.h[$$2].length != 0) {
+            $$1.a($$3, this.h[$$2]);
          }
       }
 
-      $$3.a("block_entities", $$20);
-      if ($$1.j().g() == dsv.a) {
-         dso $$23 = (dso)$$1;
-         ue $$24 = new ue();
-         $$24.addAll($$23.E());
-         $$3.a("entities", $$24);
-         ty $$25 = new ty();
+      if (!$$1.g()) {
+         $$0.a("Indices", $$1);
+      }
 
-         for (dvm.a $$26 : dvm.a.values()) {
-            drt $$27 = $$23.a($$26);
-            if ($$27 != null) {
-               $$25.a($$26.toString(), $$27.a());
+      int $$4 = 0;
+
+      for (it $$5 : this.e) {
+         $$4 |= 1 << $$5.ordinal();
+      }
+
+      $$0.a("Sides", (byte)$$4);
+      if (!this.f.isEmpty()) {
+         ug $$6 = new ug();
+         this.f.forEach($$1x -> $$6.add($$1x.a($$0xx -> ld.e.b($$0xx).toString())));
+         $$0.a("neighbor_block_ticks", $$6);
+      }
+
+      if (!this.g.isEmpty()) {
+         ug $$7 = new ug();
+         this.g.forEach($$1x -> $$7.add($$1x.a($$0xx -> ld.c.b($$0xx).toString())));
+         $$0.a("neighbor_fluid_ticks", $$7);
+      }
+
+      return $$0;
+   }
+
+   public interface a {
+      dqh a(dqh var1, is var2, dqh var3, dae var4, in var5, in var6);
+
+      default void a(dae $$0) {
+      }
+   }
+
+   static enum b implements dta.a {
+      a(
+         ddg.kO,
+         ddg.ed,
+         ddg.lM,
+         ddg.lN,
+         ddg.lO,
+         ddg.lP,
+         ddg.lQ,
+         ddg.lR,
+         ddg.lS,
+         ddg.lT,
+         ddg.lU,
+         ddg.lV,
+         ddg.lW,
+         ddg.lX,
+         ddg.lY,
+         ddg.lZ,
+         ddg.ma,
+         ddg.mb,
+         ddg.gS,
+         ddg.gT,
+         ddg.gU,
+         ddg.fA,
+         ddg.L,
+         ddg.I,
+         ddg.K,
+         ddg.cE,
+         ddg.cF,
+         ddg.cG,
+         ddg.cH,
+         ddg.cI,
+         ddg.cJ,
+         ddg.cK,
+         ddg.cR,
+         ddg.cS,
+         ddg.cT,
+         ddg.cU,
+         ddg.cW,
+         ddg.cX,
+         ddg.da,
+         ddg.db,
+         ddg.dc,
+         ddg.dd,
+         ddg.df,
+         ddg.dg,
+         ddg.dl,
+         ddg.dm,
+         ddg.dn,
+         ddg.do,
+         ddg.dq,
+         ddg.dr
+      ) {
+         @Override
+         public dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+            return $$0;
+         }
+      },
+      b {
+         @Override
+         public dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+            return $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
+         }
+      },
+      c(ddg.cv, ddg.gV) {
+         @Override
+         public dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+            if ($$2.a($$0.b()) && $$1.o().d() && $$0.c(deh.d) == dqz.a && $$2.c(deh.d) == dqz.a) {
+               is $$6 = $$0.c(deh.c);
+               if ($$1.o() != $$6.o() && $$6 == $$2.c(deh.c)) {
+                  dqz $$7 = $$1 == $$6.h() ? dqz.b : dqz.c;
+                  $$3.a($$5, $$2.a(deh.d, $$7.a()), 18);
+                  if ($$6 == is.c || $$6 == is.f) {
+                     dnm $$8 = $$3.c_($$4);
+                     dnm $$9 = $$3.c_($$5);
+                     if ($$8 instanceof dnt && $$9 instanceof dnt) {
+                        dnt.a((dnt)$$8, (dnt)$$9);
+                     }
+                  }
+
+                  return $$0.a(deh.d, $$7);
+               }
             }
+
+            return $$0;
+         }
+      },
+      d(true, ddg.aI, ddg.aJ, ddg.aG, ddg.aK, ddg.aH, ddg.aE, ddg.aF) {
+         private final ThreadLocal<List<ObjectSet<in>>> g = ThreadLocal.withInitial(() -> Lists.newArrayListWithCapacity(7));
+
+         @Override
+         public dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+            dqh $$6 = $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
+            if ($$0 != $$6) {
+               int $$7 = $$6.c(dqx.aC);
+               List<ObjectSet<in>> $$8 = this.g.get();
+               if ($$8.isEmpty()) {
+                  for (int $$9 = 0; $$9 < 7; $$9++) {
+                     $$8.add(new ObjectOpenHashSet());
+                  }
+               }
+
+               $$8.get($$7).add($$4.i());
+            }
+
+            return $$0;
          }
 
-         $$3.a("CarvingMasks", $$25);
-      }
+         @Override
+         public void a(dae $$0) {
+            in.a $$1 = new in.a();
+            List<ObjectSet<in>> $$2 = this.g.get();
 
-      a($$0, $$3, $$1.q());
-      $$3.a("PostProcessing", a($$1.n()));
-      ty $$28 = new ty();
+            for (int $$3 = 2; $$3 < $$2.size(); $$3++) {
+               int $$4 = $$3 - 1;
+               ObjectSet<in> $$5 = $$2.get($$4);
+               ObjectSet<in> $$6 = $$2.get($$3);
+               ObjectIterator var8 = $$5.iterator();
 
-      for (Entry<dvq.a, dvq> $$29 : $$1.e()) {
-         if ($$1.j().h().contains($$29.getKey())) {
-            $$28.a($$29.getKey().a(), new uf($$29.getValue().a()));
-         }
-      }
-
-      $$3.a("Heightmaps", $$28);
-      $$3.a("structures", a(egw.a($$0), $$2, $$1.g(), $$1.h()));
-      return $$3;
-   }
-
-   private static void a(aqe $$0, ty $$1, dru.a $$2) {
-      long $$3 = $$0.A_().c();
-      $$1.a("block_ticks", $$2.a().b($$3, $$0x -> lc.e.b($$0x).toString()));
-      $$1.a("fluid_ticks", $$2.b().b($$3, $$0x -> lc.c.b($$0x).toString()));
-   }
-
-   public static dsv a(@Nullable ty $$0) {
-      return $$0 != null ? dst.a($$0.l("Status")).g() : dsv.a;
-   }
-
-   @Nullable
-   private static dse.c a(aqe $$0, ty $$1) {
-      ue $$2 = a($$1, "entities");
-      ue $$3 = a($$1, "block_entities");
-      return $$2 == null && $$3 == null ? null : $$3x -> {
-         if ($$2 != null) {
-            $$0.a(bqr.a($$2, $$0));
-         }
-
-         if ($$3 != null) {
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               ty $$5 = $$3.a($$4);
-               boolean $$6 = $$5.q("keepPacked");
-               if ($$6) {
-                  $$3x.a($$5);
-               } else {
-                  im $$7 = dnd.b($$5);
-                  dnd $$8 = dnd.a($$7, $$3x.a_($$7), $$5, $$0.H_());
-                  if ($$8 != null) {
-                     $$3x.a($$8);
+               while (var8.hasNext()) {
+                  in $$7 = (in)var8.next();
+                  dqh $$8 = $$0.a_($$7);
+                  if ($$8.c(dqx.aC) >= $$4) {
+                     $$0.a($$7, $$8.a(dqx.aC, Integer.valueOf($$4)), 18);
+                     if ($$3 != 7) {
+                        for (is $$9 : f) {
+                           $$1.a($$7, $$9);
+                           dqh $$10 = $$0.a_($$1);
+                           if ($$10.b(dqx.aC) && $$8.c(dqx.aC) > $$3) {
+                              $$6.add($$1.i());
+                           }
+                        }
+                     }
                   }
                }
             }
+
+            $$2.clear();
+         }
+      },
+      e(ddg.fe, ddg.fd) {
+         @Override
+         public dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+            if ($$0.c(dla.c) == 7) {
+               dde $$6 = $$0.a(ddg.fd) ? ddg.eZ : ddg.fa;
+               if ($$2.a($$6)) {
+                  return ($$0.a(ddg.fd) ? ddg.fb : ddg.fc).n().a(dha.aE, $$1);
+               }
+            }
+
+            return $$0;
          }
       };
-   }
 
-   @Nullable
-   private static ue a(ty $$0, String $$1) {
-      ue $$2 = $$0.c($$1, 10);
-      return $$2.isEmpty() ? null : $$2;
-   }
+      public static final is[] f = is.values();
 
-   private static ty a(egw $$0, czb $$1, Map<egg, ego> $$2, Map<egg, LongSet> $$3) {
-      ty $$4 = new ty();
-      ty $$5 = new ty();
-      ji<egg> $$6 = $$0.b().d(ld.aI);
-
-      for (Entry<egg, ego> $$7 : $$2.entrySet()) {
-         akf $$8 = $$6.b($$7.getKey());
-         $$5.a($$8.toString(), $$7.getValue().a($$0, $$1));
+      b(dde... $$0) {
+         this(false, $$0);
       }
 
-      $$4.a("starts", $$5);
-      ty $$9 = new ty();
-
-      for (Entry<egg, LongSet> $$10 : $$3.entrySet()) {
-         if (!$$10.getValue().isEmpty()) {
-            akf $$11 = $$6.b($$10.getKey());
-            $$9.a($$11.toString(), new uf($$10.getValue()));
-         }
-      }
-
-      $$4.a("References", $$9);
-      return $$4;
-   }
-
-   private static Map<egg, ego> a(egw $$0, ty $$1, long $$2) {
-      Map<egg, ego> $$3 = Maps.newHashMap();
-      ji<egg> $$4 = $$0.b().d(ld.aI);
-      ty $$5 = $$1.p("starts");
-
-      for (String $$6 : $$5.e()) {
-         akf $$7 = akf.a($$6);
-         egg $$8 = $$4.a($$7);
-         if ($$8 == null) {
-            i.error("Unknown structure start: {}", $$7);
-         } else {
-            ego $$9 = ego.a($$0, $$5.p($$6), $$2);
-            if ($$9 != null) {
-               $$3.put($$8, $$9);
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   private static Map<egg, LongSet> a(jj $$0, czb $$1, ty $$2) {
-      Map<egg, LongSet> $$3 = Maps.newHashMap();
-      ji<egg> $$4 = $$0.d(ld.aI);
-      ty $$5 = $$2.p("References");
-
-      for (String $$6 : $$5.e()) {
-         akf $$7 = akf.a($$6);
-         egg $$8 = $$4.a($$7);
-         if ($$8 == null) {
-            i.warn("Found reference to unknown structure '{}' in chunk {}, discarding", $$7, $$1);
-         } else {
-            long[] $$9 = $$5.o($$6);
-            if ($$9.length != 0) {
-               $$3.put($$8, new LongOpenHashSet(Arrays.stream($$9).filter($$2x -> {
-                  czb $$3x = new czb($$2x);
-                  if ($$3x.a($$1) > 8) {
-                     i.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", new Object[]{$$7, $$3x, $$1});
-                     return false;
-                  } else {
-                     return true;
-                  }
-               }).toArray()));
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   public static ue a(ShortList[] $$0) {
-      ue $$1 = new ue();
-
-      for (ShortList $$2 : $$0) {
-         ue $$3 = new ue();
-         if ($$2 != null) {
-            ShortListIterator var7 = $$2.iterator();
-
-            while (var7.hasNext()) {
-               Short $$4 = (Short)var7.next();
-               $$3.add(uq.a($$4));
-            }
+      b(boolean $$0, dde... $$1) {
+         for (dde $$2 : $$1) {
+            dta.i.put($$2, this);
          }
 
-         $$1.add($$3);
-      }
-
-      return $$1;
-   }
-
-   public static class a extends RuntimeException {
-      public a(String $$0) {
-         super($$0);
+         if ($$0) {
+            dta.j.add(this);
+         }
       }
    }
 }

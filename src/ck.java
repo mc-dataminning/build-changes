@@ -1,79 +1,58 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Optional;
-import java.util.Set;
 
-public class ck extends dd<ck.a> {
+public class ck extends de<ck.a> {
    @Override
    public Codec<ck.a> a() {
       return ck.a.a;
    }
 
-   public void a(aqf $$0, Collection<bql> $$1) {
-      List<eoa> $$2 = Lists.newArrayList();
-      Set<bqr<?>> $$3 = Sets.newHashSet();
-
-      for (bql $$4 : $$1) {
-         $$3.add($$4.ai());
-         $$2.add(br.b($$0, $$4));
-      }
-
-      this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
+   public void a(aqi $$0, in $$1, csz $$2) {
+      aqh $$3 = $$0.z();
+      dqh $$4 = $$3.a_($$1);
+      eoo $$5 = new eoo.a($$3).a(erc.f, $$1.b()).a(erc.a, $$0).a(erc.g, $$4).a(erc.i, $$2).a(erb.n);
+      eol $$6 = new eol.a($$5).a(Optional.empty());
+      this.a($$0, $$1x -> $$1x.a($$6));
    }
 
-   public static record a(Optional<bc> b, List<bc> c, cs.d d) implements dd.a {
+   public static record a(Optional<bc> b, Optional<bc> c) implements de.a {
       public static final Codec<ck.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  axe.a(br.b, "player").forGetter(ck.a::a),
-                  axe.a(br.b.listOf(), "victims", List.of()).forGetter(ck.a::b),
-                  axe.a(cs.d.d, "unique_entity_types", cs.d.c).forGetter(ck.a::c)
-               )
-               .apply($$0, ck.a::new)
+         $$0 -> $$0.group(axh.a(br.b, "player").forGetter(ck.a::a), axh.a(bc.a, "location").forGetter(ck.a::b)).apply($$0, ck.a::new)
       );
 
-      public static an<ck.a> a(br.a... $$0) {
-         return am.H.a(new ck.a(Optional.empty(), br.a($$0), cs.d.c));
+      public static an<ck.a> a(dde $$0) {
+         bc $$1 = bc.a(erp.a($$0).build());
+         return am.z.a(new ck.a(Optional.empty(), Optional.of($$1)));
       }
 
-      public static an<ck.a> a(cs.d $$0) {
-         return am.H.a(new ck.a(Optional.empty(), List.of(), $$0));
+      public static an<ck.a> a(erq.a... $$0) {
+         bc $$1 = bc.a(Arrays.stream($$0).map(erq.a::build).toArray(erq[]::new));
+         return am.z.a(new ck.a(Optional.empty(), Optional.of($$1)));
       }
 
-      public boolean a(Collection<eoa> $$0, int $$1) {
-         if (!this.c.isEmpty()) {
-            List<eoa> $$2 = Lists.newArrayList($$0);
+      private static ck.a c(cr.a $$0, ch.a $$1) {
+         bc $$2 = bc.a(ero.a($$0).build(), erx.a($$1).build());
+         return new ck.a(Optional.empty(), Optional.of($$2));
+      }
 
-            for (bc $$3 : this.c) {
-               boolean $$4 = false;
-               Iterator<eoa> $$5 = $$2.iterator();
+      public static an<ck.a> a(cr.a $$0, ch.a $$1) {
+         return am.N.a(c($$0, $$1));
+      }
 
-               while ($$5.hasNext()) {
-                  eoa $$6 = $$5.next();
-                  if ($$3.a($$6)) {
-                     $$5.remove();
-                     $$4 = true;
-                     break;
-                  }
-               }
+      public static an<ck.a> b(cr.a $$0, ch.a $$1) {
+         return am.aa.a(c($$0, $$1));
+      }
 
-               if (!$$4) {
-                  return false;
-               }
-            }
-         }
-
-         return this.d.d($$1);
+      public boolean a(eol $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bd $$0) {
-         dd.a.super.a($$0);
-         $$0.a(this.c, ".victims");
+         de.a.super.a($$0);
+         this.c.ifPresent($$1 -> $$0.a($$1, erb.n, ".location"));
       }
 
       @Override
@@ -81,12 +60,8 @@ public class ck extends dd<ck.a> {
          return this.b;
       }
 
-      public List<bc> b() {
+      public Optional<bc> b() {
          return this.c;
-      }
-
-      public cs.d c() {
-         return this.d;
       }
    }
 }

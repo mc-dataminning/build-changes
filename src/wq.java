@@ -1,81 +1,84 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class wq {
+public record wq(wr j, wr k) {
    public static final Codec<wq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(wq.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, wq::new)
+      $$0 -> $$0.group(wr.a.fieldOf("chat").forGetter(wq::a), wr.a.fieldOf("narration").forGetter(wq::b)).apply($$0, wq::new)
    );
-   private final wq.a b;
-   private final String c;
+   public static final wr b = wr.a("chat.type.text");
+   public static final akg<wq> c = a("chat");
+   public static final akg<wq> d = a("say_command");
+   public static final akg<wq> e = a("msg_command_incoming");
+   public static final akg<wq> f = a("msg_command_outgoing");
+   public static final akg<wq> g = a("team_msg_command_incoming");
+   public static final akg<wq> h = a("team_msg_command_outgoing");
+   public static final akg<wq> i = a("emote_command");
 
-   public wq(wq.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private static akg<wq> a(String $$0) {
+      return akg.a(le.aA, new akh($$0));
    }
 
-   public wq.a a() {
-      return this.b;
+   public static void a(ql<wq> $$0) {
+      $$0.a(c, new wq(b, wr.a("chat.type.text.narrate")));
+      $$0.a(d, new wq(wr.a("chat.type.announcement"), wr.a("chat.type.text.narrate")));
+      $$0.a(e, new wq(wr.b("commands.message.display.incoming"), wr.a("chat.type.text.narrate")));
+      $$0.a(f, new wq(wr.c("commands.message.display.outgoing"), wr.a("chat.type.text.narrate")));
+      $$0.a(g, new wq(wr.d("chat.type.team.text"), wr.a("chat.type.text.narrate")));
+      $$0.a(h, new wq(wr.d("chat.type.team.sent"), wr.a("chat.type.text.narrate")));
+      $$0.a(i, new wq(wr.a("chat.type.emote"), wr.a("chat.type.emote")));
    }
 
-   public String b() {
-      return this.c;
+   public static wq.a a(akg<wq> $$0, brh $$1) {
+      return a($$0, $$1.dN().H_(), $$1.O_());
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         wq $$1 = (wq)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
+   public static wq.a a(akg<wq> $$0, ed $$1) {
+      return a($$0, $$1.v(), $$1.b());
    }
 
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
+   public static wq.a a(akg<wq> $$0, jk $$1, wu $$2) {
+      jj<wq> $$3 = $$1.d(le.aA);
+      return new wq.a($$3.g($$0), $$2);
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public wr a() {
+      return this.j;
    }
 
-   public static enum a implements ayq {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
+   public wr b() {
+      return this.k;
+   }
 
-      public static final MapCodec<wq.a> g = ayq.a(wq.a::values).fieldOf("action");
-      public static final MapCodec<wq.a> h = axe.a(g, wq.a::a);
-      private final boolean i;
-      private final String j;
+   public static record a(iw<wq> b, wu c, Optional<wu> d) {
+      public static final ys<wf, wq.a> a = ys.a(yq.b(le.aA), wq.a::a, ww.d, wq.a::b, ww.e, wq.a::c, wq.a::new);
 
-      private a(String $$0, boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
+      a(iw<wq> $$0, wu $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      public boolean a() {
-         return this.i;
+      public wu a(wu $$0) {
+         return this.b.a().a().a($$0, this);
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      public wu b(wu $$0) {
+         return this.b.a().b().a($$0, this);
       }
 
-      public static DataResult<wq.a> a(wq.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      public wq.a c(wu $$0) {
+         return new wq.a(this.b, this.c, Optional.of($$0));
+      }
+
+      public iw<wq> a() {
+         return this.b;
+      }
+
+      public wu b() {
+         return this.c;
+      }
+
+      public Optional<wu> c() {
+         return this.d;
       }
    }
 }

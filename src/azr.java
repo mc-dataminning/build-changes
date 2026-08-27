@@ -1,30 +1,41 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 import java.util.Optional;
 
-public class azr extends DataFix {
-   public azr(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class azr extends ber {
+   public azr(Schema $$0) {
+      super($$0, false, "AreaEffectCloudPotionFix", bfs.z, "minecraft:area_effect_cloud");
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bfp.B.typeName(), bgz.a()));
-      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(bfp.t), $$1 -> {
-         Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
-         if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {
-            Dynamic<?> $$3 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-            if ($$3.get("Damage").asInt(0) == 0) {
-               return $$1.set(DSL.remainderFinder(), $$3.set("Damage", $$3.createShort((short)14)));
-            }
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Color").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("effects").result();
+      Optional<Dynamic<T>> $$3 = $$0.get("Potion").result();
+      $$0 = $$0.remove("Color").remove("effects").remove("Potion");
+      if ($$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()) {
+         return $$0;
+      } else {
+         Dynamic<T> $$4 = $$0.emptyMap();
+         if ($$1.isPresent()) {
+            $$4 = $$4.set("custom_color", $$1.get());
          }
 
-         return $$1;
-      });
+         if ($$2.isPresent()) {
+            $$4 = $$4.set("custom_effects", $$2.get());
+         }
+
+         if ($$3.isPresent()) {
+            $$4 = $$4.set("potion", $$3.get());
+         }
+
+         return $$0.set("potion_contents", $$4);
+      }
    }
 }

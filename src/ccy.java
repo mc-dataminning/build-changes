@@ -1,148 +1,119 @@
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
-public class ccy extends cct {
-   private static final cwd cg = cwd.a(csg.pv, csg.rZ, csg.rY, csg.vl, csg.vi, csg.vj);
-   private static final bqo ch = bqr.t.n().a(0.5F).b(0.2975F);
-   public float bY;
-   public float bZ;
-   public float cb;
-   public float cc;
-   public float cd = 1.0F;
-   private float ci = 1.0F;
-   public int ce = this.ah.a(6000) + 6000;
-   public boolean cf;
+public class ccy {
+   private static final int a = 10;
 
-   public ccy(bqr<? extends ccy> $$0, czu $$1) {
-      super($$0, $$1);
-      this.a(emi.j, 0.0F);
-   }
-
-   @Override
-   protected void z() {
-      this.bS.a(0, new bxv(this));
-      this.bS.a(1, new byu(this, 1.4));
-      this.bS.a(2, new bxn(this, 1.0));
-      this.bS.a(3, new bzj(this, 1.0, cg, false));
-      this.bS.a(4, new bya(this, 1.1));
-      this.bS.a(5, new bzo(this, 1.0));
-      this.bS.a(6, new byj(this, ckl.class, 6.0F));
-      this.bS.a(7, new byw(this));
-   }
-
-   @Override
-   public bqo e(brp $$0) {
-      return this.p_() ? ch : super.e($$0);
-   }
-
-   public static bsk.a r() {
-      return brg.A().a(bsl.q, 4.0).a(bsl.r, 0.25);
-   }
-
-   @Override
-   public void n_() {
-      super.n_();
-      this.cc = this.bY;
-      this.cb = this.bZ;
-      this.bZ = this.bZ + (this.aC() ? -1.0F : 4.0F) * 0.3F;
-      this.bZ = axw.a(this.bZ, 0.0F, 1.0F);
-      if (!this.aC() && this.cd < 1.0F) {
-         this.cd = 1.0F;
-      }
-
-      this.cd *= 0.9F;
-      etf $$0 = this.dq();
-      if (!this.aC() && $$0.d < 0.0) {
-         this.g($$0.d(1.0, 0.6, 1.0));
-      }
-
-      this.bY = this.bY + this.cd * 2.0F;
-      if (!this.dN().B && this.bB() && !this.p_() && !this.u() && --this.ce <= 0) {
-         this.a(auz.eT, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
-         this.a(csg.qR);
-         this.a(dur.t);
-         this.ce = this.ah.a(6000) + 6000;
-      }
-   }
-
-   @Override
-   protected boolean aT() {
-      return this.ab > this.ci;
-   }
-
-   @Override
-   protected void aS() {
-      this.ci = this.ab + this.bZ / 2.0F;
-   }
-
-   @Override
-   protected auy v() {
-      return auz.eR;
-   }
-
-   @Override
-   protected auy d(bpj $$0) {
-      return auz.eU;
-   }
-
-   @Override
-   protected auy o_() {
-      return auz.eS;
-   }
-
-   @Override
-   protected void b(im $$0, dpy $$1) {
-      this.a(auz.eV, 0.15F, 1.0F);
+   public static in a(ayg $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new in($$3, $$4, $$5);
    }
 
    @Nullable
-   public ccy b(aqe $$0, bqf $$1) {
-      return bqr.t.a((czu)$$0);
-   }
-
-   @Override
-   public boolean o(csd $$0) {
-      return cg.a($$0);
-   }
-
-   @Override
-   public int eh() {
-      return this.u() ? 10 : super.eh();
-   }
-
-   @Override
-   public void a(ty $$0) {
-      super.a($$0);
-      this.cf = $$0.q("IsChickenJockey");
-      if ($$0.e("EggLayTime")) {
-         this.ce = $$0.h("EggLayTime");
+   public static in a(ayg $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = axz.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)axz.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return in.a($$10, (double)$$12, $$11);
+      } else {
+         return null;
       }
    }
 
-   @Override
-   public void b(ty $$0) {
-      super.b($$0);
-      $$0.a("IsChickenJockey", this.cf);
-      $$0.a("EggLayTime", this.ce);
-   }
+   @VisibleForTesting
+   public static in a(in $$0, int $$1, Predicate<in> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         in $$3 = $$0.c();
 
-   @Override
-   public boolean h(double $$0) {
-      return this.u();
-   }
+         while ($$3.v() < $$1 && $$2.test($$3)) {
+            $$3 = $$3.c();
+         }
 
-   @Override
-   protected void a(bql $$0, bql.a $$1) {
-      super.a($$0, $$1);
-      if ($$0 instanceof bre) {
-         ((bre)$$0).aZ = this.aZ;
+         return $$3;
       }
    }
 
-   public boolean u() {
-      return this.cf;
+   @VisibleForTesting
+   public static in a(in $$0, int $$1, int $$2, Predicate<in> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         in $$4 = $$0.c();
+
+         while ($$4.v() < $$2 && $$3.test($$4)) {
+            $$4 = $$4.c();
+         }
+
+         in $$5 = $$4;
+
+         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
+            in $$6 = $$5.c();
+            if ($$3.test($$6)) {
+               break;
+            }
+
+            $$5 = $$6;
+         }
+
+         return $$5;
+      }
    }
 
-   public void w(boolean $$0) {
-      this.cf = $$0;
+   @Nullable
+   public static etp a(bsi $$0, Supplier<in> $$1) {
+      return a($$1, $$0::h);
+   }
+
+   @Nullable
+   public static etp a(Supplier<in> $$0, ToDoubleFunction<in> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      in $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         in $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
+         }
+      }
+
+      return $$3 != null ? etp.c($$3) : null;
+   }
+
+   public static in a(bsi $$0, int $$1, ayg $$2, in $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.ga() && $$1 > 1) {
+         in $$6 = $$0.fX();
+         if ($$0.ds() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dy() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
+      }
+
+      return in.a((double)$$4 + $$0.ds(), (double)$$3.v() + $$0.du(), (double)$$5 + $$0.dy());
    }
 }

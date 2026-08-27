@@ -1,19 +1,28 @@
-public class gjx extends gky<cin, fra<cin>> {
-   private static final akf a = new akf("textures/entity/breeze/breeze_wind.png");
-   private static final fra<cin> b = new fra<>(fra.a(128, 128).a());
+public class gjx extends gid<chf, fur<chf>> {
+   private static final akh a = new akh("textures/entity/wither/wither_invulnerable.png");
+   private static final akh i = new akh("textures/entity/wither/wither.png");
 
-   public gjx(gii<cin, fra<cin>> $$0) {
-      super($$0);
+   public gjx(ggx.a $$0) {
+      super($$0, new fur<>($$0.a(fva.bV)), 1.0F);
+      this.a(new glw(this, $$0.f()));
    }
 
-   public void a(exn $$0, gbe $$1, int $$2, cin $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.ai + $$6;
-      exr $$11 = $$1.getBuffer(gbm.a(a, this.a($$10) % 1.0F, 0.0F));
-      b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      gft.a(b, b.e()).a($$0, $$11, $$2, gmf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   protected int a(chf $$0, in $$1) {
+      return 15;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public akh a(chf $$0) {
+      int $$1 = $$0.y();
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   }
+
+   protected void a(chf $$0, exx $$1, float $$2) {
+      float $$3 = 2.0F;
+      int $$4 = $$0.y();
+      if ($$4 > 0) {
+         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+      }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

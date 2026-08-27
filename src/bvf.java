@@ -1,98 +1,54 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
+import com.mojang.datafixers.kinds.App;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bvf<U> implements Iterable<U> {
-   protected final List<bvf.a<U>> a;
-   private final ayd b = ayd.a();
-
-   public bvf() {
-      this.a = Lists.newArrayList();
+public class bvf {
+   public static btt<cku> a() {
+      return bxf.a(
+         (Function<bxf.b<cku>, ? extends App<bxf.c<cku>, bxi<cku>>>)($$0 -> $$0.group($$0.b(cbd.c), $$0.b(cbd.g))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        iv $$6 = $$0.b($$1);
+                        $$3.y()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<bsa>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof cku && $$1xxx != $$4)
+                                    .map($$0xxxx -> (cku)$$0xxxx)
+                                    .filter(bsa::bB)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, bvf::a)
+                           );
+                        return true;
+                     }
+               ))
+      );
    }
 
-   private bvf(List<bvf.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
-   }
-
-   public static <U> Codec<bvf<U>> a(Codec<U> $$0) {
-      return bvf.a.a($$0).listOf().xmap(bvf::new, $$0x -> $$0x.a);
-   }
-
-   public bvf<U> a(U $$0, int $$1) {
-      this.a.add(new bvf.a<>($$0, $$1));
-      return this;
-   }
-
-   public bvf<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(bvf.a::c));
-      return this;
-   }
-
-   public Stream<U> b() {
-      return this.a.stream().map(bvf.a::a);
-   }
-
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), bvf.a::a);
-   }
-
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
-   }
-
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
+   private static cku a(cku $$0, cku $$1) {
+      cku $$2;
+      cku $$3;
+      if ($$0.u() > $$1.u()) {
+         $$2 = $$0;
+         $$3 = $$1;
+      } else {
+         $$2 = $$1;
+         $$3 = $$0;
       }
 
-      private double c() {
-         return this.c;
-      }
+      $$3.dQ().b(cbd.c);
+      return $$2;
+   }
 
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
+   private static boolean a(iv $$0, iw<cdg> $$1, cku $$2) {
+      Optional<iv> $$3 = $$2.dQ().c(cbd.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gA().b());
+   }
 
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<bvf.a<E>> a(final Codec<E> $$0) {
-         return new Codec<bvf.a<E>>() {
-            public <T> DataResult<Pair<bvf.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bvf.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
-            }
-
-            public <T> DataResult<T> a(bvf.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
-      }
+   private static boolean a(iw<cdg> $$0, ckx $$1) {
+      return $$1.b().test($$0);
    }
 }

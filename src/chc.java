@@ -1,44 +1,45 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class chc extends cic {
-   public chc(bqr<? extends chc> $$0, czu $$1) {
-      super($$0, $$1);
+public class chc {
+   private static final Logger a = LogUtils.getLogger();
+   private final cgl b;
+   private final cgv[] c = new cgv[chb.c()];
+   @Nullable
+   private cgv d;
+
+   public chc(cgl $$0) {
+      this.b = $$0;
+      this.a(chb.k);
    }
 
-   public static bsk.a r() {
-      return cic.u().a(bsl.q, 12.0);
-   }
-
-   @Override
-   public boolean C(bql $$0) {
-      if (super.C($$0)) {
-         if ($$0 instanceof bre) {
-            int $$1 = 0;
-            if (this.dN().ak() == bon.c) {
-               $$1 = 7;
-            } else if (this.dN().ak() == bon.d) {
-               $$1 = 15;
-            }
-
-            if ($$1 > 0) {
-               ((bre)$$0).b(new bpx(bpz.s, $$1 * 20, 0), this);
-            }
+   public void a(chb<?> $$0) {
+      if (this.d == null || $$0 != this.d.i()) {
+         if (this.d != null) {
+            this.d.e();
          }
 
-         return true;
-      } else {
-         return false;
+         this.d = this.b((chb<cgv>)$$0);
+         if (!this.b.dN().B) {
+            this.b.an().a(cgl.b, $$0.b());
+         }
+
+         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dN().B ? "client" : "server");
+         this.d.d();
       }
    }
 
-   @Nullable
-   @Override
-   public brw a(daj $$0, boo $$1, bri $$2, @Nullable brw $$3) {
-      return $$3;
+   public cgv a() {
+      return this.d;
    }
 
-   @Override
-   public etf l(bql $$0) {
-      return $$0.dh() <= this.dh() ? new etf(0.0, 0.21875 * (double)this.ec(), 0.0) : super.l($$0);
+   public <T extends cgv> T b(chb<T> $$0) {
+      int $$1 = $$0.b();
+      if (this.c[$$1] == null) {
+         this.c[$$1] = $$0.a(this.b);
+      }
+
+      return (T)this.c[$$1];
    }
 }

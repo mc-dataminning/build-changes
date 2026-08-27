@@ -1,8 +1,9 @@
-import java.util.function.BiConsumer;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
-public class mp implements mh {
-   @Override
-   public void generate(ix.a $$0, BiConsumer<akf, eoi.a> $$1) {
-      $$1.accept(eny.aS, eoi.b().a(eoh.a().a(esa.a(2.0F)).a(eoq.a(csg.dA).a(eqf.a(esa.a(1.0F)))).a(eoq.a(csg.dB).a(eqf.a(esa.a(1.0F))))));
+public class mp {
+   public static mh a(lm $$0, CompletableFuture<iy.a> $$1) {
+      return new mh($$0, Set.of(), List.of(new mh.a(mm::new, erb.q), new mh.a(mn::new, erb.c), new mh.a(mo::new, erb.g), new mh.a(mq::new, erb.r)), $$1);
    }
 }

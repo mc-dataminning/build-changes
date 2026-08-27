@@ -1,46 +1,48 @@
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
-public class mc implements lj {
-   private final ll d;
+public class mc implements lk {
+   private final lm d;
+   private final CompletableFuture<iy.a> e;
 
-   public mc(ll $$0) {
+   public mc(lm $$0, CompletableFuture<iy.a> $$1) {
       this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public CompletableFuture<?> a(lh $$0) {
-      JsonObject $$1 = new JsonObject();
-      lc.av.h().forEach($$1x -> $$1.add($$1x.h().a().toString(), a((ji)$$1x.a())));
-      Path $$2 = this.d.a(ll.b.c).resolve("registries.json");
-      return lj.a($$0, $$1, $$2);
+   public CompletableFuture<?> a(li $$0) {
+      Path $$1 = this.d.a(lm.b.c).resolve("items.json");
+      return this.e.thenCompose($$2 -> {
+         JsonObject $$3 = new JsonObject();
+         akf<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+         $$2.b(le.G).b().forEach($$2x -> {
+            JsonObject $$3x = new JsonObject();
+            JsonArray $$4x = new JsonArray();
+            ((csu)$$2x.a()).o().forEach($$2xx -> $$4x.add(a($$2xx, $$4)));
+            $$3x.add("components", $$4x);
+            $$3.add($$2x.g(), $$3x);
+         });
+         return lk.a($$0, $$3, $$1);
+      });
    }
 
-   private static <T> JsonElement a(ji<T> $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 instanceof iq) {
-         akf $$2 = ((iq)$$0).a();
-         $$1.addProperty("default", $$2.toString());
-      }
-
-      int $$3 = lc.av.a($$0);
-      $$1.addProperty("protocol_id", $$3);
+   private static <T> JsonElement a(kc<T> $$0, DynamicOps<JsonElement> $$1) {
+      akh $$2 = ld.as.b($$0.a());
+      JsonElement $$3 = ac.a($$0.a($$1), $$1x -> new IllegalStateException("Failed to serialize component " + $$2 + ": " + $$1x));
       JsonObject $$4 = new JsonObject();
-      $$0.h().forEach($$2 -> {
-         T $$3x = $$2.a();
-         int $$4x = $$0.a($$3x);
-         JsonObject $$5 = new JsonObject();
-         $$5.addProperty("protocol_id", $$4x);
-         $$4.add($$2.h().a().toString(), $$5);
-      });
-      $$1.add("entries", $$4);
-      return $$1;
+      $$4.addProperty("type", $$2.toString());
+      $$4.add("value", $$3);
+      return $$4;
    }
 
    @Override
    public final String a() {
-      return "Registry Dump";
+      return "Item List";
    }
 }

@@ -1,41 +1,51 @@
-public class frx<T extends cet> extends ftb<T> {
-   public frx(fur $$0) {
-      super($$0, true, 19.0F, 1.0F, 2.5F, 2.0F, 24);
+public class frx<T extends cjg> extends fut<T> {
+   public frx(fvb $$0) {
+      super($$0);
    }
 
-   public static fux c() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      fva $$2 = $$1.a(
-         "head",
-         fuw.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         fut.a(1.0F, 14.0F, 0.0F)
-      );
-      $$2.a("left_horn", fuw.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fut.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", fuw.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fut.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", fuw.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), fut.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", fuw.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), fut.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", fuw.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fut.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", fuw.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fut.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", fuw.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fut.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", fuw.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fut.a(-3.0F, 14.0F, -6.0F));
-      return fux.a($$0, 64, 64);
+   public static fvh a(fvf $$0) {
+      fvj $$1 = fso.a($$0, 0.0F);
+      fvk $$2 = $$1.a();
+      $$2.a("left_arm", fvg.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fvd.a(5.0F, 2.0F, 0.0F));
+      $$2.a("left_leg", fvg.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fvd.a(1.9F, 12.0F, 0.0F));
+      return fvh.a($$1, 64, 64);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.s = fso.a.a;
+      this.r = fso.a.a;
+      csz $$4 = $$0.b(bpl.a);
+      if ($$4.a(ctc.vP) && $$0.gh()) {
+         if ($$0.fs() == bru.b) {
+            this.s = fso.a.e;
+         } else {
+            this.r = fso.a.e;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.b("left_horn").k = $$0.gp();
-      this.a.b("right_horn").k = $$0.gv();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.gA();
-      if ($$6 != 0.0F) {
-         this.a.e = $$6;
+      if (this.r == fso.a.e) {
+         this.o.e = this.o.e * 0.5F - (float) Math.PI;
+         this.o.f = 0.0F;
+      }
+
+      if (this.s == fso.a.e) {
+         this.n.e = this.n.e * 0.5F - (float) Math.PI;
+         this.n.f = 0.0F;
+      }
+
+      if (this.u > 0.0F) {
+         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * axz.a(0.1F * $$3);
+         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * axz.a(0.1F * $$3);
+         this.n.g = this.a(this.u, this.n.g, -0.15F);
+         this.o.g = this.a(this.u, this.o.g, 0.15F);
+         this.q.e = this.q.e - this.u * 0.55F * axz.a(0.1F * $$3);
+         this.p.e = this.p.e + this.u * 0.55F * axz.a(0.1F * $$3);
+         this.k.e = 0.0F;
       }
    }
 }

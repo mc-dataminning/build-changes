@@ -1,116 +1,70 @@
-public enum dpl implements ayq {
-   a("inactive", dpl.a.a) {
-      @Override
-      protected void a(aqe $$0, im $$1, dpi $$2, dpk $$3) {
-         $$3.a(csd.i);
-         $$0.c(3016, $$1, 0);
-      }
-   },
-   b("active", dpl.a.b) {
-      @Override
-      protected void a(aqe $$0, im $$1, dpi $$2, dpk $$3) {
-         if (!$$3.b()) {
-            dpg.b.a($$0, this, $$2, $$3, $$1);
-         }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-         $$0.c(3015, $$1, 0);
-      }
-   },
-   c("unlocking", dpl.a.b) {
-      @Override
-      protected void a(aqe $$0, im $$1, dpi $$2, dpk $$3) {
-         $$0.a(null, $$1, auz.At, ava.e);
-      }
-   },
-   d("ejecting", dpl.a.b) {
-      @Override
-      protected void a(aqe $$0, im $$1, dpi $$2, dpk $$3) {
-         $$0.a(null, $$1, auz.Av, ava.e);
-      }
+public record dpl(int c, int d, float e, float f, float g, float h, int i, int j, bnw<dau> k, bnw<akg<eoq>> l) {
+   public static final dpl a = new dpl(14, 4, 6.0F, 2.0F, 2.0F, 1.0F, 40, 36000, bnw.b(), bnw.<akg<eoq>>a().a(eoj.aR).a(eoj.aQ).a());
+   public static final MapCodec<dpl> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 128).optionalFieldOf("required_player_range", a.c).forGetter(dpl::a),
+               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dpl::b),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dpl::c),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dpl::d),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dpl::e),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dpl::f),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dpl::g),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", a.j).forGetter(dpl::h),
+               dau.c.optionalFieldOf("spawn_potentials", bnw.b()).forGetter(dpl::i),
+               bnw.a(akg.a(le.aU)).optionalFieldOf("loot_tables_to_eject", a.l).forGetter(dpl::j)
+            )
+            .apply($$0, dpl::new)
+   );
 
-      @Override
-      protected void b(aqe $$0, im $$1, dpi $$2, dpk $$3) {
-         $$0.a(null, $$1, auz.Ao, ava.e);
-      }
-   };
-
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final dpl.a j;
-
-   dpl(String $$0, dpl.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   public int a(int $$0) {
+      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
    }
 
-   @Override
-   public String c() {
-      return this.i;
+   public int b(int $$0) {
+      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
    }
 
    public int a() {
-      return this.j.c;
+      return this.c;
    }
 
-   public dpl a(aqe $$0, im $$1, dpi $$2, dpj $$3, dpk $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.Y() + 20L);
-            yield d;
-         }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.Y() + (long)$$7);
-               yield d;
-            }
-         }
-      };
+   public int b() {
+      return this.d;
    }
 
-   private static dpl a(aqe $$0, im $$1, dpi $$2, dpj $$3, dpk $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.Y() + 20L);
-      return $$4.c() ? b : a;
+   public float c() {
+      return this.e;
    }
 
-   public void a(aqe $$0, im $$1, dpl $$2, dpi $$3, dpk $$4) {
-      this.b($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4);
+   public float d() {
+      return this.f;
    }
 
-   protected void a(aqe $$0, im $$1, dpi $$2, dpk $$3) {
+   public float e() {
+      return this.g;
    }
 
-   protected void b(aqe $$0, im $$1, dpi $$2, dpk $$3) {
+   public float f() {
+      return this.h;
    }
 
-   private void a(aqe $$0, im $$1, csd $$2, float $$3) {
-      kg.a($$0, $$2, 2, ir.b, etf.c($$1).a(ir.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, auz.Aq, ava.e, 1.0F, 0.8F + 0.4F * $$3);
+   public int g() {
+      return this.i;
    }
 
-   static enum a {
-      a(6),
-      b(12);
+   public int h() {
+      return this.j;
+   }
 
-      final int c;
+   public bnw<dau> i() {
+      return this.k;
+   }
 
-      private a(int $$0) {
-         this.c = $$0;
-      }
+   public bnw<akg<eoq>> j() {
+      return this.l;
    }
 }

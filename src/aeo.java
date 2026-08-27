@@ -1,52 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
+public class aeo implements zb<abm> {
+   public static final ys<vu, aeo> a = zb.a(aeo::a, aeo::new);
+   private final in b;
+   private final float c;
 
-public record aeo(int c, List<ajo.c<?>> d) implements yz<abk> {
-   public static final yq<wd, aeo> a = yz.a(aeo::b, aeo::new);
-   public static final int b = 255;
-
-   private aeo(wd $$0) {
-      this($$0.l(), a($$0));
+   public aeo(in $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static void a(List<ajo.c<?>> $$0, wd $$1) {
-      for (ajo.c<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
+   private aeo(vu $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
-   private static List<ajo.c<?>> a(wd $$0) {
-      List<ajo.c<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(ajo.c.a($$0, $$2));
-      }
-
-      return $$1;
-   }
-
-   private void b(wd $$0) {
-      $$0.c(this.c);
-      a(this.d, $$0);
+   private void a(vu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zb<aeo> a() {
-      return afv.aC;
+   public zd<aeo> a() {
+      return afx.aA;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.c;
+   public in b() {
+      return this.b;
    }
 
-   public List<ajo.c<?>> e() {
-      return this.d;
+   public float e() {
+      return this.c;
    }
 }

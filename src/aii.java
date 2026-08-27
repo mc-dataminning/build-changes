@@ -1,19 +1,29 @@
-public class aii {
-   public static final zb<aid> a = a("custom_query");
-   public static final zb<aie> b = a("game_profile");
-   public static final zb<aif> c = a("hello");
-   public static final zb<aig> d = a("login_compression");
-   public static final zb<aih> e = a("login_disconnect");
-   public static final zb<ail> f = b("custom_query_answer");
-   public static final zb<aim> g = b("hello");
-   public static final zb<ain> h = b("key");
-   public static final zb<aio> i = b("login_acknowledged");
+public class aii implements zb<aie> {
+   public static final ys<vu, aii> a = zb.a(aii::a, aii::new);
+   private final int b;
 
-   private static <T extends yz<aic>> zb<T> a(String $$0) {
-      return new zb<>(za.b, new akf($$0));
+   public aii(int $$0) {
+      this.b = $$0;
    }
 
-   private static <T extends yz<aik>> zb<T> b(String $$0) {
-      return new zb<>(za.a, new akf($$0));
+   private aii(vu $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vu $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zd<aii> a() {
+      return aik.d;
+   }
+
+   public void a(aie $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

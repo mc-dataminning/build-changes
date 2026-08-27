@@ -1,56 +1,41 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.Date;
+import java.util.UUID;
 
-public abstract class fbu implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class fbu {
+   private static final wu a = wu.c("mco.util.time.now");
+   private static final int b = 60;
+   private static final int c = 3600;
+   private static final int d = 86400;
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
-      }
-   }
-
-   public static void a(fkt $$0) {
-      fcu $$1 = fcu.Q();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(ws $$0) {
-      this.b();
-      fcu $$1 = fcu.Q();
-      $$1.execute(() -> $$1.a(new fah($$0, new exy(new fky()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof ezq $$1) {
-         this.a($$1.a.b());
+   public static wu a(long $$0) {
+      if ($$0 < 0L) {
+         return a;
       } else {
-         this.a(ws.b($$0.getMessage()));
+         long $$1 = $$0 / 1000L;
+         if ($$1 < 60L) {
+            return wu.a("mco.time.secondsAgo", $$1);
+         } else if ($$1 < 3600L) {
+            long $$2 = $$1 / 60L;
+            return wu.a("mco.time.minutesAgo", $$2);
+         } else if ($$1 < 86400L) {
+            long $$3 = $$1 / 3600L;
+            return wu.a("mco.time.hoursAgo", $$3);
+         } else {
+            long $$4 = $$1 / 86400L;
+            return wu.a("mco.time.daysAgo", $$4);
+         }
       }
    }
 
-   protected void a(ezq $$0) {
-      this.a($$0.a.b());
+   public static wu a(Date $$0) {
+      return a(System.currentTimeMillis() - $$0.getTime());
    }
 
-   public abstract ws a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   public static void a(fer $$0, int $$1, int $$2, int $$3, UUID $$4) {
+      fde $$5 = fde.Q();
+      ProfileResult $$6 = $$5.am().fetchProfile($$4, false);
+      gny $$7 = $$6 != null ? $$5.an().b($$6.profile()) : gnq.a($$4);
+      fgd.a($$0, $$7.a(), $$1, $$2, $$3);
    }
 }

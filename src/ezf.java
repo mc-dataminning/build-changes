@@ -1,20 +1,27 @@
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ezf extends ezj {
+public class ezf extends ezt {
+   private static final Logger d = LogUtils.getLogger();
    public String a;
-   public long b;
-   public long c;
+   public String b;
+   public String c;
 
-   public static ezf a(JsonObject $$0) {
-      ezf $$1 = new ezf();
+   public static ezf a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      ezf $$2 = new ezf();
 
       try {
-         $$1.a = fbg.b("profileUuid", $$0, null);
-         $$1.b = fbg.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fbg.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+         JsonObject $$3 = $$1.parse($$0).getAsJsonObject();
+         $$2.a = fbq.b("address", $$3, null);
+         $$2.b = fbq.b("resourcePackUrl", $$3, null);
+         $$2.c = fbq.b("resourcePackHash", $$3, null);
+      } catch (Exception var4) {
+         d.error("Could not parse RealmsServerAddress: {}", var4.getMessage());
       }
 
-      return $$1;
+      return $$2;
    }
 }

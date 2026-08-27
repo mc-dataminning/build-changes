@@ -1,20 +1,132 @@
-public enum dqx implements ayq {
-   a("top"),
-   b("bottom");
-
-   private final String c;
-
-   private dqx(String $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
+public class dqx {
+   public static final dqy a = dqy.a("attached");
+   public static final dqy b = dqy.a("bottom");
+   public static final dqy c = dqy.a("conditional");
+   public static final dqy d = dqy.a("disarmed");
+   public static final dqy e = dqy.a("drag");
+   public static final dqy f = dqy.a("enabled");
+   public static final dqy g = dqy.a("extended");
+   public static final dqy h = dqy.a("eye");
+   public static final dqy i = dqy.a("falling");
+   public static final dqy j = dqy.a("hanging");
+   public static final dqy k = dqy.a("has_bottle_0");
+   public static final dqy l = dqy.a("has_bottle_1");
+   public static final dqy m = dqy.a("has_bottle_2");
+   public static final dqy n = dqy.a("has_record");
+   public static final dqy o = dqy.a("has_book");
+   public static final dqy p = dqy.a("inverted");
+   public static final dqy q = dqy.a("in_wall");
+   public static final dqy r = dqy.a("lit");
+   public static final dqy s = dqy.a("locked");
+   public static final dqy t = dqy.a("occupied");
+   public static final dqy u = dqy.a("open");
+   public static final dqy v = dqy.a("persistent");
+   public static final dqy w = dqy.a("powered");
+   public static final dqy x = dqy.a("short");
+   public static final dqy y = dqy.a("signal_fire");
+   public static final dqy z = dqy.a("snowy");
+   public static final dqy A = dqy.a("triggered");
+   public static final dqy B = dqy.a("unstable");
+   public static final dqy C = dqy.a("waterlogged");
+   public static final dqy D = dqy.a("berries");
+   public static final dqy E = dqy.a("bloom");
+   public static final dqy F = dqy.a("shrieking");
+   public static final dqy G = dqy.a("can_summon");
+   public static final drf<is.a> H = drf.a("axis", is.a.class, is.a.a, is.a.c);
+   public static final drf<is.a> I = drf.a("axis", is.a.class);
+   public static final dqy J = dqy.a("up");
+   public static final dqy K = dqy.a("down");
+   public static final dqy L = dqy.a("north");
+   public static final dqy M = dqy.a("east");
+   public static final dqy N = dqy.a("south");
+   public static final dqy O = dqy.a("west");
+   public static final drb P = drb.a("facing", is.c, is.f, is.d, is.e, is.b, is.a);
+   public static final drb Q = drb.a("facing", $$0 -> $$0 != is.b);
+   public static final drb R = drb.a("facing", is.c.a);
+   public static final drh S = drh.a("flower_amount", 1, 4);
+   public static final drf<iu> T = drf.a("orientation", iu.class);
+   public static final drf<dqs> U = drf.a("face", dqs.class);
+   public static final drf<dqv> V = drf.a("attachment", dqv.class);
+   public static final drf<drt> W = drf.a("east", drt.class);
+   public static final drf<drt> X = drf.a("north", drt.class);
+   public static final drf<drt> Y = drf.a("south", drt.class);
+   public static final drf<drt> Z = drf.a("west", drt.class);
+   public static final drf<drm> aa = drf.a("east", drm.class);
+   public static final drf<drm> ab = drf.a("north", drm.class);
+   public static final drf<drm> ac = drf.a("south", drm.class);
+   public static final drf<drm> ad = drf.a("west", drm.class);
+   public static final drf<drd> ae = drf.a("half", drd.class);
+   public static final drf<drg> af = drf.a("half", drg.class);
+   public static final drf<drl> ag = drf.a("shape", drl.class);
+   public static final drf<drl> ah = drf.a("shape", drl.class, $$0 -> $$0 != drl.j && $$0 != drl.i && $$0 != drl.g && $$0 != drl.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final drh aq = drh.a("age", 0, 1);
+   public static final drh ar = drh.a("age", 0, 2);
+   public static final drh as = drh.a("age", 0, 3);
+   public static final drh at = drh.a("age", 0, 4);
+   public static final drh au = drh.a("age", 0, 5);
+   public static final drh av = drh.a("age", 0, 7);
+   public static final drh aw = drh.a("age", 0, 15);
+   public static final drh ax = drh.a("age", 0, 25);
+   public static final drh ay = drh.a("bites", 0, 6);
+   public static final drh az = drh.a("candles", 1, 4);
+   public static final drh aA = drh.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final drh aC = drh.a("distance", 1, 7);
+   public static final drh aD = drh.a("eggs", 1, 4);
+   public static final drh aE = drh.a("hatch", 0, 2);
+   public static final drh aF = drh.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final drh aK = drh.a("level", 1, 3);
+   public static final drh aL = drh.a("level", 0, 8);
+   public static final drh aM = drh.a("level", 1, 8);
+   public static final drh aN = drh.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final drh aP = drh.a("level", 0, 15);
+   public static final drh aQ = drh.a("moisture", 0, 7);
+   public static final drh aR = drh.a("note", 0, 24);
+   public static final drh aS = drh.a("pickles", 1, 4);
+   public static final drh aT = drh.a("power", 0, 15);
+   public static final drh aU = drh.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final drh aW = drh.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final drh aZ = drh.a("charges", 0, 4);
+   public static final drh ba = drh.a("rotation", 0, drn.a());
+   public static final drf<dqu> bb = drf.a("part", dqu.class);
+   public static final drf<dqz> bc = drf.a("type", dqz.class);
+   public static final drf<dra> bd = drf.a("mode", dra.class);
+   public static final drf<drc> be = drf.a("hinge", drc.class);
+   public static final drf<dri> bf = drf.a("instrument", dri.class);
+   public static final drf<drj> bg = drf.a("type", drj.class);
+   public static final drf<drp> bh = drf.a("type", drp.class);
+   public static final drf<drq> bi = drf.a("shape", drq.class);
+   public static final drf<drr> bj = drf.a("mode", drr.class);
+   public static final drf<dqt> bk = drf.a("leaves", dqt.class);
+   public static final drf<drs> bl = drf.a("tilt", drs.class);
+   public static final drb bm = drb.a("vertical_direction", is.b, is.a);
+   public static final drf<dre> bn = drf.a("thickness", dre.class);
+   public static final drf<dro> bo = drf.a("sculk_sensor_phase", dro.class);
+   public static final dqy bp = dqy.a("slot_0_occupied");
+   public static final dqy bq = dqy.a("slot_1_occupied");
+   public static final dqy br = dqy.a("slot_2_occupied");
+   public static final dqy bs = dqy.a("slot_3_occupied");
+   public static final dqy bt = dqy.a("slot_4_occupied");
+   public static final dqy bu = dqy.a("slot_5_occupied");
+   public static final drh bv = drh.a("dusted", 0, 3);
+   public static final dqy bw = dqy.a("cracked");
+   public static final dqy bx = dqy.a("crafting");
+   public static final drf<dpn> by = drf.a("trial_spawner_state", dpn.class);
+   public static final drf<dpu> bz = drf.a("vault_state", dpu.class);
 }

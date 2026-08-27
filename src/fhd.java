@@ -1,37 +1,130 @@
-public interface fhd {
-   Object b = new Object();
-   int c = 32;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   fhd.a a(feh var1, fhe var2, long var3);
+public class fhd implements fql {
+   private static final akh a = new akh("hud/hotbar");
+   private static final akh b = new akh("hud/hotbar_selection");
+   private static final long c = 5000L;
+   private static final long d = 2000L;
+   private final fde e;
+   private long f;
+   @Nullable
+   private fqi g;
 
-   default Object e() {
-      return b;
+   public fhd(fde $$0) {
+      this.e = $$0;
    }
 
-   default int a() {
-      return 160;
+   public void a(int $$0) {
+      this.f = ac.b();
+      if (this.g != null) {
+         this.g.b($$0);
+      } else {
+         this.g = new fqi(this);
+      }
    }
 
-   default int b() {
-      return 32;
+   private float c() {
+      long $$0 = this.f - ac.b() + 5000L;
+      return axz.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
    }
 
-   default int f() {
-      return axw.e(this.b(), 32);
+   public void a(fer $$0) {
+      if (this.g != null) {
+         float $$1 = this.c();
+         if ($$1 <= 0.0F) {
+            this.g.d();
+         } else {
+            int $$2 = $$0.a() / 2;
+            $$0.c().a();
+            $$0.c().a(0.0F, 0.0F, -90.0F);
+            int $$3 = axz.d((float)$$0.b() - 22.0F * $$1);
+            fqm $$4 = this.g.f();
+            this.a($$0, $$1, $$2, $$3, $$4);
+            $$0.c().b();
+         }
+      }
    }
 
-   public static enum a {
-      a(auz.Aj),
-      b(auz.Ak);
-
-      private final auy c;
-
-      private a(auy $$0) {
-         this.c = $$0;
+   protected void a(fer $$0, float $$1, int $$2, int $$3, fqm $$4) {
+      RenderSystem.enableBlend();
+      $$0.a(1.0F, 1.0F, 1.0F, $$1);
+      $$0.a(a, $$2 - 91, $$3, 182, 22);
+      if ($$4.a() >= 0) {
+         $$0.a(b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23);
       }
 
-      public void a(grf $$0) {
-         $$0.a(gpw.a(this.c, 1.0F, 1.0F));
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a($$0, $$5, $$0.a() / 2 - 90 + $$5 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$5));
+      }
+
+      RenderSystem.disableBlend();
+   }
+
+   private void a(fer $$0, int $$1, int $$2, float $$3, float $$4, fqk $$5) {
+      if ($$5 != fqi.a) {
+         int $$6 = (int)($$4 * 255.0F);
+         $$0.c().a();
+         $$0.c().a((float)$$2, $$3, 0.0F);
+         float $$7 = $$5.aO_() ? 1.0F : 0.25F;
+         $$0.a($$7, $$7, $$7, $$4);
+         $$5.a($$0, $$7, $$6);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.c().b();
+         if ($$6 > 3 && $$5.aO_()) {
+            wu $$8 = this.e.m.U[$$1].k();
+            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$6 << 24));
+         }
+      }
+   }
+
+   public void b(fer $$0) {
+      int $$1 = (int)(this.c() * 255.0F);
+      if ($$1 > 3 && this.g != null) {
+         fqk $$2 = this.g.b();
+         wu $$3 = $$2 == fqi.a ? this.g.c().b() : $$2.aN_();
+         if ($$3 != null) {
+            int $$4 = ($$0.a() - this.e.h.a($$3)) / 2;
+            int $$5 = $$0.b() - 35;
+            $$0.b(this.e.h, $$3, $$4, $$5, 16777215 + ($$1 << 24));
+         }
+      }
+   }
+
+   @Override
+   public void a(fqi $$0) {
+      this.g = null;
+      this.f = 0L;
+   }
+
+   public boolean a() {
+      return this.g != null;
+   }
+
+   public void b(int $$0) {
+      int $$1 = this.g.e() + $$0;
+
+      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == fqi.a || !this.g.a($$1).aO_())) {
+         $$1 += $$0;
+      }
+
+      if ($$1 >= 0 && $$1 <= 8) {
+         this.g.b($$1);
+         this.f = ac.b();
+      }
+   }
+
+   public void b() {
+      this.f = ac.b();
+      if (this.a()) {
+         int $$0 = this.g.e();
+         if ($$0 != -1) {
+            this.g.b($$0);
+         }
+      } else {
+         this.g = new fqi(this);
       }
    }
 }

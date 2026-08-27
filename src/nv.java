@@ -1,87 +1,76 @@
-import com.google.gson.JsonElement;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class nv {
-   public static final nv.a a = a(nt::a, ns.c);
-   public static final nv.a b = a(nt::a, ns.d);
-   public static final nv.a c = a(nt::a, ns.e);
-   public static final nv.a d = a(nt::k, ns.j);
-   public static final nv.a e = a(nt::k, ns.k);
-   public static final nv.a f = a(nt::q, ns.n);
-   public static final nv.a g = a(nt::l, ns.m);
-   public static final nv.a h = a(nt::B, ns.p);
-   public static final nv.a i = a(nt::A, ns.q);
-   public static final nv.a j = a(nt::f, ns.aw);
-   public static final nv.a k = a(nt::g, ns.ax);
-   public static final nv.a l = a(nt::g, ns.ay);
-   public static final nv.a m = a(nt::g, ns.az);
-   public static final nv.a n = a(nt::g, ns.aA);
-   public static final nv.a o = a(nt::i, ns.aD);
-   public static final nv.a p = a(nt::j, ns.aB);
-   public static final nv.a q = a(nt::u, ns.aa);
-   public static final nv.a r = a(nt::D, ns.aS);
-   public static final nv.a s = a(nt::a, ns.ad);
-   public static final nv.a t = a(nt::x, ns.bd);
-   public static final nv.a u = a(nt::x, ns.be);
-   public static final nv.a v = a(nt::b, ns.bk);
-   public static final nv.a w = a(nt::n, ns.j);
-   public static final nv.a x = a(nt::n, ns.k);
-   public static final nv.a y = a(nt::r, ns.n);
-   public static final nv.a z = a(nt::s, ns.j);
-   private final nt A;
-   private final nr B;
+public final class nv {
+   public static final nv a = a("all");
+   public static final nv b = a("texture", a);
+   public static final nv c = a("particle", b);
+   public static final nv d = a("end", a);
+   public static final nv e = a("bottom", d);
+   public static final nv f = a("top", d);
+   public static final nv g = a("front", a);
+   public static final nv h = a("back", a);
+   public static final nv i = a("side", a);
+   public static final nv j = a("north", i);
+   public static final nv k = a("south", i);
+   public static final nv l = a("east", i);
+   public static final nv m = a("west", i);
+   public static final nv n = a("up");
+   public static final nv o = a("down");
+   public static final nv p = a("cross");
+   public static final nv q = a("plant");
+   public static final nv r = a("wall", a);
+   public static final nv s = a("rail");
+   public static final nv t = a("wool");
+   public static final nv u = a("pattern");
+   public static final nv v = a("pane");
+   public static final nv w = a("edge");
+   public static final nv x = a("fan");
+   public static final nv y = a("stem");
+   public static final nv z = a("upperstem");
+   public static final nv A = a("crop");
+   public static final nv B = a("dirt");
+   public static final nv C = a("fire");
+   public static final nv D = a("lantern");
+   public static final nv E = a("platform");
+   public static final nv F = a("unsticky");
+   public static final nv G = a("torch");
+   public static final nv H = a("layer0");
+   public static final nv I = a("layer1");
+   public static final nv J = a("layer2");
+   public static final nv K = a("lit_log");
+   public static final nv L = a("candle");
+   public static final nv M = a("inside");
+   public static final nv N = a("content");
+   public static final nv O = a("inner_top");
+   public static final nv P = a("flowerbed");
+   private final String Q;
+   @Nullable
+   private final nv R;
 
-   private nv(nt $$0, nr $$1) {
-      this.A = $$0;
-      this.B = $$1;
+   private static nv a(String $$0) {
+      return new nv($$0, null);
    }
 
-   public nr a() {
-      return this.B;
+   private static nv a(String $$0, nv $$1) {
+      return new nv($$0, $$1);
    }
 
-   public nt b() {
-      return this.A;
+   private nv(String $$0, @Nullable nv $$1) {
+      this.Q = $$0;
+      this.R = $$1;
    }
 
-   public nv a(Consumer<nt> $$0) {
-      $$0.accept(this.A);
-      return this;
+   public String a() {
+      return this.Q;
    }
 
-   public akf a(dcv $$0, BiConsumer<akf, Supplier<JsonElement>> $$1) {
-      return this.B.a($$0, this.A, $$1);
+   @Nullable
+   public nv b() {
+      return this.R;
    }
 
-   public akf a(dcv $$0, String $$1, BiConsumer<akf, Supplier<JsonElement>> $$2) {
-      return this.B.a($$0, $$1, this.A, $$2);
-   }
-
-   private static nv.a a(Function<dcv, nt> $$0, nr $$1) {
-      return $$2 -> new nv($$0.apply($$2), $$1);
-   }
-
-   public static nv a(akf $$0) {
-      return new nv(nt.b($$0), ns.c);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      nv get(dcv var1);
-
-      default akf create(dcv $$0, BiConsumer<akf, Supplier<JsonElement>> $$1) {
-         return this.get($$0).a($$0, $$1);
-      }
-
-      default akf createWithSuffix(dcv $$0, String $$1, BiConsumer<akf, Supplier<JsonElement>> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
-
-      default nv.a updateTexture(Consumer<nt> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   @Override
+   public String toString() {
+      return "#" + this.Q;
    }
 }

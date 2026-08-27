@@ -6,64 +6,108 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class bt {
-   public static final MapCodec<co> a = a("lightning", co.b);
-   public static final MapCodec<bw> b = a("fishing_hook", bw.c);
-   public static final MapCodec<cy> c = a("player", cy.c);
-   public static final MapCodec<dg> d = a("slime", dg.b);
-   public static final bt.a<ccx> e = a("cat", bt.a.a(lc.ak, $$0 -> $$0 instanceof ccw $$1 ? Optional.of($$1.gw()) : Optional.empty()));
-   public static final bt.a<cde> f = a("frog", bt.a.a(lc.al, $$0 -> $$0 instanceof cen $$1 ? Optional.of($$1.y()) : Optional.empty()));
-   public static final bt.a<cef.d> g = a("axolotl", bt.a.a(cef.d.f, $$0 -> $$0 instanceof cef $$1 ? Optional.of($$1.gp()) : Optional.empty()));
-   public static final bt.a<cmi.b> h = a("boat", bt.a.a(cmi.b.j, $$0 -> $$0 instanceof cmi $$1 ? Optional.of($$1.x()) : Optional.empty()));
-   public static final bt.a<cdd.v> i = a("fox", bt.a.a(cdd.v.c, $$0 -> $$0 instanceof cdd $$1 ? Optional.of($$1.u()) : Optional.empty()));
-   public static final bt.a<cdg.a> j = a("mooshroom", bt.a.a(cdg.a.c, $$0 -> $$0 instanceof cdg $$1 ? Optional.of($$1.u()) : Optional.empty()));
-   public static final bt.a<iv<cgr>> k = a("painting", bt.a.a(lc.l.r(), $$0 -> $$0 instanceof cgq $$1 ? Optional.of($$1.p()) : Optional.empty()));
-   public static final bt.a<cdn.g> l = a("rabbit", bt.a.a(cdn.g.h, $$0 -> $$0 instanceof cdn $$1 ? Optional.of($$1.gp()) : Optional.empty()));
-   public static final bt.a<cfg> m = a("horse", bt.a.a(cfg.h, $$0 -> $$0 instanceof cez $$1 ? Optional.of($$1.r()) : Optional.empty()));
-   public static final bt.a<cfa.d> n = a("llama", bt.a.a(cfa.d.e, $$0 -> $$0 instanceof cfa $$1 ? Optional.of($$1.gB()) : Optional.empty()));
-   public static final bt.a<ckd> o = a("villager", bt.a.a(lc.y.q(), $$0 -> $$0 instanceof cka $$1 ? Optional.of($$1.a()) : Optional.empty()));
-   public static final bt.a<cdj.b> p = a("parrot", bt.a.a(cdj.b.f, $$0 -> $$0 instanceof cdj $$1 ? Optional.of($$1.gx()) : Optional.empty()));
-   public static final bt.a<cdt.b> q = a("tropical_fish", bt.a.a(cdt.b.m, $$0 -> $$0 instanceof cdt $$1 ? Optional.of($$1.gA()) : Optional.empty()));
+   public static final MapCodec<cp> a = a("lightning", cp.b);
+   public static final MapCodec<bx> b = a("fishing_hook", bx.c);
+   public static final MapCodec<cz> c = a("player", cz.c);
+   public static final MapCodec<dh> d = a("slime", dh.b);
+   public static final bt.b<cfb.d> e = a("axolotl", bt.b.a(cfb.d.f, $$0 -> $$0 instanceof cfb $$1 ? Optional.of($$1.gp()) : Optional.empty()));
+   public static final bt.b<cne.b> f = a("boat", bt.b.a(cne.b.j, $$0 -> $$0 instanceof cne $$1 ? Optional.of($$1.x()) : Optional.empty()));
+   public static final bt.b<cdz.v> g = a("fox", bt.b.a(cdz.v.c, $$0 -> $$0 instanceof cdz $$1 ? Optional.of($$1.u()) : Optional.empty()));
+   public static final bt.b<cec.a> h = a("mooshroom", bt.b.a(cec.a.c, $$0 -> $$0 instanceof cec $$1 ? Optional.of($$1.u()) : Optional.empty()));
+   public static final bt.b<cej.g> i = a("rabbit", bt.b.a(cej.g.h, $$0 -> $$0 instanceof cej $$1 ? Optional.of($$1.gp()) : Optional.empty()));
+   public static final bt.b<cgc> j = a("horse", bt.b.a(cgc.h, $$0 -> $$0 instanceof cfv $$1 ? Optional.of($$1.r()) : Optional.empty()));
+   public static final bt.b<cfw.d> k = a("llama", bt.b.a(cfw.d.e, $$0 -> $$0 instanceof cfw $$1 ? Optional.of($$1.gB()) : Optional.empty()));
+   public static final bt.b<ckz> l = a("villager", bt.b.a(ld.y.q(), $$0 -> $$0 instanceof ckw $$1 ? Optional.of($$1.a()) : Optional.empty()));
+   public static final bt.b<cef.b> m = a("parrot", bt.b.a(cef.b.f, $$0 -> $$0 instanceof cef $$1 ? Optional.of($$1.gx()) : Optional.empty()));
+   public static final bt.b<cep.b> n = a("tropical_fish", bt.b.a(cep.b.m, $$0 -> $$0 instanceof cep $$1 ? Optional.of($$1.gA()) : Optional.empty()));
+   public static final bt.a<chn> o = a("painting", bt.a.a(le.S, $$0 -> $$0 instanceof chm $$1 ? Optional.of($$1.p()) : Optional.empty()));
+   public static final bt.a<cdt> p = a("cat", bt.a.a(le.l, $$0 -> $$0 instanceof cds $$1 ? Optional.of($$1.gw()) : Optional.empty()));
+   public static final bt.a<cea> q = a("frog", bt.a.a(le.B, $$0 -> $$0 instanceof cfj $$1 ? Optional.of($$1.y()) : Optional.empty()));
+   public static final bt.a<cet> r = a("wolf", bt.a.a(le.m, $$0 -> $$0 instanceof ces $$1 ? Optional.of($$1.gw()) : Optional.empty()));
 
    private static <T extends bs> MapCodec<T> a(String $$0, MapCodec<T> $$1) {
-      return ji.a(lc.at, $$0, $$1);
+      return jj.a(ld.at, $$0, $$1);
    }
 
-   private static <V> bt.a<V> a(String $$0, bt.a<V> $$1) {
-      ji.a(lc.at, $$0, $$1.a);
+   private static <V> bt.b<V> a(String $$0, bt.b<V> $$1) {
+      jj.a(ld.at, $$0, $$1.a);
       return $$1;
    }
 
-   public static MapCodec<? extends bs> a(ji<MapCodec<? extends bs>> $$0) {
+   private static <V> bt.a<V> a(String $$0, bt.a<V> $$1) {
+      jj.a(ld.at, $$0, $$1.a);
+      return $$1;
+   }
+
+   public static MapCodec<? extends bs> a(jj<MapCodec<? extends bs>> $$0) {
       return a;
    }
 
-   public static bs a(ccx $$0) {
-      return e.a($$0);
+   public static bs a(iw<cdt> $$0) {
+      return p.a(ja.a($$0));
    }
 
-   public static bs a(cde $$0) {
-      return f.a($$0);
+   public static bs b(iw<cea> $$0) {
+      return q.a(ja.a($$0));
    }
 
    public static class a<V> {
       final MapCodec<bt.a<V>.a> a;
-      final Function<bql, Optional<V>> b;
+      final Function<brh, Optional<iw<V>>> b;
 
-      public static <V> bt.a<V> a(ji<V> $$0, Function<bql, Optional<V>> $$1) {
-         return new bt.a<>($$0.q(), $$1);
-      }
-
-      public static <V> bt.a<V> a(Codec<V> $$0, Function<bql, Optional<V>> $$1) {
+      public static <V> bt.a<V> a(akg<? extends jj<V>> $$0, Function<brh, Optional<iw<V>>> $$1) {
          return new bt.a<>($$0, $$1);
       }
 
-      public a(Codec<V> $$0, Function<bql, Optional<V>> $$1) {
+      public a(akg<? extends jj<V>> $$0, Function<brh, Optional<iw<V>>> $$1) {
          this.b = $$1;
-         this.a = RecordCodecBuilder.mapCodec($$1x -> $$1x.group($$0.fieldOf("variant").forGetter($$0xx -> $$0xx.c)).apply($$1x, $$0xx -> new bt.a.a($$0xx)));
+         this.a = RecordCodecBuilder.mapCodec(
+            $$1x -> $$1x.group(jl.a($$0).fieldOf("variant").forGetter($$0xx -> $$0xx.c)).apply($$1x, $$0xx -> new bt.a.a($$0xx))
+         );
+      }
+
+      public bs a(ja<V> $$0) {
+         return new bt.a.a($$0);
+      }
+
+      class a implements bs {
+         final ja<V> c;
+
+         a(ja<V> $$0) {
+            this.c = $$0;
+         }
+
+         @Override
+         public MapCodec<bt.a<V>.a> a() {
+            return a.this.a;
+         }
+
+         @Override
+         public boolean a(brh $$0, aqh $$1, @Nullable etp $$2) {
+            return a.this.b.apply($$0).filter(this.c::a).isPresent();
+         }
+      }
+   }
+
+   public static class b<V> {
+      final MapCodec<bt.b<V>.a> a;
+      final Function<brh, Optional<V>> b;
+
+      public static <V> bt.b<V> a(jj<V> $$0, Function<brh, Optional<V>> $$1) {
+         return new bt.b<>($$0.q(), $$1);
+      }
+
+      public static <V> bt.b<V> a(Codec<V> $$0, Function<brh, Optional<V>> $$1) {
+         return new bt.b<>($$0, $$1);
+      }
+
+      public b(Codec<V> $$0, Function<brh, Optional<V>> $$1) {
+         this.b = $$1;
+         this.a = RecordCodecBuilder.mapCodec($$1x -> $$1x.group($$0.fieldOf("variant").forGetter($$0xx -> $$0xx.c)).apply($$1x, $$0xx -> new bt.b.a($$0xx)));
       }
 
       public bs a(V $$0) {
-         return new bt.a.a($$0);
+         return new bt.b.a($$0);
       }
 
       class a implements bs {
@@ -74,13 +118,13 @@ public class bt {
          }
 
          @Override
-         public MapCodec<bt.a<V>.a> a() {
-            return a.this.a;
+         public MapCodec<bt.b<V>.a> a() {
+            return b.this.a;
          }
 
          @Override
-         public boolean a(bql $$0, aqe $$1, @Nullable etf $$2) {
-            return a.this.b.apply($$0).filter(this.c::equals).isPresent();
+         public boolean a(brh $$0, aqh $$1, @Nullable etp $$2) {
+            return b.this.b.apply($$0).filter(this.c::equals).isPresent();
          }
       }
    }

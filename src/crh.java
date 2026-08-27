@@ -1,39 +1,44 @@
-public class crh extends cry {
-   public crh(cry.a $$0) {
+public class crh extends csu {
+   public crh(csu.a $$0) {
       super($$0);
    }
 
    @Override
-   public boq a(cvn $$0) {
-      czu $$1 = $$0.q();
-      im $$2 = $$0.a();
-      dpy $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!ddj.h($$3) && !ddk.g($$3) && !ddl.g($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (dci.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, dci.a($$1, $$2));
-            $$1.a($$0.o(), dur.i, $$2);
-            $$4 = true;
+   public csz a(csz $$0, dad $$1, bsa $$2) {
+      csz $$3 = super.a($$0, $$1, $$2);
+      if (!$$1.B) {
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            double $$5 = $$2.ds() + ($$2.ej().j() - 0.5) * 16.0;
+            double $$6 = axz.a($$2.du() + (double)($$2.ej().a(16) - 8), (double)$$1.I_(), (double)($$1.I_() + ((aqh)$$1).k() - 1));
+            double $$7 = $$2.dy() + ($$2.ej().j() - 0.5) * 16.0;
+            if ($$2.bP()) {
+               $$2.ac();
+            }
+
+            etp $$8 = $$2.dl();
+            if ($$2.b($$5, $$6, $$7, true)) {
+               $$1.a(dva.R, $$8, dva.a.a($$2));
+               avd $$10;
+               avb $$9;
+               if ($$2 instanceof cdz) {
+                  $$9 = avc.jk;
+                  $$10 = avd.g;
+               } else {
+                  $$9 = avc.fh;
+                  $$10 = avd.h;
+               }
+
+               $$1.a(null, $$2.ds(), $$2.du(), $$2.dy(), $$9, $$10);
+               $$2.n();
+               break;
+            }
          }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.a(dqo.r, Boolean.valueOf(true)));
-         $$1.a($$0.o(), dur.c, $$2);
-         $$4 = true;
+
+         if ($$2 instanceof clh $$13) {
+            $$13.gv().a(this, 20);
+         }
       }
 
-      if ($$4) {
-         $$0.n().g(1);
-         return boq.a($$1.B);
-      } else {
-         return boq.e;
-      }
-   }
-
-   private void a(czu $$0, im $$1) {
-      ayd $$2 = $$0.E_();
-      $$0.a(null, $$1, auz.iF, ava.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+      return $$3;
    }
 }

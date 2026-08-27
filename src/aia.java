@@ -1,8 +1,7 @@
-public interface aia extends afy {
-   @Override
-   default vr b() {
-      return vr.a;
-   }
+public class aia {
+   public static final zd<ahz> a = a("intention");
 
-   void a(ahx var1);
+   private static <T extends zb<aic>> zd<T> a(String $$0) {
+      return new zd<>(zc.a, new akh($$0));
+   }
 }

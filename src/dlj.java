@@ -1,39 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public class dlj extends ddy {
-   public static final MapCodec<dlj> n = b(dlj::new);
+public class dlj extends ddn implements ddh {
+   public static final MapCodec<dlj> a = b(dlj::new);
+   protected static final float b = 6.0F;
+   protected static final eui c = dde.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dlj> a() {
-      return n;
+      return a;
    }
 
-   public dlj(dpx.d $$0) {
-      super($$0, () -> dnf.c);
-   }
-
-   @Override
-   public dnd a(im $$0, dpy $$1) {
-      return new dow($$0, $$1);
+   protected dlj(dqg.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected avg<akf> c() {
-      return avj.i.b(avj.ai);
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return c;
    }
 
    @Override
-   protected boolean f_(dpy $$0) {
+   public boolean b(dag $$0, in $$1, dqh $$2) {
       return true;
    }
 
    @Override
-   protected int a(dpy $$0, cza $$1, im $$2, ir $$3) {
-      return axw.a(dnk.a($$1, $$2), 0, 15);
+   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
+      return true;
    }
 
    @Override
-   protected int b(dpy $$0, cza $$1, im $$2, ir $$3) {
-      return $$3 == ir.b ? $$0.b($$1, $$2, $$3) : 0;
+   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
+      dfm $$4 = (dfm)($$3.a(ddg.bu) ? ddg.iI : ddg.iH);
+      if ($$4.n().a($$0, $$2) && $$0.u($$2.c())) {
+         dfm.a($$0, $$4.n(), $$2, 2);
+      }
    }
 }

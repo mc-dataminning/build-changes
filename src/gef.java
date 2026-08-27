@@ -1,155 +1,118 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+public class gef implements gdo<dpb> {
+   public gef(gdp.a $$0) {
+   }
 
-public class gef {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final ir[] l = ir.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ac.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+   public void a(dpb $$0, float $$1, exx $$2, gbo $$3, int $$4, int $$5) {
+      if (fde.Q().s.gx() || fde.Q().s.N_()) {
+         in $$6 = $$0.f();
+         jr $$7 = $$0.j();
+         if ($$7.u() >= 1 && $$7.v() >= 1 && $$7.w() >= 1) {
+            if ($$0.u() == drr.a || $$0.u() == drr.b) {
+               double $$8 = (double)$$6.u();
+               double $$9 = (double)$$6.w();
+               double $$10 = (double)$$6.v();
+               double $$11 = $$10 + (double)$$7.v();
+               double $$12;
+               double $$13;
+               switch ($$0.k()) {
+                  case b:
+                     $$12 = (double)$$7.u();
+                     $$13 = (double)(-$$7.w());
+                     break;
+                  case c:
+                     $$12 = (double)(-$$7.u());
+                     $$13 = (double)$$7.w();
+                     break;
+                  default:
+                     $$12 = (double)$$7.u();
+                     $$13 = (double)$$7.w();
+               }
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
+               double $$30;
+               double $$31;
+               double $$32;
+               double $$33;
+               switch ($$0.l()) {
+                  case b:
+                     $$30 = $$13 < 0.0 ? $$8 : $$8 + 1.0;
+                     $$31 = $$12 < 0.0 ? $$9 + 1.0 : $$9;
+                     $$32 = $$30 - $$13;
+                     $$33 = $$31 + $$12;
+                     break;
+                  case c:
+                     $$30 = $$12 < 0.0 ? $$8 : $$8 + 1.0;
+                     $$31 = $$13 < 0.0 ? $$9 : $$9 + 1.0;
+                     $$32 = $$30 - $$12;
+                     $$33 = $$31 - $$13;
+                     break;
+                  case d:
+                     $$30 = $$13 < 0.0 ? $$8 + 1.0 : $$8;
+                     $$31 = $$12 < 0.0 ? $$9 : $$9 + 1.0;
+                     $$32 = $$30 + $$13;
+                     $$33 = $$31 - $$12;
+                     break;
+                  default:
+                     $$30 = $$12 < 0.0 ? $$8 + 1.0 : $$8;
+                     $$31 = $$13 < 0.0 ? $$9 + 1.0 : $$9;
+                     $$32 = $$30 + $$12;
+                     $$33 = $$31 + $$13;
+               }
+
+               float $$34 = 1.0F;
+               float $$35 = 0.9F;
+               float $$36 = 0.5F;
+               eyb $$37 = $$3.getBuffer(gbw.y());
+               if ($$0.u() == drr.a || $$0.E()) {
+                  gbm.a($$2, $$37, $$30, $$10, $$31, $$32, $$11, $$33, 0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
+               }
+
+               if ($$0.u() == drr.a && $$0.D()) {
+                  this.a($$0, $$37, $$6, $$2);
                }
             }
          }
       }
-   });
-   private int o = 4096;
-
-   public void a(im $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
    }
 
-   private static int b(im $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
-   }
+   private void a(dpb $$0, eyb $$1, in $$2, exx $$3) {
+      czj $$4 = $$0.i();
+      in $$5 = $$0.az_();
+      in $$6 = $$5.a((jr)$$2);
 
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
-   }
-
-   public geg a() {
-      geg $$0 = new geg();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
-      } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
+      for (in $$7 : in.c($$6, $$6.a($$0.j()).b(-1, -1, -1))) {
+         dqh $$8 = $$4.a_($$7);
+         boolean $$9 = $$8.i();
+         boolean $$10 = $$8.a(ddg.kN);
+         boolean $$11 = $$8.a(ddg.hW);
+         boolean $$12 = $$8.a(ddg.hX);
+         boolean $$13 = $$10 || $$11 || $$12;
+         if ($$9 || $$13) {
+            float $$14 = $$9 ? 0.05F : 0.0F;
+            double $$15 = (double)((float)($$7.u() - $$5.u()) + 0.45F - $$14);
+            double $$16 = (double)((float)($$7.v() - $$5.v()) + 0.45F - $$14);
+            double $$17 = (double)((float)($$7.w() - $$5.w()) + 0.45F - $$14);
+            double $$18 = (double)((float)($$7.u() - $$5.u()) + 0.55F + $$14);
+            double $$19 = (double)((float)($$7.v() - $$5.v()) + 0.55F + $$14);
+            double $$20 = (double)((float)($$7.w() - $$5.w()) + 0.55F + $$14);
+            if ($$9) {
+               gbm.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
+            } else if ($$10) {
+               gbm.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
+            } else if ($$11) {
+               gbm.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
+            } else if ($$12) {
+               gbm.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
             }
          }
       }
-
-      return $$0;
    }
 
-   private Set<ir> a(int $$0) {
-      Set<ir> $$1 = EnumSet.noneOf(ir.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
-
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (ir $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
-         }
-      }
-
-      return $$1;
+   public boolean a(dpb $$0) {
+      return true;
    }
 
-   private void a(int $$0, Set<ir> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(ir.e);
-      } else if ($$2 == 15) {
-         $$1.add(ir.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(ir.a);
-      } else if ($$3 == 15) {
-         $$1.add(ir.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(ir.c);
-      } else if ($$4 == 15) {
-         $$1.add(ir.d);
-      }
-   }
-
-   private int a(int $$0, ir $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
-      }
+   @Override
+   public int aP_() {
+      return 96;
    }
 }

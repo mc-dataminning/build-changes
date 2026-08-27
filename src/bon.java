@@ -1,49 +1,44 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public enum bon implements ayq {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
+public class bon extends bop {
+   public static final bon a = new bon(0.0F);
+   public static final Codec<bon> b = axh.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bon::new, bon::d);
+   private final float d;
 
-   public static final ayq.a<bon> e = ayq.a(bon::values);
-   private static final IntFunction<bon> f = awn.a(bon::a, values(), awn.a.b);
-   private final int g;
-   private final String h;
-
-   private bon(int $$0, String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public static bon a(float $$0) {
+      return $$0 == 0.0F ? a : new bon($$0);
    }
 
-   public int a() {
-      return this.g;
+   private bon(float $$0) {
+      this.d = $$0;
    }
 
-   public ws b() {
-      return ws.c("options.difficulty." + this.h);
-   }
-
-   public ws d() {
-      return ws.c("options.difficulty." + this.h + ".info");
-   }
-
-   public static bon a(int $$0) {
-      return f.apply($$0);
-   }
-
-   @Nullable
-   public static bon a(String $$0) {
-      return e.a($$0);
-   }
-
-   public String e() {
-      return this.h;
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public float a(ayg $$0) {
+      return this.d;
+   }
+
+   @Override
+   public float a() {
+      return this.d;
+   }
+
+   @Override
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public boq<?> c() {
+      return boq.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

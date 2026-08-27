@@ -1,71 +1,89 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
 
-public class fot {
-   private final fwg a;
-   private final fwo b;
-   private final Predicate<fwj.a> c;
-   @Nullable
-   private xn d = null;
-   private int e;
-   private int f;
-   @Nullable
-   private xi g;
+public class fot extends fgk {
+   private static final fgr c = new fgr(new akh("recipe_book/tab"), new akh("recipe_book/tab_selected"));
+   private final fdn d;
+   private static final float e = 15.0F;
+   private float f;
 
-   public fot(fwu $$0, Predicate<fwj.a> $$1) {
-      this.a = $$0.b();
-      this.b = new fwo($$0.a().b().leadingContextMessageCount());
-      this.c = $$1;
-      this.e = this.a.b();
+   public fot(fdn $$0) {
+      super(0, 0, 35, 27, false);
+      this.d = $$0;
+      this.a(c);
    }
 
-   public void a(int $$0, fot.a $$1) {
-      int $$2 = 0;
-
-      while ($$2 < $$0) {
-         fwi $$3 = this.a.b(this.e);
-         if ($$3 == null) {
-            break;
-         }
-
-         int $$4 = this.e--;
-         if ($$3 instanceof fwj.a $$5 && !$$5.g().equals(this.g)) {
-            if (this.a($$1, $$5)) {
-               if (this.f > 0) {
-                  $$1.a(ws.a("gui.chatSelection.fold", this.f));
-                  this.f = 0;
+   public void a(fde $$0) {
+      fcr $$1 = $$0.s.m();
+      List<fov> $$2 = $$1.a(this.d);
+      if ($$0.s.cc instanceof cpr) {
+         for (fov $$3 : $$2) {
+            for (cxf<?> $$4 : $$3.a($$1.a((cpr<?>)$$0.s.cc))) {
+               if ($$1.d($$4)) {
+                  this.f = 15.0F;
+                  return;
                }
-
-               $$1.a($$4, $$5);
-               $$2++;
-            } else {
-               this.f++;
             }
-
-            this.g = $$5.g();
          }
       }
    }
 
-   private boolean a(fot.a $$0, fwj.a $$1) {
-      xi $$2 = $$1.g();
-      boolean $$3 = this.b.b($$2);
-      if (this.c.test($$1)) {
-         this.b.a($$2);
-         if (this.d != null && !this.d.a($$2.k())) {
-            $$0.a(ws.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
+   @Override
+   public void b(fer $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         if (this.f > 0.0F) {
+            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
+            $$0.c().a();
+            $$0.c().a((float)(this.C() + 8), (float)(this.D() + 12), 0.0F);
+            $$0.c().b(1.0F, $$4, 1.0F);
+            $$0.c().a((float)(-(this.C() + 8)), (float)(-(this.D() + 12)), 0.0F);
          }
 
-         this.d = $$2.k();
-         return true;
-      } else {
-         return $$3;
+         fde $$5 = fde.Q();
+         RenderSystem.disableDepthTest();
+         akh $$6 = this.a.a(true, this.b);
+         int $$7 = this.C();
+         if (this.b) {
+            $$7 -= 2;
+         }
+
+         $$0.a($$6, $$7, this.D(), this.g, this.h);
+         RenderSystem.enableDepthTest();
+         this.a($$0, $$5.as());
+         if (this.f > 0.0F) {
+            $$0.c().b();
+            this.f -= $$3;
+         }
       }
    }
 
-   public interface a {
-      void a(int var1, fwj.a var2);
+   private void a(fer $$0, ghv $$1) {
+      List<csz> $$2 = this.d.a();
+      int $$3 = this.b ? -2 : 0;
+      if ($$2.size() == 1) {
+         $$0.b($$2.get(0), this.C() + 9 + $$3, this.D() + 5);
+      } else if ($$2.size() == 2) {
+         $$0.b($$2.get(0), this.C() + 3 + $$3, this.D() + 5);
+         $$0.b($$2.get(1), this.C() + 14 + $$3, this.D() + 5);
+      }
+   }
 
-      void a(ws var1);
+   public fdn b() {
+      return this.d;
+   }
+
+   public boolean a(fcr $$0) {
+      List<fov> $$1 = $$0.a(this.d);
+      this.k = false;
+      if ($$1 != null) {
+         for (fov $$2 : $$1) {
+            if ($$2.b() && $$2.d()) {
+               this.k = true;
+               break;
+            }
+         }
+      }
+
+      return this.k;
    }
 }

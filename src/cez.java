@@ -1,220 +1,168 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class cez extends cex implements bsd<cfg> {
-   private static final ajk<Integer> bY = ajo.a(cez.class, ajm.b);
-   private static final bqo bZ = bqr.ab.n().a(bqn.a().a(bqm.a, 0.0F, bqr.ab.l() + 0.125F, 0.0F)).a(0.5F);
+public class cez {
+   private static final float a = 2.0F;
+   private static final float b = 1.0F;
+   private static final float c = 1.25F;
+   private static final float d = 1.25F;
+   private static final float e = 1.0F;
+   private static final double f = 2.0;
+   private static final double g = 1.0;
+   private static final box h = box.a(5, 16);
+   private static final ImmutableList<cck<? extends ccj<? super cey>>> i = ImmutableList.of(cck.c, cck.f, cck.u, cck.o, cck.k);
+   private static final ImmutableList<cbd<?>> j = ImmutableList.of(
+      cbd.Z, cbd.x, cbd.y, cbd.m, cbd.n, cbd.E, cbd.t, cbd.h, cbd.O, cbd.P, cbd.Q, cbd.R, new cbd[]{cbd.r, cbd.K, cbd.G}
+   );
+   private static final bvd<cey> k = bxf.a(
+      (Function<bxf.b<cey>, ? extends App<bxf.c<cey>, bxi<cey>>>)($$0 -> $$0.group($$0.c(cbd.G)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               if ($$1.u()) {
+                  $$1.gx();
+                  return true;
+               } else {
+                  return false;
+               }
+            }))
+   );
 
-   public cez(bqr<? extends cez> $$0, czu $$1) {
-      super($$0, $$1);
+   public static btb.b<cey> a() {
+      return btb.a(j, i);
    }
 
-   @Override
-   protected void a(ayd $$0) {
-      this.f(bsl.q).a((double)a($$0::a));
-      this.f(bsl.r).a(b($$0::j));
-      this.f(bsl.m).a(a($$0::j));
+   protected static btb<?> a(btb<cey> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      $$0.a(Set.of(cmw.a));
+      $$0.b(cmw.b);
+      $$0.f();
+      return $$0;
    }
 
-   @Override
-   protected void a(ajo.a $$0) {
-      super.a($$0);
-      $$0.a(bY, 0);
-   }
-
-   @Override
-   public void b(ty $$0) {
-      super.b($$0);
-      $$0.a("Variant", this.gp());
-   }
-
-   @Override
-   public void a(ty $$0) {
-      super.a($$0);
-      this.x($$0.h("Variant"));
-   }
-
-   private void x(int $$0) {
-      this.ao.a(bY, $$0);
-   }
-
-   private int gp() {
-      return this.ao.a(bY);
-   }
-
-   private void a(cfg $$0, cfb $$1) {
-      this.x($$0.a() & 0xFF | $$1.a() << 8 & 0xFF00);
-   }
-
-   public cfg r() {
-      return cfg.a(this.gp() & 0xFF);
-   }
-
-   public void a(cfg $$0) {
-      this.x($$0.a() & 0xFF | this.gp() & -256);
-   }
-
-   public cfb u() {
-      return cfb.a((this.gp() & 0xFF00) >> 8);
-   }
-
-   @Override
-   public void a(boj $$0) {
-      csd $$1 = this.fQ();
-      super.a($$0);
-      csd $$2 = this.fQ();
-      if (this.ai > 20 && this.l($$2) && $$1 != $$2) {
-         this.a(auz.my, 0.5F, 1.0F);
-      }
-   }
-
-   @Override
-   protected void a(dki $$0) {
-      super.a($$0);
-      if (this.ah.a(10) == 0) {
-         this.a(auz.mz, $$0.a() * 0.6F, $$0.b());
-      }
-   }
-
-   @Override
-   protected auy v() {
-      return auz.mw;
-   }
-
-   @Override
-   protected auy o_() {
-      return auz.mA;
-   }
-
-   @Nullable
-   @Override
-   protected auy gw() {
-      return auz.mB;
-   }
-
-   @Override
-   protected auy d(bpj $$0) {
-      return auz.mD;
-   }
-
-   @Override
-   protected auy gN() {
-      return auz.mx;
-   }
-
-   @Override
-   public boq b(ckl $$0, bop $$1) {
-      boolean $$2 = !this.p_() && this.gE() && $$0.fP();
-      if (!this.bQ() && !$$2) {
-         csd $$3 = $$0.b($$1);
-         if (!$$3.d()) {
-            if (this.o($$3)) {
-               return this.c($$0, $$3);
+   private static void b(btb<cey> $$0) {
+      $$0.a(cmw.a, 0, ImmutableList.of(new bwm(0.8F), new cez.b(2.0F), new buy(45, 90), new bvc() {
+         @Override
+         protected boolean a(aqh $$0, bsc $$1) {
+            if ($$1 instanceof cey $$2 && $$2.u()) {
+               return false;
             }
 
-            if (!this.gE()) {
-               this.gU();
-               return boq.a(this.dN().B);
-            }
+            return super.a($$0, $$1);
+         }
+      }, new bty(cbd.P), new bty(cbd.Q), k));
+   }
+
+   private static void c(btb<cey> $$0) {
+      $$0.a(
+         cmw.b,
+         ImmutableList.of(
+            Pair.of(0, bvs.a(brn.bx, 6.0F, box.a(30, 60))),
+            Pair.of(1, new btm(brn.c, 1.0F, 1)),
+            Pair.of(2, new bvp(ImmutableList.of(Pair.of(new buf($$0x -> 1.25F, $$0x -> $$0x.p_() ? 1.0 : 2.0), 1), Pair.of(btp.a(h, 1.25F), 1)))),
+            Pair.of(3, new bvj(box.a(150, 250), 30.0F, 0.0F, 0.0F)),
+            Pair.of(
+               4, new bvp(ImmutableMap.of(cbd.m, cbe.b), ImmutableList.of(Pair.of(bvk.a(1.0F), 1), Pair.of(bvz.a(1.0F, 3), 1), Pair.of(new buc(30, 60), 1)))
+            )
+         )
+      );
+   }
+
+   private static void d(btb<cey> $$0) {
+      $$0.a(cmw.g, ImmutableList.of(Pair.of(0, new cez.a())), Set.of(Pair.of(cbd.G, cbe.a), Pair.of(cbd.Z, cbe.b)));
+   }
+
+   public static void a(cey $$0) {
+      $$0.dQ().a(ImmutableList.of(cmw.g, cmw.b));
+   }
+
+   public static Predicate<csz> b() {
+      return $$0 -> $$0.a(avz.ai);
+   }
+
+   public static class a extends bts<cey> {
+      static final int c = 5 * ayy.e * 20;
+      static final int d = 5;
+      static final int e = 75;
+      int f = 0;
+      boolean g;
+
+      public a() {
+         super(Map.of(), c);
+      }
+
+      protected void a(aqh $$0, cey $$1, long $$2) {
+         super.c($$0, $$1, $$2);
+         if (this.f > 0) {
+            this.f--;
          }
 
-         return super.b($$0, $$1);
-      } else {
-         return super.b($$0, $$1);
-      }
-   }
-
-   @Override
-   public boolean a(cct $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return !($$0 instanceof cey) && !($$0 instanceof cez) ? false : this.gW() && ((cex)$$0).gW();
-      }
-   }
-
-   @Nullable
-   @Override
-   public bqf a(aqe $$0, bqf $$1) {
-      if ($$1 instanceof cey) {
-         cfc $$2 = bqr.as.a((czu)$$0);
-         if ($$2 != null) {
-            this.a($$1, $$2);
-         }
-
-         return $$2;
-      } else {
-         cez $$3 = (cez)$$1;
-         cez $$4 = bqr.ab.a((czu)$$0);
-         if ($$4 != null) {
-            int $$5 = this.ah.a(9);
-            cfg $$6;
-            if ($$5 < 4) {
-               $$6 = this.r();
-            } else if ($$5 < 8) {
-               $$6 = $$3.r();
-            } else {
-               $$6 = ac.a(cfg.values(), this.ah);
+         if ($$1.gp()) {
+            $$1.a(cey.a.c);
+            if ($$1.aC()) {
+               $$1.a(avc.aj);
+            }
+         } else {
+            cey.a $$3 = $$1.gv();
+            long $$4 = $$1.dQ().e(cbd.G);
+            boolean $$5 = $$4 > 75L;
+            if ($$5 != this.g) {
+               this.f = this.a($$1);
             }
 
-            int $$9 = this.ah.a(5);
-            cfb $$10;
-            if ($$9 < 2) {
-               $$10 = this.u();
-            } else if ($$9 < 4) {
-               $$10 = $$3.u();
-            } else {
-               $$10 = ac.a(cfb.values(), this.ah);
+            this.g = $$5;
+            if ($$3 == cey.a.c) {
+               if (this.f == 0 && $$1.aC() && $$5) {
+                  $$0.a($$1, (byte)64);
+                  this.f = this.a($$1);
+               }
+
+               if ($$4 < (long)cey.a.d.b()) {
+                  $$1.a(avc.an);
+                  $$1.a(cey.a.d);
+               }
+            } else if ($$3 == cey.a.d && $$4 > (long)cey.a.d.b()) {
+               $$1.a(cey.a.c);
             }
-
-            $$4.a($$6, $$10);
-            this.a($$1, $$4);
          }
+      }
 
-         return $$4;
+      private int a(cey $$0) {
+         return cey.a.c.b() + $$0.ej().a(100, 400);
+      }
+
+      protected boolean a(aqh $$0, cey $$1) {
+         return $$1.aC();
+      }
+
+      protected boolean b(aqh $$0, cey $$1, long $$2) {
+         return $$1.gv().a();
+      }
+
+      protected void c(aqh $$0, cey $$1, long $$2) {
+         $$1.gw();
+      }
+
+      protected void d(aqh $$0, cey $$1, long $$2) {
+         if (!$$1.gA()) {
+            $$1.gx();
+         }
       }
    }
 
-   @Override
-   public boolean fR() {
-      return true;
-   }
-
-   @Override
-   public boolean l(csd $$0) {
-      if ($$0.f() instanceof cpr $$1 && $$1.d() == cpr.a.a) {
-         return true;
+   public static class b extends btn<cey> {
+      public b(float $$0) {
+         super($$0, cey::gy);
       }
 
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public brw a(daj $$0, boo $$1, bri $$2, @Nullable brw $$3) {
-      ayd $$4 = $$0.E_();
-      cfg $$5;
-      if ($$3 instanceof cez.a) {
-         $$5 = ((cez.a)$$3).a;
-      } else {
-         $$5 = ac.a(cfg.values(), $$4);
-         $$3 = new cez.a($$5);
-      }
-
-      this.a($$5, ac.a(cfb.values(), $$4));
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public bqo e(brp $$0) {
-      return this.p_() ? bZ : super.e($$0);
-   }
-
-   public static class a extends bqf.a {
-      public final cfg a;
-
-      public a(cfg $$0) {
-         super(true);
-         this.a = $$0;
+      protected void a(aqh $$0, cey $$1, long $$2) {
+         $$1.gx();
+         super.b($$0, $$1, $$2);
       }
    }
 }

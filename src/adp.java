@@ -1,23 +1,18 @@
-import java.util.List;
-import java.util.UUID;
+import io.netty.buffer.ByteBuf;
 
-public record adp(List<UUID> b) implements yz<abk> {
-   public static final yq<vs, adp> a = yz.a(adp::a, adp::new);
+public class adp implements zb<abm> {
+   public static final adp a = new adp();
+   public static final ys<ByteBuf, adp> b = ys.a(a);
 
-   private adp(vs $$0) {
-      this($$0.a(jp.g));
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b, jp.g);
+   private adp() {
    }
 
    @Override
-   public zb<adp> a() {
-      return afv.ae;
+   public zd<adp> a() {
+      return afx.ac;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 }

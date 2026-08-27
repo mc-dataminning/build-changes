@@ -1,16 +1,8 @@
-public interface aic extends abe, vn {
+public interface aic extends aga {
    @Override
-   default vr b() {
-      return vr.d;
+   default vt b() {
+      return vt.a;
    }
 
-   void a(aif var1);
-
-   void a(aie var1);
-
-   void a(aih var1);
-
-   void a(aig var1);
-
-   void a(aid var1);
+   void a(ahz var1);
 }

@@ -1,125 +1,51 @@
-import java.util.Optional;
+public enum gbf {
+   a(new gbf.b(gbf.a.f, gbf.a.e, gbf.a.a), new gbf.b(gbf.a.f, gbf.a.e, gbf.a.d), new gbf.b(gbf.a.c, gbf.a.e, gbf.a.d), new gbf.b(gbf.a.c, gbf.a.e, gbf.a.a)),
+   b(new gbf.b(gbf.a.f, gbf.a.b, gbf.a.d), new gbf.b(gbf.a.f, gbf.a.b, gbf.a.a), new gbf.b(gbf.a.c, gbf.a.b, gbf.a.a), new gbf.b(gbf.a.c, gbf.a.b, gbf.a.d)),
+   c(new gbf.b(gbf.a.c, gbf.a.b, gbf.a.d), new gbf.b(gbf.a.c, gbf.a.e, gbf.a.d), new gbf.b(gbf.a.f, gbf.a.e, gbf.a.d), new gbf.b(gbf.a.f, gbf.a.b, gbf.a.d)),
+   d(new gbf.b(gbf.a.f, gbf.a.b, gbf.a.a), new gbf.b(gbf.a.f, gbf.a.e, gbf.a.a), new gbf.b(gbf.a.c, gbf.a.e, gbf.a.a), new gbf.b(gbf.a.c, gbf.a.b, gbf.a.a)),
+   e(new gbf.b(gbf.a.f, gbf.a.b, gbf.a.d), new gbf.b(gbf.a.f, gbf.a.e, gbf.a.d), new gbf.b(gbf.a.f, gbf.a.e, gbf.a.a), new gbf.b(gbf.a.f, gbf.a.b, gbf.a.a)),
+   f(new gbf.b(gbf.a.c, gbf.a.b, gbf.a.a), new gbf.b(gbf.a.c, gbf.a.e, gbf.a.a), new gbf.b(gbf.a.c, gbf.a.e, gbf.a.d), new gbf.b(gbf.a.c, gbf.a.b, gbf.a.d));
 
-public class gbf implements gbe {
-   private final gbe.a a;
-   private final gbe.a b = gbe.a(new exi(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
+   private static final gbf[] g = ac.a(new gbf[6], $$0 -> {
+      $$0[gbf.a.e] = a;
+      $$0[gbf.a.b] = b;
+      $$0[gbf.a.d] = c;
+      $$0[gbf.a.a] = d;
+      $$0[gbf.a.f] = e;
+      $$0[gbf.a.c] = f;
+   });
+   private final gbf.b[] h;
 
-   public gbf(gbe.a $$0) {
-      this.a = $$0;
+   public static gbf a(is $$0) {
+      return g[$$0.d()];
    }
 
-   @Override
-   public exr getBuffer(gbm $$0) {
-      if ($$0.M()) {
-         exr $$1 = this.b.getBuffer($$0);
-         return new gbf.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         exr $$2 = this.a.getBuffer($$0);
-         Optional<gbm> $$3 = $$0.L();
-         if ($$3.isPresent()) {
-            exr $$4 = this.b.getBuffer($$3.get());
-            gbf.a $$5 = new gbf.a($$4, this.c, this.d, this.e, this.f);
-            return exu.a($$5, $$2);
-         } else {
-            return $$2;
-         }
-      }
+   private gbf(gbf.b... $$0) {
+      this.h = $$0;
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public gbf.b a(int $$0) {
+      return this.h[$$0];
    }
 
-   public void a() {
-      this.b.b();
+   public static final class a {
+      public static final int a = is.d.d();
+      public static final int b = is.b.d();
+      public static final int c = is.f.d();
+      public static final int d = is.c.d();
+      public static final int e = is.a.d();
+      public static final int f = is.e.d();
    }
 
-   static class a extends exm {
-      private final exr f;
-      private double g;
-      private double h;
-      private double i;
-      private float j;
-      private float k;
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
 
-      a(exr $$0, int $$1, int $$2, int $$3, int $$4) {
-         this.f = $$0;
-         super.b($$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-      }
-
-      @Override
-      public void l() {
-      }
-
-      @Override
-      public exr a(double $$0, double $$1, double $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      @Override
-      public exr a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public exr a(float $$0, float $$1) {
-         this.j = $$0;
-         this.k = $$1;
-         return this;
-      }
-
-      @Override
-      public exr a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public exr b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public exr a(float $$0, float $$1, float $$2) {
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
-      }
-
-      @Override
-      public void e() {
-         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      b(int $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

@@ -1,31 +1,20 @@
-public class gpq implements gpl {
-   private final gag a;
-   private boolean b;
-   private boolean c = true;
+import java.util.UUID;
 
-   public gpq(gag $$0) {
-      this.a = $$0;
+public interface gpq {
+   void a(UUID var1, gpq.b var2);
+
+   void a(UUID var1, gpq.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   public void a() {
-      czu $$0 = this.a.dN();
-      dpy $$1 = $$0.c(this.a.cI().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dcx.nd)).findFirst().orElse(null);
-      if ($$1 != null) {
-         if (!this.b && !this.c && $$1.a(dcx.nd) && !this.a.N_()) {
-            boolean $$2 = $$1.c(ddb.b);
-            if ($$2) {
-               this.a.a(auz.db, 1.0F, 1.0F);
-            } else {
-               this.a.a(auz.cZ, 1.0F, 1.0F);
-            }
-         }
-
-         this.b = true;
-      } else {
-         this.b = false;
-      }
-
-      this.c = false;
+   public static enum b {
+      a,
+      b;
    }
 }

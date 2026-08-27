@@ -1,26 +1,31 @@
-public record aam(im c, int d) implements aaa {
-   public static final yq<vs, aam> a = aaa.a(aam::a, aam::new);
-   public static final aaa.b<aam> b = aaa.a("debug/poi_ticket_count");
+public record aam(in c, String d, int e) implements aac {
+   public static final ys<vu, aam> a = aac.a(aam::a, aam::new);
+   public static final aac.b<aam> b = aac.a("debug/poi_added");
 
-   private aam(vs $$0) {
-      this($$0.e(), $$0.readInt());
+   private aam(vu $$0) {
+      this($$0.e(), $$0.p(), $$0.readInt());
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.a(this.c);
-      $$0.p(this.d);
+      $$0.a(this.d);
+      $$0.p(this.e);
    }
 
    @Override
-   public aaa.b<aam> a() {
+   public aac.b<aam> a() {
       return b;
    }
 
-   public im b() {
+   public in b() {
       return this.c;
    }
 
-   public int c() {
+   public String c() {
       return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

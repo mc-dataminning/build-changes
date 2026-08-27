@@ -1,4 +1,4 @@
 @FunctionalInterface
-public interface yt<O, T> {
-   void encode(T var1, O var2);
+public interface yt<I, T> {
+   T decode(I var1);
 }

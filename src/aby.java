@@ -1,20 +1,14 @@
-public record aby(int b) implements yz<abk> {
-   public static final yq<vs, aby> a = yz.a(aby::a, aby::new);
-
-   private aby(vs $$0) {
-      this($$0.l());
-   }
-
-   private void a(vs $$0) {
-      $$0.c(this.b);
+public class aby extends yz<abm> {
+   public aby(Iterable<zb<? super abm>> $$0) {
+      super($$0);
    }
 
    @Override
-   public zb<aby> a() {
-      return afv.n;
+   public zd<aby> a() {
+      return afx.a;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 }

@@ -1,15 +1,13 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public abstract class ekd {
-   @Nullable
-   public ekg.c a(czx $$0, im $$1, im $$2, ekg.c $$3, ekg.c $$4, ekc $$5) {
-      return $$4;
-   }
+public interface ekd<P extends ekc> {
+   ekd<ekb> a = a("always_true", ekb.a);
+   ekd<ejz> b = a("linear_pos", ejz.a);
+   ekd<ejo> c = a("axis_aligned_linear_pos", ejo.a);
 
-   protected abstract ekf<?> a();
+   Codec<P> codec();
 
-   public List<ekg.c> a(daj $$0, im $$1, im $$2, List<ekg.c> $$3, List<ekg.c> $$4, ekc $$5) {
-      return $$4;
+   static <P extends ekc> ekd<P> a(String $$0, Codec<P> $$1) {
+      return jj.a(ld.q, $$0, () -> $$1);
    }
 }

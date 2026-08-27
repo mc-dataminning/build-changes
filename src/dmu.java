@@ -1,76 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public record dmu(List<dmu.b> d) {
-   static final Logger e = LogUtils.getLogger();
-   public static final dmu a = new dmu(List.of());
-   public static final Codec<dmu> b = dmu.b.a.listOf().xmap(dmu::new, dmu::b);
-   public static final yq<wd, dmu> c = dmu.b.b.a(yo.a()).a(dmu::new, dmu::b);
+public class dmu extends dcs {
+   public static final MapCodec<dmu> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dqw.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, dmu::new)
+   );
+   public static final drh f = dqx.aT;
+   private final int g;
 
-   public dmu a() {
-      return new dmu(List.copyOf(this.d.subList(0, this.d.size() - 1)));
+   @Override
+   public MapCodec<dmu> a() {
+      return e;
    }
 
-   public List<dmu.b> b() {
-      return this.d;
+   protected dmu(int $$0, dqw $$1, dqg.d $$2) {
+      super($$2, $$1);
+      this.k(this.E.b().a(f, Integer.valueOf(0)));
+      this.g = $$0;
    }
 
-   public static class a {
-      private final Builder<dmu.b> a = ImmutableList.builder();
-
-      @Deprecated
-      public dmu.a a(iw<dmt> $$0, ake<dmt> $$1, cqw $$2) {
-         Optional<iv.c<dmt>> $$3 = $$0.a($$1);
-         if ($$3.isEmpty()) {
-            dmu.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
-            return this;
-         } else {
-            return this.a($$3.get(), $$2);
-         }
-      }
-
-      public dmu.a a(iv<dmt> $$0, cqw $$1) {
-         return this.a(new dmu.b($$0, $$1));
-      }
-
-      public dmu.a a(dmu.b $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public dmu.a a(dmu $$0) {
-         this.a.addAll($$0.d);
-         return this;
-      }
-
-      public dmu a() {
-         return new dmu(this.a.build());
+   @Override
+   protected int b(dad $$0, in $$1) {
+      int $$2 = Math.min(a($$0, c.a($$1), brh.class), this.g);
+      if ($$2 > 0) {
+         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
+         return axz.f($$3 * 15.0F);
+      } else {
+         return 0;
       }
    }
 
-   public static record b(iv<dmt> c, cqw d) {
-      public static final Codec<dmu.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dmt.c.fieldOf("pattern").forGetter(dmu.b::b), cqw.q.fieldOf("color").forGetter(dmu.b::c)).apply($$0, dmu.b::new)
-      );
-      public static final yq<wd, dmu.b> b = yq.a(dmt.d, dmu.b::b, cqw.r, dmu.b::c, dmu.b::new);
+   @Override
+   protected int g(dqh $$0) {
+      return $$0.c(f);
+   }
 
-      public xg a() {
-         String $$0 = this.c.a().b();
-         return ws.c($$0 + "." + this.d.b());
-      }
+   @Override
+   protected dqh a(dqh $$0, int $$1) {
+      return $$0.a(f, Integer.valueOf($$1));
+   }
 
-      public iv<dmt> b() {
-         return this.c;
-      }
+   @Override
+   protected int b() {
+      return 10;
+   }
 
-      public cqw c() {
-         return this.d;
-      }
+   @Override
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(f);
    }
 }

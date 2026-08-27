@@ -1,20 +1,40 @@
-public record acq(czb b) implements yz<abk> {
-   public static final yq<vs, acq> a = yz.a(acq::a, acq::new);
+import javax.annotation.Nullable;
 
-   private acq(vs $$0) {
-      this($$0.f());
+public class acq implements zb<abm> {
+   public static final ys<vu, acq> a = zb.a(acq::a, acq::new);
+   private final int b;
+   private final byte c;
+
+   public acq(brh $$0, byte $$1) {
+      this.b = $$0.aj();
+      this.c = $$1;
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
+   private acq(vu $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
+   }
+
+   private void a(vu $$0) {
+      $$0.p(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public zb<acq> a() {
-      return afv.F;
+   public zd<acq> a() {
+      return afx.D;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
+   }
+
+   @Nullable
+   public brh a(dad $$0) {
+      return $$0.a(this.b);
+   }
+
+   public byte b() {
+      return this.c;
    }
 }

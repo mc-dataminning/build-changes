@@ -1,29 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.Optional;
 
-public class bud {
-   public static buh<brg> a(int $$0) {
-      return bwj.a(
-         (Function<bwj.b<brg>, ? extends App<bwj.c<brg>, bwm<brg>>>)($$1 -> $$1.group($$1.a(cah.n), $$1.b(cah.o), $$1.c(cah.p), $$1.b(cah.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bre $$9 = $$1.b($$3);
-                     if (!a($$7) && $$7.i($$9) && $$1.<caj>b($$5).a($$9)) {
-                        $$2.a(new bth($$9, true));
-                        $$7.a(bop.a);
-                        $$7.C($$9);
-                        $$4.a(true, (long)$$0);
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class bud implements bvg {
+   private final brh a;
+   private final boolean b;
+
+   public bud(brh $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static boolean a(brg $$0) {
-      return $$0.b($$1 -> {
-         cry $$2 = $$1.f();
-         return $$2 instanceof csu && $$0.a((csu)$$2);
-      });
+   @Override
+   public etp a() {
+      return this.b ? this.a.dl().b(0.0, (double)this.a.cJ(), 0.0) : this.a.dl();
+   }
+
+   @Override
+   public in b() {
+      return this.a.dn();
+   }
+
+   @Override
+   public boolean a(bsa $$0) {
+      if (this.a instanceof bsa $$1) {
+         if (!$$1.bB()) {
+            return false;
+         } else {
+            Optional<cbf> $$3 = $$0.dQ().c(cbd.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
+      }
+   }
+
+   public brh c() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

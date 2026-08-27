@@ -1,93 +1,69 @@
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Optional;
 
 public class ayr {
-   private static final Pattern a = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
-   private static final Pattern b = Pattern.compile("\\r\\n|\\v");
-   private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
+   public static <T extends bsc> Optional<T> a(brn<T> $$0, bse $$1, aqh $$2, in $$3, int $$4, int $$5, int $$6, ayr.a $$7) {
+      in.a $$8 = $$3.j();
 
-   public static String a(int $$0, float $$1) {
-      int $$2 = axw.d((float)$$0 / $$1);
-      int $$3 = $$2 / 60;
-      $$2 %= 60;
-      int $$4 = $$3 / 60;
-      $$3 %= 60;
-      return $$4 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$4, $$3, $$2) : String.format(Locale.ROOT, "%02d:%02d", $$3, $$2);
-   }
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         int $$10 = axz.b($$2.z, -$$5, $$5);
+         int $$11 = axz.b($$2.z, -$$5, $$5);
+         $$8.a($$3, $$10, $$6, $$11);
+         if ($$2.C_().a($$8) && a($$2, $$6, $$8, $$7)) {
+            T $$12 = (T)$$0.b($$2, null, $$8, $$1, false, false);
+            if ($$12 != null) {
+               if ($$12.a($$2, $$1) && $$12.a($$2)) {
+                  $$2.a_($$12);
+                  return Optional.of($$12);
+               }
 
-   public static String a(String $$0) {
-      return a.matcher($$0).replaceAll("");
-   }
-
-   public static boolean b(@Nullable String $$0) {
-      return StringUtils.isEmpty($$0);
-   }
-
-   public static String a(String $$0, int $$1, boolean $$2) {
-      if ($$0.length() <= $$1) {
-         return $$0;
-      } else {
-         return $$2 && $$1 > 3 ? $$0.substring(0, $$1 - 3) + "..." : $$0.substring(0, $$1);
-      }
-   }
-
-   public static int c(String $$0) {
-      if ($$0.isEmpty()) {
-         return 0;
-      } else {
-         Matcher $$1 = b.matcher($$0);
-         int $$2 = 1;
-
-         while ($$1.find()) {
-            $$2++;
-         }
-
-         return $$2;
-      }
-   }
-
-   public static boolean d(String $$0) {
-      return c.matcher($$0).find();
-   }
-
-   public static String e(String $$0) {
-      return a($$0, 256, false);
-   }
-
-   public static boolean a(char $$0) {
-      return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
-   }
-
-   public static boolean f(String $$0) {
-      return $$0.length() > 16 ? false : $$0.chars().filter($$0x -> $$0x <= 32 || $$0x >= 127).findAny().isEmpty();
-   }
-
-   public static String g(String $$0) {
-      return a($$0, false);
-   }
-
-   public static String a(String $$0, boolean $$1) {
-      StringBuilder $$2 = new StringBuilder();
-
-      for (char $$3 : $$0.toCharArray()) {
-         if (a($$3)) {
-            $$2.append($$3);
-         } else if ($$1 && $$3 == '\n') {
-            $$2.append($$3);
+               $$12.am();
+            }
          }
       }
 
-      return $$2.toString();
+      return Optional.empty();
    }
 
-   public static boolean a(int $$0) {
-      return Character.isWhitespace($$0) || Character.isSpaceChar($$0);
+   private static boolean a(aqh $$0, int $$1, in.a $$2, ayr.a $$3) {
+      in.a $$4 = new in.a().g($$2);
+      dqh $$5 = $$0.a_($$4);
+
+      for (int $$6 = $$1; $$6 >= -$$1; $$6--) {
+         $$2.c(is.a);
+         $$4.a($$2, is.b);
+         dqh $$7 = $$0.a_($$2);
+         if ($$3.canSpawnOn($$0, $$2, $$7, $$4, $$5)) {
+            $$2.c(is.b);
+            return true;
+         }
+
+         $$5 = $$7;
+      }
+
+      return false;
    }
 
-   public static boolean h(@Nullable String $$0) {
-      return $$0 != null && $$0.length() != 0 ? $$0.chars().allMatch(ayr::a) : true;
+   public interface a {
+      @Deprecated
+      ayr.a a = ($$0, $$1, $$2, $$3, $$4) -> !$$2.a(ddg.bs)
+               && !$$2.a(ddg.dQ)
+               && !$$2.a(ddg.eY)
+               && !($$2.b() instanceof dkx)
+               && !($$2.b() instanceof dkw)
+               && !($$2.b() instanceof dho)
+               && !$$2.a(ddg.mX)
+               && !$$2.a(ddg.dO)
+               && !$$2.a(ddg.ck)
+               && !$$2.a(ddg.ec)
+               && !$$2.a(ddg.fO)
+               && !$$2.a(ddg.ii)
+               && !$$2.a(ddg.kI)
+               && !$$2.a(ddg.qO)
+               && !$$2.a(ddg.aQ)
+            ? ($$4.i() || $$4.k()) && ($$2.e() || $$2.a(ddg.qP))
+            : false;
+      ayr.a b = ($$0, $$1, $$2, $$3, $$4) -> $$4.k($$0, $$3).c() && dde.a($$2.k($$0, $$1), is.b);
+
+      boolean canSpawnOn(aqh var1, in var2, dqh var3, in var4, dqh var5);
    }
 }

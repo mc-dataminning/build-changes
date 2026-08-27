@@ -1,54 +1,40 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+public interface egj {
+   akg<egp> a = a("pillager_outpost");
+   akg<egp> b = a("mineshaft");
+   akg<egp> c = a("mineshaft_mesa");
+   akg<egp> d = a("mansion");
+   akg<egp> e = a("jungle_pyramid");
+   akg<egp> f = a("desert_pyramid");
+   akg<egp> g = a("igloo");
+   akg<egp> h = a("shipwreck");
+   akg<egp> i = a("shipwreck_beached");
+   akg<egp> j = a("swamp_hut");
+   akg<egp> k = a("stronghold");
+   akg<egp> l = a("monument");
+   akg<egp> m = a("ocean_ruin_cold");
+   akg<egp> n = a("ocean_ruin_warm");
+   akg<egp> o = a("fortress");
+   akg<egp> p = a("nether_fossil");
+   akg<egp> q = a("end_city");
+   akg<egp> r = a("buried_treasure");
+   akg<egp> s = a("bastion_remnant");
+   akg<egp> t = a("village_plains");
+   akg<egp> u = a("village_desert");
+   akg<egp> v = a("village_savanna");
+   akg<egp> w = a("village_snowy");
+   akg<egp> x = a("village_taiga");
+   akg<egp> y = a("ruined_portal");
+   akg<egp> z = a("ruined_portal_desert");
+   akg<egp> A = a("ruined_portal_jungle");
+   akg<egp> B = a("ruined_portal_swamp");
+   akg<egp> C = a("ruined_portal_mountain");
+   akg<egp> D = a("ruined_portal_ocean");
+   akg<egp> E = a("ruined_portal_nether");
+   akg<egp> F = a("ancient_city");
+   akg<egp> G = a("trail_ruins");
+   akg<egp> H = a("trial_chambers");
 
-public class egj extends emy {
-   private static final String a = "Remaining";
-   private static final String b = "All";
-   private final LongSet c;
-   private final LongSet d;
-
-   public static emy.a<egj> a() {
-      return new emy.a<>(egj::new, egj::b, azc.o);
-   }
-
-   private egj(LongSet $$0, LongSet $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public egj() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
-   }
-
-   public static egj b(ty $$0, ix.a $$1) {
-      return new egj(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
-   }
-
-   @Override
-   public ty a(ty $$0, ix.a $$1) {
-      $$0.a("All", this.c.toLongArray());
-      $$0.a("Remaining", this.d.toLongArray());
-      return $$0;
-   }
-
-   public void a(long $$0) {
-      this.c.add($$0);
-      this.d.add($$0);
-   }
-
-   public boolean b(long $$0) {
-      return this.c.contains($$0);
-   }
-
-   public boolean c(long $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void d(long $$0) {
-      this.d.remove($$0);
-   }
-
-   public LongSet b() {
-      return this.c;
+   private static akg<egp> a(String $$0) {
+      return akg.a(le.aJ, new akh($$0));
    }
 }

@@ -1,431 +1,204 @@
-import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationException;
+import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
+import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
+import com.mojang.authlib.exceptions.InvalidCredentialsException;
+import com.mojang.authlib.exceptions.UserBannedException;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.List;
+import java.math.BigInteger;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableObject;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import net.minecraft.client.ClientBrandRetriever;
 import org.slf4j.Logger;
 
-public class fvv {
+public class fvv implements aie {
    private static final Logger a = LogUtils.getLogger();
-   private final fcu b;
-   private final fvn c;
-   private im d = new im(-1, -1, -1);
-   private csd e = csd.i;
-   private float f;
-   private float g;
-   private int h;
-   private boolean i;
-   private czr j = czr.e;
+   private final fde b;
    @Nullable
-   private czr k;
-   private int l;
+   private final fwk c;
+   @Nullable
+   private final fld d;
+   private final Consumer<wu> e;
+   private final vs f;
+   private final boolean g;
+   @Nullable
+   private final Duration h;
+   @Nullable
+   private String i;
+   private final Map<akh, byte[]> j;
+   private final boolean k;
+   private final AtomicReference<fvv.a> l = new AtomicReference<>(fvv.a.a);
 
-   public fvv(fcu $$0, fvn $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fvv(vs $$0, fde $$1, @Nullable fwk $$2, @Nullable fld $$3, boolean $$4, @Nullable Duration $$5, Consumer<wu> $$6, @Nullable fwo $$7) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$6;
+      this.g = $$4;
+      this.h = $$5;
+      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
+      this.k = $$7 != null;
    }
 
-   public void a(ckl $$0) {
-      this.j.a($$0.gb());
-   }
-
-   public void a(czr $$0, @Nullable czr $$1) {
-      this.j = $$0;
-      this.k = $$1;
-      this.j.a(this.b.s.gb());
-   }
-
-   public void a(czr $$0) {
-      if ($$0 != this.j) {
-         this.k = this.j;
-      }
-
-      this.j = $$0;
-      this.j.a(this.b.s.gb());
-   }
-
-   public boolean a() {
-      return this.j.h();
-   }
-
-   public boolean a(im $$0) {
-      if (this.b.s.a(this.b.r, $$0, this.j)) {
-         return false;
-      } else {
-         czu $$1 = this.b.r;
-         dpy $$2 = $$1.a_($$0);
-         if (!this.b.s.eV().f().a($$2, $$1, $$0, this.b.s)) {
-            return false;
+   private void a(fvv.a $$0) {
+      fvv.a $$1 = this.l.updateAndGet($$1x -> {
+         if (!$$0.f.contains($$1x)) {
+            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
          } else {
-            dcv $$3 = $$2.b();
-            if ($$3 instanceof dgd && !this.b.s.gx()) {
-               return false;
-            } else if ($$2.i()) {
-               return false;
-            } else {
-               $$3.a($$1, $$0, $$2, (ckl)this.b.s);
-               elr $$4 = $$1.b_($$0);
-               boolean $$5 = $$1.a($$0, $$4.g(), 11);
-               if ($$5) {
-                  $$3.a((czv)$$1, $$0, $$2);
-               }
-
-               return $$5;
-            }
+            return $$0;
          }
-      }
+      });
+      this.e.accept($$1.e);
    }
 
-   public boolean a(im $$0, ir $$1) {
-      if (this.b.s.a(this.b.r, $$0, this.j)) {
-         return false;
-      } else if (!this.b.r.C_().a($$0)) {
-         return false;
-      } else {
-         if (this.j.g()) {
-            dpy $$2 = this.b.r.a_($$0);
-            this.b.aB().a(this.b.r, $$0, $$2, 1.0F);
-            this.a(this.b.r, $$2x -> {
-               this.a($$0);
-               return new aha(aha.a.a, $$0, $$1, $$2x);
-            });
-            this.h = 5;
-         } else if (!this.i || !this.b($$0)) {
-            if (this.i) {
-               this.c.b(new aha(aha.a.b, this.d, $$1));
+   @Override
+   public void a(aih $$0) {
+      this.a(fvv.a.b);
+
+      Cipher $$4;
+      Cipher $$5;
+      String $$3;
+      aip $$7;
+      try {
+         SecretKey $$1 = awx.a();
+         PublicKey $$2 = $$0.e();
+         $$3 = new BigInteger(awx.a($$0.b(), $$2, $$1)).toString(16);
+         $$4 = awx.a(2, $$1);
+         $$5 = awx.a(1, $$1);
+         byte[] $$6 = $$0.f();
+         $$7 = new aip($$1, $$2, $$6);
+      } catch (Exception var9) {
+         throw new IllegalStateException("Protocol error", var9);
+      }
+
+      if ($$0.g()) {
+         ac.g().submit(() -> {
+            wu $$4x = this.b($$3);
+            if ($$4x != null) {
+               if (this.c == null || !this.c.d()) {
+                  this.f.a($$4x);
+                  return;
+               }
+
+               a.warn($$4x.getString());
             }
 
-            dpy $$3 = this.b.r.a_($$0);
-            this.b.aB().a(this.b.r, $$0, $$3, 0.0F);
-            this.a(this.b.r, $$3x -> {
-               boolean $$4 = !$$3.i();
-               if ($$4 && this.f == 0.0F) {
-                  $$3.a(this.b.r, $$0, this.b.s);
-               }
-
-               if ($$4 && $$3.a(this.b.s, this.b.s.dN(), $$0) >= 1.0F) {
-                  this.a($$0);
-               } else {
-                  this.i = true;
-                  this.d = $$0;
-                  this.e = this.b.s.eV();
-                  this.f = 0.0F;
-                  this.g = 0.0F;
-                  this.b.r.a(this.b.s.aj(), this.d, this.l());
-               }
-
-               return new aha(aha.a.a, $$0, $$1, $$3x);
-            });
-         }
-
-         return true;
-      }
-   }
-
-   public void b() {
-      if (this.i) {
-         dpy $$0 = this.b.r.a_(this.d);
-         this.b.aB().a(this.b.r, this.d, $$0, -1.0F);
-         this.c.b(new aha(aha.a.b, this.d, ir.a));
-         this.i = false;
-         this.f = 0.0F;
-         this.b.r.a(this.b.s.aj(), this.d, -1);
-         this.b.s.gu();
-      }
-   }
-
-   public boolean b(im $$0, ir $$1) {
-      this.m();
-      if (this.h > 0) {
-         this.h--;
-         return true;
-      } else if (this.j.g() && this.b.r.C_().a($$0)) {
-         this.h = 5;
-         dpy $$2 = this.b.r.a_($$0);
-         this.b.aB().a(this.b.r, $$0, $$2, 1.0F);
-         this.a(this.b.r, $$2x -> {
-            this.a($$0);
-            return new aha(aha.a.a, $$0, $$1, $$2x);
+            this.a($$7, $$4, $$5);
          });
-         return true;
-      } else if (this.b($$0)) {
-         dpy $$3 = this.b.r.a_($$0);
-         if ($$3.i()) {
-            this.i = false;
-            return false;
-         } else {
-            this.f = this.f + $$3.a(this.b.s, this.b.s.dN(), $$0);
-            if (this.g % 4.0F == 0.0F) {
-               dki $$4 = $$3.w();
-               this.b.ak().a(new gpw($$4.f(), ava.e, ($$4.a() + 1.0F) / 8.0F, $$4.b() * 0.5F, gqb.t(), $$0));
-            }
-
-            this.g++;
-            this.b.aB().a(this.b.r, $$0, $$3, axw.a(this.f, 0.0F, 1.0F));
-            if (this.f >= 1.0F) {
-               this.i = false;
-               this.a(this.b.r, $$2 -> {
-                  this.a($$0);
-                  return new aha(aha.a.c, $$0, $$1, $$2);
-               });
-               this.f = 0.0F;
-               this.g = 0.0F;
-               this.h = 5;
-            }
-
-            this.b.r.a(this.b.s.aj(), this.d, this.l());
-            return true;
-         }
       } else {
-         return this.a($$0, $$1);
+         this.a($$7, $$4, $$5);
       }
    }
 
-   private void a(fvm $$0, fwz $$1) {
-      try (fwy $$2 = $$0.a().a()) {
-         int $$3 = $$2.b();
-         yz<afx> $$4 = $$1.predict($$3);
-         this.c.b($$4);
-      }
-   }
-
-   public void c() {
-      this.m();
-      if (this.c.l().i()) {
-         this.c.l().b();
-      } else {
-         this.c.l().n();
-      }
-   }
-
-   private boolean b(im $$0) {
-      csd $$1 = this.b.s.eV();
-      return $$0.equals(this.d) && csd.c($$1, this.e);
-   }
-
-   private void m() {
-      int $$0 = this.b.s.ga().l;
-      if ($$0 != this.l) {
-         this.l = $$0;
-         this.c.b(new ahj(this.l));
-      }
-   }
-
-   public boq a(gag $$0, bop $$1, etb $$2) {
-      this.m();
-      if (!this.b.r.C_().a($$2.a())) {
-         return boq.e;
-      } else {
-         MutableObject<boq> $$3 = new MutableObject();
-         this.a(this.b.r, $$4 -> {
-            $$3.setValue(this.b($$0, $$1, $$2));
-            return new ahs($$1, $$2, $$4);
-         });
-         return (boq)$$3.getValue();
-      }
-   }
-
-   private boq b(gag $$0, bop $$1, etb $$2) {
-      im $$3 = $$2.a();
-      csd $$4 = $$0.b($$1);
-      if (this.j == czr.d) {
-         return boq.a;
-      } else {
-         boolean $$5 = !$$0.eV().d() || !$$0.eW().d();
-         boolean $$6 = $$0.fP() && $$5;
-         if (!$$6) {
-            dpy $$7 = this.b.r.a_($$3);
-            if (!this.c.a($$7.b().m())) {
-               return boq.e;
-            }
-
-            bos $$8 = $$7.a($$0.b($$1), this.b.r, $$0, $$1, $$2);
-            if ($$8.a()) {
-               return $$8.b();
-            }
-
-            if ($$8 == bos.d && $$1 == bop.a) {
-               boq $$9 = $$7.a(this.b.r, $$0, $$2);
-               if ($$9.a()) {
-                  return $$9;
-               }
-            }
-         }
-
-         if (!$$4.d() && !$$0.gv().a($$4.f())) {
-            cvn $$10 = new cvn($$0, $$1, $$2);
-            boq $$12;
-            if (this.j.g()) {
-               int $$11 = $$4.G();
-               $$12 = $$4.a($$10);
-               $$4.e($$11);
-            } else {
-               $$12 = $$4.a($$10);
-            }
-
-            return $$12;
-         } else {
-            return boq.d;
-         }
-      }
-   }
-
-   public boq a(ckl $$0, bop $$1) {
-      if (this.j == czr.d) {
-         return boq.d;
-      } else {
-         this.m();
-         this.c.b(new agu.b($$0.ds(), $$0.du(), $$0.dy(), $$0.dD(), $$0.dF(), $$0.aC()));
-         MutableObject<boq> $$2 = new MutableObject();
-         this.a(this.b.r, $$3 -> {
-            aht $$4 = new aht($$1, $$3);
-            csd $$5 = $$0.b($$1);
-            if ($$0.gv().a($$5.f())) {
-               $$2.setValue(boq.d);
-               return $$4;
-            } else {
-               bor<csd> $$6 = $$5.a(this.b.r, $$0, $$1);
-               csd $$7 = $$6.b();
-               if ($$7 != $$5) {
-                  $$0.a($$1, $$7);
-               }
-
-               $$2.setValue($$6.a());
-               return $$4;
-            }
-         });
-         return (boq)$$2.getValue();
-      }
-   }
-
-   public gag a(fvm $$0, avk $$1, fch $$2) {
-      return this.a($$0, $$1, $$2, false, false);
-   }
-
-   public gag a(fvm $$0, avk $$1, fch $$2, boolean $$3, boolean $$4) {
-      return new gag(this.b, $$0, this.c, $$1, $$2, $$3, $$4);
-   }
-
-   public void a(ckl $$0, bql $$1) {
-      this.m();
-      this.c.b(agr.a($$1, $$0.bT()));
-      if (this.j != czr.d) {
-         $$0.e($$1);
-         $$0.gu();
-      }
-   }
-
-   public boq a(ckl $$0, bql $$1, bop $$2) {
-      this.m();
-      this.c.b(agr.a($$1, $$0.bT(), $$2));
-      return this.j == czr.d ? boq.d : $$0.a($$1, $$2);
-   }
-
-   public boq a(ckl $$0, bql $$1, etc $$2, bop $$3) {
-      this.m();
-      etf $$4 = $$2.e().a($$1.ds(), $$1.du(), $$1.dy());
-      this.c.b(agr.a($$1, $$0.bT(), $$3, $$4));
-      return this.j == czr.d ? boq.d : $$1.a($$0, $$4, $$3);
-   }
-
-   public void a(int $$0, int $$1, int $$2, cnq $$3, ckl $$4) {
-      cnh $$5 = $$4.cc;
-      if ($$0 != $$5.j) {
-         a.warn("Ignoring click in mismatching container. Click in {}, player has {}.", $$0, $$5.j);
-      } else {
-         je<cpd> $$6 = $$5.i;
-         int $$7 = $$6.size();
-         List<csd> $$8 = Lists.newArrayListWithCapacity($$7);
-
-         for (cpd $$9 : $$6) {
-            $$8.add($$9.g().r());
-         }
-
-         $$5.a($$1, $$2, $$3, $$4);
-         Int2ObjectMap<csd> $$10 = new Int2ObjectOpenHashMap();
-
-         for (int $$11 = 0; $$11 < $$7; $$11++) {
-            csd $$12 = $$8.get($$11);
-            csd $$13 = $$6.get($$11).g();
-            if (!csd.a($$12, $$13)) {
-               $$10.put($$11, $$13.r());
-            }
-         }
-
-         this.c.b(new agl($$0, $$5.j(), $$1, $$2, $$3, $$5.g().r(), $$10));
-      }
-   }
-
-   public void a(int $$0, cwi<?> $$1, boolean $$2) {
-      this.c.b(new agy($$0, $$1, $$2));
-   }
-
-   public void a(int $$0, int $$1) {
-      this.c.b(new agk($$0, $$1));
-   }
-
-   public void a(csd $$0, int $$1) {
-      if (this.j.g() && this.c.a($$0.f().m())) {
-         this.c.b(new ahm($$1, $$0));
-      }
-   }
-
-   public void a(csd $$0) {
-      if (this.j.g() && !$$0.d() && this.c.a($$0.f().m())) {
-         this.c.b(new ahm(-1, $$0));
-      }
-   }
-
-   public void b(ckl $$0) {
-      this.m();
-      this.c.b(new aha(aha.a.f, im.c, ir.a));
-      $$0.fy();
-   }
-
-   public boolean d() {
-      return this.j.h();
-   }
-
-   public boolean e() {
-      return !this.j.g();
-   }
-
-   public boolean f() {
-      return this.j.g();
-   }
-
-   public boolean g() {
-      return this.b.s.bP() && this.b.s.da() instanceof bqx;
-   }
-
-   public boolean h() {
-      return this.j == czr.d;
+   private void a(aip $$0, Cipher $$1, Cipher $$2) {
+      this.a(fvv.a.c);
+      this.f.a($$0, wb.a(() -> this.f.a($$1, $$2)));
    }
 
    @Nullable
-   public czr i() {
-      return this.k;
+   private wu b(String $$0) {
+      try {
+         this.e().joinServer(this.b.X().b(), this.b.X().d(), $$0);
+         return null;
+      } catch (AuthenticationUnavailableException var3) {
+         return wu.a("disconnect.loginFailedInfo", wu.c("disconnect.loginFailedInfo.serversUnavailable"));
+      } catch (InvalidCredentialsException var4) {
+         return wu.a("disconnect.loginFailedInfo", wu.c("disconnect.loginFailedInfo.invalidSession"));
+      } catch (InsufficientPrivilegesException var5) {
+         return wu.a("disconnect.loginFailedInfo", wu.c("disconnect.loginFailedInfo.insufficientPrivileges"));
+      } catch (ForcedUsernameChangeException | UserBannedException var6) {
+         return wu.a("disconnect.loginFailedInfo", wu.c("disconnect.loginFailedInfo.userBanned"));
+      } catch (AuthenticationException var7) {
+         return wu.a("disconnect.loginFailedInfo", var7.getMessage());
+      }
    }
 
-   public czr j() {
-      return this.j;
+   private MinecraftSessionService e() {
+      return this.b.am();
    }
 
-   public boolean k() {
-      return this.i;
+   @Override
+   public void a(aig $$0) {
+      this.a(fvv.a.d);
+      GameProfile $$1 = $$0.b();
+      this.f.a(abb.b, new fvu(this.b, this.f, new fwa($$1, this.b.u().a(this.g, this.h, this.i), fvy.a().a(), cnw.h, null, this.c, this.d, this.j)));
+      this.f.a(aiq.a);
+      this.f.a(abb.a);
+      this.f.a(new zu(new aaa(ClientBrandRetriever.getClientModName())));
+      this.f.a(new zt(this.b.m.aw()));
    }
 
-   public int l() {
-      return this.f > 0.0F ? (int)(this.f * 10.0F) : -1;
+   @Override
+   public void a(wu $$0) {
+      wu $$1 = this.k ? wt.q : wt.r;
+      if (this.c != null && this.c.e()) {
+         this.b.a(new gsx(this.d, $$1, $$0));
+      } else {
+         this.b.a(new fke(this.d, $$1, $$0));
+      }
    }
 
-   public void a(int $$0) {
-      this.c.b(new agx($$0));
+   @Override
+   public boolean c() {
+      return this.f.i();
    }
 
-   public void a(int $$0, int $$1, boolean $$2) {
-      this.c.b(new agn($$0, $$1, $$2));
+   @Override
+   public void a(aij $$0) {
+      this.f.a($$0.b());
+   }
+
+   @Override
+   public void a(aii $$0) {
+      if (!this.f.e()) {
+         this.f.a($$0.b(), false);
+      }
+   }
+
+   @Override
+   public void a(aif $$0) {
+      this.e.accept(wu.c("connect.negotiating"));
+      this.f.a(new ain($$0.b(), null));
+   }
+
+   public void a(@Nullable String $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public void a(abh $$0) {
+      this.f.a(new abk($$0.b(), this.j.get($$0.b())));
+   }
+
+   @Override
+   public void a(p $$0) {
+      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
+      $$0.a("Login phase", () -> this.l.get().toString());
+   }
+
+   static enum a {
+      a(wu.c("connect.connecting"), Set.of()),
+      b(wu.c("connect.authorizing"), Set.of(a)),
+      c(wu.c("connect.encrypting"), Set.of(b)),
+      d(wu.c("connect.joining"), Set.of(c, a));
+
+      final wu e;
+      final Set<fvv.a> f;
+
+      private a(wu $$0, Set<fvv.a> $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
    }
 }

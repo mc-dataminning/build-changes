@@ -1,10 +1,11 @@
 public class avs {
-   public static final awd<eeh> a = a("visible");
+   public static final awg<cdt> a = a("default_spawns");
+   public static final awg<cdt> b = a("full_moon_spawns");
 
    private avs() {
    }
 
-   private static awd<eeh> a(String $$0) {
-      return awd.a(ld.aE, new akf($$0));
+   private static awg<cdt> a(String $$0) {
+      return awg.a(le.l, new akh($$0));
    }
 }

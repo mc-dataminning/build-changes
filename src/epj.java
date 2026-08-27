@@ -1,38 +1,41 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class epj extends epo {
-   public static final Codec<epj> a = RecordCodecBuilder.create($$0 -> a($$0).and(eoa.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, epj::new));
-   private final eoa.b b;
+public class epj extends epw {
+   public static final Codec<epj> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, epj::new));
 
-   public epj(List<erh> $$0, eoa.b $$1) {
+   private epj(List<erq> $$0) {
       super($$0);
-      this.b = $$1;
    }
 
    @Override
-   public epq b() {
-      return epr.w;
+   public epy b() {
+      return epz.w;
    }
 
    @Override
-   public Set<eqq<?>> a() {
-      return ImmutableSet.of(this.b.a());
-   }
+   public csz a(csz $$0, eol $$1) {
+      Float $$2 = $$1.c(erc.j);
+      if ($$2 != null) {
+         ayg $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.G();
+         int $$6 = 0;
 
-   @Override
-   public csd a(csd $$0, eoa $$1) {
-      if ($$0.a(csg.un) && $$1.c(this.b.a()) instanceof ckl $$2) {
-         $$0.b(jz.L, new cvd($$2.fZ()));
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
+            }
+         }
+
+         $$0.e($$6);
       }
 
       return $$0;
    }
 
-   public static epo.a<?> a(eoa.b $$0) {
-      return a($$1 -> new epj($$1, $$0));
+   public static epw.a<?> c() {
+      return a(epj::new);
    }
 }

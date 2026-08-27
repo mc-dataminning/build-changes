@@ -1,14 +1,8 @@
-public interface aat extends zf {
-   @Override
-   default vr b() {
-      return vr.e;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(aau var1);
-
-   void a(aav var1);
-
-   void a(aax var1);
-
-   void a(aaw var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aat {
 }

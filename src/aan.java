@@ -1,23 +1,21 @@
-import java.util.List;
+public record aan(in c) implements aac {
+   public static final ys<vu, aan> a = aac.a(aan::a, aan::new);
+   public static final aac.b<aan> b = aac.a("debug/poi_removed");
 
-public record aan(List<im> c) implements aaa {
-   public static final yq<vs, aan> a = aaa.a(aan::a, aan::new);
-   public static final aaa.b<aan> b = aaa.a("debug/raids");
-
-   private aan(vs $$0) {
-      this($$0.a(im.b));
+   private aan(vu $$0) {
+      this($$0.e());
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.c, im.b);
+   private void a(vu $$0) {
+      $$0.a(this.c);
    }
 
    @Override
-   public aaa.b<aan> a() {
+   public aac.b<aan> a() {
       return b;
    }
 
-   public List<im> b() {
+   public in b() {
       return this.c;
    }
 }

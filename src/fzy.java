@@ -1,56 +1,54 @@
-public class fzy extends fzs {
-   private float a;
-
-   fzy(fvm $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
+public class fzy extends fzo {
+   fzy(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, fzx $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)axj.b.b($$7), (float)axj.b.c($$7), (float)axj.b.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
       this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
-   }
-
-   @Override
-   public fyw b() {
-      return fyw.b;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * axw.b(this.a));
-         this.l = this.l + (double)(0.6F * axw.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(im.a(this.g, this.h, this.i)).a(avt.a) || this.m) {
-            this.k();
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
          }
 
-         this.a += 0.08F;
+         if (this.c.a_(in.a(this.g, this.h, this.i)).i()) {
+            this.k -= 0.0074F;
+         }
       }
    }
 
-   public static class a implements fyv<kz> {
-      private final fzn a;
+   public static class a implements fzf<la> {
+      private final fzx a;
 
-      public a(fzn $$0) {
+      public a(fzx $$0) {
          this.a = $$0;
       }
 
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzy $$8 = new fzy($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fzy($$1, $$2, $$3, $$4, $$5, $$6, $$7, axj.b.a(255, 204, 31, 102), this.a);
+      }
+   }
+
+   public static class b implements fzf<la> {
+      private final fzx a;
+
+      public b(fzx $$0) {
+         this.a = $$0;
+      }
+
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fzy($$1, $$2, $$3, $$4, $$5, $$6, $$7, axj.b.a(255, 255, 255, 255), this.a);
       }
    }
 }

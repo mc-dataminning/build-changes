@@ -1,32 +1,61 @@
-public interface fiw {
-   fiy a();
+import java.util.function.Consumer;
 
-   public static record a(fiy a) implements fiw {
-      @Override
-      public fiy a() {
-         return this.a.a() == fix.b ? this.a : fiy.b;
-      }
+public class fiw implements fit {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
 
-      public fiy b() {
-         return this.a;
-      }
+   public fiw(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public static class b implements fiw {
-      @Override
-      public fiy a() {
-         return fiy.b;
-      }
+   public fiw(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static record c(boolean a) implements fiw {
-      @Override
-      public fiy a() {
-         return this.a ? fiy.b : fiy.a;
-      }
+   public static fiw a(int $$0) {
+      return new fiw($$0, 0);
+   }
 
-      public boolean b() {
-         return this.a;
-      }
+   public static fiw b(int $$0) {
+      return new fiw(0, $$0);
+   }
+
+   @Override
+   public void m(int $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public int C() {
+      return this.a;
+   }
+
+   @Override
+   public int D() {
+      return this.b;
+   }
+
+   @Override
+   public int x() {
+      return this.c;
+   }
+
+   @Override
+   public int v() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<ffc> $$0) {
    }
 }

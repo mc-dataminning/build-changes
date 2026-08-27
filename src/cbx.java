@@ -1,13 +1,30 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class cbx {
-   @Nullable
-   public static etf a(brm $$0, int $$1, int $$2, int $$3, etf $$4, double $$5) {
-      etf $$6 = $$4.a($$0.ds(), $$0.du(), $$0.dy());
-      boolean $$7 = cbz.a($$0, $$1);
-      return ccc.a($$0, () -> {
-         im $$7x = cbw.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !cbz.a($$0, $$7x) ? $$7x : null;
+public class cbx extends ccj<bsa> {
+   @Override
+   public Set<cbd<?>> a() {
+      return ImmutableSet.of(cbd.x, cbd.y);
+   }
+
+   @Override
+   protected void a(aqh $$0, bsa $$1) {
+      btb<?> $$2 = $$1.dQ();
+      bqf $$3 = $$1.eA();
+      if ($$3 != null) {
+         $$2.a(cbd.x, $$1.eA());
+         brh $$4 = $$3.d();
+         if ($$4 instanceof bsa) {
+            $$2.a(cbd.y, (bsa)$$4);
+         }
+      } else {
+         $$2.b(cbd.x);
+      }
+
+      $$2.c(cbd.y).ifPresent($$2x -> {
+         if (!$$2x.bB() || $$2x.dN() != $$0) {
+            $$2.b(cbd.y);
+         }
       });
    }
 }

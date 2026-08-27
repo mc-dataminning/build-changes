@@ -1,43 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public class eal extends dyu<ebf> {
-   private static final im a = new im(8, 3, 8);
-   private static final czb b = new czb(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public eal(Codec<ebf> $$0) {
+public class eal extends dzd<eca> {
+   public eal(Codec<eca> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
    @Override
-   public boolean a(dyw<ebf> $$0) {
-      dap $$1 = $$0.b();
-      czb $$2 = new czb($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
-      } else {
-         im $$3 = a.h($$0.e().v() + a.v());
-         im.a $$4 = new im.a();
-
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, dcx.m.n(), 2);
-                  } else {
-                     $$1.a($$4, dcx.b.n(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
+   public boolean a(dzf<eca> $$0) {
+      ayg $$1 = $$0.d();
+      eca $$2 = $$0.f();
+      day $$3 = $$0.b();
+      in $$4 = $$0.e();
+      dse $$5 = $$0.c();
+      int $$6 = $$1.a($$2.b.b());
+      eft $$7 = $$2.b.a($$6).a();
+      return $$7.a($$3, $$5, $$1, $$4);
    }
 }

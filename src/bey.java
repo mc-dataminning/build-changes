@@ -1,31 +1,27 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bey extends DataFix {
+public class bey extends bdx {
    public bey(Schema $$0) {
-      super($$0, false);
+      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAmbientOcclusionFix",
-         this.getInputSchema().getType(bfp.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get("ao").asString().map($$1 -> $$0x.set("ao", $$0x.createString(a($$1)))).result(), $$0x)
-            )
-      );
-   }
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Optional<String> $$3 = $$2.get("Name").asString().result();
+         if ($$3.isPresent()) {
+            String $$4 = $$3.get();
+            $$4 = $$4.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
+            $$2 = $$2.set("Name", $$2.createString($$4));
+         }
 
-   private static String a(String $$0) {
-      return switch ($$0) {
-         case "0" -> "false";
-         case "1", "2" -> "true";
-         default -> $$0;
-      };
+         return $$0.set("display", $$2);
+      } else {
+         return $$0;
+      }
    }
 }

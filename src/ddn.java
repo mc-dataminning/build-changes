@@ -1,34 +1,35 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddn extends deq {
-   public static final MapCodec<ddn> a = b(ddn::new);
-   private static final ety[] b = new ety[]{
-      dcv.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dcv.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      dcv.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dcv.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      dcv.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dcv.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      dcv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dcv.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
-
-   @Override
-   public MapCodec<ddn> a() {
-      return a;
-   }
-
-   public ddn(dpx.d $$0) {
+public abstract class ddn extends dde {
+   protected ddn(dqg.d $$0) {
       super($$0);
    }
 
    @Override
-   protected czt d() {
-      return csg.uf;
+   protected abstract MapCodec<? extends ddn> a();
+
+   protected boolean b(dqh $$0, czj $$1, in $$2) {
+      return $$0.a(avr.af) || $$0.a(ddg.cC);
    }
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      return b[this.g($$0)];
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      return !$$0.a($$3, $$4) ? ddg.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dqh $$0, dag $$1, in $$2) {
+      in $$3 = $$2.d();
+      return this.b($$1.a_($$3), $$1, $$3);
+   }
+
+   @Override
+   protected boolean a_(dqh $$0, czj $$1, in $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   protected boolean a(dqh $$0, emp $$1) {
+      return $$1 == emp.c && !this.aG ? true : super.a($$0, $$1);
    }
 }

@@ -1,3 +1,8 @@
-public interface aiw extends vy {
-   void a(aix var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aiw {
 }

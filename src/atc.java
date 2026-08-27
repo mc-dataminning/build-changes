@@ -1,56 +1,116 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.nio.file.Path;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class atc extends ast {
-   private static final asp c = new asp(ws.c("dataPack.vanilla.description"), aa.b().a(asc.b), Optional.empty());
-   private static final arw d = new arw(cna.h);
-   private static final ars e = ars.a(asp.b, c, arw.a, d);
-   private static final arz f = new arz("vanilla", ws.c("dataPack.vanilla.name"), ata.c, Optional.of(b));
-   private static final asb g = new asb(false, asw.b.b, false);
-   private static final asb h = new asb(false, asw.b.a, false);
-   private static final akf i = new akf("minecraft", "datapacks");
+public class atc {
+   private final Set<ate> a;
+   private Map<String, asz> b = ImmutableMap.of();
+   private List<asz> c = ImmutableList.of();
 
-   public atc(esv $$0) {
-      super(asc.b, b(), i, $$0);
+   public atc(ate... $$0) {
+      this.a = ImmutableSet.copyOf($$0);
    }
 
-   private static arz a(String $$0, ws $$1) {
-      return new arz($$0, $$1, ata.d, Optional.of(asv.a($$0)));
+   public void a() {
+      List<String> $$0 = this.c.stream().map(asz::g).collect(ImmutableList.toImmutableList());
+      this.b = this.h();
+      this.c = this.b($$0);
    }
 
-   @VisibleForTesting
-   public static ase b() {
-      return new asf().a(e).a("minecraft").b().a().a(f);
+   private Map<String, asz> h() {
+      Map<String, asz> $$0 = Maps.newTreeMap();
+
+      for (ate $$1 : this.a) {
+         $$1.loadPacks($$1x -> $$0.put($$1x.g(), $$1x));
+      }
+
+      return ImmutableMap.copyOf($$0);
    }
 
-   @Override
-   protected ws a(String $$0) {
-      return ws.b($$0);
+   public void a(Collection<String> $$0) {
+      this.c = this.b($$0);
+   }
+
+   public boolean a(String $$0) {
+      asz $$1 = this.b.get($$0);
+      if ($$1 != null && !this.c.contains($$1)) {
+         List<asz> $$2 = Lists.newArrayList(this.c);
+         $$2.add($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(String $$0) {
+      asz $$1 = this.b.get($$0);
+      if ($$1 != null && this.c.contains($$1)) {
+         List<asz> $$2 = Lists.newArrayList(this.c);
+         $$2.remove($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private List<asz> b(Collection<String> $$0) {
+      List<asz> $$1 = this.c($$0).collect(Collectors.toList());
+
+      for (asz $$2 : this.b.values()) {
+         if ($$2.i() && !$$1.contains($$2)) {
+            $$2.k().a($$1, $$2, asz::h, false);
+         }
+      }
+
+      return ImmutableList.copyOf($$1);
+   }
+
+   private Stream<asz> c(Collection<String> $$0) {
+      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
+   }
+
+   public Collection<String> b() {
+      return this.b.keySet();
+   }
+
+   public Collection<asz> c() {
+      return this.b.values();
+   }
+
+   public Collection<String> d() {
+      return this.c.stream().map(asz::g).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public cnu e() {
+      return this.f().stream().map(asz::e).reduce(cnu::b).orElse(cnu.a());
+   }
+
+   public Collection<asz> f() {
+      return this.c;
    }
 
    @Nullable
-   @Override
-   protected asw a(asa $$0) {
-      return asw.a(f, b($$0), asc.b, g);
+   public asz c(String $$0) {
+      return this.b.get($$0);
    }
 
-   @Nullable
-   @Override
-   protected asw a(String $$0, asw.c $$1, ws $$2) {
-      return asw.a(a($$0, $$2), $$1, asc.b, h);
+   public boolean d(String $$0) {
+      return this.b.containsKey($$0);
    }
 
-   public static asz a(Path $$0, esv $$1) {
-      return new asz(new atc($$1), new asu($$0, asc.b, ata.e, $$1));
-   }
-
-   public static asz c() {
-      return new asz(new atc(new esv($$0 -> true)));
-   }
-
-   public static asz a(enq.c $$0) {
-      return a($$0.a(eno.j), $$0.d().e());
+   public List<asd> g() {
+      return this.c.stream().map(asz::f).collect(ImmutableList.toImmutableList());
    }
 }

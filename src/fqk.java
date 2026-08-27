@@ -1,12 +1,9 @@
-public abstract class fqk<T extends chr> extends fse<T> {
-   protected fqk(fur $$0) {
-      super($$0);
-   }
+public interface fqk {
+   void a(fqi var1);
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      fqo.a(this.o, this.n, this.a($$0), this.c, $$3);
-   }
+   wu aN_();
 
-   public abstract boolean a(T var1);
+   void a(fer var1, float var2, int var3);
+
+   boolean aO_();
 }

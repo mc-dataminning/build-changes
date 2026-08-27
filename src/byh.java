@@ -1,48 +1,77 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public class byh extends byb {
-   private final brg a;
-   private bre b;
-   private final float c;
+public class byh extends byo {
+   private static final int g = 240;
+   private final Predicate<bpj> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public byh(brg $$0, float $$1) {
-      this.a = $$0;
+   public byh(bsc $$0, Predicate<bpj> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public byh(bsc $$0, int $$1, Predicate<bpj> $$2) {
+      this($$0, $$2);
       this.c = $$1;
-      this.a(EnumSet.of(byb.a.c, byb.a.a));
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean a() {
-      if (this.a.cP()) {
+      if (!super.a()) {
          return false;
       } else {
-         this.b = this.a.p();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.g(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aC() ? false : this.a.ej().a(b(5)) == 0;
-            }
-         }
+         return !this.d.dN().aa().b(czz.c) ? false : this.a(this.d.dN().ak()) && !this.h();
       }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.aC();
    }
 
    @Override
    public void c() {
-      etf $$0 = this.a.dq();
-      etf $$1 = new etf(this.b.ds() - this.a.ds(), 0.0, this.b.dy() - this.a.dy());
-      if ($$1.g() > 1.0E-7) {
-         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
+      super.c();
+      this.a = 0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dl(), 2.0) && this.a(this.d.dN().ak());
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.d.dN().a(this.d.aj(), this.e, -1);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      if (this.d.ej().a(20) == 0) {
+         this.d.dN().c(1019, this.e, 0);
+         if (!this.d.aK) {
+            this.d.a(this.d.fu());
+         }
       }
 
-      this.a.o($$1.c, (double)this.c, $$1.e);
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dN().a(this.d.aj(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dN().ak())) {
+         this.d.dN().a(this.e, false);
+         this.d.dN().c(1021, this.e, 0);
+         this.d.dN().c(2001, this.e, dde.i(this.d.dN().a_(this.e)));
+      }
+   }
+
+   private boolean a(bpj $$0) {
+      return this.h.test($$0);
    }
 }

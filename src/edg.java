@@ -1,21 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public class edg extends ecz {
-   public static final Codec<edg> b = dpy.b.fieldOf("state").xmap(dpx.a::b, dcv::n).xmap(edg::new, $$0 -> $$0.c).codec();
-   private final dcv c;
+public class edg<P extends edf> {
+   public static final edg<ede> a = a("mangrove_root_placer", ede.c);
+   private final Codec<P> b;
 
-   public edg(dcv $$0) {
-      this.c = $$0;
+   private static <P extends edf> edg<P> a(String $$0, Codec<P> $$1) {
+      return jj.a(ld.Y, $$0, new edg<>($$1));
    }
 
-   @Override
-   protected eda<?> a() {
-      return eda.f;
+   private edg(Codec<P> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public dpy a(ayd $$0, im $$1) {
-      ir.a $$2 = ir.a.a($$0);
-      return this.c.n().a(djh.i, $$2);
+   public Codec<P> a() {
+      return this.b;
    }
 }

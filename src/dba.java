@@ -1,70 +1,42 @@
-public abstract class dba {
-   public static final ake<dat> a = a("the_void");
-   public static final ake<dat> b = a("plains");
-   public static final ake<dat> c = a("sunflower_plains");
-   public static final ake<dat> d = a("snowy_plains");
-   public static final ake<dat> e = a("ice_spikes");
-   public static final ake<dat> f = a("desert");
-   public static final ake<dat> g = a("swamp");
-   public static final ake<dat> h = a("mangrove_swamp");
-   public static final ake<dat> i = a("forest");
-   public static final ake<dat> j = a("flower_forest");
-   public static final ake<dat> k = a("birch_forest");
-   public static final ake<dat> l = a("dark_forest");
-   public static final ake<dat> m = a("old_growth_birch_forest");
-   public static final ake<dat> n = a("old_growth_pine_taiga");
-   public static final ake<dat> o = a("old_growth_spruce_taiga");
-   public static final ake<dat> p = a("taiga");
-   public static final ake<dat> q = a("snowy_taiga");
-   public static final ake<dat> r = a("savanna");
-   public static final ake<dat> s = a("savanna_plateau");
-   public static final ake<dat> t = a("windswept_hills");
-   public static final ake<dat> u = a("windswept_gravelly_hills");
-   public static final ake<dat> v = a("windswept_forest");
-   public static final ake<dat> w = a("windswept_savanna");
-   public static final ake<dat> x = a("jungle");
-   public static final ake<dat> y = a("sparse_jungle");
-   public static final ake<dat> z = a("bamboo_jungle");
-   public static final ake<dat> A = a("badlands");
-   public static final ake<dat> B = a("eroded_badlands");
-   public static final ake<dat> C = a("wooded_badlands");
-   public static final ake<dat> D = a("meadow");
-   public static final ake<dat> E = a("cherry_grove");
-   public static final ake<dat> F = a("grove");
-   public static final ake<dat> G = a("snowy_slopes");
-   public static final ake<dat> H = a("frozen_peaks");
-   public static final ake<dat> I = a("jagged_peaks");
-   public static final ake<dat> J = a("stony_peaks");
-   public static final ake<dat> K = a("river");
-   public static final ake<dat> L = a("frozen_river");
-   public static final ake<dat> M = a("beach");
-   public static final ake<dat> N = a("snowy_beach");
-   public static final ake<dat> O = a("stony_shore");
-   public static final ake<dat> P = a("warm_ocean");
-   public static final ake<dat> Q = a("lukewarm_ocean");
-   public static final ake<dat> R = a("deep_lukewarm_ocean");
-   public static final ake<dat> S = a("ocean");
-   public static final ake<dat> T = a("deep_ocean");
-   public static final ake<dat> U = a("cold_ocean");
-   public static final ake<dat> V = a("deep_cold_ocean");
-   public static final ake<dat> W = a("frozen_ocean");
-   public static final ake<dat> X = a("deep_frozen_ocean");
-   public static final ake<dat> Y = a("mushroom_fields");
-   public static final ake<dat> Z = a("dripstone_caves");
-   public static final ake<dat> aa = a("lush_caves");
-   public static final ake<dat> ab = a("deep_dark");
-   public static final ake<dat> ac = a("nether_wastes");
-   public static final ake<dat> ad = a("warped_forest");
-   public static final ake<dat> ae = a("crimson_forest");
-   public static final ake<dat> af = a("soul_sand_valley");
-   public static final ake<dat> ag = a("basalt_deltas");
-   public static final ake<dat> ah = a("the_end");
-   public static final ake<dat> ai = a("end_highlands");
-   public static final ake<dat> aj = a("end_midlands");
-   public static final ake<dat> ak = a("small_end_islands");
-   public static final ake<dat> al = a("end_barrens");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static ake<dat> a(String $$0) {
-      return ake.a(ld.ay, new akf($$0));
+public class dba {
+   public static final Codec<dba> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avb.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dba::new)
+   );
+   public static final dba b = new dba(avc.h, 6000, 8, 2.0);
+   private final iw<avb> c;
+   private final int d;
+   private final int e;
+   private final double f;
+
+   public dba(iw<avb> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public iw<avb> a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public double d() {
+      return this.f;
    }
 }

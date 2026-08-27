@@ -1,42 +1,45 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class eqn extends epo {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eqn> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eqn::new));
+public class eqn extends epw {
+   public static final Codec<eqn> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(esm.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, eqn::new)
+   );
+   private final esl b;
+   private final boolean c;
 
-   private eqn(List<erh> $$0) {
+   private eqn(List<erq> $$0, esl $$1, boolean $$2) {
       super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public epq b() {
-      return epr.i;
+   public epy b() {
+      return epz.e;
    }
 
    @Override
-   public csd a(csd $$0, eoa $$1) {
-      if ($$0.d()) {
-         return $$0;
-      } else {
-         Optional<cwi<cwv>> $$2 = $$1.d().r().a(cwl.b, new boz($$0), $$1.d());
-         if ($$2.isPresent()) {
-            csd $$3 = $$2.get().b().a($$1.d().H_());
-            if (!$$3.d()) {
-               return $$3.c($$0.G());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
+   public Set<eqz<?>> a() {
+      return this.b.a();
    }
 
-   public static epo.a<?> c() {
-      return a(eqn::new);
+   @Override
+   public csz a(csz $$0, eol $$1) {
+      int $$2 = this.c ? $$0.G() : 0;
+      $$0.e(axz.a($$2 + this.b.a($$1), 0, $$0.i()));
+      return $$0;
+   }
+
+   public static epw.a<?> a(esl $$0) {
+      return a($$1 -> new eqn($$1, $$0, false));
+   }
+
+   public static epw.a<?> a(esl $$0, boolean $$1) {
+      return a($$2 -> new eqn($$2, $$0, $$1));
    }
 }

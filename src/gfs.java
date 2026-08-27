@@ -1,13 +1,16 @@
-public class gfs extends gio<chb> {
-   private static final akf a = new akf("textures/entity/skeleton/bogged.png");
-   private static final akf i = new akf("textures/entity/skeleton/bogged_overlay.png");
+public abstract class gfs<T extends cjg, M extends fut<T>> extends gho<T, M> {
+   private static final akh a = new akh("textures/entity/zombie/zombie.png");
 
-   public gfs(ggn.a $$0) {
-      super($$0, fuq.o, fuq.p, new fqy($$0.a(fuq.n)));
-      this.a(new glc<>(this, $$0.f(), fuq.q, i));
+   protected gfs(ggx.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new gky<>(this, $$2, $$3, $$0.g()));
    }
 
-   public akf a(chb $$0) {
+   public akh a(cjg $$0) {
       return a;
+   }
+
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gw();
    }
 }

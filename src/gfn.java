@@ -1,19 +1,37 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public class gfn extends ght<cef, fqt<cef>> {
-   private static final Map<cef.d, akf> a = ac.a(Maps.newHashMap(), $$0 -> {
-      for (cef.d $$1 : cef.d.values()) {
-         $$0.put($$1, new akf(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
+public class gfn implements gfa.a {
+   private static final int a = 60;
+   private final Set<jp> b = Sets.newHashSet();
 
-   public gfn(ggn.a $$0) {
-      super($$0, new fqt<>($$0.a(fuq.f)), 0.5F);
+   gfn() {
    }
 
-   public akf a(cef $$0) {
-      return a.get($$0.gp());
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   public void a(jp $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(jp $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(exx $$0, gbo $$1, double $$2, double $$3, double $$4) {
+      in $$5 = in.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(exx $$0, gbo $$1, jp $$2) {
+      gfa.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

@@ -1,77 +1,63 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class gpa implements goo {
-   private final int a;
-   private final List<bnc.b<goo>> b;
-   private final goo c;
+public enum gpa implements gph {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public gpa(List<bnc.b<goo>> $$0) {
-      this.b = $$0;
-      this.a = bnd.a($$0);
-      this.c = $$0.get(0).b();
+   private static final int q = 360;
+   private static final Map<Integer, gpa> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (gpa)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   @Override
-   public List<gcb> a(@Nullable dpy $$0, @Nullable ir $$1, ayd $$2) {
-      return bnd.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
-   }
+   private gpa(int $$0, int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
 
-   @Override
-   public boolean a() {
-      return this.c.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.c.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.c();
-   }
-
-   @Override
-   public boolean d() {
-      return this.c.d();
-   }
-
-   @Override
-   public gmo e() {
-      return this.c.e();
-   }
-
-   @Override
-   public gcn f() {
-      return this.c.f();
-   }
-
-   @Override
-   public gcl g() {
-      return this.c.g();
-   }
-
-   public static class a {
-      private final List<bnc.b<goo>> a = Lists.newArrayList();
-
-      public gpa.a a(@Nullable goo $$0, int $$1) {
-         if ($$0 != null) {
-            this.a.add(bnc.a($$0, $$1));
-         }
-
-         return this;
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
       }
 
-      @Nullable
-      public goo a() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            return (goo)(this.a.size() == 1 ? this.a.get(0).b() : new gpa(this.a));
-         }
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
       }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
+   }
+
+   @Override
+   public j b() {
+      return this.s;
+   }
+
+   public static gpa a(int $$0, int $$1) {
+      return r.get(b(axz.b($$0, 360), axz.b($$1, 360)));
+   }
+
+   public h a() {
+      return this.t;
    }
 }

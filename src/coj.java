@@ -1,183 +1,190 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public abstract class coj extends cnh {
-   private static final int k = 9;
-   private static final int l = 3;
-   protected final cns o;
-   protected final ckl p;
-   protected final boj q;
-   private final List<Integer> m;
-   protected final coy r = new coy();
-   private final int n;
-
-   protected abstract boolean a(ckl var1, boolean var2);
-
-   protected abstract void a(ckl var1, csd var2);
-
-   protected abstract boolean a(dpy var1);
-
-   public coj(@Nullable cop<?> $$0, int $$1, ckk $$2, cns $$3) {
-      super($$0, $$1);
-      this.o = $$3;
-      this.p = $$2.m;
-      cok $$4 = this.l();
-      this.q = this.e($$4.d());
-      this.m = $$4.f();
-      this.n = $$4.e();
-      this.a($$4);
-      this.b($$4);
-      this.a($$2);
-   }
-
-   private void a(cok $$0) {
-      for (final cok.b $$1 : $$0.c()) {
-         this.a(new cpd(this.q, $$1.a(), $$1.b(), $$1.c()) {
-            @Override
-            public boolean a(csd $$0) {
-               return $$1.d().test($$0);
-            }
-         });
+public class coj extends cod {
+   public static final int k = 0;
+   public static final int l = 1;
+   public static final int m = 2;
+   private static final int o = 3;
+   private static final int p = 30;
+   private static final int q = 30;
+   private static final int r = 39;
+   private final cop s;
+   long t;
+   public final bpf n = new bpv(2) {
+      @Override
+      public void e() {
+         coj.this.a(this);
+         super.e();
       }
+   };
+   private final cpu u = new cpu() {
+      @Override
+      public void e() {
+         coj.this.a(this);
+         super.e();
+      }
+   };
+
+   public coj(int $$0, clg $$1) {
+      this($$0, $$1, cop.a);
    }
 
-   private void b(cok $$0) {
-      this.a(new cpd(this.r, $$0.b().a(), $$0.b().b(), $$0.b().c()) {
+   public coj(int $$0, clg $$1, final cop $$2) {
+      super(cpl.x, $$0);
+      this.s = $$2;
+      this.a(new cpz(this.n, 0, 15, 15) {
          @Override
-         public boolean a(csd $$0) {
+         public boolean a(csz $$0) {
+            return $$0.a(ctc.rU);
+         }
+      });
+      this.a(new cpz(this.n, 1, 15, 52) {
+         @Override
+         public boolean a(csz $$0) {
+            return $$0.a(ctc.qO) || $$0.a(ctc.uj) || $$0.a(ctc.fT);
+         }
+      });
+      this.a(new cpz(this.u, 2, 145, 39) {
+         @Override
+         public boolean a(csz $$0) {
             return false;
          }
 
          @Override
-         public boolean a(ckl $$0) {
-            return coj.this.a($$0, this.h());
+         public void a(clh $$0, csz $$1) {
+            coj.this.i.get(0).a(1);
+            coj.this.i.get(1).a(1);
+            $$1.f().b($$1, $$0.dN(), $$0);
+            $$2.a(($$0x, $$1x) -> {
+               long $$2xx = $$0x.Y();
+               if (coj.this.t != $$2xx) {
+                  $$0x.a(null, $$1x, avc.Ag, avd.e, 1.0F, 1.0F);
+                  coj.this.t = $$2xx;
+               }
+            });
+            super.a($$0, $$1);
          }
+      });
 
-         @Override
-         public void a(ckl $$0, csd $$1) {
-            coj.this.a($$0, $$1);
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new cpz($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
+         }
+      }
+
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a(new cpz($$1, $$5, 8 + $$5 * 18, 142));
+      }
+   }
+
+   @Override
+   public boolean a(clh $$0) {
+      return a(this.s, $$0, ddg.nX);
+   }
+
+   @Override
+   public void a(bpf $$0) {
+      csz $$1 = this.n.a(0);
+      csz $$2 = this.n.a(1);
+      csz $$3 = this.u.a(2);
+      if ($$3.d() || !$$1.d() && !$$2.d()) {
+         if (!$$1.d() && !$$2.d()) {
+            this.a($$1, $$2, $$3);
+         }
+      } else {
+         this.u.b(2);
+      }
+   }
+
+   private void a(csz $$0, csz $$1, csz $$2) {
+      this.s.a(($$3, $$4) -> {
+         enp $$5 = cth.b($$0, $$3);
+         if ($$5 != null) {
+            csz $$6;
+            if ($$1.a(ctc.qO) && !$$5.h && $$5.f < 4) {
+               $$6 = $$0.c(1);
+               $$6.b(ka.B, cvy.b);
+               this.d();
+            } else if ($$1.a(ctc.fT) && !$$5.h) {
+               $$6 = $$0.c(1);
+               $$6.b(ka.B, cvy.a);
+               this.d();
+            } else {
+               if (!$$1.a(ctc.uj)) {
+                  this.u.b(2);
+                  this.d();
+                  return;
+               }
+
+               $$6 = $$0.c(2);
+               this.d();
+            }
+
+            if (!csz.a($$6, $$2)) {
+               this.u.a(2, $$6);
+               this.d();
+            }
          }
       });
    }
 
-   private void a(ckk $$0) {
-      for (int $$1 = 0; $$1 < 3; $$1++) {
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.a(new cpd($$0, $$2 + $$1 * 9 + 9, 8 + $$2 * 18, 84 + $$1 * 18));
-         }
-      }
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.a(new cpd($$0, $$3, 8 + $$3 * 18, 142));
-      }
-   }
-
-   public abstract void m();
-
-   protected abstract cok l();
-
-   private boz e(int $$0) {
-      return new boz($$0) {
-         @Override
-         public void e() {
-            super.e();
-            coj.this.a(this);
-         }
-      };
+   @Override
+   public boolean a(csz $$0, cpz $$1) {
+      return $$1.d != this.u && super.a($$0, $$1);
    }
 
    @Override
-   public void a(boj $$0) {
-      super.a($$0);
-      if ($$0 == this.q) {
-         this.m();
-      }
-   }
-
-   @Override
-   public void b(ckl $$0) {
-      super.b($$0);
-      this.o.a(($$1, $$2) -> this.a($$0, this.q));
-   }
-
-   @Override
-   public boolean a(ckl $$0) {
-      return this.o.a(($$1, $$2) -> !this.a($$1.a_($$2)) ? false : $$0.i((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5) <= 64.0, true);
-   }
-
-   @Override
-   public csd a(ckl $$0, int $$1) {
-      csd $$2 = csd.i;
-      cpd $$3 = this.i.get($$1);
+   public csz a(clh $$0, int $$1) {
+      csz $$2 = csz.i;
+      cpz $$3 = this.i.get($$1);
       if ($$3 != null && $$3.h()) {
-         csd $$4 = $$3.g();
+         csz $$4 = $$3.g();
          $$2 = $$4.r();
-         int $$5 = this.n();
-         int $$6 = this.r();
-         if ($$1 == this.o()) {
-            if (!this.a($$4, $$5, $$6, true)) {
-               return csd.i;
+         if ($$1 == 2) {
+            $$4.f().b($$4, $$0.dN(), $$0);
+            if (!this.a($$4, 3, 39, true)) {
+               return csz.i;
             }
 
             $$3.b($$4, $$2);
-         } else if (this.m.contains($$1)) {
-            if (!this.a($$4, $$5, $$6, false)) {
-               return csd.i;
+         } else if ($$1 != 1 && $$1 != 0) {
+            if ($$4.a(ctc.rU)) {
+               if (!this.a($$4, 0, 1, false)) {
+                  return csz.i;
+               }
+            } else if (!$$4.a(ctc.qO) && !$$4.a(ctc.uj) && !$$4.a(ctc.fT)) {
+               if ($$1 >= 3 && $$1 < 30) {
+                  if (!this.a($$4, 30, 39, false)) {
+                     return csz.i;
+                  }
+               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+                  return csz.i;
+               }
+            } else if (!this.a($$4, 1, 2, false)) {
+               return csz.i;
             }
-         } else if (this.c($$4) && $$1 >= this.n() && $$1 < this.r()) {
-            int $$7 = this.d($$2);
-            if (!this.a($$4, $$7, this.o(), false)) {
-               return csd.i;
-            }
-         } else if ($$1 >= this.n() && $$1 < this.p()) {
-            if (!this.a($$4, this.q(), this.r(), false)) {
-               return csd.i;
-            }
-         } else if ($$1 >= this.q() && $$1 < this.r() && !this.a($$4, this.n(), this.p(), false)) {
-            return csd.i;
+         } else if (!this.a($$4, 3, 39, false)) {
+            return csz.i;
          }
 
          if ($$4.d()) {
-            $$3.e(csd.i);
-         } else {
-            $$3.b();
+            $$3.e(csz.i);
          }
 
+         $$3.b();
          if ($$4.G() == $$2.G()) {
-            return csd.i;
+            return csz.i;
          }
 
          $$3.a($$0, $$4);
+         this.d();
       }
 
       return $$2;
    }
 
-   protected boolean c(csd $$0) {
-      return true;
-   }
-
-   public int d(csd $$0) {
-      return this.q.c() ? 0 : this.m.get(0);
-   }
-
-   public int o() {
-      return this.n;
-   }
-
-   private int n() {
-      return this.o() + 1;
-   }
-
-   private int p() {
-      return this.n() + 27;
-   }
-
-   private int q() {
-      return this.p();
-   }
-
-   private int r() {
-      return this.q() + 9;
+   @Override
+   public void b(clh $$0) {
+      super.b($$0);
+      this.u.b(2);
+      this.s.a(($$1, $$2) -> this.a($$0, this.n));
    }
 }

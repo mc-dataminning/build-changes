@@ -1,20 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-class dxf implements dwx {
-   public static final Codec<dxf> a = RecordCodecBuilder.create($$0 -> $$0.group(dwx.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dxf::new));
-   private final dwx e;
+class dxf extends dxi {
+   public static final Codec<dxf> a = a(dxf::new);
 
-   public dxf(dwx $$0) {
-      this.e = $$0;
+   public dxf(List<dxg> $$0) {
+      super($$0);
    }
 
-   public boolean a(dap $$0, im $$1) {
-      return !this.e.test($$0, $$1);
+   public boolean a(day $$0, in $$1) {
+      for (dxg $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   public dwy<?> a() {
-      return dwy.k;
+   public dxh<?> a() {
+      return dxh.i;
    }
 }

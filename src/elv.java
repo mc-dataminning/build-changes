@@ -1,135 +1,213 @@
-import com.google.common.base.Preconditions;
+import it.unimi.dsi.fastutil.HashCommon;
+import it.unimi.dsi.fastutil.longs.Long2LongLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import java.util.NoSuchElementException;
 
-public class elv {
-   private static final elv[] am = new elv[64];
-   public static final elv a = new elv(0, 0);
-   public static final elv b = new elv(1, 8368696);
-   public static final elv c = new elv(2, 16247203);
-   public static final elv d = new elv(3, 13092807);
-   public static final elv e = new elv(4, 16711680);
-   public static final elv f = new elv(5, 10526975);
-   public static final elv g = new elv(6, 10987431);
-   public static final elv h = new elv(7, 31744);
-   public static final elv i = new elv(8, 16777215);
-   public static final elv j = new elv(9, 10791096);
-   public static final elv k = new elv(10, 9923917);
-   public static final elv l = new elv(11, 7368816);
-   public static final elv m = new elv(12, 4210943);
-   public static final elv n = new elv(13, 9402184);
-   public static final elv o = new elv(14, 16776437);
-   public static final elv p = new elv(15, 14188339);
-   public static final elv q = new elv(16, 11685080);
-   public static final elv r = new elv(17, 6724056);
-   public static final elv s = new elv(18, 15066419);
-   public static final elv t = new elv(19, 8375321);
-   public static final elv u = new elv(20, 15892389);
-   public static final elv v = new elv(21, 5000268);
-   public static final elv w = new elv(22, 10066329);
-   public static final elv x = new elv(23, 5013401);
-   public static final elv y = new elv(24, 8339378);
-   public static final elv z = new elv(25, 3361970);
-   public static final elv A = new elv(26, 6704179);
-   public static final elv B = new elv(27, 6717235);
-   public static final elv C = new elv(28, 10040115);
-   public static final elv D = new elv(29, 1644825);
-   public static final elv E = new elv(30, 16445005);
-   public static final elv F = new elv(31, 6085589);
-   public static final elv G = new elv(32, 4882687);
-   public static final elv H = new elv(33, 55610);
-   public static final elv I = new elv(34, 8476209);
-   public static final elv J = new elv(35, 7340544);
-   public static final elv K = new elv(36, 13742497);
-   public static final elv L = new elv(37, 10441252);
-   public static final elv M = new elv(38, 9787244);
-   public static final elv N = new elv(39, 7367818);
-   public static final elv O = new elv(40, 12223780);
-   public static final elv P = new elv(41, 6780213);
-   public static final elv Q = new elv(42, 10505550);
-   public static final elv R = new elv(43, 3746083);
-   public static final elv S = new elv(44, 8874850);
-   public static final elv T = new elv(45, 5725276);
-   public static final elv U = new elv(46, 8014168);
-   public static final elv V = new elv(47, 4996700);
-   public static final elv W = new elv(48, 4993571);
-   public static final elv X = new elv(49, 5001770);
-   public static final elv Y = new elv(50, 9321518);
-   public static final elv Z = new elv(51, 2430480);
-   public static final elv aa = new elv(52, 12398641);
-   public static final elv ab = new elv(53, 9715553);
-   public static final elv ac = new elv(54, 6035741);
-   public static final elv ad = new elv(55, 1474182);
-   public static final elv ae = new elv(56, 3837580);
-   public static final elv af = new elv(57, 5647422);
-   public static final elv ag = new elv(58, 1356933);
-   public static final elv ah = new elv(59, 6579300);
-   public static final elv ai = new elv(60, 14200723);
-   public static final elv aj = new elv(61, 8365974);
-   public final int ak;
-   public final int al;
+public class elv extends LongLinkedOpenHashSet {
+   private final elv.a a;
 
-   private elv(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 <= 63) {
-         this.al = $$0;
-         this.ak = $$1;
-         am[$$0] = this;
-      } else {
-         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
-      }
+   public elv(int $$0, float $$1) {
+      super($$0, $$1);
+      this.a = new elv.a($$0 / 64, $$1);
    }
 
-   public int a(elv.a $$0) {
-      if (this == a) {
-         return 0;
-      } else {
-         int $$1 = $$0.f;
-         int $$2 = (this.ak >> 16 & 0xFF) * $$1 / 255;
-         int $$3 = (this.ak >> 8 & 0xFF) * $$1 / 255;
-         int $$4 = (this.ak & 0xFF) * $$1 / 255;
-         return 0xFF000000 | $$4 << 16 | $$3 << 8 | $$2;
-      }
+   public boolean add(long $$0) {
+      return this.a.c($$0);
    }
 
-   public static elv a(int $$0) {
-      Preconditions.checkPositionIndex($$0, am.length, "material id");
-      return c($$0);
+   public boolean rem(long $$0) {
+      return this.a.d($$0);
    }
 
-   private static elv c(int $$0) {
-      elv $$1 = am[$$0];
-      return $$1 != null ? $$1 : a;
+   public long removeFirstLong() {
+      return this.a.a();
    }
 
-   public static int b(int $$0) {
-      int $$1 = $$0 & 0xFF;
-      return c($$1 >> 2).a(elv.a.b($$1 & 3));
+   public int size() {
+      throw new UnsupportedOperationException();
    }
 
-   public byte b(elv.a $$0) {
-      return (byte)(this.al << 2 | $$0.e & 3);
+   public boolean isEmpty() {
+      return this.a.isEmpty();
    }
 
-   public static enum a {
-      a(0, 180),
-      b(1, 220),
-      c(2, 255),
-      d(3, 135);
+   protected static class a extends Long2LongLinkedOpenHashMap {
+      private static final int a = axz.f(60000000);
+      private static final int b = axz.f(60000000);
+      private static final int c = 64 - a - b;
+      private static final int d = 0;
+      private static final int e = c;
+      private static final int g = c + b;
+      private static final long h = 3L << g | 3L | 3L << e;
+      private int i = -1;
+      private long j;
+      private final int k;
 
-      private static final elv.a[] g = new elv.a[]{a, b, c, d};
-      public final int e;
-      public final int f;
-
-      private a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+      public a(int $$0, float $$1) {
+         super($$0, $$1);
+         this.k = $$0;
       }
 
-      public static elv.a a(int $$0) {
-         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
-         return b($$0);
+      static long a(long $$0) {
+         return $$0 & ~h;
       }
 
-      static elv.a b(int $$0) {
-         return g[$$0];
+      static int b(long $$0) {
+         int $$1 = (int)($$0 >>> g & 3L);
+         int $$2 = (int)($$0 >>> 0 & 3L);
+         int $$3 = (int)($$0 >>> e & 3L);
+         return $$1 << 4 | $$3 << 2 | $$2;
+      }
+
+      static long a(long $$0, int $$1) {
+         $$0 |= (long)($$1 >>> 4 & 3) << g;
+         $$0 |= (long)($$1 >>> 2 & 3) << e;
+         return $$0 | (long)($$1 >>> 0 & 3) << 0;
+      }
+
+      public boolean c(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         int $$4;
+         if ($$1 == 0L) {
+            if (this.containsNullKey) {
+               return this.a(this.n, $$3);
+            }
+
+            this.containsNullKey = true;
+            $$4 = this.n;
+         } else {
+            if (this.i != -1 && $$1 == this.j) {
+               return this.a(this.i, $$3);
+            }
+
+            long[] $$5 = this.key;
+            $$4 = (int)HashCommon.mix($$1) & this.mask;
+
+            for (long $$7 = $$5[$$4]; $$7 != 0L; $$7 = $$5[$$4]) {
+               if ($$7 == $$1) {
+                  this.i = $$4;
+                  this.j = $$1;
+                  return this.a($$4, $$3);
+               }
+
+               $$4 = $$4 + 1 & this.mask;
+            }
+         }
+
+         this.key[$$4] = $$1;
+         this.value[$$4] = $$3;
+         if (this.size == 0) {
+            this.first = this.last = $$4;
+            this.link[$$4] = -1L;
+         } else {
+            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)$$4 & 4294967295L) & 4294967295L;
+            this.link[$$4] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
+            this.last = $$4;
+         }
+
+         if (this.size++ >= this.maxFill) {
+            this.rehash(HashCommon.arraySize(this.size + 1, this.f));
+         }
+
+         return false;
+      }
+
+      private boolean a(int $$0, long $$1) {
+         boolean $$2 = (this.value[$$0] & $$1) != 0L;
+         this.value[$$0] = this.value[$$0] | $$1;
+         return $$2;
+      }
+
+      public boolean d(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         if ($$1 == 0L) {
+            return this.containsNullKey ? this.e($$3) : false;
+         } else if (this.i != -1 && $$1 == this.j) {
+            return this.b(this.i, $$3);
+         } else {
+            long[] $$4 = this.key;
+            int $$5 = (int)HashCommon.mix($$1) & this.mask;
+
+            for (long $$6 = $$4[$$5]; $$6 != 0L; $$6 = $$4[$$5]) {
+               if ($$1 == $$6) {
+                  this.i = $$5;
+                  this.j = $$1;
+                  return this.b($$5, $$3);
+               }
+
+               $$5 = $$5 + 1 & this.mask;
+            }
+
+            return false;
+         }
+      }
+
+      private boolean e(long $$0) {
+         if ((this.value[this.n] & $$0) == 0L) {
+            return false;
+         } else {
+            this.value[this.n] = this.value[this.n] & ~$$0;
+            if (this.value[this.n] != 0L) {
+               return true;
+            } else {
+               this.containsNullKey = false;
+               this.size--;
+               this.fixPointers(this.n);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
+
+               return true;
+            }
+         }
+      }
+
+      private boolean b(int $$0, long $$1) {
+         if ((this.value[$$0] & $$1) == 0L) {
+            return false;
+         } else {
+            this.value[$$0] = this.value[$$0] & ~$$1;
+            if (this.value[$$0] != 0L) {
+               return true;
+            } else {
+               this.i = -1;
+               this.size--;
+               this.fixPointers($$0);
+               this.shiftKeys($$0);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
+
+               return true;
+            }
+         }
+      }
+
+      public long a() {
+         if (this.size == 0) {
+            throw new NoSuchElementException();
+         } else {
+            int $$0 = this.first;
+            long $$1 = this.key[$$0];
+            int $$2 = Long.numberOfTrailingZeros(this.value[$$0]);
+            this.value[$$0] = this.value[$$0] & ~(1L << $$2);
+            if (this.value[$$0] == 0L) {
+               this.removeFirstLong();
+               this.i = -1;
+            }
+
+            return a($$1, $$2);
+         }
+      }
+
+      protected void rehash(int $$0) {
+         if ($$0 > this.k) {
+            super.rehash($$0);
+         }
       }
    }
 }

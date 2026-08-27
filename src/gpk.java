@@ -1,17 +1,12 @@
-public abstract class gpk extends gpj implements gqc {
-   private boolean n;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   protected gpk(auy $$0, ava $$1, ayd $$2) {
-      super($$0, $$1, $$2);
-   }
+public interface gpk {
+   Collection<akh> f();
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
+   void a(Function<akh, gpk> var1);
 
-   protected final void n() {
-      this.n = true;
-      this.i = false;
-   }
+   @Nullable
+   goz a(gpd var1, Function<gpc, gmy> var2, gph var3, akh var4);
 }

@@ -1,28 +1,56 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
+@Deprecated
 public class bvs {
-   public static <E extends bre> buh<E> a(List<Pair<? extends bwm<? super E>, Integer>> $$0) {
-      return a($$0, btk.a.b, btk.b.a);
+   public static btt<bsa> a(float $$0, box $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public static <E extends bre> buh<E> a(List<Pair<? extends bwm<? super E>, Integer>> $$0, btk.a $$1, btk.b $$2) {
-      bvf<bwm<? super E>> $$3 = new bvf<>();
-      $$0.forEach($$1x -> $$3.a((bwm<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return bwj.a((Function<bwj.b<E>, ? extends App<bwj.c<E>, bwm<E>>>)($$3x -> $$3x.a((bwm<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == btk.a.b) {
-               $$3.a();
-            }
+   public static btt<bsa> a(brn<?> $$0, float $$1, box $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ai()));
+   }
 
-            for (bwm<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == btk.b.a) {
-                  break;
-               }
-            }
+   private static btt<bsa> a(float $$0, box $$1, Predicate<bsa> $$2) {
+      float $$3 = $$0 * $$0;
+      bvs.a $$4 = new bvs.a($$1);
+      return bxf.a(
+         (Function<bxf.b<bsa>, ? extends App<bxf.c<bsa>, bxi<bsa>>>)($$3x -> $$3x.group($$3x.c(cbd.n), $$3x.b(cbd.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bsa> $$9 = $$3x.<cbf>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((brh)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
+                     } else {
+                        $$4x.a(new bud($$9.get(), true));
+                        return true;
+                     }
+                  }))
+      );
+   }
 
-            return true;
-         }))));
+   public static final class a {
+      private final box a;
+      private int b;
+
+      public a(box $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(ayg $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

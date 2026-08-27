@@ -1,7 +1,8 @@
-public enum elw {
-   a,
-   b,
-   c,
-   d,
-   e;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface elw {
 }

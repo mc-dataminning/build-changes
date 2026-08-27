@@ -1,52 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxm extends dxo {
-   public static final Codec<dxm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dxo.d.forGetter($$0x -> $$0x), bnt.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dxm.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, dxm::new)
-   );
-   public final bnt b;
-   public final dxm.a c;
+class dxm extends dxr {
+   private final ja<dde> e;
+   public static final Codec<dxm> a = RecordCodecBuilder.create($$0 -> a($$0).and(jl.a(le.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dxm::new));
 
-   public dxm(float $$0, een $$1, bnt $$2, dwk $$3, dxp $$4, iz<dcv> $$5, bnt $$6, dxm.a $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
+   public dxm(jr $$0, ja<dde> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   public dxm(dxo $$0, bnt $$1, dxm.a $$2) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   @Override
+   protected boolean a(dqh $$0) {
+      return $$0.a(this.e);
    }
 
-   public static class a {
-      public static final Codec<dxm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bnt.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
-                  bnt.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
-                  axe.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
-                  bnt.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
-                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dxm.a::new)
-      );
-      public final bnt b;
-      public final bnt c;
-      public final int d;
-      public final bnt e;
-      public final float f;
-      public final float g;
-
-      public a(bnt $$0, bnt $$1, int $$2, bnt $$3, float $$4, float $$5) {
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-         this.b = $$0;
-         this.c = $$1;
-      }
+   @Override
+   public dxh<?> a() {
+      return dxh.a;
    }
 }

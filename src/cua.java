@@ -1,46 +1,21 @@
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cua {
-   @Nullable
-   private final String a;
-   private final List<bpx> b;
-
-   public cua(bpx... $$0) {
-      this(null, $$0);
+public class cua extends cui {
+   public cua(csu.a $$0, dde $$1, dde $$2) {
+      super($$1, $$2, $$0, is.a);
    }
 
-   public cua(@Nullable String $$0, bpx... $$1) {
-      this.a = $$0;
-      this.b = List.of($$1);
+   public cua(csu.a $$0, dde $$1, dde $$2, is $$3) {
+      super($$1, $$2, $$0, $$3);
    }
 
-   public static String a(Optional<iv<cua>> $$0, String $$1) {
-      if ($$0.isPresent()) {
-         String $$2 = $$0.get().a().a;
-         if ($$2 != null) {
-            return $$1 + $$2;
-         }
+   @Override
+   protected boolean a(in $$0, dad $$1, @Nullable clh $$2, csz $$3, dqh $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dow $$6 && $$1.a_($$0).b() instanceof dke $$7) {
+         $$7.a($$2, $$6, true);
       }
 
-      String $$3 = $$0.flatMap(iv::e).map($$0x -> $$0x.a().a()).orElse("empty");
-      return $$1 + $$3;
-   }
-
-   public List<bpx> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         for (bpx $$0 : this.b) {
-            if ($$0.c().a().a()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+      return $$5;
    }
 }

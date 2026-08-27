@@ -4,33 +4,28 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Locale;
 
-public class ky implements ku {
-   public static final Codec<ky> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.d)).apply($$0, ky::new));
-   public static final yq<wd, ky> b = yq.a(yo.f, $$0 -> $$0.d, ky::new);
-   public static final ku.a<ky> c = new ku.a<ky>() {
-      public ky a(kv<ky> $$0, StringReader $$1, ix.a $$2) throws CommandSyntaxException {
+public record ky(float d) implements kv {
+   public static final Codec<ky> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("roll").forGetter($$0x -> $$0x.d)).apply($$0, ky::new));
+   public static final ys<wf, ky> b = ys.a(yq.h, $$0 -> $$0.d, ky::new);
+   public static final kv.a<ky> c = new kv.a<ky>() {
+      public ky a(kw<ky> $$0, StringReader $$1, iy.a $$2) throws CommandSyntaxException {
          $$1.expect(' ');
-         int $$3 = $$1.readInt();
+         float $$3 = $$1.readFloat();
          return new ky($$3);
       }
    };
-   private final int d;
 
-   public ky(int $$0) {
-      this.d = $$0;
+   @Override
+   public kw<ky> a() {
+      return kx.H;
    }
 
    @Override
-   public String a(ix.a $$0) {
-      return String.format(Locale.ROOT, "%s %d", lc.j.b(this.a()), this.d);
+   public String a(iy.a $$0) {
+      return String.format(Locale.ROOT, "%s %.2f", ld.j.b(this.a()), this.d);
    }
 
-   @Override
-   public kv<ky> a() {
-      return kw.aS;
-   }
-
-   public int b() {
+   public float b() {
       return this.d;
    }
 }

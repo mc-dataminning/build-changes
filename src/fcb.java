@@ -1,52 +1,69 @@
 import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fcb extends fbu {
+public class fcb extends fce {
    private static final Logger b = LogUtils.getLogger();
-   private static final ws c = ws.c("mco.minigame.world.starting.screen.title");
+   private static final wu c = wu.c("mco.snapshot.creating");
    private final long d;
-   private final ezl e;
-   private final fad f;
+   private final fbx e;
+   private final String f;
+   private final String g;
+   private final eyi h;
+   @Nullable
+   private fcg i;
+   @Nullable
+   private fch j;
 
-   public fcb(long $$0, ezl $$1, fad $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public fcb(eyi $$0, long $$1, fbx $$2, String $$3, String $$4) {
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$0;
    }
 
    @Override
    public void run() {
-      eyd $$0 = eyd.a();
+      eyn $$0 = eyn.a();
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
-            }
-         } catch (ezr var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't start mini game!");
-            this.a(var5);
+      try {
+         eze $$1 = $$0.a(Long.valueOf(this.d));
+         this.i = new fcg($$1.a, this.f, this.g);
+         this.j = new fch(this.e, $$1.a, fbc.a, () -> fde.Q().execute(() -> eyi.a($$1, this.h, true)));
+         if (this.d()) {
+            return;
          }
+
+         this.i.run();
+         if (this.d()) {
+            return;
+         }
+
+         this.j.run();
+      } catch (faa var3) {
+         b.error("Couldn't create snapshot world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Couldn't create snapshot world", var4);
+         this.a(var4);
       }
    }
 
    @Override
-   public ws a() {
+   public wu a() {
       return c;
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      if (this.i != null) {
+         this.i.b();
+      }
+
+      if (this.j != null) {
+         this.j.b();
+      }
    }
 }

@@ -1,108 +1,48 @@
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public class bxd implements bxa {
-   protected final brg a;
-   protected float b;
-   protected float c;
-   protected int d;
-   protected double e;
-   protected double f;
-   protected double g;
+public class bxd extends bts<cku> {
+   private static final int c = 300;
+   private static final double d = 1.73;
+   private long e;
 
-   public bxd(brg $$0) {
-      this.a = $$0;
+   public bxd() {
+      super(ImmutableMap.of(cbd.c, cbe.a, cbd.n, cbe.c));
    }
 
-   public void a(etf $$0) {
-      this.a($$0.c, $$0.d, $$0.e);
-   }
-
-   public void a(bql $$0) {
-      this.a($$0.ds(), b($$0), $$0.dy());
-   }
-
-   public void a(bql $$0, float $$1, float $$2) {
-      this.a($$0.ds(), b($$0), $$0.dy(), $$1, $$2);
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      this.a($$0, $$1, $$2, (float)this.a.fO(), (float)this.a.Z());
-   }
-
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = 2;
-   }
-
-   public void a() {
-      if (this.c()) {
-         this.a.s(0.0F);
-      }
-
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0 -> this.a.bb = this.a(this.a.bb, $$0, this.b));
-         this.h().ifPresent($$0 -> this.a.s(this.a(this.a.dF(), $$0, this.c)));
+   protected boolean b(aqh $$0, cku $$1) {
+      if ($$0.Y() - this.e < 300L) {
+         return false;
+      } else if ($$0.z.a(2) != 0) {
+         return false;
       } else {
-         this.a.bb = this.a(this.a.bb, this.a.aZ, 10.0F);
-      }
-
-      this.b();
-   }
-
-   protected void b() {
-      if (!this.a.K().l()) {
-         this.a.bb = axw.c(this.a.bb, this.a.aZ, (float)this.a.aa());
+         this.e = $$0.Y();
+         iv $$2 = $$1.dQ().c(cbd.c).get();
+         return $$2.a() == $$0.ae() && $$2.b().a($$1.dl(), 1.73);
       }
    }
 
-   protected boolean c() {
-      return true;
+   protected void a(aqh $$0, cku $$1, long $$2) {
+      btb<cku> $$3 = $$1.dQ();
+      $$3.a(cbd.J, $$2);
+      $$3.c(cbd.c).ifPresent($$1x -> $$3.a(cbd.n, new btv($$1x.b())));
+      $$1.gE();
+      this.a($$0, $$1);
+      if ($$1.gD()) {
+         $$1.gC();
+      }
    }
 
-   public boolean d() {
-      return this.d > 0;
+   protected void a(aqh $$0, cku $$1) {
    }
 
-   public double e() {
-      return this.e;
-   }
-
-   public double f() {
-      return this.f;
-   }
-
-   public double g() {
-      return this.g;
-   }
-
-   protected Optional<Float> h() {
-      double $$0 = this.e - this.a.ds();
-      double $$1 = this.f - this.a.dw();
-      double $$2 = this.g - this.a.dy();
-      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(axw.d($$1, $$3) * 180.0F / (float)Math.PI)));
-   }
-
-   protected Optional<Float> i() {
-      double $$0 = this.e - this.a.ds();
-      double $$1 = this.g - this.a.dy();
-      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
-         ? Optional.empty()
-         : Optional.of((float)(axw.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
-   }
-
-   protected float a(float $$0, float $$1, float $$2) {
-      float $$3 = axw.c($$0, $$1);
-      float $$4 = axw.a($$3, -$$2, $$2);
-      return $$0 + $$4;
-   }
-
-   private static double b(bql $$0) {
-      return $$0 instanceof bre ? $$0.dw() : ($$0.cI().b + $$0.cI().e) / 2.0;
+   protected boolean b(aqh $$0, cku $$1, long $$2) {
+      Optional<iv> $$3 = $$1.dQ().c(cbd.c);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         iv $$4 = $$3.get();
+         return $$4.a() == $$0.ae() && $$4.b().a($$1.dl(), 1.73);
+      }
    }
 }

@@ -1,60 +1,33 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.util.concurrent.Executor;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public class grw {
-   private boolean a;
-   @Nullable
-   private grq.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+public class grw implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final bkt<grv> b;
+   private final bof<Runnable> c;
 
-   public grw(@Nullable String $$0) {
-      this.d = $$0;
+   public grw(FileChannel $$0, Executor $$1) {
+      this.b = new bkt<>(grv.a, $$0);
+      this.c = bof.a($$1, "telemetry-event-log");
    }
 
-   public void a(grr.a $$0) {
-      if (this.c != null) {
-         $$0.a(grq.j, !this.c.equals("vanilla"));
-      }
-
-      $$0.a(grq.k, this.a());
-   }
-
-   private grq.c a() {
-      fwa $$0 = fcu.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return grq.c.a;
-      } else {
-         return fcu.Q().U() ? grq.c.b : grq.c.c;
-      }
-   }
-
-   public boolean a(grn $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(gro.b, $$0x -> {
-            $$0x.a(grq.n, this.b);
-            if (this.d != null) {
-               $$0x.a(grq.o, this.d);
+   public grx a() {
+      return $$0 -> this.c.a(() -> {
+            try {
+               this.b.a($$0);
+            } catch (IOException var3) {
+               a.error("Failed to write telemetry event to log", var3);
             }
          });
-         return true;
-      } else {
-         return false;
-      }
    }
 
-   public void a(czr $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? grq.b.e : grq.b.a;
-         case b -> grq.b.b;
-         case c -> grq.b.c;
-         case d -> grq.b.d;
-      };
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
+   @Override
+   public void close() {
+      this.c.a(() -> IOUtils.closeQuietly(this.b));
+      this.c.close();
    }
 }

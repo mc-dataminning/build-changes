@@ -1,21 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebe extends eaq {
-   public static final Codec<ebe> c = RecordCodecBuilder.create(
+public record ebe(edq b, dxg c, bor d, int e) implements ebh {
+   public static final Codec<ebe> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ecz.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               axe.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               axe.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+               edq.a.fieldOf("state_provider").forGetter(ebe::a),
+               dxg.b.fieldOf("target").forGetter(ebe::b),
+               bor.b(0, 8).fieldOf("radius").forGetter(ebe::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(ebe::d)
             )
             .apply($$0, ebe::new)
    );
-   public final int d;
-   public final int e;
 
-   public ebe(ecz $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public edq a() {
+      return this.b;
+   }
+
+   public dxg b() {
+      return this.c;
+   }
+
+   public bor c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

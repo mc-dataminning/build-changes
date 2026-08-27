@@ -1,13 +1,120 @@
+import com.mojang.authlib.GameProfile;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
-public interface aot {
-   void a(ty var1) throws CommandSyntaxException;
+public class aot {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.whitelist.alreadyOn"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.whitelist.alreadyOff"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wu.c("commands.whitelist.add.failed"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wu.c("commands.whitelist.remove.failed"));
 
-   ty a() throws CommandSyntaxException;
+   public static void a(CommandDispatcher<ed> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a(
+                                 "whitelist"
+                              )
+                              .requires($$0x -> $$0x.c(3)))
+                           .then(ee.a("on").executes($$0x -> b((ed)$$0x.getSource()))))
+                        .then(ee.a("off").executes($$0x -> c((ed)$$0x.getSource()))))
+                     .then(ee.a("list").executes($$0x -> d((ed)$$0x.getSource()))))
+                  .then(ee.a("add").then(ee.a("targets", es.a()).suggests(($$0x, $$1) -> {
+                     aue $$2 = ((ed)$$0x.getSource()).l().ah();
+                     return ei.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.fZ())).map($$0xx -> $$0xx.fZ().getName()), $$1);
+                  }).executes($$0x -> a((ed)$$0x.getSource(), es.a($$0x, "targets"))))))
+               .then(
+                  ee.a("remove")
+                     .then(
+                        ee.a("targets", es.a())
+                           .suggests(($$0x, $$1) -> ei.a(((ed)$$0x.getSource()).l().ah().j(), $$1))
+                           .executes($$0x -> b((ed)$$0x.getSource(), es.a($$0x, "targets")))
+                     )
+               ))
+            .then(ee.a("reload").executes($$0x -> a((ed)$$0x.getSource())))
+      );
+   }
 
-   ws b();
+   private static int a(ed $$0) {
+      $$0.l().ah().a();
+      $$0.a(() -> wu.c("commands.whitelist.reloaded"), true);
+      $$0.l().a($$0);
+      return 1;
+   }
 
-   ws a(uv var1);
+   private static int a(ed $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      aum $$2 = $$0.l().ah().i();
+      int $$3 = 0;
 
-   ws a(eu.g var1, double var2, int var4);
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.a($$4)) {
+            aun $$5 = new aun($$4);
+            $$2.a($$5);
+            $$0.a(() -> wu.a("commands.whitelist.add.success", wu.b($$4.getName())), true);
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw c.create();
+      } else {
+         return $$3;
+      }
+   }
+
+   private static int b(ed $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      aum $$2 = $$0.l().ah().i();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            aun $$5 = new aun($$4);
+            $$2.b($$5);
+            $$0.a(() -> wu.a("commands.whitelist.remove.success", wu.b($$4.getName())), true);
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw d.create();
+      } else {
+         $$0.l().a($$0);
+         return $$3;
+      }
+   }
+
+   private static int b(ed $$0) throws CommandSyntaxException {
+      aue $$1 = $$0.l().ah();
+      if ($$1.o()) {
+         throw a.create();
+      } else {
+         $$1.a(true);
+         $$0.a(() -> wu.c("commands.whitelist.enabled"), true);
+         $$0.l().a($$0);
+         return 1;
+      }
+   }
+
+   private static int c(ed $$0) throws CommandSyntaxException {
+      aue $$1 = $$0.l().ah();
+      if (!$$1.o()) {
+         throw b.create();
+      } else {
+         $$1.a(false);
+         $$0.a(() -> wu.c("commands.whitelist.disabled"), true);
+         return 1;
+      }
+   }
+
+   private static int d(ed $$0) {
+      String[] $$1 = $$0.l().ah().j();
+      if ($$1.length == 0) {
+         $$0.a(() -> wu.c("commands.whitelist.none"), false);
+      } else {
+         $$0.a(() -> wu.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
+      }
+
+      return $$1.length;
+   }
 }

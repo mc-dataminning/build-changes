@@ -1,33 +1,36 @@
-import com.mojang.util.UndashedUuid;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
 public class aws {
-   public static final String a = "https://aka.ms/MinecraftGDPR";
-   public static final String b = "https://aka.ms/MinecraftEULA";
-   public static final String c = "http://go.microsoft.com/fwlink/?LinkId=521839";
-   public static final String d = "https://aka.ms/MinecraftJavaAttribution";
-   public static final String e = "https://aka.ms/MinecraftJavaLicenses";
-   public static final String f = "https://aka.ms/BuyMinecraftJava";
-   public static final String g = "https://aka.ms/JavaAccountSettings";
-   public static final String h = "https://aka.ms/snapshotfeedback?ref=game";
-   public static final String i = "https://aka.ms/javafeedback?ref=game";
-   public static final String j = "https://aka.ms/snapshotbugs?ref=game";
-   public static final String k = "https://aka.ms/Minecraft-Support";
-   public static final String l = "https://aka.ms/MinecraftJavaAccessibility";
-   public static final String m = "https://aka.ms/aboutjavareporting";
-   public static final String n = "https://aka.ms/mcjavamoderation";
-   public static final String o = "https://aka.ms/javablocking";
-   public static final String p = "https://aka.ms/MinecraftSymLinks";
-   public static final String q = "https://aka.ms/startjavarealmstrial";
-   public static final String r = "https://aka.ms/BuyJavaRealms";
-   public static final String s = "https://aka.ms/MinecraftRealmsTerms";
-   public static final String t = "https://aka.ms/MinecraftRealmsContentCreator";
+   public static final int a = -1;
+   private final Object2IntMap<Class<?>> b = ac.a(new Object2IntOpenHashMap(), $$0 -> $$0.defaultReturnValue(-1));
 
-   public static String a(String $$0, UUID $$1, boolean $$2) {
-      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
+   public int a(Class<?> $$0) {
+      int $$1 = this.b.getInt($$0);
+      if ($$1 != -1) {
+         return $$1;
+      } else {
+         Class<?> $$2 = $$0;
+
+         while (($$2 = $$2.getSuperclass()) != Object.class) {
+            int $$3 = this.b.getInt($$2);
+            if ($$3 != -1) {
+               return $$3;
+            }
+         }
+
+         return -1;
+      }
    }
 
-   public static String a(String $$0, UUID $$1) {
-      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
+   public int b(Class<?> $$0) {
+      return this.a($$0) + 1;
+   }
+
+   public int c(Class<?> $$0) {
+      int $$1 = this.a($$0);
+      int $$2 = $$1 == -1 ? 0 : $$1 + 1;
+      this.b.put($$0, $$2);
+      return $$2;
    }
 }

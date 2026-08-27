@@ -1,11 +1,8 @@
-public interface exd {
-   int a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void b();
-
-   exb c();
-
-   exb d();
-
-   void e();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@evq
+@evp
+interface exd {
 }

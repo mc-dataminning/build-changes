@@ -1,34 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public class eem extends een {
-   public static final eem a = new eem(dwk.a(0));
-   public static final Codec<eem> b = axe.e(dwk.a, dwk.a.fieldOf("value").codec()).xmap(eem::new, eem::b);
-   private final dwk d;
+public class eem<P extends eel> {
+   public static final eem<eek> a = a("straight_trunk_placer", eek.a);
+   public static final eem<eeh> b = a("forking_trunk_placer", eeh.a);
+   public static final eem<eei> c = a("giant_trunk_placer", eei.a);
+   public static final eem<eej> d = a("mega_jungle_trunk_placer", eej.b);
+   public static final eem<eef> e = a("dark_oak_trunk_placer", eef.a);
+   public static final eem<eeg> f = a("fancy_trunk_placer", eeg.a);
+   public static final eem<eed> g = a("bending_trunk_placer", eed.a);
+   public static final eem<een> h = a("upwards_branching_trunk_placer", een.a);
+   public static final eem<eee> i = a("cherry_trunk_placer", eee.a);
+   private final Codec<P> j;
 
-   public static eem a(dwk $$0) {
-      return new eem($$0);
+   private static <P extends eel> eem<P> a(String $$0, Codec<P> $$1) {
+      return jj.a(ld.X, $$0, new eem<>($$1));
    }
 
-   private eem(dwk $$0) {
-      this.d = $$0;
+   private eem(Codec<P> $$0) {
+      this.j = $$0;
    }
 
-   public dwk b() {
-      return this.d;
-   }
-
-   @Override
-   public int a(ayd $$0, dwn $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public eeo<?> a() {
-      return eeo.a;
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
+   public Codec<P> a() {
+      return this.j;
    }
 }

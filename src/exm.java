@@ -1,21 +1,42 @@
-public abstract class exm implements exr {
-   protected boolean a;
-   protected int b = 255;
-   protected int c = 255;
-   protected int d = 255;
-   protected int e = 255;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import org.slf4j.Logger;
 
-   @Override
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.a = true;
+public class exm {
+   private static final Logger a = LogUtils.getLogger();
+
+   public static void a(int $$0) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._glUseProgram($$0);
    }
 
-   @Override
-   public void l() {
-      this.a = false;
+   public static void a(exn $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.d().a();
+      $$0.c().a();
+      GlStateManager.glDeleteProgram($$0.a());
+   }
+
+   public static int a() throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$0 = GlStateManager.glCreateProgram();
+      if ($$0 <= 0) {
+         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
+      } else {
+         return $$0;
+      }
+   }
+
+   public static void b(exn $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.e();
+      GlStateManager.glLinkProgram($$0.a());
+      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
+      if ($$1 == 0) {
+         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
+         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
+      }
    }
 }

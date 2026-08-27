@@ -1,83 +1,23 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.UUID;
 
-public class adr implements yz<abk> {
-   public static final yq<vs, adr> a = yz.a(adr::a, adr::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final int e;
-   private final eo.a f;
-   private final eo.a g;
-   private final boolean h;
+public record adr(List<UUID> b) implements zb<abm> {
+   public static final ys<vu, adr> a = zb.a(adr::a, adr::new);
 
-   public adr(eo.a $$0, double $$1, double $$2, double $$3) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = 0;
-      this.h = false;
-      this.g = null;
+   private adr(vu $$0) {
+      this($$0.a(jq.g));
    }
 
-   public adr(eo.a $$0, bql $$1, eo.a $$2) {
-      this.f = $$0;
-      this.e = $$1.aj();
-      this.g = $$2;
-      etf $$3 = $$2.a($$1);
-      this.b = $$3.c;
-      this.c = $$3.d;
-      this.d = $$3.e;
-      this.h = true;
-   }
-
-   private adr(vs $$0) {
-      this.f = $$0.b(eo.a.class);
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.h = $$0.readBoolean();
-      if (this.h) {
-         this.e = $$0.l();
-         this.g = $$0.b(eo.a.class);
-      } else {
-         this.e = 0;
-         this.g = null;
-      }
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.f);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.h);
-      if (this.h) {
-         $$0.c(this.e);
-         $$0.a(this.g);
-      }
+   private void a(vu $$0) {
+      $$0.a(this.b, jq.g);
    }
 
    @Override
-   public zb<adr> a() {
-      return afv.ag;
+   public zd<adr> a() {
+      return afx.ae;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
-   }
-
-   public eo.a b() {
-      return this.f;
-   }
-
-   @Nullable
-   public etf a(czu $$0) {
-      if (this.h) {
-         bql $$1 = $$0.a(this.e);
-         return $$1 == null ? new etf(this.b, this.c, this.d) : this.g.a($$1);
-      } else {
-         return new etf(this.b, this.c, this.d);
-      }
    }
 }

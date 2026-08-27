@@ -1,119 +1,58 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface fwj extends fwi {
-   static fwj.a a(GameProfile $$0, xi $$1, fwh $$2) {
-      return new fwj.a($$0, $$1, $$2);
+public class fwj {
+   @Nullable
+   private fwj.a a;
+   @Nullable
+   private fwn b;
+
+   public void a(akg<? extends jj<?>> $$0, List<jn.a> $$1) {
+      if (this.a == null) {
+         this.a = new fwj.a();
+      }
+
+      this.a.a($$0, $$1);
    }
 
-   static fwj.b a(ws $$0, Instant $$1) {
-      return new fwj.b($$0, $$1);
+   public void a(Map<akg<? extends jj<?>>, awj.a> $$0) {
+      if (this.b == null) {
+         this.b = new fwn();
+      }
+
+      $$0.forEach(this.b::a);
    }
 
-   ws b();
+   public jk.b a(atu $$0, jk $$1, boolean $$2) {
+      jd<fvy> $$3 = fvy.a();
+      jk $$6;
+      if (this.a != null) {
+         jk.b $$4 = $$3.b(fvy.b);
+         jk.b $$5 = this.a.a($$0, $$4).d();
+         $$6 = $$3.a(fvy.b, $$5).a();
+      } else {
+         $$6 = $$1;
+      }
 
-   default ws c() {
-      return this.b();
+      if (this.b != null) {
+         this.b.a($$6, $$2);
+      }
+
+      return $$6.d();
    }
 
-   boolean a(UUID var1);
+   static class a {
+      private final Map<akg<? extends jj<?>>, List<jn.a>> a = new HashMap<>();
 
-   public static record a(GameProfile c, xi d, fwh e) implements fwj {
-      public static final Codec<fwj.a> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  axe.v.fieldOf("profile").forGetter(fwj.a::f), xi.a.forGetter(fwj.a::g), fwh.d.optionalFieldOf("trust_level", fwh.a).forGetter(fwj.a::h)
-               )
-               .apply($$0, fwj.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public ws b() {
-         if (!this.d.o().a()) {
-            ws $$0 = this.d.o().b(this.d.c());
-            return (ws)($$0 != null ? $$0 : ws.i());
-         } else {
-            return this.d.d();
-         }
+      public void a(akg<? extends jj<?>> $$0, List<jn.a> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
       }
 
-      @Override
-      public ws c() {
-         ws $$0 = this.b();
-         ws $$1 = this.i();
-         return ws.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
-      }
-
-      public ws d() {
-         ws $$0 = this.i();
-         return ws.a("gui.chatSelection.heading", this.c.getName(), $$0);
-      }
-
-      private ws i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return ws.b($$0.format(f)).a(n.u, n.h);
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public fwi.a a() {
-         return fwi.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public xi g() {
-         return this.d;
-      }
-
-      public fwh h() {
-         return this.e;
-      }
-   }
-
-   public static record b(ws c, Instant d) implements fwj {
-      public static final Codec<fwj.b> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(wu.a.fieldOf("message").forGetter(fwj.b::d), axe.m.fieldOf("time_stamp").forGetter(fwj.b::e)).apply($$0, fwj.b::new)
-      );
-
-      @Override
-      public ws b() {
-         return this.c;
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
-
-      @Override
-      public fwi.a a() {
-         return fwi.a.b;
-      }
-
-      public ws d() {
-         return this.c;
-      }
-
-      public Instant e() {
-         return this.d;
+      public jk a(atu $$0, jk $$1) {
+         return akc.a(this.a, $$0, $$1, akc.c);
       }
    }
 }

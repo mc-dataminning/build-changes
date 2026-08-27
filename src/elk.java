@@ -1,331 +1,166 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+public class elk {
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final awo d;
+   private final in.a e = new in.a();
+   private final in.a f = new in.a();
 
-public final class elk extends eli<ell.a, ell> {
-   private static final long g = eli.a.a(15);
-   private static final long h = eli.a.a(15, ir.b);
-   private static final long i = eli.a.a(15, false, ir.b);
-   private final im.a j = new im.a();
-   private final elb k;
-
-   public elk(dsh $$0) {
-      this($$0, new ell($$0));
+   public elk(daf $$0) {
+      this.c = $$0.I_() - 1;
+      int $$1 = $$0.al();
+      int $$2 = axz.e($$1 - this.c + 1);
+      this.d = new ayn($$2, 256);
    }
 
-   @VisibleForTesting
-   protected elk(dsh $$0, ell $$1) {
-      super($$0, $$1);
-      this.k = new elb($$0.q());
-   }
-
-   private static boolean a(int $$0) {
-      return $$0 == 15;
-   }
-
-   private int a(int $$0, int $$1, int $$2) {
-      elb $$3 = this.b(jo.a($$0), jo.a($$1));
-      return $$3 == null ? $$2 : $$3.a(jo.b($$0), jo.b($$1));
-   }
-
-   @Nullable
-   private elb b(int $$0, int $$1) {
-      dsg $$2 = this.e.c($$0, $$1);
-      return $$2 != null ? $$2.B() : null;
-   }
-
-   @Override
-   protected void a(long $$0) {
-      int $$1 = im.a($$0);
-      int $$2 = im.b($$0);
-      int $$3 = im.c($$0);
-      long $$4 = jo.e($$0);
-      int $$5 = this.f.j($$4) ? this.a($$1, $$3, Integer.MAX_VALUE) : Integer.MAX_VALUE;
-      if ($$5 != Integer.MAX_VALUE) {
-         this.b($$1, $$3, $$5);
-      }
-
-      if (this.f.b($$4)) {
-         boolean $$6 = $$2 >= $$5;
-         if ($$6) {
-            this.b($$0, h);
-            this.c($$0, i);
-         } else {
-            int $$7 = this.f.e($$0);
-            if ($$7 > 0) {
-               this.f.a($$0, 0);
-               this.b($$0, eli.a.a($$7));
-            } else {
-               this.b($$0, c);
-            }
-         }
-      }
-   }
-
-   private void b(int $$0, int $$1, int $$2) {
-      int $$3 = jo.c(this.f.c());
-      this.a($$0, $$1, $$2, $$3);
-      this.b($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0, int $$1, int $$2, int $$3) {
-      if ($$2 > $$3) {
-         int $$4 = jo.a($$0);
-         int $$5 = jo.a($$1);
-         int $$6 = $$2 - 1;
-
-         for (int $$7 = jo.a($$6); this.f.a($$7); $$7--) {
-            if (this.f.b(jo.b($$4, $$7, $$5))) {
-               int $$8 = jo.c($$7);
-               int $$9 = $$8 + 15;
-
-               for (int $$10 = Math.min($$9, $$6); $$10 >= $$8; $$10--) {
-                  long $$11 = im.a($$0, $$10, $$1);
-                  if (!a(this.f.e($$11))) {
-                     return;
-                  }
-
-                  this.f.a($$11, 0);
-                  this.b($$11, $$10 == $$2 - 1 ? g : h);
-               }
-            }
-         }
-      }
-   }
-
-   private void b(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = jo.a($$0);
-      int $$5 = jo.a($$1);
-      int $$6 = Math.max(
-         Math.max(this.a($$0 - 1, $$1, Integer.MIN_VALUE), this.a($$0 + 1, $$1, Integer.MIN_VALUE)),
-         Math.max(this.a($$0, $$1 - 1, Integer.MIN_VALUE), this.a($$0, $$1 + 1, Integer.MIN_VALUE))
-      );
-      int $$7 = Math.max($$2, $$3);
-
-      for (long $$8 = jo.b($$4, jo.a($$7), $$5); !this.f.l($$8); $$8 = jo.a($$8, ir.b)) {
-         if (this.f.b($$8)) {
-            int $$9 = jo.c(jo.c($$8));
-            int $$10 = $$9 + 15;
-
-            for (int $$11 = Math.max($$9, $$7); $$11 <= $$10; $$11++) {
-               long $$12 = im.a($$0, $$11, $$1);
-               if (a(this.f.e($$12))) {
-                  return;
-               }
-
-               this.f.a($$12, 15);
-               if ($$11 < $$6 || $$11 == $$2) {
-                  this.c($$12, i);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dpy $$3 = null;
-      int $$4 = this.d($$0);
-
-      for (ir $$5 : d) {
-         if (eli.a.a($$1, $$5)) {
-            long $$6 = im.a($$0, $$5);
-            if (this.f.b(jo.e($$6))) {
-               int $$7 = this.f.e($$6);
-               int $$8 = $$2 - 1;
-               if ($$8 > $$7) {
-                  this.j.f($$6);
-                  dpy $$9 = this.c(this.j);
-                  int $$10 = $$2 - this.a($$9, this.j);
-                  if ($$10 > $$7) {
-                     if ($$3 == null) {
-                        $$3 = eli.a.b($$1) ? dcx.a.n() : this.c(this.j.f($$0));
-                     }
-
-                     if (!this.a($$0, $$3, $$6, $$9, $$5)) {
-                        this.f.a($$6, $$10);
-                        if ($$10 > 1) {
-                           this.c($$6, eli.a.a($$10, a($$9), $$5.g()));
-                        }
-
-                        this.a($$6, $$5, $$10, true, $$4);
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = this.d($$0);
-      int $$3 = eli.a.a($$1);
-
-      for (ir $$4 : d) {
-         if (eli.a.a($$1, $$4)) {
-            long $$5 = im.a($$0, $$4);
-            if (this.f.b(jo.e($$5))) {
-               int $$6 = this.f.e($$5);
-               if ($$6 != 0) {
-                  if ($$6 <= $$3 - 1) {
-                     this.f.a($$5, 0);
-                     this.b($$5, eli.a.a($$6, $$4.g()));
-                     this.a($$5, $$4, $$6, false, $$2);
-                  } else {
-                     this.c($$5, eli.a.b($$6, false, $$4.g()));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private int d(long $$0) {
-      int $$1 = im.b($$0);
-      int $$2 = jo.b($$1);
-      if ($$2 != 0) {
-         return 0;
+   public void a(dsd $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
       } else {
-         int $$3 = im.a($$0);
-         int $$4 = im.c($$0);
-         int $$5 = jo.b($$3);
-         int $$6 = jo.b($$4);
-         if ($$5 != 0 && $$5 != 15 && $$6 != 0 && $$6 != 15) {
-            return 0;
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
+            }
+         }
+      }
+   }
+
+   private int a(dsd $$0, int $$1, int $$2, int $$3) {
+      int $$4 = jp.c($$0.g($$1) + 1);
+      in.a $$5 = this.e.d($$2, $$4, $$3);
+      in.a $$6 = this.f.a($$5, is.a);
+      dqh $$7 = ddg.a.n();
+
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         dso $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = ddg.a.n();
+            int $$10 = $$0.g($$8);
+            $$5.q(jp.c($$10));
+            $$6.q($$5.v() - 1);
          } else {
-            int $$7 = jo.a($$3);
-            int $$8 = jo.a($$1);
-            int $$9 = jo.a($$4);
-            int $$10 = 0;
-
-            while (!this.f.b(jo.b($$7, $$8 - $$10 - 1, $$9)) && this.f.a($$8 - $$10 - 1)) {
-               $$10++;
-            }
-
-            return $$10;
-         }
-      }
-   }
-
-   private void a(long $$0, ir $$1, int $$2, boolean $$3, int $$4) {
-      if ($$4 != 0) {
-         int $$5 = im.a($$0);
-         int $$6 = im.c($$0);
-         if (a($$1, jo.b($$5), jo.b($$6))) {
-            int $$7 = im.b($$0);
-            int $$8 = jo.a($$5);
-            int $$9 = jo.a($$6);
-            int $$10 = jo.a($$7) - 1;
-            int $$11 = $$10 - $$4 + 1;
-
-            while ($$10 >= $$11) {
-               if (!this.f.b(jo.b($$8, $$10, $$9))) {
-                  $$10--;
-               } else {
-                  int $$12 = jo.c($$10);
-
-                  for (int $$13 = 15; $$13 >= 0; $$13--) {
-                     long $$14 = im.a($$5, $$12 + $$13, $$6);
-                     if ($$3) {
-                        this.f.a($$14, $$2);
-                        if ($$2 > 1) {
-                           this.c($$14, eli.a.a($$2, true, $$1.g()));
-                        }
-                     } else {
-                        this.f.a($$14, 0);
-                        this.b($$14, eli.a.a($$2, $$1.g()));
-                     }
-                  }
-
-                  $$10--;
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               dqh $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$0, $$5, $$7, $$6, $$12)) {
+                  return $$5.v();
                }
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(is.a);
             }
+         }
+      }
+
+      return this.c;
+   }
+
+   public boolean a(czj $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
+      } else {
+         in $$7 = this.e.d($$1, $$2 + 1, $$3);
+         dqh $$8 = $$0.a_($$7);
+         in $$9 = this.f.d($$1, $$2, $$3);
+         dqh $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
+         } else {
+            in $$11 = this.e.d($$1, $$2 - 1, $$3);
+            dqh $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
          }
       }
    }
 
-   private static boolean a(ir $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case c -> $$2 == 15;
-         case d -> $$2 == 0;
-         case e -> $$1 == 15;
-         case f -> $$1 == 0;
-         default -> false;
-      };
+   private boolean a(czj $$0, int $$1, int $$2, in $$3, dqh $$4, in $$5, dqh $$6) {
+      int $$7 = $$3.v();
+      if (a($$0, $$3, $$4, $$5, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
+      }
+
+      return false;
    }
 
-   @Override
-   public void a(czb $$0, boolean $$1) {
-      super.a($$0, $$1);
-      if ($$1) {
-         elb $$2 = Objects.requireNonNullElse(this.b($$0.e, $$0.f), this.k);
-         int $$3 = $$2.a() - 1;
-         int $$4 = jo.a($$3) + 1;
-         long $$5 = jo.b($$0.e, $$0.f);
-         int $$6 = this.f.m($$5);
-         int $$7 = Math.max(this.f.c(), $$4);
+   private int a(czj $$0, in $$1, dqh $$2) {
+      in.a $$3 = this.e.g($$1);
+      in.a $$4 = this.f.a($$1, is.a);
+      dqh $$5 = $$2;
 
-         for (int $$8 = $$6 - 1; $$8 >= $$7; $$8--) {
-            drz $$9 = this.f.c(jo.b($$0.e, $$8, $$0.f));
-            if ($$9 != null && $$9.d()) {
-               $$9.a(15);
-            }
+      while ($$4.v() >= this.c) {
+         dqh $$6 = $$0.a_($$4);
+         if (a($$0, $$3, $$5, $$4, $$6)) {
+            return $$3.v();
          }
+
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(is.a);
+      }
+
+      return this.c;
+   }
+
+   private static boolean a(czj $$0, in $$1, dqh $$2, in $$3, dqh $$4) {
+      if ($$4.b($$0, $$3) != 0) {
+         return true;
+      } else {
+         eui $$5 = elr.a($$0, $$1, $$2, is.a);
+         eui $$6 = elr.a($$0, $$3, $$4, is.b);
+         return euf.b($$5, $$6);
       }
    }
 
-   @Override
-   public void b(czb $$0) {
-      long $$1 = jo.b($$0.e, $$0.f);
-      this.f.b($$1, true);
-      elb $$2 = Objects.requireNonNullElse(this.b($$0.e, $$0.f), this.k);
-      elb $$3 = Objects.requireNonNullElse(this.b($$0.e, $$0.f - 1), this.k);
-      elb $$4 = Objects.requireNonNullElse(this.b($$0.e, $$0.f + 1), this.k);
-      elb $$5 = Objects.requireNonNullElse(this.b($$0.e - 1, $$0.f), this.k);
-      elb $$6 = Objects.requireNonNullElse(this.b($$0.e + 1, $$0.f), this.k);
-      int $$7 = this.f.m($$1);
-      int $$8 = this.f.c();
-      int $$9 = jo.c($$0.e);
-      int $$10 = jo.c($$0.f);
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
+   }
 
-      for (int $$11 = $$7 - 1; $$11 >= $$8; $$11--) {
-         long $$12 = jo.b($$0.e, $$11, $$0.f);
-         drz $$13 = this.f.c($$12);
-         if ($$13 != null) {
-            int $$14 = jo.c($$11);
-            int $$15 = $$14 + 15;
-            boolean $$16 = false;
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
 
-            for (int $$17 = 0; $$17 < 16; $$17++) {
-               for (int $$18 = 0; $$18 < 16; $$18++) {
-                  int $$19 = $$2.a($$18, $$17);
-                  if ($$19 <= $$15) {
-                     int $$20 = $$17 == 0 ? $$3.a($$18, 15) : $$2.a($$18, $$17 - 1);
-                     int $$21 = $$17 == 15 ? $$4.a($$18, 0) : $$2.a($$18, $$17 + 1);
-                     int $$22 = $$18 == 0 ? $$5.a(15, $$17) : $$2.a($$18 - 1, $$17);
-                     int $$23 = $$18 == 15 ? $$6.a(0, $$17) : $$2.a($$18 + 1, $$17);
-                     int $$24 = Math.max(Math.max($$20, $$21), Math.max($$22, $$23));
-
-                     for (int $$25 = $$15; $$25 >= Math.max($$14, $$19); $$25--) {
-                        $$13.a($$18, jo.b($$25), $$17, 15);
-                        if ($$25 == $$19 || $$25 < $$24) {
-                           long $$26 = im.a($$9 + $$18, $$25, $$10 + $$17);
-                           this.c($$26, eli.a.a($$25 == $$19, $$25 < $$20, $$25 < $$21, $$25 < $$22, $$25 < $$23));
-                        }
-                     }
-
-                     if ($$19 < $$14) {
-                        $$16 = true;
-                     }
-                  }
-               }
-            }
-
-            if (!$$16) {
-               break;
-            }
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
          }
       }
+
+      return this.c($$0 + this.c);
+   }
+
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
+      }
+   }
+
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
+   }
+
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
+   }
+
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

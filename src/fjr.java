@@ -1,147 +1,91 @@
-import com.google.common.collect.Lists;
+import com.mojang.authlib.minecraft.BanDetails;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-public class fjr extends fkt {
-   private static final akf a = new akf("icon/draft_report");
-   private int b;
-   private final ws c;
-   private final boolean d;
-   private ws r;
-   private final List<feu> s = Lists.newArrayList();
-   @Nullable
-   private feu u;
+public class fjr {
+   private static final wu b = wu.c("gui.banned.title.temporary").a(n.r);
+   private static final wu c = wu.c("gui.banned.title.permanent").a(n.r);
+   public static final wu a = wu.c("gui.banned.name.title").a(n.r);
+   private static final wu d = wu.c("gui.banned.skin.title").a(n.r);
+   private static final wu e = wu.a("gui.banned.skin.description", wu.b("https://aka.ms/mcjavamoderation"));
 
-   public fjr(@Nullable ws $$0, boolean $$1) {
-      super(ws.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
-      this.c = $$0;
-      this.d = $$1;
+   public static fju a(BooleanConsumer $$0, BanDetails $$1) {
+      return new fju($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", wt.m, true);
    }
 
-   @Override
-   protected void aM_() {
-      this.b = 0;
-      this.s.clear();
-      ws $$0 = this.d ? ws.c("deathScreen.spectate") : ws.c("deathScreen.respawn");
-      this.s.add(this.c(feu.a($$0, $$0x -> {
-         this.m.s.fY();
-         $$0x.j = false;
-      }).a(this.n / 2 - 100, this.o / 4 + 72, 200, 20).a()));
-      this.u = this.c(
-         feu.a(ws.c("deathScreen.titleScreen"), $$0x -> this.m.ba().a(this.m, this, this::m, true)).a(this.n / 2 - 100, this.o / 4 + 96, 200, 20).a()
-      );
-      this.s.add(this.u);
-      this.c(false);
-      this.r = ws.a("deathScreen.score.value", ws.b(Integer.toString(this.m.s.fU())).a(n.o));
-   }
-
-   @Override
-   public boolean aD_() {
-      return false;
-   }
-
-   private void m() {
-      if (this.d) {
-         this.C();
-      } else {
-         fjl $$0 = new fjr.a($$0x -> {
-            if ($$0x) {
-               this.C();
-            } else {
-               this.m.s.fY();
-               this.m.a(null);
-            }
-         }, ws.c("deathScreen.quit.confirm"), wr.a, ws.c("deathScreen.titleScreen"), ws.c("deathScreen.respawn"));
-         this.m.a($$0);
-         $$0.b(20);
-      }
-   }
-
-   private void C() {
-      if (this.m.r != null) {
-         this.m.r.X();
-      }
-
-      this.m.b(new fjz(ws.c("menu.savingLevel")));
-      this.m.a(new fky());
-   }
-
-   @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().b(2.0F, 2.0F, 2.0F);
-      $$0.a(this.p, this.l, this.n / 2 / 2, 30, 16777215);
-      $$0.c().b();
-      if (this.c != null) {
-         $$0.a(this.p, this.c, this.n / 2, 85, 16777215);
-      }
-
-      $$0.a(this.p, this.r, this.n / 2, 100, 16777215);
-      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         xp $$4 = this.a($$1);
-         $$0.a(this.p, $$4, $$1, $$2);
-      }
-
-      if (this.u != null && this.m.ba().c()) {
-         $$0.a(a, this.u.C() + this.u.x() - 17, this.u.D() + 3, 15, 15);
-      }
-   }
-
-   @Override
-   public void b(feh $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.n, this.o, 1615855616, -1602211792);
-   }
-
-   @Nullable
-   private xp a(int $$0) {
-      if (this.c == null) {
-         return null;
-      } else {
-         int $$1 = this.m.h.a(this.c);
-         int $$2 = this.n / 2 - $$1 / 2;
-         int $$3 = this.n / 2 + $$1 / 2;
-         return $$0 >= $$2 && $$0 <= $$3 ? this.m.h.b().a(this.c, $$0 - $$2) : null;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         xp $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.h() != null && $$3.h().a() == wq.a.a) {
-            this.a($$3);
-            return false;
+   public static fju a(Runnable $$0) {
+      String $$1 = "https://aka.ms/mcjavamoderation";
+      return new fju($$1x -> {
+         if ($$1x) {
+            ac.j().a("https://aka.ms/mcjavamoderation");
          }
-      }
 
-      return super.a($$0, $$1, $$2);
+         $$0.run();
+      }, d, e, "https://aka.ms/mcjavamoderation", wt.m, true);
    }
 
-   @Override
-   public boolean k() {
-      return false;
+   public static fju a(String $$0, Runnable $$1) {
+      String $$2 = "https://aka.ms/mcjavamoderation";
+      return new fju($$1x -> {
+         if ($$1x) {
+            ac.j().a("https://aka.ms/mcjavamoderation");
+         }
+
+         $$1.run();
+      }, a, wu.a("gui.banned.name.description", wu.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", wt.m, true);
    }
 
-   @Override
-   public void e() {
-      super.e();
-      this.b++;
-      if (this.b == 20) {
-         this.c(true);
+   private static wu a(BanDetails $$0) {
+      return f($$0) ? b : c;
+   }
+
+   private static wu b(BanDetails $$0) {
+      return wu.a("gui.banned.description", c($$0), d($$0), wu.b("https://aka.ms/mcjavamoderation"));
+   }
+
+   private static wu c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         fww $$4 = fww.a($$3);
+         wu $$5;
+         if ($$4 != null) {
+            $$5 = wx.a($$4.a().f(), xr.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = wu.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = wu.a("gui.banned.description.reason_id", $$3).a(n.r);
+         }
+
+         return wu.a("gui.banned.description.reason", $$5);
+      } else {
+         return wu.c("gui.banned.description.unknownreason");
       }
    }
 
-   private void c(boolean $$0) {
-      for (feu $$1 : this.s) {
-         $$1.j = $$0;
+   private static wu d(BanDetails $$0) {
+      if (f($$0)) {
+         wu $$1 = e($$0);
+         return wu.a("gui.banned.description.temporary", wu.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return wu.c("gui.banned.description.permanent").a(n.r);
       }
    }
 
-   public static class a extends fjl {
-      public a(BooleanConsumer $$0, ws $$1, ws $$2, ws $$3, ws $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
+   private static wu e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return wt.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? wt.c($$1.toMinutes()) : wt.b($$1.toHours());
       }
+   }
+
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

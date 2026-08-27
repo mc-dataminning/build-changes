@@ -1,75 +1,30 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class edl extends edq {
-   public static final Codec<edl> a = ecz.a.fieldOf("provider").xmap(edl::new, $$0 -> $$0.b).codec();
-   private final ecz b;
+public abstract class edl extends edi {
+   protected final long c;
+   protected final eld.a d;
+   protected final float e;
+   protected final eld f;
 
-   public edl(ecz $$0) {
-      this.b = $$0;
+   protected static <P extends edl> P3<Mu<P>, Long, eld.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         eld.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         axh.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   @Override
-   protected edr<?> a() {
-      return edr.e;
+   protected edl(long $$0, eld.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = eld.b(new dwy(new dwa($$0)), $$1);
    }
 
-   @Override
-   public void a(edq.a $$0) {
-      List<im> $$1 = Lists.newArrayList();
-      List<im> $$2 = $$0.e();
-      List<im> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
-
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.g().e());
-            this.a($$0, $$1x.g(2).e());
-            this.a($$0, $$1x.g().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
-      }
-   }
-
-   private void a(edq.a $$0, im $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(edq.a $$0, im $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         im $$3 = $$1.b($$2);
-         if (dyu.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   protected double a(in $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

@@ -1,53 +1,45 @@
-public class abs implements yz<abk> {
-   public static final yq<wd, abs> a = yz.a(abs::a, abs::new);
-   private final im b;
-   private final int c;
+public class abs implements zb<abm> {
+   public static final ys<vu, abs> a = zb.a(abs::a, abs::new);
+   private final int b;
+   private final in c;
    private final int d;
-   private final dcv e;
 
-   public abs(im $$0, dcv $$1, int $$2, int $$3) {
+   public abs(int $$0, in $$1, int $$2) {
       this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private abs(wd $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
+   private abs(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
       this.d = $$0.readUnsignedByte();
-      this.e = yo.a(ld.f).decode($$0);
    }
 
-   private void a(wd $$0) {
-      $$0.a(this.b);
-      $$0.k(this.c);
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
       $$0.k(this.d);
-      yo.a(ld.f).encode($$0, this.e);
    }
 
    @Override
-   public zb<abs> a() {
-      return afv.j;
+   public zd<abs> a() {
+      return afx.h;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public im b() {
+   public int b() {
       return this.b;
    }
 
-   public int e() {
+   public in e() {
       return this.c;
    }
 
    public int f() {
       return this.d;
-   }
-
-   public dcv g() {
-      return this.e;
    }
 }

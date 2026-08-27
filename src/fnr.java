@@ -1,26 +1,26 @@
-public class fnr extends fnv {
-   private static final ws b = ws.c("title.32bit.deprecation.realms.header").a(n.r);
-   private static final ws c = ws.c("title.32bit.deprecation.realms");
-   private static final ws d = ws.c("title.32bit.deprecation.realms.check");
-   private static final ws r = b.f().f("\n").b(c);
-   private final fkt s;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fnr(fkt $$0) {
-      super(b, c, d, r);
-      this.s = $$0;
+public class fnr implements fnv {
+   private final fjk a;
+
+   public fnr(fjk $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected fii m() {
-      fil $$0 = fil.e().a(8);
-      $$0.a(feu.a(wr.d, $$0x -> {
-         if (this.a.a()) {
-            this.m.m.w = true;
-            this.m.m.av();
-         }
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
+      }
 
-         this.m.a(this.s);
-      }).a());
-      return $$0;
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
+
+      return $$6;
    }
 }

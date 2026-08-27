@@ -1,14 +1,19 @@
-import io.netty.buffer.ByteBuf;
+public interface zh extends abg, vp {
+   void a(zk var1);
 
-public record zh(ws b) implements yz<zf> {
-   public static final yq<ByteBuf, zh> a = wu.f.a(zh::new, zh::b);
+   void a(zl var1);
 
-   @Override
-   public zb<zh> a() {
-      return zp.b;
-   }
+   void a(zi var1);
 
-   public void a(zf $$0) {
-      $$0.a(this);
-   }
+   void a(zj var1);
+
+   void a(zn var1);
+
+   void a(zm var1);
+
+   void a(zq var1);
+
+   void a(zo var1);
+
+   void a(zp var1);
 }

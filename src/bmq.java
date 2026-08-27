@@ -1,141 +1,100 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
 import java.time.Instant;
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import java.util.function.LongSupplier;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class bmq implements bms {
-   public static final int a = 10;
+public record bmq(
+   Instant a,
+   Instant b,
+   Duration c,
+   @Nullable Duration d,
+   List<bnc> e,
+   List<bmw> f,
+   bmy.a g,
+   bnb.a h,
+   bmz<bna> i,
+   bmz<bna> j,
+   bmz<bmv> k,
+   bmz<bmv> l,
+   bmx.a m,
+   bmx.a n,
+   List<bmu> o
+) {
+   public List<Pair<dtc, bne<bmu>>> a() {
+      Map<dtc, List<bmu>> $$0 = this.o.stream().collect(Collectors.groupingBy(bmu::d));
+      return $$0.entrySet()
+         .stream()
+         .map($$0x -> Pair.of((dtc)$$0x.getKey(), bne.a((List)$$0x.getValue())))
+         .sorted(Comparator.<Pair<dtc, bne<bmu>>, Duration>comparing($$0x -> ((bne)$$0x.getSecond()).f()).reversed())
+         .toList();
+   }
+
+   public String b() {
+      return new bms().a(this);
+   }
+
+   public Instant c() {
+      return this.a;
+   }
+
+   public Instant d() {
+      return this.b;
+   }
+
+   public Duration e() {
+      return this.c;
+   }
+
    @Nullable
-   private static Consumer<Path> b = null;
-   private final Map<bml, List<bmx>> c = new Object2ObjectOpenHashMap();
-   private final bky d;
-   private final Executor e;
-   private final bmw f;
-   private final Consumer<bld> g;
-   private final Consumer<Path> h;
-   private final bmn i;
-   private final LongSupplier j;
-   private final long k;
-   private int l;
-   private blc m;
-   private volatile boolean n;
-   private Set<bml> o = ImmutableSet.of();
-
-   private bmq(bmn $$0, LongSupplier $$1, Executor $$2, bmw $$3, Consumer<bld> $$4, Consumer<Path> $$5) {
-      this.i = $$0;
-      this.j = $$1;
-      this.d = new bky($$1, () -> this.l);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = b == null ? $$5 : $$5.andThen(b);
-      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
-      this.m = new bkx(this.j, () -> this.l, false);
-      this.d.c();
+   public Duration f() {
+      return this.d;
    }
 
-   public static bmq a(bmn $$0, LongSupplier $$1, Executor $$2, bmw $$3, Consumer<bld> $$4, Consumer<Path> $$5) {
-      return new bmq($$0, $$1, $$2, $$3, $$4, $$5);
+   public List<bnc> g() {
+      return this.e;
    }
 
-   @Override
-   public synchronized void a() {
-      if (this.e()) {
-         this.n = true;
-      }
+   public List<bmw> h() {
+      return this.f;
    }
 
-   @Override
-   public synchronized void b() {
-      if (this.e()) {
-         this.m = blb.a;
-         this.g.accept(bkz.a);
-         this.a(this.o);
-      }
+   public bmy.a i() {
+      return this.g;
    }
 
-   @Override
-   public void c() {
-      this.g();
-      this.o = this.i.a(() -> this.m);
-
-      for (bml $$0 : this.o) {
-         $$0.a();
-      }
-
-      this.l++;
+   public bnb.a j() {
+      return this.h;
    }
 
-   @Override
-   public void d() {
-      this.g();
-      if (this.l != 0) {
-         for (bml $$0 : this.o) {
-            $$0.a(this.l);
-            if ($$0.g()) {
-               bmx $$1 = new bmx(Instant.now(), this.l, this.m.d());
-               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-            }
-         }
-
-         if (!this.n && this.j.getAsLong() <= this.k) {
-            this.m = new bkx(this.j, () -> this.l, false);
-         } else {
-            this.n = false;
-            bld $$2 = this.d.e();
-            this.m = blb.a;
-            this.g.accept($$2);
-            this.a($$2);
-         }
-      }
+   public bmz<bna> k() {
+      return this.i;
    }
 
-   @Override
-   public boolean e() {
-      return this.d.a();
+   public bmz<bna> l() {
+      return this.j;
    }
 
-   @Override
-   public ble f() {
-      return ble.a(this.d.d(), this.m);
+   public bmz<bmv> m() {
+      return this.k;
    }
 
-   private void g() {
-      if (!this.e()) {
-         throw new IllegalStateException("Not started!");
-      }
+   public bmz<bmv> n() {
+      return this.l;
    }
 
-   private void a(bld $$0) {
-      HashSet<bml> $$1 = new HashSet<>(this.o);
-      this.e.execute(() -> {
-         Path $$2 = this.f.a($$1, this.c, $$0);
-         this.a($$1);
-         this.h.accept($$2);
-      });
+   public bmx.a o() {
+      return this.m;
    }
 
-   private void a(Collection<bml> $$0) {
-      for (bml $$1 : $$0) {
-         $$1.b();
-      }
-
-      this.c.clear();
-      this.d.b();
+   public bmx.a p() {
+      return this.n;
    }
 
-   public static void a(Consumer<Path> $$0) {
-      b = $$0;
+   public List<bmu> q() {
+      return this.o;
    }
 }

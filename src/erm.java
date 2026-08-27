@@ -1,23 +1,36 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record erm(float b) implements erh {
-   public static final Codec<erm> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(erm::c)).apply($$0, erm::new));
+public class erm implements erq {
+   private static final erm b = new erm();
+   public static final Codec<erm> a = Codec.unit(b);
+
+   private erm() {
+   }
 
    @Override
-   public eri b() {
-      return erj.e;
+   public err b() {
+      return ers.n;
    }
 
-   public boolean a(eoa $$0) {
-      return $$0.b().i() < this.b;
+   @Override
+   public Set<eqz<?>> a() {
+      return ImmutableSet.of(erc.j);
    }
 
-   public static erh.a a(float $$0) {
-      return () -> new erm($$0);
+   public boolean a(eol $$0) {
+      Float $$1 = $$0.c(erc.j);
+      if ($$1 != null) {
+         ayg $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public float c() {
-      return this.b;
+   public static erq.a c() {
+      return () -> b;
    }
 }

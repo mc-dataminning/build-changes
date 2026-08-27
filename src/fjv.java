@@ -1,80 +1,102 @@
+import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-public class fjv extends fkt {
-   private static final ws a = ws.c("addServer.enterName");
-   private static final ws b = ws.c("addServer.enterIp");
-   private feu c;
-   private final BooleanConsumer d;
-   private final fwa r;
-   private ffd s;
-   private ffd u;
-   private final fkt v;
+public class fjv extends fld {
+   private static final int d = 20;
+   private final wu r;
+   private ffx s = ffx.a;
+   protected wu a;
+   protected wu b;
+   private int u;
+   protected final BooleanConsumer c;
+   private final List<ffe> v = Lists.newArrayList();
 
-   public fjv(fkt $$0, BooleanConsumer $$1, fwa $$2) {
-      super(ws.c("addServer.title"));
-      this.v = $$0;
-      this.d = $$1;
+   public fjv(BooleanConsumer $$0, wu $$1, wu $$2) {
+      this($$0, $$1, $$2, wt.f, wt.g);
+   }
+
+   public fjv(BooleanConsumer $$0, wu $$1, wu $$2, wu $$3, wu $$4) {
+      super($$1);
+      this.c = $$0;
       this.r = $$2;
+      this.a = $$3;
+      this.b = $$4;
+   }
+
+   @Override
+   public wu i() {
+      return wt.a(super.i(), this.r);
    }
 
    @Override
    protected void aM_() {
-      this.u = new ffd(this.p, this.n / 2 - 100, 66, 200, 20, ws.c("addServer.enterName"));
-      this.u.a(this.r.a);
-      this.u.b($$0 -> this.C());
-      this.d(this.u);
-      this.s = new ffd(this.p, this.n / 2 - 100, 106, 200, 20, ws.c("addServer.enterIp"));
-      this.s.f(128);
-      this.s.a(this.r.b);
-      this.s.b($$0 -> this.C());
-      this.d(this.s);
-      this.c(
-         ffb.a(fwa.a::a)
-            .a(fwa.a.values())
-            .a(this.r.b())
-            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, ws.c("addServer.resourcePack"), ($$0, $$1) -> this.r.a($$1))
-      );
-      this.c = this.c(feu.a(ws.c("addServer.add"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
-      this.c(feu.a(wr.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
-      this.C();
+      super.aM_();
+      this.s = ffx.a(this.p, this.r, this.n - 50);
+      int $$0 = axz.a(this.C() + this.D() + 20, this.o / 6 + 96, this.o - 24);
+      this.v.clear();
+      this.a($$0);
+   }
+
+   protected void a(int $$0) {
+      this.a(ffe.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
+      this.a(ffe.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
+   }
+
+   protected void a(ffe $$0) {
+      this.v.add(this.c($$0));
    }
 
    @Override
-   protected void aC_() {
-      this.b(this.u);
-   }
-
-   @Override
-   public void a(fcu $$0, int $$1, int $$2) {
-      String $$3 = this.s.a();
-      String $$4 = this.u.a();
-      this.b($$0, $$1, $$2);
-      this.s.a($$3);
-      this.u.a($$4);
-   }
-
-   private void m() {
-      this.r.a = this.u.a();
-      this.r.b = this.s.a();
-      this.d.accept(true);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.v);
-   }
-
-   private void C() {
-      this.c.j = fxd.b(this.s.a()) && !this.u.a().isEmpty();
-   }
-
-   @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
+   public void a(fer $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
-      this.u.a($$0, $$1, $$2, $$3);
-      this.s.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
+      this.s.a($$0, this.n / 2, this.C());
+   }
+
+   private int m() {
+      int $$0 = (this.o - this.D()) / 2;
+      return axz.a($$0 - 20 - 9, 10, 80);
+   }
+
+   private int C() {
+      return this.m() + 20;
+   }
+
+   private int D() {
+      return this.s.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.u = $$0;
+
+      for (ffe $$1 : this.v) {
+         $$1.j = false;
+      }
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      if (--this.u == 0) {
+         for (ffe $$0 : this.v) {
+            $$0.j = true;
+         }
+      }
+   }
+
+   @Override
+   public boolean aD_() {
+      return false;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 }

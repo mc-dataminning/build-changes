@@ -1,37 +1,50 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import javax.annotation.Nullable;
 
-public class cbm {
-   private final brg a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
+public class cbm extends cbk {
+   @Nullable
+   private in p;
 
-   public cbm(brg $$0) {
-      this.a = $$0;
+   public cbm(bsc $$0, dad $$1) {
+      super($$0, $$1);
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   @Override
+   public emo a(in $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
    }
 
-   public boolean a(bql $$0) {
-      int $$1 = $$0.aj();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
+   @Override
+   public emo a(brh $$0, int $$1) {
+      this.p = $$0.dn();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(brh $$0, double $$1) {
+      emo $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
       } else {
-         this.a.dN().af().a("hasLineOfSight");
-         boolean $$2 = this.a.E($$0);
-         this.a.dN().af().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
+         this.p = $$0.dn();
+         this.d = $$1;
+         return true;
+      }
+   }
 
-         return $$2;
+   @Override
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dl(), (double)this.a.dh())
+               && (!(this.a.du() > (double)this.p.v()) || !in.a((double)this.p.u(), this.a.du(), (double)this.p.w()).a(this.a.dl(), (double)this.a.dh()))) {
+               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
       }
    }
 }

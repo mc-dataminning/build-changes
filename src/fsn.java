@@ -1,15 +1,13 @@
-import java.util.function.Function;
-
-public abstract class fsn {
-   protected final Function<akf, gbm> v;
-
-   public fsn(Function<akf, gbm> $$0) {
-      this.v = $$0;
+public class fsn<T extends bsa> extends fso<T> {
+   public fsn(fvb $$0) {
+      super($$0);
    }
 
-   public final gbm a(akf $$0) {
-      return this.v.apply($$0);
+   public static fvj a(fvf $$0) {
+      fvj $$1 = fso.a($$0, 0.0F);
+      fvk $$2 = $$1.a();
+      $$2.a("right_leg", fvg.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fvd.a(-1.9F, 12.0F, 0.0F));
+      $$2.a("left_leg", fvg.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fvd.a(1.9F, 12.0F, 0.0F));
+      return $$1;
    }
-
-   public abstract void a(exn var1, exr var2, int var3, int var4, float var5, float var6, float var7, float var8);
 }

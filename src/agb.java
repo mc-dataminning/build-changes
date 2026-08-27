@@ -1,29 +1,29 @@
-public class agb implements yz<afx> {
-   public static final yq<vs, agb> a = yz.a(agb::a, agb::new);
-   private final bon b;
+public class agb implements zb<afz> {
+   public static final ys<vu, agb> a = zb.a(agb::a, agb::new);
+   private final int b;
 
-   public agb(bon $$0) {
+   public agb(int $$0) {
       this.b = $$0;
    }
 
-   private agb(vs $$0) {
-      this.b = bon.a($$0.readUnsignedByte());
+   private agb(vu $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vs $$0) {
-      $$0.k(this.b.a());
+   private void a(vu $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zb<agb> a() {
-      return afv.bg;
+   public zd<agb> a() {
+      return afx.be;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 
-   public bon b() {
+   public int b() {
       return this.b;
    }
 }

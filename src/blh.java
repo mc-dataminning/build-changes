@@ -1,47 +1,66 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class blh {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private blc f = blb.a;
+public final class blh {
+   private final Object2ObjectMap<bla<?>, Object> a = new Object2ObjectArrayMap();
 
-   public blh(LongSupplier $$0, String $$1, long $$2) {
-      this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
-   }
-
-   public ble a() {
-      this.f = new bkx(this.b, () -> this.d, false);
-      this.d++;
-      return this.f;
-   }
-
-   public void b() {
-      if (this.f != blb.a) {
-         bld $$0 = this.f.d();
-         this.f = blb.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + ac.e() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
-         }
-      }
+   public <T> void a(bla<T> $$0, @Nullable T $$1) {
+      this.a.put($$0, $$1);
    }
 
    @Nullable
-   public static blh a(String $$0) {
+   public <T> T a(bla<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   public <T> T b(bla<T> $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   public <T> T b(bla<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.a($$0), $$1);
+   }
+
+   @Nullable
+   @SafeVarargs
+   public final <T> T a(bla<T>... $$0) {
+      for (bla<T> $$1 : $$0) {
+         T $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
       return null;
    }
 
-   public static ble a(ble $$0, @Nullable blh $$1) {
-      return $$1 != null ? ble.a($$1.a(), $$0) : $$0;
+   @SafeVarargs
+   public final <T> T b(bla<T>... $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public void a(blh $$0) {
+      this.a.putAll($$0.a);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof blh $$1 ? this.a.equals($$1.a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

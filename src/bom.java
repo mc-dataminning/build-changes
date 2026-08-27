@@ -1,44 +1,64 @@
-public class bom {
-   public static void a(czu $$0, im $$1, boj $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+
+public class bom extends bor {
+   public static final Codec<bom> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
+               )
+               .apply($$0, bom::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0),
+         Function.identity()
+      );
+   private final float b;
+   private final float f;
+   private final int g;
+   private final int h;
+
+   public static bom a(float $$0, float $$1, int $$2, int $$3) {
+      return new bom($$0, $$1, $$2, $$3);
    }
 
-   public static void a(czu $$0, bql $$1, boj $$2) {
-      a($$0, $$1.ds(), $$1.du(), $$1.dy(), $$2);
+   private bom(float $$0, float $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
    }
 
-   private static void a(czu $$0, double $$1, double $$2, double $$3, boj $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
-      }
+   @Override
+   public int a(ayg $$0) {
+      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
    }
 
-   public static void a(czu $$0, im $$1, je<csd> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   public static int a(ayg $$0, float $$1, float $$2, float $$3, float $$4) {
+      return (int)axz.a(axz.c($$0, $$1, $$2), $$3, $$4);
    }
 
-   public static void a(czu $$0, double $$1, double $$2, double $$3, csd $$4) {
-      double $$5 = (double)bqr.ag.k();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
-
-      while (!$$4.d()) {
-         cgv $$11 = new cgv($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
+   @Override
+   public int a() {
+      return this.g;
    }
 
-   public static void a(dpy $$0, dpy $$1, czu $$2, im $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof boj $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
-         }
-      }
+   @Override
+   public int b() {
+      return this.h;
+   }
+
+   @Override
+   public bos<?> c() {
+      return bos.f;
+   }
+
+   @Override
+   public String toString() {
+      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
    }
 }

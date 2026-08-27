@@ -1,39 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
 public class amw {
-   public static void a(CommandDispatcher<ec> $$0) {
-      LiteralCommandNode<ec> $$1 = $$0.register(
-         (LiteralArgumentBuilder)ed.a("msg").then(ed.a("targets", ep.d()).then(ed.a("message", et.a()).executes($$0x -> {
-            Collection<aqf> $$1x = ep.f($$0x, "targets");
-            if (!$$1x.isEmpty()) {
-               et.a($$0x, "message", $$2 -> a((ec)$$0x.getSource(), $$1x, $$2));
-            }
-
-            return $$1x.size();
-         })))
+   public static void a(CommandDispatcher<ed> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("list").executes($$0x -> a((ed)$$0x.getSource())))
+            .then(ee.a("uuids").executes($$0x -> b((ed)$$0x.getSource())))
       );
-      $$0.register((LiteralArgumentBuilder)ed.a("tell").redirect($$1));
-      $$0.register((LiteralArgumentBuilder)ed.a("w").redirect($$1));
    }
 
-   private static void a(ec $$0, Collection<aqf> $$1, xi $$2) {
-      wo.a $$3 = wo.a(wo.e, $$0);
-      xh $$4 = xh.a($$2);
-      boolean $$5 = false;
+   private static int a(ed $$0) {
+      return a($$0, clh::O_);
+   }
 
-      for (aqf $$6 : $$1) {
-         wo.a $$7 = wo.a(wo.f, $$0).c($$6.O_());
-         $$0.a($$4, false, $$7);
-         boolean $$8 = $$0.a($$6);
-         $$6.a($$4, $$8, $$3);
-         $$5 |= $$8 && $$2.j();
-      }
+   private static int b(ed $$0) {
+      return a($$0, $$0x -> wu.a("commands.list.nameAndId", $$0x.ad(), wu.a($$0x.fZ().getId())));
+   }
 
-      if ($$5) {
-         $$0.a(aub.f);
-      }
+   private static int a(ed $$0, Function<aqi, wu> $$1) {
+      aue $$2 = $$0.l().ah();
+      List<aqi> $$3 = $$2.t();
+      wu $$4 = wx.b($$3, $$1);
+      $$0.a(() -> wu.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

@@ -1,26 +1,49 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bzo extends byy {
-   public static final float i = 0.001F;
-   protected final float j;
+public class bzo extends byx {
+   private static final ccq b = ccq.b().a(6.0);
+   public static final int a = 400;
+   private final ceb c;
+   private cku d;
+   private int e;
 
-   public bzo(brm $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public bzo(ceb $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(byx.a.a, byx.a.b));
    }
 
-   public bzo(brm $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected etf h() {
-      if (this.b.bf()) {
-         etf $$0 = ccb.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
+   public boolean a() {
+      if (!this.c.dN().Q()) {
+         return false;
+      } else if (this.c.ej().a(8000) != 0) {
+         return false;
       } else {
-         return this.b.ej().i() >= this.j ? ccb.a(this.b, 10, 7) : super.h();
+         this.d = this.c.dN().a(cku.class, b, this.c, this.c.ds(), this.c.du(), this.c.dy(), this.c.cI().c(6.0, 2.0, 6.0));
+         return this.d != null;
       }
+   }
+
+   @Override
+   public boolean b() {
+      return this.e > 0;
+   }
+
+   @Override
+   public void c() {
+      this.e = this.a(400);
+      this.c.w(true);
+   }
+
+   @Override
+   public void d() {
+      this.c.w(false);
+      this.d = null;
+   }
+
+   @Override
+   public void e() {
+      this.c.G().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

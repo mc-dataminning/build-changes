@@ -1,16 +1,17 @@
-public record aaf() implements aaa {
-   public static final yq<vs, aaf> a = aaa.a(aaf::a, aaf::new);
-   public static final aaa.b<aaf> b = aaa.a("debug/game_test_clear");
-
-   private aaf(vs $$0) {
-      this();
-   }
-
-   private void a(vs $$0) {
-   }
+public record aaf(dve c, int d) implements aac {
+   public static final ys<wf, aaf> a = ys.a(dve.d, aaf::b, yq.f, aaf::c, aaf::new);
+   public static final aac.b<aaf> b = aac.a("debug/game_event_listeners");
 
    @Override
-   public aaa.b<aaf> a() {
+   public aac.b<aaf> a() {
       return b;
+   }
+
+   public dve b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

@@ -1,71 +1,171 @@
-public class dvz {
-   public static final ake<eku.a> a = a("temperature");
-   public static final ake<eku.a> b = a("vegetation");
-   public static final ake<eku.a> c = a("continentalness");
-   public static final ake<eku.a> d = a("erosion");
-   public static final ake<eku.a> e = a("temperature_large");
-   public static final ake<eku.a> f = a("vegetation_large");
-   public static final ake<eku.a> g = a("continentalness_large");
-   public static final ake<eku.a> h = a("erosion_large");
-   public static final ake<eku.a> i = a("ridge");
-   public static final ake<eku.a> j = a("offset");
-   public static final ake<eku.a> k = a("aquifer_barrier");
-   public static final ake<eku.a> l = a("aquifer_fluid_level_floodedness");
-   public static final ake<eku.a> m = a("aquifer_lava");
-   public static final ake<eku.a> n = a("aquifer_fluid_level_spread");
-   public static final ake<eku.a> o = a("pillar");
-   public static final ake<eku.a> p = a("pillar_rareness");
-   public static final ake<eku.a> q = a("pillar_thickness");
-   public static final ake<eku.a> r = a("spaghetti_2d");
-   public static final ake<eku.a> s = a("spaghetti_2d_elevation");
-   public static final ake<eku.a> t = a("spaghetti_2d_modulator");
-   public static final ake<eku.a> u = a("spaghetti_2d_thickness");
-   public static final ake<eku.a> v = a("spaghetti_3d_1");
-   public static final ake<eku.a> w = a("spaghetti_3d_2");
-   public static final ake<eku.a> x = a("spaghetti_3d_rarity");
-   public static final ake<eku.a> y = a("spaghetti_3d_thickness");
-   public static final ake<eku.a> z = a("spaghetti_roughness");
-   public static final ake<eku.a> A = a("spaghetti_roughness_modulator");
-   public static final ake<eku.a> B = a("cave_entrance");
-   public static final ake<eku.a> C = a("cave_layer");
-   public static final ake<eku.a> D = a("cave_cheese");
-   public static final ake<eku.a> E = a("ore_veininess");
-   public static final ake<eku.a> F = a("ore_vein_a");
-   public static final ake<eku.a> G = a("ore_vein_b");
-   public static final ake<eku.a> H = a("ore_gap");
-   public static final ake<eku.a> I = a("noodle");
-   public static final ake<eku.a> J = a("noodle_thickness");
-   public static final ake<eku.a> K = a("noodle_ridge_a");
-   public static final ake<eku.a> L = a("noodle_ridge_b");
-   public static final ake<eku.a> M = a("jagged");
-   public static final ake<eku.a> N = a("surface");
-   public static final ake<eku.a> O = a("surface_secondary");
-   public static final ake<eku.a> P = a("clay_bands_offset");
-   public static final ake<eku.a> Q = a("badlands_pillar");
-   public static final ake<eku.a> R = a("badlands_pillar_roof");
-   public static final ake<eku.a> S = a("badlands_surface");
-   public static final ake<eku.a> T = a("iceberg_pillar");
-   public static final ake<eku.a> U = a("iceberg_pillar_roof");
-   public static final ake<eku.a> V = a("iceberg_surface");
-   public static final ake<eku.a> W = a("surface_swamp");
-   public static final ake<eku.a> X = a("calcite");
-   public static final ake<eku.a> Y = a("gravel");
-   public static final ake<eku.a> Z = a("powder_snow");
-   public static final ake<eku.a> aa = a("packed_ice");
-   public static final ake<eku.a> ab = a("ice");
-   public static final ake<eku.a> ac = a("soul_sand_layer");
-   public static final ake<eku.a> ad = a("gravel_layer");
-   public static final ake<eku.a> ae = a("patch");
-   public static final ake<eku.a> af = a("netherrack");
-   public static final ake<eku.a> ag = a("nether_wart");
-   public static final ake<eku.a> ah = a("nether_state_selector");
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-   private static ake<eku.a> a(String $$0) {
-      return ake.a(ld.aG, new akf($$0));
+public class dvz {
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<dqh> b = $$0 -> !$$0.i();
+   static final Predicate<dqh> c = dqg.a::d;
+   private final awo d;
+   private final Predicate<dqh> e;
+   private final dsd f;
+
+   public dvz(dsd $$0, dvz.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = axz.e($$0.J_() + 1);
+      this.d = new ayn($$2, 256);
    }
 
-   public static eku a(iw<eku.a> $$0, dwd $$1, ake<eku.a> $$2) {
-      iv<eku.a> $$3 = $$0.b($$2);
-      return eku.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   public static void a(dsd $$0, Set<dvz.a> $$1) {
+      int $$2 = $$1.size();
+      ObjectList<dvz> $$3 = new ObjectArrayList($$2);
+      ObjectListIterator<dvz> $$4 = $$3.iterator();
+      int $$5 = $$0.b() + 16;
+      in.a $$6 = new in.a();
+
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            for (dvz.a $$9 : $$1) {
+               $$3.add($$0.a($$9));
+            }
+
+            for (int $$10 = $$5 - 1; $$10 >= $$0.I_(); $$10--) {
+               $$6.d($$7, $$10, $$8);
+               dqh $$11 = $$0.a_($$6);
+               if (!$$11.a(ddg.a)) {
+                  while ($$4.hasNext()) {
+                     dvz $$12 = (dvz)$$4.next();
+                     if ($$12.e.test($$11)) {
+                        $$12.a($$7, $$8, $$10 + 1);
+                        $$4.remove();
+                     }
+                  }
+
+                  if ($$3.isEmpty()) {
+                     break;
+                  }
+
+                  $$4.back($$2);
+               }
+            }
+         }
+      }
+   }
+
+   public boolean a(int $$0, int $$1, int $$2, dqh $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
+         return false;
+      } else {
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
+            }
+         } else if ($$4 - 1 == $$1) {
+            in.a $$5 = new in.a();
+
+            for (int $$6 = $$1 - 1; $$6 >= this.f.I_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
+               }
+            }
+
+            this.a($$0, $$2, this.f.I_());
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
+   }
+
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
+   }
+
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.I_();
+   }
+
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.I_());
+   }
+
+   public void a(dsd $$0, dvz.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
+   }
+
+   public long[] a() {
+      return this.d.a();
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
+   }
+
+   public static enum a implements ayt {
+      a("WORLD_SURFACE_WG", dvz.b.a, dvz.b),
+      b("WORLD_SURFACE", dvz.b.c, dvz.b),
+      c("OCEAN_FLOOR_WG", dvz.b.a, dvz.c),
+      d("OCEAN_FLOOR", dvz.b.b, dvz.c),
+      e("MOTION_BLOCKING", dvz.b.c, $$0 -> $$0.d() || !$$0.u().c()),
+      f("MOTION_BLOCKING_NO_LEAVES", dvz.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof dho));
+
+      public static final Codec<dvz.a> g = ayt.a(dvz.a::values);
+      private final String h;
+      private final dvz.b i;
+      private final Predicate<dqh> j;
+
+      private a(String $$0, dvz.b $$1, Predicate<dqh> $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public String a() {
+         return this.h;
+      }
+
+      public boolean b() {
+         return this.i == dvz.b.c;
+      }
+
+      public boolean d() {
+         return this.i != dvz.b.a;
+      }
+
+      public Predicate<dqh> e() {
+         return this.j;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

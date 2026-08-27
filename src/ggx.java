@@ -1,19 +1,60 @@
-public class ggx extends ght<chl, frv<chl>> {
-   private static final akf a = new akf("textures/entity/ghast/ghast.png");
-   private static final akf i = new akf("textures/entity/ghast/ghast_shooting.png");
+@FunctionalInterface
+public interface ggx<T extends brh> {
+   ggw<T> create(ggx.a var1);
 
-   public ggx(ggn.a $$0) {
-      super($$0, new frv<>($$0.a(fuq.ag)), 1.5F);
-   }
+   public static class a {
+      private final ggv a;
+      private final ghv b;
+      private final gci c;
+      private final gbk d;
+      private final atr e;
+      private final fux f;
+      private final fep g;
 
-   public akf a(chl $$0) {
-      return $$0.r() ? i : a;
-   }
+      public a(ggv $$0, ghv $$1, gci $$2, gbk $$3, atr $$4, fux $$5, fep $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
 
-   protected void a(chl $$0, exn $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+      public ggv a() {
+         return this.a;
+      }
+
+      public ghv b() {
+         return this.b;
+      }
+
+      public gci c() {
+         return this.c;
+      }
+
+      public gbk d() {
+         return this.d;
+      }
+
+      public atr e() {
+         return this.e;
+      }
+
+      public fux f() {
+         return this.f;
+      }
+
+      public gpf g() {
+         return this.c.a().a();
+      }
+
+      public fvb a(fuz $$0) {
+         return this.f.a($$0);
+      }
+
+      public fep h() {
+         return this.g;
+      }
    }
 }

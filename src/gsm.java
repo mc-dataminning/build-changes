@@ -1,37 +1,50 @@
-public class gsm extends gsq {
-   private final ws a;
-   private ffn b = ffn.a;
-   private final fkt c;
-   private int B;
+import javax.annotation.Nullable;
 
-   public gsm(fkt $$0, ws $$1, ws $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public class gsm {
+   private final gst a;
+   private final fdi b;
+   @Nullable
+   private fhp c;
+
+   public gsm(gst $$0, fdi $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void aM_() {
-      this.m.ae().i();
-      this.b = ffn.a(this.p, this.a, this.n - 50);
-      this.B = this.b.a() * 9;
-      this.c(feu.a(wr.k, $$0 -> this.m.a(this.c)).a(this.n / 2 - 100, this.o / 2 + this.B / 2 + 9, 200, 20).a());
+   private void a() {
+      if (this.c != null) {
+         this.a.a(this.c);
+      }
+
+      wu $$0 = wu.c("tutorial.bundleInsert.title");
+      wu $$1 = wu.c("tutorial.bundleInsert.description");
+      this.c = new fhp(fhp.a.g, $$0, $$1, true);
+      this.a.a(this.c, 160);
    }
 
-   @Override
-   public ws i() {
-      return ws.i().b(this.l).f(": ").b(this.a);
+   private void b() {
+      if (this.c != null) {
+         this.a.a(this.c);
+         this.c = null;
+      }
+
+      if (!this.b.t) {
+         this.b.t = true;
+         this.b.av();
+      }
    }
 
-   @Override
-   public void d() {
-      fcu.Q().a(this.c);
-   }
-
-   @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.o / 2 - this.B / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.n / 2, this.o / 2 - this.B / 2);
+   public void a(csz $$0, csz $$1, col $$2) {
+      if (!this.b.t) {
+         if (!$$0.d() && $$1.a(ctc.qU)) {
+            if ($$2 == col.a) {
+               this.a();
+            } else if ($$2 == col.b) {
+               this.b();
+            }
+         } else if ($$0.a(ctc.qU) && !$$1.d() && $$2 == col.b) {
+            this.b();
+         }
+      }
    }
 }

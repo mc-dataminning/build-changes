@@ -1,213 +1,140 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public abstract class elu extends elp {
-   public static final float e = 0.44444445F;
-
-   @Override
-   public elq d() {
-      return els.d;
+public class elu extends elo<elu.a> {
+   protected elu(dsq $$0) {
+      super(dam.a, $$0, new elu.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
    @Override
-   public elq e() {
-      return els.e;
+   protected int a(long $$0) {
+      return this.e($$0, false);
    }
 
-   @Override
-   public cry a() {
-      return csg.qA;
-   }
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = jp.e($$0);
+      int $$3 = jp.c($$2);
+      elu.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(jp.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         dsi $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = in.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
 
-   @Override
-   public void a(czu $$0, im $$1, elr $$2, ayd $$3) {
-      im $$4 = $$1.c();
-      if ($$0.a_($$4).i() && !$$0.a_($$4).i($$0, $$4)) {
-         if ($$3.a(100) == 0) {
-            double $$5 = (double)$$1.u() + $$3.j();
-            double $$6 = (double)$$1.v() + 1.0;
-            double $$7 = (double)$$1.w() + $$3.j();
-            $$0.a(kw.V, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-            $$0.a($$5, $$6, $$7, auz.nH, ava.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+               $$2 = jp.a($$2, is.b);
+            }
          }
 
-         if ($$3.a(200) == 0) {
-            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), auz.nF, ava.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
+         return $$6.a(jp.b(in.a($$0)), jp.b(in.b($$0)), jp.b(in.c($$0)));
+      } else {
+         return $$1 && !this.j($$2) ? 0 : 15;
       }
    }
 
    @Override
-   public void b(czu $$0, im $$1, elr $$2, ayd $$3) {
-      if ($$0.aa().b(czq.b)) {
-         int $$4 = $$3.a(3);
-         if ($$4 > 0) {
-            im $$5 = $$1;
+   protected void h(long $$0) {
+      int $$1 = jp.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
+      }
 
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
-               if (!$$0.p($$5)) {
-                  return;
-               }
+      long $$2 = jp.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
+   }
 
-               dpy $$7 = $$0.a_($$5);
-               if ($$7.i()) {
-                  if (this.a((czx)$$0, $$5)) {
-                     $$0.b($$5, dci.a($$0, $$5));
-                     return;
-                  }
-               } else if ($$7.d()) {
-                  return;
-               }
-            }
+   @Override
+   protected void i(long $$0) {
+      long $$1 = jp.f($$0);
+      int $$2 = jp.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = jp.a($$3, is.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
          } else {
-            for (int $$8 = 0; $$8 < 3; $$8++) {
-               im $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
-               if (!$$0.p($$9)) {
-                  return;
-               }
-
-               if ($$0.u($$9.c()) && this.b($$0, $$9)) {
-                  $$0.b($$9.c(), dci.a($$0, $$9));
-               }
-            }
+            this.d.c.remove($$1);
          }
       }
    }
 
-   private boolean a(czx $$0, im $$1) {
-      for (ir $$2 : ir.values()) {
-         if (this.b($$0, $$1.a($$2))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private boolean b(czx $$0, im $$1) {
-      return $$1.v() >= $$0.I_() && $$1.v() < $$0.al() && !$$0.B($$1) ? false : $$0.a_($$1).j();
-   }
-
-   @Nullable
    @Override
-   public ku h() {
-      return kw.i;
-   }
+   protected dsi g(long $$0) {
+      dsi $$1 = (dsi)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(jp.f($$0));
+         if ($$2 != this.d.b && jp.c($$0) < $$2) {
+            long $$3 = jp.a($$0, is.b);
 
-   @Override
-   protected void a(czv $$0, im $$1, dpy $$2) {
-      this.a($$0, $$1);
-   }
-
-   @Override
-   public int b(czx $$0) {
-      return $$0.D_().i() ? 4 : 2;
-   }
-
-   @Override
-   public dpy b(elr $$0) {
-      return dcx.H.n().a(dhl.b, Integer.valueOf(e($$0)));
-   }
-
-   @Override
-   public boolean a(elq $$0) {
-      return $$0 == els.e || $$0 == els.d;
-   }
-
-   @Override
-   public int c(czx $$0) {
-      return $$0.D_().i() ? 1 : 2;
-   }
-
-   @Override
-   public boolean a(elr $$0, cza $$1, im $$2, elq $$3, ir $$4) {
-      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(avt.a);
-   }
-
-   @Override
-   public int a(czx $$0) {
-      return $$0.D_().i() ? 10 : 30;
-   }
-
-   @Override
-   public int a(czu $$0, im $$1, elr $$2, elr $$3) {
-      int $$4 = this.a((czx)$$0);
-      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a((cza)$$0, $$1) > $$2.a((cza)$$0, $$1) && $$0.E_().a(4) != 0) {
-         $$4 *= 4;
-      }
-
-      return $$4;
-   }
-
-   private void a(czv $$0, im $$1) {
-      $$0.c(1501, $$1, 0);
-   }
-
-   @Override
-   protected boolean a(czu $$0) {
-      return $$0.aa().b(czq.V);
-   }
-
-   @Override
-   protected void a(czv $$0, im $$1, dpy $$2, ir $$3, elr $$4) {
-      if ($$3 == ir.a) {
-         elr $$5 = $$0.b_($$1);
-         if (this.a(avt.b) && $$5.a(avt.a)) {
-            if ($$2.b() instanceof dhl) {
-               $$0.a($$1, dcx.b.n(), 3);
+            dsi $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = jp.a($$3, is.b);
             }
 
-            this.a($$0, $$1);
-            return;
+            return a($$4);
+         } else {
+            return this.j($$0) ? new dsi(15) : new dsi();
          }
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   protected boolean i() {
-      return true;
-   }
+   private static dsi a(dsi $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
 
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
 
-   @Override
-   public Optional<auy> j() {
-      return Optional.of(auz.dl);
-   }
-
-   public static class a extends elu {
-      @Override
-      protected void a(dpz.a<elq, elr> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(elr $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(elr $$0) {
-         return false;
+         return new dsi($$2);
       }
    }
 
-   public static class b extends elu {
-      @Override
-      public int d(elr $$0) {
-         return 8;
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
+   }
+
+   protected boolean l(long $$0) {
+      long $$1 = jp.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || jp.c($$0) >= $$2;
+   }
+
+   protected int m(long $$0) {
+      return this.d.c.get($$0);
+   }
+
+   protected int c() {
+      return this.d.b;
+   }
+
+   protected static final class a extends ell<elu.a> {
+      int b;
+      final Long2IntOpenHashMap c;
+
+      public a(Long2ObjectOpenHashMap<dsi> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
       }
 
-      @Override
-      public boolean c(elr $$0) {
-         return true;
+      public elu.a a() {
+         return new elu.a(this.a.clone(), this.c.clone(), this.b);
       }
    }
 }

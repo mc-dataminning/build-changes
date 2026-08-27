@@ -1,36 +1,19 @@
-public class gkh<T extends bre, M extends frr<T>> extends gky<T, M> {
-   private static final akf a = new akf("textures/entity/elytra.png");
-   private final fro<T> b;
+public class gkh extends gli<cjj, frk<cjj>> {
+   private static final akh a = new akh("textures/entity/breeze/breeze_wind.png");
+   private static final frk<cjj> b = new frk<>(frk.a(128, 128).a());
 
-   public gkh(gii<T, M> $$0, fun $$1) {
+   public gkh(gis<cjj, frk<cjj>> $$0) {
       super($$0);
-      this.b = new fro<>($$1.a(fuq.W));
    }
 
-   public void a(exn $$0, gbe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      csd $$10 = $$3.d(bqs.e);
-      if ($$10.a(csg.nT)) {
-         akf $$13;
-         if ($$3 instanceof gad $$11) {
-            gnn $$12 = $$11.b();
-            if ($$12.d() != null) {
-               $$13 = $$12.d();
-            } else if ($$12.c() != null && $$11.a(ckm.a)) {
-               $$13 = $$12.c();
-            } else {
-               $$13 = a;
-            }
-         } else {
-            $$13 = a;
-         }
+   public void a(exx $$0, gbo $$1, int $$2, cjj $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      float $$10 = (float)$$3.ai + $$6;
+      eyb $$11 = $$1.getBuffer(gbw.a(a, this.a($$10) % 1.0F, 0.0F));
+      b.a($$3, $$4, $$5, $$7, $$8, $$9);
+      ggd.a(b, b.e()).a($$0, $$11, $$2, gmp.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   }
 
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         exr $$17 = ghl.a($$1, gbm.a($$13), false, $$10.x());
-         this.b.a($$0, $$17, $$2, gmf.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.b();
-      }
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

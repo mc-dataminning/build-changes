@@ -1,98 +1,51 @@
-public class avj {
-   public static final avi<dcv> a = a("mined", lc.e);
-   public static final avi<cry> b = a("crafted", lc.h);
-   public static final avi<cry> c = a("used", lc.h);
-   public static final avi<cry> d = a("broken", lc.h);
-   public static final avi<cry> e = a("picked_up", lc.h);
-   public static final avi<cry> f = a("dropped", lc.h);
-   public static final avi<bqr<?>> g = a("killed", lc.g);
-   public static final avi<bqr<?>> h = a("killed_by", lc.g);
-   public static final avi<akf> i = a("custom", lc.m);
-   public static final akf j = a("leave_game", avh.b);
-   public static final akf k = a("play_time", avh.e);
-   public static final akf l = a("total_world_time", avh.e);
-   public static final akf m = a("time_since_death", avh.e);
-   public static final akf n = a("time_since_rest", avh.e);
-   public static final akf o = a("sneak_time", avh.e);
-   public static final akf p = a("walk_one_cm", avh.d);
-   public static final akf q = a("crouch_one_cm", avh.d);
-   public static final akf r = a("sprint_one_cm", avh.d);
-   public static final akf s = a("walk_on_water_one_cm", avh.d);
-   public static final akf t = a("fall_one_cm", avh.d);
-   public static final akf u = a("climb_one_cm", avh.d);
-   public static final akf v = a("fly_one_cm", avh.d);
-   public static final akf w = a("walk_under_water_one_cm", avh.d);
-   public static final akf x = a("minecart_one_cm", avh.d);
-   public static final akf y = a("boat_one_cm", avh.d);
-   public static final akf z = a("pig_one_cm", avh.d);
-   public static final akf A = a("horse_one_cm", avh.d);
-   public static final akf B = a("aviate_one_cm", avh.d);
-   public static final akf C = a("swim_one_cm", avh.d);
-   public static final akf D = a("strider_one_cm", avh.d);
-   public static final akf E = a("jump", avh.b);
-   public static final akf F = a("drop", avh.b);
-   public static final akf G = a("damage_dealt", avh.c);
-   public static final akf H = a("damage_dealt_absorbed", avh.c);
-   public static final akf I = a("damage_dealt_resisted", avh.c);
-   public static final akf J = a("damage_taken", avh.c);
-   public static final akf K = a("damage_blocked_by_shield", avh.c);
-   public static final akf L = a("damage_absorbed", avh.c);
-   public static final akf M = a("damage_resisted", avh.c);
-   public static final akf N = a("deaths", avh.b);
-   public static final akf O = a("mob_kills", avh.b);
-   public static final akf P = a("animals_bred", avh.b);
-   public static final akf Q = a("player_kills", avh.b);
-   public static final akf R = a("fish_caught", avh.b);
-   public static final akf S = a("talked_to_villager", avh.b);
-   public static final akf T = a("traded_with_villager", avh.b);
-   public static final akf U = a("eat_cake_slice", avh.b);
-   public static final akf V = a("fill_cauldron", avh.b);
-   public static final akf W = a("use_cauldron", avh.b);
-   public static final akf X = a("clean_armor", avh.b);
-   public static final akf Y = a("clean_banner", avh.b);
-   public static final akf Z = a("clean_shulker_box", avh.b);
-   public static final akf aa = a("interact_with_brewingstand", avh.b);
-   public static final akf ab = a("interact_with_beacon", avh.b);
-   public static final akf ac = a("inspect_dropper", avh.b);
-   public static final akf ad = a("inspect_hopper", avh.b);
-   public static final akf ae = a("inspect_dispenser", avh.b);
-   public static final akf af = a("play_noteblock", avh.b);
-   public static final akf ag = a("tune_noteblock", avh.b);
-   public static final akf ah = a("pot_flower", avh.b);
-   public static final akf ai = a("trigger_trapped_chest", avh.b);
-   public static final akf aj = a("open_enderchest", avh.b);
-   public static final akf ak = a("enchant_item", avh.b);
-   public static final akf al = a("play_record", avh.b);
-   public static final akf am = a("interact_with_furnace", avh.b);
-   public static final akf an = a("interact_with_crafting_table", avh.b);
-   public static final akf ao = a("open_chest", avh.b);
-   public static final akf ap = a("sleep_in_bed", avh.b);
-   public static final akf aq = a("open_shulker_box", avh.b);
-   public static final akf ar = a("open_barrel", avh.b);
-   public static final akf as = a("interact_with_blast_furnace", avh.b);
-   public static final akf at = a("interact_with_smoker", avh.b);
-   public static final akf au = a("interact_with_lectern", avh.b);
-   public static final akf av = a("interact_with_campfire", avh.b);
-   public static final akf aw = a("interact_with_cartography_table", avh.b);
-   public static final akf ax = a("interact_with_loom", avh.b);
-   public static final akf ay = a("interact_with_stonecutter", avh.b);
-   public static final akf az = a("bell_ring", avh.b);
-   public static final akf aA = a("raid_trigger", avh.b);
-   public static final akf aB = a("raid_win", avh.b);
-   public static final akf aC = a("interact_with_anvil", avh.b);
-   public static final akf aD = a("interact_with_grindstone", avh.b);
-   public static final akf aE = a("target_hit", avh.b);
-   public static final akf aF = a("interact_with_smithing_table", avh.b);
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   private static akf a(String $$0, avh $$1) {
-      akf $$2 = new akf($$0);
-      ji.a(lc.m, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class avj<T> extends euw {
+   public static final ys<wf, avj<?>> a = yq.a(le.ah).b(avj::a, avl::a);
+   private final avk o;
+   private final T p;
+   private final avl<T> q;
+
+   protected avj(avl<T> $$0, T $$1, avk $$2) {
+      super(a($$0, $$1));
+      this.q = $$0;
+      this.o = $$2;
+      this.p = $$1;
    }
 
-   private static <T> avi<T> a(String $$0, ji<T> $$1) {
-      ws $$2 = ws.c("stat_type.minecraft." + $$0);
-      return ji.a(lc.x, $$0, new avi<>($$1, $$2));
+   public static <T> String a(avl<T> $$0, T $$1) {
+      return a(ld.x.b($$0)) + ":" + a($$0.b().b($$1));
+   }
+
+   private static <T> String a(@Nullable akh $$0) {
+      return $$0.toString().replace(':', '.');
+   }
+
+   public avl<T> a() {
+      return this.q;
+   }
+
+   public T b() {
+      return this.p;
+   }
+
+   public String a(int $$0) {
+      return this.o.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof avj && Objects.equals(this.d(), ((avj)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
    }
 }

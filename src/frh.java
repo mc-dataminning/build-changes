@@ -1,38 +1,88 @@
-public class frh<T extends bql> extends fsa<T> {
-   private final fur a;
-   private final fur b;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public frh(fur $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail_fin");
+public class frh extends fst<cne> implements fuo {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "water_patch";
+   private static final String g = "bottom";
+   private static final String h = "back";
+   private static final String i = "front";
+   private static final String j = "right";
+   private static final String k = "left";
+   private final fvb l;
+   private final fvb m;
+   private final fvb n;
+   private final ImmutableList<fvb> o;
+
+   public frh(fvb $$0) {
+      this.l = $$0.b("left_paddle");
+      this.m = $$0.b("right_paddle");
+      this.n = $$0.b("water_patch");
+      this.o = this.a($$0).build();
    }
 
-   public static fux b() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fuw.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), fut.a(0.0F, 22.0F, 0.0F));
-      $$1.a("head", fuw.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fut.a(0.0F, 22.0F, 0.0F));
-      $$1.a("nose", fuw.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), fut.a(0.0F, 22.0F, -3.0F));
-      $$1.a("right_fin", fuw.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), fut.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", fuw.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), fut.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      $$1.a("tail_fin", fuw.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), fut.a(0.0F, 22.0F, 7.0F));
-      $$1.a("top_fin", fuw.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), fut.a(0.0F, 20.0F, 0.0F));
-      return fux.a($$0, 32, 32);
+   protected Builder<fvb> a(fvb $$0) {
+      Builder<fvb> $$1 = new Builder();
+      $$1.add(new fvb[]{$$0.b("bottom"), $$0.b("back"), $$0.b("front"), $$0.b("right"), $$0.b("left"), this.l, this.m});
+      return $$1;
+   }
+
+   public static void a(fvk $$0) {
+      int $$1 = 32;
+      int $$2 = 6;
+      int $$3 = 20;
+      int $$4 = 4;
+      int $$5 = 28;
+      $$0.a("bottom", fvg.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fvd.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$0.a("back", fvg.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), fvd.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$0.a("front", fvg.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), fvd.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$0.a("right", fvg.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fvd.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$0.a("left", fvg.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fvd.a(0.0F, 4.0F, 9.0F));
+      int $$6 = 20;
+      int $$7 = 7;
+      int $$8 = 6;
+      float $$9 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fvg.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fvd.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         fvg.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fvd.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
+      $$0.a("water_patch", fvg.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fvd.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+   }
+
+   public static fvh a() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      a($$1);
+      return fvh.a($$0, 128, 64);
+   }
+
+   public void a(cne $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.l, $$1);
+      a($$0, 1, this.m, $$1);
+   }
+
+   public ImmutableList<fvb> b() {
+      return this.o;
    }
 
    @Override
-   public fur a() {
-      return this.a;
+   public fvb c() {
+      return this.n;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.bc()) {
-         $$6 = 1.5F;
+   private static void a(cne $$0, int $$1, fvb $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = axz.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (axz.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = axz.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (axz.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
       }
-
-      this.b.f = -$$6 * 0.45F * axw.a(0.6F * $$3);
    }
 }

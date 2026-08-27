@@ -1,74 +1,94 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class gru {
-   public static final gru a = new gru(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<grq<gru.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+public class gru implements AutoCloseable {
+   private static final AtomicInteger a = new AtomicInteger(1);
+   private static final Executor b = Executors.newSingleThreadExecutor($$0 -> {
+      Thread $$1 = new Thread($$0);
+      $$1.setName("Telemetry-Sender-#" + a.getAndIncrement());
+      return $$1;
+   });
+   private final fde c;
+   private final UserApiService d;
+   private final gsc e;
+   private final Path f;
+   private final CompletableFuture<Optional<gsa>> g;
+   private final Supplier<gry> h = Suppliers.memoize(this::c);
 
-   protected gru(Ticker $$0) {
+   public gru(fde $$0, UserApiService $$1, fdt $$2) {
       this.c = $$0;
+      this.d = $$1;
+      gsc.a $$3 = gsc.a();
+      $$2.f().ifPresent($$1x -> $$3.a(gsb.a, $$1x));
+      $$2.e().ifPresent($$1x -> $$3.a(gsb.b, $$1x));
+      $$3.a(gsb.c, UUID.randomUUID());
+      $$3.a(gsb.d, aa.b().b());
+      $$3.a(gsb.e, ac.j().a());
+      $$3.a(gsb.f, System.getProperty("os.name"));
+      $$3.a(gsb.g, fde.e().a());
+      $$3.b(gsb.h, fde.bg());
+      this.e = $$3.a();
+      this.f = $$0.p.toPath().resolve("logs/telemetry");
+      this.g = gsa.a(this.f);
    }
 
-   public synchronized void a(grq<gru.a> $$0) {
-      this.a($$0, (Function<grq<gru.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   public gsd a(boolean $$0, @Nullable Duration $$1, @Nullable String $$2) {
+      return new gsd(this.c(), $$0, $$1, $$2);
    }
 
-   public synchronized void a(grq<gru.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<grq<gru.a>, Stopwatch>)($$1x -> $$1));
+   public gry a() {
+      return this.h.get();
    }
 
-   private synchronized void a(grq<gru.a> $$0, Function<grq<gru.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(grq<gru.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
+   private gry c() {
+      if (!this.c.E()) {
+         return gry.a;
       } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
-         }
-      }
-   }
-
-   public void a(grn $$0) {
-      $$0.send(gro.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((grq<gru.a>)$$1, new gru.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gro.g.a());
+         TelemetrySession $$0 = this.d.newTelemetrySession(b);
+         if (!$$0.isEnabled()) {
+            return gry.a;
+         } else {
+            CompletableFuture<Optional<grx>> $$1 = this.g
+               .thenCompose($$0x -> $$0x.<CompletionStage<Optional<grx>>>map(gsa::a).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
+            return ($$2, $$3) -> {
+               if (!$$2.d() || fde.Q().C()) {
+                  gsc.a $$4 = gsc.a();
+                  $$4.a(this.e);
+                  $$4.a(gsb.m, Instant.now());
+                  $$4.a(gsb.l, $$2.d());
+                  $$3.accept($$4);
+                  grv $$5 = new grv($$2, $$4.a());
+                  $$1.thenAccept($$2x -> {
+                     if (!$$2x.isEmpty()) {
+                        ((grx)$$2x.get()).log($$5);
+                        $$5.a($$0).send();
+                     }
+                  });
                }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(grq.B, new gru.a((int)$$1)));
-            this.d.clear();
+            };
          }
-      });
-   }
-
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
-
-   public static record a(int b) {
-      public static final Codec<gru.a> a = Codec.INT.xmap(gru.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
       }
+   }
+
+   public Path b() {
+      return this.f;
+   }
+
+   @Override
+   public void close() {
+      this.g.thenAccept($$0 -> $$0.ifPresent(gsa::close));
    }
 }

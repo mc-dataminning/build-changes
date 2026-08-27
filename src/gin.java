@@ -1,15 +1,12 @@
-public class gin extends ght<chy, ftl<chy>> {
-   private static final akf a = new akf("textures/entity/silverfish.png");
+public class gin extends ghq<ciq> {
+   private static final akh a = new akh("textures/entity/illager/pillager.png");
 
-   public gin(ggn.a $$0) {
-      super($$0, new ftl<>($$0.a(fuq.bm)), 0.3F);
+   public gin(ggx.a $$0) {
+      super($$0, new fsp<>($$0.a(fva.aR)), 0.5F);
+      this.a(new glb<>(this, $$0.d()));
    }
 
-   protected float a(chy $$0) {
-      return 180.0F;
-   }
-
-   public akf b(chy $$0) {
+   public akh a(ciq $$0) {
       return a;
    }
 }

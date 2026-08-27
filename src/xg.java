@@ -1,90 +1,36 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class xg implements ws {
-   private final wt c;
-   private final List<ws> d;
-   private xp e;
-   private axi f = axi.a;
-   @Nullable
-   private tt g;
+public record xg(byte[] c) {
+   public static final Codec<xg> a = axh.n.xmap(xg::new, xg::b);
+   public static final int b = 256;
 
-   xg(wt $$0, List<ws> $$1, xp $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public xg(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public static xg a(wt $$0) {
-      return new xg($$0, Lists.newArrayList(), xp.a);
+   public static xg a(vu $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new xg($$1);
    }
 
-   @Override
-   public wt b() {
-      return this.c;
+   public static void a(vu $$0, xg $$1) {
+      $$0.c($$1.c);
    }
 
-   @Override
-   public List<ws> c() {
-      return this.d;
+   public boolean a(ayl $$0, ayk $$1) {
+      return $$0.validate($$1, this.c);
    }
 
-   public xg b(xp $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public xp a() {
-      return this.e;
-   }
-
-   public xg f(String $$0) {
-      return this.b(ws.b($$0));
-   }
-
-   public xg b(ws $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public xg a(UnaryOperator<xp> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public xg c(xp $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public xg a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public xg a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public xg b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public axi g() {
-      tt $$0 = tt.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
-      }
-
-      return this.f;
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
    }
 
    @Override
@@ -92,39 +38,67 @@ public class xg implements ws {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof xg $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+         if ($$0 instanceof xg $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
+      return Arrays.hashCode(this.c);
    }
 
    @Override
    public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.g();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
+      return Base64.getEncoder().encodeToString(this.c);
+   }
 
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
+   public xg.a a(xh $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new xg.a($$1) : new xg.a(this);
+   }
 
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
+   public byte[] b() {
+      return this.c;
+   }
 
-         $$0.append(']');
+   public static record a(int b, @Nullable xg c) {
+      public static final int a = -1;
+
+      public a(xg $$0) {
+         this(-1, $$0);
       }
 
-      return $$0.toString();
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static xg.a a(vu $$0) {
+         int $$1 = $$0.l() - 1;
+         return $$1 == -1 ? new xg.a(xg.a($$0)) : new xg.a($$1);
+      }
+
+      public static void a(vu $$0, xg.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            xg.a($$0, $$1.b());
+         }
+      }
+
+      public Optional<xg> a(xh $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      @Nullable
+      public xg b() {
+         return this.c;
+      }
    }
 }

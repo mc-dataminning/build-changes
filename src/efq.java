@@ -1,24 +1,23 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class efq extends efm {
-   public static final Codec<efq> a = axe.j.fieldOf("chance").xmap(efq::new, $$0 -> $$0.c).codec();
-   private final int c;
+public class efq extends efw {
+   private static final efq c = new efq();
+   public static final Codec<efq> a = Codec.unit(() -> c);
 
-   private efq(int $$0) {
-      this.c = $$0;
-   }
-
-   public static efq a(int $$0) {
-      return new efq($$0);
+   public static efq a() {
+      return c;
    }
 
    @Override
-   protected boolean a(efl $$0, ayd $$1, im $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public Stream<in> a_(efu $$0, ayg $$1, in $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new in($$3, $$2.v(), $$4));
    }
 
    @Override
-   public efo<?> b() {
-      return efo.b;
+   public efx<?> b() {
+      return efx.m;
    }
 }

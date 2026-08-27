@@ -1,11 +1,11 @@
-public class gfu extends ght<cek, frb<cek>> {
-   private static final akf a = new akf("textures/entity/camel/camel.png");
+public class gfu extends gid<cey, fqz> {
+   private static final akh a = new akh("textures/entity/armadillo.png");
 
-   public gfu(ggn.a $$0, fup $$1) {
-      super($$0, new frb<>($$0.a($$1)), 0.7F);
+   public gfu(ggx.a $$0) {
+      super($$0, new fqz($$0.a(fva.b)), 0.4F);
    }
 
-   public akf a(cek $$0) {
+   public akh a(cey $$0) {
       return a;
    }
 }

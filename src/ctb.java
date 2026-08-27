@@ -1,50 +1,41 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class ctb extends cry implements crf {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-
-   public ctb(cry.a $$0) {
-      super($$0);
-      dfa.a(this, cps.a);
-   }
-
-   @Override
-   public String i(csd $$0) {
-      cqw $$1 = $$0.a(jz.O);
-      return $$1 != null ? this.a() + "." + $$1.b() : super.i($$0);
-   }
-
-   @Override
-   public void a(csd $$0, @Nullable czu $$1, List<ws> $$2, ctu $$3) {
-      cpy.a($$0, $$2);
-   }
-
-   @Override
-   public ctw c(csd $$0) {
-      return ctw.d;
-   }
-
-   @Override
-   public int b(csd $$0) {
-      return 72000;
-   }
-
-   @Override
-   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
-      csd $$3 = $$1.b($$2);
+public class ctb {
+   public static bpn<csz> a(dad $$0, clh $$1, bpl $$2) {
       $$1.c($$2);
-      return bor.b($$3);
+      return bpn.b($$1.b($$2));
    }
 
-   @Override
-   public boolean a(csd $$0, csd $$1) {
-      return $$1.a(avw.b) || super.a($$0, $$1);
+   public static csz a(csz $$0, clh $$1, csz $$2, boolean $$3) {
+      boolean $$4 = $$1.fN();
+      if ($$3 && $$4) {
+         if (!$$1.ga().i($$2)) {
+            $$1.ga().f($$2);
+         }
+
+         return $$0;
+      } else {
+         $$0.a(1, $$1);
+         if ($$0.d()) {
+            return $$2;
+         } else {
+            if (!$$1.ga().f($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
+         }
+      }
    }
 
-   @Override
-   public bqs k() {
-      return bqs.b;
+   public static csz a(csz $$0, clh $$1, csz $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(chr $$0, Stream<csz> $$1) {
+      dad $$2 = $$0.dN();
+      if (!$$2.B) {
+         $$1.forEach($$2x -> $$2.b(new chr($$2, $$0.ds(), $$0.du(), $$0.dy(), $$2x)));
+      }
    }
 }

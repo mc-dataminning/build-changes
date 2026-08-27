@@ -1,25 +1,31 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dkx {
-   cvf b();
+public class dkx extends dhf implements dcv {
+   public static final MapCodec<dkx> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(crs.q.fieldOf("color").forGetter(dkx::b), u()).apply($$0, dkx::new));
+   private final crs k;
 
-   static List<dkx> c() {
-      return lc.h.s().map(dkx::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<dkx> a() {
+      return j;
    }
 
-   @Nullable
-   static dkx a(czt $$0) {
-      if ($$0.p() instanceof cqb $$1) {
-         dcv var6 = $$1.d();
-         if (var6 instanceof dkx) {
-            return (dkx)var6;
-         }
-      }
+   public dkx(crs $$0, dqg.d $$1) {
+      super($$1);
+      this.k = $$0;
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
+   }
 
-      cry $$2 = $$0.p();
-      return $$2 instanceof dkx ? (dkx)$$2 : null;
+   @Override
+   public crs b() {
+      return this.k;
    }
 }

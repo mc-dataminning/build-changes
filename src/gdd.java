@@ -1,95 +1,100 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class gdd implements atp {
-   private Map<dnf<?>, gde<?>> d = ImmutableMap.of();
-   private final fef e;
-   private final fun f;
-   public czu a;
-   public fcf b;
-   public etd c;
-   private final Supplier<gby> g;
-   private final Supplier<ghl> h;
-   private final Supplier<ggl> i;
+public class gdd implements gpk {
+   private final dqi<dde, dqh> a;
+   private final List<gdf> b;
 
-   public gdd(fef $$0, fun $$1, Supplier<gby> $$2, Supplier<ghl> $$3, Supplier<ggl> $$4) {
-      this.h = $$3;
-      this.i = $$4;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   @Nullable
-   public <E extends dnd> gde<E> a(E $$0) {
-      return (gde<E>)this.d.get($$0.r());
-   }
-
-   public void a(czu $$0, fcf $$1, etd $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
+   public gdd(dqi<dde, dqh> $$0, List<gdf> $$1) {
+      this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public <E extends dnd> void a(E $$0, float $$1, exn $$2, gbe $$3) {
-      gde<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.m() && $$0.r().a($$0.n())) {
-            if ($$4.a($$0, this.b.b())) {
-               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
-            }
-         }
-      }
+   public List<gdf> a() {
+      return this.b;
    }
 
-   private static <T extends dnd> void a(gde<T> $$0, T $$1, float $$2, exn $$3, gbe $$4) {
-      czu $$5 = $$1.i();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = gbc.a($$5, $$1.az_());
-      } else {
-         $$6 = 15728880;
+   public Set<gcy> b() {
+      Set<gcy> $$0 = Sets.newHashSet();
+
+      for (gdf $$1 : this.b) {
+         $$0.add($$1.a());
       }
 
-      $$0.a($$1, $$2, $$3, $$4, $$6, gmf.d);
+      return $$0;
    }
 
-   public <E extends dnd> boolean a(E $$0, exn $$1, gbe $$2, int $$3, int $$4) {
-      gde<E> $$5 = this.a($$0);
-      if ($$5 == null) {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
       } else {
-         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
-         return false;
-      }
-   }
-
-   private static void a(dnd $$0, Runnable $$1) {
-      try {
-         $$1.run();
-      } catch (Throwable var5) {
-         o $$3 = o.a(var5, "Rendering Block Entity");
-         p $$4 = $$3.a("Block Entity Details");
-         $$0.a($$4);
-         throw new y($$3);
-      }
-   }
-
-   public void a(@Nullable czu $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
+         return !($$0 instanceof gdd $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
       }
    }
 
    @Override
-   public void a(ato $$0) {
-      gdf.a $$1 = new gdf.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
-      this.d = gdg.a($$1);
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
+   }
+
+   @Override
+   public Collection<akh> f() {
+      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<akh, gpk> $$0) {
+      this.a().forEach($$1 -> $$1.a().a($$0));
+   }
+
+   @Nullable
+   @Override
+   public goz a(gpd $$0, Function<gpc, gmy> $$1, gph $$2, akh $$3) {
+      gpi.a $$4 = new gpi.a();
+
+      for (gdf $$5 : this.a()) {
+         goz $$6 = $$5.a().a($$0, $$1, $$2, $$3);
+         if ($$6 != null) {
+            $$4.a($$5.a(this.a), $$6);
+         }
+      }
+
+      return $$4.a();
+   }
+
+   public static class a implements JsonDeserializer<gdd> {
+      private final gcr.a a;
+
+      public a(gcr.a $$0) {
+         this.a = $$0;
+      }
+
+      public gdd a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new gdd(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<gdf> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<gdf> $$2 = Lists.newArrayList();
+
+         for (JsonElement $$3 : $$1) {
+            $$2.add((gdf)$$0.deserialize($$3, gdf.class));
+         }
+
+         return $$2;
+      }
    }
 }

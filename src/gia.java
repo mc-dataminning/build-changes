@@ -1,24 +1,25 @@
-public class gia extends ght<cht, fss<cht>> {
-   private static final akf a = new akf("textures/entity/phantom.png");
+public class gia extends ggw<cly> {
+   private static final akh a = new akh("textures/entity/llama/spit.png");
+   private final fsv<cly> f;
 
-   public gia(ggn.a $$0) {
-      super($$0, new fss<>($$0.a(fuq.aH)), 0.75F);
-      this.a(new gkw<>(this));
+   public gia(ggx.a $$0) {
+      super($$0);
+      this.f = new fsv<>($$0.a(fva.az));
    }
 
-   public akf a(cht $$0) {
-      return a;
-   }
-
-   protected void a(cht $$0, exn $$1, float $$2) {
-      int $$3 = $$0.r();
-      float $$4 = 1.0F + 0.15F * (float)$$3;
-      $$1.b($$4, $$4, $$4);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void a(cht $$0, exn $$1, float $$2, float $$3, float $$4, float $$5) {
+   public void a(cly $$0, float $$1, float $$2, exx $$3, gbo $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(axz.i($$2, $$0.O, $$0.dD()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(axz.i($$2, $$0.P, $$0.dF())));
+      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
+      eyb $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, gmp.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$1.a(a.b.rotationDegrees($$0.dF()));
+   }
+
+   public akh a(cly $$0) {
+      return a;
    }
 }

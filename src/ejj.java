@@ -1,20 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class ejj extends eka {
-   public static final Codec<ejj> a = lc.e.q().fieldOf("block").xmap(ejj::new, $$0 -> $$0.b).codec();
-   private final dcv b;
+public class ejj extends egp {
+   public static final Codec<ejj> d = a(ejj::new);
 
-   public ejj(dcv $$0) {
-      this.b = $$0;
+   public ejj(egp.c $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dpy $$0, ayd $$1) {
-      return $$0.a(this.b);
+   public Optional<egp.b> a(egp.a $$0) {
+      return a($$0, dvz.a.a, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(ehh $$0, egp.a $$1) {
+      $$0.a(new eji($$1.f(), $$1.h().d(), $$1.h().e()));
    }
 
    @Override
-   protected ekb<?> a() {
-      return ekb.b;
+   public egy<?> e() {
+      return egy.o;
    }
 }

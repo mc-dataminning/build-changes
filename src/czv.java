@@ -1,98 +1,358 @@
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface czv extends czg, dab {
-   @Override
-   default long aj() {
-      return this.A_().d();
+public class czv {
+   private static final czw a = new czw();
+   private static final int b = 16;
+   private final boolean c;
+   private final czv.a d;
+   private final ayg e = ayg.a();
+   private final dad f;
+   private final double g;
+   private final double h;
+   private final double i;
+   @Nullable
+   private final brh j;
+   private final float k;
+   private final bqf l;
+   private final czw m;
+   private final kv n;
+   private final kv o;
+   private final iw<avb> p;
+   private final ObjectArrayList<in> q = new ObjectArrayList();
+   private final Map<clh, etp> r = Maps.newHashMap();
+
+   public static bqf a(dad $$0, @Nullable brh $$1) {
+      return $$0.ai().d($$1, b($$1));
    }
 
-   long G_();
-
-   eus<dcv> O();
-
-   private <T> euw<T> a(im $$0, T $$1, int $$2, eva $$3) {
-      return new euw<>($$1, $$0, this.A_().c() + (long)$$2, $$3, this.G_());
+   public czv(dad $$0, @Nullable brh $$1, double $$2, double $$3, double $$4, float $$5, List<in> $$6, czv.a $$7, kv $$8, kv $$9, iw<avb> $$10) {
+      this($$0, $$1, a($$0, $$1), null, $$2, $$3, $$4, $$5, false, $$7, $$8, $$9, $$10);
+      this.q.addAll($$6);
    }
 
-   private <T> euw<T> a(im $$0, T $$1, int $$2) {
-      return new euw<>($$1, $$0, this.A_().c() + (long)$$2, this.G_());
+   public czv(dad $$0, @Nullable brh $$1, double $$2, double $$3, double $$4, float $$5, boolean $$6, czv.a $$7, List<in> $$8) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.q.addAll($$8);
    }
 
-   default void a(im $$0, dcv $$1, int $$2, eva $$3) {
-      this.O().a(this.a($$0, $$1, $$2, $$3));
+   public czv(dad $$0, @Nullable brh $$1, double $$2, double $$3, double $$4, float $$5, boolean $$6, czv.a $$7) {
+      this($$0, $$1, a($$0, $$1), null, $$2, $$3, $$4, $$5, $$6, $$7, kx.w, kx.v, avc.jZ);
    }
 
-   default void a(im $$0, dcv $$1, int $$2) {
-      this.O().a(this.a($$0, $$1, $$2));
+   public czv(
+      dad $$0,
+      @Nullable brh $$1,
+      @Nullable bqf $$2,
+      @Nullable czw $$3,
+      double $$4,
+      double $$5,
+      double $$6,
+      float $$7,
+      boolean $$8,
+      czv.a $$9,
+      kv $$10,
+      kv $$11,
+      iw<avb> $$12
+   ) {
+      this.f = $$0;
+      this.j = $$1;
+      this.k = $$7;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.c = $$8;
+      this.d = $$9;
+      this.l = $$2 == null ? $$0.ai().a(this) : $$2;
+      this.m = $$3 == null ? this.a($$1) : $$3;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 
-   eus<elq> N();
-
-   default void a(im $$0, elq $$1, int $$2, eva $$3) {
-      this.N().a(this.a($$0, $$1, $$2, $$3));
+   private czw a(@Nullable brh $$0) {
+      return (czw)($$0 == null ? a : new czt($$0));
    }
 
-   default void a(im $$0, elq $$1, int $$2) {
-      this.N().a(this.a($$0, $$1, $$2));
+   public static float a(etp $$0, brh $$1) {
+      etk $$2 = $$1.cI();
+      double $$3 = 1.0 / (($$2.d - $$2.a) * 2.0 + 1.0);
+      double $$4 = 1.0 / (($$2.e - $$2.b) * 2.0 + 1.0);
+      double $$5 = 1.0 / (($$2.f - $$2.c) * 2.0 + 1.0);
+      double $$6 = (1.0 - Math.floor(1.0 / $$3) * $$3) / 2.0;
+      double $$7 = (1.0 - Math.floor(1.0 / $$5) * $$5) / 2.0;
+      if (!($$3 < 0.0) && !($$4 < 0.0) && !($$5 < 0.0)) {
+         int $$8 = 0;
+         int $$9 = 0;
+
+         for (double $$10 = 0.0; $$10 <= 1.0; $$10 += $$3) {
+            for (double $$11 = 0.0; $$11 <= 1.0; $$11 += $$4) {
+               for (double $$12 = 0.0; $$12 <= 1.0; $$12 += $$5) {
+                  double $$13 = axz.d($$10, $$2.a, $$2.d);
+                  double $$14 = axz.d($$11, $$2.b, $$2.e);
+                  double $$15 = axz.d($$12, $$2.c, $$2.f);
+                  etp $$16 = new etp($$13 + $$6, $$14, $$15 + $$7);
+                  if ($$1.dN().a(new czm($$16, $$0, czm.a.a, czm.b.a, $$1)).c() == etn.a.a) {
+                     $$8++;
+                  }
+
+                  $$9++;
+               }
+            }
+         }
+
+         return (float)$$8 / (float)$$9;
+      } else {
+         return 0.0F;
+      }
    }
 
-   enm A_();
+   public float a() {
+      return this.k;
+   }
 
-   boo d_(im var1);
+   public etp b() {
+      return new etp(this.g, this.h, this.i);
+   }
+
+   public void c() {
+      this.f.a(this.j, dva.w, new etp(this.g, this.h, this.i));
+      Set<in> $$0 = Sets.newHashSet();
+      int $$1 = 16;
+
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            for (int $$4 = 0; $$4 < 16; $$4++) {
+               if ($$2 == 0 || $$2 == 15 || $$3 == 0 || $$3 == 15 || $$4 == 0 || $$4 == 15) {
+                  double $$5 = (double)((float)$$2 / 15.0F * 2.0F - 1.0F);
+                  double $$6 = (double)((float)$$3 / 15.0F * 2.0F - 1.0F);
+                  double $$7 = (double)((float)$$4 / 15.0F * 2.0F - 1.0F);
+                  double $$8 = Math.sqrt($$5 * $$5 + $$6 * $$6 + $$7 * $$7);
+                  $$5 /= $$8;
+                  $$6 /= $$8;
+                  $$7 /= $$8;
+                  float $$9 = this.k * (0.7F + this.f.z.i() * 0.6F);
+                  double $$10 = this.g;
+                  double $$11 = this.h;
+                  double $$12 = this.i;
+
+                  for (float $$13 = 0.3F; $$9 > 0.0F; $$9 -= 0.22500001F) {
+                     in $$14 = in.a($$10, $$11, $$12);
+                     dqh $$15 = this.f.a_($$14);
+                     ema $$16 = this.f.b_($$14);
+                     if (!this.f.k($$14)) {
+                        break;
+                     }
+
+                     Optional<Float> $$17 = this.m.a(this, this.f, $$14, $$15, $$16);
+                     if ($$17.isPresent()) {
+                        $$9 -= ($$17.get() + 0.3F) * 0.3F;
+                     }
+
+                     if ($$9 > 0.0F && this.m.a(this, this.f, $$14, $$15, $$9)) {
+                        $$0.add($$14);
+                     }
+
+                     $$10 += $$5 * 0.3F;
+                     $$11 += $$6 * 0.3F;
+                     $$12 += $$7 * 0.3F;
+                  }
+               }
+            }
+         }
+      }
+
+      this.q.addAll($$0);
+      float $$18 = this.k * 2.0F;
+      int $$19 = axz.a(this.g - (double)$$18 - 1.0);
+      int $$20 = axz.a(this.g + (double)$$18 + 1.0);
+      int $$21 = axz.a(this.h - (double)$$18 - 1.0);
+      int $$22 = axz.a(this.h + (double)$$18 + 1.0);
+      int $$23 = axz.a(this.i - (double)$$18 - 1.0);
+      int $$24 = axz.a(this.i + (double)$$18 + 1.0);
+      List<brh> $$25 = this.f.a_(this.j, new etk((double)$$19, (double)$$21, (double)$$23, (double)$$20, (double)$$22, (double)$$24));
+      etp $$26 = new etp(this.g, this.h, this.i);
+
+      for (brh $$27 : $$25) {
+         if (!$$27.a(this)) {
+            double $$28 = Math.sqrt($$27.f($$26)) / (double)$$18;
+            if ($$28 <= 1.0) {
+               double $$29 = $$27.ds() - this.g;
+               double $$30 = ($$27 instanceof chs ? $$27.du() : $$27.dw()) - this.h;
+               double $$31 = $$27.dy() - this.i;
+               double $$32 = Math.sqrt($$29 * $$29 + $$30 * $$30 + $$31 * $$31);
+               if ($$32 != 0.0) {
+                  $$29 /= $$32;
+                  $$30 /= $$32;
+                  $$31 /= $$32;
+                  if (this.m.a(this, $$27)) {
+                     $$27.a(this.l, this.m.b(this, $$27));
+                  }
+
+                  double $$33 = (1.0 - $$28) * (double)a($$26, $$27) * (double)this.m.a();
+                  double $$35;
+                  if ($$27 instanceof bsa $$34) {
+                     $$35 = cyp.a($$34, $$33);
+                  } else {
+                     $$35 = $$33;
+                  }
+
+                  $$29 *= $$35;
+                  $$30 *= $$35;
+                  $$31 *= $$35;
+                  etp $$37 = new etp($$29, $$30, $$31);
+                  $$27.g($$27.dq().e($$37));
+                  if ($$27 instanceof clh) {
+                     clh $$38 = (clh)$$27;
+                     if (!$$38.N_() && (!$$38.f() || !$$38.gb().b)) {
+                        this.r.put($$38, $$37);
+                     }
+                  }
+
+                  $$27.a(this.j);
+               }
+            }
+         }
+      }
+   }
+
+   public void a(boolean $$0) {
+      if (this.f.B) {
+         this.f.a(this.g, this.h, this.i, this.p.a(), avd.e, 4.0F, (1.0F + (this.f.z.i() - this.f.z.i()) * 0.2F) * 0.7F, false);
+      }
+
+      boolean $$1 = this.d();
+      if ($$0) {
+         kv $$3;
+         if (!(this.k < 2.0F) && $$1) {
+            $$3 = this.o;
+         } else {
+            $$3 = this.n;
+         }
+
+         this.f.a($$3, this.g, this.h, this.i, 1.0, 0.0, 0.0);
+      }
+
+      if ($$1) {
+         this.f.af().a("explosion_blocks");
+         List<Pair<csz, in>> $$4 = new ArrayList<>();
+         ac.c(this.q, this.f.z);
+         ObjectListIterator $$7 = this.q.iterator();
+
+         while ($$7.hasNext()) {
+            in $$5 = (in)$$7.next();
+            this.f.a_($$5).a(this.f, $$5, this, ($$1x, $$2) -> a($$4, $$1x, $$2));
+         }
+
+         for (Pair<csz, in> $$6 : $$4) {
+            dde.a(this.f, (in)$$6.getSecond(), (csz)$$6.getFirst());
+         }
+
+         this.f.af().c();
+      }
+
+      if (this.c) {
+         ObjectListIterator var7 = this.q.iterator();
+
+         while (var7.hasNext()) {
+            in $$7 = (in)var7.next();
+            if (this.e.a(3) == 0 && this.f.a_($$7).i() && this.f.a_($$7.d()).i(this.f, $$7.d())) {
+               this.f.b($$7, dcr.a(this.f, $$7));
+            }
+         }
+      }
+   }
+
+   private static void a(List<Pair<csz, in>> $$0, csz $$1, in $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         Pair<csz, in> $$4 = $$0.get($$3);
+         csz $$5 = (csz)$$4.getFirst();
+         if (chr.a($$5, $$1)) {
+            $$0.set($$3, Pair.of(chr.a($$5, $$1, 16), (in)$$4.getSecond()));
+            if ($$1.d()) {
+               return;
+            }
+         }
+      }
+
+      $$0.add(Pair.of($$1, $$2));
+   }
+
+   public boolean d() {
+      return this.d != czv.a.a;
+   }
+
+   public Map<clh, etp> e() {
+      return this.r;
+   }
 
    @Nullable
-   MinecraftServer o();
+   private static bsa b(@Nullable brh $$0) {
+      if ($$0 == null) {
+         return null;
+      } else if ($$0 instanceof chs $$1) {
+         return $$1.p();
+      } else if ($$0 instanceof bsa) {
+         return (bsa)$$0;
+      } else {
+         if ($$0 instanceof clz $$3) {
+            brh $$4 = $$3.u();
+            if ($$4 instanceof bsa) {
+               return (bsa)$$4;
+            }
+         }
 
-   default bon ak() {
-      return this.A_().q();
+         return null;
+      }
    }
 
-   dry M();
-
-   @Override
-   default boolean b(int $$0, int $$1) {
-      return this.M().b($$0, $$1);
+   @Nullable
+   public bsa f() {
+      return b(this.j);
    }
 
-   ayd E_();
-
-   default void b(im $$0, dcv $$1) {
+   @Nullable
+   public brh g() {
+      return this.j;
    }
 
-   default void a(ir $$0, dpy $$1, im $$2, im $$3, int $$4, int $$5) {
-      emv.a(this, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
+   public void h() {
+      this.q.clear();
    }
 
-   default void a(@Nullable ckl $$0, im $$1, auy $$2, ava $$3) {
-      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F);
+   public List<in> i() {
+      return this.q;
    }
 
-   void a(@Nullable ckl var1, im var2, auy var3, ava var4, float var5, float var6);
-
-   void a(ku var1, double var2, double var4, double var6, double var8, double var10, double var12);
-
-   void a(@Nullable ckl var1, int var2, im var3, int var4);
-
-   default void c(int $$0, im $$1, int $$2) {
-      this.a(null, $$0, $$1, $$2);
+   public czv.a j() {
+      return this.d;
    }
 
-   void a(iv<dur> var1, etf var2, dur.a var3);
-
-   default void a(@Nullable bql $$0, iv<dur> $$1, etf $$2) {
-      this.a($$1, $$2, new dur.a($$0, null));
+   public kv k() {
+      return this.n;
    }
 
-   default void a(@Nullable bql $$0, iv<dur> $$1, im $$2) {
-      this.a($$1, $$2, new dur.a($$0, null));
+   public kv l() {
+      return this.o;
    }
 
-   default void a(iv<dur> $$0, im $$1, dur.a $$2) {
-      this.a($$0, etf.b($$1), $$2);
+   public iw<avb> m() {
+      return this.p;
    }
 
-   default void a(ake<dur> $$0, im $$1, dur.a $$2) {
-      this.a(this.H_().d(ld.C).g($$0), $$1, $$2);
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

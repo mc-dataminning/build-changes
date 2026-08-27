@@ -1,61 +1,88 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class ddi extends djo {
+public class ddi extends dcq {
    public static final MapCodec<ddi> a = b(ddi::new);
-   public static final dqs b = dqo.R;
+   public static final dqy[] b = new dqy[]{dqx.k, dqx.l, dqx.m};
+   protected static final eui c = euf.a(dde.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), dde.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
 
    @Override
    public MapCodec<ddi> a() {
       return a;
    }
 
-   public ddi(dpx.d $$0) {
+   public ddi(dqg.d $$0) {
       super($$0);
-      this.k(this.n().a(b, ir.c));
+      this.k(this.E.b().a(b[0], Boolean.valueOf(false)).a(b[1], Boolean.valueOf(false)).a(b[2], Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected djk a_(dqh $$0) {
+      return djk.c;
+   }
+
+   @Override
+   public dnm a(in $$0, dqh $$1) {
+      return new dnp($$0, $$1);
    }
 
    @Nullable
    @Override
-   public dnd a(im $$0, dpy $$1) {
-      return new dni($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
-      return !$$0.B ? a($$2, dnf.J, ($$0x, $$1x, $$2x, $$3) -> dva.c.a($$0x, $$3.gr(), $$3.gs())) : null;
-   }
-
-   @Nullable
-   @Override
-   public dpy a(cvl $$0) {
-      return super.a($$0).a(b, $$0.g());
+   public <T extends dnm> dnn<T> a(dad $$0, dqh $$1, dno<T> $$2) {
+      return $$0.B ? null : a($$2, dno.l, dnp::a);
    }
 
    @Override
-   public int a(dpy $$0, cza $$1, im $$2, ir $$3) {
-      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   protected bpm a(dqh $$0, dad $$1, in $$2, clh $$3, etl $$4) {
+      if ($$1.B) {
+         return bpm.a;
+      } else {
+         dnm $$5 = $$1.c_($$2);
+         if ($$5 instanceof dnp) {
+            $$3.a((dnp)$$5);
+            $$3.a(avm.aa);
+         }
+
+         return bpm.b;
+      }
    }
 
    @Override
-   public dpy a(dpy $$0, dji $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public void a(dqh $$0, dad $$1, in $$2, ayg $$3) {
+      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
+      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
+      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
+      $$1.a(kx.ab, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
    @Override
-   public dpy a(dpy $$0, dhs $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected void a(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
+      bpi.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public int c() {
-      return 10;
+   protected boolean c_(dqh $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dqh $$0, dad $$1, in $$2) {
+      return cod.a($$1.c_($$2));
+   }
+
+   @Override
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(b[0], b[1], b[2]);
+   }
+
+   @Override
+   protected boolean a(dqh $$0, emp $$1) {
+      return false;
    }
 }

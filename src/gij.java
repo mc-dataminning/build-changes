@@ -1,29 +1,31 @@
-public class gij extends ght<cdo, ftf<cdo>> {
-   private static final akf a = new akf("textures/entity/fish/salmon.png");
+public class gij extends gid<cef, ftb> {
+   private static final akh a = new akh("textures/entity/parrot/parrot_red_blue.png");
+   private static final akh i = new akh("textures/entity/parrot/parrot_blue.png");
+   private static final akh j = new akh("textures/entity/parrot/parrot_green.png");
+   private static final akh k = new akh("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final akh l = new akh("textures/entity/parrot/parrot_grey.png");
 
-   public gij(ggn.a $$0) {
-      super($$0, new ftf<>($$0.a(fuq.bg)), 0.4F);
+   public gij(ggx.a $$0) {
+      super($$0, new ftb($$0.a(fva.aG)), 0.3F);
    }
 
-   public akf a(cdo $$0) {
-      return a;
+   public akh a(cef $$0) {
+      return a($$0.gx());
    }
 
-   protected void a(cdo $$0, exn $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 1.0F;
-      float $$7 = 1.0F;
-      if (!$$0.bc()) {
-         $$6 = 1.3F;
-         $$7 = 1.7F;
-      }
+   public static akh a(cef.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
+   }
 
-      float $$8 = $$6 * 4.3F * axw.a($$7 * 0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$8));
-      $$1.a(0.0F, 0.0F, -0.4F);
-      if (!$$0.bc()) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   public float a(cef $$0, float $$1) {
+      float $$2 = axz.i($$1, $$0.ce, $$0.cb);
+      float $$3 = axz.i($$1, $$0.cd, $$0.cc);
+      return (axz.a($$2) + 1.0F) * $$3;
    }
 }

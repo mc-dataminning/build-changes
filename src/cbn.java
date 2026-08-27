@@ -1,47 +1,43 @@
-import java.util.Set;
+public class cbn extends cbl {
+   private boolean p;
 
-public abstract class cbn<E extends bre> {
-   private static final ayd a = ayd.b();
-   private static final int c = 20;
-   protected static final int b = 16;
-   private static final cbu d = cbu.b().a(16.0);
-   private static final cbu e = cbu.b().a(16.0).e();
-   private static final cbu f = cbu.a().a(16.0);
-   private static final cbu g = cbu.a().a(16.0).e();
-   private static final cbu h = cbu.a().a(16.0).d();
-   private static final cbu i = cbu.a().a(16.0).d().e();
-   private final int j;
-   private long k;
-
-   public cbn(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+   public cbn(bsc $$0, dad $$1) {
+      super($$0, $$1);
    }
 
-   public cbn() {
-      this(20);
+   @Override
+   protected emq a(int $$0) {
+      this.p = this.a.ai() == brn.y;
+      this.o = new emu(this.p);
+      return new emq(this.o, $$0);
    }
 
-   public final void b(aqe $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$0, $$1);
-      }
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bg();
    }
 
-   protected abstract void a(aqe var1, E var2);
-
-   public abstract Set<cah<?>> a();
-
-   public static boolean b(bre $$0, bre $$1) {
-      return $$0.dQ().b(cah.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
+   @Override
+   protected etp b() {
+      return new etp(this.a.ds(), this.a.e(0.5), this.a.dy());
    }
 
-   public static boolean c(bre $$0, bre $$1) {
-      return $$0.dQ().b(cah.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
+   @Override
+   protected double a(etp $$0) {
+      return $$0.d;
    }
 
-   public static boolean d(bre $$0, bre $$1) {
-      return $$0.dQ().b(cah.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
+   @Override
+   protected boolean a(etp $$0, etp $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(in $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

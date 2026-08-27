@@ -1,62 +1,59 @@
-public class fah extends gsq {
-   private final fkt a;
-   private final fah.a b;
-   private ffn c = ffn.a;
+import java.util.List;
 
-   public fah(ezq $$0, fkt $$1) {
-      super(fcm.a);
-      this.a = $$1;
-      this.b = a($$0);
+public abstract class fah {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
+
+   public fah(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public fah(ws $$0, fkt $$1) {
-      super(fcm.a);
-      this.a = $$1;
-      this.b = a($$0);
+   public void a(fer $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
    }
 
-   public fah(ws $$0, ws $$1, fkt $$2) {
-      super(fcm.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
+   protected abstract void a(fer var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
    }
 
-   private static fah.a a(ezq $$0) {
-      eyf $$1 = $$0.a;
-      return a(ws.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   public int b() {
+      return this.d + this.b;
    }
 
-   private static fah.a a(ws $$0) {
-      return a(ws.c("mco.errorMessage.generic"), $$0);
+   public abstract void a(int var1);
+
+   public static void a(fer $$0, List<fah> $$1, gta<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (fah $$7 : $$1) {
+         if ($$2.b() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
+         }
+      }
    }
 
-   private static fah.a a(ws $$0, ws $$1) {
-      return new fah.a($$0, $$1);
-   }
+   public static void a(gta<?> $$0, fga.a<?> $$1, List<fah> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aE_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.b($$6);
+         int $$7 = $$0.r();
+         int $$8 = $$0.g($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
 
-   @Override
-   public void aM_() {
-      this.c(feu.a(wr.h, $$0 -> this.d()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = ffn.a(this.p, this.b.b, this.n * 3 / 4);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.a);
-   }
-
-   @Override
-   public ws i() {
-      return ws.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
-   }
-
-   static record a(ws a, ws b) {
+         for (fah $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
+      }
    }
 }

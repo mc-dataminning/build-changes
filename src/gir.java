@@ -1,12 +1,11 @@
-public class gir extends ght<cdr, ftr<cdr>> {
-   private static final akf a = new akf("textures/entity/snow_golem.png");
+public class gir extends gid<cis, fto> {
+   private static final akh a = new akh("textures/entity/illager/ravager.png");
 
-   public gir(ggn.a $$0) {
-      super($$0, new ftr<>($$0.a(fuq.bv)), 0.5F);
-      this.a(new gle(this, $$0.c(), $$0.b()));
+   public gir(ggx.a $$0) {
+      super($$0, new fto($$0.a(fva.bf)), 1.1F);
    }
 
-   public akf a(cdr $$0) {
+   public akh a(cis $$0) {
       return a;
    }
 }

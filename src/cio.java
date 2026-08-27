@@ -1,78 +1,180 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
+import java.util.EnumSet;
 import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class cio {
-   public static final float a = 0.6F;
-   public static final float b = 4.0F;
-   public static final float c = 8.0F;
-   public static final float d = 20.0F;
-   static final List<cbo<? extends cbn<? super cin>>> e = ImmutableList.of(cbo.c, cbo.f, cbo.d, cbo.z);
-   static final List<cah<?>> f = ImmutableList.of(
-      cah.n, cah.h, cah.B, cah.E, cah.o, cah.m, cah.aU, cah.aZ, cah.aV, cah.aW, cah.aX, cah.aY, new cah[]{cah.ba, cah.bb, cah.x, cah.y, cah.t}
-   );
+public abstract class cio extends cin {
+   @Nullable
+   private in b;
+   private boolean c;
+   private boolean d;
 
-   protected static bsf<?> a(bsf<cin> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      $$0.a(Set.of(cma.a));
-      $$0.b(cma.k);
-      $$0.f();
-      return $$0;
+   protected cio(brn<? extends cio> $$0, dad $$1) {
+      super($$0, $$1);
    }
 
-   private static void b(bsf<cin> $$0) {
-      $$0.a(cma.a, 0, ImmutableList.of(new bvq(0.8F), new buc(45, 90)));
+   @Override
+   protected void z() {
+      super.z();
+      this.bS.a(4, new cio.a<>(this, 0.7, 0.595));
    }
 
-   private static void c(bsf<cin> $$0) {
-      $$0.a(
-         cma.b,
-         ImmutableList.of(
-            Pair.of(0, bvi.a($$0x -> $$0x.dQ().c(cah.B))),
-            Pair.of(1, bvi.a(cin::gq)),
-            Pair.of(2, new cio.a(20, 40)),
-            Pair.of(3, new but(ImmutableList.of(Pair.of(new btg(20, 100), 1), Pair.of(buo.a(0.6F), 2))))
-         )
-      );
+   @Override
+   public void b(ua $$0) {
+      super.b($$0);
+      if (this.b != null) {
+         $$0.a("patrol_target", up.a(this.b));
+      }
+
+      $$0.a("PatrolLeader", this.c);
+      $$0.a("Patrolling", this.d);
    }
 
-   private static void d(bsf<cin> $$0) {
-      $$0.a(
-         cma.k,
-         ImmutableList.of(Pair.of(0, bvl.a()), Pair.of(1, new cir()), Pair.of(2, new ciq()), Pair.of(3, new cis()), Pair.of(4, new cit())),
-         ImmutableSet.of(Pair.of(cah.o, cai.a), Pair.of(cah.m, cai.b))
-      );
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      up.a($$0, "patrol_target").ifPresent($$0x -> this.b = $$0x);
+      this.c = $$0.q("PatrolLeader");
+      this.d = $$0.q("Patrolling");
    }
 
-   static void a(cin $$0) {
-      $$0.dQ().a(ImmutableList.of(cma.k, cma.b));
+   public boolean gq() {
+      return true;
    }
 
-   public static class a extends bug {
-      @VisibleForTesting
-      public a(int $$0, int $$1) {
-         super($$0, $$1);
+   @Nullable
+   @Override
+   public bss a(das $$0, bpk $$1, bse $$2, @Nullable bss $$3) {
+      if ($$2 != bse.p && $$2 != bse.h && $$2 != bse.d && $$0.E_().i() < 0.06F && this.gq()) {
+         this.c = true;
+      }
+
+      if (this.gt()) {
+         this.a(bro.f, cms.a(this.dP().b(le.d)));
+         this.a(bro.f, 2.0F);
+      }
+
+      if ($$2 == bse.p) {
+         this.d = true;
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   public static boolean b(brn<? extends cio> $$0, dae $$1, bse $$2, in $$3, ayg $$4) {
+      return $$1.a(dam.b, $$3) > 8 ? false : c($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public boolean h(double $$0) {
+      return !this.d || $$0 > 16384.0;
+   }
+
+   public void i(in $$0) {
+      this.b = $$0;
+      this.d = true;
+   }
+
+   public in gr() {
+      return this.b;
+   }
+
+   public boolean gs() {
+      return this.b != null;
+   }
+
+   public void w(boolean $$0) {
+      this.c = $$0;
+      this.d = true;
+   }
+
+   public boolean gt() {
+      return this.c;
+   }
+
+   public boolean gw() {
+      return true;
+   }
+
+   public void gx() {
+      this.b = this.dn().b(-500 + this.ah.a(1000), 0, -500 + this.ah.a(1000));
+      this.d = true;
+   }
+
+   protected boolean gy() {
+      return this.d;
+   }
+
+   protected void x(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public static class a<T extends cio> extends byx {
+      private static final int a = 200;
+      private final T b;
+      private final double c;
+      private final double d;
+      private long e;
+
+      public a(T $$0, double $$1, double $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = -1L;
+         this.a(EnumSet.of(byx.a.a));
       }
 
       @Override
-      protected void c(aqe $$0, brg $$1, long $$2) {
-         super.c($$0, $$1, $$2);
-         $$1.a(auz.cM);
-         $$1.b(brp.p);
+      public boolean a() {
+         boolean $$0 = this.b.dN().Y() < this.e;
+         return this.b.gy() && this.b.p() == null && !this.b.cP() && this.b.gs() && !$$0;
       }
 
       @Override
-      protected void b(aqe $$0, brg $$1, long $$2) {
-         super.b($$0, $$1, $$2);
-         $$1.b(brp.a);
-         if ($$1.dQ().a(cah.o)) {
-            $$1.dQ().a(cah.aV, ayy.a, 60L);
+      public void c() {
+      }
+
+      @Override
+      public void d() {
+      }
+
+      @Override
+      public void e() {
+         boolean $$0 = this.b.gt();
+         cbl $$1 = this.b.K();
+         if ($$1.l()) {
+            List<cio> $$2 = this.h();
+            if (this.b.gy() && $$2.isEmpty()) {
+               this.b.x(false);
+            } else if ($$0 && this.b.gr().a(this.b.dl(), 10.0)) {
+               this.b.gx();
+            } else {
+               etp $$3 = etp.c(this.b.gr());
+               etp $$4 = this.b.dl();
+               etp $$5 = $$4.d($$3);
+               $$3 = $$5.b(90.0F).a(0.4).e($$3);
+               etp $$6 = $$3.d($$4).d().a(10.0).e($$4);
+               in $$7 = in.a($$6);
+               $$7 = this.b.dN().a(dvz.a.f, $$7);
+               if (!$$1.a((double)$$7.u(), (double)$$7.v(), (double)$$7.w(), $$0 ? this.d : this.c)) {
+                  this.i();
+                  this.e = this.b.dN().Y() + 200L;
+               } else if ($$0) {
+                  for (cio $$8 : $$2) {
+                     $$8.i($$7);
+                  }
+               }
+            }
          }
+      }
+
+      private List<cio> h() {
+         return this.b.dN().a(cio.class, this.b.cI().g(16.0), $$0 -> $$0.gw() && !$$0.t(this.b));
+      }
+
+      private boolean i() {
+         ayg $$0 = this.b.ej();
+         in $$1 = this.b.dN().a(dvz.a.f, this.b.dn().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+         return this.b.K().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), this.c);
       }
    }
 }

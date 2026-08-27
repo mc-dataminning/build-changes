@@ -1,37 +1,32 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+public class btc {
+   public static final int a = 64;
+   private final double b;
+   private boolean c;
+   private final String d;
 
-public class btc extends bsw<bre> {
-   private final cah<Integer> c;
+   protected btc(String $$0, double $$1) {
+      this.b = $$1;
+      this.d = $$0;
+   }
 
-   public btc(cah<Integer> $$0) {
-      super(ImmutableMap.of($$0, cai.a));
+   public double a() {
+      return this.b;
+   }
+
+   public boolean b() {
+      return this.c;
+   }
+
+   public btc a(boolean $$0) {
       this.c = $$0;
+      return this;
    }
 
-   private Optional<Integer> b(bre $$0) {
-      return $$0.dQ().c(this.c);
+   public double a(double $$0) {
+      return $$0;
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(aqe $$0, bre $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
-   }
-
-   @Override
-   protected void c(aqe $$0, bre $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dQ().a(this.c, $$3.get() - 1);
-   }
-
-   @Override
-   protected void b(aqe $$0, bre $$1, long $$2) {
-      $$1.dQ().b(this.c);
+   public String c() {
+      return this.d;
    }
 }

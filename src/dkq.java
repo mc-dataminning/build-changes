@@ -1,53 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dkq extends djv {
-   public static final MapCodec<dkq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(drl.a.fieldOf("wood_type").forGetter(djv::d), u()).apply($$0, dkq::new));
-   public static final dqy b = dqo.ba;
+public class dkq extends dde {
+   public static final MapCodec<dkq> a = b(dkq::new);
+   protected static final eui b = dde.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+   private static final int c = 20;
 
    @Override
    public MapCodec<dkq> a() {
       return a;
    }
 
-   public dkq(drl $$0, dpx.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
+   public dkq(dqg.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(dpy $$0, czx $$1, im $$2) {
-      return $$1.a_($$2.d()).e();
+   protected eui b(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return b;
    }
 
    @Override
-   public dpy a(cvl $$0) {
-      elr $$1 = $$0.q().b_($$0.a());
-      return this.n().a(b, Integer.valueOf(dre.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == els.c));
+   protected eui b_(dqh $$0, czj $$1, in $$2) {
+      return euf.b();
    }
 
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      return $$1 == ir.a && !this.a($$0, $$3, $$4) ? dcx.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected eui c(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return euf.b();
    }
 
    @Override
-   public float g(dpy $$0) {
-      return dre.b($$0.c(b));
+   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      ddk.b($$1, $$2.c(), $$0);
    }
 
    @Override
-   protected dpy a(dpy $$0, dji $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      if ($$1 == is.b && $$2.a(ddg.G)) {
+         $$3.a($$4, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected dpy a(dpy $$0, dhs $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected void b(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 
    @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(b, f);
+   protected boolean a(dqh $$0, emp $$1) {
+      return false;
+   }
+
+   @Override
+   protected float d(dqh $$0, czj $$1, in $$2) {
+      return 0.2F;
    }
 }

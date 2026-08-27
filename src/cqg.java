@@ -1,79 +1,97 @@
 import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class cqg extends csu {
-   public static final int a = 20;
-   public static final int b = 15;
+public class cqg implements cou {
+   private final jf<csz> b;
+   private final int c;
+   private final int d;
+   private final cod e;
 
-   public cqg(cry.a $$0) {
-      super($$0);
+   public cqg(cod $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, jf.a($$1 * $$2, csz.i));
+   }
+
+   public cqg(cod $$0, int $$1, int $$2, jf<csz> $$3) {
+      this.b = $$3;
+      this.e = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public void a(csd $$0, czu $$1, bre $$2, int $$3) {
-      if ($$2 instanceof ckl $$4) {
-         csd $$5 = $$4.g($$0);
-         if (!$$5.d()) {
-            int $$6 = this.b($$0) - $$3;
-            float $$7 = a($$6);
-            if (!((double)$$7 < 0.1)) {
-               List<csd> $$8 = a($$0, $$5, $$4);
-               if (!$$1.x_() && !$$8.isEmpty()) {
-                  this.a($$1, $$4, $$4.fu(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
-               }
+   public int b() {
+      return this.b.size();
+   }
 
-               $$1.a(null, $$4.ds(), $$4.du(), $$4.dy(), auz.aG, ava.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
-               $$4.b(avj.c.b(this));
-            }
+   @Override
+   public boolean c() {
+      for (csz $$0 : this.b) {
+         if (!$$0.d()) {
+            return false;
          }
       }
+
+      return true;
    }
 
    @Override
-   protected void a(bre $$0, cld $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bre $$6) {
-      $$1.a($$0, $$0.dF(), $$0.dD() + $$5, 0.0F, $$3, $$4);
+   public csz a(int $$0) {
+      return $$0 >= this.b() ? csz.i : this.b.get($$0);
    }
 
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
+   @Override
+   public csz b(int $$0) {
+      return bpg.a(this.b, $$0);
+   }
+
+   @Override
+   public csz a(int $$0, int $$1) {
+      csz $$2 = bpg.a(this.b, $$0, $$1);
+      if (!$$2.d()) {
+         this.e.a(this);
       }
 
-      return $$1;
+      return $$2;
    }
 
    @Override
-   public int b(csd $$0) {
-      return 72000;
+   public void a(int $$0, csz $$1) {
+      this.b.set($$0, $$1);
+      this.e.a(this);
    }
 
    @Override
-   public ctw c(csd $$0) {
-      return ctw.e;
+   public void e() {
    }
 
    @Override
-   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
-      csd $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.g($$3).d();
-      if (!$$1.fN() && !$$4) {
-         return bor.d($$3);
-      } else {
-         $$1.c($$2);
-         return bor.b($$3);
+   public boolean a(clh $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public int g() {
+      return this.d;
+   }
+
+   @Override
+   public int f() {
+      return this.c;
+   }
+
+   @Override
+   public List<csz> h() {
+      return List.copyOf(this.b);
+   }
+
+   @Override
+   public void a(cll $$0) {
+      for (csz $$1 : this.b) {
+         $$0.a($$1);
       }
-   }
-
-   @Override
-   public Predicate<csd> b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 15;
    }
 }

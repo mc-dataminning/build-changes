@@ -1,55 +1,71 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.Locale;
 import org.joml.Vector3f;
 
-public class kp extends kr {
-   public static final Vector3f a = etf.a(3790560).j();
-   public static final kp b = new kp(a, kq.a, 1.0F);
-   public static final Codec<kp> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axe.c.fieldOf("fromColor").forGetter($$0x -> $$0x.h),
-               axe.c.fieldOf("toColor").forGetter($$0x -> $$0x.j),
-               Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, kp::new)
-   );
-   public static final yq<wd, kp> d = yq.a(yo.q, $$0 -> $$0.h, yo.q, $$0 -> $$0.j, yo.h, $$0 -> $$0.i, kp::new);
-   public static final ku.a<kp> e = new ku.a<kp>() {
-      public kp a(kv<kp> $$0, StringReader $$1, ix.a $$2) throws CommandSyntaxException {
-         Vector3f $$3 = kr.a($$1);
+public class kp implements kv {
+   public static final kv.a<kp> a = new kv.a<kp>() {
+      public kp a(kw<kp> $$0, StringReader $$1, iy.a $$2) throws CommandSyntaxException {
+         Vector3f $$3 = ks.a($$1);
          $$1.expect(' ');
          float $$4 = $$1.readFloat();
-         Vector3f $$5 = kr.a($$1);
-         return new kp($$3, $$5, $$4);
+         int $$5 = axj.b.a(kp.a($$4), kp.a($$3.x), kp.a($$3.y), kp.a($$3.z));
+         return new kp($$0, $$5);
       }
    };
-   private final Vector3f j;
+   private final kw<? extends kp> b;
+   private final int c;
 
-   public kp(Vector3f $$0, Vector3f $$1, float $$2) {
-      super($$0, $$2);
-      this.j = $$1;
+   public static Codec<kp> a(kw<kp> $$0) {
+      return Codec.INT.xmap($$1 -> new kp($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public Vector3f b() {
-      return this.h;
+   public static ys<? super ByteBuf, kp> b(kw<kp> $$0) {
+      return yq.e.a($$1 -> new kp($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public Vector3f c() {
-      return this.j;
-   }
-
-   @Override
-   public String a(ix.a $$0) {
-      return String.format(
-         Locale.ROOT, "%s %.2f %.2f %.2f %.2f %.2f %.2f %.2f", lc.j.b(this.a()), this.h.x(), this.h.y(), this.h.z(), this.i, this.j.x(), this.j.y(), this.j.z()
-      );
+   kp(kw<? extends kp> $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public kv<kp> a() {
-      return kw.o;
+   public kw<?> a() {
+      return this.b;
+   }
+
+   @Override
+   public String a(iy.a $$0) {
+      return String.format(Locale.ROOT, "%s 0x%x", ld.j.b(this.a()), this.c);
+   }
+
+   public float b() {
+      return (float)axj.b.b(this.c) / 255.0F;
+   }
+
+   public float c() {
+      return (float)axj.b.c(this.c) / 255.0F;
+   }
+
+   public float d() {
+      return (float)axj.b.d(this.c) / 255.0F;
+   }
+
+   public float e() {
+      return (float)axj.b.a(this.c) / 255.0F;
+   }
+
+   public static kp a(kw<? extends kp> $$0, int $$1) {
+      return new kp($$0, $$1);
+   }
+
+   public static kp a(kw<? extends kp> $$0, float $$1, float $$2, float $$3) {
+      return a($$0, axj.b.a(a($$1), a($$2), a($$3)));
+   }
+
+   static int a(float $$0) {
+      return axz.d($$0 * 255.0F);
    }
 }

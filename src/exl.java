@@ -1,30 +1,101 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class exl {
-   public static final ext a = new ext(0, ext.a.a, ext.b.a, 3);
-   public static final ext b = new ext(0, ext.a.b, ext.b.c, 4);
-   public static final ext c = new ext(0, ext.a.a, ext.b.d, 2);
-   public static final ext d = new ext(1, ext.a.e, ext.b.d, 2);
-   public static final ext e = new ext(2, ext.a.e, ext.b.d, 2);
-   public static final ext f = new ext(0, ext.a.c, ext.b.b, 3);
-   public static final ext g = new ext(0, ext.a.c, ext.b.e, 1);
-   public static final ext h = c;
-   public static final exs i = new exs(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
-   public static final exs j = new exs(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final exs k = new exs(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final exs l = new exs(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
-   public static final exs m = new exs(ImmutableMap.builder().put("Position", a).build());
-   public static final exs n = new exs(ImmutableMap.builder().put("Position", a).put("Color", b).build());
-   public static final exs o = new exs(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
-   public static final exs p = new exs(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
-   public static final exs q = new exs(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
-   public static final exs r = new exs(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
-   public static final exs s = new exs(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
-   public static final exs t = new exs(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
-   public static final exs u = new exs(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
-   public static final exs v = new exs(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
+   private static final int a = 32768;
+   private final exl.a b;
+   private final String c;
+   private int d;
+
+   protected exl(exl.a $$0, int $$1, String $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = $$2;
+   }
+
+   public void a(exn $$0) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager.glAttachShader($$0.a(), this.c());
+   }
+
+   public void a() {
+      if (this.d != -1) {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.d);
+         this.d = -1;
+         this.b.c().remove(this.c);
+      }
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public static exl a(exl.a $$0, String $$1, InputStream $$2, String $$3, exe $$4) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$5 = b($$0, $$1, $$2, $$3, $$4);
+      exl $$6 = new exl($$0, $$5, $$1);
+      $$0.c().put($$1, $$6);
+      return $$6;
+   }
+
+   protected static int b(exl.a $$0, String $$1, InputStream $$2, String $$3, exe $$4) throws IOException {
+      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
+      if ($$5 == null) {
+         throw new IOException("Could not load program " + $$0.a());
+      } else {
+         int $$6 = GlStateManager.glCreateShader($$0.d());
+         GlStateManager.glShaderSource($$6, $$4.a($$5));
+         GlStateManager.glCompileShader($$6);
+         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
+            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
+            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
+         } else {
+            return $$6;
+         }
+      }
+   }
+
+   protected int c() {
+      return this.d;
+   }
+
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
+
+      private final String c;
+      private final String d;
+      private final int e;
+      private final Map<String, exl> f = Maps.newHashMap();
+
+      private a(String $$0, String $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public String a() {
+         return this.c;
+      }
+
+      public String b() {
+         return this.d;
+      }
+
+      int d() {
+         return this.e;
+      }
+
+      public Map<String, exl> c() {
+         return this.f;
+      }
+   }
 }

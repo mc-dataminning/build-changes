@@ -1,61 +1,36 @@
-public class ahb implements yz<afx> {
-   public static final yq<vs, ahb> a = yz.a(ahb::a, ahb::new);
-   private final int b;
-   private final ahb.a c;
-   private final int d;
+public class ahb implements zb<afz> {
+   public static final ys<vu, ahb> a = zb.a(ahb::a, ahb::new);
+   private static final int b = 2;
+   private final boolean c;
 
-   public ahb(bql $$0, ahb.a $$1) {
-      this($$0, $$1, 0);
+   public ahb(cle $$0) {
+      this.c = $$0.b;
    }
 
-   public ahb(bql $$0, ahb.a $$1, int $$2) {
-      this.b = $$0.aj();
-      this.c = $$1;
-      this.d = $$2;
+   private ahb(vu $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
    }
 
-   private ahb(vs $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(ahb.a.class);
-      this.d = $$0.l();
-   }
+   private void a(vu $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
 
-   private void a(vs $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
+      $$0.k($$1);
    }
 
    @Override
-   public zb<ahb> a() {
-      return afv.bJ;
+   public zd<ahb> a() {
+      return afx.bH;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public ahb.a e() {
+   public boolean b() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
    }
 }

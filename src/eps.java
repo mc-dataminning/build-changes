@@ -1,83 +1,61 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public class eps extends epo {
-   public static final int a = 0;
-   public static final Codec<eps> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(esd.a.fieldOf("count").forGetter($$0x -> $$0x.c), axe.a(Codec.INT, "limit", Integer.valueOf(0)).forGetter($$0x -> $$0x.d)))
-            .apply($$0, eps::new)
-   );
-   private final esc c;
-   private final int d;
+public class eps extends epw {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<eps> a = RecordCodecBuilder.create($$0 -> a($$0).and(akg.a(le.aV).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, eps::new));
+   private final akg<epx> c;
 
-   eps(List<erh> $$0, esc $$1, int $$2) {
+   private eps(List<erq> $$0, akg<epx> $$1) {
       super($$0);
       this.c = $$1;
-      this.d = $$2;
    }
 
    @Override
-   public epq b() {
-      return epr.j;
+   public epy b() {
+      return epz.E;
    }
 
    @Override
-   public Set<eqq<?>> a() {
-      return Sets.union(ImmutableSet.of(eqt.d), this.c.a());
-   }
-
-   private boolean c() {
-      return this.d > 0;
+   public void a(eor $$0) {
+      if ($$0.a(this.c)) {
+         $$0.b("Function " + this.c.a() + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.a()
+            .a(le.aV, this.c)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
+      }
    }
 
    @Override
-   public csd a(csd $$0, eoa $$1) {
-      bql $$2 = $$1.c(eqt.d);
-      if ($$2 instanceof bre) {
-         int $$3 = cxo.h((bre)$$2);
-         if ($$3 == 0) {
+   protected csz a(csz $$0, eol $$1) {
+      epx $$2 = $$1.a().a(le.aV, this.c).map(iw::a).orElse(null);
+      if ($$2 == null) {
+         b.warn("Unknown function: {}", this.c.a());
+         return $$0;
+      } else {
+         eol.c<?> $$3 = eol.a($$2);
+         if ($$1.b($$3)) {
+            csz var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
+
+            return var5;
+         } else {
+            b.warn("Detected infinite loop in loot tables");
             return $$0;
          }
-
-         float $$4 = (float)$$3 * this.c.b($$1);
-         $$0.f(Math.round($$4));
-         if (this.c() && $$0.G() > this.d) {
-            $$0.e(this.d);
-         }
       }
-
-      return $$0;
    }
 
-   public static eps.a a(esc $$0) {
-      return new eps.a($$0);
-   }
-
-   public static class a extends epo.a<eps.a> {
-      private final esc a;
-      private int b = 0;
-
-      public a(esc $$0) {
-         this.a = $$0;
-      }
-
-      protected eps.a a() {
-         return this;
-      }
-
-      public eps.a a(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      @Override
-      public epp b() {
-         return new eps(this.g(), this.a, this.b);
-      }
+   public static epw.a<?> a(akg<epx> $$0) {
+      return a($$1 -> new eps($$1, $$0));
    }
 }

@@ -1,31 +1,36 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dko extends dgw implements dcm {
-   public static final MapCodec<dko> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cqw.q.fieldOf("color").forGetter(dko::b), u()).apply($$0, dko::new));
-   private final cqw k;
+public class dko extends dde {
+   public static final MapCodec<dko> b = b(dko::new);
+   public static final dqy c = dqx.z;
 
    @Override
-   public MapCodec<dko> a() {
-      return j;
+   protected MapCodec<? extends dko> a() {
+      return b;
    }
 
-   public dko(cqw $$0, dpx.d $$1) {
-      super($$1);
-      this.k = $$0;
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
+   protected dko(dqg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public cqw b() {
-      return this.k;
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      return $$1 == is.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public dqh a(cwi $$0) {
+      dqh $$1 = $$0.q().a_($$0.a().c());
+      return this.n().a(c, Boolean.valueOf(m($$1)));
+   }
+
+   private static boolean m(dqh $$0) {
+      return $$0.a(avr.bz);
+   }
+
+   @Override
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(c);
    }
 }

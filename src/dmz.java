@@ -1,25 +1,21 @@
-public class dmz extends dnd {
-   private cqw a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dmz(im $$0, dpy $$1) {
-      super(dnf.y, $$0, $$1);
-      this.a = ((dco)$$1.b()).b();
+public class dmz extends ddv {
+   public static final MapCodec<dmz> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(crs.q.fieldOf("color").forGetter(dmz::b), u()).apply($$0, dmz::new));
+   private final crs d;
+
+   @Override
+   public MapCodec<dmz> a() {
+      return c;
    }
 
-   public dmz(im $$0, dpy $$1, cqw $$2) {
-      super(dnf.y, $$0, $$1);
-      this.a = $$2;
+   protected dmz(crs $$0, dqg.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
-   public abr b() {
-      return abr.a(this);
-   }
-
-   public cqw c() {
-      return this.a;
-   }
-
-   public void a(cqw $$0) {
-      this.a = $$0;
+   public crs b() {
+      return this.d;
    }
 }

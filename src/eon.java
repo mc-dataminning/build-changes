@@ -1,30 +1,57 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class eon extends eov {
-   public static final Codec<eon> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akf.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eon::new)
-   );
-   private final akf j;
+public record eon<T>(akg<jj<T>> d, Codec<T> e, String f, eon.a<T> g) {
+   private static final Logger h = LogUtils.getLogger();
+   public static final eon<erq> a = new eon<>(le.aW, ers.a, "predicates", f());
+   public static final eon<epx> b = new eon<>(le.aV, epz.c, "item_modifiers", f());
+   public static final eon<eoq> c = new eon<>(le.aU, eoq.d, "loot_tables", g());
 
-   private eon(akf $$0, int $$1, int $$2, List<erh> $$3, List<epp> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public void a(eor $$0, akg<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
    }
 
-   @Override
-   public eou a() {
-      return eor.e;
+   public <V> Optional<T> a(akh $$0, DynamicOps<V> $$1, V $$2) {
+      DataResult<T> $$3 = this.e.parse($$1, $$2);
+      $$3.error().ifPresent($$1x -> h.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$3.result();
    }
 
-   @Override
-   public void a(Consumer<csd> $$0, eoa $$1) {
-      $$1.a(this.j, $$0);
+   public static Stream<eon<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   public static eov.a<?> a(akf $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eon($$0, $$1, $$2, $$3, $$4));
+   private static <T extends eom> eon.a<T> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   }
+
+   private static eon.a<eoq> g() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   }
+
+   public akg<jj<T>> b() {
+      return this.d;
+   }
+
+   public Codec<T> c() {
+      return this.e;
+   }
+
+   public String d() {
+      return this.f;
+   }
+
+   public eon.a<T> e() {
+      return this.g;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void run(eor var1, akg<T> var2, T var3);
    }
 }

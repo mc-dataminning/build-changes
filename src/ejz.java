@@ -1,36 +1,41 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejz extends ekd {
-   public static final Codec<ejz> a = ejv.b.listOf().fieldOf("rules").xmap(ejz::new, $$0 -> $$0.b).codec();
-   private final ImmutableList<ejv> b;
+public class ejz extends ekc {
+   public static final Codec<ejz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ejz::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   public ejz(List<? extends ejv> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-   }
-
-   @Nullable
-   @Override
-   public ekg.c a(czx $$0, im $$1, im $$2, ekg.c $$3, ekg.c $$4, ekc $$5) {
-      ayd $$6 = ayd.a(axw.a($$4.a()));
-      dpy $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
-
-      while (var9.hasNext()) {
-         ejv $$8 = (ejv)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new ekg.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
-         }
+   public ejz(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
       }
-
-      return $$4;
    }
 
    @Override
-   protected ekf<?> a() {
-      return ekf.i;
+   public boolean a(in $$0, in $$1, in $$2, ayg $$3) {
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= axz.b(this.b, this.d, axz.g((float)$$4, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected ekd<?> a() {
+      return ekd.b;
    }
 }

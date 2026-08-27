@@ -1,70 +1,39 @@
 import com.mojang.blaze3d.systems.RenderSystem;
 
-public class fgd extends fes {
-   private static final fgh a = new fgh(
-      new akf("widget/tab_selected"), new akf("widget/tab"), new akf("widget/tab_selected_highlighted"), new akf("widget/tab_highlighted")
-   );
-   private static final int b = 3;
-   private static final int c = 1;
-   private static final int d = 1;
-   private static final int e = 4;
-   private static final int f = 2;
-   private final fgx m;
-   private final fgw n;
+public class fgd {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-   public fgd(fgx $$0, fgw $$1, int $$2, int $$3) {
-      super(0, 0, $$2, $$3, $$1.a());
-      this.m = $$0;
-      this.n = $$1;
+   public static void a(fer $$0, gny $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1.a(), $$2, $$3, $$4);
    }
 
-   @Override
-   public void b(feh $$0, int $$1, int $$2, float $$3) {
-      RenderSystem.enableBlend();
-      $$0.a(a.a(this.b(), this.A()), this.C(), this.D(), this.g, this.h);
-      RenderSystem.disableBlend();
-      fef $$4 = fcu.Q().h;
-      int $$5 = this.j ? -1 : -6250336;
-      this.a($$0, $$4, $$5);
-      if (this.b()) {
-         this.a($$0, this.C() + 2, this.D() + 2, this.E() - 2, this.F());
-         this.b($$0, $$4, $$5);
+   public static void a(fer $$0, akh $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, true, false);
+   }
+
+   public static void a(fer $$0, akh $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
+      int $$7 = 8 + ($$6 ? 8 : 0);
+      int $$8 = 8 * ($$6 ? -1 : 1);
+      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6);
       }
    }
 
-   protected void a(feh $$0, int $$1, int $$2, int $$3, int $$4) {
-      fkt.a($$0, fkt.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
-   }
-
-   public void a(feh $$0, fef $$1, int $$2) {
-      int $$3 = this.C() + 1;
-      int $$4 = this.D() + (this.b() ? 0 : 3);
-      int $$5 = this.C() + this.x() - 1;
-      int $$6 = this.D() + this.v();
-      a($$0, $$1, this.y(), $$3, $$4, $$5, $$6, $$2);
-   }
-
-   private void b(feh $$0, fef $$1, int $$2) {
-      int $$3 = Math.min($$1.a(this.y()), this.x() - 4);
-      int $$4 = this.C() + (this.x() - $$3) / 2;
-      int $$5 = this.D() + this.v() - 2;
-      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
-   }
-
-   @Override
-   protected void a(fiq $$0) {
-      $$0.a(fip.a, ws.a("gui.narrate.tab", this.n.a()));
-   }
-
-   @Override
-   public void a(grf $$0) {
-   }
-
-   public fgw a() {
-      return this.n;
-   }
-
-   public boolean b() {
-      return this.m.a() == this.n;
+   private static void a(fer $$0, akh $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = 8 + ($$5 ? 8 : 0);
+      int $$7 = 8 * ($$5 ? -1 : 1);
+      RenderSystem.enableBlend();
+      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
+      RenderSystem.disableBlend();
    }
 }

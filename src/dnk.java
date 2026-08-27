@@ -1,159 +1,144 @@
-public class dnk extends doi implements dog {
-   private static final int e = 1;
-   private je<csd> f = je.a(27, csd.i);
-   private final dnq g = new dnq() {
-      @Override
-      protected void a(czu $$0, im $$1, dpy $$2) {
-         dnk.a($$0, $$1, $$2, auz.eQ);
-      }
+import java.util.List;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-      @Override
-      protected void b(czu $$0, im $$1, dpy $$2) {
-         dnk.a($$0, $$1, $$2, auz.eO);
-      }
+public class dnk extends dnm {
+   private static final int d = 50;
+   private static final int e = 60;
+   private static final int f = 60;
+   private static final int g = 40;
+   private static final int h = 5;
+   private static final int i = 48;
+   private static final int j = 32;
+   private static final int k = 48;
+   private long l;
+   public int a;
+   public boolean b;
+   public is c;
+   private List<bsa> m;
+   private boolean q;
+   private int r;
 
-      @Override
-      protected void a(czu $$0, im $$1, dpy $$2, int $$3, int $$4) {
-         dnk.this.a($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      protected boolean a(ckl $$0) {
-         if (!($$0.cc instanceof cno)) {
-            return false;
-         } else {
-            boj $$1 = ((cno)$$0.cc).l();
-            return $$1 == dnk.this || $$1 instanceof boi && ((boi)$$1).a(dnk.this);
-         }
-      }
-   };
-   private final dnl h = new dnl();
-
-   protected dnk(dnf<?> $$0, im $$1, dpy $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public dnk(im $$0, dpy $$1) {
-      this(dnf.b, $$0, $$1);
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected ws k() {
-      return ws.c("container.chest");
-   }
-
-   @Override
-   public void a(ty $$0, ix.a $$1) {
-      super.a($$0, $$1);
-      this.f = je.a(this.b(), csd.i);
-      if (!this.a_($$0)) {
-         bok.b($$0, this.f, $$1);
-      }
-   }
-
-   @Override
-   protected void b(ty $$0, ix.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b_($$0)) {
-         bok.a($$0, this.f, $$1);
-      }
-   }
-
-   public static void a(czu $$0, im $$1, dpy $$2, dnk $$3) {
-      $$3.h.a();
-   }
-
-   static void a(czu $$0, im $$1, dpy $$2, auy $$3) {
-      dqq $$4 = $$2.c(ddy.d);
-      if ($$4 != dqq.b) {
-         double $$5 = (double)$$1.u() + 0.5;
-         double $$6 = (double)$$1.v() + 0.5;
-         double $$7 = (double)$$1.w() + 0.5;
-         if ($$4 == dqq.c) {
-            ir $$8 = ddy.h($$2);
-            $$5 += (double)$$8.j() * 0.5;
-            $$7 += (double)$$8.l() * 0.5;
-         }
-
-         $$0.a(null, $$5, $$6, $$7, $$3, ava.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+   public dnk(in $$0, dqh $$1) {
+      super(dno.E, $$0, $$1);
    }
 
    @Override
    public boolean a_(int $$0, int $$1) {
       if ($$0 == 1) {
-         this.h.a($$1 > 0);
+         this.b();
+         this.r = 0;
+         this.c = is.a($$1);
+         this.a = 0;
+         this.b = true;
          return true;
       } else {
          return super.a_($$0, $$1);
       }
    }
 
-   @Override
-   public void d_(ckl $$0) {
-      if (!this.q && !$$0.N_()) {
-         this.g.a($$0, this.i(), this.az_(), this.n());
+   private static void a(dad $$0, in $$1, dqh $$2, dnk $$3, dnk.a $$4) {
+      if ($$3.b) {
+         $$3.a++;
+      }
+
+      if ($$3.a >= 50) {
+         $$3.b = false;
+         $$3.a = 0;
+      }
+
+      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
+         $$3.q = true;
+         $$0.a(null, $$1, avc.ca, avd.e, 1.0F, 1.0F);
+      }
+
+      if ($$3.q) {
+         if ($$3.r < 40) {
+            $$3.r++;
+         } else {
+            $$4.run($$0, $$1, $$3.m);
+            $$3.q = false;
+         }
       }
    }
 
-   @Override
-   public void c(ckl $$0) {
-      if (!this.q && !$$0.N_()) {
-         this.g.b($$0, this.i(), this.az_(), this.n());
+   public static void a(dad $$0, in $$1, dqh $$2, dnk $$3) {
+      a($$0, $$1, $$2, $$3, dnk::b);
+   }
+
+   public static void b(dad $$0, in $$1, dqh $$2, dnk $$3) {
+      a($$0, $$1, $$2, $$3, dnk::a);
+   }
+
+   public void a(is $$0) {
+      in $$1 = this.az_();
+      this.c = $$0;
+      if (this.b) {
+         this.a = 0;
+      } else {
+         this.b = true;
+      }
+
+      this.n.a($$1, this.n().b(), 1, $$0.d());
+   }
+
+   private void b() {
+      in $$0 = this.az_();
+      if (this.n.Y() > this.l + 60L || this.m == null) {
+         this.l = this.n.Y();
+         etk $$1 = new etk($$0).g(48.0);
+         this.m = this.n.a(bsa.class, $$1);
+      }
+
+      if (!this.n.B) {
+         for (bsa $$2 : this.m) {
+            if ($$2.bB() && !$$2.dI() && $$0.a($$2.dl(), 32.0)) {
+               $$2.dQ().a(cbd.D, this.n.Y());
+            }
+         }
       }
    }
 
-   @Override
-   protected je<csd> j() {
-      return this.f;
-   }
-
-   @Override
-   protected void a(je<csd> $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.h.a($$0);
-   }
-
-   public static int a(cza $$0, im $$1) {
-      dpy $$2 = $$0.a_($$1);
-      if ($$2.t()) {
-         dnd $$3 = $$0.c_($$1);
-         if ($$3 instanceof dnk) {
-            return ((dnk)$$3).g.a();
+   private static boolean a(in $$0, List<bsa> $$1) {
+      for (bsa $$2 : $$1) {
+         if ($$2.bB() && !$$2.dI() && $$0.a($$2.dl(), 32.0) && $$2.ai().a(avu.c)) {
+            return true;
          }
       }
 
-      return 0;
+      return false;
    }
 
-   public static void a(dnk $$0, dnk $$1) {
-      je<csd> $$2 = $$0.j();
-      $$0.a($$1.j());
-      $$1.a($$2);
+   private static void a(dad $$0, in $$1, List<bsa> $$2) {
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dnk::a);
    }
 
-   @Override
-   protected cnh a(int $$0, ckk $$1) {
-      return cno.a($$0, $$1, this);
+   private static void b(dad $$0, in $$1, List<bsa> $$2) {
+      MutableInt $$3 = new MutableInt(16700985);
+      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dl(), 48.0)).count();
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
+         float $$5 = 1.0F;
+         double $$6 = Math.sqrt(($$4x.ds() - (double)$$1.u()) * ($$4x.ds() - (double)$$1.u()) + ($$4x.dy() - (double)$$1.w()) * ($$4x.dy() - (double)$$1.w()));
+         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.ds() - (double)$$1.u());
+         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dy() - (double)$$1.w());
+         int $$9 = axz.a(($$4 - 21) / -2, 3, 15);
+
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            int $$11 = $$3.addAndGet(5);
+            $$0.a(kp.a(kx.u, $$11), $$7, (double)((float)$$1.v() + 0.5F), $$8, 0.0, 0.0, 0.0);
+         }
+      });
    }
 
-   public void l() {
-      if (!this.q) {
-         this.g.c(this.i(), this.az_(), this.n());
-      }
+   private static boolean a(in $$0, bsa $$1) {
+      return $$1.bB() && !$$1.dI() && $$0.a($$1.dl(), 48.0) && $$1.ai().a(avu.c);
    }
 
-   protected void a(czu $$0, im $$1, dpy $$2, int $$3, int $$4) {
-      dcv $$5 = $$2.b();
-      $$0.a($$1, $$5, 1, $$4);
+   private static void a(bsa $$0) {
+      $$0.b(new bqt(bqv.x, 60));
+   }
+
+   @FunctionalInterface
+   interface a {
+      void run(dad var1, in var2, List<bsa> var3);
    }
 }

@@ -1,32 +1,79 @@
-public class bzq extends byl {
-   private final cik b;
-   private int c;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public bzq(cik $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+public class bzq extends byx {
+   public static final int a = 1;
+   protected final bsi b;
+   protected final double c;
+   protected double d;
+   protected double e;
+   protected double f;
+   protected boolean g;
+
+   public bzq(bsi $$0, double $$1) {
       this.b = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(byx.a.a));
+   }
+
+   @Override
+   public boolean a() {
+      if (!this.h()) {
+         return false;
+      } else {
+         if (this.b.bO()) {
+            in $$0 = this.a(this.b.dN(), this.b, 5);
+            if ($$0 != null) {
+               this.d = (double)$$0.u();
+               this.e = (double)$$0.v();
+               this.f = (double)$$0.w();
+               return true;
+            }
+         }
+
+         return this.i();
+      }
+   }
+
+   protected boolean h() {
+      return this.b.ek() != null || this.b.dC() || this.b.bO();
+   }
+
+   protected boolean i() {
+      etp $$0 = ccu.a(this.b, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.d = $$0.c;
+         this.e = $$0.d;
+         this.f = $$0.e;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.g;
    }
 
    @Override
    public void c() {
-      super.c();
-      this.c = 0;
+      this.b.K().a(this.d, this.e, this.f, this.c);
+      this.g = true;
    }
 
    @Override
    public void d() {
-      super.d();
-      this.b.v(false);
+      this.g = false;
    }
 
    @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
-      }
+   public boolean b() {
+      return !this.b.K().l();
+   }
+
+   @Nullable
+   protected in a(czj $$0, brh $$1, int $$2) {
+      in $$3 = $$1.dn();
+      return !$$0.a_($$3).k($$0, $$3).c() ? null : in.a($$1.dn(), $$2, 1, $$1x -> $$0.b_($$1x).a(avw.a)).orElse(null);
    }
 }

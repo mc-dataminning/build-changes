@@ -1,35 +1,23 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.Optional;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public final class bwk<F extends K1, Value> {
-   private final bsf<?> a;
-   private final cah<Value> b;
-   private final App<F, Value> c;
-
-   public bwk(bsf<?> $$0, cah<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public App<F, Value> a() {
-      return this.c;
-   }
-
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
-   }
-
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
-   }
-
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
-   }
-
-   public void b() {
-      this.a.b(this.b);
+public class bwk {
+   public static btt<bsi> a(cbd<iv> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return bxf.a(
+         (Function<bxf.b<bsi>, ? extends App<bxf.c<bsi>, bxi<bsi>>>)($$5 -> $$5.group($$5.a(cbd.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  iv $$10 = $$5.b($$6);
+                  if ($$7.ae() != $$10.a() || !$$10.b().a($$8.dl(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new cbg($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

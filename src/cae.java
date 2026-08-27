@@ -1,32 +1,48 @@
-import com.mojang.serialization.Codec;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public enum cae implements ayq {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class cae extends byx {
+   private final chz a;
+   @Nullable
+   private bsa b;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<cae> n = ayq.a(cae::values);
-
-   private cae(String $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public cae(chz $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(byx.a.a));
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean a() {
+      bsa $$0 = this.a.p();
+      return this.a.u() > 0 || $$0 != null && this.a.g((brh)$$0) < 9.0;
+   }
+
+   @Override
+   public void c() {
+      this.a.K().n();
+      this.b = this.a.p();
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((brh)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.M().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
+      }
    }
 }

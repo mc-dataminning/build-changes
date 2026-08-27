@@ -1,21 +1,31 @@
-public record aal(im c) implements aaa {
-   public static final yq<vs, aal> a = aaa.a(aal::a, aal::new);
-   public static final aaa.b<aal> b = aaa.a("debug/poi_removed");
+public record aal(int c, emo d, float e) implements aac {
+   public static final ys<vu, aal> a = aac.a(aal::a, aal::new);
+   public static final aac.b<aal> b = aac.a("debug/path");
 
-   private aal(vs $$0) {
-      this($$0.e());
+   private aal(vu $$0) {
+      this($$0.readInt(), emo.b($$0), $$0.readFloat());
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.c);
+   private void a(vu $$0) {
+      $$0.p(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public aaa.b<aal> a() {
+   public aac.b<aal> a() {
       return b;
    }
 
-   public im b() {
+   public int b() {
       return this.c;
+   }
+
+   public emo c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

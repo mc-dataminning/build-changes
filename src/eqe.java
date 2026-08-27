@@ -1,30 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class eqe extends epo {
+public class eqe extends epw {
    public static final Codec<eqe> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(awd.b(ld.E).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, eqe::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  axh.a(aqy.a(axh.b(0, 32)), "title").forGetter($$0x -> $$0x.c),
+                  axh.a(Codec.STRING, "author").forGetter($$0x -> $$0x.b),
+                  axh.a(axh.a(0, 3), "generation").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, eqe::new)
    );
-   private final awd<crv> b;
+   private final Optional<String> b;
+   private final Optional<aqy<String>> c;
+   private final Optional<Integer> d;
 
-   private eqe(List<erh> $$0, awd<crv> $$1) {
+   public eqe(List<erq> $$0, Optional<aqy<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
       super($$0);
-      this.b = $$1;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
    }
 
    @Override
-   public epq b() {
-      return epr.B;
-   }
-
-   @Override
-   public csd a(csd $$0, eoa $$1) {
-      crw.a($$0, this.b, $$1.b());
+   protected csz a(csz $$0, eol $$1) {
+      $$0.a(ka.H, cwg.a, this::a);
       return $$0;
    }
 
-   public static epo.a<?> a(awd<crv> $$0) {
-      return a($$1 -> new eqe($$1, $$0));
+   private cwg a(cwg $$0) {
+      return new cwg(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   }
+
+   @Override
+   public epy b() {
+      return epz.J;
    }
 }

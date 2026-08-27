@@ -1,22 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+public abstract class bvd<E extends bsa> implements btt<E>, bxi<E> {
+   private bts.a a;
 
-public class bvd {
-   public static buh<bre> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
+   public bvd() {
+      this.a = bts.a.a;
    }
 
-   public static buh<bre> a(Predicate<bre> $$0, Function<bre, Float> $$1, int $$2) {
-      return bwj.a(
-         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$3 -> $$3.group($$3.c(cah.m), $$3.b(cah.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
-                  } else {
-                     $$4.a(new cak($$3.b($$5), $$1.apply($$7), $$2));
-                     return true;
-                  }
-               }))
-      );
+   @Override
+   public final bts.a a() {
+      return this.a;
+   }
+
+   @Override
+   public final boolean e(aqh $$0, E $$1, long $$2) {
+      if (this.trigger($$0, $$1, $$2)) {
+         this.a = bts.a.b;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public final void f(aqh $$0, E $$1, long $$2) {
+      this.g($$0, $$1, $$2);
+   }
+
+   @Override
+   public final void g(aqh $$0, E $$1, long $$2) {
+      this.a = bts.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

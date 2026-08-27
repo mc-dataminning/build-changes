@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
 class dxe extends dxi {
-   private final iz<elq> e;
-   public static final Codec<dxe> a = RecordCodecBuilder.create($$0 -> a($$0).and(jk.a(ld.z).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dxe::new));
+   public static final Codec<dxe> a = a(dxe::new);
 
-   public dxe(jq $$0, iz<elq> $$1) {
+   public dxe(List<dxg> $$0) {
       super($$0);
-      this.e = $$1;
+   }
+
+   public boolean a(day $$0, in $$1) {
+      for (dxg $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   protected boolean a(dpy $$0) {
-      return $$0.u().a(this.e);
-   }
-
-   @Override
-   public dwy<?> a() {
-      return dwy.c;
+   public dxh<?> a() {
+      return dxh.j;
    }
 }

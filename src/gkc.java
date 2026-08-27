@@ -1,17 +1,9 @@
-public class gkc<T extends bre, M extends frr<T>> extends gky<T, M> {
-   private final gba a;
-
-   public gkc(gii<T, M> $$0, gba $$1) {
-      super($$0);
-      this.a = $$1;
+public class gkc extends gfs<cjg, fut<cjg>> {
+   public gkc(ggx.a $$0) {
+      this($$0, fva.cf, fva.ci, fva.cj);
    }
 
-   public void a(exn $$0, gbe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      csd $$10 = $$3.d(bqs.a);
-      this.a.a($$3, $$10, csa.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public gkc(ggx.a $$0, fuz $$1, fuz $$2, fuz $$3) {
+      super($$0, new fut<>($$0.a($$1)), new fut<>($$0.a($$2)), new fut<>($$0.a($$3)));
    }
 }

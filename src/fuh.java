@@ -1,77 +1,36 @@
-public class fuh<T extends cgj> extends fsa<T> {
-   private static final String a = "ribcage";
-   private static final String b = "center_head";
-   private static final String f = "right_head";
-   private static final String g = "left_head";
-   private static final float h = 0.065F;
-   private static final float i = 0.265F;
-   private final fur j;
-   private final fur k;
-   private final fur l;
-   private final fur m;
-   private final fur n;
-   private final fur o;
+public class fuh<T extends brh> extends frt<T> {
+   private final fvb a;
+   private final fvb b;
 
-   public fuh(fur $$0) {
-      this.j = $$0;
-      this.n = $$0.b("ribcage");
-      this.o = $$0.b("tail");
-      this.k = $$0.b("center_head");
-      this.l = $$0.b("right_head");
-      this.m = $$0.b("left_head");
+   public fuh(fvb $$0) {
+      this.a = $$0;
+      this.b = $$0.b("tail");
    }
 
-   public static fux a(fuv $$0) {
-      fuz $$1 = new fuz();
-      fva $$2 = $$1.a();
-      $$2.a("shoulders", fuw.c().a(0, 16).a(-10.0F, 3.9F, -0.5F, 20.0F, 3.0F, 3.0F, $$0), fut.a);
-      float $$3 = 0.20420352F;
-      $$2.a(
-         "ribcage",
-         fuw.c()
-            .a(0, 22)
-            .a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 1.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 4.0F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 6.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0),
-         fut.a(-2.0F, 6.9F, -0.5F, 0.20420352F, 0.0F, 0.0F)
-      );
-      $$2.a(
-         "tail",
-         fuw.c().a(12, 22).a(0.0F, 0.0F, 0.0F, 3.0F, 6.0F, 3.0F, $$0),
-         fut.a(-2.0F, 6.9F + axw.b(0.20420352F) * 10.0F, -0.5F + axw.a(0.20420352F) * 10.0F, 0.83252203F, 0.0F, 0.0F)
-      );
-      $$2.a("center_head", fuw.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fut.a);
-      fuw $$4 = fuw.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, $$0);
-      $$2.a("right_head", $$4, fut.a(-8.0F, 4.0F, 0.0F));
-      $$2.a("left_head", $$4, fut.a(10.0F, 4.0F, 0.0F));
-      return fux.a($$1, 64, 64);
+   public static fvh a(fvf $$0) {
+      fvj $$1 = new fvj();
+      fvk $$2 = $$1.a();
+      int $$3 = 22;
+      $$2.a("body", fvg.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), fvd.a(0.0F, 22.0F, 0.0F));
+      $$2.a("tail", fvg.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fvd.a(0.0F, 22.0F, 3.0F));
+      $$2.a("right_fin", fvg.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fvd.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("left_fin", fvg.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fvd.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("top_fin", fvg.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fvd.a(0.0F, 20.5F, -3.0F));
+      return fvh.a($$1, 32, 32);
    }
 
    @Override
-   public fur a() {
-      return this.j;
+   public fvb a() {
+      return this.a;
    }
 
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = axw.b($$3 * 0.1F);
-      this.n.e = (0.065F + 0.05F * $$6) * (float) Math.PI;
-      this.o.a(-2.0F, 6.9F + axw.b(this.n.e) * 10.0F, -0.5F + axw.a(this.n.e) * 10.0F);
-      this.o.e = (0.265F + 0.1F * $$6) * (float) Math.PI;
-      this.k.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = $$5 * (float) (Math.PI / 180.0);
-   }
+      float $$6 = 1.0F;
+      if (!$$0.bc()) {
+         $$6 = 1.5F;
+      }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      a($$0, this.l, 0);
-      a($$0, this.m, 1);
-   }
-
-   private static <T extends cgj> void a(T $$0, fur $$1, int $$2) {
-      $$1.f = ($$0.b($$2) - $$0.aZ) * (float) (Math.PI / 180.0);
-      $$1.e = $$0.c($$2) * (float) (Math.PI / 180.0);
+      this.b.f = -$$6 * 0.45F * axz.a(0.6F * $$3);
    }
 }

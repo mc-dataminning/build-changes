@@ -1,101 +1,119 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Set;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class epd extends epo {
-   public static final Codec<epd> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(epd.b.b.fieldOf("source").forGetter($$0x -> $$0x.b), jy.a.listOf().fieldOf("components").forGetter($$0x -> $$0x.c)))
-            .apply($$0, epd::new)
-   );
-   private final epd.b b;
-   private final List<jy<?>> c;
-
-   epd(List<erh> $$0, epd.b $$1, List<jy<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
-   }
-
-   @Override
-   public epq b() {
-      return epr.E;
-   }
-
-   @Override
-   public Set<eqq<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public csd a(csd $$0, eoa $$1) {
-      jv $$2 = this.b.a($$1);
-      $$0.a($$2.a(this.c::contains));
-      return $$0;
-   }
-
-   public static epd.a a(epd.b $$0) {
-      return new epd.a($$0);
-   }
-
-   public static class a extends epo.a<epd.a> {
-      private final epd.b a;
-      private final Builder<jy<?>> b = ImmutableList.builder();
-
-      a(epd.b $$0) {
-         this.a = $$0;
-      }
-
-      public epd.a a(jy<?> $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      protected epd.a a() {
-         return this;
-      }
-
+public abstract class epd extends epb {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<epx> i;
+   final BiFunction<csz, eol, csz> a;
+   private final epa j = new epd.c() {
       @Override
-      public epp b() {
-         return new epd(this.g(), this.a, this.b.build());
+      public void a(Consumer<csz> $$0, eol $$1) {
+         epd.this.a(epx.a(epd.this.a, $$0, $$1), $$1);
+      }
+   };
+
+   protected epd(int $$0, int $$1, List<erq> $$2, List<epx> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = epz.a($$3);
+   }
+
+   protected static <T extends epd> P4<Mu<T>, Integer, Integer, List<erq>, List<epx>> b(Instance<T> $$0) {
+      return $$0.group(
+            axh.a(Codec.INT, "weight", Integer.valueOf(1)).forGetter($$0x -> $$0x.g), axh.a(Codec.INT, "quality", Integer.valueOf(0)).forGetter($$0x -> $$0x.h)
+         )
+         .and(a($$0).t1())
+         .and(axh.a(epz.c.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.i));
+   }
+
+   @Override
+   public void a(eor $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
       }
    }
 
-   public static enum b implements ayq {
-      a("block_entity");
+   protected abstract void a(Consumer<csz> var1, eol var2);
 
-      public static final Codec<epd.b> b = ayq.b(epd.b::values);
-      private final String c;
+   @Override
+   public boolean expand(eol $$0, Consumer<epa> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
+      } else {
+         return false;
+      }
+   }
 
-      private b(String $$0) {
+   public static epd.a<?> a(epd.d $$0) {
+      return new epd.b($$0);
+   }
+
+   public abstract static class a<T extends epd.a<T>> extends epb.a<T> implements ept<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<epx> c = ImmutableList.builder();
+
+      public T a(epx.a $$0) {
+         this.c.add($$0.b());
+         return this.aB_();
+      }
+
+      protected List<epx> a() {
+         return this.c.build();
+      }
+
+      public T a(int $$0) {
+         this.a = $$0;
+         return this.aB_();
+      }
+
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.aB_();
+      }
+   }
+
+   static class b extends epd.a<epd.b> {
+      private final epd.d c;
+
+      public b(epd.d $$0) {
          this.c = $$0;
       }
 
-      public jv a(eoa $$0) {
-         switch (this) {
-            case a:
-               dnd $$1 = $$0.c(eqt.h);
-               return $$1 != null ? $$1.s() : jv.a;
-            default:
-               throw new IncompatibleClassChangeError();
-         }
-      }
-
-      public Set<eqq<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(eqt.h);
-            default:
-               throw new IncompatibleClassChangeError();
-         }
+      protected epd.b g() {
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.c;
+      public epb b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
       }
+   }
+
+   protected abstract class c implements epa {
+      @Override
+      public int a(float $$0) {
+         return Math.max(axz.d((float)epd.this.g + (float)epd.this.h * $$0), 0);
+      }
+   }
+
+   @FunctionalInterface
+   protected interface d {
+      epd build(int var1, int var2, List<erq> var3, List<epx> var4);
    }
 }

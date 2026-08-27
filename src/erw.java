@@ -1,18 +1,42 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class erw {
-   private static final Codec<erv> d = lc.J.q().dispatch(erv::a, eru::a);
-   public static final Codec<erv> a = axe.a(
-      (Supplier<Codec<erv>>)(() -> Codec.either(ert.c, d)
-            .xmap($$0 -> (erv)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof ert $$1 ? Either.left($$1) : Either.right($$0)))
+public record erw(float b, float c) implements erq {
+   public static final Codec<erw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(erw::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(erw::d)).apply($$0, erw::new)
    );
-   public static final eru b = a("storage", erx.a);
-   public static final eru c = a("context", ert.b);
 
-   private static eru a(String $$0, Codec<? extends erv> $$1) {
-      return ji.a(lc.J, new akf($$0), new eru($$1));
+   @Override
+   public err b() {
+      return ers.g;
+   }
+
+   @Override
+   public Set<eqz<?>> a() {
+      return ImmutableSet.of(erc.d);
+   }
+
+   public boolean a(eol $$0) {
+      brh $$1 = $$0.c(erc.d);
+      int $$2 = 0;
+      if ($$1 instanceof bsa) {
+         $$2 = cyh.h((bsa)$$1);
+      }
+
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
+   }
+
+   public static erq.a a(float $$0, float $$1) {
+      return () -> new erw($$0, $$1);
+   }
+
+   public float c() {
+      return this.b;
+   }
+
+   public float d() {
+      return this.c;
    }
 }

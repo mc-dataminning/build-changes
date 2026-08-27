@@ -1,45 +1,45 @@
-public class afc implements yz<abk> {
-   public static final yq<vs, afc> a = yz.a(afc::a, afc::new);
-   private final int b;
-   private final int c;
-   private final int d;
+public class afc implements zb<abm> {
+   public static final ys<vu, afc> a = zb.a(afc::a, afc::new);
+   private final long b;
+   private final long c;
 
-   public afc(int $$0, int $$1, int $$2) {
+   public afc(long $$0, long $$1, boolean $$2) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.c = $$3;
    }
 
-   private afc(vs $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = $$0.readInt();
+   private afc(vu $$0) {
+      this.b = $$0.readLong();
+      this.c = $$0.readLong();
    }
 
-   private void a(vs $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.p(this.d);
+   private void a(vu $$0) {
+      $$0.b(this.b);
+      $$0.b(this.c);
    }
 
    @Override
-   public zb<afc> a() {
-      return afv.aQ;
+   public zd<afc> a() {
+      return afx.aO;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public long b() {
       return this.b;
    }
 
-   public int e() {
+   public long e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

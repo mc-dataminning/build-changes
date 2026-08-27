@@ -1,83 +1,72 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public abstract class cwm implements cxd<bpf> {
+   protected final cxi<?> a;
+   protected final cws b;
+   protected final String c;
+   protected final cxa d;
+   protected final csz e;
+   protected final float f;
+   protected final int g;
 
-public class cwm extends cvy {
-   public cwm(cvw $$0) {
-      super($$0);
+   public cwm(cxi<?> $$0, String $$1, cws $$2, cxa $$3, csz $$4, float $$5, int $$6) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public boolean a(cnx $$0, czu $$1) {
-      List<csd> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         csd $$4 = $$0.a($$3);
-         if (!$$4.d()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               csd $$5 = $$2.get(0);
-               if (!$$4.a($$5.f()) || $$5.G() != 1 || $$4.G() != 1 || !$$5.f().s()) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      return $$2.size() == 2;
+   @Override
+   public boolean a(bpf $$0, dad $$1) {
+      return this.d.a($$0.a(0));
    }
 
-   public csd a(cnx $$0, jj $$1) {
-      List<csd> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         csd $$4 = $$0.a($$3);
-         if (!$$4.d()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               csd $$5 = $$2.get(0);
-               if (!$$4.a($$5.f()) || $$5.G() != 1 || $$4.G() != 1 || !$$5.f().s()) {
-                  return csd.i;
-               }
-            }
-         }
-      }
-
-      if ($$2.size() == 2) {
-         csd $$6 = $$2.get(0);
-         csd $$7 = $$2.get(1);
-         if ($$6.a($$7.f()) && $$6.G() == 1 && $$7.G() == 1 && $$6.f().s()) {
-            cry $$8 = $$6.f();
-            int $$9 = $$8.r() - $$6.m();
-            int $$10 = $$8.r() - $$7.m();
-            int $$11 = $$9 + $$10 + $$8.r() * 5 / 100;
-            int $$12 = $$8.r() - $$11;
-            if ($$12 < 0) {
-               $$12 = 0;
-            }
-
-            csd $$13 = new csd($$6.f());
-            $$13.b($$12);
-            cxu $$14 = cxo.b($$6);
-            cxu $$15 = cxo.b($$7);
-            cxo.a($$13, $$3x -> $$1.d(ld.u).s().filter(cxn::c).forEach($$3xx -> {
-                  int $$4 = Math.max($$14.a($$3xx), $$15.a($$3xx));
-                  if ($$4 > 0) {
-                     $$3.b($$3xx, $$4);
-                  }
-               }));
-            return $$13;
-         }
-      }
-
-      return csd.i;
+   @Override
+   public csz a(bpf $$0, iy.a $$1) {
+      return this.e.r();
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return true;
    }
 
    @Override
-   public cwk<?> ao_() {
-      return cwk.o;
+   public jf<cxa> a() {
+      jf<cxa> $$0 = jf.a();
+      $$0.add(this.d);
+      return $$0;
+   }
+
+   public float b() {
+      return this.f;
+   }
+
+   @Override
+   public csz a(iy.a $$0) {
+      return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public cxi<?> e() {
+      return this.a;
+   }
+
+   public cws f() {
+      return this.b;
+   }
+
+   public interface a<T extends cwm> {
+      T create(String var1, cws var2, cxa var3, csz var4, float var5, int var6);
    }
 }

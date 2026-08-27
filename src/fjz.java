@@ -1,41 +1,42 @@
-import javax.annotation.Nullable;
+public class fjz extends fld {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final wu c = wu.c("credits_and_attribution.screen.title");
+   private static final wu d = wu.c("credits_and_attribution.button.credits");
+   private static final wu r = wu.c("credits_and_attribution.button.attribution");
+   private static final wu s = wu.c("credits_and_attribution.button.licenses");
+   private final fld u;
+   private final fir v = new fir(this);
 
-public class fjz extends fkt {
-   @Nullable
-   private fff a;
-
-   public fjz(ws $$0) {
-      super($$0);
+   public fjz(fld $$0) {
+      super(c);
+      this.u = $$0;
    }
 
    @Override
    protected void aM_() {
-      this.a = this.c(new fff(this.n, this.l, this.p, 12));
-      this.c();
+      this.v.a(c, this.p);
+      fiv $$0 = this.v.c(fiv.d()).a(8);
+      $$0.c().b();
+      $$0.a(ffe.a(d, $$0x -> this.m()).a(210).a());
+      $$0.a(ffe.a(r, fju.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
+      $$0.a(ffe.a(s, fju.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
+      this.v.b(ffe.a(wt.d, $$0x -> this.d()).a(200).a());
+      this.v.a();
+      this.v.a(this::c);
    }
 
    @Override
    protected void c() {
-      if (this.a != null) {
-         this.a.b(this.n);
-         this.a.c(this.n / 2 - this.a.x() / 2, this.o / 2 - 9 / 2);
-      }
+      this.v.a();
+   }
+
+   private void m() {
+      this.m.a(new fll(false, () -> this.m.a(this)));
    }
 
    @Override
-   public boolean aD_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aL_() {
-      return false;
-   }
-
-   @Override
-   public void b(feh $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, $$3);
-      this.a($$3);
-      this.a($$0);
+   public void d() {
+      this.m.a(this.u);
    }
 }

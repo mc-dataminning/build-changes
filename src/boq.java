@@ -1,23 +1,14 @@
-public enum boq {
-   a,
-   b,
-   c,
-   d,
-   e;
+import com.mojang.serialization.Codec;
 
-   public boolean a() {
-      return this == a || this == b || this == c;
-   }
+public interface boq<P extends bop> {
+   boq<bon> a = a("constant", bon.b);
+   boq<bow> b = a("uniform", bow.a);
+   boq<bol> c = a("clamped_normal", bol.a);
+   boq<bov> d = a("trapezoid", bov.a);
 
-   public boolean b() {
-      return this == a;
-   }
+   Codec<P> codec();
 
-   public boolean c() {
-      return this == a || this == b;
-   }
-
-   public static boq a(boolean $$0) {
-      return $$0 ? a : b;
+   static <P extends bop> boq<P> a(String $$0, Codec<P> $$1) {
+      return jj.a(ld.L, $$0, () -> $$1);
    }
 }

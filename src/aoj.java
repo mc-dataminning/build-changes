@@ -1,157 +1,48 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Arrays;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.List;
 
 public class aoj {
-   private static final float a = 10000.0F;
-   private static final String b = String.valueOf(20);
+   private static final xr a = xr.a.a(new xa(xa.a.a, wu.c("chat.type.team.hover"))).a(new ws(ws.a.d, "/teammsg "));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.teammsg.failed.noteam"));
 
-   public static void a(CommandDispatcher<ec> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a(
-                                 "tick"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(ed.a("query").executes($$0x -> a((ec)$$0x.getSource()))))
-                        .then(
-                           ed.a("rate")
-                              .then(
-                                 ed.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
-                                    .suggests(($$0x, $$1) -> eh.a(new String[]{b}, $$1))
-                                    .executes($$0x -> a((ec)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
-                              )
-                        ))
-                     .then(
-                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("step").executes($$0x -> b((ec)$$0x.getSource(), 1)))
-                              .then(ed.a("stop").executes($$0x -> b((ec)$$0x.getSource()))))
-                           .then(
-                              ed.a("time", fq.a(1))
-                                 .suggests(($$0x, $$1) -> eh.a(new String[]{"1t", "1s"}, $$1))
-                                 .executes($$0x -> b((ec)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                           )
-                     ))
-                  .then(
-                     ((LiteralArgumentBuilder)ed.a("sprint").then(ed.a("stop").executes($$0x -> c((ec)$$0x.getSource()))))
-                        .then(
-                           ed.a("time", fq.a(1))
-                              .suggests(($$0x, $$1) -> eh.a(new String[]{"60s", "1d", "3d"}, $$1))
-                              .executes($$0x -> a((ec)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                        )
-                  ))
-               .then(ed.a("unfreeze").executes($$0x -> a((ec)$$0x.getSource(), false))))
-            .then(ed.a("freeze").executes($$0x -> a((ec)$$0x.getSource(), true)))
-      );
-   }
-
-   private static String a(long $$0) {
-      return String.format("%.1f", (float)$$0 / (float)ayv.b);
-   }
-
-   private static int a(ec $$0, float $$1) {
-      akx $$2 = $$0.l().aR();
-      $$2.a($$1);
-      String $$3 = String.format("%.1f", $$1);
-      $$0.a(() -> ws.a("commands.tick.rate.success", $$3), true);
-      return (int)$$1;
-   }
-
-   private static int a(ec $$0) {
-      akx $$1 = $$0.l().aR();
-      String $$2 = a($$0.l().aS());
-      float $$3 = $$1.f();
-      String $$4 = String.format("%.1f", $$3);
-      if ($$1.a()) {
-         $$0.a(() -> ws.c("commands.tick.status.sprinting"), false);
-         $$0.a(() -> ws.a("commands.tick.query.rate.sprinting", $$4, $$2), false);
-      } else {
-         if ($$1.l()) {
-            $$0.a(() -> ws.c("commands.tick.status.frozen"), false);
-         } else if ($$1.h() < $$0.l().aS()) {
-            $$0.a(() -> ws.c("commands.tick.status.lagging"), false);
+   public static void a(CommandDispatcher<ed> $$0) {
+      LiteralCommandNode<ed> $$1 = $$0.register((LiteralArgumentBuilder)ee.a("teammsg").then(ee.a("message", eu.a()).executes($$0x -> {
+         ed $$1x = (ed)$$0x.getSource();
+         brh $$2 = $$1x.g();
+         euo $$3 = $$2.ch();
+         if ($$3 == null) {
+            throw b.create();
          } else {
-            $$0.a(() -> ws.c("commands.tick.status.running"), false);
+            List<aqi> $$4 = $$1x.l().ah().t().stream().filter($$2x -> $$2x == $$2 || $$2x.ch() == $$3).toList();
+            if (!$$4.isEmpty()) {
+               eu.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
+            }
+
+            return $$4.size();
          }
-
-         String $$5 = a($$1.h());
-         $$0.a(() -> ws.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
-      }
-
-      long[] $$6 = Arrays.copyOf($$0.l().aT(), $$0.l().aT().length);
-      Arrays.sort($$6);
-      String $$7 = a($$6[$$6.length / 2]);
-      String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
-      String $$9 = a($$6[(int)((double)$$6.length * 0.99)]);
-      $$0.a(() -> ws.a("commands.tick.query.percentiles", $$7, $$8, $$9, $$6.length), false);
-      return (int)$$3;
+      })));
+      $$0.register((LiteralArgumentBuilder)ee.a("tm").redirect($$1));
    }
 
-   private static int a(ec $$0, int $$1) {
-      boolean $$2 = $$0.l().aR().b($$1);
-      if ($$2) {
-         $$0.a(() -> ws.c("commands.tick.sprint.stop.success"), true);
+   private static void a(ed $$0, brh $$1, euo $$2, List<aqi> $$3, xk $$4) {
+      wu $$5 = $$2.d().c(a);
+      wq.a $$6 = wq.a(wq.g, $$0).c($$5);
+      wq.a $$7 = wq.a(wq.h, $$0).c($$5);
+      xj $$8 = xj.a($$4);
+      boolean $$9 = false;
+
+      for (aqi $$10 : $$3) {
+         wq.a $$11 = $$10 == $$1 ? $$7 : $$6;
+         boolean $$12 = $$0.a($$10);
+         $$10.a($$8, $$12, $$11);
+         $$9 |= $$12 && $$4.j();
       }
 
-      $$0.a(() -> ws.c("commands.tick.status.sprinting"), true);
-      return 1;
-   }
-
-   private static int a(ec $$0, boolean $$1) {
-      akx $$2 = $$0.l().aR();
-      if ($$1) {
-         if ($$2.a()) {
-            $$2.c();
-         }
-
-         if ($$2.j()) {
-            $$2.b();
-         }
-      }
-
-      $$2.a($$1);
-      if ($$1) {
-         $$0.a(() -> ws.c("commands.tick.status.frozen"), true);
-      } else {
-         $$0.a(() -> ws.c("commands.tick.status.running"), true);
-      }
-
-      return $$1 ? 1 : 0;
-   }
-
-   private static int b(ec $$0, int $$1) {
-      akx $$2 = $$0.l().aR();
-      boolean $$3 = $$2.a($$1);
-      if ($$3) {
-         $$0.a(() -> ws.a("commands.tick.step.success", $$1), true);
-      } else {
-         $$0.b(ws.c("commands.tick.step.fail"));
-      }
-
-      return 1;
-   }
-
-   private static int b(ec $$0) {
-      akx $$1 = $$0.l().aR();
-      boolean $$2 = $$1.b();
-      if ($$2) {
-         $$0.a(() -> ws.c("commands.tick.step.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(ws.c("commands.tick.step.stop.fail"));
-         return 0;
-      }
-   }
-
-   private static int c(ec $$0) {
-      akx $$1 = $$0.l().aR();
-      boolean $$2 = $$1.c();
-      if ($$2) {
-         $$0.a(() -> ws.c("commands.tick.sprint.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(ws.c("commands.tick.sprint.stop.fail"));
-         return 0;
+      if ($$9) {
+         $$0.a(aue.f);
       }
    }
 }

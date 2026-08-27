@@ -1,21 +1,22 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class dxh extends dxi {
-   public static final Codec<dxh> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dxh::new));
+public interface dxh<P extends dxg> {
+   dxh<dxm> a = a("matching_blocks", dxm.a);
+   dxh<dxl> b = a("matching_block_tag", dxl.e);
+   dxh<dxn> c = a("matching_fluids", dxn.a);
+   dxh<dxj> d = a("has_sturdy_face", dxj.a);
+   dxh<dxq> e = a("solid", dxq.a);
+   dxh<dxp> f = a("replaceable", dxp.a);
+   dxh<dxt> g = a("would_survive", dxt.a);
+   dxh<dxk> h = a("inside_world_bounds", dxk.a);
+   dxh<dxf> i = a("any_of", dxf.a);
+   dxh<dxe> j = a("all_of", dxe.a);
+   dxh<dxo> k = a("not", dxo.a);
+   dxh<dxs> l = a("true", dxs.e);
 
-   public dxh(jq $$0) {
-      super($$0);
-   }
+   Codec<P> codec();
 
-   @Override
-   protected boolean a(dpy $$0) {
-      return $$0.e();
-   }
-
-   @Override
-   public dwy<?> a() {
-      return dwy.e;
+   private static <P extends dxg> dxh<P> a(String $$0, Codec<P> $$1) {
+      return jj.a(ld.O, $$0, () -> $$1);
    }
 }

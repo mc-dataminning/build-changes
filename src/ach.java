@@ -1,55 +1,60 @@
-public class ach implements yz<abk> {
-   public static final yq<wd, ach> a = yz.a(ach::a, ach::new);
-   public static final int b = -1;
-   public static final int c = -2;
-   private final int d;
-   private final int e;
-   private final int f;
-   private final csd g;
+import java.util.List;
 
-   public ach(int $$0, int $$1, int $$2, csd $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3.r();
+public class ach implements zb<abm> {
+   public static final ys<wf, ach> a = zb.a(ach::a, ach::new);
+   private final int b;
+   private final int c;
+   private final List<csz> d;
+   private final csz e;
+
+   public ach(int $$0, int $$1, jf<csz> $$2, csz $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = jf.a($$2.size(), csz.i);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.d.set($$4, $$2.get($$4).r());
+      }
+
+      this.e = $$3.r();
    }
 
-   private ach(wd $$0) {
-      this.d = $$0.readByte();
-      this.e = $$0.l();
-      this.f = $$0.readShort();
-      this.g = csd.e.decode($$0);
+   private ach(wf $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.l();
+      this.d = csz.g.decode($$0);
+      this.e = csz.e.decode($$0);
    }
 
-   private void a(wd $$0) {
-      $$0.k(this.d);
-      $$0.c(this.e);
-      $$0.l(this.f);
-      csd.e.encode($$0, this.g);
+   private void a(wf $$0) {
+      $$0.k(this.b);
+      $$0.c(this.c);
+      csz.g.encode($$0, this.d);
+      csz.e.encode($$0, this.e);
    }
 
    @Override
-   public zb<ach> a() {
-      return afv.w;
+   public zd<ach> a() {
+      return afx.u;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
    public int b() {
+      return this.b;
+   }
+
+   public List<csz> e() {
       return this.d;
    }
 
-   public int e() {
-      return this.f;
-   }
-
-   public csd f() {
-      return this.g;
+   public csz f() {
+      return this.e;
    }
 
    public int g() {
-      return this.e;
+      return this.c;
    }
 }

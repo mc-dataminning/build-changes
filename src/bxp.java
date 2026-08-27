@@ -1,45 +1,21 @@
-public class bxp extends byo {
-   private final ccw g;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-   public bxp(ccw $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
-   }
-
-   @Override
-   public boolean a() {
-      return this.g.r() && !this.g.gp() && super.a();
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.g.x(false);
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.x(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.x(this.m());
-   }
-
-   @Override
-   protected boolean a(czx $$0, im $$1) {
-      if (!$$0.u($$1.c())) {
-         return false;
-      } else {
-         dpy $$2 = $$0.a_($$1);
-         if ($$2.a(dcx.cv)) {
-            return dnk.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(dcx.cD) && $$2.c(dgc.b) ? true : $$2.a(avo.R, $$0x -> $$0x.d(dco.b).map($$0xx -> $$0xx != dql.a).orElse(true));
-         }
-      }
+public class bxp {
+   public static <E extends ckl> btt<E> a(Function<E, Optional<? extends bsa>> $$0) {
+      return bxf.a(
+         (Function<bxf.b<E>, ? extends App<bxf.c<E>, bxi<E>>>)($$1 -> $$1.group($$1.c(cbd.ay), $$1.c(cbd.o), $$1.a(cbd.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends bsa> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::b).isEmpty()) {
+                        return false;
+                     } else {
+                        $$1x.a($$6.get());
+                        $$3.b();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

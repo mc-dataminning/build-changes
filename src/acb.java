@@ -1,29 +1,18 @@
-public class acb implements yz<abk> {
-   public static final yq<vs, acb> a = yz.a(acb::a, acb::new);
-   private final boolean b;
+import io.netty.buffer.ByteBuf;
 
-   public acb(boolean $$0) {
-      this.b = $$0;
-   }
+public class acb implements zb<abm> {
+   public static final acb a = new acb();
+   public static final ys<ByteBuf, acb> b = ys.a(a);
 
-   private acb(vs $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b);
+   private acb() {
    }
 
    @Override
-   public zb<acb> a() {
-      return afv.q;
+   public zd<acb> a() {
+      return afx.o;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

@@ -1,28 +1,24 @@
-public class gke extends gky<gad, fsw<gad>> {
-   public gke(gii<gad, fsw<gad>> $$0) {
-      super($$0);
+public class gke<T extends bsa, M extends ftg<T>> extends glr<T, M> {
+   private final ggv a;
+
+   public gke(ggx.a $$0, ghy<T, M> $$1) {
+      super($$1);
+      this.a = $$0.a();
    }
 
-   public void a(exn $$0, gbe $$1, int $$2, gad $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ("deadmau5".equals($$3.ad().getString()) && !$$3.cf()) {
-         exr $$10 = $$1.getBuffer(gbm.c($$3.b().a()));
-         int $$11 = gho.c($$3, 0.0F);
+   @Override
+   protected int a(T $$0) {
+      return $$0.eR();
+   }
 
-         for (int $$12 = 0; $$12 < 2; $$12++) {
-            float $$13 = axw.i($$6, $$3.O, $$3.dD()) - axw.i($$6, $$3.ba, $$3.aZ);
-            float $$14 = axw.i($$6, $$3.P, $$3.dF());
-            $$0.a();
-            $$0.a(a.d.rotationDegrees($$13));
-            $$0.a(a.b.rotationDegrees($$14));
-            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
-            $$0.a(0.0F, -0.375F, 0.0F);
-            $$0.a(a.b.rotationDegrees(-$$14));
-            $$0.a(a.d.rotationDegrees(-$$13));
-            float $$15 = 1.3333334F;
-            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
-            this.c().a($$0, $$10, $$2, $$11);
-            $$0.b();
-         }
-      }
+   @Override
+   protected void a(exx $$0, gbo $$1, int $$2, brh $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = axz.c($$4 * $$4 + $$6 * $$6);
+      clp $$9 = new clp($$3.dN(), $$3.ds(), $$3.du(), $$3.dy(), csz.i);
+      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
+      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
+      $$9.O = $$9.dD();
+      $$9.P = $$9.dF();
+      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
    }
 }

@@ -1,39 +1,45 @@
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class aep implements yz<abk> {
-   public static final yq<vs, aep> a = yz.a(aep::a, aep::new);
-   private final int b;
-   private final int c;
+public class aep implements zb<abm> {
+   public static final ys<vu, aep> a = zb.a(aep::a, aep::new);
+   private final euk b;
+   private final String c;
 
-   public aep(bql $$0, @Nullable bql $$1) {
-      this.b = $$0.aj();
-      this.c = $$1 != null ? $$1.aj() : 0;
+   public aep(euk $$0, @Nullable eul $$1) {
+      this.b = $$0;
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.b();
+      }
    }
 
-   private aep(vs $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   private aep(vu $$0) {
+      this.b = $$0.a(euk.u);
+      this.c = $$0.p();
    }
 
-   private void a(vs $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
+   private void a(vu $$0) {
+      $$0.a(euk::a, this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zb<aep> a() {
-      return afv.aD;
+   public zd<aep> a() {
+      return afx.aB;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public euk b() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

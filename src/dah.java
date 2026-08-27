@@ -1,112 +1,78 @@
-import com.google.common.base.Suppliers;
-import java.util.List;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Dynamic;
 
-public class dah implements cza, cze {
-   protected final int a;
-   protected final int b;
-   protected final dru[][] c;
-   protected boolean d;
-   protected final czu e;
-   private final Supplier<iv<dat>> f;
+public final class dah {
+   private final String a;
+   private final daa b;
+   private final boolean c;
+   private final bpj d;
+   private final boolean e;
+   private final czz f;
+   private final dax g;
 
-   public dah(czu $$0, im $$1, im $$2) {
-      this.e = $$0;
-      this.f = Suppliers.memoize(() -> $$0.H_().d(ld.ay).g(dba.b));
-      this.a = jo.a($$1.u());
-      this.b = jo.a($$1.w());
-      int $$3 = jo.a($$2.u());
-      int $$4 = jo.a($$2.w());
-      this.c = new dru[$$3 - this.a + 1][$$4 - this.b + 1];
-      dry $$5 = $$0.M();
-      this.d = true;
-
-      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
-         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
-            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
-         }
-      }
-
-      for (int $$8 = jo.a($$1.u()); $$8 <= jo.a($$2.u()); $$8++) {
-         for (int $$9 = jo.a($$1.w()); $$9 <= jo.a($$2.w()); $$9++) {
-            dru $$10 = this.c[$$8 - this.a][$$9 - this.b];
-            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
-               this.d = false;
-               return;
-            }
-         }
-      }
+   public dah(String $$0, daa $$1, boolean $$2, bpj $$3, boolean $$4, czz $$5, dax $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   private dru d(im $$0) {
-      return this.a(jo.a($$0.u()), jo.a($$0.w()));
+   public static dah a(Dynamic<?> $$0, dax $$1) {
+      daa $$2 = daa.a($$0.get("GameType").asInt(0));
+      return new dah(
+         $$0.get("LevelName").asString(""),
+         $$2,
+         $$0.get("hardcore").asBoolean(false),
+         $$0.get("Difficulty").asNumber().map($$0x -> bpj.a($$0x.byteValue())).result().orElse(bpj.c),
+         $$0.get("allowCommands").asBoolean($$2 == daa.b),
+         new czz($$0.get("GameRules")),
+         $$1
+      );
    }
 
-   private dru a(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
-         dru $$4 = this.c[$$2][$$3];
-         return (dru)($$4 != null ? $$4 : new dsa(this.e, new czb($$0, $$1), this.f.get()));
-      } else {
-         return new dsa(this.e, new czb($$0, $$1), this.f.get());
-      }
+   public String a() {
+      return this.a;
    }
 
-   @Override
-   public drp C_() {
-      return this.e.C_();
+   public daa b() {
+      return this.b;
    }
 
-   @Override
-   public cza c(int $$0, int $$1) {
-      return this.a($$0, $$1);
+   public boolean c() {
+      return this.c;
    }
 
-   @Override
-   public List<ety> c(@Nullable bql $$0, eta $$1) {
-      return List.of();
+   public bpj d() {
+      return this.d;
    }
 
-   @Nullable
-   @Override
-   public dnd c_(im $$0) {
-      dru $$1 = this.d($$0);
-      return $$1.c_($$0);
+   public boolean e() {
+      return this.e;
    }
 
-   @Override
-   public dpy a_(im $$0) {
-      if (this.s($$0)) {
-         return dcx.a.n();
-      } else {
-         dru $$1 = this.d($$0);
-         return $$1.a_($$0);
-      }
+   public czz f() {
+      return this.f;
    }
 
-   @Override
-   public elr b_(im $$0) {
-      if (this.s($$0)) {
-         return els.a.g();
-      } else {
-         dru $$1 = this.d($$0);
-         return $$1.b_($$0);
-      }
+   public dax g() {
+      return this.g;
    }
 
-   @Override
-   public int I_() {
-      return this.e.I_();
+   public dah a(daa $$0) {
+      return new dah(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
    }
 
-   @Override
-   public int J_() {
-      return this.e.J_();
+   public dah a(bpj $$0) {
+      return new dah(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
    }
 
-   public ble a() {
-      return this.e.af();
+   public dah a(dax $$0) {
+      return new dah(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   }
+
+   public dah h() {
+      return new dah(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
    }
 }

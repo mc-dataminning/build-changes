@@ -1,42 +1,42 @@
 import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class bzs extends cab {
-   private final cdf a;
-   @Nullable
-   private bre b;
-   private final cbu c = cbu.a().a(64.0);
+public class bzs extends byx {
+   private final bsc a;
+   private double b;
+   private double c;
+   private int d;
 
-   public bzs(cdf $$0) {
-      super($$0, false, true);
+   public bzs(bsc $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(byb.a.d));
+      this.a(EnumSet.of(byx.a.a, byx.a.b));
    }
 
    @Override
    public boolean a() {
-      eta $$0 = this.a.cI().c(10.0, 8.0, 10.0);
-      List<? extends bre> $$1 = this.a.dN().a(cjy.class, this.c, this.a, $$0);
-      List<ckl> $$2 = this.a.dN().a(this.c, this.a, $$0);
+      return this.a.ej().i() < 0.02F;
+   }
 
-      for (bre $$3 : $$1) {
-         cjy $$4 = (cjy)$$3;
-
-         for (ckl $$5 : $$2) {
-            int $$6 = $$4.g($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
-            }
-         }
-      }
-
-      return this.b == null ? false : !(this.b instanceof ckl) || !this.b.N_() && !((ckl)this.b).f();
+   @Override
+   public boolean b() {
+      return this.d >= 0;
    }
 
    @Override
    public void c() {
-      this.a.h(this.b);
-      super.c();
+      double $$0 = (Math.PI * 2) * this.a.ej().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.ej().a(20);
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      this.d--;
+      this.a.G().a(this.a.ds() + this.b, this.a.dw(), this.a.dy() + this.c);
    }
 }

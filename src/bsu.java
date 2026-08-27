@@ -1,21 +1,38 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class bsu {
-   public static buh<brg> a(int $$0, float $$1) {
-      return bwj.a(
-         (Function<bwj.b<brg>, ? extends App<bwj.c<brg>, bwm<brg>>>)($$2 -> $$2.group($$2.c(cah.m), $$2.a(cah.n), $$2.b(cah.o), $$2.b(cah.h))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     bre $$9 = $$2.b($$5);
-                     if ($$9.a($$7, (double)$$0) && $$2.<caj>b($$6).a($$9)) {
-                        $$4.a(new bth($$9, true));
-                        $$7.H().a(-$$1, 0.0F);
-                        $$7.r(axw.c($$7.dD(), $$7.bb, 0.0F));
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
-   }
+public interface bsu {
+   bst a = ($$0, $$1, $$2) -> true;
+   bst b = ($$0, $$1, $$2) -> {
+      if ($$2 != null && $$0.C_().a($$1)) {
+         in $$3 = $$1.c();
+         return $$0.b_($$1).a(avw.a) && !$$0.a_($$3).g($$0, $$3);
+      } else {
+         return false;
+      }
+   };
+   bst c = ($$0, $$1, $$2) -> $$2 != null && $$0.C_().a($$1) ? $$0.b_($$1).a(avw.b) : false;
+   bst d = new bst() {
+      @Override
+      public boolean isSpawnPositionOk(dag $$0, in $$1, @Nullable brn<?> $$2) {
+         if ($$2 != null && $$0.C_().a($$1)) {
+            in $$3 = $$1.c();
+            in $$4 = $$1.d();
+            dqh $$5 = $$0.a_($$4);
+            return !$$5.a($$0, $$4, $$2) ? false : this.a($$0, $$1, $$2) && this.a($$0, $$3, $$2);
+         } else {
+            return false;
+         }
+      }
+
+      private boolean a(dag $$0, in $$1, brn<?> $$2) {
+         dqh $$3 = $$0.a_($$1);
+         return dao.a($$0, $$1, $$3, $$3.u(), $$2);
+      }
+
+      @Override
+      public in a(dag $$0, in $$1) {
+         in $$2 = $$1.d();
+         return $$0.a_($$2).a(emp.a) ? $$2 : $$1;
+      }
+   };
 }

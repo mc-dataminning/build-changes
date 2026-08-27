@@ -1,38 +1,30 @@
-import java.util.List;
-import java.util.Optional;
+public record agp(int b, int c, boolean d) implements zb<afz> {
+   public static final ys<vu, agp> a = zb.a(agp::a, agp::new);
 
-public record agp(int c, List<String> d, Optional<String> e) implements yz<afx> {
-   public static final int a = 4;
-   private static final int f = 128;
-   private static final int g = 8192;
-   private static final int h = 200;
-   public static final yq<vs, agp> b = yq.a(yo.f, agp::b, yo.b(8192).a(yo.c(200)), agp::e, yo.b(128).a(yo::a), agp::f, agp::new);
+   private agp(vu $$0) {
+      this($$0.l(), $$0.l(), $$0.readBoolean());
+   }
 
-   public agp(int c, List<String> d, Optional<String> e) {
-      d = List.copyOf(d);
-      this.c = c;
-      this.d = d;
-      this.e = e;
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zb<agp> a() {
-      return afv.bu;
+   public zd<agp> a() {
+      return afx.bs;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public int e() {
       return this.c;
    }
 
-   public List<String> e() {
+   public boolean f() {
       return this.d;
-   }
-
-   public Optional<String> f() {
-      return this.e;
    }
 }

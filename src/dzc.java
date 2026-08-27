@@ -1,46 +1,56 @@
-import com.mojang.serialization.Codec;
+public class dzc extends dzd<ebo> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final in an = in.c;
+   private final boolean ao;
 
-public class dzc extends dxx {
-   public dzc(Codec<eba> $$0) {
-      super($$0);
+   public static in a(in $$0) {
+      return an.a((jr)$$0);
+   }
+
+   public dzc(boolean $$0) {
+      super(ebo.a);
+      this.ao = $$0;
    }
 
    @Override
-   protected void a(czv $$0, ayd $$1, im $$2, int $$3, im.a $$4, eba $$5) {
-      int $$6 = $$5.d;
+   public boolean a(dzf<ebo> $$0) {
+      in $$1 = $$0.e();
+      day $$2 = $$0.b();
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).i($$0, $$4)) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dpy $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(dgs.e) && $$19.b(dgs.c) && $$19.b(dgs.b) && $$19.b(dgs.d)) {
-                     $$19 = $$19.a(dgs.e, Boolean.valueOf($$15))
-                        .a(dgs.c, Boolean.valueOf($$16))
-                        .a(dgs.b, Boolean.valueOf($$17))
-                        .a(dgs.d, Boolean.valueOf($$18));
-                  }
-
-                  this.a($$0, $$4, $$19);
+      for (in $$3 : in.c(new in($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new in($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, ddg.F.n());
+               } else if ($$3.v() < $$1.v()) {
+                  this.a($$2, $$3, ddg.fz.n());
                }
+            } else if ($$3.v() > $$1.v()) {
+               this.a($$2, $$3, ddg.a.n());
+            } else if (!$$4) {
+               this.a($$2, $$3, ddg.F.n());
+            } else if (this.ao) {
+               this.a($$2, new in($$3), ddg.fx.n());
+            } else {
+               this.a($$2, new in($$3), ddg.a.n());
             }
          }
       }
-   }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), ddg.F.n());
+      }
+
+      in $$6 = $$1.b(2);
+
+      for (is $$7 : is.c.a) {
+         this.a($$2, $$6.a($$7), ddg.cq.n().a(dmg.g, $$7));
+      }
+
+      return true;
    }
 }

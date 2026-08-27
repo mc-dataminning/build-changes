@@ -1,37 +1,158 @@
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.math.LongMath;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record fdk(fdk.c a, fdm... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, fdm[] var3, int var4, int var5, float var6);
+public class fdk extends atw<Map<String, List<fdk.a>>> implements AutoCloseable {
+   private static final Codec<Map<String, List<fdk.a>>> a = Codec.unboundedMap(
+      Codec.STRING,
+      RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fdk.a::a),
+                     Codec.LONG.fieldOf("period").forGetter(fdk.a::b),
+                     Codec.STRING.fieldOf("title").forGetter(fdk.a::c),
+                     Codec.STRING.fieldOf("message").forGetter(fdk.a::d)
+                  )
+                  .apply($$0, fdk.a::new)
+         )
+         .listOf()
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final akh c;
+   private final Object2BooleanFunction<String> d;
+   @Nullable
+   private Timer e;
+   @Nullable
+   private fdk.b f;
+
+   public fdk(akh $$0, Object2BooleanFunction<String> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static class b {
-      public static final fdk.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
-      };
-      public static final fdk.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            axw.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            axw.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            axw.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
+   protected Map<String, List<fdk.a>> a(atr $$0, bma $$1) {
+      try {
+         Map var4;
+         try (Reader $$2 = $$0.openAsReader(this.c)) {
+            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
+         }
+
+         return var4;
+      } catch (Exception var8) {
+         b.warn("Failed to load {}", this.c, var8);
+         return ImmutableMap.of();
+      }
    }
 
-   public interface c {
-      void apply(fur var1, Vector3f var2);
+   protected void a(Map<String, List<fdk.a>> $$0, atr $$1, bma $$2) {
+      List<fdk.a> $$3 = $$0.entrySet()
+         .stream()
+         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
+         .map(Entry::getValue)
+         .flatMap(Collection::stream)
+         .collect(Collectors.toList());
+      if ($$3.isEmpty()) {
+         this.a();
+      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
+         ac.a("A periodic notification in " + this.c + " has a period of zero minutes");
+         this.a();
+      } else {
+         long $$4 = this.a($$3);
+         long $$5 = this.a($$3, $$4);
+         if (this.e == null) {
+            this.e = new Timer();
+         }
+
+         if (this.f == null) {
+            this.f = new fdk.b($$3, $$4, $$5);
+         } else {
+            this.f = this.f.a($$3, $$5);
+         }
+
+         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
+      }
    }
 
-   public static class d {
-      public static final fdk.c a = fur::a;
-      public static final fdk.c b = fur::b;
-      public static final fdk.c c = fur::c;
+   @Override
+   public void close() {
+      this.a();
+   }
+
+   private void a() {
+      if (this.e != null) {
+         this.e.cancel();
+      }
+   }
+
+   private long a(List<fdk.a> $$0, long $$1) {
+      return $$0.stream().mapToLong($$1x -> {
+         long $$2 = $$1x.a - $$1;
+         return LongMath.gcd($$2, $$1x.b);
+      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   }
+
+   private long a(List<fdk.a> $$0) {
+      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
+   }
+
+   public static record a(long a, long b, String c, String d) {
+
+      public a(long a, long b, String c, String d) {
+         this.a = a != 0L ? a : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
+      }
+   }
+
+   static class b extends TimerTask {
+      private final fde a = fde.Q();
+      private final List<fdk.a> b;
+      private final long c;
+      private final AtomicLong d;
+
+      public b(List<fdk.a> $$0, long $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$2;
+         this.d = new AtomicLong($$1);
+      }
+
+      public fdk.b a(List<fdk.a> $$0, long $$1) {
+         this.cancel();
+         return new fdk.b($$0, this.d.get(), $$1);
+      }
+
+      @Override
+      public void run() {
+         long $$0 = this.d.getAndAdd(this.c);
+         long $$1 = this.d.get();
+
+         for (fdk.a $$2 : this.b) {
+            if ($$0 >= $$2.a) {
+               long $$3 = $$0 / $$2.b;
+               long $$4 = $$1 / $$2.b;
+               if ($$3 != $$4) {
+                  this.a.execute(() -> fhm.a(fde.Q().aA(), fhm.a.f, wu.a($$2.c, $$3), wu.a($$2.d, $$3)));
+                  return;
+               }
+            }
+         }
+      }
    }
 }

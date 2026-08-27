@@ -1,6 +1,24 @@
-public interface we extends vy {
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
+
+public class we extends vs {
+   private static final Logger h = LogUtils.getLogger();
+   private static final wu i = wu.c("disconnect.exceeded_packet_rate");
+   private final int j;
+
+   public we(int $$0) {
+      super(zc.a);
+      this.j = $$0;
+   }
+
    @Override
-   default za a() {
-      return za.a;
+   protected void c() {
+      super.c();
+      float $$0 = this.o();
+      if ($$0 > (float)this.j) {
+         h.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
+         this.a(new zj(i), wb.a(() -> this.a(i)));
+         this.m();
+      }
    }
 }

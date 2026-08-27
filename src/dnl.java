@@ -1,23 +1,20 @@
-public class dnl {
-   private boolean a;
-   private float b;
-   private float c;
-
-   public void a() {
-      this.c = this.b;
-      float $$0 = 0.1F;
-      if (!this.a && this.b > 0.0F) {
-         this.b = Math.max(this.b - 0.1F, 0.0F);
-      } else if (this.a && this.b < 1.0F) {
-         this.b = Math.min(this.b + 0.1F, 1.0F);
-      }
+public class dnl extends dna {
+   public dnl(in $$0, dqh $$1) {
+      super(dno.C, $$0, $$1, cxi.c);
    }
 
-   public float a(float $$0) {
-      return axw.i($$0, this.c, this.b);
+   @Override
+   protected wu k() {
+      return wu.c("container.blast_furnace");
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   protected int b(csz $$0) {
+      return super.b($$0) / 2;
+   }
+
+   @Override
+   protected cod a(int $$0, clg $$1) {
+      return new coh($$0, $$1, this, this.m);
    }
 }

@@ -1,168 +1,125 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.io.IOException;
-import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gay extends att<gay.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akf b = new akf("gpu_warnlist.json");
-   private ImmutableMap<String, String> c = ImmutableMap.of();
-   private boolean d;
-   private boolean e;
-   private boolean f;
-
-   public boolean a() {
-      return !this.c.isEmpty();
-   }
-
-   public boolean b() {
-      return this.a() && !this.e;
-   }
-
-   public void d() {
-      this.d = true;
-   }
-
-   public void e() {
-      this.e = true;
-   }
-
-   public void f() {
-      this.e = true;
-      this.f = true;
-   }
-
-   public boolean g() {
-      return this.d && !this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public void i() {
-      this.d = false;
-      this.e = false;
-      this.f = false;
-   }
-
-   @Nullable
-   public String j() {
-      return (String)this.c.get("renderer");
-   }
-
-   @Nullable
-   public String k() {
-      return (String)this.c.get("version");
-   }
-
-   @Nullable
-   public String l() {
-      return (String)this.c.get("vendor");
-   }
-
-   @Nullable
-   public String m() {
-      StringBuilder $$0 = new StringBuilder();
-      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
-      return $$0.length() == 0 ? null : $$0.toString();
-   }
-
-   protected gay.a a(ato $$0, ble $$1) {
-      List<Pattern> $$2 = Lists.newArrayList();
-      List<Pattern> $$3 = Lists.newArrayList();
-      List<Pattern> $$4 = Lists.newArrayList();
-      $$1.a();
-      JsonObject $$5 = c($$0, $$1);
-      if ($$5 != null) {
-         $$1.a("compile_regex");
-         a($$5.getAsJsonArray("renderer"), $$2);
-         a($$5.getAsJsonArray("version"), $$3);
-         a($$5.getAsJsonArray("vendor"), $$4);
-         $$1.c();
+public class gay {
+   private static final gay a = new gay("") {
+      @Override
+      public void a(fde $$0) {
       }
 
-      $$1.b();
-      return new gay.a($$2, $$3, $$4);
-   }
-
-   protected void a(gay.a $$0, ato $$1, ble $$2) {
-      this.c = $$0.a();
-   }
-
-   private static void a(JsonArray $$0, List<Pattern> $$1) {
-      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
-   }
-
+      @Override
+      public void a(gay.c $$0, String $$1, String $$2) {
+      }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
    @Nullable
-   private static JsonObject c(ato $$0, ble $$1) {
-      $$1.a("parse_json");
-      JsonObject $$2 = null;
+   private gay.b e;
 
-      try (Reader $$3 = $$0.openAsReader(b)) {
-         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
-      } catch (JsonSyntaxException | IOException var8) {
-         a.warn("Failed to load GPU warnlist");
-      }
-
-      $$1.c();
-      return $$2;
+   gay(String $$0) {
+      this.d = fde.Q().p.toPath().resolve($$0);
    }
 
-   protected static final class a {
-      private final List<Pattern> a;
-      private final List<Pattern> b;
-      private final List<Pattern> c;
+   public static gay a(@Nullable String $$0) {
+      return $$0 == null ? a : new gay($$0);
+   }
 
-      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   public void a(gay.c $$0, String $$1, String $$2) {
+      this.e = new gay.b($$0, $$1, $$2);
+   }
 
-      private static String a(List<Pattern> $$0, String $$1) {
-         List<String> $$2 = Lists.newArrayList();
-
-         for (Pattern $$3 : $$0) {
-            Matcher $$4 = $$3.matcher($$1);
-
-            while ($$4.find()) {
-               $$2.add($$4.group());
+   public void a(fde $$0) {
+      if ($$0.q != null && this.e != null) {
+         ac.g().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
             }
-         }
 
-         return String.join(", ", $$2);
+            gay.a $$2 = new gay.a(this.e, Instant.now(), $$0.q.j());
+            Codec.list(gay.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
+      } else {
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+      }
+   }
+
+   static record a(gay.b b, Instant c, daa d) {
+      public static final Codec<gay.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(gay.b.a.forGetter(gay.a::a), axh.m.fieldOf("lastPlayedTime").forGetter(gay.a::b), daa.f.fieldOf("gamemode").forGetter(gay.a::c))
+               .apply($$0, gay.a::new)
+      );
+
+      public gay.b a() {
+         return this.b;
       }
 
-      ImmutableMap<String, String> a() {
-         Builder<String, String> $$0 = new Builder();
-         String $$1 = a(this.a, ewg.c());
-         if (!$$1.isEmpty()) {
-            $$0.put("renderer", $$1);
-         }
+      public Instant b() {
+         return this.c;
+      }
 
-         String $$2 = a(this.b, ewg.d());
-         if (!$$2.isEmpty()) {
-            $$0.put("version", $$2);
-         }
+      public daa c() {
+         return this.d;
+      }
+   }
 
-         String $$3 = a(this.c, ewg.a());
-         if (!$$3.isEmpty()) {
-            $$0.put("vendor", $$3);
-         }
+   static record b(gay.c b, String c, String d) {
+      public static final MapCodec<gay.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  gay.c.d.fieldOf("type").forGetter(gay.b::a), axh.o.fieldOf("id").forGetter(gay.b::b), Codec.STRING.fieldOf("name").forGetter(gay.b::c)
+               )
+               .apply($$0, gay.b::new)
+      );
 
-         return $$0.build();
+      public gay.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements ayt {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<gay.c> d = ayt.a(gay.c::values);
+      private final String e;
+
+      private c(String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

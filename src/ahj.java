@@ -1,25 +1,25 @@
-public class ahj implements yz<afx> {
-   public static final yq<vs, ahj> a = yz.a(ahj::a, ahj::new);
+public class ahj implements zb<afz> {
+   public static final ys<vu, ahj> a = zb.a(ahj::a, ahj::new);
    private final int b;
 
    public ahj(int $$0) {
       this.b = $$0;
    }
 
-   private ahj(vs $$0) {
-      this.b = $$0.readShort();
+   private ahj(vu $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vs $$0) {
-      $$0.l(this.b);
+   private void a(vu $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zb<ahj> a() {
-      return afv.bR;
+   public zd<ahj> a() {
+      return afx.bP;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 

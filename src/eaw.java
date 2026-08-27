@@ -1,46 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eaw implements eay {
-   public static final Codec<eaw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               bnv.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               bnv.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               bnv.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bnt.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bnt.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, eaw::new)
-   );
-   public final int b;
-   public final bnv c;
-   public final bnv d;
-   public final int e;
-   public final int f;
-   public final bnv g;
-   public final bnt h;
-   public final bnt i;
-   public final float j;
-   public final int k;
-   public final int l;
+public class eaw extends dzd<ebo> {
+   private static final is[] a = is.values();
 
-   public eaw(int $$0, bnv $$1, bnv $$2, int $$3, int $$4, bnv $$5, bnt $$6, bnt $$7, float $$8, int $$9, int $$10) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   public eaw(Codec<ebo> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(dzf<ebo> $$0) {
+      day $$1 = $$0.b();
+      in $$2 = $$0.e();
+      ayg $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dqh $$4 = $$1.a_($$2.c());
+         if (!$$4.a(ddg.dV) && !$$4.a(ddg.kK)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
+      }
+   }
+
+   private void a(dae $$0, ayg $$1, in $$2) {
+      $$0.a($$2, ddg.kK.n(), 2);
+      in.a $$3 = new in.a();
+      in.a $$4 = new in.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.u($$3)) {
+            int $$6 = 0;
+
+            for (is $$7 : a) {
+               dqh $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(ddg.dV) || $$8.a(ddg.kK)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, ddg.kK.n(), 2);
+            }
+         }
+      }
+   }
+
+   private void b(dae $$0, ayg $$1, in $$2) {
+      in.a $$3 = new in.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.u($$3)) {
+            dqh $$5 = $$0.a_($$3.c());
+            if ($$5.a(ddg.dV) || $$5.a(ddg.kK)) {
+               int $$6 = axz.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(dae $$0, ayg $$1, in.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.d())) {
+               $$0.a($$2, ddg.oz.n().a(dgt.e, Integer.valueOf(axz.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, ddg.oA.n(), 2);
+         }
+
+         $$2.c(is.a);
+      }
    }
 }

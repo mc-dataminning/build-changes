@@ -1,8 +1,21 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cat {
+public class cat<T extends bsa> extends caq<T> {
+   private final bsw i;
+
+   public cat(bsw $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bsa> $$3) {
+      super($$0, $$1, 10, $$2, false, $$3);
+      this.i = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return !this.i.r() && super.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.d != null ? this.d.a(this.e, this.c) : super.b();
+   }
 }

@@ -1,44 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class ddd extends dbt {
-   public static final MapCodec<ddd> b = b(ddd::new);
-   public static final int c = 5;
-   private static final ir[] d = ir.values();
+public class ddd extends dbz {
+   public static final MapCodec<ddd> c = b(ddd::new);
 
    @Override
    public MapCodec<ddd> a() {
-      return b;
+      return c;
    }
 
-   public ddd(dpx.d $$0) {
+   protected ddd(dqg.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
-      if ($$3.a(5) == 0) {
-         ir $$4 = d[$$3.a(d.length)];
-         im $$5 = $$2.a($$4);
-         dpy $$6 = $$1.a_($$5);
-         dcv $$7 = null;
-         if (g($$6)) {
-            $$7 = dcx.qy;
-         } else if ($$6.a(dcx.qy) && $$6.c(dbu.d) == $$4) {
-            $$7 = dcx.qx;
-         } else if ($$6.a(dcx.qx) && $$6.c(dbu.d) == $$4) {
-            $$7 = dcx.qw;
-         } else if ($$6.a(dcx.qw) && $$6.c(dbu.d) == $$4) {
-            $$7 = dcx.qv;
-         }
+   public dnm a(in $$0, dqh $$1) {
+      return new dnl($$0, $$1);
+   }
 
-         if ($$7 != null) {
-            dpy $$8 = $$7.n().a(dbu.d, $$4).a(dbu.c, Boolean.valueOf($$6.u().a() == els.c));
-            $$1.b($$5, $$8);
-         }
+   @Nullable
+   @Override
+   public <T extends dnm> dnn<T> a(dad $$0, dqh $$1, dno<T> $$2) {
+      return a($$0, $$2, dno.C);
+   }
+
+   @Override
+   protected void a(dad $$0, in $$1, clh $$2) {
+      dnm $$3 = $$0.c_($$1);
+      if ($$3 instanceof dnl) {
+         $$2.a((bpq)$$3);
+         $$2.a(avm.as);
       }
    }
 
-   public static boolean g(dpy $$0) {
-      return $$0.i() || $$0.a(dcx.G) && $$0.u().e() == 8;
+   @Override
+   public void a(dqh $$0, dad $$1, in $$2, ayg $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, avc.cA, avd.e, 1.0F, 1.0F, false);
+         }
+
+         is $$7 = $$0.c(a);
+         is.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == is.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 9.0 / 16.0;
+         double $$13 = $$8 == is.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(kx.ab, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

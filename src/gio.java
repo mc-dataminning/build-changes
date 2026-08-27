@@ -1,24 +1,16 @@
-public class gio<T extends cgz> extends ghe<T, ftm<T>> {
-   private static final akf a = new akf("textures/entity/skeleton/skeleton.png");
+public class gio extends gid<ceh, fth<ceh>> {
+   private static final akh a = new akh("textures/entity/bear/polarbear.png");
 
-   public gio(ggn.a $$0) {
-      this($$0, fuq.bn, fuq.bp, fuq.bq);
+   public gio(ggx.a $$0) {
+      super($$0, new fth<>($$0.a(fva.ba)), 0.9F);
    }
 
-   public gio(ggn.a $$0, fup $$1, fup $$2, fup $$3) {
-      this($$0, $$2, $$3, new ftm<>($$0.a($$1)));
-   }
-
-   public gio(ggn.a $$0, fup $$1, fup $$2, ftm<T> $$3) {
-      super($$0, $$3, 0.5F);
-      this.a(new gko<>(this, new ftm($$0.a($$1)), new ftm($$0.a($$2)), $$0.g()));
-   }
-
-   public akf a(T $$0) {
+   public akh a(ceh $$0) {
       return a;
    }
 
-   protected boolean b(T $$0) {
-      return $$0.gr();
+   protected void a(ceh $$0, exx $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

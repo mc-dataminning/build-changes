@@ -1,10 +1,28 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public abstract class efm extends efn {
-   @Override
-   public final Stream<im> a_(efl $$0, ayd $$1, im $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public class efm extends ega {
+   public static final Codec<efm> a = bor.b(0, 256).fieldOf("count").xmap(efm::new, $$0 -> $$0.c).codec();
+   private final bor c;
+
+   private efm(bor $$0) {
+      this.c = $$0;
    }
 
-   protected abstract boolean a(efl var1, ayd var2, im var3);
+   public static efm a(bor $$0) {
+      return new efm($$0);
+   }
+
+   public static efm a(int $$0) {
+      return a(boo.a($$0));
+   }
+
+   @Override
+   protected int a(ayg $$0, in $$1) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public efx<?> b() {
+      return efx.f;
+   }
 }

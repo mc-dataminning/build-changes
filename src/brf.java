@@ -1,57 +1,38 @@
-public class brf extends bql {
-   private static final String b = "data";
-   private ty c = new ty();
+public class brf {
+   public static final brf a = new brf(0.75F, 0.5F, 0.25F);
+   public static final brf b = new brf(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-   public brf(bqr<?> $$0, czu $$1) {
-      super($$0, $$1);
-      this.ag = true;
+   private brf(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   @Override
-   public void l() {
+   public brf.a a(float $$0) {
+      if ($$0 < this.e) {
+         return brf.a.d;
+      } else if ($$0 < this.d) {
+         return brf.a.c;
+      } else {
+         return $$0 < this.c ? brf.a.b : brf.a.a;
+      }
    }
 
-   @Override
-   protected void a(ajo.a $$0) {
+   public brf.a a(csz $$0) {
+      return !$$0.k() ? brf.a.a : this.a($$0.m(), $$0.n());
    }
 
-   @Override
-   protected void a(ty $$0) {
-      this.c = $$0.p("data");
+   public brf.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
    }
 
-   @Override
-   protected void b(ty $$0) {
-      $$0.a("data", this.c.h());
-   }
-
-   @Override
-   public yz<abk> dj() {
-      throw new IllegalStateException("Markers should never be sent");
-   }
-
-   @Override
-   protected boolean r(bql $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean bH() {
-      return false;
-   }
-
-   @Override
-   protected void p(bql $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public elw k_() {
-      return elw.d;
-   }
-
-   @Override
-   public boolean r_() {
-      return true;
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

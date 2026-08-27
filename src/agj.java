@@ -1,23 +1,34 @@
-import io.netty.buffer.ByteBuf;
+public class agj implements zb<afz> {
+   public static final ys<vu, agj> a = zb.a(agj::a, agj::new);
+   private final agj.a b;
 
-public class agj implements yz<afx> {
-   public static final agj a = new agj();
-   public static final yq<ByteBuf, agj> b = yq.a(a);
+   public agj(agj.a $$0) {
+      this.b = $$0;
+   }
 
-   private agj() {
+   private agj(vu $$0) {
+      this.b = $$0.b(agj.a.class);
+   }
+
+   private void a(vu $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zb<agj> a() {
-      return afv.bo;
+   public zd<agj> a() {
+      return afx.bm;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public agj.a b() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

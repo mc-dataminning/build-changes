@@ -1,54 +1,84 @@
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class ens {
-   private final int a;
-   private final long b;
-   private final String c;
-   private final eni d;
-   private final boolean e;
+   private static final String a = "command_storage_";
+   private final Map<String, ens.a> b = Maps.newHashMap();
+   private final env c;
 
-   private ens(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = new eni($$3, $$4);
-      this.e = $$5;
+   public ens(env $$0) {
+      this.c = $$0;
    }
 
-   public static ens a(Dynamic<?> $$0) {
-      int $$1 = $$0.get("version").asInt(0);
-      long $$2 = $$0.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> $$3 = $$0.get("Version");
-      return $$3.result().isPresent()
-         ? new ens(
-            $$1,
-            $$2,
-            $$3.get("Name").asString(aa.b().c()),
-            $$3.get("Id").asInt(aa.b().d().c()),
-            $$3.get("Series").asString(eni.a),
-            $$3.get("Snapshot").asBoolean(!aa.b().g())
-         )
-         : new ens($$1, $$2, "", 0, eni.a, false);
+   private ens.a a(String $$0) {
+      ens.a $$1 = new ens.a();
+      this.b.put($$0, $$1);
+      return $$1;
    }
 
-   public int a() {
-      return this.a;
+   private enh.a<ens.a> b(String $$0) {
+      return new enh.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), azf.h);
    }
 
-   public long b() {
-      return this.b;
+   public ua a(akh $$0) {
+      String $$1 = $$0.b();
+      ens.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new ua();
    }
 
-   public String c() {
-      return this.c;
+   public void a(akh $$0, ua $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
    }
 
-   public eni d() {
-      return this.d;
+   public Stream<akh> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
    }
 
-   public boolean e() {
-      return this.e;
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
+
+   static class a extends enh {
+      private static final String a = "contents";
+      private final Map<String, ua> b = Maps.newHashMap();
+
+      ens.a a(ua $$0) {
+         ua $$1 = $$0.p("contents");
+
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
+         }
+
+         return this;
+      }
+
+      @Override
+      public ua a(ua $$0, iy.a $$1) {
+         ua $$2 = new ua();
+         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.h()));
+         $$0.a("contents", $$2);
+         return $$0;
+      }
+
+      public ua a(String $$0) {
+         ua $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new ua();
+      }
+
+      public void a(String $$0, ua $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         this.c();
+      }
+
+      public Stream<akh> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> new akh($$0, $$1));
+      }
    }
 }

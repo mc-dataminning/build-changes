@@ -1,15 +1,34 @@
-public class cxf extends cxn {
-   public cxf(cxn.a $$0, bqs... $$1) {
-      super($$0, avw.bn, $$1);
+public record cxf<T extends cxd<?>>(akh b, T c) {
+   public static final ys<wf, cxf<?>> a = ys.a(akh.b, cxf::a, cxd.i, cxf::b, cxf::new);
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cxf<?> $$1 && this.b.equals($$1.b)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
    @Override
-   public int a(int $$0) {
-      return 20;
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
+   public String toString() {
+      return this.b.toString();
+   }
+
+   public akh a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

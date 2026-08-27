@@ -1,96 +1,116 @@
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fku extends fkt {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final ws c = ws.c("selectWorld.allowCommands.new");
-   private static final ws d = ws.c("selectWorld.gameMode");
-   private static final ws r = ws.c("lanServer.otherPlayers");
-   private static final ws s = ws.c("lanServer.port");
-   private static final ws u = ws.a("lanServer.port.unavailable.new", 1024, 65535);
-   private static final ws v = ws.a("lanServer.port.invalid.new", 1024, 65535);
-   private static final int w = 16733525;
-   private final fkt x;
-   private czr y = czr.a;
-   private boolean z;
-   private int A = axn.a();
+public class fku extends fld {
+   private static final wu a = wu.c("options.title");
+   private static final wu b = wu.c("options.skinCustomisation");
+   private static final wu c = wu.c("options.sounds");
+   private static final wu d = wu.c("options.video");
+   private static final wu r = wu.c("options.controls");
+   private static final wu s = wu.c("options.language");
+   private static final wu u = wu.c("options.chat");
+   private static final wu v = wu.c("options.resourcepack");
+   private static final wu w = wu.c("options.accessibility");
+   private static final wu x = wu.c("options.telemetry");
+   private static final wu y = wu.c("options.credits_and_attribution");
+   private static final int z = 2;
+   private final fir A = new fir(this, 61, 33);
+   private final fld B;
+   private final fdi C;
    @Nullable
-   private ffd B;
+   private ffl<bpj> D;
+   @Nullable
+   private ffu E;
 
-   public fku(fkt $$0) {
-      super(ws.c("lanServer.title"));
-      this.x = $$0;
+   public fku(fld $$0, fdi $$1) {
+      super(a);
+      this.B = $$0;
+      this.C = $$1;
    }
 
    @Override
    protected void aM_() {
-      gqs $$0 = this.m.V();
-      this.y = $$0.u_();
-      this.z = $$0.bc().m();
-      this.c(ffb.a(czr::e).a(czr.a, czr.d, czr.b, czr.c).a(this.y).a(this.n / 2 - 155, 100, 150, 20, d, ($$0x, $$1x) -> this.y = $$1x));
-      this.c(ffb.b(this.z).a(this.n / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.z = $$1x));
-      feu $$1 = feu.a(ws.c("lanServer.start"), $$1x -> {
-         this.m.a(null);
-         ws $$2;
-         if ($$0.a(this.y, this.z, this.A)) {
-            $$2 = ane.a(this.A);
-         } else {
-            $$2 = ws.c("commands.publish.failed");
-         }
+      fiv $$0 = this.A.a(fiv.d().a(8));
+      $$0.a(new fgl(a, this.p), fiu::b);
+      fiv $$1 = $$0.a(fiv.e()).a(8);
+      $$1.a(this.C.ah().a(this.m.m));
+      $$1.a(this.m());
+      fiq $$2 = new fiq();
+      $$2.c().f(4).e(4).b();
+      fiq.b $$3 = $$2.d(2);
+      $$3.a(this.a(b, () -> new flg(this, this.C)));
+      $$3.a(this.a(c, () -> new flh(this, this.C)));
+      $$3.a(this.a(d, () -> new flk(this, this.C)));
+      $$3.a(this.a(r, () -> new flu(this, this.C)));
+      $$3.a(this.a(s, () -> new fkm(this, this.C, this.m.ag())));
+      $$3.a(this.a(u, () -> new fjs(this, this.C)));
+      $$3.a(this.a(v, () -> new foj(this.m.ac(), this::a, this.m.af(), wu.c("resourcePack.title"))));
+      $$3.a(this.a(w, () -> new fjo(this, this.C)));
+      $$3.a(this.a(x, () -> new fpq(this, this.C)));
+      $$3.a(this.a(y, () -> new fjz(this)));
+      this.A.c($$2);
+      this.A.b(ffe.a(wt.d, $$0x -> this.d()).a(200).a());
+      this.A.a(this::c);
+      this.c();
+   }
 
-         this.m.l.d().a($$2);
-         this.m.d();
-      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a();
-      this.B = new ffd(this.p, this.n / 2 - 75, 160, 150, 20, ws.c("lanServer.port"));
-      this.B.b($$1x -> {
-         ws $$2 = this.a($$1x);
-         this.B.c(ws.b(this.A + "").a(n.i));
-         if ($$2 == null) {
-            this.B.g(14737632);
-            this.B.a(null);
-            $$1.j = true;
-         } else {
-            this.B.g(16733525);
-            this.B.a(fgf.a($$2));
-            $$1.j = false;
-         }
-      });
-      this.B.c(ws.b(this.A + "").a(n.i));
-      this.c(this.B);
-      this.c($$1);
-      this.c(feu.a(wr.e, $$0x -> this.d()).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
+   @Override
+   protected void c() {
+      this.A.a();
    }
 
    @Override
    public void d() {
-      this.m.a(this.x);
+      this.m.a(this.B);
    }
 
-   @Nullable
-   private ws a(String $$0) {
-      if ($$0.isBlank()) {
-         this.A = axn.a();
-         return null;
-      } else {
-         try {
-            this.A = Integer.parseInt($$0);
-            if (this.A < 1024 || this.A > 65535) {
-               return v;
-            } else {
-               return !axn.a(this.A) ? u : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.A = axn.a();
-            return v;
+   private void a(atc $$0) {
+      this.C.a($$0);
+      this.m.a(this);
+   }
+
+   private fit m() {
+      if (this.m.r != null && this.m.U()) {
+         this.D = a(0, 0, "options.difficulty", this.m);
+         if (!this.m.r.k().l()) {
+            this.E = new ffu(0, 0, $$0x -> this.m.a(new fjv(this::c, wu.c("difficulty.lock.title"), wu.a("difficulty.lock.question", this.m.r.k().q().b()))));
+            this.D.k(this.D.x() - this.E.x());
+            this.E.b(this.m.r.k().r());
+            this.E.j = !this.E.a();
+            this.D.j = !this.E.a();
+            fio $$0 = new fio(150, 0, fio.b.a);
+            $$0.a(this.D);
+            $$0.a(this.E);
+            return $$0;
+         } else {
+            this.D.j = false;
+            return this.D;
          }
+      } else {
+         return ffe.a(wu.c("options.online"), $$0x -> this.m.a(fkt.a(this.m, this, this.C))).a(this.n / 2 + 5, this.o / 6 - 12 + 24, 150, 20).a();
+      }
+   }
+
+   public static ffl<bpj> a(int $$0, int $$1, String $$2, fde $$3) {
+      return ffl.a(bpj::b).a(bpj.values()).a($$3.r.ak()).a($$0, $$1, 150, 20, wu.c($$2), ($$1x, $$2x) -> $$3.L().b(new agd($$2x)));
+   }
+
+   private void c(boolean $$0) {
+      this.m.a(this);
+      if ($$0 && this.m.r != null && this.E != null && this.D != null) {
+         this.m.L().b(new agv(true));
+         this.E.b(true);
+         this.E.j = false;
+         this.D.j = false;
       }
    }
 
    @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      $$0.a(this.p, r, this.n / 2, 82, 16777215);
-      $$0.a(this.p, s, this.n / 2, 142, 16777215);
+   public void j() {
+      this.C.av();
+   }
+
+   private ffe a(wu $$0, Supplier<fld> $$1) {
+      return ffe.a($$0, $$1x -> this.m.a($$1.get())).a();
    }
 }

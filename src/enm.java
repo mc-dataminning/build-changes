@@ -1,30 +1,54 @@
-import java.util.Locale;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface enm {
-   im a();
+public class enm {
+   private final in a;
+   private final int b;
+   private final int c;
 
-   float b();
+   public enm(in $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   long c();
+   @Nullable
+   public static enm a(ua $$0) {
+      Optional<in> $$1 = up.a($$0, "pos");
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = $$0.h("rotation");
+         int $$3 = $$0.h("entity_id");
+         return new enm($$1.get(), $$2, $$3);
+      }
+   }
 
-   long d();
+   public ua a() {
+      ua $$0 = new ua();
+      $$0.a("pos", up.a(this.a));
+      $$0.a("rotation", this.b);
+      $$0.a("entity_id", this.c);
+      return $$0;
+   }
 
-   boolean g();
+   public in b() {
+      return this.a;
+   }
 
-   boolean i();
+   public int c() {
+      return this.b;
+   }
 
-   void b(boolean var1);
+   public int d() {
+      return this.c;
+   }
 
-   boolean l();
+   public String e() {
+      return a(this.a);
+   }
 
-   czq o();
-
-   bon q();
-
-   boolean r();
-
-   default void a(p $$0, czw $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   public static String a(in $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

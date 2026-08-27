@@ -1,23 +1,23 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Set;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ezc extends ezj implements ezd {
-   @SerializedName("seed")
-   private final String a;
-   @SerializedName("worldTemplateId")
-   private final long b;
-   @SerializedName("levelType")
-   private final int c;
-   @SerializedName("generateStructures")
-   private final boolean d;
-   @SerializedName("experiments")
-   private final Set<String> e;
+public class ezc extends ezt {
+   private static final Logger b = LogUtils.getLogger();
+   public String a;
 
-   public ezc(String $$0, long $$1, int $$2, boolean $$3, Set<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public static ezc a(String $$0) {
+      ezc $$1 = new ezc();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fbq.b("newsLink", $$3, null);
+      } catch (Exception var4) {
+         b.error("Could not parse RealmsNews: {}", var4.getMessage());
+      }
+
+      return $$1;
    }
 }

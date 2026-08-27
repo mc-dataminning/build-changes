@@ -1,140 +1,77 @@
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class ell extends elf<ell.a> {
-   protected ell(dsh $$0) {
-      super(dad.a, $$0, new ell.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+public abstract class ell<M extends ell<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final dsi[] d = new dsi[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<dsi> a;
+
+   protected ell(Long2ObjectOpenHashMap<dsi> $$0) {
+      this.a = $$0;
+      this.c();
+      this.e = true;
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.e($$0, false);
+   public abstract M b();
+
+   public dsi a(long $$0) {
+      dsi $$1 = ((dsi)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
+      return $$1;
    }
 
-   protected int e(long $$0, boolean $$1) {
-      long $$2 = jo.e($$0);
-      int $$3 = jo.c($$2);
-      ell.a $$4 = $$1 ? this.d : this.c;
-      int $$5 = $$4.c.get(jo.f($$2));
-      if ($$5 != $$4.b && $$3 < $$5) {
-         drz $$6 = this.a($$4, $$2);
-         if ($$6 == null) {
-            for ($$0 = im.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
-               if (++$$3 >= $$5) {
-                  return 15;
-               }
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
+   }
 
-               $$2 = jo.a($$2, ir.b);
+   @Nullable
+   public dsi c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
             }
          }
+      }
 
-         return $$6.a(jo.b(im.a($$0)), jo.b(im.b($$0)), jo.b(im.c($$0)));
+      dsi $$2 = (dsi)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
       } else {
-         return $$1 && !this.j($$2) ? 0 : 15;
-      }
-   }
-
-   @Override
-   protected void h(long $$0) {
-      int $$1 = jo.c($$0);
-      if (this.d.b > $$1) {
-         this.d.b = $$1;
-         this.d.c.defaultReturnValue(this.d.b);
-      }
-
-      long $$2 = jo.f($$0);
-      int $$3 = this.d.c.get($$2);
-      if ($$3 < $$1 + 1) {
-         this.d.c.put($$2, $$1 + 1);
-      }
-   }
-
-   @Override
-   protected void i(long $$0) {
-      long $$1 = jo.f($$0);
-      int $$2 = jo.c($$0);
-      if (this.d.c.get($$1) == $$2 + 1) {
-         long $$3;
-         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = jo.a($$3, ir.a)) {
-            $$2--;
-         }
-
-         if (this.b($$3)) {
-            this.d.c.put($$1, $$2 + 1);
-         } else {
-            this.d.c.remove($$1);
-         }
-      }
-   }
-
-   @Override
-   protected drz g(long $$0) {
-      drz $$1 = (drz)this.g.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         int $$2 = this.d.c.get(jo.f($$0));
-         if ($$2 != this.d.b && jo.c($$0) < $$2) {
-            long $$3 = jo.a($$0, ir.b);
-
-            drz $$4;
-            while (($$4 = this.a($$3, true)) == null) {
-               $$3 = jo.a($$3, ir.b);
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
             }
 
-            return a($$4);
-         } else {
-            return this.j($$0) ? new drz(15) : new drz();
-         }
-      }
-   }
-
-   private static drz a(drz $$0) {
-      if ($$0.c()) {
-         return $$0.b();
-      } else {
-         byte[] $$1 = $$0.a();
-         byte[] $$2 = new byte[2048];
-
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+            this.c[0] = $$0;
+            this.d[0] = $$2;
          }
 
-         return new drz($$2);
+         return $$2;
       }
    }
 
-   protected boolean a(int $$0) {
-      return $$0 >= this.d.b;
+   @Nullable
+   public dsi d(long $$0) {
+      return (dsi)this.a.remove($$0);
    }
 
-   protected boolean l(long $$0) {
-      long $$1 = jo.f($$0);
-      int $$2 = this.d.c.get($$1);
-      return $$2 == this.d.b || jo.c($$0) >= $$2;
+   public void a(long $$0, dsi $$1) {
+      this.a.put($$0, $$1);
    }
 
-   protected int m(long $$0) {
-      return this.d.c.get($$0);
-   }
-
-   protected int c() {
-      return this.d.b;
-   }
-
-   protected static final class a extends elc<ell.a> {
-      int b;
-      final Long2IntOpenHashMap c;
-
-      public a(Long2ObjectOpenHashMap<drz> $$0, Long2IntOpenHashMap $$1, int $$2) {
-         super($$0);
-         this.c = $$1;
-         $$1.defaultReturnValue($$2);
-         this.b = $$2;
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
       }
+   }
 
-      public ell.a a() {
-         return new ell.a(this.a.clone(), this.c.clone(), this.b);
-      }
+   public void d() {
+      this.e = false;
    }
 }

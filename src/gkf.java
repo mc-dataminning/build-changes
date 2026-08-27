@@ -1,25 +1,44 @@
-public class gkf extends gky<cdb, frm<cdb>> {
-   private final gba a;
+public class gkf<T extends bsa, M extends ftg<T>> extends glr<T, M> {
+   private static final akh a = new akh("textures/entity/bee/bee_stinger.png");
 
-   public gkf(gii<cdb, frm<cdb>> $$0, gba $$1) {
+   public gkf(ghy<T, M> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(exn $$0, gbe $$1, int $$2, cdb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fs() == bqy.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = axw.e($$3.dF()) / 60.0F;
-      if ($$3.dF() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
-      }
+   @Override
+   protected int a(T $$0) {
+      return $$0.eS();
+   }
 
-      csd $$14 = $$10 ? $$3.eV() : $$3.eW();
-      this.a.a($$3, $$14, csa.h, false, $$0, $$1, $$2);
-      $$0.b();
+   @Override
+   protected void a(exx $$0, gbo $$1, int $$2, brh $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = axz.c($$4 * $$4 + $$6 * $$6);
+      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
+      $$0.a(0.0F, 0.0F, 0.0F);
+      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$10));
+      float $$11 = 0.0F;
+      float $$12 = 0.125F;
+      float $$13 = 0.0F;
+      float $$14 = 0.0625F;
+      float $$15 = 0.03125F;
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.b(0.03125F, 0.03125F, 0.03125F);
+      $$0.a(2.5F, 0.0F, 0.0F);
+      eyb $$16 = $$1.getBuffer(gbw.e(a));
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         $$0.a(a.b.rotationDegrees(90.0F));
+         exx.a $$18 = $$0.c();
+         a($$16, $$18, -4.5F, -1, 0.0F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, -1, 0.125F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, 1, 0.125F, 0.0625F, $$2);
+         a($$16, $$18, -4.5F, 1, 0.0F, 0.0625F, $$2);
+      }
+   }
+
+   private static void a(eyb $$0, exx.a $$1, float $$2, int $$3, float $$4, float $$5, int $$6) {
+      $$0.a($$1, $$2, (float)$$3, 0.0F).a(255, 255, 255, 255).a($$4, $$5).c(gmp.d).b($$6).b($$1, 0.0F, 1.0F, 0.0F).e();
    }
 }

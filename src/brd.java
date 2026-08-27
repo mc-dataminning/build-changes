@@ -1,218 +1,362 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class brd extends bql {
-   private static final int c = 2;
-   private static final double d = 3.0;
-   private static final double e = 15.0;
-   private int f;
-   public long b;
-   private int g;
-   private boolean h;
+public class brd extends brh implements bsy {
+   private static final Logger d = LogUtils.getLogger();
+   private static final int e = 5;
+   private static final ajm<Float> f = ajq.a(brd.class, ajo.d);
+   private static final ajm<Integer> g = ajq.a(brd.class, ajo.b);
+   private static final ajm<Boolean> h = ajq.a(brd.class, ajo.k);
+   private static final ajm<kv> i = ajq.a(brd.class, ajo.l);
+   private static final float j = 32.0F;
+   private static final float k = 0.5F;
+   private static final float l = 3.0F;
+   public static final float b = 6.0F;
+   public static final float c = 0.5F;
+   private cuy m = cuy.a;
+   private final Map<brh, Integer> n = Maps.newHashMap();
+   private int o = 600;
+   private int p = 20;
+   private int q = 20;
+   private int r;
+   private float s;
+   private float t;
    @Nullable
-   private aqf i;
-   private final Set<bql> j = Sets.newHashSet();
-   private int k;
+   private bsa u;
+   @Nullable
+   private UUID v;
 
-   public brd(bqr<? extends brd> $$0, czu $$1) {
+   public brd(brn<? extends brd> $$0, dad $$1) {
       super($$0, $$1);
-      this.au = true;
-      this.f = 2;
-      this.b = this.ah.g();
-      this.g = this.ah.a(3) + 1;
+      this.ag = true;
    }
 
-   public void a(boolean $$0) {
-      this.h = $$0;
+   public brd(dad $$0, double $$1, double $$2, double $$3) {
+      this(brn.b, $$0);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   public ava dc() {
-      return ava.d;
+   protected void a(ajq.a $$0) {
+      $$0.a(g, 0);
+      $$0.a(f, 3.0F);
+      $$0.a(h, false);
+      $$0.a(i, kp.a(kx.u, 0.0F, 0.0F, 0.0F));
    }
 
-   @Nullable
-   public aqf p() {
-      return this.i;
+   public void a(float $$0) {
+      if (!this.dN().B) {
+         this.an().a(f, axz.a($$0, 0.0F, 32.0F));
+      }
    }
 
-   public void b(@Nullable aqf $$0) {
-      this.i = $$0;
+   @Override
+   public void j_() {
+      double $$0 = this.ds();
+      double $$1 = this.du();
+      double $$2 = this.dy();
+      super.j_();
+      this.a_($$0, $$1, $$2);
+   }
+
+   public float g() {
+      return this.an().a(f);
+   }
+
+   public void a(cuy $$0) {
+      this.m = $$0;
+      this.v();
    }
 
    private void v() {
-      im $$0 = this.w();
-      dpy $$1 = this.dN().a_($$0);
-      if ($$1.a(dcx.ss)) {
-         ((dhk)$$1.b()).d($$1, this.dN(), $$0);
-      }
+      this.ao.a(g, this.m.equals(cuy.a) ? 0 : this.m.b());
+   }
+
+   public void a(bqt $$0) {
+      this.a(this.m.a($$0));
+   }
+
+   public int h() {
+      return this.an().a(g);
+   }
+
+   public kv i() {
+      return this.an().a(i);
+   }
+
+   public void a(kv $$0) {
+      this.an().a(i, $$0);
+   }
+
+   protected void a(boolean $$0) {
+      this.an().a(h, $$0);
+   }
+
+   public boolean j() {
+      return this.an().a(h);
+   }
+
+   public int k() {
+      return this.o;
+   }
+
+   public void a(int $$0) {
+      this.o = $$0;
    }
 
    @Override
    public void l() {
       super.l();
-      if (this.f == 2) {
-         if (this.dN().x_()) {
-            this.dN().a(this.ds(), this.du(), this.dy(), auz.nM, ava.d, 10000.0F, 0.8F + this.ah.i() * 0.2F, false);
-            this.dN().a(this.ds(), this.du(), this.dy(), auz.nL, ava.d, 2.0F, 0.5F + this.ah.i() * 0.2F, false);
+      boolean $$0 = this.j();
+      float $$1 = this.g();
+      if (this.dN().B) {
+         if ($$0 && this.ah.h()) {
+            return;
+         }
+
+         kv $$2 = this.i();
+         int $$3;
+         float $$4;
+         if ($$0) {
+            $$3 = 2;
+            $$4 = 0.2F;
          } else {
-            bon $$0 = this.dN().ak();
-            if ($$0 == bon.c || $$0 == bon.d) {
-               this.b(4);
+            $$3 = axz.f((float) Math.PI * $$1 * $$1);
+            $$4 = $$1;
+         }
+
+         for (int $$7 = 0; $$7 < $$3; $$7++) {
+            float $$8 = this.ah.i() * (float) (Math.PI * 2);
+            float $$9 = axz.c(this.ah.i()) * $$4;
+            double $$10 = this.ds() + (double)(axz.b($$8) * $$9);
+            double $$11 = this.du();
+            double $$12 = this.dy() + (double)(axz.a($$8) * $$9);
+            double $$14;
+            double $$15;
+            double $$16;
+            if ($$2.a() == kx.u) {
+               int $$13 = $$0 && this.ah.h() ? 16777215 : this.h();
+               $$14 = (double)((float)($$13 >> 16 & 0xFF) / 255.0F);
+               $$15 = (double)((float)($$13 >> 8 & 0xFF) / 255.0F);
+               $$16 = (double)((float)($$13 & 0xFF) / 255.0F);
+            } else if ($$0) {
+               $$14 = 0.0;
+               $$15 = 0.0;
+               $$16 = 0.0;
+            } else {
+               $$14 = (0.5 - this.ah.j()) * 0.15;
+               $$15 = 0.01F;
+               $$16 = (0.5 - this.ah.j()) * 0.15;
             }
 
-            this.v();
-            b(this.dN(), this.w());
-            this.a(dur.G);
+            this.dN().b($$2, $$10, $$11, $$12, $$14, $$15, $$16);
          }
-      }
+      } else {
+         if (this.ai >= this.p + this.o) {
+            this.am();
+            return;
+         }
 
-      this.f--;
-      if (this.f < 0) {
-         if (this.g == 0) {
-            if (this.dN() instanceof aqe) {
-               List<bql> $$1 = this.dN()
-                  .a(
-                     this,
-                     new eta(this.ds() - 15.0, this.du() - 15.0, this.dy() - 15.0, this.ds() + 15.0, this.du() + 6.0 + 15.0, this.dy() + 15.0),
-                     $$0 -> $$0.bB() && !this.j.contains($$0)
-                  );
+         boolean $$23 = this.ai < this.p;
+         if ($$0 != $$23) {
+            this.a($$23);
+         }
 
-               for (aqf $$2 : ((aqe)this.dN()).a($$0 -> $$0.f(this) < 256.0F)) {
-                  am.V.a($$2, this, $$1);
+         if ($$23) {
+            return;
+         }
+
+         if (this.t != 0.0F) {
+            $$1 += this.t;
+            if ($$1 < 0.5F) {
+               this.am();
+               return;
+            }
+
+            this.a($$1);
+         }
+
+         if (this.ai % 5 == 0) {
+            this.n.entrySet().removeIf($$0x -> this.ai >= (Integer)$$0x.getValue());
+            if (!this.m.d()) {
+               this.n.clear();
+            } else {
+               List<bqt> $$24 = Lists.newArrayList();
+               if (this.m.f().isPresent()) {
+                  for (bqt $$25 : this.m.f().get().a().a()) {
+                     $$24.add(new bqt($$25.c(), $$25.a($$0x -> $$0x / 4), $$25.e(), $$25.f(), $$25.g()));
+                  }
+               }
+
+               $$24.addAll(this.m.e());
+               List<bsa> $$26 = this.dN().a(bsa.class, this.cI());
+               if (!$$26.isEmpty()) {
+                  for (bsa $$27 : $$26) {
+                     if (!this.n.containsKey($$27) && $$27.fE()) {
+                        double $$28 = $$27.ds() - this.ds();
+                        double $$29 = $$27.dy() - this.dy();
+                        double $$30 = $$28 * $$28 + $$29 * $$29;
+                        if ($$30 <= (double)($$1 * $$1)) {
+                           this.n.put($$27, this.ai + this.q);
+
+                           for (bqt $$31 : $$24) {
+                              if ($$31.c().a().a()) {
+                                 $$31.c().a().a(this, this.r(), $$27, $$31.e(), 0.5);
+                              } else {
+                                 $$27.b(new bqt($$31), this);
+                              }
+                           }
+
+                           if (this.s != 0.0F) {
+                              $$1 += this.s;
+                              if ($$1 < 0.5F) {
+                                 this.am();
+                                 return;
+                              }
+
+                              this.a($$1);
+                           }
+
+                           if (this.r != 0) {
+                              this.o = this.o + this.r;
+                              if (this.o <= 0) {
+                                 this.am();
+                                 return;
+                              }
+                           }
+                        }
+                     }
+                  }
                }
             }
-
-            this.am();
-         } else if (this.f < -this.ah.a(10)) {
-            this.g--;
-            this.f = 1;
-            this.b = this.ah.g();
-            this.b(0);
-         }
-      }
-
-      if (this.f >= 0) {
-         if (!(this.dN() instanceof aqe)) {
-            this.dN().c(2);
-         } else if (!this.h) {
-            List<bql> $$3 = this.dN()
-               .a(this, new eta(this.ds() - 3.0, this.du() - 3.0, this.dy() - 3.0, this.ds() + 3.0, this.du() + 6.0 + 3.0, this.dy() + 3.0), bql::bB);
-
-            for (bql $$4 : $$3) {
-               $$4.a((aqe)this.dN(), this);
-            }
-
-            this.j.addAll($$3);
-            if (this.i != null) {
-               am.F.a(this.i, $$3);
-            }
          }
       }
    }
 
-   private im w() {
-      etf $$0 = this.dl();
-      return im.a($$0.c, $$0.d - 1.0E-6, $$0.e);
+   public float m() {
+      return this.s;
    }
 
-   private void b(int $$0) {
-      if (!this.h && !this.dN().B && this.dN().aa().b(czq.b)) {
-         im $$1 = this.dn();
-         dpy $$2 = dci.a(this.dN(), $$1);
-         if (this.dN().a_($$1).i() && $$2.a((czx)this.dN(), $$1)) {
-            this.dN().b($$1, $$2);
-            this.k++;
-         }
-
-         for (int $$3 = 0; $$3 < $$0; $$3++) {
-            im $$4 = $$1.b(this.ah.a(3) - 1, this.ah.a(3) - 1, this.ah.a(3) - 1);
-            $$2 = dci.a(this.dN(), $$4);
-            if (this.dN().a_($$4).i() && $$2.a((czx)this.dN(), $$4)) {
-               this.dN().b($$4, $$2);
-               this.k++;
-            }
-         }
-      }
+   public void b(float $$0) {
+      this.s = $$0;
    }
 
-   private static void b(czu $$0, im $$1) {
-      dpy $$2 = $$0.a_($$1);
-      im $$3;
-      dpy $$4;
-      if ($$2.a(dcx.ss)) {
-         $$3 = $$1.a($$2.c(dhk.a).g());
-         $$4 = $$0.a_($$3);
-      } else {
-         $$3 = $$1;
-         $$4 = $$2;
-      }
-
-      if ($$4.b() instanceof dma) {
-         $$0.b($$3, dma.c($$0.a_($$3)));
-         im.a $$7 = $$1.j();
-         int $$8 = $$0.z.a(3) + 3;
-
-         for (int $$9 = 0; $$9 < $$8; $$9++) {
-            int $$10 = $$0.z.a(8) + 1;
-            a($$0, $$3, $$7, $$10);
-         }
-      }
+   public float o() {
+      return this.t;
    }
 
-   private static void a(czu $$0, im $$1, im.a $$2, int $$3) {
-      $$2.g($$1);
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         Optional<im> $$5 = c($$0, $$2);
-         if ($$5.isEmpty()) {
-            break;
-         }
-
-         $$2.g($$5.get());
-      }
+   public void c(float $$0) {
+      this.t = $$0;
    }
 
-   private static Optional<im> c(czu $$0, im $$1) {
-      for (im $$2 : im.a($$0.z, 10, $$1, 1)) {
-         dpy $$3 = $$0.a_($$2);
-         if ($$3.b() instanceof dma) {
-            dma.b($$3).ifPresent($$2x -> $$0.b($$2, $$2x));
-            $$0.c(3002, $$2, -1);
-            return Optional.of($$2);
+   public int p() {
+      return this.r;
+   }
+
+   public void b(int $$0) {
+      this.r = $$0;
+   }
+
+   public int q() {
+      return this.p;
+   }
+
+   public void c(int $$0) {
+      this.p = $$0;
+   }
+
+   public void a(@Nullable bsa $$0) {
+      this.u = $$0;
+      this.v = $$0 == null ? null : $$0.cx();
+   }
+
+   @Nullable
+   public bsa r() {
+      if (this.u == null && this.v != null && this.dN() instanceof aqh) {
+         brh $$0 = ((aqh)this.dN()).a(this.v);
+         if ($$0 instanceof bsa) {
+            this.u = (bsa)$$0;
          }
       }
 
-      return Optional.empty();
+      return this.u;
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = 64.0 * cB();
-      return $$0 < $$1 * $$1;
+   protected void a(ua $$0) {
+      this.ai = $$0.h("Age");
+      this.o = $$0.h("Duration");
+      this.p = $$0.h("WaitTime");
+      this.q = $$0.h("ReapplicationDelay");
+      this.r = $$0.h("DurationOnUse");
+      this.s = $$0.j("RadiusOnUse");
+      this.t = $$0.j("RadiusPerTick");
+      this.a($$0.j("Radius"));
+      if ($$0.b("Owner")) {
+         this.v = $$0.a("Owner");
+      }
+
+      if ($$0.b("Particle", 8)) {
+         try {
+            this.a(fa.a(new StringReader($$0.l("Particle")), this.dP()));
+         } catch (CommandSyntaxException var3) {
+            d.warn("Couldn't load custom particle {}", $$0.l("Particle"), var3);
+         }
+      }
+
+      if ($$0.e("potion_contents")) {
+         cuy.c
+            .parse(uo.a, $$0.c("potion_contents"))
+            .resultOrPartial($$0x -> d.warn("Failed to parse area effect cloud potions: '{}'", $$0x))
+            .ifPresent(this::a);
+      }
    }
 
    @Override
-   protected void a(ajo.a $$0) {
+   protected void b(ua $$0) {
+      $$0.a("Age", this.ai);
+      $$0.a("Duration", this.o);
+      $$0.a("WaitTime", this.p);
+      $$0.a("ReapplicationDelay", this.q);
+      $$0.a("DurationOnUse", this.r);
+      $$0.a("RadiusOnUse", this.s);
+      $$0.a("RadiusPerTick", this.t);
+      $$0.a("Radius", this.g());
+      $$0.a("Particle", this.i().a(this.dP()));
+      if (this.v != null) {
+         $$0.a("Owner", this.v);
+      }
+
+      if (!this.m.equals(cuy.a)) {
+         ux $$1 = ac.a(cuy.c.encodeStart(uo.a, this.m), IllegalStateException::new);
+         $$0.a("potion_contents", $$1);
+      }
    }
 
    @Override
-   protected void a(ty $$0) {
+   public void a(ajm<?> $$0) {
+      if (f.equals($$0)) {
+         this.j_();
+      }
+
+      super.a($$0);
    }
 
    @Override
-   protected void b(ty $$0) {
+   public emf k_() {
+      return emf.d;
    }
 
-   public int r() {
-      return this.k;
-   }
-
-   public Stream<bql> u() {
-      return this.j.stream().filter(bql::bB);
+   @Override
+   public brk a(bsl $$0) {
+      return brk.b(this.g() * 2.0F, 0.5F);
    }
 }

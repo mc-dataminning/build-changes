@@ -1,5 +1,8 @@
-import java.util.function.Function;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface eux<T> {
-   uv b(long var1, Function<T, String> var3);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eux {
 }

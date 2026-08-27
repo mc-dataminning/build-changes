@@ -1,42 +1,55 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface djw extends ddc, dhm {
+public class djw extends dcq {
+   public static final MapCodec<djw> a = b(djw::new);
+   public static final dqy b = dqx.E;
+   private final bor c = boo.a(5);
+
    @Override
-   default boolean a(@Nullable ckl $$0, cza $$1, im $$2, dpy $$3, elq $$4) {
-      return $$4 == els.c;
+   public MapCodec<djw> a() {
+      return a;
+   }
+
+   public djw(dqg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   default boolean a(czv $$0, im $$1, dpy $$2, elr $$3) {
-      if (!$$2.c(dqo.C) && $$3.a() == els.c) {
-         if (!$$0.x_()) {
-            $$0.a($$1, $$2.a(dqo.C, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(b);
+   }
 
-         return true;
-      } else {
-         return false;
+   @Override
+   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
       }
    }
 
+   @Nullable
    @Override
-   default csd a(@Nullable ckl $$0, czv $$1, im $$2, dpy $$3) {
-      if ($$3.c(dqo.C)) {
-         $$1.a($$2, $$3.a(dqo.C, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
+   public dnm a(in $$0, dqh $$1) {
+      return new dos($$0, $$1);
+   }
 
-         return new csd(csg.qz);
-      } else {
-         return csd.i;
-      }
+   @Nullable
+   @Override
+   public <T extends dnm> dnn<T> a(dad $$0, dqh $$1, dno<T> $$2) {
+      return $$0.B ? null : a($$2, dno.K, dos::a);
    }
 
    @Override
-   default Optional<auy> as_() {
-      return els.c.j();
+   protected djk a_(dqh $$0) {
+      return djk.c;
+   }
+
+   @Override
+   protected void a(dqh $$0, aqh $$1, in $$2, csz $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.c);
+      }
    }
 }

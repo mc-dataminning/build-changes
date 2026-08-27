@@ -1,6 +1,6 @@
-public interface gmk extends AutoCloseable {
-   void a(int var1, int var2);
+import java.io.IOException;
+import java.nio.file.Path;
 
-   @Override
-   void close();
+public interface gmk {
+   void a(akh var1, Path var2) throws IOException;
 }

@@ -1,24 +1,58 @@
 import java.util.List;
 import java.util.function.Predicate;
 
-public interface dsk<T> {
-   int a(T var1);
+public class dsk<T> implements dst<T> {
+   private final jb<T> a;
 
-   boolean a(Predicate<T> var1);
+   public dsk(jb<T> $$0) {
+      this.a = $$0;
+   }
 
-   T a(int var1);
+   public static <A> dst<A> a(int $$0, jb<A> $$1, dsu<A> $$2, List<A> $$3) {
+      return new dsk<>($$1);
+   }
 
-   void a(vs var1);
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.a.a($$0);
+      return $$1 == -1 ? 0 : $$1;
+   }
 
-   void b(vs var1);
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      return true;
+   }
 
-   int a();
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.a.a($$0);
+      if ($$1 == null) {
+         throw new dss($$0);
+      } else {
+         return $$1;
+      }
+   }
 
-   int b();
+   @Override
+   public void a(vu $$0) {
+   }
 
-   dsk<T> c();
+   @Override
+   public void b(vu $$0) {
+   }
 
-   public interface a {
-      <A> dsk<A> create(int var1, ja<A> var2, dsl<A> var3, List<A> var4);
+   @Override
+   public int a() {
+      return 0;
+   }
+
+   @Override
+   public int b() {
+      return this.a.b();
+   }
+
+   @Override
+   public dst<T> c() {
+      return this;
    }
 }

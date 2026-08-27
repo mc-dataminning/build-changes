@@ -1,25 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dia extends dde {
+public class dia extends dde implements dkf {
    public static final MapCodec<dia> a = b(dia::new);
-   protected static final ety b = dcv.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+   public static final dqy b = dqx.C;
 
    @Override
    public MapCodec<dia> a() {
       return a;
    }
 
-   public dia(dpx.d $$0) {
+   protected dia(dqg.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      return b;
+   protected boolean a(dqh $$0, dqh $$1, is $$2) {
+      return $$1.a(ddg.ac) && $$2.o() == is.a.b;
+   }
+
+   @Nullable
+   @Override
+   public dqh a(cwi $$0) {
+      ema $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == emb.c;
+      return super.a($$0).a(b, Boolean.valueOf($$2));
    }
 
    @Override
-   protected boolean b(dpy $$0, cza $$1, im $$2) {
-      return $$0.a(avo.aL) || $$0.a(dcx.dX) || super.b($$0, $$1, $$2);
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, emb.c, emb.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected ema b_(dqh $$0) {
+      return $$0.c(b) ? emb.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(b);
    }
 }

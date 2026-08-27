@@ -1,32 +1,42 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class esp implements esq<MinecraftServer> {
-   final akf a;
+public record esp(esl b, esl c) implements esl {
+   public static final Codec<esp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(esm.a.fieldOf("min").forGetter(esp::c), esm.a.fieldOf("max").forGetter(esp::d)).apply($$0, esp::new)
+   );
 
-   public esp(akf $$0) {
-      this.a = $$0;
+   @Override
+   public esk b() {
+      return esm.c;
    }
 
-   public void a(MinecraftServer $$0, ess<MinecraftServer> $$1, long $$2) {
-      akt $$3 = $$0.aF();
-
-      for (ho<ec> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
+   public static esp a(float $$0, float $$1) {
+      return new esp(esj.a($$0), esj.a($$1));
    }
 
-   public static class a extends esq.a<MinecraftServer, esp> {
-      public a() {
-         super(new akf("function_tag"), esp.class);
-      }
+   @Override
+   public int a(eol $$0) {
+      return axz.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   }
 
-      public void a(ty $$0, esp $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   @Override
+   public float b(eol $$0) {
+      return axz.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
 
-      public esp a(ty $$0) {
-         akf $$1 = new akf($$0.l("Name"));
-         return new esp($$1);
-      }
+   @Override
+   public Set<eqz<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public esl c() {
+      return this.b;
+   }
+
+   public esl d() {
+      return this.c;
    }
 }

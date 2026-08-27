@@ -1,45 +1,28 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class eqf extends epo {
-   public static final Codec<eqf> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(esd.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, eqf::new)
-   );
-   private final esc b;
-   private final boolean c;
+public class eqf extends epw {
+   public static final Codec<eqf> a = RecordCodecBuilder.create($$0 -> a($$0).and(jx.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, eqf::new));
+   private final jx b;
 
-   private eqf(List<erh> $$0, esc $$1, boolean $$2) {
+   private eqf(List<erq> $$0, jx $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   public epq b() {
-      return epr.c;
+   public epy b() {
+      return epz.j;
    }
 
    @Override
-   public Set<eqq<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public csd a(csd $$0, eoa $$1) {
-      int $$2 = this.c ? $$0.G() : 0;
-      $$0.e(axw.a($$2 + this.b.a($$1), 0, $$0.i()));
+   public csz a(csz $$0, eol $$1) {
+      $$0.a(this.b);
       return $$0;
    }
 
-   public static epo.a<?> a(esc $$0) {
-      return a($$1 -> new eqf($$1, $$0, false));
-   }
-
-   public static epo.a<?> a(esc $$0, boolean $$1) {
-      return a($$2 -> new eqf($$2, $$0, $$1));
+   public static <T> epw.a<?> a(jz<T> $$0, T $$1) {
+      return a($$2 -> new eqf($$2, jx.a().a($$0, $$1).a()));
    }
 }

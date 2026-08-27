@@ -1,52 +1,39 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class eam extends eaj {
-   public eam(Codec<ebx> $$0) {
+public class eam extends dzd<ebo> {
+   public eam(Codec<ebo> $$0) {
       super($$0);
    }
 
    @Override
-   protected Set<im> a(dap $$0, ebx $$1, ayd $$2, im $$3, Predicate<dpy> $$4, int $$5, int $$6) {
-      Set<im> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<im> $$8 = new HashSet<>();
-      im.a $$9 = new im.a();
+   public boolean a(dzf<ebo> $$0) {
+      day $$1 = $$0.b();
+      in $$2 = $$0.e();
+      in.a $$3 = new in.a();
+      in.a $$4 = new in.a();
 
-      for (im $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(dvz.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(is.a, 1);
+            dbc $$10 = $$1.t($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, ddg.dO.n(), 2);
+            }
+
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, ddg.dN.n(), 2);
+               dqh $$11 = $$1.a_($$4);
+               if ($$11.b(dko.c)) {
+                  $$1.a($$4, $$11.a(dko.c, Boolean.valueOf(true)), 2);
+               }
+            }
          }
       }
 
-      for (im $$11 : $$8) {
-         $$0.a($$11, dcx.G.n(), 2);
-      }
-
-      return $$8;
-   }
-
-   private static boolean a(dap $$0, Set<im> $$1, im $$2, im.a $$3) {
-      return a($$0, $$2, $$3, ir.c) || a($$0, $$2, $$3, ir.f) || a($$0, $$2, $$3, ir.d) || a($$0, $$2, $$3, ir.e) || a($$0, $$2, $$3, ir.a);
-   }
-
-   private static boolean a(dap $$0, im $$1, im.a $$2, ir $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).d($$0, $$2, $$3.g());
-   }
-
-   @Override
-   protected boolean a(dap $$0, ebx $$1, drv $$2, ayd $$3, im $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
-         dpy $$5 = $$0.a_($$4);
-         if ($$5.b(dqo.C) && !$$5.c(dqo.C)) {
-            $$0.a($$4, $$5.a(dqo.C, Boolean.valueOf(true)), 2);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+      return true;
    }
 }

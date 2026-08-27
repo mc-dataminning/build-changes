@@ -1,101 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class det extends dch {
-   public static final MapCodec<det> a = b(det::new);
-   public static final dqy b = dqo.aT;
-   public static final dqp c = dqo.p;
-   protected static final ety d = dcv.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
+public class det extends dde {
+   public static final MapCodec<dde> a = ld.e.q().fieldOf("dead");
+   public static final MapCodec<det> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, det::new));
+   private final dde c;
+
+   public det(dde $$0, dqg.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
    @Override
    public MapCodec<det> a() {
-      return a;
-   }
-
-   public det(dpx.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
+      return b;
    }
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      return d;
-   }
-
-   @Override
-   protected boolean g_(dpy $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dpy $$0, cza $$1, im $$2, ir $$3) {
-      return $$0.c(b);
-   }
-
-   private static void d(dpy $$0, czu $$1, im $$2) {
-      int $$3 = $$1.a(dad.a, $$2) - $$1.B_();
-      float $$4 = $$1.a(1.0F);
-      boolean $$5 = $$0.c(c);
-      if ($$5) {
-         $$3 = 15 - $$3;
-      } else if ($$3 > 0) {
-         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
-         $$4 += ($$6 - $$4) * 0.2F;
-         $$3 = Math.round((float)$$3 * axw.b($$4));
-      }
-
-      $$3 = axw.a($$3, 0, 15);
-      if ($$0.c(b) != $$3) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf($$3)), 3);
+   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.c.n(), 2);
       }
    }
 
    @Override
-   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
-      if ($$3.gm()) {
-         if ($$1.B) {
-            return boq.a;
-         } else {
-            dpy $$5 = $$0.a(c);
-            $$1.a($$2, $$5, 2);
-            $$1.a(dur.c, $$2, dur.a.a($$3, $$5));
-            d($$5, $$1, $$2);
-            return boq.b;
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      if (!this.a($$3, $$4)) {
+         $$3.a($$4, this, 60 + $$3.E_().a(40));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected boolean a(czj $$0, in $$1) {
+      for (is $$2 : is.values()) {
+         ema $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(avw.a)) {
+            return true;
          }
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
       }
-   }
 
-   @Override
-   protected djb b_(dpy $$0) {
-      return djb.c;
-   }
-
-   @Override
-   protected boolean f_(dpy $$0) {
-      return true;
-   }
-
-   @Override
-   public dnd a(im $$0, dpy $$1) {
-      return new dns($$0, $$1);
+      return false;
    }
 
    @Nullable
    @Override
-   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
-      return !$$0.B && $$0.D_().g() ? a($$2, dnf.q, det::a) : null;
-   }
-
-   private static void a(czu $$0, im $$1, dpy $$2, dns $$3) {
-      if ($$0.Y() % 20L == 0L) {
-         d($$2, $$0, $$1);
+   public dqh a(cwi $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().E_().a(40));
       }
-   }
 
-   @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(b, c);
+      return this.n();
    }
 }

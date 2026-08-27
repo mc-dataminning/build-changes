@@ -1,73 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dxx extends dyu<eba> {
-   public dxx(Codec<eba> $$0) {
+public class dxx extends ebr {
+   public static final MapCodec<dxx> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               eew.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bop.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               dwt.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               dxy.b.optionalFieldOf("debug_settings", dxy.a).forGetter($$0x -> $$0x.h),
+               jl.a(le.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dxx::new)
+   );
+   public final eew e;
+   public final bop f;
+   public final dwt g;
+   public final dxy h;
+   public final ja<dde> i;
+
+   public dxx(float $$0, eew $$1, bop $$2, dwt $$3, dxy $$4, ja<dde> $$5) {
       super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
-
-   protected void a(czv $$0, ayd $$1, im $$2, eba $$3, int $$4, im.a $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         $$5.g($$2).c(ir.b, $$6);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            this.a($$0, $$5, $$3.c.a($$1, $$2));
-         }
-      }
-   }
-
-   protected int a(ayd $$0) {
-      int $$1 = $$0.a(3) + 4;
-      if ($$0.a(12) == 0) {
-         $$1 *= 2;
-      }
-
-      return $$1;
-   }
-
-   protected boolean a(czv $$0, im $$1, int $$2, im.a $$3, eba $$4) {
-      int $$5 = $$1.v();
-      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 < $$0.al()) {
-         dpy $$6 = $$0.a_($$1.d());
-         if (!b($$6) && !$$6.a(avo.ba)) {
-            return false;
-         } else {
-            for (int $$7 = 0; $$7 <= $$2; $$7++) {
-               int $$8 = this.a(-1, -1, $$4.d, $$7);
-
-               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-                     dpy $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
-                     if (!$$11.i() && !$$11.a(avo.O)) {
-                        return false;
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(dyw<eba> $$0) {
-      dap $$1 = $$0.b();
-      im $$2 = $$0.e();
-      ayd $$3 = $$0.d();
-      eba $$4 = $$0.f();
-      int $$5 = this.a($$3);
-      im.a $$6 = new im.a();
-      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
-         return false;
-      } else {
-         this.a($$1, $$3, $$2, $$5, $$6, $$4);
-         this.a($$1, $$3, $$2, $$4, $$5, $$6);
-         return true;
-      }
-   }
-
-   protected abstract int a(int var1, int var2, int var3, int var4);
-
-   protected abstract void a(czv var1, ayd var2, im var3, int var4, im.a var5, eba var6);
 }

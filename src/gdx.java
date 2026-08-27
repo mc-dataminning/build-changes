@@ -1,46 +1,36 @@
-import org.joml.Matrix4f;
+public class gdx implements gdo<dog> {
+   public static final gpc a = new gpc(gmx.e, new akh("entity/enchanting_table_book"));
+   private final frj b;
 
-public class gdx<T extends dou> implements gde<T> {
-   public static final akf a = new akf("textures/environment/end_sky.png");
-   public static final akf b = new akf("textures/entity/end_portal.png");
-
-   public gdx(gdf.a $$0) {
+   public gdx(gdp.a $$0) {
+      this.b = new frj($$0.a(fva.r));
    }
 
-   public void a(T $$0, float $$1, exn $$2, gbe $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
-   }
+   public void a(dog $$0, float $$1, exx $$2, gbo $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + axz.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
 
-   private void a(T $$0, Matrix4f $$1, exr $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, ir.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, ir.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, ir.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, ir.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, ir.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, ir.b);
-   }
-
-   private void a(T $$0, Matrix4f $$1, exr $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, ir $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7).e();
-         $$2.a($$1, $$4, $$5, $$8).e();
-         $$2.a($$1, $$4, $$6, $$9).e();
-         $$2.a($$1, $$3, $$6, $$10).e();
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
-   }
 
-   protected float b() {
-      return 0.75F;
-   }
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
+      }
 
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected gbm d() {
-      return gbm.u();
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = axz.i($$1, $$0.c, $$0.b);
+      float $$10 = axz.h($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = axz.h($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = axz.i($$1, $$0.g, $$0.f);
+      this.b.a($$6, axz.a($$10, 0.0F, 1.0F), axz.a($$11, 0.0F, 1.0F), $$12);
+      eyb $$13 = a.a($$3, gbw::c);
+      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

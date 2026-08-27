@@ -1,30 +1,42 @@
-public class bzl extends byb {
-   private final brm a;
+import java.util.EnumSet;
 
-   public bzl(brm $$0) {
+public class bzl extends byx {
+   private final bsi a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+
+   public bzl(bsi $$0, double $$1) {
       this.a = $$0;
+      this.e = $$1;
+      this.a(EnumSet.of(byx.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.aC() && !this.a.dN().b_(this.a.dn()).a(avt.a);
+      if (this.a.fW()) {
+         return false;
+      } else {
+         etp $$0 = ccu.a(this.a, 16, 7, etp.c(this.a.fX()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.c;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            return true;
+         }
+      }
+   }
+
+   @Override
+   public boolean b() {
+      return !this.a.K().l();
    }
 
    @Override
    public void c() {
-      im $$0 = null;
-
-      for (im $$2 : im.b(
-         axw.a(this.a.ds() - 2.0), axw.a(this.a.du() - 2.0), axw.a(this.a.dy() - 2.0), axw.a(this.a.ds() + 2.0), this.a.dt(), axw.a(this.a.dy() + 2.0)
-      )) {
-         if (this.a.dN().b_($$2).a(avt.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+      this.a.K().a(this.b, this.c, this.d, this.e);
    }
 }

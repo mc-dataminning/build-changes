@@ -1,112 +1,131 @@
-import java.util.Calendar;
+import java.util.List;
 
-public class gdk<T extends dnd & dog> implements gde<T> {
-   private static final String a = "bottom";
-   private static final String b = "lid";
-   private static final String c = "lock";
-   private final fur d;
-   private final fur e;
-   private final fur f;
-   private final fur g;
-   private final fur h;
-   private final fur i;
-   private final fur j;
-   private final fur k;
-   private final fur l;
-   private boolean m;
+public class gdk implements gdo<dnh> {
+   public static final akh a = new akh("textures/entity/beacon_beam.png");
+   public static final int b = 1024;
 
-   public gdk(gdf.a $$0) {
-      Calendar $$1 = Calendar.getInstance();
-      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
-         this.m = true;
+   public gdk(gdp.a $$0) {
+   }
+
+   public void a(dnh $$0, float $$1, exx $$2, gbo $$3, int $$4, int $$5) {
+      long $$6 = $$0.i().Y();
+      List<dnh.a> $$7 = $$0.b();
+      int $$8 = 0;
+
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         dnh.a $$10 = $$7.get($$9);
+         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
+         $$8 += $$10.c();
       }
-
-      fur $$2 = $$0.a(fuq.x);
-      this.e = $$2.b("bottom");
-      this.d = $$2.b("lid");
-      this.f = $$2.b("lock");
-      fur $$3 = $$0.a(fuq.O);
-      this.h = $$3.b("bottom");
-      this.g = $$3.b("lid");
-      this.i = $$3.b("lock");
-      fur $$4 = $$0.a(fuq.P);
-      this.k = $$4.b("bottom");
-      this.j = $$4.b("lid");
-      this.l = $$4.b("lock");
    }
 
-   public static fux b() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      $$1.a("bottom", fuw.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), fut.a);
-      $$1.a("lid", fuw.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), fut.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", fuw.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), fut.a(0.0F, 9.0F, 1.0F));
-      return fux.a($$0, 64, 64);
+   private static void a(exx $$0, gbo $$1, float $$2, long $$3, int $$4, int $$5, float[] $$6) {
+      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
    }
 
-   public static fux c() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      $$1.a("bottom", fuw.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fut.a);
-      $$1.a("lid", fuw.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fut.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", fuw.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fut.a(0.0F, 9.0F, 1.0F));
-      return fux.a($$0, 64, 64);
+   public static void a(exx $$0, gbo $$1, akh $$2, float $$3, float $$4, long $$5, int $$6, int $$7, float[] $$8, float $$9, float $$10) {
+      int $$11 = $$6 + $$7;
+      $$0.a();
+      $$0.a(0.5, 0.0, 0.5);
+      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
+      float $$13 = $$7 < 0 ? $$12 : -$$12;
+      float $$14 = axz.h($$13 * 0.2F - (float)axz.d($$13 * 0.1F));
+      float $$15 = $$8[0];
+      float $$16 = $$8[1];
+      float $$17 = $$8[2];
+      $$0.a();
+      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
+      float $$18 = 0.0F;
+      float $$21 = 0.0F;
+      float $$22 = -$$9;
+      float $$23 = 0.0F;
+      float $$24 = 0.0F;
+      float $$25 = -$$9;
+      float $$26 = 0.0F;
+      float $$27 = 1.0F;
+      float $$28 = -1.0F + $$14;
+      float $$29 = (float)$$7 * $$4 * (0.5F / $$9) + $$28;
+      a($$0, $$1.getBuffer(gbw.e($$2, false)), $$15, $$16, $$17, 1.0F, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$22, 0.0F, 0.0F, $$25, 0.0F, 1.0F, $$29, $$28);
+      $$0.b();
+      $$18 = -$$10;
+      float $$31 = -$$10;
+      $$21 = -$$10;
+      $$22 = -$$10;
+      $$26 = 0.0F;
+      $$27 = 1.0F;
+      $$28 = -1.0F + $$14;
+      $$29 = (float)$$7 * $$4 + $$28;
+      a($$0, $$1.getBuffer(gbw.e($$2, true)), $$15, $$16, $$17, 0.125F, $$6, $$11, $$18, $$31, $$10, $$21, $$22, $$10, $$10, $$10, 0.0F, 1.0F, $$29, $$28);
+      $$0.b();
    }
 
-   public static fux d() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      $$1.a("bottom", fuw.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fut.a);
-      $$1.a("lid", fuw.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fut.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", fuw.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fut.a(0.0F, 9.0F, 1.0F));
-      return fux.a($$0, 64, 64);
+   private static void a(
+      exx $$0,
+      eyb $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      int $$6,
+      int $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16,
+      float $$17,
+      float $$18,
+      float $$19
+   ) {
+      exx.a $$20 = $$0.c();
+      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$16, $$17, $$18, $$19);
+      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$14, $$15, $$12, $$13, $$16, $$17, $$18, $$19);
+      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$10, $$11, $$14, $$15, $$16, $$17, $$18, $$19);
+      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$12, $$13, $$8, $$9, $$16, $$17, $$18, $$19);
+   }
+
+   private static void a(
+      exx.a $$0,
+      eyb $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      int $$6,
+      int $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$13, $$14);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9, $$13, $$15);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$10, $$11, $$12, $$15);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$7, $$10, $$11, $$12, $$14);
+   }
+
+   private static void a(exx.a $$0, eyb $$1, float $$2, float $$3, float $$4, float $$5, int $$6, float $$7, float $$8, float $$9, float $$10) {
+      $$1.a($$0, $$7, (float)$$6, $$8).a($$2, $$3, $$4, $$5).a($$9, $$10).c(gmp.d).b(15728880).b($$0, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   public boolean a(dnh $$0) {
+      return true;
    }
 
    @Override
-   public void a(T $$0, float $$1, exn $$2, gbe $$3, int $$4, int $$5) {
-      czu $$6 = $$0.i();
-      boolean $$7 = $$6 != null;
-      dpy $$8 = $$7 ? $$0.n() : dcx.cv.n().a(ddy.c, ir.d);
-      dqq $$9 = $$8.b(ddy.d) ? $$8.c(ddy.d) : dqq.a;
-      if ($$8.b() instanceof dbp<?> $$11) {
-         boolean $$12 = $$9 != dqq.a;
-         $$2.a();
-         float $$13 = $$8.c(ddy.c).p();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$13));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         dfc.c<? extends dnk> $$14;
-         if ($$7) {
-            $$14 = $$11.a($$8, $$6, $$0.az_(), true);
-         } else {
-            $$14 = dfc.b::b;
-         }
-
-         float $$16 = $$14.apply(ddy.a($$0)).get($$1);
-         $$16 = 1.0F - $$16;
-         $$16 = 1.0F - $$16 * $$16 * $$16;
-         int $$17 = $$14.apply(new gdh<>()).applyAsInt($$4);
-         gor $$18 = gbt.a($$0, $$9, this.m);
-         exr $$19 = $$18.a($$3, gbm::d);
-         if ($$12) {
-            if ($$9 == dqq.b) {
-               this.a($$2, $$19, this.g, this.i, this.h, $$16, $$17, $$5);
-            } else {
-               this.a($$2, $$19, this.j, this.l, this.k, $$16, $$17, $$5);
-            }
-         } else {
-            this.a($$2, $$19, this.d, this.f, this.e, $$16, $$17, $$5);
-         }
-
-         $$2.b();
-      }
+   public int aP_() {
+      return 256;
    }
 
-   private void a(exn $$0, exr $$1, fur $$2, fur $$3, fur $$4, float $$5, int $$6, int $$7) {
-      $$2.e = -($$5 * (float) (Math.PI / 2));
-      $$3.e = $$2.e;
-      $$2.a($$0, $$1, $$6, $$7);
-      $$3.a($$0, $$1, $$6, $$7);
-      $$4.a($$0, $$1, $$6, $$7);
+   public boolean a(dnh $$0, etp $$1) {
+      return etp.b($$0.az_()).d(1.0, 0.0, 1.0).a((jg)$$1.d(1.0, 0.0, 1.0), (double)this.aP_());
    }
 }

@@ -1,15 +1,19 @@
-public interface gde<T extends dnd> {
-   void a(T var1, float var2, exn var3, gbe var4, int var5, int var6);
+import com.google.common.collect.Streams;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   default boolean a(T $$0) {
-      return false;
+public class gde implements gdb {
+   public static final String a = "OR";
+   private final Iterable<? extends gdb> d;
+
+   public gde(Iterable<? extends gdb> $$0) {
+      this.d = $$0;
    }
 
-   default int aP_() {
-      return 64;
-   }
-
-   default boolean a(T $$0, etf $$1) {
-      return etf.b($$0.az_()).a((jf)$$1, (double)this.aP_());
+   @Override
+   public Predicate<dqh> getPredicate(dqi<dde, dqh> $$0) {
+      List<Predicate<dqh>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
+      return $$1x -> $$1.stream().anyMatch($$1xx -> $$1xx.test($$1x));
    }
 }

@@ -1,194 +1,316 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.LongSerializationPolicy;
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.util.DoubleSummaryStatistics;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import it.unimi.dsi.fastutil.objects.Object2LongMaps;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
-import java.util.stream.DoubleStream;
+import java.util.Map.Entry;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.ObjectUtils;
+import org.slf4j.Logger;
 
-public class blw {
-   private static final String b = "bytesPerSecond";
-   private static final String c = "count";
-   private static final String d = "durationNanosTotal";
-   private static final String e = "totalBytes";
-   private static final String f = "countPerSecond";
-   final Gson a = new GsonBuilder().setPrettyPrinting().setLongSerializationPolicy(LongSerializationPolicy.DEFAULT).create();
-
-   private static void a(bme $$0, JsonObject $$1) {
-      $$1.addProperty("protocolId", $$0.b());
-      $$1.addProperty("packetId", $$0.c());
-   }
-
-   private static void a(blz $$0, JsonObject $$1) {
-      $$1.addProperty("level", $$0.a());
-      $$1.addProperty("dimension", $$0.b());
-      $$1.addProperty("x", $$0.c());
-      $$1.addProperty("z", $$0.d());
-   }
-
-   public String a(blu $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("startedEpoch", $$0.c().toEpochMilli());
-      $$1.addProperty("endedEpoch", $$0.d().toEpochMilli());
-      $$1.addProperty("durationMs", $$0.e().toMillis());
-      Duration $$2 = $$0.f();
-      if ($$2 != null) {
-         $$1.addProperty("worldGenDurationMs", $$2.toMillis());
+public class blw implements blz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bmb b = new bmb() {
+      @Override
+      public long a() {
+         return 0L;
       }
 
-      $$1.add("heap", this.a($$0.i()));
-      $$1.add("cpuPercent", this.c($$0.h()));
-      $$1.add("network", this.c($$0));
-      $$1.add("fileIO", this.b($$0));
-      $$1.add("serverTick", this.b($$0.g()));
-      $$1.add("threadAllocation", this.a($$0.j()));
-      $$1.add("chunkGen", this.a($$0.a()));
-      return this.a.toJson($$1);
-   }
-
-   private JsonElement a(bmc.a $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("allocationRateBytesPerSecond", $$0.e());
-      $$1.addProperty("gcCount", $$0.d());
-      $$1.addProperty("gcOverHeadPercent", $$0.a());
-      $$1.addProperty("gcTotalDurationMs", $$0.c().toMillis());
-      return $$1;
-   }
-
-   private JsonElement a(List<Pair<dst, bmi<bly>>> $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("durationNanosTotal", $$0.stream().mapToDouble($$0x -> (double)((bmi)$$0x.getSecond()).f().toNanos()).sum());
-      JsonArray $$2 = ac.a(new JsonArray(), $$1x -> $$1.add("status", $$1x));
-
-      for (Pair<dst, bmi<bly>> $$3 : $$0) {
-         bmi<bly> $$4 = (bmi<bly>)$$3.getSecond();
-         JsonObject $$5 = ac.a(new JsonObject(), $$2::add);
-         $$5.addProperty("state", ((dst)$$3.getFirst()).toString());
-         $$5.addProperty("count", $$4.d());
-         $$5.addProperty("durationNanosTotal", $$4.f().toNanos());
-         $$5.addProperty("durationNanosAvg", $$4.f().toNanos() / (long)$$4.d());
-         JsonObject $$6 = ac.a(new JsonObject(), $$1x -> $$5.add("durationNanosPercentiles", $$1x));
-         $$4.e().forEach(($$1x, $$2x) -> $$6.addProperty("p" + $$1x, $$2x));
-         Function<bly, JsonElement> $$7 = $$0x -> {
-            JsonObject $$1x = new JsonObject();
-            $$1x.addProperty("durationNanos", $$0x.a().toNanos());
-            $$1x.addProperty("level", $$0x.e());
-            $$1x.addProperty("chunkPosX", $$0x.b().e);
-            $$1x.addProperty("chunkPosZ", $$0x.b().f);
-            $$1x.addProperty("worldPosX", $$0x.c().c());
-            $$1x.addProperty("worldPosZ", $$0x.c().d());
-            return $$1x;
-         };
-         $$5.add("fastest", $$7.apply($$4.a()));
-         $$5.add("slowest", $$7.apply($$4.b()));
-         $$5.add("secondSlowest", (JsonElement)($$4.c() != null ? $$7.apply($$4.c()) : JsonNull.INSTANCE));
+      @Override
+      public long b() {
+         return 0L;
       }
 
-      return $$1;
-   }
-
-   private JsonElement a(bmf.a $$0) {
-      JsonArray $$1 = new JsonArray();
-      $$0.a().forEach(($$1x, $$2) -> $$1.add(ac.a(new JsonObject(), $$2x -> {
-            $$2x.addProperty("thread", $$1x);
-            $$2x.addProperty("bytesPerSecond", $$2);
-         })));
-      return $$1;
-   }
-
-   private JsonElement b(List<bmg> $$0) {
-      if ($$0.isEmpty()) {
-         return JsonNull.INSTANCE;
-      } else {
-         JsonObject $$1 = new JsonObject();
-         double[] $$2 = $$0.stream().mapToDouble($$0x -> (double)$$0x.b().toNanos() / 1000000.0).toArray();
-         DoubleSummaryStatistics $$3 = DoubleStream.of($$2).summaryStatistics();
-         $$1.addProperty("minMs", $$3.getMin());
-         $$1.addProperty("averageMs", $$3.getAverage());
-         $$1.addProperty("maxMs", $$3.getMax());
-         Map<Integer, Double> $$4 = bll.a($$2);
-         $$4.forEach(($$1x, $$2x) -> $$1.addProperty("p" + $$1x, $$2x));
-         return $$1;
+      @Override
+      public long c() {
+         return 0L;
       }
+
+      @Override
+      public Object2LongMap<String> d() {
+         return Object2LongMaps.emptyMap();
+      }
+   };
+   private static final Splitter c = Splitter.on('\u001e');
+   private static final Comparator<Entry<String, blw.a>> e = Entry.<String, blw.a>comparingByValue(Comparator.comparingLong($$0 -> $$0.b)).reversed();
+   private final Map<String, ? extends bmb> f;
+   private final long g;
+   private final int h;
+   private final long i;
+   private final int j;
+   private final int k;
+
+   public blw(Map<String, ? extends bmb> $$0, long $$1, int $$2, long $$3, int $$4) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
+      this.k = $$4 - $$2;
    }
 
-   private JsonElement b(blu $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.add("write", this.a($$0.o()));
-      $$1.add("read", this.a($$0.p()));
-      $$1.add("chunksRead", this.a($$0.n(), blw::a));
-      $$1.add("chunksWritten", this.a($$0.m(), blw::a));
-      return $$1;
+   private bmb c(String $$0) {
+      bmb $$1 = this.f.get($$0);
+      return $$1 != null ? $$1 : b;
    }
 
-   private JsonElement a(bmb.a $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("totalBytes", $$0.a());
-      $$1.addProperty("count", $$0.c());
-      $$1.addProperty("bytesPerSecond", $$0.b());
-      $$1.addProperty("countPerSecond", $$0.d());
-      JsonArray $$2 = new JsonArray();
-      $$1.add("topContributors", $$2);
-      $$0.f().forEach($$1x -> {
-         JsonObject $$2x = new JsonObject();
-         $$2.add($$2x);
-         $$2x.addProperty("path", (String)$$1x.getFirst());
-         $$2x.addProperty("totalBytes", (Number)$$1x.getSecond());
+   @Override
+   public List<bmc> a(String $$0) {
+      String $$1 = $$0;
+      bmb $$2 = this.c("root");
+      long $$3 = $$2.a();
+      bmb $$4 = this.c($$0);
+      long $$5 = $$4.a();
+      long $$6 = $$4.c();
+      List<bmc> $$7 = Lists.newArrayList();
+      if (!$$0.isEmpty()) {
+         $$0 = $$0 + "\u001e";
+      }
+
+      long $$8 = 0L;
+
+      for (String $$9 : this.f.keySet()) {
+         if (a($$0, $$9)) {
+            $$8 += this.c($$9).a();
+         }
+      }
+
+      float $$10 = (float)$$8;
+      if ($$8 < $$5) {
+         $$8 = $$5;
+      }
+
+      if ($$3 < $$8) {
+         $$3 = $$8;
+      }
+
+      for (String $$11 : this.f.keySet()) {
+         if (a($$0, $$11)) {
+            bmb $$12 = this.c($$11);
+            long $$13 = $$12.a();
+            double $$14 = (double)$$13 * 100.0 / (double)$$8;
+            double $$15 = (double)$$13 * 100.0 / (double)$$3;
+            String $$16 = $$11.substring($$0.length());
+            $$7.add(new bmc($$16, $$14, $$15, $$12.c()));
+         }
+      }
+
+      if ((float)$$8 > $$10) {
+         $$7.add(new bmc("unspecified", (double)((float)$$8 - $$10) * 100.0 / (double)$$8, (double)((float)$$8 - $$10) * 100.0 / (double)$$3, $$6));
+      }
+
+      Collections.sort($$7);
+      $$7.add(0, new bmc($$1, 100.0, (double)$$8 * 100.0 / (double)$$3, $$6));
+      return $$7;
+   }
+
+   private static boolean a(String $$0, String $$1) {
+      return $$1.length() > $$0.length() && $$1.startsWith($$0) && $$1.indexOf(30, $$0.length() + 1) < 0;
+   }
+
+   private Map<String, blw.a> h() {
+      Map<String, blw.a> $$0 = Maps.newTreeMap();
+      this.f.forEach(($$1, $$2) -> {
+         Object2LongMap<String> $$3 = $$2.d();
+         if (!$$3.isEmpty()) {
+            List<String> $$4 = c.splitToList($$1);
+            $$3.forEach(($$2x, $$3x) -> $$0.computeIfAbsent($$2x, $$0xxx -> new blw.a()).a($$4.iterator(), $$3x));
+         }
       });
-      return $$1;
+      return $$0;
    }
 
-   private JsonElement c(blu $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.add("sent", this.a($$0.l(), blw::a));
-      $$1.add("received", this.a($$0.k(), blw::a));
-      return $$1;
+   @Override
+   public long a() {
+      return this.g;
    }
 
-   private <T> JsonElement a(bmd<T> $$0, BiConsumer<T, JsonObject> $$1) {
-      JsonObject $$2 = new JsonObject();
-      $$2.addProperty("totalBytes", $$0.d());
-      $$2.addProperty("count", $$0.c());
-      $$2.addProperty("bytesPerSecond", $$0.b());
-      $$2.addProperty("countPerSecond", $$0.a());
-      JsonArray $$3 = new JsonArray();
-      $$2.add("topContributors", $$3);
-      $$0.e().forEach($$2x -> {
-         JsonObject $$3x = new JsonObject();
-         $$3.add($$3x);
-         T $$4 = (T)$$2x.getFirst();
-         bmd.a $$5 = (bmd.a)$$2x.getSecond();
-         $$1.accept($$4, $$3x);
-         $$3x.addProperty("totalBytes", $$5.c());
-         $$3x.addProperty("count", $$5.b());
-         $$3x.addProperty("averageSize", $$5.a());
+   @Override
+   public int b() {
+      return this.h;
+   }
+
+   @Override
+   public long c() {
+      return this.i;
+   }
+
+   @Override
+   public int d() {
+      return this.j;
+   }
+
+   @Override
+   public boolean a(Path $$0) {
+      Writer $$1 = null;
+
+      boolean var4;
+      try {
+         Files.createDirectories($$0.getParent());
+         $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8);
+         $$1.write(this.a(this.g(), this.f()));
+         return true;
+      } catch (Throwable var8) {
+         a.error("Could not save profiler results to {}", $$0, var8);
+         var4 = false;
+      } finally {
+         IOUtils.closeQuietly($$1);
+      }
+
+      return var4;
+   }
+
+   protected String a(long $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      $$2.append("---- Minecraft Profiler Results ----\n");
+      $$2.append("// ");
+      $$2.append(i());
+      $$2.append("\n\n");
+      $$2.append("Version: ").append(aa.b().b()).append('\n');
+      $$2.append("Time span: ").append($$0 / 1000000L).append(" ms\n");
+      $$2.append("Tick span: ").append($$1).append(" ticks\n");
+      $$2.append("// This is approximately ")
+         .append(String.format(Locale.ROOT, "%.2f", (float)$$1 / ((float)$$0 / 1.0E9F)))
+         .append(" ticks per second. It should be ")
+         .append(20)
+         .append(" ticks per second\n\n");
+      $$2.append("--- BEGIN PROFILE DUMP ---\n\n");
+      this.a(0, "root", $$2);
+      $$2.append("--- END PROFILE DUMP ---\n\n");
+      Map<String, blw.a> $$3 = this.h();
+      if (!$$3.isEmpty()) {
+         $$2.append("--- BEGIN COUNTER DUMP ---\n\n");
+         this.a($$3, $$2, $$1);
+         $$2.append("--- END COUNTER DUMP ---\n\n");
+      }
+
+      return $$2.toString();
+   }
+
+   @Override
+   public String e() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a(0, "root", $$0);
+      return $$0.toString();
+   }
+
+   private static StringBuilder a(StringBuilder $$0, int $$1) {
+      $$0.append(String.format(Locale.ROOT, "[%02d] ", $$1));
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.append("|   ");
+      }
+
+      return $$0;
+   }
+
+   private void a(int $$0, String $$1, StringBuilder $$2) {
+      List<bmc> $$3 = this.a($$1);
+      Object2LongMap<String> $$4 = ((bmb)ObjectUtils.firstNonNull(new bmb[]{this.f.get($$1), b})).d();
+      $$4.forEach(($$2x, $$3x) -> a($$2, $$0).append('#').append($$2x).append(' ').append($$3x).append('/').append($$3x / (long)this.k).append('\n'));
+      if ($$3.size() >= 3) {
+         for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
+            bmc $$6 = $$3.get($$5);
+            a($$2, $$0)
+               .append($$6.d)
+               .append('(')
+               .append($$6.c)
+               .append('/')
+               .append(String.format(Locale.ROOT, "%.0f", (float)$$6.c / (float)this.k))
+               .append(')')
+               .append(" - ")
+               .append(String.format(Locale.ROOT, "%.2f", $$6.a))
+               .append("%/")
+               .append(String.format(Locale.ROOT, "%.2f", $$6.b))
+               .append("%\n");
+            if (!"unspecified".equals($$6.d)) {
+               try {
+                  this.a($$0 + 1, $$1 + "\u001e" + $$6.d, $$2);
+               } catch (Exception var9) {
+                  $$2.append("[[ EXCEPTION ").append(var9).append(" ]]");
+               }
+            }
+         }
+      }
+   }
+
+   private void a(int $$0, String $$1, blw.a $$2, int $$3, StringBuilder $$4) {
+      a($$4, $$0)
+         .append($$1)
+         .append(" total:")
+         .append($$2.a)
+         .append('/')
+         .append($$2.b)
+         .append(" average: ")
+         .append($$2.a / (long)$$3)
+         .append('/')
+         .append($$2.b / (long)$$3)
+         .append('\n');
+      $$2.c.entrySet().stream().sorted(e).forEach($$3x -> this.a($$0 + 1, (String)$$3x.getKey(), (blw.a)$$3x.getValue(), $$3, $$4));
+   }
+
+   private void a(Map<String, blw.a> $$0, StringBuilder $$1, int $$2) {
+      $$0.forEach(($$2x, $$3) -> {
+         $$1.append("-- Counter: ").append($$2x).append(" --\n");
+         this.a(0, "root", $$3.c.get("root"), $$2, $$1);
+         $$1.append("\n\n");
       });
-      return $$2;
    }
 
-   private JsonElement c(List<bma> $$0) {
-      JsonObject $$1 = new JsonObject();
-      BiFunction<List<bma>, ToDoubleFunction<bma>, JsonObject> $$2 = ($$0x, $$1x) -> {
-         JsonObject $$2x = new JsonObject();
-         DoubleSummaryStatistics $$3 = $$0x.stream().mapToDouble($$1x).summaryStatistics();
-         $$2x.addProperty("min", $$3.getMin());
-         $$2x.addProperty("average", $$3.getAverage());
-         $$2x.addProperty("max", $$3.getMax());
-         return $$2x;
+   private static String i() {
+      String[] $$0 = new String[]{
+         "I'd Rather Be Surfing",
+         "Shiny numbers!",
+         "Am I not running fast enough? :(",
+         "I'm working as hard as I can!",
+         "Will I ever be good enough for you? :(",
+         "Speedy. Zoooooom!",
+         "Hello world",
+         "40% better than a crash report.",
+         "Now with extra numbers",
+         "Now with less numbers",
+         "Now with the same numbers",
+         "You should add flames to things, it makes them go faster!",
+         "Do you feel the need for... optimization?",
+         "*cracks redstone whip*",
+         "Maybe if you treated it better then it'll have more motivation to work faster! Poor server."
       };
-      $$1.add("jvm", (JsonElement)$$2.apply($$0, bma::a));
-      $$1.add("userJvm", (JsonElement)$$2.apply($$0, bma::b));
-      $$1.add("system", (JsonElement)$$2.apply($$0, bma::c));
-      return $$1;
+
+      try {
+         return $$0[(int)(ac.c() % (long)$$0.length)];
+      } catch (Throwable var2) {
+         return "Witty comment unavailable :(";
+      }
+   }
+
+   @Override
+   public int f() {
+      return this.k;
+   }
+
+   static class a {
+      long a;
+      long b;
+      final Map<String, blw.a> c = Maps.newHashMap();
+
+      public void a(Iterator<String> $$0, long $$1) {
+         this.b += $$1;
+         if (!$$0.hasNext()) {
+            this.a += $$1;
+         } else {
+            this.c.computeIfAbsent($$0.next(), $$0x -> new blw.a()).a($$0, $$1);
+         }
+      }
    }
 }

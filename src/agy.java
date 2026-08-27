@@ -1,45 +1,37 @@
-public class agy implements yz<afx> {
-   public static final yq<vs, agy> a = yz.a(agy::a, agy::new);
-   private final int b;
-   private final akf c;
-   private final boolean d;
+public class agy implements zb<afz> {
+   public static final ys<vu, agy> a = zb.a(agy::a, agy::new);
+   private final boolean b;
+   private final boolean c;
 
-   public agy(int $$0, cwi<?> $$1, boolean $$2) {
+   public agy(boolean $$0, boolean $$1) {
       this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
+      this.c = $$1;
    }
 
-   private agy(vs $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
-      this.d = $$0.readBoolean();
+   private agy(vu $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(vs $$0) {
-      $$0.k(this.b);
+   private void a(vu $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
    }
 
-   @Override
-   public zb<agy> a() {
-      return afv.bG;
-   }
-
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   @Override
+   public zd<agy> a() {
+      return afx.bE;
+   }
+
+   public boolean b() {
       return this.b;
    }
 
-   public akf e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

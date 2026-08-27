@@ -1,67 +1,34 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fca extends fce {
+   private static final wu b = wu.c("mco.connect.connecting");
+   private final gsy c;
+   private final eze d;
+   private final ezf e;
 
-public class fca extends fbu {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ws c = ws.c("mco.backup.restoring");
-   private final eyj d;
-   private final long e;
-   private final fad f;
-
-   public fca(eyj $$0, long $$1, fad $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public fca(fld $$0, eze $$1, ezf $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new gsy($$0);
    }
 
    @Override
    public void run() {
-      eyd $$0 = eyd.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(this.f.f());
-            return;
-         } catch (ezr var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (ezq var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var5);
-            a(new fah(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
-         }
-      }
+      this.c.a(this.d, fxn.a(this.e.a));
    }
 
    @Override
-   public ws a() {
-      return c;
+   public void b() {
+      super.b();
+      this.c.a();
+      fde.Q().ae().i();
+   }
+
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public wu a() {
+      return b;
    }
 }

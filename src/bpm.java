@@ -1,96 +1,23 @@
-public interface bpm {
-   ake<bpl> a = ake.a(ld.s, new akf("in_fire"));
-   ake<bpl> b = ake.a(ld.s, new akf("lightning_bolt"));
-   ake<bpl> c = ake.a(ld.s, new akf("on_fire"));
-   ake<bpl> d = ake.a(ld.s, new akf("lava"));
-   ake<bpl> e = ake.a(ld.s, new akf("hot_floor"));
-   ake<bpl> f = ake.a(ld.s, new akf("in_wall"));
-   ake<bpl> g = ake.a(ld.s, new akf("cramming"));
-   ake<bpl> h = ake.a(ld.s, new akf("drown"));
-   ake<bpl> i = ake.a(ld.s, new akf("starve"));
-   ake<bpl> j = ake.a(ld.s, new akf("cactus"));
-   ake<bpl> k = ake.a(ld.s, new akf("fall"));
-   ake<bpl> l = ake.a(ld.s, new akf("fly_into_wall"));
-   ake<bpl> m = ake.a(ld.s, new akf("out_of_world"));
-   ake<bpl> n = ake.a(ld.s, new akf("generic"));
-   ake<bpl> o = ake.a(ld.s, new akf("magic"));
-   ake<bpl> p = ake.a(ld.s, new akf("wither"));
-   ake<bpl> q = ake.a(ld.s, new akf("dragon_breath"));
-   ake<bpl> r = ake.a(ld.s, new akf("dry_out"));
-   ake<bpl> s = ake.a(ld.s, new akf("sweet_berry_bush"));
-   ake<bpl> t = ake.a(ld.s, new akf("freeze"));
-   ake<bpl> u = ake.a(ld.s, new akf("stalagmite"));
-   ake<bpl> v = ake.a(ld.s, new akf("falling_block"));
-   ake<bpl> w = ake.a(ld.s, new akf("falling_anvil"));
-   ake<bpl> x = ake.a(ld.s, new akf("falling_stalactite"));
-   ake<bpl> y = ake.a(ld.s, new akf("sting"));
-   ake<bpl> z = ake.a(ld.s, new akf("mob_attack"));
-   ake<bpl> A = ake.a(ld.s, new akf("mob_attack_no_aggro"));
-   ake<bpl> B = ake.a(ld.s, new akf("player_attack"));
-   ake<bpl> C = ake.a(ld.s, new akf("arrow"));
-   ake<bpl> D = ake.a(ld.s, new akf("trident"));
-   ake<bpl> E = ake.a(ld.s, new akf("mob_projectile"));
-   ake<bpl> F = ake.a(ld.s, new akf("spit"));
-   ake<bpl> G = ake.a(ld.s, new akf("wind_charge"));
-   ake<bpl> H = ake.a(ld.s, new akf("fireworks"));
-   ake<bpl> I = ake.a(ld.s, new akf("fireball"));
-   ake<bpl> J = ake.a(ld.s, new akf("unattributed_fireball"));
-   ake<bpl> K = ake.a(ld.s, new akf("wither_skull"));
-   ake<bpl> L = ake.a(ld.s, new akf("thrown"));
-   ake<bpl> M = ake.a(ld.s, new akf("indirect_magic"));
-   ake<bpl> N = ake.a(ld.s, new akf("thorns"));
-   ake<bpl> O = ake.a(ld.s, new akf("explosion"));
-   ake<bpl> P = ake.a(ld.s, new akf("player_explosion"));
-   ake<bpl> Q = ake.a(ld.s, new akf("sonic_boom"));
-   ake<bpl> R = ake.a(ld.s, new akf("bad_respawn_point"));
-   ake<bpl> S = ake.a(ld.s, new akf("outside_border"));
-   ake<bpl> T = ake.a(ld.s, new akf("generic_kill"));
+public enum bpm {
+   a,
+   b,
+   c,
+   d,
+   e;
 
-   static void a(qj<bpl> $$0) {
-      $$0.a(a, new bpl("inFire", 0.1F, bph.d));
-      $$0.a(b, new bpl("lightningBolt", 0.1F));
-      $$0.a(c, new bpl("onFire", 0.0F, bph.d));
-      $$0.a(d, new bpl("lava", 0.1F, bph.d));
-      $$0.a(e, new bpl("hotFloor", 0.1F, bph.d));
-      $$0.a(f, new bpl("inWall", 0.0F));
-      $$0.a(g, new bpl("cramming", 0.0F));
-      $$0.a(h, new bpl("drown", 0.0F, bph.c));
-      $$0.a(i, new bpl("starve", 0.0F));
-      $$0.a(j, new bpl("cactus", 0.1F));
-      $$0.a(k, new bpl("fall", bpi.b, 0.0F, bph.a, bpn.b));
-      $$0.a(l, new bpl("flyIntoWall", 0.0F));
-      $$0.a(m, new bpl("outOfWorld", 0.0F));
-      $$0.a(n, new bpl("generic", 0.0F));
-      $$0.a(o, new bpl("magic", 0.0F));
-      $$0.a(p, new bpl("wither", 0.0F));
-      $$0.a(q, new bpl("dragonBreath", 0.0F));
-      $$0.a(r, new bpl("dryout", 0.1F));
-      $$0.a(s, new bpl("sweetBerryBush", 0.1F, bph.e));
-      $$0.a(t, new bpl("freeze", 0.0F, bph.f));
-      $$0.a(u, new bpl("stalagmite", 0.0F));
-      $$0.a(v, new bpl("fallingBlock", 0.1F));
-      $$0.a(w, new bpl("anvil", 0.1F));
-      $$0.a(x, new bpl("fallingStalactite", 0.1F));
-      $$0.a(y, new bpl("sting", 0.1F));
-      $$0.a(z, new bpl("mob", 0.1F));
-      $$0.a(A, new bpl("mob", 0.1F));
-      $$0.a(B, new bpl("player", 0.1F));
-      $$0.a(C, new bpl("arrow", 0.1F));
-      $$0.a(D, new bpl("trident", 0.1F));
-      $$0.a(E, new bpl("mob", 0.1F));
-      $$0.a(F, new bpl("mob", 0.1F));
-      $$0.a(H, new bpl("fireworks", 0.1F));
-      $$0.a(J, new bpl("onFire", 0.1F, bph.d));
-      $$0.a(I, new bpl("fireball", 0.1F, bph.d));
-      $$0.a(K, new bpl("witherSkull", 0.1F));
-      $$0.a(L, new bpl("thrown", 0.1F));
-      $$0.a(M, new bpl("indirectMagic", 0.0F));
-      $$0.a(N, new bpl("thorns", 0.1F, bph.b));
-      $$0.a(O, new bpl("explosion", bpi.c, 0.1F));
-      $$0.a(P, new bpl("explosion.player", bpi.c, 0.1F));
-      $$0.a(Q, new bpl("sonic_boom", bpi.c, 0.0F));
-      $$0.a(R, new bpl("badRespawnPoint", bpi.c, 0.1F, bph.a, bpn.c));
-      $$0.a(S, new bpl("outsideBorder", 0.0F));
-      $$0.a(T, new bpl("genericKill", 0.0F));
+   public boolean a() {
+      return this == a || this == b || this == c;
+   }
+
+   public boolean b() {
+      return this == a;
+   }
+
+   public boolean c() {
+      return this == a || this == b;
+   }
+
+   public static bpm a(boolean $$0) {
+      return $$0 ? a : b;
    }
 }

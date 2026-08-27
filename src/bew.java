@@ -2,17 +2,29 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import java.util.Optional;
 
 public class bew extends DataFix {
-   public bew(Schema $$0) {
-      super($$0, false);
+   public bew(Schema $$0, boolean $$1) {
+      super($$0, $$1);
+   }
+
+   private static String a(String $$0) {
+      return $$0.equals("health") ? "hearts" : "integer";
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAccessibilityOnboardFix",
-         this.getInputSchema().getType(bfp.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("onboardAccessibility", $$0x.createBoolean(false)))
-      );
+      Type<?> $$0 = this.getInputSchema().getType(bfs.F);
+      return this.fixTypeEverywhereTyped("ObjectiveRenderTypeFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+            Optional<String> $$1 = $$0xx.get("RenderType").asString().result();
+            if ($$1.isEmpty()) {
+               String $$2 = $$0xx.get("CriteriaName").asString("");
+               String $$3 = a($$2);
+               return $$0xx.set("RenderType", $$0xx.createString($$3));
+            } else {
+               return $$0xx;
+            }
+         }));
    }
 }

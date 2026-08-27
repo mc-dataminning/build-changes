@@ -1,61 +1,21 @@
-import java.nio.ByteBuffer;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryUtil;
 
 public class evn {
-   @Nullable
-   private ByteBuffer a;
-   private final AudioFormat b;
-   private boolean c;
-   private int d;
-
-   public evn(ByteBuffer $$0, AudioFormat $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static void a(ewi $$0, float $$1) {
+      ConcurrentLinkedQueue<ewh> $$2 = $$0.i();
    }
 
-   OptionalInt a() {
-      if (!this.c) {
-         if (this.a == null) {
-            return OptionalInt.empty();
-         }
-
-         int $$0 = evm.a(this.b);
-         int[] $$1 = new int[1];
-         AL10.alGenBuffers($$1);
-         if (evm.a("Creating buffer")) {
-            return OptionalInt.empty();
-         }
-
-         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
-         if (evm.a("Assigning buffer data")) {
-            return OptionalInt.empty();
-         }
-
-         this.d = $$1[0];
-         this.c = true;
-         this.a = null;
-      }
-
-      return OptionalInt.of(this.d);
+   public static void b(ewi $$0, float $$1) {
+      ConcurrentLinkedQueue<ewh> $$2 = $$0.j();
    }
 
-   public void b() {
-      if (this.c) {
-         AL10.alDeleteBuffers(new int[]{this.d});
-         if (evm.a("Deleting stream buffers")) {
-            return;
-         }
-      }
-
-      this.c = false;
+   public static void a() {
+      MemoryUtil.memSet(0L, 0, 1L);
    }
 
-   public OptionalInt c() {
-      OptionalInt $$0 = this.a();
-      this.c = false;
-      return $$0;
+   public static double b() {
+      return GLFW.glfwGetTime();
    }
 }

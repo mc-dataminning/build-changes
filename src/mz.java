@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.BiConsumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface mz {
+public class mz implements mi {
+   @Override
+   public void generate(iy.a $$0, BiConsumer<akg<eoq>, eoq.a> $$1) {
+      $$1.accept(eoj.aS, eoq.b());
+   }
 }

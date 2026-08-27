@@ -1,25 +1,21 @@
-import org.joml.Matrix4f;
+public class fnk extends fmb<cpw> {
+   private static final akh D = new akh("textures/gui/container/shulker_box.png");
 
-public interface fnk {
-   static fnk a(axi $$0) {
-      return new fnj($$0);
+   public fnk(cpw $$0, clg $$1, wu $$2) {
+      super($$0, $$1, $$2);
+      this.d++;
    }
 
-   static fnk a(cpn $$0) {
-      if ($$0 instanceof cpm $$1) {
-         return new fni($$1.a());
-      } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
-      }
+   @Override
+   public void a(fer $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   int a();
-
-   int a(fef var1);
-
-   default void a(fef $$0, int $$1, int $$2, Matrix4f $$3, gbe.a $$4) {
-   }
-
-   default void a(fef $$0, int $$1, int $$2, feh $$3) {
+   @Override
+   protected void a(fer $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.c) / 2;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
    }
 }

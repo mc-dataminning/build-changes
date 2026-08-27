@@ -1,3 +1,11 @@
+import javax.annotation.Nullable;
+
 public interface bpd {
-   bpc a(dpy var1, czv var2, im var3);
+   void a();
+
+   static void a_(@Nullable Object $$0) {
+      if ($$0 instanceof bpd) {
+         ((bpd)$$0).a();
+      }
+   }
 }

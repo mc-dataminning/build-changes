@@ -1,23 +1,26 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public class efh extends efn {
+public class efh extends efv {
    private static final efh c = new efh();
-   public static final Codec<efh> a = Codec.unit(() -> c);
+   public static Codec<efh> a = Codec.unit(() -> c);
+
+   private efh() {
+   }
 
    public static efh a() {
       return c;
    }
 
    @Override
-   public Stream<im> a_(efl $$0, ayd $$1, im $$2) {
-      int $$3 = $$1.a(16) + $$2.u();
-      int $$4 = $$1.a(16) + $$2.w();
-      return Stream.of(new im($$3, $$2.v(), $$4));
+   protected boolean a(efu $$0, ayg $$1, in $$2) {
+      eft $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      iw<dbc> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public efo<?> b() {
-      return efo.m;
+   public efx<?> b() {
+      return efx.e;
    }
 }

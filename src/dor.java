@@ -1,74 +1,103 @@
 import javax.annotation.Nullable;
 
-public class dor extends dnd implements dam {
-   private final cyw a = new cyw() {
-      @Override
-      public void a(czu $$0, im $$1, int $$2) {
-         $$0.a($$1, dcx.ct, $$2, 0);
-      }
+public abstract class dor extends dng implements bpu {
+   @Nullable
+   protected akg<eoq> l;
+   protected long m = 0L;
 
-      @Override
-      public void a(@Nullable czu $$0, im $$1, dal $$2) {
-         super.a($$0, $$1, $$2);
-         if ($$0 != null) {
-            dpy $$3 = $$0.a_($$1);
-            $$0.a($$1, $$3, $$3, 4);
-         }
-      }
-   };
+   protected dor(dno<?> $$0, in $$1, dqh $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   public dor(im $$0, dpy $$1) {
-      super(dnf.j, $$0, $$1);
+   @Nullable
+   @Override
+   public akg<eoq> ax_() {
+      return this.l;
    }
 
    @Override
-   public void a(ty $$0, ix.a $$1) {
+   public void a(@Nullable akg<eoq> $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public long ay_() {
+      return this.m;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public boolean c() {
+      this.e_(null);
+      return super.c();
+   }
+
+   @Override
+   public csz a(int $$0) {
+      this.e_(null);
+      return super.a($$0);
+   }
+
+   @Override
+   public csz a(int $$0, int $$1) {
+      this.e_(null);
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public csz b(int $$0) {
+      this.e_(null);
+      return super.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, csz $$1) {
+      this.e_(null);
       super.a($$0, $$1);
-      this.a.a(this.o, this.p, $$0);
    }
 
    @Override
-   protected void b(ty $$0, ix.a $$1) {
-      super.b($$0, $$1);
-      this.a.a($$0);
+   public boolean d(clh $$0) {
+      return super.d($$0) && (this.l == null || !$$0.N_());
    }
 
-   public static void a(czu $$0, im $$1, dpy $$2, dor $$3) {
-      $$3.a.a($$0, $$1);
-   }
-
-   public static void b(czu $$0, im $$1, dpy $$2, dor $$3) {
-      $$3.a.a((aqe)$$0, $$1);
-   }
-
-   public abr b() {
-      return abr.a(this);
+   @Nullable
+   @Override
+   public cod createMenu(int $$0, clg $$1, clh $$2) {
+      if (this.d($$2)) {
+         this.e_($$1.l);
+         return this.a($$0, $$1);
+      } else {
+         return null;
+      }
    }
 
    @Override
-   public ty a(ix.a $$0) {
-      ty $$1 = this.d($$0);
-      $$1.r("SpawnPotentials");
-      return $$1;
+   public void a(jw $$0) {
+      super.a($$0);
+      cwa $$1 = $$0.a(ka.ab);
+      if ($$1 != null) {
+         this.l = $$1.a();
+         this.m = $$1.b();
+      }
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      return this.a.a(this.o, $$0) ? true : super.a_($$0, $$1);
+   public void a(jw.a $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         $$0.a(ka.ab, new cwa(this.l, this.m));
+      }
    }
 
    @Override
-   public boolean q() {
-      return true;
-   }
-
-   @Override
-   public void a(bqr<?> $$0, ayd $$1) {
-      this.a.a($$0, this.o, $$1, this.p);
-      this.e();
-   }
-
-   public cyw c() {
-      return this.a;
+   public void a(ua $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

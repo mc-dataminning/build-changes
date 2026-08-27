@@ -1,9 +1,14 @@
 import com.mojang.serialization.Codec;
 
-public abstract class eka {
-   public static final Codec<eka> c = lc.o.q().dispatch("predicate_type", eka::a, ekb::codec);
+public class eka extends ekm {
+   public static final Codec<eka> a = Codec.unit(() -> eka.b);
+   public static final eka b = new eka();
 
-   public abstract boolean a(dpy var1, ayd var2);
+   private eka() {
+   }
 
-   protected abstract ekb<?> a();
+   @Override
+   protected eko<?> a() {
+      return eko.j;
+   }
 }

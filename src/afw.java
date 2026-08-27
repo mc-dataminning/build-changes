@@ -1,186 +1,145 @@
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
 public class afw {
-   public static final wa.a<afx, wd> a = ze.c(
-      vr.b,
-      $$0 -> $$0.a(afv.be, afz.a)
-            .a(afv.bf, aga.a)
-            .a(afv.bg, agb.a)
-            .a(afv.bh, agc.a)
-            .a(afv.bi, agd.a)
-            .a(afv.bj, age.a)
-            .a(afv.bk, agf.a)
-            .a(afv.bl, agg.a)
-            .a(afv.bm, agh.a)
-            .a(zp.j, zr.a)
-            .a(afv.bn, agi.a)
-            .a(afv.bo, agj.b)
-            .a(afv.bp, agk.a)
-            .a(afv.bq, agl.a)
-            .a(afv.br, agm.a)
-            .a(afv.bs, agn.a)
-            .a(abg.b, abi.a)
-            .a(zp.k, zs.a)
-            .a(afv.bt, ago.a)
-            .a(afv.bu, agp.b)
-            .a(afv.bv, agq.a)
-            .a(afv.bw, agr.a)
-            .a(afv.bx, ags.a)
-            .a(zp.l, zt.a)
-            .a(afv.by, agt.a)
-            .a(afv.bz, agu.a.i)
-            .a(afv.bA, agu.b.i)
-            .a(afv.bB, agu.c.i)
-            .a(afv.bC, agu.d.i)
-            .a(afv.bD, agv.a)
-            .a(afv.bE, agw.a)
-            .a(afv.bF, agx.a)
-            .a(aiy.b, aja.a)
-            .a(afv.bG, agy.a)
-            .a(afv.bH, agz.a)
-            .a(afv.bI, aha.a)
-            .a(afv.bJ, ahb.a)
-            .a(afv.bK, ahc.a)
-            .a(zp.m, zu.a)
-            .a(afv.bL, ahd.a)
-            .a(afv.bM, ahe.a)
-            .a(afv.bN, ahf.a)
-            .a(zp.n, zv.a)
-            .a(afv.bO, ahg.a)
-            .a(afv.bP, ahh.a)
-            .a(afv.bQ, ahi.a)
-            .a(afv.bR, ahj.a)
-            .a(afv.bS, ahk.a)
-            .a(afv.bT, ahl.a)
-            .a(afv.bU, ahm.a)
-            .a(afv.bV, ahn.a)
-            .a(afv.bW, aho.a)
-            .a(afv.bX, ahp.a)
-            .a(afv.bY, ahq.a)
-            .a(afv.bZ, ahr.a)
-            .a(afv.ca, ahs.a)
-            .a(afv.cb, aht.a)
-   );
-   public static final wa.a<abk, wd> b = ze.d(
-      vr.b,
-      $$0 -> $$0.a(afv.a, abw::new, new abv())
-            .a(afv.c, abl.a)
-            .a(afv.d, abm.a)
-            .a(afv.e, abn.a)
-            .a(afv.f, abo.a)
-            .a(afv.g, abp.a)
-            .a(afv.h, abq.a)
-            .a(afv.i, abr.a)
-            .a(afv.j, abs.a)
-            .a(afv.k, abt.a)
-            .a(afv.l, abu.a)
-            .a(afv.m, abx.a)
-            .a(afv.n, aby.a)
-            .a(afv.o, abz.b)
-            .a(afv.p, aca.a)
-            .a(afv.q, acb.a)
-            .a(afv.r, acc.a)
-            .a(afv.s, acd.a)
-            .a(afv.t, ace.a)
-            .a(afv.u, acf.a)
-            .a(afv.v, acg.a)
-            .a(afv.w, ach.a)
-            .a(abg.a, abf.a)
-            .a(afv.x, aci.a)
-            .a(afv.y, acj.a)
-            .a(zp.a, zg.a)
-            .a(afv.z, ack.a)
-            .a(afv.A, acl.a)
-            .a(afv.B, acm.a)
-            .a(zp.b, zh.a)
-            .a(afv.C, acn.a)
-            .a(afv.D, aco.a)
-            .a(afv.E, acp.a)
-            .a(afv.F, acq.a)
-            .a(afv.G, acr.a)
-            .a(afv.H, acs.a)
-            .a(afv.I, act.a)
-            .a(afv.J, acu.a)
-            .a(zp.c, zi.a)
-            .a(afv.K, acw.a)
-            .a(afv.L, acx.a)
-            .a(afv.M, acy.a)
-            .a(afv.N, acz.a)
-            .a(afv.O, adb.a)
-            .a(afv.P, adc.a)
-            .a(afv.Q, add.a)
-            .a(afv.R, ade.a.j)
-            .a(afv.S, ade.b.j)
-            .a(afv.T, ade.c.j)
-            .a(afv.U, adf.a)
-            .a(afv.V, adg.a)
-            .a(afv.W, adh.a)
-            .a(afv.X, adi.a)
-            .a(zp.d, zj.a)
-            .a(aiy.a, aix.a)
-            .a(afv.Y, adj.a)
-            .a(afv.Z, adk.a)
-            .a(afv.aa, adl.a)
-            .a(afv.ab, adm.a)
-            .a(afv.ac, adn.b)
-            .a(afv.ad, ado.a)
-            .a(afv.ae, adp.a)
-            .a(afv.af, adq.a)
-            .a(afv.ag, adr.a)
-            .a(afv.ah, ads.a)
-            .a(afv.ai, adt.a)
-            .a(afv.aj, adu.a)
-            .a(afv.ak, adv.a)
-            .a(afv.cc, adw.a)
-            .a(zp.e, zk.a)
-            .a(zp.f, zl.b)
-            .a(afv.al, adx.a)
-            .a(afv.am, ady.a)
-            .a(afv.an, adz.a)
-            .a(afv.ao, aea.a)
-            .a(afv.ap, aeb.a)
-            .a(afv.aq, aec.a)
-            .a(afv.ar, aed.a)
-            .a(afv.as, aee.a)
-            .a(afv.at, aef.a)
-            .a(afv.au, aeg.a)
-            .a(afv.av, aeh.a)
-            .a(afv.aw, aei.a)
-            .a(afv.ax, aej.a)
-            .a(afv.ay, aek.a)
-            .a(afv.az, ael.a)
-            .a(afv.aA, aem.a)
-            .a(afv.aB, aen.a)
-            .a(afv.aC, aeo.a)
-            .a(afv.aD, aep.a)
-            .a(afv.aE, aeq.a)
-            .a(afv.aF, aer.a)
-            .a(afv.aG, aes.a)
-            .a(afv.aH, aet.a)
-            .a(afv.aI, aeu.a)
-            .a(afv.aJ, aev.a)
-            .a(afv.aK, aew.a)
-            .a(afv.aL, aex.a)
-            .a(afv.aM, aey.a)
-            .a(afv.aN, aez.a)
-            .a(afv.aO, afa.a)
-            .a(afv.aP, afb.a)
-            .a(afv.aQ, afc.a)
-            .a(afv.aR, afd.a)
-            .a(afv.aS, afe.a)
-            .a(afv.aT, aff.b)
-            .a(afv.aU, afg.a)
-            .a(zp.g, zm.a)
-            .a(afv.aV, afh.a)
-            .a(afv.aW, afi.a)
-            .a(afv.aX, afj.a)
-            .a(afv.aY, afk.a)
-            .a(afv.aZ, afl.a)
-            .a(afv.cd, afm.a)
-            .a(afv.ce, afn.a)
-            .a(zp.h, zn.a)
-            .a(afv.ba, afo.a)
-            .a(afv.bb, afp.a)
-            .a(afv.bc, afq.a)
-            .a(afv.bd, afr.a)
-            .a(zp.i, zo.a)
-   );
+   private static final Logger a = LogUtils.getLogger();
+
+   public static void a(aqh $$0, in $$1, String $$2, int $$3, int $$4) {
+      a($$0, (aac)(new aag($$1, $$3, $$2, $$4)));
+   }
+
+   public static void a(aqh $$0) {
+      a($$0, (aac)(new aah()));
+   }
+
+   public static void a(aqh $$0, czk $$1) {
+   }
+
+   public static void a(aqh $$0, in $$1) {
+      d($$0, $$1);
+   }
+
+   public static void b(aqh $$0, in $$1) {
+      d($$0, $$1);
+   }
+
+   public static void c(aqh $$0, in $$1) {
+      d($$0, $$1);
+   }
+
+   private static void d(aqh $$0, in $$1) {
+   }
+
+   public static void a(dad $$0, bsc $$1, @Nullable emo $$2, float $$3) {
+   }
+
+   public static void a(dad $$0, in $$1) {
+   }
+
+   public static void a(day $$0, egx $$1) {
+   }
+
+   public static void a(dad $$0, bsc $$1, byy $$2) {
+   }
+
+   public static void a(aqh $$0, Collection<cms> $$1) {
+   }
+
+   public static void a(bsa $$0) {
+   }
+
+   public static void a(cdq $$0) {
+   }
+
+   public static void a(cjj $$0) {
+   }
+
+   public static void a(dad $$0, iw<dva> $$1, etp $$2) {
+   }
+
+   public static void a(dad $$0, dvc $$1) {
+   }
+
+   public static void a(dad $$0, in $$1, dqh $$2, dnj $$3) {
+   }
+
+   private static List<String> a(bsa $$0, long $$1) {
+      Map<cbd<?>, Optional<? extends cbc<?>>> $$2 = $$0.dQ().b();
+      List<String> $$3 = Lists.newArrayList();
+
+      for (Entry<cbd<?>, Optional<? extends cbc<?>>> $$4 : $$2.entrySet()) {
+         cbd<?> $$5 = $$4.getKey();
+         Optional<? extends cbc<?>> $$6 = $$4.getValue();
+         String $$10;
+         if ($$6.isPresent()) {
+            cbc<?> $$7 = (cbc<?>)$$6.get();
+            Object $$8 = $$7.c();
+            if ($$5 == cbd.D) {
+               long $$9 = $$1 - (Long)$$8;
+               $$10 = $$9 + " ticks ago";
+            } else if ($$7.e()) {
+               $$10 = a((aqh)$$0.dN(), $$8) + " (ttl: " + $$7.b() + ")";
+            } else {
+               $$10 = a((aqh)$$0.dN(), $$8);
+            }
+         } else {
+            $$10 = "-";
+         }
+
+         $$3.add(ld.B.b($$5).a() + ": " + $$10);
+      }
+
+      $$3.sort(String::compareTo);
+      return $$3;
+   }
+
+   private static String a(aqh $$0, @Nullable Object $$1) {
+      if ($$1 == null) {
+         return "-";
+      } else if ($$1 instanceof UUID) {
+         return a($$0, $$0.a((UUID)$$1));
+      } else if ($$1 instanceof bsa) {
+         brh $$2 = (brh)$$1;
+         return afv.a($$2);
+      } else if ($$1 instanceof bpr) {
+         return ((bpr)$$1).ad().getString();
+      } else if ($$1 instanceof cbg) {
+         return a($$0, ((cbg)$$1).a());
+      } else if ($$1 instanceof bud) {
+         return a($$0, ((bud)$$1).c());
+      } else if ($$1 instanceof iv) {
+         return a($$0, ((iv)$$1).b());
+      } else if ($$1 instanceof btv) {
+         return a($$0, ((btv)$$1).b());
+      } else if ($$1 instanceof bqf) {
+         brh $$3 = ((bqf)$$1).d();
+         return $$3 == null ? $$1.toString() : a($$0, $$3);
+      } else if (!($$1 instanceof Collection)) {
+         return $$1.toString();
+      } else {
+         List<String> $$4 = Lists.newArrayList();
+
+         for (Object $$5 : (Iterable)$$1) {
+            $$4.add(a($$0, $$5));
+         }
+
+         return $$4.toString();
+      }
+   }
+
+   private static void a(aqh $$0, aac $$1) {
+      zb<?> $$2 = new zi($$1);
+
+      for (aqi $$3 : $$0.x()) {
+         $$3.d.b($$2);
+      }
+   }
 }

@@ -1,30 +1,45 @@
-public class fji extends fkv {
-   private static final ws a = ws.c("options.chat.title");
+import it.unimi.dsi.fastutil.ints.IntComparator;
 
-   public fji(fkt $$0, fcy $$1) {
-      super(
-         $$0,
-         $$1,
-         a,
-         new fcx[]{
-            $$1.m(),
-            $$1.K(),
-            $$1.L(),
-            $$1.M(),
-            $$1.n(),
-            $$1.r(),
-            $$1.w(),
-            $$1.o(),
-            $$1.A(),
-            $$1.x(),
-            $$1.z(),
-            $$1.y(),
-            $$1.as(),
-            $$1.J(),
-            $$1.ae(),
-            $$1.V(),
-            $$1.ag()
-         }
-      );
+public enum fji {
+   a,
+   b,
+   c,
+   d;
+
+   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
+
+   public fjh a() {
+      return switch (this) {
+         case a, b -> fjh.b;
+         case c, d -> fjh.a;
+      };
+   }
+
+   public fji b() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+         case c -> d;
+         case d -> c;
+      };
+   }
+
+   public boolean c() {
+      return switch (this) {
+         case a, c -> false;
+         case b, d -> true;
+      };
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.c() ? $$0 > $$1 : $$1 > $$0;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return this.c() ? $$0 < $$1 : $$1 < $$0;
+   }
+
+   public IntComparator d() {
+      return this.e;
    }
 }

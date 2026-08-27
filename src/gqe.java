@@ -1,52 +1,34 @@
-public class gqe {
-   public static class a extends gpk {
-      private final gag n;
+public class gqe extends gpv {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cij r;
 
-      protected a(gag $$0, auy $$1) {
-         super($$1, ava.i, gqb.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dI() || !this.n.bh()) {
-            this.n();
-         }
-      }
+   public gqe(cij $$0) {
+      super(avc.ln, avd.f, gqm.t());
+      this.r = $$0;
+      this.k = gqm.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
-   public static class b extends gpk {
-      public static final int n = 40;
-      private final gag o;
-      private int p;
+   @Override
+   public boolean s() {
+      return !this.r.aU();
+   }
 
-      public b(gag $$0) {
-         super(auz.z, ava.i, gqb.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (!this.o.dI() && this.p >= 0) {
-            if (this.o.bh()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
-         } else {
-            this.n();
-         }
+   @Override
+   public void q() {
+      if (!this.r.dI() && this.r.p() == null) {
+         this.f = (double)((float)this.r.ds());
+         this.g = (double)((float)this.r.du());
+         this.h = (double)((float)this.r.dy());
+         float $$0 = this.r.I(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
       }
    }
 }

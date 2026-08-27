@@ -1,29 +1,23 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-public record aap(Set<jo> c, Set<jo> d) implements aaa {
-   public static final yq<vs, aap> a = aaa.a(aap::a, aap::new);
-   public static final aaa.b<aap> b = aaa.a("debug/village_sections");
+public record aap(List<in> c) implements aac {
+   public static final ys<vu, aap> a = aac.a(aap::a, aap::new);
+   public static final aac.b<aap> b = aac.a("debug/raids");
 
-   private aap(vs $$0) {
-      this($$0.a(HashSet::new, vs::g), $$0.a(HashSet::new, vs::g));
+   private aap(vu $$0) {
+      this($$0.a(in.b));
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.c, vs::a);
-      $$0.a(this.d, vs::a);
+   private void a(vu $$0) {
+      $$0.a(this.c, in.b);
    }
 
    @Override
-   public aaa.b<aap> a() {
+   public aac.b<aap> a() {
       return b;
    }
 
-   public Set<jo> b() {
+   public List<in> b() {
       return this.c;
-   }
-
-   public Set<jo> c() {
-      return this.d;
    }
 }

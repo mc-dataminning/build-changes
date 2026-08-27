@@ -1,44 +1,66 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
 import java.util.function.BiConsumer;
 
-public class edz extends eec {
-   public static final Codec<edz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, edz::new));
+public abstract class edz {
+   public static final Codec<edz> h = ld.Z.q().dispatch(edz::a, eea::a);
 
-   public edz(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+   protected abstract eea<?> a();
 
-   @Override
-   protected eed<?> a() {
-      return eed.c;
-   }
+   public abstract void a(edz.a var1);
 
-   @Override
-   public List<eck.a> a(daa $$0, BiConsumer<im, dpy> $$1, ayd $$2, int $$3, im $$4, ebu $$5) {
-      im $$6 = $$4.d();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.h(), $$5);
-      a($$0, $$1, $$2, $$6.f(), $$5);
-      a($$0, $$1, $$2, $$6.f().h(), $$5);
-      im.a $$7 = new im.a();
+   public static final class a {
+      private final daj a;
+      private final BiConsumer<in, dqh> b;
+      private final ayg c;
+      private final ObjectArrayList<in> d;
+      private final ObjectArrayList<in> e;
+      private final ObjectArrayList<in> f;
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
-         }
+      public a(daj $$0, BiConsumer<in, dqh> $$1, ayg $$2, Set<in> $$3, Set<in> $$4, Set<in> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(jr::v));
+         this.e.sort(Comparator.comparingInt(jr::v));
+         this.f.sort(Comparator.comparingInt(jr::v));
       }
 
-      return ImmutableList.of(new eck.a($$4.b($$3), 0, true));
-   }
+      public void a(in $$0, dqy $$1) {
+         this.a($$0, ddg.ff.n().a($$1, Boolean.valueOf(true)));
+      }
 
-   private void a(daa $$0, BiConsumer<im, dpy> $$1, ayd $$2, im.a $$3, ebu $$4, im $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+      public void a(in $$0, dqh $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(in $$0) {
+         return this.a.a($$0, dqg.a::i);
+      }
+
+      public daj a() {
+         return this.a;
+      }
+
+      public ayg b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<in> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<in> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<in> e() {
+         return this.f;
+      }
    }
 }

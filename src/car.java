@@ -1,43 +1,19 @@
-public class car extends cap {
-   private boolean p;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public car(brg $$0, czu $$1) {
-      super($$0, $$1);
+public class car<T extends bsa> extends caq<T> {
+   private boolean i = true;
+
+   public car(cmt $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bsa> $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected emh a(int $$0) {
-      this.p = this.a.ai() == bqr.y;
-      this.o = new eml(this.p);
-      return new emh(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a() {
-      return this.p || this.a.bg();
-   }
-
-   @Override
-   protected etf b() {
-      return new etf(this.a.ds(), this.a.e(0.5), this.a.dy());
-   }
-
-   @Override
-   protected double a(etf $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(etf $$0, etf $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
-
-   @Override
-   public boolean a(im $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
-   }
-
-   @Override
    public void a(boolean $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return this.i && super.a();
    }
 }

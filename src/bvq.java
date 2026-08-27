@@ -1,28 +1,65 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bvq extends bsw<brg> {
-   private final float c;
+public class bvq {
+   private static final int a = 40;
+   private static final int b = 5;
+   private static final int c = 20;
+   private static final int d = 4;
 
-   public bvq(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
+   public static btt<bsi> a(float $$0) {
+      Long2LongMap $$1 = new Long2LongOpenHashMap();
+      MutableLong $$2 = new MutableLong(0L);
+      return bxf.a(
+         (Function<bxf.b<bsi>, ? extends App<bxf.c<bsi>, bxi<bsi>>>)($$3 -> $$3.group($$3.c(cbd.m), $$3.c(cbd.b))
+               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
+                     if ($$4x.Y() - $$2.getValue() < 20L) {
+                        return false;
+                     } else {
+                        cdd $$7 = $$4x.y();
+                        Optional<in> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(cdh.n), $$5.dn(), 48, cdd.b.c);
+                        if (!$$8.isEmpty() && !($$8.get().j($$5.dn()) <= 4.0)) {
+                           MutableInt $$9 = new MutableInt(0);
+                           $$2.setValue($$4x.Y() + (long)$$4x.E_().a(20));
+                           Predicate<in> $$10 = $$3xxx -> {
+                              long $$4xx = $$3xxx.a();
+                              if ($$1.containsKey($$4xx)) {
+                                 return false;
+                              } else if ($$9.incrementAndGet() >= 5) {
+                                 return false;
+                              } else {
+                                 $$1.put($$4xx, $$2.getValue() + 40L);
+                                 return true;
+                              }
+                           };
+                           Set<Pair<iw<cdg>, in>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(cdh.n), $$10, $$5.dn(), 48, cdd.b.c).collect(Collectors.toSet());
+                           emo $$12 = btl.a($$5, $$11);
+                           if ($$12 != null && $$12.j()) {
+                              in $$13 = $$12.l();
+                              Optional<iw<cdg>> $$14 = $$7.c($$13);
+                              if ($$14.isPresent()) {
+                                 $$3x.a(new cbg($$13, $$0, 1));
+                                 afw.c($$4x, $$13);
+                              }
+                           } else if ($$9.getValue() < 5) {
+                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
+                           }
 
-   public static boolean a(brg $$0) {
-      return $$0.bc() && $$0.b(avt.a) > $$0.dg() || $$0.bq();
-   }
-
-   protected boolean a(aqe $$0, brg $$1) {
-      return a($$1);
-   }
-
-   protected boolean a(aqe $$0, brg $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aqe $$0, brg $$1, long $$2) {
-      if ($$1.ej().i() < this.c) {
-         $$1.I().a();
-      }
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

@@ -1,63 +1,83 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class djj extends dde implements dcy {
-   public static final MapCodec<djj> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dpn.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, djj::new)
-   );
-   public static final dqy f = dqo.aU;
-   protected static final float g = 6.0F;
-   protected static final ety h = dcv.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final dpn i;
+public class djj extends dji {
+   public static final MapCodec<djj> h = b(djj::new);
+   public static final drb i = dha.aE;
+   public static final dqy j = dji.d;
 
    @Override
-   public MapCodec<? extends djj> a() {
-      return e;
-   }
-
-   protected djj(dpn $$0, dpx.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.k(this.E.b().a(f, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+   public MapCodec<djj> a() {
       return h;
    }
 
+   protected djj(dqg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(i, is.c).a(j, Boolean.valueOf(true)));
+   }
+
    @Override
-   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
-      if ($$1.A($$2.c()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
+   public String g() {
+      return this.q().a();
+   }
+
+   @Override
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return dmg.m($$0);
+   }
+
+   @Override
+   protected boolean a(dqh $$0, dag $$1, in $$2) {
+      return dmg.b($$1, $$2, $$0.c(i));
+   }
+
+   @Override
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      return $$1.g() == $$0.c(i) && !$$0.a($$3, $$4) ? ddg.a.n() : $$0;
+   }
+
+   @Nullable
+   @Override
+   public dqh a(cwi $$0) {
+      dqh $$1 = ddg.cq.a($$0);
+      return $$1 == null ? null : this.n().a(i, $$1.c(i));
+   }
+
+   @Override
+   public void a(dqh $$0, dad $$1, in $$2, ayg $$3) {
+      if ($$0.c(j)) {
+         is $$4 = $$0.c(i).g();
+         double $$5 = 0.27;
+         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
+         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
+         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
+         $$1.a(kr.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
       }
    }
 
-   public void a(aqe $$0, im $$1, dpy $$2, ayd $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
-      } else {
-         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
-      }
+   @Override
+   protected boolean a(dad $$0, in $$1, dqh $$2) {
+      is $$3 = $$2.c(i).g();
+      return $$0.b($$1.a($$3), $$3);
    }
 
    @Override
-   public boolean b(czx $$0, im $$1, dpy $$2) {
-      return true;
+   protected int a(dqh $$0, czj $$1, in $$2, is $$3) {
+      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
    }
 
    @Override
-   public boolean a(czu $$0, ayd $$1, im $$2, dpy $$3) {
-      return (double)$$0.z.i() < 0.45;
+   protected dqh a(dqh $$0, djr $$1) {
+      return $$0.a(i, $$1.a($$0.c(i)));
    }
 
    @Override
-   public void a(aqe $$0, ayd $$1, im $$2, dpy $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   protected dqh a(dqh $$0, dib $$1) {
+      return $$0.a($$1.a($$0.c(i)));
    }
 
    @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(f);
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(i, j);
    }
 }

@@ -1,18 +1,21 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public class etm extends etn {
+   private final brh b;
 
-public final class etm extends ety {
-   protected etm(eto $$0) {
-      super($$0);
+   public etm(brh $$0) {
+      this($$0, $$0.dl());
+   }
+
+   public etm(brh $$0, etp $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   public brh a() {
+      return this.b;
    }
 
    @Override
-   protected DoubleList a(ir.a $$0) {
-      return new etl(this.a.c($$0));
-   }
-
-   @Override
-   protected int a(ir.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return axw.a(axw.a($$1 * (double)$$2, -1.0, (double)$$2));
+   public etn.a c() {
+      return etn.a.c;
    }
 }

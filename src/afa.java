@@ -1,45 +1,20 @@
-public class afa implements yz<abk> {
-   public static final yq<vs, afa> a = yz.a(afa::a, afa::new);
-   private final long b;
-   private final long c;
+public record afa(int b) implements zb<abm> {
+   public static final ys<vu, afa> a = zb.a(afa::a, afa::new);
 
-   public afa(long $$0, long $$1, boolean $$2) {
-      this.b = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
-      }
-
-      this.c = $$3;
+   private afa(vu $$0) {
+      this($$0.l());
    }
 
-   private afa(vs $$0) {
-      this.b = $$0.readLong();
-      this.c = $$0.readLong();
-   }
-
-   private void a(vs $$0) {
-      $$0.b(this.b);
-      $$0.b(this.c);
+   private void a(vu $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zb<afa> a() {
-      return afv.aO;
+   public zd<afa> a() {
+      return afx.aM;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public long e() {
-      return this.c;
    }
 }

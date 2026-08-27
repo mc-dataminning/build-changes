@@ -1,29 +1,67 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fck {
-   private final List<wx> a = Lists.newArrayList();
+public class fck extends fce {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wu c = wu.c("mco.backup.restoring");
+   private final eyt d;
+   private final long e;
+   private final fan f;
 
-   public void a(wx $$0) {
-      this.a.add($$0);
+   public fck(eyt $$0, long $$1, fan $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   @Nullable
-   public wx a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : wx.a(this.a);
+   @Override
+   public void run() {
+      eyn $$0 = eyn.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(this.f.f());
+            return;
+         } catch (fab var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (faa var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var5);
+            a(new far(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
+         }
       }
    }
 
-   public wx b() {
-      wx $$0 = this.a();
-      return $$0 != null ? $$0 : wx.b;
-   }
-
-   public void c() {
-      this.a.clear();
+   @Override
+   public wu a() {
+      return c;
    }
 }

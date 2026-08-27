@@ -1,26 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
 
-public record dwm(dwo b, dwl c) {
-   public static final Codec<dwm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dwo.a.forGetter(dwm::a), dwl.a.forGetter(dwm::b)).apply($$0, $$0.stable(dwm::new))
-   );
-
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dwo $$1, dwl $$2) {
-      return a.encodeStart($$0, new dwm($$1, $$2));
+public interface dwm {
+   default ayg a(in $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
    }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dwo $$1, jj $$2) {
-      return a($$0, $$1, new dwl($$2.d(ld.aS)));
+   default ayg a(akh $$0) {
+      return this.a($$0.toString());
    }
 
-   public dwo a() {
-      return this.b;
-   }
+   ayg a(String var1);
 
-   public dwl b() {
-      return this.c;
-   }
+   ayg a(int var1, int var2, int var3);
+
+   @VisibleForTesting
+   void a(StringBuilder var1);
 }

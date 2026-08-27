@@ -1,33 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public abstract class egn extends egt {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public record egn(egn.a b, bne<dbf.c> c) {
-   public static final Codec<egn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egn.a.c.fieldOf("bounding_box").forGetter(egn::a), bne.c(dbf.c.a).fieldOf("spawns").forGetter(egn::b)).apply($$0, egn::new)
-   );
-
-   public egn.a a() {
-      return this.b;
+   protected egn(ehg $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, is $$7) {
+      super($$0, 0, egt.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
+      this.a($$7);
    }
 
-   public bne<dbf.c> b() {
-      return this.c;
+   protected egn(ehg $$0, ua $$1) {
+      super($$0, $$1);
+      this.a = $$1.h("Width");
+      this.b = $$1.h("Height");
+      this.c = $$1.h("Depth");
+      this.d = $$1.h("HPos");
    }
 
-   public static enum a implements ayq {
-      a("piece"),
-      b("full");
+   @Override
+   protected void a(ehf $$0, ua $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
+   }
 
-      public static final Codec<egn.a> c = ayq.a(egn.a::values);
-      private final String d;
+   protected boolean a(dae $$0, egh $$1, int $$2) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$3 = 0;
+         int $$4 = 0;
+         in.a $$5 = new in.a();
 
-      private a(String $$0) {
-         this.d = $$0;
+         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
+            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(dvz.a.f, $$5).v();
+                  $$4++;
+               }
+            }
+         }
+
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.i() + $$2, 0);
+            return true;
+         }
       }
+   }
 
-      @Override
-      public String c() {
-         return this.d;
+   protected boolean a(dae $$0, int $$1) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$2 = $$0.al();
+         boolean $$3 = false;
+         in.a $$4 = new in.a();
+
+         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
+            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(dvz.a.f, $$4).v());
+               $$3 = true;
+            }
+         }
+
+         if (!$$3) {
+            return false;
+         } else {
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.i() + $$1, 0);
+            return true;
+         }
       }
    }
 }

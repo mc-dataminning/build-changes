@@ -1,30 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ebl(int b, int c, int d, iv<efk> e) implements eay {
+public class ebl implements ebh {
    public static final Codec<ebl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axe.j.fieldOf("tries").orElse(128).forGetter(ebl::a),
-               axe.i.fieldOf("xz_spread").orElse(7).forGetter(ebl::b),
-               axe.i.fieldOf("y_spread").orElse(3).forGetter(ebl::c),
-               efk.b.fieldOf("feature").forGetter(ebl::d)
-            )
+      $$0 -> $$0.group(Codec.intRange(0, dtz.c).fieldOf("height").forGetter($$0x -> $$0x.b), dqh.b.fieldOf("state").forGetter($$0x -> $$0x.c))
             .apply($$0, ebl::new)
    );
+   public final int b;
+   public final dqh c;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public iv<efk> d() {
-      return this.e;
+   public ebl(int $$0, dqh $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 }

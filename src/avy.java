@@ -1,12 +1,9 @@
-public class avy {
-   public static final awd<cck> a = a("acquirable_job_site");
-   public static final awd<cck> b = a("village");
-   public static final awd<cck> c = a("bee_home");
+public interface avy {
+   awg<csr> a = a("regular_goat_horns");
+   awg<csr> b = a("screaming_goat_horns");
+   awg<csr> c = a("goat_horns");
 
-   private avy() {
-   }
-
-   private static awd<cck> a(String $$0) {
-      return awd.a(ld.V, new akf($$0));
+   private static awg<csr> a(String $$0) {
+      return awg.a(le.E, new akh($$0));
    }
 }

@@ -1,7 +1,8 @@
-public interface euy<T> {
-   void a(euw<T> var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean a(im var1, T var2);
-
-   int a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface euy {
 }

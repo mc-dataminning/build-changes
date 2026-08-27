@@ -1,33 +1,52 @@
-public class cbz {
-   public static boolean a(brg $$0) {
-      return $$0.K() instanceof cao;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
+
+public class cbz<T extends bsa> extends ccj<T> {
+   private final BiPredicate<T, bsa> a;
+   private final Predicate<T> c;
+   private final cbd<Boolean> d;
+   private final int e;
+
+   public cbz(int $$0, BiPredicate<T, bsa> $$1, Predicate<T> $$2, cbd<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static boolean a(brm $$0, int $$1) {
-      return $$0.ga() && $$0.fX().a($$0.dl(), (double)($$0.fY() + (float)$$1) + 1.0);
+   @Override
+   protected void a(aqh $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
    }
 
-   public static boolean a(im $$0, brm $$1) {
-      return $$0.v() < $$1.dN().I_() || $$0.v() > $$1.dN().al();
+   @Override
+   public Set<cbd<?>> a() {
+      return Set.of(cbd.g);
    }
 
-   public static boolean a(boolean $$0, brm $$1, im $$2) {
-      return $$0 && !$$1.a($$2);
+   public void a(T $$0) {
+      Optional<List<bsa>> $$1 = $$0.dQ().c(cbd.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
    }
 
-   public static boolean a(cap $$0, im $$1) {
-      return !$$0.a($$1);
+   public void b(T $$0) {
+      $$0.dQ().a(this.d, true, (long)this.e);
    }
 
-   public static boolean a(brm $$0, im $$1) {
-      return $$0.dN().b_($$1).a(avt.a);
-   }
-
-   public static boolean b(brm $$0, im $$1) {
-      return $$0.a(emn.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(brm $$0, im $$1) {
-      return $$0.dN().a_($$1).e();
+   public void c(T $$0) {
+      $$0.dQ().b(this.d);
    }
 }

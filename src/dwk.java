@@ -1,93 +1,95 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+public class dwk implements czq {
+   private int a;
 
-public interface dwk {
-   Codec<dwk> a = axe.a(dwk.b.d, axe.a(dwk.a.d, dwk.c.d)).xmap(dwk::a, dwk::a);
-   dwk b = b(0);
-   dwk c = c(0);
+   @Override
+   public int a(aqh $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.aa().b(czz.K)) {
+         return 0;
+      } else {
+         ayg $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.Z() / 24000L;
+            if ($$4 < 5L || !$$0.Q()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.x().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  clh $$6 = $$0.x().get($$3.a($$5));
+                  if ($$6.N_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dn(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     in.a $$9 = $$6.dn().j().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        iw<dbc> $$11 = $$0.t($$9);
+                        if ($$11.a(avq.ag)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
 
-   static dwk a(int $$0) {
-      return new dwk.b($$0);
-   }
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(dvz.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
 
-   static dwk b(int $$0) {
-      return new dwk.a($$0);
-   }
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
 
-   static dwk c(int $$0) {
-      return new dwk.c($$0);
-   }
-
-   static dwk a() {
-      return b;
-   }
-
-   static dwk b() {
-      return c;
-   }
-
-   private static dwk a(Either<dwk.b, Either<dwk.a, dwk.c>> $$0) {
-      return (dwk)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
-   }
-
-   private static Either<dwk.b, Either<dwk.a, dwk.c>> a(dwk $$0) {
-      return $$0 instanceof dwk.b ? Either.left((dwk.b)$$0) : Either.right($$0 instanceof dwk.a ? Either.left((dwk.a)$$0) : Either.right((dwk.c)$$0));
-   }
-
-   int a(dwn var1);
-
-   public static record a(int e) implements dwk {
-      public static final Codec<dwk.a> d = Codec.intRange(dtq.e, dtq.d).fieldOf("above_bottom").xmap(dwk.a::new, dwk.a::c).codec();
-
-      @Override
-      public int a(dwn $$0) {
-         return $$0.a() + this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record b(int e) implements dwk {
-      public static final Codec<dwk.b> d = Codec.intRange(dtq.e, dtq.d).fieldOf("absolute").xmap(dwk.b::new, dwk.b::c).codec();
-
-      @Override
-      public int a(dwn $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
+                           return $$12;
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
    }
 
-   public static record c(int e) implements dwk {
-      public static final Codec<dwk.c> d = Codec.intRange(dtq.e, dtq.d).fieldOf("below_top").xmap(dwk.c::new, dwk.c::c).codec();
+   private boolean a(aqh $$0, in $$1, ayg $$2, boolean $$3) {
+      dqh $$4 = $$0.a_($$1);
+      if (!dao.a($$0, $$1, $$4, $$4.u(), brn.aB)) {
+         return false;
+      } else if (!cio.b(brn.aB, $$0, bse.p, $$1, $$2)) {
+         return false;
+      } else {
+         cio $$5 = brn.aB.a((dad)$$0);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gx();
+            }
 
-      @Override
-      public int a(dwn $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
-
-      public int c() {
-         return this.e;
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bse.p, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
       }
    }
 }

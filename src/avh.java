@@ -1,37 +1,106 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public interface avh {
-   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
-   avh b = NumberFormat.getIntegerInstance(Locale.US)::format;
-   avh c = $$0 -> a.format((double)$$0 * 0.1);
-   avh d = $$0 -> {
-      double $$1 = (double)$$0 / 100.0;
-      double $$2 = $$1 / 1000.0;
-      if ($$2 > 0.5) {
-         return a.format($$2) + " km";
-      } else {
-         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
-      }
-   };
-   avh e = $$0 -> {
-      double $$1 = (double)$$0 / 20.0;
-      double $$2 = $$1 / 60.0;
-      double $$3 = $$2 / 60.0;
-      double $$4 = $$3 / 24.0;
-      double $$5 = $$4 / 365.0;
-      if ($$5 > 0.5) {
-         return a.format($$5) + " y";
-      } else if ($$4 > 0.5) {
-         return a.format($$4) + " d";
-      } else if ($$3 > 0.5) {
-         return a.format($$3) + " h";
-      } else {
-         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
-      }
-   };
+public class avh extends avf {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
 
-   String format(int var1);
+   public int a(Collection<cxf<?>> $$0, aqi $$1) {
+      List<akh> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cxf<?> $$4 : $$0) {
+         akh $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().an_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            am.g.a($$1, $$4);
+            $$3++;
+         }
+      }
+
+      if ($$2.size() > 0) {
+         this.a(adv.a.b, $$1, $$2);
+      }
+
+      return $$3;
+   }
+
+   public int b(Collection<cxf<?>> $$0, aqi $$1) {
+      List<akh> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cxf<?> $$4 : $$0) {
+         akh $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(adv.a.c, $$1, $$2);
+      return $$3;
+   }
+
+   private void a(adv.a $$0, aqi $$1, List<akh> $$2) {
+      $$1.d.b(new adv($$0, $$2, Collections.emptyList(), this.a()));
+   }
+
+   public ua b() {
+      ua $$0 = new ua();
+      this.a().b($$0);
+      ug $$1 = new ug();
+
+      for (akh $$2 : this.a) {
+         $$1.add(uv.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      ug $$3 = new ug();
+
+      for (akh $$4 : this.b) {
+         $$3.add(uv.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
+   }
+
+   public void a(ua $$0, cxg $$1) {
+      this.a(avg.a($$0));
+      ug $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      ug $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
+   }
+
+   private void a(ug $$0, Consumer<cxf<?>> $$1, cxg $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            akh $$5 = new akh($$4);
+            Optional<cxf<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
+            }
+         } catch (z var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
+      }
+   }
+
+   public void a(aqi $$0) {
+      $$0.d.b(new adv(adv.a.a, this.a, this.b, this.a()));
+   }
 }

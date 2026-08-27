@@ -1,31 +1,10 @@
-import java.util.UUID;
-
-public class ffi extends bog {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
-
-   public ffi(UUID $$0, ws $$1, float $$2, bog.a $$3, bog.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ac.b();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+public class ffi {
+   public static fgj a(int $$0, ffe.c $$1, boolean $$2) {
+      return fgj.a(wu.c("options.language"), $$1, $$2).a($$0).a(new akh("icon/language"), 15, 15).a();
    }
 
-   @Override
-   public void a(float $$0) {
-      this.b = this.j();
-      this.h = $$0;
-      this.i = ac.b();
-   }
-
-   @Override
-   public float j() {
-      long $$0 = ac.b() - this.i;
-      float $$1 = axw.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return axw.i($$1, this.b, this.h);
+   public static fgj b(int $$0, ffe.c $$1, boolean $$2) {
+      wu $$3 = $$2 ? wu.c("options.accessibility") : wu.c("accessibility.onboarding.accessibility.button");
+      return fgj.a($$3, $$1, $$2).a($$0).a(new akh("icon/accessibility"), 15, 15).a();
    }
 }

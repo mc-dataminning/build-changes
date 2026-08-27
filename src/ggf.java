@@ -1,23 +1,32 @@
-public class ggf extends gfi<chf, frn<chf>> {
-   private static final akf a = new akf("textures/entity/zombie/drowned.png");
-
-   public ggf(ggn.a $$0) {
-      super($$0, new frn<>($$0.a(fuq.R)), new frn<>($$0.a(fuq.S)), new frn<>($$0.a(fuq.T)));
-      this.a(new gkg<>(this, $$0.f()));
+public class ggf extends gid<cds, frm<cds>> {
+   public ggf(ggx.a $$0) {
+      super($$0, new frm<>($$0.a(fva.t)), 0.4F);
+      this.a(new gkk(this, $$0.f()));
    }
 
-   @Override
-   public akf a(cik $$0) {
-      return a;
+   public akh a(cds $$0) {
+      return $$0.gv();
    }
 
-   protected void a(chf $$0, exn $$1, float $$2, float $$3, float $$4, float $$5) {
+   protected void a(cds $$0, exx $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b(0.8F, 0.8F, 0.8F);
+   }
+
+   protected void a(cds $$0, exx $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.a($$4);
+      float $$6 = $$0.G($$4);
       if ($$6 > 0.0F) {
-         float $$7 = -10.0F - $$0.dF();
-         float $$8 = axw.i($$6, 0.0F, $$7);
-         $$1.a(a.b.rotationDegrees($$8), 0.0F, $$0.di() / 2.0F / $$5, 0.0F);
+         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
+         $$1.a(a.f.rotationDegrees(axz.j($$6, 0.0F, 90.0F)));
+         in $$7 = $$0.dn();
+
+         for (clh $$9 : $$0.dN().a(clh.class, new etk($$7).c(2.0, 2.0, 2.0))) {
+            if ($$9.fJ()) {
+               $$1.a(0.15F * $$6, 0.0F, 0.0F);
+               break;
+            }
+         }
       }
    }
 }

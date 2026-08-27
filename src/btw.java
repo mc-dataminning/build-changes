@@ -1,33 +1,49 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class btw {
-   public static buh<bre> a(int $$0, float $$1, int $$2) {
-      return bwj.a(
-         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$3 -> $$3.group(
-                  $$3.c(cah.m), $$3.a(cah.b), $$3.a(cah.C), $$3.a(cah.t), $$3.a(cah.n), $$3.a(cah.r), $$3.a(cah.q)
-               )
-               .apply(
-                  $$3,
-                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
-                        $$11.y()
-                           .d($$0xxxx -> $$0xxxx.a(ccl.n), $$0xxxx -> true, $$12.dn(), $$2 + 1, cch.b.c)
-                           .filter($$2xxxx -> $$2xxxx.a($$12.dl(), (double)$$2))
-                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(ccl.n), $$0xxxxx -> true, cch.b.c, $$12.dn(), $$0, $$12.ej()))
-                           .or(() -> $$3.<iu>a($$5).map(iu::b))
-                           .ifPresent($$10xx -> {
-                              $$7.b();
-                              $$8.b();
-                              $$9.b();
-                              $$10.b();
-                              $$6.a(iu.a($$11.ae(), $$10xx));
-                              if (!$$10xx.a($$12.dl(), (double)$$2)) {
-                                 $$4.a(new cak($$10xx, $$1, $$2));
-                              }
-                           });
-                        return true;
-                     }
-               ))
-      );
+public class btw extends bts<cku> {
+   @Nullable
+   private cms c;
+
+   public btw(int $$0, int $$1) {
+      super(ImmutableMap.of(), $$0, $$1);
+   }
+
+   protected boolean a(aqh $$0, cku $$1) {
+      in $$2 = $$1.dn();
+      this.c = $$0.d($$2);
+      return this.c != null && this.c.e() && bvb.a($$0, $$1, $$2);
+   }
+
+   protected boolean a(aqh $$0, cku $$1, long $$2) {
+      return this.c != null && !this.c.d();
+   }
+
+   protected void b(aqh $$0, cku $$1, long $$2) {
+      this.c = null;
+      $$1.dQ().a($$0.Z(), $$0.Y());
+   }
+
+   protected void c(aqh $$0, cku $$1, long $$2) {
+      ayg $$3 = $$1.ej();
+      if ($$3.a(100) == 0) {
+         $$1.gu();
+      }
+
+      if ($$3.a(200) == 0 && bvb.a($$0, $$1, $$1.dn())) {
+         crs $$4 = ac.a(crs.values(), $$3);
+         int $$5 = $$3.a(3);
+         csz $$6 = this.a($$4, $$5);
+         clu $$7 = new clu($$1.dN(), $$1, $$1.ds(), $$1.dw(), $$1.dy(), $$6);
+         $$1.dN().b($$7);
+      }
+   }
+
+   private csz a(crs $$0, int $$1) {
+      csz $$2 = new csz(ctc.uu);
+      $$2.b(ka.R, new cvr((byte)$$1, List.of(new cvq(cvq.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
+      return $$2;
    }
 }

@@ -1,107 +1,121 @@
-public abstract class gpj implements gqb {
-   protected gpy a;
-   protected final ava b;
-   protected final akf c;
-   protected float d = 1.0F;
-   protected float e = 1.0F;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected boolean i;
-   protected int j;
-   protected gqb.a k = gqb.a.b;
-   protected boolean l;
-   protected ayd m;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   protected gpj(auy $$0, ava $$1, ayd $$2) {
-      this($$0.a(), $$1, $$2);
-   }
+public class gpj implements goz {
+   protected final List<gcl> a;
+   protected final Map<is, List<gcl>> b;
+   protected final boolean c;
+   protected final boolean d;
+   protected final boolean e;
+   protected final gmy f;
+   protected final gcx g;
+   protected final gcv h;
 
-   protected gpj(akf $$0, ava $$1, ayd $$2) {
-      this.c = $$0;
+   public gpj(List<gcl> $$0, Map<is, List<gcl>> $$1, boolean $$2, boolean $$3, boolean $$4, gmy $$5, gcx $$6, gcv $$7) {
+      this.a = $$0;
       this.b = $$1;
-      this.m = $$2;
+      this.c = $$2;
+      this.d = $$4;
+      this.e = $$3;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 
    @Override
-   public akf a() {
+   public List<gcl> a(@Nullable dqh $$0, @Nullable is $$1, ayg $$2) {
+      return $$1 == null ? this.a : this.b.get($$1);
+   }
+
+   @Override
+   public boolean a() {
       return this.c;
    }
 
    @Override
-   public grg a(grf $$0) {
-      if (this.c.equals(grf.b)) {
-         this.a = grf.d;
-         return grf.c;
-      } else {
-         grg $$1 = $$0.a(this.c);
-         if ($$1 == null) {
-            this.a = grf.a;
-         } else {
-            this.a = $$1.a(this.m);
-         }
-
-         return $$1;
-      }
+   public boolean b() {
+      return this.d;
    }
 
    @Override
-   public gpy b() {
-      return this.a;
-   }
-
-   @Override
-   public ava c() {
-      return this.b;
+   public boolean c() {
+      return this.e;
    }
 
    @Override
    public boolean d() {
-      return this.i;
+      return false;
    }
 
    @Override
-   public int e() {
-      return this.j;
-   }
-
-   @Override
-   public float f() {
-      return this.d * this.a.c().a(this.m);
-   }
-
-   @Override
-   public float g() {
-      return this.e * this.a.d().a(this.m);
-   }
-
-   @Override
-   public double h() {
+   public gmy e() {
       return this.f;
    }
 
    @Override
-   public double i() {
+   public gcx f() {
       return this.g;
    }
 
    @Override
-   public double j() {
+   public gcv g() {
       return this.h;
    }
 
-   @Override
-   public gqb.a k() {
-      return this.k;
-   }
+   public static class a {
+      private final List<gcl> a = Lists.newArrayList();
+      private final Map<is, List<gcl>> b = Maps.newEnumMap(is.class);
+      private final gcv c;
+      private final boolean d;
+      private gmy e;
+      private final boolean f;
+      private final boolean g;
+      private final gcx h;
 
-   @Override
-   public boolean l() {
-      return this.l;
-   }
+      public a(gcq $$0, gcv $$1, boolean $$2) {
+         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
+      }
 
-   @Override
-   public String toString() {
-      return "SoundInstance[" + this.c + "]";
+      private a(boolean $$0, boolean $$1, boolean $$2, gcx $$3, gcv $$4) {
+         for (is $$5 : is.values()) {
+            this.b.put($$5, Lists.newArrayList());
+         }
+
+         this.c = $$4;
+         this.d = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.h = $$3;
+      }
+
+      public gpj.a a(is $$0, gcl $$1) {
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public gpj.a a(gcl $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public gpj.a a(gmy $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public gpj.a a() {
+         return this;
+      }
+
+      public goz b() {
+         if (this.e == null) {
+            throw new RuntimeException("Missing particle!");
+         } else {
+            return new gpj(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
+         }
+      }
    }
 }

@@ -1,51 +1,63 @@
-import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cri extends cry {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
-
-   public cri(cry.a $$0) {
+public class cri extends csu {
+   public cri(csu.a $$0) {
       super($$0);
    }
 
-   @Override
-   public boq a(cvn $$0) {
-      czu $$1 = $$0.q();
-      if (!$$1.B) {
-         csd $$2 = $$0.n();
-         etf $$3 = $$0.l();
-         ir $$4 = $$0.k();
-         cky $$5 = new cky($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
-         $$1.b($$5);
-         $$2.g(1);
-      }
-
-      return boq.a($$1.B);
+   @Nullable
+   public static iv a(dad $$0) {
+      return $$0.D_().j() ? iv.a($$0.ae(), $$0.U()) : null;
    }
 
    @Override
-   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
-      if ($$1.fC()) {
-         csd $$3 = $$1.b($$2);
-         if (!$$0.B) {
-            cky $$4 = new cky($$0, $$3, $$1);
-            $$0.b($$4);
-            $$3.a(1, $$1);
-            $$1.b(avj.c.b(this));
+   public boolean d_(csz $$0) {
+      return $$0.b(ka.P) || super.d_($$0);
+   }
+
+   @Override
+   public void a(csz $$0, dad $$1, brh $$2, int $$3, boolean $$4) {
+      if ($$1 instanceof aqh $$5) {
+         cvv $$6 = $$0.a(ka.P);
+         if ($$6 != null) {
+            cvv $$7 = $$6.a($$5);
+            if ($$7 != $$6) {
+               $$0.b(ka.P, $$7);
+            }
+         }
+      }
+   }
+
+   @Override
+   public bpm a(cwk $$0) {
+      in $$1 = $$0.a();
+      dad $$2 = $$0.q();
+      if (!$$2.a_($$1).a(ddg.pq)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, avc.od, avd.h, 1.0F, 1.0F);
+         clh $$3 = $$0.o();
+         csz $$4 = $$0.n();
+         boolean $$5 = !$$3.fN() && $$4.G() == 1;
+         cvv $$6 = new cvv(Optional.of(iv.a($$2.ae(), $$1)), true);
+         if ($$5) {
+            $$4.b(ka.P, $$6);
+         } else {
+            csz $$7 = $$4.a(ctc.qS, 1);
+            $$4.a(1, $$3);
+            $$7.b(ka.P, $$6);
+            if (!$$3.ga().f($$7)) {
+               $$3.a($$7, false);
+            }
          }
 
-         return bor.a($$1.b($$2), $$0.x_());
-      } else {
-         return bor.c($$1.b($$2));
+         return bpm.a($$2.B);
       }
    }
 
    @Override
-   public void a(csd $$0, @Nullable czu $$1, List<ws> $$2, ctu $$3) {
-      cuv $$4 = $$0.a(jz.K);
-      if ($$4 != null) {
-         $$4.a($$2::add, $$3);
-      }
+   public String i(csz $$0) {
+      return $$0.b(ka.P) ? "item.minecraft.lodestone_compass" : super.i($$0);
    }
 }

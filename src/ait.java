@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record ait() implements air {
+   public static final ait a = new ait();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ait {
+   @Override
+   public void a(vu $$0) {
+   }
 }

@@ -1,61 +1,68 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dca extends dbm {
-   public static final MapCodec<dca> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cqw.q.fieldOf("color").forGetter(dbm::b), u()).apply($$0, dca::new));
-   public static final dqy b = dqo.ba;
-   private static final Map<cqw, dcv> c = Maps.newHashMap();
-   private static final ety d = dcv.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public abstract class dca extends dcq implements csb {
+   public static final dqy a = dqx.w;
+   private final dkg.a b;
 
-   @Override
-   public MapCodec<dca> a() {
-      return a;
-   }
-
-   public dca(cqw $$0, dpx.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
-      c.put($$0, this);
+   public dca(dkg.a $$0, dqg.d $$1) {
+      super($$1);
+      this.b = $$0;
+      this.k(this.E.b().a(a, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dpy $$0, czx $$1, im $$2) {
-      return $$1.a_($$2.d()).e();
+   protected abstract MapCodec<? extends dca> a();
+
+   @Override
+   public dnm a(in $$0, dqh $$1) {
+      return new doy($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dnm> dnn<T> a(dad $$0, dqh $$1, dno<T> $$2) {
+      if ($$0.B) {
+         boolean $$3 = $$1.a(ddg.gO) || $$1.a(ddg.gP) || $$1.a(ddg.gQ) || $$1.a(ddg.gR);
+         if ($$3) {
+            return a($$2, dno.p, doy::a);
+         }
+      }
+
+      return null;
+   }
+
+   public dkg.a b() {
+      return this.b;
    }
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      return d;
+   protected boolean a(dqh $$0, emp $$1) {
+      return false;
    }
 
    @Override
-   public dpy a(cvl $$0) {
-      return this.n().a(b, Integer.valueOf(dre.a($$0.i() + 180.0F)));
+   public bro k() {
+      return bro.f;
    }
 
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      return $$1 == ir.a && !$$0.a($$3, $$4) ? dcx.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(a);
    }
 
    @Override
-   protected dpy a(dpy $$0, dji $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   public dqh a(cwi $$0) {
+      return this.n().a(a, Boolean.valueOf($$0.q().C($$0.a())));
    }
 
    @Override
-   protected dpy a(dpy $$0, dhs $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(b);
-   }
-
-   public static dcv a(cqw $$0) {
-      return c.getOrDefault($$0, dcx.iJ);
+   protected void a(dqh $$0, dad $$1, in $$2, dde $$3, in $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$1.C($$2);
+         if ($$6 != $$0.c(a)) {
+            $$1.a($$2, $$0.a(a, Boolean.valueOf($$6)), 2);
+         }
+      }
    }
 }

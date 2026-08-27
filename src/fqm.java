@@ -1,60 +1,21 @@
-import java.util.function.Function;
+import com.google.common.base.MoreObjects;
+import java.util.List;
 
-public abstract class fqm<E extends bql> extends frr<E> {
-   private final boolean a;
-   private final float b;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public class fqm {
+   public static final int a = -1;
+   private final List<fqk> b;
+   private final int c;
 
-   protected fqm(boolean $$0, float $$1, float $$2) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
+   public fqm(List<fqk> $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   protected fqm(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this(gbm::e, $$0, $$1, $$2, $$3, $$4, $$5);
+   public fqk a(int $$0) {
+      return $$0 >= 0 && $$0 < this.b.size() ? (fqk)MoreObjects.firstNonNull(this.b.get($$0), fqi.a) : fqi.a;
    }
 
-   protected fqm(Function<akf, gbm> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
+   public int a() {
+      return this.c;
    }
-
-   protected fqm() {
-      this(false, 5.0F, 2.0F);
-   }
-
-   @Override
-   public void a(exn $$0, exr $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         if (this.a) {
-            float $$8 = 1.5F / this.g;
-            $$0.b($$8, $$8, $$8);
-         }
-
-         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
-         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-         $$0.a();
-         float $$9 = 1.0F / this.h;
-         $$0.b($$9, $$9, $$9);
-         $$0.a(0.0F, this.i / 16.0F, 0.0F);
-         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-      } else {
-         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-      }
-   }
-
-   protected abstract Iterable<fur> a();
-
-   protected abstract Iterable<fur> b();
 }

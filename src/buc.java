@@ -1,19 +1,41 @@
-import com.google.common.collect.ImmutableMap;
+public class buc implements btt<bsa> {
+   private final int a;
+   private final int b;
+   private bts.a c = bts.a.a;
+   private long d;
 
-public class buc extends bsw<brg> {
    public buc(int $$0, int $$1) {
-      super(ImmutableMap.of(cah.n, cai.a), $$0, $$1);
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected boolean a(aqe $$0, brg $$1, long $$2) {
-      return $$1.dQ().c(cah.n).filter($$1x -> $$1x.a($$1)).isPresent();
+   @Override
+   public bts.a a() {
+      return this.c;
    }
 
-   protected void b(aqe $$0, brg $$1, long $$2) {
-      $$1.dQ().b(cah.n);
+   @Override
+   public final boolean e(aqh $$0, bsa $$1, long $$2) {
+      this.c = bts.a.b;
+      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
    }
 
-   protected void c(aqe $$0, brg $$1, long $$2) {
-      $$1.dQ().c(cah.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
+   @Override
+   public final void f(aqh $$0, bsa $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(aqh $$0, bsa $$1, long $$2) {
+      this.c = bts.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

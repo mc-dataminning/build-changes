@@ -1,37 +1,145 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
 public class emk {
-   private final cze a;
-   @Nullable
-   private final emj b;
-   private final im c;
-   private final im.a d = new im.a();
+   private emm[] a = new emm[128];
+   private int b;
 
-   public emk(cze $$0, brg $$1) {
-      this.a = $$0;
-      if ($$1.dN() instanceof aqe $$2) {
-         this.b = $$2.H();
+   public emm a(emm $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
       } else {
-         this.b = null;
+         if (this.b == this.a.length) {
+            emm[] $$1 = new emm[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
+
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
+      }
+   }
+
+   public void a() {
+      this.b = 0;
+   }
+
+   public emm b() {
+      return this.a[0];
+   }
+
+   public emm c() {
+      emm $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
       }
 
-      this.c = $$1.dn();
+      $$0.d = -1;
+      return $$0;
    }
 
-   public emi a(int $$0, int $$1, int $$2) {
-      im $$3 = this.d.d($$0, $$1, $$2);
-      return this.b == null ? emn.b(this.a, $$3) : this.b.a(this.a, $$3);
+   public void b(emm $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
+         }
+      }
+
+      $$0.d = -1;
    }
 
-   public dpy a(im $$0) {
-      return this.a.a_($$0);
+   public void a(emm $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
+      }
    }
 
-   public cze a() {
-      return this.a;
+   public int d() {
+      return this.b;
    }
 
-   public im b() {
-      return this.c;
+   private void a(int $$0) {
+      emm $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         emm $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   private void b(int $$0) {
+      emm $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         emm $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         emm $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public emm[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

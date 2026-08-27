@@ -1,53 +1,28 @@
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-
-public class cpr extends cps {
-   private final akf j;
-   @Nullable
-   private final akf k;
-   private final cpr.a l;
-
-   public cpr(iv<cpt> $$0, cpr.a $$1, boolean $$2, cry.a $$3) {
-      super($$0, cps.a.e, $$3);
-      this.l = $$1;
-      akf $$4 = $$1.c.apply($$0.e().orElseThrow().a());
-      this.j = $$4.e(".png");
-      if ($$2) {
-         this.k = $$4.e("_overlay.png");
-      } else {
-         this.k = null;
-      }
+public abstract class cpr<C extends bpf> extends cod {
+   public cpr(cpl<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public akf b() {
-      return this.j;
+   public void a(boolean $$0, cxf<?> $$1, aqi $$2) {
+      new ajv<>(this).a($$2, (cxf<? extends cxd<C>>)$$1, $$0);
    }
 
-   @Nullable
-   public akf c() {
-      return this.k;
-   }
-
-   public cpr.a d() {
-      return this.l;
-   }
+   public abstract void a(cll var1);
 
    @Override
-   public auy e() {
-      return this.l.d;
-   }
+   public abstract void l();
 
-   public static enum a {
-      a($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/entity/horse/armor/horse_armor_" + $$0x)), auz.nr),
-      b($$0 -> $$0.c("textures/entity/wolf/wolf_armor"), auz.Cs);
+   public abstract boolean a(cxf<? extends cxd<C>> var1);
 
-      final Function<akf, akf> c;
-      final auy d;
+   public abstract int m();
 
-      private a(Function<akf, akf> $$0, auy $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-   }
+   public abstract int n();
+
+   public abstract int o();
+
+   public abstract int p();
+
+   public abstract cps t();
+
+   public abstract boolean e(int var1);
 }

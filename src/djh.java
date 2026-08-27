@@ -1,48 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class djh extends dcv {
-   public static final MapCodec<djh> h = b(djh::new);
-   public static final dqw<ir.a> i = dqo.I;
+public class djh extends dde {
+   public static final MapCodec<djh> a = b(djh::new);
+   public static final dqy b = dji.d;
 
    @Override
-   public MapCodec<? extends djh> a() {
-      return h;
+   public MapCodec<djh> a() {
+      return a;
    }
 
-   public djh(dpx.d $$0) {
+   public djh(dqg.d $$0) {
       super($$0);
-      this.k(this.n().a(i, ir.a.b));
+      this.k(this.n().a(b, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dqh a(cwi $$0) {
+      return this.n().a(b, Boolean.valueOf($$0.q().C($$0.a())));
    }
 
    @Override
-   protected dpy a(dpy $$0, dji $$1) {
-      return b($$0, $$1);
-   }
-
-   public static dpy b(dpy $$0, dji $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((ir.a)$$0.c(i)) {
-               case a:
-                  return $$0.a(i, ir.a.c);
-               case c:
-                  return $$0.a(i, ir.a.a);
-               default:
-                  return $$0;
+   protected void a(dqh $$0, dad $$1, in $$2, dde $$3, in $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.C($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
             }
-         default:
-            return $$0;
+         }
       }
    }
 
    @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(i);
+   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      if ($$0.c(b) && !$$1.C($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
+      }
    }
 
    @Override
-   public dpy a(cvl $$0) {
-      return this.n().a(i, $$0.k().o());
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(b);
    }
 }

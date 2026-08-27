@@ -1,50 +1,100 @@
-import com.google.common.collect.ImmutableList;
 import javax.annotation.Nullable;
 
-public final class gme {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final akf d = new akf("missingno");
-   private static final atq e = new atq.a().a(gny.a, new gny(ImmutableList.of(new gnx(0, -1)), 16, 16, 1, false)).a();
-   @Nullable
-   private static gmb f;
+public class gme implements gmd {
+   public static final int a = 0;
+   private final gme.b c = new gme.b();
+   private final gme.b d = new gme.b();
+   public final gme.a b;
 
-   private static ewo a(int $$0, int $$1) {
-      ewo $$2 = new ewo($$0, $$1, false);
-      int $$3 = -16777216;
-      int $$4 = -524040;
+   public gme(gme.a $$0) {
+      this.b = $$0;
+   }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         for (int $$6 = 0; $$6 < $$0; $$6++) {
-            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
-               $$2.a($$6, $$5, -524040);
-            } else {
-               $$2.a($$6, $$5, -16777216);
-            }
+   @Override
+   public float unclampedCall(csz $$0, @Nullable fvw $$1, @Nullable bsa $$2, int $$3) {
+      brh $$4 = (brh)($$2 != null ? $$2 : $$0.D());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         $$1 = this.a($$4, $$1);
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+      }
+   }
+
+   private float a(csz $$0, fvw $$1, int $$2, brh $$3) {
+      iv $$4 = this.b.getPos($$1, $$0, $$3);
+      long $$5 = $$1.Y();
+      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
+   }
+
+   private float a(int $$0, long $$1) {
+      if (this.d.a($$1)) {
+         this.d.a($$1, Math.random());
+      }
+
+      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
+      return axz.b((float)$$2, 1.0F);
+   }
+
+   private float a(brh $$0, long $$1, in $$2) {
+      double $$3 = this.a($$0, $$2);
+      double $$4 = this.a($$0);
+      if ($$0 instanceof clh $$5 && $$5.g() && $$5.dN().s().i()) {
+         if (this.c.a($$1)) {
+            this.c.a($$1, 0.5 - ($$4 - 0.25));
          }
+
+         double $$6 = $$3 + this.c.a;
+         return axz.b((float)$$6, 1.0F);
       }
 
-      return $$2;
+      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
+      return axz.b((float)$$7, 1.0F);
    }
 
-   public static gmi a() {
-      ewo $$0 = a(16, 16);
-      return new gmi(d, new goa(16, 16), $$0, e);
+   @Nullable
+   private fvw a(brh $$0, @Nullable fvw $$1) {
+      return $$1 == null && $$0.dN() instanceof fvw ? (fvw)$$0.dN() : $$1;
    }
 
-   public static akf b() {
-      return d;
+   private boolean a(brh $$0, @Nullable iv $$1) {
+      return $$1 != null && $$1.a() == $$0.dN().ae() && !($$1.b().b($$0.dl()) < 1.0E-5F);
    }
 
-   public static gmb c() {
-      if (f == null) {
-         ewo $$0 = a(16, 16);
-         $$0.i();
-         f = new gmb($$0);
-         fcu.Q().aa().a(d, f);
+   private double a(brh $$0, in $$1) {
+      etp $$2 = etp.b($$1);
+      return Math.atan2($$2.c() - $$0.dy(), $$2.a() - $$0.ds()) / (float) (Math.PI * 2);
+   }
+
+   private double a(brh $$0) {
+      return axz.c((double)($$0.dE() / 360.0F), 1.0);
+   }
+
+   private int a(int $$0) {
+      return $$0 * 1327217883;
+   }
+
+   public interface a {
+      @Nullable
+      iv getPos(fvw var1, csz var2, brh var3);
+   }
+
+   static class b {
+      double a;
+      private double b;
+      private long c;
+
+      boolean a(long $$0) {
+         return this.c != $$0;
       }
 
-      return f;
+      void a(long $$0, double $$1) {
+         this.c = $$0;
+         double $$2 = $$1 - this.a;
+         $$2 = axz.c($$2 + 0.5, 1.0) - 0.5;
+         this.b += $$2 * 0.1;
+         this.b *= 0.8;
+         this.a = axz.c(this.a + this.b, 1.0);
+      }
    }
 }

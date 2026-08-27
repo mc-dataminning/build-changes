@@ -1,52 +1,57 @@
-import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class gn {
-   private final go a;
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("arguments.item.overstacked", $$0, $$1));
+   private final iw<csu> b;
+   private final jw c;
 
-   public gn(ix.a $$0) {
-      this.a = new go($$0, true);
+   public gn(iw<csu> $$0, jw $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public Predicate<csd> a(StringReader $$0) throws CommandSyntaxException {
-      final List<Predicate<csd>> $$1 = new ArrayList<>();
-      final jx.a $$2 = jx.a();
-      this.a.a($$0, new go.c() {
-         @Override
-         public void a(iv<cry> $$0) {
-            $$1.add($$1xx -> $$1xx.a($$0));
-         }
+   public csu a() {
+      return this.b.a();
+   }
 
-         @Override
-         public void a(iz<cry> $$0) {
-            $$1.add($$1xx -> $$1xx.a($$0));
-         }
+   public csz a(int $$0, boolean $$1) throws CommandSyntaxException {
+      csz $$2 = new csz(this.b, $$0);
+      if ($$1 && $$0 > $$2.i()) {
+         throw a.create(this.b(), $$2.i());
+      } else {
+         $$2.a(this.c);
+         return $$2;
+      }
+   }
 
-         @Override
-         public <T> void a(jy<T> $$0, T $$1x) {
-            $$2.a($$0, $$1);
-         }
-
-         @Override
-         public void a(ty $$0) {
-            $$1.add(cuq.a(jz.a, $$0));
-         }
-      });
-      jx $$3 = $$2.a();
-      if (!$$3.b()) {
-         $$1.add($$3::a);
+   public String a(iy.a $$0) {
+      StringBuilder $$1 = new StringBuilder(this.b());
+      String $$2 = this.b($$0);
+      if (!$$2.isEmpty()) {
+         $$1.append('[');
+         $$1.append($$2);
+         $$1.append(']');
       }
 
-      return ac.a($$1);
+      return $$1.toString();
    }
 
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      return this.a.a($$0);
+   private String b(iy.a $$0) {
+      DynamicOps<ux> $$1 = $$0.a(uo.a);
+      return this.c.c().flatMap($$1x -> {
+         jz<?> $$2 = $$1x.a();
+         akh $$3 = ld.as.b($$2);
+         Optional<ux> $$4 = $$1x.a($$1).result();
+         return $$3 != null && !$$4.isEmpty() ? Stream.of($$3.toString() + "=" + $$4.get()) : Stream.empty();
+      }).collect(Collectors.joining(String.valueOf(',')));
+   }
+
+   private String b() {
+      return this.b.e().map(akg::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
    }
 }

@@ -1,7 +1,8 @@
-public interface grh<T> {
-   int e();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   T b(ayd var1);
-
-   void a(grc var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface grh {
 }

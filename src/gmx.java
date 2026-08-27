@@ -1,29 +1,156 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gmx implements gms {
-   public static final Codec<gmx> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gmx::new)
-   );
-   private final String c;
-   private final String d;
+public class gmx extends gmj implements gmk, gna {
+   private static final Logger g = LogUtils.getLogger();
+   @Deprecated
+   public static final akh e = cpf.x;
+   @Deprecated
+   public static final akh f = new akh("textures/atlas/particles.png");
+   private List<gms> h = List.of();
+   private List<gmy.a> i = List.of();
+   private Map<akh, gmy> j = Map.of();
+   @Nullable
+   private gmy k;
+   private final akh l;
+   private final int m;
+   private int n;
+   private int o;
+   private int p;
 
-   public gmx(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public gmx(akh $$0) {
+      this.l = $$0;
+      this.m = RenderSystem.maxSupportedTextureSize();
    }
 
    @Override
-   public void a(ato $$0, gms.a $$1) {
-      ajy $$2 = new ajy("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         akf $$4 = $$2.b($$2x).d(this.d);
-         $$1.a($$4, $$3);
-      });
+   public void a(atr $$0) {
+   }
+
+   public void a(gmt.a $$0) {
+      g.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.l});
+      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
+      this.n = $$0.b();
+      this.o = $$0.c();
+      this.p = $$0.d();
+      this.f();
+      this.j = Map.copyOf($$0.f());
+      this.k = this.j.get(gmo.b());
+      if (this.k == null) {
+         throw new IllegalStateException("Atlas '" + this.l + "' (" + this.j.size() + " sprites) has no missing texture sprite");
+      } else {
+         List<gms> $$1 = new ArrayList<>();
+         List<gmy.a> $$2 = new ArrayList<>();
+
+         for (gmy $$3 : $$0.f().values()) {
+            $$1.add($$3.e());
+
+            try {
+               $$3.j();
+            } catch (Throwable var9) {
+               o $$5 = o.a(var9, "Stitching texture atlas");
+               p $$6 = $$5.a("Texture being stitched together");
+               $$6.a("Atlas path", this.l);
+               $$6.a("Sprite", $$3);
+               throw new y($$5);
+            }
+
+            gmy.a $$7 = $$3.f();
+            if ($$7 != null) {
+               $$2.add($$7);
+            }
+         }
+
+         this.h = List.copyOf($$1);
+         this.i = List.copyOf($$2);
+      }
    }
 
    @Override
-   public gmu a() {
-      return gmv.b;
+   public void a(akh $$0, Path $$1) throws IOException {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.p, this.n, this.o);
+      a($$1, $$2, this.j);
+   }
+
+   private static void a(Path $$0, String $$1, Map<akh, gmy> $$2) {
+      Path $$3 = $$0.resolve($$1 + ".txt");
+
+      try (Writer $$4 = Files.newBufferedWriter($$3)) {
+         for (Entry<akh, gmy> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
+            gmy $$6 = $$5.getValue();
+            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
+         }
+      } catch (IOException var10) {
+         g.warn("Failed to write file {}", $$3, var10);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.c();
+
+      for (gmy.a $$0 : this.i) {
+         $$0.a();
+      }
+   }
+
+   @Override
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::d);
+      } else {
+         this.d();
+      }
+   }
+
+   public gmy a(akh $$0) {
+      gmy $$1 = this.j.getOrDefault($$0, this.k);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
+      } else {
+         return $$1;
+      }
+   }
+
+   public void f() {
+      this.h.forEach(gms::close);
+      this.i.forEach(gmy.a::close);
+      this.h = List.of();
+      this.i = List.of();
+      this.j = Map.of();
+      this.k = null;
+   }
+
+   public akh g() {
+      return this.l;
+   }
+
+   public int h() {
+      return this.m;
+   }
+
+   int i() {
+      return this.n;
+   }
+
+   int j() {
+      return this.o;
+   }
+
+   public void b(gmt.a $$0) {
+      this.a(false, $$0.d() > 0);
    }
 }

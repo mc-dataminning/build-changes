@@ -1,30 +1,48 @@
-public class bsn extends bsg {
-   private final double b;
-   private final double c;
+import java.util.EnumSet;
+import java.util.Set;
 
-   public bsn(String $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
-      } else if ($$1 < $$2) {
-         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
-      } else if ($$1 > $$3) {
-         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
+public enum bsn {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   public static final Set<bsn> f = Set.of(values());
+   public static final Set<bsn> g = Set.of(e, d);
+   private final int h;
+
+   private bsn(int $$0) {
+      this.h = $$0;
+   }
+
+   private int a() {
+      return 1 << this.h;
+   }
+
+   private boolean b(int $$0) {
+      return ($$0 & this.a()) == this.a();
+   }
+
+   public static Set<bsn> a(int $$0) {
+      Set<bsn> $$1 = EnumSet.noneOf(bsn.class);
+
+      for (bsn $$2 : values()) {
+         if ($$2.b($$0)) {
+            $$1.add($$2);
+         }
       }
+
+      return $$1;
    }
 
-   public double d() {
-      return this.b;
-   }
+   public static int a(Set<bsn> $$0) {
+      int $$1 = 0;
 
-   public double e() {
-      return this.c;
-   }
+      for (bsn $$2 : $$0) {
+         $$1 |= $$2.a();
+      }
 
-   @Override
-   public double a(double $$0) {
-      return Double.isNaN($$0) ? this.b : axw.a($$0, this.b, this.c);
+      return $$1;
    }
 }

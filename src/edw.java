@@ -1,72 +1,47 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class edw extends eec {
-   public static final Codec<edw> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, edw::new));
+public class edw extends edz {
+   public static final Codec<edw> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(edw::new, $$0 -> $$0.d).codec();
+   private static final is b = is.d;
+   private static final is[] c = is.c.a.a().filter($$0 -> $$0 != b.g()).toArray(is[]::new);
+   private final float d;
 
-   public edw(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public edw(float $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected eed<?> a() {
-      return eed.e;
+   protected eea<?> a() {
+      return eea.d;
    }
 
    @Override
-   public List<eck.a> a(daa $$0, BiConsumer<im, dpy> $$1, ayd $$2, int $$3, im $$4, ebu $$5) {
-      List<eck.a> $$6 = Lists.newArrayList();
-      im $$7 = $$4.d();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.h(), $$5);
-      a($$0, $$1, $$2, $$7.f(), $$5);
-      a($$0, $$1, $$2, $$7.f().h(), $$5);
-      ir $$8 = ir.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
+   public void a(edz.a $$0) {
+      ayg $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<in> $$2 = $$0.d();
+         List<in> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<in> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<in> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), ddg.pe.n().a(dcy.b, b));
+               $$0.a().a($$6.get(), dno.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
 
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         im $$19 = new im($$14, $$18, $$15);
-         if (eag.b($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.h(), $$5);
-            this.b($$0, $$1, $$2, $$19.f(), $$5);
-            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
-         }
-      }
-
-      $$6.add(new eck.a(new im($$14, $$16, $$15), 0, true));
-
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new im($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
-               }
-
-               $$6.add(new eck.a(new im($$14 + $$20, $$16, $$15 + $$21), 0, false));
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     $$1x.a(dnj.c.a($$1.a(599)));
+                  }
+               });
             }
          }
       }
-
-      return $$6;
    }
 }

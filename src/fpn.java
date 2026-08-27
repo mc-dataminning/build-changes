@@ -1,102 +1,264 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
+import java.util.Collection;
+import java.util.Locale;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fpn extends fkt {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<ake<czu>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(czu.h, -13408734);
-      $$0.put(czu.i, -10075085);
-      $$0.put(czu.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final boe d;
-
+public class fpn extends fld {
+   private static final wu c = wu.c("gui.socialInteractions.title");
+   private static final akh d = new akh("social_interactions/background");
+   private static final akh r = new akh("icon/search");
+   private static final wu s = wu.c("gui.socialInteractions.tab_all");
+   private static final wu u = wu.c("gui.socialInteractions.tab_hidden");
+   private static final wu v = wu.c("gui.socialInteractions.tab_blocked");
+   private static final wu w = s.e().a(n.t);
+   private static final wu x = u.e().a(n.t);
+   private static final wu y = v.e().a(n.t);
+   private static final wu z = wu.c("gui.socialInteractions.search_hint").a(n.u).a(n.h);
+   static final wu A = wu.c("gui.socialInteractions.search_empty").a(n.h);
+   private static final wu B = wu.c("gui.socialInteractions.empty_hidden").a(n.h);
+   private static final wu C = wu.c("gui.socialInteractions.empty_blocked").a(n.h);
+   private static final wu D = wu.c("gui.socialInteractions.blocking_hint");
+   private static final int E = 8;
+   private static final int F = 236;
+   private static final int G = 16;
+   private static final int H = 64;
+   public static final int a = 72;
+   public static final int b = 88;
+   private static final int I = 238;
+   private static final int J = 20;
+   private static final int K = 36;
+   private final fir L = new fir(this);
    @Nullable
-   public static fpn a(fcu $$0, BooleanConsumer $$1, DataFixer $$2, enq.c $$3, boolean $$4) {
-      try {
-         fpt $$5 = $$0.x();
-         asz $$6 = atc.a($$3);
+   private final fld M;
+   fpm N;
+   ffn O;
+   private String P = "";
+   private fpn.a Q = fpn.a.a;
+   private ffe R;
+   private ffe S;
+   private ffe T;
+   private ffe U;
+   @Nullable
+   private wu V;
+   private int W;
+   private boolean X;
 
-         fpn var10;
-         try (alb $$7 = $$5.a($$3.h(), false, $$6)) {
-            enw $$8 = $$7.d();
-            jj.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new fpn($$1, $$2, $$3, $$8.J(), $$4, $$9);
-         }
-
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
-      }
+   public fpn() {
+      this(null);
    }
 
-   private fpn(BooleanConsumer $$0, DataFixer $$1, enq.c $$2, czy $$3, boolean $$4, jj $$5) {
-      super(ws.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.d = new boe($$2, $$1, $$5, $$4, false);
+   public fpn(@Nullable fld $$0) {
+      super(c);
+      this.M = $$0;
+      this.a(fde.Q());
+   }
+
+   private int m() {
+      return Math.max(52, this.o - 128 - 16);
+   }
+
+   private int C() {
+      return 80 + this.m() - 8;
+   }
+
+   private int D() {
+      return (this.n - 238) / 2;
+   }
+
+   @Override
+   public wu i() {
+      return (wu)(this.V != null ? wt.a(super.i(), this.V) : super.i());
    }
 
    @Override
    protected void aM_() {
-      super.aM_();
-      this.c(feu.a(wr.e, $$0 -> {
-         this.d.a();
-         this.c.accept(false);
-      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
+      this.L.a(c, this.p);
+      if (this.X) {
+         this.N.a(this.n, this.m(), 0, 88);
+      } else {
+         this.N = new fpm(this, this.m, this.n, this.m(), 88, 36);
+      }
+
+      int $$0 = this.N.b() / 3;
+      int $$1 = this.N.r();
+      int $$2 = this.N.s();
+      this.R = this.c(ffe.a(s, $$0x -> this.a(fpn.a.a)).a($$1, 45, $$0, 20).a());
+      this.S = this.c(ffe.a(u, $$0x -> this.a(fpn.a.b)).a(($$1 + $$2 - $$0) / 2 + 1, 45, $$0, 20).a());
+      this.T = this.c(ffe.a(v, $$0x -> this.a(fpn.a.c)).a($$2 - $$0 + 1, 45, $$0, 20).a());
+      String $$3 = this.O != null ? this.O.a() : "";
+      this.O = new ffn(this.p, this.D() + 28, 74, 200, 15, z) {
+         @Override
+         protected xi aK_() {
+            return !fpn.this.O.a().isEmpty() && fpn.this.N.d() ? super.aK_().f(", ").b(fpn.A) : super.aK_();
+         }
+      };
+      this.O.f(16);
+      this.O.g(true);
+      this.O.g(-1);
+      this.O.a($$3);
+      this.O.c(z);
+      this.O.b(this::a);
+      this.c(this.O);
+      this.d(this.N);
+      this.U = this.c(ffe.a(D, fju.b(this, "https://aka.ms/javablocking")).a(this.n / 2 - 100, 64 + this.m(), 200, 20).a());
+      this.X = true;
+      this.a(this.Q);
+      this.L.b(ffe.a(wt.d, $$0x -> this.d()).a(200).a());
+      this.L.a($$1x -> {
+         ffc var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   public void e() {
-      if (this.d.b()) {
-         this.c.accept(true);
-      }
+   protected void c() {
+      this.L.a();
+      this.N.b(this.n, this.m(), 88);
+      this.O.c(this.D() + 28, 74);
+      int $$0 = this.N.r();
+      int $$1 = this.N.s();
+      int $$2 = this.N.b() / 3;
+      this.R.c($$0, 45);
+      this.S.c(($$0 + $$1 - $$2) / 2 + 1, 45);
+      this.T.c($$1 - $$2 + 1, 45);
+      this.U.c(this.n / 2 - 100, 64 + this.m());
+   }
+
+   @Override
+   protected void aC_() {
+      this.b(this.O);
    }
 
    @Override
    public void d() {
-      this.c.accept(false);
+      this.m.a(this.M);
+   }
+
+   private void a(fpn.a $$0) {
+      this.Q = $$0;
+      this.R.b(s);
+      this.S.b(u);
+      this.T.b(v);
+      boolean $$1 = false;
+      switch ($$0) {
+         case a:
+            this.R.b(w);
+            Collection<UUID> $$2 = this.m.s.h.o();
+            this.N.a($$2, this.N.n(), true);
+            break;
+         case b:
+            this.S.b(x);
+            Set<UUID> $$3 = this.m.aN().c();
+            $$1 = $$3.isEmpty();
+            this.N.a($$3, this.N.n(), false);
+            break;
+         case c:
+            this.T.b(y);
+            fpl $$4 = this.m.aN();
+            Set<UUID> $$5 = this.m.s.h.o().stream().filter($$4::e).collect(Collectors.toSet());
+            $$1 = $$5.isEmpty();
+            this.N.a($$5, this.N.n(), false);
+      }
+
+      fcw $$6 = this.m.aZ();
+      if (!this.O.a().isEmpty() && this.N.d() && !this.O.aI_()) {
+         $$6.c(A);
+      } else if ($$1) {
+         if ($$0 == fpn.a.b) {
+            $$6.c(B);
+         } else if ($$0 == fpn.a.c) {
+            $$6.c(C);
+         }
+      }
    }
 
    @Override
-   public void j() {
-      this.d.a();
+   public void b(fer $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = this.D() + 3;
+      $$0.a(d, $$4, 64, 236, this.m() + 16);
+      $$0.a(r, $$4 + 10, 76, 12, 12);
    }
 
    @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
+   public void a(fer $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      int $$4 = this.n / 2 - 150;
-      int $$5 = this.n / 2 + 150;
-      int $$6 = this.o / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
-      if (this.d.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.p, ws.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
-         $$0.b(this.p, ws.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.p, ws.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
+      this.a(this.m);
+      if (this.V != null) {
+         $$0.b(this.m.h, this.V, this.D() + 8, 35, -1);
+      }
 
-         for (ake<czu> $$9 : this.d.c()) {
-            int $$10 = axw.d(this.d.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
+      if (!this.N.d()) {
+         this.N.a($$0, $$1, $$2, $$3);
+      } else if (!this.O.a().isEmpty()) {
+         $$0.a(this.m.h, A, this.n / 2, (72 + this.C()) / 2, -1);
+      } else if (this.Q == fpn.a.b) {
+         $$0.a(this.m.h, B, this.n / 2, (72 + this.C()) / 2, -1);
+      } else if (this.Q == fpn.a.c) {
+         $$0.a(this.m.h, C, this.n / 2, (72 + this.C()) / 2, -1);
+      }
+
+      this.U.k = this.Q == fpn.a.c;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.O.aI_() && this.m.m.N.a($$0, $$1)) {
+         this.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   private void a(String $$0) {
+      $$0 = $$0.toLowerCase(Locale.ROOT);
+      if (!$$0.equals(this.P)) {
+         this.N.a($$0);
+         this.P = $$0;
+         this.a(this.Q);
+      }
+   }
+
+   private void a(fde $$0) {
+      int $$1 = $$0.L().n().size();
+      if (this.W != $$1) {
+         String $$2 = "";
+         fwk $$3 = $$0.S();
+         if ($$0.T()) {
+            $$2 = $$0.V().af();
+         } else if ($$3 != null) {
+            $$2 = $$3.a;
          }
 
-         int $$11 = this.d.f() + this.d.g();
-         ws $$12 = ws.a("optimizeWorld.progress.counter", $$11, this.d.e());
-         ws $$13 = ws.a("optimizeWorld.progress.percentage", axw.d(this.d.d() * 100.0F));
-         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+         if ($$1 > 1) {
+            this.V = wu.a("gui.socialInteractions.server_label.multiple", $$2, $$1);
+         } else {
+            this.V = wu.a("gui.socialInteractions.server_label.single", $$2, $$1);
+         }
+
+         this.W = $$1;
       }
+   }
+
+   public void a(fwh $$0) {
+      this.N.a($$0, this.Q);
+   }
+
+   public void a(UUID $$0) {
+      this.N.a($$0);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

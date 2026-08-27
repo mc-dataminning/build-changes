@@ -1,29 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 
-public class edj extends ecz {
-   public static final Codec<edj> b = bna.b(dpy.b).comapFlatMap(edj::a, $$0 -> $$0.c).fieldOf("entries").codec();
-   private final bna<dpy> c;
+public class edj<P extends edi> {
+   public static final edj<edr> a = a("simple_state_provider", edr.b);
+   public static final edj<eds> b = a("weighted_state_provider", eds.b);
+   public static final edj<edn> c = a("noise_threshold_provider", edn.b);
+   public static final edj<edm> d = a("noise_provider", edm.g);
+   public static final edj<edk> e = a("dual_noise_provider", edk.b);
+   public static final edj<edp> f = a("rotated_block_provider", edp.b);
+   public static final edj<edo> g = a("randomized_int_state_provider", edo.b);
+   private final Codec<P> h;
 
-   private static DataResult<edj> a(bna<dpy> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new edj($$0));
+   private static <P extends edi> edj<P> a(String $$0, Codec<P> $$1) {
+      return jj.a(ld.V, $$0, new edj<>($$1));
    }
 
-   public edj(bna<dpy> $$0) {
-      this.c = $$0;
+   private edj(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   public edj(bna.a<dpy> $$0) {
-      this($$0.a());
-   }
-
-   @Override
-   protected eda<?> a() {
-      return eda.b;
-   }
-
-   @Override
-   public dpy a(ayd $$0, im $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   public Codec<P> a() {
+      return this.h;
    }
 }

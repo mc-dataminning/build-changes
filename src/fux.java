@@ -1,17 +1,20 @@
-public class fux {
-   private final fuz a;
-   private final fuy b;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   private fux(fuz $$0, fuy $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class fux implements ats {
+   private Map<fuz, fvh> a = ImmutableMap.of();
+
+   public fvb a(fuz $$0) {
+      fvh $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No model for layer " + $$0);
+      } else {
+         return $$1.a();
+      }
    }
 
-   public fur a() {
-      return this.a.a().a(this.b.a, this.b.b);
-   }
-
-   public static fux a(fuz $$0, int $$1, int $$2) {
-      return new fux($$0, new fuy($$1, $$2));
+   @Override
+   public void a(atr $$0) {
+      this.a = ImmutableMap.copyOf(fuy.a());
    }
 }

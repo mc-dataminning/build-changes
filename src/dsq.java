@@ -1,18 +1,11 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
 import javax.annotation.Nullable;
 
 public interface dsq {
    @Nullable
-   ego a(egg var1);
+   dsp c(int var1, int var2);
 
-   void a(egg var1, ego var2);
+   default void a(dam $$0, jp $$1) {
+   }
 
-   LongSet b(egg var1);
-
-   void a(egg var1, long var2);
-
-   Map<egg, LongSet> h();
-
-   void b(Map<egg, LongSet> var1);
+   czj q();
 }

@@ -1,8 +1,42 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Comparator;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aqm {
+public class aqm<T> {
+   private final String i;
+   private final Comparator<T> j;
+   private final long k;
+   public static final aqm<azb> a = a("start", ($$0, $$1) -> 0);
+   public static final aqm<azb> b = a("dragon", ($$0, $$1) -> 0);
+   public static final aqm<czk> c = a("player", Comparator.comparingLong(czk::a));
+   public static final aqm<czk> d = a("forced", Comparator.comparingLong(czk::a));
+   public static final aqm<czk> e = a("light", Comparator.comparingLong(czk::a));
+   public static final aqm<in> f = a("portal", jr::i, 300);
+   public static final aqm<Integer> g = a("post_teleport", Integer::compareTo, 5);
+   public static final aqm<czk> h = a("unknown", Comparator.comparingLong(czk::a), 1);
+
+   public static <T> aqm<T> a(String $$0, Comparator<T> $$1) {
+      return new aqm<>($$0, $$1, 0L);
+   }
+
+   public static <T> aqm<T> a(String $$0, Comparator<T> $$1, int $$2) {
+      return new aqm<>($$0, $$1, (long)$$2);
+   }
+
+   protected aqm(String $$0, Comparator<T> $$1, long $$2) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+   }
+
+   @Override
+   public String toString() {
+      return this.i;
+   }
+
+   public Comparator<T> a() {
+      return this.j;
+   }
+
+   public long b() {
+      return this.k;
+   }
 }

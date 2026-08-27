@@ -1,24 +1,60 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class cbf extends cbn<brg> {
-   private static final long c = 32L;
-   private static final long d = 16L;
-   public static final int a = 32;
+public class cbf {
+   private static final cbf a = new cbf();
+   private final List<bsa> b;
+   private final Predicate<bsa> c;
 
-   @Override
-   public Set<cah<?>> a() {
-      return ImmutableSet.of(cah.L);
+   private cbf() {
+      this.b = List.of();
+      this.c = $$0 -> false;
    }
 
-   protected void a(aqe $$0, brg $$1) {
-      bsf<?> $$2 = $$1.dQ();
-      List<cgv> $$3 = $$0.a(cgv.class, $$1.cI().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<cgv> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
-      $$2.a(cah.L, $$4);
+   public cbf(bsa $$0, List<bsa> $$1) {
+      this.b = $$1;
+      Object2BooleanOpenHashMap<bsa> $$2 = new Object2BooleanOpenHashMap($$1.size());
+      Predicate<bsa> $$3 = $$1x -> ccj.b($$0, $$1x);
+      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
+   }
+
+   public static cbf a() {
+      return a;
+   }
+
+   public Optional<bsa> a(Predicate<bsa> $$0) {
+      for (bsa $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   public Iterable<bsa> b(Predicate<bsa> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public Stream<bsa> c(Predicate<bsa> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public boolean a(bsa $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
+   }
+
+   public boolean d(Predicate<bsa> $$0) {
+      for (bsa $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

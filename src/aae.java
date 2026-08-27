@@ -1,36 +1,26 @@
-public record aae(im c, int d, String e, int f) implements aaa {
-   public static final yq<vs, aae> a = aaa.a(aae::a, aae::new);
-   public static final aaa.b<aae> b = aaa.a("debug/game_test_add_marker");
+public record aae(akg<dva> c, etp d) implements aac {
+   public static final ys<vu, aae> a = aac.a(aae::a, aae::new);
+   public static final aac.b<aae> b = aac.a("debug/game_event");
 
-   private aae(vs $$0) {
-      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
+   private aae(vu $$0) {
+      this($$0.a(le.C), $$0.k());
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.a(this.e);
-      $$0.p(this.f);
+   private void a(vu $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aaa.b<aae> a() {
+   public aac.b<aae> a() {
       return b;
    }
 
-   public im b() {
+   public akg<dva> b() {
       return this.c;
    }
 
-   public int c() {
+   public etp c() {
       return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
    }
 }

@@ -1,57 +1,73 @@
-import java.util.Collection;
+public class gsp implements gsu {
+   private static final int a = 6000;
+   private static final wu b = wu.c("tutorial.find_tree.title");
+   private static final wu c = wu.c("tutorial.find_tree.description");
+   private final gst d;
+   private fhp e;
+   private int f;
 
-public abstract class gsp<E extends ffq.a<E>> extends ffq<E> {
-   protected gsp(int $$0, int $$1, int $$2, int $$3) {
-      super(fcu.Q(), $$0, $$1, $$2, $$3);
+   public gsp(gst $$0) {
+      this.d = $$0;
    }
 
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.l() != 0) {
-         this.a(this.d($$0));
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gsv.f);
+      } else {
+         if (this.f == 1) {
+            gaq $$0 = this.d.e().s;
+            if ($$0 != null && (b($$0) || a($$0))) {
+               this.d.a(gsv.e);
+               return;
+            }
+         }
+
+         if (this.f >= 6000 && this.e == null) {
+            this.e = new fhp(fhp.a.c, b, c, false);
+            this.d.e().aA().a(this.e);
+         }
       }
    }
 
-   public void b(int $$0) {
-      this.p($$0);
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
    }
 
    @Override
-   public int a() {
-      return 0;
+   public void a(fvw $$0, etn $$1) {
+      if ($$1.c() == etn.a.b) {
+         dqh $$2 = $$0.a_(((etl)$$1).a());
+         if ($$2.a(avr.aj)) {
+            this.d.a(gsv.c);
+         }
+      }
    }
 
    @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
+   public void a(csz $$0) {
+      if ($$0.a(avz.aM)) {
+         this.d.a(gsv.e);
+      }
    }
 
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
+   private static boolean b(gaq $$0) {
+      return $$0.ga().a_($$0x -> $$0x.a(avz.aM));
    }
 
-   @Override
-   public int l() {
-      return super.l();
-   }
+   public static boolean a(gaq $$0) {
+      for (iw<dde> $$1 : ld.e.c(avr.aj)) {
+         dde $$2 = $$1.a();
+         if ($$0.j().a(avm.a.b($$2)) > 0) {
+            return true;
+         }
+      }
 
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int r() {
-      return super.r();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void I() {
-      this.k();
+      return false;
    }
 }

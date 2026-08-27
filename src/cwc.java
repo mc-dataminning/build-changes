@@ -1,115 +1,101 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class cwc extends cvy {
-   private static final cwd a = cwd.a(csg.tX, csg.pt, csg.si, csg.ul, csg.um, csg.up, csg.un, csg.uq, csg.uo, csg.ur);
-   private static final cwd b = cwd.a(csg.oy);
-   private static final cwd c = cwd.a(csg.qY);
-   private static final Map<cry, cuu.a> d = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(csg.tX, cuu.a.b);
-      $$0.put(csg.pt, cuu.a.e);
-      $$0.put(csg.si, cuu.a.c);
-      $$0.put(csg.ul, cuu.a.d);
-      $$0.put(csg.um, cuu.a.d);
-      $$0.put(csg.up, cuu.a.d);
-      $$0.put(csg.un, cuu.a.d);
-      $$0.put(csg.uq, cuu.a.d);
-      $$0.put(csg.uo, cuu.a.d);
-      $$0.put(csg.ur, cuu.a.d);
-   });
-   private static final cwd e = cwd.a(csg.pu);
+public record cwc(List<cwc.a> c, float d, int e) {
+   public static final Codec<cwc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cwc.a.a.listOf().fieldOf("rules").forGetter(cwc::a),
+               axh.a(Codec.FLOAT, "default_mining_speed", 1.0F).forGetter(cwc::b),
+               axh.a(axh.i, "damage_per_block", Integer.valueOf(1)).forGetter(cwc::c)
+            )
+            .apply($$0, cwc::new)
+   );
+   public static final ys<wf, cwc> b = ys.a(cwc.a.b.a(yq.a()), cwc::a, yq.h, cwc::b, yq.f, cwc::c, cwc::new);
 
-   public cwc(cvw $$0) {
-      super($$0);
-   }
-
-   public boolean a(cnx $$0, czu $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
-      boolean $$6 = false;
-
-      for (int $$7 = 0; $$7 < $$0.b(); $$7++) {
-         csd $$8 = $$0.a($$7);
-         if (!$$8.d()) {
-            if (a.a($$8)) {
-               if ($$4) {
-                  return false;
-               }
-
-               $$4 = true;
-            } else if (c.a($$8)) {
-               if ($$6) {
-                  return false;
-               }
-
-               $$6 = true;
-            } else if (b.a($$8)) {
-               if ($$5) {
-                  return false;
-               }
-
-               $$5 = true;
-            } else if (e.a($$8)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else {
-               if (!($$8.f() instanceof cqx)) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
+   public float a(dqh $$0) {
+      for (cwc.a $$1 : this.c) {
+         if ($$1.d.isPresent() && $$0.a($$1.c)) {
+            return $$1.d.get();
          }
       }
 
-      return $$2 && $$3;
+      return this.d;
    }
 
-   public csd a(cnx $$0, jj $$1) {
-      cuu.a $$2 = cuu.a.a;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      IntList $$5 = new IntArrayList();
-
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         csd $$7 = $$0.a($$6);
-         if (!$$7.d()) {
-            if (a.a($$7)) {
-               $$2 = d.get($$7.f());
-            } else if (c.a($$7)) {
-               $$3 = true;
-            } else if (b.a($$7)) {
-               $$4 = true;
-            } else if ($$7.f() instanceof cqx) {
-               $$5.add(((cqx)$$7.f()).c().f());
-            }
+   public boolean b(dqh $$0) {
+      for (cwc.a $$1 : this.c) {
+         if ($$1.e.isPresent() && $$0.a($$1.c)) {
+            return $$1.e.get();
          }
       }
 
-      csd $$8 = new csd(csg.uv);
-      $$8.b(jz.J, new cuu($$2, $$5, IntList.of(), $$4, $$3));
-      return $$8;
+      return false;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public List<cwc.a> a() {
+      return this.c;
    }
 
-   @Override
-   public csd a(jj $$0) {
-      return new csd(csg.uv);
+   public float b() {
+      return this.d;
    }
 
-   @Override
-   public cwk<?> ao_() {
-      return cwk.h;
+   public int c() {
+      return this.e;
+   }
+
+   public static record a(ja<dde> c, Optional<Float> d, Optional<Boolean> e) {
+      public static final Codec<cwc.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  jl.a(le.f).fieldOf("blocks").forGetter(cwc.a::a),
+                  axh.a(axh.k, "speed").forGetter(cwc.a::b),
+                  axh.a(Codec.BOOL, "correct_for_drops").forGetter(cwc.a::c)
+               )
+               .apply($$0, cwc.a::new)
+      );
+      public static final ys<wf, cwc.a> b = ys.a(yq.c(le.f), cwc.a::a, yq.h.a(yq::a), cwc.a::b, yq.b.a(yq::a), cwc.a::c, cwc.a::new);
+
+      public static cwc.a a(List<dde> $$0, float $$1) {
+         return a($$0, Optional.of($$1), Optional.of(true));
+      }
+
+      public static cwc.a a(awg<dde> $$0, float $$1) {
+         return a($$0, Optional.of($$1), Optional.of(true));
+      }
+
+      public static cwc.a a(awg<dde> $$0) {
+         return a($$0, Optional.empty(), Optional.of(false));
+      }
+
+      public static cwc.a b(awg<dde> $$0, float $$1) {
+         return a($$0, Optional.of($$1), Optional.empty());
+      }
+
+      public static cwc.a b(List<dde> $$0, float $$1) {
+         return a($$0, Optional.of($$1), Optional.empty());
+      }
+
+      private static cwc.a a(awg<dde> $$0, Optional<Float> $$1, Optional<Boolean> $$2) {
+         return new cwc.a(ld.e.a($$0), $$1, $$2);
+      }
+
+      private static cwc.a a(List<dde> $$0, Optional<Float> $$1, Optional<Boolean> $$2) {
+         return new cwc.a(ja.a($$0.stream().map(dde::r).collect(Collectors.toList())), $$1, $$2);
+      }
+
+      public ja<dde> a() {
+         return this.c;
+      }
+
+      public Optional<Float> b() {
+         return this.d;
+      }
+
+      public Optional<Boolean> c() {
+         return this.e;
+      }
    }
 }

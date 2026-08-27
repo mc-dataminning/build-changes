@@ -1,25 +1,25 @@
-public class aej implements yz<abk> {
-   public static final yq<vs, aej> a = yz.a(aej::a, aej::new);
+public class aej implements zb<abm> {
+   public static final ys<vu, aej> a = zb.a(aej::a, aej::new);
    private final int b;
 
-   public aej(int $$0) {
-      this.b = $$0;
+   public aej(dry $$0) {
+      this.b = $$0.r();
    }
 
-   private aej(vs $$0) {
-      this.b = $$0.readByte();
+   private aej(vu $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vs $$0) {
-      $$0.k(this.b);
+   private void a(vu $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zb<aej> a() {
-      return afv.ax;
+   public zd<aej> a() {
+      return afx.av;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 

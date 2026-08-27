@@ -1,23 +1,27 @@
-public class giz extends ggm<clq> {
-   public static final akf a = new akf("textures/entity/trident.png");
-   private final ftw f;
+public class giz extends gid<ciw, ftz<ciw>> {
+   private static final akh a = new akh("textures/entity/slime/slime.png");
 
-   public giz(ggn.a $$0) {
-      super($$0);
-      this.f = new ftw($$0.a(fuq.bI));
+   public giz(ggx.a $$0) {
+      super($$0, new ftz<>($$0.a(fva.bs)), 0.25F);
+      this.a(new gln<>(this, $$0.f()));
    }
 
-   public void a(clq $$0, float $$1, float $$2, exn $$3, gbe $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(axw.i($$2, $$0.O, $$0.dD()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(axw.i($$2, $$0.P, $$0.dF()) + 90.0F));
-      exr $$6 = ghl.c($$4, this.f.a(this.a($$0)), false, $$0.H());
-      this.f.a($$3, $$6, $$5, gmf.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
+   public void a(ciw $$0, float $$1, float $$2, exx $$3, gbo $$4, int $$5) {
+      this.d = 0.25F * (float)$$0.gq();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public akf a(clq $$0) {
+   protected void a(ciw $$0, exx $$1, float $$2) {
+      float $$3 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$4 = (float)$$0.gq();
+      float $$5 = axz.i($$2, $$0.bX, $$0.e) / ($$4 * 0.5F + 1.0F);
+      float $$6 = 1.0F / ($$5 + 1.0F);
+      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
+   }
+
+   public akh a(ciw $$0) {
       return a;
    }
 }

@@ -1,94 +1,168 @@
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
-import java.util.function.IntSupplier;
-import org.joml.Matrix4f;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gbi implements AutoCloseable {
-   private final gau c;
-   public final evz a;
-   public final evz b;
-   private final List<IntSupplier> d = Lists.newArrayList();
-   private final List<String> e = Lists.newArrayList();
-   private final List<Integer> f = Lists.newArrayList();
-   private final List<Integer> g = Lists.newArrayList();
-   private Matrix4f h;
-   private final int i;
+public class gbi extends atw<gbi.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akh b = new akh("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
 
-   public gbi(atr $$0, String $$1, evz $$2, evz $$3, boolean $$4) throws IOException {
-      this.c = new gau($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
-      this.i = $$4 ? 9729 : 9728;
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   @Override
-   public void close() {
-      this.c.close();
+   public boolean b() {
+      return this.a() && !this.e;
    }
 
-   public final String a() {
-      return this.c.h();
+   public void d() {
+      this.d = true;
    }
 
-   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
-      this.e.add(this.e.size(), $$0);
-      this.d.add(this.d.size(), $$1);
-      this.f.add(this.f.size(), $$2);
-      this.g.add(this.g.size(), $$3);
+   public void e() {
+      this.e = true;
    }
 
-   public void a(Matrix4f $$0) {
-      this.h = $$0;
+   public void f() {
+      this.e = true;
+      this.f = true;
    }
 
-   public void a(float $$0) {
-      this.a.e();
-      float $$1 = (float)this.b.c;
-      float $$2 = (float)this.b.d;
-      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
-      this.c.a("DiffuseSampler", this.a::f);
+   public boolean g() {
+      return this.d && !this.e;
+   }
 
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.c.a(this.e.get($$3), this.d.get($$3));
-         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
+   public boolean h() {
+      return this.f;
+   }
+
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
+
+   @Nullable
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected gbi.a a(atr $$0, bma $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      $$1.a();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         $$1.a("compile_regex");
+         a($$5.getAsJsonArray("renderer"), $$2);
+         a($$5.getAsJsonArray("version"), $$3);
+         a($$5.getAsJsonArray("vendor"), $$4);
+         $$1.c();
       }
 
-      this.c.b("ProjMat").a(this.h);
-      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
-      this.c.b("OutSize").a($$1, $$2);
-      this.c.b("Time").a($$0);
-      fcu $$4 = fcu.Q();
-      this.c.b("ScreenSize").a((float)$$4.aO().k(), (float)$$4.aO().l());
-      this.c.g();
-      this.b.b(fcu.a);
-      this.b.a(false);
-      RenderSystem.depthFunc(519);
-      exi $$5 = exp.b().d();
-      $$5.a(exs.b.h, exl.m);
-      $$5.a(0.0, 0.0, 500.0).e();
-      $$5.a((double)$$1, 0.0, 500.0).e();
-      $$5.a((double)$$1, (double)$$2, 500.0).e();
-      $$5.a(0.0, (double)$$2, 500.0).e();
-      exj.b($$5.d());
-      RenderSystem.depthFunc(515);
-      this.c.f();
-      this.b.e();
-      this.a.d();
+      $$1.b();
+      return new gbi.a($$2, $$3, $$4);
+   }
 
-      for (Object $$6 : this.d) {
-         if ($$6 instanceof evz) {
-            ((evz)$$6).d();
+   protected void a(gbi.a $$0, atr $$1, bma $$2) {
+      this.c = $$0.a();
+   }
+
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(atr $$0, bma $$1) {
+      $$1.a("parse_json");
+      JsonObject $$2 = null;
+
+      try (Reader $$3 = $$0.openAsReader(b)) {
+         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
+      } catch (JsonSyntaxException | IOException var8) {
+         a.warn("Failed to load GPU warnlist");
+      }
+
+      $$1.c();
+      return $$2;
+   }
+
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
+
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
+
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
+
+            while ($$4.find()) {
+               $$2.add($$4.group());
+            }
          }
+
+         return String.join(", ", $$2);
       }
-   }
 
-   public gau b() {
-      return this.c;
-   }
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, ewq.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
+         }
 
-   public int c() {
-      return this.i;
+         String $$2 = a(this.b, ewq.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
+
+         String $$3 = a(this.c, ewq.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
+      }
    }
 }

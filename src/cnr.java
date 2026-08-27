@@ -1,7 +1,11 @@
+import java.util.Set;
+
 public interface cnr {
-   int a(int var1);
+   Set<akg<? extends jj<? extends cnr>>> bz = Set.of(le.G, le.f, le.v, le.Q);
 
-   void a(int var1, int var2);
+   cnu m();
 
-   int a();
+   default boolean a(cnu $$0) {
+      return this.m().a($$0);
+   }
 }

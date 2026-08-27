@@ -1,15 +1,19 @@
-public interface dab extends czx {
-   long aj();
+public class dab {
+   private static int[] a = new int[65536];
 
-   default float ap() {
-      return dtq.i[this.D_().b(this.aj())];
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   default float f(float $$0) {
-      return this.D_().a(this.aj());
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? -65281 : a[$$4];
    }
 
-   default int aq() {
-      return this.D_().b(this.aj());
+   public static int a() {
+      return a(0.5, 1.0);
    }
 }

@@ -1,20 +1,10 @@
-public class cyi extends cxn {
-   public cyi(cxn.a $$0, bqs... $$1) {
-      super($$0, avw.bl, $$1);
-   }
+public class cyi extends bny.a {
+   public final cyg a;
+   public final int b;
 
-   @Override
-   public int a(int $$0) {
-      return 5 + $$0 * 7;
-   }
-
-   @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public int a() {
-      return 3;
+   public cyi(cyg $$0, int $$1) {
+      super($$0.d());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

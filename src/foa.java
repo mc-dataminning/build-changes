@@ -1,251 +1,256 @@
-public class foa extends ffq<foa.a> {
-   static final akf a = new akf("transferable_list/select_highlighted");
-   static final akf m = new akf("transferable_list/select");
-   static final akf n = new akf("transferable_list/unselect_highlighted");
-   static final akf o = new akf("transferable_list/unselect");
-   static final akf p = new akf("transferable_list/move_up_highlighted");
-   static final akf q = new akf("transferable_list/move_up");
-   static final akf r = new akf("transferable_list/move_down_highlighted");
-   static final akf s = new akf("transferable_list/move_down");
-   static final ws u = ws.c("pack.incompatible");
-   static final ws v = ws.c("pack.incompatible.confirm.title");
-   private final ws w;
-   final fnz x;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public foa(fcu $$0, fnz $$1, int $$2, int $$3, ws $$4) {
-      super($$0, $$2, $$3, 33, 36);
-      this.x = $$1;
-      this.w = $$4;
-      this.e = false;
-      this.a(true, (int)(9.0F * 1.5F));
+public class foa extends fld {
+   public static final int a = 308;
+   public static final int b = 100;
+   public static final int c = 74;
+   public static final int d = 64;
+   private static final Logger s = LogUtils.getLogger();
+   private final fwm u = new fwm();
+   private final fld v;
+   protected foe r;
+   private fwl w;
+   private ffe x;
+   private ffe y;
+   private ffe z;
+   private fwk A;
+   private grf.b B;
+   @Nullable
+   private grf.a C;
+   private boolean D;
+
+   public foa(fld $$0) {
+      super(wu.c("multiplayer.title"));
+      this.v = $$0;
    }
 
    @Override
-   protected void a(feh $$0, int $$1, int $$2) {
-      ws $$3 = ws.i().b(this.w).a(n.t, n.r);
-      $$0.a(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.D() + 3, $$2), -1, false);
-   }
-
-   @Override
-   public int b() {
-      return this.g;
-   }
-
-   @Override
-   protected int p() {
-      return this.E() - 6;
-   }
-
-   @Override
-   protected void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      if (this.m()) {
-         int $$6 = 2;
-         int $$7 = this.r() - 2;
-         int $$8 = this.E() - 6 - 1;
-         int $$9 = $$1 - 2;
-         int $$10 = $$1 + $$3 + 2;
-         $$0.a($$7, $$9, $$8, $$10, $$4);
-         $$0.a($$7 + 1, $$9 + 1, $$8 - 1, $$10 - 1, $$5);
+   protected void aM_() {
+      if (this.D) {
+         this.r.a(this.n, this.o - 64 - 32, 0, 32);
       } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         this.D = true;
+         this.w = new fwl(this.m);
+         this.w.a();
+         this.B = new grf.b();
+
+         try {
+            this.C = new grf.a(this.B);
+            this.C.start();
+         } catch (Exception var8) {
+            s.warn("Unable to start LAN server detection: {}", var8.getMessage());
+         }
+
+         this.r = new foe(this, this.m, this.n, this.o - 64 - 32, 32, 36);
+         this.r.a(this.w);
+      }
+
+      this.c(this.r);
+      this.y = this.c(ffe.a(wu.c("selectServer.select"), $$0 -> this.m()).a(100).a());
+      ffe $$1 = this.c(ffe.a(wu.c("selectServer.direct"), $$0 -> {
+         this.A = new fwk(goe.a("selectServer.defaultName"), "", fwk.c.c);
+         this.m.a(new fkd(this, this::g, this.A));
+      }).a(100).a());
+      ffe $$2 = this.c(ffe.a(wu.c("selectServer.add"), $$0 -> {
+         this.A = new fwk(goe.a("selectServer.defaultName"), "", fwk.c.c);
+         this.m.a(new fkf(this, this::f, this.A));
+      }).a(100).a());
+      this.x = this.c(ffe.a(wu.c("selectServer.edit"), $$0 -> {
+         foe.a $$1x = this.r.h();
+         if ($$1x instanceof foe.d) {
+            fwk $$2x = ((foe.d)$$1x).c();
+            this.A = new fwk($$2x.a, $$2x.b, fwk.c.c);
+            this.A.b($$2x);
+            this.m.a(new fkf(this, this::e, this.A));
+         }
+      }).a(74).a());
+      this.z = this.c(ffe.a(wu.c("selectServer.delete"), $$0 -> {
+         foe.a $$1x = this.r.h();
+         if ($$1x instanceof foe.d) {
+            String $$2x = ((foe.d)$$1x).c().a;
+            if ($$2x != null) {
+               wu $$3x = wu.c("selectServer.deleteQuestion");
+               wu $$4x = wu.a("selectServer.deleteWarning", $$2x);
+               wu $$5x = wu.c("selectServer.deleteButton");
+               wu $$6x = wt.e;
+               this.m.a(new fjv(this::c, $$3x, $$4x, $$5x, $$6x));
+            }
+         }
+      }).a(74).a());
+      ffe $$3 = this.c(ffe.a(wu.c("selectServer.refresh"), $$0 -> this.F()).a(74).a());
+      ffe $$4 = this.c(ffe.a(wt.k, $$0 -> this.d()).a(74).a());
+      fiv $$5 = fiv.d();
+      fio $$6 = $$5.a(new fio(308, 20, fio.b.a));
+      $$6.a(this.y);
+      $$6.a($$1);
+      $$6.a($$2);
+      $$5.a(fiw.b(4));
+      fio $$7 = $$5.a(new fio(308, 20, fio.b.a));
+      $$7.a(this.x);
+      $$7.a(this.z);
+      $$7.a($$3);
+      $$7.a($$4);
+      $$5.a();
+      fip.a($$5, 0, this.o - 64, this.n, 64);
+      this.C();
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.v);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      List<gre> $$0 = this.B.a();
+      if ($$0 != null) {
+         this.r.a($$0);
+      }
+
+      this.u.a();
+   }
+
+   @Override
+   public void j() {
+      if (this.C != null) {
+         this.C.interrupt();
+         this.C = null;
+      }
+
+      this.u.b();
+      this.r.d();
+   }
+
+   private void F() {
+      this.m.a(new foa(this.v));
+   }
+
+   private void c(boolean $$0) {
+      foe.a $$1 = this.r.h();
+      if ($$0 && $$1 instanceof foe.d) {
+         this.w.a(((foe.d)$$1).c());
+         this.w.b();
+         this.r.a(null);
+         this.r.a(this.w);
+      }
+
+      this.m.a(this);
+   }
+
+   private void e(boolean $$0) {
+      foe.a $$1 = this.r.h();
+      if ($$0 && $$1 instanceof foe.d) {
+         fwk $$2 = ((foe.d)$$1).c();
+         $$2.a = this.A.a;
+         $$2.b = this.A.b;
+         $$2.b(this.A);
+         this.w.b();
+         this.r.a(this.w);
+      }
+
+      this.m.a(this);
+   }
+
+   private void f(boolean $$0) {
+      if ($$0) {
+         fwk $$1 = this.w.b(this.A.b);
+         if ($$1 != null) {
+            $$1.a(this.A);
+            this.w.b();
+         } else {
+            this.w.a(this.A, false);
+            this.w.b();
+         }
+
+         this.r.a(null);
+         this.r.a(this.w);
+      }
+
+      this.m.a(this);
+   }
+
+   private void g(boolean $$0) {
+      if ($$0) {
+         fwk $$1 = this.w.a(this.A.b);
+         if ($$1 == null) {
+            this.w.a(this.A, true);
+            this.w.b();
+            this.a(this.A);
+         } else {
+            this.a($$1);
+         }
+      } else {
+         this.m.a(this);
       }
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (this.h() != null) {
-         switch ($$0) {
-            case 32:
-            case 257:
-               this.h().c();
-               return true;
-            default:
-               if (fkt.s()) {
-                  switch ($$0) {
-                     case 264:
-                        this.h().f();
-                        return true;
-                     case 265:
-                        this.h().e();
-                        return true;
-                  }
-               }
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   public static class a extends ffq.a<foa.a> {
-      private static final int b = 157;
-      private static final int c = 157;
-      private static final String d = "...";
-      private final foa e;
-      protected final fcu a;
-      private final fny.a f;
-      private final axi g;
-      private final ffn h;
-      private final axi i;
-      private final ffn j;
-
-      public a(fcu $$0, foa $$1, fny.a $$2) {
-         this.a = $$0;
-         this.f = $$2;
-         this.e = $$1;
-         this.g = a($$0, $$2.d());
-         this.h = b($$0, $$2.g());
-         this.i = a($$0, foa.u);
-         this.j = b($$0, $$2.b().b());
-      }
-
-      private static axi a(fcu $$0, ws $$1) {
-         int $$2 = $$0.h.a($$1);
-         if ($$2 > 157) {
-            wx $$3 = wx.a($$0.h.a($$1, 157 - $$0.h.b("...")), wx.e("..."));
-            return tt.a().a($$3);
-         } else {
-            return $$1.g();
-         }
-      }
-
-      private static ffn b(fcu $$0, ws $$1) {
-         return ffn.a($$0.h, $$1, 157, 2);
-      }
-
-      @Override
-      public ws a() {
-         return ws.a("narrator.select", this.f.d());
-      }
-
-      @Override
-      public void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         asx $$10 = this.f.b();
-         if (!$$10.a()) {
-            $$0.a($$3 - 1, $$2 - 1, $$3 + $$4 - 3, $$2 + $$5 + 1, -8978432);
-         }
-
-         $$0.a(this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         axi $$11 = this.g;
-         ffn $$12 = this.h;
-         if (this.d() && (this.a.m.Z().c() || $$8 || this.e.h() == this && this.e.aI_())) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$13 = $$6 - $$3;
-            int $$14 = $$7 - $$2;
-            if (!this.f.b().a()) {
-               $$11 = this.i;
-               $$12 = this.j;
-            }
-
-            if (this.f.o()) {
-               if ($$13 < 32) {
-                  $$0.a(foa.a, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(foa.m, $$3, $$2, 32, 32);
-               }
-            } else {
-               if (this.f.p()) {
-                  if ($$13 < 16) {
-                     $$0.a(foa.n, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(foa.o, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.q()) {
-                  if ($$13 < 32 && $$13 > 16 && $$14 < 16) {
-                     $$0.a(foa.p, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(foa.q, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.r()) {
-                  if ($$13 < 32 && $$13 > 16 && $$14 > 16) {
-                     $$0.a(foa.r, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(foa.s, $$3, $$2, 32, 32);
-                  }
-               }
-            }
-         }
-
-         $$0.b(this.a.h, $$11, $$3 + 32 + 2, $$2 + 1, 16777215);
-         $$12.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
-      }
-
-      public String b() {
-         return this.f.c();
-      }
-
-      private boolean d() {
-         return !this.f.h() || !this.f.i();
-      }
-
-      public void c() {
-         if (this.f.o() && this.h()) {
-            this.e.x.a(this.e);
-         } else if (this.f.p()) {
-            this.f.k();
-            this.e.x.a(this.e);
-         }
-      }
-
-      void e() {
-         if (this.f.q()) {
-            this.f.l();
-         }
-      }
-
-      void f() {
-         if (this.f.r()) {
-            this.f.m();
-         }
-      }
-
-      private boolean h() {
-         if (this.f.b().a()) {
-            this.f.j();
+      if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 == 294) {
+         this.F();
+         return true;
+      } else if (this.r.h() != null) {
+         if (fjf.a($$0)) {
+            this.m();
             return true;
          } else {
-            ws $$0 = this.f.b().c();
-            this.a.a(new fjl($$0x -> {
-               this.a.a(this.e.x);
-               if ($$0x) {
-                  this.f.j();
-               }
-            }, foa.v, $$0));
-            return false;
+            return this.r.a($$0, $$1, $$2);
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void a(fer $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+   }
+
+   public void m() {
+      foe.a $$0 = this.r.h();
+      if ($$0 instanceof foe.d) {
+         this.a(((foe.d)$$0).c());
+      } else if ($$0 instanceof foe.c) {
+         gre $$1 = ((foe.c)$$0).b();
+         this.a(new fwk($$1.a(), $$1.b(), fwk.c.a));
+      }
+   }
+
+   private void a(fwk $$0) {
+      fjw.a(this, this.m, fxn.a($$0.b), $$0, false, null);
+   }
+
+   public void a(foe.a $$0) {
+      this.r.a($$0);
+      this.C();
+   }
+
+   protected void C() {
+      this.y.j = false;
+      this.x.j = false;
+      this.z.j = false;
+      foe.a $$0 = this.r.h();
+      if ($$0 != null && !($$0 instanceof foe.b)) {
+         this.y.j = true;
+         if ($$0 instanceof foe.d) {
+            this.x.j = true;
+            this.z.j = true;
          }
       }
+   }
 
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         double $$3 = $$0 - (double)this.e.r();
-         double $$4 = $$1 - (double)this.e.g(this.e.aE_().indexOf(this));
-         if (this.d() && $$3 <= 32.0) {
-            this.e.x.m();
-            if (this.f.o()) {
-               this.h();
-               return true;
-            }
+   public fwm D() {
+      return this.u;
+   }
 
-            if ($$3 < 16.0 && this.f.p()) {
-               this.f.k();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
-               this.f.l();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
-               this.f.m();
-               return true;
-            }
-         }
-
-         return super.a($$0, $$1, $$2);
-      }
+   public fwl E() {
+      return this.w;
    }
 }

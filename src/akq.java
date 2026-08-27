@@ -1,13 +1,15 @@
-public final class akq extends RuntimeException {
-   public static final akq a = new akq();
+import java.util.List;
 
-   private akq() {
-      this.setStackTrace(new StackTraceElement[0]);
-   }
+public enum akq {
+   a,
+   b,
+   c,
+   d;
 
-   @Override
-   public synchronized Throwable fillInStackTrace() {
-      this.setStackTrace(new StackTraceElement[0]);
-      return this;
+   private static final List<akq> e = List.of(values());
+   private static final jk.b f = jk.a(ld.aw);
+
+   public static jd<akq> a() {
+      return new jd<>(e).a(a, f);
    }
 }

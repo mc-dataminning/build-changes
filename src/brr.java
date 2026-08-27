@@ -1,48 +1,46 @@
-import java.util.EnumSet;
-import java.util.Set;
-
-public enum brr {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4);
-
-   public static final Set<brr> f = Set.of(values());
-   public static final Set<brr> g = Set.of(e, d);
-   private final int h;
-
-   private brr(int $$0) {
-      this.h = $$0;
+public abstract class brr extends bsc {
+   protected brr(brn<? extends brr> $$0, dad $$1) {
+      super($$0, $$1);
    }
 
-   private int a() {
-      return 1 << this.h;
+   @Override
+   protected void a(double $$0, boolean $$1, dqh $$2, in $$3) {
    }
 
-   private boolean b(int $$0) {
-      return ($$0 & this.a()) == this.a();
-   }
+   @Override
+   public void a(etp $$0) {
+      if (this.cY()) {
+         if (this.bc()) {
+            this.a(0.02F, $$0);
+            this.a(bsf.a, this.dq());
+            this.g(this.dq().a(0.8F));
+         } else if (this.bq()) {
+            this.a(0.02F, $$0);
+            this.a(bsf.a, this.dq());
+            this.g(this.dq().a(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aC()) {
+               $$1 = this.dN().a_(this.aI()).b().h() * 0.91F;
+            }
 
-   public static Set<brr> a(int $$0) {
-      Set<brr> $$1 = EnumSet.noneOf(brr.class);
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aC()) {
+               $$1 = this.dN().a_(this.aI()).b().h() * 0.91F;
+            }
 
-      for (brr $$2 : values()) {
-         if ($$2.b($$0)) {
-            $$1.add($$2);
+            this.a(this.aC() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(bsf.a, this.dq());
+            this.g(this.dq().a((double)$$1));
          }
       }
 
-      return $$1;
+      this.r(false);
    }
 
-   public static int a(Set<brr> $$0) {
-      int $$1 = 0;
-
-      for (brr $$2 : $$0) {
-         $$1 |= $$2.a();
-      }
-
-      return $$1;
+   @Override
+   public boolean q_() {
+      return false;
    }
 }

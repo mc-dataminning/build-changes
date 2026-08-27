@@ -1,55 +1,41 @@
-import java.security.PublicKey;
+public record aif(int b, ais c) implements zb<aie> {
+   public static final ys<vu, aif> a = zb.a(aif::a, aif::new);
+   private static final int d = 1048576;
 
-public class aif implements yz<aic> {
-   public static final yq<vs, aif> a = yz.a(aif::a, aif::new);
-   private final String b;
-   private final byte[] c;
-   private final byte[] d;
-   private final boolean e;
-
-   public aif(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   private aif(vu $$0) {
+      this($$0.l(), a($$0.q(), $$0));
    }
 
-   private aif(vs $$0) {
-      this.b = $$0.d(20);
-      this.c = $$0.b();
-      this.d = $$0.b();
-      this.e = $$0.readBoolean();
+   private static ais a(akh $$0, vu $$1) {
+      return b($$0, $$1);
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   private static aiu b(akh $$0, vu $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 1048576) {
+         $$1.j($$2);
+         return new aiu($$0);
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c.a());
+      this.c.a($$0);
    }
 
    @Override
-   public zb<aif> a() {
-      return aii.c;
+   public zd<aif> a() {
+      return aik.a;
    }
 
-   public void a(aic $$0) {
+   public void a(aie $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.b;
-   }
-
-   public PublicKey e() throws awv {
-      return awu.a(this.c);
-   }
-
-   public byte[] f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
+   public ais e() {
+      return this.c;
    }
 }

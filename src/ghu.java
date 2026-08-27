@@ -1,18 +1,107 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class ghu<T extends chk> extends ggw<T> {
+   private static final gpg g = gpg.c("item_frame", "map=false");
+   private static final gpg h = gpg.c("item_frame", "map=true");
+   private static final gpg i = gpg.c("glow_item_frame", "map=false");
+   private static final gpg j = gpg.c("glow_item_frame", "map=true");
+   public static final int a = 5;
+   public static final int f = 30;
+   private final ghv k;
+   private final gci l;
 
-public class ghu extends ght<cdg, frk<cdg>> {
-   private static final Map<cdg.a, akf> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cdg.a.b, new akf("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(cdg.a.a, new akf("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public ghu(ggn.a $$0) {
-      super($$0, new frk<>($$0.a(fuq.aC)), 0.7F);
-      this.a(new gkt<>(this, $$0.c()));
+   public ghu(ggx.a $$0) {
+      super($$0);
+      this.k = $$0.b();
+      this.l = $$0.c();
    }
 
-   public akf a(cdg $$0) {
-      return a.get($$0.u());
+   protected int a(T $$0, in $$1) {
+      return $$0.ai() == brn.V ? Math.max(5, super.a($$0, $$1)) : super.a($$0, $$1);
+   }
+
+   public void a(T $$0, float $$1, float $$2, exx $$3, gbo $$4, int $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$3.a();
+      is $$6 = $$0.cF();
+      etp $$7 = this.a($$0, $$2);
+      $$3.a(-$$7.a(), -$$7.b(), -$$7.c());
+      double $$8 = 0.46875;
+      $$3.a((double)$$6.j() * 0.46875, (double)$$6.k() * 0.46875, (double)$$6.l() * 0.46875);
+      $$3.a(a.b.rotationDegrees($$0.dF()));
+      $$3.a(a.d.rotationDegrees(180.0F - $$0.dD()));
+      boolean $$9 = $$0.cf();
+      csz $$10 = $$0.E();
+      if (!$$9) {
+         gpf $$11 = this.l.a().a();
+         gpg $$12 = this.a($$0, $$10);
+         $$3.a();
+         $$3.a(-0.5F, -0.5F, -0.5F);
+         this.l.b().a($$3.c(), $$4.getBuffer(gcd.h()), null, $$11.a($$12), 1.0F, 1.0F, 1.0F, $$5, gmp.d);
+         $$3.b();
+      }
+
+      if (!$$10.d()) {
+         enn $$13 = $$0.G();
+         if ($$9) {
+            $$3.a(0.0F, 0.0F, 0.5F);
+         } else {
+            $$3.a(0.0F, 0.0F, 0.4375F);
+         }
+
+         int $$14 = $$13 != null ? $$0.I() % 4 * 2 : $$0.I();
+         $$3.a(a.f.rotationDegrees((float)$$14 * 360.0F / 8.0F));
+         if ($$13 != null) {
+            $$3.a(a.f.rotationDegrees(180.0F));
+            float $$15 = 0.0078125F;
+            $$3.b(0.0078125F, 0.0078125F, 0.0078125F);
+            $$3.a(-64.0F, -64.0F, 0.0F);
+            enp $$16 = cth.a($$13, $$0.dN());
+            $$3.a(0.0F, 0.0F, -1.0F);
+            if ($$16 != null) {
+               int $$17 = this.a($$0, 15728850, $$5);
+               fde.Q().j.j().a($$3, $$4, $$13, $$16, true, $$17);
+            }
+         } else {
+            int $$18 = this.a($$0, 15728880, $$5);
+            $$3.b(0.5F, 0.5F, 0.5F);
+            this.k.a($$10, csw.i, $$18, gmp.d, $$3, $$4, $$0.dN(), $$0.aj());
+         }
+      }
+
+      $$3.b();
+   }
+
+   private int a(T $$0, int $$1, int $$2) {
+      return $$0.ai() == brn.V ? $$1 : $$2;
+   }
+
+   private gpg a(T $$0, csz $$1) {
+      boolean $$2 = $$0.ai() == brn.V;
+      if ($$1.a(ctc.rU)) {
+         return $$2 ? j : h;
+      } else {
+         return $$2 ? i : g;
+      }
+   }
+
+   public etp a(T $$0, float $$1) {
+      return new etp((double)((float)$$0.cF().j() * 0.3F), -0.25, (double)((float)$$0.cF().l() * 0.3F));
+   }
+
+   public akh a(T $$0) {
+      return gmx.e;
+   }
+
+   protected boolean b(T $$0) {
+      if (fde.M() && !$$0.E().d() && $$0.E().b(ka.f) && this.c.c == $$0) {
+         double $$1 = this.c.b($$0);
+         float $$2 = $$0.bW() ? 32.0F : 64.0F;
+         return $$1 < (double)($$2 * $$2);
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(T $$0, wu $$1, exx $$2, gbo $$3, int $$4, float $$5) {
+      super.a($$0, $$0.E().w(), $$2, $$3, $$4, $$5);
    }
 }

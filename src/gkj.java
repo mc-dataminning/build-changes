@@ -1,24 +1,24 @@
-public abstract class gkj<T extends bql & brq, M extends frr<T>> extends gky<T, M> {
-   public gkj(gii<T, M> $$0) {
+public class gkj extends gli<cid, frz<cid>> {
+   private final gci a;
+
+   public gkj(gis<cid, frz<cid>> $$0, gci $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(exn $$0, gbe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ai + $$6;
-         frr<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         exr $$12 = $$1.getBuffer(gbm.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, gmf.d, 0.5F, 0.5F, 0.5F, 1.0F);
+   public void a(exx $$0, gbo $$1, int $$2, cid $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      dqh $$10 = $$3.gp();
+      if ($$10 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, gmp.d);
+         $$0.b();
       }
    }
-
-   protected abstract float a(float var1);
-
-   protected abstract akf a();
-
-   protected abstract frr<T> b();
 }

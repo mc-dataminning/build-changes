@@ -1,44 +1,45 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.PropertyMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
-public record cvd(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
-   private static final Codec<cvd> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axe.a(axe.u, "name").forGetter(cvd::c), axe.a(jp.a, "id").forGetter(cvd::d), axe.a(axe.t, "properties", new PropertyMap()).forGetter(cvd::e)
-            )
-            .apply($$0, cvd::new)
-   );
-   public static final Codec<cvd> a = axe.a(g, axe.u, $$0 -> new cvd(Optional.of($$0), Optional.empty(), new PropertyMap()));
-   public static final yq<ByteBuf, cvd> b = yq.a(yo.b(16).a(yo::a), cvd::c, jp.g.a(yo::a), cvd::d, yo.s, cvd::e, cvd::new);
+public class cvd {
+   public static final akg<cvc> a = a("quartz");
+   public static final akg<cvc> b = a("iron");
+   public static final akg<cvc> c = a("netherite");
+   public static final akg<cvc> d = a("redstone");
+   public static final akg<cvc> e = a("copper");
+   public static final akg<cvc> f = a("gold");
+   public static final akg<cvc> g = a("emerald");
+   public static final akg<cvc> h = a("diamond");
+   public static final akg<cvc> i = a("lapis");
+   public static final akg<cvc> j = a("amethyst");
 
-   public cvd(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   public static void a(ql<cvc> $$0) {
+      a($$0, a, ctc.oB, xr.a.a(14931140), 0.1F);
+      a($$0, b, ctc.oE, xr.a.a(15527148), 0.2F, Map.of(cqq.c, "iron_darker"));
+      a($$0, c, ctc.oJ, xr.a.a(6445145), 0.3F, Map.of(cqq.g, "netherite_darker"));
+      a($$0, d, ctc.lH, xr.a.a(9901575), 0.4F);
+      a($$0, e, ctc.oG, xr.a.a(11823181), 0.5F);
+      a($$0, f, ctc.oI, xr.a.a(14594349), 0.6F, Map.of(cqq.d, "gold_darker"));
+      a($$0, g, ctc.oz, xr.a.a(1155126), 0.7F);
+      a($$0, h, ctc.oy, xr.a.a(7269586), 0.8F, Map.of(cqq.e, "diamond_darker"));
+      a($$0, i, ctc.oA, xr.a.a(4288151), 0.9F);
+      a($$0, j, ctc.oC, xr.a.a(10116294), 1.0F);
    }
 
-   public cvd(GameProfile $$0) {
-      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
+   public static Optional<iw.c<cvc>> a(iy.a $$0, csz $$1) {
+      return $$0.b(le.aO).b().filter($$1x -> $$1.a(((cvc)$$1x.a()).b())).findFirst();
    }
 
-   public CompletableFuture<cvd> a() {
-      return this.b() ? CompletableFuture.completedFuture(this) : dop.a(this.c.orElseThrow()).thenApply($$0 -> {
-         GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ac.e, this.c.get()));
-         return new cvd($$1);
-      });
+   private static void a(ql<cvc> $$0, akg<cvc> $$1, csu $$2, xr $$3, float $$4) {
+      a($$0, $$1, $$2, $$3, $$4, Map.of());
    }
 
-   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      GameProfile $$3 = new GameProfile($$1.orElse(ac.e), $$0.orElse(""));
-      $$3.getProperties().putAll($$2);
-      return $$3;
+   private static void a(ql<cvc> $$0, akg<cvc> $$1, csu $$2, xr $$3, float $$4, Map<iw<cqp>, String> $$5) {
+      cvc $$6 = cvc.a($$1.a().a(), $$2, $$4, wu.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
+      $$0.a($$1, $$6);
    }
 
-   public boolean b() {
-      return this.d.isPresent() || !this.e.isEmpty() || this.c.isEmpty();
+   private static akg<cvc> a(String $$0) {
+      return akg.a(le.aO, new akh($$0));
    }
 }

@@ -1,36 +1,62 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class edo extends edq {
-   public static final Codec<edo> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(edo::new, $$0 -> $$0.b).codec();
-   private final float b;
+public class edo extends edi {
+   public static final Codec<edo> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               edi.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bor.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, edo::new)
+   );
+   private final edi c;
+   private final String d;
+   @Nullable
+   private drh e;
+   private final bor f;
 
-   public edo(float $$0) {
-      this.b = $$0;
-   }
+   public edo(edi $$0, drh $$1, bor $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
 
-   @Override
-   protected edr<?> a() {
-      return edr.c;
-   }
-
-   @Override
-   public void a(edq.a $$0) {
-      ayd $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<im> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (ir $$3x : ir.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  ir $$4 = $$3x.g();
-                  im $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, dcx.fC.n().a(dec.c, Integer.valueOf($$1.a(3))).a(dec.aE, $$3x));
-                  }
-               }
-            }
-         });
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
+         }
       }
+   }
+
+   public edo(edi $$0, String $$1, bor $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   protected edj<?> a() {
+      return edj.g;
+   }
+
+   @Override
+   public dqh a(ayg $$0, in $$1) {
+      dqh $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         this.e = a($$2, this.d);
+      }
+
+      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   private static drh a(dqh $$0, String $$1) {
+      Collection<drk<?>> $$2 = $$0.B();
+      Optional<drh> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof drh).map($$0x -> (drh)$$0x).findAny();
+      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

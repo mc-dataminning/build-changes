@@ -1,113 +1,136 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
 public class fdp {
-   public static final fdl a = fdl.a.a(0.5F)
-      .a()
-      .a("head", new fdk(fdk.d.b, new fdm(0.0F, fdn.b(180.0F, 0.0F, 0.0F), fdk.b.a)))
-      .a("head", new fdk(fdk.d.a, new fdm(0.0F, fdn.a(0.0F, 0.5F, 0.0F), fdk.b.a)))
-      .a("body", new fdk(fdk.d.b, new fdm(0.0F, fdn.b(180.0F, 0.0F, 0.0F), fdk.b.a)))
-      .a("body", new fdk(fdk.d.a, new fdm(0.0F, fdn.a(0.0F, 0.5F, 0.0F), fdk.b.a)))
-      .a("feet", new fdk(fdk.d.b, new fdm(0.0F, fdn.b(0.0F, 0.0F, 0.0F), fdk.b.a)))
-      .a("right_wing", new fdk(fdk.d.b, new fdm(0.0F, fdn.b(0.0F, -10.0F, 0.0F), fdk.b.a)))
-      .a("right_wing", new fdk(fdk.d.a, new fdm(0.0F, fdn.a(0.0F, 0.0F, 1.0F), fdk.b.a)))
-      .a("right_wing_tip", new fdk(fdk.d.b, new fdm(0.0F, fdn.b(0.0F, -120.0F, 0.0F), fdk.b.a)))
-      .a("left_wing", new fdk(fdk.d.b, new fdm(0.0F, fdn.b(0.0F, 10.0F, 0.0F), fdk.b.a)))
-      .a("left_wing", new fdk(fdk.d.a, new fdm(0.0F, fdn.a(0.0F, 0.0F, 1.0F), fdk.b.a)))
-      .a("left_wing_tip", new fdk(fdk.d.b, new fdm(0.0F, fdn.b(0.0F, 120.0F, 0.0F), fdk.b.a)))
-      .b();
-   public static final fdl b = fdl.a.a(0.5F)
-      .a()
-      .a(
-         "head",
-         new fdk(
-            fdk.d.b,
-            new fdm(0.0F, fdn.b(0.0F, 0.0F, 0.0F), fdk.b.a),
-            new fdm(0.125F, fdn.b(20.0F, 0.0F, 0.0F), fdk.b.a),
-            new fdm(0.5F, fdn.b(0.0F, 0.0F, 0.0F), fdk.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fdk(
-            fdk.d.a,
-            new fdm(0.0F, fdn.a(0.0F, 0.0F, 0.0F), fdk.b.a),
-            new fdm(0.125F, fdn.a(0.0F, 2.0F, 0.0F), fdk.b.a),
-            new fdm(0.25F, fdn.a(0.0F, 1.0F, 0.0F), fdk.b.a),
-            new fdm(0.375F, fdn.a(0.0F, 0.0F, 0.0F), fdk.b.a),
-            new fdm(0.4583F, fdn.a(0.0F, -1.0F, 0.0F), fdk.b.a),
-            new fdm(0.5F, fdn.a(0.0F, 0.0F, 0.0F), fdk.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fdk(
-            fdk.d.b,
-            new fdm(0.0F, fdn.b(40.0F, 0.0F, 0.0F), fdk.b.a),
-            new fdm(0.25F, fdn.b(52.5F, 0.0F, 0.0F), fdk.b.a),
-            new fdm(0.5F, fdn.b(40.0F, 0.0F, 0.0F), fdk.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fdk(
-            fdk.d.a,
-            new fdm(0.0F, fdn.a(0.0F, 0.0F, 0.0F), fdk.b.a),
-            new fdm(0.125F, fdn.a(0.0F, 2.0F, 0.0F), fdk.b.a),
-            new fdm(0.25F, fdn.a(0.0F, 1.0F, 0.0F), fdk.b.a),
-            new fdm(0.375F, fdn.a(0.0F, 0.0F, 0.0F), fdk.b.a),
-            new fdm(0.4583F, fdn.a(0.0F, -1.0F, 0.0F), fdk.b.a),
-            new fdm(0.5F, fdn.a(0.0F, 0.0F, 0.0F), fdk.b.a)
-         )
-      )
-      .a(
-         "feet",
-         new fdk(
-            fdk.d.b,
-            new fdm(0.0F, fdn.b(10.0F, 0.0F, 0.0F), fdk.b.a),
-            new fdm(0.125F, fdn.b(-21.25F, 0.0F, 0.0F), fdk.b.a),
-            new fdm(0.25F, fdn.b(-12.5F, 0.0F, 0.0F), fdk.b.a),
-            new fdm(0.5F, fdn.b(10.0F, 0.0F, 0.0F), fdk.b.a)
-         )
-      )
-      .a(
-         "right_wing",
-         new fdk(
-            fdk.d.b,
-            new fdm(0.0F, fdn.b(0.0F, 85.0F, 0.0F), fdk.b.a),
-            new fdm(0.125F, fdn.b(0.0F, -55.0F, 0.0F), fdk.b.a),
-            new fdm(0.25F, fdn.b(0.0F, 50.0F, 0.0F), fdk.b.a),
-            new fdm(0.375F, fdn.b(0.0F, 70.0F, 0.0F), fdk.b.a),
-            new fdm(0.5F, fdn.b(0.0F, 85.0F, 0.0F), fdk.b.a)
-         )
-      )
-      .a(
-         "right_wing_tip",
-         new fdk(
-            fdk.d.b,
-            new fdm(0.0F, fdn.b(0.0F, 10.5F, 0.0F), fdk.b.a),
-            new fdm(0.0417F, fdn.b(0.0F, 65.5F, 0.0F), fdk.b.a),
-            new fdm(0.2083F, fdn.b(0.0F, -135.0F, 0.0F), fdk.b.a),
-            new fdm(0.5F, fdn.b(0.0F, 10.5F, 0.0F), fdk.b.a)
-         )
-      )
-      .a(
-         "left_wing",
-         new fdk(
-            fdk.d.b,
-            new fdm(0.0F, fdn.b(0.0F, -85.0F, 0.0F), fdk.b.a),
-            new fdm(0.125F, fdn.b(0.0F, 55.0F, 0.0F), fdk.b.a),
-            new fdm(0.25F, fdn.b(0.0F, -50.0F, 0.0F), fdk.b.a),
-            new fdm(0.375F, fdn.b(0.0F, -70.0F, 0.0F), fdk.b.a),
-            new fdm(0.5F, fdn.b(0.0F, -85.0F, 0.0F), fdk.b.a)
-         )
-      )
-      .a(
-         "left_wing_tip",
-         new fdk(
-            fdk.d.b,
-            new fdm(0.0F, fdn.b(0.0F, -10.5F, 0.0F), fdk.b.a),
-            new fdm(0.0417F, fdn.b(0.0F, -65.5F, 0.0F), fdk.b.a),
-            new fdm(0.2083F, fdn.b(0.0F, 135.0F, 0.0F), fdk.b.a),
-            new fdm(0.5F, fdn.b(0.0F, -10.5F, 0.0F), fdk.b.a)
-         )
-      )
-      .b();
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "screenshots";
+   private int c;
+   private final DataOutputStream d;
+   private final byte[] e;
+   private final int f;
+   private final int g;
+   private File h;
+
+   public static void a(File $$0, ewj $$1, Consumer<wu> $$2) {
+      a($$0, null, $$1, $$2);
+   }
+
+   public static void a(File $$0, @Nullable String $$1, ewj $$2, Consumer<wu> $$3) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
+      } else {
+         b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private static void b(File $$0, @Nullable String $$1, ewj $$2, Consumer<wu> $$3) {
+      ewy $$4 = a($$2);
+      File $$5 = new File($$0, "screenshots");
+      $$5.mkdir();
+      File $$6;
+      if ($$1 == null) {
+         $$6 = a($$5);
+      } else {
+         $$6 = new File($$5, $$1);
+      }
+
+      ac.g().execute(() -> {
+         try {
+            $$4.a($$6);
+            wu $$3x = wu.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new ws(ws.a.b, $$6.getAbsolutePath())));
+            $$3.accept(wu.a("screenshot.success", $$3x));
+         } catch (Exception var7) {
+            b.warn("Couldn't save screenshot", var7);
+            $$3.accept(wu.a("screenshot.failure", var7.getMessage()));
+         } finally {
+            $$4.close();
+         }
+      });
+   }
+
+   public static ewy a(ewj $$0) {
+      int $$1 = $$0.c;
+      int $$2 = $$0.d;
+      ewy $$3 = new ewy($$1, $$2, false);
+      RenderSystem.bindTexture($$0.f());
+      $$3.a(0, true);
+      $$3.h();
+      return $$3;
+   }
+
+   private static File a(File $$0) {
+      String $$1 = ac.e();
+      int $$2 = 1;
+
+      while (true) {
+         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
+         if (!$$3.exists()) {
+            return $$3;
+         }
+
+         $$2++;
+      }
+   }
+
+   public fdp(File $$0, int $$1, int $$2, int $$3) throws IOException {
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      File $$4 = new File($$0, "screenshots");
+      $$4.mkdir();
+      String $$5 = "huge_" + ac.e();
+      int $$6 = 1;
+
+      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
+         $$6++;
+      }
+
+      byte[] $$7 = new byte[18];
+      $$7[2] = 2;
+      $$7[12] = (byte)($$1 % 256);
+      $$7[13] = (byte)($$1 / 256);
+      $$7[14] = (byte)($$2 % 256);
+      $$7[15] = (byte)($$2 / 256);
+      $$7[16] = 24;
+      this.e = new byte[$$1 * $$3 * 3];
+      this.d = new DataOutputStream(new FileOutputStream(this.h));
+      this.d.write($$7);
+   }
+
+   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$3;
+      int $$6 = $$4;
+      if ($$3 > this.f - $$1) {
+         $$5 = this.f - $$1;
+      }
+
+      if ($$4 > this.g - $$2) {
+         $$6 = this.g - $$2;
+      }
+
+      this.c = $$6;
+
+      for (int $$7 = 0; $$7 < $$6; $$7++) {
+         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
+         int $$8 = ($$1 + $$7 * this.f) * 3;
+         $$0.get(this.e, $$8, $$5 * 3);
+      }
+   }
+
+   public void a() throws IOException {
+      this.d.write(this.e, 0, this.f * 3 * this.c);
+   }
+
+   public File b() throws IOException {
+      this.d.close();
+      return this.h;
+   }
 }

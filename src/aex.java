@@ -1,30 +1,44 @@
-import java.util.Optional;
+import java.util.List;
 
-public record aex(String b, String c, int d, Optional<ws> e, Optional<yi> f) implements yz<abk> {
-   public static final yq<wd, aex> a = yq.a(yo.k, aex::b, yo.k, aex::e, yo.f, aex::f, wu.e, aex::g, yk.d, aex::h, aex::new);
+public class aex implements zb<abm> {
+   public static final ys<vu, aex> a = zb.a(aex::a, aex::new);
+   private final int b;
+   private final int[] c;
 
-   @Override
-   public zb<aex> a() {
-      return afv.aL;
+   public aex(brh $$0) {
+      this.b = $$0.aj();
+      List<brh> $$1 = $$0.cQ();
+      this.c = new int[$$1.size()];
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c[$$2] = $$1.get($$2).aj();
+      }
    }
 
-   public void a(abk $$0) {
+   private aex(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.c();
+   }
+
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zd<aex> a() {
+      return afx.aJ;
+   }
+
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public String e() {
+   public int[] b() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<ws> g() {
-      return this.e;
-   }
-
-   public Optional<yi> h() {
-      return this.f;
+   public int e() {
+      return this.b;
    }
 }

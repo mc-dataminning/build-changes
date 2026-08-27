@@ -1,58 +1,24 @@
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class ccb {
-   @Nullable
-   public static etf a(brm $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::h);
+public class ccb extends ccj<bsc> {
+   private static final long c = 32L;
+   private static final long d = 16L;
+   public static final int a = 32;
+
+   @Override
+   public Set<cbd<?>> a() {
+      return ImmutableSet.of(cbd.L);
    }
 
-   @Nullable
-   public static etf a(brm $$0, int $$1, int $$2, ToDoubleFunction<im> $$3) {
-      boolean $$4 = cbz.a($$0, $$1);
-      return ccc.a(() -> {
-         im $$4x = ccc.a($$0.ej(), $$1, $$2);
-         im $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
-   }
-
-   @Nullable
-   public static etf a(brm $$0, int $$1, int $$2, etf $$3) {
-      etf $$4 = $$3.a($$0.ds(), $$0.du(), $$0.dy());
-      boolean $$5 = cbz.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   public static etf b(brm $$0, int $$1, int $$2, etf $$3) {
-      etf $$4 = $$0.dl().d($$3);
-      boolean $$5 = cbz.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   private static etf a(brm $$0, int $$1, int $$2, etf $$3, boolean $$4) {
-      return ccc.a($$0, () -> {
-         im $$5 = ccc.a($$0.ej(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            im $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
-         }
-      });
-   }
-
-   @Nullable
-   public static im a(brm $$0, im $$1) {
-      $$1 = ccc.a($$1, $$0.dN().al(), $$1x -> cbz.c($$0, $$1x));
-      return !cbz.a($$0, $$1) && !cbz.b($$0, $$1) ? $$1 : null;
-   }
-
-   @Nullable
-   public static im a(brm $$0, int $$1, boolean $$2, im $$3) {
-      im $$4 = ccc.a($$0, $$1, $$0.ej(), $$3);
-      return !cbz.a($$4, $$0) && !cbz.a($$2, $$0, $$4) && !cbz.a($$0.K(), $$4) ? $$4 : null;
+   protected void a(aqh $$0, bsc $$1) {
+      btb<?> $$2 = $$1.dQ();
+      List<chr> $$3 = $$0.a(chr.class, $$1.cI().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<chr> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(cbd.L, $$4);
    }
 }

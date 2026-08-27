@@ -1,77 +1,97 @@
-public class coa extends cnh {
-   private static final int k = 9;
-   private static final int l = 9;
-   private static final int m = 36;
-   private static final int n = 36;
-   private static final int o = 45;
-   private final boj p;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   public coa(int $$0, ckk $$1) {
-      this($$0, $$1, new boz(9));
+public record coa(int c, float d, boolean e, float f, List<coa.b> g) {
+   private static final float h = 1.6F;
+   public static final Codec<coa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axh.i.fieldOf("nutrition").forGetter(coa::b),
+               Codec.FLOAT.fieldOf("saturation_modifier").forGetter(coa::c),
+               axh.a(Codec.BOOL, "can_always_eat", false).forGetter(coa::d),
+               axh.a(axh.k, "eat_seconds", 1.6F).forGetter(coa::e),
+               axh.a(coa.b.a.listOf(), "effects", List.of()).forGetter(coa::f)
+            )
+            .apply($$0, coa::new)
+   );
+   public static final ys<wf, coa> b = ys.a(yq.f, coa::b, yq.h, coa::c, yq.b, coa::d, yq.h, coa::e, coa.b.b.a(yq.a()), coa::f, coa::new);
+
+   public int a() {
+      return (int)(this.f * 20.0F);
    }
 
-   public coa(int $$0, ckk $$1, boj $$2) {
-      super(cop.g, $$0);
-      a($$2, 9);
-      this.p = $$2;
-      $$2.d_($$1.m);
+   public int b() {
+      return this.c;
+   }
 
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 3; $$4++) {
-            this.a(new cpd($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
-         }
+   public float c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public List<coa.b> f() {
+      return this.g;
+   }
+
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+      private float d = 1.6F;
+      private final Builder<coa.b> e = ImmutableList.builder();
+
+      public coa.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cpd($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
-         }
+      public coa.a a(float $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new cpd($$1, $$7, 8 + $$7 * 18, 142));
+      public coa.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public coa.a b() {
+         this.d = 0.8F;
+         return this;
+      }
+
+      public coa.a a(bqt $$0, float $$1) {
+         this.e.add(new coa.b($$0, $$1));
+         return this;
+      }
+
+      public coa c() {
+         return new coa(this.a, this.b, this.c, this.d, this.e.build());
       }
    }
 
-   @Override
-   public boolean a(ckl $$0) {
-      return this.p.a($$0);
-   }
+   public static record b(bqt c, float d) {
+      public static final Codec<coa.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bqt.d.fieldOf("effect").forGetter(coa.b::a), axh.a(Codec.floatRange(0.0F, 1.0F), "probability", 1.0F).forGetter(coa.b::b))
+               .apply($$0, coa.b::new)
+      );
+      public static final ys<wf, coa.b> b = ys.a(bqt.e, coa.b::a, yq.h, coa.b::b, coa.b::new);
 
-   @Override
-   public csd a(ckl $$0, int $$1) {
-      csd $$2 = csd.i;
-      cpd $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         csd $$4 = $$3.g();
-         $$2 = $$4.r();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return csd.i;
-            }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return csd.i;
-         }
-
-         if ($$4.d()) {
-            $$3.e(csd.i);
-         } else {
-            $$3.b();
-         }
-
-         if ($$4.G() == $$2.G()) {
-            return csd.i;
-         }
-
-         $$3.a($$0, $$4);
+      public bqt a() {
+         return new bqt(this.c);
       }
 
-      return $$2;
-   }
-
-   @Override
-   public void b(ckl $$0) {
-      super.b($$0);
-      this.p.c($$0);
+      public float b() {
+         return this.d;
+      }
    }
 }

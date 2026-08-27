@@ -1,69 +1,8 @@
-public class clm extends clk {
-   public clm(bqr<? extends clm> $$0, czu $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public clm(czu $$0, bre $$1) {
-      super(bqr.C, $$1, $$0);
-   }
-
-   public clm(czu $$0, double $$1, double $$2, double $$3) {
-      super(bqr.C, $$1, $$2, $$3, $$0);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dN()
-               .a(
-                  new ks(kw.Q, this.p()),
-                  this.ds(),
-                  this.du(),
-                  this.dy(),
-                  ((double)this.ah.i() - 0.5) * 0.08,
-                  ((double)this.ah.i() - 0.5) * 0.08,
-                  ((double)this.ah.i() - 0.5) * 0.08
-               );
-         }
-      }
-   }
-
-   @Override
-   protected void a(etc $$0) {
-      super.a($$0);
-      $$0.a().a(this.dO().b(this, this.u()), 0.0F);
-   }
-
-   @Override
-   protected void a(etd $$0) {
-      super.a($$0);
-      if (!this.dN().B) {
-         if (this.ah.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ah.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               ccy $$3 = bqr.t.a(this.dN());
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.ds(), this.du(), this.dy(), this.dD(), 0.0F);
-                  this.dN().b($$3);
-               }
-            }
-         }
-
-         this.dN().a(this, (byte)3);
-         this.am();
-      }
-   }
-
-   @Override
-   protected cry r() {
-      return csg.qR;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface clm {
 }

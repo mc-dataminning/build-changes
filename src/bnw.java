@@ -1,16 +1,52 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
 
-public interface bnw<P extends bnv> {
-   bnw<bns> a = a("constant", bns.b);
-   bnw<bob> b = a("uniform", bob.a);
-   bnw<bnn> c = a("biased_to_bottom", bnn.a);
-   bnw<bno> d = a("clamped", bno.a);
-   bnw<boc> e = a("weighted_list", boc.a);
-   bnw<bnq> f = a("clamped_normal", bnq.a);
+public class bnw<E> extends boa<bny.b<E>> {
+   public static <E> Codec<bnw<E>> a(Codec<E> $$0) {
+      return bny.b.a($$0).listOf().xmap(bnw::new, boa::e);
+   }
 
-   Codec<P> codec();
+   public static <E> Codec<bnw<E>> b(Codec<E> $$0) {
+      return axh.a(bny.b.a($$0).listOf()).xmap(bnw::new, boa::e);
+   }
 
-   static <P extends bnv> bnw<P> a(String $$0, Codec<P> $$1) {
-      return ji.a(lc.M, $$0, () -> $$1);
+   bnw(List<? extends bny.b<E>> $$0) {
+      super($$0);
+   }
+
+   public static <E> bnw.a<E> a() {
+      return new bnw.a<>();
+   }
+
+   public static <E> bnw<E> b() {
+      return new bnw<>(List.of());
+   }
+
+   public static <E> bnw<E> a(E $$0) {
+      return new bnw<>(List.of(bny.a($$0, 1)));
+   }
+
+   public Optional<E> a(ayg $$0) {
+      return this.b($$0).map(bny.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bny.b<E>> a = ImmutableList.builder();
+
+      public bnw.a<E> a(E $$0) {
+         return this.a($$0, 1);
+      }
+
+      public bnw.a<E> a(E $$0, int $$1) {
+         this.a.add(bny.a($$0, $$1));
+         return this;
+      }
+
+      public bnw<E> a() {
+         return new bnw<>(this.a.build());
+      }
    }
 }

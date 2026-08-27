@@ -1,15 +1,11 @@
-public class ggk extends ght<chi, frq<chi>> {
-   private static final akf a = new akf("textures/entity/endermite.png");
+public class ggk extends gid<cdw, fru<cdw>> {
+   private static final akh a = new akh("textures/entity/cow/cow.png");
 
-   public ggk(ggn.a $$0) {
-      super($$0, new frq<>($$0.a(fuq.Y)), 0.3F);
+   public ggk(ggx.a $$0) {
+      super($$0, new fru<>($$0.a(fva.G)), 0.7F);
    }
 
-   protected float a(chi $$0) {
-      return 180.0F;
-   }
-
-   public akf b(chi $$0) {
+   public akh a(cdw $$0) {
       return a;
    }
 }

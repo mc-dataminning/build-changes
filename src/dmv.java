@@ -1,97 +1,61 @@
-public class dmv {
-   public static final ake<dmt> a = a("base");
-   public static final ake<dmt> b = a("square_bottom_left");
-   public static final ake<dmt> c = a("square_bottom_right");
-   public static final ake<dmt> d = a("square_top_left");
-   public static final ake<dmt> e = a("square_top_right");
-   public static final ake<dmt> f = a("stripe_bottom");
-   public static final ake<dmt> g = a("stripe_top");
-   public static final ake<dmt> h = a("stripe_left");
-   public static final ake<dmt> i = a("stripe_right");
-   public static final ake<dmt> j = a("stripe_center");
-   public static final ake<dmt> k = a("stripe_middle");
-   public static final ake<dmt> l = a("stripe_downright");
-   public static final ake<dmt> m = a("stripe_downleft");
-   public static final ake<dmt> n = a("small_stripes");
-   public static final ake<dmt> o = a("cross");
-   public static final ake<dmt> p = a("straight_cross");
-   public static final ake<dmt> q = a("triangle_bottom");
-   public static final ake<dmt> r = a("triangle_top");
-   public static final ake<dmt> s = a("triangles_bottom");
-   public static final ake<dmt> t = a("triangles_top");
-   public static final ake<dmt> u = a("diagonal_left");
-   public static final ake<dmt> v = a("diagonal_up_right");
-   public static final ake<dmt> w = a("diagonal_up_left");
-   public static final ake<dmt> x = a("diagonal_right");
-   public static final ake<dmt> y = a("circle");
-   public static final ake<dmt> z = a("rhombus");
-   public static final ake<dmt> A = a("half_vertical");
-   public static final ake<dmt> B = a("half_horizontal");
-   public static final ake<dmt> C = a("half_vertical_right");
-   public static final ake<dmt> D = a("half_horizontal_bottom");
-   public static final ake<dmt> E = a("border");
-   public static final ake<dmt> F = a("curly_border");
-   public static final ake<dmt> G = a("gradient");
-   public static final ake<dmt> H = a("gradient_up");
-   public static final ake<dmt> I = a("bricks");
-   public static final ake<dmt> J = a("globe");
-   public static final ake<dmt> K = a("creeper");
-   public static final ake<dmt> L = a("skull");
-   public static final ake<dmt> M = a("flower");
-   public static final ake<dmt> N = a("mojang");
-   public static final ake<dmt> O = a("piglin");
-   public static final ake<dmt> P = a("flow");
-   public static final ake<dmt> Q = a("guster");
+import com.mojang.serialization.MapCodec;
 
-   private static ake<dmt> a(String $$0) {
-      return ake.a(ld.d, new akf($$0));
+public class dmv extends dde {
+   public static final MapCodec<dmv> a = b(dmv::new);
+
+   @Override
+   public MapCodec<dmv> a() {
+      return a;
    }
 
-   public static void a(qj<dmt> $$0) {
-      a($$0, a);
-      a($$0, b);
-      a($$0, c);
-      a($$0, d);
-      a($$0, e);
-      a($$0, f);
-      a($$0, g);
-      a($$0, h);
-      a($$0, i);
-      a($$0, j);
-      a($$0, k);
-      a($$0, l);
-      a($$0, m);
-      a($$0, n);
-      a($$0, o);
-      a($$0, p);
-      a($$0, q);
-      a($$0, r);
-      a($$0, s);
-      a($$0, t);
-      a($$0, u);
-      a($$0, v);
-      a($$0, w);
-      a($$0, x);
-      a($$0, y);
-      a($$0, z);
-      a($$0, A);
-      a($$0, B);
-      a($$0, C);
-      a($$0, D);
-      a($$0, E);
-      a($$0, F);
-      a($$0, G);
-      a($$0, H);
-      a($$0, I);
-      a($$0, J);
-      a($$0, K);
-      a($$0, L);
-      a($$0, M);
-      a($$0, N);
-      a($$0, O);
+   protected dmv(dqg.d $$0) {
+      super($$0);
    }
 
-   public static void a(qj<dmt> $$0, ake<dmt> $$1) {
-      $$0.a($$1, new dmt($$1.a(), "block.minecraft.banner." + $$1.a().e()));
+   @Override
+   protected void b(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
+      if ($$1.D_().i()) {
+         $$1.a($$2, ddg.aO.n(), 3);
+         $$1.c(2009, $$2, 0);
+         $$1.a(null, $$2, avc.BW, avd.e, 1.0F, (1.0F + $$1.E_().i() * 0.2F) * 0.7F);
+      }
+   }
+
+   @Override
+   public void a(dqh $$0, dad $$1, in $$2, ayg $$3) {
+      is $$4 = is.b($$3);
+      if ($$4 != is.b) {
+         in $$5 = $$2.a($$4);
+         dqh $$6 = $$1.a_($$5);
+         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
+            double $$7 = (double)$$2.u();
+            double $$8 = (double)$$2.v();
+            double $$9 = (double)$$2.w();
+            if ($$4 == is.a) {
+               $$8 -= 0.05;
+               $$7 += $$3.j();
+               $$9 += $$3.j();
+            } else {
+               $$8 += $$3.j() * 0.8;
+               if ($$4.o() == is.a.a) {
+                  $$9 += $$3.j();
+                  if ($$4 == is.f) {
+                     $$7++;
+                  } else {
+                     $$7 += 0.05;
+                  }
+               } else {
+                  $$7 += $$3.j();
+                  if ($$4 == is.d) {
+                     $$9++;
+                  } else {
+                     $$9 += 0.05;
+                  }
+               }
+            }
+
+            $$1.a(kx.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+         }
+      }
    }
 }

@@ -1,10 +1,11 @@
 public class avx {
-   public static final awd<cgr> a = a("placeable");
+   public static final awg<dva> a = a("vibrations");
+   public static final awg<dva> b = a("warden_can_listen");
+   public static final awg<dva> c = a("shrieker_can_listen");
+   public static final awg<dva> d = a("ignore_vibrations_sneaking");
+   public static final awg<dva> e = a("allay_can_listen");
 
-   private avx() {
-   }
-
-   private static awd<cgr> a(String $$0) {
-      return awd.a(ld.S, new akf($$0));
+   private static awg<dva> a(String $$0) {
+      return awg.a(le.C, new akh($$0));
    }
 }

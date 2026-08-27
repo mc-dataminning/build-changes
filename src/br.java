@@ -8,10 +8,10 @@ import javax.annotation.Nullable;
 public record br(
    Optional<bu> c,
    Optional<bi> d,
-   Optional<cq> e,
-   Optional<cq> f,
-   Optional<ct> g,
-   Optional<cu> h,
+   Optional<cr> e,
+   Optional<cr> f,
+   Optional<cu> g,
+   Optional<cv> h,
    Optional<bp> i,
    Optional<bo> j,
    Optional<bs> k,
@@ -19,31 +19,31 @@ public record br(
    Optional<br> m,
    Optional<br> n,
    Optional<String> o,
-   Optional<dh> p
+   Optional<di> p
 ) {
-   public static final Codec<br> a = axe.a(
+   public static final Codec<br> a = axh.a(
       "EntityPredicate",
       $$0 -> RecordCodecBuilder.create(
             $$1 -> $$1.group(
-                     axe.a(bu.a, "type").forGetter(br::a),
-                     axe.a(bi.a, "distance").forGetter(br::b),
-                     axe.a(cq.a, "location").forGetter(br::c),
-                     axe.a(cq.a, "stepping_on").forGetter(br::d),
-                     axe.a(ct.a, "effects").forGetter(br::e),
-                     axe.a(cu.a, "nbt").forGetter(br::f),
-                     axe.a(bp.a, "flags").forGetter(br::g),
-                     axe.a(bo.a, "equipment").forGetter(br::h),
-                     axe.a(bs.a, "type_specific").forGetter(br::i),
-                     axe.a($$0, "vehicle").forGetter(br::j),
-                     axe.a($$0, "passenger").forGetter(br::k),
-                     axe.a($$0, "targeted_entity").forGetter(br::l),
-                     axe.a(Codec.STRING, "team").forGetter(br::m),
-                     axe.a(dh.a, "slots").forGetter(br::n)
+                     axh.a(bu.a, "type").forGetter(br::a),
+                     axh.a(bi.a, "distance").forGetter(br::b),
+                     axh.a(cr.a, "location").forGetter(br::c),
+                     axh.a(cr.a, "stepping_on").forGetter(br::d),
+                     axh.a(cu.a, "effects").forGetter(br::e),
+                     axh.a(cv.c, "nbt").forGetter(br::f),
+                     axh.a(bp.a, "flags").forGetter(br::g),
+                     axh.a(bo.a, "equipment").forGetter(br::h),
+                     axh.a(bs.a, "type_specific").forGetter(br::i),
+                     axh.a($$0, "vehicle").forGetter(br::j),
+                     axh.a($$0, "passenger").forGetter(br::k),
+                     axh.a($$0, "targeted_entity").forGetter(br::l),
+                     axh.a(Codec.STRING, "team").forGetter(br::m),
+                     axh.a(di.a, "slots").forGetter(br::n)
                   )
                   .apply($$1, br::new)
          )
    );
-   public static final Codec<bc> b = axe.a(bc.a, a, br::a);
+   public static final Codec<bc> b = axh.a(bc.a, a, br::a);
 
    public static bc a(br.a $$0) {
       return a($$0.b());
@@ -58,15 +58,15 @@ public record br(
    }
 
    public static bc a(br $$0) {
-      erh $$1 = erk.a(eoa.b.a, $$0).build();
+      erq $$1 = ert.a(eol.b.a, $$0).build();
       return new bc(List.of($$1));
    }
 
-   public boolean a(aqf $$0, @Nullable bql $$1) {
+   public boolean a(aqi $$0, @Nullable brh $$1) {
       return this.a($$0.z(), $$0.dl(), $$1);
    }
 
-   public boolean a(aqe $$0, @Nullable etf $$1, @Nullable bql $$2) {
+   public boolean a(aqh $$0, @Nullable etp $$1, @Nullable brh $$2) {
       if ($$2 == null) {
          return false;
       } else if (this.c.isPresent() && !this.c.get().b($$2.ai())) {
@@ -84,7 +84,7 @@ public record br(
             return false;
          } else {
             if (this.f.isPresent()) {
-               etf $$3 = etf.b($$2.aJ());
+               etp $$3 = etp.b($$2.aJ());
                if (!this.f.get().a($$0, $$3.a(), $$3.b(), $$3.c())) {
                   return false;
                }
@@ -102,11 +102,11 @@ public record br(
                return false;
             } else if (this.m.isPresent() && $$2.cQ().stream().noneMatch($$2x -> this.m.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof brg ? ((brg)$$2).p() : null)) {
+            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof bsc ? ((bsc)$$2).p() : null)) {
                return false;
             } else {
                if (this.o.isPresent()) {
-                  eul $$4 = $$2.ch();
+                  euv $$4 = $$2.ch();
                   if ($$4 == null || !this.o.get().equals($$4.b())) {
                      return false;
                   }
@@ -118,9 +118,9 @@ public record br(
       }
    }
 
-   public static eoa b(aqf $$0, bql $$1) {
-      eog $$2 = new eog.a($$0.z()).a(eqt.a, $$1).a(eqt.f, $$0.dl()).a(eqs.m);
-      return new eoa.a($$2).a(Optional.empty());
+   public static eol b(aqi $$0, brh $$1) {
+      eoo $$2 = new eoo.a($$0.z()).a(erc.a, $$1).a(erc.f, $$0.dl()).a(erb.m);
+      return new eol.a($$2).a(Optional.empty());
    }
 
    public Optional<bu> a() {
@@ -131,19 +131,19 @@ public record br(
       return this.d;
    }
 
-   public Optional<cq> c() {
+   public Optional<cr> c() {
       return this.e;
    }
 
-   public Optional<cq> d() {
+   public Optional<cr> d() {
       return this.f;
    }
 
-   public Optional<ct> e() {
+   public Optional<cu> e() {
       return this.g;
    }
 
-   public Optional<cu> f() {
+   public Optional<cv> f() {
       return this.h;
    }
 
@@ -175,17 +175,17 @@ public record br(
       return this.o;
    }
 
-   public Optional<dh> n() {
+   public Optional<di> n() {
       return this.p;
    }
 
    public static class a {
       private Optional<bu> a = Optional.empty();
       private Optional<bi> b = Optional.empty();
-      private Optional<cq> c = Optional.empty();
-      private Optional<cq> d = Optional.empty();
-      private Optional<ct> e = Optional.empty();
-      private Optional<cu> f = Optional.empty();
+      private Optional<cr> c = Optional.empty();
+      private Optional<cr> d = Optional.empty();
+      private Optional<cu> e = Optional.empty();
+      private Optional<cv> f = Optional.empty();
       private Optional<bp> g = Optional.empty();
       private Optional<bo> h = Optional.empty();
       private Optional<bs> i = Optional.empty();
@@ -193,18 +193,18 @@ public record br(
       private Optional<br> k = Optional.empty();
       private Optional<br> l = Optional.empty();
       private Optional<String> m = Optional.empty();
-      private Optional<dh> n = Optional.empty();
+      private Optional<di> n = Optional.empty();
 
       public static br.a a() {
          return new br.a();
       }
 
-      public br.a a(bqr<?> $$0) {
+      public br.a a(brn<?> $$0) {
          this.a = Optional.of(bu.a($$0));
          return this;
       }
 
-      public br.a a(awd<bqr<?>> $$0) {
+      public br.a a(awg<brn<?>> $$0) {
          this.a = Optional.of(bu.a($$0));
          return this;
       }
@@ -219,22 +219,22 @@ public record br(
          return this;
       }
 
-      public br.a a(cq.a $$0) {
+      public br.a a(cr.a $$0) {
          this.c = Optional.of($$0.b());
          return this;
       }
 
-      public br.a b(cq.a $$0) {
+      public br.a b(cr.a $$0) {
          this.d = Optional.of($$0.b());
          return this;
       }
 
-      public br.a a(ct.a $$0) {
+      public br.a a(cu.a $$0) {
          this.e = $$0.b();
          return this;
       }
 
-      public br.a a(cu $$0) {
+      public br.a a(cv $$0) {
          this.f = Optional.of($$0);
          return this;
       }
@@ -279,7 +279,7 @@ public record br(
          return this;
       }
 
-      public br.a a(dh $$0) {
+      public br.a a(di $$0) {
          this.n = Optional.of($$0);
          return this;
       }

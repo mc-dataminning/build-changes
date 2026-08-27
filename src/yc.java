@@ -1,28 +1,119 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.List;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record yc(akf d) implements xu {
-   public static final MapCodec<yc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akf.a.fieldOf("storage").forGetter(yc::b)).apply($$0, yc::new));
-   public static final xu.a<yc> b = new xu.a<>(a, "storage");
+public class yc implements wv {
+   public static final MapCodec<yc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(yc::b), Codec.STRING.fieldOf("objective").forGetter(yc::d)).apply($$0, yc::new)
+   );
+   public static final MapCodec<yc> b = a.fieldOf("score");
+   public static final wv.a<yc> c = new wv.a<>(b, "score");
+   private final String d;
+   @Nullable
+   private final gs e;
+   private final String f;
 
-   @Override
-   public Stream<ty> a(ec $$0) {
-      ty $$1 = $$0.l().aL().a(this.d);
-      return Stream.of($$1);
+   @Nullable
+   private static gs a(String $$0) {
+      try {
+         return new gt(new StringReader($$0)).t();
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
+   }
+
+   public yc(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = a($$0);
+      this.f = $$1;
    }
 
    @Override
-   public xu.a<?> a() {
-      return b;
+   public wv.a<?> a() {
+      return c;
+   }
+
+   public String b() {
+      return this.d;
+   }
+
+   @Nullable
+   public gs c() {
+      return this.e;
+   }
+
+   public String d() {
+      return this.f;
+   }
+
+   private eus a(ed $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends brh> $$1 = this.e.b($$0);
+         if (!$$1.isEmpty()) {
+            if ($$1.size() != 1) {
+               throw eq.a.create();
+            }
+
+            return $$1.get(0);
+         }
+      }
+
+      return eus.c(this.d);
+   }
+
+   private xi a(eus $$0, ed $$1) {
+      MinecraftServer $$2 = $$1.l();
+      if ($$2 != null) {
+         eut $$3 = $$2.aK();
+         eul $$4 = $$3.a(this.f);
+         if ($$4 != null) {
+            eup $$5 = $$3.d($$0, $$4);
+            if ($$5 != null) {
+               return $$5.a($$4.a(yn.b));
+            }
+         }
+      }
+
+      return wu.i();
+   }
+
+   @Override
+   public xi a(@Nullable ed $$0, @Nullable brh $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 == null) {
+         return wu.i();
+      } else {
+         eus $$3 = this.a($$0);
+         eus $$4 = (eus)($$1 != null && $$3.equals(eus.cz) ? $$1 : $$3);
+         return this.a($$4, $$0);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof yc $$1 && this.d.equals($$1.d) && this.f.equals($$1.f)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.d.hashCode();
+      return 31 * $$0 + this.f.hashCode();
    }
 
    @Override
    public String toString() {
-      return "storage=" + this.d;
-   }
-
-   public akf b() {
-      return this.d;
+      return "score{name='" + this.d + "', objective='" + this.f + "'}";
    }
 }

@@ -7,27 +7,26 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
 
-public class gm implements ArgumentType<gm.a> {
-   private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "#stick", "#stick{foo:'bar'}");
-   private final gn b;
+public class gm implements ArgumentType<gn> {
+   private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
+   private final go b;
 
-   public gm(dy $$0) {
-      this.b = new gn($$0);
+   public gm(dz $$0) {
+      this.b = new go($$0);
    }
 
-   public static gm a(dy $$0) {
+   public static gm a(dz $$0) {
       return new gm($$0);
    }
 
-   public gm.a a(StringReader $$0) throws CommandSyntaxException {
-      Predicate<csd> $$1 = this.b.a($$0);
-      return $$1::test;
+   public gn a(StringReader $$0) throws CommandSyntaxException {
+      go.a $$1 = this.b.a($$0);
+      return new gn($$1.a(), $$1.b());
    }
 
-   public static gm.a a(CommandContext<ec> $$0, String $$1) {
-      return (gm.a)$$0.getArgument($$1, gm.a.class);
+   public static <S> gn a(CommandContext<S> $$0, String $$1) {
+      return (gn)$$0.getArgument($$1, gn.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -36,8 +35,5 @@ public class gm implements ArgumentType<gm.a> {
 
    public Collection<String> getExamples() {
       return a;
-   }
-
-   public interface a extends Predicate<csd> {
    }
 }

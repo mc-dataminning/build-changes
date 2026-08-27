@@ -1,37 +1,30 @@
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import java.util.function.Supplier;
 
-public enum fws {
-   a("generic"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery");
+public interface fws {
+   Codec<fws> a = ayt.a(fws.a::values).dispatch(fws::a, fws.a::a);
 
-   private final String k;
-   private final ws l;
-   private final ws m;
+   fws.a a();
 
-   private fws(String $$0) {
-      this.k = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = ws.c($$1);
-      this.m = ws.c($$1 + ".description");
-   }
+   public static enum a implements ayt {
+      a("player", () -> fwt.a.b),
+      b("system", () -> fwt.b.b);
 
-   public String a() {
-      return this.k;
-   }
+      private final String c;
+      private final Supplier<Codec<? extends fws>> d;
 
-   public ws b() {
-      return this.l;
-   }
+      private a(String $$0, Supplier<Codec<? extends fws>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
 
-   public ws c() {
-      return this.m;
+      private Codec<? extends fws> a() {
+         return this.d.get();
+      }
+
+      @Override
+      public String c() {
+         return this.c;
+      }
    }
 }

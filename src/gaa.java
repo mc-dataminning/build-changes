@@ -1,26 +1,118 @@
-public class gaa extends fxl {
-   private static final int a = 12235202;
-
-   protected gaa(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fzn $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)axg.b.b(12235202) / 255.0F;
-      this.w = (float)axg.b.c(12235202) / 255.0F;
-      this.x = (float)axg.b.d(12235202) / 255.0F;
+public class gaa extends gac {
+   gaa(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      float $$7 = this.r.i() * 0.1F + 0.2F;
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
+      this.j *= 0.02F;
+      this.k *= 0.02F;
+      this.l *= 0.02F;
+      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   public static class a implements fyv<kz> {
-      private final fzn a;
+   @Override
+   public fzg b() {
+      return fzg.b;
+   }
 
-      public a(fzn $$0) {
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.99;
+         this.k *= 0.99;
+         this.l *= 0.99;
+      }
+   }
+
+   public static class a implements fzf<la> {
+      private final fzx a;
+
+      public a(fzx $$0) {
          this.a = $$0;
       }
 
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ayd $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new gaa($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaa $$8 = new gaa($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         $$8.a(3 + $$1.E_().a(5));
+         return $$8;
+      }
+   }
+
+   public static class b implements fzf<la> {
+      private final fzx a;
+
+      public b(fzx $$0) {
+         this.a = $$0;
+      }
+
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaa $$8 = new gaa($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(0.3F, 0.5F, 1.0F);
+         $$8.a(this.a);
+         $$8.e(1.0F - $$1.z.i() * 0.7F);
+         $$8.a($$8.j() / 2);
+         return $$8;
+      }
+   }
+
+   public static class c implements fzf<la> {
+      private final fzx a;
+
+      public c(fzx $$0) {
+         this.a = $$0;
+      }
+
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaa $$8 = new gaa($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class d implements fzf<la> {
+      private final fzx a;
+
+      public d(fzx $$0) {
+         this.a = $$0;
+      }
+
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaa $$8 = new gaa($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class e implements fzf<la> {
+      private final fzx a;
+
+      public e(fzx $$0) {
+         this.a = $$0;
+      }
+
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaa $$8 = new gaa($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

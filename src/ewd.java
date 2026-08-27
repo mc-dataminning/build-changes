@@ -1,40 +1,196 @@
-import com.mojang.blaze3d.platform.GLX;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodHandles.Lookup;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.util.Objects;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.lwjgl.system.Pointer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Bitmap;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FT_GlyphSlot;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
 
-public class ewd {
+public class ewd implements ewa {
    @Nullable
-   private static final MethodHandle a = GLX.make(() -> {
-      try {
-         Lookup $$0 = MethodHandles.lookup();
-         Class<?> $$1 = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
-         Method $$2 = $$1.getDeclaredMethod("untrack", long.class);
-         $$2.setAccessible(true);
-         Field $$3 = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
-         $$3.setAccessible(true);
-         Object $$4 = $$3.get(null);
-         return $$1.isInstance($$4) ? $$0.unreflect($$2) : null;
-      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
-         throw new RuntimeException(var5);
-      }
-   });
+   private ByteBuffer b;
+   @Nullable
+   private FT_Face c;
+   final float d;
+   private final IntSet e = new IntArraySet();
 
-   public static void a(long $$0) {
-      if (a != null) {
-         try {
-            a.invoke((long)$$0);
-         } catch (Throwable var3) {
-            throw new RuntimeException(var3);
+   public ewd(ByteBuffer $$0, FT_Face $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      $$6.codePoints().forEach(this.e::add);
+      int $$7 = Math.round($$2 * $$3);
+      FreeType.FT_Set_Pixel_Sizes($$1, $$7, $$7);
+      float $$8 = $$4 * $$3;
+      float $$9 = -$$5 * $$3;
+      MemoryStack $$10 = MemoryStack.stackPush();
+
+      try {
+         FT_Vector $$11 = fif.a(FT_Vector.malloc($$10), $$8, $$9);
+         FreeType.FT_Set_Transform($$1, null, $$11);
+      } catch (Throwable var15) {
+         if ($$10 != null) {
+            try {
+               $$10.close();
+            } catch (Throwable var14) {
+               var15.addSuppressed(var14);
+            }
+         }
+
+         throw var15;
+      }
+
+      if ($$10 != null) {
+         $$10.close();
+      }
+   }
+
+   @Nullable
+   @Override
+   public evz a(int $$0) {
+      FT_Face $$1 = this.b();
+      if (this.e.contains($$0)) {
+         return null;
+      } else {
+         int $$2 = FreeType.FT_Get_Char_Index($$1, (long)$$0);
+         if ($$2 == 0) {
+            return null;
+         } else {
+            fif.a(FreeType.FT_Load_Glyph($$1, $$2, 4194312), "Loading glyph");
+            FT_GlyphSlot $$3 = Objects.requireNonNull($$1.glyph(), "Glyph not initialized");
+            float $$4 = fif.a($$3.advance());
+            FT_Bitmap $$5 = $$3.bitmap();
+            int $$6 = $$3.bitmap_left();
+            int $$7 = $$3.bitmap_top();
+            int $$8 = $$5.width();
+            int $$9 = $$5.rows();
+            return (evz)($$8 > 0 && $$9 > 0 ? new ewd.a((float)$$6, (float)$$7, $$8, $$9, $$4, $$2) : () -> $$4 / this.d);
          }
       }
    }
 
-   public static void a(Pointer $$0) {
-      a($$0.address());
+   FT_Face b() {
+      if (this.b != null && this.c != null) {
+         return this.c;
+      } else {
+         throw new IllegalStateException("Provider already closed");
+      }
+   }
+
+   @Override
+   public void close() {
+      if (this.c != null) {
+         fif.a(FreeType.FT_Done_Face(this.c), "Deleting face");
+         this.c = null;
+      }
+
+      MemoryUtil.memFree(this.b);
+      this.b = null;
+   }
+
+   @Override
+   public IntSet a() {
+      FT_Face $$0 = this.b();
+      IntSet $$1 = new IntOpenHashSet();
+      MemoryStack $$2 = MemoryStack.stackPush();
+
+      try {
+         IntBuffer $$3 = $$2.mallocInt(1);
+
+         for (long $$4 = FreeType.FT_Get_First_Char($$0, $$3); $$3.get(0) != 0; $$4 = FreeType.FT_Get_Next_Char($$0, $$4, $$3)) {
+            $$1.add((int)$$4);
+         }
+      } catch (Throwable var8) {
+         if ($$2 != null) {
+            try {
+               $$2.close();
+            } catch (Throwable var7) {
+               var8.addSuppressed(var7);
+            }
+         }
+
+         throw var8;
+      }
+
+      if ($$2 != null) {
+         $$2.close();
+      }
+
+      $$1.removeAll(this.e);
+      return $$1;
+   }
+
+   class a implements evz {
+      final int b;
+      final int c;
+      final float d;
+      final float e;
+      private final float f;
+      final int g;
+
+      a(float $$0, float $$1, int $$2, int $$3, float $$4, int $$5) {
+         this.b = $$2;
+         this.c = $$3;
+         this.f = $$4 / ewd.this.d;
+         this.d = $$0 / ewd.this.d;
+         this.e = $$1 / ewd.this.d;
+         this.g = $$5;
+      }
+
+      @Override
+      public float getAdvance() {
+         return this.f;
+      }
+
+      @Override
+      public fhz bake(Function<ewb, fhz> $$0) {
+         return $$0.apply(new ewb() {
+            @Override
+            public int a() {
+               return a.this.b;
+            }
+
+            @Override
+            public int b() {
+               return a.this.c;
+            }
+
+            @Override
+            public float d() {
+               return ewd.this.d;
+            }
+
+            @Override
+            public float i() {
+               return a.this.d;
+            }
+
+            @Override
+            public float j() {
+               return a.this.e;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               FT_Face $$2 = ewd.this.b();
+               ewy $$3 = new ewy(ewy.a.d, a.this.b, a.this.c, false);
+               $$3.a($$2, a.this.g);
+               $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, false, true);
+            }
+
+            @Override
+            public boolean c() {
+               return false;
+            }
+         });
+      }
    }
 }

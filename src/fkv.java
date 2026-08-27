@@ -1,37 +1,42 @@
-import javax.annotation.Nullable;
+public class fkv extends fld {
+   protected final fld b;
+   protected final fdi c;
+   public final fir d = new fir(this);
 
-public abstract class fkv extends fkl {
-   protected final fcx<?>[] r;
-   @Nullable
-   private fes a;
-   protected ffr s;
-
-   public fkv(fkt $$0, fcy $$1, ws $$2, fcx<?>[] $$3) {
-      super($$0, $$1, $$2);
-      this.r = $$3;
+   public fkv(fld $$0, fdi $$1, wu $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
    protected void aM_() {
-      this.s = this.c(new ffr(this.m, this.n, this.o, this));
-      this.s.a(this.r);
-      this.a = this.s.b(this.c.as());
-      if (this.a != null) {
-         this.a.j = this.m.aY().a();
-      }
+      this.m();
+      this.h();
+      this.d.a(this::c);
+      this.c();
+   }
 
-      super.aM_();
+   protected void m() {
+      this.d.a(this.l, this.p);
+   }
+
+   protected void h() {
+      this.d.b(ffe.a(wt.d, $$0 -> this.d()).a(200).a());
    }
 
    @Override
    protected void c() {
-      super.c();
-      this.s.a(this.n, this.d);
+      this.d.a();
    }
 
-   public void C() {
-      if (this.a instanceof ffb) {
-         ((ffb)this.a).a(this.c.as().c());
-      }
+   @Override
+   public void j() {
+      this.m.m.av();
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.b);
    }
 }

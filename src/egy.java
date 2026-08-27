@@ -1,70 +1,26 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class egy implements egl {
-   private final List<egk> a = Lists.newArrayList();
+public interface egy<S extends egp> {
+   egy<eii> a = a("buried_treasure", eii.d);
+   egy<eik> b = a("desert_pyramid", eik.d);
+   egy<eim> c = a("end_city", eim.d);
+   egy<eiv> d = a("fortress", eiv.e);
+   egy<eio> e = a("igloo", eio.d);
+   egy<eip> f = a("jigsaw", eip.g);
+   egy<eir> g = a("jungle_temple", eir.d);
+   egy<eit> h = a("mineshaft", eit.d);
+   egy<eix> i = a("nether_fossil", eix.d);
+   egy<eiz> j = a("ocean_monument", eiz.d);
+   egy<ejb> k = a("ocean_ruin", ejb.d);
+   egy<ejd> l = a("ruined_portal", ejd.d);
+   egy<ejf> m = a("shipwreck", ejf.d);
+   egy<ejh> n = a("stronghold", ejh.d);
+   egy<ejj> o = a("swamp_hut", ejj.d);
+   egy<ejl> p = a("woodland_mansion", ejl.d);
 
-   @Override
-   public void a(egk $$0) {
-      this.a.add($$0);
-   }
+   Codec<S> codec();
 
-   @Nullable
-   @Override
-   public egk a(efy $$0) {
-      return egk.a(this.a, $$0);
-   }
-
-   @Deprecated
-   public void a(int $$0) {
-      for (egk $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
-   }
-
-   @Deprecated
-   public int a(int $$0, int $$1, ayd $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      efy $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(ayd $$0, int $$1, int $$2) {
-      efy $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
-   }
-
-   public egv a() {
-      return new egv(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public efy d() {
-      return egk.a(this.a.stream());
+   private static <S extends egp> egy<S> a(String $$0, Codec<S> $$1) {
+      return jj.a(ld.T, $$0, () -> $$1);
    }
 }

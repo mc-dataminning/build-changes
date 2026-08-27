@@ -1,22 +1,19 @@
-public abstract class cvy implements cvx {
-   private final cvw a;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public cvy(cvw $$0) {
-      this.a = $$0;
+public enum cvy {
+   a(0),
+   b(1);
+
+   public static final IntFunction<cvy> c = awq.a(cvy::a, values(), awq.a.a);
+   public static final ys<ByteBuf, cvy> d = yq.a(c, cvy::a);
+   private final int e;
+
+   private cvy(int $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public boolean an_() {
-      return true;
-   }
-
-   @Override
-   public csd a(jj $$0) {
-      return csd.i;
-   }
-
-   @Override
-   public cvw d() {
-      return this.a;
+   public int a() {
+      return this.e;
    }
 }

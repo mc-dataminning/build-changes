@@ -1,89 +1,255 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class foi extends fga {
-   private static final fgh c = new fgh(new akf("recipe_book/tab"), new akf("recipe_book/tab_selected"));
-   private final fdd d;
-   private static final float e = 15.0F;
-   private float f;
+public class foi {
+   private final atc a;
+   final List<asz> b;
+   final List<asz> c;
+   final Function<asz, akh> d;
+   final Runnable e;
+   private final Consumer<atc> f;
 
-   public foi(fdd $$0) {
-      super(0, 0, 35, 27, false);
-      this.d = $$0;
-      this.a(c);
+   public foi(Runnable $$0, Function<asz, akh> $$1, atc $$2, Consumer<atc> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   public void a(fcu $$0) {
-      fch $$1 = $$0.s.m();
-      List<fok> $$2 = $$1.a(this.d);
-      if ($$0.s.cc instanceof cov) {
-         for (fok $$3 : $$2) {
-            for (cwi<?> $$4 : $$3.a($$1.a((cov<?>)$$0.s.cc))) {
-               if ($$1.d($$4)) {
-                  this.f = 15.0F;
-                  return;
-               }
-            }
+   public Stream<foi.a> a() {
+      return this.c.stream().map($$0 -> new foi.d($$0));
+   }
+
+   public Stream<foi.a> b() {
+      return this.b.stream().map($$0 -> new foi.c($$0));
+   }
+
+   void e() {
+      this.a.a(Lists.reverse(this.b).stream().map(asz::g).collect(ImmutableList.toImmutableList()));
+   }
+
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
+   }
+
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      akh a();
+
+      ata b();
+
+      String c();
+
+      wu d();
+
+      wu e();
+
+      atd f();
+
+      default wu g() {
+         return this.f().a(this.e());
+      }
+
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements foi.a {
+      private final asz b;
+
+      public b(asz $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<asz> s();
+
+      protected abstract List<asz> t();
+
+      @Override
+      public akh a() {
+         return foi.this.d.apply(this.b);
+      }
+
+      @Override
+      public ata b() {
+         return this.b.d();
+      }
+
+      @Override
+      public String c() {
+         return this.b.g();
+      }
+
+      @Override
+      public wu d() {
+         return this.b.b();
+      }
+
+      @Override
+      public wu e() {
+         return this.b.c();
+      }
+
+      @Override
+      public atd f() {
+         return this.b.l();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, asz::h, true);
+         foi.this.e.run();
+         foi.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            fdh<Boolean> $$0 = fde.Q().m.t();
+            $$0.a(!$$0.c());
          }
+      }
+
+      protected void a(int $$0) {
+         List<asz> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         foi.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<asz> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<asz> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
       }
    }
 
-   @Override
-   public void b(feh $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         if (this.f > 0.0F) {
-            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
-            $$0.c().a();
-            $$0.c().a((float)(this.C() + 8), (float)(this.D() + 12), 0.0F);
-            $$0.c().b(1.0F, $$4, 1.0F);
-            $$0.c().a((float)(-(this.C() + 8)), (float)(-(this.D() + 12)), 0.0F);
-         }
+   class c extends foi.b {
+      public c(asz $$0) {
+         super($$0);
+      }
 
-         fcu $$5 = fcu.Q();
-         RenderSystem.disableDepthTest();
-         akf $$6 = this.a.a(true, this.b);
-         int $$7 = this.C();
-         if (this.b) {
-            $$7 -= 2;
-         }
+      @Override
+      protected List<asz> s() {
+         return foi.this.b;
+      }
 
-         $$0.a($$6, $$7, this.D(), this.g, this.h);
-         RenderSystem.enableDepthTest();
-         this.a($$0, $$5.as());
-         if (this.f > 0.0F) {
-            $$0.c().b();
-            this.f -= $$3;
-         }
+      @Override
+      protected List<asz> t() {
+         return foi.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
       }
    }
 
-   private void a(feh $$0, ghl $$1) {
-      List<csd> $$2 = this.d.a();
-      int $$3 = this.b ? -2 : 0;
-      if ($$2.size() == 1) {
-         $$0.b($$2.get(0), this.C() + 9 + $$3, this.D() + 5);
-      } else if ($$2.size() == 2) {
-         $$0.b($$2.get(0), this.C() + 3 + $$3, this.D() + 5);
-         $$0.b($$2.get(1), this.C() + 14 + $$3, this.D() + 5);
-      }
-   }
-
-   public fdd b() {
-      return this.d;
-   }
-
-   public boolean a(fch $$0) {
-      List<fok> $$1 = $$0.a(this.d);
-      this.k = false;
-      if ($$1 != null) {
-         for (fok $$2 : $$1) {
-            if ($$2.b() && $$2.d()) {
-               this.k = true;
-               break;
-            }
-         }
+   class d extends foi.b {
+      public d(asz $$0) {
+         super($$0);
       }
 
-      return this.k;
+      @Override
+      protected List<asz> s() {
+         return foi.this.c;
+      }
+
+      @Override
+      protected List<asz> t() {
+         return foi.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
+      }
    }
 }

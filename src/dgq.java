@@ -1,169 +1,168 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dgq extends dch {
+public class dgq extends dfy {
    public static final MapCodec<dgq> a = b(dgq::new);
-   public static final dqs b = dqo.Q;
-   public static final dqp c = dqo.f;
-   private static final ety d = dcv.a(0.0, 10.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ety e = dcv.a(4.0, 4.0, 4.0, 12.0, 10.0, 12.0);
-   private static final ety f = etv.a(e, d);
-   private static final ety g = a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
-   private static final ety h = etv.a(f, g, etj.e);
-   private static final ety i = etv.a(h, dcv.a(6.0, 0.0, 6.0, 10.0, 4.0, 10.0));
-   private static final ety j = etv.a(h, dcv.a(12.0, 4.0, 6.0, 16.0, 8.0, 10.0));
-   private static final ety k = etv.a(h, dcv.a(6.0, 4.0, 0.0, 10.0, 8.0, 4.0));
-   private static final ety l = etv.a(h, dcv.a(6.0, 4.0, 12.0, 10.0, 8.0, 16.0));
-   private static final ety m = etv.a(h, dcv.a(0.0, 4.0, 6.0, 4.0, 8.0, 10.0));
-   private static final ety n = g;
-   private static final ety o = etv.a(g, dcv.a(12.0, 8.0, 6.0, 16.0, 10.0, 10.0));
-   private static final ety F = etv.a(g, dcv.a(6.0, 8.0, 0.0, 10.0, 10.0, 4.0));
-   private static final ety G = etv.a(g, dcv.a(6.0, 8.0, 12.0, 10.0, 10.0, 16.0));
-   private static final ety H = etv.a(g, dcv.a(0.0, 8.0, 6.0, 4.0, 10.0, 10.0));
+   public static final eui b = dde.a(2.0, 0.0, 6.0, 4.0, 7.0, 10.0);
+   public static final eui c = dde.a(12.0, 0.0, 6.0, 14.0, 7.0, 10.0);
+   public static final eui d = dde.a(2.0, 7.0, 5.0, 4.0, 13.0, 11.0);
+   public static final eui e = dde.a(12.0, 7.0, 5.0, 14.0, 13.0, 11.0);
+   public static final eui f = euf.a(b, d);
+   public static final eui g = euf.a(c, e);
+   public static final eui h = euf.a(f, g);
+   public static final eui i = euf.a(h, dde.a(4.0, 4.0, 2.0, 12.0, 16.0, 14.0));
+   public static final eui j = dde.a(6.0, 0.0, 2.0, 10.0, 7.0, 4.0);
+   public static final eui k = dde.a(6.0, 0.0, 12.0, 10.0, 7.0, 14.0);
+   public static final eui l = dde.a(5.0, 7.0, 2.0, 11.0, 13.0, 4.0);
+   public static final eui m = dde.a(5.0, 7.0, 12.0, 11.0, 13.0, 14.0);
+   public static final eui n = euf.a(j, l);
+   public static final eui o = euf.a(k, m);
+   public static final eui F = euf.a(n, o);
+   public static final eui G = euf.a(F, dde.a(2.0, 4.0, 4.0, 14.0, 16.0, 12.0));
+   public static final eui H = dde.a(2.0, 6.0, 0.0, 4.0, 10.0, 7.0);
+   public static final eui I = dde.a(12.0, 6.0, 0.0, 14.0, 10.0, 7.0);
+   public static final eui J = dde.a(2.0, 5.0, 7.0, 4.0, 11.0, 13.0);
+   public static final eui L = dde.a(12.0, 5.0, 7.0, 14.0, 11.0, 13.0);
+   public static final eui M = euf.a(H, J);
+   public static final eui N = euf.a(I, L);
+   public static final eui O = euf.a(M, N);
+   public static final eui P = euf.a(O, dde.a(4.0, 2.0, 4.0, 12.0, 14.0, 16.0));
+   public static final eui Q = dde.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0);
+   public static final eui R = dde.a(12.0, 6.0, 7.0, 14.0, 10.0, 16.0);
+   public static final eui S = dde.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0);
+   public static final eui T = dde.a(12.0, 5.0, 3.0, 14.0, 11.0, 9.0);
+   public static final eui U = euf.a(Q, S);
+   public static final eui V = euf.a(R, T);
+   public static final eui W = euf.a(U, V);
+   public static final eui X = euf.a(W, dde.a(4.0, 2.0, 0.0, 12.0, 14.0, 12.0));
+   public static final eui Y = dde.a(7.0, 6.0, 2.0, 16.0, 10.0, 4.0);
+   public static final eui Z = dde.a(7.0, 6.0, 12.0, 16.0, 10.0, 14.0);
+   public static final eui aa = dde.a(3.0, 5.0, 2.0, 9.0, 11.0, 4.0);
+   public static final eui ab = dde.a(3.0, 5.0, 12.0, 9.0, 11.0, 14.0);
+   public static final eui ac = euf.a(Y, aa);
+   public static final eui ad = euf.a(Z, ab);
+   public static final eui ae = euf.a(ac, ad);
+   public static final eui af = euf.a(ae, dde.a(0.0, 2.0, 4.0, 12.0, 14.0, 12.0));
+   public static final eui ag = dde.a(0.0, 6.0, 2.0, 9.0, 10.0, 4.0);
+   public static final eui ah = dde.a(0.0, 6.0, 12.0, 9.0, 10.0, 14.0);
+   public static final eui ai = dde.a(7.0, 5.0, 2.0, 13.0, 11.0, 4.0);
+   public static final eui aj = dde.a(7.0, 5.0, 12.0, 13.0, 11.0, 14.0);
+   public static final eui ak = euf.a(ag, ai);
+   public static final eui al = euf.a(ah, aj);
+   public static final eui am = euf.a(ak, al);
+   public static final eui an = euf.a(am, dde.a(4.0, 2.0, 4.0, 16.0, 14.0, 12.0));
+   public static final eui ao = dde.a(2.0, 9.0, 6.0, 4.0, 16.0, 10.0);
+   public static final eui ap = dde.a(12.0, 9.0, 6.0, 14.0, 16.0, 10.0);
+   public static final eui aq = dde.a(2.0, 3.0, 5.0, 4.0, 9.0, 11.0);
+   public static final eui ar = dde.a(12.0, 3.0, 5.0, 14.0, 9.0, 11.0);
+   public static final eui as = euf.a(ao, aq);
+   public static final eui at = euf.a(ap, ar);
+   public static final eui au = euf.a(as, at);
+   public static final eui av = euf.a(au, dde.a(4.0, 0.0, 2.0, 12.0, 12.0, 14.0));
+   public static final eui aw = dde.a(6.0, 9.0, 2.0, 10.0, 16.0, 4.0);
+   public static final eui ax = dde.a(6.0, 9.0, 12.0, 10.0, 16.0, 14.0);
+   public static final eui ay = dde.a(5.0, 3.0, 2.0, 11.0, 9.0, 4.0);
+   public static final eui az = dde.a(5.0, 3.0, 12.0, 11.0, 9.0, 14.0);
+   public static final eui aA = euf.a(aw, ay);
+   public static final eui aB = euf.a(ax, az);
+   public static final eui aC = euf.a(aA, aB);
+   public static final eui aD = euf.a(aC, dde.a(2.0, 0.0, 4.0, 14.0, 12.0, 12.0));
+   private static final wu aR = wu.c("container.grindstone_title");
 
    @Override
    public MapCodec<dgq> a() {
       return a;
    }
 
-   public dgq(dpx.d $$0) {
+   protected dgq(dqg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ir.a).a(c, Boolean.valueOf(true)));
+      this.k(this.E.b().a(aE, is.c).a(K, dqs.b));
    }
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      switch ((ir)$$0.c(b)) {
+   protected djk a_(dqh $$0) {
+      return djk.c;
+   }
+
+   private eui n(dqh $$0) {
+      is $$1 = $$0.c(aE);
+      switch ((dqs)$$0.c(K)) {
          case a:
+            if ($$1 != is.c && $$1 != is.d) {
+               return G;
+            }
+
             return i;
-         case c:
-            return k;
-         case d:
-            return l;
-         case e:
-            return m;
-         case f:
-            return j;
-         default:
-            return h;
-      }
-   }
+         case b:
+            if ($$1 == is.c) {
+               return X;
+            } else if ($$1 == is.d) {
+               return P;
+            } else {
+               if ($$1 == is.f) {
+                  return an;
+               }
 
-   @Override
-   protected ety a(dpy $$0, cza $$1, im $$2) {
-      switch ((ir)$$0.c(b)) {
-         case a:
-            return n;
+               return af;
+            }
          case c:
-            return F;
-         case d:
+            if ($$1 != is.c && $$1 != is.d) {
+               return aD;
+            }
+
+            return av;
+         default:
             return G;
-         case e:
-            return H;
-         case f:
-            return o;
-         default:
-            return g;
       }
    }
 
    @Override
-   public dpy a(cvl $$0) {
-      ir $$1 = $$0.k().g();
-      return this.n().a(b, $$1.o() == ir.a.b ? ir.a : $$1).a(c, Boolean.valueOf(true));
+   protected eui b(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return this.n($$0);
    }
 
    @Override
-   public dnd a(im $$0, dpy $$1) {
-      return new doc($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
-      return $$0.B ? null : a($$2, dnf.r, doc::a);
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return this.n($$0);
    }
 
    @Override
-   protected void b(dpy $$0, czu $$1, im $$2, dpy $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2, $$0);
-      }
-   }
-
-   @Override
-   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
-      if ($$1.B) {
-         return boq.a;
-      } else {
-         dnd $$5 = $$1.c_($$2);
-         if ($$5 instanceof doc) {
-            $$3.a((doc)$$5);
-            $$3.a(avj.ad);
-         }
-
-         return boq.b;
-      }
-   }
-
-   @Override
-   protected void a(dpy $$0, czu $$1, im $$2, dcv $$3, im $$4, boolean $$5) {
-      this.a($$1, $$2, $$0);
-   }
-
-   private void a(czu $$0, im $$1, dpy $$2) {
-      boolean $$3 = !$$0.C($$1);
-      if ($$3 != $$2.c(c)) {
-         $$0.a($$1, $$2.a(c, Boolean.valueOf($$3)), 2);
-      }
-   }
-
-   @Override
-   protected void a(dpy $$0, czu $$1, im $$2, dpy $$3, boolean $$4) {
-      bom.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected djb b_(dpy $$0) {
-      return djb.c;
-   }
-
-   @Override
-   protected boolean d_(dpy $$0) {
+   protected boolean a(dqh $$0, dag $$1, in $$2) {
       return true;
    }
 
    @Override
-   protected int a(dpy $$0, czu $$1, im $$2) {
-      return cnh.a($$1.c_($$2));
-   }
-
-   @Override
-   protected dpy a(dpy $$0, dji $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dpy a(dpy $$0, dhs $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected void a(dpy $$0, czu $$1, im $$2, bql $$3) {
-      dnd $$4 = $$1.c_($$2);
-      if ($$4 instanceof doc) {
-         doc.a($$1, $$2, $$0, $$3, (doc)$$4);
+   protected bpm a(dqh $$0, dad $$1, in $$2, clh $$3, etl $$4) {
+      if ($$1.B) {
+         return bpm.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(avm.aD);
+         return bpm.b;
       }
    }
 
    @Override
-   protected boolean a(dpy $$0, emg $$1) {
+   protected bpq b(dqh $$0, dad $$1, in $$2) {
+      return new bpw(($$2x, $$3, $$4) -> new cpc($$2x, $$3, cop.a($$1, $$2)), aR);
+   }
+
+   @Override
+   protected dqh a(dqh $$0, djr $$1) {
+      return $$0.a(aE, $$1.a($$0.c(aE)));
+   }
+
+   @Override
+   protected dqh a(dqh $$0, dib $$1) {
+      return $$0.a($$1.a($$0.c(aE)));
+   }
+
+   @Override
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(aE, K);
+   }
+
+   @Override
+   protected boolean a(dqh $$0, emp $$1) {
       return false;
    }
 }

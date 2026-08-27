@@ -1,47 +1,68 @@
-import java.util.concurrent.atomic.AtomicLong;
+public final class dwj {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-@Deprecated
-public class dwj implements dvf {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dvs i = new dvs(this);
-
-   public dwj(long $$0) {
-      this.b($$0);
+   private dwj() {
    }
 
-   @Override
-   public ayd d() {
-      return new dwj(this.g());
+   protected static dwd.c a(dvs $$0, dvs $$1, dvs $$2, dwm $$3) {
+      dqh $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         dwj.a $$8 = $$6 > 0.0 ? dwj.a.a : dwj.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = axz.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               ayg $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = axz.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
+         } else {
+            return $$4;
+         }
+      };
    }
 
-   @Override
-   public dwd e() {
-      return new dvr.a(this.g());
-   }
+   protected static enum a {
+      a(ddg.ra.n(), ddg.tg.n(), ddg.c.n(), 0, 50),
+      b(ddg.Q.n(), ddg.tf.n(), ddg.qz.n(), -60, -8);
 
-   @Override
-   public void b(long $$0) {
-      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
-   }
+      final dqh e;
+      final dqh f;
+      final dqh g;
+      protected final int c;
+      protected final int d;
 
-   @Override
-   public int c(int $$0) {
-      long $$1;
-      long $$2;
-      do {
-         $$1 = this.h.get();
-         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      } while (!this.h.compareAndSet($$1, $$2));
-
-      return (int)($$2 >>> 48 - $$0);
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
+      private a(dqh $$0, dqh $$1, dqh $$2, int $$3, int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
+      }
    }
 }

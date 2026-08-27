@@ -1,33 +1,12 @@
-public class gjb extends ghs<cms> {
-   private final gby f;
+public class gjb extends gid<cen, fub<cen>> {
+   private static final akh a = new akh("textures/entity/snow_golem.png");
 
-   public gjb(ggn.a $$0) {
-      super($$0, fuq.bG);
-      this.f = $$0.c();
+   public gjb(ggx.a $$0) {
+      super($$0, new fub<>($$0.a(fva.bv)), 0.5F);
+      this.a(new glo(this, $$0.c(), $$0.b()));
    }
 
-   protected void a(cms $$0, float $$1, dpy $$2, exn $$3, gbe $$4, int $$5) {
-      int $$6 = $$0.C();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = axw.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
-   }
-
-   public static void a(gby $$0, dpy $$1, exn $$2, gbe $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gmf.a(gmf.a(1.0F), 10);
-      } else {
-         $$6 = gmf.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   public akh a(cen $$0) {
+      return a;
    }
 }

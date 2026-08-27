@@ -1,29 +1,64 @@
-public class ahe implements yz<afx> {
-   public static final yq<vs, ahe> a = yz.a(ahe::a, ahe::new);
-   private final akf b;
+public class ahe implements zb<afz> {
+   public static final ys<vu, ahe> a = zb.a(ahe::a, ahe::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private final float d;
+   private final float e;
+   private final boolean f;
+   private final boolean g;
 
-   public ahe(cwi<?> $$0) {
-      this.b = $$0.a();
+   public ahe(float $$0, float $$1, boolean $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   private ahe(vs $$0) {
-      this.b = $$0.q();
+   private ahe(vu $$0) {
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+      byte $$1 = $$0.readByte();
+      this.f = ($$1 & 1) > 0;
+      this.g = ($$1 & 2) > 0;
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
+   private void a(vu $$0) {
+      $$0.a(this.d);
+      $$0.a(this.e);
+      byte $$1 = 0;
+      if (this.f) {
+         $$1 = (byte)($$1 | 1);
+      }
+
+      if (this.g) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
    @Override
-   public zb<ahe> a() {
-      return afv.bM;
+   public zd<ahe> a() {
+      return afx.bK;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 
-   public akf b() {
-      return this.b;
+   public float b() {
+      return this.d;
+   }
+
+   public float e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
    }
 }

@@ -1,285 +1,180 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class flv extends flr<cnk> {
-   private static final akf D = new akf("textures/gui/container/beacon.png");
-   static final akf E = new akf("container/beacon/button_disabled");
-   static final akf F = new akf("container/beacon/button_selected");
-   static final akf G = new akf("container/beacon/button_highlighted");
-   static final akf H = new akf("container/beacon/button");
-   static final akf I = new akf("container/beacon/confirm");
-   static final akf J = new akf("container/beacon/cancel");
-   private static final ws K = ws.c("block.minecraft.beacon.primary");
-   private static final ws L = ws.c("block.minecraft.beacon.secondary");
-   private final List<flv.a> M = Lists.newArrayList();
-   @Nullable
-   iv<bpv> N;
-   @Nullable
-   iv<bpv> O;
+public class flv extends ffk<flv.b> {
+   private static final int a = 20;
+   final flw m;
+   private int n;
 
-   public flv(final cnk $$0, ckk $$1, ws $$2) {
-      super($$0, $$1, $$2);
-      this.c = 230;
-      this.d = 219;
-      $$0.a(new cnt() {
-         @Override
-         public void a(cnh $$0x, int $$1, csd $$2) {
+   public flv(flw $$0, fde $$1) {
+      super($$1, $$0.n, $$0.d.d(), $$0.d.c(), 20);
+      this.m = $$0;
+      fdc[] $$2 = (fdc[])ArrayUtils.clone($$1.m.X);
+      Arrays.sort((Object[])$$2);
+      String $$3 = null;
+
+      for (fdc $$4 : $$2) {
+         String $$5 = $$4.f();
+         if (!$$5.equals($$3)) {
+            $$3 = $$5;
+            this.b(new flv.a(wu.c($$5)));
          }
 
-         @Override
-         public void a(cnh $$0x, int $$1, int $$2) {
-            flv.this.N = $$0.m();
-            flv.this.O = $$0.n();
+         wu $$6 = wu.c($$4.h());
+         int $$7 = $$1.h.a($$6);
+         if ($$7 > this.n) {
+            this.n = $$7;
          }
-      });
+
+         this.b(new flv.c($$4, $$6));
+      }
    }
 
-   private <T extends fes & flv.a> void a(T $$0) {
-      this.c($$0);
-      this.M.add($$0);
+   public void d() {
+      fdc.d();
+      this.I();
    }
 
-   @Override
-   protected void aM_() {
-      super.aM_();
-      this.M.clear();
-      this.a(new flv.c(this.z + 164, this.A + 107));
-      this.a(new flv.b(this.z + 190, this.A + 107));
-
-      for (int $$0 = 0; $$0 <= 2; $$0++) {
-         int $$1 = dmy.a.get($$0).size();
-         int $$2 = $$1 * 22 + ($$1 - 1) * 2;
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            iv<bpv> $$4 = dmy.a.get($$0).get($$3);
-            flv.d $$5 = new flv.d(this.z + 76 + $$3 * 24 - $$2 / 2, this.A + 22 + $$0 * 25, $$4, true, $$0);
-            $$5.j = false;
-            this.a($$5);
-         }
-      }
-
-      int $$6 = 3;
-      int $$7 = dmy.a.get(3).size() + 1;
-      int $$8 = $$7 * 22 + ($$7 - 1) * 2;
-
-      for (int $$9 = 0; $$9 < $$7 - 1; $$9++) {
-         iv<bpv> $$10 = dmy.a.get(3).get($$9);
-         flv.d $$11 = new flv.d(this.z + 167 + $$9 * 24 - $$8 / 2, this.A + 47, $$10, false, 3);
-         $$11.j = false;
-         this.a($$11);
-      }
-
-      iv<bpv> $$12 = dmy.a.get(0).get(0);
-      flv.d $$13 = new flv.g(this.z + 167 + ($$7 - 1) * 24 - $$8 / 2, this.A + 47, $$12);
-      $$13.k = false;
-      this.a($$13);
+   public void I() {
+      this.aE_().forEach(flv.b::c);
    }
 
    @Override
-   public void C() {
-      super.C();
-      this.E();
+   public int b() {
+      return 340;
    }
 
-   void E() {
-      int $$0 = this.w.l();
-      this.M.forEach($$1 -> $$1.a($$0));
-   }
+   public class a extends flv.b {
+      final wu b;
+      private final int c;
 
-   @Override
-   protected void b(feh $$0, int $$1, int $$2) {
-      $$0.a(this.p, K, 62, 10, 14737632);
-      $$0.a(this.p, L, 169, 10, 14737632);
-   }
-
-   @Override
-   protected void a(feh $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 100.0F);
-      $$0.a(new csd(csg.oJ), $$4 + 20, $$5 + 109);
-      $$0.a(new csd(csg.oz), $$4 + 41, $$5 + 109);
-      $$0.a(new csd(csg.oy), $$4 + 41 + 22, $$5 + 109);
-      $$0.a(new csd(csg.oI), $$4 + 42 + 44, $$5 + 109);
-      $$0.a(new csd(csg.oE), $$4 + 42 + 66, $$5 + 109);
-      $$0.c().b();
-   }
-
-   @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   interface a {
-      void a(int var1);
-   }
-
-   class b extends flv.f {
-      public b(int $$0, int $$1) {
-         super($$0, $$1, flv.J, wr.e);
+      public a(wu $$1) {
+         this.b = $$1;
+         this.c = flv.this.c.h.a(this.b);
       }
 
       @Override
-      public void b() {
-         flv.this.m.s.r();
+      public void a(fer $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(flv.this.c.h, this.b, flv.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1, false);
+      }
+
+      @Nullable
+      @Override
+      public feo a(fjg $$0) {
+         return null;
       }
 
       @Override
-      public void a(int $$0) {
-      }
-   }
-
-   class c extends flv.f {
-      public c(int $$0, int $$1) {
-         super($$0, $$1, flv.I, wr.d);
+      public List<? extends fha> aE_() {
+         return Collections.emptyList();
       }
 
       @Override
-      public void b() {
-         flv.this.m.L().b(new ahi(Optional.ofNullable(flv.this.N), Optional.ofNullable(flv.this.O)));
-         flv.this.m.s.r();
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.j = flv.this.w.o() && flv.this.N != null;
-      }
-   }
-
-   class d extends flv.e {
-      private final boolean c;
-      protected final int a;
-      private iv<bpv> d;
-      private gmo f;
-
-      public d(int $$0, int $$1, iv<bpv> $$2, boolean $$3, int $$4) {
-         super($$0, $$1);
-         this.c = $$3;
-         this.a = $$4;
-         this.a($$2);
-      }
-
-      protected void a(iv<bpv> $$0) {
-         this.d = $$0;
-         this.f = fcu.Q().aG().a($$0);
-         this.a(fgf.a(this.b($$0), null));
-      }
-
-      protected xg b(iv<bpv> $$0) {
-         return ws.c($$0.a().d());
-      }
-
-      @Override
-      public void b() {
-         if (!this.a()) {
-            if (this.c) {
-               flv.this.N = this.d;
-            } else {
-               flv.this.O = this.d;
+      public List<? extends fiy> b() {
+         return ImmutableList.of(new fiy() {
+            @Override
+            public fiy.a t() {
+               return fiy.a.b;
             }
 
-            flv.this.E();
+            @Override
+            public void b(fja $$0) {
+               $$0.a(fiz.a, a.this.b);
+            }
+         });
+      }
+
+      @Override
+      protected void c() {
+      }
+   }
+
+   public abstract static class b extends ffk.a<flv.b> {
+      abstract void c();
+   }
+
+   public class c extends flv.b {
+      private static final wu b = wu.c("controls.reset");
+      private static final int c = 10;
+      private final fdc d;
+      private final wu e;
+      private final ffe f;
+      private final ffe g;
+      private boolean h = false;
+
+      c(fdc $$1, wu $$2) {
+         this.d = $$1;
+         this.e = $$2;
+         this.f = ffe.a($$2, $$1x -> {
+            flv.this.m.a = $$1;
+            flv.this.d();
+         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? wu.a("narrator.controls.unbound", $$2) : wu.a("narrator.controls.bound", $$2, $$2x.get())).a();
+         this.g = ffe.a(b, $$1x -> {
+            flv.this.c.m.a($$1, $$1.i());
+            flv.this.d();
+         }).a(0, 0, 50, 20).a($$1x -> wu.a("narrator.controls.reset", $$2)).a();
+         this.c();
+      }
+
+      @Override
+      public void a(fer $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = flv.this.p() - this.g.x() - 10;
+         int $$11 = $$2 - 2;
+         this.g.c($$10, $$11);
+         this.g.a($$0, $$6, $$7, $$9);
+         int $$12 = $$10 - 5 - this.f.x();
+         this.f.c($$12, $$11);
+         this.f.a($$0, $$6, $$7, $$9);
+         $$0.b(flv.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
+         if (this.h) {
+            int $$13 = 3;
+            int $$14 = this.f.C() - 6;
+            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
          }
       }
 
       @Override
-      protected void a(feh $$0) {
-         $$0.a(this.C() + 2, this.D() + 2, 0, 18, 18, this.f);
+      public List<? extends fha> aE_() {
+         return ImmutableList.of(this.f, this.g);
       }
 
       @Override
-      public void a(int $$0) {
-         this.j = this.a < $$0;
-         this.b(this.d.equals(this.c ? flv.this.N : flv.this.O));
+      public List<? extends fiy> b() {
+         return ImmutableList.of(this.f, this.g);
       }
 
       @Override
-      protected xg aK_() {
-         return this.b(this.d);
-      }
-   }
+      protected void c() {
+         this.f.b(this.d.k());
+         this.g.j = !this.d.l();
+         this.h = false;
+         xi $$0 = wu.i();
+         if (!this.d.j()) {
+            for (fdc $$1 : flv.this.c.m.X) {
+               if ($$1 != this.d && this.d.b($$1)) {
+                  if (this.h) {
+                     $$0.f(", ");
+                  }
 
-   abstract static class e extends fel implements flv.a {
-      private boolean a;
-
-      protected e(int $$0, int $$1) {
-         super($$0, $$1, 22, 22, wr.a);
-      }
-
-      protected e(int $$0, int $$1, ws $$2) {
-         super($$0, $$1, 22, 22, $$2);
-      }
-
-      @Override
-      public void b(feh $$0, int $$1, int $$2, float $$3) {
-         akf $$4;
-         if (!this.j) {
-            $$4 = flv.E;
-         } else if (this.a) {
-            $$4 = flv.F;
-         } else if (this.A()) {
-            $$4 = flv.G;
-         } else {
-            $$4 = flv.H;
+                  this.h = true;
+                  $$0.b(wu.c($$1.h()));
+               }
+            }
          }
 
-         $$0.a($$4, this.C(), this.D(), this.g, this.h);
-         this.a($$0);
-      }
-
-      protected abstract void a(feh var1);
-
-      public boolean a() {
-         return this.a;
-      }
-
-      public void b(boolean $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(fiq $$0) {
-         this.c($$0);
-      }
-   }
-
-   abstract static class f extends flv.e {
-      private final akf a;
-
-      protected f(int $$0, int $$1, akf $$2, ws $$3) {
-         super($$0, $$1, $$3);
-         this.a = $$2;
-      }
-
-      @Override
-      protected void a(feh $$0) {
-         $$0.a(this.a, this.C() + 2, this.D() + 2, 18, 18);
-      }
-   }
-
-   class g extends flv.d {
-      public g(int $$0, int $$1, iv<bpv> $$2) {
-         super($$0, $$1, $$2, false, 3);
-      }
-
-      @Override
-      protected xg b(iv<bpv> $$0) {
-         return ws.c($$0.a().d()).f(" II");
-      }
-
-      @Override
-      public void a(int $$0) {
-         if (flv.this.N != null) {
-            this.k = true;
-            this.a(flv.this.N);
-            super.a($$0);
+         if (this.h) {
+            this.f.b(wu.b("[ ").b(this.f.y().f().a(n.p)).f(" ]").a(n.m));
+            this.f.a(fgp.a(wu.a("controls.keybinds.duplicateKeybinds", $$0)));
          } else {
-            this.k = false;
+            this.f.a(null);
+         }
+
+         if (flv.this.m.a == this.d) {
+            this.f.b(wu.b("> ").b(this.f.y().f().a(n.p, n.t)).f(" <").a(n.o));
          }
       }
    }

@@ -1,17 +1,46 @@
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class gni extends att<int[]> {
-   private static final akf a = new akf("textures/colormap/grass.png");
+public class gni {
+   private final akh a;
+   private final atp b;
+   private final AtomicReference<ewy> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-   protected int[] a(ato $$0, ble $$1) {
-      try {
-         return gnk.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
-      }
+   public gni(akh $$0, atp $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   protected void a(int[] $$0, ato $$1, ble $$2) {
-      czs.a($$0);
+   public ewy a() throws IOException {
+      ewy $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = ewy.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         ewy $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
    }
 }

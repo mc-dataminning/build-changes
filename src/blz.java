@@ -1,7 +1,32 @@
-import jdk.jfr.consumer.RecordedEvent;
+import java.nio.file.Path;
+import java.util.List;
 
-public record blz(String a, String b, int c, int d) {
-   public static blz a(RecordedEvent $$0) {
-      return new blz($$0.getString("level"), $$0.getString("dimension"), $$0.getInt("chunkPosX"), $$0.getInt("chunkPosZ"));
+public interface blz {
+   char d = '\u001e';
+
+   List<bmc> a(String var1);
+
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
+   }
+
+   default int f() {
+      return this.d() - this.b();
+   }
+
+   String e();
+
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

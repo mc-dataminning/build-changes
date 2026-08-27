@@ -1,72 +1,85 @@
-public class gan {
-   public static final ws a = ws.c("quickplay.error.title");
-   private static final ws b = ws.c("quickplay.error.invalid_identifier");
-   private static final ws c = ws.c("quickplay.error.realm_connect");
-   private static final ws d = ws.c("quickplay.error.realm_permission");
-   private static final ws e = ws.c("gui.toTitle");
-   private static final ws f = ws.c("gui.toWorld");
-   private static final ws g = ws.c("gui.toRealms");
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-   public static void a(fcu $$0, fqh.c $$1, eyd $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!ayr.h($$3)) {
-         a($$0, $$3);
-      } else if (!ayr.h($$4)) {
-         b($$0, $$4);
-      } else if (!ayr.h($$5)) {
-         a($$0, $$2, $$5);
-      }
+public abstract class gan extends clh {
+   @Nullable
+   private fwh g;
+   protected etp b;
+   public float c;
+   public float d;
+   public float e;
+   public final fvw f;
+
+   public gan(fvw $$0, GameProfile $$1) {
+      super($$0, $$0.U(), $$0.V(), $$1);
+      this.b = etp.b;
+      this.f = $$0;
    }
 
-   private static void a(fcu $$0, String $$1) {
-      if (!$$0.m().b($$1)) {
-         fkt $$2 = new fpp(new fky());
-         $$0.a(new fju($$2, a, b, f));
-      } else {
-         $$0.x().a($$1, () -> $$0.a(new fky()));
-      }
+   @Override
+   public boolean N_() {
+      fwh $$0 = this.a();
+      return $$0 != null && $$0.e() == daa.d;
    }
 
-   private static void b(fcu $$0, String $$1) {
-      fwb $$2 = new fwb($$0);
-      $$2.a();
-      fwa $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new fwa(gnt.a("selectServer.defaultName"), $$1, fwa.c.c);
-         $$2.a($$3, true);
-         $$2.b();
-      }
-
-      fxd $$4 = fxd.a($$1);
-      fjm.a(new fnq(new fky()), $$0, $$4, $$3, true, null);
+   @Override
+   public boolean f() {
+      fwh $$0 = this.a();
+      return $$0 != null && $$0.e() == daa.b;
    }
 
-   private static void a(fcu $$0, eyd $$1, String $$2) {
-      long $$3;
-      eyw $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         fkt $$6 = new exy(new fky());
-         $$0.a(new fju($$6, a, b, g));
-         return;
-      } catch (ezq var10) {
-         fkt $$8 = new fky();
-         $$0.a(new fju($$8, a, c, e));
-         return;
+   @Nullable
+   protected fwh a() {
+      if (this.g == null) {
+         this.g = fde.Q().L().a(this.cx());
       }
 
-      eyu $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         fkt $$12 = new exy(new fky());
-         $$0.a(new fju($$12, a, d, g));
-      } else {
-         fky $$13 = new fky();
-         fbt $$14 = new fbt($$13, $$11);
-         $$0.a(new fak($$13, $$14));
+      return this.g;
+   }
+
+   @Override
+   public void l() {
+      this.b = this.dq();
+      super.l();
+   }
+
+   public etp E(float $$0) {
+      return this.b.a(this.dq(), (double)$$0);
+   }
+
+   public gny b() {
+      fwh $$0 = this.a();
+      return $$0 == null ? gnq.a(this.cx()) : $$0.g();
+   }
+
+   public float c() {
+      float $$0 = 1.0F;
+      if (this.gb().b) {
+         $$0 *= 1.1F;
       }
+
+      $$0 *= ((float)this.g(bth.r) / this.gb().b() + 1.0F) / 2.0F;
+      if (this.gb().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
+         $$0 = 1.0F;
+      }
+
+      csz $$1 = this.fv();
+      if (this.ft()) {
+         if ($$1.a(ctc.ou)) {
+            int $$2 = this.fx();
+            float $$3 = (float)$$2 / 20.0F;
+            if ($$3 > 1.0F) {
+               $$3 = 1.0F;
+            } else {
+               $$3 *= $$3;
+            }
+
+            $$0 *= 1.0F - $$3 * 0.15F;
+         } else if (fde.Q().m.aA().a() && this.gy()) {
+            return 0.1F;
+         }
+      }
+
+      return axz.i(fde.Q().m.ak().c().floatValue(), 1.0F, $$0);
    }
 }

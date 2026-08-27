@@ -1,34 +1,48 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bvw {
-   public static bsx<bre> a(dcv $$0) {
-      return bwj.a(
-         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$1 -> $$1.group($$1.c(cah.o), $$1.b(cah.m), $$1.b(cah.Y))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.bc() && $$3x.aC()) {
-                        im $$5 = $$3x.dn().d();
+   public static btt<bsi> a(cbd<in> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, etp::c);
+   }
 
-                        for (ir $$6 : ir.c.a) {
-                           im $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).k($$2x, $$7).a(ir.b).c() && $$2x.b_($$7).b(els.c)) {
-                              im $$8 = $$7.c();
-                              if ($$2x.a_($$8).i()) {
-                                 dpy $$9 = $$0.n();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(dur.i, $$8, dur.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, auz.jK, ava.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
-                              }
+   public static bvd<bsi> b(cbd<? extends brh> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, brh::dl);
+   }
+
+   private static <T> bvd<bsi> a(cbd<T> $$0, float $$1, int $$2, boolean $$3, Function<T, etp> $$4) {
+      return bxf.a(
+         (Function<bxf.b<bsi>, ? extends App<bxf.c<bsi>, bxi<bsi>>>)($$5 -> $$5.group($$5.a(cbd.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<cbg> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     etp $$11 = $$8.dl();
+                     etp $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((jg)$$12, (double)$$2)) {
+                        return false;
+                     } else {
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           etp $$13 = $$10.get().a().a().d($$11);
+                           etp $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
+
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           etp $$16 = ccx.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new cbg($$16, $$1, 0));
+                              break;
                            }
                         }
 
                         return true;
-                     } else {
-                        return false;
                      }
-                  }))
+                  }
+               }))
       );
    }
 }

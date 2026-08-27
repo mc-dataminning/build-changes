@@ -2,30 +2,54 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
 import org.joml.Vector3f;
 
-public class kq extends kr {
-   public static final Vector3f a = etf.a(16711680).j();
-   public static final kq b = new kq(a, 1.0F);
+public class kq extends ks {
+   public static final Vector3f a = etp.a(3790560).j();
+   public static final kq b = new kq(a, kr.a, 1.0F);
    public static final Codec<kq> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axe.c.fieldOf("color").forGetter($$0x -> $$0x.h), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.i)).apply($$0, kq::new)
+      $$0 -> $$0.group(
+               axh.c.fieldOf("fromColor").forGetter($$0x -> $$0x.h),
+               axh.c.fieldOf("toColor").forGetter($$0x -> $$0x.j),
+               Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, kq::new)
    );
-   public static final yq<wd, kq> d = yq.a(yo.q, $$0 -> $$0.h, yo.h, $$0 -> $$0.i, kq::new);
-   public static final ku.a<kq> e = new ku.a<kq>() {
-      public kq a(kv<kq> $$0, StringReader $$1, ix.a $$2) throws CommandSyntaxException {
-         Vector3f $$3 = kr.a($$1);
+   public static final ys<wf, kq> d = ys.a(yq.q, $$0 -> $$0.h, yq.q, $$0 -> $$0.j, yq.h, $$0 -> $$0.i, kq::new);
+   public static final kv.a<kq> e = new kv.a<kq>() {
+      public kq a(kw<kq> $$0, StringReader $$1, iy.a $$2) throws CommandSyntaxException {
+         Vector3f $$3 = ks.a($$1);
          $$1.expect(' ');
          float $$4 = $$1.readFloat();
-         return new kq($$3, $$4);
+         Vector3f $$5 = ks.a($$1);
+         return new kq($$3, $$5, $$4);
       }
    };
+   private final Vector3f j;
 
-   public kq(Vector3f $$0, float $$1) {
-      super($$0, $$1);
+   public kq(Vector3f $$0, Vector3f $$1, float $$2) {
+      super($$0, $$2);
+      this.j = $$1;
+   }
+
+   public Vector3f b() {
+      return this.h;
+   }
+
+   public Vector3f c() {
+      return this.j;
    }
 
    @Override
-   public kv<kq> a() {
-      return kw.n;
+   public String a(iy.a $$0) {
+      return String.format(
+         Locale.ROOT, "%s %.2f %.2f %.2f %.2f %.2f %.2f %.2f", ld.j.b(this.a()), this.h.x(), this.h.y(), this.h.z(), this.i, this.j.x(), this.j.y(), this.j.z()
+      );
+   }
+
+   @Override
+   public kw<kq> a() {
+      return kx.o;
    }
 }

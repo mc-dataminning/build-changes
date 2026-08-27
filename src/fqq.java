@@ -1,3 +1,8 @@
-public interface fqq {
-   void a(bqy var1, exn var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fqq {
 }

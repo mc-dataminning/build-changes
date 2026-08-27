@@ -1,49 +1,51 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import java.util.Optional;
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import java.util.Map;
 
-public class fdn {
-   public static void a(fsa<?> $$0, fdl $$1, long $$2, float $$3, Vector3f $$4) {
-      float $$5 = a($$1, $$2);
+public enum fdn {
+   a(new csz(ctc.qS)),
+   b(new csz(ddg.cj)),
+   c(new csz(ctc.lH)),
+   d(new csz(ctc.pd), new csz(ctc.oV)),
+   e(new csz(ctc.qA), new csz(ctc.ot)),
+   f(new csz(ctc.qS)),
+   g(new csz(ctc.pX)),
+   h(new csz(ddg.b)),
+   i(new csz(ctc.qA), new csz(ctc.oz)),
+   j(new csz(ctc.qS)),
+   k(new csz(ddg.dI)),
+   l(new csz(ctc.pb), new csz(ctc.pQ)),
+   m(new csz(ctc.qS)),
+   n(new csz(ctc.pX)),
+   o(new csz(ctc.fF)),
+   p(new csz(ctc.pT)),
+   q(new csz(ctc.pX)),
+   r(new csz(ctc.hB));
 
-      for (Entry<String, List<fdk>> $$6 : $$1.c().entrySet()) {
-         Optional<fur> $$7 = $$0.a($$6.getKey());
-         List<fdk> $$8 = $$6.getValue();
-         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
-               fdm[] $$5x = $$4xx.b();
-               int $$6x = Math.max(0, axw.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
-               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
-               fdm $$8x = $$5x[$$6x];
-               fdm $$9 = $$5x[$$7x];
-               float $$10 = $$5 - $$8x.a();
-               float $$11;
-               if ($$7x != $$6x) {
-                  $$11 = axw.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
-               } else {
-                  $$11 = 0.0F;
-               }
+   public static final List<fdn> s = ImmutableList.of(m, n);
+   public static final List<fdn> t = ImmutableList.of(j, k, l);
+   public static final List<fdn> u = ImmutableList.of(f, g, h, i);
+   public static final List<fdn> v = ImmutableList.of(a, d, b, e, c);
+   public static final Map<fdn, List<fdn>> w = ImmutableMap.of(
+      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
+   );
+   private final List<csz> x;
 
-               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
-               $$4xx.a().apply($$4x, $$4);
-            }));
-      }
+   private fdn(csz... $$0) {
+      this.x = ImmutableList.copyOf($$0);
    }
 
-   private static float a(fdl $$0, long $$1) {
-      float $$2 = (float)$$1 / 1000.0F;
-      return $$0.b() ? $$2 % $$0.a() : $$2;
+   public static List<fdn> a(cps $$0) {
+      return switch ($$0) {
+         case a -> v;
+         case b -> u;
+         case c -> t;
+         case d -> s;
+      };
    }
 
-   public static Vector3f a(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0, -$$1, $$2);
-   }
-
-   public static Vector3f b(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
-   }
-
-   public static Vector3f a(double $$0, double $$1, double $$2) {
-      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
+   public List<csz> a() {
+      return this.x;
    }
 }

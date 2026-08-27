@@ -1,49 +1,44 @@
-public class cvz extends cvy {
-   public cvz(cvw $$0) {
-      super($$0);
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+
+public record cvz(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
+   private static final Codec<cvz> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axh.a(axh.u, "name").forGetter(cvz::c), axh.a(jq.a, "id").forGetter(cvz::d), axh.a(axh.t, "properties", new PropertyMap()).forGetter(cvz::e)
+            )
+            .apply($$0, cvz::new)
+   );
+   public static final Codec<cvz> a = axh.a(g, axh.u, $$0 -> new cvz(Optional.of($$0), Optional.empty(), new PropertyMap()));
+   public static final ys<ByteBuf, cvz> b = ys.a(yq.b(16).a(yq::a), cvz::c, jq.g.a(yq::a), cvz::d, yq.s, cvz::e, cvz::new);
+
+   public cvz(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   public boolean a(cnx $$0, czu $$1) {
-      if (!this.a($$0.f(), $$0.g())) {
-         return false;
-      } else {
-         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-            csd $$3 = $$0.a($$2);
-            switch ($$2) {
-               case 1:
-               case 3:
-               case 5:
-               case 7:
-                  if (!$$3.a(avw.aR)) {
-                     return false;
-                  }
-                  break;
-               case 2:
-               case 4:
-               case 6:
-               default:
-                  if (!$$3.a(csg.a)) {
-                     return false;
-                  }
-            }
-         }
-
-         return true;
-      }
+   public cvz(GameProfile $$0) {
+      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
    }
 
-   public csd a(cnx $$0, jj $$1) {
-      doh $$2 = new doh($$0.a(1).f(), $$0.a(3).f(), $$0.a(5).f(), $$0.a(7).f());
-      return dnt.a($$2);
+   public CompletableFuture<cvz> a() {
+      return this.b() ? CompletableFuture.completedFuture(this) : doy.a(this.c.orElseThrow()).thenApply($$0 -> {
+         GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ac.e, this.c.get()));
+         return new cvz($$1);
+      });
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 == 3 && $$1 == 3;
+   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      GameProfile $$3 = new GameProfile($$1.orElse(ac.e), $$0.orElse(""));
+      $$3.getProperties().putAll($$2);
+      return $$3;
    }
 
-   @Override
-   public cwk<?> ao_() {
-      return cwk.w;
+   public boolean b() {
+      return this.d.isPresent() || !this.e.isEmpty() || this.c.isEmpty();
    }
 }

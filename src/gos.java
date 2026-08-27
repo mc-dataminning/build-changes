@@ -1,8 +1,12 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public interface gos {
-   goz a(akf var1);
+public record gos(Map<String, gof> d) {
+   public static final Codec<String> a = axh.b(1, 16);
+   public static final Codec<gos> b = Codec.unboundedMap(a, gof.a).xmap(gos::new, gos::a);
+   public static final asr<gos> c = asr.a("language", b);
 
-   @Nullable
-   goo a(akf var1, gow var2);
+   public Map<String, gof> a() {
+      return this.d;
+   }
 }

@@ -1,181 +1,104 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class gey implements geq.a {
-   private final Map<Integer, emf> a = Maps.newHashMap();
-   private final Map<Integer, Float> b = Maps.newHashMap();
-   private final Map<Integer, Long> c = Maps.newHashMap();
-   private static final long d = 5000L;
-   private static final float e = 80.0F;
-   private static final boolean f = true;
-   private static final boolean g = false;
-   private static final boolean h = false;
-   private static final boolean i = true;
-   private static final boolean j = true;
-   private static final float k = 0.02F;
+public class gey implements gfa.a {
+   final fde a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private gey.a d;
 
-   public void a(int $$0, emf $$1, float $$2) {
-      this.a.put($$0, $$1);
-      this.c.put($$0, ac.b());
-      this.b.put($$0, $$2);
+   public gey(fde $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(exn $$0, gbe $$1, double $$2, double $$3, double $$4) {
-      if (!this.a.isEmpty()) {
-         long $$5 = ac.b();
-
-         for (Integer $$6 : this.a.keySet()) {
-            emf $$7 = this.a.get($$6);
-            float $$8 = this.b.get($$6);
-            a($$0, $$1, $$7, $$8, true, true, $$2, $$3, $$4);
+   public void a(exx $$0, gbo $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         grd $$6 = this.a.V();
+         if ($$6 != null) {
+            this.d = new gey.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
          }
+      }
 
-         for (Integer $$9 : this.c.keySet().toArray(new Integer[0])) {
-            if ($$5 - this.c.get($$9) > 5000L) {
-               this.a.remove($$9);
-               this.c.remove($$9);
+      if (this.d != null) {
+         Map<czk, String> $$7 = this.d.c.getNow(null);
+         double $$8 = this.a.j.m().b().d * 0.85;
+
+         for (Entry<czk, String> $$9 : this.d.b.entrySet()) {
+            czk $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
+
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
+
+            for (String $$14 : $$12) {
+               gfa.a($$0, $$1, $$14, (double)jp.a($$10.e, 8), $$8 + (double)$$13, (double)jp.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
             }
          }
       }
    }
 
-   public static void a(exn $$0, gbe $$1, emf $$2, float $$3, boolean $$4, boolean $$5, double $$6, double $$7, double $$8) {
-      a($$0, $$1.getBuffer(gbm.a(6.0)), $$2, $$6, $$7, $$8);
-      im $$9 = $$2.l();
-      if (a($$9, $$6, $$7, $$8) <= 80.0F) {
-         geq.a(
-            $$0,
-            $$1,
-            new eta(
-                  (double)((float)$$9.u() + 0.25F),
-                  (double)((float)$$9.v() + 0.25F),
-                  (double)$$9.w() + 0.25,
-                  (double)((float)$$9.u() + 0.75F),
-                  (double)((float)$$9.v() + 0.75F),
-                  (double)((float)$$9.w() + 0.75F)
-               )
-               .d(-$$6, -$$7, -$$8),
-            0.0F,
-            1.0F,
-            0.0F,
-            0.5F
-         );
+   final class a {
+      final Map<czk, String> b;
+      final CompletableFuture<Map<czk, String>> c;
 
-         for (int $$10 = 0; $$10 < $$2.e(); $$10++) {
-            emd $$11 = $$2.a($$10);
-            if (a($$11.a(), $$6, $$7, $$8) <= 80.0F) {
-               float $$12 = $$10 == $$2.f() ? 1.0F : 0.0F;
-               float $$13 = $$10 == $$2.f() ? 0.0F : 1.0F;
-               geq.a(
-                  $$0,
-                  $$1,
-                  new eta(
-                        (double)((float)$$11.a + 0.5F - $$3),
-                        (double)((float)$$11.b + 0.01F * (float)$$10),
-                        (double)((float)$$11.c + 0.5F - $$3),
-                        (double)((float)$$11.a + 0.5F + $$3),
-                        (double)((float)$$11.b + 0.25F + 0.01F * (float)$$10),
-                        (double)((float)$$11.c + 0.5F + $$3)
-                     )
-                     .d(-$$6, -$$7, -$$8),
-                  $$12,
-                  0.0F,
-                  $$13,
-                  0.5F
-               );
-            }
-         }
-      }
+      a(grd $$0, double $$1, double $$2) {
+         fvw $$3 = gey.this.a.r;
+         akg<dad> $$4 = $$3.ae();
+         int $$5 = jp.a($$1);
+         int $$6 = jp.a($$2);
+         Builder<czk, String> $$7 = ImmutableMap.builder();
+         fvs $$8 = $$3.i();
 
-      emf.a $$14 = $$2.k();
-      if ($$4 && $$14 != null) {
-         for (emd $$15 : $$14.b()) {
-            if (a($$15.a(), $$6, $$7, $$8) <= 80.0F) {
-               geq.a(
-                  $$0,
-                  $$1,
-                  new eta(
-                        (double)((float)$$15.a + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$15.b + 0.01F),
-                        (double)((float)$$15.c + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$15.a + 0.5F + $$3 / 2.0F),
-                        (double)$$15.b + 0.1,
-                        (double)((float)$$15.c + 0.5F + $$3 / 2.0F)
-                     )
-                     .d(-$$6, -$$7, -$$8),
-                  1.0F,
-                  0.8F,
-                  0.8F,
-                  0.5F
-               );
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               czk $$11 = new czk($$9, $$10);
+               String $$12 = "";
+               dsn $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.C() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
+
+               $$7.put($$11, $$12);
             }
          }
 
-         for (emd $$16 : $$14.a()) {
-            if (a($$16.a(), $$6, $$7, $$8) <= 80.0F) {
-               geq.a(
-                  $$0,
-                  $$1,
-                  new eta(
-                        (double)((float)$$16.a + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$16.b + 0.01F),
-                        (double)((float)$$16.c + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$16.a + 0.5F + $$3 / 2.0F),
-                        (double)$$16.b + 0.1,
-                        (double)((float)$$16.c + 0.5F + $$3 / 2.0F)
-                     )
-                     .d(-$$6, -$$7, -$$8),
-                  0.8F,
-                  1.0F,
-                  1.0F,
-                  0.5F
-               );
+         this.b = $$7.build();
+         this.c = $$0.a(() -> {
+            aqh $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<czk, String> $$5x = ImmutableMap.builder();
+               aqf $$6x = $$4x.l();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     czk $$9x = new czk($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
             }
-         }
+         });
       }
-
-      if ($$5) {
-         for (int $$17 = 0; $$17 < $$2.e(); $$17++) {
-            emd $$18 = $$2.a($$17);
-            if (a($$18.a(), $$6, $$7, $$8) <= 80.0F) {
-               geq.a($$0, $$1, String.valueOf($$18.l), (double)$$18.a + 0.5, (double)$$18.b + 0.75, (double)$$18.c + 0.5, -1, 0.02F, true, 0.0F, true);
-               geq.a(
-                  $$0,
-                  $$1,
-                  String.format(Locale.ROOT, "%.2f", $$18.k),
-                  (double)$$18.a + 0.5,
-                  (double)$$18.b + 0.25,
-                  (double)$$18.c + 0.5,
-                  -1,
-                  0.02F,
-                  true,
-                  0.0F,
-                  true
-               );
-            }
-         }
-      }
-   }
-
-   public static void a(exn $$0, exr $$1, emf $$2, double $$3, double $$4, double $$5) {
-      for (int $$6 = 0; $$6 < $$2.e(); $$6++) {
-         emd $$7 = $$2.a($$6);
-         if (!(a($$7.a(), $$3, $$4, $$5) > 80.0F)) {
-            float $$8 = (float)$$6 / (float)$$2.e() * 0.33F;
-            int $$9 = $$6 == 0 ? 0 : axw.h($$8, 0.9F, 0.9F);
-            int $$10 = $$9 >> 16 & 0xFF;
-            int $$11 = $$9 >> 8 & 0xFF;
-            int $$12 = $$9 & 0xFF;
-            $$1.a($$0.c(), (float)((double)$$7.a - $$3 + 0.5), (float)((double)$$7.b - $$4 + 0.5), (float)((double)$$7.c - $$5 + 0.5))
-               .a($$10, $$11, $$12, 255)
-               .e();
-         }
-      }
-   }
-
-   private static float a(im $$0, double $$1, double $$2, double $$3) {
-      return (float)(Math.abs((double)$$0.u() - $$1) + Math.abs((double)$$0.v() - $$2) + Math.abs((double)$$0.w() - $$3));
    }
 }

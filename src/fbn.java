@@ -1,4 +1,41 @@
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record fbn(String a, fbh b, boolean c, Set<String> d) {
+public interface fbn {
+   fbn a = new fbn() {
+      @Override
+      public long a() {
+         return 1L;
+      }
+
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
+
+   long a();
+
+   long b();
+
+   static fbn a(final int $$0) {
+      return new fbn() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
+   }
 }

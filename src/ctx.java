@@ -1,31 +1,50 @@
-public class ctx extends cry {
-   private static final int a = 10;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public ctx(cry.a $$0) {
+public class ctx extends csu implements csb {
+   public static final int a = 5;
+   public static final float b = 3.0F;
+
+   public ctx(csu.a $$0) {
       super($$0);
+      dfj.a(this, cqo.a);
    }
 
    @Override
-   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
-      if (!$$0.x_()) {
-         etf $$3 = new etf($$1.dl().a(), $$1.dw(), $$1.dl().c()).e($$1.bL().a(0.8F));
-         if (!$$0.a_(im.a($$3)).r()) {
-            $$3 = new etf($$1.dl().a(), $$1.dw(), $$1.dl().c()).e($$1.bL().a(0.05F));
-         }
+   public String i(csz $$0) {
+      crs $$1 = $$0.a(ka.V);
+      return $$1 != null ? this.a() + "." + $$1.b() : super.i($$0);
+   }
 
-         clv $$4 = new clv($$1, $$0, $$3.a(), $$3.b(), $$3.c());
-         $$4.a($$1, $$1.dF(), $$1.dD(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   @Override
+   public void a(csz $$0, @Nullable dad $$1, List<wu> $$2, cuq $$3) {
+      cqu.a($$0, $$2);
+   }
 
-      $$0.a(null, $$1.ds(), $$1.du(), $$1.dy(), auz.Cb, ava.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      csd $$5 = $$1.b($$2);
-      $$1.gv().a(this, 10);
-      $$1.b(avj.c.b(this));
-      if (!$$1.f()) {
-         $$5.g(1);
-      }
+   @Override
+   public cus c(csz $$0) {
+      return cus.d;
+   }
 
-      return bor.a($$5, $$0.x_());
+   @Override
+   public int b(csz $$0) {
+      return 72000;
+   }
+
+   @Override
+   public bpn<csz> a(dad $$0, clh $$1, bpl $$2) {
+      csz $$3 = $$1.b($$2);
+      $$1.c($$2);
+      return bpn.b($$3);
+   }
+
+   @Override
+   public boolean a(csz $$0, csz $$1) {
+      return $$1.a(avz.b) || super.a($$0, $$1);
+   }
+
+   @Override
+   public bro k() {
+      return bro.b;
    }
 }

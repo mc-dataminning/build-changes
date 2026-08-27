@@ -1,59 +1,51 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
-
-public class cme {
-   private final List<cmb> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<cmb> a() {
-      return ImmutableList.copyOf(this.a);
+public class cme extends cmg {
+   public cme(brn<? extends cme> $$0, dad $$1) {
+      super($$0, $$1);
    }
 
-   public cme a(int $$0, float $$1) {
-      this.a.add(new cmb($$0, $$1));
-      this.b();
-      return this;
+   public cme(dad $$0, bsa $$1) {
+      super(brn.aS, $$1, $$0);
    }
 
-   public cme a(Collection<cmb> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   public cme(dad $$0, double $$1, double $$2, double $$3) {
+      super(brn.aS, $$1, $$2, $$3, $$0);
    }
 
-   private void b() {
-      Int2ObjectSortedMap<cmb> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
+   @Override
+   protected csu r() {
+      return ctc.qC;
    }
 
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cmb $$1 = this.a.get(this.b);
-         cmb $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
+   private kv v() {
+      csz $$0 = this.p();
+      return (kv)(!$$0.d() && !$$0.a(this.r()) ? new kt(kx.Q, $$0) : kx.T);
+   }
 
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cmb $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         kv $$1 = this.v();
 
-            this.b = $$6;
-            $$5 = $$7.b();
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dN().a($$1, this.ds(), this.du(), this.dy(), 0.0, 0.0, 0.0);
          }
+      }
+   }
 
-         return $$5;
+   @Override
+   protected void a(etm $$0) {
+      super.a($$0);
+      brh $$1 = $$0.a();
+      int $$2 = $$1 instanceof chw ? 3 : 0;
+      $$1.a(this.dO().b(this, this.u()), (float)$$2);
+   }
+
+   @Override
+   protected void a(etn $$0) {
+      super.a($$0);
+      if (!this.dN().B) {
+         this.dN().a(this, (byte)3);
+         this.am();
       }
    }
 }

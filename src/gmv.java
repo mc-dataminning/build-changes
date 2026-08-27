@@ -1,34 +1,225 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class gmv {
-   private static final BiMap<akf, gmu> i = HashBiMap.create();
-   public static final gmu a = a("single", gna.b);
-   public static final gmu b = a("directory", gmx.b);
-   public static final gmu c = a("filter", gnb.b);
-   public static final gmu d = a("unstitch", gnc.b);
-   public static final gmu e = a("paletted_permutations", gmz.b);
-   public static Codec<gmu> f = akf.a.flatXmap($$0 -> {
-      gmu $$1 = (gmu)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      akf $$1 = (akf)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<gms> g = f.dispatch(gms::a, gmu::a);
-   public static Codec<List<gms>> h = g.listOf().fieldOf("sources").codec();
+public class gmv<T extends gmv.a> {
+   private static final Comparator<gmv.b<?>> a = Comparator.<gmv.b<?>, Integer>comparing($$0 -> -$$0.c)
+      .thenComparing($$0 -> -$$0.b)
+      .thenComparing($$0 -> $$0.a.c());
+   private final int b;
+   private final List<gmv.b<T>> c = new ArrayList<>();
+   private final List<gmv.c<T>> d = new ArrayList<>();
+   private int e;
+   private int f;
+   private final int g;
+   private final int h;
 
-   private static gmu a(String $$0, Codec<? extends gms> $$1) {
-      gmu $$2 = new gmu($$1);
-      akf $$3 = new akf($$0);
-      gmu $$4 = (gmu)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
-      } else {
-         return $$2;
+   public gmv(int $$0, int $$1, int $$2) {
+      this.b = $$2;
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   public int a() {
+      return this.e;
+   }
+
+   public int b() {
+      return this.f;
+   }
+
+   public void a(T $$0) {
+      gmv.b<T> $$1 = new gmv.b<>($$0, this.b);
+      this.c.add($$1);
+   }
+
+   public void c() {
+      List<gmv.b<T>> $$0 = new ArrayList<>(this.c);
+      $$0.sort(a);
+
+      for (gmv.b<T> $$1 : $$0) {
+         if (!this.a($$1)) {
+            throw new gmw($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
+         }
       }
+   }
+
+   public void a(gmv.d<T> $$0) {
+      for (gmv.c<T> $$1 : this.d) {
+         $$1.a($$0);
+      }
+   }
+
+   static int a(int $$0, int $$1) {
+      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
+   }
+
+   private boolean a(gmv.b<T> $$0) {
+      for (gmv.c<T> $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return this.b($$0);
+   }
+
+   private boolean b(gmv.b<T> $$0) {
+      int $$1 = axz.c(this.e);
+      int $$2 = axz.c(this.f);
+      int $$3 = axz.c(this.e + $$0.b);
+      int $$4 = axz.c(this.f + $$0.c);
+      boolean $$5 = $$3 <= this.g;
+      boolean $$6 = $$4 <= this.h;
+      if (!$$5 && !$$6) {
+         return false;
+      } else {
+         boolean $$7 = $$5 && $$1 != $$3;
+         boolean $$8 = $$6 && $$2 != $$4;
+         boolean $$9;
+         if ($$7 ^ $$8) {
+            $$9 = $$7;
+         } else {
+            $$9 = $$5 && $$1 <= $$2;
+         }
+
+         gmv.c<T> $$11;
+         if ($$9) {
+            if (this.f == 0) {
+               this.f = $$4;
+            }
+
+            $$11 = new gmv.c<>(this.e, 0, $$3 - this.e, this.f);
+            this.e = $$3;
+         } else {
+            $$11 = new gmv.c<>(0, this.f, this.e, $$4 - this.f);
+            this.f = $$4;
+         }
+
+         $$11.a($$0);
+         this.d.add($$11);
+         return true;
+      }
+   }
+
+   public interface a {
+      int a();
+
+      int b();
+
+      akh c();
+   }
+
+   static record b<T extends gmv.a>(T a, int b, int c) {
+
+      public b(T $$0, int $$1) {
+         this($$0, gmv.a($$0.a(), $$1), gmv.a($$0.b(), $$1));
+      }
+   }
+
+   public static class c<T extends gmv.a> {
+      private final int a;
+      private final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private List<gmv.c<T>> e;
+      @Nullable
+      private gmv.b<T> f;
+
+      public c(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public boolean a(gmv.b<T> $$0) {
+         if (this.f != null) {
+            return false;
+         } else {
+            int $$1 = $$0.b;
+            int $$2 = $$0.c;
+            if ($$1 <= this.c && $$2 <= this.d) {
+               if ($$1 == this.c && $$2 == this.d) {
+                  this.f = $$0;
+                  return true;
+               } else {
+                  if (this.e == null) {
+                     this.e = new ArrayList<>(1);
+                     this.e.add(new gmv.c<>(this.a, this.b, $$1, $$2));
+                     int $$3 = this.c - $$1;
+                     int $$4 = this.d - $$2;
+                     if ($$4 > 0 && $$3 > 0) {
+                        int $$5 = Math.max(this.d, $$3);
+                        int $$6 = Math.max(this.c, $$4);
+                        if ($$5 >= $$6) {
+                           this.e.add(new gmv.c<>(this.a, this.b + $$2, $$1, $$4));
+                           this.e.add(new gmv.c<>(this.a + $$1, this.b, $$3, this.d));
+                        } else {
+                           this.e.add(new gmv.c<>(this.a + $$1, this.b, $$3, $$2));
+                           this.e.add(new gmv.c<>(this.a, this.b + $$2, this.c, $$4));
+                        }
+                     } else if ($$3 == 0) {
+                        this.e.add(new gmv.c<>(this.a, this.b + $$2, $$1, $$4));
+                     } else if ($$4 == 0) {
+                        this.e.add(new gmv.c<>(this.a + $$1, this.b, $$3, $$2));
+                     }
+                  }
+
+                  for (gmv.c<T> $$7 : this.e) {
+                     if ($$7.a($$0)) {
+                        return true;
+                     }
+                  }
+
+                  return false;
+               }
+            } else {
+               return false;
+            }
+         }
+      }
+
+      public void a(gmv.d<T> $$0) {
+         if (this.f != null) {
+            $$0.load(this.f.a, this.a(), this.b());
+         } else if (this.e != null) {
+            for (gmv.c<T> $$1 : this.e) {
+               $$1.a($$0);
+            }
+         }
+      }
+
+      @Override
+      public String toString() {
+         return "Slot{originX="
+            + this.a
+            + ", originY="
+            + this.b
+            + ", width="
+            + this.c
+            + ", height="
+            + this.d
+            + ", texture="
+            + this.f
+            + ", subSlots="
+            + this.e
+            + "}";
+      }
+   }
+
+   public interface d<T extends gmv.a> {
+      void load(T var1, int var2, int var3);
    }
 }

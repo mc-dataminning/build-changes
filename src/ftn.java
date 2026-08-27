@@ -1,39 +1,70 @@
-public class ftn extends fto {
-   private final fur b;
-   protected final fur a;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public ftn(fur $$0) {
-      this.b = $$0;
-      this.a = $$0.b("head");
+public class ftn extends fst<cne> {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "bottom";
+   private final fvb g;
+   private final fvb h;
+   private final ImmutableList<fvb> i;
+
+   public ftn(fvb $$0) {
+      this.g = $$0.b("left_paddle");
+      this.h = $$0.b("right_paddle");
+      this.i = this.a($$0).build();
    }
 
-   public static fuz a() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      $$1.a("head", fuw.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fut.a);
-      return $$0;
+   protected Builder<fvb> a(fvb $$0) {
+      Builder<fvb> $$1 = new Builder();
+      $$1.add(new fvb[]{$$0.b("bottom"), this.g, this.h});
+      return $$1;
    }
 
-   public static fux b() {
-      fuz $$0 = a();
-      fva $$1 = $$0.a();
-      $$1.a("head").a("hat", fuw.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fuv(0.25F)), fut.a);
-      return fux.a($$0, 64, 64);
+   public static void a(fvk $$0) {
+      $$0.a(
+         "bottom",
+         fvg.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         fvd.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
+      );
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fvg.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fvd.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         fvg.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fvd.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   public static fux c() {
-      fuz $$0 = a();
-      return fux.a($$0, 64, 32);
+   public static fvh b() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      a($$1);
+      return fvh.a($$0, 128, 64);
    }
 
-   @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   public void a(cne $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.g, $$1);
+      a($$0, 1, this.h, $$1);
    }
 
-   @Override
-   public void a(exn $$0, exr $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public ImmutableList<fvb> c() {
+      return this.i;
+   }
+
+   private static void a(cne $$0, int $$1, fvb $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = axz.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (axz.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = axz.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (axz.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
+      }
    }
 }

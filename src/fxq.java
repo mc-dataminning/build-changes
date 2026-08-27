@@ -1,45 +1,48 @@
-public class fxq extends fzs {
-   private final fzn a;
+import com.mojang.logging.LogUtils;
+import java.util.Hashtable;
+import java.util.Optional;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
+import org.slf4j.Logger;
 
-   fxq(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fzn $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
-   }
+@FunctionalInterface
+public interface fxq {
+   Logger a = LogUtils.getLogger();
+   fxq b = $$0 -> Optional.empty();
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.b(this.a);
-      }
-   }
+   Optional<fxn> lookupRedirect(fxn var1);
 
-   @Override
-   public fyw b() {
-      return fyw.b;
-   }
-
-   public static class a implements fyv<kz> {
-      private final fzn a;
-
-      public a(fzn $$0) {
-         this.a = $$0;
+   static fxq createDnsSrvRedirectHandler() {
+      DirContext $$2;
+      try {
+         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
+         Class.forName("com.sun.jndi.dns.DnsContextFactory");
+         Hashtable<String, String> $$1 = new Hashtable<>();
+         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
+         $$1.put("java.naming.provider.url", "dns:");
+         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
+         $$2 = new InitialDirContext($$1);
+      } catch (Throwable var3) {
+         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
+         return b;
       }
 
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fxq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+      return $$1x -> {
+         if ($$1x.b() == 25565) {
+            try {
+               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
+               Attribute $$3x = $$2x.get("srv");
+               if ($$3x != null) {
+                  String[] $$4x = $$3x.get().toString().split(" ", 4);
+                  return Optional.of(new fxn($$4x[3], fxn.c($$4x[2])));
+               }
+            } catch (Throwable var5) {
+            }
+         }
+
+         return Optional.empty();
+      };
    }
 }

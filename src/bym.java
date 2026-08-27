@@ -1,27 +1,34 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bym extends byy {
-   private static final int i = 10;
-   private static final int j = 7;
+public class bym extends byx {
+   private final bsc a;
+   private final dad b;
 
-   public bym(brm $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public bym(bsc $$0, dad $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(byx.a.c));
    }
 
    @Override
    public boolean a() {
-      aqe $$0 = (aqe)this.b.dN();
-      im $$1 = this.b.dn();
-      return $$0.c($$1) ? false : super.a();
+      boolean $$0 = this.a.aC || this.a.aB;
+      if ($$0 && this.a.ai().a(avu.h)) {
+         in $$1 = this.a.dn().c();
+         dqh $$2 = this.b.a_($$1);
+         return $$2.a(ddg.qP) || $$2.k(this.b, $$1) == euf.a();
+      } else {
+         return false;
+      }
    }
 
-   @Nullable
    @Override
-   protected etf h() {
-      aqe $$0 = (aqe)this.b.dN();
-      im $$1 = this.b.dn();
-      jo $$2 = jo.a($$1);
-      jo $$3 = bsy.a($$0, $$2, 2);
-      return $$3 != $$2 ? cby.a(this.b, 10, 7, etf.c($$3.q()), (float) (Math.PI / 2)) : null;
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      this.a.I().a();
    }
 }

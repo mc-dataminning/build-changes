@@ -1,40 +1,27 @@
-public class ezu {
-   private final fbi a;
-   private boolean b;
-   private String c;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public ezu(fbi $$0) {
-      this.a = $$0;
-      fbi.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
+public class ezu extends ezt {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   public boolean a() {
-      return this.b;
-   }
+   public static ezu a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      ezu $$3 = new ezu();
 
-   public String b() {
-      return this.c;
-   }
-
-   public void a(eys $$0) {
-      fbi.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private fbi.a b(eys $$0) {
-      fbi.a $$1 = new fbi.a();
-      $$1.a = $$0.a;
-      fbi.a $$2 = this.a.a();
-      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
-      if ($$3) {
-         return $$2;
-      } else {
-         $$1.b = true;
-         this.a.a($$1);
-         return $$1;
+      try {
+         $$3.a = fbq.b("downloadLink", $$2, "");
+         $$3.b = fbq.b("resourcePackUrl", $$2, "");
+         $$3.c = fbq.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
       }
+
+      return $$3;
    }
 }

@@ -1,18 +1,18 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class ekn implements eko {
-   public static final ekn a = new ekn();
-   public static final Codec<ekn> b = Codec.unit(a);
+public class ekn {
+   private final List<ekm> a;
 
-   @Nullable
-   @Override
-   public ty a(ayd $$0, @Nullable ty $$1) {
-      return $$1;
+   public ekn(List<ekm> $$0) {
+      this.a = $$0;
+   }
+
+   public List<ekm> a() {
+      return this.a;
    }
 
    @Override
-   public ekp<?> a() {
-      return ekp.b;
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
    }
 }

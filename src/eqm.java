@@ -1,35 +1,30 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eqm extends epo {
+public class eqm extends epw {
    public static final Codec<eqm> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(cvj.h.fieldOf("pages").forGetter($$0x -> $$0x.b), epn.e.f.forGetter($$0x -> $$0x.c))).apply($$0, eqm::new)
+      $$0 -> a($$0).and(awg.b(le.E).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, eqm::new)
    );
-   private final List<aqv<ws>> b;
-   private final epn c;
+   private final awg<csr> b;
 
-   protected eqm(List<erh> $$0, List<aqv<ws>> $$1, epn $$2) {
+   private eqm(List<erq> $$0, awg<csr> $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   protected csd a(csd $$0, eoa $$1) {
-      $$0.a(jz.A, cvj.a, this::a);
+   public epy b() {
+      return epz.D;
+   }
+
+   @Override
+   public csz a(csz $$0, eol $$1) {
+      css.a($$0, this.b, $$1.b());
       return $$0;
    }
 
-   @VisibleForTesting
-   public cvj a(cvj $$0) {
-      List<aqv<ws>> $$1 = this.c.a($$0.a(), this.b, 100);
-      return $$0.b($$1);
-   }
-
-   @Override
-   public epq b() {
-      return epr.I;
+   public static epw.a<?> a(awg<csr> $$0) {
+      return a($$1 -> new eqm($$1, $$0));
    }
 }

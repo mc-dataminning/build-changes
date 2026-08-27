@@ -1,67 +1,60 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record fwr(String a, @Nullable fwr.a b) {
-   public static fwr a() {
-      return a(null);
+public enum fwr implements ayt {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
+
+   public static final Codec<fwr> d = ayt.a(fwr::values);
+   private final String e;
+
+   private fwr(String $$0) {
+      this.e = $$0;
    }
 
-   public static fwr a(String $$0) {
-      return a(new fwr.a.b($$0));
+   public static fwr a(xk $$0, wu $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
+      }
    }
 
-   public static fwr a(eyu $$0) {
-      return a(new fwr.a.a($$0));
+   private static boolean a(xk $$0, wu $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         wu $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
+      }
    }
 
-   public static fwr a(@Nullable fwr.a $$0) {
-      return new fwr(g(), $$0);
+   private static boolean a(wu $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xr.a).orElse(false);
    }
 
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   private static boolean a(xr $$0) {
+      return !$$0.k().equals(xr.b);
+   }
+
+   public boolean a() {
+      return this == c;
    }
 
    @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof fwr.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   public fcz a(xk $$0) {
+      return switch (this) {
+         case b -> fcz.a($$0.c());
+         case c -> fcz.c();
+         default -> null;
+      };
    }
 
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof fwr.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w11a");
-      if (fcu.e().a()) {
-         $$0.append(" (modded)");
-      }
-
-      return $$0.toString();
-   }
-
-   public String e() {
-      return this.a;
-   }
-
-   @Nullable
-   public fwr.a f() {
-      return this.b;
-   }
-
-   public interface a {
-      public static record a(long a, int b) implements fwr.a {
-         public a(eyu $$0) {
-            this($$0.a, $$0.n);
-         }
-      }
-
-      public static record b(String a) implements fwr.a {
-      }
+   @Override
+   public String c() {
+      return this.e;
    }
 }

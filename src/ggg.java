@@ -1,16 +1,17 @@
-public class ggg extends ghb {
-   public static final akf a = new akf("textures/entity/guardian_elder.png");
+public class ggg extends gjd<chy> {
+   private static final akh a = new akh("textures/entity/spider/cave_spider.png");
+   private static final float i = 0.7F;
 
-   public ggg(ggn.a $$0) {
-      super($$0, 1.2F, fuq.V);
+   public ggg(ggx.a $$0) {
+      super($$0, fva.w);
+      this.d *= 0.7F;
    }
 
-   protected void a(chn $$0, exn $$1, float $$2) {
-      $$1.b(chg.b, chg.b, chg.b);
+   protected void a(chy $$0, exx $$1, float $$2) {
+      $$1.b(0.7F, 0.7F, 0.7F);
    }
 
-   @Override
-   public akf a(chn $$0) {
+   public akh a(chy $$0) {
       return a;
    }
 }

@@ -1,41 +1,49 @@
-import java.util.List;
+public class glk extends gli<cel, ftr<cel>> {
+   private static final akh a = new akh("textures/entity/sheep/sheep_fur.png");
+   private final ftq<cel> b;
 
-public class glk<T extends cjp, M extends fud<T>> extends gky<T, M> {
-   private final akf a;
-   private final glk.a<T> b;
-   private final glk.b<T, M> c;
-
-   public glk(gii<T, M> $$0, akf $$1, glk.a<T> $$2, glk.b<T, M> $$3) {
+   public glk(gis<cel, ftr<cel>> $$0, fux $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+      this.b = new ftq<>($$1.a(fva.bi));
    }
 
-   public void a(exn $$0, gbe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.cf()) {
-         this.a();
-         exr $$10 = $$1.getBuffer(gbm.j(this.a));
-         this.c().a($$0, $$10, $$2, gho.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
-         this.b();
+   public void a(exx $$0, gbo $$1, int $$2, cel $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.y()) {
+         if ($$3.cf()) {
+            fde $$10 = fde.Q();
+            boolean $$11 = $$10.b($$3);
+            if ($$11) {
+               this.c().a(this.b);
+               this.b.a($$3, $$4, $$5, $$6);
+               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+               eyb $$12 = $$1.getBuffer(gbw.r(a));
+               this.b.a($$0, $$12, $$2, ghy.c($$3, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
+            }
+         } else {
+            float $$21;
+            float $$22;
+            float $$23;
+            if ($$3.ae() && "jeb_".equals($$3.ad().getString())) {
+               int $$13 = 25;
+               int $$14 = $$3.ai / 25 + $$3.aj();
+               int $$15 = crs.values().length;
+               int $$16 = $$14 % $$15;
+               int $$17 = ($$14 + 1) % $$15;
+               float $$18 = ((float)($$3.ai % 25) + $$6) / 25.0F;
+               float[] $$19 = cel.a(crs.a($$16));
+               float[] $$20 = cel.a(crs.a($$17));
+               $$21 = $$19[0] * (1.0F - $$18) + $$20[0] * $$18;
+               $$22 = $$19[1] * (1.0F - $$18) + $$20[1] * $$18;
+               $$23 = $$19[2] * (1.0F - $$18) + $$20[2] * $$18;
+            } else {
+               float[] $$24 = cel.a($$3.u());
+               $$21 = $$24[0];
+               $$22 = $$24[1];
+               $$23 = $$24[2];
+            }
+
+            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21, $$22, $$23);
+         }
       }
-   }
-
-   private void a() {
-      List<fur> $$0 = this.c.getPartsToDraw(this.c());
-      this.c().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
-   }
-
-   private void b() {
-      this.c().a().e().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<T extends cjp> {
-      float apply(T var1, float var2, float var3);
-   }
-
-   public interface b<T extends cjp, M extends frr<T>> {
-      List<fur> getPartsToDraw(M var1);
    }
 }

@@ -1,9 +1,21 @@
-public class gnl extends gnq {
-   public gnl(gmp $$0) {
-      super($$0, new akf("textures/atlas/mob_effects.png"), new akf("mob_effects"));
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class gnl implements gnc {
+   public static final Codec<gnl> b = RecordCodecBuilder.create($$0 -> $$0.group(ayh.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gnl::new));
+   private final ayh c;
+
+   public gnl(ayh $$0) {
+      this.c = $$0;
    }
 
-   public gmo a(iv<bpv> $$0) {
-      return this.a($$0.e().map(ake::a).orElseGet(gme::b));
+   @Override
+   public void a(atr $$0, gnc.a $$1) {
+      $$1.a(this.c.c());
+   }
+
+   @Override
+   public gne a() {
+      return gnf.c;
    }
 }

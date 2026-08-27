@@ -1,7 +1,7 @@
-import javax.annotation.Nullable;
-
-@FunctionalInterface
 public interface coo {
-   @Nullable
-   cnh createMenu(int var1, ckk var2, ckl var3);
+   int a(int var1);
+
+   void a(int var1, int var2);
+
+   int a();
 }

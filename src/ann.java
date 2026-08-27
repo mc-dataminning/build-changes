@@ -1,28 +1,52 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.ContextChain;
+import java.util.List;
 
 public class ann {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ws.c("commands.save.alreadyOff"));
+   public static <T extends ef<T>> void a(CommandDispatcher<T> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
+                     .requires($$0x -> $$0x.c(2)))
+                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new ann.c())))
+               .then(LiteralArgumentBuilder.literal("fail").executes(new ann.a())))
+            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new ann.b(), false))
+      );
+   }
 
-   public static void a(CommandDispatcher<ec> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("save-off").requires($$0x -> $$0x.c(4))).executes($$0x -> {
-         ec $$1 = (ec)$$0x.getSource();
-         boolean $$2 = false;
+   static class a<T extends ef<T>> implements gz.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, gx $$2, hd<T> $$3) {
+         $$0.p().onFailure();
+         he $$4 = $$3.b();
+         $$4.a();
+         $$4.b();
+      }
+   }
 
-         for (aqe $$3 : $$1.l().K()) {
-            if ($$3 != null && !$$3.e) {
-               $$3.e = true;
-               $$2 = true;
+   static class b<T extends ef<T>> implements ha.a<T> {
+      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, gx $$3, hd<T> $$4) {
+         if ($$1.isEmpty()) {
+            if ($$3.c()) {
+               $$4.a(hm.a());
             }
-         }
-
-         if (!$$2) {
-            throw a.create();
          } else {
-            $$1.a(() -> ws.c("commands.save.disabled"), true);
-            return 1;
+            $$4.b().b();
+            ContextChain<T> $$5 = $$2.nextStage();
+            String $$6 = $$5.getTopContext().getInput();
+            $$4.a(new hi.a<>($$6, $$5, $$3.d(), $$0, $$1));
          }
-      }));
+      }
+   }
+
+   static class c<T extends ef<T>> implements gz.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, gx $$2, hd<T> $$3) {
+         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
+         $$0.p().onSuccess($$4);
+         he $$5 = $$3.b();
+         $$5.a($$4);
+         $$5.b();
+      }
    }
 }

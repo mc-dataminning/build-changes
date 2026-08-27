@@ -1,19 +1,16 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class eca<P extends ebz> {
-   public static final eca<ecc> a = a("two_layers_feature_size", ecc.d);
-   public static final eca<ecb> b = a("three_layers_feature_size", ecb.d);
-   private final Codec<P> c;
+public class eca implements ebh {
+   public static final Codec<eca> a = axh.b(eft.c).fieldOf("features").xmap(eca::new, $$0 -> $$0.b).codec();
+   public final ja<eft> b;
 
-   private static <P extends ebz> eca<P> a(String $$0, Codec<P> $$1) {
-      return ji.a(lc.aa, $$0, new eca<>($$1));
+   public eca(ja<eft> $$0) {
+      this.b = $$0;
    }
 
-   private eca(Codec<P> $$0) {
-      this.c = $$0;
-   }
-
-   public Codec<P> a() {
-      return this.c;
+   @Override
+   public Stream<dyq<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

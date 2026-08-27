@@ -1,37 +1,32 @@
-public class aek implements yz<abk> {
-   public static final yq<vs, aek> a = yz.a(aek::a, aek::new);
+import javax.annotation.Nullable;
+
+public class aek implements zb<abm> {
+   public static final ys<vu, aek> a = zb.a(aek::a, aek::new);
    private final int b;
-   private final int c;
 
-   public aek(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aek(brh $$0) {
+      this.b = $$0.aj();
    }
 
-   private aek(vs $$0) {
+   private aek(vu $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
    }
 
    @Override
-   public zb<aek> a() {
-      return afv.ay;
+   public zd<aek> a() {
+      return afx.aw;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   @Nullable
+   public brh a(dad $$0) {
+      return $$0.a(this.b);
    }
 }

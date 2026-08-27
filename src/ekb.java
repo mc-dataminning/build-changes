@@ -1,16 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public interface ekb<P extends eka> {
-   ekb<eje> a = a("always_true", eje.a);
-   ekb<ejj> b = a("block_match", ejj.a);
-   ekb<ejl> c = a("blockstate_match", ejl.a);
-   ekb<eki> d = a("tag_match", eki.a);
-   ekb<ejx> e = a("random_block_match", ejx.a);
-   ekb<ejy> f = a("random_blockstate_match", ejy.a);
+public class ekb extends ekc {
+   public static final Codec<ekb> a = Codec.unit(() -> ekb.b);
+   public static final ekb b = new ekb();
 
-   Codec<P> codec();
+   private ekb() {
+   }
 
-   static <P extends eka> ekb<P> a(String $$0, Codec<P> $$1) {
-      return ji.a(lc.o, $$0, () -> $$1);
+   @Override
+   public boolean a(in $$0, in $$1, in $$2, ayg $$3) {
+      return true;
+   }
+
+   @Override
+   protected ekd<?> a() {
+      return ekd.a;
    }
 }

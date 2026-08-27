@@ -1,45 +1,48 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejo extends ekd {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<ejo> a = Codec.unit(() -> ejo.b);
-   public static final ejo b = new ejo();
+public class ejo extends ekc {
+   public static final Codec<ejo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
+               is.a.e.fieldOf("axis").orElse(is.a.b).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, ejo::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
+   private final is.a g;
 
-   private ejo() {
-   }
-
-   @Nullable
-   @Override
-   public ekg.c a(czx $$0, im $$1, im $$2, ekg.c $$3, ekg.c $$4, ekc $$5) {
-      dpy $$6 = $$4.b();
-      if ($$6.a(dcx.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
-
-            dpy $$9;
-            try {
-               fv.a $$8 = fv.a($$0.a(ld.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               throw new RuntimeException(var11);
-            }
-
-            return $$9.a(dcx.kN) ? null : new ekg.c($$4.a(), $$9, null);
-         }
+   public ejo(float $$0, float $$1, int $$2, int $$3, is.a $$4) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
       } else {
-         return $$4;
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
       }
    }
 
    @Override
-   protected ekf<?> a() {
-      return ekf.h;
+   public boolean a(in $$0, in $$1, in $$2, ayg $$3) {
+      is $$4 = is.a(is.b.a, this.g);
+      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
+      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
+      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
+      int $$8 = (int)($$5 + $$6 + $$7);
+      float $$9 = $$3.i();
+      return $$9 <= axz.b(this.b, this.d, axz.g((float)$$8, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected ekd<?> a() {
+      return ekd.c;
    }
 }

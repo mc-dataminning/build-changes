@@ -1,16 +1,15 @@
-public class aay {
-   public static final zb<aau> a = a("finish_configuration");
-   public static final zb<aav> b = a("registry_data");
-   public static final zb<aax> c = a("update_enabled_features");
-   public static final zb<aaw> d = a("select_known_packs");
-   public static final zb<abb> e = b("finish_configuration");
-   public static final zb<abc> f = b("select_known_packs");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private static <T extends yz<aat>> zb<T> a(String $$0) {
-      return new zb<>(za.b, new akf($$0));
+public record aay(List<asy> b) implements zb<aav> {
+   public static final ys<ByteBuf, aay> a = ys.a(asy.a.a(yq.a()), aay::b, aay::new);
+
+   @Override
+   public zd<aay> a() {
+      return aba.d;
    }
 
-   private static <T extends yz<aba>> zb<T> b(String $$0) {
-      return new zb<>(za.a, new akf($$0));
+   public void a(aav $$0) {
+      $$0.a(this);
    }
 }

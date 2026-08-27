@@ -1,29 +1,44 @@
-public class fya extends fze {
-   fya(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fzn $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
+public class fya extends gac {
+   private final fzx a;
+
+   fya(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fzx $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$7;
+      this.t = 4;
+      this.u = 0.008F;
       this.j = $$4;
       this.k = $$5;
       this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.c(15916745);
       this.b($$7);
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.b(this.a);
+      }
    }
 
-   public static class a implements fyv<kz> {
-      private final fzn a;
+   @Override
+   public fzg b() {
+      return fzg.b;
+   }
 
-      public a(fzn $$0) {
+   public static class a implements fzf<la> {
+      private final fzx a;
+
+      public a(fzx $$0) {
          this.a = $$0;
       }
 
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new fya($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }

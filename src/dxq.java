@@ -1,31 +1,21 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxq extends dwn {
-   private final jj a;
-   private final dvu b;
-   private final dwe c;
-   private final dwh.o d;
+@Deprecated
+public class dxq extends dxr {
+   public static final Codec<dxq> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dxq::new));
 
-   public dxq(dvt $$0, jj $$1, czw $$2, dvu $$3, dwe $$4, dwh.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public dxq(jr $$0) {
+      super($$0);
    }
 
-   @Deprecated
-   public Optional<dpy> a(Function<im, iv<dat>> $$0, dru $$1, im $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   @Override
+   protected boolean a(dqh $$0) {
+      return $$0.e();
    }
 
-   @Deprecated
-   public jj c() {
-      return this.a;
-   }
-
-   public dwe d() {
-      return this.c;
+   @Override
+   public dxh<?> a() {
+      return dxh.e;
    }
 }

@@ -1,47 +1,48 @@
 import com.mojang.serialization.Codec;
-import java.util.Collections;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class edn extends edq {
-   public static final Codec<edn> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(edn::new, $$0 -> $$0.d).codec();
-   private static final ir b = ir.d;
-   private static final ir[] c = ir.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ir[]::new);
-   private final float d;
+public class edn extends edl {
+   public static final Codec<edn> b = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  dqh.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  Codec.list(dqh.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  Codec.list(dqh.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
+            )
+            .apply($$0, edn::new)
+   );
+   private final float g;
+   private final float h;
+   private final dqh i;
+   private final List<dqh> j;
+   private final List<dqh> k;
 
-   public edn(float $$0) {
-      this.d = $$0;
+   public edn(long $$0, eld.a $$1, float $$2, float $$3, float $$4, dqh $$5, List<dqh> $$6, List<dqh> $$7) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
    @Override
-   protected edr<?> a() {
-      return edr.d;
+   protected edj<?> a() {
+      return edj.c;
    }
 
    @Override
-   public void a(edq.a $$0) {
-      ayd $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<im> $$2 = $$0.d();
-         List<im> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<im> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<im> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), dcx.pe.n().a(dcp.b, b));
-               $$0.a().a($$6.get(), dnf.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
-
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     $$1x.a(dna.c.a($$1.a(599)));
-                  }
-               });
-            }
-         }
+   public dqh a(ayg $$0, in $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ac.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
       }
    }
 }

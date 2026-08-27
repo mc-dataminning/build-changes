@@ -1,37 +1,136 @@
-public class fyp extends fys {
-   private final fsn a;
-   private final gbm b = gbm.i(ggg.a);
+public class fyp extends gac {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final boolean G;
+   private final fzc.a H;
 
-   fyp(fvm $$0, double $$1, double $$2, double $$3) {
+   fyp(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, fzc.a.a);
+   }
+
+   fyp(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, fzc.a $$8) {
       super($$0, $$1, $$2, $$3);
-      this.a = new fry(fcu.Q().aR().a(fuq.V));
-      this.u = 0.0F;
-      this.t = 30;
+      this.G = $$7;
+      this.H = $$8;
+      this.e($$8.b());
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      float $$9 = this.r.i() * 0.6F + 0.4F;
+      this.v = 0.9F * $$9;
+      this.w = 0.9F * $$9;
+      this.x = $$9;
+      this.n = false;
+      this.t = (int)(Math.random() * 10.0) + 30;
    }
 
    @Override
-   public fyw b() {
-      return fyw.e;
+   public fzg b() {
+      return this.H.a() ? fzg.b : fzg.c;
    }
 
    @Override
-   public void a(exr $$0, fcf $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * axw.a($$3 * (float) Math.PI);
-      exn $$5 = new exn();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      gbe.a $$6 = fcu.Q().aQ().c();
-      exr $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, gmf.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
-   public static class a implements fyv<kz> {
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyp($$1, $$2, $$3, $$4);
+   @Override
+   public int a(float $$0) {
+      if (this.G) {
+         return 240;
+      } else {
+         int $$1 = super.a($$0);
+         float $$2 = (float)this.s / (float)this.t;
+         $$2 *= $$2;
+         $$2 *= $$2;
+         int $$3 = $$1 & 0xFF;
+         int $$4 = $$1 >> 16 & 0xFF;
+         $$4 += (int)($$2 * 15.0F * 16.0F);
+         if ($$4 > 240) {
+            $$4 = 240;
+         }
+
+         return $$3 | $$4 << 16;
+      }
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         $$0 = 1.0F - $$0;
+         float $$1 = 1.0F - $$0;
+         $$1 *= $$1;
+         $$1 *= $$1;
+         this.g = this.a + this.j * (double)$$0;
+         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
+         this.i = this.F + this.l * (double)$$0;
+      }
+   }
+
+   @Override
+   public void a(eyb $$0, fcp $$1, float $$2) {
+      this.e(this.H.a(this.s, this.t, $$2));
+      super.a($$0, $$1, $$2);
+   }
+
+   public static class a implements fzf<la> {
+      private final fzx a;
+
+      public a(fzx $$0) {
+         this.a = $$0;
+      }
+
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyp $$8 = new fyp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fzf<la> {
+      private final fzx a;
+
+      public b(fzx $$0) {
+         this.a = $$0;
+      }
+
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyp $$8 = new fyp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements fzf<la> {
+      private final fzx a;
+
+      public c(fzx $$0) {
+         this.a = $$0;
+      }
+
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyp $$8 = new fyp($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new fzc.a(0.0F, 0.6F, 0.25F, 1.0F));
+         $$8.d(1.5F);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

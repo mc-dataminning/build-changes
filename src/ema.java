@@ -1,100 +1,118 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class ema extends emn {
-   private final boolean l;
-   private float m;
-   private float n;
+public final class ema extends dqj<elz, ema> {
+   public static final Codec<ema> a = a(ld.c.q(), elz::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
 
-   public ema(boolean $$0) {
-      this.l = $$0;
+   public ema(elz $$0, Reference2ObjectArrayMap<drk<?>, Comparable<?>> $$1, MapCodec<ema> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(dah $$0, brg $$1) {
-      super.a($$0, $$1);
-      $$1.a(emi.j, 0.0F);
-      this.m = $$1.a(emi.c);
-      $$1.a(emi.c, 6.0F);
-      this.n = $$1.a(emi.k);
-      $$1.a(emi.k, 4.0F);
+   public elz a() {
+      return this.e;
    }
 
-   @Override
-   public void b() {
-      this.b.a(emi.c, this.m);
-      this.b.a(emi.k, this.n);
-      super.b();
+   public boolean b() {
+      return this.a().c(this);
    }
 
-   @Override
-   public emd a() {
-      return !this.b.bc() ? super.a() : this.c(new im(axw.a(this.b.cI().a), axw.a(this.b.cI().b + 0.5), axw.a(this.b.cI().c)));
+   public boolean a(elz $$0) {
+      return this.e == $$0 && this.e.c(this);
    }
 
-   @Override
-   public emm a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1 + 0.5, $$2);
+   public boolean c() {
+      return this.a().b();
    }
 
-   @Override
-   public int a(emd[] $$0, emd $$1) {
-      int $$2 = super.a($$0, $$1);
-      emi $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
-      emi $$4 = this.b($$1.a, $$1.b, $$1.c);
-      int $$5;
-      if (this.b.a($$3) >= 0.0F && $$4 != emi.w) {
-         $$5 = axw.d(Math.max(1.0F, this.b.dH()));
-      } else {
-         $$5 = 0;
-      }
-
-      double $$7 = this.d(new im($$1.a, $$1.b, $$1.c));
-      emd $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, ir.b, $$4);
-      emd $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, ir.a, $$4);
-      if (this.b($$8, $$1)) {
-         $$0[$$2++] = $$8;
-      }
-
-      if (this.b($$9, $$1) && $$4 != emi.e) {
-         $$0[$$2++] = $$9;
-      }
-
-      for (int $$10 = 0; $$10 < $$2; $$10++) {
-         emd $$11 = $$0[$$10];
-         if ($$11.l == emi.j && this.l && $$11.b < this.b.dN().z_() - 10) {
-            $$11.k++;
-         }
-      }
-
-      return $$2;
+   public float a(czj $$0, in $$1) {
+      return this.a().a(this, $$0, $$1);
    }
 
-   private boolean b(@Nullable emd $$0, emd $$1) {
-      return this.a($$0, $$1) && $$0.l == emi.j;
+   public float d() {
+      return this.a().a(this);
    }
 
-   @Override
-   protected boolean c() {
-      return true;
+   public int e() {
+      return this.a().d(this);
    }
 
-   @Override
-   public emi a(emk $$0, int $$1, int $$2, int $$3) {
-      emi $$4 = $$0.a($$1, $$2, $$3);
-      if ($$4 == emi.j) {
-         im.a $$5 = new im.a();
-
-         for (ir $$6 : ir.values()) {
-            $$5.d($$1, $$2, $$3).c($$6);
-            emi $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
-            if ($$7 == emi.a) {
-               return emi.k;
+   public boolean b(czj $$0, in $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            in $$4 = $$1.b($$2, 0, $$3);
+            ema $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
             }
          }
-
-         return emi.j;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
       }
+
+      return false;
+   }
+
+   public void a(dad $$0, in $$1) {
+      this.a().b($$0, $$1, this);
+   }
+
+   public void a(dad $$0, in $$1, ayg $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public boolean f() {
+      return this.a().i();
+   }
+
+   public void b(dad $$0, in $$1, ayg $$2) {
+      this.a().b($$0, $$1, this, $$2);
+   }
+
+   public etp c(czj $$0, in $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public dqh g() {
+      return this.a().b(this);
+   }
+
+   @Nullable
+   public kv h() {
+      return this.a().h();
+   }
+
+   public boolean a(awg<elz> $$0) {
+      return this.a().k().a($$0);
+   }
+
+   public boolean a(ja<elz> $$0) {
+      return $$0.a(this.a().k());
+   }
+
+   public boolean b(elz $$0) {
+      return this.a() == $$0;
+   }
+
+   public float i() {
+      return this.a().c();
+   }
+
+   public boolean a(czj $$0, in $$1, elz $$2, is $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
+   }
+
+   public eui d(czj $$0, in $$1) {
+      return this.a().b(this, $$0, $$1);
+   }
+
+   public iw<elz> j() {
+      return this.e.k();
+   }
+
+   public Stream<awg<elz>> k() {
+      return this.e.k().c();
    }
 }

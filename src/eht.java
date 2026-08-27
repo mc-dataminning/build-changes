@@ -1,24 +1,29 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@FunctionalInterface
-public interface eht {
-   eht a = $$0 -> $$0;
+public class eht extends ehv {
+   public static final Codec<eht> a = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, eht::new));
 
-   ake<ehp> lookup(ake<ehp> var1);
+   protected eht(Either<akh, ekp> $$0, iw<ekn> $$1, ehy.a $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   static eht create(List<ehr> $$0, im $$1, long $$2) {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         ayd $$3 = ayd.a($$2).e().a($$1);
-         Builder<ake<ehp>, ake<ehp>> $$4 = ImmutableMap.builder();
-         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
-         Map<ake<ehp>, ake<ehp>> $$5 = $$4.build();
-         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
-      }
+   @Override
+   protected ekl a(djr $$0, egh $$1, boolean $$2) {
+      ekl $$3 = super.a($$0, $$1, $$2);
+      $$3.b(ejr.b);
+      $$3.a(ejr.d);
+      return $$3;
+   }
+
+   @Override
+   public ehx<?> a() {
+      return ehx.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

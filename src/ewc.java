@@ -1,48 +1,47 @@
-import com.google.common.base.Charsets;
-import java.nio.ByteBuffer;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
-import org.lwjgl.system.MemoryUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class ewc {
-   public static final int a = 65545;
-   private final ByteBuffer b = BufferUtils.createByteBuffer(8192);
+public class ewc implements ewa {
+   private final Int2ObjectMap<evz.a> b;
 
-   public String a(long $$0, GLFWErrorCallbackI $$1) {
-      GLFWErrorCallback $$2 = GLFW.glfwSetErrorCallback($$1);
-      String $$3 = GLFW.glfwGetClipboardString($$0);
-      $$3 = $$3 != null ? ayp.a($$3) : "";
-      GLFWErrorCallback $$4 = GLFW.glfwSetErrorCallback($$2);
-      if ($$4 != null) {
-         $$4.free();
+   public ewc(Map<Integer, Float> $$0) {
+      this.b = new Int2ObjectOpenHashMap($$0.size());
+      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (evz.a)() -> $$1));
+   }
+
+   @Nullable
+   @Override
+   public evz a(int $$0) {
+      return (evz)this.b.get($$0);
+   }
+
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.b.keySet());
+   }
+
+   public static record a(Map<Integer, Float> c) implements fig {
+      public static final MapCodec<ewc.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.unboundedMap(axh.x, Codec.FLOAT).fieldOf("advances").forGetter(ewc.a::c)).apply($$0, ewc.a::new)
+      );
+
+      @Override
+      public fih a() {
+         return fih.c;
       }
 
-      return $$3;
-   }
-
-   private static void a(long $$0, ByteBuffer $$1, byte[] $$2) {
-      $$1.clear();
-      $$1.put($$2);
-      $$1.put((byte)0);
-      $$1.flip();
-      GLFW.glfwSetClipboardString($$0, $$1);
-   }
-
-   public void a(long $$0, String $$1) {
-      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
-      int $$3 = $$2.length + 1;
-      if ($$3 < this.b.capacity()) {
-         a($$0, this.b, $$2);
-      } else {
-         ByteBuffer $$4 = MemoryUtil.memAlloc($$3);
-
-         try {
-            a($$0, $$4, $$2);
-         } finally {
-            MemoryUtil.memFree($$4);
-         }
+      @Override
+      public Either<fig.b, fig.c> b() {
+         fig.b $$0 = $$0x -> new ewc(this.c);
+         return Either.left($$0);
       }
    }
 }

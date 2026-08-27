@@ -1,6 +1,15 @@
-public interface rd {
-   static void a(qj<egm> $$0) {
-      iw<egg> $$1 = $$0.a(ld.aI);
-      $$0.a(efz.t, new egm($$1.b(ega.H), new ehb(32, 8, ehc.a, 94251327)));
+public class rd {
+   public static final akg<ehy> a = a("empty");
+
+   public static akg<ehy> a(String $$0) {
+      return akg.a(le.aM, new akh($$0));
+   }
+
+   public static void a(ql<ehy> $$0, String $$1, ehy $$2) {
+      qs.a($$0, $$1, $$2);
+   }
+
+   public static void a(ql<ehy> $$0) {
+      rc.a($$0);
    }
 }

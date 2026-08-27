@@ -1,27 +1,92 @@
-public interface uz {
-   void a(ut var1);
+import java.io.DataInput;
+import java.io.IOException;
 
-   void a(tw var1);
+public interface uz<T extends ux> {
+   T c(DataInput var1, uj var2) throws IOException;
 
-   void a(uq var1);
+   uu.b a(DataInput var1, uu var2, uj var3) throws IOException;
 
-   void a(ud var1);
+   default void b(DataInput $$0, uu $$1, uj $$2) throws IOException {
+      switch ($$1.b(this)) {
+         case a:
+            this.a($$0, $$1, $$2);
+         case c:
+         default:
+            break;
+         case b:
+            this.b($$0, $$2);
+      }
+   }
 
-   void a(ug var1);
+   void a(DataInput var1, int var2, uj var3) throws IOException;
 
-   void a(ub var1);
+   void b(DataInput var1, uj var2) throws IOException;
 
-   void a(tz var1);
+   default boolean d() {
+      return false;
+   }
 
-   void a(tv var1);
+   String a();
 
-   void a(uc var1);
+   String b();
 
-   void a(uf var1);
+   static uz<uc> a(final int $$0) {
+      return new uz<uc>() {
+         private IOException c() {
+            return new IOException("Invalid tag id: " + $$0);
+         }
 
-   void a(ue var1);
+         public uc a(DataInput $$0x, uj $$1) throws IOException {
+            throw this.c();
+         }
 
-   void a(ty var1);
+         @Override
+         public uu.b a(DataInput $$0x, uu $$1, uj $$2) throws IOException {
+            throw this.c();
+         }
 
-   void a(ua var1);
+         @Override
+         public void a(DataInput $$0x, int $$1, uj $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void b(DataInput $$0x, uj $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public String a() {
+            return "INVALID[" + $$0 + "]";
+         }
+
+         @Override
+         public String b() {
+            return "UNKNOWN_" + $$0;
+         }
+      };
+   }
+
+   public interface a<T extends ux> extends uz<T> {
+      @Override
+      default void b(DataInput $$0, uj $$1) throws IOException {
+         $$0.skipBytes(this.c());
+      }
+
+      @Override
+      default void a(DataInput $$0, int $$1, uj $$2) throws IOException {
+         $$0.skipBytes(this.c() * $$1);
+      }
+
+      int c();
+   }
+
+   public interface b<T extends ux> extends uz<T> {
+      @Override
+      default void a(DataInput $$0, int $$1, uj $$2) throws IOException {
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            this.b($$0, $$2);
+         }
+      }
+   }
 }

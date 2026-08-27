@@ -1,113 +1,62 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 
-public class gg implements fz {
-   private final gf a;
-   private final gf b;
-   private final gf c;
+public class gg implements ArgumentType<gb> {
+   private static final Collection<String> c = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("argument.pos3d.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("argument.pos.mixed"));
+   private final boolean d;
 
-   public gg(gf $$0, gf $$1, gf $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gg(boolean $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public etf a(ec $$0) {
-      etf $$1 = $$0.d();
-      return new etf(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public static gg a() {
+      return new gg(true);
    }
 
-   @Override
-   public ete b(ec $$0) {
-      ete $$1 = $$0.k();
-      return new ete((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public static gg a(boolean $$0) {
+      return new gg($$0);
    }
 
-   @Override
-   public boolean a() {
-      return this.a.a();
+   public static etp a(CommandContext<ed> $$0, String $$1) {
+      return ((gb)$$0.getArgument($$1, gb.class)).a((ed)$$0.getSource());
    }
 
-   @Override
-   public boolean b() {
-      return this.b.a();
+   public static gb b(CommandContext<ed> $$0, String $$1) {
+      return (gb)$$0.getArgument($$1, gb.class);
    }
 
-   @Override
-   public boolean c() {
-      return this.c.a();
+   public gb a(StringReader $$0) throws CommandSyntaxException {
+      return (gb)($$0.canRead() && $$0.peek() == '^' ? gc.a($$0) : gi.a($$0, this.d));
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof gg $$1)) {
-         return false;
-      } else if (!this.a.equals($$1.a)) {
-         return false;
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if (!($$0.getSource() instanceof ei)) {
+         return Suggestions.empty();
       } else {
-         return !this.b.equals($$1.b) ? false : this.c.equals($$1.c);
-      }
-   }
-
-   public static gg a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      gf $$2 = gf.a($$0);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         gf $$3 = gf.a($$0);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            gf $$4 = gf.a($$0);
-            return new gg($$2, $$3, $$4);
+         String $$2 = $$1.getRemaining();
+         Collection<ei.b> $$3;
+         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
+            $$3 = Collections.singleton(ei.b.a);
          } else {
-            $$0.setCursor($$1);
-            throw ge.a.createWithContext($$0);
+            $$3 = ((ei)$$0.getSource()).C();
          }
-      } else {
-         $$0.setCursor($$1);
-         throw ge.a.createWithContext($$0);
+
+         return ei.a($$2, $$3, $$1, ee.a(this::a));
       }
    }
 
-   public static gg a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      int $$2 = $$0.getCursor();
-      gf $$3 = gf.a($$0, $$1);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         gf $$4 = gf.a($$0, false);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            gf $$5 = gf.a($$0, $$1);
-            return new gg($$3, $$4, $$5);
-         } else {
-            $$0.setCursor($$2);
-            throw ge.a.createWithContext($$0);
-         }
-      } else {
-         $$0.setCursor($$2);
-         throw ge.a.createWithContext($$0);
-      }
-   }
-
-   public static gg a(double $$0, double $$1, double $$2) {
-      return new gg(new gf(false, $$0), new gf(false, $$1), new gf(false, $$2));
-   }
-
-   public static gg a(ete $$0) {
-      return new gg(new gf(false, (double)$$0.i), new gf(false, (double)$$0.j), new gf(true, 0.0));
-   }
-
-   public static gg d() {
-      return new gg(new gf(true, 0.0), new gf(true, 0.0), new gf(true, 0.0));
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public Collection<String> getExamples() {
+      return c;
    }
 }

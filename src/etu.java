@@ -1,20 +1,17 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public class etu extends AbstractDoubleList {
-   private final DoubleList a;
-   private final double b;
-
-   public etu(DoubleList $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public interface etu {
+   static etu a() {
+      return etz.a;
    }
 
-   public double getDouble(int $$0) {
-      return this.a.getDouble($$0) + this.b;
+   static etu a(brh $$0) {
+      return new etz($$0);
    }
 
-   public int size() {
-      return this.a.size();
-   }
+   boolean b();
+
+   boolean a(eui var1, in var2, boolean var3);
+
+   boolean a(csu var1);
+
+   boolean a(ema var1, ema var2);
 }

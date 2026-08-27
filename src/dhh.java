@@ -1,79 +1,96 @@
-public class dhh {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1003;
-   public static final int e = 1004;
-   public static final int f = 1009;
-   public static final int g = 1010;
-   public static final int h = 1011;
-   public static final int i = 1015;
-   public static final int j = 1016;
-   public static final int k = 1017;
-   public static final int l = 1018;
-   public static final int m = 1019;
-   public static final int n = 1020;
-   public static final int o = 1021;
-   public static final int p = 1022;
-   public static final int q = 1023;
-   public static final int r = 1024;
-   public static final int s = 1025;
-   public static final int t = 1026;
-   public static final int u = 1027;
-   public static final int v = 1028;
-   public static final int w = 1029;
-   public static final int x = 1030;
-   public static final int y = 1031;
-   public static final int z = 1032;
-   public static final int A = 1033;
-   public static final int B = 1034;
-   public static final int C = 1035;
-   public static final int D = 1038;
-   public static final int E = 1039;
-   public static final int F = 1040;
-   public static final int G = 1041;
-   public static final int H = 1042;
-   public static final int I = 1043;
-   public static final int J = 1044;
-   public static final int K = 1045;
-   public static final int L = 1046;
-   public static final int M = 1047;
-   public static final int N = 1048;
-   public static final int O = 1049;
-   public static final int P = 1050;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2006;
-   public static final int ac = 2007;
-   public static final int ad = 2008;
-   public static final int ae = 2009;
-   public static final int af = 2010;
-   public static final int ag = 2011;
-   public static final int ah = 2012;
-   public static final int ai = 3000;
-   public static final int aj = 3001;
-   public static final int ak = 3002;
-   public static final int al = 3003;
-   public static final int am = 3004;
-   public static final int an = 3005;
-   public static final int ao = 3006;
-   public static final int ap = 3007;
-   public static final int aq = 3008;
-   public static final int ar = 3009;
-   public static final int as = 3011;
-   public static final int at = 3012;
-   public static final int au = 3013;
-   public static final int av = 3014;
-   public static final int aw = 3015;
-   public static final int ax = 3016;
-   public static final int ay = 3017;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public class dhh extends dcq {
+   public static final MapCodec<dhh> a = b(dhh::new);
+   public static final dqy b = dqx.n;
+
+   @Override
+   public MapCodec<dhh> a() {
+      return a;
+   }
+
+   protected dhh(dqg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+   }
+
+   @Override
+   public void a(dad $$0, in $$1, dqh $$2, @Nullable bsa $$3, csz $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      cvm $$5 = $$4.a(ka.M, cvm.a);
+      if ($$5.a("RecordItem")) {
+         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+      }
+   }
+
+   @Override
+   protected bpm a(dqh $$0, dad $$1, in $$2, clh $$3, etl $$4) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof don $$5) {
+         $$5.l();
+         return bpm.a($$1.B);
+      } else {
+         return bpm.d;
+      }
+   }
+
+   @Override
+   protected void a(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof don $$5) {
+            $$5.l();
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public dnm a(in $$0, dqh $$1) {
+      return new don($$0, $$1);
+   }
+
+   @Override
+   public boolean e_(dqh $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dqh $$0, czj $$1, in $$2, is $$3) {
+      if ($$1.c_($$2) instanceof don $$4 && $$4.j()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected boolean c_(dqh $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dqh $$0, dad $$1, in $$2) {
+      if ($$1.c_($$2) instanceof don $$3 && $$3.f().f() instanceof cts $$4) {
+         return $$4.h();
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected djk a_(dqh $$0) {
+      return djk.c;
+   }
+
+   @Override
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dnm> dnn<T> a(dad $$0, dqh $$1, dno<T> $$2) {
+      return $$1.c(b) ? a($$2, dno.e, don::a) : null;
+   }
 }

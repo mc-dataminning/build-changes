@@ -1,411 +1,340 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedHashSet;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
-public class gbr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ir[] b = ir.values();
-   private static final int c = 60;
-   private static final double d = Math.ceil(Math.sqrt(3.0) * 16.0);
-   private boolean e = true;
-   @Nullable
-   private Future<?> f;
-   @Nullable
-   private gbv g;
-   private final AtomicReference<gbr.b> h = new AtomicReference<>();
-   private final AtomicReference<gbr.a> i = new AtomicReference<>();
-   private final AtomicBoolean j = new AtomicBoolean(false);
+public class gbr implements AutoCloseable {
+   private static final String a = "minecraft:main";
+   private final ewj b;
+   private final atu c;
+   private final String d;
+   private final List<gbs> e = Lists.newArrayList();
+   private final Map<String, ewj> f = Maps.newHashMap();
+   private final List<ewj> g = Lists.newArrayList();
+   private Matrix4f h;
+   private int i;
+   private int j;
+   private float k;
+   private float l;
 
-   public void a(@Nullable gbv $$0) {
-      if (this.f != null) {
-         try {
-            this.f.get();
-            this.f = null;
-         } catch (Exception var3) {
-            a.warn("Full update failed", var3);
+   public gbr(gmz $$0, atu $$1, ewj $$2, akh $$3) throws IOException, JsonSyntaxException {
+      this.c = $$1;
+      this.b = $$2;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.i = $$2.e;
+      this.j = $$2.f;
+      this.d = $$3.toString();
+      this.b();
+      this.a($$0, $$3);
+   }
+
+   private void a(gmz $$0, akh $$1) throws IOException, JsonSyntaxException {
+      atp $$2 = this.c.getResourceOrThrow($$1);
+
+      try {
+         try (Reader $$3 = $$2.e()) {
+            JsonObject $$4 = axp.a($$3);
+            if (axp.d($$4, "targets")) {
+               JsonArray $$5 = $$4.getAsJsonArray("targets");
+               int $$6 = 0;
+
+               for (JsonElement $$7 : $$5) {
+                  try {
+                     this.a($$7);
+                  } catch (Exception var14) {
+                     akk $$9 = akk.a(var14);
+                     $$9.a("targets[" + $$6 + "]");
+                     throw $$9;
+                  }
+
+                  $$6++;
+               }
+            }
+
+            if (axp.d($$4, "passes")) {
+               JsonArray $$10 = $$4.getAsJsonArray("passes");
+               int $$11 = 0;
+
+               for (JsonElement $$12 : $$10) {
+                  try {
+                     this.a($$0, $$12);
+                  } catch (Exception var13) {
+                     akk $$14 = akk.a(var13);
+                     $$14.a("passes[" + $$11 + "]");
+                     throw $$14;
+                  }
+
+                  $$11++;
+               }
+            }
          }
+      } catch (Exception var16) {
+         akk $$16 = akk.a(var16);
+         $$16.b($$1.a() + " (" + $$2.b() + ")");
+         throw $$16;
       }
+   }
 
-      this.g = $$0;
-      if ($$0 != null) {
-         this.h.set(new gbr.b($$0.f.length));
-         this.a();
+   private void a(JsonElement $$0) throws akk {
+      if (axp.a($$0)) {
+         this.a($$0.getAsString(), this.i, this.j);
       } else {
-         this.h.set(null);
-      }
-   }
-
-   public void a() {
-      this.e = true;
-   }
-
-   public void a(gei $$0, List<gee.b> $$1) {
-      for (gbr.d $$2 : this.h.get().a().b) {
-         if ($$0.a($$2.a.b())) {
-            $$1.add($$2.a);
-         }
-      }
-   }
-
-   public boolean b() {
-      return this.j.compareAndSet(true, false);
-   }
-
-   public void a(czb $$0) {
-      gbr.a $$1 = this.i.get();
-      if ($$1 != null) {
-         this.a($$1, $$0);
-      }
-
-      gbr.a $$2 = this.h.get().b;
-      if ($$2 != $$1) {
-         this.a($$2, $$0);
-      }
-   }
-
-   public void a(gee.b $$0) {
-      gbr.a $$1 = this.i.get();
-      if ($$1 != null) {
-         $$1.b.add($$0);
-      }
-
-      gbr.a $$2 = this.h.get().b;
-      if ($$2 != $$1) {
-         $$2.b.add($$0);
-      }
-   }
-
-   public void a(boolean $$0, fcf $$1, gei $$2, List<gee.b> $$3) {
-      etf $$4 = $$1.b();
-      if (this.e && (this.f == null || this.f.isDone())) {
-         this.a($$0, $$1, $$4);
-      }
-
-      this.a($$0, $$2, $$3, $$4);
-   }
-
-   private void a(boolean $$0, fcf $$1, etf $$2) {
-      this.e = false;
-      this.f = ac.f().submit(() -> {
-         gbr.b $$3 = new gbr.b(this.g.f.length);
-         this.i.set($$3.b);
-         Queue<gbr.d> $$4 = Queues.newArrayDeque();
-         this.a($$1, $$4);
-         $$4.forEach($$1xx -> $$3.a.a.a($$1xx.a, $$1xx));
-         this.a($$3.a, $$2, $$4, $$0, $$0xx -> {
-         });
-         this.h.set($$3);
-         this.i.set(null);
-         this.j.set(true);
-      });
-   }
-
-   private void a(boolean $$0, gei $$1, List<gee.b> $$2, etf $$3) {
-      gbr.b $$4 = this.h.get();
-      this.a($$4);
-      if (!$$4.b.b.isEmpty()) {
-         Queue<gbr.d> $$5 = Queues.newArrayDeque();
-
-         while (!$$4.b.b.isEmpty()) {
-            gee.b $$6 = $$4.b.b.poll();
-            gbr.d $$7 = $$4.a.a.a($$6);
-            if ($$7 != null && $$7.a == $$6) {
-               $$5.add($$7);
-            }
+         JsonObject $$1 = axp.m($$0, "target");
+         String $$2 = axp.i($$1, "name");
+         int $$3 = axp.a($$1, "width", this.i);
+         int $$4 = axp.a($$1, "height", this.j);
+         if (this.f.containsKey($$2)) {
+            throw new akk($$2 + " is already defined");
          }
 
-         gei $$8 = gbc.a($$1);
-         Consumer<gee.b> $$9 = $$2x -> {
-            if ($$8.a($$2x.b())) {
-               $$2.add($$2x);
-            }
-         };
-         this.a($$4.a, $$3, $$5, $$0, $$9);
+         this.a($$2, $$3, $$4);
       }
    }
 
-   private void a(gbr.b $$0) {
-      LongIterator $$1 = $$0.b.a.iterator();
-
-      while ($$1.hasNext()) {
-         long $$2 = $$1.nextLong();
-         List<gee.b> $$3 = (List<gee.b>)$$0.a.c.get($$2);
-         if ($$3 != null && $$3.get(0).a()) {
-            $$0.b.b.addAll($$3);
-            $$0.a.c.remove($$2);
-         }
-      }
-
-      $$0.b.a.clear();
-   }
-
-   private void a(gbr.a $$0, czb $$1) {
-      $$0.a.add(czb.c($$1.e - 1, $$1.f));
-      $$0.a.add(czb.c($$1.e, $$1.f - 1));
-      $$0.a.add(czb.c($$1.e + 1, $$1.f));
-      $$0.a.add(czb.c($$1.e, $$1.f + 1));
-   }
-
-   private void a(fcf $$0, Queue<gbr.d> $$1) {
-      int $$2 = 16;
-      etf $$3 = $$0.b();
-      im $$4 = $$0.c();
-      gee.b $$5 = this.g.a($$4);
-      if ($$5 == null) {
-         czw $$6 = this.g.c();
-         boolean $$7 = $$4.v() > $$6.I_();
-         int $$8 = $$7 ? $$6.al() - 8 : $$6.I_() + 8;
-         int $$9 = axw.a($$3.c / 16.0) * 16;
-         int $$10 = axw.a($$3.e / 16.0) * 16;
-         int $$11 = this.g.b();
-         List<gbr.d> $$12 = Lists.newArrayList();
-
-         for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
-            for (int $$14 = -$$11; $$14 <= $$11; $$14++) {
-               gee.b $$15 = this.g.a(new im($$9 + jo.a($$13, 8), $$8, $$10 + jo.a($$14, 8)));
-               if ($$15 != null && this.a($$4, $$15.f())) {
-                  ir $$16 = $$7 ? ir.a : ir.b;
-                  gbr.d $$17 = new gbr.d($$15, $$16, 0);
-                  $$17.a($$17.d, $$16);
-                  if ($$13 > 0) {
-                     $$17.a($$17.d, ir.f);
-                  } else if ($$13 < 0) {
-                     $$17.a($$17.d, ir.e);
-                  }
-
-                  if ($$14 > 0) {
-                     $$17.a($$17.d, ir.d);
-                  } else if ($$14 < 0) {
-                     $$17.a($$17.d, ir.c);
-                  }
-
-                  $$12.add($$17);
-               }
-            }
-         }
-
-         $$12.sort(Comparator.comparingDouble($$1x -> $$4.j($$1x.a.f().b(8, 8, 8))));
-         $$1.addAll($$12);
+   private void a(gmz $$0, JsonElement $$1) throws IOException {
+      JsonObject $$2 = axp.m($$1, "pass");
+      String $$3 = axp.i($$2, "name");
+      String $$4 = axp.i($$2, "intarget");
+      String $$5 = axp.i($$2, "outtarget");
+      ewj $$6 = this.b($$4);
+      ewj $$7 = this.b($$5);
+      boolean $$8 = axp.a($$2, "use_linear_filter", false);
+      if ($$6 == null) {
+         throw new akk("Input target '" + $$4 + "' does not exist");
+      } else if ($$7 == null) {
+         throw new akk("Output target '" + $$5 + "' does not exist");
       } else {
-         $$1.add(new gbr.d($$5, null, 0));
-      }
-   }
+         gbs $$9 = this.a($$3, $$6, $$7, $$8);
+         JsonArray $$10 = axp.a($$2, "auxtargets", null);
+         if ($$10 != null) {
+            int $$11 = 0;
 
-   private void a(gbr.c $$0, etf $$1, Queue<gbr.d> $$2, boolean $$3, Consumer<gee.b> $$4) {
-      int $$5 = 16;
-      im $$6 = new im(axw.a($$1.c / 16.0) * 16, axw.a($$1.d / 16.0) * 16, axw.a($$1.e / 16.0) * 16);
-      im $$7 = $$6.b(8, 8, 8);
+            for (JsonElement $$12 : $$10) {
+               try {
+                  JsonObject $$13 = axp.m($$12, "auxtarget");
+                  String $$14 = axp.i($$13, "name");
+                  String $$15 = axp.i($$13, "id");
+                  boolean $$16;
+                  String $$17;
+                  if ($$15.endsWith(":depth")) {
+                     $$16 = true;
+                     $$17 = $$15.substring(0, $$15.lastIndexOf(58));
+                  } else {
+                     $$16 = false;
+                     $$17 = $$15;
+                  }
 
-      while (!$$2.isEmpty()) {
-         gbr.d $$8 = $$2.poll();
-         gee.b $$9 = $$8.a;
-         if ($$0.b.add($$8)) {
-            $$4.accept($$8.a);
+                  ewj $$20 = this.b($$17);
+                  if ($$20 == null) {
+                     if ($$16) {
+                        throw new akk("Render target '" + $$17 + "' can't be used as depth buffer");
+                     }
+
+                     akh $$21 = new akh("textures/effect/" + $$17 + ".png");
+                     this.c.getResource($$21).orElseThrow(() -> new akk("Render target or texture '" + $$17 + "' does not exist"));
+                     RenderSystem.setShaderTexture(0, $$21);
+                     $$0.a($$21);
+                     gmj $$22 = $$0.b($$21);
+                     int $$23 = axp.o($$13, "width");
+                     int $$24 = axp.o($$13, "height");
+                     boolean $$25 = axp.k($$13, "bilinear");
+                     if ($$25) {
+                        RenderSystem.texParameter(3553, 10241, 9729);
+                        RenderSystem.texParameter(3553, 10240, 9729);
+                     } else {
+                        RenderSystem.texParameter(3553, 10241, 9728);
+                        RenderSystem.texParameter(3553, 10240, 9728);
+                     }
+
+                     $$9.a($$14, $$22::a, $$23, $$24);
+                  } else if ($$16) {
+                     $$9.a($$14, $$20::g, $$20.c, $$20.d);
+                  } else {
+                     $$9.a($$14, $$20::f, $$20.c, $$20.d);
+                  }
+               } catch (Exception var27) {
+                  akk $$27 = akk.a(var27);
+                  $$27.a("auxtargets[" + $$11 + "]");
+                  throw $$27;
+               }
+
+               $$11++;
+            }
          }
 
-         boolean $$10 = Math.abs($$9.f().u() - $$6.u()) > 60 || Math.abs($$9.f().v() - $$6.v()) > 60 || Math.abs($$9.f().w() - $$6.w()) > 60;
+         JsonArray $$28 = axp.a($$2, "uniforms", null);
+         if ($$28 != null) {
+            int $$29 = 0;
 
-         for (ir $$11 : b) {
-            gee.b $$12 = this.a($$6, $$9, $$11);
-            if ($$12 != null && (!$$3 || !$$8.a($$11.g()))) {
-               if ($$3 && $$8.a()) {
-                  gee.a $$13 = $$9.d();
-                  boolean $$14 = false;
-
-                  for (int $$15 = 0; $$15 < b.length; $$15++) {
-                     if ($$8.a($$15) && $$13.a(b[$$15].g(), $$11)) {
-                        $$14 = true;
-                        break;
-                     }
-                  }
-
-                  if (!$$14) {
-                     continue;
-                  }
+            for (JsonElement $$30 : $$28) {
+               try {
+                  this.b($$30);
+               } catch (Exception var26) {
+                  akk $$32 = akk.a(var26);
+                  $$32.a("uniforms[" + $$29 + "]");
+                  throw $$32;
                }
 
-               if ($$3 && $$10) {
-                  im $$16 = $$12.f();
-                  im $$17 = $$16.b(
-                     ($$11.o() == ir.a.a ? $$7.u() <= $$16.u() : $$7.u() >= $$16.u()) ? 0 : 16,
-                     ($$11.o() == ir.a.b ? $$7.v() <= $$16.v() : $$7.v() >= $$16.v()) ? 0 : 16,
-                     ($$11.o() == ir.a.c ? $$7.w() <= $$16.w() : $$7.w() >= $$16.w()) ? 0 : 16
-                  );
-                  etf $$18 = new etf((double)$$17.u(), (double)$$17.v(), (double)$$17.w());
-                  etf $$19 = $$1.d($$18).d().a(d);
-                  boolean $$20 = true;
-
-                  while ($$1.d($$18).g() > 3600.0) {
-                     $$18 = $$18.e($$19);
-                     czw $$21 = this.g.c();
-                     if ($$18.d > (double)$$21.al() || $$18.d < (double)$$21.I_()) {
-                        break;
-                     }
-
-                     gee.b $$22 = this.g.a(im.a($$18.c, $$18.d, $$18.e));
-                     if ($$22 == null || $$0.a.a($$22) == null) {
-                        $$20 = false;
-                        break;
-                     }
-                  }
-
-                  if (!$$20) {
-                     continue;
-                  }
-               }
-
-               gbr.d $$23 = $$0.a.a($$12);
-               if ($$23 != null) {
-                  $$23.b($$11);
-               } else {
-                  gbr.d $$24 = new gbr.d($$12, $$11, $$8.b + 1);
-                  $$24.a($$8.d, $$11);
-                  if ($$12.a()) {
-                     $$2.add($$24);
-                     $$0.a.a($$12, $$24);
-                  } else if (this.a($$6, $$12.f())) {
-                     $$0.a.a($$12, $$24);
-                     ((List)$$0.c.computeIfAbsent(czb.a($$12.f()), $$0x -> new ArrayList())).add($$12);
-                  }
-               }
+               $$29++;
             }
          }
       }
    }
 
-   private boolean a(im $$0, im $$1) {
-      int $$2 = jo.a($$0.u());
-      int $$3 = jo.a($$0.w());
-      int $$4 = jo.a($$1.u());
-      int $$5 = jo.a($$1.w());
-      return aps.a($$2, $$3, this.g.b(), $$4, $$5);
+   private void b(JsonElement $$0) throws akk {
+      JsonObject $$1 = axp.m($$0, "uniform");
+      String $$2 = axp.i($$1, "name");
+      exo $$3 = this.e.get(this.e.size() - 1).b().a($$2);
+      if ($$3 == null) {
+         throw new akk("Uniform '" + $$2 + "' does not exist");
+      } else {
+         float[] $$4 = new float[4];
+         int $$5 = 0;
+
+         for (JsonElement $$7 : axp.v($$1, "values")) {
+            try {
+               $$4[$$5] = axp.e($$7, "value");
+            } catch (Exception var12) {
+               akk $$9 = akk.a(var12);
+               $$9.a("values[" + $$5 + "]");
+               throw $$9;
+            }
+
+            $$5++;
+         }
+
+         switch ($$5) {
+            case 0:
+            default:
+               break;
+            case 1:
+               $$3.a($$4[0]);
+               break;
+            case 2:
+               $$3.a($$4[0], $$4[1]);
+               break;
+            case 3:
+               $$3.a($$4[0], $$4[1], $$4[2]);
+               break;
+            case 4:
+               $$3.a($$4[0], $$4[1], $$4[2], $$4[3]);
+         }
+      }
+   }
+
+   public ewj a(String $$0) {
+      return this.f.get($$0);
+   }
+
+   public void a(String $$0, int $$1, int $$2) {
+      ewj $$3 = new ewk($$1, $$2, true, fde.a);
+      $$3.a(0.0F, 0.0F, 0.0F, 0.0F);
+      this.f.put($$0, $$3);
+      if ($$1 == this.i && $$2 == this.j) {
+         this.g.add($$3);
+      }
+   }
+
+   @Override
+   public void close() {
+      for (ewj $$0 : this.f.values()) {
+         $$0.a();
+      }
+
+      for (gbs $$1 : this.e) {
+         $$1.close();
+      }
+
+      this.e.clear();
+   }
+
+   public gbs a(String $$0, ewj $$1, ewj $$2, boolean $$3) throws IOException {
+      gbs $$4 = new gbs(this.c, $$0, $$1, $$2, $$3);
+      this.e.add(this.e.size(), $$4);
+      return $$4;
+   }
+
+   private void b() {
+      this.h = new Matrix4f().setOrtho(0.0F, (float)this.b.c, 0.0F, (float)this.b.d, 0.1F, 1000.0F);
+   }
+
+   public void a(int $$0, int $$1) {
+      this.i = this.b.c;
+      this.j = this.b.d;
+      this.b();
+
+      for (gbs $$2 : this.e) {
+         $$2.a(this.h);
+      }
+
+      for (ewj $$3 : this.g) {
+         $$3.a($$0, $$1, fde.a);
+      }
+   }
+
+   private void a(int $$0) {
+      this.b.a($$0);
+
+      for (ewj $$1 : this.f.values()) {
+         $$1.a($$0);
+      }
+   }
+
+   public void a(float $$0) {
+      if ($$0 < this.l) {
+         this.k = this.k + (1.0F - this.l);
+         this.k += $$0;
+      } else {
+         this.k = this.k + ($$0 - this.l);
+      }
+
+      this.l = $$0;
+
+      while (this.k > 20.0F) {
+         this.k -= 20.0F;
+      }
+
+      int $$1 = 9728;
+
+      for (gbs $$2 : this.e) {
+         int $$3 = $$2.c();
+         if ($$1 != $$3) {
+            this.a($$3);
+            $$1 = $$3;
+         }
+
+         $$2.a(this.k / 20.0F);
+      }
+
+      this.a(9728);
+   }
+
+   public void a(String $$0, float $$1) {
+      for (gbs $$2 : this.e) {
+         $$2.b().b($$0).a($$1);
+      }
+   }
+
+   public final String a() {
+      return this.d;
    }
 
    @Nullable
-   private gee.b a(im $$0, gee.b $$1, ir $$2) {
-      im $$3 = $$1.a($$2);
-      if (!this.a($$0, $$3)) {
+   private ewj b(@Nullable String $$0) {
+      if ($$0 == null) {
          return null;
       } else {
-         return axw.a($$0.v() - $$3.v()) > this.g.b() * 16 ? null : this.g.a($$3);
-      }
-   }
-
-   @Nullable
-   @ayz
-   protected gbr.d b(gee.b $$0) {
-      return this.h.get().a.a.a($$0);
-   }
-
-   static record a(LongSet a, BlockingQueue<gee.b> b) {
-
-      public a() {
-         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
-      }
-   }
-
-   static record b(gbr.c a, gbr.a b) {
-
-      public b(int $$0) {
-         this(new gbr.c($$0), new gbr.a());
-      }
-   }
-
-   static class c {
-      public final gbr.e a;
-      public final LinkedHashSet<gbr.d> b;
-      public final Long2ObjectMap<List<gee.b>> c;
-
-      public c(int $$0) {
-         this.a = new gbr.e($$0);
-         this.b = new LinkedHashSet<>($$0);
-         this.c = new Long2ObjectOpenHashMap();
-      }
-   }
-
-   @ayz
-   protected static class d {
-      @ayz
-      protected final gee.b a;
-      private byte c;
-      byte d;
-      @ayz
-      protected final int b;
-
-      d(gee.b $$0, @Nullable ir $$1, int $$2) {
-         this.a = $$0;
-         if ($$1 != null) {
-            this.b($$1);
-         }
-
-         this.b = $$2;
-      }
-
-      void a(byte $$0, ir $$1) {
-         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
-      }
-
-      boolean a(ir $$0) {
-         return (this.d & 1 << $$0.ordinal()) > 0;
-      }
-
-      void b(ir $$0) {
-         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
-      }
-
-      @ayz
-      protected boolean a(int $$0) {
-         return (this.c & 1 << $$0) > 0;
-      }
-
-      boolean a() {
-         return this.c != 0;
-      }
-
-      @Override
-      public int hashCode() {
-         return this.a.f().hashCode();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof gbr.d $$1) ? false : this.a.f().equals($$1.a.f());
-      }
-   }
-
-   static class e {
-      private final gbr.d[] a;
-
-      e(int $$0) {
-         this.a = new gbr.d[$$0];
-      }
-
-      public void a(gee.b $$0, gbr.d $$1) {
-         this.a[$$0.b] = $$1;
-      }
-
-      @Nullable
-      public gbr.d a(gee.b $$0) {
-         int $$1 = $$0.b;
-         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
+         return $$0.equals("minecraft:main") ? this.b : this.f.get($$0);
       }
    }
 }

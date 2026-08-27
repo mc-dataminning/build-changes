@@ -1,44 +1,45 @@
-import java.util.List;
+public class aev implements zb<abm> {
+   public static final ys<vu, aev> a = zb.a(aev::a, aev::new);
+   private final float b;
+   private final int c;
+   private final float d;
 
-public class aev implements yz<abk> {
-   public static final yq<vs, aev> a = yz.a(aev::a, aev::new);
-   private final int b;
-   private final int[] c;
-
-   public aev(bql $$0) {
-      this.b = $$0.aj();
-      List<bql> $$1 = $$0.cQ();
-      this.c = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).aj();
-      }
+   public aev(float $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private aev(vs $$0) {
-      this.b = $$0.l();
-      this.c = $$0.c();
+   private aev(vu $$0) {
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
    }
 
-   private void a(vs $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(vu $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zb<aev> a() {
-      return afv.aJ;
+   public zd<aev> a() {
+      return afx.aH;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
-      return this.c;
+   public float b() {
+      return this.b;
    }
 
    public int e() {
-      return this.b;
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

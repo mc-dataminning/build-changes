@@ -1,106 +1,55 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public abstract class dgk extends dgi implements dcy {
-   public static final dqy e = dqo.ax;
-   public static final int f = 25;
-   private final double c;
+public class dgk extends ddn implements ddh {
+   public static final MapCodec<dgk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akg.a(le.aC).fieldOf("feature").forGetter($$0x -> $$0x.e), ld.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, dgk::new)
+   );
+   protected static final eui b = dde.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final dde d;
+   private final akg<dyq<?, ?>> e;
 
-   protected dgk(dpx.d $$0, ir $$1, ety $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.k(this.E.b().a(e, Integer.valueOf(0)));
+   @Override
+   public MapCodec<dgk> a() {
+      return a;
+   }
+
+   protected dgk(akg<dyq<?, ?>> $$0, dde $$1, dqg.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected abstract MapCodec<? extends dgk> a();
-
-   @Override
-   public dpy a(czv $$0) {
-      return this.n().a(e, Integer.valueOf($$0.E_().a(25)));
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return b;
    }
 
    @Override
-   protected boolean e_(dpy $$0) {
-      return $$0.c(e) < 25;
+   protected boolean b(dqh $$0, czj $$1, in $$2) {
+      return $$0.a(avr.aL) || $$0.a(ddg.fl) || $$0.a(ddg.dX) || super.b($$0, $$1, $$2);
+   }
+
+   private Optional<? extends iw<dyq<?, ?>>> a(dag $$0) {
+      return $$0.H_().d(le.aC).b(this.e);
    }
 
    @Override
-   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         im $$4 = $$2.a(this.a);
-         if (this.g($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.z));
-         }
-      }
-   }
-
-   protected dpy a(dpy $$0, ayd $$1) {
-      return $$0.a(e);
-   }
-
-   public dpy n(dpy $$0) {
-      return $$0.a(e, Integer.valueOf(25));
-   }
-
-   public boolean o(dpy $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected dpy a(dpy $$0, dpy $$1) {
-      return $$1;
+   public boolean b(dag $$0, in $$1, dqh $$2) {
+      dqh $$3 = $$0.a_($$1.d());
+      return $$3.a(this.d);
    }
 
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
-         if (this.b) {
-            $$3.a($$4, els.c, els.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return this.a($$0, this.b().n());
-      }
+   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   public boolean b(czx $$0, im $$1, dpy $$2) {
-      return this.g($$0.a_($$1.a(this.a)));
-   }
-
-   @Override
-   public boolean a(czu $$0, ayd $$1, im $$2, dpy $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqe $$0, ayd $$1, im $$2, dpy $$3) {
-      im $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
-
-      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
-      }
-   }
-
-   protected abstract int a(ayd var1);
-
-   protected abstract boolean g(dpy var1);
-
-   @Override
-   protected dgk c() {
-      return this;
+   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
+      this.a($$0).ifPresent($$3x -> ((dyq)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
    }
 }

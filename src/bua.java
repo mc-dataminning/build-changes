@@ -1,72 +1,81 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
 
-public final class bua {
-   public static Optional<etf> a(brg $$0, etf $$1, float $$2, int $$3, boolean $$4) {
-      etf $$5 = $$0.dl();
-      etf $$6 = new etf($$1.c - $$5.c, 0.0, $$1.e - $$5.e).d().a(0.5);
-      etf $$7 = $$1.d($$6);
-      etf $$8 = $$7.d($$5);
-      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
-      double $$10 = Math.atan2($$8.e, $$8.c);
-      double $$11 = $$8.a(0.0, $$8.d, 0.0).g();
-      double $$12 = Math.sqrt($$11);
-      double $$13 = $$8.d;
-      double $$14 = $$0.aX();
-      double $$15 = Math.sin((double)(2.0F * $$9));
-      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
-      double $$17 = Math.sin((double)$$9);
-      double $$18 = Math.cos((double)$$9);
-      double $$19 = Math.sin($$10);
-      double $$20 = Math.cos($$10);
-      double $$21 = $$11 * $$14 / ($$12 * $$15 - 2.0 * $$13 * $$16);
-      if ($$21 < 0.0) {
-         return Optional.empty();
-      } else {
-         double $$22 = Math.sqrt($$21);
-         if ($$22 > (double)$$2) {
-            return Optional.empty();
-         } else {
-            double $$23 = $$22 * $$18;
-            double $$24 = $$22 * $$17;
-            if ($$4) {
-               int $$25 = axw.c($$12 / $$23) * 2;
-               double $$26 = 0.0;
-               etf $$27 = null;
-               bqo $$28 = $$0.a(brp.g);
+public class bua<E extends bsc & cia, T extends bsa> extends bts<E> {
+   private static final int c = 1200;
+   private int d;
+   private bua.a e = bua.a.a;
 
-               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
-                  $$26 += $$12 / (double)$$25;
-                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * $$14 / (2.0 * $$21 * Math.pow($$18, 2.0));
-                  double $$31 = $$26 * $$20;
-                  double $$32 = $$26 * $$19;
-                  etf $$33 = new etf($$5.c + $$31, $$5.d + $$30, $$5.e + $$32);
-                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
-                     return Optional.empty();
-                  }
+   public bua() {
+      super(ImmutableMap.of(cbd.n, cbe.c, cbd.o, cbe.a), 1200);
+   }
 
-                  $$27 = $$33;
-               }
-            }
+   protected boolean a(aqh $$0, E $$1) {
+      bsa $$2 = b($$1);
+      return $$1.b(ctc.vT) && btu.b($$1, $$2) && btu.a($$1, $$2, 0);
+   }
 
-            return Optional.of(new etf($$23 * $$20, $$24, $$23 * $$19).a(0.95F));
-         }
+   protected boolean a(aqh $$0, E $$1, long $$2) {
+      return $$1.dQ().a(cbd.o) && this.a($$0, $$1);
+   }
+
+   protected void b(aqh $$0, E $$1, long $$2) {
+      bsa $$3 = b($$1);
+      this.b($$1, $$3);
+      this.a($$1, $$3);
+   }
+
+   protected void c(aqh $$0, E $$1, long $$2) {
+      if ($$1.ft()) {
+         $$1.fz();
+      }
+
+      if ($$1.b(ctc.vT)) {
+         $$1.b(false);
+         $$1.fv().b(ka.C, cvl.a);
       }
    }
 
-   private static boolean a(brg $$0, bqo $$1, etf $$2, etf $$3) {
-      etf $$4 = $$3.d($$2);
-      double $$5 = (double)Math.min($$1.a(), $$1.b());
-      int $$6 = axw.c($$4.f() / $$5);
-      etf $$7 = $$4.d();
-      etf $$8 = $$2;
-
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.a($$5 * 0.9F));
-         if (!$$0.dN().a($$0, $$1.a($$8))) {
-            return false;
+   private void a(E $$0, bsa $$1) {
+      if (this.e == bua.a.a) {
+         $$0.c(cmb.a($$0, ctc.vT));
+         this.e = bua.a.b;
+         $$0.b(true);
+      } else if (this.e == bua.a.b) {
+         if (!$$0.ft()) {
+            this.e = bua.a.a;
          }
-      }
 
-      return true;
+         int $$2 = $$0.fx();
+         csz $$3 = $$0.fv();
+         if ($$2 >= crm.l($$3)) {
+            $$0.fy();
+            this.e = bua.a.c;
+            this.d = 20 + $$0.ej().a(20);
+            $$0.b(false);
+         }
+      } else if (this.e == bua.a.c) {
+         this.d--;
+         if (this.d == 0) {
+            this.e = bua.a.d;
+         }
+      } else if (this.e == bua.a.d) {
+         $$0.a($$1, 1.0F);
+         this.e = bua.a.a;
+      }
+   }
+
+   private void b(bsc $$0, bsa $$1) {
+      $$0.dQ().a(cbd.n, new bud($$1, true));
+   }
+
+   private static bsa b(bsa $$0) {
+      return $$0.dQ().c(cbd.o).get();
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

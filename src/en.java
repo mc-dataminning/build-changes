@@ -2,42 +2,28 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class en implements ArgumentType<akf> {
-   private static final Collection<String> a = Stream.of(czu.h, czu.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ws.b("argument.dimension.invalid", $$0));
+public class en implements ArgumentType<ua> {
+   private static final Collection<String> a = Arrays.asList("{}", "{foo=bar}");
 
-   public akf a(StringReader $$0) throws CommandSyntaxException {
-      return akf.a($$0);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof eh ? eh.a(((eh)$$0.getSource()).u().stream().map(ake::a), $$1) : Suggestions.empty();
-   }
-
-   public Collection<String> getExamples() {
-      return a;
+   private en() {
    }
 
    public static en a() {
       return new en();
    }
 
-   public static aqe a(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
-      akf $$2 = (akf)$$0.getArgument($$1, akf.class);
-      ake<czu> $$3 = ake.a(ld.aR, $$2);
-      aqe $$4 = ((ec)$$0.getSource()).l().a($$3);
-      if ($$4 == null) {
-         throw b.create($$2);
-      } else {
-         return $$4;
-      }
+   public static <S> ua a(CommandContext<S> $$0, String $$1) {
+      return (ua)$$0.getArgument($$1, ua.class);
+   }
+
+   public ua a(StringReader $$0) throws CommandSyntaxException {
+      return new uy($$0).f();
+   }
+
+   public Collection<String> getExamples() {
+      return a;
    }
 }

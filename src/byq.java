@@ -1,55 +1,70 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class byq extends byb {
-   private final brm a;
-   @Nullable
-   private bre b;
+public class byq extends byx {
+   protected final bsi a;
+   private double b;
    private double c;
    private double d;
-   private double e;
-   private final double f;
-   private final float g;
+   private final double e;
+   private final dad f;
 
-   public byq(brm $$0, double $$1, float $$2) {
+   public byq(bsi $$0, double $$1) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(byb.a.a));
+      this.e = $$1;
+      this.f = $$0.dN();
+      this.a(EnumSet.of(byx.a.a));
    }
 
    @Override
    public boolean a() {
-      this.b = this.a.p();
-      if (this.b == null) {
+      if (this.a.p() != null) {
          return false;
-      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
+      } else if (!this.f.Q()) {
+         return false;
+      } else if (!this.a.bO()) {
+         return false;
+      } else if (!this.f.h(this.a.dn())) {
          return false;
       } else {
-         etf $$0 = cby.a(this.a, 16, 7, this.b.dl(), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            return true;
-         }
+         return !this.a.d(bro.f).d() ? false : this.h();
+      }
+   }
+
+   protected boolean h() {
+      etp $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
+         return true;
       }
    }
 
    @Override
    public boolean b() {
-      return !this.a.K().l() && this.b.bB() && this.b.g(this.a) < (double)(this.g * this.g);
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
+      return !this.a.K().l();
    }
 
    @Override
    public void c() {
-      this.a.K().a(this.c, this.d, this.e, this.f);
+      this.a.K().a(this.b, this.c, this.d, this.e);
+   }
+
+   @Nullable
+   protected etp i() {
+      ayg $$0 = this.a.ej();
+      in $$1 = this.a.dn();
+
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         in $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.h($$3) < 0.0F) {
+            return etp.c($$3);
+         }
+      }
+
+      return null;
    }
 }

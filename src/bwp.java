@@ -1,31 +1,42 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bwp<E extends cjp> extends bsw<E> {
-   public bwp(int $$0) {
-      super(ImmutableMap.of(cah.o, cai.b, cah.m, cai.b), $$0);
-   }
+public class bwp {
+   private static final int a = 60;
 
-   protected boolean a(aqe $$0, E $$1, long $$2) {
-      return $$1.dJ() == null;
-   }
+   public static btt<bsi> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bxf.a(
+         (Function<bxf.b<bsi>, ? extends App<bxf.c<bsi>, bxi<bsi>>>)($$3 -> $$3.group($$3.c(cbd.o), $$3.c(cbd.m), $$3.a(cbd.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if (!$$5x.b_($$6.dn()).a(avw.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     } else {
+                        in $$8 = $$6.dn();
+                        in.a $$9 = new in.a();
+                        etu $$10 = etu.a($$6);
 
-   protected boolean a(aqe $$0, E $$1) {
-      return $$1.aC() || $$1.bc() || $$1.bq();
-   }
+                        for (in $$11 : in.a($$8, $$0, $$0, $$0)) {
+                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
+                              dqh $$12 = $$5x.a_($$11);
+                              dqh $$13 = $$5x.a_($$9.a($$11, is.a));
+                              if (!$$12.a(ddg.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, is.b)) {
+                                 in $$14 = $$11.i();
+                                 $$5.a(new btv($$14));
+                                 $$4.a(new cbg(new btv($$14), $$1, 1));
+                                 break;
+                              }
+                           }
+                        }
 
-   protected void b(aqe $$0, E $$1, long $$2) {
-      if ($$1.aC()) {
-         $$1.b(brp.o);
-         $$1.a(auz.Bv, 5.0F, 1.0F);
-      } else {
-         $$1.a(auz.Bq, 5.0F, 1.0F);
-         this.c($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(aqe $$0, E $$1, long $$2) {
-      if ($$1.dJ() == null) {
-         $$1.a(bql.c.b);
-      }
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

@@ -1,17 +1,19 @@
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import java.util.Locale;
 import java.util.Map;
 
-public class gfx<T extends cew> extends gfh<T, frf<T>> {
-   private static final Map<bqr<?>, akf> a = Maps.newHashMap(
-      ImmutableMap.of(bqr.z, new akf("textures/entity/horse/donkey.png"), bqr.as, new akf("textures/entity/horse/mule.png"))
-   );
+public class gfx extends gid<cfb, frd<cfb>> {
+   private static final Map<cfb.d, akh> a = ac.a(Maps.newHashMap(), $$0 -> {
+      for (cfb.d $$1 : cfb.d.values()) {
+         $$0.put($$1, new akh(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
 
-   public gfx(ggn.a $$0, float $$1, fup $$2) {
-      super($$0, new frf<>($$0.a($$2)), $$1);
+   public gfx(ggx.a $$0) {
+      super($$0, new frd<>($$0.a(fva.f)), 0.5F);
    }
 
-   public akf a(T $$0) {
-      return a.get($$0.ai());
+   public akh a(cfb $$0) {
+      return a.get($$0.gp());
    }
 }

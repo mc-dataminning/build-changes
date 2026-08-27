@@ -1,48 +1,73 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dlk extends dch {
-   public static final MapCodec<dlk> a = b(dlk::new);
-   public static final dqw<dpe> b = dqo.by;
+public class dlk extends dfm implements dhv {
+   public static final MapCodec<dlk> c = b(dlk::new);
+   public static final drf<drd> d = dfm.b;
+   protected static final float e = 6.0F;
+   protected static final eui f = dde.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dlk> a() {
-      return a;
+      return c;
    }
 
-   public dlk(dpx.d $$0) {
+   public dlk(dqg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dpe.a));
    }
 
    @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(b);
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return f;
    }
 
    @Override
-   protected djb b_(dpy $$0) {
-      return djb.c;
+   protected boolean b(dqh $$0, czj $$1, in $$2) {
+      return $$0.d($$1, $$2, is.b) && !$$0.a(ddg.kJ);
+   }
+
+   @Override
+   public csz a(dag $$0, in $$1, dqh $$2) {
+      return new csz(ddg.bw);
    }
 
    @Nullable
    @Override
-   public dnd a(im $$0, dpy $$1) {
-      return new dox($$0, $$1);
+   public dqh a(cwi $$0) {
+      dqh $$1 = super.a($$0);
+      if ($$1 != null) {
+         ema $$2 = $$0.q().b_($$0.a().c());
+         if ($$2.a(avw.a) && $$2.e() == 8) {
+            return $$1;
+         }
+      }
+
+      return null;
    }
 
-   @Nullable
    @Override
-   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
-      return $$0 instanceof aqe $$3
-         ? a($$2, dnf.Q, ($$1x, $$2x, $$3x, $$4) -> $$4.c().b($$3, $$2x))
-         : a($$2, dnf.Q, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x));
+   protected boolean a(dqh $$0, dag $$1, in $$2) {
+      if ($$0.c(d) == drd.a) {
+         dqh $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(d) == drd.b;
+      } else {
+         ema $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(avw.a) && $$4.e() == 8;
+      }
    }
 
    @Override
-   public void a(csd $$0, @Nullable cza $$1, List<ws> $$2, ctu $$3, @Nullable jj $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dam.a($$0, $$2, "spawn_data");
+   protected ema b_(dqh $$0) {
+      return emb.c.a(false);
+   }
+
+   @Override
+   public boolean a(@Nullable clh $$0, czj $$1, in $$2, dqh $$3, elz $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dae $$0, in $$1, dqh $$2, ema $$3) {
+      return false;
    }
 }

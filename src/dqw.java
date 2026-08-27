@@ -1,78 +1,101 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.Arrays;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class dqw<T extends Enum<T> & ayq> extends drb<T> {
-   private final ImmutableSet<T> a;
-   private final Map<String, T> b = Maps.newHashMap();
+public record dqw(String r, boolean s, boolean t, boolean u, dqw.a v, dkr w, avb x, avb y, avb z, avb A, avb B, avb C, avb D, avb E) {
+   private static final Map<String, dqw> F = new Object2ObjectArrayMap();
+   public static final Codec<dqw> a = axh.a(dqw::b, F::get);
+   public static final dqw b = a(new dqw("iron", false, false, false, dqw.a.a, dkr.g, avc.nc, avc.nd, avc.nk, avc.nl, avc.oy, avc.oz, avc.yQ, avc.yR));
+   public static final dqw c = a(new dqw("copper", true, true, false, dqw.a.a, dkr.aj, avc.fI, avc.fJ, avc.fP, avc.fQ, avc.oy, avc.oz, avc.yQ, avc.yR));
+   public static final dqw d = a(new dqw("gold", false, true, false, dqw.a.a, dkr.g, avc.nc, avc.nd, avc.nk, avc.nl, avc.oy, avc.oz, avc.yQ, avc.yR));
+   public static final dqw e = a(new dqw("stone", true, true, false, dqw.a.b, dkr.f, avc.nc, avc.nd, avc.nk, avc.nl, avc.yV, avc.yW, avc.yQ, avc.yR));
+   public static final dqw f = a(
+      new dqw("polished_blackstone", true, true, false, dqw.a.b, dkr.f, avc.nc, avc.nd, avc.nk, avc.nl, avc.yV, avc.yW, avc.yQ, avc.yR)
+   );
+   public static final dqw g = a(new dqw("oak"));
+   public static final dqw h = a(new dqw("spruce"));
+   public static final dqw i = a(new dqw("birch"));
+   public static final dqw j = a(new dqw("acacia"));
+   public static final dqw k = a(new dqw("cherry", true, true, true, dqw.a.a, dkr.aU, avc.eE, avc.eF, avc.eG, avc.eH, avc.eK, avc.eL, avc.eI, avc.eJ));
+   public static final dqw l = a(new dqw("jungle"));
+   public static final dqw m = a(new dqw("dark_oak"));
+   public static final dqw n = a(new dqw("crimson", true, true, true, dqw.a.a, dkr.aT, avc.qB, avc.qC, avc.qD, avc.qE, avc.qH, avc.qI, avc.qF, avc.qG));
+   public static final dqw o = a(new dqw("warped", true, true, true, dqw.a.a, dkr.aT, avc.qB, avc.qC, avc.qD, avc.qE, avc.qH, avc.qI, avc.qF, avc.qG));
+   public static final dqw p = a(new dqw("mangrove"));
+   public static final dqw q = a(new dqw("bamboo", true, true, true, dqw.a.a, dkr.aS, avc.bo, avc.bp, avc.bq, avc.br, avc.bu, avc.bv, avc.bs, avc.bt));
 
-   protected dqw(String $$0, Class<T> $$1, Collection<T> $$2) {
-      super($$0, $$1);
-      this.a = ImmutableSet.copyOf($$2);
-
-      for (T $$3 : $$2) {
-         String $$4 = $$3.c();
-         if (this.b.containsKey($$4)) {
-            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
-         }
-
-         this.b.put($$4, $$3);
-      }
+   public dqw(String $$0) {
+      this($$0, true, true, true, dqw.a.a, dkr.b, avc.CG, avc.CH, avc.CI, avc.CJ, avc.CM, avc.CN, avc.CK, avc.CL);
    }
 
-   @Override
-   public Collection<T> a() {
-      return this.a;
+   private static dqw a(dqw $$0) {
+      F.put($$0.r, $$0);
+      return $$0;
    }
 
-   @Override
-   public Optional<T> b(String $$0) {
-      return Optional.ofNullable(this.b.get($$0));
+   public static Stream<dqw> a() {
+      return F.values().stream();
    }
 
-   public String a(T $$0) {
-      return $$0.c();
+   public String b() {
+      return this.r;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dqw<?> $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a) && this.b.equals($$1.b);
-         }
-
-         return false;
-      }
+   public boolean c() {
+      return this.s;
    }
 
-   @Override
-   public int b() {
-      int $$0 = super.b();
-      $$0 = 31 * $$0 + this.a.hashCode();
-      return 31 * $$0 + this.b.hashCode();
+   public boolean d() {
+      return this.t;
    }
 
-   public static <T extends Enum<T> & ayq> dqw<T> a(String $$0, Class<T> $$1) {
-      return a($$0, $$1, $$0x -> true);
+   public boolean e() {
+      return this.u;
    }
 
-   public static <T extends Enum<T> & ayq> dqw<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
-      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
+   public dqw.a f() {
+      return this.v;
    }
 
-   public static <T extends Enum<T> & ayq> dqw<T> a(String $$0, Class<T> $$1, T... $$2) {
-      return a($$0, $$1, Lists.newArrayList($$2));
+   public dkr g() {
+      return this.w;
    }
 
-   public static <T extends Enum<T> & ayq> dqw<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
-      return new dqw<>($$0, $$1, $$2);
+   public avb h() {
+      return this.x;
+   }
+
+   public avb i() {
+      return this.y;
+   }
+
+   public avb j() {
+      return this.z;
+   }
+
+   public avb k() {
+      return this.A;
+   }
+
+   public avb l() {
+      return this.B;
+   }
+
+   public avb m() {
+      return this.C;
+   }
+
+   public avb n() {
+      return this.D;
+   }
+
+   public avb o() {
+      return this.E;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

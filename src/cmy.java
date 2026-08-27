@@ -1,93 +1,39 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public final class cmy {
-   private static final cmy b = new cmy(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final cmz c;
-   private final long d;
+public class cmy {
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final cmy c = a("empty").a(0, cmw.b).a();
+   public static final cmy d = a("simple").a(5000, cmw.c).a(11000, cmw.e).a();
+   public static final cmy e = a("villager_baby").a(10, cmw.b).a(3000, cmw.d).a(6000, cmw.b).a(10000, cmw.d).a(12000, cmw.e).a();
+   public static final cmy f = a("villager_default").a(10, cmw.b).a(2000, cmw.c).a(9000, cmw.f).a(11000, cmw.b).a(12000, cmw.e).a();
+   private final Map<cmw, cna> g = Maps.newHashMap();
 
-   private cmy(@Nullable cmz $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   protected static cmz a(String $$0) {
+      cmy $$1 = jj.a(ld.D, $$0, new cmy());
+      return new cmz($$1);
    }
 
-   static cmy a(cmz $$0, Collection<cmw> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new cmy($$0, $$2);
+   protected void a(cmw $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new cna());
       }
    }
 
-   public static cmy a() {
-      return b;
+   protected cna b(cmw $$0) {
+      return this.g.get($$0);
    }
 
-   public static cmy a(cmw $$0) {
-      return new cmy($$0.a, $$0.b);
+   protected List<cna> c(cmw $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
    }
 
-   public static cmy a(cmw $$0, cmw... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new cmy($$0.a, $$2);
-   }
-
-   private static long a(cmz $$0, long $$1, Iterable<cmw> $$2) {
-      for (cmw $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
-         }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cmw $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean a(cmy $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public cmy b(cmy $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new cmy(this.c, this.d | $$0.d);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cmy $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+   public cmw a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cmw.b);
    }
 }

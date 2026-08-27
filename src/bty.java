@@ -1,48 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
 
-public class bty<E extends brg> extends btz<E> {
-   private final awd<dcv> m;
-   private final float n;
-   private final List<btz.a> o = new ArrayList<>();
-   private boolean p;
+public class bty extends bts<bsa> {
+   private final cbd<Integer> c;
 
-   public bty(bob $$0, int $$1, int $$2, float $$3, Function<E, auy> $$4, awd<dcv> $$5, float $$6, BiPredicate<E, im> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+   public bty(cbd<Integer> $$0) {
+      super(ImmutableMap.of($$0, cbe.a));
+      this.c = $$0;
+   }
+
+   private Optional<Integer> b(bsa $$0) {
+      return $$0.dQ().c(this.c);
    }
 
    @Override
-   protected void a(aqe $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.ej().i() < this.n;
+   protected boolean a(long $$0) {
+      return false;
    }
 
    @Override
-   protected Optional<btz.a> a(aqe $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         im.a $$1 = new im.a();
+   protected boolean a(aqh $$0, bsa $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
+   }
 
-         while (!this.h.isEmpty()) {
-            Optional<btz.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               btz.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), ir.a)).a(this.m)) {
-                  return $$2;
-               }
+   @Override
+   protected void c(aqh $$0, bsa $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.dQ().a(this.c, $$3.get() - 1);
+   }
 
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
-      }
+   @Override
+   protected void b(aqh $$0, bsa $$1, long $$2) {
+      $$1.dQ().b(this.c);
    }
 }

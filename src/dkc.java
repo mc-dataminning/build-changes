@@ -1,49 +1,80 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dkc extends dbq {
-   public static final MapCodec<dkc> c = b(dkc::new);
+public class dkc extends ddn implements ddh, dhv {
+   public static final MapCodec<dkc> a = b(dkc::new);
+   protected static final float b = 6.0F;
+   protected static final eui c = dde.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
 
    @Override
    public MapCodec<dkc> a() {
-      return c;
+      return a;
    }
 
-   protected dkc(dpx.d $$0) {
+   protected dkc(dqg.d $$0) {
       super($$0);
    }
 
    @Override
-   public dnd a(im $$0, dpy $$1) {
-      return new doq($$0, $$1);
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return c;
+   }
+
+   @Override
+   protected boolean b(dqh $$0, czj $$1, in $$2) {
+      return $$0.d($$1, $$2, is.b) && !$$0.a(ddg.kJ);
    }
 
    @Nullable
    @Override
-   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
-      return a($$0, $$2, dnf.B);
+   public dqh a(cwi $$0) {
+      ema $$1 = $$0.q().b_($$0.a());
+      return $$1.a(avw.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   protected void a(czu $$0, im $$1, ckl $$2) {
-      dnd $$3 = $$0.c_($$1);
-      if ($$3 instanceof doq) {
-         $$2.a((bou)$$3);
-         $$2.a(avj.at);
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      dqh $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!$$6.i()) {
+         $$3.a($$4, emb.c, emb.c.a($$3));
+      }
+
+      return $$6;
+   }
+
+   @Override
+   public boolean b(dag $$0, in $$1, dqh $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
+      return true;
+   }
+
+   @Override
+   protected ema b_(dqh $$0) {
+      return emb.c.a(false);
+   }
+
+   @Override
+   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
+      dqh $$4 = ddg.bx.n();
+      dqh $$5 = $$4.a(dlk.d, drd.a);
+      in $$6 = $$2.c();
+      if ($$0.a_($$6).a(ddg.G)) {
+         $$0.a($$2, $$4, 2);
+         $$0.a($$6, $$5, 2);
       }
    }
 
    @Override
-   public void a(dpy $$0, czu $$1, im $$2, ayd $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, auz.xV, ava.e, 1.0F, 1.0F, false);
-         }
+   public boolean a(@Nullable clh $$0, czj $$1, in $$2, dqh $$3, elz $$4) {
+      return false;
+   }
 
-         $$1.a(kw.ab, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
-      }
+   @Override
+   public boolean a(dae $$0, in $$1, dqh $$2, ema $$3) {
+      return false;
    }
 }

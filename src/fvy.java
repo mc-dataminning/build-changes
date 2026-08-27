@@ -1,26 +1,13 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
 
-public interface fvy {
-   fvy a = new fvy() {
-      @Override
-      public CompletableFuture<Optional<ckn>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
+public enum fvy {
+   a,
+   b;
 
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
+   private static final List<fvy> c = List.of(values());
+   private static final jk.b d = jk.a(ld.aw);
 
-   static fvy a(UserApiService $$0, fdj $$1, Path $$2) {
-      return (fvy)($$1.g() == fdj.a.c ? new fvf($$0, $$1.b(), $$2) : a);
+   public static jd<fvy> a() {
+      return new jd<>(c).a(a, d);
    }
-
-   CompletableFuture<Optional<ckn>> a();
-
-   boolean b();
 }

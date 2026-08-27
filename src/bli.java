@@ -1,20 +1,9 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.stream.Stream;
 
-public enum bli {
-   a("client"),
-   b("server");
+public interface bli<S> {
+   Stream<String> possibleValues(blf<S> var1);
 
-   private final String c;
-
-   private bli(String $$0) {
-      this.c = $$0;
-   }
-
-   public static bli a(MinecraftServer $$0) {
-      return $$0.n() ? b : a;
-   }
-
-   public String a() {
-      return this.c;
+   static <S> bli<S> b() {
+      return $$0 -> Stream.empty();
    }
 }

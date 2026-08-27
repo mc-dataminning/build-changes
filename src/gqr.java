@@ -1,34 +1,37 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+import com.google.common.collect.ImmutableList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gqr extends aub {
-   private ty a;
+public class gqr<T> extends gqs<T> {
+   private final List<T> c;
+   private final Function<T, Stream<String>> d;
+   private gqv<T> e = gqv.a();
 
-   public gqr(gqs $$0, jc<ako> $$1, ent $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public gqr(Function<T, Stream<String>> $$0, Function<T, Stream<akh>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = $$2;
+      this.d = $$0;
    }
 
    @Override
-   protected void b(aqf $$0) {
-      if (this.b().a($$0.fZ())) {
-         this.a = $$0.f(new ty());
-      }
-
-      super.b($$0);
+   public void a() {
+      super.a();
+      this.e = gqv.a(this.c, this.d);
    }
 
    @Override
-   public ws a(SocketAddress $$0, GameProfile $$1) {
-      return (ws)(this.b().a($$1) && this.a($$1.getName()) != null ? ws.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public gqs b() {
-      return (gqs)super.c();
+   protected List<T> a(String $$0) {
+      return this.e.search($$0);
    }
 
    @Override
-   public ty r() {
-      return this.a;
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.e.search($$1);
+      Iterator<T> $$5 = new gqu<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new gqt<T>($$2.iterator(), $$5, this.a));
    }
 }

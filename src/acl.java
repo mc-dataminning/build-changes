@@ -1,25 +1,33 @@
-public record acl(long[] b, bkl c) implements yz<abk> {
-   public static final yq<vs, acl> a = yz.a(acl::a, acl::new);
+import java.util.List;
 
-   private acl(vs $$0) {
-      this($$0.d(), $$0.b(bkl.class));
+public record acl(acl.a b, List<String> c) implements zb<abm> {
+   public static final ys<vu, acl> a = zb.a(acl::a, acl::new);
+
+   private acl(vu $$0) {
+      this($$0.b(acl.a.class), $$0.a(vu::p));
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.a(this.c, vu::a);
    }
 
    @Override
-   public zb<acl> a() {
-      return afv.A;
+   public zd<acl> a() {
+      return afx.y;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public bkl e() {
+   public List<String> e() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

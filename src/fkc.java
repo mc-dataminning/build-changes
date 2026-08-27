@@ -1,114 +1,49 @@
-public class fkc extends fkl {
-   private static final ws a = ws.c("options.languageAccuracyWarning").a(n.h);
-   private static final int r = 53;
-   private fkc.a s;
-   final gnv u;
+public class fkc extends fld {
+   private static final akh a = new akh("textures/gui/demo_background.png");
+   private ffx b = ffx.a;
+   private ffx c = ffx.a;
 
-   public fkc(fkt $$0, fcy $$1, gnv $$2) {
-      super($$0, $$1, ws.c("options.language.title"));
-      this.u = $$2;
+   public fkc() {
+      super(wu.c("demo.help.title"));
    }
 
    @Override
    protected void aM_() {
-      this.s = this.c(new fkc.a(this.m));
-      this.d.a(53);
-      super.aM_();
+      int $$0 = -16;
+      this.c(ffe.a(wu.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ac.j().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
+      this.c(ffe.a(wu.c("demo.help.later"), $$0x -> {
+         this.m.a(null);
+         this.m.n.i();
+      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
+      fdi $$1 = this.m.m;
+      this.b = ffx.a(
+         this.p,
+         wu.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         wu.c("demo.help.movementMouse"),
+         wu.a("demo.help.jump", $$1.B.k()),
+         wu.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = ffx.a(this.p, wu.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   protected void c() {
-      super.c();
-      this.s.a(this.n, this.d);
+   public void b(fer $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2;
+      int $$5 = (this.o - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
    @Override
-   protected void h() {
-      fil $$0 = this.d.b(fil.d()).a(8);
-      $$0.c().b();
-      $$0.a(new fgb(a, this.p));
-      fil $$1 = $$0.a(fil.e().a(8));
-      $$1.a(feu.a(ws.c("options.font"), $$0x -> this.m.a(new fjy(this, this.c))).a());
-      $$1.a(feu.a(wr.d, $$0x -> this.C()).a());
-   }
-
-   void C() {
-      fkc.a.a $$0 = this.s.h();
-      if ($$0 != null && !$$0.b.equals(this.u.a())) {
-         this.u.a($$0.b);
-         this.c.ad = $$0.b;
-         this.m.l();
-      }
-
-      this.m.a(this.b);
-   }
-
-   class a extends ffq<fkc.a.a> {
-      public a(fcu $$0) {
-         super($$0, fkc.this.n, fkc.this.o - 33 - 53, 33, 18);
-         String $$1 = fkc.this.u.a();
-         fkc.this.u.b().forEach(($$1x, $$2) -> {
-            fkc.a.a $$3 = new fkc.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.h() != null) {
-            this.e(this.h());
-         }
-      }
-
-      @Override
-      public int b() {
-         return super.b() + 50;
-      }
-
-      public class a extends ffq.a<fkc.a.a> {
-         final String b;
-         private final ws c;
-         private long d;
-
-         public a(String $$1, gnu $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
-
-         @Override
-         public void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(fkc.this.p, this.c, a.this.g / 2, $$2 + 1, -1);
-         }
-
-         @Override
-         public boolean a(int $$0, int $$1, int $$2) {
-            if (fiv.a($$0)) {
-               this.b();
-               fkc.this.C();
-               return true;
-            } else {
-               return super.a($$0, $$1, $$2);
-            }
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ac.b() - this.d < 250L) {
-               fkc.this.C();
-            }
-
-            this.d = ac.b();
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public ws a() {
-            return ws.a("narrator.select", this.c);
-         }
-      }
+   public void a(fer $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2 + 10;
+      int $$5 = (this.o - 166) / 2 + 8;
+      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

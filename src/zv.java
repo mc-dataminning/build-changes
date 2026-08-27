@@ -1,42 +1,29 @@
-import java.util.UUID;
+public class zv implements zb<zs> {
+   public static final ys<vu, zv> a = zb.a(zv::a, zv::new);
+   private final long b;
 
-public record zv(UUID b, zv.a c) implements yz<zq> {
-   public static final yq<vs, zv> a = yz.a(zv::a, zv::new);
-
-   private zv(vs $$0) {
-      this($$0.n(), $$0.b(zv.a.class));
+   public zv(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private zv(vu $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(vu $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public zb<zv> a() {
-      return zp.n;
+   public zd<zv> a() {
+      return zr.l;
    }
 
-   public void a(zq $$0) {
+   public void a(zs $$0) {
       $$0.a(this);
    }
 
-   public zv.a e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
+   public long b() {
+      return this.b;
    }
 }

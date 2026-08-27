@@ -1,65 +1,47 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
-public record erg(iv<dcv> b, Optional<dj> c) implements erh {
-   public static final Codec<erg> a = axe.b(
-      RecordCodecBuilder.create($$0 -> $$0.group(lc.e.r().fieldOf("block").forGetter(erg::c), axe.a(dj.a, "properties").forGetter(erg::d)).apply($$0, erg::new)),
-      erg::a
+public record erg(iw<cyg> b, List<Float> c) implements erq {
+   public static final Codec<erg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ld.f.r().fieldOf("enchantment").forGetter(erg::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(erg::d)).apply($$0, erg::new)
    );
 
-   private static DataResult<erg> a(erg $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().l()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   @Override
+   public err b() {
+      return ers.m;
    }
 
    @Override
-   public eri b() {
-      return erj.j;
+   public Set<eqz<?>> a() {
+      return ImmutableSet.of(erc.i);
    }
 
-   @Override
-   public Set<eqq<?>> a() {
-      return Set.of(eqt.g);
+   public boolean a(eol $$0) {
+      csz $$1 = $$0.c(erc.i);
+      int $$2 = $$1 != null ? cyh.a(this.b.a(), $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
    }
 
-   public boolean a(eoa $$0) {
-      dpy $$1 = $$0.c(eqt.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   public static erq.a a(cyg $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
+      }
+
+      return () -> new erg($$0.l(), $$2);
    }
 
-   public static erg.a a(dcv $$0) {
-      return new erg.a($$0);
-   }
-
-   public iv<dcv> c() {
+   public iw<cyg> c() {
       return this.b;
    }
 
-   public Optional<dj> d() {
+   public List<Float> d() {
       return this.c;
-   }
-
-   public static class a implements erh.a {
-      private final iv<dcv> a;
-      private Optional<dj> b = Optional.empty();
-
-      public a(dcv $$0) {
-         this.a = $$0.r();
-      }
-
-      public erg.a a(dj.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      @Override
-      public erh build() {
-         return new erg(this.a, this.b);
-      }
    }
 }

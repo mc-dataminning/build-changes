@@ -1,122 +1,97 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectBidirectionalIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Collections;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class cxu implements cvg {
-   public static final cxu a = new cxu(new Object2IntLinkedOpenHashMap(), true);
-   private static final Codec<Integer> d = Codec.intRange(0, 255);
-   private static final Codec<Object2IntLinkedOpenHashMap<iv<cxn>>> e = Codec.unboundedMap(lc.f.r(), d)
-      .xmap(Object2IntLinkedOpenHashMap::new, Function.identity());
-   private static final Codec<cxu> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(e.fieldOf("levels").forGetter($$0x -> $$0x.g), axe.a(Codec.BOOL, "show_in_tooltip", true).forGetter($$0x -> $$0x.h))
-            .apply($$0, cxu::new)
-   );
-   public static final Codec<cxu> b = axe.a(f, e, $$0 -> new cxu($$0, true));
-   public static final yq<wd, cxu> c = yq.a(yo.a(Object2IntLinkedOpenHashMap::new, yo.b(ld.u), yo.f), $$0 -> $$0.g, yo.b, $$0 -> $$0.h, cxu::new);
-   final Object2IntLinkedOpenHashMap<iv<cxn>> g;
-   final boolean h;
+public class cxu implements cxt {
+   final cxa a;
+   final cxa b;
+   final cxa c;
+   final csz d;
 
-   cxu(Object2IntLinkedOpenHashMap<iv<cxn>> $$0, boolean $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   public int a(cxn $$0) {
-      return this.g.getInt($$0.k());
+   public cxu(cxa $$0, cxa $$1, cxa $$2, csz $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public void a(Consumer<ws> $$0, ctu $$1) {
-      if (this.h) {
-         ObjectBidirectionalIterator var3 = this.g.object2IntEntrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<iv<cxn>> $$2 = (Entry<iv<cxn>>)var3.next();
-            $$0.accept(((cxn)((iv)$$2.getKey()).a()).d($$2.getIntValue()));
-         }
-      }
-   }
-
-   public Set<iv<cxn>> a() {
-      return Collections.unmodifiableSet(this.g.keySet());
-   }
-
-   public Set<Entry<iv<cxn>>> b() {
-      return Collections.unmodifiableSet(this.g.object2IntEntrySet());
-   }
-
-   public int c() {
-      return this.g.size();
-   }
-
-   public boolean d() {
-      return this.g.isEmpty();
+   public boolean a(bpf $$0, dad $$1) {
+      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof cxu $$1) ? false : this.h == $$1.h && this.g.equals($$1.g);
-      }
+   public csz a(bpf $$0, iy.a $$1) {
+      csz $$2 = $$0.a(1).a(this.d.f(), this.d.G());
+      $$2.a(this.d.c());
+      return $$2;
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.g.hashCode();
-      return 31 * $$0 + (this.h ? 1 : 0);
+   public csz a(iy.a $$0) {
+      return this.d;
    }
 
    @Override
-   public String toString() {
-      return "ItemEnchantments{enchantments=" + this.g + ", showInTooltip=" + this.h + "}";
+   public boolean a(csz $$0) {
+      return this.a.a($$0);
    }
 
-   public static class a {
-      private final Object2IntLinkedOpenHashMap<iv<cxn>> a = new Object2IntLinkedOpenHashMap();
-      private final boolean b;
+   @Override
+   public boolean b(csz $$0) {
+      return this.b.a($$0);
+   }
 
-      public a(cxu $$0) {
-         this.a.putAll($$0.g);
-         this.b = $$0.h;
+   @Override
+   public boolean c(csz $$0) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public cxh<?> ao_() {
+      return cxh.u;
+   }
+
+   @Override
+   public boolean i() {
+      return Stream.of(this.a, this.b, this.c).anyMatch(cxa::c);
+   }
+
+   public static class a implements cxh<cxu> {
+      private static final Codec<cxu> y = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  cxa.c.fieldOf("template").forGetter($$0x -> $$0x.a),
+                  cxa.c.fieldOf("base").forGetter($$0x -> $$0x.b),
+                  cxa.c.fieldOf("addition").forGetter($$0x -> $$0x.c),
+                  csz.a.fieldOf("result").forGetter($$0x -> $$0x.d)
+               )
+               .apply($$0, cxu::new)
+      );
+      public static final ys<wf, cxu> x = ys.a(cxu.a::a, cxu.a::a);
+
+      @Override
+      public Codec<cxu> a() {
+         return y;
       }
 
-      public void a(cxn $$0, int $$1) {
-         if ($$1 <= 0) {
-            this.a.removeInt($$0.k());
-         } else {
-            this.a.put($$0.k(), $$1);
-         }
+      @Override
+      public ys<wf, cxu> b() {
+         return x;
       }
 
-      public void b(cxn $$0, int $$1) {
-         if ($$1 > 0) {
-            this.a.merge($$0.k(), $$1, Integer::max);
-         }
+      private static cxu a(wf $$0) {
+         cxa $$1 = cxa.b.decode($$0);
+         cxa $$2 = cxa.b.decode($$0);
+         cxa $$3 = cxa.b.decode($$0);
+         csz $$4 = csz.f.decode($$0);
+         return new cxu($$1, $$2, $$3, $$4);
       }
 
-      public void a(Predicate<iv<cxn>> $$0) {
-         this.a.keySet().removeIf($$0);
-      }
-
-      public int a(cxn $$0) {
-         return this.a.getOrDefault($$0.k(), 0);
-      }
-
-      public Set<iv<cxn>> a() {
-         return this.a.keySet();
-      }
-
-      public cxu b() {
-         return new cxu(this.a, this.b);
+      private static void a(wf $$0, cxu $$1) {
+         cxa.b.encode($$0, $$1.a);
+         cxa.b.encode($$0, $$1.b);
+         cxa.b.encode($$0, $$1.c);
+         csz.f.encode($$0, $$1.d);
       }
    }
 }

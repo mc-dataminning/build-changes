@@ -1,35 +1,26 @@
-public class cak {
-   private final buk a;
-   private final float b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public cak(im $$0, float $$1, int $$2) {
-      this(new bsz($$0), $$1, $$2);
+public class cak extends bzu {
+   public static final float i = 0.001F;
+   protected final float j;
+
+   public cak(bsi $$0, double $$1) {
+      this($$0, $$1, 0.001F);
    }
 
-   public cak(etf $$0, float $$1, int $$2) {
-      this(new bsz(im.a($$0)), $$1, $$2);
+   public cak(bsi $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
    }
 
-   public cak(bql $$0, float $$1, int $$2) {
-      this(new bth($$0, false), $$1, $$2);
-   }
-
-   public cak(buk $$0, float $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public buk a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
+   @Nullable
+   @Override
+   protected etp h() {
+      if (this.b.bf()) {
+         etp $$0 = ccx.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
+      } else {
+         return this.b.ej().i() >= this.j ? ccx.a(this.b, 10, 7) : super.h();
+      }
    }
 }

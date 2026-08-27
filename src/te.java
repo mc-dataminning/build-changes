@@ -1,20 +1,19 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class te {
+   private static tt a = new tg();
 
-public class te implements tr {
-   private static final Logger a = LogUtils.getLogger();
-
-   @Override
-   public void a(su $$0) {
-      String $$1 = $$0.c().x();
-      if ($$0.q()) {
-         a.error("{} failed at {}! {}", new Object[]{$$0.b(), $$1, ac.c($$0.m())});
-      } else {
-         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.b(), $$1, ac.c($$0.m())});
-      }
+   public static void a(tt $$0) {
+      a = $$0;
    }
 
-   @Override
-   public void b(su $$0) {
+   public static void a(sw $$0) {
+      a.a($$0);
+   }
+
+   public static void b(sw $$0) {
+      a.b($$0);
+   }
+
+   public static void a() {
+      a.a();
    }
 }

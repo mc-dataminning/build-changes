@@ -1,51 +1,45 @@
-import org.jetbrains.annotations.VisibleForTesting;
+public class ahu implements zb<afz> {
+   public static final ys<vu, ahu> a = zb.a(ahu::a, ahu::new);
+   private final etl b;
+   private final bpl c;
+   private final int d;
 
-public class ahu {
-   private static final double a = 4096.0;
-   private etf b;
-
-   public ahu() {
-      this.b = etf.b;
+   public ahu(bpl $$0, etl $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
    }
 
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
+   private ahu(vu $$0) {
+      this.c = $$0.b(bpl.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
+   private void a(vu $$0) {
+      $$0.a(this.c);
+      $$0.a(this.b);
+      $$0.c(this.d);
    }
 
-   public etf a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
-         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
-         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new etf($$3, $$4, $$5);
-      }
+   @Override
+   public zd<ahu> a() {
+      return afx.ca;
    }
 
-   public long a(etf $$0) {
-      return a($$0.c) - a(this.b.c);
+   public void a(afz $$0) {
+      $$0.a(this);
    }
 
-   public long b(etf $$0) {
-      return a($$0.d) - a(this.b.d);
+   public bpl b() {
+      return this.c;
    }
 
-   public long c(etf $$0) {
-      return a($$0.e) - a(this.b.e);
+   public etl e() {
+      return this.b;
    }
 
-   public etf d(etf $$0) {
-      return $$0.d(this.b);
-   }
-
-   public void e(etf $$0) {
-      this.b = $$0;
+   public int f() {
+      return this.d;
    }
 }

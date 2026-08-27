@@ -1,4 +1,6 @@
-import com.mojang.serialization.Codec;
+public interface gmu extends AutoCloseable {
+   void a(int var1, int var2);
 
-public record gmu(Codec<? extends gms> a) {
+   @Override
+   void close();
 }

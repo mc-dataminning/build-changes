@@ -1,120 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class cwn implements cvx {
-   final cwo a;
-   final csd b;
-   final String c;
-   final cvw d;
-   final boolean e;
-
-   public cwn(String $$0, cvw $$1, cwo $$2, csd $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+public class cwn extends cwv {
+   public cwn(cwt $$0) {
+      super($$0);
    }
 
-   public cwn(String $$0, cvw $$1, cwo $$2, csd $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   public boolean a(cou $$0, dad $$1) {
+      csz $$2 = csz.i;
+      List<csz> $$3 = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         csz $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.a(avz.bz)) {
+               if (!$$2.d()) {
+                  return false;
+               }
+
+               $$2 = $$5;
+            } else {
+               if (!($$5.f() instanceof crt)) {
+                  return false;
+               }
+
+               $$3.add($$5);
+            }
+         }
+      }
+
+      return !$$2.d() && !$$3.isEmpty();
    }
 
-   @Override
-   public cwk<?> ao_() {
-      return cwk.a;
-   }
+   public csz a(cou $$0, iy.a $$1) {
+      List<crt> $$2 = Lists.newArrayList();
+      csz $$3 = csz.i;
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         csz $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.a(avz.bz)) {
+               if (!$$3.d()) {
+                  return csz.i;
+               }
 
-   @Override
-   public cvw d() {
-      return this.d;
-   }
+               $$3 = $$5.r();
+            } else {
+               if (!($$5.f() instanceof crt $$6)) {
+                  return csz.i;
+               }
 
-   @Override
-   public csd a(jj $$0) {
-      return this.b;
-   }
+               $$2.add($$6);
+            }
+         }
+      }
 
-   @Override
-   public je<cwd> a() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean h() {
-      return this.e;
+      return !$$3.d() && !$$2.isEmpty() ? cvp.a($$3, $$2) : csz.i;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(cnx $$0, czu $$1) {
-      return this.a.a($$0);
-   }
-
-   public csd a(cnx $$0, jj $$1) {
-      return this.a($$1).r();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public boolean i() {
-      je<cwd> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
-   }
-
-   public static class a implements cwk<cwn> {
-      public static final Codec<cwn> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  axe.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.c),
-                  cvw.e.fieldOf("category").orElse(cvw.d).forGetter($$0x -> $$0x.d),
-                  cwo.a.forGetter($$0x -> $$0x.a),
-                  csd.a.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  axe.a(Codec.BOOL, "show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, cwn::new)
-      );
-      public static final yq<wd, cwn> y = yq.a(cwn.a::a, cwn.a::a);
-
-      @Override
-      public Codec<cwn> a() {
-         return x;
-      }
-
-      @Override
-      public yq<wd, cwn> b() {
-         return y;
-      }
-
-      private static cwn a(wd $$0) {
-         String $$1 = $$0.p();
-         cvw $$2 = $$0.b(cvw.class);
-         cwo $$3 = cwo.b.decode($$0);
-         csd $$4 = csd.f.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new cwn($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(wd $$0, cwn $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         cwo.b.encode($$0, $$1.a);
-         csd.f.encode($$0, $$1.b);
-         $$0.a($$1.e);
-      }
+   public cxh<?> ao_() {
+      return cxh.c;
    }
 }

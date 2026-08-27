@@ -1,57 +1,84 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.Optional;
 
-public record by(Optional<iz<elq>> b, Optional<dj> c) {
-   public static final Codec<by> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axe.a(jk.a(ld.z), "fluids").forGetter(by::a), axe.a(dj.a, "state").forGetter(by::b)).apply($$0, by::new)
-   );
-
-   public boolean a(aqe $$0, im $$1) {
-      if (!$$0.p($$1)) {
-         return false;
-      } else {
-         elr $$2 = $$0.b_($$1);
-         return this.b.isPresent() && !$$2.a(this.b.get()) ? false : !this.c.isPresent() || this.c.get().a($$2);
-      }
+public class by extends de<by.a> {
+   @Override
+   public Codec<by.a> a() {
+      return by.a.a;
    }
 
-   public Optional<iz<elq>> a() {
-      return this.b;
+   public void a(aqi $$0, csz $$1, clv $$2, Collection<csz> $$3) {
+      eol $$4 = br.b($$0, (brh)($$2.v() != null ? $$2.v() : $$2));
+      this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
-   public Optional<dj> b() {
-      return this.c;
-   }
+   public static record a(Optional<bc> b, Optional<ch> c, Optional<bc> d, Optional<ch> e) implements de.a {
+      public static final Codec<by.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  axh.a(br.b, "player").forGetter(by.a::a),
+                  axh.a(ch.a, "rod").forGetter(by.a::b),
+                  axh.a(br.b, "entity").forGetter(by.a::c),
+                  axh.a(ch.a, "item").forGetter(by.a::d)
+               )
+               .apply($$0, by.a::new)
+      );
 
-   public static class a {
-      private Optional<iz<elq>> a = Optional.empty();
-      private Optional<dj> b = Optional.empty();
-
-      private a() {
+      public static an<by.a> a(Optional<ch> $$0, Optional<br> $$1, Optional<ch> $$2) {
+         return am.E.a(new by.a(Optional.empty(), $$0, br.a($$1), $$2));
       }
 
-      public static by.a a() {
-         return new by.a();
+      public boolean a(csz $$0, eol $$1, Collection<csz> $$2) {
+         if (this.c.isPresent() && !this.c.get().a($$0)) {
+            return false;
+         } else if (this.d.isPresent() && !this.d.get().a($$1)) {
+            return false;
+         } else {
+            if (this.e.isPresent()) {
+               boolean $$3 = false;
+               brh $$4 = $$1.c(erc.a);
+               if ($$4 instanceof chr $$5 && this.e.get().a($$5.p())) {
+                  $$3 = true;
+               }
+
+               for (csz $$6 : $$2) {
+                  if (this.e.get().a($$6)) {
+                     $$3 = true;
+                     break;
+                  }
+               }
+
+               if (!$$3) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
 
-      public by.a a(elq $$0) {
-         this.a = Optional.of(iz.a($$0.k()));
-         return this;
+      @Override
+      public void a(bd $$0) {
+         de.a.super.a($$0);
+         $$0.a(this.d, ".entity");
       }
 
-      public by.a a(iz<elq> $$0) {
-         this.a = Optional.of($$0);
-         return this;
+      @Override
+      public Optional<bc> a() {
+         return this.b;
       }
 
-      public by.a a(dj $$0) {
-         this.b = Optional.of($$0);
-         return this;
+      public Optional<ch> b() {
+         return this.c;
       }
 
-      public by b() {
-         return new by(this.a, this.b);
+      public Optional<bc> c() {
+         return this.d;
+      }
+
+      public Optional<ch> d() {
+         return this.e;
       }
    }
 }

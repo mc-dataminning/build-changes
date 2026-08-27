@@ -1,110 +1,163 @@
-public class cno extends cnh {
-   private static final int k = 9;
-   private final boj l;
-   private final int m;
+import javax.annotation.Nullable;
 
-   private cno(cop<?> $$0, int $$1, ckk $$2, int $$3) {
-      this($$0, $$1, $$2, new boz(9 * $$3), $$3);
-   }
+public class cno extends cnc {
+   private static final byte c = 10;
+   private int d = -1;
 
-   public static cno a(int $$0, ckk $$1) {
-      return new cno(cop.a, $$0, $$1, 1);
-   }
-
-   public static cno b(int $$0, ckk $$1) {
-      return new cno(cop.b, $$0, $$1, 2);
-   }
-
-   public static cno c(int $$0, ckk $$1) {
-      return new cno(cop.c, $$0, $$1, 3);
-   }
-
-   public static cno d(int $$0, ckk $$1) {
-      return new cno(cop.d, $$0, $$1, 4);
-   }
-
-   public static cno e(int $$0, ckk $$1) {
-      return new cno(cop.e, $$0, $$1, 5);
-   }
-
-   public static cno f(int $$0, ckk $$1) {
-      return new cno(cop.f, $$0, $$1, 6);
-   }
-
-   public static cno a(int $$0, ckk $$1, boj $$2) {
-      return new cno(cop.c, $$0, $$1, $$2, 3);
-   }
-
-   public static cno b(int $$0, ckk $$1, boj $$2) {
-      return new cno(cop.f, $$0, $$1, $$2, 6);
-   }
-
-   public cno(cop<?> $$0, int $$1, ckk $$2, boj $$3, int $$4) {
+   public cno(brn<? extends cno> $$0, dad $$1) {
       super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.l = $$3;
-      this.m = $$4;
-      $$3.d_($$2.m);
-      int $$5 = (this.m - 4) * 18;
+   }
 
-      for (int $$6 = 0; $$6 < this.m; $$6++) {
-         for (int $$7 = 0; $$7 < 9; $$7++) {
-            this.a(new cpd($$3, $$7 + $$6 * 9, 8 + $$7 * 18, 18 + $$6 * 18));
-         }
+   public cno(dad $$0, double $$1, double $$2, double $$3) {
+      super(brn.bc, $$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public cnc.a v() {
+      return cnc.a.d;
+   }
+
+   @Override
+   public dqh x() {
+      return ddg.ck.n();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.d > 0) {
+         this.d--;
+         this.dN().a(kx.ab, this.ds(), this.du() + 0.5, this.dy(), 0.0, 0.0, 0.0);
+      } else if (this.d == 0) {
+         this.h(this.dq().i());
       }
 
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         for (int $$9 = 0; $$9 < 9; $$9++) {
-            this.a(new cpd($$2, $$9 + $$8 * 9 + 9, 8 + $$9 * 18, 103 + $$8 * 18 + $$5));
+      if (this.Q) {
+         double $$0 = this.dq().i();
+         if ($$0 >= 0.01F) {
+            this.h($$0);
          }
-      }
-
-      for (int $$10 = 0; $$10 < 9; $$10++) {
-         this.a(new cpd($$2, $$10, 8 + $$10 * 18, 161 + $$5));
       }
    }
 
    @Override
-   public boolean a(ckl $$0) {
-      return this.l.a($$0);
-   }
-
-   @Override
-   public csd a(ckl $$0, int $$1) {
-      csd $$2 = csd.i;
-      cpd $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         csd $$4 = $$3.g();
-         $$2 = $$4.r();
-         if ($$1 < this.m * 9) {
-            if (!this.a($$4, this.m * 9, this.i.size(), true)) {
-               return csd.i;
-            }
-         } else if (!this.a($$4, 0, this.m * 9, false)) {
-            return csd.i;
-         }
-
-         if ($$4.d()) {
-            $$3.e(csd.i);
-         } else {
-            $$3.b();
-         }
+   public boolean a(bqf $$0, float $$1) {
+      if ($$0.c() instanceof cln $$3 && $$3.bO()) {
+         bqf $$4 = this.dO().d(this, $$0.d());
+         this.a($$4, $$3.dq().g());
       }
 
-      return $$2;
+      return super.a($$0, $$1);
    }
 
    @Override
-   public void b(ckl $$0) {
+   public void a(bqf $$0) {
+      double $$1 = this.dq().i();
+      if (!e($$0) && !($$1 >= 0.01F)) {
+         this.b(this.ag_());
+      } else {
+         if (this.d < 0) {
+            this.B();
+            this.d = this.ah.a(20) + this.ah.a(20);
+         }
+      }
+   }
+
+   @Override
+   protected csu ag_() {
+      return ctc.nP;
+   }
+
+   protected void h(double $$0) {
+      this.a(null, $$0);
+   }
+
+   protected void a(@Nullable bqf $$0, double $$1) {
+      if (!this.dN().B) {
+         double $$2 = Math.sqrt($$1);
+         if ($$2 > 5.0) {
+            $$2 = 5.0;
+         }
+
+         this.dN().a(this, $$0, null, this.ds(), this.du(), this.dy(), (float)(4.0 + this.ah.j() * 1.5 * $$2), false, dad.a.d);
+         this.am();
+      }
+   }
+
+   @Override
+   public boolean a(float $$0, float $$1, bqf $$2) {
+      if ($$0 >= 3.0F) {
+         float $$3 = $$0 / 10.0F;
+         this.h((double)($$3 * $$3));
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.d < 0) {
+         this.B();
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 10) {
+         this.B();
+      } else {
+         super.b($$0);
+      }
+   }
+
+   public void B() {
+      this.d = 80;
+      if (!this.dN().B) {
+         this.dN().a(this, (byte)10);
+         if (!this.aU()) {
+            this.dN().a(null, this.ds(), this.du(), this.dy(), avc.zk, avd.e, 1.0F, 1.0F);
+         }
+      }
+   }
+
+   public int C() {
+      return this.d;
+   }
+
+   public boolean D() {
+      return this.d > -1;
+   }
+
+   @Override
+   public float a(czv $$0, czj $$1, in $$2, dqh $$3, ema $$4, float $$5) {
+      return !this.D() || !$$3.a(avr.N) && !$$1.a_($$2.c()).a(avr.N) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
+   }
+
+   @Override
+   public boolean a(czv $$0, czj $$1, in $$2, dqh $$3, float $$4) {
+      return !this.D() || !$$3.a(avr.N) && !$$1.a_($$2.c()).a(avr.N) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   protected void a(ua $$0) {
+      super.a($$0);
+      if ($$0.b("TNTFuse", 99)) {
+         this.d = $$0.h("TNTFuse");
+      }
+   }
+
+   @Override
+   protected void b(ua $$0) {
       super.b($$0);
-      this.l.c($$0);
+      $$0.a("TNTFuse", this.d);
    }
 
-   public boj l() {
-      return this.l;
+   @Override
+   boolean d(bqf $$0) {
+      return e($$0);
    }
 
-   public int m() {
-      return this.m;
+   private static boolean e(bqf $$0) {
+      return $$0.a(avt.j) || $$0.a(avt.m);
    }
 }

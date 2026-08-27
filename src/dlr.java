@@ -1,329 +1,159 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class dlr extends dcv {
-   public static final MapCodec<dlr> a = b(dlr::new);
-   public static final dqp b = dij.f;
-   public static final dqp c = dij.b;
-   public static final dqp d = dij.c;
-   public static final dqp e = dij.d;
-   public static final dqp f = dij.e;
-   public static final Map<ir, dqp> g = dij.h.entrySet().stream().filter($$0 -> $$0.getKey() != ir.a).collect(ac.a());
-   protected static final float h = 1.0F;
-   private static final ety i = dcv.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ety j = dcv.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
-   private static final ety k = dcv.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ety l = dcv.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
-   private static final ety m = dcv.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
-   private final Map<dpy, ety> n;
+public class dlr extends dha implements dkf {
+   public static final MapCodec<dlr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dqw.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.m), u()).apply($$0, dlr::new)
+   );
+   public static final dqy b = dqx.u;
+   public static final drf<drg> c = dqx.af;
+   public static final dqy d = dqx.w;
+   public static final dqy e = dqx.C;
+   protected static final int f = 3;
+   protected static final eui g = dde.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
+   protected static final eui h = dde.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final eui i = dde.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
+   protected static final eui j = dde.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
+   protected static final eui k = dde.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0);
+   protected static final eui l = dde.a(0.0, 13.0, 0.0, 16.0, 16.0, 16.0);
+   private final dqw m;
 
    @Override
-   public MapCodec<dlr> a() {
+   public MapCodec<? extends dlr> a() {
       return a;
    }
 
-   public dlr(dpx.d $$0) {
-      super($$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-            .a(f, Boolean.valueOf(false))
-      );
-      this.n = ImmutableMap.copyOf(this.E.a().stream().collect(Collectors.toMap(Function.identity(), dlr::m)));
-   }
-
-   private static ety m(dpy $$0) {
-      ety $$1 = etv.a();
-      if ($$0.c(b)) {
-         $$1 = i;
-      }
-
-      if ($$0.c(c)) {
-         $$1 = etv.a($$1, l);
-      }
-
-      if ($$0.c(e)) {
-         $$1 = etv.a($$1, m);
-      }
-
-      if ($$0.c(d)) {
-         $$1 = etv.a($$1, k);
-      }
-
-      if ($$0.c(f)) {
-         $$1 = etv.a($$1, j);
-      }
-
-      return $$1.c() ? etv.b() : $$1;
+   protected dlr(dqw $$0, dqg.d $$1) {
+      super($$1.a($$0.g()));
+      this.m = $$0;
+      this.k(this.E.b().a(aE, is.c).a(b, Boolean.valueOf(false)).a(c, drg.b).a(d, Boolean.valueOf(false)).a(e, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      return this.n.get($$0);
-   }
-
-   @Override
-   protected boolean a_(dpy $$0, cza $$1, im $$2) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(dpy $$0, czx $$1, im $$2) {
-      return this.n(this.i($$0, $$1, $$2));
-   }
-
-   private boolean n(dpy $$0) {
-      return this.o($$0) > 0;
-   }
-
-   private int o(dpy $$0) {
-      int $$1 = 0;
-
-      for (dqp $$2 : g.values()) {
-         if ($$0.c($$2)) {
-            $$1++;
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      if (!$$0.c(b)) {
+         return $$0.c(c) == drg.a ? l : k;
+      } else {
+         switch ((is)$$0.c(aE)) {
+            case c:
+            default:
+               return j;
+            case d:
+               return i;
+            case e:
+               return h;
+            case f:
+               return g;
          }
       }
-
-      return $$1;
    }
 
-   private boolean b(cza $$0, im $$1, ir $$2) {
-      if ($$2 == ir.a) {
-         return false;
-      } else {
-         im $$3 = $$1.a($$2);
-         if (a($$0, $$3, $$2)) {
-            return true;
-         } else if ($$2.o() == ir.a.b) {
+   @Override
+   protected boolean a(dqh $$0, emp $$1) {
+      switch ($$1) {
+         case a:
+            return $$0.c(b);
+         case b:
+            return $$0.c(e);
+         case c:
+            return $$0.c(b);
+         default:
             return false;
-         } else {
-            dqp $$4 = g.get($$2);
-            dpy $$5 = $$0.a_($$1.c());
-            return $$5.a(this) && $$5.c($$4);
-         }
       }
-   }
-
-   public static boolean a(cza $$0, im $$1, ir $$2) {
-      return dhv.a($$0, $$2, $$1, $$0.a_($$1));
-   }
-
-   private dpy i(dpy $$0, cza $$1, im $$2) {
-      im $$3 = $$2.c();
-      if ($$0.c(b)) {
-         $$0 = $$0.a(b, Boolean.valueOf(a($$1, $$3, ir.a)));
-      }
-
-      dpy $$4 = null;
-
-      for (ir $$5 : ir.c.a) {
-         dqp $$6 = a($$5);
-         if ($$0.c($$6)) {
-            boolean $$7 = this.b($$1, $$2, $$5);
-            if (!$$7) {
-               if ($$4 == null) {
-                  $$4 = $$1.a_($$3);
-               }
-
-               $$7 = $$4.a(this) && $$4.c($$6);
-            }
-
-            $$0 = $$0.a($$6, Boolean.valueOf($$7));
-         }
-      }
-
-      return $$0;
    }
 
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      if ($$1 == ir.a) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected bpm a(dqh $$0, dad $$1, in $$2, clh $$3, etl $$4) {
+      if (!this.m.c()) {
+         return bpm.d;
       } else {
-         dpy $$6 = this.i($$0, $$3, $$4);
-         return !this.n($$6) ? dcx.a.n() : $$6;
+         this.b($$0, $$1, $$2, $$3);
+         return bpm.a($$1.B);
       }
    }
 
    @Override
-   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
-      if ($$1.aa().b(czq.X)) {
-         if ($$3.a(4) == 0) {
-            ir $$4 = ir.b($$3);
-            im $$5 = $$2.c();
-            if ($$4.o().d() && !$$0.c(a($$4))) {
-               if (this.a($$1, $$2)) {
-                  im $$6 = $$2.a($$4);
-                  dpy $$7 = $$1.a_($$6);
-                  if ($$7.i()) {
-                     ir $$8 = $$4.h();
-                     ir $$9 = $$4.i();
-                     boolean $$10 = $$0.c(a($$8));
-                     boolean $$11 = $$0.c(a($$9));
-                     im $$12 = $$6.a($$8);
-                     im $$13 = $$6.a($$9);
-                     if ($$10 && a($$1, $$12, $$8)) {
-                        $$1.a($$6, this.n().a(a($$8), Boolean.valueOf(true)), 2);
-                     } else if ($$11 && a($$1, $$13, $$9)) {
-                        $$1.a($$6, this.n().a(a($$9), Boolean.valueOf(true)), 2);
-                     } else {
-                        ir $$14 = $$4.g();
-                        if ($$10 && $$1.u($$12) && a($$1, $$2.a($$8), $$14)) {
-                           $$1.a($$12, this.n().a(a($$14), Boolean.valueOf(true)), 2);
-                        } else if ($$11 && $$1.u($$13) && a($$1, $$2.a($$9), $$14)) {
-                           $$1.a($$13, this.n().a(a($$14), Boolean.valueOf(true)), 2);
-                        } else if ((double)$$3.i() < 0.05 && a($$1, $$6.c(), ir.b)) {
-                           $$1.a($$6, this.n().a(b, Boolean.valueOf(true)), 2);
-                        }
-                     }
-                  } else if (a($$1, $$6, $$4)) {
-                     $$1.a($$2, $$0.a(a($$4), Boolean.valueOf(true)), 2);
-                  }
-               }
-            } else {
-               if ($$4 == ir.b && $$2.v() < $$1.al() - 1) {
-                  if (this.b($$1, $$2, $$4)) {
-                     $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 2);
-                     return;
-                  }
+   protected void a(dqh $$0, dad $$1, in $$2, czv $$3, BiConsumer<csz, in> $$4) {
+      if ($$3.j() == czv.a.d && !$$1.x_() && this.m.d() && !$$0.c(d)) {
+         this.b($$0, $$1, $$2, null);
+      }
 
-                  if ($$1.u($$5)) {
-                     if (!this.a($$1, $$2)) {
-                        return;
-                     }
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
 
-                     dpy $$15 = $$0;
+   private void b(dqh $$0, dad $$1, in $$2, @Nullable clh $$3) {
+      dqh $$4 = $$0.a(b);
+      $$1.a($$2, $$4, 2);
+      if ($$4.c(e)) {
+         $$1.a($$2, emb.c, emb.c.a((dag)$$1));
+      }
 
-                     for (ir $$16 : ir.c.a) {
-                        if ($$3.h() || !a($$1, $$5.a($$16), $$16)) {
-                           $$15 = $$15.a(a($$16), Boolean.valueOf(false));
-                        }
-                     }
+      this.a($$3, $$1, $$2, $$4.c(b));
+   }
 
-                     if (this.p($$15)) {
-                        $$1.a($$5, $$15, 2);
-                     }
+   protected void a(@Nullable clh $$0, dad $$1, in $$2, boolean $$3) {
+      $$1.a($$0, $$2, $$3 ? this.m.k() : this.m.j(), avd.e, 1.0F, $$1.E_().i() * 0.1F + 0.9F);
+      $$1.a($$0, $$3 ? dva.h : dva.d, $$2);
+   }
 
-                     return;
-                  }
-               }
+   @Override
+   protected void a(dqh $$0, dad $$1, in $$2, dde $$3, in $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$1.C($$2);
+         if ($$6 != $$0.c(d)) {
+            if ($$0.c(b) != $$6) {
+               $$0 = $$0.a(b, Boolean.valueOf($$6));
+               this.a(null, $$1, $$2, $$6);
+            }
 
-               if ($$2.v() > $$1.I_()) {
-                  im $$17 = $$2.d();
-                  dpy $$18 = $$1.a_($$17);
-                  if ($$18.i() || $$18.a(this)) {
-                     dpy $$19 = $$18.i() ? this.n() : $$18;
-                     dpy $$20 = this.a($$0, $$19, $$3);
-                     if ($$19 != $$20 && this.p($$20)) {
-                        $$1.a($$17, $$20, 2);
-                     }
-                  }
-               }
+            $$1.a($$2, $$0.a(d, Boolean.valueOf($$6)), 2);
+            if ($$0.c(e)) {
+               $$1.a($$2, emb.c, emb.c.a((dag)$$1));
             }
          }
       }
    }
 
-   private dpy a(dpy $$0, dpy $$1, ayd $$2) {
-      for (ir $$3 : ir.c.a) {
-         if ($$2.h()) {
-            dqp $$4 = a($$3);
-            if ($$0.c($$4)) {
-               $$1 = $$1.a($$4, Boolean.valueOf(true));
-            }
-         }
+   @Override
+   public dqh a(cwi $$0) {
+      dqh $$1 = this.n();
+      ema $$2 = $$0.q().b_($$0.a());
+      is $$3 = $$0.k();
+      if (!$$0.c() && $$3.o().d()) {
+         $$1 = $$1.a(aE, $$3).a(c, $$0.l().d - (double)$$0.a().v() > 0.5 ? drg.a : drg.b);
+      } else {
+         $$1 = $$1.a(aE, $$0.g().g()).a(c, $$3 == is.b ? drg.b : drg.a);
       }
 
-      return $$1;
-   }
-
-   private boolean p(dpy $$0) {
-      return $$0.c(c) || $$0.c(d) || $$0.c(e) || $$0.c(f);
-   }
-
-   private boolean a(cza $$0, im $$1) {
-      int $$2 = 4;
-      Iterable<im> $$3 = im.b($$1.u() - 4, $$1.v() - 1, $$1.w() - 4, $$1.u() + 4, $$1.v() + 1, $$1.w() + 4);
-      int $$4 = 5;
-
-      for (im $$5 : $$3) {
-         if ($$0.a_($$5).a(this)) {
-            if (--$$4 <= 0) {
-               return false;
-            }
-         }
+      if ($$0.q().C($$0.a())) {
+         $$1 = $$1.a(b, Boolean.valueOf(true)).a(d, Boolean.valueOf(true));
       }
 
-      return true;
+      return $$1.a(e, Boolean.valueOf($$2.a() == emb.c));
    }
 
    @Override
-   protected boolean a(dpy $$0, cvl $$1) {
-      dpy $$2 = $$1.q().a_($$1.a());
-      return $$2.a(this) ? this.o($$2) < g.size() : super.a($$0, $$1);
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(aE, b, c, d, e);
    }
 
-   @Nullable
    @Override
-   public dpy a(cvl $$0) {
-      dpy $$1 = $$0.q().a_($$0.a());
-      boolean $$2 = $$1.a(this);
-      dpy $$3 = $$2 ? $$1 : this.n();
+   protected ema b_(dqh $$0) {
+      return $$0.c(e) ? emb.c.a(false) : super.b_($$0);
+   }
 
-      for (ir $$4 : $$0.f()) {
-         if ($$4 != ir.a) {
-            dqp $$5 = a($$4);
-            boolean $$6 = $$2 && $$1.c($$5);
-            if (!$$6 && this.b($$0.q(), $$0.a(), $$4)) {
-               return $$3.a($$5, Boolean.valueOf(true));
-            }
-         }
+   @Override
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, emb.c, emb.c.a($$3));
       }
 
-      return $$2 ? $$3 : null;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(b, c, d, e, f);
-   }
-
-   @Override
-   protected dpy a(dpy $$0, dji $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.a(c, $$0.c(e)).a(d, $$0.c(f)).a(e, $$0.c(c)).a(f, $$0.c(d));
-         case d:
-            return $$0.a(c, $$0.c(d)).a(d, $$0.c(e)).a(e, $$0.c(f)).a(f, $$0.c(c));
-         case b:
-            return $$0.a(c, $$0.c(f)).a(d, $$0.c(c)).a(e, $$0.c(d)).a(f, $$0.c(e));
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected dpy a(dpy $$0, dhs $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.a(c, $$0.c(e)).a(e, $$0.c(c));
-         case c:
-            return $$0.a(d, $$0.c(f)).a(f, $$0.c(d));
-         default:
-            return super.a($$0, $$1);
-      }
-   }
-
-   public static dqp a(ir $$0) {
-      return g.get($$0);
+   protected dqw k() {
+      return this.m;
    }
 }

@@ -1,6 +1,7 @@
-public enum bkp {
-   a,
-   b,
-   c,
-   d;
+public interface bkp {
+   void a(long[] var1);
+
+   void a(long var1);
+
+   void a(long var1, int var3);
 }

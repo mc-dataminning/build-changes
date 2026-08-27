@@ -1,55 +1,74 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
-import org.slf4j.Logger;
 
-public class eqg extends epo {
-   private static final Logger b = LogUtils.getLogger();
+public class eqg extends epw {
    public static final Codec<eqg> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and($$0.group(esd.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .and($$0.group(ld.k.r().fieldOf("type").forGetter($$0x -> $$0x.b), eoz.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
             .apply($$0, eqg::new)
    );
-   private final esc c;
-   private final boolean d;
+   private final iw<dno<?>> b;
+   private final List<epb> c;
 
-   private eqg(List<erh> $$0, esc $$1, boolean $$2) {
+   eqg(List<erq> $$0, iw<dno<?>> $$1, List<epb> $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public epq b() {
-      return epr.k;
+   public epy b() {
+      return epz.s;
    }
 
    @Override
-   public Set<eqq<?>> a() {
-      return this.c.a();
-   }
-
-   @Override
-   public csd a(csd $$0, eoa $$1) {
-      if ($$0.k()) {
-         int $$2 = $$0.n();
-         float $$3 = this.d ? 1.0F - (float)$$0.m() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - axw.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(axw.d($$4 * (float)$$2));
+   public csz a(csz $$0, eol $$1) {
+      if ($$0.d()) {
+         return $$0;
       } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
+         jf<csz> $$2 = jf.a();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(eoq.a($$1.d(), $$2::add), $$1)));
+         $$0.b(ka.X, cvt.a($$2));
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(eor $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
+   }
+
+   public static eqg.a a(dno<?> $$0) {
+      return new eqg.a($$0);
+   }
+
+   public static class a extends epw.a<eqg.a> {
+      private final Builder<epb> a = ImmutableList.builder();
+      private final dno<?> b;
+
+      public a(dno<?> $$0) {
+         this.b = $$0;
       }
 
-      return $$0;
-   }
+      protected eqg.a a() {
+         return this;
+      }
 
-   public static epo.a<?> a(esc $$0) {
-      return a($$1 -> new eqg($$1, $$0, false));
-   }
+      public eqg.a a(epb.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public static epo.a<?> a(esc $$0, boolean $$1) {
-      return a($$2 -> new eqg($$2, $$0, $$1));
+      @Override
+      public epx b() {
+         return new eqg(this.g(), this.b.a(), this.a.build());
+      }
    }
 }

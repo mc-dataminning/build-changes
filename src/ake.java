@@ -1,60 +1,65 @@
-import com.google.common.collect.MapMaker;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentMap;
 
-public class ake<T> {
-   private static final ConcurrentMap<ake.a, ake<?>> a = new MapMaker().weakValues().makeMap();
-   private final akf b;
-   private final akf c;
+public final class ake<E> implements Codec<iw<E>> {
+   private final akg<? extends jj<E>> a;
 
-   public static <T> Codec<ake<T>> a(ake<? extends ji<T>> $$0) {
-      return akf.a.xmap($$1 -> a($$0, $$1), ake::a);
+   public static <E> ake<E> a(akg<? extends jj<E>> $$0) {
+      return new ake<>($$0);
    }
 
-   public static <T> yq<ByteBuf, ake<T>> b(ake<? extends ji<T>> $$0) {
-      return akf.b.a($$1 -> a($$0, $$1), ake::a);
+   private ake(akg<? extends jj<E>> $$0) {
+      this.a = $$0;
    }
 
-   public static <T> ake<T> a(ake<? extends ji<T>> $$0, akf $$1) {
-      return a($$0.c, $$1);
+   public <T> DataResult<T> a(iw<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof akf<?> $$3) {
+         Optional<iz<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
+
+            return (DataResult<T>)$$0.d()
+               .map(
+                  $$2x -> akh.a.encode($$2x.a(), $$1, $$2),
+                  $$0x -> DataResult.error(() -> "Elements from registry " + this.a + " can't be serialized to a value")
+               );
+         }
+      }
+
+      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
-   public static <T> ake<ji<T>> a(akf $$0) {
-      return a(ld.a, $$0);
-   }
+   public <T> DataResult<Pair<iw<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof akf<?> $$2) {
+         Optional<ix<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            return akh.a
+               .decode($$0, $$1)
+               .flatMap(
+                  $$1x -> {
+                     akh $$2x = (akh)$$1x.getFirst();
+                     return $$3.get()
+                        .a(akg.a(this.a, $$2x))
+                        .<DataResult>map(DataResult::success)
+                        .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$2x))
+                        .map($$1xx -> Pair.of($$1xx, $$1x.getSecond()))
+                        .setLifecycle(Lifecycle.stable());
+                  }
+               );
+         }
+      }
 
-   private static <T> ake<T> a(akf $$0, akf $$1) {
-      return (ake<T>)a.computeIfAbsent(new ake.a($$0, $$1), $$0x -> new ake($$0x.a, $$0x.b));
-   }
-
-   private ake(akf $$0, akf $$1) {
-      this.b = $$0;
-      this.c = $$1;
+      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
    @Override
    public String toString() {
-      return "ResourceKey[" + this.b + " / " + this.c + "]";
-   }
-
-   public boolean c(ake<? extends ji<?>> $$0) {
-      return this.b.equals($$0.a());
-   }
-
-   public <E> Optional<ake<E>> d(ake<? extends ji<E>> $$0) {
-      return this.c($$0) ? Optional.of((ake<E>)this) : Optional.empty();
-   }
-
-   public akf a() {
-      return this.c;
-   }
-
-   public akf b() {
-      return this.b;
-   }
-
-   static record a(akf a, akf b) {
+      return "RegistryFixedCodec[" + this.a + "]";
    }
 }

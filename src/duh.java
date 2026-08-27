@@ -1,19 +1,24 @@
 import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public interface duh<T extends dty> {
-   @Nullable
-   T a(int var1);
+public interface duh {
+   int aj();
 
-   @Nullable
-   T a(UUID var1);
+   UUID cx();
 
-   Iterable<T> a();
+   in dn();
 
-   <U extends T> void a(duf<T, U> var1, awj<U> var2);
+   etk cI();
 
-   void a(eta var1, Consumer<T> var2);
+   void a(dui var1);
 
-   <U extends T> void a(duf<T, U> var1, eta var2, awj<U> var3);
+   Stream<? extends duh> cS();
+
+   Stream<? extends duh> cT();
+
+   void b(brh.c var1);
+
+   boolean dL();
+
+   boolean dM();
 }

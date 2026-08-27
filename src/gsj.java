@@ -1,25 +1,37 @@
-public interface gsj {
-   default void b() {
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+
+public class gsj {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
+
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
    }
 
-   default void a() {
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
+      this.d = $$0;
    }
 
-   default void a(gae $$0) {
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
    }
 
-   default void a(double $$0, double $$1) {
-   }
-
-   default void a(fvm $$0, etd $$1) {
-   }
-
-   default void a(fvm $$0, im $$1, dpy $$2, float $$3) {
-   }
-
-   default void c() {
-   }
-
-   default void a(csd $$0) {
+   public void a(gry $$0) {
+      this.b.ifPresent($$1 -> $$0.send(grz.e, $$1x -> {
+            $$1x.a(gsb.p, this.a($$1));
+            $$1x.a(gsb.q, (int)this.c);
+         }));
    }
 }

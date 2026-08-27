@@ -1,29 +1,35 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+public class cbg {
+   private final bvg a;
+   private final float b;
+   private final int c;
 
-public class cbg<T extends bre> extends cbn<T> {
-   @Override
-   protected void a(aqe $$0, T $$1) {
-      eta $$2 = $$1.cI().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<bre> $$3 = $$0.a(bre.class, $$2, $$1x -> $$1x != $$1 && $$1x.bB());
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      bsf<?> $$4 = $$1.dQ();
-      $$4.a(cah.g, $$3);
-      $$4.a(cah.h, new caj($$1, $$3));
+   public cbg(in $$0, float $$1, int $$2) {
+      this(new btv($$0), $$1, $$2);
    }
 
-   protected int b() {
-      return 16;
+   public cbg(etp $$0, float $$1, int $$2) {
+      this(new btv(in.a($$0)), $$1, $$2);
    }
 
-   protected int c() {
-      return 16;
+   public cbg(brh $$0, float $$1, int $$2) {
+      this(new bud($$0, false), $$1, $$2);
    }
 
-   @Override
-   public Set<cah<?>> a() {
-      return ImmutableSet.of(cah.g, cah.h);
+   public cbg(bvg $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public bvg a() {
+      return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
    }
 }

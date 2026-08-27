@@ -1,45 +1,42 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dyd extends dyu<eaq> {
-   public dyd(Codec<eaq> $$0) {
+public class dyd extends dyb {
+   public dyd(Codec<dya> $$0) {
       super($$0);
+      this.h = ImmutableSet.of(emb.e, emb.c);
    }
 
    @Override
-   public boolean a(dyw<eaq> $$0) {
-      im $$1 = $$0.e();
-      dap $$2 = $$0.b();
-      ayd $$3 = $$0.d();
-      eaq $$4 = $$0.f();
-      if ($$1.v() < $$2.I_() + 5) {
-         return false;
-      } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
+   protected int a() {
+      return 10;
+   }
 
-         for (im $$7 : im.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
-            }
+   @Override
+   protected float a(ayg $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   }
+
+   @Override
+   protected double b() {
+      return 5.0;
+   }
+
+   protected boolean a(dxz $$0, dya $$1, dsd $$2, Function<in, iw<dbc>> $$3, dsc $$4, in.a $$5, in.a $$6, dvl $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         dqh $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
+         } else {
+            $$9 = e;
          }
 
+         $$2.a($$5, $$9, false);
          return true;
-      }
-   }
-
-   private boolean a(czv $$0, im $$1, ayd $$2) {
-      im $$3 = $$1.d();
-      dpy $$4 = $$0.a_($$3);
-      return $$4.a(dcx.kE) ? $$2.h() : $$4.d($$0, $$3, ir.b);
-   }
-
-   private void a(czv $$0, im $$1, ayd $$2, eaq $$3) {
-      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
+      } else {
+         return false;
       }
    }
 }

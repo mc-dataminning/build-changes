@@ -1,14 +1,21 @@
-public enum dqt implements ayq {
-   a,
-   b;
+public enum dqt implements ayt {
+   a("none"),
+   b("small"),
+   c("large");
+
+   private final String d;
+
+   private dqt(String $$0) {
+      this.d = $$0;
+   }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this == a ? "left" : "right";
+      return this.d;
    }
 }

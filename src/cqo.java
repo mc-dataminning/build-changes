@@ -1,285 +1,154 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
+import com.mojang.serialization.Codec;
+import java.util.EnumMap;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
+import java.util.UUID;
 import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public class cqo {
-   private final ws a;
-   String b = "items.png";
-   boolean c = true;
-   boolean d = true;
-   boolean e = false;
-   private final cqo.f f;
-   private final int g;
-   private final cqo.h h;
-   @Nullable
-   private csd i;
-   private Collection<csd> j = cse.a();
-   private Set<csd> k = cse.a();
-   @Nullable
-   private Consumer<List<csd>> l;
-   private final Supplier<csd> m;
-   private final cqo.b n;
-
-   cqo(cqo.f $$0, int $$1, cqo.h $$2, ws $$3, Supplier<csd> $$4, cqo.b $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.a = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.h = $$2;
-   }
-
-   public static cqo.a a(cqo.f $$0, int $$1) {
-      return new cqo.a($$0, $$1);
-   }
-
-   public ws a() {
-      return this.a;
-   }
-
-   public csd b() {
-      if (this.i == null) {
-         this.i = this.m.get();
+public class cqo extends csu implements csb {
+   private static final EnumMap<cqo.a, UUID> j = ac.a(new EnumMap<>(cqo.a.class), $$0 -> {
+      $$0.put(cqo.a.d, UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"));
+      $$0.put(cqo.a.c, UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"));
+      $$0.put(cqo.a.b, UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"));
+      $$0.put(cqo.a.a, UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150"));
+      $$0.put(cqo.a.e, UUID.fromString("C1C72771-8B8E-BA4A-ACE0-81A93C8928B2"));
+   });
+   public static final ki a = new kh() {
+      @Override
+      protected csz a(kf $$0, csz $$1) {
+         return cqo.a($$0, $$1) ? $$1 : super.a($$0, $$1);
       }
+   };
+   protected final cqo.a b;
+   protected final iw<cqp> c;
+   private final Supplier<Multimap<iw<btc>, btf>> k;
 
-      return this.i;
+   public static boolean a(kf $$0, csz $$1) {
+      in $$2 = $$0.c().a($$0.d().c(dfj.b));
+      List<bsa> $$3 = $$0.b().a(bsa.class, new etk($$2), brm.f.and(new brm.a($$1)));
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         bsa $$4 = $$3.get(0);
+         bro $$5 = bsc.h($$1);
+         csz $$6 = $$1.a(1);
+         $$4.a($$5, $$6);
+         if ($$4 instanceof bsc) {
+            ((bsc)$$4).a($$5, 2.0F);
+            ((bsc)$$4).fT();
+         }
+
+         return true;
+      }
    }
 
-   public String c() {
+   public cqo(iw<cqp> $$0, cqo.a $$1, csu.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.b = $$1;
+      dfj.a(this, a);
+      this.k = Suppliers.memoize(() -> {
+         int $$2x = $$0.a().a($$1);
+         float $$3 = $$0.a().f();
+         Builder<iw<btc>, btf> $$4 = ImmutableMultimap.builder();
+         UUID $$5 = j.get($$1);
+         $$4.put(bth.a, new btf($$5, "Armor modifier", (double)$$2x, btf.a.a));
+         $$4.put(bth.b, new btf($$5, "Armor toughness", (double)$$3, btf.a.a));
+         float $$6 = $$0.a().g();
+         if ($$6 > 0.0F) {
+            $$4.put(bth.n, new btf($$5, "Armor knockback resistance", (double)$$6, btf.a.a));
+         }
+
+         return $$4.build();
+      });
+   }
+
+   public cqo.a f() {
       return this.b;
    }
 
-   public boolean d() {
-      return this.d;
+   @Override
+   public int g() {
+      return this.c.a().b();
    }
 
-   public boolean e() {
+   public iw<cqp> h() {
       return this.c;
    }
 
-   public int f() {
-      return this.g;
+   @Override
+   public boolean a(csz $$0, csz $$1) {
+      return this.c.a().d().get().a($$1) || super.a($$0, $$1);
    }
 
-   public cqo.f g() {
-      return this.f;
+   @Override
+   public bpn<csz> a(dad $$0, clh $$1, bpl $$2) {
+      return this.a(this, $$0, $$1, $$2);
    }
 
-   public boolean h() {
-      return !this.j.isEmpty();
+   @Override
+   public Multimap<iw<btc>, btf> a(bro $$0) {
+      return $$0 == this.b.a() ? this.k.get() : super.a($$0);
    }
 
-   public boolean i() {
-      return this.h != cqo.h.a || this.h();
+   public int i() {
+      return this.c.a().a(this.b);
    }
 
-   public boolean j() {
-      return this.e;
+   public float j() {
+      return this.c.a().f();
    }
 
-   public cqo.h k() {
-      return this.h;
+   @Override
+   public bro k() {
+      return this.b.a();
    }
 
-   public void a(cqo.d $$0) {
-      cqo.c $$1 = new cqo.c(this, $$0.a);
-      ake<cqo> $$2 = lc.ao.d(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.j = $$1.a;
-      this.k = $$1.b;
-      this.n();
+   @Override
+   public iw<avb> ap_() {
+      return this.h().a().c();
    }
 
-   public Collection<csd> l() {
-      return this.j;
-   }
+   public static enum a implements ayt {
+      a(bro.f, 11, "helmet"),
+      b(bro.e, 16, "chestplate"),
+      c(bro.d, 15, "leggings"),
+      d(bro.c, 13, "boots"),
+      e(bro.g, 16, "body");
 
-   public Collection<csd> m() {
-      return this.k;
-   }
+      public static final Codec<cqo.a> f = ayt.b(cqo.a::values);
+      private final bro g;
+      private final String h;
+      private final int i;
 
-   public boolean a(csd $$0) {
-      return this.k.contains($$0);
-   }
-
-   public void a(Consumer<List<csd>> $$0) {
-      this.l = $$0;
-   }
-
-   public void n() {
-      if (this.l != null) {
-         this.l.accept(Lists.newArrayList(this.k));
-      }
-   }
-
-   public static class a {
-      private static final cqo.b a = ($$0, $$1) -> {
-      };
-      private final cqo.f b;
-      private final int c;
-      private ws d = ws.i();
-      private Supplier<csd> e = () -> csd.i;
-      private cqo.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private cqo.h j = cqo.h.a;
-      private String k = "items.png";
-
-      public a(cqo.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
+      private a(bro $$0, int $$1, String $$2) {
+         this.g = $$0;
+         this.h = $$2;
+         this.i = $$1;
       }
 
-      public cqo.a a(ws $$0) {
-         this.d = $$0;
-         return this;
+      public int a(int $$0) {
+         return this.i * $$0;
       }
 
-      public cqo.a a(Supplier<csd> $$0) {
-         this.e = $$0;
-         return this;
+      public bro a() {
+         return this.g;
       }
 
-      public cqo.a a(cqo.b $$0) {
-         this.f = $$0;
-         return this;
+      public String b() {
+         return this.h;
       }
 
-      public cqo.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public cqo.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public cqo.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected cqo.a a(cqo.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public cqo.a a(String $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public cqo d() {
-         if ((this.j == cqo.h.c || this.j == cqo.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
-         } else {
-            cqo $$0 = new cqo(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.e = this.i;
-            $$0.d = this.h;
-            $$0.c = this.g;
-            $$0.b = this.k;
-            return $$0;
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void accept(cqo.d var1, cqo.e var2);
-   }
-
-   static class c implements cqo.e {
-      public final Collection<csd> a = cse.a();
-      public final Set<csd> b = cse.a();
-      private final cqo c;
-      private final cmy d;
-
-      public c(cqo $$0, cmy $$1) {
-         this.c = $$0;
-         this.d = $$1;
+      public boolean d() {
+         return this == a || this == b || this == c || this == d;
       }
 
       @Override
-      public void a(csd $$0, cqo.g $$1) {
-         if ($$0.G() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
-         } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != cqo.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.E().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.f().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
-                  }
-               }
-            }
-         }
+      public String c() {
+         return this.h;
       }
-   }
-
-   public static record d(cmy a, boolean b, ix.a c) {
-
-      public boolean a(cmy $$0, boolean $$1, ix.a $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
-      }
-   }
-
-   public interface e {
-      void a(csd var1, cqo.g var2);
-
-      default void a(csd $$0) {
-         this.a($$0, cqo.g.a);
-      }
-
-      default void a(czt $$0, cqo.g $$1) {
-         this.a(new csd($$0), $$1);
-      }
-
-      default void a(czt $$0) {
-         this.a(new csd($$0), cqo.g.a);
-      }
-
-      default void a(Collection<csd> $$0, cqo.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<csd> $$0) {
-         this.a($$0, cqo.g.a);
-      }
-   }
-
-   public static enum f {
-      a,
-      b;
-   }
-
-   protected static enum g {
-      a,
-      b,
-      c;
-   }
-
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
    }
 }

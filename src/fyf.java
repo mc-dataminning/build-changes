@@ -1,69 +1,26 @@
-public class fyf extends fzs {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final boolean G;
-   private final fys.a H;
+public class fyf extends gac {
+   private final elz b;
+   protected boolean a;
 
-   fyf(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, fys.a.a);
-   }
-
-   fyf(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, fys.a $$8) {
+   fyf(fvw $$0, double $$1, double $$2, double $$3, elz $$4) {
       super($$0, $$1, $$2, $$3);
-      this.G = $$7;
-      this.H = $$8;
-      this.e($$8.b());
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$9 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$9;
-      this.w = 0.9F * $$9;
-      this.x = $$9;
-      this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.b = $$4;
+   }
+
+   protected elz g() {
+      return this.b;
    }
 
    @Override
-   public fyw b() {
-      return this.H.a() ? fyw.b : fyw.c;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public fzg b() {
+      return fzg.b;
    }
 
    @Override
    public int a(float $$0) {
-      if (this.G) {
-         return 240;
-      } else {
-         int $$1 = super.a($$0);
-         float $$2 = (float)this.s / (float)this.t;
-         $$2 *= $$2;
-         $$2 *= $$2;
-         int $$3 = $$1 & 0xFF;
-         int $$4 = $$1 >> 16 & 0xFF;
-         $$4 += (int)($$2 * 15.0F * 16.0F);
-         if ($$4 > 240) {
-            $$4 = 240;
-         }
-
-         return $$3 | $$4 << 16;
-      }
+      return this.a ? 240 : super.a($$0);
    }
 
    @Override
@@ -71,66 +28,260 @@ public class fyf extends fzs {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      this.h();
+      if (!this.o) {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.i();
+         if (!this.o) {
+            this.j *= 0.98F;
+            this.k *= 0.98F;
+            this.l *= 0.98F;
+            if (this.b != emb.a) {
+               in $$0 = in.a(this.g, this.h, this.i);
+               ema $$1 = this.c.b_($$0);
+               if ($$1.a() == this.b && this.h < (double)((float)$$0.v() + $$1.a((czj)this.c, $$0))) {
+                  this.k();
+               }
+            }
+         }
+      }
+   }
+
+   protected void h() {
+      if (this.t-- <= 0) {
          this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
       }
    }
 
-   @Override
-   public void a(exr $$0, fcf $$1, float $$2) {
-      this.e(this.H.a(this.s, this.t, $$2));
-      super.a($$0, $$1, $$2);
+   protected void i() {
    }
 
-   public static class a implements fyv<kz> {
-      private final fzn a;
+   public static gac a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf $$8 = new fyf.b($$1, $$2, $$3, $$4, emb.c, kx.m);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
 
-      public a(fzn $$0) {
-         this.a = $$0;
+   public static gac b(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf $$8 = new fyf.e($$1, $$2, $$3, $$4, emb.c, kx.aj);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static gac c(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      return new fyf.a($$1, $$2, $$3, $$4, emb.e, kx.j);
+   }
+
+   public static gac d(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf $$8 = new fyf.e($$1, $$2, $$3, $$4, emb.e, kx.k);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static gac e(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf $$8 = new fyf.c($$1, $$2, $$3, $$4, emb.e);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static gac f(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf.b $$8 = new fyf.b($$1, $$2, $$3, $$4, emb.a, kx.at);
+      $$8.u *= 0.01F;
+      $$8.t = 100;
+      $$8.a(0.622F, 0.508F, 0.082F);
+      return $$8;
+   }
+
+   public static gac g(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf $$8 = new fyf.g($$1, $$2, $$3, $$4, emb.a, kx.au);
+      $$8.u = 0.01F;
+      $$8.a(0.582F, 0.448F, 0.082F);
+      return $$8;
+   }
+
+   public static gac h(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf $$8 = new fyf.c($$1, $$2, $$3, $$4, emb.a);
+      $$8.t = (int)(128.0 / (Math.random() * 0.8 + 0.2));
+      $$8.a(0.522F, 0.408F, 0.082F);
+      return $$8;
+   }
+
+   public static gac i(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf $$8 = new fyf.b($$1, $$2, $$3, $$4, emb.c, kx.aL);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static gac j(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf $$8 = new fyf.d($$1, $$2, $$3, $$4, emb.c, kx.aj);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static gac k(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      return new fyf.a($$1, $$2, $$3, $$4, emb.e, kx.aJ);
+   }
+
+   public static gac l(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf $$8 = new fyf.d($$1, $$2, $$3, $$4, emb.e, kx.k);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static gac m(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf $$8 = new fyf.f($$1, $$2, $$3, $$4, emb.a);
+      $$8.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      $$8.u = 0.007F;
+      $$8.a(0.92F, 0.782F, 0.72F);
+      return $$8;
+   }
+
+   public static gac n(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      int $$8 = (int)(64.0F / axz.b($$1.E_(), 0.1F, 0.9F));
+      fyf $$9 = new fyf.f($$1, $$2, $$3, $$4, emb.a, $$8);
+      $$9.u = 0.005F;
+      $$9.a(0.32F, 0.5F, 0.22F);
+      return $$9;
+   }
+
+   public static gac o(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf.b $$8 = new fyf.b($$1, $$2, $$3, $$4, emb.a, kx.aC);
+      $$8.a = true;
+      $$8.u *= 0.01F;
+      $$8.t = 100;
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   public static gac p(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf $$8 = new fyf.e($$1, $$2, $$3, $$4, emb.a, kx.aD);
+      $$8.a = true;
+      $$8.u = 0.01F;
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   public static gac q(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fyf $$8 = new fyf.c($$1, $$2, $$3, $$4, emb.a);
+      $$8.a = true;
+      $$8.t = (int)(28.0 / (Math.random() * 0.8 + 0.2));
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   static class a extends fyf.b {
+      a(fvw $$0, double $$1, double $$2, double $$3, elz $$4, kv $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fyf $$8 = new fyf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      protected void h() {
+         this.v = 1.0F;
+         this.w = 16.0F / (float)(40 - this.t + 16);
+         this.x = 4.0F / (float)(40 - this.t + 8);
+         super.h();
       }
    }
 
-   public static class b implements fyv<kz> {
-      private final fzn a;
+   static class b extends fyf {
+      private final kv b;
 
-      public b(fzn $$0) {
-         this.a = $$0;
+      b(fvw $$0, double $$1, double $$2, double $$3, elz $$4, kv $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.b = $$5;
+         this.u *= 0.02F;
+         this.t = 40;
       }
 
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fyf $$8 = new fyf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      protected void h() {
+         if (this.t-- <= 0) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+
+      @Override
+      protected void i() {
+         this.j *= 0.02;
+         this.k *= 0.02;
+         this.l *= 0.02;
       }
    }
 
-   public static class c implements fyv<kz> {
-      private final fzn a;
+   static class c extends fyf {
+      c(fvw $$0, double $$1, double $$2, double $$3, elz $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      }
+   }
 
-      public c(fzn $$0) {
-         this.a = $$0;
+   static class d extends fyf.e {
+      d(fvw $$0, double $$1, double $$2, double $$3, elz $$4, kv $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fyf $$8 = new fyf($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new fys.a(0.0F, 0.6F, 0.25F, 1.0F));
-         $$8.d(1.5F);
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            avb $$0 = this.g() == emb.e ? avc.hs : avc.ht;
+            float $$1 = axz.b(this.r, 0.3F, 1.0F);
+            this.c.a(this.g, this.h, this.i, $$0, avd.e, $$1, 1.0F, false);
+         }
+      }
+   }
+
+   static class e extends fyf.f {
+      protected final kv b;
+
+      e(fvw $$0, double $$1, double $$2, double $$3, elz $$4, kv $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.b = $$5;
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   static class f extends fyf {
+      f(fvw $$0, double $$1, double $$2, double $$3, elz $$4) {
+         this($$0, $$1, $$2, $$3, $$4, (int)(64.0 / (Math.random() * 0.8 + 0.2)));
+      }
+
+      f(fvw $$0, double $$1, double $$2, double $$3, elz $$4, int $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.t = $$5;
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+         }
+      }
+   }
+
+   static class g extends fyf.e {
+      g(fvw $$0, double $$1, double $$2, double $$3, elz $$4, kv $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            float $$0 = axz.b(this.r, 0.3F, 1.0F);
+            this.c.a(this.g, this.h, this.i, avc.bU, avd.e, $$0, 1.0F, false);
+         }
       }
    }
 }

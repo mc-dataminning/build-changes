@@ -1,68 +1,35 @@
-public class bxg extends bxe {
-   private static final float l = 10.0F;
-   private static final float m = 60.0F;
-   private final int n;
-   private final int o;
-   private final float p;
-   private final float q;
-   private final boolean r;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.Optional;
 
-   public bxg(brg $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
-      super($$0);
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
+public final class bxg<F extends K1, Value> {
+   private final btb<?> a;
+   private final cbd<Value> b;
+   private final App<F, Value> c;
+
+   public bxg(btb<?> $$0, cbd<Value> $$1, App<F, Value> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void a() {
-      if (this.r && this.d.bc()) {
-         this.d.g(this.d.dq().b(0.0, 0.005, 0.0));
-      }
-
-      if (this.k == bxe.a.b && !this.d.K().l()) {
-         double $$0 = this.e - this.d.ds();
-         double $$1 = this.f - this.d.du();
-         double $$2 = this.g - this.d.dy();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.C(0.0F);
-         } else {
-            float $$4 = (float)(axw.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-            this.d.r(this.a(this.d.dD(), $$4, (float)this.o));
-            this.d.aZ = this.d.dD();
-            this.d.bb = this.d.dD();
-            float $$5 = (float)(this.h * this.d.g(bsl.r));
-            if (this.d.bc()) {
-               this.d.y($$5 * this.p);
-               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
-                  float $$7 = -((float)(axw.d($$1, $$6) * 180.0F / (float)Math.PI));
-                  $$7 = axw.a(axw.g($$7), (float)(-this.n), (float)this.n);
-                  this.d.s(this.a(this.d.dF(), $$7, 5.0F));
-               }
-
-               float $$8 = axw.b(this.d.dF() * (float) (Math.PI / 180.0));
-               float $$9 = axw.a(this.d.dF() * (float) (Math.PI / 180.0));
-               this.d.br = $$8 * $$5;
-               this.d.bq = -$$9 * $$5;
-            } else {
-               float $$10 = Math.abs(axw.g(this.d.dD() - $$4));
-               float $$11 = a($$10);
-               this.d.y($$5 * this.q * $$11);
-            }
-         }
-      } else {
-         this.d.y(0.0F);
-         this.d.E(0.0F);
-         this.d.D(0.0F);
-         this.d.C(0.0F);
-      }
+   public App<F, Value> a() {
+      return this.c;
    }
 
-   private static float a(float $$0) {
-      return 1.0F - axw.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
+   public void a(Value $$0) {
+      this.a.a(this.b, Optional.of($$0));
+   }
+
+   public void a(Optional<Value> $$0) {
+      this.a.a(this.b, $$0);
+   }
+
+   public void a(Value $$0, long $$1) {
+      this.a.a(this.b, $$0, $$1);
+   }
+
+   public void b() {
+      this.a.b(this.b);
    }
 }

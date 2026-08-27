@@ -1,4 +1,29 @@
-public class aij {
-   public static final wa<aik> a = ze.a(vr.d, $$0 -> $$0.a(aii.g, aim.a).a(aii.h, ain.a).a(aii.f, ail.a).a(aii.i, aio.b).a(abg.b, abi.a));
-   public static final wa<aic> b = ze.b(vr.d, $$0 -> $$0.a(aii.e, aih.a).a(aii.c, aif.a).a(aii.b, aie.a).a(aii.d, aig.a).a(aii.a, aid.a).a(abg.a, abf.a));
+public class aij implements zb<aie> {
+   public static final ys<vu, aij> a = zb.a(aij::a, aij::new);
+   private final wu b;
+
+   public aij(wu $$0) {
+      this.b = $$0;
+   }
+
+   private aij(vu $$0) {
+      this.b = wu.a.b($$0.d(262144), jk.b);
+   }
+
+   private void a(vu $$0) {
+      $$0.a(wu.a.a(this.b, jk.b));
+   }
+
+   @Override
+   public zd<aij> a() {
+      return aik.e;
+   }
+
+   public void a(aie $$0) {
+      $$0.a(this);
+   }
+
+   public wu b() {
+      return this.b;
+   }
 }

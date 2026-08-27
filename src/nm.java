@@ -1,22 +1,47 @@
-import com.google.gson.JsonPrimitive;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class nm {
-   public static final nn<nm.a> a = new nn<>("x", $$0 -> new JsonPrimitive($$0.e));
-   public static final nn<nm.a> b = new nn<>("y", $$0 -> new JsonPrimitive($$0.e));
-   public static final nn<akf> c = new nn<>("model", $$0 -> new JsonPrimitive($$0.toString()));
-   public static final nn<Boolean> d = new nn<>("uvlock", JsonPrimitive::new);
-   public static final nn<Integer> e = new nn<>("weight", JsonPrimitive::new);
+public class nm implements Supplier<JsonElement> {
+   private final Map<no<?>, no<?>.a> a = Maps.newLinkedHashMap();
 
-   public static enum a {
-      a(0),
-      b(90),
-      c(180),
-      d(270);
+   public <T> nm a(no<T> $$0, T $$1) {
+      no<?>.a $$2 = this.a.put($$0, $$0.a($$1));
+      if ($$2 != null) {
+         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
+      } else {
+         return this;
+      }
+   }
 
-      final int e;
+   public static nm a() {
+      return new nm();
+   }
 
-      private a(int $$0) {
-         this.e = $$0;
+   public static nm a(nm $$0, nm $$1) {
+      nm $$2 = new nm();
+      $$2.a.putAll($$0.a);
+      $$2.a.putAll($$1.a);
+      return $$2;
+   }
+
+   public JsonElement b() {
+      JsonObject $$0 = new JsonObject();
+      this.a.values().forEach($$1 -> $$1.a($$0));
+      return $$0;
+   }
+
+   public static JsonElement a(List<nm> $$0) {
+      if ($$0.size() == 1) {
+         return $$0.get(0).b();
+      } else {
+         JsonArray $$1 = new JsonArray();
+         $$0.forEach($$1x -> $$1.add($$1x.b()));
+         return $$1;
       }
    }
 }

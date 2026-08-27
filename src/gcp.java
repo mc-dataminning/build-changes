@@ -1,109 +1,89 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class gcp implements gow {
-   private final akf a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class gcp {
+   public float[] a;
+   public final int b;
 
-   public gcp(akf $$0, j $$1, boolean $$2, int $$3) {
+   public gcp(@Nullable float[] $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
-   public akf a() {
-      return this.a;
-   }
-
-   @Override
-   public j b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
       } else {
-         return !($$0 instanceof gcp $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
    }
 
-   public static class a implements JsonDeserializer<gcp> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<gcp> {
+      private static final int a = 0;
 
       public gcp a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         akf $$4 = this.b($$3);
-         gop $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new gcp($$4, $$5.b(), $$6, $$7);
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new gcp($$4, $$5);
       }
 
-      private boolean d(JsonObject $$0) {
-         return axm.a($$0, "uvlock", false);
-      }
-
-      protected gop a(JsonObject $$0) {
-         int $$1 = axm.a($$0, "x", 0);
-         int $$2 = axm.a($$0, "y", 0);
-         gop $$3 = gop.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+      protected int a(JsonObject $$0) {
+         int $$1 = axp.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
          } else {
-            return $$3;
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
          }
       }
 
-      protected akf b(JsonObject $$0) {
-         return new akf(axm.i($$0, "model"));
-      }
-
-      protected int c(JsonObject $$0) {
-         int $$1 = axm.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
          } else {
-            return $$1;
+            JsonArray $$1 = axp.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = axp.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
+            }
          }
       }
    }

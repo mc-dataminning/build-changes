@@ -1,139 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public class ccj {
-   private static final Logger a = LogUtils.getLogger();
-   private final Short2ObjectMap<cci> b = new Short2ObjectOpenHashMap();
-   private final Map<iv<cck>, Set<cci>> c = Maps.newHashMap();
-   private final Runnable d;
-   private boolean e;
+public abstract class ccj<E extends bsa> {
+   private static final ayg a = ayg.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final ccq d = ccq.b().a(16.0);
+   private static final ccq e = ccq.b().a(16.0).e();
+   private static final ccq f = ccq.a().a(16.0);
+   private static final ccq g = ccq.a().a(16.0).e();
+   private static final ccq h = ccq.a().a(16.0).d();
+   private static final ccq i = ccq.a().a(16.0).d().e();
+   private final int j;
+   private long k;
 
-   public static Codec<ccj> a(Runnable $$0) {
-      return RecordCodecBuilder.create(
-            $$1 -> $$1.group(
-                     RecordCodecBuilder.point($$0),
-                     Codec.BOOL.optionalFieldOf("Valid", false).forGetter($$0xx -> $$0xx.e),
-                     cci.a($$0).listOf().fieldOf("Records").forGetter($$0xx -> ImmutableList.copyOf($$0xx.b.values()))
-                  )
-                  .apply($$1, ccj::new)
-         )
-         .orElseGet(ac.a("Failed to read POI section: ", a::error), () -> new ccj($$0, false, ImmutableList.of()));
+   public ccj(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   public ccj(Runnable $$0) {
-      this($$0, true, ImmutableList.of());
+   public ccj() {
+      this(20);
    }
 
-   private ccj(Runnable $$0, boolean $$1, List<cci> $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      $$2.forEach(this::a);
-   }
-
-   public Stream<cci> a(Predicate<iv<cck>> $$0, cch.b $$1) {
-      return this.c.entrySet().stream().filter($$1x -> $$0.test((iv<cck>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
-   }
-
-   public void a(im $$0, iv<cck> $$1) {
-      if (this.a(new cci($$0, $$1, this.d))) {
-         a.debug("Added POI of type {} @ {}", $$1.g(), $$0);
-         this.d.run();
+   public final void b(aqh $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
       }
    }
 
-   private boolean a(cci $$0) {
-      im $$1 = $$0.f();
-      iv<cck> $$2 = $$0.g();
-      short $$3 = jo.b($$1);
-      cci $$4 = (cci)this.b.get($$3);
-      if ($$4 != null) {
-         if ($$2.equals($$4.g())) {
-            return false;
-         }
+   protected abstract void a(aqh var1, E var2);
 
-         ac.a("POI data mismatch: already registered at " + $$1);
-      }
+   public abstract Set<cbd<?>> a();
 
-      this.b.put($$3, $$0);
-      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
-      return true;
+   public static boolean b(bsa $$0, bsa $$1) {
+      return $$0.dQ().b(cbd.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
    }
 
-   public void a(im $$0) {
-      cci $$1 = (cci)this.b.remove(jo.b($$0));
-      if ($$1 == null) {
-         a.error("POI data mismatch: never registered at {}", $$0);
-      } else {
-         this.c.get($$1.g()).remove($$1);
-         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::g), LogUtils.defer($$1::f));
-         this.d.run();
-      }
+   public static boolean c(bsa $$0, bsa $$1) {
+      return $$0.dQ().b(cbd.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
    }
 
-   @Deprecated
-   @ayz
-   public int b(im $$0) {
-      return this.e($$0).map(cci::a).orElse(0);
-   }
-
-   public boolean c(im $$0) {
-      cci $$1 = (cci)this.b.get(jo.b($$0));
-      if ($$1 == null) {
-         throw (IllegalStateException)ac.b(new IllegalStateException("POI never registered at " + $$0));
-      } else {
-         boolean $$2 = $$1.c();
-         this.d.run();
-         return $$2;
-      }
-   }
-
-   public boolean a(im $$0, Predicate<iv<cck>> $$1) {
-      return this.d($$0).filter($$1).isPresent();
-   }
-
-   public Optional<iv<cck>> d(im $$0) {
-      return this.e($$0).map(cci::g);
-   }
-
-   private Optional<cci> e(im $$0) {
-      return Optional.ofNullable((cci)this.b.get(jo.b($$0)));
-   }
-
-   public void a(Consumer<BiConsumer<im, iv<cck>>> $$0) {
-      if (!this.e) {
-         Short2ObjectMap<cci> $$1 = new Short2ObjectOpenHashMap(this.b);
-         this.b();
-         $$0.accept(($$1x, $$2) -> {
-            short $$3 = jo.b($$1x);
-            cci $$4 = (cci)$$1.computeIfAbsent($$3, $$2x -> new cci($$1x, $$2, this.d));
-            this.a($$4);
-         });
-         this.e = true;
-         this.d.run();
-      }
-   }
-
-   private void b() {
-      this.b.clear();
-      this.c.clear();
-   }
-
-   boolean a() {
-      return this.e;
+   public static boolean d(bsa $$0, bsa $$1) {
+      return $$0.dQ().b(cbd.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

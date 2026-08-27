@@ -1,117 +1,151 @@
-public class cnd {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+import javax.annotation.Nullable;
 
-   public cnd() {
-      this.b = 5.0F;
+public abstract class cnd extends cnc implements cng {
+   private jf<csz> c = jf.a(36, csz.i);
+   @Nullable
+   private akg<eoq> d;
+   private long e;
+
+   protected cnd(brn<?> $$0, dad $$1) {
+      super($$0, $$1);
    }
 
-   public void a(int $$0, float $$1) {
-      this.a = Math.min($$0 + this.a, 20);
-      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
+   protected cnd(brn<?> $$0, double $$1, double $$2, double $$3, dad $$4) {
+      super($$0, $$4, $$1, $$2, $$3);
    }
 
-   public void a(cry $$0, csd $$1) {
-      if ($$0.y()) {
-         cne $$2 = $$0.z();
-         this.a($$2.a(), $$2.b());
+   @Override
+   public void a(bqf $$0) {
+      super.a($$0);
+      this.a($$0, this.dN(), this);
+   }
+
+   @Override
+   public csz a(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public csz a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public csz b(int $$0) {
+      return this.e_($$0);
+   }
+
+   @Override
+   public void a(int $$0, csz $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bsr a_(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(clh $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(brh.c $$0) {
+      if (!this.dN().B && $$0.a()) {
+         bpi.a(this.dN(), this, this);
       }
+
+      super.a($$0);
    }
 
-   public void a(ckl $$0) {
-      bon $$1 = $$0.dN().ak();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != bon.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
+   @Override
+   protected void b(ua $$0) {
+      super.b($$0);
+      this.a($$0, this.dP());
+   }
+
+   @Override
+   protected void a(ua $$0) {
+      super.a($$0);
+      this.b($$0, this.dP());
+   }
+
+   @Override
+   public bpm a(clh $$0, bpl $$1) {
+      return this.c_($$0);
+   }
+
+   @Override
+   protected void u() {
+      float $$0 = 0.98F;
+      if (this.d == null) {
+         int $$1 = 15 - cod.b(this);
+         $$0 += (float)$$1 * 0.001F;
       }
 
-      boolean $$2 = $$0.dN().aa().b(czq.k);
-      if ($$2 && this.b > 0.0F && $$0.gl() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.c($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.gl()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.c(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.ey() > 10.0F || $$1 == bon.d || $$0.ey() > 1.0F && $$1 == bon.c) {
-               $$0.a($$0.dO().i(), 1.0F);
-            }
+      if (this.bc()) {
+         $$0 *= 0.95F;
+      }
 
-            this.d = 0;
-         }
+      this.g(this.dq().d((double)$$0, 0.0, (double)$$0));
+   }
+
+   @Override
+   public void a() {
+      this.f();
+   }
+
+   public void a(akg<eoq> $$0, long $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Nullable
+   @Override
+   public cod createMenu(int $$0, clg $$1, clh $$2) {
+      if (this.d != null && $$2.N_()) {
+         return null;
       } else {
-         this.d = 0;
+         this.f($$1.l);
+         return this.a($$0, $$1);
       }
    }
 
-   public void a(ty $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
-      }
+   protected abstract cod a(int var1, clg var2);
+
+   @Nullable
+   @Override
+   public akg<eoq> B() {
+      return this.d;
    }
 
-   public void b(ty $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
+   @Override
+   public void a(@Nullable akg<eoq> $$0) {
+      this.d = $$0;
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
+   @Override
+   public long C() {
       return this.e;
    }
 
-   public boolean c() {
-      return this.a < 20;
+   @Override
+   public void a(long $$0) {
+      this.e = $$0;
    }
 
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
-   }
-
-   public float d() {
+   @Override
+   public jf<csz> D() {
       return this.c;
    }
 
-   public float e() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(float $$0) {
-      this.b = $$0;
-   }
-
-   public void c(float $$0) {
-      this.c = $$0;
+   @Override
+   public void E() {
+      this.c = jf.a(this.b(), csz.i);
    }
 }

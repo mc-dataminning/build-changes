@@ -1,43 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class epw extends epo {
-   public static final Codec<epw> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  axe.a(aqv.a(axe.b(0, 32)), "title").forGetter($$0x -> $$0x.c),
-                  axe.a(Codec.STRING, "author").forGetter($$0x -> $$0x.b),
-                  axe.a(axe.a(0, 3), "generation").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, epw::new)
-   );
-   private final Optional<String> b;
-   private final Optional<aqv<String>> c;
-   private final Optional<Integer> d;
+public abstract class epw implements epx {
+   protected final List<erq> g;
+   private final Predicate<eol> a;
 
-   public epw(List<erh> $$0, Optional<aqv<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
-      super($$0);
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+   protected epw(List<erq> $$0) {
+      this.g = $$0;
+      this.a = ac.a($$0);
    }
+
+   protected static <T extends epw> P1<Mu<T>, List<erq>> a(Instance<T> $$0) {
+      return $$0.group(axh.a(ers.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.g));
+   }
+
+   public final csz b(csz $$0, eol $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract csz a(csz var1, eol var2);
 
    @Override
-   protected csd a(csd $$0, eoa $$1) {
-      $$0.a(jz.A, cvj.a, this::a);
-      return $$0;
+   public void a(eor $$0) {
+      epx.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
+      }
    }
 
-   private cvj a(cvj $$0) {
-      return new cvj(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   protected static epw.a<?> a(Function<List<erq>, epx> $$0) {
+      return new epw.b($$0);
    }
 
-   @Override
-   public epq b() {
-      return epr.H;
+   public abstract static class a<T extends epw.a<T>> implements epx.a, erj<T> {
+      private final Builder<erq> a = ImmutableList.builder();
+
+      public T a(erq.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
+      }
+
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<erq> g() {
+         return this.a.build();
+      }
+   }
+
+   static final class b extends epw.a<epw.b> {
+      private final Function<List<erq>, epx> a;
+
+      public b(Function<List<erq>, epx> $$0) {
+         this.a = $$0;
+      }
+
+      protected epw.b a() {
+         return this;
+      }
+
+      @Override
+      public epx b() {
+         return this.a.apply(this.g());
+      }
    }
 }

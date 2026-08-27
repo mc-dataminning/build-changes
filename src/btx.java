@@ -1,34 +1,18 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class btx extends bsw<brg> {
-   public static final int c = 100;
-   private final bob d;
-   private final auy e;
-
-   public btx(bob $$0, auy $$1) {
-      super(ImmutableMap.of(cah.n, cai.c, cah.T, cai.a), 100);
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   protected boolean a(aqe $$0, brg $$1, long $$2) {
-      return !$$1.aC();
-   }
-
-   protected void b(aqe $$0, brg $$1, long $$2) {
-      $$1.q(true);
-      $$1.b(brp.g);
-   }
-
-   protected void c(aqe $$0, brg $$1, long $$2) {
-      if ($$1.aC()) {
-         $$1.g($$1.dq().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, ava.g, 2.0F, 1.0F);
-      }
-
-      $$1.q(false);
-      $$1.b(brp.a);
-      $$1.dQ().b(cah.T);
-      $$1.dQ().a(cah.S, this.d.a($$0.z));
+public class btx {
+   public static <E extends bsa, T> btt<E> a(Predicate<E> $$0, cbd<? extends T> $$1, cbd<T> $$2, box $$3) {
+      return bxf.a(
+         (Function<bxf.b<E>, ? extends App<bxf.c<E>, bxi<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+                     return true;
+                  }
+               }))
+      );
    }
 }

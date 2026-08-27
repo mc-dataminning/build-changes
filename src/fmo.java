@@ -1,30 +1,99 @@
-import org.joml.Vector3f;
+public class fmo extends fmb<cov> implements fox {
+   private static final akh D = new akh("textures/gui/container/crafting_table.png");
+   private final foq E = new foq();
+   private boolean F;
 
-public class fmo extends flt {
-   public static final float b = 4.5F;
-   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int d = 16;
-   private static final int r = 16;
-   private final akf s = new akf("textures/gui/hanging_signs/" + this.a.b() + ".png");
-
-   public fmo(don $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, ws.c("hanging_sign.edit"));
+   public fmo(cov $$0, clg $$1, wu $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void b(feh $$0, dpy $$1) {
-      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
+   protected void aM_() {
+      super.aM_();
+      this.F = this.n < 379;
+      this.E.a(this.n, this.o, this.m, this.F, this.w);
+      this.z = this.E.a(this.n, this.c);
+      this.c(new ffq(this.z + 5, this.o / 2 - 49, 20, 18, foq.a, $$0 -> {
+         this.E.e();
+         this.z = this.E.a(this.n, this.c);
+         $$0.c(this.z + 5, this.o / 2 - 49);
+      }));
+      this.d(this.E);
+      this.r = 29;
    }
 
    @Override
-   protected void a(feh $$0, dpy $$1) {
-      $$0.c().a(0.0F, -13.0F, 0.0F);
-      $$0.c().b(4.5F, 4.5F, 1.0F);
-      $$0.a(this.s, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   public void C() {
+      super.C();
+      this.E.h();
    }
 
    @Override
-   protected Vector3f m() {
-      return c;
+   public void a(fer $$0, int $$1, int $$2, float $$3) {
+      if (this.E.f() && this.F) {
+         this.b($$0, $$1, $$2, $$3);
+         this.E.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         this.E.a($$0, $$1, $$2, $$3);
+         this.E.a($$0, this.z, this.A, true, $$3);
+      }
+
+      this.a($$0, $$1, $$2);
+      this.E.a($$0, this.z, this.A, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fer $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.z;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.E.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.E.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
+      return (!this.F || !this.E.f()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.E.a($$0, $$1, $$2)) {
+         this.a(this.E);
+         return true;
+      } else {
+         return this.F && this.E.f() ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.d);
+      return this.E.a($$0, $$1, this.z, this.A, this.c, this.d, $$4) && $$5;
+   }
+
+   @Override
+   protected void a(cpz $$0, int $$1, int $$2, com $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.E.a($$0);
+   }
+
+   @Override
+   public void E() {
+      this.E.i();
+   }
+
+   @Override
+   public foq F() {
+      return this.E;
    }
 }

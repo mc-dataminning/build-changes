@@ -1,20 +1,8 @@
-public interface etj {
-   etj a = ($$0, $$1) -> false;
-   etj b = ($$0, $$1) -> !$$0 && !$$1;
-   etj c = ($$0, $$1) -> $$1 && !$$0;
-   etj d = ($$0, $$1) -> !$$0;
-   etj e = ($$0, $$1) -> $$0 && !$$1;
-   etj f = ($$0, $$1) -> !$$1;
-   etj g = ($$0, $$1) -> $$0 != $$1;
-   etj h = ($$0, $$1) -> !$$0 || !$$1;
-   etj i = ($$0, $$1) -> $$0 && $$1;
-   etj j = ($$0, $$1) -> $$0 == $$1;
-   etj k = ($$0, $$1) -> $$1;
-   etj l = ($$0, $$1) -> !$$0 || $$1;
-   etj m = ($$0, $$1) -> $$0;
-   etj n = ($$0, $$1) -> $$0 || !$$1;
-   etj o = ($$0, $$1) -> $$0 || $$1;
-   etj p = ($$0, $$1) -> true;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean apply(boolean var1, boolean var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface etj {
 }

@@ -1,22 +1,15 @@
-public class gnx {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+public class gnx extends gob {
+   private static final akh a = new akh("back");
 
-   public gnx(int $$0) {
-      this($$0, -1);
+   public gnx(gmz $$0) {
+      super($$0, new akh("textures/atlas/paintings.png"), new akh("paintings"));
    }
 
-   public gnx(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gmy a(chn $$0) {
+      return this.a(ld.l.b($$0));
    }
 
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+   public gmy a() {
+      return this.a(a);
    }
 }

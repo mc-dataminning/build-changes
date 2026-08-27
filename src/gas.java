@@ -1,113 +1,67 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
 public class gas {
-   private static final int a = 6;
-   private final akf[] b = new akf[6];
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = clg.g();
+   public static final Codec<gas> a = axh.<List>b(Codec.PASSTHROUGH.listOf(), (Function<List, DataResult<List>>)($$0 -> ac.a($$0, c)))
+      .xmap(gas::new, $$0 -> $$0.f);
+   private static final DynamicOps<ux> d = uo.a;
+   private static final Dynamic<?> e = new Dynamic(d, (ux)ac.a(csz.c.encodeStart(d, csz.i), IllegalStateException::new));
+   private List<Dynamic<?>> f;
 
-   public gas(akf $$0) {
-      for (int $$1 = 0; $$1 < 6; $$1++) {
-         this.b[$$1] = $$0.c($$0.a() + "_" + $$1 + ".png");
-      }
+   private gas(List<Dynamic<?>> $$0) {
+      this.f = $$0;
    }
 
-   public void a(fcu $$0, float $$1, float $$2, float $$3) {
-      exp $$4 = exp.b();
-      exi $$5 = $$4.d();
-      Matrix4f $$6 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aO().k() / (float)$$0.aO().l(), 0.05F, 10.0F);
-      RenderSystem.backupProjectionMatrix();
-      RenderSystem.setProjectionMatrix($$6, exv.a);
-      Matrix4fStack $$7 = RenderSystem.getModelViewStack();
-      $$7.pushMatrix();
-      $$7.rotationX((float) Math.PI);
-      RenderSystem.setShader(gax::t);
-      RenderSystem.enableBlend();
-      RenderSystem.disableCull();
-      RenderSystem.depthMask(false);
-      int $$8 = 2;
+   public gas() {
+      this(Collections.nCopies(c, e));
+   }
 
-      for (int $$9 = 0; $$9 < 4; $$9++) {
-         $$7.pushMatrix();
-         float $$10 = ((float)($$9 % 2) / 2.0F - 0.5F) / 256.0F;
-         float $$11 = ((float)($$9 / 2) / 2.0F - 0.5F) / 256.0F;
-         float $$12 = 0.0F;
-         $$7.translate($$10, $$11, 0.0F);
-         $$7.rotateX($$1 * (float) (Math.PI / 180.0));
-         $$7.rotateY($$2 * (float) (Math.PI / 180.0));
-         RenderSystem.applyModelViewMatrix();
+   public List<csz> a(iy.a $$0) {
+      return this.f
+         .stream()
+         .map($$1 -> csz.c.parse(akf.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(csz.i))
+         .toList();
+   }
 
-         for (int $$13 = 0; $$13 < 6; $$13++) {
-            RenderSystem.setShaderTexture(0, this.b[$$13]);
-            $$5.a(exs.b.h, exl.s);
-            int $$14 = Math.round(255.0F * $$3) / ($$9 + 1);
-            if ($$13 == 0) {
-               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
+   public void a(clg $$0, jk $$1) {
+      akf<ux> $$2 = $$1.a(d);
+      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
 
-            if ($$13 == 1) {
-               $$5.a(1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
+      for (int $$4 = 0; $$4 < c; $$4++) {
+         csz $$5 = $$0.a($$4);
+         Optional<Dynamic<?>> $$6 = csz.c
+            .encodeStart($$2, $$5)
+            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
+            .map($$0x -> new Dynamic(d, $$0x));
+         $$3.add($$6.orElse(e));
+      }
 
-            if ($$13 == 2) {
-               $$5.a(1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
+      this.f = $$3.build();
+   }
 
-            if ($$13 == 3) {
-               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 4) {
-               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 5) {
-               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            $$4.c();
+   public boolean a() {
+      for (Dynamic<?> $$0 : this.f) {
+         if (!a($$0)) {
+            return false;
          }
-
-         $$7.popMatrix();
-         RenderSystem.colorMask(true, true, true, false);
       }
 
-      RenderSystem.colorMask(true, true, true, true);
-      RenderSystem.restoreProjectionMatrix();
-      $$7.popMatrix();
-      RenderSystem.applyModelViewMatrix();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.enableDepthTest();
+      return true;
    }
 
-   public CompletableFuture<Void> a(gmp $$0, Executor $$1) {
-      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         $$2[$$3] = $$0.a(this.b[$$3], $$1);
-      }
-
-      return CompletableFuture.allOf($$2);
+   private static boolean a(Dynamic<?> $$0) {
+      return e.equals($$0);
    }
 }

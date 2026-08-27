@@ -1,7 +1,20 @@
-import java.util.List;
+public interface ajn<T> {
+   ys<? super wf, T> codec();
 
-public interface ajn {
-   void a(ajk<?> var1);
+   default ajm<T> a(int $$0) {
+      return new ajm<>($$0, this);
+   }
 
-   void a(List<ajo.c<?>> var1);
+   T copy(T var1);
+
+   static <T> ajn<T> a(ys<? super wf, T> $$0) {
+      return () -> $$0;
+   }
+
+   public interface a<T> extends ajn<T> {
+      @Override
+      default T copy(T $$0) {
+         return $$0;
+      }
+   }
 }

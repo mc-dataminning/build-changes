@@ -1,84 +1,40 @@
-import java.util.function.LongFunction;
+public class dwp implements dvo {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final dwb i = new dwb(this);
 
-public class dwp extends dvr {
-   private final ayd d;
-   private int e;
-
-   public dwp(ayd $$0) {
-      super(0L);
-      this.d = $$0;
-   }
-
-   public int l() {
-      return this.e;
+   public dwp(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   public ayd d() {
-      return this.d.d();
+   public ayg d() {
+      return new dwp(this.g());
    }
 
    @Override
-   public dwd e() {
-      return this.d.e();
+   public dwm e() {
+      return new dwa.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
    }
 
    @Override
    public int c(int $$0) {
-      this.e++;
-      return this.d instanceof dvr $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
    }
 
    @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
-
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static ayd a(int $$0, int $$1, long $$2, long $$3) {
-      return ayd.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(dvr::new),
-      b(dwr::new);
-
-      private final LongFunction<ayd> c;
-
-      private a(LongFunction<ayd> $$0) {
-         this.c = $$0;
-      }
-
-      public ayd a(long $$0) {
-         return this.c.apply($$0);
-      }
+   public double k() {
+      return this.i.b();
    }
 }

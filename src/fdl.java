@@ -1,34 +1,30 @@
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.function.IntFunction;
 
-public record fdl(float a, boolean b, Map<String, List<fdk>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<fdk>> b = Maps.newHashMap();
-      private boolean c;
+public enum fdl implements ayb {
+   a(0, "options.prioritizeChunkUpdates.none"),
+   b(1, "options.prioritizeChunkUpdates.byPlayer"),
+   c(2, "options.prioritizeChunkUpdates.nearby");
 
-      public static fdl.a a(float $$0) {
-         return new fdl.a($$0);
-      }
+   private static final IntFunction<fdl> d = awq.a(fdl::a, values(), awq.a.b);
+   private final int e;
+   private final String f;
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
+   private fdl(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
 
-      public fdl.a a() {
-         this.c = true;
-         return this;
-      }
+   @Override
+   public int a() {
+      return this.e;
+   }
 
-      public fdl.a a(String $$0, fdk $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
-         return this;
-      }
+   @Override
+   public String b() {
+      return this.f;
+   }
 
-      public fdl b() {
-         return new fdl(this.a, this.c, this.b);
-      }
+   public static fdl a(int $$0) {
+      return d.apply($$0);
    }
 }

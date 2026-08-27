@@ -1,70 +1,24 @@
-public abstract class rg {
-   public static void a(qj<dat> $$0) {
-      iw<efk> $$1 = $$0.a(ld.aH);
-      iw<dxt<?>> $$2 = $$0.a(ld.aA);
-      $$0.a(dba.a, rj.j($$1, $$2));
-      $$0.a(dba.b, rj.a($$1, $$2, false, false, false));
-      $$0.a(dba.c, rj.a($$1, $$2, true, false, false));
-      $$0.a(dba.d, rj.a($$1, $$2, false, true, false));
-      $$0.a(dba.e, rj.a($$1, $$2, false, true, true));
-      $$0.a(dba.f, rj.d($$1, $$2));
-      $$0.a(dba.g, rj.h($$1, $$2));
-      $$0.a(dba.h, rj.i($$1, $$2));
-      $$0.a(dba.i, rj.b($$1, $$2, false, false, false));
-      $$0.a(dba.j, rj.b($$1, $$2, false, false, true));
-      $$0.a(dba.k, rj.b($$1, $$2, true, false, false));
-      $$0.a(dba.l, rj.g($$1, $$2));
-      $$0.a(dba.m, rj.b($$1, $$2, true, true, false));
-      $$0.a(dba.n, rj.a($$1, $$2, false));
-      $$0.a(dba.o, rj.a($$1, $$2, true));
-      $$0.a(dba.p, rj.h($$1, $$2, false));
-      $$0.a(dba.q, rj.h($$1, $$2, true));
-      $$0.a(dba.r, rj.a($$1, $$2, false, false));
-      $$0.a(dba.s, rj.a($$1, $$2, false, true));
-      $$0.a(dba.t, rj.b($$1, $$2, false));
-      $$0.a(dba.u, rj.b($$1, $$2, false));
-      $$0.a(dba.v, rj.b($$1, $$2, true));
-      $$0.a(dba.w, rj.a($$1, $$2, true, false));
-      $$0.a(dba.x, rj.b($$1, $$2));
-      $$0.a(dba.y, rj.a($$1, $$2));
-      $$0.a(dba.z, rj.c($$1, $$2));
-      $$0.a(dba.A, rj.c($$1, $$2, false));
-      $$0.a(dba.B, rj.c($$1, $$2, false));
-      $$0.a(dba.C, rj.c($$1, $$2, true));
-      $$0.a(dba.D, rj.j($$1, $$2, false));
-      $$0.a(dba.E, rj.j($$1, $$2, true));
-      $$0.a(dba.F, rj.o($$1, $$2));
-      $$0.a(dba.G, rj.n($$1, $$2));
-      $$0.a(dba.H, rj.k($$1, $$2));
-      $$0.a(dba.I, rj.l($$1, $$2));
-      $$0.a(dba.J, rj.m($$1, $$2));
-      $$0.a(dba.K, rj.i($$1, $$2, false));
-      $$0.a(dba.L, rj.i($$1, $$2, true));
-      $$0.a(dba.M, rj.b($$1, $$2, false, false));
-      $$0.a(dba.N, rj.b($$1, $$2, true, false));
-      $$0.a(dba.O, rj.b($$1, $$2, false, true));
-      $$0.a(dba.P, rj.f($$1, $$2));
-      $$0.a(dba.Q, rj.f($$1, $$2, false));
-      $$0.a(dba.R, rj.f($$1, $$2, true));
-      $$0.a(dba.S, rj.e($$1, $$2, false));
-      $$0.a(dba.T, rj.e($$1, $$2, true));
-      $$0.a(dba.U, rj.d($$1, $$2, false));
-      $$0.a(dba.V, rj.d($$1, $$2, true));
-      $$0.a(dba.W, rj.g($$1, $$2, false));
-      $$0.a(dba.X, rj.g($$1, $$2, true));
-      $$0.a(dba.Y, rj.e($$1, $$2));
-      $$0.a(dba.Z, rj.q($$1, $$2));
-      $$0.a(dba.aa, rj.p($$1, $$2));
-      $$0.a(dba.ab, rj.r($$1, $$2));
-      $$0.a(dba.ac, ri.a($$1, $$2));
-      $$0.a(dba.ad, ri.e($$1, $$2));
-      $$0.a(dba.ae, ri.d($$1, $$2));
-      $$0.a(dba.af, ri.b($$1, $$2));
-      $$0.a(dba.ag, ri.c($$1, $$2));
-      $$0.a(dba.ah, rh.b($$1, $$2));
-      $$0.a(dba.ai, rh.d($$1, $$2));
-      $$0.a(dba.aj, rh.c($$1, $$2));
-      $$0.a(dba.ak, rh.e($$1, $$2));
-      $$0.a(dba.al, rh.a($$1, $$2));
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class rg {
+   public static void a(ql<egp> $$0) {
+      ix<dbc> $$1 = $$0.a(le.az);
+      ix<ehy> $$2 = $$0.a(le.aM);
+      $$0.a(
+         egj.H,
+         new eip(
+            qx.a($$1.b(avq.I), Arrays.stream(bsd.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new egw(egw.a.a, boa.c()))), dvv.b.d, eha.b),
+            $$2.b(rc.a),
+            Optional.empty(),
+            20,
+            eez.a(dwt.a(-40), dwt.a(-20)),
+            false,
+            Optional.empty(),
+            116,
+            rc.d
+         )
+      );
    }
 }

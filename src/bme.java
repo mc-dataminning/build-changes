@@ -1,7 +1,20 @@
-import jdk.jfr.consumer.RecordedEvent;
+import net.minecraft.server.MinecraftServer;
 
-public record bme(String a, String b, String c) {
-   public static bme a(RecordedEvent $$0) {
-      return new bme($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
+public enum bme {
+   a("client"),
+   b("server");
+
+   private final String c;
+
+   private bme(String $$0) {
+      this.c = $$0;
+   }
+
+   public static bme a(MinecraftServer $$0) {
+      return $$0.n() ? b : a;
+   }
+
+   public String a() {
+      return this.c;
    }
 }

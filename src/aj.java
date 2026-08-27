@@ -7,33 +7,33 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public record aj(int c, List<akf> d, List<akf> e, Optional<dx> f) {
+public record aj(int c, List<akg<eoq>> d, List<akh> e, Optional<dy> f) {
    public static final Codec<aj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axe.a(Codec.INT, "experience", Integer.valueOf(0)).forGetter(aj::a),
-               axe.a(akf.a.listOf(), "loot", List.of()).forGetter(aj::b),
-               axe.a(akf.a.listOf(), "recipes", List.of()).forGetter(aj::c),
-               axe.a(dx.a, "function").forGetter(aj::d)
+               axh.a(Codec.INT, "experience", Integer.valueOf(0)).forGetter(aj::a),
+               axh.a(akg.a(le.aU).listOf(), "loot", List.of()).forGetter(aj::b),
+               axh.a(akh.a.listOf(), "recipes", List.of()).forGetter(aj::c),
+               axh.a(dy.a, "function").forGetter(aj::d)
             )
             .apply($$0, aj::new)
    );
    public static final aj b = new aj(0, List.of(), List.of(), Optional.empty());
 
-   public void a(aqf $$0) {
+   public void a(aqi $$0) {
       $$0.d(this.c);
-      eog $$1 = new eog.a($$0.z()).a(eqt.a, $$0).a(eqt.f, $$0.dl()).a(eqs.l);
+      eoo $$1 = new eoo.a($$0.z()).a(erc.a, $$0).a(erc.f, $$0.dl()).a(erb.l);
       boolean $$2 = false;
 
-      for (akf $$3 : this.d) {
-         ObjectListIterator var6 = $$0.e.aM().getLootTable($$3).a($$1).iterator();
+      for (akg<eoq> $$3 : this.d) {
+         ObjectListIterator var6 = $$0.e.be().b($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            csd $$4 = (csd)var6.next();
+            csz $$4 = (csz)var6.next();
             if ($$0.i($$4)) {
-               $$0.dN().a(null, $$0.ds(), $$0.du(), $$0.dy(), auz.ns, ava.h, 0.2F, (($$0.ej().i() - $$0.ej().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dN().a(null, $$0.ds(), $$0.du(), $$0.dy(), avc.ns, avd.h, 0.2F, (($$0.ej().i() - $$0.ej().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               cgv $$5 = $$0.a($$4, false);
+               chr $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.w();
                   $$5.b($$0.cx());
@@ -58,23 +58,23 @@ public record aj(int c, List<akf> d, List<akf> e, Optional<dx> f) {
       return this.c;
    }
 
-   public List<akf> b() {
+   public List<akg<eoq>> b() {
       return this.d;
    }
 
-   public List<akf> c() {
+   public List<akh> c() {
       return this.e;
    }
 
-   public Optional<dx> d() {
+   public Optional<dy> d() {
       return this.f;
    }
 
    public static class a {
       private int a;
-      private final Builder<akf> b = ImmutableList.builder();
-      private final Builder<akf> c = ImmutableList.builder();
-      private Optional<akf> d = Optional.empty();
+      private final Builder<akg<eoq>> b = ImmutableList.builder();
+      private final Builder<akh> c = ImmutableList.builder();
+      private Optional<akh> d = Optional.empty();
 
       public static aj.a a(int $$0) {
          return new aj.a().b($$0);
@@ -85,35 +85,35 @@ public record aj(int c, List<akf> d, List<akf> e, Optional<dx> f) {
          return this;
       }
 
-      public static aj.a a(akf $$0) {
+      public static aj.a a(akg<eoq> $$0) {
          return new aj.a().b($$0);
       }
 
-      public aj.a b(akf $$0) {
+      public aj.a b(akg<eoq> $$0) {
          this.b.add($$0);
          return this;
       }
 
-      public static aj.a c(akf $$0) {
-         return new aj.a().d($$0);
+      public static aj.a a(akh $$0) {
+         return new aj.a().b($$0);
       }
 
-      public aj.a d(akf $$0) {
+      public aj.a b(akh $$0) {
          this.c.add($$0);
          return this;
       }
 
-      public static aj.a e(akf $$0) {
-         return new aj.a().f($$0);
+      public static aj.a c(akh $$0) {
+         return new aj.a().d($$0);
       }
 
-      public aj.a f(akf $$0) {
+      public aj.a d(akh $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
       public aj a() {
-         return new aj(this.a, this.b.build(), this.c.build(), this.d.map(dx::new));
+         return new aj(this.a, this.b.build(), this.c.build(), this.d.map(dy::new));
       }
    }
 }

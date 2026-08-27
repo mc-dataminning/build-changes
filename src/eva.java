@@ -1,29 +1,59 @@
-public enum eva {
-   a(-3),
-   b(-2),
-   c(-1),
-   d(0),
-   e(1),
-   f(2),
-   g(3);
+public interface eva extends bpf {
+   csz f();
 
-   private final int h;
-
-   private eva(int $$0) {
-      this.h = $$0;
+   default csz c(int $$0) {
+      return this.f().a($$0);
    }
 
-   public static eva a(int $$0) {
-      for (eva $$1 : values()) {
-         if ($$1.h == $$0) {
-            return $$1;
-         }
+   void b(csz var1);
+
+   default csz h() {
+      return this.c(this.ah_());
+   }
+
+   @Override
+   default int b() {
+      return 1;
+   }
+
+   @Override
+   default boolean c() {
+      return this.f().d();
+   }
+
+   @Override
+   default void a() {
+      this.h();
+   }
+
+   @Override
+   default csz b(int $$0) {
+      return this.a($$0, this.ah_());
+   }
+
+   @Override
+   default csz a(int $$0) {
+      return $$0 == 0 ? this.f() : csz.i;
+   }
+
+   @Override
+   default csz a(int $$0, int $$1) {
+      return $$0 != 0 ? csz.i : this.c($$1);
+   }
+
+   @Override
+   default void a(int $$0, csz $$1) {
+      if ($$0 == 0) {
+         this.b($$1);
       }
-
-      return $$0 < a.h ? a : g;
    }
 
-   public int a() {
-      return this.h;
+   public interface a extends eva {
+      dnm u();
+
+      @Override
+      default boolean a(clh $$0) {
+         return bpf.a(this.u(), $$0);
+      }
    }
 }

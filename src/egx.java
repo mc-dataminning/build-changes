@@ -1,92 +1,128 @@
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface egx {
-   egx a = a(eij.a::new, "MSCorridor");
-   egx b = a(eij.b::new, "MSCrossing");
-   egx c = a(eij.d::new, "MSRoom");
-   egx d = a(eij.e::new, "MSStairs");
-   egx e = a(eil.a::new, "NeBCr");
-   egx f = a(eil.b::new, "NeBEF");
-   egx g = a(eil.c::new, "NeBS");
-   egx h = a(eil.d::new, "NeCCS");
-   egx i = a(eil.e::new, "NeCTB");
-   egx j = a(eil.f::new, "NeCE");
-   egx k = a(eil.g::new, "NeSCSC");
-   egx l = a(eil.h::new, "NeSCLT");
-   egx m = a(eil.i::new, "NeSC");
-   egx n = a(eil.j::new, "NeSCRT");
-   egx o = a(eil.k::new, "NeCSR");
-   egx p = a(eil.l::new, "NeMT");
-   egx q = a(eil.o::new, "NeRC");
-   egx r = a(eil.p::new, "NeSR");
-   egx s = a(eil.q::new, "NeStart");
-   egx t = a(eix.a::new, "SHCC");
-   egx u = a(eix.b::new, "SHFC");
-   egx v = a(eix.c::new, "SH5C");
-   egx w = a(eix.d::new, "SHLT");
-   egx x = a(eix.e::new, "SHLi");
-   egx y = a(eix.g::new, "SHPR");
-   egx z = a(eix.h::new, "SHPH");
-   egx A = a(eix.i::new, "SHRT");
-   egx B = a(eix.j::new, "SHRC");
-   egx C = a(eix.l::new, "SHSD");
-   egx D = a(eix.m::new, "SHStart");
-   egx E = a(eix.n::new, "SHS");
-   egx F = a(eix.o::new, "SHSSD");
-   egx G = a(eih::new, "TeJP");
-   egx H = a(eir.a::a, "ORP");
-   egx I = a(eie.a::new, "Iglu");
-   egx J = a(eit::new, "RUPO");
-   egx K = a(eiz::new, "TeSH");
-   egx L = a(eia::new, "TeDP");
-   egx M = a(eip.h::new, "OMB");
-   egx N = a(eip.j::new, "OMCR");
-   egx O = a(eip.k::new, "OMDXR");
-   egx P = a(eip.l::new, "OMDXYR");
-   egx Q = a(eip.m::new, "OMDYR");
-   egx R = a(eip.n::new, "OMDYZR");
-   egx S = a(eip.o::new, "OMDZR");
-   egx T = a(eip.p::new, "OMEntry");
-   egx U = a(eip.q::new, "OMPenthouse");
-   egx V = a(eip.s::new, "OMSimple");
-   egx W = a(eip.t::new, "OMSimpleT");
-   egx X = a(eip.u::new, "OMWR");
-   egx Y = a(eic.a::new, "ECP");
-   egx Z = a(ejb.i::new, "WMP");
-   egx aa = a(ehy.a::new, "BTP");
-   egx ab = a(eiv.a::new, "Shipwreck");
-   egx ac = a(ein.a::new, "NeFos");
-   egx ad = a(egc::new, "jigsaw");
+public final class egx {
+   public static final String a = "INVALID";
+   public static final egx b = new egx(null, new czk(0, 0), 0, new ehe(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final egp d;
+   private final ehe e;
+   private final czk f;
+   private int g;
+   @Nullable
+   private volatile egh h;
 
-   egk load(egw var1, ty var2);
-
-   private static egx a(egx $$0, String $$1) {
-      return ji.a(lc.S, $$1.toLowerCase(Locale.ROOT), $$0);
+   public egx(egp $$0, czk $$1, int $$2, ehe $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
    }
 
-   private static egx a(egx.a $$0, String $$1) {
-      return a((egx)$$0, $$1);
-   }
+   @Nullable
+   public static egx a(ehf $$0, ua $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         jj<egp> $$4 = $$0.b().d(le.aJ);
+         egp $$5 = $$4.a(new akh($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
+         } else {
+            czk $$6 = new czk($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            ug $$8 = $$1.c("Children", 10);
 
-   private static egx a(egx.b $$0, String $$1) {
-      return a((egx)$$0, $$1);
-   }
+            try {
+               ehe $$9 = ehe.a($$8, $$0);
+               if ($$5 instanceof eiz) {
+                  $$9 = eiz.a($$6, $$2, $$9);
+               }
 
-   public interface a extends egx {
-      egk load(ty var1);
-
-      @Override
-      default egk load(egw $$0, ty $$1) {
-         return this.load($$1);
+               return new egx($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
+            }
+         }
       }
    }
 
-   public interface b extends egx {
-      egk load(ekh var1, ty var2);
-
-      @Override
-      default egk load(egw $$0, ty $$1) {
-         return this.load($$0.c(), $$1);
+   public egh a() {
+      egh $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
       }
+
+      return $$0;
+   }
+
+   public void a(day $$0, daw $$1, dse $$2, ayg $$3, egh $$4, czk $$5) {
+      List<egt> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         egh $$7 = $$6.get(0).f;
+         in $$8 = $$7.g();
+         in $$9 = new in($$8.u(), $$7.i(), $$8.w());
+
+         for (egt $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
+         }
+
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+      }
+   }
+
+   public ua a(ehf $$0, czk $$1) {
+      ua $$2 = new ua();
+      if (this.b()) {
+         $$2.a("id", $$0.b().d(le.aJ).b(this.d).toString());
+         $$2.a("ChunkX", $$1.e);
+         $$2.a("ChunkZ", $$1.f);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
+      }
+   }
+
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public czk c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   protected int g() {
+      return 1;
+   }
+
+   public egp h() {
+      return this.d;
+   }
+
+   public List<egt> i() {
+      return this.e.c();
    }
 }

@@ -1,36 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.Set;
 
-public class dqy extends drb<Integer> {
-   private final ImmutableSet<Integer> a;
-   private final int b;
-   private final int c;
+public class dqy extends drk<Boolean> {
+   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
 
-   protected dqy(String $$0, int $$1, int $$2) {
-      super($$0, Integer.class);
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
-      } else if ($$2 <= $$1) {
-         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
-      } else {
-         this.b = $$1;
-         this.c = $$2;
-         Set<Integer> $$3 = Sets.newHashSet();
-
-         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
-            $$3.add($$4);
-         }
-
-         this.a = ImmutableSet.copyOf($$3);
-      }
+   protected dqy(String $$0) {
+      super($$0, Boolean.class);
    }
 
    @Override
-   public Collection<Integer> a() {
+   public Collection<Boolean> a() {
       return this.a;
+   }
+
+   public static dqy a(String $$0) {
+      return new dqy($$0);
+   }
+
+   @Override
+   public Optional<Boolean> b(String $$0) {
+      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
+   }
+
+   public String a(Boolean $$0) {
+      return $$0.toString();
    }
 
    @Override
@@ -49,23 +43,5 @@ public class dqy extends drb<Integer> {
    @Override
    public int b() {
       return 31 * super.b() + this.a.hashCode();
-   }
-
-   public static dqy a(String $$0, int $$1, int $$2) {
-      return new dqy($$0, $$1, $$2);
-   }
-
-   @Override
-   public Optional<Integer> b(String $$0) {
-      try {
-         Integer $$1 = Integer.valueOf($$0);
-         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
-      } catch (NumberFormatException var3) {
-         return Optional.empty();
-      }
-   }
-
-   public String a(Integer $$0) {
-      return $$0.toString();
    }
 }

@@ -1,280 +1,71 @@
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.function.Function;
-
 public class dwi {
-   private static final dpy a = dcx.hj.n();
-   private static final dpy b = dcx.hk.n();
-   private static final dpy c = dcx.iA.n();
-   private static final dpy d = dcx.hn.n();
-   private static final dpy e = dcx.hv.n();
-   private static final dpy f = dcx.hx.n();
-   private static final dpy g = dcx.hr.n();
-   private static final dpy h = dcx.iC.n();
-   private static final dpy i = dcx.dP.n();
-   private final dpy j;
-   private final int k;
-   private final dpy[] l;
-   private final eku m;
-   private final eku n;
-   private final eku o;
-   private final eku p;
-   private final eku q;
-   private final eku r;
-   private final eku s;
-   private final dwd t;
-   private final eku u;
-   private final eku v;
+   public static final akg<eld.a> a = a("temperature");
+   public static final akg<eld.a> b = a("vegetation");
+   public static final akg<eld.a> c = a("continentalness");
+   public static final akg<eld.a> d = a("erosion");
+   public static final akg<eld.a> e = a("temperature_large");
+   public static final akg<eld.a> f = a("vegetation_large");
+   public static final akg<eld.a> g = a("continentalness_large");
+   public static final akg<eld.a> h = a("erosion_large");
+   public static final akg<eld.a> i = a("ridge");
+   public static final akg<eld.a> j = a("offset");
+   public static final akg<eld.a> k = a("aquifer_barrier");
+   public static final akg<eld.a> l = a("aquifer_fluid_level_floodedness");
+   public static final akg<eld.a> m = a("aquifer_lava");
+   public static final akg<eld.a> n = a("aquifer_fluid_level_spread");
+   public static final akg<eld.a> o = a("pillar");
+   public static final akg<eld.a> p = a("pillar_rareness");
+   public static final akg<eld.a> q = a("pillar_thickness");
+   public static final akg<eld.a> r = a("spaghetti_2d");
+   public static final akg<eld.a> s = a("spaghetti_2d_elevation");
+   public static final akg<eld.a> t = a("spaghetti_2d_modulator");
+   public static final akg<eld.a> u = a("spaghetti_2d_thickness");
+   public static final akg<eld.a> v = a("spaghetti_3d_1");
+   public static final akg<eld.a> w = a("spaghetti_3d_2");
+   public static final akg<eld.a> x = a("spaghetti_3d_rarity");
+   public static final akg<eld.a> y = a("spaghetti_3d_thickness");
+   public static final akg<eld.a> z = a("spaghetti_roughness");
+   public static final akg<eld.a> A = a("spaghetti_roughness_modulator");
+   public static final akg<eld.a> B = a("cave_entrance");
+   public static final akg<eld.a> C = a("cave_layer");
+   public static final akg<eld.a> D = a("cave_cheese");
+   public static final akg<eld.a> E = a("ore_veininess");
+   public static final akg<eld.a> F = a("ore_vein_a");
+   public static final akg<eld.a> G = a("ore_vein_b");
+   public static final akg<eld.a> H = a("ore_gap");
+   public static final akg<eld.a> I = a("noodle");
+   public static final akg<eld.a> J = a("noodle_thickness");
+   public static final akg<eld.a> K = a("noodle_ridge_a");
+   public static final akg<eld.a> L = a("noodle_ridge_b");
+   public static final akg<eld.a> M = a("jagged");
+   public static final akg<eld.a> N = a("surface");
+   public static final akg<eld.a> O = a("surface_secondary");
+   public static final akg<eld.a> P = a("clay_bands_offset");
+   public static final akg<eld.a> Q = a("badlands_pillar");
+   public static final akg<eld.a> R = a("badlands_pillar_roof");
+   public static final akg<eld.a> S = a("badlands_surface");
+   public static final akg<eld.a> T = a("iceberg_pillar");
+   public static final akg<eld.a> U = a("iceberg_pillar_roof");
+   public static final akg<eld.a> V = a("iceberg_surface");
+   public static final akg<eld.a> W = a("surface_swamp");
+   public static final akg<eld.a> X = a("calcite");
+   public static final akg<eld.a> Y = a("gravel");
+   public static final akg<eld.a> Z = a("powder_snow");
+   public static final akg<eld.a> aa = a("packed_ice");
+   public static final akg<eld.a> ab = a("ice");
+   public static final akg<eld.a> ac = a("soul_sand_layer");
+   public static final akg<eld.a> ad = a("gravel_layer");
+   public static final akg<eld.a> ae = a("patch");
+   public static final akg<eld.a> af = a("netherrack");
+   public static final akg<eld.a> ag = a("nether_wart");
+   public static final akg<eld.a> ah = a("nether_state_selector");
 
-   public dwi(dwe $$0, dpy $$1, int $$2, dwd $$3) {
-      this.j = $$1;
-      this.k = $$2;
-      this.t = $$3;
-      this.m = $$0.a(dvz.P);
-      this.l = a($$3.a(new akf("clay_bands")));
-      this.u = $$0.a(dvz.N);
-      this.v = $$0.a(dvz.O);
-      this.n = $$0.a(dvz.Q);
-      this.o = $$0.a(dvz.R);
-      this.p = $$0.a(dvz.S);
-      this.q = $$0.a(dvz.T);
-      this.r = $$0.a(dvz.U);
-      this.s = $$0.a(dvz.V);
+   private static akg<eld.a> a(String $$0) {
+      return akg.a(le.aH, new akh($$0));
    }
 
-   public void a(dwe $$0, dav $$1, ji<dat> $$2, boolean $$3, dwn $$4, final dru $$5, dvu $$6, dwh.o $$7) {
-      final im.a $$8 = new im.a();
-      final czb $$9 = $$5.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      drr $$12 = new drr() {
-         @Override
-         public dpy a(int $$0) {
-            return $$5.a_($$8.q($$0));
-         }
-
-         @Override
-         public void a(int $$0, dpy $$1) {
-            czw $$2 = $$5.z();
-            if ($$0 >= $$2.I_() && $$0 < $$2.al()) {
-               $$5.a($$8.q($$0), $$1, false);
-               if (!$$1.u().c()) {
-                  $$5.e($$8);
-               }
-            }
-         }
-
-         @Override
-         public String toString() {
-            return "ChunkBlockColumn " + $$9;
-         }
-      };
-      dwh.g $$13 = new dwh.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
-      dwh.u $$14 = $$7.apply($$13);
-      im.a $$15 = new im.a();
-
-      for (int $$16 = 0; $$16 < 16; $$16++) {
-         for (int $$17 = 0; $$17 < 16; $$17++) {
-            int $$18 = $$10 + $$16;
-            int $$19 = $$11 + $$17;
-            int $$20 = $$5.a(dvq.a.a, $$16, $$17) + 1;
-            $$8.p($$18).r($$19);
-            iv<dat> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
-            if ($$21.a(dba.B)) {
-               this.a($$12, $$18, $$19, $$20, $$5);
-            }
-
-            int $$22 = $$5.a(dvq.a.a, $$16, $$17) + 1;
-            $$13.a($$18, $$19);
-            int $$23 = 0;
-            int $$24 = Integer.MIN_VALUE;
-            int $$25 = Integer.MAX_VALUE;
-            int $$26 = $$5.I_();
-
-            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
-               dpy $$28 = $$12.a($$27);
-               if ($$28.i()) {
-                  $$23 = 0;
-                  $$24 = Integer.MIN_VALUE;
-               } else if (!$$28.u().c()) {
-                  if ($$24 == Integer.MIN_VALUE) {
-                     $$24 = $$27 + 1;
-                  }
-               } else {
-                  if ($$25 >= $$27) {
-                     $$25 = dtq.g;
-
-                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
-                        dpy $$30 = $$12.a($$29);
-                        if (!this.a($$30)) {
-                           $$25 = $$29 + 1;
-                           break;
-                        }
-                     }
-                  }
-
-                  $$23++;
-                  int $$31 = $$27 - $$25 + 1;
-                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
-                  if ($$28 == this.j) {
-                     dpy $$32 = $$14.tryApply($$18, $$27, $$19);
-                     if ($$32 != null) {
-                        $$12.a($$27, $$32);
-                     }
-                  }
-               }
-            }
-
-            if ($$21.a(dba.W) || $$21.a(dba.X)) {
-               this.a($$13.b(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
-            }
-         }
-      }
-   }
-
-   protected int a(int $$0, int $$1) {
-      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
-      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
-   }
-
-   protected double b(int $$0, int $$1) {
-      return this.v.a((double)$$0, 0.0, (double)$$1);
-   }
-
-   private boolean a(dpy $$0) {
-      return !$$0.i() && $$0.u().c();
-   }
-
-   @Deprecated
-   public Optional<dpy> a(dwh.o $$0, dxq $$1, Function<im, iv<dat>> $$2, dru $$3, dvu $$4, im $$5, boolean $$6) {
-      dwh.g $$7 = new dwh.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().d(ld.ay), $$1);
-      dwh.u $$8 = $$0.apply($$7);
-      int $$9 = $$5.u();
-      int $$10 = $$5.v();
-      int $$11 = $$5.w();
-      $$7.a($$9, $$11);
-      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
-      dpy $$12 = $$8.tryApply($$9, $$10, $$11);
-      return Optional.ofNullable($$12);
-   }
-
-   private void a(drr $$0, int $$1, int $$2, int $$3, czw $$4) {
-      double $$5 = 0.2;
-      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
-      if (!($$6 <= 0.0)) {
-         double $$7 = 0.75;
-         double $$8 = 1.5;
-         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
-         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
-         int $$11 = axw.a($$10);
-         if ($$3 <= $$11) {
-            for (int $$12 = $$11; $$12 >= $$4.I_(); $$12--) {
-               dpy $$13 = $$0.a($$12);
-               if ($$13.a(this.j.b())) {
-                  break;
-               }
-
-               if ($$13.a(dcx.G)) {
-                  return;
-               }
-            }
-
-            for (int $$14 = $$11; $$14 >= $$4.I_() && $$0.a($$14).i(); $$14--) {
-               $$0.a($$14, this.j);
-            }
-         }
-      }
-   }
-
-   private void a(int $$0, dat $$1, drr $$2, im.a $$3, int $$4, int $$5, int $$6) {
-      double $$7 = 1.28;
-      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
-      if (!($$8 <= 1.8)) {
-         double $$9 = 1.17;
-         double $$10 = 1.5;
-         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
-         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
-         if ($$1.d($$3.d($$4, 63, $$5))) {
-            $$12 -= 2.0;
-         }
-
-         double $$13;
-         if ($$12 > 2.0) {
-            $$13 = (double)this.k - $$12 - 7.0;
-            $$12 += (double)this.k;
-         } else {
-            $$12 = 0.0;
-            $$13 = 0.0;
-         }
-
-         double $$15 = $$12;
-         ayd $$16 = this.t.a($$4, 0, $$5);
-         int $$17 = 2 + $$16.a(4);
-         int $$18 = this.k + 18 + $$16.a(10);
-         int $$19 = 0;
-
-         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
-            if ($$2.a($$20).i() && $$20 < (int)$$15 && $$16.j() > 0.01
-               || $$2.a($$20).a(dcx.G) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
-               if ($$19 <= $$17 && $$20 > $$18) {
-                  $$2.a($$20, i);
-                  $$19++;
-               } else {
-                  $$2.a($$20, h);
-               }
-            }
-         }
-      }
-   }
-
-   private static dpy[] a(ayd $$0) {
-      dpy[] $$1 = new dpy[192];
-      Arrays.fill($$1, c);
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$2 += $$0.a(5) + 1;
-         if ($$2 < $$1.length) {
-            $$1[$$2] = b;
-         }
-      }
-
-      a($$0, $$1, 1, d);
-      a($$0, $$1, 2, e);
-      a($$0, $$1, 1, f);
-      int $$3 = $$0.a(9, 15);
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
-         $$1[$$5] = a;
-         if ($$5 - 1 > 0 && $$0.h()) {
-            $$1[$$5 - 1] = g;
-         }
-
-         if ($$5 + 1 < $$1.length && $$0.h()) {
-            $$1[$$5 + 1] = g;
-         }
-
-         $$4++;
-      }
-
-      return $$1;
-   }
-
-   private static void a(ayd $$0, dpy[] $$1, int $$2, dpy $$3) {
-      int $$4 = $$0.a(6, 15);
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         int $$6 = $$2 + $$0.a(3);
-         int $$7 = $$0.a($$1.length);
-
-         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
-            $$1[$$7 + $$8] = $$3;
-         }
-      }
-   }
-
-   protected dpy a(int $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
-      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
+   public static eld a(ix<eld.a> $$0, dwm $$1, akg<eld.a> $$2) {
+      iw<eld.a> $$3 = $$0.b($$2);
+      return eld.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
    }
 }

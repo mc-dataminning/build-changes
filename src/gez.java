@@ -1,45 +1,29 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-public class gez implements geq.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final fcu c;
-   private Collection<im> d = Lists.newArrayList();
+public class gez implements gfa.a {
+   private final fde a;
+   private double b = Double.MIN_VALUE;
+   private List<eui> c = Collections.emptyList();
 
-   public gez(fcu $$0) {
-      this.c = $$0;
-   }
-
-   public void a(Collection<im> $$0) {
-      this.d = $$0;
+   public gez(fde $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(exn $$0, gbe $$1, double $$2, double $$3, double $$4) {
-      im $$5 = this.b().c();
-
-      for (im $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
-         }
+   public void a(exx $$0, gbo $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         brh $$6 = this.a.j.m().g();
+         this.c = ImmutableList.copyOf($$6.dN().d($$6, $$6.cI().g(6.0)));
       }
-   }
 
-   private static void a(exn $$0, gbe $$1, im $$2) {
-      geq.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
+      eyb $$7 = $$1.getBuffer(gbw.y());
 
-   private static void a(exn $$0, gbe $$1, String $$2, im $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      geq.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private fcf b() {
-      return this.c.j.m();
+      for (eui $$8 : this.c) {
+         gbm.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      }
    }
 }

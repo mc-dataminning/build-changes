@@ -1,83 +1,63 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalLong;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Charsets;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
+import com.google.common.primitives.Longs;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class dwo {
-   public static final MapCodec<dwo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.LONG.fieldOf("seed").stable().forGetter(dwo::b),
-               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dwo::c),
-               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dwo::d),
-               Codec.STRING.optionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, $$0.stable(dwo::new))
-   );
-   public static final dwo b = new dwo((long)"North Carolina".hashCode(), true, true);
-   private final long c;
-   private final boolean d;
-   private final boolean e;
-   private final Optional<String> f;
+public final class dwo {
+   public static final long a = -7046029254386353131L;
+   public static final long b = 7640891576956012809L;
+   private static final HashFunction c = Hashing.md5();
+   private static final AtomicLong d = new AtomicLong(8682522807148012L);
 
-   public dwo(long $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, Optional.empty());
+   @VisibleForTesting
+   public static long a(long $$0) {
+      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
+      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
+      return $$0 ^ $$0 >>> 31;
    }
 
-   public static dwo a() {
-      return new dwo(f(), true, false);
+   public static dwo.a b(long $$0) {
+      long $$1 = $$0 ^ 7640891576956012809L;
+      long $$2 = $$1 + -7046029254386353131L;
+      return new dwo.a($$1, $$2);
    }
 
-   private dwo(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public static dwo.a c(long $$0) {
+      return b($$0).a();
    }
 
-   public long b() {
-      return this.c;
+   public static dwo.a a(String $$0) {
+      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
+      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
+      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
+      return new dwo.a($$2, $$3);
    }
 
-   public boolean c() {
-      return this.d;
+   public static long a() {
+      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
    }
 
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f.isPresent();
-   }
-
-   public dwo a(boolean $$0) {
-      return new dwo(this.c, this.d, $$0, this.f);
-   }
-
-   public dwo b(boolean $$0) {
-      return new dwo(this.c, $$0, this.e, this.f);
-   }
-
-   public dwo a(OptionalLong $$0) {
-      return new dwo($$0.orElse(f()), this.d, this.e, this.f);
-   }
-
-   public static OptionalLong a(String $$0) {
-      $$0 = $$0.trim();
-      if (StringUtils.isEmpty($$0)) {
-         return OptionalLong.empty();
-      } else {
-         try {
-            return OptionalLong.of(Long.parseLong($$0));
-         } catch (NumberFormatException var2) {
-            return OptionalLong.of((long)$$0.hashCode());
-         }
+   public static record a(long a, long b) {
+      public dwo.a a(long $$0, long $$1) {
+         return new dwo.a(this.a ^ $$0, this.b ^ $$1);
       }
-   }
 
-   public static long f() {
-      return ayd.a().g();
+      public dwo.a a(dwo.a $$0) {
+         return this.a($$0.a, $$0.b);
+      }
+
+      public dwo.a a() {
+         return new dwo.a(dwo.a(this.a), dwo.a(this.b));
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
+      }
    }
 }

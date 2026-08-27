@@ -1,132 +1,196 @@
-import com.google.common.collect.Iterators;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public final class cux implements Iterable<csd> {
-   private static final int d = 256;
-   public static final cux a = new cux(je.a());
-   public static final Codec<cux> b = axe.a(cux.a.a.listOf(), 256).xmap(cux::b, cux::c);
-   public static final yq<wd, cux> c = csd.e.a(yo.c(256)).a(cux::new, $$0 -> $$0.e);
-   private final je<csd> e;
-
-   private cux(je<csd> $$0) {
-      this.e = $$0;
-   }
-
-   private cux(int $$0) {
-      this(je.a($$0, csd.i));
-   }
-
-   private cux(List<csd> $$0) {
-      this($$0.size());
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         this.e.set($$1, $$0.get($$1));
-      }
-   }
-
-   private static cux b(List<cux.a> $$0) {
-      int $$1 = $$0.stream().mapToInt(cux.a::a).max().orElse(-1);
-      cux $$2 = new cux($$1 + 1);
-
-      for (cux.a $$3 : $$0) {
-         $$2.e.set($$3.a(), $$3.b());
-      }
-
-      return $$2;
-   }
-
-   public static cux a(List<csd> $$0) {
-      int $$1 = c($$0);
-      if ($$1 == 0) {
-         return a;
-      } else {
-         cux $$2 = new cux($$1);
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$2.e.set($$3, $$0.get($$3).r());
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int c(List<csd> $$0) {
-      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
-         if (!$$0.get($$1).d()) {
-            return $$1 + 1;
-         }
-      }
-
-      return 0;
-   }
-
-   private List<cux.a> c() {
-      List<cux.a> $$0 = new ArrayList<>();
-
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         csd $$2 = this.e.get($$1);
-         if (!$$2.d()) {
-            $$0.add(new cux.a($$1, $$2));
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(je<csd> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         csd $$2 = $$1 < this.e.size() ? this.e.get($$1) : csd.i;
-         $$0.set($$1, $$2.r());
-      }
-   }
-
-   public csd a() {
-      return this.e.isEmpty() ? csd.i : this.e.get(0).r();
-   }
-
-   public Stream<csd> b() {
-      return this.e.stream().filter($$0 -> !$$0.d()).map(csd::r);
-   }
-
-   @Override
-   public Iterator<csd> iterator() {
-      return Iterators.transform(Iterators.filter(this.e.iterator(), $$0 -> !$$0.d()), csd::r);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cux $$1 && csd.a(this.e, $$1.e)) {
+public class cux {
+   public static final int a = 20;
+   private static final List<cux.a<cuw>> b = Lists.newArrayList();
+   private static final List<cux.a<csu>> c = Lists.newArrayList();
+   private static final List<cxa> d = Lists.newArrayList();
+   private static final Predicate<csz> e = $$0 -> {
+      for (cxa $$1 : d) {
+         if ($$1.a($$0)) {
             return true;
+         }
+      }
+
+      return false;
+   };
+
+   public static boolean a(csz $$0) {
+      return b($$0) || c($$0);
+   }
+
+   protected static boolean b(csz $$0) {
+      for (cux.a<csu> $$1 : c) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   protected static boolean c(csz $$0) {
+      for (cux.a<cuw> $$1 : b) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(iw<cuw> $$0) {
+      for (cux.a<cuw> $$1 : b) {
+         if ($$1.c.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(csz $$0, csz $$1) {
+      return !e.test($$0) ? false : b($$0, $$1) || c($$0, $$1);
+   }
+
+   protected static boolean b(csz $$0, csz $$1) {
+      for (cux.a<csu> $$2 : c) {
+         if ($$0.a($$2.a) && $$2.b.a($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   protected static boolean c(csz $$0, csz $$1) {
+      Optional<iw<cuw>> $$2 = $$0.a(ka.E, cuy.a).f();
+      if ($$2.isEmpty()) {
+         return false;
+      } else {
+         for (cux.a<cuw> $$3 : b) {
+            if ($$3.a.a($$2.get()) && $$3.b.a($$1)) {
+               return true;
+            }
          }
 
          return false;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return csd.a(this.e);
+   public static csz d(csz $$0, csz $$1) {
+      if ($$1.d()) {
+         return $$1;
+      } else {
+         Optional<iw<cuw>> $$2 = $$1.a(ka.E, cuy.a).f();
+         if ($$2.isEmpty()) {
+            return $$1;
+         } else {
+            for (cux.a<csu> $$3 : c) {
+               if ($$1.a($$3.a) && $$3.b.a($$0)) {
+                  return cuy.a($$3.c.a(), $$2.get());
+               }
+            }
+
+            for (cux.a<cuw> $$4 : b) {
+               if ($$4.a.a($$2.get()) && $$4.b.a($$0)) {
+                  return cuy.a($$1.f(), $$4.c);
+               }
+            }
+
+            return $$1;
+         }
+      }
    }
 
-   static record a(int b, csd c) {
-      public static final Codec<cux.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(cux.a::a), csd.a.fieldOf("item").forGetter(cux.a::b)).apply($$0, cux.a::new)
-      );
+   public static void a() {
+      a(ctc.sk);
+      a(ctc.vo);
+      a(ctc.vr);
+      a(ctc.sk, ctc.pu, ctc.vo);
+      a(ctc.vo, ctc.vn, ctc.vr);
+      a(cuz.a, ctc.st, cuz.b);
+      a(cuz.a, ctc.sh, cuz.b);
+      a(cuz.a, ctc.uD, cuz.b);
+      a(cuz.a, ctc.so, cuz.b);
+      a(cuz.a, ctc.sm, cuz.b);
+      a(cuz.a, ctc.rA, cuz.b);
+      a(cuz.a, ctc.sp, cuz.b);
+      a(cuz.a, ctc.qY, cuz.c);
+      a(cuz.a, ctc.lH, cuz.b);
+      a(cuz.a, ctc.sj, cuz.d);
+      a(cuz.d, ctc.uk, cuz.e);
+      a(cuz.e, ctc.lH, cuz.f);
+      a(cuz.e, ctc.sn, cuz.g);
+      a(cuz.f, ctc.sn, cuz.h);
+      a(cuz.g, ctc.lH, cuz.h);
+      a(cuz.d, ctc.sp, cuz.l);
+      a(cuz.l, ctc.lH, cuz.m);
+      a(cuz.d, ctc.uD, cuz.i);
+      a(cuz.i, ctc.lH, cuz.j);
+      a(cuz.i, ctc.qY, cuz.k);
+      a(cuz.i, ctc.sn, cuz.q);
+      a(cuz.j, ctc.sn, cuz.r);
+      a(cuz.q, ctc.lH, cuz.r);
+      a(cuz.q, ctc.qY, cuz.s);
+      a(cuz.d, ctc.oo, cuz.t);
+      a(cuz.t, ctc.lH, cuz.u);
+      a(cuz.t, ctc.qY, cuz.v);
+      a(cuz.n, ctc.sn, cuz.q);
+      a(cuz.o, ctc.sn, cuz.r);
+      a(cuz.d, ctc.rA, cuz.n);
+      a(cuz.n, ctc.lH, cuz.o);
+      a(cuz.n, ctc.qY, cuz.p);
+      a(cuz.d, ctc.rc, cuz.w);
+      a(cuz.w, ctc.lH, cuz.x);
+      a(cuz.d, ctc.st, cuz.y);
+      a(cuz.y, ctc.qY, cuz.z);
+      a(cuz.y, ctc.sn, cuz.A);
+      a(cuz.z, ctc.sn, cuz.B);
+      a(cuz.A, ctc.qY, cuz.B);
+      a(cuz.C, ctc.sn, cuz.A);
+      a(cuz.D, ctc.sn, cuz.A);
+      a(cuz.E, ctc.sn, cuz.B);
+      a(cuz.d, ctc.sm, cuz.C);
+      a(cuz.C, ctc.lH, cuz.D);
+      a(cuz.C, ctc.qY, cuz.E);
+      a(cuz.d, ctc.sh, cuz.F);
+      a(cuz.F, ctc.lH, cuz.G);
+      a(cuz.F, ctc.qY, cuz.H);
+      a(cuz.d, ctc.so, cuz.I);
+      a(cuz.I, ctc.lH, cuz.J);
+      a(cuz.I, ctc.qY, cuz.K);
+      a(cuz.a, ctc.sn, cuz.L);
+      a(cuz.L, ctc.lH, cuz.M);
+      a(cuz.d, ctc.vQ, cuz.O);
+      a(cuz.O, ctc.lH, cuz.P);
+   }
 
-      public int a() {
-         return this.b;
+   private static void a(csu $$0, csu $$1, csu $$2) {
+      if (!($$0 instanceof ctp)) {
+         throw new IllegalArgumentException("Expected a potion, got: " + ld.h.b($$0));
+      } else if (!($$2 instanceof ctp)) {
+         throw new IllegalArgumentException("Expected a potion, got: " + ld.h.b($$2));
+      } else {
+         c.add(new cux.a<>($$0.n(), cxa.a($$1), $$2.n()));
       }
+   }
 
-      public csd b() {
-         return this.c;
+   private static void a(csu $$0) {
+      if (!($$0 instanceof ctp)) {
+         throw new IllegalArgumentException("Expected a potion, got: " + ld.h.b($$0));
+      } else {
+         d.add(cxa.a($$0));
       }
+   }
+
+   private static void a(iw<cuw> $$0, csu $$1, iw<cuw> $$2) {
+      b.add(new cux.a<>($$0, cxa.a($$1), $$2));
+   }
+
+   static record a<T>(iw<T> a, cxa b, iw<T> c) {
    }
 }

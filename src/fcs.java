@@ -1,166 +1,33 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
+import com.mojang.serialization.Codec;
 
-public class fcs implements Comparable<fcs> {
-   private static final Map<String, fcs> h = Maps.newHashMap();
-   private static final Map<ewi.a, fcs> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final ewi.a m;
-   private final String n;
-   private ewi.a o;
-   private boolean p;
-   private int q;
+public enum fcs implements ayb, ayt {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-   public static void a(ewi.a $$0) {
-      fcs $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
-      }
+   public static final Codec<fcs> d = ayt.a(fcs::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private fcs(int $$0, String $$1, String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static void a(ewi.a $$0, boolean $$1) {
-      fcs $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
+   @Override
+   public String c() {
+      return this.f;
    }
 
-   public static void a() {
-      for (fcs $$0 : h.values()) {
-         if ($$0.o.a() == ewi.b.a && $$0.o.b() != ewi.bv.b()) {
-            $$0.a(ewi.a(fcu.Q().aO().i(), $$0.o.b()));
-         }
-      }
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public static void b() {
-      for (fcs $$0 : h.values()) {
-         $$0.n();
-      }
-   }
-
-   public static void c() {
-      for (fcs $$0 : h.values()) {
-         if ($$0 instanceof fdi $$1) {
-            $$1.n();
-         }
-      }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (fcs $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public fcs(String $$0, int $$1, String $$2) {
-      this($$0, ewi.b.a, $$1, $$2);
-   }
-
-   public fcs(String $$0, ewi.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
-      } else {
-         this.q--;
-         return true;
-      }
-   }
-
-   private void n() {
-      this.q = 0;
-      this.a(false);
-   }
-
-   public String h() {
-      return this.l;
-   }
-
-   public ewi.a i() {
-      return this.m;
-   }
-
-   public void b(ewi.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(fcs $$0) {
-      return this.n.equals($$0.n) ? gnt.a(this.l).compareTo(gnt.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<ws> a(String $$0) {
-      fcs $$1 = h.get($$0);
-      return $$1 == null ? () -> ws.c($$0) : $$1::k;
-   }
-
-   public boolean b(fcs $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(ewi.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == ewi.bv.b() ? this.o.a() == ewi.b.b && this.o.b() == $$1 : this.o.a() == ewi.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == ewi.b.c && this.o.b() == $$0;
-   }
-
-   public ws k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
+   @Override
+   public String b() {
+      return this.g;
    }
 }

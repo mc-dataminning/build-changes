@@ -1,51 +1,36 @@
-public enum gav {
-   a(new gav.b(gav.a.f, gav.a.e, gav.a.a), new gav.b(gav.a.f, gav.a.e, gav.a.d), new gav.b(gav.a.c, gav.a.e, gav.a.d), new gav.b(gav.a.c, gav.a.e, gav.a.a)),
-   b(new gav.b(gav.a.f, gav.a.b, gav.a.d), new gav.b(gav.a.f, gav.a.b, gav.a.a), new gav.b(gav.a.c, gav.a.b, gav.a.a), new gav.b(gav.a.c, gav.a.b, gav.a.d)),
-   c(new gav.b(gav.a.c, gav.a.b, gav.a.d), new gav.b(gav.a.c, gav.a.e, gav.a.d), new gav.b(gav.a.f, gav.a.e, gav.a.d), new gav.b(gav.a.f, gav.a.b, gav.a.d)),
-   d(new gav.b(gav.a.f, gav.a.b, gav.a.a), new gav.b(gav.a.f, gav.a.e, gav.a.a), new gav.b(gav.a.c, gav.a.e, gav.a.a), new gav.b(gav.a.c, gav.a.b, gav.a.a)),
-   e(new gav.b(gav.a.f, gav.a.b, gav.a.d), new gav.b(gav.a.f, gav.a.e, gav.a.d), new gav.b(gav.a.f, gav.a.e, gav.a.a), new gav.b(gav.a.f, gav.a.b, gav.a.a)),
-   f(new gav.b(gav.a.c, gav.a.b, gav.a.a), new gav.b(gav.a.c, gav.a.e, gav.a.a), new gav.b(gav.a.c, gav.a.e, gav.a.d), new gav.b(gav.a.c, gav.a.b, gav.a.d));
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
-   private static final gav[] g = ac.a(new gav[6], $$0 -> {
-      $$0[gav.a.e] = a;
-      $$0[gav.a.b] = b;
-      $$0[gav.a.d] = c;
-      $$0[gav.a.a] = d;
-      $$0[gav.a.f] = e;
-      $$0[gav.a.c] = f;
-   });
-   private final gav.b[] h;
+public class gav implements bnj {
+   private final gbm a;
+   private final Set<bnh> b = new ObjectOpenHashSet();
+   private final bnp c = new bnp();
 
-   public static gav a(ir $$0) {
-      return g[$$0.d()];
+   public gav(LongSupplier $$0, gbm $$1) {
+      this.a = $$1;
+      this.b.add(bnq.a($$0));
+      this.a();
    }
 
-   private gav(gav.b... $$0) {
-      this.h = $$0;
-   }
-
-   public gav.b a(int $$0) {
-      return this.h[$$0];
-   }
-
-   public static final class a {
-      public static final int a = ir.d.d();
-      public static final int b = ir.b.d();
-      public static final int c = ir.f.d();
-      public static final int d = ir.c.d();
-      public static final int e = ir.a.d();
-      public static final int f = ir.e.d();
-   }
-
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   private void a() {
+      this.b.addAll(bnq.a());
+      this.b.add(bnh.a("totalChunks", bng.f, this.a, gbm::i));
+      this.b.add(bnh.a("renderedChunks", bng.f, this.a, gbm::k));
+      this.b.add(bnh.a("lastViewDistance", bng.f, this.a, gbm::j));
+      geo $$0 = this.a.h();
+      this.b.add(bnh.a("toUpload", bng.g, $$0, geo::c));
+      this.b.add(bnh.a("freeBufferCount", bng.g, $$0, geo::d));
+      this.b.add(bnh.a("toBatchCount", bng.g, $$0, geo::b));
+      if (exq.a().isPresent()) {
+         this.b.add(bnh.a("gpuUtilization", bng.i, fde.Q(), fde::v));
       }
+   }
+
+   @Override
+   public Set<bnh> a(Supplier<bly> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 }

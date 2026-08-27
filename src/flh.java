@@ -1,38 +1,34 @@
-public enum flh {
-   a(
-      new akf("advancements/box_obtained"),
-      new akf("advancements/task_frame_obtained"),
-      new akf("advancements/challenge_frame_obtained"),
-      new akf("advancements/goal_frame_obtained")
-   ),
-   b(
-      new akf("advancements/box_unobtained"),
-      new akf("advancements/task_frame_unobtained"),
-      new akf("advancements/challenge_frame_unobtained"),
-      new akf("advancements/goal_frame_unobtained")
-   );
+import java.util.Arrays;
 
-   private final akf c;
-   private final akf d;
-   private final akf e;
-   private final akf f;
+public class flh extends fkv {
+   private static final wu a = wu.c("options.sounds.title");
+   private fgb r;
 
-   private flh(akf $$0, akf $$1, akf $$2, akf $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   private static fdh<?>[] a(fdi $$0) {
+      return new fdh[]{$$0.W(), $$0.X()};
    }
 
-   public akf a() {
-      return this.c;
+   public flh(fld $$0, fdi $$1) {
+      super($$0, $$1, a);
    }
 
-   public akf a(al $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   @Override
+   protected void aM_() {
+      this.r = this.c(new fgb(this.m, this.n, this.o, this));
+      this.r.a(this.c.b(avd.a));
+      this.r.a(this.C());
+      this.r.a(this.c.at());
+      this.r.a(a(this.c));
+      super.aM_();
+   }
+
+   @Override
+   protected void c() {
+      super.c();
+      this.r.a(this.n, this.d);
+   }
+
+   private fdh<?>[] C() {
+      return Arrays.stream(avd.values()).filter($$0 -> $$0 != avd.a).map($$0 -> this.c.b($$0)).toArray(fdh[]::new);
    }
 }

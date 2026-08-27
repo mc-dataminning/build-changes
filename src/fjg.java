@@ -1,57 +1,32 @@
-public class fjg extends fkt {
-   private final Runnable c;
-   protected final fjg.a a;
-   private final ws d;
-   private final boolean r;
-   private ffn s = ffn.a;
-   protected int b;
-   private few u;
+public interface fjg {
+   fji a();
 
-   public fjg(Runnable $$0, fjg.a $$1, ws $$2, ws $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.d = $$3;
-      this.r = $$4;
-   }
+   public static record a(fji a) implements fjg {
+      @Override
+      public fji a() {
+         return this.a.a() == fjh.b ? this.a : fji.b;
+      }
 
-   @Override
-   protected void aM_() {
-      super.aM_();
-      this.s = ffn.a(this.p, this.d, this.n - 50);
-      int $$0 = (this.s.a() + 1) * 9;
-      this.c(feu.a(ws.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.u.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(feu.a(ws.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.u.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.c(feu.a(wr.e, $$0x -> this.c.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.u = few.a(ws.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
-      if (this.r) {
-         this.c(this.u);
+      public fji b() {
+         return this.a;
       }
    }
 
-   @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      this.s.a($$0, this.n / 2, 70);
-   }
-
-   @Override
-   public boolean aD_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.run();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   public static class b implements fjg {
+      @Override
+      public fji a() {
+         return fji.b;
       }
    }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   public static record c(boolean a) implements fjg {
+      @Override
+      public fji a() {
+         return this.a ? fji.b : fji.a;
+      }
+
+      public boolean b() {
+         return this.a;
+      }
    }
 }

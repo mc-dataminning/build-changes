@@ -1,27 +1,20 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import javax.annotation.Nullable;
 
-public class eyv extends ezj {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class eyv {
+   private final Gson a = new Gson();
 
-   public static eyv a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      eyv $$2 = new eyv();
+   public String a(ezn $$0) {
+      return this.a.toJson($$0);
+   }
 
-      try {
-         JsonObject $$3 = $$1.parse($$0).getAsJsonObject();
-         $$2.a = fbg.b("address", $$3, null);
-         $$2.b = fbg.b("resourcePackUrl", $$3, null);
-         $$2.c = fbg.b("resourcePackHash", $$3, null);
-      } catch (Exception var4) {
-         d.error("Could not parse RealmsServerAddress: {}", var4.getMessage());
-      }
+   public String a(JsonElement $$0) {
+      return this.a.toJson($$0);
+   }
 
-      return $$2;
+   @Nullable
+   public <T extends ezn> T a(String $$0, Class<T> $$1) {
+      return (T)this.a.fromJson($$0, $$1);
    }
 }

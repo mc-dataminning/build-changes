@@ -1,130 +1,89 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public abstract class fgt {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final fep d;
+   protected final bkq e;
 
-public class fgt implements fqb {
-   private static final akf a = new akf("hud/hotbar");
-   private static final akf b = new akf("hud/hotbar_selection");
-   private static final long c = 5000L;
-   private static final long d = 2000L;
-   private final fcu e;
-   private long f;
-   @Nullable
-   private fpy g;
-
-   public fgt(fcu $$0) {
-      this.e = $$0;
+   protected fgt(fep $$0, bkq $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public void a(int $$0) {
-      this.f = ac.b();
-      if (this.g != null) {
-         this.g.b($$0);
-      } else {
-         this.g = new fpy(this);
-      }
+   public int a(int $$0) {
+      return Math.min(this.e.c() + 2, $$0);
    }
 
-   private float c() {
-      long $$0 = this.f - ac.b() + 5000L;
-      return axw.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
-   }
+   public void a(fer $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(gbw.E(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
+      int $$8 = this.e.d() - $$7;
 
-   public void a(feh $$0) {
-      if (this.g != null) {
-         float $$1 = this.c();
-         if ($$1 <= 0.0F) {
-            this.g.d();
-         } else {
-            int $$2 = $$0.a() / 2;
-            $$0.c().a();
-            $$0.c().a(0.0F, 0.0F, -90.0F);
-            int $$3 = axw.d((float)$$0.b() - 22.0F * $$1);
-            fqc $$4 = this.g.f();
-            this.a($$0, $$1, $$2, $$3, $$4);
-            $$0.c().b();
-         }
-      }
-   }
-
-   protected void a(feh $$0, float $$1, int $$2, int $$3, fqc $$4) {
-      RenderSystem.enableBlend();
-      $$0.a(1.0F, 1.0F, 1.0F, $$1);
-      $$0.a(a, $$2 - 91, $$3, 182, 22);
-      if ($$4.a() >= 0) {
-         $$0.a(b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23);
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         int $$11 = $$7 + $$9;
+         long $$12 = this.b($$11);
+         $$5 = Math.min($$5, $$12);
+         $$6 = Math.max($$6, $$12);
+         $$4 += $$12;
+         this.a($$0, $$3, $$10, $$11);
       }
 
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-
-      for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a($$0, $$5, $$0.a() / 2 - 90 + $$5 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$5));
+      $$0.a(gbw.E(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(gbw.E(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(gbw.E(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(gbw.E(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$13 = this.a((double)$$5) + " min";
+         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$15 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
       }
 
-      RenderSystem.disableBlend();
+      this.d($$0, $$1, $$2, $$3);
    }
 
-   private void a(feh $$0, int $$1, int $$2, float $$3, float $$4, fqa $$5) {
-      if ($$5 != fpy.a) {
-         int $$6 = (int)($$4 * 255.0F);
-         $$0.c().a();
-         $$0.c().a((float)$$2, $$3, 0.0F);
-         float $$7 = $$5.aO_() ? 1.0F : 0.25F;
-         $$0.a($$7, $$7, $$7, $$4);
-         $$5.a($$0, $$7, $$6);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
-         if ($$6 > 3 && $$5.aO_()) {
-            ws $$8 = this.e.m.U[$$1].k();
-            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$6 << 24));
-         }
-      }
+   protected void a(fer $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2, $$3);
    }
 
-   public void b(feh $$0) {
-      int $$1 = (int)(this.c() * 255.0F);
-      if ($$1 > 3 && this.g != null) {
-         fqa $$2 = this.g.b();
-         ws $$3 = $$2 == fpy.a ? this.g.c().b() : $$2.aN_();
-         if ($$3 != null) {
-            int $$4 = ($$0.a() - this.e.h.a($$3)) / 2;
-            int $$5 = $$0.b() - 35;
-            $$0.b(this.e.h, $$3, $$4, $$5, 16777215 + ($$1 << 24));
-         }
-      }
+   protected void b(fer $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3);
+      int $$5 = this.b((double)$$4);
+      int $$6 = this.a($$4);
+      $$0.a(gbw.E(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
    }
 
-   @Override
-   public void a(fpy $$0) {
-      this.g = null;
-      this.f = 0L;
+   protected void c(fer $$0, int $$1, int $$2, int $$3) {
    }
 
-   public boolean a() {
-      return this.g != null;
+   protected long b(int $$0) {
+      return this.e.a($$0);
    }
 
-   public void b(int $$0) {
-      int $$1 = this.g.e() + $$0;
-
-      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == fpy.a || !this.g.a($$1).aO_())) {
-         $$1 += $$0;
-      }
-
-      if ($$1 >= 0 && $$1 <= 8) {
-         this.g.b($$1);
-         this.f = ac.b();
-      }
+   protected void d(fer $$0, int $$1, int $$2, int $$3) {
    }
 
-   public void b() {
-      this.f = ac.b();
-      if (this.a()) {
-         int $$0 = this.g.e();
-         if ($$0 != -1) {
-            this.g.b($$0);
-         }
-      } else {
-         this.g = new fpy(this);
-      }
+   protected void a(fer $$0, String $$1, int $$2, int $$3) {
+      $$0.a(gbw.E(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
+   }
+
+   protected abstract String a(double var1);
+
+   protected abstract int b(double var1);
+
+   protected abstract int a(long var1);
+
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = axz.a($$0, $$1, $$5);
+      return $$0 < $$3 ? axj.b.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axj.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

@@ -1,76 +1,60 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class epg extends epo {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Codec<iz<cxn>> c = lc.f.r().listOf().xmap(iz::a, $$0 -> $$0.a().toList());
-   public static final Codec<epg> a = RecordCodecBuilder.create($$0 -> a($$0).and(axe.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, epg::new));
-   private final Optional<iz<cxn>> d;
+public class epg extends epd {
+   public static final Codec<epg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(awg.a(le.G).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, epg::new)
+   );
+   private final awg<csu> j;
+   private final boolean k;
 
-   epg(List<erh> $$0, Optional<iz<cxn>> $$1) {
-      super($$0);
-      this.d = $$1;
+   private epg(awg<csu> $$0, boolean $$1, int $$2, int $$3, List<erq> $$4, List<epx> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public epq b() {
-      return epr.e;
+   public epc a() {
+      return eoz.f;
    }
 
    @Override
-   public csd a(csd $$0, eoa $$1) {
-      ayd $$2 = $$1.b();
-      Optional<iv<cxn>> $$3 = this.d.<iv<cxn>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
-         boolean $$2x = $$0.a(csg.qP);
-         List<iv.c<cxn>> $$3x = lc.f.h().filter($$0xx -> ((cxn)$$0xx.a()).j()).filter($$2xx -> $$2x || ((cxn)$$2xx.a()).a($$0)).toList();
-         return ac.b($$3x, $$2);
-      });
-      if ($$3.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
+   public void a(Consumer<csz> $$0, eol $$1) {
+      ld.h.c(this.j).forEach($$1x -> $$0.accept(new csz($$1x)));
+   }
+
+   private boolean a(eol $$0, Consumer<epa> $$1) {
+      if (!this.a($$0)) {
+         return false;
       } else {
-         return a($$0, $$3.get().a(), $$2);
+         for (final iw<csu> $$2 : ld.h.c(this.j)) {
+            $$1.accept(new epd.c() {
+               @Override
+               public void a(Consumer<csz> $$0, eol $$1) {
+                  $$0.accept(new csz($$2));
+               }
+            });
+         }
+
+         return true;
       }
    }
 
-   private static csd a(csd $$0, cxn $$1, ayd $$2) {
-      int $$3 = axw.a($$2, $$1.f(), $$1.a());
-      if ($$0.a(csg.qP)) {
-         $$0 = new csd(csg.uw);
-      }
-
-      $$0.a($$1, $$3);
-      return $$0;
+   @Override
+   public boolean expand(eol $$0, Consumer<epa> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   public static epg.a c() {
-      return new epg.a();
+   public static epd.a<?> a(awg<csu> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new epg($$0, false, $$1, $$2, $$3, $$4));
    }
 
-   public static epo.a<?> d() {
-      return a($$0 -> new epg($$0, Optional.empty()));
-   }
-
-   public static class a extends epo.a<epg.a> {
-      private final List<iv<cxn>> a = new ArrayList<>();
-
-      protected epg.a a() {
-         return this;
-      }
-
-      public epg.a a(cxn $$0) {
-         this.a.add($$0.k());
-         return this;
-      }
-
-      @Override
-      public epp b() {
-         return new epg(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(iz.a(this.a)));
-      }
+   public static epd.a<?> b(awg<csu> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new epg($$0, true, $$1, $$2, $$3, $$4));
    }
 }

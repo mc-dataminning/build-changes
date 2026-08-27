@@ -1,5 +1,6 @@
-import java.util.function.Consumer;
-
-public interface cvg {
-   void a(Consumer<ws> var1, ctu var2);
+public class cvg {
+   public static void a(ql<cve> $$0) {
+      cvf.a($$0, ctc.xJ, cvf.q);
+      cvf.a($$0, ctc.xK, cvf.r);
+   }
 }

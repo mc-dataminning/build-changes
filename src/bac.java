@@ -1,19 +1,23 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Objects;
+import java.util.Optional;
 
-public class bac extends beo {
+public class bac extends DataFix {
    public bac(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityKeepPacked", bfp.s, "DUMMY");
+      super($$0, $$1);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("keepPacked", $$0.createBoolean(true));
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bac::a);
+   public TypeRewriteRule makeRule() {
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bhc.a());
+      return this.fixTypeEverywhereTyped(
+         "BlockEntityCustomNameToComponentFix", this.getInputSchema().getType(bfs.s), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
+               Optional<String> $$3 = $$1.getOptional($$0);
+               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:command_block") ? $$2 : bbt.a($$2);
+            })
+      );
    }
 }

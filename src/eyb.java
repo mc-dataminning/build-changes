@@ -1,210 +1,132 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.time.Duration;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.InputStreamEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.Args;
-import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.system.MemoryStack;
 
-public class eyb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private static final String c = "/upload";
-   private final File d;
-   private final long e;
-   private final int f;
-   private final ezi g;
-   private final String h;
-   private final String i;
-   private final String j;
-   private final String k;
-   private final eyh l;
-   private final AtomicBoolean m = new AtomicBoolean(false);
-   @Nullable
-   private CompletableFuture<fba> n;
-   private final RequestConfig o = RequestConfig.custom()
-      .setSocketTimeout((int)TimeUnit.MINUTES.toMillis(10L))
-      .setConnectTimeout((int)TimeUnit.SECONDS.toMillis(15L))
-      .build();
+public interface eyb {
+   eyb a(double var1, double var3, double var5);
 
-   public eyb(File $$0, long $$1, int $$2, ezi $$3, fdj $$4, String $$5, String $$6, eyh $$7) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4.a();
-      this.i = $$4.c();
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
+   eyb a(int var1, int var2, int var3, int var4);
+
+   eyb a(float var1, float var2);
+
+   eyb a(int var1, int var2);
+
+   eyb b(int var1, int var2);
+
+   eyb a(float var1, float var2, float var3);
+
+   void e();
+
+   default void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a((double)$$0, (double)$$1, (double)$$2);
+      this.a($$3, $$4, $$5, $$6);
+      this.a($$7, $$8);
+      this.c($$9);
+      this.b($$10);
+      this.a($$11, $$12, $$13);
+      this.e();
    }
 
-   public void a(Consumer<fba> $$0) {
-      if (this.n == null) {
-         this.n = CompletableFuture.supplyAsync(() -> this.a(0));
-         this.n.thenAccept($$0);
-      }
+   void b(int var1, int var2, int var3, int var4);
+
+   void l();
+
+   default eyb a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
    }
 
-   public void a() {
-      this.m.set(true);
-      if (this.n != null) {
-         this.n.cancel(false);
-         this.n = null;
-      }
+   default eyb a(int $$0) {
+      return this.a(axj.b.b($$0), axj.b.c($$0), axj.b.d($$0), axj.b.a($$0));
    }
 
-   private fba a(int $$0) {
-      fba.a $$1 = new fba.a();
-      if (this.m.get()) {
-         return $$1.a();
-      } else {
-         this.l.b = this.d.length();
-         HttpPost $$2 = new HttpPost(this.g.b().resolve("/upload/" + this.e + "/" + this.f));
-         CloseableHttpClient $$3 = HttpClientBuilder.create().setDefaultRequestConfig(this.o).build();
-
-         fba var8;
-         try {
-            this.a($$2);
-            HttpResponse $$4 = $$3.execute($$2);
-            long $$5 = this.a($$4);
-            if (!this.a($$5, $$0)) {
-               this.a($$4, $$1);
-               return $$1.a();
-            }
-
-            var8 = this.b($$5, $$0);
-         } catch (Exception var12) {
-            if (!this.m.get()) {
-               a.error("Caught exception while uploading: ", var12);
-            }
-
-            return $$1.a();
-         } finally {
-            this.a($$2, $$3);
-         }
-
-         return var8;
-      }
+   default eyb b(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   private void a(HttpPost $$0, @Nullable CloseableHttpClient $$1) {
-      $$0.releaseConnection();
-      if ($$1 != null) {
-         try {
-            $$1.close();
-         } catch (IOException var4) {
-            a.error("Failed to close Realms upload client");
-         }
-      }
+   default eyb c(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   private void a(HttpPost $$0) throws FileNotFoundException {
-      $$0.setHeader("Cookie", "sid=" + this.h + ";token=" + this.g.a() + ";user=" + this.i + ";version=" + this.j + ";worldVersion=" + this.k);
-      eyb.a $$1 = new eyb.a(new FileInputStream(this.d), this.d.length(), this.l);
-      $$1.setContentType("application/octet-stream");
-      $$0.setEntity($$1);
+   default void a(exx.a $$0, gcl $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
    }
 
-   private void a(HttpResponse $$0, fba.a $$1) throws IOException {
-      int $$2 = $$0.getStatusLine().getStatusCode();
-      if ($$2 == 401) {
-         a.debug("Realms server returned 401: {}", $$0.getFirstHeader("WWW-Authenticate"));
-      }
+   default void a(exx.a $$0, gcl $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
+      float[] $$10 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
+      int[] $$11 = new int[]{$$7[0], $$7[1], $$7[2], $$7[3]};
+      int[] $$12 = $$1.b();
+      jr $$13 = $$1.e().q();
+      Matrix4f $$14 = $$0.a();
+      Vector3f $$15 = $$0.a((float)$$13.u(), (float)$$13.v(), (float)$$13.w(), new Vector3f());
+      int $$16 = 8;
+      int $$17 = $$12.length / 8;
+      MemoryStack $$18 = MemoryStack.stackPush();
 
-      $$1.a($$2);
-      if ($$0.getEntity() != null) {
-         String $$3 = EntityUtils.toString($$0.getEntity(), "UTF-8");
-         if ($$3 != null) {
-            try {
-               JsonParser $$4 = new JsonParser();
-               JsonElement $$5 = $$4.parse($$3).getAsJsonObject().get("errorMsg");
-               Optional<String> $$6 = Optional.ofNullable($$5).map(JsonElement::getAsString);
-               $$1.a($$6.orElse(null));
-            } catch (Exception var8) {
-            }
-         }
-      }
-   }
+      try {
+         ByteBuffer $$19 = $$18.malloc(exv.j.b());
+         IntBuffer $$20 = $$19.asIntBuffer();
 
-   private boolean a(long $$0, int $$1) {
-      return $$0 > 0L && $$1 + 1 < 5;
-   }
-
-   private fba b(long $$0, int $$1) throws InterruptedException {
-      Thread.sleep(Duration.ofSeconds($$0).toMillis());
-      return this.a($$1 + 1);
-   }
-
-   private long a(HttpResponse $$0) {
-      return Optional.ofNullable($$0.getFirstHeader("Retry-After")).<String>map(NameValuePair::getValue).map(Long::valueOf).orElse(0L);
-   }
-
-   public boolean b() {
-      return this.n.isDone() || this.n.isCancelled();
-   }
-
-   static class a extends InputStreamEntity {
-      private final long a;
-      private final InputStream b;
-      private final eyh c;
-
-      public a(InputStream $$0, long $$1, eyh $$2) {
-         super($$0);
-         this.b = $$0;
-         this.a = $$1;
-         this.c = $$2;
-      }
-
-      public void writeTo(OutputStream $$0) throws IOException {
-         Args.notNull($$0, "Output stream");
-         InputStream $$1 = this.b;
-
-         try {
-            byte[] $$2 = new byte[4096];
-            int $$3;
-            if (this.a < 0L) {
-               while (($$3 = $$1.read($$2)) != -1) {
-                  $$0.write($$2, 0, $$3);
-                  this.c.a += (long)$$3;
-               }
+         for (int $$21 = 0; $$21 < $$17; $$21++) {
+            $$20.clear();
+            $$20.put($$12, $$21 * 8, 8);
+            float $$22 = $$19.getFloat(0);
+            float $$23 = $$19.getFloat(4);
+            float $$24 = $$19.getFloat(8);
+            float $$28;
+            float $$29;
+            float $$30;
+            if ($$9) {
+               float $$25 = (float)($$19.get(12) & 255) / 255.0F;
+               float $$26 = (float)($$19.get(13) & 255) / 255.0F;
+               float $$27 = (float)($$19.get(14) & 255) / 255.0F;
+               $$28 = $$25 * $$10[$$21] * $$3;
+               $$29 = $$26 * $$10[$$21] * $$4;
+               $$30 = $$27 * $$10[$$21] * $$5;
             } else {
-               long $$4 = this.a;
-
-               while ($$4 > 0L) {
-                  $$3 = $$1.read($$2, 0, (int)Math.min(4096L, $$4));
-                  if ($$3 == -1) {
-                     break;
-                  }
-
-                  $$0.write($$2, 0, $$3);
-                  this.c.a += (long)$$3;
-                  $$4 -= (long)$$3;
-                  $$0.flush();
-               }
+               $$28 = $$10[$$21] * $$3;
+               $$29 = $$10[$$21] * $$4;
+               $$30 = $$10[$$21] * $$5;
             }
-         } finally {
-            $$1.close();
+
+            int $$34 = $$11[$$21];
+            float $$35 = $$19.getFloat(16);
+            float $$36 = $$19.getFloat(20);
+            Vector4f $$37 = $$14.transform(new Vector4f($$22, $$23, $$24, 1.0F));
+            this.a($$37.x(), $$37.y(), $$37.z(), $$28, $$29, $$30, $$6, $$35, $$36, $$8, $$34, $$15.x(), $$15.y(), $$15.z());
          }
+      } catch (Throwable var34) {
+         if ($$18 != null) {
+            try {
+               $$18.close();
+            } catch (Throwable var33) {
+               var34.addSuppressed(var33);
+            }
+         }
+
+         throw var34;
       }
+
+      if ($$18 != null) {
+         $$18.close();
+      }
+   }
+
+   default eyb a(exx.a $$0, float $$1, float $$2, float $$3) {
+      return this.a($$0.a(), $$1, $$2, $$3);
+   }
+
+   default eyb a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
+      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
+   }
+
+   default eyb b(exx.a $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
+      return this.a($$4.x(), $$4.y(), $$4.z());
    }
 }

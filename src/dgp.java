@@ -1,114 +1,75 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
 
-public class dgp extends dgl {
+public class dgp extends dkv implements ddh {
    public static final MapCodec<dgp> a = b(dgp::new);
-   private static final double c = 0.13;
-   private static final double e = 0.08;
-   private static final double f = 0.05;
-   private static final int g = 20;
-   protected static final ety b = dcv.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
    @Override
    public MapCodec<dgp> a() {
       return a;
    }
 
-   public dgp(dpx.d $$0) {
+   public dgp(dqg.d $$0) {
       super($$0);
    }
 
-   private static boolean c(bql $$0) {
-      return $$0 instanceof bre || $$0 instanceof cmg || $$0 instanceof cgw || $$0 instanceof cmi;
+   @Override
+   public boolean b(dag $$0, in $$1, dqh $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected ety b(dpy $$0, cza $$1, im $$2, etk $$3) {
-      return b;
+   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
+      return true;
    }
 
    @Override
-   public void a(czu $$0, dpy $$1, im $$2, bql $$3, float $$4) {
-      $$3.a(auz.mq, 1.0F, 1.0F);
-      if (!$$0.B) {
-         $$0.a($$3, (byte)54);
-      }
+   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
+      in $$4 = $$2.c();
+      dqh $$5 = ddg.bt.n();
+      Optional<iw.c<eft>> $$6 = $$0.H_().d(le.aI).b(sh.n);
 
-      if ($$3.a($$4, 0.2F, $$0.ai().k())) {
-         $$3.a(this.aJ.g(), this.aJ.a() * 0.5F, this.aJ.b() * 0.75F);
-      }
-   }
+      label49:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         in $$8 = $$4;
 
-   @Override
-   protected void a(dpy $$0, czu $$1, im $$2, bql $$3) {
-      if (this.a($$2, $$3)) {
-         this.a($$3, $$2);
-         this.d($$3);
-         this.a($$1, $$3);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private boolean a(im $$0, bql $$1) {
-      if ($$1.aC()) {
-         return false;
-      } else if ($$1.du() > (double)$$0.v() + 0.9375 - 1.0E-7) {
-         return false;
-      } else if ($$1.dq().d >= -0.08) {
-         return false;
-      } else {
-         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.ds());
-         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dy());
-         double $$4 = 0.4375 + (double)($$1.dh() / 2.0F);
-         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
-      }
-   }
-
-   private void a(bql $$0, im $$1) {
-      if ($$0 instanceof aqf && $$0.dN().Y() % 20L == 0L) {
-         am.K.a((aqf)$$0, $$0.dN().a_($$1));
-      }
-   }
-
-   private void d(bql $$0) {
-      etf $$1 = $$0.dq();
-      if ($$1.d < -0.13) {
-         double $$2 = -0.05 / $$1.d;
-         $$0.g(new etf($$1.c * $$2, -0.05, $$1.e * $$2));
-      } else {
-         $$0.g(new etf($$1.c, -0.05, $$1.e));
-      }
-
-      $$0.n();
-   }
-
-   private void a(czu $$0, bql $$1) {
-      if (c($$1)) {
-         if ($$0.z.a(5) == 0) {
-            $$1.a(auz.mq, 1.0F, 1.0F);
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
+               continue label49;
+            }
          }
 
-         if (!$$0.B && $$0.z.a(5) == 0) {
-            $$0.a($$1, (byte)53);
+         dqh $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            ((ddh)$$5.b()).a($$0, $$1, $$8, $$10);
+         }
+
+         if ($$10.i()) {
+            iw<eft> $$12;
+            if ($$1.a(8) == 0) {
+               List<dyq<?, ?>> $$11 = $$0.t($$8).a().d().a();
+               if ($$11.isEmpty()) {
+                  continue;
+               }
+
+               $$12 = ((ebu)$$11.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$12 = $$6.get();
+            }
+
+            $$12.a().a($$0, $$0.l().g(), $$1, $$8);
          }
       }
    }
 
-   public static void a(bql $$0) {
-      a($$0, 5);
-   }
-
-   public static void b(bql $$0) {
-      a($$0, 10);
-   }
-
-   private static void a(bql $$0, int $$1) {
-      if ($$0.dN().B) {
-         dpy $$2 = dcx.pg.n();
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$0.dN().a(new kn(kw.b, $$2), $$0.ds(), $$0.du(), $$0.dy(), 0.0, 0.0, 0.0);
-         }
-      }
+   @Override
+   public ddh.a aq_() {
+      return ddh.a.a;
    }
 }

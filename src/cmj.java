@@ -1,192 +1,82 @@
 import javax.annotation.Nullable;
 
-public class cmj extends cmi implements bqx, cmk {
-   private static final int i = 27;
-   private je<csd> j = je.a(27, csd.i);
-   @Nullable
-   private akf k;
-   private long l;
-
-   public cmj(bqr<? extends cmi> $$0, czu $$1) {
+public class cmj extends cmg {
+   public cmj(brn<? extends cmj> $$0, dad $$1) {
       super($$0, $$1);
    }
 
-   public cmj(czu $$0, double $$1, double $$2, double $$3) {
-      super(bqr.r, $$0);
-      this.a_($$1, $$2, $$3);
-      this.L = $$1;
-      this.M = $$2;
-      this.N = $$3;
+   public cmj(dad $$0, bsa $$1) {
+      super(brn.G, $$1, $$0);
    }
 
    @Override
-   protected float w() {
-      return 0.15F;
+   protected csu r() {
+      return ctc.sf;
    }
 
    @Override
-   protected int y() {
-      return 1;
-   }
-
-   @Override
-   protected void b(ty $$0) {
-      super.b($$0);
-      this.a($$0, this.dP());
-   }
-
-   @Override
-   protected void a(ty $$0) {
+   protected void a(etm $$0) {
       super.a($$0);
-      this.b($$0, this.dP());
+      $$0.a().a(this.dO().b(this, this.u()), 0.0F);
    }
 
    @Override
-   public void a(bpj $$0) {
-      this.b(this.ag_());
-      this.a($$0, this.dN(), this);
-   }
+   protected void a(etn $$0) {
+      super.a($$0);
 
-   @Override
-   public void a(bql.c $$0) {
-      if (!this.dN().B && $$0.a()) {
-         bom.a(this.dN(), this, this);
+      for (int $$1 = 0; $$1 < 32; $$1++) {
+         this.dN().a(kx.Z, this.ds(), this.du() + this.ah.j() * 2.0, this.dy(), this.ah.k(), 0.0, this.ah.k());
       }
 
-      super.a($$0);
-   }
+      if (!this.dN().B && !this.dI()) {
+         brh $$2 = this.u();
+         if ($$2 instanceof aqi $$3) {
+            if ($$3.d.c() && $$3.dN() == this.dN() && !$$3.fJ()) {
+               if (this.ah.i() < 0.05F && this.dN().aa().b(czz.e)) {
+                  cie $$4 = brn.I.a(this.dN());
+                  if ($$4 != null) {
+                     $$4.b($$2.ds(), $$2.du(), $$2.dy(), $$2.dD(), $$2.dF());
+                     this.dN().b($$4);
+                  }
+               }
 
-   @Override
-   public boq a(ckl $$0, bop $$1) {
-      if (this.r($$0) && !$$0.fP()) {
-         return super.a($$0, $$1);
-      } else {
-         boq $$2 = this.c_($$0);
-         if ($$2.a()) {
-            this.a(dur.k, $$0);
-            cjc.a($$0, true);
+               if ($$2.bP()) {
+                  $$3.a(this.ds(), this.du(), this.dy());
+               } else {
+                  $$2.c(this.ds(), this.du(), this.dy());
+               }
+
+               $$2.n();
+               $$2.a(this.dO().k(), 5.0F);
+               this.dN().a(null, this.ds(), this.du(), this.dy(), avc.uh, avd.h);
+            }
+         } else if ($$2 != null) {
+            $$2.c(this.ds(), this.du(), this.dy());
+            $$2.n();
          }
 
-         return $$2;
+         this.am();
       }
    }
 
    @Override
-   public void b(ckl $$0) {
-      $$0.a(this);
-      if (!$$0.dN().B) {
-         this.a(dur.k, $$0);
-         cjc.a($$0, true);
-      }
-   }
-
-   @Override
-   public cry ag_() {
-      return switch (this.x()) {
-         case b -> csg.nX;
-         case c -> csg.nZ;
-         case d -> csg.ob;
-         case e -> csg.od;
-         case f -> csg.of;
-         case g -> csg.oh;
-         case h -> csg.oj;
-         case i -> csg.ol;
-         default -> csg.nV;
-      };
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public csd a(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public csd a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public csd b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, csd $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public brv a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(ckl $$0) {
-      return this.g($$0);
-   }
-
-   @Nullable
-   @Override
-   public cnh createMenu(int $$0, ckk $$1, ckl $$2) {
-      if (this.k != null && $$2.N_()) {
-         return null;
+   public void l() {
+      brh $$0 = this.u();
+      if ($$0 instanceof aqi && !$$0.bB() && this.dN().aa().b(czz.Y)) {
+         this.am();
       } else {
-         this.e($$1.m);
-         return cno.a($$0, $$1, this);
+         super.l();
       }
-   }
-
-   public void e(@Nullable ckl $$0) {
-      this.f($$0);
    }
 
    @Nullable
    @Override
-   public akf B() {
-      return this.k;
-   }
+   public brh b(aqh $$0) {
+      brh $$1 = this.u();
+      if ($$1 != null && $$1.dN().ae() != $$0.ae()) {
+         this.c(null);
+      }
 
-   @Override
-   public void a(@Nullable akf $$0) {
-      this.k = $$0;
-   }
-
-   @Override
-   public long C() {
-      return this.l;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.l = $$0;
-   }
-
-   @Override
-   public je<csd> D() {
-      return this.j;
-   }
-
-   @Override
-   public void E() {
-      this.j = je.a(this.b(), csd.i);
-   }
-
-   @Override
-   public void c(ckl $$0) {
-      this.dN().a(dur.j, this.dl(), dur.a.a($$0));
+      return super.b($$0);
    }
 }

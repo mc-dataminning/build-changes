@@ -1,32 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record bw(Optional<Boolean> d) implements bs {
-   public static final bw b = new bw(Optional.empty());
-   public static final MapCodec<bw> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(axe.a(Codec.BOOL, "in_open_water").forGetter(bw::b)).apply($$0, bw::new));
-
-   public static bw a(boolean $$0) {
-      return new bw(Optional.of($$0));
+public class bw extends de<bw.a> {
+   @Override
+   public Codec<bw.a> a() {
+      return bw.a.a;
    }
 
-   @Override
-   public MapCodec<bw> a() {
-      return bt.b;
+   public void a(aqi $$0, csz $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   @Override
-   public boolean a(bql $$0, aqe $$1, @Nullable etf $$2) {
-      if (this.d.isEmpty()) {
-         return true;
-      } else {
-         return $$0 instanceof ckz $$3 ? this.d.get() == $$3.p() : false;
+   public static record a(Optional<bc> b, Optional<ch> c) implements de.a {
+      public static final Codec<bw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(axh.a(br.b, "player").forGetter(bw.a::a), axh.a(ch.a, "item").forGetter(bw.a::b)).apply($$0, bw.a::new)
+      );
+
+      public static an<bw.a> a(ch.a $$0) {
+         return am.k.a(new bw.a(Optional.empty(), Optional.of($$0.b())));
       }
-   }
 
-   public Optional<Boolean> b() {
-      return this.d;
+      public boolean a(csz $$0) {
+         return !this.c.isPresent() || this.c.get().a($$0);
+      }
+
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
+
+      public Optional<ch> b() {
+         return this.c;
+      }
    }
 }

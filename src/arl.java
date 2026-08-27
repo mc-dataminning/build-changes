@@ -1,15 +1,36 @@
-import java.util.function.Consumer;
+public class arl implements ajh {
+   private static final wu a = wu.c("multiplayer.status.request_handled");
+   private final ajg b;
+   private final vs c;
+   private boolean d;
 
-public class arl implements aqu {
-   public static final aqu.a a = new aqu.a("join_world");
-
-   @Override
-   public void a(Consumer<yz<?>> $$0) {
-      $$0.accept(aau.a);
+   public arl(ajg $$0, vs $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public aqu.a a() {
-      return a;
+   public void a(wu $$0) {
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.i();
+   }
+
+   @Override
+   public void a(aji $$0) {
+      if (this.d) {
+         this.c.a(a);
+      } else {
+         this.d = true;
+         this.c.a(new ajf(this.b));
+      }
+   }
+
+   @Override
+   public void a(ajc $$0) {
+      this.c.a(new aiz($$0.b()));
+      this.c.a(a);
    }
 }

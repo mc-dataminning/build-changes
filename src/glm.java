@@ -1,24 +1,14 @@
-public class glm extends gkj<cgj, fuh<cgj>> {
-   private static final akf a = new akf("textures/entity/wither/wither_armor.png");
-   private final fuh<cgj> b;
+public class glm<T extends bsc & cir, M extends fsb<T>> extends gli<T, M> {
+   private final ftw<T> a;
+   private final akh b;
 
-   public glm(gii<cgj, fuh<cgj>> $$0, fun $$1) {
+   public glm(gis<T, M> $$0, fux $$1, fuz $$2, akh $$3) {
       super($$0);
-      this.b = new fuh<>($$1.a(fuq.bW));
+      this.b = $$3;
+      this.a = new ftw<>($$1.a($$2));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return axw.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected akf a() {
-      return a;
-   }
-
-   @Override
-   protected frr<cgj> b() {
-      return this.b;
+   public void a(exx $$0, gbo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.a, this.b, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

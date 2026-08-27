@@ -1,66 +1,32 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public enum eua implements ayq {
-   a(0, "list"),
-   b(1, "sidebar"),
-   c(2, "below_name"),
-   d(3, "sidebar.team.black"),
-   e(4, "sidebar.team.dark_blue"),
-   f(5, "sidebar.team.dark_green"),
-   g(6, "sidebar.team.dark_aqua"),
-   h(7, "sidebar.team.dark_red"),
-   i(8, "sidebar.team.dark_purple"),
-   j(9, "sidebar.team.gold"),
-   k(10, "sidebar.team.gray"),
-   l(11, "sidebar.team.dark_gray"),
-   m(12, "sidebar.team.blue"),
-   n(13, "sidebar.team.green"),
-   o(14, "sidebar.team.aqua"),
-   p(15, "sidebar.team.red"),
-   q(16, "sidebar.team.light_purple"),
-   r(17, "sidebar.team.yellow"),
-   s(18, "sidebar.team.white");
+public class eua implements eub {
+   private final DoubleList a;
 
-   public static final ayq.a<eua> t = ayq.a(eua::values);
-   public static final IntFunction<eua> u = awn.a(eua::a, values(), awn.a.a);
-   private final int v;
-   private final String w;
-
-   private eua(int $$0, String $$1) {
-      this.v = $$0;
-      this.w = $$1;
-   }
-
-   public int a() {
-      return this.v;
+   public eua(DoubleList $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public String c() {
-      return this.w;
+   public boolean a(eub.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   @Nullable
-   public static eua a(n $$0) {
-      return switch ($$0) {
-         case a -> d;
-         case b -> e;
-         case c -> f;
-         case d -> g;
-         case e -> h;
-         case f -> i;
-         case g -> j;
-         case h -> k;
-         case i -> l;
-         case j -> m;
-         case k -> n;
-         case l -> o;
-         case m -> p;
-         case n -> q;
-         case o -> r;
-         case p -> s;
-         case r, u, t, v, q, s -> null;
-      };
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

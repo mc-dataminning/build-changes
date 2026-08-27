@@ -1,48 +1,47 @@
-import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.Map;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import java.util.Collection;
+import java.util.Collections;
 
 public class amo {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ws.c("commands.help.failed"));
+   public static final int a = 2;
 
-   public static void a(CommandDispatcher<ec> $$0) {
+   public static void a(CommandDispatcher<ed> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("help").executes($$1 -> {
-               Map<CommandNode<ec>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (ec)$$1.getSource());
-
-               for (String $$3 : $$2.values()) {
-                  ((ec)$$1.getSource()).a(() -> ws.b("/" + $$3), false);
-               }
-
-               return $$2.size();
-            }))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("gamemode").requires($$0x -> $$0x.c(2)))
             .then(
-               ed.a("command", StringArgumentType.greedyString())
-                  .executes(
-                     $$1 -> {
-                        ParseResults<ec> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (ec)$$1.getSource());
-                        if ($$2.getContext().getNodes().isEmpty()) {
-                           throw a.create();
-                        } else {
-                           Map<CommandNode<ec>, String> $$3 = $$0.getSmartUsage(
-                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (ec)$$1.getSource()
-                           );
-
-                           for (String $$4 : $$3.values()) {
-                              ((ec)$$1.getSource()).a(() -> ws.b("/" + $$2.getReader().getString() + " " + $$4), false);
-                           }
-
-                           return $$3.size();
-                        }
-                     }
-                  )
+               ((RequiredArgumentBuilder)ee.a("gamemode", er.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((ed)$$0x.getSource()).h()), er.a($$0x, "gamemode"))))
+                  .then(ee.a("target", eq.d()).executes($$0x -> a($$0x, eq.f($$0x, "target"), er.a($$0x, "gamemode"))))
             )
       );
+   }
+
+   private static void a(ed $$0, aqi $$1, daa $$2) {
+      wu $$3 = wu.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> wu.a("commands.gamemode.success.self", $$3), true);
+      } else {
+         if ($$0.e().aa().b(czz.p)) {
+            $$1.a(wu.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> wu.a("commands.gamemode.success.other", $$1.O_(), $$3), true);
+      }
+   }
+
+   private static int a(CommandContext<ed> $$0, Collection<aqi> $$1, daa $$2) {
+      int $$3 = 0;
+
+      for (aqi $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((ed)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
+      }
+
+      return $$3;
    }
 }

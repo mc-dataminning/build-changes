@@ -1,20 +1,33 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmp extends dlw {
-   public static final MapCodec<dmp> b = b(dmp::new);
+public class dmp extends dky implements dmj {
+   public static final MapCodec<dmp> I = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dmj.a.e.fieldOf("weathering_state").forGetter(def::c), dqh.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, dmp::new)
+   );
+   private final dmj.a J;
 
    @Override
    public MapCodec<dmp> a() {
-      return b;
+      return I;
    }
 
-   protected dmp(dpx.d $$0) {
-      super(djx.b.d, $$0);
+   public dmp(dmj.a $$0, dqh $$1, dqg.d $$2) {
+      super($$1, $$2);
+      this.J = $$0;
    }
 
    @Override
-   public void a(czu $$0, im $$1, dpy $$2, @Nullable bre $$3, csd $$4) {
-      dmo.a($$0, $$1);
+   protected void b(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean d_(dqh $$0) {
+      return dmj.c($$0.b()).isPresent();
+   }
+
+   public dmj.a k() {
+      return this.J;
    }
 }

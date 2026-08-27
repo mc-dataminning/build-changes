@@ -1,4 +1,6 @@
-public interface ate extends ato, AutoCloseable {
-   @Override
-   void close();
+import java.util.function.Consumer;
+
+@FunctionalInterface
+public interface ate {
+   void loadPacks(Consumer<asz> var1);
 }

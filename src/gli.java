@@ -1,48 +1,48 @@
-public class gli extends gky<cdt, frj<cdt>> {
-   private static final akf a = new akf("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final akf b = new akf("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final akf c = new akf("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final akf d = new akf("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final akf e = new akf("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final akf f = new akf("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final akf g = new akf("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final akf h = new akf("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final akf i = new akf("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final akf j = new akf("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final akf k = new akf("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final akf l = new akf("textures/entity/fish/tropical_b_pattern_6.png");
-   private final ftx<cdt> m;
-   private final fty<cdt> n;
+public abstract class gli<T extends brh, M extends fsb<T>> {
+   private final gis<T, M> a;
 
-   public gli(gii<cdt, frj<cdt>> $$0, fun $$1) {
-      super($$0);
-      this.m = new ftx<>($$1.a(fuq.bM));
-      this.n = new fty<>($$1.a(fuq.bK));
+   public gli(gis<T, M> $$0) {
+      this.a = $$0;
    }
 
-   public void a(exn $$0, gbe $$1, int $$2, cdt $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cdt.b $$10 = $$3.gA();
-
-      frr<cdt> $$11 = (frr<cdt>)(switch ($$10.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
-
-      akf $$12 = switch ($$10) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      float[] $$13 = $$3.gz().d();
-      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
+   protected static <T extends bsa> void a(
+      fsb<T> $$0,
+      fsb<T> $$1,
+      akh $$2,
+      exx $$3,
+      gbo $$4,
+      int $$5,
+      T $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      if (!$$6.cf()) {
+         $$0.a($$1);
+         $$1.a($$6, $$7, $$8, $$12);
+         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
+         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
+      }
    }
+
+   protected static <T extends bsa> void a(fsb<T> $$0, akh $$1, exx $$2, gbo $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
+      eyb $$9 = $$3.getBuffer(gbw.e($$1));
+      $$0.a($$2, $$9, $$4, ghy.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   }
+
+   public M c() {
+      return this.a.a();
+   }
+
+   protected akh a(T $$0) {
+      return this.a.a($$0);
+   }
+
+   public abstract void a(exx var1, gbo var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

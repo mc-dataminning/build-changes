@@ -1,110 +1,74 @@
-public class gsf implements gsj {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final ws f = ws.a("tutorial.move.title", gsi.a("forward"), gsi.a("left"), gsi.a("back"), gsi.a("right"));
-   private static final ws g = ws.a("tutorial.move.description", gsi.a("jump"));
-   private static final ws h = ws.c("tutorial.look.title");
-   private static final ws i = ws.c("tutorial.look.description");
-   private final gsi j;
-   private fhf k;
-   private fhf l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-   public gsf(gsi $$0) {
-      this.j = $$0;
+public class gsf {
+   public static final gsf a = new gsf(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<gsb<gsf.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
+
+   protected gsf(Ticker $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
+   public synchronized void a(gsb<gsf.a> $$0) {
+      this.a($$0, (Function<gsb<gsf.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   }
 
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
+   public synchronized void a(gsb<gsf.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<gsb<gsf.a>, Stopwatch>)($$1x -> $$1));
+   }
 
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
-         }
+   private synchronized void a(gsb<gsf.a> $$0, Function<gsb<gsf.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
+   }
 
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(gsk.b);
-         } else {
-            this.j.a(gsk.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new fhf(fhf.a.a, f, g, true);
-            this.j.e().aA().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new fhf(fhf.a.b, h, i, true);
-            this.j.e().aA().a(this.l);
+   public synchronized void b(gsb<gsf.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
+      } else {
+         if ($$1.isRunning()) {
+            $$1.stop();
          }
       }
    }
 
-   @Override
-   public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
-      }
+   public void a(gry $$0) {
+      $$0.send(grz.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((gsb<gsf.a>)$$1, new gsf.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), grz.g.a());
+               }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(gsb.B, new gsf.a((int)$$1)));
+            this.d.clear();
+         }
+      });
    }
 
-   @Override
-   public void a(gae $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
-      }
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
+   public static record a(int b) {
+      public static final Codec<gsf.a> a = Codec.INT.xmap(gsf.a::new, $$0 -> $$0.b);
+
+      public int a() {
+         return this.b;
       }
    }
 }

@@ -1,39 +1,25 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class ffj extends fes {
-   private final fef a;
+public class ffj {
+   private static final axl a = axl.codepoint(32, xr.a);
 
-   public ffj(fef $$0, ws $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+   private static String a(String $$0) {
+      return fde.Q().m.K().c() ? $$0 : n.a($$0);
    }
 
-   @Override
-   protected void b(feh $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.C() + this.x() / 2;
-      int $$5 = this.D() + this.v() / 2;
-      ws $$6 = this.y();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = fke.a(ac.b());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
-   }
-
-   @Override
-   protected void a(fiq $$0) {
-   }
-
-   @Override
-   public void a(grf $$0) {
-   }
-
-   @Override
-   public boolean B() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public fee a(fiw $$0) {
-      return null;
+   public static List<axl> a(wz $$0, int $$1, fep $$2) {
+      fcu $$3 = new fcu();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(wz.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, xr.a);
+      List<axl> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, xr.a, ($$1x, $$2x) -> {
+         axl $$3x = tv.a().a($$1x);
+         $$4.add($$2x ? axl.composite(a, $$3x) : $$3x);
+      });
+      return (List<axl>)($$4.isEmpty() ? Lists.newArrayList(new axl[]{axl.a}) : $$4);
    }
 }

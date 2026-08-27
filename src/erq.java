@@ -1,36 +1,22 @@
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Predicate;
 
-public record erq(esc b, enz c) implements erh {
-   public static final Codec<erq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(esd.a.fieldOf("value").forGetter(erq::c), enz.a.fieldOf("range").forGetter(erq::d)).apply($$0, erq::new)
-   );
+public interface erq extends eom, Predicate<eol> {
+   err b();
 
-   @Override
-   public eri b() {
-      return erj.s;
-   }
+   @FunctionalInterface
+   public interface a {
+      erq build();
 
-   @Override
-   public Set<eqq<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
+      default erq.a invert() {
+         return ern.a(this);
+      }
 
-   public boolean a(eoa $$0) {
-      return this.c.b($$0, this.b.a($$0));
-   }
+      default erf.a or(erq.a $$0) {
+         return erf.a(this, $$0);
+      }
 
-   public static erh.a a(esc $$0, enz $$1) {
-      return () -> new erq($$0, $$1);
-   }
-
-   public esc c() {
-      return this.b;
-   }
-
-   public enz d() {
-      return this.c;
+      default ere.a and(erq.a $$0) {
+         return ere.a(this, $$0);
+      }
    }
 }

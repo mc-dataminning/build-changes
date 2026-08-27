@@ -1,127 +1,56 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import org.slf4j.Logger;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Locale;
+import java.util.function.Function;
 
-public class aoz extends aub {
-   private static final Logger a = LogUtils.getLogger();
+public class aoz implements aow {
+   static final SuggestionProvider<ed> b = ($$0, $$1) -> ei.a(a($$0).a(), $$1);
+   public static final Function<String, aox.c> a = $$0 -> new aox.c() {
+         @Override
+         public aow a(CommandContext<ed> $$0x) {
+            return new aoz(aoz.a($$0), fe.c($$0, $$0));
+         }
 
-   public aoz(apa $$0, jc<ako> $$1, ent $$2) {
-      super($$0, $$1, $$2, $$0.a().H);
-      apb $$3 = $$0.a();
-      this.a($$3.F);
-      this.b($$3.G);
-      super.a($$3.W.get());
-      this.z();
-      this.x();
-      this.y();
-      this.w();
-      this.A();
-      this.C();
-      this.B();
-      if (!this.i().b().exists()) {
-         this.D();
-      }
+         @Override
+         public ArgumentBuilder<ed, ?> a(ArgumentBuilder<ed, ?> $$0x, Function<ArgumentBuilder<ed, ?>, ArgumentBuilder<ed, ?>> $$1) {
+            return $$0.then(ee.a("storage").then($$1.apply(ee.a($$0, fe.a()).suggests(aoz.b))));
+         }
+      };
+   private final ens c;
+   private final akh d;
+
+   static ens a(CommandContext<ed> $$0) {
+      return ((ed)$$0.getSource()).l().aL();
+   }
+
+   aoz(ens $$0, akh $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.b().i($$0);
+   public void a(ua $$0) {
+      this.c.a(this.d, $$0);
    }
 
    @Override
-   public void a(GameProfile $$0) {
-      super.a($$0);
-      this.B();
+   public ua a() {
+      return this.c.a(this.d);
    }
 
    @Override
-   public void b(GameProfile $$0) {
-      super.b($$0);
-      this.B();
+   public wu b() {
+      return wu.a("commands.data.storage.modified", wu.a(this.d));
    }
 
    @Override
-   public void a() {
-      this.C();
-   }
-
-   private void w() {
-      try {
-         this.g().e();
-      } catch (IOException var2) {
-         a.warn("Failed to save ip banlist: ", var2);
-      }
-   }
-
-   private void x() {
-      try {
-         this.f().e();
-      } catch (IOException var2) {
-         a.warn("Failed to save user banlist: ", var2);
-      }
-   }
-
-   private void y() {
-      try {
-         this.g().f();
-      } catch (IOException var2) {
-         a.warn("Failed to load ip banlist: ", var2);
-      }
-   }
-
-   private void z() {
-      try {
-         this.f().f();
-      } catch (IOException var2) {
-         a.warn("Failed to load user banlist: ", var2);
-      }
-   }
-
-   private void A() {
-      try {
-         this.k().f();
-      } catch (Exception var2) {
-         a.warn("Failed to load operators list: ", var2);
-      }
-   }
-
-   private void B() {
-      try {
-         this.k().e();
-      } catch (Exception var2) {
-         a.warn("Failed to save operators list: ", var2);
-      }
-   }
-
-   private void C() {
-      try {
-         this.i().f();
-      } catch (Exception var2) {
-         a.warn("Failed to load white-list: ", var2);
-      }
-   }
-
-   private void D() {
-      try {
-         this.i().e();
-      } catch (Exception var2) {
-         a.warn("Failed to save white-list: ", var2);
-      }
+   public wu a(ux $$0) {
+      return wu.a("commands.data.storage.query", wu.a(this.d), up.c($$0));
    }
 
    @Override
-   public boolean c(GameProfile $$0) {
-      return !this.o() || this.f($$0) || this.i().a($$0);
-   }
-
-   public apa b() {
-      return (apa)super.c();
-   }
-
-   @Override
-   public boolean d(GameProfile $$0) {
-      return this.k().a($$0);
+   public wu a(ev.g $$0, double $$1, int $$2) {
+      return wu.a("commands.data.storage.get", $$0.a(), wu.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

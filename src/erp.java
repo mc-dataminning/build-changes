@@ -1,59 +1,64 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record erp(Optional<Long> b, enz c) implements erh {
-   public static final Codec<erp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axe.a(Codec.LONG, "period").forGetter(erp::c), enz.a.fieldOf("value").forGetter(erp::d)).apply($$0, erp::new)
+public record erp(iw<dde> b, Optional<dk> c) implements erq {
+   public static final Codec<erp> a = axh.b(
+      RecordCodecBuilder.create($$0 -> $$0.group(ld.e.r().fieldOf("block").forGetter(erp::c), axh.a(dk.a, "properties").forGetter(erp::d)).apply($$0, erp::new)),
+      erp::a
    );
 
-   @Override
-   public eri b() {
-      return erj.r;
+   private static DataResult<erp> a(erp $$0) {
+      return $$0.d()
+         .flatMap($$1 -> $$1.a($$0.c().a().l()))
+         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
+         .orElse(DataResult.success($$0));
    }
 
    @Override
-   public Set<eqq<?>> a() {
-      return this.c.a();
+   public err b() {
+      return ers.k;
    }
 
-   public boolean a(eoa $$0) {
-      aqe $$1 = $$0.d();
-      long $$2 = $$1.Z();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   @Override
+   public Set<eqz<?>> a() {
+      return Set.of(erc.g);
    }
 
-   public static erp.a a(enz $$0) {
+   public boolean a(eol $$0) {
+      dqh $$1 = $$0.c(erc.g);
+      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   }
+
+   public static erp.a a(dde $$0) {
       return new erp.a($$0);
    }
 
-   public Optional<Long> c() {
+   public iw<dde> c() {
       return this.b;
    }
 
-   public enz d() {
+   public Optional<dk> d() {
       return this.c;
    }
 
-   public static class a implements erh.a {
-      private Optional<Long> a = Optional.empty();
-      private final enz b;
+   public static class a implements erq.a {
+      private final iw<dde> a;
+      private Optional<dk> b = Optional.empty();
 
-      public a(enz $$0) {
-         this.b = $$0;
+      public a(dde $$0) {
+         this.a = $$0.r();
       }
 
-      public erp.a a(long $$0) {
-         this.a = Optional.of($$0);
+      public erp.a a(dk.a $$0) {
+         this.b = $$0.b();
          return this;
       }
 
-      public erp a() {
+      @Override
+      public erq build() {
          return new erp(this.a, this.b);
       }
    }

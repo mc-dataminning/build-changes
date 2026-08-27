@@ -1,13 +1,22 @@
-public class gjw extends gky<cin, fra<cin>> {
-   private static final gbm a = gbm.q(new akf("textures/entity/breeze/breeze_eyes.png"));
+public class gjw extends gid<cjd, fuq<cjd>> {
+   private static final akh a = new akh("textures/entity/witch.png");
 
-   public gjw(gii<cin, fra<cin>> $$0) {
-      super($$0);
+   public gjw(ggx.a $$0) {
+      super($$0, new fuq<>($$0.a(fva.bU)), 0.5F);
+      this.a(new glv<>(this, $$0.d()));
    }
 
-   public void a(exn $$0, gbe $$1, int $$2, cin $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      exr $$10 = $$1.getBuffer(a);
-      fra<cin> $$11 = this.c();
-      gft.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, gmf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(cjd $$0, float $$1, float $$2, exx $$3, gbo $$4, int $$5) {
+      this.f.b(!$$0.eV().d());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public akh a(cjd $$0) {
+      return a;
+   }
+
+   protected void a(cjd $$0, exx $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

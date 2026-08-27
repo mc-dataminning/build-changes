@@ -1,23 +1,17 @@
-public enum dqv implements ayq {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+public enum dqv implements ayt {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final String f;
+   private final String e;
 
    private dqv(String $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.f;
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.e;
    }
 }

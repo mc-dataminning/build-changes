@@ -1,17 +1,56 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface atp extends ati {
-   @Override
-   default CompletableFuture<Void> a(ati.a $$0, ato $$1, ble $$2, ble $$3, Executor $$4, Executor $$5) {
-      return $$0.a(ayy.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+public class atp {
+   private final asd a;
+   private final atj<InputStream> b;
+   private final atj<att> c;
+   @Nullable
+   private att d;
+
+   public atp(asd $$0, atj<InputStream> $$1, atj<att> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   void a(ato var1);
+   public atp(asd $$0, atj<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = att.b;
+      this.d = att.a;
+   }
+
+   public asd a() {
+      return this.a;
+   }
+
+   public String b() {
+      return this.a.b();
+   }
+
+   public Optional<asy> c() {
+      return this.a.c();
+   }
+
+   public InputStream d() throws IOException {
+      return this.b.get();
+   }
+
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
+   }
+
+   public att f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
+      }
+
+      return this.d;
+   }
 }

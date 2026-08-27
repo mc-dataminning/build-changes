@@ -1,91 +1,65 @@
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
-public interface blk {
-   blk f = (blk)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? blj.a() : new blk.a());
+public record blk<T>(blc<StringReader> a, bla<T> b) {
+   public Optional<T> a(blf<StringReader> $$0) {
+      return $$0.a(this.b);
+   }
 
-   boolean a(bli var1);
+   public T a(StringReader $$0) throws CommandSyntaxException {
+      bld.a<StringReader> $$1 = new bld.a<>();
+      blo $$2 = new blo(this.a(), $$1, $$0);
+      Optional<T> $$3 = this.a($$2);
+      if ($$3.isPresent()) {
+         return $$3.get();
+      } else {
+         List<Exception> $$4 = $$1.a().stream().<Exception>mapMulti(($$0x, $$1x) -> {
+            if ($$0x.c() instanceof Exception $$3x) {
+               $$1x.accept($$3x);
+            }
+         }).toList();
 
-   Path b();
+         for (Exception $$5 : $$4) {
+            if ($$5 instanceof CommandSyntaxException $$6) {
+               throw $$6;
+            }
+         }
 
-   boolean c();
-
-   boolean d();
-
-   void a(float var1);
-
-   void a(vr var1, zb<?> var2, SocketAddress var3, int var4);
-
-   void b(vr var1, zb<?> var2, SocketAddress var3, int var4);
-
-   void a(dtk var1, czb var2, dtj var3, int var4);
-
-   void b(dtk var1, czb var2, dtj var3, int var4);
-
-   @Nullable
-   bln e();
-
-   @Nullable
-   bln a(czb var1, ake<czu> var2, String var3);
-
-   public static class a implements blk {
-      private static final Logger b = LogUtils.getLogger();
-      static final bln a = () -> {
-      };
-
-      @Override
-      public boolean a(bli $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
+         if ($$4.size() == 1 && $$4.get(0) instanceof RuntimeException $$7) {
+            throw $$7;
+         } else {
+            throw new IllegalStateException("Failed to parse: " + $$1.a().stream().map(ble::toString).collect(Collectors.joining(", ")));
+         }
       }
+   }
 
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
-      }
+   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
+      StringReader $$1 = new StringReader($$0.getInput());
+      $$1.setCursor($$0.getStart());
+      bld.a<StringReader> $$2 = new bld.a<>();
+      blo $$3 = new blo(this.a(), $$2, $$1);
+      this.a($$3);
+      List<ble<StringReader>> $$4 = $$2.a();
+      if ($$4.isEmpty()) {
+         return $$0.buildFuture();
+      } else {
+         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
 
-      @Override
-      public boolean c() {
-         return false;
-      }
+         for (ble<StringReader> $$6 : $$4) {
+            if ($$6.b() instanceof bln $$7) {
+               ei.a($$7.a(), $$5);
+            } else {
+               ei.b($$6.b().possibleValues($$3), $$5);
+            }
+         }
 
-      @Override
-      public boolean d() {
-         return false;
-      }
-
-      @Override
-      public void a(vr $$0, zb<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void b(vr $$0, zb<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void a(dtk $$0, czb $$1, dtj $$2, int $$3) {
-      }
-
-      @Override
-      public void b(dtk $$0, czb $$1, dtj $$2, int $$3) {
-      }
-
-      @Override
-      public void a(float $$0) {
-      }
-
-      @Override
-      public bln e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bln a(czb $$0, ake<czu> $$1, String $$2) {
-         return null;
+         return $$5.buildFuture();
       }
    }
 }

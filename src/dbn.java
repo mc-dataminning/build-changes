@@ -1,76 +1,57 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class dbn extends dcv {
-   public static final int a = 3;
-   public static final dqp b = dqo.r;
+public class dbn extends dbg implements dbe.a {
+   public static final Codec<dbn> b = dbc.c.fieldOf("biome").xmap(dbn::new, $$0 -> $$0.c).stable().codec();
+   private final iw<dbc> c;
 
-   @Override
-   protected abstract MapCodec<? extends dbn> a();
-
-   protected dbn(dpx.d $$0) {
-      super($$0);
-   }
-
-   protected abstract Iterable<etf> b(dpy var1);
-
-   public static boolean c(dpy $$0) {
-      return $$0.b(b) && ($$0.a(avo.ae) || $$0.a(avo.bk)) && $$0.c(b);
+   public dbn(iw<dbc> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected void a(czu $$0, dpy $$1, etb $$2, cld $$3) {
-      if (!$$0.B && $$3.bO() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
-      }
-   }
-
-   protected boolean d(dpy $$0) {
-      return !$$0.c(b);
+   protected Stream<iw<dbc>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   public void a(dpy $$0, czu $$1, im $$2, ayd $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
-
-   private static void a(czu $$0, etf $$1, ayd $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(kw.ab, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, auz.dJ, ava.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
-         }
-      }
-
-      $$0.a(kw.aG, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable ckl $$0, dpy $$1, czv $$2, im $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof dbn) {
-         ((dbn)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(kw.ab, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
-      }
-
-      $$2.a(null, $$3, auz.dL, ava.e, 1.0F, 1.0F);
-      $$2.a($$0, dur.c, $$3);
-   }
-
-   private static void a(czv $$0, dpy $$1, im $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
+   protected Codec<? extends dbg> a() {
+      return b;
    }
 
    @Override
-   protected void a(dpy $$0, czu $$1, im $$2, czm $$3, BiConsumer<csd, im> $$4) {
-      if ($$3.j() == czm.a.d && !$$1.x_() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
-      }
+   public iw<dbc> getNoiseBiome(int $$0, int $$1, int $$2, dbl.f $$3) {
+      return this.c;
+   }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+   @Override
+   public iw<dbc> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
+   }
+
+   @Nullable
+   @Override
+   public Pair<in, iw<dbc>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<iw<dbc>> $$5, ayg $$6, boolean $$7, dbl.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new in($$0, $$1, $$2), this.c) : Pair.of(new in($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   @Override
+   public Pair<in, iw<dbc>> a(in $$0, int $$1, int $$2, int $$3, Predicate<iw<dbc>> $$4, dbl.f $$5, dag $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
+
+   @Override
+   public Set<iw<dbc>> a(int $$0, int $$1, int $$2, int $$3, dbl.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

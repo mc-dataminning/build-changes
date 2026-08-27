@@ -1,64 +1,88 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.stream.IntStream;
+import org.slf4j.Logger;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
 
-public class bnq extends bnv {
-   public static final Codec<bnq> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
-               )
-               .apply($$0, bnq::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float f;
-   private final int g;
-   private final int h;
+public class bnq implements bnj {
+   private static final Logger a = LogUtils.getLogger();
+   private final Set<bnh> b = new ObjectOpenHashSet();
+   private final bnp c = new bnp();
 
-   public static bnq a(float $$0, float $$1, int $$2, int $$3) {
-      return new bnq($$0, $$1, $$2, $$3);
+   public bnq(LongSupplier $$0, boolean $$1) {
+      this.b.add(a($$0));
+      if ($$1) {
+         this.b.addAll(a());
+      }
    }
 
-   private bnq(float $$0, float $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-   }
+   public static Set<bnh> a() {
+      Builder<bnh> $$0 = ImmutableSet.builder();
 
-   @Override
-   public int a(ayd $$0) {
-      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
-   }
+      try {
+         bnq.a $$1 = new bnq.a();
+         IntStream.range(0, $$1.a).mapToObj($$1x -> bnh.a("cpu#" + $$1x, bng.h, () -> $$1.a($$1))).forEach($$0::add);
+      } catch (Throwable var2) {
+         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
+      }
 
-   public static int a(ayd $$0, float $$1, float $$2, float $$3, float $$4) {
-      return (int)axw.a(axw.c($$0, $$1, $$2), $$3, $$4);
-   }
-
-   @Override
-   public int a() {
-      return this.g;
+      $$0.add(bnh.a("heap MiB", bng.e, () -> (double)((float)(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576.0F)));
+      $$0.addAll(bni.a.a());
+      return $$0.build();
    }
 
    @Override
-   public int b() {
-      return this.h;
+   public Set<bnh> a(Supplier<bly> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 
-   @Override
-   public bnw<?> c() {
-      return bnw.f;
+   public static bnh a(final LongSupplier $$0) {
+      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
+         public long read() {
+            return $$0.getAsLong();
+         }
+      });
+      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
+         if ($$0x.isRunning()) {
+            $$0x.stop();
+         }
+
+         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
+         $$0x.reset();
+         return (double)$$1x;
+      };
+      bnh.d $$3 = new bnh.d(2.0F);
+      return bnh.a("ticktime", bng.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
    }
 
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+   static class a {
+      private final SystemInfo b = new SystemInfo();
+      private final CentralProcessor c = this.b.getHardware().getProcessor();
+      public final int a = this.c.getLogicalProcessorCount();
+      private long[][] d = this.c.getProcessorCpuLoadTicks();
+      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+      private long f;
+
+      public double a(int $$0) {
+         long $$1 = System.currentTimeMillis();
+         if (this.f == 0L || this.f + 501L < $$1) {
+            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+            this.d = this.c.getProcessorCpuLoadTicks();
+            this.f = $$1;
+         }
+
+         return this.e[$$0] * 100.0;
+      }
    }
 }

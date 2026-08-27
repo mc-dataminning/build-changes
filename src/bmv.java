@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import jdk.jfr.consumer.RecordedEvent;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bmv {
+public record bmv(String a, String b, int c, int d) {
+   public static bmv a(RecordedEvent $$0) {
+      return new bmv($$0.getString("level"), $$0.getString("dimension"), $$0.getInt("chunkPosX"), $$0.getInt("chunkPosZ"));
+   }
 }

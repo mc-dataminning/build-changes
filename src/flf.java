@@ -1,133 +1,37 @@
-enum flf {
-   a(
-      new flf.a(
-         new akf("advancements/tab_above_left_selected"), new akf("advancements/tab_above_middle_selected"), new akf("advancements/tab_above_right_selected")
-      ),
-      new flf.a(new akf("advancements/tab_above_left"), new akf("advancements/tab_above_middle"), new akf("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new flf.a(
-         new akf("advancements/tab_below_left_selected"), new akf("advancements/tab_below_middle_selected"), new akf("advancements/tab_below_right_selected")
-      ),
-      new flf.a(new akf("advancements/tab_below_left"), new akf("advancements/tab_below_middle"), new akf("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new flf.a(
-         new akf("advancements/tab_left_top_selected"), new akf("advancements/tab_left_middle_selected"), new akf("advancements/tab_left_bottom_selected")
-      ),
-      new flf.a(new akf("advancements/tab_left_top"), new akf("advancements/tab_left_middle"), new akf("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new flf.a(
-         new akf("advancements/tab_right_top_selected"), new akf("advancements/tab_right_middle_selected"), new akf("advancements/tab_right_bottom_selected")
-      ),
-      new flf.a(new akf("advancements/tab_right_top"), new akf("advancements/tab_right_middle"), new akf("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import javax.annotation.Nullable;
 
-   private final flf.a e;
-   private final flf.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public abstract class flf extends fkv {
+   protected final fdh<?>[] r;
+   @Nullable
+   private ffc a;
+   protected fgb s;
 
-   private flf(flf.a $$0, flf.a $$1, int $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public flf(fld $$0, fdi $$1, wu $$2, fdh<?>[] $$3) {
+      super($$0, $$1, $$2);
+      this.r = $$3;
    }
 
-   public int a() {
-      return this.i;
-   }
-
-   public void a(feh $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      flf.a $$5 = $$3 ? this.e : this.f;
-      akf $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
-      } else {
-         $$6 = $$5.b();
+   @Override
+   protected void aM_() {
+      this.s = this.c(new fgb(this.m, this.n, this.o, this));
+      this.s.a(this.r);
+      this.a = this.s.b(this.c.as());
+      if (this.a != null) {
+         this.a.j = this.m.aZ().a();
       }
 
-      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
+      super.aM_();
    }
 
-   public void a(feh $$0, int $$1, int $$2, int $$3, csd $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
+   @Override
+   protected void c() {
+      super.c();
+      this.s.a(this.n, this.d);
+   }
+
+   public void C() {
+      if (this.a instanceof ffl) {
+         ((ffl)this.a).a(this.c.as().c());
       }
-
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
-      }
-   }
-
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
-      }
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
-   }
-
-   static record a(akf a, akf b, akf c) {
    }
 }

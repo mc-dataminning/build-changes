@@ -1,84 +1,44 @@
-public abstract class ege extends egk {
-   protected final int a;
-   protected final int b;
-   protected final int c;
-   protected int d = -1;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-   protected ege(egx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, ir $$7) {
-      super($$0, 0, egk.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
-      this.a = $$4;
-      this.b = $$5;
-      this.c = $$6;
-      this.a($$7);
+public class ege {
+   public static final Codec<ege> a = axh.b(
+      RecordCodecBuilder.create($$0 -> $$0.group(Codec.unboundedMap(akg.a(le.aT), dua.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, ege::new)),
+      ege::a
+   );
+   public static final Codec<iw<ege>> b = akd.a(le.aQ, a);
+   private final Map<akg<dua>, dua> c;
+
+   public ege(Map<akg<dua>, dua> $$0) {
+      this.c = $$0;
    }
 
-   protected ege(egx $$0, ty $$1) {
-      super($$0, $$1);
-      this.a = $$1.h("Width");
-      this.b = $$1.h("Height");
-      this.c = $$1.h("Depth");
-      this.d = $$1.h("HPos");
+   private ImmutableMap<akg<dua>, dua> c() {
+      Builder<akg<dua>, dua> $$0 = ImmutableMap.builder();
+      dwu.a(this.c.keySet().stream()).forEach($$1 -> {
+         dua $$2 = this.c.get($$1);
+         if ($$2 != null) {
+            $$0.put($$1, $$2);
+         }
+      });
+      return $$0.build();
    }
 
-   @Override
-   protected void a(egw $$0, ty $$1) {
-      $$1.a("Width", this.a);
-      $$1.a("Height", this.b);
-      $$1.a("Depth", this.c);
-      $$1.a("HPos", this.d);
+   public dwu a() {
+      return new dwu(this.c());
    }
 
-   protected boolean a(czv $$0, efy $$1, int $$2) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$3 = 0;
-         int $$4 = 0;
-         im.a $$5 = new im.a();
-
-         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
-            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
-               $$5.d($$7, 64, $$6);
-               if ($$1.b($$5)) {
-                  $$3 += $$0.a(dvq.a.f, $$5).v();
-                  $$4++;
-               }
-            }
-         }
-
-         if ($$4 == 0) {
-            return false;
-         } else {
-            this.d = $$3 / $$4;
-            this.f.a(0, this.d - this.f.i() + $$2, 0);
-            return true;
-         }
-      }
+   public Optional<dua> b() {
+      return Optional.ofNullable(this.c.get(dua.b));
    }
 
-   protected boolean a(czv $$0, int $$1) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$2 = $$0.al();
-         boolean $$3 = false;
-         im.a $$4 = new im.a();
-
-         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
-            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
-               $$4.d($$6, 0, $$5);
-               $$2 = Math.min($$2, $$0.a(dvq.a.f, $$4).v());
-               $$3 = true;
-            }
-         }
-
-         if (!$$3) {
-            return false;
-         } else {
-            this.d = $$2;
-            this.f.a(0, this.d - this.f.i() + $$1, 0);
-            return true;
-         }
-      }
+   private static DataResult<ege> a(ege $$0) {
+      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
    }
 }

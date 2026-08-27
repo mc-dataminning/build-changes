@@ -1,29 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bvj {
-   public static bsx<bre> a(int $$0, BiPredicate<bre, bre> $$1) {
-      return bwj.a(
-         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$2 -> $$2.group($$2.b(cah.o), $$2.a(cah.ab), $$2.c(cah.ai), $$2.a(cah.aj))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bre $$10 = $$2.b($$3);
-                     if (!$$10.ez()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
+public class bvj extends bts<bsc> {
+   private final bor c;
+   private final float d;
+   private final float e;
+   private final float f;
 
-                        $$5.a($$10.dn(), (long)$$0);
-                        if ($$10.ai() != bqr.bx || $$7.aa().b(czq.N)) {
-                           $$3.b();
-                           $$4.b();
-                        }
+   public bvj(bor $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(cbd.n, cbe.b, cbd.Q, cbe.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   protected void a(aqh $$0, bsc $$1, long $$2) {
+      ayg $$3 = $$1.ej();
+      float $$4 = axz.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = axz.g($$1.dD() + 2.0F * $$3.i() * this.d - this.d);
+      etp $$6 = etp.a($$4, $$5);
+      $$1.dQ().a(cbd.n, new btv($$1.bv().e($$6)));
+      $$1.dQ().a(cbd.Q, this.c.a($$3));
    }
 }

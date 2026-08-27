@@ -1,65 +1,200 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Queues;
+import com.mojang.authlib.GameProfile;
 import java.time.Instant;
+import java.util.Deque;
 import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 
-public class fwp extends fwq {
-   private final String f;
+public class fwp {
+   private static final wu a = wu.c("chat.validation_error").a(n.m, n.u);
+   private final fde b;
+   private final Deque<fwp.a> c = Queues.newArrayDeque();
+   private long d;
+   private long e;
 
-   fwp(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   public fwp(fde $$0) {
+      this.b = $$0;
    }
 
-   public String a() {
-      return this.f;
+   public void a() {
+      if (this.d != 0L) {
+         if (ac.b() >= this.e + this.d) {
+            fwp.a $$0 = this.c.poll();
+
+            while ($$0 != null && !$$0.a()) {
+               $$0 = this.c.poll();
+            }
+         }
+      }
    }
 
-   public fwp c() {
-      fwp $$0 = new fwp(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      return $$0;
-   }
-
-   @Override
-   public fkt a(fkt $$0, fwu $$1) {
-      return new fov($$0, $$1, this);
-   }
-
-   public static class a extends fwq.a<fwp> {
-      public a(fwp $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   public void a(double $$0) {
+      long $$1 = (long)($$0 * 1000.0);
+      if ($$1 == 0L && this.d > 0L) {
+         this.c.forEach(fwp.a::a);
+         this.c.clear();
       }
 
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new fwp(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+      this.d = $$1;
+   }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
+   public void b() {
+      this.c.remove().a();
+   }
+
+   public long c() {
+      return (long)this.c.size();
+   }
+
+   public void d() {
+      this.c.forEach(fwp.a::a);
+      this.c.clear();
+   }
+
+   public boolean a(xg $$0) {
+      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
+   }
+
+   private boolean e() {
+      return this.d > 0L && ac.b() < this.e + this.d;
+   }
+
+   private void a(@Nullable xg $$0, BooleanSupplier $$1) {
+      if (this.e()) {
+         this.c.add(new fwp.a($$0, $$1));
+      } else {
+         $$1.getAsBoolean();
+      }
+   }
+
+   public void a(xk $$0, GameProfile $$1, wq.a $$2) {
+      boolean $$3 = this.b.m.ag().c();
+      xk $$4 = $$3 ? $$0.a() : $$0;
+      wu $$5 = $$2.a($$4.d());
+      Instant $$6 = Instant.now();
+      this.a($$0.l(), () -> {
+         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
+         fvx $$7 = this.b.L();
+         if ($$7 != null) {
+            $$7.a($$0, $$6x);
+         }
+
+         return $$6x;
+      });
+   }
+
+   public void a(UUID $$0, wq.a $$1) {
+      this.a(null, () -> {
+         if (this.b.a($$0)) {
+            return false;
+         } else {
+            wu $$2 = $$1.a(a);
+            this.b.l.d().a($$2, null, fcz.d());
+            this.e = ac.b();
+            return true;
+         }
+      });
+   }
+
+   public void a(wu $$0, wq.a $$1) {
+      Instant $$2 = Instant.now();
+      this.a(null, () -> {
+         wu $$3 = $$1.a($$0);
+         this.b.l.d().a($$3);
+         this.a($$1, $$0);
+         this.a($$3, $$2);
+         this.e = ac.b();
+         return true;
+      });
+   }
+
+   private boolean a(wq.a $$0, xk $$1, wu $$2, GameProfile $$3, boolean $$4, Instant $$5) {
+      fwr $$6 = this.a($$1, $$2, $$5);
+      if ($$4 && $$6.a()) {
+         return false;
+      } else if (!this.b.a($$1.g()) && !$$1.j()) {
+         fcz $$7 = $$6.a($$1);
+         xg $$8 = $$1.l();
+         wy $$9 = $$1.o();
+         if ($$9.a()) {
+            this.b.l.d().a($$2, $$8, $$7);
+            this.a($$0, $$1.d());
+         } else {
+            wu $$10 = $$9.b($$1.c());
+            if ($$10 != null) {
+               this.b.l.d().a($$0.a($$10), $$8, $$7);
+               this.a($$0, $$10);
+            }
+         }
+
+         this.a($$1, $$0, $$3, $$6);
+         this.e = ac.b();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(wq.a $$0, wu $$1) {
+      this.b.aZ().a($$0.b($$1));
+   }
+
+   private fwr a(xk $$0, wu $$1, Instant $$2) {
+      return this.a($$0.g()) ? fwr.a : fwr.a($$0, $$1, $$2);
+   }
+
+   private void a(xk $$0, wq.a $$1, GameProfile $$2, fwr $$3) {
+      fwq $$4 = this.b.bb().b();
+      $$4.a(fwt.a($$2, $$0, $$3));
+   }
+
+   private void a(wu $$0, Instant $$1) {
+      fwq $$2 = this.b.bb().b();
+      $$2.a(fwt.a($$0, $$1));
+   }
+
+   public void a(wu $$0, boolean $$1) {
+      if (!this.b.m.ae().c() || !this.b.a(this.a($$0))) {
+         if ($$1) {
+            this.b.l.a($$0, false);
+         } else {
+            this.b.l.d().a($$0);
+            this.a($$0, Instant.now());
+         }
+
+         this.b.aZ().b($$0);
+      }
+   }
+
+   private UUID a(wu $$0) {
+      String $$1 = ays.a($$0);
+      String $$2 = StringUtils.substringBetween($$1, "<", ">");
+      return $$2 == null ? ac.e : this.b.aN().a($$2);
+   }
+
+   private boolean a(UUID $$0) {
+      if (this.b.T() && this.b.s != null) {
+         UUID $$1 = this.b.s.fZ().getId();
+         return $$1.equals($$0);
+      } else {
+         return false;
+      }
+   }
+
+   static record a(@Nullable xg a, BooleanSupplier b) {
+      public boolean a() {
+         return this.b.getAsBoolean();
       }
 
       @Nullable
-      @Override
-      public fwq.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fwq.b.d : null;
+      public xg b() {
+         return this.a;
       }
 
-      @Override
-      public Either<fwq.c, fwq.b> a(fwu $$0) {
-         fwq.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new fwq.c(this.a.a, fwt.c, $$3));
-         }
+      public BooleanSupplier c() {
+         return this.b;
       }
    }
 }

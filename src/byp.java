@@ -1,42 +1,72 @@
 import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public class byp extends byb {
-   private final brm a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class byp extends byx {
+   private static final int a = 40;
+   private static final Predicate<dqh> b = dqq.a(ddg.bt);
+   private final bsc c;
+   private final dad d;
+   private int e;
 
-   public byp(brm $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(byb.a.a));
+   public byp(bsc $$0) {
+      this.c = $$0;
+      this.d = $$0.dN();
+      this.a(EnumSet.of(byx.a.a, byx.a.b, byx.a.c));
    }
 
    @Override
    public boolean a() {
-      if (this.a.fW()) {
+      if (this.c.ej().a(this.c.p_() ? 50 : 1000) != 0) {
          return false;
       } else {
-         etf $$0 = cby.a(this.a, 16, 7, etf.c(this.a.fX()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.c;
-            this.c = $$0.d;
-            this.d = $$0.e;
-            return true;
-         }
+         in $$0 = this.c.dn();
+         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(ddg.i);
       }
    }
 
    @Override
-   public boolean b() {
-      return !this.a.K().l();
+   public void c() {
+      this.e = this.a(40);
+      this.d.a(this.c, (byte)10);
+      this.c.K().n();
    }
 
    @Override
-   public void c() {
-      this.a.K().a(this.b, this.c, this.d, this.e);
+   public void d() {
+      this.e = 0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.e > 0;
+   }
+
+   public int h() {
+      return this.e;
+   }
+
+   @Override
+   public void e() {
+      this.e = Math.max(0, this.e - 1);
+      if (this.e == this.a(4)) {
+         in $$0 = this.c.dn();
+         if (b.test(this.d.a_($$0))) {
+            if (this.d.aa().b(czz.c)) {
+               this.d.b($$0, false);
+            }
+
+            this.c.N();
+         } else {
+            in $$1 = $$0.d();
+            if (this.d.a_($$1).a(ddg.i)) {
+               if (this.d.aa().b(czz.c)) {
+                  this.d.c(2001, $$1, dde.i(ddg.i.n()));
+                  this.d.a($$1, ddg.j.n(), 2);
+               }
+
+               this.c.N();
+            }
+         }
+      }
    }
 }

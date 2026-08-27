@@ -1,70 +1,112 @@
-public class fqo {
-   public static void a(fur $$0, fur $$1, fur $$2, boolean $$3) {
-      fur $$4 = $$3 ? $$0 : $$1;
-      fur $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
+
+public class fqo implements fqj, fqk {
+   private static final akh a = new akh("spectator/teleport_to_team");
+   private static final wu b = wu.c("spectatorMenu.team_teleport");
+   private static final wu c = wu.c("spectatorMenu.team_teleport.prompt");
+   private final List<fqk> d;
+
+   public fqo() {
+      fde $$0 = fde.Q();
+      this.d = a($$0, $$0.r.L());
    }
 
-   public static void a(fur $$0, fur $$1, bre $$2, boolean $$3) {
-      fur $$4 = $$3 ? $$0 : $$1;
-      fur $$5 = $$3 ? $$1 : $$0;
-      $$4.f = $$3 ? -0.8F : 0.8F;
-      $$4.e = -0.97079635F;
-      $$5.e = $$4.e;
-      float $$6 = (float)cqq.l($$2.fv());
-      float $$7 = axw.a((float)$$2.fx(), 0.0F, $$6);
-      float $$8 = $$7 / $$6;
-      $$5.f = axw.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
-      $$5.e = axw.i($$8, $$5.e, (float) (-Math.PI / 2));
+   private static List<fqk> a(fde $$0, eut $$1) {
+      return $$1.g().stream().flatMap($$1x -> fqo.a.a($$0, $$1x).stream()).toList();
    }
 
-   public static <T extends brg> void a(fur $$0, fur $$1, T $$2, float $$3, float $$4) {
-      float $$5 = axw.a($$3 * (float) Math.PI);
-      float $$6 = axw.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2.fs() == bqy.b) {
-         $$0.e = -1.8849558F + axw.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + axw.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      } else {
-         $$0.e = -0.0F + axw.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + axw.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+   @Override
+   public List<fqk> a() {
+      return this.d;
+   }
+
+   @Override
+   public wu b() {
+      return c;
+   }
+
+   @Override
+   public void a(fqi $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public wu aN_() {
+      return b;
+   }
+
+   @Override
+   public void a(fer $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aO_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements fqk {
+      private final euo a;
+      private final Supplier<gny> b;
+      private final List<fwh> c;
+
+      private a(euo $$0, List<fwh> $$1, Supplier<gny> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
       }
 
-      a($$0, $$1, $$4);
-   }
+      public static Optional<fqk> a(fde $$0, euo $$1) {
+         List<fwh> $$2 = new ArrayList<>();
 
-   public static void a(fur $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (axw.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * axw.a($$1 * 0.067F) * 0.05F;
-   }
+         for (String $$3 : $$1.g()) {
+            fwh $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != daa.d) {
+               $$2.add($$4);
+            }
+         }
 
-   public static void a(fur $$0, fur $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(ayg.a().a($$2.size())).a();
+            Supplier<gny> $$6 = $$0.an().a($$5);
+            return Optional.of(new fqo.a($$1, $$2, $$6));
+         }
+      }
 
-   public static void a(fur $$0, fur $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = axw.a($$3 * (float) Math.PI);
-      float $$6 = axw.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+      @Override
+      public void a(fqi $$0) {
+         $$0.a(new fqn(this.c));
+      }
+
+      @Override
+      public wu aN_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(fer $$0, float $$1, int $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, axz.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
+         }
+
+         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
+         fgd.a($$0, this.b.get(), 2, 2, 12);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      }
+
+      @Override
+      public boolean aO_() {
+         return true;
+      }
    }
 }

@@ -1,37 +1,33 @@
-public class aht implements yz<afx> {
-   public static final yq<vs, aht> a = yz.a(aht::a, aht::new);
-   private final bop b;
-   private final int c;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public aht(bop $$0, int $$1) {
+public class aht implements zb<afz> {
+   public static final ys<vu, aht> a = zb.a(aht::a, aht::new);
+   private final UUID b;
+
+   public aht(UUID $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private aht(vs $$0) {
-      this.b = $$0.b(bop.class);
-      this.c = $$0.l();
+   private aht(vu $$0) {
+      this.b = $$0.n();
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.a(this.b);
-      $$0.c(this.c);
    }
 
    @Override
-   public zb<aht> a() {
-      return afv.cb;
+   public zd<aht> a() {
+      return afx.bZ;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 
-   public bop b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   @Nullable
+   public brh a(aqh $$0) {
+      return $$0.a(this.b);
    }
 }

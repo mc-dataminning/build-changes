@@ -3,207 +3,168 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.ArrayList;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.datafixers.util.Either;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Supplier;
-import net.minecraft.server.MinecraftServer;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
 
-public class fg implements ArgumentType<fg.b> {
-   public static final SuggestionProvider<ec> a = ($$0, $$1) -> {
-      StringReader $$2 = new StringReader($$1.getInput());
-      $$2.setCursor($$1.getStart());
-      gs $$3 = new gs($$2);
+public class fg<T> implements ArgumentType<fg.c<T>> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("argument.resource_tag.not_found", $$0, $$1));
+   private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> wu.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
+   );
+   private final iy<T> d;
+   final akg<? extends jj<T>> e;
 
-      try {
-         $$3.t();
-      } catch (CommandSyntaxException var5) {
-      }
-
-      return $$3.a($$1, $$1x -> eh.b(((ec)$$0.getSource()).q(), $$1x));
-   };
-   private static final Collection<String> b = Arrays.asList("Player", "0123", "*", "@e");
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ws.c("argument.scoreHolder.empty"));
-   final boolean d;
-
-   public fg(boolean $$0) {
-      this.d = $$0;
+   public fg(dz $$0, akg<? extends jj<T>> $$1) {
+      this.e = $$1;
+      this.d = $$0.b($$1);
    }
 
-   public static eui a(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1).iterator().next();
+   public static <T> fg<T> a(dz $$0, akg<? extends jj<T>> $$1) {
+      return new fg<>($$0, $$1);
    }
 
-   public static Collection<eui> b(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, Collections::emptyList);
+   public static <T> fg.c<T> a(CommandContext<ed> $$0, String $$1, akg<jj<T>> $$2) throws CommandSyntaxException {
+      fg.c<?> $$3 = (fg.c<?>)$$0.getArgument($$1, fg.c.class);
+      Optional<fg.c<T>> $$4 = $$3.a($$2);
+      return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
+            akg<?> $$2x = $$1xx.h();
+            return fc.b.create($$2x.a(), $$2x.b(), $$2.a());
+         }, $$1xx -> {
+            awg<?> $$2x = $$1xx.g();
+            return c.create($$2x.b(), $$2x.a(), $$2.a());
+         }));
    }
 
-   public static Collection<eui> c(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ((ec)$$0.getSource()).l().aK()::e);
-   }
+   public fg.c<T> a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '#') {
+         int $$1 = $$0.getCursor();
 
-   public static Collection<eui> a(CommandContext<ec> $$0, String $$1, Supplier<Collection<eui>> $$2) throws CommandSyntaxException {
-      Collection<eui> $$3 = ((fg.b)$$0.getArgument($$1, fg.b.class)).getNames((ec)$$0.getSource(), $$2);
-      if ($$3.isEmpty()) {
-         throw ep.d.create();
-      } else {
-         return $$3;
-      }
-   }
-
-   public static fg a() {
-      return new fg(false);
-   }
-
-   public static fg b() {
-      return new fg(true);
-   }
-
-   public fg.b a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '@') {
-         gs $$1 = new gs($$0);
-         gr $$2 = $$1.t();
-         if (!this.d && $$2.a() > 1) {
-            throw ep.a.createWithContext($$0);
-         } else {
-            return new fg.c($$2);
-         }
-      } else {
-         int $$3 = $$0.getCursor();
-
-         while ($$0.canRead() && $$0.peek() != ' ') {
+         try {
             $$0.skip();
+            akh $$2 = akh.a($$0);
+            awg<T> $$3 = awg.a(this.e, $$2);
+            ja.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.createWithContext($$0, $$2, this.e.a()));
+            return new fg.d<>($$4);
+         } catch (CommandSyntaxException var6) {
+            $$0.setCursor($$1);
+            throw var6;
          }
-
-         String $$4 = $$0.getString().substring($$3, $$0.getCursor());
-         if ($$4.equals("*")) {
-            return ($$0x, $$1) -> {
-               Collection<eui> $$2 = $$1.get();
-               if ($$2.isEmpty()) {
-                  throw c.create();
-               } else {
-                  return $$2;
-               }
-            };
-         } else {
-            List<eui> $$5 = List.of(eui.c($$4));
-            if ($$4.startsWith("#")) {
-               return ($$1, $$2) -> $$5;
-            } else {
-               try {
-                  UUID $$6 = UUID.fromString($$4);
-                  return ($$2, $$3x) -> {
-                     MinecraftServer $$4x = $$2.l();
-                     eui $$5x = null;
-                     List<eui> $$6x = null;
-
-                     for (aqe $$7 : $$4x.K()) {
-                        bql $$8 = $$7.a($$6);
-                        if ($$8 != null) {
-                           if ($$5x == null) {
-                              $$5x = $$8;
-                           } else {
-                              if ($$6x == null) {
-                                 $$6x = new ArrayList<>();
-                                 $$6x.add($$5x);
-                              }
-
-                              $$6x.add($$8);
-                           }
-                        }
-                     }
-
-                     if ($$6x != null) {
-                        return $$6x;
-                     } else {
-                        return $$5x != null ? List.of($$5x) : $$5;
-                     }
-                  };
-               } catch (IllegalArgumentException var6) {
-                  return ($$2, $$3x) -> {
-                     MinecraftServer $$4x = $$2.l();
-                     aqf $$5x = $$4x.ah().a($$4);
-                     return $$5x != null ? List.of($$5x) : $$5;
-                  };
-               }
-            }
-         }
+      } else {
+         akh $$6 = akh.a($$0);
+         akg<T> $$7 = akg.a(this.e, $$6);
+         iw.c<T> $$8 = this.d.a($$7).orElseThrow(() -> fc.a.createWithContext($$0, $$6, this.e.a()));
+         return new fg.b<>($$8);
       }
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      ei.a(this.d.e().map(awg::b), $$1, "#");
+      return ei.a(this.d.c().map(akg::a), $$1);
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return a;
    }
 
-   public static class a implements hw<fg, fg.a.a> {
-      private static final byte a = 1;
-
-      public void a(fg.a.a $$0, vs $$1) {
-         int $$2 = 0;
-         if ($$0.b) {
-            $$2 |= 1;
-         }
-
-         $$1.k($$2);
+   public static class a<T> implements hx<fg<T>, fg.a<T>.a> {
+      public void a(fg.a<T>.a $$0, vu $$1) {
+         $$1.b($$0.b);
       }
 
-      public fg.a.a a(vs $$0) {
-         byte $$1 = $$0.readByte();
-         boolean $$2 = ($$1 & 1) != 0;
-         return new fg.a.a($$2);
+      public fg.a<T>.a a(vu $$0) {
+         return new fg.a.a($$0.r());
       }
 
-      public void a(fg.a.a $$0, JsonObject $$1) {
-         $$1.addProperty("amount", $$0.b ? "multiple" : "single");
+      public void a(fg.a<T>.a $$0, JsonObject $$1) {
+         $$1.addProperty("registry", $$0.b.a().toString());
       }
 
-      public fg.a.a a(fg $$0) {
-         return new fg.a.a($$0.d);
+      public fg.a<T>.a a(fg<T> $$0) {
+         return new fg.a.a($$0.e);
       }
 
-      public final class a implements hw.a<fg> {
-         final boolean b;
+      public final class a implements hx.a<fg<T>> {
+         final akg<? extends jj<T>> b;
 
-         a(boolean $$1) {
+         a(akg<? extends jj<T>> $$1) {
             this.b = $$1;
          }
 
-         public fg a(dy $$0) {
-            return new fg(this.b);
+         public fg<T> a(dz $$0) {
+            return new fg<>($$0, this.b);
          }
 
          @Override
-         public hw<fg, ?> a() {
+         public hx<fg<T>, ?> a() {
             return a.this;
          }
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      Collection<eui> getNames(ec var1, Supplier<Collection<eui>> var2) throws CommandSyntaxException;
-   }
-
-   public static class c implements fg.b {
-      private final gr a;
-
-      public c(gr $$0) {
-         this.a = $$0;
+   static record b<T>(iw.c<T> a) implements fg.c<T> {
+      @Override
+      public Either<iw.c<T>, ja.c<T>> a() {
+         return Either.left(this.a);
       }
 
       @Override
-      public Collection<eui> getNames(ec $$0, Supplier<Collection<eui>> $$1) throws CommandSyntaxException {
-         List<? extends bql> $$2 = this.a.b($$0);
-         if ($$2.isEmpty()) {
-            throw ep.d.create();
-         } else {
-            return List.copyOf($$2);
-         }
+      public <E> Optional<fg.c<E>> a(akg<? extends jj<E>> $$0) {
+         return this.a.h().c($$0) ? Optional.of((fg.c<E>)this) : Optional.empty();
+      }
+
+      public boolean a(iw<T> $$0) {
+         return $$0.equals(this.a);
+      }
+
+      @Override
+      public String b() {
+         return this.a.h().a().toString();
+      }
+
+      public iw.c<T> c() {
+         return this.a;
+      }
+   }
+
+   public interface c<T> extends Predicate<iw<T>> {
+      Either<iw.c<T>, ja.c<T>> a();
+
+      <E> Optional<fg.c<E>> a(akg<? extends jj<E>> var1);
+
+      String b();
+   }
+
+   static record d<T>(ja.c<T> a) implements fg.c<T> {
+      @Override
+      public Either<iw.c<T>, ja.c<T>> a() {
+         return Either.right(this.a);
+      }
+
+      @Override
+      public <E> Optional<fg.c<E>> a(akg<? extends jj<E>> $$0) {
+         return this.a.g().c($$0) ? Optional.of((fg.c<E>)this) : Optional.empty();
+      }
+
+      public boolean a(iw<T> $$0) {
+         return this.a.a($$0);
+      }
+
+      @Override
+      public String b() {
+         return "#" + this.a.g().b();
+      }
+
+      public ja.c<T> c() {
+         return this.a;
       }
    }
 }

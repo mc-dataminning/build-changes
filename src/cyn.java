@@ -1,15 +1,10 @@
-public class cyn extends cxn {
-   public cyn(cxn.a $$0, bqs... $$1) {
-      super($$0, avw.be, $$1);
+public class cyn extends cyg {
+   public cyn(cyg.b $$0) {
+      super($$0);
    }
 
    @Override
-   public int a(int $$0) {
-      return 1;
-   }
-
-   @Override
-   public int b(int $$0) {
-      return this.a($$0) + 40;
+   public boolean a() {
+      return true;
    }
 }

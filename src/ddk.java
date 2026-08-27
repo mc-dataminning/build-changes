@@ -1,137 +1,142 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.List;
-import java.util.function.ToIntFunction;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ddk extends dbn implements djw {
-   public static final MapCodec<ddk> c = b(ddk::new);
-   public static final int d = 1;
-   public static final int e = 4;
-   public static final dqy f = dqo.az;
-   public static final dqp g = dbn.b;
-   public static final dqp h = dqo.C;
-   public static final ToIntFunction<dpy> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
-   private static final Int2ObjectMap<List<etf>> j = ac.a(() -> {
-      Int2ObjectMap<List<etf>> $$0 = new Int2ObjectOpenHashMap();
-      $$0.defaultReturnValue(ImmutableList.of());
-      $$0.put(1, ImmutableList.of(new etf(0.5, 0.5, 0.5)));
-      $$0.put(2, ImmutableList.of(new etf(0.375, 0.44, 0.5), new etf(0.625, 0.5, 0.44)));
-      $$0.put(3, ImmutableList.of(new etf(0.5, 0.313, 0.625), new etf(0.375, 0.44, 0.5), new etf(0.56, 0.5, 0.44)));
-      $$0.put(4, ImmutableList.of(new etf(0.44, 0.313, 0.56), new etf(0.625, 0.44, 0.56), new etf(0.375, 0.44, 0.375), new etf(0.56, 0.5, 0.375)));
-      return Int2ObjectMaps.unmodifiable($$0);
-   });
-   private static final ety k = dcv.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
-   private static final ety l = dcv.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
-   private static final ety m = dcv.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
-   private static final ety n = dcv.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
+public class ddk extends dde implements ddl {
+   public static final MapCodec<ddk> a = b(ddk::new);
+   public static final dqy b = dqx.e;
+   private static final int c = 5;
 
    @Override
    public MapCodec<ddk> a() {
-      return c;
+      return a;
    }
 
-   public ddk(dpx.d $$0) {
+   public ddk(dqg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(f, Integer.valueOf(1)).a(g, Boolean.valueOf(false)).a(h, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected bos a(csd $$0, dpy $$1, czu $$2, im $$3, ckl $$4, bop $$5, etb $$6) {
-      if ($$0.d() && $$4.gb().e && $$1.c(g)) {
-         a($$4, $$1, $$2, $$3);
-         return bos.a($$2.B);
+   protected void a(dqh $$0, dad $$1, in $$2, brh $$3) {
+      dqh $$4 = $$1.a_($$2.c());
+      if ($$4.i()) {
+         $$3.l($$0.c(b));
+         if (!$$1.B) {
+            aqh $$5 = (aqh)$$1;
+
+            for (int $$6 = 0; $$6 < 2; $$6++) {
+               $$5.a(kx.aj, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
+               $$5.a(kx.d, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.01, 0.0, 0.2);
+            }
+         }
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         $$3.m($$0.c(b));
       }
    }
 
    @Override
-   protected boolean a(dpy $$0, cvl $$1) {
-      return !$$1.h() && $$1.n().f() == this.p() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
+   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      a($$1, $$2, $$0, $$1.a_($$2.d()));
    }
 
    @Override
-   public dpy a(cvl $$0) {
-      dpy $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         return $$1.a(f);
+   protected ema b_(dqh $$0) {
+      return emb.c.a(false);
+   }
+
+   public static void b(dae $$0, in $$1, dqh $$2) {
+      a($$0, $$1, $$0.a_($$1), $$2);
+   }
+
+   public static void a(dae $$0, in $$1, dqh $$2, dqh $$3) {
+      if (m($$2)) {
+         dqh $$4 = n($$3);
+         $$0.a($$1, $$4, 2);
+         in.a $$5 = $$1.j().c(is.b);
+
+         while (m($$0.a_($$5))) {
+            if (!$$0.a($$5, $$4, 2)) {
+               return;
+            }
+
+            $$5.c(is.b);
+         }
+      }
+   }
+
+   private static boolean m(dqh $$0) {
+      return $$0.a(ddg.nd) || $$0.a(ddg.G) && $$0.u().e() >= 8 && $$0.u().b();
+   }
+
+   private static dqh n(dqh $$0) {
+      if ($$0.a(ddg.nd)) {
+         return $$0;
+      } else if ($$0.a(ddg.dW)) {
+         return ddg.nd.n().a(b, Boolean.valueOf(false));
       } else {
-         elr $$2 = $$0.q().b_($$0.a());
-         boolean $$3 = $$2.a() == els.c;
-         return super.a($$0).a(h, Boolean.valueOf($$3));
+         return $$0.a(ddg.kJ) ? ddg.nd.n().a(b, Boolean.valueOf(true)) : ddg.G.n();
       }
    }
 
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      if ($$0.c(h)) {
-         $$3.a($$4, els.c, els.c.a($$3));
+   public void a(dqh $$0, dad $$1, in $$2, ayg $$3) {
+      double $$4 = (double)$$2.u();
+      double $$5 = (double)$$2.v();
+      double $$6 = (double)$$2.w();
+      if ($$0.c(b)) {
+         $$1.b(kx.am, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
+         if ($$3.a(200) == 0) {
+            $$1.a($$4, $$5, $$6, avc.da, avd.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+      } else {
+         $$1.b(kx.an, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
+         $$1.b(kx.an, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
+         if ($$3.a(200) == 0) {
+            $$1.a($$4, $$5, $$6, avc.cY, avd.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+      }
+   }
+
+   @Override
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      $$3.a($$4, emb.c, emb.c.a($$3));
+      if (!$$0.a($$3, $$4) || $$1 == is.a || $$1 == is.b && !$$2.a(ddg.nd) && m($$2)) {
+         $$3.a($$4, this, 5);
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected elr c_(dpy $$0) {
-      return $$0.c(h) ? els.c.a(false) : super.c_($$0);
+   protected boolean a(dqh $$0, dag $$1, in $$2) {
+      dqh $$3 = $$1.a_($$2.d());
+      return $$3.a(ddg.nd) || $$3.a(ddg.kJ) || $$3.a(ddg.dW);
    }
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      switch ($$0.c(f)) {
-         case 1:
-         default:
-            return k;
-         case 2:
-            return l;
-         case 3:
-            return m;
-         case 4:
-            return n;
-      }
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return euf.a();
    }
 
    @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(f, g, h);
+   protected djk a_(dqh $$0) {
+      return djk.a;
    }
 
    @Override
-   public boolean a(czv $$0, im $$1, dpy $$2, elr $$3) {
-      if (!$$2.c(h) && $$3.a() == els.c) {
-         dpy $$4 = $$2.a(h, Boolean.valueOf(true));
-         if ($$2.c(g)) {
-            a(null, $$4, $$0, $$1);
-         } else {
-            $$0.a($$1, $$4, 3);
-         }
-
-         $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static boolean g(dpy $$0) {
-      return $$0.a(avo.ae, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected Iterable<etf> b(dpy $$0) {
-      return (Iterable<etf>)j.get($$0.c(f));
+   public csz a(@Nullable clh $$0, dae $$1, in $$2, dqh $$3) {
+      $$1.a($$2, ddg.a.n(), 11);
+      return new csz(ctc.qz);
    }
 
    @Override
-   protected boolean d(dpy $$0) {
-      return !$$0.c(h) && super.d($$0);
-   }
-
-   @Override
-   protected boolean a(dpy $$0, czx $$1, im $$2) {
-      return dcv.a($$1, $$2.d(), ir.b);
+   public Optional<avb> as_() {
+      return emb.c.j();
    }
 }

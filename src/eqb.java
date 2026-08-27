@@ -1,87 +1,40 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.function.BiFunction;
 
-public class eqb extends epo {
+public class eqb implements epx {
    public static final Codec<eqb> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  axe.a(Codec.unboundedMap(lc.f.r(), esd.a), "enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, eqb::new)
+      $$0 -> $$0.group(epz.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eqb::new)
    );
-   private final Map<iv<cxn>, esc> b;
-   private final boolean c;
+   public static final Codec<eqb> b = epz.b.listOf().xmap(eqb::new, $$0 -> $$0.c);
+   private final List<epx> c;
+   private final BiFunction<csz, eol, csz> d;
 
-   eqb(List<erh> $$0, Map<iv<cxn>, esc> $$1, boolean $$2) {
-      super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+   private eqb(List<epx> $$0) {
+      this.c = $$0;
+      this.d = epz.a($$0);
+   }
+
+   public static eqb a(List<epx> $$0) {
+      return new eqb(List.copyOf($$0));
+   }
+
+   public csz a(csz $$0, eol $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public epq b() {
-      return epr.f;
+   public void a(eor $$0) {
+      epx.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public Set<eqq<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public csd a(csd $$0, eoa $$1) {
-      Object2IntMap<cxn> $$2 = new Object2IntOpenHashMap();
-      this.b.forEach(($$2x, $$3) -> $$2.put((cxn)$$2x.a(), $$3.a($$1)));
-      if ($$0.a(csg.qP)) {
-         $$0 = $$0.a(csg.uw, $$0.G());
-         $$0.b(jz.p, $$0.c(jz.f));
-      }
-
-      cxo.a($$0, $$1x -> {
-         if (this.c) {
-            $$2.forEach(($$1xx, $$2x) -> $$1x.a($$1xx, $$1x.a($$1xx) + $$2x));
-         } else {
-            $$2.forEach($$1x::a);
-         }
-      });
-      return $$0;
-   }
-
-   public static class a extends epo.a<eqb.a> {
-      private final Builder<iv<cxn>, esc> a = ImmutableMap.builder();
-      private final boolean b;
-
-      public a() {
-         this(false);
-      }
-
-      public a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected eqb.a a() {
-         return this;
-      }
-
-      public eqb.a a(cxn $$0, esc $$1) {
-         this.a.put($$0.k(), $$1);
-         return this;
-      }
-
-      @Override
-      public epp b() {
-         return new eqb(this.g(), this.a.build(), this.b);
-      }
+   public epy b() {
+      return epz.F;
    }
 }

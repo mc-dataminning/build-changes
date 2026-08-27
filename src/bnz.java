@@ -1,68 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Optional;
 
-public class bnz extends bnt {
-   public static final Codec<bnz> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, bnz::new)
-      )
-      .comapFlatMap(
-         $$0 -> {
-            if ($$0.d < $$0.b) {
-               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
-            } else {
-               return $$0.e > $$0.d - $$0.b
-                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
-                  : DataResult.success($$0);
-            }
-         },
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
-   private final float e;
-
-   public static bnz a(float $$0, float $$1, float $$2) {
-      return new bnz($$0, $$1, $$2);
+public class bnz {
+   private bnz() {
    }
 
-   private bnz(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public static int a(List<? extends bny> $$0) {
+      long $$1 = 0L;
+
+      for (bny $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
+      }
+
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
+      } else {
+         return (int)$$1;
+      }
    }
 
-   @Override
-   public float a(ayd $$0) {
-      float $$1 = this.d - this.b;
-      float $$2 = ($$1 - this.e) / 2.0F;
-      float $$3 = $$1 - $$2;
-      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
+   public static <T extends bny> Optional<T> a(ayg $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
+      }
    }
 
-   @Override
-   public float a() {
-      return this.b;
+   public static <T extends bny> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public bnu<?> c() {
-      return bnu.d;
-   }
-
-   @Override
-   public String toString() {
-      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
+   public static <T extends bny> Optional<T> a(ayg $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

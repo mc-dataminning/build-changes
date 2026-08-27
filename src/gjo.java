@@ -1,15 +1,16 @@
-public class gjo extends gio<cii> {
-   private static final akf a = new akf("textures/entity/skeleton/wither_skeleton.png");
+public class gjo extends gid<ceq, fuj<ceq>> {
+   private static final akh a = new akh("textures/entity/turtle/big_sea_turtle.png");
 
-   public gjo(ggn.a $$0) {
-      super($$0, fuq.bX, fuq.bY, fuq.bZ);
+   public gjo(ggx.a $$0) {
+      super($$0, new fuj<>($$0.a(fva.bN)), 0.7F);
    }
 
-   public akf a(cii $$0) {
+   protected float a(ceq $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.83F : $$1;
+   }
+
+   public akh b(ceq $$0) {
       return a;
-   }
-
-   protected void a(cii $$0, exn $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

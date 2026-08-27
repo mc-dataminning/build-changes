@@ -1,50 +1,43 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public class eyj extends ezj {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public Date b;
-   public long c;
-   private boolean g;
-   public Map<String, String> d = Maps.newHashMap();
-   public Map<String, String> e = Maps.newHashMap();
+public enum eyj {
+   a,
+   b,
+   c,
+   d;
 
-   public static eyj a(JsonElement $$0) {
-      JsonObject $$1 = $$0.getAsJsonObject();
-      eyj $$2 = new eyj();
+   private static final int e = 1024;
 
-      try {
-         $$2.a = fbg.b("backupId", $$1, "");
-         $$2.b = fbg.b("lastModifiedDate", $$1);
-         $$2.c = fbg.a("size", $$1, 0L);
-         if ($$1.has("metadata")) {
-            JsonObject $$3 = $$1.getAsJsonObject("metadata");
-
-            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
-               if (!$$5.getValue().isJsonNull()) {
-                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
-               }
-            }
+   public static eyj a(long $$0) {
+      if ($$0 < 1024L) {
+         return a;
+      } else {
+         try {
+            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
+            return valueOf($$2 + "B");
+         } catch (Exception var4) {
+            return d;
          }
-      } catch (Exception var7) {
-         f.error("Could not parse Backup: {}", var7.getMessage());
       }
-
-      return $$2;
    }
 
-   public boolean a() {
-      return this.g;
+   public static double a(long $$0, eyj $$1) {
+      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   public static String b(long $$0) {
+      int $$1 = 1024;
+      if ($$0 < 1024L) {
+         return $$0 + " B";
+      } else {
+         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
+         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+      }
+   }
+
+   public static String b(long $$0, eyj $$1) {
+      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
    }
 }

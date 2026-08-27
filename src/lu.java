@@ -1,235 +1,437 @@
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
-public class lu implements ln {
-   private static final bc a = bc.a(
-      erk.a(eoa.b.a, br.a.a().a(bo.a.a().a(cg.a.a().a(csg.pO)))).invert().build(),
-      erk.a(eoa.b.a, br.a.a().a(bo.a.a().b(cg.a.a().a(csg.pP)))).invert().build(),
-      erk.a(eoa.b.a, br.a.a().a(bo.a.a().c(cg.a.a().a(csg.pQ)))).invert().build(),
-      erk.a(eoa.b.a, br.a.a().a(bo.a.a().d(cg.a.a().a(csg.pR)))).invert().build()
+public class lu implements lo {
+   public static final List<brn<?>> a = List.of(
+      brn.ab,
+      brn.z,
+      brn.as,
+      brn.aI,
+      brn.w,
+      brn.ar,
+      brn.ay,
+      brn.t,
+      brn.br,
+      brn.at,
+      brn.aF,
+      brn.am,
+      brn.p,
+      brn.av,
+      brn.Q,
+      brn.h,
+      brn.Z,
+      brn.aY,
+      brn.X,
+      brn.f,
+      brn.o,
+      brn.c
    );
+   public static final List<brn<?>> b = List.of(brn.bg, brn.R, brn.aQ);
+   private static final csu[] d = new csu[]{ctc.qZ, ctc.rb, ctc.rc, ctc.ra};
+   private static final csu[] e = new csu[]{ctc.qH, ctc.qI, ctc.qF, ctc.qG};
+   private static final csu[] f = new csu[]{
+      ctc.ot,
+      ctc.pr,
+      ctc.px,
+      ctc.pX,
+      ctc.pY,
+      ctc.qa,
+      ctc.qb,
+      ctc.qZ,
+      ctc.ra,
+      ctc.rb,
+      ctc.rc,
+      ctc.rd,
+      ctc.re,
+      ctc.rS,
+      ctc.rW,
+      ctc.sa,
+      ctc.sb,
+      ctc.sc,
+      ctc.sd,
+      ctc.se,
+      ctc.sm,
+      ctc.uf,
+      ctc.ug,
+      ctc.uh,
+      ctc.ui,
+      ctc.uk,
+      ctc.ut,
+      ctc.uA,
+      ctc.uB,
+      ctc.uC,
+      ctc.uN,
+      ctc.uO,
+      ctc.vg,
+      ctc.vk,
+      ctc.vm,
+      ctc.rX,
+      ctc.vU,
+      ctc.wr,
+      ctc.wz,
+      ctc.ws
+   };
+   public static final csu[] c = new csu[]{ctc.oO, ctc.oY, ctc.oT, ctc.pd, ctc.pi, ctc.pn};
 
    @Override
-   public void a(ix.a $$0, Consumer<af> $$1) {
+   public void a(iy.a $$0, Consumer<af> $$1) {
       af $$2 = ae.a.a()
          .a(
-            dcx.kL,
-            ws.c("advancements.nether.root.title"),
-            ws.c("advancements.nether.root.description"),
-            new akf("textures/gui/advancements/backgrounds/nether.png"),
+            ddg.ij,
+            wu.c("advancements.husbandry.root.title"),
+            wu.c("advancements.husbandry.root.description"),
+            new akh("textures/gui/advancements/backgrounds/husbandry.png"),
             al.a,
             false,
             false,
             false
          )
-         .a("entered_nether", ay.a.a(czu.i))
-         .a($$1, "nether/root");
+         .a("consumed_item", bb.a.b())
+         .a($$1, "husbandry/root");
       af $$3 = ae.a.a()
          .a($$2)
-         .a(csg.tX, ws.c("advancements.nether.return_to_sender.title"), ws.c("advancements.nether.return_to_sender.description"), null, al.b, true, true, false)
-         .a(aj.a.a(50))
-         .a("killed_ghast", cl.a.a(br.a.a().a(bqr.T), bg.a.a().a(dl.a(avq.k)).a(br.a.a().a(bqr.aj))))
-         .a($$1, "nether/return_to_sender");
+         .a(ctc.pw, wu.c("advancements.husbandry.plant_seed.title"), wu.c("advancements.husbandry.plant_seed.description"), null, al.a, true, true, false)
+         .a(ai.a.b)
+         .a("wheat", ck.a.a(ddg.cB))
+         .a("pumpkin_stem", ck.a.a(ddg.fd))
+         .a("melon_stem", ck.a.a(ddg.fe))
+         .a("beetroots", ck.a.a(ddg.kD))
+         .a("nether_wart", ck.a.a(ddg.fq))
+         .a("torchflower", ck.a.a(ddg.kA))
+         .a("pitcher_pod", ck.a.a(ddg.kB))
+         .a($$1, "husbandry/plant_seed");
       af $$4 = ae.a.a()
          .a($$2)
-         .a(dcx.fn, ws.c("advancements.nether.find_fortress.title"), ws.c("advancements.nether.find_fortress.description"), null, al.a, true, true, false)
-         .a("fortress", cz.a.a(cq.a.b($$0.b(ld.aI).b(ega.o))))
-         .a($$1, "nether/find_fortress");
-      ae.a.a()
-         .a($$2)
-         .a(csg.uj, ws.c("advancements.nether.fast_travel.title"), ws.c("advancements.nether.fast_travel.description"), null, al.b, true, true, false)
+         .a(
+            ctc.pw,
+            wu.c("advancements.husbandry.breed_an_animal.title"),
+            wu.c("advancements.husbandry.breed_an_animal.description"),
+            null,
+            al.a,
+            true,
+            true,
+            false
+         )
+         .a(ai.a.b)
+         .a("bred", aw.a.b())
+         .a($$1, "husbandry/breed_an_animal");
+      a($$4, $$1, a.stream(), b.stream());
+      b(ae.a.a())
+         .a($$3)
+         .a(ctc.ot, wu.c("advancements.husbandry.balanced_diet.title"), wu.c("advancements.husbandry.balanced_diet.description"), null, al.b, true, true, false)
          .a(aj.a.a(100))
-         .a("travelled", bj.a.a(bi.a(cs.c.b(7000.0))))
-         .a($$1, "nether/fast_travel");
+         .a($$1, "husbandry/balanced_diet");
       ae.a.a()
          .a($$3)
-         .a(csg.sh, ws.c("advancements.nether.uneasy_alliance.title"), ws.c("advancements.nether.uneasy_alliance.description"), null, al.b, true, true, false)
+         .a(ctc.po, wu.c("advancements.husbandry.netherite_hoe.title"), wu.c("advancements.husbandry.netherite_hoe.description"), null, al.b, true, true, false)
          .a(aj.a.a(100))
-         .a("killed_ghast", cl.a.a(br.a.a().a(bqr.T).a(cq.a.a(czu.h))))
-         .a($$1, "nether/uneasy_alliance");
+         .a("netherite_hoe", cb.a.a(ctc.po))
+         .a($$1, "husbandry/obtain_netherite_hoe");
       af $$5 = ae.a.a()
-         .a($$4)
-         .a(dcx.gG, ws.c("advancements.nether.get_wither_skull.title"), ws.c("advancements.nether.get_wither_skull.description"), null, al.a, true, true, false)
-         .a("wither_skull", ca.a.a(dcx.gG))
-         .a($$1, "nether/get_wither_skull");
-      af $$6 = ae.a.a()
-         .a($$5)
-         .a(csg.us, ws.c("advancements.nether.summon_wither.title"), ws.c("advancements.nether.summon_wither.description"), null, al.a, true, true, false)
-         .a("summoned", dk.a.a(br.a.a().a(bqr.bo)))
-         .a($$1, "nether/summon_wither");
-      af $$7 = ae.a.a()
-         .a($$4)
-         .a(csg.sg, ws.c("advancements.nether.obtain_blaze_rod.title"), ws.c("advancements.nether.obtain_blaze_rod.description"), null, al.a, true, true, false)
-         .a("blaze_rod", ca.a.a(csg.sg))
-         .a($$1, "nether/obtain_blaze_rod");
-      af $$8 = ae.a.a()
+         .a($$2)
+         .a(
+            ctc.uK,
+            wu.c("advancements.husbandry.tame_an_animal.title"),
+            wu.c("advancements.husbandry.tame_an_animal.description"),
+            null,
+            al.a,
+            true,
+            true,
+            false
+         )
+         .a("tamed_animal", dn.a.b())
+         .a($$1, "husbandry/tame_an_animal");
+      af $$6 = d(ae.a.a())
+         .a($$2)
+         .a(ai.a.b)
+         .a(
+            ctc.qV,
+            wu.c("advancements.husbandry.fishy_business.title"),
+            wu.c("advancements.husbandry.fishy_business.description"),
+            null,
+            al.a,
+            true,
+            true,
+            false
+         )
+         .a($$1, "husbandry/fishy_business");
+      af $$7 = c(ae.a.a())
          .a($$6)
-         .a(dcx.fO, ws.c("advancements.nether.create_beacon.title"), ws.c("advancements.nether.create_beacon.description"), null, al.a, true, true, false)
-         .a("beacon", ba.a.a(cs.d.b(1)))
-         .a($$1, "nether/create_beacon");
+         .a(ai.a.b)
+         .a(
+            ctc.qF,
+            wu.c("advancements.husbandry.tactical_fishing.title"),
+            wu.c("advancements.husbandry.tactical_fishing.description"),
+            null,
+            al.a,
+            true,
+            true,
+            false
+         )
+         .a($$1, "husbandry/tactical_fishing");
+      af $$8 = ae.a.a()
+         .a($$7)
+         .a(ai.a.b)
+         .a(ld.h.b(ctc.qJ).a(), bw.a.a(ch.a.a().a(ctc.qJ)))
+         .a(
+            ctc.qJ,
+            wu.c("advancements.husbandry.axolotl_in_a_bucket.title"),
+            wu.c("advancements.husbandry.axolotl_in_a_bucket.description"),
+            null,
+            al.a,
+            true,
+            true,
+            false
+         )
+         .a($$1, "husbandry/axolotl_in_a_bucket");
       ae.a.a()
          .a($$8)
+         .a("kill_axolotl_target", bk.a.a(br.a.a().a(brn.f)))
          .a(
-            dcx.fO,
-            ws.c("advancements.nether.create_full_beacon.title"),
-            ws.c("advancements.nether.create_full_beacon.description"),
+            ctc.qI,
+            wu.c("advancements.husbandry.kill_axolotl_target.title"),
+            wu.c("advancements.husbandry.kill_axolotl_target.description"),
             null,
-            al.c,
+            al.a,
             true,
             true,
             false
          )
-         .a("beacon", ba.a.a(cs.d.a(4)))
-         .a($$1, "nether/create_full_beacon");
+         .a($$1, "husbandry/kill_axolotl_target");
+      e(ae.a.a())
+         .a($$5)
+         .a(
+            ctc.qZ,
+            wu.c("advancements.husbandry.complete_catalogue.title"),
+            wu.c("advancements.husbandry.complete_catalogue.description"),
+            null,
+            al.b,
+            true,
+            true,
+            false
+         )
+         .a(aj.a.a(50))
+         .a($$1, "husbandry/complete_catalogue");
       af $$9 = ae.a.a()
-         .a($$7)
-         .a(csg.sk, ws.c("advancements.nether.brew_potion.title"), ws.c("advancements.nether.brew_potion.description"), null, al.a, true, true, false)
-         .a("potion", ax.a.b())
-         .a($$1, "nether/brew_potion");
+         .a($$2)
+         .a("safely_harvest_honey", ck.a.a(cr.a.a().a(av.a.a().a(avr.aG)).a(true), ch.a.a().a(ctc.sl)))
+         .a(
+            ctc.wz,
+            wu.c("advancements.husbandry.safely_harvest_honey.title"),
+            wu.c("advancements.husbandry.safely_harvest_honey.description"),
+            null,
+            al.a,
+            true,
+            true,
+            false
+         )
+         .a($$1, "husbandry/safely_harvest_honey");
       af $$10 = ae.a.a()
          .a($$9)
-         .a(csg.qE, ws.c("advancements.nether.all_potions.title"), ws.c("advancements.nether.all_potions.description"), null, al.b, true, true, false)
-         .a(aj.a.a(100))
-         .a(
-            "all_effects",
-            bk.a.a(ct.a.a().a(bpz.a).a(bpz.b).a(bpz.e).a(bpz.h).a(bpz.j).a(bpz.l).a(bpz.m).a(bpz.n).a(bpz.p).a(bpz.r).a(bpz.s).a(bpz.B).a(bpz.k))
-         )
-         .a($$1, "nether/all_potions");
+         .a(ctc.ww, wu.c("advancements.husbandry.wax_on.title"), wu.c("advancements.husbandry.wax_on.description"), null, al.a, true, true, false)
+         .a("wax_on", ck.a.a(cr.a.a().a(av.a.a().a(csp.a.get().keySet())), ch.a.a().a(ctc.ww)))
+         .a($$1, "husbandry/wax_on");
       ae.a.a()
          .a($$10)
-         .a(csg.qy, ws.c("advancements.nether.all_effects.title"), ws.c("advancements.nether.all_effects.description"), null, al.b, true, true, true)
-         .a(aj.a.a(1000))
-         .a(
-            "all_effects",
-            bk.a.a(
-               ct.a.a()
-                  .a(bpz.a)
-                  .a(bpz.b)
-                  .a(bpz.e)
-                  .a(bpz.h)
-                  .a(bpz.j)
-                  .a(bpz.l)
-                  .a(bpz.m)
-                  .a(bpz.n)
-                  .a(bpz.p)
-                  .a(bpz.r)
-                  .a(bpz.s)
-                  .a(bpz.t)
-                  .a(bpz.c)
-                  .a(bpz.d)
-                  .a(bpz.y)
-                  .a(bpz.x)
-                  .a(bpz.v)
-                  .a(bpz.q)
-                  .a(bpz.i)
-                  .a(bpz.k)
-                  .a(bpz.B)
-                  .a(bpz.C)
-                  .a(bpz.D)
-                  .a(bpz.o)
-                  .a(bpz.E)
-                  .a(bpz.F)
-                  .a(bpz.G)
-            )
-         )
-         .a($$1, "nether/all_effects");
+         .a(ctc.oT, wu.c("advancements.husbandry.wax_off.title"), wu.c("advancements.husbandry.wax_off.description"), null, al.a, true, true, false)
+         .a("wax_off", ck.a.a(cr.a.a().a(av.a.a().a(csp.b.get().keySet())), ch.a.a().a(c)))
+         .a($$1, "husbandry/wax_off");
       af $$11 = ae.a.a()
          .a($$2)
+         .a(ld.h.b(ctc.qK).a(), bw.a.a(ch.a.a().a(ctc.qK)))
          .a(
-            csg.aC,
-            ws.c("advancements.nether.obtain_ancient_debris.title"),
-            ws.c("advancements.nether.obtain_ancient_debris.description"),
+            ctc.qK,
+            wu.c("advancements.husbandry.tadpole_in_a_bucket.title"),
+            wu.c("advancements.husbandry.tadpole_in_a_bucket.description"),
             null,
             al.a,
             true,
             true,
             false
          )
-         .a("ancient_debris", ca.a.a(csg.aC))
-         .a($$1, "nether/obtain_ancient_debris");
-      ae.a.a()
+         .a($$1, "husbandry/tadpole_in_a_bucket");
+      af $$12 = a(ae.a.a())
          .a($$11)
-         .a(csg.pT, ws.c("advancements.nether.netherite_armor.title"), ws.c("advancements.nether.netherite_armor.description"), null, al.b, true, true, false)
-         .a(aj.a.a(100))
-         .a("netherite_armor", ca.a.a(csg.pS, csg.pT, csg.pU, csg.pV))
-         .a($$1, "nether/netherite_armor");
-      ae.a.a()
-         .a($$11)
-         .a(csg.wB, ws.c("advancements.nether.use_lodestone.title"), ws.c("advancements.nether.use_lodestone.description"), null, al.a, true, true, false)
-         .a("use_lodestone", cj.a.a(cq.a.a().a(av.a.a().a(dcx.pq)), cg.a.a().a(csg.qS)))
-         .a($$1, "nether/use_lodestone");
-      af $$12 = ae.a.a()
-         .a($$2)
          .a(
-            csg.wC,
-            ws.c("advancements.nether.obtain_crying_obsidian.title"),
-            ws.c("advancements.nether.obtain_crying_obsidian.description"),
+            ctc.uK,
+            wu.c("advancements.husbandry.leash_all_frog_variants.title"),
+            wu.c("advancements.husbandry.leash_all_frog_variants.description"),
             null,
             al.a,
             true,
             true,
             false
          )
-         .a("crying_obsidian", ca.a.a(csg.wC))
-         .a($$1, "nether/obtain_crying_obsidian");
+         .a($$1, "husbandry/leash_all_frog_variants");
       ae.a.a()
          .a($$12)
+         .a(ctc.xn, wu.c("advancements.husbandry.froglights.title"), wu.c("advancements.husbandry.froglights.description"), null, al.b, true, true, false)
+         .a("froglights", cb.a.a(ctc.xm, ctc.xo, ctc.xn))
+         .a($$1, "husbandry/froglights");
+      ae.a.a()
+         .a($$2)
+         .a("silk_touch_nest", au.a.a(ddg.pe, ch.a.a().a(cj.b, cf.a(List.of(new bm(cyj.v, ct.d.b(1))))), ct.d.a(3)))
          .a(
-            csg.wP,
-            ws.c("advancements.nether.charge_respawn_anchor.title"),
-            ws.c("advancements.nether.charge_respawn_anchor.description"),
+            ddg.pe,
+            wu.c("advancements.husbandry.silk_touch_nest.title"),
+            wu.c("advancements.husbandry.silk_touch_nest.description"),
             null,
             al.a,
             true,
             true,
             false
          )
-         .a("charge_respawn_anchor", cj.a.a(cq.a.a().a(av.a.a().a(dcx.pl).a(dj.a.a().a(djd.d, 4))), cg.a.a().a(dcx.ec)))
-         .a($$1, "nether/charge_respawn_anchor");
+         .a($$1, "husbandry/silk_touch_nest");
+      ae.a.a()
+         .a($$2)
+         .a(
+            ctc.nU,
+            wu.c("advancements.husbandry.ride_a_boat_with_a_goat.title"),
+            wu.c("advancements.husbandry.ride_a_boat_with_a_goat.description"),
+            null,
+            al.a,
+            true,
+            true,
+            false
+         )
+         .a("ride_a_boat_with_a_goat", dj.a.a(br.a.a().a(br.a.a().a(brn.k).b(br.a.a().a(brn.X)))))
+         .a($$1, "husbandry/ride_a_boat_with_a_goat");
+      ae.a.a()
+         .a($$2)
+         .a(
+            ctc.rg,
+            wu.c("advancements.husbandry.make_a_sign_glow.title"),
+            wu.c("advancements.husbandry.make_a_sign_glow.description"),
+            null,
+            al.a,
+            true,
+            true,
+            false
+         )
+         .a("make_a_sign_glow", ck.a.a(cr.a.a().a(av.a.a().a(avr.aB)), ch.a.a().a(ctc.rg)))
+         .a($$1, "husbandry/make_a_sign_glow");
       af $$13 = ae.a.a()
          .a($$2)
-         .a(csg.nS, ws.c("advancements.nether.ride_strider.title"), ws.c("advancements.nether.ride_strider.description"), null, al.a, true, true, false)
-         .a("used_warped_fungus_on_a_stick", cd.a.a(Optional.of(br.a(br.a.a().a(br.a.a().a(bqr.aY)))), Optional.of(cg.a.a().a(csg.nS).b()), cs.d.c))
-         .a($$1, "nether/ride_strider");
-      ae.a.a()
-         .a($$13)
          .a(
-            csg.nS,
-            ws.c("advancements.nether.ride_strider_in_overworld_lava.title"),
-            ws.c("advancements.nether.ride_strider_in_overworld_lava.description"),
+            ctc.rS,
+            wu.c("advancements.husbandry.allay_deliver_item_to_player.title"),
+            wu.c("advancements.husbandry.allay_deliver_item_to_player.description"),
             null,
             al.a,
             true,
             true,
-            false
+            true
          )
-         .a("ride_entity_distance", bj.a.a(br.a.a().a(cq.a.a(czu.h)).a(br.a.a().a(bqr.aY)), bi.a(cs.c.b(50.0))))
-         .a($$1, "nether/ride_strider_in_overworld_lava");
-      ls.a(ae.a.a(), $$0, dbh.a.a.a().toList())
+         .a("allay_deliver_item_to_player", cw.a.a(Optional.empty(), Optional.empty(), Optional.of(br.a(br.a.a().a(brn.a)))))
+         .a($$1, "husbandry/allay_deliver_item_to_player");
+      ae.a.a()
          .a($$13)
-         .a(csg.pV, ws.c("advancements.nether.explore_nether.title"), ws.c("advancements.nether.explore_nether.description"), null, al.b, true, true, false)
-         .a(aj.a.a(500))
-         .a($$1, "nether/explore_nether");
+         .a(
+            ctc.mf,
+            wu.c("advancements.husbandry.allay_deliver_cake_to_note_block.title"),
+            wu.c("advancements.husbandry.allay_deliver_cake_to_note_block.description"),
+            null,
+            al.a,
+            true,
+            true,
+            true
+         )
+         .a("allay_deliver_cake_to_note_block", ck.a.b(cr.a.a().a(av.a.a().a(ddg.aY)), ch.a.a().a(ctc.rB)))
+         .a($$1, "husbandry/allay_deliver_cake_to_note_block");
       af $$14 = ae.a.a()
          .a($$2)
-         .a(csg.wL, ws.c("advancements.nether.find_bastion.title"), ws.c("advancements.nether.find_bastion.description"), null, al.a, true, true, false)
-         .a("bastion", cz.a.a(cq.a.b($$0.b(ld.aI).b(ega.s))))
-         .a($$1, "nether/find_bastion");
-      ae.a.a()
+         .a(
+            ctc.kq,
+            wu.c("advancements.husbandry.obtain_sniffer_egg.title"),
+            wu.c("advancements.husbandry.obtain_sniffer_egg.description"),
+            null,
+            al.a,
+            true,
+            true,
+            true
+         )
+         .a("obtain_sniffer_egg", cb.a.a(ctc.kq))
+         .a($$1, "husbandry/obtain_sniffer_egg");
+      af $$15 = ae.a.a()
          .a($$14)
-         .a(dcx.cv, ws.c("advancements.nether.loot_bastion.title"), ws.c("advancements.nether.loot_bastion.description"), null, al.a, true, true, false)
-         .a(ai.a.b)
-         .a("loot_bastion_other", cr.a.a(new akf("minecraft:chests/bastion_other")))
-         .a("loot_bastion_treasure", cr.a.a(new akf("minecraft:chests/bastion_treasure")))
-         .a("loot_bastion_hoglin_stable", cr.a.a(new akf("minecraft:chests/bastion_hoglin_stable")))
-         .a("loot_bastion_bridge", cr.a.a(new akf("minecraft:chests/bastion_bridge")))
-         .a($$1, "nether/loot_bastion");
+         .a(ctc.vi, wu.c("advancements.husbandry.feed_snifflet.title"), wu.c("advancements.husbandry.feed_snifflet.description"), null, al.a, true, true, true)
+         .a("feed_snifflet", cy.a.a(ch.a.a().a(avz.X), Optional.of(br.a(br.a.a().a(brn.aQ).a(bp.a.a().e(true))))))
+         .a($$1, "husbandry/feed_snifflet");
       ae.a.a()
-         .a($$2)
+         .a($$15)
+         .a(
+            ctc.vj,
+            wu.c("advancements.husbandry.plant_any_sniffer_seed.title"),
+            wu.c("advancements.husbandry.plant_any_sniffer_seed.description"),
+            null,
+            al.a,
+            true,
+            true,
+            true
+         )
          .a(ai.a.b)
-         .a(csg.oI, ws.c("advancements.nether.distract_piglin.title"), ws.c("advancements.nether.distract_piglin.description"), null, al.a, true, true, false)
-         .a("distract_piglin", cv.a.a(a, Optional.of(cg.a.a().a(avw.U).b()), Optional.of(br.a(br.a.a().a(bqr.az).a(bp.a.a().e(false))))))
-         .a("distract_piglin_directly", cx.a.a(Optional.of(a), cg.a.a().a(cjc.c), Optional.of(br.a(br.a.a().a(bqr.az).a(bp.a.a().e(false))))))
-         .a($$1, "nether/distract_piglin");
+         .a("torchflower", ck.a.a(ddg.kA))
+         .a("pitcher_pod", ck.a.a(ddg.kB))
+         .a($$1, "husbandry/plant_any_sniffer_seed");
+   }
+
+   public static af a(af $$0, Consumer<af> $$1, Stream<brn<?>> $$2, Stream<brn<?>> $$3) {
+      return a(ae.a.a(), $$2, $$3)
+         .a($$0)
+         .a(
+            ctc.uk,
+            wu.c("advancements.husbandry.breed_all_animals.title"),
+            wu.c("advancements.husbandry.breed_all_animals.description"),
+            null,
+            al.b,
+            true,
+            true,
+            false
+         )
+         .a(aj.a.a(100))
+         .a($$1, "husbandry/bred_all_animals");
+   }
+
+   private static ae.a a(ae.a $$0) {
+      ld.al.h().forEach($$1 -> $$0.a($$1.h().a().toString(), cy.a.a(ch.a.a().a(ctc.uK), Optional.of(br.a(br.a.a().a(brn.R).a(bt.b($$1)))))));
+      return $$0;
+   }
+
+   private static ae.a b(ae.a $$0) {
+      for (csu $$1 : f) {
+         $$0.a(ld.h.b($$1).a(), bb.a.a($$1));
+      }
+
+      return $$0;
+   }
+
+   private static ae.a a(ae.a $$0, Stream<brn<?>> $$1, Stream<brn<?>> $$2) {
+      $$1.forEach($$1x -> $$0.a(brn.a($$1x).toString(), aw.a.a(br.a.a().a($$1x))));
+      $$2.forEach($$1x -> $$0.a(brn.a($$1x).toString(), aw.a.a(Optional.of(br.a.a().a($$1x).b()), Optional.of(br.a.a().a($$1x).b()), Optional.empty())));
+      return $$0;
+   }
+
+   private static ae.a c(ae.a $$0) {
+      for (csu $$1 : e) {
+         $$0.a(ld.h.b($$1).a(), bw.a.a(ch.a.a().a($$1)));
+      }
+
+      return $$0;
+   }
+
+   private static ae.a d(ae.a $$0) {
+      for (csu $$1 : d) {
+         $$0.a(ld.h.b($$1).a(), by.a.a(Optional.empty(), Optional.empty(), Optional.of(ch.a.a().a($$1).b())));
+      }
+
+      return $$0;
+   }
+
+   private static ae.a e(ae.a $$0) {
+      ld.ak.h().sorted(Comparator.comparing($$0x -> $$0x.h().a())).forEach($$1 -> $$0.a($$1.h().a().toString(), dn.a.a(br.a.a().a(bt.a($$1)))));
+      return $$0;
    }
 }

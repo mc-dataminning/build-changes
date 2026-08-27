@@ -1,15 +1,23 @@
-import java.lang.Thread.UncaughtExceptionHandler;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-public class ezo implements UncaughtExceptionHandler {
-   private final Logger a;
+public class ezo extends ezt implements ezn {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
 
-   public ezo(Logger $$0) {
+   public ezo(String $$0, int $$1) {
       this.a = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.b;
    }
 
    @Override
-   public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception", $$1);
+   public String toString() {
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
    }
 }

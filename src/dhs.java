@@ -1,57 +1,82 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public enum dhs implements ayq {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class dhs extends dde implements dkf {
+   public static final MapCodec<dhs> a = b(dhs::new);
+   public static final int b = 15;
+   public static final drh c = dqx.aP;
+   public static final dqy d = dqx.C;
+   public static final ToIntFunction<dqh> e = $$0 -> $$0.c(c);
 
-   public static final Codec<dhs> d = ayq.a(dhs::values);
-   private final String e;
-   private final ws f;
-   private final h g;
-
-   private dhs(String $$0, h $$1) {
-      this.e = $$0;
-      this.f = ws.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<dhs> a() {
+      return a;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case c:
-            return ($$1 - $$3) % $$1;
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dji a(ir $$0) {
-      ir.a $$1 = $$0.o();
-      return (this != b || $$1 != ir.a.c) && (this != c || $$1 != ir.a.a) ? dji.a : dji.c;
-   }
-
-   public ir b(ir $$0) {
-      if (this == c && $$0.o() == ir.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == ir.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public ws b() {
-      return this.f;
+   public dhs(dqg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public String c() {
-      return this.e;
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   protected bpm a(dqh $$0, dad $$1, in $$2, clh $$3, etl $$4) {
+      if (!$$1.B && $$3.gx()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return bpm.a;
+      } else {
+         return bpm.b;
+      }
+   }
+
+   @Override
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return $$3.a(ctc.hC) ? euf.b() : euf.a();
+   }
+
+   @Override
+   protected boolean a_(dqh $$0, czj $$1, in $$2) {
+      return true;
+   }
+
+   @Override
+   protected djk a_(dqh $$0) {
+      return djk.a;
+   }
+
+   @Override
+   protected float d(dqh $$0, czj $$1, in $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, emb.c, emb.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected ema b_(dqh $$0) {
+      return $$0.c(d) ? emb.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   public csz a(dag $$0, in $$1, dqh $$2) {
+      return a(super.a($$0, $$1, $$2), $$2.c(c));
+   }
+
+   public static csz a(csz $$0, int $$1) {
+      if ($$1 != 15) {
+         $$0.b(ka.Y, cvi.a.a(c, $$1));
+      }
+
+      return $$0;
    }
 }

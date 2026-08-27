@@ -1,140 +1,91 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioFormat.Encoding;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC10;
+import org.slf4j.Logger;
 
-public class evw extends evz {
-   public static final int a = 854;
-   public static final int b = 480;
-   static final evw.b l = new evw.b(854, 480);
+public class evw {
+   private static final Logger a = LogUtils.getLogger();
 
-   public evw(int $$0, int $$1) {
-      super(true);
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0, $$1));
+   private static String a(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid name parameter.";
+         case 40962:
+            return "Invalid enumerated parameter value.";
+         case 40963:
+            return "Invalid parameter parameter value.";
+         case 40964:
+            return "Invalid operation.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
+      }
+   }
+
+   static boolean a(String $$0) {
+      int $$1 = AL10.alGetError();
+      if ($$1 != 0) {
+         a.error("{}: {}", $$0, a($$1));
+         return true;
       } else {
-         this.b($$0, $$1);
+         return false;
       }
    }
 
-   private void b(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      evw.b $$2 = this.c($$0, $$1);
-      this.h = GlStateManager.glGenFramebuffers();
-      GlStateManager._glBindFramebuffer(36160, this.h);
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texParameter(3553, 34892, 0);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
-      GlStateManager._bindTexture(0);
-      this.e = $$2.a;
-      this.f = $$2.b;
-      this.c = $$2.a;
-      this.d = $$2.b;
-      this.b();
-      GlStateManager._glBindFramebuffer(36160, 0);
-   }
-
-   private evw.b c(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.i = TextureUtil.generateTextureId();
-      this.j = TextureUtil.generateTextureId();
-      evw.a $$2 = evw.a.a;
-
-      for (evw.b $$3 : evw.b.a($$0, $$1)) {
-         $$2 = evw.a.a;
-         if (this.a($$3)) {
-            $$2 = $$2.a(evw.a.b);
-         }
-
-         if (this.b($$3)) {
-            $$2 = $$2.a(evw.a.c);
-         }
-
-         if ($$2 == evw.a.d) {
-            return $$3;
-         }
-      }
-
-      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
-   }
-
-   private boolean a(evw.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   private boolean b(evw.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
-
-      private static final evw.a[] e = values();
-
-      evw.a a(evw.a $$0) {
-         return e[this.ordinal() | $$0.ordinal()];
+   private static String b(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid device.";
+         case 40962:
+            return "Invalid context.";
+         case 40963:
+            return "Illegal enum.";
+         case 40964:
+            return "Invalid value.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
       }
    }
 
-   static class b {
-      public final int a;
-      public final int b;
-
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   static boolean a(long $$0, String $$1) {
+      int $$2 = ALC10.alcGetError($$0);
+      if ($$2 != 0) {
+         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      static List<evw.b> a(int $$0, int $$1) {
-         RenderSystem.assertOnRenderThreadOrInit();
-         int $$2 = RenderSystem.maxSupportedTextureSize();
-         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new evw.b($$0, $$1), evw.l) : ImmutableList.of(evw.l);
-      }
+   static int a(AudioFormat $$0) {
+      Encoding $$1 = $$0.getEncoding();
+      int $$2 = $$0.getChannels();
+      int $$3 = $$0.getSampleSizeInBits();
+      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
+         if ($$2 == 1) {
+            if ($$3 == 8) {
+               return 4352;
+            }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            evw.b $$1 = (evw.b)$$0;
-            return this.a == $$1.a && this.b == $$1.b;
-         } else {
-            return false;
+            if ($$3 == 16) {
+               return 4353;
+            }
+         } else if ($$2 == 2) {
+            if ($$3 == 8) {
+               return 4354;
+            }
+
+            if ($$3 == 16) {
+               return 4355;
+            }
          }
       }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b);
-      }
-
-      @Override
-      public String toString() {
-         return this.a + "x" + this.b;
-      }
+      throw new IllegalArgumentException("Invalid audio format: " + $$0);
    }
 }

@@ -1,5 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface bmo {
-   List<bml> bu();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bmo {
 }

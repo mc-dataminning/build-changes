@@ -1,44 +1,18 @@
-public class gpr extends gpk {
-   public static final int n = 20;
-   private final gag o;
-   private int p;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.UUID;
 
-   public gpr(gag $$0) {
-      super(auz.hR, ava.h, gqb.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+public interface gpr {
+   void scheduleReload(gpr.a var1);
+
+   public interface a {
+      void a();
+
+      void a(boolean var1);
+
+      List<gpr.b> b();
    }
 
-   @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dI() && (this.p <= 20 || this.o.fC())) {
-         this.f = (double)((float)this.o.ds());
-         this.g = (double)((float)this.o.du());
-         this.h = (double)((float)this.o.dy());
-         float $$0 = (float)this.o.dq().g();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = axw.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
-         }
-
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
-
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
-      } else {
-         this.n();
-      }
+   public static record b(UUID a, Path b) {
    }
 }

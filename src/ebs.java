@@ -1,43 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class ebs implements eay {
+public class ebs implements ebh {
    public static final Codec<ebs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
-               eae.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
-               im.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, ebs::new)
+      $$0 -> $$0.group(eft.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), eft.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, ebs::new)
    );
-   private final boolean b;
-   private final List<eae.a> c;
-   @Nullable
-   private final im d;
+   public final iw<eft> b;
+   public final iw<eft> c;
 
-   public ebs(boolean $$0, List<eae.a> $$1, @Nullable im $$2) {
-      this($$0, $$1, Optional.ofNullable($$2));
-   }
-
-   private ebs(boolean $$0, List<eae.a> $$1, Optional<im> $$2) {
+   public ebs(iw<eft> $$0, iw<eft> $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.orElse(null);
    }
 
-   public boolean a() {
-      return this.b;
-   }
-
-   public List<eae.a> b() {
-      return this.c;
-   }
-
-   @Nullable
-   public im c() {
-      return this.d;
+   @Override
+   public Stream<dyq<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

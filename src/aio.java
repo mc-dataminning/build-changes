@@ -1,23 +1,27 @@
-import io.netty.buffer.ByteBuf;
+import java.util.UUID;
 
-public class aio implements yz<aik> {
-   public static final aio a = new aio();
-   public static final yq<ByteBuf, aio> b = yq.a(a);
+public record aio(String b, UUID c) implements zb<aim> {
+   public static final ys<vu, aio> a = zb.a(aio::a, aio::new);
 
-   private aio() {
+   private aio(vu $$0) {
+      this($$0.d(16), $$0.n());
+   }
+
+   private void a(vu $$0) {
+      $$0.a(this.b, 16);
+      $$0.a(this.c);
    }
 
    @Override
-   public zb<aio> a() {
-      return aii.i;
+   public zd<aio> a() {
+      return aik.g;
    }
 
-   public void a(aik $$0) {
+   public void a(aim $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public UUID e() {
+      return this.c;
    }
 }

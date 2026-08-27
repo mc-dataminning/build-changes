@@ -1,11 +1,11 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 
-public class ic implements hw<FloatArgumentType, ic.a> {
-   public void a(ic.a $$0, vs $$1) {
-      boolean $$2 = $$0.b != -Float.MAX_VALUE;
-      boolean $$3 = $$0.c != Float.MAX_VALUE;
-      $$1.k(hy.a($$2, $$3));
+public class ic implements hx<DoubleArgumentType, ic.a> {
+   public void a(ic.a $$0, vu $$1) {
+      boolean $$2 = $$0.b != -Double.MAX_VALUE;
+      boolean $$3 = $$0.c != Double.MAX_VALUE;
+      $$1.k(hz.a($$2, $$3));
       if ($$2) {
          $$1.a($$0.b);
       }
@@ -15,42 +15,42 @@ public class ic implements hw<FloatArgumentType, ic.a> {
       }
    }
 
-   public ic.a a(vs $$0) {
+   public ic.a a(vu $$0) {
       byte $$1 = $$0.readByte();
-      float $$2 = hy.a($$1) ? $$0.readFloat() : -Float.MAX_VALUE;
-      float $$3 = hy.b($$1) ? $$0.readFloat() : Float.MAX_VALUE;
+      double $$2 = hz.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
+      double $$3 = hz.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
       return new ic.a($$2, $$3);
    }
 
    public void a(ic.a $$0, JsonObject $$1) {
-      if ($$0.b != -Float.MAX_VALUE) {
+      if ($$0.b != -Double.MAX_VALUE) {
          $$1.addProperty("min", $$0.b);
       }
 
-      if ($$0.c != Float.MAX_VALUE) {
+      if ($$0.c != Double.MAX_VALUE) {
          $$1.addProperty("max", $$0.c);
       }
    }
 
-   public ic.a a(FloatArgumentType $$0) {
+   public ic.a a(DoubleArgumentType $$0) {
       return new ic.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public final class a implements hw.a<FloatArgumentType> {
-      final float b;
-      final float c;
+   public final class a implements hx.a<DoubleArgumentType> {
+      final double b;
+      final double c;
 
-      a(float $$1, float $$2) {
+      a(double $$1, double $$2) {
          this.b = $$1;
          this.c = $$2;
       }
 
-      public FloatArgumentType a(dy $$0) {
-         return FloatArgumentType.floatArg(this.b, this.c);
+      public DoubleArgumentType a(dz $$0) {
+         return DoubleArgumentType.doubleArg(this.b, this.c);
       }
 
       @Override
-      public hw<FloatArgumentType, ?> a() {
+      public hx<DoubleArgumentType, ?> a() {
          return ic.this;
       }
    }

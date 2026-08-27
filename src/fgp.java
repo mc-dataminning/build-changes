@@ -1,225 +1,43 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.joml.Vector2i;
 
-public interface fgp extends fgq {
-   List<? extends fgq> aE_();
-
-   default Optional<fgq> b_(double $$0, double $$1) {
-      for (fgq $$2 : this.aE_()) {
-         if ($$2.c($$0, $$1)) {
-            return Optional.of($$2);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   @Override
-   default boolean a(double $$0, double $$1, int $$2) {
-      for (fgq $$3 : this.aE_()) {
-         if ($$3.a($$0, $$1, $$2)) {
-            this.a($$3);
-            if ($$2 == 0) {
-               this.b(true);
-            }
-
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   default boolean b(double $$0, double $$1, int $$2) {
-      this.b(false);
-      return this.b_($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
-   }
-
-   @Override
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return this.aH_() != null && this.aG_() && $$2 == 0 ? this.aH_().a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   boolean aG_();
-
-   void b(boolean var1);
-
-   @Override
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.b_($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
-   }
-
-   @Override
-   default boolean a(int $$0, int $$1, int $$2) {
-      return this.aH_() != null && this.aH_().a($$0, $$1, $$2);
-   }
-
-   @Override
-   default boolean c(int $$0, int $$1, int $$2) {
-      return this.aH_() != null && this.aH_().c($$0, $$1, $$2);
-   }
-
-   @Override
-   default boolean a(char $$0, int $$1) {
-      return this.aH_() != null && this.aH_().a($$0, $$1);
-   }
-
+public class fgp implements fjb {
+   private static final int a = 170;
+   private final wu b;
    @Nullable
-   fgq aH_();
+   private List<axl> c;
+   @Nullable
+   private final wu d;
 
-   void a(@Nullable fgq var1);
+   private fgp(wu $$0, @Nullable wu $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
+
+   public static fgp a(wu $$0, @Nullable wu $$1) {
+      return new fgp($$0, $$1);
+   }
+
+   public static fgp a(wu $$0) {
+      return new fgp($$0, $$0);
+   }
 
    @Override
-   default void a(boolean $$0) {
-   }
-
-   @Override
-   default boolean aI_() {
-      return this.aH_() != null;
-   }
-
-   @Nullable
-   @Override
-   default fee aJ_() {
-      fgq $$0 = this.aH_();
-      return $$0 != null ? fee.a(this, $$0.aJ_()) : null;
-   }
-
-   @Nullable
-   @Override
-   default fee a(fiw $$0) {
-      fgq $$1 = this.aH_();
-      if ($$1 != null) {
-         fee $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return fee.a(this, $$2);
-         }
-      }
-
-      if ($$0 instanceof fiw.c $$3) {
-         return this.a($$3);
-      } else {
-         return $$0 instanceof fiw.a $$4 ? this.a($$4) : null;
+   public void b(fja $$0) {
+      if (this.d != null) {
+         $$0.a(fiz.c, this.d);
       }
    }
 
-   @Nullable
-   private fee a(fiw.c $$0) {
-      boolean $$1 = $$0.b();
-      fgq $$2 = this.aH_();
-      List<? extends fgq> $$3 = new ArrayList<>(this.aE_());
-      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.H()));
-      int $$4 = $$3.indexOf($$2);
-      int $$5;
-      if ($$2 != null && $$4 >= 0) {
-         $$5 = $$4 + ($$1 ? 1 : 0);
-      } else if ($$1) {
-         $$5 = 0;
-      } else {
-         $$5 = $$3.size();
+   public List<axl> a(fde $$0) {
+      if (this.c == null) {
+         this.c = a($$0, this.b);
       }
 
-      ListIterator<? extends fgq> $$8 = $$3.listIterator($$5);
-      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
-      Supplier<? extends fgq> $$10 = $$1 ? $$8::next : $$8::previous;
-
-      while ($$9.getAsBoolean()) {
-         fgq $$11 = $$10.get();
-         fee $$12 = $$11.a($$0);
-         if ($$12 != null) {
-            return fee.a(this, $$12);
-         }
-      }
-
-      return null;
+      return this.c;
    }
 
-   @Nullable
-   private fee a(fiw.a $$0) {
-      fgq $$1 = this.aH_();
-      if ($$1 == null) {
-         fiy $$2 = $$0.b();
-         fja $$3 = this.G().c($$2.b());
-         return fee.a(this, this.a($$3, $$2, null, $$0));
-      } else {
-         fja $$4 = $$1.G();
-         return fee.a(this, this.a($$4, $$0.b(), $$1, $$0));
-      }
-   }
-
-   @Nullable
-   private fee a(fja $$0, fiy $$1, @Nullable fgq $$2, fiw $$3) {
-      fix $$4 = $$1.a();
-      fix $$5 = $$4.a();
-      fiy $$6 = $$5.b();
-      int $$7 = $$0.b($$1.b());
-      List<fgq> $$8 = new ArrayList<>();
-
-      for (fgq $$9 : this.aE_()) {
-         if ($$9 != $$2) {
-            fja $$10 = $$9.G();
-            if ($$10.a($$0, $$5)) {
-               int $$11 = $$10.b($$1.b());
-               if ($$1.a($$11, $$7)) {
-                  $$8.add($$9);
-               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
-                  $$8.add($$9);
-               }
-            }
-         }
-      }
-
-      Comparator<fgq> $$12 = Comparator.comparing($$1x -> $$1x.G().b($$1.b()), $$1.d());
-      Comparator<fgq> $$13 = Comparator.comparing($$1x -> $$1x.G().b($$6.b()), $$6.d());
-      $$8.sort($$12.thenComparing($$13));
-
-      for (fgq $$14 : $$8) {
-         fee $$15 = $$14.a($$3);
-         if ($$15 != null) {
-            return $$15;
-         }
-      }
-
-      return this.b($$0, $$1, $$2, $$3);
-   }
-
-   @Nullable
-   private fee b(fja $$0, fiy $$1, @Nullable fgq $$2, fiw $$3) {
-      fix $$4 = $$1.a();
-      fix $$5 = $$4.a();
-      List<Pair<fgq, Long>> $$6 = new ArrayList<>();
-      fiz $$7 = fiz.a($$4, $$0.b($$1), $$0.b($$5));
-
-      for (fgq $$8 : this.aE_()) {
-         if ($$8 != $$2) {
-            fja $$9 = $$8.G();
-            fiz $$10 = fiz.a($$4, $$9.b($$1.b()), $$9.b($$5));
-            if ($$1.a($$10.a($$4), $$7.a($$4))) {
-               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
-               $$6.add(Pair.of($$8, $$11));
-            }
-         }
-      }
-
-      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
-
-      for (Pair<fgq, Long> $$12 : $$6) {
-         fee $$13 = ((fgq)$$12.getFirst()).a($$3);
-         if ($$13 != null) {
-            return $$13;
-         }
-      }
-
-      return null;
+   public static List<axl> a(fde $$0, wu $$1) {
+      return $$0.h.c($$1, 170);
    }
 }

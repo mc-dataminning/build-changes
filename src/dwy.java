@@ -1,22 +1,84 @@
-import com.mojang.serialization.Codec;
+import java.util.function.LongFunction;
 
-public interface dwy<P extends dwx> {
-   dwy<dxd> a = a("matching_blocks", dxd.a);
-   dwy<dxc> b = a("matching_block_tag", dxc.e);
-   dwy<dxe> c = a("matching_fluids", dxe.a);
-   dwy<dxa> d = a("has_sturdy_face", dxa.a);
-   dwy<dxh> e = a("solid", dxh.a);
-   dwy<dxg> f = a("replaceable", dxg.a);
-   dwy<dxk> g = a("would_survive", dxk.a);
-   dwy<dxb> h = a("inside_world_bounds", dxb.a);
-   dwy<dww> i = a("any_of", dww.a);
-   dwy<dwv> j = a("all_of", dwv.a);
-   dwy<dxf> k = a("not", dxf.a);
-   dwy<dxj> l = a("true", dxj.e);
+public class dwy extends dwa {
+   private final ayg d;
+   private int e;
 
-   Codec<P> codec();
+   public dwy(ayg $$0) {
+      super(0L);
+      this.d = $$0;
+   }
 
-   private static <P extends dwx> dwy<P> a(String $$0, Codec<P> $$1) {
-      return ji.a(lc.O, $$0, () -> $$1);
+   public int l() {
+      return this.e;
+   }
+
+   @Override
+   public ayg d() {
+      return this.d.d();
+   }
+
+   @Override
+   public dwm e() {
+      return this.d.e();
+   }
+
+   @Override
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof dwa $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   }
+
+   @Override
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
+   }
+
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
+   }
+
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
+   }
+
+   public static ayg a(int $$0, int $$1, long $$2, long $$3) {
+      return ayg.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
+   }
+
+   public static enum a {
+      a(dwa::new),
+      b(dxa::new);
+
+      private final LongFunction<ayg> c;
+
+      private a(LongFunction<ayg> $$0) {
+         this.c = $$0;
+      }
+
+      public ayg a(long $$0) {
+         return this.c.apply($$0);
+      }
    }
 }

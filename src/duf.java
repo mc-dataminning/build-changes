@@ -1,38 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.stream.Stream;
 
-public interface duf<B, T extends B> {
-   static <B, T extends B> duf<B, T> a(final Class<T> $$0) {
-      return new duf<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+public class duf<T> {
+   private final czk a;
+   private final List<T> b;
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   public duf(czk $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   static <B, T extends B> duf<B, T> b(final Class<T> $$0) {
-      return new duf<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   public czk a() {
+      return this.a;
    }
 
-   @Nullable
-   T a(B var1);
+   public Stream<T> b() {
+      return this.b.stream();
+   }
 
-   Class<? extends B> a();
+   public boolean c() {
+      return this.b.isEmpty();
+   }
 }

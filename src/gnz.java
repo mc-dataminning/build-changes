@@ -1,71 +1,140 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.hash.Hashing;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.SignatureState;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture;
+import com.mojang.authlib.minecraft.MinecraftProfileTextures;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
+import com.mojang.authlib.properties.Property;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
 
-public class gnz implements asn<gny> {
-   public gny b(JsonObject $$0) {
-      Builder<gnx> $$1 = ImmutableList.builder();
-      int $$2 = axm.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
-      }
+public class gnz {
+   static final Logger a = LogUtils.getLogger();
+   private final MinecraftSessionService b;
+   private final LoadingCache<gnz.a, CompletableFuture<gny>> c;
+   private final gnz.b d;
+   private final gnz.b e;
+   private final gnz.b f;
 
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = axm.v($$0, "frames");
+   public gnz(gmz $$0, Path $$1, final MinecraftSessionService $$2, final Executor $$3) {
+      this.b = $$2;
+      this.d = new gnz.b($$0, $$1, Type.SKIN);
+      this.e = new gnz.b($$0, $$1, Type.CAPE);
+      this.f = new gnz.b($$0, $$1, Type.ELYTRA);
+      this.c = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<gnz.a, CompletableFuture<gny>>() {
+         public CompletableFuture<gny> a(gnz.a $$0) {
+            return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
+               Property $$2xx = $$0.b();
+               if ($$2xx == null) {
+                  return MinecraftProfileTextures.EMPTY;
+               } else {
+                  MinecraftProfileTextures $$3xx = $$2.unpackTextures($$2xx);
+                  if ($$3xx.signatureState() == SignatureState.INVALID) {
+                     gnz.a.warn("Profile contained invalid signature for textures property (profile id: {})", $$0.a());
+                  }
 
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               gnx $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
+                  return $$3xx;
                }
-            }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
+            }, ac.f()).thenComposeAsync($$1 -> gnz.this.a($$0.a(), $$1), $$3);
          }
-      }
-
-      int $$8 = axm.a($$0, "width", -1);
-      int $$9 = axm.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = axm.a($$0, "interpolate", false);
-      return new gny($$1.build(), $$8, $$9, $$2, $$10);
+      });
    }
 
-   @Nullable
-   private gnx a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new gnx(axm.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = axm.m($$1, "frames[" + $$0 + "]");
-         int $$3 = axm.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
-         }
+   public Supplier<gny> a(GameProfile $$0) {
+      CompletableFuture<gny> $$1 = this.c($$0);
+      gny $$2 = gnq.a($$0);
+      return () -> $$1.getNow($$2);
+   }
 
-         int $$4 = axm.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new gnx($$4, $$3);
+   public gny b(GameProfile $$0) {
+      gny $$1 = this.c($$0).getNow(null);
+      return $$1 != null ? $$1 : gnq.a($$0);
+   }
+
+   public CompletableFuture<gny> c(GameProfile $$0) {
+      Property $$1 = this.b.getPackedTextures($$0);
+      return (CompletableFuture<gny>)this.c.getUnchecked(new gnz.a($$0.getId(), $$1));
+   }
+
+   CompletableFuture<gny> a(UUID $$0, MinecraftProfileTextures $$1) {
+      MinecraftProfileTexture $$2 = $$1.skin();
+      CompletableFuture<akh> $$3;
+      gny.a $$4;
+      if ($$2 != null) {
+         $$3 = this.d.a($$2);
+         $$4 = gny.a.a($$2.getMetadata("model"));
       } else {
-         return null;
+         gny $$5 = gnq.a($$0);
+         $$3 = CompletableFuture.completedFuture($$5.a());
+         $$4 = $$5.e();
       }
+
+      String $$8 = x.a($$2, MinecraftProfileTexture::getUrl);
+      MinecraftProfileTexture $$9 = $$1.cape();
+      CompletableFuture<akh> $$10 = $$9 != null ? this.e.a($$9) : CompletableFuture.completedFuture(null);
+      MinecraftProfileTexture $$11 = $$1.elytra();
+      CompletableFuture<akh> $$12 = $$11 != null ? this.f.a($$11) : CompletableFuture.completedFuture(null);
+      return CompletableFuture.allOf($$3, $$10, $$12)
+         .thenApply($$6x -> new gny($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.signatureState() == SignatureState.SIGNED));
    }
 
-   @Override
-   public String a() {
-      return "animation";
+   static record a(UUID a, @Nullable Property b) {
+   }
+
+   static class b {
+      private final gmz a;
+      private final Path b;
+      private final Type c;
+      private final Map<String, CompletableFuture<akh>> d = new Object2ObjectOpenHashMap();
+
+      b(gmz $$0, Path $$1, Type $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public CompletableFuture<akh> a(MinecraftProfileTexture $$0) {
+         String $$1 = $$0.getHash();
+         CompletableFuture<akh> $$2 = this.d.get($$1);
+         if ($$2 == null) {
+            $$2 = this.b($$0);
+            this.d.put($$1, $$2);
+         }
+
+         return $$2;
+      }
+
+      private CompletableFuture<akh> b(MinecraftProfileTexture $$0) {
+         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
+         akh $$2 = this.a($$1);
+         Path $$3 = this.b.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
+         CompletableFuture<akh> $$4 = new CompletableFuture<>();
+         gmm $$5 = new gmm($$3.toFile(), $$0.getUrl(), gnq.a(), this.c == Type.SKIN, () -> $$4.complete($$2));
+         this.a.a($$2, $$5);
+         return $$4;
+      }
+
+      private akh a(String $$0) {
+         String $$1 = switch (this.c) {
+            case SKIN -> "skins";
+            case CAPE -> "capes";
+            case ELYTRA -> "elytra";
+            default -> throw new IncompatibleClassChangeError();
+         };
+         return new akh($$1 + "/" + $$0);
+      }
    }
 }

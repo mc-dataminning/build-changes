@@ -1,18 +1,17 @@
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface fii extends fij {
-   void b(Consumer<fij> var1);
+public record fii(akh c) implements fig {
+   public static final MapCodec<fii> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akh.a.fieldOf("id").forGetter(fii::c)).apply($$0, fii::new));
 
    @Override
-   default void a(Consumer<fes> $$0) {
-      this.b($$1 -> $$1.a($$0));
+   public fih a() {
+      return fih.e;
    }
 
-   default void a() {
-      this.b($$0 -> {
-         if ($$0 instanceof fii $$1) {
-            $$1.a();
-         }
-      });
+   @Override
+   public Either<fig.b, fig.c> b() {
+      return Either.right(new fig.c(this.c));
    }
 }

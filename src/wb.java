@@ -1,18 +1,38 @@
-import io.netty.channel.ChannelHandlerContext;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
 public interface wb {
-   static void a(ChannelHandlerContext $$0, yz<?> $$1) {
-      if ($$1.d()) {
-         $$0.channel().config().setAutoRead(false);
-         $$0.pipeline().addBefore($$0.name(), "inbound_config", new wh.a());
-         $$0.pipeline().remove($$0.name());
-      }
+   static wb a(final Runnable $$0) {
+      return new wb() {
+         @Override
+         public void a() {
+            $$0.run();
+         }
+
+         @Nullable
+         @Override
+         public zb<?> b() {
+            $$0.run();
+            return null;
+         }
+      };
    }
 
-   static void b(ChannelHandlerContext $$0, yz<?> $$1) {
-      if ($$1.d()) {
-         $$0.pipeline().addAfter($$0.name(), "outbound_config", new wh.c());
-         $$0.pipeline().remove($$0.name());
-      }
+   static wb a(final Supplier<zb<?>> $$0) {
+      return new wb() {
+         @Nullable
+         @Override
+         public zb<?> b() {
+            return $$0.get();
+         }
+      };
+   }
+
+   default void a() {
+   }
+
+   @Nullable
+   default zb<?> b() {
+      return null;
    }
 }

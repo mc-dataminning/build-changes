@@ -1,74 +1,61 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class gfc implements geq.a {
-   private final fcu a;
-   private double b = Double.MIN_VALUE;
-   private List<bql> c = Collections.emptyList();
+public class gfc implements gfa.a {
+   private static final float a = 0.02F;
+   private final Map<in, gfc.a> b = Maps.newHashMap();
 
-   public gfc(fcu $$0) {
-      this.a = $$0;
+   public void a(in $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new gfc.a($$1, $$2, ac.b() + (long)$$3));
    }
 
    @Override
-   public void a(exn $$0, gbe $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bql $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dN().a_($$6, $$6.cI().g(16.0)));
-      }
+   public void a() {
+      this.b.clear();
+   }
 
-      ckl $$7 = this.a.s;
-      if ($$7 != null && $$7.aE.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
+   @Override
+   public void a(exx $$0, gbo $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ac.b();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((gfc.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
 
-      for (bql $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
-         }
+   private void a(exx $$0, gbo $$1, in $$2, gfc.a $$3) {
+      gfa.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         gfa.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
       }
    }
 
-   private void a(exn $$0, gbe $$1, double $$2, double $$3, double $$4, bql $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.aE.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         im $$12 = $$5.aJ();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         im $$13 = $$5.aH();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
-   }
+   static class a {
+      public int a;
+      public String b;
+      public long c;
 
-   private double a(bql $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.aj() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-   private void a(im $$0, exn $$1, double $$2, double $$3, double $$4, gbe $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      gbc.a($$1, $$5.getBuffer(gbm.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      gbc.a(
-         $$1,
-         $$5.getBuffer(gbm.y()),
-         this.a.r.a_($$0).b(this.a.r, $$0, etk.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
-         -$$2,
-         -$$3,
-         -$$4,
-         $$7,
-         $$8,
-         $$9,
-         1.0F,
-         false
-      );
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+      }
    }
 }

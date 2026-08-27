@@ -1,64 +1,67 @@
-public class ahc implements yz<afx> {
-   public static final yq<vs, ahc> a = yz.a(ahc::a, ahc::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private final float d;
-   private final float e;
-   private final boolean f;
-   private final boolean g;
+public class ahc implements zb<afz> {
+   public static final ys<vu, ahc> a = zb.a(ahc::a, ahc::new);
+   private final in b;
+   private final is c;
+   private final ahc.a d;
+   private final int e;
 
-   public ahc(float $$0, float $$1, boolean $$2, boolean $$3) {
+   public ahc(ahc.a $$0, in $$1, is $$2, int $$3) {
       this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+      this.b = $$1.i();
+      this.c = $$2;
+      this.e = $$3;
    }
 
-   private ahc(vs $$0) {
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) > 0;
-      this.g = ($$1 & 2) > 0;
+   public ahc(ahc.a $$0, in $$1, is $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
-   private void a(vs $$0) {
+   private ahc(vu $$0) {
+      this.d = $$0.b(ahc.a.class);
+      this.b = $$0.e();
+      this.c = is.a($$0.readUnsignedByte());
+      this.e = $$0.l();
+   }
+
+   private void a(vu $$0) {
       $$0.a(this.d);
-      $$0.a(this.e);
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+      $$0.a(this.b);
+      $$0.k(this.c.d());
+      $$0.c(this.e);
    }
 
    @Override
-   public zb<ahc> a() {
-      return afv.bK;
+   public zd<ahc> a() {
+      return afx.bI;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public in b() {
+      return this.b;
+   }
+
+   public is e() {
+      return this.c;
+   }
+
+   public ahc.a f() {
       return this.d;
    }
 
-   public float e() {
+   public int g() {
       return this.e;
    }
 
-   public boolean f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

@@ -1,73 +1,87 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
 
-public abstract class dgj extends dgi implements dcy {
-   protected dgj(dpx.d $$0, ir $$1, ety $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class dgj extends dhc {
+   public static final MapCodec<dgj> a = b(dgj::new);
+   public static final int b = 3;
+   public static final drh c = dqx.as;
+   private static final int f = 4;
+   private static final int g = 2;
+
+   @Override
+   public MapCodec<dgj> a() {
+      return a;
+   }
+
+   public dgj(dqg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dgj> a();
-
-   protected dpy a(dpy $$0, dpy $$1) {
-      return $$1;
+   protected void b(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
+   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
+         in.a $$4 = new in.a();
 
-      dgk $$6 = this.c();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, els.c, els.c.a($$3));
+         for (is $$5 : is.values()) {
+            $$4.a($$2, $$5);
+            dqh $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, axz.a($$3, 20, 40));
+            }
          }
+      } else {
+         $$1.a($$2, this, axz.a($$3, 20, 40));
+      }
+   }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private boolean e(dqh $$0, dad $$1, in $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
       }
    }
 
    @Override
-   public csd a(czx $$0, im $$1, dpy $$2) {
-      return new csd(this.c());
+   protected void a(dqh $$0, dad $$1, in $$2, dde $$3, in $$4, boolean $$5) {
+      if ($$3.n().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public boolean b(czx $$0, im $$1, dpy $$2) {
-      Optional<im> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
-   }
+   private boolean a(czj $$0, in $$1, int $$2) {
+      int $$3 = 0;
+      in.a $$4 = new in.a();
 
-   @Override
-   public boolean a(czu $$0, ayd $$1, im $$2, dpy $$3) {
+      for (is $$5 : is.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
+
       return true;
    }
 
    @Override
-   public void a(aqe $$0, ayd $$1, im $$2, dpy $$3) {
-      Optional<im> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dpy $$5 = $$0.a_($$4.get());
-         ((dgk)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
-   }
-
-   private Optional<im> a(cza $$0, im $$1, dcv $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected boolean a(dpy $$0, cvl $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().p()) ? false : $$2;
-   }
-
-   @Override
-   protected dcv b() {
-      return this;
+   public csz a(dag $$0, in $$1, dqh $$2) {
+      return csz.i;
    }
 }

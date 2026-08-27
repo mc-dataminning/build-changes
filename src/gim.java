@@ -1,38 +1,41 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class gim extends ght<chx, ftk<chx>> {
-   private static final akf a = new akf("textures/" + gbt.i.b().a() + ".png");
-   private static final akf[] i = gbt.j.stream().map($$0 -> new akf("textures/" + $$0.b().a() + ".png")).toArray(akf[]::new);
+public class gim extends gho<bsc, ftf<bsc>> {
+   private static final Map<brn<?>, akh> a = ImmutableMap.of(
+      brn.az,
+      new akh("textures/entity/piglin/piglin.png"),
+      brn.bw,
+      new akh("textures/entity/piglin/zombified_piglin.png"),
+      brn.aA,
+      new akh("textures/entity/piglin/piglin_brute.png")
+   );
+   private static final float i = 1.0019531F;
 
-   public gim(ggn.a $$0) {
-      super($$0, new ftk<>($$0.a(fuq.bk)), 0.0F);
-      this.a(new glb(this));
+   public gim(ggx.a $$0, fuz $$1, fuz $$2, fuz $$3, boolean $$4) {
+      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
+      this.a(new gky<>(this, new fsn($$0.a($$2)), new fsn($$0.a($$3)), $$0.g()));
    }
 
-   public etf a(chx $$0, float $$1) {
-      return $$0.H($$1).orElse(super.a($$0, $$1)).a((double)$$0.ec());
+   private static ftf<bsc> a(fux $$0, fuz $$1, boolean $$2) {
+      ftf<bsc> $$3 = new ftf<>($$0.a($$1));
+      if ($$2) {
+         $$3.a.k = false;
+      }
+
+      return $$3;
    }
 
-   public boolean a(chx $$0, gei $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) ? true : $$0.H(0.0F).filter($$2x -> {
-         bqr<?> $$3x = $$0.ai();
-         float $$4x = $$3x.l() / 2.0F;
-         float $$5 = $$3x.k() / 2.0F;
-         etf $$6 = etf.c($$0.dn());
-         return $$1.a(new eta($$2x.c, $$2x.d + (double)$$4x, $$2x.e, $$6.c, $$6.d + (double)$$4x, $$6.e).c((double)$$5, (double)$$4x, (double)$$5));
-      }).isPresent();
+   public akh c(bsc $$0) {
+      akh $$1 = a.get($$0.ai());
+      if ($$1 == null) {
+         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ai());
+      } else {
+         return $$1;
+      }
    }
 
-   public akf a(chx $$0) {
-      return a($$0.gq());
-   }
-
-   public static akf a(@Nullable cqw $$0) {
-      return $$0 == null ? a : i[$$0.a()];
-   }
-
-   protected void a(chx $$0, exn $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3 + 180.0F, $$4, $$5);
-      $$1.a($$0.y().g().b(), 0.0F, 0.5F, 0.0F);
+   protected boolean d(bsc $$0) {
+      return super.a($$0) || $$0 instanceof cjw && ((cjw)$$0).gp();
    }
 }

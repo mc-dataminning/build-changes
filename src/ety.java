@@ -1,238 +1,219 @@
-import com.google.common.collect.Lists;
-import com.google.common.math.DoubleMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
 public abstract class ety {
-   protected final eto a;
-   @Nullable
-   private ety[] b;
+   private static final is.a[] d = is.a.values();
+   protected final int a;
+   protected final int b;
+   protected final int c;
 
-   ety(eto $$0) {
-      this.a = $$0;
-   }
-
-   public double b(ir.a $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$1);
-   }
-
-   public double c(ir.a $$0) {
-      int $$1 = this.a.b($$0);
-      return $$1 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$1);
-   }
-
-   public eta a() {
-      if (this.c()) {
-         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("No bounds for empty shape."));
+   protected ety(int $$0, int $$1, int $$2) {
+      if ($$0 >= 0 && $$1 >= 0 && $$2 >= 0) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       } else {
-         return new eta(this.b(ir.a.a), this.b(ir.a.b), this.b(ir.a.c), this.c(ir.a.a), this.c(ir.a.b), this.c(ir.a.c));
+         throw new IllegalArgumentException("Need all positive sizes: x: " + $$0 + ", y: " + $$1 + ", z: " + $$2);
       }
    }
 
-   public ety b() {
-      return this.c() ? etv.a() : etv.a(this.b(ir.a.a), this.b(ir.a.b), this.b(ir.a.c), this.c(ir.a.a), this.c(ir.a.b), this.c(ir.a.c));
+   public boolean a(ik $$0, int $$1, int $$2, int $$3) {
+      return this.e($$0.a($$1, $$2, $$3, is.a.a), $$0.a($$1, $$2, $$3, is.a.b), $$0.a($$1, $$2, $$3, is.a.c));
    }
 
-   protected double a(ir.a $$0, int $$1) {
-      return this.a($$0).getDouble($$1);
-   }
-
-   protected abstract DoubleList a(ir.a var1);
-
-   public boolean c() {
-      return this.a.a();
-   }
-
-   public ety a(double $$0, double $$1, double $$2) {
-      return (ety)(this.c() ? etv.a() : new eth(this.a, new etu(this.a(ir.a.a), $$0), new etu(this.a(ir.a.b), $$1), new etu(this.a(ir.a.c), $$2)));
-   }
-
-   public ety d() {
-      ety[] $$0 = new ety[]{etv.a()};
-      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0[0] = etv.b($$0[0], etv.a($$1, $$2, $$3, $$4, $$5, $$6), etj.o));
-      return $$0[0];
-   }
-
-   public void a(etv.a $$0) {
-      this.a
-         .a(
-            ($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.consume(
-                  this.a(ir.a.a, $$1), this.a(ir.a.b, $$2), this.a(ir.a.c, $$3), this.a(ir.a.a, $$4), this.a(ir.a.b, $$5), this.a(ir.a.c, $$6)
-               ),
-            true
-         );
-   }
-
-   public void b(etv.a $$0) {
-      DoubleList $$1 = this.a(ir.a.a);
-      DoubleList $$2 = this.a(ir.a.b);
-      DoubleList $$3 = this.a(ir.a.c);
-      this.a
-         .b(
-            ($$4, $$5, $$6, $$7, $$8, $$9) -> $$0.consume(
-                  $$1.getDouble($$4), $$2.getDouble($$5), $$3.getDouble($$6), $$1.getDouble($$7), $$2.getDouble($$8), $$3.getDouble($$9)
-               ),
-            true
-         );
-   }
-
-   public List<eta> e() {
-      List<eta> $$0 = Lists.newArrayList();
-      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.add(new eta($$1, $$2, $$3, $$4, $$5, $$6)));
-      return $$0;
-   }
-
-   public double a(ir.a $$0, double $$1, double $$2) {
-      ir.a $$3 = ij.b.a($$0);
-      ir.a $$4 = ij.c.a($$0);
-      int $$5 = this.a($$3, $$1);
-      int $$6 = this.a($$4, $$2);
-      int $$7 = this.a.a($$0, $$5, $$6);
-      return $$7 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$7);
-   }
-
-   public double b(ir.a $$0, double $$1, double $$2) {
-      ir.a $$3 = ij.b.a($$0);
-      ir.a $$4 = ij.c.a($$0);
-      int $$5 = this.a($$3, $$1);
-      int $$6 = this.a($$4, $$2);
-      int $$7 = this.a.b($$0, $$5, $$6);
-      return $$7 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$7);
-   }
-
-   protected int a(ir.a $$0, double $$1) {
-      return axw.a(0, this.a.c($$0) + 1, $$2 -> $$1 < this.a($$0, $$2)) - 1;
-   }
-
-   @Nullable
-   public etb a(etf $$0, etf $$1, im $$2) {
-      if (this.c()) {
-         return null;
+   public boolean e(int $$0, int $$1, int $$2) {
+      if ($$0 < 0 || $$1 < 0 || $$2 < 0) {
+         return false;
       } else {
-         etf $$3 = $$1.d($$0);
-         if ($$3.g() < 1.0E-7) {
-            return null;
-         } else {
-            etf $$4 = $$0.e($$3.a(0.001));
-            return this.a.e(this.a(ir.a.a, $$4.c - (double)$$2.u()), this.a(ir.a.b, $$4.d - (double)$$2.v()), this.a(ir.a.c, $$4.e - (double)$$2.w()))
-               ? new etb($$4, ir.a($$3.c, $$3.d, $$3.e).g(), $$2, true)
-               : eta.a(this.e(), $$0, $$1, $$2);
+         return $$0 < this.a && $$1 < this.b && $$2 < this.c ? this.b($$0, $$1, $$2) : false;
+      }
+   }
+
+   public boolean b(ik $$0, int $$1, int $$2, int $$3) {
+      return this.b($$0.a($$1, $$2, $$3, is.a.a), $$0.a($$1, $$2, $$3, is.a.b), $$0.a($$1, $$2, $$3, is.a.c));
+   }
+
+   public abstract boolean b(int var1, int var2, int var3);
+
+   public abstract void c(int var1, int var2, int var3);
+
+   public boolean a() {
+      for (is.a $$0 : d) {
+         if (this.a($$0) >= this.b($$0)) {
+            return true;
          }
       }
+
+      return false;
    }
 
-   public Optional<etf> a(etf $$0) {
-      if (this.c()) {
-         return Optional.empty();
-      } else {
-         etf[] $$1 = new etf[1];
-         this.b(($$2, $$3, $$4, $$5, $$6, $$7) -> {
-            double $$8 = axw.a($$0.a(), $$2, $$5);
-            double $$9 = axw.a($$0.b(), $$3, $$6);
-            double $$10 = axw.a($$0.c(), $$4, $$7);
-            if ($$1[0] == null || $$0.c($$8, $$9, $$10) < $$0.g($$1[0])) {
-               $$1[0] = new etf($$8, $$9, $$10);
-            }
-         });
-         return Optional.of($$1[0]);
-      }
-   }
+   public abstract int a(is.a var1);
 
-   public ety a(ir $$0) {
-      if (!this.c() && this != etv.b()) {
-         if (this.b != null) {
-            ety $$1 = this.b[$$0.ordinal()];
-            if ($$1 != null) {
-               return $$1;
+   public abstract int b(is.a var1);
+
+   public int a(is.a $$0, int $$1, int $$2) {
+      int $$3 = this.c($$0);
+      if ($$1 >= 0 && $$2 >= 0) {
+         is.a $$4 = ik.b.a($$0);
+         is.a $$5 = ik.c.a($$0);
+         if ($$1 < this.c($$4) && $$2 < this.c($$5)) {
+            ik $$6 = ik.a(is.a.a, $$0);
+
+            for (int $$7 = 0; $$7 < $$3; $$7++) {
+               if (this.b($$6, $$7, $$1, $$2)) {
+                  return $$7;
+               }
             }
+
+            return $$3;
          } else {
-            this.b = new ety[6];
+            return $$3;
          }
-
-         ety $$2 = this.b($$0);
-         this.b[$$0.ordinal()] = $$2;
-         return $$2;
       } else {
-         return this;
+         return $$3;
       }
    }
 
-   private ety b(ir $$0) {
-      ir.a $$1 = $$0.o();
-      DoubleList $$2 = this.a($$1);
-      if ($$2.size() == 2 && DoubleMath.fuzzyEquals($$2.getDouble(0), 0.0, 1.0E-7) && DoubleMath.fuzzyEquals($$2.getDouble(1), 1.0, 1.0E-7)) {
-         return this;
+   public int b(is.a $$0, int $$1, int $$2) {
+      if ($$1 >= 0 && $$2 >= 0) {
+         is.a $$3 = ik.b.a($$0);
+         is.a $$4 = ik.c.a($$0);
+         if ($$1 < this.c($$3) && $$2 < this.c($$4)) {
+            int $$5 = this.c($$0);
+            ik $$6 = ik.a(is.a.a, $$0);
+
+            for (int $$7 = $$5 - 1; $$7 >= 0; $$7--) {
+               if (this.b($$6, $$7, $$1, $$2)) {
+                  return $$7 + 1;
+               }
+            }
+
+            return 0;
+         } else {
+            return 0;
+         }
       } else {
-         ir.b $$3 = $$0.f();
-         int $$4 = this.a($$1, $$3 == ir.b.a ? 0.9999999 : 1.0E-7);
-         return new etw(this, $$1, $$4);
+         return 0;
       }
    }
 
-   public double a(ir.a $$0, eta $$1, double $$2) {
-      return this.a(ij.a($$0, ir.a.a), $$1, $$2);
+   public int c(is.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
    }
 
-   protected double a(ij $$0, eta $$1, double $$2) {
-      if (this.c()) {
-         return $$2;
-      } else if (Math.abs($$2) < 1.0E-7) {
-         return 0.0;
-      } else {
-         ij $$3 = $$0.a();
-         ir.a $$4 = $$3.a(ir.a.a);
-         ir.a $$5 = $$3.a(ir.a.b);
-         ir.a $$6 = $$3.a(ir.a.c);
-         double $$7 = $$1.b($$4);
-         double $$8 = $$1.a($$4);
-         int $$9 = this.a($$4, $$8 + 1.0E-7);
-         int $$10 = this.a($$4, $$7 - 1.0E-7);
-         int $$11 = Math.max(0, this.a($$5, $$1.a($$5) + 1.0E-7));
-         int $$12 = Math.min(this.a.c($$5), this.a($$5, $$1.b($$5) - 1.0E-7) + 1);
-         int $$13 = Math.max(0, this.a($$6, $$1.a($$6) + 1.0E-7));
-         int $$14 = Math.min(this.a.c($$6), this.a($$6, $$1.b($$6) - 1.0E-7) + 1);
-         int $$15 = this.a.c($$4);
-         if ($$2 > 0.0) {
-            for (int $$16 = $$10 + 1; $$16 < $$15; $$16++) {
-               for (int $$17 = $$11; $$17 < $$12; $$17++) {
-                  for (int $$18 = $$13; $$18 < $$14; $$18++) {
-                     if (this.a.a($$3, $$16, $$17, $$18)) {
-                        double $$19 = this.a($$4, $$16) - $$7;
-                        if ($$19 >= -1.0E-7) {
-                           $$2 = Math.min($$2, $$19);
-                        }
+   public int b() {
+      return this.c(is.a.a);
+   }
 
-                        return $$2;
+   public int c() {
+      return this.c(is.a.b);
+   }
+
+   public int d() {
+      return this.c(is.a.c);
+   }
+
+   public void a(ety.b $$0, boolean $$1) {
+      this.a($$0, ik.a, $$1);
+      this.a($$0, ik.b, $$1);
+      this.a($$0, ik.c, $$1);
+   }
+
+   private void a(ety.b $$0, ik $$1, boolean $$2) {
+      ik $$3 = $$1.a();
+      int $$4 = this.c($$3.a(is.a.a));
+      int $$5 = this.c($$3.a(is.a.b));
+      int $$6 = this.c($$3.a(is.a.c));
+
+      for (int $$7 = 0; $$7 <= $$4; $$7++) {
+         for (int $$8 = 0; $$8 <= $$5; $$8++) {
+            int $$9 = -1;
+
+            for (int $$10 = 0; $$10 <= $$6; $$10++) {
+               int $$11 = 0;
+               int $$12 = 0;
+
+               for (int $$13 = 0; $$13 <= 1; $$13++) {
+                  for (int $$14 = 0; $$14 <= 1; $$14++) {
+                     if (this.a($$3, $$7 + $$13 - 1, $$8 + $$14 - 1, $$10)) {
+                        $$11++;
+                        $$12 ^= $$13 ^ $$14;
                      }
                   }
                }
-            }
-         } else if ($$2 < 0.0) {
-            for (int $$20 = $$9 - 1; $$20 >= 0; $$20--) {
-               for (int $$21 = $$11; $$21 < $$12; $$21++) {
-                  for (int $$22 = $$13; $$22 < $$14; $$22++) {
-                     if (this.a.a($$3, $$20, $$21, $$22)) {
-                        double $$23 = this.a($$4, $$20 + 1) - $$8;
-                        if ($$23 <= 1.0E-7) {
-                           $$2 = Math.max($$2, $$23);
-                        }
 
-                        return $$2;
+               if ($$11 == 1 || $$11 == 3 || $$11 == 2 && ($$12 & 1) == 0) {
+                  if ($$2) {
+                     if ($$9 == -1) {
+                        $$9 = $$10;
                      }
+                  } else {
+                     $$0.consume(
+                        $$3.a($$7, $$8, $$10, is.a.a),
+                        $$3.a($$7, $$8, $$10, is.a.b),
+                        $$3.a($$7, $$8, $$10, is.a.c),
+                        $$3.a($$7, $$8, $$10 + 1, is.a.a),
+                        $$3.a($$7, $$8, $$10 + 1, is.a.b),
+                        $$3.a($$7, $$8, $$10 + 1, is.a.c)
+                     );
                   }
+               } else if ($$9 != -1) {
+                  $$0.consume(
+                     $$3.a($$7, $$8, $$9, is.a.a),
+                     $$3.a($$7, $$8, $$9, is.a.b),
+                     $$3.a($$7, $$8, $$9, is.a.c),
+                     $$3.a($$7, $$8, $$10, is.a.a),
+                     $$3.a($$7, $$8, $$10, is.a.b),
+                     $$3.a($$7, $$8, $$10, is.a.c)
+                  );
+                  $$9 = -1;
                }
             }
          }
-
-         return $$2;
       }
    }
 
-   @Override
-   public String toString() {
-      return this.c() ? "EMPTY" : "VoxelShape[" + this.a() + "]";
+   public void b(ety.b $$0, boolean $$1) {
+      ets.a(this, $$0, $$1);
+   }
+
+   public void a(ety.a $$0) {
+      this.a($$0, ik.a);
+      this.a($$0, ik.b);
+      this.a($$0, ik.c);
+   }
+
+   private void a(ety.a $$0, ik $$1) {
+      ik $$2 = $$1.a();
+      is.a $$3 = $$2.a(is.a.c);
+      int $$4 = this.c($$2.a(is.a.a));
+      int $$5 = this.c($$2.a(is.a.b));
+      int $$6 = this.c($$3);
+      is $$7 = is.a($$3, is.b.b);
+      is $$8 = is.a($$3, is.b.a);
+
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         for (int $$10 = 0; $$10 < $$5; $$10++) {
+            boolean $$11 = false;
+
+            for (int $$12 = 0; $$12 <= $$6; $$12++) {
+               boolean $$13 = $$12 != $$6 && this.b($$2, $$9, $$10, $$12);
+               if (!$$11 && $$13) {
+                  $$0.consume($$7, $$2.a($$9, $$10, $$12, is.a.a), $$2.a($$9, $$10, $$12, is.a.b), $$2.a($$9, $$10, $$12, is.a.c));
+               }
+
+               if ($$11 && !$$13) {
+                  $$0.consume($$8, $$2.a($$9, $$10, $$12 - 1, is.a.a), $$2.a($$9, $$10, $$12 - 1, is.a.b), $$2.a($$9, $$10, $$12 - 1, is.a.c));
+               }
+
+               $$11 = $$13;
+            }
+         }
+      }
+   }
+
+   public interface a {
+      void consume(is var1, int var2, int var3, int var4);
+   }
+
+   public interface b {
+      void consume(int var1, int var2, int var3, int var4, int var5, int var6);
    }
 }

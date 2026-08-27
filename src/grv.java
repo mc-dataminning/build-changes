@@ -1,53 +1,29 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public final class grv extends grt {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public record grv(grz b, gsc c) {
+   public static final Codec<grv> a = grz.a.dispatchStable(grv::a, grz::c);
 
-   @Override
-   public void a(grn $$0) {
-      if (fcu.Q().C()) {
-         super.a($$0);
-      }
-   }
-
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
-   }
-
-   @Override
-   public void f() {
-      this.b.add((long)fcu.Q().o());
-      this.h();
-      this.c.add(fcu.Q().p());
-   }
-
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
-   }
-
-   @Override
-   public void b(grn $$0) {
-      $$0.send(gro.c, $$0x -> {
-         $$0x.a(grq.r, new LongArrayList(this.b));
-         $$0x.a(grq.s, new LongArrayList(this.c));
-         $$0x.a(grq.t, new LongArrayList(this.d));
-         $$0x.a(grq.u, this.e());
-         $$0x.a(grq.v, fcu.Q().m.aD());
-         $$0x.a(grq.w, (int)a);
+   public grv(grz b, gsc c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+         }
       });
-      this.g();
+      this.b = b;
+      this.c = c;
    }
 
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
+   }
+
+   public grz a() {
+      return this.b;
+   }
+
+   public gsc b() {
+      return this.c;
    }
 }

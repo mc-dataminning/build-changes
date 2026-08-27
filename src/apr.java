@@ -1,69 +1,113 @@
-public abstract class apr extends eld {
-   protected apr(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+
+public interface apr<T> {
+   static <T> apr<T> a(T $$0) {
+      return new apr.b<>($$0);
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return $$0 == czb.a;
+   static <T> apr<T> a(String $$0) {
+      return a(() -> $$0);
    }
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         czb $$3 = new czb($$0);
-         int $$4 = $$3.e;
-         int $$5 = $$3.f;
+   static <T> apr<T> a(Supplier<String> $$0) {
+      return new apr.a<>($$0);
+   }
 
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = czb.c($$4 + $$6, $$5 + $$7);
-               if ($$8 != $$0) {
-                  this.b($$0, $$8, $$1, $$2);
-               }
-            }
-         }
+   boolean a();
+
+   @Nullable
+   T b(@Nullable T var1);
+
+   @Nullable
+   static <R> R a(apr<? extends R> $$0, @Nullable R $$1) {
+      R $$2 = (R)$$0.b(null);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   String b();
+
+   apr<T> a(Consumer<T> var1);
+
+   <R> apr<R> a(Function<T, R> var1);
+
+   <E extends Throwable> T b(Supplier<E> var1) throws E;
+
+   public static record a<T>(Supplier<String> a) implements apr<T> {
+      @Override
+      public boolean a() {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public T b(@Nullable T $$0) {
+         return $$0;
+      }
+
+      @Override
+      public String b() {
+         return this.a.get();
+      }
+
+      @Override
+      public apr<T> a(Consumer<T> $$0) {
+         return this;
+      }
+
+      @Override
+      public <R> apr<R> a(Function<T, R> $$0) {
+         return new apr.a(this.a);
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         throw $$0.get();
+      }
+
+      public Supplier<String> c() {
+         return this.a;
       }
    }
 
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-      czb $$4 = new czb($$0);
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
-
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = czb.c($$5 + $$7, $$6 + $$8);
-            if ($$9 == $$0) {
-               $$9 = czb.a;
-            }
-
-            if ($$9 != $$1) {
-               int $$10 = this.b($$9, $$0, this.c($$9));
-               if ($$3 > $$10) {
-                  $$3 = $$10;
-               }
-
-               if ($$3 == 0) {
-                  return $$3;
-               }
-            }
-         }
+   public static record b<T>(T a) implements apr<T> {
+      @Override
+      public boolean a() {
+         return true;
       }
 
-      return $$3;
-   }
+      @Override
+      public T b(@Nullable T $$0) {
+         return this.a;
+      }
 
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == czb.a ? this.b($$1) : $$2 + 1;
-   }
+      @Nullable
+      @Override
+      public String b() {
+         return null;
+      }
 
-   protected abstract int b(long var1);
+      @Override
+      public apr<T> a(Consumer<T> $$0) {
+         $$0.accept(this.a);
+         return this;
+      }
 
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(czb.a, $$0, $$1, $$2);
+      @Override
+      public <R> apr<R> a(Function<T, R> $$0) {
+         return new apr.b<>($$0.apply(this.a));
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         return this.a;
+      }
+
+      public T c() {
+         return this.a;
+      }
    }
 }

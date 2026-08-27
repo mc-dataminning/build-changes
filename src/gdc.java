@@ -1,41 +1,61 @@
-public class gdc implements gde<dnb> {
-   public static final gor a = new gor(gmn.e, new akf("entity/bell/bell_body"));
-   private static final String b = "bell_body";
-   private final fur c;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public gdc(gdf.a $$0) {
-      fur $$1 = $$0.a(fuq.l);
-      this.c = $$1.b("bell_body");
+public class gdc implements gdb {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
+
+   public gdc(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static fux b() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      fva $$2 = $$1.a("bell_body", fuw.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fut.a(8.0F, 12.0F, 8.0F));
-      $$2.a("bell_base", fuw.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fut.a(-8.0F, -12.0F, -8.0F));
-      return fux.a($$0, 32, 32);
-   }
+   @Override
+   public Predicate<dqh> getPredicate(dqi<dde, dqh> $$0) {
+      drk<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+      } else {
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
 
-   public void a(dnb $$0, float $$1, exn $$2, gbe $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      float $$7 = 0.0F;
-      float $$8 = 0.0F;
-      if ($$0.b) {
-         float $$9 = axw.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
-         if ($$0.c == ir.c) {
-            $$7 = -$$9;
-         } else if ($$0.c == ir.d) {
-            $$7 = $$9;
-         } else if ($$0.c == ir.f) {
-            $$8 = -$$9;
-         } else if ($$0.c == ir.e) {
-            $$8 = $$9;
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<dqh> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               List<Predicate<dqh>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
+               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+            }
+
+            return $$3 ? $$5.negate() : $$5;
          }
       }
+   }
 
-      this.c.e = $$7;
-      this.c.g = $$8;
-      exr $$10 = a.a($$3, gbm::c);
-      this.c.a($$2, $$10, $$4, $$5);
+   private Predicate<dqh> a(dqi<dde, dqh> $$0, drk<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
+      }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

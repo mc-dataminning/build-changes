@@ -1,26 +1,16 @@
-public enum bos {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f;
+import com.mojang.serialization.Codec;
 
-   public boolean a() {
-      return this.b().a();
-   }
+public interface bos<P extends bor> {
+   bos<boo> a = a("constant", boo.b);
+   bos<box> b = a("uniform", box.a);
+   bos<boj> c = a("biased_to_bottom", boj.a);
+   bos<bok> d = a("clamped", bok.a);
+   bos<boy> e = a("weighted_list", boy.a);
+   bos<bom> f = a("clamped_normal", bom.a);
 
-   public static bos a(boolean $$0) {
-      return $$0 ? a : b;
-   }
+   Codec<P> codec();
 
-   public boq b() {
-      return switch (this) {
-         case a -> boq.a;
-         case b -> boq.b;
-         case c -> boq.c;
-         case d, e -> boq.d;
-         case f -> boq.e;
-      };
+   static <P extends bor> bos<P> a(String $$0, Codec<P> $$1) {
+      return jj.a(ld.M, $$0, () -> $$1);
    }
 }

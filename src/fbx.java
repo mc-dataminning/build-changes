@@ -1,13 +1,4 @@
-public class fbx extends fbz {
-   private final fbn b;
+import java.util.Set;
 
-   public fbx(fbn $$0, long $$1, ws $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
-   }
-
-   @Override
-   protected void a(eyd $$0, long $$1) throws ezq {
-      $$0.a($$1, this.b);
-   }
+public record fbx(String a, fbr b, boolean c, Set<String> d) {
 }

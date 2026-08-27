@@ -1,63 +1,47 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 
-public class cfn extends bql {
-   public final cfp b;
-   public final String c;
-   private final bqo d;
+public class cfn {
+   private static final float a = 2.0F;
+   private static final float b = 0.5F;
+   private static final float c = 1.25F;
 
-   public cfn(cfp $$0, String $$1, float $$2, float $$3) {
-      super($$0.ai(), $$0.dN());
-      this.d = bqo.b($$2, $$3);
-      this.j_();
-      this.b = $$0;
-      this.c = $$1;
+   protected static btb<?> a(btb<cfm> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(cmw.a));
+      $$0.b(cmw.b);
+      $$0.f();
+      return $$0;
    }
 
-   @Override
-   protected void a(ajo.a $$0) {
+   private static void b(btb<cfm> $$0) {
+      $$0.a(cmw.a, 0, ImmutableList.of(new btn(2.0F), new buy(45, 90), new bvc(), new bty(cbd.P)));
    }
 
-   @Override
-   protected void a(ty $$0) {
+   private static void c(btb<cfm> $$0) {
+      $$0.a(
+         cmw.b,
+         ImmutableList.of(
+            Pair.of(0, bvs.a(brn.bx, 6.0F, box.a(30, 60))),
+            Pair.of(1, new buf($$0x -> 1.25F)),
+            Pair.of(
+               2,
+               new bug(
+                  ImmutableMap.of(cbd.m, cbe.b),
+                  ImmutableSet.of(),
+                  bug.a.a,
+                  bug.b.b,
+                  ImmutableList.of(Pair.of(bvk.c(0.5F), 2), Pair.of(bvz.a(0.5F, 3), 3), Pair.of(bxf.a(brh::bf), 5))
+               )
+            )
+         )
+      );
    }
 
-   @Override
-   protected void b(ty $$0) {
-   }
-
-   @Override
-   public boolean bx() {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public csd dA() {
-      return this.b.dA();
-   }
-
-   @Override
-   public boolean a(bpj $$0, float $$1) {
-      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
-   }
-
-   @Override
-   public boolean t(bql $$0) {
-      return this == $$0 || this.b == $$0;
-   }
-
-   @Override
-   public yz<abk> dj() {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public bqo a(brp $$0) {
-      return this.d;
-   }
-
-   @Override
-   public boolean dL() {
-      return false;
+   public static void a(cfm $$0) {
+      $$0.dQ().a(ImmutableList.of(cmw.b));
    }
 }

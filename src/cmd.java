@@ -1,45 +1,61 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class cmd {
-   private final cmc a;
-   private final List<cmd.a> b = Lists.newArrayList();
-
-   public cmd(cmc $$0) {
-      this.a = $$0;
+public class cmd extends clt {
+   public cmd(brn<? extends cmd> $$0, dad $$1) {
+      super($$0, $$1);
    }
 
-   public cmd a(int $$0, cma $$1) {
-      this.b.add(new cmd.a($$0, $$1));
-      return this;
+   public cmd(dad $$0, bsa $$1, double $$2, double $$3, double $$4) {
+      super(brn.aP, $$1, $$2, $$3, $$4, $$0);
    }
 
-   public cmc a() {
-      this.b.stream().map(cmd.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cma $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   public cmd(dad $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super(brn.aP, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
    }
 
-   static class a {
-      private final int a;
-      private final cma b;
-
-      public a(int $$0, cma $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   protected void a(etm $$0) {
+      super.a($$0);
+      if (!this.dN().B) {
+         brh $$1 = $$0.a();
+         brh $$2 = this.u();
+         int $$3 = $$1.az();
+         $$1.g(5);
+         if (!$$1.a(this.dO().a((clt)this, $$2), 5.0F)) {
+            $$1.i($$3);
+         } else if ($$2 instanceof bsa) {
+            this.a((bsa)$$2, $$1);
+         }
       }
+   }
 
-      public int a() {
-         return this.a;
+   @Override
+   protected void a(etl $$0) {
+      super.a($$0);
+      if (!this.dN().B) {
+         brh $$1 = this.u();
+         if (!($$1 instanceof bsc) || this.dN().aa().b(czz.c)) {
+            in $$2 = $$0.a().a($$0.b());
+            if (this.dN().u($$2)) {
+               this.dN().b($$2, dcr.a(this.dN(), $$2));
+            }
+         }
       }
+   }
 
-      public cma b() {
-         return this.b;
+   @Override
+   protected void a(etn $$0) {
+      super.a($$0);
+      if (!this.dN().B) {
+         this.am();
       }
+   }
+
+   @Override
+   public boolean bx() {
+      return false;
+   }
+
+   @Override
+   public boolean a(bqf $$0, float $$1) {
+      return false;
    }
 }

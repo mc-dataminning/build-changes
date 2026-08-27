@@ -1,48 +1,27 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bzi extends byb {
-   private final chd a;
-   @Nullable
-   private bre b;
+public class bzi extends bzu {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public bzi(chd $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(byb.a.a));
+   public bzi(bsi $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean a() {
-      bre $$0 = this.a.p();
-      return this.a.u() > 0 || $$0 != null && this.a.g((bql)$$0) < 9.0;
+      aqh $$0 = (aqh)this.b.dN();
+      in $$1 = this.b.dn();
+      return $$0.c($$1) ? false : super.a();
    }
 
+   @Nullable
    @Override
-   public void c() {
-      this.a.K().n();
-      this.b = this.a.p();
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.g((bql)this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.M().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
-      }
+   protected etp h() {
+      aqh $$0 = (aqh)this.b.dN();
+      in $$1 = this.b.dn();
+      jp $$2 = jp.a($$1);
+      jp $$3 = btu.a($$0, $$2, 2);
+      return $$3 != $$2 ? ccu.a(this.b, 10, 7, etp.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

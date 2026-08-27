@@ -1,72 +1,19 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bxt extends byb {
-   private static final int a = 40;
-   private static final Predicate<dpy> b = dqh.a(dcx.bt);
-   private final brg c;
-   private final czu d;
-   private int e;
+public class bxt {
+   private static final bor a = box.a(100, 200);
 
-   public bxt(brg $$0) {
-      this.c = $$0;
-      this.d = $$0.dN();
-      this.a(EnumSet.of(byb.a.a, byb.a.b, byb.a.c));
-   }
-
-   @Override
-   public boolean a() {
-      if (this.c.ej().a(this.c.p_() ? 50 : 1000) != 0) {
-         return false;
-      } else {
-         im $$0 = this.c.dn();
-         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(dcx.i);
-      }
-   }
-
-   @Override
-   public void c() {
-      this.e = this.a(40);
-      this.d.a(this.c, (byte)10);
-      this.c.K().n();
-   }
-
-   @Override
-   public void d() {
-      this.e = 0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.e > 0;
-   }
-
-   public int h() {
-      return this.e;
-   }
-
-   @Override
-   public void e() {
-      this.e = Math.max(0, this.e - 1);
-      if (this.e == this.a(4)) {
-         im $$0 = this.c.dn();
-         if (b.test(this.d.a_($$0))) {
-            if (this.d.aa().b(czq.c)) {
-               this.d.b($$0, false);
-            }
-
-            this.c.N();
-         } else {
-            im $$1 = $$0.d();
-            if (this.d.a_($$1).a(dcx.i)) {
-               if (this.d.aa().b(czq.c)) {
-                  this.d.c(2001, $$1, dcv.i(dcx.i.n()));
-                  this.d.a($$1, dcx.j.n(), 2);
-               }
-
-               this.c.N();
-            }
-         }
-      }
+   public static btt<bsa> a() {
+      return bxf.a(
+         (Function<bxf.b<bsa>, ? extends App<bxf.c<bsa>, bxi<bsa>>>)($$0 -> $$0.group($$0.a(cbd.aB), $$0.a(cbd.m), $$0.c(cbd.aG), $$0.b(cbd.B), $$0.c(cbd.az))
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     $$0x.a(azb.a);
+                     $$2.a(azb.a, (long)a.a($$3x.E_()));
+                     $$1.b();
+                     $$4x.b(bsl.m);
+                     return true;
+                  }))
+      );
    }
 }

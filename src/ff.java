@@ -1,152 +1,109 @@
-import com.google.gson.JsonObject;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.datafixers.util.Either;
-import java.util.Arrays;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
 import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ff<T> implements ArgumentType<ff.c<T>> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   final ake<? extends ji<T>> b;
+public class ff<T> implements ArgumentType<iw<T>> {
+   private static final Collection<String> b = List.of("foo", "foo:bar", "012", "{}", "true");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wu.b("argument.resource_or_id.failed_to_parse", $$0));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wu.c("argument.resource_or_id.invalid"));
+   private final iy.a d;
+   private final boolean e;
+   private final Codec<iw<T>> f;
 
-   public ff(ake<? extends ji<T>> $$0) {
-      this.b = $$0;
+   protected ff(dz $$0, akg<jj<T>> $$1, Codec<iw<T>> $$2) {
+      this.d = $$0;
+      this.e = $$0.a($$1).isPresent();
+      this.f = $$2;
    }
 
-   public static <T> ff<T> a(ake<? extends ji<T>> $$0) {
-      return new ff<>($$0);
+   public static ff.c a(dz $$0) {
+      return new ff.c($$0);
    }
 
-   public static <T> ff.c<T> a(CommandContext<ec> $$0, String $$1, ake<ji<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      ff.c<?> $$4 = (ff.c<?>)$$0.getArgument($$1, ff.c.class);
-      Optional<ff.c<T>> $$5 = $$4.a($$2);
-      return $$5.orElseThrow(() -> $$3.create($$4));
+   public static iw<eoq> a(CommandContext<ed> $$0, String $$1) throws CommandSyntaxException {
+      return d($$0, $$1);
    }
 
-   public ff.c<T> a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '#') {
-         int $$1 = $$0.getCursor();
+   public static ff.a b(dz $$0) {
+      return new ff.a($$0);
+   }
 
-         try {
-            $$0.skip();
-            akf $$2 = akf.a($$0);
-            return new ff.d<>(awd.a(this.b, $$2));
-         } catch (CommandSyntaxException var4) {
-            $$0.setCursor($$1);
-            throw var4;
-         }
+   public static iw<epx> b(CommandContext<ed> $$0, String $$1) {
+      return d($$0, $$1);
+   }
+
+   public static ff.b c(dz $$0) {
+      return new ff.b($$0);
+   }
+
+   public static iw<erq> c(CommandContext<ed> $$0, String $$1) {
+      return d($$0, $$1);
+   }
+
+   private static <T> iw<T> d(CommandContext<ed> $$0, String $$1) {
+      return (iw<T>)$$0.getArgument($$1, iw.class);
+   }
+
+   @Nullable
+   public iw<T> a(StringReader $$0) throws CommandSyntaxException {
+      ux $$1 = b($$0);
+      if (!this.e) {
+         return null;
       } else {
-         akf $$4 = akf.a($$0);
-         return new ff.b<>(ake.a(this.b, $$4));
+         akf<ux> $$2 = this.d.a(uo.a);
+         return ac.a(this.f.parse($$2, $$1), $$1x -> a.createWithContext($$0, $$1x));
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof eh $$2 ? $$2.a(this.b, eh.a.c, $$1, $$0) : $$1.buildFuture();
+   @VisibleForTesting
+   static ux b(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      ux $$2 = new uy($$0).d();
+      if (c($$0)) {
+         return $$2;
+      } else {
+         $$0.setCursor($$1);
+         akh $$3 = akh.a($$0);
+         if (c($$0)) {
+            return uv.a($$3.toString());
+         } else {
+            $$0.setCursor($$1);
+            throw c.createWithContext($$0);
+         }
+      }
+   }
+
+   private static boolean c(StringReader $$0) {
+      return !$$0.canRead() || $$0.peek() == ' ';
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 
-   public static class a<T> implements hw<ff<T>, ff.a<T>.a> {
-      public void a(ff.a<T>.a $$0, vs $$1) {
-         $$1.b($$0.b);
-      }
-
-      public ff.a<T>.a a(vs $$0) {
-         return new ff.a.a($$0.r());
-      }
-
-      public void a(ff.a<T>.a $$0, JsonObject $$1) {
-         $$1.addProperty("registry", $$0.b.a().toString());
-      }
-
-      public ff.a<T>.a a(ff<T> $$0) {
-         return new ff.a.a($$0.b);
-      }
-
-      public final class a implements hw.a<ff<T>> {
-         final ake<? extends ji<T>> b;
-
-         a(ake<? extends ji<T>> $$1) {
-            this.b = $$1;
-         }
-
-         public ff<T> a(dy $$0) {
-            return new ff<>(this.b);
-         }
-
-         @Override
-         public hw<ff<T>, ?> a() {
-            return a.this;
-         }
+   public static class a extends ff<epx> {
+      protected a(dz $$0) {
+         super($$0, le.aV, epz.d);
       }
    }
 
-   static record b<T>(ake<T> a) implements ff.c<T> {
-      @Override
-      public Either<ake<T>, awd<T>> a() {
-         return Either.left(this.a);
-      }
-
-      @Override
-      public <E> Optional<ff.c<E>> a(ake<? extends ji<E>> $$0) {
-         return this.a.d($$0).map(ff.b::new);
-      }
-
-      public boolean a(iv<T> $$0) {
-         return $$0.a(this.a);
-      }
-
-      @Override
-      public String b() {
-         return this.a.a().toString();
-      }
-
-      public ake<T> c() {
-         return this.a;
+   public static class b extends ff<erq> {
+      protected b(dz $$0) {
+         super($$0, le.aW, ers.b);
       }
    }
 
-   public interface c<T> extends Predicate<iv<T>> {
-      Either<ake<T>, awd<T>> a();
-
-      <E> Optional<ff.c<E>> a(ake<? extends ji<E>> var1);
-
-      String b();
-   }
-
-   static record d<T>(awd<T> a) implements ff.c<T> {
-      @Override
-      public Either<ake<T>, awd<T>> a() {
-         return Either.right(this.a);
-      }
-
-      @Override
-      public <E> Optional<ff.c<E>> a(ake<? extends ji<E>> $$0) {
-         return this.a.d($$0).map(ff.d::new);
-      }
-
-      public boolean a(iv<T> $$0) {
-         return $$0.a(this.a);
-      }
-
-      @Override
-      public String b() {
-         return "#" + this.a.b();
-      }
-
-      public awd<T> c() {
-         return this.a;
+   public static class c extends ff<eoq> {
+      protected c(dz $$0) {
+         super($$0, le.aU, eoq.e);
       }
    }
 }

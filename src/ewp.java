@@ -1,105 +1,179 @@
+import com.google.common.collect.EvictingQueue;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.platform.GLX;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
+import java.util.Queue;
 import javax.annotation.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWMonitorCallback;
+import org.lwjgl.opengl.ARBDebugOutput;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GLCapabilities;
+import org.lwjgl.opengl.GLDebugMessageARBCallback;
+import org.lwjgl.opengl.GLDebugMessageCallback;
+import org.lwjgl.opengl.KHRDebug;
 import org.slf4j.Logger;
 
 public class ewp {
    private static final Logger a = LogUtils.getLogger();
-   private final Long2ObjectMap<ewm> b = new Long2ObjectOpenHashMap();
-   private final ewn c;
+   private static final int b = 10;
+   private static final Queue<ewp.a> c = EvictingQueue.create(10);
+   @Nullable
+   private static volatile ewp.a d;
+   private static final List<Integer> e = ImmutableList.of(37190, 37191, 37192, 33387);
+   private static final List<Integer> f = ImmutableList.of(37190, 37191, 37192);
+   private static boolean g;
 
-   public ewp(ewn $$0) {
-      RenderSystem.assertInInitPhase();
-      this.c = $$0;
-      GLFW.glfwSetMonitorCallback(this::a);
-      PointerBuffer $$1 = GLFW.glfwGetMonitors();
-      if ($$1 != null) {
-         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
-            long $$3 = $$1.get($$2);
-            this.b.put($$3, $$0.createMonitor($$3));
+   private static String d(int $$0) {
+      return "Unknown (0x" + Integer.toHexString($$0).toUpperCase() + ")";
+   }
+
+   public static String a(int $$0) {
+      switch ($$0) {
+         case 33350:
+            return "API";
+         case 33351:
+            return "WINDOW SYSTEM";
+         case 33352:
+            return "SHADER COMPILER";
+         case 33353:
+            return "THIRD PARTY";
+         case 33354:
+            return "APPLICATION";
+         case 33355:
+            return "OTHER";
+         default:
+            return d($$0);
+      }
+   }
+
+   public static String b(int $$0) {
+      switch ($$0) {
+         case 33356:
+            return "ERROR";
+         case 33357:
+            return "DEPRECATED BEHAVIOR";
+         case 33358:
+            return "UNDEFINED BEHAVIOR";
+         case 33359:
+            return "PORTABILITY";
+         case 33360:
+            return "PERFORMANCE";
+         case 33361:
+            return "OTHER";
+         case 33384:
+            return "MARKER";
+         default:
+            return d($$0);
+      }
+   }
+
+   public static String c(int $$0) {
+      switch ($$0) {
+         case 33387:
+            return "NOTIFICATION";
+         case 37190:
+            return "HIGH";
+         case 37191:
+            return "MEDIUM";
+         case 37192:
+            return "LOW";
+         default:
+            return d($$0);
+      }
+   }
+
+   private static void a(int $$0, int $$1, int $$2, int $$3, int $$4, long $$5, long $$6) {
+      String $$7 = GLDebugMessageCallback.getMessage($$4, $$5);
+      ewp.a $$8;
+      synchronized (c) {
+         $$8 = d;
+         if ($$8 != null && $$8.a($$0, $$1, $$2, $$3, $$7)) {
+            $$8.f++;
+         } else {
+            $$8 = new ewp.a($$0, $$1, $$2, $$3, $$7);
+            c.add($$8);
+            d = $$8;
          }
       }
+
+      a.info("OpenGL debug message: {}", $$8);
    }
 
-   private void a(long $$0, int $$1) {
-      RenderSystem.assertOnRenderThread();
-      if ($$1 == 262145) {
-         this.b.put($$0, this.c.createMonitor($$0));
-         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
-      } else if ($$1 == 262146) {
-         this.b.remove($$0);
-         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
+   public static List<String> a() {
+      synchronized (c) {
+         List<String> $$0 = Lists.newArrayListWithCapacity(c.size());
+
+         for (ewp.a $$1 : c) {
+            $$0.add($$1 + " x " + $$1.f);
+         }
+
+         return $$0;
       }
    }
 
-   @Nullable
-   public ewm a(long $$0) {
-      RenderSystem.assertInInitPhase();
-      return (ewm)this.b.get($$0);
+   public static boolean b() {
+      return g;
    }
 
-   @Nullable
-   public ewm a(ewr $$0) {
-      long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
-      if ($$1 != 0L) {
-         return this.a($$1);
-      } else {
-         int $$2 = $$0.q();
-         int $$3 = $$2 + $$0.m();
-         int $$4 = $$0.r();
-         int $$5 = $$4 + $$0.n();
-         int $$6 = -1;
-         ewm $$7 = null;
-         long $$8 = GLFW.glfwGetPrimaryMonitor();
-         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
-         ObjectIterator var12 = this.b.values().iterator();
-
-         while (var12.hasNext()) {
-            ewm $$9 = (ewm)var12.next();
-            int $$10 = $$9.c();
-            int $$11 = $$10 + $$9.b().a();
-            int $$12 = $$9.d();
-            int $$13 = $$12 + $$9.b().b();
-            int $$14 = a($$2, $$10, $$11);
-            int $$15 = a($$3, $$10, $$11);
-            int $$16 = a($$4, $$12, $$13);
-            int $$17 = a($$5, $$12, $$13);
-            int $$18 = Math.max(0, $$15 - $$14);
-            int $$19 = Math.max(0, $$17 - $$16);
-            int $$20 = $$18 * $$19;
-            if ($$20 > $$6) {
-               $$7 = $$9;
-               $$6 = $$20;
-            } else if ($$20 == $$6 && $$8 == $$9.f()) {
-               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
-               $$7 = $$9;
+   public static void a(int $$0, boolean $$1) {
+      RenderSystem.assertInInitPhase();
+      if ($$0 > 0) {
+         GLCapabilities $$2 = GL.getCapabilities();
+         if ($$2.GL_KHR_debug) {
+            g = true;
+            GL11.glEnable(37600);
+            if ($$1) {
+               GL11.glEnable(33346);
             }
+
+            for (int $$3 = 0; $$3 < e.size(); $$3++) {
+               boolean $$4 = $$3 < $$0;
+               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$3), (int[])null, $$4);
+            }
+
+            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create(ewp::a), ewn::a), 0L);
+         } else if ($$2.GL_ARB_debug_output) {
+            g = true;
+            if ($$1) {
+               GL11.glEnable(33346);
+            }
+
+            for (int $$5 = 0; $$5 < f.size(); $$5++) {
+               boolean $$6 = $$5 < $$0;
+               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$5), (int[])null, $$6);
+            }
+
+            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create(ewp::a), ewn::a), 0L);
          }
-
-         a.debug("Selected monitor: {}", $$7);
-         return $$7;
       }
    }
 
-   public static int a(int $$0, int $$1, int $$2) {
-      if ($$0 < $$1) {
-         return $$1;
-      } else {
-         return $$0 > $$2 ? $$2 : $$0;
-      }
-   }
+   static class a {
+      private final int a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final String e;
+      int f = 1;
 
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
-      if ($$0 != null) {
-         $$0.free();
+      a(int $$0, int $$1, int $$2, int $$3, String $$4) {
+         this.a = $$2;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      boolean a(int $$0, int $$1, int $$2, int $$3, String $$4) {
+         return $$1 == this.c && $$0 == this.b && $$2 == this.a && $$3 == this.d && $$4.equals(this.e);
+      }
+
+      @Override
+      public String toString() {
+         return "id=" + this.a + ", source=" + ewp.a(this.b) + ", type=" + ewp.b(this.c) + ", severity=" + ewp.c(this.d) + ", message='" + this.e + "'";
       }
    }
 }

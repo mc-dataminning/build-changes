@@ -1,44 +1,40 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import javax.annotation.Nullable;
 
 public class aoc {
-   public static void a(CommandDispatcher<ec> $$0) {
-      RequiredArgumentBuilder<ec, gr> $$1 = (RequiredArgumentBuilder<ec, gr>)((RequiredArgumentBuilder)ed.a("targets", ep.d())
-            .executes($$0x -> a((ec)$$0x.getSource(), ep.f($$0x, "targets"), null, null)))
-         .then(ed.a("*").then(ed.a("sound", fd.a()).suggests(ia.c).executes($$0x -> a((ec)$$0x.getSource(), ep.f($$0x, "targets"), null, fd.e($$0x, "sound")))));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.spectate.self"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("commands.spectate.not_spectator", $$0));
 
-      for (ava $$2 : ava.values()) {
-         $$1.then(
-            ((LiteralArgumentBuilder)ed.a($$2.a()).executes($$1x -> a((ec)$$1x.getSource(), ep.f($$1x, "targets"), $$2, null)))
-               .then(ed.a("sound", fd.a()).suggests(ia.c).executes($$1x -> a((ec)$$1x.getSource(), ep.f($$1x, "targets"), $$2, fd.e($$1x, "sound"))))
-         );
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
+   public static void a(CommandDispatcher<ed> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("spectate").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ed)$$0x.getSource(), null, ((ed)$$0x.getSource()).h())))
+            .then(
+               ((RequiredArgumentBuilder)ee.a("target", eq.a()).executes($$0x -> a((ed)$$0x.getSource(), eq.a($$0x, "target"), ((ed)$$0x.getSource()).h())))
+                  .then(ee.a("player", eq.c()).executes($$0x -> a((ed)$$0x.getSource(), eq.a($$0x, "target"), eq.e($$0x, "player"))))
+            )
+      );
    }
 
-   private static int a(ec $$0, Collection<aqf> $$1, @Nullable ava $$2, @Nullable akf $$3) {
-      afg $$4 = new afg($$3, $$2);
-
-      for (aqf $$5 : $$1) {
-         $$5.d.b($$4);
-      }
-
-      if ($$2 != null) {
-         if ($$3 != null) {
-            $$0.a(() -> ws.a("commands.stopsound.success.source.sound", ws.a($$3), $$2.a()), true);
-         } else {
-            $$0.a(() -> ws.a("commands.stopsound.success.source.any", $$2.a()), true);
-         }
-      } else if ($$3 != null) {
-         $$0.a(() -> ws.a("commands.stopsound.success.sourceless.sound", ws.a($$3)), true);
+   private static int a(ed $$0, @Nullable brh $$1, aqi $$2) throws CommandSyntaxException {
+      if ($$2 == $$1) {
+         throw a.create();
+      } else if ($$2.f.b() != daa.d) {
+         throw b.create($$2.O_());
       } else {
-         $$0.a(() -> ws.c("commands.stopsound.success.sourceless.any"), true);
-      }
+         $$2.d($$1);
+         if ($$1 != null) {
+            $$0.a(() -> wu.a("commands.spectate.success.started", $$1.O_()), false);
+         } else {
+            $$0.a(() -> wu.c("commands.spectate.success.stopped"), false);
+         }
 
-      return $$1.size();
+         return 1;
+      }
    }
 }

@@ -3,46 +3,50 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record xv(String d, @Nullable gr e) implements xu {
-   public static final MapCodec<xv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(xv::b)).apply($$0, xv::new));
-   public static final xu.a<xv> b = new xu.a<>(a, "entity");
+public record xv(String d, @Nullable gb e) implements xw {
+   public static final MapCodec<xv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(xv::b)).apply($$0, xv::new));
+   public static final xw.a<xv> b = new xw.a<>(a, "block");
 
    public xv(String $$0) {
       this($$0, a($$0));
    }
 
    @Nullable
-   private static gr a(String $$0) {
+   private static gb a(String $$0) {
       try {
-         gs $$1 = new gs(new StringReader($$0));
-         return $$1.t();
+         return fz.a().a(new StringReader($$0));
       } catch (CommandSyntaxException var2) {
          return null;
       }
    }
 
    @Override
-   public Stream<ty> a(ec $$0) throws CommandSyntaxException {
+   public Stream<ua> a(ed $$0) {
       if (this.e != null) {
-         List<? extends bql> $$1 = this.e.b($$0);
-         return $$1.stream().map(cu::b);
-      } else {
-         return Stream.empty();
+         aqh $$1 = $$0.e();
+         in $$2 = this.e.c($$0);
+         if ($$1.p($$2)) {
+            dnm $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.b($$0.v()));
+            }
+         }
       }
+
+      return Stream.empty();
    }
 
    @Override
-   public xu.a<?> a() {
+   public xw.a<?> a() {
       return b;
    }
 
    @Override
    public String toString() {
-      return "entity=" + this.d;
+      return "block=" + this.d;
    }
 
    @Override
@@ -68,7 +72,7 @@ public record xv(String d, @Nullable gr e) implements xu {
    }
 
    @Nullable
-   public gr c() {
+   public gb c() {
       return this.e;
    }
 }

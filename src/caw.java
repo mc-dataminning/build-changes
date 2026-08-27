@@ -1,36 +1,39 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
-public class caw extends cbg<cin> {
-   public static final int a = 24;
+public class caw<T extends bsc & bsg> extends byx {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   @Override
-   public Set<cah<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cah.B)));
-   }
-
-   protected void a(aqe $$0, cin $$1) {
-      super.a($$0, $$1);
-      $$1.dQ()
-         .c(cah.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bqq.e)
-         .filter($$1x -> cbn.c($$1, $$1x))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.dQ().a(cah.B, $$1x), () -> $$1.dQ().b(cah.B));
+   public caw(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected int b() {
-      return 24;
+   public boolean a() {
+      return this.b.dN().aa().b(czz.O) && this.h();
+   }
+
+   private boolean h() {
+      return this.b.ek() != null && this.b.ek().ai() == brn.bx && this.b.el() > this.d;
    }
 
    @Override
-   protected int c() {
-      return 24;
+   public void c() {
+      this.d = this.b.el();
+      this.b.aa_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bsg)$$0).forEach(bsg::aa_);
+      }
+
+      super.c();
+   }
+
+   private List<? extends bsc> i() {
+      double $$0 = this.b.g(bth.k);
+      etk $$1 = etk.a(this.b.dl()).c($$0, 10.0, $$0);
+      return this.b.dN().a((Class<? extends bsc>)this.b.getClass(), $$1, brm.f);
    }
 }

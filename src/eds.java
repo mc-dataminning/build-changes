@@ -1,45 +1,29 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public class eds extends edq {
-   public static final Codec<eds> a = Codec.unit(() -> eds.b);
-   public static final eds b = new eds();
+public class eds extends edi {
+   public static final Codec<eds> b = bnw.b(dqh.b).comapFlatMap(eds::a, $$0 -> $$0.c).fieldOf("entries").codec();
+   private final bnw<dqh> c;
 
-   @Override
-   protected edr<?> a() {
-      return edr.a;
+   private static DataResult<eds> a(bnw<dqh> $$0) {
+      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new eds($$0));
+   }
+
+   public eds(bnw<dqh> $$0) {
+      this.c = $$0;
+   }
+
+   public eds(bnw.a<dqh> $$0) {
+      this($$0.a());
    }
 
    @Override
-   public void a(edq.a $$0) {
-      ayd $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            im $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dlr.d);
-            }
-         }
+   protected edj<?> a() {
+      return edj.b;
+   }
 
-         if ($$1.a(3) > 0) {
-            im $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dlr.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            im $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dlr.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            im $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dlr.c);
-            }
-         }
-      });
+   @Override
+   public dqh a(ayg $$0, in $$1) {
+      return this.c.a($$0).orElseThrow(IllegalStateException::new);
    }
 }

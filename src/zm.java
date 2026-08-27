@@ -1,33 +1,23 @@
-import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
 
-public record zm(akf c, byte[] d) implements yz<zf> {
-   public static final yq<vs, zm> a = yz.a(zm::a, zm::new);
-   private static final int e = 5120;
-   public static final yq<ByteBuf, byte[]> b = yo.a(5120);
+public record zm(Optional<UUID> b) implements zb<zh> {
+   public static final ys<vu, zm> a = zb.a(zm::a, zm::new);
 
-   private zm(vs $$0) {
-      this($$0.q(), b.decode($$0));
+   private zm(vu $$0) {
+      this($$0.b(jq.g));
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
+   private void a(vu $$0) {
+      $$0.a(this.b, jq.g);
    }
 
    @Override
-   public zb<zm> a() {
-      return zp.g;
+   public zd<zm> a() {
+      return zr.e;
    }
 
-   public void a(zf $$0) {
+   public void a(zh $$0) {
       $$0.a(this);
-   }
-
-   public akf b() {
-      return this.c;
-   }
-
-   public byte[] e() {
-      return this.d;
    }
 }

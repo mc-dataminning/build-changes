@@ -1,109 +1,75 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class dhb extends dcv implements djw {
+public class dhb extends dde {
    public static final MapCodec<dhb> a = b(dhb::new);
-   public static final dqs b = dgr.aE;
-   public static final dqp c = dqo.C;
-   protected static final float d = 3.0F;
-   protected static final ety e = dcv.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
-   protected static final ety f = dcv.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final ety g = dcv.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
-   protected static final ety h = dcv.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
+   public static final dqy b = dis.b;
+   public static final dqy c = dis.c;
+   public static final dqy d = dis.d;
+   public static final dqy e = dis.e;
+   public static final dqy f = dis.f;
+   public static final dqy g = dis.g;
+   private static final Map<is, dqy> h = dis.h;
 
    @Override
    public MapCodec<dhb> a() {
       return a;
    }
 
-   protected dhb(dpx.d $$0) {
+   public dhb(dqg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ir.c).a(c, Boolean.valueOf(false)));
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(true))
+            .a(c, Boolean.valueOf(true))
+            .a(d, Boolean.valueOf(true))
+            .a(e, Boolean.valueOf(true))
+            .a(f, Boolean.valueOf(true))
+            .a(g, Boolean.valueOf(true))
+      );
    }
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      switch ((ir)$$0.c(b)) {
-         case c:
-            return h;
-         case d:
-            return g;
-         case e:
-            return f;
-         case f:
-         default:
-            return e;
-      }
-   }
-
-   private boolean a(cza $$0, im $$1, ir $$2) {
-      dpy $$3 = $$0.a_($$1);
-      return $$3.d($$0, $$1, $$2);
+   public dqh a(cwi $$0) {
+      czj $$1 = $$0.q();
+      in $$2 = $$0.a();
+      return this.n()
+         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
+         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
+         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
    }
 
    @Override
-   protected boolean a(dpy $$0, czx $$1, im $$2) {
-      ir $$3 = $$0.c(b);
-      return this.a($$1, $$2.a($$3.g()), $$3);
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      if ($$1.g() == $$0.c(b) && !$$0.a($$3, $$4)) {
-         return dcx.a.n();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, els.c, els.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dpy a(cvl $$0) {
-      if (!$$0.c()) {
-         dpy $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
-         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
-            return null;
-         }
-      }
-
-      dpy $$2 = this.n();
-      czx $$3 = $$0.q();
-      im $$4 = $$0.a();
-      elr $$5 = $$0.q().b_($$0.a());
-
-      for (ir $$6 : $$0.f()) {
-         if ($$6.o().d()) {
-            $$2 = $$2.a(b, $$6.g());
-            if ($$2.a($$3, $$4)) {
-               return $$2.a(c, Boolean.valueOf($$5.a() == els.c));
-            }
-         }
-      }
-
-      return null;
+   protected dqh a(dqh $$0, djr $$1) {
+      return $$0.a(h.get($$1.a(is.c)), $$0.c(b))
+         .a(h.get($$1.a(is.d)), $$0.c(d))
+         .a(h.get($$1.a(is.f)), $$0.c(c))
+         .a(h.get($$1.a(is.e)), $$0.c(e))
+         .a(h.get($$1.a(is.b)), $$0.c(f))
+         .a(h.get($$1.a(is.a)), $$0.c(g));
    }
 
    @Override
-   protected dpy a(dpy $$0, dji $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected dqh a(dqh $$0, dib $$1) {
+      return $$0.a(h.get($$1.b(is.c)), $$0.c(b))
+         .a(h.get($$1.b(is.d)), $$0.c(d))
+         .a(h.get($$1.b(is.f)), $$0.c(c))
+         .a(h.get($$1.b(is.e)), $$0.c(e))
+         .a(h.get($$1.b(is.b)), $$0.c(f))
+         .a(h.get($$1.b(is.a)), $$0.c(g));
    }
 
    @Override
-   protected dpy a(dpy $$0, dhs $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected elr c_(dpy $$0) {
-      return $$0.c(c) ? els.c.a(false) : super.c_($$0);
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(f, g, b, c, d, e);
    }
 }

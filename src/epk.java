@@ -1,60 +1,92 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class epk extends epo {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<epk> a = RecordCodecBuilder.create($$0 -> a($$0).and(akf.a.fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, epk::new));
-   private final akf c;
+public class epk extends epw {
+   public static final Codec<epk> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ld.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(drk::f).toList())
+               )
+            )
+            .apply($$0, epk::new)
+   );
+   private final iw<dde> b;
+   private final Set<drk<?>> c;
 
-   private epk(List<erh> $$0, akf $$1) {
+   epk(List<erq> $$0, iw<dde> $$1, Set<drk<?>> $$2) {
       super($$0);
-      this.c = $$1;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private epk(List<erq> $$0, iw<dde> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public epq b() {
-      return epr.C;
+   public epy b() {
+      return epz.A;
    }
 
    @Override
-   public void a(eoj $$0) {
-      eoc<epp> $$1 = new eoc<>(eof.b, this.c);
-      if ($$0.a($$1)) {
-         $$0.b("Function " + this.c + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.c + "}", $$1)), () -> $$0.b("Unknown function table called " + this.c));
-      }
+   public Set<eqz<?>> a() {
+      return ImmutableSet.of(erc.g);
    }
 
    @Override
-   protected csd a(csd $$0, eoa $$1) {
-      epp $$2 = $$1.a().getElement(eof.b, this.c);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c);
-         return $$0;
-      } else {
-         eoa.c<?> $$3 = eoa.a($$2);
-         if ($$1.b($$3)) {
-            csd var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
+   protected csz a(csz $$0, eol $$1) {
+      dqh $$2 = $$1.c(erc.g);
+      if ($$2 != null) {
+         $$0.a(ka.Y, cvi.a, $$1x -> {
+            for (drk<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
             }
 
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
+            return $$1x;
+         });
       }
+
+      return $$0;
    }
 
-   public static epo.a<?> a(akf $$0) {
-      return a($$1 -> new epk($$1, $$0));
+   public static epk.a a(dde $$0) {
+      return new epk.a($$0);
+   }
+
+   public static class a extends epw.a<epk.a> {
+      private final iw<dde> a;
+      private final Builder<drk<?>> b = ImmutableSet.builder();
+
+      a(dde $$0) {
+         this.a = $$0.r();
+      }
+
+      public epk.a a(drk<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      protected epk.a a() {
+         return this;
+      }
+
+      @Override
+      public epx b() {
+         return new epk(this.g(), this.a, this.b.build());
+      }
    }
 }

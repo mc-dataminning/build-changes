@@ -1,54 +1,55 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.gson.annotations.SerializedName;
+import java.util.UUID;
 
-public class eza {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
-   @Nullable
-   private final String[] d;
+public class eza extends ezt implements ezn {
+   @SerializedName("name")
+   private String a;
+   @SerializedName("uuid")
+   private UUID b;
+   @SerializedName("operator")
+   private boolean c;
+   @SerializedName("accepted")
+   private boolean d;
+   @SerializedName("online")
+   private boolean e;
 
-   private eza(String $$0, @Nullable String[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public String a() {
+      return this.a;
    }
 
-   public ws a(ws $$0) {
-      return Objects.requireNonNullElse(this.a(), $$0);
+   public void a(String $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
-   public ws a() {
-      if (!gnt.a(this.c)) {
-         return null;
-      } else {
-         return this.d == null ? ws.c(this.c) : ws.a(this.c, this.d);
-      }
+   public UUID b() {
+      return this.b;
    }
 
-   public static eza a(JsonObject $$0) {
-      String $$1 = fbg.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
-
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
-         }
-      } else {
-         $$5 = null;
-      }
-
-      return new eza($$1, $$5);
+   public void a(UUID $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public String toString() {
+   public boolean c() {
       return this.c;
+   }
+
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public void b(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public void c(boolean $$0) {
+      this.e = $$0;
    }
 }

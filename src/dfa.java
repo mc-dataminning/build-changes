@@ -1,139 +1,148 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.Map;
-import org.slf4j.Logger;
 
-public class dfa extends dch {
-   private static final Logger d = LogUtils.getLogger();
-   public static final MapCodec<dfa> a = b(dfa::new);
-   public static final dqs b = dey.a;
-   public static final dqp c = dqo.A;
-   private static final Map<cry, kh> e = ac.a(new Object2ObjectOpenHashMap(), $$0 -> $$0.defaultReturnValue(new kg()));
-   private static final int f = 4;
+public abstract class dfa extends dde implements dkf {
+   public static final dqy a = dis.b;
+   public static final dqy b = dis.c;
+   public static final dqy c = dis.d;
+   public static final dqy d = dis.e;
+   public static final dqy e = dqx.C;
+   protected static final Map<is, dqy> f = dis.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ac.a());
+   protected final eui[] g;
+   protected final eui[] h;
+   private final Object2IntMap<dqh> i = new Object2IntOpenHashMap();
+
+   protected dfa(float $$0, float $$1, float $$2, float $$3, float $$4, dqg.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+      UnmodifiableIterator var7 = this.E.a().iterator();
+
+      while (var7.hasNext()) {
+         dqh $$6 = (dqh)var7.next();
+         this.g($$6);
+      }
+   }
 
    @Override
-   public MapCodec<? extends dfa> a() {
-      return a;
-   }
+   protected abstract MapCodec<? extends dfa> a();
 
-   public static void a(czt $$0, kh $$1) {
-      e.put($$0.p(), $$1);
-   }
+   protected eui[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      float $$5 = 8.0F - $$0;
+      float $$6 = 8.0F + $$0;
+      float $$7 = 8.0F - $$1;
+      float $$8 = 8.0F + $$1;
+      eui $$9 = dde.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      eui $$10 = dde.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      eui $$11 = dde.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      eui $$12 = dde.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      eui $$13 = dde.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      eui $$14 = euf.a($$10, $$13);
+      eui $$15 = euf.a($$11, $$12);
+      eui[] $$16 = new eui[]{
+         euf.a(),
+         $$11,
+         $$12,
+         $$15,
+         $$10,
+         euf.a($$11, $$10),
+         euf.a($$12, $$10),
+         euf.a($$15, $$10),
+         $$13,
+         euf.a($$11, $$13),
+         euf.a($$12, $$13),
+         euf.a($$15, $$13),
+         $$14,
+         euf.a($$11, $$14),
+         euf.a($$12, $$14),
+         euf.a($$15, $$14)
+      };
 
-   protected dfa(dpx.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ir.c).a(c, Boolean.valueOf(false)));
+      for (int $$17 = 0; $$17 < 16; $$17++) {
+         $$16[$$17] = euf.a($$9, $$16[$$17]);
+      }
+
+      return $$16;
    }
 
    @Override
-   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
-      if ($$1.B) {
-         return boq.a;
-      } else {
-         dnd $$5 = $$1.c_($$2);
-         if ($$5 instanceof dnv) {
-            $$3.a((dnv)$$5);
-            if ($$5 instanceof dnw) {
-               $$3.a(avj.ac);
-            } else {
-               $$3.a(avj.ae);
-            }
+   protected boolean a_(dqh $$0, czj $$1, in $$2) {
+      return !$$0.c(e);
+   }
+
+   @Override
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return this.h[this.g($$0)];
+   }
+
+   @Override
+   protected eui b(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return this.g[this.g($$0)];
+   }
+
+   private static int a(is $$0) {
+      return 1 << $$0.e();
+   }
+
+   protected int g(dqh $$0) {
+      return this.i.computeIntIfAbsent($$0, $$0x -> {
+         int $$1 = 0;
+         if ($$0x.c(a)) {
+            $$1 |= a(is.c);
          }
 
-         return boq.b;
-      }
-   }
-
-   protected void a(aqe $$0, dpy $$1, im $$2) {
-      dnv $$3 = $$0.a($$2, dnf.f).orElse(null);
-      if ($$3 == null) {
-         d.warn("Ignoring dispensing attempt for Dispenser without matching block entity at {}", $$2);
-      } else {
-         ke $$4 = new ke($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.z);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-            $$0.a(dur.a, $$2, dur.a.a($$3.n()));
-         } else {
-            csd $$6 = $$3.a($$5);
-            kh $$7 = this.a($$6);
-            if ($$7 != kh.b) {
-               $$3.a($$5, $$7.dispense($$4, $$6));
-            }
+         if ($$0x.c(b)) {
+            $$1 |= a(is.f);
          }
+
+         if ($$0x.c(c)) {
+            $$1 |= a(is.d);
+         }
+
+         if ($$0x.c(d)) {
+            $$1 |= a(is.e);
+         }
+
+         return $$1;
+      });
+   }
+
+   @Override
+   protected ema b_(dqh $$0) {
+      return $$0.c(e) ? emb.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dqh $$0, emp $$1) {
+      return false;
+   }
+
+   @Override
+   protected dqh a(dqh $$0, djr $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.a(a, $$0.c(c)).a(b, $$0.c(d)).a(c, $$0.c(a)).a(d, $$0.c(b));
+         case d:
+            return $$0.a(a, $$0.c(b)).a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(a));
+         case b:
+            return $$0.a(a, $$0.c(d)).a(b, $$0.c(a)).a(c, $$0.c(b)).a(d, $$0.c(c));
+         default:
+            return $$0;
       }
    }
 
-   protected kh a(csd $$0) {
-      return e.get($$0.f());
-   }
-
    @Override
-   protected void a(dpy $$0, czu $$1, im $$2, dcv $$3, im $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2) || $$1.C($$2.c());
-      boolean $$7 = $$0.c(c);
-      if ($$6 && !$$7) {
-         $$1.a($$2, this, 4);
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
-      } else if (!$$6 && $$7) {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
+   protected dqh a(dqh $$0, dib $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.a(a, $$0.c(c)).a(c, $$0.c(a));
+         case c:
+            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
       }
-   }
-
-   @Override
-   protected void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
-      this.a($$1, $$0, $$2);
-   }
-
-   @Override
-   public dnd a(im $$0, dpy $$1) {
-      return new dnv($$0, $$1);
-   }
-
-   @Override
-   public dpy a(cvl $$0) {
-      return this.n().a(b, $$0.d().g());
-   }
-
-   @Override
-   protected void a(dpy $$0, czu $$1, im $$2, dpy $$3, boolean $$4) {
-      bom.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static jf a(ke $$0) {
-      ir $$1 = $$0.d().c(b);
-      return $$0.a().b(0.7 * (double)$$1.j(), 0.7 * (double)$$1.k(), 0.7 * (double)$$1.l());
-   }
-
-   @Override
-   protected boolean d_(dpy $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dpy $$0, czu $$1, im $$2) {
-      return cnh.a($$1.c_($$2));
-   }
-
-   @Override
-   protected djb b_(dpy $$0) {
-      return djb.c;
-   }
-
-   @Override
-   protected dpy a(dpy $$0, dji $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dpy a(dpy $$0, dhs $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(b, c);
    }
 }

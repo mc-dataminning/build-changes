@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.nio.file.Path;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface etg {
+public record etg(Path a, Path b) {
 }

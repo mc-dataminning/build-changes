@@ -1,65 +1,65 @@
-public class gsd implements gsj {
-   private static final int a = 1200;
-   private static final ws b = ws.c("tutorial.craft_planks.title");
-   private static final ws c = ws.c("tutorial.craft_planks.description");
-   private final gsi d;
-   private fhf e;
-   private int f;
+import java.time.Duration;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public gsd(gsi $$0) {
-      this.d = $$0;
+public class gsd {
+   private final UUID a = UUID.randomUUID();
+   private final gry b;
+   private final gsh c;
+   private final gsj d = new gsj();
+   private final gsg e;
+   private final gsi f;
+
+   public gsd(gry $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new gsh($$3);
+      this.e = new gsg();
+      this.f = new gsi($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(gsb.i, this.a);
+      });
    }
 
-   @Override
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gsk.f);
-      } else {
-         if (this.f == 1) {
-            gag $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.ga().a(avw.b)) {
-                  this.d.a(gsk.f);
-                  return;
-               }
-
-               if (a($$0, avw.b)) {
-                  this.d.a(gsk.f);
-                  return;
-               }
-            }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fhf(fhf.a.e, b, c, false);
-            this.d.e().aA().a(this.e);
-         }
-      }
+      this.e.a(this.b);
    }
 
-   @Override
+   public void a(daa $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
+   }
+
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
    public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
       }
    }
 
-   @Override
-   public void a(csd $$0) {
-      if ($$0.a(avw.b)) {
-         this.d.a(gsk.f);
-      }
+   public void c() {
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
    }
 
-   public static boolean a(gag $$0, awd<cry> $$1) {
-      for (iv<cry> $$2 : lc.h.c($$1)) {
-         if ($$0.j().a(avj.b.b($$2.a())) > 0) {
-            return true;
-         }
+   public void a(dad $$0, af $$1) {
+      akh $$2 = $$1.a();
+      if ($$1.b().g() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.Y();
+         this.b.send(grz.f, $$2x -> {
+            $$2x.a(gsb.D, $$2.toString());
+            $$2x.a(gsb.E, $$3);
+         });
       }
-
-      return false;
    }
 }

@@ -1,15 +1,33 @@
-public class cvu extends cvp {
-   public cvu(String $$0, cvv $$1, cwd $$2, csd $$3, float $$4, int $$5) {
-      super(cwl.e, $$0, $$1, $$2, $$3, $$4, $$5);
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.Consumer;
+
+public record cvu(List<wu> e, List<wu> f) implements cwd {
+   public static final cvu a = new cvu(List.of());
+   public static final int b = 256;
+   private static final xr g = xr.a.a(n.f).b(true);
+   public static final Codec<cvu> c = axh.a(ww.g.listOf(), 256).xmap(cvu::new, cvu::a);
+   public static final ys<wf, cvu> d = ww.b.a(yq.c(256)).a(cvu::new, cvu::a);
+
+   public cvu(List<wu> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> wx.a($$0x.f(), g)));
+   }
+
+   public cvu a(wu $$0) {
+      return new cvu(ac.a(this.e, $$0));
    }
 
    @Override
-   public csd g() {
-      return new csd(dcx.og);
+   public void a(Consumer<wu> $$0, cuq $$1) {
+      this.f.forEach($$0);
    }
 
-   @Override
-   public cwk<?> ao_() {
-      return cwk.s;
+   public List<wu> a() {
+      return this.e;
+   }
+
+   public List<wu> b() {
+      return this.f;
    }
 }

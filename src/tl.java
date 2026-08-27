@@ -1,41 +1,36 @@
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import java.util.Optional;
 
-public class tl implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
+public class tl implements sz.c {
+   private static final int c = 5;
+   private static final int d = 6;
+   private final int e;
+   private int f;
+   private etk g;
+   private final in.a h;
+   private final in i;
 
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      if (sw.b($$1)) {
-         return $$1;
-      } else {
-         Message $$2 = ws.b("No such test class: " + $$1);
-         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
+   public tl(in $$0, int $$1) {
+      this.e = $$1;
+      this.h = $$0.j();
+      this.g = new etk(this.h);
+      this.i = $$0;
+   }
+
+   @Override
+   public Optional<sw> spawnStructure(sw $$0) {
+      in $$1 = new in(this.h);
+      $$0.b($$1);
+      $$0.n();
+      etk $$2 = tm.a($$0.e());
+      this.g = this.g.b($$2);
+      this.h.e((int)$$2.b() + 5, 0, 0);
+      if (++this.f >= this.e) {
+         this.f = 0;
+         this.h.e(0, 0, (int)this.g.d() + 6);
+         this.h.p(this.i.u());
+         this.g = new etk(this.h);
       }
-   }
 
-   public static tl a() {
-      return new tl();
-   }
-
-   public static String a(CommandContext<ec> $$0, String $$1) {
-      return (String)$$0.getArgument($$1, String.class);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return eh.b(sw.b().stream(), $$1);
-   }
-
-   public Collection<String> getExamples() {
-      return a;
+      return Optional.of($$0);
    }
 }

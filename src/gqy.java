@@ -1,87 +1,63 @@
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
-public class gqy {
-   private final Set<gqy.a> a = Sets.newIdentityHashSet();
-   final evi b;
-   final Executor c;
+public class gqy implements ats {
+   public static final gqy.a<csz> a = new gqy.a<>();
+   public static final gqy.a<csz> b = new gqy.a<>();
+   public static final gqy.a<fov> c = new gqy.a<>();
+   private final Map<gqy.a<?>, gqy.c<?>> d = new HashMap<>();
 
-   public gqy(evi $$0, Executor $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   @Override
+   public void a(atr $$0) {
+      for (gqy.c<?> $$1 : this.d.values()) {
+         $$1.a();
+      }
    }
 
-   public CompletableFuture<gqy.a> a(evi.c $$0) {
-      CompletableFuture<gqy.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         evh $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            gqy.a $$3 = new gqy.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
-         } else {
-            $$1.complete(null);
-         }
-      });
-      return $$1;
+   public <T> void a(gqy.a<T> $$0, gqy.b<T> $$1) {
+      this.d.put($$0, new gqy.c<>($$1));
    }
 
-   public void a(Consumer<Stream<evh>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   private <T> gqy.c<T> b(gqy.a<T> $$0) {
+      gqy.c<T> $$1 = (gqy.c<T>)this.d.get($$0);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tree builder not registered");
+      } else {
+         return $$1;
+      }
    }
 
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<gqy.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            gqy.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
-         }
-      });
+   public <T> void a(gqy.a<T> $$0, List<T> $$1) {
+      this.b($$0).a($$1);
    }
 
-   public void b() {
-      this.a.forEach(gqy.a::b);
-      this.a.clear();
+   public <T> gqz<T> a(gqy.a<T> $$0) {
+      return this.b($$0).b;
    }
 
-   public class a {
-      @Nullable
-      evh b;
-      private boolean c;
+   public static class a<T> {
+   }
 
-      public boolean a() {
-         return this.c;
+   public interface b<T> extends Function<List<T>, gqw<T>> {
+   }
+
+   static class c<T> {
+      private final gqy.b<T> a;
+      gqw<T> b = gqw.b();
+
+      c(gqy.b<T> $$0) {
+         this.a = $$0;
       }
 
-      public a(evh $$1) {
-         this.b = $$1;
+      void a(List<T> $$0) {
+         this.b = this.a.apply($$0);
+         this.b.a();
       }
 
-      public void a(Consumer<evh> $$0) {
-         gqy.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
-            }
-         });
-      }
-
-      public void b() {
-         this.c = true;
-         gqy.this.b.a(this.b);
-         this.b = null;
+      void a() {
+         this.b.a();
       }
    }
 }

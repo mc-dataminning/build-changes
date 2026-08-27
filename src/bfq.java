@@ -1,34 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class bfq extends DataFix {
-   private final String a;
-   private final UnaryOperator<String> b;
-
-   public bfq(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         this.getInputSchema().getType(bfp.c),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(), $$0x -> $$0x.update("Status", this::a).update("below_zero_retrogen", $$0xx -> $$0xx.update("target_status", this::a))
-            )
-      );
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(bgz::a).map(this.b).map($$0::createString);
-      return (Dynamic<T>)DataFixUtils.orElse($$1, $$0);
-   }
+public class bfq {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
+      .put("minecraft:birch_bark", "minecraft:birch_wood")
+      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
+      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
+      .put("minecraft:oak_bark", "minecraft:oak_wood")
+      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
+      .build();
 }

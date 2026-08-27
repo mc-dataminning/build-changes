@@ -1,79 +1,89 @@
 import java.util.EnumSet;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class byu extends byb {
-   public static final int a = 1;
-   protected final brm b;
-   protected final double c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected boolean g;
+public class byu extends byx {
+   private final bsc a;
+   private final Predicate<bsc> b;
+   @Nullable
+   private bsc c;
+   private final double d;
+   private final cbl e;
+   private int f;
+   private final float g;
+   private float h;
+   private final float i;
 
-   public byu(brm $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(byb.a.a));
+   public byu(bsc $$0, double $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
+      this.d = $$1;
+      this.e = $$0.K();
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(byx.a.a, byx.a.b));
+      if (!($$0.K() instanceof cbk) && !($$0.K() instanceof cbj)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
+      }
    }
 
    @Override
    public boolean a() {
-      if (!this.h()) {
-         return false;
-      } else {
-         if (this.b.bO()) {
-            im $$0 = this.a(this.b.dN(), this.b, 5);
-            if ($$0 != null) {
-               this.d = (double)$$0.u();
-               this.e = (double)$$0.v();
-               this.f = (double)$$0.w();
+      List<bsc> $$0 = this.a.dN().a(bsc.class, this.a.cI().g((double)this.i), this.b);
+      if (!$$0.isEmpty()) {
+         for (bsc $$1 : $$0) {
+            if (!$$1.cf()) {
+               this.c = $$1;
                return true;
             }
          }
-
-         return this.i();
       }
-   }
 
-   protected boolean h() {
-      return this.b.ek() != null || this.b.dC() || this.b.bO();
-   }
-
-   protected boolean i() {
-      etf $$0 = cby.a(this.b, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.d = $$0.c;
-         this.e = $$0.d;
-         this.f = $$0.e;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.g;
-   }
-
-   @Override
-   public void c() {
-      this.b.K().a(this.d, this.e, this.f, this.c);
-      this.g = true;
-   }
-
-   @Override
-   public void d() {
-      this.g = false;
+      return false;
    }
 
    @Override
    public boolean b() {
-      return !this.b.K().l();
+      return this.c != null && !this.e.l() && this.a.g(this.c) > (double)(this.g * this.g);
    }
 
-   @Nullable
-   protected im a(cza $$0, bql $$1, int $$2) {
-      im $$3 = $$1.dn();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : im.a($$1.dn(), $$2, 1, $$1x -> $$0.b_($$1x).a(avt.a)).orElse(null);
+   @Override
+   public void c() {
+      this.f = 0;
+      this.h = this.a.a(emr.j);
+      this.a.a(emr.j, 0.0F);
+   }
+
+   @Override
+   public void d() {
+      this.c = null;
+      this.e.n();
+      this.a.a(emr.j, this.h);
+   }
+
+   @Override
+   public void e() {
+      if (this.c != null && !this.a.gc()) {
+         this.a.G().a(this.c, 10.0F, (float)this.a.Z());
+         if (--this.f <= 0) {
+            this.f = this.a(10);
+            double $$0 = this.a.ds() - this.c.ds();
+            double $$1 = this.a.du() - this.c.du();
+            double $$2 = this.a.dy() - this.c.dy();
+            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+            if (!($$3 <= (double)(this.g * this.g))) {
+               this.e.a(this.c, this.d);
+            } else {
+               this.e.n();
+               bxz $$4 = this.c.G();
+               if ($$3 <= (double)this.g || $$4.e() == this.a.ds() && $$4.f() == this.a.du() && $$4.g() == this.a.dy()) {
+                  double $$5 = this.c.ds() - this.a.ds();
+                  double $$6 = this.c.dy() - this.a.dy();
+                  this.e.a(this.a.ds() - $$5, this.a.du(), this.a.dy() - $$6, this.d);
+               }
+            }
+         }
+      }
    }
 }

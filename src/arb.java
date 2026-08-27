@@ -1,137 +1,112 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import java.net.SocketAddress;
+import java.util.Locale;
 import org.slf4j.Logger;
 
-public abstract class arb implements zq {
-   private static final Logger e = LogUtils.getLogger();
-   public static final int a = 15000;
-   private static final ws f = ws.c("disconnect.timeout");
-   static final ws b = ws.c("multiplayer.disconnect.unexpected_query_response");
-   protected final MinecraftServer c;
-   protected final vq d;
-   private final boolean g;
-   private long h;
-   private boolean i;
-   private long j;
-   private int k;
-   private volatile boolean l = false;
+public class arb extends ChannelInboundHandlerAdapter {
+   private static final Logger a = LogUtils.getLogger();
+   private final akx b;
 
-   public arb(MinecraftServer $$0, vq $$1, aqt $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.h = ac.b();
-      this.k = $$2.b();
-      this.g = $$2.d();
+   public arb(akx $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public void a(ws $$0) {
-      if (this.i()) {
-         e.info("Stopping singleplayer server as player logged out");
-         this.c.a(false);
-      }
-   }
-
-   @Override
-   public void a(zt $$0) {
-      if (this.i && $$0.b() == this.j) {
-         int $$1 = (int)(ac.b() - this.h);
-         this.k = (this.k * 3 + $$1) / 4;
-         this.i = false;
-      } else if (!this.i()) {
-         this.b(f);
-      }
-   }
-
-   @Override
-   public void a(zu $$0) {
-   }
-
-   @Override
-   public void a(zs $$0) {
-   }
-
-   @Override
-   public void a(zv $$0) {
-      zc.a($$0, this, this.c);
-      if ($$0.e() == zv.a.b && this.c.Y()) {
-         e.info("Disconnecting {} due to resource pack {} rejection", this.j().getName(), $$0.b());
-         this.b(ws.c("multiplayer.requiredTexturePrompt.disconnect"));
-      }
-   }
-
-   @Override
-   public void a(abi $$0) {
-      this.b(b);
-   }
-
-   protected void f() {
-      this.c.aU().a("keepAlive");
-      long $$0 = ac.b();
-      if ($$0 - this.h >= 15000L) {
-         if (this.i) {
-            this.b(f);
-         } else {
-            this.i = true;
-            this.h = $$0;
-            this.j = $$0;
-            this.b(new zi(this.j));
-         }
-      }
-
-      this.c.aU().c();
-   }
-
-   public void g() {
-      this.l = true;
-   }
-
-   public void h() {
-      this.l = false;
-      this.d.a();
-   }
-
-   public void b(yz<?> $$0) {
-      this.a($$0, null);
-   }
-
-   public void a(yz<?> $$0, @Nullable vz $$1) {
-      boolean $$2 = !this.l || !this.c.bv();
+   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+      ByteBuf $$2 = (ByteBuf)$$1;
+      $$2.markReaderIndex();
+      boolean $$3 = true;
 
       try {
-         this.d.a($$0, $$1, $$2);
-      } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Sending packet");
-         p $$5 = $$4.a("Packet being sent");
-         $$5.a("Packet class", () -> $$0.getClass().getCanonicalName());
-         throw new y($$4);
+         try {
+            if ($$2.readUnsignedByte() != 254) {
+               return;
+            }
+
+            SocketAddress $$4 = $$0.channel().remoteAddress();
+            int $$5 = $$2.readableBytes();
+            if ($$5 == 0) {
+               a.debug("Ping: (<1.3.x) from {}", $$4);
+               String $$6 = a(this.b);
+               a($$0, a($$0.alloc(), $$6));
+            } else {
+               if ($$2.readUnsignedByte() != 1) {
+                  return;
+               }
+
+               if ($$2.isReadable()) {
+                  if (!a($$2)) {
+                     return;
+                  }
+
+                  a.debug("Ping: (1.6) from {}", $$4);
+               } else {
+                  a.debug("Ping: (1.4-1.5.x) from {}", $$4);
+               }
+
+               String $$7 = b(this.b);
+               a($$0, a($$0.alloc(), $$7));
+            }
+
+            $$2.release();
+            $$3 = false;
+         } catch (RuntimeException var11) {
+         }
+      } finally {
+         if ($$3) {
+            $$2.resetReaderIndex();
+            $$0.channel().pipeline().remove(this);
+            $$0.fireChannelRead($$1);
+         }
       }
    }
 
-   public void b(ws $$0) {
-      this.d.a(new zh($$0), vz.a(() -> this.d.a($$0)));
-      this.d.m();
-      this.c.h(this.d::n);
+   private static boolean a(ByteBuf $$0) {
+      short $$1 = $$0.readUnsignedByte();
+      if ($$1 != 250) {
+         return false;
+      } else {
+         String $$2 = ara.a($$0);
+         if (!"MC|PingHost".equals($$2)) {
+            return false;
+         } else {
+            int $$3 = $$0.readUnsignedShort();
+            if ($$0.readableBytes() != $$3) {
+               return false;
+            } else {
+               short $$4 = $$0.readUnsignedByte();
+               if ($$4 < 73) {
+                  return false;
+               } else {
+                  String $$5 = ara.a($$0);
+                  int $$6 = $$0.readInt();
+                  return $$6 <= 65535;
+               }
+            }
+         }
+      }
    }
 
-   protected boolean i() {
-      return this.c.a(this.j());
+   private static String a(akx $$0) {
+      return String.format(Locale.ROOT, "%s§%d§%d", $$0.af(), $$0.M(), $$0.N());
    }
 
-   protected abstract GameProfile j();
-
-   @ayz
-   public GameProfile k() {
-      return this.j();
+   private static String b(akx $$0) {
+      return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.L(), $$0.af(), $$0.M(), $$0.N());
    }
 
-   public int l() {
-      return this.k;
+   private static void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      $$0.pipeline().firstContext().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE);
    }
 
-   protected aqt a(apt $$0) {
-      return new aqt(this.j(), this.k, $$0, this.g);
+   private static ByteBuf a(ByteBufAllocator $$0, String $$1) {
+      ByteBuf $$2 = $$0.buffer();
+      $$2.writeByte(255);
+      ara.a($$2, $$1);
+      return $$2;
    }
 }

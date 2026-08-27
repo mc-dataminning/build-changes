@@ -1,42 +1,29 @@
-import java.time.Instant;
+public class agd implements zb<afz> {
+   public static final ys<vu, agd> a = zb.a(agd::a, agd::new);
+   private final bpj b;
 
-public record agd(String b, Instant c, long d, ej e, wz.b f) implements yz<afx> {
-   public static final yq<vs, agd> a = yz.a(agd::a, agd::new);
-
-   private agd(vs $$0) {
-      this($$0.d(256), $$0.t(), $$0.readLong(), new ej($$0), new wz.b($$0));
+   public agd(bpj $$0) {
+      this.b = $$0;
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b, 256);
-      $$0.a(this.c);
-      $$0.b(this.d);
-      this.e.a($$0);
-      this.f.a($$0);
+   private agd(vu $$0) {
+      this.b = bpj.a($$0.readUnsignedByte());
+   }
+
+   private void a(vu $$0) {
+      $$0.k(this.b.a());
    }
 
    @Override
-   public zb<agd> a() {
-      return afv.bi;
+   public zd<agd> a() {
+      return afx.bg;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 
-   public Instant e() {
-      return this.c;
-   }
-
-   public long f() {
-      return this.d;
-   }
-
-   public ej g() {
-      return this.e;
-   }
-
-   public wz.b h() {
-      return this.f;
+   public bpj b() {
+      return this.b;
    }
 }

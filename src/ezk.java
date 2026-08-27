@@ -1,27 +1,54 @@
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class ezk extends ezj {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class ezk {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final String[] d;
 
-   public static ezk a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      ezk $$3 = new ezk();
+   private ezk(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-      try {
-         $$3.a = fbg.b("downloadLink", $$2, "");
-         $$3.b = fbg.b("resourcePackUrl", $$2, "");
-         $$3.c = fbg.b("resourcePackHash", $$2, "");
-      } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+   public wu a(wu $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
+   }
+
+   @Nullable
+   public wu a() {
+      if (!goe.a(this.c)) {
+         return null;
+      } else {
+         return this.d == null ? wu.c(this.c) : wu.a(this.c, this.d);
+      }
+   }
+
+   public static ezk a(JsonObject $$0) {
+      String $$1 = fbq.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
+
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
+         }
+      } else {
+         $$5 = null;
       }
 
-      return $$3;
+      return new ezk($$1, $$5);
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

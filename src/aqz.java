@@ -1,30 +1,35 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class aqz implements aia {
-   private final MinecraftServer a;
-   private final vq b;
+public record aqz(String b, wy c) {
+   public static final aqz a = a("");
 
-   public aqz(MinecraftServer $$0, vq $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static aqz a(String $$0) {
+      return new aqz($$0, wy.c);
    }
 
-   @Override
-   public void a(ahx $$0) {
-      if ($$0.g() != ahw.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.g());
-      } else {
-         this.b.a(aij.a, new arg(this.a, this.b, false));
-         this.b.a(aij.b);
-      }
+   public static aqz b(String $$0) {
+      return new aqz($$0, wy.b);
    }
 
-   @Override
-   public void a(ws $$0) {
+   @Nullable
+   public String a() {
+      return this.c.a(this.b);
    }
 
-   @Override
+   public String b() {
+      return Objects.requireNonNullElse(this.a(), "");
+   }
+
    public boolean c() {
-      return this.b.i();
+      return !this.c.a();
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public wy e() {
+      return this.c;
    }
 }

@@ -1,59 +1,59 @@
 import javax.annotation.Nullable;
 
-public class cfu extends cfr {
+public class cfu extends cfs {
+   public cfu(brn<? extends cfu> $$0, dad $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   protected avb v() {
+      return avc.ha;
+   }
+
+   @Override
+   protected avb gN() {
+      return avc.hb;
+   }
+
+   @Override
+   protected avb o_() {
+      return avc.hd;
+   }
+
    @Nullable
-   private etf b;
-   private int c;
-
-   public cfu(cfp $$0) {
-      super($$0);
+   @Override
+   protected avb gw() {
+      return avc.he;
    }
 
    @Override
-   public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.ej().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.ej().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.ej().i() - 0.5F) * 8.0F;
-         this.a.dN().a(kw.v, this.a.ds() + (double)$$0, this.a.du() + 2.0 + (double)$$1, this.a.dy() + (double)$$2, 0.0, 0.0, 0.0);
-      }
+   protected avb d(bqf $$0) {
+      return avc.hf;
    }
 
    @Override
-   public void c() {
-      this.c++;
-      if (this.b == null) {
-         im $$0 = this.a.dN().a(dvq.a.e, dyt.a(this.a.r()));
-         this.b = etf.c($$0);
-      }
-
-      double $$1 = this.b.c(this.a.ds(), this.a.du(), this.a.dy());
-      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.Q && !this.a.R) {
-         this.a.t(1.0F);
+   public boolean a(cdp $$0) {
+      if ($$0 == this) {
+         return false;
       } else {
-         this.a.t(0.0F);
+         return !($$0 instanceof cfu) && !($$0 instanceof cfv) ? false : this.gW() && ((cft)$$0).gW();
       }
    }
 
    @Override
-   public void d() {
-      this.b = null;
-      this.c = 0;
-   }
-
-   @Override
-   public float f() {
-      return 3.0F;
+   protected void gV() {
+      this.a(avc.hg, 0.4F, 1.0F);
    }
 
    @Nullable
    @Override
-   public etf g() {
-      return this.b;
-   }
+   public brb a(aqh $$0, brb $$1) {
+      brn<? extends cft> $$2 = $$1 instanceof cfv ? brn.as : brn.z;
+      cft $$3 = $$2.a((dad)$$0);
+      if ($$3 != null) {
+         this.a($$1, $$3);
+      }
 
-   @Override
-   public cgf<cfu> i() {
-      return cgf.j;
+      return $$3;
    }
 }

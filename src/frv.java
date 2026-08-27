@@ -1,44 +1,46 @@
-public class frv<T extends bql> extends fsa<T> {
-   private final fur a;
-   private final fur[] b = new fur[9];
+public class frv<T extends brh> extends fsk<T> {
+   private final fvb a;
+   private final fvb b;
+   private final fvb f;
+   private final fvb g;
+   private final fvb h;
+   private final fvb i;
+   private static final int j = 6;
 
-   public frv(fur $$0) {
+   public frv(fvb $$0) {
       this.a = $$0;
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+      this.b = $$0.b("head");
+      this.g = $$0.b("right_hind_leg");
+      this.f = $$0.b("left_hind_leg");
+      this.i = $$0.b("right_front_leg");
+      this.h = $$0.b("left_front_leg");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public static fvh a(fvf $$0) {
+      fvj $$1 = new fvj();
+      fvk $$2 = $$1.a();
+      $$2.a("head", fvg.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fvd.a(0.0F, 6.0F, 0.0F));
+      $$2.a("body", fvg.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fvd.a(0.0F, 6.0F, 0.0F));
+      fvg $$3 = fvg.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$3, fvd.a(-2.0F, 18.0F, 4.0F));
+      $$2.a("left_hind_leg", $$3, fvd.a(2.0F, 18.0F, 4.0F));
+      $$2.a("right_front_leg", $$3, fvd.a(-2.0F, 18.0F, -4.0F));
+      $$2.a("left_front_leg", $$3, fvd.a(2.0F, 18.0F, -4.0F));
+      return fvh.a($$1, 64, 32);
    }
 
-   public static fux b() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      $$1.a("body", fuw.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fut.a(0.0F, 17.6F, 0.0F));
-      ayd $$2 = ayd.a(1660L);
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int $$6 = $$2.a(7) + 8;
-         $$1.a(a($$3), fuw.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), fut.a($$4, 24.6F, $$5));
-      }
-
-      return fux.a($$0, 64, 32);
+   @Override
+   public fvb a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
-         this.b[$$6].e = 0.2F * axw.a($$3 * 0.3F + (float)$$6) + 0.4F;
-      }
-   }
-
-   @Override
-   public fur a() {
-      return this.a;
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.e = axz.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.g.e = axz.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.h.e = axz.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.e = axz.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

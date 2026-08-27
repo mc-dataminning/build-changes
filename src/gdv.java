@@ -1,118 +1,103 @@
-public class gdv implements gde<dos> {
-   public gdv(gdf.a $$0) {
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+
+public class gdv implements gdo<dny> {
+   public static final gpc a = new gpc(gmx.e, new akh("entity/conduit/base"));
+   public static final gpc b = new gpc(gmx.e, new akh("entity/conduit/cage"));
+   public static final gpc c = new gpc(gmx.e, new akh("entity/conduit/wind"));
+   public static final gpc d = new gpc(gmx.e, new akh("entity/conduit/wind_vertical"));
+   public static final gpc e = new gpc(gmx.e, new akh("entity/conduit/open_eye"));
+   public static final gpc f = new gpc(gmx.e, new akh("entity/conduit/closed_eye"));
+   private final fvb g;
+   private final fvb h;
+   private final fvb i;
+   private final fvb j;
+   private final gdn k;
+
+   public gdv(gdp.a $$0) {
+      this.k = $$0.a();
+      this.g = $$0.a(fva.D);
+      this.h = $$0.a(fva.F);
+      this.i = $$0.a(fva.E);
+      this.j = $$0.a(fva.C);
    }
 
-   public void a(dos $$0, float $$1, exn $$2, gbe $$3, int $$4, int $$5) {
-      if (fcu.Q().s.gx() || fcu.Q().s.N_()) {
-         im $$6 = $$0.f();
-         jq $$7 = $$0.j();
-         if ($$7.u() >= 1 && $$7.v() >= 1 && $$7.w() >= 1) {
-            if ($$0.u() == dri.a || $$0.u() == dri.b) {
-               double $$8 = (double)$$6.u();
-               double $$9 = (double)$$6.w();
-               double $$10 = (double)$$6.v();
-               double $$11 = $$10 + (double)$$7.v();
-               double $$12;
-               double $$13;
-               switch ($$0.k()) {
-                  case b:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)(-$$7.w());
-                     break;
-                  case c:
-                     $$12 = (double)(-$$7.u());
-                     $$13 = (double)$$7.w();
-                     break;
-                  default:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)$$7.w();
-               }
+   public static fvh b() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      $$1.a("eye", fvg.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new fvf(0.01F)), fvd.a);
+      return fvh.a($$0, 16, 16);
+   }
 
-               double $$30;
-               double $$31;
-               double $$32;
-               double $$33;
-               switch ($$0.l()) {
-                  case b:
-                     $$30 = $$13 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$12 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 - $$13;
-                     $$33 = $$31 + $$12;
-                     break;
-                  case c:
-                     $$30 = $$12 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$13 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 - $$12;
-                     $$33 = $$31 - $$13;
-                     break;
-                  case d:
-                     $$30 = $$13 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$12 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 + $$13;
-                     $$33 = $$31 - $$12;
-                     break;
-                  default:
-                     $$30 = $$12 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$13 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 + $$12;
-                     $$33 = $$31 + $$13;
-               }
+   public static fvh c() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      $$1.a("wind", fvg.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fvd.a);
+      return fvh.a($$0, 64, 32);
+   }
 
-               float $$34 = 1.0F;
-               float $$35 = 0.9F;
-               float $$36 = 0.5F;
-               exr $$37 = $$3.getBuffer(gbm.y());
-               if ($$0.u() == dri.a || $$0.E()) {
-                  gbc.a($$2, $$37, $$30, $$10, $$31, $$32, $$11, $$33, 0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
-               }
+   public static fvh d() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      $$1.a("shell", fvg.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fvd.a);
+      return fvh.a($$0, 32, 16);
+   }
 
-               if ($$0.u() == dri.a && $$0.D()) {
-                  this.a($$0, $$37, $$6, $$2);
-               }
-            }
+   public static fvh e() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      $$1.a("shell", fvg.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fvd.a);
+      return fvh.a($$0, 32, 16);
+   }
+
+   public void a(dny $$0, float $$1, exx $$2, gbo $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      if (!$$0.c()) {
+         float $$7 = $$0.a(0.0F);
+         eyb $$8 = a.a($$3, gbw::c);
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
+         this.i.a($$2, $$8, $$4, $$5);
+         $$2.b();
+      } else {
+         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
+         float $$10 = axz.a($$6 * 0.1F) / 2.0F + 0.5F;
+         $$10 = $$10 * $$10 + $$10;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
+         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
+         this.j.a($$2, b.a($$3, gbw::e), $$4, $$5);
+         $$2.b();
+         int $$12 = $$0.a / 66 % 3;
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         if ($$12 == 1) {
+            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
+         } else if ($$12 == 2) {
+            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
          }
+
+         eyb $$13 = ($$12 == 1 ? d : c).a($$3, gbw::e);
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.b(0.875F, 0.875F, 0.875F);
+         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         fcp $$14 = this.k.b;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         $$2.b(0.5F, 0.5F, 0.5F);
+         float $$15 = -$$14.e();
+         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
+         float $$16 = 1.3333334F;
+         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
+         this.g.a($$2, ($$0.d() ? e : f).a($$3, gbw::e), $$4, $$5);
+         $$2.b();
       }
-   }
-
-   private void a(dos $$0, exr $$1, im $$2, exn $$3) {
-      cza $$4 = $$0.i();
-      im $$5 = $$0.az_();
-      im $$6 = $$5.a((jq)$$2);
-
-      for (im $$7 : im.c($$6, $$6.a($$0.j()).b(-1, -1, -1))) {
-         dpy $$8 = $$4.a_($$7);
-         boolean $$9 = $$8.i();
-         boolean $$10 = $$8.a(dcx.kN);
-         boolean $$11 = $$8.a(dcx.hW);
-         boolean $$12 = $$8.a(dcx.hX);
-         boolean $$13 = $$10 || $$11 || $$12;
-         if ($$9 || $$13) {
-            float $$14 = $$9 ? 0.05F : 0.0F;
-            double $$15 = (double)((float)($$7.u() - $$5.u()) + 0.45F - $$14);
-            double $$16 = (double)((float)($$7.v() - $$5.v()) + 0.45F - $$14);
-            double $$17 = (double)((float)($$7.w() - $$5.w()) + 0.45F - $$14);
-            double $$18 = (double)((float)($$7.u() - $$5.u()) + 0.55F + $$14);
-            double $$19 = (double)((float)($$7.v() - $$5.v()) + 0.55F + $$14);
-            double $$20 = (double)((float)($$7.w() - $$5.w()) + 0.55F + $$14);
-            if ($$9) {
-               gbc.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
-            } else if ($$10) {
-               gbc.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
-            } else if ($$11) {
-               gbc.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
-            } else if ($$12) {
-               gbc.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
-            }
-         }
-      }
-   }
-
-   public boolean a(dos $$0) {
-      return true;
-   }
-
-   @Override
-   public int aP_() {
-      return 96;
    }
 }

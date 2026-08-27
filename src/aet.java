@@ -1,45 +1,60 @@
-public class aet implements yz<abk> {
-   public static final yq<vs, aet> a = yz.a(aet::a, aet::new);
-   private final float b;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+
+public class aet implements zb<abm> {
+   public static final ys<wf, aet> a = zb.a(aet::a, aet::new);
+   private static final byte b = -128;
    private final int c;
-   private final float d;
+   private final List<Pair<bro, csz>> d;
 
-   public aet(float $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public aet(int $$0, List<Pair<bro, csz>> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private aet(vs $$0) {
-      this.b = $$0.readFloat();
+   private aet(wf $$0) {
       this.c = $$0.l();
-      this.d = $$0.readFloat();
+      bro[] $$1 = bro.values();
+      this.d = Lists.newArrayList();
+
+      int $$2;
+      do {
+         $$2 = $$0.readByte();
+         bro $$3 = $$1[$$2 & 127];
+         csz $$4 = csz.e.decode($$0);
+         this.d.add(Pair.of($$3, $$4));
+      } while (($$2 & -128) != 0);
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
+   private void a(wf $$0) {
       $$0.c(this.c);
-      $$0.a(this.d);
+      int $$1 = this.d.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         Pair<bro, csz> $$3 = this.d.get($$2);
+         bro $$4 = (bro)$$3.getFirst();
+         boolean $$5 = $$2 != $$1 - 1;
+         int $$6 = $$4.ordinal();
+         $$0.k($$5 ? $$6 | -128 : $$6);
+         csz.e.encode($$0, (csz)$$3.getSecond());
+      }
    }
 
    @Override
-   public zb<aet> a() {
-      return afv.aH;
+   public zd<aet> a() {
+      return afx.aF;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.b;
-   }
-
-   public int e() {
+   public int b() {
       return this.c;
    }
 
-   public float f() {
+   public List<Pair<bro, csz>> e() {
       return this.d;
    }
 }

@@ -1,181 +1,166 @@
-import java.util.function.Predicate;
+import com.google.common.base.Stopwatch;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class dsf {
-   public static final int a = 16;
-   public static final int b = 16;
-   public static final int c = 4096;
-   public static final int d = 2;
-   private short e;
-   private short f;
-   private short g;
-   private final dsm<dpy> h;
-   private dsn<iv<dat>> i;
+   private static final Logger a = LogUtils.getLogger();
+   private final dwn b;
+   private final dbg c;
+   private final long d;
+   private final long e;
+   private final Map<egp, List<ehm>> f = new Object2ObjectOpenHashMap();
+   private final Map<ehj, CompletableFuture<List<czk>>> g = new Object2ObjectArrayMap();
+   private boolean h;
+   private final List<iw<egv>> i;
 
-   public dsf(dsm<dpy> $$0, dsn<iv<dat>> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.g();
+   public static dsf a(dwn $$0, long $$1, dbg $$2, Stream<iw<egv>> $$3) {
+      List<iw<egv>> $$4 = $$3.filter($$1x -> a((egv)$$1x.a(), $$2)).toList();
+      return new dsf($$0, $$2, $$1, 0L, $$4);
    }
 
-   public dsf(ji<dat> $$0) {
-      this.h = new dsm<>(dcv.q, dcx.a.n(), dsm.d.d);
-      this.i = new dsm<>($$0.t(), $$0.g(dba.b), dsm.d.e);
+   public static dsf a(dwn $$0, long $$1, dbg $$2, iy<egv> $$3) {
+      List<iw<egv>> $$4 = $$3.b().filter($$1x -> a((egv)$$1x.a(), $$2)).collect(Collectors.toUnmodifiableList());
+      return new dsf($$0, $$2, $$1, $$1, $$4);
    }
 
-   public dpy a(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2);
+   private static boolean a(egv $$0, dbg $$1) {
+      Stream<iw<dbc>> $$2 = $$0.a().stream().flatMap($$0x -> {
+         egp $$1x = $$0x.a().a();
+         return $$1x.a().a();
+      });
+      return $$2.anyMatch($$1.c()::contains);
    }
 
-   public elr b(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2).u();
+   private dsf(dwn $$0, dbg $$1, long $$2, long $$3, List<iw<egv>> $$4) {
+      this.b = $$0;
+      this.d = $$2;
+      this.c = $$1;
+      this.e = $$3;
+      this.i = $$4;
    }
 
-   public void a() {
-      this.h.a();
-   }
-
-   public void b() {
-      this.h.b();
-   }
-
-   public dpy a(int $$0, int $$1, int $$2, dpy $$3) {
-      return this.a($$0, $$1, $$2, $$3, true);
-   }
-
-   public dpy a(int $$0, int $$1, int $$2, dpy $$3, boolean $$4) {
-      dpy $$5;
-      if ($$4) {
-         $$5 = this.h.a($$0, $$1, $$2, $$3);
-      } else {
-         $$5 = this.h.b($$0, $$1, $$2, $$3);
-      }
-
-      elr $$7 = $$5.u();
-      elr $$8 = $$3.u();
-      if (!$$5.i()) {
-         this.e--;
-         if ($$5.v()) {
-            this.f--;
-         }
-      }
-
-      if (!$$7.c()) {
-         this.g--;
-      }
-
-      if (!$$3.i()) {
-         this.e++;
-         if ($$3.v()) {
-            this.f++;
-         }
-      }
-
-      if (!$$8.c()) {
-         this.g++;
-      }
-
-      return $$5;
-   }
-
-   public boolean c() {
-      return this.e == 0;
-   }
-
-   public boolean d() {
-      return this.e() || this.f();
-   }
-
-   public boolean e() {
-      return this.f > 0;
-   }
-
-   public boolean f() {
-      return this.g > 0;
-   }
-
-   public void g() {
-      class a implements dsm.b<dpy> {
-         public int a;
-         public int b;
-         public int c;
-
-         public void a(dpy $$0, int $$1) {
-            elr $$2 = $$0.u();
-            if (!$$0.i()) {
-               this.a += $$1;
-               if ($$0.v()) {
-                  this.b += $$1;
-               }
-            }
-
-            if (!$$2.c()) {
-               this.a += $$1;
-               if ($$2.f()) {
-                  this.c += $$1;
-               }
-            }
-         }
-      }
-
-      a $$0 = new a();
-      this.h.a($$0);
-      this.e = (short)$$0.a;
-      this.f = (short)$$0.b;
-      this.g = (short)$$0.c;
-   }
-
-   public dsm<dpy> h() {
-      return this.h;
-   }
-
-   public dsn<iv<dat>> i() {
+   public List<iw<egv>> a() {
       return this.i;
    }
 
-   public void a(vs $$0) {
-      this.e = $$0.readShort();
-      this.h.a($$0);
-      dsm<iv<dat>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
+   private void e() {
+      Set<iw<dbc>> $$0 = this.c.c();
+      this.a().forEach($$1 -> {
+         egv $$2 = $$1.a();
+         boolean $$3 = false;
+
+         for (egv.a $$4 : $$2.a()) {
+            egp $$5 = $$4.a().a();
+            if ($$5.a().a().anyMatch($$0::contains)) {
+               this.f.computeIfAbsent($$5, $$0xx -> new ArrayList<>()).add($$2.b());
+               $$3 = true;
+            }
+         }
+
+         if ($$3 && $$2.b() instanceof ehj $$7) {
+            this.g.put($$7, this.a((iw<egv>)$$1, $$7));
+         }
+      });
    }
 
-   public void b(vs $$0) {
-      dsm<iv<dat>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
+   private CompletableFuture<List<czk>> a(iw<egv> $$0, ehj $$1) {
+      if ($$1.c() == 0) {
+         return CompletableFuture.completedFuture(List.of());
+      } else {
+         Stopwatch $$2 = Stopwatch.createStarted(ac.d);
+         int $$3 = $$1.a();
+         int $$4 = $$1.c();
+         List<CompletableFuture<czk>> $$5 = new ArrayList<>($$4);
+         int $$6 = $$1.b();
+         ja<dbc> $$7 = $$1.d();
+         ayg $$8 = ayg.a();
+         $$8.b(this.e);
+         double $$9 = $$8.j() * Math.PI * 2.0;
+         int $$10 = 0;
+         int $$11 = 0;
+
+         for (int $$12 = 0; $$12 < $$4; $$12++) {
+            double $$13 = (double)(4 * $$3 + $$3 * $$11 * 6) + ($$8.j() - 0.5) * (double)$$3 * 2.5;
+            int $$14 = (int)Math.round(Math.cos($$9) * $$13);
+            int $$15 = (int)Math.round(Math.sin($$9) * $$13);
+            ayg $$16 = $$8.d();
+            $$5.add(CompletableFuture.supplyAsync(() -> {
+               Pair<in, iw<dbc>> $$4x = this.c.a(jp.a($$14, 8), 0, jp.a($$15, 8), 112, $$7::a, $$16, this.b.b());
+               if ($$4x != null) {
+                  in $$5x = (in)$$4x.getFirst();
+                  return new czk(jp.a($$5x.u()), jp.a($$5x.w()));
+               } else {
+                  return new czk($$14, $$15);
+               }
+            }, ac.f()));
+            $$9 += (Math.PI * 2) / (double)$$6;
+            if (++$$10 == $$6) {
+               $$11++;
+               $$10 = 0;
+               $$6 += 2 * $$6 / ($$11 + 1);
+               $$6 = Math.min($$6, $$4 - $$12);
+               $$9 += $$8.j() * Math.PI * 2.0;
+            }
+         }
+
+         return ac.d($$5).thenApply($$2x -> {
+            double $$3x = (double)$$2.stop().elapsed(TimeUnit.MILLISECONDS) / 1000.0;
+            a.debug("Calculation for {} took {}s", $$0, $$3x);
+            return $$2x;
+         });
+      }
    }
 
-   public void c(vs $$0) {
-      $$0.l(this.e);
-      this.h.b($$0);
-      this.i.b($$0);
+   public void b() {
+      if (!this.h) {
+         this.e();
+         this.h = true;
+      }
    }
 
-   public int j() {
-      return 2 + this.h.c() + this.i.c();
+   @Nullable
+   public List<czk> a(ehj $$0) {
+      this.b();
+      CompletableFuture<List<czk>> $$1 = this.g.get($$0);
+      return $$1 != null ? $$1.join() : null;
    }
 
-   public boolean a(Predicate<dpy> $$0) {
-      return this.h.a($$0);
+   public List<ehm> a(iw<egp> $$0) {
+      this.b();
+      return this.f.getOrDefault($$0.a(), List.of());
    }
 
-   public iv<dat> c(int $$0, int $$1, int $$2) {
-      return this.i.a($$0, $$1, $$2);
+   public dwn c() {
+      return this.b;
    }
 
-   public void a(daw $$0, dbc.f $$1, int $$2, int $$3, int $$4) {
-      dsm<iv<dat>> $$5 = this.i.e();
-      int $$6 = 4;
+   public boolean a(iw<egv> $$0, int $$1, int $$2, int $$3) {
+      ehm $$4 = $$0.a().b();
 
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            for (int $$9 = 0; $$9 < 4; $$9++) {
-               $$5.b($$7, $$8, $$9, $$0.getNoiseBiome($$2 + $$7, $$3 + $$8, $$4 + $$9, $$1));
+      for (int $$5 = $$1 - $$3; $$5 <= $$1 + $$3; $$5++) {
+         for (int $$6 = $$2 - $$3; $$6 <= $$2 + $$3; $$6++) {
+            if ($$4.b(this, $$5, $$6)) {
+               return true;
             }
          }
       }
 
-      this.i = $$5;
+      return false;
+   }
+
+   public long d() {
+      return this.d;
    }
 }

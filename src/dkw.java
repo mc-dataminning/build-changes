@@ -1,28 +1,22 @@
-public enum dkw {
-   a {
-      @Override
-      public boolean a(dpy $$0, cza $$1, im $$2, ir $$3) {
-         return dcv.a($$0.l($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final int d = 1;
-      private final ety e = dcv.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-      @Override
-      public boolean a(dpy $$0, cza $$1, im $$2, ir $$3) {
-         return !etv.c($$0.l($$1, $$2).a($$3), this.e, etj.c);
-      }
-   },
-   c {
-      private final int d = 2;
-      private final ety e = etv.a(etv.b(), dcv.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), etj.e);
+public class dkw extends dlq implements dcv {
+   public static final MapCodec<dkw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(crs.q.fieldOf("color").forGetter(dkw::b), u()).apply($$0, dkw::new));
+   private final crs c;
 
-      @Override
-      public boolean a(dpy $$0, cza $$1, im $$2, ir $$3) {
-         return !etv.c($$0.l($$1, $$2).a($$3), this.e, etj.c);
-      }
-   };
+   @Override
+   public MapCodec<dkw> a() {
+      return a;
+   }
 
-   public abstract boolean a(dpy var1, cza var2, im var3, ir var4);
+   public dkw(crs $$0, dqg.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
+
+   @Override
+   public crs b() {
+      return this.c;
+   }
 }

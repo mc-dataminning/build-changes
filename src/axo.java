@@ -1,66 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 
-public record axo<T extends Comparable<T>>(T b, T c) {
-   public static final Codec<axo<Integer>> a = a(Codec.INT);
+public final class axo {
+   private axo() {
+   }
 
-   public axo(T b, T c) {
-      if (b.compareTo(c) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
+   public static <T> boolean a(Map<T, Set<T>> $$0, Set<T> $$1, Set<T> $$2, Consumer<T> $$3, T $$4) {
+      if ($$1.contains($$4)) {
+         return false;
+      } else if ($$2.contains($$4)) {
+         return true;
       } else {
-         this.b = b;
-         this.c = c;
-      }
-   }
+         $$2.add($$4);
 
-   public axo(T $$0) {
-      this($$0, $$0);
-   }
-
-   public static <T extends Comparable<T>> Codec<axo<T>> a(Codec<T> $$0) {
-      return axe.a($$0, "min_inclusive", "max_inclusive", axo::a, axo::a, axo::b);
-   }
-
-   public static <T extends Comparable<T>> Codec<axo<T>> a(Codec<T> $$0, T $$1, T $$2) {
-      return axe.b(
-         a($$0),
-         (Function<axo<T>, DataResult<axo<T>>>)($$2x -> {
-            if ($$2x.a().compareTo($$1) < 0) {
-               return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-            } else {
-               return $$2x.b().compareTo($$2) > 0
-                  ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
+         for (T $$5 : $$0.getOrDefault($$4, ImmutableSet.of())) {
+            if (a($$0, $$1, $$2, $$3, $$5)) {
+               return true;
             }
-         })
-      );
-   }
+         }
 
-   public static <T extends Comparable<T>> DataResult<axo<T>> a(T $$0, T $$1) {
-      return $$0.compareTo($$1) <= 0
-         ? DataResult.success(new axo($$0, $$1))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
-   }
-
-   public boolean a(T $$0) {
-      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
-   }
-
-   public boolean a(axo<T> $$0) {
-      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + ", " + this.c + "]";
-   }
-
-   public T a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+         $$2.remove($$4);
+         $$1.add($$4);
+         $$3.accept($$4);
+         return false;
+      }
    }
 }

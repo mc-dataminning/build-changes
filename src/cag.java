@@ -1,59 +1,40 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.EnumSet;
 
-public class cag<T> {
-   private final T a;
-   private long b;
+public class cag extends byx {
+   private final ckp a;
 
-   public cag(T $$0, long $$1) {
+   public cag(ckp $$0) {
       this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> cag<T> a(T $$0) {
-      return new cag<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> cag<T> a(T $$0, long $$1) {
-      return new cag<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+      this.a(EnumSet.of(byx.a.c, byx.a.a));
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean a() {
+      if (!this.a.bB()) {
+         return false;
+      } else if (this.a.bc()) {
+         return false;
+      } else if (!this.a.aC()) {
+         return false;
+      } else if (this.a.U) {
+         return false;
+      } else {
+         clh $$0 = this.a.gp();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cc != null;
+         }
+      }
    }
 
-   @ayz
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
+   @Override
+   public void c() {
+      this.a.K().n();
    }
 
-   public static <T> Codec<cag<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new cag<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

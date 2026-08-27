@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aiu {
+public record aiu(akh a) implements ais {
+   @Override
+   public void a(vu $$0) {
+   }
 }

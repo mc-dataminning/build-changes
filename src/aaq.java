@@ -1,46 +1,57 @@
-public record aaq(im c, float d, float e, float f, float g, float h) implements aaa {
-   public static final yq<vs, aaq> a = aaa.a(aaq::a, aaq::new);
-   public static final aaa.b<aaq> b = aaa.a("debug/worldgen_attempt");
+import java.util.List;
 
-   private aaq(vs $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+public record aaq(akg<dad> c, egh d, List<aaq.a> e) implements aac {
+   public static final ys<vu, aaq> a = aac.a(aaq::a, aaq::new);
+   public static final aac.b<aaq> b = aac.a("debug/structures");
+
+   private aaq(vu $$0) {
+      this($$0.a(le.aS), b($$0), $$0.a(aaq.a::new));
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+   private void a(vu $$0) {
+      $$0.b(this.c);
+      a($$0, this.d);
+      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
    }
 
    @Override
-   public aaa.b<aaq> a() {
+   public aac.b<aaq> a() {
       return b;
    }
 
-   public im b() {
+   static egh b(vu $$0) {
+      return new egh($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   }
+
+   static void a(vu $$0, egh $$1) {
+      $$0.p($$1.h());
+      $$0.p($$1.i());
+      $$0.p($$1.j());
+      $$0.p($$1.k());
+      $$0.p($$1.l());
+      $$0.p($$1.m());
+   }
+
+   public akg<dad> b() {
       return this.c;
    }
 
-   public float c() {
+   public egh c() {
       return this.d;
    }
 
-   public float d() {
+   public List<aaq.a> d() {
       return this.e;
    }
 
-   public float e() {
-      return this.f;
-   }
+   public static record a(egh a, boolean b) {
+      public a(vu $$0) {
+         this(aaq.b($$0), $$0.readBoolean());
+      }
 
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
+      public void a(vu $$0) {
+         aaq.a($$0, this.a);
+         $$0.a(this.b);
+      }
    }
 }

@@ -1,32 +1,45 @@
-import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
-public interface bld {
-   char d = '\u001e';
+public interface bld<S> {
+   void a(int var1, bli<S> var2, Object var3);
 
-   List<blg> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+   default void a(int $$0, Object $$1) {
+      this.a($$0, bli.b(), $$1);
    }
 
-   default int f() {
-      return this.d() - this.b();
-   }
+   void a(int var1);
 
-   String e();
+   public static class a<S> implements bld<S> {
+      private final List<ble<S>> a = new ArrayList<>();
+      private int b = -1;
 
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+      private void b(int $$0) {
+         if ($$0 > this.b) {
+            this.b = $$0;
+            this.a.clear();
+         }
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.b($$0);
+      }
+
+      @Override
+      public void a(int $$0, bli<S> $$1, Object $$2) {
+         this.b($$0);
+         if ($$0 == this.b) {
+            this.a.add(new ble<>($$0, $$1, $$2));
+         }
+      }
+
+      public List<ble<S>> a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
    }
 }

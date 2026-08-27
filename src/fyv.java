@@ -1,11 +1,27 @@
-import javax.annotation.Nullable;
+public class fyv extends fza {
+   fyv(fvw $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 8;
+   }
 
-public interface fyv<T extends ku> {
-   @Nullable
-   fys createParticle(T var1, fvm var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 6; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(kx.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+      }
 
-   public interface a<T extends ku> {
-      @Nullable
-      fzs createParticle(T var1, fvm var2, double var3, double var5, double var7, double var9, double var11, double var13);
+      this.s++;
+      if (this.s == this.t) {
+         this.k();
+      }
+   }
+
+   public static class a implements fzf<la> {
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fyv($$1, $$2, $$3, $$4);
+      }
    }
 }

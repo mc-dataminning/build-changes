@@ -1,12 +1,20 @@
-import java.util.Collection;
-import java.util.function.Function;
+import java.util.List;
 import javax.annotation.Nullable;
 
 public interface goz {
-   Collection<akf> f();
+   List<gcl> a(@Nullable dqh var1, @Nullable is var2, ayg var3);
 
-   void a(Function<akf, goz> var1);
+   boolean a();
 
-   @Nullable
-   goo a(gos var1, Function<gor, gmo> var2, gow var3, akf var4);
+   boolean b();
+
+   boolean c();
+
+   boolean d();
+
+   gmy e();
+
+   gcx f();
+
+   gcv g();
 }

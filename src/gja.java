@@ -1,12 +1,11 @@
-public class gja extends gfm<ckt> {
-   public static final akf a = new akf("textures/entity/projectiles/arrow.png");
-   public static final akf f = new akf("textures/entity/projectiles/tipped_arrow.png");
+public class gja extends gid<cgg, fua<cgg>> {
+   private static final akh a = new akh("textures/entity/sniffer/sniffer.png");
 
-   public gja(ggn.a $$0) {
-      super($$0);
+   public gja(ggx.a $$0) {
+      super($$0, new fua<>($$0.a(fva.bu)), 1.1F);
    }
 
-   public akf a(ckt $$0) {
-      return $$0.H() > 0 ? f : a;
+   public akh a(cgg $$0) {
+      return a;
    }
 }

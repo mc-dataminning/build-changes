@@ -1,73 +1,30 @@
-import com.mojang.serialization.Codec;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record cpt(Map<cps.a, Integer> b, int c, iv<auy> d, Supplier<cwd> e, List<cpt.a> f, float g, float h) {
-   public static final Codec<iv<cpt>> a = lc.ar.r();
+public interface cpt {
+   void a(@Nullable cxf<?> var1);
 
-   public int a(cps.a $$0) {
-      return this.b.getOrDefault($$0, 0);
-   }
+   @Nullable
+   cxf<?> d();
 
-   public Map<cps.a, Integer> a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public iv<auy> c() {
-      return this.d;
-   }
-
-   public Supplier<cwd> d() {
-      return this.e;
-   }
-
-   public List<cpt.a> e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public static final class a {
-      private final akf a;
-      private final String b;
-      private final boolean c;
-      private final akf d;
-      private final akf e;
-
-      public a(akf $$0, String $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = this.b(true);
-         this.e = this.b(false);
+   default void a(clh $$0, List<csz> $$1) {
+      cxf<?> $$2 = this.d();
+      if ($$2 != null) {
+         $$0.a($$2, $$1);
+         if (!$$2.b().an_()) {
+            $$0.a(Collections.singleton($$2));
+            this.a(null);
+         }
       }
+   }
 
-      public a(akf $$0) {
-         this($$0, "", false);
-      }
-
-      private akf b(boolean $$0) {
-         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
-      }
-
-      public akf a(boolean $$0) {
-         return $$0 ? this.d : this.e;
-      }
-
-      public boolean a() {
-         return this.c;
+   default boolean a(dad $$0, aqi $$1, cxf<?> $$2) {
+      if (!$$2.b().an_() && $$0.aa().b(czz.w) && !$$1.I().b($$2)) {
+         return false;
+      } else {
+         this.a($$2);
+         return true;
       }
    }
 }

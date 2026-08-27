@@ -1,49 +1,19 @@
-public class clj extends ckr {
-   private int g = 200;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.PrivateKey;
+import java.time.Instant;
 
-   public clj(bqr<? extends clj> $$0, czu $$1) {
-      super($$0, $$1);
-   }
+public record clj(PrivateKey b, clk c, Instant d) {
+   public static final Codec<clj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awx.g.fieldOf("private_key").forGetter(clj::b),
+               clk.c.fieldOf("public_key").forGetter(clj::c),
+               axh.m.fieldOf("refreshed_after").forGetter(clj::d)
+            )
+            .apply($$0, clj::new)
+   );
 
-   public clj(czu $$0, bre $$1, csd $$2) {
-      super(bqr.aU, $$1, $$0, $$2);
-   }
-
-   public clj(czu $$0, double $$1, double $$2, double $$3, csd $$4) {
-      super(bqr.aU, $$1, $$2, $$3, $$0, $$4);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.dN().B && !this.b) {
-         this.dN().a(kw.P, this.ds(), this.du(), this.dy(), 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected void a(bre $$0) {
-      super.a($$0);
-      bpx $$1 = new bpx(bpz.x, this.g, 0);
-      $$0.b($$1, this.I());
-   }
-
-   @Override
-   public void a(ty $$0) {
-      super.a($$0);
-      if ($$0.e("Duration")) {
-         this.g = $$0.h("Duration");
-      }
-   }
-
-   @Override
-   public void b(ty $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.g);
-   }
-
-   @Override
-   protected csd x() {
-      return new csd(csg.vp);
+   public boolean a() {
+      return this.d.isBefore(Instant.now());
    }
 }

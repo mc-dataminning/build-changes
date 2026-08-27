@@ -1,63 +1,59 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public abstract class ce implements de<cxu> {
-   private final List<bm> a;
-
-   protected ce(List<bm> $$0) {
-      this.a = $$0;
+public class ce extends de<ce.a> {
+   @Override
+   public Codec<ce.a> a() {
+      return ce.a.a;
    }
 
-   public static <T extends ce> Codec<T> a(Function<List<bm>, T> $$0) {
-      return bm.a.listOf().xmap($$0, ce::b);
+   public void a(aqi $$0, csz $$1, int $$2) {
+      this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
-   protected List<bm> b() {
-      return this.a;
-   }
+   public static record a(Optional<bc> b, Optional<ch> c, ct.d d, ct.d e) implements de.a {
+      public static final Codec<ce.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  axh.a(br.b, "player").forGetter(ce.a::a),
+                  axh.a(ch.a, "item").forGetter(ce.a::b),
+                  axh.a(ct.d.d, "durability", ct.d.c).forGetter(ce.a::c),
+                  axh.a(ct.d.d, "delta", ct.d.c).forGetter(ce.a::d)
+               )
+               .apply($$0, ce.a::new)
+      );
 
-   public boolean a(csd $$0, cxu $$1) {
-      for (bm $$2 : this.a) {
-         if (!$$2.a($$1)) {
+      public static an<ce.a> a(Optional<ch> $$0, ct.d $$1) {
+         return a(Optional.empty(), $$0, $$1);
+      }
+
+      public static an<ce.a> a(Optional<bc> $$0, Optional<ch> $$1, ct.d $$2) {
+         return am.u.a(new ce.a($$0, $$1, $$2, ct.d.c));
+      }
+
+      public boolean a(csz $$0, int $$1) {
+         if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
+         } else {
+            return !this.d.d($$0.n() - $$1) ? false : this.e.d($$0.m() - $$1);
          }
       }
 
-      return true;
-   }
-
-   public static ce.a a(List<bm> $$0) {
-      return new ce.a($$0);
-   }
-
-   public static ce.b b(List<bm> $$0) {
-      return new ce.b($$0);
-   }
-
-   public static class a extends ce {
-      public static final Codec<ce.a> a = a(ce.a::new);
-
-      protected a(List<bm> $$0) {
-         super($$0);
-      }
-
       @Override
-      public jy<cxu> a() {
-         return jz.f;
-      }
-   }
-
-   public static class b extends ce {
-      public static final Codec<ce.b> a = a(ce.b::new);
-
-      protected b(List<bm> $$0) {
-         super($$0);
+      public Optional<bc> a() {
+         return this.b;
       }
 
-      @Override
-      public jy<cxu> a() {
-         return jz.p;
+      public Optional<ch> b() {
+         return this.c;
+      }
+
+      public ct.d c() {
+         return this.d;
+      }
+
+      public ct.d d() {
+         return this.e;
       }
    }
 }

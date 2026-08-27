@@ -1,110 +1,59 @@
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+public class fpg extends fld {
+   private static final wu a = wu.c("gui.abuseReport.title");
+   private static final wu b = wu.c("gui.abuseReport.message");
+   private static final wu c = wu.c("gui.abuseReport.type.chat");
+   private static final wu d = wu.c("gui.abuseReport.type.skin");
+   private static final wu r = wu.c("gui.abuseReport.type.name");
+   private static final int s = 6;
+   private final fld u;
+   private final fxe v;
+   private final fpk w;
+   private final fiv x = fiv.d().a(6);
 
-public class fpg extends fkt {
-   private static final ws a = ws.c("telemetry_info.screen.title");
-   private static final ws b = ws.c("telemetry_info.screen.description").b(-4539718);
-   private static final ws c = ws.c("telemetry_info.button.privacy_statement");
-   private static final ws d = ws.c("telemetry_info.button.give_feedback");
-   private static final ws r = ws.c("telemetry_info.button.show_data");
-   private static final ws s = ws.c("telemetry_info.opt_in.description");
-   private static final int u = 8;
-   private static final boolean v = fcu.Q().D();
-   private final fkt w;
-   private final fcy x;
-   private final fih y = new fih(this, 16 + 9 * 5 + 20, v ? 33 + few.a(fcu.Q().h) : 33);
-   @Nullable
-   private fpf z;
-   @Nullable
-   private ffo A;
-   private double B;
-
-   public fpg(fkt $$0, fcy $$1) {
+   public fpg(fld $$0, fxe $$1, fpk $$2) {
       super(a);
-      this.w = $$0;
-      this.x = $$1;
+      this.u = $$0;
+      this.v = $$1;
+      this.w = $$2;
    }
 
    @Override
-   public ws i() {
-      return wr.a(super.i(), b);
+   public wu i() {
+      return wt.a(super.i(), b);
    }
 
    @Override
    protected void aM_() {
-      fil $$0 = this.y.a(fil.d().a(4));
-      $$0.c().b();
-      $$0.a(new fgb(a, this.p));
-      this.A = $$0.a(new ffo(b, this.p).b(true));
-      fil $$1 = $$0.a(fil.e().a(8));
-      $$1.a(feu.a(c, this::a).a());
-      $$1.a(feu.a(d, this::b).a());
-      fil $$2 = this.y.b(fil.d().a(4));
-      if (v) {
-         $$2.a(this.m());
+      this.x.c().b();
+      this.x.a(new fgl(this.l, this.p), this.x.b().e(6));
+      this.x.a(new ffy(b, this.p).b(true), this.x.b().e(6));
+      ffe $$0 = this.x.a(ffe.a(c, $$0x -> this.m.a(new fpc(this.u, this.v, this.w.d()))).a());
+      if (!this.w.k()) {
+         $$0.j = false;
+         $$0.a(fgp.a(wu.c("gui.socialInteractions.tooltip.report.not_reportable")));
+      } else if (!this.w.j()) {
+         $$0.j = false;
+         $$0.a(fgp.a(wu.a("gui.socialInteractions.tooltip.report.no_messages", this.w.c())));
       }
 
-      fil $$3 = $$2.a(fil.e().a(8));
-      $$3.a(feu.a(r, this::c).a());
-      $$3.a(feu.a(wr.d, $$0x -> this.d()).a());
-      fil $$4 = this.y.c(fil.d().a(8));
-      this.z = $$4.a(new fpf(0, 0, this.n - 40, this.y.d(), this.p));
-      this.z.a($$0x -> this.B = $$0x);
-      this.y.a($$1x -> {
-         fes var10000 = this.c($$1x);
+      this.x.a(ffe.a(d, $$0x -> this.m.a(new fpi(this.u, this.v, this.w.d(), this.w.h()))).a());
+      this.x.a(ffe.a(r, $$0x -> this.m.a(new fpf(this.u, this.v, this.w.d(), this.w.c()))).a());
+      this.x.a(fiw.b(20));
+      this.x.a(ffe.a(wt.e, $$0x -> this.d()).a());
+      this.x.a($$1 -> {
+         ffc var10000 = this.c($$1);
       });
       this.c();
    }
 
    @Override
    protected void c() {
-      if (this.z != null) {
-         this.z.a(this.B);
-         this.z.k(this.n - 40);
-         this.z.l(this.y.d());
-         this.z.j();
-      }
-
-      if (this.A != null) {
-         this.A.d(this.n - 16);
-      }
-
-      this.y.a();
-   }
-
-   @Override
-   protected void aC_() {
-      if (this.z != null) {
-         this.b(this.z);
-      }
-   }
-
-   private fes m() {
-      fcx<Boolean> $$0 = this.x.ai();
-      return few.a(s, this.p).a($$0).a(this::a).a();
-   }
-
-   private void a(fes $$0, boolean $$1) {
-      if (this.z != null) {
-         this.z.b($$1);
-      }
-   }
-
-   private void a(feu $$0) {
-      fjk.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
-   }
-
-   private void b(feu $$0) {
-      fjk.a(this, "https://aka.ms/javafeedback?ref=game");
-   }
-
-   private void c(feu $$0) {
-      Path $$1 = this.m.u().b();
-      ac.j().a($$1.toUri());
+      this.x.a();
+      fip.a(this.x, this.G());
    }
 
    @Override
    public void d() {
-      this.m.a(this.w);
+      this.m.a(this.u);
    }
 }

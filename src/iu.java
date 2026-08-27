@@ -1,29 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public record iu(ake<czu> d, im e) {
-   public static final MapCodec<iu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(czu.g.fieldOf("dimension").forGetter(iu::a), im.a.fieldOf("pos").forGetter(iu::b)).apply($$0, iu::a)
-   );
-   public static final Codec<iu> b = a.codec();
-   public static final yq<ByteBuf, iu> c = yq.a(ake.b(ld.aR), iu::a, im.b, iu::b, iu::a);
+public enum iu implements ayt {
+   a("down_east", is.a, is.f),
+   b("down_north", is.a, is.c),
+   c("down_south", is.a, is.d),
+   d("down_west", is.a, is.e),
+   e("up_east", is.b, is.f),
+   f("up_north", is.b, is.c),
+   g("up_south", is.b, is.d),
+   h("up_west", is.b, is.e),
+   i("west_up", is.e, is.b),
+   j("east_up", is.f, is.b),
+   k("north_up", is.c, is.b),
+   l("south_up", is.d, is.b);
 
-   public static iu a(ake<czu> $$0, im $$1) {
-      return new iu($$0, $$1);
+   private static final Int2ObjectMap<iu> m = ac.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
+      for (iu $$1 : values()) {
+         $$0.put(b($$1.p, $$1.o), $$1);
+      }
+   });
+   private final String n;
+   private final is o;
+   private final is p;
+
+   private static int b(is $$0, is $$1) {
+      return $$1.ordinal() << 3 | $$0.ordinal();
+   }
+
+   private iu(String $$0, is $$1, is $$2) {
+      this.n = $$0;
+      this.p = $$1;
+      this.o = $$2;
    }
 
    @Override
-   public String toString() {
-      return this.d + " " + this.e;
+   public String c() {
+      return this.n;
    }
 
-   public ake<czu> a() {
-      return this.d;
+   public static iu a(is $$0, is $$1) {
+      int $$2 = b($$0, $$1);
+      return (iu)m.get($$2);
    }
 
-   public im b() {
-      return this.e;
+   public is a() {
+      return this.p;
+   }
+
+   public is b() {
+      return this.o;
    }
 }

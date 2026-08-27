@@ -1,20 +1,19 @@
-public class dnc extends dmr {
-   public dnc(im $$0, dpy $$1) {
-      super(dnf.C, $$0, $$1, cwl.c);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record dnc(akh e, String f) {
+   public static final Codec<dnc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akh.a.fieldOf("asset_id").forGetter(dnc::a), Codec.STRING.fieldOf("translation_key").forGetter(dnc::b)).apply($$0, dnc::new)
+   );
+   public static final ys<wf, dnc> b = ys.a(akh.b, dnc::a, yq.k, dnc::b, dnc::new);
+   public static final Codec<iw<dnc>> c = akd.a(le.d, a);
+   public static final ys<wf, iw<dnc>> d = yq.a(le.d, b);
+
+   public akh a() {
+      return this.e;
    }
 
-   @Override
-   protected ws k() {
-      return ws.c("container.blast_furnace");
-   }
-
-   @Override
-   protected int a(csd $$0) {
-      return super.a($$0) / 2;
-   }
-
-   @Override
-   protected cnh a(int $$0, ckk $$1) {
-      return new cnl($$0, $$1, this, this.n);
+   public String b() {
+      return this.f;
    }
 }

@@ -1,37 +1,41 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
+import java.util.stream.Stream;
 
-public abstract class bdm extends DataFix {
-   private final String a;
-
-   public bdm(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+public class bdm extends DataFix {
+   public bdm(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(bfp.B.typeName(), bgz.a());
-      if (!Objects.equals(this.getInputSchema().getType(bfp.B), $$0)) {
-         throw new IllegalStateException("item name type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-      }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bfs.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(
+         "Item Lore componentize",
+         $$0,
+         $$1x -> $$1x.updateTyped(
+               $$1,
+               $$0xx -> $$0xx.update(
+                     DSL.remainderFinder(),
+                     $$0xxx -> $$0xxx.update(
+                           "display",
+                           $$0xxxx -> $$0xxxx.update(
+                                 "Lore",
+                                 $$0xxxxx -> (Dynamic)DataFixUtils.orElse($$0xxxxx.asStreamOpt().map(bdm::a).map($$0xxxxx::createList).result(), $$0xxxxx)
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new bdm($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
+   private static <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.map(aze::a);
    }
 }

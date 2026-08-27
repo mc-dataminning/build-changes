@@ -1,51 +1,34 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public interface ddw<T extends Enum<T>> {
-   int v_ = 4;
+public class ddw extends dez {
+   public static final MapCodec<ddw> a = b(ddw::new);
+   private static final eui[] b = new eui[]{
+      dde.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dde.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      dde.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dde.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dde.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dde.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      dde.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dde.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
-   Optional<dpy> j_(dpy var1);
-
-   float au_();
-
-   default void a_(dpy $$0, aqe $$1, im $$2, ayd $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
-      }
+   @Override
+   public MapCodec<ddw> a() {
+      return a;
    }
 
-   T c();
+   public ddw(dqg.d $$0) {
+      super($$0);
+   }
 
-   default Optional<dpy> c(dpy $$0, aqe $$1, im $$2, ayd $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
+   @Override
+   protected dac d() {
+      return ctc.uf;
+   }
 
-      for (im $$7 : im.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
-
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof ddw<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
-
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
-      }
-
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.au_();
-      return $$3.i() < $$13 ? this.j_($$0) : Optional.empty();
+   @Override
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return b[this.g($$0)];
    }
 }

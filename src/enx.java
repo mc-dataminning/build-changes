@@ -1,3 +1,30 @@
-public interface enx extends enm {
-   void a(im var1, float var2);
+import java.util.Locale;
+
+public interface enx {
+   in a();
+
+   float b();
+
+   long c();
+
+   long d();
+
+   boolean g();
+
+   boolean i();
+
+   void b(boolean var1);
+
+   boolean l();
+
+   czz o();
+
+   bpj q();
+
+   boolean r();
+
+   default void a(p $$0, daf $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   }
 }

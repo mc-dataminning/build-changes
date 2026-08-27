@@ -1,13 +1,28 @@
-import java.util.concurrent.TimeUnit;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class ayv {
-   public static final long a = TimeUnit.SECONDS.toNanos(1L);
-   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
-   public static final long c = TimeUnit.SECONDS.toMillis(1L);
-   public static final long d = TimeUnit.HOURS.toSeconds(1L);
-   public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
+@FunctionalInterface
+public interface ayv {
+   Logger a = LogUtils.getLogger();
 
-   public static bob a(int $$0, int $$1) {
-      return bob.a($$0 * 20, $$1 * 20);
+   static ayv immediate(final Executor $$0) {
+      return new ayv() {
+         @Override
+         public <T> void append(CompletableFuture<T> $$0x, Consumer<T> $$1) {
+            $$0.thenAcceptAsync($$1, $$0).exceptionally($$0xx -> {
+               a.error("Task failed", $$0xx);
+               return null;
+            });
+         }
+      };
    }
+
+   default void append(Runnable $$0) {
+      this.append(CompletableFuture.completedFuture(null), $$1 -> $$0.run());
+   }
+
+   <T> void append(CompletableFuture<T> var1, Consumer<T> var2);
 }

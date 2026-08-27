@@ -1,21 +1,25 @@
-public record acn(ws b, wo.a c) implements yz<abk> {
-   public static final yq<wd, acn> a = yq.a(wu.d, acn::b, wo.a.a, acn::e, acn::new);
+public record acn(long[] b, bkn c) implements zb<abm> {
+   public static final ys<vu, acn> a = zb.a(acn::a, acn::new);
 
-   @Override
-   public zb<acn> a() {
-      return afv.C;
+   private acn(vu $$0) {
+      this($$0.d(), $$0.b(bkn.class));
    }
 
-   public void a(abk $$0) {
+   private void a(vu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zd<acn> a() {
+      return afx.A;
+   }
+
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public wo.a e() {
+   public bkn e() {
       return this.c;
    }
 }

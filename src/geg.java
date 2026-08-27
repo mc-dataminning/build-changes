@@ -1,57 +1,41 @@
-import java.util.BitSet;
-import java.util.Set;
+public class geg extends geh<dpc> {
+   private static final akh c = new akh("textures/entity/end_gateway_beam.png");
 
-public class geg {
-   private static final int a = ir.values().length;
-   private final BitSet b = new BitSet(a * a);
+   public geg(gdp.a $$0) {
+      super($$0);
+   }
 
-   public void a(Set<ir> $$0) {
-      for (ir $$1 : $$0) {
-         for (ir $$2 : $$0) {
-            this.a($$1, $$2, true);
-         }
+   public void a(dpc $$0, float $$1, exx $$2, gbo $$3, int $$4, int $$5) {
+      if ($$0.b() || $$0.c()) {
+         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.b() ? (double)$$0.i().al() : 50.0;
+         $$6 = axz.a($$6 * (float) Math.PI);
+         int $$8 = axz.a((double)$$6 * $$7);
+         float[] $$9 = $$0.b() ? crs.c.d() : crs.k.d();
+         long $$10 = $$0.i().Y();
+         gdk.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
       }
-   }
 
-   public void a(ir $$0, ir $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
-   }
-
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
-   }
-
-   public boolean a(ir $$0, ir $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
+   protected float b() {
+      return 1.0F;
+   }
 
-      for (ir $$1 : ir.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
-      }
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
 
-      $$0.append('\n');
+   @Override
+   protected gbw d() {
+      return gbw.v();
+   }
 
-      for (ir $$2 : ir.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
-
-         for (ir $$3 : ir.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
-            } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
-            }
-         }
-
-         $$0.append('\n');
-      }
-
-      return $$0.toString();
+   @Override
+   public int aP_() {
+      return 256;
    }
 }

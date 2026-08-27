@@ -1,9 +1,24 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import javax.annotation.Nullable;
 
-public class ewa extends evz {
-   public ewa(int $$0, int $$1, boolean $$2, boolean $$3) {
-      super($$2);
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.a($$0, $$1, $$3);
+public interface ewa extends AutoCloseable {
+   float a = 7.0F;
+
+   @Override
+   default void close() {
+   }
+
+   @Nullable
+   default evz a(int $$0) {
+      return null;
+   }
+
+   IntSet a();
+
+   public static record a(ewa a, fhu.a b) implements AutoCloseable {
+      @Override
+      public void close() {
+         this.a.close();
+      }
    }
 }

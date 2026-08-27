@@ -1,37 +1,33 @@
-public class adj implements yz<abk> {
-   public static final yq<vs, adj> a = yz.a(adj::a, adj::new);
+public class adj implements zb<abm> {
+   public static final ys<wf, adj> a = ys.a(yq.f, adj::b, yq.a(le.Q), adj::e, ww.d, adj::f, adj::new);
    private final int b;
-   private final akf c;
+   private final cpl<?> c;
+   private final wu d;
 
-   public adj(int $$0, cwi<?> $$1) {
+   public adj(int $$0, cpl<?> $$1, wu $$2) {
       this.b = $$0;
-      this.c = $$1.a();
-   }
-
-   private adj(vs $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
-   }
-
-   private void a(vs $$0) {
-      $$0.k(this.b);
-      $$0.a(this.c);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public zb<adj> a() {
-      return afv.Y;
+   public zd<adj> a() {
+      return afx.W;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public akf b() {
+   public int b() {
+      return this.b;
+   }
+
+   public cpl<?> e() {
       return this.c;
    }
 
-   public int e() {
-      return this.b;
+   public wu f() {
+      return this.d;
    }
 }

@@ -1,18 +1,46 @@
-public class rz {
-   public static final ake<efk> a = sd.a("end_spike");
-   public static final ake<efk> b = sd.a("end_gateway_return");
-   public static final ake<efk> c = sd.a("chorus_plant");
-   public static final ake<efk> d = sd.a("end_island_decorated");
+import java.util.List;
 
-   public static void a(qj<efk> $$0) {
-      iw<dyh<?, ?>> $$1 = $$0.a(ld.aB);
-      iv<dyh<?, ?>> $$2 = $$1.b(rn.a);
-      iv<dyh<?, ?>> $$3 = $$1.b(rn.b);
-      iv<dyh<?, ?>> $$4 = $$1.b(rn.d);
-      iv<dyh<?, ?>> $$5 = $$1.b(rn.e);
-      sd.a($$0, a, $$2, eey.a());
-      sd.a($$0, b, $$3, efq.a(700), efh.a(), sd.a, efp.a(bob.a(3, 9)), eey.a());
-      sd.a($$0, c, $$4, efd.a(bob.a(0, 4)), efh.a(), sd.a, eey.a());
-      sd.a($$0, d, $$5, efq.a(14), sd.a(1, 0.25F, 1), efh.a(), eff.a(dwk.a(55), dwk.a(70)), eey.a());
+public class rz {
+   public static final akg<eft> a = sf.a("seagrass_warm");
+   public static final akg<eft> b = sf.a("seagrass_normal");
+   public static final akg<eft> c = sf.a("seagrass_cold");
+   public static final akg<eft> d = sf.a("seagrass_river");
+   public static final akg<eft> e = sf.a("seagrass_swamp");
+   public static final akg<eft> f = sf.a("seagrass_deep_warm");
+   public static final akg<eft> g = sf.a("seagrass_deep");
+   public static final akg<eft> h = sf.a("seagrass_deep_cold");
+   public static final akg<eft> i = sf.a("seagrass_simple");
+   public static final akg<eft> j = sf.a("sea_pickle");
+   public static final akg<eft> k = sf.a("kelp_cold");
+   public static final akg<eft> l = sf.a("kelp_warm");
+   public static final akg<eft> m = sf.a("warm_ocean_vegetation");
+
+   private static List<efw> a(int $$0) {
+      return List.of(efq.a(), sf.b, efm.a($$0), efh.a());
+   }
+
+   public static void a(ql<eft> $$0) {
+      ix<dyq<?, ?>> $$1 = $$0.a(le.aC);
+      iw.c<dyq<?, ?>> $$2 = $$1.b(rn.a);
+      iw.c<dyq<?, ?>> $$3 = $$1.b(rn.b);
+      iw.c<dyq<?, ?>> $$4 = $$1.b(rn.c);
+      iw.c<dyq<?, ?>> $$5 = $$1.b(rn.d);
+      iw.c<dyq<?, ?>> $$6 = $$1.b(rn.f);
+      iw.c<dyq<?, ?>> $$7 = $$1.b(rn.e);
+      iw.c<dyq<?, ?>> $$8 = $$1.b(rn.g);
+      iw.c<dyq<?, ?>> $$9 = $$1.b(rn.h);
+      sf.a($$0, a, $$2, a(80));
+      sf.a($$0, b, $$2, a(48));
+      sf.a($$0, c, $$2, a(32));
+      sf.a($$0, d, $$3, a(48));
+      sf.a($$0, e, $$4, a(64));
+      sf.a($$0, f, $$5, a(80));
+      sf.a($$0, g, $$5, a(48));
+      sf.a($$0, h, $$5, a(40));
+      sf.a($$0, i, $$6, efj.a(dvv.a.b), efz.a(10), efi.a(dxg.a(dxg.a(is.a.q(), ddg.b), dxg.a(in.c, ddg.G), dxg.a(is.b.q(), ddg.G))), efh.a());
+      sf.a($$0, j, $$7, efz.a(16), efq.a(), sf.b, efh.a());
+      sf.a($$0, k, $$8, efr.a(120, 80.0, 0.0), efq.a(), sf.b, efh.a());
+      sf.a($$0, l, $$8, efr.a(80, 80.0, 0.0), efq.a(), sf.b, efh.a());
+      sf.a($$0, m, $$9, efr.a(20, 400.0, 0.0), efq.a(), sf.b, efh.a());
    }
 }

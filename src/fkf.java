@@ -1,169 +1,80 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntSupplier;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fkf extends fkn {
-   static final akf c = new akf("textures/gui/title/mojangstudios.png");
-   private static final int d = axg.b.a(255, 239, 50, 61);
-   private static final int e = axg.b.a(255, 0, 0, 0);
-   private static final IntSupplier f = () -> fcu.Q().m.a().c() ? e : d;
-   private static final int g = 240;
-   private static final float h = 60.0F;
-   private static final int i = 60;
-   private static final int j = 120;
-   private static final float k = 0.0625F;
-   private static final float l = 0.95F;
-   public static final long a = 1000L;
-   public static final long b = 500L;
-   private final fcu m;
-   private final atk n;
-   private final Consumer<Optional<Throwable>> o;
-   private final boolean p;
-   private float q;
-   private long r = -1L;
-   private long s = -1L;
+public class fkf extends fld {
+   private static final wu a = wu.c("addServer.enterName");
+   private static final wu b = wu.c("addServer.enterIp");
+   private ffe c;
+   private final BooleanConsumer d;
+   private final fwk r;
+   private ffn s;
+   private ffn u;
+   private final fld v;
 
-   public fkf(fcu $$0, atk $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-   }
-
-   public static void a(fcu $$0) {
-      $$0.aa().a(c, new fkf.a());
-   }
-
-   private static int a(int $$0, int $$1) {
-      return $$0 & 16777215 | $$1 << 24;
+   public fkf(fld $$0, BooleanConsumer $$1, fwk $$2) {
+      super(wu.c("addServer.title"));
+      this.v = $$0;
+      this.d = $$1;
+      this.r = $$2;
    }
 
    @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      int $$4 = $$0.a();
-      int $$5 = $$0.b();
-      long $$6 = ac.b();
-      if (this.p && this.s == -1L) {
-         this.s = $$6;
-      }
-
-      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
-      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
-      float $$10;
-      if ($$7 >= 1.0F) {
-         if (this.m.y != null) {
-            this.m.y.a($$0, 0, 0, $$3);
-         }
-
-         int $$9 = axw.f((1.0F - axw.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         $$0.a(gbm.E(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
-         $$10 = 1.0F - axw.a($$7 - 1.0F, 0.0F, 1.0F);
-      } else if (this.p) {
-         if (this.m.y != null && $$8 < 1.0F) {
-            this.m.y.a($$0, $$1, $$2, $$3);
-         }
-
-         int $$11 = axw.c(axw.a((double)$$8, 0.15, 1.0) * 255.0);
-         $$0.a(gbm.E(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
-         $$10 = axw.a($$8, 0.0F, 1.0F);
-      } else {
-         int $$13 = f.getAsInt();
-         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-         float $$16 = (float)($$13 & 0xFF) / 255.0F;
-         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
-         GlStateManager._clear(16384, fcu.a);
-         $$10 = 1.0F;
-      }
-
-      int $$18 = (int)((double)$$0.a() * 0.5);
-      int $$19 = (int)((double)$$0.b() * 0.5);
-      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
-      int $$21 = (int)($$20 * 0.5);
-      double $$22 = $$20 * 4.0;
-      int $$23 = (int)($$22 * 0.5);
-      RenderSystem.disableDepthTest();
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(770, 1);
-      $$0.a(1.0F, 1.0F, 1.0F, $$10);
-      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
-      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableDepthTest();
-      int $$24 = (int)((double)$$0.b() * 0.8325);
-      float $$25 = this.n.b();
-      this.q = axw.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
-      if ($$7 < 1.0F) {
-         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - axw.a($$7, 0.0F, 1.0F));
-      }
-
-      if ($$7 >= 2.0F) {
-         this.m.a(null);
-      }
-
-      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
-         try {
-            this.n.d();
-            this.o.accept(Optional.empty());
-         } catch (Throwable var23) {
-            this.o.accept(Optional.of(var23));
-         }
-
-         this.r = ac.b();
-         if (this.m.y != null) {
-            this.m.y.b(this.m, $$0.a(), $$0.b());
-         }
-      }
-   }
-
-   private void a(feh $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      int $$6 = axw.f((float)($$3 - $$1 - 2) * this.q);
-      int $$7 = Math.round($$5 * 255.0F);
-      int $$8 = axg.b.a($$7, 255, 255, 255);
-      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
-      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
-      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
-      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
-      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   protected void aM_() {
+      this.u = new ffn(this.p, this.n / 2 - 100, 66, 200, 20, wu.c("addServer.enterName"));
+      this.u.a(this.r.a);
+      this.u.b($$0 -> this.C());
+      this.d(this.u);
+      this.s = new ffn(this.p, this.n / 2 - 100, 106, 200, 20, wu.c("addServer.enterIp"));
+      this.s.f(128);
+      this.s.a(this.r.b);
+      this.s.b($$0 -> this.C());
+      this.d(this.s);
+      this.c(
+         ffl.a(fwk.a::a)
+            .a(fwk.a.values())
+            .a(this.r.b())
+            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, wu.c("addServer.resourcePack"), ($$0, $$1) -> this.r.a($$1))
+      );
+      this.c = this.c(ffe.a(wu.c("addServer.add"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
+      this.c(ffe.a(wt.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
+      this.C();
    }
 
    @Override
-   public boolean a() {
-      return true;
+   protected void aC_() {
+      this.b(this.u);
    }
 
-   static class a extends gmh {
-      public a() {
-         super(fkf.c);
-      }
+   @Override
+   public void a(fde $$0, int $$1, int $$2) {
+      String $$3 = this.s.a();
+      String $$4 = this.u.a();
+      this.b($$0, $$1, $$2);
+      this.s.a($$3);
+      this.u.a($$4);
+   }
 
-      @Override
-      protected gmh.a b(ato $$0) {
-         ase $$1 = fcu.Q().ad();
-         atg<InputStream> $$2 = $$1.a(asc.a, fkf.c);
-         if ($$2 == null) {
-            return new gmh.a(new FileNotFoundException(fkf.c.toString()));
-         } else {
-            try {
-               gmh.a var5;
-               try (InputStream $$3 = $$2.get()) {
-                  var5 = new gmh.a(new gok(true, true), ewo.a($$3));
-               }
+   private void m() {
+      this.r.a = this.u.a();
+      this.r.b = this.s.a();
+      this.d.accept(true);
+   }
 
-               return var5;
-            } catch (IOException var9) {
-               return new gmh.a(var9);
-            }
-         }
-      }
+   @Override
+   public void d() {
+      this.m.a(this.v);
+   }
+
+   private void C() {
+      this.c.j = fxn.b(this.s.a()) && !this.u.a().isEmpty();
+   }
+
+   @Override
+   public void a(fer $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
+      this.u.a($$0, $$1, $$2, $$3);
+      this.s.a($$0, $$1, $$2, $$3);
    }
 }

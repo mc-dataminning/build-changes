@@ -1,71 +1,44 @@
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.security.SignatureException;
-import java.time.Instant;
-import java.util.Optional;
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
+import java.util.UUID;
 
-public record xl(String b, Instant c, long d, wz e) {
-   public static final MapCodec<xl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("content").forGetter(xl::a),
-               axe.m.fieldOf("time_stamp").forGetter(xl::b),
-               Codec.LONG.fieldOf("salt").forGetter(xl::c),
-               wz.a.optionalFieldOf("last_seen", wz.b).forGetter(xl::d)
-            )
-            .apply($$0, xl::new)
-   );
-
-   public static xl a(String $$0) {
-      return new xl($$0, Instant.now(), 0L, wz.b);
+public record xl(UUID a, clk b) {
+   public xq a(Duration $$0) {
+      return new xq.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   public void a(ayh.a $$0) throws SignatureException {
-      $$0.update(Longs.toByteArray(this.d));
-      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
-      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
-      $$0.update(Ints.toByteArray($$1.length));
-      $$0.update($$1);
-      this.e.a($$0);
+   public xo.b a(UUID $$0) {
+      return new xo($$0, this.a).a(this.b);
    }
 
-   public xl.a a(xf $$0) {
-      return new xl.a(this.b, this.c, this.d, this.e.a($$0));
+   public xl.a a() {
+      return new xl.a(this.a, this.b.b());
    }
 
-   public String a() {
+   public boolean b() {
+      return this.b.b().a();
+   }
+
+   public UUID c() {
+      return this.a;
+   }
+
+   public clk d() {
       return this.b;
    }
 
-   public Instant b() {
-      return this.c;
-   }
-
-   public long c() {
-      return this.d;
-   }
-
-   public wz d() {
-      return this.e;
-   }
-
-   public static record a(String a, Instant b, long c, wz.a d) {
-      public a(vs $$0) {
-         this($$0.d(256), $$0.t(), $$0.readLong(), new wz.a($$0));
+   public static record a(UUID a, clk.a b) {
+      public static xl.a a(vu $$0) {
+         return new xl.a($$0.n(), new clk.a($$0));
       }
 
-      public void a(vs $$0) {
-         $$0.a(this.a, 256);
-         $$0.a(this.b);
-         $$0.b(this.c);
-         this.d.a($$0);
+      public static void a(vu $$0, xl.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
       }
 
-      public Optional<xl> a(xf $$0) {
-         return this.d.a($$0).map($$0x -> new xl(this.a, this.b, this.c, $$0x));
+      public xl a(GameProfile $$0, ayl $$1) throws clk.b {
+         return new xl(this.a, clk.a($$1, $$0.getId(), this.b));
       }
    }
 }

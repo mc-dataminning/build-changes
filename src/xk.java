@@ -1,64 +1,135 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.SignatureException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record xk<S>(List<xk.a<S>> a) {
-   public static <S> xk<S> a(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<xk.a<S>> $$4 = a($$1, $$2);
+public record xk(xp d, @Nullable xg e, xn f, @Nullable wu g, wy h) {
+   public static final MapCodec<xk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               xp.a.fieldOf("link").forGetter(xk::k),
+               xg.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
+               xn.a.forGetter(xk::m),
+               ww.a.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
+               wy.a.optionalFieldOf("filter_mask", wy.c).forGetter(xk::o)
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new xk($$0x, (xg)$$1.orElse(null), $$2, (wu)$$3.orElse(null), $$4))
+   );
+   private static final UUID i = ac.e;
+   public static final Duration b = Duration.ofMinutes(5L);
+   public static final Duration c = b.plus(Duration.ofMinutes(2L));
 
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null) {
-         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
-         if (!$$6) {
-            break;
-         }
-
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new xk<>($$4);
+   public static xk a(String $$0) {
+      return a(i, $$0);
    }
 
-   private static <S> List<xk.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<xk.a<S>> $$2 = new ArrayList<>();
-
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof fi) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new xk.a<>($$4, $$6));
-               }
-            }
-         }
-      }
-
-      return $$2;
+   public static xk a(UUID $$0, String $$1) {
+      xn $$2 = xn.a($$1);
+      xp $$3 = xp.a($$0);
+      return new xk($$3, null, $$2, null, wy.c);
    }
 
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
-      }
+   public xk a(wu $$0) {
+      wu $$1 = !$$0.equals(wu.b(this.c())) ? $$0 : null;
+      return new xk(this.d, this.e, this.f, $$1, this.h);
+   }
 
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
-      }
+   public xk a() {
+      return this.g != null ? new xk(this.d, this.e, this.f, null, this.h) : this;
+   }
 
-      public String c() {
-         return this.b;
-      }
+   public xk a(wy $$0) {
+      return this.h.equals($$0) ? this : new xk(this.d, this.e, this.f, this.g, $$0);
+   }
+
+   public xk a(boolean $$0) {
+      return this.a($$0 ? this.h : wy.c);
+   }
+
+   public xk b() {
+      xn $$0 = xn.a(this.c());
+      xp $$1 = xp.a(this.g());
+      return new xk($$1, null, $$0, this.g, this.h);
+   }
+
+   public static void a(ayk.a $$0, xp $$1, xn $$2) throws SignatureException {
+      $$0.update(Ints.toByteArray(1));
+      $$1.a($$0);
+      $$2.a($$0);
+   }
+
+   public boolean a(ayl $$0) {
+      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
+   }
+
+   public String c() {
+      return this.f.a();
+   }
+
+   public wu d() {
+      return Objects.requireNonNullElseGet(this.g, () -> wu.b(this.c()));
+   }
+
+   public Instant e() {
+      return this.f.b();
+   }
+
+   public long f() {
+      return this.f.c();
+   }
+
+   public boolean a(Instant $$0) {
+      return $$0.isAfter(this.e().plus(b));
+   }
+
+   public boolean b(Instant $$0) {
+      return $$0.isAfter(this.e().plus(c));
+   }
+
+   public UUID g() {
+      return this.d.c();
+   }
+
+   public boolean h() {
+      return this.g().equals(i);
+   }
+
+   public boolean i() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.i() && this.d.c().equals($$0);
+   }
+
+   public boolean j() {
+      return this.h.b();
+   }
+
+   public xp k() {
+      return this.d;
+   }
+
+   @Nullable
+   public xg l() {
+      return this.e;
+   }
+
+   public xn m() {
+      return this.f;
+   }
+
+   @Nullable
+   public wu n() {
+      return this.g;
+   }
+
+   public wy o() {
+      return this.h;
    }
 }

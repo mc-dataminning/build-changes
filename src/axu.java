@@ -1,14 +1,15 @@
-import javax.annotation.Nullable;
+import com.google.common.base.Suppliers;
+import java.util.function.Supplier;
 
-public class axu {
-   @Nullable
-   private static byte[] a = null;
+@Deprecated
+public class axu<T> {
+   private final Supplier<T> a;
 
-   public static void a() {
-      a = new byte[10485760];
+   public axu(Supplier<T> $$0) {
+      this.a = Suppliers.memoize($$0::get);
    }
 
-   public static void b() {
-      a = new byte[0];
+   public T a() {
+      return this.a.get();
    }
 }

@@ -1,84 +1,73 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dkt extends dch implements dgd {
+public class dkt extends dde {
    public static final MapCodec<dkt> a = b(dkt::new);
-   public static final dqw<dri> b = dqo.bj;
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final is[] d = is.values();
 
    @Override
    public MapCodec<dkt> a() {
       return a;
    }
 
-   protected dkt(dpx.d $$0) {
+   protected dkt(dqg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dri.b));
    }
 
    @Override
-   public dnd a(im $$0, dpy $$1) {
-      return new dos($$0, $$1);
-   }
-
-   @Override
-   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
-      dnd $$5 = $$1.c_($$2);
-      if ($$5 instanceof dos) {
-         return ((dos)$$5).a($$3) ? boq.a($$1.B) : boq.d;
-      } else {
-         return boq.d;
+   protected void b(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
    @Override
-   public void a(czu $$0, im $$1, dpy $$2, @Nullable bre $$3, csd $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            dnd $$5 = $$0.c_($$1);
-            if ($$5 instanceof dos) {
-               ((dos)$$5).a($$3);
+   protected void a(dqh $$0, dad $$1, in $$2, dde $$3, in $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(dad $$0, in $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, ddg.aP.n(), 2);
+         $$0.a(null, $$1, avc.yI, avd.e, 1.0F, 1.0F);
+      }
+   }
+
+   private boolean b(dad $$0, in $$1) {
+      return in.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (is $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return true;
+         } else {
+            dqh $$3 = $$0.a_($$2);
+            ema $$4 = $$0.b_($$2);
+            if (!$$4.a(avw.a)) {
+               return false;
+            } else {
+               if ($$3.b() instanceof ddl $$6 && !$$6.a(null, $$0, $$2, $$3).d()) {
+                  return true;
+               }
+
+               if ($$3.b() instanceof dhu) {
+                  $$0.a($$2, ddg.a.n(), 3);
+               } else {
+                  if (!$$3.a(ddg.mc) && !$$3.a(ddg.md) && !$$3.a(ddg.bw) && !$$3.a(ddg.bx)) {
+                     return false;
+                  }
+
+                  dnm $$7 = $$3.t() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, ddg.a.n(), 3);
+               }
+
+               return true;
             }
          }
-      }
-   }
-
-   @Override
-   protected djb b_(dpy $$0) {
-      return djb.c;
-   }
-
-   @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(dpy $$0, czu $$1, im $$2, dcv $$3, im $$4, boolean $$5) {
-      if ($$1 instanceof aqe) {
-         if ($$1.c_($$2) instanceof dos $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.C();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((aqe)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(aqe $$0, dos $$1) {
-      switch ($$1.u()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.A();
-         case d:
-      }
+      }) > 1;
    }
 }

@@ -1,52 +1,64 @@
-public class frq<T extends bql> extends fsa<T> {
-   private static final int a = 4;
-   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
-   private static final int[][] f = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
-   private final fur g;
-   private final fur[] h;
+import com.google.common.collect.ImmutableList;
 
-   public frq(fur $$0) {
-      this.g = $$0;
-      this.h = new fur[4];
+public class frq<T extends brh> extends fqw<T> {
+   public static final String a = "red_thing";
+   private final fvb b;
+   private final fvb f;
+   private final fvb g;
+   private final fvb h;
+   private final fvb i;
+   private final fvb j;
+   private final fvb k;
+   private final fvb l;
 
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.h[$$1] = $$0.b(a($$1));
-      }
+   public frq(fvb $$0) {
+      this.b = $$0.b("head");
+      this.k = $$0.b("beak");
+      this.l = $$0.b("red_thing");
+      this.f = $$0.b("body");
+      this.g = $$0.b("right_leg");
+      this.h = $$0.b("left_leg");
+      this.i = $$0.b("right_wing");
+      this.j = $$0.b("left_wing");
    }
 
-   private static String a(int $$0) {
-      return "segment" + $$0;
-   }
-
-   public static fux b() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      float $$2 = -3.5F;
-
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         $$1.a(
-            a($$3),
-            fuw.c().a(f[$$3][0], f[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
-            fut.a(0.0F, (float)(24 - b[$$3][1]), $$2)
-         );
-         if ($$3 < 3) {
-            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
-         }
-      }
-
-      return fux.a($$0, 64, 32);
+   public static fvh c() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      int $$2 = 16;
+      $$1.a("head", fvg.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), fvd.a(0.0F, 15.0F, -4.0F));
+      $$1.a("beak", fvg.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), fvd.a(0.0F, 15.0F, -4.0F));
+      $$1.a("red_thing", fvg.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), fvd.a(0.0F, 15.0F, -4.0F));
+      $$1.a("body", fvg.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), fvd.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fvg $$3 = fvg.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
+      $$1.a("right_leg", $$3, fvd.a(-2.0F, 19.0F, 1.0F));
+      $$1.a("left_leg", $$3, fvd.a(1.0F, 19.0F, 1.0F));
+      $$1.a("right_wing", fvg.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fvd.a(-4.0F, 13.0F, 0.0F));
+      $$1.a("left_wing", fvg.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fvd.a(4.0F, 13.0F, 0.0F));
+      return fvh.a($$0, 64, 32);
    }
 
    @Override
-   public fur a() {
-      return this.g;
+   protected Iterable<fvb> a() {
+      return ImmutableList.of(this.b, this.k, this.l);
+   }
+
+   @Override
+   protected Iterable<fvb> b() {
+      return ImmutableList.of(this.f, this.g, this.h, this.i, this.j);
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.h.length; $$6++) {
-         this.h[$$6].f = axw.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$6 - 2));
-         this.h[$$6].b = axw.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$6 - 2);
-      }
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.k.e = this.b.e;
+      this.k.f = this.b.f;
+      this.l.e = this.b.e;
+      this.l.f = this.b.f;
+      this.g.e = axz.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.h.e = axz.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.g = $$3;
+      this.j.g = -$$3;
    }
 }

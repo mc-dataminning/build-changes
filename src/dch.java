@@ -1,35 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class dch extends dcv implements dfn {
-   protected dch(dpx.d $$0) {
+public class dch extends dde implements ddh {
+   public static final MapCodec<dch> a = b(dch::new);
+   protected static final float b = 4.0F;
+   protected static final eui c = dde.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+
+   @Override
+   public MapCodec<dch> a() {
+      return a;
+   }
+
+   public dch(dqg.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dch> a();
-
-   @Override
-   protected djb b_(dpy $$0) {
-      return djb.a;
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      etp $$4 = $$0.n($$1, $$2);
+      return c.a($$4.c, $$4.d, $$4.e);
    }
 
    @Override
-   protected boolean a(dpy $$0, czu $$1, im $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dnd $$5 = $$1.c_($$2);
-      return $$5 == null ? false : $$5.a_($$3, $$4);
+   protected void b(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      if ($$3.a(3) == 0 && $$1.u($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
+         this.a($$1, $$2);
+      }
    }
 
-   @Nullable
    @Override
-   protected bou b(dpy $$0, czu $$1, im $$2) {
-      dnd $$3 = $$1.c_($$2);
-      return $$3 instanceof bou ? (bou)$$3 : null;
+   protected boolean a(dqh $$0, dag $$1, in $$2) {
+      return $$1.a_($$2.d()).a(avr.au);
    }
 
-   @Nullable
-   protected static <E extends dnd, A extends dnd> dne<A> a(dnf<A> $$0, dnf<E> $$1, dne<? super E> $$2) {
-      return $$1 == $$0 ? $$2 : null;
+   @Override
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return ddg.a.n();
+      } else {
+         if ($$1 == is.b && $$2.a(ddg.mZ)) {
+            $$3.a($$4, ddg.mZ.n(), 2);
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public csz a(dag $$0, in $$1, dqh $$2) {
+      return new csz(ctc.dR);
+   }
+
+   @Override
+   public boolean b(dag $$0, in $$1, dqh $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
+      this.a($$0, $$2);
+   }
+
+   @Override
+   protected float a(dqh $$0, clh $$1, czj $$2, in $$3) {
+      return $$1.eV().f() instanceof cuk ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(dad $$0, in $$1) {
+      $$0.a($$1.c(), ddg.mZ.n().a(dci.i, dqt.b), 3);
    }
 }

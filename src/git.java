@@ -1,20 +1,29 @@
-public class git<T extends cic> extends ght<T, fts<T>> {
-   private static final akf a = new akf("textures/entity/spider/spider.png");
+public class git extends gid<cek, ftp<cek>> {
+   private static final akh a = new akh("textures/entity/fish/salmon.png");
 
-   public git(ggn.a $$0) {
-      this($$0, fuq.bx);
+   public git(ggx.a $$0) {
+      super($$0, new ftp<>($$0.a(fva.bg)), 0.4F);
    }
 
-   public git(ggn.a $$0, fup $$1) {
-      super($$0, new fts<>($$0.a($$1)), 0.8F);
-      this.a(new glf<>(this));
-   }
-
-   protected float b(T $$0) {
-      return 180.0F;
-   }
-
-   public akf a(T $$0) {
+   public akh a(cek $$0) {
       return a;
+   }
+
+   protected void a(cek $$0, exx $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = 1.0F;
+      float $$7 = 1.0F;
+      if (!$$0.bc()) {
+         $$6 = 1.3F;
+         $$7 = 1.7F;
+      }
+
+      float $$8 = $$6 * 4.3F * axz.a($$7 * 0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$8));
+      $$1.a(0.0F, 0.0F, -0.4F);
+      if (!$$0.bc()) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

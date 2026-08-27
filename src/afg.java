@@ -1,68 +1,86 @@
-import javax.annotation.Nullable;
+public class afg implements zb<abm> {
+   public static final ys<wf, afg> a = zb.a(afg::a, afg::new);
+   public static final float b = 8.0F;
+   private final iw<avb> c;
+   private final avd d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final float h;
+   private final float i;
+   private final long j;
 
-public class afg implements yz<abk> {
-   public static final yq<vs, afg> a = yz.a(afg::a, afg::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   @Nullable
-   private final akf d;
-   @Nullable
-   private final ava e;
-
-   public afg(@Nullable akf $$0, @Nullable ava $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public afg(iw<avb> $$0, avd $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = (int)($$2 * 8.0);
+      this.f = (int)($$3 * 8.0);
+      this.g = (int)($$4 * 8.0);
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
    }
 
-   private afg(vs $$0) {
-      int $$1 = $$0.readByte();
-      if (($$1 & 1) > 0) {
-         this.e = $$0.b(ava.class);
-      } else {
-         this.e = null;
-      }
-
-      if (($$1 & 2) > 0) {
-         this.d = $$0.q();
-      } else {
-         this.d = null;
-      }
+   private afg(wf $$0) {
+      this.c = avb.d.decode($$0);
+      this.d = $$0.b(avd.class);
+      this.e = $$0.readInt();
+      this.f = $$0.readInt();
+      this.g = $$0.readInt();
+      this.h = $$0.readFloat();
+      this.i = $$0.readFloat();
+      this.j = $$0.readLong();
    }
 
-   private void a(vs $$0) {
-      if (this.e != null) {
-         if (this.d != null) {
-            $$0.k(3);
-            $$0.a(this.e);
-            $$0.a(this.d);
-         } else {
-            $$0.k(1);
-            $$0.a(this.e);
-         }
-      } else if (this.d != null) {
-         $$0.k(2);
-         $$0.a(this.d);
-      } else {
-         $$0.k(0);
-      }
+   private void a(wf $$0) {
+      avb.d.encode($$0, this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
+      $$0.p(this.f);
+      $$0.p(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.b(this.j);
    }
 
    @Override
-   public zb<afg> a() {
-      return afv.aU;
+   public zd<afg> a() {
+      return afx.aS;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public akf b() {
+   public iw<avb> b() {
+      return this.c;
+   }
+
+   public avd e() {
       return this.d;
    }
 
-   @Nullable
-   public ava e() {
-      return this.e;
+   public double f() {
+      return (double)((float)this.e / 8.0F);
+   }
+
+   public double g() {
+      return (double)((float)this.f / 8.0F);
+   }
+
+   public double h() {
+      return (double)((float)this.g / 8.0F);
+   }
+
+   public float i() {
+      return this.h;
+   }
+
+   public float j() {
+      return this.i;
+   }
+
+   public long k() {
+      return this.j;
    }
 }

@@ -1,81 +1,106 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.Collection;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.Set;
 import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class eok extends eom {
-   public static final Codec<eok> a = a(eok::new);
+public class eok {
+   private static final Codec<eok> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axh.a(esm.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), axh.a(esm.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
+            .apply($$0, eok::new)
+   );
+   public static final Codec<eok> a = Codec.either(Codec.INT, b).xmap($$0 -> (eok)$$0.map(eok::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final esl c;
+   @Nullable
+   private final esl d;
+   private final eok.b e;
+   private final eok.a f;
 
-   eok(List<eot> $$0, List<erh> $$1) {
-      super($$0, $$1);
+   public Set<eqz<?>> a() {
+      Builder<eqz<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   @Override
-   public eou a() {
-      return eor.g;
+   private eok(Optional<esl> $$0, Optional<esl> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   @Override
-   protected eol a(List<? extends eol> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (eol)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (eol $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
-            }
+   private eok(@Nullable esl $$0, @Nullable esl $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-
-         return false;
-      };
-      };
-   }
-
-   @Override
-   public void a(eoj $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.b("Unreachable entry!");
-         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> axz.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public static eok.a a(eot.a<?>... $$0) {
-      return new eok.a($$0);
+   public static eok a(int $$0) {
+      esj $$1 = esj.a((float)$$0);
+      return new eok(Optional.of($$1), Optional.of($$1));
    }
 
-   public static <E> eok.a a(Collection<E> $$0, Function<E, eot.a<?>> $$1) {
-      return new eok.a($$0.stream().map($$1::apply).toArray(eot.a[]::new));
+   public static eok a(int $$0, int $$1) {
+      return new eok(Optional.of(esj.a((float)$$0)), Optional.of(esj.a((float)$$1)));
    }
 
-   public static class a extends eot.a<eok.a> {
-      private final Builder<eot> a = ImmutableList.builder();
+   public static eok b(int $$0) {
+      return new eok(Optional.of(esj.a((float)$$0)), Optional.empty());
+   }
 
-      public a(eot.a<?>... $$0) {
-         for (eot.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   public static eok c(int $$0) {
+      return new eok(Optional.empty(), Optional.of(esj.a((float)$$0)));
+   }
 
-      protected eok.a a() {
-         return this;
-      }
+   public int a(eol $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
 
-      @Override
-      public eok.a a(eot.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   public boolean b(eol $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
 
-      @Override
-      public eot b() {
-         return new eok(this.a.build(), this.f());
-      }
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof esj $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(eol var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(eol var1, int var2);
    }
 }

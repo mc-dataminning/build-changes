@@ -1,52 +1,41 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.function.Function;
+import com.mojang.datafixers.DSL.TypeReference;
 
-public class bfs extends DataFix {
-   final String a;
-   final Map<String, String> b;
-
-   public bfs(Schema $$0, String $$1, Map<String, String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bfp.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      $$0 = this.a($$0, "Enchantments");
-      return this.a($$0, "StoredEnchantments");
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      return $$0.update(
-         $$1,
-         $$0x -> (Dynamic)$$0x.asStreamOpt()
-               .map(
-                  $$0xx -> $$0xx.map(
-                        $$0xxx -> $$0xxx.update(
-                              "id",
-                              $$1x -> (Dynamic)$$1x.asString()
-                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault($$1xx, $$1xx)))
-                                    .get()
-                                    .map(Function.identity(), $$1xx -> $$1x)
-                           )
-                     )
-               )
-               .map($$0x::createList)
-               .get()
-               .map(Function.identity(), $$1x -> $$0x)
-      );
-   }
+public class bfs {
+   public static final TypeReference a = () -> "level";
+   public static final TypeReference b = () -> "player";
+   public static final TypeReference c = () -> "chunk";
+   public static final TypeReference d = () -> "hotbar";
+   public static final TypeReference e = () -> "options";
+   public static final TypeReference f = () -> "structure";
+   public static final TypeReference g = () -> "stats";
+   public static final TypeReference h = () -> "saved_data/command_storage";
+   public static final TypeReference i = () -> "saved_data/chunks";
+   public static final TypeReference j = () -> "saved_data/map_data";
+   public static final TypeReference k = () -> "saved_data/idcounts";
+   public static final TypeReference l = () -> "saved_data/raids";
+   public static final TypeReference m = () -> "saved_data/random_sequences";
+   public static final TypeReference n = () -> "saved_data/structure_feature_indices";
+   public static final TypeReference o = () -> "saved_data/scoreboard";
+   public static final TypeReference p = () -> "advancements";
+   public static final TypeReference q = () -> "poi_chunk";
+   public static final TypeReference r = () -> "entity_chunk";
+   public static final TypeReference s = () -> "block_entity";
+   public static final TypeReference t = () -> "item_stack";
+   public static final TypeReference u = () -> "block_state";
+   public static final TypeReference v = () -> "flat_block_state";
+   public static final TypeReference w = () -> "data_components";
+   public static final TypeReference x = () -> "entity_name";
+   public static final TypeReference y = () -> "entity_tree";
+   public static final TypeReference z = () -> "entity";
+   public static final TypeReference A = () -> "block_name";
+   public static final TypeReference B = () -> "item_name";
+   public static final TypeReference C = () -> "game_event_name";
+   public static final TypeReference D = () -> "untagged_spawner";
+   public static final TypeReference E = () -> "structure_feature";
+   public static final TypeReference F = () -> "objective";
+   public static final TypeReference G = () -> "team";
+   public static final TypeReference H = () -> "recipe";
+   public static final TypeReference I = () -> "biome";
+   public static final TypeReference J = () -> "multi_noise_biome_source_parameter_list";
+   public static final TypeReference K = () -> "world_gen_settings";
 }

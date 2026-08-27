@@ -1,118 +1,218 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class brz {
-   private static final Map<bqr<?>, brz.a> a = Maps.newHashMap();
+public class brz extends brh {
+   private static final int c = 2;
+   private static final double d = 3.0;
+   private static final double e = 15.0;
+   private int f;
+   public long b;
+   private int g;
+   private boolean h;
+   @Nullable
+   private aqi i;
+   private final Set<brh> j = Sets.newHashSet();
+   private int k;
 
-   private static <T extends brg> void a(bqr<T> $$0, brx $$1, dvq.a $$2, brz.b<T> $$3) {
-      brz.a $$4 = a.put($$0, new brz.a($$2, $$1, $$3));
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration for type " + lc.g.b($$0));
+   public brz(brn<? extends brz> $$0, dad $$1) {
+      super($$0, $$1);
+      this.au = true;
+      this.f = 2;
+      this.b = this.ah.g();
+      this.g = this.ah.a(3) + 1;
+   }
+
+   public void a(boolean $$0) {
+      this.h = $$0;
+   }
+
+   @Override
+   public avd dc() {
+      return avd.d;
+   }
+
+   @Nullable
+   public aqi p() {
+      return this.i;
+   }
+
+   public void b(@Nullable aqi $$0) {
+      this.i = $$0;
+   }
+
+   private void v() {
+      in $$0 = this.w();
+      dqh $$1 = this.dN().a_($$0);
+      if ($$1.a(ddg.ss)) {
+         ((dht)$$1.b()).d($$1, this.dN(), $$0);
       }
    }
 
-   public static brx a(bqr<?> $$0) {
-      brz.a $$1 = a.get($$0);
-      return $$1 == null ? bry.a : $$1.b;
+   @Override
+   public void l() {
+      super.l();
+      if (this.f == 2) {
+         if (this.dN().x_()) {
+            this.dN().a(this.ds(), this.du(), this.dy(), avc.nM, avd.d, 10000.0F, 0.8F + this.ah.i() * 0.2F, false);
+            this.dN().a(this.ds(), this.du(), this.dy(), avc.nL, avd.d, 2.0F, 0.5F + this.ah.i() * 0.2F, false);
+         } else {
+            bpj $$0 = this.dN().ak();
+            if ($$0 == bpj.c || $$0 == bpj.d) {
+               this.b(4);
+            }
+
+            this.v();
+            b(this.dN(), this.w());
+            this.a(dva.G);
+         }
+      }
+
+      this.f--;
+      if (this.f < 0) {
+         if (this.g == 0) {
+            if (this.dN() instanceof aqh) {
+               List<brh> $$1 = this.dN()
+                  .a(
+                     this,
+                     new etk(this.ds() - 15.0, this.du() - 15.0, this.dy() - 15.0, this.ds() + 15.0, this.du() + 6.0 + 15.0, this.dy() + 15.0),
+                     $$0 -> $$0.bB() && !this.j.contains($$0)
+                  );
+
+               for (aqi $$2 : ((aqh)this.dN()).a($$0 -> $$0.f(this) < 256.0F)) {
+                  am.V.a($$2, this, $$1);
+               }
+            }
+
+            this.am();
+         } else if (this.f < -this.ah.a(10)) {
+            this.g--;
+            this.f = 1;
+            this.b = this.ah.g();
+            this.b(0);
+         }
+      }
+
+      if (this.f >= 0) {
+         if (!(this.dN() instanceof aqh)) {
+            this.dN().c(2);
+         } else if (!this.h) {
+            List<brh> $$3 = this.dN()
+               .a(this, new etk(this.ds() - 3.0, this.du() - 3.0, this.dy() - 3.0, this.ds() + 3.0, this.du() + 6.0 + 3.0, this.dy() + 3.0), brh::bB);
+
+            for (brh $$4 : $$3) {
+               $$4.a((aqh)this.dN(), this);
+            }
+
+            this.j.addAll($$3);
+            if (this.i != null) {
+               am.F.a(this.i, $$3);
+            }
+         }
+      }
    }
 
-   public static boolean a(bqr<?> $$0, czx $$1, im $$2) {
-      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
+   private in w() {
+      etp $$0 = this.dl();
+      return in.a($$0.c, $$0.d - 1.0E-6, $$0.e);
    }
 
-   public static dvq.a b(@Nullable bqr<?> $$0) {
-      brz.a $$1 = a.get($$0);
-      return $$1 == null ? dvq.a.f : $$1.a;
+   private void b(int $$0) {
+      if (!this.h && !this.dN().B && this.dN().aa().b(czz.b)) {
+         in $$1 = this.dn();
+         dqh $$2 = dcr.a(this.dN(), $$1);
+         if (this.dN().a_($$1).i() && $$2.a((dag)this.dN(), $$1)) {
+            this.dN().b($$1, $$2);
+            this.k++;
+         }
+
+         for (int $$3 = 0; $$3 < $$0; $$3++) {
+            in $$4 = $$1.b(this.ah.a(3) - 1, this.ah.a(3) - 1, this.ah.a(3) - 1);
+            $$2 = dcr.a(this.dN(), $$4);
+            if (this.dN().a_($$4).i() && $$2.a((dag)this.dN(), $$4)) {
+               this.dN().b($$4, $$2);
+               this.k++;
+            }
+         }
+      }
    }
 
-   public static <T extends bql> boolean a(bqr<T> $$0, daj $$1, bri $$2, im $$3, ayd $$4) {
-      brz.a $$5 = a.get($$0);
-      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
+   private static void b(dad $$0, in $$1) {
+      dqh $$2 = $$0.a_($$1);
+      in $$3;
+      dqh $$4;
+      if ($$2.a(ddg.ss)) {
+         $$3 = $$1.a($$2.c(dht.a).g());
+         $$4 = $$0.a_($$3);
+      } else {
+         $$3 = $$1;
+         $$4 = $$2;
+      }
+
+      if ($$4.b() instanceof dmj) {
+         $$0.b($$3, dmj.c($$0.a_($$3)));
+         in.a $$7 = $$1.j();
+         int $$8 = $$0.z.a(3) + 3;
+
+         for (int $$9 = 0; $$9 < $$8; $$9++) {
+            int $$10 = $$0.z.a(8) + 1;
+            a($$0, $$3, $$7, $$10);
+         }
+      }
    }
 
-   static {
-      a(bqr.f, bry.b, dvq.a.f, cef::a);
-      a(bqr.u, bry.b, dvq.a.f, cdv::c);
-      a(bqr.y, bry.b, dvq.a.f, cdv::c);
-      a(bqr.B, bry.b, dvq.a.f, chf::a);
-      a(bqr.Y, bry.b, dvq.a.f, chn::b);
-      a(bqr.aE, bry.b, dvq.a.f, cdv::c);
-      a(bqr.aH, bry.b, dvq.a.f, cdv::c);
-      a(bqr.aW, bry.b, dvq.a.f, cdv::c);
-      a(bqr.bf, bry.b, dvq.a.f, cdt::b);
-      a(bqr.c, bry.d, dvq.a.f, cec::c);
-      a(bqr.g, bry.d, dvq.a.f, cco::b);
-      a(bqr.i, bry.d, dvq.a.f, chr::c);
-      a(bqr.l, bry.d, dvq.a.f, chr::b);
-      a(bqr.q, bry.d, dvq.a.f, chr::b);
-      a(bqr.t, bry.d, dvq.a.f, cct::b);
-      a(bqr.w, bry.d, dvq.a.f, cct::b);
-      a(bqr.x, bry.d, dvq.a.f, chr::b);
-      a(bqr.z, bry.d, dvq.a.f, cct::b);
-      a(bqr.H, bry.d, dvq.a.f, chr::b);
-      a(bqr.I, bry.d, dvq.a.f, chi::b);
-      a(bqr.F, bry.d, dvq.a.f, brg::a);
-      a(bqr.R, bry.d, dvq.a.f, cen::c);
-      a(bqr.T, bry.d, dvq.a.f, chl::b);
-      a(bqr.U, bry.d, dvq.a.f, chr::b);
-      a(bqr.W, bry.b, dvq.a.f, bqw::a);
-      a(bqr.X, bry.d, dvq.a.f, cet::c);
-      a(bqr.ab, bry.d, dvq.a.f, cct::b);
-      a(bqr.ac, bry.d, dvq.a.f, cho::a);
-      a(bqr.af, bry.d, dvq.a.f, brg::a);
-      a(bqr.am, bry.d, dvq.a.f, cct::b);
-      a(bqr.ao, bry.d, dvq.a.f, chq::b);
-      a(bqr.ar, bry.d, dvq.a.f, cdg::c);
-      a(bqr.as, bry.d, dvq.a.f, cct::b);
-      a(bqr.at, bry.d, dvq.a.e, cdh::c);
-      a(bqr.aw, bry.d, dvq.a.e, cdj::c);
-      a(bqr.ay, bry.d, dvq.a.f, cct::b);
-      a(bqr.Z, bry.d, dvq.a.f, civ::c);
-      a(bqr.az, bry.d, dvq.a.f, cjb::b);
-      a(bqr.aB, bry.d, dvq.a.f, chs::b);
-      a(bqr.aC, bry.d, dvq.a.f, cdl::c);
-      a(bqr.aF, bry.d, dvq.a.f, cdn::c);
-      a(bqr.aI, bry.d, dvq.a.f, cct::b);
-      a(bqr.aL, bry.d, dvq.a.f, chy::b);
-      a(bqr.aM, bry.d, dvq.a.f, chr::b);
-      a(bqr.aN, bry.d, dvq.a.f, cfd::c);
-      a(bqr.aO, bry.d, dvq.a.f, cia::c);
-      a(bqr.aR, bry.d, dvq.a.f, brg::a);
-      a(bqr.aV, bry.d, dvq.a.f, chr::b);
-      a(bqr.aX, bry.d, dvq.a.f, cid::a);
-      a(bqr.aY, bry.c, dvq.a.f, cie::c);
-      a(bqr.bg, bry.d, dvq.a.f, cdu::c);
-      a(bqr.bi, bry.d, dvq.a.f, brg::a);
-      a(bqr.bn, bry.d, dvq.a.f, chr::b);
-      a(bqr.bo, bry.d, dvq.a.f, chr::b);
-      a(bqr.bp, bry.d, dvq.a.f, chr::b);
-      a(bqr.br, bry.d, dvq.a.f, cdw::c);
-      a(bqr.bt, bry.d, dvq.a.f, chr::b);
-      a(bqr.bu, bry.d, dvq.a.f, cfh::c);
-      a(bqr.bw, bry.d, dvq.a.f, cim::b);
-      a(bqr.bv, bry.d, dvq.a.f, chr::b);
-      a(bqr.p, bry.d, dvq.a.f, cct::b);
-      a(bqr.D, bry.b, dvq.a.f, chn::b);
-      a(bqr.J, bry.a, dvq.a.f, chr::b);
-      a(bqr.Q, bry.a, dvq.a.f, cdd::c);
-      a(bqr.ad, bry.a, dvq.a.f, chr::b);
-      a(bqr.av, bry.a, dvq.a.f, cct::b);
-      a(bqr.ax, bry.a, dvq.a.f, brg::a);
-      a(bqr.aG, bry.d, dvq.a.f, chr::b);
-      a(bqr.aJ, bry.a, dvq.a.f, brg::a);
-      a(bqr.bd, bry.a, dvq.a.f, cct::b);
-      a(bqr.bh, bry.a, dvq.a.f, chr::b);
-      a(bqr.bj, bry.a, dvq.a.f, chr::b);
-      a(bqr.bk, bry.d, dvq.a.f, brg::a);
-      a(bqr.bl, bry.a, dvq.a.f, brg::a);
+   private static void a(dad $$0, in $$1, in.a $$2, int $$3) {
+      $$2.g($$1);
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         Optional<in> $$5 = c($$0, $$2);
+         if ($$5.isEmpty()) {
+            break;
+         }
+
+         $$2.g($$5.get());
+      }
    }
 
-   static record a(dvq.a a, brx b, brz.b<?> c) {
+   private static Optional<in> c(dad $$0, in $$1) {
+      for (in $$2 : in.a($$0.z, 10, $$1, 1)) {
+         dqh $$3 = $$0.a_($$2);
+         if ($$3.b() instanceof dmj) {
+            dmj.b($$3).ifPresent($$2x -> $$0.b($$2, $$2x));
+            $$0.c(3002, $$2, -1);
+            return Optional.of($$2);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   @FunctionalInterface
-   public interface b<T extends bql> {
-      boolean test(bqr<T> var1, daj var2, bri var3, im var4, ayd var5);
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = 64.0 * cB();
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   protected void a(ajq.a $$0) {
+   }
+
+   @Override
+   protected void a(ua $$0) {
+   }
+
+   @Override
+   protected void b(ua $$0) {
+   }
+
+   public int r() {
+      return this.k;
+   }
+
+   public Stream<brh> u() {
+      return this.j.stream().filter(brh::bB);
    }
 }

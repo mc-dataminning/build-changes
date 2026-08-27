@@ -2,25 +2,32 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bus {
-   private static final float b = 0.95F;
-   public static final int a = 3;
-
-   public static bsx<bre> a() {
-      return bwj.a((Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$0 -> $$0.group($$0.b(cah.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.z.i() <= 0.95F) {
-                  return false;
-               } else {
-                  im $$5 = $$0.<iu>b($$1).b();
-                  if ($$5.a($$3.dn(), 3.0)) {
-                     dpy $$6 = $$2.a_($$5);
-                     if ($$6.a(dcx.od)) {
-                        dcr $$7 = (dcr)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
+   public static bvd<bsa> a(int $$0, float $$1, int $$2) {
+      return bxf.a(
+         (Function<bxf.b<bsa>, ? extends App<bxf.c<bsa>, bxi<bsa>>>)($$3 -> $$3.group(
+                  $$3.c(cbd.m), $$3.a(cbd.b), $$3.a(cbd.C), $$3.a(cbd.t), $$3.a(cbd.n), $$3.a(cbd.r), $$3.a(cbd.q)
+               )
+               .apply(
+                  $$3,
+                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
+                        $$11.y()
+                           .d($$0xxxx -> $$0xxxx.a(cdh.n), $$0xxxx -> true, $$12.dn(), $$2 + 1, cdd.b.c)
+                           .filter($$2xxxx -> $$2xxxx.a($$12.dl(), (double)$$2))
+                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(cdh.n), $$0xxxxx -> true, cdd.b.c, $$12.dn(), $$0, $$12.ej()))
+                           .or(() -> $$3.<iv>a($$5).map(iv::b))
+                           .ifPresent($$10xx -> {
+                              $$7.b();
+                              $$8.b();
+                              $$9.b();
+                              $$10.b();
+                              $$6.a(iv.a($$11.ae(), $$10xx));
+                              if (!$$10xx.a($$12.dl(), (double)$$2)) {
+                                 $$4.a(new cbg($$10xx, $$1, $$2));
+                              }
+                           });
+                        return true;
                      }
-                  }
-
-                  return true;
-               }
-            })));
+               ))
+      );
    }
 }

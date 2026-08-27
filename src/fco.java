@@ -1,6 +1,30 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public record fco(int a, ws b, @Nullable xe c, @Nullable fcp d) {
-   public static record a(int a, axi b, @Nullable fcp c, boolean d) {
+public enum fco implements ayb {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
+
+   private static final IntFunction<fco> d = awq.a(fco::a, values(), awq.a.b);
+   private final int e;
+   private final String f;
+
+   private fco(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public int a() {
+      return this.e;
+   }
+
+   @Override
+   public String b() {
+      return this.f;
+   }
+
+   public static fco a(int $$0) {
+      return d.apply($$0);
    }
 }

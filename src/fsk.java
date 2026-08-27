@@ -1,90 +1,45 @@
-import com.google.common.collect.ImmutableList;
+import java.util.Optional;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
-public class fsk<T extends cew> extends frr<T> {
-   private final fur a;
-   private final fur b;
-   private final fur f;
-   private final fur g;
-   private final fur h;
-   private final fur i;
-   private final fur j;
-   private final fur k;
+public abstract class fsk<E extends brh> extends fsb<E> {
+   private static final Vector3f a = new Vector3f();
 
-   public fsk(fur $$0) {
-      this.a = $$0.b("head");
-      this.b = $$0.b("body");
-      this.j = $$0.b("right_chest");
-      this.k = $$0.b("left_chest");
-      this.f = $$0.b("right_hind_leg");
-      this.g = $$0.b("left_hind_leg");
-      this.h = $$0.b("right_front_leg");
-      this.i = $$0.b("left_front_leg");
+   public fsk() {
+      this(gbw::e);
    }
 
-   public static fux a(fuv $$0) {
-      fuz $$1 = new fuz();
-      fva $$2 = $$1.a();
-      $$2.a(
-         "head",
-         fuw.c()
-            .a(0, 0)
-            .a(-2.0F, -14.0F, -10.0F, 4.0F, 4.0F, 9.0F, $$0)
-            .a(0, 14)
-            .a("neck", -4.0F, -16.0F, -6.0F, 8.0F, 18.0F, 6.0F, $$0)
-            .a(17, 0)
-            .a("ear", -4.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0)
-            .a(17, 0)
-            .a("ear", 1.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0),
-         fut.a(0.0F, 7.0F, -6.0F)
-      );
-      $$2.a("body", fuw.c().a(29, 0).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, $$0), fut.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$2.a("right_chest", fuw.c().a(45, 28).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), fut.a(-8.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$2.a("left_chest", fuw.c().a(45, 41).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), fut.a(5.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      int $$3 = 4;
-      int $$4 = 14;
-      fuw $$5 = fuw.c().a(29, 29).a(-2.0F, 0.0F, -2.0F, 4.0F, 14.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$5, fut.a(-3.5F, 10.0F, 6.0F));
-      $$2.a("left_hind_leg", $$5, fut.a(3.5F, 10.0F, 6.0F));
-      $$2.a("right_front_leg", $$5, fut.a(-3.5F, 10.0F, -5.0F));
-      $$2.a("left_front_leg", $$5, fut.a(3.5F, 10.0F, -5.0F));
-      return fux.a($$1, 128, 64);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.e = $$5 * (float) (Math.PI / 180.0);
-      this.a.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = axw.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = axw.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = axw.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = axw.b($$1 * 0.6662F) * 1.4F * $$2;
-      boolean $$6 = !$$0.p_() && $$0.u();
-      this.j.k = $$6;
-      this.k.k = $$6;
+   public fsk(Function<akh, gbw> $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(exn $$0, exr $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         float $$8 = 2.0F;
-         $$0.a();
-         float $$9 = 0.7F;
-         $$0.b(0.71428573F, 0.64935064F, 0.7936508F);
-         $$0.a(0.0F, 1.3125F, 0.22F);
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-         $$0.a();
-         float $$10 = 1.1F;
-         $$0.b(0.625F, 0.45454544F, 0.45454544F);
-         $$0.a(0.0F, 2.0625F, 0.0F);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-         $$0.a();
-         $$0.b(0.45454544F, 0.41322312F, 0.45454544F);
-         $$0.a(0.0F, 2.0625F, 0.0F);
-         ImmutableList.of(this.f, this.g, this.h, this.i, this.j, this.k).forEach($$8x -> $$8x.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-      } else {
-         ImmutableList.of(this.a, this.b, this.f, this.g, this.h, this.i, this.j, this.k).forEach($$8x -> $$8x.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-      }
+   public void a(exx $$0, eyb $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public abstract fvb a();
+
+   public Optional<fvb> a(String $$0) {
+      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
+   }
+
+   protected void a(brc $$0, fdv $$1, float $$2) {
+      this.a($$0, $$1, $$2, 1.0F);
+   }
+
+   protected void a(fdv $$0, float $$1, float $$2, float $$3, float $$4) {
+      long $$5 = (long)($$1 * 50.0F * $$3);
+      float $$6 = Math.min($$2 * $$4, 1.0F);
+      fdx.a(this, $$0, $$5, $$6, a);
+   }
+
+   protected void a(brc $$0, fdv $$1, float $$2, float $$3) {
+      $$0.a($$2, $$3);
+      $$0.a($$1x -> fdx.a(this, $$1, $$1x.b(), 1.0F, a));
+   }
+
+   protected void a(fdv $$0) {
+      fdx.a(this, $$0, 0L, 1.0F, a);
    }
 }

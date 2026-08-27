@@ -1,54 +1,27 @@
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class cwf extends cwn {
-   public cwf(cvw $$0) {
-      super("", $$0, cwo.a(Map.of('#', cwd.a(csg.qO), 'x', cwd.a(csg.rU)), "###", "#x#", "###"), new csd(csg.uj));
+public record cwf(List<aqy<String>> f) implements cvj<String, cwf> {
+   public static final cwf a = new cwf(List.of());
+   public static final int b = 1024;
+   private static final Codec<aqy<String>> g = aqy.a(axh.b(0, 1024));
+   public static final Codec<List<aqy<String>>> c = axh.a(g.listOf(), 100);
+   public static final Codec<cwf> d = RecordCodecBuilder.create($$0 -> $$0.group(axh.a(c, "pages", List.of()).forGetter(cwf::a)).apply($$0, cwf::new));
+   public static final ys<ByteBuf, cwf> e = aqy.a(yq.b(1024)).a(yq.c(100)).a(cwf::new, cwf::a);
+
+   public Stream<String> a(boolean $$0) {
+      return this.f.stream().map($$1 -> $$1.a($$0));
+   }
+
+   public cwf b(List<aqy<String>> $$0) {
+      return new cwf($$0);
    }
 
    @Override
-   public boolean a(cnx $$0, czu $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
-      } else {
-         csd $$2 = a($$0);
-         if ($$2.d()) {
-            return false;
-         } else {
-            ene $$3 = csl.b($$2, $$1);
-            if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.g() ? false : $$3.f < 4;
-            }
-         }
-      }
-   }
-
-   @Override
-   public csd a(cnx $$0, jj $$1) {
-      csd $$2 = a($$0).c(1);
-      $$2.b(jz.u, cvc.b);
-      return $$2;
-   }
-
-   private static csd a(cnx $$0) {
-      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
-         csd $$2 = $$0.a($$1);
-         if ($$2.a(csg.rU)) {
-            return $$2;
-         }
-      }
-
-      return csd.i;
-   }
-
-   @Override
-   public boolean an_() {
-      return true;
-   }
-
-   @Override
-   public cwk<?> ao_() {
-      return cwk.f;
+   public List<aqy<String>> a() {
+      return this.f;
    }
 }

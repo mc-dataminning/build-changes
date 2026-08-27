@@ -1,37 +1,37 @@
-public class aem implements yz<abk> {
-   public static final yq<vs, aem> a = yz.a(aem::a, aem::new);
-   private final im b;
-   private final float c;
+public class aem implements zb<abm> {
+   public static final ys<vu, aem> a = zb.a(aem::a, aem::new);
+   private final int b;
+   private final int c;
 
-   public aem(im $$0, float $$1) {
+   public aem(int $$0, int $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   private aem(vs $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private aem(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zb<aem> a() {
-      return afv.aA;
+   public zd<aem> a() {
+      return afx.ay;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public im b() {
+   public int b() {
       return this.b;
    }
 
-   public float e() {
+   public int e() {
       return this.c;
    }
 }

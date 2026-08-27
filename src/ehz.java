@@ -1,25 +1,25 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class ehz extends egg {
-   public static final Codec<ehz> d = a(ehz::new);
+record ehz(akg<ehy> c, akg<ehy> d) implements eia {
+   static Codec<ehz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akg.a(le.aM).fieldOf("alias").forGetter(ehz::c), akg.a(le.aM).fieldOf("target").forGetter(ehz::d)).apply($$0, ehz::new)
+   );
 
-   public ehz(egg.c $$0) {
-      super($$0);
+   @Override
+   public void a(ayg $$0, BiConsumer<akg<ehy>, akg<ehy>> $$1) {
+      $$1.accept(this.c, this.d);
    }
 
    @Override
-   public Optional<egg.b> a(egg.a $$0) {
-      return a($$0, dvq.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(egy $$0, egg.a $$1) {
-      im $$2 = new im($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new ehy.a($$2));
+   public Stream<akg<ehy>> a() {
+      return Stream.of(this.d);
    }
 
    @Override
-   public egp<?> e() {
-      return egp.a;
+   public Codec<ehz> b() {
+      return a;
    }
 }

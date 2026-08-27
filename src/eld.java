@@ -1,166 +1,112 @@
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.util.function.LongPredicate;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
+import java.util.List;
 
-public abstract class eld {
-   public static final long e = Long.MAX_VALUE;
-   private static final int a = 255;
-   protected final int f;
-   private final elh b;
-   private final Long2ByteMap c;
-   private volatile boolean d;
+public class eld {
+   private static final double a = 1.0181268882175227;
+   private static final double b = 0.3333333333333333;
+   private final double c;
+   private final ele d;
+   private final ele e;
+   private final double f;
+   private final eld.a g;
 
-   protected eld(int $$0, int $$1, final int $$2) {
-      if ($$0 >= 254) {
-         throw new IllegalArgumentException("Level count must be < 254.");
+   @Deprecated
+   public static eld a(ayg $$0, eld.a $$1) {
+      return new eld($$0, $$1, false);
+   }
+
+   public static eld a(ayg $$0, int $$1, double... $$2) {
+      return b($$0, new eld.a($$1, new DoubleArrayList($$2)));
+   }
+
+   public static eld b(ayg $$0, eld.a $$1) {
+      return new eld($$0, $$1, true);
+   }
+
+   private eld(ayg $$0, eld.a $$1, boolean $$2) {
+      int $$3 = $$1.c;
+      DoubleList $$4 = $$1.d;
+      this.g = $$1;
+      if ($$2) {
+         this.d = ele.b($$0, $$3, $$4);
+         this.e = ele.b($$0, $$3, $$4);
       } else {
-         this.f = $$0;
-         this.b = new elh($$0, $$1);
-         this.c = new Long2ByteOpenHashMap($$2, 0.5F) {
-            protected void rehash(int $$0) {
-               if ($$0 > $$2) {
-                  super.rehash($$0);
-               }
-            }
-         };
-         this.c.defaultReturnValue((byte)-1);
+         this.d = ele.a($$0, $$3, $$4);
+         this.e = ele.a($$0, $$3, $$4);
       }
-   }
 
-   protected void e(long $$0) {
-      int $$1 = this.c.remove($$0) & 255;
-      if ($$1 != 255) {
-         int $$2 = this.c($$0);
-         int $$3 = this.a($$2, $$1);
-         this.b.a($$0, $$3, this.f);
-         this.d = !this.b.b();
-      }
-   }
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = Integer.MIN_VALUE;
+      DoubleListIterator $$7 = $$4.iterator();
 
-   public void a(LongPredicate $$0) {
-      LongList $$1 = new LongArrayList();
-      this.c.keySet().forEach($$2 -> {
-         if ($$0.test($$2)) {
-            $$1.add($$2);
-         }
-      });
-      $$1.forEach(this::e);
-   }
-
-   private int a(int $$0, int $$1) {
-      return Math.min(Math.min($$0, $$1), this.f - 1);
-   }
-
-   protected void f(long $$0) {
-      this.a($$0, $$0, this.f - 1, false);
-   }
-
-   protected void a(long $$0, long $$1, int $$2, boolean $$3) {
-      this.a($$0, $$1, $$2, this.c($$1), this.c.get($$1) & 255, $$3);
-      this.d = !this.b.b();
-   }
-
-   private void a(long $$0, long $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if (!this.a($$1)) {
-         $$2 = axw.a($$2, 0, this.f - 1);
-         $$3 = axw.a($$3, 0, this.f - 1);
-         boolean $$6 = $$4 == 255;
-         if ($$6) {
-            $$4 = $$3;
-         }
-
-         int $$7;
-         if ($$5) {
-            $$7 = Math.min($$4, $$2);
-         } else {
-            $$7 = axw.a(this.a($$1, $$0, $$2), 0, this.f - 1);
-         }
-
-         int $$9 = this.a($$3, $$4);
-         if ($$3 != $$7) {
-            int $$10 = this.a($$3, $$7);
-            if ($$9 != $$10 && !$$6) {
-               this.b.a($$1, $$9, $$10);
-            }
-
-            this.b.a($$1, $$10);
-            this.c.put($$1, (byte)$$7);
-         } else if (!$$6) {
-            this.b.a($$1, $$9, this.f);
-            this.c.remove($$1);
+      while ($$7.hasNext()) {
+         int $$8 = $$7.nextIndex();
+         double $$9 = $$7.nextDouble();
+         if ($$9 != 0.0) {
+            $$5 = Math.min($$5, $$8);
+            $$6 = Math.max($$6, $$8);
          }
       }
+
+      this.c = 0.16666666666666666 / a($$6 - $$5);
+      this.f = (this.d.a() + this.e.a()) * this.c;
    }
 
-   protected final void b(long $$0, long $$1, int $$2, boolean $$3) {
-      int $$4 = this.c.get($$1) & 255;
-      int $$5 = axw.a(this.b($$0, $$1, $$2), 0, this.f - 1);
-      if ($$3) {
-         this.a($$0, $$1, $$5, this.c($$1), $$4, $$3);
-      } else {
-         boolean $$6 = $$4 == 255;
-         int $$7;
-         if ($$6) {
-            $$7 = axw.a(this.c($$1), 0, this.f - 1);
-         } else {
-            $$7 = $$4;
-         }
+   public double a() {
+      return this.f;
+   }
 
-         if ($$5 == $$7) {
-            this.a($$0, $$1, this.f - 1, $$6 ? $$7 : this.c($$1), $$4, $$3);
-         }
+   private static double a(int $$0) {
+      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = $$0 * 1.0181268882175227;
+      double $$4 = $$1 * 1.0181268882175227;
+      double $$5 = $$2 * 1.0181268882175227;
+      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
+   }
+
+   public eld.a b() {
+      return this.g;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("NormalNoise {");
+      $$0.append("first: ");
+      this.d.a($$0);
+      $$0.append(", second: ");
+      this.e.a($$0);
+      $$0.append("}");
+   }
+
+   public static record a(int c, DoubleList d) {
+      public static final Codec<eld.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(eld.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(eld.a::b))
+               .apply($$0, eld.a::new)
+      );
+      public static final Codec<iw<eld.a>> b = akd.a(le.aH, a);
+
+      public a(int $$0, List<Double> $$1) {
+         this($$0, new DoubleArrayList($$1));
+      }
+
+      public a(int $$0, double $$1, double... $$2) {
+         this($$0, ac.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
+      }
+
+      public int a() {
+         return this.c;
+      }
+
+      public DoubleList b() {
+         return this.d;
       }
    }
-
-   protected final boolean b() {
-      return this.d;
-   }
-
-   protected final int b(int $$0) {
-      if (this.b.b()) {
-         return $$0;
-      } else {
-         while (!this.b.b() && $$0 > 0) {
-            $$0--;
-            long $$1 = this.b.a();
-            int $$2 = axw.a(this.c($$1), 0, this.f - 1);
-            int $$3 = this.c.remove($$1) & 255;
-            if ($$3 < $$2) {
-               this.a($$1, $$3);
-               this.a($$1, $$3, true);
-            } else if ($$3 > $$2) {
-               this.a($$1, this.f - 1);
-               if ($$3 != this.f - 1) {
-                  this.b.a($$1, this.a(this.f - 1, $$3));
-                  this.c.put($$1, (byte)$$3);
-               }
-
-               this.a($$1, $$2, false);
-            }
-         }
-
-         this.d = !this.b.b();
-         return $$0;
-      }
-   }
-
-   public int c() {
-      return this.c.size();
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 == Long.MAX_VALUE;
-   }
-
-   protected abstract int a(long var1, long var3, int var5);
-
-   protected abstract void a(long var1, int var3, boolean var4);
-
-   protected abstract int c(long var1);
-
-   protected abstract void a(long var1, int var3);
-
-   protected abstract int b(long var1, long var3, int var5);
 }

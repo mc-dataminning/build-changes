@@ -1,225 +1,77 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gml<T extends gml.a> {
-   private static final Comparator<gml.b<?>> a = Comparator.<gml.b<?>, Integer>comparing($$0 -> -$$0.c)
-      .thenComparing($$0 -> -$$0.b)
-      .thenComparing($$0 -> $$0.a.c());
-   private final int b;
-   private final List<gml.b<T>> c = new ArrayList<>();
-   private final List<gml.c<T>> d = new ArrayList<>();
-   private int e;
-   private int f;
-   private final int g;
-   private final int h;
+public class gml extends gmj implements gmk {
+   private static final Logger e = LogUtils.getLogger();
+   @Nullable
+   private ewy f;
 
-   public gml(int $$0, int $$1, int $$2) {
-      this.b = $$2;
-      this.g = $$0;
-      this.h = $$1;
+   public gml(ewy $$0) {
+      this.f = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+            this.d();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+         this.d();
+      }
    }
 
-   public int a() {
-      return this.e;
+   public gml(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      this.f = new ewy($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
    }
 
-   public int b() {
+   @Override
+   public void a(atr $$0) {
+   }
+
+   @Override
+   public void d() {
+      if (this.f != null) {
+         this.c();
+         this.f.a(0, 0, 0, false);
+      } else {
+         e.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
+
+   @Nullable
+   public ewy e() {
       return this.f;
    }
 
-   public void a(T $$0) {
-      gml.b<T> $$1 = new gml.b<>($$0, this.b);
-      this.c.add($$1);
-   }
-
-   public void c() {
-      List<gml.b<T>> $$0 = new ArrayList<>(this.c);
-      $$0.sort(a);
-
-      for (gml.b<T> $$1 : $$0) {
-         if (!this.a($$1)) {
-            throw new gmm($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
-         }
+   public void a(ewy $$0) {
+      if (this.f != null) {
+         this.f.close();
       }
+
+      this.f = $$0;
    }
 
-   public void a(gml.d<T> $$0) {
-      for (gml.c<T> $$1 : this.d) {
-         $$1.a($$0);
+   @Override
+   public void close() {
+      if (this.f != null) {
+         this.f.close();
+         this.b();
+         this.f = null;
       }
    }
 
-   static int a(int $$0, int $$1) {
-      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
-   }
-
-   private boolean a(gml.b<T> $$0) {
-      for (gml.c<T> $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
+   @Override
+   public void a(akh $$0, Path $$1) throws IOException {
+      if (this.f != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.f.a($$3);
       }
-
-      return this.b($$0);
-   }
-
-   private boolean b(gml.b<T> $$0) {
-      int $$1 = axw.c(this.e);
-      int $$2 = axw.c(this.f);
-      int $$3 = axw.c(this.e + $$0.b);
-      int $$4 = axw.c(this.f + $$0.c);
-      boolean $$5 = $$3 <= this.g;
-      boolean $$6 = $$4 <= this.h;
-      if (!$$5 && !$$6) {
-         return false;
-      } else {
-         boolean $$7 = $$5 && $$1 != $$3;
-         boolean $$8 = $$6 && $$2 != $$4;
-         boolean $$9;
-         if ($$7 ^ $$8) {
-            $$9 = $$7;
-         } else {
-            $$9 = $$5 && $$1 <= $$2;
-         }
-
-         gml.c<T> $$11;
-         if ($$9) {
-            if (this.f == 0) {
-               this.f = $$4;
-            }
-
-            $$11 = new gml.c<>(this.e, 0, $$3 - this.e, this.f);
-            this.e = $$3;
-         } else {
-            $$11 = new gml.c<>(0, this.f, this.e, $$4 - this.f);
-            this.f = $$4;
-         }
-
-         $$11.a($$0);
-         this.d.add($$11);
-         return true;
-      }
-   }
-
-   public interface a {
-      int a();
-
-      int b();
-
-      akf c();
-   }
-
-   static record b<T extends gml.a>(T a, int b, int c) {
-
-      public b(T $$0, int $$1) {
-         this($$0, gml.a($$0.a(), $$1), gml.a($$0.b(), $$1));
-      }
-   }
-
-   public static class c<T extends gml.a> {
-      private final int a;
-      private final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private List<gml.c<T>> e;
-      @Nullable
-      private gml.b<T> f;
-
-      public c(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public boolean a(gml.b<T> $$0) {
-         if (this.f != null) {
-            return false;
-         } else {
-            int $$1 = $$0.b;
-            int $$2 = $$0.c;
-            if ($$1 <= this.c && $$2 <= this.d) {
-               if ($$1 == this.c && $$2 == this.d) {
-                  this.f = $$0;
-                  return true;
-               } else {
-                  if (this.e == null) {
-                     this.e = new ArrayList<>(1);
-                     this.e.add(new gml.c<>(this.a, this.b, $$1, $$2));
-                     int $$3 = this.c - $$1;
-                     int $$4 = this.d - $$2;
-                     if ($$4 > 0 && $$3 > 0) {
-                        int $$5 = Math.max(this.d, $$3);
-                        int $$6 = Math.max(this.c, $$4);
-                        if ($$5 >= $$6) {
-                           this.e.add(new gml.c<>(this.a, this.b + $$2, $$1, $$4));
-                           this.e.add(new gml.c<>(this.a + $$1, this.b, $$3, this.d));
-                        } else {
-                           this.e.add(new gml.c<>(this.a + $$1, this.b, $$3, $$2));
-                           this.e.add(new gml.c<>(this.a, this.b + $$2, this.c, $$4));
-                        }
-                     } else if ($$3 == 0) {
-                        this.e.add(new gml.c<>(this.a, this.b + $$2, $$1, $$4));
-                     } else if ($$4 == 0) {
-                        this.e.add(new gml.c<>(this.a + $$1, this.b, $$3, $$2));
-                     }
-                  }
-
-                  for (gml.c<T> $$7 : this.e) {
-                     if ($$7.a($$0)) {
-                        return true;
-                     }
-                  }
-
-                  return false;
-               }
-            } else {
-               return false;
-            }
-         }
-      }
-
-      public void a(gml.d<T> $$0) {
-         if (this.f != null) {
-            $$0.load(this.f.a, this.a(), this.b());
-         } else if (this.e != null) {
-            for (gml.c<T> $$1 : this.e) {
-               $$1.a($$0);
-            }
-         }
-      }
-
-      @Override
-      public String toString() {
-         return "Slot{originX="
-            + this.a
-            + ", originY="
-            + this.b
-            + ", width="
-            + this.c
-            + ", height="
-            + this.d
-            + ", texture="
-            + this.f
-            + ", subSlots="
-            + this.e
-            + "}";
-      }
-   }
-
-   public interface d<T extends gml.a> {
-      void load(T var1, int var2, int var3);
    }
 }

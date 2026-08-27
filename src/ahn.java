@@ -1,85 +1,49 @@
-public class ahn implements yz<afx> {
-   public static final yq<vs, ahn> a = yz.a(ahn::a, ahn::new);
-   private final im b;
-   private final akf c;
-   private final akf d;
-   private final akf e;
-   private final String f;
-   private final dod.a g;
-   private final int h;
-   private final int i;
+import javax.annotation.Nullable;
 
-   public ahn(im $$0, akf $$1, akf $$2, akf $$3, String $$4, dod.a $$5, int $$6, int $$7) {
+public class ahn implements zb<afz> {
+   public static final ys<vu, ahn> a = zb.a(ahn::a, ahn::new);
+   private final int b;
+   private final String c;
+   private final boolean d;
+
+   public ahn(int $$0, String $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
    }
 
-   private ahn(vs $$0) {
-      this.b = $$0.e();
-      this.c = $$0.q();
-      this.d = $$0.q();
-      this.e = $$0.q();
-      this.f = $$0.p();
-      this.g = dod.a.a($$0.p()).orElse(dod.a.b);
-      this.h = $$0.l();
-      this.i = $$0.l();
+   private ahn(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.p();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
+   private void a(vu $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g.c());
-      $$0.c(this.h);
-      $$0.c(this.i);
    }
 
    @Override
-   public zb<ahn> a() {
-      return afv.bV;
+   public zd<ahn> a() {
+      return afx.bT;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 
-   public im b() {
-      return this.b;
+   @Nullable
+   public cze a(dad $$0) {
+      brh $$1 = $$0.a(this.b);
+      return $$1 instanceof cnk ? ((cnk)$$1).B() : null;
    }
 
-   public akf e() {
+   public String b() {
       return this.c;
    }
 
-   public akf f() {
+   public boolean e() {
       return this.d;
-   }
-
-   public akf g() {
-      return this.e;
-   }
-
-   public String h() {
-      return this.f;
-   }
-
-   public dod.a i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.h;
-   }
-
-   public int k() {
-      return this.i;
    }
 }

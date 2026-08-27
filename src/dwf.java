@@ -1,63 +1,110 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public final class dwf {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+public record dwf(dvs b, dvs c, dvs d, dvs e, dvs f, dvs g, dvs h, dvs i, dvs j, dvs k, dvs l, dvs m, dvs n, dvs o, dvs p) {
+   public static final Codec<dwf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", dwf::a),
+               a("fluid_level_floodedness", dwf::b),
+               a("fluid_level_spread", dwf::c),
+               a("lava", dwf::d),
+               a("temperature", dwf::e),
+               a("vegetation", dwf::f),
+               a("continents", dwf::g),
+               a("erosion", dwf::h),
+               a("depth", dwf::i),
+               a("ridges", dwf::j),
+               a("initial_density_without_jaggedness", dwf::k),
+               a("final_density", dwf::l),
+               a("vein_toggle", dwf::m),
+               a("vein_ridged", dwf::n),
+               a("vein_gap", dwf::o)
+            )
+            .apply($$0, dwf::new)
+   );
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   private static RecordCodecBuilder<dwf, dvs> a(String $$0, Function<dwf, dvs> $$1) {
+      return dvs.d.fieldOf($$0).forGetter($$1);
    }
 
-   public static dwf.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dwf.a($$1, $$2);
+   public dwf a(dvs.f $$0) {
+      return new dwf(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   public static dwf.a c(long $$0) {
-      return b($$0).a();
+   public dvs a() {
+      return this.b;
    }
 
-   public static dwf.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dwf.a($$2, $$3);
+   public dvs b() {
+      return this.c;
    }
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   public dvs c() {
+      return this.d;
    }
 
-   public static record a(long a, long b) {
-      public dwf.a a(long $$0, long $$1) {
-         return new dwf.a(this.a ^ $$0, this.b ^ $$1);
-      }
+   public dvs d() {
+      return this.e;
+   }
 
-      public dwf.a a(dwf.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
+   public dvs e() {
+      return this.f;
+   }
 
-      public dwf.a a() {
-         return new dwf.a(dwf.a(this.a), dwf.a(this.b));
-      }
+   public dvs f() {
+      return this.g;
+   }
 
-      public long b() {
-         return this.a;
-      }
+   public dvs g() {
+      return this.h;
+   }
 
-      public long c() {
-         return this.b;
-      }
+   public dvs h() {
+      return this.i;
+   }
+
+   public dvs i() {
+      return this.j;
+   }
+
+   public dvs j() {
+      return this.k;
+   }
+
+   public dvs k() {
+      return this.l;
+   }
+
+   public dvs l() {
+      return this.m;
+   }
+
+   public dvs m() {
+      return this.n;
+   }
+
+   public dvs n() {
+      return this.o;
+   }
+
+   public dvs o() {
+      return this.p;
    }
 }

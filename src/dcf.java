@@ -1,72 +1,91 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public abstract class dcf extends dcv implements djw {
-   public static final dqp d = dqo.C;
-   private static final ety a = dcv.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-
-   protected dcf(dpx.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
-   }
-
-   @Override
-   protected abstract MapCodec<? extends dcf> a();
-
-   protected void a(dpy $$0, czv $$1, im $$2) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this, 60 + $$1.E_().a(40));
-      }
-   }
-
-   protected static boolean e(dpy $$0, cza $$1, im $$2) {
-      if ($$0.c(d)) {
-         return true;
-      } else {
-         for (ir $$3 : ir.values()) {
-            if ($$1.b_($$2.a($$3)).a(avt.a)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dpy a(cvl $$0) {
-      elr $$1 = $$0.q().b_($$0.a());
-      return this.n().a(d, Boolean.valueOf($$1.a(avt.a) && $$1.e() == 8));
-   }
+public class dcf extends ddn {
+   public static final MapCodec<dcf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               akg.a(le.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
+               akg.a(le.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
+               akg.a(le.G).fieldOf("seed").forGetter($$0x -> $$0x.g),
+               u()
+            )
+            .apply($$0, dcf::new)
+   );
+   public static final drb b = dha.aE;
+   protected static final float c = 2.0F;
+   private static final Map<is, eui> d = Maps.newEnumMap(
+      ImmutableMap.of(
+         is.d,
+         dde.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
+         is.e,
+         dde.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
+         is.c,
+         dde.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
+         is.f,
+         dde.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
+      )
+   );
+   private final akg<dde> e;
+   private final akg<dde> f;
+   private final akg<csu> g;
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+   public MapCodec<dcf> a() {
       return a;
    }
 
+   protected dcf(akg<dde> $$0, akg<dde> $$1, akg<csu> $$2, dqg.d $$3) {
+      super($$3);
+      this.k(this.E.b().a(b, is.c));
+      this.f = $$0;
+      this.e = $$1;
+      this.g = $$2;
+   }
+
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, els.c, els.c.a($$3));
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return d.get($$0.c(b));
+   }
+
+   @Override
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
+         Optional<dde> $$6 = $$3.H_().d(le.f).e(this.f);
+         if ($$6.isPresent()) {
+            return $$6.get().n().b(dla.c, Integer.valueOf(7));
+         }
       }
 
-      return $$1 == ir.a && !this.a($$0, (czx)$$3, $$4) ? dcx.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dpy $$0, czx $$1, im $$2) {
-      im $$3 = $$2.d();
-      return $$1.a_($$3).d($$1, $$3, ir.b);
+   protected boolean b(dqh $$0, czj $$1, in $$2) {
+      return $$0.a(ddg.cC);
    }
 
    @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(d);
+   public csz a(dag $$0, in $$1, dqh $$2) {
+      return new csz((dac)DataFixUtils.orElse($$0.H_().d(le.G).e(this.g), this));
    }
 
    @Override
-   protected elr c_(dpy $$0) {
-      return $$0.c(d) ? els.c.a(false) : super.c_($$0);
+   protected dqh a(dqh $$0, djr $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dqh a(dqh $$0, dib $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(b);
    }
 }

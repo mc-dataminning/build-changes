@@ -1,30 +1,26 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Supplier;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 public interface fwi {
-   Codec<fwi> a = ayq.a(fwi.a::values).dispatch(fwi::a, fwi.a::a);
-
-   fwi.a a();
-
-   public static enum a implements ayq {
-      a("player", () -> fwj.a.b),
-      b("system", () -> fwj.b.b);
-
-      private final String c;
-      private final Supplier<Codec<? extends fwi>> d;
-
-      private a(String $$0, Supplier<Codec<? extends fwi>> $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      private Codec<? extends fwi> a() {
-         return this.d.get();
+   fwi a = new fwi() {
+      @Override
+      public CompletableFuture<Optional<clj>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
       }
 
       @Override
-      public String c() {
-         return this.c;
+      public boolean b() {
+         return false;
       }
+   };
+
+   static fwi a(UserApiService $$0, fdt $$1, Path $$2) {
+      return (fwi)($$1.g() == fdt.a.c ? new fvp($$0, $$1.b(), $$2) : a);
    }
+
+   CompletableFuture<Optional<clj>> a();
+
+   boolean b();
 }

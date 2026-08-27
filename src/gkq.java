@@ -1,24 +1,13 @@
-public class gkq extends gky<cdf, fsg<cdf>> {
-   private final gby a;
+public class gkq<T extends cib> extends gli<T, frx<T>> {
+   private static final akh a = new akh("textures/entity/zombie/drowned_outer_layer.png");
+   private final frx<T> b;
 
-   public gkq(gii<cdf, fsg<cdf>> $$0, gby $$1) {
+   public gkq(gis<T, frx<T>> $$0, fux $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new frx<>($$1.a(fva.U));
    }
 
-   public void a(exn $$0, gbe $$1, int $$2, cdf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gp() != 0) {
-         $$0.a();
-         fur $$10 = this.c().c();
-         $$10.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$11 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(dcx.bT.n(), $$0, $$1, $$2, gmf.d);
-         $$0.b();
-      }
+   public void a(exx $$0, gbo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

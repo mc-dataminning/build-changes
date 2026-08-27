@@ -1,70 +1,65 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Queues;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Deque;
-import javax.annotation.Nullable;
+import io.netty.util.internal.ThreadLocalRandom;
 
-public final class ayg<T> extends AbstractIterator<T> {
-   private static final int a = Integer.MIN_VALUE;
-   @Nullable
-   private Deque<T> b = null;
-   private int c = Integer.MIN_VALUE;
-   private final Int2ObjectMap<Deque<T>> d = new Int2ObjectOpenHashMap();
+public interface ayg {
+   @Deprecated
+   double a = 2.297;
 
-   public void a(T $$0, int $$1) {
-      if ($$1 == this.c && this.b != null) {
-         this.b.addLast($$0);
-      } else {
-         Deque<T> $$2 = (Deque<T>)this.d.computeIfAbsent($$1, $$0x -> Queues.newArrayDeque());
-         $$2.addLast($$0);
-         if ($$1 >= this.c) {
-            this.b = $$2;
-            this.c = $$1;
-         }
+   static ayg a() {
+      return a(dwo.a());
+   }
+
+   @Deprecated
+   static ayg b() {
+      return new dws(dwo.a());
+   }
+
+   static ayg a(long $$0) {
+      return new dwa($$0);
+   }
+
+   static ayg c() {
+      return new dwp(ThreadLocalRandom.current().nextLong());
+   }
+
+   ayg d();
+
+   dwm e();
+
+   void b(long var1);
+
+   int f();
+
+   int a(int var1);
+
+   default int a(int $$0, int $$1) {
+      return this.a($$1 - $$0 + 1) + $$0;
+   }
+
+   long g();
+
+   boolean h();
+
+   float i();
+
+   double j();
+
+   double k();
+
+   default double a(double $$0, double $$1) {
+      return $$0 + $$1 * (this.j() - this.j());
+   }
+
+   default void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.f();
       }
    }
 
-   @Nullable
-   protected T computeNext() {
-      if (this.b == null) {
-         return (T)this.endOfData();
+   default int b(int $$0, int $$1) {
+      if ($$0 >= $$1) {
+         throw new IllegalArgumentException("bound - origin is non positive");
       } else {
-         T $$0 = this.b.removeFirst();
-         if ($$0 == null) {
-            return (T)this.endOfData();
-         } else {
-            if (this.b.isEmpty()) {
-               this.a();
-            }
-
-            return $$0;
-         }
+         return $$0 + this.a($$1 - $$0);
       }
-   }
-
-   private void a() {
-      int $$0 = Integer.MIN_VALUE;
-      Deque<T> $$1 = null;
-      ObjectIterator var3 = Int2ObjectMaps.fastIterable(this.d).iterator();
-
-      while (var3.hasNext()) {
-         Entry<Deque<T>> $$2 = (Entry<Deque<T>>)var3.next();
-         Deque<T> $$3 = (Deque<T>)$$2.getValue();
-         int $$4 = $$2.getIntKey();
-         if ($$4 > $$0 && !$$3.isEmpty()) {
-            $$0 = $$4;
-            $$1 = $$3;
-            if ($$4 == this.c - 1) {
-               break;
-            }
-         }
-      }
-
-      this.c = $$0;
-      this.b = $$1;
    }
 }

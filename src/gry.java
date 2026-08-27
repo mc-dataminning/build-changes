@@ -1,37 +1,16 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import java.util.function.Consumer;
 
-public class gry {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+@FunctionalInterface
+public interface gry {
+   gry a = ($$0, $$1) -> {
+   };
 
-   public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
-      }
+   default gry decorate(Consumer<gsc.a> $$0) {
+      return ($$1, $$2) -> this.send($$1, $$2x -> {
+            $$2.accept($$2x);
+            $$0.accept($$2x);
+         });
    }
 
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
-      }
-
-      this.d = $$0;
-   }
-
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
-   }
-
-   public void a(grn $$0) {
-      this.b.ifPresent($$1 -> $$0.send(gro.e, $$1x -> {
-            $$1x.a(grq.p, this.a($$1));
-            $$1x.a(grq.q, (int)this.c);
-         }));
-   }
+   void send(grz var1, Consumer<gsc.a> var2);
 }

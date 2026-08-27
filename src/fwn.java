@@ -1,120 +1,40 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Predicate;
 
-public class fwn extends fwq {
-   final IntSet f = new IntOpenHashSet();
+public class fwn {
+   private final Map<akg<? extends jj<?>>, awj.a> a = new HashMap<>();
 
-   fwn(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
+   public void a(akg<? extends jj<?>> $$0, awj.a $$1) {
+      this.a.put($$0, $$1);
    }
 
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.f.contains($$0)) {
-         this.f.remove($$0);
-      } else if (this.f.size() < $$1.maxReportedMessageCount()) {
-         this.f.add($$0);
-      }
+   private static void a() {
+      crl.e().n();
    }
 
-   public fwn a() {
-      fwn $$0 = new fwn(this.a, this.b, this.c);
-      $$0.f.addAll(this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
+   private static void b() {
+      dna.f();
+      ddg.a();
    }
 
-   @Override
-   public fkt a(fkt $$0, fwu $$1) {
-      return new fos($$0, $$1, this);
-   }
-
-   public static class a extends fwq.a<fwn> {
-      public a(fwn $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new fwn(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
-
-      public IntSet a() {
-         return this.a.f;
-      }
-
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
-
-      public boolean b(int $$0) {
-         return this.a.f.contains($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.h() != null;
-      }
-
-      @Nullable
-      @Override
-      public fwq.b c() {
-         if (this.a.f.isEmpty()) {
-            return fwq.b.b;
-         } else if (this.a.f.size() > this.b.maxReportedMessageCount()) {
-            return fwq.b.c;
-         } else if (this.a.e == null) {
-            return fwq.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fwq.b.d : null;
+   private void a(jk $$0, Predicate<akg<? extends jj<?>>> $$1) {
+      this.a.forEach(($$2, $$3) -> {
+         if ($$1.test((akg<? extends jj<?>>)$$2)) {
+            $$3.a($$0.d((akg<? extends jj<?>>)$$2));
          }
+      });
+   }
+
+   public void a(jk $$0, boolean $$1) {
+      if ($$1) {
+         this.a($$0, jn.a::contains);
+      } else {
+         $$0.c().filter($$0x -> !jn.a.contains($$0x.a())).forEach($$0x -> $$0x.b().m());
+         this.a($$0, $$0x -> true);
+         b();
       }
 
-      @Override
-      public Either<fwq.c, fwq.b> a(fwu $$0) {
-         fwq.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new fwq.c(this.a.a, fwt.a, $$5));
-         }
-      }
-
-      private ReportEvidence b(fwu $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         fwo $$2 = new fwo(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.f, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
-
-      private ReportChatMessage a(fwj.a $$0, boolean $$1) {
-         xn $$2 = $$0.g().k();
-         xl $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(xe::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().l(), xe::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
-
-      public fwn.a d() {
-         return new fwn.a(this.a.a(), this.b);
-      }
+      a();
    }
 }

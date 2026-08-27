@@ -1,37 +1,96 @@
-public class fqr extends fse<cgl> {
-   public fqr(fur $$0) {
-      super($$0);
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+
+public class fqr {
+   public final fqr.d a;
+   public final ewo b;
+   public final fqr.a c;
+   public final fqr.b d;
+   public final fqr.c e;
+
+   public fqr(fqr.d $$0, ewo $$1, fqr.a $$2, fqr.b $$3, fqr.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static fux a(fuv $$0) {
-      fuz $$1 = fse.a($$0, 0.0F);
-      fva $$2 = $$1.a();
-      $$2.a("head", fuw.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fut.a(0.0F, 1.0F, 0.0F));
-      $$2.a("hat", fuw.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fut.a(0.0F, 1.0F, 0.0F));
-      $$2.a("right_leg", fuw.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fut.a(-1.9F, 11.0F, 0.0F));
-      $$2.a("left_leg", fuw.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fut.a(1.9F, 11.0F, 0.0F));
-      return fux.a($$1, 64, 32);
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : gnt.a(this.c.toPath(), this.d);
+      }
    }
 
-   public void a(cgl $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.k.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.k.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.k.g = (float) (Math.PI / 180.0) * $$0.A().d();
-      this.m.e = (float) (Math.PI / 180.0) * $$0.B().b();
-      this.m.f = (float) (Math.PI / 180.0) * $$0.B().c();
-      this.m.g = (float) (Math.PI / 180.0) * $$0.B().d();
-      this.o.e = (float) (Math.PI / 180.0) * $$0.C().b();
-      this.o.f = (float) (Math.PI / 180.0) * $$0.C().c();
-      this.o.g = (float) (Math.PI / 180.0) * $$0.C().d();
-      this.n.e = (float) (Math.PI / 180.0) * $$0.D().b();
-      this.n.f = (float) (Math.PI / 180.0) * $$0.D().c();
-      this.n.g = (float) (Math.PI / 180.0) * $$0.D().d();
-      this.q.e = (float) (Math.PI / 180.0) * $$0.E().b();
-      this.q.f = (float) (Math.PI / 180.0) * $$0.E().c();
-      this.q.g = (float) (Math.PI / 180.0) * $$0.E().d();
-      this.p.e = (float) (Math.PI / 180.0) * $$0.G().b();
-      this.p.f = (float) (Math.PI / 180.0) * $$0.G().c();
-      this.p.g = (float) (Math.PI / 180.0) * $$0.G().d();
-      this.l.a(this.k);
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+   }
+
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !ayu.h(this.b) || !ayu.h(this.c) || !ayu.h(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final fdt a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(fdt $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

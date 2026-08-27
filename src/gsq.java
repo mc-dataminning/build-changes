@@ -1,34 +1,110 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+public class gsq implements gsu {
+   private static final int a = 40;
+   private static final int b = 40;
+   private static final int c = 100;
+   private static final int d = 20;
+   private static final int e = -1;
+   private static final wu f = wu.a("tutorial.move.title", gst.a("forward"), gst.a("left"), gst.a("back"), gst.a("right"));
+   private static final wu g = wu.a("tutorial.move.description", gst.a("jump"));
+   private static final wu h = wu.c("tutorial.look.title");
+   private static final wu i = wu.c("tutorial.look.description");
+   private final gst j;
+   private fhp k;
+   private fhp l;
+   private int m;
+   private int n;
+   private int o;
+   private boolean p;
+   private boolean q;
+   private int r = -1;
+   private int s = -1;
 
-public abstract class gsq extends fkt {
-   protected static final int d = 17;
-   protected static final int r = 7;
-   protected static final long s = 5368709120L;
-   protected static final int u = 5000268;
-   protected static final int v = 7105644;
-   protected static final int w = 8388479;
-   protected static final int x = 3368635;
-   protected static final int y = 7107012;
-   protected static final int z = 8226750;
-   protected static final int A = 32;
-   private final List<gso> a = Lists.newArrayList();
-
-   public gsq(ws $$0) {
-      super($$0);
+   public gsq(gst $$0) {
+      this.j = $$0;
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   @Override
+   public void a() {
+      this.m++;
+      if (this.p) {
+         this.n++;
+         this.p = false;
+      }
+
+      if (this.q) {
+         this.o++;
+         this.q = false;
+      }
+
+      if (this.r == -1 && this.n > 40) {
+         if (this.k != null) {
+            this.k.c();
+            this.k = null;
+         }
+
+         this.r = this.m;
+      }
+
+      if (this.s == -1 && this.o > 40) {
+         if (this.l != null) {
+            this.l.c();
+            this.l = null;
+         }
+
+         this.s = this.m;
+      }
+
+      if (this.r != -1 && this.s != -1) {
+         if (this.j.f()) {
+            this.j.a(gsv.b);
+         } else {
+            this.j.a(gsv.f);
+         }
+      }
+
+      if (this.k != null) {
+         this.k.a((float)this.n / 40.0F);
+      }
+
+      if (this.l != null) {
+         this.l.a((float)this.o / 40.0F);
+      }
+
+      if (this.m >= 100) {
+         if (this.r == -1 && this.k == null) {
+            this.k = new fhp(fhp.a.a, f, g, true);
+            this.j.e().aA().a(this.k);
+         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
+            this.l = new fhp(fhp.a.b, h, i, true);
+            this.j.e().aA().a(this.l);
+         }
+      }
    }
 
-   protected gso a(gso $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   @Override
+   public void b() {
+      if (this.k != null) {
+         this.k.c();
+         this.k = null;
+      }
+
+      if (this.l != null) {
+         this.l.c();
+         this.l = null;
+      }
    }
 
-   public ws m() {
-      return wr.a(this.a.stream().map(gso::a).collect(Collectors.toList()));
+   @Override
+   public void a(gao $$0) {
+      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
+         this.p = true;
+      }
+   }
+
+   @Override
+   public void a(double $$0, double $$1) {
+      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
+         this.q = true;
+      }
    }
 }

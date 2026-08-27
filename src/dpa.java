@@ -1,51 +1,74 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public interface dpa {
-   dpa a = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dn().a($$2, $$3) && !$$2x.f() && !$$2x.N_()).stream().map(bql::cx).toList();
-   dpa b = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dn().a($$2, $$3) && !$$2x.N_()).stream().map(bql::cx).toList();
-   dpa c = ($$0, $$1, $$2, $$3) -> {
-      eta $$4 = new eta($$2).g($$3);
-      return $$1.a($$0, bqr.aI, $$4, bre::bB).stream().map(bql::cx).toList();
+public class dpa extends dnm implements dav {
+   private final czf a = new czf() {
+      @Override
+      public void a(dad $$0, in $$1, int $$2) {
+         $$0.a($$1, ddg.ct, $$2, 0);
+      }
+
+      @Override
+      public void a(@Nullable dad $$0, in $$1, dau $$2) {
+         super.a($$0, $$1, $$2);
+         if ($$0 != null) {
+            dqh $$3 = $$0.a_($$1);
+            $$0.a($$1, $$3, $$3, 4);
+         }
+      }
    };
 
-   List<UUID> detect(aqe var1, dpa.a var2, im var3, double var4);
+   public dpa(in $$0, dqh $$1) {
+      super(dno.j, $$0, $$1);
+   }
 
-   public interface a {
-      dpa.a a = new dpa.a() {
-         @Override
-         public List<aqf> a(aqe $$0, Predicate<? super ckl> $$1) {
-            return $$0.a($$1);
-         }
+   @Override
+   public void a(ua $$0, iy.a $$1) {
+      super.a($$0, $$1);
+      this.a.a(this.n, this.o, $$0);
+   }
 
-         @Override
-         public <T extends bql> List<T> a(aqe $$0, duf<bql, T> $$1, eta $$2, Predicate<? super T> $$3) {
-            return $$0.a($$1, $$2, $$3);
-         }
-      };
+   @Override
+   protected void b(ua $$0, iy.a $$1) {
+      super.b($$0, $$1);
+      this.a.a($$0);
+   }
 
-      List<? extends ckl> a(aqe var1, Predicate<? super ckl> var2);
+   public static void a(dad $$0, in $$1, dqh $$2, dpa $$3) {
+      $$3.a.a($$0, $$1);
+   }
 
-      <T extends bql> List<T> a(aqe var1, duf<bql, T> var2, eta var3, Predicate<? super T> var4);
+   public static void b(dad $$0, in $$1, dqh $$2, dpa $$3) {
+      $$3.a.a((aqh)$$0, $$1);
+   }
 
-      static dpa.a a(ckl $$0) {
-         return a(List.of($$0));
-      }
+   public abt b() {
+      return abt.a(this);
+   }
 
-      static dpa.a a(final List<ckl> $$0) {
-         return new dpa.a() {
-            @Override
-            public List<ckl> a(aqe $$0x, Predicate<? super ckl> $$1) {
-               return $$0.stream().filter($$1).toList();
-            }
+   @Override
+   public ua a(iy.a $$0) {
+      ua $$1 = this.d($$0);
+      $$1.r("SpawnPotentials");
+      return $$1;
+   }
 
-            @Override
-            public <T extends bql> List<T> a(aqe $$0x, duf<bql, T> $$1, eta $$2, Predicate<? super T> $$3) {
-               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
-            }
-         };
-      }
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      return this.a.a(this.n, $$0) ? true : super.a_($$0, $$1);
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   public void a(brn<?> $$0, ayg $$1) {
+      this.a.a($$0, this.n, $$1, this.o);
+      this.e();
+   }
+
+   public czf c() {
+      return this.a;
    }
 }

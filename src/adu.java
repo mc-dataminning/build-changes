@@ -1,36 +1,79 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Set;
 
-public class adu implements yz<abk> {
-   public static final yq<vs, adu> a = yz.a(adu::a, adu::new);
-   private final IntList b;
+public class adu implements zb<abm> {
+   public static final ys<vu, adu> a = zb.a(adu::a, adu::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final Set<bsn> g;
+   private final int h;
 
-   public adu(IntList $$0) {
-      this.b = new IntArrayList($$0);
+   public adu(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bsn> $$5, int $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   public adu(int... $$0) {
-      this.b = new IntArrayList($$0);
+   private adu(vu $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = bsn.a($$0.readUnsignedByte());
+      this.h = $$0.l();
    }
 
-   private adu(vs $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.k(bsn.a(this.g));
+      $$0.c(this.h);
    }
 
    @Override
-   public zb<adu> a() {
-      return afv.aj;
+   public zd<adu> a() {
+      return afx.ah;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public IntList b() {
+   public double b() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.h;
+   }
+
+   public Set<bsn> j() {
+      return this.g;
    }
 }

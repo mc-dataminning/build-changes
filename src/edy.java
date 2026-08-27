@@ -1,77 +1,59 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
 
-public class edy extends eec {
-   public static final Codec<edy> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, edy::new));
+public class edy extends edz {
+   public static final Codec<edy> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(edy::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   public edy(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected eea<?> a() {
+      return eea.b;
+   }
+
+   public edy(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected eed<?> a() {
-      return eed.b;
-   }
-
-   @Override
-   public List<eck.a> a(daa $$0, BiConsumer<im, dpy> $$1, ayd $$2, int $$3, im $$4, ebu $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      List<eck.a> $$6 = Lists.newArrayList();
-      ir $$7 = ir.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      im.a $$10 = new im.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
-
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
-
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
-      }
-
-      if ($$13.isPresent()) {
-         $$6.add(new eck.a(new im($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      ir $$16 = ir.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
+   public void a(edz.a $$0) {
+      ayg $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            in $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               a($$3, dma.d, $$0);
             }
-
-            $$19++;
          }
 
-         if ($$13.isPresent()) {
-            $$6.add(new eck.a(new im($$11, $$13.getAsInt(), $$12), 0, false));
+         if ($$1.i() < this.b) {
+            in $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               a($$4, dma.f, $$0);
+            }
          }
+
+         if ($$1.i() < this.b) {
+            in $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               a($$5, dma.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            in $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               a($$6, dma.c, $$0);
+            }
+         }
+      });
+   }
+
+   private static void a(in $$0, dqy $$1, edz.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (in var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.d();
       }
-
-      return $$6;
    }
 }

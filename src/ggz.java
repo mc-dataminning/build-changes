@@ -1,16 +1,35 @@
-public class ggz extends giu<bqw> {
-   private static final akf a = new akf("textures/entity/squid/glow_squid.png");
+public class ggz extends ggw<clr> {
+   private static final akh a = new akh("textures/entity/illager/evoker_fangs.png");
+   private final fsc<clr> f;
 
-   public ggz(ggn.a $$0, ftt<bqw> $$1) {
-      super($$0, $$1);
+   public ggz(ggx.a $$0) {
+      super($$0);
+      this.f = new fsc<>($$0.a(fva.ac));
    }
 
-   public akf a(bqw $$0) {
+   public void a(clr $$0, float $$1, float $$2, exx $$3, gbo $$4, int $$5) {
+      float $$6 = $$0.a($$2);
+      if ($$6 != 0.0F) {
+         float $$7 = 2.0F;
+         if ($$6 > 0.9F) {
+            $$7 *= (1.0F - $$6) / 0.1F;
+         }
+
+         $$3.a();
+         $$3.a(a.d.rotationDegrees(90.0F - $$0.dD()));
+         $$3.b(-$$7, -$$7, $$7);
+         float $$8 = 0.03125F;
+         $$3.a(0.0, -0.626, 0.0);
+         $$3.b(0.5F, 0.5F, 0.5F);
+         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dD(), $$0.dF());
+         eyb $$9 = $$4.getBuffer(this.f.a(a));
+         this.f.a($$3, $$9, $$5, gmp.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   public akh a(clr $$0) {
       return a;
-   }
-
-   protected int a(bqw $$0, im $$1) {
-      int $$2 = (int)axw.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

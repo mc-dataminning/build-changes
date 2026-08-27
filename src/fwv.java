@@ -1,75 +1,85 @@
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.Objects;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
 import java.util.UUID;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public class fwv extends fwq {
-   final Supplier<gnn> f;
-
-   fwv(UUID $$0, Instant $$1, UUID $$2, Supplier<gnn> $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+public interface fwv {
+   static fwv a(fxb $$0, UserApiService $$1) {
+      return new fwv.b($$0, $$1);
    }
 
-   public Supplier<gnn> a() {
-      return this.f;
+   CompletableFuture<Unit> a(UUID var1, fxd var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   public fwv c() {
-      fwv $$0 = new fwv(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
-   }
-
-   @Override
-   public fkt a(fkt $$0, fwu $$1) {
-      return new foy($$0, $$1, this);
-   }
-
-   public static class a extends fwq.a<fwv> {
-      public a(fwv $$0, AbuseReportLimits $$1) {
+   public static class a extends xu {
+      public a(wu $$0, Throwable $$1) {
          super($$0, $$1);
       }
+   }
 
-      public a(UUID $$0, Supplier<gnn> $$1, AbuseReportLimits $$2) {
-         super(new fwv(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+   public static record b(fxb a, UserApiService b) implements fwv {
+      private static final wu c = wu.c("gui.abuseReport.send.service_unavailable");
+      private static final wu d = wu.c("gui.abuseReport.send.http_error");
+      private static final wu e = wu.c("gui.abuseReport.send.json_error");
+
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fxd $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               wu $$5 = this.a(var7);
+               throw new CompletionException(new fwv.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               wu $$7 = this.a(var8);
+               throw new CompletionException(new fwv.a($$7, var8));
+            }
+         }, ac.g());
       }
 
       @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
+      public boolean a() {
+         return this.b.canSendReports();
       }
 
-      @Nullable
-      @Override
-      public fwq.b c() {
-         if (this.a.e == null) {
-            return fwq.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fwq.b.d : null;
-         }
+      private wu a(MinecraftClientHttpException $$0) {
+         return wu.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private wu a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new IncompatibleClassChangeError();
+         };
       }
 
       @Override
-      public Either<fwq.c, fwq.b> a(fwu $$0) {
-         fwq.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            gnn $$4 = this.a.f.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new fwq.c(this.a.a, fwt.b, $$6));
-         }
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public fxb c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

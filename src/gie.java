@@ -1,16 +1,18 @@
-public class gie extends ght<cdl, fsx<cdl>> {
-   private static final akf a = new akf("textures/entity/bear/polarbear.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gie(ggn.a $$0) {
-      super($$0, new fsx<>($$0.a(fuq.ba)), 0.9F);
+public class gie extends gid<cec, fru<cec>> {
+   private static final Map<cec.a, akh> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cec.a.b, new akh("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(cec.a.a, new akh("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public gie(ggx.a $$0) {
+      super($$0, new fru<>($$0.a(fva.aC)), 0.7F);
+      this.a(new gld<>(this, $$0.c()));
    }
 
-   public akf a(cdl $$0) {
-      return a;
-   }
-
-   protected void a(cdl $$0, exn $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
-      super.a($$0, $$1, $$2);
+   public akh a(cec $$0) {
+      return a.get($$0.u());
    }
 }

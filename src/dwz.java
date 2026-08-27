@@ -1,16 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
+import java.util.stream.LongStream;
 
-abstract class dwz implements dwx {
-   protected final List<dwx> e;
+public class dwz {
+   private long b;
+   private long c;
+   public static final Codec<dwz> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dwz($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   protected dwz(List<dwx> $$0) {
-      this.e = $$0;
+   public dwz(dwo.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   public static <T extends dwz> Codec<T> a(Function<List<dwx>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(dwx.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
+   public dwz(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
+      }
+   }
+
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

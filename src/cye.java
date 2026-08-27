@@ -1,35 +1,33 @@
-public class cye extends cxn {
-   public cye(cxn.a $$0, bqs... $$1) {
-      super($$0, avw.bc, $$1);
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class cye extends cyg {
+   private final Optional<awg<brn<?>>> b;
+
+   public cye(cyg.b $$0, Optional<awg<brn<?>>> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public int a(int $$0) {
-      return $$0 * 25;
+   public float a(int $$0, @Nullable brn<?> $$1) {
+      if (this.b.isEmpty()) {
+         return 1.0F + (float)Math.max(0, $$0 - 1) * 0.5F;
+      } else {
+         return $$1 != null && $$1.a(this.b.get()) ? (float)$$0 * 2.5F : 0.0F;
+      }
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 50;
+   public boolean a(cyg $$0) {
+      return !($$0 instanceof cye);
    }
 
    @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean i() {
-      return false;
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 3;
+   public void a(bsa $$0, brh $$1, int $$2) {
+      if (this.b.isPresent() && $$1 instanceof bsa $$3 && this.b.get() == avu.C && $$2 > 0 && $$3.ai().a(this.b.get())) {
+         int $$4 = 20 + $$0.ej().a(10 * $$2);
+         $$3.b(new bqt(bqv.b, $$4, 3));
+      }
    }
 }

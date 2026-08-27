@@ -1,4 +1,8 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record esb(Codec<? extends esc> a) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface esb {
 }

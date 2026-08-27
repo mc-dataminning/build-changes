@@ -1,29 +1,52 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-@FunctionalInterface
-public interface atr {
-   atr b = $$0 -> Optional.empty();
+public interface atr extends atu {
+   Set<String> a();
 
-   Optional<atm> getResource(akf var1);
+   List<atp> a(akh var1);
 
-   default atm getResourceOrThrow(akf $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
-   }
+   Map<akh, atp> b(String var1, Predicate<akh> var2);
 
-   default InputStream open(akf $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
-   }
+   Map<akh, List<atp>> c(String var1, Predicate<akh> var2);
 
-   default BufferedReader openAsReader(akf $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
-   }
+   Stream<asd> b();
 
-   static atr fromMap(Map<akf, atm> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
+   public static enum a implements atr {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
+      }
+
+      @Override
+      public Optional<atp> getResource(akh $$0) {
+         return Optional.empty();
+      }
+
+      @Override
+      public List<atp> a(akh $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<akh, atp> b(String $$0, Predicate<akh> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<akh, List<atp>> c(String $$0, Predicate<akh> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<asd> b() {
+         return Stream.of();
+      }
    }
 }

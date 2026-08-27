@@ -1,18 +1,26 @@
-public class csr extends cqb {
-   public csr(dcv $$0, cry.a $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record csr(iw<avb> e, int f, float g) {
+   public static final Codec<csr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avb.b.fieldOf("sound_event").forGetter(csr::a), axh.j.fieldOf("use_duration").forGetter(csr::b), axh.k.fieldOf("range").forGetter(csr::c)
+            )
+            .apply($$0, csr::new)
+   );
+   public static final ys<wf, csr> b = ys.a(avb.d, csr::a, yq.f, csr::b, yq.h, csr::c, csr::new);
+   public static final Codec<iw<csr>> c = akd.a(le.E, a);
+   public static final ys<wf, iw<csr>> d = yq.a(le.E, b);
+
+   public iw<avb> a() {
+      return this.e;
    }
 
-   @Override
-   public boq a(cvn $$0) {
-      return boq.d;
+   public int b() {
+      return this.f;
    }
 
-   @Override
-   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
-      etb $$3 = a($$0, $$1, czd.b.b);
-      etb $$4 = $$3.a($$3.a().c());
-      boq $$5 = super.a(new cvn($$1, $$2, $$4));
-      return new bor<>($$5, $$1.b($$2));
+   public float c() {
+      return this.g;
    }
 }

@@ -1,43 +1,15 @@
-import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
 
-public class aqq implements aqn {
-   private final aqn a;
-   private final bnj<Runnable> b;
-   private boolean c;
+public interface aqq {
+   void a(czk var1);
 
-   private aqq(aqn $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = bnj.a($$1, "progressListener");
-   }
+   void a(czk var1, @Nullable dtc var2);
 
-   public static aqq a(aqn $$0, Executor $$1) {
-      aqq $$2 = new aqq($$0, $$1);
-      $$2.a();
-      return $$2;
-   }
+   void a();
 
-   @Override
-   public void a(czb $$0) {
-      this.b.a(() -> this.a.a($$0));
-   }
+   void b();
 
-   @Override
-   public void a(czb $$0, @Nullable dst $$1) {
-      if (this.c) {
-         this.b.a(() -> this.a.a($$0, $$1));
-      }
-   }
-
-   @Override
-   public void a() {
-      this.c = true;
-      this.b.a(this.a::a);
-   }
-
-   @Override
-   public void b() {
-      this.c = false;
-      this.b.a(this.a::b);
+   static int a(int $$0) {
+      return 2 * $$0 + 1;
    }
 }

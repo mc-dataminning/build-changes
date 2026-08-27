@@ -1,94 +1,59 @@
-public class afq implements yz<abk> {
-   public static final yq<wd, afq> a = yz.a(afq::a, afq::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final int f;
-   private final iv<bpv> g;
-   private final int h;
-   private final int i;
-   private final byte j;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-   public afq(int $$0, bpx $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1.c();
-      this.h = $$1.e();
-      this.i = $$1.d();
-      byte $$3 = 0;
-      if ($$1.f()) {
-         $$3 = (byte)($$3 | 1);
-      }
+public class afq implements zb<abm> {
+   public static final ys<wf, afq> a = zb.a(afq::a, afq::new);
+   private final boolean b;
+   private final List<af> c;
+   private final Set<akh> d;
+   private final Map<akh, ah> e;
 
-      if ($$1.g()) {
-         $$3 = (byte)($$3 | 2);
-      }
-
-      if ($$1.h()) {
-         $$3 = (byte)($$3 | 4);
-      }
-
-      if ($$2) {
-         $$3 = (byte)($$3 | 8);
-      }
-
-      this.j = $$3;
+   public afq(boolean $$0, Collection<af> $$1, Set<akh> $$2, Map<akh, ah> $$3) {
+      this.b = $$0;
+      this.c = List.copyOf($$1);
+      this.d = Set.copyOf($$2);
+      this.e = Map.copyOf($$3);
    }
 
-   private afq(wd $$0) {
-      this.f = $$0.l();
-      this.g = yo.b(ld.R).decode($$0);
-      this.h = $$0.l();
-      this.i = $$0.l();
-      this.j = $$0.readByte();
+   private afq(wf $$0) {
+      this.b = $$0.readBoolean();
+      this.c = af.b.decode($$0);
+      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, vu::q);
+      this.e = $$0.a(vu::q, ah::b);
    }
 
-   private void a(wd $$0) {
-      $$0.c(this.f);
-      yo.b(ld.R).encode($$0, this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
-      $$0.k(this.j);
+   private void a(wf $$0) {
+      $$0.a(this.b);
+      af.b.encode($$0, this.c);
+      $$0.a(this.d, vu::a);
+      $$0.a(this.e, vu::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zb<afq> a() {
-      return afv.bc;
+   public zd<afq> a() {
+      return afx.ba;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.f;
+   public List<af> b() {
+      return this.c;
    }
 
-   public iv<bpv> e() {
-      return this.g;
+   public Set<akh> e() {
+      return this.d;
    }
 
-   public int f() {
-      return this.h;
+   public Map<akh, ah> f() {
+      return this.e;
    }
 
-   public int g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return (this.j & 2) != 0;
-   }
-
-   public boolean i() {
-      return (this.j & 1) != 0;
-   }
-
-   public boolean j() {
-      return (this.j & 4) != 0;
-   }
-
-   public boolean k() {
-      return (this.j & 8) != 0;
+   public boolean g() {
+      return this.b;
    }
 }

@@ -1,46 +1,53 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-class eud {
-   private final Reference2ObjectOpenHashMap<eub, eug> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+public class eud extends AbstractDoubleList implements eub {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-   @Nullable
-   public eug a(eub $$0) {
-      return (eug)this.a.get($$0);
+   protected eud(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public eug a(eub $$0, Consumer<eug> $$1) {
-      return (eug)this.a.computeIfAbsent($$0, $$1x -> {
-         eug $$2 = new eug();
-         $$1.accept($$2);
-         return $$2;
-      });
+   @Override
+   public int size() {
+      return this.a.size() + this.b.size();
    }
 
-   public boolean b(eub $$0) {
-      return this.a.remove($$0) != null;
+   @Override
+   public boolean a(eub.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
    }
 
-   public boolean a() {
-      return !this.a.isEmpty();
+   private boolean b(eub.a $$0) {
+      int $$1 = this.a.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
+         }
+      }
+
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public Object2IntMap<eub> b() {
-      Object2IntMap<eub> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
    }
 
-   void a(eub $$0, eug $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   Map<eub, eug> c() {
-      return Collections.unmodifiableMap(this.a);
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

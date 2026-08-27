@@ -1,45 +1,24 @@
-public class gkl extends gky<cdd, frt<cdd>> {
-   private final gba a;
+public class gkl extends gkt<chz, frv<chz>> {
+   private static final akh a = new akh("textures/entity/creeper/creeper_armor.png");
+   private final frv<chz> b;
 
-   public gkl(gii<cdd, frt<cdd>> $$0, gba $$1) {
+   public gkl(gis<chz, frv<chz>> $$0, fux $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new frv<>($$1.a(fva.I));
    }
 
-   public void a(exn $$0, gbe $$1, int $$2, cdd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fJ();
-      boolean $$11 = $$3.p_();
-      $$0.a();
-      if ($$11) {
-         float $$12 = 0.75F;
-         $$0.b(0.75F, 0.75F, 0.75F);
-         $$0.a(0.0F, 0.5F, 0.209375F);
-      }
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
 
-      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
-      float $$13 = $$3.G($$6);
-      $$0.a(a.f.rotation($$13));
-      $$0.a(a.d.rotationDegrees($$8));
-      $$0.a(a.b.rotationDegrees($$9));
-      if ($$3.p_()) {
-         if ($$10) {
-            $$0.a(0.4F, 0.26F, 0.15F);
-         } else {
-            $$0.a(0.06F, 0.26F, -0.5F);
-         }
-      } else if ($$10) {
-         $$0.a(0.46F, 0.26F, 0.22F);
-      } else {
-         $$0.a(0.06F, 0.27F, -0.5F);
-      }
+   @Override
+   protected akh a() {
+      return a;
+   }
 
-      $$0.a(a.b.rotationDegrees(90.0F));
-      if ($$10) {
-         $$0.a(a.f.rotationDegrees(90.0F));
-      }
-
-      csd $$14 = $$3.d(bqs.a);
-      this.a.a($$3, $$14, csa.h, false, $$0, $$1, $$2);
-      $$0.b();
+   @Override
+   protected fsb<chz> b() {
+      return this.b;
    }
 }

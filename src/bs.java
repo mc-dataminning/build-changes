@@ -3,9 +3,9 @@ import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
 public interface bs {
-   Codec<bs> a = lc.at.q().dispatch(bs::a, MapCodec::codec);
+   Codec<bs> a = ld.at.q().dispatch(bs::a, MapCodec::codec);
 
    MapCodec<? extends bs> a();
 
-   boolean a(bql var1, aqe var2, @Nullable etf var3);
+   boolean a(brh var1, aqh var2, @Nullable etp var3);
 }

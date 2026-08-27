@@ -1,56 +1,30 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class eai extends dyu<ebw> {
-   public eai(Codec<ebw> $$0) {
+public class eai extends dzd<ebc> {
+   public eai(Codec<ebc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyw<ebw> $$0) {
-      dap $$1 = $$0.b();
-      im $$2 = $$0.e();
-      ebw $$3 = $$0.f();
-      ayd $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         im $$6 = $$2.h($$5.getAsInt());
-         jq $$7 = new jq($$3.c, $$3.c, $$3.c);
-         efy $$8 = efy.a($$6.b($$7), $$6.a($$7));
-         return im.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dcx.kJ.n(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+   public boolean a(dzf<ebc> $$0) {
+      int $$1 = 0;
+      ayg $$2 = $$0.d();
+      day $$3 = $$0.b();
+      in $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-   private static OptionalInt a(dap $$0, im $$1, ebw $$2) {
-      Predicate<dpy> $$3 = $$0x -> $$0x.a(dcx.G);
-      Predicate<dpy> $$4 = $$0x -> !$$0x.a(dcx.G);
-      Optional<dvg> $$5 = dvg.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(dvg::c).orElseGet(OptionalInt::empty);
-   }
-
-   private boolean b(dap $$0, im $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
-         for (ir $$2 : ir.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
-            }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(dvz.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         in $$10 = new in($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dqh $$11 = ddg.mV.n().a(dkb.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(ddg.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
          }
-
-         return true;
-      } else {
-         return false;
       }
-   }
 
-   private boolean a(czv $$0, im $$1) {
-      dpy $$2 = $$0.a_($$1);
-      return $$2.a(dcx.G) || $$2.i();
+      return $$1 > 0;
    }
 }

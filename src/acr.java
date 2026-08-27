@@ -1,69 +1,146 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class acr implements yz<abk> {
-   public static final yq<vs, acr> a = yz.a(acr::a, acr::new);
-   public static final acr.a b = new acr.a(0);
-   public static final acr.a c = new acr.a(1);
-   public static final acr.a d = new acr.a(2);
-   public static final acr.a e = new acr.a(3);
-   public static final acr.a f = new acr.a(4);
-   public static final acr.a g = new acr.a(5);
-   public static final acr.a h = new acr.a(6);
-   public static final acr.a i = new acr.a(7);
-   public static final acr.a j = new acr.a(8);
-   public static final acr.a k = new acr.a(9);
-   public static final acr.a l = new acr.a(10);
-   public static final acr.a m = new acr.a(11);
-   public static final acr.a n = new acr.a(12);
-   public static final acr.a o = new acr.a(13);
-   public static final int p = 0;
-   public static final int q = 101;
-   public static final int r = 102;
-   public static final int s = 103;
-   public static final int t = 104;
-   private final acr.a u;
-   private final float v;
+public class acr implements zb<abm> {
+   public static final ys<wf, acr> a = zb.a(acr::a, acr::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final List<in> f;
+   private final float g;
+   private final float h;
+   private final float i;
+   private final kv j;
+   private final kv k;
+   private final czv.a l;
+   private final iw<avb> m;
 
-   public acr(acr.a $$0, float $$1) {
-      this.u = $$0;
-      this.v = $$1;
+   public acr(double $$0, double $$1, double $$2, float $$3, List<in> $$4, @Nullable etp $$5, czv.a $$6, kv $$7, kv $$8, iw<avb> $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = Lists.newArrayList($$4);
+      this.m = $$9;
+      if ($$5 != null) {
+         this.g = (float)$$5.c;
+         this.h = (float)$$5.d;
+         this.i = (float)$$5.e;
+      } else {
+         this.g = 0.0F;
+         this.h = 0.0F;
+         this.i = 0.0F;
+      }
+
+      this.l = $$6;
+      this.j = $$7;
+      this.k = $$8;
    }
 
-   private acr(vs $$0) {
-      this.u = (acr.a)acr.a.a.get($$0.readUnsignedByte());
-      this.v = $$0.readFloat();
+   private acr(wf $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      int $$1 = axz.a(this.b);
+      int $$2 = axz.a(this.c);
+      int $$3 = axz.a(this.d);
+      this.f = $$0.a($$3x -> {
+         int $$4 = $$3x.readByte() + $$1;
+         int $$5 = $$3x.readByte() + $$2;
+         int $$6 = $$3x.readByte() + $$3;
+         return new in($$4, $$5, $$6);
+      });
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readFloat();
+      this.l = $$0.b(czv.a.class);
+      this.j = kx.aY.decode($$0);
+      this.k = kx.aY.decode($$0);
+      this.m = avb.d.decode($$0);
    }
 
-   private void a(vs $$0) {
-      $$0.k(this.u.b);
-      $$0.a(this.v);
+   private void a(wf $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      int $$1 = axz.a(this.b);
+      int $$2 = axz.a(this.c);
+      int $$3 = axz.a(this.d);
+      $$0.a(this.f, ($$3x, $$4) -> {
+         int $$5 = $$4.u() - $$1;
+         int $$6 = $$4.v() - $$2;
+         int $$7 = $$4.w() - $$3;
+         $$3x.k($$5);
+         $$3x.k($$6);
+         $$3x.k($$7);
+      });
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.l);
+      kx.aY.encode($$0, this.j);
+      kx.aY.encode($$0, this.k);
+      avb.d.encode($$0, this.m);
    }
 
    @Override
-   public zb<acr> a() {
-      return afv.G;
+   public zd<acr> a() {
+      return afx.E;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public acr.a b() {
-      return this.u;
+   public float b() {
+      return this.g;
    }
 
    public float e() {
-      return this.v;
+      return this.h;
    }
 
-   public static class a {
-      static final Int2ObjectMap<acr.a> a = new Int2ObjectOpenHashMap();
-      final int b;
+   public float f() {
+      return this.i;
+   }
 
-      public a(int $$0) {
-         this.b = $$0;
-         a.put($$0, this);
-      }
+   public double g() {
+      return this.b;
+   }
+
+   public double h() {
+      return this.c;
+   }
+
+   public double i() {
+      return this.d;
+   }
+
+   public float j() {
+      return this.e;
+   }
+
+   public List<in> k() {
+      return this.f;
+   }
+
+   public czv.a l() {
+      return this.l;
+   }
+
+   public kv m() {
+      return this.j;
+   }
+
+   public kv n() {
+      return this.k;
+   }
+
+   public iw<avb> o() {
+      return this.m;
    }
 }

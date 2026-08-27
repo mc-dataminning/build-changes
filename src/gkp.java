@@ -1,27 +1,25 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class gkp extends gli<cdx, frw<cdx>> {
+   private final gbk a;
 
-public class gkp extends gky<cdf, fsg<cdf>> {
-   private static final Map<bqj.a, akf> a = ImmutableMap.of(
-      bqj.a.b,
-      new akf("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bqj.a.c,
-      new akf("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bqj.a.d,
-      new akf("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public gkp(gii<cdf, fsg<cdf>> $$0) {
+   public gkp(gis<cdx, frw<cdx>> $$0, gbk $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(exn $$0, gbe $$1, int $$2, cdf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.cf()) {
-         bqj.a $$10 = $$3.u();
-         if ($$10 != bqj.a.a) {
-            akf $$11 = a.get($$10);
-            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-         }
+   public void a(exx $$0, gbo $$1, int $$2, cdx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fs() == bru.b;
+      $$0.a();
+      float $$11 = 1.0F;
+      float $$12 = -1.0F;
+      float $$13 = axz.e($$3.dF()) / 60.0F;
+      if ($$3.dF() < 0.0F) {
+         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
+      } else {
+         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
       }
+
+      csz $$14 = $$10 ? $$3.eV() : $$3.eW();
+      this.a.a($$3, $$14, csw.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

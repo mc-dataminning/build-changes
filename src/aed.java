@@ -1,37 +1,19 @@
-public class aed implements yz<abk> {
-   public static final yq<vs, aed> a = yz.a(aed::a, aed::new);
-   private final double b;
-   private final double c;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   public aed(drp $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-   }
-
-   private aed(vs $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record aed(wu b, Optional<byte[]> c) implements zb<abm> {
+   public static final ys<ByteBuf, aed> a = ys.a(ww.f, aed::b, yq.j.a(yq::a), aed::e, aed::new);
 
    @Override
-   public zb<aed> a() {
-      return afv.ar;
+   public zd<aed> a() {
+      return afx.ap;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public Optional<byte[]> e() {
       return this.c;
-   }
-
-   public double e() {
-      return this.b;
    }
 }

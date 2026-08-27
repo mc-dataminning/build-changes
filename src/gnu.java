@@ -1,17 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
 
-public record gnu(String b, String c, boolean d) {
-   public static final Codec<gnu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axe.w.fieldOf("region").forGetter(gnu::b),
-               axe.w.fieldOf("name").forGetter(gnu::c),
-               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gnu::d)
-            )
-            .apply($$0, gnu::new)
-   );
+public class gnu {
+   @Deprecated
+   public static int[] a(atr $$0, akh $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         ewy $$3 = ewy.a($$2);
+      ) {
+         var4 = $$3.e();
+      }
 
-   public ws a() {
-      return ws.b(this.c + " (" + this.b + ")");
+      return var4;
    }
 }

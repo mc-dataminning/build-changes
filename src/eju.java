@@ -1,13 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public interface eju<P extends ejt> {
-   eju<ejs> a = a("always_true", ejs.a);
-   eju<ejq> b = a("linear_pos", ejq.a);
-   eju<ejf> c = a("axis_aligned_linear_pos", ejf.a);
+public class eju extends ekj {
+   public static final Codec<eju> a = dqh.b.fieldOf("block_state").xmap(eju::new, $$0 -> $$0.b).codec();
+   private final dqh b;
 
-   Codec<P> codec();
+   public eju(dqh $$0) {
+      this.b = $$0;
+   }
 
-   static <P extends ejt> eju<P> a(String $$0, Codec<P> $$1) {
-      return ji.a(lc.q, $$0, () -> $$1);
+   @Override
+   public boolean a(dqh $$0, ayg $$1) {
+      return $$0 == this.b;
+   }
+
+   @Override
+   protected ekk<?> a() {
+      return ekk.c;
    }
 }

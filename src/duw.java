@@ -1,14 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface duw<T extends duv> {
-   duw<dun> a = a("block", new dun.a());
-   duw<dup> b = a("entity", new dup.a());
+public class duw implements dve {
+   public static final Codec<duw> a = RecordCodecBuilder.create($$0 -> $$0.group(in.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, duw::new));
+   public static final ys<wf, duw> b = ys.a(in.b, $$0 -> $$0.e, duw::new);
+   private final in e;
 
-   Codec<T> a();
+   public duw(in $$0) {
+      this.e = $$0;
+   }
 
-   yq<wd, T> b();
+   @Override
+   public Optional<etp> a(dad $$0) {
+      return Optional.of(etp.b(this.e));
+   }
 
-   static <S extends duw<T>, T extends duv> S a(String $$0, S $$1) {
-      return ji.a(lc.v, $$0, $$1);
+   @Override
+   public dvf<duw> a() {
+      return dvf.a;
+   }
+
+   public static class a implements dvf<duw> {
+      @Override
+      public Codec<duw> a() {
+         return duw.a;
+      }
+
+      @Override
+      public ys<wf, duw> b() {
+         return duw.b;
+      }
    }
 }

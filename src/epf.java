@@ -1,59 +1,64 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class epf extends epo {
-   public static final Codec<epf> a = RecordCodecBuilder.create($$0 -> a($$0).and(epf.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, epf::new));
-   private final epf.a b;
+public class epf extends eou {
+   public static final Codec<epf> a = a(epf::new);
 
-   private epf(List<erh> $$0, epf.a $$1) {
-      super($$0);
-      this.b = $$1;
+   epf(List<epb> $$0, List<erq> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public epq b() {
-      return epr.p;
+   public epc a() {
+      return eoz.h;
    }
 
    @Override
-   public Set<eqq<?>> a() {
-      return ImmutableSet.of(this.b.g);
+   protected eot a(List<? extends eot> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (eot)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (eot $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public csd a(csd $$0, eoa $$1) {
-      if ($$1.c(this.b.g) instanceof bov $$3) {
-         $$0.b(jz.d, $$3.af());
+   public static epf.a a(epb.a<?>... $$0) {
+      return new epf.a($$0);
+   }
+
+   public static class a extends epb.a<epf.a> {
+      private final Builder<epb> a = ImmutableList.builder();
+
+      public a(epb.a<?>... $$0) {
+         for (epb.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      return $$0;
-   }
-
-   public static epo.a<?> a(epf.a $$0) {
-      return a($$1 -> new epf($$1, $$0));
-   }
-
-   public static enum a implements ayq {
-      a("this", eqt.a),
-      b("killer", eqt.d),
-      c("killer_player", eqt.b),
-      d("block_entity", eqt.h);
-
-      public static final Codec<epf.a> e = ayq.a(epf.a::values);
-      private final String f;
-      final eqq<?> g;
-
-      private a(String $$0, eqq<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
+      protected epf.a a() {
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.f;
+      public epf.a c(epb.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public epb b() {
+         return new epf(this.a.build(), this.f());
       }
    }
 }

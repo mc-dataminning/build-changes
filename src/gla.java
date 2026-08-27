@@ -1,49 +1,24 @@
-public class gla extends gky<cdp, fth<cdp>> {
-   private static final akf a = new akf("textures/entity/sheep/sheep_fur.png");
-   private final ftg<cdp> b;
+public class gla extends gli<ceb, fsq<ceb>> {
+   private final gci a;
 
-   public gla(gii<cdp, fth<cdp>> $$0, fun $$1) {
+   public gla(gis<ceb, fsq<ceb>> $$0, gci $$1) {
       super($$0);
-      this.b = new ftg<>($$1.a(fuq.bi));
+      this.a = $$1;
    }
 
-   public void a(exn $$0, gbe $$1, int $$2, cdp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.y()) {
-         if ($$3.cf()) {
-            fcu $$10 = fcu.Q();
-            boolean $$11 = $$10.b($$3);
-            if ($$11) {
-               this.c().a(this.b);
-               this.b.a($$3, $$4, $$5, $$6);
-               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-               exr $$12 = $$1.getBuffer(gbm.r(a));
-               this.b.a($$0, $$12, $$2, gho.c($$3, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
-            }
-         } else {
-            float $$21;
-            float $$22;
-            float $$23;
-            if ($$3.ae() && "jeb_".equals($$3.ad().getString())) {
-               int $$13 = 25;
-               int $$14 = $$3.ai / 25 + $$3.aj();
-               int $$15 = cqw.values().length;
-               int $$16 = $$14 % $$15;
-               int $$17 = ($$14 + 1) % $$15;
-               float $$18 = ((float)($$3.ai % 25) + $$6) / 25.0F;
-               float[] $$19 = cdp.a(cqw.a($$16));
-               float[] $$20 = cdp.a(cqw.a($$17));
-               $$21 = $$19[0] * (1.0F - $$18) + $$20[0] * $$18;
-               $$22 = $$19[1] * (1.0F - $$18) + $$20[1] * $$18;
-               $$23 = $$19[2] * (1.0F - $$18) + $$20[2] * $$18;
-            } else {
-               float[] $$24 = cdp.a($$3.u());
-               $$21 = $$24[0];
-               $$22 = $$24[1];
-               $$23 = $$24[2];
-            }
-
-            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21, $$22, $$23);
-         }
+   public void a(exx $$0, gbo $$1, int $$2, ceb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.gp() != 0) {
+         $$0.a();
+         fvb $$10 = this.c().c();
+         $$10.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$11 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(ddg.bT.n(), $$0, $$1, $$2, gmp.d);
+         $$0.b();
       }
    }
 }

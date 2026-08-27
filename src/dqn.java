@@ -1,101 +1,96 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.lang.reflect.Array;
+import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
-public record dqn(String r, boolean s, boolean t, boolean u, dqn.a v, dki w, auy x, auy y, auy z, auy A, auy B, auy C, auy D, auy E) {
-   private static final Map<String, dqn> F = new Object2ObjectArrayMap();
-   public static final Codec<dqn> a = axe.a(dqn::b, F::get);
-   public static final dqn b = a(new dqn("iron", false, false, false, dqn.a.a, dki.g, auz.nc, auz.nd, auz.nk, auz.nl, auz.ox, auz.oy, auz.yP, auz.yQ));
-   public static final dqn c = a(new dqn("copper", true, true, false, dqn.a.a, dki.aj, auz.fI, auz.fJ, auz.fP, auz.fQ, auz.ox, auz.oy, auz.yP, auz.yQ));
-   public static final dqn d = a(new dqn("gold", false, true, false, dqn.a.a, dki.g, auz.nc, auz.nd, auz.nk, auz.nl, auz.ox, auz.oy, auz.yP, auz.yQ));
-   public static final dqn e = a(new dqn("stone", true, true, false, dqn.a.b, dki.f, auz.nc, auz.nd, auz.nk, auz.nl, auz.yU, auz.yV, auz.yP, auz.yQ));
-   public static final dqn f = a(
-      new dqn("polished_blackstone", true, true, false, dqn.a.b, dki.f, auz.nc, auz.nd, auz.nk, auz.nl, auz.yU, auz.yV, auz.yP, auz.yQ)
-   );
-   public static final dqn g = a(new dqn("oak"));
-   public static final dqn h = a(new dqn("spruce"));
-   public static final dqn i = a(new dqn("birch"));
-   public static final dqn j = a(new dqn("acacia"));
-   public static final dqn k = a(new dqn("cherry", true, true, true, dqn.a.a, dki.aU, auz.eE, auz.eF, auz.eG, auz.eH, auz.eK, auz.eL, auz.eI, auz.eJ));
-   public static final dqn l = a(new dqn("jungle"));
-   public static final dqn m = a(new dqn("dark_oak"));
-   public static final dqn n = a(new dqn("crimson", true, true, true, dqn.a.a, dki.aT, auz.qA, auz.qB, auz.qC, auz.qD, auz.qG, auz.qH, auz.qE, auz.qF));
-   public static final dqn o = a(new dqn("warped", true, true, true, dqn.a.a, dki.aT, auz.qA, auz.qB, auz.qC, auz.qD, auz.qG, auz.qH, auz.qE, auz.qF));
-   public static final dqn p = a(new dqn("mangrove"));
-   public static final dqn q = a(new dqn("bamboo", true, true, true, dqn.a.a, dki.aS, auz.bo, auz.bp, auz.bq, auz.br, auz.bu, auz.bv, auz.bs, auz.bt));
+public class dqn {
+   private static final Joiner a = Joiner.on(",");
+   private final List<String[]> b = Lists.newArrayList();
+   private final Map<Character, Predicate<dql>> c = Maps.newHashMap();
+   private int d;
+   private int e;
 
-   public dqn(String $$0) {
-      this($$0, true, true, true, dqn.a.a, dki.b, auz.CF, auz.CG, auz.CH, auz.CI, auz.CL, auz.CM, auz.CJ, auz.CK);
+   private dqn() {
+      this.c.put(' ', $$0 -> true);
    }
 
-   private static dqn a(dqn $$0) {
-      F.put($$0.r, $$0);
+   public dqn a(String... $$0) {
+      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
+         if (this.b.isEmpty()) {
+            this.d = $$0.length;
+            this.e = $$0[0].length();
+         }
+
+         if ($$0.length != this.d) {
+            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
+         } else {
+            for (String $$1 : $$0) {
+               if ($$1.length() != this.e) {
+                  throw new IllegalArgumentException(
+                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
+                  );
+               }
+
+               for (char $$2 : $$1.toCharArray()) {
+                  if (!this.c.containsKey($$2)) {
+                     this.c.put($$2, null);
+                  }
+               }
+            }
+
+            this.b.add($$0);
+            return this;
+         }
+      } else {
+         throw new IllegalArgumentException("Empty pattern for aisle");
+      }
+   }
+
+   public static dqn a() {
+      return new dqn();
+   }
+
+   public dqn a(char $$0, Predicate<dql> $$1) {
+      this.c.put($$0, $$1);
+      return this;
+   }
+
+   public dqm b() {
+      return new dqm(this.c());
+   }
+
+   private Predicate<dql>[][][] c() {
+      this.d();
+      Predicate<dql>[][][] $$0 = (Predicate<dql>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.e; $$3++) {
+               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+            }
+         }
+      }
+
       return $$0;
    }
 
-   public static Stream<dqn> a() {
-      return F.values().stream();
-   }
+   private void d() {
+      List<Character> $$0 = Lists.newArrayList();
 
-   public String b() {
-      return this.r;
-   }
+      for (Entry<Character, Predicate<dql>> $$1 : this.c.entrySet()) {
+         if ($$1.getValue() == null) {
+            $$0.add($$1.getKey());
+         }
+      }
 
-   public boolean c() {
-      return this.s;
-   }
-
-   public boolean d() {
-      return this.t;
-   }
-
-   public boolean e() {
-      return this.u;
-   }
-
-   public dqn.a f() {
-      return this.v;
-   }
-
-   public dki g() {
-      return this.w;
-   }
-
-   public auy h() {
-      return this.x;
-   }
-
-   public auy i() {
-      return this.y;
-   }
-
-   public auy j() {
-      return this.z;
-   }
-
-   public auy k() {
-      return this.A;
-   }
-
-   public auy l() {
-      return this.B;
-   }
-
-   public auy m() {
-      return this.C;
-   }
-
-   public auy n() {
-      return this.D;
-   }
-
-   public auy o() {
-      return this.E;
-   }
-
-   public static enum a {
-      a,
-      b;
+      if (!$$0.isEmpty()) {
+         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
+      }
    }
 }

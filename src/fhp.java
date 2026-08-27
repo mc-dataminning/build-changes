@@ -1,73 +1,84 @@
-import org.joml.Matrix4f;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fhp {
-   private final fhn a;
-   private final float b;
-   private final float c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public class fhp implements fhn {
+   private static final akh g = new akh("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
+   private final fhp.a h;
+   private final wu i;
+   @Nullable
+   private final wu j;
+   private fhn.a k = fhn.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
 
-   public fhp(fhn $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public fhp(fhp.a $$0, wu $$1, @Nullable wu $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
    }
 
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, exr $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      float $$10 = $$1 + this.f;
-      float $$11 = $$1 + this.g;
-      float $$12 = $$2 + this.h;
-      float $$13 = $$2 + this.i;
-      float $$14 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
-      float $$15 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
-      $$4.a($$3, $$10 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).b($$9).e();
-      $$4.a($$3, $$10 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).b($$9).e();
-      $$4.a($$3, $$11 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).b($$9).e();
-      $$4.a($$3, $$11 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
+   @Override
+   public fhn.a a(fer $$0, fho $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
+      } else {
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
+      }
+
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = axz.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
+         } else {
+            $$4 = -11206656;
+         }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
+      }
+
+      return this.k;
    }
 
-   public void a(fhp.a $$0, Matrix4f $$1, exr $$2, int $$3) {
-      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
-      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
-      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
-      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
+   public void c() {
+      this.k = fhn.a.b;
    }
 
-   public gbm a(fef.a $$0) {
-      return this.a.a($$0);
+   public void a(float $$0) {
+      this.n = $$0;
    }
 
-   public static class a {
-      protected final float a;
-      protected final float b;
-      protected final float c;
-      protected final float d;
-      protected final float e;
-      protected final float f;
-      protected final float g;
-      protected final float h;
-      protected final float i;
+   public static enum a {
+      a(new akh("toast/movement_keys")),
+      b(new akh("toast/mouse")),
+      c(new akh("toast/tree")),
+      d(new akh("toast/recipe_book")),
+      e(new akh("toast/wooden_planks")),
+      f(new akh("toast/social_interactions")),
+      g(new akh("toast/right_click"));
 
-      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
+      private final akh h;
+
+      private a(akh $$0) {
+         this.h = $$0;
+      }
+
+      public void a(fer $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
       }
    }
 }

@@ -1,55 +1,44 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djn extends dch {
-   public static final MapCodec<djn> a = b(djn::new);
-   public static final dqp b = dqo.E;
-   private final bnv c = bns.a(5);
+public abstract class djn extends dfh {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final eui h = dde.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final eui i = dde.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final eui j = dde.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<djn> a() {
-      return a;
-   }
-
-   public djn(dpx.d $$0) {
+   protected djn(dqg.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(b);
-   }
+   protected abstract MapCodec<? extends djn> a();
 
    @Override
-   protected void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
       }
    }
 
-   @Nullable
    @Override
-   public dnd a(im $$0, dpy $$1) {
-      return new doj($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
-      return $$0.B ? null : a($$2, dnf.K, doj::a);
+   protected dqh a(dqh $$0, djr $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   protected djb b_(dpy $$0) {
-      return djb.c;
+   protected dqh a(dqh $$0, dib $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
    }
 
    @Override
-   protected void a(dpy $$0, aqe $$1, im $$2, csd $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
-      }
+   protected boolean a(dqh $$0, emp $$1) {
+      return false;
    }
 }

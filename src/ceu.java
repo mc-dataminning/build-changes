@@ -1,91 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-
 public class ceu {
-   public static final int a = 20;
-   public static final int b = 7;
-   private static final bob i = bob.a(5, 16);
-   private static final float j = 1.0F;
-   private static final float k = 1.25F;
-   private static final float l = 1.25F;
-   private static final float m = 2.0F;
-   private static final float n = 1.25F;
-   private static final bob o = bob.a(600, 1200);
-   public static final int c = 5;
-   public static final int d = 5;
-   public static final float e = 3.5714288F;
-   private static final bob p = bob.a(600, 6000);
-   private static final bob q = bob.a(100, 300);
-   private static final cbu r = cbu.a().a($$0 -> !$$0.ai().equals(bqr.X) && $$0.dN().C_().a($$0.cI()));
-   private static final float s = 3.0F;
-   public static final int f = 4;
-   public static final float g = 2.5F;
-   public static final float h = 1.0F;
+   public static final akg<cet> a = a("pale");
+   public static final akg<cet> b = a("spotted");
+   public static final akg<cet> c = a("snowy");
+   public static final akg<cet> d = a("black");
+   public static final akg<cet> e = a("ashen");
+   public static final akg<cet> f = a("rusty");
+   public static final akg<cet> g = a("woods");
+   public static final akg<cet> h = a("chestnut");
+   public static final akg<cet> i = a("striped");
 
-   protected static void a(cet $$0, ayd $$1) {
-      $$0.dQ().a(cah.S, o.a($$1));
-      $$0.dQ().a(cah.V, p.a($$1));
+   private static akg<cet> a(String $$0) {
+      return akg.a(le.m, new akh($$0));
    }
 
-   protected static bsf<?> a(bsf<cet> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      e($$0);
-      $$0.a(ImmutableSet.of(cma.a));
-      $$0.b(cma.b);
-      $$0.f();
-      return $$0;
+   static void a(ql<cet> $$0, akg<cet> $$1, String $$2, akg<dbc> $$3) {
+      a($$0, $$1, $$2, ja.a($$0.a(le.az).b($$3)));
    }
 
-   private static void b(bsf<cet> $$0) {
-      $$0.a(cma.a, 0, ImmutableList.of(new bvq(0.8F), new bsr(2.0F), new buc(45, 90), new bug(), new btc(cah.P), new btc(cah.S), new btc(cah.V)));
+   static void a(ql<cet> $$0, akg<cet> $$1, String $$2, awg<dbc> $$3) {
+      a($$0, $$1, $$2, $$0.a(le.az).b($$3));
    }
 
-   private static void c(bsf<cet> $$0) {
-      $$0.a(
-         cma.b,
-         ImmutableList.of(
-            Pair.of(0, buw.a(bqr.bx, 6.0F, bob.a(30, 60))),
-            Pair.of(0, new bsq(bqr.X)),
-            Pair.of(1, new btj($$0x -> 1.25F)),
-            Pair.of(2, bst.a(i, 1.25F)),
-            Pair.of(3, new but(ImmutableList.of(Pair.of(buo.a(1.0F), 2), Pair.of(bvd.a(1.0F, 3), 2), Pair.of(new btg(30, 60), 1))))
-         ),
-         ImmutableSet.of(Pair.of(cah.W, cai.b), Pair.of(cah.T, cai.b))
-      );
+   static void a(ql<cet> $$0, akg<cet> $$1, String $$2, ja<dbc> $$3) {
+      akh $$4 = new akh("entity/wolf/" + $$2);
+      akh $$5 = new akh("entity/wolf/" + $$2 + "_tame");
+      akh $$6 = new akh("entity/wolf/" + $$2 + "_angry");
+      $$0.a($$1, new cet($$4, $$5, $$6, $$3));
    }
 
-   private static void d(bsf<cet> $$0) {
-      $$0.a(
-         cma.q,
-         ImmutableList.of(Pair.of(0, new btx(o, auz.kY)), Pair.of(1, new btz<>(o, 5, 5, 3.5714288F, $$0x -> $$0x.gz() ? auz.kT : auz.kJ))),
-         ImmutableSet.of(Pair.of(cah.O, cai.b), Pair.of(cah.r, cai.b), Pair.of(cah.m, cai.b), Pair.of(cah.S, cai.b))
-      );
+   public static iw<cet> a(jk $$0, iw<dbc> $$1) {
+      jj<cet> $$2 = $$0.d(le.m);
+      return $$2.h().filter($$1x -> ((cet)$$1x.a()).d().a($$1)).findFirst().orElse($$2.g(a));
    }
 
-   private static void e(bsf<cet> $$0) {
-      $$0.a(
-         cma.r,
-         ImmutableList.of(
-            Pair.of(
-               0,
-               new bum(
-                  $$0x -> $$0x.gz() ? q : p, r, 3.0F, $$0x -> $$0x.p_() ? 1.0 : 2.5, $$0x -> $$0x.gz() ? auz.kW : auz.kM, $$0x -> $$0x.gz() ? auz.kX : auz.kN
-               )
-            ),
-            Pair.of(1, new bul<>($$0x -> $$0x.gz() ? q.a() : p.a(), 4, 7, 1.25F, r, 20, $$0x -> $$0x.gz() ? auz.kV : auz.kL))
-         ),
-         ImmutableSet.of(Pair.of(cah.O, cai.b), Pair.of(cah.r, cai.b), Pair.of(cah.V, cai.b))
-      );
-   }
-
-   public static void a(cet $$0) {
-      $$0.dQ().a(ImmutableList.of(cma.r, cma.q, cma.b));
-   }
-
-   public static cwd a() {
-      return cwd.a(csg.pw);
+   public static void a(ql<cet> $$0) {
+      a($$0, a, "wolf", dbj.p);
+      a($$0, b, "wolf_spotted", avq.k);
+      a($$0, c, "wolf_snowy", dbj.F);
+      a($$0, d, "wolf_black", dbj.n);
+      a($$0, e, "wolf_ashen", dbj.q);
+      a($$0, f, "wolf_rusty", avq.i);
+      a($$0, g, "wolf_woods", dbj.i);
+      a($$0, h, "wolf_chestnut", dbj.o);
+      a($$0, i, "wolf_striped", avq.f);
    }
 }

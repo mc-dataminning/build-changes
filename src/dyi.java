@@ -1,57 +1,118 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dyi extends dyj {
-   public dyi(Codec<ebf> $$0) {
+public class dyi extends dzd<ebb> {
+   private static final ImmutableList<dde> a = ImmutableList.of(ddg.H, ddg.F, ddg.kJ, ddg.dW, ddg.fn, ddg.fo, ddg.fp, ddg.fq, ddg.cv, ddg.ct);
+   private static final int b = 5;
+   private static final int c = 50;
+   private static final int d = 8;
+   private static final int an = 15;
+
+   public dyi(Codec<ebb> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(czv $$0, ayd $$1, im $$2, dpy $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
+   public boolean a(dzf<ebb> $$0) {
+      int $$1 = $$0.c().e();
+      in $$2 = $$0.e();
+      day $$3 = $$0.b();
+      ayg $$4 = $$0.d();
+      ebb $$5 = $$0.f();
+      if (!a($$3, $$1, $$2.j())) {
          return false;
       } else {
-         ir $$4 = ir.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<ir> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+         int $$6 = $$5.b().a($$4);
+         boolean $$7 = $$4.i() < 0.9F;
+         int $$8 = Math.min($$6, $$7 ? 5 : 8);
+         int $$9 = $$7 ? 50 : 15;
+         boolean $$10 = false;
 
-         for (ir $$8 : $$6.subList(0, $$5)) {
-            im.a $$9 = $$2.j();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            ir $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(ir.b);
-               ir[] $$13 = new ir[]{$$8, ir.b};
-               $$11 = ac.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
-
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
-
-            $$9.c($$11.g());
-            $$9.c(ir.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(ir.b);
-               }
+         for (in $$11 : in.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
+            int $$12 = $$6 - $$11.k($$2);
+            if ($$12 >= 0) {
+               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
             }
          }
 
-         return true;
+         return $$10;
       }
+   }
+
+   private boolean a(dae $$0, int $$1, in $$2, int $$3, int $$4) {
+      boolean $$5 = false;
+
+      for (in $$6 : in.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
+         int $$7 = $$6.k($$2);
+         in $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
+         if ($$8 != null) {
+            int $$9 = $$3 - $$7 / 2;
+
+            for (in.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
+               if (a($$0, $$1, (in)$$10)) {
+                  this.a($$0, $$10, ddg.dY.n());
+                  $$10.c(is.b);
+                  $$5 = true;
+               } else {
+                  if (!$$0.a_($$10).a(ddg.dY)) {
+                     break;
+                  }
+
+                  $$10.c(is.b);
+               }
+            }
+         }
+      }
+
+      return $$5;
+   }
+
+   @Nullable
+   private static in a(dae $$0, int $$1, in.a $$2, int $$3) {
+      while ($$2.v() > $$0.I_() + 1 && $$3 > 0) {
+         $$3--;
+         if (a($$0, $$1, $$2)) {
+            return $$2;
+         }
+
+         $$2.c(is.a);
+      }
+
+      return null;
+   }
+
+   private static boolean a(dae $$0, int $$1, in.a $$2) {
+      if (!a($$0, $$1, (in)$$2)) {
+         return false;
+      } else {
+         dqh $$3 = $$0.a_($$2.c(is.a));
+         $$2.c(is.b);
+         return !$$3.i() && !a.contains($$3.b());
+      }
+   }
+
+   @Nullable
+   private static in a(dae $$0, in.a $$1, int $$2) {
+      while ($$1.v() < $$0.al() && $$2 > 0) {
+         $$2--;
+         dqh $$3 = $$0.a_($$1);
+         if (a.contains($$3.b())) {
+            return null;
+         }
+
+         if ($$3.i()) {
+            return $$1;
+         }
+
+         $$1.c(is.b);
+      }
+
+      return null;
+   }
+
+   private static boolean a(dae $$0, int $$1, in $$2) {
+      dqh $$3 = $$0.a_($$2);
+      return $$3.i() || $$3.a(ddg.H) && $$2.v() <= $$1;
    }
 }

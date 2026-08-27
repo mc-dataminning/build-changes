@@ -1,91 +1,71 @@
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class akd<T> extends ajx<T> {
-   private final akd.b b;
+public final class akd<E> implements Codec<iw<E>> {
+   private final akg<? extends jj<E>> a;
+   private final Codec<E> b;
+   private final boolean c;
 
-   private static akd.b a(final akd.b $$0) {
-      return new akd.b() {
-         private final Map<ake<? extends ji<?>>, Optional<? extends akd.a<?>>> b = new HashMap<>();
-
-         @Override
-         public <T> Optional<akd.a<T>> a(ake<? extends ji<? extends T>> $$0x) {
-            return (Optional<akd.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
-         }
-      };
+   public static <E> akd<E> a(akg<? extends jj<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, true);
    }
 
-   public static <T> akd<T> a(DynamicOps<T> $$0, final ix.a $$1) {
-      return a($$0, a(new akd.b() {
-         @Override
-         public <E> Optional<akd.a<E>> a(ake<? extends ji<? extends E>> $$0) {
-            return $$1.a($$0).map(akd.a::a);
-         }
-      }));
+   public static <E> akd<E> a(akg<? extends jj<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return new akd<>($$0, $$1, $$2);
    }
 
-   public static <T> akd<T> a(DynamicOps<T> $$0, akd.b $$1) {
-      return new akd<>($$0, $$1);
-   }
-
-   public static <T> Dynamic<T> a(Dynamic<T> $$0, ix.a $$1) {
-      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
-   }
-
-   private akd(DynamicOps<T> $$0, akd.b $$1) {
-      super($$0);
+   private akd(akg<? extends jj<E>> $$0, Codec<E> $$1, boolean $$2) {
+      this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public <U> akd<U> a(DynamicOps<U> $$0) {
-      return (akd<U>)($$0 == this.a ? this : new akd((DynamicOps<T>)$$0, this.b));
+   public <T> DataResult<T> a(iw<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof akf<?> $$3) {
+         Optional<iz<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
+
+            return (DataResult<T>)$$0.d().map($$2x -> akh.a.encode($$2x.a(), $$1, $$2), $$2x -> this.b.encode($$2x, $$1, $$2));
+         }
+      }
+
+      return this.b.encode($$0.a(), $$1, $$2);
    }
 
-   public <E> Optional<iy<E>> a(ake<? extends ji<? extends E>> $$0) {
-      return this.b.a($$0).map(akd.a::a);
-   }
-
-   public <E> Optional<iw<E>> b(ake<? extends ji<? extends E>> $$0) {
-      return this.b.a($$0).map(akd.a::b);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, iw<E>> c(ake<? extends ji<? extends E>> $$0) {
-      return axe.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof akd<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, iv.c<E>> d(ake<E> $$0) {
-      ake<? extends ji<E>> $$1 = ake.a($$0.b());
-      return axe.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof akd<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static record a<T>(iy<T> a, iw<T> b, Lifecycle c) {
-      public static <T> akd.a<T> a(ix.b<T> $$0) {
-         return new akd.a<>($$0, $$0, $$0.g());
+   public <T> DataResult<Pair<iw<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof akf<?> $$2) {
+         Optional<ix<E>> $$3 = $$2.b(this.a);
+         if ($$3.isEmpty()) {
+            return DataResult.error(() -> "Registry does not exist: " + this.a);
+         } else {
+            ix<E> $$4 = $$3.get();
+            DataResult<Pair<akh, T>> $$5 = akh.a.decode($$0, $$1);
+            if ($$5.result().isEmpty()) {
+               return !this.c ? DataResult.error(() -> "Inline definitions not allowed here") : this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(iw::a));
+            } else {
+               Pair<akh, T> $$6 = (Pair<akh, T>)$$5.result().get();
+               akg<E> $$7 = akg.a(this.a, (akh)$$6.getFirst());
+               return $$4.a($$7)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$7))
+                  .map($$1x -> Pair.of($$1x, $$6.getSecond()))
+                  .setLifecycle(Lifecycle.stable());
+            }
+         }
+      } else {
+         return this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(iw::a));
       }
    }
 
-   public interface b {
-      <T> Optional<akd.a<T>> a(ake<? extends ji<? extends T>> var1);
+   @Override
+   public String toString() {
+      return "RegistryFileCodec[" + this.a + " " + this.b + "]";
    }
 }

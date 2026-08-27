@@ -1,66 +1,125 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Locale;
 
-public class faj extends gsq {
-   static final ws b = ws.c("mco.warning");
-   static final ws c = ws.c("mco.info");
-   private final faj.a B;
-   private final ws C;
-   private final ws D;
-   protected final BooleanConsumer a;
-   private final boolean E;
+public class faj extends gtb {
+   private static final wu a = wu.c("mco.backup.info.title");
+   private static final wu b = wu.c("mco.backup.unknown");
+   private final fld c;
+   final eyt B;
+   final fir C = new fir(this);
+   private faj.a D;
 
-   public faj(BooleanConsumer $$0, faj.a $$1, ws $$2, ws $$3, boolean $$4) {
-      super(fcm.a);
-      this.a = $$0;
+   public faj(fld $$0, eyt $$1) {
+      super(a);
+      this.c = $$0;
       this.B = $$1;
-      this.C = $$2;
-      this.D = $$3;
-      this.E = $$4;
    }
 
    @Override
    public void aM_() {
-      if (this.E) {
-         this.c(feu.a(wr.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(8), 100, 20).a());
-         this.c(feu.a(wr.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(8), 100, 20).a());
+      this.C.a(a, this.p);
+      this.D = this.C.c(new faj.a(this.m));
+      this.C.b(ffe.a(wt.k, $$0 -> this.d()).a());
+      this.c();
+      this.C.a($$1 -> {
+         ffc var10000 = this.c($$1);
+      });
+   }
+
+   @Override
+   protected void c() {
+      this.D.b(this.n, this.C.d());
+      this.C.a();
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.c);
+   }
+
+   wu a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
       } else {
-         this.c(feu.a(wr.h, $$0 -> this.a.accept(true)).a(this.n / 2 - 50, g(8), 100, 20).a());
+         return (wu)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : wu.b($$1));
       }
    }
 
-   @Override
-   public ws i() {
-      return wr.b(this.B.d, this.C, this.D);
+   private wu a(String $$0) {
+      try {
+         return fbg.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
+      }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.a.accept(false);
+   private wu b(String $$0) {
+      try {
+         return fbg.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   class a extends fga<faj.b> {
+      public a(fde $$0) {
+         super($$0, faj.this.n, faj.this.C.d(), faj.this.C.c(), 36);
+         if (faj.this.B.e != null) {
+            faj.this.B.e.forEach(($$0x, $$1) -> this.b(faj.this.new b($$0x, $$1)));
+         }
+      }
+   }
+
+   class b extends fga.a<faj.b> {
+      private static final wu b = wu.c("mco.backup.entry.templateName");
+      private static final wu c = wu.c("mco.backup.entry.gameDifficulty");
+      private static final wu d = wu.c("mco.backup.entry.name");
+      private static final wu e = wu.c("mco.backup.entry.gameServerVersion");
+      private static final wu f = wu.c("mco.backup.entry.uploaded");
+      private static final wu g = wu.c("mco.backup.entry.enabledPack");
+      private static final wu h = wu.c("mco.backup.entry.description");
+      private static final wu i = wu.c("mco.backup.entry.gameMode");
+      private static final wu j = wu.c("mco.backup.entry.seed");
+      private static final wu k = wu.c("mco.backup.entry.worldType");
+      private static final wu l = wu.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
+
+      public b(String $$0, String $$1) {
+         this.m = $$0;
+         this.n = $$1;
+      }
+
+      @Override
+      public void a(fer $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(faj.this.p, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(faj.this.p, faj.this.a(this.m, this.n), $$3, $$2 + 12, -1);
+      }
+
+      private wu a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
          return true;
-      } else {
-         return super.a($$0, $$1, $$2);
       }
-   }
 
-   @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.B.d, this.n / 2, g(2), this.B.c);
-      $$0.a(this.p, this.C, this.n / 2, g(4), -1);
-      $$0.a(this.p, this.D, this.n / 2, g(6), -1);
-   }
-
-   public static enum a {
-      a(faj.b, -65536),
-      b(faj.c, 8226750);
-
-      public final int c;
-      public final ws d;
-
-      private a(ws $$0, int $$1) {
-         this.d = $$0;
-         this.c = $$1;
+      @Override
+      public wu a() {
+         return wu.a("narrator.select", this.m + " " + this.n);
       }
    }
 }

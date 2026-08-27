@@ -1,41 +1,37 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.Locale;
 
-public class azo extends beo {
-   public azo(Schema $$0) {
-      super($$0, false, "AreaEffectCloudPotionFix", bfp.z, "minecraft:area_effect_cloud");
+public class azo extends DataFix {
+   private final String a;
+   private final TypeReference b;
+
+   public azo(Schema $$0, String $$1, TypeReference $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
+      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
+      return this.a(this.a, $$0, $$1);
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Color").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("effects").result();
-      Optional<Dynamic<T>> $$3 = $$0.get("Potion").result();
-      $$0 = $$0.remove("Color").remove("effects").remove("Potion");
-      if ($$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()) {
-         return $$0;
+   protected final <K> TypeRewriteRule a(String $$0, TaggedChoiceType<K> $$1, TaggedChoiceType<?> $$2) {
+      if ($$1.getKeyType() != $$2.getKeyType()) {
+         throw new IllegalStateException("Could not inject: key type is not the same");
       } else {
-         Dynamic<T> $$4 = $$0.emptyMap();
-         if ($$1.isPresent()) {
-            $$4 = $$4.set("custom_color", $$1.get());
-         }
-
-         if ($$2.isPresent()) {
-            $$4 = $$4.set("custom_effects", $$2.get());
-         }
-
-         if ($$3.isPresent()) {
-            $$4 = $$4.set("potion", $$3.get());
-         }
-
-         return $$0.set("potion_contents", $$4);
+         return this.fixTypeEverywhere($$0, $$1, $$2, $$1x -> $$1xx -> {
+               if (!$$2.hasType($$1xx.getFirst())) {
+                  throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown type %s in %s ", $$1xx.getFirst(), this.b));
+               } else {
+                  return $$1xx;
+               }
+            });
       }
    }
 }

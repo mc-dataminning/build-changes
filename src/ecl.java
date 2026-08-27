@@ -1,28 +1,39 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class ecl<P extends eck> {
-   public static final ecl<ecf> a = a("blob_foliage_placer", ecf.a);
-   public static final ecl<ecq> b = a("spruce_foliage_placer", ecq.a);
-   public static final ecl<eco> c = a("pine_foliage_placer", eco.a);
-   public static final ecl<ece> d = a("acacia_foliage_placer", ece.a);
-   public static final ecl<ecg> e = a("bush_foliage_placer", ecg.c);
-   public static final ecl<ecj> f = a("fancy_foliage_placer", ecj.c);
-   public static final ecl<ecm> g = a("jungle_foliage_placer", ecm.a);
-   public static final ecl<ecn> h = a("mega_pine_foliage_placer", ecn.a);
-   public static final ecl<eci> i = a("dark_oak_foliage_placer", eci.a);
-   public static final ecl<ecp> j = a("random_spread_foliage_placer", ecp.a);
-   public static final ecl<ech> k = a("cherry_foliage_placer", ech.a);
-   private final Codec<P> l;
+public class ecl extends eci {
+   public static final Codec<ecl> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
+            )
+            .apply($$0, ecl::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
 
-   private static <P extends eck> ecl<P> a(String $$0, Codec<P> $$1) {
-      return ji.a(lc.W, $$0, new ecl<>($$1));
+   public ecl(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
    }
 
-   private ecl(Codec<P> $$0) {
-      this.l = $$0;
+   public ecl(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public Codec<P> a() {
-      return this.l;
+   @Override
+   protected ecj<?> b() {
+      return ecj.a;
+   }
+
+   @Override
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

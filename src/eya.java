@@ -1,392 +1,208 @@
-import com.google.common.hash.Hashing;
-import com.google.common.io.Files;
-import com.mojang.logging.LogUtils;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.nio.ByteBuffer;
 import javax.annotation.Nullable;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.output.CountingOutputStream;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
-public class eya {
-   static final Logger a = LogUtils.getLogger();
-   volatile boolean b;
-   volatile boolean c;
-   volatile boolean d;
-   volatile boolean e;
+public class eya implements AutoCloseable {
+   private final eya.a a;
+   private int b;
+   private int c;
+   private int d;
    @Nullable
-   private volatile File f;
-   volatile File g;
+   private eyc e;
    @Nullable
-   private volatile HttpGet h;
-   @Nullable
-   private Thread i;
-   private final RequestConfig j = RequestConfig.custom().setSocketTimeout(120000).setConnectTimeout(120000).build();
-   private static final String[] k = new String[]{
-      "CON",
-      "COM",
-      "PRN",
-      "AUX",
-      "CLOCK$",
-      "NUL",
-      "COM1",
-      "COM2",
-      "COM3",
-      "COM4",
-      "COM5",
-      "COM6",
-      "COM7",
-      "COM8",
-      "COM9",
-      "LPT1",
-      "LPT2",
-      "LPT3",
-      "LPT4",
-      "LPT5",
-      "LPT6",
-      "LPT7",
-      "LPT8",
-      "LPT9"
-   };
+   private RenderSystem.a f;
+   private eyc.a g;
+   private int h;
+   private eyc.b i;
 
-   public long a(String $$0) {
-      CloseableHttpClient $$1 = null;
-      HttpGet $$2 = null;
-
-      long var5;
-      try {
-         $$2 = new HttpGet($$0);
-         $$1 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-         CloseableHttpResponse $$3 = $$1.execute($$2);
-         return Long.parseLong($$3.getFirstHeader("Content-Length").getValue());
-      } catch (Throwable var16) {
-         a.error("Unable to get content length for download");
-         var5 = 0L;
-      } finally {
-         if ($$2 != null) {
-            $$2.releaseConnection();
-         }
-
-         if ($$1 != null) {
-            try {
-               $$1.close();
-            } catch (IOException var15) {
-               a.error("Could not close http client", var15);
-            }
-         }
-      }
-
-      return var5;
+   public eya(eya.a $$0) {
+      this.a = $$0;
+      RenderSystem.assertOnRenderThread();
+      this.b = GlStateManager._glGenBuffers();
+      this.c = GlStateManager._glGenBuffers();
+      this.d = GlStateManager._glGenVertexArrays();
    }
 
-   public void a(ezk $$0, String $$1, fag.a $$2, enq $$3) {
-      if (this.i == null) {
-         this.i = new Thread(() -> {
-            CloseableHttpClient $$4 = null;
+   public void a(exs.b $$0) {
+      try {
+         if (!this.e()) {
+            RenderSystem.assertOnRenderThread();
+            exs.a $$1 = $$0.c();
+            this.e = this.a($$1, $$0.a());
+            this.f = this.b($$1, $$0.b());
+            this.h = $$1.i();
+            this.g = $$1.k();
+            this.i = $$1.j();
+            return;
+         }
+      } finally {
+         $$0.e();
+      }
+   }
 
-            try {
-               this.f = File.createTempFile("backup", ".tar.gz");
-               this.h = new HttpGet($$0.a);
-               $$4 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-               HttpResponse $$5 = $$4.execute(this.h);
-               $$2.b = Long.parseLong($$5.getFirstHeader("Content-Length").getValue());
-               if ($$5.getStatusLine().getStatusCode() == 200) {
-                  OutputStream $$12 = new FileOutputStream(this.f);
-                  eya.b $$13 = new eya.b($$1.trim(), this.f, $$3, $$2);
-                  eya.a $$14 = new eya.a($$12);
-                  $$14.a($$13);
-                  IOUtils.copy($$5.getEntity().getContent(), $$14);
-                  return;
-               }
+   private eyc a(exs.a $$0, @Nullable ByteBuffer $$1) {
+      boolean $$2 = false;
+      if (!$$0.g().equals(this.e)) {
+         if (this.e != null) {
+            this.e.f();
+         }
 
-               this.d = true;
-               this.h.abort();
-            } catch (Exception var93) {
-               a.error("Caught exception while downloading: {}", var93.getMessage());
-               this.d = true;
-               return;
-            } finally {
-               this.h.releaseConnection();
-               if (this.f != null) {
-                  this.f.delete();
-               }
+         GlStateManager._glBindBuffer(34962, this.b);
+         $$0.g().e();
+         $$2 = true;
+      }
 
-               if (!this.d) {
-                  if (!$$0.b.isEmpty() && !$$0.c.isEmpty()) {
-                     try {
-                        this.f = File.createTempFile("resources", ".tar.gz");
-                        this.h = new HttpGet($$0.b);
-                        HttpResponse $$28 = $$4.execute(this.h);
-                        $$2.b = Long.parseLong($$28.getFirstHeader("Content-Length").getValue());
-                        if ($$28.getStatusLine().getStatusCode() != 200) {
-                           this.d = true;
-                           this.h.abort();
-                           return;
-                        }
+      if ($$1 != null) {
+         if (!$$2) {
+            GlStateManager._glBindBuffer(34962, this.b);
+         }
 
-                        OutputStream $$29 = new FileOutputStream(this.f);
-                        eya.c $$30 = new eya.c(this.f, $$2, $$0);
-                        eya.a $$31 = new eya.a($$29);
-                        $$31.a($$30);
-                        IOUtils.copy($$28.getEntity().getContent(), $$31);
-                     } catch (Exception var91) {
-                        a.error("Caught exception while downloading: {}", var91.getMessage());
-                        this.d = true;
-                     } finally {
-                        this.h.releaseConnection();
-                        if (this.f != null) {
-                           this.f.delete();
-                        }
-                     }
-                  } else {
-                     this.c = true;
-                  }
-               }
+         RenderSystem.glBufferData(34962, $$1, this.a.c);
+      }
 
-               if ($$4 != null) {
-                  try {
-                     $$4.close();
-                  } catch (IOException var90) {
-                     a.error("Failed to close Realms download client");
-                  }
-               }
-            }
-         });
-         this.i.setUncaughtExceptionHandler(new ezo(a));
-         this.i.start();
+      return $$0.g();
+   }
+
+   @Nullable
+   private RenderSystem.a b(exs.a $$0, @Nullable ByteBuffer $$1) {
+      if ($$1 != null) {
+         GlStateManager._glBindBuffer(34963, this.c);
+         RenderSystem.glBufferData(34963, $$1, this.a.c);
+         return null;
+      } else {
+         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.j());
+         if ($$2 != this.f || !$$2.a($$0.i())) {
+            $$2.b($$0.i());
+         }
+
+         return $$2;
       }
    }
 
    public void a() {
-      if (this.h != null) {
-         this.h.abort();
+      ext.b();
+      GlStateManager._glBindVertexArray(this.d);
+   }
+
+   public static void b() {
+      ext.b();
+      GlStateManager._glBindVertexArray(0);
+   }
+
+   public void c() {
+      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
+   }
+
+   private eyc.a f() {
+      RenderSystem.a $$0 = this.f;
+      return $$0 != null ? $$0.a() : this.g;
+   }
+
+   public void a(Matrix4f $$0, Matrix4f $$1, gcc $$2) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b(new Matrix4f($$0), new Matrix4f($$1), $$2));
+      } else {
+         this.b($$0, $$1, $$2);
+      }
+   }
+
+   private void b(Matrix4f $$0, Matrix4f $$1, gcc $$2) {
+      for (int $$3 = 0; $$3 < 12; $$3++) {
+         int $$4 = RenderSystem.getShaderTexture($$3);
+         $$2.a("Sampler" + $$3, $$4);
       }
 
-      if (this.f != null) {
-         this.f.delete();
+      if ($$2.b != null) {
+         $$2.b.a($$0);
       }
 
-      this.b = true;
+      if ($$2.c != null) {
+         $$2.c.a($$1);
+      }
+
+      if ($$2.f != null) {
+         $$2.f.a(RenderSystem.getShaderColor());
+      }
+
+      if ($$2.i != null) {
+         $$2.i.a(RenderSystem.getShaderGlintAlpha());
+      }
+
+      if ($$2.j != null) {
+         $$2.j.a(RenderSystem.getShaderFogStart());
+      }
+
+      if ($$2.k != null) {
+         $$2.k.a(RenderSystem.getShaderFogEnd());
+      }
+
+      if ($$2.l != null) {
+         $$2.l.a(RenderSystem.getShaderFogColor());
+      }
+
+      if ($$2.m != null) {
+         $$2.m.a(RenderSystem.getShaderFogShape().a());
+      }
+
+      if ($$2.d != null) {
+         $$2.d.a(RenderSystem.getTextureMatrix());
+      }
+
+      if ($$2.o != null) {
+         $$2.o.a(RenderSystem.getShaderGameTime());
+      }
+
+      if ($$2.e != null) {
+         exb $$5 = fde.Q().aP();
+         $$2.e.a((float)$$5.k(), (float)$$5.l());
+      }
+
+      if ($$2.n != null && (this.i == eyc.b.a || this.i == eyc.b.b)) {
+         $$2.n.a(RenderSystem.getShaderLineWidth());
+      }
+
+      RenderSystem.setupShaderLights($$2);
+      $$2.g();
+      this.c();
+      $$2.f();
    }
 
-   public boolean b() {
-      return this.c;
+   @Override
+   public void close() {
+      if (this.b >= 0) {
+         RenderSystem.glDeleteBuffers(this.b);
+         this.b = -1;
+      }
+
+      if (this.c >= 0) {
+         RenderSystem.glDeleteBuffers(this.c);
+         this.c = -1;
+      }
+
+      if (this.d >= 0) {
+         RenderSystem.glDeleteVertexArrays(this.d);
+         this.d = -1;
+      }
    }
 
-   public boolean c() {
-      return this.d;
-   }
-
-   public boolean d() {
+   public eyc d() {
       return this.e;
    }
 
-   public static String b(String $$0) {
-      $$0 = $$0.replaceAll("[\\./\"]", "_");
-
-      for (String $$1 : k) {
-         if ($$0.equalsIgnoreCase($$1)) {
-            $$0 = "_" + $$0 + "_";
-         }
-      }
-
-      return $$0;
+   public boolean e() {
+      return this.d == -1;
    }
 
-   void a(String $$0, @Nullable File $$1, enq $$2) throws IOException {
-      Pattern $$3 = Pattern.compile(".*-([0-9]+)$");
-      int $$4 = 1;
+   public static enum a {
+      a(35044),
+      b(35048);
 
-      for (char $$5 : aa.bg) {
-         $$0 = $$0.replace($$5, '_');
-      }
+      final int c;
 
-      if (StringUtils.isEmpty($$0)) {
-         $$0 = "Realm";
-      }
-
-      $$0 = b($$0);
-
-      try {
-         for (enq.b $$6 : $$2.b()) {
-            String $$7 = $$6.a();
-            if ($$7.toLowerCase(Locale.ROOT).startsWith($$0.toLowerCase(Locale.ROOT))) {
-               Matcher $$8 = $$3.matcher($$7);
-               if ($$8.matches()) {
-                  int $$9 = Integer.parseInt($$8.group(1));
-                  if ($$9 > $$4) {
-                     $$4 = $$9;
-                  }
-               } else {
-                  $$4++;
-               }
-            }
-         }
-      } catch (Exception var43) {
-         a.error("Error getting level list", var43);
-         this.d = true;
-         return;
-      }
-
-      String $$13;
-      if ($$2.a($$0) && $$4 <= 1) {
-         $$13 = $$0;
-      } else {
-         $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-         if (!$$2.a($$13)) {
-            boolean $$12 = false;
-
-            while (!$$12) {
-               $$4++;
-               $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-               if ($$2.a($$13)) {
-                  $$12 = true;
-               }
-            }
-         }
-      }
-
-      TarArchiveInputStream $$14 = null;
-      File $$15 = new File(fcu.Q().p.getAbsolutePath(), "saves");
-
-      try {
-         $$15.mkdir();
-         $$14 = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(new FileInputStream($$1))));
-
-         for (TarArchiveEntry $$16 = $$14.getNextTarEntry(); $$16 != null; $$16 = $$14.getNextTarEntry()) {
-            File $$17 = new File($$15, $$16.getName().replace("world", $$13));
-            if ($$16.isDirectory()) {
-               $$17.mkdirs();
-            } else {
-               $$17.createNewFile();
-
-               try (FileOutputStream $$18 = new FileOutputStream($$17)) {
-                  IOUtils.copy($$14, $$18);
-               }
-            }
-         }
-      } catch (Exception var41) {
-         a.error("Error extracting world", var41);
-         this.d = true;
-      } finally {
-         if ($$14 != null) {
-            $$14.close();
-         }
-
-         if ($$1 != null) {
-            $$1.delete();
-         }
-
-         try (enq.c $$26 = $$2.d($$13)) {
-            $$26.b($$13);
-         } catch (uj | up | IOException var39) {
-            a.error("Failed to modify unpacked realms level {}", $$13, var39);
-         } catch (esu var40) {
-            a.warn("{}", var40.getMessage());
-         }
-
-         this.g = new File($$15, $$13 + File.separator + "resources.zip");
-      }
-   }
-
-   static class a extends CountingOutputStream {
-      @Nullable
-      private ActionListener a;
-
-      public a(OutputStream $$0) {
-         super($$0);
-      }
-
-      public void a(ActionListener $$0) {
-         this.a = $$0;
-      }
-
-      protected void afterWrite(int $$0) throws IOException {
-         super.afterWrite($$0);
-         if (this.a != null) {
-            this.a.actionPerformed(new ActionEvent(this, 0, null));
-         }
-      }
-   }
-
-   class b implements ActionListener {
-      private final String b;
-      private final File c;
-      private final enq d;
-      private final fag.a e;
-
-      b(String $$0, File $$1, enq $$2, fag.a $$3) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
-
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.e.a = ((eya.a)$$0.getSource()).getByteCount();
-         if (this.e.a >= this.e.b && !eya.this.b && !eya.this.d) {
-            try {
-               eya.this.e = true;
-               eya.this.a(this.b, this.c, this.d);
-            } catch (IOException var3) {
-               eya.a.error("Error extracting archive", var3);
-               eya.this.d = true;
-            }
-         }
-      }
-   }
-
-   class c implements ActionListener {
-      private final File b;
-      private final fag.a c;
-      private final ezk d;
-
-      c(File $$0, fag.a $$1, ezk $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.c.a = ((eya.a)$$0.getSource()).getByteCount();
-         if (this.c.a >= this.c.b && !eya.this.b) {
-            try {
-               String $$1 = Hashing.sha1().hashBytes(Files.toByteArray(this.b)).toString();
-               if ($$1.equals(this.d.c)) {
-                  FileUtils.copyFile(this.b, eya.this.g);
-                  eya.this.c = true;
-               } else {
-                  eya.a.error("Resourcepack had wrong hash (expected {}, found {}). Deleting it.", this.d.c, $$1);
-                  FileUtils.deleteQuietly(this.b);
-                  eya.this.d = true;
-               }
-            } catch (IOException var3) {
-               eya.a.error("Error copying resourcepack file: {}", var3.getMessage());
-               eya.this.d = true;
-            }
-         }
+      private a(int $$0) {
+         this.c = $$0;
       }
    }
 }

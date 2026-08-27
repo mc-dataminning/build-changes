@@ -1,5 +1,18 @@
-import java.util.concurrent.CompletableFuture;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public interface dsz {
-   CompletableFuture<Void> a(czb var1, us var2);
+   @Nullable
+   egx a(egp var1);
+
+   void a(egp var1, egx var2);
+
+   LongSet b(egp var1);
+
+   void a(egp var1, long var2);
+
+   Map<egp, LongSet> h();
+
+   void b(Map<egp, LongSet> var1);
 }

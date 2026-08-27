@@ -1,36 +1,41 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record ere(erh b) implements erh {
-   public static final Codec<ere> a = RecordCodecBuilder.create($$0 -> $$0.group(erj.a.fieldOf("term").forGetter(ere::c)).apply($$0, ere::new));
+public class ere extends erh {
+   public static final Codec<ere> a = a(ere::new);
+   public static final Codec<ere> b = b(ere::new);
 
-   @Override
-   public eri b() {
-      return erj.b;
+   ere(List<erq> $$0) {
+      super($$0, ac.a($$0));
    }
 
-   public boolean a(eoa $$0) {
-      return !this.b.test($$0);
-   }
-
-   @Override
-   public Set<eqq<?>> a() {
-      return this.b.a();
+   public static ere a(List<erq> $$0) {
+      return new ere(List.copyOf($$0));
    }
 
    @Override
-   public void a(eoj $$0) {
-      erh.super.a($$0);
-      this.b.a($$0);
+   public err b() {
+      return ers.e;
    }
 
-   public static erh.a a(erh.a $$0) {
-      ere $$1 = new ere($$0.build());
-      return () -> $$1;
+   public static ere.a a(erq.a... $$0) {
+      return new ere.a($$0);
    }
 
-   public erh c() {
-      return this.b;
+   public static class a extends erh.a {
+      public a(erq.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public ere.a and(erq.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected erq a(List<erq> $$0) {
+         return new ere($$0);
+      }
    }
 }

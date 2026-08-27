@@ -1,73 +1,76 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dlb extends dfd implements dhm {
-   public static final MapCodec<dlb> c = b(dlb::new);
-   public static final dqw<dqu> d = dfd.b;
-   protected static final float e = 6.0F;
-   protected static final ety f = dcv.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+public class dlb extends dde {
+   public static final MapCodec<dlb> a = b(dlb::new);
+   private static final wu d = wu.c("container.stonecutter");
+   public static final drb b = dha.aE;
+   protected static final eui c = dde.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<dlb> a() {
-      return c;
+      return a;
    }
 
-   public dlb(dpx.d $$0) {
+   public dlb(dqg.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, is.c));
    }
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      return f;
+   public dqh a(cwi $$0) {
+      return this.n().a(b, $$0.g().g());
    }
 
    @Override
-   protected boolean b(dpy $$0, cza $$1, im $$2) {
-      return $$0.d($$1, $$2, ir.b) && !$$0.a(dcx.kJ);
-   }
-
-   @Override
-   public csd a(czx $$0, im $$1, dpy $$2) {
-      return new csd(dcx.bw);
+   protected bpm a(dqh $$0, dad $$1, in $$2, clh $$3, etl $$4) {
+      if ($$1.B) {
+         return bpm.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(avm.ay);
+         return bpm.b;
+      }
    }
 
    @Nullable
    @Override
-   public dpy a(cvl $$0) {
-      dpy $$1 = super.a($$0);
-      if ($$1 != null) {
-         elr $$2 = $$0.q().b_($$0.a().c());
-         if ($$2.a(avt.a) && $$2.e() == 8) {
-            return $$1;
-         }
-      }
-
-      return null;
+   protected bpq b(dqh $$0, dad $$1, in $$2) {
+      return new bpw(($$2x, $$3, $$4) -> new cqf($$2x, $$3, cop.a($$1, $$2)), d);
    }
 
    @Override
-   protected boolean a(dpy $$0, czx $$1, im $$2) {
-      if ($$0.c(d) == dqu.a) {
-         dpy $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(d) == dqu.b;
-      } else {
-         elr $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(avt.a) && $$4.e() == 8;
-      }
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return c;
    }
 
    @Override
-   protected elr c_(dpy $$0) {
-      return els.c.a(false);
+   protected boolean f_(dqh $$0) {
+      return true;
    }
 
    @Override
-   public boolean a(@Nullable ckl $$0, cza $$1, im $$2, dpy $$3, elq $$4) {
-      return false;
+   protected djk a_(dqh $$0) {
+      return djk.c;
    }
 
    @Override
-   public boolean a(czv $$0, im $$1, dpy $$2, elr $$3) {
+   protected dqh a(dqh $$0, djr $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dqh a(dqh $$0, dib $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dqh $$0, emp $$1) {
       return false;
    }
 }

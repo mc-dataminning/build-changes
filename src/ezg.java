@@ -1,29 +1,34 @@
 import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
 import java.util.List;
+import org.slf4j.Logger;
 
-public class ezg extends ezj {
-   public long a;
-   public List<ezf> b = Lists.newArrayList();
+public class ezg extends ezt {
+   private static final Logger b = LogUtils.getLogger();
+   public List<eze> a;
 
    public static ezg a(String $$0) {
       ezg $$1 = new ezg();
-      JsonParser $$2 = new JsonParser();
+      $$1.a = Lists.newArrayList();
 
       try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = fbg.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               ezf $$8 = ezf.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("servers").isJsonArray()) {
+            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
+
+            while ($$5.hasNext()) {
+               $$1.a.add(eze.a($$5.next().getAsJsonObject()));
             }
          }
-      } catch (Exception var10) {
+      } catch (Exception var6) {
+         b.error("Could not parse McoServerList: {}", var6.getMessage());
       }
 
       return $$1;

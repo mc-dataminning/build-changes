@@ -1,20 +1,15 @@
-public class cxx extends cxn {
-   public cxx(cxn.a $$0, bqs... $$1) {
-      super($$0, avw.bm, $$1);
+public class cxx extends cxr {
+   public cxx(String $$0, cxa $$1, csz $$2) {
+      super(cxi.f, cxh.t, $$0, $$1, $$2);
    }
 
    @Override
-   public int a(int $$0) {
-      return $$0 * 25;
+   public boolean a(bpf $$0, dad $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 50;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
+   public csz g() {
+      return new csz(ddg.oc);
    }
 }

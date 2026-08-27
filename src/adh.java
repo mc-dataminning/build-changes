@@ -1,33 +1,61 @@
-public class adh implements yz<abk> {
-   public static final yq<wd, adh> a = yq.a(yo.f, adh::b, yo.a(ld.Q), adh::e, wu.d, adh::f, adh::new);
-   private final int b;
-   private final cop<?> c;
-   private final ws d;
+public class adh implements zb<abm> {
+   public static final ys<vu, adh> a = zb.a(adh::a, adh::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-   public adh(int $$0, cop<?> $$1, ws $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public adh(brh $$0) {
+      this.b = $$0.ds();
+      this.c = $$0.du();
+      this.d = $$0.dy();
+      this.e = $$0.dD();
+      this.f = $$0.dF();
+   }
+
+   private adh(vu $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+   }
+
+   private void a(vu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public zb<adh> a() {
-      return afv.W;
+   public zd<adh> a() {
+      return afx.U;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 
-   public cop<?> e() {
+   public double e() {
       return this.c;
    }
 
-   public ws f() {
+   public double f() {
       return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

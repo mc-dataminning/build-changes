@@ -1,30 +1,9 @@
-public class fut {
-   public static final fut a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
-   public final float f;
-   public final float g;
-
-   private fut(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+public class fut<T extends cjg> extends fqu<T> {
+   public fut(fvb $$0) {
+      super($$0);
    }
 
-   public static fut a(float $$0, float $$1, float $$2) {
-      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
-   }
-
-   public static fut b(float $$0, float $$1, float $$2) {
-      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
-   }
-
-   public static fut a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      return new fut($$0, $$1, $$2, $$3, $$4, $$5);
+   public boolean a(T $$0) {
+      return $$0.gh();
    }
 }

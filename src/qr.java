@@ -1,485 +1,318 @@
 import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
 
 public class qr {
-   private static final ake<eke> M = a("empty");
-   public static final ake<eke> a = a("zombie_plains");
-   public static final ake<eke> b = a("zombie_savanna");
-   public static final ake<eke> c = a("zombie_snowy");
-   public static final ake<eke> d = a("zombie_taiga");
-   public static final ake<eke> e = a("zombie_desert");
-   public static final ake<eke> f = a("mossify_10_percent");
-   public static final ake<eke> g = a("mossify_20_percent");
-   public static final ake<eke> h = a("mossify_70_percent");
-   public static final ake<eke> i = a("street_plains");
-   public static final ake<eke> j = a("street_savanna");
-   public static final ake<eke> k = a("street_snowy_or_taiga");
-   public static final ake<eke> l = a("farm_plains");
-   public static final ake<eke> m = a("farm_savanna");
-   public static final ake<eke> n = a("farm_snowy");
-   public static final ake<eke> o = a("farm_taiga");
-   public static final ake<eke> p = a("farm_desert");
-   public static final ake<eke> q = a("outpost_rot");
-   public static final ake<eke> r = a("bottom_rampart");
-   public static final ake<eke> s = a("treasure_rooms");
-   public static final ake<eke> t = a("housing");
-   public static final ake<eke> u = a("side_wall_degradation");
-   public static final ake<eke> v = a("stable_degradation");
-   public static final ake<eke> w = a("bastion_generic_degradation");
-   public static final ake<eke> x = a("rampart_degradation");
-   public static final ake<eke> y = a("entrance_replacement");
-   public static final ake<eke> z = a("bridge");
-   public static final ake<eke> A = a("roof");
-   public static final ake<eke> B = a("high_wall");
-   public static final ake<eke> C = a("high_rampart");
-   public static final ake<eke> D = a("fossil_rot");
-   public static final ake<eke> E = a("fossil_coal");
-   public static final ake<eke> F = a("fossil_diamonds");
-   public static final ake<eke> G = a("ancient_city_start_degradation");
-   public static final ake<eke> H = a("ancient_city_generic_degradation");
-   public static final ake<eke> I = a("ancient_city_walls_degradation");
-   public static final ake<eke> J = a("trail_ruins_houses_archaeology");
-   public static final ake<eke> K = a("trail_ruins_roads_archaeology");
-   public static final ake<eke> L = a("trail_ruins_tower_top_archaeology");
+   public static final akg<ehy> a = qs.a("village/plains/town_centers");
+   private static final akg<ehy> b = qs.a("village/plains/terminators");
 
-   private static ake<eke> a(String $$0) {
-      return ake.a(ld.aJ, new akf($$0));
-   }
-
-   private static void a(qj<eke> $$0, ake<eke> $$1, List<ekd> $$2) {
-      $$0.a($$1, new eke($$2));
-   }
-
-   public static void a(qj<eke> $$0) {
-      iw<dcv> $$1 = $$0.a(ld.f);
-      ejv $$2 = new ejv(new ejx(dcx.pr, 0.01F), eje.b, dcx.pC.n());
-      ejv $$3 = new ejv(new ejx(dcx.pC, 0.5F), eje.b, dcx.pr.n());
-      a($$0, M, ImmutableList.of());
-      a(
-         $$0,
+   public static void a(ql<ehy> $$0) {
+      ix<eft> $$1 = $$0.a(le.aI);
+      iw<eft> $$2 = $$1.b(si.f);
+      iw<eft> $$3 = $$1.b(si.k);
+      iw<eft> $$4 = $$1.b(si.a);
+      ix<ekn> $$5 = $$0.a(le.aK);
+      iw<ekn> $$6 = $$5.b(qt.f);
+      iw<ekn> $$7 = $$5.b(qt.g);
+      iw<ekn> $$8 = $$5.b(qt.h);
+      iw<ekn> $$9 = $$5.b(qt.a);
+      iw<ekn> $$10 = $$5.b(qt.i);
+      iw<ekn> $$11 = $$5.b(qt.l);
+      ix<ehy> $$12 = $$0.a(le.aM);
+      iw<ehy> $$13 = $$12.b(qs.a);
+      iw<ehy> $$14 = $$12.b(b);
+      $$0.a(
          a,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejx(dcx.m, 0.8F), eje.b, dcx.cn.n()),
-                  new ejv(new eki(avo.p), eje.b, dcx.a.n()),
-                  new ejv(new ejj(dcx.cp), eje.b, dcx.a.n()),
-                  new ejv(new ejj(dcx.cq), eje.b, dcx.a.n()),
-                  new ejv(new ejx(dcx.m, 0.07F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.cn, 0.07F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.hj, 0.07F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.U, 0.05F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.n, 0.1F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.cu, 0.1F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.al, 0.02F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.eY, 0.5F), eje.b, dcx.bs.n()),
-                  new ejv[]{
-                     new ejv(
-                        new ejl(dcx.eY.n().a(dgw.a, Boolean.valueOf(true)).a(dgw.c, Boolean.valueOf(true))),
-                        eje.b,
-                        dcx.hL.n().a(dgw.a, Boolean.valueOf(true)).a(dgw.c, Boolean.valueOf(true))
-                     ),
-                     new ejv(
-                        new ejl(dcx.eY.n().a(dgw.b, Boolean.valueOf(true)).a(dgw.d, Boolean.valueOf(true))),
-                        eje.b,
-                        dcx.hL.n().a(dgw.b, Boolean.valueOf(true)).a(dgw.d, Boolean.valueOf(true))
-                     ),
-                     new ejv(new ejx(dcx.cB, 0.3F), eje.b, dcx.gt.n()),
-                     new ejv(new ejx(dcx.cB, 0.2F), eje.b, dcx.gu.n()),
-                     new ejv(new ejx(dcx.cB, 0.1F), eje.b, dcx.kD.n())
-                  }
-               )
-            )
+         new ehy(
+            $$13,
+            ImmutableList.of(
+               Pair.of(ehw.a("village/plains/town_centers/plains_fountain_01", $$7), 50),
+               Pair.of(ehw.a("village/plains/town_centers/plains_meeting_point_1", $$7), 50),
+               Pair.of(ehw.a("village/plains/town_centers/plains_meeting_point_2"), 50),
+               Pair.of(ehw.a("village/plains/town_centers/plains_meeting_point_3", $$8), 50),
+               Pair.of(ehw.a("village/plains/zombie/town_centers/plains_fountain_01", $$9), 1),
+               Pair.of(ehw.a("village/plains/zombie/town_centers/plains_meeting_point_1", $$9), 1),
+               Pair.of(ehw.a("village/plains/zombie/town_centers/plains_meeting_point_2", $$9), 1),
+               Pair.of(ehw.a("village/plains/zombie/town_centers/plains_meeting_point_3", $$9), 1)
+            ),
+            ehy.a.b
          )
       );
-      a(
+      qs.a(
          $$0,
+         "village/plains/streets",
+         new ehy(
+            $$14,
+            ImmutableList.of(
+               Pair.of(ehw.a("village/plains/streets/corner_01", $$10), 2),
+               Pair.of(ehw.a("village/plains/streets/corner_02", $$10), 2),
+               Pair.of(ehw.a("village/plains/streets/corner_03", $$10), 2),
+               Pair.of(ehw.a("village/plains/streets/straight_01", $$10), 4),
+               Pair.of(ehw.a("village/plains/streets/straight_02", $$10), 4),
+               Pair.of(ehw.a("village/plains/streets/straight_03", $$10), 7),
+               Pair.of(ehw.a("village/plains/streets/straight_04", $$10), 7),
+               Pair.of(ehw.a("village/plains/streets/straight_05", $$10), 3),
+               Pair.of(ehw.a("village/plains/streets/straight_06", $$10), 4),
+               Pair.of(ehw.a("village/plains/streets/crossroad_01", $$10), 2),
+               Pair.of(ehw.a("village/plains/streets/crossroad_02", $$10), 1),
+               Pair.of(ehw.a("village/plains/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(ehw.a("village/plains/streets/crossroad_04", $$10), 2),
+                  Pair.of(ehw.a("village/plains/streets/crossroad_05", $$10), 2),
+                  Pair.of(ehw.a("village/plains/streets/crossroad_06", $$10), 2),
+                  Pair.of(ehw.a("village/plains/streets/turn_01", $$10), 3)
+               }
+            ),
+            ehy.a.a
+         )
+      );
+      qs.a(
+         $$0,
+         "village/plains/zombie/streets",
+         new ehy(
+            $$14,
+            ImmutableList.of(
+               Pair.of(ehw.a("village/plains/zombie/streets/corner_01", $$10), 2),
+               Pair.of(ehw.a("village/plains/zombie/streets/corner_02", $$10), 2),
+               Pair.of(ehw.a("village/plains/zombie/streets/corner_03", $$10), 2),
+               Pair.of(ehw.a("village/plains/zombie/streets/straight_01", $$10), 4),
+               Pair.of(ehw.a("village/plains/zombie/streets/straight_02", $$10), 4),
+               Pair.of(ehw.a("village/plains/zombie/streets/straight_03", $$10), 7),
+               Pair.of(ehw.a("village/plains/zombie/streets/straight_04", $$10), 7),
+               Pair.of(ehw.a("village/plains/zombie/streets/straight_05", $$10), 3),
+               Pair.of(ehw.a("village/plains/zombie/streets/straight_06", $$10), 4),
+               Pair.of(ehw.a("village/plains/zombie/streets/crossroad_01", $$10), 2),
+               Pair.of(ehw.a("village/plains/zombie/streets/crossroad_02", $$10), 1),
+               Pair.of(ehw.a("village/plains/zombie/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(ehw.a("village/plains/zombie/streets/crossroad_04", $$10), 2),
+                  Pair.of(ehw.a("village/plains/zombie/streets/crossroad_05", $$10), 2),
+                  Pair.of(ehw.a("village/plains/zombie/streets/crossroad_06", $$10), 2),
+                  Pair.of(ehw.a("village/plains/zombie/streets/turn_01", $$10), 3)
+               }
+            ),
+            ehy.a.a
+         )
+      );
+      qs.a(
+         $$0,
+         "village/plains/houses",
+         new ehy(
+            $$14,
+            ImmutableList.of(
+               Pair.of(ehw.a("village/plains/houses/plains_small_house_1", $$6), 2),
+               Pair.of(ehw.a("village/plains/houses/plains_small_house_2", $$6), 2),
+               Pair.of(ehw.a("village/plains/houses/plains_small_house_3", $$6), 2),
+               Pair.of(ehw.a("village/plains/houses/plains_small_house_4", $$6), 2),
+               Pair.of(ehw.a("village/plains/houses/plains_small_house_5", $$6), 2),
+               Pair.of(ehw.a("village/plains/houses/plains_small_house_6", $$6), 1),
+               Pair.of(ehw.a("village/plains/houses/plains_small_house_7", $$6), 2),
+               Pair.of(ehw.a("village/plains/houses/plains_small_house_8", $$6), 3),
+               Pair.of(ehw.a("village/plains/houses/plains_medium_house_1", $$6), 2),
+               Pair.of(ehw.a("village/plains/houses/plains_medium_house_2", $$6), 2),
+               Pair.of(ehw.a("village/plains/houses/plains_big_house_1", $$6), 2),
+               Pair.of(ehw.a("village/plains/houses/plains_butcher_shop_1", $$6), 2),
+               new Pair[]{
+                  Pair.of(ehw.a("village/plains/houses/plains_butcher_shop_2", $$6), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_tool_smith_1", $$6), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_fletcher_house_1", $$6), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_shepherds_house_1"), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_armorer_house_1", $$6), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_fisher_cottage_1", $$6), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_tannery_1", $$6), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_cartographer_1", $$6), 1),
+                  Pair.of(ehw.a("village/plains/houses/plains_library_1", $$6), 5),
+                  Pair.of(ehw.a("village/plains/houses/plains_library_2", $$6), 1),
+                  Pair.of(ehw.a("village/plains/houses/plains_masons_house_1", $$6), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_weaponsmith_1", $$6), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_temple_3", $$6), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_temple_4", $$6), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_stable_1", $$6), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_stable_2"), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_large_farm_1", $$11), 4),
+                  Pair.of(ehw.a("village/plains/houses/plains_small_farm_1", $$11), 4),
+                  Pair.of(ehw.a("village/plains/houses/plains_animal_pen_1"), 1),
+                  Pair.of(ehw.a("village/plains/houses/plains_animal_pen_2"), 1),
+                  Pair.of(ehw.a("village/plains/houses/plains_animal_pen_3"), 5),
+                  Pair.of(ehw.a("village/plains/houses/plains_accessory_1"), 1),
+                  Pair.of(ehw.a("village/plains/houses/plains_meeting_point_4", $$8), 3),
+                  Pair.of(ehw.a("village/plains/houses/plains_meeting_point_5"), 1),
+                  Pair.of(ehw.g(), 10)
+               }
+            ),
+            ehy.a.b
+         )
+      );
+      qs.a(
+         $$0,
+         "village/plains/zombie/houses",
+         new ehy(
+            $$14,
+            ImmutableList.of(
+               Pair.of(ehw.a("village/plains/zombie/houses/plains_small_house_1", $$9), 2),
+               Pair.of(ehw.a("village/plains/zombie/houses/plains_small_house_2", $$9), 2),
+               Pair.of(ehw.a("village/plains/zombie/houses/plains_small_house_3", $$9), 2),
+               Pair.of(ehw.a("village/plains/zombie/houses/plains_small_house_4", $$9), 2),
+               Pair.of(ehw.a("village/plains/zombie/houses/plains_small_house_5", $$9), 2),
+               Pair.of(ehw.a("village/plains/zombie/houses/plains_small_house_6", $$9), 1),
+               Pair.of(ehw.a("village/plains/zombie/houses/plains_small_house_7", $$9), 2),
+               Pair.of(ehw.a("village/plains/zombie/houses/plains_small_house_8", $$9), 2),
+               Pair.of(ehw.a("village/plains/zombie/houses/plains_medium_house_1", $$9), 2),
+               Pair.of(ehw.a("village/plains/zombie/houses/plains_medium_house_2", $$9), 2),
+               Pair.of(ehw.a("village/plains/zombie/houses/plains_big_house_1", $$9), 2),
+               Pair.of(ehw.a("village/plains/houses/plains_butcher_shop_1", $$9), 2),
+               new Pair[]{
+                  Pair.of(ehw.a("village/plains/zombie/houses/plains_butcher_shop_2", $$9), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_tool_smith_1", $$9), 2),
+                  Pair.of(ehw.a("village/plains/zombie/houses/plains_fletcher_house_1", $$9), 2),
+                  Pair.of(ehw.a("village/plains/zombie/houses/plains_shepherds_house_1", $$9), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_armorer_house_1", $$9), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_fisher_cottage_1", $$9), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_tannery_1", $$9), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_cartographer_1", $$9), 1),
+                  Pair.of(ehw.a("village/plains/houses/plains_library_1", $$9), 3),
+                  Pair.of(ehw.a("village/plains/houses/plains_library_2", $$9), 1),
+                  Pair.of(ehw.a("village/plains/houses/plains_masons_house_1", $$9), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_weaponsmith_1", $$9), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_temple_3", $$9), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_temple_4", $$9), 2),
+                  Pair.of(ehw.a("village/plains/zombie/houses/plains_stable_1", $$9), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_stable_2", $$9), 2),
+                  Pair.of(ehw.a("village/plains/houses/plains_large_farm_1", $$9), 4),
+                  Pair.of(ehw.a("village/plains/houses/plains_small_farm_1", $$9), 4),
+                  Pair.of(ehw.a("village/plains/houses/plains_animal_pen_1", $$9), 1),
+                  Pair.of(ehw.a("village/plains/houses/plains_animal_pen_2", $$9), 1),
+                  Pair.of(ehw.a("village/plains/zombie/houses/plains_animal_pen_3", $$9), 5),
+                  Pair.of(ehw.a("village/plains/zombie/houses/plains_meeting_point_4", $$9), 3),
+                  Pair.of(ehw.a("village/plains/zombie/houses/plains_meeting_point_5", $$9), 1),
+                  Pair.of(ehw.g(), 10)
+               }
+            ),
+            ehy.a.b
+         )
+      );
+      $$0.a(
          b,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new eki(avo.p), eje.b, dcx.a.n()),
-                  new ejv(new ejj(dcx.cp), eje.b, dcx.a.n()),
-                  new ejv(new ejj(dcx.cq), eje.b, dcx.a.n()),
-                  new ejv(new ejx(dcx.r, 0.2F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.hP, 0.2F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.Y, 0.05F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.as, 0.05F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.hk, 0.05F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.hn, 0.05F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.hx, 0.05F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.eY, 0.5F), eje.b, dcx.bs.n()),
-                  new ejv(
-                     new ejl(dcx.eY.n().a(dgw.a, Boolean.valueOf(true)).a(dgw.c, Boolean.valueOf(true))),
-                     eje.b,
-                     dcx.hL.n().a(dgw.a, Boolean.valueOf(true)).a(dgw.c, Boolean.valueOf(true))
-                  ),
-                  new ejv[]{
-                     new ejv(
-                        new ejl(dcx.eY.n().a(dgw.b, Boolean.valueOf(true)).a(dgw.d, Boolean.valueOf(true))),
-                        eje.b,
-                        dcx.hL.n().a(dgw.b, Boolean.valueOf(true)).a(dgw.d, Boolean.valueOf(true))
-                     ),
-                     new ejv(new ejx(dcx.cB, 0.1F), eje.b, dcx.fe.n())
-                  }
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         c,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new eki(avo.p), eje.b, dcx.a.n()),
-                  new ejv(new ejj(dcx.cp), eje.b, dcx.a.n()),
-                  new ejv(new ejj(dcx.cq), eje.b, dcx.a.n()),
-                  new ejv(new ejj(dcx.oe), eje.b, dcx.a.n()),
-                  new ejv(new ejx(dcx.o, 0.2F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.ju, 0.4F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.af, 0.05F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.ax, 0.05F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.eY, 0.5F), eje.b, dcx.bs.n()),
-                  new ejv(
-                     new ejl(dcx.eY.n().a(dgw.a, Boolean.valueOf(true)).a(dgw.c, Boolean.valueOf(true))),
-                     eje.b,
-                     dcx.hL.n().a(dgw.a, Boolean.valueOf(true)).a(dgw.c, Boolean.valueOf(true))
-                  ),
-                  new ejv(
-                     new ejl(dcx.eY.n().a(dgw.b, Boolean.valueOf(true)).a(dgw.d, Boolean.valueOf(true))),
-                     eje.b,
-                     dcx.hL.n().a(dgw.b, Boolean.valueOf(true)).a(dgw.d, Boolean.valueOf(true))
-                  ),
-                  new ejv(new ejx(dcx.cB, 0.1F), eje.b, dcx.gt.n()),
-                  new ejv[]{new ejv(new ejx(dcx.cB, 0.8F), eje.b, dcx.gu.n())}
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         d,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejx(dcx.m, 0.8F), eje.b, dcx.cn.n()),
-                  new ejv(new eki(avo.p), eje.b, dcx.a.n()),
-                  new ejv(new ejj(dcx.cp), eje.b, dcx.a.n()),
-                  new ejv(new ejj(dcx.cq), eje.b, dcx.a.n()),
-                  new ejv(new ejj(dcx.og), eje.b, dcx.og.n().a(ddj.c, Boolean.valueOf(false))),
-                  new ejv(new ejx(dcx.m, 0.08F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.V, 0.08F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.eY, 0.5F), eje.b, dcx.bs.n()),
-                  new ejv(
-                     new ejl(dcx.eY.n().a(dgw.a, Boolean.valueOf(true)).a(dgw.c, Boolean.valueOf(true))),
-                     eje.b,
-                     dcx.hL.n().a(dgw.a, Boolean.valueOf(true)).a(dgw.c, Boolean.valueOf(true))
-                  ),
-                  new ejv(
-                     new ejl(dcx.eY.n().a(dgw.b, Boolean.valueOf(true)).a(dgw.d, Boolean.valueOf(true))),
-                     eje.b,
-                     dcx.hL.n().a(dgw.b, Boolean.valueOf(true)).a(dgw.d, Boolean.valueOf(true))
-                  ),
-                  new ejv(new ejx(dcx.cB, 0.3F), eje.b, dcx.fd.n()),
-                  new ejv(new ejx(dcx.cB, 0.2F), eje.b, dcx.gu.n()),
-                  new ejv[0]
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         e,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new eki(avo.p), eje.b, dcx.a.n()),
-                  new ejv(new ejj(dcx.cp), eje.b, dcx.a.n()),
-                  new ejv(new ejj(dcx.cq), eje.b, dcx.a.n()),
-                  new ejv(new ejx(dcx.jS, 0.08F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.aX, 0.1F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.iA, 0.08F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.nl, 0.08F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.ny, 0.08F), eje.b, dcx.bs.n()),
-                  new ejv(new ejx(dcx.cB, 0.2F), eje.b, dcx.kD.n()),
-                  new ejv(new ejx(dcx.cB, 0.1F), eje.b, dcx.fe.n())
-               )
-            )
-         )
-      );
-      a($$0, f, ImmutableList.of(new ejz(ImmutableList.of(new ejv(new ejx(dcx.m, 0.1F), eje.b, dcx.cn.n())))));
-      a($$0, g, ImmutableList.of(new ejz(ImmutableList.of(new ejv(new ejx(dcx.m, 0.2F), eje.b, dcx.cn.n())))));
-      a($$0, h, ImmutableList.of(new ejz(ImmutableList.of(new ejv(new ejx(dcx.m, 0.7F), eje.b, dcx.cn.n())))));
-      a(
-         $$0,
-         i,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejj(dcx.kE), new ejj(dcx.G), dcx.n.n()),
-                  new ejv(new ejx(dcx.kE, 0.1F), eje.b, dcx.i.n()),
-                  new ejv(new ejj(dcx.i), new ejj(dcx.G), dcx.G.n()),
-                  new ejv(new ejj(dcx.j), new ejj(dcx.G), dcx.G.n())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         j,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejj(dcx.kE), new ejj(dcx.G), dcx.r.n()),
-                  new ejv(new ejx(dcx.kE, 0.2F), eje.b, dcx.i.n()),
-                  new ejv(new ejj(dcx.i), new ejj(dcx.G), dcx.G.n()),
-                  new ejv(new ejj(dcx.j), new ejj(dcx.G), dcx.G.n())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         k,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejj(dcx.kE), new ejj(dcx.G), dcx.o.n()),
-                  new ejv(new ejj(dcx.kE), new ejj(dcx.dO), dcx.o.n()),
-                  new ejv(new ejx(dcx.kE, 0.2F), eje.b, dcx.i.n()),
-                  new ejv(new ejj(dcx.i), new ejj(dcx.G), dcx.G.n()),
-                  new ejv(new ejj(dcx.j), new ejj(dcx.G), dcx.G.n())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         l,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejx(dcx.cB, 0.3F), eje.b, dcx.gt.n()),
-                  new ejv(new ejx(dcx.cB, 0.2F), eje.b, dcx.gu.n()),
-                  new ejv(new ejx(dcx.cB, 0.1F), eje.b, dcx.kD.n())
-               )
-            )
-         )
-      );
-      a($$0, m, ImmutableList.of(new ejz(ImmutableList.of(new ejv(new ejx(dcx.cB, 0.1F), eje.b, dcx.fe.n())))));
-      a(
-         $$0,
-         n,
-         ImmutableList.of(new ejz(ImmutableList.of(new ejv(new ejx(dcx.cB, 0.1F), eje.b, dcx.gt.n()), new ejv(new ejx(dcx.cB, 0.8F), eje.b, dcx.gu.n()))))
-      );
-      a(
-         $$0,
-         o,
-         ImmutableList.of(new ejz(ImmutableList.of(new ejv(new ejx(dcx.cB, 0.3F), eje.b, dcx.fd.n()), new ejv(new ejx(dcx.cB, 0.2F), eje.b, dcx.gu.n()))))
-      );
-      a(
-         $$0,
-         p,
-         ImmutableList.of(new ejz(ImmutableList.of(new ejv(new ejx(dcx.cB, 0.2F), eje.b, dcx.kD.n()), new ejv(new ejx(dcx.cB, 0.1F), eje.b, dcx.fe.n()))))
-      );
-      a($$0, q, ImmutableList.of(new ejk(0.05F)));
-      a(
-         $$0,
-         r,
-         ImmutableList.of(
-            new ejz(ImmutableList.of(new ejv(new ejx(dcx.kJ, 0.75F), eje.b, dcx.px.n()), new ejv(new ejx(dcx.px, 0.15F), eje.b, dcx.pw.n()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         s,
-         ImmutableList.of(
-            new ejz(ImmutableList.of(new ejv(new ejx(dcx.pw, 0.35F), eje.b, dcx.px.n()), new ejv(new ejx(dcx.py, 0.1F), eje.b, dcx.px.n()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         t,
-         ImmutableList.of(
-            new ejz(ImmutableList.of(new ejv(new ejx(dcx.pw, 0.3F), eje.b, dcx.px.n()), new ejv(new ejx(dcx.pr, 1.0E-4F), eje.b, dcx.a.n()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         u,
-         ImmutableList.of(
-            new ejz(ImmutableList.of(new ejv(new ejx(dcx.py, 0.5F), eje.b, dcx.a.n()), new ejv(new ejx(dcx.ch, 0.1F), eje.b, dcx.px.n()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         v,
-         ImmutableList.of(
-            new ejz(ImmutableList.of(new ejv(new ejx(dcx.pw, 0.1F), eje.b, dcx.px.n()), new ejv(new ejx(dcx.pr, 1.0E-4F), eje.b, dcx.a.n()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         w,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejx(dcx.pw, 0.3F), eje.b, dcx.px.n()),
-                  new ejv(new ejx(dcx.pr, 1.0E-4F), eje.b, dcx.a.n()),
-                  new ejv(new ejx(dcx.ch, 0.3F), eje.b, dcx.px.n()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         x,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejx(dcx.pw, 0.4F), eje.b, dcx.px.n()),
-                  new ejv(new ejx(dcx.pr, 0.01F), eje.b, dcx.px.n()),
-                  new ejv(new ejx(dcx.pw, 1.0E-4F), eje.b, dcx.a.n()),
-                  new ejv(new ejx(dcx.pr, 1.0E-4F), eje.b, dcx.a.n()),
-                  new ejv(new ejx(dcx.ch, 0.3F), eje.b, dcx.px.n()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         y,
-         ImmutableList.of(
-            new ejz(ImmutableList.of(new ejv(new ejx(dcx.py, 0.5F), eje.b, dcx.a.n()), new ejv(new ejx(dcx.ch, 0.6F), eje.b, dcx.px.n()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         z,
-         ImmutableList.of(new ejz(ImmutableList.of(new ejv(new ejx(dcx.pw, 0.3F), eje.b, dcx.px.n()), new ejv(new ejx(dcx.pr, 1.0E-4F), eje.b, dcx.a.n()))))
-      );
-      a(
-         $$0,
-         A,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejx(dcx.pw, 0.3F), eje.b, dcx.px.n()),
-                  new ejv(new ejx(dcx.pw, 0.15F), eje.b, dcx.a.n()),
-                  new ejv(new ejx(dcx.pw, 0.3F), eje.b, dcx.pr.n())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         B,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejx(dcx.pw, 0.01F), eje.b, dcx.a.n()),
-                  new ejv(new ejx(dcx.pw, 0.5F), eje.b, dcx.px.n()),
-                  new ejv(new ejx(dcx.pw, 0.3F), eje.b, dcx.pr.n()),
-                  $$3
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         C,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(new ejv(new ejx(dcx.ch, 0.3F), eje.b, dcx.px.n()), new ejv(eje.b, eje.b, new ejf(0.0F, 0.05F, 0, 100, ir.a.b), dcx.a.n()), $$3)
-            )
-         )
-      );
-      a($$0, D, ImmutableList.of(new ejk(0.9F), new ejw(avo.bI)));
-      a($$0, E, ImmutableList.of(new ejk(0.1F), new ejw(avo.bI)));
-      a($$0, F, ImmutableList.of(new ejk(0.1F), new ejz(ImmutableList.of(new ejv(new ejj(dcx.R), eje.b, dcx.cy.n()))), new ejw(avo.bI)));
-      a(
-         $$0,
-         G,
-         ImmutableList.of(
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejx(dcx.sW, 0.3F), eje.b, dcx.tb.n()),
-                  new ejv(new ejx(dcx.sS, 0.3F), eje.b, dcx.tc.n()),
-                  new ejv(new ejx(dcx.of, 0.05F), eje.b, dcx.a.n())
-               )
+         new ehy(
+            $$13,
+            ImmutableList.of(
+               Pair.of(ehw.a("village/plains/terminators/terminator_01", $$10), 1),
+               Pair.of(ehw.a("village/plains/terminators/terminator_02", $$10), 1),
+               Pair.of(ehw.a("village/plains/terminators/terminator_03", $$10), 1),
+               Pair.of(ehw.a("village/plains/terminators/terminator_04", $$10), 1)
             ),
-            new ejw(avo.bI)
+            ehy.a.a
          )
       );
-      a(
+      qs.a($$0, "village/plains/trees", new ehy($$13, ImmutableList.of(Pair.of(ehw.a($$2), 1)), ehy.a.b));
+      qs.a(
          $$0,
-         H,
-         ImmutableList.of(
-            new ejk($$1.b(avo.bO), 0.95F),
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejx(dcx.sW, 0.3F), eje.b, dcx.tb.n()),
-                  new ejv(new ejx(dcx.sS, 0.3F), eje.b, dcx.tc.n()),
-                  new ejv(new ejx(dcx.of, 0.05F), eje.b, dcx.a.n())
-               )
+         "village/plains/decor",
+         new ehy(
+            $$13,
+            ImmutableList.of(
+               Pair.of(ehw.a("village/plains/plains_lamp_1"), 2), Pair.of(ehw.a($$2), 1), Pair.of(ehw.a($$3), 1), Pair.of(ehw.a($$4), 1), Pair.of(ehw.g(), 2)
             ),
-            new ejw(avo.bI)
+            ehy.a.b
          )
       );
-      a(
+      qs.a(
          $$0,
-         I,
-         ImmutableList.of(
-            new ejk($$1.b(avo.bO), 0.95F),
-            new ejz(
-               ImmutableList.of(
-                  new ejv(new ejx(dcx.sW, 0.3F), eje.b, dcx.tb.n()),
-                  new ejv(new ejx(dcx.sS, 0.3F), eje.b, dcx.tc.n()),
-                  new ejv(new ejx(dcx.sU, 0.3F), eje.b, dcx.a.n()),
-                  new ejv(new ejx(dcx.of, 0.05F), eje.b, dcx.a.n())
-               )
+         "village/plains/zombie/decor",
+         new ehy(
+            $$13,
+            ImmutableList.of(
+               Pair.of(ehw.a("village/plains/plains_lamp_1", $$9), 1),
+               Pair.of(ehw.a($$2), 1),
+               Pair.of(ehw.a($$3), 1),
+               Pair.of(ehw.a($$4), 1),
+               Pair.of(ehw.g(), 2)
             ),
-            new ejw(avo.bI)
+            ehy.a.b
          )
       );
-      a(
+      qs.a(
          $$0,
-         J,
-         List.of(
-            new ejz(
-               List.of(
-                  new ejv(new ejx(dcx.L, 0.2F), eje.b, dcx.j.n()),
-                  new ejv(new ejx(dcx.L, 0.1F), eje.b, dcx.k.n()),
-                  new ejv(new ejx(dcx.eM, 0.1F), eje.b, dcx.eL.n())
-               )
+         "village/plains/villagers",
+         new ehy(
+            $$13,
+            ImmutableList.of(
+               Pair.of(ehw.a("village/plains/villagers/nitwit"), 1),
+               Pair.of(ehw.a("village/plains/villagers/baby"), 1),
+               Pair.of(ehw.a("village/plains/villagers/unemployed"), 10)
             ),
-            a(eny.aV, 6),
-            a(eny.aW, 3)
+            ehy.a.b
          )
       );
-      a(
+      qs.a(
          $$0,
-         K,
-         List.of(
-            new ejz(
-               List.of(
-                  new ejv(new ejx(dcx.L, 0.2F), eje.b, dcx.j.n()),
-                  new ejv(new ejx(dcx.L, 0.1F), eje.b, dcx.k.n()),
-                  new ejv(new ejx(dcx.eM, 0.1F), eje.b, dcx.eL.n())
-               )
-            ),
-            a(eny.aV, 2)
+         "village/plains/zombie/villagers",
+         new ehy(
+            $$13,
+            ImmutableList.of(Pair.of(ehw.a("village/plains/zombie/villagers/nitwit"), 1), Pair.of(ehw.a("village/plains/zombie/villagers/unemployed"), 10)),
+            ehy.a.b
          )
       );
-      a($$0, L, List.of(a(eny.aV, 2)));
-   }
-
-   private static ejm a(akf $$0, int $$1) {
-      return new ejm(new ejz(List.of(new ejv(new eki(avo.cn), eje.b, ejs.b, dcx.M.n(), new ekk($$0)))), bns.a($$1));
+      qs.a(
+         $$0,
+         "village/common/animals",
+         new ehy(
+            $$13,
+            ImmutableList.of(
+               Pair.of(ehw.a("village/common/animals/cows_1"), 7),
+               Pair.of(ehw.a("village/common/animals/pigs_1"), 7),
+               Pair.of(ehw.a("village/common/animals/horses_1"), 1),
+               Pair.of(ehw.a("village/common/animals/horses_2"), 1),
+               Pair.of(ehw.a("village/common/animals/horses_3"), 1),
+               Pair.of(ehw.a("village/common/animals/horses_4"), 1),
+               Pair.of(ehw.a("village/common/animals/horses_5"), 1),
+               Pair.of(ehw.a("village/common/animals/sheep_1"), 1),
+               Pair.of(ehw.a("village/common/animals/sheep_2"), 1),
+               Pair.of(ehw.g(), 5)
+            ),
+            ehy.a.b
+         )
+      );
+      qs.a(
+         $$0,
+         "village/common/sheep",
+         new ehy($$13, ImmutableList.of(Pair.of(ehw.a("village/common/animals/sheep_1"), 1), Pair.of(ehw.a("village/common/animals/sheep_2"), 1)), ehy.a.b)
+      );
+      qs.a(
+         $$0,
+         "village/common/cats",
+         new ehy(
+            $$13,
+            ImmutableList.of(
+               Pair.of(ehw.a("village/common/animals/cat_black"), 1),
+               Pair.of(ehw.a("village/common/animals/cat_british"), 1),
+               Pair.of(ehw.a("village/common/animals/cat_calico"), 1),
+               Pair.of(ehw.a("village/common/animals/cat_persian"), 1),
+               Pair.of(ehw.a("village/common/animals/cat_ragdoll"), 1),
+               Pair.of(ehw.a("village/common/animals/cat_red"), 1),
+               Pair.of(ehw.a("village/common/animals/cat_siamese"), 1),
+               Pair.of(ehw.a("village/common/animals/cat_tabby"), 1),
+               Pair.of(ehw.a("village/common/animals/cat_white"), 1),
+               Pair.of(ehw.a("village/common/animals/cat_jellie"), 1),
+               Pair.of(ehw.g(), 3)
+            ),
+            ehy.a.b
+         )
+      );
+      qs.a(
+         $$0,
+         "village/common/butcher_animals",
+         new ehy(
+            $$13,
+            ImmutableList.of(
+               Pair.of(ehw.a("village/common/animals/cows_1"), 3),
+               Pair.of(ehw.a("village/common/animals/pigs_1"), 3),
+               Pair.of(ehw.a("village/common/animals/sheep_1"), 1),
+               Pair.of(ehw.a("village/common/animals/sheep_2"), 1)
+            ),
+            ehy.a.b
+         )
+      );
+      qs.a($$0, "village/common/iron_golem", new ehy($$13, ImmutableList.of(Pair.of(ehw.a("village/common/iron_golem"), 1)), ehy.a.b));
+      qs.a($$0, "village/common/well_bottoms", new ehy($$13, ImmutableList.of(Pair.of(ehw.a("village/common/well_bottom"), 1)), ehy.a.b));
    }
 }

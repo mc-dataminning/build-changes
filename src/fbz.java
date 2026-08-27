@@ -1,59 +1,53 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class fbz extends fbu {
+public class fbz extends fce {
    private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final ws d;
-   private final Runnable e;
+   private static final wu c = wu.c("mco.configure.world.closing");
+   private final eze d;
+   private final fan e;
 
-   public fbz(long $$0, ws $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public fbz(eze $$0, fan $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
-
-   protected abstract void a(eyd var1, long var2) throws ezq;
 
    @Override
    public void run() {
-      eyd $$0 = eyd.a();
-      int $$1 = 0;
+      eyn $$0 = eyn.a();
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
             return;
-         } catch (ezr var4) {
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.b();
+               this.d.e = eze.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fab var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-            $$1++;
          } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't reset world");
+            b.error("Failed to close server", var5);
             this.a(var5);
-            return;
          }
       }
    }
 
    @Override
-   public ws a() {
-      return this.d;
+   public wu a() {
+      return c;
    }
 }

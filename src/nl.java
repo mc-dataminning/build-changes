@@ -1,47 +1,49 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
-public class nl implements Supplier<JsonElement> {
-   private final Map<nn<?>, nn<?>.a> a = Maps.newLinkedHashMap();
+public final class nl {
+   private static final nl a = new nl(ImmutableList.of());
+   private static final Comparator<drk.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
+   private final List<drk.a<?>> c;
 
-   public <T> nl a(nn<T> $$0, T $$1) {
-      nn<?>.a $$2 = this.a.put($$0, $$0.a($$1));
-      if ($$2 != null) {
-         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
-      } else {
-         return this;
-      }
+   public nl a(drk.a<?> $$0) {
+      return new nl(ImmutableList.builder().addAll(this.c).add($$0).build());
+   }
+
+   public nl a(nl $$0) {
+      return new nl(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
+   }
+
+   private nl(List<drk.a<?>> $$0) {
+      this.c = $$0;
    }
 
    public static nl a() {
-      return new nl();
+      return a;
    }
 
-   public static nl a(nl $$0, nl $$1) {
-      nl $$2 = new nl();
-      $$2.a.putAll($$0.a);
-      $$2.a.putAll($$1.a);
-      return $$2;
+   public static nl a(drk.a<?>... $$0) {
+      return new nl(ImmutableList.copyOf($$0));
    }
 
-   public JsonElement b() {
-      JsonObject $$0 = new JsonObject();
-      this.a.values().forEach($$1 -> $$1.a($$0));
-      return $$0;
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof nl && this.c.equals(((nl)$$0).c);
    }
 
-   public static JsonElement a(List<nl> $$0) {
-      if ($$0.size() == 1) {
-         return $$0.get(0).b();
-      } else {
-         JsonArray $$1 = new JsonArray();
-         $$0.forEach($$1x -> $$1.add($$1x.b()));
-         return $$1;
-      }
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   public String b() {
+      return this.c.stream().sorted(b).map(drk.a::toString).collect(Collectors.joining(","));
+   }
+
+   @Override
+   public String toString() {
+      return this.b();
    }
 }

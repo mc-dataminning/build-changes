@@ -1,31 +1,26 @@
-public record aak(im c, String d, int e) implements aaa {
-   public static final yq<vs, aak> a = aaa.a(aak::a, aak::new);
-   public static final aaa.b<aak> b = aaa.a("debug/poi_added");
+public record aak(long c, in d) implements aac {
+   public static final ys<vu, aak> a = aac.a(aak::a, aak::new);
+   public static final aac.b<aak> b = aac.a("debug/neighbors_update");
 
-   private aak(vs $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+   private aak(vu $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.p(this.e);
    }
 
    @Override
-   public aaa.b<aak> a() {
+   public aac.b<aak> a() {
       return b;
    }
 
-   public im b() {
+   public long b() {
       return this.c;
    }
 
-   public String c() {
+   public in c() {
       return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

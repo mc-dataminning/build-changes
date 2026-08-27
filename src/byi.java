@@ -1,119 +1,62 @@
 import java.util.EnumSet;
-import java.util.List;
 
-public class byi extends byb {
-   public final cfa a;
-   private double b;
-   private static final int c = 8;
-   private int d;
+public class byi extends byx {
+   private final bsi a;
 
-   public byi(cfa $$0, double $$1) {
+   public byi(bsi $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(byb.a.a));
+      this.a(EnumSet.of(byx.a.a, byx.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.gc() && !this.a.hb()) {
-         List<bql> $$0 = this.a.dN().a(this.a, this.a.cI().c(9.0, 4.0, 9.0), $$0x -> {
-            bqr<?> $$1x = $$0x.ai();
-            return $$1x == bqr.am || $$1x == bqr.bd;
-         });
-         cfa $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (bql $$3 : $$0) {
-            cfa $$4 = (cfa)$$3;
-            if ($$4.hb() && !$$4.ha()) {
-               double $$5 = this.a.g($$4);
-               if (!($$5 > $$2)) {
-                  $$2 = $$5;
-                  $$1 = $$4;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            for (bql $$6 : $$0) {
-               cfa $$7 = (cfa)$$6;
-               if ($$7.gc() && !$$7.ha()) {
-                  double $$8 = this.a.g($$7);
-                  if (!($$8 > $$2)) {
-                     $$2 = $$8;
-                     $$1 = $$7;
-                  }
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 4.0) {
-            return false;
-         } else if (!$$1.gc() && !this.a($$1, 1)) {
-            return false;
-         } else {
-            this.a.a($$1);
-            return true;
-         }
-      } else {
-         return false;
-      }
+      return this.a.cj() < 140;
    }
 
    @Override
    public boolean b() {
-      if (this.a.hb() && this.a.hc().bB() && this.a(this.a, 0)) {
-         double $$0 = this.a.g(this.a.hc());
-         if ($$0 > 676.0) {
-            if (this.b <= 3.0) {
-               this.b *= 1.2;
-               this.d = b(40);
-               return true;
-            }
-
-            if (this.d == 0) {
-               return false;
-            }
-         }
-
-         if (this.d > 0) {
-            this.d--;
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+      return this.a();
    }
 
    @Override
-   public void d() {
-      this.a.gZ();
-      this.b = 2.1;
+   public boolean Q_() {
+      return false;
+   }
+
+   @Override
+   public void c() {
+      this.h();
+   }
+
+   private void h() {
+      Iterable<in> $$0 = in.b(
+         axz.a(this.a.ds() - 1.0), this.a.dt(), axz.a(this.a.dy() - 1.0), axz.a(this.a.ds() + 1.0), axz.a(this.a.du() + 8.0), axz.a(this.a.dy() + 1.0)
+      );
+      in $$1 = null;
+
+      for (in $$2 : $$0) {
+         if (this.a(this.a.dN(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = in.a(this.a.ds(), this.a.du() + 8.0, this.a.dy());
+      }
+
+      this.a.K().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
    public void e() {
-      if (this.a.hb()) {
-         if (!(this.a.ge() instanceof cgp)) {
-            cfa $$0 = this.a.hc();
-            double $$1 = (double)this.a.f($$0);
-            float $$2 = 2.0F;
-            etf $$3 = new etf($$0.ds() - this.a.ds(), $$0.du() - this.a.du(), $$0.dy() - this.a.dy()).d().a(Math.max($$1 - 2.0, 0.0));
-            this.a.K().a(this.a.ds() + $$3.c, this.a.du() + $$3.d, this.a.dy() + $$3.e, this.b);
-         }
-      }
+      this.h();
+      this.a.a(0.02F, new etp((double)this.a.bp, (double)this.a.bq, (double)this.a.br));
+      this.a.a(bsf.a, this.a.dq());
    }
 
-   private boolean a(cfa $$0, int $$1) {
-      if ($$1 > 8) {
-         return false;
-      } else if ($$0.hb()) {
-         return $$0.hc().gc() ? true : this.a($$0.hc(), ++$$1);
-      } else {
-         return false;
-      }
+   private boolean a(dag $$0, in $$1) {
+      dqh $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(ddg.nd)) && $$2.a(emp.a);
    }
 }

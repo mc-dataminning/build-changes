@@ -1,227 +1,270 @@
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Arrays;
-import java.util.Iterator;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dna extends dnd {
-   private static final Logger c = LogUtils.getLogger();
-   private static final String d = "flower_pos";
-   private static final String e = "bees";
-   static final List<String> f = Arrays.asList(
-      "Air",
-      "ArmorDropChances",
-      "ArmorItems",
-      "Brain",
-      "CanPickUpLoot",
-      "DeathTime",
-      "FallDistance",
-      "FallFlying",
-      "Fire",
-      "HandDropChances",
-      "HandItems",
-      "HurtByTimestamp",
-      "HurtTime",
-      "LeftHanded",
-      "Motion",
-      "NoGravity",
-      "OnGround",
-      "PortalCooldown",
-      "Pos",
-      "Rotation",
-      "CannotEnterHiveTicks",
-      "TicksSincePollination",
-      "CropsGrownSincePollination",
-      "hive_pos",
-      "Passengers",
-      "leash",
-      "UUID"
-   );
-   public static final int a = 3;
-   private static final int g = 400;
-   private static final int h = 2400;
-   public static final int b = 600;
-   private final List<dna.a> i = Lists.newArrayList();
+public abstract class dna extends dng implements bpy, cpt, cqe {
+   protected static final int b = 0;
+   protected static final int c = 1;
+   protected static final int d = 2;
+   public static final int e = 0;
+   private static final int[] q = new int[]{0};
+   private static final int[] r = new int[]{2, 1};
+   private static final int[] s = new int[]{1};
+   public static final int f = 1;
+   public static final int g = 2;
+   public static final int h = 3;
+   public static final int i = 4;
+   public static final int j = 200;
+   public static final int k = 2;
+   protected jf<csz> l = jf.a(3, csz.i);
+   int t;
+   int u;
+   int v;
+   int w;
    @Nullable
-   private im j;
+   private static volatile Map<csu, Integer> x;
+   protected final coo m = new coo() {
+      @Override
+      public int a(int $$0) {
+         switch ($$0) {
+            case 0:
+               return dna.this.t;
+            case 1:
+               return dna.this.u;
+            case 2:
+               return dna.this.v;
+            case 3:
+               return dna.this.w;
+            default:
+               return 0;
+         }
+      }
 
-   public dna(im $$0, dpy $$1) {
-      super(dnf.H, $$0, $$1);
+      @Override
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               dna.this.t = $$1;
+               break;
+            case 1:
+               dna.this.u = $$1;
+               break;
+            case 2:
+               dna.this.v = $$1;
+               break;
+            case 3:
+               dna.this.w = $$1;
+         }
+      }
+
+      @Override
+      public int a() {
+         return 4;
+      }
+   };
+   private final Object2IntOpenHashMap<akh> y = new Object2IntOpenHashMap();
+   private final cxg.a<bpf, ? extends cwm> z;
+
+   protected dna(dno<?> $$0, in $$1, dqh $$2, cxi<? extends cwm> $$3) {
+      super($$0, $$1, $$2);
+      this.z = cxg.b($$3);
+   }
+
+   public static void f() {
+      x = null;
+   }
+
+   public static Map<csu, Integer> g() {
+      Map<csu, Integer> $$0 = x;
+      if ($$0 != null) {
+         return $$0;
+      } else {
+         Map<csu, Integer> $$1 = Maps.newLinkedHashMap();
+         a($$1, ctc.qA, 20000);
+         a($$1, ddg.iB, 16000);
+         a($$1, ctc.sg, 2400);
+         a($$1, ctc.ow, 1600);
+         a($$1, ctc.ox, 1600);
+         a($$1, avz.r, 300);
+         a($$1, avz.C, 300);
+         a($$1, avz.b, 300);
+         a($$1, ddg.w, 300);
+         a($$1, avz.i, 300);
+         a($$1, ddg.hU, 300);
+         a($$1, avz.j, 150);
+         a($$1, ddg.jC, 150);
+         a($$1, avz.n, 300);
+         a($$1, avz.m, 300);
+         a($$1, avz.k, 300);
+         a($$1, avz.l, 300);
+         a($$1, ddg.aY, 300);
+         a($$1, ddg.cl, 300);
+         a($$1, ddg.cm, 300);
+         a($$1, ddg.oa, 300);
+         a($$1, ddg.dT, 300);
+         a($$1, ddg.cv, 300);
+         a($$1, ddg.gV, 300);
+         a($$1, ddg.cA, 300);
+         a($$1, ddg.gZ, 300);
+         a($$1, avz.E, 300);
+         a($$1, ctc.ou, 300);
+         a($$1, ctc.qV, 300);
+         a($$1, ddg.cO, 300);
+         a($$1, avz.aQ, 200);
+         a($$1, avz.be, 800);
+         a($$1, ctc.oM, 200);
+         a($$1, ctc.oL, 200);
+         a($$1, ctc.oP, 200);
+         a($$1, ctc.oO, 200);
+         a($$1, ctc.oN, 200);
+         a($$1, avz.h, 200);
+         a($$1, avz.aN, 1200);
+         a($$1, avz.a, 100);
+         a($$1, avz.d, 100);
+         a($$1, ctc.pp, 100);
+         a($$1, avz.p, 100);
+         a($$1, ctc.pq, 100);
+         a($$1, avz.g, 67);
+         a($$1, ddg.me, 4001);
+         a($$1, ctc.vT, 300);
+         a($$1, ddg.mZ, 50);
+         a($$1, ddg.bv, 100);
+         a($$1, ddg.nS, 50);
+         a($$1, ddg.nT, 300);
+         a($$1, ddg.nU, 300);
+         a($$1, ddg.nX, 300);
+         a($$1, ddg.nY, 300);
+         a($$1, ddg.ob, 300);
+         a($$1, ddg.pc, 300);
+         a($$1, ddg.sy, 100);
+         a($$1, ddg.sz, 100);
+         a($$1, ddg.ac, 300);
+         x = $$1;
+         return $$1;
+      }
+   }
+
+   private static boolean b(csu $$0) {
+      return $$0.n().a(avz.aH);
+   }
+
+   private static void a(Map<csu, Integer> $$0, awg<csu> $$1, int $$2) {
+      for (iw<csu> $$3 : ld.h.c($$1)) {
+         if (!b($$3.a())) {
+            $$0.put($$3.a(), $$2);
+         }
+      }
+   }
+
+   private static void a(Map<csu, Integer> $$0, dac $$1, int $$2) {
+      csu $$3 = $$1.q();
+      if (b($$3)) {
+         if (aa.aX) {
+            throw (IllegalStateException)ac.b(
+               new IllegalStateException(
+                  "A developer tried to explicitly make fire resistant item " + $$3.o(null).getString() + " a furnace fuel. That will not work!"
+               )
+            );
+         }
+      } else {
+         $$0.put($$3, $$2);
+      }
+   }
+
+   private boolean l() {
+      return this.t > 0;
    }
 
    @Override
-   public void e() {
-      if (this.b()) {
-         this.a(null, this.o.a_(this.az_()), dna.b.c);
-      }
+   public void a(ua $$0, iy.a $$1) {
+      super.a($$0, $$1);
+      this.l = jf.a(this.b(), csz.i);
+      bpg.b($$0, this.l, $$1);
+      this.t = $$0.g("BurnTime");
+      this.v = $$0.g("CookTime");
+      this.w = $$0.g("CookTimeTotal");
+      this.u = this.b(this.l.get(1));
+      ua $$2 = $$0.p("RecipesUsed");
 
-      super.e();
-   }
-
-   public boolean b() {
-      if (this.o == null) {
-         return false;
-      } else {
-         for (im $$0 : im.c(this.p.b(-1, -1, -1), this.p.b(1, 1, 1))) {
-            if (this.o.a_($$0).b() instanceof dfv) {
-               return true;
-            }
-         }
-
-         return false;
+      for (String $$3 : $$2.e()) {
+         this.y.put(new akh($$3), $$2.h($$3));
       }
    }
 
-   public boolean c() {
-      return this.i.isEmpty();
+   @Override
+   protected void b(ua $$0, iy.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("BurnTime", (short)this.t);
+      $$0.a("CookTime", (short)this.v);
+      $$0.a("CookTimeTotal", (short)this.w);
+      bpg.a($$0, this.l, $$1);
+      ua $$2 = new ua();
+      this.y.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), $$2x));
+      $$0.a("RecipesUsed", $$2);
    }
 
-   public boolean d() {
-      return this.i.size() == 3;
-   }
-
-   public void a(@Nullable ckl $$0, dpy $$1, dna.b $$2) {
-      List<bql> $$3 = this.a($$1, $$2);
-      if ($$0 != null) {
-         for (bql $$4 : $$3) {
-            if ($$4 instanceof ccu) {
-               ccu $$5 = (ccu)$$4;
-               if ($$0.dl().g($$4.dl()) <= 16.0) {
-                  if (!this.j()) {
-                     $$5.h($$0);
-                  } else {
-                     $$5.u(400);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private List<bql> a(dpy $$0, dna.b $$1) {
-      List<bql> $$2 = Lists.newArrayList();
-      this.i.removeIf($$3 -> a(this.o, this.p, $$0, $$3.b(), $$2, $$1, this.j));
-      if (!$$2.isEmpty()) {
-         super.e();
-      }
-
-      return $$2;
-   }
-
-   @ayz
-   public int f() {
-      return this.i.size();
-   }
-
-   public static int a(dpy $$0) {
-      return $$0.c(dcp.c);
-   }
-
-   @ayz
-   public boolean j() {
-      return ddj.a(this.o, this.az_());
-   }
-
-   public void a(bql $$0) {
-      if (this.i.size() < 3) {
-         $$0.ac();
-         $$0.bF();
-         this.a(dna.c.a($$0));
-         if (this.o != null) {
-            if ($$0 instanceof ccu $$1 && $$1.u() && (!this.k() || this.o.z.h())) {
-               this.j = $$1.r();
-            }
-
-            im $$2 = this.az_();
-            this.o.a(null, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), auz.bV, ava.e, 1.0F, 1.0F);
-            this.o.a(dur.c, $$2, dur.a.a($$0, this.n()));
-         }
-
-         $$0.am();
-         super.e();
-      }
-   }
-
-   public void a(dna.c $$0) {
-      this.i.add(new dna.a($$0));
-   }
-
-   private static boolean a(czu $$0, im $$1, dpy $$2, dna.c $$3, @Nullable List<bql> $$4, dna.b $$5, @Nullable im $$6) {
-      if (($$0.R() || $$0.ac()) && $$5 != dna.b.c) {
-         return false;
-      } else {
-         ir $$7 = $$2.c(dcp.b);
-         im $$8 = $$1.a($$7);
-         boolean $$9 = !$$0.a_($$8).k($$0, $$8).c();
-         if ($$9 && $$5 != dna.b.c) {
-            return false;
-         } else {
-            bql $$10 = $$3.a($$0, $$1);
-            if ($$10 != null) {
-               if ($$10 instanceof ccu $$11) {
-                  if ($$6 != null && !$$11.u() && $$0.z.i() < 0.9F) {
-                     $$11.i($$6);
-                  }
-
-                  if ($$5 == dna.b.a) {
-                     $$11.gD();
-                     if ($$2.a(avo.aG, $$0x -> $$0x.b(dcp.c))) {
-                        int $$12 = a($$2);
-                        if ($$12 < 5) {
-                           int $$13 = $$0.z.a(100) == 0 ? 2 : 1;
-                           if ($$12 + $$13 > 5) {
-                              $$13--;
-                           }
-
-                           $$0.b($$1, $$2.a(dcp.c, Integer.valueOf($$12 + $$13)));
-                        }
-                     }
-                  }
-
-                  if ($$4 != null) {
-                     $$4.add($$11);
-                  }
-
-                  float $$14 = $$10.dh();
-                  double $$15 = $$9 ? 0.0 : 0.55 + (double)($$14 / 2.0F);
-                  double $$16 = (double)$$1.u() + 0.5 + $$15 * (double)$$7.j();
-                  double $$17 = (double)$$1.v() + 0.5 - (double)($$10.di() / 2.0F);
-                  double $$18 = (double)$$1.w() + 0.5 + $$15 * (double)$$7.l();
-                  $$10.b($$16, $$17, $$18, $$10.dD(), $$10.dF());
-               }
-
-               $$0.a(null, $$1, auz.bW, ava.e, 1.0F, 1.0F);
-               $$0.a(dur.c, $$1, dur.a.a($$10, $$0.a_($$1)));
-               return $$0.b($$10);
-            } else {
-               return false;
-            }
-         }
-      }
-   }
-
-   private boolean k() {
-      return this.j != null;
-   }
-
-   private static void a(czu $$0, im $$1, dpy $$2, List<dna.a> $$3, @Nullable im $$4) {
+   public static void a(dad $$0, in $$1, dqh $$2, dna $$3) {
+      boolean $$4 = $$3.l();
       boolean $$5 = false;
-      Iterator<dna.a> $$6 = $$3.iterator();
+      if ($$3.l()) {
+         $$3.t--;
+      }
 
-      while ($$6.hasNext()) {
-         dna.a $$7 = $$6.next();
-         if ($$7.a()) {
-            dna.b $$8 = $$7.c() ? dna.b.a : dna.b.b;
-            if (a($$0, $$1, $$2, $$7.b(), null, $$8, $$4)) {
+      csz $$6 = $$3.l.get(1);
+      boolean $$7 = !$$3.l.get(0).d();
+      boolean $$8 = !$$6.d();
+      if ($$3.l() || $$8 && $$7) {
+         cxf<?> $$9;
+         if ($$7) {
+            $$9 = $$3.z.a($$3, $$0).orElse(null);
+         } else {
+            $$9 = null;
+         }
+
+         int $$11 = $$3.ah_();
+         if (!$$3.l() && a($$0.H_(), $$9, $$3.l, $$11)) {
+            $$3.t = $$3.b($$6);
+            $$3.u = $$3.t;
+            if ($$3.l()) {
                $$5 = true;
-               $$6.remove();
+               if ($$8) {
+                  csu $$12 = $$6.f();
+                  $$6.h(1);
+                  if ($$6.d()) {
+                     csu $$13 = $$12.t();
+                     $$3.l.set(1, $$13 == null ? csz.i : new csz($$13));
+                  }
+               }
             }
          }
+
+         if ($$3.l() && a($$0.H_(), $$9, $$3.l, $$11)) {
+            $$3.v++;
+            if ($$3.v == $$3.w) {
+               $$3.v = 0;
+               $$3.w = a($$0, $$3);
+               if (b($$0.H_(), $$9, $$3.l, $$11)) {
+                  $$3.a($$9);
+               }
+
+               $$5 = true;
+            }
+         } else {
+            $$3.v = 0;
+         }
+      } else if (!$$3.l() && $$3.v > 0) {
+         $$3.v = axz.a($$3.v - 2, 0, $$3.w);
+      }
+
+      if ($$4 != $$3.l()) {
+         $$5 = true;
+         $$2 = $$2.a(dbz.b, Boolean.valueOf($$3.l()));
+         $$0.a($$1, $$2, 3);
       }
 
       if ($$5) {
@@ -229,155 +272,184 @@ public class dna extends dnd {
       }
    }
 
-   public static void a(czu $$0, im $$1, dpy $$2, dna $$3) {
-      a($$0, $$1, $$2, $$3.i, $$3.j);
-      if (!$$3.i.isEmpty() && $$0.E_().j() < 0.005) {
-         double $$4 = (double)$$1.u() + 0.5;
-         double $$5 = (double)$$1.v();
-         double $$6 = (double)$$1.w() + 0.5;
-         $$0.a(null, $$4, $$5, $$6, auz.bY, ava.e, 1.0F, 1.0F);
-      }
-
-      afu.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(ty $$0, ix.a $$1) {
-      super.a($$0, $$1);
-      this.i.clear();
-      if ($$0.e("bees")) {
-         dna.c.b.parse(um.a, $$0.c("bees")).resultOrPartial($$0x -> c.error("Failed to parse bees: '{}'", $$0x)).ifPresent($$0x -> $$0x.forEach(this::a));
-      }
-
-      this.j = un.a($$0, "flower_pos").orElse(null);
-   }
-
-   @Override
-   protected void b(ty $$0, ix.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("bees", ac.a(dna.c.b.encodeStart(um.a, this.l()), IllegalStateException::new));
-      if (this.k()) {
-         $$0.a("flower_pos", un.a(this.j));
-      }
-   }
-
-   @Override
-   public void a(jv $$0) {
-      super.a($$0);
-      this.i.clear();
-      List<dna.c> $$1 = $$0.a(jz.S, List.of());
-      $$1.forEach(this::a);
-   }
-
-   @Override
-   public void a(jv.a $$0) {
-      super.a($$0);
-      $$0.a(jz.S, this.l());
-   }
-
-   @Override
-   public void a(ty $$0) {
-      super.a($$0);
-      $$0.r("bees");
-   }
-
-   private List<dna.c> l() {
-      return this.i.stream().map(dna.a::b).toList();
-   }
-
-   static class a {
-      private final dna.c a;
-      private int b;
-
-      a(dna.c $$0) {
-         this.a = $$0;
-         this.b = $$0.b();
-      }
-
-      public boolean a() {
-         return this.b++ > this.a.f;
-      }
-
-      public dna.c b() {
-         return new dna.c(this.a.d, this.b, this.a.f);
-      }
-
-      public boolean c() {
-         return this.a.d.d().q("HasNectar");
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c;
-   }
-
-   public static record c(cuq d, int e, int f) {
-      public static final Codec<dna.c> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  axe.a(cuq.b, "entity_data", cuq.a).forGetter(dna.c::a),
-                  Codec.INT.fieldOf("ticks_in_hive").forGetter(dna.c::b),
-                  Codec.INT.fieldOf("min_ticks_in_hive").forGetter(dna.c::c)
-               )
-               .apply($$0, dna.c::new)
-      );
-      public static final Codec<List<dna.c>> b = a.listOf();
-      public static final yq<ByteBuf, dna.c> c = yq.a(cuq.d, dna.c::a, yo.f, dna.c::b, yo.f, dna.c::c, dna.c::new);
-
-      public static dna.c a(bql $$0) {
-         ty $$1 = new ty();
-         $$0.e($$1);
-         dna.f.forEach($$1::r);
-         boolean $$2 = $$1.q("HasNectar");
-         return new dna.c(cuq.a($$1), 0, $$2 ? 2400 : 600);
-      }
-
-      public static dna.c a(int $$0) {
-         ty $$1 = new ty();
-         $$1.a("id", lc.g.b(bqr.h).toString());
-         return new dna.c(cuq.a($$1), $$0, 600);
-      }
-
-      @Nullable
-      public bql a(czu $$0, im $$1) {
-         ty $$2 = this.d.c();
-         dna.f.forEach($$2::r);
-         bql $$3 = bqr.a($$2, $$0, $$0x -> $$0x);
-         if ($$3 != null && $$3.ai().a(avr.e)) {
-            $$3.f(true);
-            if ($$3 instanceof ccu $$4) {
-               $$4.j($$1);
-               a(this.e, $$4);
-            }
-
-            return $$3;
+   private static boolean a(jk $$0, @Nullable cxf<?> $$1, jf<csz> $$2, int $$3) {
+      if (!$$2.get(0).d() && $$1 != null) {
+         csz $$4 = $$1.b().a($$0);
+         if ($$4.d()) {
+            return false;
          } else {
-            return null;
+            csz $$5 = $$2.get(2);
+            if ($$5.d()) {
+               return true;
+            } else if (!csz.c($$5, $$4)) {
+               return false;
+            } else {
+               return $$5.G() < $$3 && $$5.G() < $$5.i() ? true : $$5.G() < $$4.i();
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   private static boolean b(jk $$0, @Nullable cxf<?> $$1, jf<csz> $$2, int $$3) {
+      if ($$1 != null && a($$0, $$1, $$2, $$3)) {
+         csz $$4 = $$2.get(0);
+         csz $$5 = $$1.b().a($$0);
+         csz $$6 = $$2.get(2);
+         if ($$6.d()) {
+            $$2.set(2, $$5.r());
+         } else if (csz.c($$6, $$5)) {
+            $$6.g(1);
+         }
+
+         if ($$4.a(ddg.aP.q()) && !$$2.get(1).d() && $$2.get(1).a(ctc.qy)) {
+            $$2.set(1, new csz(ctc.qz));
+         }
+
+         $$4.h(1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected int b(csz $$0) {
+      if ($$0.d()) {
+         return 0;
+      } else {
+         csu $$1 = $$0.f();
+         return g().getOrDefault($$1, 0);
+      }
+   }
+
+   private static int a(dad $$0, dna $$1) {
+      return $$1.z.a($$1, $$0).map($$0x -> ((cwm)$$0x.b()).d()).orElse(200);
+   }
+
+   public static boolean c(csz $$0) {
+      return g().containsKey($$0.f());
+   }
+
+   @Override
+   public int[] a(is $$0) {
+      if ($$0 == is.a) {
+         return r;
+      } else {
+         return $$0 == is.b ? q : s;
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, csz $$1, @Nullable is $$2) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public boolean b(int $$0, csz $$1, is $$2) {
+      return $$2 == is.a && $$0 == 1 ? $$1.a(ctc.qz) || $$1.a(ctc.qy) : true;
+   }
+
+   @Override
+   public int b() {
+      return this.l.size();
+   }
+
+   @Override
+   protected jf<csz> j() {
+      return this.l;
+   }
+
+   @Override
+   protected void a(jf<csz> $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public void a(int $$0, csz $$1) {
+      csz $$2 = this.l.get($$0);
+      boolean $$3 = !$$1.d() && csz.c($$2, $$1);
+      this.l.set($$0, $$1);
+      $$1.f(this.a($$1));
+      if ($$0 == 0 && !$$3) {
+         this.w = a(this.n, this);
+         this.v = 0;
+         this.e();
+      }
+   }
+
+   @Override
+   public boolean b(int $$0, csz $$1) {
+      if ($$0 == 2) {
+         return false;
+      } else if ($$0 != 1) {
+         return true;
+      } else {
+         csz $$2 = this.l.get(1);
+         return c($$1) || $$1.a(ctc.qy) && !$$2.a(ctc.qy);
+      }
+   }
+
+   @Override
+   public void a(@Nullable cxf<?> $$0) {
+      if ($$0 != null) {
+         akh $$1 = $$0.a();
+         this.y.addTo($$1, 1);
+      }
+   }
+
+   @Nullable
+   @Override
+   public cxf<?> d() {
+      return null;
+   }
+
+   @Override
+   public void a(clh $$0, List<csz> $$1) {
+   }
+
+   public void a(aqi $$0) {
+      List<cxf<?>> $$1 = this.a($$0.z(), $$0.dl());
+      $$0.a($$1);
+
+      for (cxf<?> $$2 : $$1) {
+         if ($$2 != null) {
+            $$0.a($$2, this.l);
          }
       }
 
-      private static void a(int $$0, ccu $$1) {
-         int $$2 = $$1.g();
-         if ($$2 < 0) {
-            $$1.c_(Math.min(0, $$2 + $$0));
-         } else if ($$2 > 0) {
-            $$1.c_(Math.max(0, $$2 - $$0));
-         }
+      this.y.clear();
+   }
 
-         $$1.t(Math.max(0, $$1.gr() - $$0));
+   public List<cxf<?>> a(aqh $$0, etp $$1) {
+      List<cxf<?>> $$2 = Lists.newArrayList();
+      ObjectIterator var4 = this.y.object2IntEntrySet().iterator();
+
+      while (var4.hasNext()) {
+         Entry<akh> $$3 = (Entry<akh>)var4.next();
+         $$0.r().a((akh)$$3.getKey()).ifPresent($$4 -> {
+            $$2.add((cxf<?>)$$4);
+            a($$0, $$1, $$3.getIntValue(), ((cwm)$$4.b()).b());
+         });
       }
 
-      public cuq a() {
-         return this.d;
+      return $$2;
+   }
+
+   private static void a(aqh $$0, etp $$1, int $$2, float $$3) {
+      int $$4 = axz.d((float)$$2 * $$3);
+      float $$5 = axz.h((float)$$2 * $$3);
+      if ($$5 != 0.0F && Math.random() < (double)$$5) {
+         $$4++;
       }
 
-      public int b() {
-         return this.e;
-      }
+      brq.a($$0, $$1, $$4);
+   }
 
-      public int c() {
-         return this.f;
+   @Override
+   public void a(cll $$0) {
+      for (csz $$1 : this.l) {
+         $$0.b($$1);
       }
    }
 }

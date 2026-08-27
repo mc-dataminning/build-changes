@@ -1,61 +1,69 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public class doh extends dnm implements dop {
+   private final dnu a = new dnu();
+   private final dnz b = new dnz() {
+      @Override
+      protected void a(dad $$0, in $$1, dqh $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, avc.hU, avd.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      }
 
-public record doh(Optional<cry> d, Optional<cry> e, Optional<cry> f, Optional<cry> g) {
-   public static final doh a = new doh(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-   public static final Codec<doh> b = axe.a(lc.h.q().listOf(), 4).xmap(doh::new, doh::a);
-   public static final yq<wd, doh> c = yo.a(ld.G).a(yo.c(4)).a(doh::new, doh::a);
+      @Override
+      protected void b(dad $$0, in $$1, dqh $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, avc.hT, avd.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      }
 
-   private doh(List<cry> $$0) {
-      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
+      @Override
+      protected void a(dad $$0, in $$1, dqh $$2, int $$3, int $$4) {
+         $$0.a(doh.this.o, ddg.fG, 1, $$4);
+      }
+
+      @Override
+      protected boolean a(clh $$0) {
+         return $$0.gn().b(doh.this);
+      }
+   };
+
+   public doh(in $$0, dqh $$1) {
+      super(dno.d, $$0, $$1);
    }
 
-   public doh(cry $$0, cry $$1, cry $$2, cry $$3) {
-      this(List.of($$0, $$1, $$2, $$3));
+   public static void a(dad $$0, in $$1, dqh $$2, doh $$3) {
+      $$3.a.a();
    }
 
-   private static Optional<cry> a(List<cry> $$0, int $$1) {
-      if ($$1 >= $$0.size()) {
-         return Optional.empty();
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.a.a($$1 > 0);
+         return true;
       } else {
-         cry $$2 = $$0.get($$1);
-         return $$2 == csg.qL ? Optional.empty() : Optional.of($$2);
+         return super.a_($$0, $$1);
       }
    }
 
-   public ty a(ty $$0) {
-      if (this.equals(a)) {
-         return $$0;
-      } else {
-         $$0.a("sherds", ac.a(b.encodeStart(um.a, this), IllegalStateException::new));
-         return $$0;
+   public void a(clh $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.b.a($$0, this.i(), this.az_(), this.n());
       }
    }
 
-   public List<cry> a() {
-      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(csg.qL)).toList();
+   public void b(clh $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.b.b($$0, this.i(), this.az_(), this.n());
+      }
    }
 
-   public static doh b(@Nullable ty $$0) {
-      return $$0 != null && $$0.e("sherds") ? b.parse(um.a, $$0.c("sherds")).result().orElse(a) : a;
+   public boolean c(clh $$0) {
+      return bpf.a(this, $$0);
    }
 
-   public Optional<cry> b() {
-      return this.d;
+   public void b() {
+      if (!this.p) {
+         this.b.c(this.i(), this.az_(), this.n());
+      }
    }
 
-   public Optional<cry> c() {
-      return this.e;
-   }
-
-   public Optional<cry> d() {
-      return this.f;
-   }
-
-   public Optional<cry> e() {
-      return this.g;
+   @Override
+   public float a(float $$0) {
+      return this.a.a($$0);
    }
 }

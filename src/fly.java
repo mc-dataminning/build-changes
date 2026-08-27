@@ -1,246 +1,214 @@
-import java.util.Collections;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class fly extends fkt {
-   public static final int a = 16;
-   public static final int b = 36;
-   public static final int c = 30;
-   public static final fly.a d = new fly.a(List.of());
-   public static final akf r = new akf("textures/gui/book.png");
-   protected static final int s = 114;
-   protected static final int u = 128;
-   protected static final int v = 192;
-   protected static final int w = 192;
-   private fly.a x;
-   private int y;
-   private List<axi> z = Collections.emptyList();
-   private int A = -1;
-   private ws B = wr.a;
-   private fmz C;
-   private fmz D;
-   private final boolean E;
-
-   public fly(fly.a $$0) {
-      this($$0, true);
-   }
+public class fly extends fld {
+   static final akh a = new akh("gamemode_switcher/slot");
+   static final akh b = new akh("gamemode_switcher/selection");
+   private static final akh c = new akh("textures/gui/container/gamemode_switcher.png");
+   private static final int d = 128;
+   private static final int r = 128;
+   private static final int s = 26;
+   private static final int u = 5;
+   private static final int v = 31;
+   private static final int w = 5;
+   private static final int x = fly.a.values().length * 31 - 5;
+   private static final wu y = wu.a("debug.gamemodes.select_next", wu.c("debug.gamemodes.press_f4").a(n.l));
+   private final fly.a z;
+   private fly.a A;
+   private int B;
+   private int C;
+   private boolean D;
+   private final List<fly.b> E = Lists.newArrayList();
 
    public fly() {
-      this(d, false);
+      super(fcw.a);
+      this.z = fly.a.a(this.m());
+      this.A = this.z;
    }
 
-   private fly(fly.a $$0, boolean $$1) {
-      super(fcm.a);
-      this.x = $$0;
-      this.E = $$1;
-   }
-
-   public void a(fly.a $$0) {
-      this.x = $$0;
-      this.y = axw.a(this.y, 0, $$0.a());
-      this.J();
-      this.A = -1;
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = axw.a($$0, 0, this.x.a() - 1);
-      if ($$1 != this.y) {
-         this.y = $$1;
-         this.J();
-         this.A = -1;
-         return true;
+   private daa m() {
+      fwf $$0 = fde.Q().q;
+      daa $$1 = $$0.i();
+      if ($$1 != null) {
+         return $$1;
       } else {
-         return false;
+         return $$0.j() == daa.b ? daa.a : daa.b;
       }
-   }
-
-   protected boolean b(int $$0) {
-      return this.a($$0);
    }
 
    @Override
    protected void aM_() {
-      this.m();
-      this.C();
-   }
+      super.aM_();
+      this.A = this.z;
 
-   protected void m() {
-      this.c(feu.a(wr.d, $$0 -> this.d()).a(this.n / 2 - 100, 196, 200, 20).a());
-   }
-
-   protected void C() {
-      int $$0 = (this.n - 192) / 2;
-      int $$1 = 2;
-      this.C = this.c(new fmz($$0 + 116, 159, true, $$0x -> this.F(), this.E));
-      this.D = this.c(new fmz($$0 + 43, 159, false, $$0x -> this.E(), this.E));
-      this.J();
-   }
-
-   private int D() {
-      return this.x.a();
-   }
-
-   protected void E() {
-      if (this.y > 0) {
-         this.y--;
+      for (int $$0 = 0; $$0 < fly.a.e.length; $$0++) {
+         fly.a $$1 = fly.a.e[$$0];
+         this.E.add(new fly.b($$1, this.n / 2 - x / 2 + $$0 * 31, this.o / 2 - 31));
       }
-
-      this.J();
    }
 
-   protected void F() {
-      if (this.y < this.D() - 1) {
-         this.y++;
+   @Override
+   public void a(fer $$0, int $$1, int $$2, float $$3) {
+      if (!this.D()) {
+         $$0.c().a();
+         RenderSystem.enableBlend();
+         int $$4 = this.n / 2 - 62;
+         int $$5 = this.o / 2 - 31 - 27;
+         $$0.a(c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
+         $$0.c().b();
+         super.a($$0, $$1, $$2, $$3);
+         $$0.a(this.p, this.A.a(), this.n / 2, this.o / 2 - 31 - 20, -1);
+         $$0.a(this.p, y, this.n / 2, this.o / 2 + 5, 16777215);
+         if (!this.D) {
+            this.B = $$1;
+            this.C = $$2;
+            this.D = true;
+         }
+
+         boolean $$6 = this.B == $$1 && this.C == $$2;
+
+         for (fly.b $$7 : this.E) {
+            $$7.a($$0, $$1, $$2, $$3);
+            $$7.b(this.A == $$7.b);
+            if (!$$6 && $$7.A()) {
+               this.A = $$7.b;
+            }
+         }
       }
-
-      this.J();
    }
 
-   private void J() {
-      this.C.k = this.y < this.D() - 1;
-      this.D.k = this.y > 0;
+   @Override
+   public void b(fer $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void C() {
+      a(this.m, this.A);
+   }
+
+   private static void a(fde $$0, fly.a $$1) {
+      if ($$0.q != null && $$0.s != null) {
+         fly.a $$2 = fly.a.a($$0.q.j());
+         if ($$0.s.m(2) && $$1 != $$2) {
+            $$0.s.h.d($$1.b());
+         }
+      }
+   }
+
+   private boolean D() {
+      if (!ews.a(this.m.aP().i(), 292)) {
+         this.C();
+         this.m.a(null);
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
+      if ($$0 == 293) {
+         this.D = false;
+         this.A = this.A.c();
          return true;
       } else {
-         switch ($$0) {
-            case 266:
-               this.D.b();
-               return true;
-            case 267:
-               this.C.b();
-               return true;
-            default:
-               return false;
-         }
+         return super.a($$0, $$1, $$2);
       }
    }
 
    @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 192) / 2;
-      int $$5 = 2;
-      if (this.A != this.y) {
-         wx $$6 = this.x.a(this.y);
-         this.z = this.p.c($$6, 114);
-         this.B = ws.a("book.pageIndicator", this.y + 1, Math.max(this.D(), 1));
+   public boolean k() {
+      return false;
+   }
+
+   static enum a {
+      a(wu.c("gameMode.creative"), "gamemode creative", new csz(ddg.i)),
+      b(wu.c("gameMode.survival"), "gamemode survival", new csz(ctc.pa)),
+      c(wu.c("gameMode.adventure"), "gamemode adventure", new csz(ctc.uj)),
+      d(wu.c("gameMode.spectator"), "gamemode spectator", new csz(ctc.ss));
+
+      protected static final fly.a[] e = values();
+      private static final int j = 16;
+      protected static final int f = 5;
+      final wu g;
+      final String h;
+      final csz i;
+
+      private a(wu $$0, String $$1, csz $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      this.A = this.y;
-      int $$7 = this.p.a(this.B);
-      $$0.a(this.p, this.B, $$4 - $$7 + 192 - 44, 18, 0, false);
-      int $$8 = Math.min(128 / 9, this.z.size());
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         axi $$10 = this.z.get($$9);
-         $$0.a(this.p, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
+      void a(fer $$0, int $$1, int $$2) {
+         $$0.a(this.i, $$1, $$2);
       }
 
-      xp $$11 = this.b((double)$$1, (double)$$2);
-      if ($$11 != null) {
-         $$0.a(this.p, $$11, $$1, $$2);
+      wu a() {
+         return this.g;
+      }
+
+      String b() {
+         return this.h;
+      }
+
+      fly.a c() {
+         return switch (this) {
+            case a -> b;
+            case b -> c;
+            case c -> d;
+            case d -> a;
+         };
+      }
+
+      static fly.a a(daa $$0) {
+         return switch ($$0) {
+            case d -> d;
+            case a -> b;
+            case b -> a;
+            case c -> c;
+         };
       }
    }
 
-   @Override
-   public void b(feh $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-      $$0.a(r, (this.n - 192) / 2, 2, 0, 0, 192, 192);
-   }
+   public class b extends ffc {
+      final fly.a b;
+      private boolean c;
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         xp $$3 = this.b($$0, $$1);
-         if ($$3 != null && this.a($$3)) {
-            return true;
+      public b(fly.a $$1, int $$2, int $$3) {
+         super($$2, $$3, 26, 26, $$1.a());
+         this.b = $$1;
+      }
+
+      @Override
+      public void b(fer $$0, int $$1, int $$2, float $$3) {
+         this.a($$0);
+         this.b.a($$0, this.C() + 5, this.D() + 5);
+         if (this.c) {
+            this.b($$0);
          }
       }
 
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(xp $$0) {
-      wq $$1 = $$0.h();
-      if ($$1 == null) {
-         return false;
-      } else if ($$1.a() == wq.a.e) {
-         String $$2 = $$1.b();
-
-         try {
-            int $$3 = Integer.parseInt($$2) - 1;
-            return this.b($$3);
-         } catch (Exception var5) {
-            return false;
-         }
-      } else {
-         boolean $$4 = super.a($$0);
-         if ($$4 && $$1.a() == wq.a.c) {
-            this.I();
-         }
-
-         return $$4;
-      }
-   }
-
-   protected void I() {
-      this.m.a(null);
-   }
-
-   @Nullable
-   public xp b(double $$0, double $$1) {
-      if (this.z.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = axw.a($$0 - (double)((this.n - 192) / 2) - 36.0);
-         int $$3 = axw.a($$1 - 2.0 - 30.0);
-         if ($$2 >= 0 && $$3 >= 0) {
-            int $$4 = Math.min(128 / 9, this.z.size());
-            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
-               int $$5 = $$3 / 9;
-               if ($$5 >= 0 && $$5 < this.z.size()) {
-                  axi $$6 = this.z.get($$5);
-                  return this.m.h.b().a($$6, $$2);
-               } else {
-                  return null;
-               }
-            } else {
-               return null;
-            }
-         } else {
-            return null;
-         }
-      }
-   }
-
-   public static record a(List<ws> a) {
-      public int a() {
-         return this.a.size();
+      @Override
+      public void a(fja $$0) {
+         this.c($$0);
       }
 
-      public wx a(int $$0) {
-         return $$0 >= 0 && $$0 < this.a() ? this.a.get($$0) : wx.b;
+      @Override
+      public boolean A() {
+         return super.A() || this.c;
       }
 
-      @Nullable
-      public static fly.a a(csd $$0) {
-         boolean $$1 = fcu.Q().aS();
-         cvj $$2 = $$0.a(jz.A);
-         if ($$2 != null) {
-            return new fly.a($$2.a($$1));
-         } else {
-            cvi $$3 = $$0.a(jz.z);
-            return $$3 != null ? new fly.a($$3.a($$1).map(ws::b).toList()) : null;
-         }
+      public void b(boolean $$0) {
+         this.c = $$0;
       }
 
-      public List<ws> b() {
-         return this.a;
+      private void a(fer $$0) {
+         $$0.a(fly.a, this.C(), this.D(), 26, 26);
+      }
+
+      private void b(fer $$0) {
+         $$0.a(fly.b, this.C(), this.D(), 26, 26);
       }
    }
 }

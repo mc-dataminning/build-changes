@@ -1,132 +1,68 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+public class byc extends bya {
+   private static final float l = 10.0F;
+   private static final float m = 60.0F;
+   private final int n;
+   private final int o;
+   private final float p;
+   private final float q;
+   private final boolean r;
 
-public class byc {
-   private static final bzp a = new bzp(Integer.MAX_VALUE, new byb() {
-      @Override
-      public boolean a() {
-         return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<byb.a, bzp> b = new EnumMap<>(byb.a.class);
-   private final Set<bzp> c = new ObjectLinkedOpenHashSet();
-   private final Supplier<ble> d;
-   private final EnumSet<byb.a> e = EnumSet.noneOf(byb.a.class);
-
-   public byc(Supplier<ble> $$0) {
-      this.d = $$0;
+   public byc(bsc $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
+      super($$0);
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
    }
 
-   public void a(int $$0, byb $$1) {
-      this.c.add(new bzp($$0, $$1));
-   }
-
-   @VisibleForTesting
-   public void a(Predicate<byb> $$0) {
-      this.c.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(byb $$0) {
-      for (bzp $$1 : this.c) {
-         if ($$1.k() == $$0 && $$1.h()) {
-            $$1.d();
-         }
-      }
-
-      this.c.removeIf($$1x -> $$1x.k() == $$0);
-   }
-
-   private static boolean a(bzp $$0, EnumSet<byb.a> $$1) {
-      for (byb.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean a(bzp $$0, Map<byb.a, bzp> $$1) {
-      for (byb.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, a).a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
+   @Override
    public void a() {
-      ble $$0 = this.d.get();
-      $$0.a("goalCleanup");
-
-      for (bzp $$1 : this.c) {
-         if ($$1.h() && (a($$1, this.e) || !$$1.b())) {
-            $$1.d();
-         }
+      if (this.r && this.d.bc()) {
+         this.d.g(this.d.dq().b(0.0, 0.005, 0.0));
       }
 
-      this.b.entrySet().removeIf($$0x -> !((bzp)$$0x.getValue()).h());
-      $$0.c();
-      $$0.a("goalUpdate");
+      if (this.k == bya.a.b && !this.d.K().l()) {
+         double $$0 = this.e - this.d.ds();
+         double $$1 = this.f - this.d.du();
+         double $$2 = this.g - this.d.dy();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.C(0.0F);
+         } else {
+            float $$4 = (float)(axz.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+            this.d.r(this.a(this.d.dD(), $$4, (float)this.o));
+            this.d.aZ = this.d.dD();
+            this.d.bb = this.d.dD();
+            float $$5 = (float)(this.h * this.d.g(bth.r));
+            if (this.d.bc()) {
+               this.d.y($$5 * this.p);
+               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
+                  float $$7 = -((float)(axz.d($$1, $$6) * 180.0F / (float)Math.PI));
+                  $$7 = axz.a(axz.g($$7), (float)(-this.n), (float)this.n);
+                  this.d.s(this.a(this.d.dF(), $$7, 5.0F));
+               }
 
-      for (bzp $$2 : this.c) {
-         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.a()) {
-            for (byb.a $$3 : $$2.j()) {
-               bzp $$4 = this.b.getOrDefault($$3, a);
-               $$4.d();
-               this.b.put($$3, $$2);
+               float $$8 = axz.b(this.d.dF() * (float) (Math.PI / 180.0));
+               float $$9 = axz.a(this.d.dF() * (float) (Math.PI / 180.0));
+               this.d.br = $$8 * $$5;
+               this.d.bq = -$$9 * $$5;
+            } else {
+               float $$10 = Math.abs(axz.g(this.d.dD() - $$4));
+               float $$11 = a($$10);
+               this.d.y($$5 * this.q * $$11);
             }
-
-            $$2.c();
          }
-      }
-
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      ble $$1 = this.d.get();
-      $$1.a("goalTick");
-
-      for (bzp $$2 : this.c) {
-         if ($$2.h() && ($$0 || $$2.R_())) {
-            $$2.e();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<bzp> b() {
-      return this.c;
-   }
-
-   public void a(byb.a $$0) {
-      this.e.add($$0);
-   }
-
-   public void b(byb.a $$0) {
-      this.e.remove($$0);
-   }
-
-   public void a(byb.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
       } else {
-         this.a($$0);
+         this.d.y(0.0F);
+         this.d.E(0.0F);
+         this.d.D(0.0F);
+         this.d.C(0.0F);
       }
+   }
+
+   private static float a(float $$0) {
+      return 1.0F - axz.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

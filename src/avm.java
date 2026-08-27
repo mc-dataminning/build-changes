@@ -1,18 +1,98 @@
 public class avm {
-   public static final awd<dmt> a = a("no_item_required");
-   public static final awd<dmt> b = a("pattern_item/flower");
-   public static final awd<dmt> c = a("pattern_item/creeper");
-   public static final awd<dmt> d = a("pattern_item/skull");
-   public static final awd<dmt> e = a("pattern_item/mojang");
-   public static final awd<dmt> f = a("pattern_item/globe");
-   public static final awd<dmt> g = a("pattern_item/piglin");
-   public static final awd<dmt> h = a("pattern_item/flow");
-   public static final awd<dmt> i = a("pattern_item/guster");
+   public static final avl<dde> a = a("mined", ld.e);
+   public static final avl<csu> b = a("crafted", ld.h);
+   public static final avl<csu> c = a("used", ld.h);
+   public static final avl<csu> d = a("broken", ld.h);
+   public static final avl<csu> e = a("picked_up", ld.h);
+   public static final avl<csu> f = a("dropped", ld.h);
+   public static final avl<brn<?>> g = a("killed", ld.g);
+   public static final avl<brn<?>> h = a("killed_by", ld.g);
+   public static final avl<akh> i = a("custom", ld.m);
+   public static final akh j = a("leave_game", avk.b);
+   public static final akh k = a("play_time", avk.e);
+   public static final akh l = a("total_world_time", avk.e);
+   public static final akh m = a("time_since_death", avk.e);
+   public static final akh n = a("time_since_rest", avk.e);
+   public static final akh o = a("sneak_time", avk.e);
+   public static final akh p = a("walk_one_cm", avk.d);
+   public static final akh q = a("crouch_one_cm", avk.d);
+   public static final akh r = a("sprint_one_cm", avk.d);
+   public static final akh s = a("walk_on_water_one_cm", avk.d);
+   public static final akh t = a("fall_one_cm", avk.d);
+   public static final akh u = a("climb_one_cm", avk.d);
+   public static final akh v = a("fly_one_cm", avk.d);
+   public static final akh w = a("walk_under_water_one_cm", avk.d);
+   public static final akh x = a("minecart_one_cm", avk.d);
+   public static final akh y = a("boat_one_cm", avk.d);
+   public static final akh z = a("pig_one_cm", avk.d);
+   public static final akh A = a("horse_one_cm", avk.d);
+   public static final akh B = a("aviate_one_cm", avk.d);
+   public static final akh C = a("swim_one_cm", avk.d);
+   public static final akh D = a("strider_one_cm", avk.d);
+   public static final akh E = a("jump", avk.b);
+   public static final akh F = a("drop", avk.b);
+   public static final akh G = a("damage_dealt", avk.c);
+   public static final akh H = a("damage_dealt_absorbed", avk.c);
+   public static final akh I = a("damage_dealt_resisted", avk.c);
+   public static final akh J = a("damage_taken", avk.c);
+   public static final akh K = a("damage_blocked_by_shield", avk.c);
+   public static final akh L = a("damage_absorbed", avk.c);
+   public static final akh M = a("damage_resisted", avk.c);
+   public static final akh N = a("deaths", avk.b);
+   public static final akh O = a("mob_kills", avk.b);
+   public static final akh P = a("animals_bred", avk.b);
+   public static final akh Q = a("player_kills", avk.b);
+   public static final akh R = a("fish_caught", avk.b);
+   public static final akh S = a("talked_to_villager", avk.b);
+   public static final akh T = a("traded_with_villager", avk.b);
+   public static final akh U = a("eat_cake_slice", avk.b);
+   public static final akh V = a("fill_cauldron", avk.b);
+   public static final akh W = a("use_cauldron", avk.b);
+   public static final akh X = a("clean_armor", avk.b);
+   public static final akh Y = a("clean_banner", avk.b);
+   public static final akh Z = a("clean_shulker_box", avk.b);
+   public static final akh aa = a("interact_with_brewingstand", avk.b);
+   public static final akh ab = a("interact_with_beacon", avk.b);
+   public static final akh ac = a("inspect_dropper", avk.b);
+   public static final akh ad = a("inspect_hopper", avk.b);
+   public static final akh ae = a("inspect_dispenser", avk.b);
+   public static final akh af = a("play_noteblock", avk.b);
+   public static final akh ag = a("tune_noteblock", avk.b);
+   public static final akh ah = a("pot_flower", avk.b);
+   public static final akh ai = a("trigger_trapped_chest", avk.b);
+   public static final akh aj = a("open_enderchest", avk.b);
+   public static final akh ak = a("enchant_item", avk.b);
+   public static final akh al = a("play_record", avk.b);
+   public static final akh am = a("interact_with_furnace", avk.b);
+   public static final akh an = a("interact_with_crafting_table", avk.b);
+   public static final akh ao = a("open_chest", avk.b);
+   public static final akh ap = a("sleep_in_bed", avk.b);
+   public static final akh aq = a("open_shulker_box", avk.b);
+   public static final akh ar = a("open_barrel", avk.b);
+   public static final akh as = a("interact_with_blast_furnace", avk.b);
+   public static final akh at = a("interact_with_smoker", avk.b);
+   public static final akh au = a("interact_with_lectern", avk.b);
+   public static final akh av = a("interact_with_campfire", avk.b);
+   public static final akh aw = a("interact_with_cartography_table", avk.b);
+   public static final akh ax = a("interact_with_loom", avk.b);
+   public static final akh ay = a("interact_with_stonecutter", avk.b);
+   public static final akh az = a("bell_ring", avk.b);
+   public static final akh aA = a("raid_trigger", avk.b);
+   public static final akh aB = a("raid_win", avk.b);
+   public static final akh aC = a("interact_with_anvil", avk.b);
+   public static final akh aD = a("interact_with_grindstone", avk.b);
+   public static final akh aE = a("target_hit", avk.b);
+   public static final akh aF = a("interact_with_smithing_table", avk.b);
 
-   private avm() {
+   private static akh a(String $$0, avk $$1) {
+      akh $$2 = new akh($$0);
+      jj.a(ld.m, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   private static awd<dmt> a(String $$0) {
-      return awd.a(ld.d, new akf($$0));
+   private static <T> avl<T> a(String $$0, jj<T> $$1) {
+      wu $$2 = wu.c("stat_type.minecraft." + $$0);
+      return jj.a(ld.x, $$0, new avl<>($$1, $$2));
    }
 }

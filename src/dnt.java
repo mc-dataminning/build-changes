@@ -1,172 +1,159 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class dnt extends dnd implements boy, euq.a {
-   public static final String e = "sherds";
-   public static final String f = "item";
-   public static final int g = 1;
-   public long h;
-   @Nullable
-   public dnt.a i;
-   private doh l;
-   private csd m = csd.i;
-   @Nullable
-   protected akf j;
-   protected long k;
-
-   public dnt(im $$0, dpy $$1) {
-      super(dnf.O, $$0, $$1);
-      this.l = doh.a;
-   }
-
-   @Override
-   protected void b(ty $$0, ix.a $$1) {
-      super.b($$0, $$1);
-      this.l.a($$0);
-      if (!this.b_($$0) && !this.m.d()) {
-         $$0.a("item", this.m.a($$1));
+public class dnt extends dor implements dop {
+   private static final int d = 1;
+   private jf<csz> e = jf.a(27, csz.i);
+   private final dnz f = new dnz() {
+      @Override
+      protected void a(dad $$0, in $$1, dqh $$2) {
+         dnt.a($$0, $$1, $$2, avc.eQ);
       }
-   }
 
-   @Override
-   public void a(ty $$0, ix.a $$1) {
-      super.a($$0, $$1);
-      this.l = doh.b($$0);
-      if (!this.a_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.m = csd.a($$1, (uv)$$0.p("item")).orElse(csd.i);
+      @Override
+      protected void b(dad $$0, in $$1, dqh $$2) {
+         dnt.a($$0, $$1, $$2, avc.eO);
+      }
+
+      @Override
+      protected void a(dad $$0, in $$1, dqh $$2, int $$3, int $$4) {
+         dnt.this.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      protected boolean a(clh $$0) {
+         if (!($$0.cc instanceof cok)) {
+            return false;
          } else {
-            this.m = csd.i;
+            bpf $$1 = ((cok)$$0.cc).l();
+            return $$1 == dnt.this || $$1 instanceof bpe && ((bpe)$$1).a(dnt.this);
          }
       }
+   };
+   private final dnu g = new dnu();
+
+   protected dnt(dno<?> $$0, in $$1, dqh $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public abr j() {
-      return abr.a(this);
-   }
-
-   @Override
-   public ty a(ix.a $$0) {
-      return this.d($$0);
-   }
-
-   public ir k() {
-      return this.n().c(dqo.R);
-   }
-
-   public doh l() {
-      return this.l;
-   }
-
-   public void b(csd $$0) {
-      this.a($$0.a());
-   }
-
-   public csd t() {
-      csd $$0 = csg.eC.x();
-      $$0.a(this.s());
-      return $$0;
-   }
-
-   public static csd a(doh $$0) {
-      csd $$1 = csg.eC.x();
-      $$1.b(jz.P, $$0);
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public akf ax_() {
-      return this.j;
+   public dnt(in $$0, dqh $$1) {
+      this(dno.b, $$0, $$1);
    }
 
    @Override
-   public void a(@Nullable akf $$0) {
-      this.j = $$0;
+   public int b() {
+      return 27;
    }
 
    @Override
-   public long ay_() {
-      return this.k;
+   protected wu k() {
+      return wu.c("container.chest");
    }
 
    @Override
-   public void a(long $$0) {
-      this.k = $$0;
-   }
-
-   @Override
-   public void a(jv.a $$0) {
-      $$0.a(jz.P, this.l);
-      $$0.a(jz.Q, cux.a(List.of(this.m)));
-   }
-
-   @Override
-   public void a(jv $$0) {
-      this.l = $$0.a(jz.P, doh.a);
-      this.m = $$0.a(jz.Q, cux.a).a();
-   }
-
-   @Override
-   public void a(ty $$0) {
-      super.a($$0);
-      $$0.r("sherds");
-      $$0.r("item");
-   }
-
-   @Override
-   public csd f() {
-      this.e_(null);
-      return this.m;
-   }
-
-   @Override
-   public csd c(int $$0) {
-      this.e_(null);
-      csd $$1 = this.m.a($$0);
-      if (this.m.d()) {
-         this.m = csd.i;
+   public void a(ua $$0, iy.a $$1) {
+      super.a($$0, $$1);
+      this.e = jf.a(this.b(), csz.i);
+      if (!this.a_($$0)) {
+         bpg.b($$0, this.e, $$1);
       }
-
-      return $$1;
    }
 
    @Override
-   public void a(csd $$0) {
-      this.e_(null);
-      this.m = $$0;
+   protected void b(ua $$0, iy.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b_($$0)) {
+         bpg.a($$0, this.e, $$1);
+      }
    }
 
-   @Override
-   public dnd u() {
-      return this;
+   public static void a(dad $$0, in $$1, dqh $$2, dnt $$3) {
+      $$3.g.a();
    }
 
-   public void a(dnt.a $$0) {
-      if (this.o != null && !this.o.x_()) {
-         this.o.a(this.az_(), this.n().b(), 1, $$0.ordinal());
+   static void a(dad $$0, in $$1, dqh $$2, avb $$3) {
+      dqz $$4 = $$2.c(deh.d);
+      if ($$4 != dqz.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dqz.c) {
+            is $$8 = deh.h($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, avd.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
       }
    }
 
    @Override
    public boolean a_(int $$0, int $$1) {
-      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dnt.a.values().length) {
-         this.h = this.o.Y();
-         this.i = dnt.a.values()[$$1];
+      if ($$0 == 1) {
+         this.g.a($$1 > 0);
          return true;
       } else {
          return super.a_($$0, $$1);
       }
    }
 
-   public static enum a {
-      a(7),
-      b(10);
-
-      public final int c;
-
-      private a(int $$0) {
-         this.c = $$0;
+   @Override
+   public void d_(clh $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.f.a($$0, this.i(), this.az_(), this.n());
       }
+   }
+
+   @Override
+   public void c(clh $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.f.b($$0, this.i(), this.az_(), this.n());
+      }
+   }
+
+   @Override
+   protected jf<csz> j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(jf<csz> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.g.a($$0);
+   }
+
+   public static int a(czj $$0, in $$1) {
+      dqh $$2 = $$0.a_($$1);
+      if ($$2.t()) {
+         dnm $$3 = $$0.c_($$1);
+         if ($$3 instanceof dnt) {
+            return ((dnt)$$3).f.a();
+         }
+      }
+
+      return 0;
+   }
+
+   public static void a(dnt $$0, dnt $$1) {
+      jf<csz> $$2 = $$0.j();
+      $$0.a($$1.j());
+      $$1.a($$2);
+   }
+
+   @Override
+   protected cod a(int $$0, clg $$1) {
+      return cok.a($$0, $$1, this);
+   }
+
+   public void l() {
+      if (!this.p) {
+         this.f.c(this.i(), this.az_(), this.n());
+      }
+   }
+
+   protected void a(dad $$0, in $$1, dqh $$2, int $$3, int $$4) {
+      dde $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

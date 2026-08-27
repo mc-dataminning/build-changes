@@ -1,27 +1,14 @@
-import java.util.UUID;
-
-public record aim(String b, UUID c) implements yz<aik> {
-   public static final yq<vs, aim> a = yz.a(aim::a, aim::new);
-
-   private aim(vs $$0) {
-      this($$0.d(16), $$0.n());
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
-   }
-
+public interface aim extends abj, aga {
    @Override
-   public zb<aim> a() {
-      return aii.g;
+   default vt b() {
+      return vt.d;
    }
 
-   public void a(aik $$0) {
-      $$0.a(this);
-   }
+   void a(aio var1);
 
-   public UUID e() {
-      return this.c;
-   }
+   void a(aip var1);
+
+   void a(ain var1);
+
+   void a(aiq var1);
 }

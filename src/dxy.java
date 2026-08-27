@@ -1,59 +1,61 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxy extends dyu<ebi> {
-   private static final dpy a = dcx.mZ.n().a(dbz.h, Integer.valueOf(1)).a(dbz.i, dqk.a).a(dbz.j, Integer.valueOf(0));
-   private static final dpy b = a.a(dbz.i, dqk.c).a(dbz.j, Integer.valueOf(1));
-   private static final dpy c = a.a(dbz.i, dqk.c);
-   private static final dpy d = a.a(dbz.i, dqk.b);
+public class dxy {
+   public static final dxy a = new dxy(false, ddg.gz.n(), ddg.pL.n(), ddg.ej.n(), ddg.aQ.n());
+   public static final Codec<dxy> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dxy::a),
+               dqh.b.optionalFieldOf("air_state", a.b()).forGetter(dxy::b),
+               dqh.b.optionalFieldOf("water_state", a.b()).forGetter(dxy::c),
+               dqh.b.optionalFieldOf("lava_state", a.b()).forGetter(dxy::d),
+               dqh.b.optionalFieldOf("barrier_state", a.b()).forGetter(dxy::e)
+            )
+            .apply($$0, dxy::new)
+   );
+   private final boolean c;
+   private final dqh d;
+   private final dqh e;
+   private final dqh f;
+   private final dqh g;
 
-   public dxy(Codec<ebi> $$0) {
-      super($$0);
+   public static dxy a(boolean $$0, dqh $$1, dqh $$2, dqh $$3, dqh $$4) {
+      return new dxy($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(dyw<ebi> $$0) {
-      int $$1 = 0;
-      im $$2 = $$0.e();
-      dap $$3 = $$0.b();
-      ayd $$4 = $$0.d();
-      ebi $$5 = $$0.f();
-      im.a $$6 = $$2.j();
-      im.a $$7 = $$2.j();
-      if ($$3.u($$6)) {
-         if (dcx.mZ.n().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   public static dxy a(dqh $$0, dqh $$1, dqh $$2, dqh $$3) {
+      return new dxy(false, $$0, $$1, $$2, $$3);
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dvq.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, dcx.l.n(), 2);
-                        }
-                     }
-                  }
-               }
-            }
+   public static dxy a(boolean $$0, dqh $$1) {
+      return new dxy($$0, $$1, a.c(), a.d(), a.e());
+   }
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(ir.b, 1);
-            }
+   private dxy(boolean $$0, dqh $$1, dqh $$2, dqh $$3, dqh $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
 
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(ir.a, 1), c, 2);
-               $$3.a($$6.c(ir.a, 1), d, 2);
-            }
-         }
+   public boolean a() {
+      return this.c;
+   }
 
-         $$1++;
-      }
+   public dqh b() {
+      return this.d;
+   }
 
-      return $$1 > 0;
+   public dqh c() {
+      return this.e;
+   }
+
+   public dqh d() {
+      return this.f;
+   }
+
+   public dqh e() {
+      return this.g;
    }
 }

@@ -1,77 +1,31 @@
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class bxl extends bxs {
-   private static final int g = 240;
-   private final Predicate<bon> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
-
-   public bxl(brg $$0, Predicate<bon> $$1) {
-      super($$0);
-      this.h = $$1;
+public class bxl<E extends ckl> extends bts<E> {
+   public bxl(int $$0) {
+      super(ImmutableMap.of(cbd.o, cbe.b, cbd.m, cbe.b), $$0);
    }
 
-   public bxl(brg $$0, int $$1, Predicate<bon> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
+   protected boolean a(aqh $$0, E $$1, long $$2) {
+      return $$1.dJ() == null;
    }
 
-   protected int f() {
-      return Math.max(240, this.c);
+   protected boolean a(aqh $$0, E $$1) {
+      return $$1.aC() || $$1.bc() || $$1.bq();
    }
 
-   @Override
-   public boolean a() {
-      if (!super.a()) {
-         return false;
+   protected void b(aqh $$0, E $$1, long $$2) {
+      if ($$1.aC()) {
+         $$1.b(bsl.o);
+         $$1.a(avc.Bw, 5.0F, 1.0F);
       } else {
-         return !this.d.dN().aa().b(czq.c) ? false : this.a(this.d.dN().ak()) && !this.h();
+         $$1.a(avc.Br, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
       }
    }
 
-   @Override
-   public void c() {
-      super.c();
-      this.a = 0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.dl(), 2.0) && this.a(this.d.dN().ak());
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.d.dN().a(this.d.aj(), this.e, -1);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (this.d.ej().a(20) == 0) {
-         this.d.dN().c(1019, this.e, 0);
-         if (!this.d.aK) {
-            this.d.a(this.d.fu());
-         }
+   protected void c(aqh $$0, E $$1, long $$2) {
+      if ($$1.dJ() == null) {
+         $$1.a(brh.c.b);
       }
-
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dN().a(this.d.aj(), this.e, $$0);
-         this.b = $$0;
-      }
-
-      if (this.a == this.f() && this.a(this.d.dN().ak())) {
-         this.d.dN().a(this.e, false);
-         this.d.dN().c(1021, this.e, 0);
-         this.d.dN().c(2001, this.e, dcv.i(this.d.dN().a_(this.e)));
-      }
-   }
-
-   private boolean a(bon $$0) {
-      return this.h.test($$0);
    }
 }

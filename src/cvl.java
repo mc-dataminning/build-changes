@@ -1,77 +1,63 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class cvl extends cvn {
-   private final im b;
-   protected boolean a = true;
+public final class cvl {
+   public static final cvl a = new cvl(List.of());
+   public static final Codec<cvl> b = csz.a.listOf().xmap(cvl::new, $$0 -> $$0.d);
+   public static final ys<wf, cvl> c = csz.f.a(yq.a()).a(cvl::new, $$0 -> $$0.d);
+   private final List<csz> d;
 
-   public cvl(ckl $$0, bop $$1, csd $$2, etb $$3) {
-      this($$0.dN(), $$0, $$1, $$2, $$3);
+   private cvl(List<csz> $$0) {
+      this.d = $$0;
    }
 
-   public cvl(cvn $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   public static cvl a(csz $$0) {
+      return new cvl(List.of($$0.r()));
    }
 
-   protected cvl(czu $$0, @Nullable ckl $$1, bop $$2, csd $$3, etb $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.a().a($$4.b());
-      this.a = $$0.a_($$4.a()).a(this);
+   public static cvl a(List<csz> $$0) {
+      return new cvl(Lists.transform($$0, csz::r));
    }
 
-   public static cvl a(cvl $$0, im $$1, ir $$2) {
-      return new cvl(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new etb(
-            new etf((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+   public boolean a(csu $$0) {
+      for (csz $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   public im a() {
-      return this.a ? super.a() : this.b;
+   public List<csz> a() {
+      return Lists.transform(this.d, csz::r);
    }
 
    public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
+      return this.d.isEmpty();
    }
 
-   public boolean c() {
-      return this.a;
-   }
-
-   public ir d() {
-      return ir.a(this.o())[0];
-   }
-
-   public ir e() {
-      return ir.a(this.o(), ir.a.b);
-   }
-
-   public ir[] f() {
-      ir[] $$0 = ir.a(this.o());
-      if (this.a) {
-         return $$0;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         ir $$1 = this.k();
-         int $$2 = 0;
-
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
+         if ($$0 instanceof cvl $$1 && csz.a(this.d, $$1.d)) {
+            return true;
          }
 
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return csz.a(this.d);
+   }
+
+   @Override
+   public String toString() {
+      return "ChargedProjectiles[items=" + this.d + "]";
    }
 }

@@ -1,83 +1,71 @@
-public abstract class brm extends brg {
-   protected static final float bX = 0.0F;
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   protected brm(bqr<? extends brm> $$0, czu $$1) {
-      super($$0, $$1);
+public final class brm {
+   public static final Predicate<brh> a = brh::bB;
+   public static final Predicate<brh> b = $$0 -> $$0.bB() && $$0 instanceof bsa;
+   public static final Predicate<brh> c = $$0 -> $$0.bB() && !$$0.bQ() && !$$0.bP();
+   public static final Predicate<brh> d = $$0 -> $$0 instanceof bpf && $$0.bB();
+   public static final Predicate<brh> e = $$0 -> !($$0 instanceof clh) || !$$0.N_() && !((clh)$$0).f();
+   public static final Predicate<brh> f = $$0 -> !$$0.N_();
+   public static final Predicate<brh> g = f.and(brh::bD);
+
+   private brm() {
    }
 
-   public float h(im $$0) {
-      return this.a($$0, this.dN());
+   public static Predicate<brh> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   public float a(im $$0, czx $$1) {
-      return 0.0F;
+   public static Predicate<brh> a(brh $$0) {
+      euv $$1 = $$0.ch();
+      euv.a $$2 = $$1 == null ? euv.a.a : $$1.l();
+      return (Predicate<brh>)($$2 == euv.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.by()) {
+            return false;
+         } else if (!$$0.dN().B || $$3 instanceof clh && ((clh)$$3).g()) {
+            euv $$4 = $$3.ch();
+            euv.a $$5 = $$4 == null ? euv.a.a : $$4.l();
+            if ($$5 == euv.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == euv.a.d || $$5 == euv.a.d) && $$6 ? false : $$2 != euv.a.c && $$5 != euv.a.c || $$6;
+            }
+         } else {
+            return false;
+         }
+      }));
    }
 
-   @Override
-   public boolean a(czv $$0, bri $$1) {
-      return this.a(this.dn(), $$0) >= 0.0F;
-   }
-
-   public boolean gl() {
-      return !this.K().l();
-   }
-
-   public boolean gm() {
-      if (this.bE.a(cah.Z)) {
-         return this.bE.c(cah.Z).isPresent();
-      } else {
-         for (bzp $$0 : this.bS.b()) {
-            if ($$0.h() && $$0.k() instanceof byu) {
-               return true;
+   public static Predicate<brh> b(brh $$0) {
+      return $$1 -> {
+         while ($$1.bP()) {
+            $$1 = $$1.da();
+            if ($$1 == $$0) {
+               return false;
             }
          }
 
-         return false;
-      }
+         return true;
+      };
    }
 
-   @Override
-   protected void gb() {
-      super.gb();
-      bql $$0 = this.ge();
-      if ($$0 != null && $$0.dN() == this.dN()) {
-         this.a($$0.dn(), 5);
-         float $$1 = this.f($$0);
-         if (this instanceof bsa && ((bsa)this).y()) {
-            if ($$1 > 10.0F) {
-               this.a(true, true);
-            }
+   public static class a implements Predicate<brh> {
+      private final csz a;
 
-            return;
-         }
+      public a(csz $$0) {
+         this.a = $$0;
+      }
 
-         this.F($$1);
-         if ($$1 > 10.0F) {
-            this.a(true, true);
-            this.bS.a(byb.a.a);
-         } else if ($$1 > 6.0F) {
-            double $$2 = ($$0.ds() - this.ds()) / (double)$$1;
-            double $$3 = ($$0.du() - this.du()) / (double)$$1;
-            double $$4 = ($$0.dy() - this.dy()) / (double)$$1;
-            this.g(this.dq().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
-            this.co();
-         } else if (this.gn() && !this.gm()) {
-            this.bS.b(byb.a.a);
-            float $$5 = 2.0F;
-            etf $$6 = new etf($$0.ds() - this.ds(), $$0.du() - this.du(), $$0.dy() - this.dy()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
-            this.K().a(this.ds() + $$6.c, this.du() + $$6.d, this.dy() + $$6.e, this.go());
+      public boolean a(@Nullable brh $$0) {
+         if (!$$0.bB()) {
+            return false;
+         } else {
+            return !($$0 instanceof bsa $$1) ? false : $$1.f(this.a);
          }
       }
-   }
-
-   protected boolean gn() {
-      return true;
-   }
-
-   protected double go() {
-      return 1.0;
-   }
-
-   protected void F(float $$0) {
    }
 }

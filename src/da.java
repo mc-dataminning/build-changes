@@ -1,76 +1,55 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Optional;
 
-public class da extends dd<da.a> {
+public class da extends de<da.a> {
    @Override
    public Codec<da.a> a() {
       return da.a.a;
    }
 
-   public void a(aqf $$0, akf $$1, List<csd> $$2) {
-      this.a($$0, $$2x -> $$2x.b($$1, $$2));
+   public void a(aqi $$0) {
+      this.a($$0, $$0x -> true);
    }
 
-   public static record a(Optional<bc> b, akf c, List<cg> d) implements dd.a {
-      public static final Codec<da.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  axe.a(br.b, "player").forGetter(da.a::a),
-                  akf.a.fieldOf("recipe_id").forGetter(da.a::b),
-                  axe.a(cg.a.listOf(), "ingredients", List.of()).forGetter(da.a::c)
-               )
-               .apply($$0, da.a::new)
-      );
+   public static record a(Optional<bc> b) implements de.a {
+      public static final Codec<da.a> a = RecordCodecBuilder.create($$0 -> $$0.group(axh.a(br.b, "player").forGetter(da.a::a)).apply($$0, da.a::new));
 
-      public static an<da.a> a(akf $$0, List<cg.a> $$1) {
-         return am.ac.a(new da.a(Optional.empty(), $$0, $$1.stream().map(cg.a::b).toList()));
+      public static an<da.a> a(cr.a $$0) {
+         return am.q.a(new da.a(Optional.of(br.a(br.a.a().a($$0)))));
       }
 
-      public static an<da.a> a(akf $$0) {
-         return am.ac.a(new da.a(Optional.empty(), $$0, List.of()));
+      public static an<da.a> a(br.a $$0) {
+         return am.q.a(new da.a(Optional.of(br.a($$0.b()))));
       }
 
-      boolean b(akf $$0, List<csd> $$1) {
-         if (!$$0.equals(this.c)) {
-            return false;
-         } else {
-            List<csd> $$2 = new ArrayList<>($$1);
+      public static an<da.a> a(Optional<br> $$0) {
+         return am.q.a(new da.a(br.a($$0)));
+      }
 
-            for (cg $$3 : this.d) {
-               boolean $$4 = false;
-               Iterator<csd> $$5 = $$2.iterator();
+      public static an<da.a> b() {
+         return am.r.a(new da.a(Optional.empty()));
+      }
 
-               while ($$5.hasNext()) {
-                  if ($$3.a($$5.next())) {
-                     $$5.remove();
-                     $$4 = true;
-                     break;
-                  }
-               }
+      public static an<da.a> c() {
+         return am.I.a(new da.a(Optional.empty()));
+      }
 
-               if (!$$4) {
-                  return false;
-               }
-            }
+      public static an<da.a> d() {
+         return am.ab.a(new da.a(Optional.empty()));
+      }
 
-            return true;
-         }
+      public static an<da.a> e() {
+         return am.x.a(new da.a(Optional.empty()));
+      }
+
+      public static an<da.a> a(dde $$0, csu $$1) {
+         return a(br.a.a().a(bo.a.a().d(ch.a.a().a($$1))).b(cr.a.a().a(av.a.a().a($$0))));
       }
 
       @Override
       public Optional<bc> a() {
          return this.b;
-      }
-
-      public akf b() {
-         return this.c;
-      }
-
-      public List<cg> c() {
-         return this.d;
       }
    }
 }

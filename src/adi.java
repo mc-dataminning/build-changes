@@ -1,37 +1,29 @@
-public class adi implements yz<abk> {
-   public static final yq<vs, adi> a = yz.a(adi::a, adi::new);
-   private final im b;
-   private final boolean c;
+public class adi implements zb<abm> {
+   public static final ys<vu, adi> a = zb.a(adi::a, adi::new);
+   private final bpl b;
 
-   public adi(im $$0, boolean $$1) {
+   public adi(bpl $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private adi(vs $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
+   private adi(vu $$0) {
+      this.b = $$0.b(bpl.class);
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public zb<adi> a() {
-      return afv.X;
+   public zd<adi> a() {
+      return afx.V;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public im b() {
+   public bpl b() {
       return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

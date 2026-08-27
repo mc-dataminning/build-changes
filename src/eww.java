@@ -1,95 +1,93 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class eww {
-   public void a(float $$0) {
+public final class eww {
+   private final long a;
+   private final List<exa> b;
+   private exa c;
+   private int d;
+   private int e;
+
+   public eww(long $$0) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+      this.a();
    }
 
-   public void a(float $$0, float $$1) {
+   public void a() {
+      RenderSystem.assertInInitPhase();
+      this.b.clear();
+      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
+
+      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
+         $$0.position($$1);
+         exa $$2 = new exa($$0);
+         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
+            this.b.add($$2);
+         }
+      }
+
+      int[] $$3 = new int[1];
+      int[] $$4 = new int[1];
+      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
+      this.d = $$3[0];
+      this.e = $$4[0];
+      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
+      this.c = new exa($$5);
    }
 
-   public void a(float $$0, float $$1, float $$2) {
+   public exa a(Optional<exa> $$0) {
+      RenderSystem.assertInInitPhase();
+      if ($$0.isPresent()) {
+         exa $$1 = $$0.get();
+
+         for (exa $$2 : this.b) {
+            if ($$2.equals($$1)) {
+               return $$2;
+            }
+         }
+      }
+
+      return this.b();
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
+   public int a(exa $$0) {
+      RenderSystem.assertInInitPhase();
+      return this.b.indexOf($$0);
    }
 
-   public void b(float $$0, float $$1, float $$2, float $$3) {
+   public exa b() {
+      return this.c;
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
+   public int c() {
+      return this.d;
    }
 
-   public void a(int $$0) {
+   public int d() {
+      return this.e;
    }
 
-   public void a(int $$0, int $$1) {
+   public exa a(int $$0) {
+      return this.b.get($$0);
    }
 
-   public void a(int $$0, int $$1, int $$2) {
+   public int e() {
+      return this.b.size();
    }
 
-   public void b(int $$0, int $$1, int $$2, int $$3) {
+   public long f() {
+      return this.a;
    }
 
-   public void a(float[] $$0) {
-   }
-
-   public void a(Vector3f $$0) {
-   }
-
-   public void a(Vector4f $$0) {
-   }
-
-   public void c(float $$0, float $$1, float $$2, float $$3) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-   }
-
-   public void a(
-      float $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-   }
-
-   public void a(Matrix4f $$0) {
-   }
-
-   public void a(Matrix3f $$0) {
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
    }
 }

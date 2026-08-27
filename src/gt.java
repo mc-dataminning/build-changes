@@ -1,441 +1,588 @@
-import com.google.common.collect.Maps;
+import com.google.common.primitives.Doubles;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.ToDoubleFunction;
+import javax.annotation.Nullable;
 
 public class gt {
-   private static final Map<String, gt.b> i = Maps.newHashMap();
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ws.b("argument.entity.options.unknown", $$0));
-   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ws.b("argument.entity.options.inapplicable", $$0));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ws.c("argument.entity.options.distance.negative"));
-   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(ws.c("argument.entity.options.level.negative"));
-   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(ws.c("argument.entity.options.limit.toosmall"));
-   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> ws.b("argument.entity.options.sort.irreversible", $$0));
-   public static final DynamicCommandExceptionType g = new DynamicCommandExceptionType($$0 -> ws.b("argument.entity.options.mode.invalid", $$0));
-   public static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> ws.b("argument.entity.options.type.invalid", $$0));
+   public static final char a = '@';
+   private static final char o = '[';
+   private static final char p = ']';
+   public static final char b = '=';
+   private static final char q = ',';
+   public static final char c = '!';
+   public static final char d = '#';
+   private static final char r = 'p';
+   private static final char s = 'a';
+   private static final char t = 'r';
+   private static final char u = 's';
+   private static final char v = 'e';
+   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wu.c("argument.entity.invalid"));
+   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wu.b("argument.entity.selector.unknown", $$0));
+   public static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(wu.c("argument.entity.selector.not_allowed"));
+   public static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(wu.c("argument.entity.selector.missing"));
+   public static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wu.c("argument.entity.options.unterminated"));
+   public static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> wu.b("argument.entity.options.valueless", $$0));
+   public static final BiConsumer<etp, List<? extends brh>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.f($$0), $$2.f($$0)));
+   public static final BiConsumer<etp, List<? extends brh>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.f($$0), $$1x.f($$0)));
+   public static final BiConsumer<etp, List<? extends brh>> m = ($$0, $$1) -> Collections.shuffle($$1);
+   public static final BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> n = ($$0, $$1) -> $$0.buildFuture();
+   private final StringReader w;
+   private final boolean x;
+   private int y;
+   private boolean z;
+   private boolean A;
+   private ct.c B = ct.c.c;
+   private ct.d C = ct.d.c;
+   @Nullable
+   private Double D;
+   @Nullable
+   private Double E;
+   @Nullable
+   private Double F;
+   @Nullable
+   private Double G;
+   @Nullable
+   private Double H;
+   @Nullable
+   private Double I;
+   private du J = du.a;
+   private du K = du.a;
+   private Predicate<brh> L = $$0x -> true;
+   private BiConsumer<etp, List<? extends brh>> M = gs.b;
+   private boolean N;
+   @Nullable
+   private String O;
+   private int P;
+   @Nullable
+   private UUID Q;
+   private BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> R = n;
+   private boolean S;
+   private boolean T;
+   private boolean U;
+   private boolean V;
+   private boolean W;
+   private boolean X;
+   private boolean Y;
+   private boolean Z;
+   @Nullable
+   private brn<?> aa;
+   private boolean ab;
+   private boolean ac;
+   private boolean ad;
+   private boolean ae;
 
-   private static void a(String $$0, gt.a $$1, Predicate<gs> $$2, ws $$3) {
-      i.put($$0, new gt.b($$1, $$2, $$3));
+   public gt(StringReader $$0) {
+      this($$0, true);
    }
 
-   public static void a() {
-      if (i.isEmpty()) {
-         a("name", $$0 -> {
-            int $$1 = $$0.g().getCursor();
-            boolean $$2 = $$0.e();
-            String $$3 = $$0.g().readString();
-            if ($$0.w() && !$$2) {
-               $$0.g().setCursor($$1);
-               throw b.createWithContext($$0.g(), "name");
-            } else {
-               if ($$2) {
-                  $$0.c(true);
-               } else {
-                  $$0.b(true);
-               }
-
-               $$0.a($$2x -> $$2x.ad().getString().equals($$3) != $$2);
-            }
-         }, $$0 -> !$$0.v(), ws.c("argument.entity.options.name.description"));
-         a("distance", $$0 -> {
-            int $$1 = $$0.g().getCursor();
-            cs.c $$2 = cs.c.a($$0.g());
-            if ((!$$2.a().isPresent() || !($$2.a().get() < 0.0)) && (!$$2.b().isPresent() || !($$2.b().get() < 0.0))) {
-               $$0.a($$2);
-               $$0.h();
-            } else {
-               $$0.g().setCursor($$1);
-               throw c.createWithContext($$0.g());
-            }
-         }, $$0 -> $$0.i().c(), ws.c("argument.entity.options.distance.description"));
-         a("level", $$0 -> {
-            int $$1 = $$0.g().getCursor();
-            cs.d $$2 = cs.d.a($$0.g());
-            if ((!$$2.a().isPresent() || $$2.a().get() >= 0) && (!$$2.b().isPresent() || $$2.b().get() >= 0)) {
-               $$0.a($$2);
-               $$0.a(false);
-            } else {
-               $$0.g().setCursor($$1);
-               throw d.createWithContext($$0.g());
-            }
-         }, $$0 -> $$0.j().c(), ws.c("argument.entity.options.level.description"));
-         a("x", $$0 -> {
-            $$0.h();
-            $$0.a($$0.g().readDouble());
-         }, $$0 -> $$0.m() == null, ws.c("argument.entity.options.x.description"));
-         a("y", $$0 -> {
-            $$0.h();
-            $$0.b($$0.g().readDouble());
-         }, $$0 -> $$0.n() == null, ws.c("argument.entity.options.y.description"));
-         a("z", $$0 -> {
-            $$0.h();
-            $$0.c($$0.g().readDouble());
-         }, $$0 -> $$0.o() == null, ws.c("argument.entity.options.z.description"));
-         a("dx", $$0 -> {
-            $$0.h();
-            $$0.d($$0.g().readDouble());
-         }, $$0 -> $$0.p() == null, ws.c("argument.entity.options.dx.description"));
-         a("dy", $$0 -> {
-            $$0.h();
-            $$0.e($$0.g().readDouble());
-         }, $$0 -> $$0.q() == null, ws.c("argument.entity.options.dy.description"));
-         a("dz", $$0 -> {
-            $$0.h();
-            $$0.f($$0.g().readDouble());
-         }, $$0 -> $$0.r() == null, ws.c("argument.entity.options.dz.description"));
-         a("x_rotation", $$0 -> $$0.a(dt.a($$0.g(), true, axw::g)), $$0 -> $$0.k() == dt.a, ws.c("argument.entity.options.x_rotation.description"));
-         a("y_rotation", $$0 -> $$0.b(dt.a($$0.g(), true, axw::g)), $$0 -> $$0.l() == dt.a, ws.c("argument.entity.options.y_rotation.description"));
-         a("limit", $$0 -> {
-            int $$1 = $$0.g().getCursor();
-            int $$2 = $$0.g().readInt();
-            if ($$2 < 1) {
-               $$0.g().setCursor($$1);
-               throw e.createWithContext($$0.g());
-            } else {
-               $$0.a($$2);
-               $$0.d(true);
-            }
-         }, $$0 -> !$$0.u() && !$$0.x(), ws.c("argument.entity.options.limit.description"));
-         a("sort", $$0 -> {
-            int $$1 = $$0.g().getCursor();
-            String $$2 = $$0.g().readUnquotedString();
-            $$0.a(($$0x, $$1x) -> eh.b(Arrays.asList("nearest", "furthest", "random", "arbitrary"), $$0x));
-
-            $$0.a(switch ($$2) {
-               case "nearest" -> gs.k;
-               case "furthest" -> gs.l;
-               case "random" -> gs.m;
-               case "arbitrary" -> gr.b;
-               default -> {
-                  $$0.g().setCursor($$1);
-                  throw f.createWithContext($$0.g(), $$2);
-               }
-            });
-            $$0.e(true);
-         }, $$0 -> !$$0.u() && !$$0.y(), ws.c("argument.entity.options.sort.description"));
-         a("gamemode", $$0 -> {
-            $$0.a(($$1x, $$2x) -> {
-               String $$3x = $$1x.getRemaining().toLowerCase(Locale.ROOT);
-               boolean $$4x = !$$0.A();
-               boolean $$5 = true;
-               if (!$$3x.isEmpty()) {
-                  if ($$3x.charAt(0) == '!') {
-                     $$4x = false;
-                     $$3x = $$3x.substring(1);
-                  } else {
-                     $$5 = false;
-                  }
-               }
-
-               for (czr $$6 : czr.values()) {
-                  if ($$6.b().toLowerCase(Locale.ROOT).startsWith($$3x)) {
-                     if ($$5) {
-                        $$1x.suggest("!" + $$6.b());
-                     }
-
-                     if ($$4x) {
-                        $$1x.suggest($$6.b());
-                     }
-                  }
-               }
-
-               return $$1x.buildFuture();
-            });
-            int $$1 = $$0.g().getCursor();
-            boolean $$2 = $$0.e();
-            if ($$0.A() && !$$2) {
-               $$0.g().setCursor($$1);
-               throw b.createWithContext($$0.g(), "gamemode");
-            } else {
-               String $$3 = $$0.g().readUnquotedString();
-               czr $$4 = czr.a($$3, null);
-               if ($$4 == null) {
-                  $$0.g().setCursor($$1);
-                  throw g.createWithContext($$0.g(), $$3);
-               } else {
-                  $$0.a(false);
-                  $$0.a($$2x -> {
-                     if (!($$2x instanceof aqf)) {
-                        return false;
-                     } else {
-                        czr $$3x = ((aqf)$$2x).f.b();
-                        return $$2 ? $$3x != $$4 : $$3x == $$4;
-                     }
-                  });
-                  if ($$2) {
-                     $$0.g(true);
-                  } else {
-                     $$0.f(true);
-                  }
-               }
-            }
-         }, $$0 -> !$$0.z(), ws.c("argument.entity.options.gamemode.description"));
-         a("team", $$0 -> {
-            boolean $$1 = $$0.e();
-            String $$2 = $$0.g().readUnquotedString();
-            $$0.a($$2x -> {
-               if (!($$2x instanceof bre)) {
-                  return false;
-               } else {
-                  eul $$3 = $$2x.ch();
-                  String $$4 = $$3 == null ? "" : $$3.b();
-                  return $$4.equals($$2) != $$1;
-               }
-            });
-            if ($$1) {
-               $$0.i(true);
-            } else {
-               $$0.h(true);
-            }
-         }, $$0 -> !$$0.B(), ws.c("argument.entity.options.team.description"));
-         a("type", $$0 -> {
-            $$0.a(($$1x, $$2x) -> {
-               eh.a(lc.g.e(), $$1x, String.valueOf('!'));
-               eh.a(lc.g.j().map(awd::b), $$1x, "!#");
-               if (!$$0.F()) {
-                  eh.a(lc.g.e(), $$1x);
-                  eh.a(lc.g.j().map(awd::b), $$1x, String.valueOf('#'));
-               }
-
-               return $$1x.buildFuture();
-            });
-            int $$1 = $$0.g().getCursor();
-            boolean $$2 = $$0.e();
-            if ($$0.F() && !$$2) {
-               $$0.g().setCursor($$1);
-               throw b.createWithContext($$0.g(), "type");
-            } else {
-               if ($$2) {
-                  $$0.D();
-               }
-
-               if ($$0.f()) {
-                  awd<bqr<?>> $$3 = awd.a(ld.v, akf.a($$0.g()));
-                  $$0.a($$2x -> $$2x.ai().a($$3) != $$2);
-               } else {
-                  akf $$4 = akf.a($$0.g());
-                  bqr<?> $$5 = lc.g.b($$4).orElseThrow(() -> {
-                     $$0.g().setCursor($$1);
-                     return h.createWithContext($$0.g(), $$4.toString());
-                  });
-                  if (Objects.equals(bqr.bx, $$5) && !$$2) {
-                     $$0.a(false);
-                  }
-
-                  $$0.a($$2x -> Objects.equals($$5, $$2x.ai()) != $$2);
-                  if (!$$2) {
-                     $$0.a($$5);
-                  }
-               }
-            }
-         }, $$0 -> !$$0.E(), ws.c("argument.entity.options.type.description"));
-         a("tag", $$0 -> {
-            boolean $$1 = $$0.e();
-            String $$2 = $$0.g().readUnquotedString();
-            $$0.a($$2x -> "".equals($$2) ? $$2x.ak().isEmpty() != $$1 : $$2x.ak().contains($$2) != $$1);
-         }, $$0 -> true, ws.c("argument.entity.options.tag.description"));
-         a("nbt", $$0 -> {
-            boolean $$1 = $$0.e();
-            ty $$2 = new uw($$0.g()).f();
-            $$0.a($$2x -> {
-               ty $$3 = $$2x.f(new ty());
-               if ($$2x instanceof aqf $$4) {
-                  csd $$5 = $$4.ga().f();
-                  if (!$$5.d()) {
-                     $$3.a("SelectedItem", $$5.a($$4.dP()));
-                  }
-               }
-
-               return un.a($$2, $$3, true) != $$1;
-            });
-         }, $$0 -> true, ws.c("argument.entity.options.nbt.description"));
-         a("scores", $$0 -> {
-            StringReader $$1 = $$0.g();
-            Map<String, cs.d> $$2 = Maps.newHashMap();
-            $$1.expect('{');
-            $$1.skipWhitespace();
-
-            while ($$1.canRead() && $$1.peek() != '}') {
-               $$1.skipWhitespace();
-               String $$3 = $$1.readUnquotedString();
-               $$1.skipWhitespace();
-               $$1.expect('=');
-               $$1.skipWhitespace();
-               cs.d $$4 = cs.d.a($$1);
-               $$2.put($$3, $$4);
-               $$1.skipWhitespace();
-               if ($$1.canRead() && $$1.peek() == ',') {
-                  $$1.skip();
-               }
-            }
-
-            $$1.expect('}');
-            if (!$$2.isEmpty()) {
-               $$0.a($$1x -> {
-                  euj $$2x = $$1x.cM().aK();
-
-                  for (Entry<String, cs.d> $$3x : $$2.entrySet()) {
-                     eub $$4x = $$2x.a($$3x.getKey());
-                     if ($$4x == null) {
-                        return false;
-                     }
-
-                     euf $$5 = $$2x.d($$1x, $$4x);
-                     if ($$5 == null) {
-                        return false;
-                     }
-
-                     if (!$$3x.getValue().d($$5.a())) {
-                        return false;
-                     }
-                  }
-
-                  return true;
-               });
-            }
-
-            $$0.j(true);
-         }, $$0 -> !$$0.G(), ws.c("argument.entity.options.scores.description"));
-         a("advancements", $$0 -> {
-            StringReader $$1 = $$0.g();
-            Map<akf, Predicate<ah>> $$2 = Maps.newHashMap();
-            $$1.expect('{');
-            $$1.skipWhitespace();
-
-            while ($$1.canRead() && $$1.peek() != '}') {
-               $$1.skipWhitespace();
-               akf $$3 = akf.a($$1);
-               $$1.skipWhitespace();
-               $$1.expect('=');
-               $$1.skipWhitespace();
-               if ($$1.canRead() && $$1.peek() == '{') {
-                  Map<String, Predicate<ao>> $$4 = Maps.newHashMap();
-                  $$1.skipWhitespace();
-                  $$1.expect('{');
-                  $$1.skipWhitespace();
-
-                  while ($$1.canRead() && $$1.peek() != '}') {
-                     $$1.skipWhitespace();
-                     String $$5 = $$1.readUnquotedString();
-                     $$1.skipWhitespace();
-                     $$1.expect('=');
-                     $$1.skipWhitespace();
-                     boolean $$6 = $$1.readBoolean();
-                     $$4.put($$5, $$1x -> $$1x.a() == $$6);
-                     $$1.skipWhitespace();
-                     if ($$1.canRead() && $$1.peek() == ',') {
-                        $$1.skip();
-                     }
-                  }
-
-                  $$1.skipWhitespace();
-                  $$1.expect('}');
-                  $$1.skipWhitespace();
-                  $$2.put($$3, $$1x -> {
-                     for (Entry<String, Predicate<ao>> $$2x : $$4.entrySet()) {
-                        ao $$3x = $$1x.c($$2x.getKey());
-                        if ($$3x == null || !$$2x.getValue().test($$3x)) {
-                           return false;
-                        }
-                     }
-
-                     return true;
-                  });
-               } else {
-                  boolean $$7 = $$1.readBoolean();
-                  $$2.put($$3, $$1x -> $$1x.a() == $$7);
-               }
-
-               $$1.skipWhitespace();
-               if ($$1.canRead() && $$1.peek() == ',') {
-                  $$1.skip();
-               }
-            }
-
-            $$1.expect('}');
-            if (!$$2.isEmpty()) {
-               $$0.a($$1x -> {
-                  if (!($$1x instanceof aqf $$2x)) {
-                     return false;
-                  } else {
-                     akn $$4 = $$2x.Q();
-                     akr $$5x = $$2x.cM().aE();
-
-                     for (Entry<akf, Predicate<ah>> $$6x : $$2.entrySet()) {
-                        af $$7x = $$5x.a($$6x.getKey());
-                        if ($$7x == null || !$$6x.getValue().test($$4.b($$7x))) {
-                           return false;
-                        }
-                     }
-
-                     return true;
-                  }
-               });
-               $$0.a(false);
-            }
-
-            $$0.k(true);
-         }, $$0 -> !$$0.H(), ws.c("argument.entity.options.advancements.description"));
-         a("predicate", $$0 -> {
-            boolean $$1 = $$0.e();
-            akf $$2 = akf.a($$0.g());
-            $$0.a($$2x -> {
-               if (!($$2x.dN() instanceof aqe)) {
-                  return false;
-               } else {
-                  aqe $$3 = (aqe)$$2x.dN();
-                  erh $$4 = $$3.o().aM().getElement(eof.a, $$2);
-                  if ($$4 == null) {
-                     return false;
-                  } else {
-                     eog $$5 = new eog.a($$3).a(eqt.a, $$2x).a(eqt.f, $$2x.dl()).a(eqs.e);
-                     eoa $$6 = new eoa.a($$5).a(Optional.empty());
-                     $$6.b(eoa.a($$4));
-                     return $$1 ^ $$4.test($$6);
-                  }
-               }
-            });
-         }, $$0 -> true, ws.c("argument.entity.options.predicate.description"));
-      }
+   public gt(StringReader $$0, boolean $$1) {
+      this.w = $$0;
+      this.x = $$1;
    }
 
-   public static gt.a a(gs $$0, String $$1, int $$2) throws CommandSyntaxException {
-      gt.b $$3 = i.get($$1);
-      if ($$3 != null) {
-         if ($$3.b.test($$0)) {
-            return $$3.a;
+   public gs a() {
+      etk $$2;
+      if (this.G == null && this.H == null && this.I == null) {
+         if (this.B.b().isPresent()) {
+            double $$1 = this.B.b().get();
+            $$2 = new etk(-$$1, -$$1, -$$1, $$1 + 1.0, $$1 + 1.0, $$1 + 1.0);
          } else {
-            throw b.createWithContext($$0.g(), $$1);
+            $$2 = null;
          }
       } else {
-         $$0.g().setCursor($$2);
-         throw a.createWithContext($$0.g(), $$1);
+         $$2 = this.a(this.G == null ? 0.0 : this.G, this.H == null ? 0.0 : this.H, this.I == null ? 0.0 : this.I);
+      }
+
+      Function<etp, etp> $$4;
+      if (this.D == null && this.E == null && this.F == null) {
+         $$4 = $$0 -> $$0;
+      } else {
+         $$4 = $$0 -> new etp(this.D == null ? $$0.c : this.D, this.E == null ? $$0.d : this.E, this.F == null ? $$0.e : this.F);
+      }
+
+      return new gs(this.y, this.z, this.A, this.L, this.B, $$4, $$2, this.M, this.N, this.O, this.Q, this.aa, this.ae);
+   }
+
+   private etk a(double $$0, double $$1, double $$2) {
+      boolean $$3 = $$0 < 0.0;
+      boolean $$4 = $$1 < 0.0;
+      boolean $$5 = $$2 < 0.0;
+      double $$6 = $$3 ? $$0 : 0.0;
+      double $$7 = $$4 ? $$1 : 0.0;
+      double $$8 = $$5 ? $$2 : 0.0;
+      double $$9 = ($$3 ? 0.0 : $$0) + 1.0;
+      double $$10 = ($$4 ? 0.0 : $$1) + 1.0;
+      double $$11 = ($$5 ? 0.0 : $$2) + 1.0;
+      return new etk($$6, $$7, $$8, $$9, $$10, $$11);
+   }
+
+   private void I() {
+      if (this.J != du.a) {
+         this.L = this.L.and(this.a(this.J, brh::dF));
+      }
+
+      if (this.K != du.a) {
+         this.L = this.L.and(this.a(this.K, brh::dD));
+      }
+
+      if (!this.C.c()) {
+         this.L = this.L.and($$0 -> !($$0 instanceof aqi) ? false : this.C.d(((aqi)$$0).cp));
       }
    }
 
-   public static void a(gs $$0, SuggestionsBuilder $$1) {
-      String $$2 = $$1.getRemaining().toLowerCase(Locale.ROOT);
+   private Predicate<brh> a(du $$0, ToDoubleFunction<brh> $$1) {
+      double $$2 = (double)axz.g($$0.b() == null ? 0.0F : $$0.b());
+      double $$3 = (double)axz.g($$0.c() == null ? 359.0F : $$0.c());
+      return $$3x -> {
+         double $$4 = axz.d($$1.applyAsDouble($$3x));
+         return $$2 > $$3 ? $$4 >= $$2 || $$4 <= $$3 : $$4 >= $$2 && $$4 <= $$3;
+      };
+   }
 
-      for (Entry<String, gt.b> $$3 : i.entrySet()) {
-         if ($$3.getValue().b.test($$0) && $$3.getKey().toLowerCase(Locale.ROOT).startsWith($$2)) {
-            $$1.suggest($$3.getKey() + "=", $$3.getValue().c);
+   protected void b() throws CommandSyntaxException {
+      this.ae = true;
+      this.R = this::d;
+      if (!this.w.canRead()) {
+         throw h.createWithContext(this.w);
+      } else {
+         int $$0 = this.w.getCursor();
+         char $$1 = this.w.read();
+         if ($$1 == 'p') {
+            this.y = 1;
+            this.z = false;
+            this.M = k;
+            this.a(brn.bx);
+         } else if ($$1 == 'a') {
+            this.y = Integer.MAX_VALUE;
+            this.z = false;
+            this.M = gs.b;
+            this.a(brn.bx);
+         } else if ($$1 == 'r') {
+            this.y = 1;
+            this.z = false;
+            this.M = m;
+            this.a(brn.bx);
+         } else if ($$1 == 's') {
+            this.y = 1;
+            this.z = true;
+            this.N = true;
+         } else {
+            if ($$1 != 'e') {
+               this.w.setCursor($$0);
+               throw f.createWithContext(this.w, "@" + $$1);
+            }
+
+            this.y = Integer.MAX_VALUE;
+            this.z = true;
+            this.M = gs.b;
+            this.L = brh::bB;
+         }
+
+         this.R = this::e;
+         if (this.w.canRead() && this.w.peek() == '[') {
+            this.w.skip();
+            this.R = this::f;
+            this.d();
          }
       }
    }
 
-   public interface a {
-      void handle(gs var1) throws CommandSyntaxException;
+   protected void c() throws CommandSyntaxException {
+      if (this.w.canRead()) {
+         this.R = this::c;
+      }
+
+      int $$0 = this.w.getCursor();
+      String $$1 = this.w.readString();
+
+      try {
+         this.Q = UUID.fromString($$1);
+         this.z = true;
+      } catch (IllegalArgumentException var4) {
+         if ($$1.isEmpty() || $$1.length() > 16) {
+            this.w.setCursor($$0);
+            throw e.createWithContext(this.w);
+         }
+
+         this.z = false;
+         this.O = $$1;
+      }
+
+      this.y = 1;
    }
 
-   static record b(gt.a a, Predicate<gs> b, ws c) {
+   protected void d() throws CommandSyntaxException {
+      this.R = this::g;
+      this.w.skipWhitespace();
+
+      while (this.w.canRead() && this.w.peek() != ']') {
+         this.w.skipWhitespace();
+         int $$0 = this.w.getCursor();
+         String $$1 = this.w.readString();
+         gu.a $$2 = gu.a(this, $$1, $$0);
+         this.w.skipWhitespace();
+         if (!this.w.canRead() || this.w.peek() != '=') {
+            this.w.setCursor($$0);
+            throw j.createWithContext(this.w, $$1);
+         }
+
+         this.w.skip();
+         this.w.skipWhitespace();
+         this.R = n;
+         $$2.handle(this);
+         this.w.skipWhitespace();
+         this.R = this::h;
+         if (this.w.canRead()) {
+            if (this.w.peek() != ',') {
+               if (this.w.peek() != ']') {
+                  throw i.createWithContext(this.w);
+               }
+               break;
+            }
+
+            this.w.skip();
+            this.R = this::g;
+         }
+      }
+
+      if (this.w.canRead()) {
+         this.w.skip();
+         this.R = n;
+      } else {
+         throw i.createWithContext(this.w);
+      }
+   }
+
+   public boolean e() {
+      this.w.skipWhitespace();
+      if (this.w.canRead() && this.w.peek() == '!') {
+         this.w.skip();
+         this.w.skipWhitespace();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean f() {
+      this.w.skipWhitespace();
+      if (this.w.canRead() && this.w.peek() == '#') {
+         this.w.skip();
+         this.w.skipWhitespace();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public StringReader g() {
+      return this.w;
+   }
+
+   public void a(Predicate<brh> $$0) {
+      this.L = this.L.and($$0);
+   }
+
+   public void h() {
+      this.A = true;
+   }
+
+   public ct.c i() {
+      return this.B;
+   }
+
+   public void a(ct.c $$0) {
+      this.B = $$0;
+   }
+
+   public ct.d j() {
+      return this.C;
+   }
+
+   public void a(ct.d $$0) {
+      this.C = $$0;
+   }
+
+   public du k() {
+      return this.J;
+   }
+
+   public void a(du $$0) {
+      this.J = $$0;
+   }
+
+   public du l() {
+      return this.K;
+   }
+
+   public void b(du $$0) {
+      this.K = $$0;
+   }
+
+   @Nullable
+   public Double m() {
+      return this.D;
+   }
+
+   @Nullable
+   public Double n() {
+      return this.E;
+   }
+
+   @Nullable
+   public Double o() {
+      return this.F;
+   }
+
+   public void a(double $$0) {
+      this.D = $$0;
+   }
+
+   public void b(double $$0) {
+      this.E = $$0;
+   }
+
+   public void c(double $$0) {
+      this.F = $$0;
+   }
+
+   public void d(double $$0) {
+      this.G = $$0;
+   }
+
+   public void e(double $$0) {
+      this.H = $$0;
+   }
+
+   public void f(double $$0) {
+      this.I = $$0;
+   }
+
+   @Nullable
+   public Double p() {
+      return this.G;
+   }
+
+   @Nullable
+   public Double q() {
+      return this.H;
+   }
+
+   @Nullable
+   public Double r() {
+      return this.I;
+   }
+
+   public void a(int $$0) {
+      this.y = $$0;
+   }
+
+   public void a(boolean $$0) {
+      this.z = $$0;
+   }
+
+   public BiConsumer<etp, List<? extends brh>> s() {
+      return this.M;
+   }
+
+   public void a(BiConsumer<etp, List<? extends brh>> $$0) {
+      this.M = $$0;
+   }
+
+   public gs t() throws CommandSyntaxException {
+      this.P = this.w.getCursor();
+      this.R = this::b;
+      if (this.w.canRead() && this.w.peek() == '@') {
+         if (!this.x) {
+            throw g.createWithContext(this.w);
+         }
+
+         this.w.skip();
+         this.b();
+      } else {
+         this.c();
+      }
+
+      this.I();
+      return this.a();
+   }
+
+   private static void a(SuggestionsBuilder $$0) {
+      $$0.suggest("@p", wu.c("argument.entity.selector.nearestPlayer"));
+      $$0.suggest("@a", wu.c("argument.entity.selector.allPlayers"));
+      $$0.suggest("@r", wu.c("argument.entity.selector.randomPlayer"));
+      $$0.suggest("@s", wu.c("argument.entity.selector.self"));
+      $$0.suggest("@e", wu.c("argument.entity.selector.allEntities"));
+   }
+
+   private CompletableFuture<Suggestions> b(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      $$1.accept($$0);
+      if (this.x) {
+         a($$0);
+      }
+
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      SuggestionsBuilder $$2 = $$0.createOffset(this.P);
+      $$1.accept($$2);
+      return $$0.add($$2).buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      SuggestionsBuilder $$2 = $$0.createOffset($$0.getStart() - 1);
+      a($$2);
+      $$0.add($$2);
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> e(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      $$0.suggest(String.valueOf('['));
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> f(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      $$0.suggest(String.valueOf(']'));
+      gu.a(this, $$0);
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> g(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      gu.a(this, $$0);
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> h(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      $$0.suggest(String.valueOf(','));
+      $$0.suggest(String.valueOf(']'));
+      return $$0.buildFuture();
+   }
+
+   private CompletableFuture<Suggestions> i(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      $$0.suggest(String.valueOf('='));
+      return $$0.buildFuture();
+   }
+
+   public boolean u() {
+      return this.N;
+   }
+
+   public void a(BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> $$0) {
+      this.R = $$0;
+   }
+
+   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {
+      return this.R.apply($$0.createOffset(this.w.getCursor()), $$1);
+   }
+
+   public boolean v() {
+      return this.S;
+   }
+
+   public void b(boolean $$0) {
+      this.S = $$0;
+   }
+
+   public boolean w() {
+      return this.T;
+   }
+
+   public void c(boolean $$0) {
+      this.T = $$0;
+   }
+
+   public boolean x() {
+      return this.U;
+   }
+
+   public void d(boolean $$0) {
+      this.U = $$0;
+   }
+
+   public boolean y() {
+      return this.V;
+   }
+
+   public void e(boolean $$0) {
+      this.V = $$0;
+   }
+
+   public boolean z() {
+      return this.W;
+   }
+
+   public void f(boolean $$0) {
+      this.W = $$0;
+   }
+
+   public boolean A() {
+      return this.X;
+   }
+
+   public void g(boolean $$0) {
+      this.X = $$0;
+   }
+
+   public boolean B() {
+      return this.Y;
+   }
+
+   public void h(boolean $$0) {
+      this.Y = $$0;
+   }
+
+   public boolean C() {
+      return this.Z;
+   }
+
+   public void i(boolean $$0) {
+      this.Z = $$0;
+   }
+
+   public void a(brn<?> $$0) {
+      this.aa = $$0;
+   }
+
+   public void D() {
+      this.ab = true;
+   }
+
+   public boolean E() {
+      return this.aa != null;
+   }
+
+   public boolean F() {
+      return this.ab;
+   }
+
+   public boolean G() {
+      return this.ac;
+   }
+
+   public void j(boolean $$0) {
+      this.ac = $$0;
+   }
+
+   public boolean H() {
+      return this.ad;
+   }
+
+   public void k(boolean $$0) {
+      this.ad = $$0;
    }
 }

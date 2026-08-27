@@ -1,8 +1,28 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface asr {
+public interface asr<T> extends asq<T> {
+   JsonObject a(T var1);
+
+   static <T> asr<T> a(final String $$0, final Codec<T> $$1) {
+      return new asr<T>() {
+         @Override
+         public String a() {
+            return $$0;
+         }
+
+         @Override
+         public T a(JsonObject $$0x) {
+            return ac.a($$1.parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
+         }
+
+         @Override
+         public JsonObject a(T $$0x) {
+            return ac.<JsonElement, IllegalArgumentException>a($$1.encodeStart(JsonOps.INSTANCE, $$0), IllegalArgumentException::new).getAsJsonObject();
+         }
+      };
+   }
 }

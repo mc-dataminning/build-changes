@@ -1,15 +1,30 @@
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ekt {
-   public static double a(double $$0, double $$1) {
-      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
+public class ekt implements ekx {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<ekt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akg.a(le.aU).fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, ekt::new)
+   );
+   private final akg<eoq> d;
+
+   public ekt(akg<eoq> $$0) {
+      this.d = $$0;
    }
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   @Override
+   public ua a(ayg $$0, @Nullable ua $$1) {
+      ua $$2 = $$1 == null ? new ua() : $$1.h();
+      akg.a(le.aU).encodeStart(uo.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
+      $$2.a("LootTableSeed", $$0.g());
+      return $$2;
    }
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   @Override
+   public eky<?> a() {
+      return eky.d;
    }
 }

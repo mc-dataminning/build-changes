@@ -1,99 +1,80 @@
-import java.util.Optional;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fzp extends fzs {
-   fzp(fvm $$0, fzn $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$2, $$3 - 0.125, $$4);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+public abstract class fzp extends fzc {
+   protected float D;
+   private final Quaternionf a = new Quaternionf();
+
+   protected fzp(fvw $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
    }
 
-   fzp(fvm $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+   protected fzp(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
+   }
+
+   public fzp.a p() {
+      return fzp.a.a;
    }
 
    @Override
-   public fyw b() {
-      return fyw.b;
+   public void a(eyb $$0, fcp $$1, float $$2) {
+      etp $$3 = $$1.b();
+      float $$4 = (float)(axz.d((double)$$2, this.d, this.g) - $$3.a());
+      float $$5 = (float)(axz.d((double)$$2, this.e, this.h) - $$3.b());
+      float $$6 = (float)(axz.d((double)$$2, this.f, this.i) - $$3.c());
+      this.p().setRotation(this.a, $$1, $$2);
+      if (this.z != 0.0F) {
+         this.a.rotateZ(axz.i($$2, this.A, this.z));
+      }
+
+      Vector3f[] $$7 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$8 = this.b($$2);
+
+      for (int $$9 = 0; $$9 < 4; $$9++) {
+         Vector3f $$10 = $$7[$$9];
+         $$10.rotate(this.a);
+         $$10.mul($$8);
+         $$10.add($$4, $$5, $$6);
+      }
+
+      float $$11 = this.c();
+      float $$12 = this.d();
+      float $$13 = this.e();
+      float $$14 = this.f();
+      int $$15 = this.a($$2);
+      $$0.a((double)$$7[0].x(), (double)$$7[0].y(), (double)$$7[0].z()).a($$12, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[1].x(), (double)$$7[1].y(), (double)$$7[1].z()).a($$12, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[2].x(), (double)$$7[2].y(), (double)$$7[2].z()).a($$11, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[3].x(), (double)$$7[3].y(), (double)$$7[3].z()).a($$11, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
    }
 
-   public static class a implements fyv<kz> {
-      private final fzn a;
-
-      public a(fzn $$0) {
-         this.a = $$0;
-      }
-
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ayd $$8 = $$1.z;
-         double $$9 = $$8.k() * 1.0E-6F;
-         double $$10 = $$8.k() * 1.0E-4F;
-         double $$11 = $$8.k() * 1.0E-6F;
-         fzp $$12 = new fzp($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
-         $$12.a(0.9F, 0.4F, 0.5F);
-         return $$12;
-      }
+   public float b(float $$0) {
+      return this.D;
    }
 
-   public static class b implements fyv<kz> {
-      private final fzn a;
-
-      public b(fzn $$0) {
-         this.a = $$0;
-      }
-
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzp $$8 = new fzp($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
-            @Override
-            public Optional<kt> o() {
-               return Optional.of(kt.a);
-            }
-         };
-         $$8.t = axw.b($$1.z, 500, 1000);
-         $$8.u = 0.01F;
-         $$8.a(0.32F, 0.5F, 0.22F);
-         return $$8;
-      }
+   @Override
+   public fzc d(float $$0) {
+      this.D *= $$0;
+      return super.d($$0);
    }
 
-   public static class c implements fyv<kz> {
-      private final fzn a;
+   protected abstract float c();
 
-      public c(fzn $$0) {
-         this.a = $$0;
-      }
+   protected abstract float d();
 
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzp $$8 = new fzp($$1, this.a, $$2, $$3, $$4);
-         $$8.a(0.4F, 0.4F, 0.7F);
-         return $$8;
-      }
-   }
+   protected abstract float e();
 
-   public static class d implements fyv<kz> {
-      private final fzn a;
+   protected abstract float f();
 
-      public d(fzn $$0) {
-         this.a = $$0;
-      }
+   public interface a {
+      fzp.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
+      fzp.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
 
-      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
-         fzp $$9 = new fzp($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
-         $$9.a(0.1F, 0.1F, 0.3F);
-         $$9.b(0.001F, 0.001F);
-         return $$9;
-      }
+      void setRotation(Quaternionf var1, fcp var2, float var3);
    }
 }

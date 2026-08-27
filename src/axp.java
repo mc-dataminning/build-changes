@@ -1,330 +1,570 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.RecordBuilder.AbstractUniversalBuilder;
-import it.unimi.dsi.fastutil.bytes.ByteArrayList;
-import it.unimi.dsi.fastutil.bytes.ByteList;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.nio.ByteBuffer;
-import java.util.LinkedHashMap;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.jetbrains.annotations.Contract;
 
-public class axp implements DynamicOps<Object> {
-   public static final axp a = new axp();
+public class axp {
+   private static final Gson a = new GsonBuilder().create();
 
-   private axp() {
+   public static boolean a(JsonObject $$0, String $$1) {
+      return !f($$0, $$1) ? false : $$0.getAsJsonPrimitive($$1).isString();
    }
 
-   public Object empty() {
-      return null;
+   public static boolean a(JsonElement $$0) {
+      return !$$0.isJsonPrimitive() ? false : $$0.getAsJsonPrimitive().isString();
    }
 
-   public Object emptyMap() {
-      return Map.of();
+   public static boolean b(JsonObject $$0, String $$1) {
+      return !f($$0, $$1) ? false : $$0.getAsJsonPrimitive($$1).isNumber();
    }
 
-   public Object emptyList() {
-      return List.of();
+   public static boolean b(JsonElement $$0) {
+      return !$$0.isJsonPrimitive() ? false : $$0.getAsJsonPrimitive().isNumber();
    }
 
-   public <U> U convertTo(DynamicOps<U> $$0, Object $$1) {
+   public static boolean c(JsonObject $$0, String $$1) {
+      return !f($$0, $$1) ? false : $$0.getAsJsonPrimitive($$1).isBoolean();
+   }
+
+   public static boolean c(JsonElement $$0) {
+      return !$$0.isJsonPrimitive() ? false : $$0.getAsJsonPrimitive().isBoolean();
+   }
+
+   public static boolean d(JsonObject $$0, String $$1) {
+      return !g($$0, $$1) ? false : $$0.get($$1).isJsonArray();
+   }
+
+   public static boolean e(JsonObject $$0, String $$1) {
+      return !g($$0, $$1) ? false : $$0.get($$1).isJsonObject();
+   }
+
+   public static boolean f(JsonObject $$0, String $$1) {
+      return !g($$0, $$1) ? false : $$0.get($$1).isJsonPrimitive();
+   }
+
+   public static boolean g(@Nullable JsonObject $$0, String $$1) {
+      return $$0 == null ? false : $$0.get($$1) != null;
+   }
+
+   public static JsonElement h(JsonObject $$0, String $$1) {
+      JsonElement $$2 = $$0.get($$1);
+      if ($$2 != null && !$$2.isJsonNull()) {
+         return $$2;
+      } else {
+         throw new JsonSyntaxException("Missing field " + $$1);
+      }
+   }
+
+   public static String a(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive()) {
+         return $$0.getAsString();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a string, was " + d($$0));
+      }
+   }
+
+   public static String i(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return a($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a string");
+      }
+   }
+
+   @Nullable
+   @Contract("_,_,!null->!null;_,_,null->_")
+   public static String a(JsonObject $$0, String $$1, @Nullable String $$2) {
+      return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
+   }
+
+   public static iw<csu> b(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive()) {
+         String $$2 = $$0.getAsString();
+         return ld.h.c(new akh($$2)).orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be an item, was " + d($$0));
+      }
+   }
+
+   public static iw<csu> j(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return b($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find an item");
+      }
+   }
+
+   @Nullable
+   @Contract("_,_,!null->!null;_,_,null->_")
+   public static iw<csu> a(JsonObject $$0, String $$1, @Nullable iw<csu> $$2) {
+      return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
+   }
+
+   public static boolean c(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive()) {
+         return $$0.getAsBoolean();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Boolean, was " + d($$0));
+      }
+   }
+
+   public static boolean k(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return c($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Boolean");
+      }
+   }
+
+   public static boolean a(JsonObject $$0, String $$1, boolean $$2) {
+      return $$0.has($$1) ? c($$0.get($$1), $$1) : $$2;
+   }
+
+   public static double d(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsDouble();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Double, was " + d($$0));
+      }
+   }
+
+   public static double l(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return d($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Double");
+      }
+   }
+
+   public static double a(JsonObject $$0, String $$1, double $$2) {
+      return $$0.has($$1) ? d($$0.get($$1), $$1) : $$2;
+   }
+
+   public static float e(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsFloat();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Float, was " + d($$0));
+      }
+   }
+
+   public static float m(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return e($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Float");
+      }
+   }
+
+   public static float a(JsonObject $$0, String $$1, float $$2) {
+      return $$0.has($$1) ? e($$0.get($$1), $$1) : $$2;
+   }
+
+   public static long f(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsLong();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Long, was " + d($$0));
+      }
+   }
+
+   public static long n(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return f($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Long");
+      }
+   }
+
+   public static long a(JsonObject $$0, String $$1, long $$2) {
+      return $$0.has($$1) ? f($$0.get($$1), $$1) : $$2;
+   }
+
+   public static int g(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsInt();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Int, was " + d($$0));
+      }
+   }
+
+   public static int o(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return g($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Int");
+      }
+   }
+
+   public static int a(JsonObject $$0, String $$1, int $$2) {
+      return $$0.has($$1) ? g($$0.get($$1), $$1) : $$2;
+   }
+
+   public static byte h(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsByte();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Byte, was " + d($$0));
+      }
+   }
+
+   public static byte p(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return h($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Byte");
+      }
+   }
+
+   public static byte a(JsonObject $$0, String $$1, byte $$2) {
+      return $$0.has($$1) ? h($$0.get($$1), $$1) : $$2;
+   }
+
+   public static char i(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsCharacter();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Character, was " + d($$0));
+      }
+   }
+
+   public static char q(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return i($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Character");
+      }
+   }
+
+   public static char a(JsonObject $$0, String $$1, char $$2) {
+      return $$0.has($$1) ? i($$0.get($$1), $$1) : $$2;
+   }
+
+   public static BigDecimal j(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsBigDecimal();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a BigDecimal, was " + d($$0));
+      }
+   }
+
+   public static BigDecimal r(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return j($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a BigDecimal");
+      }
+   }
+
+   public static BigDecimal a(JsonObject $$0, String $$1, BigDecimal $$2) {
+      return $$0.has($$1) ? j($$0.get($$1), $$1) : $$2;
+   }
+
+   public static BigInteger k(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsBigInteger();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a BigInteger, was " + d($$0));
+      }
+   }
+
+   public static BigInteger s(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return k($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a BigInteger");
+      }
+   }
+
+   public static BigInteger a(JsonObject $$0, String $$1, BigInteger $$2) {
+      return $$0.has($$1) ? k($$0.get($$1), $$1) : $$2;
+   }
+
+   public static short l(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsShort();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Short, was " + d($$0));
+      }
+   }
+
+   public static short t(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return l($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Short");
+      }
+   }
+
+   public static short a(JsonObject $$0, String $$1, short $$2) {
+      return $$0.has($$1) ? l($$0.get($$1), $$1) : $$2;
+   }
+
+   public static JsonObject m(JsonElement $$0, String $$1) {
+      if ($$0.isJsonObject()) {
+         return $$0.getAsJsonObject();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a JsonObject, was " + d($$0));
+      }
+   }
+
+   public static JsonObject u(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return m($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a JsonObject");
+      }
+   }
+
+   @Nullable
+   @Contract("_,_,!null->!null;_,_,null->_")
+   public static JsonObject a(JsonObject $$0, String $$1, @Nullable JsonObject $$2) {
+      return $$0.has($$1) ? m($$0.get($$1), $$1) : $$2;
+   }
+
+   public static JsonArray n(JsonElement $$0, String $$1) {
+      if ($$0.isJsonArray()) {
+         return $$0.getAsJsonArray();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a JsonArray, was " + d($$0));
+      }
+   }
+
+   public static JsonArray v(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return n($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a JsonArray");
+      }
+   }
+
+   @Nullable
+   @Contract("_,_,!null->!null;_,_,null->_")
+   public static JsonArray a(JsonObject $$0, String $$1, @Nullable JsonArray $$2) {
+      return $$0.has($$1) ? n($$0.get($$1), $$1) : $$2;
+   }
+
+   public static <T> T a(@Nullable JsonElement $$0, String $$1, JsonDeserializationContext $$2, Class<? extends T> $$3) {
+      if ($$0 != null) {
+         return (T)$$2.deserialize($$0, $$3);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1);
+      }
+   }
+
+   public static <T> T a(JsonObject $$0, String $$1, JsonDeserializationContext $$2, Class<? extends T> $$3) {
+      if ($$0.has($$1)) {
+         return a($$0.get($$1), $$1, $$2, $$3);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1);
+      }
+   }
+
+   @Nullable
+   @Contract("_,_,!null,_,_->!null;_,_,null,_,_->_")
+   public static <T> T a(JsonObject $$0, String $$1, @Nullable T $$2, JsonDeserializationContext $$3, Class<? extends T> $$4) {
+      return $$0.has($$1) ? a($$0.get($$1), $$1, $$3, $$4) : $$2;
+   }
+
+   public static String d(@Nullable JsonElement $$0) {
+      String $$1 = StringUtils.abbreviateMiddle(String.valueOf($$0), "...", 10);
+      if ($$0 == null) {
+         return "null (missing)";
+      } else if ($$0.isJsonNull()) {
+         return "null (json)";
+      } else if ($$0.isJsonArray()) {
+         return "an array (" + $$1 + ")";
+      } else if ($$0.isJsonObject()) {
+         return "an object (" + $$1 + ")";
+      } else {
+         if ($$0.isJsonPrimitive()) {
+            JsonPrimitive $$2 = $$0.getAsJsonPrimitive();
+            if ($$2.isNumber()) {
+               return "a number (" + $$1 + ")";
+            }
+
+            if ($$2.isBoolean()) {
+               return "a boolean (" + $$1 + ")";
+            }
+         }
+
+         return $$1;
+      }
+   }
+
+   @Nullable
+   public static <T> T a(Gson $$0, Reader $$1, Class<T> $$2, boolean $$3) {
+      try {
+         JsonReader $$4 = new JsonReader($$1);
+         $$4.setLenient($$3);
+         return (T)$$0.getAdapter($$2).read($$4);
+      } catch (IOException var5) {
+         throw new JsonParseException(var5);
+      }
+   }
+
+   public static <T> T b(Gson $$0, Reader $$1, Class<T> $$2, boolean $$3) {
+      T $$4 = a($$0, $$1, $$2, $$3);
+      if ($$4 == null) {
+         throw new JsonParseException("JSON data was null or empty");
+      } else {
+         return $$4;
+      }
+   }
+
+   @Nullable
+   public static <T> T a(Gson $$0, Reader $$1, TypeToken<T> $$2, boolean $$3) {
+      try {
+         JsonReader $$4 = new JsonReader($$1);
+         $$4.setLenient($$3);
+         return (T)$$0.getAdapter($$2).read($$4);
+      } catch (IOException var5) {
+         throw new JsonParseException(var5);
+      }
+   }
+
+   public static <T> T b(Gson $$0, Reader $$1, TypeToken<T> $$2, boolean $$3) {
+      T $$4 = a($$0, $$1, $$2, $$3);
+      if ($$4 == null) {
+         throw new JsonParseException("JSON data was null or empty");
+      } else {
+         return $$4;
+      }
+   }
+
+   @Nullable
+   public static <T> T a(Gson $$0, String $$1, TypeToken<T> $$2, boolean $$3) {
+      return a($$0, new StringReader($$1), $$2, $$3);
+   }
+
+   public static <T> T a(Gson $$0, String $$1, Class<T> $$2, boolean $$3) {
+      return b($$0, new StringReader($$1), $$2, $$3);
+   }
+
+   @Nullable
+   public static <T> T b(Gson $$0, String $$1, Class<T> $$2, boolean $$3) {
+      return a($$0, new StringReader($$1), $$2, $$3);
+   }
+
+   public static <T> T a(Gson $$0, Reader $$1, TypeToken<T> $$2) {
+      return b($$0, $$1, $$2, false);
+   }
+
+   @Nullable
+   public static <T> T a(Gson $$0, String $$1, TypeToken<T> $$2) {
+      return a($$0, $$1, $$2, false);
+   }
+
+   public static <T> T a(Gson $$0, Reader $$1, Class<T> $$2) {
+      return b($$0, $$1, $$2, false);
+   }
+
+   public static <T> T a(Gson $$0, String $$1, Class<T> $$2) {
+      return a($$0, $$1, $$2, false);
+   }
+
+   public static JsonObject a(String $$0, boolean $$1) {
+      return a(new StringReader($$0), $$1);
+   }
+
+   public static JsonObject a(Reader $$0, boolean $$1) {
+      return b(a, $$0, JsonObject.class, $$1);
+   }
+
+   public static JsonObject a(String $$0) {
+      return a($$0, false);
+   }
+
+   public static JsonObject a(Reader $$0) {
+      return a($$0, false);
+   }
+
+   public static JsonArray b(String $$0) {
+      return b(new StringReader($$0));
+   }
+
+   public static JsonArray b(Reader $$0) {
+      return b(a, $$0, JsonArray.class, false);
+   }
+
+   public static String e(JsonElement $$0) {
+      StringWriter $$1 = new StringWriter();
+      JsonWriter $$2 = new JsonWriter($$1);
+
+      try {
+         a($$2, $$0, Comparator.naturalOrder());
+      } catch (IOException var4) {
+         throw new AssertionError(var4);
+      }
+
+      return $$1.toString();
+   }
+
+   public static void a(JsonWriter $$0, @Nullable JsonElement $$1, @Nullable Comparator<String> $$2) throws IOException {
+      if ($$1 == null || $$1.isJsonNull()) {
+         $$0.nullValue();
+      } else if ($$1.isJsonPrimitive()) {
+         JsonPrimitive $$3 = $$1.getAsJsonPrimitive();
+         if ($$3.isNumber()) {
+            $$0.value($$3.getAsNumber());
+         } else if ($$3.isBoolean()) {
+            $$0.value($$3.getAsBoolean());
+         } else {
+            $$0.value($$3.getAsString());
+         }
+      } else if ($$1.isJsonArray()) {
+         $$0.beginArray();
+
+         for (JsonElement $$4 : $$1.getAsJsonArray()) {
+            a($$0, $$4, $$2);
+         }
+
+         $$0.endArray();
+      } else {
+         if (!$$1.isJsonObject()) {
+            throw new IllegalArgumentException("Couldn't write " + $$1.getClass());
+         }
+
+         $$0.beginObject();
+
+         for (Entry<String, JsonElement> $$5 : a($$1.getAsJsonObject().entrySet(), $$2)) {
+            $$0.name($$5.getKey());
+            a($$0, $$5.getValue(), $$2);
+         }
+
+         $$0.endObject();
+      }
+   }
+
+   private static Collection<Entry<String, JsonElement>> a(Collection<Entry<String, JsonElement>> $$0, @Nullable Comparator<String> $$1) {
       if ($$1 == null) {
-         return (U)$$0.empty();
-      } else if ($$1 instanceof Map) {
-         return (U)this.convertMap($$0, $$1);
-      } else if ($$1 instanceof ByteList $$2) {
-         return (U)$$0.createByteList(ByteBuffer.wrap($$2.toByteArray()));
-      } else if ($$1 instanceof IntList $$3) {
-         return (U)$$0.createIntList($$3.intStream());
-      } else if ($$1 instanceof LongList $$4) {
-         return (U)$$0.createLongList($$4.longStream());
-      } else if ($$1 instanceof List) {
-         return (U)this.convertList($$0, $$1);
-      } else if ($$1 instanceof String $$5) {
-         return (U)$$0.createString($$5);
-      } else if ($$1 instanceof Boolean $$6) {
-         return (U)$$0.createBoolean($$6);
-      } else if ($$1 instanceof Byte $$7) {
-         return (U)$$0.createByte($$7);
-      } else if ($$1 instanceof Short $$8) {
-         return (U)$$0.createShort($$8);
-      } else if ($$1 instanceof Integer $$9) {
-         return (U)$$0.createInt($$9);
-      } else if ($$1 instanceof Long $$10) {
-         return (U)$$0.createLong($$10);
-      } else if ($$1 instanceof Float $$11) {
-         return (U)$$0.createFloat($$11);
-      } else if ($$1 instanceof Double $$12) {
-         return (U)$$0.createDouble($$12);
-      } else if ($$1 instanceof Number $$13) {
-         return (U)$$0.createNumeric($$13);
-      } else {
-         throw new IllegalStateException("Don't know how to convert " + $$1);
-      }
-   }
-
-   public DataResult<Number> getNumberValue(Object $$0) {
-      return $$0 instanceof Number $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a number: " + $$0);
-   }
-
-   public Object createNumeric(Number $$0) {
-      return $$0;
-   }
-
-   public Object createByte(byte $$0) {
-      return $$0;
-   }
-
-   public Object createShort(short $$0) {
-      return $$0;
-   }
-
-   public Object createInt(int $$0) {
-      return $$0;
-   }
-
-   public Object createLong(long $$0) {
-      return $$0;
-   }
-
-   public Object createFloat(float $$0) {
-      return $$0;
-   }
-
-   public Object createDouble(double $$0) {
-      return $$0;
-   }
-
-   public DataResult<Boolean> getBooleanValue(Object $$0) {
-      return $$0 instanceof Boolean $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a boolean: " + $$0);
-   }
-
-   public Object createBoolean(boolean $$0) {
-      return $$0;
-   }
-
-   public DataResult<String> getStringValue(Object $$0) {
-      return $$0 instanceof String $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a string: " + $$0);
-   }
-
-   public Object createString(String $$0) {
-      return $$0;
-   }
-
-   public DataResult<Object> mergeToList(Object $$0, Object $$1) {
-      if ($$0 == this.empty()) {
-         return DataResult.success(List.of($$1));
-      } else if ($$0 instanceof List<?> $$2) {
-         return $$2.isEmpty() ? DataResult.success(List.of($$1)) : DataResult.success(ImmutableList.builder().addAll($$2).add($$1).build());
-      } else {
-         return DataResult.error(() -> "Not a list: " + $$0);
-      }
-   }
-
-   public DataResult<Object> mergeToList(Object $$0, List<Object> $$1) {
-      if ($$0 == this.empty()) {
-         return DataResult.success($$1);
-      } else if ($$0 instanceof List<?> $$2) {
-         return $$2.isEmpty() ? DataResult.success($$1) : DataResult.success(ImmutableList.builder().addAll($$2).addAll($$1).build());
-      } else {
-         return DataResult.error(() -> "Not a list: " + $$0);
-      }
-   }
-
-   public DataResult<Object> mergeToMap(Object $$0, Object $$1, Object $$2) {
-      if ($$0 == this.empty()) {
-         return DataResult.success(Map.of($$1, $$2));
-      } else if ($$0 instanceof Map<?, ?> $$3) {
-         if ($$3.isEmpty()) {
-            return DataResult.success(Map.of($$1, $$2));
-         } else {
-            Builder<Object, Object> $$4 = ImmutableMap.builderWithExpectedSize($$3.size() + 1);
-            $$4.putAll($$3);
-            $$4.put($$1, $$2);
-            return DataResult.success($$4.buildKeepingLast());
-         }
-      } else {
-         return DataResult.error(() -> "Not a map: " + $$0);
-      }
-   }
-
-   public DataResult<Object> mergeToMap(Object $$0, Map<Object, Object> $$1) {
-      if ($$0 == this.empty()) {
-         return DataResult.success($$1);
-      } else if ($$0 instanceof Map<?, ?> $$2) {
-         if ($$2.isEmpty()) {
-            return DataResult.success($$1);
-         } else {
-            Builder<Object, Object> $$3 = ImmutableMap.builderWithExpectedSize($$2.size() + $$1.size());
-            $$3.putAll($$2);
-            $$3.putAll($$1);
-            return DataResult.success($$3.buildKeepingLast());
-         }
-      } else {
-         return DataResult.error(() -> "Not a map: " + $$0);
-      }
-   }
-
-   private static Map<Object, Object> a(MapLike<Object> $$0) {
-      return $$0.entries().collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
-   }
-
-   public DataResult<Object> mergeToMap(Object $$0, MapLike<Object> $$1) {
-      if ($$0 == this.empty()) {
-         return DataResult.success(a($$1));
-      } else if ($$0 instanceof Map<?, ?> $$2) {
-         if ($$2.isEmpty()) {
-            return DataResult.success(a($$1));
-         } else {
-            Builder<Object, Object> $$3 = ImmutableMap.builderWithExpectedSize($$2.size());
-            $$3.putAll($$2);
-            $$1.entries().forEach($$1x -> $$3.put($$1x.getFirst(), $$1x.getSecond()));
-            return DataResult.success($$3.buildKeepingLast());
-         }
-      } else {
-         return DataResult.error(() -> "Not a map: " + $$0);
-      }
-   }
-
-   static Stream<Pair<Object, Object>> a(Map<?, ?> $$0) {
-      return $$0.entrySet().stream().map($$0x -> Pair.of($$0x.getKey(), $$0x.getValue()));
-   }
-
-   public DataResult<Stream<Pair<Object, Object>>> getMapValues(Object $$0) {
-      return $$0 instanceof Map<?, ?> $$1 ? DataResult.success(a($$1)) : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public DataResult<Consumer<BiConsumer<Object, Object>>> getMapEntries(Object $$0) {
-      return $$0 instanceof Map<?, ?> $$1 ? DataResult.success($$1::forEach) : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public Object createMap(Stream<Pair<Object, Object>> $$0) {
-      return $$0.collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
-   }
-
-   public DataResult<MapLike<Object>> getMap(Object $$0) {
-      return $$0 instanceof Map<?, ?> $$1 ? DataResult.success(new MapLike<Object>() {
-         @Nullable
-         public Object get(Object $$0) {
-            return $$1.get($$0);
-         }
-
-         @Nullable
-         public Object get(String $$0) {
-            return $$1.get($$0);
-         }
-
-         public Stream<Pair<Object, Object>> entries() {
-            return axp.a($$1);
-         }
-
-         @Override
-         public String toString() {
-            return "MapLike[" + $$1 + "]";
-         }
-      }) : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public Object createMap(Map<Object, Object> $$0) {
-      return $$0;
-   }
-
-   public DataResult<Stream<Object>> getStream(Object $$0) {
-      return $$0 instanceof List<?> $$1 ? DataResult.success($$1.stream().map($$0x -> $$0x)) : DataResult.error(() -> "Not an list: " + $$0);
-   }
-
-   public DataResult<Consumer<Consumer<Object>>> getList(Object $$0) {
-      return $$0 instanceof List<?> $$1 ? DataResult.success($$1::forEach) : DataResult.error(() -> "Not an list: " + $$0);
-   }
-
-   public Object createList(Stream<Object> $$0) {
-      return $$0.toList();
-   }
-
-   public DataResult<ByteBuffer> getByteBuffer(Object $$0) {
-      return $$0 instanceof ByteList $$1 ? DataResult.success(ByteBuffer.wrap($$1.toByteArray())) : DataResult.error(() -> "Not a byte list: " + $$0);
-   }
-
-   public Object createByteList(ByteBuffer $$0) {
-      ByteBuffer $$1 = $$0.duplicate().clear();
-      ByteArrayList $$2 = new ByteArrayList();
-      $$2.size($$1.capacity());
-      $$1.get(0, $$2.elements(), 0, $$2.size());
-      return $$2;
-   }
-
-   public DataResult<IntStream> getIntStream(Object $$0) {
-      return $$0 instanceof IntList $$1 ? DataResult.success($$1.intStream()) : DataResult.error(() -> "Not an int list: " + $$0);
-   }
-
-   public Object createIntList(IntStream $$0) {
-      return IntArrayList.toList($$0);
-   }
-
-   public DataResult<LongStream> getLongStream(Object $$0) {
-      return $$0 instanceof LongList $$1 ? DataResult.success($$1.longStream()) : DataResult.error(() -> "Not a long list: " + $$0);
-   }
-
-   public Object createLongList(LongStream $$0) {
-      return LongArrayList.toList($$0);
-   }
-
-   public Object remove(Object $$0, String $$1) {
-      if ($$0 instanceof Map<?, ?> $$2) {
-         Map<Object, Object> $$3 = new LinkedHashMap<>((Map<? extends Object, ? extends Object>)$$2);
-         $$3.remove($$1);
-         return Map.copyOf($$3);
-      } else {
          return $$0;
-      }
-   }
-
-   public RecordBuilder<Object> mapBuilder() {
-      return new axp.a<Object>(this);
-   }
-
-   @Override
-   public String toString() {
-      return "Java";
-   }
-
-   static final class a<T> extends AbstractUniversalBuilder<T, Builder<T, T>> {
-      public a(DynamicOps<T> $$0) {
-         super($$0);
-      }
-
-      protected Builder<T, T> a() {
-         return ImmutableMap.builder();
-      }
-
-      protected Builder<T, T> a(T $$0, T $$1, Builder<T, T> $$2) {
-         return $$2.put($$0, $$1);
-      }
-
-      protected DataResult<T> a(Builder<T, T> $$0, T $$1) {
-         ImmutableMap<T, T> $$2;
-         try {
-            $$2 = $$0.buildOrThrow();
-         } catch (IllegalArgumentException var5) {
-            return DataResult.error(() -> "Can't build map: " + var5.getMessage());
-         }
-
-         return this.ops().mergeToMap($$1, $$2);
+      } else {
+         List<Entry<String, JsonElement>> $$2 = new ArrayList<>($$0);
+         $$2.sort(Entry.comparingByKey($$1));
+         return $$2;
       }
    }
 }

@@ -1,26 +1,20 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class ejy extends eka {
-   public static final Codec<ejy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dpy.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, ejy::new)
-   );
-   private final dpy b;
-   private final float d;
+public class ejy extends ekm {
+   public static final Codec<ejy> a = Codec.unit(() -> ejy.b);
+   public static final ejy b = new ejy();
 
-   public ejy(dpy $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   @Nullable
+   @Override
+   public ekp.c a(dag $$0, in $$1, in $$2, ekp.c $$3, ekp.c $$4, ekl $$5) {
+      in $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(ddg.H);
+      return $$7 && !dde.a($$4.b().j($$0, $$6)) ? new ekp.c($$6, ddg.H.n(), $$4.c()) : $$4;
    }
 
    @Override
-   public boolean a(dpy $$0, ayd $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
-   }
-
-   @Override
-   protected ekb<?> a() {
-      return ekb.f;
+   protected eko<?> a() {
+      return eko.m;
    }
 }

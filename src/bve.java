@@ -1,124 +1,85 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.kinds.App;
+import java.util.Comparator;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Function;
 
-public class bve extends bsw<cjy> {
-   private static final int c = 900;
-   private static final int d = 40;
-   @Nullable
-   private csd e;
-   private final List<csd> f = Lists.newArrayList();
-   private int g;
-   private int h;
-   private int i;
+public class bve {
+   private static final int a = 20;
+   private static final int b = 8;
+   private static final float c = 0.6F;
+   private static final float d = 0.6F;
+   private static final int e = 5;
+   private static final int f = 10;
 
-   public bve(int $$0, int $$1) {
-      super(ImmutableMap.of(cah.q, cai.a), $$0, $$1);
+   public static btt<bsi> a() {
+      return bxf.a(
+         (Function<bxf.b<bsi>, ? extends App<bxf.c<bsi>, bxi<bsi>>>)($$0 -> $$0.group($$0.b(cbd.i), $$0.c(cbd.m), $$0.a(cbd.n), $$0.a(cbd.q))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$5.E_().a(10) != 0) {
+                        return false;
+                     } else {
+                        List<bsa> $$8 = $$0.b($$1);
+                        Optional<bsa> $$9 = $$8.stream().filter($$1xx -> a((bsa)$$6, $$1xx)).findAny();
+                        if (!$$9.isPresent()) {
+                           Optional<bsa> $$12 = a($$8);
+                           if ($$12.isPresent()) {
+                              a($$4, $$3, $$2, $$12.get());
+                              return true;
+                           } else {
+                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
+                              return true;
+                           }
+                        } else {
+                           for (int $$10 = 0; $$10 < 10; $$10++) {
+                              etp $$11 = ccx.a($$6, 20, 8);
+                              if ($$11 != null && $$5.c(in.a($$11))) {
+                                 $$2.a(new cbg($$11, 0.6F, 0));
+                                 break;
+                              }
+                           }
+
+                           return true;
+                        }
+                     }
+                  }))
+      );
    }
 
-   public boolean a(aqe $$0, cjy $$1) {
-      bsf<?> $$2 = $$1.dQ();
-      if ($$2.c(cah.q).isEmpty()) {
-         return false;
-      } else {
-         bre $$3 = $$2.c(cah.q).get();
-         return $$3.ai() == bqr.bx && $$1.bB() && $$3.bB() && !$$1.p_() && $$1.g($$3) <= 17.0;
-      }
+   private static void a(bxg<?, bsa> $$0, bxg<?, bvg> $$1, bxg<?, cbg> $$2, bsa $$3) {
+      $$0.a($$3);
+      $$1.a(new bud($$3, true));
+      $$2.a(new cbg(new bud($$3, false), 0.6F, 1));
    }
 
-   public boolean a(aqe $$0, cjy $$1, long $$2) {
-      return this.a($$0, $$1) && this.i > 0 && $$1.dQ().c(cah.q).isPresent();
+   private static Optional<bsa> a(List<bsa> $$0) {
+      Map<bsa, Integer> $$1 = b($$0);
+      return $$1.entrySet()
+         .stream()
+         .sorted(Comparator.comparingInt(Entry::getValue))
+         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
+         .map(Entry::getKey)
+         .findFirst();
    }
 
-   public void b(aqe $$0, cjy $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.d($$1);
-      this.g = 0;
-      this.h = 0;
-      this.i = 40;
+   private static Map<bsa, Integer> b(List<bsa> $$0) {
+      Map<bsa, Integer> $$1 = Maps.newHashMap();
+      $$0.stream().filter(bve::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
+      return $$1;
    }
 
-   public void c(aqe $$0, cjy $$1, long $$2) {
-      bre $$3 = this.d($$1);
-      this.a($$3, $$1);
-      if (!this.f.isEmpty()) {
-         this.e($$1);
-      } else {
-         c($$1);
-         this.i = Math.min(this.i, 40);
-      }
-
-      this.i--;
+   private static bsa a(bsa $$0) {
+      return $$0.dQ().c(cbd.q).get();
    }
 
-   public void d(aqe $$0, cjy $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      $$1.dQ().b(cah.q);
-      c($$1);
-      this.e = null;
+   private static boolean b(bsa $$0) {
+      return $$0.dQ().c(cbd.q).isPresent();
    }
 
-   private void a(bre $$0, cjy $$1) {
-      boolean $$2 = false;
-      csd $$3 = $$0.eV();
-      if (this.e == null || !csd.b(this.e, $$3)) {
-         this.e = $$3;
-         $$2 = true;
-         this.f.clear();
-      }
-
-      if ($$2 && !this.e.d()) {
-         this.b($$1);
-         if (!this.f.isEmpty()) {
-            this.i = 900;
-            this.a($$1);
-         }
-      }
-   }
-
-   private void a(cjy $$0) {
-      a($$0, this.f.get(0));
-   }
-
-   private void b(cjy $$0) {
-      for (cys $$1 : $$0.gr()) {
-         if (!$$1.r() && this.a($$1)) {
-            this.f.add($$1.h());
-         }
-      }
-   }
-
-   private boolean a(cys $$0) {
-      return csd.b(this.e, $$0.b()) || csd.b(this.e, $$0.c());
-   }
-
-   private static void c(cjy $$0) {
-      $$0.a(bqs.a, csd.i);
-      $$0.a(bqs.a, 0.085F);
-   }
-
-   private static void a(cjy $$0, csd $$1) {
-      $$0.a(bqs.a, $$1);
-      $$0.a(bqs.a, 0.0F);
-   }
-
-   private bre d(cjy $$0) {
-      bsf<?> $$1 = $$0.dQ();
-      bre $$2 = $$1.c(cah.q).get();
-      $$1.a(cah.n, new bth($$2, true));
-      return $$2;
-   }
-
-   private void e(cjy $$0) {
-      if (this.f.size() >= 2 && ++this.g >= 40) {
-         this.h++;
-         this.g = 0;
-         if (this.h > this.f.size() - 1) {
-            this.h = 0;
-         }
-
-         a($$0, this.f.get(this.h));
-      }
+   private static boolean a(bsa $$0, bsa $$1) {
+      return $$1.dQ().c(cbd.q).filter($$1x -> $$1x == $$0).isPresent();
    }
 }

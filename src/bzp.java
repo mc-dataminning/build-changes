@@ -1,99 +1,32 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class bzp extends byo {
+   private final boolean a;
+   private int b;
 
-public class bzp extends byb {
-   private final byb a;
-   private final int b;
-   private boolean c;
-
-   public bzp(int $$0, byb $$1) {
-      this.b = $$0;
+   public bzp(bsc $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
       this.a = $$1;
-   }
-
-   public boolean a(bzp $$0) {
-      return this.Q_() && $$0.i() < this.i();
-   }
-
-   @Override
-   public boolean a() {
-      return this.a.a();
    }
 
    @Override
    public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean Q_() {
-      return this.a.Q_();
+      return this.a && this.b > 0 && super.b();
    }
 
    @Override
    public void c() {
-      if (!this.c) {
-         this.c = true;
-         this.a.c();
-      }
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
    public void d() {
-      if (this.c) {
-         this.c = false;
-         this.a.d();
-      }
-   }
-
-   @Override
-   public boolean R_() {
-      return this.a.R_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
+      this.a(false);
    }
 
    @Override
    public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void a(EnumSet<byb.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<byb.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public byb k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((bzp)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+      this.b--;
+      super.e();
    }
 }

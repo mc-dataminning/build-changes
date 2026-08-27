@@ -1,124 +1,113 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class bug extends bsw<brg> {
-   private static final int c = 40;
-   private int d;
-   @Nullable
-   private emf e;
-   @Nullable
-   private im f;
-   private float g;
+public class bug<E extends bsa> implements btt<E> {
+   private final Map<cbd<?>, cbe> a;
+   private final Set<cbd<?>> b;
+   private final bug.a c;
+   private final bug.b d;
+   private final bwb<btt<? super E>> e = new bwb<>();
+   private bts.a f = bts.a.a;
 
-   public bug() {
-      this(150, 250);
+   public bug(Map<cbd<?>, cbe> $$0, Set<cbd<?>> $$1, bug.a $$2, bug.b $$3, List<Pair<? extends btt<? super E>, Integer>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      $$4.forEach($$0x -> this.e.a((btt<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
-   public bug(int $$0, int $$1) {
-      super(ImmutableMap.of(cah.E, cai.c, cah.t, cai.b, cah.m, cai.a), $$0, $$1);
+   @Override
+   public bts.a a() {
+      return this.f;
    }
 
-   protected boolean a(aqe $$0, brg $$1) {
-      if (this.d > 0) {
-         this.d--;
-         return false;
-      } else {
-         bsf<?> $$2 = $$1.dQ();
-         cak $$3 = $$2.c(cah.m).get();
-         boolean $$4 = this.a($$1, $$3);
-         if (!$$4 && this.a($$1, $$3, $$0.Y())) {
-            this.f = $$3.a().b();
-            return true;
-         } else {
-            $$2.b(cah.m);
-            if ($$4) {
-               $$2.b(cah.E);
-            }
-
+   private boolean a(E $$0) {
+      for (Entry<cbd<?>, cbe> $$1 : this.a.entrySet()) {
+         cbd<?> $$2 = $$1.getKey();
+         cbe $$3 = $$1.getValue();
+         if (!$$0.dQ().a($$2, $$3)) {
             return false;
          }
       }
+
+      return true;
    }
 
-   protected boolean a(aqe $$0, brg $$1, long $$2) {
-      if (this.e != null && this.f != null) {
-         Optional<cak> $$3 = $$1.dQ().c(cah.m);
-         boolean $$4 = $$3.<Boolean>map(bug::a).orElse(false);
-         cap $$5 = $$1.K();
-         return !$$5.l() && $$3.isPresent() && !this.a($$1, $$3.get()) && !$$4;
+   @Override
+   public final boolean e(aqh $$0, E $$1, long $$2) {
+      if (this.a($$1)) {
+         this.f = bts.a.b;
+         this.c.a(this.e);
+         this.d.a(this.e.b(), $$0, $$1, $$2);
+         return true;
       } else {
          return false;
       }
    }
 
-   protected void b(aqe $$0, brg $$1, long $$2) {
-      if ($$1.dQ().a(cah.m) && !this.a($$1, $$1.dQ().c(cah.m).get()) && $$1.K().r()) {
-         this.d = $$0.E_().a(40);
-      }
-
-      $$1.K().n();
-      $$1.dQ().b(cah.m);
-      $$1.dQ().b(cah.t);
-      this.e = null;
-   }
-
-   protected void c(aqe $$0, brg $$1, long $$2) {
-      $$1.dQ().a(cah.t, this.e);
-      $$1.K().a(this.e, (double)this.g);
-   }
-
-   protected void d(aqe $$0, brg $$1, long $$2) {
-      emf $$3 = $$1.K().j();
-      bsf<?> $$4 = $$1.dQ();
-      if (this.e != $$3) {
-         this.e = $$3;
-         $$4.a(cah.t, $$3);
-      }
-
-      if ($$3 != null && this.f != null) {
-         cak $$5 = $$4.c(cah.m).get();
-         if ($$5.a().b().j(this.f) > 4.0 && this.a($$1, $$5, $$0.Y())) {
-            this.f = $$5.a().b();
-            this.c($$0, $$1, $$2);
-         }
+   @Override
+   public final void f(aqh $$0, E $$1, long $$2) {
+      this.e.b().filter($$0x -> $$0x.a() == bts.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
+      if (this.e.b().noneMatch($$0x -> $$0x.a() == bts.a.b)) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   private boolean a(brg $$0, cak $$1, long $$2) {
-      im $$3 = $$1.a().b();
-      this.e = $$0.K().a($$3, 0);
-      this.g = $$1.b();
-      bsf<?> $$4 = $$0.dQ();
-      if (this.a($$0, $$1)) {
-         $$4.b(cah.E);
-      } else {
-         boolean $$5 = this.e != null && this.e.j();
-         if ($$5) {
-            $$4.b(cah.E);
-         } else if (!$$4.a(cah.E)) {
-            $$4.a(cah.E, $$2);
-         }
+   @Override
+   public final void g(aqh $$0, E $$1, long $$2) {
+      this.f = bts.a.a;
+      this.e.b().filter($$0x -> $$0x.a() == bts.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
+      this.b.forEach($$1.dQ()::b);
+   }
 
-         if (this.e != null) {
-            return true;
-         }
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
 
-         etf $$6 = cby.a((brm)$$0, 10, 7, etf.c($$3), (float) (Math.PI / 2));
-         if ($$6 != null) {
-            this.e = $$0.K().a($$6.c, $$6.d, $$6.e, 0);
-            return this.e != null;
-         }
+   @Override
+   public String toString() {
+      Set<? extends btt<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == bts.a.b).collect(Collectors.toSet());
+      return "(" + this.getClass().getSimpleName() + "): " + $$0;
+   }
+
+   public static enum a {
+      a($$0 -> {
+      }),
+      b(bwb::a);
+
+      private final Consumer<bwb<?>> c;
+
+      private a(Consumer<bwb<?>> $$0) {
+         this.c = $$0;
       }
 
-      return false;
+      public void a(bwb<?> $$0) {
+         this.c.accept($$0);
+      }
    }
 
-   private boolean a(brg $$0, cak $$1) {
-      return $$1.a().b().k($$0.dn()) <= $$1.c();
-   }
+   public static enum b {
+      a {
+         @Override
+         public <E extends bsa> void a(Stream<btt<? super E>> $$0, aqh $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bts.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
+         }
+      },
+      b {
+         @Override
+         public <E extends bsa> void a(Stream<btt<? super E>> $$0, aqh $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bts.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
+         }
+      };
 
-   private static boolean a(cak $$0) {
-      return $$0.a() instanceof bth $$2 ? $$2.c().N_() : false;
+      public abstract <E extends bsa> void a(Stream<btt<? super E>> var1, aqh var2, E var3, long var4);
    }
 }

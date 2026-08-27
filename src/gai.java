@@ -1,67 +1,56 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.slf4j.Logger;
+public class gai extends gac {
+   private float a;
 
-public class gai {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = ckk.g();
-   public static final Codec<gai> a = axe.<List>b(Codec.PASSTHROUGH.listOf(), (Function<List, DataResult<List>>)($$0 -> ac.a($$0, c)))
-      .xmap(gai::new, $$0 -> $$0.f);
-   private static final DynamicOps<uv> d = um.a;
-   private static final Dynamic<?> e = new Dynamic(d, (uv)ac.a(csd.c.encodeStart(d, csd.i), IllegalStateException::new));
-   private List<Dynamic<?>> f;
-
-   private gai(List<Dynamic<?>> $$0) {
-      this.f = $$0;
+   gai(fvw $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
-   public gai() {
-      this(Collections.nCopies(c, e));
+   @Override
+   public fzg b() {
+      return fzg.b;
    }
 
-   public List<csd> a(ix.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> csd.c.parse(akd.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(csd.i))
-         .toList();
-   }
-
-   public void a(ckk $$0, jj $$1) {
-      akd<uv> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
-
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         csd $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = csd.c
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
-      }
-
-      this.f = $$3.build();
-   }
-
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * axz.b(this.a));
+         this.l = this.l + (double)(0.6F * axz.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(in.a(this.g, this.h, this.i)).a(avw.a) || this.m) {
+            this.k();
          }
-      }
 
-      return true;
+         this.a += 0.08F;
+      }
    }
 
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
+   public static class a implements fzf<la> {
+      private final fzx a;
+
+      public a(fzx $$0) {
+         this.a = $$0;
+      }
+
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gai $$8 = new gai($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

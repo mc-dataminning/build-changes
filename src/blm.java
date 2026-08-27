@@ -1,58 +1,33 @@
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+import com.mojang.brigadier.ImmutableStringReader;
+import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public class blm {
-   private static final Logger a = LogUtils.getLogger();
-   private final Runnable b;
+public abstract class blm<C, V> implements blg<StringReader, V>, bln {
+   private final bla<akh> b;
+   protected final C a;
 
-   protected blm(Runnable $$0) {
+   protected blm(bla<akh> $$0, C $$1) {
       this.b = $$0;
+      this.a = $$1;
    }
 
-   public void a(@Nullable Path $$0) {
-      if ($$0 != null) {
-         this.b.run();
-         a(() -> "Dumped flight recorder profiling to " + $$0);
-
-         blu $$1;
+   @Override
+   public Optional<V> a(blf<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
+      Optional<akh> $$2 = $$0.b(this.b);
+      if ($$2.isPresent()) {
          try {
-            $$1 = blt.a($$0);
-         } catch (Throwable var5) {
-            a(() -> "Failed to parse JFR recording", var5);
-            return;
+            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
+         } catch (Exception var5) {
+            $$0.a().a($$1, this, var5);
+            return Optional.empty();
          }
-
-         try {
-            a($$1::b);
-            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
-            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
-            a(() -> "Dumped recording summary to " + $$4);
-         } catch (Throwable var4) {
-            a(() -> "Failed to output JFR report", var4);
-         }
-      }
-   }
-
-   private static void a(Supplier<String> $$0) {
-      if (LogUtils.isLoggerActive()) {
-         a.info($$0.get());
       } else {
-         akh.a($$0.get());
+         $$0.a().a($$1, this, akh.c.createWithContext((ImmutableStringReader)$$0.b()));
+         return Optional.empty();
       }
    }
 
-   private static void a(Supplier<String> $$0, Throwable $$1) {
-      if (LogUtils.isLoggerActive()) {
-         a.warn($$0.get(), $$1);
-      } else {
-         akh.a($$0.get());
-         $$1.printStackTrace(akh.a);
-      }
-   }
+   protected abstract V a(ImmutableStringReader var1, akh var2) throws Exception;
 }

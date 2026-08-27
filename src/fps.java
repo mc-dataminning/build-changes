@@ -1,274 +1,125 @@
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
 
-public class fps {
-   private static final ws a = ws.c("selectWorld.newWorld");
-   private final List<Consumer<fps>> b = new ArrayList<>();
-   private String c = a.getString();
-   private fps.a d = fps.a.a;
-   private bon e = bon.c;
-   @Nullable
-   private Boolean f;
-   private String g;
-   private boolean h;
-   private boolean i;
-   private final Path j;
-   private String k;
-   private fpr l;
-   private fps.b m;
-   private final List<fps.b> n = new ArrayList<>();
-   private final List<fps.b> o = new ArrayList<>();
-   private czq p = new czq();
+public class fps extends fld {
+   private static final wu a = wu.c("selectWorld.experimental.title");
+   private static final wu b = wu.c("selectWorld.experimental.message");
+   private static final wu c = wu.c("selectWorld.experimental.details");
+   private static final int d = 10;
+   private static final int r = 100;
+   private final BooleanConsumer s;
+   final Collection<asz> u;
+   private final fiq v = new fiq().a(10).b(20);
 
-   public fps(Path $$0, fpr $$1, Optional<ake<efv>> $$2, OptionalLong $$3) {
-      this.j = $$0;
-      this.l = $$1;
-      this.m = new fps.b(a($$1, $$2).orElse(null));
-      this.r();
-      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
-      this.h = $$1.b().c();
-      this.i = $$1.b().d();
-      this.k = this.c(this.c);
+   public fps(Collection<asz> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.u = $$0;
+      this.s = $$1;
    }
 
-   public void a(Consumer<fps> $$0) {
-      this.b.add($$0);
+   @Override
+   public wu i() {
+      return wt.a(super.i(), b);
    }
 
-   public void a() {
-      boolean $$0 = this.j();
-      if ($$0 != this.l.b().d()) {
-         this.l = this.l.a($$1x -> $$1x.a($$0));
+   @Override
+   protected void aM_() {
+      super.aM_();
+      fiq.b $$0 = this.v.d(2);
+      fiu $$1 = $$0.b().b();
+      $$0.a(new fgl(this.l, this.p), 2, $$1);
+      ffy $$2 = $$0.a(new ffy(b, this.p).b(true), 2, $$1);
+      $$2.d(310);
+      $$0.a(ffe.a(c, $$0x -> this.m.a(new fps.a())).a(100).a(), 2, $$1);
+      $$0.a(ffe.a(wt.i, $$0x -> this.s.accept(true)).a());
+      $$0.a(ffe.a(wt.k, $$0x -> this.s.accept(false)).a());
+      this.v.a($$1x -> {
+         ffc var10000 = this.c($$1x);
+      });
+      this.v.a();
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      fip.a(this.v, 0, 0, this.n, this.o, 0.5F, 0.5F);
+   }
+
+   @Override
+   public void d() {
+      this.s.accept(false);
+   }
+
+   class a extends fld {
+      private static final wu b = wu.c("selectWorld.experimental.details.title");
+      final fir c = new fir(this);
+
+      a() {
+         super(b);
       }
 
-      boolean $$1 = this.i();
-      if ($$1 != this.l.b().c()) {
-         this.l = this.l.a($$1x -> $$1x.b($$1));
+      @Override
+      protected void aM_() {
+         this.c.a(b, this.p);
+         this.c.c(new fps.a.a(this.m, fps.this.u));
+         this.c.b(ffe.a(wt.k, $$0 -> this.d()).a());
+         this.c.a($$1 -> {
+            ffc var10000 = this.c($$1);
+         });
+         this.c();
       }
 
-      for (Consumer<fps> $$2 : this.b) {
-         $$2.accept(this);
+      @Override
+      protected void c() {
+         this.c.a();
       }
-   }
 
-   public void a(String $$0) {
-      this.c = $$0;
-      this.k = this.c($$0);
-      this.a();
-   }
+      @Override
+      public void d() {
+         this.m.a(fps.this);
+      }
 
-   private String c(String $$0) {
-      String $$1 = $$0.trim();
+      class a extends fga<fps.a.b> {
+         public a(fde $$0, Collection<asz> $$1) {
+            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
 
-      try {
-         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
-      } catch (Exception var5) {
-         try {
-            return v.a(this.j, "World", "");
-         } catch (IOException var4) {
-            throw new RuntimeException("Could not create save folder", var4);
+            for (asz $$2 : $$1) {
+               String $$3 = cnw.a(cnw.g, $$2.e());
+               if (!$$3.isEmpty()) {
+                  wu $$4 = wx.a($$2.b().f(), xr.a.a(true));
+                  wu $$5 = wu.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, ffx.a(a.this.p, $$5, this.b())));
+               }
+            }
+         }
+
+         @Override
+         public int b() {
+            return this.g * 3 / 4;
          }
       }
-   }
 
-   public String b() {
-      return this.c;
-   }
+      class b extends fga.a<fps.a.b> {
+         private final wu b;
+         private final wu c;
+         private final ffx d;
 
-   public String c() {
-      return this.k;
-   }
+         b(wu $$0, wu $$1, ffx $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
 
-   public void a(fps.a $$0) {
-      this.d = $$0;
-      this.a();
-   }
+         @Override
+         public void a(fer $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
+            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         }
 
-   public fps.a d() {
-      return this.l() ? fps.a.d : this.d;
-   }
-
-   public void a(bon $$0) {
-      this.e = $$0;
-      this.a();
-   }
-
-   public bon e() {
-      return this.f() ? bon.d : this.e;
-   }
-
-   public boolean f() {
-      return this.d() == fps.a.b;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-      this.a();
-   }
-
-   public boolean g() {
-      if (this.l()) {
-         return true;
-      } else if (this.f()) {
-         return false;
-      } else {
-         return this.f == null ? this.d() == fps.a.c : this.f;
-      }
-   }
-
-   public void b(String $$0) {
-      this.g = $$0;
-      this.l = this.l.a($$0x -> $$0x.a(dwo.a(this.h())));
-      this.a();
-   }
-
-   public String h() {
-      return this.g;
-   }
-
-   public void b(boolean $$0) {
-      this.h = $$0;
-      this.a();
-   }
-
-   public boolean i() {
-      return this.l() ? false : this.h;
-   }
-
-   public void c(boolean $$0) {
-      this.i = $$0;
-      this.a();
-   }
-
-   public boolean j() {
-      return !this.l() && !this.f() ? this.i : false;
-   }
-
-   public void a(fpr $$0) {
-      this.l = $$0;
-      this.r();
-      this.a();
-   }
-
-   public fpr k() {
-      return this.l;
-   }
-
-   public void a(fpr.a $$0) {
-      this.l = this.l.a($$0);
-      this.a();
-   }
-
-   protected boolean a(dao $$0) {
-      dao $$1 = this.l.g();
-      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
-         this.l = new fpr(this.l.b(), this.l.c(), this.l.d(), this.l.e(), this.l.f(), $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean l() {
-      return this.l.d().c();
-   }
-
-   public void a(fps.b $$0) {
-      this.m = $$0;
-      iv<efv> $$1 = $$0.c();
-      if ($$1 != null) {
-         this.a(($$1x, $$2) -> $$1.a().a());
-      }
-   }
-
-   public fps.b m() {
-      return this.m;
-   }
-
-   @Nullable
-   public fpo n() {
-      iv<efv> $$0 = this.m().c();
-      return $$0 != null ? fpo.a.get($$0.e()) : null;
-   }
-
-   public List<fps.b> o() {
-      return this.n;
-   }
-
-   public List<fps.b> p() {
-      return this.o;
-   }
-
-   private void r() {
-      ji<efv> $$0 = this.k().a().d(ld.aP);
-      this.n.clear();
-      this.n.addAll(a($$0, awh.a).orElseGet(() -> $$0.h().map(fps.b::new).toList()));
-      this.o.clear();
-      this.o.addAll(a($$0, awh.b).orElse(this.n));
-      iv<efv> $$1 = this.m.c();
-      if ($$1 != null) {
-         this.m = a(this.k(), $$1.e()).map(fps.b::new).orElse(this.n.get(0));
-      }
-   }
-
-   private static Optional<iv<efv>> a(fpr $$0, Optional<ake<efv>> $$1) {
-      return $$1.flatMap($$1x -> $$0.a().d(ld.aP).b($$1x));
-   }
-
-   private static Optional<List<fps.b>> a(ji<efv> $$0, awd<efv> $$1) {
-      return $$0.b($$1).map($$0x -> $$0x.a().map(fps.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
-   }
-
-   public void a(czq $$0) {
-      this.p = $$0;
-      this.a();
-   }
-
-   public czq q() {
-      return this.p;
-   }
-
-   public static enum a {
-      a("survival", czr.a),
-      b("hardcore", czr.a),
-      c("creative", czr.b),
-      d("spectator", czr.d);
-
-      public final czr e;
-      public final ws f;
-      private final ws g;
-
-      private a(String $$0, czr $$1) {
-         this.e = $$1;
-         this.f = ws.c("selectWorld.gameMode." + $$0);
-         this.g = ws.c("selectWorld.gameMode." + $$0 + ".info");
-      }
-
-      public ws a() {
-         return this.g;
-      }
-   }
-
-   public static record b(@Nullable iv<efv> a) {
-      private static final ws b = ws.c("generator.custom");
-
-      public ws a() {
-         return Optional.ofNullable(this.a).flatMap(iv::e).map($$0 -> ws.c($$0.a().f("generator"))).orElse(b);
-      }
-
-      public boolean b() {
-         return Optional.ofNullable(this.a).flatMap(iv::e).filter($$0 -> $$0.equals(efw.d)).isPresent();
-      }
-
-      @Nullable
-      public iv<efv> c() {
-         return this.a;
+         @Override
+         public wu a() {
+            return wu.a("narrator.select", wt.a(this.b, this.c));
+         }
       }
    }
 }

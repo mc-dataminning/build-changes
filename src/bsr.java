@@ -1,79 +1,65 @@
-import java.util.Map;
-import java.util.Optional;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class bsr<E extends brm> extends bsw<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private static final Predicate<brm> g = $$0 -> $$0.ek() != null || $$0.dC() || $$0.bO();
-   private final float h;
-   private final Predicate<E> i;
-
-   public bsr(float $$0) {
-      this($$0, g::test);
-   }
-
-   public bsr(float $$0, Predicate<E> $$1) {
-      super(Map.of(cah.Z, cai.c, cah.x, cai.c), 100, 120);
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   protected boolean a(aqe $$0, E $$1) {
-      return this.i.test($$1) && ($$1.dQ().a(cah.x) || $$1.dQ().a(cah.Z));
-   }
-
-   protected boolean a(aqe $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(aqe $$0, E $$1, long $$2) {
-      $$1.dQ().a(cah.Z, true);
-      $$1.dQ().b(cah.m);
-   }
-
-   protected void c(aqe $$0, E $$1, long $$2) {
-      bsf<?> $$3 = $$1.dQ();
-      $$3.b(cah.Z);
-   }
-
-   protected void d(aqe $$0, E $$1, long $$2) {
-      if ($$1.K().l()) {
-         etf $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.dQ().a(cah.m, new cak($$3, this.h, 0));
-         }
-      }
-   }
-
-   @Nullable
-   private etf a(E $$0, aqe $$1) {
-      if ($$0.bO()) {
-         Optional<etf> $$2 = this.a((cza)$$1, $$0).map(etf::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
+public interface bsr {
+   bsr b = new bsr() {
+      @Override
+      public csz a() {
+         return csz.i;
       }
 
-      return ccb.a($$0, 5, 4);
-   }
+      @Override
+      public boolean a(csz $$0) {
+         return false;
+      }
+   };
 
-   private Optional<im> a(cza $$0, bql $$1) {
-      im $$2 = $$1.dn();
-      if (!$$0.a_($$2).k($$0, $$2).c()) {
-         return Optional.empty();
-      } else {
-         Predicate<im> $$3;
-         if (axw.f($$1.dh()) == 2) {
-            $$3 = $$1x -> im.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(avt.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(avt.a);
+   static bsr a(final bpf $$0, final int $$1, final Predicate<csz> $$2) {
+      return new bsr() {
+         @Override
+         public csz a() {
+            return $$0.a($$1);
          }
 
-         return im.a($$2, 5, 1, $$3);
-      }
+         @Override
+         public boolean a(csz $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
    }
+
+   static bsr a(bpf $$0, int $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   static bsr a(final bsa $$0, final bro $$1, final Predicate<csz> $$2) {
+      return new bsr() {
+         @Override
+         public csz a() {
+            return $$0.d($$1);
+         }
+
+         @Override
+         public boolean a(csz $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
+   }
+
+   static bsr a(bsa $$0, bro $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   csz a();
+
+   boolean a(csz var1);
 }

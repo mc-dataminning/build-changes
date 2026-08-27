@@ -1,48 +1,42 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bwh extends bsw<cjy> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
+public class bwh {
+   private static final int a = 200;
 
-   public bwh() {
-      super(ImmutableMap.of(cah.c, cai.a, cah.n, cai.c));
+   public static <E extends bsc> btt<E> a(BiConsumer<E, bsa> $$0) {
+      return a($$0x -> false, $$0, true);
    }
 
-   protected boolean b(aqe $$0, cjy $$1) {
-      if ($$0.Y() - this.e < 300L) {
-         return false;
-      } else if ($$0.z.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.Y();
-         iu $$2 = $$1.dQ().c(cah.c).get();
-         return $$2.a() == $$0.ae() && $$2.b().a($$1.dl(), 1.73);
-      }
+   public static <E extends bsc> btt<E> a(Predicate<bsa> $$0) {
+      return a($$0, ($$0x, $$1) -> {
+      }, true);
    }
 
-   protected void a(aqe $$0, cjy $$1, long $$2) {
-      bsf<cjy> $$3 = $$1.dQ();
-      $$3.a(cah.J, $$2);
-      $$3.c(cah.c).ifPresent($$1x -> $$3.a(cah.n, new bsz($$1x.b())));
-      $$1.gE();
-      this.a($$0, $$1);
-      if ($$1.gD()) {
-         $$1.gC();
-      }
+   public static <E extends bsc> btt<E> a() {
+      return a($$0 -> false, ($$0, $$1) -> {
+      }, true);
    }
 
-   protected void a(aqe $$0, cjy $$1) {
+   public static <E extends bsc> btt<E> a(Predicate<bsa> $$0, BiConsumer<E, bsa> $$1, boolean $$2) {
+      return bxf.a(
+         (Function<bxf.b<E>, ? extends App<bxf.c<E>, bxi<E>>>)($$3 -> $$3.group($$3.b(cbd.o), $$3.a(cbd.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  bsa $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bB() && $$9.dN() == $$7.dN() && !$$0.test($$9)) {
+                     return true;
+                  } else {
+                     $$1.accept((E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
+      );
    }
 
-   protected boolean b(aqe $$0, cjy $$1, long $$2) {
-      Optional<iu> $$3 = $$1.dQ().c(cah.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         iu $$4 = $$3.get();
-         return $$4.a() == $$0.ae() && $$4.b().a($$1.dl(), 1.73);
-      }
+   private static boolean a(bsa $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dN().Y() - $$1.get() > 200L;
    }
 }

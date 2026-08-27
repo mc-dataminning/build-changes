@@ -1,42 +1,31 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class eim extends egg {
-   public static final bne<dbf.c> d = bne.a(
-      new dbf.c(bqr.i, 10, 2, 3), new dbf.c(bqr.bw, 5, 4, 4), new dbf.c(bqr.bp, 8, 5, 5), new dbf.c(bqr.aM, 2, 5, 5), new dbf.c(bqr.ao, 3, 4, 4)
-   );
-   public static final Codec<eim> e = a(eim::new);
+public class eim extends egp {
+   public static final Codec<eim> d = a(eim::new);
 
-   public eim(egg.c $$0) {
+   public eim(egp.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<egg.b> a(egg.a $$0) {
-      czb $$1 = $$0.h();
-      im $$2 = new im($$1.d(), 64, $$1.e());
-      return Optional.of(new egg.b($$2, (Consumer<egy>)($$1x -> a($$1x, $$0))));
+   public Optional<egp.b> a(egp.a $$0) {
+      djr $$1 = djr.a($$0.f());
+      in $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new egp.b($$2, (Consumer<ehh>)($$3 -> this.a($$3, $$2, $$1, $$0))));
    }
 
-   private static void a(egy $$0, egg.a $$1) {
-      eil.q $$2 = new eil.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
-      $$0.a($$2);
-      $$2.a($$2, $$0, $$1.f());
-      List<egk> $$3 = $$2.d;
-
-      while (!$$3.isEmpty()) {
-         int $$4 = $$1.f().a($$3.size());
-         egk $$5 = $$3.remove($$4);
-         $$5.a($$2, $$0, $$1.f());
-      }
-
-      $$0.a($$1.f(), 48, 70);
+   private void a(ehh $$0, in $$1, djr $$2, egp.a $$3) {
+      List<egt> $$4 = Lists.newArrayList();
+      eil.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public egp<?> e() {
-      return egp.d;
+   public egy<?> e() {
+      return egy.c;
    }
 }

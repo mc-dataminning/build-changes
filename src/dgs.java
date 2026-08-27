@@ -1,75 +1,73 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import java.util.Optional;
 
-public class dgs extends dcv {
-   public static final MapCodec<dgs> a = b(dgs::new);
-   public static final dqp b = dij.b;
-   public static final dqp c = dij.c;
-   public static final dqp d = dij.d;
-   public static final dqp e = dij.e;
-   public static final dqp f = dij.f;
-   public static final dqp g = dij.g;
-   private static final Map<ir, dqp> h = dij.h;
-
-   @Override
-   public MapCodec<dgs> a() {
-      return a;
-   }
-
-   public dgs(dpx.d $$0) {
-      super($$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(true))
-            .a(c, Boolean.valueOf(true))
-            .a(d, Boolean.valueOf(true))
-            .a(e, Boolean.valueOf(true))
-            .a(f, Boolean.valueOf(true))
-            .a(g, Boolean.valueOf(true))
-      );
+public abstract class dgs extends dgr implements ddh {
+   protected dgs(dqg.d $$0, is $$1, eui $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public dpy a(cvl $$0) {
-      cza $$1 = $$0.q();
-      im $$2 = $$0.a();
-      return this.n()
-         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
-         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
-         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
+   protected abstract MapCodec<? extends dgs> a();
+
+   protected dqh a(dqh $$0, dqh $$1) {
+      return $$1;
    }
 
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      dgt $$6 = this.c();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
+      } else {
+         if (this.b) {
+            $$3.a($$4, emb.c, emb.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   protected dpy a(dpy $$0, dji $$1) {
-      return $$0.a(h.get($$1.a(ir.c)), $$0.c(b))
-         .a(h.get($$1.a(ir.d)), $$0.c(d))
-         .a(h.get($$1.a(ir.f)), $$0.c(c))
-         .a(h.get($$1.a(ir.e)), $$0.c(e))
-         .a(h.get($$1.a(ir.b)), $$0.c(f))
-         .a(h.get($$1.a(ir.a)), $$0.c(g));
+   public csz a(dag $$0, in $$1, dqh $$2) {
+      return new csz(this.c());
    }
 
    @Override
-   protected dpy a(dpy $$0, dhs $$1) {
-      return $$0.a(h.get($$1.b(ir.c)), $$0.c(b))
-         .a(h.get($$1.b(ir.d)), $$0.c(d))
-         .a(h.get($$1.b(ir.f)), $$0.c(c))
-         .a(h.get($$1.b(ir.e)), $$0.c(e))
-         .a(h.get($$1.b(ir.b)), $$0.c(f))
-         .a(h.get($$1.b(ir.a)), $$0.c(g));
+   public boolean b(dag $$0, in $$1, dqh $$2) {
+      Optional<in> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
    }
 
    @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(f, g, b, c, d, e);
+   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
+      Optional<in> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dqh $$5 = $$0.a_($$4.get());
+         ((dgt)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+      }
+   }
+
+   private Optional<in> a(czj $$0, in $$1, dde $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
+   }
+
+   @Override
+   protected boolean a(dqh $$0, cwi $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().q()) ? false : $$2;
+   }
+
+   @Override
+   protected dde b() {
+      return this;
    }
 }

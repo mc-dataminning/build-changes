@@ -1,42 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class dyr extends dyu<eax> {
-   public dyr(Codec<eax> $$0) {
+public class dyr extends dys {
+   public dyr(Codec<ebo> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyw<eax> $$0) {
-      im $$1 = $$0.e();
-      dap $$2 = $$0.b();
-      eax $$3 = $$0.f();
+   protected boolean a(dae $$0, ayg $$1, in $$2, dqh $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         is $$4 = is.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<is> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-      for (im $$4 : im.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            im $$9 = $$4.i();
-            this.a($$2, $$9, dcx.kF.n());
-            $$3.b().ifPresent($$3x -> {
-               dnd $$4x = $$2.c_($$9);
-               if ($$4x instanceof dot $$5x) {
-                  $$5x.a($$3x, $$3.c());
-                  $$4x.e();
+         for (is $$8 : $$6.subList(0, $$5)) {
+            in.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            is $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(is.b);
+               is[] $$13 = new is[]{$$8, is.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(is.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
                }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, dcx.a.n());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, dcx.F.n());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, dcx.F.n());
-         } else {
-            this.a($$2, $$4, dcx.a.n());
-         }
-      }
 
-      return true;
+               if ($$1.i() < 0.25F) {
+                  $$9.c(is.b);
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

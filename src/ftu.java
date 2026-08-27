@@ -1,94 +1,58 @@
-public class ftu<T extends cie> extends fsa<T> {
-   private static final String a = "right_bottom_bristle";
-   private static final String b = "right_middle_bristle";
-   private static final String f = "right_top_bristle";
-   private static final String g = "left_top_bristle";
-   private static final String h = "left_middle_bristle";
-   private static final String i = "left_bottom_bristle";
-   private final fur j;
-   private final fur k;
-   private final fur l;
-   private final fur m;
-   private final fur n;
-   private final fur o;
-   private final fur p;
-   private final fur q;
-   private final fur r;
-   private final fur s;
+import com.google.common.collect.ImmutableList;
 
-   public ftu(fur $$0) {
-      this.j = $$0;
-      this.k = $$0.b("right_leg");
-      this.l = $$0.b("left_leg");
-      this.m = $$0.b("body");
-      this.n = this.m.b("right_bottom_bristle");
-      this.o = this.m.b("right_middle_bristle");
-      this.p = this.m.b("right_top_bristle");
-      this.q = this.m.b("left_top_bristle");
-      this.r = this.m.b("left_middle_bristle");
-      this.s = this.m.b("left_bottom_bristle");
+public class ftu<T extends cit> extends fst<T> {
+   private static final String a = "lid";
+   private static final String b = "base";
+   private final fvb f;
+   private final fvb g;
+   private final fvb h;
+
+   public ftu(fvb $$0) {
+      super(gbw::f);
+      this.g = $$0.b("lid");
+      this.f = $$0.b("base");
+      this.h = $$0.b("head");
    }
 
-   public static fux b() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      $$1.a("right_leg", fuw.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), fut.a(-4.0F, 8.0F, 0.0F));
-      $$1.a("left_leg", fuw.c().a(0, 55).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), fut.a(4.0F, 8.0F, 0.0F));
-      fva $$2 = $$1.a("body", fuw.c().a(0, 0).a(-8.0F, -6.0F, -8.0F, 16.0F, 14.0F, 16.0F), fut.a(0.0F, 1.0F, 0.0F));
-      $$2.a("right_bottom_bristle", fuw.c().a(16, 65).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), fut.a(-8.0F, 4.0F, -8.0F, 0.0F, 0.0F, -1.2217305F));
-      $$2.a("right_middle_bristle", fuw.c().a(16, 49).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), fut.a(-8.0F, -1.0F, -8.0F, 0.0F, 0.0F, -1.134464F));
-      $$2.a("right_top_bristle", fuw.c().a(16, 33).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), fut.a(-8.0F, -5.0F, -8.0F, 0.0F, 0.0F, -0.87266463F));
-      $$2.a("left_top_bristle", fuw.c().a(16, 33).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), fut.a(8.0F, -6.0F, -8.0F, 0.0F, 0.0F, 0.87266463F));
-      $$2.a("left_middle_bristle", fuw.c().a(16, 49).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), fut.a(8.0F, -2.0F, -8.0F, 0.0F, 0.0F, 1.134464F));
-      $$2.a("left_bottom_bristle", fuw.c().a(16, 65).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), fut.a(8.0F, 3.0F, -8.0F, 0.0F, 0.0F, 1.2217305F));
-      return fux.a($$0, 64, 128);
+   public static fvh a() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      $$1.a("lid", fvg.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fvd.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", fvg.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fvd.a(0.0F, 24.0F, 0.0F));
+      $$1.a("head", fvg.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fvd.a(0.0F, 12.0F, 0.0F));
+      return fvh.a($$0, 64, 64);
    }
 
-   public void a(cie $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      $$2 = Math.min(0.25F, $$2);
-      if (!$$0.bQ()) {
-         this.m.e = $$5 * (float) (Math.PI / 180.0);
-         this.m.f = $$4 * (float) (Math.PI / 180.0);
-      } else {
-         this.m.e = 0.0F;
-         this.m.f = 0.0F;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ai;
+      float $$7 = (0.5F + $$0.G($$6)) * (float) Math.PI;
+      float $$8 = -1.0F + axz.a($$7);
+      float $$9 = 0.0F;
+      if ($$7 > (float) Math.PI) {
+         $$9 = axz.a($$3 * 0.1F) * 0.7F;
       }
 
-      float $$6 = 1.5F;
-      this.m.g = 0.1F * axw.a($$1 * 1.5F) * 4.0F * $$2;
-      this.m.c = 2.0F;
-      this.m.c = this.m.c - 2.0F * axw.b($$1 * 1.5F) * 2.0F * $$2;
-      this.l.e = axw.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
-      this.k.e = axw.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
-      this.l.g = (float) (Math.PI / 18) * axw.b($$1 * 1.5F * 0.5F) * $$2;
-      this.k.g = (float) (Math.PI / 18) * axw.b($$1 * 1.5F * 0.5F + (float) Math.PI) * $$2;
-      this.l.c = 8.0F + 2.0F * axw.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
-      this.k.c = 8.0F + 2.0F * axw.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
-      this.n.g = -1.2217305F;
-      this.o.g = -1.134464F;
-      this.p.g = -0.87266463F;
-      this.q.g = 0.87266463F;
-      this.r.g = 1.134464F;
-      this.s.g = 1.2217305F;
-      float $$7 = axw.b($$1 * 1.5F + (float) Math.PI) * $$2;
-      this.n.g += $$7 * 1.3F;
-      this.o.g += $$7 * 1.2F;
-      this.p.g += $$7 * 0.6F;
-      this.q.g += $$7 * 0.6F;
-      this.r.g += $$7 * 1.2F;
-      this.s.g += $$7 * 1.3F;
-      float $$8 = 1.0F;
-      float $$9 = 1.0F;
-      this.n.g = this.n.g + 0.05F * axw.a($$3 * 1.0F * -0.4F);
-      this.o.g = this.o.g + 0.1F * axw.a($$3 * 1.0F * 0.2F);
-      this.p.g = this.p.g + 0.1F * axw.a($$3 * 1.0F * 0.4F);
-      this.q.g = this.q.g + 0.1F * axw.a($$3 * 1.0F * 0.4F);
-      this.r.g = this.r.g + 0.1F * axw.a($$3 * 1.0F * 0.2F);
-      this.s.g = this.s.g + 0.05F * axw.a($$3 * 1.0F * -0.4F);
+      this.g.a(0.0F, 16.0F + axz.a($$7) * 8.0F + $$9, 0.0F);
+      if ($$0.G($$6) > 0.3F) {
+         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
+      } else {
+         this.g.f = 0.0F;
+      }
+
+      this.h.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.f = ($$0.bb - 180.0F - $$0.aZ) * (float) (Math.PI / 180.0);
    }
 
    @Override
-   public fur a() {
-      return this.j;
+   public Iterable<fvb> d() {
+      return ImmutableList.of(this.f, this.g);
+   }
+
+   public fvb b() {
+      return this.g;
+   }
+
+   public fvb c() {
+      return this.h;
    }
 }

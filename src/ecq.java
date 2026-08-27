@@ -1,48 +1,69 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecq extends eck {
+public class ecq extends ect {
    public static final Codec<ecq> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bnv.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, ecq::new)
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bor.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
+               )
+            )
+            .apply($$0, ecq::new)
    );
-   private final bnv b;
+   private final bor b;
+   private final float c;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   public ecq(bnv $$0, bnv $$1, bnv $$2) {
+   public ecq(bor $$0, bor $$1, bor $$2, float $$3, float $$4, float $$5, float $$6) {
       super($$0, $$1);
       this.b = $$2;
+      this.c = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
    @Override
-   protected ecl<?> a() {
-      return ecl.b;
+   protected ecu<?> a() {
+      return ecu.k;
    }
 
    @Override
-   protected void a(daa $$0, eck.b $$1, ayd $$2, ebu $$3, int $$4, eck.a $$5, int $$6, int $$7, int $$8) {
-      im $$9 = $$5.a();
-      int $$10 = $$2.a(2);
-      int $$11 = 1;
-      int $$12 = 0;
+   protected void a(daj $$0, ect.b $$1, ayg $$2, ecd $$3, int $$4, ect.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      in $$10 = $$5.a().b($$8);
+      int $$11 = $$7 + $$5.b() - 1;
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
 
-      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
-         if ($$10 >= $$11) {
-            $$10 = $$12;
-            $$12 = 1;
-            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
-         } else {
-            $$10++;
-         }
+      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
+         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
       }
+
+      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
    }
 
    @Override
-   public int a(ayd $$0, int $$1, ebu $$2) {
-      return Math.max(4, $$1 - this.b.a($$0));
+   public int a(ayg $$0, int $$1, ecd $$2) {
+      return this.b.a($$0);
    }
 
    @Override
-   protected boolean a(ayd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   protected boolean a(ayg $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
+         return true;
+      } else {
+         boolean $$6 = $$1 == $$4 && $$3 == $$4;
+         boolean $$7 = $$4 > 2;
+         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
+      }
    }
 }

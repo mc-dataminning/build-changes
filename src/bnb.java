@@ -1,52 +1,37 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import com.google.common.base.MoreObjects;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordedThread;
 
-public class bnb {
-   public static final Codec<bnb> a = Codec.INT.xmap(bnb::a, bnb::a);
-   private static final bnb b = new bnb(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
+public record bnb(Instant a, String b, long c) {
+   private static final String d = "unknown";
 
-   private bnb(int $$0) {
-      this.d = $$0;
+   public static bnb a(RecordedEvent $$0) {
+      RecordedThread $$1 = $$0.getThread("thread");
+      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
+      return new bnb($$0.getStartTime(), $$2, $$0.getLong("allocated"));
    }
 
-   public static bnb a(int $$0) {
-      if ($$0 == 1) {
-         return b;
-      } else {
-         b($$0);
-         return new bnb($$0);
-      }
-   }
-
-   public int a() {
-      return this.d;
-   }
-
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && aa.aX) {
-            c.warn("Found 0 weight, make sure this is intentional!");
+   public static bnb.a a(List<bnb> $$0) {
+      Map<String, Double> $$1 = new TreeMap<>();
+      Map<String, List<bnb>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
+      $$2.forEach(($$1x, $$2x) -> {
+         if ($$2x.size() >= 2) {
+            bnb $$3 = (bnb)$$2x.get(0);
+            bnb $$4 = (bnb)$$2x.get($$2x.size() - 1);
+            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
+            long $$6 = $$4.c - $$3.c;
+            $$1.put($$1x, (double)$$6 / (double)$$5);
          }
-      }
+      });
+      return new bnb.a($$1);
    }
 
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof bnb && this.d == ((bnb)$$0).d;
+   public static record a(Map<String, Double> a) {
    }
 }

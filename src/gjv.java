@@ -1,44 +1,25 @@
-public class gjv<T extends bre, M extends fsw<T>> extends glh<T, M> {
-   private static final akf a = new akf("textures/entity/bee/bee_stinger.png");
+public class gjv extends ggw<cmp> {
+   private static final akh a = new akh("textures/entity/projectiles/wind_charge.png");
+   private final fup f;
 
-   public gjv(gho<T, M> $$0) {
+   public gjv(ggx.a $$0) {
       super($$0);
+      this.f = new fup($$0.a(fva.bT));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eS();
+   public void a(cmp $$0, float $$1, float $$2, exx $$3, gbo $$4, int $$5) {
+      float $$6 = (float)$$0.ai + $$2;
+      eyb $$7 = $$4.getBuffer(gbw.a(a, this.a($$6) % 1.0F, 0.0F));
+      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
+      this.f.a($$3, $$7, $$5, gmp.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected void a(exn $$0, gbe $$1, int $$2, bql $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = axw.c($$4 * $$4 + $$6 * $$6);
-      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
-      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
-      $$0.a(0.0F, 0.0F, 0.0F);
-      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
-      $$0.a(a.f.rotationDegrees($$10));
-      float $$11 = 0.0F;
-      float $$12 = 0.125F;
-      float $$13 = 0.0F;
-      float $$14 = 0.0625F;
-      float $$15 = 0.03125F;
-      $$0.a(a.b.rotationDegrees(45.0F));
-      $$0.b(0.03125F, 0.03125F, 0.03125F);
-      $$0.a(2.5F, 0.0F, 0.0F);
-      exr $$16 = $$1.getBuffer(gbm.e(a));
-
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         $$0.a(a.b.rotationDegrees(90.0F));
-         exn.a $$18 = $$0.c();
-         a($$16, $$18, -4.5F, -1, 0.0F, 0.0F, $$2);
-         a($$16, $$18, 4.5F, -1, 0.125F, 0.0F, $$2);
-         a($$16, $$18, 4.5F, 1, 0.125F, 0.0625F, $$2);
-         a($$16, $$18, -4.5F, 1, 0.0F, 0.0625F, $$2);
-      }
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
    }
 
-   private static void a(exr $$0, exn.a $$1, float $$2, int $$3, float $$4, float $$5, int $$6) {
-      $$0.a($$1, $$2, (float)$$3, 0.0F).a(255, 255, 255, 255).a($$4, $$5).c(gmf.d).b($$6).b($$1, 0.0F, 1.0F, 0.0F).e();
+   public akh a(cmp $$0) {
+      return a;
    }
 }

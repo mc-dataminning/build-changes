@@ -1,36 +1,37 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-class bps extends bpu {
-   private final boolean a;
+public class bps {
+   public static final Codec<bps> a = RecordCodecBuilder.create($$0 -> $$0.group(dxa.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bps::new));
+   private final dxa b;
 
-   public bps(bpw $$0, int $$1, boolean $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+   public bps(dxa $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public boolean a(bre $$0, int $$1) {
-      if (this.a == $$0.ex()) {
-         $$0.c((float)Math.max(4 << $$1, 0));
-      } else {
-         $$0.a($$0.dO().o(), (float)(6 << $$1));
-      }
-
-      return true;
+   public bps(long $$0, akh $$1) {
+      this(a($$0, Optional.of($$1)));
    }
 
-   @Override
-   public void a(@Nullable bql $$0, @Nullable bql $$1, bre $$2, int $$3, double $$4) {
-      if (this.a == $$2.ex()) {
-         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
-         $$2.c((float)$$5);
-      } else {
-         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
-         if ($$0 == null) {
-            $$2.a($$2.dO().o(), (float)$$6);
-         } else {
-            $$2.a($$2.dO().c($$0, $$1), (float)$$6);
-         }
+   public bps(long $$0, Optional<akh> $$1) {
+      this(a($$0, $$1));
+   }
+
+   private static dxa a(long $$0, Optional<akh> $$1) {
+      dwo.a $$2 = dwo.b($$0);
+      if ($$1.isPresent()) {
+         $$2 = $$2.a(a($$1.get()));
       }
+
+      return new dxa($$2.a());
+   }
+
+   public static dwo.a a(akh $$0) {
+      return dwo.a($$0.toString());
+   }
+
+   public ayg a() {
+      return this.b;
    }
 }

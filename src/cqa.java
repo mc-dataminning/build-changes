@@ -1,10 +1,28 @@
-public class cqa extends cqb {
-   public cqa(dcv $$0, cry.a $$1) {
-      super($$0, $$1);
+import it.unimi.dsi.fastutil.ints.IntList;
+
+public interface cqa extends ayt {
+   IntList a();
+
+   default int b() {
+      return this.a().size();
    }
 
-   @Override
-   protected boolean a(cvl $$0, dpy $$1) {
-      return $$0.q().a($$0.a(), $$1, 26);
+   static cqa a(final String $$0, final IntList $$1) {
+      return new cqa() {
+         @Override
+         public IntList a() {
+            return $$1;
+         }
+
+         @Override
+         public String c() {
+            return $$0;
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

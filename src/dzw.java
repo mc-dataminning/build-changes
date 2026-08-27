@@ -1,108 +1,36 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
 
-public class dzw extends dyu<ebo> {
-   public dzw(Codec<ebo> $$0) {
+public class dzw extends dzd<ebn> {
+   public dzw(Codec<ebn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyw<ebo> $$0) {
-      dap $$1 = $$0.b();
-      im $$2 = $$0.e();
-      if (!$$1.a_($$2).i()) {
+   public boolean a(dzf<ebn> $$0) {
+      day $$1 = $$0.b();
+      in $$2 = $$0.e();
+      dqh $$3 = $$1.a_($$2.d());
+      ebn $$4 = $$0.f();
+      ayg $$5 = $$0.d();
+      if (!$$3.a(avr.aL)) {
          return false;
       } else {
-         ayd $$3 = $$0.d();
-         im $$4 = $$0.e();
-         ebo $$5 = $$0.f();
-         im.a $$6 = $$4.j();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.I_() + 1 && $$6 + 1 < $$1.al()) {
+            int $$7 = 0;
 
-         return true;
-      }
-   }
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               in $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dqh $$10 = $$4.b.a($$5, $$9);
+               if ($$1.u($$9) && $$9.v() > $$1.I_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
+            }
 
-   private static boolean a(dap $$0, ebo $$1, im $$2) {
-      im.a $$3 = $$2.j();
-
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(ir.b);
-         dpy $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
+            return $$7 > 0;
+         } else {
             return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean a(dpy $$0, int $$1, int $$2) {
-      if ($$0.i()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.u().a(avt.a);
-      }
-   }
-
-   private static boolean a(dap $$0, drv $$1, ebo $$2, ayd $$3, im.a $$4, im $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(ir.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            im $$7 = $$4.d();
-            if ($$0.b_($$7).a(avt.b) || !$$0.a_($$7).e()) {
-               return false;
-            }
-
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private static void a(im $$0, int $$1, dap $$2, ebo $$3, ayd $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      im.a $$7 = $$0.j();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
-      }
-   }
-
-   private static void a(dap $$0, ebo $$1, ayd $$2, int $$3, int $$4, im.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dpy> $$7 = $$1x -> $$1x.a($$1.e);
-
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
-      }
-   }
-
-   private static void a(dap $$0, ebo $$1, ayd $$2, im $$3, im.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.u($$4)) {
-            dpy $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.c()).d($$0, $$4, ir.a)) {
-               $$0.a($$4, $$8, 2);
-            }
          }
       }
    }

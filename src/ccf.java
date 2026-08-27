@@ -1,122 +1,98 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class ccf implements czh {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private ccf.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
-
-   public ccf() {
-      this.c = ccf.a.c;
+public class ccf extends ccj<bsa> {
+   @Override
+   public Set<cbd<?>> a() {
+      return ImmutableSet.of(cbd.h, cbd.g, cbd.M, cbd.am, cbd.au, cbd.ak, new cbd[]{cbd.al, cbd.ao, cbd.an, cbd.as, cbd.at, cbd.aw});
    }
 
    @Override
-   public int a(aqe $$0, boolean $$1, boolean $$2) {
-      if (!$$0.Q() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.z.a(10) == 0 ? ccf.a.b : ccf.a.c;
-         }
+   protected void a(aqh $$0, bsa $$1) {
+      btb<?> $$2 = $$1.dQ();
+      $$2.a(cbd.aw, c($$0, $$1));
+      Optional<bsc> $$3 = Optional.empty();
+      Optional<cjr> $$4 = Optional.empty();
+      Optional<cjr> $$5 = Optional.empty();
+      Optional<cjx> $$6 = Optional.empty();
+      Optional<bsa> $$7 = Optional.empty();
+      Optional<clh> $$8 = Optional.empty();
+      Optional<clh> $$9 = Optional.empty();
+      int $$10 = 0;
+      List<cjw> $$11 = Lists.newArrayList();
+      List<cjw> $$12 = Lists.newArrayList();
+      cbf $$13 = $$2.c(cbd.h).orElse(cbf.a());
 
-         if (this.c == ccf.a.c) {
-            return 0;
+      for (bsa $$14 : $$13.b($$0x -> true)) {
+         if ($$14 instanceof cjr) {
+            cjr $$15 = (cjr)$$14;
+            if ($$15.p_() && $$5.isEmpty()) {
+               $$5 = Optional.of($$15);
+            } else if ($$15.u()) {
+               $$10++;
+               if ($$4.isEmpty() && $$15.gv()) {
+                  $$4 = Optional.of($$15);
+               }
+            }
+         } else if ($$14 instanceof cka $$16) {
+            $$11.add($$16);
+         } else if ($$14 instanceof cjx) {
+            cjx $$17 = (cjx)$$14;
+            if ($$17.p_() && $$6.isEmpty()) {
+               $$6 = Optional.of($$17);
+            } else if ($$17.gq()) {
+               $$11.add($$17);
+            }
+         } else if ($$14 instanceof clh) {
+            clh $$18 = (clh)$$14;
+            if ($$8.isEmpty() && !cjy.a($$18) && $$1.c($$14)) {
+               $$8 = Optional.of($$18);
+            }
+
+            if ($$9.isEmpty() && !$$18.N_() && cjy.b($$18)) {
+               $$9 = Optional.of($$18);
+            }
+         } else if (!$$3.isEmpty() || !($$14 instanceof cje) && !($$14 instanceof chf)) {
+            if ($$7.isEmpty() && cjy.a($$14.ai())) {
+               $$7 = Optional.of($$14);
+            }
          } else {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return 0;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-               return 0;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = ccf.a.c;
-               }
-
-               return 1;
-            }
+            $$3 = Optional.of((bsc)$$14);
          }
-      } else {
-         this.c = ccf.a.c;
-         this.b = false;
-         return 0;
       }
-   }
 
-   private boolean a(aqe $$0) {
-      for (ckl $$1 : $$0.x()) {
-         if (!$$1.N_()) {
-            im $$2 = $$1.dn();
-            if ($$0.c($$2) && !$$0.t($$2).a(avn.af)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + axw.d(axw.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + axw.d(axw.a($$4) * 32.0F);
-                  if (this.a($$0, new im(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
-
-               return true;
+      for (bsa $$20 : $$2.c(cbd.g).orElse(ImmutableList.of())) {
+         if ($$20 instanceof cjw) {
+            cjw $$21 = (cjw)$$20;
+            if ($$21.gq()) {
+               $$12.add($$21);
             }
          }
       }
 
-      return false;
+      $$2.a(cbd.M, $$3);
+      $$2.a(cbd.ak, $$4);
+      $$2.a(cbd.al, $$5);
+      $$2.a(cbd.ar, $$7);
+      $$2.a(cbd.am, $$8);
+      $$2.a(cbd.au, $$9);
+      $$2.a(cbd.an, $$12);
+      $$2.a(cbd.ao, $$11);
+      $$2.a(cbd.as, $$11.size());
+      $$2.a(cbd.at, $$10);
    }
 
-   private void b(aqe $$0) {
-      etf $$1 = this.a($$0, new im(this.f, this.g, this.h));
-      if ($$1 != null) {
-         cik $$2;
-         try {
-            $$2 = new cik($$0);
-            $$2.a($$0, $$0.d_($$2.dn()), bri.h, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
-         }
-
-         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
-      }
+   private static Optional<in> c(aqh $$0, bsa $$1) {
+      return in.a($$1.dn(), 8, 4, $$1x -> a($$0, $$1x));
    }
 
-   @Nullable
-   private etf a(aqe $$0, im $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.z.a(16) - 8;
-         int $$4 = $$1.w() + $$0.z.a(16) - 8;
-         int $$5 = $$0.a(dvq.a.b, $$3, $$4);
-         im $$6 = new im($$3, $$5, $$4);
-         if ($$0.c($$6) && chr.b(bqr.bt, $$0, bri.h, $$6, $$0.z)) {
-            return etf.c($$6);
-         }
-      }
-
-      return null;
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   private static boolean a(aqh $$0, in $$1) {
+      dqh $$2 = $$0.a_($$1);
+      boolean $$3 = $$2.a(avr.V);
+      return $$3 && $$2.a(ddg.oh) ? dds.g($$2) : $$3;
    }
 }

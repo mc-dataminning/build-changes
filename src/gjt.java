@@ -1,17 +1,18 @@
-public class gjt extends ghe<cil, fuk<cil>> {
-   private static final akf a = new akf("textures/entity/zombie_villager/zombie_villager.png");
+public class gjt extends gid<cla, fum<cla>> {
+   private static final akh a = new akh("textures/entity/wandering_trader.png");
 
-   public gjt(ggn.a $$0) {
-      super($$0, new fuk<>($$0.a(fuq.ck)), 0.5F);
-      this.a(new gko<>(this, new fuk($$0.a(fuq.cl)), new fuk($$0.a(fuq.cm)), $$0.g()));
-      this.a(new glj<>(this, $$0.e(), "zombie_villager"));
+   public gjt(ggx.a $$0) {
+      super($$0, new fum<>($$0.a(fva.bS)), 0.5F);
+      this.a(new gkn<>(this, $$0.f(), $$0.d()));
+      this.a(new gkm<>(this, $$0.d()));
    }
 
-   public akf a(cil $$0) {
+   public akh a(cla $$0) {
       return a;
    }
 
-   protected boolean b(cil $$0) {
-      return super.a($$0) || $$0.gz();
+   protected void a(cla $$0, exx $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

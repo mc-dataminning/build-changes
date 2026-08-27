@@ -1,34 +1,74 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+import com.google.common.hash.Hashing;
+import javax.annotation.Nullable;
 
-public class fkh extends fkl {
-   private static final ws a = ws.c("options.mouse_settings.title");
-   private final fih r = new fih(this);
-   private ffr s;
+public class fkh implements AutoCloseable {
+   private static final akh a = new akh("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final gmz d;
+   private final akh e;
+   @Nullable
+   private gml f;
+   private boolean g;
 
-   private static fcx<?>[] a(fcy $$0) {
-      return new fcx[]{$$0.d(), $$0.R(), $$0.F(), $$0.S(), $$0.Z()};
+   private fkh(gmz $$0, akh $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public fkh(fkt $$0, fcy $$1) {
-      super($$0, $$1, a);
+   public static fkh a(gmz $$0, String $$1) {
+      return new fkh($$0, new akh("minecraft", "worlds/" + ac.a($$1, akh::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   @Override
-   protected void aM_() {
-      this.s = this.c(new ffr(this.m, this.n, this.o, this));
-      if (ewi.a()) {
-         this.s.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.G())).toArray(fcx[]::new));
+   public static fkh b(gmz $$0, String $$1) {
+      return new fkh($$0, new akh("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public void a(ewy $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new gml($$0);
+            } else {
+               this.f.a($$0);
+               this.f.d();
+            }
+
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
+         }
       } else {
-         this.s.a(a(this.c));
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
       }
+   }
 
-      super.aM_();
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
+      }
+   }
+
+   public akh b() {
+      return this.f != null ? this.e : a;
    }
 
    @Override
-   protected void c() {
-      super.c();
-      this.s.a(this.n, this.r);
+   public void close() {
+      this.a();
+      this.g = true;
+   }
+
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
+      }
    }
 }

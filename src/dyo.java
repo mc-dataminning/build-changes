@@ -1,47 +1,48 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class dyo extends dyu<eav> {
-   public dyo(Codec<eav> $$0) {
+public class dyo extends dzd<ebo> {
+   public dyo(Codec<ebo> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyw<eav> $$0) {
-      eav $$1 = $$0.f();
-      im $$2 = $$0.e();
-      dap $$3 = $$0.b();
-      ayd $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      im.a $$10 = new im.a();
+   public boolean a(dzf<ebo> $$0) {
+      ayg $$1 = $$0.d();
+      day $$2 = $$0.b();
+      czk $$3 = new czk($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      in.a $$6 = new in.a();
+      IntListIterator var8 = $$4.iterator();
 
-      for (im $$11 : im.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
+
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            in $$9 = $$2.a(dvz.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, ddg.cv.n(), 2);
+               bpu.a($$2, $$1, $$9, eoj.b);
+               dqh $$10 = ddg.cp.n();
+
+               for (is $$11 : is.c.a) {
+                  in $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
+
+               return true;
+            }
          }
       }
 
-      return $$5;
-   }
-
-   protected boolean a(eav $$0, dap $$1, ayd $$2, int $$3, int $$4, im.a $$5) {
-      boolean $$6 = false;
-
-      for (int $$7 = $$3; $$7 > $$4; $$7--) {
-         $$5.q($$7);
-         if ($$0.b().test($$1, $$5)) {
-            dpy $$8 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$8, 2);
-            this.a($$1, $$5);
-            $$6 = true;
-         }
-      }
-
-      return $$6;
+      return false;
    }
 }

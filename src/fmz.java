@@ -1,33 +1,22 @@
-public class fmz extends feu {
-   private static final akf a = new akf("widget/page_forward_highlighted");
-   private static final akf b = new akf("widget/page_forward");
-   private static final akf c = new akf("widget/page_backward_highlighted");
-   private static final akf d = new akf("widget/page_backward");
-   private final boolean u;
-   private final boolean v;
+public class fmz extends fmb<cpd> {
+   private static final akh D = new akh("textures/gui/container/hopper.png");
 
-   public fmz(int $$0, int $$1, boolean $$2, feu.c $$3, boolean $$4) {
-      super($$0, $$1, 23, 13, wr.a, $$3, q);
-      this.u = $$2;
-      this.v = $$4;
+   public fmz(cpd $$0, clg $$1, wu $$2) {
+      super($$0, $$1, $$2);
+      this.d = 133;
+      this.v = this.d - 94;
    }
 
    @Override
-   public void b(feh $$0, int $$1, int $$2, float $$3) {
-      akf $$4;
-      if (this.u) {
-         $$4 = this.A() ? a : b;
-      } else {
-         $$4 = this.A() ? c : d;
-      }
-
-      $$0.a($$4, this.C(), this.D(), 23, 13);
+   public void a(fer $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(grf $$0) {
-      if (this.v) {
-         $$0.a(gpw.a(auz.cy, 1.0F));
-      }
+   protected void a(fer $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.c) / 2;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
    }
 }

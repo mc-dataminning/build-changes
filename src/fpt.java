@@ -1,312 +1,558 @@
+import com.google.common.collect.ImmutableList;
+import com.google.gson.JsonElement;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.UUID;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalLong;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableObject;
 import org.slf4j.Logger;
 
-public class fpt {
-   private static final Logger a = LogUtils.getLogger();
-   private static final UUID b = UUID.fromString("640a6a92-b6cb-48a0-b391-831586500359");
-   private final fcu c;
-   private final enq d;
+public class fpt extends fld {
+   private static final int b = 1;
+   private static final int c = 210;
+   private static final Logger d = LogUtils.getLogger();
+   private static final String r = "mcworld-";
+   static final wu s = wu.c("selectWorld.gameMode");
+   static final wu u = wu.c("selectWorld.enterName");
+   static final wu v = wu.c("selectWorld.experiments");
+   static final wu w = wu.c("selectWorld.allowCommands.info");
+   private static final wu x = wu.c("createWorld.preparing");
+   private static final int y = 10;
+   private static final int z = 8;
+   public static final akh a = new akh("textures/gui/tab_header_background.png");
+   private final fir A = new fir(this);
+   final fqc B;
+   private final fhh C = new fhh(this::c, $$1x -> this.e($$1x));
+   private boolean D;
+   private final etf E;
+   @Nullable
+   private final fld F;
+   @Nullable
+   private Path G;
+   @Nullable
+   private atc H;
+   @Nullable
+   private fhi I;
 
-   public fpt(fcu $$0, enq $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public static void a(fde $$0, @Nullable fld $$1) {
+      a($$0, x);
+      atc $$2 = new atc(new atf($$0.bf()));
+      ald.c $$3 = a($$2, dax.c);
+      CompletableFuture<fqb> $$4 = ald.a(
+         $$3, $$0x -> new ald.b<>(new fpt.a(new dwv(dwx.a(), egf.a($$0x.c())), $$0x.b()), $$0x.d()), ($$0x, $$1x, $$2x, $$3x) -> {
+            $$0x.close();
+            return new fqb($$3x.a(), $$2x, $$1x, $$3x.b());
+         }, ac.f(), $$0
+      );
+      $$0.c($$4::isDone);
+      $$0.a(new fpt($$0, $$1, $$4.join(), Optional.of(egf.a), OptionalLong.empty()));
    }
 
-   public void a(String $$0, czy $$1, dwo $$2, Function<jj, dwl> $$3, fkt $$4) {
-      this.c.d(new fjz(ws.c("selectWorld.data_read")));
-      enq.c $$5 = this.a($$0);
-      if ($$5 != null) {
-         asz $$6 = atc.a($$5);
-         dao $$7 = $$1.g();
-
-         try {
-            ala.d $$8 = new ala.d($$6, $$7, false, false);
-            alb $$9 = this.a($$8, $$3x -> {
-               dwl.b $$4x = $$3.apply($$3x.c()).a($$3x.d().d(ld.aS));
-               return new ala.b<>(new enu($$1, $$2, $$4x.d(), $$4x.a()), $$4x.b());
-            }, alb::new);
-            this.c.a($$5, $$6, $$9, true);
-         } catch (Exception var11) {
-            a.warn("Failed to load datapacks, can't proceed with server load", var11);
-            $$5.c();
-            this.c.a($$4);
-         }
+   public static fpt a(fde $$0, @Nullable fld $$1, dah $$2, fqb $$3, @Nullable Path $$4) {
+      fpt $$5 = new fpt($$0, $$1, $$3, egf.a($$3.d()), OptionalLong.of($$3.b().b()));
+      $$5.D = true;
+      $$5.B.a($$2.a());
+      $$5.B.a($$2.e());
+      $$5.B.a($$2.d());
+      $$5.B.q().a($$2.f(), null);
+      if ($$2.c()) {
+         $$5.B.a(fqc.a.b);
+      } else if ($$2.b().h()) {
+         $$5.B.a(fqc.a.a);
+      } else if ($$2.b().g()) {
+         $$5.B.a(fqc.a.c);
       }
+
+      $$5.G = $$4;
+      return $$5;
+   }
+
+   private fpt(fde $$0, @Nullable fld $$1, fqb $$2, Optional<akg<ege>> $$3, OptionalLong $$4) {
+      super(wu.c("selectWorld.create"));
+      this.F = $$1;
+      this.E = $$0.bf();
+      this.B = new fqc($$0.m().c(), $$2, $$3, $$4);
+   }
+
+   public fqc m() {
+      return this.B;
+   }
+
+   @Override
+   protected void aM_() {
+      this.I = fhi.a(this.C, this.n).a(new fpt.b(), new fpt.d(), new fpt.c()).a();
+      this.c(this.I);
+      fiv $$0 = this.A.b(fiv.e().a(8));
+      $$0.a(ffe.a(wu.c("selectWorld.create"), $$0x -> this.D()).a());
+      $$0.a(ffe.a(wt.e, $$0x -> this.C()).a());
+      this.A.a($$0x -> {
+         $$0x.o(1);
+         this.c($$0x);
+      });
+      this.I.a(0, false);
+      this.B.a();
+      this.c();
+   }
+
+   @Override
+   protected void aC_() {
+   }
+
+   @Override
+   public void c() {
+      if (this.I != null) {
+         this.I.a(this.n);
+         this.I.b();
+         int $$0 = this.I.G().c();
+         fjk $$1 = new fjk(0, $$0, this.n, this.o - this.A.b() - $$0);
+         this.C.a($$1);
+         this.A.b($$0);
+         this.A.a();
+      }
+   }
+
+   private static void a(fde $$0, wu $$1) {
+      $$0.d(new fkj($$1));
+   }
+
+   private void D() {
+      fqb $$0 = this.B.k();
+      dwu.b $$1 = $$0.d().a($$0.c());
+      jd<akq> $$2 = $$0.e().a(akq.c, $$1.b());
+      Lifecycle $$3 = cnw.a($$0.g().b()) ? Lifecycle.experimental() : Lifecycle.stable();
+      Lifecycle $$4 = $$2.a().e();
+      Lifecycle $$5 = $$4.add($$3);
+      boolean $$6 = !this.D && $$4 == Lifecycle.stable();
+      fqd.a(this.m, this, $$5, () -> this.a($$1.d(), $$2, $$5), $$6);
+   }
+
+   private void a(eof.a $$0, jd<akq> $$1, Lifecycle $$2) {
+      a(this.m, x);
+      Optional<eob.c> $$3 = this.I();
+      if (!$$3.isEmpty()) {
+         this.F();
+         boolean $$4 = $$0 == eof.a.c;
+         fqb $$5 = this.B.k();
+         dah $$6 = this.c($$4);
+         eoh $$7 = new eof($$6, $$5.b(), $$0, $$2);
+         this.m.x().a($$3.get(), $$5.f(), $$1, $$7);
+      }
+   }
+
+   private dah c(boolean $$0) {
+      String $$1 = this.B.b().trim();
+      if ($$0) {
+         czz $$2 = new czz();
+         $$2.a(czz.l).a(false, null);
+         return new dah($$1, daa.d, false, bpj.a, true, $$2, dax.c);
+      } else {
+         return new dah($$1, this.B.d().e, this.B.f(), this.B.e(), this.B.g(), this.B.q(), this.B.k().g());
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.I.b($$0)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.D();
+         return true;
+      }
+   }
+
+   @Override
+   public void d() {
+      this.C();
+   }
+
+   public void C() {
+      this.m.a(this.F);
+      this.F();
+   }
+
+   @Override
+   public void a(fer $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      RenderSystem.enableBlend();
+      $$0.a(fld.i, 0, this.o - this.A.b() - 2, 0.0F, 0.0F, this.n, 2, 32, 2);
+      RenderSystem.disableBlend();
+   }
+
+   @Override
+   protected void a(fer $$0) {
+      $$0.a(a, 0, 0, 0.0F, 0.0F, this.n, this.A.c(), 16, 16);
+      this.a($$0, 0, this.A.c(), this.n, this.o);
+   }
+
+   @Override
+   protected <T extends fha & fiy> T d(T $$0) {
+      return super.d($$0);
+   }
+
+   @Override
+   protected <T extends fha & fgh & fiy> T c(T $$0) {
+      return super.c($$0);
    }
 
    @Nullable
-   private enq.c a(String $$0) {
-      try {
-         return this.d.d($$0);
-      } catch (IOException var3) {
-         a.warn("Failed to read level {} data", $$0, var3);
-         fhc.a(this.c, $$0);
-         this.c.a(null);
-         return null;
-      } catch (esu var4) {
-         a.warn("{}", var4.getMessage());
-         this.c.a(fki.a(() -> this.c.a(null)));
-         return null;
-      }
-   }
-
-   public void a(enq.c $$0, akp $$1, jc<ako> $$2, enw $$3) {
-      asz $$4 = atc.a($$0);
-      ate $$5 = (ate)new ala.d($$4, $$3.D(), false, false).a().getSecond();
-      this.c.a($$0, $$4, new alb($$5, $$1, $$2, $$3), true);
-   }
-
-   public alb a(Dynamic<?> $$0, boolean $$1, asz $$2) throws Exception {
-      ala.d $$3 = enq.a($$0, $$2, $$1);
-      return this.a($$3, $$1x -> {
-         ji<dtr> $$2x = $$1x.d().d(ld.aS);
-         enn $$3x = enq.a($$0, $$1x.b(), $$2x, $$1x.c());
-         return new ala.b<>($$3x.a(), $$3x.b().b());
-      }, alb::new);
-   }
-
-   public Pair<czy, fpr> a(enq.c $$0) throws Exception {
-      asz $$1 = atc.a($$0);
-      Dynamic<?> $$2 = $$0.h();
-      ala.d $$3 = enq.a($$2, $$1, false);
-
-      record a(czy a, dwo b, ji<dtr> c) {
-      }
-
-      return this.a($$3, $$1x -> {
-         ji<dtr> $$2x = new jd<>(ld.aS, Lifecycle.stable()).l();
-         enn $$3x = enq.a($$2, $$1x.b(), $$2x, $$1x.c());
-         return new ala.b<>(new a($$3x.a().J(), $$3x.a().y(), $$3x.b().c()), $$1x.d());
-      }, ($$0x, $$1x, $$2x, $$3x) -> {
-         $$0x.close();
-         return Pair.of($$3x.a, new fpr($$3x.b, new dwl($$3x.c), $$2x, $$1x, $$3x.a.g()));
-      });
-   }
-
-   private <D, R> R a(ala.d $$0, ala.f<D> $$1, ala.e<D, R> $$2) throws Exception {
-      ala.c $$3 = new ala.c($$0, ed.a.c, 2);
-      CompletableFuture<R> $$4 = ala.a($$3, $$1, $$2, ac.f(), this.c);
-      this.c.c($$4::isDone);
-      return $$4.get();
-   }
-
-   private void a(enq.c $$0, boolean $$1, Runnable $$2, Runnable $$3) {
-      ws $$4;
-      ws $$5;
-      if ($$1) {
-         $$4 = ws.c("selectWorld.backupQuestion.customized");
-         $$5 = ws.c("selectWorld.backupWarning.customized");
-      } else {
-         $$4 = ws.c("selectWorld.backupQuestion.experimental");
-         $$5 = ws.c("selectWorld.backupWarning.experimental");
-      }
-
-      this.c.a(new fjg($$3, ($$2x, $$3x) -> {
-         if ($$2x) {
-            fpl.a($$0);
+   private Path E() {
+      if (this.G == null) {
+         try {
+            this.G = Files.createTempDirectory("mcworld-");
+         } catch (IOException var2) {
+            d.warn("Failed to create temporary dir", var2);
+            fhm.c(this.m, this.B.c());
+            this.C();
          }
+      }
 
-         $$2.run();
-      }, $$4, $$5, false));
+      return this.G;
    }
 
-   public static void a(fcu $$0, fpj $$1, Lifecycle $$2, Runnable $$3, boolean $$4) {
-      BooleanConsumer $$5 = $$3x -> {
-         if ($$3x) {
-            $$3.run();
-         } else {
-            $$0.a($$1);
-         }
-      };
-      if ($$4 || $$2 == Lifecycle.stable()) {
-         $$3.run();
-      } else if ($$2 == Lifecycle.experimental()) {
-         $$0.a(new fjl($$5, ws.c("selectWorld.warning.experimental.title"), ws.c("selectWorld.warning.experimental.question")));
+   void a(dax $$0) {
+      Pair<Path, atc> $$1 = this.c($$0);
+      if ($$1 != null) {
+         this.m.a(new fpw(this, (atc)$$1.getSecond(), $$0x -> this.a($$0x, false, this::a)));
+      }
+   }
+
+   void b(dax $$0) {
+      Pair<Path, atc> $$1 = this.c($$0);
+      if ($$1 != null) {
+         this.m.a(new foj((atc)$$1.getSecond(), $$0x -> this.a($$0x, true, this::b), (Path)$$1.getFirst(), wu.c("dataPack.title")));
+      }
+   }
+
+   private void a(atc $$0, boolean $$1, Consumer<dax> $$2) {
+      List<String> $$3 = ImmutableList.copyOf($$0.d());
+      List<String> $$4 = $$0.b().stream().filter($$1x -> !$$3.contains($$1x)).collect(ImmutableList.toImmutableList());
+      dax $$5 = new dax(new czr($$3, $$4), this.B.k().g().b());
+      if (this.B.a($$5)) {
+         this.m.a(this);
       } else {
-         $$0.a(new fjl($$5, ws.c("selectWorld.warning.deprecated.title"), ws.c("selectWorld.warning.deprecated.question")));
-      }
-   }
-
-   public void a(String $$0, Runnable $$1) {
-      this.c.d(new fjz(ws.c("selectWorld.data_read")));
-      enq.c $$2 = this.a($$0);
-      if ($$2 != null) {
-         this.a($$2, $$1);
-      }
-   }
-
-   private void a(enq.c $$0, Runnable $$1) {
-      this.c.d(new fjz(ws.c("selectWorld.data_read")));
-
-      Dynamic<?> $$2;
-      enr $$3;
-      try {
-         $$2 = $$0.h();
-         $$3 = $$0.a($$2);
-      } catch (uj | up | IOException var10) {
-         this.c.a(new fks(this.c, $$2x -> {
-            if ($$2x) {
-               this.a($$0, $$1);
-            } else {
-               $$0.c();
-               $$1.run();
-            }
-         }, $$0));
-         return;
-      } catch (OutOfMemoryError var11) {
-         axu.b();
-         System.gc();
-         String $$6 = "Ran out of memory trying to read level data of world folder \"" + $$0.f() + "\"";
-         a.error(LogUtils.FATAL_MARKER, $$6);
-         OutOfMemoryError $$7 = new OutOfMemoryError("Ran out of memory reading level data");
-         $$7.initCause(var11);
-         o $$8 = o.a($$7, $$6);
-         p $$9 = $$8.a("World details");
-         $$9.a("World folder", $$0.f());
-         throw new y($$8);
-      }
-
-      this.a($$0, $$3, $$2, $$1);
-   }
-
-   private void a(enq.c $$0, enr $$1, Dynamic<?> $$2, Runnable $$3) {
-      if (!$$1.r()) {
-         $$0.c();
-         this.c.a(new fjf($$3, ws.c("selectWorld.incompatible.title").b(-65536), ws.a("selectWorld.incompatible.description", $$1.k())));
-      } else {
-         enr.a $$4 = $$1.o();
-         if ($$4.a()) {
-            String $$5 = "selectWorld.backupQuestion." + $$4.c();
-            String $$6 = "selectWorld.backupWarning." + $$4.c();
-            xg $$7 = ws.c($$5);
-            if ($$4.b()) {
-               $$7.b(-2142128);
-            }
-
-            ws $$8 = ws.a($$6, $$1.k(), aa.b().c());
-            this.c.a(new fjg(() -> {
-               $$0.c();
-               $$3.run();
-            }, ($$3x, $$4x) -> {
+         cnu $$6 = $$0.e();
+         if (cnw.a($$6) && $$1) {
+            this.m.a(new fps($$0.f(), $$3x -> {
                if ($$3x) {
-                  fpl.a($$0);
+                  this.a($$0, $$5, $$2);
+               } else {
+                  $$2.accept(this.B.k().g());
+               }
+            }));
+         } else {
+            this.a($$0, $$5, $$2);
+         }
+      }
+   }
+
+   private void a(atc $$0, dax $$1, Consumer<dax> $$2) {
+      this.m.d(new fkj(wu.c("dataPack.validation.working")));
+      ald.c $$3 = a($$0, $$1);
+      ald.<fpt.a, fqb>a(
+            $$3,
+            $$0x -> {
+               if ($$0x.c().d(le.aQ).b() == 0) {
+                  throw new IllegalStateException("Needs at least one world preset to continue");
+               } else if ($$0x.c().d(le.az).b() == 0) {
+                  throw new IllegalStateException("Needs at least one biome continue");
+               } else {
+                  fqb $$1x = this.B.k();
+                  DynamicOps<JsonElement> $$2x = $$1x.a().a(JsonOps.INSTANCE);
+                  DataResult<JsonElement> $$3x = dwv.a($$2x, $$1x.b(), $$1x.d()).setLifecycle(Lifecycle.stable());
+                  DynamicOps<JsonElement> $$4 = $$0x.c().a(JsonOps.INSTANCE);
+                  dwv $$5 = (dwv)$$3x.flatMap($$1xx -> dwv.a.parse($$4, $$1xx))
+                     .getOrThrow(false, ac.a("Error parsing worldgen settings after loading data packs: ", d::error));
+                  return new ald.b<>(new fpt.a($$5, $$0x.b()), $$0x.d());
+               }
+            },
+            ($$0x, $$1x, $$2x, $$3x) -> {
+               $$0x.close();
+               return new fqb($$3x.a(), $$2x, $$1x, $$3x.b());
+            },
+            ac.f(),
+            this.m
+         )
+         .thenAcceptAsync(this.B::a, this.m)
+         .handle(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               d.warn("Failed to validate datapack", $$2x);
+               this.m.a(new fjv($$1xx -> {
+                  if ($$1xx) {
+                     $$2.accept(this.B.k().g());
+                  } else {
+                     $$2.accept(dax.c);
+                  }
+               }, wu.c("dataPack.validation.failed"), wt.a, wu.c("dataPack.validation.back"), wu.c("dataPack.validation.reset")));
+            } else {
+               this.m.a(this);
+            }
+
+            return null;
+         });
+   }
+
+   private static ald.c a(atc $$0, dax $$1) {
+      ald.d $$2 = new ald.d($$0, $$1, false, true);
+      return new ald.c($$2, ee.a.c, 2);
+   }
+
+   private void F() {
+      if (this.G != null) {
+         try (Stream<Path> $$0 = Files.walk(this.G)) {
+            $$0.sorted(Comparator.reverseOrder()).forEach($$0x -> {
+               try {
+                  Files.delete($$0x);
+               } catch (IOException var2) {
+                  d.warn("Failed to remove temporary file {}", $$0x, var2);
+               }
+            });
+         } catch (IOException var6) {
+            d.warn("Failed to list temporary dir {}", this.G);
+         }
+
+         this.G = null;
+      }
+   }
+
+   private static void a(Path $$0, Path $$1, Path $$2) {
+      try {
+         ac.b($$0, $$1, $$2);
+      } catch (IOException var4) {
+         d.warn("Failed to copy datapack file from {} to {}", $$2, $$1);
+         throw new UncheckedIOException(var4);
+      }
+   }
+
+   private Optional<eob.c> I() {
+      String $$0 = this.B.c();
+
+      try {
+         eob.c $$1 = this.m.m().e($$0);
+         if (this.G == null) {
+            return Optional.of($$1);
+         }
+
+         try {
+            Optional var5;
+            try (Stream<Path> $$2 = Files.walk(this.G)) {
+               Path $$3 = $$1.a(enz.j);
+               v.c($$3);
+               $$2.filter($$0x -> !$$0x.equals(this.G)).forEach($$1x -> a(this.G, $$3, $$1x));
+               var5 = Optional.of($$1);
+            }
+
+            return var5;
+         } catch (UncheckedIOException | IOException var8) {
+            d.warn("Failed to copy datapacks to world {}", $$0, var8);
+            $$1.close();
+         }
+      } catch (UncheckedIOException | IOException var9) {
+         d.warn("Failed to create access for {}", $$0, var9);
+      }
+
+      fhm.c(this.m, $$0);
+      this.C();
+      return Optional.empty();
+   }
+
+   @Nullable
+   public static Path a(Path $$0, fde $$1) {
+      MutableObject<Path> $$2 = new MutableObject();
+
+      try (Stream<Path> $$3 = Files.walk($$0)) {
+         $$3.filter($$1x -> !$$1x.equals($$0)).forEach($$2x -> {
+            Path $$3x = (Path)$$2.getValue();
+            if ($$3x == null) {
+               try {
+                  $$3x = Files.createTempDirectory("mcworld-");
+               } catch (IOException var5) {
+                  d.warn("Failed to create temporary dir");
+                  throw new UncheckedIOException(var5);
                }
 
-               this.a($$0, $$2, false, $$3);
-            }, $$7, $$8, false));
-         } else {
-            this.a($$0, $$2, false, $$3);
-         }
-      }
-   }
-
-   private void a(enq.c $$0, Dynamic<?> $$1, boolean $$2, Runnable $$3) {
-      this.c.d(new fjz(ws.c("selectWorld.resource_load")));
-      asz $$4 = atc.a($$0);
-
-      alb $$5;
-      try {
-         $$5 = this.a($$1, $$2, $$4);
-      } catch (Exception var8) {
-         a.warn("Failed to load level data or datapacks, can't proceed with server load", var8);
-         if (!$$2) {
-            this.c.a(new fjq(() -> {
-               $$0.c();
-               $$3.run();
-            }, () -> this.a($$0, $$1, true, $$3)));
-         } else {
-            $$0.c();
-            this.c.a(new fjf($$3, ws.c("datapackFailure.safeMode.failed.title"), ws.c("datapackFailure.safeMode.failed.description"), wr.k, true));
-         }
-
-         return;
-      }
-
-      this.a($$0, $$5, $$4, $$3);
-   }
-
-   private void a(enq.c $$0, alb $$1, asz $$2, Runnable $$3) {
-      enw $$4 = $$1.d();
-      boolean $$5 = $$4.y().e();
-      boolean $$6 = $$4.B() != Lifecycle.stable();
-      if (!$$5 && !$$6) {
-         this.b($$0, $$1, $$2, $$3);
-      } else {
-         this.a($$0, $$5, () -> this.b($$0, $$1, $$2, $$3), () -> {
-            $$1.close();
-            $$0.c();
-            $$3.run();
-         });
-      }
-   }
-
-   private void b(enq.c $$0, alb $$1, asz $$2, Runnable $$3) {
-      gpd $$4 = this.c.ae();
-      this.a($$4, $$0).thenApply($$0x -> true).exceptionallyComposeAsync($$0x -> {
-         a.warn("Failed to load pack: ", $$0x);
-         return this.a();
-      }, this.c).thenAcceptAsync($$5 -> {
-         if ($$5) {
-            this.a($$0, $$1, $$4, $$2, $$3);
-         } else {
-            $$4.e();
-            $$1.close();
-            $$0.c();
-            $$3.run();
-         }
-      }, this.c).exceptionally($$0x -> {
-         this.c.a(o.a($$0x, "Load world"));
-         return null;
-      });
-   }
-
-   private void a(enq.c $$0, alb $$1, gpd $$2, asz $$3, Runnable $$4) {
-      if ($$0.b()) {
-         this.c.a(new fjl($$5 -> {
-            if ($$5) {
-               this.a($$0, $$1, $$3);
-            } else {
-               $$2.e();
-               $$1.close();
-               $$0.c();
-               $$4.run();
+               $$2.setValue($$3x);
             }
-         }, ws.c("selectWorld.warning.lowDiskSpace.title").a(n.m), ws.c("selectWorld.warning.lowDiskSpace.description"), wr.j, wr.k));
+
+            a($$0, $$3x, $$2x);
+         });
+      } catch (UncheckedIOException | IOException var8) {
+         d.warn("Failed to copy datapacks from world {}", $$0, var8);
+         fhm.c($$1, $$0.toString());
+         return null;
+      }
+
+      return (Path)$$2.getValue();
+   }
+
+   @Nullable
+   private Pair<Path, atc> c(dax $$0) {
+      Path $$1 = this.E();
+      if ($$1 != null) {
+         if (this.H == null) {
+            this.H = atf.a($$1, this.E);
+            this.H.a();
+         }
+
+         this.H.a($$0.a().a());
+         return Pair.of($$1, this.H);
       } else {
-         this.a($$0, $$1, $$3);
+         return null;
       }
    }
 
-   private void a(enq.c $$0, alb $$1, asz $$2) {
-      this.c.a($$0, $$2, $$1, false);
+   static record a(dwv a, dax b) {
    }
 
-   private CompletableFuture<Void> a(gpd $$0, enq.c $$1) {
-      Path $$2 = $$1.a(eno.k);
-      if (Files.exists($$2) && !Files.isDirectory($$2)) {
-         $$0.f();
-         CompletableFuture<Void> $$3 = $$0.b(b);
-         $$0.a(b, $$2);
-         return $$3;
-      } else {
-         return CompletableFuture.completedFuture(null);
+   class b extends fhf {
+      private static final wu c = wu.c("createWorld.tab.game.title");
+      private static final wu d = wu.c("selectWorld.allowCommands.new");
+      private final ffn e;
+
+      b() {
+         super(c);
+         fiq.b $$0 = this.a.b(8).d(1);
+         fiu $$1 = $$0.b();
+         this.e = new ffn(fpt.this.p, 208, 20, wu.c("selectWorld.enterName"));
+         this.e.a(fpt.this.B.b());
+         this.e.b(fpt.this.B::a);
+         fpt.this.B.a($$0x -> this.e.a(fgp.a(wu.a("selectWorld.targetFolder", wu.b($$0x.c()).a(n.u)))));
+         fpt.this.b(this.e);
+         $$0.a(fin.a(fpt.this.p, this.e, fpt.u), $$0.b().b());
+         ffl<fqc.a> $$2 = $$0.a(ffl.<fqc.a>a($$0x -> $$0x.f).a(fqc.a.a, fqc.a.b, fqc.a.c).a(0, 0, 210, 20, fpt.s, ($$0x, $$1x) -> fpt.this.B.a($$1x)), $$1);
+         fpt.this.B.a($$1x -> {
+            $$2.a($$1x.d());
+            $$2.j = !$$1x.l();
+            $$2.a(fgp.a($$1x.d().a()));
+         });
+         ffl<bpj> $$3 = $$0.a(ffl.a(bpj::b).a(bpj.values()).a(0, 0, 210, 20, wu.c("options.difficulty"), ($$0x, $$1x) -> fpt.this.B.a($$1x)), $$1);
+         fpt.this.B.a($$1x -> {
+            $$3.a(fpt.this.B.e());
+            $$3.j = !fpt.this.B.f();
+            $$3.a(fgp.a(fpt.this.B.e().d()));
+         });
+         ffl<Boolean> $$4 = $$0.a(ffl.e().a($$0x -> fgp.a(fpt.w)).a(0, 0, 210, 20, d, ($$0x, $$1x) -> fpt.this.B.a($$1x)));
+         fpt.this.B.a($$1x -> {
+            $$4.a(fpt.this.B.g());
+            $$4.j = !fpt.this.B.l() && !fpt.this.B.f();
+         });
+         if (!aa.b().g()) {
+            $$0.a(ffe.a(fpt.v, $$0x -> fpt.this.a(fpt.this.B.k().g())).a(210).a());
+         }
       }
    }
 
-   private CompletableFuture<Boolean> a() {
-      CompletableFuture<Boolean> $$0 = new CompletableFuture<>();
-      this.c.a(new fjl($$0::complete, ws.c("multiplayer.texturePrompt.failure.line1"), ws.c("multiplayer.texturePrompt.failure.line2"), wr.i, wr.e));
-      return $$0;
+   class c extends fhf {
+      private static final wu c = wu.c("createWorld.tab.more.title");
+      private static final wu d = wu.c("selectWorld.gameRules");
+      private static final wu e = wu.c("selectWorld.dataPacks");
+
+      c() {
+         super(c);
+         fiq.b $$0 = this.a.b(8).d(1);
+         $$0.a(ffe.a(d, $$0x -> this.b()).a(210).a());
+         $$0.a(ffe.a(fpt.v, $$0x -> fpt.this.a(fpt.this.B.k().g())).a(210).a());
+         $$0.a(ffe.a(e, $$0x -> fpt.this.b(fpt.this.B.k().g())).a(210).a());
+      }
+
+      private void b() {
+         fpt.this.m.a(new fpu(fpt.this.B.q().b(), $$0 -> {
+            fpt.this.m.a(fpt.this);
+            $$0.ifPresent(fpt.this.B::a);
+         }));
+      }
+   }
+
+   class d extends fhf {
+      private static final wu c = wu.c("createWorld.tab.world.title");
+      private static final wu d = wu.c("generator.minecraft.amplified.info");
+      private static final wu e = wu.c("selectWorld.mapFeatures");
+      private static final wu f = wu.c("selectWorld.mapFeatures.info");
+      private static final wu g = wu.c("selectWorld.bonusItems");
+      private static final wu h = wu.c("selectWorld.enterSeed");
+      static final wu i = wu.c("selectWorld.seedInfo").a(n.i);
+      private static final int j = 310;
+      private final ffn k;
+      private final ffe l;
+
+      d() {
+         super(c);
+         fiq.b $$0 = this.a.a(10).b(8).d(2);
+         ffl<fqc.b> $$1 = $$0.a(
+            ffl.<fqc.b>a(fqc.b::a).a(this.c()).a(fpt.d::a).a(0, 0, 150, 20, wu.c("selectWorld.mapType"), ($$0x, $$1x) -> fpt.this.B.a($$1x))
+         );
+         $$1.a(fpt.this.B.m());
+         fpt.this.B.a($$1x -> {
+            fqc.b $$2x = $$1x.m();
+            $$1.a($$2x);
+            if ($$2x.b()) {
+               $$1.a(fgp.a(d));
+            } else {
+               $$1.a(null);
+            }
+
+            $$1.j = fpt.this.B.m().c() != null;
+         });
+         this.l = $$0.a(ffe.a(wu.c("selectWorld.customizeType"), $$0x -> this.b()).a());
+         fpt.this.B.a($$0x -> this.l.j = !$$0x.l() && $$0x.n() != null);
+         this.k = new ffn(fpt.this.p, 308, 20, wu.c("selectWorld.enterSeed")) {
+            @Override
+            protected xi aK_() {
+               return super.aK_().b(wt.t).b(fpt.d.i);
+            }
+         };
+         this.k.c(i);
+         this.k.a(fpt.this.B.h());
+         this.k.b($$0x -> fpt.this.B.b(this.k.a()));
+         $$0.a(fin.a(fpt.this.p, this.k, h), 2);
+         fqa.a $$2 = fqa.a(310);
+         $$2.a(e, fpt.this.B::i, fpt.this.B::b).a(() -> !fpt.this.B.l()).a(f);
+         $$2.a(g, fpt.this.B::j, fpt.this.B::c).a(() -> !fpt.this.B.f() && !fpt.this.B.l());
+         fqa $$3 = $$2.a($$1x -> $$0.a($$1x, 2));
+         fpt.this.B.a($$1x -> $$3.a());
+      }
+
+      private void b() {
+         fpy $$0 = fpt.this.B.n();
+         if ($$0 != null) {
+            fpt.this.m.a($$0.createEditScreen(fpt.this, fpt.this.B.k()));
+         }
+      }
+
+      private ffl.c<fqc.b> c() {
+         return new ffl.c<fqc.b>() {
+            @Override
+            public List<fqc.b> a() {
+               return ffl.a.getAsBoolean() ? fpt.this.B.p() : fpt.this.B.o();
+            }
+
+            @Override
+            public List<fqc.b> b() {
+               return fpt.this.B.o();
+            }
+         };
+      }
+
+      private static xi a(ffl<fqc.b> $$0) {
+         return $$0.a().b() ? wt.a($$0.d(), d) : $$0.d();
+      }
    }
 }

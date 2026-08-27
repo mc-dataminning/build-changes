@@ -1,17 +1,28 @@
-class bqd extends bpv {
-   protected bqd(bpw $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bqd implements ayt {
+   a("hurt", avc.tX),
+   b("thorns", avc.zj),
+   c("drowning", avc.tY),
+   d("burning", avc.ua),
+   e("poking", avc.ub),
+   f("freezing", avc.tZ);
+
+   public static final Codec<bqd> g = ayt.a(bqd::values);
+   private final String h;
+   private final avb i;
+
+   private bqd(String $$0, avb $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public boolean a(bre $$0, int $$1) {
-      $$0.a($$0.dO().p(), 1.0F);
-      return true;
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public avb a() {
+      return this.i;
    }
 }

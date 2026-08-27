@@ -1,24 +1,15 @@
-public class cyd extends cxn {
-   public cyd(cxn.a $$0, bqs... $$1) {
-      super($$0, avw.bg, $$1);
+public class cyd extends cyg {
+   public cyd(cyg.b $$0) {
+      super($$0);
    }
 
    @Override
-   public int a(int $$0) {
-      return 5 + ($$0 - 1) * 9;
+   public boolean a() {
+      return true;
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public int a() {
-      return 3;
-   }
-
-   public static float e(int $$0) {
-      return 1.0F - 1.0F / (float)($$0 + 1);
+   public boolean b() {
+      return true;
    }
 }

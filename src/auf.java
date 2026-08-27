@@ -1,22 +1,29 @@
 import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public abstract class auf<T> {
-   @Nullable
-   private final T a;
-
-   public auf(@Nullable T $$0) {
-      this.a = $$0;
+public class auf extends auj<GameProfile, aug> {
+   public auf(File $$0) {
+      super($$0);
    }
 
-   @Nullable
-   T g() {
-      return this.a;
+   @Override
+   protected aui<GameProfile> a(JsonObject $$0) {
+      return new aug($$0);
    }
 
-   boolean f() {
-      return false;
+   @Override
+   public String[] a() {
+      return this.d().stream().map(aui::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   protected abstract void a(JsonObject var1);
+   public boolean a(GameProfile $$0) {
+      aug $$1 = this.b($$0);
+      return $$1 != null ? $$1.b() : false;
+   }
+
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
+   }
 }

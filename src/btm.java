@@ -1,79 +1,84 @@
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class btm<E extends bre & cjw> extends bsw<E> {
+public class btm extends bts<cdp> {
    private static final int c = 3;
    private static final int d = 60;
-   private final Function<bre, Optional<buk>> e;
-   private final float f;
+   private static final int e = 110;
+   private final brn<? extends cdp> f;
+   private final float g;
+   private final int h;
+   private static final int i = 2;
+   private long j;
 
-   public btm(Function<bre, Optional<buk>> $$0, float $$1, int $$2) {
-      super(Map.of(cah.n, cai.c, cah.m, cai.c, cah.aP, cai.c), $$2);
-      this.e = $$0;
-      this.f = $$1;
+   public btm(brn<? extends cdp> $$0) {
+      this($$0, 1.0F, 2);
    }
 
-   @Override
-   protected boolean a(aqe $$0, E $$1) {
-      return this.b($$1);
+   public btm(brn<? extends cdp> $$0, float $$1, int $$2) {
+      super(ImmutableMap.of(cbd.h, cbe.a, cbd.r, cbe.b, cbd.m, cbe.c, cbd.n, cbe.c, cbd.Z, cbe.b), 110);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   @Override
-   protected boolean a(aqe $$0, E $$1, long $$2) {
-      return this.b($$1);
+   protected boolean a(aqh $$0, cdp $$1) {
+      return $$1.gt() && this.c($$1).isPresent();
    }
 
-   @Override
-   protected void d(aqe $$0, E $$1, long $$2) {
-      this.e.apply($$1).ifPresent($$1x -> bsy.a($$1, $$1x, this.f, 3));
+   protected void a(aqh $$0, cdp $$1, long $$2) {
+      cdp $$3 = this.c($$1).get();
+      $$1.dQ().a(cbd.r, $$3);
+      $$3.dQ().a(cbd.r, $$1);
+      btu.a($$1, (bsa)$$3, this.g, this.h);
+      int $$4 = 60 + $$1.ej().a(50);
+      this.j = $$2 + (long)$$4;
    }
 
-   @Override
-   protected void c(aqe $$0, E $$1, long $$2) {
-      Optional<buk> $$3 = this.e.apply($$1);
-      if (!$$3.isEmpty()) {
-         buk $$4 = $$3.get();
-         double $$5 = $$4.a().f($$1.bv());
-         if ($$5 < 3.0) {
-            csd $$6 = $$1.y().a(0, 1);
-            if (!$$6.d()) {
-               a($$1, $$6, a($$4));
-               if ($$1 instanceof cdz $$7) {
-                  cea.a((bre)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
-               }
+   protected boolean b(aqh $$0, cdp $$1, long $$2) {
+      if (!this.b($$1)) {
+         return false;
+      } else {
+         cdp $$3 = this.a($$1);
+         return $$3.bB() && $$1.a($$3) && btu.a($$1.dQ(), $$3) && $$2 <= this.j && !$$1.gm() && !$$3.gm();
+      }
+   }
 
-               $$1.dQ().a(cah.aP, 60);
-            }
+   protected void c(aqh $$0, cdp $$1, long $$2) {
+      cdp $$3 = this.a($$1);
+      btu.a($$1, (bsa)$$3, this.g, this.h);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.j) {
+            $$1.a($$0, $$3);
+            $$1.dQ().b(cbd.r);
+            $$3.dQ().b(cbd.r);
          }
       }
    }
 
-   private void a(buk $$0, csd $$1, aqf $$2) {
-      im $$3 = $$0.b().d();
-      am.aa.a($$2, $$3, $$1);
+   protected void d(aqh $$0, cdp $$1, long $$2) {
+      $$1.dQ().b(cbd.r);
+      $$1.dQ().b(cbd.m);
+      $$1.dQ().b(cbd.n);
+      this.j = 0L;
    }
 
-   private boolean b(E $$0) {
-      if ($$0.y().c()) {
+   private cdp a(cdp $$0) {
+      return (cdp)$$0.dQ().c(cbd.r).get();
+   }
+
+   private boolean b(cdp $$0) {
+      btb<?> $$1 = $$0.dQ();
+      return $$1.a(cbd.r) && $$1.c(cbd.r).get().ai() == this.f;
+   }
+
+   private Optional<? extends cdp> c(cdp $$0) {
+      return $$0.dQ().c(cbd.h).get().a($$1 -> {
+         if ($$1.ai() == this.f && $$1 instanceof cdp $$2 && $$0.a($$2) && !$$2.gm()) {
+            return true;
+         }
+
          return false;
-      } else {
-         Optional<buk> $$1 = this.e.apply($$0);
-         return $$1.isPresent();
-      }
-   }
-
-   private static etf a(buk $$0) {
-      return $$0.a().b(0.0, 1.0, 0.0);
-   }
-
-   public static void a(bre $$0, csd $$1, etf $$2) {
-      etf $$3 = new etf(0.2F, 0.3F, 0.2F);
-      bsy.a($$0, $$1, $$2, $$3, 0.2F);
-      czu $$4 = $$0.dN();
-      if ($$4.Y() % 7L == 0L && $$4.z.j() < 0.9) {
-         float $$5 = ac.<Float>a(cdz.d, $$4.E_());
-         $$4.a(null, $$0, auz.g, ava.g, 1.0F, $$5);
-      }
+      }).map(cdp.class::cast);
    }
 }

@@ -1,50 +1,24 @@
-public class fnt extends fkt {
-   private static final int a = 600;
-   private final vq b;
-   private feu c;
-   private int d;
-   private final fil r = fil.d();
+import org.joml.Matrix4f;
 
-   public fnt(ws $$0, vq $$1) {
-      super($$0);
-      this.b = $$1;
+public class fnt implements fnu {
+   private final axl a;
+
+   public fnt(axl $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean aD_() {
-      return false;
+   public int a(fep $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   protected void aM_() {
-      this.r.c().b().a(10);
-      this.r.a(new fgb(this.l, this.p));
-      this.c = this.r.a(feu.a(wr.p, $$0 -> this.b.a(fjm.a)).a());
-      this.c.j = false;
-      this.r.a();
-      this.r.a($$1 -> {
-         fes var10000 = this.c($$1);
-      });
-      this.c();
+   public int a() {
+      return 10;
    }
 
    @Override
-   protected void c() {
-      fif.a(this.r, this.G());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
-      }
-
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
-      }
+   public void a(fep $$0, int $$1, int $$2, Matrix4f $$3, gbo.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fep.a.a, 0, 15728880);
    }
 }

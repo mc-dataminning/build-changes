@@ -1,146 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
-import java.util.UUID;
-import javax.annotation.Nullable;
 
-public abstract class djv extends dch implements djw {
-   public static final dqp f = dqo.C;
-   protected static final float g = 4.0F;
-   protected static final ety h = dcv.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
-   private final drl a;
+public class djv extends dfo implements dju {
+   public static final MapCodec<djv> b = b(djv::new);
 
-   protected djv(drl $$0, dpx.d $$1) {
-      super($$1);
-      this.a = $$0;
+   @Override
+   public MapCodec<djv> a() {
+      return b;
+   }
+
+   public djv(dqg.d $$0) {
+      super(boo.a(1), $$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends djv> a();
-
-   @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, els.c, els.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      return h;
-   }
-
-   @Override
-   public boolean a(dpy $$0) {
-      return true;
-   }
-
-   @Override
-   public dnd a(im $$0, dpy $$1) {
-      return new don($$0, $$1);
-   }
-
-   @Override
-   protected bos a(csd $$0, dpy $$1, czu $$2, im $$3, ckl $$4, bop $$5, etb $$6) {
-      if ($$2.c_($$3) instanceof don $$7) {
-         ctd $$10 = $$0.f() instanceof ctd $$9 ? $$9 : null;
-         boolean $$11 = $$10 != null && $$4.gm();
-         if (!$$2.B) {
-            if ($$11 && !$$7.u() && !this.a($$4, $$7)) {
-               boolean $$12 = $$7.a($$4);
-               if ($$10.a($$7.a($$12), $$4) && $$10.a($$2, $$7, $$12, $$4)) {
-                  $$7.a($$4, $$2, $$3, $$12);
-                  $$4.b(avj.c.b($$0.f()));
-                  $$2.a(dur.c, $$7.az_(), dur.a.a($$4, $$7.n()));
-                  if (!$$4.f()) {
-                     $$0.g(1);
-                  }
-
-                  return bos.a;
-               } else {
-                  return bos.d;
-               }
-            } else {
-               return bos.d;
+   public int a(djz.a $$0, dae $$1, in $$2, ayg $$3, djz $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         in $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               in $$10 = $$7.c();
+               dqh $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.w().e(), avd.e, 1.0F, 1.0F);
             }
+
+            return Math.max(0, $$6 - $$9);
          } else {
-            return !$$11 && !$$7.u() ? bos.b : bos.a;
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
          }
       } else {
-         return bos.e;
+         return $$6;
+      }
+   }
+
+   private static int a(djz $$0, in $$1, in $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = axz.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = axz.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   }
+
+   private dqh a(dae $$0, in $$1, ayg $$2, boolean $$3) {
+      dqh $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = ddg.qV.n().a(djy.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = ddg.qQ.n();
+      }
+
+      return $$4.b(dqx.C) && !$$0.b_($$1).c() ? $$4.a(dqx.C, Boolean.valueOf(true)) : $$4;
+   }
+
+   private static boolean a(dae $$0, in $$1) {
+      dqh $$2 = $$0.a_($$1.c());
+      if ($$2.i() || $$2.a(ddg.G) && $$2.u().b(emb.c)) {
+         int $$3 = 0;
+
+         for (in $$4 : in.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dqh $$5 = $$0.a_($$4);
+            if ($$5.a(ddg.qQ) || $$5.a(ddg.qV)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
    @Override
-   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
-      if ($$1.c_($$2) instanceof don $$5) {
-         if ($$1.B) {
-            ac.b(new IllegalStateException("Expected to only call this on server"));
-         }
-
-         boolean $$7 = $$5.a($$3);
-         boolean $$8 = $$5.a($$3, $$1, $$2, $$7);
-         if ($$5.u()) {
-            $$1.a(null, $$5.az_(), $$5.d(), ava.e);
-            return boq.a;
-         } else if ($$8) {
-            return boq.a;
-         } else if (!this.a($$3, $$5) && $$3.gm() && this.b($$3, $$5, $$7)) {
-            this.a($$3, $$5, $$7);
-            return boq.a;
-         } else {
-            return boq.d;
-         }
-      } else {
-         return boq.d;
-      }
-   }
-
-   private boolean b(ckl $$0, don $$1, boolean $$2) {
-      doo $$3 = $$1.a($$2);
-      return Arrays.stream($$3.b($$0.Y())).allMatch($$0x -> $$0x.equals(wr.a) || $$0x.b() instanceof xz);
-   }
-
-   public abstract float g(dpy var1);
-
-   public etf m(dpy $$0) {
-      return new etf(0.5, 0.5, 0.5);
-   }
-
-   @Override
-   protected elr c_(dpy $$0) {
-      return $$0.c(f) ? els.c.a(false) : super.c_($$0);
-   }
-
-   public drl d() {
-      return this.a;
-   }
-
-   public static drl a(dcv $$0) {
-      drl $$1;
-      if ($$0 instanceof djv) {
-         $$1 = ((djv)$$0).d();
-      } else {
-         $$1 = drl.b;
-      }
-
-      return $$1;
-   }
-
-   public void a(ckl $$0, don $$1, boolean $$2) {
-      $$1.a($$0.cx());
-      $$0.a($$1, $$2);
-   }
-
-   private boolean a(ckl $$0, don $$1) {
-      UUID $$2 = $$1.t();
-      return $$2 != null && !$$2.equals($$0.cx());
-   }
-
-   @Nullable
-   @Override
-   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
-      return a($$2, dnf.h, don::a);
+   public boolean d() {
+      return false;
    }
 }

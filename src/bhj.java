@@ -4,7 +4,7 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bhj extends bgz {
+public class bhj extends Schema {
    public bhj(int $$0, Schema $$1) {
       super($$0, $$1);
    }
@@ -13,20 +13,11 @@ public class bhj extends bgz {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          false,
-         bfp.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(bfp.y.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(bfp.s.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", bfp.A.in($$0))),
-                  "Sections",
-                  DSL.list(DSL.optionalFields("Palette", DSL.list(bfp.u.in($$0))))
-               )
+         bfs.b,
+         () -> DSL.optionalFields(
+               "RootVehicle", DSL.optionalFields("Entity", bfs.y.in($$0)), "Inventory", DSL.list(bfs.t.in($$0)), "EnderItems", DSL.list(bfs.t.in($$0))
             )
       );
+      $$0.registerType(true, bfs.y, () -> DSL.optionalFields("Passengers", DSL.list(bfs.y.in($$0)), bfs.z.in($$0)));
    }
 }

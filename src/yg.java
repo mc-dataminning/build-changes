@@ -1,29 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Locale;
 
-public class yg implements yi {
-   public static final yg a = new yg();
-   public static final yj<yg> b = new yj<yg>() {
-      private static final MapCodec<yg> a = MapCodec.unit(yg.a);
-      private static final yq<wd, yg> b = yq.a(yg.a);
-
-      @Override
-      public MapCodec<yg> a() {
-         return a;
-      }
-
-      @Override
-      public yq<wd, yg> b() {
-         return b;
-      }
-   };
-
-   @Override
-   public xg a(int $$0) {
-      return ws.i();
+public class yg extends IllegalArgumentException {
+   public yg(yf $$0, String $$1) {
+      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
    }
 
-   @Override
-   public yj<yg> a() {
-      return b;
+   public yg(yf $$0, int $$1) {
+      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   }
+
+   public yg(yf $$0, Throwable $$1) {
+      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
    }
 }

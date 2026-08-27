@@ -1,32 +1,16 @@
-public class gft extends ght<cin, fra<cin>> {
-   private static final akf a = new akf("textures/entity/breeze/breeze.png");
+public class gft extends gid<cev, fqx> {
+   private static final akh a = new akh("textures/entity/allay/allay.png");
 
-   public gft(ggn.a $$0) {
-      super($$0, new fra<>($$0.a(fuq.s)), 0.5F);
-      this.a(new gjx(this));
-      this.a(new gjw(this));
+   public gft(ggx.a $$0) {
+      super($$0, new fqx($$0.a(fva.a)), 0.4F);
+      this.a(new glb<>(this, $$0.d()));
    }
 
-   public void a(cin $$0, float $$1, float $$2, exn $$3, gbe $$4, int $$5) {
-      fra<cin> $$6 = this.a();
-      a($$6, $$6.b(), $$6.d());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public akf a(cin $$0) {
+   public akh a(cev $$0) {
       return a;
    }
 
-   public static fra<cin> a(fra<cin> $$0, fur... $$1) {
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-      $$0.e().k = false;
-
-      for (fur $$2 : $$1) {
-         $$2.k = true;
-      }
-
-      return $$0;
+   protected int a(cev $$0, in $$1) {
+      return 15;
    }
 }

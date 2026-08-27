@@ -1,684 +1,475 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.shorts.ShortListIterator;
+import com.google.common.base.Suppliers;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.Map.Entry;
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dse extends dru {
-   static final Logger n = LogUtils.getLogger();
-   private static final dov o = new dov() {
-      @Override
-      public void a() {
-      }
+public abstract class dse {
+   public static final Codec<dse> a = ld.ac.q().dispatchStable(dse::a, Function.identity());
+   protected final dbg b;
+   private final Supplier<List<dbm.b>> c;
+   private final Function<iw<dbc>, dbd> d;
 
-      @Override
-      public boolean b() {
-         return true;
-      }
-
-      @Override
-      public im c() {
-         return im.c;
-      }
-
-      @Override
-      public String d() {
-         return "<null>";
-      }
-   };
-   private final Map<im, dse.d> p = Maps.newHashMap();
-   private boolean q;
-   final czu r;
-   @Nullable
-   private Supplier<apx> s;
-   @Nullable
-   private dse.c t;
-   private final Int2ObjectMap<duu> u;
-   private final eur<dcv> v;
-   private final eur<elq> w;
-
-   public dse(czu $$0, czb $$1) {
-      this($$0, $$1, dsr.a, new eur<>(), new eur<>(), 0L, null, null, null);
+   public dse(dbg $$0) {
+      this($$0, $$0x -> ((dbc)$$0x.a()).d());
    }
 
-   public dse(czu $$0, czb $$1, dsr $$2, eur<dcv> $$3, eur<elq> $$4, long $$5, @Nullable dsf[] $$6, @Nullable dse.c $$7, @Nullable dwt $$8) {
-      super($$1, $$2, $$0, $$0.H_().d(ld.ay), $$5, $$6, $$8);
-      this.r = $$0;
-      this.u = new Int2ObjectOpenHashMap();
-
-      for (dvq.a $$9 : dvq.a.values()) {
-         if (dst.n.h().contains($$9)) {
-            this.h.put($$9, new dvq(this, $$9));
-         }
-      }
-
-      this.t = $$7;
-      this.v = $$3;
-      this.w = $$4;
+   public dse(dbg $$0, Function<iw<dbc>, dbd> $$1) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = Suppliers.memoize(() -> dbm.a(List.copyOf($$0.c()), $$1xx -> $$1.apply($$1xx).b(), true));
    }
 
-   public dse(aqe $$0, dso $$1, @Nullable dse.c $$2) {
-      this($$0, $$1.f(), $$1.r(), $$1.G(), $$1.H(), $$1.u(), $$1.d(), $$2, $$1.t());
+   protected abstract Codec<? extends dse> a();
 
-      for (dnd $$3 : $$1.D().values()) {
-         this.a($$3);
-      }
-
-      this.j.putAll($$1.F());
-
-      for (int $$4 = 0; $$4 < $$1.n().length; $$4++) {
-         this.b[$$4] = $$1.n()[$$4];
-      }
-
-      this.a($$1.g());
-      this.b($$1.h());
-
-      for (Entry<dvq.a, dvq> $$5 : $$1.e()) {
-         if (dst.n.h().contains($$5.getKey())) {
-            this.a($$5.getKey(), $$5.getValue().a());
-         }
-      }
-
-      this.i = $$1.i;
-      this.b($$1.v());
-      this.c = true;
+   public dsf a(iy<egv> $$0, dwn $$1, long $$2) {
+      return dsf.a($$1, $$2, this.b, $$0);
    }
 
-   @Override
-   public euz<dcv> o() {
-      return this.v;
+   public Optional<akg<Codec<? extends dse>>> b() {
+      return ld.ac.d(this.a());
    }
 
-   @Override
-   public euz<elq> p() {
-      return this.w;
+   public CompletableFuture<dsd> a(Executor $$0, dwn $$1, dxb $$2, daw $$3, dsd $$4) {
+      return CompletableFuture.supplyAsync(ac.a("init_biomes", () -> {
+         $$4.a(this.b, $$1.b());
+         return $$4;
+      }), ac.f());
    }
 
-   @Override
-   public dru.a q() {
-      return new dru.a(this.v, this.w);
-   }
-
-   @Override
-   public duu a(int $$0) {
-      return this.r instanceof aqe $$1 ? (duu)this.u.computeIfAbsent($$0, $$2 -> new duq($$1, $$0, this::c)) : super.a($$0);
-   }
-
-   @Override
-   public dpy a_(im $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.r.ah()) {
-         dpy $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dcx.hW.n();
-         }
-
-         if ($$2 == 70) {
-            $$4 = dvh.a($$1, $$3);
-         }
-
-         return $$4 == null ? dcx.a.n() : $$4;
-      } else {
-         try {
-            int $$5 = this.e($$2);
-            if ($$5 >= 0 && $$5 < this.m.length) {
-               dsf $$6 = this.m[$$5];
-               if (!$$6.c()) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return dcx.a.n();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this, $$1, $$2, $$3));
-            throw new y($$8);
-         }
-      }
-   }
-
-   @Override
-   public elr b_(im $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
-   }
-
-   public elr a(int $$0, int $$1, int $$2) {
-      try {
-         int $$3 = this.e($$1);
-         if ($$3 >= 0 && $$3 < this.m.length) {
-            dsf $$4 = this.m[$$3];
-            if (!$$4.c()) {
-               return $$4.b($$0 & 15, $$1 & 15, $$2 & 15);
-            }
-         }
-
-         return els.a.g();
-      } catch (Throwable var7) {
-         o $$6 = o.a(var7, "Getting fluid state");
-         p $$7 = $$6.a("Block being got");
-         $$7.a("Location", () -> p.a(this, $$0, $$1, $$2));
-         throw new y($$6);
-      }
-   }
+   public abstract void a(aqo var1, long var2, dwn var4, dbe var5, daw var6, dsd var7, dvv.a var8);
 
    @Nullable
-   @Override
-   public dpy a(im $$0, dpy $$1, boolean $$2) {
-      int $$3 = $$0.v();
-      dsf $$4 = this.b(this.e($$3));
-      boolean $$5 = $$4.c();
-      if ($$5 && $$1.i()) {
+   public Pair<in, iw<egp>> a(aqh $$0, ja<egp> $$1, in $$2, int $$3, boolean $$4) {
+      dsf $$5 = $$0.l().h();
+      Map<ehm, Set<iw<egp>>> $$6 = new Object2ObjectArrayMap();
+
+      for (iw<egp> $$7 : $$1) {
+         for (ehm $$8 : $$5.a($$7)) {
+            $$6.computeIfAbsent($$8, $$0x -> new ObjectArraySet()).add($$7);
+         }
+      }
+
+      if ($$6.isEmpty()) {
          return null;
       } else {
-         int $$6 = $$0.u() & 15;
-         int $$7 = $$3 & 15;
-         int $$8 = $$0.w() & 15;
-         dpy $$9 = $$4.a($$6, $$7, $$8, $$1);
-         if ($$9 == $$1) {
-            return null;
-         } else {
-            dcv $$10 = $$1.b();
-            this.h.get(dvq.a.e).a($$6, $$3, $$8, $$1);
-            this.h.get(dvq.a.f).a($$6, $$3, $$8, $$1);
-            this.h.get(dvq.a.d).a($$6, $$3, $$8, $$1);
-            this.h.get(dvq.a.b).a($$6, $$3, $$8, $$1);
-            boolean $$11 = $$4.c();
-            if ($$5 != $$11) {
-               this.r.M().p().a($$0, $$11);
-            }
+         Pair<in, iw<egp>> $$9 = null;
+         double $$10 = Double.MAX_VALUE;
+         daw $$11 = $$0.a();
+         List<Entry<ehm, Set<iw<egp>>>> $$12 = new ArrayList<>($$6.size());
 
-            if (eli.a(this, $$0, $$9, $$1)) {
-               ble $$12 = this.r.af();
-               $$12.a("updateSkyLightSources");
-               this.i.a(this, $$6, $$3, $$8);
-               $$12.b("queueCheckLight");
-               this.r.M().p().a($$0);
-               $$12.c();
-            }
-
-            boolean $$13 = $$9.t();
-            if (!this.r.B) {
-               $$9.b(this.r, $$0, $$1, $$2);
-            } else if (!$$9.a($$10) && $$13) {
-               this.d($$0);
-            }
-
-            if (!$$4.a($$6, $$7, $$8).a($$10)) {
-               return null;
-            } else {
-               if (!this.r.B) {
-                  $$1.a(this.r, $$0, $$9, $$2);
+         for (Entry<ehm, Set<iw<egp>>> $$13 : $$6.entrySet()) {
+            ehm $$14 = $$13.getKey();
+            if ($$14 instanceof ehj) {
+               ehj $$15 = (ehj)$$14;
+               Pair<in, iw<egp>> $$16 = this.a($$13.getValue(), $$0, $$11, $$2, $$4, $$15);
+               if ($$16 != null) {
+                  in $$17 = (in)$$16.getFirst();
+                  double $$18 = $$2.j($$17);
+                  if ($$18 < $$10) {
+                     $$10 = $$18;
+                     $$9 = $$16;
+                  }
                }
+            } else if ($$14 instanceof ehk) {
+               $$12.add($$13);
+            }
+         }
 
-               if ($$1.t()) {
-                  dnd $$14 = this.a($$0, dse.b.c);
-                  if ($$14 == null) {
-                     $$14 = ((dfn)$$10).a($$0, $$1);
-                     if ($$14 != null) {
-                        this.b($$14);
+         if (!$$12.isEmpty()) {
+            int $$19 = jp.a($$2.u());
+            int $$20 = jp.a($$2.w());
+
+            for (int $$21 = 0; $$21 <= $$3; $$21++) {
+               boolean $$22 = false;
+
+               for (Entry<ehm, Set<iw<egp>>> $$23 : $$12) {
+                  ehk $$24 = (ehk)$$23.getKey();
+                  Pair<in, iw<egp>> $$25 = a($$23.getValue(), $$0, $$11, $$19, $$20, $$21, $$4, $$5.d(), $$24);
+                  if ($$25 != null) {
+                     $$22 = true;
+                     double $$26 = $$2.j((jr)$$25.getFirst());
+                     if ($$26 < $$10) {
+                        $$10 = $$26;
+                        $$9 = $$25;
                      }
-                  } else {
-                     $$14.b($$1);
-                     this.c($$14);
                   }
                }
 
-               this.c = true;
-               return $$9;
+               if ($$22) {
+                  return $$9;
+               }
             }
          }
-      }
-   }
 
-   @Deprecated
-   @Override
-   public void a(bql $$0) {
+         return $$9;
+      }
    }
 
    @Nullable
-   private dnd g(im $$0) {
-      dpy $$1 = this.a_($$0);
-      return !$$1.t() ? null : ((dfn)$$1.b()).a($$0, $$1);
+   private Pair<in, iw<egp>> a(Set<iw<egp>> $$0, aqh $$1, daw $$2, in $$3, boolean $$4, ehj $$5) {
+      List<czk> $$6 = $$1.l().h().a($$5);
+      if ($$6 == null) {
+         throw new IllegalStateException("Somehow tried to find structures for a placement that doesn't exist");
+      } else {
+         Pair<in, iw<egp>> $$7 = null;
+         double $$8 = Double.MAX_VALUE;
+         in.a $$9 = new in.a();
+
+         for (czk $$10 : $$6) {
+            $$9.d(jp.a($$10.e, 8), 32, jp.a($$10.f, 8));
+            double $$11 = $$9.j($$3);
+            boolean $$12 = $$7 == null || $$11 < $$8;
+            if ($$12) {
+               Pair<in, iw<egp>> $$13 = a($$0, $$1, $$2, $$4, $$5, $$10);
+               if ($$13 != null) {
+                  $$7 = $$13;
+                  $$8 = $$11;
+               }
+            }
+         }
+
+         return $$7;
+      }
    }
 
    @Nullable
-   @Override
-   public dnd c_(im $$0) {
-      return this.a($$0, dse.b.c);
-   }
+   private static Pair<in, iw<egp>> a(Set<iw<egp>> $$0, dag $$1, daw $$2, int $$3, int $$4, int $$5, boolean $$6, long $$7, ehk $$8) {
+      int $$9 = $$8.a();
 
-   @Nullable
-   public dnd a(im $$0, dse.b $$1) {
-      dnd $$2 = this.k.get($$0);
-      if ($$2 == null) {
-         ty $$3 = this.j.remove($$0);
-         if ($$3 != null) {
-            dnd $$4 = this.a($$0, $$3);
-            if ($$4 != null) {
-               return $$4;
+      for (int $$10 = -$$5; $$10 <= $$5; $$10++) {
+         boolean $$11 = $$10 == -$$5 || $$10 == $$5;
+
+         for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
+            boolean $$13 = $$12 == -$$5 || $$12 == $$5;
+            if ($$11 || $$13) {
+               int $$14 = $$3 + $$9 * $$10;
+               int $$15 = $$4 + $$9 * $$12;
+               czk $$16 = $$8.a($$7, $$14, $$15);
+               Pair<in, iw<egp>> $$17 = a($$0, $$1, $$2, $$6, $$8, $$16);
+               if ($$17 != null) {
+                  return $$17;
+               }
             }
          }
       }
 
-      if ($$2 == null) {
-         if ($$1 == dse.b.a) {
-            $$2 = this.g($$0);
-            if ($$2 != null) {
-               this.b($$2);
+      return null;
+   }
+
+   @Nullable
+   private static Pair<in, iw<egp>> a(Set<iw<egp>> $$0, dag $$1, daw $$2, boolean $$3, ehm $$4, czk $$5) {
+      for (iw<egp> $$6 : $$0) {
+         egr $$7 = $$2.a($$5, $$6.a(), $$4, $$3);
+         if ($$7 != egr.b) {
+            if (!$$3 && $$7 == egr.a) {
+               return Pair.of($$4.a($$5), $$6);
+            }
+
+            dsd $$8 = $$1.a($$5.e, $$5.f, dtc.d);
+            egx $$9 = $$2.a(jp.a($$8), $$6.a(), $$8);
+            if ($$9 != null && $$9.b() && (!$$3 || a($$2, $$9))) {
+               return Pair.of($$4.a($$9.c()), $$6);
             }
          }
-      } else if ($$2.o()) {
-         this.k.remove($$0);
-         return null;
       }
 
-      return $$2;
+      return null;
    }
 
-   public void b(dnd $$0) {
-      this.a($$0);
-      if (this.K()) {
-         if (this.r instanceof aqe $$1) {
-            this.b($$0, $$1);
-         }
-
-         this.c($$0);
-      }
-   }
-
-   private boolean K() {
-      return this.q || this.r.x_();
-   }
-
-   boolean h(im $$0) {
-      if (!this.r.C_().a($$0)) {
+   private static boolean a(daw $$0, egx $$1) {
+      if ($$1.d()) {
+         $$0.a($$1);
+         return true;
+      } else {
          return false;
-      } else {
-         return !(this.r instanceof aqe $$1) ? true : this.D().a(apx.c) && $$1.c(czb.a($$0));
       }
    }
 
-   @Override
-   public void a(dnd $$0) {
-      im $$1 = $$0.az_();
-      if (this.a_($$1).t()) {
-         $$0.a(this.r);
-         $$0.p();
-         dnd $$2 = this.k.put($$1.i(), $$0);
-         if ($$2 != null && $$2 != $$0) {
-            $$2.aw_();
-         }
-      }
-   }
+   public void a(day $$0, dsd $$1, daw $$2) {
+      czk $$3 = $$1.f();
+      if (!aa.a($$3)) {
+         jp $$4 = jp.a($$3, $$0.an());
+         in $$5 = $$4.j();
+         jj<egp> $$6 = $$0.H_().d(le.aJ);
+         Map<Integer, List<egp>> $$7 = $$6.s().collect(Collectors.groupingBy($$0x -> $$0x.c().ordinal()));
+         List<dbm.b> $$8 = this.c.get();
+         dwy $$9 = new dwy(new dxa(dwo.a()));
+         long $$10 = $$9.a($$0.C(), $$5.u(), $$5.w());
+         Set<iw<dbc>> $$11 = new ObjectArraySet();
+         czk.a($$4.r(), 1).forEach($$2x -> {
+            dsd $$3x = $$0.a($$2x.e, $$2x.f);
 
-   @Nullable
-   @Override
-   public ty a(im $$0, ix.a $$1) {
-      dnd $$2 = this.c_($$0);
-      if ($$2 != null && !$$2.o()) {
-         ty $$3 = $$2.b(this.r.H_());
-         $$3.a("keepPacked", false);
-         return $$3;
-      } else {
-         ty $$4 = this.j.get($$0);
-         if ($$4 != null) {
-            $$4 = $$4.h();
-            $$4.a("keepPacked", true);
-         }
-
-         return $$4;
-      }
-   }
-
-   @Override
-   public void d(im $$0) {
-      if (this.K()) {
-         dnd $$1 = this.k.remove($$0);
-         if ($$1 != null) {
-            if (this.r instanceof aqe $$2) {
-               this.a($$1, $$2);
-            }
-
-            $$1.aw_();
-         }
-      }
-
-      this.k($$0);
-   }
-
-   private <T extends dnd> void a(T $$0, aqe $$1) {
-      dcv $$2 = $$0.n().b();
-      if ($$2 instanceof dfn) {
-         dut $$3 = ((dfn)$$2).a($$1, $$0);
-         if ($$3 != null) {
-            int $$4 = jo.a($$0.az_().v());
-            duu $$5 = this.a($$4);
-            $$5.b($$3);
-         }
-      }
-   }
-
-   private void c(int $$0) {
-      this.u.remove($$0);
-   }
-
-   private void k(im $$0) {
-      dse.d $$1 = this.p.remove($$0);
-      if ($$1 != null) {
-         $$1.a(o);
-      }
-   }
-
-   public void E() {
-      if (this.t != null) {
-         this.t.run(this);
-         this.t = null;
-      }
-   }
-
-   public boolean C() {
-      return false;
-   }
-
-   public void a(vs $$0, ty $$1, Consumer<acv.b> $$2) {
-      this.I();
-
-      for (dsf $$3 : this.m) {
-         $$3.a($$0);
-      }
-
-      for (dvq.a $$4 : dvq.a.values()) {
-         String $$5 = $$4.a();
-         if ($$1.b($$5, 12)) {
-            this.a($$4, $$1.o($$5));
-         }
-      }
-
-      this.A();
-      $$2.accept(($$0x, $$1x, $$2x) -> {
-         dnd $$3 = this.a($$0x, dse.b.a);
-         if ($$3 != null && $$2x != null && $$3.r() == $$1x) {
-            $$3.a($$2x, this.r.H_());
-         }
-      });
-   }
-
-   public void a(vs $$0) {
-      for (dsf $$1 : this.m) {
-         $$1.b($$0);
-      }
-   }
-
-   public void c(boolean $$0) {
-      this.q = $$0;
-   }
-
-   public czu F() {
-      return this.r;
-   }
-
-   public Map<im, dnd> G() {
-      return this.k;
-   }
-
-   public void H() {
-      czb $$0 = this.f();
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         if (this.b[$$1] != null) {
-            ShortListIterator $$7 = this.b[$$1].iterator();
-
-            while ($$7.hasNext()) {
-               Short $$2 = (Short)$$7.next();
-               im $$3 = dso.a($$2, this.g($$1), $$0);
-               dpy $$4 = this.a_($$3);
-               elr $$5 = $$4.u();
-               if (!$$5.c()) {
-                  $$5.a(this.r, $$3);
-               }
-
-               if (!($$4.b() instanceof dhl)) {
-                  dpy $$6 = dcv.b($$4, this.r, $$3);
-                  this.r.a($$3, $$6, 20);
-               }
-            }
-
-            this.b[$$1].clear();
-         }
-      }
-
-      UnmodifiableIterator var9 = ImmutableList.copyOf(this.j.keySet()).iterator();
-
-      while (var9.hasNext()) {
-         im $$7 = (im)var9.next();
-         this.c_($$7);
-      }
-
-      this.j.clear();
-      this.f.a(this);
-   }
-
-   @Nullable
-   private dnd a(im $$0, ty $$1) {
-      dpy $$2 = this.a_($$0);
-      dnd $$3;
-      if ("DUMMY".equals($$1.l("id"))) {
-         if ($$2.t()) {
-            $$3 = ((dfn)$$2.b()).a($$0, $$2);
-         } else {
-            $$3 = null;
-            n.warn("Tried to load a DUMMY block entity @ {} but found not block entity block {} at location", $$0, $$2);
-         }
-      } else {
-         $$3 = dnd.a($$0, $$2, $$1, this.r.H_());
-      }
-
-      if ($$3 != null) {
-         $$3.a(this.r);
-         this.b($$3);
-      } else {
-         n.warn("Tried to load a block entity for block {} but failed at location {}", $$2, $$0);
-      }
-
-      return $$3;
-   }
-
-   public void c(long $$0) {
-      this.v.a($$0);
-      this.w.a($$0);
-   }
-
-   public void a(aqe $$0) {
-      $$0.m().a(this.d, this.v);
-      $$0.n().a(this.d, this.w);
-   }
-
-   public void b(aqe $$0) {
-      $$0.m().a(this.d);
-      $$0.n().a(this.d);
-   }
-
-   @Override
-   public dst j() {
-      return dst.n;
-   }
-
-   public apx D() {
-      return this.s == null ? apx.b : this.s.get();
-   }
-
-   public void b(Supplier<apx> $$0) {
-      this.s = $$0;
-   }
-
-   public void I() {
-      this.k.values().forEach(dnd::aw_);
-      this.k.clear();
-      this.p.values().forEach($$0 -> $$0.a(o));
-      this.p.clear();
-   }
-
-   public void J() {
-      this.k.values().forEach($$0 -> {
-         if (this.r instanceof aqe $$2) {
-            this.b($$0, $$2);
-         }
-
-         this.c($$0);
-      });
-   }
-
-   private <T extends dnd> void b(T $$0, aqe $$1) {
-      dcv $$2 = $$0.n().b();
-      if ($$2 instanceof dfn) {
-         dut $$3 = ((dfn)$$2).a($$1, $$0);
-         if ($$3 != null) {
-            this.a(jo.a($$0.az_().v())).a($$3);
-         }
-      }
-   }
-
-   private <T extends dnd> void c(T $$0) {
-      dpy $$1 = $$0.n();
-      dne<T> $$2 = $$1.a(this.r, (dnf<T>)$$0.r());
-      if ($$2 == null) {
-         this.k($$0.az_());
-      } else {
-         this.p.compute($$0.az_(), ($$2x, $$3) -> {
-            dov $$4 = this.a($$0, $$2);
-            if ($$3 != null) {
-               $$3.a($$4);
-               return (dse.d)$$3;
-            } else if (this.K()) {
-               dse.d $$5 = new dse.d($$4);
-               this.r.a($$5);
-               return $$5;
-            } else {
-               return null;
+            for (dso $$4x : $$3x.d()) {
+               $$4x.i().a($$11::add);
             }
          });
-      }
-   }
+         $$11.retainAll(this.b.c());
+         int $$12 = $$8.size();
 
-   private <T extends dnd> dov a(T $$0, dne<T> $$1) {
-      return new dse.a<>($$0, $$1);
-   }
+         try {
+            jj<eft> $$13 = $$0.H_().d(le.aI);
+            int $$14 = Math.max(dvv.b.values().length, $$12);
 
-   class a<T extends dnd> implements dov {
-      private final T b;
-      private final dne<T> c;
-      private boolean d;
+            for (int $$15 = 0; $$15 < $$14; $$15++) {
+               int $$16 = 0;
+               if ($$2.a()) {
+                  for (egp $$18 : $$7.getOrDefault($$15, Collections.emptyList())) {
+                     $$9.b($$10, $$16, $$15);
+                     Supplier<String> $$19 = () -> $$6.d($$18).map(Object::toString).orElseGet($$18::toString);
 
-      a(T $$0, dne<T> $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
+                     try {
+                        $$0.a($$19);
+                        $$2.a($$4, $$18).forEach($$5x -> $$5x.a($$0, $$2, this, $$9, a($$1), $$3));
+                     } catch (Exception var29) {
+                        o $$21 = o.a(var29, "Feature placement");
+                        $$21.a("Feature").a("Description", $$19::get);
+                        throw new y($$21);
+                     }
 
-      @Override
-      public void a() {
-         if (!this.b.o() && this.b.m()) {
-            im $$0 = this.b.az_();
-            if (dse.this.h($$0)) {
-               try {
-                  ble $$1 = dse.this.r.af();
-                  $$1.a(this::d);
-                  dpy $$2 = dse.this.a_($$0);
-                  if (this.b.r().a($$2)) {
-                     this.c.tick(dse.this.r, this.b.az_(), $$2, this.b);
-                     this.d = false;
-                  } else if (!this.d) {
-                     this.d = true;
-                     dse.n.warn("Block entity {} @ {} state {} invalid for ticking:", new Object[]{LogUtils.defer(this::d), LogUtils.defer(this::c), $$2});
+                     $$16++;
+                  }
+               }
+
+               if ($$15 < $$12) {
+                  IntSet $$22 = new IntArraySet();
+
+                  for (iw<dbc> $$23 : $$11) {
+                     List<ja<eft>> $$24 = this.d.apply($$23).b();
+                     if ($$15 < $$24.size()) {
+                        ja<eft> $$25 = $$24.get($$15);
+                        dbm.b $$26 = $$8.get($$15);
+                        $$25.a().map(iw::a).forEach($$2x -> $$22.add($$26.b().applyAsInt($$2x)));
+                     }
                   }
 
-                  $$1.c();
-               } catch (Throwable var5) {
-                  o $$4 = o.a(var5, "Ticking block entity");
-                  p $$5 = $$4.a("Block entity being ticked");
-                  this.b.a($$5);
-                  throw new y($$4);
+                  int $$27 = $$22.size();
+                  int[] $$28 = $$22.toIntArray();
+                  Arrays.sort($$28);
+                  dbm.b $$29 = $$8.get($$15);
+
+                  for (int $$30 = 0; $$30 < $$27; $$30++) {
+                     int $$31 = $$28[$$30];
+                     eft $$32 = $$29.a().get($$31);
+                     Supplier<String> $$33 = () -> $$13.d($$32).map(Object::toString).orElseGet($$32::toString);
+                     $$9.b($$10, $$31, $$15);
+
+                     try {
+                        $$0.a($$33);
+                        $$32.b($$0, this, $$9, $$5);
+                     } catch (Exception var30) {
+                        o $$35 = o.a(var30, "Feature placement");
+                        $$35.a("Feature").a("Description", $$33::get);
+                        throw new y($$35);
+                     }
+                  }
                }
+            }
+
+            $$0.a(null);
+         } catch (Exception var31) {
+            o $$37 = o.a(var31, "Biome decoration");
+            $$37.a("Generation").a("CenterX", $$3.e).a("CenterZ", $$3.f).a("Decoration Seed", $$10);
+            throw new y($$37);
+         }
+      }
+   }
+
+   private static egh a(dsd $$0) {
+      czk $$1 = $$0.f();
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      daf $$4 = $$0.z();
+      int $$5 = $$4.I_() + 1;
+      int $$6 = $$4.al() - 1;
+      return new egh($$2, $$5, $$3, $$2 + 15, $$6, $$3 + 15);
+   }
+
+   public abstract void a(aqo var1, daw var2, dwn var3, dsd var4);
+
+   public abstract void a(aqo var1);
+
+   public int a(daf $$0) {
+      return 64;
+   }
+
+   public dbg c() {
+      return this.b;
+   }
+
+   public abstract int d();
+
+   public boa<dbo.c> a(iw<dbc> $$0, daw $$1, bsd $$2, in $$3) {
+      Map<egp, LongSet> $$4 = $$1.b($$3);
+
+      for (Entry<egp, LongSet> $$5 : $$4.entrySet()) {
+         egp $$6 = $$5.getKey();
+         egw $$7 = $$6.b().get($$2);
+         if ($$7 != null) {
+            MutableBoolean $$8 = new MutableBoolean(false);
+            Predicate<egx> $$9 = $$7.a() == egw.a.a ? $$2x -> $$1.a($$3, $$2x) : $$1x -> $$1x.a().b($$3);
+            $$1.a($$6, $$5.getValue(), $$2x -> {
+               if ($$8.isFalse() && $$9.test($$2x)) {
+                  $$8.setTrue();
+               }
+            });
+            if ($$8.isTrue()) {
+               return $$7.b();
             }
          }
       }
 
-      @Override
-      public boolean b() {
-         return this.b.o();
-      }
+      return $$0.a().b().a($$2);
+   }
 
-      @Override
-      public im c() {
-         return this.b.az_();
-      }
+   public void a(jk $$0, dsf $$1, daw $$2, dsd $$3, ekq $$4) {
+      czk $$5 = $$3.f();
+      jp $$6 = jp.a($$3);
+      dwn $$7 = $$1.c();
+      $$1.a().forEach($$8 -> {
+         ehm $$9 = $$8.a().b();
+         List<egv.a> $$10 = $$8.a().a();
 
-      @Override
-      public String d() {
-         return dnf.a(this.b.r()).toString();
-      }
+         for (egv.a $$11 : $$10) {
+            egx $$12 = $$2.a($$6, $$11.a().a(), $$3);
+            if ($$12 != null && $$12.b()) {
+               return;
+            }
+         }
 
-      @Override
-      public String toString() {
-         return "Level ticker for " + this.d() + "@" + this.c();
+         if ($$9.b($$1, $$5.e, $$5.f)) {
+            if ($$10.size() == 1) {
+               this.a($$10.get(0), $$2, $$0, $$7, $$4, $$1.d(), $$3, $$5, $$6);
+            } else {
+               ArrayList<egv.a> $$13 = new ArrayList<>($$10.size());
+               $$13.addAll($$10);
+               dwy $$14 = new dwy(new dwa(0L));
+               $$14.c($$1.d(), $$5.e, $$5.f);
+               int $$15 = 0;
+
+               for (egv.a $$16 : $$13) {
+                  $$15 += $$16.b();
+               }
+
+               while (!$$13.isEmpty()) {
+                  int $$17 = $$14.a($$15);
+                  int $$18 = 0;
+
+                  for (egv.a $$19 : $$13) {
+                     $$17 -= $$19.b();
+                     if ($$17 < 0) {
+                        break;
+                     }
+
+                     $$18++;
+                  }
+
+                  egv.a $$20 = $$13.get($$18);
+                  if (this.a($$20, $$2, $$0, $$7, $$4, $$1.d(), $$3, $$5, $$6)) {
+                     return;
+                  }
+
+                  $$13.remove($$18);
+                  $$15 -= $$20.b();
+               }
+            }
+         }
+      });
+   }
+
+   private boolean a(egv.a $$0, daw $$1, jk $$2, dwn $$3, ekq $$4, long $$5, dsd $$6, czk $$7, jp $$8) {
+      egp $$9 = $$0.a().a();
+      int $$10 = a($$1, $$6, $$8, $$9);
+      ja<dbc> $$11 = $$9.a();
+      Predicate<iw<dbc>> $$12 = $$11::a;
+      egx $$13 = $$9.a($$2, this, this.b, $$3, $$4, $$5, $$7, $$10, $$6, $$12);
+      if ($$13.b()) {
+         $$1.a($$8, $$9, $$13, $$6);
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c;
+   private static int a(daw $$0, dsd $$1, jp $$2, egp $$3) {
+      egx $$4 = $$0.a($$2, $$3, $$1);
+      return $$4 != null ? $$4.f() : 0;
    }
 
-   @FunctionalInterface
-   public interface c {
-      void run(dse var1);
+   public void a(day $$0, daw $$1, dsd $$2) {
+      int $$3 = 8;
+      czk $$4 = $$2.f();
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
+      int $$7 = $$4.d();
+      int $$8 = $$4.e();
+      jp $$9 = jp.a($$2);
+
+      for (int $$10 = $$5 - 8; $$10 <= $$5 + 8; $$10++) {
+         for (int $$11 = $$6 - 8; $$11 <= $$6 + 8; $$11++) {
+            long $$12 = czk.c($$10, $$11);
+
+            for (egx $$13 : $$0.a($$10, $$11).g().values()) {
+               try {
+                  if ($$13.b() && $$13.a().a($$7, $$8, $$7 + 15, $$8 + 15)) {
+                     $$1.a($$9, $$13.h(), $$12, $$2);
+                     afw.a($$0, $$13);
+                  }
+               } catch (Exception var21) {
+                  o $$15 = o.a(var21, "Generating structure reference");
+                  p $$16 = $$15.a("Structure");
+                  Optional<? extends jj<egp>> $$17 = $$0.H_().c(le.aJ);
+                  $$16.a("Id", () -> $$17.<String>map($$1xx -> $$1xx.b($$13.h()).toString()).orElse("UNKNOWN"));
+                  $$16.a("Name", () -> ld.T.b($$13.h().e()).toString());
+                  $$16.a("Class", () -> $$13.h().getClass().getCanonicalName());
+                  throw new y($$15);
+               }
+            }
+         }
+      }
    }
 
-   class d implements dov {
-      private dov b;
+   public abstract CompletableFuture<dsd> a(Executor var1, dxb var2, dwn var3, daw var4, dsd var5);
 
-      d(dov $$0) {
-         this.b = $$0;
-      }
+   public abstract int e();
 
-      void a(dov $$0) {
-         this.b = $$0;
-      }
+   public abstract int f();
 
-      @Override
-      public void a() {
-         this.b.a();
-      }
+   public abstract int a(int var1, int var2, dvz.a var3, daf var4, dwn var5);
 
-      @Override
-      public boolean b() {
-         return this.b.b();
-      }
+   public abstract dap a(int var1, int var2, daf var3, dwn var4);
 
-      @Override
-      public im c() {
-         return this.b.c();
-      }
+   public int b(int $$0, int $$1, dvz.a $$2, daf $$3, dwn $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4);
+   }
 
-      @Override
-      public String d() {
-         return this.b.d();
-      }
+   public int c(int $$0, int $$1, dvz.a $$2, daf $$3, dwn $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4) - 1;
+   }
 
-      @Override
-      public String toString() {
-         return this.b + " <wrapped>";
-      }
+   public abstract void a(List<String> var1, dwn var2, in var3);
+
+   @Deprecated
+   public dbd a(iw<dbc> $$0) {
+      return this.d.apply($$0);
    }
 }

@@ -1,37 +1,49 @@
-public class aes implements yz<abk> {
-   public static final yq<vs, aes> a = yz.a(aes::a, aes::new);
-   private final float b;
+public class aes implements zb<abm> {
+   public static final ys<vu, aes> a = zb.a(aes::a, aes::new);
+   private final int b;
    private final int c;
    private final int d;
+   private final int e;
 
-   public aes(float $$0, int $$1, int $$2) {
+   public aes(brh $$0) {
+      this($$0.aj(), $$0.dq());
+   }
+
+   public aes(int $$0, etp $$1) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      double $$2 = 3.9;
+      double $$3 = axz.a($$1.c, -3.9, 3.9);
+      double $$4 = axz.a($$1.d, -3.9, 3.9);
+      double $$5 = axz.a($$1.e, -3.9, 3.9);
+      this.c = (int)($$3 * 8000.0);
+      this.d = (int)($$4 * 8000.0);
+      this.e = (int)($$5 * 8000.0);
    }
 
-   private aes(vs $$0) {
-      this.b = $$0.readFloat();
-      this.d = $$0.l();
-      this.c = $$0.l();
+   private aes(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+      this.e = $$0.readShort();
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.c(this.d);
-      $$0.c(this.c);
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
+      $$0.l(this.e);
    }
 
    @Override
-   public zb<aes> a() {
-      return afv.aG;
+   public zd<aes> a() {
+      return afx.aE;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public int b() {
       return this.b;
    }
 
@@ -41,5 +53,9 @@ public class aes implements yz<abk> {
 
    public int f() {
       return this.d;
+   }
+
+   public int g() {
+      return this.e;
    }
 }

@@ -1,61 +1,74 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import org.joml.FrustumIntersection;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class ges implements geq.a {
-   private static final float a = 0.02F;
-   private final Map<im, ges.a> b = Maps.newHashMap();
+public class ges {
+   public static final int a = 4;
+   private final FrustumIntersection b = new FrustumIntersection();
+   private final Matrix4f c = new Matrix4f();
+   private Vector4f d;
+   private double e;
+   private double f;
+   private double g;
 
-   public void a(im $$0, int $$1, String $$2, int $$3) {
-      this.b.put($$0, new ges.a($$1, $$2, ac.b() + (long)$$3));
+   public ges(Matrix4f $$0, Matrix4f $$1) {
+      this.a($$0, $$1);
    }
 
-   @Override
-   public void a() {
-      this.b.clear();
+   public ges(ges $$0) {
+      this.b.set($$0.c);
+      this.c.set($$0.c);
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.d = $$0.d;
    }
 
-   @Override
-   public void a(exn $$0, gbe $$1, double $$2, double $$3, double $$4) {
-      long $$5 = ac.b();
-      this.b.entrySet().removeIf($$1x -> $$5 > ((ges.a)$$1x.getValue()).c);
-      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   public ges a(int $$0) {
+      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
+      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
+      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
+      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
+      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
+
+      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
+         this.b
+               .intersectAab(
+                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
+               )
+            != -2;
+         this.g = this.g - (double)(this.d.z() * 4.0F)
+      ) {
+         this.e = this.e - (double)(this.d.x() * 4.0F);
+         this.f = this.f - (double)(this.d.y() * 4.0F);
+      }
+
+      return this;
    }
 
-   private void a(exn $$0, gbe $$1, im $$2, ges.a $$3) {
-      geq.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
-      if (!$$3.b.isEmpty()) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v() + 1.2;
-         double $$6 = (double)$$2.w() + 0.5;
-         geq.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
-      }
+   public void a(double $$0, double $$1, double $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   static class a {
-      public int a;
-      public String b;
-      public long c;
+   private void a(Matrix4f $$0, Matrix4f $$1) {
+      $$1.mul($$0, this.c);
+      this.b.set(this.c);
+      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
+   }
 
-      public a(int $$0, String $$1, long $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   public boolean a(etk $$0) {
+      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
 
-      public float a() {
-         return (float)(this.a >> 16 & 0xFF) / 255.0F;
-      }
-
-      public float b() {
-         return (float)(this.a >> 8 & 0xFF) / 255.0F;
-      }
-
-      public float c() {
-         return (float)(this.a & 0xFF) / 255.0F;
-      }
-
-      public float d() {
-         return (float)(this.a >> 24 & 0xFF) / 255.0F;
-      }
+   private boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - this.e);
+      float $$7 = (float)($$1 - this.f);
+      float $$8 = (float)($$2 - this.g);
+      float $$9 = (float)($$3 - this.e);
+      float $$10 = (float)($$4 - this.f);
+      float $$11 = (float)($$5 - this.g);
+      return this.b.testAab($$6, $$7, $$8, $$9, $$10, $$11);
    }
 }

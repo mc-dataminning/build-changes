@@ -1,108 +1,103 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
+import com.mojang.text2speech.Narrator;
 import javax.annotation.Nullable;
 
-public class fjn extends fkt {
-   private static final ws a = ws.c("createWorld.customize.buffet.biome").b(-8355712);
-   private static final int b = 8;
-   private final fih c = new fih(this);
-   private final fkt d;
-   private final Consumer<iv<dat>> r;
-   final ji<dat> s;
-   private fjn.a u;
-   iv<dat> v;
-   private feu w;
+public class fjn extends fld {
+   private static final wu a = wu.c("accessibility.onboarding.screen.title");
+   private static final wu b = wu.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int d = 16;
+   private final ffv r;
+   private final fdi s;
+   private final boolean u;
+   private boolean v;
+   private float w;
+   private final Runnable x;
+   @Nullable
+   private ffp y;
+   @Nullable
+   private ffc z;
+   private final fir A = new fir(this, this.m(), 33);
 
-   public fjn(fkt $$0, fpr $$1, Consumer<iv<dat>> $$2) {
-      super(ws.c("createWorld.customize.buffet.title"));
-      this.d = $$0;
-      this.r = $$2;
-      this.s = $$1.a().d(ld.ay);
-      iv<dat> $$3 = this.s.b(dba.b).or(() -> this.s.h().findAny()).orElseThrow();
-      this.v = $$1.d().a().c().c().stream().findFirst().orElse($$3);
+   public fjn(fdi $$0, Runnable $$1) {
+      super(a);
+      this.s = $$0;
+      this.x = $$1;
+      this.r = new ffv(true);
+      this.u = fde.Q().aZ().a();
    }
 
    @Override
-   public void d() {
-      this.m.a(this.d);
-   }
-
-   @Override
-   protected void aM_() {
-      fil $$0 = this.c.a(fil.d().a(8));
-      $$0.c().b();
-      $$0.a(new fgb(this.n(), this.p));
-      $$0.a(new fgb(a, this.p));
-      this.u = this.c.c(new fjn.a());
-      fil $$1 = this.c.b(fil.e().a(8));
-      this.w = $$1.a(feu.a(wr.d, $$0x -> {
-         this.r.accept(this.v);
-         this.d();
-      }).a());
-      $$1.a(feu.a(wr.e, $$0x -> this.d()).a());
-      this.u.a(this.u.aE_().stream().filter($$0x -> Objects.equals($$0x.b, this.v)).findFirst().orElse(null));
-      this.c.a(this::c);
+   public void aM_() {
+      fiv $$0 = this.A.c(fiv.d());
+      $$0.c().b().a(4);
+      this.y = $$0.a(new ffp(this.n, this.l, this.p), $$0x -> $$0x.a(8));
+      this.z = this.s.as().a(this.s);
+      this.z.j = this.u;
+      $$0.a(this.z);
+      $$0.a(ffi.b(150, $$0x -> this.a(new fjo(this, this.m.m)), false));
+      $$0.a(ffi.a(150, $$0x -> this.a(new fkm(this, this.m.m, this.m.ag())), false));
+      this.A.b(ffe.a(wt.j, $$0x -> this.d()).a());
+      this.A.a(this::c);
       this.c();
    }
 
    @Override
    protected void c() {
-      this.c.a();
-      this.u.a(this.n, this.c);
-   }
-
-   void m() {
-      this.w.j = this.u.h() != null;
-   }
-
-   class a extends ffq<fjn.a.a> {
-      a() {
-         super(fjn.this.m, fjn.this.n, fjn.this.o - 77, 40, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         fjn.this.s.h().map($$0x -> new fjn.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
+      if (this.y != null) {
+         this.y.b(this.n);
       }
 
-      public void a(@Nullable fjn.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            fjn.this.v = $$0.b;
-         }
+      this.A.a();
+   }
 
-         fjn.this.m();
+   @Override
+   protected void aC_() {
+      if (this.u && this.z != null) {
+         this.b(this.z);
+      } else {
+         super.aC_();
       }
+   }
 
-      class a extends ffq.a<fjn.a.a> {
-         final iv.c<dat> b;
-         final ws c;
+   private int m() {
+      return 90;
+   }
 
-         public a(iv.c<dat> $$0) {
-            this.b = $$0;
-            akf $$1 = $$0.h().a();
-            String $$2 = $$1.f("biome");
-            if (tt.a().b($$2)) {
-               this.c = ws.c($$2);
-            } else {
-               this.c = ws.b($$1.toString());
-            }
-         }
+   @Override
+   public void d() {
+      this.a(this.x);
+   }
 
-         @Override
-         public ws a() {
-            return ws.a("narrator.select", this.c);
-         }
+   private void a(fld $$0) {
+      this.a(() -> this.m.a($$0));
+   }
 
-         @Override
-         public void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(fjn.this.p, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
+   private void a(Runnable $$0) {
+      this.s.ae = false;
+      this.s.av();
+      Narrator.getNarrator().clear();
+      $$0.run();
+   }
 
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
+   @Override
+   public void a(fer $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.C();
+      this.r.a($$0, this.n, 1.0F);
+   }
+
+   @Override
+   protected void a(fer $$0, float $$1) {
+      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   }
+
+   private void C() {
+      if (!this.v && this.u) {
+         if (this.w < 40.0F) {
+            this.w++;
+         } else if (this.m.aC()) {
+            Narrator.getNarrator().say(b.getString(), true);
+            this.v = true;
          }
       }
    }

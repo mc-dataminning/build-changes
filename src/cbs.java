@@ -2,25 +2,26 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 
-public class cbs extends cbg<cjp> {
+public class cbs extends ccc<cjj> {
+   public static final int a = 24;
+
    @Override
-   public Set<cah<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cah.B)));
+   public Set<cbd<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cbd.B)));
    }
 
-   protected void a(aqe $$0, cjp $$1) {
+   protected void a(aqh $$0, cjj $$1) {
       super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ai() == bqr.bx)
-         .or(() -> a($$1, $$0xx -> $$0xx.ai() != bqr.bx))
-         .ifPresentOrElse($$1x -> $$1.dQ().a(cah.B, $$1x), () -> $$1.dQ().b(cah.B));
-   }
-
-   private static Optional<bre> a(cjp $$0, Predicate<bre> $$1) {
-      return $$0.dQ().c(cah.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+      $$1.dQ()
+         .c(cbd.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(brm.e)
+         .filter($$1x -> ccj.c($$1, $$1x))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.dQ().a(cbd.B, $$1x), () -> $$1.dQ().b(cbd.B));
    }
 
    @Override

@@ -1,33 +1,37 @@
-import javax.annotation.Nullable;
+public class aea implements zb<abm> {
+   public static final ys<vu, aea> a = zb.a(aea::a, aea::new);
+   private final int b;
+   private final byte c;
 
-public class aea implements yz<abk> {
-   public static final yq<vs, aea> a = yz.a(aea::a, aea::new);
-   @Nullable
-   private final akf b;
-
-   public aea(@Nullable akf $$0) {
-      this.b = $$0;
+   public aea(brh $$0, byte $$1) {
+      this.b = $$0.aj();
+      this.c = $$1;
    }
 
-   private aea(vs $$0) {
-      this.b = $$0.c(vs::q);
+   private aea(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readByte();
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b, vs::a);
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public zb<aea> a() {
-      return afv.ao;
+   public zd<aea> a() {
+      return afx.am;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public akf b() {
-      return this.b;
+   public brh a(dad $$0) {
+      return $$0.a(this.b);
+   }
+
+   public byte b() {
+      return this.c;
    }
 }

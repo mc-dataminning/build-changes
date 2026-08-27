@@ -1,60 +1,25 @@
-public class apk implements Comparable<apk> {
-   private final int a;
-   private final im b;
-   private int c;
-   private int d;
+import java.util.Vector;
+import javax.swing.JList;
+import net.minecraft.server.MinecraftServer;
 
-   public apk(int $$0, im $$1) {
+public class apk extends JList<String> {
+   private final MinecraftServer a;
+   private int b;
+
+   public apk(MinecraftServer $$0) {
       this.a = $$0;
-      this.b = $$1;
+      $$0.b(this::a);
    }
 
-   public int a() {
-      return this.a;
-   }
+   public void a() {
+      if (this.b++ % 20 == 0) {
+         Vector<String> $$0 = new Vector<>();
 
-   public im b() {
-      return this.b;
-   }
+         for (int $$1 = 0; $$1 < this.a.ah().t().size(); $$1++) {
+            $$0.add(this.a.ah().t().get($$1).fZ().getName());
+         }
 
-   public void a(int $$0) {
-      if ($$0 > 10) {
-         $$0 = 10;
+         this.setListData($$0);
       }
-
-      this.c = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public void b(int $$0) {
-      this.d = $$0;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         apk $$1 = (apk)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.a);
-   }
-
-   public int a(apk $$0) {
-      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
    }
 }

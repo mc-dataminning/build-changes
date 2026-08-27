@@ -1,26 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebn implements eay {
-   public static final Codec<ebn> a = RecordCodecBuilder.create(
+public class ebn extends eaz {
+   public static final Codec<ebn> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dpy.b.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dpy.b.fieldOf("state").forGetter($$0x -> $$0x.c),
-               bnv.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+               edi.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               axh.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               axh.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, ebn::new)
    );
-   public final dpy b;
-   public final dpy c;
-   private final bnv d;
+   public final int d;
+   public final int e;
 
-   public ebn(dpy $$0, dpy $$1, bnv $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   public bnv a() {
-      return this.d;
+   public ebn(edi $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

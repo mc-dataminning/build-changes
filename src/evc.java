@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface evc {
+public interface evc<T> extends evi<T> {
+   boolean b(in var1, T var2);
 }

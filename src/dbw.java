@@ -1,91 +1,76 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public class dbw extends dde {
-   public static final MapCodec<dbw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ake.a(ld.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
-               ake.a(ld.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
-               ake.a(ld.G).fieldOf("seed").forGetter($$0x -> $$0x.g),
-               u()
-            )
-            .apply($$0, dbw::new)
-   );
-   public static final dqs b = dgr.aE;
-   protected static final float c = 2.0F;
-   private static final Map<ir, ety> d = Maps.newEnumMap(
-      ImmutableMap.of(
-         ir.d,
-         dcv.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         ir.e,
-         dcv.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         ir.c,
-         dcv.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         ir.f,
-         dcv.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final ake<dcv> e;
-   private final ake<dcv> f;
-   private final ake<cry> g;
+public abstract class dbw extends dde {
+   public static final int a = 3;
+   public static final dqy b = dqx.r;
 
    @Override
-   public MapCodec<dbw> a() {
-      return a;
+   protected abstract MapCodec<? extends dbw> a();
+
+   protected dbw(dqg.d $$0) {
+      super($$0);
    }
 
-   protected dbw(ake<dcv> $$0, ake<dcv> $$1, ake<cry> $$2, dpx.d $$3) {
-      super($$3);
-      this.k(this.E.b().a(b, ir.c));
-      this.f = $$0;
-      this.e = $$1;
-      this.g = $$2;
+   protected abstract Iterable<etp> b(dqh var1);
+
+   public static boolean c(dqh $$0) {
+      return $$0.b(b) && ($$0.a(avr.ae) || $$0.a(avr.bk)) && $$0.c(b);
    }
 
    @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      return d.get($$0.c(b));
+   protected void a(dad $$0, dqh $$1, etl $$2, clz $$3) {
+      if (!$$0.B && $$3.bO() && this.d($$1)) {
+         a($$0, $$1, $$2.a(), true);
+      }
+   }
+
+   protected boolean d(dqh $$0) {
+      return !$$0.c(b);
    }
 
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
-         Optional<dcv> $$6 = $$3.H_().d(ld.f).e(this.f);
-         if ($$6.isPresent()) {
-            return $$6.get().n().b(dkr.c, Integer.valueOf(7));
+   public void a(dqh $$0, dad $$1, in $$2, ayg $$3) {
+      if ($$0.c(b)) {
+         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
+      }
+   }
+
+   private static void a(dad $$0, etp $$1, ayg $$2) {
+      float $$3 = $$2.i();
+      if ($$3 < 0.3F) {
+         $$0.a(kx.ab, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
+         if ($$3 < 0.17F) {
+            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, avc.dJ, avd.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
          }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$0.a(kx.aG, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
+   }
+
+   public static void a(@Nullable clh $$0, dqh $$1, dae $$2, in $$3) {
+      a($$2, $$1, $$3, false);
+      if ($$1.b() instanceof dbw) {
+         ((dbw)$$1.b())
+            .b($$1)
+            .forEach($$2x -> $$2.a(kx.ab, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      }
+
+      $$2.a(null, $$3, avc.dL, avd.e, 1.0F, 1.0F);
+      $$2.a($$0, dva.c, $$3);
+   }
+
+   private static void a(dae $$0, dqh $$1, in $$2, boolean $$3) {
+      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
    }
 
    @Override
-   protected boolean b(dpy $$0, cza $$1, im $$2) {
-      return $$0.a(dcx.cC);
-   }
+   protected void a(dqh $$0, dad $$1, in $$2, czv $$3, BiConsumer<csz, in> $$4) {
+      if ($$3.j() == czv.a.d && !$$1.x_() && $$0.c(b)) {
+         a(null, $$0, $$1, $$2);
+      }
 
-   @Override
-   public csd a(czx $$0, im $$1, dpy $$2) {
-      return new csd((czt)DataFixUtils.orElse($$0.H_().d(ld.G).e(this.g), this));
-   }
-
-   @Override
-   protected dpy a(dpy $$0, dji $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dpy a(dpy $$0, dhs $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(b);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

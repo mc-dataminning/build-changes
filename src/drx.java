@@ -1,9 +1,15 @@
-import com.mojang.serialization.Codec;
+public enum drx {
+   a(4259712),
+   b(16724016),
+   c(2138367);
 
-public class drx {
-   public static Codec<? extends drv> a(ji<Codec<? extends drv>> $$0) {
-      ji.a($$0, "noise", dvt.c);
-      ji.a($$0, "flat", dvl.c);
-      return ji.a($$0, "debug", dvh.c);
+   private final int d;
+
+   private drx(int $$0) {
+      this.d = $$0;
+   }
+
+   public int a() {
+      return this.d;
    }
 }

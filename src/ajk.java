@@ -1,23 +1,4 @@
-public record ajk<T>(int a, ajl<T> b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ajk<?> $$1 = (ajk<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
-   }
+public class ajk {
+   public static final wc<ajh> a = zg.a(vt.c, $$0 -> $$0.a(ajj.b, aji.b).a(aja.b, ajc.a));
+   public static final wc<aje> b = zg.b(vt.c, $$0 -> $$0.a(ajj.a, ajf.a).a(aja.a, aiz.a));
 }

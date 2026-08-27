@@ -1,6 +1,6 @@
-public enum dra implements ayq {
-   a("normal"),
-   b("sticky");
+public enum dra implements ayt {
+   a("compare"),
+   b("subtract");
 
    private final String c;
 

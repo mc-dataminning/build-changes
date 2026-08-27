@@ -1,48 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class ejf extends ejt {
-   public static final Codec<ejf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               ir.a.e.fieldOf("axis").orElse(ir.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ejf::new)
+public class ejf extends egp {
+   public static final Codec<ejf> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, ejf::new)
    );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final ir.a g;
+   public final boolean e;
 
-   public ejf(float $$0, float $$1, int $$2, int $$3, ir.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-      }
+   public ejf(egp.c $$0, boolean $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public boolean a(im $$0, im $$1, im $$2, ayd $$3) {
-      ir $$4 = ir.a(ir.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= axw.b(this.b, this.d, axw.g((float)$$8, (float)this.e, (float)this.f));
+   public Optional<egp.b> a(egp.a $$0) {
+      dvz.a $$1 = this.e ? dvz.a.a : dvz.a.c;
+      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
+   }
+
+   private void a(ehh $$0, egp.a $$1) {
+      djr $$2 = djr.a($$1.f());
+      in $$3 = new in($$1.h().d(), 90, $$1.h().e());
+      eje.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
    }
 
    @Override
-   protected eju<?> a() {
-      return eju.c;
+   public egy<?> e() {
+      return egy.m;
    }
 }

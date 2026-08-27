@@ -1,34 +1,27 @@
+import java.util.Map;
+import javax.annotation.Nullable;
+
 public interface eb {
    eb a = new eb() {
+      @Nullable
       @Override
-      public void a(ws $$0) {
-      }
-
-      @Override
-      public boolean l_() {
-         return false;
-      }
-
-      @Override
-      public boolean w_() {
-         return false;
-      }
-
-      @Override
-      public boolean U_() {
-         return false;
+      public xk a(String $$0) {
+         return null;
       }
    };
 
-   void a(ws var1);
+   @Nullable
+   xk a(String var1);
 
-   boolean l_();
+   public static record a(Map<String, xk> b) implements eb {
+      @Nullable
+      @Override
+      public xk a(String $$0) {
+         return this.b.get($$0);
+      }
 
-   boolean w_();
-
-   boolean U_();
-
-   default boolean m_() {
-      return false;
+      public Map<String, xk> a() {
+         return this.b;
+      }
    }
 }

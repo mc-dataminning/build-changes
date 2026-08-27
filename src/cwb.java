@@ -1,68 +1,36 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class cwb extends cvy {
-   private static final cwd a = cwd.a(csg.uv);
+public record cwb(List<cwb.a> d) {
+   public static final cwb a = new cwb(List.of());
+   public static final Codec<cwb> b = cwb.a.a.listOf().xmap(cwb::new, cwb::a);
+   public static final ys<wf, cwb> c = cwb.a.b.a(yq.a()).a(cwb::new, cwb::a);
 
-   public cwb(cvw $$0) {
-      super($$0);
+   public cwb a(cwb.a $$0) {
+      return new cwb(ac.a(this.d, $$0));
    }
 
-   public boolean a(cnx $$0, czu $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
+   public List<cwb.a> a() {
+      return this.d;
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         csd $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if ($$5.f() instanceof cqx) {
-               $$2 = true;
-            } else {
-               if (!a.a($$5)) {
-                  return false;
-               }
+   public static record a(iw<bqr> c, int d) {
+      public static final Codec<cwb.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ld.d.r().fieldOf("id").forGetter(cwb.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(cwb.a::c)).apply($$0, cwb.a::new)
+      );
+      public static final ys<wf, cwb.a> b = ys.a(yq.b(le.R), cwb.a::b, yq.f, cwb.a::c, cwb.a::new);
 
-               if ($$3) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
-         }
+      public bqt a() {
+         return new bqt(this.c, this.d);
       }
 
-      return $$3 && $$2;
-   }
-
-   public csd a(cnx $$0, jj $$1) {
-      IntList $$2 = new IntArrayList();
-      csd $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         csd $$5 = $$0.a($$4);
-         cry $$6 = $$5.f();
-         if ($$6 instanceof cqx) {
-            $$2.add(((cqx)$$6).c().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
-         }
+      public iw<bqr> b() {
+         return this.c;
       }
 
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(jz.J, cuu.a, $$2, cuu::a);
-         return $$3;
-      } else {
-         return csd.i;
+      public int c() {
+         return this.d;
       }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cwk<?> ao_() {
-      return cwk.i;
    }
 }

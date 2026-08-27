@@ -1,52 +1,88 @@
-public class ggr extends ggm<bqu> {
-   private static final akf a = new akf("textures/entity/experience_orb.png");
-   private static final gbm f = gbm.g(a);
+import org.joml.Quaternionf;
 
-   public ggr(ggn.a $$0) {
+public class ggr extends ggw<cgk> {
+   private static final akh a = new akh("textures/entity/end_crystal/end_crystal.png");
+   private static final gbw f = gbw.e(a);
+   private static final float g = (float)Math.sin(Math.PI / 4);
+   private static final String h = "glass";
+   private static final String i = "base";
+   private final fvb j;
+   private final fvb k;
+   private final fvb l;
+
+   public ggr(ggx.a $$0) {
       super($$0);
-      this.d = 0.15F;
-      this.e = 0.75F;
+      this.d = 0.5F;
+      fvb $$1 = $$0.a(fva.aa);
+      this.k = $$1.b("glass");
+      this.j = $$1.b("cube");
+      this.l = $$1.b("base");
    }
 
-   protected int a(bqu $$0, im $$1) {
-      return axw.a(super.a($$0, $$1) + 7, 0, 15);
+   public static fvh a() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      $$1.a("glass", fvg.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fvd.a);
+      $$1.a("cube", fvg.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fvd.a);
+      $$1.a("base", fvg.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), fvd.a);
+      return fvh.a($$0, 64, 32);
    }
 
-   public void a(bqu $$0, float $$1, float $$2, exn $$3, gbe $$4, int $$5) {
+   public void a(cgk $$0, float $$1, float $$2, exx $$3, gbo $$4, int $$5) {
       $$3.a();
-      int $$6 = $$0.r();
-      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
-      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
-      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
-      float $$11 = 1.0F;
-      float $$12 = 0.5F;
-      float $$13 = 0.25F;
-      float $$14 = 255.0F;
-      float $$15 = ((float)$$0.ai + $$2) / 2.0F;
-      int $$16 = (int)((axw.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$17 = 255;
-      int $$18 = (int)((axw.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$3.a(0.0F, 0.1F, 0.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      float $$19 = 0.3F;
-      $$3.b(0.3F, 0.3F, 0.3F);
-      exr $$20 = $$4.getBuffer(f);
-      exn.a $$21 = $$3.c();
-      a($$20, $$21, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
-      a($$20, $$21, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
-      a($$20, $$21, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
-      a($$20, $$21, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
+      float $$6 = a($$0, $$2);
+      float $$7 = ((float)$$0.b + $$2) * 3.0F;
+      eyb $$8 = $$4.getBuffer(f);
+      $$3.a();
+      $$3.b(2.0F, 2.0F, 2.0F);
+      $$3.a(0.0F, -0.5F, 0.0F);
+      int $$9 = gmp.d;
+      if ($$0.r()) {
+         this.l.a($$3, $$8, $$5, $$9);
+      }
+
+      $$3.a(a.d.rotationDegrees($$7));
+      $$3.a(0.0F, 1.5F + $$6 / 2.0F, 0.0F);
+      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
+      this.k.a($$3, $$8, $$5, $$9);
+      float $$10 = 0.875F;
+      $$3.b(0.875F, 0.875F, 0.875F);
+      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
+      $$3.a(a.d.rotationDegrees($$7));
+      this.k.a($$3, $$8, $$5, $$9);
+      $$3.b(0.875F, 0.875F, 0.875F);
+      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
+      $$3.a(a.d.rotationDegrees($$7));
+      this.j.a($$3, $$8, $$5, $$9);
       $$3.b();
+      $$3.b();
+      in $$11 = $$0.p();
+      if ($$11 != null) {
+         float $$12 = (float)$$11.u() + 0.5F;
+         float $$13 = (float)$$11.v() + 0.5F;
+         float $$14 = (float)$$11.w() + 0.5F;
+         float $$15 = (float)((double)$$12 - $$0.ds());
+         float $$16 = (float)((double)$$13 - $$0.du());
+         float $$17 = (float)((double)$$14 - $$0.dy());
+         $$3.a($$15, $$16, $$17);
+         ggs.a(-$$15, -$$16 + $$6, -$$17, $$2, $$0.b, $$3, $$4, $$5);
+      }
+
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private static void a(exr $$0, exn.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).c(gmf.d).b($$9).b($$1, 0.0F, 1.0F, 0.0F).e();
+   public static float a(cgk $$0, float $$1) {
+      float $$2 = (float)$$0.b + $$1;
+      float $$3 = axz.a($$2 * 0.2F) / 2.0F + 0.5F;
+      $$3 = ($$3 * $$3 + $$3) * 0.4F;
+      return $$3 - 1.4F;
    }
 
-   public akf a(bqu $$0) {
+   public akh a(cgk $$0) {
       return a;
+   }
+
+   public boolean a(cgk $$0, ges $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.p() != null;
    }
 }

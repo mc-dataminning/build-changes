@@ -1,36 +1,23 @@
-public record adx(afs e, byte f) implements yz<abk> {
-   public static final yq<wd, adx> a = yz.a(adx::a, adx::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import javax.annotation.Nullable;
 
-   private adx(wd $$0) {
-      this(new afs($$0), $$0.readByte());
-   }
-
-   private void a(wd $$0) {
-      this.e.a($$0);
-      $$0.k(this.f);
-   }
+public record adx(int b, iw<bqr> c) implements zb<abm> {
+   public static final ys<wf, adx> a = ys.a(yq.f, $$0 -> $$0.b, yq.b(le.R), adx::e, adx::new);
 
    @Override
-   public zb<adx> a() {
-      return afv.al;
+   public zd<adx> a() {
+      return afx.ak;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
+   @Nullable
+   public brh a(dad $$0) {
+      return $$0.a(this.b);
    }
 
-   public afs b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   public iw<bqr> e() {
+      return this.c;
    }
 }

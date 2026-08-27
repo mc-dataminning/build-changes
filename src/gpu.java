@@ -1,49 +1,107 @@
-public class gpu extends gpk {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final cmg s;
-   private float t = 0.0F;
+public abstract class gpu implements gqm {
+   protected gqj a;
+   protected final avd b;
+   protected final akh c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected gqm.a k = gqm.a.b;
+   protected boolean l;
+   protected ayg m;
 
-   public gpu(cmg $$0) {
-      super(auz.oC, ava.g, gqb.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.ds());
-      this.g = (double)((float)$$0.du());
-      this.h = (double)((float)$$0.dy());
+   protected gpu(avb $$0, avd $$1, ayg $$2) {
+      this($$0.a(), $$1, $$2);
+   }
+
+   protected gpu(akh $$0, avd $$1, ayg $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public boolean s() {
-      return !this.s.aU();
+   public akh a() {
+      return this.c;
    }
 
    @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.s.dI()) {
-         this.n();
+   public grr a(grq $$0) {
+      if (this.c.equals(grq.b)) {
+         this.a = grq.d;
+         return grq.c;
       } else {
-         this.f = (double)((float)this.s.ds());
-         this.g = (double)((float)this.s.du());
-         this.h = (double)((float)this.s.dy());
-         float $$0 = (float)this.s.dq().h();
-         if ($$0 >= 0.01F && this.s.dN().s().i()) {
-            this.t = axw.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = axw.i(axw.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         grr $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = grq.a;
          } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
+            this.a = $$1.a(this.m);
          }
+
+         return $$1;
       }
+   }
+
+   @Override
+   public gqj b() {
+      return this.a;
+   }
+
+   @Override
+   public avd c() {
+      return this.b;
+   }
+
+   @Override
+   public boolean d() {
+      return this.i;
+   }
+
+   @Override
+   public int e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public gqm.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

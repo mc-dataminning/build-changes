@@ -1,61 +1,44 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class fuu<T extends cjg> extends fso<T> implements ful {
+   private final fvb a = this.l.b("hat_rim");
 
-public final class fuu {
-   @Nullable
-   private final String a;
-   private final Vector3f b;
-   private final Vector3f c;
-   private final fuv d;
-   private final boolean e;
-   private final fvb f;
-   private final fvb g;
-   private final Set<ir> h;
-
-   protected fuu(
-      @Nullable String $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      fuv $$9,
-      boolean $$10,
-      float $$11,
-      float $$12,
-      Set<ir> $$13
-   ) {
-      this.a = $$0;
-      this.f = new fvb($$1, $$2);
-      this.b = new Vector3f($$3, $$4, $$5);
-      this.c = new Vector3f($$6, $$7, $$8);
-      this.d = $$9;
-      this.e = $$10;
-      this.g = new fvb($$11, $$12);
-      this.h = $$13;
+   public fuu(fvb $$0) {
+      super($$0);
    }
 
-   public fur.a a(int $$0, int $$1) {
-      return new fur.a(
-         (int)this.f.a(),
-         (int)this.f.b(),
-         this.b.x(),
-         this.b.y(),
-         this.b.z(),
-         this.c.x(),
-         this.c.y(),
-         this.c.z(),
-         this.d.b,
-         this.d.c,
-         this.d.d,
-         this.e,
-         (float)$$0 * this.g.a(),
-         (float)$$1 * this.g.b(),
-         this.h
-      );
+   public static fvh c() {
+      fvj $$0 = fso.a(fvf.a, 0.0F);
+      fvk $$1 = $$0.a();
+      $$1.a("head", new fvg().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -3.0F, -6.0F, 2.0F, 4.0F, 2.0F), fvd.a);
+      fvk $$2 = $$1.a("hat", fvg.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new fvf(0.5F)), fvd.a);
+      $$2.a("hat_rim", fvg.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), fvd.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("body", fvg.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fvf(0.05F)), fvd.a);
+      $$1.a("right_arm", fvg.c().a(44, 22).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fvd.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fvg.c().a(44, 22).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fvd.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", fvg.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fvd.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fvg.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fvd.a(2.0F, 12.0F, 0.0F));
+      return fvh.a($$0, 64, 64);
+   }
+
+   public static fvh a(fvf $$0) {
+      fvj $$1 = fso.a($$0, 0.0F);
+      fvk $$2 = $$1.a();
+      $$2.a("head", fvg.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fvd.a);
+      $$2.a("body", fvg.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.1F)), fvd.a);
+      $$2.a("right_leg", fvg.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fvd.a(-2.0F, 12.0F, 0.0F));
+      $$2.a("left_leg", fvg.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fvd.a(2.0F, 12.0F, 0.0F));
+      $$2.a("hat").a("hat_rim", fvg.c(), fvd.a);
+      return fvh.a($$1, 64, 32);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      fqy.a(this.o, this.n, $$0.gh(), this.c, $$3);
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.k.k = $$0;
+      this.l.k = $$0;
+      this.a.k = $$0;
    }
 }

@@ -1,97 +1,96 @@
-import java.util.Objects;
-
-public class fmu extends fly implements fmw<col> {
-   private final col x;
-   private final cnt y = new cnt() {
-      @Override
-      public void a(cnh $$0, int $$1, csd $$2) {
-         fmu.this.K();
-      }
-
-      @Override
-      public void a(cnh $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fmu.this.L();
-         }
-      }
+public class fmu {
+   private static final akh a = new akh("minecraft", "alt");
+   private static final xr b = xr.a.a(a);
+   private static final fmu c = new fmu();
+   private final ayg d = ayg.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
    };
 
-   public fmu(col $$0, ckk $$1, ws $$2) {
-      this.x = $$0;
+   private fmu() {
    }
 
-   public col J() {
-      return this.x;
+   public static fmu a() {
+      return c;
    }
 
-   @Override
-   protected void aM_() {
-      super.aM_();
-      this.x.a(this.y);
-   }
+   public wz a(fep $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
 
-   @Override
-   public void d() {
-      this.m.s.r();
-      super.d();
-   }
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
 
-   @Override
-   public void j() {
-      super.j();
-      this.x.b(this.y);
-   }
-
-   @Override
-   protected void m() {
-      if (this.m.s.gm()) {
-         this.c(feu.a(wr.d, $$0 -> this.d()).a(this.n / 2 - 100, 196, 98, 20).a());
-         this.c(feu.a(ws.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.m();
+         $$2.append(ac.a(this.e, this.d));
       }
+
+      return $$0.b().a(wu.b($$2.toString()).c(b), $$1, xr.a);
    }
 
-   @Override
-   protected void E() {
-      this.g(1);
-   }
-
-   @Override
-   protected void F() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.x.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.m.q.a(this.x.j, $$0);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   void K() {
-      csd $$0 = this.x.l();
-      this.a(Objects.requireNonNullElse(fly.a.a($$0), fly.d));
-   }
-
-   void L() {
-      this.a(this.x.m());
-   }
-
-   @Override
-   protected void I() {
-      this.m.s.r();
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

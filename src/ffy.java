@@ -1,23 +1,69 @@
-public class ffy {
-   public static final ffy a = new ffy("Merry X-mas!");
-   public static final ffy b = new ffy("Happy new year!");
-   public static final ffy c = new ffy("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+import java.util.OptionalInt;
 
-   public ffy(String $$0) {
-      this.f = $$0;
+public class ffy extends ffb {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final ayo<ffy.a, ffx> c;
+   private boolean d = false;
+
+   public ffy(wu $$0, fep $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public void a(feh $$0, int $$1, fef $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - axw.e(axw.a((float)(ac.b() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   public ffy(int $$0, int $$1, wu $$2, fep $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? ffx.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : ffx.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
+   }
+
+   public ffy c(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   public ffy d(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public ffy e(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public ffy b(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   @Override
+   public int x() {
+      return this.c.a(this.d()).b();
+   }
+
+   @Override
+   public int v() {
+      return this.c.a(this.d()).a() * 9;
+   }
+
+   @Override
+   public void b(fer $$0, int $$1, int $$2, float $$3) {
+      ffx $$4 = this.c.a(this.d());
+      int $$5 = this.C();
+      int $$6 = this.D();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.x() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
+      }
+   }
+
+   private ffy.a d() {
+      return new ffy.a(this.y(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   }
+
+   static record a(wu a, int b, OptionalInt c) {
    }
 }

@@ -1,68 +1,96 @@
 import com.mojang.logging.LogUtils;
+import java.time.Instant;
+import java.util.UUID;
 import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface xo {
-   Logger a = LogUtils.getLogger();
-   xo b = xi::b;
-   xo c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
-      return null;
-   };
+public class xo {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private xp b;
+   private Instant c = Instant.EPOCH;
+
+   public xo(UUID $$0, UUID $$1) {
+      this.b = xp.a($$0, $$1);
+   }
+
+   public xo.c a(aym $$0) {
+      return $$1 -> {
+         xp $$2 = this.a();
+         return $$2 == null ? null : new xg($$0.sign($$2x -> xk.a($$2x, $$2, $$1)));
+      };
+   }
+
+   public xo.b a(clk $$0) {
+      ayl $$1 = $$0.a();
+      return ($$2, $$3) -> {
+         xp $$4 = this.a();
+         if ($$4 == null) {
+            throw new xo.a(wu.c("chat.disabled.chain_broken"), false);
+         } else if ($$0.b().a()) {
+            throw new xo.a(wu.c("chat.disabled.expiredProfileKey"), false);
+         } else if ($$3.b().isBefore(this.c)) {
+            throw new xo.a(wu.c("multiplayer.disconnect.out_of_order_chat"), true);
+         } else {
+            this.c = $$3.b();
+            xk $$5 = new xk($$4, $$2, $$3, null, wy.c);
+            if (!$$5.a($$1)) {
+               throw new xo.a(wu.c("multiplayer.disconnect.unsigned_chat"), true);
+            } else {
+               if ($$5.a(Instant.now())) {
+                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
+               }
+
+               return $$5;
+            }
+         }
+      };
+   }
 
    @Nullable
-   xi updateAndValidate(xi var1);
+   private xp a() {
+      xp $$0 = this.b;
+      if ($$0 != null) {
+         this.b = $$0.a();
+      }
 
-   public static class a implements xo {
-      private final ayi d;
-      private final BooleanSupplier e;
+      return $$0;
+   }
+
+   public static class a extends xu {
+      private final boolean a;
+
+      public a(wu $$0, boolean $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public boolean a() {
+         return this.a;
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      static xo.b unsigned(UUID $$0, BooleanSupplier $$1) {
+         return ($$2, $$3) -> {
+            if ($$1.getAsBoolean()) {
+               throw new xo.a(wu.c("chat.disabled.missingProfileKey"), false);
+            } else {
+               return xk.a($$0, $$3.a());
+            }
+         };
+      }
+
+      xk unpack(@Nullable xg var1, xn var2) throws xo.a;
+   }
+
+   @FunctionalInterface
+   public interface c {
+      xo.c a = $$0 -> null;
+
       @Nullable
-      private xi f;
-      private boolean g = true;
-
-      public a(ayi $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      private boolean a(xi $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.k().a(this.f.k())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
-            );
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      private boolean b(xi $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.g());
-            return false;
-         } else {
-            return this.a($$0);
-         }
-      }
-
-      @Nullable
-      @Override
-      public xi updateAndValidate(xi $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return null;
-         } else {
-            this.f = $$0;
-            return $$0;
-         }
-      }
+      xg pack(xn var1);
    }
 }

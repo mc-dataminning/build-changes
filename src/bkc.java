@@ -1,4 +1,3 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
@@ -9,14 +8,14 @@ public class bkc extends Schema {
       super($$0, $$1);
    }
 
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> bhd.a($$0));
+   }
+
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("EntityHorse");
-      $$0.register($$1, "Horse", () -> DSL.optionalFields("ArmorItem", bfp.t.in($$0), "SaddleItem", bfp.t.in($$0), bha.a($$0)));
-      $$0.register($$1, "Donkey", () -> DSL.optionalFields("Items", DSL.list(bfp.t.in($$0)), "SaddleItem", bfp.t.in($$0), bha.a($$0)));
-      $$0.register($$1, "Mule", () -> DSL.optionalFields("Items", DSL.list(bfp.t.in($$0)), "SaddleItem", bfp.t.in($$0), bha.a($$0)));
-      $$0.register($$1, "ZombieHorse", () -> DSL.optionalFields("SaddleItem", bfp.t.in($$0), bha.a($$0)));
-      $$0.register($$1, "SkeletonHorse", () -> DSL.optionalFields("SaddleItem", bfp.t.in($$0), bha.a($$0)));
+      a($$0, $$1, "WitherSkeleton");
+      a($$0, $$1, "Stray");
       return $$1;
    }
 }

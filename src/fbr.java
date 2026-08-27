@@ -1,69 +1,22 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public enum fbr {
+   a(0, egf.a),
+   b(1, egf.b),
+   c(2, egf.c),
+   d(3, egf.d);
 
-public class fbr extends fbu {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ws c = ws.c("mco.snapshot.creating");
-   private final long d;
-   private final fbn e;
-   private final String f;
-   private final String g;
-   private final exy h;
-   @Nullable
-   private fbw i;
-   @Nullable
-   private fbx j;
+   private final int e;
+   private final wu f;
 
-   public fbr(exy $$0, long $$1, fbn $$2, String $$3, String $$4) {
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$0;
+   private fbr(int $$0, akg<ege> $$1) {
+      this.e = $$0;
+      this.f = wu.c($$1.a().f("generator"));
    }
 
-   @Override
-   public void run() {
-      eyd $$0 = eyd.a();
-
-      try {
-         eyu $$1 = $$0.a(Long.valueOf(this.d));
-         this.i = new fbw($$1.a, this.f, this.g);
-         this.j = new fbx(this.e, $$1.a, fas.a, () -> fcu.Q().execute(() -> exy.a($$1, this.h, true)));
-         if (this.d()) {
-            return;
-         }
-
-         this.i.run();
-         if (this.d()) {
-            return;
-         }
-
-         this.j.run();
-      } catch (ezq var3) {
-         b.error("Couldn't create snapshot world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Couldn't create snapshot world", var4);
-         this.a(var4);
-      }
+   public wu a() {
+      return this.f;
    }
 
-   @Override
-   public ws a() {
-      return c;
-   }
-
-   @Override
-   public void b() {
-      super.b();
-      if (this.i != null) {
-         this.i.b();
-      }
-
-      if (this.j != null) {
-         this.j.b();
-      }
+   public int b() {
+      return this.e;
    }
 }

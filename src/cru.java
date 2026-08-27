@@ -1,15 +1,21 @@
-public class cru extends cry implements ctd {
-   public cru(cry.a $$0) {
+public class cru extends csu {
+   public cru(csu.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(czu $$0, don $$1, boolean $$2, ckl $$3) {
-      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
-         $$0.a(null, $$1.az_(), auz.nb, ava.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
+   public bpn<csz> a(dad $$0, clh $$1, bpl $$2) {
+      csz $$3 = $$1.b($$2);
+      $$0.a(null, $$1.ds(), $$1.du(), $$1.dy(), avc.hI, avd.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cmi $$4 = new cmi($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dF(), $$1.dD(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
+
+      $$1.b(avm.c.b(this));
+      $$3.a(1, $$1);
+      return bpn.a($$3, $$0.x_());
    }
 }

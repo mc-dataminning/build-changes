@@ -1,156 +1,133 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gmn {
+   private static final int a = 96;
+   private static final float[] b = ac.a(new float[256], $$0 -> {
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         $$0[$$1] = (float)Math.pow((double)((float)$$1 / 255.0F), 2.2);
+      }
+   });
 
-public class gmn extends glz implements gma, gmq {
-   private static final Logger g = LogUtils.getLogger();
-   @Deprecated
-   public static final akf e = coi.x;
-   @Deprecated
-   public static final akf f = new akf("textures/atlas/particles.png");
-   private List<gmi> h = List.of();
-   private List<gmo.a> i = List.of();
-   private Map<akf, gmo> j = Map.of();
-   @Nullable
-   private gmo k;
-   private final akf l;
-   private final int m;
-   private int n;
-   private int o;
-   private int p;
-
-   public gmn(akf $$0) {
-      this.l = $$0;
-      this.m = RenderSystem.maxSupportedTextureSize();
+   private gmn() {
    }
 
-   @Override
-   public void a(ato $$0) {
-   }
-
-   public void a(gmj.a $$0) {
-      g.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.l});
-      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
-      this.n = $$0.b();
-      this.o = $$0.c();
-      this.p = $$0.d();
-      this.f();
-      this.j = Map.copyOf($$0.f());
-      this.k = this.j.get(gme.b());
-      if (this.k == null) {
-         throw new IllegalStateException("Atlas '" + this.l + "' (" + this.j.size() + " sprites) has no missing texture sprite");
+   public static ewy[] a(ewy[] $$0, int $$1) {
+      if ($$1 + 1 <= $$0.length) {
+         return $$0;
       } else {
-         List<gmi> $$1 = new ArrayList<>();
-         List<gmo.a> $$2 = new ArrayList<>();
+         ewy[] $$2 = new ewy[$$1 + 1];
+         $$2[0] = $$0[0];
+         boolean $$3 = a($$2[0]);
 
-         for (gmo $$3 : $$0.f().values()) {
-            $$1.add($$3.e());
+         for (int $$4 = 1; $$4 <= $$1; $$4++) {
+            if ($$4 < $$0.length) {
+               $$2[$$4] = $$0[$$4];
+            } else {
+               ewy $$5 = $$2[$$4 - 1];
+               ewy $$6 = new ewy($$5.a() >> 1, $$5.b() >> 1, false);
+               int $$7 = $$6.a();
+               int $$8 = $$6.b();
 
-            try {
-               $$3.j();
-            } catch (Throwable var9) {
-               o $$5 = o.a(var9, "Stitching texture atlas");
-               p $$6 = $$5.a("Texture being stitched together");
-               $$6.a("Atlas path", this.l);
-               $$6.a("Sprite", $$3);
-               throw new y($$5);
-            }
+               for (int $$9 = 0; $$9 < $$7; $$9++) {
+                  for (int $$10 = 0; $$10 < $$8; $$10++) {
+                     $$6.a(
+                        $$9,
+                        $$10,
+                        a(
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 1),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 1),
+                           $$3
+                        )
+                     );
+                  }
+               }
 
-            gmo.a $$7 = $$3.f();
-            if ($$7 != null) {
-               $$2.add($$7);
+               $$2[$$4] = $$6;
             }
          }
 
-         this.h = List.copyOf($$1);
-         this.i = List.copyOf($$2);
+         return $$2;
       }
    }
 
-   @Override
-   public void a(akf $$0, Path $$1) throws IOException {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.p, this.n, this.o);
-      a($$1, $$2, this.j);
-   }
-
-   private static void a(Path $$0, String $$1, Map<akf, gmo> $$2) {
-      Path $$3 = $$0.resolve($$1 + ".txt");
-
-      try (Writer $$4 = Files.newBufferedWriter($$3)) {
-         for (Entry<akf, gmo> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
-            gmo $$6 = $$5.getValue();
-            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
+   private static boolean a(ewy $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            if ($$0.a($$1, $$2) >> 24 == 0) {
+               return true;
+            }
          }
-      } catch (IOException var10) {
-         g.warn("Failed to write file {}", $$3, var10);
       }
+
+      return false;
    }
 
-   @Override
-   public void d() {
-      this.c();
+   private static int a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      if ($$4) {
+         float $$5 = 0.0F;
+         float $$6 = 0.0F;
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         if ($$0 >> 24 != 0) {
+            $$5 += a($$0 >> 24);
+            $$6 += a($$0 >> 16);
+            $$7 += a($$0 >> 8);
+            $$8 += a($$0 >> 0);
+         }
 
-      for (gmo.a $$0 : this.i) {
-         $$0.a();
-      }
-   }
+         if ($$1 >> 24 != 0) {
+            $$5 += a($$1 >> 24);
+            $$6 += a($$1 >> 16);
+            $$7 += a($$1 >> 8);
+            $$8 += a($$1 >> 0);
+         }
 
-   @Override
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::d);
+         if ($$2 >> 24 != 0) {
+            $$5 += a($$2 >> 24);
+            $$6 += a($$2 >> 16);
+            $$7 += a($$2 >> 8);
+            $$8 += a($$2 >> 0);
+         }
+
+         if ($$3 >> 24 != 0) {
+            $$5 += a($$3 >> 24);
+            $$6 += a($$3 >> 16);
+            $$7 += a($$3 >> 8);
+            $$8 += a($$3 >> 0);
+         }
+
+         $$5 /= 4.0F;
+         $$6 /= 4.0F;
+         $$7 /= 4.0F;
+         $$8 /= 4.0F;
+         int $$9 = (int)(Math.pow((double)$$5, 0.45454545454545453) * 255.0);
+         int $$10 = (int)(Math.pow((double)$$6, 0.45454545454545453) * 255.0);
+         int $$11 = (int)(Math.pow((double)$$7, 0.45454545454545453) * 255.0);
+         int $$12 = (int)(Math.pow((double)$$8, 0.45454545454545453) * 255.0);
+         if ($$9 < 96) {
+            $$9 = 0;
+         }
+
+         return $$9 << 24 | $$10 << 16 | $$11 << 8 | $$12;
       } else {
-         this.d();
+         int $$13 = a($$0, $$1, $$2, $$3, 24);
+         int $$14 = a($$0, $$1, $$2, $$3, 16);
+         int $$15 = a($$0, $$1, $$2, $$3, 8);
+         int $$16 = a($$0, $$1, $$2, $$3, 0);
+         return $$13 << 24 | $$14 << 16 | $$15 << 8 | $$16;
       }
    }
 
-   public gmo a(akf $$0) {
-      gmo $$1 = this.j.getOrDefault($$0, this.k);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
-      } else {
-         return $$1;
-      }
+   private static int a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      float $$5 = a($$0 >> $$4);
+      float $$6 = a($$1 >> $$4);
+      float $$7 = a($$2 >> $$4);
+      float $$8 = a($$3 >> $$4);
+      float $$9 = (float)((double)((float)Math.pow((double)($$5 + $$6 + $$7 + $$8) * 0.25, 0.45454545454545453)));
+      return (int)((double)$$9 * 255.0);
    }
 
-   public void f() {
-      this.h.forEach(gmi::close);
-      this.i.forEach(gmo.a::close);
-      this.h = List.of();
-      this.i = List.of();
-      this.j = Map.of();
-      this.k = null;
-   }
-
-   public akf g() {
-      return this.l;
-   }
-
-   public int h() {
-      return this.m;
-   }
-
-   int i() {
-      return this.n;
-   }
-
-   int j() {
-      return this.o;
-   }
-
-   public void b(gmj.a $$0) {
-      this.a(false, $$0.d() > 0);
+   private static float a(int $$0) {
+      return b[$$0 & 0xFF];
    }
 }

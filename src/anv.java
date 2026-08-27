@@ -1,18 +1,13 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 public class anv {
-   public static void a(CommandDispatcher<ec> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("setidletimeout").requires($$0x -> $$0x.c(3)))
-            .then(ed.a("minutes", IntegerArgumentType.integer(0)).executes($$0x -> a((ec)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "minutes"))))
-      );
-   }
-
-   private static int a(ec $$0, int $$1) {
-      $$0.l().c($$1);
-      $$0.a(() -> ws.a("commands.setidletimeout.success", $$1), true);
-      return $$1;
+   public static void a(CommandDispatcher<ed> $$0, boolean $$1) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("seed").requires($$1x -> !$$1 || $$1x.c(2))).executes($$0x -> {
+         long $$1x = ((ed)$$0x.getSource()).e().C();
+         wu $$2 = wx.a(String.valueOf($$1x));
+         ((ed)$$0x.getSource()).a(() -> wu.a("commands.seed.success", $$2), false);
+         return (int)$$1x;
+      }));
    }
 }

@@ -1,34 +1,25 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class czp extends emy {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
-
-   public static emy.a<czp> a() {
-      return new emy.a<>(czp::new, czp::b, azc.i);
-   }
-
-   private czp(LongSet $$0) {
-      this.c = $$0;
-   }
-
-   public czp() {
-      this(new LongOpenHashSet());
-   }
-
-   public static czp b(ty $$0, ix.a $$1) {
-      return new czp(new LongOpenHashSet($$0.o("Forced")));
+public interface czp extends czu, dag, dai {
+   @Override
+   default <T extends dnm> Optional<T> a(in $$0, dno<T> $$1) {
+      return dag.super.a($$0, $$1);
    }
 
    @Override
-   public ty a(ty $$0, ix.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   default List<eui> c(@Nullable brh $$0, etk $$1) {
+      return czu.super.c($$0, $$1);
    }
 
-   public LongSet b() {
-      return this.c;
+   @Override
+   default boolean a(@Nullable brh $$0, eui $$1) {
+      return czu.super.a($$0, $$1);
+   }
+
+   @Override
+   default in a(dvz.a $$0, in $$1) {
+      return dag.super.a($$0, $$1);
    }
 }

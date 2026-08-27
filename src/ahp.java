@@ -1,53 +1,85 @@
-public class ahp implements yz<afx> {
-   public static final yq<vs, ahp> a = yz.a(ahp::a, ahp::new);
-   private static final int b = 384;
-   private final im c;
-   private final String[] d;
-   private final boolean e;
+public class ahp implements zb<afz> {
+   public static final ys<vu, ahp> a = zb.a(ahp::a, ahp::new);
+   private final in b;
+   private final akh c;
+   private final akh d;
+   private final akh e;
+   private final String f;
+   private final dom.a g;
+   private final int h;
+   private final int i;
 
-   public ahp(im $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = new String[]{$$2, $$3, $$4, $$5};
+   public ahp(in $$0, akh $$1, akh $$2, akh $$3, String $$4, dom.a $$5, int $$6, int $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   private ahp(vs $$0) {
-      this.c = $$0.e();
-      this.e = $$0.readBoolean();
-      this.d = new String[4];
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.d[$$1] = $$0.d(384);
-      }
+   private ahp(vu $$0) {
+      this.b = $$0.e();
+      this.c = $$0.q();
+      this.d = $$0.q();
+      this.e = $$0.q();
+      this.f = $$0.p();
+      this.g = dom.a.a($$0.p()).orElse(dom.a.b);
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
+      $$0.a(this.d);
       $$0.a(this.e);
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         $$0.a(this.d[$$1]);
-      }
+      $$0.a(this.f);
+      $$0.a(this.g.c());
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
    @Override
-   public zb<ahp> a() {
-      return afv.bX;
+   public zd<ahp> a() {
+      return afx.bV;
    }
 
-   public void a(afx $$0) {
+   public void a(afz $$0) {
       $$0.a(this);
    }
 
-   public im b() {
+   public in b() {
+      return this.b;
+   }
+
+   public akh e() {
       return this.c;
    }
 
-   public boolean e() {
+   public akh f() {
+      return this.d;
+   }
+
+   public akh g() {
       return this.e;
    }
 
-   public String[] f() {
-      return this.d;
+   public String h() {
+      return this.f;
+   }
+
+   public dom.a i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.h;
+   }
+
+   public int k() {
+      return this.i;
    }
 }

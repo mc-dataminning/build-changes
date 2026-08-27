@@ -1,165 +1,280 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record grq<T>(String F, String G, Codec<T> H, grq.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final grq<String> a = b("user_id", "userId");
-   public static final grq<String> b = b("client_id", "clientId");
-   public static final grq<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final grq<String> d = b("game_version", "buildDisplayName");
-   public static final grq<String> e = b("operating_system", "buildPlatform");
-   public static final grq<String> f = b("platform", "platform");
-   public static final grq<Boolean> g = a("client_modded", "clientModded");
-   public static final grq<String> h = b("launcher_name", "launcherName");
-   public static final grq<UUID> i = e("world_session_id", "worldSessionId");
-   public static final grq<Boolean> j = a("server_modded", "serverModded");
-   public static final grq<grq.c> k = a("server_type", "serverType", grq.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final grq<Boolean> l = a("opt_in", "isOptional");
-   public static final grq<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", axe.m, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final grq<grq.b> n = a("game_mode", "playerGameMode", grq.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final grq<String> o = b("realms_map_content", "realmsMapContent");
-   public static final grq<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final grq<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final grq<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final grq<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final grq<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final grq<Integer> u = c("number_of_samples", "numSamples");
-   public static final grq<Integer> v = c("render_distance", "renderDistance");
-   public static final grq<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final grq<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final grq<Boolean> y = a("new_world", "newWorld");
-   public static final grq<gru.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final grq<gru.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final grq<gru.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final grq<gru.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final grq<String> D = b("advancement_id", "advancementId");
-   public static final grq<Long> E = d("advancement_game_time", "advancementGameTime");
+public class grq extends atw<grq.a> {
+   public static final gqj a = new gqj("minecraft:empty", bon.a(1.0F), bon.a(1.0F), 1, gqj.a.a, false, false, 16);
+   public static final akh b = new akh("minecraft", "intentionally_empty");
+   public static final grr c = new grr(b, null);
+   public static final gqj d = new gqj(b.toString(), bon.a(1.0F), bon.a(1.0F), 1, gqj.a.a, false, false, 16);
+   static final Logger e = LogUtils.getLogger();
+   private static final String f = "sounds.json";
+   private static final Gson g = new GsonBuilder().registerTypeHierarchyAdapter(wu.class, new wu.b(jk.b)).registerTypeAdapter(gqk.class, new gql()).create();
+   private static final TypeToken<Map<String, gqk>> h = new TypeToken<Map<String, gqk>>() {
+   };
+   private final Map<akh, grr> i = Maps.newHashMap();
+   private final grn j;
+   private final Map<akh, atp> k = new HashMap<>();
 
-   public static <T> grq<T> a(String $$0, String $$1, Codec<T> $$2, grq.a<T> $$3) {
-      return new grq<>($$0, $$1, $$2, $$3);
+   public grq(fdi $$0) {
+      this.j = new grn(this, $$0, atu.fromMap(this.k));
    }
 
-   public static grq<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
+   protected grq.a a(atr $$0, bma $$1) {
+      grq.a $$2 = new grq.a();
+      $$1.a();
+      $$1.a("list");
+      $$2.a($$0);
+      $$1.c();
+
+      for (String $$3 : $$0.a()) {
+         $$1.a($$3);
+
+         try {
+            for (atp $$5 : $$0.a(new akh($$3, "sounds.json"))) {
+               $$1.a($$5.b());
+
+               try (Reader $$6 = $$5.e()) {
+                  $$1.a("parse");
+                  Map<String, gqk> $$7 = axp.a(g, $$6, h);
+                  $$1.b("register");
+
+                  for (Entry<String, gqk> $$8 : $$7.entrySet()) {
+                     $$2.a(new akh($$3, $$8.getKey()), $$8.getValue());
+                  }
+
+                  $$1.c();
+               } catch (RuntimeException var15) {
+                  e.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$5.b(), var15});
+               }
+
+               $$1.c();
+            }
+         } catch (IOException var16) {
+         }
+
+         $$1.c();
+      }
+
+      $$1.b();
+      return $$2;
    }
 
-   public static grq<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
+   protected void a(grq.a $$0, atr $$1, bma $$2) {
+      $$0.a(this.i, this.k, this.j);
+      if (aa.aX) {
+         for (akh $$3 : this.i.keySet()) {
+            grr $$4 = this.i.get($$3);
+            if (!wx.b($$4.a()) && ld.b.d($$3)) {
+               e.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
+            }
+         }
+      }
+
+      if (e.isDebugEnabled()) {
+         for (akh $$5 : this.i.keySet()) {
+            if (!ld.b.d($$5)) {
+               e.debug("Not having sound event for: {}", $$5);
+            }
+         }
+      }
+
+      this.j.a();
    }
 
-   public static grq<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
+   public List<String> a() {
+      return this.j.h();
    }
 
-   public static grq<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
+   public evu b() {
+      return this.j.i();
    }
 
-   public static grq<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, jp.d, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
-   }
-
-   public static grq<gru.a> f(String $$0, String $$1) {
-      return a($$0, $$1, gru.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
-
-   public static grq<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(grr $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
+   static boolean a(gqj $$0, akh $$1, atu $$2) {
+      akh $$3 = $$0.b();
+      if ($$2.getResource($$3).isEmpty()) {
+         e.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
+         return false;
       } else {
-         $$1.addNullProperty(this.G);
+         return true;
       }
    }
 
-   public xg a() {
-      return ws.c("telemetry.property." + this.F + ".title");
+   @Nullable
+   public grr a(akh $$0) {
+      return this.i.get($$0);
    }
 
-   @Override
-   public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
+   public Collection<akh> d() {
+      return this.i.keySet();
    }
 
-   public String b() {
-      return this.F;
+   public void a(gqn $$0) {
+      this.j.a($$0);
    }
 
-   public String c() {
-      return this.G;
+   public void a(gqm $$0) {
+      this.j.c($$0);
    }
 
-   public Codec<T> d() {
-      return this.H;
+   public void a(gqm $$0, int $$1) {
+      this.j.a($$0, $$1);
    }
 
-   public grq.a<T> e() {
-      return this.I;
+   public void a(fcp $$0) {
+      this.j.a($$0);
    }
 
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
+   public void e() {
+      this.j.e();
    }
 
-   public static enum b implements ayq {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
+   public void f() {
+      this.j.d();
+   }
 
-      public static final Codec<grq.b> f = ayq.a(grq.b::values);
-      private final String g;
-      private final int h;
+   public void g() {
+      this.j.b();
+   }
 
-      private b(String $$0, int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+   public void h() {
+      this.j.c();
+   }
+
+   public void a(boolean $$0) {
+      this.j.a($$0);
+   }
+
+   public void i() {
+      this.j.f();
+   }
+
+   public void a(avd $$0, float $$1) {
+      if ($$0 == avd.a && $$1 <= 0.0F) {
+         this.f();
       }
 
-      public int a() {
-         return this.h;
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
+      this.j.a($$0, $$1);
    }
 
-   public static enum c implements ayq {
-      a("realm"),
-      b("local"),
-      c("server");
+   public void b(gqm $$0) {
+      this.j.a($$0);
+   }
 
-      public static final Codec<grq.c> d = ayq.a(grq.c::values);
-      private final String e;
+   public boolean c(gqm $$0) {
+      return this.j.b($$0);
+   }
 
-      private c(String $$0) {
-         this.e = $$0;
+   public void a(grp $$0) {
+      this.j.a($$0);
+   }
+
+   public void b(grp $$0) {
+      this.j.b($$0);
+   }
+
+   public void a(@Nullable akh $$0, @Nullable avd $$1) {
+      this.j.a($$0, $$1);
+   }
+
+   public String j() {
+      return this.j.g();
+   }
+
+   public void k() {
+      this.j.a();
+   }
+
+   protected static class a {
+      final Map<akh, grr> a = Maps.newHashMap();
+      private Map<akh, atp> b = Map.of();
+
+      void a(atr $$0) {
+         this.b = gqj.a.a($$0);
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      void a(akh $$0, gqk $$1) {
+         grr $$2 = this.a.get($$0);
+         boolean $$3 = $$2 == null;
+         if ($$3 || $$1.b()) {
+            if (!$$3) {
+               grq.e.debug("Replaced sound event location {}", $$0);
+            }
+
+            $$2 = new grr($$0, $$1.c());
+            this.a.put($$0, $$2);
+         }
+
+         atu $$4 = atu.fromMap(this.b);
+
+         for (final gqj $$5 : $$1.a()) {
+            final akh $$6 = $$5.a();
+            grs<gqj> $$8;
+            switch ($$5.f()) {
+               case a:
+                  if (!grq.a($$5, $$0, $$4)) {
+                     continue;
+                  }
+
+                  $$8 = $$5;
+                  break;
+               case b:
+                  $$8 = new grs<gqj>() {
+                     @Override
+                     public int e() {
+                        grr $$0 = a.this.a.get($$6);
+                        return $$0 == null ? 0 : $$0.e();
+                     }
+
+                     public gqj a(ayg $$0) {
+                        grr $$1 = a.this.a.get($$6);
+                        if ($$1 == null) {
+                           return grq.a;
+                        } else {
+                           gqj $$2 = $$1.a($$0);
+                           return new gqj(
+                              $$2.a().toString(), new bot($$2.c(), $$5.c()), new bot($$2.d(), $$5.d()), $$5.e(), gqj.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i()
+                           );
+                        }
+                     }
+
+                     @Override
+                     public void a(grn $$0) {
+                        grr $$1 = a.this.a.get($$6);
+                        if ($$1 != null) {
+                           $$1.a($$0);
+                        }
+                     }
+                  };
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
+            }
+
+            $$2.a($$8);
+         }
+      }
+
+      public void a(Map<akh, grr> $$0, Map<akh, atp> $$1, grn $$2) {
+         $$0.clear();
+         $$1.clear();
+         $$1.putAll(this.b);
+
+         for (Entry<akh, grr> $$3 : this.a.entrySet()) {
+            $$0.put($$3.getKey(), $$3.getValue());
+            $$3.getValue().a($$2);
+         }
       }
    }
 }

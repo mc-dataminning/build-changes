@@ -1,112 +1,44 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class eei {
-   public static final ake<eeh> a = a("classic_flat");
-   public static final ake<eeh> b = a("tunnelers_dream");
-   public static final ake<eeh> c = a("water_world");
-   public static final ake<eeh> d = a("overworld");
-   public static final ake<eeh> e = a("snowy_kingdom");
-   public static final ake<eeh> f = a("bottomless_pit");
-   public static final ake<eeh> g = a("desert");
-   public static final ake<eeh> h = a("redstone_ready");
-   public static final ake<eeh> i = a("the_void");
+public class eei extends eel {
+   public static final Codec<eei> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eei::new));
 
-   public static void a(qj<eeh> $$0) {
-      new eei.a($$0).a();
+   public eei(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static ake<eeh> a(String $$0) {
-      return ake.a(ld.aE, new akf($$0));
+   @Override
+   protected eem<?> a() {
+      return eem.c;
    }
 
-   static class a {
-      private final qj<eeh> a;
+   @Override
+   public List<ect.a> a(daj $$0, BiConsumer<in, dqh> $$1, ayg $$2, int $$3, in $$4, ecd $$5) {
+      in $$6 = $$4.d();
+      a($$0, $$1, $$2, $$6, $$5);
+      a($$0, $$1, $$2, $$6.h(), $$5);
+      a($$0, $$1, $$2, $$6.f(), $$5);
+      a($$0, $$1, $$2, $$6.f().h(), $$5);
+      in.a $$7 = new in.a();
 
-      a(qj<eeh> $$0) {
-         this.a = $$0;
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
+         if ($$8 < $$3 - 1) {
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+         }
       }
 
-      private void a(ake<eeh> $$0, czt $$1, ake<dat> $$2, Set<ake<egm>> $$3, boolean $$4, boolean $$5, eeg... $$6) {
-         iw<egm> $$7 = this.a.a(ld.aK);
-         iw<efk> $$8 = this.a.a(ld.aH);
-         iw<dat> $$9 = this.a.a(ld.ay);
-         iz.a<egm> $$10 = iz.a($$3.stream().map($$7::b).collect(Collectors.toList()));
-         eej $$11 = new eej(Optional.of($$10), $$9.b($$2), eej.b($$8));
-         if ($$4) {
-            $$11.a();
-         }
+      return ImmutableList.of(new ect.a($$4.b($$3), 0, true));
+   }
 
-         if ($$5) {
-            $$11.b();
-         }
-
-         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
-            $$11.e().add($$6[$$12]);
-         }
-
-         this.a.a($$0, new eeh($$1.p().n(), $$11));
-      }
-
-      public void a() {
-         this.a(eei.a, dcx.i, dba.b, ImmutableSet.of(efz.a), false, false, new eeg(1, dcx.i), new eeg(2, dcx.j), new eeg(1, dcx.F));
-         this.a(eei.b, dcx.b, dba.t, ImmutableSet.of(efz.j, efz.r), true, false, new eeg(1, dcx.i), new eeg(5, dcx.j), new eeg(230, dcx.b), new eeg(1, dcx.F));
-         this.a(
-            eei.c,
-            csg.qz,
-            dba.T,
-            ImmutableSet.of(efz.m, efz.l, efz.g),
-            false,
-            false,
-            new eeg(90, dcx.G),
-            new eeg(5, dcx.L),
-            new eeg(5, dcx.j),
-            new eeg(5, dcx.b),
-            new eeg(64, dcx.sJ),
-            new eeg(1, dcx.F)
-         );
-         this.a(
-            eei.d,
-            dcx.bt,
-            dba.b,
-            ImmutableSet.of(efz.a, efz.j, efz.f, efz.k, efz.r),
-            true,
-            true,
-            new eeg(1, dcx.i),
-            new eeg(3, dcx.j),
-            new eeg(59, dcx.b),
-            new eeg(1, dcx.F)
-         );
-         this.a(
-            eei.e,
-            dcx.dN,
-            dba.d,
-            ImmutableSet.of(efz.a, efz.c),
-            false,
-            false,
-            new eeg(1, dcx.dN),
-            new eeg(1, dcx.i),
-            new eeg(3, dcx.j),
-            new eeg(59, dcx.b),
-            new eeg(1, dcx.F)
-         );
-         this.a(eei.f, csg.pt, dba.b, ImmutableSet.of(efz.a), false, false, new eeg(1, dcx.i), new eeg(3, dcx.j), new eeg(2, dcx.m));
-         this.a(
-            eei.g,
-            dcx.I,
-            dba.f,
-            ImmutableSet.of(efz.a, efz.b, efz.j, efz.r),
-            true,
-            false,
-            new eeg(8, dcx.I),
-            new eeg(52, dcx.aV),
-            new eeg(3, dcx.b),
-            new eeg(1, dcx.F)
-         );
-         this.a(eei.h, csg.lH, dba.f, ImmutableSet.of(), false, false, new eeg(116, dcx.aV), new eeg(3, dcx.b), new eeg(1, dcx.F));
-         this.a(eei.i, dcx.hW, dba.a, ImmutableSet.of(), true, false, new eeg(1, dcx.a));
-      }
+   private void a(daj $$0, BiConsumer<in, dqh> $$1, ayg $$2, in.a $$3, ecd $$4, in $$5, int $$6, int $$7, int $$8) {
+      $$3.a($$5, $$6, $$7, $$8);
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

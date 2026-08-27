@@ -1,7 +1,2 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-interface ezn {
+public interface ezn {
 }

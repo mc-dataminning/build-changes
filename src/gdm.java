@@ -1,121 +1,41 @@
-import java.util.EnumSet;
-import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class gdm implements gdo<dnk> {
+   public static final gpc a = new gpc(gmx.e, new akh("entity/bell/bell_body"));
+   private static final String b = "bell_body";
+   private final fvb c;
 
-public class gdm implements gde<dnt> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final fur h;
-   private final fur i;
-   private final fur j;
-   private final fur k;
-   private final fur l;
-   private final fur m;
-   private final fur n;
-   private final gor o = Objects.requireNonNull(gbt.a(dnu.a));
-   private static final float p = 0.125F;
-
-   public gdm(gdf.a $$0) {
-      fur $$1 = $$0.a(fuq.K);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      fur $$2 = $$0.a(fuq.L);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
+   public gdm(gdp.a $$0) {
+      fvb $$1 = $$0.a(fva.l);
+      this.c = $$1.b("bell_body");
    }
 
-   public static fux b() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      fuv $$2 = new fuv(0.2F);
-      fuv $$3 = new fuv(-0.1F);
-      $$1.a(
-         "neck",
-         fuw.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         fut.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      fuw $$4 = fuw.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, fut.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, fut.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return fux.a($$0, 32, 32);
+   public static fvh b() {
+      fvj $$0 = new fvj();
+      fvk $$1 = $$0.a();
+      fvk $$2 = $$1.a("bell_body", fvg.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fvd.a(8.0F, 12.0F, 8.0F));
+      $$2.a("bell_base", fvg.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fvd.a(-8.0F, -12.0F, -8.0F));
+      return fvh.a($$0, 32, 32);
    }
 
-   public static fux c() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      fuw $$2 = fuw.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(ir.c));
-      $$1.a("back", $$2, fut.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, fut.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, fut.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, fut.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return fux.a($$0, 16, 16);
-   }
-
-   @Nullable
-   private static gor a(Optional<cry> $$0) {
-      if ($$0.isPresent()) {
-         gor $$1 = gbt.a(dnu.a($$0.get()));
-         if ($$1 != null) {
-            return $$1;
+   public void a(dnk $$0, float $$1, exx $$2, gbo $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      float $$7 = 0.0F;
+      float $$8 = 0.0F;
+      if ($$0.b) {
+         float $$9 = axz.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
+         if ($$0.c == is.c) {
+            $$7 = -$$9;
+         } else if ($$0.c == is.d) {
+            $$7 = $$9;
+         } else if ($$0.c == is.f) {
+            $$8 = -$$9;
+         } else if ($$0.c == is.e) {
+            $$8 = $$9;
          }
       }
 
-      return gbt.a(dnu.a(csg.qL));
-   }
-
-   public void a(dnt $$0, float $$1, exn $$2, gbe $$3, int $$4, int $$5) {
-      $$2.a();
-      ir $$6 = $$0.k();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      dnt.a $$7 = $$0.i;
-      if ($$7 != null && $$0.i() != null) {
-         float $$8 = ((float)($$0.i().Y() - $$0.h) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == dnt.a.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (axw.b($$10) + 0.5F) * axw.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = axw.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
-            } else {
-               float $$13 = axw.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
-            }
-         }
-      }
-
-      exr $$15 = this.o.a($$3, gbm::c);
-      this.h.a($$2, $$15, $$4, $$5);
-      this.m.a($$2, $$15, $$4, $$5);
-      this.n.a($$2, $$15, $$4, $$5);
-      doh $$16 = $$0.l();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
-      $$2.b();
-   }
-
-   private void a(fur $$0, exn $$1, gbe $$2, int $$3, int $$4, @Nullable gor $$5) {
-      if ($$5 == null) {
-         $$5 = a(Optional.empty());
-      }
-
-      if ($$5 != null) {
-         $$0.a($$1, $$5.a($$2, gbm::c), $$3, $$4);
-      }
+      this.c.e = $$7;
+      this.c.g = $$8;
+      eyb $$10 = a.a($$3, gbw::c);
+      this.c.a($$2, $$10, $$4, $$5);
    }
 }

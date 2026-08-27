@@ -1,35 +1,42 @@
+import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
 import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
-public enum brp {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4),
-   f(5),
-   g(6),
-   h(7),
-   i(8),
-   j(9),
-   k(10),
-   l(11),
-   m(12),
-   n(13),
-   o(14),
-   p(15),
-   q(16),
-   r(17);
+public enum brp implements ayt {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", bro.a),
+   c(2, "offhand", bro.b),
+   d(3, "hand", $$0 -> $$0.a() == bro.a.a),
+   e(4, "feet", bro.c),
+   f(5, "legs", bro.d),
+   g(6, "chest", bro.e),
+   h(7, "head", bro.f),
+   i(8, "armor", bro::f);
 
-   public static final IntFunction<brp> s = awn.a(brp::a, values(), awn.a.a);
-   public static final yq<ByteBuf, brp> t = yo.a(s, brp::a);
-   private final int u;
+   public static final IntFunction<brp> j = awq.a($$0 -> $$0.m, values(), awq.a.a);
+   public static final Codec<brp> k = ayt.a(brp::values);
+   public static final ys<ByteBuf, brp> l = yq.a(j, $$0 -> $$0.m);
+   private final int m;
+   private final String n;
+   private final Predicate<bro> o;
 
-   private brp(int $$0) {
-      this.u = $$0;
+   private brp(int $$0, String $$1, Predicate<bro> $$2) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
    }
 
-   public int a() {
-      return this.u;
+   private brp(int $$0, String $$1, bro $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
+   }
+
+   @Override
+   public String c() {
+      return this.n;
+   }
+
+   public boolean a(bro $$0) {
+      return this.o.test($$0);
    }
 }

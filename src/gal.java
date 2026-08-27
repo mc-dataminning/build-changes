@@ -1,36 +1,22 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+public class gal extends fxv {
+   private static final int a = 12235202;
 
-public class gal implements bmn {
-   private final gbc a;
-   private final Set<bml> b = new ObjectOpenHashSet();
-   private final bmt c = new bmt();
-
-   public gal(LongSupplier $$0, gbc $$1) {
-      this.a = $$1;
-      this.b.add(bmu.a($$0));
-      this.a();
+   protected gal(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fzx $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+      this.v = 0.7294118F;
+      this.w = 0.69411767F;
+      this.x = 0.7607843F;
    }
 
-   private void a() {
-      this.b.addAll(bmu.a());
-      this.b.add(bml.a("totalChunks", bmk.f, this.a, gbc::i));
-      this.b.add(bml.a("renderedChunks", bmk.f, this.a, gbc::k));
-      this.b.add(bml.a("lastViewDistance", bmk.f, this.a, gbc::j));
-      gee $$0 = this.a.h();
-      this.b.add(bml.a("toUpload", bmk.g, $$0, gee::c));
-      this.b.add(bml.a("freeBufferCount", bmk.g, $$0, gee::d));
-      this.b.add(bml.a("toBatchCount", bmk.g, $$0, gee::b));
-      if (exg.a().isPresent()) {
-         this.b.add(bml.a("gpuUtilization", bmk.i, fcu.Q(), fcu::v));
+   public static class a implements fzf<la> {
+      private final fzx a;
+
+      public a(fzx $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public Set<bml> a(Supplier<blc> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gal($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      }
    }
 }

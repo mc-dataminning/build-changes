@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.gson.JsonObject;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface asq {
+public interface asq<T> {
+   String a();
+
+   T a(JsonObject var1);
 }

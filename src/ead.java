@@ -1,39 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class ead extends dyu<ebf> {
-   public ead(Codec<ebf> $$0) {
+public class ead extends dzd<ebw> {
+   public ead(Codec<ebw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyw<ebf> $$0) {
-      dap $$1 = $$0.b();
-      im $$2 = $$0.e();
-      im.a $$3 = new im.a();
-      im.a $$4 = new im.a();
+   public boolean a(dzf<ebw> $$0) {
+      ebw $$1 = $$0.f();
+      day $$2 = $$0.b();
+      ayg $$3 = $$0.d();
+      dde $$4 = $$1.b.b();
+      in $$5 = a($$2, $$0.e().j().a(is.a.b, $$2.I_() + 1, $$2.al() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(dvq.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(ir.a, 1);
-            dat $$10 = $$1.t($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, dcx.dO.n(), 2);
+         for (in $$11 : in.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
             }
 
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, dcx.dN.n(), 2);
-               dpy $$11 = $$1.a_($$4);
-               if ($$11.b(dkf.c)) {
-                  $$1.a($$4, $$11.a(dkf.c, Boolean.valueOf(true)), 2);
-               }
+            dqh $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
             }
          }
+
+         return $$10;
+      }
+   }
+
+   @Nullable
+   private static in a(dae $$0, in.a $$1, dde $$2) {
+      while ($$1.v() > $$0.I_() + 1) {
+         dqh $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(is.a);
       }
 
-      return true;
+      return null;
    }
 }

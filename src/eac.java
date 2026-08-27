@@ -1,19 +1,24 @@
 import com.mojang.serialization.Codec;
 
-public class eac extends dyu<ebr> {
-   public eac(Codec<ebr> $$0) {
+public class eac extends dzd<ebt> {
+   public eac(Codec<ebt> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyw<ebr> $$0) {
-      ayd $$1 = $$0.d();
-      ebr $$2 = $$0.f();
-      dap $$3 = $$0.b();
-      im $$4 = $$0.e();
-      drv $$5 = $$0.c();
-      int $$6 = $$1.a($$2.b.b());
-      efk $$7 = $$2.b.a($$6).a();
-      return $$7.a($$3, $$5, $$1, $$4);
+   public boolean a(dzf<ebt> $$0) {
+      ebt $$1 = $$0.f();
+      ayg $$2 = $$0.d();
+      day $$3 = $$0.b();
+      dse $$4 = $$0.c();
+      in $$5 = $$0.e();
+
+      for (eax $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
+         }
+      }
+
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

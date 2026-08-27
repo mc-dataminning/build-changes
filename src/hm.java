@@ -1,18 +1,13 @@
-import java.util.function.Consumer;
+public class hm<T extends ef<T>> implements hb<T> {
+   private static final hm<? extends ef<?>> a = (hm<? extends ef<?>>)(new hm<>());
 
-public class hm<T extends ee<T>> implements ha<T> {
-   private final Consumer<hc<T>> a;
-   private final dz b;
-
-   public hm(Consumer<hc<T>> $$0, dz $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static <T extends ef<T>> hb<T> a() {
+      return (hb<T>)a;
    }
 
    @Override
-   public void execute(hb<T> $$0, hd $$1) {
-      int $$2 = $$1.c() + 1;
-      hd $$3 = new hd($$2, this.b, $$0.b($$2));
-      this.a.accept(hc.a($$0, $$3));
+   public void execute(hc<T> $$0, he $$1) {
+      $$1.a();
+      $$1.b();
    }
 }

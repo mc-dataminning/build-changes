@@ -1,47 +1,56 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-
-public class cer {
-   private static final float a = 2.0F;
-   private static final float b = 0.5F;
-   private static final float c = 1.25F;
-
-   protected static bsf<?> a(bsf<ceq> $$0) {
-      b($$0);
-      c($$0);
-      $$0.a(ImmutableSet.of(cma.a));
-      $$0.b(cma.b);
-      $$0.f();
-      return $$0;
+public abstract class cer extends bsi {
+   protected cer(brn<? extends cer> $$0, dad $$1) {
+      super($$0, $$1);
+      this.a(emr.j, 0.0F);
    }
 
-   private static void b(bsf<ceq> $$0) {
-      $$0.a(cma.a, 0, ImmutableList.of(new bsr(2.0F), new buc(45, 90), new bug(), new btc(cah.P)));
+   @Override
+   public boolean a(dag $$0) {
+      return $$0.f(this);
    }
 
-   private static void c(bsf<ceq> $$0) {
-      $$0.a(
-         cma.b,
-         ImmutableList.of(
-            Pair.of(0, buw.a(bqr.bx, 6.0F, bob.a(30, 60))),
-            Pair.of(1, new btj($$0x -> 1.25F)),
-            Pair.of(
-               2,
-               new btk(
-                  ImmutableMap.of(cah.m, cai.b),
-                  ImmutableSet.of(),
-                  btk.a.a,
-                  btk.b.b,
-                  ImmutableList.of(Pair.of(buo.c(0.5F), 2), Pair.of(bvd.a(0.5F, 3), 3), Pair.of(bwj.a(bql::bf), 5))
-               )
-            )
-         )
-      );
+   @Override
+   public int O() {
+      return 120;
    }
 
-   public static void a(ceq $$0) {
-      $$0.dQ().a(ImmutableList.of(cma.b));
+   @Override
+   public int eh() {
+      return 1 + this.dN().z.a(3);
+   }
+
+   protected void b(int $$0) {
+      if (this.bB() && !this.bf()) {
+         this.k($$0 - 1);
+         if (this.cj() == -20) {
+            this.k(0);
+            this.a(this.dO().h(), 2.0F);
+         }
+      } else {
+         this.k(300);
+      }
+   }
+
+   @Override
+   public void as() {
+      int $$0 = this.cj();
+      super.as();
+      this.b($$0);
+   }
+
+   @Override
+   public boolean cA() {
+      return false;
+   }
+
+   @Override
+   public boolean a(clh $$0) {
+      return false;
+   }
+
+   public static boolean c(brn<? extends cer> $$0, dae $$1, bse $$2, in $$3, ayg $$4) {
+      int $$5 = $$1.z_();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.d()).a(avw.a) && $$1.a_($$3.c()).a(ddg.G);
    }
 }

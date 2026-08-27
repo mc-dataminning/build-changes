@@ -1,128 +1,79 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
-
-public class dhq extends djj implements djw {
-   public static final MapCodec<dhq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dpn.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dhq::new)
-   );
-   public static final dqy b = dqo.at;
-   public static final int c = 4;
-   private static final ety[] j = new ety[]{
-      dcv.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
-      dcv.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
-      dcv.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
-      dcv.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
-      dcv.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private static final dqp k = dqo.C;
-   public static final dqp d = dqo.j;
-
-   @Override
-   public MapCodec<dhq> a() {
-      return a;
-   }
-
-   public dhq(dpn $$0, dpx.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(f, Integer.valueOf(0)).a(b, Integer.valueOf(0)).a(k, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(f).a(b).a(k).a(d);
-   }
-
-   @Override
-   protected boolean b(dpy $$0, cza $$1, im $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(dcx.dR);
-   }
-
-   @Nullable
-   @Override
-   public dpy a(cvl $$0) {
-      elr $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == els.c;
-      return super.a($$0).a(k, Boolean.valueOf($$2)).a(b, Integer.valueOf(4));
-   }
-
-   @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      etf $$4 = $$0.n($$1, $$2);
-      ety $$5;
-      if (!$$0.c(d)) {
-         $$5 = j[4];
-      } else {
-         $$5 = j[$$0.c(b)];
-      }
-
-      return $$5.a($$4.c, $$4.d, $$4.e);
-   }
-
-   @Override
-   protected boolean a(dpy $$0, czx $$1, im $$2) {
-      return m($$0) ? $$1.a_($$2.c()).a(dcx.aL) : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      if ($$0.c(k)) {
-         $$3.a($$4, els.c, els.c.a($$3));
-      }
-
-      return $$1 == ir.b && !$$0.a($$3, $$4) ? dcx.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected elr c_(dpy $$0) {
-      return $$0.c(k) ? els.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
-      if (!m($$0)) {
-         if ($$3.a(7) == 0) {
-            this.a($$1, $$2, $$0, $$3);
-         }
-      } else {
-         if (!n($$0)) {
-            $$1.a($$2, $$0.a(b), 2);
-         }
-      }
-   }
-
-   @Override
-   public boolean b(czx $$0, im $$1, dpy $$2) {
-      return !m($$2) || !n($$2);
-   }
-
-   @Override
-   public boolean a(czu $$0, ayd $$1, im $$2, dpy $$3) {
-      return m($$3) ? !n($$3) : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(aqe $$0, ayd $$1, im $$2, dpy $$3) {
-      if (m($$3) && !n($$3)) {
-         $$0.a($$2, $$3.a(b), 2);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private static boolean m(dpy $$0) {
-      return $$0.c(d);
-   }
-
-   private static boolean n(dpy $$0) {
-      return $$0.c(b) == 4;
-   }
-
-   public static dpy c() {
-      return b(0);
-   }
-
-   public static dpy b(int $$0) {
-      return dcx.E.n().a(d, Boolean.valueOf(true)).a(b, Integer.valueOf($$0));
-   }
+public class dhq {
+   public static final int a = 1000;
+   public static final int b = 1001;
+   public static final int c = 1002;
+   public static final int d = 1003;
+   public static final int e = 1004;
+   public static final int f = 1009;
+   public static final int g = 1010;
+   public static final int h = 1011;
+   public static final int i = 1015;
+   public static final int j = 1016;
+   public static final int k = 1017;
+   public static final int l = 1018;
+   public static final int m = 1019;
+   public static final int n = 1020;
+   public static final int o = 1021;
+   public static final int p = 1022;
+   public static final int q = 1023;
+   public static final int r = 1024;
+   public static final int s = 1025;
+   public static final int t = 1026;
+   public static final int u = 1027;
+   public static final int v = 1028;
+   public static final int w = 1029;
+   public static final int x = 1030;
+   public static final int y = 1031;
+   public static final int z = 1032;
+   public static final int A = 1033;
+   public static final int B = 1034;
+   public static final int C = 1035;
+   public static final int D = 1038;
+   public static final int E = 1039;
+   public static final int F = 1040;
+   public static final int G = 1041;
+   public static final int H = 1042;
+   public static final int I = 1043;
+   public static final int J = 1044;
+   public static final int K = 1045;
+   public static final int L = 1046;
+   public static final int M = 1047;
+   public static final int N = 1048;
+   public static final int O = 1049;
+   public static final int P = 1050;
+   public static final int Q = 1500;
+   public static final int R = 1501;
+   public static final int S = 1502;
+   public static final int T = 1503;
+   public static final int U = 1504;
+   public static final int V = 1505;
+   public static final int W = 2000;
+   public static final int X = 2001;
+   public static final int Y = 2002;
+   public static final int Z = 2003;
+   public static final int aa = 2004;
+   public static final int ab = 2006;
+   public static final int ac = 2007;
+   public static final int ad = 2008;
+   public static final int ae = 2009;
+   public static final int af = 2010;
+   public static final int ag = 2011;
+   public static final int ah = 2012;
+   public static final int ai = 3000;
+   public static final int aj = 3001;
+   public static final int ak = 3002;
+   public static final int al = 3003;
+   public static final int am = 3004;
+   public static final int an = 3005;
+   public static final int ao = 3006;
+   public static final int ap = 3007;
+   public static final int aq = 3008;
+   public static final int ar = 3009;
+   public static final int as = 3011;
+   public static final int at = 3012;
+   public static final int au = 3013;
+   public static final int av = 3014;
+   public static final int aw = 3015;
+   public static final int ax = 3016;
+   public static final int ay = 3017;
 }

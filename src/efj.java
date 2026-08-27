@@ -1,37 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class efj extends efr {
-   public static final Codec<efj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, efj::new)
-   );
-   private final double c;
-   private final int d;
-   private final int e;
+public class efj extends efw {
+   public static final Codec<efj> a = dvv.a.c.fieldOf("step").xmap(efj::new, $$0 -> $$0.c).codec();
+   private final dvv.a c;
 
-   private efj(double $$0, int $$1, int $$2) {
+   private efj(dvv.a $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static efj a(double $$0, int $$1, int $$2) {
-      return new efj($$0, $$1, $$2);
-   }
-
-   @Override
-   protected int a(ayd $$0, im $$1) {
-      double $$2 = dat.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   public static efj a(dvv.a $$0) {
+      return new efj($$0);
    }
 
    @Override
-   public efo<?> b() {
-      return efo.h;
+   public Stream<in> a_(efu $$0, ayg $$1, in $$2) {
+      czk $$3 = new czk($$2);
+      return $$0.a($$3, this.c).a($$3);
+   }
+
+   @Override
+   public efx<?> b() {
+      return efx.o;
    }
 }

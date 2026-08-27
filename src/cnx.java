@@ -1,9 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface cnx extends boj, cpi {
-   int f();
-
-   int g();
-
-   List<csd> h();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cnx {
 }

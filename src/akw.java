@@ -1,233 +1,95 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class akw extends euj {
-   private final MinecraftServer b;
-   private final Set<eub> c = Sets.newHashSet();
-   private final List<Runnable> d = Lists.newArrayList();
+public class akw {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akh b = new akh("tick");
+   private static final akh c = new akh("load");
+   private final MinecraftServer d;
+   private List<hp<ed>> e = ImmutableList.of();
+   private boolean f;
+   private akv g;
 
-   public akw(MinecraftServer $$0) {
-      this.b = $$0;
+   public akw(MinecraftServer $$0, akv $$1) {
+      this.d = $$0;
+      this.g = $$1;
+      this.b($$1);
    }
 
-   @Override
-   protected void a(eui $$0, eub $$1, eug $$2) {
-      super.a($$0, $$1, $$2);
-      if (this.c.contains($$1)) {
-         this.b.ah().a(new aex($$0.cz(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
-      }
-
-      this.a();
+   public CommandDispatcher<ed> a() {
+      return this.d.aH().a();
    }
 
-   @Override
-   protected void a(eui $$0, eub $$1) {
-      super.a($$0, $$1);
-      this.a();
-   }
-
-   @Override
-   public void a(eui $$0) {
-      super.a($$0);
-      this.b.ah().a(new adw($$0.cz(), null));
-      this.a();
-   }
-
-   @Override
-   public void b(eui $$0, eub $$1) {
-      super.b($$0, $$1);
-      if (this.c.contains($$1)) {
-         this.b.ah().a(new adw($$0.cz(), $$1.b()));
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void a(eua $$0, @Nullable eub $$1) {
-      eub $$2 = this.a($$0);
-      super.a($$0, $$1);
-      if ($$2 != $$1 && $$2 != null) {
-         if (this.h($$2) > 0) {
-            this.b.ah().a(new aen($$0, $$1));
-         } else {
-            this.g($$2);
+   public void b() {
+      if (this.d.aQ().i()) {
+         if (this.f) {
+            this.f = false;
+            Collection<hp<ed>> $$0 = this.g.b(c);
+            this.a($$0, c);
          }
-      }
 
-      if ($$1 != null) {
-         if (this.c.contains($$1)) {
-            this.b.ah().a(new aen($$0, $$1));
-         } else {
-            this.e($$1);
-         }
-      }
-
-      this.a();
-   }
-
-   @Override
-   public boolean a(String $$0, eue $$1) {
-      if (super.a($$0, $$1)) {
-         this.b.ah().a(aew.a($$1, $$0, aew.a.a));
-         this.a();
-         return true;
-      } else {
-         return false;
+         this.a(this.e, b);
       }
    }
 
-   @Override
-   public void b(String $$0, eue $$1) {
-      super.b($$0, $$1);
-      this.b.ah().a(aew.a($$1, $$0, aew.a.b));
-      this.a();
-   }
+   private void a(Collection<hp<ed>> $$0, akh $$1) {
+      this.d.aT().a($$1::toString);
 
-   @Override
-   public void a(eub $$0) {
-      super.a($$0);
-      this.a();
-   }
-
-   @Override
-   public void b(eub $$0) {
-      super.b($$0);
-      if (this.c.contains($$0)) {
-         this.b.ah().a(new aeu($$0, 2));
+      for (hp<ed> $$2 : $$0) {
+         this.a($$2, this.c());
       }
 
-      this.a();
+      this.d.aT().c();
    }
 
-   @Override
-   public void c(eub $$0) {
-      super.c($$0);
-      if (this.c.contains($$0)) {
-         this.g($$0);
-      }
+   public void a(hp<ed> $$0, ed $$1) {
+      bma $$2 = this.d.aT();
+      $$2.a(() -> "function " + $$0.a());
 
-      this.a();
-   }
-
-   @Override
-   public void a(eue $$0) {
-      super.a($$0);
-      this.b.ah().a(aew.a($$0, true));
-      this.a();
-   }
-
-   @Override
-   public void b(eue $$0) {
-      super.b($$0);
-      this.b.ah().a(aew.a($$0, false));
-      this.a();
-   }
-
-   @Override
-   public void c(eue $$0) {
-      super.c($$0);
-      this.b.ah().a(aew.a($$0));
-      this.a();
-   }
-
-   public void a(Runnable $$0) {
-      this.d.add($$0);
-   }
-
-   protected void a() {
-      for (Runnable $$0 : this.d) {
-         $$0.run();
+      try {
+         hr<ed> $$3 = $$0.a(null, this.a());
+         ee.a($$1, $$2x -> hc.a($$2x, $$3, $$1, ea.a));
+      } catch (eg var9) {
+      } catch (Exception var10) {
+         a.warn("Failed to execute function {}", $$0.a(), var10);
+      } finally {
+         $$2.c();
       }
    }
 
-   public List<yz<?>> d(eub $$0) {
-      List<yz<?>> $$1 = Lists.newArrayList();
-      $$1.add(new aeu($$0, 0));
-
-      for (eua $$2 : eua.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new aen($$2, $$0));
-         }
-      }
-
-      for (euc $$3 : this.i($$0)) {
-         $$1.add(new aex($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
-      }
-
-      return $$1;
+   public void a(akv $$0) {
+      this.g = $$0;
+      this.b($$0);
    }
 
-   public void e(eub $$0) {
-      List<yz<?>> $$1 = this.d($$0);
-
-      for (aqf $$2 : this.b.ah().t()) {
-         for (yz<?> $$3 : $$1) {
-            $$2.d.b($$3);
-         }
-      }
-
-      this.c.add($$0);
+   private void b(akv $$0) {
+      this.e = ImmutableList.copyOf($$0.b(b));
+      this.f = true;
    }
 
-   public List<yz<?>> f(eub $$0) {
-      List<yz<?>> $$1 = Lists.newArrayList();
-      $$1.add(new aeu($$0, 1));
-
-      for (eua $$2 : eua.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new aen($$2, $$0));
-         }
-      }
-
-      return $$1;
+   public ed c() {
+      return this.d.aI().a(2).a();
    }
 
-   public void g(eub $$0) {
-      List<yz<?>> $$1 = this.f($$0);
-
-      for (aqf $$2 : this.b.ah().t()) {
-         for (yz<?> $$3 : $$1) {
-            $$2.d.b($$3);
-         }
-      }
-
-      this.c.remove($$0);
+   public Optional<hp<ed>> a(akh $$0) {
+      return this.g.a($$0);
    }
 
-   public int h(eub $$0) {
-      int $$1 = 0;
-
-      for (eua $$2 : eua.values()) {
-         if (this.a($$2) == $$0) {
-            $$1++;
-         }
-      }
-
-      return $$1;
+   public Collection<hp<ed>> b(akh $$0) {
+      return this.g.b($$0);
    }
 
-   public emy.a<euk> b() {
-      return new emy.a<>(this::h, this::a, azc.n);
+   public Iterable<akh> d() {
+      return this.g.a().keySet();
    }
 
-   private euk h() {
-      euk $$0 = new euk(this);
-      this.a($$0::c);
-      return $$0;
-   }
-
-   private euk a(ty $$0, ix.a $$1) {
-      return this.h().b($$0, $$1);
-   }
-
-   public static enum a {
-      a,
-      b;
+   public Iterable<akh> e() {
+      return this.g.b();
    }
 }

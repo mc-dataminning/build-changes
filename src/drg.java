@@ -1,21 +1,20 @@
-public enum drg implements ayq {
+public enum drg implements ayt {
    a("top"),
-   b("bottom"),
-   c("double");
+   b("bottom");
 
-   private final String d;
+   private final String c;
 
    private drg(String $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

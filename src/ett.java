@@ -1,53 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public interface ett {
+   ett a = ($$0, $$1) -> false;
+   ett b = ($$0, $$1) -> !$$0 && !$$1;
+   ett c = ($$0, $$1) -> $$1 && !$$0;
+   ett d = ($$0, $$1) -> !$$0;
+   ett e = ($$0, $$1) -> $$0 && !$$1;
+   ett f = ($$0, $$1) -> !$$1;
+   ett g = ($$0, $$1) -> $$0 != $$1;
+   ett h = ($$0, $$1) -> !$$0 || !$$1;
+   ett i = ($$0, $$1) -> $$0 && $$1;
+   ett j = ($$0, $$1) -> $$0 == $$1;
+   ett k = ($$0, $$1) -> $$1;
+   ett l = ($$0, $$1) -> !$$0 || $$1;
+   ett m = ($$0, $$1) -> $$0;
+   ett n = ($$0, $$1) -> $$0 || !$$1;
+   ett o = ($$0, $$1) -> $$0 || $$1;
+   ett p = ($$0, $$1) -> true;
 
-public class ett extends AbstractDoubleList implements etr {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
-
-   protected ett(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size() + this.b.size();
-   }
-
-   @Override
-   public boolean a(etr.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
-   }
-
-   private boolean b(etr.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
-         }
-      }
-
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
-   }
-
-   @Override
-   public DoubleList a() {
-      return this;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

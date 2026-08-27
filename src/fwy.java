@@ -1,77 +1,102 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public class fwy implements AutoCloseable {
-   private final Long2ObjectOpenHashMap<fwy.a> a = new Long2ObjectOpenHashMap();
-   private int b;
-   private boolean c;
+public class fwy {
+   final int a;
+   private final List<fwy.a> b = new ArrayList<>();
 
-   public void a(im $$0, dpy $$1, gag $$2) {
-      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new fwy.a(this.b, $$1, $$2.dl()));
+   public fwy(int $$0) {
+      this.a = $$0;
    }
 
-   public boolean a(im $$0, dpy $$1) {
-      fwy.a $$2 = (fwy.a)this.a.get($$0.a());
-      if ($$2 == null) {
-         return false;
-      } else {
-         $$2.a($$1);
-         return true;
-      }
-   }
+   public void a(fwq $$0, IntCollection $$1, fwy.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
 
-   public void a(int $$0, fvm $$1) {
-      ObjectIterator<Entry<fwy.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<fwy.a> $$3 = (Entry<fwy.a>)$$2.next();
-         fwy.a $$4 = (fwy.a)$$3.getValue();
-         if ($$4.b <= $$0) {
-            im $$5 = im.d($$3.getLongKey());
-            $$2.remove();
-            $$1.a($$5, $$4.c, $$4.a);
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         fws $$6 = $$0.b($$4);
+         if ($$6 instanceof fwt.a) {
+            fwt.a $$5 = (fwt.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
          }
       }
    }
 
-   public fwy a() {
-      this.b++;
-      this.c = true;
-      return this;
+   public void a(xk $$0) {
+      this.b.add(new fwy.a($$0));
    }
 
-   @Override
-   public void close() {
-      this.c = false;
-   }
+   public boolean b(xk $$0) {
+      boolean $$1 = false;
+      Iterator<fwy.a> $$2 = this.b.iterator();
 
-   public int b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   static class a {
-      final etf a;
-      int b;
-      dpy c;
-
-      a(int $$0, dpy $$1, etf $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
+      while ($$2.hasNext()) {
+         fwy.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
       }
 
-      fwy.a a(int $$0) {
-         this.b = $$0;
-         return this;
-      }
+      return $$1;
+   }
 
-      void a(dpy $$0) {
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<xg> b;
+      private xk c;
+      private boolean d = true;
+      private int e;
+
+      a(xk $$0) {
+         this.b = new ObjectOpenHashSet($$0.m().d().a());
          this.c = $$0;
       }
+
+      boolean a(xk $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.l());
+            if (this.d && this.c.g().equals($$0.g())) {
+               if (this.c.k().a($$0.k())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= fwy.this.a || !this.d && this.b.isEmpty();
+      }
+   }
+
+   public interface b {
+      void accept(int var1, fwt.a var2);
    }
 }

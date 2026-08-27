@@ -1,132 +1,102 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dfm extends dbp<dny> implements djw {
-   public static final MapCodec<dfm> b = b(dfm::new);
-   public static final dqs c = dgr.aE;
-   public static final dqp d = dqo.C;
-   protected static final ety e = dcv.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   private static final ws f = ws.c("container.enderchest");
+public class dfm extends ddn {
+   public static final MapCodec<dfm> a = b(dfm::new);
+   public static final drf<drd> b = dqx.ae;
 
    @Override
-   public MapCodec<dfm> a() {
-      return b;
+   public MapCodec<? extends dfm> a() {
+      return a;
    }
 
-   protected dfm(dpx.d $$0) {
-      super($$0, () -> dnf.d);
-      this.k(this.E.b().a(c, ir.c).a(d, Boolean.valueOf(false)));
+   public dfm(dqg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, drd.b));
    }
 
    @Override
-   public dfc.c<? extends dnk> a(dpy $$0, czu $$1, im $$2, boolean $$3) {
-      return dfc.b::b;
-   }
-
-   @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      return e;
-   }
-
-   @Override
-   protected djb b_(dpy $$0) {
-      return djb.b;
-   }
-
-   @Override
-   public dpy a(cvl $$0) {
-      elr $$1 = $$0.q().b_($$0.a());
-      return this.n().a(c, $$0.g().g()).a(d, Boolean.valueOf($$1.a() == els.c));
-   }
-
-   @Override
-   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
-      cou $$5 = $$3.gn();
-      dnd $$6 = $$1.c_($$2);
-      if ($$5 != null && $$6 instanceof dny) {
-         im $$7 = $$2.c();
-         if ($$1.a_($$7).g($$1, $$7)) {
-            return boq.a($$1.B);
-         } else if ($$1.B) {
-            return boq.a;
-         } else {
-            dny $$8 = (dny)$$6;
-            $$5.a($$8);
-            $$3.a(new bpa(($$1x, $$2x, $$3x) -> cno.a($$1x, $$2x, $$5), f));
-            $$3.a(avj.aj);
-            cjc.a($$3, true);
-            return boq.b;
-         }
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      drd $$6 = $$0.c(b);
+      if ($$1.o() != is.a.b || $$6 == drd.b != ($$1 == is.b) || $$2.a(this) && $$2.c(b) != $$6) {
+         return $$6 == drd.b && $$1 == is.a && !$$0.a($$3, $$4) ? ddg.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         return boq.a($$1.B);
+         return ddg.a.n();
       }
-   }
-
-   @Override
-   public dnd a(im $$0, dpy $$1) {
-      return new dny($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
-      return $$0.B ? a($$2, dnf.d, dny::a) : null;
+   public dqh a(cwi $$0) {
+      in $$1 = $$0.a();
+      dad $$2 = $$0.q();
+      return $$1.v() < $$2.al() - 1 && $$2.a_($$1.c()).a($$0) ? super.a($$0) : null;
    }
 
    @Override
-   public void a(dpy $$0, czu $$1, im $$2, ayd $$3) {
-      for (int $$4 = 0; $$4 < 3; $$4++) {
-         int $$5 = $$3.a(2) * 2 - 1;
-         int $$6 = $$3.a(2) * 2 - 1;
-         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
-         double $$8 = (double)((float)$$2.v() + $$3.i());
-         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
-         double $$10 = (double)($$3.i() * (float)$$5);
-         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
-         double $$12 = (double)($$3.i() * (float)$$6);
-         $$1.a(kw.Z, $$7, $$8, $$9, $$10, $$11, $$12);
+   public void a(dad $$0, in $$1, dqh $$2, bsa $$3, csz $$4) {
+      in $$5 = $$1.c();
+      $$0.a($$5, c($$0, $$5, this.n().a(b, drd.a)), 3);
+   }
+
+   @Override
+   protected boolean a(dqh $$0, dag $$1, in $$2) {
+      if ($$0.c(b) != drd.a) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         dqh $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(b) == drd.b;
+      }
+   }
+
+   public static void a(dae $$0, dqh $$1, in $$2, int $$3) {
+      in $$4 = $$2.c();
+      $$0.a($$2, c($$0, $$2, $$1.a(b, drd.b)), $$3);
+      $$0.a($$4, c($$0, $$4, $$1.a(b, drd.a)), $$3);
+   }
+
+   public static dqh c(dag $$0, in $$1, dqh $$2) {
+      return $$2.b(dqx.C) ? $$2.a(dqx.C, Boolean.valueOf($$0.z($$1))) : $$2;
+   }
+
+   @Override
+   public dqh a(dad $$0, in $$1, dqh $$2, clh $$3) {
+      if (!$$0.B) {
+         if ($$3.f()) {
+            b($$0, $$1, $$2, $$3);
+         } else {
+            a($$2, $$0, $$1, null, $$3, $$3.eV());
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(dad $$0, clh $$1, in $$2, dqh $$3, @Nullable dnm $$4, csz $$5) {
+      super.a($$0, $$1, $$2, ddg.a.n(), $$4, $$5);
+   }
+
+   protected static void b(dad $$0, in $$1, dqh $$2, clh $$3) {
+      drd $$4 = $$2.c(b);
+      if ($$4 == drd.a) {
+         in $$5 = $$1.d();
+         dqh $$6 = $$0.a_($$5);
+         if ($$6.a($$2.b()) && $$6.c(b) == drd.b) {
+            dqh $$7 = $$6.u().b(emb.c) ? ddg.G.n() : ddg.a.n();
+            $$0.a($$5, $$7, 35);
+            $$0.a($$3, 2001, $$5, dde.i($$6));
+         }
       }
    }
 
    @Override
-   protected dpy a(dpy $$0, dji $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected dpy a(dpy $$0, dhs $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   protected elr c_(dpy $$0) {
-      return $$0.c(d) ? els.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, els.c, els.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dpy $$0, emg $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
-      dnd $$4 = $$1.c_($$2);
-      if ($$4 instanceof dny) {
-         ((dny)$$4).b();
-      }
+   protected long a(dqh $$0, in $$1) {
+      return axz.b($$1.u(), $$1.c($$0.c(b) == drd.b ? 0 : 1).v(), $$1.w());
    }
 }

@@ -1,34 +1,18 @@
-@FunctionalInterface
-public interface dz {
-   dz a = new dz() {
-      @Override
-      public void onResult(boolean $$0, int $$1) {
-      }
+import java.util.Optional;
+import java.util.stream.Stream;
 
-      @Override
-      public String toString() {
-         return "<empty>";
-      }
-   };
+public interface dz extends iy.a {
+   static dz a(final iy.a $$0, final cnu $$1) {
+      return new dz() {
+         @Override
+         public Stream<akg<? extends jj<?>>> a() {
+            return $$0.a();
+         }
 
-   void onResult(boolean var1, int var2);
-
-   default void onSuccess(int $$0) {
-      this.onResult(true, $$0);
-   }
-
-   default void onFailure() {
-      this.onResult(false, 0);
-   }
-
-   static dz chain(dz $$0, dz $$1) {
-      if ($$0 == a) {
-         return $$1;
-      } else {
-         return $$1 == a ? $$0 : ($$2, $$3) -> {
-            $$0.onResult($$2, $$3);
-            $$1.onResult($$2, $$3);
-         };
-      }
+         @Override
+         public <T> Optional<iy.b<T>> a(akg<? extends jj<? extends T>> $$0x) {
+            return $$0.a($$0).map($$1xx -> $$1xx.a($$1));
+         }
+      };
    }
 }

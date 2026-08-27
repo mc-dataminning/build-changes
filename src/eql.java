@@ -1,33 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class eql extends epo {
+public class eql extends epw {
    public static final Codec<eql> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(cvi.c.fieldOf("pages").forGetter($$0x -> $$0x.b), epn.e.f.forGetter($$0x -> $$0x.c))).apply($$0, eql::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  axh.a(axh.a(cvq.c.listOf(), 256), "explosions", List.of()).forGetter($$0x -> $$0x.c),
+                  epv.a(256).forGetter($$0x -> $$0x.d),
+                  axh.a(axh.h, "flight_duration").forGetter($$0x -> $$0x.e)
+               )
+            )
+            .apply($$0, eql::new)
    );
-   private final List<aqv<String>> b;
-   private final epn c;
+   public static final cvr b = new cvr(0, List.of());
+   private final List<cvq> c;
+   private final epv d;
+   private final Optional<Integer> e;
 
-   protected eql(List<erh> $$0, List<aqv<String>> $$1, epn $$2) {
+   protected eql(List<erq> $$0, List<cvq> $$1, epv $$2, Optional<Integer> $$3) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    @Override
-   protected csd a(csd $$0, eoa $$1) {
-      $$0.a(jz.z, cvi.a, this::a);
+   protected csz a(csz $$0, eol $$1) {
+      $$0.a(ka.R, b, this::a);
       return $$0;
    }
 
-   public cvi a(cvi $$0) {
-      List<aqv<String>> $$1 = this.c.a($$0.a(), this.b, 100);
-      return $$0.b($$1);
+   private cvr a(cvr $$0) {
+      List<cvq> $$1 = this.d.a($$0.b(), this.c, 256);
+      return new cvr(this.e.orElseGet($$0::a), $$1);
    }
 
    @Override
-   public epq b() {
-      return epr.J;
+   public epy b() {
+      return epz.H;
    }
 }

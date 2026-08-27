@@ -1,20 +1,15 @@
-public class cxs extends cxn {
-   protected cxs(cxn.a $$0, awd<cry> $$1, bqs... $$2) {
-      super($$0, $$1, $$2);
+public class cxs extends cwm {
+   public cxs(String $$0, cws $$1, cxa $$2, csz $$3, float $$4, int $$5) {
+      super(cxi.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+   public csz g() {
+      return new csz(ddg.cD);
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 3;
+   public cxh<?> ao_() {
+      return cxh.p;
    }
 }

@@ -1,36 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dkf extends dcv {
-   public static final MapCodec<dkf> b = b(dkf::new);
-   public static final dqp c = dqo.z;
-
+public interface dkf extends ddl, dhv {
    @Override
-   protected MapCodec<? extends dkf> a() {
-      return b;
-   }
-
-   protected dkf(dpx.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+   default boolean a(@Nullable clh $$0, czj $$1, in $$2, dqh $$3, elz $$4) {
+      return $$4 == emb.c;
    }
 
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      return $$1 == ir.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   default boolean a(dae $$0, in $$1, dqh $$2, ema $$3) {
+      if (!$$2.c(dqx.C) && $$3.a() == emb.c) {
+         if (!$$0.x_()) {
+            $$0.a($$1, $$2.a(dqx.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public dpy a(cvl $$0) {
-      dpy $$1 = $$0.q().a_($$0.a().c());
-      return this.n().a(c, Boolean.valueOf(m($$1)));
-   }
+   default csz a(@Nullable clh $$0, dae $$1, in $$2, dqh $$3) {
+      if ($$3.c(dqx.C)) {
+         $$1.a($$2, $$3.a(dqx.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
 
-   private static boolean m(dpy $$0) {
-      return $$0.a(avo.bz);
+         return new csz(ctc.qz);
+      } else {
+         return csz.i;
+      }
    }
 
    @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(c);
+   default Optional<avb> as_() {
+      return emb.c.j();
    }
 }

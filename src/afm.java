@@ -1,29 +1,45 @@
-public record afm(float b, boolean c) implements yz<abk> {
-   public static final yq<vs, afm> a = yz.a(afm::a, afm::new);
+public class afm implements zb<abm> {
+   public static final ys<vu, afm> a = zb.a(afm::a, afm::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   private afm(vs $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+   public afm(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static afm a(bpb $$0) {
-      return new afm($$0.f(), $$0.l());
+   private afm(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = $$0.l();
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public zb<afm> a() {
-      return afv.cd;
+   public zd<afm> a() {
+      return afx.aY;
    }
 
-   public void a(abk $$0) {
+   public void a(abm $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

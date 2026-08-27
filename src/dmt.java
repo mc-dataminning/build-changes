@@ -1,19 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record dmt(akf e, String f) {
-   public static final Codec<dmt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akf.a.fieldOf("asset_id").forGetter(dmt::a), Codec.STRING.fieldOf("translation_key").forGetter(dmt::b)).apply($$0, dmt::new)
-   );
-   public static final yq<wd, dmt> b = yq.a(akf.b, dmt::a, yo.k, dmt::b, dmt::new);
-   public static final Codec<iv<dmt>> c = akb.a(ld.d, a);
-   public static final yq<wd, iv<dmt>> d = yo.a(ld.d, b);
+public class dmt extends dgs {
+   public static final MapCodec<dmt> c = b(dmt::new);
+   public static final eui e = dde.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
-   public akf a() {
-      return this.e;
+   @Override
+   public MapCodec<dmt> a() {
+      return c;
    }
 
-   public String b() {
-      return this.f;
+   public dmt(dqg.d $$0) {
+      super($$0, is.a, e, false);
+   }
+
+   @Override
+   protected dgt c() {
+      return (dgt)ddg.oz;
    }
 }

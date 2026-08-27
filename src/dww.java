@@ -1,25 +1,17 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+public class dww {
+   private final int a;
+   private final int b;
 
-class dww extends dwz {
-   public static final Codec<dww> a = a(dww::new);
-
-   public dww(List<dwx> $$0) {
-      super($$0);
+   public dww(dse $$0, daf $$1) {
+      this.a = Math.max($$1.I_(), $$0.f());
+      this.b = Math.min($$1.J_(), $$0.d());
    }
 
-   public boolean a(dap $$0, im $$1) {
-      for (dwx $$2 : this.e) {
-         if ($$2.test($$0, $$1)) {
-            return true;
-         }
-      }
-
-      return false;
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public dwy<?> a() {
-      return dwy.i;
+   public int b() {
+      return this.b;
    }
 }

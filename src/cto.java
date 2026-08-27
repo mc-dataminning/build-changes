@@ -1,46 +1,19 @@
-public class cto extends ctr {
-   public cto(ctq $$0, cry.a $$1) {
-      super($$0, $$1);
-   }
-
-   public static cuw a(ctq $$0, int $$1, float $$2) {
-      return cuw.a()
-         .a(bsl.c, new bsj(e, "Weapon modifier", (double)((float)$$1 + $$0.c()), bsj.a.a), bqt.b)
-         .a(bsl.e, new bsj(f, "Weapon modifier", (double)$$2, bsj.a.a), bqt.b)
-         .a();
+public class cto extends cui {
+   public cto(dde $$0, dde $$1, csu.a $$2) {
+      super($$0, $$1, $$2, is.a);
    }
 
    @Override
-   public boolean a(dpy $$0, czu $$1, im $$2, ckl $$3) {
-      return !$$3.f();
+   public wu o(csz $$0) {
+      cvz $$1 = $$0.a(ka.S);
+      return (wu)($$1 != null && $$1.c().isPresent() ? wu.a(this.a() + ".named", $$1.c().get()) : super.o($$0));
    }
 
    @Override
-   public float a(csd $$0, dpy $$1) {
-      if ($$1.a(dcx.bs)) {
-         return 15.0F;
-      } else {
-         return $$1.a(avo.bE) ? 1.5F : 1.0F;
+   public void n(csz $$0) {
+      cvz $$1 = $$0.a(ka.S);
+      if ($$1 != null && !$$1.b()) {
+         $$1.a().thenAcceptAsync($$1x -> $$0.b(ka.S, $$1x), doy.a);
       }
-   }
-
-   @Override
-   public boolean a(csd $$0, bre $$1, bre $$2) {
-      $$0.a(1, $$2, bqs.a);
-      return true;
-   }
-
-   @Override
-   public boolean a(csd $$0, czu $$1, dpy $$2, im $$3, bre $$4) {
-      if ($$2.h($$1, $$3) != 0.0F) {
-         $$0.a(2, $$4, bqs.a);
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a_(dpy $$0) {
-      return $$0.a(dcx.bs);
    }
 }

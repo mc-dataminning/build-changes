@@ -1,30 +1,44 @@
-import java.util.function.IntFunction;
+import java.util.Arrays;
 
-public enum ckj implements axy {
-   a(0, "options.chat.visibility.full"),
-   b(1, "options.chat.visibility.system"),
-   c(2, "options.chat.visibility.hidden");
+public enum ckj {
+   a(0, avc.Bs, avc.BA),
+   b(40, avc.Br, avc.BB),
+   c(80, avc.Bt, avc.BB);
 
-   private static final IntFunction<ckj> d = awn.a(ckj::a, values(), awn.a.b);
+   private static final ckj[] d = ac.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
    private final int e;
-   private final String f;
+   private final avb f;
+   private final avb g;
 
-   private ckj(int $$0, String $$1) {
+   private ckj(int $$0, avb $$1, avb $$2) {
       this.e = $$0;
       this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
    public int a() {
       return this.e;
    }
 
-   @Override
-   public String b() {
+   public avb b() {
       return this.f;
    }
 
+   public avb c() {
+      return this.g;
+   }
+
    public static ckj a(int $$0) {
-      return d.apply($$0);
+      for (ckj $$1 : d) {
+         if ($$0 >= $$1.e) {
+            return $$1;
+         }
+      }
+
+      return a;
+   }
+
+   public boolean d() {
+      return this == c;
    }
 }

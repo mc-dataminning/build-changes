@@ -1,59 +1,90 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import org.joml.Matrix4f;
 
-public class gex implements geq.a {
-   private final fcu a;
-   private final Map<Long, Map<im, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class gex implements gfa.a {
+   private final fde a;
+   private static final int b = axj.b.a(255, 0, 155, 155);
+   private static final int c = axj.b.a(255, 255, 255, 0);
 
-   gex(fcu $$0) {
+   public gex(fde $$0) {
       this.a = $$0;
    }
 
-   public void a(long $$0, im $$1) {
-      Map<im, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
    @Override
-   public void a(exn $$0, gbe $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.r.Y();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<im> $$8 = Sets.newHashSet();
-      Map<im, Integer> $$9 = Maps.newHashMap();
-      exr $$10 = $$1.getBuffer(gbm.y());
-      Iterator<Entry<Long, Map<im, Integer>>> $$11 = this.b.entrySet().iterator();
+   public void a(exx $$0, gbo $$1, double $$2, double $$3, double $$4) {
+      brh $$5 = this.a.j.m().g();
+      float $$6 = (float)((double)this.a.r.I_() - $$3);
+      float $$7 = (float)((double)this.a.r.al() - $$3);
+      czk $$8 = $$5.dp();
+      float $$9 = (float)((double)$$8.d() - $$2);
+      float $$10 = (float)((double)$$8.e() - $$4);
+      eyb $$11 = $$1.getBuffer(gbw.a(1.0));
+      Matrix4f $$12 = $$0.c().a();
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<im, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<im, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<im, Integer> $$16 : $$14.entrySet()) {
-               im $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  eta $$19 = new eta(im.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gbc.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
+      for (int $$13 = -16; $$13 <= 32; $$13 += 16) {
+         for (int $$14 = -16; $$14 <= 32; $$14 += 16) {
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
          }
       }
 
-      for (Entry<im, Integer> $$20 : $$9.entrySet()) {
-         im $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         geq.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      for (int $$15 = 2; $$15 < 16; $$15 += 2) {
+         int $$16 = $$15 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+      }
+
+      for (int $$17 = 2; $$17 < 16; $$17 += 2) {
+         int $$18 = $$17 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+      }
+
+      for (int $$19 = this.a.r.I_(); $$19 <= this.a.r.al(); $$19 += 2) {
+         float $$20 = (float)((double)$$19 - $$3);
+         int $$21 = $$19 % 8 == 0 ? b : c;
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
+         $$11.a($$12, $$9, $$20, $$10 + 16.0F).a($$21).e();
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10 + 16.0F).a($$21).e();
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10).a($$21).e();
+         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+      }
+
+      $$11 = $$1.getBuffer(gbw.a(2.0));
+
+      for (int $$22 = 0; $$22 <= 16; $$22 += 16) {
+         for (int $$23 = 0; $$23 <= 16; $$23 += 16) {
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+         }
+      }
+
+      for (int $$24 = this.a.r.I_(); $$24 <= this.a.r.al(); $$24 += 16) {
+         float $$25 = (float)((double)$$24 - $$3);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
       }
    }
 }

@@ -1,556 +1,208 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Splitter;
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.io.BufferedOutputStream;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UTFDataFormatException;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public final class un {
-   private static final Comparator<ue> b = Comparator.<ue>comparingInt($$0 -> $$0.e(1)).thenComparingInt($$0 -> $$0.e(0)).thenComparingInt($$0 -> $$0.e(2));
-   private static final Comparator<ue> c = Comparator.<ue>comparingDouble($$0 -> $$0.h(1))
-      .thenComparingDouble($$0 -> $$0.h(0))
-      .thenComparingDouble($$0 -> $$0.h(2));
-   public static final String a = "data";
-   private static final char d = '{';
-   private static final char e = '}';
-   private static final String f = ",";
-   private static final char g = ':';
-   private static final Splitter h = Splitter.on(",");
-   private static final Splitter i = Splitter.on(':').limit(2);
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 2;
-   private static final int l = -1;
+public class un {
+   private static final OpenOption[] a = new OpenOption[]{
+      StandardOpenOption.SYNC, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING
+   };
 
-   private un() {
+   public static ua a(Path $$0, uj $$1) throws IOException {
+      ua var4;
+      try (
+         InputStream $$2 = Files.newInputStream($$0);
+         InputStream $$3 = new axi($$2);
+      ) {
+         var4 = a($$3, $$1);
+      }
+
+      return var4;
    }
 
-   @VisibleForTesting
-   public static boolean a(@Nullable uv $$0, @Nullable uv $$1, boolean $$2) {
-      if ($$0 == $$1) {
-         return true;
-      } else if ($$0 == null) {
-         return true;
-      } else if ($$1 == null) {
-         return false;
-      } else if (!$$0.getClass().equals($$1.getClass())) {
-         return false;
-      } else if ($$0 instanceof ty $$3) {
-         ty $$4 = (ty)$$1;
-         if ($$4.f() < $$3.f()) {
-            return false;
-         } else {
-            for (String $$5 : $$3.e()) {
-               uv $$6 = $$3.c($$5);
-               if (!a($$6, $$4.c($$5), $$2)) {
-                  return false;
-               }
-            }
+   private static DataInputStream a(InputStream $$0) throws IOException {
+      return new DataInputStream(new axi(new GZIPInputStream($$0)));
+   }
 
-            return true;
+   private static DataOutputStream a(OutputStream $$0) throws IOException {
+      return new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream($$0)));
+   }
+
+   public static ua a(InputStream $$0, uj $$1) throws IOException {
+      ua var3;
+      try (DataInputStream $$2 = a($$0)) {
+         var3 = a((DataInput)$$2, $$1);
+      }
+
+      return var3;
+   }
+
+   public static void a(Path $$0, uu $$1, uj $$2) throws IOException {
+      try (
+         InputStream $$3 = Files.newInputStream($$0);
+         InputStream $$4 = new axi($$3);
+      ) {
+         a($$4, $$1, $$2);
+      }
+   }
+
+   public static void a(InputStream $$0, uu $$1, uj $$2) throws IOException {
+      try (DataInputStream $$3 = a($$0)) {
+         a((DataInput)$$3, $$1, $$2);
+      }
+   }
+
+   public static void a(ua $$0, Path $$1) throws IOException {
+      try (
+         OutputStream $$2 = Files.newOutputStream($$1, a);
+         OutputStream $$3 = new BufferedOutputStream($$2);
+      ) {
+         a($$0, $$3);
+      }
+   }
+
+   public static void a(ua $$0, OutputStream $$1) throws IOException {
+      try (DataOutputStream $$2 = a($$1)) {
+         a($$0, (DataOutput)$$2);
+      }
+   }
+
+   public static void b(ua $$0, Path $$1) throws IOException {
+      try (
+         OutputStream $$2 = Files.newOutputStream($$1, a);
+         OutputStream $$3 = new BufferedOutputStream($$2);
+         DataOutputStream $$4 = new DataOutputStream($$3);
+      ) {
+         a($$0, (DataOutput)$$4);
+      }
+   }
+
+   @Nullable
+   public static ua a(Path $$0) throws IOException {
+      if (!Files.exists($$0)) {
+         return null;
+      } else {
+         ua var3;
+         try (
+            InputStream $$1 = Files.newInputStream($$0);
+            DataInputStream $$2 = new DataInputStream($$1);
+         ) {
+            var3 = a((DataInput)$$2, uj.a());
+         }
+
+         return var3;
+      }
+   }
+
+   public static ua a(DataInput $$0) throws IOException {
+      return a($$0, uj.a());
+   }
+
+   public static ua a(DataInput $$0, uj $$1) throws IOException {
+      ux $$2 = c($$0, $$1);
+      if ($$2 instanceof ua) {
+         return (ua)$$2;
+      } else {
+         throw new IOException("Root tag must be a named compound tag");
+      }
+   }
+
+   public static void a(ua $$0, DataOutput $$1) throws IOException {
+      c($$0, $$1);
+   }
+
+   public static void a(DataInput $$0, uu $$1, uj $$2) throws IOException {
+      uz<?> $$3 = va.a($$0.readByte());
+      if ($$3 == uc.a) {
+         if ($$1.b(uc.a) == uu.b.a) {
+            $$1.a();
          }
       } else {
-         if ($$0 instanceof ue $$7 && $$2) {
-            ue $$8 = (ue)$$1;
-            if ($$7.isEmpty()) {
-               return $$8.isEmpty();
-            }
-
-            if ($$8.size() < $$7.size()) {
-               return false;
-            }
-
-            for (uv $$9 : $$7) {
-               boolean $$10 = false;
-
-               for (uv $$11 : $$8) {
-                  if (a($$9, $$11, $$2)) {
-                     $$10 = true;
-                     break;
-                  }
-               }
-
-               if (!$$10) {
-                  return false;
-               }
-            }
-
-            return true;
+         switch ($$1.b($$3)) {
+            case c:
+            default:
+               break;
+            case b:
+               uv.a($$0);
+               $$3.b($$0, $$2);
+               break;
+            case a:
+               uv.a($$0);
+               $$3.a($$0, $$1, $$2);
          }
-
-         return $$0.equals($$1);
       }
    }
 
-   public static uc a(UUID $$0) {
-      return new uc(jp.a($$0));
+   public static ux b(DataInput $$0, uj $$1) throws IOException {
+      byte $$2 = $$0.readByte();
+      return (ux)($$2 == 0 ? uc.b : a($$0, $$1, $$2));
    }
 
-   public static UUID a(uv $$0) {
-      if ($$0.c() != uc.a) {
-         throw new IllegalArgumentException("Expected UUID-Tag to be of type " + uc.a.a() + ", but found " + $$0.c().a() + ".");
+   public static void a(ux $$0, DataOutput $$1) throws IOException {
+      $$1.writeByte($$0.b());
+      if ($$0.b() != 0) {
+         $$0.a($$1);
+      }
+   }
+
+   public static void b(ux $$0, DataOutput $$1) throws IOException {
+      $$1.writeByte($$0.b());
+      if ($$0.b() != 0) {
+         $$1.writeUTF("");
+         $$0.a($$1);
+      }
+   }
+
+   public static void c(ux $$0, DataOutput $$1) throws IOException {
+      b($$0, new un.a($$1));
+   }
+
+   private static ux c(DataInput $$0, uj $$1) throws IOException {
+      byte $$2 = $$0.readByte();
+      if ($$2 == 0) {
+         return uc.b;
       } else {
-         int[] $$1 = ((uc)$$0).g();
-         if ($$1.length != 4) {
-            throw new IllegalArgumentException("Expected UUID-Array to be of length 4, but found " + $$1.length + ".");
-         } else {
-            return jp.a($$1);
+         uv.a($$0);
+         return a($$0, $$1, $$2);
+      }
+   }
+
+   private static ux a(DataInput $$0, uj $$1, byte $$2) {
+      try {
+         return va.a($$2).c($$0, $$1);
+      } catch (IOException var6) {
+         o $$4 = o.a(var6, "Loading NBT data");
+         p $$5 = $$4.a("NBT Tag");
+         $$5.a("Tag type", $$2);
+         throw new ur($$4);
+      }
+   }
+
+   public static class a extends axd {
+      public a(DataOutput $$0) {
+         super($$0);
+      }
+
+      @Override
+      public void writeUTF(String $$0) throws IOException {
+         try {
+            super.writeUTF($$0);
+         } catch (UTFDataFormatException var3) {
+            ac.a("Failed to write NBT String", var3);
+            super.writeUTF("");
          }
       }
-   }
-
-   public static Optional<im> a(ty $$0, String $$1) {
-      int[] $$2 = $$0.n($$1);
-      return $$2.length == 3 ? Optional.of(new im($$2[0], $$2[1], $$2[2])) : Optional.empty();
-   }
-
-   public static uv a(im $$0) {
-      return new uc(new int[]{$$0.u(), $$0.v(), $$0.w()});
-   }
-
-   public static dpy a(iw<dcv> $$0, ty $$1) {
-      if (!$$1.b("Name", 8)) {
-         return dcx.a.n();
-      } else {
-         akf $$2 = new akf($$1.l("Name"));
-         Optional<? extends iv<dcv>> $$3 = $$0.a(ake.a(ld.f, $$2));
-         if ($$3.isEmpty()) {
-            return dcx.a.n();
-         } else {
-            dcv $$4 = $$3.get().a();
-            dpy $$5 = $$4.n();
-            if ($$1.b("Properties", 10)) {
-               ty $$6 = $$1.p("Properties");
-               dpz<dcv, dpy> $$7 = $$4.l();
-
-               for (String $$8 : $$6.e()) {
-                  drb<?> $$9 = $$7.a($$8);
-                  if ($$9 != null) {
-                     $$5 = a($$5, $$9, $$8, $$6, $$1);
-                  }
-               }
-            }
-
-            return $$5;
-         }
-      }
-   }
-
-   private static <S extends dqa<?, S>, T extends Comparable<T>> S a(S $$0, drb<T> $$1, String $$2, ty $$3, ty $$4) {
-      Optional<T> $$5 = $$1.b($$3.l($$2));
-      if ($$5.isPresent()) {
-         return $$0.a($$1, $$5.get());
-      } else {
-         j.warn("Unable to read property: {} with value: {} for blockstate: {}", new Object[]{$$2, $$3.l($$2), $$4});
-         return $$0;
-      }
-   }
-
-   public static ty a(dpy $$0) {
-      ty $$1 = new ty();
-      $$1.a("Name", lc.e.b($$0.b()).toString());
-      Map<drb<?>, Comparable<?>> $$2 = $$0.C();
-      if (!$$2.isEmpty()) {
-         ty $$3 = new ty();
-
-         for (Entry<drb<?>, Comparable<?>> $$4 : $$2.entrySet()) {
-            drb<?> $$5 = $$4.getKey();
-            $$3.a($$5.f(), a($$5, $$4.getValue()));
-         }
-
-         $$1.a("Properties", $$3);
-      }
-
-      return $$1;
-   }
-
-   public static ty a(elr $$0) {
-      ty $$1 = new ty();
-      $$1.a("Name", lc.c.b($$0.a()).toString());
-      Map<drb<?>, Comparable<?>> $$2 = $$0.C();
-      if (!$$2.isEmpty()) {
-         ty $$3 = new ty();
-
-         for (Entry<drb<?>, Comparable<?>> $$4 : $$2.entrySet()) {
-            drb<?> $$5 = $$4.getKey();
-            $$3.a($$5.f(), a($$5, $$4.getValue()));
-         }
-
-         $$1.a("Properties", $$3);
-      }
-
-      return $$1;
-   }
-
-   private static <T extends Comparable<T>> String a(drb<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
-   }
-
-   public static String b(uv $$0) {
-      return a($$0, false);
-   }
-
-   public static String a(uv $$0, boolean $$1) {
-      return a(new StringBuilder(), $$0, 0, $$1).toString();
-   }
-
-   public static StringBuilder a(StringBuilder $$0, uv $$1, int $$2, boolean $$3) {
-      switch ($$1.b()) {
-         case 0:
-            break;
-         case 1:
-         case 2:
-         case 3:
-         case 4:
-         case 5:
-         case 6:
-         case 8:
-            $$0.append($$1);
-            break;
-         case 7:
-            tv $$4 = (tv)$$1;
-            byte[] $$5 = $$4.e();
-            int $$6 = $$5.length;
-            a($$2, $$0).append("byte[").append($$6).append("] {\n");
-            if ($$3) {
-               a($$2 + 1, $$0);
-
-               for (int $$7 = 0; $$7 < $$5.length; $$7++) {
-                  if ($$7 != 0) {
-                     $$0.append(',');
-                  }
-
-                  if ($$7 % 16 == 0 && $$7 / 16 > 0) {
-                     $$0.append('\n');
-                     if ($$7 < $$5.length) {
-                        a($$2 + 1, $$0);
-                     }
-                  } else if ($$7 != 0) {
-                     $$0.append(' ');
-                  }
-
-                  $$0.append(String.format(Locale.ROOT, "0x%02X", $$5[$$7] & 255));
-               }
-            } else {
-               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
-            }
-
-            $$0.append('\n');
-            a($$2, $$0).append('}');
-            break;
-         case 9:
-            ue $$8 = (ue)$$1;
-            int $$9 = $$8.size();
-            int $$10 = $$8.f();
-            String $$11 = $$10 == 0 ? "undefined" : uy.a($$10).b();
-            a($$2, $$0).append("list<").append($$11).append(">[").append($$9).append("] [");
-            if ($$9 != 0) {
-               $$0.append('\n');
-            }
-
-            for (int $$12 = 0; $$12 < $$9; $$12++) {
-               if ($$12 != 0) {
-                  $$0.append(",\n");
-               }
-
-               a($$2 + 1, $$0);
-               a($$0, $$8.k($$12), $$2 + 1, $$3);
-            }
-
-            if ($$9 != 0) {
-               $$0.append('\n');
-            }
-
-            a($$2, $$0).append(']');
-            break;
-         case 10:
-            ty $$19 = (ty)$$1;
-            List<String> $$20 = Lists.newArrayList($$19.e());
-            Collections.sort($$20);
-            a($$2, $$0).append('{');
-            if ($$0.length() - $$0.lastIndexOf("\n") > 2 * ($$2 + 1)) {
-               $$0.append('\n');
-               a($$2 + 1, $$0);
-            }
-
-            int $$21 = $$20.stream().mapToInt(String::length).max().orElse(0);
-            String $$22 = Strings.repeat(" ", $$21);
-
-            for (int $$23 = 0; $$23 < $$20.size(); $$23++) {
-               if ($$23 != 0) {
-                  $$0.append(",\n");
-               }
-
-               String $$24 = $$20.get($$23);
-               a($$2 + 1, $$0).append('"').append($$24).append('"').append($$22, 0, $$22.length() - $$24.length()).append(": ");
-               a($$0, $$19.c($$24), $$2 + 1, $$3);
-            }
-
-            if (!$$20.isEmpty()) {
-               $$0.append('\n');
-            }
-
-            a($$2, $$0).append('}');
-            break;
-         case 11:
-            uc $$13 = (uc)$$1;
-            int[] $$14 = $$13.g();
-            int $$15 = 0;
-
-            for (int $$16 : $$14) {
-               $$15 = Math.max($$15, String.format(Locale.ROOT, "%X", $$16).length());
-            }
-
-            int $$17 = $$14.length;
-            a($$2, $$0).append("int[").append($$17).append("] {\n");
-            if ($$3) {
-               a($$2 + 1, $$0);
-
-               for (int $$18 = 0; $$18 < $$14.length; $$18++) {
-                  if ($$18 != 0) {
-                     $$0.append(',');
-                  }
-
-                  if ($$18 % 16 == 0 && $$18 / 16 > 0) {
-                     $$0.append('\n');
-                     if ($$18 < $$14.length) {
-                        a($$2 + 1, $$0);
-                     }
-                  } else if ($$18 != 0) {
-                     $$0.append(' ');
-                  }
-
-                  $$0.append(String.format(Locale.ROOT, "0x%0" + $$15 + "X", $$14[$$18]));
-               }
-            } else {
-               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
-            }
-
-            $$0.append('\n');
-            a($$2, $$0).append('}');
-            break;
-         case 12:
-            uf $$25 = (uf)$$1;
-            long[] $$26 = $$25.g();
-            long $$27 = 0L;
-
-            for (long $$28 : $$26) {
-               $$27 = Math.max($$27, (long)String.format(Locale.ROOT, "%X", $$28).length());
-            }
-
-            long $$29 = (long)$$26.length;
-            a($$2, $$0).append("long[").append($$29).append("] {\n");
-            if ($$3) {
-               a($$2 + 1, $$0);
-
-               for (int $$30 = 0; $$30 < $$26.length; $$30++) {
-                  if ($$30 != 0) {
-                     $$0.append(',');
-                  }
-
-                  if ($$30 % 16 == 0 && $$30 / 16 > 0) {
-                     $$0.append('\n');
-                     if ($$30 < $$26.length) {
-                        a($$2 + 1, $$0);
-                     }
-                  } else if ($$30 != 0) {
-                     $$0.append(' ');
-                  }
-
-                  $$0.append(String.format(Locale.ROOT, "0x%0" + $$27 + "X", $$26[$$30]));
-               }
-            } else {
-               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
-            }
-
-            $$0.append('\n');
-            a($$2, $$0).append('}');
-            break;
-         default:
-            $$0.append("<UNKNOWN :(>");
-      }
-
-      return $$0;
-   }
-
-   private static StringBuilder a(int $$0, StringBuilder $$1) {
-      int $$2 = $$1.lastIndexOf("\n") + 1;
-      int $$3 = $$1.length() - $$2;
-
-      for (int $$4 = 0; $$4 < 2 * $$0 - $$3; $$4++) {
-         $$1.append(' ');
-      }
-
-      return $$1;
-   }
-
-   public static ws c(uv $$0) {
-      return new va("", 0).a($$0);
-   }
-
-   public static String a(ty $$0) {
-      return new ur().a((uv)b($$0));
-   }
-
-   public static ty a(String $$0) throws CommandSyntaxException {
-      return c(uw.a($$0));
-   }
-
-   @VisibleForTesting
-   static ty b(ty $$0) {
-      boolean $$1 = $$0.b("palettes", 9);
-      ue $$2;
-      if ($$1) {
-         $$2 = $$0.c("palettes", 9).b(0);
-      } else {
-         $$2 = $$0.c("palette", 10);
-      }
-
-      ue $$4 = $$2.stream().map(ty.class::cast).map(un::d).map(ut::a).collect(Collectors.toCollection(ue::new));
-      $$0.a("palette", $$4);
-      if ($$1) {
-         ue $$5 = new ue();
-         ue $$6 = $$0.c("palettes", 9);
-         $$6.stream().map(ue.class::cast).forEach($$2x -> {
-            ty $$3x = new ty();
-
-            for (int $$4x = 0; $$4x < $$2x.size(); $$4x++) {
-               $$3x.a($$4.j($$4x), d($$2x.a($$4x)));
-            }
-
-            $$5.add($$3x);
-         });
-         $$0.a("palettes", $$5);
-      }
-
-      if ($$0.b("entities", 9)) {
-         ue $$7 = $$0.c("entities", 10);
-         ue $$8 = $$7.stream().map(ty.class::cast).sorted(Comparator.comparing($$0x -> $$0x.c("pos", 6), c)).collect(Collectors.toCollection(ue::new));
-         $$0.a("entities", $$8);
-      }
-
-      ue $$9 = $$0.c("blocks", 10)
-         .stream()
-         .map(ty.class::cast)
-         .sorted(Comparator.comparing($$0x -> $$0x.c("pos", 3), b))
-         .peek($$1x -> $$1x.a("state", $$4.j($$1x.h("state"))))
-         .collect(Collectors.toCollection(ue::new));
-      $$0.a("data", $$9);
-      $$0.r("blocks");
-      return $$0;
-   }
-
-   @VisibleForTesting
-   static ty c(ty $$0) {
-      ue $$1 = $$0.c("palette", 8);
-      Map<String, uv> $$2 = $$1.stream().map(ut.class::cast).map(ut::s_).collect(ImmutableMap.toImmutableMap(Function.identity(), un::b));
-      if ($$0.b("palettes", 9)) {
-         $$0.a(
-            "palettes",
-            $$0.c("palettes", 10)
-               .stream()
-               .map(ty.class::cast)
-               .map($$1x -> $$2.keySet().stream().map($$1x::l).map(un::b).collect(Collectors.toCollection(ue::new)))
-               .collect(Collectors.toCollection(ue::new))
-         );
-         $$0.r("palette");
-      } else {
-         $$0.a("palette", $$2.values().stream().collect(Collectors.toCollection(ue::new)));
-      }
-
-      if ($$0.b("data", 9)) {
-         Object2IntMap<String> $$3 = new Object2IntOpenHashMap();
-         $$3.defaultReturnValue(-1);
-
-         for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-            $$3.put($$1.j($$4), $$4);
-         }
-
-         ue $$5 = $$0.c("data", 10);
-
-         for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-            ty $$7 = $$5.a($$6);
-            String $$8 = $$7.l("state");
-            int $$9 = $$3.getInt($$8);
-            if ($$9 == -1) {
-               throw new IllegalStateException("Entry " + $$8 + " missing from palette");
-            }
-
-            $$7.a("state", $$9);
-         }
-
-         $$0.a("blocks", $$5);
-         $$0.r("data");
-      }
-
-      return $$0;
-   }
-
-   @VisibleForTesting
-   static String d(ty $$0) {
-      StringBuilder $$1 = new StringBuilder($$0.l("Name"));
-      if ($$0.b("Properties", 10)) {
-         ty $$2 = $$0.p("Properties");
-         String $$3 = $$2.e().stream().sorted().map($$1x -> $$1x + ":" + $$2.c($$1x).s_()).collect(Collectors.joining(","));
-         $$1.append('{').append($$3).append('}');
-      }
-
-      return $$1.toString();
-   }
-
-   @VisibleForTesting
-   static ty b(String $$0) {
-      ty $$1 = new ty();
-      int $$2 = $$0.indexOf(123);
-      String $$3;
-      if ($$2 >= 0) {
-         $$3 = $$0.substring(0, $$2);
-         ty $$4 = new ty();
-         if ($$2 + 2 <= $$0.length()) {
-            String $$5 = $$0.substring($$2 + 1, $$0.indexOf(125, $$2));
-            h.split($$5).forEach($$2x -> {
-               List<String> $$3x = i.splitToList($$2x);
-               if ($$3x.size() == 2) {
-                  $$4.a($$3x.get(0), $$3x.get(1));
-               } else {
-                  j.error("Something went wrong parsing: '{}' -- incorrect gamedata!", $$0);
-               }
-            });
-            $$1.a("Properties", $$4);
-         }
-      } else {
-         $$3 = $$0;
-      }
-
-      $$1.a("Name", $$3);
-      return $$1;
-   }
-
-   public static ty e(ty $$0) {
-      int $$1 = aa.b().d().c();
-      return a($$0, $$1);
-   }
-
-   public static ty a(ty $$0, int $$1) {
-      $$0.a("DataVersion", $$1);
-      return $$0;
-   }
-
-   public static int b(ty $$0, int $$1) {
-      return $$0.b("DataVersion", 99) ? $$0.h("DataVersion") : $$1;
    }
 }

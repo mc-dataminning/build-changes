@@ -1,22 +1,55 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dvo extends ayg {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public class dvo {
-   public static final Codec<dvo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eaz.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
-               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dvo::new)
-   );
-   public final double b;
-   public final double c;
-   public final int d;
+   int c(int var1);
 
-   public dvo(double $$0, double $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   @Override
+   default int f() {
+      return this.c(32);
+   }
+
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
+      } else {
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
+
+         return $$2;
+      }
+   }
+
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
+   }
+
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
+   }
+
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

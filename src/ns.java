@@ -1,166 +1,70 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.Map;
 import java.util.Optional;
-import java.util.stream.IntStream;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class ns {
-   public static final nr a = a("cube", nu.c, nu.j, nu.k, nu.l, nu.m, nu.n, nu.o);
-   public static final nr b = a("cube_directional", nu.c, nu.j, nu.k, nu.l, nu.m, nu.n, nu.o);
-   public static final nr c = a("cube_all", nu.a);
-   public static final nr d = a("cube_all_inner_faces", nu.a);
-   public static final nr e = a("cube_mirrored_all", "_mirrored", nu.a);
-   public static final nr f = a("cube_north_west_mirrored_all", "_north_west_mirrored", nu.a);
-   public static final nr g = a("cube_column_uv_locked_x", "_x", nu.d, nu.i);
-   public static final nr h = a("cube_column_uv_locked_y", "_y", nu.d, nu.i);
-   public static final nr i = a("cube_column_uv_locked_z", "_z", nu.d, nu.i);
-   public static final nr j = a("cube_column", nu.d, nu.i);
-   public static final nr k = a("cube_column_horizontal", "_horizontal", nu.d, nu.i);
-   public static final nr l = a("cube_column_mirrored", "_mirrored", nu.d, nu.i);
-   public static final nr m = a("cube_top", nu.f, nu.i);
-   public static final nr n = a("cube_bottom_top", nu.f, nu.e, nu.i);
-   public static final nr o = a("cube_bottom_top_inner_faces", nu.f, nu.e, nu.i);
-   public static final nr p = a("orientable", nu.f, nu.g, nu.i);
-   public static final nr q = a("orientable_with_bottom", nu.f, nu.e, nu.i, nu.g);
-   public static final nr r = a("orientable_vertical", "_vertical", nu.g, nu.i);
-   public static final nr s = a("button", nu.b);
-   public static final nr t = a("button_pressed", "_pressed", nu.b);
-   public static final nr u = a("button_inventory", "_inventory", nu.b);
-   public static final nr v = a("door_bottom_left", "_bottom_left", nu.f, nu.e);
-   public static final nr w = a("door_bottom_left_open", "_bottom_left_open", nu.f, nu.e);
-   public static final nr x = a("door_bottom_right", "_bottom_right", nu.f, nu.e);
-   public static final nr y = a("door_bottom_right_open", "_bottom_right_open", nu.f, nu.e);
-   public static final nr z = a("door_top_left", "_top_left", nu.f, nu.e);
-   public static final nr A = a("door_top_left_open", "_top_left_open", nu.f, nu.e);
-   public static final nr B = a("door_top_right", "_top_right", nu.f, nu.e);
-   public static final nr C = a("door_top_right_open", "_top_right_open", nu.f, nu.e);
-   public static final nr D = a("custom_fence_post", "_post", nu.b, nu.c);
-   public static final nr E = a("custom_fence_side_north", "_side_north", nu.b);
-   public static final nr F = a("custom_fence_side_east", "_side_east", nu.b);
-   public static final nr G = a("custom_fence_side_south", "_side_south", nu.b);
-   public static final nr H = a("custom_fence_side_west", "_side_west", nu.b);
-   public static final nr I = a("custom_fence_inventory", "_inventory", nu.b);
-   public static final nr J = a("fence_post", "_post", nu.b);
-   public static final nr K = a("fence_side", "_side", nu.b);
-   public static final nr L = a("fence_inventory", "_inventory", nu.b);
-   public static final nr M = a("template_wall_post", "_post", nu.r);
-   public static final nr N = a("template_wall_side", "_side", nu.r);
-   public static final nr O = a("template_wall_side_tall", "_side_tall", nu.r);
-   public static final nr P = a("wall_inventory", "_inventory", nu.r);
-   public static final nr Q = a("template_custom_fence_gate", nu.b, nu.c);
-   public static final nr R = a("template_custom_fence_gate_open", "_open", nu.b, nu.c);
-   public static final nr S = a("template_custom_fence_gate_wall", "_wall", nu.b, nu.c);
-   public static final nr T = a("template_custom_fence_gate_wall_open", "_wall_open", nu.b, nu.c);
-   public static final nr U = a("template_fence_gate", nu.b);
-   public static final nr V = a("template_fence_gate_open", "_open", nu.b);
-   public static final nr W = a("template_fence_gate_wall", "_wall", nu.b);
-   public static final nr X = a("template_fence_gate_wall_open", "_wall_open", nu.b);
-   public static final nr Y = a("pressure_plate_up", nu.b);
-   public static final nr Z = a("pressure_plate_down", "_down", nu.b);
-   public static final nr aa = a(nu.c);
-   public static final nr ab = a("slab", nu.e, nu.f, nu.i);
-   public static final nr ac = a("slab_top", "_top", nu.e, nu.f, nu.i);
-   public static final nr ad = a("leaves", nu.a);
-   public static final nr ae = a("stairs", nu.e, nu.f, nu.i);
-   public static final nr af = a("inner_stairs", "_inner", nu.e, nu.f, nu.i);
-   public static final nr ag = a("outer_stairs", "_outer", nu.e, nu.f, nu.i);
-   public static final nr ah = a("template_trapdoor_top", "_top", nu.b);
-   public static final nr ai = a("template_trapdoor_bottom", "_bottom", nu.b);
-   public static final nr aj = a("template_trapdoor_open", "_open", nu.b);
-   public static final nr ak = a("template_orientable_trapdoor_top", "_top", nu.b);
-   public static final nr al = a("template_orientable_trapdoor_bottom", "_bottom", nu.b);
-   public static final nr am = a("template_orientable_trapdoor_open", "_open", nu.b);
-   public static final nr an = a("pointed_dripstone", nu.p);
-   public static final nr ao = a("cross", nu.p);
-   public static final nr ap = a("tinted_cross", nu.p);
-   public static final nr aq = a("flower_pot_cross", nu.q);
-   public static final nr ar = a("tinted_flower_pot_cross", nu.q);
-   public static final nr as = a("rail_flat", nu.s);
-   public static final nr at = a("rail_curved", "_corner", nu.s);
-   public static final nr au = a("template_rail_raised_ne", "_raised_ne", nu.s);
-   public static final nr av = a("template_rail_raised_sw", "_raised_sw", nu.s);
-   public static final nr aw = a("carpet", nu.t);
-   public static final nr ax = a("flowerbed_1", "_1", nu.P, nu.y);
-   public static final nr ay = a("flowerbed_2", "_2", nu.P, nu.y);
-   public static final nr az = a("flowerbed_3", "_3", nu.P, nu.y);
-   public static final nr aA = a("flowerbed_4", "_4", nu.P, nu.y);
-   public static final nr aB = a("coral_fan", nu.x);
-   public static final nr aC = a("coral_wall_fan", nu.x);
-   public static final nr aD = a("template_glazed_terracotta", nu.u);
-   public static final nr aE = a("template_chorus_flower", nu.b);
-   public static final nr aF = a("template_daylight_detector", nu.f, nu.i);
-   public static final nr aG = a("template_glass_pane_noside", "_noside", nu.v);
-   public static final nr aH = a("template_glass_pane_noside_alt", "_noside_alt", nu.v);
-   public static final nr aI = a("template_glass_pane_post", "_post", nu.v, nu.w);
-   public static final nr aJ = a("template_glass_pane_side", "_side", nu.v, nu.w);
-   public static final nr aK = a("template_glass_pane_side_alt", "_side_alt", nu.v, nu.w);
-   public static final nr aL = a("template_command_block", nu.g, nu.h, nu.i);
-   public static final nr aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", nu.b);
-   public static final nr aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", nu.b);
-   public static final nr aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", nu.b);
-   public static final nr aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", nu.b);
-   public static final nr aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", nu.b);
-   public static final nr aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", nu.b);
-   public static final nr aS = a("template_anvil", nu.f);
-   public static final nr[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, nu.y)).toArray(nr[]::new);
-   public static final nr aU = a("stem_fruit", nu.y, nu.z);
-   public static final nr aV = a("crop", nu.A);
-   public static final nr aW = a("template_farmland", nu.B, nu.f);
-   public static final nr aX = a("template_fire_floor", nu.C);
-   public static final nr aY = a("template_fire_side", nu.C);
-   public static final nr aZ = a("template_fire_side_alt", nu.C);
-   public static final nr ba = a("template_fire_up", nu.C);
-   public static final nr bb = a("template_fire_up_alt", nu.C);
-   public static final nr bc = a("template_campfire", nu.C, nu.K);
-   public static final nr bd = a("template_lantern", nu.D);
-   public static final nr be = a("template_hanging_lantern", "_hanging", nu.D);
-   public static final nr bf = a("template_torch", nu.G);
-   public static final nr bg = a("template_torch_wall", nu.G);
-   public static final nr bh = a("template_piston", nu.E, nu.e, nu.i);
-   public static final nr bi = a("template_piston_head", nu.E, nu.i, nu.F);
-   public static final nr bj = a("template_piston_head_short", nu.E, nu.i, nu.F);
-   public static final nr bk = a("template_seagrass", nu.b);
-   public static final nr bl = a("template_turtle_egg", nu.a);
-   public static final nr bm = a("template_two_turtle_eggs", nu.a);
-   public static final nr bn = a("template_three_turtle_eggs", nu.a);
-   public static final nr bo = a("template_four_turtle_eggs", nu.a);
-   public static final nr bp = a("template_single_face", nu.b);
-   public static final nr bq = a("template_cauldron_level1", nu.N, nu.M, nu.c, nu.f, nu.e, nu.i);
-   public static final nr br = a("template_cauldron_level2", nu.N, nu.M, nu.c, nu.f, nu.e, nu.i);
-   public static final nr bs = a("template_cauldron_full", nu.N, nu.M, nu.c, nu.f, nu.e, nu.i);
-   public static final nr bt = a("template_azalea", nu.f, nu.i);
-   public static final nr bu = a("template_potted_azalea_bush", nu.q, nu.f, nu.i);
-   public static final nr bv = a("template_potted_azalea_bush", nu.q, nu.f, nu.i);
-   public static final nr bw = a("sniffer_egg", nu.f, nu.e, nu.j, nu.k, nu.l, nu.m);
-   public static final nr bx = b("generated", nu.H);
-   public static final nr by = b("template_music_disc", nu.H);
-   public static final nr bz = b("handheld", nu.H);
-   public static final nr bA = b("handheld_rod", nu.H);
-   public static final nr bB = b("generated", nu.H, nu.I);
-   public static final nr bC = b("generated", nu.H, nu.I, nu.J);
-   public static final nr bD = b("template_shulker_box", nu.c);
-   public static final nr bE = b("template_bed", nu.c);
-   public static final nr bF = b("template_banner");
-   public static final nr bG = b("template_skull");
-   public static final nr bH = a("template_candle", nu.a, nu.c);
-   public static final nr bI = a("template_two_candles", nu.a, nu.c);
-   public static final nr bJ = a("template_three_candles", nu.a, nu.c);
-   public static final nr bK = a("template_four_candles", nu.a, nu.c);
-   public static final nr bL = a("template_cake_with_candle", nu.L, nu.e, nu.i, nu.f, nu.c);
-   public static final nr bM = a("template_sculk_shrieker", nu.e, nu.i, nu.f, nu.c, nu.O);
-   public static final nr bN = a("template_vault", nu.f, nu.e, nu.i, nu.g);
-   public static final nr bO = b("handheld_mace", nu.H);
+   private final Optional<akh> a;
+   private final Set<nv> b;
+   private final Optional<String> c;
 
-   private static nr a(nu... $$0) {
-      return new nr(Optional.empty(), Optional.empty(), $$0);
+   public ns(Optional<akh> $$0, Optional<String> $$1, nv... $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.b = ImmutableSet.copyOf($$2);
    }
 
-   private static nr a(String $$0, nu... $$1) {
-      return new nr(Optional.of(new akf("minecraft", "block/" + $$0)), Optional.empty(), $$1);
+   public akh a(dde $$0) {
+      return nr.a($$0, this.c.orElse(""));
    }
 
-   private static nr b(String $$0, nu... $$1) {
-      return new nr(Optional.of(new akf("minecraft", "item/" + $$0)), Optional.empty(), $$1);
+   public akh a(dde $$0, nu $$1, BiConsumer<akh, Supplier<JsonElement>> $$2) {
+      return this.a(nr.a($$0, this.c.orElse("")), $$1, $$2);
    }
 
-   private static nr a(String $$0, String $$1, nu... $$2) {
-      return new nr(Optional.of(new akf("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+   public akh a(dde $$0, String $$1, nu $$2, BiConsumer<akh, Supplier<JsonElement>> $$3) {
+      return this.a(nr.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
+   }
+
+   public akh b(dde $$0, String $$1, nu $$2, BiConsumer<akh, Supplier<JsonElement>> $$3) {
+      return this.a(nr.a($$0, $$1), $$2, $$3);
+   }
+
+   public akh a(akh $$0, nu $$1, BiConsumer<akh, Supplier<JsonElement>> $$2) {
+      return this.a($$0, $$1, $$2, this::a);
+   }
+
+   public akh a(akh $$0, nu $$1, BiConsumer<akh, Supplier<JsonElement>> $$2, ns.a $$3) {
+      Map<nv, akh> $$4 = this.a($$1);
+      $$2.accept($$0, () -> $$3.create($$0, $$4));
+      return $$0;
+   }
+
+   public JsonObject a(akh $$0, Map<nv, akh> $$1) {
+      JsonObject $$2 = new JsonObject();
+      this.a.ifPresent($$1x -> $$2.addProperty("parent", $$1x.toString()));
+      if (!$$1.isEmpty()) {
+         JsonObject $$3 = new JsonObject();
+         $$1.forEach(($$1x, $$2x) -> $$3.addProperty($$1x.a(), $$2x.toString()));
+         $$2.add("textures", $$3);
+      }
+
+      return $$2;
+   }
+
+   private Map<nv, akh> a(nu $$0) {
+      return Streams.concat(new Stream[]{this.b.stream(), $$0.a()}).collect(ImmutableMap.toImmutableMap(Function.identity(), $$0::a));
+   }
+
+   public interface a {
+      JsonObject create(akh var1, Map<nv, akh> var2);
    }
 }

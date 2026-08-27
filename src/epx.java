@@ -1,28 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class epx extends epo {
-   public static final Codec<epx> a = RecordCodecBuilder.create($$0 -> a($$0).and(jw.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, epx::new));
-   private final jw b;
+public interface epx extends eom, BiFunction<csz, eol, csz> {
+   epy b();
 
-   private epx(List<erh> $$0, jw $$1) {
-      super($$0);
-      this.b = $$1;
+   static Consumer<csz> a(BiFunction<csz, eol, csz> $$0, Consumer<csz> $$1, eol $$2) {
+      return $$3 -> $$1.accept($$0.apply($$3, $$2));
    }
 
-   @Override
-   public epq b() {
-      return epr.h;
-   }
-
-   @Override
-   public csd a(csd $$0, eoa $$1) {
-      $$0.a(this.b);
-      return $$0;
-   }
-
-   public static <T> epo.a<?> a(jy<T> $$0, T $$1) {
-      return a($$2 -> new epx($$2, jw.a().a($$0, $$1).a()));
+   public interface a {
+      epx b();
    }
 }

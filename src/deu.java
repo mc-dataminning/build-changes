@@ -1,26 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class deu extends dde {
-   public static final MapCodec<deu> a = b(deu::new);
-   protected static final float b = 6.0F;
-   protected static final ety c = dcv.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class deu extends dcm {
+   public static final MapCodec<deu> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(det.a.forGetter($$0x -> $$0x.c), u()).apply($$0, deu::new));
+   private final dde c;
 
    @Override
    public MapCodec<deu> a() {
-      return a;
+      return b;
    }
 
-   protected deu(dpx.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
-      return c;
+   protected deu(dde $$0, dqg.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   protected boolean b(dpy $$0, cza $$1, im $$2) {
-      return $$0.a(avo.cf);
+   protected void b(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
+      this.a($$0, (dae)$$1, $$2);
+   }
+
+   @Override
+   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.n().a(d, Boolean.valueOf(false)), 2);
+      }
+   }
+
+   @Override
+   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
+      if ($$1 == is.a && !$$0.a($$3, $$4)) {
+         return ddg.a.n();
+      } else {
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, emb.c, emb.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

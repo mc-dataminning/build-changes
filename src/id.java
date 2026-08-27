@@ -1,56 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 
-public class id implements hw<IntegerArgumentType, id.a> {
-   public void a(id.a $$0, vs $$1) {
-      boolean $$2 = $$0.b != Integer.MIN_VALUE;
-      boolean $$3 = $$0.c != Integer.MAX_VALUE;
-      $$1.k(hy.a($$2, $$3));
+public class id implements hx<FloatArgumentType, id.a> {
+   public void a(id.a $$0, vu $$1) {
+      boolean $$2 = $$0.b != -Float.MAX_VALUE;
+      boolean $$3 = $$0.c != Float.MAX_VALUE;
+      $$1.k(hz.a($$2, $$3));
       if ($$2) {
-         $$1.p($$0.b);
+         $$1.a($$0.b);
       }
 
       if ($$3) {
-         $$1.p($$0.c);
+         $$1.a($$0.c);
       }
    }
 
-   public id.a a(vs $$0) {
+   public id.a a(vu $$0) {
       byte $$1 = $$0.readByte();
-      int $$2 = hy.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
-      int $$3 = hy.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
+      float $$2 = hz.a($$1) ? $$0.readFloat() : -Float.MAX_VALUE;
+      float $$3 = hz.b($$1) ? $$0.readFloat() : Float.MAX_VALUE;
       return new id.a($$2, $$3);
    }
 
    public void a(id.a $$0, JsonObject $$1) {
-      if ($$0.b != Integer.MIN_VALUE) {
+      if ($$0.b != -Float.MAX_VALUE) {
          $$1.addProperty("min", $$0.b);
       }
 
-      if ($$0.c != Integer.MAX_VALUE) {
+      if ($$0.c != Float.MAX_VALUE) {
          $$1.addProperty("max", $$0.c);
       }
    }
 
-   public id.a a(IntegerArgumentType $$0) {
+   public id.a a(FloatArgumentType $$0) {
       return new id.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public final class a implements hw.a<IntegerArgumentType> {
-      final int b;
-      final int c;
+   public final class a implements hx.a<FloatArgumentType> {
+      final float b;
+      final float c;
 
-      a(int $$1, int $$2) {
+      a(float $$1, float $$2) {
          this.b = $$1;
          this.c = $$2;
       }
 
-      public IntegerArgumentType a(dy $$0) {
-         return IntegerArgumentType.integer(this.b, this.c);
+      public FloatArgumentType a(dz $$0) {
+         return FloatArgumentType.floatArg(this.b, this.c);
       }
 
       @Override
-      public hw<IntegerArgumentType, ?> a() {
+      public hx<FloatArgumentType, ?> a() {
          return id.this;
       }
    }

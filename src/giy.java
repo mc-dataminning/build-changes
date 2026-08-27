@@ -1,40 +1,24 @@
-public class giy<T extends bql & cla> extends ggm<T> {
-   private static final float a = 12.25F;
-   private final ghl f;
-   private final float g;
-   private final boolean h;
+public class giy<T extends chv> extends gho<T, ftw<T>> {
+   private static final akh a = new akh("textures/entity/skeleton/skeleton.png");
 
-   public giy(ggn.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.f = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+   public giy(ggx.a $$0) {
+      this($$0, fva.bn, fva.bp, fva.bq);
    }
 
-   public giy(ggn.a $$0) {
-      this($$0, 1.0F, false);
+   public giy(ggx.a $$0, fuz $$1, fuz $$2, fuz $$3) {
+      this($$0, $$2, $$3, new ftw<>($$0.a($$1)));
    }
 
-   @Override
-   protected int a(T $$0, im $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   public giy(ggx.a $$0, fuz $$1, fuz $$2, ftw<T> $$3) {
+      super($$0, $$3, 0.5F);
+      this.a(new gky<>(this, new ftw($$0.a($$1)), new ftw($$0.a($$2)), $$0.g()));
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, exn $$3, gbe $$4, int $$5) {
-      if ($$0.ai >= 2 || !(this.c.b.g().g($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.g, this.g, this.g);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         this.f.a($$0.p(), csa.h, $$5, gmf.d, $$3, $$4, $$0.dN(), $$0.aj());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   public akh a(T $$0) {
+      return a;
    }
 
-   @Override
-   public akf a(bql $$0) {
-      return gmn.e;
+   protected boolean b(T $$0) {
+      return $$0.gr();
    }
 }

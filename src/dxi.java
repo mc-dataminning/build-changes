@@ -1,21 +1,16 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-public abstract class dxi implements dwx {
-   protected final jq f;
+abstract class dxi implements dxg {
+   protected final List<dxg> e;
 
-   protected static <P extends dxi> P1<Mu<P>, jq> a(Instance<P> $$0) {
-      return $$0.group(jq.v(16).optionalFieldOf("offset", jq.g).forGetter($$0x -> $$0x.f));
+   protected dxi(List<dxg> $$0) {
+      this.e = $$0;
    }
 
-   protected dxi(jq $$0) {
-      this.f = $$0;
+   public static <T extends dxi> Codec<T> a(Function<List<dxg>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(dxg.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
-
-   public final boolean a(dap $$0, im $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
-   }
-
-   protected abstract boolean a(dpy var1);
 }

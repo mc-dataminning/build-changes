@@ -9,36 +9,36 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class fj implements ArgumentType<Integer> {
-   private static final Collection<String> a = Arrays.asList("container.5", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ws.b("slot.unknown", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ws.b("slot.only_single_allowed", $$0));
+public class fj implements ArgumentType<euk> {
+   private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wu.b("argument.scoreboardDisplaySlot.invalid", $$0));
+
+   private fj() {
+   }
 
    public static fj a() {
       return new fj();
    }
 
-   public static int a(CommandContext<ec> $$0, String $$1) {
-      return (Integer)$$0.getArgument($$1, Integer.class);
+   public static euk a(CommandContext<ed> $$0, String $$1) {
+      return (euk)$$0.getArgument($$1, euk.class);
    }
 
-   public Integer a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = eg.a($$0, $$0x -> $$0x != ' ');
-      cpe $$2 = cpf.a($$1);
+   public euk a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      euk $$2 = euk.t.a($$1);
       if ($$2 == null) {
-         throw b.createWithContext($$0, $$1);
-      } else if ($$2.b() != 1) {
-         throw c.createWithContext($$0, $$1);
+         throw a.createWithContext($$0, $$1);
       } else {
-         return $$2.a().getInt(0);
+         return $$2;
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return eh.b(cpf.b(), $$1);
+      return ei.b(Arrays.stream(euk.values()).map(euk::c), $$1);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 }

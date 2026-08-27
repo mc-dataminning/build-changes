@@ -1,26 +1,36 @@
-public enum fcg {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private static final fcg[] d = values();
-   private final boolean e;
-   private final boolean f;
+public class fcg extends fce {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wu c = wu.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   private fcg(boolean $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fcg(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public boolean a() {
-      return this.e;
+   @Override
+   public void run() {
+      eyn $$0 = eyn.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (faa var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
+      }
    }
 
-   public boolean b() {
-      return this.f;
-   }
-
-   public fcg c() {
-      return d[(this.ordinal() + 1) % d.length];
+   @Override
+   public wu a() {
+      return c;
    }
 }

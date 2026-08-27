@@ -1,69 +1,101 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import javax.annotation.Nullable;
 
-public class fjk extends fjl {
-   private static final ws d = ws.c("chat.copy");
-   private static final ws r = ws.c("chat.link.warning");
-   private final String s;
-   private final boolean u;
+public record fjk(fjj a, int b, int c) {
+   private static final fjk d = new fjk(0, 0, 0, 0);
 
-   public fjk(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), ws.b($$1), $$1, $$2 ? wr.e : wr.g, $$2);
+   public fjk(int $$0, int $$1, int $$2, int $$3) {
+      this(new fjj($$0, $$1), $$2, $$3);
    }
 
-   public fjk(BooleanConsumer $$0, ws $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wr.e : wr.g, $$3);
+   public static fjk a() {
+      return d;
    }
 
-   public fjk(BooleanConsumer $$0, ws $$1, ws $$2, String $$3, ws $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (ws)($$5 ? ws.c("chat.link.open") : wr.f);
-      this.b = $$4;
-      this.u = !$$5;
-      this.s = $$3;
+   public static fjk a(fjh $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fjk($$1, $$2, $$3, $$4);
+         case b -> new fjk($$2, $$1, $$4, $$3);
+      };
    }
 
-   protected static xg a(boolean $$0, String $$1) {
-      return c($$0).b(wr.v).b(ws.b($$1));
+   public fjk a(fji $$0) {
+      return new fjk(this.a.a($$0), this.b, this.c);
    }
 
-   protected static xg c(boolean $$0) {
-      return ws.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   public int a(fjh $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   @Override
-   protected void a(int $$0) {
-      this.c(feu.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(feu.a(d, $$0x -> {
-         this.l();
-         this.c.accept(false);
-      }).a(this.n / 2 - 50, $$0, 100, 20).a());
-      this.c(feu.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
+   public int b(fji $$0) {
+      fjh $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
    }
 
-   public void l() {
-      this.m.o.a(this.s);
+   public fjk c(fji $$0) {
+      int $$1 = this.b($$0);
+      fjh $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
    }
 
-   @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.u) {
-         $$0.a(this.p, r, this.n / 2, 110, 16764108);
-      }
+   public boolean a(fjk $$0) {
+      return this.a($$0, fjh.a) && this.a($$0, fjh.b);
    }
 
-   public static void a(fkt $$0, String $$1) {
-      fcu $$2 = fcu.Q();
-      $$2.a(new fjk($$3 -> {
-         if ($$3) {
-            ac.j().a($$1);
-         }
-
-         $$2.a($$0);
-      }, $$1, true));
+   public boolean a(fjk $$0, fjh $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
    }
 
-   public static feu.c b(fkt $$0, String $$1) {
-      return $$2 -> a($$0, $$1);
+   public int b(fjh $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
+   @Nullable
+   public fjk b(fjk $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fjk($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
+
+   public int b() {
+      return this.a.b();
+   }
+
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
+
+   public fjj f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

@@ -1,69 +1,72 @@
-import java.util.OptionalInt;
+public class ffo extends fey {
+   private final fep a;
+   private final ffy b;
 
-public class ffo extends fer {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final ayl<ffo.a, ffn> c;
-   private boolean d = false;
-
-   public ffo(ws $$0, fef $$1) {
-      this(0, 0, $$0, $$1);
+   public ffo(int $$0, int $$1, int $$2, int $$3, wu $$4, fep $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new ffy($$4, $$5).d(this.x() - this.b());
    }
 
-   public ffo(int $$0, int $$1, ws $$2, fef $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ac.a($$1x -> $$1x.c.isPresent() ? ffn.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : ffn.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
-   }
-
-   public ffo c(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public ffo d(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public ffo e(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public ffo b(boolean $$0) {
-      this.d = $$0;
+   public ffo a(int $$0) {
+      this.b.c($$0);
       return this;
    }
 
    @Override
-   public int x() {
-      return this.c.a(this.d()).b();
+   public void k(int $$0) {
+      super.k($$0);
+      this.b.d(this.x() - this.b());
    }
 
    @Override
-   public int v() {
-      return this.c.a(this.d()).a() * 9;
+   protected int h() {
+      return this.b.v();
    }
 
    @Override
-   public void b(feh $$0, int $$1, int $$2, float $$3) {
-      ffn $$4 = this.c.a(this.d());
-      int $$5 = this.C();
-      int $$6 = this.D();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.x() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void b(fer $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aI_()) {
+         this.a($$0, this.C() - this.a(), this.D() - this.a(), this.x() + this.b(), this.v() + this.b());
       }
    }
 
-   private ffo.a d() {
-      return new ffo.a(this.y(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   @Override
+   public void b(fer $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.C(), (float)this.D(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
+      }
    }
 
-   static record a(ws a, int b, OptionalInt c) {
+   public boolean j() {
+      return super.e();
+   }
+
+   @Override
+   protected void c(fer $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.C() + this.a()), (float)(this.D() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fja $$0) {
+      $$0.a(fiz.a, this.y());
    }
 }

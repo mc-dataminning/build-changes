@@ -1,122 +1,125 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class btl extends bsw<cjy> {
-   private static final int c = 5;
-   private static final int d = 600;
-   private static final int e = 6600;
-   private static final int f = 20;
-   private static final Map<ckb, akf> g = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(ckb.c, eny.aA);
-      $$0.put(ckb.d, eny.aB);
-      $$0.put(ckb.e, eny.aC);
-      $$0.put(ckb.f, eny.aD);
-      $$0.put(ckb.g, eny.aE);
-      $$0.put(ckb.h, eny.aF);
-      $$0.put(ckb.i, eny.aG);
-      $$0.put(ckb.j, eny.aH);
-      $$0.put(ckb.k, eny.aI);
-      $$0.put(ckb.l, eny.aJ);
-      $$0.put(ckb.n, eny.aK);
-      $$0.put(ckb.o, eny.aL);
-      $$0.put(ckb.p, eny.aM);
-   });
-   private static final float h = 0.5F;
-   private int i = 600;
-   private boolean j;
-   private long k;
+public class btl {
+   public static final int a = 48;
 
-   public btl(int $$0) {
-      super(ImmutableMap.of(cah.m, cai.c, cah.n, cai.c, cah.q, cai.c, cah.k, cai.a), $$0);
+   public static btt<bsi> a(Predicate<iw<cdg>> $$0, cbd<iv> $$1, boolean $$2, Optional<Byte> $$3) {
+      return a($$0, $$1, $$1, $$2, $$3);
    }
 
-   protected boolean a(aqe $$0, cjy $$1) {
-      if (!this.b($$1)) {
-         return false;
-      } else if (this.i > 0) {
-         this.i--;
-         return false;
+   public static btt<bsi> a(Predicate<iw<cdg>> $$0, cbd<iv> $$1, cbd<iv> $$2, boolean $$3, Optional<Byte> $$4) {
+      int $$5 = 5;
+      int $$6 = 20;
+      MutableLong $$7 = new MutableLong(0L);
+      Long2ObjectMap<btl.a> $$8 = new Long2ObjectOpenHashMap();
+      bvd<bsi> $$9 = bxf.a(
+         (Function<bxf.b<bsi>, ? extends App<bxf.c<bsi>, bxi<bsi>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
+                  if ($$3 && $$7x.p_()) {
+                     return false;
+                  } else if ($$7.getValue() == 0L) {
+                     $$7.setValue($$6xx.Y() + (long)$$6xx.z.a(20));
+                     return false;
+                  } else if ($$6xx.Y() < $$7.getValue()) {
+                     return false;
+                  } else {
+                     $$7.setValue($$8x + 20L + (long)$$6xx.E_().a(20));
+                     cdd $$9x = $$6xx.y();
+                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((btl.a)$$1xxxx.getValue()).b($$8x));
+                     Predicate<in> $$10 = $$2xxxx -> {
+                        btl.a $$3xxxx = (btl.a)$$8.get($$2xxxx.a());
+                        if ($$3xxxx == null) {
+                           return true;
+                        } else if (!$$3xxxx.c($$8x)) {
+                           return false;
+                        } else {
+                           $$3xxxx.a($$8x);
+                           return true;
+                        }
+                     };
+                     Set<Pair<iw<cdg>, in>> $$11 = $$9x.c($$0, $$10, $$7x.dn(), 48, cdd.b.a).limit(5L).collect(Collectors.toSet());
+                     emo $$12 = a($$7x, $$11);
+                     if ($$12 != null && $$12.j()) {
+                        in $$13 = $$12.l();
+                        $$9x.c($$13).ifPresent($$8xx -> {
+                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
+                           $$5xx.a(iv.a($$6xx.ae(), $$13));
+                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
+                           $$8.clear();
+                           afw.c($$6xx, $$13);
+                        });
+                     } else {
+                        for (Pair<iw<cdg>, in> $$14 : $$11) {
+                           $$8.computeIfAbsent(((in)$$14.getSecond()).a(), $$2xxxx -> new btl.a($$6xx.z, $$8x));
+                        }
+                     }
+
+                     return true;
+                  }
+               }))
+      );
+      return $$2 == $$1 ? $$9 : bxf.a((Function<bxf.b<bsi>, ? extends App<bxf.c<bsi>, bxi<bsi>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
+   }
+
+   @Nullable
+   public static emo a(bsc $$0, Set<Pair<iw<cdg>, in>> $$1) {
+      if ($$1.isEmpty()) {
+         return null;
       } else {
-         return true;
-      }
-   }
+         Set<in> $$2 = new HashSet<>();
+         int $$3 = 1;
 
-   protected void a(aqe $$0, cjy $$1, long $$2) {
-      this.j = false;
-      this.k = $$2;
-      ckl $$3 = this.c($$1).get();
-      $$1.dQ().a(cah.q, $$3);
-      bsy.a($$1, $$3);
-   }
-
-   protected boolean b(aqe $$0, cjy $$1, long $$2) {
-      return this.b($$1) && !this.j;
-   }
-
-   protected void c(aqe $$0, cjy $$1, long $$2) {
-      ckl $$3 = this.c($$1).get();
-      bsy.a($$1, $$3);
-      if (this.a($$1, $$3)) {
-         if ($$2 - this.k > 20L) {
-            this.a($$1, (bre)$$3);
-            this.j = true;
+         for (Pair<iw<cdg>, in> $$4 : $$1) {
+            $$3 = Math.max($$3, ((cdg)((iw)$$4.getFirst()).a()).c());
+            $$2.add((in)$$4.getSecond());
          }
-      } else {
-         bsy.a($$1, $$3, 0.5F, 5);
+
+         return $$0.K().a($$2, $$3);
       }
    }
 
-   protected void d(aqe $$0, cjy $$1, long $$2) {
-      this.i = a($$0);
-      $$1.dQ().b(cah.q);
-      $$1.dQ().b(cah.m);
-      $$1.dQ().b(cah.n);
-   }
+   static class a {
+      private static final int a = 40;
+      private static final int b = 80;
+      private static final int c = 400;
+      private final ayg d;
+      private long e;
+      private long f;
+      private int g;
 
-   private void a(cjy $$0, bre $$1) {
-      for (csd $$3 : this.a($$0)) {
-         bsy.a($$0, $$3, $$1.dl());
+      a(ayg $$0, long $$1) {
+         this.d = $$0;
+         this.a($$1);
       }
-   }
 
-   private List<csd> a(cjy $$0) {
-      if ($$0.p_()) {
-         return ImmutableList.of(new csd(csg.dl));
-      } else {
-         ckb $$1 = $$0.gA().b();
-         if (g.containsKey($$1)) {
-            eoi $$2 = $$0.dN().o().aM().getLootTable(g.get($$1));
-            eog $$3 = new eog.a((aqe)$$0.dN()).a(eqt.f, $$0.dl()).a(eqt.a, $$0).a(eqs.i);
-            return $$2.a($$3);
-         } else {
-            return ImmutableList.of(new csd(csg.pv));
-         }
+      public void a(long $$0) {
+         this.e = $$0;
+         int $$1 = this.g + this.d.a(40) + 40;
+         this.g = Math.min($$1, 400);
+         this.f = $$0 + (long)this.g;
       }
-   }
 
-   private boolean b(cjy $$0) {
-      return this.c($$0).isPresent();
-   }
+      public boolean b(long $$0) {
+         return $$0 - this.e < 400L;
+      }
 
-   private Optional<ckl> c(cjy $$0) {
-      return $$0.dQ().c(cah.k).filter(this::a);
-   }
+      public boolean c(long $$0) {
+         return $$0 >= this.f;
+      }
 
-   private boolean a(ckl $$0) {
-      return $$0.b(bpz.F);
-   }
-
-   private boolean a(cjy $$0, ckl $$1) {
-      im $$2 = $$1.dn();
-      im $$3 = $$0.dn();
-      return $$3.a($$2, 5.0);
-   }
-
-   private static int a(aqe $$0) {
-      return 600 + $$0.z.a(6001);
+      @Override
+      public String toString() {
+         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
+      }
    }
 }

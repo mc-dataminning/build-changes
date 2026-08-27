@@ -1,57 +1,32 @@
-import java.util.EnumSet;
+public class byb extends bxz {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public abstract class byb {
-   private final EnumSet<byb.a> a = EnumSet.noneOf(byb.a.class);
-
-   public abstract boolean a();
-
-   public boolean b() {
-      return this.a();
-   }
-
-   public boolean Q_() {
-      return true;
-   }
-
-   public void c() {
-   }
-
-   public void d() {
-   }
-
-   public boolean R_() {
-      return false;
-   }
-
-   public void e() {
-   }
-
-   public void a(EnumSet<byb.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   public byb(bsc $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
-   }
+   public void a() {
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.bb = this.a(this.a.bb, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dF(), $$0x + 10.0F, this.c)));
+      } else {
+         if (this.a.K().l()) {
+            this.a.s(this.a(this.a.dF(), 0.0F, 5.0F));
+         }
 
-   public EnumSet<byb.a> j() {
-      return this.a;
-   }
+         this.a.bb = this.a(this.a.bb, this.a.aZ, this.b);
+      }
 
-   protected int a(int $$0) {
-      return this.R_() ? $$0 : b($$0);
-   }
-
-   protected static int b(int $$0) {
-      return axw.e($$0, 2);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+      float $$0 = axz.g(this.a.bb - this.a.aZ);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aZ -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aZ += 4.0F;
+      }
    }
 }

@@ -1,167 +1,80 @@
-import com.mojang.serialization.Codec;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
-public class dze extends dyu<dzd> {
-   private static final float a = 0.06F;
+public class dze {
+   private static final Logger a = LogUtils.getLogger();
+   private static final LoadingCache<aqh, dze.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<aqh, dze.b>() {
+         public dze.b a(aqh $$0) {
+            return new dze.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
+         }
+      });
 
-   public dze(Codec<dzd> $$0) {
-      super($$0);
+   public static void a(aqh $$0) {
+      try {
+         ((dze.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
+      }
    }
 
-   @Override
-   public boolean a(dyw<dzd> $$0) {
-      dap $$1 = $$0.b();
-      im $$2 = $$0.e();
-      ayd $$3 = $$0.d();
-      drv $$4 = $$0.c();
-      dzd $$5 = $$0.f();
-      dcv $$6 = $$5.b.b();
-      im $$7 = null;
-      dpy $$8 = $$1.a_($$2.d());
-      if ($$8.a($$6)) {
-         $$7 = $$2;
+   public static void a(aqh $$0, dyq<?, ?> $$1, Optional<eft> $$2) {
+      try {
+         ((dze.b)b.get($$0)).a().computeInt(new dze.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
       }
+   }
 
-      if ($$7 == null) {
-         return false;
-      } else {
-         int $$9 = axw.a($$3, 4, 13);
-         if ($$3.a(12) == 0) {
-            $$9 *= 2;
-         }
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
+   }
 
-         if (!$$5.g) {
-            int $$10 = $$4.d();
-            if ($$7.v() + $$9 + 1 >= $$10) {
-               return false;
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.ae().a().toString();
+               boolean $$3 = $$0.o().x();
+               jj<eft> $$4 = $$0.H_().d(le.aI);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::d).<akh>map(akg::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
             }
-         }
-
-         boolean $$11 = !$$5.g && $$3.i() < 0.06F;
-         $$1.a($$2, dcx.a.n(), 4);
-         this.a($$1, $$3, $$5, $$7, $$9, $$11);
-         this.b($$1, $$3, $$5, $$7, $$9, $$11);
-         return true;
-      }
+         );
    }
 
-   private static boolean a(dap $$0, im $$1, dzd $$2, boolean $$3) {
-      if ($$0.a($$1, dpx.a::r)) {
-         return true;
-      } else {
-         return $$3 ? $$2.f.test($$0, $$1) : false;
-      }
+   static record a(dyq<?, ?> a, Optional<eft> b) {
    }
 
-   private void a(dap $$0, ayd $$1, dzd $$2, im $$3, int $$4, boolean $$5) {
-      im.a $$6 = new im.a();
-      dpy $$7 = $$2.c;
-      int $$8 = $$5 ? 1 : 0;
-
-      for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-            boolean $$11 = $$5 && axw.a($$9) == $$8 && axw.a($$10) == $$8;
-
-            for (int $$12 = 0; $$12 < $$4; $$12++) {
-               $$6.a($$3, $$9, $$12, $$10);
-               if (a($$0, $$6, $$2, true)) {
-                  if ($$2.g) {
-                     if (!$$0.a_($$6.d()).i()) {
-                        $$0.b($$6, true);
-                     }
-
-                     $$0.a($$6, $$7, 3);
-                  } else if ($$11) {
-                     if ($$1.i() < 0.1F) {
-                        this.a($$0, $$6, $$7);
-                     }
-                  } else {
-                     this.a($$0, $$6, $$7);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void b(dap $$0, ayd $$1, dzd $$2, im $$3, int $$4, boolean $$5) {
-      im.a $$6 = new im.a();
-      boolean $$7 = $$2.d.a(dcx.kK);
-      int $$8 = Math.min($$1.a(1 + $$4 / 3) + 5, $$4);
-      int $$9 = $$4 - $$8;
-
-      for (int $$10 = $$9; $$10 <= $$4; $$10++) {
-         int $$11 = $$10 < $$4 - $$1.a(3) ? 2 : 1;
-         if ($$8 > 8 && $$10 < $$9 + 4) {
-            $$11 = 3;
-         }
-
-         if ($$5) {
-            $$11++;
-         }
-
-         for (int $$12 = -$$11; $$12 <= $$11; $$12++) {
-            for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
-               boolean $$14 = $$12 == -$$11 || $$12 == $$11;
-               boolean $$15 = $$13 == -$$11 || $$13 == $$11;
-               boolean $$16 = !$$14 && !$$15 && $$10 != $$4;
-               boolean $$17 = $$14 && $$15;
-               boolean $$18 = $$10 < $$9 + 3;
-               $$6.a($$3, $$12, $$10, $$13);
-               if (a($$0, $$6, $$2, false)) {
-                  if ($$2.g && !$$0.a_($$6.d()).i()) {
-                     $$0.b($$6, true);
-                  }
-
-                  if ($$18) {
-                     if (!$$16) {
-                        this.a($$0, $$1, $$6, $$2.d, $$7);
-                     }
-                  } else if ($$16) {
-                     this.a($$0, $$1, $$2, $$6, 0.1F, 0.2F, $$7 ? 0.1F : 0.0F);
-                  } else if ($$17) {
-                     this.a($$0, $$1, $$2, $$6, 0.01F, 0.7F, $$7 ? 0.083F : 0.0F);
-                  } else {
-                     this.a($$0, $$1, $$2, $$6, 5.0E-4F, 0.98F, $$7 ? 0.07F : 0.0F);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void a(czv $$0, ayd $$1, dzd $$2, im.a $$3, float $$4, float $$5, float $$6) {
-      if ($$1.i() < $$4) {
-         this.a($$0, $$3, $$2.e);
-      } else if ($$1.i() < $$5) {
-         this.a($$0, $$3, $$2.d);
-         if ($$1.i() < $$6) {
-            a($$3, $$0, $$1);
-         }
-      }
-   }
-
-   private void a(czv $$0, ayd $$1, im $$2, dpy $$3, boolean $$4) {
-      if ($$0.a_($$2.d()).a($$3.b())) {
-         this.a($$0, $$2, $$3);
-      } else if ((double)$$1.i() < 0.15) {
-         this.a($$0, $$2, $$3);
-         if ($$4 && $$1.a(11) == 0) {
-            a($$2, $$0, $$1);
-         }
-      }
-   }
-
-   private static void a(im $$0, czv $$1, ayd $$2) {
-      im.a $$3 = $$0.j().c(ir.a);
-      if ($$1.u($$3)) {
-         int $$4 = axw.a($$2, 1, 5);
-         if ($$2.a(7) == 0) {
-            $$4 *= 2;
-         }
-
-         int $$5 = 23;
-         int $$6 = 25;
-         ean.a($$1, $$2, $$3, $$4, 23, 25);
-      }
+   static record b(Object2IntMap<dze.a> a, MutableInt b) {
    }
 }

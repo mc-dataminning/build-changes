@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class cyu extends cyg {
+   protected cyu(cyg.b $$0) {
+      super($$0);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cyu {
+   @Override
+   public boolean a(cyg $$0) {
+      return super.a($$0) && $$0 != cyj.x;
+   }
 }

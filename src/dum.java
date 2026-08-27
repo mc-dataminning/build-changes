@@ -1,8 +1,121 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dum {
+public class dum<T extends duh> {
+   private final Class<T> a;
+   private final Long2ObjectFunction<duu> b;
+   private final Long2ObjectMap<dul<T>> c = new Long2ObjectOpenHashMap();
+   private final LongSortedSet d = new LongAVLTreeSet();
+
+   public dum(Class<T> $$0, Long2ObjectFunction<duu> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public void a(etk $$0, awm<dul<T>> $$1) {
+      int $$2 = 2;
+      int $$3 = jp.a($$0.a - 2.0);
+      int $$4 = jp.a($$0.b - 4.0);
+      int $$5 = jp.a($$0.c - 2.0);
+      int $$6 = jp.a($$0.d + 2.0);
+      int $$7 = jp.a($$0.e + 0.0);
+      int $$8 = jp.a($$0.f + 2.0);
+
+      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
+         long $$10 = jp.b($$9, 0, 0);
+         long $$11 = jp.b($$9, -1, -1);
+         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
+
+         while ($$12.hasNext()) {
+            long $$13 = $$12.nextLong();
+            int $$14 = jp.c($$13);
+            int $$15 = jp.d($$13);
+            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
+               dul<T> $$16 = (dul<T>)this.c.get($$13);
+               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
+                  return;
+               }
+            }
+         }
+      }
+   }
+
+   public LongStream a(long $$0) {
+      int $$1 = czk.a($$0);
+      int $$2 = czk.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
+      } else {
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+      }
+   }
+
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = jp.b($$0, 0, $$1);
+      long $$3 = jp.b($$0, -1, $$1);
+      return this.d.subSet($$2, $$3 + 1L);
+   }
+
+   public Stream<dul<T>> b(long $$0) {
+      return this.a($$0).<dul<T>>mapToObj(this.c::get).filter(Objects::nonNull);
+   }
+
+   private static long f(long $$0) {
+      return czk.c(jp.b($$0), jp.d($$0));
+   }
+
+   public dul<T> c(long $$0) {
+      return (dul<T>)this.c.computeIfAbsent($$0, this::g);
+   }
+
+   @Nullable
+   public dul<T> d(long $$0) {
+      return (dul<T>)this.c.get($$0);
+   }
+
+   private dul<T> g(long $$0) {
+      long $$1 = f($$0);
+      duu $$2 = (duu)this.b.get($$1);
+      this.d.add($$0);
+      return new dul<>(this.a, $$2);
+   }
+
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
+      return $$0;
+   }
+
+   public void b(etk $$0, awm<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   }
+
+   public <U extends T> void a(duo<T, U> $$0, etk $$1, awm<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   }
+
+   public void e(long $$0) {
+      this.c.remove($$0);
+      this.d.remove($$0);
+   }
+
+   @azc
+   public int b() {
+      return this.d.size();
+   }
 }

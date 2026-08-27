@@ -1,27 +1,21 @@
-import com.google.common.math.Quantiles;
-import com.google.common.math.Quantiles.ScaleAndIndexes;
-import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
-import java.util.Comparator;
-import java.util.Map;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Optional;
 
-public class bll {
-   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
+public class bll implements blg<StringReader, akh> {
+   public static final blg<StringReader, akh> a = new bll();
 
    private bll() {
    }
 
-   public static Map<Integer, Double> a(long[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
-   }
+   @Override
+   public Optional<akh> a(blf<StringReader> $$0) {
+      $$0.b().skipWhitespace();
 
-   public static Map<Integer, Double> a(double[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
-   }
-
-   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
-      Int2DoubleSortedMap $$1 = ac.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
-      return Int2DoubleSortedMaps.unmodifiable($$1);
+      try {
+         return Optional.of(akh.b($$0.b()));
+      } catch (CommandSyntaxException var3) {
+         return Optional.empty();
+      }
    }
 }

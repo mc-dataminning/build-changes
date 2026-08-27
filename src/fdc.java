@@ -1,46 +1,166 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
 
-public class fdc {
-   private static final Logger a = LogUtils.getLogger();
-   private final fcu b;
-   @Nullable
-   private CompletableFuture<Boolean> c;
-   private boolean d;
+public class fdc implements Comparable<fdc> {
+   private static final Map<String, fdc> h = Maps.newHashMap();
+   private static final Map<ews.a, fdc> i = Maps.newHashMap();
+   private static final Set<String> j = Sets.newHashSet();
+   public static final String a = "key.categories.movement";
+   public static final String b = "key.categories.misc";
+   public static final String c = "key.categories.multiplayer";
+   public static final String d = "key.categories.gameplay";
+   public static final String e = "key.categories.inventory";
+   public static final String f = "key.categories.ui";
+   public static final String g = "key.categories.creative";
+   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("key.categories.movement", 1);
+      $$0.put("key.categories.gameplay", 2);
+      $$0.put("key.categories.inventory", 3);
+      $$0.put("key.categories.creative", 4);
+      $$0.put("key.categories.multiplayer", 5);
+      $$0.put("key.categories.ui", 6);
+      $$0.put("key.categories.misc", 7);
+   });
+   private final String l;
+   private final ews.a m;
+   private final String n;
+   private ews.a o;
+   private boolean p;
+   private int q;
 
-   public fdc(fcu $$0) {
-      this.b = $$0;
-   }
-
-   public void a(fkt $$0) {
-      if (!this.b.ah() && !this.b.m.w && !this.d && this.a()) {
-         this.b.a(new fnr($$0));
-         this.d = true;
+   public static void a(ews.a $$0) {
+      fdc $$1 = i.get($$0);
+      if ($$1 != null) {
+         $$1.q++;
       }
    }
 
-   private Boolean a() {
-      if (this.c == null) {
-         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
+   public static void a(ews.a $$0, boolean $$1) {
+      fdc $$2 = i.get($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
       }
+   }
 
-      try {
-         return this.c.getNow(false);
-      } catch (CompletionException var2) {
-         a.warn("Failed to retrieve realms subscriptions", var2);
-         this.d = true;
+   public static void a() {
+      for (fdc $$0 : h.values()) {
+         if ($$0.o.a() == ews.b.a && $$0.o.b() != ews.bv.b()) {
+            $$0.a(ews.a(fde.Q().aP().i(), $$0.o.b()));
+         }
+      }
+   }
+
+   public static void b() {
+      for (fdc $$0 : h.values()) {
+         $$0.n();
+      }
+   }
+
+   public static void c() {
+      for (fdc $$0 : h.values()) {
+         if ($$0 instanceof fds $$1) {
+            $$1.n();
+         }
+      }
+   }
+
+   public static void d() {
+      i.clear();
+
+      for (fdc $$0 : h.values()) {
+         i.put($$0.o, $$0);
+      }
+   }
+
+   public fdc(String $$0, int $$1, String $$2) {
+      this($$0, ews.b.a, $$1, $$2);
+   }
+
+   public fdc(String $$0, ews.b $$1, int $$2, String $$3) {
+      this.l = $$0;
+      this.o = $$1.a($$2);
+      this.m = this.o;
+      this.n = $$3;
+      h.put($$0, this);
+      i.put(this.o, this);
+      j.add($$3);
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   public String f() {
+      return this.n;
+   }
+
+   public boolean g() {
+      if (this.q == 0) {
          return false;
+      } else {
+         this.q--;
+         return true;
       }
    }
 
-   private boolean b() {
-      try {
-         return eyd.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
-      } catch (ezq var2) {
-         return false;
-      }
+   private void n() {
+      this.q = 0;
+      this.a(false);
+   }
+
+   public String h() {
+      return this.l;
+   }
+
+   public ews.a i() {
+      return this.m;
+   }
+
+   public void b(ews.a $$0) {
+      this.o = $$0;
+   }
+
+   public int a(fdc $$0) {
+      return this.n.equals($$0.n) ? goe.a(this.l).compareTo(goe.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
+   }
+
+   public static Supplier<wu> a(String $$0) {
+      fdc $$1 = h.get($$0);
+      return $$1 == null ? () -> wu.c($$0) : $$1::k;
+   }
+
+   public boolean b(fdc $$0) {
+      return this.o.equals($$0.o);
+   }
+
+   public boolean j() {
+      return this.o.equals(ews.bv);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 == ews.bv.b() ? this.o.a() == ews.b.b && this.o.b() == $$1 : this.o.a() == ews.b.a && this.o.b() == $$0;
+   }
+
+   public boolean a(int $$0) {
+      return this.o.a() == ews.b.c && this.o.b() == $$0;
+   }
+
+   public wu k() {
+      return this.o.d();
+   }
+
+   public boolean l() {
+      return this.o.equals(this.m);
+   }
+
+   public String m() {
+      return this.o.c();
+   }
+
+   public void a(boolean $$0) {
+      this.p = $$0;
    }
 }

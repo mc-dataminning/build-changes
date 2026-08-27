@@ -1,89 +1,15 @@
-public interface vg extends us {
-   vg a = new vg() {
-   };
+import java.util.List;
 
-   @Override
-   default us.b a() {
-      return us.b.a;
+public record vg(List<String> a, uz<?> b, String c) {
+   public vg(uz<?> $$0, String $$1) {
+      this(List.of(), $$0, $$1);
    }
 
-   @Override
-   default us.b a(String $$0) {
-      return us.b.a;
+   public vg(String $$0, uz<?> $$1, String $$2) {
+      this(List.of($$0), $$1, $$2);
    }
 
-   @Override
-   default us.b a(byte $$0) {
-      return us.b.a;
-   }
-
-   @Override
-   default us.b a(short $$0) {
-      return us.b.a;
-   }
-
-   @Override
-   default us.b a(int $$0) {
-      return us.b.a;
-   }
-
-   @Override
-   default us.b a(long $$0) {
-      return us.b.a;
-   }
-
-   @Override
-   default us.b a(float $$0) {
-      return us.b.a;
-   }
-
-   @Override
-   default us.b a(double $$0) {
-      return us.b.a;
-   }
-
-   @Override
-   default us.b a(byte[] $$0) {
-      return us.b.a;
-   }
-
-   @Override
-   default us.b a(int[] $$0) {
-      return us.b.a;
-   }
-
-   @Override
-   default us.b a(long[] $$0) {
-      return us.b.a;
-   }
-
-   @Override
-   default us.b a(ux<?> $$0, int $$1) {
-      return us.b.a;
-   }
-
-   @Override
-   default us.a b(ux<?> $$0, int $$1) {
-      return us.a.b;
-   }
-
-   @Override
-   default us.a a(ux<?> $$0) {
-      return us.a.b;
-   }
-
-   @Override
-   default us.a a(ux<?> $$0, String $$1) {
-      return us.a.b;
-   }
-
-   @Override
-   default us.b b() {
-      return us.b.a;
-   }
-
-   @Override
-   default us.b b(ux<?> $$0) {
-      return us.b.a;
+   public vg(String $$0, String $$1, uz<?> $$2, String $$3) {
+      this(List.of($$0, $$1), $$2, $$3);
    }
 }

@@ -1,22 +1,33 @@
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class arm implements aqu {
-   public static final aqu.a a = new aqu.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public interface arm {
+   arm a = new arm() {
+      @Override
+      public void a() {
+      }
 
-   public arm(MinecraftServer.b $$0) {
-      this.b = $$0;
-   }
+      @Override
+      public void b() {
+      }
 
-   @Override
-   public void a(Consumer<yz<?>> $$0) {
-      $$0.accept(new zl(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
-   }
+      @Override
+      public CompletableFuture<aqz> a(String $$0) {
+         return CompletableFuture.completedFuture(aqz.a($$0));
+      }
 
-   @Override
-   public aqu.a a() {
-      return a;
-   }
+      @Override
+      public CompletableFuture<List<aqz>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(aqz::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   void a();
+
+   void b();
+
+   CompletableFuture<aqz> a(String var1);
+
+   CompletableFuture<List<aqz>> a(List<String> var1);
 }

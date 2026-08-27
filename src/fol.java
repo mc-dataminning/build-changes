@@ -1,5 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface fol {
-   void a(List<cwi<?>> var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fol {
 }

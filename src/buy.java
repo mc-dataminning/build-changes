@@ -1,23 +1,19 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class buy {
-   public static bsx<bre> a(bqr<?> $$0, int $$1) {
-      int $$2 = $$1 * $$1;
-      return bwj.a(
-         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$2x -> $$2x.group($$2x.a(cah.n), $$2x.c(cah.q), $$2x.b(cah.h))
-               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bre> $$9 = $$2x.<caj>b($$5).a($$3xx -> $$3xx.g((bql)$$7) <= (double)$$2 && $$0.equals($$3xx.ai()));
-                     if ($$9.isEmpty()) {
-                        return false;
-                     } else {
-                        bre $$10 = $$9.get();
-                        $$4.a($$10);
-                        $$3.a(new bth($$10, true));
-                        return true;
-                     }
-                  }))
-      );
+public class buy extends bts<bsc> {
+   public buy(int $$0, int $$1) {
+      super(ImmutableMap.of(cbd.n, cbe.a), $$0, $$1);
+   }
+
+   protected boolean a(aqh $$0, bsc $$1, long $$2) {
+      return $$1.dQ().c(cbd.n).filter($$1x -> $$1x.a($$1)).isPresent();
+   }
+
+   protected void b(aqh $$0, bsc $$1, long $$2) {
+      $$1.dQ().b(cbd.n);
+   }
+
+   protected void c(aqh $$0, bsc $$1, long $$2) {
+      $$1.dQ().c(cbd.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
    }
 }

@@ -1,53 +1,58 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fha implements fhd {
-   private static final akf d = new akf("toast/advancement");
-   public static final int a = 5000;
-   private final af e;
-   private boolean f;
+public interface fha extends fgo {
+   long t = 250L;
 
-   public fha(af $$0) {
-      this.e = $$0;
+   default void f(double $$0, double $$1) {
    }
 
-   @Override
-   public fhd.a a(feh $$0, fhe $$1, long $$2) {
-      ar $$3 = this.e.b().c().orElse(null);
-      $$0.a(d, 0, 0, this.a(), this.b());
-      if ($$3 != null) {
-         List<axi> $$4 = $$1.b().h.c($$3.a(), 125);
-         int $$5 = $$3.e() == al.b ? 16746751 : 16776960;
-         if ($$4.size() == 1) {
-            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
-            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
-         } else {
-            int $$6 = 1500;
-            float $$7 = 300.0F;
-            if ($$2 < 1500L) {
-               int $$8 = axw.d(axw.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
-               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
-            } else {
-               int $$9 = axw.d(axw.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
-               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
+   }
 
-               for (axi $$11 : $$4) {
-                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
-                  $$10 += 9;
-               }
-            }
-         }
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
+   }
 
-         if (!this.f && $$2 > 0L) {
-            this.f = true;
-            if ($$3.e() == al.b) {
-               $$1.b().ak().a(gpw.a(auz.Ai, 1.0F, 1.0F));
-            }
-         }
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
 
-         $$0.b($$3.c(), 8, 8);
-         return (double)$$2 >= 5000.0 * $$1.c() ? fhd.a.b : fhd.a.a;
-      } else {
-         return fhd.a.b;
-      }
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean c(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
+   }
+
+   @Nullable
+   default feo a(fjg $$0) {
+      return null;
+   }
+
+   default boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   void a(boolean var1);
+
+   boolean aI_();
+
+   @Nullable
+   default feo aJ_() {
+      return this.aI_() ? feo.a(this) : null;
+   }
+
+   default fjk G() {
+      return fjk.a();
    }
 }

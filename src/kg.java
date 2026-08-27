@@ -1,45 +1,49 @@
-public class kg implements kh {
-   @Override
-   public final csd dispense(ke $$0, csd $$1) {
-      csd $$2 = this.a($$0, $$1);
-      this.a($$0);
-      this.a($$0, $$0.d().c(dfa.b));
-      return $$2;
+public class kg extends kh {
+   private final kh c = new kh();
+   private final cne.b d;
+   private final boolean e;
+
+   public kg(cne.b $$0) {
+      this($$0, false);
    }
 
-   protected csd a(ke $$0, csd $$1) {
-      ir $$2 = $$0.d().c(dfa.b);
-      jf $$3 = dfa.a($$0);
-      csd $$4 = $$1.a(1);
-      a($$0.b(), $$4, 6, $$2, $$3);
+   public kg(cne.b $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Override
+   public csz a(kf $$0, csz $$1) {
+      is $$2 = $$0.d().c(dfj.b);
+      aqh $$3 = $$0.b();
+      etp $$4 = $$0.a();
+      double $$5 = 0.5625 + (double)brn.k.k() / 2.0;
+      double $$6 = $$4.a() + (double)$$2.j() * $$5;
+      double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);
+      double $$8 = $$4.c() + (double)$$2.l() * $$5;
+      in $$9 = $$0.c().a($$2);
+      double $$10;
+      if ($$3.b_($$9).a(avw.a)) {
+         $$10 = 1.0;
+      } else {
+         if (!$$3.a_($$9).i() || !$$3.b_($$9.d()).a(avw.a)) {
+            return this.c.dispense($$0, $$1);
+         }
+
+         $$10 = 0.0;
+      }
+
+      cne $$13 = (cne)(this.e ? new cnf($$3, $$6, $$7 + $$10, $$8) : new cne($$3, $$6, $$7 + $$10, $$8));
+      brn.<cne>a($$3, $$1, null).accept($$13);
+      $$13.a(this.d);
+      $$13.r($$2.p());
+      $$3.b($$13);
+      $$1.h(1);
       return $$1;
    }
 
-   public static void a(czu $$0, csd $$1, int $$2, ir $$3, jf $$4) {
-      double $$5 = $$4.a();
-      double $$6 = $$4.b();
-      double $$7 = $$4.c();
-      if ($$3.o() == ir.a.b) {
-         $$6 -= 0.125;
-      } else {
-         $$6 -= 0.15625;
-      }
-
-      cgv $$8 = new cgv($$0, $$5, $$6, $$7, $$1);
-      double $$9 = $$0.z.j() * 0.1 + 0.2;
-      $$8.o(
-         $$0.z.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
-         $$0.z.a(0.2, 0.0172275 * (double)$$2),
-         $$0.z.a((double)$$3.l() * $$9, 0.0172275 * (double)$$2)
-      );
-      $$0.b($$8);
-   }
-
-   protected void a(ke $$0) {
+   @Override
+   protected void a(kf $$0) {
       $$0.b().c(1000, $$0.c(), 0);
-   }
-
-   protected void a(ke $$0, ir $$1) {
-      $$0.b().c(2000, $$0.c(), $$1.d());
    }
 }

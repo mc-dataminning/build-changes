@@ -1,35 +1,23 @@
-public class ggp extends ggm<ckv> {
-   private static final akf a = new akf("textures/entity/illager/evoker_fangs.png");
-   private final frs<ckv> f;
+public class ggp extends gfs<cib, frx<cib>> {
+   private static final akh a = new akh("textures/entity/zombie/drowned.png");
 
-   public ggp(ggn.a $$0) {
-      super($$0);
-      this.f = new frs<>($$0.a(fuq.ac));
+   public ggp(ggx.a $$0) {
+      super($$0, new frx<>($$0.a(fva.R)), new frx<>($$0.a(fva.S)), new frx<>($$0.a(fva.T)));
+      this.a(new gkq<>(this, $$0.f()));
    }
 
-   public void a(ckv $$0, float $$1, float $$2, exn $$3, gbe $$4, int $$5) {
-      float $$6 = $$0.a($$2);
-      if ($$6 != 0.0F) {
-         float $$7 = 2.0F;
-         if ($$6 > 0.9F) {
-            $$7 *= (1.0F - $$6) / 0.1F;
-         }
-
-         $$3.a();
-         $$3.a(a.d.rotationDegrees(90.0F - $$0.dD()));
-         $$3.b(-$$7, -$$7, $$7);
-         float $$8 = 0.03125F;
-         $$3.a(0.0, -0.626, 0.0);
-         $$3.b(0.5F, 0.5F, 0.5F);
-         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dD(), $$0.dF());
-         exr $$9 = $$4.getBuffer(this.f.a(a));
-         this.f.a($$3, $$9, $$5, gmf.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   public akf a(ckv $$0) {
+   @Override
+   public akh a(cjg $$0) {
       return a;
+   }
+
+   protected void a(cib $$0, exx $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.a($$4);
+      if ($$6 > 0.0F) {
+         float $$7 = -10.0F - $$0.dF();
+         float $$8 = axz.i($$6, 0.0F, $$7);
+         $$1.a(a.b.rotationDegrees($$8), 0.0F, $$0.di() / 2.0F / $$5, 0.0F);
+      }
    }
 }

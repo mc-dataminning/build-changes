@@ -1,16 +1,13 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebr implements eay {
-   public static final Codec<ebr> a = axe.b(efk.c).fieldOf("features").xmap(ebr::new, $$0 -> $$0.b).codec();
-   public final iz<efk> b;
+public class ebr implements ebh {
+   public static final Codec<ebr> k = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, ebr::new)
+   );
+   public final float l;
 
-   public ebr(iz<efk> $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public Stream<dyh<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public ebr(float $$0) {
+      this.l = $$0;
    }
 }

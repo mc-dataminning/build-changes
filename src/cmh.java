@@ -1,151 +1,79 @@
-import javax.annotation.Nullable;
-
-public abstract class cmh extends cmg implements cmk {
-   private je<csd> c = je.a(36, csd.i);
-   @Nullable
-   private akf d;
-   private long e;
-
-   protected cmh(bqr<?> $$0, czu $$1) {
+public abstract class cmh extends clz {
+   protected cmh(brn<? extends cmh> $$0, dad $$1) {
       super($$0, $$1);
    }
 
-   protected cmh(bqr<?> $$0, double $$1, double $$2, double $$3, czu $$4) {
-      super($$0, $$4, $$1, $$2, $$3);
+   protected cmh(brn<? extends cmh> $$0, double $$1, double $$2, double $$3, dad $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
+   }
+
+   protected cmh(brn<? extends cmh> $$0, bsa $$1, dad $$2) {
+      this($$0, $$1.ds(), $$1.dw() - 0.1F, $$1.dy(), $$2);
+      this.c($$1);
    }
 
    @Override
-   public void a(bpj $$0) {
-      super.a($$0);
-      this.a($$0, this.dN(), this);
-   }
-
-   @Override
-   public csd a(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public csd a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public csd b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, csd $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public brv a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(ckl $$0) {
-      return this.g($$0);
-   }
-
-   @Override
-   public void a(bql.c $$0) {
-      if (!this.dN().B && $$0.a()) {
-         bom.a(this.dN(), this, this);
+   public boolean a(double $$0) {
+      double $$1 = this.cI().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
       }
 
-      super.a($$0);
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
    }
 
    @Override
-   protected void b(ty $$0) {
-      super.b($$0);
-      this.a($$0, this.dP());
-   }
+   public void l() {
+      super.l();
+      etn $$0 = cmb.a(this, this::b);
+      boolean $$1 = false;
+      if ($$0.c() == etn.a.b) {
+         in $$2 = ((etl)$$0).a();
+         dqh $$3 = this.dN().a_($$2);
+         if ($$3.a(ddg.ed)) {
+            this.f($$2);
+            $$1 = true;
+         } else if ($$3.a(ddg.kF)) {
+            dnm $$4 = this.dN().c_($$2);
+            if ($$4 instanceof dpc && dpc.a(this)) {
+               dpc.a(this.dN(), $$2, $$3, this, (dpc)$$4);
+            }
 
-   @Override
-   protected void a(ty $$0) {
-      super.a($$0);
-      this.b($$0, this.dP());
-   }
-
-   @Override
-   public boq a(ckl $$0, bop $$1) {
-      return this.c_($$0);
-   }
-
-   @Override
-   protected void u() {
-      float $$0 = 0.98F;
-      if (this.d == null) {
-         int $$1 = 15 - cnh.b(this);
-         $$0 += (float)$$1 * 0.001F;
+            $$1 = true;
+         }
       }
 
+      if ($$0.c() != etn.a.a && !$$1) {
+         this.a($$0);
+      }
+
+      this.aQ();
+      etp $$5 = this.dq();
+      double $$6 = this.ds() + $$5.c;
+      double $$7 = this.du() + $$5.d;
+      double $$8 = this.dy() + $$5.e;
+      this.J();
+      float $$11;
       if (this.bc()) {
-         $$0 *= 0.95F;
-      }
+         for (int $$9 = 0; $$9 < 4; $$9++) {
+            float $$10 = 0.25F;
+            this.dN().a(kx.d, $$6 - $$5.c * 0.25, $$7 - $$5.d * 0.25, $$8 - $$5.e * 0.25, $$5.c, $$5.d, $$5.e);
+         }
 
-      this.g(this.dq().d((double)$$0, 0.0, (double)$$0));
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   public void a(akf $$0, long $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   @Nullable
-   @Override
-   public cnh createMenu(int $$0, ckk $$1, ckl $$2) {
-      if (this.d != null && $$2.N_()) {
-         return null;
+         $$11 = 0.8F;
       } else {
-         this.f($$1.m);
-         return this.a($$0, $$1);
+         $$11 = 0.99F;
       }
-   }
 
-   protected abstract cnh a(int var1, ckk var2);
-
-   @Nullable
-   @Override
-   public akf B() {
-      return this.d;
+      this.g($$5.a((double)$$11));
+      this.aY();
+      this.a_($$6, $$7, $$8);
    }
 
    @Override
-   public void a(@Nullable akf $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public long C() {
-      return this.e;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public je<csd> D() {
-      return this.c;
-   }
-
-   @Override
-   public void E() {
-      this.c = je.a(this.b(), csd.i);
+   protected double aW() {
+      return 0.03;
    }
 }

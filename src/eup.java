@@ -1,45 +1,19 @@
-public class eup {
-   private static final euz<Object> a = new euz<Object>() {
-      @Override
-      public void a(euw<Object> $$0) {
-      }
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-      @Override
-      public boolean a(im $$0, Object $$1) {
-         return false;
-      }
+public interface eup {
+   int a();
 
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final eus<Object> b = new eus<Object>() {
-      @Override
-      public void a(euw<Object> $$0) {
-      }
+   boolean b();
 
-      @Override
-      public boolean a(im $$0, Object $$1) {
-         return false;
-      }
+   @Nullable
+   yk c();
 
-      @Override
-      public boolean b(im $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> euz<T> a() {
-      return (euz<T>)a;
+   default xi a(yk $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
    }
 
-   public static <T> eus<T> b() {
-      return (eus<T>)b;
+   static xi a(@Nullable eup $$0, yk $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
    }
 }

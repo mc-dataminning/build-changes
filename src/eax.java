@@ -1,32 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class eax implements eay {
+public class eax {
    public static final Codec<eax> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(im.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, eax::new)
+      $$0 -> $$0.group(eft.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+            .apply($$0, eax::new)
    );
-   private final Optional<im> b;
-   private final boolean c;
+   public final iw<eft> b;
+   public final float c;
 
-   private eax(Optional<im> $$0, boolean $$1) {
+   public eax(iw<eft> $$0, float $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public static eax a(im $$0, boolean $$1) {
-      return new eax(Optional.of($$0), $$1);
-   }
-
-   public static eax a() {
-      return new eax(Optional.empty(), false);
-   }
-
-   public Optional<im> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
+   public boolean a(day $$0, dse $$1, ayg $$2, in $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

@@ -1,42 +1,41 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public abstract class gnq implements ati, AutoCloseable {
-   private final gmn a;
-   private final akf b;
-   private final Set<asn<?>> c;
+public class gnq {
+   private static final gny[] a = new gny[]{
+      a("textures/entity/player/slim/alex.png", gny.a.a),
+      a("textures/entity/player/slim/ari.png", gny.a.a),
+      a("textures/entity/player/slim/efe.png", gny.a.a),
+      a("textures/entity/player/slim/kai.png", gny.a.a),
+      a("textures/entity/player/slim/makena.png", gny.a.a),
+      a("textures/entity/player/slim/noor.png", gny.a.a),
+      a("textures/entity/player/slim/steve.png", gny.a.a),
+      a("textures/entity/player/slim/sunny.png", gny.a.a),
+      a("textures/entity/player/slim/zuri.png", gny.a.a),
+      a("textures/entity/player/wide/alex.png", gny.a.b),
+      a("textures/entity/player/wide/ari.png", gny.a.b),
+      a("textures/entity/player/wide/efe.png", gny.a.b),
+      a("textures/entity/player/wide/kai.png", gny.a.b),
+      a("textures/entity/player/wide/makena.png", gny.a.b),
+      a("textures/entity/player/wide/noor.png", gny.a.b),
+      a("textures/entity/player/wide/steve.png", gny.a.b),
+      a("textures/entity/player/wide/sunny.png", gny.a.b),
+      a("textures/entity/player/wide/zuri.png", gny.a.b)
+   };
 
-   public gnq(gmp $$0, akf $$1, akf $$2) {
-      this($$0, $$1, $$2, gmj.a);
+   public static akh a() {
+      return a[6].a();
    }
 
-   public gnq(gmp $$0, akf $$1, akf $$2, Set<asn<?>> $$3) {
-      this.b = $$2;
-      this.a = new gmn($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
+   public static gny a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
    }
 
-   protected gmo a(akf $$0) {
-      return this.a.a($$0);
+   public static gny a(GameProfile $$0) {
+      return a($$0.getId());
    }
 
-   @Override
-   public final CompletableFuture<Void> a(ati.a $$0, ato $$1, ble $$2, ble $$3, Executor $$4, Executor $$5) {
-      return gmj.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(gmj.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private void a(gmj.a $$0, ble $$1) {
-      $$1.a();
-      $$1.a("upload");
-      this.a.a($$0);
-      $$1.c();
-      $$1.b();
-   }
-
-   @Override
-   public void close() {
-      this.a.f();
+   private static gny a(String $$0, gny.a $$1) {
+      return new gny(new akh($$0), null, null, null, $$1, true);
    }
 }

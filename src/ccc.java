@@ -1,119 +1,29 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 
-public class ccc {
-   private static final int a = 10;
-
-   public static im a(ayd $$0, int $$1, int $$2) {
-      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
-      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
-      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
-      return new im($$3, $$4, $$5);
+public class ccc<T extends bsa> extends ccj<T> {
+   @Override
+   protected void a(aqh $$0, T $$1) {
+      etk $$2 = $$1.cI().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<bsa> $$3 = $$0.a(bsa.class, $$2, $$1x -> $$1x != $$1 && $$1x.bB());
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      btb<?> $$4 = $$1.dQ();
+      $$4.a(cbd.g, $$3);
+      $$4.a(cbd.h, new cbf($$1, $$3));
    }
 
-   @Nullable
-   public static im a(ayd $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      double $$7 = axw.d($$5, $$4) - (float) (Math.PI / 2);
-      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
-      double $$9 = Math.sqrt($$0.j()) * (double)axw.g * (double)$$1;
-      double $$10 = -$$9 * Math.sin($$8);
-      double $$11 = $$9 * Math.cos($$8);
-      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
-         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
-         return im.a($$10, (double)$$12, $$11);
-      } else {
-         return null;
-      }
+   protected int b() {
+      return 16;
    }
 
-   @VisibleForTesting
-   public static im a(im $$0, int $$1, Predicate<im> $$2) {
-      if (!$$2.test($$0)) {
-         return $$0;
-      } else {
-         im $$3 = $$0.c();
-
-         while ($$3.v() < $$1 && $$2.test($$3)) {
-            $$3 = $$3.c();
-         }
-
-         return $$3;
-      }
+   protected int c() {
+      return 16;
    }
 
-   @VisibleForTesting
-   public static im a(im $$0, int $$1, int $$2, Predicate<im> $$3) {
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
-      } else if (!$$3.test($$0)) {
-         return $$0;
-      } else {
-         im $$4 = $$0.c();
-
-         while ($$4.v() < $$2 && $$3.test($$4)) {
-            $$4 = $$4.c();
-         }
-
-         im $$5 = $$4;
-
-         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
-            im $$6 = $$5.c();
-            if ($$3.test($$6)) {
-               break;
-            }
-
-            $$5 = $$6;
-         }
-
-         return $$5;
-      }
-   }
-
-   @Nullable
-   public static etf a(brm $$0, Supplier<im> $$1) {
-      return a($$1, $$0::h);
-   }
-
-   @Nullable
-   public static etf a(Supplier<im> $$0, ToDoubleFunction<im> $$1) {
-      double $$2 = Double.NEGATIVE_INFINITY;
-      im $$3 = null;
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         im $$5 = $$0.get();
-         if ($$5 != null) {
-            double $$6 = $$1.applyAsDouble($$5);
-            if ($$6 > $$2) {
-               $$2 = $$6;
-               $$3 = $$5;
-            }
-         }
-      }
-
-      return $$3 != null ? etf.c($$3) : null;
-   }
-
-   public static im a(brm $$0, int $$1, ayd $$2, im $$3) {
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      if ($$0.ga() && $$1 > 1) {
-         im $$6 = $$0.fX();
-         if ($$0.ds() > (double)$$6.u()) {
-            $$4 -= $$2.a($$1 / 2);
-         } else {
-            $$4 += $$2.a($$1 / 2);
-         }
-
-         if ($$0.dy() > (double)$$6.w()) {
-            $$5 -= $$2.a($$1 / 2);
-         } else {
-            $$5 += $$2.a($$1 / 2);
-         }
-      }
-
-      return im.a((double)$$4 + $$0.ds(), (double)$$3.v() + $$0.du(), (double)$$5 + $$0.dy());
+   @Override
+   public Set<cbd<?>> a() {
+      return ImmutableSet.of(cbd.g, cbd.h);
    }
 }

@@ -1,75 +1,167 @@
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fpm extends fkt {
-   private static final ws a = ws.c("selectWorld.experiments");
-   private static final int b = 310;
-   private final fih c = new fih(this);
-   private final fkt d;
-   private final asz r;
-   private final Consumer<asz> s;
-   private final Object2BooleanMap<asw> u = new Object2BooleanLinkedOpenHashMap();
+public class fpm extends ffk<fpk> {
+   private final fpn a;
+   private final List<fpk> m = Lists.newArrayList();
+   @Nullable
+   private String n;
 
-   public fpm(fkt $$0, asz $$1, Consumer<asz> $$2) {
-      super(a);
-      this.d = $$0;
-      this.r = $$1;
-      this.s = $$2;
+   public fpm(fpn $$0, fde $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.a = $$0;
+   }
 
-      for (asw $$3 : $$1.c()) {
-         if ($$3.l() == ata.d) {
-            this.u.put($$3, $$1.f().contains($$3));
+   @Override
+   protected void b(fer $$0) {
+   }
+
+   @Override
+   protected void a(fer $$0) {
+   }
+
+   @Override
+   protected void c(fer $$0) {
+      $$0.c(this.C(), this.D() + 4, this.E(), this.F());
+   }
+
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fpk> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
+   }
+
+   private void a(Collection<UUID> $$0, Map<UUID, fpk> $$1) {
+      fvx $$2 = this.c.s.h;
+
+      for (UUID $$3 : $$0) {
+         fwh $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fpk(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
          }
       }
    }
 
-   @Override
-   protected void aM_() {
-      this.c.a(a, this.p);
-      fil $$0 = this.c.c(fil.d());
-      $$0.a(new ffo(ws.c("selectWorld.experiments.info").a(n.m), this.p).d(310), $$0x -> $$0x.e(15));
-      fpq.a $$1 = fpq.a(310).a(2, true).b(4);
-      this.u.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.u.getBoolean($$1x), $$1xx -> this.u.put($$1x, $$1xx)).a($$1x.c()));
-      $$1.a($$0::a);
-      fil $$2 = this.c.b(fil.e().a(8));
-      $$2.a(feu.a(wr.d, $$0x -> this.m()).a());
-      $$2.a(feu.a(wr.e, $$0x -> this.d()).a());
-      this.c.a($$1x -> {
-         fes var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   private static ws a(asw $$0) {
-      String $$1 = "dataPack." + $$0.g() + ".name";
-      return (ws)(gnt.a($$1) ? ws.c($$1) : $$0.b());
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.d);
-   }
-
-   private void m() {
-      List<asw> $$0 = new ArrayList<>(this.r.f());
-      List<asw> $$1 = new ArrayList<>();
-      this.u.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
+   private void a(Map<UUID, fpk> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.bb().b())) {
+         fpk $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fpk $$2 = new fpk(this.c, this.a, $$3.getId(), $$3.getName(), this.c.an().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
          }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.r.a($$0.stream().map(asw::g).toList());
-      this.s.accept(this.r);
+
+         $$4.d(true);
+      }
    }
 
-   @Override
-   protected void c() {
-      this.c.a();
+   private static Collection<GameProfile> a(fwq $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         fws $$3 = $$0.b($$2);
+         if ($$3 instanceof fwt.a) {
+            fwt.a $$4 = (fwt.a)$$3;
+            if ($$4.g().i()) {
+               $$1.add($$4.f());
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private void I() {
+      this.m.sort(Comparator.<fpk, Integer>comparing($$0 -> {
+         if (this.c.b($$0.d())) {
+            return 0;
+         } else if (this.c.bb().a($$0.d())) {
+            return 1;
+         } else if ($$0.d().version() == 2) {
+            return 4;
+         } else {
+            return $$0.j() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.c().isBlank()) {
+            int $$1 = $$0.c().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
+         }
+
+         return 1;
+      }).thenComparing(fpk::c, String::compareToIgnoreCase));
+   }
+
+   private void a(Collection<fpk> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.I();
+      this.J();
+      this.a(this.m);
+      this.a($$1);
+   }
+
+   private void J() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
+      this.n = $$0;
+   }
+
+   public boolean d() {
+      return this.m.isEmpty();
+   }
+
+   public void a(fwh $$0, fpn.a $$1) {
+      UUID $$2 = $$0.a().getId();
+
+      for (fpk $$3 : this.m) {
+         if ($$3.d().equals($$2)) {
+            $$3.c(false);
+            return;
+         }
+      }
+
+      if (($$1 == fpn.a.a || this.c.aN().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fpk $$5 = new fpk(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b((fpk)$$5);
+         this.m.add($$5);
+      }
+   }
+
+   public void a(UUID $$0) {
+      for (fpk $$1 : this.m) {
+         if ($$1.d().equals($$0)) {
+            $$1.c(true);
+            return;
+         }
+      }
    }
 }

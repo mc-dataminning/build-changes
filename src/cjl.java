@@ -1,15 +1,16 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-
 public class cjl {
-   public static bsx<cjb> a() {
-      return bwj.a((Function<bwj.b<cjb>, ? extends App<bwj.c<cjb>, bwm<cjb>>>)($$0 -> $$0.group($$0.c(cah.ad)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               if (!$$1.eW().d() && !$$1.eW().a(csg.vs)) {
-                  cjc.a($$1, true);
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   private static final double a = 50.0;
+
+   public static etp a(bsa $$0, ayg $$1) {
+      int $$2 = 90;
+      float $$3 = $$0.bb + 180.0F + (float)$$1.k() * 90.0F / 2.0F;
+      float $$4 = axz.i($$1.i(), 4.0F, 8.0F);
+      etp $$5 = etp.a(0.0F, $$3).a((double)$$4);
+      return $$0.dl().e($$5);
+   }
+
+   public static boolean a(cjj $$0, etp $$1) {
+      etp $$2 = new etp($$0.ds(), $$0.du(), $$0.dy());
+      return $$1.f($$2) > 50.0 ? false : $$0.dN().a(new czm($$2, $$1, czm.a.a, czm.b.a, $$0)).c() == etn.a.a;
    }
 }

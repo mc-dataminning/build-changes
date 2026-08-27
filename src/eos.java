@@ -1,7 +1,81 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
-public interface eos {
-   int a(float var1);
+public class eos extends eou {
+   public static final Codec<eos> a = a(eos::new);
 
-   void a(Consumer<csd> var1, eoa var2);
+   eos(List<epb> $$0, List<erq> $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   public epc a() {
+      return eoz.g;
+   }
+
+   @Override
+   protected eot a(List<? extends eot> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (eot)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (eot $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
+   }
+
+   @Override
+   public void a(eor $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
+   }
+
+   public static eos.a a(epb.a<?>... $$0) {
+      return new eos.a($$0);
+   }
+
+   public static <E> eos.a a(Collection<E> $$0, Function<E, epb.a<?>> $$1) {
+      return new eos.a($$0.stream().map($$1::apply).toArray(epb.a[]::new));
+   }
+
+   public static class a extends epb.a<eos.a> {
+      private final Builder<epb> a = ImmutableList.builder();
+
+      public a(epb.a<?>... $$0) {
+         for (epb.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected eos.a a() {
+         return this;
+      }
+
+      @Override
+      public eos.a a(epb.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public epb b() {
+         return new eos(this.a.build(), this.f());
+      }
+   }
 }

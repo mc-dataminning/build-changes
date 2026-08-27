@@ -1,96 +1,72 @@
 import com.mojang.serialization.MapCodec;
 
-public class deb extends dij {
-   public static final MapCodec<deb> a = b(deb::new);
+public class deb extends dgt implements ddh, dea {
+   public static final MapCodec<deb> c = b(deb::new);
+   private static final float g = 0.11F;
 
    @Override
    public MapCodec<deb> a() {
-      return a;
+      return c;
    }
 
-   protected deb(dpx.d $$0) {
-      super(0.3125F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-            .a(f, Boolean.valueOf(false))
-            .a(g, Boolean.valueOf(false))
-      );
+   public deb(dqg.d $$0) {
+      super($$0, is.a, q_, false, 0.1);
+      this.k(this.E.b().a(e, Integer.valueOf(0)).a(r_, Boolean.valueOf(false)));
    }
 
    @Override
-   public dpy a(cvl $$0) {
-      return a($$0.q(), $$0.a(), this.n());
-   }
-
-   public static dpy a(cza $$0, im $$1, dpy $$2) {
-      dpy $$3 = $$0.a_($$1.d());
-      dpy $$4 = $$0.a_($$1.c());
-      dpy $$5 = $$0.a_($$1.e());
-      dpy $$6 = $$0.a_($$1.h());
-      dpy $$7 = $$0.a_($$1.f());
-      dpy $$8 = $$0.a_($$1.g());
-      dcv $$9 = $$2.b();
-      return $$2.b(g, Boolean.valueOf($$3.a($$9) || $$3.a(dcx.kv) || $$3.a(dcx.fz)))
-         .b(f, Boolean.valueOf($$4.a($$9) || $$4.a(dcx.kv)))
-         .b(b, Boolean.valueOf($$5.a($$9) || $$5.a(dcx.kv)))
-         .b(c, Boolean.valueOf($$6.a($$9) || $$6.a(dcx.kv)))
-         .b(d, Boolean.valueOf($$7.a($$9) || $$7.a(dcx.kv)))
-         .b(e, Boolean.valueOf($$8.a($$9) || $$8.a(dcx.kv)));
+   protected int a(ayg $$0) {
+      return 1;
    }
 
    @Override
-   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         boolean $$6 = $$2.a(this) || $$2.a(dcx.kv) || $$1 == ir.a && $$2.a(dcx.fz);
-         return $$0.a(h.get($$1), Boolean.valueOf($$6));
-      }
+   protected boolean g(dqh $$0) {
+      return $$0.i();
    }
 
    @Override
-   protected void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   protected dde b() {
+      return ddg.sw;
    }
 
    @Override
-   protected boolean a(dpy $$0, czx $$1, im $$2) {
-      dpy $$3 = $$1.a_($$2.d());
-      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
-
-      for (ir $$5 : ir.c.a) {
-         im $$6 = $$2.a($$5);
-         dpy $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
-            }
-
-            dpy $$8 = $$1.a_($$6.d());
-            if ($$8.a(this) || $$8.a(dcx.fz)) {
-               return true;
-            }
-         }
-      }
-
-      return $$3.a(this) || $$3.a(dcx.fz);
+   protected dqh a(dqh $$0, dqh $$1) {
+      return $$1.a(r_, $$0.c(r_));
    }
 
    @Override
-   protected void a(dpz.a<dcv, dpy> $$0) {
-      $$0.a(b, c, d, e, f, g);
+   protected dqh a(dqh $$0, ayg $$1) {
+      return super.a($$0, $$1).a(r_, Boolean.valueOf($$1.i() < 0.11F));
    }
 
    @Override
-   protected boolean a(dpy $$0, emg $$1) {
-      return false;
+   public csz a(dag $$0, in $$1, dqh $$2) {
+      return new csz(ctc.ws);
+   }
+
+   @Override
+   protected bpm a(dqh $$0, dad $$1, in $$2, clh $$3, etl $$4) {
+      return dea.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dqi.a<dde, dqh> $$0) {
+      super.a($$0);
+      $$0.a(r_);
+   }
+
+   @Override
+   public boolean b(dag $$0, in $$1, dqh $$2) {
+      return !$$2.c(r_);
+   }
+
+   @Override
+   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
+      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
    }
 }

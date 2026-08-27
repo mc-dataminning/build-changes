@@ -1,28 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecg extends ecf {
-   public static final Codec<ecg> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ecg::new));
+public class ecg implements ebh {
+   public static final Codec<ecg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awg.b(le.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               edi.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               eft.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               efk.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bor.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bor.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, ecg::new)
+   );
+   public final awg<dde> b;
+   public final edi c;
+   public final iw<eft> d;
+   public final efk e;
+   public final bor f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bor j;
+   public final float k;
 
-   public ecg(bnv $$0, bnv $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   protected ecl<?> a() {
-      return ecl.e;
-   }
-
-   @Override
-   protected void a(daa $$0, eck.b $$1, ayd $$2, ebu $$3, int $$4, eck.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(ayd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public ecg(awg<dde> $$0, edi $$1, iw<eft> $$2, efk $$3, bor $$4, float $$5, int $$6, float $$7, bor $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

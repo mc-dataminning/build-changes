@@ -1,22 +1,32 @@
-public class ctr extends cry {
-   private final ctq a;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public ctr(ctq $$0, cry.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
+public enum ctr implements ayt {
+   a(0, "common", n.p),
+   b(1, "uncommon", n.o),
+   c(2, "rare", n.l),
+   d(3, "epic", n.n);
+
+   public static final Codec<ctr> e = ayt.b(ctr::values);
+   public static final IntFunction<ctr> f = awq.a($$0 -> $$0.h, values(), awq.a.a);
+   public static final ys<ByteBuf, ctr> g = yq.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final n j;
+
+   private ctr(int $$0, String $$1, n $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
-   public ctq h() {
-      return this.a;
+   public n a() {
+      return this.j;
    }
 
    @Override
-   public int g() {
-      return this.a.e();
-   }
-
-   @Override
-   public boolean a(csd $$0, csd $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+   public String c() {
+      return this.i;
    }
 }

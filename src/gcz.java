@@ -1,87 +1,110 @@
-public class gcz implements gde<dms> {
-   private static final int b = 20;
-   private static final int c = 40;
-   private static final int d = 16;
-   public static final String a = "flag";
-   private static final String e = "pole";
-   private static final String f = "bar";
-   private final fur g;
-   private final fur h;
-   private final fur i;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Objects;
 
-   public gcz(gdf.a $$0) {
-      fur $$1 = $$0.a(fuq.g);
-      this.g = $$1.b("flag");
-      this.h = $$1.b("pole");
-      this.i = $$1.b("bar");
+public class gcz implements gph {
+   private final akh a;
+   private final j b;
+   private final boolean c;
+   private final int d;
+
+   public gcz(akh $$0, j $$1, boolean $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static fux a() {
-      fuz $$0 = new fuz();
-      fva $$1 = $$0.a();
-      $$1.a("flag", fuw.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fut.a);
-      $$1.a("pole", fuw.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fut.a);
-      $$1.a("bar", fuw.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fut.a);
-      return fux.a($$0, 64, 64);
+   public akh a() {
+      return this.a;
    }
 
-   public void a(dms $$0, float $$1, exn $$2, gbe $$3, int $$4, int $$5) {
-      float $$6 = 0.6666667F;
-      boolean $$7 = $$0.i() == null;
-      $$2.a();
-      long $$8;
-      if ($$7) {
-         $$8 = 0L;
-         $$2.a(0.5F, 0.5F, 0.5F);
-         this.h.k = true;
+   @Override
+   public j b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         $$8 = $$0.i().Y();
-         dpy $$10 = $$0.n();
-         if ($$10.b() instanceof dca) {
-            $$2.a(0.5F, 0.5F, 0.5F);
-            float $$11 = -dre.b($$10.c(dca.b));
-            $$2.a(a.d.rotationDegrees($$11));
-            this.h.k = true;
+         return !($$0 instanceof gcz $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
+      return 31 * $$0 + this.d;
+   }
+
+   public static class a implements JsonDeserializer<gcz> {
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
+
+      public gcz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         akh $$4 = this.b($$3);
+         gpa $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new gcz($$4, $$5.b(), $$6, $$7);
+      }
+
+      private boolean d(JsonObject $$0) {
+         return axp.a($$0, "uvlock", false);
+      }
+
+      protected gpa a(JsonObject $$0) {
+         int $$1 = axp.a($$0, "x", 0);
+         int $$2 = axp.a($$0, "y", 0);
+         gpa $$3 = gpa.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
          } else {
-            $$2.a(0.5F, -0.16666667F, 0.5F);
-            float $$12 = -$$10.c(dls.b).p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(0.0F, -0.3125F, -0.4375F);
-            this.h.k = false;
+            return $$3;
          }
       }
 
-      $$2.a();
-      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
-      exr $$13 = got.f.a($$3, gbm::c);
-      this.h.a($$2, $$13, $$4, $$5);
-      this.i.a($$2, $$13, $$4, $$5);
-      im $$14 = $$0.az_();
-      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$8, 100L) + $$1) / 100.0F;
-      this.g.e = (-0.0125F + 0.01F * axw.b((float) (Math.PI * 2) * $$15)) * (float) Math.PI;
-      this.g.c = -32.0F;
-      a($$2, $$3, $$4, $$5, this.g, got.f, true, $$0.f(), $$0.b());
-      $$2.b();
-      $$2.b();
-   }
-
-   public static void a(exn $$0, gbe $$1, int $$2, int $$3, fur $$4, gor $$5, boolean $$6, cqw $$7, dmu $$8) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false);
-   }
-
-   public static void a(exn $$0, gbe $$1, int $$2, int $$3, fur $$4, gor $$5, boolean $$6, cqw $$7, dmu $$8, boolean $$9) {
-      $$4.a($$0, $$5.a($$1, gbm::c, $$9), $$2, $$3);
-      a($$0, $$1, $$2, $$3, $$4, $$6 ? gbt.m : gbt.n, $$7);
-
-      for (int $$10 = 0; $$10 < 16 && $$10 < $$8.b().size(); $$10++) {
-         dmu.b $$11 = $$8.b().get($$10);
-         gor $$12 = $$6 ? gbt.a($$11.b()) : gbt.b($$11.b());
-         a($$0, $$1, $$2, $$3, $$4, $$12, $$11.c());
+      protected akh b(JsonObject $$0) {
+         return new akh(axp.i($$0, "model"));
       }
-   }
 
-   private static void a(exn $$0, gbe $$1, int $$2, int $$3, fur $$4, gor $$5, cqw $$6) {
-      float[] $$7 = $$6.d();
-      $$4.a($$0, $$5.a($$1, gbm::m), $$2, $$3, $$7[0], $$7[1], $$7[2], 1.0F);
+      protected int c(JsonObject $$0) {
+         int $$1 = axp.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
+         }
+      }
    }
 }

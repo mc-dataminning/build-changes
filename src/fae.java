@@ -1,27 +1,40 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class fae {
+   private final fbs a;
+   private boolean b;
+   private String c;
 
-public class fae extends gsq {
-   protected BooleanConsumer a;
-   private final ws b;
-   private final ws c;
-
-   public fae(BooleanConsumer $$0, ws $$1, ws $$2) {
-      super(fcm.a);
+   public fae(fbs $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      fbs.a $$1 = $$0.a();
+      this.b = $$1.b;
+      this.c = $$1.a;
    }
 
-   @Override
-   public void aM_() {
-      this.c(feu.a(wr.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
-      this.c(feu.a(wr.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
+   public boolean a() {
+      return this.b;
    }
 
-   @Override
-   public void a(feh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
-      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
+   public String b() {
+      return this.c;
+   }
+
+   public void a(ezc $$0) {
+      fbs.a $$1 = this.b($$0);
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
+
+   private fbs.a b(ezc $$0) {
+      fbs.a $$1 = new fbs.a();
+      $$1.a = $$0.a;
+      fbs.a $$2 = this.a.a();
+      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
+      if ($$3) {
+         return $$2;
+      } else {
+         $$1.b = true;
+         this.a.a($$1);
+         return $$1;
+      }
    }
 }

@@ -1,15 +1,15 @@
 import java.util.Set;
 
-public class fon extends foc {
-   private static final ws i = ws.c("gui.recipebook.toggleRecipes.smeltable");
+public class fon extends fom {
+   private static final wu i = wu.c("gui.recipebook.toggleRecipes.blastable");
 
    @Override
-   protected ws c() {
+   protected wu c() {
       return i;
    }
 
    @Override
-   protected Set<cry> b() {
-      return dmr.g().keySet();
+   protected Set<csu> b() {
+      return dna.g().keySet();
    }
 }

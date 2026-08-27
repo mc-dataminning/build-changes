@@ -1,76 +1,79 @@
-public class fym extends fys {
-   private static final int a = 3;
-   private final gbk b;
-   private final bql D;
-   private final bql E;
-   private int F;
-   private final ggl G;
-   private double H;
-   private double I;
-   private double J;
-   private double K;
-   private double L;
-   private double M;
+import javax.annotation.Nullable;
 
-   public fym(ggl $$0, gbk $$1, fvm $$2, bql $$3, bql $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.dq());
-   }
+public class fym extends gac {
+   private final float a;
+   private final fzx b;
 
-   private fym(ggl $$0, gbk $$1, fvm $$2, bql $$3, bql $$4, etf $$5) {
-      super($$2, $$3.ds(), $$3.du(), $$3.dy(), $$5.c, $$5.d, $$5.e);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-      this.c();
-      this.d();
-   }
-
-   private bql a(bql $$0) {
-      return (bql)(!($$0 instanceof cgv) ? $$0 : ((cgv)$$0).C());
+   fym(fvw $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fzx $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public fyw b() {
-      return fyw.e;
+   public fzg b() {
+      return fzg.b;
    }
 
    @Override
-   public void a(exr $$0, fcf $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = axw.d((double)$$2, this.K, this.H);
-      double $$5 = axw.d((double)$$2, this.L, this.I);
-      double $$6 = axw.d((double)$$2, this.M, this.J);
-      double $$7 = axw.d((double)$$3, this.D.ds(), $$4);
-      double $$8 = axw.d((double)$$3, this.D.du(), $$5);
-      double $$9 = axw.d((double)$$3, this.D.dy(), $$6);
-      gbe.a $$10 = this.b.c();
-      etf $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dD(), $$2, new exn(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
+   public float b(float $$0) {
+      return this.D * axz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      this.F++;
-      if (this.F == 3) {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
+      }
+   }
+
+   public static class a implements fzf<ko> {
+      private final fzx a;
+
+      public a(fzx $$0) {
+         this.a = $$0;
       }
 
-      this.d();
-      this.c();
-   }
+      @Nullable
+      public fzc a(ko $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dqh $$8 = $$0.b();
+         if (!$$8.i() && $$8.l() == djk.a) {
+            return null;
+         } else {
+            in $$9 = in.a($$2, $$3, $$4);
+            int $$10 = fde.Q().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dga) {
+               $$10 = ((dga)$$8.b()).b($$8, $$1, $$9);
+            }
 
-   private void c() {
-      this.H = this.E.ds();
-      this.I = (this.E.du() + this.E.dw()) / 2.0;
-      this.J = this.E.dy();
-   }
-
-   private void d() {
-      this.K = this.H;
-      this.L = this.I;
-      this.M = this.J;
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new fym($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
+      }
    }
 }

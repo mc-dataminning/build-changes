@@ -1,25 +1,18 @@
-public class cxi extends cxn {
-   public cxi(cxn.a $$0, bqs... $$1) {
-      super($$0, avw.bp, $$1);
-   }
+public interface cxi<T extends cxd<?>> {
+   cxi<cwu> a = a("crafting");
+   cxi<cxs> b = a("smelting");
+   cxi<cwp> c = a("blasting");
+   cxi<cxw> d = a("smoking");
+   cxi<cwr> e = a("campfire_cooking");
+   cxi<cxx> f = a("stonecutting");
+   cxi<cxt> g = a("smithing");
 
-   @Override
-   public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
-   }
-
-   @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public int a() {
-      return 4;
-   }
-
-   @Override
-   public boolean a(cxn $$0) {
-      return super.a($$0) && $$0 != cxq.I;
+   static <T extends cxd<?>> cxi<T> a(final String $$0) {
+      return jj.a(ld.s, new akh($$0), new cxi<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

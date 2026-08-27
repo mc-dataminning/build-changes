@@ -1,83 +1,87 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public abstract class eul {
-   public boolean a(@Nullable eul $$0) {
-      return $$0 == null ? false : this == $$0;
+public class eul {
+   private final eut a;
+   private final String b;
+   private final euw c;
+   private wu d;
+   private wu e;
+   private euw.a f;
+   private boolean g;
+   @Nullable
+   private yk h;
+
+   public eul(eut $$0, String $$1, euw $$2, wu $$3, euw.a $$4, boolean $$5, @Nullable yk $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = this.i();
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   public abstract String b();
-
-   public abstract xg d(ws var1);
-
-   public abstract boolean i();
-
-   public abstract boolean h();
-
-   public abstract eul.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract eul.b k();
-
-   public abstract eul.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, eul.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eul.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static eul.a a(String $$0) {
-         return g.get($$0);
-      }
-
-      private a(String $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public ws a() {
-         return ws.c("team.collision." + this.e);
-      }
+   public eut a() {
+      return this.a;
    }
 
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
+   public String b() {
+      return this.b;
+   }
 
-      private static final Map<String, eul.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eul.b)$$0));
-      public final String e;
-      public final int f;
+   public euw c() {
+      return this.c;
+   }
 
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
-      }
+   public wu d() {
+      return this.d;
+   }
 
-      @Nullable
-      public static eul.b a(String $$0) {
-         return g.get($$0);
-      }
+   public boolean e() {
+      return this.g;
+   }
 
-      private b(String $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
+   @Nullable
+   public yk f() {
+      return this.h;
+   }
 
-      public ws b() {
-         return ws.c("team.visibility." + this.e);
-      }
+   public yk a(yk $$0) {
+      return Objects.requireNonNullElse(this.h, $$0);
+   }
+
+   private wu i() {
+      return wx.a((wu)this.d.f().a($$0 -> $$0.a(new xa(xa.a.a, wu.b(this.b)))));
+   }
+
+   public wu g() {
+      return this.e;
+   }
+
+   public void a(wu $$0) {
+      this.d = $$0;
+      this.e = this.i();
+      this.a.b(this);
+   }
+
+   public euw.a h() {
+      return this.f;
+   }
+
+   public void a(euw.a $$0) {
+      this.f = $$0;
+      this.a.b(this);
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
+      this.a.b(this);
+   }
+
+   public void b(@Nullable yk $$0) {
+      this.h = $$0;
+      this.a.b(this);
    }
 }

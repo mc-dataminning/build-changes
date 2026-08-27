@@ -1,88 +1,101 @@
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dfc {
-   public static <S extends dnd> dfc.c<S> a(
-      dnf<S> $$0, Function<dpy, dfc.a> $$1, Function<dpy, ir> $$2, dqs $$3, dpy $$4, czv $$5, im $$6, BiPredicate<czv, im> $$7
-   ) {
-      S $$8 = $$0.a($$5, $$6);
-      if ($$8 == null) {
-         return dfc.b::b;
-      } else if ($$7.test($$5, $$6)) {
-         return dfc.b::b;
-      } else {
-         dfc.a $$9 = $$1.apply($$4);
-         boolean $$10 = $$9 == dfc.a.a;
-         boolean $$11 = $$9 == dfc.a.b;
-         if ($$10) {
-            return new dfc.c.b<>($$8);
+public class dfc extends dcq {
+   public static final MapCodec<dfc> a = b(dfc::new);
+   public static final drh b = dqx.aT;
+   public static final dqy c = dqx.p;
+   protected static final eui d = dde.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
+
+   @Override
+   public MapCodec<dfc> a() {
+      return a;
+   }
+
+   public dfc(dqg.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
+      return d;
+   }
+
+   @Override
+   protected boolean f_(dqh $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dqh $$0, czj $$1, in $$2, is $$3) {
+      return $$0.c(b);
+   }
+
+   private static void d(dqh $$0, dad $$1, in $$2) {
+      int $$3 = $$1.a(dam.a, $$2) - $$1.B_();
+      float $$4 = $$1.a(1.0F);
+      boolean $$5 = $$0.c(c);
+      if ($$5) {
+         $$3 = 15 - $$3;
+      } else if ($$3 > 0) {
+         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
+         $$4 += ($$6 - $$4) * 0.2F;
+         $$3 = Math.round((float)$$3 * axz.b($$4));
+      }
+
+      $$3 = axz.a($$3, 0, 15);
+      if ($$0.c(b) != $$3) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf($$3)), 3);
+      }
+   }
+
+   @Override
+   protected bpm a(dqh $$0, dad $$1, in $$2, clh $$3, etl $$4) {
+      if ($$3.gm()) {
+         if ($$1.B) {
+            return bpm.a;
          } else {
-            im $$12 = $$6.a($$2.apply($$4));
-            dpy $$13 = $$5.a_($$12);
-            if ($$13.a($$4.b())) {
-               dfc.a $$14 = $$1.apply($$13);
-               if ($$14 != dfc.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
-                  if ($$7.test($$5, $$12)) {
-                     return dfc.b::b;
-                  }
-
-                  S $$15 = $$0.a($$5, $$12);
-                  if ($$15 != null) {
-                     S $$16 = $$11 ? $$8 : $$15;
-                     S $$17 = $$11 ? $$15 : $$8;
-                     return new dfc.c.a<>($$16, $$17);
-                  }
-               }
-            }
-
-            return new dfc.c.b<>($$8);
+            dqh $$5 = $$0.a(c);
+            $$1.a($$2, $$5, 2);
+            $$1.a(dva.c, $$2, dva.a.a($$3, $$5));
+            d($$5, $$1, $$2);
+            return bpm.b;
          }
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   protected djk a_(dqh $$0) {
+      return djk.c;
    }
 
-   public interface b<S, T> {
-      T a(S var1, S var2);
-
-      T a(S var1);
-
-      T b();
+   @Override
+   protected boolean e_(dqh $$0) {
+      return true;
    }
 
-   public interface c<S> {
-      <T> T apply(dfc.b<? super S, T> var1);
+   @Override
+   public dnm a(in $$0, dqh $$1) {
+      return new dob($$0, $$1);
+   }
 
-      public static final class a<S> implements dfc.c<S> {
-         private final S a;
-         private final S b;
+   @Nullable
+   @Override
+   public <T extends dnm> dnn<T> a(dad $$0, dqh $$1, dno<T> $$2) {
+      return !$$0.B && $$0.D_().g() ? a($$2, dno.q, dfc::a) : null;
+   }
 
-         public a(S $$0, S $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
-
-         @Override
-         public <T> T apply(dfc.b<? super S, T> $$0) {
-            return $$0.a(this.a, this.b);
-         }
+   private static void a(dad $$0, in $$1, dqh $$2, dob $$3) {
+      if ($$0.Y() % 20L == 0L) {
+         d($$2, $$0, $$1);
       }
+   }
 
-      public static final class b<S> implements dfc.c<S> {
-         private final S a;
-
-         public b(S $$0) {
-            this.a = $$0;
-         }
-
-         @Override
-         public <T> T apply(dfc.b<? super S, T> $$0) {
-            return $$0.a(this.a);
-         }
-      }
+   @Override
+   protected void a(dqi.a<dde, dqh> $$0) {
+      $$0.a(b, c);
    }
 }

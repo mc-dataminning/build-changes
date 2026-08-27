@@ -1,98 +1,44 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public class fvk extends fvj implements aat, wg {
-   private static final Logger i = LogUtils.getLogger();
-   private final GameProfile j;
-   private cmy k;
-   private final jj.b l;
-   private final fvz m = new fvz();
-   @Nullable
-   private fvs n;
+public class fvk {
+   private final List<fve> a;
+   private final fvd b;
+   private final Map<String, fvk> c = Maps.newHashMap();
 
-   public fvk(fcu $$0, vq $$1, fvq $$2) {
-      super($$0, $$1, $$2);
-      this.j = $$2.a();
-      this.l = $$2.c();
-      this.k = $$2.d();
+   fvk(List<fve> $$0, fvd $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public boolean c() {
-      return this.b.i();
-   }
-
-   @Override
-   protected void a(aaa $$0) {
-      this.b($$0);
-   }
-
-   private void b(aaa $$0) {
-      i.warn("Unknown custom packet payload: {}", $$0.a().a());
-   }
-
-   @Override
-   public void a(aav $$0) {
-      zc.a($$0, this, this.a);
-      this.m.a($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(zo $$0) {
-      zc.a($$0, this, this.a);
-      this.m.a($$0.b());
-   }
-
-   @Override
-   public void a(aax $$0) {
-      this.k = cna.e.a($$0.b());
-   }
-
-   @Override
-   public void a(aaw $$0) {
-      zc.a($$0, this, this.a);
-      if (this.n == null) {
-         this.n = new fvs();
+   public fvk a(String $$0, fvg $$1, fvd $$2) {
+      fvk $$3 = new fvk($$1.b(), $$2);
+      fvk $$4 = this.c.put($$0, $$3);
+      if ($$4 != null) {
+         $$3.c.putAll($$4.c);
       }
 
-      List<asv> $$1 = this.n.a($$0.b());
-      this.b(new abc($$1));
+      return $$3;
    }
 
-   private <T> T a(Function<atr, T> $$0) {
-      if (this.n == null) {
-         return $$0.apply(atr.b);
-      } else {
-         Object var3;
-         try (ate $$1 = this.n.a()) {
-            var3 = $$0.apply($$1);
-         }
-
-         return (T)var3;
-      }
+   public fvb a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, fvb> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fvk)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<fvb.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
+      fvb $$4 = new fvb($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
    }
 
-   @Override
-   public void a(aau $$0) {
-      zc.a($$0, this, this.a);
-      jj.b $$1 = this.a($$0x -> this.m.a($$0x, this.l, this.b.e()));
-      this.b.a(afw.b.bind(wd.a($$1)), new fvn(this.a, this.b, new fvq(this.j, this.e, $$1, this.k, this.d, this.c, this.f, this.h)));
-      this.b.a(abb.a);
-      this.b.a(afw.a.bind(wd.a($$1)));
-   }
-
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   @Override
-   public void a(ws $$0) {
-      super.a($$0);
-      this.a.B();
+   public fvk a(String $$0) {
+      return this.c.get($$0);
    }
 }
