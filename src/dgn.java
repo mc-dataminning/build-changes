@@ -1,91 +1,61 @@
-public class dgn {
-   public static final ahf<dgm> a = a("base");
-   public static final ahf<dgm> b = a("square_bottom_left");
-   public static final ahf<dgm> c = a("square_bottom_right");
-   public static final ahf<dgm> d = a("square_top_left");
-   public static final ahf<dgm> e = a("square_top_right");
-   public static final ahf<dgm> f = a("stripe_bottom");
-   public static final ahf<dgm> g = a("stripe_top");
-   public static final ahf<dgm> h = a("stripe_left");
-   public static final ahf<dgm> i = a("stripe_right");
-   public static final ahf<dgm> j = a("stripe_center");
-   public static final ahf<dgm> k = a("stripe_middle");
-   public static final ahf<dgm> l = a("stripe_downright");
-   public static final ahf<dgm> m = a("stripe_downleft");
-   public static final ahf<dgm> n = a("small_stripes");
-   public static final ahf<dgm> o = a("cross");
-   public static final ahf<dgm> p = a("straight_cross");
-   public static final ahf<dgm> q = a("triangle_bottom");
-   public static final ahf<dgm> r = a("triangle_top");
-   public static final ahf<dgm> s = a("triangles_bottom");
-   public static final ahf<dgm> t = a("triangles_top");
-   public static final ahf<dgm> u = a("diagonal_left");
-   public static final ahf<dgm> v = a("diagonal_up_right");
-   public static final ahf<dgm> w = a("diagonal_up_left");
-   public static final ahf<dgm> x = a("diagonal_right");
-   public static final ahf<dgm> y = a("circle");
-   public static final ahf<dgm> z = a("rhombus");
-   public static final ahf<dgm> A = a("half_vertical");
-   public static final ahf<dgm> B = a("half_horizontal");
-   public static final ahf<dgm> C = a("half_vertical_right");
-   public static final ahf<dgm> D = a("half_horizontal_bottom");
-   public static final ahf<dgm> E = a("border");
-   public static final ahf<dgm> F = a("curly_border");
-   public static final ahf<dgm> G = a("gradient");
-   public static final ahf<dgm> H = a("gradient_up");
-   public static final ahf<dgm> I = a("bricks");
-   public static final ahf<dgm> J = a("globe");
-   public static final ahf<dgm> K = a("creeper");
-   public static final ahf<dgm> L = a("skull");
-   public static final ahf<dgm> M = a("flower");
-   public static final ahf<dgm> N = a("mojang");
-   public static final ahf<dgm> O = a("piglin");
+import com.mojang.serialization.MapCodec;
 
-   private static ahf<dgm> a(String $$0) {
-      return ahf.a(ke.d, new ahg($$0));
+public class dgn extends cwy {
+   public static final MapCodec<dgn> a = b(dgn::new);
+
+   @Override
+   public MapCodec<dgn> a() {
+      return a;
    }
 
-   public static dgm a(it<dgm> $$0) {
-      it.a($$0, a, new dgm("b"));
-      it.a($$0, b, new dgm("bl"));
-      it.a($$0, c, new dgm("br"));
-      it.a($$0, d, new dgm("tl"));
-      it.a($$0, e, new dgm("tr"));
-      it.a($$0, f, new dgm("bs"));
-      it.a($$0, g, new dgm("ts"));
-      it.a($$0, h, new dgm("ls"));
-      it.a($$0, i, new dgm("rs"));
-      it.a($$0, j, new dgm("cs"));
-      it.a($$0, k, new dgm("ms"));
-      it.a($$0, l, new dgm("drs"));
-      it.a($$0, m, new dgm("dls"));
-      it.a($$0, n, new dgm("ss"));
-      it.a($$0, o, new dgm("cr"));
-      it.a($$0, p, new dgm("sc"));
-      it.a($$0, q, new dgm("bt"));
-      it.a($$0, r, new dgm("tt"));
-      it.a($$0, s, new dgm("bts"));
-      it.a($$0, t, new dgm("tts"));
-      it.a($$0, u, new dgm("ld"));
-      it.a($$0, v, new dgm("rd"));
-      it.a($$0, w, new dgm("lud"));
-      it.a($$0, x, new dgm("rud"));
-      it.a($$0, y, new dgm("mc"));
-      it.a($$0, z, new dgm("mr"));
-      it.a($$0, A, new dgm("vh"));
-      it.a($$0, B, new dgm("hh"));
-      it.a($$0, C, new dgm("vhr"));
-      it.a($$0, D, new dgm("hhb"));
-      it.a($$0, E, new dgm("bo"));
-      it.a($$0, F, new dgm("cbo"));
-      it.a($$0, G, new dgm("gra"));
-      it.a($$0, H, new dgm("gru"));
-      it.a($$0, I, new dgm("bri"));
-      it.a($$0, J, new dgm("glb"));
-      it.a($$0, K, new dgm("cre"));
-      it.a($$0, L, new dgm("sku"));
-      it.a($$0, M, new dgm("flo"));
-      it.a($$0, N, new dgm("moj"));
-      return it.a($$0, O, new dgm("pig"));
+   protected dgn(djo.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public void b(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
+      if ($$1.E_().i()) {
+         $$1.a($$2, cxa.aO.o(), 3);
+         $$1.c(2009, $$2, 0);
+         $$1.a(null, $$2, art.iF, aru.e, 1.0F, (1.0F + $$1.F_().i() * 0.2F) * 0.7F);
+      }
+   }
+
+   @Override
+   public void a(djp $$0, ctx $$1, hx $$2, auw $$3) {
+      ic $$4 = ic.b($$3);
+      if ($$4 != ic.b) {
+         hx $$5 = $$2.a($$4);
+         djp $$6 = $$1.a_($$5);
+         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
+            double $$7 = (double)$$2.u();
+            double $$8 = (double)$$2.v();
+            double $$9 = (double)$$2.w();
+            if ($$4 == ic.a) {
+               $$8 -= 0.05;
+               $$7 += $$3.j();
+               $$9 += $$3.j();
+            } else {
+               $$8 += $$3.j() * 0.8;
+               if ($$4.o() == ic.a.a) {
+                  $$9 += $$3.j();
+                  if ($$4 == ic.f) {
+                     $$7++;
+                  } else {
+                     $$7 += 0.05;
+                  }
+               } else {
+                  $$7 += $$3.j();
+                  if ($$4 == ic.d) {
+                     $$9++;
+                  } else {
+                     $$9 += 0.05;
+                  }
+               }
+            }
+
+            $$1.a(jx.m, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+         }
+      }
    }
 }

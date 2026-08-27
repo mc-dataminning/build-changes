@@ -1,42 +1,89 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+public interface tw extends ti {
+   tw a = new tw() {
+   };
 
-public class tw extends ts {
-   private final Deque<tu> a = new ArrayDeque<>();
-
-   public tw(tt... $$0) {
-      tu $$1 = tu.a();
-
-      for (tt $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
+   @Override
+   default ti.b a() {
+      return ti.b.a;
    }
 
    @Override
-   public th.a a(tm<?> $$0, String $$1) {
-      tu $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return th.a.b;
-      } else {
-         if ($$0 == sn.b) {
-            tu $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
-
-         return super.a($$0, $$1);
-      }
+   default ti.b a(String $$0) {
+      return ti.b.a;
    }
 
    @Override
-   public th.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
+   default ti.b a(byte $$0) {
+      return ti.b.a;
+   }
 
-      return super.b();
+   @Override
+   default ti.b a(short $$0) {
+      return ti.b.a;
+   }
+
+   @Override
+   default ti.b a(int $$0) {
+      return ti.b.a;
+   }
+
+   @Override
+   default ti.b a(long $$0) {
+      return ti.b.a;
+   }
+
+   @Override
+   default ti.b a(float $$0) {
+      return ti.b.a;
+   }
+
+   @Override
+   default ti.b a(double $$0) {
+      return ti.b.a;
+   }
+
+   @Override
+   default ti.b a(byte[] $$0) {
+      return ti.b.a;
+   }
+
+   @Override
+   default ti.b a(int[] $$0) {
+      return ti.b.a;
+   }
+
+   @Override
+   default ti.b a(long[] $$0) {
+      return ti.b.a;
+   }
+
+   @Override
+   default ti.b a(tn<?> $$0, int $$1) {
+      return ti.b.a;
+   }
+
+   @Override
+   default ti.a b(tn<?> $$0, int $$1) {
+      return ti.a.b;
+   }
+
+   @Override
+   default ti.a a(tn<?> $$0) {
+      return ti.a.b;
+   }
+
+   @Override
+   default ti.a a(tn<?> $$0, String $$1) {
+      return ti.a.b;
+   }
+
+   @Override
+   default ti.b b() {
+      return ti.b.a;
+   }
+
+   @Override
+   default ti.b b(tn<?> $$0) {
+      return ti.b.a;
    }
 }

@@ -1,16 +1,9 @@
 import com.mojang.serialization.Codec;
 
-public interface edb<P extends eda> {
-   edb<ece> a = a("always_true", ece.a);
-   edb<ecj> b = a("block_match", ecj.a);
-   edb<ecl> c = a("blockstate_match", ecl.a);
-   edb<edi> d = a("tag_match", edi.a);
-   edb<ecx> e = a("random_block_match", ecx.a);
-   edb<ecy> f = a("random_blockstate_match", ecy.a);
+public abstract class edb {
+   public static final Codec<edb> c = kd.q.q().dispatch("predicate_type", edb::a, edc::codec);
 
-   Codec<P> codec();
+   public abstract boolean a(hx var1, hx var2, hx var3, auw var4);
 
-   static <P extends eda> edb<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.o, $$0, () -> $$1);
-   }
+   protected abstract edc<?> a();
 }

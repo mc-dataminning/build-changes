@@ -1,42 +1,31 @@
-import java.security.PublicKey;
+import com.mojang.authlib.GameProfile;
 
-public class afp implements xf<afm> {
-   private final String a;
-   private final byte[] b;
-   private final byte[] c;
+public class afp implements xg<afn> {
+   private final GameProfile a;
 
-   public afp(String $$0, byte[] $$1, byte[] $$2) {
+   public afp(GameProfile $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public afp(ui $$0) {
-      this.a = $$0.d(20);
-      this.b = $$0.b();
-      this.c = $$0.b();
+   public afp(uj $$0) {
+      this.a = $$0.A();
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
    }
 
-   public void a(afm $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public GameProfile a() {
       return this.a;
    }
 
-   public PublicKey d() throws atn {
-      return atm.a(this.b);
-   }
-
-   public byte[] e() {
-      return this.c;
+   @Override
+   public ui c() {
+      return ui.e;
    }
 }

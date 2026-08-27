@@ -1,8 +1,48 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dvy {
+public class dvy extends dvs {
+   public static final Codec<dvy> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bjh.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, dvy::new)
+   );
+   private final bjh b;
+
+   public dvy(bjh $$0, bjh $$1, bjh $$2) {
+      super($$0, $$1);
+      this.b = $$2;
+   }
+
+   @Override
+   protected dvt<?> a() {
+      return dvt.b;
+   }
+
+   @Override
+   protected void a(cud $$0, dvs.b $$1, auw $$2, dvc $$3, int $$4, dvs.a $$5, int $$6, int $$7, int $$8) {
+      hx $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
+
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
+      }
+   }
+
+   @Override
+   public int a(auw $$0, int $$1, dvc $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(auw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   }
 }

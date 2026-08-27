@@ -18,11 +18,11 @@ public class bdo extends bde {
                "Level",
                DSL.optionalFields(
                   "Entities",
-                  DSL.list(bbw.w.in($$0)),
+                  DSL.list(bbw.x.in($$0)),
                   "TileEntities",
                   DSL.list(DSL.or(bbw.s.in($$0), DSL.remainder())),
                   "TileTicks",
-                  DSL.list(DSL.fields("i", bbw.y.in($$0))),
+                  DSL.list(DSL.fields("i", bbw.z.in($$0))),
                   "Sections",
                   DSL.list(DSL.optionalFields("Palette", DSL.list(bbw.u.in($$0))))
                )

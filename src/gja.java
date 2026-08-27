@@ -1,56 +1,63 @@
-import com.google.common.collect.Maps;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.function.Function;
 
-public class gja {
-   private final aql a;
-   private final Map<ahg, CompletableFuture<eob>> b = Maps.newHashMap();
+public class gja implements aqk {
+   public static final gja.a<cng> a = new gja.a<>();
+   public static final gja.a<cng> b = new gja.a<>();
+   public static final gja.a<fhe> c = new gja.a<>();
+   private final Map<gja.a<?>, gja.c<?>> d = new HashMap<>();
 
-   public gja(aql $$0) {
-      this.a = $$0;
+   @Override
+   public void a(aqj $$0) {
+      for (gja.c<?> $$1 : this.d.values()) {
+         $$1.a();
+      }
    }
 
-   public CompletableFuture<eob> a(ahg $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
-            try {
-               eob var5;
-               try (
-                  InputStream $$1 = this.a.open($$0x);
-                  enz $$2 = new enz($$1);
-               ) {
-                  ByteBuffer $$3 = $$2.b();
-                  var5 = new eob($$3, $$2.a());
-               }
-
-               return var5;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
-            }
-         }, ac.f()));
+   public <T> void a(gja.a<T> $$0, gja.b<T> $$1) {
+      this.d.put($$0, new gja.c<>($$1));
    }
 
-   public CompletableFuture<giw> a(ahg $$0, boolean $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream $$2 = this.a.open($$0);
-            return (giw)($$1 ? new giy(enz::new, $$2) : new enz($$2));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
-         }
-      }, ac.f());
+   private <T> gja.c<T> b(gja.a<T> $$0) {
+      gja.c<T> $$1 = (gja.c<T>)this.d.get($$0);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tree builder not registered");
+      } else {
+         return $$1;
+      }
    }
 
-   public void a() {
-      this.b.values().forEach($$0 -> $$0.thenAccept(eob::b));
-      this.b.clear();
+   public <T> void a(gja.a<T> $$0, List<T> $$1) {
+      this.b($$0).a($$1);
    }
 
-   public CompletableFuture<?> a(Collection<ghx> $$0) {
-      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
+   public <T> gjb<T> a(gja.a<T> $$0) {
+      return this.b($$0).b;
+   }
+
+   public static class a<T> {
+   }
+
+   public interface b<T> extends Function<List<T>, giy<T>> {
+   }
+
+   static class c<T> {
+      private final gja.b<T> a;
+      giy<T> b = giy.b();
+
+      c(gja.b<T> $$0) {
+         this.a = $$0;
+      }
+
+      void a(List<T> $$0) {
+         this.b = this.a.apply($$0);
+         this.b.a();
+      }
+
+      void a() {
+         this.b.a();
+      }
    }
 }

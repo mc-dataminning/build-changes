@@ -1,30 +1,62 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
 
-public record dul(int b, int c, int d, ih<dyk> e) implements dty {
+public class dul implements dug {
    public static final Codec<dul> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               atw.j.fieldOf("tries").orElse(128).forGetter(dul::a),
-               atw.i.fieldOf("xz_spread").orElse(7).forGetter(dul::b),
-               atw.i.fieldOf("y_spread").orElse(3).forGetter(dul::c),
-               dyk.b.fieldOf("feature").forGetter(dul::d)
+               kd.e.q().fieldOf("block").flatXmap(dul::a, DataResult::success).orElse((dbx)cxa.fg).forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
+               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
+               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
+               iv.a(ke.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, dul::new)
    );
+   public final dbx b;
+   public final int c;
+   public final boolean d;
+   public final boolean e;
+   public final boolean f;
+   public final float g;
+   public final il<cwy> h;
+   private final ObjectArrayList<ic> i;
 
-   public int a() {
-      return this.b;
+   private static DataResult<dbx> a(cwy $$0) {
+      return $$0 instanceof dbx $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
    }
 
-   public int b() {
-      return this.c;
+   public dul(dbx $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, il<cwy> $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = new ObjectArrayList(6);
+      if ($$3) {
+         this.i.add(ic.b);
+      }
+
+      if ($$2) {
+         this.i.add(ic.a);
+      }
+
+      if ($$4) {
+         ic.c.a.forEach(this.i::add);
+      }
    }
 
-   public int c() {
-      return this.d;
+   public List<ic> a(auw $$0, ic $$1) {
+      return ac.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
    }
 
-   public ih<dyk> d() {
-      return this.e;
+   public List<ic> a(auw $$0) {
+      return ac.a(this.i, $$0);
    }
 }

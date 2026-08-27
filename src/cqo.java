@@ -1,50 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cqo<T extends cpl> implements cqg<T> {
-   private final cpl.a<T> x;
-   private final Codec<T> y;
+public interface cqo<T extends cqk<?>> {
+   cqo<cqr> a = a("crafting_shaped", new cqr.a());
+   cqo<cqt> b = a("crafting_shapeless", new cqt.a());
+   cqo<cpu> c = a("crafting_special_armordye", new cqx<>(cpu::new));
+   cqo<cpx> d = a("crafting_special_bookcloning", new cqx<>(cpx::new));
+   cqo<cqi> e = a("crafting_special_mapcloning", new cqx<>(cqi::new));
+   cqo<cqj> f = a("crafting_special_mapextending", new cqx<>(cqj::new));
+   cqo<cqe> g = a("crafting_special_firework_rocket", new cqx<>(cqe::new));
+   cqo<cqg> h = a("crafting_special_firework_star", new cqx<>(cqg::new));
+   cqo<cqf> i = a("crafting_special_firework_star_fade", new cqx<>(cqf::new));
+   cqo<crg> j = a("crafting_special_tippedarrow", new cqx<>(crg::new));
+   cqo<cpv> k = a("crafting_special_bannerduplicate", new cqx<>(cpv::new));
+   cqo<cqu> l = a("crafting_special_shielddecoration", new cqx<>(cqu::new));
+   cqo<cqv> m = a("crafting_special_shulkerboxcoloring", new cqx<>(cqv::new));
+   cqo<crf> n = a("crafting_special_suspiciousstew", new cqx<>(crf::new));
+   cqo<cqq> o = a("crafting_special_repairitem", new cqx<>(cqq::new));
+   cqo<cqz> p = a("smelting", new cqw<>(cqz::new, 200));
+   cqo<cpw> q = a("blasting", new cqw<>(cpw::new, 100));
+   cqo<crd> r = a("smoking", new cqw<>(crd::new, 100));
+   cqo<cpy> s = a("campfire_cooking", new cqw<>(cpy::new, 100));
+   cqo<cre> t = a("stonecutting", new cqy.b<>(cre::new));
+   cqo<crb> u = a("smithing_transform", new crb.a());
+   cqo<crc> v = a("smithing_trim", new crc.a());
+   cqo<cqd> w = a("crafting_decorated_pot", new cqx<>(cqd::new));
 
-   public cqo(cpl.a<T> $$0, int $$1) {
-      this.x = $$0;
-      this.y = RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  atw.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                  cpr.d.fieldOf("category").orElse(cpr.c).forGetter($$0xx -> $$0xx.b),
-                  cpz.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
-                  kd.h.q().xmap(cmy::new, cmy::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
-                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
-                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
-               )
-               .apply($$2, $$0::create)
-      );
-   }
+   Codec<T> a();
 
-   @Override
-   public Codec<T> a() {
-      return this.y;
-   }
+   T a(uj var1);
 
-   public T b(ui $$0) {
-      String $$1 = $$0.s();
-      cpr $$2 = $$0.b(cpr.class);
-      cpz $$3 = cpz.b($$0);
-      cmy $$4 = $$0.r();
-      float $$5 = $$0.readFloat();
-      int $$6 = $$0.n();
-      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
-   }
+   void a(uj var1, T var2);
 
-   public void a(ui $$0, T $$1) {
-      $$0.a($$1.c);
-      $$0.a($$1.f());
-      $$1.d.a($$0);
-      $$0.a($$1.e);
-      $$0.a($$1.f);
-      $$0.c($$1.g);
-   }
-
-   public cpl a(String $$0, cpr $$1, cpz $$2, cmy $$3, float $$4, int $$5) {
-      return this.x.create($$0, $$1, $$2, $$3, $$4, $$5);
+   static <S extends cqo<T>, T extends cqk<?>> S a(String $$0, S $$1) {
+      return it.a(kd.t, $$0, $$1);
    }
 }

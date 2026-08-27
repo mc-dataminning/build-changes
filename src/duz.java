@@ -1,29 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.stream.Stream;
 
-public abstract class duz {
-   public static final Codec<duz> a = kd.aa.q().dispatch(duz::b, dva::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class duz implements dug {
+   public static final Codec<duz> a = atx.b(dys.c).fieldOf("features").xmap(duz::new, $$0 -> $$0.b).codec();
+   public final il<dys> b;
 
-   protected static <S extends duz> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   public duz(il<dys> $$0) {
+      this.b = $$0;
    }
 
-   public duz(OptionalInt $$0) {
-      this.c = $$0;
-   }
-
-   protected abstract dva<?> b();
-
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
-      return this.c;
+   @Override
+   public Stream<drp<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

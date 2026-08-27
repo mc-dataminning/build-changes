@@ -1,143 +1,79 @@
-public interface fat {
-   fat a(int var1);
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.stb.STBTTFontinfo;
+import org.lwjgl.stb.STBTruetype;
+import org.lwjgl.system.MemoryUtil;
 
-   fat a(int var1, int var2);
+public record fat(ahh c, float d, float e, fat.a f, String g) implements faq {
+   private static final Codec<String> h = atx.a(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fat> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ahh.a.fieldOf("file").forGetter(fat::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fat::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fat::e),
+               fat.a.b.optionalFieldOf("shift", fat.a.a).forGetter(fat::f),
+               h.optionalFieldOf("skip", "").forGetter(fat::g)
+            )
+            .apply($$0, fat::new)
+   );
 
-   fat a(int var1, int var2, int var3, int var4);
-
-   fat b(int var1);
-
-   fat c(int var1);
-
-   fat d(int var1);
-
-   fat e(int var1);
-
-   fat f(int var1);
-
-   fat g(int var1);
-
-   fat a(float var1, float var2);
-
-   fat a(float var1);
-
-   fat b(float var1);
-
-   default fat a() {
-      return this.a(0.0F);
+   @Override
+   public far a() {
+      return far.b;
    }
 
-   default fat b() {
-      return this.a(0.5F);
+   @Override
+   public Either<faq.a, faq.b> b() {
+      return Either.left(this::a);
    }
 
-   default fat c() {
-      return this.a(1.0F);
+   private eon a(aqj $$0) throws IOException {
+      STBTTFontinfo $$1 = null;
+      ByteBuffer $$2 = null;
+
+      try {
+         eoq var5;
+         try (InputStream $$3 = $$0.open(this.c.d("font/"))) {
+            $$1 = STBTTFontinfo.malloc();
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            if (!STBTruetype.stbtt_InitFont($$1, $$2)) {
+               throw new IOException("Invalid ttf");
+            }
+
+            var5 = new eoq($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+         }
+
+         return var5;
+      } catch (Exception var9) {
+         if ($$1 != null) {
+            $$1.free();
+         }
+
+         MemoryUtil.memFree($$2);
+         throw var9;
+      }
    }
 
-   default fat d() {
-      return this.b(0.0F);
-   }
+   public static record a(float c, float d) {
+      public static final fat.a a = new fat.a(0.0F, 0.0F);
+      public static final Codec<fat.a> b = Codec.FLOAT
+         .listOf()
+         .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new fat.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
 
-   default fat e() {
-      return this.b(0.5F);
-   }
-
-   default fat f() {
-      return this.b(1.0F);
-   }
-
-   fat g();
-
-   fat.a h();
-
-   static fat i() {
-      return new fat.a();
-   }
-
-   public static class a implements fat {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
-
-      public a() {
+      public float a() {
+         return this.c;
       }
 
-      public a(fat.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
-      }
-
-      public fat.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
-
-      public fat.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
-
-      public fat.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
-
-      public fat.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fat.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fat.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fat.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fat.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public fat.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public fat.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fat.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fat.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fat.a j() {
-         return new fat.a(this);
-      }
-
-      @Override
-      public fat.a h() {
-         return this;
+      public float b() {
+         return this.d;
       }
    }
 }

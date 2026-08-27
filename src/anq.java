@@ -1,70 +1,38 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
 
-public class anq implements anm {
-   private final ano a;
-   private final Long2ObjectOpenHashMap<dli> b;
-   private csw c = new csw(0, 0);
-   private final int d;
-   private final int e;
-   private final int f;
-   private boolean g;
+public class anq implements ann {
+   private final ann a;
+   private final biv<Runnable> b;
 
-   public anq(int $$0) {
-      this.a = new ano($$0);
-      this.d = $$0 * 2 + 1;
-      this.e = $$0 + dli.b();
-      this.f = this.e * 2 + 1;
-      this.b = new Long2ObjectOpenHashMap();
+   private anq(ann $$0, Executor $$1) {
+      this.a = $$0;
+      this.b = biv.a($$1, "progressListener");
+   }
+
+   public static anq a(ann $$0, Executor $$1) {
+      anq $$2 = new anq($$0, $$1);
+      $$2.a();
+      return $$2;
    }
 
    @Override
-   public void a(csw $$0) {
-      if (this.g) {
-         this.a.a($$0);
-         this.c = $$0;
-      }
+   public void a(cte $$0) {
+      this.b.a(() -> this.a.a($$0));
    }
 
    @Override
-   public void a(csw $$0, @Nullable dli $$1) {
-      if (this.g) {
-         this.a.a($$0, $$1);
-         if ($$1 == null) {
-            this.b.remove($$0.a());
-         } else {
-            this.b.put($$0.a(), $$1);
-         }
-      }
+   public void a(cte $$0, @Nullable dlq $$1) {
+      this.b.a(() -> this.a.a($$0, $$1));
    }
 
    @Override
    public void a() {
-      this.g = true;
-      this.b.clear();
-      this.a.a();
+      this.b.a(this.a::a);
    }
 
    @Override
    public void b() {
-      this.g = false;
-      this.a.b();
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   public int e() {
-      return this.a.c();
-   }
-
-   @Nullable
-   public dli a(int $$0, int $$1) {
-      return (dli)this.b.get(csw.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
+      this.b.a(this.a::b);
    }
 }

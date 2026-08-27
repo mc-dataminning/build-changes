@@ -1,78 +1,54 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class add implements xf<za> {
-   private final int a;
-   private final List<add.a> b;
+public class add implements xg<zb> {
+   private final boolean a;
+   private final List<af> b;
+   private final Set<ahh> c;
+   private final Map<ahh, ah> d;
 
-   public add(int $$0, Collection<bnn> $$1) {
+   public add(boolean $$0, Collection<af> $$1, Set<ahh> $$2, Map<ahh, ah> $$3) {
       this.a = $$0;
-      this.b = Lists.newArrayList();
-
-      for (bnn $$2 : $$1) {
-         this.b.add(new add.a($$2.a(), $$2.b(), $$2.c()));
-      }
+      this.b = List.copyOf($$1);
+      this.c = Set.copyOf($$2);
+      this.d = Map.copyOf($$3);
    }
 
-   public add(ui $$0) {
-      this.a = $$0.n();
-      this.b = $$0.a((ui.a<add.a>)($$0x -> {
-         ahg $$1 = $$0x.t();
-         bnm $$2 = kd.u.a($$1);
-         double $$3 = $$0x.readDouble();
-         List<bnp> $$4 = $$0x.a((ui.a<bnp>)($$0xx -> new bnp($$0xx.p(), "Unknown synced attribute modifier", $$0xx.readDouble(), bnp.a.a($$0xx.readByte()))));
-         return new add.a($$2, $$3, $$4);
-      }));
+   public add(uj $$0) {
+      this.a = $$0.readBoolean();
+      this.b = $$0.a(af::b);
+      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, uj::t);
+      this.d = $$0.a(uj::t, ah::b);
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> {
-         $$0x.a(kd.u.b($$1.a()));
-         $$0x.a($$1.b());
-         $$0x.a($$1.c(), ($$0xx, $$1x) -> {
-            $$0xx.a($$1x.a());
-            $$0xx.a($$1x.c());
-            $$0xx.k($$1x.b().a());
-         });
-      });
+   public void a(uj $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c, uj::a);
+      $$0.a(this.d, uj::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public List<add.a> d() {
+   public List<af> a() {
       return this.b;
    }
 
-   public static class a {
-      private final bnm a;
-      private final double b;
-      private final Collection<bnp> c;
+   public Set<ahh> d() {
+      return this.c;
+   }
 
-      public a(bnm $$0, double $$1, Collection<bnp> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   public Map<ahh, ah> e() {
+      return this.d;
+   }
 
-      public bnm a() {
-         return this.a;
-      }
-
-      public double b() {
-         return this.b;
-      }
-
-      public Collection<bnp> c() {
-         return this.c;
-      }
+   public boolean f() {
+      return this.a;
    }
 }

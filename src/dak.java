@@ -1,178 +1,168 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dak extends cwc {
+public class dak extends czs {
    public static final MapCodec<dak> a = b(dak::new);
-   public static final dkb b = djx.Q;
-   public static final djy c = djx.f;
-   private static final emm d = cwq.a(0.0, 10.0, 0.0, 16.0, 16.0, 16.0);
-   private static final emm e = cwq.a(4.0, 4.0, 4.0, 12.0, 10.0, 12.0);
-   private static final emm f = emj.a(e, d);
-   private static final emm g = emj.a(f, dht.y_, elx.e);
-   private static final emm h = emj.a(g, cwq.a(6.0, 0.0, 6.0, 10.0, 4.0, 10.0));
-   private static final emm i = emj.a(g, cwq.a(12.0, 4.0, 6.0, 16.0, 8.0, 10.0));
-   private static final emm j = emj.a(g, cwq.a(6.0, 4.0, 0.0, 10.0, 8.0, 4.0));
-   private static final emm k = emj.a(g, cwq.a(6.0, 4.0, 12.0, 10.0, 8.0, 16.0));
-   private static final emm l = emj.a(g, cwq.a(0.0, 4.0, 6.0, 4.0, 8.0, 10.0));
-   private static final emm m = dht.y_;
-   private static final emm n = emj.a(dht.y_, cwq.a(12.0, 8.0, 6.0, 16.0, 10.0, 10.0));
-   private static final emm o = emj.a(dht.y_, cwq.a(6.0, 8.0, 0.0, 10.0, 10.0, 4.0));
-   private static final emm F = emj.a(dht.y_, cwq.a(6.0, 8.0, 12.0, 10.0, 10.0, 16.0));
-   private static final emm G = emj.a(dht.y_, cwq.a(0.0, 8.0, 6.0, 4.0, 10.0, 10.0));
+   public static final emv b = cwy.a(2.0, 0.0, 6.0, 4.0, 7.0, 10.0);
+   public static final emv c = cwy.a(12.0, 0.0, 6.0, 14.0, 7.0, 10.0);
+   public static final emv d = cwy.a(2.0, 7.0, 5.0, 4.0, 13.0, 11.0);
+   public static final emv e = cwy.a(12.0, 7.0, 5.0, 14.0, 13.0, 11.0);
+   public static final emv f = ems.a(b, d);
+   public static final emv g = ems.a(c, e);
+   public static final emv h = ems.a(f, g);
+   public static final emv i = ems.a(h, cwy.a(4.0, 4.0, 2.0, 12.0, 16.0, 14.0));
+   public static final emv j = cwy.a(6.0, 0.0, 2.0, 10.0, 7.0, 4.0);
+   public static final emv k = cwy.a(6.0, 0.0, 12.0, 10.0, 7.0, 14.0);
+   public static final emv l = cwy.a(5.0, 7.0, 2.0, 11.0, 13.0, 4.0);
+   public static final emv m = cwy.a(5.0, 7.0, 12.0, 11.0, 13.0, 14.0);
+   public static final emv n = ems.a(j, l);
+   public static final emv o = ems.a(k, m);
+   public static final emv F = ems.a(n, o);
+   public static final emv G = ems.a(F, cwy.a(2.0, 4.0, 4.0, 14.0, 16.0, 12.0));
+   public static final emv H = cwy.a(2.0, 6.0, 0.0, 4.0, 10.0, 7.0);
+   public static final emv I = cwy.a(12.0, 6.0, 0.0, 14.0, 10.0, 7.0);
+   public static final emv J = cwy.a(2.0, 5.0, 7.0, 4.0, 11.0, 13.0);
+   public static final emv L = cwy.a(12.0, 5.0, 7.0, 14.0, 11.0, 13.0);
+   public static final emv M = ems.a(H, J);
+   public static final emv N = ems.a(I, L);
+   public static final emv O = ems.a(M, N);
+   public static final emv P = ems.a(O, cwy.a(4.0, 2.0, 4.0, 12.0, 14.0, 16.0));
+   public static final emv Q = cwy.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0);
+   public static final emv R = cwy.a(12.0, 6.0, 7.0, 14.0, 10.0, 16.0);
+   public static final emv S = cwy.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0);
+   public static final emv T = cwy.a(12.0, 5.0, 3.0, 14.0, 11.0, 9.0);
+   public static final emv U = ems.a(Q, S);
+   public static final emv V = ems.a(R, T);
+   public static final emv W = ems.a(U, V);
+   public static final emv X = ems.a(W, cwy.a(4.0, 2.0, 0.0, 12.0, 14.0, 12.0));
+   public static final emv Y = cwy.a(7.0, 6.0, 2.0, 16.0, 10.0, 4.0);
+   public static final emv Z = cwy.a(7.0, 6.0, 12.0, 16.0, 10.0, 14.0);
+   public static final emv aa = cwy.a(3.0, 5.0, 2.0, 9.0, 11.0, 4.0);
+   public static final emv ab = cwy.a(3.0, 5.0, 12.0, 9.0, 11.0, 14.0);
+   public static final emv ac = ems.a(Y, aa);
+   public static final emv ad = ems.a(Z, ab);
+   public static final emv ae = ems.a(ac, ad);
+   public static final emv af = ems.a(ae, cwy.a(0.0, 2.0, 4.0, 12.0, 14.0, 12.0));
+   public static final emv ag = cwy.a(0.0, 6.0, 2.0, 9.0, 10.0, 4.0);
+   public static final emv ah = cwy.a(0.0, 6.0, 12.0, 9.0, 10.0, 14.0);
+   public static final emv ai = cwy.a(7.0, 5.0, 2.0, 13.0, 11.0, 4.0);
+   public static final emv aj = cwy.a(7.0, 5.0, 12.0, 13.0, 11.0, 14.0);
+   public static final emv ak = ems.a(ag, ai);
+   public static final emv al = ems.a(ah, aj);
+   public static final emv am = ems.a(ak, al);
+   public static final emv an = ems.a(am, cwy.a(4.0, 2.0, 4.0, 16.0, 14.0, 12.0));
+   public static final emv ao = cwy.a(2.0, 9.0, 6.0, 4.0, 16.0, 10.0);
+   public static final emv ap = cwy.a(12.0, 9.0, 6.0, 14.0, 16.0, 10.0);
+   public static final emv aq = cwy.a(2.0, 3.0, 5.0, 4.0, 9.0, 11.0);
+   public static final emv ar = cwy.a(12.0, 3.0, 5.0, 14.0, 9.0, 11.0);
+   public static final emv as = ems.a(ao, aq);
+   public static final emv at = ems.a(ap, ar);
+   public static final emv au = ems.a(as, at);
+   public static final emv av = ems.a(au, cwy.a(4.0, 0.0, 2.0, 12.0, 12.0, 14.0));
+   public static final emv aw = cwy.a(6.0, 9.0, 2.0, 10.0, 16.0, 4.0);
+   public static final emv ax = cwy.a(6.0, 9.0, 12.0, 10.0, 16.0, 14.0);
+   public static final emv ay = cwy.a(5.0, 3.0, 2.0, 11.0, 9.0, 4.0);
+   public static final emv az = cwy.a(5.0, 3.0, 12.0, 11.0, 9.0, 14.0);
+   public static final emv aA = ems.a(aw, ay);
+   public static final emv aB = ems.a(ax, az);
+   public static final emv aC = ems.a(aA, aB);
+   public static final emv aD = ems.a(aC, cwy.a(2.0, 0.0, 4.0, 14.0, 12.0, 12.0));
+   private static final vg aR = vg.c("container.grindstone_title");
 
    @Override
    public MapCodec<dak> a() {
       return a;
    }
 
-   public dak(djg.d $$0) {
+   protected dak(djo.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ic.a).a(c, Boolean.valueOf(true)));
+      this.k(this.E.b().a(aE, ic.c).a(K, dka.b));
    }
 
    @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      switch ((ic)$$0.c(b)) {
+   public ddd b_(djp $$0) {
+      return ddd.c;
+   }
+
+   private emv n(djp $$0) {
+      ic $$1 = $$0.c(aE);
+      switch ((dka)$$0.c(K)) {
          case a:
-            return h;
-         case c:
-            return j;
-         case d:
-            return k;
-         case e:
-            return l;
-         case f:
+            if ($$1 != ic.c && $$1 != ic.d) {
+               return G;
+            }
+
             return i;
-         default:
-            return g;
-      }
-   }
+         case b:
+            if ($$1 == ic.c) {
+               return X;
+            } else if ($$1 == ic.d) {
+               return P;
+            } else {
+               if ($$1 == ic.f) {
+                  return an;
+               }
 
-   @Override
-   public emm a(djh $$0, csv $$1, hx $$2) {
-      switch ((ic)$$0.c(b)) {
-         case a:
-            return m;
+               return af;
+            }
          case c:
-            return o;
-         case d:
-            return F;
-         case e:
-            return G;
-         case f:
-            return n;
+            if ($$1 != ic.c && $$1 != ic.d) {
+               return aD;
+            }
+
+            return av;
          default:
-            return dht.y_;
+            return G;
       }
    }
 
    @Override
-   public djh a(cph $$0) {
-      ic $$1 = $$0.k().g();
-      return this.o().a(b, $$1.o() == ic.a.b ? ic.a : $$1).a(c, Boolean.valueOf(true));
+   public emv b(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return this.n($$0);
    }
 
    @Override
-   public dgv a(hx $$0, djh $$1) {
-      return new dhu($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dgv> dgw<T> a(ctp $$0, djh $$1, dgx<T> $$2) {
-      return $$0.B ? null : a($$2, dgx.r, dhu::a);
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return this.n($$0);
    }
 
    @Override
-   public void a(ctp $$0, hx $$1, djh $$2, bml $$3, cmy $$4) {
-      if ($$4.A()) {
-         dgv $$5 = $$0.c_($$1);
-         if ($$5 instanceof dhu) {
-            ((dhu)$$5).a($$4.y());
-         }
-      }
-   }
-
-   @Override
-   public void b(djh $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2, $$0);
-      }
-   }
-
-   @Override
-   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
-      if ($$1.B) {
-         return bkb.a;
-      } else {
-         dgv $$6 = $$1.c_($$2);
-         if ($$6 instanceof dhu) {
-            $$3.a((dhu)$$6);
-            $$3.a(asc.ad);
-         }
-
-         return bkb.b;
-      }
-   }
-
-   @Override
-   public void a(djh $$0, ctp $$1, hx $$2, cwq $$3, hx $$4, boolean $$5) {
-      this.a($$1, $$2, $$0);
-   }
-
-   private void a(ctp $$0, hx $$1, djh $$2) {
-      boolean $$3 = !$$0.C($$1);
-      if ($$3 != $$2.c(c)) {
-         $$0.a($$1, $$2.a(c, Boolean.valueOf($$3)), 2);
-      }
-   }
-
-   @Override
-   public void a(djh $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
-      bjx.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public dcv b_(djh $$0) {
-      return dcv.c;
-   }
-
-   @Override
-   public boolean d_(djh $$0) {
+   public boolean a(djp $$0, cua $$1, hx $$2) {
       return true;
    }
 
    @Override
-   public int a(djh $$0, ctp $$1, hx $$2) {
-      return cib.a($$1.c_($$2));
-   }
-
-   @Override
-   public djh a(djh $$0, ddc $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public djh a(djh $$0, dbm $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public void a(djh $$0, ctp $$1, hx $$2, blv $$3) {
-      dgv $$4 = $$1.c_($$2);
-      if ($$4 instanceof dhu) {
-         dhu.a($$1, $$2, $$0, $$3, (dhu)$$4);
+   public bkc a(djp $$0, ctx $$1, hx $$2, cfq $$3, ely $$4) {
+      if ($$1.B) {
+         return bkc.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(asd.aD);
+         return bkc.b;
       }
    }
 
    @Override
-   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
+   public bkg b(djp $$0, ctx $$1, hx $$2) {
+      return new bkm(($$2x, $$3, $$4) -> new cjh($$2x, $$3, ciu.a($$1, $$2)), aR);
+   }
+
+   @Override
+   public djp a(djp $$0, ddk $$1) {
+      return $$0.a(aE, $$1.a($$0.c(aE)));
+   }
+
+   @Override
+   public djp a(djp $$0, dbu $$1) {
+      return $$0.a($$1.a($$0.c(aE)));
+   }
+
+   @Override
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(aE, K);
+   }
+
+   @Override
+   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
       return false;
    }
 }

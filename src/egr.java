@@ -1,66 +1,34 @@
 import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface egr extends egt {
-   @Override
-   String g();
+public interface egr {
+   int a();
 
-   void a(boolean var1);
+   int b();
 
-   int l();
+   int c();
 
-   void f(int var1);
+   float d();
 
-   void e(int var1);
+   long e();
 
-   int j();
+   long f();
 
-   @Override
-   default void a(p $$0, ctr $$1) {
-      egt.super.a($$0, $$1);
-      $$0.a("Level name", this::g);
-      $$0.a(
-         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
+   boolean i();
+
+   boolean k();
+
+   void b(boolean var1);
+
+   boolean n();
+
+   ctt q();
+
+   bjz s();
+
+   boolean t();
+
+   default void a(p $$0, ctz $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a(), this.b(), this.c()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.e(), this.f()));
    }
-
-   int h();
-
-   void a(int var1);
-
-   int v();
-
-   void g(int var1);
-
-   int w();
-
-   void h(int var1);
-
-   @Nullable
-   UUID x();
-
-   void a(UUID var1);
-
-   ctm m();
-
-   void a(dky.c var1);
-
-   dky.c r();
-
-   boolean p();
-
-   void c(boolean var1);
-
-   boolean o();
-
-   void a(ctm var1);
-
-   elg<MinecraftServer> u();
-
-   void a(long var1);
-
-   void b(long var1);
 }

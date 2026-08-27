@@ -1,25 +1,33 @@
-import org.joml.Matrix4f;
+public class fft extends exr {
+   private static final ahh a = new ahh("widget/page_forward_highlighted");
+   private static final ahh b = new ahh("widget/page_forward");
+   private static final ahh c = new ahh("widget/page_backward_highlighted");
+   private static final ahh d = new ahh("widget/page_backward");
+   private final boolean t;
+   private final boolean u;
 
-public interface fft {
-   static fft a(aua $$0) {
-      return new ffs($$0);
+   public fft(int $$0, int $$1, boolean $$2, exr.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, vf.a, $$3, p);
+      this.t = $$2;
+      this.u = $$4;
    }
 
-   static fft a(cke $$0) {
-      if ($$0 instanceof ckd) {
-         return new ffr((ckd)$$0);
+   @Override
+   public void b(exe $$0, int $$1, int $$2, float $$3) {
+      ahh $$4;
+      if (this.t) {
+         $$4 = this.z() ? a : b;
       } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
+         $$4 = this.z() ? c : d;
       }
+
+      $$0.a($$4, this.B(), this.C(), 23, 13);
    }
 
-   int a();
-
-   int a(ews var1);
-
-   default void a(ews $$0, int $$1, int $$2, Matrix4f $$3, fth.a $$4) {
-   }
-
-   default void a(ews $$0, int $$1, int $$2, ewu $$3) {
+   @Override
+   public void a(gjs $$0) {
+      if (this.u) {
+         $$0.a(gij.a(art.cq, 1.0F));
+      }
    }
 }

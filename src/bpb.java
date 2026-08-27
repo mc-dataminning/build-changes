@@ -1,101 +1,32 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-public class bpb extends boc<bmn> {
-   private static final int c = 100;
-   private static final int d = 3;
-   private static final int e = 6;
-   private static final int f = 5;
-   private final float g;
-   @Nullable
-   private hx h;
-   private int i;
-   private int j;
-   private int k;
-
-   public bpb(float $$0) {
-      super(ImmutableMap.of(bvn.w, bvo.a, bvn.m, bvo.b));
-      this.g = $$0;
-   }
-
-   protected boolean a(and $$0, bmn $$1) {
-      return $$1.o_() && this.b($$0, $$1);
-   }
-
-   protected void a(and $$0, bmn $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.a($$1).ifPresent($$2x -> {
-         this.h = $$2x;
-         this.i = 100;
-         this.j = 3 + $$0.z.a(4);
-         this.k = 0;
-         this.a($$1, $$2x);
-      });
-   }
-
-   protected void b(and $$0, bmn $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      this.h = null;
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   protected boolean c(and $$0, bmn $$1, long $$2) {
-      return $$1.o_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   protected void d(and $$0, bmn $$1, long $$2) {
-      if (!this.c($$0, $$1)) {
-         this.i--;
-      } else if (this.k > 0) {
-         this.k--;
-      } else {
-         if (this.d($$0, $$1)) {
-            $$1.M().a();
-            this.j--;
-            this.k = 5;
-         }
-      }
-   }
-
-   private void a(bmn $$0, hx $$1) {
-      $$0.dO().a(bvn.m, new bvq($$1, this.g, 0));
-   }
-
-   private boolean b(and $$0, bmn $$1) {
-      return this.c($$0, $$1) || this.a($$1).isPresent();
-   }
-
-   private boolean c(and $$0, bmn $$1) {
-      hx $$2 = $$1.dm();
-      hx $$3 = $$2.d();
-      return this.a($$0, $$2) || this.a($$0, $$3);
-   }
-
-   private boolean d(and $$0, bmn $$1) {
-      return this.a($$0, $$1.dm());
-   }
-
-   private boolean a(and $$0, hx $$1) {
-      return $$0.a_($$1).a(ash.R);
-   }
-
-   private Optional<hx> a(bmn $$0) {
-      return $$0.dO().c(bvn.w);
-   }
-
-   private boolean e(and $$0, bmn $$1) {
-      return !this.c($$0, $$1) && this.i <= 0;
-   }
-
-   private boolean f(and $$0, bmn $$1) {
-      return this.c($$0, $$1) && this.j <= 0;
+public class bpb {
+   public static bog<bmx> a(float $$0) {
+      return brs.a(
+         (Function<brs.b<bmx>, ? extends App<brs.c<bmx>, brv<bmx>>>)($$1 -> $$1.group($$1.c(bvq.m))
+               .apply(
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.h($$3.dl())) {
+                           return false;
+                        } else {
+                           hx $$5 = $$3.dl();
+                           List<hx> $$6 = hx.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(hx::i).collect(Collectors.toList());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.h($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new bvt($$2x, $$0, 0)));
+                           return true;
+                        }
+                     }
+               ))
+      );
    }
 }

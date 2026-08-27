@@ -1,36 +1,62 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-
-public class fso implements bhy {
-   private final ftf a;
-   private final Set<bhw> b = new ObjectOpenHashSet();
-   private final bie c = new bie();
-
-   public fso(LongSupplier $$0, ftf $$1) {
-      this.a = $$1;
-      this.b.add(bif.a($$0));
-      this.a();
-   }
-
-   private void a() {
-      this.b.addAll(bif.a());
-      this.b.add(bhw.a("totalChunks", bhv.f, this.a, ftf::i));
-      this.b.add(bhw.a("renderedChunks", bhv.f, this.a, ftf::k));
-      this.b.add(bhw.a("lastViewDistance", bhv.f, this.a, ftf::j));
-      fwg $$0 = this.a.h();
-      this.b.add(bhw.a("toUpload", bhv.g, $$0, fwg::c));
-      this.b.add(bhw.a("freeBufferCount", bhv.g, $$0, fwg::d));
-      this.b.add(bhw.a("toBatchCount", bhv.g, $$0, fwg::b));
-      if (epu.a().isPresent()) {
-         this.b.add(bhw.a("gpuUtilization", bhv.i, evi.O(), evi::u));
-      }
+public class fso extends fsh {
+   protected fso(foe $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public Set<bhw> a(Supplier<bgq> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public frl b() {
+      return frl.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         if (this.m) {
+            if (Math.random() < 0.5) {
+               this.k();
+            }
+
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
+
+         hx $$0 = hx.a(this.g, this.h, this.i);
+         double $$1 = Math.max(
+            this.c.a_($$0).k(this.c, $$0).b(ic.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((ctd)this.c, $$0)
+         );
+         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
+            this.k();
+         }
+      }
+   }
+
+   public static class a implements frk<ka> {
+      private final fsc a;
+
+      public a(fsc $$0) {
+         this.a = $$0;
+      }
+
+      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fso $$8 = new fso($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

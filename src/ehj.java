@@ -1,30 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ehj extends ehr {
-   public static final Codec<ehj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ahg.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ehj::new)
-   );
-   private final ahg j;
+@FunctionalInterface
+public interface ehj {
+   @Nullable
+   <T> T getElement(ehh<T> var1);
 
-   private ehj(ahg $$0, int $$1, int $$2, List<ejv> $$3, List<eij> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   @Nullable
+   default <T> T getElement(ehk<T> $$0, ahh $$1) {
+      return this.getElement(new ehh<>($$0, $$1));
    }
 
-   @Override
-   public ehq a() {
-      return ehn.e;
+   default <T> Optional<T> getElementOptional(ehh<T> $$0) {
+      return Optional.ofNullable(this.getElement($$0));
    }
 
-   @Override
-   public void a(Consumer<cmy> $$0, egw $$1) {
-      $$1.a(this.j, $$0);
+   default <T> Optional<T> getElementOptional(ehk<T> $$0, ahh $$1) {
+      return this.getElementOptional(new ehh<>($$0, $$1));
    }
 
-   public static ehr.a<?> a(ahg $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ehj($$0, $$1, $$2, $$3, $$4));
+   default ehn getLootTable(ahh $$0) {
+      return this.getElementOptional(ehk.c, $$0).orElse(ehn.a);
    }
 }

@@ -1,69 +1,71 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
 import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Set;
 
-public class dwu extends dxc {
+public class dwu extends dwy {
    public static final Codec<dwu> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  atw.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bjg.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               dwh.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               atx.a(ic.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
             )
             .apply($$0, dwu::new)
    );
-   private final int b;
-   private final bjg h;
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final dwh e;
+   protected final int f;
+   protected final List<ic> g;
 
-   public dwu(int $$0, int $$1, int $$2, int $$3, bjg $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   public dwu(float $$0, int $$1, int $$2, dwh $$3, int $$4, List<ic> $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   protected dxd<?> a() {
-      return dxd.g;
+   public void a(dwy.a $$0) {
+      Set<hx> $$1 = new HashSet<>();
+      auw $$2 = $$0.b();
+
+      for (hx $$3 : ac.a($$0.d(), $$2)) {
+         ic $$4 = ac.a(this.g, $$2);
+         hx $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            hx $$6 = $$5.b(-this.c, -this.d, -this.c);
+            hx $$7 = $$5.b(this.c, this.d, this.c);
+
+            for (hx $$8 : hx.a($$6, $$7)) {
+               $$1.add($$8.i());
+            }
+
+            $$0.a($$5, this.e.a($$2, $$5));
+         }
+      }
+   }
+
+   private boolean a(dwy.a $$0, hx $$1, ic $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         hx $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public List<dvk.a> a(ctv $$0, BiConsumer<hx, djh> $$1, auv $$2, int $$3, hx $$4, duu $$5) {
-      ic $$6 = ic.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      hx.a $$8 = $$4.j();
-      hx $$9 = $$8.d();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<dvk.a> $$10 = Lists.newArrayList();
-
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
-
-         if (dtg.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new dvk.a($$8.i(), 0, false));
-         }
-
-         $$8.c(ic.b);
-      }
-
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (dtg.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new dvk.a($$8.i(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
+   protected dwz<?> a() {
+      return dwz.f;
    }
 }

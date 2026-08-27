@@ -1,44 +1,228 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class fng {
-   private final List<fna> a;
-   private final fmz b;
-   private final Map<String, fng> c = Maps.newHashMap();
+   private static final fnn a = new fnn(0.008F);
+   private static final fnn b = new fnn(1.0F);
+   private static final fnn c = new fnn(0.5F);
 
-   fng(List<fna> $$0, fmz $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static Map<fnh, fnp> a() {
+      Builder<fnh, fnp> $$0 = ImmutableMap.builder();
+      fnp $$1 = fnp.a(fkw.a(fnn.a, 0.0F), 64, 64);
+      fnp $$2 = fnp.a(fkv.a(b), 64, 32);
+      fnp $$3 = fnp.a(fkv.a(new fnn(1.02F)), 64, 32);
+      fnp $$4 = fnp.a(fkv.a(c), 64, 32);
+      fnp $$5 = fle.b();
+      fnp $$6 = fmf.c();
+      fnp $$7 = fnp.a(fku.a(fnn.a), 64, 64);
+      fnp $$8 = fkx.b();
+      fnp $$9 = fkc.c();
+      fnp $$10 = fnp.a(flh.a(fnn.a), 64, 32);
+      fnp $$11 = fnp.a(fln.a(fnn.a), 64, 64);
+      fnp $$12 = fnp.a(flm.a(), 64, 64);
+      fnp $$13 = fmf.b();
+      fnp $$14 = flc.a(fnn.a);
+      fnp $$15 = fmm.b();
+      fnp $$16 = fkt.c();
+      fnp $$17 = fme.c();
+      fnp $$18 = fnp.a(fmu.b(), 64, 64);
+      fnp $$19 = fmk.b();
+      $$0.put(fni.a, fjg.b());
+      $$0.put(fni.b, fji.b());
+      $$0.put(fni.c, fjl.c());
+      $$0.put(fni.d, fjk.a(c));
+      $$0.put(fni.e, fjk.a(b));
+      $$0.put(fni.f, fjm.c());
+      $$0.put(fni.g, fvo.a());
+      $$0.put(fni.h, fjn.b());
+      $$0.put(fni.i, fvq.c());
+      $$0.put(fni.j, fvq.b());
+      $$0.put(fni.k, fjo.c());
+      $$0.put(fni.l, fvr.b());
+      $$0.put(fni.m, fjp.b());
+      $$0.put(fni.n, fjr.a());
+      $$0.put(fni.o, fjs.a(32, 32));
+      $$0.put(fni.p, $$10);
+      $$0.put(fni.q, fnp.a(flh.a(new fnn(0.01F)), 64, 32));
+      $$0.put(fni.r, fjt.b());
+      $$0.put(fni.s, $$19);
+      $$0.put(fni.t, fvz.b());
+      $$0.put(fni.u, $$5);
+      $$0.put(fni.v, fjy.c());
+      $$0.put(fni.w, fjz.b());
+      $$0.put(fni.x, $$5);
+      $$0.put(fni.z, fwa.b());
+      $$0.put(fni.B, fwa.c());
+      $$0.put(fni.A, fwa.d());
+      $$0.put(fni.y, fwa.e());
+      $$0.put(fni.C, $$9);
+      $$0.put(fni.D, fkd.a(fnn.a));
+      $$0.put(fni.E, fkd.a(new fnn(2.0F)));
+      $$0.put(fni.F, $$6);
+      $$0.put(fni.G, fwb.b());
+      $$0.put(fni.H, fwb.c());
+      $$0.put(fni.I, fke.b());
+      $$0.put(fni.J, fjx.c());
+      $$0.put(fni.K, fvz.d());
+      $$0.put(fni.L, fvz.c());
+      $$0.put(fni.M, fnd.a());
+      $$0.put(fni.N, fkf.a(fnn.a));
+      $$0.put(fni.O, $$4);
+      $$0.put(fni.P, $$4);
+      $$0.put(fni.Q, fkf.a(new fnn(0.25F)));
+      $$0.put(fni.R, fkq.b());
+      $$0.put(fni.S, fkg.c());
+      $$0.put(fni.T, fkh.c());
+      $$0.put(fni.U, fki.b());
+      $$0.put(fni.V, fyv.a());
+      $$0.put(fni.W, fyu.a());
+      $$0.put(fni.X, $$8);
+      $$0.put(fni.Y, fkk.b());
+      $$0.put(fni.Z, fkl.c());
+      $$0.put(fni.aa, fkm.b());
+      $$0.put(fni.ab, $$5);
+      $$0.put(fni.ac, fkn.b());
+      $$0.put(fni.ad, $$1);
+      $$0.put(fni.ae, $$4);
+      $$0.put(fni.af, $$2);
+      $$0.put(fni.ag, fml.b());
+      $$0.put(fni.ah, fkp.c());
+      $$0.put(fni.ai, fkq.b());
+      $$0.put(fni.aj, $$16);
+      $$0.put(fni.ak, $$5);
+      $$0.put(fni.al, $$7);
+      $$0.put(fni.am, fnp.a(fku.a(new fnn(0.1F)), 64, 64));
+      $$0.put(fni.an, $$1);
+      $$0.put(fni.ao, $$4);
+      $$0.put(fni.ap, $$2);
+      $$0.put(fni.aq, $$8);
+      $$0.put(fni.ar, fky.b());
+      $$0.put(fni.as, fla.b());
+      $$0.put(fni.at, $$14);
+      $$0.put(fni.au, flc.a(new fnn(0.5F)));
+      $$0.put(fni.av, fld.b());
+      $$0.put(fni.aw, fkz.b());
+      $$0.put(fni.ax, $$5);
+      $$0.put(fni.ay, $$9);
+      $$0.put(fni.az, fjx.c());
+      $$0.put(fni.aA, $$10);
+      $$0.put(fni.aB, fli.c());
+      $$0.put(fni.aC, flj.b());
+      $$0.put(fni.aD, flk.b());
+      $$0.put(fni.aE, fll.a(fnn.a));
+      $$0.put(fni.aM, fll.a(new fnn(0.5F)));
+      $$0.put(fni.aF, $$11);
+      $$0.put(fni.aK, $$4);
+      $$0.put(fni.aL, $$3);
+      $$0.put(fni.aG, $$11);
+      $$0.put(fni.aH, $$4);
+      $$0.put(fni.aI, $$3);
+      $$0.put(fni.aJ, $$12);
+      $$0.put(fni.aN, $$8);
+      $$0.put(fni.aO, fnp.a(flo.a(fnn.a, false), 64, 64));
+      $$0.put(fni.aP, $$13);
+      $$0.put(fni.aQ, $$4);
+      $$0.put(fni.aR, $$2);
+      $$0.put(fni.aS, fnp.a(flo.a(fnn.a, true), 64, 64));
+      $$0.put(fni.aT, $$4);
+      $$0.put(fni.aU, $$2);
+      $$0.put(fni.aV, gds.a());
+      $$0.put(fni.aW, flp.c());
+      $$0.put(fni.aX, flq.b());
+      $$0.put(fni.aY, flr.b());
+      $$0.put(fni.aZ, fls.b());
+      $$0.put(fni.ba, flu.a());
+      $$0.put(fni.bb, flw.b());
+      $$0.put(fni.bc, flx.b());
+      $$0.put(fni.bd, flz.c());
+      $$0.put(fni.be, fly.c());
+      $$0.put(fni.bf, fma.a());
+      $$0.put(fni.bg, fmc.a());
+      $$0.put(fni.bh, fmb.b());
+      $$0.put(fni.bi, fmd.b());
+      $$0.put(fni.bj, $$17);
+      $$0.put(fni.bl, $$4);
+      $$0.put(fni.bm, $$2);
+      $$0.put(fni.bk, $$7);
+      $$0.put(fni.bn, $$6);
+      $$0.put(fni.bo, fmh.c());
+      $$0.put(fni.bp, fmh.b());
+      $$0.put(fni.bq, fmi.b());
+      $$0.put(fni.br, fmj.b());
+      $$0.put(fni.bs, $$5);
+      $$0.put(fni.bt, $$19);
+      $$0.put(fni.bu, fml.b());
+      $$0.put(fni.bv, $$17);
+      $$0.put(fni.bw, $$4);
+      $$0.put(fni.bx, $$2);
+      $$0.put(fni.by, fnp.a(fkw.a(new fnn(0.25F), 0.0F), 64, 32));
+      $$0.put(fni.bz, $$15);
+      $$0.put(fni.bA, $$15);
+      $$0.put(fni.bB, fmn.c());
+      $$0.put(fni.bC, $$5);
+      $$0.put(fni.bD, $$14);
+      $$0.put(fni.bE, fmo.a());
+      $$0.put(fni.bF, fmq.a(fnn.a));
+      $$0.put(fni.bG, fmq.a(a));
+      $$0.put(fni.bH, fmp.a(fnn.a));
+      $$0.put(fni.bI, fmp.a(a));
+      $$0.put(fni.bJ, fmr.c());
+      $$0.put(fni.bK, fms.b());
+      $$0.put(fni.bL, $$18);
+      $$0.put(fni.bM, $$8);
+      $$0.put(fni.bN, fmv.b());
+      $$0.put(fni.bO, $$18);
+      $$0.put(fni.bP, fmx.b());
+      $$0.put(fni.bQ, fmy.c());
+      $$0.put(fni.bR, fmz.a(fnn.a));
+      $$0.put(fni.bS, fmz.a(c));
+      $$0.put(fni.bX, gcc.a());
+      $$0.put(fni.bT, $$17);
+      $$0.put(fni.bU, $$4);
+      $$0.put(fni.bV, $$2);
+      $$0.put(fni.bW, $$6);
+      $$0.put(fni.bY, fnp.a(fna.a(fnn.a), 64, 32));
+      $$0.put(fni.bZ, fnp.a(fna.a(new fnn(0.2F)), 64, 32));
+      $$0.put(fni.ca, $$16);
+      $$0.put(fni.cb, $$1);
+      $$0.put(fni.ce, $$4);
+      $$0.put(fni.cf, $$2);
+      $$0.put(fni.cc, $$13);
+      $$0.put(fni.cd, $$7);
+      $$0.put(fni.cg, fnc.c());
+      $$0.put(fni.ch, fnc.a(c));
+      $$0.put(fni.ci, fnc.a(b));
+      $$0.put(fni.cj, $$11);
+      $$0.put(fni.ck, $$4);
+      $$0.put(fni.cl, $$3);
+      fnp $$20 = fjq.a();
+      fnp $$21 = fjv.e();
+      fnp $$22 = flv.b();
+      fnp $$23 = fjw.a();
 
-   public fng a(String $$0, fnc $$1, fmz $$2) {
-      fng $$3 = new fng($$1.b(), $$2);
-      fng $$4 = this.c.put($$0, $$3);
-      if ($$4 != null) {
-         $$3.c.putAll($$4.c);
+      for (chk.b $$24 : chk.b.values()) {
+         if ($$24 == chk.b.i) {
+            $$0.put(fni.c($$24), $$22);
+            $$0.put(fni.d($$24), $$23);
+         } else {
+            $$0.put(fni.c($$24), $$20);
+            $$0.put(fni.d($$24), $$21);
+         }
       }
 
-      return $$3;
-   }
-
-   public fmx a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, fmx> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fng)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<fmx.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
-      fmx $$4 = new fmx($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
-   }
-
-   public fng a(String $$0) {
-      return this.c.get($$0);
+      fnp $$25 = fwh.f();
+      dlc.a().forEach($$2x -> $$0.put(fni.a($$2x), $$25));
+      fnp $$26 = fwd.e();
+      dlc.a().forEach($$2x -> $$0.put(fni.b($$2x), $$26));
+      ImmutableMap<fnh, fnp> $$27 = $$0.build();
+      List<fnh> $$28 = fni.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$28.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$28);
+      } else {
+         return $$27;
+      }
    }
 }

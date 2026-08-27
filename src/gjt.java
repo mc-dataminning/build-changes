@@ -1,74 +1,58 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class gjt {
-   public static final gjt a = new gjt(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<gjp<gjt.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+public class gjt implements gju<gil> {
+   private final List<gju<gil>> a = Lists.newArrayList();
+   @Nullable
+   private final vg b;
 
-   protected gjt(Ticker $$0) {
-      this.c = $$0;
+   public gjt(ahh $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : vg.c($$1);
    }
 
-   public synchronized void a(gjp<gjt.a> $$0) {
-      this.a($$0, (Function<gjp<gjt.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   @Override
+   public int e() {
+      int $$0 = 0;
+
+      for (gju<gil> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
    }
 
-   public synchronized void a(gjp<gjt.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<gjp<gjt.a>, Stopwatch>)($$1x -> $$1));
-   }
+   public gil a(auw $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
 
-   private synchronized void a(gjp<gjt.a> $$0, Function<gjp<gjt.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(gjp<gjt.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
+         for (gju<gil> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
          }
+
+         return gjs.a;
+      } else {
+         return gjs.a;
       }
    }
 
-   public void a(gjm $$0) {
-      $$0.send(gjn.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((gjp<gjt.a>)$$1, new gjt.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gjn.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(gjp.B, new gjt.a((int)$$1)));
-            this.d.clear();
-         }
-      });
+   public void a(gju<gil> $$0) {
+      this.a.add($$0);
    }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
+   @Nullable
+   public vg a() {
+      return this.b;
    }
 
-   public static record a(int b) {
-      public static final Codec<gjt.a> a = Codec.INT.xmap(gjt.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
+   @Override
+   public void a(gjp $$0) {
+      for (gju<gil> $$1 : this.a) {
+         $$1.a($$0);
       }
    }
 }

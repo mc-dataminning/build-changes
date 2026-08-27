@@ -1,125 +1,105 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import org.slf4j.Logger;
 
 public class bnv {
-   public static final int a = 48;
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bmc<? extends bmo>, bnt> b = ImmutableMap.builder()
+      .put(bmc.b, bzg.u().a())
+      .put(bmc.d, bzj.u().a())
+      .put(bmc.e, cbr.u().a())
+      .put(bmc.g, bzm.gm().a())
+      .put(bmc.h, bxx.u().a())
+      .put(bmc.i, byd.gr().a())
+      .put(bmc.j, ccg.u().a())
+      .put(bmc.o, byf.gr().a())
+      .put(bmc.n, bzr.u().a())
+      .put(bmc.p, cch.u().a())
+      .put(bmc.s, byh.u().a())
+      .put(bmc.t, bxz.u().a())
+      .put(bmc.v, byj.u().a())
+      .put(bmc.w, cci.u().a())
+      .put(bmc.x, byk.gf().a())
+      .put(bmc.y, cad.u().a())
+      .put(bmc.A, cck.u().a())
+      .put(bmc.C, ccl.u().a())
+      .put(bmc.G, ccm.u().a())
+      .put(bmc.H, ccn.u().a())
+      .put(bmc.E, cav.w().a())
+      .put(bmc.I, ccp.w().a())
+      .put(bmc.m, cds.u().a())
+      .put(bmc.P, bym.u().a())
+      .put(bmc.Q, bzu.gf().a())
+      .put(bmc.S, ccq.A().a())
+      .put(bmc.T, ccr.u().a())
+      .put(bmc.V, bmg.gf().a())
+      .put(bmc.W, caa.w().a())
+      .put(bmc.X, ccs.gf().a())
+      .put(bmc.Y, cea.u().a())
+      .put(bmc.aa, cae.gF().a())
+      .put(bmc.ab, cdp.gj().a())
+      .put(bmc.ac, ccu.w().a())
+      .put(bmc.ae, byo.u().a())
+      .put(bmc.al, cah.gq().a())
+      .put(bmc.an, ccv.u().a())
+      .put(bmc.aq, byj.u().a())
+      .put(bmc.ar, cad.u().a())
+      .put(bmc.as, byq.u().a())
+      .put(bmc.au, byr.gq().a())
+      .put(bmc.av, bys.gl().a())
+      .put(bmc.aw, ccw.gl().a())
+      .put(bmc.ax, byt.u().a())
+      .put(bmc.ay, ceg.gm().a())
+      .put(bmc.az, cej.A().a())
+      .put(bmc.aA, ccz.w().a())
+      .put(bmc.bw, cfq.fH().a())
+      .put(bmc.aB, byu.u().a())
+      .put(bmc.aD, bxz.u().a())
+      .put(bmc.aE, byw.w().a())
+      .put(bmc.aF, cdb.u().a())
+      .put(bmc.aG, bxz.u().a())
+      .put(bmc.aH, byy.u().a())
+      .put(bmc.aI, cdc.u().a())
+      .put(bmc.aK, cdd.u().a())
+      .put(bmc.aL, ccf.u().a())
+      .put(bmc.aM, cak.u().a())
+      .put(bmc.aN, ccw.gl().a())
+      .put(bmc.aP, car.u().a())
+      .put(bmc.aQ, bza.u().a())
+      .put(bmc.aU, cdh.w().a())
+      .put(bmc.aV, bzb.gf().a())
+      .put(bmc.aW, ccf.u().a())
+      .put(bmc.aX, cdj.w().a())
+      .put(bmc.aY, bzx.gh().a())
+      .put(bmc.bc, cah.gq().a())
+      .put(bmc.be, bxz.u().a())
+      .put(bmc.bf, bzd.A().a())
+      .put(bmc.bg, cdk.u().a())
+      .put(bmc.bh, cfd.go().a())
+      .put(bmc.bi, cdl.w().a())
+      .put(bmc.bk, ceu.u().a())
+      .put(bmc.bj, bmq.C().a())
+      .put(bmc.bm, cdm.w().a())
+      .put(bmc.bn, cbp.w().a())
+      .put(bmc.bo, ccf.u().a())
+      .put(bmc.bq, bzf.gl().a())
+      .put(bmc.br, cdo.u().a())
+      .put(bmc.bs, cdp.gj().a())
+      .put(bmc.bt, cao.u().a())
+      .put(bmc.bu, cdp.gj().a())
+      .put(bmc.bv, cdr.gp().a())
+      .build();
 
-   public static bod<bmu> a(Predicate<ih<bxp>> $$0, bvn<ig> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
+   public static bnt a(bmc<? extends bmo> $$0) {
+      return b.get($$0);
    }
 
-   public static bod<bmu> a(Predicate<ih<bxp>> $$0, bvn<ig> $$1, bvn<ig> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<bnv.a> $$8 = new Long2ObjectOpenHashMap();
-      bpn<bmu> $$9 = brp.a(
-         (Function<brp.b<bmu>, ? extends App<brp.c<bmu>, brs<bmu>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.o_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.X() + (long)$$6xx.z.a(20));
-                     return false;
-                  } else if ($$6xx.X() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.F_().a(20));
-                     bxm $$9x = $$6xx.y();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bnv.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<hx> $$10 = $$2xxxx -> {
-                        bnv.a $$3xxxx = (bnv.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<ih<bxp>, hx>> $$11 = $$9x.c($$0, $$10, $$7x.dm(), 48, bxm.b.a).limit(5L).collect(Collectors.toSet());
-                     efg $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        hx $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(ig.a($$6xx.ae(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           adi.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<ih<bxp>, hx> $$14 : $$11) {
-                           $$8.computeIfAbsent(((hx)$$14.getSecond()).a(), $$2xxxx -> new bnv.a($$6xx.z, $$8x));
-                        }
-                     }
-
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : brp.a((Function<brp.b<bmu>, ? extends App<brp.c<bmu>, brs<bmu>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
+   public static boolean b(bmc<?> $$0) {
+      return b.containsKey($$0);
    }
 
-   @Nullable
-   public static efg a(bmn $$0, Set<Pair<ih<bxp>, hx>> $$1) {
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         Set<hx> $$2 = new HashSet<>();
-         int $$3 = 1;
-
-         for (Pair<ih<bxp>, hx> $$4 : $$1) {
-            $$3 = Math.max($$3, ((bxp)((ih)$$4.getFirst()).a()).c());
-            $$2.add((hx)$$4.getSecond());
-         }
-
-         return $$0.N().a($$2, $$3);
-      }
-   }
-
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final auv d;
-      private long e;
-      private long f;
-      private int g;
-
-      a(auv $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
-      }
-
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
-      }
-
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
-      }
-
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
-      }
-
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
-      }
+   public static void a() {
+      kd.g.s().filter($$0 -> $$0.f() != bmr.h).filter($$0 -> !b((bmc<?>)$$0)).map(kd.g::b).forEach($$0 -> ac.a("Entity " + $$0 + " has no attributes"));
    }
 }

@@ -1,32 +1,32 @@
-public class aax implements xf<za> {
-   private final int a;
-   private final ahg b;
+public class aax implements xg<zb> {
+   private final hx a;
+   private final boolean b;
 
-   public aax(int $$0, cqe<?> $$1) {
+   public aax(hx $$0, boolean $$1) {
       this.a = $$0;
-      this.b = $$1.a();
+      this.b = $$1;
    }
 
-   public aax(ui $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.t();
+   public aax(uj $$0) {
+      this.a = $$0.e();
+      this.b = $$0.readBoolean();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.k(this.a);
+   public void a(uj $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public ahg a() {
-      return this.b;
+   public hx a() {
+      return this.a;
    }
 
-   public int d() {
-      return this.a;
+   public boolean d() {
+      return this.b;
    }
 }

@@ -1,5 +1,3 @@
-import java.util.concurrent.CompletableFuture;
-
-public interface dmd {
-   CompletableFuture<Void> a(csw var1, th var2);
+interface dmd<T> {
+   int onResize(int var1, T var2);
 }

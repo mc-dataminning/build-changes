@@ -1,24 +1,29 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bqw extends boc<bmn> {
-   private final float c;
+public class bqw {
+   private static final int a = 180;
+   private static final int b = 8;
+   private static final int c = 6;
 
-   public bqw(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   protected boolean a(and $$0, bmn $$1) {
-      return $$1.aZ() && $$1.b(asm.a) > $$1.df() || $$1.bn();
-   }
-
-   protected boolean a(and $$0, bmn $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(and $$0, bmn $$1, long $$2) {
-      if ($$1.eg().i() < this.c) {
-         $$1.M().a();
-      }
+   public static bpq<bmx> a(bvq<ig> $$0, float $$1, int $$2) {
+      MutableLong $$3 = new MutableLong(0L);
+      return brs.a(
+         (Function<brs.b<bmx>, ? extends App<brs.c<bmx>, brv<bmx>>>)($$4 -> $$4.group($$4.a(bvq.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                  ig $$9 = $$4.b($$5);
+                  if ($$6.ae() != $$9.a() || !$$9.b().a($$7.dj(), (double)$$2)) {
+                     return false;
+                  } else if ($$8 <= $$3.getValue()) {
+                     return true;
+                  } else {
+                     Optional<emc> $$10 = Optional.ofNullable(bxk.a($$7, 8, 6));
+                     $$4x.a($$10.map($$1xxxx -> new bvt($$1xxxx, $$1, 1)));
+                     $$3.setValue($$8 + 180L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

@@ -1,130 +1,87 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class buh<T extends ccp & cct> extends bth {
-   private final T a;
-   private final double b;
-   private int c;
-   private final float d;
-   private int e = -1;
-   private int f;
-   private boolean g;
-   private boolean h;
-   private int i = -1;
+public class buh extends btk {
+   public static final int a = 120;
+   protected final bmx b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public buh(T $$0, double $$1, int $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3 * $$3;
-      this.a(EnumSet.of(bth.a.a, bth.a.b));
+   public buh(bmx $$0, double $$1) {
+      this($$0, $$1, 120);
    }
 
-   public void c(int $$0) {
-      this.c = $$0;
+   public buh(bmx $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public buh(bmx $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(btk.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.q() == null ? false : this.h();
+      if (this.b.cO()) {
+         return false;
+      } else {
+         if (!this.h) {
+            if (this.i && this.b.el() >= 100) {
+               return false;
+            }
+
+            if (this.b.eg().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         emc $$0 = this.h();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            this.h = false;
+            return true;
+         }
+      }
    }
 
-   protected boolean h() {
-      return this.a.b(cnb.or);
+   @Nullable
+   protected emc h() {
+      return bxh.a(this.b, 10, 7);
    }
 
    @Override
    public boolean b() {
-      return (this.a() || !this.a.N().l()) && this.h();
+      return !this.b.N().l() && !this.b.cO();
    }
 
    @Override
    public void c() {
-      super.c();
-      this.a.v(true);
+      this.b.N().a(this.c, this.d, this.e, this.f);
    }
 
    @Override
    public void d() {
+      this.b.N().n();
       super.d();
-      this.a.v(false);
-      this.f = 0;
-      this.e = -1;
-      this.a.ft();
    }
 
-   @Override
-   public boolean T_() {
-      return true;
+   public void i() {
+      this.h = true;
    }
 
-   @Override
-   public void e() {
-      bml $$0 = this.a.q();
-      if ($$0 != null) {
-         double $$1 = this.a.i($$0.dr(), $$0.dt(), $$0.dx());
-         boolean $$2 = this.a.O().a($$0);
-         boolean $$3 = this.f > 0;
-         if ($$2 != $$3) {
-            this.f = 0;
-         }
-
-         if ($$2) {
-            this.f++;
-         } else {
-            this.f--;
-         }
-
-         if (!($$1 > (double)this.d) && this.f >= 20) {
-            this.a.N().n();
-            this.i++;
-         } else {
-            this.a.N().a($$0, this.b);
-            this.i = -1;
-         }
-
-         if (this.i >= 20) {
-            if ((double)this.a.eg().i() < 0.3) {
-               this.g = !this.g;
-            }
-
-            if ((double)this.a.eg().i() < 0.3) {
-               this.h = !this.h;
-            }
-
-            this.i = 0;
-         }
-
-         if (this.i > -1) {
-            if ($$1 > (double)(this.d * 0.75F)) {
-               this.h = false;
-            } else if ($$1 < (double)(this.d * 0.25F)) {
-               this.h = true;
-            }
-
-            this.a.K().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
-            if (this.a.da() instanceof bmn $$4) {
-               $$4.a($$0, 30.0F, 30.0F);
-            }
-
-            this.a.a($$0, 30.0F, 30.0F);
-         } else {
-            this.a.I().a($$0, 30.0F, 30.0F);
-         }
-
-         if (this.a.fn()) {
-            if (!$$2 && this.f < -60) {
-               this.a.ft();
-            } else if ($$2) {
-               int $$5 = this.a.fr();
-               if ($$5 >= 20) {
-                  this.a.ft();
-                  this.a.a($$0, ckw.a($$5));
-                  this.e = this.c;
-               }
-            }
-         } else if (--this.e <= 0 && this.f >= -60) {
-            this.a.c(cgb.a(this.a, cnb.or));
-         }
-      }
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

@@ -1,31 +1,47 @@
-public class fbz extends fdb {
-   private exz a;
-   private final Runnable b;
-   private final Runnable c;
+public class fbz extends fdm {
+   private static final int a = 90;
+   private final vg b;
+   private eyk c = eyk.a;
+   private final Runnable k;
+   private final vg l;
+   private final boolean m;
 
-   public fbz(Runnable $$0, Runnable $$1) {
-      super(vf.c("datapackFailure.title"));
-      this.a = exz.a;
-      this.b = $$0;
-      this.c = $$1;
+   public fbz(Runnable $$0, vg $$1, vg $$2) {
+      this($$0, $$1, $$2, vf.k, true);
+   }
+
+   public fbz(Runnable $$0, vg $$1, vg $$2, vg $$3, boolean $$4) {
+      super($$1);
+      this.k = $$0;
+      this.b = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.a = exz.a(this.i, this.o(), this.g - 50);
-      this.d(exg.a(vf.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.g / 2 - 155, this.h / 6 + 96, 150, 20).a());
-      this.d(exg.a(ve.k, $$0 -> this.b.run()).a(this.g / 2 - 155 + 160, this.h / 6 + 96, 150, 20).a());
+   public vg i() {
+      return vf.a(super.i(), this.b);
    }
 
    @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+   protected void aP_() {
+      super.aP_();
+      this.c = eyk.a(this.i, this.b, this.g - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = aup.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
+      int $$2 = 150;
+      this.d(exr.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
+   }
+
+   @Override
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, this.g / 2, 70);
+      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
+      this.c.a($$0, this.g / 2, 90);
    }
 
    @Override
-   public boolean aL_() {
-      return false;
+   public boolean aN_() {
+      return this.m;
    }
 }

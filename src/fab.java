@@ -1,73 +1,84 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public enum fab implements eod {
-   a(() -> a(5, 8, ($$0, $$1) -> -1)),
-   b(() -> {
-      int $$0 = 5;
-      int $$1 = 8;
-      return a(5, 8, ($$0x, $$1x) -> {
-         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
-         return $$2 ? -1 : 0;
-      });
-   });
+public class fab implements ezz {
+   private static final ahh g = new ahh("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
+   private final fab.a h;
+   private final vg i;
+   @Nullable
+   private final vg j;
+   private ezz.a k = ezz.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
 
-   final epc c;
+   public fab(fab.a $$0, vg $$1, @Nullable vg $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
+   }
 
-   private static epc a(int $$0, int $$1, fab.a $$2) {
-      epc $$3 = new epc(epc.a.a, $$0, $$1, false);
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
-         }
+   @Override
+   public ezz.a a(exe $$0, faa $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
+      } else {
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
       }
 
-      $$3.i();
-      return $$3;
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = aup.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
+         } else {
+            $$4 = -11206656;
+         }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
+      }
+
+      return this.k;
    }
 
-   private fab(Supplier<epc> $$0) {
-      this.c = $$0.get();
+   public void c() {
+      this.k = ezz.a.b;
    }
 
-   @Override
-   public float getAdvance() {
-      return (float)(this.c.a() + 1);
+   public void a(float $$0) {
+      this.n = $$0;
    }
 
-   @Override
-   public ezz bake(Function<eof, ezz> $$0) {
-      return $$0.apply(new eof() {
-         @Override
-         public int a() {
-            return fab.this.c.a();
-         }
+   public static enum a {
+      a(new ahh("toast/movement_keys")),
+      b(new ahh("toast/mouse")),
+      c(new ahh("toast/tree")),
+      d(new ahh("toast/recipe_book")),
+      e(new ahh("toast/wooden_planks")),
+      f(new ahh("toast/social_interactions")),
+      g(new ahh("toast/right_click"));
 
-         @Override
-         public int b() {
-            return fab.this.c.b();
-         }
+      private final ahh h;
 
-         @Override
-         public float d() {
-            return 1.0F;
-         }
+      private a(ahh $$0) {
+         this.h = $$0;
+      }
 
-         @Override
-         public void a(int $$0, int $$1) {
-            fab.this.c.a(0, $$0, $$1, false);
-         }
-
-         @Override
-         public boolean c() {
-            return true;
-         }
-      });
-   }
-
-   @FunctionalInterface
-   interface a {
-      int getColor(int var1, int var2);
+      public void a(exe $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
+      }
    }
 }

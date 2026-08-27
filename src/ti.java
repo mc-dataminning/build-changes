@@ -1,148 +1,48 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.util.Objects;
+public interface ti {
+   ti.b a();
 
-public class ti implements tk {
-   private static final int b = 36;
-   public static final tm<ti> a = new tm.b<ti>() {
-      public ti a(DataInput $$0, sw $$1) throws IOException {
-         return ti.a(d($$0, $$1));
-      }
+   ti.b a(String var1);
 
-      @Override
-      public th.b a(DataInput $$0, th $$1, sw $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
+   ti.b a(byte var1);
 
-      private static String d(DataInput $$0, sw $$1) throws IOException {
-         $$1.b(36L);
-         String $$2 = $$0.readUTF();
-         $$1.a(2L, (long)$$2.length());
-         return $$2;
-      }
+   ti.b a(short var1);
 
-      @Override
-      public void b(DataInput $$0, sw $$1) throws IOException {
-         ti.a($$0);
-      }
+   ti.b a(int var1);
 
-      @Override
-      public String a() {
-         return "STRING";
-      }
+   ti.b a(long var1);
 
-      @Override
-      public String b() {
-         return "TAG_String";
-      }
+   ti.b a(float var1);
 
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private static final ti c = new ti("");
-   private static final char w = '"';
-   private static final char x = '\'';
-   private static final char y = '\\';
-   private static final char z = '\u0000';
-   private final String A;
+   ti.b a(double var1);
 
-   public static void a(DataInput $$0) throws IOException {
-      $$0.skipBytes($$0.readUnsignedShort());
+   ti.b a(byte[] var1);
+
+   ti.b a(int[] var1);
+
+   ti.b a(long[] var1);
+
+   ti.b a(tn<?> var1, int var2);
+
+   ti.a a(tn<?> var1);
+
+   ti.a a(tn<?> var1, String var2);
+
+   ti.a b(tn<?> var1, int var2);
+
+   ti.b b();
+
+   ti.b b(tn<?> var1);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 
-   private ti(String $$0) {
-      Objects.requireNonNull($$0, "Null string not allowed");
-      this.A = $$0;
-   }
-
-   public static ti a(String $$0) {
-      return $$0.isEmpty() ? c : new ti($$0);
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeUTF(this.A);
-   }
-
-   @Override
-   public int a() {
-      return 36 + 2 * this.A.length();
-   }
-
-   @Override
-   public byte b() {
-      return 8;
-   }
-
-   @Override
-   public tm<ti> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return tk.super.t_();
-   }
-
-   public ti e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ti && Objects.equals(this.A, ((ti)$$0).A);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.A.hashCode();
-   }
-
-   @Override
-   public String t_() {
-      return this.A;
-   }
-
-   @Override
-   public void a(to $$0) {
-      $$0.a(this);
-   }
-
-   public static String b(String $$0) {
-      StringBuilder $$1 = new StringBuilder(" ");
-      char $$2 = 0;
-
-      for (int $$3 = 0; $$3 < $$0.length(); $$3++) {
-         char $$4 = $$0.charAt($$3);
-         if ($$4 == '\\') {
-            $$1.append('\\');
-         } else if ($$4 == '"' || $$4 == '\'') {
-            if ($$2 == 0) {
-               $$2 = (char)($$4 == '"' ? 39 : 34);
-            }
-
-            if ($$2 == $$4) {
-               $$1.append('\\');
-            }
-         }
-
-         $$1.append($$4);
-      }
-
-      if ($$2 == 0) {
-         $$2 = '"';
-      }
-
-      $$1.setCharAt(0, $$2);
-      $$1.append($$2);
-      return $$1.toString();
-   }
-
-   @Override
-   public th.b a(th $$0) {
-      return $$0.a(this.A);
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

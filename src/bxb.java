@@ -1,25 +1,35 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class bxb {
-   @Nullable
-   public static elt a(bmu $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = bxe.a($$0, $$1);
-      return bxh.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class bxb extends bwp<ceu> {
+   @Override
+   public Set<bvq<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bvq.B)));
    }
 
-   @Nullable
-   public static hx a(bmu $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      hx $$8 = bxh.a($$0.eg(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         hx $$9 = bxh.a($$0, $$1, $$0.eg(), $$8);
-         if (!bxe.a($$9, $$0) && !bxe.a($$7, $$0, $$9)) {
-            $$9 = bxh.a($$9, $$0.dM().al(), $$1x -> bxe.c($$0, $$1x));
-            return bxe.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   protected void a(ane $$0, ceu $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.ai() == bmc.bw)
+         .or(() -> a($$1, $$0xx -> $$0xx.ai() != bmc.bw))
+         .ifPresentOrElse($$1x -> $$1.dN().a(bvq.B, $$1x), () -> $$1.dN().b(bvq.B));
+   }
+
+   private static Optional<bmo> a(ceu $$0, Predicate<bmo> $$1) {
+      return $$0.dN().c(bvq.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
+   }
+
+   @Override
+   protected int b() {
+      return 24;
+   }
+
+   @Override
+   protected int c() {
+      return 24;
    }
 }

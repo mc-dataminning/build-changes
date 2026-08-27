@@ -1,50 +1,90 @@
-public class fgc extends fdb {
-   private static final int a = 600;
-   private final ug b;
-   private exg c;
-   private int k;
-   private final fau l = fau.d();
+public class fgc implements fge {
+   private static final ahh a = new ahh("container/bundle/background");
+   private static final int b = 4;
+   private static final int c = 1;
+   private static final int d = 18;
+   private static final int e = 20;
+   private final iq<cng> f;
+   private final int g;
 
-   public fgc(vf $$0, ug $$1) {
-      super($$0);
-      this.b = $$1;
+   public fgc(ckl $$0) {
+      this.f = $$0.a();
+      this.g = $$0.b();
    }
 
    @Override
-   public boolean aL_() {
-      return false;
+   public int a() {
+      return this.c() + 4;
    }
 
    @Override
-   protected void aN_() {
-      this.l.c().b().a(10);
-      this.l.a(new eyn(this.e, this.i));
-      this.c = this.l.a(exg.a(ve.p, $$0 -> this.b.a(fbv.a)).a());
-      this.c.j = false;
-      this.l.a();
-      this.l.a($$1 -> {
-         exe var10000 = this.d($$1);
-      });
-      this.c();
+   public int a(exc $$0) {
+      return this.b();
+   }
+
+   private int b() {
+      return this.d() * 18 + 2;
+   }
+
+   private int c() {
+      return this.e() * 20 + 2;
    }
 
    @Override
-   protected void c() {
-      fao.a(this.l, this.F());
-   }
+   public void a(exc $$0, int $$1, int $$2, exe $$3) {
+      int $$4 = this.d();
+      int $$5 = this.e();
+      $$3.a(a, $$1, $$2, this.b(), this.c());
+      boolean $$6 = this.g >= 64;
+      int $$7 = 0;
 
-   @Override
-   public void d() {
-      super.d();
-      this.k++;
-      if (this.k == 600) {
-         this.c.j = true;
+      for (int $$8 = 0; $$8 < $$5; $$8++) {
+         for (int $$9 = 0; $$9 < $$4; $$9++) {
+            int $$10 = $$1 + $$9 * 18 + 1;
+            int $$11 = $$2 + $$8 * 20 + 1;
+            this.a($$10, $$11, $$7++, $$6, $$3, $$0);
+         }
       }
+   }
 
-      if (this.b.k()) {
-         this.b.d();
+   private void a(int $$0, int $$1, int $$2, boolean $$3, exe $$4, exc $$5) {
+      if ($$2 >= this.f.size()) {
+         this.a($$4, $$0, $$1, $$3 ? fgc.a.a : fgc.a.b);
       } else {
-         this.b.p();
+         cng $$6 = this.f.get($$2);
+         this.a($$4, $$0, $$1, fgc.a.b);
+         $$4.a($$6, $$0 + 1, $$1 + 1, $$2);
+         $$4.a($$5, $$6, $$0 + 1, $$1 + 1);
+         if ($$2 == 0) {
+            fel.a($$4, $$0 + 1, $$1 + 1, 0);
+         }
+      }
+   }
+
+   private void a(exe $$0, int $$1, int $$2, fgc.a $$3) {
+      $$0.a($$3.c, $$1, $$2, 0, $$3.d, $$3.e);
+   }
+
+   private int d() {
+      return Math.max(2, (int)Math.ceil(Math.sqrt((double)this.f.size() + 1.0)));
+   }
+
+   private int e() {
+      return (int)Math.ceil(((double)this.f.size() + 1.0) / (double)this.d());
+   }
+
+   static enum a {
+      a(new ahh("container/bundle/blocked_slot"), 18, 20),
+      b(new ahh("container/bundle/slot"), 18, 20);
+
+      public final ahh c;
+      public final int d;
+      public final int e;
+
+      private a(ahh $$0, int $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
    }
 }

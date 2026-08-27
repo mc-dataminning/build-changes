@@ -1,43 +1,49 @@
-import org.joml.Vector3f;
+public class fpy extends fsh {
+   private final fsc a;
 
-public class fpy extends fqa<jq> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected fpy(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, jq $$7, frq $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.c(), $$9);
-      this.b = this.a($$7.d(), $$9);
-   }
-
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+   fpy(foe $$0, double $$1, double $$2, double $$3, double $$4, fsc $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
    }
 
    @Override
-   public void a(eqf $$0, eut $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   public static class a implements fqy<jq> {
-      private final frq a;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
 
-      public a(frq $$0) {
+   @Override
+   public frl b() {
+      return frl.d;
+   }
+
+   public static class a implements frk<ka> {
+      private final fsc a;
+
+      public a(fsc $$0) {
          this.a = $$0;
       }
 
-      public fqv a(jq $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpy($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpy($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

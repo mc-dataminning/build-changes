@@ -1,89 +1,76 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class cwb extends cvy {
-   public static final MapCodec<cwb> b = b(cwb::new);
-   public static final dkb c = dal.aE;
-   private static final Map<ic, emm> e = Maps.newEnumMap(
-      ImmutableMap.of(
-         ic.c,
-         cwq.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
-         ic.d,
-         cwq.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
-         ic.e,
-         cwq.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
-         ic.f,
-         cwq.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
-      )
-   );
+public class cwb extends cwy implements cxb {
+   public static final MapCodec<cwb> a = b(cwb::new);
+   protected static final float b = 4.0F;
+   protected static final emv c = cwy.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
 
    @Override
-   public MapCodec<? extends cwb> a() {
-      return b;
+   public MapCodec<cwb> a() {
+      return a;
    }
 
-   protected cwb(djg.d $$0) {
+   public cwb(djo.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, ic.c).a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return e.get($$0.c(c));
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      emc $$4 = $$0.n($$1, $$2);
+      return c.a($$4.c, $$4.d, $$4.e);
    }
 
    @Override
-   public djh a(djh $$0, ddc $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   public djh a(djh $$0, dbm $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ees.c, ees.c.a($$3));
+   public void b(djp $$0, ane $$1, hx $$2, auw $$3) {
+      if ($$3.a(3) == 0 && $$1.u($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
+         this.a($$1, $$2);
       }
-
-      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? cws.a.o() : $$0;
    }
 
    @Override
-   public boolean a(djh $$0, cts $$1, hx $$2) {
-      ic $$3 = $$0.c(c);
-      hx $$4 = $$2.a($$3.g());
-      djh $$5 = $$1.a_($$4);
-      return $$5.d($$1, $$4, $$3);
+   public boolean a(djp $$0, cua $$1, hx $$2) {
+      return $$1.a_($$2.d()).a(asi.at);
    }
 
-   @Nullable
    @Override
-   public djh a(cph $$0) {
-      djh $$1 = super.a($$0);
-      cts $$2 = $$0.q();
-      hx $$3 = $$0.a();
-      ic[] $$4 = $$0.f();
-
-      for (ic $$5 : $$4) {
-         if ($$5.o().d()) {
-            $$1 = $$1.a(c, $$5.g());
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
+   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return cxa.a.o();
+      } else {
+         if ($$1 == ic.b && $$2.a(cxa.mZ)) {
+            $$3.a($$4, cxa.mZ.o(), 2);
          }
-      }
 
-      return null;
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public cng a(cua $$0, hx $$1, djp $$2) {
+      return new cng(cnj.dQ);
+   }
+
+   @Override
+   public boolean b(cua $$0, hx $$1, djp $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
+      this.a($$0, $$2);
+   }
+
+   @Override
+   public float a(djp $$0, cfq $$1, ctd $$2, hx $$3) {
+      return $$1.eT().d() instanceof cos ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(ctx $$0, hx $$1) {
+      $$0.a($$1.c(), cxa.mZ.o().a(cwc.i, dkb.b), 3);
    }
 }

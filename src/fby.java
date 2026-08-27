@@ -1,42 +1,49 @@
-public class fby extends fdb {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final vf c = vf.c("credits_and_attribution.screen.title");
-   private static final vf k = vf.c("credits_and_attribution.button.credits");
-   private static final vf l = vf.c("credits_and_attribution.button.attribution");
-   private static final vf m = vf.c("credits_and_attribution.button.licenses");
-   private final fdb n;
-   private final faq o = new faq(this);
+public class fby extends fdo {
+   private static evu<?>[] a(evv $$0) {
+      return new evu[]{
+         $$0.ap(),
+         $$0.T(),
+         $$0.r(),
+         $$0.F(),
+         $$0.p(),
+         $$0.V(),
+         $$0.n(),
+         $$0.o(),
+         $$0.y(),
+         $$0.z(),
+         $$0.Z(),
+         $$0.aa(),
+         $$0.ag(),
+         $$0.ah(),
+         $$0.ai(),
+         $$0.al(),
+         $$0.aj(),
+         $$0.ak(),
+         $$0.b(),
+         $$0.a(),
+         $$0.q(),
+         $$0.c(),
+         $$0.s()
+      };
+   }
 
-   public fby(fdb $$0) {
-      super(c);
-      this.n = $$0;
+   public fby(fdm $$0, evv $$1) {
+      super($$0, $$1, vg.c("options.accessibility.title"), a($$1));
    }
 
    @Override
-   protected void aN_() {
-      this.o.a(new eyn(this.o(), this.i));
-      fau $$0 = this.o.c(fau.d()).a(8);
-      $$0.c().b();
-      $$0.a(exg.a(k, $$0x -> this.n()).a(210).a());
-      $$0.a(exg.a(l, fbt.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
-      $$0.a(exg.a(m, fbt.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
-      this.o.b(exg.a(ve.d, $$0x -> this.aE_()).a());
-      this.o.a();
-      this.o.a(this::d);
+   protected void aP_() {
+      super.aP_();
+      exp $$0 = this.k.b(this.b.r());
+      if ($$0 != null && !this.f.aa().b().contains("high_contrast")) {
+         $$0.j = false;
+         $$0.a(ezc.a(vg.c("options.accessibility.high_contrast.error.tooltip")));
+      }
    }
 
    @Override
-   protected void c() {
-      this.o.a();
-   }
-
-   private void n() {
-      this.f.a(new fdj(false, () -> this.f.a(this)));
-   }
-
-   @Override
-   public void aE_() {
-      this.f.a(this.n);
+   protected void j() {
+      this.d(exr.a(vg.c("options.accessibility.link"), fce.b(this, "https://aka.ms/MinecraftJavaAccessibility")).a(this.g / 2 - 155, this.h - 27, 150, 20).a());
+      this.d(exr.a(vf.d, $$0 -> this.f.a(this.a)).a(this.g / 2 + 5, this.h - 27, 150, 20).a());
    }
 }

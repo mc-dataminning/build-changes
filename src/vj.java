@@ -1,159 +1,131 @@
-import com.mojang.serialization.Codec;
-import java.util.BitSet;
-import java.util.function.Supplier;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
 public class vj {
-   public static final Codec<vj> a = avk.a(vj.a::values).dispatch(vj::c, vj.a::a);
-   public static final vj b = new vj(new BitSet(0), vj.a.b);
-   public static final vj c = new vj(new BitSet(0), vj.a.a);
-   public static final wc d = wc.a.a(n.i).a(new vl(vl.a.a, vf.c("chat.filtered")));
-   static final Codec<vj> e = Codec.unit(c);
-   static final Codec<vj> f = Codec.unit(b);
-   static final Codec<vj> g = atw.s.xmap(vj::new, vj::d);
-   private static final char h = '#';
-   private final BitSet i;
-   private final vj.a j;
+   public static final String a = ", ";
+   public static final vg b = vg.b(", ").a(n.h);
+   public static final vg c = vg.b(", ");
 
-   private vj(BitSet $$0, vj.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
-   }
-
-   private vj(BitSet $$0) {
-      this.i = $$0;
-      this.j = vj.a.c;
-   }
-
-   public vj(int $$0) {
-      this(new BitSet($$0), vj.a.c);
-   }
-
-   private vj.a c() {
-      return this.j;
-   }
-
-   private BitSet d() {
-      return this.i;
-   }
-
-   public static vj a(ui $$0) {
-      vj.a $$1 = $$0.b(vj.a.class);
-
-      return switch ($$1) {
-         case a -> c;
-         case b -> b;
-         case c -> new vj($$0.z(), vj.a.c);
-      };
-   }
-
-   public static void a(ui $$0, vj $$1) {
-      $$0.a($$1.j);
-      if ($$1.j == vj.a.c) {
-         $$0.a($$1.i);
-      }
-   }
-
-   public void a(int $$0) {
-      this.i.set($$0);
-   }
-
-   @Nullable
-   public String a(String $$0) {
-      return switch (this.j) {
-         case a -> $$0;
-         case b -> null;
-         case c -> {
-            char[] $$1 = $$0.toCharArray();
-
-            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
-               if (this.i.get($$2)) {
-                  $$1[$$2] = '#';
-               }
-            }
-
-            yield new String($$1);
-         }
-      };
-   }
-
-   @Nullable
-   public vf b(String $$0) {
-      return switch (this.j) {
-         case a -> vf.b($$0);
-         case b -> null;
-         case c -> {
-            vt $$1 = vf.i();
-            int $$2 = 0;
-            boolean $$3 = this.i.get(0);
-
-            while (true) {
-               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
-               $$4 = $$4 < 0 ? $$0.length() : $$4;
-               if ($$4 == $$2) {
-                  yield $$1;
-               }
-
-               if ($$3) {
-                  $$1.b(vf.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
-               } else {
-                  $$1.f($$0.substring($$2, $$4));
-               }
-
-               $$3 = !$$3;
-               $$2 = $$4;
-            }
-         }
-      };
-   }
-
-   public boolean a() {
-      return this.j == vj.a.a;
-   }
-
-   public boolean b() {
-      return this.j == vj.a.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         vj $$1 = (vj)$$0;
-         return this.i.equals($$1.i) && this.j == $$1.j;
+   public static vu a(vu $$0, wd $$1) {
+      if ($$1.g()) {
+         return $$0;
       } else {
-         return false;
+         wd $$2 = $$0.a();
+         if ($$2.g()) {
+            return $$0.b($$1);
+         } else {
+            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
+         }
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.i.hashCode();
-      return 31 * $$0 + this.j.hashCode();
+   public static Optional<vu> a(@Nullable ds $$0, Optional<vg> $$1, @Nullable blw $$2, int $$3) throws CommandSyntaxException {
+      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   static enum a implements avk {
-      a("pass_through", () -> vj.e),
-      b("fully_filtered", () -> vj.f),
-      c("partially_filtered", () -> vj.g);
+   public static vu a(@Nullable ds $$0, vg $$1, @Nullable blw $$2, int $$3) throws CommandSyntaxException {
+      if ($$3 > 100) {
+         return $$1.f();
+      } else {
+         vu $$4 = $$1.b().a($$0, $$2, $$3 + 1);
 
-      private final String d;
-      private final Supplier<Codec<vj>> e;
+         for (vg $$5 : $$1.c()) {
+            $$4.b(a($$0, $$5, $$2, $$3 + 1));
+         }
 
-      private a(String $$0, Supplier<Codec<vj>> $$1) {
-         this.d = $$0;
-         this.e = $$1;
+         return $$4.c(a($$0, $$1.a(), $$2, $$3));
+      }
+   }
+
+   private static wd a(@Nullable ds $$0, wd $$1, @Nullable blw $$2, int $$3) throws CommandSyntaxException {
+      vm $$4 = $$1.i();
+      if ($$4 != null) {
+         vg $$5 = $$4.a(vm.a.a);
+         if ($$5 != null) {
+            vm $$6 = new vm(vm.a.a, a($$0, $$5, $$2, $$3 + 1));
+            return $$1.a($$6);
+         }
       }
 
-      @Override
-      public String c() {
-         return this.d;
-      }
+      return $$1;
+   }
 
-      private Codec<vj> a() {
-         return this.e.get();
+   public static vg a(Collection<String> $$0) {
+      return a($$0, $$0x -> vg.b($$0x).a(n.k));
+   }
+
+   public static <T extends Comparable<T>> vg a(Collection<T> $$0, Function<T, vg> $$1) {
+      if ($$0.isEmpty()) {
+         return vf.a;
+      } else if ($$0.size() == 1) {
+         return $$1.apply($$0.iterator().next());
+      } else {
+         List<T> $$2 = Lists.newArrayList($$0);
+         $$2.sort(Comparable::compareTo);
+         return b($$2, $$1);
       }
+   }
+
+   public static <T> vg b(Collection<? extends T> $$0, Function<T, vg> $$1) {
+      return a($$0, b, $$1);
+   }
+
+   public static <T> vu a(Collection<? extends T> $$0, Optional<? extends vg> $$1, Function<T, vg> $$2) {
+      return a($$0, (vg)DataFixUtils.orElse($$1, b), $$2);
+   }
+
+   public static vg a(Collection<? extends vg> $$0, vg $$1) {
+      return a($$0, $$1, Function.identity());
+   }
+
+   public static <T> vu a(Collection<? extends T> $$0, vg $$1, Function<T, vg> $$2) {
+      if ($$0.isEmpty()) {
+         return vg.i();
+      } else if ($$0.size() == 1) {
+         return $$2.apply((T)$$0.iterator().next()).f();
+      } else {
+         vu $$3 = vg.i();
+         boolean $$4 = true;
+
+         for (T $$5 : $$0) {
+            if (!$$4) {
+               $$3.b($$1);
+            }
+
+            $$3.b($$2.apply($$5));
+            $$4 = false;
+         }
+
+         return $$3;
+      }
+   }
+
+   public static vu a(vg $$0) {
+      return vg.a("chat.square_brackets", $$0);
+   }
+
+   public static vg a(Message $$0) {
+      return (vg)($$0 instanceof vg ? (vg)$$0 : vg.b($$0.getString()));
+   }
+
+   public static boolean b(@Nullable vg $$0) {
+      if ($$0 != null && $$0.b() instanceof wr $$1) {
+         String $$2 = $$1.b();
+         String $$3 = $$1.c();
+         return $$3 != null || sj.a().b($$2);
+      } else {
+         return true;
+      }
+   }
+
+   public static vu a(String $$0) {
+      return a((vg)vg.b($$0).a($$1 -> $$1.a(n.k).a(new ve(ve.a.f, $$0)).a(new vm(vm.a.a, vg.c("chat.copy.click"))).a($$0)));
    }
 }

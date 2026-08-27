@@ -1,32 +1,40 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class brc {
-   public static bod<bml> a(cwq $$0) {
-      return brp.a(
-         (Function<brp.b<bml>, ? extends App<brp.c<bml>, brs<bml>>>)($$1 -> $$1.group($$1.c(bvn.o), $$1.b(bvn.m), $$1.b(bvn.X))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.aZ() && $$3x.aC()) {
-                        hx $$5 = $$3x.dm().d();
+   private static final int a = 60;
 
-                        for (ic $$6 : ic.c.a) {
-                           hx $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).k($$2x, $$7).a(ic.b).c() && $$2x.b_($$7).b(ees.c)) {
-                              hx $$8 = $$7.c();
-                              if ($$2x.a_($$8).i()) {
-                                 djh $$9 = $$0.o();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(dnr.i, $$8, dnr.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, ars.jl, art.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
+   public static bog<bmx> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return brs.a(
+         (Function<brs.b<bmx>, ? extends App<brs.c<bmx>, brv<bmx>>>)($$3 -> $$3.group($$3.c(bvq.o), $$3.c(bvq.m), $$3.a(bvq.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if (!$$5x.b_($$6.dl()).a(asn.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     } else {
+                        hx $$8 = $$6.dl();
+                        hx.a $$9 = new hx.a();
+                        emh $$10 = emh.a($$6);
+
+                        for (hx $$11 : hx.a($$8, $$0, $$0, $$0)) {
+                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
+                              djp $$12 = $$5x.a_($$11);
+                              djp $$13 = $$5x.a_($$9.a($$11, ic.a));
+                              if (!$$12.a(cxa.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, ic.b)) {
+                                 hx $$14 = $$11.i();
+                                 $$5.a(new boi($$14));
+                                 $$4.a(new bvt(new boi($$14), $$1, 1));
+                                 break;
                               }
                            }
                         }
 
+                        $$2.setValue($$7 + 60L);
                         return true;
-                     } else {
-                        return false;
                      }
                   }))
       );

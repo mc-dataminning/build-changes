@@ -1,79 +1,65 @@
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class ahe<T> extends agy<T> {
-   private final ahe.b b;
+public final class ahe<E> implements Codec<ih<E>> {
+   private final ahg<? extends it<E>> a;
 
-   private static ahe.b a(final ahe.b $$0) {
-      return new ahe.b() {
-         private final Map<ahf<? extends it<?>>, Optional<? extends ahe.a<?>>> b = new HashMap<>();
+   public static <E> ahe<E> a(ahg<? extends it<E>> $$0) {
+      return new ahe<>($$0);
+   }
 
-         @Override
-         public <T> Optional<ahe.a<T>> a(ahf<? extends it<? extends T>> $$0x) {
-            return (Optional<ahe.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
+   private ahe(ahg<? extends it<E>> $$0) {
+      this.a = $$0;
+   }
+
+   public <T> DataResult<T> a(ih<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof ahf<?> $$3) {
+         Optional<ik<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
+
+            return (DataResult<T>)$$0.d()
+               .map(
+                  $$2x -> ahh.a.encode($$2x.a(), $$1, $$2),
+                  $$0x -> DataResult.error(() -> "Elements from registry " + this.a + " can't be serialized to a value")
+               );
          }
-      };
+      }
+
+      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
-   public static <T> ahe<T> a(DynamicOps<T> $$0, final ij.b $$1) {
-      return a($$0, a(new ahe.b() {
-         @Override
-         public <E> Optional<ahe.a<E>> a(ahf<? extends it<? extends E>> $$0) {
-            return $$1.a($$0).map($$0x -> (ahe.a<E>)(new ahe.a<>($$0x, $$0x, $$0x.g())));
+   public <T> DataResult<Pair<ih<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof ahf<?> $$2) {
+         Optional<ii<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            return ahh.a
+               .decode($$0, $$1)
+               .flatMap(
+                  $$1x -> {
+                     ahh $$2x = (ahh)$$1x.getFirst();
+                     return $$3.get()
+                        .a(ahg.a(this.a, $$2x))
+                        .<DataResult>map(DataResult::success)
+                        .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$2x))
+                        .map($$1xx -> Pair.of($$1xx, $$1x.getSecond()))
+                        .setLifecycle(Lifecycle.stable());
+                  }
+               );
          }
-      }));
+      }
+
+      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
-   public static <T> ahe<T> a(DynamicOps<T> $$0, ahe.b $$1) {
-      return new ahe<>($$0, $$1);
-   }
-
-   private ahe(DynamicOps<T> $$0, ahe.b $$1) {
-      super($$0);
-      this.b = $$1;
-   }
-
-   public <E> Optional<ik<E>> a(ahf<? extends it<? extends E>> $$0) {
-      return this.b.a($$0).map(ahe.a::a);
-   }
-
-   public <E> Optional<ii<E>> b(ahf<? extends it<? extends E>> $$0) {
-      return this.b.a($$0).map(ahe.a::b);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, ii<E>> c(ahf<? extends it<? extends E>> $$0) {
-      return atw.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof ahe<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, ih.c<E>> d(ahf<E> $$0) {
-      ahf<? extends it<E>> $$1 = ahf.a($$0.b());
-      return atw.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof ahe<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static record a<T>(ik<T> a, ii<T> b, Lifecycle c) {
-   }
-
-   public interface b {
-      <T> Optional<ahe.a<T>> a(ahf<? extends it<? extends T>> var1);
+   @Override
+   public String toString() {
+      return "RegistryFixedCodec[" + this.a + "]";
    }
 }

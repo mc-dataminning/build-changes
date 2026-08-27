@@ -75,7 +75,7 @@ public class nr implements kk {
          Path var6;
          try (InputStream $$4 = Files.newInputStream($$1)) {
             Path $$5 = $$3.resolve($$2 + ".snbt");
-            a($$0, $$5, tc.c(ta.a($$4, sw.a())));
+            a($$0, $$5, td.c(tb.a($$4, sx.a())));
             d.info("Converted {} from NBT to SNBT", $$2);
             var6 = $$5;
          }

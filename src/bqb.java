@@ -1,34 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bqb {
-   public static bod<bml> a(bmo $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ai().f()), $$1);
-   }
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-   public static bpn<bml> a(blz<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ai()), $$1);
-   }
-
-   public static bpn<bml> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static bpn<bml> a(Predicate<bml> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return brp.a(
-         (Function<brp.b<bml>, ? extends App<brp.c<bml>, brs<bml>>>)($$2x -> $$2x.group($$2x.c(bvn.n), $$2x.b(bvn.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<bml> $$8 = $$2x.<bvp>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((blv)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new bon($$8.get(), true));
-                        return true;
+   public static bog<bmo> a() {
+      return brs.a((Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$0 -> $$0.group($$0.b(bvq.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.z.i() <= 0.95F) {
+                  return false;
+               } else {
+                  hx $$5 = $$0.<ig>b($$1).b();
+                  if ($$5.a($$3.dl(), 3.0)) {
+                     djp $$6 = $$2.a_($$5);
+                     if ($$6.a(cxa.od)) {
+                        cwu $$7 = (cwu)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
                      }
-                  }))
-      );
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

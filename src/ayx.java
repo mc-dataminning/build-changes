@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ayx extends baw {
    public ayx(Schema $$0) {
-      super($$0, false, "EntityShulkerRotationFix", bbw.x, "minecraft:shulker");
+      super($$0, false, "EntityShulkerRotationFix", bbw.y, "minecraft:shulker");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

@@ -1,58 +1,69 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Function;
 
-public abstract class awz extends awy {
+public abstract class awz extends DataFix {
    private final String a;
 
    public awz(Schema $$0, String $$1) {
-      super($$0, $$1);
+      super($$0, false);
       this.a = $$1;
    }
 
-   @Override
    public TypeRewriteRule makeRule() {
-      TypeReference $$0 = bbw.s;
-      String $$1 = "minecraft:jigsaw";
-      OpticFinder<?> $$2 = DSL.namedChoice("minecraft:jigsaw", this.getInputSchema().getChoiceType($$0, "minecraft:jigsaw"));
-      TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
-         this.a + " for jigsaw state",
-         this.getInputSchema().getType($$0),
-         this.getOutputSchema().getType($$0),
-         $$2x -> $$2x.updateTyped(
-               $$2,
-               this.getOutputSchema().getChoiceType($$0, "minecraft:jigsaw"),
-               $$0xx -> $$0xx.update(
-                     DSL.remainderFinder(),
-                     $$0xxx -> $$0xxx.update("final_state", $$1xx -> (Dynamic)DataFixUtils.orElse($$1xx.asString().result().map($$0xxxxx -> {
-                              int $$1xxx = $$0xxxxx.indexOf(91);
-                              int $$2xx = $$0xxxxx.indexOf(123);
-                              int $$3x = $$0xxxxx.length();
-                              if ($$1xxx > 0) {
-                                 $$3x = Math.min($$3x, $$1xxx);
-                              }
-
-                              if ($$2xx > 0) {
-                                 $$3x = Math.min($$3x, $$2xx);
-                              }
-
-                              String $$4 = $$0xxxxx.substring(0, $$3x);
-                              String $$5 = this.a($$4);
-                              return $$5 + $$0xxxxx.substring($$3x);
-                           }).map($$0xxx::createString), $$1xx))
-                  )
-            )
-      );
-      return TypeRewriteRule.seq(super.makeRule(), $$3);
+      Type<?> $$0 = this.getInputSchema().getType(bbw.z);
+      Type<Pair<String, String>> $$1 = DSL.named(bbw.z.typeName(), bde.a());
+      if (!Objects.equals($$0, $$1)) {
+         throw new IllegalStateException("block type is not what was expected.");
+      } else {
+         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
+            this.a + " for block_state", this.getInputSchema().getType(bbw.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
+         );
+         TypeRewriteRule $$4 = this.fixTypeEverywhereTyped(
+            this.a + " for flat_block_state",
+            this.getInputSchema().getType(bbw.v),
+            $$0x -> $$0x.update(
+                  DSL.remainderFinder(), $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map(this::b).map($$0xx::createString), $$0xx)
+               )
+         );
+         return TypeRewriteRule.seq($$2, new TypeRewriteRule[]{$$3, $$4});
+      }
    }
 
-   public static DataFix b(Schema $$0, String $$1, final Function<String, String> $$2) {
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      return $$1.isPresent() ? $$0.set("Name", $$0.createString(this.a($$1.get()))) : $$0;
+   }
+
+   private String b(String $$0) {
+      int $$1 = $$0.indexOf(91);
+      int $$2 = $$0.indexOf(123);
+      int $$3 = $$0.length();
+      if ($$1 > 0) {
+         $$3 = $$1;
+      }
+
+      if ($$2 > 0) {
+         $$3 = Math.min($$3, $$2);
+      }
+
+      String $$4 = $$0.substring(0, $$3);
+      String $$5 = this.a($$4);
+      return $$5 + $$0.substring($$3);
+   }
+
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
       return new awz($$0, $$1) {
          @Override
          protected String a(String $$0) {

@@ -1,34 +1,24 @@
-import java.util.Optional;
+public class aeu implements xg<adk> {
+   private final int a;
 
-public class aeu implements xf<adj> {
-   private final Optional<blg> a;
-   private final Optional<blg> b;
-
-   public aeu(Optional<blg> $$0, Optional<blg> $$1) {
+   public aeu(int $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public aeu(ui $$0) {
-      this.a = $$0.b((ui.a<blg>)($$0x -> $$0x.a(kd.d)));
-      this.b = $$0.b((ui.a<blg>)($$0x -> $$0x.a(kd.d)));
+   public aeu(uj $$0) {
+      this.a = $$0.n();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(kd.d, $$1));
-      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(kd.d, $$1));
+   public void a(uj $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   public Optional<blg> a() {
+   public int a() {
       return this.a;
-   }
-
-   public Optional<blg> d() {
-      return this.b;
    }
 }

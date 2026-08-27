@@ -1,32 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class boy {
-   public static bod<bmu> a(float $$0) {
-      return brp.a(
-         (Function<brp.b<bmu>, ? extends App<brp.c<bmu>, brs<bmu>>>)($$1 -> $$1.group($$1.c(bvn.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dm())) {
-                           return false;
-                        } else {
-                           hx $$5 = $$3.dm();
-                           List<hx> $$6 = hx.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(hx::i).collect(Collectors.toList());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.h($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new bvq($$2x, $$0, 0)));
-                           return true;
-                        }
+   private static hx a(bmq $$0, hx $$1) {
+      auw $$2 = $$0.dL().z;
+      return $$1.b(a($$2), 0, a($$2));
+   }
+
+   private static int a(auw $$0) {
+      return $$0.a(3) - 1;
+   }
+
+   public static <E extends bmq> bpq<E> a(bvq<hx> $$0, int $$1, float $$2) {
+      return brs.a(
+         (Function<brs.b<E>, ? extends App<brs.c<E>, brv<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(bvq.o), $$3.c(bvq.m), $$3.a(bvq.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     hx $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dl(), (double)$$1);
+                     if (!$$8) {
+                        boh.a($$5x, a($$5x, $$7), $$2, $$1);
                      }
-               ))
+
+                     return true;
+                  }))
       );
    }
 }

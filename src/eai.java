@@ -1,102 +1,67 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.datafixers.Products.P4;
+import com.mojang.datafixers.Products.P5;
+import com.mojang.datafixers.Products.P9;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.Optional;
 
-public class eai {
-   private final int a;
-   private final int b;
+public class eai extends eal {
+   public static final Codec<eai> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, eai::new));
    private final int c;
    private final int d;
-   private final eap.a e;
+   private final int e;
+   private final il<cuw> f;
 
-   public eai(int $$0, int $$1, int $$2, int $$3, eap.a $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   private static P9<Mu<eai>, jb, eal.c, Float, Integer, Optional<eal.a>, Integer, Integer, Integer, il<cuw>> b(Instance<eai> $$0) {
+      P5<Mu<eai>, jb, eal.c, Float, Integer, Optional<eal.a>> $$1 = a($$0);
+      P4<Mu<eai>, Integer, Integer, Integer, il<cuw>> $$2 = $$0.group(
+         Codec.intRange(0, 1023).fieldOf("distance").forGetter(eai::a),
+         Codec.intRange(0, 1023).fieldOf("spread").forGetter(eai::b),
+         Codec.intRange(1, 4095).fieldOf("count").forGetter(eai::c),
+         iv.a(ke.at).fieldOf("preferred_biomes").forGetter(eai::d)
+      );
+      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
+   }
+
+   public eai(jb $$0, eal.c $$1, float $$2, int $$3, Optional<eal.a> $$4, int $$5, int $$6, int $$7, il<cuw> $$8) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+      this.f = $$8;
+   }
+
+   public eai(int $$0, int $$1, int $$2, il<cuw> $$3) {
+      this(jb.g, eal.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
    }
 
    public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int c() {
       return this.c;
    }
 
-   public int d() {
+   public int b() {
       return this.d;
    }
 
-   public eap.a e() {
+   public int c() {
       return this.e;
    }
 
-   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
-      Builder<T, T> $$1 = ImmutableMap.builder();
-      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
-         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
-         .put($$0.createString("source_z"), $$0.createInt(this.c))
-         .put($$0.createString("delta_y"), $$0.createInt(this.d))
-         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
-      return new Dynamic($$0, $$0.createMap($$1.build()));
-   }
-
-   public static <T> eai a(Dynamic<T> $$0) {
-      return new eai(
-         $$0.get("source_x").asInt(0),
-         $$0.get("source_ground_y").asInt(0),
-         $$0.get("source_z").asInt(0),
-         $$0.get("delta_y").asInt(0),
-         eap.a.a($$0.get("dest_proj").asString(""))
-      );
+   public il<cuw> d() {
+      return this.f;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         eai $$1 = (eai)$$0;
-         if (this.a != $$1.a) {
-            return false;
-         } else if (this.c != $$1.c) {
-            return false;
-         } else {
-            return this.d != $$1.d ? false : this.e == $$1.e;
-         }
-      } else {
-         return false;
-      }
+   protected boolean a(dln $$0, int $$1, int $$2) {
+      List<cte> $$3 = $$0.a(this);
+      return $$3 == null ? false : $$3.contains(new cte($$1, $$2));
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.a;
-      $$0 = 31 * $$0 + this.b;
-      $$0 = 31 * $$0 + this.c;
-      $$0 = 31 * $$0 + this.d;
-      return 31 * $$0 + this.e.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "JigsawJunction{sourceX="
-         + this.a
-         + ", sourceGroundY="
-         + this.b
-         + ", sourceZ="
-         + this.c
-         + ", deltaY="
-         + this.d
-         + ", destProjection="
-         + this.e
-         + "}";
+   public eam<?> e() {
+      return eam.b;
    }
 }

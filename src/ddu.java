@@ -1,113 +1,149 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class ddu extends cyy implements cwt, ddq {
-   public static final MapCodec<ddu> c = b(ddu::new);
-   private static final djy g = djx.C;
-   public static final dkb d = djx.R;
-   protected static final float e = 6.0F;
-   protected static final emm f = cwq.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class ddu extends cxh implements cxb, ddy {
+   public static final MapCodec<ddu> a = b(ddu::new);
+   public static final int b = 4;
+   public static final dkp c = dkf.aS;
+   public static final dkg d = dkf.C;
+   protected static final emv e = cwy.a(6.0, 0.0, 6.0, 10.0, 6.0, 10.0);
+   protected static final emv f = cwy.a(3.0, 0.0, 3.0, 13.0, 6.0, 13.0);
+   protected static final emv g = cwy.a(2.0, 0.0, 2.0, 14.0, 6.0, 14.0);
+   protected static final emv h = cwy.a(2.0, 0.0, 2.0, 14.0, 7.0, 14.0);
 
    @Override
    public MapCodec<ddu> a() {
-      return c;
+      return a;
    }
 
-   public ddu(djg.d $$0) {
+   protected ddu(djo.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dkd.b).a(g, Boolean.valueOf(false)).a(d, ic.c));
-   }
-
-   @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return f;
-   }
-
-   @Override
-   protected boolean b(djh $$0, csv $$1, hx $$2) {
-      return $$0.a(ash.bw) || $$1.b_($$2.c()).a(ees.c) && super.b($$0, $$1, $$2);
+      this.k(this.E.b().a(c, Integer.valueOf(1)).a(d, Boolean.valueOf(true)));
    }
 
    @Nullable
    @Override
-   public djh a(cph $$0) {
-      djh $$1 = super.a($$0);
-      return $$1 != null ? c($$0.q(), $$0.a(), $$1.a(d, $$0.g().g())) : null;
-   }
-
-   @Override
-   public void a(ctp $$0, hx $$1, djh $$2, bml $$3, cmy $$4) {
-      if (!$$0.y_()) {
-         hx $$5 = $$1.c();
-         djh $$6 = cyy.c($$0, $$5, this.o().a(b, dkd.a).a(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
-      }
-   }
-
-   @Override
-   public eer c_(djh $$0) {
-      return $$0.c(g) ? ees.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(djh $$0, cts $$1, hx $$2) {
-      if ($$0.c(b) == dkd.a) {
-         return super.a($$0, $$1, $$2);
+   public djp a(cpp $$0) {
+      djp $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(c, Integer.valueOf(Math.min(4, $$1.c(c) + 1)));
       } else {
-         hx $$3 = $$2.d();
-         djh $$4 = $$1.a_($$3);
-         return this.b($$4, $$1, $$3);
+         eez $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == efa.c;
+         return super.a($$0).a(d, Boolean.valueOf($$3));
+      }
+   }
+
+   public static boolean h(djp $$0) {
+      return !$$0.c(d);
+   }
+
+   @Override
+   protected boolean b(djp $$0, ctd $$1, hx $$2) {
+      return !$$0.k($$1, $$2).a(ic.b).c() || $$0.d($$1, $$2, ic.b);
+   }
+
+   @Override
+   public boolean a(djp $$0, cua $$1, hx $$2) {
+      hx $$3 = $$2.d();
+      return this.b($$1.a_($$3), $$1, $$3);
+   }
+
+   @Override
+   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return cxa.a.o();
+      } else {
+         if ($$0.c(d)) {
+            $$3.a($$4, efa.c, efa.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
-      if ($$0.c(g)) {
-         $$3.a($$4, ees.c, ees.c.a($$3));
+   public boolean a(djp $$0, cpp $$1) {
+      return !$$1.h() && $$1.n().a(this.j()) && $$0.c(c) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      switch ($$0.c(c)) {
+         case 1:
+         default:
+            return e;
+         case 2:
+            return f;
+         case 3:
+            return g;
+         case 4:
+            return h;
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(b, g, d);
+   public eez c_(djp $$0) {
+      return $$0.c(d) ? efa.c.a(false) : super.c_($$0);
    }
 
    @Override
-   public boolean b(cts $$0, hx $$1, djh $$2) {
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   public boolean b(cua $$0, hx $$1, djp $$2) {
       return true;
    }
 
    @Override
-   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
+   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
       return true;
    }
 
    @Override
-   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
-      if ($$3.c(cyy.b) == dkd.b) {
-         hx $$4 = $$2.c();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         cwn.a($$0, $$1, $$2, $$3.c(d));
-      } else {
-         hx $$5 = $$2.d();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
+   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
+      if (!h($$3) && $$0.a_($$2.d()).a(asi.ap)) {
+         int $$4 = 5;
+         int $$5 = 1;
+         int $$6 = 2;
+         int $$7 = 0;
+         int $$8 = $$2.u() - 2;
+         int $$9 = 0;
+
+         for (int $$10 = 0; $$10 < 5; $$10++) {
+            for (int $$11 = 0; $$11 < $$5; $$11++) {
+               int $$12 = 2 + $$2.v() - 1;
+
+               for (int $$13 = $$12 - 2; $$13 < $$12; $$13++) {
+                  hx $$14 = new hx($$8 + $$10, $$13, $$2.w() - $$9 + $$11);
+                  if ($$14 != $$2 && $$1.a(6) == 0 && $$0.a_($$14).a(cxa.G)) {
+                     djp $$15 = $$0.a_($$14.d());
+                     if ($$15.a(asi.ap)) {
+                        $$0.a($$14, cxa.mV.o().a(c, Integer.valueOf($$1.a(4) + 1)), 3);
+                     }
+                  }
+               }
+            }
+
+            if ($$7 < 2) {
+               $$5 += 2;
+               $$9++;
+            } else {
+               $$5 -= 2;
+               $$9--;
+            }
+
+            $$7++;
+         }
+
+         $$0.a($$2, $$3.a(c, Integer.valueOf(4)), 2);
       }
    }
 
    @Override
-   public djh a(djh $$0, ddc $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   public djh a(djh $$0, dbm $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   public float av_() {
-      return 0.1F;
+   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
+      return false;
    }
 }

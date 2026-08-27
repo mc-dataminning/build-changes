@@ -1,13 +1,64 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import java.util.List;
+import java.util.stream.IntStream;
 
-public interface ecu<P extends ect> {
-   ecu<ecs> a = a("always_true", ecs.a);
-   ecu<ecq> b = a("linear_pos", ecq.a);
-   ecu<ecf> c = a("axis_aligned_linear_pos", ecf.a);
+public class ecu extends edl {
+   public static final Codec<ecu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(edn.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bjh.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, ecu::new)
+   );
+   private final edl b;
+   private final bjh c;
 
-   Codec<P> codec();
+   public ecu(edl $$0, bjh $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   static <P extends ect> ecu<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.q, $$0, () -> $$1);
+   @Override
+   protected edn<?> a() {
+      return edn.o;
+   }
+
+   @Override
+   public final List<edo.c> a(cum $$0, hx $$1, hx $$2, List<edo.c> $$3, List<edo.c> $$4, edk $$5) {
+      if (this.c.b() != 0 && !$$4.isEmpty()) {
+         if ($$3.size() != $$4.size()) {
+            ac.a(
+               "Original block info list not in sync with processed list, skipping processing. Original size: "
+                  + $$3.size()
+                  + ", Processed size: "
+                  + $$4.size()
+            );
+            return $$4;
+         } else {
+            auw $$6 = auw.a($$0.E().C()).e().a($$1);
+            int $$7 = Math.min(this.c.a($$6), $$4.size());
+            if ($$7 < 1) {
+               return $$4;
+            } else {
+               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
+               IntIterator $$9 = $$8.intIterator();
+               int $$10 = 0;
+
+               while ($$9.hasNext() && $$10 < $$7) {
+                  int $$11 = $$9.nextInt();
+                  edo.c $$12 = $$3.get($$11);
+                  edo.c $$13 = $$4.get($$11);
+                  edo.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
+                  if ($$14 != null && !$$13.equals($$14)) {
+                     $$10++;
+                     $$4.set($$11, $$14);
+                  }
+               }
+
+               return $$4;
+            }
+         }
+      } else {
+         return $$4;
+      }
    }
 }

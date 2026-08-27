@@ -1,37 +1,78 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class dkn {
-   private static final auz a = new auz(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
+public class dkn<T extends Enum<T> & avl> extends dks<T> {
+   private final ImmutableSet<T> a;
+   private final Map<String, T> b = Maps.newHashMap();
 
-   public static int a() {
-      return b;
+   protected dkn(String $$0, Class<T> $$1, Collection<T> $$2) {
+      super($$0, $$1);
+      this.a = ImmutableSet.copyOf($$2);
+
+      for (T $$3 : $$2) {
+         String $$4 = $$3.c();
+         if (this.b.containsKey($$4)) {
+            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
+         }
+
+         this.b.put($$4, $$3);
+      }
    }
 
-   public static int a(ic $$0) {
-      return a.a($$0);
+   @Override
+   public Collection<T> a() {
+      return this.a;
    }
 
-   public static int a(float $$0) {
-      return a.b($$0);
+   @Override
+   public Optional<T> b(String $$0) {
+      return Optional.ofNullable(this.b.get($$0));
    }
 
-   public static Optional<ic> a(int $$0) {
-      ic $$1 = switch ($$0) {
-         case 0 -> ic.c;
-         case 4 -> ic.f;
-         case 8 -> ic.d;
-         case 12 -> ic.e;
-         default -> null;
-      };
-      return Optional.ofNullable($$1);
+   public String a(T $$0) {
+      return $$0.c();
    }
 
-   public static float b(int $$0) {
-      return a.b($$0);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dkn<?> $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a) && this.b.equals($$1.b);
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int b() {
+      int $$0 = super.b();
+      $$0 = 31 * $$0 + this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
+   }
+
+   public static <T extends Enum<T> & avl> dkn<T> a(String $$0, Class<T> $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   public static <T extends Enum<T> & avl> dkn<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
+      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
+   }
+
+   public static <T extends Enum<T> & avl> dkn<T> a(String $$0, Class<T> $$1, T... $$2) {
+      return a($$0, $$1, Lists.newArrayList($$2));
+   }
+
+   public static <T extends Enum<T> & avl> dkn<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
+      return new dkn<>($$0, $$1, $$2);
    }
 }

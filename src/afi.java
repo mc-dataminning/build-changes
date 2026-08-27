@@ -1,29 +1,8 @@
-public enum afi {
-   a,
-   b;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private static final int c = 1;
-   private static final int d = 2;
-
-   public static afi a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
-   }
-
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-      };
-   }
-
-   public uh b() {
-      return switch (this) {
-         case a -> uh.c;
-         case b -> uh.d;
-      };
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface afi {
 }

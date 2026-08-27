@@ -1,34 +1,25 @@
-public abstract class gdh<T extends bml, M extends flc<T>> extends gcy<T, M> {
-   public gdh(fzo<T, M> $$0) {
+public class gdh extends gdl<byr, fli<byr>> {
+   private final ftp a;
+
+   public gdh(gav<byr, fli<byr>> $$0, ftp $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   protected abstract int a(T var1);
-
-   protected abstract void a(eqb var1, fth var2, int var3, blv var4, float var5, float var6, float var7, float var8);
-
-   public void a(eqb $$0, fth $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      int $$10 = this.a($$3);
-      auv $$11 = auv.a((long)$$3.aj());
-      if ($$10 > 0) {
-         for (int $$12 = 0; $$12 < $$10; $$12++) {
-            $$0.a();
-            fmx $$13 = this.c().a($$11);
-            fmx.a $$14 = $$13.a($$11);
-            $$13.a($$0);
-            float $$15 = $$11.i();
-            float $$16 = $$11.i();
-            float $$17 = $$11.i();
-            float $$18 = auo.i($$15, $$14.a, $$14.d) / 16.0F;
-            float $$19 = auo.i($$16, $$14.b, $$14.e) / 16.0F;
-            float $$20 = auo.i($$17, $$14.c, $$14.f) / 16.0F;
-            $$0.a($$18, $$19, $$20);
-            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
-            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
-            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
-            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
-            $$0.b();
+   public void a(eqk $$0, ftt $$1, int $$2, byr $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cng $$10 = $$3.c(bmd.a);
+      if ($$3.A() && !$$3.gx()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gl()) {
+            $$11 -= 0.2F * aup.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * aup.a($$7 * 0.6F);
          }
+
+         $$0.a();
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, cnd.h, false, $$0, $$1, $$2);
+         $$0.b();
       }
    }
 }

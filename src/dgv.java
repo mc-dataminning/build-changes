@@ -1,181 +1,91 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class dgv {
+   public static final ahg<dgu> a = a("base");
+   public static final ahg<dgu> b = a("square_bottom_left");
+   public static final ahg<dgu> c = a("square_bottom_right");
+   public static final ahg<dgu> d = a("square_top_left");
+   public static final ahg<dgu> e = a("square_top_right");
+   public static final ahg<dgu> f = a("stripe_bottom");
+   public static final ahg<dgu> g = a("stripe_top");
+   public static final ahg<dgu> h = a("stripe_left");
+   public static final ahg<dgu> i = a("stripe_right");
+   public static final ahg<dgu> j = a("stripe_center");
+   public static final ahg<dgu> k = a("stripe_middle");
+   public static final ahg<dgu> l = a("stripe_downright");
+   public static final ahg<dgu> m = a("stripe_downleft");
+   public static final ahg<dgu> n = a("small_stripes");
+   public static final ahg<dgu> o = a("cross");
+   public static final ahg<dgu> p = a("straight_cross");
+   public static final ahg<dgu> q = a("triangle_bottom");
+   public static final ahg<dgu> r = a("triangle_top");
+   public static final ahg<dgu> s = a("triangles_bottom");
+   public static final ahg<dgu> t = a("triangles_top");
+   public static final ahg<dgu> u = a("diagonal_left");
+   public static final ahg<dgu> v = a("diagonal_up_right");
+   public static final ahg<dgu> w = a("diagonal_up_left");
+   public static final ahg<dgu> x = a("diagonal_right");
+   public static final ahg<dgu> y = a("circle");
+   public static final ahg<dgu> z = a("rhombus");
+   public static final ahg<dgu> A = a("half_vertical");
+   public static final ahg<dgu> B = a("half_horizontal");
+   public static final ahg<dgu> C = a("half_vertical_right");
+   public static final ahg<dgu> D = a("half_horizontal_bottom");
+   public static final ahg<dgu> E = a("border");
+   public static final ahg<dgu> F = a("curly_border");
+   public static final ahg<dgu> G = a("gradient");
+   public static final ahg<dgu> H = a("gradient_up");
+   public static final ahg<dgu> I = a("bricks");
+   public static final ahg<dgu> J = a("globe");
+   public static final ahg<dgu> K = a("creeper");
+   public static final ahg<dgu> L = a("skull");
+   public static final ahg<dgu> M = a("flower");
+   public static final ahg<dgu> N = a("mojang");
+   public static final ahg<dgu> O = a("piglin");
 
-public abstract class dgv {
-   private static final Logger e = LogUtils.getLogger();
-   private final dgx<?> f;
-   @Nullable
-   protected ctp o;
-   protected final hx p;
-   protected boolean q;
-   private djh g;
-
-   public dgv(dgx<?> $$0, hx $$1, djh $$2) {
-      this.f = $$0;
-      this.p = $$1.i();
-      this.g = $$2;
+   private static ahg<dgu> a(String $$0) {
+      return ahg.a(ke.d, new ahh($$0));
    }
 
-   public static hx c(sn $$0) {
-      return new hx($$0.h("x"), $$0.h("y"), $$0.h("z"));
-   }
-
-   @Nullable
-   public ctp i() {
-      return this.o;
-   }
-
-   public void a(ctp $$0) {
-      this.o = $$0;
-   }
-
-   public boolean n() {
-      return this.o != null;
-   }
-
-   public void a(sn $$0) {
-   }
-
-   protected void b(sn $$0) {
-   }
-
-   public final sn o() {
-      sn $$0 = this.q();
-      this.e($$0);
-      return $$0;
-   }
-
-   public final sn p() {
-      sn $$0 = this.q();
-      this.d($$0);
-      return $$0;
-   }
-
-   public final sn q() {
-      sn $$0 = new sn();
-      this.b($$0);
-      return $$0;
-   }
-
-   private void d(sn $$0) {
-      ahg $$1 = dgx.a(this.v());
-      if ($$1 == null) {
-         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
-      } else {
-         $$0.a("id", $$1.toString());
-      }
-   }
-
-   public static void a(sn $$0, dgx<?> $$1) {
-      $$0.a("id", dgx.a($$1).toString());
-   }
-
-   public void e(cmy $$0) {
-      ckr.a($$0, this.v(), this.q());
-   }
-
-   private void e(sn $$0) {
-      this.d($$0);
-      $$0.a("x", this.p.u());
-      $$0.a("y", this.p.v());
-      $$0.a("z", this.p.w());
-   }
-
-   @Nullable
-   public static dgv a(hx $$0, djh $$1, sn $$2) {
-      String $$3 = $$2.l("id");
-      ahg $$4 = ahg.a($$3);
-      if ($$4 == null) {
-         e.error("Block entity has invalid type: {}", $$3);
-         return null;
-      } else {
-         return kd.k.b($$4).map($$3x -> {
-            try {
-               return $$3x.a($$0, $$1);
-            } catch (Throwable var5) {
-               e.error("Failed to create block entity {}", $$3, var5);
-               return null;
-            }
-         }).map($$2x -> {
-            try {
-               $$2x.a($$2);
-               return $$2x;
-            } catch (Throwable var4x) {
-               e.error("Failed to load data for block entity {}", $$3, var4x);
-               return null;
-            }
-         }).orElseGet(() -> {
-            e.warn("Skipping BlockEntity with id {}", $$3);
-            return null;
-         });
-      }
-   }
-
-   public void e() {
-      if (this.o != null) {
-         a(this.o, this.p, this.g);
-      }
-   }
-
-   protected static void a(ctp $$0, hx $$1, djh $$2) {
-      $$0.q($$1);
-      if (!$$2.i()) {
-         $$0.c($$1, $$2.b());
-      }
-   }
-
-   public hx aB_() {
-      return this.p;
-   }
-
-   public djh r() {
-      return this.g;
-   }
-
-   @Nullable
-   public xf<za> j() {
-      return null;
-   }
-
-   public sn ax_() {
-      return new sn();
-   }
-
-   public boolean s() {
-      return this.q;
-   }
-
-   public void ay_() {
-      this.q = true;
-   }
-
-   public void t() {
-      this.q = false;
-   }
-
-   public boolean a_(int $$0, int $$1) {
-      return false;
-   }
-
-   public void a(p $$0) {
-      $$0.a("Name", () -> kd.k.b(this.v()) + " // " + this.getClass().getCanonicalName());
-      if (this.o != null) {
-         p.a($$0, this.o, this.p, this.r());
-         p.a($$0, this.o, this.p, this.o.a_(this.p));
-      }
-   }
-
-   public boolean u() {
-      return false;
-   }
-
-   public dgx<?> v() {
-      return this.f;
-   }
-
-   @Deprecated
-   public void b(djh $$0) {
-      this.g = $$0;
+   public static dgu a(it<dgu> $$0) {
+      it.a($$0, a, new dgu("b"));
+      it.a($$0, b, new dgu("bl"));
+      it.a($$0, c, new dgu("br"));
+      it.a($$0, d, new dgu("tl"));
+      it.a($$0, e, new dgu("tr"));
+      it.a($$0, f, new dgu("bs"));
+      it.a($$0, g, new dgu("ts"));
+      it.a($$0, h, new dgu("ls"));
+      it.a($$0, i, new dgu("rs"));
+      it.a($$0, j, new dgu("cs"));
+      it.a($$0, k, new dgu("ms"));
+      it.a($$0, l, new dgu("drs"));
+      it.a($$0, m, new dgu("dls"));
+      it.a($$0, n, new dgu("ss"));
+      it.a($$0, o, new dgu("cr"));
+      it.a($$0, p, new dgu("sc"));
+      it.a($$0, q, new dgu("bt"));
+      it.a($$0, r, new dgu("tt"));
+      it.a($$0, s, new dgu("bts"));
+      it.a($$0, t, new dgu("tts"));
+      it.a($$0, u, new dgu("ld"));
+      it.a($$0, v, new dgu("rd"));
+      it.a($$0, w, new dgu("lud"));
+      it.a($$0, x, new dgu("rud"));
+      it.a($$0, y, new dgu("mc"));
+      it.a($$0, z, new dgu("mr"));
+      it.a($$0, A, new dgu("vh"));
+      it.a($$0, B, new dgu("hh"));
+      it.a($$0, C, new dgu("vhr"));
+      it.a($$0, D, new dgu("hhb"));
+      it.a($$0, E, new dgu("bo"));
+      it.a($$0, F, new dgu("cbo"));
+      it.a($$0, G, new dgu("gra"));
+      it.a($$0, H, new dgu("gru"));
+      it.a($$0, I, new dgu("bri"));
+      it.a($$0, J, new dgu("glb"));
+      it.a($$0, K, new dgu("cre"));
+      it.a($$0, L, new dgu("sku"));
+      it.a($$0, M, new dgu("flo"));
+      it.a($$0, N, new dgu("moj"));
+      return it.a($$0, O, new dgu("pig"));
    }
 }

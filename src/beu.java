@@ -11,13 +11,13 @@ public class beu extends bde {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, bbw.A, () -> DSL.constType(a()));
+      $$0.registerType(false, bbw.B, () -> DSL.constType(a()));
    }
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
       $$0.register(
-         $$1, "minecraft:sculk_sensor", () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", bbw.A.in($$0))))
+         $$1, "minecraft:sculk_sensor", () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", bbw.B.in($$0))))
       );
       return $$1;
    }

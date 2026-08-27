@@ -1,18 +1,17 @@
-public record ym(hx b, int c) implements ya {
-   public static final ahg a = new ahg("debug/poi_ticket_count");
+public record ym(hx b) implements yb {
+   public static final ahh a = new ahh("debug/poi_removed");
 
-   public ym(ui $$0) {
-      this($$0.e(), $$0.readInt());
+   public ym(uj $$0) {
+      this($$0.e());
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.a(this.b);
-      $$0.p(this.c);
    }
 
    @Override
-   public ahg a() {
+   public ahh a() {
       return a;
    }
 }

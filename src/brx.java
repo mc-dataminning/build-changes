@@ -1,17 +1,8 @@
-import com.google.common.collect.ImmutableMap;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class brx extends boc<bml> {
-   public brx() {
-      super(ImmutableMap.of());
-   }
-
-   @Override
-   protected boolean a(and $$0, bml $$1) {
-      return $$1.bO();
-   }
-
-   @Override
-   protected void d(and $$0, bml $$1, long $$2) {
-      $$1.ag();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface brx {
 }

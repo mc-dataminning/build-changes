@@ -1,39 +1,71 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class acj implements xf<za> {
-   private final int a;
-   private final int[] b;
+public class acj implements xg<zb> {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   private final String d;
+   private final vg e;
+   private final enj.a f;
+   @Nullable
+   private final ww g;
+   private final int h;
 
-   public acj(blv $$0) {
-      this.a = $$0.aj();
-      List<blv> $$1 = $$0.cP();
-      this.b = new int[$$1.size()];
+   public acj(emy $$0, int $$1) {
+      this.d = $$0.b();
+      this.e = $$0.d();
+      this.f = $$0.h();
+      this.g = $$0.f();
+      this.h = $$1;
+   }
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.b[$$2] = $$1.get($$2).aj();
+   public acj(uj $$0) {
+      this.d = $$0.s();
+      this.h = $$0.readByte();
+      if (this.h != 0 && this.h != 2) {
+         this.e = vf.a;
+         this.f = enj.a.a;
+         this.g = null;
+      } else {
+         this.e = $$0.m();
+         this.f = $$0.b(enj.a.class);
+         this.g = $$0.c(wy::a);
       }
    }
 
-   public acj(ui $$0) {
-      this.a = $$0.n();
-      this.b = $$0.c();
-   }
-
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   public void a(uj $$0) {
+      $$0.a(this.d);
+      $$0.k(this.h);
+      if (this.h == 0 || this.h == 2) {
+         $$0.a(this.e);
+         $$0.a(this.f);
+         $$0.a(this.g, wy::a);
+      }
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public int[] a() {
-      return this.b;
+   public String a() {
+      return this.d;
    }
 
-   public int d() {
-      return this.a;
+   public vg d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.h;
+   }
+
+   public enj.a f() {
+      return this.f;
+   }
+
+   @Nullable
+   public ww g() {
+      return this.g;
    }
 }

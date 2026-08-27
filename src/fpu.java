@@ -1,62 +1,48 @@
-public class fpu extends frv {
-   private static final float a = 0.0025F;
-   private static final int b = 300;
-   private static final int F = 300;
-   private static final float G = 0.25F;
-   private static final float H = 2.0F;
-   private float I;
-   private final float J;
-   private final float K;
+import com.mojang.logging.LogUtils;
+import java.util.Hashtable;
+import java.util.Optional;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
+import org.slf4j.Logger;
 
-   protected fpu(fns $$0, double $$1, double $$2, double $$3, frq $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$4.a(this.r.a(12), 12));
-      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
-      this.J = this.r.i();
-      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
-      this.t = 300;
-      this.u = 7.5E-4F;
-      float $$5 = this.r.h() ? 0.05F : 0.075F;
-      this.D = $$5;
-      this.b($$5, $$5);
-      this.B = 1.0F;
-   }
+@FunctionalInterface
+public interface fpu {
+   Logger a = LogUtils.getLogger();
+   fpu b = $$0 -> Optional.empty();
 
-   @Override
-   public fqz b() {
-      return fqz.b;
-   }
+   Optional<fpr> lookupRedirect(fpr var1);
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
+   static fpu createDnsSrvRedirectHandler() {
+      DirContext $$2;
+      try {
+         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
+         Class.forName("com.sun.jndi.dns.DnsContextFactory");
+         Hashtable<String, String> $$1 = new Hashtable<>();
+         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
+         $$1.put("java.naming.provider.url", "dns:");
+         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
+         $$2 = new InitialDirContext($$1);
+      } catch (Throwable var3) {
+         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
+         return b;
       }
 
-      if (!this.o) {
-         float $$0 = (float)(300 - this.t);
-         float $$1 = Math.min($$0 / 300.0F, 1.0F);
-         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         this.j += $$2 * 0.0025F;
-         this.l += $$3 * 0.0025F;
-         this.k = this.k - (double)this.u;
-         this.I = this.I + this.K / 20.0F;
-         this.A = this.z;
-         this.z = this.z + this.I / 20.0F;
-         this.a(this.j, this.k, this.l);
-         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
-            this.k();
+      return $$1x -> {
+         if ($$1x.b() == 25565) {
+            try {
+               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
+               Attribute $$3x = $$2x.get("srv");
+               if ($$3x != null) {
+                  String[] $$4x = $$3x.get().toString().split(" ", 4);
+                  return Optional.of(new fpr($$4x[3], fpr.c($$4x[2])));
+               }
+            } catch (Throwable var5) {
+            }
          }
 
-         if (!this.o) {
-            this.j = this.j * (double)this.B;
-            this.k = this.k * (double)this.B;
-            this.l = this.l * (double)this.B;
-         }
-      }
+         return Optional.empty();
+      };
    }
 }

@@ -1,18 +1,42 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class ekk {
-   private static final Codec<ekj> d = kd.J.q().dispatch(ekj::a, eki::a);
-   public static final Codec<ekj> a = atw.a(
-      (Supplier<Codec<ekj>>)(() -> Codec.either(ekh.c, d)
-            .xmap($$0 -> (ekj)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof ekh $$1 ? Either.left($$1) : Either.right($$0)))
+public record ekk(float b, float c) implements eke {
+   public static final Codec<ekk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(ekk::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(ekk::d)).apply($$0, ekk::new)
    );
-   public static final eki b = a("storage", ekl.a);
-   public static final eki c = a("context", ekh.b);
 
-   private static eki a(String $$0, Codec<? extends ekj> $$1) {
-      return it.a(kd.J, new ahg($$0), new eki($$1));
+   @Override
+   public ekf b() {
+      return ekg.f;
+   }
+
+   @Override
+   public Set<ejn<?>> a() {
+      return ImmutableSet.of(ejq.d);
+   }
+
+   public boolean a(ehf $$0) {
+      blw $$1 = $$0.c(ejq.d);
+      int $$2 = 0;
+      if ($$1 instanceof bmo) {
+         $$2 = crt.h((bmo)$$1);
+      }
+
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
+   }
+
+   public static eke.a a(float $$0, float $$1) {
+      return () -> new ekk($$0, $$1);
+   }
+
+   public float c() {
+      return this.b;
+   }
+
+   public float d() {
+      return this.c;
    }
 }

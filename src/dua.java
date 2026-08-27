@@ -1,22 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dua implements dty {
+public class dua implements dug {
    public static final Codec<dua> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dvz.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               dvz.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dua::new)
+      $$0 -> $$0.group(bjh.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bjh.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dua::new)
    );
-   public final dvz b;
-   public final dvz c;
-   public final int d;
+   private final bjh b;
+   private final bjh c;
 
-   public dua(dvz $$0, dvz $$1, int $$2) {
+   public dua(bjh $$0, bjh $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+   }
+
+   public bjh a() {
+      return this.b;
+   }
+
+   public bjh b() {
+      return this.c;
    }
 }

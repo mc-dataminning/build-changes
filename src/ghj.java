@@ -1,17 +1,9 @@
-public abstract class ghj extends ghi implements gib {
-   private boolean n;
-
-   protected ghj(arr $$0, art $$1, auv $$2) {
-      super($$0, $$1, $$2);
+public interface ghj {
+   default j b() {
+      return j.a();
    }
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
-
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   default boolean c() {
+      return false;
    }
 }

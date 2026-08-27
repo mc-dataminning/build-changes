@@ -13,11 +13,11 @@ public class bco extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bbw.E.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bbw.E))) {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bbw.F.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bbw.F))) {
          throw new IllegalStateException("Team type is not what was expected.");
       } else {
-         return this.fixTypeEverywhere("TeamDisplayNameFix", $$0, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DisplayName", avv::a)));
+         return this.fixTypeEverywhere("TeamDisplayNameFix", $$0, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DisplayName", avw::a)));
       }
    }
 }

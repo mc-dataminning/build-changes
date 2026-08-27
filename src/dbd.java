@@ -1,84 +1,109 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class dbd extends cwq implements ddq {
+public class dbd extends cwy implements ddy {
    public static final MapCodec<dbd> a = b(dbd::new);
-   public static final int b = 15;
-   public static final dkh c = djx.aP;
-   public static final djy d = djx.C;
-   public static final ToIntFunction<djh> e = $$0 -> $$0.c(c);
+   public static final dkj b = dat.aE;
+   public static final dkg c = dkf.C;
+   protected static final float d = 3.0F;
+   protected static final emv e = cwy.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
+   protected static final emv f = cwy.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final emv g = cwy.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
+   protected static final emv h = cwy.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
 
    @Override
    public MapCodec<dbd> a() {
       return a;
    }
 
-   public dbd(djg.d $$0) {
+   protected dbd(djo.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, ic.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(c, d);
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      switch ((ic)$$0.c(b)) {
+         case c:
+            return h;
+         case d:
+            return g;
+         case e:
+            return f;
+         case f:
+         default:
+            return e;
+      }
+   }
+
+   private boolean a(ctd $$0, hx $$1, ic $$2) {
+      djp $$3 = $$0.a_($$1);
+      return $$3.d($$0, $$1, $$2);
    }
 
    @Override
-   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
-      if (!$$1.B && $$3.gp()) {
-         $$1.a($$2, $$0.a(c), 2);
-         return bkb.a;
+   public boolean a(djp $$0, cua $$1, hx $$2) {
+      ic $$3 = $$0.c(b);
+      return this.a($$1, $$2.a($$3.g()), $$3);
+   }
+
+   @Override
+   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
+      if ($$1.g() == $$0.c(b) && !$$0.a($$3, $$4)) {
+         return cxa.a.o();
       } else {
-         return bkb.b;
+         if ($$0.c(c)) {
+            $$3.a($$4, efa.c, efa.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
+   @Nullable
    @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return $$3.a(cnb.hB) ? emj.b() : emj.a();
-   }
-
-   @Override
-   public boolean a_(djh $$0, csv $$1, hx $$2) {
-      return true;
-   }
-
-   @Override
-   public dcv b_(djh $$0) {
-      return dcv.a;
-   }
-
-   @Override
-   public float d(djh $$0, csv $$1, hx $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ees.c, ees.c.a($$3));
+   public djp a(cpp $$0) {
+      if (!$$0.c()) {
+         djp $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
+         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
+            return null;
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      djp $$2 = this.o();
+      cua $$3 = $$0.q();
+      hx $$4 = $$0.a();
+      eez $$5 = $$0.q().b_($$0.a());
 
-   @Override
-   public eer c_(djh $$0) {
-      return $$0.c(d) ? ees.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public cmy a(cts $$0, hx $$1, djh $$2) {
-      return a(super.a($$0, $$1, $$2), $$2.c(c));
-   }
-
-   public static cmy a(cmy $$0, int $$1) {
-      if ($$1 != 15) {
-         sn $$2 = new sn();
-         $$2.a(c.f(), String.valueOf($$1));
-         $$0.a("BlockStateTag", $$2);
+      for (ic $$6 : $$0.f()) {
+         if ($$6.o().d()) {
+            $$2 = $$2.a(b, $$6.g());
+            if ($$2.a($$3, $$4)) {
+               return $$2.a(c, Boolean.valueOf($$5.a() == efa.c));
+            }
+         }
       }
 
-      return $$0;
+      return null;
+   }
+
+   @Override
+   public djp a(djp $$0, ddk $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public djp a(djp $$0, dbu $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public eez c_(djp $$0) {
+      return $$0.c(c) ? efa.c.a(false) : super.c_($$0);
    }
 }

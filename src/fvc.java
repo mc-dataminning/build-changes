@@ -1,88 +1,90 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-public class fvc implements fvh<dgl> {
-   private static final int b = 20;
-   private static final int c = 40;
-   private static final int d = 16;
-   public static final String a = "flag";
-   private static final String e = "pole";
-   private static final String f = "bar";
-   private final fmx g;
-   private final fmx h;
-   private final fmx i;
+public class fvc {
+   public static final fvc a = new fvc();
+   public final fvb b;
+   public final fvb c;
+   public final fvb d;
+   public final fvb e;
+   public final fvb f;
+   public final fvb g;
+   public final fvb h;
+   public final fvb i;
 
-   public fvc(fvi.a $$0) {
-      fmx $$1 = $$0.a(fmw.f);
-      this.g = $$1.b("flag");
-      this.h = $$1.b("pole");
-      this.i = $$1.b("bar");
+   private fvc() {
+      this(fvb.a, fvb.a, fvb.a, fvb.a, fvb.a, fvb.a, fvb.a, fvb.a);
    }
 
-   public static fnd a() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      $$1.a("flag", fnc.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fmz.a);
-      $$1.a("pole", fnc.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fmz.a);
-      $$1.a("bar", fnc.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fmz.a);
-      return fnd.a($$0, 64, 64);
+   public fvc(fvc $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
    }
 
-   public void a(dgl $$0, float $$1, eqb $$2, fth $$3, int $$4, int $$5) {
-      List<Pair<ih<dgm>, clm>> $$6 = $$0.c();
-      float $$7 = 0.6666667F;
-      boolean $$8 = $$0.i() == null;
-      $$2.a();
-      long $$9;
-      if ($$8) {
-         $$9 = 0L;
-         $$2.a(0.5F, 0.5F, 0.5F);
-         this.h.k = true;
-      } else {
-         $$9 = $$0.i().X();
-         djh $$11 = $$0.r();
-         if ($$11.b() instanceof cvv) {
-            $$2.a(0.5F, 0.5F, 0.5F);
-            float $$12 = -dkn.b($$11.c(cvv.b));
-            $$2.a(a.d.rotationDegrees($$12));
-            this.h.k = true;
-         } else {
-            $$2.a(0.5F, -0.16666667F, 0.5F);
-            float $$13 = -$$11.c(dfl.b).p();
-            $$2.a(a.d.rotationDegrees($$13));
-            $$2.a(0.0F, -0.3125F, -0.4375F);
-            this.h.k = false;
+   public fvc(fvb $$0, fvb $$1, fvb $$2, fvb $$3, fvb $$4, fvb $$5, fvb $$6, fvb $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public fvb a(cnd $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> fvb.a;
+      };
+   }
+
+   public boolean b(cnd $$0) {
+      return this.a($$0) != fvb.a;
+   }
+
+   protected static class a implements JsonDeserializer<fvc> {
+      public fvc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         fvb $$4 = this.a($$2, $$3, cnd.c);
+         fvb $$5 = this.a($$2, $$3, cnd.b);
+         if ($$5 == fvb.a) {
+            $$5 = $$4;
          }
+
+         fvb $$6 = this.a($$2, $$3, cnd.e);
+         fvb $$7 = this.a($$2, $$3, cnd.d);
+         if ($$7 == fvb.a) {
+            $$7 = $$6;
+         }
+
+         fvb $$8 = this.a($$2, $$3, cnd.f);
+         fvb $$9 = this.a($$2, $$3, cnd.g);
+         fvb $$10 = this.a($$2, $$3, cnd.h);
+         fvb $$11 = this.a($$2, $$3, cnd.i);
+         return new fvc($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      $$2.a();
-      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
-      eqf $$14 = ggs.f.a($$3, ftp::c);
-      this.h.a($$2, $$14, $$4, $$5);
-      this.i.a($$2, $$14, $$4, $$5);
-      hx $$15 = $$0.aB_();
-      float $$16 = ((float)Math.floorMod((long)($$15.u() * 7 + $$15.v() * 9 + $$15.w() * 13) + $$9, 100L) + $$1) / 100.0F;
-      this.g.e = (-0.0125F + 0.01F * auo.b((float) (Math.PI * 2) * $$16)) * (float) Math.PI;
-      this.g.c = -32.0F;
-      a($$2, $$3, $$4, $$5, this.g, ggs.f, true, $$6);
-      $$2.b();
-      $$2.b();
-   }
-
-   public static void a(eqb $$0, fth $$1, int $$2, int $$3, fmx $$4, ggq $$5, boolean $$6, List<Pair<ih<dgm>, clm>> $$7) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
-   }
-
-   public static void a(eqb $$0, fth $$1, int $$2, int $$3, fmx $$4, ggq $$5, boolean $$6, List<Pair<ih<dgm>, clm>> $$7, boolean $$8) {
-      $$4.a($$0, $$5.a($$1, ftp::c, $$8), $$2, $$3);
-
-      for (int $$9 = 0; $$9 < 17 && $$9 < $$7.size(); $$9++) {
-         Pair<ih<dgm>, clm> $$10 = $$7.get($$9);
-         float[] $$11 = ((clm)$$10.getSecond()).d();
-         ((ih)$$10.getFirst())
-            .e()
-            .map($$1x -> $$6 ? ftw.a($$1x) : ftw.b($$1x))
-            .ifPresent($$6x -> $$4.a($$0, $$6x.a($$1, ftp::m), $$2, $$3, $$11[0], $$11[1], $$11[2], 1.0F));
+      private fvb a(JsonDeserializationContext $$0, JsonObject $$1, cnd $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (fvb)$$0.deserialize($$1.get($$3), fvb.class) : fvb.a;
       }
    }
 }

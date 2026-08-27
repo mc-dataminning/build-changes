@@ -3,40 +3,28 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ehs extends ehr {
+public class ehs extends eia {
    public static final Codec<ehs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ahg.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ehs::new)
+      $$0 -> $$0.group(ahh.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ehs::new)
    );
-   private final ahg j;
+   private final ahh j;
 
-   private ehs(ahg $$0, int $$1, int $$2, List<ejv> $$3, List<eij> $$4) {
+   private ehs(ahh $$0, int $$1, int $$2, List<eke> $$3, List<eis> $$4) {
       super($$1, $$2, $$3, $$4);
       this.j = $$0;
    }
 
    @Override
-   public ehq a() {
-      return ehn.d;
+   public ehz a() {
+      return ehw.e;
    }
 
    @Override
-   public void a(Consumer<cmy> $$0, egw $$1) {
-      ehe $$2 = $$1.a().getLootTable(this.j);
-      $$2.a($$1, $$0);
+   public void a(Consumer<cng> $$0, ehf $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   @Override
-   public void a(ehf $$0) {
-      egy<ehe> $$1 = new egy<>(ehb.c, this.j);
-      if ($$0.a($$1)) {
-         $$0.b("Table " + this.j + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a("->{" + this.j + "}", $$1)), () -> $$0.b("Unknown loot table called " + this.j));
-      }
-   }
-
-   public static ehr.a<?> a(ahg $$0) {
+   public static eia.a<?> a(ahh $$0) {
       return a(($$1, $$2, $$3, $$4) -> new ehs($$0, $$1, $$2, $$3, $$4));
    }
 }

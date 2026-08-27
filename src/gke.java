@@ -1,110 +1,110 @@
-public class gke implements gki {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final vf f = vf.a("tutorial.move.title", gkh.a("forward"), gkh.a("left"), gkh.a("back"), gkh.a("right"));
-   private static final vf g = vf.a("tutorial.move.description", gkh.a("jump"));
-   private static final vf h = vf.c("tutorial.look.title");
-   private static final vf i = vf.c("tutorial.look.description");
-   private final gkh j;
-   private ezq k;
-   private ezq l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   public gke(gkh $$0) {
-      this.j = $$0;
+public class gke {
+   final Map<gkd<?>, Object> a;
+
+   gke(Map<gkd<?>, Object> $$0) {
+      this.a = $$0;
+   }
+
+   public static gke.a a() {
+      return new gke.a();
+   }
+
+   public static Codec<gke> a(final List<gkd<?>> $$0) {
+      return (new MapCodec<gke>() {
+         public <T> RecordBuilder<T> a(gke $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
+
+            for (gkd<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
+            }
+
+            return $$3;
+         }
+
+         private <T, V> RecordBuilder<T> a(gke $$0x, RecordBuilder<T> $$1, gkd<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<gke> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<gke.a> $$2 = DataResult.success(new gke.a());
+
+            for (gkd<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(gke.a::a);
+         }
+
+         private <T, V> DataResult<gke.a> a(DataResult<gke.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, gkd<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
+            }
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(gkd::b).map($$0::createString);
+         }
+      }).codec();
+   }
+
+   @Nullable
+   public <T> T a(gkd<T> $$0) {
+      return (T)this.a.get($$0);
    }
 
    @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
-
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
-
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
-         }
-
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(gkj.b);
-         } else {
-            this.j.a(gkj.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new ezq(ezq.a.a, f, g, true);
-            this.j.e().ay().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new ezq(ezq.a.b, h, i, true);
-            this.j.e().ay().a(this.l);
-         }
-      }
+   public String toString() {
+      return this.a.toString();
    }
 
-   @Override
-   public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
-      }
+   public Set<gkd<?>> b() {
+      return this.a.keySet();
    }
 
-   @Override
-   public void a(fsh $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
-      }
-   }
+   public static class a {
+      private final Map<gkd<?>, Object> a = new Reference2ObjectOpenHashMap();
 
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
+      a() {
+      }
+
+      public <T> gke.a a(gkd<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> gke.a b(gkd<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public gke.a a(gke $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
+
+      public gke a() {
+         return new gke(this.a);
       }
    }
 }

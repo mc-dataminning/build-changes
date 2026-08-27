@@ -19,7 +19,7 @@ public class azn extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.a(this.getOutputSchema().getTypeRaw(bbw.F));
+      return this.a(this.getOutputSchema().getTypeRaw(bbw.G));
    }
 
    private <R> TypeRewriteRule a(Type<R> $$0) {

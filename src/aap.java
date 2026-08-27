@@ -1,73 +1,86 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import java.util.BitSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record aap(int a, boolean b, Set<ahf<ctp>> c, int d, int e, int f, boolean g, boolean h, boolean i, adg j) implements xf<za> {
-   public aap(ui $$0) {
-      this(
-         $$0.readInt(),
-         $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(ke.aM)),
-         $$0.n(),
-         $$0.n(),
-         $$0.n(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         new adg($$0)
-      );
+public class aap {
+   private final BitSet a;
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final List<byte[]> e;
+   private final List<byte[]> f;
+
+   public aap(cte $$0, eeo $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.a = new BitSet();
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = Lists.newArrayList();
+      this.f = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, cug.a, $$4, this.a, this.c, this.e);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, cug.b, $$4, this.b, this.d, this.f);
+         }
+      }
    }
 
-   @Override
-   public void a(ui $$0) {
-      $$0.p(this.a);
+   public aap(uj $$0, int $$1, int $$2) {
+      this.a = $$0.z();
+      this.b = $$0.z();
+      this.c = $$0.z();
+      this.d = $$0.z();
+      this.e = $$0.a((uj.a<byte[]>)($$0x -> $$0x.a(2048)));
+      this.f = $$0.a((uj.a<byte[]>)($$0x -> $$0x.a(2048)));
+   }
+
+   public void a(uj $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
-      $$0.a(this.c, ui::b);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.c(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      this.j.a($$0);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, uj::a);
+      $$0.a(this.f, uj::a);
    }
 
-   public void a(za $$0) {
-      $$0.a(this);
+   private void a(cte $$0, eeo $$1, cug $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dlr $$7 = $$1.a($$2).a(iz.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public boolean d() {
-      return this.b;
+   public BitSet a() {
+      return this.a;
    }
 
-   public Set<ahf<ctp>> e() {
+   public BitSet b() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
-   }
-
-   public int g() {
+   public List<byte[]> c() {
       return this.e;
    }
 
-   public int h() {
+   public BitSet d() {
+      return this.b;
+   }
+
+   public BitSet e() {
+      return this.d;
+   }
+
+   public List<byte[]> f() {
       return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
-   }
-
-   public boolean k() {
-      return this.i;
-   }
-
-   public adg l() {
-      return this.j;
    }
 }

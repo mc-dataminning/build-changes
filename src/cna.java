@@ -1,44 +1,27 @@
-import java.util.stream.Stream;
+public interface cna {
+   int a = 256;
+   int b = 140;
+   ahg<cmy> c = a("ponder_goat_horn");
+   ahg<cmy> d = a("sing_goat_horn");
+   ahg<cmy> e = a("seek_goat_horn");
+   ahg<cmy> f = a("feel_goat_horn");
+   ahg<cmy> g = a("admire_goat_horn");
+   ahg<cmy> h = a("call_goat_horn");
+   ahg<cmy> i = a("yearn_goat_horn");
+   ahg<cmy> j = a("dream_goat_horn");
 
-public class cna {
-   public static bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
-      $$1.c($$2);
-      return bkc.b($$1.b($$2));
+   private static ahg<cmy> a(String $$0) {
+      return ahg.a(ke.D, new ahh($$0));
    }
 
-   public static cmy a(cmy $$0, cfi $$1, cmy $$2, boolean $$3) {
-      boolean $$4 = $$1.fT().d;
-      if ($$3 && $$4) {
-         if (!$$1.fS().h($$2)) {
-            $$1.fS().e($$2);
-         }
-
-         return $$0;
-      } else {
-         if (!$$4) {
-            $$0.h(1);
-         }
-
-         if ($$0.b()) {
-            return $$2;
-         } else {
-            if (!$$1.fS().e($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
-         }
-      }
-   }
-
-   public static cmy a(cmy $$0, cfi $$1, cmy $$2) {
-      return a($$0, $$1, $$2, true);
-   }
-
-   public static void a(cbu $$0, Stream<cmy> $$1) {
-      ctp $$2 = $$0.dM();
-      if (!$$2.B) {
-         $$1.forEach($$2x -> $$2.b(new cbu($$2, $$0.dr(), $$0.dt(), $$0.dx(), $$2x)));
-      }
+   static cmy a(it<cmy> $$0) {
+      it.a($$0, c, new cmy((ih<ars>)art.mg.get(0), 140, 256.0F));
+      it.a($$0, d, new cmy((ih<ars>)art.mg.get(1), 140, 256.0F));
+      it.a($$0, e, new cmy((ih<ars>)art.mg.get(2), 140, 256.0F));
+      it.a($$0, f, new cmy((ih<ars>)art.mg.get(3), 140, 256.0F));
+      it.a($$0, g, new cmy((ih<ars>)art.mg.get(4), 140, 256.0F));
+      it.a($$0, h, new cmy((ih<ars>)art.mg.get(5), 140, 256.0F));
+      it.a($$0, i, new cmy((ih<ars>)art.mg.get(6), 140, 256.0F));
+      return it.a($$0, j, new cmy((ih<ars>)art.mg.get(7), 140, 256.0F));
    }
 }

@@ -1,36 +1,21 @@
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import org.joml.Vector3f;
+public abstract class eqj implements eqo {
+   protected boolean a;
+   protected int b = 255;
+   protected int c = 255;
+   protected int d = 255;
+   protected int e = 255;
 
-public interface eqj {
-   eqj a = a(0.0F, 0.0F, 0.0F);
-   eqj b = a((eqj.a)($$0 -> -$$0.z()));
-
-   static eqj a(float $$0, float $$1, float $$2) {
-      return a(new Vector3f($$0, $$1, $$2));
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.a = true;
    }
 
-   static eqj a(Vector3f $$0) {
-      return a($$0::distanceSquared);
-   }
-
-   static eqj a(eqj.a $$0) {
-      return $$1 -> {
-         float[] $$2 = new float[$$1.length];
-         int[] $$3 = new int[$$1.length];
-
-         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
-            $$2[$$4] = $$0.apply($$1[$$4]);
-         }
-
-         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
-         return $$3;
-      };
-   }
-
-   int[] sort(Vector3f[] var1);
-
-   public interface a {
-      float apply(Vector3f var1);
+   @Override
+   public void l() {
+      this.a = false;
    }
 }

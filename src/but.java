@@ -1,16 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class but extends buu {
-   public but(bmu $$0, double $$1) {
-      super($$0, $$1);
+public class but extends btk {
+   private final cey a;
+
+   public but(cey $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(btk.a.c, btk.a.a));
    }
 
-   @Nullable
    @Override
-   protected elt h() {
-      elt $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      elt $$2 = bxf.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : bxb.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public boolean a() {
+      if (!this.a.bx()) {
+         return false;
+      } else if (this.a.aZ()) {
+         return false;
+      } else if (!this.a.aC()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         cfq $$0 = this.a.gf();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.f($$0) > 16.0 ? false : $$0.bW != null;
+         }
+      }
+   }
+
+   @Override
+   public void c() {
+      this.a.N().n();
+   }
+
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

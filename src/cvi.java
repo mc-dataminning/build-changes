@@ -1,76 +1,134 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class cvi extends cwq {
-   public static final int a = 3;
-   public static final djy b = djx.r;
+public class cvi {
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final biq<cvi.c> a = biq.c();
+   public static final cvi b = new cvi.a().a();
+   public static final MapCodec<cvi> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(bmr.i, biq.c(cvi.c.a).promotePartial(ac.a("Spawn data: ", d::error)), avl.a(bmr.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(kd.g.q(), cvi.b.a, kd.g).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, cvi::new)
+   );
+   private final float f;
+   private final Map<bmr, biq<cvi.c>> g;
+   private final Map<bmc<?>, cvi.b> h;
 
-   @Override
-   protected abstract MapCodec<? extends cvi> a();
-
-   protected cvi(djg.d $$0) {
-      super($$0);
+   cvi(float $$0, Map<bmr, biq<cvi.c>> $$1, Map<bmc<?>, cvi.b> $$2) {
+      this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   protected abstract Iterable<elt> b(djh var1);
-
-   public static boolean c(djh $$0) {
-      return $$0.b(b) && ($$0.a(ash.ae) || $$0.a(ash.bj)) && $$0.c(b);
+   public biq<cvi.c> a(bmr $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
-   @Override
-   public void a(ctp $$0, djh $$1, elp $$2, cga $$3) {
-      if (!$$0.B && $$3.bN() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
+   @Nullable
+   public cvi.b a(bmc<?> $$0) {
+      return this.h.get($$0);
+   }
+
+   public float a() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Map<bmr, List<cvi.c>> a = Stream.of(bmr.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
+      private final Map<bmc<?>, cvi.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public cvi.a a(bmr $$0, cvi.c $$1) {
+         this.a.get($$0).add($$1);
+         return this;
+      }
+
+      public cvi.a a(bmc<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new cvi.b($$2, $$1));
+         return this;
+      }
+
+      public cvi.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public cvi a() {
+         return new cvi(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> biq.a((List)$$0.getValue()))),
+            ImmutableMap.copyOf(this.b)
+         );
       }
    }
 
-   protected boolean d(djh $$0) {
-      return !$$0.c(b);
-   }
+   public static record b(double b, double c) {
+      public static final Codec<cvi.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, cvi.b::new)
+      );
 
-   @Override
-   public void a(djh $$0, ctp $$1, hx $$2, auv $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
+      public double a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
       }
    }
 
-   private static void a(ctp $$0, elt $$1, auv $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(jx.ab, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, ars.dl, art.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
-         }
+   public static class c extends bio.a {
+      public static final Codec<cvi.c> a = atx.a(
+         RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     kd.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     bin.a.fieldOf("weight").forGetter(bio.a::a),
+                     atx.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     atx.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, cvi.c::new)
+         ),
+         (Function<cvi.c, DataResult<cvi.c>>)($$0 -> $$0.c > $$0.d
+               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
+               : DataResult.success($$0))
+      );
+      public final bmc<?> b;
+      public final int c;
+      public final int d;
+
+      public c(bmc<?> $$0, int $$1, int $$2, int $$3) {
+         this($$0, bin.a($$1), $$2, $$3);
       }
 
-      $$0.a(jx.aG, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable cfi $$0, djh $$1, ctq $$2, hx $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof cvi) {
-         ((cvi)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(jx.ab, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      public c(bmc<?> $$0, bin $$1, int $$2, int $$3) {
+         super($$1);
+         this.b = $$0.f() == bmr.h ? bmc.ax : $$0;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      $$2.a(null, $$3, ars.dn, art.e, 1.0F, 1.0F);
-      $$2.a($$0, dnr.c, $$3);
-   }
-
-   private static void a(ctq $$0, djh $$1, hx $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
-   }
-
-   @Override
-   public void a(djh $$0, ctp $$1, hx $$2, cth $$3, BiConsumer<cmy, hx> $$4) {
-      if ($$3.j() == cth.a.d && !$$1.y_() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
+      @Override
+      public String toString() {
+         return bmc.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

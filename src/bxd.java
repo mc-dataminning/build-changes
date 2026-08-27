@@ -1,38 +1,89 @@
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class bxd {
+   public static final bxd a = a();
+   private static final double b = 2.0;
+   private final boolean c;
+   private double d = -1.0;
+   private boolean e = true;
+   private boolean f = true;
    @Nullable
-   public static elt a(bmu $$0, int $$1, int $$2) {
-      boolean $$3 = bxe.a($$0, $$1);
-      return bxh.a($$0, () -> {
-         hx $$4 = bxh.a($$0.eg(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+   private Predicate<bmo> g;
+
+   private bxd(boolean $$0) {
+      this.c = $$0;
    }
 
-   @Nullable
-   public static elt a(bmu $$0, int $$1, int $$2, elt $$3, double $$4) {
-      elt $$5 = $$3.a($$0.dr(), $$0.dt(), $$0.dx());
-      boolean $$6 = bxe.a($$0, $$1);
-      return bxh.a($$0, () -> {
-         hx $$6x = bxh.a($$0.eg(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   public static bxd a() {
+      return new bxd(true);
    }
 
-   @Nullable
-   public static elt a(bmu $$0, int $$1, int $$2, elt $$3) {
-      elt $$4 = $$0.dk().d($$3);
-      boolean $$5 = bxe.a($$0, $$1);
-      return bxh.a($$0, () -> {
-         hx $$5x = bxh.a($$0.eg(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
+   public static bxd b() {
+      return new bxd(false);
    }
 
-   @Nullable
-   private static hx a(bmu $$0, int $$1, boolean $$2, hx $$3) {
-      hx $$4 = bxh.a($$0, $$1, $$0.eg(), $$3);
-      return !bxe.a($$4, $$0) && !bxe.a($$2, $$0, $$4) && !bxe.a($$0.N(), $$4) && !bxe.b($$0, $$4) ? $$4 : null;
+   public bxd c() {
+      bxd $$0 = this.c ? a() : b();
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      return $$0;
+   }
+
+   public bxd a(double $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public bxd d() {
+      this.e = false;
+      return this;
+   }
+
+   public bxd e() {
+      this.f = false;
+      return this;
+   }
+
+   public bxd a(@Nullable Predicate<bmo> $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean a(@Nullable bmo $$0, bmo $$1) {
+      if ($$0 == $$1) {
+         return false;
+      } else if (!$$1.ep()) {
+         return false;
+      } else if (this.g != null && !this.g.test($$1)) {
+         return false;
+      } else {
+         if ($$0 == null) {
+            if (this.c && (!$$1.eo() || $$1.dL().ak() == bjz.a)) {
+               return false;
+            }
+         } else {
+            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ai()) || $$0.r($$1))) {
+               return false;
+            }
+
+            if (this.d > 0.0) {
+               double $$2 = this.f ? $$1.A($$0) : 1.0;
+               double $$3 = Math.max(this.d * $$2, 2.0);
+               double $$4 = $$0.i($$1.dq(), $$1.ds(), $$1.dw());
+               if ($$4 > $$3 * $$3) {
+                  return false;
+               }
+            }
+
+            if (this.e && $$0 instanceof bmq $$5 && !$$5.O().a($$1)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

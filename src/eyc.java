@@ -1,57 +1,41 @@
-import javax.annotation.Nullable;
+public class eyc extends eyl {
+   private static final int a = 1426063360;
+   private static final int b = 4;
+   private final boolean c;
 
-public abstract class eyc<E extends eyc.a<E>> extends exb<E> {
-   private static final vf a = vf.c("narration.selection.usage");
-
-   public eyc(evi $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public eyc(int $$0, vg $$1, exc $$2) {
+      this($$0, $$1, $$2, true);
    }
 
-   @Nullable
-   @Override
-   public ewr a(fbf $$0) {
-      if (this.n() == 0) {
-         return null;
-      } else if (this.aI_() && $$0 instanceof fbf.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? ewr.a(this, ewr.a($$2)) : null;
-      } else if (!this.aI_()) {
-         E $$3 = this.i();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : ewr.a(this, ewr.a($$3));
-      } else {
-         return null;
-      }
+   public eyc(int $$0, vg $$1, exc $$2, boolean $$3) {
+      super($$1, $$2);
+      this.c($$0);
+      this.b(true);
+      this.j = true;
+      this.c = $$3;
    }
 
    @Override
-   public void a(faz $$0) {
-      E $$1 = this.t();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.i();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aI_()) {
-         $$0.a(fay.d, a);
-      }
+   protected void a(fbk $$0) {
+      $$0.a(fbj.a, this.x());
    }
 
-   public abstract static class a<E extends eyc.a<E>> extends exb.a<E> implements fba {
-      public abstract vf a();
-
-      @Override
-      public void b(faz $$0) {
-         $$0.a(fay.a, this.a());
+   @Override
+   public void b(exe $$0, int $$1, int $$2, float $$3) {
+      if (this.aK_() || this.c) {
+         int $$4 = this.B() - 4;
+         int $$5 = this.C() - 4;
+         int $$6 = this.w() + 8;
+         int $$7 = this.u() + 8;
+         int $$8 = this.c ? (this.aK_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, 1426063360);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
       }
+
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(gjs $$0) {
    }
 }

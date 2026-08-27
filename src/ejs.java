@@ -1,36 +1,41 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record ejs(ejv b) implements ejv {
-   public static final Codec<ejs> a = RecordCodecBuilder.create($$0 -> $$0.group(ejx.a.fieldOf("term").forGetter(ejs::c)).apply($$0, ejs::new));
+public class ejs extends ejv {
+   public static final Codec<ejs> a = a(ejs::new);
+   public static final Codec<ejs> b = b(ejs::new);
 
-   @Override
-   public ejw b() {
-      return ejx.b;
+   ejs(List<eke> $$0) {
+      super($$0, ekg.a($$0));
    }
 
-   public boolean a(egw $$0) {
-      return !this.b.test($$0);
-   }
-
-   @Override
-   public Set<eje<?>> a() {
-      return this.b.a();
+   public static ejs a(List<eke> $$0) {
+      return new ejs(List.copyOf($$0));
    }
 
    @Override
-   public void a(ehf $$0) {
-      ejv.super.a($$0);
-      this.b.a($$0);
+   public ekf b() {
+      return ekg.d;
    }
 
-   public static ejv.a a(ejv.a $$0) {
-      ejs $$1 = new ejs($$0.build());
-      return () -> $$1;
+   public static ejs.a a(eke.a... $$0) {
+      return new ejs.a($$0);
    }
 
-   public ejv c() {
-      return this.b;
+   public static class a extends ejv.a {
+      public a(eke.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public ejs.a and(eke.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected eke a(List<eke> $$0) {
+         return new ejs($$0);
+      }
    }
 }

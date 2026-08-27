@@ -1,15 +1,21 @@
-public enum dkx {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dkx implements avl {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-   private final int d;
+   private final String d;
 
-   private dkx(int $$0) {
+   private dkx(String $$0) {
       this.d = $$0;
    }
 
-   public int a() {
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
       return this.d;
    }
 }

@@ -1,50 +1,24 @@
-import com.mojang.brigadier.context.StringRange;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
-import java.util.List;
+public class zr implements xg<zb> {
+   private final boolean a;
 
-public class zr implements xf<za> {
-   private final int a;
-   private final Suggestions b;
-
-   public zr(int $$0, Suggestions $$1) {
+   public zr(boolean $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public zr(ui $$0) {
-      this.a = $$0.n();
-      int $$1 = $$0.n();
-      int $$2 = $$0.n();
-      StringRange $$3 = StringRange.between($$1, $$1 + $$2);
-      List<Suggestion> $$4 = $$0.a((ui.a<Suggestion>)($$1x -> {
-         String $$2x = $$1x.s();
-         vf $$3x = $$1x.c(ui::m);
-         return new Suggestion($$3, $$2x, $$3x);
-      }));
-      this.b = new Suggestions($$3, $$4);
+   public zr(uj $$0) {
+      this.a = $$0.readBoolean();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b.getRange().getStart());
-      $$0.c(this.b.getRange().getLength());
-      $$0.a(this.b.getList(), ($$0x, $$1) -> {
-         $$0x.a($$1.getText());
-         $$0x.a($$1.getTooltip(), ($$0xx, $$1x) -> $$0xx.a(vi.a($$1x)));
-      });
+   public void a(uj $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public boolean a() {
       return this.a;
-   }
-
-   public Suggestions d() {
-      return this.b;
    }
 }

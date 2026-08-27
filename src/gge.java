@@ -1,127 +1,69 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public interface gge {
-   Codec<gge> a = gge.d.d.dispatch(gge::a, gge.d::a);
-   gge b = new gge.b();
+public class gge extends sj {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
 
-   gge.d a();
+   private gge(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-   public static record a(int d, int e, gge.a.a f) implements gge {
-      public static final Codec<gge.a> c = atw.a(
-         RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     atw.j.fieldOf("width").forGetter(gge.a::b), atw.j.fieldOf("height").forGetter(gge.a::c), gge.a.a.g.fieldOf("border").forGetter(gge.a::d)
-                  )
-                  .apply($$0, gge.a::new)
-         ),
-         gge.a::a
-      );
+   public static gge a(aqj $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = Maps.newHashMap();
 
-      private static DataResult<gge.a> a(gge.a $$0) {
-         gge.a.a $$1 = $$0.d();
-         if ($$1.a() + $$1.c() >= $$0.b()) {
-            return DataResult.error(() -> "Nine-sliced texture has no horizontal center slice: " + $$1.a() + " + " + $$1.c() + " >= " + $$0.b());
-         } else {
-            return $$1.b() + $$1.d() >= $$0.c()
-               ? DataResult.error(() -> "Nine-sliced texture has no vertical center slice: " + $$1.b() + " + " + $$1.d() + " >= " + $$0.c())
-               : DataResult.success($$0);
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
+
+         for (String $$6 : $$0.a()) {
+            try {
+               ahh $$7 = new ahh($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+            }
          }
       }
 
-      @Override
-      public gge.d a() {
-         return gge.d.c;
-      }
+      return new gge(ImmutableMap.copyOf($$3), $$2);
+   }
 
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
-      }
-
-      public gge.a.a d() {
-         return this.f;
-      }
-
-      public static record a(int a, int b, int c, int d) {
-         private static final Codec<gge.a.a> e = atw.j.flatComapMap($$0 -> new gge.a.a($$0, $$0, $$0, $$0), $$0 -> {
-            OptionalInt $$1 = $$0.e();
-            return $$1.isPresent() ? DataResult.success($$1.getAsInt()) : DataResult.error(() -> "Border has different side sizes");
-         });
-         private static final Codec<gge.a.a> f = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     atw.i.fieldOf("left").forGetter(gge.a.a::a),
-                     atw.i.fieldOf("top").forGetter(gge.a.a::b),
-                     atw.i.fieldOf("right").forGetter(gge.a.a::c),
-                     atw.i.fieldOf("bottom").forGetter(gge.a.a::d)
-                  )
-                  .apply($$0, gge.a.a::new)
-         );
-         static final Codec<gge.a.a> g = Codec.either(e, f)
-            .xmap($$0 -> (gge.a.a)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0.e().isPresent() ? Either.left($$0) : Either.right($$0));
-
-         private OptionalInt e() {
-            return this.a() == this.b() && this.b() == this.c() && this.c() == this.d() ? OptionalInt.of(this.a()) : OptionalInt.empty();
+   private static void a(String $$0, List<aqh> $$1, Map<String, String> $$2) {
+      for (aqh $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            sj.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
          }
       }
    }
 
-   public static record b() implements gge {
-      public static final Codec<gge.b> c = Codec.unit(gge.b::new);
-
-      @Override
-      public gge.d a() {
-         return gge.d.a;
-      }
+   @Override
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
    }
 
-   public static record c(int d, int e) implements gge {
-      public static final Codec<gge.c> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atw.j.fieldOf("width").forGetter(gge.c::b), atw.j.fieldOf("height").forGetter(gge.c::c)).apply($$0, gge.c::new)
-      );
-
-      @Override
-      public gge.d a() {
-         return gge.d.b;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
-      }
+   @Override
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
    }
 
-   public static enum d implements avk {
-      a("stretch", gge.b.c),
-      b("tile", gge.c.c),
-      c("nine_slice", gge.a.c);
+   @Override
+   public boolean b() {
+      return this.d;
+   }
 
-      public static final Codec<gge.d> d = avk.a(gge.d::values);
-      private final String e;
-      private final Codec<? extends gge> f;
-
-      private d(String $$0, Codec<? extends gge> $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-
-      public Codec<? extends gge> a() {
-         return this.f;
-      }
+   @Override
+   public aub a(vl $$0) {
+      return ggf.a($$0, this.d);
    }
 }

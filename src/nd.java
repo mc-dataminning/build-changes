@@ -5,28 +5,28 @@ import javax.annotation.Nullable;
 
 public class nd implements mw {
    private final mx b;
-   private final cmt c;
-   private final cpz d;
+   private final cnb c;
+   private final cqh d;
    private final int e;
    private final Map<String, an<?>> f = new LinkedHashMap<>();
    @Nullable
    private String g;
-   private final cqq.a<?> h;
+   private final cqy.a<?> h;
 
-   public nd(mx $$0, cqq.a<?> $$1, cpz $$2, cto $$3, int $$4) {
+   public nd(mx $$0, cqy.a<?> $$1, cqh $$2, ctw $$3, int $$4) {
       this.b = $$0;
       this.h = $$1;
-      this.c = $$3.k();
+      this.c = $$3.j();
       this.d = $$2;
       this.e = $$4;
    }
 
-   public static nd a(cpz $$0, mx $$1, cto $$2) {
-      return new nd($$1, cqw::new, $$0, $$2, 1);
+   public static nd a(cqh $$0, mx $$1, ctw $$2) {
+      return new nd($$1, cre::new, $$0, $$2, 1);
    }
 
-   public static nd a(cpz $$0, mx $$1, cto $$2, int $$3) {
-      return new nd($$1, cqw::new, $$0, $$2, $$3);
+   public static nd a(cqh $$0, mx $$1, ctw $$2, int $$3) {
+      return new nd($$1, cre::new, $$0, $$2, $$3);
    }
 
    public nd b(String $$0, an<?> $$1) {
@@ -40,20 +40,20 @@ public class nd implements mw {
    }
 
    @Override
-   public cmt a() {
+   public cnb a() {
       return this.c;
    }
 
    @Override
-   public void a(my $$0, ahg $$1) {
+   public void a(my $$0, ahh $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", ct.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.f.forEach($$2::a);
-      cqq $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cmy(this.c, this.e));
+      cqy $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cng(this.c, this.e));
       $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private void a(ahg $$0) {
+   private void a(ahh $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }

@@ -1,18 +1,26 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public abstract class ema {
+   protected final emc a;
 
-public final class ema extends emm {
    protected ema(emc $$0) {
-      super($$0);
+      this.a = $$0;
    }
 
-   @Override
-   protected DoubleList a(ic.a $$0) {
-      return new elz(this.a.c($$0));
+   public double a(blw $$0) {
+      double $$1 = this.a.c - $$0.dq();
+      double $$2 = this.a.d - $$0.ds();
+      double $$3 = this.a.e - $$0.dw();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   @Override
-   protected int a(ic.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return auo.a(auo.a($$1 * (double)$$2, -1.0, (double)$$2));
+   public abstract ema.a c();
+
+   public emc e() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

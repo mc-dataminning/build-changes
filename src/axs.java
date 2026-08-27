@@ -4,7 +4,7 @@ import com.mojang.datafixers.schemas.Schema;
 
 public class axs extends baw {
    public axs(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Colorless shulker entity fix", bbw.x, "minecraft:shulker");
+      super($$0, $$1, "Colorless shulker entity fix", bbw.y, "minecraft:shulker");
    }
 
    @Override

@@ -1,81 +1,87 @@
-import java.util.List;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public interface clq {
-   String p_ = "color";
-   String q_ = "display";
-   int r_ = 10511680;
-
-   default boolean a(cmy $$0) {
-      sn $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99);
+public class clq extends cnb {
+   public clq(cnb.a $$0) {
+      super($$0);
    }
 
-   default int e_(cmy $$0) {
-      sn $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
+   @Override
+   public boolean i(cng $$0) {
+      return true;
    }
 
-   default void f_(cmy $$0) {
-      sn $$1 = $$0.b("display");
-      if ($$1 != null && $$1.e("color")) {
-         $$1.r("color");
+   @Override
+   public boolean a(djp $$0, ctx $$1, hx $$2, cfq $$3) {
+      if (!$$1.B) {
+         this.a($$3, $$0, $$1, $$2, false, $$3.b(bkb.a));
       }
+
+      return false;
    }
 
-   default void a(cmy $$0, int $$1) {
-      $$0.a("display").a("color", $$1);
-   }
-
-   static cmy a(cmy $$0, List<cln> $$1) {
-      cmy $$2 = cmy.f;
-      int[] $$3 = new int[3];
-      int $$4 = 0;
-      int $$5 = 0;
-      clq $$6 = null;
-      cmt $$7 = $$0.d();
-      if ($$7 instanceof clq) {
-         $$6 = (clq)$$7;
-         $$2 = $$0.c(1);
-         if ($$6.a($$0)) {
-            int $$8 = $$6.e_($$2);
-            float $$9 = (float)($$8 >> 16 & 0xFF) / 255.0F;
-            float $$10 = (float)($$8 >> 8 & 0xFF) / 255.0F;
-            float $$11 = (float)($$8 & 0xFF) / 255.0F;
-            $$4 += (int)(Math.max($$9, Math.max($$10, $$11)) * 255.0F);
-            $$3[0] += (int)($$9 * 255.0F);
-            $$3[1] += (int)($$10 * 255.0F);
-            $$3[2] += (int)($$11 * 255.0F);
-            $$5++;
-         }
-
-         for (cln $$12 : $$1) {
-            float[] $$13 = $$12.d().d();
-            int $$14 = (int)($$13[0] * 255.0F);
-            int $$15 = (int)($$13[1] * 255.0F);
-            int $$16 = (int)($$13[2] * 255.0F);
-            $$4 += Math.max($$14, Math.max($$15, $$16));
-            $$3[0] += $$14;
-            $$3[1] += $$15;
-            $$3[2] += $$16;
-            $$5++;
+   @Override
+   public bkc a(cpr $$0) {
+      cfq $$1 = $$0.o();
+      ctx $$2 = $$0.q();
+      if (!$$2.B && $$1 != null) {
+         hx $$3 = $$0.a();
+         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
+            return bkc.e;
          }
       }
 
-      if ($$6 == null) {
-         return cmy.f;
+      return bkc.a($$2.B);
+   }
+
+   private boolean a(cfq $$0, djp $$1, cty $$2, hx $$3, boolean $$4, cng $$5) {
+      if (!$$0.gp()) {
+         return false;
       } else {
-         int $$17 = $$3[0] / $$5;
-         int $$18 = $$3[1] / $$5;
-         int $$19 = $$3[2] / $$5;
-         float $$20 = (float)$$4 / (float)$$5;
-         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
-         $$17 = (int)((float)$$17 * $$20 / $$21);
-         $$18 = (int)((float)$$18 * $$20 / $$21);
-         $$19 = (int)((float)$$19 * $$20 / $$21);
-         int var26 = ($$17 << 8) + $$18;
-         var26 = (var26 << 8) + $$19;
-         $$6.a($$2, var26);
-         return $$2;
+         cwy $$6 = $$1.b();
+         djq<cwy, djp> $$7 = $$6.n();
+         Collection<dks<?>> $$8 = $$7.d();
+         String $$9 = kd.e.b($$6).toString();
+         if ($$8.isEmpty()) {
+            a($$0, vg.a(this.a() + ".empty", $$9));
+            return false;
+         } else {
+            so $$10 = $$5.a("DebugProperty");
+            String $$11 = $$10.l($$9);
+            dks<?> $$12 = $$7.a($$11);
+            if ($$4) {
+               if ($$12 == null) {
+                  $$12 = $$8.iterator().next();
+               }
+
+               djp $$13 = a($$1, $$12, $$0.fI());
+               $$2.a($$3, $$13, 18);
+               a($$0, vg.a(this.a() + ".update", $$12.f(), a($$13, $$12)));
+            } else {
+               $$12 = a($$8, $$12, $$0.fI());
+               String $$14 = $$12.f();
+               $$10.a($$9, $$14);
+               a($$0, vg.a(this.a() + ".select", $$14, a($$1, $$12)));
+            }
+
+            return true;
+         }
       }
+   }
+
+   private static <T extends Comparable<T>> djp a(djp $$0, dks<T> $$1, boolean $$2) {
+      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
+   }
+
+   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
+      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
+   }
+
+   private static void a(cfq $$0, vg $$1) {
+      ((anf)$$0).b($$1, true);
+   }
+
+   private static <T extends Comparable<T>> String a(djp $$0, dks<T> $$1) {
+      return $$1.a($$0.c($$1));
    }
 }

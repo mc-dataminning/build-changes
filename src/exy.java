@@ -1,213 +1,274 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.BooleanSupplier;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class exy extends exa {
-   private static final int a = 1;
-   private static final int b = -3092272;
-   private static final String c = "_";
-   private static final int d = -2039584;
-   private static final int e = -857677600;
-   private static final int f = 300;
-   private final ews m;
-   private final vf n;
-   private final eyb o;
-   private long p = ac.b();
+public class exy<T> extends exi {
+   public static final BooleanSupplier a = fdm::w;
+   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
+   private final vg c;
+   private int d;
+   private T f;
+   private final exy.c<T> m;
+   private final Function<T, vg> n;
+   private final Function<exy<T>, vu> o;
+   private final exy.b<T> p;
+   private final boolean q;
+   private final evu.l<T> r;
 
-   public exy(ews $$0, int $$1, int $$2, int $$3, int $$4, vf $$5, vf $$6) {
-      super($$1, $$2, $$3, $$4, $$6);
-      this.m = $$0;
-      this.n = $$5;
-      this.o = new eyb($$0, $$3 - this.b());
-      this.o.a(this::k);
+   exy(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      vg $$4,
+      vg $$5,
+      int $$6,
+      T $$7,
+      exy.c<T> $$8,
+      Function<T, vg> $$9,
+      Function<exy<T>, vu> $$10,
+      exy.b<T> $$11,
+      evu.l<T> $$12,
+      boolean $$13
+   ) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.f = $$7;
+      this.m = $$8;
+      this.n = $$9;
+      this.o = $$10;
+      this.p = $$11;
+      this.q = $$13;
+      this.r = $$12;
+      this.f();
    }
 
-   public void a(int $$0) {
-      this.o.a($$0);
-   }
-
-   public void b(Consumer<String> $$0) {
-      this.o.a($$0);
-   }
-
-   public void a(String $$0) {
-      this.o.a($$0);
-   }
-
-   public String j() {
-      return this.o.c();
+   private void f() {
+      this.a(this.r.apply(this.f));
    }
 
    @Override
-   public void a(faz $$0) {
-      $$0.a(fay.a, vf.a("gui.narrate.editBox", this.x(), this.j()));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.b($$0, $$1) && $$2 == 0) {
-         this.o.a(fdb.t());
-         this.e($$0, $$1);
-         return true;
+   public void b() {
+      if (fdm.v()) {
+         this.a(-1);
       } else {
-         return super.a($$0, $$1, $$2);
+         this.a(1);
       }
    }
 
+   private void a(int $$0) {
+      List<T> $$1 = this.m.a();
+      this.d = aup.b(this.d + $$0, $$1.size());
+      T $$2 = $$1.get(this.d);
+      this.b($$2);
+      this.p.onValueChange(this, $$2);
+   }
+
+   private T b(int $$0) {
+      List<T> $$1 = this.m.a();
+      return $$1.get(aup.b(this.d + $$0, $$1.size()));
+   }
+
    @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else if (this.b($$0, $$1) && $$2 == 0) {
-         this.o.a(true);
-         this.e($$0, $$1);
-         this.o.a(fdb.t());
-         return true;
-      } else {
-         return false;
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$3 > 0.0) {
+         this.a(-1);
+      } else if ($$3 < 0.0) {
+         this.a(1);
+      }
+
+      return true;
+   }
+
+   public void a(T $$0) {
+      List<T> $$1 = this.m.a();
+      int $$2 = $$1.indexOf($$0);
+      if ($$2 != -1) {
+         this.d = $$2;
+      }
+
+      this.b($$0);
+   }
+
+   private void b(T $$0) {
+      vg $$1 = this.c($$0);
+      this.b($$1);
+      this.f = $$0;
+      this.f();
+   }
+
+   private vg c(T $$0) {
+      return (vg)(this.q ? this.n.apply($$0) : this.d($$0));
+   }
+
+   private vu d(T $$0) {
+      return vf.a(this.c, this.n.apply($$0));
+   }
+
+   public T a() {
+      return this.f;
+   }
+
+   @Override
+   protected vu aM_() {
+      return this.o.apply(this);
+   }
+
+   @Override
+   public void a(fbk $$0) {
+      $$0.a(fbj.a, this.aM_());
+      if (this.j) {
+         T $$1 = this.b(1);
+         vg $$2 = this.c($$1);
+         if (this.aK_()) {
+            $$0.a(fbj.d, vg.a("narration.cycle_button.usage.focused", $$2));
+         } else {
+            $$0.a(fbj.d, vg.a("narration.cycle_button.usage.hovered", $$2));
+         }
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.o.e($$0);
+   public vu d() {
+      return a_((vg)(this.q ? this.d(this.f) : this.x()));
    }
 
-   @Override
-   public boolean a(char $$0, int $$1) {
-      if (this.k && this.aI_() && aa.a($$0)) {
-         this.o.b(Character.toString($$0));
-         return true;
-      } else {
-         return false;
+   public static <T> exy.a<T> a(Function<T, vg> $$0) {
+      return new exy.a<>($$0);
+   }
+
+   public static exy.a<Boolean> a(vg $$0, vg $$1) {
+      return new exy.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
+   }
+
+   public static exy.a<Boolean> e() {
+      return new exy.a<Boolean>($$0 -> $$0 ? vf.b : vf.c).a(b);
+   }
+
+   public static exy.a<Boolean> b(boolean $$0) {
+      return e().a($$0);
+   }
+
+   public static class a<T> {
+      private int a;
+      @Nullable
+      private T b;
+      private final Function<T, vg> c;
+      private evu.l<T> d = $$0x -> null;
+      private Function<exy<T>, vu> e = exy::d;
+      private exy.c<T> f = exy.c.a(ImmutableList.of());
+      private boolean g;
+
+      public a(Function<T, vg> $$0) {
+         this.c = $$0;
+      }
+
+      public exy.a<T> a(Collection<T> $$0) {
+         return this.a(exy.c.a($$0));
+      }
+
+      @SafeVarargs
+      public final exy.a<T> a(T... $$0) {
+         return this.a(ImmutableList.copyOf($$0));
+      }
+
+      public exy.a<T> a(List<T> $$0, List<T> $$1) {
+         return this.a(exy.c.a(exy.a, $$0, $$1));
+      }
+
+      public exy.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
+         return this.a(exy.c.a($$0, $$1, $$2));
+      }
+
+      public exy.a<T> a(exy.c<T> $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public exy.a<T> a(evu.l<T> $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public exy.a<T> a(T $$0) {
+         this.b = $$0;
+         int $$1 = this.f.b().indexOf($$0);
+         if ($$1 != -1) {
+            this.a = $$1;
+         }
+
+         return this;
+      }
+
+      public exy.a<T> a(Function<exy<T>, vu> $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public exy.a<T> a() {
+         this.g = true;
+         return this;
+      }
+
+      public exy<T> a(int $$0, int $$1, int $$2, int $$3, vg $$4) {
+         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
+         });
+      }
+
+      public exy<T> a(int $$0, int $$1, int $$2, int $$3, vg $$4, exy.b<T> $$5) {
+         List<T> $$6 = this.f.b();
+         if ($$6.isEmpty()) {
+            throw new IllegalStateException("No values for cycle button");
+         } else {
+            T $$7 = this.b != null ? this.b : $$6.get(this.a);
+            vg $$8 = this.c.apply($$7);
+            vg $$9 = (vg)(this.g ? $$8 : vf.a($$4, $$8));
+            return new exy<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
+         }
       }
    }
 
-   @Override
-   protected void c(ewu $$0, int $$1, int $$2, float $$3) {
-      String $$4 = this.o.c();
-      if ($$4.isEmpty() && !this.aI_()) {
-         $$0.a(this.m, this.n, this.B() + this.a(), this.C() + this.a(), this.g - this.b(), -857677600);
-      } else {
-         int $$5 = this.o.d();
-         boolean $$6 = this.aI_() && (ac.b() - this.p) / 300L % 2L == 0L;
-         boolean $$7 = $$5 < $$4.length();
-         int $$8 = 0;
-         int $$9 = 0;
-         int $$10 = this.C() + this.a();
+   public interface b<T> {
+      void onValueChange(exy<T> var1, T var2);
+   }
 
-         for (eyb.a $$11 : this.o.h()) {
-            boolean $$12 = this.a($$10, $$10 + 9);
-            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
-               if ($$12) {
-                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$5), this.B() + this.a(), $$10, -2039584) - 1;
-                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
-                  $$0.b(this.m, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
-               }
-            } else {
-               if ($$12) {
-                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$11.b()), this.B() + this.a(), $$10, -2039584) - 1;
-               }
+   public interface c<T> {
+      List<T> a();
 
-               $$9 = $$10;
+      List<T> b();
+
+      static <T> exy.c<T> a(Collection<T> $$0) {
+         final List<T> $$1 = ImmutableList.copyOf($$0);
+         return new exy.c<T>() {
+            @Override
+            public List<T> a() {
+               return $$1;
             }
 
-            $$10 += 9;
-         }
-
-         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
-            $$0.b(this.m, "_", $$8, $$9, -3092272);
-         }
-
-         if (this.o.i()) {
-            eyb.a $$13 = this.o.e();
-            int $$14 = this.B() + this.a();
-            $$10 = this.C() + this.a();
-
-            for (eyb.a $$15 : this.o.h()) {
-               if ($$13.a() > $$15.b()) {
-                  $$10 += 9;
-               } else {
-                  if ($$15.a() > $$13.b()) {
-                     break;
-                  }
-
-                  if (this.a($$10, $$10 + 9)) {
-                     int $$16 = this.m.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
-                     int $$17;
-                     if ($$13.b() > $$15.b()) {
-                        $$17 = this.g - this.a();
-                     } else {
-                        $$17 = this.m.b($$4.substring($$15.a(), $$13.b()));
-                     }
-
-                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
-                  }
-
-                  $$10 += 9;
-               }
+            @Override
+            public List<T> b() {
+               return $$1;
             }
-         }
-      }
-   }
-
-   @Override
-   protected void a(ewu $$0) {
-      super.a($$0);
-      if (this.o.b()) {
-         int $$1 = this.o.a();
-         vf $$2 = vf.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
-         $$0.b(this.m, $$2, this.B() + this.g - this.m.a($$2), this.C() + this.h + 4, 10526880);
-      }
-   }
-
-   @Override
-   public int g() {
-      return 9 * this.o.f();
-   }
-
-   @Override
-   protected boolean e() {
-      return (double)this.o.f() > this.l();
-   }
-
-   @Override
-   protected double i() {
-      return 9.0 / 2.0;
-   }
-
-   private void b(ewu $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.a(ftp.D(), $$1, $$2, $$3, $$4, -16776961);
-   }
-
-   private void k() {
-      double $$0 = this.c();
-      eyb.a $$1 = this.o.c((int)($$0 / 9.0));
-      if (this.o.d() <= $$1.a()) {
-         $$0 = (double)(this.o.g() * 9);
-      } else {
-         eyb.a $$2 = this.o.c((int)(($$0 + (double)this.h) / 9.0) - 1);
-         if (this.o.d() > $$2.b()) {
-            $$0 = (double)(this.o.g() * 9 - this.h + 9 + this.b());
-         }
+         };
       }
 
-      this.a($$0);
-   }
+      static <T> exy.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
+         final List<T> $$3 = ImmutableList.copyOf($$1);
+         final List<T> $$4 = ImmutableList.copyOf($$2);
+         return new exy.c<T>() {
+            @Override
+            public List<T> a() {
+               return $$0.getAsBoolean() ? $$4 : $$3;
+            }
 
-   private double l() {
-      return (double)(this.h - this.b()) / 9.0;
-   }
-
-   private void e(double $$0, double $$1) {
-      double $$2 = $$0 - (double)this.B() - (double)this.a();
-      double $$3 = $$1 - (double)this.C() - (double)this.a() + this.c();
-      this.o.a($$2, $$3);
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if ($$0) {
-         this.p = ac.b();
+            @Override
+            public List<T> b() {
+               return $$3;
+            }
+         };
       }
    }
 }

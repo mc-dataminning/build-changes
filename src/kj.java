@@ -55,7 +55,7 @@ public class kj {
    }
 
    static {
-      ahi.a();
+      ahj.a();
    }
 
    public class a {

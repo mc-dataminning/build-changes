@@ -1,54 +1,210 @@
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class ego {
-   private final int a;
-   private final long b;
-   private final String c;
-   private final egf d;
-   private final boolean e;
+public class ego implements eha {
+   private final ehb a;
+   private final eha b;
 
-   private ego(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+   public ego(ehb $$0, eha $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = new egf($$3, $$4);
-      this.e = $$5;
    }
 
-   public static ego a(Dynamic<?> $$0) {
-      int $$1 = $$0.get("version").asInt(0);
-      long $$2 = $$0.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> $$3 = $$0.get("Version");
-      return $$3.result().isPresent()
-         ? new ego(
-            $$1,
-            $$2,
-            $$3.get("Name").asString(aa.b().c()),
-            $$3.get("Id").asInt(aa.b().d().c()),
-            $$3.get("Series").asString(egf.a),
-            $$3.get("Snapshot").asBoolean(!aa.b().g())
-         )
-         : new ego($$1, $$2, "", 0, egf.a, false);
-   }
-
+   @Override
    public int a() {
-      return this.a;
+      return this.b.a();
    }
 
-   public long b() {
-      return this.b;
+   @Override
+   public int b() {
+      return this.b.b();
    }
 
-   public String c() {
-      return this.c;
+   @Override
+   public int c() {
+      return this.b.c();
    }
 
-   public egf d() {
-      return this.d;
+   @Override
+   public float d() {
+      return this.b.d();
    }
 
-   public boolean e() {
-      return this.e;
+   @Override
+   public long e() {
+      return this.b.e();
+   }
+
+   @Override
+   public long f() {
+      return this.b.f();
+   }
+
+   @Override
+   public String g() {
+      return this.a.g();
+   }
+
+   @Override
+   public int h() {
+      return this.b.h();
+   }
+
+   @Override
+   public void a(int $$0) {
+   }
+
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
+
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public boolean k() {
+      return this.b.k();
+   }
+
+   @Override
+   public int l() {
+      return this.b.l();
+   }
+
+   @Override
+   public ctu m() {
+      return this.a.m();
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public void a(float $$0) {
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(hx $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void f(int $$0) {
+   }
+
+   @Override
+   public void a(ctu $$0) {
+   }
+
+   @Override
+   public boolean n() {
+      return this.a.n();
+   }
+
+   @Override
+   public boolean o() {
+      return this.a.o();
+   }
+
+   @Override
+   public boolean p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public ctt q() {
+      return this.a.q();
+   }
+
+   @Override
+   public dlg.c r() {
+      return this.b.r();
+   }
+
+   @Override
+   public void a(dlg.c $$0) {
+   }
+
+   @Override
+   public bjz s() {
+      return this.a.s();
+   }
+
+   @Override
+   public boolean t() {
+      return this.a.t();
+   }
+
+   @Override
+   public elp<MinecraftServer> u() {
+      return this.b.u();
+   }
+
+   @Override
+   public int v() {
+      return 0;
+   }
+
+   @Override
+   public void g(int $$0) {
+   }
+
+   @Override
+   public int w() {
+      return 0;
+   }
+
+   @Override
+   public void h(int $$0) {
+   }
+
+   @Override
+   public UUID x() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, ctz $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

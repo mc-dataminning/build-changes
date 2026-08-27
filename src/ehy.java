@@ -1,102 +1,66 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
-public class ehy extends eii {
-   public static final Codec<ehy> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  kd.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dkk::f).toList())
-               )
-            )
-            .apply($$0, ehy::new)
-   );
-   private final ih<cwq> b;
-   private final Set<dkk<?>> c;
+public abstract class ehy implements ehq {
+   protected final List<eke> e;
+   private final Predicate<ehf> a;
 
-   ehy(List<ejv> $$0, ih<cwq> $$1, Set<dkk<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   protected ehy(List<eke> $$0) {
+      this.e = $$0;
+      this.a = ekg.a($$0);
    }
 
-   private ehy(List<ejv> $$0, ih<cwq> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().n()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   protected static <T extends ehy> P1<Mu<T>, List<eke>> a(Instance<T> $$0) {
+      return $$0.group(atx.a(ekg.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public eik b() {
-      return eil.x;
+   public void a(eho $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public Set<eje<?>> a() {
-      return ImmutableSet.of(ejh.g);
+   protected final boolean a(ehf $$0) {
+      return this.a.test($$0);
    }
 
-   @Override
-   protected cmy a(cmy $$0, egw $$1) {
-      djh $$2 = $$1.c(ejh.g);
-      if ($$2 != null) {
-         sn $$3 = $$0.w();
-         sn $$4;
-         if ($$3.b("BlockStateTag", 10)) {
-            $$4 = $$3.p("BlockStateTag");
-         } else {
-            $$4 = new sn();
-            $$3.a("BlockStateTag", $$4);
-         }
+   public abstract ehz a();
 
-         for (dkk<?> $$6 : this.c) {
-            if ($$2.b($$6)) {
-               $$4.a($$6.f(), a($$2, $$6));
-            }
-         }
+   public abstract static class a<T extends ehy.a<T>> implements ejx<T> {
+      private final Builder<eke> a = ImmutableList.builder();
+
+      protected abstract T aG_();
+
+      public T a(eke.a $$0) {
+         this.a.add($$0.build());
+         return this.aG_();
       }
 
-      return $$0;
-   }
-
-   public static ehy.a a(cwq $$0) {
-      return new ehy.a($$0);
-   }
-
-   private static <T extends Comparable<T>> String a(djh $$0, dkk<T> $$1) {
-      T $$2 = $$0.c($$1);
-      return $$1.a($$2);
-   }
-
-   public static class a extends eii.a<ehy.a> {
-      private final ih<cwq> a;
-      private final Builder<dkk<?>> b = ImmutableSet.builder();
-
-      a(cwq $$0) {
-         this.a = $$0.r();
+      public final T e() {
+         return this.aG_();
       }
 
-      public ehy.a a(dkk<?> $$0) {
-         if (!this.a.a().n().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
-         }
+      protected List<eke> f() {
+         return this.a.build();
       }
 
-      protected ehy.a a() {
-         return this;
+      public ehp.a a(ehy.a<?> $$0) {
+         return new ehp.a(this, $$0);
       }
 
-      @Override
-      public eij b() {
-         return new ehy(this.g(), this.a, this.b.build());
+      public ehu.a b(ehy.a<?> $$0) {
+         return new ehu.a(this, $$0);
       }
+
+      public eic.a c(ehy.a<?> $$0) {
+         return new eic.a(this, $$0);
+      }
+
+      public abstract ehy b();
    }
 }

@@ -1,27 +1,24 @@
-import javax.annotation.Nullable;
-
-public class abw implements xf<za> {
+public class abw implements xg<zb> {
    private final int a;
 
-   public abw(blv $$0) {
-      this.a = $$0.aj();
+   public abw(dlg $$0) {
+      this.a = $$0.r();
    }
 
-   public abw(ui $$0) {
+   public abw(uj $$0) {
       this.a = $$0.n();
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.c(this.a);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public blv a(ctp $$0) {
-      return $$0.a(this.a);
+   public int a() {
+      return this.a;
    }
 }

@@ -1,29 +1,76 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class fwr implements fws.a {
-   private final evi a;
-   private double b = Double.MIN_VALUE;
-   private List<emm> c = Collections.emptyList();
+public class fwr {
+   private final Long2ObjectMap<fwr.a> a = new Long2ObjectOpenHashMap();
 
-   public fwr(evi $$0) {
-      this.a = $$0;
-   }
+   @Nullable
+   public fwq a(ctx $$0, hx $$1, hx $$2, int $$3) {
+      int $$4 = iz.a($$1.u() - $$3);
+      int $$5 = iz.a($$1.w() - $$3);
+      int $$6 = iz.a($$2.u() + $$3);
+      int $$7 = iz.a($$2.w() + $$3);
+      fwr.a[][] $$8 = new fwr.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-   @Override
-   public void a(eqb $$0, fth $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         blv $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dM().d($$6, $$6.cH().g(6.0)));
+      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
+         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
+            $$8[$$9 - $$4][$$10 - $$5] = (fwr.a)this.a.computeIfAbsent(cte.c($$9, $$10), $$1x -> new fwr.a($$0.d(cte.a($$1x), cte.b($$1x))));
+         }
       }
 
-      eqf $$7 = $$1.getBuffer(ftp.w());
+      if (a($$1, $$2, $$4, $$5, $$8)) {
+         return null;
+      } else {
+         fwp[][] $$11 = new fwp[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-      for (emm $$8 : this.c) {
-         ftf.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
+            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
+               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
+            }
+         }
+
+         return new fwq($$0, $$4, $$5, $$11);
+      }
+   }
+
+   private static boolean a(hx $$0, hx $$1, int $$2, int $$3, fwr.a[][] $$4) {
+      int $$5 = iz.a($$0.u());
+      int $$6 = iz.a($$0.w());
+      int $$7 = iz.a($$1.u());
+      int $$8 = iz.a($$1.w());
+
+      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
+         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+            dlw $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
+            if (!$$11.a($$0.v(), $$1.v())) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   static final class a {
+      private final dlw a;
+      @Nullable
+      private fwp b;
+
+      a(dlw $$0) {
+         this.a = $$0;
+      }
+
+      public dlw a() {
+         return this.a;
+      }
+
+      public fwp b() {
+         if (this.b == null) {
+            this.b = new fwp(this.a);
+         }
+
+         return this.b;
       }
    }
 }

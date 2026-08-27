@@ -1,46 +1,20 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-class emr {
-   private final Reference2ObjectOpenHashMap<emp, emu> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+public class emr extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
 
-   @Nullable
-   public emu a(emp $$0) {
-      return (emu)this.a.get($$0);
+   public emr(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public emu a(emp $$0, Consumer<emu> $$1) {
-      return (emu)this.a.computeIfAbsent($$0, $$1x -> {
-         emu $$2 = new emu();
-         $$1.accept($$2);
-         return $$2;
-      });
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
    }
 
-   public boolean b(emp $$0) {
-      return this.a.remove($$0) != null;
-   }
-
-   public boolean a() {
-      return !this.a.isEmpty();
-   }
-
-   public Object2IntMap<emp> b() {
-      Object2IntMap<emp> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
-   }
-
-   void a(emp $$0, emu $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   Map<emp, emu> c() {
-      return Collections.unmodifiableMap(this.a);
+   public int size() {
+      return this.a.size();
    }
 }

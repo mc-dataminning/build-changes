@@ -1,151 +1,225 @@
-import com.google.common.base.Suppliers;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.IntUnaryOperator;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gey implements ger {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<gey> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.list(ahg.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
-               ahg.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
-               Codec.unboundedMap(Codec.STRING, ahg.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, gey::new)
-   );
-   private final List<ahg> d;
-   private final Map<String, ahg> e;
-   private final ahg f;
+public class gey<T extends gey.a> {
+   private static final Comparator<gey.b<?>> a = Comparator.<gey.b<?>, Integer>comparing($$0 -> -$$0.c)
+      .thenComparing($$0 -> -$$0.b)
+      .thenComparing($$0 -> $$0.a.c());
+   private final int b;
+   private final List<gey.b<T>> c = new ArrayList<>();
+   private final List<gey.c<T>> d = new ArrayList<>();
+   private int e;
+   private int f;
+   private final int g;
+   private final int h;
 
-   private gey(List<ahg> $$0, ahg $$1, Map<String, ahg> $$2) {
-      this.d = $$0;
-      this.e = $$2;
-      this.f = $$1;
+   public gey(int $$0, int $$1, int $$2) {
+      this.b = $$2;
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   @Override
-   public void a(aqi $$0, ger.a $$1) {
-      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
-      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
-      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
+   public int a() {
+      return this.e;
+   }
 
-      for (ahg $$4 : this.d) {
-         ahg $$5 = a.a($$4);
-         Optional<aqg> $$6 = $$0.getResource($$5);
-         if ($$6.isEmpty()) {
-            c.warn("Unable to find texture {}", $$5);
+   public int b() {
+      return this.f;
+   }
+
+   public void a(T $$0) {
+      gey.b<T> $$1 = new gey.b<>($$0, this.b);
+      this.c.add($$1);
+   }
+
+   public void c() {
+      List<gey.b<T>> $$0 = new ArrayList<>(this.c);
+      $$0.sort(a);
+
+      for (gey.b<T> $$1 : $$0) {
+         if (!this.a($$1)) {
+            throw new gez($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
+         }
+      }
+   }
+
+   public void a(gey.d<T> $$0) {
+      for (gey.c<T> $$1 : this.d) {
+         $$1.a($$0);
+      }
+   }
+
+   static int a(int $$0, int $$1) {
+      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
+   }
+
+   private boolean a(gey.b<T> $$0) {
+      for (gey.c<T> $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return this.b($$0);
+   }
+
+   private boolean b(gey.b<T> $$0) {
+      int $$1 = aup.c(this.e);
+      int $$2 = aup.c(this.f);
+      int $$3 = aup.c(this.e + $$0.b);
+      int $$4 = aup.c(this.f + $$0.c);
+      boolean $$5 = $$3 <= this.g;
+      boolean $$6 = $$4 <= this.h;
+      if (!$$5 && !$$6) {
+         return false;
+      } else {
+         boolean $$7 = $$5 && $$1 != $$3;
+         boolean $$8 = $$6 && $$2 != $$4;
+         boolean $$9;
+         if ($$7 ^ $$8) {
+            $$9 = $$7;
          } else {
-            gex $$7 = new gex($$5, $$6.get(), $$3.size());
-
-            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
-               ahg $$9 = $$4.e("_" + $$8.getKey());
-               $$1.a($$9, new gey.a($$7, $$8.getValue(), $$9));
-            }
+            $$9 = $$5 && $$1 <= $$2;
          }
+
+         gey.c<T> $$11;
+         if ($$9) {
+            if (this.f == 0) {
+               this.f = $$4;
+            }
+
+            $$11 = new gey.c<>(this.e, 0, $$3 - this.e, this.f);
+            this.e = $$3;
+         } else {
+            $$11 = new gey.c<>(0, this.f, this.e, $$4 - this.f);
+            this.f = $$4;
+         }
+
+         $$11.a($$0);
+         this.d.add($$11);
+         return true;
       }
    }
 
-   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
-      if ($$1.length != $$0.length) {
-         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
-         throw new IllegalArgumentException();
-      } else {
-         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
+   public interface a {
+      int a();
 
-         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
-            int $$4 = $$0[$$3];
-            if (aty.a.a($$4) != 0) {
-               $$2.put(aty.a.e($$4), $$1[$$3]);
-            }
-         }
+      int b();
 
-         return $$1x -> {
-            int $$2x = aty.a.a($$1x);
-            if ($$2x == 0) {
-               return $$1x;
-            } else {
-               int $$3x = aty.a.e($$1x);
-               int $$4x = $$2.getOrDefault($$3x, aty.a.f($$3x));
-               int $$5 = aty.a.a($$4x);
-               return aty.a.a($$2x * $$5 / 255, $$4x);
-            }
-         };
+      ahh c();
+   }
+
+   static record b<T extends gey.a>(T a, int b, int c) {
+
+      public b(T $$0, int $$1) {
+         this($$0, gey.a($$0.a(), $$1), gey.a($$0.b(), $$1));
       }
    }
 
-   public static int[] a(aqi $$0, ahg $$1) {
-      Optional<aqg> $$2 = $$0.getResource(a.a($$1));
-      if ($$2.isEmpty()) {
-         c.error("Failed to load palette image {}", $$1);
-         throw new IllegalArgumentException();
-      } else {
-         try {
-            int[] var5;
-            try (
-               InputStream $$3 = $$2.get().d();
-               epc $$4 = epc.a($$3);
-            ) {
-               var5 = $$4.d();
-            }
-
-            return var5;
-         } catch (Exception var11) {
-            c.error("Couldn't load texture {}", $$1, var11);
-            throw new IllegalArgumentException();
-         }
-      }
-   }
-
-   @Override
-   public get a() {
-      return geu.e;
-   }
-
-   static record a(gex a, Supplier<IntUnaryOperator> b, ahg c) implements ger.b {
+   public static class c<T extends gey.a> {
+      private final int a;
+      private final int b;
+      private final int c;
+      private final int d;
       @Nullable
-      public geh a(geq $$0) {
-         Object var3;
-         try {
-            epc $$1 = this.a.a().a(this.b.get());
-            return new geh(this.c, new gfz($$1.a(), $$1.b()), $$1, aqk.a);
-         } catch (IllegalArgumentException | IOException var7) {
-            gey.c.error("unable to apply palette to {}", this.c, var7);
-            var3 = null;
-         } finally {
-            this.a.b();
-         }
+      private List<gey.c<T>> e;
+      @Nullable
+      private gey.b<T> f;
 
-         return (geh)var3;
+      public c(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      @Override
-      public void a() {
-         this.a.b();
-      }
-
-      public gex b() {
+      public int a() {
          return this.a;
       }
 
-      public Supplier<IntUnaryOperator> c() {
+      public int b() {
          return this.b;
       }
 
-      public ahg d() {
-         return this.c;
+      public boolean a(gey.b<T> $$0) {
+         if (this.f != null) {
+            return false;
+         } else {
+            int $$1 = $$0.b;
+            int $$2 = $$0.c;
+            if ($$1 <= this.c && $$2 <= this.d) {
+               if ($$1 == this.c && $$2 == this.d) {
+                  this.f = $$0;
+                  return true;
+               } else {
+                  if (this.e == null) {
+                     this.e = new ArrayList<>(1);
+                     this.e.add(new gey.c<>(this.a, this.b, $$1, $$2));
+                     int $$3 = this.c - $$1;
+                     int $$4 = this.d - $$2;
+                     if ($$4 > 0 && $$3 > 0) {
+                        int $$5 = Math.max(this.d, $$3);
+                        int $$6 = Math.max(this.c, $$4);
+                        if ($$5 >= $$6) {
+                           this.e.add(new gey.c<>(this.a, this.b + $$2, $$1, $$4));
+                           this.e.add(new gey.c<>(this.a + $$1, this.b, $$3, this.d));
+                        } else {
+                           this.e.add(new gey.c<>(this.a + $$1, this.b, $$3, $$2));
+                           this.e.add(new gey.c<>(this.a, this.b + $$2, this.c, $$4));
+                        }
+                     } else if ($$3 == 0) {
+                        this.e.add(new gey.c<>(this.a, this.b + $$2, $$1, $$4));
+                     } else if ($$4 == 0) {
+                        this.e.add(new gey.c<>(this.a + $$1, this.b, $$3, $$2));
+                     }
+                  }
+
+                  for (gey.c<T> $$7 : this.e) {
+                     if ($$7.a($$0)) {
+                        return true;
+                     }
+                  }
+
+                  return false;
+               }
+            } else {
+               return false;
+            }
+         }
       }
+
+      public void a(gey.d<T> $$0) {
+         if (this.f != null) {
+            $$0.load(this.f.a, this.a(), this.b());
+         } else if (this.e != null) {
+            for (gey.c<T> $$1 : this.e) {
+               $$1.a($$0);
+            }
+         }
+      }
+
+      @Override
+      public String toString() {
+         return "Slot{originX="
+            + this.a
+            + ", originY="
+            + this.b
+            + ", width="
+            + this.c
+            + ", height="
+            + this.d
+            + ", texture="
+            + this.f
+            + ", subSlots="
+            + this.e
+            + "}";
+      }
+   }
+
+   public interface d<T extends gey.a> {
+      void load(T var1, int var2, int var3);
    }
 }

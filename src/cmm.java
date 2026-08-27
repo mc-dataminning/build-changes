@@ -1,58 +1,55 @@
-public class cmm extends cmt {
-   private static final int a = 40;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cmm(cmt.a $$0) {
+public class cmm extends cnb {
+   public cmm(cnb.a $$0) {
       super($$0);
    }
 
    @Override
-   public cmy a(cmy $$0, ctp $$1, bml $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$2 instanceof ane $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(asc.c.b(this));
+   public void a(cng $$0, @Nullable ctx $$1, List<vg> $$2, coy $$3) {
+      so $$4 = $$0.b("Explosion");
+      if ($$4 != null) {
+         a($$4, $$2);
+      }
+   }
+
+   public static void a(so $$0, List<vg> $$1) {
+      cml.a $$2 = cml.a.a($$0.f("Type"));
+      $$1.add(vg.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
+      int[] $$3 = $$0.n("Colors");
+      if ($$3.length > 0) {
+         $$1.add(a(vg.i().a(n.h), $$3));
       }
 
-      if (!$$1.B) {
-         $$2.d(blk.s);
+      int[] $$4 = $$0.n("FadeColors");
+      if ($$4.length > 0) {
+         $$1.add(a(vg.c("item.minecraft.firework_star.fade_to").b(vf.u).a(n.h), $$4));
       }
 
-      if ($$0.b()) {
-         return new cmy(cnb.si);
-      } else {
-         if ($$2 instanceof cfi $$4 && !$$4.fT().d) {
-            cmy $$5 = new cmy(cnb.si);
-            if (!$$4.fS().e($$5)) {
-               $$4.a($$5, false);
-            }
+      if ($$0.q("Trail")) {
+         $$1.add(vg.c("item.minecraft.firework_star.trail").a(n.h));
+      }
+
+      if ($$0.q("Flicker")) {
+         $$1.add(vg.c("item.minecraft.firework_star.flicker").a(n.h));
+      }
+   }
+
+   private static vg a(vu $$0, int[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
          }
 
-         return $$0;
+         $$0.b(a($$1[$$2]));
       }
+
+      return $$0;
    }
 
-   @Override
-   public int b(cmy $$0) {
-      return 40;
-   }
-
-   @Override
-   public cos c(cmy $$0) {
-      return cos.c;
-   }
-
-   @Override
-   public arr an_() {
-      return ars.lP;
-   }
-
-   @Override
-   public arr ao_() {
-      return ars.lP;
-   }
-
-   @Override
-   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
-      return cna.a($$0, $$1, $$2);
+   private static vg a(int $$0) {
+      clv $$1 = clv.b($$0);
+      return $$1 == null ? vg.c("item.minecraft.firework_star.custom_color") : vg.c("item.minecraft.firework_star." + $$1.b());
    }
 }

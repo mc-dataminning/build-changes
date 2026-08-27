@@ -1,16 +1,29 @@
-public class ejh {
-   public static final eje<blv> a = a("this_entity");
-   public static final eje<cfi> b = a("last_damage_player");
-   public static final eje<bkt> c = a("damage_source");
-   public static final eje<blv> d = a("killer_entity");
-   public static final eje<blv> e = a("direct_killer_entity");
-   public static final eje<elt> f = a("origin");
-   public static final eje<djh> g = a("block_state");
-   public static final eje<dgv> h = a("block_entity");
-   public static final eje<cmy> i = a("tool");
-   public static final eje<Float> j = a("explosion_radius");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   private static <T> eje<T> a(String $$0) {
-      return new eje<>(new ahg($$0));
+public class ejh extends eir {
+   public static final Codec<ejh> a = RecordCodecBuilder.create($$0 -> a($$0).and(tm.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, ejh::new));
+   private final so b;
+
+   private ejh(List<eke> $$0, so $$1) {
+      super($$0);
+      this.b = $$1;
+   }
+
+   @Override
+   public eit b() {
+      return eiu.g;
+   }
+
+   @Override
+   public cng a(cng $$0, ehf $$1) {
+      $$0.w().a(this.b);
+      return $$0;
+   }
+
+   @Deprecated
+   public static eir.a<?> a(so $$0) {
+      return a($$1 -> new ejh($$1, $$0));
    }
 }

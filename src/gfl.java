@@ -1,15 +1,46 @@
-public class gfl extends gfp {
-   private static final ahg a = new ahg("back");
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-   public gfl(geo $$0) {
-      super($$0, new ahg("textures/atlas/paintings.png"), new ahg("paintings"));
+public class gfl {
+   private final ahh a;
+   private final aqh b;
+   private final AtomicReference<epl> c = new AtomicReference<>();
+   private final AtomicInteger d;
+
+   public gfl(ahh $$0, aqh $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   public gen a(cbq $$0) {
-      return this.a(kd.l.b($$0));
+   public epl a() throws IOException {
+      epl $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = epl.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
+      }
+
+      return $$0;
    }
 
-   public gen a() {
-      return this.a(a);
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         epl $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
    }
 }

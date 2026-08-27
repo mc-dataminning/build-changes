@@ -1,101 +1,151 @@
-import com.google.common.hash.Hashing;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class cuq {
-   public static final int a = is.a(8);
-   private static final int b = 2;
-   private static final int c = 4;
-   private static final int d = 3;
-   private final cuq.a e;
-   private final long f;
+   private final cty a;
+   private final dpw b;
+   private final dzp c;
 
-   public cuq(cuq.a $$0, long $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public cuq(cty $$0, dpw $$1, dzp $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static long a(long $$0) {
-      return Hashing.sha256().hashLong($$0).asLong();
+   public cuq a(anl $$0) {
+      if ($$0.E() != this.a) {
+         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.E() + ", region: " + $$0);
+      } else {
+         return new cuq($$0, this.b, this.c);
+      }
    }
 
-   public cuq a(cuq.a $$0) {
-      return new cuq($$0, this.f);
-   }
+   public List<dzw> a(cte $$0, Predicate<dzo> $$1) {
+      Map<dzo, LongSet> $$2 = this.a.a($$0.e, $$0.f, dlq.e).h();
+      Builder<dzw> $$3 = ImmutableList.builder();
 
-   public ih<cuo> a(hx $$0) {
-      int $$1 = $$0.u() - 2;
-      int $$2 = $$0.v() - 2;
-      int $$3 = $$0.w() - 2;
-      int $$4 = $$1 >> 2;
-      int $$5 = $$2 >> 2;
-      int $$6 = $$3 >> 2;
-      double $$7 = (double)($$1 & 3) / 4.0;
-      double $$8 = (double)($$2 & 3) / 4.0;
-      double $$9 = (double)($$3 & 3) / 4.0;
-      int $$10 = 0;
-      double $$11 = Double.POSITIVE_INFINITY;
-
-      for (int $$12 = 0; $$12 < 8; $$12++) {
-         boolean $$13 = ($$12 & 4) == 0;
-         boolean $$14 = ($$12 & 2) == 0;
-         boolean $$15 = ($$12 & 1) == 0;
-         int $$16 = $$13 ? $$4 : $$4 + 1;
-         int $$17 = $$14 ? $$5 : $$5 + 1;
-         int $$18 = $$15 ? $$6 : $$6 + 1;
-         double $$19 = $$13 ? $$7 : $$7 - 1.0;
-         double $$20 = $$14 ? $$8 : $$8 - 1.0;
-         double $$21 = $$15 ? $$9 : $$9 - 1.0;
-         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
-         if ($$11 > $$22) {
-            $$10 = $$12;
-            $$11 = $$22;
+      for (Entry<dzo, LongSet> $$4 : $$2.entrySet()) {
+         dzo $$5 = $$4.getKey();
+         if ($$1.test($$5)) {
+            this.a($$5, $$4.getValue(), $$3::add);
          }
       }
 
-      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
-      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
-      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
-      return this.e.getNoiseBiome($$23, $$24, $$25);
+      return $$3.build();
    }
 
-   public ih<cuo> a(double $$0, double $$1, double $$2) {
-      int $$3 = is.a(auo.a($$0));
-      int $$4 = is.a(auo.a($$1));
-      int $$5 = is.a(auo.a($$2));
-      return this.a($$3, $$4, $$5);
+   public List<dzw> a(iz $$0, dzo $$1) {
+      LongSet $$2 = this.a.a($$0.a(), $$0.c(), dlq.e).b($$1);
+      Builder<dzw> $$3 = ImmutableList.builder();
+      this.a($$1, $$2, $$3::add);
+      return $$3.build();
    }
 
-   public ih<cuo> b(hx $$0) {
-      int $$1 = is.a($$0.u());
-      int $$2 = is.a($$0.v());
-      int $$3 = is.a($$0.w());
-      return this.a($$1, $$2, $$3);
+   public void a(dzo $$0, LongSet $$1, Consumer<dzw> $$2) {
+      LongIterator var4 = $$1.iterator();
+
+      while (var4.hasNext()) {
+         long $$3 = (Long)var4.next();
+         iz $$4 = iz.a(new cte($$3), this.a.an());
+         dzw $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), dlq.d));
+         if ($$5 != null && $$5.b()) {
+            $$2.accept($$5);
+         }
+      }
    }
 
-   public ih<cuo> a(int $$0, int $$1, int $$2) {
-      return this.e.getNoiseBiome($$0, $$1, $$2);
+   @Nullable
+   public dzw a(iz $$0, dzo $$1, dmi $$2) {
+      return $$2.a($$1);
    }
 
-   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      long $$7 = auk.a($$0, (long)$$1);
-      $$7 = auk.a($$7, (long)$$2);
-      $$7 = auk.a($$7, (long)$$3);
-      $$7 = auk.a($$7, (long)$$1);
-      $$7 = auk.a($$7, (long)$$2);
-      $$7 = auk.a($$7, (long)$$3);
-      double $$8 = b($$7);
-      $$7 = auk.a($$7, $$0);
-      double $$9 = b($$7);
-      $$7 = auk.a($$7, $$0);
-      double $$10 = b($$7);
-      return auo.k($$6 + $$10) + auo.k($$5 + $$9) + auo.k($$4 + $$8);
+   public void a(iz $$0, dzo $$1, dzw $$2, dmi $$3) {
+      $$3.a($$1, $$2);
    }
 
-   private static double b(long $$0) {
-      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
-      return ($$1 - 0.5) * 0.9;
+   public void a(iz $$0, dzo $$1, long $$2, dmi $$3) {
+      $$3.a($$1, $$2);
    }
 
-   public interface a {
-      ih<cuo> getNoiseBiome(int var1, int var2, int var3);
+   public boolean a() {
+      return this.b.c();
+   }
+
+   public dzw a(hx $$0, dzo $$1) {
+      for (dzw $$2 : this.a(iz.a($$0), $$1)) {
+         if ($$2.a().b($$0)) {
+            return $$2;
+         }
+      }
+
+      return dzw.b;
+   }
+
+   public dzw a(hx $$0, ahg<dzo> $$1) {
+      dzo $$2 = this.b().d(ke.aD).a($$1);
+      return $$2 == null ? dzw.b : this.b($$0, $$2);
+   }
+
+   public dzw a(hx $$0, asx<dzo> $$1) {
+      it<dzo> $$2 = this.b().d(ke.aD);
+
+      for (dzw $$3 : this.a(new cte($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1xx -> $$1xx.a($$1)).orElse(false))) {
+         if (this.a($$0, $$3)) {
+            return $$3;
+         }
+      }
+
+      return dzw.b;
+   }
+
+   public dzw b(hx $$0, dzo $$1) {
+      for (dzw $$2 : this.a(iz.a($$0), $$1)) {
+         if (this.a($$0, $$2)) {
+            return $$2;
+         }
+      }
+
+      return dzw.b;
+   }
+
+   public boolean a(hx $$0, dzw $$1) {
+      for (dzs $$2 : $$1.i()) {
+         if ($$2.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(hx $$0) {
+      iz $$1 = iz.a($$0);
+      return this.a.a($$1.a(), $$1.c(), dlq.e).w();
+   }
+
+   public Map<dzo, LongSet> b(hx $$0) {
+      iz $$1 = iz.a($$0);
+      return this.a.a($$1.a(), $$1.c(), dlq.e).h();
+   }
+
+   public dzq a(cte $$0, dzo $$1, boolean $$2) {
+      return this.c.a($$0, $$1, $$2);
+   }
+
+   public void a(dzw $$0) {
+      $$0.e();
+      this.c.a($$0.c(), $$0.h());
+   }
+
+   public iu b() {
+      return this.a.I_();
    }
 }

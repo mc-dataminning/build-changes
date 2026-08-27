@@ -1,52 +1,138 @@
-import java.io.DataOutput;
-import java.io.IOException;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Pattern;
 
-public interface tk {
-   int d = 8;
-   int e = 12;
-   int f = 4;
-   int g = 28;
-   byte h = 0;
-   byte i = 1;
-   byte j = 2;
-   byte k = 3;
-   byte l = 4;
-   byte m = 5;
-   byte n = 6;
-   byte o = 7;
-   byte p = 8;
-   byte q = 9;
-   byte r = 10;
-   byte s = 11;
-   byte t = 12;
-   byte u = 99;
-   int v = 512;
+public class tk implements tp {
+   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
+   private final StringBuilder b = new StringBuilder();
 
-   void a(DataOutput var1) throws IOException;
-
-   @Override
-   String toString();
-
-   byte b();
-
-   tm<?> c();
-
-   tk d();
-
-   int a();
-
-   default String t_() {
-      return new tj().a(this);
+   public String a(tl $$0) {
+      $$0.a(this);
+      return this.b.toString();
    }
 
-   void a(to var1);
+   @Override
+   public void a(tj $$0) {
+      this.b.append(tj.b($$0.t_()));
+   }
 
-   th.b a(th var1);
+   @Override
+   public void a(sm $$0) {
+      this.b.append($$0.l()).append('b');
+   }
 
-   default void b(th $$0) {
-      th.b $$1 = $$0.b(this.c());
-      if ($$1 == th.b.a) {
-         this.a($$0);
+   @Override
+   public void a(tg $$0) {
+      this.b.append($$0.l()).append('s');
+   }
+
+   @Override
+   public void a(st $$0) {
+      this.b.append($$0.l());
+   }
+
+   @Override
+   public void a(sw $$0) {
+      this.b.append($$0.l()).append('L');
+   }
+
+   @Override
+   public void a(sr $$0) {
+      this.b.append($$0.k()).append('f');
+   }
+
+   @Override
+   public void a(sp $$0) {
+      this.b.append($$0.j()).append('d');
+   }
+
+   @Override
+   public void a(sl $$0) {
+      this.b.append("[B;");
+      byte[] $$1 = $$0.e();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]).append('B');
       }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(ss $$0) {
+      this.b.append("[I;");
+      int[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]);
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(sv $$0) {
+      this.b.append("[L;");
+      long[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]).append('L');
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(su $$0) {
+      this.b.append('[');
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         if ($$1 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append(new tk().a($$0.k($$1)));
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(so $$0) {
+      this.b.append('{');
+      List<String> $$1 = Lists.newArrayList($$0.e());
+      Collections.sort($$1);
+
+      for (String $$2 : $$1) {
+         if (this.b.length() != 1) {
+            this.b.append(',');
+         }
+
+         this.b.append(a($$2)).append(':').append(new tk().a($$0.c($$2)));
+      }
+
+      this.b.append('}');
+   }
+
+   protected static String a(String $$0) {
+      return a.matcher($$0).matches() ? $$0 : tj.b($$0);
+   }
+
+   @Override
+   public void a(sq $$0) {
+      this.b.append("END");
    }
 }

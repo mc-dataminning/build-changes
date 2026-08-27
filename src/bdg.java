@@ -18,22 +18,22 @@ public class bdg extends Schema {
          () -> DSL.hook(
                DSL.optionalFields(
                   "id",
-                  bbw.z.in($$0),
+                  bbw.A.in($$0),
                   "tag",
                   DSL.optionalFields(
                      "EntityTag",
-                     bbw.w.in($$0),
+                     bbw.x.in($$0),
                      "BlockEntityTag",
                      bbw.s.in($$0),
                      "CanDestroy",
-                     DSL.list(bbw.y.in($$0)),
+                     DSL.list(bbw.z.in($$0)),
                      "CanPlaceOn",
-                     DSL.list(bbw.y.in($$0)),
+                     DSL.list(bbw.z.in($$0)),
                      "Items",
                      DSL.list(bbw.t.in($$0))
                   )
                ),
-               bgc.a,
+               bgd.a,
                HookFunction.IDENTITY
             )
       );

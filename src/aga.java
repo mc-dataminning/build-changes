@@ -1,5 +1,7 @@
-public record aga(ahg a) implements afy {
+public record aga() implements afy {
+   public static final aga a = new aga();
+
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
    }
 }

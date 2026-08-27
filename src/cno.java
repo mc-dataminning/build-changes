@@ -1,31 +1,40 @@
-import java.util.function.Predicate;
+public class cno extends cnb {
+   private static final int a = 32;
 
-public abstract class cno extends cmt {
-   public static final Predicate<cmy> c = $$0 -> $$0.a(asp.at);
-   public static final Predicate<cmy> d = c.or($$0 -> $$0.a(cnb.un));
-
-   public cno(cmt.a $$0) {
+   public cno(cnb.a $$0) {
       super($$0);
    }
 
-   public Predicate<cmy> e() {
-      return this.b();
-   }
-
-   public abstract Predicate<cmy> b();
-
-   public static cmy a(bml $$0, Predicate<cmy> $$1) {
-      if ($$1.test($$0.b(bka.b))) {
-         return $$0.b(bka.b);
-      } else {
-         return $$1.test($$0.b(bka.a)) ? $$0.b(bka.a) : cmy.f;
+   @Override
+   public cng a(cng $$0, ctx $$1, bmo $$2) {
+      if ($$2 instanceof anf $$3) {
+         am.A.a($$3, $$0);
+         $$3.b(asd.c.b(this));
       }
+
+      if ($$2 instanceof cfq && !((cfq)$$2).fT().d) {
+         $$0.h(1);
+      }
+
+      if (!$$1.B) {
+         $$2.er();
+      }
+
+      return $$0.b() ? new cng(cnj.qx) : $$0;
    }
 
    @Override
-   public int c() {
-      return 1;
+   public int b(cng $$0) {
+      return 32;
    }
 
-   public abstract int d();
+   @Override
+   public cpa c(cng $$0) {
+      return cpa.c;
+   }
+
+   @Override
+   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
+      return cni.a($$0, $$1, $$2);
+   }
 }

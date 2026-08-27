@@ -19,42 +19,42 @@ public class bai extends DataFix {
                   return $$0xxx;
                } else {
                   String $$1x = $$0xxx.asString("");
-                  vf $$2 = null;
+                  vg $$2 = null;
                   if (!"null".equals($$1x) && !StringUtils.isEmpty($$1x)) {
                      if ($$1x.charAt(0) == '"' && $$1x.charAt($$1x.length() - 1) == '"' || $$1x.charAt(0) == '{' && $$1x.charAt($$1x.length() - 1) == '}') {
                         try {
-                           $$2 = aue.b(awv.a, $$1x, vf.class, true);
+                           $$2 = auf.b(aww.a, $$1x, vg.class, true);
                            if ($$2 == null) {
-                              $$2 = ve.a;
+                              $$2 = vf.a;
                            }
                         } catch (Exception var6) {
                         }
 
                         if ($$2 == null) {
                            try {
-                              $$2 = vf.a.a($$1x);
+                              $$2 = vg.a.a($$1x);
                            } catch (Exception var5) {
                            }
                         }
 
                         if ($$2 == null) {
                            try {
-                              $$2 = vf.a.b($$1x);
+                              $$2 = vg.a.b($$1x);
                            } catch (Exception var4) {
                            }
                         }
 
                         if ($$2 == null) {
-                           $$2 = vf.b($$1x);
+                           $$2 = vg.b($$1x);
                         }
                      } else {
-                        $$2 = vf.b($$1x);
+                        $$2 = vg.b($$1x);
                      }
                   } else {
-                     $$2 = ve.a;
+                     $$2 = vf.a;
                   }
 
-                  return $$0xxx.createString(vf.a.a($$2));
+                  return $$0xxx.createString(vg.a.a($$2));
                }
             })).map($$0::createList).result(), $$0.emptyList()));
    }

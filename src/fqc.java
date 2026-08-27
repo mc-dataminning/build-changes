@@ -1,99 +1,37 @@
-public class fqc extends frv {
-   private final double a;
-   private final double b;
-   private final double F;
-
-   fqc(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+public class fqc extends fsh {
+   fqc(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$7 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$7;
-      this.w = 0.9F * $$7;
-      this.x = $$7;
-      this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
-   }
-
-   @Override
-   public fqz b() {
-      return fqz.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      float $$2 = (float)this.s / (float)this.t;
-      $$2 *= $$2;
-      $$2 *= $$2;
-      int $$3 = $$1 & 0xFF;
-      int $$4 = $$1 >> 16 & 0xFF;
-      $$4 += (int)($$2 * 15.0F * 16.0F);
-      if ($$4 > 240) {
-         $$4 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+      this.u = -0.125F;
+      this.B = 0.85F;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
+      super.a();
+      if (!this.o && !this.c.b_(hx.a(this.g, this.h, this.i)).a(asn.a)) {
          this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
       }
    }
 
-   public static class a implements fqy<ka> {
-      private final frq a;
-
-      public a(frq $$0) {
-         this.a = $$0;
-      }
-
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqc $$8 = new fqc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   @Override
+   public frl b() {
+      return frl.b;
    }
 
-   public static class b implements fqy<ka> {
-      private final frq a;
+   public static class a implements frk<ka> {
+      private final fsc a;
 
-      public b(frq $$0) {
+      public a(fsc $$0) {
          this.a = $$0;
       }
 
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fqc $$8 = new fqc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
          return $$8;

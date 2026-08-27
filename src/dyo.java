@@ -1,25 +1,29 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public interface dyo<P extends dyn> {
-   dyo<dxz> a = a("block_predicate_filter", dxz.a);
-   dyo<dyq> b = a("rarity_filter", dyq.a);
-   dyo<dys> c = a("surface_relative_threshold_filter", dys.a);
-   dyo<dyt> d = a("surface_water_depth_filter", dyt.a);
-   dyo<dxy> e = a("biome", dxy.a);
-   dyo<dyd> f = a("count", dyd.a);
-   dyo<dyi> g = a("noise_based_count", dyi.a);
-   dyo<dyj> h = a("noise_threshold_count", dyj.a);
-   dyo<dyc> i = a("count_on_every_layer", dyc.a);
-   dyo<dye> j = a("environment_scan", dye.a);
-   dyo<dyg> k = a("heightmap", dyg.a);
-   dyo<dyf> l = a("height_range", dyf.a);
-   dyo<dyh> m = a("in_square", dyh.a);
-   dyo<dyp> n = a("random_offset", dyp.a);
-   dyo<dya> o = a("carving_mask", dya.a);
+public class dyo extends dyv {
+   public static final Codec<dyo> a = RecordCodecBuilder.create($$0 -> $$0.group(doy.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, dyo::new));
+   private final doy.a c;
 
-   Codec<P> codec();
+   private dyo(doy.a $$0) {
+      this.c = $$0;
+   }
 
-   private static <P extends dyn> dyo<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.U, $$0, () -> $$1);
+   public static dyo a(doy.a $$0) {
+      return new dyo($$0);
+   }
+
+   @Override
+   public Stream<hx> a_(dyt $$0, auw $$1, hx $$2) {
+      int $$3 = $$2.u();
+      int $$4 = $$2.w();
+      int $$5 = $$0.a(this.c, $$3, $$4);
+      return $$5 > $$0.c() ? Stream.of(new hx($$3, $$5, $$4)) : Stream.of();
+   }
+
+   @Override
+   public dyw<?> b() {
+      return dyw.k;
    }
 }

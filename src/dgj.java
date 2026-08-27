@@ -1,21 +1,19 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgj extends cxh {
-   public static final MapCodec<dgj> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(clm.q.fieldOf("color").forGetter(dgj::b), u()).apply($$0, dgj::new));
-   private final clm d;
+public class dgj extends cwy {
+   public static final MapCodec<dgj> a = b(dgj::new);
 
    @Override
    public MapCodec<dgj> a() {
-      return c;
+      return a;
    }
 
-   protected dgj(clm $$0, djg.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public dgj(djo.d $$0) {
+      super($$0);
    }
 
-   public clm b() {
-      return this.d;
+   @Override
+   public void a(djp $$0, ctx $$1, hx $$2, blw $$3) {
+      $$3.a($$0, new emc(0.25, 0.05F, 0.25));
    }
 }

@@ -1,42 +1,18 @@
-import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record ekt(ekq b, ekq c) implements ekq {
-   public static final Codec<ekt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ekr.a.fieldOf("min").forGetter(ekt::c), ekr.a.fieldOf("max").forGetter(ekt::d)).apply($$0, ekt::new)
+public class ekt {
+   private static final Codec<eks> d = kd.J.q().dispatch(eks::a, ekr::a);
+   public static final Codec<eks> a = atx.a(
+      (Supplier<Codec<eks>>)(() -> Codec.either(ekq.c, d)
+            .xmap($$0 -> (eks)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof ekq $$1 ? Either.left($$1) : Either.right($$0)))
    );
+   public static final ekr b = a("storage", eku.a);
+   public static final ekr c = a("context", ekq.b);
 
-   @Override
-   public ekp b() {
-      return ekr.c;
-   }
-
-   public static ekt a(float $$0, float $$1) {
-      return new ekt(eko.a($$0), eko.a($$1));
-   }
-
-   @Override
-   public int a(egw $$0) {
-      return auo.a($$0.b(), this.b.a($$0), this.c.a($$0));
-   }
-
-   @Override
-   public float b(egw $$0) {
-      return auo.a($$0.b(), this.b.b($$0), this.c.b($$0));
-   }
-
-   @Override
-   public Set<eje<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public ekq c() {
-      return this.b;
-   }
-
-   public ekq d() {
-      return this.c;
+   private static ekr a(String $$0, Codec<? extends eks> $$1) {
+      return it.a(kd.J, new ahh($$0), new ekr($$1));
    }
 }

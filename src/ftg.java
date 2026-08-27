@@ -1,186 +1,109 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Vector3f;
+import com.mojang.authlib.GameProfile;
+import com.mojang.datafixers.util.Pair;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 
-public class ftg implements AutoCloseable {
-   public static final int a = 15728880;
-   public static final int b = 15728640;
-   public static final int c = 240;
-   private final gea d;
-   private final epc e;
-   private final ahg f;
-   private boolean g;
-   private float h;
-   private final fta i;
-   private final evi j;
+public class ftg implements aqk {
+   private static final dil[] a = Arrays.stream(clv.values())
+      .sorted(Comparator.comparingInt(clv::a))
+      .map($$0 -> new dil($$0, hx.b, cxa.kP.o()))
+      .toArray(dil[]::new);
+   private static final dil b = new dil(hx.b, cxa.kP.o());
+   private final dhk c = new dhk(hx.b, cxa.cv.o());
+   private final dhk d = new div(hx.b, cxa.gV.o());
+   private final dhy e = new dhy(hx.b, cxa.fG.o());
+   private final dgt f = new dgt(hx.b, cxa.iJ.o());
+   private final dgz g = new dgz(hx.b, cxa.bn.o());
+   private final dhp h = new dhp(hx.b, cxa.mX.o());
+   private final dht i = new dht(hx.b, cxa.tp.o());
+   private fma j;
+   private fmo k;
+   private Map<ddz.a, fmg> l;
+   private final fvs m;
+   private final fnf n;
 
-   public ftg(fta $$0, evi $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.d = new gea(16, 16, false);
-      this.f = this.j.Y().a("light_map", this.d);
-      this.e = this.d.e();
-
-      for (int $$2 = 0; $$2 < 16; $$2++) {
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            this.e.a($$3, $$2, -1);
-         }
-      }
-
-      this.d.d();
+   public ftg(fvs $$0, fnf $$1) {
+      this.m = $$0;
+      this.n = $$1;
    }
 
    @Override
-   public void close() {
-      this.d.close();
+   public void a(aqj $$0) {
+      this.j = new fma(this.n.a(fni.bf));
+      this.k = new fmo(this.n.a(fni.bE));
+      this.l = fwi.a(this.n);
    }
 
-   public void a() {
-      this.h = this.h + (float)((Math.random() - Math.random()) * Math.random() * Math.random() * 0.1);
-      this.h *= 0.9F;
-      this.g = true;
-   }
-
-   public void b() {
-      RenderSystem.setShaderTexture(2, 0);
-   }
-
-   public void c() {
-      RenderSystem.setShaderTexture(2, this.f);
-      this.j.Y().a(this.f);
-      RenderSystem.texParameter(3553, 10241, 9729);
-      RenderSystem.texParameter(3553, 10240, 9729);
-   }
-
-   private float b(float $$0) {
-      if (this.j.s.a(blk.G)) {
-         bli $$1 = this.j.s.b(blk.G);
-         if ($$1 != null && $$1.a().isPresent()) {
-            return $$1.a().get().a(this.j.s, $$0);
-         }
-      }
-
-      return 0.0F;
-   }
-
-   private float a(bml $$0, float $$1, float $$2) {
-      float $$3 = 0.45F * $$1;
-      return Math.max(0.0F, auo.b(((float)$$0.ah - $$2) * (float) Math.PI * 0.025F) * $$3);
-   }
-
-   public void a(float $$0) {
-      if (this.g) {
-         this.g = false;
-         this.j.aG().a("lightTex");
-         fns $$1 = this.j.r;
-         if ($$1 != null) {
-            float $$2 = $$1.g(1.0F);
-            float $$3;
-            if ($$1.j() > 0) {
-               $$3 = 1.0F;
+   public void a(cng $$0, cnd $$1, eqk $$2, ftt $$3, int $$4, int $$5) {
+      cnb $$6 = $$0.d();
+      if ($$6 instanceof cla) {
+         cwy $$7 = ((cla)$$6).e();
+         if ($$7 instanceof cvu $$8) {
+            so $$9 = $$0.v();
+            GameProfile $$10 = $$9 != null ? dio.d($$9) : null;
+            fmg $$11 = this.l.get($$8.b());
+            fub $$12 = fwi.a($$8.b(), $$10);
+            fwi.a(null, 180.0F, 0.0F, $$2, $$3, $$4, $$11, $$12);
+         } else {
+            djp $$13 = $$7.o();
+            dhd $$14;
+            if ($$7 instanceof cvp) {
+               this.f.a($$0, ((cvp)$$7).b());
+               $$14 = this.f;
+            } else if ($$7 instanceof cwr) {
+               this.g.a(((cwr)$$7).b());
+               $$14 = this.g;
+            } else if ($$13.a(cxa.mX)) {
+               $$14 = this.h;
+            } else if ($$13.a(cxa.cv)) {
+               $$14 = this.c;
+            } else if ($$13.a(cxa.fG)) {
+               $$14 = this.e;
+            } else if ($$13.a(cxa.gV)) {
+               $$14 = this.d;
+            } else if ($$13.a(cxa.tp)) {
+               this.i.a($$0);
+               $$14 = this.i;
             } else {
-               $$3 = $$2 * 0.95F + 0.05F;
-            }
+               if (!($$7 instanceof ddw)) {
+                  return;
+               }
 
-            float $$5 = this.j.m.ai().c().floatValue();
-            float $$6 = this.b($$0) * $$5;
-            float $$7 = this.a(this.j.s, $$6, $$0) * $$5;
-            float $$8 = this.j.s.C();
-            float $$9;
-            if (this.j.s.a(blk.p)) {
-               $$9 = fta.a(this.j.s, $$0);
-            } else if ($$8 > 0.0F && this.j.s.a(blk.C)) {
-               $$9 = $$8;
-            } else {
-               $$9 = 0.0F;
-            }
-
-            Vector3f $$12 = new Vector3f($$2, $$2, 1.0F).lerp(new Vector3f(1.0F, 1.0F, 1.0F), 0.35F);
-            float $$13 = this.h + 1.5F;
-            Vector3f $$14 = new Vector3f();
-
-            for (int $$15 = 0; $$15 < 16; $$15++) {
-               for (int $$16 = 0; $$16 < 16; $$16++) {
-                  float $$17 = a($$1.E_(), $$15) * $$3;
-                  float $$18 = a($$1.E_(), $$16) * $$13;
-                  float $$20 = $$18 * (($$18 * 0.6F + 0.4F) * 0.6F + 0.4F);
-                  float $$21 = $$18 * ($$18 * $$18 * 0.6F + 0.4F);
-                  $$14.set($$18, $$20, $$21);
-                  boolean $$22 = $$1.d().d();
-                  if ($$22) {
-                     $$14.lerp(new Vector3f(0.99F, 1.12F, 1.0F), 0.25F);
-                     a($$14);
-                  } else {
-                     Vector3f $$23 = new Vector3f($$12).mul($$17);
-                     $$14.add($$23);
-                     $$14.lerp(new Vector3f(0.75F, 0.75F, 0.75F), 0.04F);
-                     if (this.i.b($$0) > 0.0F) {
-                        float $$24 = this.i.b($$0);
-                        Vector3f $$25 = new Vector3f($$14).mul(0.7F, 0.6F, 0.6F);
-                        $$14.lerp($$25, $$24);
-                     }
-                  }
-
-                  if ($$9 > 0.0F) {
-                     float $$26 = Math.max($$14.x(), Math.max($$14.y(), $$14.z()));
-                     if ($$26 < 1.0F) {
-                        float $$27 = 1.0F / $$26;
-                        Vector3f $$28 = new Vector3f($$14).mul($$27);
-                        $$14.lerp($$28, $$9);
-                     }
-                  }
-
-                  if (!$$22) {
-                     if ($$7 > 0.0F) {
-                        $$14.add(-$$7, -$$7, -$$7);
-                     }
-
-                     a($$14);
-                  }
-
-                  float $$29 = this.j.m.am().c().floatValue();
-                  Vector3f $$30 = new Vector3f(this.c($$14.x), this.c($$14.y), this.c($$14.z));
-                  $$14.lerp($$30, Math.max(0.0F, $$29 - $$6));
-                  $$14.lerp(new Vector3f(0.75F, 0.75F, 0.75F), 0.04F);
-                  a($$14);
-                  $$14.mul(255.0F);
-                  int $$31 = 255;
-                  int $$32 = (int)$$14.x();
-                  int $$33 = (int)$$14.y();
-                  int $$34 = (int)$$14.z();
-                  this.e.a($$16, $$15, 0xFF000000 | $$34 << 16 | $$33 << 8 | $$32);
+               clv $$21 = ddw.b($$6);
+               if ($$21 == null) {
+                  $$14 = b;
+               } else {
+                  $$14 = a[$$21.a()];
                }
             }
 
-            this.d.d();
-            this.j.aG().c();
+            this.m.a($$14, $$2, $$3, $$4, $$5);
+         }
+      } else {
+         if ($$0.a(cnj.vo)) {
+            boolean $$25 = cla.a($$0) != null;
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            ghe $$26 = $$25 ? ghg.g : ghg.h;
+            eqo $$27 = $$26.c().a(fzy.c($$3, this.j.a($$26.a()), true, $$0.B()));
+            this.j.c().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            if ($$25) {
+               List<Pair<ih<dgu>, clv>> $$28 = dgt.a(cod.d($$0), dgt.a($$0));
+               fvo.a($$2, $$3, $$4, $$5, this.j.b(), $$26, false, $$28, $$0.B());
+            } else {
+               this.j.b().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            }
+
+            $$2.b();
+         } else if ($$0.a(cnj.vL)) {
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            eqo $$29 = fzy.c($$3, this.k.a(fmo.a), false, $$0.B());
+            this.k.a($$2, $$29, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            $$2.b();
          }
       }
-   }
-
-   private static void a(Vector3f $$0) {
-      $$0.set(auo.a($$0.x, 0.0F, 1.0F), auo.a($$0.y, 0.0F, 1.0F), auo.a($$0.z, 0.0F, 1.0F));
-   }
-
-   private float c(float $$0) {
-      float $$1 = 1.0F - $$0;
-      return 1.0F - $$1 * $$1 * $$1 * $$1;
-   }
-
-   public static float a(dmq $$0, int $$1) {
-      float $$2 = (float)$$1 / 15.0F;
-      float $$3 = $$2 / (4.0F - 3.0F * $$2);
-      return auo.i($$0.s(), $$3, 1.0F);
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 << 4 | $$1 << 20;
-   }
-
-   public static int a(int $$0) {
-      return $$0 >> 4 & 65535;
-   }
-
-   public static int b(int $$0) {
-      return $$0 >> 20 & 65535;
    }
 }

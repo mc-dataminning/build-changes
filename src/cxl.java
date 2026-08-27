@@ -1,62 +1,61 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cxl extends cvj {
-   public static final MapCodec<cxl> d = b(cxl::new);
-   private static final float e = 0.05F;
-   private static final float f = 0.1F;
+public class cxl extends ddq {
+   public static final MapCodec<cxl> a = b(cxl::new);
+   public static final dkj b = dkf.R;
 
    @Override
    public MapCodec<cxl> a() {
-      return d;
+      return a;
    }
 
-   public cxl(djg.d $$0) {
-      super($$0, jd.c);
+   public cxl(djo.d $$0) {
+      super($$0);
+      this.k(this.o().a(b, ic.c));
+   }
+
+   @Nullable
+   @Override
+   public dhd a(hx $$0, djp $$1) {
+      return new dhi($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dhd> dhe<T> a(ctx $$0, djp $$1, dhf<T> $$2) {
+      return !$$0.B ? a($$2, dhf.J, ($$0x, $$1x, $$2x, $$3) -> doi.c.a($$0x, $$3.gh(), $$3.gi())) : null;
+   }
+
+   @Nullable
+   @Override
+   public djp a(cpp $$0) {
+      return super.a($$0).a(b, $$0.g());
    }
 
    @Override
-   public boolean d(djh $$0) {
-      return false;
-   }
-
-   protected static boolean a(ctp $$0, cuo.c $$1) {
-      if ($$1 == cuo.c.b) {
-         return $$0.F_().i() < 0.05F;
-      } else {
-         return $$1 == cuo.c.c ? $$0.F_().i() < 0.1F : false;
-      }
+   public int a(djp $$0, ctd $$1, hx $$2, ic $$3) {
+      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
    }
 
    @Override
-   public void a(djh $$0, ctp $$1, hx $$2, cuo.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == cuo.c.b) {
-            $$1.b($$2, cws.fu.o());
-            $$1.a(null, dnr.c, $$2);
-         } else if ($$3 == cuo.c.c) {
-            $$1.b($$2, cws.fw.o());
-            $$1.a(null, dnr.c, $$2);
-         }
-      }
+   protected void a(djq.a<cwy, djp> $$0) {
+      super.a($$0);
+      $$0.a(b);
    }
 
    @Override
-   protected boolean a(eeq $$0) {
-      return true;
+   public djp a(djp $$0, ddk $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(djh $$0, ctp $$1, hx $$2, eeq $$3) {
-      if ($$3 == ees.c) {
-         djh $$4 = cws.fu.o();
-         $$1.b($$2, $$4);
-         $$1.a(dnr.c, $$2, dnr.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == ees.e) {
-         djh $$5 = cws.fv.o();
-         $$1.b($$2, $$5);
-         $$1.a(dnr.c, $$2, dnr.a.a($$5));
-         $$1.c(1046, $$2, 0);
-      }
+   public djp a(djp $$0, dbu $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   public int c() {
+      return 10;
    }
 }

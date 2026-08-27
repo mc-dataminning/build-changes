@@ -1,99 +1,159 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.BitSet;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public interface vk {
-   Optional<avs> a = Optional.of(avs.a);
-   vk b = new vk() {
-      @Override
-      public <T> Optional<T> a(vk.a<T> $$0) {
-         return Optional.empty();
-      }
+public class vk {
+   public static final Codec<vk> a = avl.a(vk.a::values).dispatch(vk::c, vk.a::a);
+   public static final vk b = new vk(new BitSet(0), vk.a.b);
+   public static final vk c = new vk(new BitSet(0), vk.a.a);
+   public static final wd d = wd.a.a(n.i).a(new vm(vm.a.a, vg.c("chat.filtered")));
+   static final Codec<vk> e = Codec.unit(c);
+   static final Codec<vk> f = Codec.unit(b);
+   static final Codec<vk> g = atx.s.xmap(vk::new, vk::d);
+   private static final char h = '#';
+   private final BitSet i;
+   private final vk.a j;
 
-      @Override
-      public <T> Optional<T> a(vk.b<T> $$0, wc $$1) {
-         return Optional.empty();
-      }
-   };
+   private vk(BitSet $$0, vk.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
 
-   <T> Optional<T> a(vk.a<T> var1);
+   private vk(BitSet $$0) {
+      this.i = $$0;
+      this.j = vk.a.c;
+   }
 
-   <T> Optional<T> a(vk.b<T> var1, wc var2);
+   public vk(int $$0) {
+      this(new BitSet($$0), vk.a.c);
+   }
 
-   static vk e(final String $$0) {
-      return new vk() {
-         @Override
-         public <T> Optional<T> a(vk.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
+   private vk.a c() {
+      return this.j;
+   }
 
-         @Override
-         public <T> Optional<T> a(vk.b<T> $$0x, wc $$1) {
-            return $$0.accept($$1, $$0);
-         }
+   private BitSet d() {
+      return this.i;
+   }
+
+   public static vk a(uj $$0) {
+      vk.a $$1 = $$0.b(vk.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new vk($$0.z(), vk.a.c);
       };
    }
 
-   static vk a(final String $$0, final wc $$1) {
-      return new vk() {
-         @Override
-         public <T> Optional<T> a(vk.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(vk.b<T> $$0x, wc $$1x) {
-            return $$0.accept($$1.a($$1), $$0);
-         }
-      };
+   public static void a(uj $$0, vk $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == vk.a.c) {
+         $$0.a($$1.i);
+      }
    }
 
-   static vk a(vk... $$0) {
-      return a(ImmutableList.copyOf($$0));
+   public void a(int $$0) {
+      this.i.set($$0);
    }
 
-   static vk a(final List<? extends vk> $$0) {
-      return new vk() {
-         @Override
-         public <T> Optional<T> a(vk.a<T> $$0x) {
-            for (vk $$1 : $$0) {
-               Optional<T> $$2 = $$1.a($$0);
-               if ($$2.isPresent()) {
-                  return $$2;
+   @Nullable
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
+
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
                }
             }
 
-            return Optional.empty();
-         }
-
-         @Override
-         public <T> Optional<T> a(vk.b<T> $$0x, wc $$1) {
-            for (vk $$2 : $$0) {
-               Optional<T> $$3 = $$2.a($$0, $$1);
-               if ($$3.isPresent()) {
-                  return $$3;
-               }
-            }
-
-            return Optional.empty();
+            yield new String($$1);
          }
       };
    }
 
-   default String getString() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a($$1 -> {
-         $$0.append($$1);
-         return Optional.empty();
-      });
-      return $$0.toString();
+   @Nullable
+   public vg b(String $$0) {
+      return switch (this.j) {
+         case a -> vg.b($$0);
+         case b -> null;
+         case c -> {
+            vu $$1 = vg.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(vg.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
    }
 
-   public interface a<T> {
-      Optional<T> accept(String var1);
+   public boolean a() {
+      return this.j == vk.a.a;
    }
 
-   public interface b<T> {
-      Optional<T> accept(wc var1, String var2);
+   public boolean b() {
+      return this.j == vk.a.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         vk $$1 = (vk)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
+   }
+
+   static enum a implements avl {
+      a("pass_through", () -> vk.e),
+      b("fully_filtered", () -> vk.f),
+      c("partially_filtered", () -> vk.g);
+
+      private final String d;
+      private final Supplier<Codec<vk>> e;
+
+      private a(String $$0, Supplier<Codec<vk>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      private Codec<vk> a() {
+         return this.e.get();
+      }
    }
 }

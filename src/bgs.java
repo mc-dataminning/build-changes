@@ -1,101 +1,32 @@
-import java.util.function.Supplier;
+import java.nio.file.Path;
+import java.util.List;
 
 public interface bgs {
-   String b = "root";
+   char d = '\u001e';
 
-   void a();
+   List<bgv> a(String var1);
 
-   void b();
+   boolean a(Path var1);
 
-   void a(String var1);
+   long a();
 
-   void a(Supplier<String> var1);
+   int b();
 
-   void c();
+   long c();
 
-   void b(String var1);
+   int d();
 
-   void b(Supplier<String> var1);
-
-   void a(bhv var1);
-
-   default void d(String $$0) {
-      this.a($$0, 1);
+   default long g() {
+      return this.c() - this.a();
    }
 
-   void a(String var1, int var2);
-
-   default void c(Supplier<String> $$0) {
-      this.a($$0, 1);
+   default int f() {
+      return this.d() - this.b();
    }
 
-   void a(Supplier<String> var1, int var2);
+   String e();
 
-   static bgs a(final bgs $$0, final bgs $$1) {
-      if ($$0 == bgp.a) {
-         return $$1;
-      } else {
-         return $$1 == bgp.a ? $$0 : new bgs() {
-            @Override
-            public void a() {
-               $$0.a();
-               $$1.a();
-            }
-
-            @Override
-            public void b() {
-               $$0.b();
-               $$1.b();
-            }
-
-            @Override
-            public void a(String $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
-
-            @Override
-            public void a(Supplier<String> $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
-
-            @Override
-            public void a(bhv $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
-
-            @Override
-            public void c() {
-               $$0.c();
-               $$1.c();
-            }
-
-            @Override
-            public void b(String $$0x) {
-               $$0.b($$0);
-               $$1.b($$0);
-            }
-
-            @Override
-            public void b(Supplier<String> $$0x) {
-               $$0.b($$0);
-               $$1.b($$0);
-            }
-
-            @Override
-            public void a(String $$0x, int $$1x) {
-               $$0.a($$0, $$1);
-               $$1.a($$0, $$1);
-            }
-
-            @Override
-            public void a(Supplier<String> $$0x, int $$1x) {
-               $$0.a($$0, $$1);
-               $$1.a($$0, $$1);
-            }
-         };
-      }
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

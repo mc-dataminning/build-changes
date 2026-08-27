@@ -1,34 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dve extends dvk {
-   public static final Codec<dve> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dve::new));
+public class dve implements dug {
+   public static final Codec<dve> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dve::new)
+   );
+   public final int b;
+   public final int c;
+   public final float d;
 
-   public dve(bjg $$0, bjg $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected dvl<?> a() {
-      return dvl.d;
-   }
-
-   @Override
-   protected void a(ctv $$0, dvk.b $$1, auv $$2, duu $$3, int $$4, dvk.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      hx $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
-   }
-
-   @Override
-   public int a(auv $$0, int $$1, duu $$2) {
-      return 0;
-   }
-
-   @Override
-   protected boolean a(auv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public dve(int $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

@@ -50,11 +50,11 @@ public class bat extends DataFix {
                   DSL.string(),
                   ImmutableMap.of(
                      "minecraft:fixed",
-                     a("biome", $$0.getType(bbw.G)),
+                     a("biome", $$0.getType(bbw.H)),
                      "minecraft:multi_noise",
-                     DSL.list(a("biome", $$0.getType(bbw.G))),
+                     DSL.list(a("biome", $$0.getType(bbw.H))),
                      "minecraft:checkerboard",
-                     a("biomes", DSL.list($$0.getType(bbw.G))),
+                     a("biomes", DSL.list($$0.getType(bbw.H))),
                      "minecraft:vanilla_layered",
                      DSL.remainderType(),
                      "minecraft:the_end",
@@ -62,13 +62,13 @@ public class bat extends DataFix {
                   )
                ),
                "settings",
-               DSL.or(DSL.string(), a("default_block", $$0.getType(bbw.y), "default_fluid", $$0.getType(bbw.y)))
+               DSL.or(DSL.string(), a("default_block", $$0.getType(bbw.z), "default_fluid", $$0.getType(bbw.z)))
             )
          )
       );
       CompoundListType<String, ?> $$2 = DSL.compoundList(bde.a(), a("generator", $$1));
       Type<?> $$3 = DSL.and($$2, DSL.remainderType());
-      Type<?> $$4 = $$0.getType(bbw.I);
+      Type<?> $$4 = $$0.getType(bbw.J);
       FieldFinder<?> $$5 = new FieldFinder("dimensions", $$3);
       if (!$$4.findFieldType("dimensions").equals($$3)) {
          throw new IllegalStateException();
@@ -91,7 +91,7 @@ public class bat extends DataFix {
    protected static Type<? extends Pair<? extends Either<? extends Pair<? extends Either<?, Unit>, ? extends Pair<? extends Either<? extends List<? extends Pair<? extends Either<?, Unit>, Dynamic<?>>>, Unit>, Dynamic<?>>>, Unit>, Dynamic<?>>> a(
       Schema $$0
    ) {
-      return b("settings", a("biome", $$0.getType(bbw.G), "layers", DSL.list(b("block", $$0.getType(bbw.y)))));
+      return b("settings", a("biome", $$0.getType(bbw.H), "layers", DSL.list(b("block", $$0.getType(bbw.z)))));
    }
 
    private <T> Dynamic<T> a(Dynamic<T> $$0) {

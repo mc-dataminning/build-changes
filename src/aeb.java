@@ -1,49 +1,24 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-
-public class aeb implements xf<adj> {
-   public static final int a = 4;
-   private static final int b = 128;
-   private static final int c = 8192;
-   private static final int d = 200;
-   private final int e;
-   private final List<String> f;
-   private final Optional<String> g;
-
-   public aeb(int $$0, List<String> $$1, Optional<String> $$2) {
-      this.e = $$0;
-      this.f = ImmutableList.copyOf($$1);
-      this.g = $$2;
-   }
-
-   public aeb(ui $$0) {
-      this.e = $$0.n();
-      this.f = $$0.a(ui.a(Lists::newArrayListWithCapacity, 200), $$0x -> $$0x.d(8192));
-      this.g = $$0.b((ui.a<String>)($$0x -> $$0x.d(128)));
+public record aeb(int a, int b, boolean c) implements xg<adk> {
+   public aeb(uj $$0) {
+      this($$0.n(), $$0.n(), $$0.readBoolean());
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.e);
-      $$0.a(this.f, ($$0x, $$1) -> $$0x.a($$1, 8192));
-      $$0.a(this.g, ($$0x, $$1) -> $$0x.a($$1, 128));
+   public void a(uj $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   public List<String> a() {
-      return this.f;
+   public int d() {
+      return this.b;
    }
 
-   public Optional<String> d() {
-      return this.g;
-   }
-
-   public int e() {
-      return this.e;
+   public boolean e() {
+      return this.c;
    }
 }

@@ -1,50 +1,112 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class dxq extends dxn {
-   public static final Codec<dxq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dpk.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dpk.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, dxq::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dpk d;
-   private final dpk e;
-   private final LongSet f = new LongOpenHashSet();
+public class dxq {
+   public static final ahg<dxp> a = a("classic_flat");
+   public static final ahg<dxp> b = a("tunnelers_dream");
+   public static final ahg<dxp> c = a("water_world");
+   public static final ahg<dxp> d = a("overworld");
+   public static final ahg<dxp> e = a("snowy_kingdom");
+   public static final ahg<dxp> f = a("bottomless_pit");
+   public static final ahg<dxp> g = a("desert");
+   public static final ahg<dxp> h = a("redstone_ready");
+   public static final ahg<dxp> i = a("the_void");
 
-   private dxq(dpk $$0, dpk $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public static void a(pf<dxp> $$0) {
+      new dxq.a($$0).a();
    }
 
-   public static dxq a(dpk $$0, dpk $$1) {
-      return new dxq($$0, $$1);
+   private static ahg<dxp> a(String $$0) {
+      return ahg.a(ke.az, new ahh($$0));
    }
 
-   @Override
-   public int a(auv $$0, dpn $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
+   static class a {
+      private final pf<dxp> a;
+
+      a(pf<dxp> $$0) {
+         this.a = $$0;
+      }
+
+      private void a(ahg<dxp> $$0, ctw $$1, ahg<cuw> $$2, Set<ahg<dzu>> $$3, boolean $$4, boolean $$5, dxo... $$6) {
+         ii<dzu> $$7 = this.a.a(ke.aF);
+         ii<dys> $$8 = this.a.a(ke.aC);
+         ii<cuw> $$9 = this.a.a(ke.at);
+         il.a<dzu> $$10 = il.a($$3.stream().map($$7::b).collect(Collectors.toList()));
+         dxr $$11 = new dxr(Optional.of($$10), $$9.b($$2), dxr.b($$8));
+         if ($$4) {
+            $$11.a();
          }
 
-         return $$2;
-      } else {
-         return auo.b($$0, $$2, $$3);
+         if ($$5) {
+            $$11.b();
+         }
+
+         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
+            $$11.e().add($$6[$$12]);
+         }
+
+         this.a.a($$0, new dxp($$1.j().i(), $$11));
       }
-   }
 
-   @Override
-   public dxo<?> a() {
-      return dxo.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
+      public void a() {
+         this.a(dxq.a, cxa.i, cvd.b, ImmutableSet.of(dzh.a), false, false, new dxo(1, cxa.i), new dxo(2, cxa.j), new dxo(1, cxa.F));
+         this.a(dxq.b, cxa.b, cvd.t, ImmutableSet.of(dzh.j, dzh.r), true, false, new dxo(1, cxa.i), new dxo(5, cxa.j), new dxo(230, cxa.b), new dxo(1, cxa.F));
+         this.a(
+            dxq.c,
+            cnj.qy,
+            cvd.T,
+            ImmutableSet.of(dzh.m, dzh.l, dzh.g),
+            false,
+            false,
+            new dxo(90, cxa.G),
+            new dxo(5, cxa.L),
+            new dxo(5, cxa.j),
+            new dxo(5, cxa.b),
+            new dxo(64, cxa.sJ),
+            new dxo(1, cxa.F)
+         );
+         this.a(
+            dxq.d,
+            cxa.bt,
+            cvd.b,
+            ImmutableSet.of(dzh.a, dzh.j, dzh.f, dzh.k, dzh.r),
+            true,
+            true,
+            new dxo(1, cxa.i),
+            new dxo(3, cxa.j),
+            new dxo(59, cxa.b),
+            new dxo(1, cxa.F)
+         );
+         this.a(
+            dxq.e,
+            cxa.dN,
+            cvd.d,
+            ImmutableSet.of(dzh.a, dzh.c),
+            false,
+            false,
+            new dxo(1, cxa.dN),
+            new dxo(1, cxa.i),
+            new dxo(3, cxa.j),
+            new dxo(59, cxa.b),
+            new dxo(1, cxa.F)
+         );
+         this.a(dxq.f, cnj.ps, cvd.b, ImmutableSet.of(dzh.a), false, false, new dxo(1, cxa.i), new dxo(3, cxa.j), new dxo(2, cxa.m));
+         this.a(
+            dxq.g,
+            cxa.I,
+            cvd.f,
+            ImmutableSet.of(dzh.a, dzh.b, dzh.j, dzh.r),
+            true,
+            false,
+            new dxo(8, cxa.I),
+            new dxo(52, cxa.aV),
+            new dxo(3, cxa.b),
+            new dxo(1, cxa.F)
+         );
+         this.a(dxq.h, cnj.lG, cvd.f, ImmutableSet.of(), false, false, new dxo(116, cxa.aV), new dxo(3, cxa.b), new dxo(1, cxa.F));
+         this.a(dxq.i, cxa.hW, cvd.a, ImmutableSet.of(), true, false, new dxo(1, cxa.a));
+      }
    }
 }

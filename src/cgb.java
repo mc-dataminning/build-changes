@@ -1,148 +1,160 @@
-import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cgb extends blw implements cgf {
+   private static final agn<cng> b = agq.a(cgb.class, agp.h);
+   private double c;
+   private double d;
+   private double e;
+   private int f;
+   private boolean g;
 
-public final class cgb {
-   private static final float a = 0.3F;
-
-   public static elr a(blv $$0, Predicate<blv> $$1) {
-      elt $$2 = $$0.dp();
-      ctp $$3 = $$0.dM();
-      elt $$4 = $$0.dk();
-      return a($$4, $$0, $$1, $$2, $$3, 0.3F, csy.a.a);
+   public cgb(bmc<? extends cgb> $$0, ctx $$1) {
+      super($$0, $$1);
    }
 
-   public static elr a(blv $$0, Predicate<blv> $$1, csy.a $$2) {
-      elt $$3 = $$0.dp();
-      ctp $$4 = $$0.dM();
-      elt $$5 = $$0.dk();
-      return a($$5, $$0, $$1, $$3, $$4, 0.3F, $$2);
+   public cgb(ctx $$0, double $$1, double $$2, double $$3) {
+      this(bmc.M, $$0);
+      this.a_($$1, $$2, $$3);
    }
 
-   public static elr a(blv $$0, Predicate<blv> $$1, double $$2) {
-      elt $$3 = $$0.f(0.0F).a($$2);
-      ctp $$4 = $$0.dM();
-      elt $$5 = $$0.br();
-      return a($$5, $$0, $$1, $$3, $$4, 0.0F, csy.a.a);
+   public void a(cng $$0) {
+      if (!$$0.a(cnj.sr) || $$0.u()) {
+         this.an().b(b, $$0.c(1));
+      }
    }
 
-   private static elr a(elt $$0, blv $$1, Predicate<blv> $$2, elt $$3, ctp $$4, float $$5, csy.a $$6) {
-      elt $$7 = $$0.e($$3);
-      elr $$8 = $$4.a(new csy($$0, $$7, $$6, csy.b.a, $$1));
-      if ($$8.c() != elr.a.a) {
-         $$7 = $$8.e();
+   private cng s() {
+      return this.an().b(b);
+   }
+
+   @Override
+   public cng q() {
+      cng $$0 = this.s();
+      return $$0.b() ? new cng(cnj.sr) : $$0;
+   }
+
+   @Override
+   protected void c_() {
+      this.an().a(b, cng.f);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cH().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
       }
 
-      elr $$9 = a($$4, $$1, $$0, $$7, $$1.cH().b($$3).g(1.0), $$2, $$5);
-      if ($$9 != null) {
-         $$8 = $$9;
-      }
-
-      return $$8;
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
    }
 
-   @Nullable
-   public static elq a(blv $$0, elt $$1, elt $$2, elo $$3, Predicate<blv> $$4, double $$5) {
-      ctp $$6 = $$0.dM();
-      double $$7 = $$5;
-      blv $$8 = null;
-      elt $$9 = null;
+   public void a(hx $$0) {
+      double $$1 = (double)$$0.u();
+      int $$2 = $$0.v();
+      double $$3 = (double)$$0.w();
+      double $$4 = $$1 - this.dq();
+      double $$5 = $$3 - this.dw();
+      double $$6 = Math.sqrt($$4 * $$4 + $$5 * $$5);
+      if ($$6 > 12.0) {
+         this.c = this.dq() + $$4 / $$6 * 12.0;
+         this.e = this.dw() + $$5 / $$6 * 12.0;
+         this.d = this.ds() + 8.0;
+      } else {
+         this.c = $$1;
+         this.d = (double)$$2;
+         this.e = $$3;
+      }
 
-      for (blv $$10 : $$6.a($$0, $$3, $$4)) {
-         elo $$11 = $$10.cH().g((double)$$10.bE());
-         Optional<elt> $$12 = $$11.b($$1, $$2);
-         if ($$11.d($$1)) {
-            if ($$7 >= 0.0) {
-               $$8 = $$10;
-               $$9 = $$12.orElse($$1);
-               $$7 = 0.0;
+      this.f = 0;
+      this.g = this.ag.a(5) > 0;
+   }
+
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.o($$0, $$1, $$2);
+      if (this.O == 0.0F && this.N == 0.0F) {
+         double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         this.r((float)(aup.d($$0, $$2) * 180.0F / (float)Math.PI));
+         this.s((float)(aup.d($$1, $$3) * 180.0F / (float)Math.PI));
+         this.N = this.dB();
+         this.O = this.dD();
+      }
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      emc $$0 = this.do();
+      double $$1 = this.dq() + $$0.c;
+      double $$2 = this.ds() + $$0.d;
+      double $$3 = this.dw() + $$0.e;
+      double $$4 = $$0.h();
+      this.s(cgi.d(this.O, (float)(aup.d($$0.d, $$4) * 180.0F / (float)Math.PI)));
+      this.r(cgi.d(this.N, (float)(aup.d($$0.c, $$0.e) * 180.0F / (float)Math.PI)));
+      if (!this.dL().B) {
+         double $$5 = this.c - $$1;
+         double $$6 = this.e - $$3;
+         float $$7 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6);
+         float $$8 = (float)aup.d($$6, $$5);
+         double $$9 = aup.d(0.0025, $$4, (double)$$7);
+         double $$10 = $$0.d;
+         if ($$7 < 1.0F) {
+            $$9 *= 0.8;
+            $$10 *= 0.8;
+         }
+
+         int $$11 = this.ds() < this.d ? 1 : -1;
+         $$0 = new emc(Math.cos((double)$$8) * $$9, $$10 + ((double)$$11 - $$10) * 0.015F, Math.sin((double)$$8) * $$9);
+         this.g($$0);
+      }
+
+      float $$12 = 0.25F;
+      if (this.aZ()) {
+         for (int $$13 = 0; $$13 < 4; $$13++) {
+            this.dL().a(jx.e, $$1 - $$0.c * 0.25, $$2 - $$0.d * 0.25, $$3 - $$0.e * 0.25, $$0.c, $$0.d, $$0.e);
+         }
+      } else {
+         this.dL()
+            .a(jx.Z, $$1 - $$0.c * 0.25 + this.ag.j() * 0.6 - 0.3, $$2 - $$0.d * 0.25 - 0.5, $$3 - $$0.e * 0.25 + this.ag.j() * 0.6 - 0.3, $$0.c, $$0.d, $$0.e);
+      }
+
+      if (!this.dL().B) {
+         this.a_($$1, $$2, $$3);
+         this.f++;
+         if (this.f > 80 && !this.dL().B) {
+            this.a(art.hS, 1.0F, 1.0F);
+            this.am();
+            if (this.g) {
+               this.dL().b(new ccb(this.dL(), this.dq(), this.ds(), this.dw(), this.q()));
+            } else {
+               this.dL().c(2003, this.dl(), 0);
             }
-         } else if ($$12.isPresent()) {
-            elt $$13 = $$12.get();
-            double $$14 = $$1.g($$13);
-            if ($$14 < $$7 || $$7 == 0.0) {
-               if ($$10.cW() == $$0.cW()) {
-                  if ($$7 == 0.0) {
-                     $$8 = $$10;
-                     $$9 = $$13;
-                  }
-               } else {
-                  $$8 = $$10;
-                  $$9 = $$13;
-                  $$7 = $$14;
-               }
-            }
          }
-      }
-
-      return $$8 == null ? null : new elq($$8, $$9);
-   }
-
-   @Nullable
-   public static elq a(ctp $$0, blv $$1, elt $$2, elt $$3, elo $$4, Predicate<blv> $$5) {
-      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
-   }
-
-   @Nullable
-   public static elq a(ctp $$0, blv $$1, elt $$2, elt $$3, elo $$4, Predicate<blv> $$5, float $$6) {
-      double $$7 = Double.MAX_VALUE;
-      blv $$8 = null;
-
-      for (blv $$9 : $$0.a($$1, $$4, $$5)) {
-         elo $$10 = $$9.cH().g((double)$$6);
-         Optional<elt> $$11 = $$10.b($$2, $$3);
-         if ($$11.isPresent()) {
-            double $$12 = $$2.g($$11.get());
-            if ($$12 < $$7) {
-               $$8 = $$9;
-               $$7 = $$12;
-            }
-         }
-      }
-
-      return $$8 == null ? null : new elq($$8);
-   }
-
-   public static void a(blv $$0, float $$1) {
-      elt $$2 = $$0.dp();
-      if ($$2.g() != 0.0) {
-         double $$3 = $$2.h();
-         $$0.r((float)(auo.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
-         $$0.s((float)(auo.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
-
-         while ($$0.dE() - $$0.O < -180.0F) {
-            $$0.O -= 360.0F;
-         }
-
-         while ($$0.dE() - $$0.O >= 180.0F) {
-            $$0.O += 360.0F;
-         }
-
-         while ($$0.dC() - $$0.N < -180.0F) {
-            $$0.N -= 360.0F;
-         }
-
-         while ($$0.dC() - $$0.N >= 180.0F) {
-            $$0.N += 360.0F;
-         }
-
-         $$0.s(auo.i($$1, $$0.O, $$0.dE()));
-         $$0.r(auo.i($$1, $$0.N, $$0.dC()));
+      } else {
+         this.p($$1, $$2, $$3);
       }
    }
 
-   public static bka a(bml $$0, cmt $$1) {
-      return $$0.eT().a($$1) ? bka.a : bka.b;
+   @Override
+   public void b(so $$0) {
+      cng $$1 = this.s();
+      if (!$$1.b()) {
+         $$0.a("Item", $$1.b(new so()));
+      }
    }
 
-   public static cfo a(bml $$0, cmy $$1, float $$2) {
-      ckm $$3 = (ckm)($$1.d() instanceof ckm ? $$1.d() : cnb.os);
-      cfo $$4 = $$3.a($$0.dM(), $$1, $$0);
-      $$4.a($$0, $$2);
-      if ($$1.a(cnb.vj) && $$4 instanceof cfq) {
-         ((cfq)$$4).a($$1);
-      }
+   @Override
+   public void a(so $$0) {
+      cng $$1 = cng.a($$0.p("Item"));
+      this.a($$1);
+   }
 
-      return $$4;
+   @Override
+   public float bo() {
+      return 1.0F;
+   }
+
+   @Override
+   public boolean cq() {
+      return false;
    }
 }

@@ -1,9 +1,9 @@
-public record jg(and a, hx b, djh c, dhn d) {
-   public elt a() {
+public record jg(ane a, hx b, djp c, dhv d) {
+   public emc a() {
       return this.b.b();
    }
 
-   public and b() {
+   public ane b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record jg(and a, hx b, djh c, dhn d) {
       return this.b;
    }
 
-   public djh d() {
+   public djp d() {
       return this.c;
    }
 
-   public dhn e() {
+   public dhv e() {
       return this.d;
    }
 }

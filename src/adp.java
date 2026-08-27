@@ -1,14 +1,24 @@
-public record adp(int a) implements xf<adj> {
-   public adp(ui $$0) {
-      this($$0.n());
+public class adp implements xg<adk> {
+   private final bjz a;
+
+   public adp(bjz $$0) {
+      this.a = $$0;
+   }
+
+   public void a(adk $$0) {
+      $$0.a(this);
+   }
+
+   public adp(uj $$0) {
+      this.a = bjz.a($$0.readUnsignedByte());
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.a);
+   public void a(uj $$0) {
+      $$0.k(this.a.a());
    }
 
-   public void a(adj $$0) {
-      $$0.a(this);
+   public bjz a() {
+      return this.a;
    }
 }

@@ -1,50 +1,27 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class etb extends gkp {
-   private static final vf a = vf.c("mco.account.privacy.information");
-   private static final int b = 15;
-   private final fau c = fau.d();
-   private final fdb v;
-   @Nullable
-   private eya w;
+public class etb extends gld {
+   protected BooleanConsumer a;
+   private final vg b;
+   private final vg c;
 
-   public etb(fdb $$0) {
-      super(eva.a);
-      this.v = $$0;
+   public etb(BooleanConsumer $$0, vg $$1, vg $$2) {
+      super(evj.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void aN_() {
-      this.c.a(15).c().b();
-      this.w = new eya(a, this.i).b(true);
-      this.c.a(this.w);
-      fau $$0 = this.c.a(fau.e().a(8));
-      vf $$1 = vf.c("mco.account.privacy.info.button");
-      $$0.a(exg.a($$1, fbt.b(this, "https://aka.ms/MinecraftGDPR")).a());
-      $$0.a(exg.a(ve.k, $$0x -> this.aE_()).a());
-      this.c.a($$1x -> {
-         exe var10000 = this.d($$1x);
-      });
-      this.c();
+   public void aP_() {
+      this.d(exr.a(vf.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, g(9), 100, 20).a());
+      this.d(exr.a(vf.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, g(9), 100, 20).a());
    }
 
    @Override
-   public void aE_() {
-      this.f.a(this.v);
-   }
-
-   @Override
-   protected void c() {
-      if (this.w != null) {
-         this.w.c(this.g - 15);
-      }
-
-      this.c.a();
-      fao.a(this.c, this.F());
-   }
-
-   @Override
-   public vf h() {
-      return a;
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.b, this.g / 2, g(3), -1);
+      $$0.a(this.i, this.c, this.g / 2, g(5), -1);
    }
 }

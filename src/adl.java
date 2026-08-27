@@ -1,3 +1,6 @@
-public interface adl extends uo {
-   void a(agj var1);
+public interface adl extends ut {
+   @Override
+   default boolean d() {
+      return false;
+   }
 }

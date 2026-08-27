@@ -1,78 +1,35 @@
-public class bvt extends bvv {
-   public bvt(bmn $$0, ctp $$1) {
-      super($$0, $$1);
+public class bvt {
+   private final bpt a;
+   private final float b;
+   private final int c;
+
+   public bvt(hx $$0, float $$1, int $$2) {
+      this(new boi($$0), $$1, $$2);
    }
 
-   @Override
-   protected efi a(int $$0) {
-      this.o = new efd();
-      this.o.a(true);
-      return new efi(this.o, $$0);
+   public bvt(emc $$0, float $$1, int $$2) {
+      this(new boi(hx.a($$0)), $$1, $$2);
    }
 
-   @Override
-   protected boolean a(elt $$0, elt $$1) {
-      return a(this.a, $$0, $$1, true);
+   public bvt(blw $$0, float $$1, int $$2) {
+      this(new boq($$0, false), $$1, $$2);
    }
 
-   @Override
-   protected boolean a() {
-      return this.p() && this.a.bd() || !this.a.bO();
+   public bvt(bpt $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected elt b() {
-      return this.a.dk();
+   public bpt a() {
+      return this.a;
    }
 
-   @Override
-   public efg a(blv $$0, int $$1) {
-      return this.a($$0.dm(), $$1);
+   public float b() {
+      return this.b;
    }
 
-   @Override
-   public void c() {
-      this.e++;
-      if (this.m) {
-         this.i();
-      }
-
-      if (!this.l()) {
-         if (this.a()) {
-            this.k();
-         } else if (this.c != null && !this.c.c()) {
-            elt $$0 = this.c.a(this.a);
-            if (this.a.dq() == auo.a($$0.c) && this.a.ds() == auo.a($$0.d) && this.a.dw() == auo.a($$0.e)) {
-               this.c.a();
-            }
-         }
-
-         adi.a(this.b, this.a, this.c, this.l);
-         if (!this.l()) {
-            elt $$1 = this.c.a(this.a);
-            this.a.K().a($$1.c, $$1.d, $$1.e, this.d);
-         }
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public boolean d() {
-      return this.o.d();
-   }
-
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean e() {
-      return this.o.d();
-   }
-
-   @Override
-   public boolean a(hx $$0) {
-      return this.b.a_($$0).a(this.b, $$0, this.a);
+   public int c() {
+      return this.c;
    }
 }

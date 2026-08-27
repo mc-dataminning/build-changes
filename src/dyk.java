@@ -1,57 +1,78 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import java.util.stream.Stream.Builder;
 
-public record dyk(ih<drh<?, ?>> e, List<dyn> f) {
-   public static final Codec<dyk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(drh.b.fieldOf("feature").forGetter($$0x -> $$0x.e), dyn.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, dyk::new)
-   );
-   public static final Codec<ih<dyk>> b = ahc.a(ke.aC, a);
-   public static final Codec<il<dyk>> c = iv.a(ke.aC, a);
-   public static final Codec<List<il<dyk>>> d = iv.a(ke.aC, a, true).listOf();
+@Deprecated
+public class dyk extends dyv {
+   public static final Codec<dyk> a = bjh.b(0, 256).fieldOf("count").xmap(dyk::new, $$0 -> $$0.c).codec();
+   private final bjh c;
 
-   public boolean a(cuk $$0, dle $$1, auv $$2, hx $$3) {
-      return this.a(new dyl($$0, $$1, Optional.empty()), $$2, $$3);
+   private dyk(bjh $$0) {
+      this.c = $$0;
    }
 
-   public boolean b(cuk $$0, dle $$1, auv $$2, hx $$3) {
-      return this.a(new dyl($$0, $$1, Optional.of(this)), $$2, $$3);
+   public static dyk a(bjh $$0) {
+      return new dyk($$0);
    }
 
-   private boolean a(dyl $$0, auv $$1, hx $$2) {
-      Stream<hx> $$3 = Stream.of($$2);
-
-      for (dyn $$4 : this.f) {
-         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
-      }
-
-      drh<?, ?> $$5 = this.e.a();
-      MutableBoolean $$6 = new MutableBoolean();
-      $$3.forEach($$4 -> {
-         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
-            $$6.setTrue();
-         }
-      });
-      return $$6.isTrue();
-   }
-
-   public Stream<drh<?, ?>> a() {
-      return this.e.a().a();
+   public static dyk a(int $$0) {
+      return a(bje.a($$0));
    }
 
    @Override
-   public String toString() {
-      return "Placed " + this.e;
+   public Stream<hx> a_(dyt $$0, auw $$1, hx $$2) {
+      Builder<hx> $$3 = Stream.builder();
+      int $$4 = 0;
+
+      boolean $$5;
+      do {
+         $$5 = false;
+
+         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
+            int $$7 = $$1.a(16) + $$2.u();
+            int $$8 = $$1.a(16) + $$2.w();
+            int $$9 = $$0.a(doy.a.e, $$7, $$8);
+            int $$10 = a($$0, $$7, $$9, $$8, $$4);
+            if ($$10 != Integer.MAX_VALUE) {
+               $$3.add(new hx($$7, $$10, $$8));
+               $$5 = true;
+            }
+         }
+
+         $$4++;
+      } while ($$5);
+
+      return $$3.build();
    }
 
-   public ih<drh<?, ?>> b() {
-      return this.e;
+   @Override
+   public dyw<?> b() {
+      return dyw.i;
    }
 
-   public List<dyn> c() {
-      return this.f;
+   private static int a(dyt $$0, int $$1, int $$2, int $$3, int $$4) {
+      hx.a $$5 = new hx.a($$1, $$2, $$3);
+      int $$6 = 0;
+      djp $$7 = $$0.a($$5);
+
+      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
+         $$5.q($$8 - 1);
+         djp $$9 = $$0.a($$5);
+         if (!a($$9) && a($$7) && !$$9.a(cxa.F)) {
+            if ($$6 == $$4) {
+               return $$5.v() + 1;
+            }
+
+            $$6++;
+         }
+
+         $$7 = $$9;
+      }
+
+      return Integer.MAX_VALUE;
+   }
+
+   private static boolean a(djp $$0) {
+      return $$0.i() || $$0.a(cxa.G) || $$0.a(cxa.H);
    }
 }

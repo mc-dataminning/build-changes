@@ -16,14 +16,14 @@ public class ayp extends baw {
    });
 
    public ayp(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityPaintingMotiveFix", bbw.x, "minecraft:painting");
+      super($$0, $$1, "EntityPaintingMotiveFix", bbw.y, "minecraft:painting");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
       Optional<String> $$1 = $$0.get("Motive").asString().result();
       if ($$1.isPresent()) {
          String $$2 = $$1.get().toLowerCase(Locale.ROOT);
-         return $$0.set("Motive", $$0.createString(new ahg(a.getOrDefault($$2, $$2)).toString()));
+         return $$0.set("Motive", $$0.createString(new ahh(a.getOrDefault($$2, $$2)).toString()));
       } else {
          return $$0;
       }

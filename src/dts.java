@@ -1,23 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dts implements dty {
-   public static final Codec<dts> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bjg.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bjg.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dts::new)
-   );
-   private final bjg b;
-   private final bjg c;
-
-   public dts(bjg $$0, bjg $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class dts extends dsc<dun> {
+   public dts(Codec<dun> $$0) {
+      super($$0);
    }
 
-   public bjg a() {
-      return this.b;
-   }
+   @Override
+   public boolean a(dse<dun> $$0) {
+      cus $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (ic $$3 : ic.values()) {
+            if ($$3 != ic.a && dfs.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, cxa.ff.o().a(dfs.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
 
-   public bjg b() {
-      return this.c;
+         return false;
+      }
    }
 }

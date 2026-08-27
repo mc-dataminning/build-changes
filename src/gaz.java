@@ -1,23 +1,40 @@
-public class gaz extends fym<cgm> {
-   public static final ahg a = new ahg("textures/entity/trident.png");
-   private final fmc f;
+import javax.annotation.Nullable;
 
-   public gaz(fyn.a $$0) {
-      super($$0);
-      this.f = new fmc($$0.a(fmw.bF));
+public class gaz extends gag<cdc, fmc<cdc>> {
+   private static final ahh a = new ahh("textures/" + fui.i.b().a() + ".png");
+   private static final ahh[] i = fui.j.stream().map($$0 -> new ahh("textures/" + $$0.b().a() + ".png")).toArray(ahh[]::new);
+
+   public gaz(fza.a $$0) {
+      super($$0, new fmc<>($$0.a(fni.bg)), 0.0F);
+      this.a(new gdo(this));
    }
 
-   public void a(cgm $$0, float $$1, float $$2, eqb $$3, fth $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(auo.i($$2, $$0.N, $$0.dC()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(auo.i($$2, $$0.O, $$0.dE()) + 90.0F));
-      eqf $$6 = fzl.c($$4, this.f.a(this.a($$0)), false, $$0.I());
-      this.f.a($$3, $$6, $$5, gee.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public emc a(cdc $$0, float $$1) {
+      return $$0.E($$1).orElse(super.a($$0, $$1)).a((double)$$0.dZ());
    }
 
-   public ahg a(cgm $$0) {
-      return a;
+   public boolean a(cdc $$0, fww $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) ? true : $$0.E(0.0F).filter($$2x -> {
+         bmc<?> $$3x = $$0.ai();
+         float $$4x = $$3x.l() / 2.0F;
+         float $$5 = $$3x.k() / 2.0F;
+         emc $$6 = emc.c($$0.dl());
+         return $$1.a(new elx($$2x.c, $$2x.d + (double)$$4x, $$2x.e, $$6.c, $$6.d + (double)$$4x, $$6.e).c((double)$$5, (double)$$4x, (double)$$5));
+      }).isPresent();
+   }
+
+   public ahh a(cdc $$0) {
+      return a($$0.gg());
+   }
+
+   public static ahh a(@Nullable clv $$0) {
+      return $$0 == null ? a : i[$$0.a()];
+   }
+
+   protected void a(cdc $$0, eqk $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3 + 180.0F, $$4);
+      $$1.a(0.0, 0.5, 0.0);
+      $$1.a($$0.A().g().b());
+      $$1.a(0.0, -0.5, 0.0);
    }
 }

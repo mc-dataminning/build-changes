@@ -1,19 +1,15 @@
-public class fyx extends fzt<ccj, fkb<ccj>> {
-   private static final ahg a = new ahg("textures/entity/ghast/ghast.png");
-   private static final ahg i = new ahg("textures/entity/ghast/ghast_shooting.png");
+public class fyx extends gag<ccn, fki<ccn>> {
+   private static final ahh a = new ahh("textures/entity/endermite.png");
 
-   public fyx(fyn.a $$0) {
-      super($$0, new fkb<>($$0.a(fmw.ad)), 1.5F);
+   public fyx(fza.a $$0) {
+      super($$0, new fki<>($$0.a(fni.U)), 0.3F);
    }
 
-   public ahg a(ccj $$0) {
-      return $$0.u() ? i : a;
+   protected float a(ccn $$0) {
+      return 180.0F;
    }
 
-   protected void a(ccj $$0, eqb $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   public ahh b(ccn $$0) {
+      return a;
    }
 }

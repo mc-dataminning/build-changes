@@ -1,45 +1,34 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.List;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
 
 public class gfi {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+   private static final BiMap<ahh, gfh> i = HashBiMap.create();
+   public static final gfh a = a("single", gfn.b);
+   public static final gfh b = a("directory", gfk.b);
+   public static final gfh c = a("filter", gfo.b);
+   public static final gfh d = a("unstitch", gfp.b);
+   public static final gfh e = a("paletted_permutations", gfm.b);
+   public static Codec<gfh> f = ahh.a.flatXmap($$0 -> {
+      gfh $$1 = (gfh)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      ahh $$1 = (ahh)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<gff> g = f.dispatch(gff::a, gfh::a);
+   public static Codec<List<gff>> h = g.listOf().fieldOf("sources").codec();
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      apf.a $$3 = apf.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
-
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = aue.a($$5);
-         JsonObject $$7 = aue.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = aue.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
-            }
-         }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
+   private static gfh a(String $$0, Codec<? extends gff> $$1) {
+      gfh $$2 = new gfh($$1);
+      ahh $$3 = new ahh($$0);
+      gfh $$4 = (gfh)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
+      } else {
+         return $$2;
       }
-
-      return $$3.a("index-" + $$1).getPath("/");
    }
 }

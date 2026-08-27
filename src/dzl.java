@@ -1,8 +1,7 @@
-import javax.annotation.Nullable;
-
+@FunctionalInterface
 public interface dzl {
-   void a(dzk var1);
+   dzl a = ($$0, $$1, $$2, $$3, $$4, $$5, $$6) -> {
+   };
 
-   @Nullable
-   dzk a(dyy var1);
+   void afterPlace(cus var1, cuq var2, dlm var3, auw var4, dzg var5, cte var6, ead var7);
 }

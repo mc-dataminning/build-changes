@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface afl extends adl {
+   @Override
+   default ui b() {
+      return ui.a;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface afl {
+   void a(afk var1);
 }

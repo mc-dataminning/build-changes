@@ -1,38 +1,27 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-
 public interface up {
-   static up a(final Runnable $$0) {
-      return new up() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+   xh a();
 
-         @Nullable
-         @Override
-         public xf<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   ui b();
+
+   void a(vg var1);
+
+   boolean c();
+
+   default boolean a(xg<?> $$0) {
+      return this.c();
    }
 
-   static up a(final Supplier<xf<?>> $$0) {
-      return new up() {
-         @Nullable
-         @Override
-         public xf<?> b() {
-            return $$0.get();
-         }
-      };
+   default boolean d() {
+      return true;
    }
 
-   default void a() {
+   default void a(o $$0) {
+      p $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.a().toString());
+      this.a($$1);
    }
 
-   @Nullable
-   default xf<?> b() {
-      return null;
+   default void a(p $$0) {
    }
 }

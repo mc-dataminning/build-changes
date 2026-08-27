@@ -1,120 +1,47 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
 
 public class alq {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("commands.whitelist.alreadyOn"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vf.c("commands.whitelist.alreadyOff"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vf.c("commands.whitelist.add.failed"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vf.c("commands.whitelist.remove.failed"));
+   private static final int a = -1;
 
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
-                                 "whitelist"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(dt.a("on").executes($$0x -> b((ds)$$0x.getSource()))))
-                        .then(dt.a("off").executes($$0x -> c((ds)$$0x.getSource()))))
-                     .then(dt.a("list").executes($$0x -> d((ds)$$0x.getSource()))))
-                  .then(dt.a("add").then(dt.a("targets", eh.a()).suggests(($$0x, $$1) -> {
-                     aqv $$2 = ((ds)$$0x.getSource()).l().ae();
-                     return dx.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.fR())).map($$0xx -> $$0xx.fR().getName()), $$1);
-                  }).executes($$0x -> a((ds)$$0x.getSource(), eh.a($$0x, "targets"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("weather").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ((LiteralArgumentBuilder)dt.a("clear").executes($$0x -> a((ds)$$0x.getSource(), -1)))
+                        .then(dt.a("duration", ff.a(1)).executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+                  ))
                .then(
-                  dt.a("remove")
-                     .then(
-                        dt.a("targets", eh.a())
-                           .suggests(($$0x, $$1) -> dx.a(((ds)$$0x.getSource()).l().ae().j(), $$1))
-                           .executes($$0x -> b((ds)$$0x.getSource(), eh.a($$0x, "targets")))
-                     )
+                  ((LiteralArgumentBuilder)dt.a("rain").executes($$0x -> b((ds)$$0x.getSource(), -1)))
+                     .then(dt.a("duration", ff.a(1)).executes($$0x -> b((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
                ))
-            .then(dt.a("reload").executes($$0x -> a((ds)$$0x.getSource())))
+            .then(
+               ((LiteralArgumentBuilder)dt.a("thunder").executes($$0x -> c((ds)$$0x.getSource(), -1)))
+                  .then(dt.a("duration", ff.a(1)).executes($$0x -> c((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+            )
       );
    }
 
-   private static int a(ds $$0) {
-      $$0.l().ae().a();
-      $$0.a(() -> vf.c("commands.whitelist.reloaded"), true);
-      $$0.l().a($$0);
-      return 1;
+   private static int a(ds $$0, int $$1, bjh $$2) {
+      return $$1 == -1 ? $$2.a($$0.e().F_()) : $$1;
    }
 
-   private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      ard $$2 = $$0.l().ae().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.a($$4)) {
-            are $$5 = new are($$4);
-            $$2.a($$5);
-            $$0.a(() -> vf.a("commands.whitelist.add.success", vf.b($$4.getName())), true);
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw c.create();
-      } else {
-         return $$3;
-      }
+   private static int a(ds $$0, int $$1) {
+      $$0.e().a(a($$0, $$1, ane.b), 0, false, false);
+      $$0.a(() -> vg.c("commands.weather.set.clear"), true);
+      return $$1;
    }
 
-   private static int b(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      ard $$2 = $$0.l().ae().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            are $$5 = new are($$4);
-            $$2.b($$5);
-            $$0.a(() -> vf.a("commands.whitelist.remove.success", vf.b($$4.getName())), true);
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw d.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
-      }
+   private static int b(ds $$0, int $$1) {
+      $$0.e().a(0, a($$0, $$1, ane.c), true, false);
+      $$0.a(() -> vg.c("commands.weather.set.rain"), true);
+      return $$1;
    }
 
-   private static int b(ds $$0) throws CommandSyntaxException {
-      aqv $$1 = $$0.l().ae();
-      if ($$1.o()) {
-         throw a.create();
-      } else {
-         $$1.a(true);
-         $$0.a(() -> vf.c("commands.whitelist.enabled"), true);
-         $$0.l().a($$0);
-         return 1;
-      }
-   }
-
-   private static int c(ds $$0) throws CommandSyntaxException {
-      aqv $$1 = $$0.l().ae();
-      if (!$$1.o()) {
-         throw b.create();
-      } else {
-         $$1.a(false);
-         $$0.a(() -> vf.c("commands.whitelist.disabled"), true);
-         return 1;
-      }
-   }
-
-   private static int d(ds $$0) {
-      String[] $$1 = $$0.l().ae().j();
-      if ($$1.length == 0) {
-         $$0.a(() -> vf.c("commands.whitelist.none"), false);
-      } else {
-         $$0.a(() -> vf.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
-      }
-
-      return $$1.length;
+   private static int c(ds $$0, int $$1) {
+      $$0.e().a(0, a($$0, $$1, ane.d), true, true);
+      $$0.a(() -> vg.c("commands.weather.set.thunder"), true);
+      return $$1;
    }
 }

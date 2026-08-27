@@ -1,26 +1,13 @@
-public enum euu {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+public class euu extends euv {
+   private final esi b;
 
-   private static final euu[] d = values();
-   private final boolean e;
-   private final boolean f;
-
-   private euu(boolean $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public euu(esi $$0, long $$1, vg $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
-   public boolean a() {
-      return this.e;
-   }
-
-   public boolean b() {
-      return this.f;
-   }
-
-   public euu c() {
-      return d[(this.ordinal() + 1) % d.length];
+   @Override
+   protected void a(era $$0, long $$1) throws esn {
+      $$0.d($$1, this.b.a);
    }
 }

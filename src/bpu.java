@@ -1,71 +1,146 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
 
-public class bpu {
-   private static final int a = 10;
-   private static final int b = 7;
-   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
+public class bpu<E extends bmx> extends bof<E> {
+   public static final int c = 160;
+   private final ToIntFunction<E> d;
+   private final int e;
+   private final int f;
+   private final float g;
+   private final bxd h;
+   private final int i;
+   private final Function<E, ars> j;
+   private Optional<Long> k = Optional.empty();
+   private Optional<bpu.a> l = Optional.empty();
 
-   public static bpn<bmu> a(float $$0) {
-      return a($$0, true);
+   public bpu(ToIntFunction<E> $$0, int $$1, int $$2, float $$3, bxd $$4, int $$5, Function<E, ars> $$6) {
+      super(ImmutableMap.of(bvq.n, bvr.c, bvq.V, bvr.b, bvq.h, bvr.a, bvq.W, bvr.b), 160);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   public static bpn<bmu> a(float $$0, boolean $$1) {
-      return a($$0, $$0x -> bxg.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.bc());
+   protected void a(ane $$0, bmx $$1, long $$2) {
+      bno<?> $$3 = $$1.dN();
+      $$3.c(bvq.h).flatMap($$1x -> $$1x.a($$1xx -> this.h.a($$1, $$1xx))).ifPresent($$1x -> this.b($$1, $$1x));
    }
 
-   public static bod<bmu> a(float $$0, int $$1, int $$2) {
-      return a($$0, $$2x -> bxg.a($$2x, $$1, $$2), $$0x -> true);
+   protected void b(ane $$0, E $$1, long $$2) {
+      bno<?> $$3 = $$1.dN();
+      if (!$$3.a(bvq.W)) {
+         $$0.a($$1, (byte)59);
+         $$3.a(bvq.V, this.d.applyAsInt($$1));
+      }
    }
 
-   public static bod<bmu> b(float $$0) {
-      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
+   protected boolean c(ane $$0, bmx $$1, long $$2) {
+      return this.l.isPresent() && this.l.get().c().bx();
    }
 
-   public static bod<bmu> c(float $$0) {
-      return a($$0, bpu::a, blv::bc);
-   }
-
-   private static bpn<bmu> a(float $$0, Function<bmu, elt> $$1, Predicate<bmu> $$2) {
-      return brp.a((Function<brp.b<bmu>, ? extends App<brp.c<bmu>, brs<bmu>>>)($$3 -> $$3.group($$3.c(bvn.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               if (!$$2.test($$5)) {
-                  return false;
-               } else {
-                  Optional<elt> $$7 = Optional.ofNullable($$1.apply($$5));
-                  $$3x.a($$7.map($$1xxxx -> new bvq($$1xxxx, $$0, 0)));
-                  return true;
-               }
-            })));
-   }
-
-   @Nullable
-   private static elt a(bmu $$0) {
-      elt $$1 = null;
-      elt $$2 = null;
-
-      for (int[] $$3 : c) {
-         if ($$1 == null) {
-            $$2 = boe.a($$0, $$3[0], $$3[1]);
+   protected void d(ane $$0, E $$1, long $$2) {
+      if (!this.l.isEmpty()) {
+         $$1.dN().a(bvq.m, new bvt(this.l.get().a(), this.g, 0));
+         $$1.dN().a(bvq.n, new boq(this.l.get().c(), true));
+         boolean $$3 = !this.l.get().c().dl().equals(this.l.get().b());
+         if ($$3) {
+            $$0.a($$1, (byte)59);
+            $$1.N().n();
+            this.b($$1, this.l.get().c);
          } else {
-            $$2 = $$0.dk().e($$0.dk().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
+            hx $$4 = $$1.dl();
+            if ($$4.equals(this.l.get().a())) {
+               $$0.a($$1, (byte)58);
+               if (this.k.isEmpty()) {
+                  this.k = Optional.of($$2);
+               }
+
+               if ($$2 - this.k.get() >= (long)this.i) {
+                  $$1.dN().a(bvq.W, this.a($$4, this.l.get().b()));
+                  $$0.a(null, $$1, this.j.apply($$1), aru.g, 1.0F, $$1.eX());
+                  this.l = Optional.empty();
+               }
+            }
+         }
+      }
+   }
+
+   private emc a(hx $$0, hx $$1) {
+      double $$2 = 0.5;
+      double $$3 = 0.5 * (double)aup.j((double)($$1.u() - $$0.u()));
+      double $$4 = 0.5 * (double)aup.j((double)($$1.w() - $$0.w()));
+      return emc.c($$1).b($$3, 0.0, $$4);
+   }
+
+   private Optional<hx> a(bmx $$0, bmo $$1) {
+      hx $$2 = $$1.dl();
+      if (!this.a($$0, $$2)) {
+         return Optional.empty();
+      } else {
+         List<hx> $$3 = Lists.newArrayList();
+         hx.a $$4 = $$2.j();
+
+         for (ic $$5 : ic.c.a) {
+            $$4.g($$2);
+
+            for (int $$6 = 0; $$6 < this.f; $$6++) {
+               if (!this.a($$0, $$4.c($$5))) {
+                  $$4.c($$5.g());
+                  break;
+               }
+            }
+
+            if ($$4.k($$2) >= this.e) {
+               $$3.add($$4.i());
+            }
          }
 
-         if ($$2 == null || $$0.dM().b_(hx.a($$2)).c()) {
-            return $$1;
-         }
+         bvy $$7 = $$0.N();
+         return $$3.stream().sorted(Comparator.comparingDouble($$0.dl()::j)).filter($$1x -> {
+            efo $$2x = $$7.a($$1x, 0);
+            return $$2x != null && $$2x.j();
+         }).findFirst();
+      }
+   }
 
-         $$1 = $$2;
+   private boolean a(bmx $$0, hx $$1) {
+      return $$0.N().a($$1) && $$0.a(eft.a($$0.dL(), $$1.j())) == 0.0F;
+   }
+
+   private void b(bmx $$0, bmo $$1) {
+      this.k = Optional.empty();
+      this.l = this.a($$0, $$1).map($$1x -> new bpu.a($$1x, $$1.dl(), $$1));
+   }
+
+   public static class a {
+      private final hx a;
+      private final hx b;
+      final bmo c;
+
+      public a(hx $$0, hx $$1, bmo $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      return $$2;
-   }
+      public hx a() {
+         return this.a;
+      }
 
-   @Nullable
-   private static elt a(bmu $$0, int $$1, int $$2) {
-      elt $$3 = $$0.f(0.0F);
-      return bxb.a($$0, $$1, $$2, -2, $$3.c, $$3.e, (float) (Math.PI / 2));
+      public hx b() {
+         return this.b;
+      }
+
+      public bmo c() {
+         return this.c;
+      }
    }
 }

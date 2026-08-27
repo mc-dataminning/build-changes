@@ -1,62 +1,31 @@
-public class aem implements xf<adj> {
-   private final hx a;
-   private final ic b;
-   private final aem.a c;
-   private final int d;
+public class aem implements xg<adk> {
+   private static final int a = 2;
+   private final boolean b;
 
-   public aem(aem.a $$0, hx $$1, ic $$2, int $$3) {
-      this.c = $$0;
-      this.a = $$1.i();
-      this.b = $$2;
-      this.d = $$3;
+   public aem(cfn $$0) {
+      this.b = $$0.b;
    }
 
-   public aem(aem.a $$0, hx $$1, ic $$2) {
-      this($$0, $$1, $$2, 0);
-   }
-
-   public aem(ui $$0) {
-      this.c = $$0.b(aem.a.class);
-      this.a = $$0.e();
-      this.b = ic.a($$0.readUnsignedByte());
-      this.d = $$0.n();
+   public aem(uj $$0) {
+      byte $$1 = $$0.readByte();
+      this.b = ($$1 & 2) != 0;
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.c);
-      $$0.a(this.a);
-      $$0.k(this.b.d());
-      $$0.c(this.d);
+   public void a(uj $$0) {
+      byte $$1 = 0;
+      if (this.b) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
-      return this.a;
-   }
-
-   public ic d() {
+   public boolean a() {
       return this.b;
-   }
-
-   public aem.a e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g;
    }
 }

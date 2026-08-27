@@ -1,57 +1,83 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class dri extends drj {
-   public dri(Codec<duf> $$0) {
+public class dri extends dsc<dun> {
+   public dri(Codec<dun> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(ctq $$0, auv $$1, hx $$2, djh $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
-         return false;
-      } else {
-         ic $$4 = ic.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<ic> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+   public boolean a(dse<dun> $$0) {
+      hx $$1 = $$0.e();
+      cus $$2 = $$0.b();
+      auw $$3 = $$0.d();
+      if ($$2.u($$1) && !$$2.u($$1.c())) {
+         hx.a $$4 = $$1.j();
+         hx.a $$5 = $$1.j();
+         boolean $$6 = true;
+         boolean $$7 = true;
+         boolean $$8 = true;
+         boolean $$9 = true;
 
-         for (ic $$8 : $$6.subList(0, $$5)) {
-            hx.a $$9 = $$2.j();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            ic $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(ic.b);
-               ic[] $$13 = new ic[]{$$8, ic.b};
-               $$11 = ac.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
+         while ($$2.u($$4)) {
+            if ($$2.s($$4)) {
+               return true;
             }
 
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
+            $$2.a($$4, cxa.dY.o(), 2);
+            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, ic.c));
+            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, ic.d));
+            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, ic.e));
+            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, ic.f));
+            $$4.c(ic.a);
+         }
 
-            $$9.c($$11.g());
-            $$9.c(ic.b);
+         $$4.c(ic.b);
+         this.a($$2, $$3, $$5.a($$4, ic.c));
+         this.a($$2, $$3, $$5.a($$4, ic.d));
+         this.a($$2, $$3, $$5.a($$4, ic.e));
+         this.a($$2, $$3, $$5.a($$4, ic.f));
+         $$4.c(ic.a);
+         hx.a $$10 = new hx.a();
 
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
+         for (int $$11 = -3; $$11 < 4; $$11++) {
+            for (int $$12 = -3; $$12 < 4; $$12++) {
+               int $$13 = aup.a($$11) * aup.a($$12);
+               if ($$3.a(10) < 10 - $$13) {
+                  $$10.g($$4.b($$11, 0, $$12));
+                  int $$14 = 3;
 
-               if ($$1.i() < 0.25F) {
-                  $$9.c(ic.b);
+                  while ($$2.u($$5.a($$10, ic.a))) {
+                     $$10.c(ic.a);
+                     if (--$$14 <= 0) {
+                        break;
+                     }
+                  }
+
+                  if (!$$2.u($$5.a($$10, ic.a))) {
+                     $$2.a($$10, cxa.dY.o(), 2);
+                  }
                }
             }
          }
 
          return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(cty $$0, auw $$1, hx $$2) {
+      if ($$1.h()) {
+         $$0.a($$2, cxa.dY.o(), 2);
+      }
+   }
+
+   private boolean b(cty $$0, auw $$1, hx $$2) {
+      if ($$1.a(10) != 0) {
+         $$0.a($$2, cxa.dY.o(), 2);
+         return true;
+      } else {
+         return false;
       }
    }
 }

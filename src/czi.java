@@ -1,16 +1,27 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface czi {
-   @Nullable
-   dgv a(hx var1, djh var2);
+public class czi extends cwy {
+   public static final MapCodec<czi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bjh.b(0, 10).fieldOf("experience").forGetter($$0x -> $$0x.b), u()).apply($$0, czi::new)
+   );
+   private final bjh b;
 
-   @Nullable
-   default <T extends dgv> dgw<T> a(ctp $$0, djh $$1, dgx<T> $$2) {
-      return null;
+   @Override
+   public MapCodec<? extends czi> a() {
+      return a;
    }
 
-   @Nullable
-   default <T extends dgv> dnt a(and $$0, T $$1) {
-      return $$1 instanceof dnt.b<?> $$2 ? $$2.d() : null;
+   public czi(bjh $$0, djo.d $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(djp $$0, ane $$1, hx $$2, cng $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.b);
+      }
    }
 }

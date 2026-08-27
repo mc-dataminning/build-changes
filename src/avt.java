@@ -1,2 +1,3 @@
-public @interface avt {
+public enum avt {
+   a;
 }

@@ -1,50 +1,16 @@
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class gka {
-   private final gkh a;
-   private final evm b;
-   @Nullable
-   private ezq c;
+@FunctionalInterface
+public interface gka {
+   gka a = ($$0, $$1) -> {
+   };
 
-   public gka(gkh $$0, evm $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   default gka decorate(Consumer<gke.a> $$0) {
+      return ($$1, $$2) -> this.send($$1, $$2x -> {
+            $$2.accept($$2x);
+            $$0.accept($$2x);
+         });
    }
 
-   private void a() {
-      if (this.c != null) {
-         this.a.a(this.c);
-      }
-
-      vf $$0 = vf.c("tutorial.bundleInsert.title");
-      vf $$1 = vf.c("tutorial.bundleInsert.description");
-      this.c = new ezq(ezq.a.g, $$0, $$1, true);
-      this.a.a(this.c, 160);
-   }
-
-   private void b() {
-      if (this.c != null) {
-         this.a.a(this.c);
-         this.c = null;
-      }
-
-      if (!this.b.t) {
-         this.b.t = true;
-         this.b.as();
-      }
-   }
-
-   public void a(cmy $$0, cmy $$1, cij $$2) {
-      if (!this.b.t) {
-         if (!$$0.b() && $$1.a(cnb.qR)) {
-            if ($$2 == cij.a) {
-               this.a();
-            } else if ($$2 == cij.b) {
-               this.b();
-            }
-         } else if ($$0.a(cnb.qR) && !$$1.b() && $$2 == cij.b) {
-            this.b();
-         }
-      }
-   }
+   void send(gkb var1, Consumer<gke.a> var2);
 }

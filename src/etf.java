@@ -1,73 +1,90 @@
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class etf extends gkp {
-   private static final vf b = vf.c("mco.reset.world.seed");
-   public static final vf a = vf.c("mco.reset.world.generate");
-   private static final int c = 10;
-   private static final int v = 210;
-   private final faq w = new faq(this);
-   private final Consumer<eub> x;
-   private exp y;
-   private etv z = etv.a;
-   private boolean A = true;
-   private final Set<String> B = new HashSet<>();
-   private final vf C;
+public class etf extends gld {
+   private static final Logger a = LogUtils.getLogger();
+   private static final vg b = vg.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final vg c = vg.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final vg v = vg.c("mco.configure.world.players.error").b(-65536);
+   private eya w;
+   private exr x;
+   private final err y;
+   private final eta z;
+   private final fdm A;
+   @Nullable
+   private vg B;
 
-   public etf(Consumer<eub> $$0, vf $$1) {
-      super(a);
-      this.x = $$0;
-      this.C = $$1;
+   public etf(eta $$0, fdm $$1, err $$2) {
+      super(evj.a);
+      this.z = $$0;
+      this.A = $$1;
+      this.y = $$2;
    }
 
    @Override
-   public void aN_() {
-      this.y = new exp(this.i, 210, 20, vf.c("mco.reset.world.seed"));
-      this.y.f(32);
-      this.c(this.y);
-      this.w.a(new eyn(this.e, this.i));
-      fau $$0 = this.w.c(fau.d()).a(10);
-      $$0.a(fam.a(this.i, this.y, b));
-      $$0.a(exn.a(etv::a).a(etv.values()).a(this.z).a(0, 0, 210, 20, vf.c("selectWorld.mapType"), ($$0x, $$1x) -> this.z = $$1x));
-      $$0.a(exn.b(this.A).a(0, 0, 210, 20, vf.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.A = $$1x));
-      this.a($$0);
-      fau $$1 = this.w.b(fau.e().a(10));
-      $$1.a(exg.a(this.C, $$0x -> this.x.accept(this.D())).a());
-      $$1.a(exg.a(ve.k, $$0x -> this.aE_()).a());
-      this.w.a($$1x -> {
-         exe var10000 = this.d($$1x);
-      });
-      this.c();
+   public void aP_() {
+      this.w = new eya(this.f.h, this.g / 2 - 100, g(2), 200, 20, null, vg.c("mco.configure.world.invite.profile.name"));
+      this.e(this.w);
+      this.c(this.w);
+      this.x = this.d(exr.a(vg.c("mco.configure.world.buttons.invite"), $$0 -> this.E()).a(this.g / 2 - 100, g(10), 200, 20).a());
+      this.d(exr.a(vf.e, $$0 -> this.f.a(this.A)).a(this.g / 2 - 100, g(12), 200, 20).a());
    }
 
-   private void a(fau $$0) {
-      apt $$1 = apw.c();
-      $$1.a();
-      $$0.a(exg.a(vf.c("selectWorld.experiments"), $$1x -> this.f.a(new fhu(this, $$1, $$0xx -> {
-            this.B.clear();
-
-            for (apq $$1xx : $$0xx.f()) {
-               if ($$1xx.j() == apu.d) {
-                  this.B.add($$1xx.f());
-               }
+   private void E() {
+      if (ac.b(this.w.a())) {
+         this.a(v);
+      } else {
+         long $$0 = this.y.a;
+         String $$1 = this.w.a().trim();
+         this.x.j = false;
+         this.w.e(false);
+         this.a(c);
+         CompletableFuture.<err>supplyAsync(() -> {
+            try {
+               return era.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, ac.g()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.y.h = $$0x.h;
+               this.f.a(new etm(this.z, this.y));
+            } else {
+               this.a(v);
             }
 
-            this.f.a(this);
-         }))).a(210).a());
+            this.w.e(true);
+            this.x.j = true;
+         }, this.j);
+      }
    }
 
-   private eub D() {
-      return new eub(this.y.a(), this.z, this.A, this.B);
+   private void a(vg $$0) {
+      this.B = $$0;
+      this.f.aW().c($$0);
    }
 
    @Override
-   protected void c() {
-      this.w.a();
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.a(this.A);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
-   public void aE_() {
-      this.x.accept(null);
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, b, this.g / 2 - 100, g(1), -1, false);
+      if (this.B != null) {
+         $$0.a(this.i, this.B, this.g / 2, g(5), -1);
+      }
+
+      this.w.a($$0, $$1, $$2, $$3);
    }
 }

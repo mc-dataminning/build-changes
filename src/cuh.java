@@ -1,40 +1,50 @@
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public interface cuh {
-   void a(blz<?> var1, auv var2);
+public class cuh {
+   private final Long2ObjectMap<List<anf>> a = new Long2ObjectOpenHashMap();
+   private final Map<anf, cuh.a> b = Maps.newHashMap();
+   private final amo c;
 
-   static void a(cmy $$0, List<vf> $$1, String $$2) {
-      vf $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.add($$3);
-      } else {
-         $$1.add(ve.a);
-         $$1.add(vf.c("block.minecraft.spawner.desc1").a(n.h));
-         $$1.add(ve.a().b(vf.c("block.minecraft.spawner.desc2").a(n.j)));
+   public cuh(amo $$0) {
+      this.c = $$0;
+   }
+
+   private List<anf> a(cte $$0) {
+      return (List<anf>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
+   }
+
+   public void a(cte $$0, bmr $$1) {
+      for (anf $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new cuh.a()).a($$1);
       }
    }
 
-   @Nullable
-   static vf a(cmy $$0, String $$1) {
-      sn $$2 = ckr.a($$0);
-      if ($$2 != null) {
-         ahg $$3 = a($$2, $$1);
-         if ($$3 != null) {
-            return kd.g.b($$3).map($$0x -> vf.c($$0x.g()).a(n.h)).orElse(null);
+   public boolean a(bmr $$0, cte $$1) {
+      for (anf $$2 : this.a($$1)) {
+         cuh.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
          }
       }
 
-      return null;
+      return false;
    }
 
-   @Nullable
-   private static ahg a(sn $$0, String $$1) {
-      if ($$0.b($$1, 10)) {
-         String $$2 = $$0.p($$1).p("entity").l("id");
-         return ahg.a($$2);
-      } else {
-         return null;
+   static class a {
+      private final Object2IntMap<bmr> a = new Object2IntOpenHashMap(bmr.values().length);
+
+      public void a(bmr $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+      }
+
+      public boolean b(bmr $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
       }
    }
 }

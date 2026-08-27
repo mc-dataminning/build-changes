@@ -1,55 +1,62 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class cmd extends cmt {
-   public cmd(cmt.a $$0) {
+public class cmd extends cnb {
+   public static final String a = "StoredEnchantments";
+
+   public cmd(cnb.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cmy $$0, @Nullable ctp $$1, List<vf> $$2, coq $$3) {
-      sn $$4 = $$0.b("Explosion");
-      if ($$4 != null) {
-         a($$4, $$2);
-      }
+   public boolean i(cng $$0) {
+      return true;
    }
 
-   public static void a(sn $$0, List<vf> $$1) {
-      cmc.a $$2 = cmc.a.a($$0.f("Type"));
-      $$1.add(vf.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
-      int[] $$3 = $$0.n("Colors");
-      if ($$3.length > 0) {
-         $$1.add(a(vf.i().a(n.h), $$3));
-      }
-
-      int[] $$4 = $$0.n("FadeColors");
-      if ($$4.length > 0) {
-         $$1.add(a(vf.c("item.minecraft.firework_star.fade_to").b(ve.u).a(n.h), $$4));
-      }
-
-      if ($$0.q("Trail")) {
-         $$1.add(vf.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if ($$0.q("Flicker")) {
-         $$1.add(vf.c("item.minecraft.firework_star.flicker").a(n.h));
-      }
+   @Override
+   public boolean d_(cng $$0) {
+      return false;
    }
 
-   private static vf a(vt $$0, int[] $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
+   public static su d(cng $$0) {
+      so $$1 = $$0.v();
+      return $$1 != null ? $$1.c("StoredEnchantments", 10) : new su();
+   }
+
+   @Override
+   public void a(cng $$0, @Nullable ctx $$1, List<vg> $$2, coy $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      cng.a($$2, d($$0));
+   }
+
+   public static void a(cng $$0, cru $$1) {
+      su $$2 = d($$0);
+      boolean $$3 = true;
+      ahh $$4 = crt.a($$1.a);
+
+      for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
+         so $$6 = $$2.a($$5);
+         ahh $$7 = crt.b($$6);
+         if ($$7 != null && $$7.equals($$4)) {
+            if (crt.a($$6) < $$1.b) {
+               crt.a($$6, $$1.b);
+            }
+
+            $$3 = false;
+            break;
          }
-
-         $$0.b(a($$1[$$2]));
       }
 
-      return $$0;
+      if ($$3) {
+         $$2.add(crt.a($$4, $$1.b));
+      }
+
+      $$0.w().a("StoredEnchantments", $$2);
    }
 
-   private static vf a(int $$0) {
-      clm $$1 = clm.b($$0);
-      return $$1 == null ? vf.c("item.minecraft.firework_star.custom_color") : vf.c("item.minecraft.firework_star." + $$1.b());
+   public static cng a(cru $$0) {
+      cng $$1 = new cng(cnj.us);
+      a($$1, $$0);
+      return $$1;
    }
 }

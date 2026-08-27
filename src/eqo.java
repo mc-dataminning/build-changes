@@ -1,392 +1,129 @@
-import com.google.common.hash.Hashing;
-import com.google.common.io.Files;
-import com.mojang.logging.LogUtils;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.output.CountingOutputStream;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.slf4j.Logger;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.system.MemoryStack;
 
-public class eqo {
-   static final Logger a = LogUtils.getLogger();
-   volatile boolean b;
-   volatile boolean c;
-   volatile boolean d;
-   volatile boolean e;
-   @Nullable
-   private volatile File f;
-   volatile File g;
-   @Nullable
-   private volatile HttpGet h;
-   @Nullable
-   private Thread i;
-   private final RequestConfig j = RequestConfig.custom().setSocketTimeout(120000).setConnectTimeout(120000).build();
-   private static final String[] k = new String[]{
-      "CON",
-      "COM",
-      "PRN",
-      "AUX",
-      "CLOCK$",
-      "NUL",
-      "COM1",
-      "COM2",
-      "COM3",
-      "COM4",
-      "COM5",
-      "COM6",
-      "COM7",
-      "COM8",
-      "COM9",
-      "LPT1",
-      "LPT2",
-      "LPT3",
-      "LPT4",
-      "LPT5",
-      "LPT6",
-      "LPT7",
-      "LPT8",
-      "LPT9"
-   };
+public interface eqo {
+   eqo a(double var1, double var3, double var5);
 
-   public long a(String $$0) {
-      CloseableHttpClient $$1 = null;
-      HttpGet $$2 = null;
+   eqo a(int var1, int var2, int var3, int var4);
 
-      long var5;
-      try {
-         $$2 = new HttpGet($$0);
-         $$1 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-         CloseableHttpResponse $$3 = $$1.execute($$2);
-         return Long.parseLong($$3.getFirstHeader("Content-Length").getValue());
-      } catch (Throwable var16) {
-         a.error("Unable to get content length for download");
-         var5 = 0L;
-      } finally {
-         if ($$2 != null) {
-            $$2.releaseConnection();
-         }
+   eqo a(float var1, float var2);
 
-         if ($$1 != null) {
-            try {
-               $$1.close();
-            } catch (IOException var15) {
-               a.error("Could not close http client", var15);
-            }
-         }
-      }
+   eqo a(int var1, int var2);
 
-      return var5;
+   eqo b(int var1, int var2);
+
+   eqo a(float var1, float var2, float var3);
+
+   void e();
+
+   default void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a((double)$$0, (double)$$1, (double)$$2);
+      this.a($$3, $$4, $$5, $$6);
+      this.a($$7, $$8);
+      this.c($$9);
+      this.b($$10);
+      this.a($$11, $$12, $$13);
+      this.e();
    }
 
-   public void a(ery $$0, String $$1, esu.a $$2, egm $$3) {
-      if (this.i == null) {
-         this.i = new Thread(() -> {
-            CloseableHttpClient $$4 = null;
+   void b(int var1, int var2, int var3, int var4);
 
-            try {
-               this.f = File.createTempFile("backup", ".tar.gz");
-               this.h = new HttpGet($$0.a);
-               $$4 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-               HttpResponse $$5 = $$4.execute(this.h);
-               $$2.b = Long.parseLong($$5.getFirstHeader("Content-Length").getValue());
-               if ($$5.getStatusLine().getStatusCode() == 200) {
-                  OutputStream $$12 = new FileOutputStream(this.f);
-                  eqo.b $$13 = new eqo.b($$1.trim(), this.f, $$3, $$2);
-                  eqo.a $$14 = new eqo.a($$12);
-                  $$14.a($$13);
-                  IOUtils.copy($$5.getEntity().getContent(), $$14);
-                  return;
-               }
+   void l();
 
-               this.d = true;
-               this.h.abort();
-            } catch (Exception var93) {
-               a.error("Caught exception while downloading: {}", var93.getMessage());
-               this.d = true;
-               return;
-            } finally {
-               this.h.releaseConnection();
-               if (this.f != null) {
-                  this.f.delete();
-               }
-
-               if (!this.d) {
-                  if (!$$0.b.isEmpty() && !$$0.c.isEmpty()) {
-                     try {
-                        this.f = File.createTempFile("resources", ".tar.gz");
-                        this.h = new HttpGet($$0.b);
-                        HttpResponse $$28 = $$4.execute(this.h);
-                        $$2.b = Long.parseLong($$28.getFirstHeader("Content-Length").getValue());
-                        if ($$28.getStatusLine().getStatusCode() != 200) {
-                           this.d = true;
-                           this.h.abort();
-                           return;
-                        }
-
-                        OutputStream $$29 = new FileOutputStream(this.f);
-                        eqo.c $$30 = new eqo.c(this.f, $$2, $$0);
-                        eqo.a $$31 = new eqo.a($$29);
-                        $$31.a($$30);
-                        IOUtils.copy($$28.getEntity().getContent(), $$31);
-                     } catch (Exception var91) {
-                        a.error("Caught exception while downloading: {}", var91.getMessage());
-                        this.d = true;
-                     } finally {
-                        this.h.releaseConnection();
-                        if (this.f != null) {
-                           this.f.delete();
-                        }
-                     }
-                  } else {
-                     this.c = true;
-                  }
-               }
-
-               if ($$4 != null) {
-                  try {
-                     $$4.close();
-                  } catch (IOException var90) {
-                     a.error("Failed to close Realms download client");
-                  }
-               }
-            }
-         });
-         this.i.setUncaughtExceptionHandler(new esc(a));
-         this.i.start();
-      }
+   default eqo a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
    }
 
-   public void a() {
-      if (this.h != null) {
-         this.h.abort();
-      }
-
-      if (this.f != null) {
-         this.f.delete();
-      }
-
-      this.b = true;
+   default eqo a(int $$0) {
+      return this.a(atz.b.b($$0), atz.b.c($$0), atz.b.d($$0), atz.b.a($$0));
    }
 
-   public boolean b() {
-      return this.c;
+   default eqo b(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   public boolean c() {
-      return this.d;
+   default eqo c(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   public boolean d() {
-      return this.e;
+   default void a(eqk.a $$0, fuq $$1, float $$2, float $$3, float $$4, int $$5, int $$6) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, new int[]{$$5, $$5, $$5, $$5}, $$6, false);
    }
 
-   public static String b(String $$0) {
-      $$0 = $$0.replaceAll("[\\./\"]", "_");
-
-      for (String $$1 : k) {
-         if ($$0.equalsIgnoreCase($$1)) {
-            $$0 = "_" + $$0 + "_";
-         }
-      }
-
-      return $$0;
-   }
-
-   void a(String $$0, @Nullable File $$1, egm $$2) throws IOException {
-      Pattern $$3 = Pattern.compile(".*-([0-9]+)$");
-      int $$4 = 1;
-
-      for (char $$5 : aa.bd) {
-         $$0 = $$0.replace($$5, '_');
-      }
-
-      if (StringUtils.isEmpty($$0)) {
-         $$0 = "Realm";
-      }
-
-      $$0 = b($$0);
+   default void a(eqk.a $$0, fuq $$1, float[] $$2, float $$3, float $$4, float $$5, int[] $$6, int $$7, boolean $$8) {
+      float[] $$9 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
+      int[] $$10 = new int[]{$$6[0], $$6[1], $$6[2], $$6[3]};
+      int[] $$11 = $$1.b();
+      jb $$12 = $$1.e().q();
+      Matrix4f $$13 = $$0.a();
+      Vector3f $$14 = $$0.b().transform(new Vector3f((float)$$12.u(), (float)$$12.v(), (float)$$12.w()));
+      int $$15 = 8;
+      int $$16 = $$11.length / 8;
+      MemoryStack $$17 = MemoryStack.stackPush();
 
       try {
-         for (egm.b $$6 : $$2.b()) {
-            String $$7 = $$6.a();
-            if ($$7.toLowerCase(Locale.ROOT).startsWith($$0.toLowerCase(Locale.ROOT))) {
-               Matcher $$8 = $$3.matcher($$7);
-               if ($$8.matches()) {
-                  int $$9 = Integer.parseInt($$8.group(1));
-                  if ($$9 > $$4) {
-                     $$4 = $$9;
-                  }
-               } else {
-                  $$4++;
-               }
-            }
-         }
-      } catch (Exception var43) {
-         a.error("Error getting level list", var43);
-         this.d = true;
-         return;
-      }
+         ByteBuffer $$18 = $$17.malloc(eqi.j.b());
+         IntBuffer $$19 = $$18.asIntBuffer();
 
-      String $$13;
-      if ($$2.a($$0) && $$4 <= 1) {
-         $$13 = $$0;
-      } else {
-         $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-         if (!$$2.a($$13)) {
-            boolean $$12 = false;
-
-            while (!$$12) {
-               $$4++;
-               $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-               if ($$2.a($$13)) {
-                  $$12 = true;
-               }
-            }
-         }
-      }
-
-      TarArchiveInputStream $$14 = null;
-      File $$15 = new File(evi.O().p.getAbsolutePath(), "saves");
-
-      try {
-         $$15.mkdir();
-         $$14 = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(new FileInputStream($$1))));
-
-         for (TarArchiveEntry $$16 = $$14.getNextTarEntry(); $$16 != null; $$16 = $$14.getNextTarEntry()) {
-            File $$17 = new File($$15, $$16.getName().replace("world", $$13));
-            if ($$16.isDirectory()) {
-               $$17.mkdirs();
+         for (int $$20 = 0; $$20 < $$16; $$20++) {
+            $$19.clear();
+            $$19.put($$11, $$20 * 8, 8);
+            float $$21 = $$18.getFloat(0);
+            float $$22 = $$18.getFloat(4);
+            float $$23 = $$18.getFloat(8);
+            float $$27;
+            float $$28;
+            float $$29;
+            if ($$8) {
+               float $$24 = (float)($$18.get(12) & 255) / 255.0F;
+               float $$25 = (float)($$18.get(13) & 255) / 255.0F;
+               float $$26 = (float)($$18.get(14) & 255) / 255.0F;
+               $$27 = $$24 * $$9[$$20] * $$3;
+               $$28 = $$25 * $$9[$$20] * $$4;
+               $$29 = $$26 * $$9[$$20] * $$5;
             } else {
-               $$17.createNewFile();
-
-               try (FileOutputStream $$18 = new FileOutputStream($$17)) {
-                  IOUtils.copy($$14, $$18);
-               }
+               $$27 = $$9[$$20] * $$3;
+               $$28 = $$9[$$20] * $$4;
+               $$29 = $$9[$$20] * $$5;
             }
+
+            int $$33 = $$10[$$20];
+            float $$34 = $$18.getFloat(16);
+            float $$35 = $$18.getFloat(20);
+            Vector4f $$36 = $$13.transform(new Vector4f($$21, $$22, $$23, 1.0F));
+            this.a($$36.x(), $$36.y(), $$36.z(), $$27, $$28, $$29, 1.0F, $$34, $$35, $$7, $$33, $$14.x(), $$14.y(), $$14.z());
          }
-      } catch (Exception var41) {
-         a.error("Error extracting world", var41);
-         this.d = true;
-      } finally {
-         if ($$14 != null) {
-            $$14.close();
-         }
-
-         if ($$1 != null) {
-            $$1.delete();
-         }
-
-         try (egm.c $$26 = $$2.d($$13)) {
-            $$26.b($$13);
-         } catch (sy | te | IOException var39) {
-            a.error("Failed to modify unpacked realms level {}", $$13, var39);
-         } catch (eli var40) {
-            a.warn("{}", var40.getMessage());
-         }
-
-         this.g = new File($$15, $$13 + File.separator + "resources.zip");
-      }
-   }
-
-   static class a extends CountingOutputStream {
-      @Nullable
-      private ActionListener a;
-
-      public a(OutputStream $$0) {
-         super($$0);
-      }
-
-      public void a(ActionListener $$0) {
-         this.a = $$0;
-      }
-
-      protected void afterWrite(int $$0) throws IOException {
-         super.afterWrite($$0);
-         if (this.a != null) {
-            this.a.actionPerformed(new ActionEvent(this, 0, null));
-         }
-      }
-   }
-
-   class b implements ActionListener {
-      private final String b;
-      private final File c;
-      private final egm d;
-      private final esu.a e;
-
-      b(String $$0, File $$1, egm $$2, esu.a $$3) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
-
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.e.a = ((eqo.a)$$0.getSource()).getByteCount();
-         if (this.e.a >= this.e.b && !eqo.this.b && !eqo.this.d) {
+      } catch (Throwable var33) {
+         if ($$17 != null) {
             try {
-               eqo.this.e = true;
-               eqo.this.a(this.b, this.c, this.d);
-            } catch (IOException var3) {
-               eqo.a.error("Error extracting archive", var3);
-               eqo.this.d = true;
+               $$17.close();
+            } catch (Throwable var32) {
+               var33.addSuppressed(var32);
             }
          }
+
+         throw var33;
+      }
+
+      if ($$17 != null) {
+         $$17.close();
       }
    }
 
-   class c implements ActionListener {
-      private final File b;
-      private final esu.a c;
-      private final ery d;
+   default eqo a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector4f $$4 = $$0.transform(new Vector4f($$1, $$2, $$3, 1.0F));
+      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
+   }
 
-      c(File $$0, esu.a $$1, ery $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.c.a = ((eqo.a)$$0.getSource()).getByteCount();
-         if (this.c.a >= this.c.b && !eqo.this.b) {
-            try {
-               String $$1 = Hashing.sha1().hashBytes(Files.toByteArray(this.b)).toString();
-               if ($$1.equals(this.d.c)) {
-                  FileUtils.copyFile(this.b, eqo.this.g);
-                  eqo.this.c = true;
-               } else {
-                  eqo.a.error("Resourcepack had wrong hash (expected {}, found {}). Deleting it.", this.d.c, $$1);
-                  FileUtils.deleteQuietly(this.b);
-                  eqo.this.d = true;
-               }
-            } catch (IOException var3) {
-               eqo.a.error("Error copying resourcepack file: {}", var3.getMessage());
-               eqo.this.d = true;
-            }
-         }
-      }
+   default eqo a(Matrix3f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transform(new Vector3f($$1, $$2, $$3));
+      return this.a($$4.x(), $$4.y(), $$4.z());
    }
 }

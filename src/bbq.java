@@ -4,7 +4,7 @@ import com.mojang.serialization.Dynamic;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-public class bbq extends awa {
+public class bbq extends awb {
    private final Function<String, String> a;
 
    public bbq(Schema $$0, String $$1, Function<String, String> $$2) {

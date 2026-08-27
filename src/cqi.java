@@ -1,90 +1,67 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-
-public class cqi extends cpu {
-   public cqi(cps $$0) {
+public class cqi extends cqc {
+   public cqi(cqa $$0) {
       super($$0);
    }
 
-   public boolean a(cir $$0, ctp $$1) {
-      List<cmy> $$2 = Lists.newArrayList();
+   public boolean a(ciz $$0, ctx $$1) {
+      int $$2 = 0;
+      cng $$3 = cng.f;
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cmy $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cmy $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cng $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(cnj.rT)) {
+               if (!$$3.b()) {
                   return false;
                }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cnj.uf)) {
+                  return false;
+               }
+
+               $$2++;
             }
          }
       }
 
-      return $$2.size() == 2;
+      return !$$3.b() && $$2 > 0;
    }
 
-   public cmy a(cir $$0, iu $$1) {
-      List<cmy> $$2 = Lists.newArrayList();
+   public cng a(ciz $$0, iu $$1) {
+      int $$2 = 0;
+      cng $$3 = cng.f;
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cmy $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cmy $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
-                  return cmy.f;
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cng $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(cnj.rT)) {
+               if (!$$3.b()) {
+                  return cng.f;
                }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cnj.uf)) {
+                  return cng.f;
+               }
+
+               $$2++;
             }
          }
       }
 
-      if ($$2.size() == 2) {
-         cmy $$6 = $$2.get(0);
-         cmy $$7 = $$2.get(1);
-         if ($$6.a($$7.d()) && $$6.L() == 1 && $$7.L() == 1 && $$6.d().o()) {
-            cmt $$8 = $$6.d();
-            int $$9 = $$8.n() - $$6.k();
-            int $$10 = $$8.n() - $$7.k();
-            int $$11 = $$9 + $$10 + $$8.n() * 5 / 100;
-            int $$12 = $$8.n() - $$11;
-            if ($$12 < 0) {
-               $$12 = 0;
-            }
-
-            cmy $$13 = new cmy($$6.d());
-            $$13.b($$12);
-            Map<crj, Integer> $$14 = Maps.newHashMap();
-            Map<crj, Integer> $$15 = crl.a($$6);
-            Map<crj, Integer> $$16 = crl.a($$7);
-            kd.f.s().filter(crj::c).forEach($$3x -> {
-               int $$4 = Math.max($$15.getOrDefault($$3x, 0), $$16.getOrDefault($$3x, 0));
-               if ($$4 > 0) {
-                  $$14.put($$3x, $$4);
-               }
-            });
-            if (!$$14.isEmpty()) {
-               crl.a($$14, $$13);
-            }
-
-            return $$13;
-         }
-      }
-
-      return cmy.f;
+      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : cng.f;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return $$0 >= 3 && $$1 >= 3;
    }
 
    @Override
-   public cqg<?> ar_() {
-      return cqg.o;
+   public cqo<?> at_() {
+      return cqo.e;
    }
 }

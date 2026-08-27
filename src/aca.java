@@ -1,32 +1,24 @@
-public class aca implements xf<za> {
-   private final hx a;
-   private final float b;
+public class aca implements xg<zb> {
+   private final int a;
 
-   public aca(hx $$0, float $$1) {
+   public aca(int $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public aca(ui $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readFloat();
+   public aca(uj $$0) {
+      this.a = $$0.n();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(uj $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
+   public int a() {
       return this.a;
-   }
-
-   public float d() {
-      return this.b;
    }
 }

@@ -1,18 +1,18 @@
-public record yd(dnv b, int c) implements ya {
-   public static final ahg a = new ahg("debug/game_event_listeners");
+public record yd(ahg<dnz> b, emc c) implements yb {
+   public static final ahh a = new ahh("debug/game_event");
 
-   public yd(ui $$0) {
-      this(dnw.c($$0), $$0.n());
+   public yd(uj $$0) {
+      this($$0.a(ke.B), $$0.k());
    }
 
    @Override
-   public void a(ui $$0) {
-      dnw.a(this.b, $$0);
-      $$0.c(this.c);
+   public void a(uj $$0) {
+      $$0.b(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public ahg a() {
+   public ahh a() {
       return a;
    }
 }

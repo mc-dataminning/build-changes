@@ -1,87 +1,67 @@
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class gix {
-   private final Set<gix.a> a = Sets.newIdentityHashSet();
-   final enw b;
-   final Executor c;
-
-   public gix(enw $$0, Executor $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public interface gix<T> {
+   static <T> gix<T> a() {
+      return $$0 -> List.of();
    }
 
-   public CompletableFuture<gix.a> a(enw.c $$0) {
-      CompletableFuture<gix.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         env $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            gix.a $$3 = new gix.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
-         } else {
-            $$1.complete(null);
-         }
-      });
-      return $$1;
+   static <T> gix<T> a(List<T> $$0, Function<T, Stream<String>> $$1) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.ExitExprent.toJava(ExitExprent.java:86)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:261)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: invokeinterface java/util/List.isEmpty ()Z 1
+      // 06: ifeq 0d
+      // 09: invokestatic gix.a ()Lgix;
+      // 0c: areturn
+      // 0d: new gjc
+      // 10: dup
+      // 11: invokespecial gjc.<init> ()V
+      // 14: astore 2
+      // 15: aload 0
+      // 16: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
+      // 1b: astore 3
+      // 1c: aload 3
+      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
+      // 22: ifeq 48
+      // 25: aload 3
+      // 26: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
+      // 2b: astore 4
+      // 2d: aload 1
+      // 2e: aload 4
+      // 30: invokeinterface java/util/function/Function.apply (Ljava/lang/Object;)Ljava/lang/Object; 2
+      // 35: checkcast java/util/stream/Stream
+      // 38: aload 2
+      // 39: aload 4
+      // 3b: invokedynamic accept (Lgjc;Ljava/lang/Object;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, gix.a (Lgjc;Ljava/lang/Object;Ljava/lang/String;)V, (Ljava/lang/String;)V ]
+      // 40: invokeinterface java/util/stream/Stream.forEach (Ljava/util/function/Consumer;)V 2
+      // 45: goto 1c
+      // 48: aload 2
+      // 49: invokevirtual gjc.a ()V
+      // 4c: aload 2
+      // 4d: dup
+      // 4e: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 51: pop
+      // 52: invokedynamic search (Lgjc;)Lgix; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/String;)Ljava/util/List;, gjc.a (Ljava/lang/String;)Ljava/util/List;, (Ljava/lang/String;)Ljava/util/List; ]
+      // 57: areturn
    }
 
-   public void a(Consumer<Stream<env>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
-   }
-
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<gix.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            gix.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
-         }
-      });
-   }
-
-   public void b() {
-      this.a.forEach(gix.a::b);
-      this.a.clear();
-   }
-
-   public class a {
-      @Nullable
-      env b;
-      private boolean c;
-
-      public boolean a() {
-         return this.c;
-      }
-
-      public a(env $$1) {
-         this.b = $$1;
-      }
-
-      public void a(Consumer<env> $$0) {
-         gix.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
-            }
-         });
-      }
-
-      public void b() {
-         this.c = true;
-         gix.this.b.a(this.b);
-         this.b = null;
-      }
-   }
+   List<T> search(String var1);
 }

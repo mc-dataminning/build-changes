@@ -1,11 +1,26 @@
-public interface xq extends adk {
-   void a(xt var1);
+import java.util.Map;
 
-   void a(xu var1);
+public class xq implements xg<xj> {
+   private final Map<ahg<? extends it<?>>, ata.a> a;
 
-   void a(xs var1);
+   public xq(Map<ahg<? extends it<?>>, ata.a> $$0) {
+      this.a = $$0;
+   }
 
-   void a(xv var1);
+   public xq(uj $$0) {
+      this.a = $$0.a(uj::u, ata.a::b);
+   }
 
-   void a(xr var1);
+   @Override
+   public void a(uj $$0) {
+      $$0.a(this.a, uj::b, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   public void a(xj $$0) {
+      $$0.a(this);
+   }
+
+   public Map<ahg<? extends it<?>>, ata.a> a() {
+      return this.a;
+   }
 }

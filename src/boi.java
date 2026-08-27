@@ -1,37 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+public class boi implements bpt {
+   private final hx a;
+   private final emc b;
 
-public class boi extends boc<bml> {
-   private final bvn<Integer> c;
-
-   public boi(bvn<Integer> $$0) {
-      super(ImmutableMap.of($$0, bvo.a));
-      this.c = $$0;
+   public boi(hx $$0) {
+      this.a = $$0.i();
+      this.b = emc.b($$0);
    }
 
-   private Optional<Integer> b(bml $$0) {
-      return $$0.dO().c(this.c);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
+   public boi(emc $$0) {
+      this.a = hx.a($$0);
+      this.b = $$0;
    }
 
    @Override
-   protected boolean a(and $$0, bml $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
+   public emc a() {
+      return this.b;
    }
 
    @Override
-   protected void c(and $$0, bml $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dO().a(this.c, $$3.get() - 1);
+   public hx b() {
+      return this.a;
    }
 
    @Override
-   protected void b(and $$0, bml $$1, long $$2) {
-      $$1.dO().b(this.c);
+   public boolean a(bmo $$0) {
+      return true;
+   }
+
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

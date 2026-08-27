@@ -1,29 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dyg extends dyn {
-   public static final Codec<dyg> a = RecordCodecBuilder.create($$0 -> $$0.group(doq.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, dyg::new));
-   private final doq.a c;
+public class dyg extends dyu {
+   private static final dyg c = new dyg();
+   public static Codec<dyg> a = Codec.unit(() -> c);
 
-   private dyg(doq.a $$0) {
-      this.c = $$0;
+   private dyg() {
    }
 
-   public static dyg a(doq.a $$0) {
-      return new dyg($$0);
+   public static dyg a() {
+      return c;
    }
 
    @Override
-   public Stream<hx> a_(dyl $$0, auv $$1, hx $$2) {
-      int $$3 = $$2.u();
-      int $$4 = $$2.w();
-      int $$5 = $$0.a(this.c, $$3, $$4);
-      return $$5 > $$0.c() ? Stream.of(new hx($$3, $$5, $$4)) : Stream.of();
+   protected boolean a(dyt $$0, auw $$1, hx $$2) {
+      dys $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      ih<cuw> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public dyo<?> b() {
-      return dyo.k;
+   public dyw<?> b() {
+      return dyw.e;
    }
 }

@@ -1,35 +1,15 @@
-public class flg<T extends blv> extends fkg<T> {
-   private final fmx a;
-   private final fmx b;
-   private final fmx f;
+public class flg {
+   public static float a(float $$0, float $$1, float $$2) {
+      float $$3 = $$1 - $$0;
 
-   public flg(fmx $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_fin");
-      this.f = $$0.b("right_fin");
-   }
+      while ($$3 < (float) -Math.PI) {
+         $$3 += (float) (Math.PI * 2);
+      }
 
-   public static fnd b() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      int $$2 = 23;
-      $$1.a("body", fnc.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fmz.a(0.0F, 23.0F, 0.0F));
-      $$1.a("right_eye", fnc.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fmz.a(0.0F, 20.0F, 0.0F));
-      $$1.a("left_eye", fnc.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fmz.a(0.0F, 20.0F, 0.0F));
-      $$1.a("back_fin", fnc.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fmz.a(0.0F, 22.0F, 1.5F));
-      $$1.a("right_fin", fnc.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fmz.a(-1.5F, 22.0F, -1.5F));
-      $$1.a("left_fin", fnc.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fmz.a(1.5F, 22.0F, -1.5F));
-      return fnd.a($$0, 32, 32);
-   }
+      while ($$3 >= (float) Math.PI) {
+         $$3 -= (float) (Math.PI * 2);
+      }
 
-   @Override
-   public fmx a() {
-      return this.a;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * auo.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * auo.a($$3 * 0.2F);
+      return $$0 + $$2 * $$3;
    }
 }

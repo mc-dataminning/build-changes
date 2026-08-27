@@ -1,22 +1,9 @@
-public class ciw extends cjw {
-   private final cic a;
+public interface ciw {
+   void a(cij var1, iq<cng> var2, cng var3, int[] var4);
 
-   public ciw(cic $$0, bju $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
-   }
+   void a(cij var1, int var2, cng var3);
 
-   @Override
-   public boolean a(cmy $$0) {
-      return this.a.d($$0) || c($$0);
-   }
+   void a(cij var1, cng var2);
 
-   @Override
-   public int a_(cmy $$0) {
-      return c($$0) ? 1 : super.a_($$0);
-   }
-
-   public static boolean c(cmy $$0) {
-      return $$0.a(cnb.qv);
-   }
+   void a(cij var1, int var2, int var3);
 }

@@ -1,41 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class dtu implements dty {
-   public static final Codec<dtu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               djh.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               djh.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bjg.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bjg.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dtu::new)
-   );
-   private final djh b;
-   private final djh c;
-   private final bjg d;
-   private final bjg e;
-
-   public dtu(djh $$0, djh $$1, bjg $$2, bjg $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class dtu extends dtr {
+   public dtu(Codec<dvf> $$0) {
+      super($$0);
    }
 
-   public djh a() {
-      return this.b;
+   @Override
+   protected Set<hx> a(cus $$0, dvf $$1, auw $$2, hx $$3, Predicate<djp> $$4, int $$5, int $$6) {
+      Set<hx> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<hx> $$8 = new HashSet<>();
+      hx.a $$9 = new hx.a();
+
+      for (hx $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (hx $$11 : $$8) {
+         $$0.a($$11, cxa.G.o(), 2);
+      }
+
+      return $$8;
    }
 
-   public djh b() {
-      return this.c;
+   private static boolean a(cus $$0, Set<hx> $$1, hx $$2, hx.a $$3) {
+      return a($$0, $$2, $$3, ic.c) || a($$0, $$2, $$3, ic.f) || a($$0, $$2, $$3, ic.d) || a($$0, $$2, $$3, ic.e) || a($$0, $$2, $$3, ic.a);
    }
 
-   public bjg c() {
-      return this.d;
+   private static boolean a(cus $$0, hx $$1, hx.a $$2, ic $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
    }
 
-   public bjg d() {
-      return this.e;
+   @Override
+   protected boolean a(cus $$0, dvf $$1, dlm $$2, auw $$3, hx $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         djp $$5 = $$0.a_($$4);
+         if ($$5.b(dkf.C) && !$$5.c(dkf.C)) {
+            $$0.a($$4, $$5.a(dkf.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,60 +1,31 @@
-public class cqx extends cpu {
-   public cqx(cps $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public boolean a(cir $$0, ctp $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
+public class cqx<T extends cqb> implements cqo<T> {
+   private final cqx.a<T> x;
+   private final Codec<T> y;
 
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cmy $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if ($$7.a(cws.cf.k()) && !$$4) {
-               $$4 = true;
-            } else if ($$7.a(cws.cg.k()) && !$$3) {
-               $$3 = true;
-            } else if ($$7.a(asp.O) && !$$2) {
-               $$2 = true;
-            } else {
-               if (!$$7.a(cnb.pn) || $$5) {
-                  return false;
-               }
-
-               $$5 = true;
-            }
-         }
-      }
-
-      return $$2 && $$4 && $$3 && $$5;
-   }
-
-   public cmy a(cir $$0, iu $$1) {
-      cmy $$2 = new cmy(cnb.vN, 1);
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cmy $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            der $$5 = der.a($$4.d());
-            if ($$5 != null) {
-               coi.a($$2, $$5.b());
-               break;
-            }
-         }
-      }
-
-      return $$2;
+   public cqx(cqx.a<T> $$0) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create($$1 -> $$1.group(cqa.e.fieldOf("category").orElse(cqa.d).forGetter(cqb::d)).apply($$1, $$0::create));
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+   public Codec<T> a() {
+      return this.y;
    }
 
-   @Override
-   public cqg<?> ar_() {
-      return cqg.n;
+   public T b(uj $$0) {
+      cqa $$1 = $$0.b(cqa.class);
+      return this.x.create($$1);
+   }
+
+   public void a(uj $$0, T $$1) {
+      $$0.a($$1.d());
+   }
+
+   @FunctionalInterface
+   public interface a<T extends cqb> {
+      T create(cqa var1);
    }
 }

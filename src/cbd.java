@@ -1,80 +1,80 @@
 import javax.annotation.Nullable;
 
-public class cbd extends caq {
-   private boolean b;
+public class cbd extends cax {
+   private static final bxd b = bxd.a().d();
    @Nullable
-   private efg c;
+   private efo c;
    @Nullable
-   private elt d;
+   private emc d;
 
-   public cbd(cao $$0) {
+   public cbd(cav $$0) {
       super($$0);
    }
 
    @Override
-   public void c() {
-      if (!this.b && this.c != null) {
-         hx $$0 = this.a.dM().a(doq.a.f, drt.a(this.a.u()));
-         if (!$$0.a(this.a.dk(), 10.0)) {
-            this.a.gb().a(cbe.a);
-         }
-      } else {
-         this.b = false;
-         this.j();
-      }
+   public cbl<cbd> i() {
+      return cbl.c;
    }
 
    @Override
    public void d() {
-      this.b = true;
       this.c = null;
       this.d = null;
    }
 
-   private void j() {
-      int $$0 = this.a.A();
-      elt $$1 = this.a.D(1.0F);
-      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
-      if (this.a.gc() != null && this.a.gc().e() > 0) {
-         $$2 %= 12;
-         if ($$2 < 0) {
-            $$2 += 12;
-         }
-      } else {
-         $$2 -= 12;
-         $$2 &= 7;
-         $$2 += 12;
-      }
-
-      this.c = this.a.a($$0, $$2, null);
-      this.k();
-   }
-
-   private void k() {
-      if (this.c != null) {
-         this.c.a();
-         if (!this.c.c()) {
-            jb $$0 = this.c.g();
-            this.c.a();
-
-            double $$1;
-            do {
-               $$1 = (double)((float)$$0.v() + this.a.eg().i() * 20.0F);
-            } while ($$1 < (double)$$0.v());
-
-            this.d = new elt((double)$$0.u(), $$1, (double)$$0.w());
-         }
+   @Override
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dq(), this.a.ds(), this.a.dw());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
+         this.j();
       }
    }
 
    @Nullable
    @Override
-   public elt g() {
+   public emc g() {
       return this.d;
    }
 
-   @Override
-   public cbe<cbd> i() {
-      return cbe.e;
+   private void j() {
+      if (this.c == null || this.c.c()) {
+         int $$0 = this.a.A();
+         hx $$1 = this.a.dL().a(doy.a.f, dsb.a(this.a.u()));
+         cfq $$2 = this.a.dL().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         int $$4;
+         if ($$2 != null) {
+            emc $$3 = new emc($$2.dq(), 0.0, $$2.dw()).d();
+            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
+         } else {
+            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
+         }
+
+         efm $$6 = new efm($$1.u(), $$1.v(), $$1.w());
+         this.c = this.a.a($$0, $$4, $$6);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+      if (this.c != null && this.c.c()) {
+         this.a.gc().a(cbl.d);
+      }
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         jb $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.eg().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new emc($$1, $$3, $$2);
+      }
    }
 }

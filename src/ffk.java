@@ -1,47 +1,47 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class ffk extends fel<cjj> {
+   private static final ahh x = new ahh("container/horse/chest_slots");
+   private static final ahh y = new ahh("container/horse/saddle_slot");
+   private static final ahh z = new ahh("container/horse/llama_armor_slot");
+   private static final ahh A = new ahh("container/horse/armor_slot");
+   private static final ahh B = new ahh("textures/gui/container/horse.png");
+   private final cae C;
+   private float D;
+   private float E;
 
-public class ffk extends fec {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private fvv.a l;
-
-   public ffk(die $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+   public ffk(cjj $$0, cfp $$1, cae $$2) {
+      super($$0, $$1, $$2.Q_());
+      this.C = $$2;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.l = fvv.a(this.f.aP(), this.a);
-   }
-
-   @Override
-   protected void b(ewu $$0, djh $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof dek;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
+   protected void a(exe $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(B, $$4, $$5, 0, 0, this.c, this.k);
+      if (this.C instanceof cad $$6 && $$6.w()) {
+         $$0.a(x, 90, 54, 0, 0, $$4 + 79, $$5 + 17, $$6.gn() * 18, 54);
       }
-   }
 
-   @Override
-   protected void a(ewu $$0, djh $$1) {
-      if (this.l != null) {
-         boolean $$2 = $$1.b() instanceof dek;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         ggq $$3 = ftw.a(this.a);
-         eqf $$4 = $$3.a($$0.d(), this.l::a);
-         this.l.b.k = $$2;
-         this.l.a.a($$0.c(), $$4, 15728880, gee.d);
+      if (this.C.g()) {
+         $$0.a(y, $$4 + 7, $$5 + 35 - 18, 18, 18);
       }
+
+      if (this.C.gO()) {
+         if (this.C instanceof cah) {
+            $$0.a(z, $$4 + 7, $$5 + 35, 18, 18);
+         } else {
+            $$0.a(A, $$4 + 7, $$5 + 35, 18, 18);
+         }
+      }
+
+      ffl.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.D, this.E, this.C);
    }
 
    @Override
-   protected Vector3f n() {
-      return k;
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      this.D = (float)$$1;
+      this.E = (float)$$2;
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 }

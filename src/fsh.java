@@ -1,21 +1,45 @@
-public class fsh {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public boolean h;
+public abstract class fsh extends fru {
+   protected gfb E;
 
-   public void a(boolean $$0, float $$1) {
+   protected fsh(foe $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public els a() {
-      return new els(this.a, this.b);
+   protected fsh(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public boolean b() {
-      return this.b > 1.0E-5F;
+   protected void a(gfb $$0) {
+      this.E = $$0;
+   }
+
+   @Override
+   protected float c() {
+      return this.E.c();
+   }
+
+   @Override
+   protected float d() {
+      return this.E.d();
+   }
+
+   @Override
+   protected float e() {
+      return this.E.g();
+   }
+
+   @Override
+   protected float f() {
+      return this.E.h();
+   }
+
+   public void a(fsc $$0) {
+      this.a($$0.a(this.r));
+   }
+
+   public void b(fsc $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
+      }
    }
 }

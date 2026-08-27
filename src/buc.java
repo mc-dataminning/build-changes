@@ -1,42 +1,32 @@
-import java.util.EnumSet;
+public class buc extends btb {
+   private final boolean a;
+   private int b;
 
-public class buc extends bth {
-   private final bmn a;
-   private double b;
-   private double c;
-   private int d;
-
-   public buc(bmn $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bth.a.a, bth.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      return this.a.eg().i() < 0.02F;
+   public buc(bmq $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
    public boolean b() {
-      return this.d >= 0;
+      return this.a && this.b > 0 && super.b();
    }
 
    @Override
    public void c() {
-      double $$0 = (Math.PI * 2) * this.a.eg().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.eg().a(20);
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
-   public boolean T_() {
-      return true;
+   public void d() {
+      this.a(false);
    }
 
    @Override
    public void e() {
-      this.d--;
-      this.a.I().a(this.a.dr() + this.b, this.a.dv(), this.a.dx() + this.c);
+      this.b--;
+      super.e();
    }
 }

@@ -1,105 +1,83 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public enum ddc implements avk {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class ddc extends ddb {
+   public static final MapCodec<ddc> h = b(ddc::new);
+   public static final dkj i = dat.aE;
+   public static final dkg j = ddb.d;
 
-   public static final Codec<ddc> e = avk.a(ddc::values);
-   private final String f;
-   private final h g;
-
-   private ddc(String $$0, h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<ddc> a() {
+      return h;
    }
 
-   public ddc a(ddc $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public ic a(ic $$0) {
-      if ($$0.o() == ic.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static ddc a(auv $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<ddc> b(auv $$0) {
-      return ac.b(values(), $$0);
+   protected ddc(djo.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(i, ic.c).a(j, Boolean.valueOf(true)));
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public String h() {
+      return this.j().a();
+   }
+
+   @Override
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return dfy.h($$0);
+   }
+
+   @Override
+   public boolean a(djp $$0, cua $$1, hx $$2) {
+      return cxa.cq.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
+      return cxa.cq.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   @Override
+   public djp a(cpp $$0) {
+      djp $$1 = cxa.cq.a($$0);
+      return $$1 == null ? null : this.o().a(i, $$1.c(i));
+   }
+
+   @Override
+   public void a(djp $$0, ctx $$1, hx $$2, auw $$3) {
+      if ($$0.c(j)) {
+         ic $$4 = $$0.c(i).g();
+         double $$5 = 0.27;
+         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
+         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
+         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
+         $$1.a(jr.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected boolean a(ctx $$0, hx $$1, djp $$2) {
+      ic $$3 = $$2.c(i).g();
+      return $$0.b($$1.a($$3), $$3);
+   }
+
+   @Override
+   public int a(djp $$0, ctd $$1, hx $$2, ic $$3) {
+      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
+   }
+
+   @Override
+   public djp a(djp $$0, ddk $$1) {
+      return cxa.cq.a($$0, $$1);
+   }
+
+   @Override
+   public djp a(djp $$0, dbu $$1) {
+      return cxa.cq.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(i, j);
    }
 }

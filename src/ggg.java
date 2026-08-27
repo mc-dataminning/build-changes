@@ -1,12 +1,26 @@
-import com.mojang.serialization.Codec;
-import java.util.Map;
+import java.util.IllegalFormatException;
 
-public record ggg(Map<String, gft> d) {
-   public static final Codec<String> a = atw.b(1, 16);
-   public static final Codec<ggg> b = Codec.unboundedMap(a, gft.a).xmap(ggg::new, ggg::a);
-   public static final apj<ggg> c = apj.a("language", b);
+public class ggg {
+   private static volatile sj a = sj.a();
 
-   public Map<String, gft> a() {
-      return this.d;
+   private ggg() {
+   }
+
+   static void a(sj $$0) {
+      a = $$0;
+   }
+
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
+      }
+   }
+
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

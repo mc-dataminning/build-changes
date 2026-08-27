@@ -1,23 +1,50 @@
+import com.google.common.collect.Maps;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
 import org.slf4j.Logger;
 
-public class erg extends erx {
-   private static final Logger b = LogUtils.getLogger();
+public class erg extends esg {
+   private static final Logger f = LogUtils.getLogger();
    public String a;
+   public Date b;
+   public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
 
-   public static erg a(String $$0) {
-      erg $$1 = new erg();
+   public static erg a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      erg $$2 = new erg();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = etu.b("newsLink", $$3, null);
-      } catch (Exception var4) {
-         b.error("Could not parse RealmsNews: {}", var4.getMessage());
+         $$2.a = eud.b("backupId", $$1, "");
+         $$2.b = eud.b("lastModifiedDate", $$1);
+         $$2.c = eud.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
+            }
+         }
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
       }
 
-      return $$1;
+      return $$2;
+   }
+
+   public boolean a() {
+      return this.g;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 }

@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class ayw extends baw {
    public ayw(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityShulkerColorFix", bbw.x, "minecraft:shulker");
+      super($$0, $$1, "EntityShulkerColorFix", bbw.y, "minecraft:shulker");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

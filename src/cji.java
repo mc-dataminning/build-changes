@@ -1,55 +1,66 @@
-public class cji<T extends cib> implements chp {
-   public static final cji<cii> a = a("generic_9x1", cii::a);
-   public static final cji<cii> b = a("generic_9x2", cii::b);
-   public static final cji<cii> c = a("generic_9x3", cii::c);
-   public static final cji<cii> d = a("generic_9x4", cii::d);
-   public static final cji<cii> e = a("generic_9x5", cii::e);
-   public static final cji<cii> f = a("generic_9x6", cii::f);
-   public static final cji<ciu> g = a("generic_3x3", ciu::new);
-   public static final cji<cip> h = a("crafter_3x3", cip::new);
-   public static final cji<cid> i = a("anvil", cid::new);
-   public static final cji<cie> j = a("beacon", cie::new);
-   public static final cji<cif> k = a("blast_furnace", cif::new);
-   public static final cji<cig> l = a("brewing_stand", cig::new);
-   public static final cji<cis> m = a("crafting", cis::new);
-   public static final cji<civ> n = a("enchantment", civ::new);
-   public static final cji<cix> o = a("furnace", cix::new);
-   public static final cji<ciz> p = a("grindstone", ciz::new);
-   public static final cji<cja> q = a("hopper", cja::new);
-   public static final cji<cjf> r = a("lectern", ($$0, $$1) -> new cjf($$0));
-   public static final cji<cjg> s = a("loom", cjg::new);
-   public static final cji<cjk> t = a("merchant", cjk::new);
-   public static final cji<cjt> u = a("shulker_box", cjt::new);
-   public static final cji<cjx> v = a("smithing", cjx::new);
-   public static final cji<cjy> w = a("smoker", cjy::new);
-   public static final cji<cih> x = a("cartography_table", cih::new);
-   public static final cji<cka> y = a("stonecutter", cka::new);
-   private final chs z;
-   private final cji.a<T> A;
+public class cji extends cij {
+   public static final int k = 5;
+   private final bjv l;
 
-   private static <T extends cib> cji<T> a(String $$0, cji.a<T> $$1) {
-      return it.a(kd.r, $$0, new cji<>($$1, chu.g));
+   public cji(int $$0, cfp $$1) {
+      this($$0, $$1, new bkl(5));
    }
 
-   private static <T extends cib> cji<T> a(String $$0, cji.a<T> $$1, chq... $$2) {
-      return it.a(kd.r, $$0, new cji<>($$1, chu.e.a($$2)));
-   }
+   public cji(int $$0, cfp $$1, bjv $$2) {
+      super(cjq.q, $$0);
+      this.l = $$2;
+      a($$2, 5);
+      $$2.d_($$1.m);
+      int $$3 = 51;
 
-   private cji(cji.a<T> $$0, chs $$1) {
-      this.A = $$0;
-      this.z = $$1;
-   }
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         this.a(new cke($$2, $$4, 44 + $$4 * 18, 20));
+      }
 
-   public T a(int $$0, cfh $$1) {
-      return this.A.create($$0, $$1);
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cke($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, $$5 * 18 + 51));
+         }
+      }
+
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new cke($$1, $$7, 8 + $$7 * 18, 109));
+      }
    }
 
    @Override
-   public chs m() {
-      return this.z;
+   public boolean a(cfq $$0) {
+      return this.l.a($$0);
    }
 
-   interface a<T extends cib> {
-      T create(int var1, cfh var2);
+   @Override
+   public cng a(cfq $$0, int $$1) {
+      cng $$2 = cng.f;
+      cke $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cng $$4 = $$3.g();
+         $$2 = $$4.p();
+         if ($$1 < this.l.b()) {
+            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
+               return cng.f;
+            }
+         } else if (!this.a($$4, 0, this.l.b(), false)) {
+            return cng.f;
+         }
+
+         if ($$4.b()) {
+            $$3.e(cng.f);
+         } else {
+            $$3.b();
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void b(cfq $$0) {
+      super.b($$0);
+      this.l.c($$0);
    }
 }

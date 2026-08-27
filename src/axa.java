@@ -70,7 +70,7 @@ public class axa {
 
    public static Dynamic<?> b(String $$0) {
       try {
-         return new Dynamic(tb.a, tl.a($$0.replace('\'', '"')));
+         return new Dynamic(tc.a, tm.a($$0.replace('\'', '"')));
       } catch (Exception var2) {
          b.error("Parsing {}", $$0, var2);
          throw new RuntimeException(var2);

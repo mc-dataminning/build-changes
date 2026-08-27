@@ -1,25 +1,61 @@
-public class fnm {
-   private static final int a = 49;
-   private static final int b = 3;
-   private double c = 2000000.0;
-   private int d = 1;
-   private volatile long e = ac.c();
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public void a() {
-      this.e = ac.c();
+public final class fnm {
+   @Nullable
+   private final String a;
+   private final Vector3f b;
+   private final Vector3f c;
+   private final fnn d;
+   private final boolean e;
+   private final fnt f;
+   private final fnt g;
+   private final Set<ic> h;
+
+   protected fnm(
+      @Nullable String $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      fnn $$9,
+      boolean $$10,
+      float $$11,
+      float $$12,
+      Set<ic> $$13
+   ) {
+      this.a = $$0;
+      this.f = new fnt($$1, $$2);
+      this.b = new Vector3f($$3, $$4, $$5);
+      this.c = new Vector3f($$6, $$7, $$8);
+      this.d = $$9;
+      this.e = $$10;
+      this.g = new fnt($$11, $$12);
+      this.h = $$13;
    }
 
-   public void a(int $$0) {
-      if ($$0 > 0) {
-         double $$1 = (double)(ac.c() - this.e);
-         double $$2 = $$1 / (double)$$0;
-         double $$3 = auo.a($$2, this.c / 3.0, this.c * 3.0);
-         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
-         this.d = Math.min(49, this.d + 1);
-      }
-   }
-
-   public float b() {
-      return (float)(7000000.0 / this.c);
+   public fnj.a a(int $$0, int $$1) {
+      return new fnj.a(
+         (int)this.f.a(),
+         (int)this.f.b(),
+         this.b.x(),
+         this.b.y(),
+         this.b.z(),
+         this.c.x(),
+         this.c.y(),
+         this.c.z(),
+         this.d.b,
+         this.d.c,
+         this.d.d,
+         this.e,
+         (float)$$0 * this.g.a(),
+         (float)$$1 * this.g.b(),
+         this.h
+      );
    }
 }

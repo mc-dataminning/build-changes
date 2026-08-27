@@ -1,38 +1,62 @@
-public class flp<T extends blv> extends fkg<T> {
-   private static final String a = "main";
-   private final fmx b;
-   private final fmx f;
-
-   public flp(fmx $$0) {
-      this.b = $$0;
-      this.f = $$0.b("main");
+public class flp<T extends byu> extends flt<T> {
+   public flp(fnj $$0) {
+      super($$0, true, 16.0F, 4.0F, 2.25F, 2.0F, 24);
    }
 
-   public static fnd b() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
+   public static fnp c() {
+      fnr $$0 = new fnr();
+      fns $$1 = $$0.a();
       $$1.a(
-         "main",
-         fnc.c()
+         "head",
+         fno.c()
             .a(0, 0)
-            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
-            .a(0, 10)
-            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
-            .a(20, 0)
-            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
-         fmz.a
+            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
+            .a(0, 44)
+            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
+            .a(26, 0)
+            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
+            .a(26, 0)
+            .a()
+            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
+         fnl.a(0.0F, 10.0F, -16.0F)
       );
-      return fnd.a($$0, 64, 32);
+      $$1.a(
+         "body",
+         fno.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
+         fnl.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      int $$2 = 10;
+      fno $$3 = fno.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
+      $$1.a("right_hind_leg", $$3, fnl.a(-4.5F, 14.0F, 6.0F));
+      $$1.a("left_hind_leg", $$3, fnl.a(4.5F, 14.0F, 6.0F));
+      fno $$4 = fno.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
+      $$1.a("right_front_leg", $$4, fnl.a(-3.5F, 14.0F, -8.0F));
+      $$1.a("left_front_leg", $$4, fnl.a(3.5F, 14.0F, -8.0F));
+      return fnp.a($$0, 128, 64);
    }
 
-   @Override
-   public fmx a() {
-      return this.b;
-   }
-
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$3 - (float)$$0.ah;
+      float $$7 = $$0.D($$6);
+      $$7 *= $$7;
+      float $$8 = 1.0F - $$7;
+      this.b.e = (float) (Math.PI / 2) - $$7 * (float) Math.PI * 0.35F;
+      this.b.c = 9.0F * $$8 + 11.0F * $$7;
+      this.h.c = 14.0F * $$8 - 6.0F * $$7;
+      this.h.d = -8.0F * $$8 - 4.0F * $$7;
+      this.h.e -= $$7 * (float) Math.PI * 0.45F;
+      this.i.c = this.h.c;
+      this.i.d = this.h.d;
+      this.i.e -= $$7 * (float) Math.PI * 0.45F;
+      if (this.e) {
+         this.a.c = 10.0F * $$8 - 9.0F * $$7;
+         this.a.d = -16.0F * $$8 - 7.0F * $$7;
+      } else {
+         this.a.c = 10.0F * $$8 - 14.0F * $$7;
+         this.a.d = -16.0F * $$8 - 3.0F * $$7;
+      }
+
+      this.a.e += $$7 * (float) Math.PI * 0.15F;
    }
 }

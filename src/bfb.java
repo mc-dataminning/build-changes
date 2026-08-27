@@ -16,19 +16,19 @@ public class bfb extends bde {
          bbw.c,
          () -> DSL.optionalFields(
                "entities",
-               DSL.list(bbw.w.in($$0)),
+               DSL.list(bbw.x.in($$0)),
                "block_entities",
                DSL.list(DSL.or(bbw.s.in($$0), DSL.remainder())),
                "block_ticks",
-               DSL.list(DSL.fields("i", bbw.y.in($$0))),
+               DSL.list(DSL.fields("i", bbw.z.in($$0))),
                "sections",
                DSL.list(
                   DSL.optionalFields(
-                     "biomes", DSL.optionalFields("palette", DSL.list(bbw.G.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(bbw.u.in($$0)))
+                     "biomes", DSL.optionalFields("palette", DSL.list(bbw.H.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(bbw.u.in($$0)))
                   )
                ),
                "structures",
-               DSL.optionalFields("starts", DSL.compoundList(bbw.C.in($$0)))
+               DSL.optionalFields("starts", DSL.compoundList(bbw.D.in($$0)))
             )
       );
    }

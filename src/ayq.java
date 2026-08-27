@@ -16,7 +16,7 @@ public class ayq extends DataFix {
 
    protected TypeRewriteRule makeRule() {
       Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("EntityProjectileOwner", $$0.getType(bbw.x), this::a);
+      return this.fixTypeEverywhereTyped("EntityProjectileOwner", $$0.getType(bbw.y), this::a);
    }
 
    private Typed<?> a(Typed<?> $$0) {
@@ -68,8 +68,8 @@ public class ayq extends DataFix {
    }
 
    private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bbw.x, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bbw.x, $$1);
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bbw.y, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(bbw.y, $$1);
       return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
    }
 }

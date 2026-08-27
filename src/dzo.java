@@ -1,128 +1,192 @@
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public final class dzo {
-   public static final String a = "INVALID";
-   public static final dzo b = new dzo(null, new csw(0, 0), 0, new dzv(List.of()));
-   private static final Logger c = LogUtils.getLogger();
-   private final dzg d;
-   private final dzv e;
-   private final csw f;
-   private int g;
-   @Nullable
-   private volatile dyy h;
+public abstract class dzo {
+   public static final Codec<dzo> a = kd.T.q().dispatch(dzo::e, dzx::codec);
+   public static final Codec<ih<dzo>> b = ahd.a(ke.aD, a);
+   protected final dzo.c c;
 
-   public dzo(dzg $$0, csw $$1, int $$2, dzv $$3) {
-      this.d = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.e = $$3;
+   public static <S extends dzo> RecordCodecBuilder<S, dzo.c> a(Instance<S> $$0) {
+      return dzo.c.a.forGetter($$0x -> $$0x.c);
    }
 
-   @Nullable
-   public static dzo a(dzw $$0, sn $$1, long $$2) {
-      String $$3 = $$1.l("id");
-      if ("INVALID".equals($$3)) {
-         return b;
-      } else {
-         it<dzg> $$4 = $$0.b().d(ke.aD);
-         dzg $$5 = $$4.a(new ahg($$3));
-         if ($$5 == null) {
-            c.error("Unknown stucture id: {}", $$3);
-            return null;
-         } else {
-            csw $$6 = new csw($$1.h("ChunkX"), $$1.h("ChunkZ"));
-            int $$7 = $$1.h("references");
-            st $$8 = $$1.c("Children", 10);
+   public static <S extends dzo> Codec<S> a(Function<dzo.c, S> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(a($$1)).apply($$1, $$0));
+   }
 
-            try {
-               dzv $$9 = dzv.a($$8, $$0);
-               if ($$5 instanceof ebq) {
-                  $$9 = ebq.a($$6, $$2, $$9);
-               }
+   protected dzo(dzo.c $$0) {
+      this.c = $$0;
+   }
 
-               return new dzo($$5, $$6, $$7, $$9);
-            } catch (Exception var11) {
-               c.error("Failed Start with id {}", $$3, var11);
-               return null;
-            }
+   public il<cuw> a() {
+      return this.c.b;
+   }
+
+   public Map<bmr, dzv> b() {
+      return this.c.c;
+   }
+
+   public dou.b c() {
+      return this.c.d;
+   }
+
+   public dzz d() {
+      return this.c.e;
+   }
+
+   public dzg a(dzg $$0) {
+      return this.d() != dzz.a ? $$0.a(12) : $$0;
+   }
+
+   public dzw a(iu $$0, dlm $$1, cva $$2, dpm $$3, edp $$4, long $$5, cte $$6, int $$7, ctz $$8, Predicate<ih<cuw>> $$9) {
+      dzo.a $$10 = new dzo.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9);
+      Optional<dzo.b> $$11 = this.b($$10);
+      if ($$11.isPresent()) {
+         eag $$12 = $$11.get().a();
+         dzw $$13 = new dzw(this, $$6, $$7, $$12.a());
+         if ($$13.b()) {
+            return $$13;
          }
       }
+
+      return dzw.b;
    }
 
-   public dyy a() {
-      dyy $$0 = this.h;
-      if ($$0 == null) {
-         $$0 = this.d.a(this.e.b());
-         this.h = $$0;
+   protected static Optional<dzo.b> a(dzo.a $$0, doy.a $$1, Consumer<eag> $$2) {
+      cte $$3 = $$0.h();
+      int $$4 = $$3.b();
+      int $$5 = $$3.c();
+      int $$6 = $$0.b().c($$4, $$5, $$1, $$0.i(), $$0.d());
+      return Optional.of(new dzo.b(new hx($$4, $$6, $$5), $$2));
+   }
+
+   private static boolean a(dzo.b $$0, dzo.a $$1) {
+      hx $$2 = $$0.b();
+      return $$1.j.test($$1.b.c().getNoiseBiome(is.a($$2.u()), is.a($$2.v()), is.a($$2.w()), $$1.d.b()));
+   }
+
+   public void a(cus $$0, cuq $$1, dlm $$2, auw $$3, dzg $$4, cte $$5, ead $$6) {
+   }
+
+   private static int[] b(dzo.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      dlm $$5 = $$0.b();
+      ctz $$6 = $$0.i();
+      dpm $$7 = $$0.d();
+      return new int[]{
+         $$5.c($$1, $$3, doy.a.a, $$6, $$7),
+         $$5.c($$1, $$3 + $$4, doy.a.a, $$6, $$7),
+         $$5.c($$1 + $$2, $$3, doy.a.a, $$6, $$7),
+         $$5.c($$1 + $$2, $$3 + $$4, doy.a.a, $$6, $$7)
+      };
+   }
+
+   protected static int a(dzo.a $$0, int $$1, int $$2) {
+      cte $$3 = $$0.h();
+      int $$4 = $$3.d();
+      int $$5 = $$3.e();
+      return a($$0, $$4, $$5, $$1, $$2);
+   }
+
+   protected static int a(dzo.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      int[] $$5 = b($$0, $$1, $$3, $$2, $$4);
+      return Math.min(Math.min($$5[0], $$5[1]), Math.min($$5[2], $$5[3]));
+   }
+
+   @Deprecated
+   protected hx a(dzo.a $$0, ddk $$1) {
+      int $$2 = 5;
+      int $$3 = 5;
+      if ($$1 == ddk.b) {
+         $$2 = -5;
+      } else if ($$1 == ddk.c) {
+         $$2 = -5;
+         $$3 = -5;
+      } else if ($$1 == ddk.d) {
+         $$3 = -5;
       }
 
-      return $$0;
+      cte $$4 = $$0.h();
+      int $$5 = $$4.a(7);
+      int $$6 = $$4.b(7);
+      return new hx($$5, a($$0, $$5, $$6, $$2, $$3), $$6);
    }
 
-   public void a(cuk $$0, cui $$1, dle $$2, auv $$3, dyy $$4, csw $$5) {
-      List<dzk> $$6 = this.e.c();
-      if (!$$6.isEmpty()) {
-         dyy $$7 = $$6.get(0).f;
-         hx $$8 = $$7.g();
-         hx $$9 = new hx($$8.u(), $$7.i(), $$8.w());
+   protected abstract Optional<dzo.b> a(dzo.a var1);
 
-         for (dzk $$10 : $$6) {
-            if ($$10.f().a($$4)) {
-               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
-            }
-         }
+   public Optional<dzo.b> b(dzo.a $$0) {
+      return this.a($$0).filter($$1 -> a($$1, $$0));
+   }
 
-         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+   public abstract dzx<?> e();
+
+   public static record a(iu a, dlm b, cva c, dpm d, edp e, dpx f, long g, cte h, ctz i, Predicate<ih<cuw>> j) {
+
+      public a(iu $$0, dlm $$1, cva $$2, dpm $$3, edp $$4, long $$5, cte $$6, ctz $$7, Predicate<ih<cuw>> $$8) {
+         this($$0, $$1, $$2, $$3, $$4, a($$5, $$6), $$5, $$6, $$7, $$8);
       }
-   }
 
-   public sn a(dzw $$0, csw $$1) {
-      sn $$2 = new sn();
-      if (this.b()) {
-         $$2.a("id", $$0.b().d(ke.aD).b(this.d).toString());
-         $$2.a("ChunkX", $$1.e);
-         $$2.a("ChunkZ", $$1.f);
-         $$2.a("references", this.g);
-         $$2.a("Children", this.e.a($$0));
+      private static dpx a(long $$0, cte $$1) {
+         dpx $$2 = new dpx(new doz(0L));
+         $$2.c($$0, $$1.e, $$1.f);
          return $$2;
-      } else {
-         $$2.a("id", "INVALID");
-         return $$2;
       }
    }
 
-   public boolean b() {
-      return !this.e.a();
+   public static record b(hx a, Either<Consumer<eag>, eag> b) {
+      public b(hx $$0, Consumer<eag> $$1) {
+         this($$0, Either.left($$1));
+      }
+
+      public eag a() {
+         return (eag)this.b.map($$0 -> {
+            eag $$1 = new eag();
+            $$0.accept($$1);
+            return $$1;
+         }, $$0 -> $$0);
+      }
+
+      public hx b() {
+         return this.a;
+      }
+
+      public Either<Consumer<eag>, eag> c() {
+         return this.b;
+      }
    }
 
-   public csw c() {
-      return this.f;
-   }
+   public static record c(il<cuw> b, Map<bmr, dzv> c, dou.b d, dzz e) {
+      public static final MapCodec<dzo.c> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  iv.a(ke.at).fieldOf("biomes").forGetter(dzo.c::a),
+                  Codec.simpleMap(bmr.i, dzv.a, avl.a(bmr.values())).fieldOf("spawn_overrides").forGetter(dzo.c::b),
+                  dou.b.l.fieldOf("step").forGetter(dzo.c::c),
+                  dzz.e.optionalFieldOf("terrain_adaptation", dzz.a).forGetter(dzo.c::d)
+               )
+               .apply($$0, dzo.c::new)
+      );
 
-   public boolean d() {
-      return this.g < this.g();
-   }
+      public il<cuw> a() {
+         return this.b;
+      }
 
-   public void e() {
-      this.g++;
-   }
+      public Map<bmr, dzv> b() {
+         return this.c;
+      }
 
-   public int f() {
-      return this.g;
-   }
+      public dou.b c() {
+         return this.d;
+      }
 
-   protected int g() {
-      return 1;
-   }
-
-   public dzg h() {
-      return this.d;
-   }
-
-   public List<dzk> i() {
-      return this.e.c();
+      public dzz d() {
+         return this.e;
+      }
    }
 }

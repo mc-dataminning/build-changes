@@ -1,136 +1,87 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
 
-public abstract class fsw {
-   private static final Object2ObjectMap<ahg, fsw> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
-      fsw.c $$1 = new fsw.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dmo.e, $$1);
-      $$0.put(dmo.f, new fsw.b());
-      $$0.put(dmo.g, new fsw.a());
-   });
-   private final float[] b = new float[4];
-   private final float c;
-   private final boolean d;
-   private final fsw.d e;
-   private final boolean f;
-   private final boolean g;
+public class fsw extends fss {
+   private emc cq = emc.b;
+   private int cr;
 
-   public fsw(float $$0, boolean $$1, fsw.d $$2, boolean $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   public fsw(foe $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.af = true;
    }
 
-   public static fsw a(dmq $$0) {
-      return (fsw)a.get($$0.r());
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cH().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
+      }
+
+      $$1 *= 64.0 * cA();
+      return $$0 < $$1 * $$1;
    }
 
-   @Nullable
-   public float[] a(float $$0, float $$1) {
-      float $$2 = 0.4F;
-      float $$3 = auo.b($$0 * (float) (Math.PI * 2)) - 0.0F;
-      float $$4 = -0.0F;
-      if ($$3 >= -0.4F && $$3 <= 0.4F) {
-         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
-         float $$6 = 1.0F - (1.0F - auo.a($$5 * (float) Math.PI)) * 0.99F;
-         $$6 *= $$6;
-         this.b[0] = $$5 * 0.3F + 0.7F;
-         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
-         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
-         this.b[3] = $$6;
-         return this.b;
+   @Override
+   public boolean a(bkv $$0, float $$1) {
+      return true;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.q(false);
+   }
+
+   @Override
+   public void d_() {
+      if (this.bn > 0) {
+         this.a(this.bn, this.bo, this.bp, this.bq, this.br, this.bs);
+         this.bn--;
+      }
+
+      if (this.bu > 0) {
+         this.a(this.bu, this.bt);
+         this.bu--;
+      }
+
+      if (this.cr > 0) {
+         this.h(new emc((this.cq.c - this.do().c) / (double)this.cr, (this.cq.d - this.do().d) / (double)this.cr, (this.cq.e - this.do().e) / (double)this.cr));
+         this.cr--;
+      }
+
+      this.bZ = this.ca;
+      this.eQ();
+      float $$1;
+      if (this.aC() && !this.ew()) {
+         $$1 = (float)Math.min(0.1, this.do().h());
       } else {
-         return null;
+         $$1 = 0.0F;
       }
+
+      this.ca = this.ca + ($$1 - this.ca) * 0.4F;
+      this.dL().af().a("push");
+      this.M_();
+      this.dL().af().c();
    }
 
-   public float a() {
-      return this.c;
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.cq = new emc($$0, $$1, $$2);
+      this.cr = this.ai().p() + 1;
    }
 
-   public boolean b() {
-      return this.d;
+   @Override
+   protected void fM() {
    }
 
-   public abstract elt a(elt var1, float var2);
-
-   public abstract boolean a(int var1, int var2);
-
-   public fsw.d c() {
-      return this.e;
+   @Override
+   public void a(vg $$0) {
+      evr $$1 = evr.O();
+      $$1.l.d().a($$0);
    }
 
-   public boolean d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public static class a extends fsw {
-      public a() {
-         super(Float.NaN, false, fsw.d.c, true, false);
-      }
-
-      @Override
-      public elt a(elt $$0, float $$1) {
-         return $$0.a(0.15F);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public float[] a(float $$0, float $$1) {
-         return null;
-      }
-   }
-
-   public static class b extends fsw {
-      public b() {
-         super(Float.NaN, true, fsw.d.a, false, true);
-      }
-
-      @Override
-      public elt a(elt $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends fsw {
-      public static final int a = 192;
-
-      public c() {
-         super(192.0F, true, fsw.d.b, false, false);
-      }
-
-      @Override
-      public elt a(elt $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
+   @Override
+   public void a(zc $$0) {
+      super.a($$0);
+      this.bp();
    }
 }

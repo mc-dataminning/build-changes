@@ -1,76 +1,95 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cvt extends cwq implements cwt {
-   public static final MapCodec<cvt> a = b(cvt::new);
-   protected static final float b = 4.0F;
-   protected static final emm c = cwq.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+public abstract class cvt extends cwk {
+   public static final dkj a = dat.aE;
+   public static final dkg b = dkf.r;
 
-   @Override
-   public MapCodec<cvt> a() {
-      return a;
-   }
-
-   public cvt(djg.d $$0) {
+   protected cvt(djo.d $$0) {
       super($$0);
+      this.k(this.E.b().a(a, ic.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      elt $$4 = $$0.n($$1, $$2);
-      return c.a($$4.c, $$4.d, $$4.e);
-   }
+   protected abstract MapCodec<? extends cvt> a();
 
    @Override
-   public void b(djh $$0, and $$1, hx $$2, auv $$3) {
-      if ($$3.a(3) == 0 && $$1.u($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a(djh $$0, cts $$1, hx $$2) {
-      return $$1.a_($$2.d()).a(ash.at);
-   }
-
-   @Override
-   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return cws.a.o();
+   public bkc a(djp $$0, ctx $$1, hx $$2, cfq $$3, ely $$4) {
+      if ($$1.B) {
+         return bkc.a;
       } else {
-         if ($$1 == ic.b && $$2.a(cws.mZ)) {
-            $$3.a($$4, cws.mZ.o(), 2);
-         }
+         this.a($$1, $$2, $$3);
+         return bkc.b;
+      }
+   }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected abstract void a(ctx var1, hx var2, cfq var3);
+
+   @Override
+   public djp a(cpp $$0) {
+      return this.o().a(a, $$0.g().g());
+   }
+
+   @Override
+   public void a(ctx $$0, hx $$1, djp $$2, bmo $$3, cng $$4) {
+      if ($$4.A()) {
+         dhd $$5 = $$0.c_($$1);
+         if ($$5 instanceof dgs) {
+            ((dgs)$$5).a($$4.y());
+         }
       }
    }
 
    @Override
-   public cmy a(cts $$0, hx $$1, djh $$2) {
-      return new cmy(cnb.dQ);
+   public void a(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dhd $$5 = $$1.c_($$2);
+         if ($$5 instanceof dgs) {
+            if ($$1 instanceof ane) {
+               bjy.a($$1, $$2, (dgs)$$5);
+               ((dgs)$$5).a((ane)$$1, emc.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
    }
 
    @Override
-   public boolean b(cts $$0, hx $$1, djh $$2) {
-      return $$0.a_($$1.c()).i();
-   }
-
-   @Override
-   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
+   public boolean d_(djp $$0) {
       return true;
    }
 
    @Override
-   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
-      this.a($$0, $$2);
+   public int a(djp $$0, ctx $$1, hx $$2) {
+      return cij.a($$1.c_($$2));
    }
 
    @Override
-   public float a(djh $$0, cfi $$1, csv $$2, hx $$3) {
-      return $$1.eT().d() instanceof coj ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   public ddd b_(djp $$0) {
+      return ddd.c;
    }
 
-   protected void a(ctp $$0, hx $$1) {
-      $$0.a($$1.c(), cws.mZ.o().a(cvu.i, djt.b), 3);
+   @Override
+   public djp a(djp $$0, ddk $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public djp a(djp $$0, dbu $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Nullable
+   protected static <T extends dhd> dhe<T> a(ctx $$0, dhf<T> $$1, dhf<? extends dgs> $$2) {
+      return $$0.B ? null : a($$1, $$2, dgs::a);
    }
 }

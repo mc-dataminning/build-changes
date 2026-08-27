@@ -73,7 +73,7 @@ public class bad extends DataFix {
 
    public TypeRewriteRule makeRule() {
       Type<?> $$0 = this.getInputSchema().getType(bbw.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bbw.z.typeName(), bde.a()));
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bbw.A.typeName(), bde.a()));
       OpticFinder<String> $$2 = DSL.fieldFinder("id", bde.a());
       OpticFinder<?> $$3 = $$0.findField("tag");
       OpticFinder<?> $$4 = $$3.type().findField("EntityTag");
@@ -84,7 +84,7 @@ public class bad extends DataFix {
             Typed<?> $$7 = $$6.getOrCreateTyped($$4);
             Optional<String> $$8 = $$7.getOptional($$2);
             if ($$8.isPresent()) {
-               return $$4x.set($$1, Pair.of(bbw.z.typeName(), b.getOrDefault($$8.get(), "minecraft:pig_spawn_egg")));
+               return $$4x.set($$1, Pair.of(bbw.A.typeName(), b.getOrDefault($$8.get(), "minecraft:pig_spawn_egg")));
             }
          }
 

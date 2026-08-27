@@ -1,41 +1,27 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ecq extends ect {
-   public static final Codec<ecq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ecq::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+public class ecq extends edl {
+   public static final Codec<ecq> a = djp.b.xmap(djo.a::b, cwy::o).listOf().fieldOf("blocks").xmap(ecq::new, $$0 -> $$0.e).codec();
+   public static final ecq b = new ecq(ImmutableList.of(cxa.pa));
+   public static final ecq c = new ecq(ImmutableList.of(cxa.a));
+   public static final ecq d = new ecq(ImmutableList.of(cxa.a, cxa.pa));
+   private final ImmutableList<cwy> e;
 
-   public ecq(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-      }
+   public ecq(List<cwy> $$0) {
+      this.e = ImmutableList.copyOf($$0);
+   }
+
+   @Nullable
+   @Override
+   public edo.c a(cua $$0, hx $$1, hx $$2, edo.c $$3, edo.c $$4, edk $$5) {
+      return this.e.contains($$4.b().b()) ? null : $$4;
    }
 
    @Override
-   public boolean a(hx $$0, hx $$1, hx $$2, auv $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= auo.b(this.b, this.d, auo.g((float)$$4, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected ecu<?> a() {
-      return ecu.b;
+   protected edn<?> a() {
+      return edn.e;
    }
 }

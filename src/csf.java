@@ -1,11 +1,11 @@
-public class csf extends crj {
-   public csf(crj.a $$0, bma... $$1) {
-      super($$0, crk.i, $$1);
+public class csf extends crr {
+   public csf(crr.a $$0, bmd... $$1) {
+      super($$0, crs.m, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 + $$0 * 7;
+      return 12 + ($$0 - 1) * 20;
    }
 
    @Override
@@ -16,10 +16,5 @@ public class csf extends crj {
    @Override
    public int a() {
       return 3;
-   }
-
-   @Override
-   public boolean a(crj $$0) {
-      return super.a($$0) && $$0 != crn.E && $$0 != crn.H;
    }
 }

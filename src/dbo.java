@@ -1,40 +1,7 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dbo extends cwq {
-   public static final MapCodec<dbo> a = b(dbo::new);
-   protected static final emm b = cwq.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+public interface dbo {
+   boolean a(@Nullable cfq var1, ctd var2, hx var3, djp var4, eey var5);
 
-   @Override
-   public MapCodec<dbo> a() {
-      return a;
-   }
-
-   public dbo(djg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public emm b(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return b;
-   }
-
-   @Override
-   public emm b_(djh $$0, csv $$1, hx $$2) {
-      return emj.b();
-   }
-
-   @Override
-   public emm c(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return emj.b();
-   }
-
-   @Override
-   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
-      return false;
-   }
-
-   @Override
-   public float d(djh $$0, csv $$1, hx $$2) {
-      return 0.2F;
-   }
+   boolean a(cty var1, hx var2, djp var3, eez var4);
 }

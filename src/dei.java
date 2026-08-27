@@ -1,31 +1,33 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dei extends daq implements cwh {
-   public static final MapCodec<dei> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(clm.q.fieldOf("color").forGetter(dei::b), u()).apply($$0, dei::new));
-   private final clm k;
+public class dei extends cwl {
+   public static final MapCodec<dei> c = b(dei::new);
 
    @Override
    public MapCodec<dei> a() {
-      return j;
+      return c;
    }
 
-   public dei(clm $$0, djg.d $$1) {
-      super($$1);
-      this.k = $$0;
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
+   public dei(djo.d $$0) {
+      super($$0, 2.0F);
    }
 
    @Override
-   public clm b() {
-      return this.k;
+   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
+      return this.a($$0, $$3, $$4) ? this.o() : cxa.a.o();
+   }
+
+   @Override
+   public boolean a(djp $$0, cua $$1, hx $$2) {
+      return h($$1.a_($$2.d()));
+   }
+
+   public static boolean h(djp $$0) {
+      return $$0.a(asi.aS);
+   }
+
+   @Override
+   protected boolean f(djp $$0) {
+      return true;
    }
 }

@@ -1,24 +1,24 @@
-public class gbu<T extends bml, M extends flc<T>> extends gdh<T, M> {
-   private final fyl a;
+public class gbu extends gag<cfd, fmu<cfd>> {
+   private static final ahh a = new ahh("textures/entity/villager/villager.png");
 
-   public gbu(fyn.a $$0, fzo<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public gbu(fza.a $$0) {
+      super($$0, new fmu<>($$0.a(fni.bL)), 0.5F);
+      this.a(new gcq<>(this, $$0.f(), $$0.d()));
+      this.a(new gdw<>(this, $$0.e(), "villager"));
+      this.a(new gcp<>(this, $$0.d()));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eO();
+   public ahh a(cfd $$0) {
+      return a;
    }
 
-   @Override
-   protected void a(eqb $$0, fth $$1, int $$2, blv $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = auo.c($$4 * $$4 + $$6 * $$6);
-      cfq $$9 = new cfq($$3.dM(), $$3.dr(), $$3.dt(), $$3.dx(), cmy.f);
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.N = $$9.dC();
-      $$9.O = $$9.dE();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   protected void a(cfd $$0, eqk $$1, float $$2) {
+      float $$3 = 0.9375F * $$0.dY();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected float b(cfd $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
    }
 }

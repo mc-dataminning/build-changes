@@ -1,32 +1,127 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum bvk implements avk {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public abstract class bvk extends btk {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int c = 2;
+   protected final bmq e;
+   protected final boolean f;
+   private final boolean d;
+   private int i;
+   private int j;
+   private int k;
+   @Nullable
+   protected bmo g;
+   protected int h = 60;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<bvk> n = avk.a(bvk::values);
+   public bvk(bmq $$0, boolean $$1) {
+      this($$0, $$1, false);
+   }
 
-   private bvk(String $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public bvk(bmq $$0, boolean $$1, boolean $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean b() {
+      bmo $$0 = this.e.q();
+      if ($$0 == null) {
+         $$0 = this.g;
+      }
+
+      if ($$0 == null) {
+         return false;
+      } else if (!this.e.c($$0)) {
+         return false;
+      } else {
+         eni $$1 = this.e.cg();
+         eni $$2 = $$0.cg();
+         if ($$1 != null && $$2 == $$1) {
+            return false;
+         } else {
+            double $$3 = this.l();
+            if (this.e.f($$0) > $$3 * $$3) {
+               return false;
+            } else {
+               if (this.f) {
+                  if (this.e.O().a($$0)) {
+                     this.k = 0;
+                  } else if (++this.k > b(this.h)) {
+                     return false;
+                  }
+               }
+
+               this.e.h($$0);
+               return true;
+            }
+         }
+      }
+   }
+
+   protected double l() {
+      return this.e.g(bnu.i);
+   }
+
+   @Override
+   public void c() {
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   @Override
+   public void d() {
+      this.e.h(null);
+      this.g = null;
+   }
+
+   protected boolean a(@Nullable bmo $$0, bxd $$1) {
+      if ($$0 == null) {
+         return false;
+      } else if (!$$1.a(this.e, $$0)) {
+         return false;
+      } else if (!this.e.a($$0.dl())) {
+         return false;
+      } else {
+         if (this.d) {
+            if (--this.j <= 0) {
+               this.i = 0;
+            }
+
+            if (this.i == 0) {
+               this.i = this.a($$0) ? 1 : 2;
+            }
+
+            if (this.i == 2) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(bmo $$0) {
+      this.j = b(10 + this.e.eg().a(5));
+      efo $$1 = this.e.N().a($$0, 0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         efm $$2 = $$1.d();
+         if ($$2 == null) {
+            return false;
+         } else {
+            int $$3 = $$2.a - $$0.dp();
+            int $$4 = $$2.c - $$0.dv();
+            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
+         }
+      }
+   }
+
+   public bvk c(int $$0) {
+      this.h = $$0;
+      return this;
    }
 }

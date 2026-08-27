@@ -1,41 +1,45 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dxa extends dwz {
-   public static final Codec<dxa> b = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dxa::new));
+public class dxa extends dwy {
+   public static final Codec<dxa> a = Codec.unit(() -> dxa.b);
+   public static final dxa b = new dxa();
 
-   public dxa(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected dwz<?> a() {
+      return dwz.a;
    }
 
    @Override
-   protected dxd<?> a() {
-      return dxd.d;
-   }
-
-   @Override
-   public List<dvk.a> a(ctv $$0, BiConsumer<hx, djh> $$1, auv $$2, int $$3, hx $$4, duu $$5) {
-      List<dvk.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
-
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + auo.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + auo.a($$8) * (float)$$11);
-            hx $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
+   public void a(dwy.a $$0) {
+      auw $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            hx $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dfs.d);
+            }
          }
 
-         $$6.add(new dvk.a($$4.b($$9, $$7, $$10), -2, false));
-      }
+         if ($$1.a(3) > 0) {
+            hx $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dfs.f);
+            }
+         }
 
-      return $$6;
+         if ($$1.a(3) > 0) {
+            hx $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dfs.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            hx $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dfs.c);
+            }
+         }
+      });
    }
 }

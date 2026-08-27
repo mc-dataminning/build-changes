@@ -1,24 +1,24 @@
-public class xu implements xf<xq> {
-   private final int a;
+public class xu implements xg<xr> {
+   private final long a;
 
-   public xu(int $$0) {
+   public xu(long $$0) {
       this.a = $$0;
    }
 
-   public xu(ui $$0) {
-      this.a = $$0.readInt();
-   }
-
-   @Override
-   public void a(ui $$0) {
-      $$0.p(this.a);
-   }
-
-   public void a(xq $$0) {
+   public void a(xr $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public xu(uj $$0) {
+      this.a = $$0.readLong();
+   }
+
+   @Override
+   public void a(uj $$0) {
+      $$0.b(this.a);
+   }
+
+   public long a() {
       return this.a;
    }
 }

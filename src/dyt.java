@@ -1,29 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dyt extends dym {
-   public static final Codec<dyt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, dyt::new)
-   );
-   private final int c;
+public class dyt extends dpv {
+   private final cus a;
+   private final dlm b;
+   private final Optional<dys> c;
 
-   private dyt(int $$0) {
-      this.c = $$0;
+   public dyt(cus $$0, dlm $$1, Optional<dys> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static dyt a(int $$0) {
-      return new dyt($$0);
+   public int a(doy.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean a(dyl $$0, auv $$1, hx $$2) {
-      int $$3 = $$0.a(doq.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(doq.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   public dlk a(cte $$0, dou.a $$1) {
+      return ((dmg)this.a.a($$0.e, $$0.f)).b($$1);
    }
 
-   @Override
-   public dyo<?> b() {
-      return dyo.d;
+   public djp a(hx $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.J_();
+   }
+
+   public cus d() {
+      return this.a;
+   }
+
+   public Optional<dys> e() {
+      return this.c;
+   }
+
+   public dlm f() {
+      return this.b;
    }
 }

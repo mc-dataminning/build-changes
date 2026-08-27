@@ -1,47 +1,15 @@
-import javax.annotation.Nullable;
-
-public interface gia {
-   ahg a();
-
-   @Nullable
-   gjf a(gje var1);
-
-   ghx b();
-
-   art c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   gia.a k();
-
-   default boolean r() {
-      return false;
+public class gia extends gib {
+   public gia(byd $$0) {
+      super($$0, art.bO, aru.g);
    }
 
-   default boolean s() {
-      return true;
+   @Override
+   protected ghx o() {
+      return new ghz(this.n);
    }
 
-   static auv t() {
-      return auv.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   @Override
+   protected boolean p() {
+      return this.n.aa_();
    }
 }

@@ -14,11 +14,11 @@ public class cc extends cv<cc.a> {
       return cc.a.a;
    }
 
-   public void a(ane $$0, Collection<blv> $$1) {
-      List<egw> $$2 = Lists.newArrayList();
-      Set<blz<?>> $$3 = Sets.newHashSet();
+   public void a(anf $$0, Collection<blw> $$1) {
+      List<ehf> $$2 = Lists.newArrayList();
+      Set<bmc<?>> $$3 = Sets.newHashSet();
 
-      for (blv $$4 : $$1) {
+      for (blw $$4 : $$1) {
          $$3.add($$4.ai());
          $$2.add(bp.b($$0, $$4));
       }
@@ -29,9 +29,9 @@ public class cc extends cv<cc.a> {
    public static record a(Optional<bb> b, List<bb> c, ck.d d) implements cv.a {
       public static final Codec<cc.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  atw.a(bp.b, "player").forGetter(cc.a::a),
-                  atw.a(bp.b.listOf(), "victims", List.of()).forGetter(cc.a::b),
-                  atw.a(ck.d.d, "unique_entity_types", ck.d.c).forGetter(cc.a::c)
+                  atx.a(bp.b, "player").forGetter(cc.a::a),
+                  atx.a(bp.b.listOf(), "victims", List.of()).forGetter(cc.a::b),
+                  atx.a(ck.d.d, "unique_entity_types", ck.d.c).forGetter(cc.a::c)
                )
                .apply($$0, cc.a::new)
       );
@@ -44,16 +44,16 @@ public class cc extends cv<cc.a> {
          return am.H.a(new cc.a(Optional.empty(), List.of(), $$0));
       }
 
-      public boolean a(Collection<egw> $$0, int $$1) {
+      public boolean a(Collection<ehf> $$0, int $$1) {
          if (!this.c.isEmpty()) {
-            List<egw> $$2 = Lists.newArrayList($$0);
+            List<ehf> $$2 = Lists.newArrayList($$0);
 
             for (bb $$3 : this.c) {
                boolean $$4 = false;
-               Iterator<egw> $$5 = $$2.iterator();
+               Iterator<ehf> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
-                  egw $$6 = $$5.next();
+                  ehf $$6 = $$5.next();
                   if ($$3.a($$6)) {
                      $$5.remove();
                      $$4 = true;

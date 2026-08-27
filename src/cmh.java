@@ -1,14 +1,25 @@
-import javax.annotation.Nullable;
-
-public class cmh extends ckr {
-   public cmh(cwq $$0, cmt.a $$1) {
-      super($$0, $$1);
+public class cmh extends cnb {
+   public cmh(cnb.a $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   protected djh c(cph $$0) {
-      cfi $$1 = $$0.o();
-      return $$1 != null && !$$1.gp() ? null : super.c($$0);
+   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
+      cng $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), art.ie, aru.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      $$1.gn().a(this, 20);
+      if (!$$0.B) {
+         cgr $$4 = new cgr($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
+
+      $$1.b(asd.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
+      }
+
+      return bkd.a($$3, $$0.y_());
    }
 }

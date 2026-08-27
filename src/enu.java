@@ -1,11 +1,5 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.Nonnull;
-import javax.annotation.meta.TypeQualifierDefault;
+import java.util.function.Function;
 
-@Nonnull
-@TypeQualifierDefault({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface enu {
+public interface enu<T> {
+   tl b(long var1, Function<T, String> var3);
 }

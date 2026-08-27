@@ -3,7 +3,7 @@ import com.mojang.serialization.Dynamic;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-public class bbp extends awa {
+public class bbp extends awb {
    private final Predicate<String> a;
 
    public bbp(Schema $$0, String $$1, Predicate<String> $$2) {

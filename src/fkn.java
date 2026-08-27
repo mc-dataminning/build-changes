@@ -1,57 +1,44 @@
-import java.util.Arrays;
+public class fkn<T extends blw> extends fks<T> {
+   private final fnj a;
+   private final fnj[] b = new fnj[9];
 
-public class fkn<T extends ccy> extends fkg<T> {
-   private static final int a = 8;
-   private final fmx b;
-   private final fmx[] f = new fmx[8];
+   public fkn(fnj $$0) {
+      this.a = $$0;
 
-   public fkn(fmx $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
+      }
    }
 
    private static String a(int $$0) {
-      return "cube" + $$0;
+      return "tentacle" + $$0;
    }
 
-   public static fnd b() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
+   public static fnp b() {
+      fnr $$0 = new fnr();
+      fns $$1 = $$0.a();
+      $$1.a("body", fno.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fnl.a(0.0F, 17.6F, 0.0F));
+      auw $$2 = auw.a(1660L);
 
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         int $$3 = 0;
-         int $$4 = $$2;
-         if ($$2 == 2) {
-            $$3 = 24;
-            $$4 = 10;
-         } else if ($$2 == 3) {
-            $$3 = 24;
-            $$4 = 19;
-         }
-
-         $$1.a(a($$2), fnc.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), fmz.a);
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         int $$6 = $$2.a(7) + 8;
+         $$1.a(a($$3), fno.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), fnl.a($$4, 24.6F, $$5));
       }
 
-      $$1.a("inside_cube", fnc.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), fmz.a);
-      return fnd.a($$0, 64, 32);
+      return fnp.a($$0, 64, 32);
    }
 
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      float $$4 = auo.i($$3, $$0.bS, $$0.e);
-      if ($$4 < 0.0F) {
-         $$4 = 0.0F;
-      }
-
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
+      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
+         this.b[$$6].e = 0.2F * aup.a($$3 * 0.3F + (float)$$6) + 0.4F;
       }
    }
 
    @Override
-   public fmx a() {
-      return this.b;
+   public fnj a() {
+      return this.a;
    }
 }

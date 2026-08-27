@@ -1,25 +1,20 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class ecx extends eda {
-   public static final Codec<ecx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kd.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, ecx::new)
-   );
-   private final cwq b;
-   private final float d;
+public class ecx extends edl {
+   public static final Codec<ecx> a = Codec.unit(() -> ecx.b);
+   public static final ecx b = new ecx();
 
-   public ecx(cwq $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   @Nullable
+   @Override
+   public edo.c a(cua $$0, hx $$1, hx $$2, edo.c $$3, edo.c $$4, edk $$5) {
+      hx $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(cxa.H);
+      return $$7 && !cwy.a($$4.b().j($$0, $$6)) ? new edo.c($$6, cxa.H.o(), $$4.c()) : $$4;
    }
 
    @Override
-   public boolean a(djh $$0, auv $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
-   }
-
-   @Override
-   protected edb<?> a() {
-      return edb.e;
+   protected edn<?> a() {
+      return edn.m;
    }
 }

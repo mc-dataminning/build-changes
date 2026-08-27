@@ -1,33 +1,27 @@
-import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class esh {
-   public final etq a = new etq(ac.g(), TimeUnit.MILLISECONDS, ac.b);
-   private final List<etq.e<?>> h;
-   public final etq.e<List<erh>> b;
-   public final etq.e<esh.a> c;
-   public final etq.e<Integer> d;
-   public final etq.e<Boolean> e;
-   public final etq.e<erg> f;
-   public final esi g = new esi(new etw());
+public class esh extends esg {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   public esh(eqr $$0) {
-      this.c = this.a.a("server list", () -> {
-         erk $$1 = $$0.b();
-         return eqm.b() ? new esh.a($$1.a, $$0.c()) : new esh.a($$1.a, List.of());
-      }, Duration.ofSeconds(60L), etr.a);
-      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), etr.a(360));
-      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), etr.a(60));
-      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), etr.a);
-      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), etr.a);
-      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
-   }
+   public static esh a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      esh $$3 = new esh();
 
-   public List<etq.e<?>> a() {
-      return this.h;
-   }
+      try {
+         $$3.a = eud.b("downloadLink", $$2, "");
+         $$3.b = eud.b("resourcePackUrl", $$2, "");
+         $$3.c = eud.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+      }
 
-   public static record a(List<eri> a, List<eri> b) {
+      return $$3;
    }
 }

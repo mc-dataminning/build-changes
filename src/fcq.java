@@ -1,59 +1,31 @@
-public class fcq extends fdb {
-   private static final vf a = vf.c("symlink_warning.title.world").a(n.r);
-   private static final vf b = vf.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
-   private static final vf c = vf.c("symlink_warning.title.pack").a(n.r);
-   private static final vf k = vf.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
-   private final vf l;
-   private final String m;
-   private final Runnable n;
-   private final fap o = new fap().b(10);
+public class fcq extends fdm {
+   private final vg a;
 
-   public fcq(vf $$0, vf $$1, String $$2, Runnable $$3) {
+   public fcq(vg $$0, vg $$1) {
       super($$0);
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-   }
-
-   public static fdb a(Runnable $$0) {
-      return new fcq(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
-   }
-
-   public static fdb b(Runnable $$0) {
-      return new fcq(c, k, "https://aka.ms/MinecraftSymLinks", $$0);
+      this.a = $$1;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.o.c().b();
-      fap.b $$0 = this.o.d(1);
-      $$0.a(new eyn(this.e, this.i));
-      $$0.a(new eya(this.l, this.i).c(this.g - 50).b(true));
-      int $$1 = 120;
-      fap $$2 = new fap().a(5);
-      fap.b $$3 = $$2.d(3);
-      $$3.a(exg.a(ve.n, $$0x -> ac.j().a(this.m)).b(120, 20).a());
-      $$3.a(exg.a(ve.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
-      $$3.a(exg.a(ve.k, $$0x -> this.aE_()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.o.a(this::d);
+   protected void aP_() {
+      super.aP_();
+      this.d(exr.a(vf.e, $$0 -> this.f.a(null)).a(this.g / 2 - 100, 140, 200, 20).a());
    }
 
    @Override
-   protected void c() {
-      this.o.a();
-      fao.a(this.o, this.F());
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 90, 16777215);
+      $$0.a(this.i, this.a, this.g / 2, 110, 16777215);
    }
 
    @Override
-   public vf h() {
-      return ve.a(super.h(), this.l);
+   public void b(exe $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.g, this.h, -12574688, -11530224);
    }
 
    @Override
-   public void aE_() {
-      this.n.run();
+   public boolean aN_() {
+      return false;
    }
 }

@@ -1,15 +1,12 @@
-public class ghm extends ghn {
-   public ghm(bxz $$0) {
-      super($$0, ars.bC, art.g);
-   }
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   @Override
-   protected ghj o() {
-      return new ghl(this.n);
-   }
+public interface ghm {
+   Collection<ahh> f();
 
-   @Override
-   protected boolean p() {
-      return this.n.aa_();
-   }
+   void a(Function<ahh, ghm> var1);
+
+   @Nullable
+   ghb a(ghf var1, Function<ghe, gfb> var2, ghj var3, ahh var4);
 }

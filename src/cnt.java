@@ -1,19 +1,18 @@
-public class cnt extends cmu {
-   private final ane a;
-
-   public cnt(ane $$0) {
-      this.a = $$0;
+public class cnt extends cla {
+   public cnt(cwy $$0, cnb.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void b(cmt $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.c.b(new zx($$0, $$1));
+   public bkc a(cpr $$0) {
+      return bkc.d;
    }
 
    @Override
-   protected void c(cmt $$0) {
-      super.c($$0);
-      this.a.c.b(new zx($$0, 0));
+   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
+      ely $$3 = a($$0, $$1, ctg.b.b);
+      ely $$4 = $$3.a($$3.a().c());
+      bkc $$5 = super.a(new cpr($$1, $$2, $$4));
+      return new bkd<>($$5, $$1.b($$2));
    }
 }

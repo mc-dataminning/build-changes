@@ -1,5 +1,8 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record fnw(GameProfile a, gjr b, iu.b c, chs d, @Nullable String e, @Nullable fod f, @Nullable fdb g) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fnw {
 }

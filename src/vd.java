@@ -1,81 +1,92 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class vd {
+public record vd(String b, List<vd.a> c, wd d) {
    public static final Codec<vd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(vd.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, vd::new)
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(vd::a),
+               vd.a.d.listOf().fieldOf("parameters").forGetter(vd::b),
+               wd.b.b.optionalFieldOf("style", wd.a).forGetter(vd::c)
+            )
+            .apply($$0, vd::new)
    );
-   private final vd.a b;
-   private final String c;
 
-   public vd(vd.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static vd a(String $$0) {
+      return new vd($$0, List.of(vd.a.a, vd.a.c), wd.a);
    }
 
-   public vd.a a() {
+   public static vd b(String $$0) {
+      wd $$1 = wd.a.a(n.h).b(true);
+      return new vd($$0, List.of(vd.a.a, vd.a.c), $$1);
+   }
+
+   public static vd c(String $$0) {
+      wd $$1 = wd.a.a(n.h).b(true);
+      return new vd($$0, List.of(vd.a.b, vd.a.c), $$1);
+   }
+
+   public static vd d(String $$0) {
+      return new vd($$0, List.of(vd.a.b, vd.a.a, vd.a.c), wd.a);
+   }
+
+   public vg a(vg $$0, vc.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return vg.a(this.b, $$2).c(this.d);
+   }
+
+   private vg[] b(vg $$0, vc.a $$1) {
+      vg[] $$2 = new vg[this.c.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         vd.a $$4 = this.c.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
+      }
+
+      return $$2;
+   }
+
+   public String a() {
       return this.b;
    }
 
-   public String b() {
+   public List<vd.a> b() {
       return this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         vd $$1 = (vd)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
+   public wd c() {
+      return this.d;
    }
 
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
-   }
+   public static enum a implements avl {
+      a("sender", ($$0, $$1) -> $$1.b()),
+      b("target", ($$0, $$1) -> $$1.c()),
+      c("content", ($$0, $$1) -> $$0);
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
-   }
+      public static final Codec<vd.a> d = avl.a(vd.a::values);
+      private final String e;
+      private final vd.a.a f;
 
-   public static enum a implements avk {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
-
-      public static final MapCodec<vd.a> g = avk.a(vd.a::values).fieldOf("action");
-      public static final MapCodec<vd.a> h = atw.a(g, vd.a::a);
-      private final boolean i;
-      private final String j;
-
-      private a(String $$0, boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
+      private a(String $$0, vd.a.a $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
 
-      public boolean a() {
-         return this.i;
+      public vg a(vg $$0, vc.a $$1) {
+         vg $$2 = this.f.select($$0, $$1);
+         return Objects.requireNonNullElse($$2, vf.a);
       }
 
       @Override
       public String c() {
-         return this.j;
+         return this.e;
       }
 
-      public static DataResult<vd.a> a(vd.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      public interface a {
+         @Nullable
+         vg select(vg var1, vc.a var2);
       }
    }
 }

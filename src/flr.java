@@ -1,67 +1,40 @@
-import java.util.Arrays;
+public class flr<T extends blw> extends fks<T> {
+   private final fnj a;
+   private final fnj b;
+   private final fnj f;
 
-public class flr<T extends blv> extends fkg<T> {
-   private static final int a = 7;
-   private final fmx b;
-   private final fmx[] f = new fmx[7];
-   private final fmx[] g = new fmx[3];
-   private static final int[][] h = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
-   private static final int[][] i = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
-
-   public flr(fmx $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.f, $$1 -> $$0.b(b($$1)));
-      Arrays.setAll(this.g, $$1 -> $$0.b(a($$1)));
+   public flr(fnj $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   private static String a(int $$0) {
-      return "layer" + $$0;
-   }
-
-   private static String b(int $$0) {
-      return "segment" + $$0;
-   }
-
-   public static fnd b() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      float[] $$2 = new float[7];
-      float $$3 = -3.5F;
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         $$1.a(
-            b($$4),
-            fnc.c().a(i[$$4][0], i[$$4][1]).a((float)h[$$4][0] * -0.5F, 0.0F, (float)h[$$4][2] * -0.5F, (float)h[$$4][0], (float)h[$$4][1], (float)h[$$4][2]),
-            fmz.a(0.0F, (float)(24 - h[$$4][1]), $$3)
-         );
-         $$2[$$4] = $$3;
-         if ($$4 < 6) {
-            $$3 += (float)(h[$$4][2] + h[$$4 + 1][2]) * 0.5F;
-         }
-      }
-
-      $$1.a(a(0), fnc.c().a(20, 0).a(-5.0F, 0.0F, (float)h[2][2] * -0.5F, 10.0F, 8.0F, (float)h[2][2]), fmz.a(0.0F, 16.0F, $$2[2]));
-      $$1.a(a(1), fnc.c().a(20, 11).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 4.0F, (float)h[4][2]), fmz.a(0.0F, 20.0F, $$2[4]));
-      $$1.a(a(2), fnc.c().a(20, 18).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 5.0F, (float)h[1][2]), fmz.a(0.0F, 19.0F, $$2[1]));
-      return fnd.a($$0, 64, 32);
+   public static fnp b() {
+      fnr $$0 = new fnr();
+      fns $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fno.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), fnl.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fno.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fnl.a(-2.5F, 17.0F, -1.5F));
+      $$1.a("left_blue_fin", fno.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fnl.a(2.5F, 17.0F, -1.5F));
+      $$1.a("top_front_fin", fno.c().a(15, 16).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 1.0F), fnl.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_back_fin", fno.c().a(10, 16).a(-2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 1.0F), fnl.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fno.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fnl.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("right_back_fin", fno.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fnl.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fno.c().a(4, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fnl.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fno.c().a(0, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fnl.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_back_fin", fno.c().a(8, 22).a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F), fnl.a(0.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_front_fin", fno.c().a(17, 21).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), fnl.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      return fnp.a($$0, 32, 32);
    }
 
    @Override
-   public fmx a() {
-      return this.b;
+   public fnj a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
-         this.f[$$6].f = auo.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$6 - 2));
-         this.f[$$6].b = auo.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$6 - 2);
-      }
-
-      this.g[0].f = this.f[2].f;
-      this.g[1].f = this.f[4].f;
-      this.g[1].b = this.f[4].b;
-      this.g[2].f = this.f[1].f;
-      this.g[2].b = this.f[1].b;
+      this.f.g = -0.2F + 0.4F * aup.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * aup.a($$3 * 0.2F);
    }
 }

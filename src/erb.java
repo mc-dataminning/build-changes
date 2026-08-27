@@ -1,30 +1,18 @@
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.UUID;
-import org.slf4j.Logger;
+import java.net.Proxy;
+import javax.annotation.Nullable;
 
-public class erb extends erx {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-   public UUID d;
-   public Date e;
+public class erb {
+   @Nullable
+   private static Proxy a;
 
-   public static erb a(JsonObject $$0) {
-      erb $$1 = new erb();
+   @Nullable
+   public static Proxy a() {
+      return a;
+   }
 
-      try {
-         $$1.a = etu.b("invitationId", $$0, "");
-         $$1.b = etu.b("worldName", $$0, "");
-         $$1.c = etu.b("worldOwnerName", $$0, "");
-         $$1.d = etu.a("worldOwnerUuid", $$0, ac.d);
-         $$1.e = etu.b("date", $$0);
-      } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
       }
-
-      return $$1;
    }
 }

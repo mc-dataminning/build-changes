@@ -1,45 +1,60 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class eby extends dzg {
+public class eby extends dzo {
    public static final Codec<eby> d = a(eby::new);
 
-   public eby(dzg.c $$0) {
+   public eby(dzo.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<dzg.b> a(dzg.a $$0) {
-      return Optional.of(new dzg.b($$0.h().l(), (Consumer<dzy>)($$1 -> a($$1, $$0))));
+   public Optional<dzo.b> a(dzo.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
+
+      for (ih<cuw> $$4 : $$0.c().a($$1, $$0.b().e(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(ash.X)) {
+            return Optional.empty();
+         }
+      }
+
+      return a($$0, doy.a.c, $$1x -> a($$1x, $$0));
    }
 
-   private static void a(dzy $$0, dzg.a $$1) {
-      int $$2 = 0;
+   private static dzs a(cte $$0, dpx $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      ic $$4 = ic.c.a.a($$1);
+      return new ebx.h($$1, $$2, $$3, $$4);
+   }
 
-      ebx.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
-         ebx.a();
-         $$3 = new ebx.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<dzk> $$4 = $$3.c;
+   private static void a(eag $$0, dzo.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
 
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            dzk $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
-         }
-
-         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
+   public static ead a(cte $$0, long $$1, ead $$2) {
+      if ($$2.a()) {
+         return $$2;
+      } else {
+         dpx $$3 = new dpx(new doz(dpn.a()));
+         $$3.c($$1, $$0.e, $$0.f);
+         dzs $$4 = $$2.c().get(0);
+         dzg $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         ic $$8 = ic.c.a.a($$3);
+         ic $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         dzs $$10 = new ebx.h($$3, $$6, $$7, $$9);
+         eag $$11 = new eag();
+         $$11.a($$10);
+         return $$11.a();
+      }
    }
 
    @Override
-   public dzp<?> e() {
-      return dzp.n;
+   public dzx<?> e() {
+      return dzx.j;
    }
 }

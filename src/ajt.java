@@ -1,28 +1,44 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class ajt {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.kick.owner.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vg.c("commands.kick.singleplayer.failed"));
+
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ds)$$0x.getSource(), ImmutableList.of(((ds)$$0x.getSource()).g()))))
-            .then(dt.a("targets", ef.b()).executes($$0x -> a((ds)$$0x.getSource(), ef.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("kick").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)dt.a("targets", ef.d())
+                     .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), vg.c("multiplayer.disconnect.kicked"))))
+                  .then(dt.a("reason", ej.a()).executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), ej.a($$0x, "reason"))))
+            )
       );
    }
 
-   private static int a(ds $$0, Collection<? extends blv> $$1) {
-      for (blv $$2 : $$1) {
-         $$2.al();
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> vf.a("commands.kill.success.single", $$1.iterator().next().Q_()), true);
+   private static int a(ds $$0, Collection<anf> $$1, vg $$2) throws CommandSyntaxException {
+      if (!$$0.l().p()) {
+         throw b.create();
       } else {
-         $$0.a(() -> vf.a("commands.kill.success.multiple", $$1.size()), true);
-      }
+         int $$3 = 0;
 
-      return $$1.size();
+         for (anf $$4 : $$1) {
+            if (!$$0.l().a($$4.fR())) {
+               $$4.c.b($$2);
+               $$0.a(() -> vg.a("commands.kick.success", $$4.Q_(), $$2), true);
+               $$3++;
+            }
+         }
+
+         if ($$3 == 0) {
+            throw a.create();
+         } else {
+            return $$3;
+         }
+      }
    }
 }

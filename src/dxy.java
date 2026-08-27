@@ -1,26 +1,50 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public class dxy extends dym {
-   private static final dxy c = new dxy();
-   public static Codec<dxy> a = Codec.unit(() -> c);
+public class dxy extends dxv {
+   public static final Codec<dxy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dps.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dps.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, dxy::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dps d;
+   private final dps e;
+   private final LongSet f = new LongOpenHashSet();
 
-   private dxy() {
+   private dxy(dps $$0, dps $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static dxy a() {
-      return c;
+   public static dxy a(dps $$0, dps $$1) {
+      return new dxy($$0, $$1);
    }
 
    @Override
-   protected boolean a(dyl $$0, auv $$1, hx $$2) {
-      dyk $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      ih<cuo> $$4 = $$0.d().t($$2);
-      return $$0.f().a($$4).a($$3);
+   public int a(auw $$0, dpv $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
+            b.warn("Empty height range: {}", this);
+         }
+
+         return $$2;
+      } else {
+         return aup.b($$0, $$2, $$3);
+      }
    }
 
    @Override
-   public dyo<?> b() {
-      return dyo.e;
+   public dxw<?> a() {
+      return dxw.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.d + "-" + this.e + "]";
    }
 }

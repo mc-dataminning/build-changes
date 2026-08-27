@@ -28,7 +28,7 @@ public class bde extends Schema {
    }
 
    public static String a(String $$0) {
-      ahg $$1 = ahg.a($$0);
+      ahh $$1 = ahh.a($$0);
       return $$1 != null ? $$1.toString() : $$0;
    }
 

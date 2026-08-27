@@ -8,20 +8,20 @@ import java.util.stream.Stream;
 public interface ij<T> extends ii<T> {
    Stream<ih.c<T>> b();
 
-   default Stream<ahf<T>> c() {
-      return this.b().map(ih.c::g);
+   default Stream<ahg<T>> c() {
+      return this.b().map(ih.c::h);
    }
 
    Stream<il.c<T>> d();
 
-   default Stream<asw<T>> e() {
+   default Stream<asx<T>> e() {
       return this.d().map(il.c::f);
    }
 
    default ij<T> a(final Predicate<T> $$0) {
       return new ij.a<T>(this) {
          @Override
-         public Optional<ih.c<T>> a(ahf<T> $$0x) {
+         public Optional<ih.c<T>> a(ahg<T> $$0x) {
             return this.c.a($$0).filter($$1 -> $$0.test($$1.a()));
          }
 
@@ -40,7 +40,7 @@ public interface ij<T> extends ii<T> {
       }
 
       @Override
-      public Optional<ih.c<T>> a(ahf<T> $$0) {
+      public Optional<ih.c<T>> a(ahg<T> $$0) {
          return this.c.a($$0);
       }
 
@@ -50,7 +50,7 @@ public interface ij<T> extends ii<T> {
       }
 
       @Override
-      public Optional<il.c<T>> a(asw<T> $$0) {
+      public Optional<il.c<T>> a(asx<T> $$0) {
          return this.c.a($$0);
       }
 
@@ -61,33 +61,33 @@ public interface ij<T> extends ii<T> {
    }
 
    public interface b {
-      Stream<ahf<? extends it<?>>> a();
+      Stream<ahg<? extends it<?>>> a();
 
-      <T> Optional<ij.c<T>> a(ahf<? extends it<? extends T>> var1);
+      <T> Optional<ij.c<T>> a(ahg<? extends it<? extends T>> var1);
 
-      default <T> ij.c<T> b(ahf<? extends it<? extends T>> $$0) {
+      default <T> ij.c<T> b(ahg<? extends it<? extends T>> $$0) {
          return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
       }
 
       default ii.a b() {
          return new ii.a() {
             @Override
-            public <T> Optional<ii<T>> a(ahf<? extends it<? extends T>> $$0) {
+            public <T> Optional<ii<T>> a(ahg<? extends it<? extends T>> $$0) {
                return b.this.a($$0).map($$0x -> $$0x);
             }
          };
       }
 
       static ij.b a(Stream<ij.c<?>> $$0) {
-         final Map<ahf<? extends it<?>>, ij.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(ij.c::f, $$0x -> $$0x));
+         final Map<ahg<? extends it<?>>, ij.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(ij.c::f, $$0x -> $$0x));
          return new ij.b() {
             @Override
-            public Stream<ahf<? extends it<?>>> a() {
+            public Stream<ahg<? extends it<?>>> a() {
                return $$1.keySet().stream();
             }
 
             @Override
-            public <T> Optional<ij.c<T>> a(ahf<? extends it<? extends T>> $$0) {
+            public <T> Optional<ij.c<T>> a(ahg<? extends it<? extends T>> $$0) {
                return Optional.ofNullable((ij.c<T>)$$1.get($$0));
             }
          };
@@ -95,19 +95,19 @@ public interface ij<T> extends ii<T> {
    }
 
    public interface c<T> extends ij<T>, ik<T> {
-      ahf<? extends it<? extends T>> f();
+      ahg<? extends it<? extends T>> f();
 
       Lifecycle g();
 
-      default ij<T> a(chs $$0) {
-         return (ij<T>)(chp.bx.contains(this.f()) ? this.a($$1 -> ((chp)$$1).a($$0)) : this);
+      default ij<T> a(cia $$0) {
+         return (ij<T>)(chx.by.contains(this.f()) ? this.a($$1 -> ((chx)$$1).a($$0)) : this);
       }
 
       public abstract static class a<T> implements ij.c<T> {
          protected abstract ij.c<T> a();
 
          @Override
-         public ahf<? extends it<? extends T>> f() {
+         public ahg<? extends it<? extends T>> f() {
             return this.a().f();
          }
 
@@ -117,7 +117,7 @@ public interface ij<T> extends ii<T> {
          }
 
          @Override
-         public Optional<ih.c<T>> a(ahf<T> $$0) {
+         public Optional<ih.c<T>> a(ahg<T> $$0) {
             return this.a().a($$0);
          }
 
@@ -127,7 +127,7 @@ public interface ij<T> extends ii<T> {
          }
 
          @Override
-         public Optional<il.c<T>> a(asw<T> $$0) {
+         public Optional<il.c<T>> a(asx<T> $$0) {
             return this.a().a($$0);
          }
 

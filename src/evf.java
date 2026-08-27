@@ -1,14 +1,33 @@
-public enum evf {
-   a,
-   b,
-   c,
-   d;
+import com.mojang.serialization.Codec;
 
-   public boolean a() {
-      return this == b;
+public enum evf implements aur, avl {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
+
+   public static final Codec<evf> d = avl.a(evf::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private evf(int $$0, String $$1, String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public boolean b() {
-      return this == c || this == d;
+   @Override
+   public String c() {
+      return this.f;
+   }
+
+   @Override
+   public int a() {
+      return this.e;
+   }
+
+   @Override
+   public String b() {
+      return this.g;
    }
 }

@@ -1,75 +1,119 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.time.Instant;
-import java.util.Objects;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.UUID;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fox extends fos {
-   final Supplier<gfm> f;
-
-   fox(UUID $$0, Instant $$1, UUID $$2, Supplier<gfm> $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+public interface fox extends fow {
+   static fox.a a(GameProfile $$0, vw $$1, fov $$2) {
+      return new fox.a($$0, $$1, $$2);
    }
 
-   public Supplier<gfm> a() {
-      return this.f;
+   static fox.b a(vg $$0, Instant $$1) {
+      return new fox.b($$0, $$1);
    }
 
-   public fox c() {
-      fox $$0 = new fox(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
+   vg b();
+
+   default vg c() {
+      return this.b();
    }
 
-   @Override
-   public fdb a(fdb $$0, fow $$1) {
-      return new fhg($$0, $$1, this);
-   }
+   boolean a(UUID var1);
 
-   public static class a extends fos.a<fox> {
-      public a(fox $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, Supplier<gfm> $$1, AbuseReportLimits $$2) {
-         super(new fox(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+   public static record a(GameProfile c, vw d, fov e) implements fox {
+      public static final Codec<fox.a> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  atx.u.fieldOf("profile").forGetter(fox.a::f), vw.a.forGetter(fox.a::g), fov.d.optionalFieldOf("trust_level", fov.a).forGetter(fox.a::h)
+               )
+               .apply($$0, fox.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
 
       @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
-      }
-
-      @Nullable
-      @Override
-      public fos.b c() {
-         if (this.a.e == null) {
-            return fos.b.a;
+      public vg b() {
+         if (!this.d.o().a()) {
+            vg $$0 = this.d.o().b(this.d.c());
+            return (vg)($$0 != null ? $$0 : vg.i());
          } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fos.b.d : null;
+            return this.d.d();
          }
       }
 
       @Override
-      public Either<fos.c, fos.b> a(fow $$0) {
-         fos.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            gfm $$4 = this.a.f.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new fos.c(this.a.a, fov.b, $$6));
-         }
+      public vg c() {
+         vg $$0 = this.b();
+         vg $$1 = this.i();
+         return vg.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public vg d() {
+         vg $$0 = this.i();
+         return vg.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private vg i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
+         return vg.b($$0.format(f)).a(n.u, n.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public fow.a a() {
+         return fow.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public vw g() {
+         return this.d;
+      }
+
+      public fov h() {
+         return this.e;
+      }
+   }
+
+   public static record b(vg c, Instant d) implements fox {
+      public static final Codec<fox.b> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(vi.a.fieldOf("message").forGetter(fox.b::d), atx.m.fieldOf("time_stamp").forGetter(fox.b::e)).apply($$0, fox.b::new)
+      );
+
+      @Override
+      public vg b() {
+         return this.c;
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return false;
+      }
+
+      @Override
+      public fow.a a() {
+         return fow.a.b;
+      }
+
+      public vg d() {
+         return this.c;
+      }
+
+      public Instant e() {
+         return this.d;
       }
    }
 }

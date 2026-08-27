@@ -1,83 +1,117 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class eff {
-   protected cuc a;
-   protected bmn b;
-   protected final Int2ObjectMap<efe> c = new Int2ObjectOpenHashMap();
-   protected int d;
-   protected int e;
-   protected int f;
-   protected boolean g;
-   protected boolean h;
-   protected boolean i;
-   protected boolean j;
-
-   public void a(cuc $$0, bmn $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c.clear();
-      this.d = auo.d($$1.dg() + 1.0F);
-      this.e = auo.d($$1.dh() + 1.0F);
-      this.f = auo.d($$1.dg() + 1.0F);
+public abstract class eff extends eex {
+   @Override
+   public eey d() {
+      return efa.b;
    }
 
-   public void b() {
-      this.a = null;
-      this.b = null;
+   @Override
+   public eey e() {
+      return efa.c;
    }
 
-   protected efe b(hx $$0) {
-      return this.b($$0.u(), $$0.v(), $$0.w());
+   @Override
+   public cnb a() {
+      return cnj.qy;
    }
 
-   protected efe b(int $$0, int $$1, int $$2) {
-      return (efe)this.c.computeIfAbsent(efe.b($$0, $$1, $$2), $$3 -> new efe($$0, $$1, $$2));
+   @Override
+   public void a(ctx $$0, hx $$1, eez $$2, auw $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, art.Bg, aru.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+         }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(jx.ai, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
    }
 
-   public abstract efe a();
-
-   public abstract efk a(double var1, double var3, double var5);
-
-   protected efk a(efe $$0) {
-      return new efk($$0);
+   @Nullable
+   @Override
+   public jv h() {
+      return jx.m;
    }
 
-   public abstract int a(efe[] var1, efe var2);
-
-   public abstract efc a(csv var1, int var2, int var3, int var4, bmn var5);
-
-   public abstract efc a(csv var1, int var2, int var3, int var4);
-
-   public void a(boolean $$0) {
-      this.g = $$0;
+   @Override
+   protected boolean a(ctx $$0) {
+      return $$0.Z().b(ctt.U);
    }
 
-   public void b(boolean $$0) {
-      this.h = $$0;
+   @Override
+   protected void a(cty $$0, hx $$1, djp $$2) {
+      dhd $$3 = $$2.t() ? $$0.c_($$1) : null;
+      cwy.a($$2, $$0, $$1, $$3);
    }
 
-   public void c(boolean $$0) {
-      this.i = $$0;
+   @Override
+   public int b(cua $$0) {
+      return 4;
    }
 
-   public void d(boolean $$0) {
-      this.j = $$0;
+   @Override
+   public djp b(eez $$0) {
+      return cxa.G.o().a(dbn.b, Integer.valueOf(e($$0)));
    }
 
-   public boolean d() {
-      return this.g;
+   @Override
+   public boolean a(eey $$0) {
+      return $$0 == efa.c || $$0 == efa.b;
    }
 
-   public boolean e() {
-      return this.h;
+   @Override
+   public int c(cua $$0) {
+      return 1;
    }
 
-   public boolean f() {
-      return this.i;
+   @Override
+   public int a(cua $$0) {
+      return 5;
    }
 
-   public boolean g() {
-      return this.j;
+   @Override
+   public boolean a(eez $$0, ctd $$1, hx $$2, eey $$3, ic $$4) {
+      return $$4 == ic.a && !$$3.a(asn.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<ars> j() {
+      return Optional.of(art.cZ);
+   }
+
+   public static class a extends eff {
+      @Override
+      protected void a(djq.a<eey, eez> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(eez $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(eez $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends eff {
+      @Override
+      public int d(eez $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(eez $$0) {
+         return true;
+      }
    }
 }

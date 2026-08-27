@@ -1,109 +1,54 @@
-public class cgo extends cfp {
-   private static final agm<Boolean> e = agp.a(cgo.class, ago.k);
+public abstract class cgo extends cgp implements cgf {
+   private static final agn<cng> b = agq.a(cgo.class, agp.h);
 
-   public cgo(blz<? extends cgo> $$0, ctp $$1) {
+   public cgo(bmc<? extends cgo> $$0, ctx $$1) {
       super($$0, $$1);
    }
 
-   public cgo(ctp $$0, bml $$1, double $$2, double $$3, double $$4) {
-      super(blz.bo, $$1, $$2, $$3, $$4, $$0);
+   public cgo(bmc<? extends cgo> $$0, double $$1, double $$2, double $$3, ctx $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   protected float x() {
-      return this.z() ? 0.73F : super.x();
+   public cgo(bmc<? extends cgo> $$0, bmo $$1, ctx $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public boolean bN() {
-      return false;
-   }
-
-   @Override
-   public float a(cth $$0, csv $$1, hx $$2, djh $$3, eer $$4, float $$5) {
-      return this.z() && cbi.d($$3) ? Math.min(0.8F, $$5) : $$5;
-   }
-
-   @Override
-   protected void a(elq $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         blv $$1 = $$0.a();
-         boolean $$4;
-         if (this.w() instanceof bml $$3) {
-            $$4 = $$1.a(this.dN().a(this, $$3), 8.0F);
-            if ($$4) {
-               if ($$1.bx()) {
-                  this.a($$3, $$1);
-               } else {
-                  $$3.b(5.0F);
-               }
-            }
-         } else {
-            $$4 = $$1.a(this.dN().o(), 5.0F);
-         }
-
-         if ($$4 && $$1 instanceof bml $$6) {
-            int $$7 = 0;
-            if (this.dM().ak() == bjy.c) {
-               $$7 = 10;
-            } else if (this.dM().ak() == bjy.d) {
-               $$7 = 40;
-            }
-
-            if ($$7 > 0) {
-               $$6.b(new bli(blk.t, 20 * $$7, 1), this.J());
-            }
-         }
+   public void a(cng $$0) {
+      if (!$$0.a(this.s()) || $$0.u()) {
+         this.an().b(b, $$0.c(1));
       }
    }
 
-   @Override
-   protected void a(elr $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         this.dM().a(this, this.dr(), this.dt(), this.dx(), 1.0F, false, ctp.a.c);
-         this.am();
-      }
+   protected abstract cnb s();
+
+   protected cng u() {
+      return this.an().b(b);
    }
 
    @Override
-   public boolean bt() {
-      return false;
-   }
-
-   @Override
-   public boolean a(bkt $$0, float $$1) {
-      return false;
+   public cng q() {
+      cng $$0 = this.u();
+      return $$0.b() ? new cng(this.s()) : $$0;
    }
 
    @Override
    protected void c_() {
-      this.an.a(e, false);
-   }
-
-   public boolean z() {
-      return this.an.b(e);
-   }
-
-   public void a(boolean $$0) {
-      this.an.b(e, $$0);
+      this.an().a(b, cng.f);
    }
 
    @Override
-   protected boolean s() {
-      return false;
-   }
-
-   @Override
-   public void b(sn $$0) {
+   public void b(so $$0) {
       super.b($$0);
-      $$0.a("dangerous", this.z());
+      cng $$1 = this.u();
+      if (!$$1.b()) {
+         $$0.a("Item", $$1.b(new so()));
+      }
    }
 
    @Override
-   public void a(sn $$0) {
+   public void a(so $$0) {
       super.a($$0);
-      this.a($$0.q("dangerous"));
+      cng $$1 = cng.a($$0.p("Item"));
+      this.a($$1);
    }
 }

@@ -1,27 +1,40 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public class ess extends gkp {
-   protected BooleanConsumer a;
-   private final vf b;
-   private final vf c;
+public class ess implements Iterable<err> {
+   private final evr a;
+   private final Set<err> b = new HashSet<>();
+   private List<err> c = List.of();
 
-   public ess(BooleanConsumer $$0, vf $$1, vf $$2) {
-      super(eva.a);
+   public ess(evr $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   }
+
+   public void a(List<err> $$0) {
+      List<err> $$1 = new ArrayList<>($$0);
+      $$1.sort(new err.b(this.a.V().c()));
+      boolean $$2 = $$1.removeAll(this.b);
+      if (!$$2) {
+         this.b.clear();
+      }
+
+      this.c = $$1;
+   }
+
+   public void a(err $$0) {
+      this.c.remove($$0);
+      this.b.add($$0);
    }
 
    @Override
-   public void aN_() {
-      this.d(exg.a(ve.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, g(9), 100, 20).a());
-      this.d(exg.a(ve.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, g(9), 100, 20).a());
+   public Iterator<err> iterator() {
+      return this.c.iterator();
    }
 
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.b, this.g / 2, g(3), -1);
-      $$0.a(this.i, this.c, this.g / 2, g(5), -1);
+   public boolean a() {
+      return this.c.isEmpty();
    }
 }

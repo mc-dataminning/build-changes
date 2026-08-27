@@ -1,47 +1,40 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public record acc(int b, List<agp.b<?>> c) implements xf<za> {
-   public static final int a = 255;
+public class acc implements xg<zb> {
+   private final emx a;
+   private final String b;
 
-   public acc(ui $$0) {
-      this($$0.n(), b($$0));
+   public acc(emx $$0, @Nullable emy $$1) {
+      this.a = $$0;
+      if ($$1 == null) {
+         this.b = "";
+      } else {
+         this.b = $$1.b();
+      }
    }
 
-   private static void a(List<agp.b<?>> $$0, ui $$1) {
-      for (agp.b<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
-   }
-
-   private static List<agp.b<?>> b(ui $$0) {
-      List<agp.b<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(agp.b.a($$0, $$2));
-      }
-
-      return $$1;
+   public acc(uj $$0) {
+      this.a = $$0.a(emx.u);
+      this.b = $$0.s();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.b);
-      a(this.c, $$0);
+   public void a(uj $$0) {
+      $$0.a(emx::a, this.a);
+      $$0.a(this.b);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.b;
+   public emx a() {
+      return this.a;
    }
 
-   public List<agp.b<?>> d() {
-      return this.c;
+   @Nullable
+   public String d() {
+      return Objects.equals(this.b, "") ? null : this.b;
    }
 }

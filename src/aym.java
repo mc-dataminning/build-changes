@@ -20,8 +20,8 @@ public class aym extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbw.x);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbw.x);
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbw.y);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbw.y);
       return this.fixTypeEverywhere(
          "EntityMinecartIdentifiersFix",
          $$0,

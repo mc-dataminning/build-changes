@@ -1,151 +1,80 @@
-public class afa implements xf<adj> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private final hx d;
-   private final dij.a e;
-   private final dkr f;
-   private final String g;
-   private final hx h;
-   private final jb i;
-   private final dbm j;
-   private final ddc k;
-   private final String l;
-   private final boolean m;
-   private final boolean n;
-   private final boolean o;
-   private final float p;
-   private final long q;
+public class afa implements xg<adk> {
+   private final hx a;
+   private final ahh b;
+   private final ahh c;
+   private final ahh d;
+   private final String e;
+   private final did.a f;
+   private final int g;
+   private final int h;
 
-   public afa(
-      hx $$0, dij.a $$1, dkr $$2, String $$3, hx $$4, jb $$5, dbm $$6, ddc $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
-   ) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$8;
-      this.m = $$9;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
-      this.q = $$13;
+   public afa(hx $$0, ahh $$1, ahh $$2, ahh $$3, String $$4, did.a $$5, int $$6, int $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 
-   public afa(ui $$0) {
-      this.d = $$0.e();
-      this.e = $$0.b(dij.a.class);
-      this.f = $$0.b(dkr.class);
-      this.g = $$0.s();
-      int $$1 = 48;
-      this.h = new hx(auo.a($$0.readByte(), -48, 48), auo.a($$0.readByte(), -48, 48), auo.a($$0.readByte(), -48, 48));
-      int $$2 = 48;
-      this.i = new jb(auo.a($$0.readByte(), 0, 48), auo.a($$0.readByte(), 0, 48), auo.a($$0.readByte(), 0, 48));
-      this.j = $$0.b(dbm.class);
-      this.k = $$0.b(ddc.class);
-      this.l = $$0.d(128);
-      this.p = auo.a($$0.readFloat(), 0.0F, 1.0F);
-      this.q = $$0.o();
-      int $$3 = $$0.readByte();
-      this.m = ($$3 & 1) != 0;
-      this.n = ($$3 & 2) != 0;
-      this.o = ($$3 & 4) != 0;
+   public afa(uj $$0) {
+      this.a = $$0.e();
+      this.b = $$0.t();
+      this.c = $$0.t();
+      this.d = $$0.t();
+      this.e = $$0.s();
+      this.f = did.a.a($$0.s()).orElse(did.a.b);
+      this.g = $$0.n();
+      this.h = $$0.n();
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
       $$0.a(this.d);
       $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.k(this.h.u());
-      $$0.k(this.h.v());
-      $$0.k(this.h.w());
-      $$0.k(this.i.u());
-      $$0.k(this.i.v());
-      $$0.k(this.i.w());
-      $$0.a(this.j);
-      $$0.a(this.k);
-      $$0.a(this.l);
-      $$0.a(this.p);
-      $$0.a(this.q);
-      int $$1 = 0;
-      if (this.m) {
-         $$1 |= 1;
-      }
-
-      if (this.n) {
-         $$1 |= 2;
-      }
-
-      if (this.o) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
+      $$0.a(this.f.c());
+      $$0.c(this.g);
+      $$0.c(this.h);
    }
 
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
    public hx a() {
+      return this.a;
+   }
+
+   public ahh d() {
+      return this.b;
+   }
+
+   public ahh e() {
+      return this.c;
+   }
+
+   public ahh f() {
       return this.d;
    }
 
-   public dij.a d() {
+   public String g() {
       return this.e;
    }
 
-   public dkr e() {
+   public did.a h() {
       return this.f;
    }
 
-   public String f() {
+   public int i() {
       return this.g;
    }
 
-   public hx g() {
+   public int j() {
       return this.h;
-   }
-
-   public jb h() {
-      return this.i;
-   }
-
-   public dbm i() {
-      return this.j;
-   }
-
-   public ddc j() {
-      return this.k;
-   }
-
-   public String k() {
-      return this.l;
-   }
-
-   public boolean l() {
-      return this.m;
-   }
-
-   public boolean m() {
-      return this.n;
-   }
-
-   public boolean n() {
-      return this.o;
-   }
-
-   public float o() {
-      return this.p;
-   }
-
-   public long p() {
-      return this.q;
    }
 }

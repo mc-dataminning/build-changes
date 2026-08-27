@@ -1,111 +1,320 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
-
 public class fuo {
-   public static final fuo a = new fuo();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final fuo.a[] c;
-   private final ahg[] d;
+   private static final float a = 0.8888889F;
+   private final gfb[] b = new gfb[2];
+   private final gfb[] c = new gfb[2];
+   private gfb d;
 
-   private fuo() {
-      this.c = new fuo.a[0];
-      this.d = new ahg[0];
+   protected void a() {
+      this.b[0] = evr.O().aC().b().b(cxa.H.o()).e();
+      this.b[1] = ghg.c.c();
+      this.c[0] = evr.O().aC().b().b(cxa.G.o()).e();
+      this.c[1] = ghg.d.c();
+      this.d = ghg.e.c();
    }
 
-   public fuo(ggr $$0, fuj $$1, List<fun> $$2) {
-      this.d = $$2.stream().flatMap(fun::b).map(fun.b::a).distinct().toArray(ahg[]::new);
-      Object2IntMap<ahg> $$3 = new Object2IntOpenHashMap();
+   private static boolean a(eez $$0, eez $$1) {
+      return $$1.a().a($$0.a());
+   }
 
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
+   private static boolean a(ctd $$0, ic $$1, float $$2, hx $$3, djp $$4) {
+      if ($$4.p()) {
+         emv $$5 = ems.a(0.0, 0.0, 0.0, 1.0, (double)$$2, 1.0);
+         emv $$6 = $$4.c($$0, $$3);
+         return ems.a($$5, $$6, $$1);
+      } else {
+         return false;
       }
-
-      List<fuo.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         fun $$7 = $$2.get($$6);
-         ggn $$8 = this.a($$0, $$1, $$7);
-         fuo.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new fuo.b($$2x, $$1x.b());
-         }).toArray(fuo.b[]::new);
-         $$5.add(new fuo.a($$9, $$8));
-      }
-
-      this.c = $$5.toArray(new fuo.a[0]);
    }
 
-   @Nullable
-   private ggn a(ggr $$0, fuj $$1, fun $$2) {
-      ggy $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), ggo.a);
+   private static boolean a(ctd $$0, hx $$1, ic $$2, float $$3, djp $$4) {
+      return a($$0, $$2, $$3, $$1.a($$2), $$4);
    }
 
-   @Nullable
-   public ggn a(ggn $$0, cmy $$1, @Nullable fns $$2, @Nullable bml $$3, int $$4) {
-      if (this.c.length != 0) {
-         cmt $$5 = $$1.d();
-         int $$6 = this.d.length;
-         float[] $$7 = new float[$$6];
+   private static boolean a(ctd $$0, hx $$1, djp $$2, ic $$3) {
+      return a($$0, $$3.g(), 1.0F, $$1, $$2);
+   }
 
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            ahg $$9 = this.d[$$8];
-            gdv $$10 = gdu.a($$5, $$9);
-            if ($$10 != null) {
-               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
+   public static boolean a(cta $$0, hx $$1, eez $$2, djp $$3, ic $$4, eez $$5) {
+      return !a($$0, $$1, $$3, $$4) && !a($$2, $$5);
+   }
+
+   public void a(cta $$0, hx $$1, eqo $$2, djp $$3, eez $$4) {
+      boolean $$5 = $$4.a(asn.b);
+      gfb[] $$6 = $$5 ? this.b : this.c;
+      int $$7 = $$5 ? 16777215 : ftf.c($$0, $$1);
+      float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+      float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+      float $$10 = (float)($$7 & 0xFF) / 255.0F;
+      djp $$11 = $$0.a_($$1.a(ic.a));
+      eez $$12 = $$11.u();
+      djp $$13 = $$0.a_($$1.a(ic.b));
+      eez $$14 = $$13.u();
+      djp $$15 = $$0.a_($$1.a(ic.c));
+      eez $$16 = $$15.u();
+      djp $$17 = $$0.a_($$1.a(ic.d));
+      eez $$18 = $$17.u();
+      djp $$19 = $$0.a_($$1.a(ic.e));
+      eez $$20 = $$19.u();
+      djp $$21 = $$0.a_($$1.a(ic.f));
+      eez $$22 = $$21.u();
+      boolean $$23 = !a($$4, $$14);
+      boolean $$24 = a($$0, $$1, $$4, $$3, ic.a, $$12) && !a($$0, $$1, ic.a, 0.8888889F, $$11);
+      boolean $$25 = a($$0, $$1, $$4, $$3, ic.c, $$16);
+      boolean $$26 = a($$0, $$1, $$4, $$3, ic.d, $$18);
+      boolean $$27 = a($$0, $$1, $$4, $$3, ic.e, $$20);
+      boolean $$28 = a($$0, $$1, $$4, $$3, ic.f, $$22);
+      if ($$23 || $$24 || $$28 || $$27 || $$25 || $$26) {
+         float $$29 = $$0.a(ic.a, true);
+         float $$30 = $$0.a(ic.b, true);
+         float $$31 = $$0.a(ic.c, true);
+         float $$32 = $$0.a(ic.e, true);
+         eey $$33 = $$4.a();
+         float $$34 = this.a($$0, $$33, $$1, $$3, $$4);
+         float $$35;
+         float $$36;
+         float $$37;
+         float $$38;
+         if ($$34 >= 1.0F) {
+            $$35 = 1.0F;
+            $$36 = 1.0F;
+            $$37 = 1.0F;
+            $$38 = 1.0F;
+         } else {
+            float $$39 = this.a($$0, $$33, $$1.e(), $$15, $$16);
+            float $$40 = this.a($$0, $$33, $$1.f(), $$17, $$18);
+            float $$41 = this.a($$0, $$33, $$1.h(), $$21, $$22);
+            float $$42 = this.a($$0, $$33, $$1.g(), $$19, $$20);
+            $$35 = this.a($$0, $$33, $$34, $$39, $$41, $$1.a(ic.c).a(ic.f));
+            $$36 = this.a($$0, $$33, $$34, $$39, $$42, $$1.a(ic.c).a(ic.e));
+            $$37 = this.a($$0, $$33, $$34, $$40, $$41, $$1.a(ic.d).a(ic.f));
+            $$38 = this.a($$0, $$33, $$34, $$40, $$42, $$1.a(ic.d).a(ic.e));
+         }
+
+         double $$47 = (double)($$1.u() & 15);
+         double $$48 = (double)($$1.v() & 15);
+         double $$49 = (double)($$1.w() & 15);
+         float $$50 = 0.001F;
+         float $$51 = $$24 ? 0.001F : 0.0F;
+         if ($$23 && !a($$0, $$1, ic.b, Math.min(Math.min($$36, $$38), Math.min($$37, $$35)), $$13)) {
+            $$36 -= 0.001F;
+            $$38 -= 0.001F;
+            $$37 -= 0.001F;
+            $$35 -= 0.001F;
+            emc $$52 = $$4.c($$0, $$1);
+            float $$54;
+            float $$56;
+            float $$58;
+            float $$60;
+            float $$55;
+            float $$57;
+            float $$59;
+            float $$61;
+            if ($$52.c == 0.0 && $$52.e == 0.0) {
+               gfb $$53 = $$6[0];
+               $$54 = $$53.a(0.0F);
+               $$55 = $$53.c(0.0F);
+               $$56 = $$54;
+               $$57 = $$53.c(1.0F);
+               $$58 = $$53.a(1.0F);
+               $$59 = $$57;
+               $$60 = $$58;
+               $$61 = $$55;
             } else {
-               $$7[$$8] = Float.NEGATIVE_INFINITY;
+               gfb $$62 = $$6[1];
+               float $$63 = (float)aup.d($$52.e, $$52.c) - (float) (Math.PI / 2);
+               float $$64 = aup.a($$63) * 0.25F;
+               float $$65 = aup.b($$63) * 0.25F;
+               float $$66 = 0.5F;
+               $$54 = $$62.a(0.5F + (-$$65 - $$64));
+               $$55 = $$62.c(0.5F + -$$65 + $$64);
+               $$56 = $$62.a(0.5F + -$$65 + $$64);
+               $$57 = $$62.c(0.5F + $$65 + $$64);
+               $$58 = $$62.a(0.5F + $$65 + $$64);
+               $$59 = $$62.c(0.5F + ($$65 - $$64));
+               $$60 = $$62.a(0.5F + ($$65 - $$64));
+               $$61 = $$62.c(0.5F + (-$$65 - $$64));
+            }
+
+            float $$75 = ($$54 + $$56 + $$58 + $$60) / 4.0F;
+            float $$76 = ($$55 + $$57 + $$59 + $$61) / 4.0F;
+            float $$77 = $$6[0].k();
+            $$54 = aup.i($$77, $$54, $$75);
+            $$56 = aup.i($$77, $$56, $$75);
+            $$58 = aup.i($$77, $$58, $$75);
+            $$60 = aup.i($$77, $$60, $$75);
+            $$55 = aup.i($$77, $$55, $$76);
+            $$57 = aup.i($$77, $$57, $$76);
+            $$59 = aup.i($$77, $$59, $$76);
+            $$61 = aup.i($$77, $$61, $$76);
+            int $$78 = this.a($$0, $$1);
+            float $$79 = $$30 * $$8;
+            float $$80 = $$30 * $$9;
+            float $$81 = $$30 * $$10;
+            this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
+            this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
+            if ($$4.b($$0, $$1.c())) {
+               this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
+               this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
+               this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
+               this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
             }
          }
 
-         for (fuo.a $$11 : this.c) {
-            if ($$11.a($$7)) {
-               ggn $$12 = $$11.b;
-               if ($$12 == null) {
-                  return $$0;
+         if ($$24) {
+            float $$82 = $$6[0].c();
+            float $$83 = $$6[0].d();
+            float $$84 = $$6[0].g();
+            float $$85 = $$6[0].h();
+            int $$86 = this.a($$0, $$1.d());
+            float $$87 = $$29 * $$8;
+            float $$88 = $$29 * $$9;
+            float $$89 = $$29 * $$10;
+            this.a($$2, $$47, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$82, $$85, $$86);
+            this.a($$2, $$47, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$82, $$84, $$86);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$83, $$84, $$86);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$83, $$85, $$86);
+         }
+
+         int $$90 = this.a($$0, $$1);
+
+         for (ic $$91 : ic.c.a) {
+            float $$92;
+            float $$93;
+            double $$94;
+            double $$96;
+            double $$95;
+            double $$97;
+            boolean $$98;
+            switch ($$91) {
+               case c:
+                  $$92 = $$36;
+                  $$93 = $$35;
+                  $$94 = $$47;
+                  $$95 = $$47 + 1.0;
+                  $$96 = $$49 + 0.001F;
+                  $$97 = $$49 + 0.001F;
+                  $$98 = $$25;
+                  break;
+               case d:
+                  $$92 = $$37;
+                  $$93 = $$38;
+                  $$94 = $$47 + 1.0;
+                  $$95 = $$47;
+                  $$96 = $$49 + 1.0 - 0.001F;
+                  $$97 = $$49 + 1.0 - 0.001F;
+                  $$98 = $$26;
+                  break;
+               case e:
+                  $$92 = $$38;
+                  $$93 = $$36;
+                  $$94 = $$47 + 0.001F;
+                  $$95 = $$47 + 0.001F;
+                  $$96 = $$49 + 1.0;
+                  $$97 = $$49;
+                  $$98 = $$27;
+                  break;
+               default:
+                  $$92 = $$35;
+                  $$93 = $$37;
+                  $$94 = $$47 + 1.0 - 0.001F;
+                  $$95 = $$47 + 1.0 - 0.001F;
+                  $$96 = $$49;
+                  $$97 = $$49 + 1.0;
+                  $$98 = $$28;
+            }
+
+            if ($$98 && !a($$0, $$1, $$91, Math.max($$92, $$93), $$0.a_($$1.a($$91)))) {
+               hx $$120 = $$1.a($$91);
+               gfb $$121 = $$6[1];
+               if (!$$5) {
+                  cwy $$122 = $$0.a_($$120).b();
+                  if ($$122 instanceof dao || $$122 instanceof dbh) {
+                     $$121 = this.d;
+                  }
                }
 
-               return $$12;
+               float $$123 = $$121.a(0.0F);
+               float $$124 = $$121.a(0.5F);
+               float $$125 = $$121.c((1.0F - $$92) * 0.5F);
+               float $$126 = $$121.c((1.0F - $$93) * 0.5F);
+               float $$127 = $$121.c(0.5F);
+               float $$128 = $$91.o() == ic.a.c ? $$31 : $$32;
+               float $$129 = $$30 * $$128 * $$8;
+               float $$130 = $$30 * $$128 * $$9;
+               float $$131 = $$30 * $$128 * $$10;
+               this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
+               this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
+               this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
+               this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
+               if ($$121 != this.d) {
+                  this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
+                  this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
+                  this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
+                  this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
+               }
             }
          }
       }
-
-      return $$0;
    }
 
-   static class a {
-      private final fuo.b[] a;
-      @Nullable
-      final ggn b;
-
-      a(fuo.b[] $$0, @Nullable ggn $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      boolean a(float[] $$0) {
-         for (fuo.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
+   private float a(cta $$0, eey $$1, float $$2, float $$3, float $$4, hx $$5) {
+      if (!($$4 >= 1.0F) && !($$3 >= 1.0F)) {
+         float[] $$6 = new float[2];
+         if ($$4 > 0.0F || $$3 > 0.0F) {
+            float $$7 = this.a($$0, $$1, $$5);
+            if ($$7 >= 1.0F) {
+               return 1.0F;
             }
+
+            this.a($$6, $$7);
          }
 
-         return true;
+         this.a($$6, $$2);
+         this.a($$6, $$4);
+         this.a($$6, $$3);
+         return $$6[0] / $$6[1];
+      } else {
+         return 1.0F;
       }
    }
 
-   static class b {
-      public final int a;
-      public final float b;
-
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private void a(float[] $$0, float $$1) {
+      if ($$1 >= 0.8F) {
+         $$0[0] += $$1 * 10.0F;
+         $$0[1] += 10.0F;
+      } else if ($$1 >= 0.0F) {
+         $$0[0] += $$1;
+         $$0[1]++;
       }
+   }
+
+   private float a(cta $$0, eey $$1, hx $$2) {
+      djp $$3 = $$0.a_($$2);
+      return this.a($$0, $$1, $$2, $$3, $$3.u());
+   }
+
+   private float a(cta $$0, eey $$1, hx $$2, djp $$3, eez $$4) {
+      if ($$1.a($$4.a())) {
+         djp $$5 = $$0.a_($$2.c());
+         return $$1.a($$5.u().a()) ? 1.0F : $$4.d();
+      } else {
+         return !$$3.e() ? 0.0F : -1.0F;
+      }
+   }
+
+   private void a(eqo $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3).a($$4, $$5, $$6, 1.0F).a($$7, $$8).b($$9).a(0.0F, 1.0F, 0.0F).e();
+   }
+
+   private int a(cta $$0, hx $$1) {
+      int $$2 = ftr.a($$0, $$1);
+      int $$3 = ftr.a($$0, $$1.c());
+      int $$4 = $$2 & 0xFF;
+      int $$5 = $$3 & 0xFF;
+      int $$6 = $$2 >> 16 & 0xFF;
+      int $$7 = $$3 >> 16 & 0xFF;
+      return ($$4 > $$5 ? $$4 : $$5) | ($$6 > $$7 ? $$6 : $$7) << 16;
    }
 }

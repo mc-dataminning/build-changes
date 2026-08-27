@@ -1,41 +1,55 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class eck extends edd {
-   public static final Codec<eck> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               iv.a(ke.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, eck::new)
-   );
-   private final Optional<il<cwq>> b;
-   private final float c;
+public class eck extends dzo {
+   public static final Codec<eck> d = a(eck::new);
 
-   public eck(il<cwq> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public eck(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private eck(Optional<il<cwq>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public edg.c a(cts $$0, hx $$1, hx $$2, edg.c $$3, edg.c $$4, edc $$5) {
-      auv $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public eck(dzo.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected edf<?> a() {
-      return edf.f;
+   public Optional<dzo.b> a(dzo.a $$0) {
+      ddk $$1 = ddk.a($$0.f());
+      hx $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dzo.b($$2, (Consumer<eag>)($$3 -> this.a($$3, $$0, $$2, $$1))));
+   }
+
+   private void a(eag $$0, dzo.a $$1, hx $$2, ddk $$3) {
+      List<ecj.i> $$4 = Lists.newLinkedList();
+      ecj.a($$1.e(), $$2, $$3, $$4, $$1.f());
+      $$4.forEach($$0::a);
+   }
+
+   @Override
+   public void a(cus $$0, cuq $$1, dlm $$2, auw $$3, dzg $$4, cte $$5, ead $$6) {
+      hx.a $$7 = new hx.a();
+      int $$8 = $$0.J_();
+      dzg $$9 = $$6.b();
+      int $$10 = $$9.i();
+
+      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
+         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
+            $$7.d($$11, $$10, $$12);
+            if (!$$0.u($$7) && $$9.b($$7) && $$6.a($$7)) {
+               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
+                  $$7.q($$13);
+                  if (!$$0.u($$7) && !$$0.a_($$7).k()) {
+                     break;
+                  }
+
+                  $$0.a($$7, cxa.m.o(), 2);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public dzx<?> e() {
+      return dzx.p;
    }
 }

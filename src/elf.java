@@ -1,49 +1,31 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class elf<C> {
-   private static final Logger b = LogUtils.getLogger();
-   public static final elf<MinecraftServer> a = new elf<MinecraftServer>().a(new elc.a()).a(new eld.a());
-   private final Map<ahg, ele.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, ele.a<C, ?>> d = Maps.newHashMap();
+public record elf(String b) implements elh {
+   public static final Codec<elf> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(elf::c)).apply($$0, elf::new));
 
-   public elf<C> a(ele.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
+   public static elh a(String $$0) {
+      return new elf($$0);
    }
 
-   private <T extends ele<C>> ele.a<C, T> a(Class<?> $$0) {
-      return (ele.a<C, T>)this.d.get($$0);
+   @Override
+   public elg a() {
+      return eli.b;
    }
 
-   public <T extends ele<C>> sn a(T $$0) {
-      ele.a<C, T> $$1 = this.a($$0.getClass());
-      sn $$2 = new sn();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
+   @Override
+   public enf a(ehf $$0) {
+      return enf.d(this.b);
    }
 
-   @Nullable
-   public ele<C> a(sn $$0) {
-      ahg $$1 = ahg.a($$0.l("Type"));
-      ele.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
-         }
-      }
+   @Override
+   public Set<ejn<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public String c() {
+      return this.b;
    }
 }

@@ -1,24 +1,37 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyq extends dym {
-   public static final Codec<dyq> a = atw.j.fieldOf("chance").xmap(dyq::new, $$0 -> $$0.c).codec();
+public class dyq extends dyz {
+   public static final Codec<dyq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dyq::new)
+   );
    private final int c;
+   private final double d;
+   private final double e;
 
-   private dyq(int $$0) {
+   private dyq(int $$0, double $$1, double $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static dyq a(int $$0) {
-      return new dyq($$0);
-   }
-
-   @Override
-   protected boolean a(dyl $$0, auv $$1, hx $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public static dyq a(int $$0, double $$1, double $$2) {
+      return new dyq($$0, $$1, $$2);
    }
 
    @Override
-   public dyo<?> b() {
-      return dyo.b;
+   protected int a(auw $$0, hx $$1) {
+      double $$2 = cuw.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   }
+
+   @Override
+   public dyw<?> b() {
+      return dyw.g;
    }
 }

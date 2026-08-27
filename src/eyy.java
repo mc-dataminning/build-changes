@@ -1,40 +1,56 @@
-import java.util.Locale;
-import java.util.function.Supplier;
+public class eyy extends exo {
+   private float a = 0.5F;
 
-public class eyy extends eyu {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private final Supplier<Float> i;
+   public eyy(vg $$0, exc $$1) {
+      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+   }
 
-   public eyy(ews $$0, auy $$1, Supplier<Float> $$2) {
-      super($$0, $$1);
-      this.i = $$2;
+   public eyy(int $$0, int $$1, vg $$2, exc $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
+   }
+
+   public eyy(int $$0, int $$1, int $$2, int $$3, vg $$4, exc $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.j = false;
+   }
+
+   public eyy b(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   private eyy b(float $$0) {
+      this.a = $$0;
+      return this;
+   }
+
+   public eyy d() {
+      return this.b(0.0F);
+   }
+
+   public eyy e() {
+      return this.b(0.5F);
+   }
+
+   public eyy f() {
+      return this.b(1.0F);
    }
 
    @Override
-   protected void a(ewu $$0, int $$1, int $$2, int $$3) {
-      float $$4 = (float)avp.c / this.i.get();
-      this.a($$0, String.format("%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
+   public void b(exe $$0, int $$1, int $$2, float $$3) {
+      vg $$4 = this.x();
+      exc $$5 = this.a();
+      int $$6 = this.w();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.B() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.C() + (this.u() - 9) / 2;
+      aub $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
-   }
-
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / (double)this.i.get().floatValue());
-   }
-
-   @Override
-   protected int a(long $$0) {
-      float $$1 = this.i.get();
-      return this.a(c((double)$$0), 0.0, -16711936, (double)$$1 / 2.0, -256, (double)$$1, -65536);
-   }
-
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   private aub a(vg $$0, int $$1) {
+      exc $$2 = this.a();
+      vl $$3 = $$2.a($$0, $$1 - $$2.a(vf.t));
+      return sj.a().a(vl.a($$3, vf.t));
    }
 }

@@ -1,36 +1,22 @@
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Predicate;
 
-public record eke(ekq b, egv c) implements ejv {
-   public static final Codec<eke> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ekr.a.fieldOf("value").forGetter(eke::c), egv.a.fieldOf("range").forGetter(eke::d)).apply($$0, eke::new)
-   );
+public interface eke extends ehg, Predicate<ehf> {
+   ekf b();
 
-   @Override
-   public ejw b() {
-      return ejx.s;
-   }
+   @FunctionalInterface
+   public interface a {
+      eke build();
 
-   @Override
-   public Set<eje<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
+      default eke.a invert() {
+         return ekb.a(this);
+      }
 
-   public boolean a(egw $$0) {
-      return this.c.b($$0, this.b.a($$0));
-   }
+      default ejt.a or(eke.a $$0) {
+         return ejt.a(this, $$0);
+      }
 
-   public static ejv.a a(ekq $$0, egv $$1) {
-      return () -> new eke($$0, $$1);
-   }
-
-   public ekq c() {
-      return this.b;
-   }
-
-   public egv d() {
-      return this.c;
+      default ejs.a and(eke.a $$0) {
+         return ejs.a(this, $$0);
+      }
    }
 }

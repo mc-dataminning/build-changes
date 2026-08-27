@@ -36,6 +36,6 @@ public class azv extends DataFix {
    }
 
    private static <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.map(avv::a);
+      return $$0.map(avw::a);
    }
 }

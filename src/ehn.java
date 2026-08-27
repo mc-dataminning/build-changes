@@ -1,17 +1,229 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
 public class ehn {
-   public static final Codec<ehp> a = kd.F.q().dispatch(ehp::a, ehq::a);
-   public static final ehq b = a("empty", ehk.a);
-   public static final ehq c = a("item", ehm.a);
-   public static final ehq d = a("loot_table", ehs.a);
-   public static final ehq e = a("dynamic", ehj.a);
-   public static final ehq f = a("tag", ehu.a);
-   public static final ehq g = a("alternatives", ehg.a);
-   public static final ehq h = a("sequence", eht.a);
-   public static final ehq i = a("group", ehl.a);
+   private static final Logger d = LogUtils.getLogger();
+   public static final ehn a = new ehn(ejp.b, Optional.empty(), List.of(), List.of());
+   public static final ejo b = ejp.n;
+   public static final Codec<ehn> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ejp.a.optionalFieldOf("type", b).forGetter($$0x -> $$0x.e),
+               atx.a(ahh.a, "random_sequence").forGetter($$0x -> $$0x.f),
+               atx.a(ehm.a.listOf(), "pools", List.of()).forGetter($$0x -> $$0x.g),
+               atx.a(eiu.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, ehn::new)
+   );
+   private final ejo e;
+   private final Optional<ahh> f;
+   private final List<ehm> g;
+   private final List<eis> h;
+   private final BiFunction<cng, ehf, cng> i;
 
-   private static ehq a(String $$0, Codec<? extends ehp> $$1) {
-      return it.a(kd.F, new ahg($$0), new ehq($$1));
+   ehn(ejo $$0, Optional<ahh> $$1, List<ehm> $$2, List<eis> $$3) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = eiu.a($$3);
+   }
+
+   public static Consumer<cng> a(ane $$0, Consumer<cng> $$1) {
+      return $$2 -> {
+         if ($$2.a($$0.I())) {
+            if ($$2.L() < $$2.g()) {
+               $$1.accept($$2);
+            } else {
+               int $$3 = $$2.L();
+
+               while ($$3 > 0) {
+                  cng $$4 = $$2.c(Math.min($$2.g(), $$3));
+                  $$3 -= $$4.L();
+                  $$1.accept($$4);
+               }
+            }
+         }
+      };
+   }
+
+   public void a(ehl $$0, Consumer<cng> $$1) {
+      this.a(new ehf.a($$0).a(this.f), $$1);
+   }
+
+   public void a(ehf $$0, Consumer<cng> $$1) {
+      ehf.c<?> $$2 = ehf.a(this);
+      if ($$0.b($$2)) {
+         Consumer<cng> $$3 = eis.a(this.i, $$1, $$0);
+
+         for (ehm $$4 : this.g) {
+            $$4.a($$3, $$0);
+         }
+
+         $$0.c($$2);
+      } else {
+         d.warn("Detected infinite loop in loot tables");
+      }
+   }
+
+   public void a(ehl $$0, long $$1, Consumer<cng> $$2) {
+      this.a(new ehf.a($$0).a($$1).a(this.f), a($$0.a(), $$2));
+   }
+
+   public void b(ehl $$0, Consumer<cng> $$1) {
+      this.a($$0, a($$0.a(), $$1));
+   }
+
+   public void b(ehf $$0, Consumer<cng> $$1) {
+      this.a($$0, a($$0.d(), $$1));
+   }
+
+   public ObjectArrayList<cng> a(ehl $$0, long $$1) {
+      return this.a(new ehf.a($$0).a($$1).a(this.f));
+   }
+
+   public ObjectArrayList<cng> a(ehl $$0) {
+      return this.a(new ehf.a($$0).a(this.f));
+   }
+
+   private ObjectArrayList<cng> a(ehf $$0) {
+      ObjectArrayList<cng> $$1 = new ObjectArrayList();
+      this.b($$0, $$1::add);
+      return $$1;
+   }
+
+   public ejo a() {
+      return this.e;
+   }
+
+   public void a(eho $$0) {
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".pools[" + $$1 + "]"));
+      }
+
+      for (int $$2 = 0; $$2 < this.h.size(); $$2++) {
+         this.h.get($$2).a($$0.a(".functions[" + $$2 + "]"));
+      }
+   }
+
+   public void a(bjv $$0, ehl $$1, long $$2) {
+      ehf $$3 = new ehf.a($$1).a($$2).a(this.f);
+      ObjectArrayList<cng> $$4 = this.a($$3);
+      auw $$5 = $$3.b();
+      List<Integer> $$6 = this.a($$0, $$5);
+      this.a($$4, $$6.size(), $$5);
+      ObjectListIterator var9 = $$4.iterator();
+
+      while (var9.hasNext()) {
+         cng $$7 = (cng)var9.next();
+         if ($$6.isEmpty()) {
+            d.warn("Tried to over-fill a container");
+            return;
+         }
+
+         if ($$7.b()) {
+            $$0.a($$6.remove($$6.size() - 1), cng.f);
+         } else {
+            $$0.a($$6.remove($$6.size() - 1), $$7);
+         }
+      }
+   }
+
+   private void a(ObjectArrayList<cng> $$0, int $$1, auw $$2) {
+      List<cng> $$3 = Lists.newArrayList();
+      Iterator<cng> $$4 = $$0.iterator();
+
+      while ($$4.hasNext()) {
+         cng $$5 = $$4.next();
+         if ($$5.b()) {
+            $$4.remove();
+         } else if ($$5.L() > 1) {
+            $$3.add($$5);
+            $$4.remove();
+         }
+      }
+
+      while ($$1 - $$0.size() - $$3.size() > 0 && !$$3.isEmpty()) {
+         cng $$6 = $$3.remove(aup.a($$2, 0, $$3.size() - 1));
+         int $$7 = aup.a($$2, 1, $$6.L() / 2);
+         cng $$8 = $$6.a($$7);
+         if ($$6.L() > 1 && $$2.h()) {
+            $$3.add($$6);
+         } else {
+            $$0.add($$6);
+         }
+
+         if ($$8.L() > 1 && $$2.h()) {
+            $$3.add($$8);
+         } else {
+            $$0.add($$8);
+         }
+      }
+
+      $$0.addAll($$3);
+      ac.c($$0, $$2);
+   }
+
+   private List<Integer> a(bjv $$0, auw $$1) {
+      ObjectArrayList<Integer> $$2 = new ObjectArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         if ($$0.a($$3).b()) {
+            $$2.add($$3);
+         }
+      }
+
+      ac.c($$2, $$1);
+      return $$2;
+   }
+
+   public static ehn.a b() {
+      return new ehn.a();
+   }
+
+   public static class a implements eip<ehn.a> {
+      private final Builder<ehm> a = ImmutableList.builder();
+      private final Builder<eis> b = ImmutableList.builder();
+      private ejo c = ehn.b;
+      private Optional<ahh> d = Optional.empty();
+
+      public ehn.a a(ehm.a $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      public ehn.a a(ejo $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public ehn.a a(ahh $$0) {
+         this.d = Optional.of($$0);
+         return this;
+      }
+
+      public ehn.a a(eis.a $$0) {
+         this.b.add($$0.b());
+         return this;
+      }
+
+      public ehn.a a() {
+         return this;
+      }
+
+      public ehn b() {
+         return new ehn(this.c, this.d, this.a.build(), this.b.build());
+      }
    }
 }

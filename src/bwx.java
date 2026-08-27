@@ -1,35 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class bwx extends bwl<cem> {
-   @Override
-   public Set<bvn<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bvn.B)));
+public class bwx<U extends bww<?>> {
+   public static final bwx<bwg> a = a("dummy", bwg::new);
+   public static final bwx<bwo> b = a("nearest_items", bwo::new);
+   public static final bwx<bwp<bmo>> c = a("nearest_living_entities", bwp::new);
+   public static final bwx<bwt> d = a("nearest_players", bwt::new);
+   public static final bwx<bwn> e = a("nearest_bed", bwn::new);
+   public static final bwx<bwk> f = a("hurt_by", bwk::new);
+   public static final bwx<bxa> g = a("villager_hostiles", bxa::new);
+   public static final bwx<bwz> h = a("villager_babies", bwz::new);
+   public static final bwx<bwu> i = a("secondary_pois", bwu::new);
+   public static final bwx<bwi> j = a("golem_detected", bwi::new);
+   public static final bwx<bwm<bzj>> k = a("armadillo_scare_detected", () -> new bwm<>(5, bzj::j, bzj::gn, bvq.G, 60));
+   public static final bwx<bws> l = a("piglin_specific_sensor", bws::new);
+   public static final bwx<bwr> m = a("piglin_brute_specific_sensor", bwr::new);
+   public static final bwx<bwj> n = a("hoglin_specific_sensor", bwj::new);
+   public static final bwx<bwd> o = a("nearest_adult", bwd::new);
+   public static final bwx<bwe> p = a("axolotl_attackables", bwe::new);
+   public static final bwx<bwy> q = a("axolotl_temptations", () -> new bwy(bzn.a()));
+   public static final bwx<bwy> r = a("goat_temptations", () -> new bwy(cab.a()));
+   public static final bwx<bwy> s = a("frog_temptations", () -> new bwy(bzv.a()));
+   public static final bwx<bwy> t = a("camel_temptations", () -> new bwy(bzs.b()));
+   public static final bwx<bwy> u = a("armadillo_temptations", () -> new bwy(bzk.b()));
+   public static final bwx<bwh> v = a("frog_attackables", bwh::new);
+   public static final bwx<bwl> w = a("is_in_water", bwl::new);
+   public static final bwx<bxb> x = a("warden_entity_sensor", bxb::new);
+   public static final bwx<bwy> y = a("sniffer_temptations", () -> new bwy(cas.a()));
+   public static final bwx<bwf> z = a("breeze_attack_entity_sensor", bwf::new);
+   private final Supplier<U> A;
+
+   private bwx(Supplier<U> $$0) {
+      this.A = $$0;
    }
 
-   protected void a(and $$0, cem $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ai() == blz.bv)
-         .or(() -> a($$1, $$0xx -> $$0xx.ai() != blz.bv))
-         .ifPresentOrElse($$1x -> $$1.dO().a(bvn.B, $$1x), () -> $$1.dO().b(bvn.B));
+   public U a() {
+      return this.A.get();
    }
 
-   private static Optional<bml> a(cem $$0, Predicate<bml> $$1) {
-      return $$0.dO().c(bvn.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
-   }
-
-   @Override
-   protected int b() {
-      return 24;
-   }
-
-   @Override
-   protected int c() {
-      return 24;
+   private static <U extends bww<?>> bwx<U> a(String $$0, Supplier<U> $$1) {
+      return it.a(kd.C, new ahh($$0), new bwx<>($$1));
    }
 }

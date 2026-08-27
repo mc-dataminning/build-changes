@@ -1,378 +1,538 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Queues;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.EnumMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Function;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.DefaultEventLoopGroup;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.epoll.Epoll;
+import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollSocketChannel;
+import io.netty.channel.local.LocalChannel;
+import io.netty.channel.local.LocalServerChannel;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.flow.FlowControlHandler;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.handler.timeout.TimeoutException;
+import io.netty.util.AttributeKey;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 
-public enum uh {
-   a("handshake", b().a(xg.b, new uh.b()).a(xg.a, new uh.b<afk>().a(afj.class, afj::new))),
-   b(
-      "play",
-      b()
-         .a(
-            xg.b,
-            new uh.b<za>()
-               .b(zl.class, zl::new)
-               .a(zb.class, zb::new)
-               .a(zc.class, zc::new)
-               .a(zd.class, zd::new)
-               .a(ze.class, ze::new)
-               .a(zf.class, zf::new)
-               .a(zg.class, zg::new)
-               .a(zh.class, zh::new)
-               .a(zi.class, zi::new)
-               .a(zj.class, zj::new)
-               .a(zk.class, zk::new)
-               .a(zm.class, zm::new)
-               .a(zn.class, zn::new)
-               .a(zo.class, zo::new)
-               .a(zp.class, zp::new)
-               .a(zq.class, zq::new)
-               .a(zr.class, zr::new)
-               .a(zs.class, zs::new)
-               .a(zt.class, zt::new)
-               .a(zu.class, zu::new)
-               .a(zv.class, zv::new)
-               .a(zw.class, zw::new)
-               .a(zx.class, zx::new)
-               .a(zy.class, zy::new)
-               .a(xj.class, xj::new)
-               .a(zz.class, zz::new)
-               .a(aaa.class, aaa::new)
-               .a(xk.class, xk::new)
-               .a(aab.class, aab::new)
-               .a(aac.class, aac::new)
-               .a(aad.class, aad::new)
-               .a(aae.class, aae::new)
-               .a(aaf.class, aaf::new)
-               .a(aag.class, aag::new)
-               .a(aah.class, aah::new)
-               .a(aai.class, aai::new)
-               .a(xl.class, xl::new)
-               .a(aak.class, aak::new)
-               .a(aal.class, aal::new)
-               .a(aam.class, aam::new)
-               .a(aan.class, aan::new)
-               .a(aap.class, aap::new)
-               .a(aaq.class, aaq::new)
-               .a(aar.class, aar::new)
-               .a(aas.a.class, aas.a::b)
-               .a(aas.b.class, aas.b::b)
-               .a(aas.c.class, aas.c::b)
-               .a(aat.class, aat::new)
-               .a(aau.class, aau::new)
-               .a(aav.class, aav::new)
-               .a(aaw.class, aaw::new)
-               .a(xm.class, xm::new)
-               .a(agf.class, agf::new)
-               .a(aax.class, aax::new)
-               .a(aay.class, aay::new)
-               .a(aaz.class, aaz::new)
-               .a(aba.class, aba::new)
-               .a(abb.class, abb::new)
-               .a(abc.class, abc::new)
-               .a(abd.class, abd::new)
-               .a(abe.class, abe::new)
-               .a(abf.class, abf::new)
-               .a(abg.class, abg::new)
-               .a(abh.class, abh::new)
-               .a(abi.class, abi::new)
-               .a(abj.class, abj::new)
-               .a(abk.class, abk::new)
-               .a(xn.class, xn::new)
-               .a(xo.class, xo::new)
-               .a(abl.class, abl::new)
-               .a(abm.class, abm::new)
-               .a(abn.class, abn::new)
-               .a(abo.class, abo::new)
-               .a(abp.class, abp::new)
-               .a(abq.class, abq::new)
-               .a(abr.class, abr::new)
-               .a(abs.class, abs::new)
-               .a(abt.class, abt::new)
-               .a(abu.class, abu::new)
-               .a(abv.class, abv::new)
-               .a(abw.class, abw::new)
-               .a(abx.class, abx::new)
-               .a(aby.class, aby::new)
-               .a(abz.class, abz::new)
-               .a(aca.class, aca::new)
-               .a(acb.class, acb::new)
-               .a(acc.class, acc::new)
-               .a(acd.class, acd::new)
-               .a(ace.class, ace::new)
-               .a(acf.class, acf::new)
-               .a(acg.class, acg::new)
-               .a(ach.class, ach::new)
-               .a(aci.class, aci::new)
-               .a(acj.class, acj::new)
-               .a(ack.class, ack::new)
-               .a(acl.class, acl::new)
-               .a(acm.class, acm::new)
-               .a(acn.class, acn::new)
-               .a(aco.class, aco::new)
-               .a(acp.class, acp::new)
-               .a(acq.class, acq::new)
-               .a(acr.class, acr::new)
-               .a(acs.class, acs::new)
-               .a(act.class, act::new)
-               .a(acu.class, acu::new)
-               .a(acv.class, acv::new)
-               .a(acw.class, acw::new)
-               .a(acx.class, acx::new)
-               .a(acy.class, acy::new)
-               .a(acz.class, acz::new)
-               .a(ada.class, ada::new)
-               .a(adb.class, adb::new)
-               .a(adc.class, adc::new)
-               .a(add.class, add::new)
-               .a(ade.class, ade::new)
-               .a(adf.class, adf::new)
-               .a(xp.class, xp::new)
-         )
-         .a(
-            xg.a,
-            new uh.b<adj>()
-               .a(adm.class, adm::new)
-               .a(adn.class, adn::new)
-               .a(ado.class, ado::new)
-               .a(adp.class, adp::new)
-               .a(adq.class, adq::new)
-               .a(adr.class, adr::new)
-               .a(ads.class, ads::new)
-               .a(adt.class, adt::new)
-               .a(adu.class, adu::new)
-               .a(xr.class, xr::new)
-               .a(adv.class, adv::new)
-               .a(adw.class, adw::new)
-               .a(adx.class, adx::new)
-               .a(ady.class, ady::new)
-               .a(adz.class, adz::new)
-               .a(aea.class, aea::new)
-               .a(xs.class, xs::new)
-               .a(aeb.class, aeb::new)
-               .a(aec.class, aec::new)
-               .a(aed.class, aed::new)
-               .a(aee.class, aee::new)
-               .a(xt.class, xt::new)
-               .a(aef.class, aef::new)
-               .a(aeg.a.class, aeg.a::b)
-               .a(aeg.b.class, aeg.b::b)
-               .a(aeg.c.class, aeg.c::b)
-               .a(aeg.d.class, aeg.d::b)
-               .a(aeh.class, aeh::new)
-               .a(aei.class, aei::new)
-               .a(aej.class, aej::new)
-               .a(agj.class, agj::new)
-               .a(aek.class, aek::new)
-               .a(ael.class, ael::new)
-               .a(aem.class, aem::new)
-               .a(aen.class, aen::new)
-               .a(aeo.class, aeo::new)
-               .a(xu.class, xu::new)
-               .a(aep.class, aep::new)
-               .a(aeq.class, aeq::new)
-               .a(aer.class, aer::new)
-               .a(xv.class, xv::new)
-               .a(aes.class, aes::new)
-               .a(aet.class, aet::new)
-               .a(aeu.class, aeu::new)
-               .a(aev.class, aev::new)
-               .a(aew.class, aew::new)
-               .a(aex.class, aex::new)
-               .a(aey.class, aey::new)
-               .a(aez.class, aez::new)
-               .a(afa.class, afa::new)
-               .a(afb.class, afb::new)
-               .a(afc.class, afc::new)
-               .a(afd.class, afd::new)
-               .a(afe.class, afe::new)
-               .a(aff.class, aff::new)
-         )
-   ),
-   c(
-      "status",
-      b().a(xg.a, new uh.b<agi>().a(agk.class, agk::new).a(agj.class, agj::new)).a(xg.b, new uh.b<age>().a(agg.class, agg::new).a(agf.class, agf::new))
-   ),
-   d(
-      "login",
-      b()
-         .a(xg.b, new uh.b<afm>().a(afr.class, afr::new).a(afp.class, afp::new).a(afo.class, afo::new).a(afq.class, afq::new).a(afn.class, afn::new))
-         .a(xg.a, new uh.b<afs>().a(afu.class, afu::new).a(afv.class, afv::new).a(aft.class, aft::b).a(afw.class, afw::new))
-   ),
-   e(
-      "configuration",
-      b()
-         .a(
-            xg.b,
-            new uh.b<xi>()
-               .a(xj.class, xj::new)
-               .a(xk.class, xk::new)
-               .a(yu.class, yu::new)
-               .a(xl.class, xl::new)
-               .a(xm.class, xm::new)
-               .a(yv.class, yv::new)
-               .a(xn.class, xn::new)
-               .a(xo.class, xo::new)
-               .a(yw.class, yw::new)
-               .a(xp.class, xp::new)
-         )
-         .a(xg.a, new uh.b<xq>().a(xr.class, xr::new).a(xs.class, xs::new).a(yy.class, yy::new).a(xt.class, xt::new).a(xu.class, xu::new).a(xv.class, xv::new))
+public class uh extends SimpleChannelInboundHandler<xg<?>> {
+   private static final float j = 0.75F;
+   private static final Logger k = LogUtils.getLogger();
+   public static final Marker a = MarkerFactory.getMarker("NETWORK");
+   public static final Marker b = ac.a(MarkerFactory.getMarker("NETWORK_PACKETS"), $$0 -> $$0.add(a));
+   public static final Marker c = ac.a(MarkerFactory.getMarker("PACKET_RECEIVED"), $$0 -> $$0.add(b));
+   public static final Marker d = ac.a(MarkerFactory.getMarker("PACKET_SENT"), $$0 -> $$0.add(b));
+   public static final AttributeKey<ui.a<?>> e = AttributeKey.valueOf("serverbound_protocol");
+   public static final AttributeKey<ui.a<?>> f = AttributeKey.valueOf("clientbound_protocol");
+   public static final Supplier<NioEventLoopGroup> g = Suppliers.memoize(
+      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Client IO #%d").setDaemon(true).build())
    );
+   public static final Supplier<EpollEventLoopGroup> h = Suppliers.memoize(
+      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Client IO #%d").setDaemon(true).build())
+   );
+   public static final Supplier<DefaultEventLoopGroup> i = Suppliers.memoize(
+      () -> new DefaultEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Local Client IO #%d").setDaemon(true).build())
+   );
+   private final xh l;
+   private final Queue<Consumer<uh>> m = Queues.newConcurrentLinkedQueue();
+   private Channel n;
+   private SocketAddress o;
+   @Nullable
+   private volatile up p;
+   @Nullable
+   private volatile up q;
+   @Nullable
+   private vg r;
+   private boolean s;
+   private boolean t;
+   private int u;
+   private int v;
+   private float w;
+   private float x;
+   private int y;
+   private boolean z;
+   @Nullable
+   private volatile vg A;
+   @Nullable
+   tz B;
 
-   public static final int f = -1;
-   private final String g;
-   private final Map<xg, uh.a<?>> h;
-
-   private static uh.c b() {
-      return new uh.c();
+   public uh(xh $$0) {
+      this.l = $$0;
    }
 
-   private uh(String $$0, uh.c $$1) {
-      this.g = $$0;
-      this.h = $$1.a(this);
-   }
-
-   @avt
-   public Int2ObjectMap<Class<? extends xf<?>>> a(xg $$0) {
-      return this.h.get($$0).d();
-   }
-
-   @avt
-   public String a() {
-      return this.g;
-   }
-
-   public uh.a<?> b(xg $$0) {
-      return this.h.get($$0);
-   }
-
-   public static class a<T extends uo> implements xe.b {
-      private final uh a;
-      private final xg b;
-      private final uh.b<T> c;
-
-      public a(uh $$0, xg $$1, uh.b<T> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public uh a() {
-         return this.a;
-      }
-
-      public xg b() {
-         return this.b;
-      }
-
-      public int a(xf<?> $$0) {
-         return this.c.a($$0.getClass());
-      }
-
-      @Override
-      public xe c() {
-         return this.c.a();
-      }
-
-      Int2ObjectMap<Class<? extends xf<?>>> d() {
-         Int2ObjectMap<Class<? extends xf<?>>> $$0 = new Int2ObjectOpenHashMap();
-         this.c.b.forEach(($$1, $$2) -> $$0.put($$2, $$1));
-         return $$0;
-      }
-
-      @Nullable
-      public xf<?> a(int $$0, ui $$1) {
-         return this.c.a($$0, $$1);
-      }
-
-      public boolean b(xf<?> $$0) {
-         return this.c.b($$0.getClass());
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      this.n = $$0.channel();
+      this.o = this.n.remoteAddress();
+      if (this.A != null) {
+         this.a(this.A);
       }
    }
 
-   static class b<T extends uo> {
-      private static final Logger a = LogUtils.getLogger();
-      final Object2IntMap<Class<? extends xf<? super T>>> b = ac.a(new Object2IntOpenHashMap(), $$0 -> $$0.defaultReturnValue(-1));
-      private final List<Function<ui, ? extends xf<? super T>>> c = Lists.newArrayList();
-      private xe d = xe.b;
-      private final Set<Class<? extends xf<T>>> e = new HashSet<>();
+   public static void a(Channel $$0) {
+      $$0.attr(e).set(ui.a.b(xh.a));
+      $$0.attr(f).set(ui.a.b(xh.b));
+   }
 
-      public <P extends xf<? super T>> uh.b<T> a(Class<P> $$0, Function<ui, P> $$1) {
-         int $$2 = this.c.size();
-         int $$3 = this.b.put($$0, $$2);
-         if ($$3 != -1) {
-            String $$4 = "Packet " + $$0 + " is already registered to ID " + $$3;
-            a.error(LogUtils.FATAL_MARKER, $$4);
-            throw new IllegalArgumentException($$4);
-         } else {
-            this.c.add($$1);
-            return this;
+   public void channelInactive(ChannelHandlerContext $$0) {
+      this.a(vg.c("disconnect.endOfStream"));
+   }
+
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      if ($$1 instanceof uu) {
+         k.debug("Skipping packet due to errors", $$1.getCause());
+      } else {
+         boolean $$2 = !this.z;
+         this.z = true;
+         if (this.n.isOpen()) {
+            if ($$1 instanceof TimeoutException) {
+               k.debug("Timeout", $$1);
+               this.a(vg.c("disconnect.timeout"));
+            } else {
+               vg $$3 = vg.a("disconnect.genericReason", "Internal Exception: " + $$1);
+               if ($$2) {
+                  k.debug("Failed to sent packet", $$1);
+                  if (this.i() == xh.b) {
+                     ui $$4 = ((ui.a)this.n.attr(f).get()).a();
+                     xg<?> $$5 = (xg<?>)($$4 == ui.d ? new afs($$3) : new xl($$3));
+                     this.a($$5, uq.a(() -> this.a($$3)));
+                  } else {
+                     this.a($$3);
+                  }
+
+                  this.o();
+               } else {
+                  k.debug("Double fault", $$1);
+                  this.a($$3);
+               }
+            }
          }
       }
+   }
 
-      public <P extends xd<T>> uh.b<T> b(Class<P> $$0, Function<Iterable<xf<T>>, P> $$1) {
-         if (this.d != xe.b) {
-            throw new IllegalStateException("Bundle packet already configured");
+   protected void a(ChannelHandlerContext $$0, xg<?> $$1) {
+      if (this.n.isOpen()) {
+         up $$2 = this.q;
+         if ($$2 == null) {
+            throw new IllegalStateException("Received a packet before the packet listener was initialized");
          } else {
-            xc<T> $$2 = new xc<>();
-            this.a(xc.class, $$1x -> $$2);
-            this.d = xe.a($$0, $$1, $$2);
-            this.e.add($$0);
-            return this;
+            if ($$2.a($$1)) {
+               try {
+                  a($$1, $$2);
+               } catch (ahs var5) {
+               } catch (RejectedExecutionException var6) {
+                  this.a(vg.c("multiplayer.disconnect.server_shutdown"));
+               } catch (ClassCastException var7) {
+                  k.error("Received {} that couldn't be processed", $$1.getClass(), var7);
+                  this.a(vg.c("multiplayer.disconnect.invalid_packet"));
+               }
+
+               this.u++;
+            }
          }
-      }
-
-      public int a(Class<?> $$0) {
-         return this.b.getInt($$0);
-      }
-
-      public boolean b(Class<?> $$0) {
-         return this.b.containsKey($$0) || this.e.contains($$0);
-      }
-
-      @Nullable
-      public xf<?> a(int $$0, ui $$1) {
-         Function<ui, ? extends xf<? super T>> $$2 = this.c.get($$0);
-         return (xf<?>)($$2 != null ? $$2.apply($$1) : null);
-      }
-
-      public xe a() {
-         return this.d;
       }
    }
 
-   static class c {
-      private final Map<xg, uh.b<?>> a = Maps.newEnumMap(xg.class);
+   private static <T extends up> void a(xg<T> $$0, up $$1) {
+      $$0.a((T)$$1);
+   }
 
-      public <T extends uo> uh.c a(xg $$0, uh.b<T> $$1) {
-         this.a.put($$0, $$1);
-         return this;
+   public void a() {
+      this.n.config().setAutoRead(false);
+   }
+
+   public void b() {
+      this.n.config().setAutoRead(true);
+   }
+
+   public void a(up $$0) {
+      Validate.notNull($$0, "packetListener", new Object[0]);
+      xh $$1 = $$0.a();
+      if ($$1 != this.l) {
+         throw new IllegalStateException("Trying to set listener for wrong side: connection is " + this.l + ", but listener is " + $$1);
+      } else {
+         ui $$2 = $$0.b();
+         ui $$3 = ((ui.a)this.n.attr(a($$1)).get()).a();
+         if ($$3 != $$2) {
+            throw new IllegalStateException("Trying to set listener for protocol " + $$2.a() + ", but current " + $$1 + " protocol is " + $$3.a());
+         } else {
+            this.q = $$0;
+            this.p = null;
+         }
+      }
+   }
+
+   public void b(up $$0) {
+      if (this.q != null) {
+         throw new IllegalStateException("Listener already set");
+      } else if (this.l == xh.a && $$0.a() == xh.a && $$0.b() == ui.a) {
+         this.q = $$0;
+      } else {
+         throw new IllegalStateException("Invalid initial listener");
+      }
+   }
+
+   public void a(String $$0, int $$1, agf $$2) {
+      this.a($$0, $$1, $$2, afj.a);
+   }
+
+   public void a(String $$0, int $$1, afn $$2) {
+      this.a($$0, $$1, $$2, afj.b);
+   }
+
+   private void a(String $$0, int $$1, up $$2, afj $$3) {
+      this.p = $$2;
+      this.a((Consumer<uh>)($$4 -> {
+         $$4.a($$3);
+         this.a($$2);
+         $$4.b(new afk(aa.b().e(), $$0, $$1, $$3), null, true);
+      }));
+   }
+
+   public void a(afj $$0) {
+      this.n.attr(f).set($$0.b().b(xh.b));
+   }
+
+   public void a(xg<?> $$0) {
+      this.a($$0, null);
+   }
+
+   public void a(xg<?> $$0, @Nullable uq $$1) {
+      this.a($$0, $$1, true);
+   }
+
+   public void a(xg<?> $$0, @Nullable uq $$1, boolean $$2) {
+      if (this.k()) {
+         this.t();
+         this.b($$0, $$1, $$2);
+      } else {
+         this.m.add($$3 -> $$3.b($$0, $$1, $$2));
+      }
+   }
+
+   public void a(Consumer<uh> $$0) {
+      if (this.k()) {
+         this.t();
+         $$0.accept(this);
+      } else {
+         this.m.add($$0);
+      }
+   }
+
+   private void b(xg<?> $$0, @Nullable uq $$1, boolean $$2) {
+      this.v++;
+      if (this.n.eventLoop().inEventLoop()) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.n.eventLoop().execute(() -> this.c($$0, $$1, $$2));
+      }
+   }
+
+   private void c(xg<?> $$0, @Nullable uq $$1, boolean $$2) {
+      ChannelFuture $$3 = $$2 ? this.n.writeAndFlush($$0) : this.n.write($$0);
+      if ($$1 != null) {
+         $$3.addListener($$1x -> {
+            if ($$1x.isSuccess()) {
+               $$1.a();
+            } else {
+               xg<?> $$2x = $$1.b();
+               if ($$2x != null) {
+                  ChannelFuture $$3x = this.n.writeAndFlush($$2x);
+                  $$3x.addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
+               }
+            }
+         });
       }
 
-      public Map<xg, uh.a<?>> a(uh $$0) {
-         Map<xg, uh.a<?>> $$1 = new EnumMap<>(xg.class);
+      $$3.addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
+   }
 
-         for (xg $$2 : xg.values()) {
-            uh.b<?> $$3 = this.a.get($$2);
-            if ($$3 == null) {
-               throw new IllegalStateException("Missing packets for flow " + $$2 + " in protocol " + $$0);
+   public void c() {
+      if (this.k()) {
+         this.s();
+      } else {
+         this.m.add(uh::s);
+      }
+   }
+
+   private void s() {
+      if (this.n.eventLoop().inEventLoop()) {
+         this.n.flush();
+      } else {
+         this.n.eventLoop().execute(() -> this.n.flush());
+      }
+   }
+
+   private static AttributeKey<ui.a<?>> a(xh $$0) {
+      return switch ($$0) {
+         case b -> f;
+         case a -> e;
+      };
+   }
+
+   private void t() {
+      if (this.n != null && this.n.isOpen()) {
+         synchronized (this.m) {
+            Consumer<uh> $$0;
+            while (($$0 = this.m.poll()) != null) {
+               $$0.accept(this);
+            }
+         }
+      }
+   }
+
+   public void d() {
+      this.t();
+      if (this.q instanceof uv $$0) {
+         $$0.e();
+      }
+
+      if (!this.k() && !this.t) {
+         this.p();
+      }
+
+      if (this.n != null) {
+         this.n.flush();
+      }
+
+      if (this.y++ % 20 == 0) {
+         this.e();
+      }
+
+      if (this.B != null) {
+         this.B.a();
+      }
+   }
+
+   protected void e() {
+      this.x = aup.i(0.75F, (float)this.v, this.x);
+      this.w = aup.i(0.75F, (float)this.u, this.w);
+      this.v = 0;
+      this.u = 0;
+   }
+
+   public SocketAddress f() {
+      return this.o;
+   }
+
+   public String a(boolean $$0) {
+      if (this.o == null) {
+         return "local";
+      } else {
+         return $$0 ? this.o.toString() : "IP hidden";
+      }
+   }
+
+   public void a(vg $$0) {
+      if (this.n == null) {
+         this.A = $$0;
+      }
+
+      if (this.k()) {
+         this.n.close().awaitUninterruptibly();
+         this.r = $$0;
+      }
+   }
+
+   public boolean g() {
+      return this.n instanceof LocalChannel || this.n instanceof LocalServerChannel;
+   }
+
+   public xh h() {
+      return this.l;
+   }
+
+   public xh i() {
+      return this.l.a();
+   }
+
+   public static uh a(InetSocketAddress $$0, boolean $$1, @Nullable auz $$2) {
+      uh $$3 = new uh(xh.b);
+      if ($$2 != null) {
+         $$3.a($$2);
+      }
+
+      ChannelFuture $$4 = a($$0, $$1, $$3);
+      $$4.syncUninterruptibly();
+      return $$3;
+   }
+
+   public static ChannelFuture a(InetSocketAddress $$0, boolean $$1, final uh $$2) {
+      Class<? extends SocketChannel> $$3;
+      EventLoopGroup $$4;
+      if (Epoll.isAvailable() && $$1) {
+         $$3 = EpollSocketChannel.class;
+         $$4 = (EventLoopGroup)h.get();
+      } else {
+         $$3 = NioSocketChannel.class;
+         $$4 = (EventLoopGroup)g.get();
+      }
+
+      return ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group($$4)).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            uh.a($$0);
+
+            try {
+               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+            } catch (ChannelException var3) {
             }
 
-            $$1.put($$2, new uh.a<>($$0, $$2, $$3));
+            ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
+            uh.a($$1, xh.b, $$2.B);
+            $$2.a($$1);
+         }
+      })).channel($$3)).connect($$0.getAddress(), $$0.getPort());
+   }
+
+   public static void a(ChannelPipeline $$0, xh $$1, @Nullable tz $$2) {
+      xh $$3 = $$1.a();
+      AttributeKey<ui.a<?>> $$4 = a($$1);
+      AttributeKey<ui.a<?>> $$5 = a($$3);
+      $$0.addLast("splitter", new uz($$2))
+         .addLast("decoder", new um($$4))
+         .addLast("prepender", new va())
+         .addLast("encoder", new un($$5))
+         .addLast("unbundler", new ul($$5))
+         .addLast("bundler", new uk($$4));
+   }
+
+   public void a(ChannelPipeline $$0) {
+      $$0.addLast(new ChannelHandler[]{new FlowControlHandler()}).addLast("packet_handler", this);
+   }
+
+   private static void b(ChannelPipeline $$0, xh $$1) {
+      xh $$2 = $$1.a();
+      AttributeKey<ui.a<?>> $$3 = a($$1);
+      AttributeKey<ui.a<?>> $$4 = a($$2);
+      $$0.addLast("validator", new uo($$3, $$4));
+   }
+
+   public static void a(ChannelPipeline $$0, xh $$1) {
+      b($$0, $$1);
+   }
+
+   public static uh a(SocketAddress $$0) {
+      final uh $$1 = new uh(xh.b);
+      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)i.get())).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            uh.a($$0);
+            ChannelPipeline $$1 = $$0.pipeline();
+            uh.a($$1, xh.b);
+            $$1.a($$1);
+         }
+      })).channel(LocalChannel.class)).connect($$0).syncUninterruptibly();
+      return $$1;
+   }
+
+   public void a(Cipher $$0, Cipher $$1) {
+      this.s = true;
+      this.n.pipeline().addBefore("splitter", "decrypt", new ub($$0));
+      this.n.pipeline().addBefore("prepender", "encrypt", new uc($$1));
+   }
+
+   public boolean j() {
+      return this.s;
+   }
+
+   public boolean k() {
+      return this.n != null && this.n.isOpen();
+   }
+
+   public boolean l() {
+      return this.n == null;
+   }
+
+   @Nullable
+   public up m() {
+      return this.q;
+   }
+
+   @Nullable
+   public vg n() {
+      return this.r;
+   }
+
+   public void o() {
+      if (this.n != null) {
+         this.n.config().setAutoRead(false);
+      }
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if ($$0 >= 0) {
+         if (this.n.pipeline().get("decompress") instanceof uf) {
+            ((uf)this.n.pipeline().get("decompress")).a($$0, $$1);
+         } else {
+            this.n.pipeline().addBefore("decoder", "decompress", new uf($$0, $$1));
          }
 
-         return $$1;
+         if (this.n.pipeline().get("compress") instanceof ug) {
+            ((ug)this.n.pipeline().get("compress")).a($$0);
+         } else {
+            this.n.pipeline().addBefore("encoder", "compress", new ug($$0));
+         }
+      } else {
+         if (this.n.pipeline().get("decompress") instanceof uf) {
+            this.n.pipeline().remove("decompress");
+         }
+
+         if (this.n.pipeline().get("compress") instanceof ug) {
+            this.n.pipeline().remove("compress");
+         }
       }
+   }
+
+   public void p() {
+      if (this.n != null && !this.n.isOpen()) {
+         if (this.t) {
+            k.warn("handleDisconnection() called twice");
+         } else {
+            this.t = true;
+            up $$0 = this.m();
+            up $$1 = $$0 != null ? $$0 : this.p;
+            if ($$1 != null) {
+               vg $$2 = Objects.requireNonNullElseGet(this.n(), () -> vg.c("multiplayer.disconnect.generic"));
+               $$1.a($$2);
+            }
+         }
+      }
+   }
+
+   public float q() {
+      return this.w;
+   }
+
+   public float r() {
+      return this.x;
+   }
+
+   public void a(auz $$0) {
+      this.B = new tz($$0);
    }
 }

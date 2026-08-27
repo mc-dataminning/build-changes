@@ -1,26 +1,17 @@
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface fas {
-   void n(int var1);
+public record fas(ahh c) implements faq {
+   public static final MapCodec<fas> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ahh.a.fieldOf("id").forGetter(fas::c)).apply($$0, fas::new));
 
-   void o(int var1);
-
-   int B();
-
-   int C();
-
-   int w();
-
-   int u();
-
-   default fbj F() {
-      return new fbj(this.B(), this.C(), this.w(), this.u());
+   @Override
+   public far a() {
+      return far.e;
    }
 
-   default void c(int $$0, int $$1) {
-      this.n($$0);
-      this.o($$1);
+   @Override
+   public Either<faq.a, faq.b> b() {
+      return Either.right(new faq.b(this.c));
    }
-
-   void a(Consumer<exe> var1);
 }

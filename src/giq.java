@@ -1,34 +1,32 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+public class giq implements ghy {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final fsv e;
+   private final gjs f;
+   private int g = 0;
 
-public class giq extends aqv {
-   private sn a;
-
-   public giq(gir $$0, io<ahp> $$1, egp $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public giq(fsv $$0, gjs $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   protected void b(ane $$0) {
-      if (this.b().a($$0.fR())) {
-         this.a = $$0.f(new sn());
+   public void a() {
+      this.g--;
+      if (this.g <= 0 && this.e.be()) {
+         float $$0 = this.e.dL().z.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((gio)(new gir.a(this.e, art.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((gio)(new gir.a(this.e, art.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((gio)(new gir.a(this.e, art.A)));
+         }
       }
-
-      super.b($$0);
-   }
-
-   @Override
-   public vf a(SocketAddress $$0, GameProfile $$1) {
-      return (vf)(this.b().a($$1) && this.a($$1.getName()) != null ? vf.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public gir b() {
-      return (gir)super.c();
-   }
-
-   @Override
-   public sn r() {
-      return this.a;
    }
 }

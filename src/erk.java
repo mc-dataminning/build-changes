@@ -1,34 +1,28 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Date;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public class erk extends erx {
-   private static final Logger b = LogUtils.getLogger();
-   public List<eri> a;
+public class erk extends esg {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
+   public UUID d;
+   public Date e;
 
-   public static erk a(String $$0) {
+   public static erk a(JsonObject $$0) {
       erk $$1 = new erk();
-      $$1.a = Lists.newArrayList();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("servers").isJsonArray()) {
-            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
-
-            while ($$5.hasNext()) {
-               $$1.a.add(eri.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse McoServerList: {}", var6.getMessage());
+         $$1.a = eud.b("invitationId", $$0, "");
+         $$1.b = eud.b("worldName", $$0, "");
+         $$1.c = eud.b("worldOwnerName", $$0, "");
+         $$1.d = eud.a("worldOwnerUuid", $$0, ac.d);
+         $$1.e = eud.b("date", $$0);
+      } catch (Exception var3) {
+         f.error("Could not parse PendingInvite: {}", var3.getMessage());
       }
 
       return $$1;

@@ -8,16 +8,16 @@ public class df extends cv<df.a> {
       return df.a.a;
    }
 
-   public void a(ane $$0, hx $$1) {
-      double $$2 = $$0.dr() - (double)$$1.u();
-      double $$3 = $$0.dx() - (double)$$1.w();
+   public void a(anf $$0, hx $$1) {
+      double $$2 = $$0.dq() - (double)$$1.u();
+      double $$3 = $$0.dw() - (double)$$1.w();
       double $$4 = $$2 * $$2 + $$3 * $$3;
       this.a($$0, $$1x -> $$1x.a($$4));
    }
 
    public static record a(Optional<bb> b, ck.c c) implements cv.a {
       public static final Codec<df.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atw.a(bp.b, "player").forGetter(df.a::a), atw.a(ck.c.d, "distance", ck.c.c).forGetter(df.a::b)).apply($$0, df.a::new)
+         $$0 -> $$0.group(atx.a(bp.b, "player").forGetter(df.a::a), atx.a(ck.c.d, "distance", ck.c.c).forGetter(df.a::b)).apply($$0, df.a::new)
       );
 
       public boolean a(double $$0) {

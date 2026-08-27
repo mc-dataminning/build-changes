@@ -1,281 +1,193 @@
 import com.mojang.logging.LogUtils;
-import java.util.List;
+import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dik extends dil {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 200;
-   private static final int c = 40;
-   private static final int d = 2400;
-   private static final int e = 1;
-   private static final int f = 10;
-   private long g;
-   private int h;
-   @Nullable
-   private hx i;
-   private boolean j;
+public class dik extends dhd implements dob.b<doi.b>, doi {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 5;
+   private static final int h = 6;
+   private static final int i = 40;
+   private static final int j = 90;
+   private static final Int2ObjectMap<ars> k = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, art.AV);
+      $$0.put(2, art.AW);
+      $$0.put(3, art.AX);
+      $$0.put(4, art.AU);
+   });
+   private int l;
+   private final doi.d m = new dik.a();
+   private doi.a n = new doi.a();
+   private final doi.b r = new doi.b(this);
 
-   public dik(hx $$0, djh $$1) {
-      super(dgx.v, $$0, $$1);
+   public dik(hx $$0, djp $$1) {
+      super(dhf.L, $$0, $$1);
    }
 
    @Override
-   protected void b(sn $$0) {
-      super.b($$0);
-      $$0.a("Age", this.g);
-      if (this.i != null) {
-         $$0.a("ExitPortal", tc.a(this.i));
-      }
-
-      if (this.j) {
-         $$0.a("ExactTeleport", true);
-      }
+   public doi.a gh() {
+      return this.n;
    }
 
    @Override
-   public void a(sn $$0) {
+   public doi.d gi() {
+      return this.m;
+   }
+
+   @Override
+   public void a(so $$0) {
       super.a($$0);
-      this.g = $$0.i("Age");
-      if ($$0.b("ExitPortal", 10)) {
-         hx $$1 = tc.b($$0.p("ExitPortal"));
-         if (ctp.l($$1)) {
-            this.i = $$1;
-         }
+      if ($$0.b("warning_level", 99)) {
+         this.l = $$0.h("warning_level");
       }
 
-      this.j = $$0.q("ExactTeleport");
-   }
-
-   public static void a(ctp $$0, hx $$1, djh $$2, dik $$3) {
-      $$3.g++;
-      if ($$3.d()) {
-         $$3.h--;
-      }
-   }
-
-   public static void b(ctp $$0, hx $$1, djh $$2, dik $$3) {
-      boolean $$4 = $$3.c();
-      boolean $$5 = $$3.d();
-      $$3.g++;
-      if ($$5) {
-         $$3.h--;
-      } else {
-         List<blv> $$6 = $$0.a(blv.class, new elo($$1), dik::a);
-         if (!$$6.isEmpty()) {
-            a($$0, $$1, $$2, $$6.get($$0.z.a($$6.size())), $$3);
-         }
-
-         if ($$3.g % 2400L == 0L) {
-            c($$0, $$1, $$2, $$3);
-         }
-      }
-
-      if ($$4 != $$3.c() || $$5 != $$3.d()) {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   public static boolean a(blv $$0) {
-      return bly.f.test($$0) && !$$0.cW().aw();
-   }
-
-   public boolean c() {
-      return this.g < 200L;
-   }
-
-   public boolean d() {
-      return this.h > 0;
-   }
-
-   public float a(float $$0) {
-      return auo.a(((float)this.g + $$0) / 200.0F, 0.0F, 1.0F);
-   }
-
-   public float b(float $$0) {
-      return 1.0F - auo.a(((float)this.h - $$0) / 40.0F, 0.0F, 1.0F);
-   }
-
-   public zh f() {
-      return zh.a(this);
-   }
-
-   @Override
-   public sn ax_() {
-      return this.q();
-   }
-
-   private static void c(ctp $$0, hx $$1, djh $$2, dik $$3) {
-      if (!$$0.B) {
-         $$3.h = 40;
-         $$0.a($$1, $$2.b(), 1, 0);
-         a($$0, $$1, $$2);
+      if ($$0.b("listener", 10)) {
+         doi.a.a.parse(new Dynamic(tc.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.n = $$0x);
       }
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.h = 40;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static void a(ctp $$0, hx $$1, djh $$2, blv $$3, dik $$4) {
-      if ($$0 instanceof and && !$$4.d()) {
-         and $$5 = (and)$$0;
-         $$4.h = 100;
-         if ($$4.i == null && $$0.ae() == ctp.j) {
-            hx $$6 = a($$5, $$1);
-            $$6 = $$6.b(10);
-            a.debug("Creating portal at {}", $$6);
-            a($$5, $$6, dtx.a($$1, false));
-            $$4.i = $$6;
-         }
-
-         if ($$4.i != null) {
-            hx $$7 = $$4.j ? $$4.i : a($$0, $$4.i);
-            blv $$9;
-            if ($$3 instanceof cgj) {
-               blv $$8 = ((cgj)$$3).w();
-               if ($$8 instanceof ane) {
-                  am.e.a((ane)$$8, $$2);
-               }
-
-               if ($$8 != null) {
-                  $$9 = $$8;
-                  $$3.am();
-               } else {
-                  $$9 = $$3;
-               }
-            } else {
-               $$9 = $$3.cW();
-            }
-
-            $$9.au();
-            $$9.n((double)$$7.u() + 0.5, (double)$$7.v(), (double)$$7.w() + 0.5);
-         }
-
-         c($$0, $$1, $$2, $$4);
-      }
-   }
-
-   private static hx a(ctp $$0, hx $$1) {
-      hx $$2 = a($$0, $$1.b(0, 2, 0), 5, false);
-      a.debug("Best exit position for portal at {} is {}", $$1, $$2);
-      return $$2.c();
-   }
-
-   private static hx a(and $$0, hx $$1) {
-      elt $$2 = b($$0, $$1);
-      dlo $$3 = a((ctp)$$0, $$2);
-      hx $$4 = a($$3);
-      if ($$4 == null) {
-         hx $$5 = hx.a($$2.c + 0.5, 75.0, $$2.e + 0.5);
-         a.debug("Failed to find a suitable block to teleport to, spawning an island on {}", $$5);
-         $$0.I_().c(ke.aw).flatMap($$0x -> $$0x.b(qi.e)).ifPresent($$2x -> ((drh)$$2x.a()).a($$0, $$0.l().g(), auv.a($$5.a()), $$5));
-         $$4 = $$5;
-      } else {
-         a.debug("Found suitable block to teleport to: {}", $$4);
-      }
-
-      return a($$0, $$4, 16, true);
-   }
-
-   private static elt b(and $$0, hx $$1) {
-      elt $$2 = new elt((double)$$1.u(), 0.0, (double)$$1.w()).d();
-      int $$3 = 1024;
-      elt $$4 = $$2.a(1024.0);
-
-      for (int $$5 = 16; !a($$0, $$4) && $$5-- > 0; $$4 = $$4.e($$2.a(-16.0))) {
-         a.debug("Skipping backwards past nonempty chunk at {}", $$4);
-      }
-
-      for (int var6 = 16; a($$0, $$4) && var6-- > 0; $$4 = $$4.e($$2.a(16.0))) {
-         a.debug("Skipping forward past empty chunk at {}", $$4);
-      }
-
-      a.debug("Found chunk at {}", $$4);
-      return $$4;
-   }
-
-   private static boolean a(and $$0, elt $$1) {
-      return a((ctp)$$0, $$1).a() == -1;
-   }
-
-   private static hx a(csv $$0, hx $$1, int $$2, boolean $$3) {
-      hx $$4 = null;
-
-      for (int $$5 = -$$2; $$5 <= $$2; $$5++) {
-         for (int $$6 = -$$2; $$6 <= $$2; $$6++) {
-            if ($$5 != 0 || $$6 != 0 || $$3) {
-               for (int $$7 = $$0.al() - 1; $$7 > ($$4 == null ? $$0.J_() : $$4.v()); $$7--) {
-                  hx $$8 = new hx($$1.u() + $$5, $$7, $$1.w() + $$6);
-                  djh $$9 = $$0.a_($$8);
-                  if ($$9.r($$0, $$8) && ($$3 || !$$9.a(cws.F))) {
-                     $$4 = $$8;
-                     break;
-                  }
-               }
-            }
-         }
-      }
-
-      return $$4 == null ? $$1 : $$4;
-   }
-
-   private static dlo a(ctp $$0, elt $$1) {
-      return $$0.d(auo.a($$1.c / 16.0), auo.a($$1.e / 16.0));
+   protected void b(so $$0) {
+      super.b($$0);
+      $$0.a("warning_level", this.l);
+      doi.a.a.encodeStart(tc.a, this.n).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
    }
 
    @Nullable
-   private static hx a(dlo $$0) {
-      csw $$1 = $$0.f();
-      hx $$2 = new hx($$1.d(), 30, $$1.e());
-      int $$3 = $$0.b() + 16 - 1;
-      hx $$4 = new hx($$1.f(), $$3, $$1.g());
-      hx $$5 = null;
-      double $$6 = 0.0;
+   public static anf a(@Nullable blw $$0) {
+      if ($$0 instanceof anf) {
+         return (anf)$$0;
+      } else {
+         if ($$0 != null) {
+            bmo $$6 = $$0.cN();
+            if ($$6 instanceof anf) {
+               return (anf)$$6;
+            }
+         }
 
-      for (hx $$7 : hx.a($$2, $$4)) {
-         djh $$8 = $$0.a_($$7);
-         hx $$9 = $$7.c();
-         hx $$10 = $$7.b(2);
-         if ($$8.a(cws.fz) && !$$0.a_($$9).r($$0, $$9) && !$$0.a_($$10).r($$0, $$10)) {
-            double $$11 = $$7.c(0.0, 0.0, 0.0);
-            if ($$5 == null || $$11 < $$6) {
-               $$5 = $$7;
-               $$6 = $$11;
+         if ($$0 instanceof cgi $$3) {
+            blw var3 = $$3.w();
+            if (var3 instanceof anf) {
+               return (anf)var3;
+            }
+         }
+
+         if ($$0 instanceof ccb $$5) {
+            blw var9 = $$5.w();
+            if (var9 instanceof anf) {
+               return (anf)var9;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   public void a(ane $$0, @Nullable anf $$1) {
+      if ($$1 != null) {
+         djp $$2 = this.r();
+         if (!$$2.c(ddr.b)) {
+            this.l = 0;
+            if (!this.b($$0) || this.b($$0, $$1)) {
+               this.a($$0, (blw)$$1);
             }
          }
       }
-
-      return $$5;
    }
 
-   private static void a(and $$0, hx $$1, dtx $$2) {
-      dru.L.a($$2, $$0, $$0.l().g(), auv.a(), $$1);
+   private boolean b(ane $$0, anf $$1) {
+      OptionalInt $$2 = cew.a($$0, this.aE_(), $$1);
+      $$2.ifPresent($$0x -> this.l = $$0x);
+      return $$2.isPresent();
    }
 
-   @Override
-   public boolean a(ic $$0) {
-      return cwq.a(this.r(), this.o, this.aB_(), $$0, this.aB_().a($$0));
+   private void a(ane $$0, @Nullable blw $$1) {
+      hx $$2 = this.aE_();
+      djp $$3 = this.r();
+      $$0.a($$2, $$3.a(ddr.b, Boolean.valueOf(true)), 2);
+      $$0.a($$2, $$3.b(), 90);
+      $$0.c(3007, $$2, 0);
+      $$0.a(dnz.N, $$2, dnz.a.a($$1));
    }
 
-   public int g() {
-      int $$0 = 0;
+   private boolean b(ane $$0) {
+      return this.r().c(ddr.d) && $$0.ak() != bjz.a && $$0.Z().b(ctt.M);
+   }
 
-      for (ic $$1 : ic.values()) {
-         $$0 += this.a($$1) ? 1 : 0;
+   public void a(ane $$0) {
+      if (this.b($$0) && this.l > 0) {
+         if (!this.c($$0)) {
+            this.b((ctx)$$0);
+         }
+
+         ceu.a($$0, emc.b(this.aE_()), null, 40);
+      }
+   }
+
+   private void b(ctx $$0) {
+      ars $$1 = (ars)k.get(this.l);
+      if ($$1 != null) {
+         hx $$2 = this.aE_();
+         int $$3 = $$2.u() + aup.b($$0.z, -10, 10);
+         int $$4 = $$2.v() + aup.b($$0.z, -10, 10);
+         int $$5 = $$2.w() + aup.b($$0.z, -10, 10);
+         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, aru.f, 5.0F, 1.0F);
+      }
+   }
+
+   private boolean c(ane $$0) {
+      return this.l < 4 ? false : avj.a(bmc.bk, bms.k, $$0, this.aE_(), 20, 5, 6, avj.a.b).isPresent();
+   }
+
+   public doi.b c() {
+      return this.r;
+   }
+
+   class a implements doi.d {
+      private static final int b = 8;
+      private final dod c = new dnv(dik.this.p);
+
+      public a() {
       }
 
-      return $$0;
-   }
+      @Override
+      public int a() {
+         return 8;
+      }
 
-   public void a(hx $$0, boolean $$1) {
-      this.j = $$1;
-      this.i = $$0;
+      @Override
+      public dod b() {
+         return this.c;
+      }
+
+      @Override
+      public asx<dnz> c() {
+         return aso.c;
+      }
+
+      @Override
+      public boolean a(ane $$0, hx $$1, ih<dnz> $$2, dnz.a $$3) {
+         return !dik.this.r().c(ddr.b) && dik.a($$3.a()) != null;
+      }
+
+      @Override
+      public void a(ane $$0, hx $$1, ih<dnz> $$2, @Nullable blw $$3, @Nullable blw $$4, float $$5) {
+         dik.this.a($$0, dik.a($$4 != null ? $$4 : $$3));
+      }
+
+      @Override
+      public void e() {
+         dik.this.e();
+      }
+
+      @Override
+      public boolean f() {
+         return true;
+      }
    }
 }

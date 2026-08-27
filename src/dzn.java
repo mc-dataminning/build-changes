@@ -1,33 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dzn(dzn.a b, bip<cva.c> c) {
-   public static final Codec<dzn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dzn.a.c.fieldOf("bounding_box").forGetter(dzn::a), bip.c(cva.c.a).fieldOf("spawns").forGetter(dzn::b)).apply($$0, dzn::new)
-   );
+public abstract class dzn extends dzo {
+   private final dzn.a d;
+   private final int e;
+   private final int f;
 
-   public dzn.a a() {
-      return this.b;
+   protected dzn(dzn.a $$0, int $$1, int $$2, dzo.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public bip<cva.c> b() {
-      return this.c;
+   @Override
+   public Optional<dzo.b> a(dzo.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, doy.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   public static enum a implements avk {
-      a("piece"),
-      b("full");
+   private void a(eag $$0, dzo.a $$1) {
+      cte $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   }
 
-      public static final Codec<dzn.a> c = avk.a(dzn.a::values);
-      private final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   @FunctionalInterface
+   protected interface a {
+      dzs construct(dpx var1, int var2, int var3);
    }
 }

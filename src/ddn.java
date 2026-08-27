@@ -1,80 +1,52 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Collection;
 import javax.annotation.Nullable;
 
-public class ddn extends cwz implements cwt, dbg {
-   public static final MapCodec<ddn> a = b(ddn::new);
-   protected static final float b = 6.0F;
-   protected static final emm c = cwq.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-
-   @Override
-   public MapCodec<ddn> a() {
-      return a;
-   }
-
-   protected ddn(djg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return c;
-   }
-
-   @Override
-   protected boolean b(djh $$0, csv $$1, hx $$2) {
-      return $$0.d($$1, $$2, ic.b) && !$$0.a(cws.kJ);
-   }
-
-   @Nullable
-   @Override
-   public djh a(cph $$0) {
-      eer $$1 = $$0.q().b_($$0.a());
-      return $$1.a(asm.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
-      djh $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!$$6.i()) {
-         $$3.a($$4, ees.c, ees.c.a($$3));
+public interface ddn {
+   ddn v_ = new ddn() {
+      @Override
+      public boolean a(cty $$0, hx $$1, djp $$2, @Nullable Collection<ic> $$3, boolean $$4) {
+         if ($$3 == null) {
+            return ((ddt)cxa.qT).g().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
+         } else if (!$$3.isEmpty()) {
+            return !$$2.i() && !$$2.u().b(efa.c) ? false : ddt.a($$0, $$1, $$2, $$3);
+         } else {
+            return ddn.super.a($$0, $$1, $$2, $$3, $$4);
+         }
       }
 
-      return $$6;
-   }
-
-   @Override
-   public boolean b(cts $$0, hx $$1, djh $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
-      return true;
-   }
-
-   @Override
-   public eer c_(djh $$0) {
-      return ees.c.a(false);
-   }
-
-   @Override
-   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
-      djh $$4 = cws.bx.o();
-      djh $$5 = $$4.a(dev.d, dkd.a);
-      hx $$6 = $$2.c();
-      if ($$0.a_($$6).a(cws.G)) {
-         $$0.a($$2, $$4, 2);
-         $$0.a($$6, $$5, 2);
+      @Override
+      public int a(dds.a $$0, cty $$1, hx $$2, auw $$3, dds $$4, boolean $$5) {
+         return $$0.c() > 0 ? $$0.b() : 0;
       }
+
+      @Override
+      public int i_(int $$0) {
+         return Math.max($$0 - 1, 0);
+      }
+   };
+
+   default byte b() {
+      return 1;
    }
 
-   @Override
-   public boolean a(@Nullable cfi $$0, csv $$1, hx $$2, djh $$3, eeq $$4) {
+   default void a(cty $$0, djp $$1, hx $$2, auw $$3) {
+   }
+
+   default boolean a(cty $$0, hx $$1, auw $$2) {
       return false;
    }
 
-   @Override
-   public boolean a(ctq $$0, hx $$1, djh $$2, eer $$3) {
-      return false;
+   default boolean a(cty $$0, hx $$1, djp $$2, @Nullable Collection<ic> $$3, boolean $$4) {
+      return ((dbx)cxa.qT).c().a($$2, $$0, $$1, $$4) > 0L;
    }
+
+   default boolean d() {
+      return true;
+   }
+
+   default int i_(int $$0) {
+      return 1;
+   }
+
+   int a(dds.a var1, cty var2, hx var3, auw var4, dds var5, boolean var6);
 }

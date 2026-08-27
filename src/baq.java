@@ -5,7 +5,7 @@ import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
 import org.slf4j.Logger;
 
-public class baq extends awb {
+public class baq extends awc {
    private static final Logger b = LogUtils.getLogger();
 
    public baq(Schema $$0) {

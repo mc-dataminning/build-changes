@@ -1,15 +1,17 @@
-public class fyk extends fzt<ccg, fjw<ccg>> {
-   private static final ahg a = new ahg("textures/entity/endermite.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fyk(fyn.a $$0) {
-      super($$0, new fjw<>($$0.a(fmw.V)), 0.3F);
+public class fyk<T extends cad> extends fxv<T, fjx<T>> {
+   private static final Map<bmc<?>, ahh> a = Maps.newHashMap(
+      ImmutableMap.of(bmc.y, new ahh("textures/entity/horse/donkey.png"), bmc.ar, new ahh("textures/entity/horse/mule.png"))
+   );
+
+   public fyk(fza.a $$0, float $$1, fnh $$2) {
+      super($$0, new fjx<>($$0.a($$2)), $$1);
    }
 
-   protected float a(ccg $$0) {
-      return 180.0F;
-   }
-
-   public ahg b(ccg $$0) {
-      return a;
+   public ahh a(T $$0) {
+      return a.get($$0.ai());
    }
 }

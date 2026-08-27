@@ -5,10 +5,10 @@ import java.util.stream.Collectors;
 
 public final class mh {
    private static final mh a = new mh(ImmutableList.of());
-   private static final Comparator<dkk.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
-   private final List<dkk.a<?>> c;
+   private static final Comparator<dks.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
+   private final List<dks.a<?>> c;
 
-   public mh a(dkk.a<?> $$0) {
+   public mh a(dks.a<?> $$0) {
       return new mh(ImmutableList.builder().addAll(this.c).add($$0).build());
    }
 
@@ -16,7 +16,7 @@ public final class mh {
       return new mh(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
    }
 
-   private mh(List<dkk.a<?>> $$0) {
+   private mh(List<dks.a<?>> $$0) {
       this.c = $$0;
    }
 
@@ -24,7 +24,7 @@ public final class mh {
       return a;
    }
 
-   public static mh a(dkk.a<?>... $$0) {
+   public static mh a(dks.a<?>... $$0) {
       return new mh(ImmutableList.copyOf($$0));
    }
 
@@ -39,7 +39,7 @@ public final class mh {
    }
 
    public String b() {
-      return this.c.stream().sorted(b).map(dkk.a::toString).collect(Collectors.joining(","));
+      return this.c.stream().sorted(b).map(dks.a::toString).collect(Collectors.joining(","));
    }
 
    @Override

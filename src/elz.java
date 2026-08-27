@@ -1,21 +1,21 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+public class elz extends ema {
+   private final blw b;
 
-public class elz extends AbstractDoubleList {
-   private final int a;
-
-   elz(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
+   public elz(blw $$0) {
+      this($$0, $$0.dj());
    }
 
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
+   public elz(blw $$0, emc $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   public int size() {
-      return this.a + 1;
+   public blw a() {
+      return this.b;
+   }
+
+   @Override
+   public ema.a c() {
+      return ema.a.c;
    }
 }

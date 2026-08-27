@@ -1,27 +1,32 @@
-import java.util.List;
+public class zy implements xg<zb> {
+   private final cnb a;
+   private final int b;
 
-public record zy(zy.a a, List<String> b) implements xf<za> {
-   public zy(ui $$0) {
-      this($$0.b(zy.a.class), $$0.a(ui::s));
+   public zy(cnb $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public zy(uj $$0) {
+      this.a = $$0.a(kd.h);
+      this.b = $$0.n();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, ui::a);
+   public void a(uj $$0) {
+      $$0.a(kd.h, this.a);
+      $$0.c(this.b);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public List<String> d() {
-      return this.b;
+   public cnb a() {
+      return this.a;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public int d() {
+      return this.b;
    }
 }

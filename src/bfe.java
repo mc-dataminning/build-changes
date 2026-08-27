@@ -14,7 +14,7 @@ public class bfe extends bde {
       $$0.register(
          $$1,
          "minecraft:warden",
-         () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", bbw.A.in($$0))), bdf.a($$0))
+         () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", bbw.B.in($$0))), bdf.a($$0))
       );
       return $$1;
    }

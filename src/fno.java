@@ -1,218 +1,83 @@
-import com.mojang.logging.LogUtils;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
-public class fno extends dlh {
-   static final Logger a = LogUtils.getLogger();
-   private final dlo b;
-   private final eeg c;
-   volatile fno.a d;
-   final fns e;
+public class fno {
+   private static final Set<ic> a = EnumSet.allOf(ic.class);
+   private final List<fnm> b = Lists.newArrayList();
+   private int c;
+   private int d;
+   private boolean e;
 
-   public fno(fns $$0, int $$1) {
+   public fno a(int $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      return this;
+   }
+
+   public fno a() {
+      return this.a(true);
+   }
+
+   public fno a(boolean $$0) {
       this.e = $$0;
-      this.b = new dlk($$0, new csw(0, 0), $$0.I_().d(ke.at).f(cuv.b));
-      this.c = new eeg(this, true, $$0.E_().g());
-      this.d = new fno.a(b($$1));
+      return this;
    }
 
-   @Override
-   public eeg p() {
-      return this.c;
+   public fno a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fnn $$7, int $$8, int $$9) {
+      this.a($$8, $$9);
+      this.b.add(new fnm($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   private static boolean a(@Nullable dlo $$0, int $$1, int $$2) {
-      if ($$0 == null) {
-         return false;
-      } else {
-         csw $$3 = $$0.f();
-         return $$3.e == $$1 && $$3.f == $$2;
-      }
+   public fno a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$7, $$8);
+      this.b.add(new fnm($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fnn.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public void a(csw $$0) {
-      if (this.d.b($$0.e, $$0.f)) {
-         int $$1 = this.d.a($$0.e, $$0.f);
-         dlo $$2 = this.d.a($$1);
-         if (a($$2, $$0.e, $$0.f)) {
-            this.d.a($$1, $$2, null);
-         }
-      }
+   public fno a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.add(new fnm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fnn.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Nullable
-   public dlo b(int $$0, int $$1, dli $$2, boolean $$3) {
-      if (this.d.b($$0, $$1)) {
-         dlo $$4 = this.d.a(this.d.a($$0, $$1));
-         if (a($$4, $$0, $$1)) {
-            return $$4;
-         }
-      }
-
-      return $$3 ? this.b : null;
+   public fno a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<ic> $$6) {
+      this.b.add(new fnm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fnn.a, this.e, 1.0F, 1.0F, $$6));
+      return this;
    }
 
-   @Override
-   public csv q() {
-      return this.e;
+   public fno a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.b.add(new fnm($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fnn.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public void a(int $$0, int $$1, ui $$2) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-      } else {
-         int $$3 = this.d.a($$0, $$1);
-         dlo $$4 = this.d.b.get($$3);
-         if (!a($$4, $$0, $$1)) {
-            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
-         } else {
-            $$4.a($$2);
-         }
-      }
+   public fno a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fnn $$7) {
+      this.b.add(new fnm($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Nullable
-   public dlo a(int $$0, int $$1, ui $$2, sn $$3, Consumer<aaj.b> $$4) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-         return null;
-      } else {
-         int $$5 = this.d.a($$0, $$1);
-         dlo $$6 = this.d.b.get($$5);
-         csw $$7 = new csw($$0, $$1);
-         if (!a($$6, $$0, $$1)) {
-            $$6 = new dlo(this.e, $$7);
-            $$6.a($$2, $$3, $$4);
-            this.d.a($$5, $$6);
-         } else {
-            $$6.a($$2, $$3, $$4);
-         }
-
-         this.e.a($$7);
-         return $$6;
-      }
+   public fno a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
+      this.b.add(new fnm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fnn.a, $$6, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Override
-   public void a(BooleanSupplier $$0, boolean $$1) {
+   public fno a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fnn $$6, float $$7, float $$8) {
+      this.b.add(new fnm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
+      return this;
    }
 
-   public void d(int $$0, int $$1) {
-      this.d.e = $$0;
-      this.d.f = $$1;
+   public fno a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fnn $$6) {
+      this.b.add(new fnm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public void a(int $$0) {
-      int $$1 = this.d.c;
-      int $$2 = b($$0);
-      if ($$1 != $$2) {
-         fno.a $$3 = new fno.a($$2);
-         $$3.e = this.d.e;
-         $$3.f = this.d.f;
-
-         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
-            dlo $$5 = this.d.b.get($$4);
-            if ($$5 != null) {
-               csw $$6 = $$5.f();
-               if ($$3.b($$6.e, $$6.f)) {
-                  $$3.a($$3.a($$6.e, $$6.f), $$5);
-               }
-            }
-         }
-
-         this.d = $$3;
-      }
+   public List<fnm> b() {
+      return ImmutableList.copyOf(this.b);
    }
 
-   private static int b(int $$0) {
-      return Math.max(2, $$0) + 3;
-   }
-
-   @Override
-   public String e() {
-      return this.d.b.length() + ", " + this.j();
-   }
-
-   @Override
-   public int j() {
-      return this.d.g;
-   }
-
-   @Override
-   public void a(cty $$0, iz $$1) {
-      evi.O().f.b($$1.a(), $$1.b(), $$1.c());
-   }
-
-   final class a {
-      final AtomicReferenceArray<dlo> b;
-      final int c;
-      private final int d;
-      volatile int e;
-      volatile int f;
-      int g;
-
-      a(int $$0) {
-         this.c = $$0;
-         this.d = $$0 * 2 + 1;
-         this.b = new AtomicReferenceArray<>(this.d * this.d);
-      }
-
-      int a(int $$0, int $$1) {
-         return Math.floorMod($$1, this.d) * this.d + Math.floorMod($$0, this.d);
-      }
-
-      protected void a(int $$0, @Nullable dlo $$1) {
-         dlo $$2 = this.b.getAndSet($$0, $$1);
-         if ($$2 != null) {
-            this.g--;
-            fno.this.e.a($$2);
-         }
-
-         if ($$1 != null) {
-            this.g++;
-         }
-      }
-
-      protected dlo a(int $$0, dlo $$1, @Nullable dlo $$2) {
-         if (this.b.compareAndSet($$0, $$1, $$2) && $$2 == null) {
-            this.g--;
-         }
-
-         fno.this.e.a($$1);
-         return $$1;
-      }
-
-      boolean b(int $$0, int $$1) {
-         return Math.abs($$0 - this.e) <= this.c && Math.abs($$1 - this.f) <= this.c;
-      }
-
-      @Nullable
-      protected dlo a(int $$0) {
-         return this.b.get($$0);
-      }
-
-      private void a(String $$0) {
-         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
-            int $$2 = fno.this.d.c;
-
-            for (int $$3 = this.f - $$2; $$3 <= this.f + $$2; $$3++) {
-               for (int $$4 = this.e - $$2; $$4 <= this.e + $$2; $$4++) {
-                  dlo $$5 = fno.this.d.b.get(fno.this.d.a($$4, $$3));
-                  if ($$5 != null) {
-                     csw $$6 = $$5.f();
-                     $$1.write(($$6.e + "\t" + $$6.f + "\t" + $$5.C() + "\n").getBytes(StandardCharsets.UTF_8));
-                  }
-               }
-            }
-         } catch (IOException var10) {
-            fno.a.error("Failed to dump chunks to file {}", $$0, var10);
-         }
-      }
+   public static fno c() {
+      return new fno();
    }
 }

@@ -118,7 +118,7 @@ public class axq extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.C);
+      Type<?> $$0 = this.getInputSchema().getType(bbw.D);
       return this.fixTypeEverywhereTyped("ChunkStructuresTemplateRenameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
    }
 

@@ -1,73 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dee extends cwq {
-   public static final MapCodec<dee> a = b(dee::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final ic[] d = ic.values();
+public class dee extends cvt {
+   public static final MapCodec<dee> c = b(dee::new);
 
    @Override
    public MapCodec<dee> a() {
-      return a;
+      return c;
    }
 
-   protected dee(djg.d $$0) {
+   protected dee(djo.d $$0) {
       super($$0);
    }
 
    @Override
-   public void b(djh $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   public dhd a(hx $$0, djp $$1) {
+      return new dip($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dhd> dhe<T> a(ctx $$0, djp $$1, dhf<T> $$2) {
+      return a($$0, $$2, dhf.B);
+   }
+
+   @Override
+   protected void a(ctx $$0, hx $$1, cfq $$2) {
+      dhd $$3 = $$0.c_($$1);
+      if ($$3 instanceof dip) {
+         $$2.a((bkg)$$3);
+         $$2.a(asd.at);
       }
    }
 
    @Override
-   public void a(djh $$0, ctp $$1, hx $$2, cwq $$3, hx $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public void a(djp $$0, ctx $$1, hx $$2, auw $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, art.xC, aru.e, 1.0F, 1.0F, false);
+         }
 
-   protected void a(ctp $$0, hx $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, cws.aP.o(), 2);
-         $$0.a(null, $$1, ars.xZ, art.e, 1.0F, 1.0F);
+         $$1.a(jx.ab, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
       }
-   }
-
-   private boolean b(ctp $$0, hx $$1) {
-      return hx.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (ic $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            djh $$3 = $$0.a_($$2);
-            eer $$4 = $$0.b_($$2);
-            if (!$$4.a(asm.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof cwx $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
-                  return true;
-               }
-
-               if ($$3.b() instanceof dbf) {
-                  $$0.a($$2, cws.a.o(), 3);
-               } else {
-                  if (!$$3.a(cws.mc) && !$$3.a(cws.md) && !$$3.a(cws.bw) && !$$3.a(cws.bx)) {
-                     return false;
-                  }
-
-                  dgv $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, cws.a.o(), 3);
-               }
-
-               return true;
-            }
-         }
-      }) > 1;
    }
 }

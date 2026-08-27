@@ -1,22 +1,110 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Predicate;
 
-public class bzh extends boc<bzf> {
-   public bzh() {
-      super(ImmutableMap.of(bvn.M, bvo.a, bvn.y, bvo.a), 200);
+public class bzh {
+   private static final float a = 1.0F;
+   private static final float b = 2.25F;
+   private static final float c = 1.75F;
+   private static final float d = 2.5F;
+   private static final int e = 4;
+   private static final int f = 16;
+   private static final int g = 6;
+   private static final int h = 30;
+   private static final int i = 60;
+   private static final int j = 600;
+   private static final int k = 32;
+   private static final int l = 20;
+
+   protected static bno<?> a(bno<bzg> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(chc.a));
+      $$0.b(chc.b);
+      $$0.f();
+      return $$0;
    }
 
-   protected boolean a(and $$0, bzf $$1) {
-      return $$1.bc();
+   private static void b(bno<bzg> $$0) {
+      $$0.a(chc.a, 0, ImmutableList.of(new bqz(0.8F), new boa(2.5F), new bpl(45, 90), new bpp(), new bol(bvq.aO), new bol(bvq.aP)));
    }
 
-   protected boolean a(and $$0, bzf $$1, long $$2) {
-      return $$1.bc() && $$1.dO().a(bvn.M);
+   private static void c(bno<bzg> $$0) {
+      $$0.a(
+         chc.b,
+         ImmutableList.of(
+            Pair.of(0, boz.a($$0x -> true, 1.75F, true, 32)),
+            Pair.of(1, new bov(bzh::b, 2.25F, 20)),
+            Pair.of(2, bqt.a(bzh::b, Predicate.not(bzh::c), 4, 16, 2.25F)),
+            Pair.of(3, bqf.a(6.0F, bjn.a(30, 60))),
+            Pair.of(4, new bqc(ImmutableList.of(Pair.of(bpx.b(1.0F), 2), Pair.of(bqm.a(1.0F, 3), 2), Pair.of(new bop(30, 60), 1))))
+         ),
+         ImmutableSet.of()
+      );
    }
 
-   protected void b(and $$0, bzf $$1, long $$2) {
-      bnl<bzf> $$3 = $$1.dO();
-      $$3.b(bvn.m);
-      $$3.b(bvn.n);
-      $$1.b(new bli(blk.j, 200, 0));
+   public static void a(bzg $$0) {
+      $$0.dN().a(ImmutableList.of(chc.b));
+   }
+
+   public static void a(bmo $$0, hx $$1) {
+      bno<?> $$2 = $$0.dN();
+      ig $$3 = ig.a($$0.dL().ae(), $$1);
+      Optional<ig> $$4 = $$2.c(bvq.aN);
+      if ($$4.isEmpty()) {
+         $$2.a(bvq.aN, $$3);
+         $$2.a(bvq.aO, 600);
+      } else if ($$4.get().equals($$3)) {
+         $$2.a(bvq.aO, 600);
+      }
+   }
+
+   private static Optional<bpt> b(bmo $$0) {
+      bno<?> $$1 = $$0.dN();
+      Optional<ig> $$2 = $$1.c(bvq.aN);
+      if ($$2.isPresent()) {
+         ig $$3 = $$2.get();
+         if (a($$0, $$1, $$3)) {
+            return Optional.of(new boi($$3.b().c()));
+         }
+
+         $$1.b(bvq.aN);
+      }
+
+      return d($$0);
+   }
+
+   private static boolean c(bmo $$0) {
+      bno<?> $$1 = $$0.dN();
+      return $$1.a(bvq.L);
+   }
+
+   private static boolean a(bmo $$0, bno<?> $$1, ig $$2) {
+      Optional<Integer> $$3 = $$1.c(bvq.aO);
+      ctx $$4 = $$0.dL();
+      return $$4.ae() == $$2.a() && $$4.a_($$2.b()).a(cxa.aY) && $$3.isPresent();
+   }
+
+   private static Optional<bpt> d(bmo $$0) {
+      return a($$0).map($$0x -> new boq($$0x, true));
+   }
+
+   public static Optional<anf> a(bmo $$0) {
+      ctx $$1 = $$0.dL();
+      if (!$$1.y_() && $$1 instanceof ane $$2) {
+         Optional<UUID> $$3 = $$0.dN().c(bvq.aM);
+         if ($$3.isPresent()) {
+            if ($$2.a($$3.get()) instanceof anf $$5 && ($$5.e.d() || $$5.e.e()) && $$5.a($$0, 64.0)) {
+               return Optional.of($$5);
+            }
+
+            return Optional.empty();
+         }
+      }
+
+      return Optional.empty();
    }
 }

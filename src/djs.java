@@ -1,16 +1,8 @@
-public enum djs implements avk {
-   a("floor"),
-   b("wall"),
-   c("ceiling");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String d;
-
-   private djs(String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface djs {
 }

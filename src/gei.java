@@ -1,138 +1,159 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
 public class gei {
-   public static final Set<api<?>> a = Set.of(gfx.a);
-   private static final Logger b = LogUtils.getLogger();
-   private final ahg c;
-   private final int d;
-   private final int e;
-   private final int f;
+   private static final Map<ahh, gej> a = Maps.newHashMap();
+   private static final String b = "CustomModelData";
+   private static final ahh c = new ahh("damaged");
+   private static final ahh d = new ahh("damage");
+   private static final geg e = ($$0x, $$1, $$2, $$3) -> $$0x.j() ? 1.0F : 0.0F;
+   private static final geg f = ($$0x, $$1, $$2, $$3) -> aup.a((float)$$0x.k() / (float)$$0x.l(), 0.0F, 1.0F);
+   private static final Map<cnb, Map<ahh, gej>> g = Maps.newHashMap();
 
-   public gei(ahg $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   private static geg a(ahh $$0, geg $$1) {
+      a.put($$0, $$1);
+      return $$1;
    }
 
-   public static gei a(gem $$0) {
-      return new gei($$0.g(), $$0.h(), $$0.i(), $$0.j());
+   private static void a(gej $$0) {
+      a.put(new ahh("custom_model_data"), $$0);
    }
 
-   public gei.a a(List<geh> $$0, int $$1, Executor $$2) {
-      int $$3 = this.d;
-      gek<geh> $$4 = new gek<>($$3, $$3, $$1);
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = 1 << $$1;
+   private static void a(cnb $$0, ahh $$1, geg $$2) {
+      g.computeIfAbsent($$0, $$0x -> Maps.newHashMap()).put($$1, $$2);
+   }
 
-      for (geh $$7 : $$0) {
-         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
-         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
-         if ($$8 < $$6) {
-            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), auo.f($$6), auo.f($$8)});
-            $$6 = $$8;
+   @Nullable
+   public static gej a(cnb $$0, ahh $$1) {
+      if ($$0.l() > 0) {
+         if (d.equals($$1)) {
+            return f;
          }
 
-         $$4.a($$7);
+         if (c.equals($$1)) {
+            return e;
+         }
       }
 
-      int $$9 = Math.min($$5, $$6);
-      int $$10 = auo.f($$9);
-      int $$11;
-      if ($$10 < $$1) {
-         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
-         $$11 = $$10;
+      gej $$2 = a.get($$1);
+      if ($$2 != null) {
+         return $$2;
       } else {
-         $$11 = $$1;
+         Map<ahh, gej> $$3 = g.get($$0);
+         return $$3 == null ? null : $$3.get($$1);
       }
-
-      try {
-         $$4.c();
-      } catch (gel var16) {
-         o $$14 = o.a(var16, "Stitching");
-         p $$15 = $$14.a("Stitcher");
-         $$15.a(
-            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
-         );
-         $$15.a("Max Texture Size", $$3);
-         throw new y($$14);
-      }
-
-      int $$16 = Math.max($$4.a(), this.e);
-      int $$17 = Math.max($$4.b(), this.f);
-      Map<ahg, gen> $$18 = this.a($$4, $$16, $$17);
-      gen $$19 = $$18.get(ged.b());
-      CompletableFuture<Void> $$20;
-      if ($$11 > 0) {
-         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
-      } else {
-         $$20 = CompletableFuture.completedFuture(null);
-      }
-
-      return new gei.a($$16, $$17, $$11, $$19, $$18, $$20);
    }
 
-   public static CompletableFuture<List<geh>> a(geq $$0, List<Function<geq, geh>> $$1, Executor $$2) {
-      List<CompletableFuture<geh>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (geh)$$2x.apply($$0), $$2)).toList();
-      return ac.b($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
-   }
+   static {
+      a(new ahh("lefthanded"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fm() != bmi.b ? 1.0F : 0.0F);
+      a(new ahh("cooldown"), ($$0x, $$1, $$2, $$3) -> $$2 instanceof cfq ? ((cfq)$$2).gn().a($$0x.d(), 0.0F) : 0.0F);
+      geg $$0 = ($$0x, $$1, $$2, $$3) -> {
+         if (!$$0x.a(asq.aH)) {
+            return Float.NEGATIVE_INFINITY;
+         } else {
+            return $$1 == null ? 0.0F : cpj.a($$1.I_(), $$0x, true).map(cpj::b).map(ih::a).map(cpk::c).orElse(0.0F);
+         }
+      };
+      a(ma.a, $$0);
+      a(($$0x, $$1, $$2, $$3) -> $$0x.u() ? (float)$$0x.v().h("CustomModelData") : 0.0F);
+      a(cnj.ot, new ahh("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return $$2.fp() != $$0x ? 0.0F : (float)($$0x.r() - $$2.fq()) / 20.0F;
+         }
+      });
+      a(cnj.xl, new ahh("brushing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fp() == $$0x ? (float)($$2.fq() % 10) / 10.0F : 0.0F);
+      a(cnj.ot, new ahh("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cnj.qT, new ahh("filled"), ($$0x, $$1, $$2, $$3) -> clj.d($$0x));
+      a(cnj.qV, new ahh("time"), new geg() {
+         private double a;
+         private double b;
+         private long c;
 
-   public CompletableFuture<gei.a> a(aqi $$0, ahg $$1, int $$2, Executor $$3) {
-      return this.a($$0, $$1, $$2, $$3, a);
-   }
+         @Override
+         public float unclampedCall(cng $$0, @Nullable foe $$1, @Nullable bmo $$2, int $$3) {
+            blw $$4 = (blw)($$2 != null ? $$2 : $$0.H());
+            if ($$4 == null) {
+               return 0.0F;
+            } else {
+               if ($$1 == null && $$4.dL() instanceof foe) {
+                  $$1 = (foe)$$4.dL();
+               }
 
-   public CompletableFuture<gei.a> a(aqi $$0, ahg $$1, int $$2, Executor $$3, Collection<api<?>> $$4) {
-      geq $$5 = geq.create($$4);
-      return CompletableFuture.<List<Function<geq, geh>>>supplyAsync(() -> ges.a($$0, $$1).a($$0), $$3)
-         .thenCompose($$2x -> a($$5, $$2x, $$3))
-         .thenApply($$2x -> this.a($$2x, $$2, $$3));
-   }
+               if ($$1 == null) {
+                  return 0.0F;
+               } else {
+                  double $$5;
+                  if ($$1.E_().j()) {
+                     $$5 = (double)$$1.f(1.0F);
+                  } else {
+                     $$5 = Math.random();
+                  }
 
-   private Map<ahg, gen> a(gek<geh> $$0, int $$1, int $$2) {
-      Map<ahg, gen> $$3 = new HashMap<>();
-      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new gen(this.c, $$3x, $$1, $$2, $$4, $$5)));
-      return $$3;
-   }
+                  $$5 = this.a($$1, $$5);
+                  return (float)$$5;
+               }
+            }
+         }
 
-   public static record a(int a, int b, int c, gen d, Map<ahg, gen> e, CompletableFuture<Void> f) {
-      public CompletableFuture<gei.a> a() {
-         return this.f.thenApply($$0 -> this);
-      }
+         private double a(ctx $$0, double $$1) {
+            if ($$0.X() != this.c) {
+               this.c = $$0.X();
+               double $$2 = $$1 - this.a;
+               $$2 = aup.c($$2 + 0.5, 1.0) - 0.5;
+               this.b += $$2 * 0.1;
+               this.b *= 0.9;
+               this.a = aup.c(this.a + this.b, 1.0);
+            }
 
-      public int b() {
-         return this.a;
-      }
+            return this.a;
+         }
+      });
+      a(cnj.qR, new ahh("angle"), new geh(($$0x, $$1, $$2) -> cll.d($$1) ? cll.a($$1.w()) : cll.a($$0x)));
+      a(cnj.qS, new ahh("angle"), new geh(($$0x, $$1, $$2) -> $$2 instanceof cfq $$3 ? $$3.gr().orElse(null) : null));
+      a(cnj.vP, new ahh("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return clp.d($$0x) ? 0.0F : (float)($$0x.r() - $$2.fq()) / (float)clp.k($$0x);
+         }
+      });
+      a(cnj.vP, new ahh("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x && !clp.d($$0x) ? 1.0F : 0.0F);
+      a(cnj.vP, new ahh("charged"), ($$0x, $$1, $$2, $$3) -> clp.d($$0x) ? 1.0F : 0.0F);
+      a(cnj.vP, new ahh("firework"), ($$0x, $$1, $$2, $$3) -> clp.d($$0x) && clp.a($$0x, cnj.uq) ? 1.0F : 0.0F);
+      a(cnj.nS, new ahh("broken"), ($$0x, $$1, $$2, $$3) -> cmb.d($$0x) ? 0.0F : 1.0F);
+      a(cnj.qU, new ahh("cast"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            boolean $$4 = $$2.eT() == $$0x;
+            boolean $$5 = $$2.eU() == $$0x;
+            if ($$2.eT().d() instanceof cmn) {
+               $$5 = false;
+            }
 
-      public int c() {
-         return this.b;
-      }
+            return ($$4 || $$5) && $$2 instanceof cfq && ((cfq)$$2).co != null ? 1.0F : 0.0F;
+         }
+      });
+      a(cnj.vo, new ahh("blocking"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cnj.vL, new ahh("throwing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cnj.hB, new ahh("level"), ($$0x, $$1, $$2, $$3) -> {
+         so $$4 = $$0x.b("BlockStateTag");
 
-      public int d() {
-         return this.c;
-      }
+         try {
+            if ($$4 != null) {
+               tl $$5 = $$4.c(dbl.c.f());
+               if ($$5 != null) {
+                  return (float)Integer.parseInt($$5.t_()) / 16.0F;
+               }
+            }
+         } catch (NumberFormatException var6) {
+         }
 
-      public gen e() {
-         return this.d;
-      }
-
-      public Map<ahg, gen> f() {
-         return this.e;
-      }
-
-      public CompletableFuture<Void> g() {
-         return this.f;
-      }
+         return 1.0F;
+      });
+      a(cnj.vY, new ahh("tooting"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
    }
 }

@@ -1,54 +1,99 @@
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface gil<T> {
-   static <T> gil<T> a() {
-      return new gil<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
+public class gil implements gju<gil> {
+   public static final aha a = new aha("sounds", ".ogg");
+   private final ahh b;
+   private final bjk c;
+   private final bjk d;
+   private final int e;
+   private final gil.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+   public gil(String $$0, bjk $$1, bjk $$2, int $$3, gil.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = new ahh($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   static <T> gil<T> a(List<T> $$0, Function<T, Stream<ahg>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final gio<T> $$2 = new gio<>();
-         final gio<T> $$3 = new gio<>();
+   public ahh a() {
+      return this.b;
+   }
 
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
+   public ahh b() {
+      return a.a(this.b);
+   }
 
-         $$2.a();
-         $$3.a();
-         return new gil<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
+   public bjk c() {
+      return this.c;
+   }
 
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
+   public bjk d() {
+      return this.d;
+   }
+
+   @Override
+   public int e() {
+      return this.e;
+   }
+
+   public gil a(auw $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(gjp $$0) {
+      if (this.h) {
+         $$0.a(this);
       }
    }
 
-   List<T> a(String var1);
+   public gil.a f() {
+      return this.f;
+   }
 
-   List<T> b(String var1);
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static gil.a a(String $$0) {
+         for (gil.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return null;
+      }
+   }
 }

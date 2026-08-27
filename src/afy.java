@@ -1,5 +1,3 @@
 public interface afy {
-   ahg a();
-
-   void a(ui var1);
+   void a(uj var1);
 }

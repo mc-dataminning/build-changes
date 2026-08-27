@@ -1,18 +1,16 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class djp implements Predicate<djh> {
-   private final cwq a;
+public class djp extends djo.a {
+   public static final Codec<djp> b = a(kd.e.q(), cwy::o).stable();
 
-   public djp(cwq $$0) {
-      this.a = $$0;
+   public djp(cwy $$0, ImmutableMap<dks<?>, Comparable<?>> $$1, MapCodec<djp> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static djp a(cwq $$0) {
-      return new djp($$0);
-   }
-
-   public boolean a(@Nullable djh $$0) {
-      return $$0 != null && $$0.a(this.a);
+   @Override
+   protected djp x() {
+      return this;
    }
 }

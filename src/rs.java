@@ -1,134 +1,60 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Streams;
+import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class rs {
-   final ro a;
-   private final List<rl> b = Lists.newArrayList();
-   private long c;
+   private static final int d = 50;
+   public static final int a = 5;
+   public static final int b = 6;
+   public static final int c = 8;
 
-   rs(ro $$0) {
-      this.a = $$0;
-      this.c = $$0.q();
+   public static void a(rp $$0, hx $$1, rv $$2) {
+      $$2.a($$0);
+      $$0.a(new sb($$0, $$2, $$1));
+      $$0.b($$1);
    }
 
-   public rs a(Runnable $$0) {
-      this.b.add(rl.a($$0));
-      return this;
+   public static Collection<rp> a(Collection<rk> $$0, hx $$1, ddk $$2, ane $$3, rv $$4, int $$5) {
+      rl $$6 = new rl($$0, $$1, $$2, $$3, $$4, $$5);
+      $$6.b();
+      return $$6.a();
    }
 
-   public rs a(long $$0, Runnable $$1) {
-      this.b.add(rl.a($$0, $$1));
-      return this;
+   public static Collection<rp> b(Collection<sf> $$0, hx $$1, ddk $$2, ane $$3, rv $$4, int $$5) {
+      return a(a($$0), $$1, $$2, $$3, $$4, $$5);
    }
 
-   public rs a(int $$0) {
-      return this.a($$0, () -> {
+   public static Collection<rk> a(Collection<sf> $$0) {
+      Map<String, List<sf>> $$1 = $$0.stream().collect(Collectors.groupingBy(sf::e, LinkedHashMap::new, Collectors.toList()));
+      return $$1.entrySet().stream().flatMap($$0x -> {
+         String $$1x = (String)$$0x.getKey();
+         Consumer<ane> $$2 = rr.c($$1x);
+         Consumer<ane> $$3 = rr.d($$1x);
+         MutableInt $$4 = new MutableInt();
+         Collection<sf> $$5 = (Collection<sf>)$$0x.getValue();
+         return Streams.stream(Iterables.partition($$5, 50)).map($$4x -> new rk($$1x + ":" + $$4.incrementAndGet(), ImmutableList.copyOf($$4x), $$2, $$3));
+      }).collect(ImmutableList.toImmutableList());
+   }
+
+   public static void a(ane $$0, hx $$1, rv $$2, int $$3) {
+      $$2.a();
+      hx $$4 = $$1.b(-$$3, 0, -$$3);
+      hx $$5 = $$1.b($$3, 0, $$3);
+      hx.b($$4, $$5).filter($$1x -> $$0.a_($$1x).a(cxa.pa)).forEach($$1x -> {
+         dir $$2x = (dir)$$0.c_($$1x);
+         dzg $$3x = sc.b($$2x);
+         sc.a($$3x, $$0);
       });
    }
 
-   public rs b(Runnable $$0) {
-      this.b.add(rl.a(() -> this.c($$0)));
-      return this;
-   }
-
-   public rs a(int $$0, Runnable $$1) {
-      this.b.add(rl.a(() -> {
-         if (this.a.q() < this.c + (long)$$0) {
-            throw new rh("Waiting");
-         } else {
-            this.c($$1);
-         }
-      }));
-      return this;
-   }
-
-   public rs b(int $$0, Runnable $$1) {
-      this.b.add(rl.a(() -> {
-         if (this.a.q() < this.c + (long)$$0) {
-            this.c($$1);
-            throw new rh("Waiting");
-         }
-      }));
-      return this;
-   }
-
-   public void a() {
-      this.b.add(rl.a(this.a::n));
-   }
-
-   public void a(Supplier<Exception> $$0) {
-      this.b.add(rl.a(() -> this.a.a($$0.get())));
-   }
-
-   public rs.a b() {
-      rs.a $$0 = new rs.a();
-      this.b.add(rl.a(() -> $$0.a(this.a.q())));
-      return $$0;
-   }
-
-   public void a(long $$0) {
-      try {
-         this.c($$0);
-      } catch (rh var4) {
-      }
-   }
-
-   public void b(long $$0) {
-      try {
-         this.c($$0);
-      } catch (rh var4) {
-         this.a.a(var4);
-      }
-   }
-
-   private void c(Runnable $$0) {
-      try {
-         $$0.run();
-      } catch (rh var3) {
-         this.a.a(var3);
-      }
-   }
-
-   private void c(long $$0) {
-      Iterator<rl> $$1 = this.b.iterator();
-
-      while ($$1.hasNext()) {
-         rl $$2 = $$1.next();
-         $$2.b.run();
-         $$1.remove();
-         long $$3 = $$0 - this.c;
-         long $$4 = this.c;
-         this.c = $$0;
-         if ($$2.a != null && $$2.a != $$3) {
-            this.a.a(new rh("Succeeded in invalid tick: expected " + ($$4 + $$2.a) + ", but current tick is " + $$0));
-            break;
-         }
-      }
-   }
-
-   public class a {
-      private static final long b = -1L;
-      private long c = -1L;
-
-      void a(long $$0) {
-         if (this.c != -1L) {
-            throw new IllegalStateException("Condition already triggered at " + this.c);
-         } else {
-            this.c = $$0;
-         }
-      }
-
-      public void a() {
-         long $$0 = rs.this.a.q();
-         if (this.c != $$0) {
-            if (this.c == -1L) {
-               throw new rh("Condition not triggered (t=" + $$0 + ")");
-            } else {
-               throw new rh("Condition triggered at " + this.c + ", (t=" + $$0 + ")");
-            }
-         }
-      }
+   public static void a(ane $$0) {
+      adj.a($$0);
    }
 }

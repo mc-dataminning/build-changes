@@ -1,328 +1,44 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.floats.FloatArrayList;
-import it.unimi.dsi.fastutil.floats.FloatList;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import org.apache.commons.lang3.mutable.MutableObject;
+public class atq {
+   private static final int a = 2;
+   private static final int b = 6;
+   private static final double[] c = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
 
-public interface atq<C, I extends avq<C>> extends avq<C> {
-   @avt
-   String a();
-
-   atq<C, I> a(atq.d<I> var1);
-
-   static <C, I extends avq<C>> Codec<atq<C, I>> a(Codec<I> $$0) {
-      MutableObject<Codec<atq<C, I>>> $$1 = new MutableObject();
-
-      record a<C, I extends avq<C>>(float a, atq<C, I> b, float c) {
-      }
-
-      Codec<a<C, I>> $$2 = RecordCodecBuilder.create(
-         $$1x -> $$1x.group(
-                  Codec.FLOAT.fieldOf("location").forGetter(a::a),
-                  atw.a($$1::getValue).fieldOf("value").forGetter(a::b),
-                  Codec.FLOAT.fieldOf("derivative").forGetter(a::c)
-               )
-               .apply($$1x, ($$0xx, $$1xx, $$2x) -> new a($$0xx, $$1xx, $$2x))
-      );
-      Codec<atq.e<C, I>> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group(
-                  $$0.fieldOf("coordinate").forGetter(atq.e::d),
-                  atw.a($$2.listOf())
-                     .fieldOf("points")
-                     .forGetter(
-                        $$0xx -> IntStream.range(0, $$0xx.c.length)
-                              .mapToObj($$1xx -> new a($$0xx.e()[$$1xx], (atq<C, I>)$$0xx.f().get($$1xx), $$0xx.g()[$$1xx]))
-                              .toList()
-                     )
-               )
-               .apply($$2x, ($$0xx, $$1xx) -> {
-                  float[] $$2xx = new float[$$1xx.size()];
-                  Builder<atq<C, I>> $$3x = ImmutableList.builder();
-                  float[] $$4 = new float[$$1xx.size()];
-
-                  for (int $$5 = 0; $$5 < $$1xx.size(); $$5++) {
-                     a<C, I> $$6 = (a<C, I>)$$1xx.get($$5);
-                     $$2xx[$$5] = $$6.a();
-                     $$3x.add($$6.b());
-                     $$4[$$5] = $$6.c();
-                  }
-
-                  return atq.e.a((I)$$0xx, $$2xx, $$3x.build(), $$4);
-               })
-      );
-      $$1.setValue(
-         Codec.either(Codec.FLOAT, $$3)
-            .xmap(
-               $$0x -> (atq)$$0x.map(atq.c::new, $$0xx -> $$0xx), $$0x -> $$0x instanceof atq.c<C, I> $$1x ? Either.left($$1x.d()) : Either.right((atq.e)$$0x)
-            )
-      );
-      return (Codec<atq<C, I>>)$$1.getValue();
+   private atq() {
    }
 
-   static <C, I extends avq<C>> atq<C, I> a(float $$0) {
-      return new atq.c<>($$0);
-   }
+   public static emc a(emc $$0, atq.a $$1) {
+      int $$2 = aup.a($$0.a());
+      int $$3 = aup.a($$0.b());
+      int $$4 = aup.a($$0.c());
+      double $$5 = $$0.a() - (double)$$2;
+      double $$6 = $$0.b() - (double)$$3;
+      double $$7 = $$0.c() - (double)$$4;
+      double $$8 = 0.0;
+      emc $$9 = emc.b;
 
-   static <C, I extends avq<C>> atq.b<C, I> a(I $$0) {
-      return new atq.b<>($$0);
-   }
+      for (int $$10 = 0; $$10 < 6; $$10++) {
+         double $$11 = aup.d($$5, c[$$10 + 1], c[$$10]);
+         int $$12 = $$2 - 2 + $$10;
 
-   static <C, I extends avq<C>> atq.b<C, I> a(I $$0, avq<Float> $$1) {
-      return new atq.b<>($$0, $$1);
-   }
+         for (int $$13 = 0; $$13 < 6; $$13++) {
+            double $$14 = aup.d($$6, c[$$13 + 1], c[$$13]);
+            int $$15 = $$3 - 2 + $$13;
 
-   public static final class b<C, I extends avq<C>> {
-      private final I a;
-      private final avq<Float> b;
-      private final FloatList c = new FloatArrayList();
-      private final List<atq<C, I>> d = Lists.newArrayList();
-      private final FloatList e = new FloatArrayList();
-
-      protected b(I $$0) {
-         this($$0, avq.a);
-      }
-
-      protected b(I $$0, avq<Float> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public atq.b<C, I> a(float $$0, float $$1) {
-         return this.a($$0, new atq.c<>(this.b.a($$1)), 0.0F);
-      }
-
-      public atq.b<C, I> a(float $$0, float $$1, float $$2) {
-         return this.a($$0, new atq.c<>(this.b.a($$1)), $$2);
-      }
-
-      public atq.b<C, I> a(float $$0, atq<C, I> $$1) {
-         return this.a($$0, $$1, 0.0F);
-      }
-
-      private atq.b<C, I> a(float $$0, atq<C, I> $$1, float $$2) {
-         if (!this.c.isEmpty() && $$0 <= this.c.getFloat(this.c.size() - 1)) {
-            throw new IllegalArgumentException("Please register points in ascending order");
-         } else {
-            this.c.add($$0);
-            this.d.add($$1);
-            this.e.add($$2);
-            return this;
-         }
-      }
-
-      public atq<C, I> a() {
-         if (this.c.isEmpty()) {
-            throw new IllegalStateException("No elements added");
-         } else {
-            return atq.e.a(this.a, this.c.toFloatArray(), ImmutableList.copyOf(this.d), this.e.toFloatArray());
-         }
-      }
-   }
-
-   @avt
-   public static record c<C, I extends avq<C>>(float b) implements atq<C, I> {
-      @Override
-      public float a(C $$0) {
-         return this.b;
-      }
-
-      @Override
-      public String a() {
-         return String.format(Locale.ROOT, "k=%.3f", this.b);
-      }
-
-      @Override
-      public float c() {
-         return this.b;
-      }
-
-      @Override
-      public atq<C, I> a(atq.d<I> $$0) {
-         return this;
-      }
-
-      public float d() {
-         return this.b;
-      }
-   }
-
-   public interface d<I> {
-      I visit(I var1);
-   }
-
-   @avt
-   public static record e<C, I extends avq<C>>(I b, float[] c, List<atq<C, I>> d, float[] e, float f, float g) implements atq<C, I> {
-
-      public e(I b, float[] c, List<atq<C, I>> d, float[] e, float f, float g) {
-         a(c, d, e);
-         this.b = b;
-         this.c = c;
-         this.d = d;
-         this.e = e;
-         this.f = f;
-         this.g = g;
-      }
-
-      static <C, I extends avq<C>> atq.e<C, I> a(I $$0, float[] $$1, List<atq<C, I>> $$2, float[] $$3) {
-         a($$1, $$2, $$3);
-         int $$4 = $$1.length - 1;
-         float $$5 = Float.POSITIVE_INFINITY;
-         float $$6 = Float.NEGATIVE_INFINITY;
-         float $$7 = $$0.b();
-         float $$8 = $$0.c();
-         if ($$7 < $$1[0]) {
-            float $$9 = a($$7, $$1, $$2.get(0).b(), $$3, 0);
-            float $$10 = a($$7, $$1, $$2.get(0).c(), $$3, 0);
-            $$5 = Math.min($$5, Math.min($$9, $$10));
-            $$6 = Math.max($$6, Math.max($$9, $$10));
-         }
-
-         if ($$8 > $$1[$$4]) {
-            float $$11 = a($$8, $$1, $$2.get($$4).b(), $$3, $$4);
-            float $$12 = a($$8, $$1, $$2.get($$4).c(), $$3, $$4);
-            $$5 = Math.min($$5, Math.min($$11, $$12));
-            $$6 = Math.max($$6, Math.max($$11, $$12));
-         }
-
-         for (atq<C, I> $$13 : $$2) {
-            $$5 = Math.min($$5, $$13.b());
-            $$6 = Math.max($$6, $$13.c());
-         }
-
-         for (int $$14 = 0; $$14 < $$4; $$14++) {
-            float $$15 = $$1[$$14];
-            float $$16 = $$1[$$14 + 1];
-            float $$17 = $$16 - $$15;
-            atq<C, I> $$18 = $$2.get($$14);
-            atq<C, I> $$19 = $$2.get($$14 + 1);
-            float $$20 = $$18.b();
-            float $$21 = $$18.c();
-            float $$22 = $$19.b();
-            float $$23 = $$19.c();
-            float $$24 = $$3[$$14];
-            float $$25 = $$3[$$14 + 1];
-            if ($$24 != 0.0F || $$25 != 0.0F) {
-               float $$26 = $$24 * $$17;
-               float $$27 = $$25 * $$17;
-               float $$28 = Math.min($$20, $$22);
-               float $$29 = Math.max($$21, $$23);
-               float $$30 = $$26 - $$23 + $$20;
-               float $$31 = $$26 - $$22 + $$21;
-               float $$32 = -$$27 + $$22 - $$21;
-               float $$33 = -$$27 + $$23 - $$20;
-               float $$34 = Math.min($$30, $$32);
-               float $$35 = Math.max($$31, $$33);
-               $$5 = Math.min($$5, $$28 + 0.25F * $$34);
-               $$6 = Math.max($$6, $$29 + 0.25F * $$35);
+            for (int $$16 = 0; $$16 < 6; $$16++) {
+               double $$17 = aup.d($$7, c[$$16 + 1], c[$$16]);
+               int $$18 = $$4 - 2 + $$16;
+               double $$19 = $$11 * $$14 * $$17;
+               $$8 += $$19;
+               $$9 = $$9.e($$1.fetch($$12, $$15, $$18).a($$19));
             }
          }
-
-         return new atq.e<>($$0, $$1, $$2, $$3, $$5, $$6);
       }
 
-      private static float a(float $$0, float[] $$1, float $$2, float[] $$3, int $$4) {
-         float $$5 = $$3[$$4];
-         return $$5 == 0.0F ? $$2 : $$2 + $$5 * ($$0 - $$1[$$4]);
-      }
+      return $$9.a(1.0 / $$8);
+   }
 
-      private static <C, I extends avq<C>> void a(float[] $$0, List<atq<C, I>> $$1, float[] $$2) {
-         if ($$0.length != $$1.size() || $$0.length != $$2.length) {
-            throw new IllegalArgumentException("All lengths must be equal, got: " + $$0.length + " " + $$1.size() + " " + $$2.length);
-         } else if ($$0.length == 0) {
-            throw new IllegalArgumentException("Cannot create a multipoint spline with no points");
-         }
-      }
-
-      @Override
-      public float a(C $$0) {
-         float $$1 = this.b.a($$0);
-         int $$2 = a(this.c, $$1);
-         int $$3 = this.c.length - 1;
-         if ($$2 < 0) {
-            return a($$1, this.c, this.d.get(0).a($$0), this.e, 0);
-         } else if ($$2 == $$3) {
-            return a($$1, this.c, this.d.get($$3).a($$0), this.e, $$3);
-         } else {
-            float $$4 = this.c[$$2];
-            float $$5 = this.c[$$2 + 1];
-            float $$6 = ($$1 - $$4) / ($$5 - $$4);
-            avq<C> $$7 = (avq<C>)this.d.get($$2);
-            avq<C> $$8 = (avq<C>)this.d.get($$2 + 1);
-            float $$9 = this.e[$$2];
-            float $$10 = this.e[$$2 + 1];
-            float $$11 = $$7.a($$0);
-            float $$12 = $$8.a($$0);
-            float $$13 = $$9 * ($$5 - $$4) - ($$12 - $$11);
-            float $$14 = -$$10 * ($$5 - $$4) + ($$12 - $$11);
-            return auo.i($$6, $$11, $$12) + $$6 * (1.0F - $$6) * auo.i($$6, $$13, $$14);
-         }
-      }
-
-      private static int a(float[] $$0, float $$1) {
-         return auo.a(0, $$0.length, $$2 -> $$1 < $$0[$$2]) - 1;
-      }
-
-      @VisibleForTesting
-      @Override
-      public String a() {
-         return "Spline{coordinate="
-            + this.b
-            + ", locations="
-            + this.a(this.c)
-            + ", derivatives="
-            + this.a(this.e)
-            + ", values="
-            + this.d.stream().map(atq::a).collect(Collectors.joining(", ", "[", "]"))
-            + "}";
-      }
-
-      private String a(float[] $$0) {
-         return "["
-            + IntStream.range(0, $$0.length)
-               .mapToDouble($$1 -> (double)$$0[$$1])
-               .mapToObj($$0x -> String.format(Locale.ROOT, "%.3f", $$0x))
-               .collect(Collectors.joining(", "))
-            + "]";
-      }
-
-      @Override
-      public atq<C, I> a(atq.d<I> $$0) {
-         return a($$0.visit(this.b), this.c, this.f().stream().map($$1 -> $$1.a($$0)).toList(), this.e);
-      }
-
-      public I d() {
-         return this.b;
-      }
-
-      public float[] e() {
-         return this.c;
-      }
-
-      public List<atq<C, I>> f() {
-         return this.d;
-      }
-
-      public float[] g() {
-         return this.e;
-      }
-
-      @Override
-      public float b() {
-         return this.f;
-      }
-
-      @Override
-      public float c() {
-         return this.g;
-      }
+   @FunctionalInterface
+   public interface a {
+      emc fetch(int var1, int var2, int var3);
    }
 }

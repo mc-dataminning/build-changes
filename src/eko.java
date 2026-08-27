@@ -1,35 +1,50 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record eko(float c) implements ekq {
-   public static final Codec<eko> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(eko::c)).apply($$0, eko::new));
-   public static final Codec<eko> b = Codec.FLOAT.xmap(eko::new, eko::c);
+public record eko(Optional<Boolean> b, Optional<Boolean> c) implements eke {
+   public static final Codec<eko> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(atx.a(Codec.BOOL, "raining").forGetter(eko::d), atx.a(Codec.BOOL, "thundering").forGetter(eko::e)).apply($$0, eko::new)
+   );
 
    @Override
-   public ekp b() {
-      return ekr.b;
+   public ekf b() {
+      return ekg.p;
    }
 
-   @Override
-   public float b(egw $$0) {
+   public boolean a(ehf $$0) {
+      ane $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ab() ? false : !this.c.isPresent() || this.c.get() == $$1.aa();
+   }
+
+   public static eko.a c() {
+      return new eko.a();
+   }
+
+   public Optional<Boolean> d() {
+      return this.b;
+   }
+
+   public Optional<Boolean> e() {
       return this.c;
    }
 
-   public static eko a(float $$0) {
-      return new eko($$0);
-   }
+   public static class a implements eke.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((eko)$$0).c, this.c) == 0 : false;
+      public eko.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+      public eko.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public eko a() {
+         return new eko(this.a, this.b);
+      }
    }
 }

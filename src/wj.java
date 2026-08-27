@@ -1,39 +1,48 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class wj implements vg {
-   public static final MapCodec<wj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, wj::new)
-   );
-   public static final vg.a<wj> b = new vg.a<>(a, "keybind");
-   private final String c;
-   @Nullable
-   private Supplier<vf> d;
+public record wj(String d, @Nullable ge e) implements wi {
+   public static final MapCodec<wj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(wj::b)).apply($$0, wj::new));
+   public static final wi.a<wj> b = new wi.a<>(a, "entity");
 
    public wj(String $$0) {
-      this.c = $$0;
+      this($$0, a($$0));
    }
 
-   private vf c() {
-      if (this.d == null) {
-         this.d = wk.a.apply(this.c);
+   @Nullable
+   private static ge a(String $$0) {
+      try {
+         gf $$1 = new gf(new StringReader($$0));
+         return $$1.t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
-
-      return this.d.get();
    }
 
    @Override
-   public <T> Optional<T> a(vk.a<T> $$0) {
-      return this.c().a($$0);
+   public Stream<so> a(ds $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends blw> $$1 = this.e.b($$0);
+         return $$1.stream().map(cm::b);
+      } else {
+         return Stream.empty();
+      }
    }
 
    @Override
-   public <T> Optional<T> a(vk.b<T> $$0, wc $$1) {
-      return this.c().a($$0, $$1);
+   public wi.a<?> a() {
+      return b;
+   }
+
+   @Override
+   public String toString() {
+      return "entity=" + this.d;
    }
 
    @Override
@@ -41,7 +50,7 @@ public class wj implements vg {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof wj $$1 && this.c.equals($$1.c)) {
+         if ($$0 instanceof wj $$1 && this.d.equals($$1.d)) {
             return true;
          }
 
@@ -51,20 +60,15 @@ public class wj implements vg {
 
    @Override
    public int hashCode() {
-      return this.c.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "keybind{" + this.c + "}";
+      return this.d.hashCode();
    }
 
    public String b() {
-      return this.c;
+      return this.d;
    }
 
-   @Override
-   public vg.a<?> a() {
-      return b;
+   @Nullable
+   public ge c() {
+      return this.e;
    }
 }

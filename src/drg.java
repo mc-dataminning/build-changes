@@ -1,20 +1,59 @@
 import com.mojang.serialization.Codec;
 
-public class drg extends dru<duf> {
-   public drg(Codec<duf> $$0) {
+public class drg extends dsc<duq> {
+   private static final djp a = cxa.mZ.o().a(cwc.h, Integer.valueOf(1)).a(cwc.i, dkb.a).a(cwc.j, Integer.valueOf(0));
+   private static final djp b = a.a(cwc.i, dkb.c).a(cwc.j, Integer.valueOf(1));
+   private static final djp c = a.a(cwc.i, dkb.c);
+   private static final djp d = a.a(cwc.i, dkb.b);
+
+   public drg(Codec<duq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drw<duf> $$0) {
-      cuk $$1 = $$0.b();
+   public boolean a(dse<duq> $$0) {
+      int $$1 = 0;
       hx $$2 = $$0.e();
-      auv $$3 = $$0.d();
-      if ($$1.u($$2) && $$1.a_($$2.d()).a(cws.fz)) {
-         cxv.a($$1, $$2, $$3, 8);
-         return true;
-      } else {
-         return false;
+      cus $$3 = $$0.b();
+      auw $$4 = $$0.d();
+      duq $$5 = $$0.f();
+      hx.a $$6 = $$2.j();
+      hx.a $$7 = $$2.j();
+      if ($$3.u($$6)) {
+         if (cxa.mZ.o().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
+
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(doy.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, cxa.l.o(), 2);
+                        }
+                     }
+                  }
+               }
+            }
+
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(ic.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(ic.a, 1), c, 2);
+               $$3.a($$6.c(ic.a, 1), d, 2);
+            }
+         }
+
+         $$1++;
       }
+
+      return $$1 > 0;
    }
 }

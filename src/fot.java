@@ -1,67 +1,200 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
+import com.google.common.collect.Queues;
+import com.mojang.authlib.GameProfile;
+import java.time.Instant;
+import java.util.Deque;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public record fot(String a, @Nullable fot.a b) {
-   public static fot a() {
-      return a(null);
+public class fot {
+   private static final vg a = vg.c("chat.validation_error").a(n.m, n.u);
+   private final evr b;
+   private final Deque<fot.a> c = Queues.newArrayDeque();
+   private long d;
+   private long e;
+
+   public fot(evr $$0) {
+      this.b = $$0;
    }
 
-   public static fot a(String $$0) {
-      return a(new fot.a.b($$0));
-   }
+   public void a() {
+      if (this.d != 0L) {
+         if (ac.b() >= this.e + this.d) {
+            fot.a $$0 = this.c.poll();
 
-   public static fot a(eri $$0) {
-      return a(new fot.a.a($$0));
-   }
-
-   public static fot a(@Nullable fot.a $$0) {
-      return new fot(g(), $$0);
-   }
-
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof fot.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof fot.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("1.20.4");
-      if (evi.e().a()) {
-         $$0.append(" (modded)");
-      }
-
-      return $$0.toString();
-   }
-
-   public String e() {
-      return this.a;
-   }
-
-   @Nullable
-   public fot.a f() {
-      return this.b;
-   }
-
-   public interface a {
-      public static record a(long a, int b) implements fot.a {
-         public a(eri $$0) {
-            this($$0.a, $$0.n);
+            while ($$0 != null && !$$0.a()) {
+               $$0 = this.c.poll();
+            }
          }
       }
+   }
 
-      public static record b(String a) implements fot.a {
+   public void a(double $$0) {
+      long $$1 = (long)($$0 * 1000.0);
+      if ($$1 == 0L && this.d > 0L) {
+         this.c.forEach(fot.a::a);
+         this.c.clear();
+      }
+
+      this.d = $$1;
+   }
+
+   public void b() {
+      this.c.remove().a();
+   }
+
+   public long c() {
+      return (long)this.c.size();
+   }
+
+   public void d() {
+      this.c.forEach(fot.a::a);
+      this.c.clear();
+   }
+
+   public boolean a(vs $$0) {
+      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
+   }
+
+   private boolean e() {
+      return this.d > 0L && ac.b() < this.e + this.d;
+   }
+
+   private void a(@Nullable vs $$0, BooleanSupplier $$1) {
+      if (this.e()) {
+         this.c.add(new fot.a($$0, $$1));
+      } else {
+         $$1.getAsBoolean();
+      }
+   }
+
+   public void a(vw $$0, GameProfile $$1, vc.a $$2) {
+      boolean $$3 = this.b.m.ad().c();
+      vw $$4 = $$3 ? $$0.a() : $$0;
+      vg $$5 = $$2.a($$4.d());
+      Instant $$6 = Instant.now();
+      this.a($$0.l(), () -> {
+         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
+         fof $$7 = this.b.J();
+         if ($$7 != null) {
+            $$7.a($$0, $$6x);
+         }
+
+         return $$6x;
+      });
+   }
+
+   public void a(UUID $$0, vc.a $$1) {
+      this.a(null, () -> {
+         if (this.b.a($$0)) {
+            return false;
+         } else {
+            vg $$2 = $$1.a(a);
+            this.b.l.d().a($$2, null, evm.d());
+            this.e = ac.b();
+            return true;
+         }
+      });
+   }
+
+   public void a(vg $$0, vc.a $$1) {
+      Instant $$2 = Instant.now();
+      this.a(null, () -> {
+         vg $$3 = $$1.a($$0);
+         this.b.l.d().a($$3);
+         this.a($$1, $$0);
+         this.a($$3, $$2);
+         this.e = ac.b();
+         return true;
+      });
+   }
+
+   private boolean a(vc.a $$0, vw $$1, vg $$2, GameProfile $$3, boolean $$4, Instant $$5) {
+      fov $$6 = this.a($$1, $$2, $$5);
+      if ($$4 && $$6.a()) {
+         return false;
+      } else if (!this.b.a($$1.g()) && !$$1.j()) {
+         evm $$7 = $$6.a($$1);
+         vs $$8 = $$1.l();
+         vk $$9 = $$1.o();
+         if ($$9.a()) {
+            this.b.l.d().a($$2, $$8, $$7);
+            this.a($$0, $$1.d());
+         } else {
+            vg $$10 = $$9.b($$1.c());
+            if ($$10 != null) {
+               this.b.l.d().a($$0.a($$10), $$8, $$7);
+               this.a($$0, $$10);
+            }
+         }
+
+         this.a($$1, $$0, $$3, $$6);
+         this.e = ac.b();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(vc.a $$0, vg $$1) {
+      this.b.aW().a($$0.b($$1));
+   }
+
+   private fov a(vw $$0, vg $$1, Instant $$2) {
+      return this.a($$0.g()) ? fov.a : fov.a($$0, $$1, $$2);
+   }
+
+   private void a(vw $$0, vc.a $$1, GameProfile $$2, fov $$3) {
+      fou $$4 = this.b.aY().b();
+      $$4.a(fox.a($$2, $$0, $$3));
+   }
+
+   private void a(vg $$0, Instant $$1) {
+      fou $$2 = this.b.aY().b();
+      $$2.a(fox.a($$0, $$1));
+   }
+
+   public void a(vg $$0, boolean $$1) {
+      if (!this.b.m.ab().c() || !this.b.a(this.a($$0))) {
+         if ($$1) {
+            this.b.l.a($$0, false);
+         } else {
+            this.b.l.d().a($$0);
+            this.a($$0, Instant.now());
+         }
+
+         this.b.aW().b($$0);
+      }
+   }
+
+   private UUID a(vg $$0) {
+      String $$1 = avk.a($$0);
+      String $$2 = StringUtils.substringBetween($$1, "<", ">");
+      return $$2 == null ? ac.d : this.b.aK().a($$2);
+   }
+
+   private boolean a(UUID $$0) {
+      if (this.b.R() && this.b.s != null) {
+         UUID $$1 = this.b.s.fR().getId();
+         return $$1.equals($$0);
+      } else {
+         return false;
+      }
+   }
+
+   static record a(@Nullable vs a, BooleanSupplier b) {
+      public boolean a() {
+         return this.b.getAsBoolean();
+      }
+
+      @Nullable
+      public vs b() {
+         return this.a;
+      }
+
+      public BooleanSupplier c() {
+         return this.b;
       }
    }
 }

@@ -15,7 +15,7 @@ public record cz(List<cz.c> b) {
       );
    public static final Codec<cz> a = c.xmap(cz::new, cz::a);
 
-   public <S extends djj<?, S>> boolean a(dji<?, S> $$0, S $$1) {
+   public <S extends djr<?, S>> boolean a(djq<?, S> $$0, S $$1) {
       for (cz.c $$2 : this.b) {
          if (!$$2.a($$0, $$1)) {
             return false;
@@ -25,15 +25,15 @@ public record cz(List<cz.c> b) {
       return true;
    }
 
-   public boolean a(djh $$0) {
+   public boolean a(djp $$0) {
       return this.a($$0.b().n(), $$0);
    }
 
-   public boolean a(eer $$0) {
+   public boolean a(eez $$0) {
       return this.a($$0.a().f(), $$0);
    }
 
-   public Optional<String> a(dji<?, ?> $$0) {
+   public Optional<String> a(djq<?, ?> $$0) {
       for (cz.c $$1 : this.b) {
          Optional<String> $$2 = $$1.a($$0);
          if ($$2.isPresent()) {
@@ -58,20 +58,20 @@ public record cz(List<cz.c> b) {
          return new cz.a();
       }
 
-      public cz.a a(dkk<?> $$0, String $$1) {
+      public cz.a a(dks<?> $$0, String $$1) {
          this.a.add(new cz.c($$0.f(), new cz.b($$1)));
          return this;
       }
 
-      public cz.a a(dkk<Integer> $$0, int $$1) {
+      public cz.a a(dks<Integer> $$0, int $$1) {
          return this.a($$0, Integer.toString($$1));
       }
 
-      public cz.a a(dkk<Boolean> $$0, boolean $$1) {
+      public cz.a a(dks<Boolean> $$0, boolean $$1) {
          return this.a($$0, Boolean.toString($$1));
       }
 
-      public <T extends Comparable<T> & avk> cz.a a(dkk<T> $$0, T $$1) {
+      public <T extends Comparable<T> & avl> cz.a a(dks<T> $$0, T $$1) {
          return this.a($$0, $$1.c());
       }
 
@@ -84,7 +84,7 @@ public record cz(List<cz.c> b) {
       public static final Codec<cz.b> a = Codec.STRING.xmap(cz.b::new, cz.b::a);
 
       @Override
-      public <T extends Comparable<T>> boolean a(djj<?, ?> $$0, dkk<T> $$1) {
+      public <T extends Comparable<T>> boolean a(djr<?, ?> $$0, dks<T> $$1) {
          T $$2 = $$0.c($$1);
          Optional<T> $$3 = $$1.b(this.c);
          return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
@@ -96,24 +96,24 @@ public record cz(List<cz.c> b) {
    }
 
    static record c(String a, cz.e b) {
-      public <S extends djj<?, S>> boolean a(dji<?, S> $$0, S $$1) {
-         dkk<?> $$2 = $$0.a(this.a);
+      public <S extends djr<?, S>> boolean a(djq<?, S> $$0, S $$1) {
+         dks<?> $$2 = $$0.a(this.a);
          return $$2 != null && this.b.a($$1, $$2);
       }
 
-      public Optional<String> a(dji<?, ?> $$0) {
-         dkk<?> $$1 = $$0.a(this.a);
+      public Optional<String> a(djq<?, ?> $$0) {
+         dks<?> $$1 = $$0.a(this.a);
          return $$1 != null ? Optional.empty() : Optional.of(this.a);
       }
    }
 
    static record d(Optional<String> c, Optional<String> d) implements cz.e {
       public static final Codec<cz.d> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atw.a(Codec.STRING, "min").forGetter(cz.d::a), atw.a(Codec.STRING, "max").forGetter(cz.d::b)).apply($$0, cz.d::new)
+         $$0 -> $$0.group(atx.a(Codec.STRING, "min").forGetter(cz.d::a), atx.a(Codec.STRING, "max").forGetter(cz.d::b)).apply($$0, cz.d::new)
       );
 
       @Override
-      public <T extends Comparable<T>> boolean a(djj<?, ?> $$0, dkk<T> $$1) {
+      public <T extends Comparable<T>> boolean a(djr<?, ?> $$0, dks<T> $$1) {
          T $$2 = $$0.c($$1);
          if (this.c.isPresent()) {
             Optional<T> $$3 = $$1.b(this.c.get());
@@ -152,6 +152,6 @@ public record cz(List<cz.c> b) {
          }
       });
 
-      <T extends Comparable<T>> boolean a(djj<?, ?> var1, dkk<T> var2);
+      <T extends Comparable<T>> boolean a(djr<?, ?> var1, dks<T> var2);
    }
 }

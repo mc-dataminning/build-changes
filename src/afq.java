@@ -1,24 +1,42 @@
-public class afq implements xf<afm> {
-   private final int a;
+import java.security.PublicKey;
 
-   public afq(int $$0) {
+public class afq implements xg<afn> {
+   private final String a;
+   private final byte[] b;
+   private final byte[] c;
+
+   public afq(String $$0, byte[] $$1, byte[] $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public afq(ui $$0) {
-      this.a = $$0.n();
+   public afq(uj $$0) {
+      this.a = $$0.d(20);
+      this.b = $$0.b();
+      this.c = $$0.b();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.a);
+   public void a(uj $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(afm $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public String a() {
       return this.a;
+   }
+
+   public PublicKey d() throws ato {
+      return atn.a(this.b);
+   }
+
+   public byte[] e() {
+      return this.c;
    }
 }

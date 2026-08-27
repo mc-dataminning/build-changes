@@ -1,71 +1,19 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.function.Function;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dnp implements dnv {
-   public static final Codec<dnp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ja.a.fieldOf("source_entity").forGetter(dnp::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.d))
-            .apply($$0, ($$0x, $$1) -> new dnp(Either.right(Either.left($$0x)), $$1))
-   );
-   private Either<blv, Either<UUID, Integer>> c;
-   final float d;
+public interface dnp<T extends dng> {
+   @Nullable
+   T a(int var1);
 
-   public dnp(blv $$0, float $$1) {
-      this(Either.left($$0), $$1);
-   }
+   @Nullable
+   T a(UUID var1);
 
-   dnp(Either<blv, Either<UUID, Integer>> $$0, float $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   Iterable<T> a();
 
-   @Override
-   public Optional<elt> a(ctp $$0) {
-      if (this.c.left().isEmpty()) {
-         this.b($$0);
-      }
+   <U extends T> void a(dnn<T, U> var1, atd<U> var2);
 
-      return this.c.left().map($$0x -> $$0x.dk().b(0.0, (double)this.d, 0.0));
-   }
+   void a(elx var1, Consumer<T> var2);
 
-   private void b(ctp $$0) {
-      ((Optional)this.c.map(Optional::of, $$1 -> Optional.ofNullable((blv)$$1.map($$1x -> $$0 instanceof and $$2 ? $$2.a($$1x) : null, $$0::a))))
-         .ifPresent($$0x -> this.c = Either.left($$0x));
-   }
-
-   private UUID b() {
-      return (UUID)this.c.map(blv::cw, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
-   }
-
-   int c() {
-      return (Integer)this.c.map(blv::aj, $$0 -> (Integer)$$0.map($$0x -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
-   }
-
-   @Override
-   public dnw<?> a() {
-      return dnw.b;
-   }
-
-   public static class a implements dnw<dnp> {
-      public dnp a(ui $$0) {
-         return new dnp(Either.right(Either.right($$0.n())), $$0.readFloat());
-      }
-
-      public void a(ui $$0, dnp $$1) {
-         $$0.c($$1.c());
-         $$0.a($$1.d);
-      }
-
-      @Override
-      public Codec<dnp> a() {
-         return dnp.a;
-      }
-   }
+   <U extends T> void a(dnn<T, U> var1, elx var2, atd<U> var3);
 }

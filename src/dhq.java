@@ -1,69 +1,80 @@
-public class dhq extends dgv implements dhy {
-   private final dhd a = new dhd();
-   private final dhi b = new dhi() {
-      @Override
-      protected void a(ctp $$0, hx $$1, djh $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, ars.hv, art.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+public abstract class dhq {
+   private static final int a = 5;
+   private int b;
+
+   protected abstract void a(ctx var1, hx var2, djp var3);
+
+   protected abstract void b(ctx var1, hx var2, djp var3);
+
+   protected abstract void a(ctx var1, hx var2, djp var3, int var4, int var5);
+
+   protected abstract boolean a(cfq var1);
+
+   public void a(cfq $$0, ctx $$1, hx $$2, djp $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, dnz.k, $$2);
+         d($$1, $$2, $$3);
       }
 
-      @Override
-      protected void b(ctp $$0, hx $$1, djh $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, ars.hu, art.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
-
-      @Override
-      protected void a(ctp $$0, hx $$1, djh $$2, int $$3, int $$4) {
-         $$0.a(dhq.this.p, cws.fG, 1, $$4);
-      }
-
-      @Override
-      protected boolean a(cfi $$0) {
-         return $$0.gf().b(dhq.this);
-      }
-   };
-
-   public dhq(hx $$0, djh $$1) {
-      super(dgx.d, $$0, $$1);
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   public static void a(ctp $$0, hx $$1, djh $$2, dhq $$3) {
-      $$3.a.a();
+   public void b(cfq $$0, ctx $$1, hx $$2, djp $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, dnz.j, $$2);
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   private int a(ctx $$0, hx $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+      float $$5 = 5.0F;
+      elx $$6 = new elx(
+         (double)((float)$$2 - 5.0F),
+         (double)((float)$$3 - 5.0F),
+         (double)((float)$$4 - 5.0F),
+         (double)((float)($$2 + 1) + 5.0F),
+         (double)((float)($$3 + 1) + 5.0F),
+         (double)((float)($$4 + 1) + 5.0F)
+      );
+      return $$0.a(dnn.a(cfq.class), $$6, this::a).size();
+   }
+
+   public void c(ctx $$0, hx $$1, djp $$2) {
+      int $$3 = this.a($$0, $$1);
+      int $$4 = this.b;
+      if ($$4 != $$3) {
+         boolean $$5 = $$3 != 0;
+         boolean $$6 = $$4 != 0;
+         if ($$5 && !$$6) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, dnz.k, $$1);
+         } else if (!$$5) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, dnz.j, $$1);
+         }
+
+         this.b = $$3;
+      }
+
+      this.a($$0, $$1, $$2, $$4, $$3);
+      if ($$3 > 0) {
+         d($$0, $$1, $$2);
       }
    }
 
-   public void a(cfi $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.b.a($$0, this.i(), this.aB_(), this.r());
-      }
+   public int a() {
+      return this.b;
    }
 
-   public void b(cfi $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.b.b($$0, this.i(), this.aB_(), this.r());
-      }
-   }
-
-   public boolean c(cfi $$0) {
-      return bju.a(this, $$0);
-   }
-
-   public void c() {
-      if (!this.q) {
-         this.b.c(this.i(), this.aB_(), this.r());
-      }
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.a.a($$0);
+   private static void d(ctx $$0, hx $$1, djp $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

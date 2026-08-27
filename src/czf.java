@@ -1,82 +1,88 @@
-import com.google.common.base.Predicates;
-import com.mojang.serialization.MapCodec;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class czf extends cwq {
-   public static final MapCodec<czf> a = b(czf::new);
-   public static final dkb b = dal.aE;
-   public static final djy c = djx.h;
-   protected static final emm d = cwq.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final emm e = cwq.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final emm f = emj.a(d, e);
-   private static djm g;
+public class czf {
+   public static <S extends dhd> czf.c<S> a(
+      dhf<S> $$0, Function<djp, czf.a> $$1, Function<djp, ic> $$2, dkj $$3, djp $$4, cty $$5, hx $$6, BiPredicate<cty, hx> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return czf.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return czf.b::b;
+      } else {
+         czf.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == czf.a.a;
+         boolean $$11 = $$9 == czf.a.b;
+         if ($$10) {
+            return new czf.c.b<>($$8);
+         } else {
+            hx $$12 = $$6.a($$2.apply($$4));
+            djp $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               czf.a $$14 = $$1.apply($$13);
+               if ($$14 != czf.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return czf.b::b;
+                  }
 
-   @Override
-   public MapCodec<czf> a() {
-      return a;
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new czf.c.a<>($$16, $$17);
+                  }
+               }
+            }
+
+            return new czf.c.b<>($$8);
+         }
+      }
    }
 
-   public czf(djg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ic.c).a(c, Boolean.valueOf(false)));
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   public boolean g_(djh $$0) {
-      return true;
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return $$0.c(c) ? f : d;
-   }
+   public interface c<S> {
+      <T> T apply(czf.b<? super S, T> var1);
 
-   @Override
-   public djh a(cph $$0) {
-      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
-   }
+      public static final class a<S> implements czf.c<S> {
+         private final S a;
+         private final S b;
 
-   @Override
-   public boolean d_(djh $$0) {
-      return true;
-   }
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
 
-   @Override
-   public int a(djh $$0, ctp $$1, hx $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   public djh a(djh $$0, ddc $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public djh a(djh $$0, dbm $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static djm b() {
-      if (g == null) {
-         g = djn.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', djl.a(djq.a))
-            .a('^', djl.a(djq.a(cws.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ic.d))))
-            .a('>', djl.a(djq.a(cws.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ic.e))))
-            .a('v', djl.a(djq.a(cws.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ic.c))))
-            .a('<', djl.a(djq.a(cws.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ic.f))))
-            .b();
+         @Override
+         public <T> T apply(czf.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
       }
 
-      return g;
-   }
+      public static final class b<S> implements czf.c<S> {
+         private final S a;
 
-   @Override
-   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
-      return false;
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(czf.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

@@ -1,48 +1,61 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public class dwe extends dwc {
-   public static final Codec<dwe> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  djh.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(djh.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(djh.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, dwe::new)
-   );
-   private final float g;
-   private final float h;
-   private final djh i;
-   private final List<djh> j;
-   private final List<djh> k;
+public abstract class dwe {
+   public static final Codec<dwe> d = kd.Y.q().dispatch(dwe::a, dwf::a);
+   protected final bjh e;
+   protected final dwh f;
+   protected final Optional<dwb> g;
 
-   public dwe(long $$0, edu.a $$1, float $$2, float $$3, float $$4, djh $$5, List<djh> $$6, List<djh> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+   protected static <P extends dwe> P3<Mu<P>, bjh, dwh, Optional<dwb>> a(Instance<P> $$0) {
+      return $$0.group(
+         bjh.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         dwh.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         dwb.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   @Override
-   protected dwa<?> a() {
-      return dwa.c;
+   public dwe(bjh $$0, dwh $$1, Optional<dwb> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public djh a(auv $$0, hx $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ac.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
+   protected abstract dwf<?> a();
+
+   public abstract boolean a(cud var1, BiConsumer<hx, djp> var2, auw var3, hx var4, hx var5, dvc var6);
+
+   protected boolean a(cud $$0, hx $$1) {
+      return dto.c($$0, $$1);
+   }
+
+   protected void a(cud $$0, BiConsumer<hx, djp> $$1, auw $$2, hx $$3, dvc $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            dwb $$5 = this.g.get();
+            hx $$6 = $$3.c();
+            if ($$2.i() < $$5.b() && $$0.a($$6, djo.a::i)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+            }
+         }
       }
+   }
+
+   protected djp a(cud $$0, hx $$1, djp $$2) {
+      if ($$2.b(dkf.C)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(asn.a));
+         return $$2.a(dkf.C, Boolean.valueOf($$3));
+      } else {
+         return $$2;
+      }
+   }
+
+   public hx a(hx $$0, auw $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

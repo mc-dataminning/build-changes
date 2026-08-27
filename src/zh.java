@@ -1,53 +1,40 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class zh implements xg<zb> {
+   private final int a;
+   private final hx b;
+   private final int c;
 
-public class zh implements xf<za> {
-   private final hx a;
-   private final dgx<?> b;
-   @Nullable
-   private final sn c;
-
-   public static zh a(dgv $$0, Function<dgv, sn> $$1) {
-      return new zh($$0.aB_(), $$0.v(), $$1.apply($$0));
-   }
-
-   public static zh a(dgv $$0) {
-      return a($$0, dgv::ax_);
-   }
-
-   private zh(hx $$0, dgx<?> $$1, sn $$2) {
+   public zh(int $$0, hx $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2.g() ? null : $$2;
+      this.c = $$2;
    }
 
-   public zh(ui $$0) {
-      this.a = $$0.e();
-      this.b = $$0.a(kd.k);
-      this.c = $$0.q();
+   public zh(uj $$0) {
+      this.a = $$0.n();
+      this.b = $$0.e();
+      this.c = $$0.readUnsignedByte();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.a);
-      $$0.a(kd.k, this.b);
-      $$0.a((tk)this.c);
+   public void a(uj $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.k(this.c);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
+   public int a() {
       return this.a;
    }
 
-   public dgx<?> d() {
+   public hx d() {
       return this.b;
    }
 
-   @Nullable
-   public sn e() {
+   public int e() {
       return this.c;
    }
 }

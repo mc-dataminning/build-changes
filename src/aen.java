@@ -1,45 +1,53 @@
-public class aen implements xf<adj> {
-   private final int a;
-   private final aen.a b;
-   private final int c;
+public class aen implements xg<adk> {
+   private final hx a;
+   private final ic b;
+   private final aen.a c;
+   private final int d;
 
-   public aen(blv $$0, aen.a $$1) {
-      this($$0, $$1, 0);
+   public aen(aen.a $$0, hx $$1, ic $$2, int $$3) {
+      this.c = $$0;
+      this.a = $$1.i();
+      this.b = $$2;
+      this.d = $$3;
    }
 
-   public aen(blv $$0, aen.a $$1, int $$2) {
-      this.a = $$0.aj();
-      this.b = $$1;
-      this.c = $$2;
+   public aen(aen.a $$0, hx $$1, ic $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
-   public aen(ui $$0) {
-      this.a = $$0.n();
-      this.b = $$0.b(aen.a.class);
-      this.c = $$0.n();
+   public aen(uj $$0) {
+      this.c = $$0.b(aen.a.class);
+      this.a = $$0.e();
+      this.b = ic.a($$0.readUnsignedByte());
+      this.d = $$0.n();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.c(this.c);
+   public void a(uj $$0) {
+      $$0.a(this.c);
+      $$0.a(this.a);
+      $$0.k(this.b.d());
+      $$0.c(this.d);
    }
 
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public hx a() {
       return this.a;
    }
 
-   public aen.a d() {
+   public ic d() {
       return this.b;
    }
 
-   public int e() {
+   public aen.a e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 
    public static enum a {
@@ -49,8 +57,6 @@ public class aen implements xf<adj> {
       d,
       e,
       f,
-      g,
-      h,
-      i;
+      g;
    }
 }

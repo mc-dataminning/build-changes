@@ -1,61 +1,72 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cwi extends cwc implements cwh {
-   public static final MapCodec<cwi> a = b(cwi::new);
+public abstract class cwi extends cwy implements ddy {
+   public static final dkg d = dkf.C;
+   private static final emv a = cwy.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
-   @Override
-   public MapCodec<cwi> a() {
-      return a;
-   }
-
-   public cwi(djg.d $$0) {
+   protected cwi(djo.d $$0) {
       super($$0);
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public clm b() {
-      return clm.a;
+   protected abstract MapCodec<? extends cwi> a();
+
+   protected void a(djp $$0, cty $$1, hx $$2) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this, 60 + $$1.F_().a(40));
+      }
    }
 
-   @Override
-   public dgv a(hx $$0, djh $$1) {
-      return new dgq($$0, $$1);
+   protected static boolean e(djp $$0, ctd $$1, hx $$2) {
+      if ($$0.c(d)) {
+         return true;
+      } else {
+         for (ic $$3 : ic.values()) {
+            if ($$1.b_($$2.a($$3)).a(asn.a)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
    @Nullable
    @Override
-   public <T extends dgv> dgw<T> a(ctp $$0, djh $$1, dgx<T> $$2) {
-      return a($$2, dgx.o, dgq::a);
+   public djp a(cpp $$0) {
+      eez $$1 = $$0.q().b_($$0.a());
+      return this.o().a(d, Boolean.valueOf($$1.a(asn.a) && $$1.e() == 8));
    }
 
    @Override
-   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
-      if ($$1.B) {
-         return bkb.a;
-      } else {
-         dgv $$6 = $$1.c_($$2);
-         if ($$6 instanceof dgq) {
-            $$3.a((dgq)$$6);
-            $$3.a(asc.ab);
-         }
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return a;
+   }
 
-         return bkb.b;
+   @Override
+   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, efa.c, efa.c.a($$3));
       }
+
+      return $$1 == ic.a && !this.a($$0, (cua)$$3, $$4) ? cxa.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dcv b_(djh $$0) {
-      return dcv.c;
+   public boolean a(djp $$0, cua $$1, hx $$2) {
+      hx $$3 = $$2.d();
+      return $$1.a_($$3).d($$1, $$3, ic.b);
    }
 
    @Override
-   public void a(ctp $$0, hx $$1, djh $$2, bml $$3, cmy $$4) {
-      if ($$4.A()) {
-         dgv $$5 = $$0.c_($$1);
-         if ($$5 instanceof dgq) {
-            ((dgq)$$5).a($$4.y());
-         }
-      }
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   public eez c_(djp $$0) {
+      return $$0.c(d) ? efa.c.a(false) : super.c_($$0);
    }
 }

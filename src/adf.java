@@ -1,41 +1,89 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
+public class adf implements xg<zb> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 8;
+   private final int e;
+   private final ih<blh> f;
+   private final byte g;
+   private final int h;
+   private final byte i;
 
-public class adf implements xf<za> {
-   private final List<cqe<?>> a;
+   public adf(int $$0, blj $$1, boolean $$2) {
+      this.e = $$0;
+      this.f = $$1.b();
+      this.g = (byte)($$1.d() & 0xFF);
+      this.h = $$1.c();
+      byte $$3 = 0;
+      if ($$1.e()) {
+         $$3 = (byte)($$3 | 1);
+      }
 
-   public adf(Collection<cqe<?>> $$0) {
-      this.a = Lists.newArrayList($$0);
+      if ($$1.f()) {
+         $$3 = (byte)($$3 | 2);
+      }
+
+      if ($$1.g()) {
+         $$3 = (byte)($$3 | 4);
+      }
+
+      if ($$2) {
+         $$3 = (byte)($$3 | 8);
+      }
+
+      this.i = $$3;
    }
 
-   public adf(ui $$0) {
-      this.a = $$0.a(adf::b);
+   public adf(uj $$0) {
+      this.e = $$0.n();
+      this.f = $$0.a(kd.d.t());
+      this.g = $$0.readByte();
+      this.h = $$0.n();
+      this.i = $$0.readByte();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.a, adf::a);
+   public void a(uj $$0) {
+      $$0.c(this.e);
+      $$0.a(kd.d.t(), this.f);
+      $$0.k(this.g);
+      $$0.c(this.h);
+      $$0.k(this.i);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public List<cqe<?>> a() {
-      return this.a;
+   public int a() {
+      return this.e;
    }
 
-   private static cqe<?> b(ui $$0) {
-      ahg $$1 = $$0.t();
-      ahg $$2 = $$0.t();
-      cqc<?> $$3 = kd.t.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$0);
-      return new cqe<>($$2, $$3);
+   public ih<blh> d() {
+      return this.f;
    }
 
-   public static <T extends cqc<?>> void a(ui $$0, cqe<?> $$1) {
-      $$0.a(kd.t.b($$1.b().ar_()));
-      $$0.a($$1.a());
-      ((cqg<cqc<?>>)$$1.b().ar_()).a($$0, $$1.b());
+   public byte e() {
+      return this.g;
+   }
+
+   public int f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return (this.i & 2) != 0;
+   }
+
+   public boolean h() {
+      return (this.i & 1) != 0;
+   }
+
+   public boolean i() {
+      return (this.i & 4) != 0;
+   }
+
+   public boolean j() {
+      return (this.i & 8) != 0;
    }
 }

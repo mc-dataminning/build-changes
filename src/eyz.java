@@ -1,36 +1,143 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class eyz implements eza {
-   @Nullable
-   private ezb a;
-   private boolean b;
+public class eyz implements gjr {
+   private static final long a = 3000L;
+   private final evr b;
+   private final List<eyz.a> c = Lists.newArrayList();
+   private boolean d;
+   private final List<eyz.a> e = new ArrayList<>();
 
-   @Override
-   public final boolean aG_() {
-      return this.b;
-   }
-
-   @Override
-   public final void b(boolean $$0) {
+   public eyz(evr $$0) {
       this.b = $$0;
    }
 
-   @Nullable
-   @Override
-   public ezb aH_() {
-      return this.a;
+   public void a(exe $$0) {
+      gjs $$1 = this.b.ai();
+      if (!this.d && this.b.m.T().c()) {
+         $$1.a(this);
+         this.d = true;
+      } else if (this.d && !this.b.m.T().c()) {
+         $$1.b(this);
+         this.d = false;
+      }
+
+      if (this.d) {
+         eoh $$2 = $$1.b();
+         emc $$3 = $$2.b();
+         emc $$4 = $$2.c();
+         emc $$5 = $$2.a();
+         this.e.clear();
+
+         for (eyz.a $$6 : this.c) {
+            if ($$6.b($$3)) {
+               this.e.add($$6);
+            }
+         }
+
+         if (!this.e.isEmpty()) {
+            int $$7 = 0;
+            int $$8 = 0;
+            double $$9 = this.b.m.z().c();
+            Iterator<eyz.a> $$10 = this.e.iterator();
+
+            while ($$10.hasNext()) {
+               eyz.a $$11 = $$10.next();
+               if ((double)$$11.b() + 3000.0 * $$9 <= (double)ac.b()) {
+                  $$10.remove();
+               } else {
+                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
+               }
+            }
+
+            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
+
+            for (eyz.a $$12 : this.e) {
+               int $$13 = 255;
+               vg $$14 = $$12.a();
+               emc $$15 = $$12.c().d($$3).d();
+               double $$16 = $$5.b($$15);
+               double $$17 = $$4.b($$15);
+               boolean $$18 = $$17 > 0.5;
+               int $$19 = $$8 / 2;
+               int $$20 = 9;
+               int $$21 = $$20 / 2;
+               float $$22 = 1.0F;
+               int $$23 = this.b.h.a($$14);
+               int $$24 = aup.d(aup.b(255.0F, 75.0F, (float)(ac.b() - $$12.b()) / (float)(3000.0 * $$9)));
+               int $$25 = $$24 << 16 | $$24 << 8 | $$24;
+               $$0.c().a();
+               $$0.c().a((float)$$0.a() - (float)$$19 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$20 + 1)) * 1.0F, 0.0F);
+               $$0.c().b(1.0F, 1.0F, 1.0F);
+               $$0.a(-$$19 - 1, -$$21 - 1, $$19 + 1, $$21 + 1, this.b.m.b(0.8F));
+               int $$26 = $$25 + -16777216;
+               if (!$$18) {
+                  if ($$16 > 0.0) {
+                     $$0.b(this.b.h, ">", $$19 - this.b.h.b(">"), -$$21, $$26);
+                  } else if ($$16 < 0.0) {
+                     $$0.b(this.b.h, "<", -$$19, -$$21, $$26);
+                  }
+               }
+
+               $$0.b(this.b.h, $$14, -$$23 / 2, -$$21, $$26);
+               $$0.c().b();
+               $$7++;
+            }
+         }
+      }
    }
 
    @Override
-   public void a(@Nullable ezb $$0) {
-      if (this.a != null) {
-         this.a.a(false);
+   public void a(gio $$0, gjt $$1, float $$2) {
+      if ($$1.a() != null) {
+         vg $$3 = $$1.a();
+         if (!this.c.isEmpty()) {
+            for (eyz.a $$4 : this.c) {
+               if ($$4.a().equals($$3)) {
+                  $$4.a(new emc($$0.h(), $$0.i(), $$0.j()));
+                  return;
+               }
+            }
+         }
+
+         this.c.add(new eyz.a($$3, $$2, new emc($$0.h(), $$0.i(), $$0.j())));
+      }
+   }
+
+   public static class a {
+      private final vg a;
+      private final float b;
+      private long c;
+      private emc d;
+
+      public a(vg $$0, float $$1, emc $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.d = $$2;
+         this.c = ac.b();
       }
 
-      if ($$0 != null) {
-         $$0.a(true);
+      public vg a() {
+         return this.a;
       }
 
-      this.a = $$0;
+      public long b() {
+         return this.c;
+      }
+
+      public emc c() {
+         return this.d;
+      }
+
+      public void a(emc $$0) {
+         this.d = $$0;
+         this.c = ac.b();
+      }
+
+      public boolean b(emc $$0) {
+         return Float.isInfinite(this.b) || $$0.a((ir)this.d, (double)this.b);
+      }
    }
 }

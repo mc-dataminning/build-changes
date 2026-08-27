@@ -1,26 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dda extends cwz {
+public class dda extends cwy {
    public static final MapCodec<dda> a = b(dda::new);
-   protected static final float b = 6.0F;
-   protected static final emm c = cwq.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+   public static final dkg b = ddb.d;
 
    @Override
    public MapCodec<dda> a() {
       return a;
    }
 
-   protected dda(djg.d $$0) {
+   public dda(djo.d $$0) {
       super($$0);
+      this.k(this.o().a(b, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public djp a(cpp $$0) {
+      return this.o().a(b, Boolean.valueOf($$0.q().C($$0.a())));
    }
 
    @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return c;
+   public void a(djp $$0, ctx $$1, hx $$2, cwy $$3, hx $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.C($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
+            }
+         }
+      }
    }
 
    @Override
-   protected boolean b(djh $$0, csv $$1, hx $$2) {
-      return $$0.a(ash.aK) || $$0.a(cws.dX) || super.b($$0, $$1, $$2);
+   public void a(djp $$0, ane $$1, hx $$2, auw $$3) {
+      if ($$0.c(b) && !$$1.C($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
+      }
+   }
+
+   @Override
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(b);
    }
 }

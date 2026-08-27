@@ -1,32 +1,43 @@
-public class aaw implements xf<za> {
-   private final hx a;
-   private final boolean b;
+import javax.annotation.Nullable;
 
-   public aaw(hx $$0, boolean $$1) {
+public class aaw implements xg<zb> {
+   private final int a;
+   private final cjq<?> b;
+   private final vg c;
+
+   public aaw(int $$0, cjq<?> $$1, vg $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public aaw(ui $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readBoolean();
+   public aaw(uj $$0) {
+      this.a = $$0.n();
+      this.b = $$0.a(kd.r);
+      this.c = $$0.m();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(uj $$0) {
+      $$0.c(this.a);
+      $$0.a(kd.r, this.b);
+      $$0.a(this.c);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
+   public int a() {
       return this.a;
    }
 
-   public boolean d() {
+   @Nullable
+   public cjq<?> d() {
       return this.b;
+   }
+
+   public vg e() {
+      return this.c;
    }
 }

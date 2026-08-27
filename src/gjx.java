@@ -1,37 +1,29 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public class gjx {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+public record gjx(gkb b, gke c) {
+   public static final Codec<gjx> a = gkb.a.dispatchStable(gjx::a, gkb::c);
 
-   public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
-      }
+   public gjx(gkb b, gke c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+         }
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
-      }
-
-      this.d = $$0;
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
    }
 
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
+   public gkb a() {
+      return this.b;
    }
 
-   public void a(gjm $$0) {
-      this.b.ifPresent($$1 -> $$0.send(gjn.e, $$1x -> {
-            $$1x.a(gjp.p, this.a($$1));
-            $$1x.a(gjp.q, (int)this.c);
-         }));
+   public gke b() {
+      return this.c;
    }
 }

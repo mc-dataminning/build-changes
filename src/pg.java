@@ -1,219 +1,65 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-
 public class pg {
-   public static final ahf<eap> a = pl.a("village/desert/town_centers");
-   private static final ahf<eap> b = pl.a("village/desert/terminators");
-   private static final ahf<eap> c = pl.a("village/desert/zombie/terminators");
+   public static final ahg<drb<?>> a = a("cave");
+   public static final ahg<drb<?>> b = a("cave_extra_underground");
+   public static final ahg<drb<?>> c = a("canyon");
+   public static final ahg<drb<?>> d = a("nether_cave");
 
-   public static void a(pe<eap> $$0) {
-      ii<dyk> $$1 = $$0.a(ke.aC);
-      ih<dyk> $$2 = $$1.b(rb.j);
-      ih<dyk> $$3 = $$1.b(rb.a);
-      ii<ede> $$4 = $$0.a(ke.aE);
-      ih<ede> $$5 = $$4.b(pm.e);
-      ih<ede> $$6 = $$4.b(pm.p);
-      ii<eap> $$7 = $$0.a(ke.aG);
-      ih<eap> $$8 = $$7.b(pl.a);
-      ih<eap> $$9 = $$7.b(b);
-      ih<eap> $$10 = $$7.b(c);
+   private static ahg<drb<?>> a(String $$0) {
+      return ahg.a(ke.av, new ahh($$0));
+   }
+
+   public static void a(pf<drb<?>> $$0) {
+      ii<cwy> $$1 = $$0.a(ke.f);
       $$0.a(
          a,
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.a("village/desert/town_centers/desert_meeting_point_1"), 98),
-               Pair.of(ean.a("village/desert/town_centers/desert_meeting_point_2"), 98),
-               Pair.of(ean.a("village/desert/town_centers/desert_meeting_point_3"), 49),
-               Pair.of(ean.a("village/desert/zombie/town_centers/desert_meeting_point_1", $$5), 2),
-               Pair.of(ean.a("village/desert/zombie/town_centers/desert_meeting_point_2", $$5), 2),
-               Pair.of(ean.a("village/desert/zombie/town_centers/desert_meeting_point_3", $$5), 1)
-            ),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "village/desert/streets",
-         new eap(
-            $$9,
-            ImmutableList.of(
-               Pair.of(ean.a("village/desert/streets/corner_01"), 3),
-               Pair.of(ean.a("village/desert/streets/corner_02"), 3),
-               Pair.of(ean.a("village/desert/streets/straight_01"), 4),
-               Pair.of(ean.a("village/desert/streets/straight_02"), 4),
-               Pair.of(ean.a("village/desert/streets/straight_03"), 3),
-               Pair.of(ean.a("village/desert/streets/crossroad_01"), 3),
-               Pair.of(ean.a("village/desert/streets/crossroad_02"), 3),
-               Pair.of(ean.a("village/desert/streets/crossroad_03"), 3),
-               Pair.of(ean.a("village/desert/streets/square_01"), 3),
-               Pair.of(ean.a("village/desert/streets/square_02"), 3),
-               Pair.of(ean.a("village/desert/streets/turn_01"), 3)
-            ),
-            eap.a.a
-         )
-      );
-      pl.a(
-         $$0,
-         "village/desert/zombie/streets",
-         new eap(
-            $$10,
-            ImmutableList.of(
-               Pair.of(ean.a("village/desert/zombie/streets/corner_01"), 3),
-               Pair.of(ean.a("village/desert/zombie/streets/corner_02"), 3),
-               Pair.of(ean.a("village/desert/zombie/streets/straight_01"), 4),
-               Pair.of(ean.a("village/desert/zombie/streets/straight_02"), 4),
-               Pair.of(ean.a("village/desert/zombie/streets/straight_03"), 3),
-               Pair.of(ean.a("village/desert/zombie/streets/crossroad_01"), 3),
-               Pair.of(ean.a("village/desert/zombie/streets/crossroad_02"), 3),
-               Pair.of(ean.a("village/desert/zombie/streets/crossroad_03"), 3),
-               Pair.of(ean.a("village/desert/zombie/streets/square_01"), 3),
-               Pair.of(ean.a("village/desert/zombie/streets/square_02"), 3),
-               Pair.of(ean.a("village/desert/zombie/streets/turn_01"), 3)
-            ),
-            eap.a.a
-         )
-      );
-      pl.a(
-         $$0,
-         "village/desert/houses",
-         new eap(
-            $$9,
-            ImmutableList.of(
-               Pair.of(ean.a("village/desert/houses/desert_small_house_1"), 2),
-               Pair.of(ean.a("village/desert/houses/desert_small_house_2"), 2),
-               Pair.of(ean.a("village/desert/houses/desert_small_house_3"), 2),
-               Pair.of(ean.a("village/desert/houses/desert_small_house_4"), 2),
-               Pair.of(ean.a("village/desert/houses/desert_small_house_5"), 2),
-               Pair.of(ean.a("village/desert/houses/desert_small_house_6"), 1),
-               Pair.of(ean.a("village/desert/houses/desert_small_house_7"), 2),
-               Pair.of(ean.a("village/desert/houses/desert_small_house_8"), 2),
-               Pair.of(ean.a("village/desert/houses/desert_medium_house_1"), 2),
-               Pair.of(ean.a("village/desert/houses/desert_medium_house_2"), 2),
-               Pair.of(ean.a("village/desert/houses/desert_butcher_shop_1"), 2),
-               Pair.of(ean.a("village/desert/houses/desert_tool_smith_1"), 2),
-               new Pair[]{
-                  Pair.of(ean.a("village/desert/houses/desert_fletcher_house_1"), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_shepherd_house_1"), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_armorer_1"), 1),
-                  Pair.of(ean.a("village/desert/houses/desert_fisher_1"), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_tannery_1"), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_cartographer_house_1"), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_library_1"), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_mason_1"), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_weaponsmith_1"), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_temple_1"), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_temple_2"), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_large_farm_1", $$6), 11),
-                  Pair.of(ean.a("village/desert/houses/desert_farm_1", $$6), 4),
-                  Pair.of(ean.a("village/desert/houses/desert_farm_2", $$6), 4),
-                  Pair.of(ean.a("village/desert/houses/desert_animal_pen_1"), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_animal_pen_2"), 2),
-                  Pair.of(ean.g(), 5)
-               }
-            ),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "village/desert/zombie/houses",
-         new eap(
-            $$10,
-            ImmutableList.of(
-               Pair.of(ean.a("village/desert/zombie/houses/desert_small_house_1", $$5), 2),
-               Pair.of(ean.a("village/desert/zombie/houses/desert_small_house_2", $$5), 2),
-               Pair.of(ean.a("village/desert/zombie/houses/desert_small_house_3", $$5), 2),
-               Pair.of(ean.a("village/desert/zombie/houses/desert_small_house_4", $$5), 2),
-               Pair.of(ean.a("village/desert/zombie/houses/desert_small_house_5", $$5), 2),
-               Pair.of(ean.a("village/desert/zombie/houses/desert_small_house_6", $$5), 1),
-               Pair.of(ean.a("village/desert/zombie/houses/desert_small_house_7", $$5), 2),
-               Pair.of(ean.a("village/desert/zombie/houses/desert_small_house_8", $$5), 2),
-               Pair.of(ean.a("village/desert/zombie/houses/desert_medium_house_1", $$5), 2),
-               Pair.of(ean.a("village/desert/zombie/houses/desert_medium_house_2", $$5), 2),
-               Pair.of(ean.a("village/desert/houses/desert_butcher_shop_1", $$5), 2),
-               Pair.of(ean.a("village/desert/houses/desert_tool_smith_1", $$5), 2),
-               new Pair[]{
-                  Pair.of(ean.a("village/desert/houses/desert_fletcher_house_1", $$5), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_shepherd_house_1", $$5), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_armorer_1", $$5), 1),
-                  Pair.of(ean.a("village/desert/houses/desert_fisher_1", $$5), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_tannery_1", $$5), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_cartographer_house_1", $$5), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_library_1", $$5), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_mason_1", $$5), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_weaponsmith_1", $$5), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_temple_1", $$5), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_temple_2", $$5), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_large_farm_1", $$5), 7),
-                  Pair.of(ean.a("village/desert/houses/desert_farm_1", $$5), 4),
-                  Pair.of(ean.a("village/desert/houses/desert_farm_2", $$5), 4),
-                  Pair.of(ean.a("village/desert/houses/desert_animal_pen_1", $$5), 2),
-                  Pair.of(ean.a("village/desert/houses/desert_animal_pen_2", $$5), 2),
-                  Pair.of(ean.g(), 5)
-               }
-            ),
-            eap.a.b
-         )
+         drd.a
+            .a(
+               new dqz(
+                  0.15F,
+                  dxy.a(dps.b(8), dps.a(180)),
+                  bjm.b(0.1F, 0.9F),
+                  dps.b(8),
+                  dqx.a(false, cxa.oS.o()),
+                  $$1.b(asi.bh),
+                  bjm.b(0.7F, 1.4F),
+                  bjm.b(0.8F, 1.3F),
+                  bjm.b(-1.0F, -0.4F)
+               )
+            )
       );
       $$0.a(
          b,
-         new eap(
-            $$8,
-            ImmutableList.of(Pair.of(ean.a("village/desert/terminators/terminator_01"), 1), Pair.of(ean.a("village/desert/terminators/terminator_02"), 1)),
-            eap.a.a
-         )
+         drd.a
+            .a(
+               new dqz(
+                  0.07F,
+                  dxy.a(dps.b(8), dps.a(47)),
+                  bjm.b(0.1F, 0.9F),
+                  dps.b(8),
+                  dqx.a(false, cxa.gv.o()),
+                  $$1.b(asi.bh),
+                  bjm.b(0.7F, 1.4F),
+                  bjm.b(0.8F, 1.3F),
+                  bjm.b(-1.0F, -0.4F)
+               )
+            )
       );
       $$0.a(
          c,
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.a("village/desert/terminators/terminator_01"), 1), Pair.of(ean.a("village/desert/zombie/terminators/terminator_02"), 1)
-            ),
-            eap.a.a
-         )
+         drd.c
+            .a(
+               new dqu(
+                  0.01F,
+                  dxy.a(dps.a(10), dps.a(67)),
+                  bjd.a(3.0F),
+                  dps.b(8),
+                  dqx.a(false, cxa.oT.o()),
+                  $$1.b(asi.bh),
+                  bjm.b(-0.125F, 0.125F),
+                  new dqu.a(bjm.b(0.75F, 1.0F), bjl.a(0.0F, 6.0F, 2.0F), 3, bjm.b(0.75F, 1.0F), 1.0F, 0.0F)
+               )
+            )
       );
-      pl.a(
-         $$0,
-         "village/desert/decor",
-         new eap(
-            $$8,
-            ImmutableList.of(Pair.of(ean.a("village/desert/desert_lamp_1"), 10), Pair.of(ean.a($$2), 4), Pair.of(ean.a($$3), 4), Pair.of(ean.g(), 10)),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "village/desert/zombie/decor",
-         new eap(
-            $$8,
-            ImmutableList.of(Pair.of(ean.a("village/desert/desert_lamp_1", $$5), 10), Pair.of(ean.a($$2), 4), Pair.of(ean.a($$3), 4), Pair.of(ean.g(), 10)),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "village/desert/villagers",
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.a("village/desert/villagers/nitwit"), 1),
-               Pair.of(ean.a("village/desert/villagers/baby"), 1),
-               Pair.of(ean.a("village/desert/villagers/unemployed"), 10)
-            ),
-            eap.a.b
-         )
-      );
-      pl.a($$0, "village/desert/camel", new eap($$8, ImmutableList.of(Pair.of(ean.a("village/desert/camel_spawn"), 1)), eap.a.b));
-      pl.a(
-         $$0,
-         "village/desert/zombie/villagers",
-         new eap(
-            $$8,
-            ImmutableList.of(Pair.of(ean.a("village/desert/zombie/villagers/nitwit"), 1), Pair.of(ean.a("village/desert/zombie/villagers/unemployed"), 10)),
-            eap.a.b
-         )
-      );
+      $$0.a(d, drd.b.a(new dqz(0.2F, dxy.a(dps.a(0), dps.c(1)), bjd.a(0.5F), dps.b(10), $$1.b(asi.bi), bjd.a(1.0F), bjd.a(1.0F), bjd.a(-0.7F))));
    }
 }

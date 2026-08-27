@@ -1,82 +1,131 @@
-public class fek extends fdz {
-   private final dhf m;
-   private exn<dhf.a> n;
-   private exn<Boolean> o;
-   private exn<Boolean> p;
-   private dhf.a q = dhf.a.c;
-   private boolean r;
-   private boolean t;
+public abstract class fek extends fdm {
+   private static final vg m = vg.c("advMode.setCommand");
+   private static final vg n = vg.c("advMode.command");
+   private static final vg o = vg.c("advMode.previousOutput");
+   protected eya a;
+   protected eya b;
+   protected exr c;
+   protected exr k;
+   protected exy<Boolean> l;
+   exu p;
 
-   public fek(dhf $$0) {
-      this.m = $$0;
+   public fek() {
+      super(evj.a);
    }
 
    @Override
-   csq n() {
-      return this.m.c();
+   public void e() {
+      if (!this.o().j()) {
+         this.d();
+      }
+   }
+
+   abstract csy o();
+
+   abstract int E();
+
+   @Override
+   protected void aP_() {
+      this.c = this.d(exr.a(vf.d, $$0x -> this.H()).a(this.g / 2 - 4 - 150, this.h / 4 + 120 + 12, 150, 20).a());
+      this.k = this.d(exr.a(vf.e, $$0x -> this.d()).a(this.g / 2 + 4, this.h / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.o().o();
+      this.l = this.d(exy.a(vg.b("O"), vg.b("X")).a($$0).a().a(this.g / 2 + 150 - 20, this.E(), 20, 20, vg.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         csy $$2 = this.o();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new eya(this.i, this.g / 2 - 150, 50, 300, 20, vg.c("advMode.command")) {
+         @Override
+         protected vu aM_() {
+            return super.aM_().b(fek.this.p.e());
+         }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.e(this.a);
+      this.b = new eya(this.i, this.g / 2 - 150, this.E(), 276, 20, vg.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.e(this.b);
+      this.c(this.a);
+      this.p = new exu(this.f, this, this.a, this.i, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.p.a(true);
+      this.p.d();
+      this.c($$0);
    }
 
    @Override
-   int D() {
-      return 135;
+   protected vg B() {
+      return this.p.a() ? this.p.b() : super.B();
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.n = this.d(exn.<dhf.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> vf.c("advMode.mode.sequence");
-            case b -> vf.c("advMode.mode.auto");
-            case c -> vf.c("advMode.mode.redstone");
-         };
-      }).a(dhf.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, vf.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
-      this.o = this.d(
-         exn.a(vf.c("advMode.mode.conditional"), vf.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.r)
-            .a(this.g / 2 - 50, 165, 100, 20, vf.c("advMode.type"), ($$0, $$1) -> this.r = $$1)
-      );
-      this.p = this.d(
-         exn.a(vf.c("advMode.mode.autoexec.bat"), vf.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.t)
-            .a(this.g / 2 + 50 + 4, 165, 100, 20, vf.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
-      );
-      this.e(false);
-   }
-
-   private void e(boolean $$0) {
-      this.c.j = $$0;
-      this.l.j = $$0;
-      this.n.j = $$0;
-      this.o.j = $$0;
-      this.p.j = $$0;
-   }
-
-   public void H() {
-      csq $$0 = this.m.c();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.o();
-      this.q = this.m.m();
-      this.r = this.m.w();
-      this.t = this.m.f();
-      this.l.a($$1);
-      this.n.a(this.q);
-      this.o.a(this.r);
-      this.p.a(this.t);
-      this.c($$1);
-      this.e(true);
+   public void a(evr $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
+      this.b($$0, $$1, $$2);
+      this.a.a($$3);
+      this.p.d();
    }
 
    @Override
-   public void a(evi $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e(true);
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.o().l().getString() : "-");
+   }
+
+   protected void H() {
+      csy $$0 = this.o();
+      this.a($$0);
+      if (!$$0.o()) {
+         $$0.c(null);
+      }
+
+      this.f.a(null);
+   }
+
+   protected abstract void a(csy var1);
+
+   private void a(String $$0) {
+      this.p.d();
    }
 
    @Override
-   protected void a(csq $$0) {
-      this.f.J().b(new aew(hx.a($$0.g()), this.a.a(), this.q, $$0.o(), this.r, this.t));
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.p.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.H();
+         return true;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.p.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.p.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, m, this.g / 2, 20, 16777215);
+      $$0.b(this.i, n, this.g / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.E() - 135;
+         $$0.b(this.i, o, this.g / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
+      }
+
+      this.p.a($$0, $$1, $$2);
    }
 }

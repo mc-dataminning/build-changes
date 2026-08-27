@@ -1,25 +1,35 @@
-public class csi extends crj {
-   public csi(crj.a $$0, bma... $$1) {
-      super($$0, crk.b, $$1);
+public class csi extends crr {
+   public csi(crr.a $$0, bmd... $$1) {
+      super($$0, crs.c, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return $$0 * 25;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
+      return this.a($$0) + 50;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public boolean i() {
+      return false;
    }
 
    @Override
    public int a() {
       return 3;
-   }
-
-   @Override
-   public boolean a(crj $$0) {
-      return super.a($$0) && $$0 != crn.j;
    }
 }

@@ -1,14 +1,11 @@
-public record xr(ams a) implements xf<xq> {
-   public xr(ui $$0) {
-      this(new ams($$0));
-   }
+public interface xr extends adl {
+   void a(xu var1);
 
-   @Override
-   public void a(ui $$0) {
-      this.a.a($$0);
-   }
+   void a(xv var1);
 
-   public void a(xq $$0) {
-      $$0.a(this);
-   }
+   void a(xt var1);
+
+   void a(xw var1);
+
+   void a(xs var1);
 }

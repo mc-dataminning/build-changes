@@ -1,395 +1,89 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
 import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public class fhc extends fdb {
-   static final ahg a = new ahg("icon/checkmark");
-   private static final vf b = vf.c("gui.chatSelection.title");
-   private static final vf c = vf.c("gui.chatSelection.context").a(n.h);
-   @Nullable
-   private final fdb k;
-   private final fow l;
-   private exg m;
-   private exz n;
-   @Nullable
-   private fhc.a o;
-   final foo.a p;
-   private final Consumer<foo.a> q;
-   private fhb r;
+public class fhc extends eyx {
+   private static final eze c = new eze(new ahh("recipe_book/tab"), new ahh("recipe_book/tab_selected"));
+   private final ewa d;
+   private static final float e = 15.0F;
+   private float f;
 
-   public fhc(@Nullable fdb $$0, fow $$1, foo.a $$2, Consumer<foo.a> $$3) {
-      super(b);
-      this.k = $$0;
-      this.l = $$1;
-      this.p = $$2.d();
-      this.q = $$3;
+   public fhc(ewa $$0) {
+      super(0, 0, 35, 27, false);
+      this.d = $$0;
+      this.a(c);
    }
 
-   @Override
-   protected void aN_() {
-      this.r = new fhb(this.l, this::a);
-      this.n = exz.a(this.i, c, this.g - 16);
-      this.o = this.d(new fhc.a(this.f, (this.n.a() + 1) * 9));
-      this.d(exg.a(ve.k, $$0 -> this.aE_()).a(this.g / 2 - 155, this.h - 32, 150, 20).a());
-      this.m = this.d(exg.a(ve.d, $$0 -> {
-         this.q.accept(this.p);
-         this.aE_();
-      }).a(this.g / 2 - 155 + 160, this.h - 32, 150, 20).a());
-      this.E();
-      this.n();
-      this.o.a((double)this.o.p());
-   }
-
-   private boolean a(fok $$0) {
-      return $$0.a(this.p.f());
-   }
-
-   private void n() {
-      int $$0 = this.o.d();
-      this.r.a($$0, this.o);
-   }
-
-   void D() {
-      this.n();
-   }
-
-   void E() {
-      this.m.j = !this.p.a().isEmpty();
-   }
-
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      AbuseReportLimits $$4 = this.l.a().b();
-      int $$5 = this.p.a().size();
-      int $$6 = $$4.maxReportedMessageCount();
-      vf $$7 = vf.a("gui.chatSelection.selected", $$5, $$6);
-      $$0.a(this.i, $$7, this.g / 2, 16 + 9 * 3 / 2, 10526880);
-      this.n.a($$0, this.g / 2, this.o.e());
-   }
-
-   @Override
-   public void b(ewu $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   @Override
-   public void aE_() {
-      this.f.a(this.k);
-   }
-
-   @Override
-   public vf h() {
-      return ve.a(super.h(), c);
-   }
-
-   public class a extends eyc<fhc.a.b> implements fhb.a {
-      @Nullable
-      private fhc.a.c m;
-
-      public a(evi $$1, int $$2) {
-         super($$1, fhc.this.g, fhc.this.h - $$2 - 80, 40, 16);
-      }
-
-      @Override
-      public void a(double $$0) {
-         double $$1 = this.o();
-         super.a($$0);
-         if ((float)this.p() > 1.0E-5F && $$0 <= 1.0E-5F && !auo.b($$0, $$1)) {
-            fhc.this.D();
-         }
-      }
-
-      @Override
-      public void a(int $$0, fok.a $$1) {
-         boolean $$2 = $$1.a(fhc.this.p.f());
-         foi $$3 = $$1.h();
-         evd $$4 = $$3.a($$1.g());
-         fhc.a.b $$5 = new fhc.a.d($$0, $$1.b(), $$1.c(), $$4, $$2, true);
-         this.c($$5);
-         this.a($$1, $$2);
-      }
-
-      private void a(fok.a $$0, boolean $$1) {
-         fhc.a.b $$2 = new fhc.a.e($$0.f(), $$0.d(), $$1);
-         this.c($$2);
-         fhc.a.c $$3 = new fhc.a.c($$0.e(), $$2);
-         if (this.m != null && this.m.a($$3)) {
-            this.d(this.m.b());
-         }
-
-         this.m = $$3;
-      }
-
-      @Override
-      public void a(vf $$0) {
-         this.c(new fhc.a.f());
-         this.c(new fhc.a.a($$0));
-         this.c(new fhc.a.f());
-         this.m = null;
-      }
-
-      @Override
-      protected int c() {
-         return (this.g + this.b()) / 2;
-      }
-
-      @Override
-      public int b() {
-         return Math.min(350, this.g - 50);
-      }
-
-      public int d() {
-         return auo.e(this.h, this.d);
-      }
-
-      @Override
-      protected void a(ewu $$0, int $$1, int $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-         fhc.a.b $$9 = this.d($$4);
-         if (this.b($$9)) {
-            boolean $$10 = this.i() == $$9;
-            int $$11 = this.aI_() && $$10 ? -1 : -8355712;
-            this.a($$0, $$6, $$7, $$8, $$11, -16777216);
-         }
-
-         $$9.a($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, this.t() == $$9, $$3);
-      }
-
-      private boolean b(fhc.a.b $$0) {
-         if ($$0.c()) {
-            boolean $$1 = this.i() == $$0;
-            boolean $$2 = this.i() == null;
-            boolean $$3 = this.t() == $$0;
-            return $$1 || $$2 && $$3 && $$0.d();
-         } else {
-            return false;
-         }
-      }
-
-      @Nullable
-      protected fhc.a.b b(fbh $$0) {
-         return this.a($$0, fhc.a.b::c);
-      }
-
-      public void a(@Nullable fhc.a.b $$0) {
-         super.a($$0);
-         fhc.a.b $$1 = this.b(fbh.a);
-         if ($$1 == null) {
-            fhc.this.D();
-         }
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         fhc.a.b $$3 = this.i();
-         return $$3 != null && $$3.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-      }
-
-      public int e() {
-         return this.E() + 9;
-      }
-
-      public class a extends fhc.a.b {
-         private static final int c = -6250336;
-         private final vf d;
-
-         public a(vf $$1) {
-            this.d = $$1;
-         }
-
-         @Override
-         public void a(ewu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$2 + $$5 / 2;
-            int $$11 = $$3 + $$4 - 8;
-            int $$12 = fhc.this.i.a(this.d);
-            int $$13 = ($$3 + $$11 - $$12) / 2;
-            int $$14 = $$10 - 9 / 2;
-            $$0.b(fhc.this.i, this.d, $$13, $$14, -6250336);
-         }
-
-         @Override
-         public vf a() {
-            return this.d;
-         }
-      }
-
-      public abstract class b extends eyc.a<fhc.a.b> {
-         @Override
-         public vf a() {
-            return ve.a;
-         }
-
-         public boolean b() {
-            return false;
-         }
-
-         public boolean c() {
-            return false;
-         }
-
-         public boolean d() {
-            return this.c();
-         }
-      }
-
-      static record c(UUID a, fhc.a.b b) {
-         public boolean a(fhc.a.c $$0) {
-            return $$0.a.equals(this.a);
-         }
-      }
-
-      public class d extends fhc.a.b {
-         private static final int c = 9;
-         private static final int d = 8;
-         private static final int e = 11;
-         private static final int f = 4;
-         private final int g;
-         private final vk h;
-         private final vf i;
-         @Nullable
-         private final List<aua> j;
-         @Nullable
-         private final evd.a k;
-         @Nullable
-         private final List<aua> l;
-         private final boolean m;
-         private final boolean n;
-
-         public d(int $$1, vf $$2, vf $$3, @Nullable evd $$4, boolean $$5, boolean $$6) {
-            this.g = $$1;
-            this.k = x.a($$4, evd::f);
-            this.l = $$4 != null && $$4.g() != null ? fhc.this.i.c($$4.g(), a.this.b()) : null;
-            this.m = $$5;
-            this.n = $$6;
-            vk $$7 = fhc.this.i.a($$2, this.e() - fhc.this.i.a(ve.t));
-            if ($$2 != $$7) {
-               this.h = vk.a($$7, ve.t);
-               this.j = fhc.this.i.c($$2, a.this.b());
-            } else {
-               this.h = $$2;
-               this.j = null;
-            }
-
-            this.i = $$3;
-         }
-
-         @Override
-         public void a(ewu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            if (this.b() && this.m) {
-               this.a($$0, $$2, $$3, $$5);
-            }
-
-            int $$10 = $$3 + this.f();
-            int $$11 = $$2 + 1 + ($$5 - 9) / 2;
-            $$0.b(fhc.this.i, si.a().a(this.h), $$10, $$11, this.m ? -1 : -1593835521);
-            if (this.j != null && $$8) {
-               fhc.this.b(this.j);
-            }
-
-            int $$12 = fhc.this.i.a(this.h);
-            this.a($$0, $$10 + $$12 + 4, $$2, $$5, $$6, $$7);
-         }
-
-         private void a(ewu $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-            if (this.k != null) {
-               int $$6 = $$2 + ($$3 - this.k.d) / 2;
-               this.k.a($$0, $$1, $$6);
-               if (this.l != null && $$4 >= $$1 && $$4 <= $$1 + this.k.c && $$5 >= $$6 && $$5 <= $$6 + this.k.d) {
-                  fhc.this.b(this.l);
+   public void a(evr $$0) {
+      eve $$1 = $$0.s.m();
+      List<fhe> $$2 = $$1.a(this.d);
+      if ($$0.s.bW instanceof cjw) {
+         for (fhe $$3 : $$2) {
+            for (cqm<?> $$4 : $$3.a($$1.a((cjw<?>)$$0.s.bW))) {
+               if ($$1.d($$4)) {
+                  this.f = 15.0F;
+                  return;
                }
             }
          }
+      }
+   }
 
-         private void a(ewu $$0, int $$1, int $$2, int $$3) {
-            int $$5 = $$1 + ($$3 - 8) / 2;
-            RenderSystem.enableBlend();
-            $$0.a(fhc.a, $$2, $$5, 9, 8);
-            RenderSystem.disableBlend();
+   @Override
+   public void b(exe $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         if (this.f > 0.0F) {
+            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
+            $$0.c().a();
+            $$0.c().a((float)(this.B() + 8), (float)(this.C() + 12), 0.0F);
+            $$0.c().b(1.0F, $$4, 1.0F);
+            $$0.c().a((float)(-(this.B() + 8)), (float)(-(this.C() + 12)), 0.0F);
          }
 
-         private int e() {
-            int $$0 = this.k != null ? this.k.c + 4 : 0;
-            return a.this.b() - this.f() - 4 - $$0;
+         evr $$5 = evr.O();
+         RenderSystem.disableDepthTest();
+         ahh $$6 = this.a.a(true, this.b);
+         int $$7 = this.B();
+         if (this.b) {
+            $$7 -= 2;
          }
 
-         private int f() {
-            return this.n ? 11 : 0;
+         $$0.a($$6, $$7, this.C(), this.g, this.h);
+         RenderSystem.enableDepthTest();
+         this.a($$0, $$5.aq());
+         if (this.f > 0.0F) {
+            $$0.c().b();
+            this.f -= $$3;
          }
+      }
+   }
 
-         @Override
-         public vf a() {
-            return (vf)(this.b() ? vf.a("narrator.select", this.i) : this.i);
-         }
+   private void a(exe $$0, fzy $$1) {
+      List<cng> $$2 = this.d.a();
+      int $$3 = this.b ? -2 : 0;
+      if ($$2.size() == 1) {
+         $$0.b($$2.get(0), this.B() + 9 + $$3, this.C() + 5);
+      } else if ($$2.size() == 2) {
+         $$0.b($$2.get(0), this.B() + 3 + $$3, this.C() + 5);
+         $$0.b($$2.get(1), this.B() + 14 + $$3, this.C() + 5);
+      }
+   }
 
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(null);
-            return this.g();
-         }
+   public ewa b() {
+      return this.d;
+   }
 
-         @Override
-         public boolean a(int $$0, int $$1, int $$2) {
-            return fbe.a($$0) ? this.g() : false;
-         }
-
-         @Override
-         public boolean b() {
-            return fhc.this.p.b(this.g);
-         }
-
-         @Override
-         public boolean c() {
-            return true;
-         }
-
-         @Override
-         public boolean d() {
-            return this.m;
-         }
-
-         private boolean g() {
-            if (this.m) {
-               fhc.this.p.a(this.g);
-               fhc.this.E();
-               return true;
-            } else {
-               return false;
+   public boolean a(eve $$0) {
+      List<fhe> $$1 = $$0.a(this.d);
+      this.k = false;
+      if ($$1 != null) {
+         for (fhe $$2 : $$1) {
+            if ($$2.b() && $$2.d()) {
+               this.k = true;
+               break;
             }
          }
       }
 
-      public class e extends fhc.a.b {
-         private static final int c = 12;
-         private final vf d;
-         private final Supplier<gfm> e;
-         private final boolean f;
-
-         public e(GameProfile $$1, vf $$2, boolean $$3) {
-            this.d = $$2;
-            this.f = $$3;
-            this.e = a.this.c.al().a($$1);
-         }
-
-         @Override
-         public void a(ewu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$3 - 12 - 4;
-            int $$11 = $$2 + ($$5 - 12) / 2;
-            eyf.a($$0, this.e.get(), $$10, $$11, 12);
-            int $$12 = $$2 + 1 + ($$5 - 9) / 2;
-            $$0.b(fhc.this.i, this.d, $$3, $$12, this.f ? -1 : -1593835521);
-         }
-      }
-
-      public class f extends fhc.a.b {
-         @Override
-         public void a(ewu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         }
-      }
+      return this.k;
    }
 }

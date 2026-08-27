@@ -1,172 +1,167 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import java.util.Arrays;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class etz {
-   private etz() {
+   static final Logger a = LogUtils.getLogger();
+   final Executor b;
+   final TimeUnit c;
+   final avp d;
+
+   public etz(Executor $$0, TimeUnit $$1, avp $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @VisibleForTesting
-   protected static List<String> a(String $$0) {
-      return Arrays.asList($$0.split("\\n"));
-   }
-
-   public static List<etz.a> a(String $$0, etz.b... $$1) {
-      return a($$0, Arrays.asList($$1));
-   }
-
-   private static List<etz.a> a(String $$0, List<etz.b> $$1) {
-      List<String> $$2 = a($$0);
-      return a($$2, $$1);
-   }
-
-   private static List<etz.a> a(List<String> $$0, List<etz.b> $$1) {
-      int $$2 = 0;
-      List<etz.a> $$3 = Lists.newArrayList();
-
-      for (String $$4 : $$0) {
-         List<etz.b> $$5 = Lists.newArrayList();
-
-         for (String $$7 : a($$4, "%link")) {
-            if ("%link".equals($$7)) {
-               $$5.add($$1.get($$2++));
-            } else {
-               $$5.add(etz.b.a($$7));
-            }
-         }
-
-         $$3.add(new etz.a($$5));
-      }
-
-      return $$3;
-   }
-
-   public static List<String> a(String $$0, String $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Delimiter cannot be the empty string");
+   public <T> etz.e<T> a(String $$0, Callable<T> $$1, Duration $$2, eua $$3) {
+      long $$4 = this.c.convert($$2);
+      if ($$4 == 0L) {
+         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
       } else {
-         List<String> $$2 = Lists.newArrayList();
-         int $$3 = 0;
-
-         int $$4;
-         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
-            if ($$4 > $$3) {
-               $$2.add($$0.substring($$3, $$4));
-            }
-
-            $$2.add($$1);
-            $$3 = $$4 + $$1.length();
-         }
-
-         if ($$3 < $$0.length()) {
-            $$2.add($$0.substring($$3));
-         }
-
-         return $$2;
+         return new etz.e<>($$0, $$1, $$4, $$3);
       }
    }
 
-   public static class a {
-      public final List<etz.b> a;
+   public etz.c a() {
+      return new etz.c();
+   }
 
-      a(etz.b... $$0) {
-         this(Arrays.asList($$0));
+   static record a<T>(Either<T, Exception> a, long b) {
+   }
+
+   class b<T> {
+      private final etz.e<T> b;
+      private final Consumer<T> c;
+      private long d = -1L;
+
+      b(etz.e<T> $$0, Consumer<T> $$1) {
+         this.b = $$0;
+         this.c = $$1;
       }
 
-      a(List<etz.b> $$0) {
-         this.a = $$0;
+      void a(long $$0) {
+         this.b.a($$0);
+         this.a();
       }
 
-      @Override
-      public String toString() {
-         return "Line{segments=" + this.a + "}";
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            etz.a $$1 = (etz.a)$$0;
-            return Objects.equals(this.a, $$1.a);
-         } else {
-            return false;
+      void a() {
+         etz.d<T> $$0 = this.b.g;
+         if ($$0 != null && this.d < $$0.b) {
+            this.c.accept($$0.a);
+            this.d = $$0.b;
          }
       }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a);
+      void b() {
+         etz.d<T> $$0 = this.b.g;
+         if ($$0 != null) {
+            this.c.accept($$0.a);
+            this.d = $$0.b;
+         }
+      }
+
+      void c() {
+         this.b.a();
+         this.d = -1L;
       }
    }
 
-   public static class b {
-      private final String a;
-      @Nullable
+   public class c {
+      private final List<etz.b<?>> b = new ArrayList<>();
+
+      public <T> void a(etz.e<T> $$0, Consumer<T> $$1) {
+         etz.b<T> $$2 = etz.this.new b<>($$0, $$1);
+         this.b.add($$2);
+         $$2.a();
+      }
+
+      public void a() {
+         for (etz.b<?> $$0 : this.b) {
+            $$0.b();
+         }
+      }
+
+      public void b() {
+         for (etz.b<?> $$0 : this.b) {
+            $$0.a(etz.this.d.get(etz.this.c));
+         }
+      }
+
+      public void c() {
+         for (etz.b<?> $$0 : this.b) {
+            $$0.c();
+         }
+      }
+   }
+
+   static record d<T>(T a, long b) {
+   }
+
+   public class e<T> {
       private final String b;
+      private final Callable<T> c;
+      private final long d;
+      private final eua e;
       @Nullable
-      private final String c;
+      private CompletableFuture<etz.a<T>> f;
+      @Nullable
+      etz.d<T> g;
+      private long h = -1L;
 
-      private b(String $$0) {
-         this.a = $$0;
-         this.b = null;
-         this.c = null;
-      }
-
-      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
-         this.a = $$0;
+      e(String $$1, Callable<T> $$2, long $$3, eua $$4) {
          this.b = $$1;
          this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
       }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            etz.b $$1 = (etz.b)$$0;
-            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
-         } else {
-            return false;
+      void a(long $$0) {
+         if (this.f != null) {
+            etz.a<T> $$1 = this.f.getNow(null);
+            if ($$1 == null) {
+               return;
+            }
+
+            this.f = null;
+            long $$2 = $$1.b;
+            $$1.a().ifLeft($$1x -> {
+               this.g = new etz.d<>((T)$$1x, $$2);
+               this.h = $$2 + this.d * this.e.a();
+            }).ifRight($$1x -> {
+               long $$2x = this.e.b();
+               etz.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
+               this.h = $$2 + this.d * $$2x;
+            });
+         }
+
+         if (this.h <= $$0) {
+            this.f = CompletableFuture.supplyAsync(() -> {
+               try {
+                  T $$0x = this.c.call();
+                  long $$1x = etz.this.d.get(etz.this.c);
+                  return new etz.a<>(Either.left($$0x), $$1x);
+               } catch (Exception var4x) {
+                  long $$3 = etz.this.d.get(etz.this.c);
+                  return new etz.a<>(Either.right(var4x), $$3);
+               }
+            }, etz.this.b);
          }
       }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b, this.c);
-      }
-
-      @Override
-      public String toString() {
-         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
-      }
-
-      public String a() {
-         return this.b() ? this.b : this.a;
-      }
-
-      public boolean b() {
-         return this.b != null;
-      }
-
-      public String c() {
-         if (!this.b()) {
-            throw new IllegalStateException("Not a link: " + this);
-         } else {
-            return this.c;
-         }
-      }
-
-      public static etz.b a(String $$0, String $$1) {
-         return new etz.b(null, $$0, $$1);
-      }
-
-      @VisibleForTesting
-      protected static etz.b a(String $$0) {
-         return new etz.b($$0);
+      public void a() {
+         this.f = null;
+         this.g = null;
+         this.h = -1L;
       }
    }
 }

@@ -1,12 +1,8 @@
-public class egl extends RuntimeException {
-   private final vf a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public egl(vf $$0) {
-      super($$0.getString());
-      this.a = $$0;
-   }
-
-   public vf a() {
-      return this.a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface egl {
 }

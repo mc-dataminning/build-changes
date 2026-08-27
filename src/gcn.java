@@ -1,24 +1,16 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gcn extends gdl<byf, fju<byf>> {
+   private static final ahh a = new ahh("textures/entity/cat/cat_collar.png");
+   private final fju<byf> b;
 
-public class gcn extends gcy<bzz, fki<bzz>> {
-   private static final Map<cab, ahg> a = ac.a(Maps.newEnumMap(cab.class), $$0 -> {
-      $$0.put(cab.a, null);
-      $$0.put(cab.b, new ahg("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(cab.c, new ahg("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(cab.d, new ahg("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(cab.e, new ahg("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public gcn(gai<bzz, fki<bzz>> $$0) {
+   public gcn(gav<byf, fju<byf>> $$0, fnf $$1) {
       super($$0);
+      this.b = new fju<>($$1.a(fni.q));
    }
 
-   public void a(eqb $$0, fth $$1, int $$2, bzz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ahg $$10 = a.get($$3.ge());
-      if ($$10 != null && !$$3.ce()) {
-         eqf $$11 = $$1.getBuffer(ftp.i($$10));
-         this.c().a($$0, $$11, $$2, fzo.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(eqk $$0, ftt $$1, int $$2, byf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.u()) {
+         float[] $$10 = $$3.gp().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
       }
    }
 }

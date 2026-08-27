@@ -1,76 +1,69 @@
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fce extends fdb {
-   private static final vf a = vf.c("addServer.enterName");
-   private static final vf b = vf.c("addServer.enterIp");
-   private exg c;
-   private final BooleanConsumer k;
-   private final fod l;
-   private exp m;
-   private exp n;
-   private final fdb o;
+public class fce extends fcf {
+   private static final vg k = vg.c("chat.copy");
+   private static final vg l = vg.c("chat.link.warning");
+   private final String m;
+   private final boolean n;
 
-   public fce(fdb $$0, BooleanConsumer $$1, fod $$2) {
-      super(vf.c("addServer.title"));
-      this.o = $$0;
-      this.k = $$1;
-      this.l = $$2;
+   public fce(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), vg.b($$1), $$1, $$2 ? vf.e : vf.g, $$2);
+   }
+
+   public fce(BooleanConsumer $$0, vg $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? vf.e : vf.g, $$3);
+   }
+
+   public fce(BooleanConsumer $$0, vg $$1, vg $$2, String $$3, vg $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (vg)($$5 ? vg.c("chat.link.open") : vf.f);
+      this.b = $$4;
+      this.n = !$$5;
+      this.m = $$3;
+   }
+
+   protected static vu a(boolean $$0, String $$1) {
+      return c($$0).b(vf.u).b(vg.b($$1));
+   }
+
+   protected static vu c(boolean $$0) {
+      return vg.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   protected void aN_() {
-      this.n = new exp(this.i, this.g / 2 - 100, 66, 200, 20, vf.c("addServer.enterName"));
-      this.n.a(this.l.a);
-      this.n.b($$0 -> this.D());
-      this.e(this.n);
-      this.m = new exp(this.i, this.g / 2 - 100, 106, 200, 20, vf.c("addServer.enterIp"));
-      this.m.f(128);
-      this.m.a(this.l.b);
-      this.m.b($$0 -> this.D());
-      this.e(this.m);
-      this.d(
-         exn.a(fod.a::a)
-            .a(fod.a.values())
-            .a(this.l.b())
-            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, vf.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
-      );
-      this.c = this.d(exg.a(vf.c("addServer.add"), $$0 -> this.n()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
-      this.d(exg.a(ve.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
-      this.c(this.n);
-      this.D();
+   protected void a(int $$0) {
+      this.d(exr.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 50 - 105, $$0, 100, 20).a());
+      this.d(exr.a(k, $$0x -> {
+         this.n();
+         this.c.accept(false);
+      }).a(this.g / 2 - 50, $$0, 100, 20).a());
+      this.d(exr.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void n() {
+      this.f.o.a(this.m);
    }
 
    @Override
-   public void a(evi $$0, int $$1, int $$2) {
-      String $$3 = this.m.a();
-      String $$4 = this.n.a();
-      this.b($$0, $$1, $$2);
-      this.m.a($$3);
-      this.n.a($$4);
-   }
-
-   private void n() {
-      this.l.a = this.n.a();
-      this.l.b = this.m.a();
-      this.k.accept(true);
-   }
-
-   @Override
-   public void aE_() {
-      this.f.a(this.o);
-   }
-
-   private void D() {
-      this.c.j = fpf.b(this.m.a()) && !this.n.a().isEmpty();
-   }
-
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
-      $$0.b(this.i, a, this.g / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.i, b, this.g / 2 - 100 + 1, 94, 10526880);
-      this.n.a($$0, $$1, $$2, $$3);
-      this.m.a($$0, $$1, $$2, $$3);
+      if (this.n) {
+         $$0.a(this.i, l, this.g / 2, 110, 16764108);
+      }
+   }
+
+   public static void a(fdm $$0, String $$1) {
+      evr $$2 = evr.O();
+      $$2.a(new fce($$3 -> {
+         if ($$3) {
+            ac.j().a($$1);
+         }
+
+         $$2.a($$0);
+      }, $$1, true));
+   }
+
+   public static exr.c b(fdm $$0, String $$1) {
+      return $$2 -> a($$0, $$1);
    }
 }

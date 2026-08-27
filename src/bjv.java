@@ -1,76 +1,83 @@
-import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 
-public class bjv {
-   public static cmy a(List<cmy> $$0, int $$1, int $$2) {
-      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).b() && $$2 > 0 ? $$0.get($$1).a($$2) : cmy.f;
+public interface bjv extends bjt {
+   int o_ = 64;
+   int p_ = 8;
+
+   int b();
+
+   boolean aj_();
+
+   cng a(int var1);
+
+   cng a(int var1, int var2);
+
+   cng b(int var1);
+
+   void a(int var1, cng var2);
+
+   default int al_() {
+      return 64;
    }
 
-   public static cmy a(List<cmy> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cmy.f) : cmy.f;
+   void e();
+
+   boolean a(cfq var1);
+
+   default void d_(cfq $$0) {
    }
 
-   public static sn a(sn $$0, iq<cmy> $$1) {
-      return a($$0, $$1, true);
+   default void c(cfq $$0) {
    }
 
-   public static sn a(sn $$0, iq<cmy> $$1, boolean $$2) {
-      st $$3 = new st();
+   default boolean b(int $$0, cng $$1) {
+      return true;
+   }
 
-      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-         cmy $$5 = $$1.get($$4);
-         if (!$$5.b()) {
-            sn $$6 = new sn();
-            $$6.a("Slot", (byte)$$4);
-            $$5.b($$6);
-            $$3.add($$6);
+   default boolean a(bjv $$0, int $$1, cng $$2) {
+      return true;
+   }
+
+   default int a_(cnb $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cng $$3 = this.a($$2);
+         if ($$3.d().equals($$0)) {
+            $$1 += $$3.L();
          }
       }
 
-      if (!$$3.isEmpty() || $$2) {
-         $$0.a("Items", $$3);
-      }
-
-      return $$0;
+      return $$1;
    }
 
-   public static void b(sn $$0, iq<cmy> $$1) {
-      st $$2 = $$0.c("Items", 10);
+   default boolean a(Set<cnb> $$0) {
+      return this.a_($$1 -> !$$1.b() && $$0.contains($$1.d()));
+   }
 
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         sn $$4 = $$2.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < $$1.size()) {
-            $$1.set($$5, cmy.a($$4));
+   default boolean a_(Predicate<cng> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cng $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
          }
       }
+
+      return false;
    }
 
-   public static int a(bju $$0, Predicate<cmy> $$1, int $$2, boolean $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cmy $$6 = $$0.a($$5);
-         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
-         if ($$7 > 0 && !$$3 && $$6.b()) {
-            $$0.a($$5, cmy.f);
-         }
-
-         $$4 += $$7;
-      }
-
-      return $$4;
+   static boolean a(dhd $$0, cfq $$1) {
+      return a($$0, $$1, 8);
    }
 
-   public static int a(cmy $$0, Predicate<cmy> $$1, int $$2, boolean $$3) {
-      if ($$0.b() || !$$1.test($$0)) {
-         return 0;
-      } else if ($$3) {
-         return $$0.L();
+   static boolean a(dhd $$0, cfq $$1, int $$2) {
+      ctx $$3 = $$0.i();
+      hx $$4 = $$0.aE_();
+      if ($$3 == null) {
+         return false;
       } else {
-         int $$4 = $$2 < 0 ? $$0.L() : Math.min($$2, $$0.L());
-         $$0.h($$4);
-         return $$4;
+         return $$3.c_($$4) != $$0 ? false : $$1.i((double)$$4.u() + 0.5, (double)$$4.v() + 0.5, (double)$$4.w() + 0.5) <= (double)($$2 * $$2);
       }
    }
 }

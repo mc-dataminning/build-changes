@@ -1,22 +1,8 @@
-public class gkn implements eyj {
-   private final vf a;
-   private final int b;
-   private final int c;
-   private final int d;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public gkn(vf $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      $$0.a(evi.O().h, this.a, this.b, this.c, this.d);
-   }
-
-   public vf a() {
-      return this.a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gkn {
 }

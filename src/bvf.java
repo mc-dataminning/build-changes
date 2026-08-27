@@ -1,40 +1,37 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bvf extends bvh {
-   private final bng a;
-   private bml b;
-   private int c;
+public class bvf<T extends bmo> extends bvd<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public bvf(bng $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(bth.a.d));
+   public bvf(cgz $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bmo> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean a() {
-      if (this.a.u() && !this.a.ge()) {
-         bml $$0 = this.a.R_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.ej();
-            int $$1 = $$0.ek();
-            return $$1 != this.c && this.a(this.b, bwz.a) && this.a.a(this.b, $$0);
-         }
-      } else {
+      if (this.j > 0 || !this.e.eg().h()) {
          return false;
+      } else if (!((cgz)this.e).gu()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public void c() {
-      this.e.h(this.b);
-      bml $$0 = this.a.R_();
-      if ($$0 != null) {
-         this.c = $$0.ek();
-      }
-
+      this.j = b(200);
       super.c();
    }
 }

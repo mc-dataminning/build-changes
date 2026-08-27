@@ -1,41 +1,19 @@
-public class fvf implements fvh<dgt> {
-   public static final ggq a = new ggq(gem.e, new ahg("entity/bell/bell_body"));
-   private static final String b = "bell_body";
-   private final fmx c;
+import com.google.common.collect.Streams;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public fvf(fvi.a $$0) {
-      fmx $$1 = $$0.a(fmw.k);
-      this.c = $$1.b("bell_body");
+public class fvf implements fvg {
+   public static final String a = "AND";
+   private final Iterable<? extends fvg> d;
+
+   public fvf(Iterable<? extends fvg> $$0) {
+      this.d = $$0;
    }
 
-   public static fnd b() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      fng $$2 = $$1.a("bell_body", fnc.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fmz.a(8.0F, 12.0F, 8.0F));
-      $$2.a("bell_base", fnc.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fmz.a(-8.0F, -12.0F, -8.0F));
-      return fnd.a($$0, 32, 32);
-   }
-
-   public void a(dgt $$0, float $$1, eqb $$2, fth $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      float $$7 = 0.0F;
-      float $$8 = 0.0F;
-      if ($$0.b) {
-         float $$9 = auo.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
-         if ($$0.c == ic.c) {
-            $$7 = -$$9;
-         } else if ($$0.c == ic.d) {
-            $$7 = $$9;
-         } else if ($$0.c == ic.f) {
-            $$8 = -$$9;
-         } else if ($$0.c == ic.e) {
-            $$8 = $$9;
-         }
-      }
-
-      this.c.e = $$7;
-      this.c.g = $$8;
-      eqf $$10 = a.a($$3, ftp::c);
-      this.c.a($$2, $$10, $$4, $$5);
+   @Override
+   public Predicate<djp> getPredicate(djq<cwy, djp> $$0) {
+      List<Predicate<djp>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
+      return $$1x -> $$1.stream().allMatch($$1xx -> $$1xx.test($$1x));
    }
 }

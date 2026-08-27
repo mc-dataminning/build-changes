@@ -1,55 +1,94 @@
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.JsonOps;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ehb<T> {
-   private static final Logger d = LogUtils.getLogger();
-   public static final ehb<ejv> a = new ehb<>(ejx.a, "predicates", c());
-   public static final ehb<eij> b = new ehb<>(eil.b, "item_modifiers", c());
-   public static final ehb<ehe> c = new ehb<>(ehe.c, "loot_tables", d());
-   private final Codec<T> e;
-   private final String f;
-   private final ehb.a<T> g;
+public interface ehb {
+   int d = 19133;
+   int e = 19132;
 
-   private ehb(Codec<T> $$0, String $$1, ehb.a<T> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   cur F();
+
+   void a(cur var1);
+
+   boolean H();
+
+   Set<String> I();
+
+   Set<String> J();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.I()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.J()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.H()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.z();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.i($$0x));
+      });
    }
 
-   public String a() {
-      return this.f;
+   default String i(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
+      }
    }
 
-   public void a(ehf $$0, egy<T> $$1, T $$2) {
-      this.g.run($$0, $$1, $$2);
-   }
+   @Nullable
+   so G();
 
-   public Optional<T> a(ahg $$0, JsonElement $$1) {
-      DataResult<T> $$2 = this.e.parse(JsonOps.INSTANCE, $$1);
-      $$2.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
-      return $$2.result();
-   }
+   void a(@Nullable so var1);
 
-   public static Stream<ehb<?>> b() {
-      return Stream.of(a, b, c);
-   }
+   eha K();
 
-   private static <T extends egx> ehb.a<T> c() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
-   }
+   cub L();
 
-   private static ehb.a<ehe> d() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
-   }
+   so a(iu var1, @Nullable so var2);
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(ehf var1, egy<T> var2, T var3);
+   boolean n();
+
+   int z();
+
+   String g();
+
+   ctu m();
+
+   void a(ctu var1);
+
+   boolean o();
+
+   bjz s();
+
+   void a(bjz var1);
+
+   boolean t();
+
+   void d(boolean var1);
+
+   ctt q();
+
+   @Nullable
+   so y();
+
+   dnb.a E();
+
+   void a(dnb.a var1);
+
+   dpw A();
+
+   boolean B();
+
+   boolean C();
+
+   Lifecycle D();
+
+   default cia M() {
+      return this.F().b();
    }
 }

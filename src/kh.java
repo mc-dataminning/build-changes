@@ -4,8 +4,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class kh {
-   private final cwq a;
-   final Map<kh.b, cwq> b = Maps.newHashMap();
+   private final cwy a;
+   final Map<kh.b, cwy> b = Maps.newHashMap();
    boolean c = true;
    boolean d = true;
    @Nullable
@@ -13,19 +13,19 @@ public class kh {
    @Nullable
    String f;
 
-   kh(cwq $$0) {
+   kh(cwy $$0) {
       this.a = $$0;
    }
 
-   public cwq a() {
+   public cwy a() {
       return this.a;
    }
 
-   public Map<kh.b, cwq> b() {
+   public Map<kh.b, cwy> b() {
       return this.b;
    }
 
-   public cwq a(kh.b $$0) {
+   public cwy a(kh.b $$0) {
       return this.b.get($$0);
    }
 
@@ -48,7 +48,7 @@ public class kh {
    public static class a {
       private final kh a;
 
-      public a(cwq $$0) {
+      public a(cwy $$0) {
          this.a = new kh($$0);
       }
 
@@ -56,88 +56,88 @@ public class kh {
          return this.a;
       }
 
-      public kh.a a(cwq $$0) {
+      public kh.a a(cwy $$0) {
          this.a.b.put(kh.b.a, $$0);
          return this;
       }
 
-      public kh.a b(cwq $$0) {
+      public kh.a b(cwy $$0) {
          this.a.b.put(kh.b.b, $$0);
          return this;
       }
 
-      public kh.a c(cwq $$0) {
+      public kh.a c(cwy $$0) {
          this.a.b.put(kh.b.j, $$0);
          return this;
       }
 
-      public kh.a d(cwq $$0) {
+      public kh.a d(cwy $$0) {
          this.a.b.put(kh.b.c, $$0);
          return this;
       }
 
-      public kh.a e(cwq $$0) {
+      public kh.a e(cwy $$0) {
          this.a.b.put(kh.b.d, $$0);
          return this;
       }
 
-      public kh.a f(cwq $$0) {
+      public kh.a f(cwy $$0) {
          this.a.b.put(kh.b.e, $$0);
          return this;
       }
 
-      public kh.a g(cwq $$0) {
+      public kh.a g(cwy $$0) {
          this.a.b.put(kh.b.f, $$0);
          return this;
       }
 
-      public kh.a h(cwq $$0) {
+      public kh.a h(cwy $$0) {
          this.a.b.put(kh.b.g, $$0);
          return this;
       }
 
-      public kh.a i(cwq $$0) {
+      public kh.a i(cwy $$0) {
          this.a.b.put(kh.b.h, $$0);
          return this;
       }
 
-      public kh.a j(cwq $$0) {
+      public kh.a j(cwy $$0) {
          this.a.b.put(kh.b.i, $$0);
          return this;
       }
 
-      public kh.a a(cwq $$0, cwq $$1) {
+      public kh.a a(cwy $$0, cwy $$1) {
          this.a.b.put(kh.b.k, $$0);
          this.a.b.put(kh.b.r, $$1);
          return this;
       }
 
-      public kh.a k(cwq $$0) {
+      public kh.a k(cwy $$0) {
          this.a.b.put(kh.b.l, $$0);
          return this;
       }
 
-      public kh.a l(cwq $$0) {
+      public kh.a l(cwy $$0) {
          this.a.b.put(kh.b.m, $$0);
          return this;
       }
 
-      public kh.a m(cwq $$0) {
+      public kh.a m(cwy $$0) {
          this.a.b.put(kh.b.n, $$0);
          return this;
       }
 
-      public kh.a n(cwq $$0) {
+      public kh.a n(cwy $$0) {
          this.a.b.put(kh.b.o, $$0);
          return this;
       }
 
-      public kh.a o(cwq $$0) {
+      public kh.a o(cwy $$0) {
          this.a.b.put(kh.b.p, $$0);
          return this;
       }
 
-      public kh.a p(cwq $$0) {
+      public kh.a p(cwy $$0) {
          this.a.b.put(kh.b.q, $$0);
          return this;
       }

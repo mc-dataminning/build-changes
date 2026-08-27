@@ -1,23 +1,38 @@
-public class efs implements eft {
-   private final ctp b;
+public class efs extends efm {
+   private float m = Float.MAX_VALUE;
+   private efm n;
+   private boolean o;
 
-   public efs(ctp $$0) {
-      this.b = $$0;
+   public efs(efm $$0) {
+      super($$0.a, $$0.b, $$0.c);
    }
 
-   @Override
-   public void a(ic $$0, djh $$1, hx $$2, hx $$3, int $$4, int $$5) {
-      eft.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
+   public efs(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(hx $$0, cwq $$1, hx $$2) {
-      djh $$3 = this.b.a_($$0);
-      this.a($$3, $$0, $$1, $$2, false);
+   public void a(float $$0, efm $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
+      }
    }
 
-   @Override
-   public void a(djh $$0, hx $$1, cwq $$2, hx $$3, boolean $$4) {
-      eft.a(this.b, $$0, $$1, $$2, $$3, $$4);
+   public efm d() {
+      return this.n;
+   }
+
+   public void e() {
+      this.o = true;
+   }
+
+   public boolean f() {
+      return this.o;
+   }
+
+   public static efs c(uj $$0) {
+      efs $$1 = new efs($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

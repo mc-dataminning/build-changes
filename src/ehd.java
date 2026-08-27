@@ -1,146 +1,122 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.google.common.collect.Sets;
+import java.util.Collections;
+import java.util.Set;
 
 public class ehd {
-   public static final Codec<ehd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ehn.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               atw.a(ejx.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.c),
-               atw.a(eil.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.e),
-               ekr.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               ekr.a.fieldOf("bonus_rolls").orElse(eko.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ehd::new)
-   );
-   private final List<ehp> b;
-   private final List<ejv> c;
-   private final Predicate<egw> d;
-   private final List<eij> e;
-   private final BiFunction<cmy, egw, cmy> f;
-   private final ekq g;
-   private final ekq h;
+   private static final Set<ahh> aU = Sets.newHashSet();
+   private static final Set<ahh> aV = Collections.unmodifiableSet(aU);
+   public static final ahh a = new ahh("empty");
+   public static final ahh b = a("chests/spawn_bonus_chest");
+   public static final ahh c = a("chests/end_city_treasure");
+   public static final ahh d = a("chests/simple_dungeon");
+   public static final ahh e = a("chests/village/village_weaponsmith");
+   public static final ahh f = a("chests/village/village_toolsmith");
+   public static final ahh g = a("chests/village/village_armorer");
+   public static final ahh h = a("chests/village/village_cartographer");
+   public static final ahh i = a("chests/village/village_mason");
+   public static final ahh j = a("chests/village/village_shepherd");
+   public static final ahh k = a("chests/village/village_butcher");
+   public static final ahh l = a("chests/village/village_fletcher");
+   public static final ahh m = a("chests/village/village_fisher");
+   public static final ahh n = a("chests/village/village_tannery");
+   public static final ahh o = a("chests/village/village_temple");
+   public static final ahh p = a("chests/village/village_desert_house");
+   public static final ahh q = a("chests/village/village_plains_house");
+   public static final ahh r = a("chests/village/village_taiga_house");
+   public static final ahh s = a("chests/village/village_snowy_house");
+   public static final ahh t = a("chests/village/village_savanna_house");
+   public static final ahh u = a("chests/abandoned_mineshaft");
+   public static final ahh v = a("chests/nether_bridge");
+   public static final ahh w = a("chests/stronghold_library");
+   public static final ahh x = a("chests/stronghold_crossing");
+   public static final ahh y = a("chests/stronghold_corridor");
+   public static final ahh z = a("chests/desert_pyramid");
+   public static final ahh A = a("chests/jungle_temple");
+   public static final ahh B = a("chests/jungle_temple_dispenser");
+   public static final ahh C = a("chests/igloo_chest");
+   public static final ahh D = a("chests/woodland_mansion");
+   public static final ahh E = a("chests/underwater_ruin_small");
+   public static final ahh F = a("chests/underwater_ruin_big");
+   public static final ahh G = a("chests/buried_treasure");
+   public static final ahh H = a("chests/shipwreck_map");
+   public static final ahh I = a("chests/shipwreck_supply");
+   public static final ahh J = a("chests/shipwreck_treasure");
+   public static final ahh K = a("chests/pillager_outpost");
+   public static final ahh L = a("chests/bastion_treasure");
+   public static final ahh M = a("chests/bastion_other");
+   public static final ahh N = a("chests/bastion_bridge");
+   public static final ahh O = a("chests/bastion_hoglin_stable");
+   public static final ahh P = a("chests/ancient_city");
+   public static final ahh Q = a("chests/ancient_city_ice_box");
+   public static final ahh R = a("chests/ruined_portal");
+   public static final ahh S = a("chests/trial_chambers/reward");
+   public static final ahh T = a("chests/trial_chambers/supply");
+   public static final ahh U = a("chests/trial_chambers/corridor");
+   public static final ahh V = a("chests/trial_chambers/intersection");
+   public static final ahh W = a("chests/trial_chambers/intersection_barrel");
+   public static final ahh X = a("chests/trial_chambers/entrance");
+   public static final ahh Y = a("dispensers/trial_chambers/corridor");
+   public static final ahh Z = a("dispensers/trial_chambers/chamber");
+   public static final ahh aa = a("dispensers/trial_chambers/water");
+   public static final ahh ab = a("pots/trial_chambers/corridor");
+   public static final ahh ac = a("entities/sheep/white");
+   public static final ahh ad = a("entities/sheep/orange");
+   public static final ahh ae = a("entities/sheep/magenta");
+   public static final ahh af = a("entities/sheep/light_blue");
+   public static final ahh ag = a("entities/sheep/yellow");
+   public static final ahh ah = a("entities/sheep/lime");
+   public static final ahh ai = a("entities/sheep/pink");
+   public static final ahh aj = a("entities/sheep/gray");
+   public static final ahh ak = a("entities/sheep/light_gray");
+   public static final ahh al = a("entities/sheep/cyan");
+   public static final ahh am = a("entities/sheep/purple");
+   public static final ahh an = a("entities/sheep/blue");
+   public static final ahh ao = a("entities/sheep/brown");
+   public static final ahh ap = a("entities/sheep/green");
+   public static final ahh aq = a("entities/sheep/red");
+   public static final ahh ar = a("entities/sheep/black");
+   public static final ahh as = a("gameplay/fishing");
+   public static final ahh at = a("gameplay/fishing/junk");
+   public static final ahh au = a("gameplay/fishing/treasure");
+   public static final ahh av = a("gameplay/fishing/fish");
+   public static final ahh aw = a("gameplay/cat_morning_gift");
+   public static final ahh ax = a("gameplay/hero_of_the_village/armorer_gift");
+   public static final ahh ay = a("gameplay/hero_of_the_village/butcher_gift");
+   public static final ahh az = a("gameplay/hero_of_the_village/cartographer_gift");
+   public static final ahh aA = a("gameplay/hero_of_the_village/cleric_gift");
+   public static final ahh aB = a("gameplay/hero_of_the_village/farmer_gift");
+   public static final ahh aC = a("gameplay/hero_of_the_village/fisherman_gift");
+   public static final ahh aD = a("gameplay/hero_of_the_village/fletcher_gift");
+   public static final ahh aE = a("gameplay/hero_of_the_village/leatherworker_gift");
+   public static final ahh aF = a("gameplay/hero_of_the_village/librarian_gift");
+   public static final ahh aG = a("gameplay/hero_of_the_village/mason_gift");
+   public static final ahh aH = a("gameplay/hero_of_the_village/shepherd_gift");
+   public static final ahh aI = a("gameplay/hero_of_the_village/toolsmith_gift");
+   public static final ahh aJ = a("gameplay/hero_of_the_village/weaponsmith_gift");
+   public static final ahh aK = a("gameplay/sniffer_digging");
+   public static final ahh aL = a("gameplay/piglin_bartering");
+   public static final ahh aM = a("spawners/trial_chamber/key");
+   public static final ahh aN = a("spawners/trial_chamber/consumables");
+   public static final ahh aO = a("archaeology/desert_well");
+   public static final ahh aP = a("archaeology/desert_pyramid");
+   public static final ahh aQ = a("archaeology/trail_ruins_common");
+   public static final ahh aR = a("archaeology/trail_ruins_rare");
+   public static final ahh aS = a("archaeology/ocean_ruin_warm");
+   public static final ahh aT = a("archaeology/ocean_ruin_cold");
 
-   ehd(List<ehp> $$0, List<ejv> $$1, List<eij> $$2, ekq $$3, ekq $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ejx.a($$1);
-      this.e = $$2;
-      this.f = eil.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   private static ahh a(String $$0) {
+      return a(new ahh($$0));
    }
 
-   private void b(Consumer<cmy> $$0, egw $$1) {
-      auv $$2 = $$1.b();
-      List<eho> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
-
-      for (ehp $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
-      }
-
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
-         } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (eho $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
-         }
+   private static ahh a(ahh $$0) {
+      if (aU.add($$0)) {
+         return $$0;
+      } else {
+         throw new IllegalArgumentException($$0 + " is already a registered built-in loot table");
       }
    }
 
-   public void a(Consumer<cmy> $$0, egw $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cmy> $$2 = eij.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + auo.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
-   }
-
-   public void a(ehf $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
-   }
-
-   public static ehd.a a() {
-      return new ehd.a();
-   }
-
-   public static class a implements eig<ehd.a>, ejo<ehd.a> {
-      private final Builder<ehp> a = ImmutableList.builder();
-      private final Builder<ejv> b = ImmutableList.builder();
-      private final Builder<eij> c = ImmutableList.builder();
-      private ekq d = eko.a(1.0F);
-      private ekq e = eko.a(0.0F);
-
-      public ehd.a a(ekq $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ehd.a a() {
-         return this;
-      }
-
-      public ehd.a b(ekq $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ehd.a a(ehp.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public ehd.a a(ejv.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public ehd.a a(eij.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public ehd b() {
-         return new ehd(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   public static Set<ahh> a() {
+      return aV;
    }
 }

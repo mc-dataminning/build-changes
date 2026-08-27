@@ -1,98 +1,138 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.util.UndashedUuid;
-import java.util.Date;
-import java.util.UUID;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class etu {
-   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
-      } else {
-         return $$2.apply($$3.getAsJsonObject());
-      }
-   }
-
+public class etu extends gld {
+   static final Logger a = LogUtils.getLogger();
+   private static final vg b = vg.c("mco.configure.world.subscription.title");
+   private static final vg c = vg.c("mco.configure.world.subscription.start");
+   private static final vg v = vg.c("mco.configure.world.subscription.timeleft");
+   private static final vg w = vg.c("mco.configure.world.subscription.recurring.daysleft");
+   private static final vg x = vg.c("mco.configure.world.subscription.expired");
+   private static final vg y = vg.c("mco.configure.world.subscription.less_than_a_day");
+   private static final vg z = vg.c("mco.configure.world.subscription.unknown");
+   private static final vg A = vg.c("mco.configure.world.subscription.recurring.info");
+   private final fdm B;
+   final err C;
+   final fdm D;
+   private vg E = z;
+   private vg F = z;
    @Nullable
-   public static <T> T b(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         return null;
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
+   private ese.a G;
+
+   public etu(fdm $$0, err $$1, fdm $$2) {
+      super(evj.a);
+      this.B = $$0;
+      this.C = $$1;
+      this.D = $$2;
+   }
+
+   @Override
+   public void aP_() {
+      this.a(this.C.a);
+      this.d(exr.a(vg.c("mco.configure.world.subscription.extend"), $$0 -> fce.a(this, atl.a(this.C.b, this.f.V().b()))).a(this.g / 2 - 100, g(6), 200, 20).a());
+      if (this.C.j) {
+         this.d(exr.a(vg.c("mco.configure.world.delete.button"), $$0 -> {
+            vg $$1 = vg.c("mco.configure.world.delete.question.line1");
+            vg $$2 = vg.c("mco.configure.world.delete.question.line2");
+            this.f.a(new etg(this::c, etg.a.a, $$1, $$2, true));
+         }).a(this.g / 2 - 100, g(10), 200, 20).a());
+      } else if (eqv.b() && this.C.s != null) {
+         this.d(new eyb(this.g / 2 - 100, g(8), 200, 46, vg.a("mco.snapshot.subscription.info", this.C.s), this.i).a(-6250336));
       } else {
-         return $$2.apply($$3.getAsJsonObject());
+         this.d(new eyb(this.g / 2 - 100, g(8), 200, 46, A, this.i).a(-6250336));
+      }
+
+      this.d(exr.a(vf.k, $$0 -> this.d()).a(this.g / 2 - 100, g(12), 200, 20).a());
+   }
+
+   @Override
+   public vg i() {
+      return vf.b(b, c, this.F, v, this.E);
+   }
+
+   private void c(boolean $$0) {
+      if ($$0) {
+         (new Thread("Realms-delete-realm") {
+            @Override
+            public void run() {
+               try {
+                  era $$0 = era.a();
+                  $$0.i(etu.this.C.a);
+               } catch (esn var2) {
+                  etu.a.error("Couldn't delete world", var2);
+               }
+
+               etu.this.f.execute(() -> etu.this.f.a(etu.this.D));
+            }
+         }).start();
+      }
+
+      this.f.a(this);
+   }
+
+   private void a(long $$0) {
+      era $$1 = era.a();
+
+      try {
+         ese $$2 = $$1.h($$0);
+         this.E = this.a($$2.b);
+         this.F = b($$2.a);
+         this.G = $$2.c;
+      } catch (esn var5) {
+         a.error("Couldn't get subscription", var5);
+         this.f.a(new ete(var5, this.B));
       }
    }
 
-   public static String a(String $$0, JsonObject $$1) {
-      String $$2 = b($$0, $$1, null);
-      if ($$2 == null) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else {
-         return $$2;
+   private static vg b(long $$0) {
+      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
+      $$1.setTimeInMillis($$0);
+      return vg.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+   }
+
+   @Override
+   public void d() {
+      this.f.a(this.B);
+   }
+
+   @Override
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = this.g / 2 - 100;
+      $$0.a(this.i, b, this.g / 2, 17, -1);
+      $$0.a(this.i, c, $$4, g(0), -6250336, false);
+      $$0.a(this.i, this.F, $$4, g(1), -1, false);
+      if (this.G == ese.a.a) {
+         $$0.a(this.i, v, $$4, g(3), -6250336, false);
+      } else if (this.G == ese.a.b) {
+         $$0.a(this.i, w, $$4, g(3), -6250336, false);
       }
+
+      $$0.a(this.i, this.E, $$4, g(4), -1, false);
    }
 
-   public static String a(String $$0, JsonObject $$1, String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
+   private vg a(int $$0) {
+      if ($$0 < 0 && this.C.j) {
+         return x;
+      } else if ($$0 <= 1) {
+         return y;
       } else {
-         return $$2;
+         int $$1 = $$0 / 30;
+         int $$2 = $$0 % 30;
+         boolean $$3 = $$1 > 0;
+         boolean $$4 = $$2 > 0;
+         if ($$3 && $$4) {
+            return vg.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
+         } else if ($$3) {
+            return vg.a("mco.configure.world.subscription.remaining.months", $$1);
+         } else {
+            return $$4 ? vg.a("mco.configure.world.subscription.remaining.days", $$2) : vg.i();
+         }
       }
-   }
-
-   @Nullable
-   public static String b(String $$0, JsonObject $$1, @Nullable String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
-      } else {
-         return $$2;
-      }
-   }
-
-   @Nullable
-   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
-      String $$3 = b($$0, $$1, null);
-      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
-   }
-
-   public static int a(String $$0, JsonObject $$1, int $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static long a(String $$0, JsonObject $$1, long $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static Date b(String $$0, JsonObject $$1) {
-      JsonElement $$2 = $$1.get($$0);
-      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
    }
 }

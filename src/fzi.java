@@ -1,23 +1,27 @@
-public class fzi extends fzt<byk, fkm<byk>> {
-   private static final ahg a = new ahg("textures/entity/iron_golem/iron_golem.png");
+public class fzi extends gag<bym, fkl<bym>> {
+   private static final ahh a = new ahh("textures/entity/fox/fox.png");
+   private static final ahh i = new ahh("textures/entity/fox/fox_sleep.png");
+   private static final ahh j = new ahh("textures/entity/fox/snow_fox.png");
+   private static final ahh k = new ahh("textures/entity/fox/snow_fox_sleep.png");
 
-   public fzi(fyn.a $$0) {
-      super($$0, new fkm<>($$0.a(fmw.as)), 0.7F);
-      this.a(new gcp(this));
-      this.a(new gcq(this, $$0.c()));
+   public fzi(fza.a $$0) {
+      super($$0, new fkl<>($$0.a(fni.Z)), 0.4F);
+      this.a(new gcy(this, $$0.d()));
    }
 
-   public ahg a(byk $$0) {
-      return a;
-   }
-
-   protected void a(byk $$0, eqb $$1, float $$2, float $$3, float $$4) {
+   protected void a(bym $$0, eqk $$1, float $$2, float $$3, float $$4) {
       super.a($$0, $$1, $$2, $$3, $$4);
-      if (!((double)$$0.aQ.a() < 0.01)) {
-         float $$5 = 13.0F;
-         float $$6 = $$0.aQ.c($$4) + 6.0F;
-         float $$7 = (Math.abs($$6 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$7));
+      if ($$0.gl() || $$0.gf()) {
+         float $$5 = -aup.i($$4, $$0.O, $$0.dD());
+         $$1.a(a.b.rotationDegrees($$5));
+      }
+   }
+
+   public ahh a(bym $$0) {
+      if ($$0.w() == bym.v.a) {
+         return $$0.fD() ? i : a;
+      } else {
+         return $$0.fD() ? k : j;
       }
    }
 }

@@ -1,32 +1,24 @@
-public class aby implements xf<za> {
+public class aby implements xg<zb> {
    private final int a;
-   private final int b;
 
-   public aby(int $$0, int $$1) {
+   public aby(int $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public aby(ui $$0) {
-      this.a = $$0.n();
-      this.b = $$0.n();
+   public aby(uj $$0) {
+      this.a = $$0.readByte();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
+   public void a(uj $$0) {
+      $$0.k(this.a);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
    public int a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
    }
 }

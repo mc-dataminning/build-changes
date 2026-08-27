@@ -1,34 +1,46 @@
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import org.apache.commons.compress.utils.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record evz(float a, boolean b, Map<String, List<evy>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<evy>> b = Maps.newHashMap();
-      private boolean c;
+public class evz {
+   private static final Logger a = LogUtils.getLogger();
+   private final evr b;
+   @Nullable
+   private CompletableFuture<Boolean> c;
+   private boolean d;
 
-      public static evz.a a(float $$0) {
-         return new evz.a($$0);
+   public evz(evr $$0) {
+      this.b = $$0;
+   }
+
+   public void a(fdm $$0) {
+      if (!this.b.af() && !this.b.m.w && !this.d && this.a()) {
+         this.b.a(new fgl($$0));
+         this.d = true;
+      }
+   }
+
+   private Boolean a() {
+      if (this.c == null) {
+         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
       }
 
-      private a(float $$0) {
-         this.a = $$0;
+      try {
+         return this.c.getNow(false);
+      } catch (CompletionException var2) {
+         a.warn("Failed to retrieve realms subscriptions", var2);
+         this.d = true;
+         return false;
       }
+   }
 
-      public evz.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public evz.a a(String $$0, evy $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-         return this;
-      }
-
-      public evz b() {
-         return new evz(this.a, this.c, this.b);
+   private boolean b() {
+      try {
+         return era.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
+      } catch (esn var2) {
+         return false;
       }
    }
 }

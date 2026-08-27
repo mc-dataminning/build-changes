@@ -1,28 +1,19 @@
-public class fyb extends fzt<ccb, fjr<ccb>> {
-   private static final ahg a = new ahg("textures/entity/creeper/creeper.png");
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   public fyb(fyn.a $$0) {
-      super($$0, new fjr<>($$0.a(fmw.E)), 0.5F);
-      this.a(new gcb(this, $$0.f()));
+public class fyb extends gag<bzm, fjm<bzm>> {
+   private static final Map<bzm.d, ahh> a = ac.a(Maps.newHashMap(), $$0 -> {
+      for (bzm.d $$1 : bzm.d.values()) {
+         $$0.put($$1, new ahh(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public fyb(fza.a $$0) {
+      super($$0, new fjm<>($$0.a(fni.f)), 0.5F);
    }
 
-   protected void a(ccb $$0, eqb $$1, float $$2) {
-      float $$3 = $$0.E($$2);
-      float $$4 = 1.0F + auo.a($$3 * 100.0F) * $$3 * 0.01F;
-      $$3 = auo.a($$3, 0.0F, 1.0F);
-      $$3 *= $$3;
-      $$3 *= $$3;
-      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
-      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
-      $$1.b($$5, $$6, $$5);
-   }
-
-   protected float a(ccb $$0, float $$1) {
-      float $$2 = $$0.E($$1);
-      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : auo.a($$2, 0.5F, 1.0F);
-   }
-
-   public ahg a(ccb $$0) {
-      return a;
+   public ahh a(bzm $$0) {
+      return a.get($$0.gf());
    }
 }

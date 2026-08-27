@@ -1,28 +1,31 @@
-public enum deq {
-   a {
-      @Override
-      public boolean a(djh $$0, csv $$1, hx $$2, ic $$3) {
-         return cwq.a($$0.l($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final int d = 1;
-      private final emm e = cwq.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-      @Override
-      public boolean a(djh $$0, csv $$1, hx $$2, ic $$3) {
-         return !emj.c($$0.l($$1, $$2).a($$3), this.e, elx.c);
-      }
-   },
-   c {
-      private final int d = 2;
-      private final emm e = emj.a(emj.b(), cwq.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), elx.e);
+public class deq extends day implements cwp {
+   public static final MapCodec<deq> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(clv.q.fieldOf("color").forGetter(deq::b), u()).apply($$0, deq::new));
+   private final clv k;
 
-      @Override
-      public boolean a(djh $$0, csv $$1, hx $$2, ic $$3) {
-         return !emj.c($$0.l($$1, $$2).a($$3), this.e, elx.c);
-      }
-   };
+   @Override
+   public MapCodec<deq> a() {
+      return j;
+   }
 
-   public abstract boolean a(djh var1, csv var2, hx var3, ic var4);
+   public deq(clv $$0, djo.d $$1) {
+      super($$1);
+      this.k = $$0;
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
+   }
+
+   @Override
+   public clv b() {
+      return this.k;
+   }
 }

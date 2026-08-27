@@ -1,19 +1,43 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dva<P extends duz> {
-   public static final dva<dvc> a = a("two_layers_feature_size", dvc.d);
-   public static final dva<dvb> b = a("three_layers_feature_size", dvb.d);
-   private final Codec<P> c;
+public class dva implements dug {
+   public static final Codec<dva> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               dtm.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               hx.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, dva::new)
+   );
+   private final boolean b;
+   private final List<dtm.a> c;
+   @Nullable
+   private final hx d;
 
-   private static <P extends duz> dva<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.aa, $$0, new dva<>($$1));
+   public dva(boolean $$0, List<dtm.a> $$1, @Nullable hx $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   private dva(Codec<P> $$0) {
-      this.c = $$0;
+   private dva(boolean $$0, List<dtm.a> $$1, Optional<hx> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   public Codec<P> a() {
+   public boolean a() {
+      return this.b;
+   }
+
+   public List<dtm.a> b() {
       return this.c;
+   }
+
+   @Nullable
+   public hx c() {
+      return this.d;
    }
 }

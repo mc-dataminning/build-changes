@@ -1,69 +1,57 @@
-public class cjt extends cib {
-   private static final int k = 27;
-   private final bju l;
+public class cjt extends cke {
+   private final cjr a;
+   private final cfq b;
+   private int c;
+   private final csu h;
 
-   public cjt(int $$0, cfh $$1) {
-      this($$0, $$1, new bkj(27));
-   }
-
-   public cjt(int $$0, cfh $$1, bju $$2) {
-      super(cji.u, $$0);
-      a($$2, 27);
-      this.l = $$2;
-      $$2.d_($$1.m);
-      int $$3 = 3;
-      int $$4 = 9;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cju($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cjw($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
-         }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cjw($$1, $$9, 8 + $$9 * 18, 142));
-      }
+   public cjt(cfq $$0, csu $$1, cjr $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.h = $$1;
+      this.a = $$2;
    }
 
    @Override
-   public boolean a(cfi $$0) {
-      return this.l.a($$0);
+   public boolean a(cng $$0) {
+      return false;
    }
 
    @Override
-   public cmy a(cfi $$0, int $$1) {
-      cmy $$2 = cmy.f;
-      cjw $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cmy $$4 = $$3.g();
-         $$2 = $$4.p();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cmy.f;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cmy.f;
-         }
-
-         if ($$4.b()) {
-            $$3.e(cmy.f);
-         } else {
-            $$3.b();
-         }
+   public cng a(int $$0) {
+      if (this.h()) {
+         this.c = this.c + Math.min($$0, this.g().L());
       }
 
-      return $$2;
+      return super.a($$0);
    }
 
    @Override
-   public void b(cfi $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   protected void a(cng $$0, int $$1) {
+      this.c += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b_(cng $$0) {
+      $$0.a(this.b.dL(), this.b, this.c);
+      this.c = 0;
+   }
+
+   @Override
+   public void a(cfq $$0, cng $$1) {
+      this.b_($$1);
+      csv $$2 = this.a.g();
+      if ($$2 != null) {
+         cng $$3 = this.a.a(0);
+         cng $$4 = this.a.a(1);
+         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
+            this.h.a($$2);
+            $$0.a(asd.T);
+            this.a.a(0, $$3);
+            this.a.a(1, $$4);
+         }
+
+         this.h.t(this.h.w() + $$2.o());
+      }
    }
 }

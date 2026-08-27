@@ -1,24 +1,8 @@
-public class agf implements xf<uc> {
-   private final long a;
-
-   public agf(long $$0) {
-      this.a = $$0;
-   }
-
-   public agf(ui $$0) {
-      this.a = $$0.readLong();
-   }
-
+public interface agf extends ud, ue {
    @Override
-   public void a(ui $$0) {
-      $$0.b(this.a);
+   default ui b() {
+      return ui.c;
    }
 
-   public void a(uc $$0) {
-      $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
-   }
+   void a(agh var1);
 }

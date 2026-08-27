@@ -1,54 +1,58 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ezm implements ezo {
-   private static final ahg a = new ahg("toast/recipe");
-   private static final long d = 5000L;
-   private static final vf e = vf.c("recipe.toast.title");
-   private static final vf f = vf.c("recipe.toast.description");
-   private final List<cqe<?>> g = Lists.newArrayList();
-   private long h;
-   private boolean i;
+public interface ezm extends ezb {
+   long s = 250L;
 
-   public ezm(cqe<?> $$0) {
-      this.g.add($$0);
+   default void f(double $$0, double $$1) {
    }
 
-   @Override
-   public ezo.a a(ewu $$0, ezp $$1, long $$2) {
-      if (this.i) {
-         this.h = $$2;
-         this.i = false;
-      }
-
-      if (this.g.isEmpty()) {
-         return ezo.a.b;
-      } else {
-         $$0.a(a, 0, 0, this.a(), this.b());
-         $$0.a($$1.b().h, e, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, f, 30, 18, -16777216, false);
-         cqe<?> $$3 = this.g.get((int)((double)$$2 / Math.max(1.0, 5000.0 * $$1.c() / (double)this.g.size()) % (double)this.g.size()));
-         cmy $$4 = $$3.b().g();
-         $$0.c().a();
-         $$0.c().b(0.6F, 0.6F, 1.0F);
-         $$0.b($$4, 3, 3);
-         $$0.c().b();
-         $$0.b($$3.b().a($$1.b().r.I_()), 8, 8);
-         return (double)($$2 - this.h) >= 5000.0 * $$1.c() ? ezo.a.b : ezo.a.a;
-      }
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   private void a(cqe<?> $$0) {
-      this.g.add($$0);
-      this.i = true;
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   public static void a(ezp $$0, cqe<?> $$1) {
-      ezm $$2 = $$0.a(ezm.class, b);
-      if ($$2 == null) {
-         $$0.a(new ezm($$1));
-      } else {
-         $$2.a($$1);
-      }
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean b(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
+   }
+
+   @Nullable
+   default exb a(fbq $$0) {
+      return null;
+   }
+
+   default boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   void a(boolean var1);
+
+   boolean aK_();
+
+   @Nullable
+   default exb aL_() {
+      return this.aK_() ? exb.a(this) : null;
+   }
+
+   default fbu F() {
+      return fbu.a();
    }
 }

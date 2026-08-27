@@ -1,30 +1,56 @@
-public class caz extends car {
-   private static final int b = 40;
-   private int c;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public caz(cao $$0) {
+public class caz extends cax {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
+   @Nullable
+   private emc d;
+   private int e;
+
+   public caz(cav $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      this.a.dM().a(this.a.dr(), this.a.dt(), this.a.dx(), ars.hA, this.a.db(), 2.5F, 0.8F + this.a.eg().i() * 0.3F, false);
-   }
-
-   @Override
    public void c() {
-      if (this.c++ >= 40) {
-         this.a.gb().a(cbe.f);
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.gc().a(cbl.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.gc().a(cbl.a);
+      } else {
+         double $$0 = this.d.c(this.a.dq(), this.a.ds(), this.a.dw());
+         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
+            this.e++;
+         }
       }
    }
 
    @Override
    public void d() {
-      this.c = 0;
+      this.d = null;
+      this.e = 0;
+   }
+
+   public void a(emc $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public cbe<caz> i() {
-      return cbe.h;
+   public float f() {
+      return 3.0F;
+   }
+
+   @Nullable
+   @Override
+   public emc g() {
+      return this.d;
+   }
+
+   @Override
+   public cbl<caz> i() {
+      return cbl.i;
    }
 }

@@ -1,43 +1,15 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public interface dno<T> {
+   void g(T var1);
 
-public class dno<T extends dnt> {
-   private final T a;
-   @Nullable
-   private iz b;
+   void f(T var1);
 
-   public dno(T $$0) {
-      this.a = $$0;
-   }
+   void e(T var1);
 
-   public void a(and $$0) {
-      this.c($$0);
-   }
+   void d(T var1);
 
-   public T a() {
-      return this.a;
-   }
+   void c(T var1);
 
-   public void b(and $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
-   }
+   void b(T var1);
 
-   public void c(and $$0) {
-      this.a.a().a($$0).map(iz::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
-   }
-
-   private static void a(cts $$0, @Nullable iz $$1, Consumer<dnu> $$2) {
-      if ($$1 != null) {
-         dld $$3 = $$0.a($$1.a(), $$1.c(), dli.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
-      }
-   }
+   void a(T var1);
 }

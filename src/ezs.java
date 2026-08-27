@@ -1,16 +1,9 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class ezs implements eoe {
-   @Nullable
-   @Override
-   public eod a(int $$0) {
-      return fab.b;
-   }
+public interface ezs {
+   vg a();
 
-   @Override
-   public IntSet a() {
-      return IntSets.EMPTY_SET;
-   }
+   void a(Consumer<exp> var1);
+
+   void a(fbu var1);
 }

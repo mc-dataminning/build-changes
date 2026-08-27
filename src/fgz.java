@@ -1,154 +1,244 @@
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class fgz<B extends fos.a<?>> extends fdb {
-   private static final vf r = vf.c("gui.abuseReport.report_sent_msg");
-   private static final vf t = vf.c("gui.abuseReport.sending.title").a(n.r);
-   private static final vf u = vf.c("gui.abuseReport.sent.title").a(n.r);
-   private static final vf v = vf.c("gui.abuseReport.error.title").a(n.r);
-   private static final vf w = vf.c("gui.abuseReport.send.generic_error");
-   protected static final vf a = vf.c("gui.abuseReport.send");
-   protected static final vf b = vf.c("gui.abuseReport.observed_what");
-   protected static final vf c = vf.c("gui.abuseReport.select_reason");
-   private static final vf x = vf.c("gui.abuseReport.describe");
-   protected static final vf k = vf.c("gui.abuseReport.more_comments");
-   private static final vf y = vf.c("gui.abuseReport.comments");
-   protected static final int l = 20;
-   protected static final int m = 280;
-   protected static final int n = 8;
-   private static final Logger z = LogUtils.getLogger();
-   protected final fdb o;
-   protected final fow p;
-   protected B q;
+public class fgz implements eyu, ezm {
+   private static final ahh b = new ahh("recipe_book/overlay_recipe");
+   static final ahh c = new ahh("recipe_book/furnace_overlay_highlighted");
+   static final ahh d = new ahh("recipe_book/furnace_overlay");
+   static final ahh e = new ahh("recipe_book/crafting_overlay_highlighted");
+   static final ahh f = new ahh("recipe_book/crafting_overlay");
+   static final ahh g = new ahh("recipe_book/furnace_overlay_disabled_highlighted");
+   static final ahh h = new ahh("recipe_book/furnace_overlay_disabled");
+   static final ahh i = new ahh("recipe_book/crafting_overlay_disabled_highlighted");
+   static final ahh j = new ahh("recipe_book/crafting_overlay_disabled");
+   private static final int k = 4;
+   private static final int l = 5;
+   private static final float m = 0.375F;
+   public static final int a = 25;
+   private final List<fgz.a> n = Lists.newArrayList();
+   private boolean o;
+   private int p;
+   private int q;
+   private evr r;
+   private fhe t;
+   @Nullable
+   private cqm<?> u;
+   float v;
+   boolean w;
 
-   protected fgz(vf $$0, fdb $$1, fow $$2, B $$3) {
-      super($$0);
-      this.o = $$1;
+   public void a(evr $$0, fhe $$1, int $$2, int $$3, int $$4, int $$5, float $$6) {
+      this.r = $$0;
+      this.t = $$1;
+      if ($$0.s.bW instanceof cik) {
+         this.w = true;
+      }
+
+      boolean $$7 = $$0.s.m().a((cjw<?>)$$0.s.bW);
+      List<cqm<?>> $$8 = $$1.b(true);
+      List<cqm<?>> $$9 = $$7 ? Collections.emptyList() : $$1.b(false);
+      int $$10 = $$8.size();
+      int $$11 = $$10 + $$9.size();
+      int $$12 = $$11 <= 16 ? 4 : 5;
+      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
       this.p = $$2;
       this.q = $$3;
+      float $$14 = (float)(this.p + Math.min($$11, $$12) * 25);
+      float $$15 = (float)($$4 + 50);
+      if ($$14 > $$15) {
+         this.p = (int)((float)this.p - $$6 * (float)((int)(($$14 - $$15) / $$6)));
+      }
+
+      float $$16 = (float)(this.q + $$13 * 25);
+      float $$17 = (float)($$5 + 50);
+      if ($$16 > $$17) {
+         this.q = (int)((float)this.q - $$6 * (float)aup.f(($$16 - $$17) / $$6));
+      }
+
+      float $$18 = (float)this.q;
+      float $$19 = (float)($$5 - 100);
+      if ($$18 < $$19) {
+         this.q = (int)((float)this.q - $$6 * (float)aup.f(($$18 - $$19) / $$6));
+      }
+
+      this.o = true;
+      this.n.clear();
+
+      for (int $$20 = 0; $$20 < $$11; $$20++) {
+         boolean $$21 = $$20 < $$10;
+         cqm<?> $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
+         int $$23 = this.p + 4 + 25 * ($$20 % $$12);
+         int $$24 = this.q + 5 + 25 * ($$20 / $$12);
+         if (this.w) {
+            this.n.add(new fgz.b($$23, $$24, $$22, $$21));
+         } else {
+            this.n.add(new fgz.a($$23, $$24, $$22, $$21));
+         }
+      }
+
+      this.u = null;
    }
 
-   protected exy a(int $$0, int $$1, Consumer<String> $$2) {
-      AbuseReportLimits $$3 = this.p.a().b();
-      exy $$4 = new exy(this.i, 0, 0, $$0, $$1, x, y);
-      $$4.a(this.q.g());
-      $$4.a($$3.maxOpinionCommentsLength());
-      $$4.b($$2);
-      return $$4;
+   public fhe a() {
+      return this.t;
    }
 
-   protected void n() {
-      this.q.a(this.p).ifLeft($$0 -> {
-         CompletableFuture<?> $$1 = this.p.a().a($$0.a(), $$0.b(), $$0.c());
-         this.f.a(fci.a(t, ve.e, () -> {
-            this.f.a(this);
-            $$1.cancel(true);
-         }));
-         $$1.handleAsync(($$0x, $$1x) -> {
-            if ($$1x == null) {
-               this.D();
-            } else {
-               if ($$1x instanceof CancellationException) {
-                  return null;
-               }
+   @Nullable
+   public cqm<?> b() {
+      return this.u;
+   }
 
-               this.a($$1x);
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 != 0) {
+         return false;
+      } else {
+         for (fgz.a $$3 : this.n) {
+            if ($$3.a($$0, $$1, $$2)) {
+               this.u = $$3.c;
+               return true;
             }
+         }
 
-            return null;
-         }, this.f);
-      }).ifRight($$0 -> this.a($$0.b()));
-   }
-
-   private void D() {
-      this.H();
-      this.f.a(fci.a(u, r, ve.d, () -> this.f.a(null)));
-   }
-
-   private void a(Throwable $$0) {
-      z.error("Encountered error while sending abuse report", $$0);
-      vf $$2;
-      if ($$0.getCause() instanceof wf $$1) {
-         $$2 = $$1.b();
-      } else {
-         $$2 = w;
-      }
-
-      this.a($$2);
-   }
-
-   private void a(vf $$0) {
-      vf $$1 = $$0.f().a(n.m);
-      this.f.a(fci.a(v, $$1, ve.k, () -> this.f.a(this)));
-   }
-
-   void E() {
-      if (this.q.b()) {
-         this.p.a(this.q.e().b());
-      }
-   }
-
-   void H() {
-      this.p.a(null);
-   }
-
-   @Override
-   public void aE_() {
-      if (this.q.b()) {
-         this.f.a(new fgz.a());
-      } else {
-         this.f.a(this.o);
-      }
-   }
-
-   @Override
-   public void j() {
-      this.E();
-      super.j();
-   }
-
-   class a extends fge {
-      private static final int c = 20;
-      private static final vf k = vf.c("gui.abuseReport.discard.title").a(n.r);
-      private static final vf l = vf.c("gui.abuseReport.discard.content");
-      private static final vf m = vf.c("gui.abuseReport.discard.return");
-      private static final vf n = vf.c("gui.abuseReport.discard.draft");
-      private static final vf o = vf.c("gui.abuseReport.discard.discard");
-
-      protected a() {
-         super(k, l, l);
-      }
-
-      @Override
-      protected void a(int $$0) {
-         this.d(exg.a(m, $$0x -> this.aE_()).a(this.g / 2 - 155, 100 + $$0).a());
-         this.d(exg.a(n, $$0x -> {
-            fgz.this.E();
-            this.f.a(fgz.this.o);
-         }).a(this.g / 2 + 5, 100 + $$0).a());
-         this.d(exg.a(o, $$0x -> {
-            fgz.this.H();
-            this.f.a(fgz.this.o);
-         }).a(this.g / 2 - 75, 130 + $$0).a());
-      }
-
-      @Override
-      public void aE_() {
-         this.f.a(fgz.this);
-      }
-
-      @Override
-      public boolean aL_() {
          return false;
       }
+   }
+
+   @Override
+   public boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   @Override
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      if (this.o) {
+         this.v += $$3;
+         RenderSystem.enableBlend();
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1000.0F);
+         int $$4 = this.n.size() <= 16 ? 4 : 5;
+         int $$5 = Math.min(this.n.size(), $$4);
+         int $$6 = aup.f((float)this.n.size() / (float)$$4);
+         int $$7 = 4;
+         $$0.a(b, this.p, this.q, $$5 * 25 + 8, $$6 * 25 + 8);
+         RenderSystem.disableBlend();
+
+         for (fgz.a $$8 : this.n) {
+            $$8.a($$0, $$1, $$2, $$3);
+         }
+
+         $$0.c().b();
+      }
+   }
+
+   public void b(boolean $$0) {
+      this.o = $$0;
+   }
+
+   public boolean c() {
+      return this.o;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public boolean aK_() {
+      return false;
+   }
+
+   class a extends exp implements agu<cqh> {
+      final cqm<?> c;
+      private final boolean d;
+      protected final List<fgz.a.a> a = Lists.newArrayList();
+
+      public a(int $$0, int $$1, cqm<?> $$2, boolean $$3) {
+         super($$0, $$1, 200, 20, vf.a);
+         this.g = 24;
+         this.h = 24;
+         this.c = $$2;
+         this.d = $$3;
+         this.a($$2);
+      }
+
+      protected void a(cqm<?> $$0) {
+         this.a(3, 3, -1, $$0, $$0.b().a().iterator(), 0);
+      }
 
       @Override
-      protected void c(ewu $$0) {
-         $$0.b(this.i, this.e, this.g / 2 - 155, 30, -1);
+      public void a(fbk $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public void a(Iterator<cqh> $$0, int $$1, int $$2, int $$3, int $$4) {
+         cng[] $$5 = $$0.next().a();
+         if ($$5.length != 0) {
+            this.a.add(new fgz.a.a(3 + $$4 * 7, 3 + $$3 * 7, $$5));
+         }
+      }
+
+      @Override
+      public void b(exe $$0, int $$1, int $$2, float $$3) {
+         ahh $$4;
+         if (this.d) {
+            if (fgz.this.w) {
+               $$4 = this.z() ? fgz.c : fgz.d;
+            } else {
+               $$4 = this.z() ? fgz.e : fgz.f;
+            }
+         } else if (fgz.this.w) {
+            $$4 = this.z() ? fgz.g : fgz.h;
+         } else {
+            $$4 = this.z() ? fgz.i : fgz.j;
+         }
+
+         $$0.a($$4, this.B(), this.C(), this.g, this.h);
+         $$0.c().a();
+         $$0.c().a((double)(this.B() + 2), (double)(this.C() + 2), 150.0);
+
+         for (fgz.a.a $$8 : this.a) {
+            $$0.c().a();
+            $$0.c().a((double)$$8.b, (double)$$8.c, 0.0);
+            $$0.c().b(0.375F, 0.375F, 1.0F);
+            $$0.c().a(-8.0, -8.0, 0.0);
+            if ($$8.a.length > 0) {
+               $$0.a($$8.a[aup.d(fgz.this.v / 30.0F) % $$8.a.length], 0, 0);
+            }
+
+            $$0.c().b();
+         }
+
+         $$0.c().b();
+      }
+
+      protected class a {
+         public final cng[] a;
+         public final int b;
+         public final int c;
+
+         public a(int $$1, int $$2, cng[] $$3) {
+            this.b = $$1;
+            this.c = $$2;
+            this.a = $$3;
+         }
+      }
+   }
+
+   class b extends fgz.a {
+      public b(int $$0, int $$1, cqm<?> $$2, boolean $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      protected void a(cqm<?> $$0) {
+         cqh $$1 = $$0.b().a().get(0);
+         cng[] $$2 = $$1.a();
+         this.a.add(new fgz.a.a(10, 10, $$2));
       }
    }
 }

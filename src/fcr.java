@@ -1,57 +1,74 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.google.common.hash.Hashing;
 import javax.annotation.Nullable;
-import org.apache.commons.compress.utils.Lists;
 
-public class fcr extends fdd {
+public class fcr implements AutoCloseable {
+   private static final ahh a = new ahh("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final gfc d;
+   private final ahh e;
    @Nullable
-   private final evl<Unit> l;
+   private geo f;
+   private boolean g;
 
-   public static fcr a(evi $$0, fdb $$1, evm $$2) {
-      List<evl<?>> $$3 = Lists.newArrayList();
-      $$3.add($$2.Q());
-      $$3.add($$2.R());
-      evl<Unit> $$4 = x.a(
-         $$0.r,
-         $$0x -> {
-            bjy $$1x = $$0x.ak();
-            return new evl<>(
-               "options.difficulty.online",
-               evl.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new evl.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$4 != null) {
-         $$3.add($$4);
-      }
-
-      return new fcr($$1, $$2, $$3.toArray(new evl[0]), $$4);
+   private fcr(gfc $$0, ahh $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private fcr(fdb $$0, evm $$1, evl<?>[] $$2, @Nullable evl<Unit> $$3) {
-      super($$0, $$1, vf.c("options.online.title"), $$2);
-      this.l = $$3;
+   public static fcr a(gfc $$0, String $$1) {
+      return new fcr($$0, new ahh("minecraft", "worlds/" + ac.a($$1, ahh::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public static fcr b(gfc $$0, String $$1) {
+      return new fcr($$0, new ahh("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public void a(epl $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new geo($$0);
+            } else {
+               this.f.a($$0);
+               this.f.d();
+            }
+
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
+         }
+      } else {
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
+      }
+   }
+
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
+      }
+   }
+
+   public ahh b() {
+      return this.f != null ? this.e : a;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      if (this.l != null) {
-         exe $$0 = this.k.b(this.l);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
+   public void close() {
+      this.a();
+      this.g = true;
+   }
 
-      exe $$1 = this.k.b(this.b.af());
-      if ($$1 != null) {
-         $$1.j = this.f.B();
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
       }
    }
 }

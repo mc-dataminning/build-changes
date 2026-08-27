@@ -1,32 +1,40 @@
-public class aff implements xf<adj> {
-   private final bka a;
-   private final int b;
+public class aff implements xg<adk> {
+   private final ely a;
+   private final bkb b;
+   private final int c;
 
-   public aff(bka $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aff(bkb $$0, ely $$1, int $$2) {
+      this.b = $$0;
+      this.a = $$1;
+      this.c = $$2;
    }
 
-   public aff(ui $$0) {
-      this.a = $$0.b(bka.class);
-      this.b = $$0.n();
+   public aff(uj $$0) {
+      this.b = $$0.b(bkb.class);
+      this.a = $$0.y();
+      this.c = $$0.n();
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
+      $$0.a(this.b);
       $$0.a(this.a);
-      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   public bka a() {
+   public bkb a() {
+      return this.b;
+   }
+
+   public ely d() {
       return this.a;
    }
 
-   public int d() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

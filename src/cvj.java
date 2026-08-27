@@ -1,77 +1,84 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public abstract class cvj extends cwq {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final emm h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final emm b = emj.a(
-      emj.b(), emj.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), elx.e
-   );
-   protected final jd.a c;
+public class cvj extends cva {
+   private static final MapCodec<ih<cuw>> d = cuw.c.fieldOf("biome");
+   public static final MapCodec<cvf.c<ih<cuw>>> b = cvf.c.a(d).fieldOf("biomes");
+   private static final MapCodec<ih<cvk>> e = cvk.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
+   public static final Codec<cvj> c = Codec.mapEither(b, e).xmap(cvj::new, $$0 -> $$0.f).codec();
+   private final Either<cvf.c<ih<cuw>>, ih<cvk>> f;
 
-   @Override
-   protected abstract MapCodec<? extends cvj> a();
-
-   public cvj(djg.d $$0, jd.a $$1) {
-      super($$0);
-      this.c = $$1;
+   private cvj(Either<cvf.c<ih<cuw>>, ih<cvk>> $$0) {
+      this.f = $$0;
    }
 
-   protected double b(djh $$0) {
-      return 0.0;
+   public static cvj a(cvf.c<ih<cuw>> $$0) {
+      return new cvj(Either.left($$0));
    }
 
-   protected boolean a(djh $$0, hx $$1, blv $$2) {
-      return $$2.dt() < (double)$$1.v() + this.b($$0) && $$2.cH().e > (double)$$1.v() + 0.25;
+   public static cvj a(ih<cvk> $$0) {
+      return new cvj(Either.right($$0));
    }
 
-   @Override
-   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
-      cmy $$6 = $$3.b($$4);
-      jd $$7 = this.c.b().get($$6.d());
-      return $$7.interact($$0, $$1, $$2, $$3, $$4, $$6);
+   private cvf.c<ih<cuw>> d() {
+      return (cvf.c<ih<cuw>>)this.f.map($$0 -> $$0, $$0 -> ((cvk)$$0.a()).a());
    }
 
    @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return b;
+   protected Stream<ih<cuw>> b() {
+      return this.d().a().stream().map(Pair::getSecond);
    }
 
    @Override
-   public emm a(djh $$0, csv $$1, hx $$2) {
-      return h;
+   protected Codec<? extends cva> a() {
+      return c;
+   }
+
+   public boolean a(ahg<cvk> $$0) {
+      Optional<ih<cvk>> $$1 = this.f.right();
+      return $$1.isPresent() && $$1.get().a($$0);
    }
 
    @Override
-   public boolean d_(djh $$0) {
-      return true;
+   public ih<cuw> getNoiseBiome(int $$0, int $$1, int $$2, cvf.f $$3) {
+      return this.a($$3.a($$0, $$1, $$2));
+   }
+
+   @avu
+   public ih<cuw> a(cvf.h $$0) {
+      return this.d().a($$0);
    }
 
    @Override
-   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
-      return false;
-   }
-
-   public abstract boolean d(djh var1);
-
-   @Override
-   public void a(djh $$0, and $$1, hx $$2, auv $$3) {
-      hx $$4 = dch.a((ctp)$$1, $$2);
-      if ($$4 != null) {
-         eeq $$5 = dch.a($$1, $$4);
-         if ($$5 != ees.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
-         }
-      }
-   }
-
-   protected boolean a(eeq $$0) {
-      return false;
-   }
-
-   protected void a(djh $$0, ctp $$1, hx $$2, eeq $$3) {
+   public void a(List<String> $$0, hx $$1, cvf.f $$2) {
+      int $$3 = is.a($$1.u());
+      int $$4 = is.a($$1.v());
+      int $$5 = is.a($$1.w());
+      cvf.h $$6 = $$2.a($$3, $$4, $$5);
+      float $$7 = cvf.a($$6.d());
+      float $$8 = cvf.a($$6.e());
+      float $$9 = cvf.a($$6.b());
+      float $$10 = cvf.a($$6.c());
+      float $$11 = cvf.a($$6.g());
+      double $$12 = (double)dpf.a($$11);
+      cvm $$13 = new cvm();
+      $$0.add(
+         "Biome builder PV: "
+            + cvm.a($$12)
+            + " C: "
+            + $$13.b((double)$$7)
+            + " E: "
+            + $$13.c((double)$$8)
+            + " T: "
+            + $$13.d((double)$$9)
+            + " H: "
+            + $$13.e((double)$$10)
+      );
    }
 }

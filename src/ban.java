@@ -110,7 +110,7 @@ public class ban extends DataFix {
                String $$2 = $$1x.orElse("");
                return $$0xx.set("generatorOptions", a($$2, $$0xx.getOps()));
             } else if ("buffet".equalsIgnoreCase($$0xx.get("generatorName").asString("")) && $$1x.isPresent()) {
-               Dynamic<JsonElement> $$3 = new Dynamic(JsonOps.INSTANCE, aue.a($$1x.get(), true));
+               Dynamic<JsonElement> $$3 = new Dynamic(JsonOps.INSTANCE, auf.a($$1x.get(), true));
                return $$0xx.set("generatorOptions", $$3.convert($$0xx.getOps()));
             } else {
                return $$0xx;

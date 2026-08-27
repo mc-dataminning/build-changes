@@ -1,55 +1,31 @@
-public interface ctr {
-   int K_();
+public class ctr {
+   private static int[] a = new int[65536];
 
-   int J_();
-
-   default int al() {
-      return this.J_() + this.K_();
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   default int am() {
-      return this.ao() - this.an();
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? c() : a[$$4];
    }
 
-   default int an() {
-      return iz.a(this.J_());
+   public static int a() {
+      return 6396257;
    }
 
-   default int ao() {
-      return iz.a(this.al() - 1) + 1;
+   public static int b() {
+      return 8431445;
    }
 
-   default boolean s(hx $$0) {
-      return this.d($$0.v());
+   public static int c() {
+      return 4764952;
    }
 
-   default boolean d(int $$0) {
-      return $$0 < this.J_() || $$0 >= this.al();
-   }
-
-   default int e(int $$0) {
-      return this.f(iz.a($$0));
-   }
-
-   default int f(int $$0) {
-      return $$0 - this.an();
-   }
-
-   default int g(int $$0) {
-      return $$0 + this.an();
-   }
-
-   static ctr e(final int $$0, final int $$1) {
-      return new ctr() {
-         @Override
-         public int K_() {
-            return $$1;
-         }
-
-         @Override
-         public int J_() {
-            return $$0;
-         }
-      };
+   public static int d() {
+      return 9619016;
    }
 }

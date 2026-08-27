@@ -1,30 +1,17 @@
-public class cls extends cmt implements clz {
-   public cls(cmt.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cls extends cnb {
+   public cls(cnb.a $$0) {
       super($$0);
-      cyv.a(this, cki.a);
-   }
-
-   public static boolean d(cmy $$0) {
-      return $$0.k() < $$0.l() - 1;
    }
 
    @Override
-   public boolean a(cmy $$0, cmy $$1) {
-      return $$1.a(cnb.vJ);
+   public void a(cng $$0, @Nullable ctx $$1, List<vg> $$2, coy $$3) {
+      $$2.add(this.d().a(n.h));
    }
 
-   @Override
-   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
-      return this.a(this, $$0, $$1, $$2);
-   }
-
-   @Override
-   public arr as_() {
-      return ars.ae;
-   }
-
-   @Override
-   public bma g() {
-      return bma.e;
+   public vu d() {
+      return vg.c(this.a() + ".desc");
    }
 }

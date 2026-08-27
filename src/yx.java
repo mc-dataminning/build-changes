@@ -1,8 +1,17 @@
-public interface yx extends xq {
-   @Override
-   default uh b() {
-      return uh.e;
+import java.util.HashSet;
+import java.util.Set;
+
+public record yx(Set<ahh> a) implements xg<yu> {
+   public yx(uj $$0) {
+      this($$0.a(HashSet::new, uj::t));
    }
 
-   void a(yy var1);
+   @Override
+   public void a(uj $$0) {
+      $$0.a(this.a, uj::a);
+   }
+
+   public void a(yu $$0) {
+      $$0.a(this);
+   }
 }

@@ -1,279 +1,121 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.Lifecycle;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Collection;
 
-public class fib {
-   private static final Logger a = LogUtils.getLogger();
-   private static final UUID b = UUID.fromString("640a6a92-b6cb-48a0-b391-831586500359");
-   private final evi c;
-   private final egm d;
+public class fib extends fdm {
+   private static final vg a = vg.c("selectWorld.experimental.title");
+   private static final vg b = vg.c("selectWorld.experimental.message");
+   private static final vg c = vg.c("selectWorld.experimental.details");
+   private static final int k = 10;
+   private static final int l = 100;
+   private final BooleanConsumer m;
+   final Collection<apr> n;
+   private final fba o = new fba().a(10).b(20);
 
-   public fib(evi $$0, egm $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public fib(Collection<apr> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.n = $$0;
+      this.m = $$1;
    }
 
-   public void a(String $$0, ctt $$1, dpo $$2, Function<iu, dpl> $$3, fdb $$4) {
-      this.c.d(new fch(vf.c("selectWorld.data_read")));
-      egm.c $$5 = this.a($$0);
-      if ($$5 != null) {
-         apt $$6 = apw.a($$5);
-         cuj $$7 = $$1.g();
-
-         try {
-            aib.d $$8 = new aib.d($$6, $$7, false, false);
-            aic $$9 = this.a($$8, $$3x -> {
-               dpl.b $$4x = $$3.apply($$3x.c()).a($$3x.d().d(ke.aN));
-               return new aib.b<>(new egq($$1, $$2, $$4x.d(), $$4x.a()), $$4x.b());
-            }, aic::new);
-            this.c.a($$5, $$6, $$9, true);
-         } catch (Exception var11) {
-            a.warn("Failed to load datapacks, can't proceed with server load", var11);
-            $$5.a();
-            this.c.a($$4);
-         }
-      }
+   @Override
+   public vg i() {
+      return vf.a(super.i(), b);
    }
 
-   @Nullable
-   private egm.c a(String $$0) {
-      try {
-         return this.d.d($$0);
-      } catch (IOException var3) {
-         a.warn("Failed to read level {} data", $$0, var3);
-         ezn.a(this.c, $$0);
-         this.c.a(null);
-         return null;
-      } catch (eli var4) {
-         a.warn("{}", var4.getMessage());
-         this.c.a(fcq.a(() -> this.c.a(null)));
-         return null;
-      }
-   }
-
-   public void a(egm.c $$0, ahq $$1, io<ahp> $$2, egs $$3) {
-      apt $$4 = apw.a($$0);
-      apy $$5 = (apy)new aib.d($$4, $$3.F(), false, false).a().getSecond();
-      this.c.a($$0, $$4, new aic($$5, $$1, $$2, $$3), true);
-   }
-
-   public aic a(Dynamic<?> $$0, boolean $$1, apt $$2) throws Exception {
-      aib.d $$3 = egm.a($$0, $$2, $$1);
-      return this.a($$3, $$1x -> {
-         it<dmr> $$2x = $$1x.d().d(ke.aN);
-         egj $$3x = egm.a($$0, $$1x.b(), $$2x, $$1x.c());
-         return new aib.b<>($$3x.a(), $$3x.b().b());
-      }, aic::new);
-   }
-
-   public Pair<ctt, fhz> a(egm.c $$0) throws Exception {
-      apt $$1 = apw.a($$0);
-      Dynamic<?> $$2 = $$0.f();
-      aib.d $$3 = egm.a($$2, $$1, false);
-
-      record a(ctt a, dpo b, it<dmr> c) {
-      }
-
-      return this.a($$3, $$1x -> {
-         it<dmr> $$2x = new ip<>(ke.aN, Lifecycle.stable()).l();
-         egj $$3x = egm.a($$2, $$1x.b(), $$2x, $$1x.c());
-         return new aib.b<>(new a($$3x.a().L(), $$3x.a().A(), $$3x.b().c()), $$1x.d());
-      }, ($$0x, $$1x, $$2x, $$3x) -> {
-         $$0x.close();
-         return Pair.of($$3x.a, new fhz($$3x.b, new dpl($$3x.c), $$2x, $$1x, $$3x.a.g()));
+   @Override
+   protected void aP_() {
+      super.aP_();
+      fba.b $$0 = this.o.d(2);
+      fbe $$1 = $$0.b().b();
+      $$0.a(new eyy(this.e, this.i), 2, $$1);
+      eyl $$2 = $$0.a(new eyl(b, this.i).b(true), 2, $$1);
+      $$2.c(310);
+      $$0.a(exr.a(c, $$0x -> this.f.a(new fib.a())).a(100).a(), 2, $$1);
+      $$0.a(exr.a(vf.i, $$0x -> this.m.accept(true)).a());
+      $$0.a(exr.a(vf.k, $$0x -> this.m.accept(false)).a());
+      this.o.a($$1x -> {
+         exp var10000 = this.d($$1x);
       });
+      this.o.a();
+      this.c();
    }
 
-   private <D, R> R a(aib.d $$0, aib.f<D> $$1, aib.e<D, R> $$2) throws Exception {
-      aib.c $$3 = new aib.c($$0, dt.a.c, 2);
-      CompletableFuture<R> $$4 = aib.a($$3, $$1, $$2, ac.f(), this.c);
-      this.c.c($$4::isDone);
-      return $$4.get();
+   @Override
+   protected void c() {
+      faz.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
    }
 
-   private void a(egm.c $$0, boolean $$1, Runnable $$2, Runnable $$3) {
-      vf $$4;
-      vf $$5;
-      if ($$1) {
-         $$4 = vf.c("selectWorld.backupQuestion.customized");
-         $$5 = vf.c("selectWorld.backupWarning.customized");
-      } else {
-         $$4 = vf.c("selectWorld.backupQuestion.experimental");
-         $$5 = vf.c("selectWorld.backupWarning.experimental");
+   @Override
+   public void d() {
+      this.m.accept(false);
+   }
+
+   class a extends fdm {
+      private fib.a.a b;
+
+      a() {
+         super(vg.c("selectWorld.experimental.details.title"));
       }
 
-      this.c.a(new fbp($$3, ($$2x, $$3x) -> {
-         if ($$2x) {
-            fht.a($$0);
-         }
-
-         $$2.run();
-      }, $$4, $$5, false));
-   }
-
-   public static void a(evi $$0, fhr $$1, Lifecycle $$2, Runnable $$3, boolean $$4) {
-      BooleanConsumer $$5 = $$3x -> {
-         if ($$3x) {
-            $$3.run();
-         } else {
-            $$0.a($$1);
-         }
-      };
-      if ($$4 || $$2 == Lifecycle.stable()) {
-         $$3.run();
-      } else if ($$2 == Lifecycle.experimental()) {
-         $$0.a(new fbu($$5, vf.c("selectWorld.warning.experimental.title"), vf.c("selectWorld.warning.experimental.question")));
-      } else {
-         $$0.a(new fbu($$5, vf.c("selectWorld.warning.deprecated.title"), vf.c("selectWorld.warning.deprecated.question")));
-      }
-   }
-
-   public void a(String $$0, Runnable $$1) {
-      this.c.d(new fch(vf.c("selectWorld.data_read")));
-      egm.c $$2 = this.a($$0);
-      if ($$2 != null) {
-         this.a($$2, $$1);
-      }
-   }
-
-   private void a(egm.c $$0, Runnable $$1) {
-      this.c.d(new fch(vf.c("selectWorld.data_read")));
-
-      Dynamic<?> $$2;
-      egn $$3;
-      try {
-         $$2 = $$0.f();
-         $$3 = $$0.a($$2);
-      } catch (sy | te | IOException var10) {
-         this.c.a(new fda(this.c, $$2x -> {
-            if ($$2x) {
-               this.a($$0, $$1);
-            } else {
-               $$0.a();
-               $$1.run();
-            }
-         }, $$0));
-         return;
-      } catch (OutOfMemoryError var11) {
-         aum.b();
-         System.gc();
-         String $$6 = "Ran out of memory trying to read level data of world folder \"" + $$0.d() + "\"";
-         a.error(LogUtils.FATAL_MARKER, $$6);
-         OutOfMemoryError $$7 = new OutOfMemoryError("Ran out of memory reading level data");
-         $$7.initCause(var11);
-         o $$8 = o.a($$7, $$6);
-         p $$9 = $$8.a("World details");
-         $$9.a("World folder", $$0.d());
-         throw new y($$8);
+      @Override
+      public void d() {
+         this.f.a(fib.this);
       }
 
-      if (!$$3.r()) {
-         $$0.a();
-         this.c.a(new fbo($$1, vf.c("selectWorld.incompatible.title").b(-65536), vf.a("selectWorld.incompatible.description", $$3.k())));
-      } else {
-         egn.a $$12 = $$3.o();
-         if ($$12.a()) {
-            String $$13 = "selectWorld.backupQuestion." + $$12.c();
-            String $$14 = "selectWorld.backupWarning." + $$12.c();
-            vt $$15 = vf.c($$13);
-            if ($$12.b()) {
-               $$15.b(-2142128);
-            }
+      @Override
+      protected void aP_() {
+         super.aP_();
+         this.d(exr.a(vf.k, $$0 -> this.d()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
+         this.b = this.d(new fib.a.a(this.f, fib.this.n));
+      }
 
-            vf $$16 = vf.a($$14, $$3.k(), aa.b().c());
-            this.c.a(new fbp(() -> {
-               $$0.a();
-               $$1.run();
-            }, ($$3x, $$4) -> {
-               if ($$3x) {
-                  fht.a($$0);
+      @Override
+      public void a(exe $$0, int $$1, int $$2, float $$3) {
+         super.a($$0, $$1, $$2, $$3);
+         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
+      }
+
+      class a extends eyn<fib.a.b> {
+         public a(evr $$0, Collection<apr> $$1) {
+            super($$0, a.this.g, a.this.h - 96, 32, (9 + 2) * 3);
+
+            for (apr $$2 : $$1) {
+               String $$3 = cic.a(cic.g, $$2.d());
+               if (!$$3.isEmpty()) {
+                  vg $$4 = vj.a($$2.a().f(), wd.a.a(true));
+                  vg $$5 = vg.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, eyk.a(a.this.i, $$5, this.b())));
                }
-
-               this.a($$0, $$2, false, true, $$1);
-            }, $$15, $$16, false));
-         } else {
-            this.a($$0, $$2, false, true, $$1);
-         }
-      }
-   }
-
-   public CompletableFuture<Void> a(ghc $$0, egm.c $$1) {
-      Path $$2 = $$1.a(egk.k);
-      if (Files.exists($$2) && !Files.isDirectory($$2)) {
-         $$0.f();
-         CompletableFuture<Void> $$3 = $$0.b(b);
-         $$0.a(b, $$2);
-         return $$3;
-      } else {
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   private void a(egm.c $$0, Dynamic<?> $$1, boolean $$2, boolean $$3, Runnable $$4) {
-      this.c.d(new fch(vf.c("selectWorld.resource_load")));
-      apt $$5 = apw.a($$0);
-
-      aic $$6;
-      try {
-         $$6 = this.a($$1, $$2, $$5);
-      } catch (Exception var12) {
-         a.warn("Failed to load level data or datapacks, can't proceed with server load", var12);
-         if (!$$2) {
-            this.c.a(new fbz(() -> {
-               $$0.a();
-               $$4.run();
-            }, () -> this.a($$0, $$1, true, $$3, $$4)));
-         } else {
-            $$0.a();
-            this.c.a(new fbo($$4, vf.c("datapackFailure.safeMode.failed.title"), vf.c("datapackFailure.safeMode.failed.description"), ve.k, true));
-         }
-
-         return;
-      }
-
-      egs $$9 = $$6.d();
-      boolean $$10 = $$9.A().e();
-      boolean $$11 = $$9.D() != Lifecycle.stable();
-      if (!$$3 || !$$10 && !$$11) {
-         ghc $$12 = this.c.ac();
-         this.a($$12, $$0).thenApply($$0x -> true).exceptionallyComposeAsync($$0x -> {
-            a.warn("Failed to load pack: ", $$0x);
-            return this.a();
-         }, this.c).thenAcceptAsync($$5x -> {
-            if ($$5x) {
-               this.c.a($$0, $$5, $$6, false);
-            } else {
-               $$6.close();
-               $$0.a();
-               $$12.e();
-               $$4.run();
             }
-         }, this.c).exceptionally($$0x -> {
-            this.c.a(o.a($$0x, "Load world"));
-            return null;
-         });
-      } else {
-         this.a($$0, $$10, () -> this.a($$0, $$1, $$2, false, $$4), () -> {
-            $$0.a();
-            $$4.run();
-         });
-         $$6.close();
-      }
-   }
+         }
 
-   private CompletableFuture<Boolean> a() {
-      CompletableFuture<Boolean> $$0 = new CompletableFuture<>();
-      this.c.a(new fbu($$0::complete, vf.c("multiplayer.texturePrompt.failure.line1"), vf.c("multiplayer.texturePrompt.failure.line2"), ve.i, ve.e));
-      return $$0;
+         @Override
+         public int b() {
+            return this.g * 3 / 4;
+         }
+      }
+
+      class b extends eyn.a<fib.a.b> {
+         private final vg b;
+         private final vg c;
+         private final eyk d;
+
+         b(vg $$0, vg $$1, eyk $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
+
+         @Override
+         public void a(exe $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
+            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
+         }
+
+         @Override
+         public vg a() {
+            return vg.a("narrator.select", vf.a(this.b, this.c));
+         }
+      }
    }
 }

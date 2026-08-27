@@ -1,39 +1,28 @@
-public class gcr<T extends bml, M extends fjx<T> & fix> extends gcy<T, M> {
-   private final ftd a;
-
-   public gcr(gai<T, M> $$0, ftd $$1) {
+public class gcr extends gdl<fss, flo<fss>> {
+   public gcr(gav<fss, flo<fss>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(eqb $$0, fth $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fm() == bmf.b;
-      cmy $$11 = $$10 ? $$3.eU() : $$3.eT();
-      cmy $$12 = $$10 ? $$3.eT() : $$3.eU();
-      if (!$$11.b() || !$$12.b()) {
-         $$0.a();
-         if (this.c().e) {
-            float $$13 = 0.5F;
-            $$0.a(0.0F, 0.75F, 0.0F);
-            $$0.b(0.5F, 0.5F, 0.5F);
+   public void a(eqk $$0, ftt $$1, int $$2, fss $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ("deadmau5".equals($$3.ad().getString()) && !$$3.ce()) {
+         eqo $$10 = $$1.getBuffer(fub.c($$3.b().a()));
+         int $$11 = gab.c($$3, 0.0F);
+
+         for (int $$12 = 0; $$12 < 2; $$12++) {
+            float $$13 = aup.i($$6, $$3.N, $$3.dB()) - aup.i($$6, $$3.aV, $$3.aU);
+            float $$14 = aup.i($$6, $$3.O, $$3.dD());
+            $$0.a();
+            $$0.a(a.d.rotationDegrees($$13));
+            $$0.a(a.b.rotationDegrees($$14));
+            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
+            $$0.a(0.0F, -0.375F, 0.0F);
+            $$0.a(a.b.rotationDegrees(-$$14));
+            $$0.a(a.d.rotationDegrees(-$$13));
+            float $$15 = 1.3333334F;
+            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
+            this.c().a($$0, $$10, $$2, $$11);
+            $$0.b();
          }
-
-         this.a($$3, $$12, cmv.c, bmf.b, $$0, $$1, $$2);
-         this.a($$3, $$11, cmv.b, bmf.a, $$0, $$1, $$2);
-         $$0.b();
-      }
-   }
-
-   protected void a(bml $$0, cmy $$1, cmv $$2, bmf $$3, eqb $$4, fth $$5, int $$6) {
-      if (!$$1.b()) {
-         $$4.a();
-         this.c().a($$3, $$4);
-         $$4.a(a.b.rotationDegrees(-90.0F));
-         $$4.a(a.d.rotationDegrees(180.0F));
-         boolean $$7 = $$3 == bmf.a;
-         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
-         $$4.b();
       }
    }
 }

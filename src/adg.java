@@ -1,22 +1,41 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
 
-public record adg(ahf<dmq> a, ahf<ctp> b, long c, ctm d, @Nullable ctm e, boolean f, boolean g, Optional<ig> h, int i) {
-   public adg(ui $$0) {
-      this(
-         $$0.a(ke.ay), $$0.a(ke.aM), $$0.readLong(), ctm.a($$0.readByte()), ctm.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(ui::h), $$0.n()
-      );
+public class adg implements xg<zb> {
+   private final List<cqm<?>> a;
+
+   public adg(Collection<cqm<?>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   public void a(ui $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(ctm.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, ui::a);
-      $$0.c(this.i);
+   public adg(uj $$0) {
+      this.a = $$0.a(adg::b);
+   }
+
+   @Override
+   public void a(uj $$0) {
+      $$0.a(this.a, adg::a);
+   }
+
+   public void a(zb $$0) {
+      $$0.a(this);
+   }
+
+   public List<cqm<?>> a() {
+      return this.a;
+   }
+
+   private static cqm<?> b(uj $$0) {
+      ahh $$1 = $$0.t();
+      ahh $$2 = $$0.t();
+      cqk<?> $$3 = kd.t.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$0);
+      return new cqm<>($$2, $$3);
+   }
+
+   public static <T extends cqk<?>> void a(uj $$0, cqm<?> $$1) {
+      $$0.a(kd.t.b($$1.b().at_()));
+      $$0.a($$1.a());
+      ((cqo<cqk<?>>)$$1.b().at_()).a($$0, $$1.b());
    }
 }

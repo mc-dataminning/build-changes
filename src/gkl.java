@@ -1,37 +1,37 @@
-public class gkl extends gkp {
-   private final vf a;
-   private exz b = exz.a;
-   private final fdb c;
-   private int v;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-   public gkl(fdb $$0, vf $$1, vf $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public class gkl {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
+
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
    }
 
-   @Override
-   public void aN_() {
-      this.f.ac().i();
-      this.b = exz.a(this.i, this.a, this.g - 50);
-      this.v = this.b.a() * 9;
-      this.d(exg.a(ve.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.v / 2 + 9, 200, 20).a());
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
+      this.d = $$0;
    }
 
-   @Override
-   public vf h() {
-      return vf.i().b(this.e).f(": ").b(this.a);
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
    }
 
-   @Override
-   public void aE_() {
-      evi.O().a(this.c);
-   }
-
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 2 - this.v / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.g / 2, this.h / 2 - this.v / 2);
+   public void a(gka $$0) {
+      this.b.ifPresent($$1 -> $$0.send(gkb.e, $$1x -> {
+            $$1x.a(gkd.p, this.a($$1));
+            $$1x.a(gkd.q, (int)this.c);
+         }));
    }
 }

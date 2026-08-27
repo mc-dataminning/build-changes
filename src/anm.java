@@ -1,11 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface anm {
-   void a(csw var1);
-
-   void a(csw var1, @Nullable dli var2);
-
-   void a();
-
-   void b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface anm {
 }

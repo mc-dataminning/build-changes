@@ -1,65 +1,59 @@
-public class gkc implements gki {
-   private static final int a = 1200;
-   private static final vf b = vf.c("tutorial.craft_planks.title");
-   private static final vf c = vf.c("tutorial.craft_planks.description");
-   private final gkh d;
-   private ezq e;
-   private int f;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public gkc(gkh $$0) {
+public class gkc implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final bgf d;
+   @Nullable
+   private CompletableFuture<Optional<gjy>> e;
+
+   private gkc(bgf $$0) {
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gkj.f);
-      } else {
-         if (this.f == 1) {
-            fsj $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fS().a(asp.b)) {
-                  this.d.a(gkj.f);
-                  return;
-               }
+   public static CompletableFuture<Optional<gkc>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            bgf $$1 = bgf.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new gkc($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
+         }
+      }, ac.f());
+   }
 
-               if (a($$0, asp.b)) {
-                  this.d.a(gkj.f);
-                  return;
-               }
+   public CompletableFuture<Optional<gjz>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
+            try {
+               bgf.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new gjy($$1, ac.f()));
+            } catch (IOException var3) {
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
             }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new ezq(ezq.a.e, b, c, false);
-            this.d.e().ay().a(this.e);
-         }
+         }, ac.f());
       }
+
+      return this.e.thenApply($$0 -> $$0.map(gjy::a));
    }
 
    @Override
-   public void b() {
+   public void close() {
       if (this.e != null) {
-         this.e.c();
-         this.e = null;
+         this.e.thenAccept($$0 -> $$0.ifPresent(gjy::close));
       }
-   }
-
-   @Override
-   public void a(cmy $$0) {
-      if ($$0.a(asp.b)) {
-         this.d.a(gkj.f);
-      }
-   }
-
-   public static boolean a(fsj $$0, asw<cmt> $$1) {
-      for (ih<cmt> $$2 : kd.h.c($$1)) {
-         if ($$0.j().a(asc.b.b($$2.a())) > 0) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

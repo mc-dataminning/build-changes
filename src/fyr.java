@@ -1,57 +1,40 @@
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-public class fyr extends fym<bmb> {
-   private static final ahg a = new ahg("textures/entity/experience_orb.png");
-   private static final ftp f = ftp.g(a);
+public class fyr extends fyz<cfz> {
+   private static final ahh a = new ahh("textures/entity/enderdragon/dragon_fireball.png");
+   private static final fub f = fub.e(a);
 
-   public fyr(fyn.a $$0) {
+   public fyr(fza.a $$0) {
       super($$0);
-      this.d = 0.15F;
-      this.e = 0.75F;
    }
 
-   protected int a(bmb $$0, hx $$1) {
-      return auo.a(super.a($$0, $$1) + 7, 0, 15);
+   protected int a(cfz $$0, hx $$1) {
+      return 15;
    }
 
-   public void a(bmb $$0, float $$1, float $$2, eqb $$3, fth $$4, int $$5) {
+   public void a(cfz $$0, float $$1, float $$2, eqk $$3, ftt $$4, int $$5) {
       $$3.a();
-      int $$6 = $$0.s();
-      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
-      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
-      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
-      float $$11 = 1.0F;
-      float $$12 = 0.5F;
-      float $$13 = 0.25F;
-      float $$14 = 255.0F;
-      float $$15 = ((float)$$0.ah + $$2) / 2.0F;
-      int $$16 = (int)((auo.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$17 = 255;
-      int $$18 = (int)((auo.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$3.a(0.0F, 0.1F, 0.0F);
+      $$3.b(2.0F, 2.0F, 2.0F);
       $$3.a(this.c.b());
       $$3.a(a.d.rotationDegrees(180.0F));
-      float $$19 = 0.3F;
-      $$3.b(0.3F, 0.3F, 0.3F);
-      eqf $$20 = $$4.getBuffer(f);
-      eqb.a $$21 = $$3.c();
-      Matrix4f $$22 = $$21.a();
-      Matrix3f $$23 = $$21.b();
-      a($$20, $$22, $$23, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
-      a($$20, $$22, $$23, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
-      a($$20, $$22, $$23, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
-      a($$20, $$22, $$23, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
+      eqk.a $$6 = $$3.c();
+      Matrix4f $$7 = $$6.a();
+      Matrix3f $$8 = $$6.b();
+      eqo $$9 = $$4.getBuffer(f);
+      a($$9, $$7, $$8, $$5, 0.0F, 0, 0, 1);
+      a($$9, $$7, $$8, $$5, 1.0F, 0, 1, 1);
+      a($$9, $$7, $$8, $$5, 1.0F, 1, 1, 0);
+      a($$9, $$7, $$8, $$5, 0.0F, 1, 0, 0);
       $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private static void a(eqf $$0, Matrix4f $$1, Matrix3f $$2, float $$3, float $$4, int $$5, int $$6, int $$7, float $$8, float $$9, int $$10) {
-      $$0.a($$1, $$3, $$4, 0.0F).a($$5, $$6, $$7, 128).a($$8, $$9).c(gee.d).b($$10).a($$2, 0.0F, 1.0F, 0.0F).e();
+   private static void a(eqo $$0, Matrix4f $$1, Matrix3f $$2, int $$3, float $$4, int $$5, int $$6, int $$7) {
+      $$0.a($$1, $$4 - 0.5F, (float)$$5 - 0.25F, 0.0F).a(255, 255, 255, 255).a((float)$$6, (float)$$7).c(ges.d).b($$3).a($$2, 0.0F, 1.0F, 0.0F).e();
    }
 
-   public ahg a(bmb $$0) {
+   public ahh a(cfz $$0) {
       return a;
    }
 }

@@ -1,43 +1,104 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class eyw extends eyu {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 30;
-   private static final double j = 33.333333333333336;
+public abstract class eyw extends exr {
+   protected final ahh a;
+   protected final int b;
+   protected final int c;
 
-   public eyw(ews $$0, auy $$1) {
-      super($$0, $$1);
+   eyw(int $$0, int $$1, vg $$2, int $$3, int $$4, ahh $$5, exr.c $$6) {
+      super(0, 0, $$0, $$1, $$2, $$6, p);
+      this.b = $$3;
+      this.c = $$4;
+      this.a = $$5;
    }
 
-   @Override
-   protected void a(ewu $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
-      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(ftp.C(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = evi.O().m.h().c();
-      if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(ftp.C(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
+   public static eyw.a a(vg $$0, exr.c $$1, boolean $$2) {
+      return new eyw.a($$0, $$1, $$2);
+   }
+
+   public static class a {
+      private final vg a;
+      private final exr.c b;
+      private final boolean c;
+      private int d = 150;
+      private int e = 20;
+      @Nullable
+      private ahh f;
+      private int g;
+      private int h;
+
+      public a(vg $$0, exr.c $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public eyw.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public eyw.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public eyw.a a(ahh $$0, int $$1, int $$2) {
+         this.f = $$0;
+         this.g = $$1;
+         this.h = $$2;
+         return this;
+      }
+
+      public eyw a() {
+         if (this.f == null) {
+            throw new IllegalStateException("Sprite not set");
+         } else {
+            return (eyw)(this.c
+               ? new eyw.b(this.d, this.e, this.a, this.g, this.h, this.f, this.b)
+               : new eyw.c(this.d, this.e, this.a, this.g, this.h, this.f, this.b));
+         }
       }
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   public static class b extends eyw {
+      protected b(int $$0, int $$1, vg $$2, int $$3, int $$4, ahh $$5, exr.c $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
+
+      @Override
+      public void b(exe $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.B() + this.w() / 2 - this.b / 2;
+         int $$5 = this.C() + this.u() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(exe $$0, exc $$1, int $$2) {
+      }
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
-   }
+   public static class c extends eyw {
+      protected c(int $$0, int $$1, vg $$2, int $$3, int $$4, ahh $$5, exr.c $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
-   }
+      @Override
+      public void b(exe $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.B() + this.w() - this.b - 2;
+         int $$5 = this.C() + this.u() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+      @Override
+      public void a(exe $$0, exc $$1, int $$2) {
+         int $$3 = this.B() + 2;
+         int $$4 = this.B() + this.w() - this.b - 4;
+         int $$5 = this.B() + this.w() / 2;
+         a($$0, $$1, this.x(), $$5, $$3, this.C(), $$4, this.C() + this.u(), $$2);
+      }
    }
 }

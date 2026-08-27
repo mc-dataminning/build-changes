@@ -1,231 +1,89 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.BitSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.Validate;
 
-public class dmh implements dmd, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final AtomicBoolean b = new AtomicBoolean();
-   private final biu<biw.b> c;
-   private final dmk d;
-   private final Map<csw, dmh.a> e = Maps.newLinkedHashMap();
-   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
-   private static final int g = 1024;
+public class dmh<T> implements dmc<T> {
+   private final im<T> a;
+   @Nullable
+   private T b;
+   private final dmd<T> c;
 
-   protected dmh(Path $$0, boolean $$1, String $$2) {
-      this.d = new dmk($$0, $$1);
-      this.c = new biu<>(new biw.a(dmh.b.values().length), ac.g(), "IOWorker-" + $$2);
-   }
-
-   public boolean a(csw $$0, int $$1) {
-      csw $$2 = new csw($$0.e - $$1, $$0.f - $$1);
-      csw $$3 = new csw($$0.e + $$1, $$0.f + $$1);
-
-      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
-         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
-            BitSet $$6 = this.a($$4, $$5).join();
-            if (!$$6.isEmpty()) {
-               csw $$7 = csw.a($$4, $$5);
-               int $$8 = Math.max($$2.e - $$7.e, 0);
-               int $$9 = Math.max($$2.f - $$7.f, 0);
-               int $$10 = Math.min($$3.e - $$7.e, 31);
-               int $$11 = Math.min($$3.f - $$7.f, 31);
-
-               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
-                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
-                     int $$14 = $$13 * 32 + $$12;
-                     if ($$6.get($$14)) {
-                        return true;
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private CompletableFuture<BitSet> a(int $$0, int $$1) {
-      long $$2 = csw.c($$0, $$1);
-      synchronized (this.f) {
-         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
-         if ($$3 == null) {
-            $$3 = this.b($$0, $$1);
-            this.f.putAndMoveToFirst($$2, $$3);
-            if (this.f.size() > 1024) {
-               this.f.removeLast();
-            }
-         }
-
-         return $$3;
+   public dmh(im<T> $$0, dmd<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
       }
    }
 
-   private CompletableFuture<BitSet> b(int $$0, int $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         csw $$2 = csw.a($$0, $$1);
-         csw $$3 = csw.b($$0, $$1);
-         BitSet $$4 = new BitSet();
-         csw.a($$2, $$3).forEach($$1xx -> {
-            tr $$2x = new tr(new tt(ss.a, "DataVersion"), new tt(sn.b, "blending_data"));
-
-            try {
-               this.a($$1xx, $$2x).join();
-            } catch (Exception var7) {
-               a.warn("Failed to scan chunk {}", $$1xx, var7);
-               return;
-            }
-
-            if ($$2x.d() instanceof sn $$5 && this.a($$5)) {
-               int $$6 = $$1xx.k() * 32 + $$1xx.j();
-               $$4.set($$6);
-            }
-         });
-         return $$4;
-      }, ac.f());
-   }
-
-   private boolean a(sn $$0) {
-      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
-   }
-
-   public CompletableFuture<Void> a(csw $$0, @Nullable sn $$1) {
-      return this.a(() -> {
-         dmh.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dmh.a($$1));
-         $$2.a = $$1;
-         return Either.left($$2.b);
-      }).thenCompose(Function.identity());
-   }
-
-   public CompletableFuture<Optional<sn>> a(csw $$0) {
-      return this.a(() -> {
-         dmh.a $$1 = this.e.get($$0);
-         if ($$1 != null) {
-            return Either.left(Optional.ofNullable($$1.a));
-         } else {
-            try {
-               sn $$2 = this.d.a($$0);
-               return Either.left(Optional.ofNullable($$2));
-            } catch (Exception var4) {
-               a.warn("Failed to read chunk {}", $$0, var4);
-               return Either.right(var4);
-            }
-         }
-      });
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      CompletableFuture<Void> $$1 = this.a(
-            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
-         )
-         .thenCompose(Function.identity());
-      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
-            try {
-               this.d.a();
-               return Either.left(null);
-            } catch (Exception var2x) {
-               a.warn("Failed to synchronize chunks", var2x);
-               return Either.right(var2x);
-            }
-         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
+   public static <A> dmc<A> a(int $$0, im<A> $$1, dmd<A> $$2, List<A> $$3) {
+      return new dmh<>($$1, $$2, $$3);
    }
 
    @Override
-   public CompletableFuture<Void> a(csw $$0, th $$1) {
-      return this.a(() -> {
-         try {
-            dmh.a $$2 = this.e.get($$0);
-            if ($$2 != null) {
-               if ($$2.a != null) {
-                  $$2.a.b($$1);
-               }
-            } else {
-               this.d.a($$0, $$1);
-            }
-
-            return Either.left(null);
-         } catch (Exception var4) {
-            a.warn("Failed to bulk scan chunk {}", $$0, var4);
-            return Either.right(var4);
-         }
-      });
-   }
-
-   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
-      return this.c.c($$1 -> new biw.b(dmh.b.a.ordinal(), () -> {
-            if (!this.b.get()) {
-               $$1.a($$0.get());
-            }
-
-            this.b();
-         }));
-   }
-
-   private void a() {
-      if (!this.e.isEmpty()) {
-         Iterator<Entry<csw, dmh.a>> $$0 = this.e.entrySet().iterator();
-         Entry<csw, dmh.a> $$1 = $$0.next();
-         $$0.remove();
-         this.a($$1.getKey(), $$1.getValue());
-         this.b();
-      }
-   }
-
-   private void b() {
-      this.c.a(new biw.b(dmh.b.b.ordinal(), this::a));
-   }
-
-   private void a(csw $$0, dmh.a $$1) {
-      try {
-         this.d.a($$0, $$1.a);
-         $$1.b.complete(null);
-      } catch (Exception var4) {
-         a.error("Failed to store chunk {}", $$0, var4);
-         $$1.b.completeExceptionally(var4);
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
       }
    }
 
    @Override
-   public void close() throws IOException {
-      if (this.b.compareAndSet(false, true)) {
-         this.c.b($$0 -> new biw.b(dmh.b.c.ordinal(), () -> $$0.a(avs.a))).join();
-         this.c.close();
-
-         try {
-            this.d.close();
-         } catch (Exception var2) {
-            a.error("Failed to close storage", var2);
-         }
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
       }
    }
 
-   static class a {
-      @Nullable
-      sn a;
-      final CompletableFuture<Void> b = new CompletableFuture<>();
-
-      public a(@Nullable sn $$0) {
-         this.a = $$0;
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
       }
    }
 
-   static enum b {
-      a,
-      b,
-      c;
+   @Override
+   public void a(uj $$0) {
+      this.b = this.a.b($$0.n());
+   }
+
+   @Override
+   public void b(uj $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return ux.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int b() {
+      return 1;
+   }
+
+   @Override
+   public dmc<T> c() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
    }
 }

@@ -1,25 +1,15 @@
-public class cre extends crj {
-   public cre(crj.a $$0, bma... $$1) {
-      super($$0, crk.m, $$1);
+public class cre extends cqy {
+   public cre(String $$0, cqh $$1, cng $$2) {
+      super(cqp.f, cqo.t, $$0, $$1, $$2);
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
+   public boolean a(bjv $$0, ctx $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public int a() {
-      return 4;
-   }
-
-   @Override
-   public boolean a(crj $$0) {
-      return super.a($$0) && $$0 != crn.I;
+   public cng g() {
+      return new cng(cxa.oc);
    }
 }

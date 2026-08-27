@@ -1,6 +1,6 @@
-public interface gej extends AutoCloseable {
-   void a(int var1, int var2);
+import javax.annotation.Nullable;
 
-   @Override
-   void close();
+@Deprecated
+public interface gej {
+   float call(cng var1, @Nullable foe var2, @Nullable bmo var3, int var4);
 }

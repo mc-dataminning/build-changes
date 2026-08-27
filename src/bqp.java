@@ -1,29 +1,81 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class bqp {
-   public static bod<bml> a(int $$0, BiPredicate<bml, bml> $$1) {
-      return brp.a(
-         (Function<brp.b<bml>, ? extends App<brp.c<bml>, brs<bml>>>)($$2 -> $$2.group($$2.b(bvn.o), $$2.a(bvn.aa), $$2.c(bvn.ah), $$2.a(bvn.ai))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bml $$10 = $$2.b($$3);
-                     if (!$$10.ew()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
+public class bqp extends bof<bmo> {
+   public static final int c = 100;
+   private long d;
 
-                        $$5.a($$10.dm(), (long)$$0);
-                        if ($$10.ai() != blz.bv || $$7.Z().b(ctl.N)) {
-                           $$3.b();
-                           $$4.b();
-                        }
+   public bqp() {
+      super(ImmutableMap.of(bvq.b, bvr.a, bvq.I, bvr.c));
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   @Override
+   protected boolean a(ane $$0, bmo $$1) {
+      if ($$1.bO()) {
+         return false;
+      } else {
+         bno<?> $$2 = $$1.dN();
+         ig $$3 = $$2.c(bvq.b).get();
+         if ($$0.ae() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(bvq.I);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.X() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            djp $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dj(), 2.0) && $$6.a(asi.R) && !$$6.c(cwr.c);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(ane $$0, bmo $$1, long $$2) {
+      Optional<ig> $$3 = $$1.dN().c(bvq.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         hx $$4 = $$3.get().b();
+         return $$1.dN().c(chc.e) && $$1.ds() > (double)$$4.v() + 0.4 && $$4.a($$1.dj(), 1.14);
+      }
+   }
+
+   @Override
+   protected void d(ane $$0, bmo $$1, long $$2) {
+      if ($$2 > this.d) {
+         bno<?> $$3 = $$1.dN();
+         if ($$3.a(bvq.v)) {
+            Set<ig> $$4 = $$3.c(bvq.v).get();
+            Optional<List<bmo>> $$5;
+            if ($$3.a(bvq.g)) {
+               $$5 = $$3.c(bvq.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            bpd.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.dN().c(bvq.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(ane $$0, bmo $$1, long $$2) {
+      if ($$1.fD()) {
+         $$1.fE();
+         this.d = $$2 + 40L;
+      }
    }
 }

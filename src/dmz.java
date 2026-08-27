@@ -1,15 +1,19 @@
-public interface dmz {
-   dmz a = new dmz() {
-      @Override
-      public void a() {
-      }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-      @Override
-      public void a(blv.c $$0) {
-      }
-   };
+public record dmz(ih<dmy> e, dlm f) {
+   public static final Codec<dmz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dmy.j.fieldOf("type").forGetter(dmz::a), dlm.a.fieldOf("generator").forGetter(dmz::b)).apply($$0, $$0.stable(dmz::new))
+   );
+   public static final ahg<dmz> b = ahg.a(ke.aN, new ahh("overworld"));
+   public static final ahg<dmz> c = ahg.a(ke.aN, new ahh("the_nether"));
+   public static final ahg<dmz> d = ahg.a(ke.aN, new ahh("the_end"));
 
-   void a();
+   public ih<dmy> a() {
+      return this.e;
+   }
 
-   void a(blv.c var1);
+   public dlm b() {
+      return this.f;
+   }
 }

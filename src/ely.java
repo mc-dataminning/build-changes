@@ -1,17 +1,47 @@
-public interface ely {
-   static ely a() {
-      return emd.a;
+public class ely extends ema {
+   private final ic b;
+   private final hx c;
+   private final boolean d;
+   private final boolean e;
+
+   public static ely a(emc $$0, ic $$1, hx $$2) {
+      return new ely(true, $$0, $$1, $$2, false);
    }
 
-   static ely a(blv $$0) {
-      return new emd($$0);
+   public ely(emc $$0, ic $$1, hx $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3);
    }
 
-   boolean b();
+   private ely(boolean $$0, emc $$1, ic $$2, hx $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+   }
 
-   boolean a(emm var1, hx var2, boolean var3);
+   public ely a(ic $$0) {
+      return new ely(this.d, this.a, $$0, this.c, this.e);
+   }
 
-   boolean a(cmt var1);
+   public ely a(hx $$0) {
+      return new ely(this.d, this.a, this.b, $$0, this.e);
+   }
 
-   boolean a(eer var1, eer var2);
+   public hx a() {
+      return this.c;
+   }
+
+   public ic b() {
+      return this.b;
+   }
+
+   @Override
+   public ema.a c() {
+      return this.d ? ema.a.a : ema.a.b;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
 }

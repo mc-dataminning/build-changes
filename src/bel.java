@@ -11,7 +11,7 @@ public class bel extends bde {
 
    private static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
       $$0.register(
-         $$1, $$2, () -> DSL.optionalFields("Items", DSL.list(bbw.t.in($$0)), "RecipesUsed", DSL.compoundList(bbw.F.in($$0), DSL.constType(DSL.intType())))
+         $$1, $$2, () -> DSL.optionalFields("Items", DSL.list(bbw.t.in($$0)), "RecipesUsed", DSL.compoundList(bbw.G.in($$0), DSL.constType(DSL.intType())))
       );
    }
 

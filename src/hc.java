@@ -39,22 +39,22 @@ class hc<T extends du<T>> {
       return $$1;
    }
 
-   public void a(String $$0, int $$1) {
-      hg $$2 = hg.a($$0, $$1);
+   public void a(String $$0, int $$1, T $$2) {
+      hg $$3 = hg.a($$0, $$1);
       if (this.a != null) {
          this.b = new ArrayList<>(this.a.size() + 1);
 
-         for (gs<T> $$3 : this.a) {
-            this.b.add(new he.c<>($$3));
+         for (gs<T> $$4 : this.a) {
+            this.b.add(new he.c<>($$4));
          }
 
          this.a = null;
       }
 
-      this.b.add(new he.b<>($$2, this.a($$2.b())));
+      this.b.add(new he.b<>($$3, this.a($$3.b()), $$2));
    }
 
-   public hb<T> a(ahg $$0) {
+   public hb<T> a(ahh $$0) {
       return (hb<T>)(this.b != null ? new he<>($$0, this.b, this.c) : new hf<>($$0, this.a));
    }
 }

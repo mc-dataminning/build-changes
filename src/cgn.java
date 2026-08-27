@@ -1,110 +1,45 @@
-import javax.annotation.Nullable;
+public class cgn extends cfw {
+   private static final cng f = new cng(cnj.vl);
+   private int g = 200;
 
-public class cgn extends cfp implements cfx {
-   public static final cgn.a e = new cgn.a();
-
-   public cgn(blz<? extends cgn> $$0, ctp $$1) {
-      super($$0, $$1);
+   public cgn(bmc<? extends cgn> $$0, ctx $$1) {
+      super($$0, $$1, f);
    }
 
-   public cgn(blz<? extends cgn> $$0, cdl $$1, ctp $$2) {
-      super($$0, $$1.dr(), $$1.gf(), $$1.dx(), $$2);
-      this.b($$1);
+   public cgn(ctx $$0, bmo $$1, cng $$2) {
+      super(bmc.aT, $$1, $$0, $$2);
    }
 
-   @Override
-   protected elo aq() {
-      float $$0 = this.ai().n().a / 2.0F;
-      float $$1 = this.ai().n().b;
-      float $$2 = 0.15F;
-      return new elo(
-         this.dk().c - (double)$$0,
-         this.dk().d - 0.15F,
-         this.dk().e - (double)$$0,
-         this.dk().c + (double)$$0,
-         this.dk().d - 0.15F + (double)$$1,
-         this.dk().e + (double)$$0
-      );
+   public cgn(ctx $$0, double $$1, double $$2, double $$3, cng $$4) {
+      super(bmc.aT, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   protected float a(bmx $$0, blw $$1) {
-      return 0.0F;
-   }
-
-   @Override
-   public boolean h(blv $$0) {
-      return $$0 instanceof cgn ? false : super.h($$0);
-   }
-
-   @Override
-   protected boolean a(blv $$0) {
-      return $$0 instanceof cgn ? false : super.a($$0);
-   }
-
-   @Override
-   protected void a(elq $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         $$0.a().a(this.dN().a(this, this.w() instanceof bml $$1 ? $$1 : null), 1.0F);
-         this.z();
-      }
-   }
-
-   private void z() {
-      this.dM().a(this, null, e, this.dr(), this.dt(), this.dx(), (float)(3.0 + this.ag.j()), false, ctp.a.e, jx.y, jx.z, ars.Be);
-   }
-
-   @Override
-   protected void a(elp $$0) {
-      super.a($$0);
-      this.z();
-      this.am();
-   }
-
-   @Override
-   protected void a(elr $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         this.am();
+   public void l() {
+      super.l();
+      if (this.dL().B && !this.b) {
+         this.dL().a(jx.P, this.dq(), this.ds(), this.dw(), 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected boolean s() {
-      return false;
+   protected void a(bmo $$0) {
+      super.a($$0);
+      blj $$1 = new blj(bll.x, this.g, 0);
+      $$0.b($$1, this.I());
    }
 
    @Override
-   public cmy q() {
-      return cmy.f;
-   }
-
-   @Override
-   protected float x() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float y() {
-      return this.x();
-   }
-
-   @Nullable
-   @Override
-   protected jv u() {
-      return null;
-   }
-
-   @Override
-   protected csy.a ag_() {
-      return csy.a.b;
-   }
-
-   public static final class a extends cti {
-      @Override
-      public boolean a(cth $$0, blv $$1) {
-         return false;
+   public void a(so $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.g = $$0.h("Duration");
       }
+   }
+
+   @Override
+   public void b(so $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.g);
    }
 }

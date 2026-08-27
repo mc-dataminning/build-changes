@@ -22,8 +22,8 @@ public class bcj extends DataFix {
    }
 
    private TypeRewriteRule a() {
-      Type<?> $$0 = this.getOutputSchema().getType(bbw.D);
-      Type<?> $$1 = this.getInputSchema().getType(bbw.D);
+      Type<?> $$0 = this.getOutputSchema().getType(bbw.E);
+      Type<?> $$1 = this.getInputSchema().getType(bbw.E);
       OpticFinder<?> $$2 = $$1.findField("CriteriaType");
       TaggedChoiceType<?> $$3 = (TaggedChoiceType<?>)$$2.type()
          .findChoiceType("type", -1)

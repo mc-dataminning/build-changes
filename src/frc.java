@@ -1,42 +1,17 @@
-public class frc extends frb {
-   frc(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D *= 1.5F;
-      this.t = (int)(Math.random() * 2.0) + 60;
+public class frc extends frv {
+   protected frc(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fsc $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
    }
 
-   @Override
-   public float b(float $$0) {
-      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
-      return this.D * $$1;
-   }
+   public static class a implements frk<ka> {
+      private final fsc a;
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         this.g = this.g + this.j * (double)$$0;
-         this.h = this.h + this.k * (double)$$0;
-         this.i = this.i + this.l * (double)$$0;
-      }
-   }
-
-   public static class a implements fqy<ka> {
-      private final frq a;
-
-      public a(frq $$0) {
+      public a(fsc $$0) {
          this.a = $$0;
       }
 
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frc $$8 = new frc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new frc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

@@ -1,119 +1,84 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+import java.util.function.LongFunction;
 
-public interface dpx extends BiPredicate<cuk, hx> {
-   Codec<dpx> b = kd.O.q().dispatch(dpx::a, dpy::codec);
-   dpx c = a(cws.a);
-   dpx d = a(cws.a, cws.G);
+public class dpx extends doz {
+   private final auw d;
+   private int e;
 
-   dpy<?> a();
-
-   static dpx a(List<dpx> $$0) {
-      return new dpv($$0);
+   public dpx(auw $$0) {
+      super(0L);
+      this.d = $$0;
    }
 
-   static dpx a(dpx... $$0) {
-      return a(List.of($$0));
+   public int l() {
+      return this.e;
    }
 
-   static dpx a(dpx $$0, dpx $$1) {
-      return a(List.of($$0, $$1));
+   @Override
+   public auw d() {
+      return this.d.d();
    }
 
-   static dpx b(List<dpx> $$0) {
-      return new dpw($$0);
+   @Override
+   public dpl e() {
+      return this.d.e();
    }
 
-   static dpx b(dpx... $$0) {
-      return b(List.of($$0));
+   @Override
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof doz $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
    }
 
-   static dpx b(dpx $$0, dpx $$1) {
-      return b(List.of($$0, $$1));
+   @Override
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
+      }
    }
 
-   static dpx a(jb $$0, List<cwq> $$1) {
-      return new dqd($$0, il.a(cwq::r, $$1));
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
    }
 
-   static dpx c(List<cwq> $$0) {
-      return a(jb.g, $$0);
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
    }
 
-   static dpx a(jb $$0, cwq... $$1) {
-      return a($$0, List.of($$1));
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
    }
 
-   static dpx a(cwq... $$0) {
-      return a(jb.g, $$0);
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
    }
 
-   static dpx a(jb $$0, asw<cwq> $$1) {
-      return new dqc($$0, $$1);
+   public static auw a(int $$0, int $$1, long $$2, long $$3) {
+      return auw.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
    }
 
-   static dpx a(asw<cwq> $$0) {
-      return a(jb.g, $$0);
-   }
+   public static enum a {
+      a(doz::new),
+      b(dpz::new);
 
-   static dpx b(jb $$0, List<eeq> $$1) {
-      return new dqe($$0, il.a(eeq::k, $$1));
-   }
+      private final LongFunction<auw> c;
 
-   static dpx a(jb $$0, eeq... $$1) {
-      return b($$0, List.of($$1));
-   }
+      private a(LongFunction<auw> $$0) {
+         this.c = $$0;
+      }
 
-   static dpx a(eeq... $$0) {
-      return a(jb.g, $$0);
-   }
-
-   static dpx a(dpx $$0) {
-      return new dqf($$0);
-   }
-
-   static dpx a(jb $$0) {
-      return new dqg($$0);
-   }
-
-   static dpx b() {
-      return a(jb.g);
-   }
-
-   static dpx a(djh $$0, jb $$1) {
-      return new dqk($$1, $$0);
-   }
-
-   static dpx a(jb $$0, ic $$1) {
-      return new dqa($$0, $$1);
-   }
-
-   static dpx a(ic $$0) {
-      return a(jb.g, $$0);
-   }
-
-   static dpx b(jb $$0) {
-      return new dqh($$0);
-   }
-
-   static dpx c() {
-      return b(jb.g);
-   }
-
-   static dpx d() {
-      return c(jb.g);
-   }
-
-   static dpx c(jb $$0) {
-      return a($$0, ees.a);
-   }
-
-   static dpx d(jb $$0) {
-      return new dqb($$0);
-   }
-
-   static dpx e() {
-      return dqj.a;
+      public auw a(long $$0) {
+         return this.c.apply($$0);
+      }
    }
 }

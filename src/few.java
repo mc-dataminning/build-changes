@@ -1,24 +1,27 @@
-public class few extends fea<ciz> {
-   private static final ahg x = new ahg("container/grindstone/error");
-   private static final ahg y = new ahg("textures/gui/container/grindstone.png");
+public class few extends fel<ciq> implements ffq<ciq> {
+   private static final ahh x = new ahh("textures/gui/container/generic_54.png");
+   private final int y;
 
-   public few(ciz $$0, cfh $$1, vf $$2) {
+   public few(ciq $$0, cfp $$1, vg $$2) {
       super($$0, $$1, $$2);
+      int $$3 = 222;
+      int $$4 = 114;
+      this.y = $$0.m();
+      this.k = 114 + this.y * 18;
+      this.o = this.k - 94;
    }
 
    @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(ewu $$0, float $$1, int $$2, int $$3) {
+   protected void a(exe $$0, float $$1, int $$2, int $$3) {
       int $$4 = (this.g - this.c) / 2;
       int $$5 = (this.h - this.k) / 2;
-      $$0.a(y, $$4, $$5, 0, 0, this.c, this.k);
-      if ((this.p.b(0).h() || this.p.b(1).h()) && !this.p.b(2).h()) {
-         $$0.a(x, $$4 + 92, $$5 + 31, 28, 21);
-      }
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.y * 18 + 17);
+      $$0.a(x, $$4, $$5 + this.y * 18 + 17, 0, 126, this.c, 96);
    }
 }

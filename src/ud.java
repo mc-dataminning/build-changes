@@ -1,6 +1,3 @@
-public interface ud extends uo {
-   @Override
-   default xg a() {
-      return xg.b;
-   }
+public interface ud extends up {
+   void a(agg var1);
 }

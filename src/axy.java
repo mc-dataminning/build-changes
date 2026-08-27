@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class axy extends baw {
    public axy(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityArmorStandSilentFix", bbw.x, "ArmorStand");
+      super($$0, $$1, "EntityArmorStandSilentFix", bbw.y, "ArmorStand");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

@@ -1,36 +1,24 @@
-public class gch<T extends bml, M extends fjx<T>> extends gcy<T, M> {
-   private static final ahg a = new ahg("textures/entity/elytra.png");
-   private final fju<T> b;
+public class gch<T extends bmo, M extends flo<T>> extends gdu<T, M> {
+   private final fyy a;
 
-   public gch(gai<T, M> $$0, fmt $$1) {
-      super($$0);
-      this.b = new fju<>($$1.a(fmw.T));
+   public gch(fza.a $$0, gab<T, M> $$1) {
+      super($$1);
+      this.a = $$0.a();
    }
 
-   public void a(eqb $$0, fth $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cmy $$10 = $$3.c(bma.e);
-      if ($$10.a(cnb.nS)) {
-         ahg $$13;
-         if ($$3 instanceof fsg $$11) {
-            gfm $$12 = $$11.b();
-            if ($$12.d() != null) {
-               $$13 = $$12.d();
-            } else if ($$12.c() != null && $$11.a(cfj.a)) {
-               $$13 = $$12.c();
-            } else {
-               $$13 = a;
-            }
-         } else {
-            $$13 = a;
-         }
+   @Override
+   protected int a(T $$0) {
+      return $$0.eO();
+   }
 
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         eqf $$17 = fzl.a($$1, ftp.a($$13), false, $$10.B());
-         this.b.a($$0, $$17, $$2, gee.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.b();
-      }
+   @Override
+   protected void a(eqk $$0, ftt $$1, int $$2, blw $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = aup.c($$4 * $$4 + $$6 * $$6);
+      cfy $$9 = new cfy($$3.dL(), $$3.dq(), $$3.ds(), $$3.dw(), cng.f);
+      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
+      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
+      $$9.N = $$9.dB();
+      $$9.O = $$9.dD();
+      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
    }
 }

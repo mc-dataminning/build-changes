@@ -1,37 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyj extends dyr {
-   public static final Codec<dyj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dyj::new)
-   );
-   private final double c;
-   private final int d;
+public enum dyj implements avl {
+   a(ic.b, 1, "ceiling"),
+   b(ic.a, -1, "floor");
+
+   public static final Codec<dyj> c = avl.a(dyj::values);
+   private final ic d;
    private final int e;
+   private final String f;
 
-   private dyj(double $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private dyj(ic $$0, int $$1, String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static dyj a(double $$0, int $$1, int $$2) {
-      return new dyj($$0, $$1, $$2);
+   public ic a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
    }
 
    @Override
-   protected int a(auv $$0, hx $$1) {
-      double $$2 = cuo.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
-   }
-
-   @Override
-   public dyo<?> b() {
-      return dyo.h;
+   public String c() {
+      return this.f;
    }
 }

@@ -1,46 +1,39 @@
-import java.util.Optional;
+public class agn<T> {
+   private final int a;
+   private final ago<T> b;
 
-public interface agn<T> {
-   void a(ui var1, T var2);
-
-   T a(ui var1);
-
-   default agm<T> a(int $$0) {
-      return new agm<>($$0, this);
+   public agn(int $$0, ago<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   T a(T var1);
-
-   static <T> agn<T> a(final ui.b<T> $$0, final ui.a<T> $$1) {
-      return new agn.a<T>() {
-         @Override
-         public void a(ui $$0x, T $$1x) {
-            $$0.accept($$0, $$1);
-         }
-
-         @Override
-         public T a(ui $$0x) {
-            return $$1.apply($$0);
-         }
-      };
+   public int a() {
+      return this.a;
    }
 
-   static <T> agn<Optional<T>> b(ui.b<T> $$0, ui.a<T> $$1) {
-      return a($$0.asOptional(), $$1.asOptional());
+   public ago<T> b() {
+      return this.b;
    }
 
-   static <T extends Enum<T>> agn<T> a(Class<T> $$0) {
-      return a(ui::a, $$1 -> $$1.b($$0));
-   }
-
-   static <T> agn<T> a(im<T> $$0) {
-      return a(($$1, $$2) -> $$1.a($$0, (T)$$2), $$1 -> $$1.a($$0));
-   }
-
-   public interface a<T> extends agn<T> {
-      @Override
-      default T a(T $$0) {
-         return $$0;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         agn<?> $$1 = (agn<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
    }
 }

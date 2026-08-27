@@ -1,40 +1,69 @@
-import com.google.common.collect.Lists;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import java.io.Reader;
 import java.lang.reflect.Type;
-import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public class fuw implements ggy {
-   private final dji<cwq, djh> a;
-   private final List<fuy> b;
+public class fuw {
+   private final Map<String, fvd> a = Maps.newLinkedHashMap();
+   private fvi b;
 
-   public fuw(dji<cwq, djh> $$0, List<fuy> $$1) {
-      this.a = $$0;
+   public static fuw a(fuw.a $$0, Reader $$1) {
+      return auf.a($$0.a, $$1, fuw.class);
+   }
+
+   public static fuw a(fuw.a $$0, JsonElement $$1) {
+      return (fuw)$$0.a.fromJson($$1, fuw.class);
+   }
+
+   public fuw(Map<String, fvd> $$0, fvi $$1) {
       this.b = $$1;
+      this.a.putAll($$0);
    }
 
-   public List<fuy> a() {
-      return this.b;
-   }
+   public fuw(List<fuw> $$0) {
+      fuw $$1 = null;
 
-   public Set<fur> b() {
-      Set<fur> $$0 = Sets.newHashSet();
+      for (fuw $$2 : $$0) {
+         if ($$2.c()) {
+            this.a.clear();
+            $$1 = $$2;
+         }
 
-      for (fuy $$1 : this.b) {
-         $$0.add($$1.a());
+         this.a.putAll($$2.a);
       }
 
-      return $$0;
+      if ($$1 != null) {
+         this.b = $$1.b;
+      }
+   }
+
+   @VisibleForTesting
+   public boolean a(String $$0) {
+      return this.a.get($$0) != null;
+   }
+
+   @VisibleForTesting
+   public fvd b(String $$0) {
+      fvd $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new fuw.c();
+      } else {
+         return $$1;
+      }
    }
 
    @Override
@@ -42,59 +71,96 @@ public class fuw implements ggy {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof fuw $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+         if ($$0 instanceof fuw $$1 && this.a.equals($$1.a)) {
+            return this.c() ? this.b.equals($$1.b) : !$$1.c();
+         }
+
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.a, this.b);
+      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
    }
 
-   @Override
-   public Collection<ahg> f() {
-      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   public Map<String, fvd> a() {
+      return this.a;
    }
 
-   @Override
-   public void a(Function<ahg, ggy> $$0) {
-      this.a().forEach($$1 -> $$1.a().a($$0));
+   @VisibleForTesting
+   public Set<fvd> b() {
+      Set<fvd> $$0 = Sets.newHashSet(this.a.values());
+      if (this.c()) {
+         $$0.addAll(this.b.b());
+      }
+
+      return $$0;
    }
 
-   @Nullable
-   @Override
-   public ggn a(ggr $$0, Function<ggq, gen> $$1, ggv $$2, ahg $$3) {
-      ggw.a $$4 = new ggw.a();
+   public boolean c() {
+      return this.b != null;
+   }
 
-      for (fuy $$5 : this.a()) {
-         ggn $$6 = $$5.a().a($$0, $$1, $$2, $$3);
-         if ($$6 != null) {
-            $$4.a($$5.a(this.a), $$6);
+   public fvi d() {
+      return this.b;
+   }
+
+   public static final class a {
+      protected final Gson a = new GsonBuilder()
+         .registerTypeAdapter(fuw.class, new fuw.b())
+         .registerTypeAdapter(fve.class, new fve.a())
+         .registerTypeAdapter(fvd.class, new fvd.a())
+         .registerTypeAdapter(fvi.class, new fvi.a(this))
+         .registerTypeAdapter(fvk.class, new fvk.a())
+         .create();
+      private djq<cwy, djp> b;
+
+      public djq<cwy, djp> a() {
+         return this.b;
+      }
+
+      public void a(djq<cwy, djp> $$0) {
+         this.b = $$0;
+      }
+   }
+
+   public static class b implements JsonDeserializer<fuw> {
+      public fuw a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Map<String, fvd> $$4 = this.a($$2, $$3);
+         fvi $$5 = this.b($$2, $$3);
+         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
+            return new fuw($$4, $$5);
+         } else {
+            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
          }
       }
 
-      return $$4.a();
-   }
+      protected Map<String, fvd> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<String, fvd> $$2 = Maps.newHashMap();
+         if ($$1.has("variants")) {
+            JsonObject $$3 = auf.u($$1, "variants");
 
-   public static class a implements JsonDeserializer<fuw> {
-      private final fuk.a a;
-
-      public a(fuk.a $$0) {
-         this.a = $$0;
-      }
-
-      public fuw a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new fuw(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
-      }
-
-      private List<fuy> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<fuy> $$2 = Lists.newArrayList();
-
-         for (JsonElement $$3 : $$1) {
-            $$2.add((fuy)$$0.deserialize($$3, fuy.class));
+            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+               $$2.put($$4.getKey(), (fvd)$$0.deserialize($$4.getValue(), fvd.class));
+            }
          }
 
          return $$2;
       }
+
+      @Nullable
+      protected fvi b(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("multipart")) {
+            return null;
+         } else {
+            JsonArray $$2 = auf.v($$1, "multipart");
+            return (fvi)$$0.deserialize($$2, fvi.class);
+         }
+      }
+   }
+
+   protected class c extends RuntimeException {
    }
 }

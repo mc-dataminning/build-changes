@@ -1,18 +1,8 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
 public interface ghf {
-   void scheduleReload(ghf.a var1);
+   ghm a(ahh var1);
 
-   public interface a {
-      void a();
-
-      void a(boolean var1);
-
-      List<ghf.b> b();
-   }
-
-   public static record b(UUID a, Path b) {
-   }
+   @Nullable
+   ghb a(ahh var1, ghj var2);
 }

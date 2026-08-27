@@ -1,63 +1,38 @@
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
-import org.joml.Quaternionf;
 
-public enum ggo implements ggv {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
+public class ggo {
+   public static final ggp a = new ggp();
+   public static final String b = "villager";
+   private final ggo.a c;
 
-   private static final int q = 360;
-   private static final Map<Integer, ggo> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (ggo)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
-
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
+   public ggo(ggo.a $$0) {
+      this.c = $$0;
    }
 
-   private ggo(int $$0, int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      h $$3 = h.a;
+   public ggo.a a() {
+      return this.c;
+   }
 
-      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
-         $$3 = $$3.a(h.u);
+   public static enum a {
+      a("none"),
+      b("partial"),
+      c("full");
+
+      private static final Map<String, ggo.a> d = Arrays.stream(values()).collect(Collectors.toMap(ggo.a::a, $$0 -> (ggo.a)$$0));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
       }
 
-      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
-         $$3 = $$3.a(h.s);
+      public String a() {
+         return this.e;
       }
 
-      this.s = new j(null, $$2, null, null);
-      this.t = $$3;
-   }
-
-   @Override
-   public j b() {
-      return this.s;
-   }
-
-   public static ggo a(int $$0, int $$1) {
-      return r.get(b(auo.b($$0, 360), auo.b($$1, 360)));
-   }
-
-   public h a() {
-      return this.t;
+      public static ggo.a a(String $$0) {
+         return d.getOrDefault($$0, a);
+      }
    }
 }

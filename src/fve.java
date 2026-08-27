@@ -1,53 +1,110 @@
-public class fve implements fvh<dgr> {
-   private final fmx a;
-   private final fmx b;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Objects;
 
-   public fve(fvi.a $$0) {
-      this.a = $$0.a(fmw.i);
-      this.b = $$0.a(fmw.h);
+public class fve implements ghj {
+   private final ahh a;
+   private final j b;
+   private final boolean c;
+   private final int d;
+
+   public fve(ahh $$0, j $$1, boolean $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static fnd b() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      $$1.a("main", fnc.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fmz.a);
-      $$1.a("left_leg", fnc.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fmz.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", fnc.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fmz.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return fnd.a($$0, 64, 64);
+   public ahh a() {
+      return this.a;
    }
 
-   public static fnd c() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      $$1.a("main", fnc.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fmz.a);
-      $$1.a("left_leg", fnc.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fmz.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", fnc.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fmz.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return fnd.a($$0, 64, 64);
+   @Override
+   public j b() {
+      return this.b;
    }
 
-   public void a(dgr $$0, float $$1, eqb $$2, fth $$3, int $$4, int $$5) {
-      ggq $$6 = ftw.p[$$0.d().a()];
-      ctp $$7 = $$0.i();
-      if ($$7 != null) {
-         djh $$8 = $$0.r();
-         cyx.c<? extends dgr> $$9 = cyx.a(dgx.y, cwj::h, cwj::g, cxt.c, $$8, $$7, $$0.aB_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new fvk<>()).get($$4);
-         this.a($$2, $$3, $$8.c(cwj.b) == dju.a ? this.a : this.b, $$8.c(cwj.aE), $$6, $$10, $$5, false);
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         this.a($$2, $$3, this.a, ic.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, ic.d, $$6, $$4, $$5, true);
+         return !($$0 instanceof fve $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
       }
    }
 
-   private void a(eqb $$0, fth $$1, fmx $$2, ic $$3, ggq $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      eqf $$8 = $$4.a($$1, ftp::c);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
+      return 31 * $$0 + this.d;
+   }
+
+   public static class a implements JsonDeserializer<fve> {
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
+
+      public fve a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         ahh $$4 = this.b($$3);
+         ghc $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new fve($$4, $$5.b(), $$6, $$7);
+      }
+
+      private boolean d(JsonObject $$0) {
+         return auf.a($$0, "uvlock", false);
+      }
+
+      protected ghc a(JsonObject $$0) {
+         int $$1 = auf.a($$0, "x", 0);
+         int $$2 = auf.a($$0, "y", 0);
+         ghc $$3 = ghc.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         } else {
+            return $$3;
+         }
+      }
+
+      protected ahh b(JsonObject $$0) {
+         return new ahh(auf.i($$0, "model"));
+      }
+
+      protected int c(JsonObject $$0) {
+         int $$1 = auf.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
+         }
+      }
    }
 }

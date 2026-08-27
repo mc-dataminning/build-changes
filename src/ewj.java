@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import org.joml.Vector3f;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ewj {
+public record ewj(float a, Vector3f b, ewh.a c) {
 }

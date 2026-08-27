@@ -1,31 +1,23 @@
-public class fzz extends fzt<byo, fkx> {
-   private static final ahg a = new ahg("textures/entity/parrot/parrot_red_blue.png");
-   private static final ahg i = new ahg("textures/entity/parrot/parrot_blue.png");
-   private static final ahg j = new ahg("textures/entity/parrot/parrot_green.png");
-   private static final ahg k = new ahg("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final ahg l = new ahg("textures/entity/parrot/parrot_grey.png");
+public class fzz extends fyz<cbv> {
+   private static final ahh a = new ahh("textures/entity/lead_knot.png");
+   private final fla<cbv> f;
 
-   public fzz(fyn.a $$0) {
-      super($$0, new fkx($$0.a(fmw.aD)), 0.3F);
+   public fzz(fza.a $$0) {
+      super($$0);
+      this.f = new fla<>($$0.a(fni.as));
    }
 
-   public ahg a(byo $$0) {
-      return a($$0.gm());
+   public void a(cbv $$0, float $$1, float $$2, eqk $$3, ftt $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      eqo $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, ges.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static ahg a(byo.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-         case e -> l;
-      };
-   }
-
-   public float a(byo $$0, float $$1) {
-      float $$2 = auo.i($$1, $$0.bZ, $$0.bW);
-      float $$3 = auo.i($$1, $$0.bY, $$0.bX);
-      return (auo.a($$2) + 1.0F) * $$3;
+   public ahh a(cbv $$0) {
+      return a;
    }
 }

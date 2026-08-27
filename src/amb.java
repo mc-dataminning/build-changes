@@ -1,201 +1,532 @@
-import com.google.common.base.Splitter;
-import com.google.common.base.Strings;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Writer;
+import java.net.InetAddress;
+import java.net.Proxy;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Properties;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class amb extends ame<amb> {
-   static final Logger aa = LogUtils.getLogger();
-   private static final Pattern ab = Pattern.compile("^[a-fA-F0-9]{40}$");
-   private static final Splitter ac = Splitter.on(',').trimResults();
-   public final boolean a = this.a("online-mode", true);
-   public final boolean b = this.a("prevent-proxy-connections", false);
-   public final String c = this.a("server-ip", "");
-   public final boolean d = this.a("spawn-animals", true);
-   public final boolean e = this.a("spawn-npcs", true);
-   public final boolean f = this.a("pvp", true);
-   public final boolean g = this.a("allow-flight", false);
-   public final String h = this.a("motd", "A Minecraft Server");
-   public final boolean i = this.a("force-gamemode", false);
-   public final boolean j = this.a("enforce-whitelist", false);
-   public final bjy k = this.a("difficulty", a(bjy::a, bjy::a), bjy::e, bjy.b);
-   public final ctm l = this.a("gamemode", a(ctm::a, ctm::a), ctm::b, ctm.a);
-   public final String m = this.a("level-name", "world");
-   public final int n = this.a("server-port", 25565);
+public class amb extends MinecraftServer implements ahx {
+   static final Logger l = LogUtils.getLogger();
+   private static final int m = 5000;
+   private static final int n = 2;
+   private final List<ahl> o = Collections.synchronizedList(Lists.newArrayList());
    @Nullable
-   public final Boolean o = this.b("announce-player-achievements");
-   public final boolean p = this.a("enable-query", false);
-   public final int q = this.a("query.port", 25565);
-   public final boolean r = this.a("enable-rcon", false);
-   public final int s = this.a("rcon.port", 25575);
-   public final String t = this.a("rcon.password", "");
-   public final boolean u = this.a("hardcore", false);
-   public final boolean v = this.a("allow-nether", true);
-   public final boolean w = this.a("spawn-monsters", true);
-   public final boolean x = this.a("use-native-transport", true);
-   public final boolean y = this.a("enable-command-block", false);
-   public final int z = this.a("spawn-protection", 16);
-   public final int A = this.a("op-permission-level", 4);
-   public final int B = this.a("function-permission-level", 2);
-   public final long C = this.a("max-tick-time", TimeUnit.MINUTES.toMillis(1L));
-   public final int D = this.a("max-chained-neighbor-updates", 1000000);
-   public final int E = this.a("rate-limit", 0);
-   public final int F = this.a("view-distance", 10);
-   public final int G = this.a("simulation-distance", 10);
-   public final int H = this.a("max-players", 20);
-   public final int I = this.a("network-compression-threshold", 256);
-   public final boolean J = this.a("broadcast-rcon-to-ops", true);
-   public final boolean K = this.a("broadcast-console-to-ops", true);
-   public final int L = this.a("max-world-size", $$0x -> auo.a($$0x, 1, 29999984), 29999984);
-   public final boolean M = this.a("sync-chunk-writes", true);
-   public final boolean N = this.a("enable-jmx-monitoring", false);
-   public final boolean O = this.a("enable-status", true);
-   public final boolean P = this.a("hide-online-players", false);
-   public final int Q = this.a("entity-broadcast-range-percentage", $$0x -> auo.a($$0x, 10, 1000), 100);
-   public final String R = this.a("text-filtering-config", "");
-   public final Optional<MinecraftServer.b> S;
-   public final ctd T;
-   public final ame<amb>.a<Integer> U = this.b("player-idle-timeout", 0);
-   public final ame<amb>.a<Boolean> V = this.b("white-list", false);
-   public final boolean W = this.a("enforce-secure-profile", true);
-   public final boolean X = this.a("log-ips", true);
-   private final amb.a ad;
-   public final dpo Y;
-
-   public amb(Properties $$0) {
-      super($$0);
-      String $$1 = this.a("level-seed", "");
-      boolean $$2 = this.a("generate-structures", true);
-      long $$3 = dpo.a($$1).orElse(dpo.f());
-      this.Y = new dpo($$3, $$2, false);
-      this.ad = new amb.a(
-         this.a("generator-settings", $$0x -> aue.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), dyw.a.a().toString())
-      );
-      this.S = a(
-         this.a("resource-pack-id", ""),
-         this.a("resource-pack", ""),
-         this.a("resource-pack-sha1", ""),
-         this.a("resource-pack-hash"),
-         this.a("require-resource-pack", false),
-         this.a("resource-pack-prompt", "")
-      );
-      this.T = b(this.a("initial-enabled-packs", String.join(",", cuj.c.a().a())), this.a("initial-disabled-packs", String.join(",", cuj.c.a().b())));
-   }
-
-   public static amb a(Path $$0) {
-      return new amb(b($$0));
-   }
-
-   protected amb a(iu $$0, Properties $$1) {
-      return new amb($$1);
-   }
-
+   private arm p;
+   private final arj q;
    @Nullable
-   private static vf c(String $$0) {
-      if (!Strings.isNullOrEmpty($$0)) {
-         try {
-            return vf.a.a($$0);
-         } catch (Exception var2) {
-            aa.warn("Failed to parse resource pack prompt '{}'", $$0, var2);
-         }
-      }
+   private aro r;
+   private final amd s;
+   @Nullable
+   private amh t;
+   @Nullable
+   private final aoj u;
 
-      return null;
+   public amb(Thread $$0, egv.c $$1, apu $$2, aid $$3, amd $$4, DataFixer $$5, aia $$6, ano $$7) {
+      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
+      this.s = $$4;
+      this.q = new arj(this);
+      this.u = aoj.a($$4.a().R);
    }
 
-   private static Optional<MinecraftServer.b> a(String $$0, String $$1, String $$2, @Nullable String $$3, boolean $$4, String $$5) {
-      if ($$1.isEmpty()) {
-         return Optional.empty();
-      } else {
-         String $$6;
-         if (!$$2.isEmpty()) {
-            $$6 = $$2;
-            if (!Strings.isNullOrEmpty($$3)) {
-               aa.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
-            }
-         } else if (!Strings.isNullOrEmpty($$3)) {
-            aa.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
-            $$6 = $$3;
-         } else {
-            $$6 = "";
-         }
+   @Override
+   public boolean e() throws IOException {
+      Thread $$0 = new Thread("Server console handler") {
+         @Override
+         public void run() {
+            BufferedReader $$0 = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
 
-         if ($$6.isEmpty()) {
-            aa.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
-         } else if (!ab.matcher($$6).matches()) {
-            aa.warn("Invalid sha1 for resource-pack-sha1");
-         }
-
-         vf $$9 = c($$5);
-         UUID $$10;
-         if ($$0.isEmpty()) {
-            $$10 = UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8));
-            aa.warn("resource-pack-id missing, using default of {}", $$10);
-         } else {
+            String $$1;
             try {
-               $$10 = UUID.fromString($$0);
-            } catch (IllegalArgumentException var10) {
-               aa.warn("Failed to parse '{}' into UUID", $$0);
-               return Optional.empty();
+               while (!amb.this.ad() && amb.this.v() && ($$1 = $$0.readLine()) != null) {
+                  amb.this.a($$1, amb.this.aF());
+               }
+            } catch (IOException var4) {
+               amb.l.error("Exception handling console input", var4);
             }
          }
+      };
+      $$0.setDaemon(true);
+      $$0.setUncaughtExceptionHandler(new r(l));
+      $$0.start();
+      l.info("Starting minecraft server version {}", aa.b().c());
+      if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
+         l.warn("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
+      }
 
-         return Optional.of(new MinecraftServer.b($$10, $$1, $$6, $$4, $$9));
+      l.info("Loading properties");
+      amc $$1 = this.s.a();
+      if (this.Q()) {
+         this.a_("127.0.0.1");
+      } else {
+         this.d($$1.a);
+         this.e($$1.b);
+         this.a_($$1.c);
+      }
+
+      this.f($$1.f);
+      this.g($$1.g);
+      this.d($$1.h);
+      super.c($$1.U.get());
+      this.h($$1.j);
+      this.k.a($$1.l);
+      l.info("Default game type: {}", $$1.l);
+      InetAddress $$2 = null;
+      if (!this.u().isEmpty()) {
+         $$2 = InetAddress.getByName(this.u());
+      }
+
+      if (this.O() < 0) {
+         this.a($$1.n);
+      }
+
+      this.R();
+      l.info("Starting Minecraft server on {}:{}", this.u().isEmpty() ? "*" : this.u(), this.O());
+
+      try {
+         this.af().a($$2, this.O());
+      } catch (IOException var10) {
+         l.warn("**** FAILED TO BIND TO PORT!");
+         l.warn("The exception was: {}", var10.toString());
+         l.warn("Perhaps a server is already running on that port?");
+         return false;
+      }
+
+      if (!this.W()) {
+         l.warn("**** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!");
+         l.warn("The server will make no attempt to authenticate usernames. Beware.");
+         l.warn(
+            "While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose."
+         );
+         l.warn("To change this, set \"online-mode\" to \"true\" in the server.properties file.");
+      }
+
+      if (this.bn()) {
+         this.ar().c();
+      }
+
+      if (!aqv.e(this)) {
+         return false;
+      } else {
+         this.a(new ama(this, this.ba(), this.h));
+         long $$4 = ac.c();
+         dio.a(this.j, this);
+         aqs.a(this.W());
+         l.info("Preparing level \"{}\"", this.q());
+         this.u_();
+         long $$5 = ac.c() - $$4;
+         String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
+         l.info("Done ({})! For help, type \"help\"", $$6);
+         if ($$1.o != null) {
+            this.aK().a(ctt.A).a($$1.o, this);
+         }
+
+         if ($$1.p) {
+            l.info("Starting GS4 status listener");
+            this.p = arm.a(this);
+         }
+
+         if ($$1.r) {
+            l.info("Starting remote control listener");
+            this.r = aro.a(this);
+         }
+
+         if (this.bo() > 0L) {
+            Thread $$7 = new Thread(new ame(this));
+            $$7.setUncaughtExceptionHandler(new s(l));
+            $$7.setName("Server Watchdog");
+            $$7.setDaemon(true);
+            $$7.start();
+         }
+
+         if ($$1.N) {
+            bgj.a(this);
+            l.info("JMX monitoring enabled");
+         }
+
+         return true;
       }
    }
 
-   private static ctd b(String $$0, String $$1) {
-      List<String> $$2 = ac.splitToList($$0);
-      List<String> $$3 = ac.splitToList($$1);
-      return new ctd($$2, $$3);
+   @Override
+   public boolean Y() {
+      return this.a().d && super.Y();
    }
 
-   public dpl a(iu $$0) {
-      return this.ad.a($$0);
+   @Override
+   public boolean S() {
+      return this.s.a().w && super.S();
    }
 
-   static record a(JsonObject a, String b) {
-      private static final Map<String, ahf<dyv>> c = Map.of("default", dyw.a, "largebiomes", dyw.c);
+   @Override
+   public boolean Z() {
+      return this.s.a().e && super.Z();
+   }
 
-      public dpl a(iu $$0) {
-         it<dyv> $$1 = $$0.d(ke.aK);
-         ih.c<dyv> $$2 = $$1.b(dyw.a)
-            .or(() -> $$1.h().findAny())
-            .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         ih<dyv> $$3 = Optional.ofNullable(ahg.a(this.b))
-            .map($$0x -> ahf.a(ke.aK, $$0x))
-            .or(() -> Optional.ofNullable(c.get(this.b)))
-            .flatMap($$1::b)
-            .orElseGet(() -> {
-               amb.aa.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.g().a());
-               return $$2;
-            });
-         dpl $$4 = $$3.a().a();
-         if ($$3.a(dyw.b)) {
-            ahe<JsonElement> $$5 = ahe.a(JsonOps.INSTANCE, $$0);
-            Optional<dxj> $$6 = dxj.a.parse(new Dynamic($$5, this.a())).resultOrPartial(amb.aa::error);
-            if ($$6.isPresent()) {
-               return $$4.a($$0, new dol($$6.get()));
-            }
+   @Override
+   public amc a() {
+      return this.s.a();
+   }
+
+   @Override
+   public void r() {
+      this.a(this.a().k, true);
+   }
+
+   @Override
+   public boolean h() {
+      return this.a().u;
+   }
+
+   @Override
+   public ab a(ab $$0) {
+      $$0.a("Is Modded", () -> this.M().b());
+      $$0.a("Type", () -> "Dedicated Server (map_server.txt)");
+      return $$0;
+   }
+
+   @Override
+   public void a(Path $$0) throws IOException {
+      amc $$1 = this.a();
+
+      try (Writer $$2 = Files.newBufferedWriter($$0)) {
+         $$2.write(String.format(Locale.ROOT, "sync-chunk-writes=%s%n", $$1.M));
+         $$2.write(String.format(Locale.ROOT, "gamemode=%s%n", $$1.l));
+         $$2.write(String.format(Locale.ROOT, "spawn-monsters=%s%n", $$1.w));
+         $$2.write(String.format(Locale.ROOT, "entity-broadcast-range-percentage=%d%n", $$1.Q));
+         $$2.write(String.format(Locale.ROOT, "max-world-size=%d%n", $$1.L));
+         $$2.write(String.format(Locale.ROOT, "spawn-npcs=%s%n", $$1.e));
+         $$2.write(String.format(Locale.ROOT, "view-distance=%d%n", $$1.F));
+         $$2.write(String.format(Locale.ROOT, "simulation-distance=%d%n", $$1.G));
+         $$2.write(String.format(Locale.ROOT, "spawn-animals=%s%n", $$1.d));
+         $$2.write(String.format(Locale.ROOT, "generate-structures=%s%n", $$1.Y.c()));
+         $$2.write(String.format(Locale.ROOT, "use-native=%s%n", $$1.x));
+         $$2.write(String.format(Locale.ROOT, "rate-limit=%d%n", $$1.E));
+      }
+   }
+
+   @Override
+   public void g() {
+      if (this.u != null) {
+         this.u.close();
+      }
+
+      if (this.t != null) {
+         this.t.b();
+      }
+
+      if (this.r != null) {
+         this.r.b();
+      }
+
+      if (this.p != null) {
+         this.p.b();
+      }
+   }
+
+   @Override
+   public void b(BooleanSupplier $$0) {
+      super.b($$0);
+      this.bk();
+   }
+
+   @Override
+   public boolean D() {
+      return this.a().v;
+   }
+
+   public void a(String $$0, ds $$1) {
+      this.o.add(new ahl($$0, $$1));
+   }
+
+   public void bk() {
+      while (!this.o.isEmpty()) {
+         ahl $$0 = this.o.remove(0);
+         this.aE().a($$0.b, $$0.a);
+      }
+   }
+
+   @Override
+   public boolean l() {
+      return true;
+   }
+
+   @Override
+   public int m() {
+      return this.a().E;
+   }
+
+   @Override
+   public boolean n() {
+      return this.a().x;
+   }
+
+   public ama bl() {
+      return (ama)super.ae();
+   }
+
+   @Override
+   public boolean p() {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.u();
+   }
+
+   @Override
+   public int d() {
+      return this.O();
+   }
+
+   @Override
+   public String f() {
+      return this.ac();
+   }
+
+   public void bm() {
+      if (this.t == null) {
+         this.t = amh.a(this);
+      }
+   }
+
+   @Override
+   public boolean ah() {
+      return this.t != null;
+   }
+
+   @Override
+   public boolean o() {
+      return this.a().y;
+   }
+
+   @Override
+   public int aj() {
+      return this.a().z;
+   }
+
+   @Override
+   public boolean a(ane $$0, hx $$1, cfq $$2) {
+      if ($$0.ae() != ctx.h) {
+         return false;
+      } else if (this.bl().k().c()) {
+         return false;
+      } else if (this.bl().f($$2.fR())) {
+         return false;
+      } else if (this.aj() <= 0) {
+         return false;
+      } else {
+         hx $$3 = $$0.T();
+         int $$4 = aup.a($$1.u() - $$3.u());
+         int $$5 = aup.a($$1.w() - $$3.w());
+         int $$6 = Math.max($$4, $$5);
+         return $$6 <= this.aj();
+      }
+   }
+
+   @Override
+   public boolean ak() {
+      return this.a().O;
+   }
+
+   @Override
+   public boolean al() {
+      return this.a().P;
+   }
+
+   @Override
+   public int i() {
+      return this.a().A;
+   }
+
+   @Override
+   public int j() {
+      return this.a().B;
+   }
+
+   @Override
+   public void c(int $$0) {
+      super.c($$0);
+      this.s.a($$1 -> $$1.U.a(this.aZ(), $$0));
+   }
+
+   @Override
+   public boolean k() {
+      return this.a().J;
+   }
+
+   @Override
+   public boolean W_() {
+      return this.a().K;
+   }
+
+   @Override
+   public int au() {
+      return this.a().L;
+   }
+
+   @Override
+   public int ax() {
+      return this.a().I;
+   }
+
+   @Override
+   public boolean ay() {
+      amc $$0 = this.a();
+      return $$0.W && $$0.a && this.j.b();
+   }
+
+   @Override
+   public boolean bj() {
+      return this.a().X;
+   }
+
+   protected boolean bn() {
+      boolean $$0 = false;
+
+      for (int $$1 = 0; !$$0 && $$1 <= 2; $$1++) {
+         if ($$1 > 0) {
+            l.warn("Encountered a problem while converting the user banlist, retrying in a few seconds");
+            this.bx();
          }
 
-         return $$4;
+         $$0 = aqv.a((MinecraftServer)this);
       }
+
+      boolean $$2 = false;
+
+      for (int var7 = 0; !$$2 && var7 <= 2; var7++) {
+         if (var7 > 0) {
+            l.warn("Encountered a problem while converting the ip banlist, retrying in a few seconds");
+            this.bx();
+         }
+
+         $$2 = aqv.b(this);
+      }
+
+      boolean $$3 = false;
+
+      for (int var8 = 0; !$$3 && var8 <= 2; var8++) {
+         if (var8 > 0) {
+            l.warn("Encountered a problem while converting the op list, retrying in a few seconds");
+            this.bx();
+         }
+
+         $$3 = aqv.c(this);
+      }
+
+      boolean $$4 = false;
+
+      for (int var9 = 0; !$$4 && var9 <= 2; var9++) {
+         if (var9 > 0) {
+            l.warn("Encountered a problem while converting the whitelist, retrying in a few seconds");
+            this.bx();
+         }
+
+         $$4 = aqv.d(this);
+      }
+
+      boolean $$5 = false;
+
+      for (int var10 = 0; !$$5 && var10 <= 2; var10++) {
+         if (var10 > 0) {
+            l.warn("Encountered a problem while converting the player save files, retrying in a few seconds");
+            this.bx();
+         }
+
+         $$5 = aqv.a(this);
+      }
+
+      return $$0 || $$2 || $$3 || $$4 || $$5;
+   }
+
+   private void bx() {
+      try {
+         Thread.sleep(5000L);
+      } catch (InterruptedException var2) {
+      }
+   }
+
+   public long bo() {
+      return this.a().C;
+   }
+
+   @Override
+   public int bh() {
+      return this.a().D;
+   }
+
+   @Override
+   public String s() {
+      return "";
+   }
+
+   @Override
+   public String a(String $$0) {
+      this.q.e();
+      this.h(() -> this.aE().a(this.q.g(), $$0));
+      return this.q.f();
+   }
+
+   public void i(boolean $$0) {
+      this.s.a($$1 -> $$1.V.a(this.aZ(), $$0));
+   }
+
+   @Override
+   public void t() {
+      super.t();
+      ac.i();
+      dio.c();
+   }
+
+   @Override
+   public boolean a(GameProfile $$0) {
+      return false;
+   }
+
+   @Override
+   public int b(int $$0) {
+      return this.a().Q * $$0 / 100;
+   }
+
+   @Override
+   public String q() {
+      return this.g.d();
+   }
+
+   @Override
+   public boolean aW() {
+      return this.s.a().M;
+   }
+
+   @Override
+   public aoi a(anf $$0) {
+      return this.u != null ? this.u.a($$0.fR()) : aoi.a;
+   }
+
+   @Nullable
+   @Override
+   public ctu bb() {
+      return this.s.a().i ? this.k.m() : null;
+   }
+
+   @Override
+   public Optional<MinecraftServer.b> U() {
+      return this.s.a().S;
    }
 }

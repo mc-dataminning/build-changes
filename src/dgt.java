@@ -1,147 +1,162 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
 
-public class dgt extends dgv {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public ic c;
-   private List<bml> m;
-   private boolean n;
-   private int r;
+public class dgt extends dhd implements bkh {
+   public static final int a = 6;
+   public static final String b = "Patterns";
+   public static final String c = "Pattern";
+   public static final String d = "Color";
+   @Nullable
+   private vg e;
+   private clv f;
+   @Nullable
+   private su g;
+   @Nullable
+   private List<Pair<ih<dgu>, clv>> h;
 
-   public dgt(hx $$0, djh $$1) {
-      super(dgx.E, $$0, $$1);
+   public dgt(hx $$0, djp $$1) {
+      super(dhf.t, $$0, $$1);
+      this.f = ((cvp)$$1.b()).b();
+   }
+
+   public dgt(hx $$0, djp $$1, clv $$2) {
+      this($$0, $$1);
+      this.f = $$2;
+   }
+
+   @Nullable
+   public static su a(cng $$0) {
+      su $$1 = null;
+      so $$2 = cla.a($$0);
+      if ($$2 != null && $$2.b("Patterns", 9)) {
+         $$1 = $$2.c("Patterns", 10).e();
+      }
+
+      return $$1;
+   }
+
+   public void a(cng $$0, clv $$1) {
+      this.f = $$1;
+      this.b($$0);
+   }
+
+   public void b(cng $$0) {
+      this.g = a($$0);
+      this.h = null;
+      this.e = $$0.A() ? $$0.y() : null;
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.c();
-         this.r = 0;
-         this.c = ic.a($$1);
-         this.a = 0;
-         this.b = true;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   public vg ad() {
+      return (vg)(this.e != null ? this.e : vg.c("block.minecraft.banner"));
+   }
+
+   @Nullable
+   @Override
+   public vg af() {
+      return this.e;
+   }
+
+   public void a(vg $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   protected void b(so $$0) {
+      super.b($$0);
+      if (this.g != null) {
+         $$0.a("Patterns", this.g);
+      }
+
+      if (this.e != null) {
+         $$0.a("CustomName", vg.a.a(this.e));
       }
    }
 
-   private static void a(ctp $$0, hx $$1, djh $$2, dgt $$3, dgt.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
+   @Override
+   public void a(so $$0) {
+      super.a($$0);
+      if ($$0.b("CustomName", 8)) {
+         this.e = vg.a.a($$0.l("CustomName"));
       }
 
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
-      }
-
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.n = true;
-         $$0.a(null, $$1, ars.bL, art.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.n) {
-         if ($$3.r < 40) {
-            $$3.r++;
-         } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.n = false;
-         }
-      }
+      this.g = $$0.c("Patterns", 10);
+      this.h = null;
    }
 
-   public static void a(ctp $$0, hx $$1, djh $$2, dgt $$3) {
-      a($$0, $$1, $$2, $$3, dgt::b);
+   public zi a() {
+      return zi.a(this);
    }
 
-   public static void b(ctp $$0, hx $$1, djh $$2, dgt $$3) {
-      a($$0, $$1, $$2, $$3, dgt::a);
+   @Override
+   public so aA_() {
+      return this.q();
    }
 
-   public void a(ic $$0) {
-      hx $$1 = this.aB_();
-      this.c = $$0;
-      if (this.b) {
-         this.a = 0;
-      } else {
-         this.b = true;
+   public static int c(cng $$0) {
+      so $$1 = cla.a($$0);
+      return $$1 != null && $$1.e("Patterns") ? $$1.c("Patterns", 10).size() : 0;
+   }
+
+   public List<Pair<ih<dgu>, clv>> c() {
+      if (this.h == null) {
+         this.h = a(this.f, this.g);
       }
 
-      this.o.a($$1, this.r().b(), 1, $$0.d());
+      return this.h;
    }
 
-   private void c() {
-      hx $$0 = this.aB_();
-      if (this.o.X() > this.l + 60L || this.m == null) {
-         this.l = this.o.X();
-         elo $$1 = new elo($$0).g(48.0);
-         this.m = this.o.a(bml.class, $$1);
-      }
-
-      if (!this.o.B) {
-         for (bml $$2 : this.m) {
-            if ($$2.bx() && !$$2.dH() && $$0.a($$2.dk(), 32.0)) {
-               $$2.dO().a(bvn.D, this.o.X());
+   public static List<Pair<ih<dgu>, clv>> a(clv $$0, @Nullable su $$1) {
+      List<Pair<ih<dgu>, clv>> $$2 = Lists.newArrayList();
+      $$2.add(Pair.of(kd.am.f(dgv.a), $$0));
+      if ($$1 != null) {
+         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+            so $$4 = $$1.a($$3);
+            ih<dgu> $$5 = dgu.a($$4.l("Pattern"));
+            if ($$5 != null) {
+               int $$6 = $$4.h("Color");
+               $$2.add(Pair.of($$5, clv.a($$6)));
             }
          }
       }
+
+      return $$2;
    }
 
-   private static boolean a(hx $$0, List<bml> $$1) {
-      for (bml $$2 : $$1) {
-         if ($$2.bx() && !$$2.dH() && $$0.a($$2.dk(), 32.0) && $$2.ai().a(ask.c)) {
-            return true;
+   public static void d(cng $$0) {
+      so $$1 = cla.a($$0);
+      if ($$1 != null && $$1.b("Patterns", 9)) {
+         su $$2 = $$1.c("Patterns", 10);
+         if (!$$2.isEmpty()) {
+            $$2.c($$2.size() - 1);
+            if ($$2.isEmpty()) {
+               $$1.r("Patterns");
+            }
          }
+
+         $$1.r("id");
+         cla.a($$0, dhf.t, $$1);
+      }
+   }
+
+   public cng f() {
+      cng $$0 = new cng(cwd.a(this.f));
+      if (this.g != null && !this.g.isEmpty()) {
+         so $$1 = new so();
+         $$1.a("Patterns", this.g.e());
+         cla.a($$0, this.v(), $$1);
       }
 
-      return false;
+      if (this.e != null) {
+         $$0.a(this.e);
+      }
+
+      return $$0;
    }
 
-   private static void a(ctp $$0, hx $$1, List<bml> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dgt::a);
-   }
-
-   private static void b(ctp $$0, hx $$1, List<bml> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dk(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dr() - (double)$$1.u()) * ($$4x.dr() - (double)$$1.u()) + ($$4x.dx() - (double)$$1.w()) * ($$4x.dx() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dr() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dx() - (double)$$1.w());
-         int $$9 = auo.a(($$4 - 21) / -2, 3, 15);
-
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            double $$12 = (double)aty.b.b($$11) / 255.0;
-            double $$13 = (double)aty.b.c($$11) / 255.0;
-            double $$14 = (double)aty.b.d($$11) / 255.0;
-            $$0.a(jx.v, $$7, (double)((float)$$1.v() + 0.5F), $$8, $$12, $$13, $$14);
-         }
-      });
-   }
-
-   private static boolean a(hx $$0, bml $$1) {
-      return $$1.bx() && !$$1.dH() && $$0.a($$1.dk(), 48.0) && $$1.ai().a(ask.c);
-   }
-
-   private static void a(bml $$0) {
-      $$0.b(new bli(blk.x, 60));
-   }
-
-   @FunctionalInterface
-   interface a {
-      void run(ctp var1, hx var2, List<bml> var3);
+   public clv g() {
+      return this.f;
    }
 }

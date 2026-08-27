@@ -1,29 +1,35 @@
-public final class ask {
-   public static final asw<blz<?>> a = a("skeletons");
-   public static final asw<blz<?>> b = a("zombies");
-   public static final asw<blz<?>> c = a("raiders");
-   public static final asw<blz<?>> d = a("undead");
-   public static final asw<blz<?>> e = a("beehive_inhabitors");
-   public static final asw<blz<?>> f = a("arrows");
-   public static final asw<blz<?>> g = a("impact_projectiles");
-   public static final asw<blz<?>> h = a("powder_snow_walkable_mobs");
-   public static final asw<blz<?>> i = a("axolotl_always_hostiles");
-   public static final asw<blz<?>> j = a("axolotl_hunt_targets");
-   public static final asw<blz<?>> k = a("freeze_immune_entity_types");
-   public static final asw<blz<?>> l = a("freeze_hurts_extra_types");
-   public static final asw<blz<?>> m = a("can_breathe_under_water");
-   public static final asw<blz<?>> n = a("frog_food");
-   public static final asw<blz<?>> o = a("fall_damage_immune");
-   public static final asw<blz<?>> p = a("dismounts_underwater");
-   public static final asw<blz<?>> q = a("non_controlling_rider");
-   public static final asw<blz<?>> r = a("deflects_arrows");
-   public static final asw<blz<?>> s = a("deflects_tridents");
-   public static final asw<blz<?>> t = a("can_turn_in_boats");
+public interface ask {
+   asx<bkx> a = a("damages_helmet");
+   asx<bkx> b = a("breeze_immune_to");
+   asx<bkx> c = a("bypasses_armor");
+   asx<bkx> d = a("bypasses_shield");
+   asx<bkx> e = a("bypasses_invulnerability");
+   asx<bkx> f = a("bypasses_cooldown");
+   asx<bkx> g = a("bypasses_effects");
+   asx<bkx> h = a("bypasses_resistance");
+   asx<bkx> i = a("bypasses_enchantments");
+   asx<bkx> j = a("is_fire");
+   asx<bkx> k = a("is_projectile");
+   asx<bkx> l = a("witch_resistant_to");
+   asx<bkx> m = a("is_explosion");
+   asx<bkx> n = a("is_fall");
+   asx<bkx> o = a("is_drowning");
+   asx<bkx> p = a("is_freezing");
+   asx<bkx> q = a("is_lightning");
+   asx<bkx> r = a("no_anger");
+   asx<bkx> s = a("no_impact");
+   asx<bkx> t = a("always_most_significant_fall");
+   asx<bkx> u = a("wither_immune_to");
+   asx<bkx> v = a("ignites_armor_stands");
+   asx<bkx> w = a("burns_armor_stands");
+   asx<bkx> x = a("avoids_guardian_thorns");
+   asx<bkx> y = a("always_triggers_silverfish");
+   asx<bkx> z = a("always_hurts_ender_dragons");
+   asx<bkx> A = a("no_knockback");
+   asx<bkx> B = a("always_kills_armor_stands");
+   asx<bkx> C = a("can_break_armor_stand");
 
-   private ask() {
-   }
-
-   private static asw<blz<?>> a(String $$0) {
-      return asw.a(ke.u, new ahg($$0));
+   private static asx<bkx> a(String $$0) {
+      return asx.a(ke.r, new ahh($$0));
    }
 }

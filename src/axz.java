@@ -287,10 +287,10 @@ public class axz extends DataFix {
       Function<Typed<?>, Typed<?>> $$2 = $$0x -> this.a($$0x, "DisplayTile", "DisplayData", "DisplayState");
       Function<Typed<?>, Typed<?>> $$3 = $$0x -> this.a($$0x, "inTile", "inData", "inBlockState");
       Type<Pair<Either<Pair<String, Either<Integer, String>>, Unit>, Dynamic<?>>> $$4 = DSL.and(
-         DSL.optional(DSL.field("inTile", DSL.named(bbw.y.typeName(), DSL.or(DSL.intType(), bde.a())))), DSL.remainderType()
+         DSL.optional(DSL.field("inTile", DSL.named(bbw.z.typeName(), DSL.or(DSL.intType(), bde.a())))), DSL.remainderType()
       );
       Function<Typed<?>, Typed<?>> $$5 = $$1x -> $$1x.update($$4.finder(), DSL.remainderType(), Pair::getSecond);
-      return this.fixTypeEverywhereTyped("EntityBlockStateFix", $$0.getType(bbw.x), $$1.getType(bbw.x), $$3x -> {
+      return this.fixTypeEverywhereTyped("EntityBlockStateFix", $$0.getType(bbw.y), $$1.getType(bbw.y), $$3x -> {
          $$3x = this.a($$3x, "minecraft:falling_block", this::a);
          $$3x = this.a($$3x, "minecraft:enderman", $$0xx -> this.a($$0xx, "carried", "carriedData", "carriedBlockState"));
          $$3x = this.a($$3x, "minecraft:arrow", $$3);
@@ -315,7 +315,7 @@ public class axz extends DataFix {
 
    private Typed<?> a(Typed<?> $$0) {
       Type<Either<Pair<String, Either<Integer, String>>, Unit>> $$1 = DSL.optional(
-         DSL.field("Block", DSL.named(bbw.y.typeName(), DSL.or(DSL.intType(), bde.a())))
+         DSL.field("Block", DSL.named(bbw.z.typeName(), DSL.or(DSL.intType(), bde.a())))
       );
       Type<Either<Pair<String, Dynamic<?>>, Unit>> $$2 = DSL.optional(DSL.field("BlockState", DSL.named(bbw.u.typeName(), DSL.remainderType())));
       Dynamic<?> $$3 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
@@ -330,7 +330,7 @@ public class axz extends DataFix {
    }
 
    private Typed<?> a(Typed<?> $$0, String $$1, String $$2, String $$3) {
-      Type<Pair<String, Either<Integer, String>>> $$4 = DSL.field($$1, DSL.named(bbw.y.typeName(), DSL.or(DSL.intType(), bde.a())));
+      Type<Pair<String, Either<Integer, String>>> $$4 = DSL.field($$1, DSL.named(bbw.z.typeName(), DSL.or(DSL.intType(), bde.a())));
       Type<Pair<String, Dynamic<?>>> $$5 = DSL.field($$3, DSL.named(bbw.u.typeName(), DSL.remainderType()));
       Dynamic<?> $$6 = (Dynamic<?>)$$0.getOrCreate(DSL.remainderFinder());
       return $$0.update($$4.finder(), $$5, $$2x -> {
@@ -341,8 +341,8 @@ public class axz extends DataFix {
    }
 
    private Typed<?> a(Typed<?> $$0, String $$1, Function<Typed<?>, Typed<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bbw.x, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bbw.x, $$1);
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bbw.y, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(bbw.y, $$1);
       return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$2);
    }
 }

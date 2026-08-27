@@ -1,52 +1,136 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.logging.LogUtils;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.CompletableFuture;
+import org.slf4j.Logger;
 
 public class akl {
-   public static <T extends du<T>> void a(CommandDispatcher<T> $$0) {
+   private static final Logger a = LogUtils.getLogger();
+
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new akl.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new akl.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new akl.b(), false))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("resetchunks").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ds)$$0x.getSource(), 0, true)))
+            .then(
+               ((RequiredArgumentBuilder)dt.a("range", IntegerArgumentType.integer(0, 5))
+                     .executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
+                  .then(
+                     dt.a("skipOldChunks", BoolArgumentType.bool())
+                        .executes(
+                           $$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
+                        )
+                  )
+            )
       );
    }
 
-   static class a<T extends du<T>> implements gl.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, gj $$2, gp<T> $$3) {
-         $$0.p().onFailure();
-         gq $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
-      }
-   }
+   private static int a(ds $$0, int $$1, boolean $$2) {
+      ane $$3 = $$0.e();
+      anc $$4 = $$3.l();
+      $$4.a.d();
+      emc $$5 = $$0.d();
+      cte $$6 = new cte(hx.a($$5));
+      int $$7 = $$6.f - $$1;
+      int $$8 = $$6.f + $$1;
+      int $$9 = $$6.e - $$1;
+      int $$10 = $$6.e + $$1;
 
-   static class b<T extends du<T>> implements gm.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, gj $$3, gp<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(gy.a());
+      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
+         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
+            cte $$13 = new cte($$12, $$11);
+            dlw $$14 = $$4.a($$12, $$11, false);
+            if ($$14 != null && (!$$2 || !$$14.s())) {
+               for (hx $$15 : hx.b($$13.d(), $$3.J_(), $$13.e(), $$13.f(), $$3.al() - 1, $$13.g())) {
+                  $$3.a($$15, cxa.a.o(), 16);
+               }
             }
-         } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new gu.a<>($$6, $$5, $$3.d(), $$0, $$1));
          }
       }
-   }
 
-   static class c<T extends du<T>> implements gl.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, gj $$2, gp<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         gq $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
+      biv<Runnable> $$16 = biv.a(ac.f(), "worldgen-resetchunks");
+      long $$17 = System.currentTimeMillis();
+      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
+      UnmodifiableIterator var33 = ImmutableList.of(dlq.f, dlq.g, dlq.h, dlq.i, dlq.j, dlq.k).iterator();
+
+      while (var33.hasNext()) {
+         dlq $$19 = (dlq)var33.next();
+         long $$20 = System.currentTimeMillis();
+         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
+
+         for (int $$22 = $$6.f - $$1; $$22 <= $$6.f + $$1; $$22++) {
+            for (int $$23 = $$6.e - $$1; $$23 <= $$6.e + $$1; $$23++) {
+               cte $$24 = new cte($$23, $$22);
+               dlw $$25 = $$4.a($$23, $$22, false);
+               if ($$25 != null && (!$$2 || !$$25.s())) {
+                  List<dll> $$26 = Lists.newArrayList();
+                  int $$27 = Math.max(1, $$19.e());
+
+                  for (int $$28 = $$24.f - $$27; $$28 <= $$24.f + $$27; $$28++) {
+                     for (int $$29 = $$24.e - $$27; $$29 <= $$24.e + $$27; $$29++) {
+                        dll $$30 = $$4.a($$29, $$28, $$19.d(), true);
+                        dll $$31;
+                        if ($$30 instanceof dlv) {
+                           $$31 = new dlv(((dlv)$$30).C(), true);
+                        } else if ($$30 instanceof dlw) {
+                           $$31 = new dlv((dlw)$$30, true);
+                        } else {
+                           $$31 = $$30;
+                        }
+
+                        $$26.add($$31);
+                     }
+                  }
+
+                  $$21 = $$21.thenComposeAsync($$5x -> $$19.a($$16::a, $$3, $$4.g(), $$3.q(), $$4.a(), $$0xx -> {
+                        throw new UnsupportedOperationException("Not creating full chunks here");
+                     }, $$26).thenApply($$1xx -> {
+                        if ($$19 == dlq.g) {
+                           $$1xx.left().ifPresent($$0xxx -> doy.a($$0xxx, dlq.b));
+                        }
+
+                        return Unit.INSTANCE;
+                     }), $$16::a);
+               }
+            }
+         }
+
+         $$0.l().c($$21::isDone);
+         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
       }
+
+      long $$34 = System.currentTimeMillis();
+
+      for (int $$35 = $$6.f - $$1; $$35 <= $$6.f + $$1; $$35++) {
+         for (int $$36 = $$6.e - $$1; $$36 <= $$6.e + $$1; $$36++) {
+            cte $$37 = new cte($$36, $$35);
+            dlw $$38 = $$4.a($$36, $$35, false);
+            if ($$38 != null && (!$$2 || !$$38.s())) {
+               for (hx $$39 : hx.b($$37.d(), $$3.J_(), $$37.e(), $$37.f(), $$3.al() - 1, $$37.g())) {
+                  $$4.a($$39);
+               }
+            }
+         }
+      }
+
+      a.debug("blockChanged took " + (System.currentTimeMillis() - $$34) + " ms");
+      long $$40 = System.currentTimeMillis() - $$17;
+      $$0.a(
+         () -> vg.b(
+               String.format(
+                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$40, $$18, (float)$$40 / (float)$$18
+               )
+            ),
+         true
+      );
+      return 1;
    }
 }

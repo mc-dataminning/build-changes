@@ -11,7 +11,7 @@ public class azr extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.C);
+      Type<?> $$0 = this.getInputSchema().getType(bbw.D);
       return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), azr::a));
    }
 

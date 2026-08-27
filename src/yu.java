@@ -1,18 +1,12 @@
-public record yu() implements xf<yt> {
-   public yu(ui $$0) {
-      this();
-   }
-
+public interface yu extends xj {
    @Override
-   public void a(ui $$0) {
+   default ui b() {
+      return ui.e;
    }
 
-   public void a(yt $$0) {
-      $$0.a(this);
-   }
+   void a(yv var1);
 
-   @Override
-   public uh c() {
-      return uh.b;
-   }
+   void a(yw var1);
+
+   void a(yx var1);
 }

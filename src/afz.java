@@ -1,7 +1,5 @@
-public record afz() implements afx {
-   public static final afz a = new afz();
+public interface afz {
+   ahh a();
 
-   @Override
-   public void a(ui $$0) {
-   }
+   void a(uj var1);
 }

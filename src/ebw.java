@@ -1,32 +1,48 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ebw extends dzg {
+public class ebw extends dzo {
    public static final Codec<ebw> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, ebw::new)
+      $$0 -> $$0.group(a($$0), dxv.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, ebw::new)
    );
-   public final boolean e;
+   public final dxv e;
 
-   public ebw(dzg.c $$0, boolean $$1) {
+   public ebw(dzo.c $$0, dxv $$1) {
       super($$0);
       this.e = $$1;
    }
 
    @Override
-   public Optional<dzg.b> a(dzg.a $$0) {
-      doq.a $$1 = this.e ? doq.a.a : doq.a.c;
-      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
-   }
+   public Optional<dzo.b> a(dzo.a $$0) {
+      dpx $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().e();
+      dpv $$5 = new dpv($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      cuj $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      hx.a $$8 = new hx.a($$2, $$6, $$3);
 
-   private void a(dzy $$0, dzg.a $$1) {
-      ddc $$2 = ddc.a($$1.f());
-      hx $$3 = new hx($$1.h().d(), 90, $$1.h().e());
-      ebv.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
+      while ($$6 > $$4) {
+         djp $$9 = $$7.a($$6);
+         djp $$10 = $$7.a(--$$6);
+         if ($$9.i() && ($$10.a(cxa.dW) || $$10.d(ctm.a, $$8.q($$6), ic.b))) {
+            break;
+         }
+      }
+
+      if ($$6 <= $$4) {
+         return Optional.empty();
+      } else {
+         hx $$11 = new hx($$2, $$6, $$3);
+         return Optional.of(new dzo.b($$11, (Consumer<eag>)($$3x -> ebv.a($$0.e(), $$3x, $$1, $$11))));
+      }
    }
 
    @Override
-   public dzp<?> e() {
-      return dzp.m;
+   public dzx<?> e() {
+      return dzx.i;
    }
 }

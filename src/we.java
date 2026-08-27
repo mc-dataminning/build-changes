@@ -1,89 +1,73 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public final class we {
-   private static final String b = "#";
-   public static final Codec<we> a = Codec.STRING.comapFlatMap(we::a, we::b);
-   private static final Map<n, we> c = Stream.of(n.values())
-      .filter(n::e)
-      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new we($$0.f(), $$0.g())));
-   private static final Map<String, we> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
-   private final int e;
-   @Nullable
-   private final String f;
+public class we {
+   private final String a;
+   private final List<wd> b;
+   private final Int2IntFunction c;
 
-   private we(int $$0, String $$1) {
-      this.e = $$0 & 16777215;
-      this.f = $$1;
+   private we(String $$0, List<wd> $$1, Int2IntFunction $$2) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      this.c = $$2;
    }
 
-   private we(int $$0) {
-      this.e = $$0 & 16777215;
-      this.f = null;
+   public String a() {
+      return this.a;
    }
 
-   public int a() {
-      return this.e;
-   }
-
-   public String b() {
-      return this.f != null ? this.f : this.c();
-   }
-
-   private String c() {
-      return String.format(Locale.ROOT, "#%06X", this.e);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         we $$1 = (we)$$0;
-         return this.e == $$1.e;
+   public List<aub> a(int $$0, int $$1, boolean $$2) {
+      if ($$1 == 0) {
+         return ImmutableList.of();
       } else {
-         return false;
-      }
-   }
+         List<aub> $$3 = Lists.newArrayList();
+         wd $$4 = this.b.get($$0);
+         int $$5 = $$0;
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.e, this.f);
-   }
-
-   @Override
-   public String toString() {
-      return this.b();
-   }
-
-   @Nullable
-   public static we a(n $$0) {
-      return c.get($$0);
-   }
-
-   public static we a(int $$0) {
-      return new we($$0);
-   }
-
-   public static DataResult<we> a(String $$0) {
-      if ($$0.startsWith("#")) {
-         try {
-            int $$1 = Integer.parseInt($$0.substring(1), 16);
-            return $$1 >= 0 && $$1 <= 16777215 ? DataResult.success(a($$1), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + $$0);
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Invalid color value: " + $$0);
+         for (int $$6 = 1; $$6 < $$1; $$6++) {
+            int $$7 = $$0 + $$6;
+            wd $$8 = this.b.get($$7);
+            if (!$$8.equals($$4)) {
+               String $$9 = this.a.substring($$5, $$7);
+               $$3.add($$2 ? aub.backward($$9, $$4, this.c) : aub.forward($$9, $$4));
+               $$4 = $$8;
+               $$5 = $$7;
+            }
          }
-      } else {
-         we $$3 = d.get($$0);
-         return $$3 == null ? DataResult.error(() -> "Invalid color name: " + $$0) : DataResult.success($$3, Lifecycle.stable());
+
+         if ($$5 < $$0 + $$1) {
+            String $$10 = this.a.substring($$5, $$0 + $$1);
+            $$3.add($$2 ? aub.backward($$10, $$4, this.c) : aub.forward($$10, $$4));
+         }
+
+         return $$2 ? Lists.reverse($$3) : $$3;
       }
+   }
+
+   public static we a(vl $$0) {
+      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
+   }
+
+   public static we a(vl $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
+      StringBuilder $$3 = new StringBuilder();
+      List<wd> $$4 = Lists.newArrayList();
+      $$0.a(($$2x, $$3x) -> {
+         avk.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
+            $$3.appendCodePoint($$4x);
+            int $$5 = Character.charCount($$4x);
+
+            for (int $$6 = 0; $$6 < $$5; $$6++) {
+               $$4.add($$3xx);
+            }
+
+            return true;
+         });
+         return Optional.empty();
+      }, wd.a);
+      return new we($$2.apply($$3.toString()), $$4, $$1);
    }
 }

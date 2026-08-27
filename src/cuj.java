@@ -1,23 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public final class cuj implements dli {
+   private final int a;
+   private final djp[] b;
 
-public record cuj(ctd d, chs e) {
-   public static final String a = "enabled_features";
-   public static final Codec<cuj> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ctd.b.optionalFieldOf("DataPacks", ctd.a).forGetter(cuj::a), chu.f.optionalFieldOf("enabled_features", chu.h).forGetter(cuj::b))
-            .apply($$0, cuj::new)
-   );
-   public static final cuj c = new cuj(ctd.a, chu.h);
-
-   public cuj a(chs $$0) {
-      return new cuj(this.d, this.e.b($$0));
+   public cuj(int $$0, djp[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public ctd a() {
-      return this.d;
+   @Override
+   public djp a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : cxa.a.o();
    }
 
-   public chs b() {
-      return this.e;
+   @Override
+   public void a(int $$0, djp $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
+      } else {
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
+      }
    }
 }

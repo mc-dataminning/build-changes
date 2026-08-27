@@ -1,508 +1,276 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.bytes.ByteArrayList;
-import it.unimi.dsi.fastutil.bytes.ByteList;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.IntBuffer;
-import java.util.List;
-import java.util.function.Function;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class faj implements eoe {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 16;
-   private static final int c = 2;
-   private static final int d = 32;
-   private static final int e = 64;
-   private static final int f = 96;
-   private static final int g = 128;
-   private final ezt<faj.d> h;
+public class faj {
+   private final Supplier<String> a;
+   private final Consumer<String> b;
+   private final Supplier<String> c;
+   private final Consumer<String> d;
+   private final Predicate<String> e;
+   private int f;
+   private int g;
 
-   faj(ezt<faj.d> $$0) {
-      this.h = $$0;
+   public faj(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f();
    }
 
-   @Nullable
-   @Override
-   public eod a(int $$0) {
-      return this.h.a($$0);
+   public static Supplier<String> a(evr $$0) {
+      return () -> b($$0);
    }
 
-   @Override
-   public IntSet a() {
-      return this.h.b();
+   public static String b(evr $$0) {
+      return n.a($$0.o.a().replaceAll("\\r", ""));
    }
 
-   @VisibleForTesting
-   static void a(IntBuffer $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 32 - $$2 - 1;
-      int $$5 = 32 - $$3 - 1;
+   public static Consumer<String> c(evr $$0) {
+      return $$1 -> a($$0, $$1);
+   }
 
-      for (int $$6 = $$4; $$6 >= $$5; $$6--) {
-         if ($$6 < 32 && $$6 >= 0) {
-            boolean $$7 = ($$1 >> $$6 & 1) != 0;
-            $$0.put($$7 ? -1 : 0);
+   public static void a(evr $$0, String $$1) {
+      $$0.o.a($$1);
+   }
+
+   public boolean a(char $$0) {
+      if (aa.a($$0)) {
+         this.a(this.a.get(), Character.toString($$0));
+      }
+
+      return true;
+   }
+
+   public boolean a(int $$0) {
+      if (fdm.f($$0)) {
+         this.d();
+         return true;
+      } else if (fdm.e($$0)) {
+         this.c();
+         return true;
+      } else if (fdm.d($$0)) {
+         this.b();
+         return true;
+      } else if (fdm.c($$0)) {
+         this.a();
+         return true;
+      } else {
+         faj.a $$1 = fdm.t() ? faj.a.b : faj.a.a;
+         if ($$0 == 259) {
+            this.a(-1, $$1);
+            return true;
          } else {
-            $$0.put(0);
-         }
-      }
-   }
+            if ($$0 == 261) {
+               this.a(1, $$1);
+            } else {
+               if ($$0 == 263) {
+                  this.a(-1, fdm.v(), $$1);
+                  return true;
+               }
 
-   static void a(IntBuffer $$0, faj.f $$1, int $$2, int $$3) {
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         int $$5 = $$1.a($$4);
-         a($$0, $$5, $$2, $$3);
-      }
-   }
+               if ($$0 == 262) {
+                  this.a(1, fdm.v(), $$1);
+                  return true;
+               }
 
-   @VisibleForTesting
-   static void a(InputStream $$0, faj.h $$1) throws IOException {
-      int $$2 = 0;
-      ByteList $$3 = new ByteArrayList(128);
+               if ($$0 == 268) {
+                  this.a(fdm.v());
+                  return true;
+               }
 
-      while (true) {
-         boolean $$4 = a($$0, $$3, 58);
-         int $$5 = $$3.size();
-         if ($$5 == 0 && !$$4) {
-            return;
-         }
+               if ($$0 == 269) {
+                  this.b(fdm.v());
+                  return true;
+               }
+            }
 
-         if (!$$4 || $$5 != 4 && $$5 != 5 && $$5 != 6) {
-            throw new IllegalArgumentException("Invalid entry at line " + $$2 + ": expected 4, 5 or 6 hex digits followed by a colon");
-         }
-
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            $$6 = $$6 << 4 | a($$2, $$3.getByte($$7));
-         }
-
-         $$3.clear();
-         a($$0, $$3, 10);
-         int $$8 = $$3.size();
-
-         faj.f $$9 = switch ($$8) {
-            case 32 -> faj.a.a($$2, $$3);
-            case 64 -> faj.i.a($$2, $$3);
-            case 96 -> faj.e.b($$2, $$3);
-            case 128 -> faj.e.a($$2, $$3);
-            default -> throw new IllegalArgumentException(
-            "Invalid entry at line " + $$2 + ": expected hex number describing (8,16,24,32) x 16 bitmap, followed by a new line"
-         );
-         };
-         $$1.accept($$6, $$9);
-         $$2++;
-         $$3.clear();
-      }
-   }
-
-   static int a(int $$0, ByteList $$1, int $$2) {
-      return a($$0, $$1.getByte($$2));
-   }
-
-   private static int a(int $$0, byte $$1) {
-      return switch ($$1) {
-         case 48 -> 0;
-         case 49 -> 1;
-         case 50 -> 2;
-         case 51 -> 3;
-         case 52 -> 4;
-         case 53 -> 5;
-         case 54 -> 6;
-         case 55 -> 7;
-         case 56 -> 8;
-         case 57 -> 9;
-         default -> throw new IllegalArgumentException("Invalid entry at line " + $$0 + ": expected hex digit, got " + (char)$$1);
-         case 65 -> 10;
-         case 66 -> 11;
-         case 67 -> 12;
-         case 68 -> 13;
-         case 69 -> 14;
-         case 70 -> 15;
-      };
-   }
-
-   private static boolean a(InputStream $$0, ByteList $$1, int $$2) throws IOException {
-      while (true) {
-         int $$3 = $$0.read();
-         if ($$3 == -1) {
             return false;
          }
-
-         if ($$3 == $$2) {
-            return true;
-         }
-
-         $$1.add((byte)$$3);
       }
    }
 
-   static record a(byte[] a) implements faj.f {
-      @Override
-      public int a(int $$0) {
-         return this.a[$$0] << 24;
+   private int h(int $$0) {
+      return aup.a($$0, 0, this.a.get().length());
+   }
+
+   private void a(String $$0, String $$1) {
+      if (this.g != this.f) {
+         $$0 = this.c($$0);
       }
 
-      static faj.f a(int $$0, ByteList $$1) {
-         byte[] $$2 = new byte[16];
-         int $$3 = 0;
-
-         for (int $$4 = 0; $$4 < 16; $$4++) {
-            int $$5 = faj.a($$0, $$1, $$3++);
-            int $$6 = faj.a($$0, $$1, $$3++);
-            byte $$7 = (byte)($$5 << 4 | $$6);
-            $$2[$$4] = $$7;
-         }
-
-         return new faj.a($$2);
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      public byte[] b() {
-         return this.a;
+      this.f = aup.a(this.f, 0, $$0.length());
+      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
+      if (this.e.test($$2)) {
+         this.b.accept($$2);
+         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
       }
    }
 
-   public static class b implements faf {
-      public static final MapCodec<faj.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ahg.a.fieldOf("hex_file").forGetter($$0x -> $$0x.c), faj.g.a.listOf().fieldOf("size_overrides").forGetter($$0x -> $$0x.d))
-               .apply($$0, faj.b::new)
-      );
-      private final ahg c;
-      private final List<faj.g> d;
+   public void a(String $$0) {
+      this.a(this.a.get(), $$0);
+   }
 
-      private b(ahg $$0, List<faj.g> $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public fag a() {
-         return fag.d;
-      }
-
-      @Override
-      public Either<faf.a, faf.b> b() {
-         return Either.left(this::a);
-      }
-
-      private eoe a(aqi $$0) throws IOException {
-         faj var3;
-         try (InputStream $$1 = $$0.open(this.c)) {
-            var3 = this.a($$1);
-         }
-
-         return var3;
-      }
-
-      private faj a(InputStream $$0) throws IOException {
-         ezt<faj.f> $$1 = new ezt<>(faj.f[]::new, faj.f[][]::new);
-         faj.h $$2 = $$1::a;
-
-         faj var17;
-         try (ZipInputStream $$3 = new ZipInputStream($$0)) {
-            ZipEntry $$4;
-            while (($$4 = $$3.getNextEntry()) != null) {
-               String $$5 = $$4.getName();
-               if ($$5.endsWith(".hex")) {
-                  faj.a.info("Found {}, loading", $$5);
-                  faj.a(new atx($$3), $$2);
-               }
-            }
-
-            ezt<faj.d> $$6 = new ezt<>(faj.d[]::new, faj.d[][]::new);
-
-            for (faj.g $$7 : this.d) {
-               int $$8 = $$7.b;
-               int $$9 = $$7.c;
-               faj.c $$10 = $$7.d;
-
-               for (int $$11 = $$8; $$11 <= $$9; $$11++) {
-                  faj.f $$12 = $$1.b($$11);
-                  if ($$12 != null) {
-                     $$6.a($$11, new faj.d($$12, $$10.c, $$10.d));
-                  }
-               }
-            }
-
-            $$1.a(($$1x, $$2x) -> {
-               int $$3x = $$2x.d();
-               int $$4x = faj.c.a($$3x);
-               int $$5 = faj.c.b($$3x);
-               $$6.a($$1x, new faj.d($$2x, $$4x, $$5));
-            });
-            var17 = new faj($$6);
-         }
-
-         return var17;
+   private void c(boolean $$0) {
+      if (!$$0) {
+         this.g = this.f;
       }
    }
 
-   public static record c(int c, int d) {
-      public static final MapCodec<faj.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("left").forGetter(faj.c::b), Codec.INT.fieldOf("right").forGetter(faj.c::c)).apply($$0, faj.c::new)
-      );
-      public static final Codec<faj.c> b = a.codec();
-
-      public int a() {
-         return a(this.c, this.d);
-      }
-
-      public static int a(int $$0, int $$1) {
-         return ($$0 & 0xFF) << 8 | $$1 & 0xFF;
-      }
-
-      public static int a(int $$0) {
-         return (byte)($$0 >> 8);
-      }
-
-      public static int b(int $$0) {
-         return (byte)$$0;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
+   public void a(int $$0, boolean $$1, faj.a $$2) {
+      switch ($$2) {
+         case a:
+            this.a($$0, $$1);
+            break;
+         case b:
+            this.b($$0, $$1);
       }
    }
 
-   static record d(faj.f a, int b, int c) implements eod {
+   public void b(int $$0) {
+      this.a($$0, false);
+   }
 
-      public int c() {
-         return this.c - this.b + 1;
-      }
+   public void a(int $$0, boolean $$1) {
+      this.f = ac.a(this.a.get(), this.f, $$0);
+      this.c($$1);
+   }
 
-      @Override
-      public float getAdvance() {
-         return (float)(this.c() / 2 + 1);
-      }
+   public void c(int $$0) {
+      this.b($$0, false);
+   }
 
-      @Override
-      public float b() {
-         return 0.5F;
-      }
+   public void b(int $$0, boolean $$1) {
+      this.f = ewd.a(this.a.get(), $$0, this.f, true);
+      this.c($$1);
+   }
 
-      @Override
-      public float a() {
-         return 0.5F;
-      }
-
-      @Override
-      public ezz bake(Function<eof, ezz> $$0) {
-         return $$0.apply(new eof() {
-            @Override
-            public float d() {
-               return 2.0F;
-            }
-
-            @Override
-            public int a() {
-               return d.this.c();
-            }
-
-            @Override
-            public int b() {
-               return 16;
-            }
-
-            @Override
-            public void a(int $$0, int $$1) {
-               IntBuffer $$2 = MemoryUtil.memAllocInt(d.this.c() * 16);
-               faj.a($$2, d.this.a, d.this.b, d.this.c);
-               $$2.rewind();
-               GlStateManager.upload(0, $$0, $$1, d.this.c(), 16, epc.a.a, $$2, MemoryUtil::memFree);
-            }
-
-            @Override
-            public boolean c() {
-               return true;
-            }
-         });
-      }
-
-      public faj.f d() {
-         return this.a;
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.c;
+   public void a(int $$0, faj.a $$1) {
+      switch ($$1) {
+         case a:
+            this.e($$0);
+            break;
+         case b:
+            this.d($$0);
       }
    }
 
-   static record e(int[] a, int b) implements faj.f {
-      private static final int c = 24;
-
-      @Override
-      public int a(int $$0) {
-         return this.a[$$0];
-      }
-
-      static faj.f b(int $$0, ByteList $$1) {
-         int[] $$2 = new int[16];
-         int $$3 = 0;
-         int $$4 = 0;
-
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            int $$6 = faj.a($$0, $$1, $$4++);
-            int $$7 = faj.a($$0, $$1, $$4++);
-            int $$8 = faj.a($$0, $$1, $$4++);
-            int $$9 = faj.a($$0, $$1, $$4++);
-            int $$10 = faj.a($$0, $$1, $$4++);
-            int $$11 = faj.a($$0, $$1, $$4++);
-            int $$12 = $$6 << 20 | $$7 << 16 | $$8 << 12 | $$9 << 8 | $$10 << 4 | $$11;
-            $$2[$$5] = $$12 << 8;
-            $$3 |= $$12;
-         }
-
-         return new faj.e($$2, 24);
-      }
-
-      public static faj.f a(int $$0, ByteList $$1) {
-         int[] $$2 = new int[16];
-         int $$3 = 0;
-         int $$4 = 0;
-
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            int $$6 = faj.a($$0, $$1, $$4++);
-            int $$7 = faj.a($$0, $$1, $$4++);
-            int $$8 = faj.a($$0, $$1, $$4++);
-            int $$9 = faj.a($$0, $$1, $$4++);
-            int $$10 = faj.a($$0, $$1, $$4++);
-            int $$11 = faj.a($$0, $$1, $$4++);
-            int $$12 = faj.a($$0, $$1, $$4++);
-            int $$13 = faj.a($$0, $$1, $$4++);
-            int $$14 = $$6 << 28 | $$7 << 24 | $$8 << 20 | $$9 << 16 | $$10 << 12 | $$11 << 8 | $$12 << 4 | $$13;
-            $$2[$$5] = $$14;
-            $$3 |= $$14;
-         }
-
-         return new faj.e($$2, 32);
-      }
-
-      public int[] b() {
-         return this.a;
-      }
-
-      @Override
-      public int a() {
-         return this.b;
-      }
+   public void d(int $$0) {
+      int $$1 = ewd.a(this.a.get(), $$0, this.f, true);
+      this.e($$1 - this.f);
    }
 
-   public interface f {
-      int a(int var1);
-
-      int a();
-
-      default int c() {
-         int $$0 = 0;
-
-         for (int $$1 = 0; $$1 < 16; $$1++) {
-            $$0 |= this.a($$1);
-         }
-
-         return $$0;
-      }
-
-      default int d() {
-         int $$0 = this.c();
-         int $$1 = this.a();
-         int $$2;
-         int $$3;
-         if ($$0 == 0) {
-            $$2 = 0;
-            $$3 = $$1;
+   public void e(int $$0) {
+      String $$1 = this.a.get();
+      if (!$$1.isEmpty()) {
+         String $$2;
+         if (this.g != this.f) {
+            $$2 = this.c($$1);
          } else {
-            $$2 = Integer.numberOfLeadingZeros($$0);
-            $$3 = 32 - Integer.numberOfTrailingZeros($$0) - 1;
+            int $$3 = ac.a($$1, this.f, $$0);
+            int $$4 = Math.min($$3, this.f);
+            int $$5 = Math.max($$3, this.f);
+            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
+            if ($$0 < 0) {
+               this.g = this.f = $$4;
+            }
          }
 
-         return faj.c.a($$2, $$3);
+         this.b.accept($$2);
       }
    }
 
-   static record g(int b, int c, faj.c d) {
-      private static final Codec<faj.g> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atw.w.fieldOf("from").forGetter(faj.g::a), atw.w.fieldOf("to").forGetter(faj.g::b), faj.c.a.forGetter(faj.g::c))
-               .apply($$0, faj.g::new)
-      );
-      public static final Codec<faj.g> a = atw.a(
-         e,
-         (Function<faj.g, DataResult<faj.g>>)($$0 -> $$0.b >= $$0.c
-               ? DataResult.error(() -> "Invalid range: [" + $$0.b + ";" + $$0.c + "]")
-               : DataResult.success($$0))
-      );
+   public void a() {
+      String $$0 = this.a.get();
+      this.d.accept(this.b($$0));
+      this.b.accept(this.c($$0));
+   }
 
-      public int a() {
-         return this.b;
-      }
+   public void b() {
+      this.a(this.a.get(), this.c.get());
+      this.g = this.f;
+   }
 
-      public int b() {
-         return this.c;
-      }
+   public void c() {
+      this.d.accept(this.b(this.a.get()));
+   }
 
-      public faj.c c() {
-         return this.d;
+   public void d() {
+      this.g = 0;
+      this.f = this.a.get().length();
+   }
+
+   private String b(String $$0) {
+      int $$1 = Math.min(this.f, this.g);
+      int $$2 = Math.max(this.f, this.g);
+      return $$0.substring($$1, $$2);
+   }
+
+   private String c(String $$0) {
+      if (this.g == this.f) {
+         return $$0;
+      } else {
+         int $$1 = Math.min(this.f, this.g);
+         int $$2 = Math.max(this.f, this.g);
+         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
+         this.g = this.f = $$1;
+         return $$3;
       }
    }
 
-   @FunctionalInterface
-   public interface h {
-      void accept(int var1, faj.f var2);
+   public void e() {
+      this.a(false);
    }
 
-   static record i(short[] a) implements faj.f {
-      @Override
-      public int a(int $$0) {
-         return this.a[$$0] << 16;
-      }
+   public void a(boolean $$0) {
+      this.f = 0;
+      this.c($$0);
+   }
 
-      static faj.f a(int $$0, ByteList $$1) {
-         short[] $$2 = new short[16];
-         int $$3 = 0;
+   public void f() {
+      this.b(false);
+   }
 
-         for (int $$4 = 0; $$4 < 16; $$4++) {
-            int $$5 = faj.a($$0, $$1, $$3++);
-            int $$6 = faj.a($$0, $$1, $$3++);
-            int $$7 = faj.a($$0, $$1, $$3++);
-            int $$8 = faj.a($$0, $$1, $$3++);
-            short $$9 = (short)($$5 << 12 | $$6 << 8 | $$7 << 4 | $$8);
-            $$2[$$4] = $$9;
-         }
+   public void b(boolean $$0) {
+      this.f = this.a.get().length();
+      this.c($$0);
+   }
 
-         return new faj.i($$2);
-      }
+   public int g() {
+      return this.f;
+   }
 
-      @Override
-      public int a() {
-         return 16;
-      }
+   public void f(int $$0) {
+      this.c($$0, true);
+   }
 
-      public short[] b() {
-         return this.a;
-      }
+   public void c(int $$0, boolean $$1) {
+      this.f = this.h($$0);
+      this.c($$1);
+   }
+
+   public int h() {
+      return this.g;
+   }
+
+   public void g(int $$0) {
+      this.g = this.h($$0);
+   }
+
+   public void a(int $$0, int $$1) {
+      int $$2 = this.a.get().length();
+      this.f = aup.a($$0, 0, $$2);
+      this.g = aup.a($$1, 0, $$2);
+   }
+
+   public boolean i() {
+      return this.f != this.g;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

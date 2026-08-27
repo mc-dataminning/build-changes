@@ -1,69 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class dvh extends dvk {
-   public static final Codec<dvh> a = RecordCodecBuilder.create(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bjg.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
-               )
-            )
-            .apply($$0, dvh::new)
-   );
-   private final bjg b;
-   private final float c;
-   private final float g;
-   private final float h;
-   private final float i;
+public abstract class dvh {
+   public static final Codec<dvh> a = kd.aa.q().dispatch(dvh::b, dvi::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public dvh(bjg $$0, bjg $$1, bjg $$2, float $$3, float $$4, float $$5, float $$6) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
+   protected static <S extends dvh> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   @Override
-   protected dvl<?> a() {
-      return dvl.k;
+   public dvh(OptionalInt $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(ctv $$0, dvk.b $$1, auv $$2, duu $$3, int $$4, dvk.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      hx $$10 = $$5.a().b($$8);
-      int $$11 = $$7 + $$5.b() - 1;
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
+   protected abstract dvi<?> b();
 
-      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
-         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
-      }
+   public abstract int a(int var1, int var2);
 
-      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
-   }
-
-   @Override
-   public int a(auv $$0, int $$1, duu $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(auv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
-         return true;
-      } else {
-         boolean $$6 = $$1 == $$4 && $$3 == $$4;
-         boolean $$7 = $$4 > 2;
-         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
-      }
+   public OptionalInt c() {
+      return this.c;
    }
 }

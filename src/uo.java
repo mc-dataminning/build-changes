@@ -1,27 +1,39 @@
-public interface uo {
-   xg a();
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageCodec;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
+import io.netty.util.ReferenceCountUtil;
+import java.util.List;
+import org.slf4j.Logger;
 
-   uh b();
+public class uo extends MessageToMessageCodec<xg<?>, xg<?>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final AttributeKey<ui.a<?>> b;
+   private final AttributeKey<ui.a<?>> c;
 
-   void a(vf var1);
-
-   boolean c();
-
-   default boolean a(xf<?> $$0) {
-      return this.c();
+   public uo(AttributeKey<ui.a<?>> $$0, AttributeKey<ui.a<?>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   default boolean d() {
-      return true;
+   private static void a(ChannelHandlerContext $$0, xg<?> $$1, List<Object> $$2, AttributeKey<ui.a<?>> $$3) {
+      Attribute<ui.a<?>> $$4 = $$0.channel().attr($$3);
+      ui.a<?> $$5 = (ui.a<?>)$$4.get();
+      if (!$$5.b($$1)) {
+         a.error("Unrecognized packet in pipeline {}:{} - {}", new Object[]{$$5.a().a(), $$5.b(), $$1});
+      }
+
+      ReferenceCountUtil.retain($$1);
+      $$2.add($$1);
+      ur.a($$4, $$1);
    }
 
-   default void a(o $$0) {
-      p $$1 = $$0.a("Connection");
-      $$1.a("Protocol", () -> this.b().a());
-      $$1.a("Flow", () -> this.a().toString());
-      this.a($$1);
+   protected void a(ChannelHandlerContext $$0, xg<?> $$1, List<Object> $$2) throws Exception {
+      a($$0, $$1, $$2, this.b);
    }
 
-   default void a(p $$0) {
+   protected void b(ChannelHandlerContext $$0, xg<?> $$1, List<Object> $$2) throws Exception {
+      a($$0, $$1, $$2, this.c);
    }
 }

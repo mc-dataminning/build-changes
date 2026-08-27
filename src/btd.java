@@ -1,61 +1,70 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class btd extends bth {
-   private static final int a = 200;
-   private final bxx b;
-   private int c;
-   private int d;
+public class btd extends btk {
+   protected final bmx a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final ctx f;
 
-   public btd(bxx $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(bxx $$0) {
-      return b(200 + $$0.eg().a(200) % 20);
+   public btd(bmx $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dL();
+      this.a(EnumSet.of(btk.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.b.gk()) {
+      if (this.a.q() != null) {
          return false;
-      } else if (this.b.gh()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
+      } else if (!this.f.P()) {
+         return false;
+      } else if (!this.a.bN()) {
+         return false;
+      } else if (!this.f.h(this.a.dl())) {
          return false;
       } else {
-         this.d = this.a(this.b);
-         Predicate<bxx> $$0 = $$0x -> $$0x.gj() || !$$0x.gh();
-         List<? extends bxx> $$1 = this.b.dM().a((Class<? extends bxx>)this.b.getClass(), this.b.cH().c(8.0, 8.0, 8.0), $$0);
-         bxx $$2 = (bxx)DataFixUtils.orElse($$1.stream().filter(bxx::gj).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gh()));
-         return this.b.gh();
+         return !this.a.c(bmd.f).b() ? false : this.h();
+      }
+   }
+
+   protected boolean h() {
+      emc $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
+         return true;
       }
    }
 
    @Override
    public boolean b() {
-      return this.b.gh() && this.b.gl();
+      return !this.a.N().l();
    }
 
    @Override
    public void c() {
-      this.c = 0;
+      this.a.N().a(this.b, this.c, this.d, this.e);
    }
 
-   @Override
-   public void d() {
-      this.b.gi();
-   }
+   @Nullable
+   protected emc i() {
+      auw $$0 = this.a.eg();
+      hx $$1 = this.a.dl();
 
-   @Override
-   public void e() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gm();
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         hx $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.d($$3) < 0.0F) {
+            return emc.c($$3);
+         }
       }
+
+      return null;
    }
 }

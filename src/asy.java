@@ -1,45 +1,130 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.Reader;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class asy implements aqc {
-   private static final Map<ahf<? extends it<?>>, String> a = Map.of(
-      ke.f, "tags/blocks", ke.u, "tags/entity_types", ke.y, "tags/fluids", ke.B, "tags/game_events", ke.F, "tags/items"
-   );
-   private final iu b;
-   private List<asy.a<?>> c = List.of();
+public class asy<T> {
+   private static final Logger a = LogUtils.getLogger();
+   final Function<ahh, Optional<? extends T>> b;
+   private final String c;
 
-   public asy(iu $$0) {
+   public asy(Function<ahh, Optional<? extends T>> $$0, String $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   public List<asy.a<?>> a() {
-      return this.c;
+   public Map<ahh, List<asy.a>> a(aqj $$0) {
+      Map<ahh, List<asy.a>> $$1 = Maps.newHashMap();
+      aha $$2 = aha.a(this.c);
+
+      for (Entry<ahh, List<aqh>> $$3 : $$2.b($$0).entrySet()) {
+         ahh $$4 = $$3.getKey();
+         ahh $$5 = $$2.b($$4);
+
+         for (aqh $$6 : $$3.getValue()) {
+            try (Reader $$7 = $$6.e()) {
+               JsonElement $$8 = JsonParser.parseReader($$7);
+               List<asy.a> $$9 = $$1.computeIfAbsent($$5, $$0x -> new ArrayList<>());
+               asw $$10 = (asw)asw.a.parse(new Dynamic(JsonOps.INSTANCE, $$8)).getOrThrow(false, a::error);
+               if ($$10.b()) {
+                  $$9.clear();
+               }
+
+               String $$11 = $$6.b();
+               $$10.a().forEach($$2x -> $$9.add(new asy.a($$2x, $$11)));
+            } catch (Exception var17) {
+               a.error("Couldn't read tag list {} from {} in data pack {}", new Object[]{$$5, $$4, $$6.b(), var17});
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   public static String a(ahf<? extends it<?>> $$0) {
-      String $$1 = a.get($$0);
-      return $$1 != null ? $$1 : "tags/" + $$0.a().a();
+   private Either<Collection<asy.a>, Collection<T>> a(asv.a<T> $$0, List<asy.a> $$1) {
+      Builder<T> $$2 = ImmutableSet.builder();
+      List<asy.a> $$3 = new ArrayList<>();
+
+      for (asy.a $$4 : $$1) {
+         if (!$$4.a().a($$0, $$2::add)) {
+            $$3.add($$4);
+         }
+      }
+
+      return $$3.isEmpty() ? Either.right($$2.build()) : Either.left($$3);
    }
 
-   @Override
-   public CompletableFuture<Void> a(aqc.a $$0, aqi $$1, bgs $$2, bgs $$3, Executor $$4, Executor $$5) {
-      List<? extends CompletableFuture<? extends asy.a<?>>> $$6 = this.b.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
-      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
-         .thenCompose($$0::a)
-         .thenAcceptAsync($$1x -> this.c = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
+   public Map<ahh, Collection<T>> a(Map<ahh, List<asy.a>> $$0) {
+      final Map<ahh, Collection<T>> $$1 = Maps.newHashMap();
+      asv.a<T> $$2 = new asv.a<T>() {
+         @Nullable
+         @Override
+         public T a(ahh $$0) {
+            return (T)asy.this.b.apply($$0).orElse(null);
+         }
+
+         @Nullable
+         @Override
+         public Collection<T> b(ahh $$0) {
+            return $$1.get($$0);
+         }
+      };
+      atu<ahh, asy.b> $$3 = new atu<>();
+      $$0.forEach(($$1x, $$2x) -> $$3.a($$1x, new asy.b($$2x)));
+      $$3.a(
+         ($$2x, $$3x) -> this.a($$2, $$3x.a)
+               .ifLeft(
+                  $$1xx -> a.error(
+                        "Couldn't load tag {} as it is missing following references: {}",
+                        $$2x,
+                        $$1xx.stream().map(Objects::toString).collect(Collectors.joining(", "))
+                     )
+               )
+               .ifRight($$2xx -> $$1.put($$2x, $$2xx))
+      );
+      return $$1;
    }
 
-   private <T> CompletableFuture<asy.a<T>> a(aqi $$0, Executor $$1, iu.d<T> $$2) {
-      ahf<? extends it<T>> $$3 = $$2.a();
-      it<T> $$4 = $$2.b();
-      asx<ih<T>> $$5 = new asx<>($$2x -> $$4.b(ahf.a($$3, $$2x)), a($$3));
-      return CompletableFuture.supplyAsync(() -> new asy.a<>($$3, $$5.b($$0)), $$1);
+   public Map<ahh, Collection<T>> b(aqj $$0) {
+      return this.a(this.a($$0));
    }
 
-   public static record a<T>(ahf<? extends it<T>> a, Map<ahg, Collection<ih<T>>> b) {
+   public static record a(asv a, String b) {
+
+      @Override
+      public String toString() {
+         return this.a + " (from " + this.b + ")";
+      }
+   }
+
+   static record b(List<asy.a> a) implements atu.a<ahh> {
+
+      @Override
+      public void a(Consumer<ahh> $$0) {
+         this.a.forEach($$1 -> $$1.a.a($$0));
+      }
+
+      @Override
+      public void b(Consumer<ahh> $$0) {
+         this.a.forEach($$1 -> $$1.a.b($$0));
+      }
    }
 }

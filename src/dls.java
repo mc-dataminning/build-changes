@@ -1,114 +1,69 @@
-import java.util.List;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.Validate;
+import javax.annotation.Nullable;
 
-public class dls<T> implements dlu<T> {
-   private final im<T> a;
-   private final T[] b;
-   private final dlv<T> c;
-   private final int d;
-   private int e;
+public class dls extends dlw {
+   private final ih<cuw> n;
 
-   private dls(im<T> $$0, int $$1, dlv<T> $$2, List<T> $$3) {
-      this.a = $$0;
-      this.b = (T[])(new Object[1 << $$1]);
-      this.d = $$1;
-      this.c = $$2;
-      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         this.b[$$4] = $$3.get($$4);
-      }
-
-      this.e = $$3.size();
-   }
-
-   private dls(im<T> $$0, T[] $$1, dlv<T> $$2, int $$3, int $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-   }
-
-   public static <A> dlu<A> a(int $$0, im<A> $$1, dlv<A> $$2, List<A> $$3) {
-      return new dls<>($$1, $$0, $$2, $$3);
+   public dls(ctx $$0, cte $$1, ih<cuw> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
    }
 
    @Override
-   public int a(T $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if (this.b[$$1] == $$0) {
-            return $$1;
-         }
-      }
+   public djp a_(hx $$0) {
+      return cxa.nb.o();
+   }
 
-      int $$2 = this.e;
-      if ($$2 < this.b.length) {
-         this.b[$$2] = $$0;
-         this.e++;
-         return $$2;
-      } else {
-         return this.c.onResize(this.d + 1, $$0);
-      }
+   @Nullable
+   @Override
+   public djp a(hx $$0, djp $$1, boolean $$2) {
+      return null;
    }
 
    @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if ($$0.test(this.b[$$1])) {
-            return true;
-         }
-      }
-
-      return false;
+   public eez b_(hx $$0) {
+      return efa.a.g();
    }
 
    @Override
-   public T a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.e) {
-         return this.b[$$0];
-      } else {
-         throw new dlt($$0);
-      }
+   public int i(hx $$0) {
+      return 0;
+   }
+
+   @Nullable
+   @Override
+   public dhd a(hx $$0, dlw.b $$1) {
+      return null;
    }
 
    @Override
-   public void a(ui $$0) {
-      this.e = $$0.n();
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         this.b[$$1] = this.a.b($$0.n());
-      }
+   public void b(dhd $$0) {
    }
 
    @Override
-   public void b(ui $$0) {
-      $$0.c(this.e);
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         $$0.c(this.a.a(this.b[$$1]));
-      }
+   public void a(dhd $$0) {
    }
 
    @Override
-   public int a() {
-      int $$0 = uw.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += uw.a(this.a.a(this.b[$$1]));
-      }
-
-      return $$0;
+   public void d(hx $$0) {
    }
 
    @Override
-   public int b() {
-      return this.e;
+   public boolean C() {
+      return true;
    }
 
    @Override
-   public dlu<T> c() {
-      return new dls<>(this.a, (T[])((Object[])this.b.clone()), this.c, this.d, this.e);
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public amx D() {
+      return amx.b;
+   }
+
+   @Override
+   public ih<cuw> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

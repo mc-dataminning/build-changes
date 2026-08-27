@@ -1,5 +1,8 @@
-public interface fgv {
-   void H();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   fgp I();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fgv {
 }

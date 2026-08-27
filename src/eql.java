@@ -1,70 +1,93 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class eql {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<eql.a> b;
+public class eql extends eqj {
+   private final eqo f;
+   private final Matrix4f g;
+   private final Matrix3f h;
+   private final float i;
+   private float j;
+   private float k;
+   private float l;
+   private int m;
+   private int n;
+   private int o;
+   private float p;
+   private float q;
+   private float r;
 
-   public static CompletableFuture<eql.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
-
-      return b;
+   public eql(eqo $$0, Matrix4f $$1, Matrix3f $$2, float $$3) {
+      this.f = $$0;
+      this.g = new Matrix4f($$1).invert();
+      this.h = new Matrix3f($$2).invert();
+      this.i = $$3;
+      this.a();
    }
 
-   private static boolean a(CompletableFuture<eql.a> $$0) {
-      eql.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
+   private void a() {
+      this.j = 0.0F;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.m = 0;
+      this.n = 10;
+      this.o = 15728880;
+      this.p = 0.0F;
+      this.q = 1.0F;
+      this.r = 0.0F;
    }
 
-   private static CompletableFuture<eql.a> b() {
-      return CompletableFuture.supplyAsync(() -> {
-         eqr $$0 = eqr.a();
-
-         try {
-            if ($$0.g() != eqr.a.a) {
-               return new eql.a(eql.b.b);
-            } else {
-               return !$$0.f() ? new eql.a(eql.b.c) : new eql.a(eql.b.a);
-            }
-         } catch (ese var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new eql.a(eql.b.d) : new eql.a(var2);
-         }
-      }, ac.g());
+   @Override
+   public void e() {
+      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
+      ic $$1 = ic.a($$0.x(), $$0.y(), $$0.z());
+      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
+      $$2.rotateY((float) Math.PI);
+      $$2.rotateX((float) (-Math.PI / 2));
+      $$2.rotate($$1.b());
+      float $$3 = -$$2.x() * this.i;
+      float $$4 = -$$2.y() * this.i;
+      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
+      this.a();
    }
 
-   public static record a(eql.b a, @Nullable ese b) {
-      public a(eql.b $$0) {
-         this($$0, null);
-      }
-
-      public a(ese $$0) {
-         this(eql.b.e, $$0);
-      }
-
-      @Nullable
-      public fdb a(fdb $$0) {
-         return (fdb)(switch (this.a) {
-            case a -> null;
-            case b -> new esq($$0);
-            case c -> new etb($$0);
-            case d -> new esv(vf.c("mco.error.invalid.session.title"), vf.c("mco.error.invalid.session.message"), $$0);
-            case e -> new esv(Objects.requireNonNull(this.b), $$0);
-         });
-      }
+   @Override
+   public eqo a(double $$0, double $$1, double $$2) {
+      this.j = (float)$$0;
+      this.k = (float)$$1;
+      this.l = (float)$$2;
+      return this;
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   @Override
+   public eqo a(int $$0, int $$1, int $$2, int $$3) {
+      return this;
+   }
+
+   @Override
+   public eqo a(float $$0, float $$1) {
+      return this;
+   }
+
+   @Override
+   public eqo a(int $$0, int $$1) {
+      this.m = $$0;
+      this.n = $$1;
+      return this;
+   }
+
+   @Override
+   public eqo b(int $$0, int $$1) {
+      this.o = $$0 | $$1 << 16;
+      return this;
+   }
+
+   @Override
+   public eqo a(float $$0, float $$1, float $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      return this;
    }
 }

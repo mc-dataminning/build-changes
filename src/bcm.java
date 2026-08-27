@@ -13,7 +13,7 @@ public class bcm extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.I);
+      Type<?> $$0 = this.getInputSchema().getType(bbw.J);
       OpticFinder<?> $$1 = $$0.findField("dimensions");
       return this.fixTypeEverywhereTyped(
          "StructureSettingsFlatten", $$0, $$1x -> $$1x.updateTyped($$1, $$1xx -> ac.a($$1xx, $$1.type(), $$0xxx -> $$0xxx.updateMapValues(bcm::a)))

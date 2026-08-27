@@ -1,11 +1,11 @@
-public class crp extends crj {
-   protected crp(crj.a $$0, crk $$1, bma... $$2) {
-      super($$0, $$1, $$2);
+public class crp extends crr {
+   protected crp(crr.a $$0, bmd... $$1) {
+      super($$0, crs.j, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+      return 5 + ($$0 - 1) * 8;
    }
 
    @Override
@@ -16,5 +16,14 @@ public class crp extends crj {
    @Override
    public int a() {
       return 3;
+   }
+
+   @Override
+   public boolean a(cng $$0) {
+      return $$0.i() ? true : super.a($$0);
+   }
+
+   public static boolean a(cng $$0, int $$1, auw $$2) {
+      return $$0.d() instanceof ckr && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
    }
 }

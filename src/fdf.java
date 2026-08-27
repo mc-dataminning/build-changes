@@ -1,41 +1,27 @@
-import java.util.Arrays;
+public class fdf extends fdm {
+   private eyk a;
 
-public class fdf extends fct {
-   private eyd c;
-
-   private static evl<?>[] a(evm $$0) {
-      return new evl[]{$$0.T(), $$0.U()};
-   }
-
-   public fdf(fdb $$0, evm $$1) {
-      super($$0, $$1, vf.c("options.sounds.title"));
+   public fdf() {
+      super(vg.c("outOfMemory.title"));
+      this.a = eyk.a;
    }
 
    @Override
-   protected void aN_() {
-      this.c = this.d(new eyd(this.f, this.g, this.h - 64, 32, 25));
-      this.c.a(this.b.b(art.a));
-      this.c.a(this.n());
-      this.c.a(this.b.aq());
-      this.c.a(a(this.b));
-      this.d(exg.a(ve.d, $$0 -> {
-         this.f.m.as();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
-   }
-
-   private evl<?>[] n() {
-      return Arrays.stream(art.values()).filter($$0 -> $$0 != art.a).map($$0 -> this.b.b($$0)).toArray(evl[]::new);
+   protected void aP_() {
+      this.d(exr.a(vf.l, $$0 -> this.f.a(new fdr())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
+      this.d(exr.a(vg.c("menu.quit"), $$0 -> this.f.p()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
+      this.a = eyk.a(this.i, vg.c("outOfMemory.message"), 295);
    }
 
    @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+   public boolean aN_() {
+      return false;
+   }
+
+   @Override
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-   }
-
-   @Override
-   public void b(ewu $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+      $$0.a(this.i, this.e, this.g / 2, this.h / 4 - 60 + 20, 16777215);
+      this.a.b($$0, this.g / 2 - 145, this.h / 4, 9, 10526880);
    }
 }

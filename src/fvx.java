@@ -1,36 +1,58 @@
-public class fvx implements fvh<dii> {
-   private final fyl a;
+public class fvx implements fvt<dhh> {
+   private final fzy a;
 
-   public fvx(fvi.a $$0) {
-      this.a = $$0.c();
+   public fvx(fvu.a $$0) {
+      this.a = $$0.d();
    }
 
-   public void a(dii $$0, float $$1, eqb $$2, fth $$3, int $$4, int $$5) {
-      ctp $$6 = $$0.i();
-      if ($$6 != null) {
-         csr $$7 = $$0.d();
-         blv $$8 = $$7.b($$6, $$0.aB_());
-         if ($$8 != null) {
-            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+   public void a(dhh $$0, float $$1, eqk $$2, ftt $$3, int $$4, int $$5) {
+      if ($$0.i() != null) {
+         int $$6 = $$0.r().c(dkf.bv);
+         if ($$6 > 0) {
+            ic $$7 = $$0.f();
+            if ($$7 != null) {
+               cng $$8 = $$0.g();
+               if (!$$8.b()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$9 = this.a($$7, $$6);
+                  $$2.a($$9[0], $$9[1], $$9[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$10 = $$7 == ic.f || $$7 == ic.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$11 = ftr.a($$0.i(), $$0.r(), $$0.aE_().a($$7));
+                  this.a.a($$8, cnd.i, $$11, ges.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
+            }
          }
       }
    }
 
-   public static void a(float $$0, eqb $$1, fth $$2, int $$3, blv $$4, fyl $$5, double $$6, double $$7) {
-      $$1.a();
-      $$1.a(0.5F, 0.0F, 0.5F);
-      float $$8 = 0.53125F;
-      float $$9 = Math.max($$4.dg(), $$4.dh());
-      if ((double)$$9 > 1.0) {
-         $$8 /= $$9;
+   private float[] a(ic $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
       }
 
-      $$1.a(0.0F, 0.4F, 0.0F);
-      $$1.a(a.d.rotationDegrees((float)auo.d((double)$$0, $$6, $$7) * 10.0F));
-      $$1.a(0.0F, -0.2F, 0.0F);
-      $$1.a(a.b.rotationDegrees(-30.0F));
-      $$1.b($$8, $$8, $$8);
-      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
-      $$1.b();
+      return $$2;
    }
 }

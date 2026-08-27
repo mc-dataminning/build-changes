@@ -1,20 +1,35 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgd extends dae {
-   public static final MapCodec<dgd> c = b(dgd::new);
-   public static final emm e = cwq.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dgd extends cze implements dgb {
+   public static final MapCodec<dgd> l = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dke.a.fieldOf("block_set_type").forGetter(cze::b), dgb.a.e.fieldOf("weathering_state").forGetter(dgd::g), u()).apply($$0, dgd::new)
+   );
+   private final dgb.a m;
 
    @Override
    public MapCodec<dgd> a() {
-      return c;
+      return l;
    }
 
-   public dgd(djg.d $$0) {
-      super($$0, ic.a, e, false);
+   protected dgd(dke $$0, dgb.a $$1, djo.d $$2) {
+      super($$0, $$2);
+      this.m = $$1;
    }
 
    @Override
-   protected daf c() {
-      return (daf)cws.oz;
+   public void b(djp $$0, ane $$1, hx $$2, auw $$3) {
+      if ($$0.c(cze.f) == dkl.b) {
+         this.a_($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public boolean e_(djp $$0) {
+      return dgb.c($$0.b()).isPresent();
+   }
+
+   public dgb.a g() {
+      return this.m;
    }
 }

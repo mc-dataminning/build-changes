@@ -8,16 +8,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public interface hb<T> {
-   ahg a();
+   ahh a();
 
-   hd<T> a(@Nullable sn var1, CommandDispatcher<T> var2, T var3) throws dv;
+   hd<T> a(@Nullable so var1, CommandDispatcher<T> var2) throws dv;
 
    private static boolean a(CharSequence $$0) {
       int $$1 = $$0.length();
       return $$1 > 0 && $$0.charAt($$1 - 1) == '\\';
    }
 
-   static <T extends du<T>> hb<T> a(ahg $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
+   static <T extends du<T>> hb<T> a(ahh $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
       hc<T> $$4 = new hc<>();
 
       for (int $$5 = 0; $$5 < $$3.size(); $$5++) {
@@ -59,7 +59,7 @@ public interface hb<T> {
             }
 
             if ($$12.peek() == '$') {
-               $$4.a($$10.substring(1), $$6);
+               $$4.a($$10.substring(1), $$6, $$2);
             } else {
                try {
                   $$4.a(a($$1, $$2, $$12));

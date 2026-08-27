@@ -6,7 +6,7 @@ import com.mojang.serialization.Dynamic;
 
 public class azp extends baw {
    public azp(Schema $$0, String $$1) {
-      super($$0, false, "Gossip for for " + $$1, bbw.x, $$1);
+      super($$0, false, "Gossip for for " + $$1, bbw.y, $$1);
    }
 
    @Override
@@ -18,7 +18,7 @@ public class azp extends baw {
                $$0xx -> (Dynamic)DataFixUtils.orElse(
                      $$0xx.asStreamOpt()
                         .result()
-                        .map($$0xxx -> $$0xxx.map($$0xxxx -> (Dynamic)awb.c($$0xxxx, "Target", "Target").orElse($$0xxxx)))
+                        .map($$0xxx -> $$0xxx.map($$0xxxx -> (Dynamic)awc.c($$0xxxx, "Target", "Target").orElse($$0xxxx)))
                         .map($$0xx::createList),
                      $$0xx
                   )

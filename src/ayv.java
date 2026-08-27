@@ -22,19 +22,19 @@ public class ayv extends DataFix {
    public TypeRewriteRule makeRule() {
       Schema $$0 = this.getInputSchema();
       Schema $$1 = this.getOutputSchema();
-      Type<?> $$2 = $$0.getTypeRaw(bbw.w);
-      Type<?> $$3 = $$1.getTypeRaw(bbw.w);
-      Type<?> $$4 = $$0.getTypeRaw(bbw.x);
+      Type<?> $$2 = $$0.getTypeRaw(bbw.x);
+      Type<?> $$3 = $$1.getTypeRaw(bbw.x);
+      Type<?> $$4 = $$0.getTypeRaw(bbw.y);
       return this.a($$0, $$1, $$2, $$3, $$4);
    }
 
    private <OldEntityTree, NewEntityTree, Entity> TypeRewriteRule a(Schema $$0, Schema $$1, Type<OldEntityTree> $$2, Type<NewEntityTree> $$3, Type<Entity> $$4) {
-      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(bbw.w.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
+      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(bbw.x.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
       Type<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$6 = DSL.named(
-         bbw.w.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
+         bbw.x.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
       );
-      Type<?> $$7 = $$0.getType(bbw.w);
-      Type<?> $$8 = $$1.getType(bbw.w);
+      Type<?> $$7 = $$0.getType(bbw.x);
+      Type<?> $$8 = $$1.getType(bbw.x);
       if (!Objects.equals($$7, $$5)) {
          throw new IllegalStateException("Old entity type is not what was expected.");
       } else if (!$$8.equals($$6, true, true)) {
@@ -68,7 +68,7 @@ public class ayv extends DataFix {
                            ),
                            Either.right(DSL.unit())
                         );
-                        $$7x = Optional.of(Pair.of(bbw.w.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
+                        $$7x = Optional.of(Pair.of(bbw.x.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
                         Optional<OldEntityTree> $$10x = ((Either)((Pair)$$8x.getSecond()).getFirst()).left();
                         if ($$10x.isEmpty()) {
                            return $$7x.orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));

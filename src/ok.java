@@ -20,15 +20,15 @@ public abstract class ok<T> implements kk {
    private final CompletableFuture<ij.b> g;
    private final CompletableFuture<Void> h = new CompletableFuture<>();
    private final CompletableFuture<ok.c<T>> i;
-   protected final ahf<? extends it<T>> f;
-   private final Map<ahg, ast> j = Maps.newLinkedHashMap();
+   protected final ahg<? extends it<T>> f;
+   private final Map<ahh, asu> j = Maps.newLinkedHashMap();
 
-   protected ok(km $$0, ahf<? extends it<T>> $$1, CompletableFuture<ij.b> $$2) {
+   protected ok(km $$0, ahg<? extends it<T>> $$1, CompletableFuture<ij.b> $$2) {
       this($$0, $$1, $$2, CompletableFuture.completedFuture(ok.c.empty()));
    }
 
-   protected ok(km $$0, ahf<? extends it<T>> $$1, CompletableFuture<ij.b> $$2, CompletableFuture<ok.c<T>> $$3) {
-      this.e = $$0.a(km.b.a, asy.a($$1));
+   protected ok(km $$0, ahg<? extends it<T>> $$1, CompletableFuture<ij.b> $$2, CompletableFuture<ok.c<T>> $$3) {
+      this.e = $$0.a(km.b.a, asz.a($$1));
       this.f = $$1;
       this.i = $$3;
       this.g = $$2;
@@ -55,18 +55,18 @@ public abstract class ok<T> implements kk {
          .thenCompose(
             $$1 -> {
                ij.c<T> $$2 = $$1.a.b(this.f);
-               Predicate<ahg> $$3 = $$1x -> $$2.a(ahf.a(this.f, $$1x)).isPresent();
-               Predicate<ahg> $$4 = $$1x -> this.j.containsKey($$1x) || $$1.b.contains(asw.a(this.f, $$1x));
+               Predicate<ahh> $$3 = $$1x -> $$2.a(ahg.a(this.f, $$1x)).isPresent();
+               Predicate<ahh> $$4 = $$1x -> this.j.containsKey($$1x) || $$1.b.contains(asx.a(this.f, $$1x));
                return CompletableFuture.allOf(
                   this.j
                      .entrySet()
                      .stream()
                      .map(
                         $$3x -> {
-                           ahg $$4x = (ahg)$$3x.getKey();
-                           ast $$5 = (ast)$$3x.getValue();
-                           List<asu> $$6 = $$5.b();
-                           List<asu> $$7 = $$6.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
+                           ahh $$4x = (ahh)$$3x.getKey();
+                           asu $$5 = (asu)$$3x.getValue();
+                           List<asv> $$6 = $$5.b();
+                           List<asv> $$7 = $$6.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
                            if (!$$7.isEmpty()) {
                               throw new IllegalArgumentException(
                                  String.format(
@@ -77,7 +77,7 @@ public abstract class ok<T> implements kk {
                                  )
                               );
                            } else {
-                              JsonElement $$8 = (JsonElement)asv.a.encodeStart(JsonOps.INSTANCE, new asv($$6, false)).getOrThrow(false, d::error);
+                              JsonElement $$8 = (JsonElement)asw.a.encodeStart(JsonOps.INSTANCE, new asw($$6, false)).getOrThrow(false, d::error);
                               Path $$9 = this.e.a($$4x);
                               return kk.a($$0, $$8, $$9);
                            }
@@ -89,13 +89,13 @@ public abstract class ok<T> implements kk {
          );
    }
 
-   protected ok.b<T> b(asw<T> $$0) {
-      ast $$1 = this.c($$0);
+   protected ok.b<T> b(asx<T> $$0) {
+      asu $$1 = this.c($$0);
       return new ok.b<>($$1);
    }
 
-   protected ast c(asw<T> $$0) {
-      return this.j.computeIfAbsent($$0.b(), $$0x -> ast.a());
+   protected asu c(asx<T> $$0) {
+      return this.j.computeIfAbsent($$0.b(), $$0x -> asu.a());
    }
 
    public CompletableFuture<ok.c<T>> c() {
@@ -111,49 +111,57 @@ public abstract class ok<T> implements kk {
    }
 
    protected static class b<T> {
-      private final ast a;
+      private final asu a;
 
-      protected b(ast $$0) {
+      protected b(asu $$0) {
          this.a = $$0;
       }
 
-      public final ok.b<T> a(ahf<T> $$0) {
+      public final ok.b<T> a(ahg<T> $$0) {
          this.a.a($$0.a());
          return this;
       }
 
       @SafeVarargs
-      public final ok.b<T> a(ahf<T>... $$0) {
-         for (ahf<T> $$1 : $$0) {
+      public final ok.b<T> a(ahg<T>... $$0) {
+         for (ahg<T> $$1 : $$0) {
             this.a.a($$1.a());
          }
 
          return this;
       }
 
-      public ok.b<T> a(ahg $$0) {
+      public final ok.b<T> a(List<ahg<T>> $$0) {
+         for (ahg<T> $$1 : $$0) {
+            this.a.a($$1.a());
+         }
+
+         return this;
+      }
+
+      public ok.b<T> a(ahh $$0) {
          this.a.b($$0);
          return this;
       }
 
-      public ok.b<T> b(asw<T> $$0) {
+      public ok.b<T> b(asx<T> $$0) {
          this.a.c($$0.b());
          return this;
       }
 
-      public ok.b<T> b(ahg $$0) {
+      public ok.b<T> b(ahh $$0) {
          this.a.d($$0);
          return this;
       }
    }
 
    @FunctionalInterface
-   public interface c<T> extends Function<asw<T>, Optional<ast>> {
+   public interface c<T> extends Function<asx<T>, Optional<asu>> {
       static <T> ok.c<T> empty() {
          return $$0 -> Optional.empty();
       }
 
-      default boolean contains(asw<T> $$0) {
+      default boolean contains(asx<T> $$0) {
          return this.apply($$0).isPresent();
       }
    }

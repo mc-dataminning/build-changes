@@ -1,19 +1,76 @@
-public final class bkk implements bke {
-   private final vf a;
-   private final cjh b;
+import javax.annotation.Nullable;
 
-   public bkk(cjh $$0, vf $$1) {
-      this.b = $$0;
-      this.a = $$1;
+public interface bkk extends bjv {
+   String c = "LootTable";
+   String d = "LootTableSeed";
+
+   @Nullable
+   ahh aC_();
+
+   void a(@Nullable ahh var1);
+
+   default void a(ahh $$0, long $$1) {
+      this.a($$0);
+      this.a($$1);
    }
 
-   @Override
-   public vf Q_() {
-      return this.a;
+   long aD_();
+
+   void a(long var1);
+
+   hx aE_();
+
+   @Nullable
+   ctx i();
+
+   static void a(ctd $$0, auw $$1, hx $$2, ahh $$3) {
+      if ($$0.c_($$2) instanceof bkk $$5) {
+         $$5.a($$3, $$1.g());
+      }
    }
 
-   @Override
-   public cib createMenu(int $$0, cfh $$1, cfi $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   default boolean c_(so $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.a(new ahh($$0.l("LootTable")));
+         this.a($$0.i("LootTableSeed"));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   default boolean d_(so $$0) {
+      ahh $$1 = this.aC_();
+      if ($$1 == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", $$1.toString());
+         long $$2 = this.aD_();
+         if ($$2 != 0L) {
+            $$0.a("LootTableSeed", $$2);
+         }
+
+         return true;
+      }
+   }
+
+   default void e_(@Nullable cfq $$0) {
+      ctx $$1 = this.i();
+      hx $$2 = this.aE_();
+      ahh $$3 = this.aC_();
+      if ($$3 != null && $$1 != null && $$1.o() != null) {
+         ehn $$4 = $$1.o().aJ().getLootTable($$3);
+         if ($$0 instanceof anf) {
+            am.O.a((anf)$$0, $$3);
+         }
+
+         this.a(null);
+         ehl.a $$5 = new ehl.a((ane)$$1).a(ejq.f, emc.b($$2));
+         if ($$0 != null) {
+            $$5.a($$0.go()).a(ejq.a, $$0);
+         }
+
+         $$4.a(this, $$5.a(ejp.c), this.aD_());
+      }
    }
 }

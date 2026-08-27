@@ -1,73 +1,61 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dqx extends dru<dua> {
-   public dqx(Codec<dua> $$0) {
-      super($$0);
+public class dqx {
+   public static final dqx a = new dqx(false, cxa.gz.o(), cxa.pL.o(), cxa.ej.o(), cxa.aQ.o());
+   public static final Codec<dqx> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dqx::a),
+               djp.b.optionalFieldOf("air_state", a.b()).forGetter(dqx::b),
+               djp.b.optionalFieldOf("water_state", a.b()).forGetter(dqx::c),
+               djp.b.optionalFieldOf("lava_state", a.b()).forGetter(dqx::d),
+               djp.b.optionalFieldOf("barrier_state", a.b()).forGetter(dqx::e)
+            )
+            .apply($$0, dqx::new)
+   );
+   private final boolean c;
+   private final djp d;
+   private final djp e;
+   private final djp f;
+   private final djp g;
+
+   public static dqx a(boolean $$0, djp $$1, djp $$2, djp $$3, djp $$4) {
+      return new dqx($$0, $$1, $$2, $$3, $$4);
    }
 
-   protected void a(ctq $$0, auv $$1, hx $$2, dua $$3, int $$4, hx.a $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         $$5.g($$2).c(ic.b, $$6);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            this.a($$0, $$5, $$3.c.a($$1, $$2));
-         }
-      }
+   public static dqx a(djp $$0, djp $$1, djp $$2, djp $$3) {
+      return new dqx(false, $$0, $$1, $$2, $$3);
    }
 
-   protected int a(auv $$0) {
-      int $$1 = $$0.a(3) + 4;
-      if ($$0.a(12) == 0) {
-         $$1 *= 2;
-      }
-
-      return $$1;
+   public static dqx a(boolean $$0, djp $$1) {
+      return new dqx($$0, $$1, a.c(), a.d(), a.e());
    }
 
-   protected boolean a(ctq $$0, hx $$1, int $$2, hx.a $$3, dua $$4) {
-      int $$5 = $$1.v();
-      if ($$5 >= $$0.J_() + 1 && $$5 + $$2 + 1 < $$0.al()) {
-         djh $$6 = $$0.a_($$1.d());
-         if (!b($$6) && !$$6.a(ash.aZ)) {
-            return false;
-         } else {
-            for (int $$7 = 0; $$7 <= $$2; $$7++) {
-               int $$8 = this.a(-1, -1, $$4.d, $$7);
-
-               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-                     djh $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
-                     if (!$$11.i() && !$$11.a(ash.O)) {
-                        return false;
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
+   private dqx(boolean $$0, djp $$1, djp $$2, djp $$3, djp $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   @Override
-   public boolean a(drw<dua> $$0) {
-      cuk $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      auv $$3 = $$0.d();
-      dua $$4 = $$0.f();
-      int $$5 = this.a($$3);
-      hx.a $$6 = new hx.a();
-      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
-         return false;
-      } else {
-         this.a($$1, $$3, $$2, $$5, $$6, $$4);
-         this.a($$1, $$3, $$2, $$4, $$5, $$6);
-         return true;
-      }
+   public boolean a() {
+      return this.c;
    }
 
-   protected abstract int a(int var1, int var2, int var3, int var4);
+   public djp b() {
+      return this.d;
+   }
 
-   protected abstract void a(ctq var1, auv var2, hx var3, int var4, hx.a var5, dua var6);
+   public djp c() {
+      return this.e;
+   }
+
+   public djp d() {
+      return this.f;
+   }
+
+   public djp e() {
+      return this.g;
+   }
 }

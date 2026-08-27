@@ -1,93 +1,22 @@
-import java.util.UUID;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class adh {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(blv $$0) {
-      if ($$0 instanceof cfi) {
-         return $$0.ad().getString();
-      } else {
-         vf $$1 = $$0.af();
-         return $$1 != null ? $$1.getString() : a($$0.cw());
-      }
+public record adh(ahg<dmy> a, ahg<ctx> b, long c, ctu d, @Nullable ctu e, boolean f, boolean g, Optional<ig> h, int i) {
+   public adh(uj $$0) {
+      this(
+         $$0.a(ke.ay), $$0.a(ke.aM), $$0.readLong(), ctu.a($$0.readByte()), ctu.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(uj::h), $$0.n()
+      );
    }
 
-   public static String a(UUID $$0) {
-      auv $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
-   }
-
-   private static String a(auv $$0, String[] $$1) {
-      return ac.a($$1, $$0);
-   }
-
-   private static auv b(UUID $$0) {
-      return auv.a((long)($$0.hashCode() >> 2));
+   public void a(uj $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.k(this.d.a());
+      $$0.k(ctu.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, uj::a);
+      $$0.c(this.i);
    }
 }

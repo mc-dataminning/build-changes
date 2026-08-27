@@ -1,7 +1,6 @@
-import io.netty.handler.codec.EncoderException;
-
-public class ut extends EncoderException {
-   public ut(Throwable $$0) {
-      super($$0);
+public interface ut extends up {
+   @Override
+   default xh a() {
+      return xh.a;
    }
 }

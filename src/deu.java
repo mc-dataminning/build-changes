@@ -1,39 +1,76 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class deu extends cwz implements cwt {
+public class deu extends cwy {
    public static final MapCodec<deu> a = b(deu::new);
-   protected static final float b = 6.0F;
-   protected static final emm c = cwq.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+   private static final vg d = vg.c("container.stonecutter");
+   public static final dkj b = dat.aE;
+   protected static final emv c = cwy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<deu> a() {
       return a;
    }
 
-   protected deu(djg.d $$0) {
+   public deu(djo.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, ic.c));
    }
 
    @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+   public djp a(cpp $$0) {
+      return this.o().a(b, $$0.g().g());
+   }
+
+   @Override
+   public bkc a(djp $$0, ctx $$1, hx $$2, cfq $$3, ely $$4) {
+      if ($$1.B) {
+         return bkc.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(asd.ay);
+         return bkc.b;
+      }
+   }
+
+   @Nullable
+   @Override
+   public bkg b(djp $$0, ctx $$1, hx $$2) {
+      return new bkm(($$2x, $$3, $$4) -> new cki($$2x, $$3, ciu.a($$1, $$2)), d);
+   }
+
+   @Override
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
       return c;
    }
 
    @Override
-   public boolean b(cts $$0, hx $$1, djh $$2) {
+   public boolean g_(djp $$0) {
       return true;
    }
 
    @Override
-   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
-      return true;
+   public ddd b_(djp $$0) {
+      return ddd.c;
    }
 
    @Override
-   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
-      cyy $$4 = (cyy)($$3.a(cws.bu) ? cws.iI : cws.iH);
-      if ($$4.o().a($$0, $$2) && $$0.u($$2.c())) {
-         cyy.a($$0, $$4.o(), $$2, 2);
-      }
+   public djp a(djp $$0, ddk $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public djp a(djp $$0, dbu $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
+      return false;
    }
 }

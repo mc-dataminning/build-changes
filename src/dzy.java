@@ -1,70 +1,101 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class dzy implements dzl {
-   private final List<dzk> a = Lists.newArrayList();
+public abstract class dzy extends dzs {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected edo b;
+   protected edk c;
+   protected hx d;
+
+   public dzy(eaf $$0, int $$1, edp $$2, ahh $$3, String $$4, edk $$5, hx $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(ic.c);
+      this.a = $$4;
+      this.d = $$6;
+      this.b = $$2.a($$3);
+      this.c = $$5;
+   }
+
+   public dzy(eaf $$0, so $$1, edp $$2, Function<ahh, edk> $$3) {
+      super($$0, $$1);
+      this.a(ic.c);
+      this.a = $$1.l("Template");
+      this.d = new hx($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      ahh $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
+   }
+
+   protected ahh b() {
+      return new ahh(this.a);
+   }
 
    @Override
-   public void a(dzk $$0) {
-      this.a.add($$0);
+   protected void a(eae $$0, so $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
    }
 
-   @Nullable
    @Override
-   public dzk a(dyy $$0) {
-      return dzk.a(this.a, $$0);
+   public void a(cus $$0, cuq $$1, dlm $$2, auw $$3, dzg $$4, cte $$5, hx $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (edo.c $$8 : this.b.a(this.d, this.c, cxa.pa)) {
+            if ($$8.c() != null) {
+               dkz $$9 = dkz.valueOf($$8.c().l("mode"));
+               if ($$9 == dkz.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
+         }
+
+         for (edo.c $$11 : this.b.a(this.d, this.c, cxa.pb)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               djp $$13 = cxa.a.o();
+
+               try {
+                  $$13 = fk.a($$0.a(ke.f), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+               }
+
+               $$0.a($$11.a(), $$13, 3);
+            }
+         }
+      }
    }
+
+   protected abstract void a(String var1, hx var2, cum var3, auw var4, dzg var5);
 
    @Deprecated
-   public void a(int $$0) {
-      for (dzk $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
    }
 
-   @Deprecated
-   public int a(int $$0, int $$1, auv $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      dyy $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
+   @Override
+   public ddk a() {
+      return this.c.d();
    }
 
-   /** @deprecated */
-   public void a(auv $$0, int $$1, int $$2) {
-      dyy $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
+   public edo c() {
+      return this.b;
    }
 
-   public dzv a() {
-      return new dzv(this.a);
+   public hx d() {
+      return this.d;
    }
 
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public dyy d() {
-      return dzk.a(this.a.stream());
+   public edk e() {
+      return this.c;
    }
 }

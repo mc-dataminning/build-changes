@@ -1,11 +1,16 @@
-public class gbr extends fzt<cdh, fkh<cdh>> {
-   private static final ahg a = new ahg("textures/entity/hoglin/zoglin.png");
+public class gbr extends gag<bzd, fmr<bzd>> {
+   private static final ahh a = new ahh("textures/entity/turtle/big_sea_turtle.png");
 
-   public gbr(fyn.a $$0) {
-      super($$0, new fkh<>($$0.a(fmw.ca)), 0.7F);
+   public gbr(fza.a $$0) {
+      super($$0, new fmr<>($$0.a(fni.bJ)), 0.7F);
    }
 
-   public ahg a(cdh $$0) {
+   protected float a(bzd $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.83F : $$1;
+   }
+
+   public ahh b(bzd $$0) {
       return a;
    }
 }

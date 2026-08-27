@@ -1,29 +1,9 @@
-import java.util.function.Function;
+public interface fit {
+   void a(fir var1);
 
-public abstract class fit<E extends blv> extends fkg<E> {
-   private final float a;
-   private final float b;
+   vg aQ_();
 
-   public fit(float $$0, float $$1) {
-      this($$0, $$1, ftp::e);
-   }
+   void a(exe var1, float var2, int var3);
 
-   public fit(float $$0, float $$1, Function<ahg, ftp> $$2) {
-      super($$2);
-      this.b = $$1;
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(eqb $$0, eqf $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(this.a, this.a, this.a);
-         $$0.a(0.0F, this.b / 16.0F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-   }
+   boolean aR_();
 }

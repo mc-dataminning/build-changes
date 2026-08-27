@@ -1,50 +1,55 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
+public interface ctz {
+   int K_();
 
-public class ctz {
-   private final Long2ObjectMap<List<ane>> a = new Long2ObjectOpenHashMap();
-   private final Map<ane, ctz.a> b = Maps.newHashMap();
-   private final amn c;
+   int J_();
 
-   public ctz(amn $$0) {
-      this.c = $$0;
+   default int al() {
+      return this.J_() + this.K_();
    }
 
-   private List<ane> a(csw $$0) {
-      return (List<ane>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
+   default int am() {
+      return this.ao() - this.an();
    }
 
-   public void a(csw $$0, bmo $$1) {
-      for (ane $$2 : this.a($$0)) {
-         this.b.computeIfAbsent($$2, $$0x -> new ctz.a()).a($$1);
-      }
+   default int an() {
+      return iz.a(this.J_());
    }
 
-   public boolean a(bmo $$0, csw $$1) {
-      for (ane $$2 : this.a($$1)) {
-         ctz.a $$3 = this.b.get($$2);
-         if ($$3 == null || $$3.b($$0)) {
-            return true;
+   default int ao() {
+      return iz.a(this.al() - 1) + 1;
+   }
+
+   default boolean s(hx $$0) {
+      return this.d($$0.v());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 < this.J_() || $$0 >= this.al();
+   }
+
+   default int e(int $$0) {
+      return this.f(iz.a($$0));
+   }
+
+   default int f(int $$0) {
+      return $$0 - this.an();
+   }
+
+   default int g(int $$0) {
+      return $$0 + this.an();
+   }
+
+   static ctz e(final int $$0, final int $$1) {
+      return new ctz() {
+         @Override
+         public int K_() {
+            return $$1;
          }
-      }
 
-      return false;
-   }
-
-   static class a {
-      private final Object2IntMap<bmo> a = new Object2IntOpenHashMap(bmo.values().length);
-
-      public void a(bmo $$0) {
-         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
-      }
-
-      public boolean b(bmo $$0) {
-         return this.a.getOrDefault($$0, 0) < $$0.b();
-      }
+         @Override
+         public int J_() {
+            return $$0;
+         }
+      };
    }
 }

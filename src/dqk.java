@@ -1,25 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqk implements dpx {
-   public static final Codec<dqk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jb.v(16).optionalFieldOf("offset", jb.g).forGetter($$0x -> $$0x.e), djh.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, dqk::new)
-   );
-   private final jb e;
-   private final djh f;
+public class dqk extends dqq {
+   final asx<cwy> a;
+   public static final Codec<dqk> e = RecordCodecBuilder.create($$0 -> a($$0).and(asx.a(ke.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dqk::new));
 
-   protected dqk(jb $$0, djh $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   public boolean a(cuk $$0, hx $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   protected dqk(jb $$0, asx<cwy> $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
-   public dpy<?> a() {
-      return dpy.g;
+   protected boolean a(djp $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Override
+   public dqg<?> a() {
+      return dqg.b;
    }
 }

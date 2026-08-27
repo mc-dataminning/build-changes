@@ -1,185 +1,91 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fdn {
-   private final evi a;
-   private final fdr b;
-   private final fdo c;
-   private final int d;
-   private final ag e;
-   private final ar f;
-   private final cmy g;
-   private final vf h;
-   private final fdp i;
-   private final Map<af, fdp> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
-   private float q;
-   private boolean r;
+public class fdn extends fdm {
+   private static final int a = 1024;
+   private static final int b = 65535;
+   private static final vg c = vg.c("selectWorld.allowCommands");
+   private static final vg k = vg.c("selectWorld.gameMode");
+   private static final vg l = vg.c("lanServer.otherPlayers");
+   private static final vg m = vg.c("lanServer.port");
+   private static final vg n = vg.a("lanServer.port.unavailable.new", 1024, 65535);
+   private static final vg o = vg.a("lanServer.port.invalid.new", 1024, 65535);
+   private static final int p = 16733525;
+   private final fdm q;
+   private ctu r = ctu.a;
+   private boolean t;
+   private int u = aug.a();
+   @Nullable
+   private eya v;
 
-   public fdn(evi $$0, fdr $$1, fdo $$2, int $$3, ag $$4, ar $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new fdp(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
+   public fdn(fdm $$0) {
+      super(vg.c("lanServer.title"));
+      this.q = $$0;
    }
 
-   public fdo a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ag c() {
-      return this.e;
-   }
-
-   public vf d() {
-      return this.h;
-   }
-
-   public ar e() {
-      return this.f;
-   }
-
-   public void a(ewu $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
-   }
-
-   public void a(ewu $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
-   }
-
-   public void b(ewu $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
-      }
-
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      ahg $$3 = this.f.d().orElse(geo.a);
-      int $$4 = auo.a(this.k);
-      int $$5 = auo.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
-
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+   @Override
+   protected void aP_() {
+      gjf $$0 = this.f.T();
+      this.r = $$0.v_();
+      this.t = $$0.aY().o();
+      this.d(exy.a(ctu::e).a(ctu.a, ctu.d, ctu.b, ctu.c).a(this.r).a(this.g / 2 - 155, 100, 150, 20, k, ($$0x, $$1x) -> this.r = $$1x));
+      this.d(exy.b(this.t).a(this.g / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.t = $$1x));
+      exr $$1 = exr.a(vg.c("lanServer.start"), $$1x -> {
+         this.f.a(null);
+         vg $$2;
+         if ($$0.a(this.r, this.t, this.u)) {
+            $$2 = akg.a(this.u);
+         } else {
+            $$2 = vg.c("commands.publish.failed");
          }
-      }
 
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.f();
-   }
-
-   public void a(ewu $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, auo.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = auo.a(this.k);
-      int $$7 = auo.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (fdp $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
-            }
+         this.f.l.d().a($$2);
+         this.f.d();
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a();
+      this.v = new eya(this.i, this.g / 2 - 75, 160, 150, 20, vg.c("lanServer.port"));
+      this.v.b($$1x -> {
+         vg $$2 = this.a($$1x);
+         this.v.c(vg.b(this.u + "").a(n.i));
+         if ($$2 == null) {
+            this.v.g(14737632);
+            this.v.a(null);
+            $$1.j = true;
+         } else {
+            this.v.g(16733525);
+            this.v.a(ezc.a($$2));
+            $$1.j = false;
          }
-      }
-
-      $$0.c().b();
-      if ($$5) {
-         this.q = auo.a(this.q + 0.02F, 0.0F, 0.3F);
-      } else {
-         this.q = auo.a(this.q - 0.04F, 0.0F, 1.0F);
-      }
-   }
-
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
+      });
+      this.v.c(vg.b(this.u + "").a(n.i));
+      this.d(this.v);
+      this.d($$1);
+      this.d(exr.a(vf.e, $$0x -> this.f.a(this.q)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
    }
 
    @Nullable
-   public static fdn a(evi $$0, fdr $$1, int $$2, ag $$3) {
-      Optional<ar> $$4 = $$3.a().c();
-      if ($$4.isEmpty()) {
+   private vg a(String $$0) {
+      if ($$0.isBlank()) {
+         this.u = aug.a();
          return null;
       } else {
-         for (fdo $$5 : fdo.values()) {
-            if ($$2 < $$5.a()) {
-               return new fdn($$0, $$1, $$5, $$2, $$3, $$4.get());
+         try {
+            this.u = Integer.parseInt($$0);
+            if (this.u < 1024 || this.u > 65535) {
+               return o;
+            } else {
+               return !aug.a(this.u) ? n : null;
             }
-
-            $$2 -= $$5.a();
+         } catch (NumberFormatException var3) {
+            this.u = aug.a();
+            return o;
          }
-
-         return null;
       }
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = auo.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
-      }
-
-      if (this.p - this.n > 113) {
-         this.l = auo.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
-      }
-   }
-
-   public void a(ag $$0) {
-      Optional<ar> $$1 = $$0.a().c();
-      if (!$$1.isEmpty()) {
-         fdp $$2 = new fdp(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
-      }
-   }
-
-   private void a(fdp $$0, af $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
-
-      for (fdp $$6 : this.j.values()) {
-         $$6.b();
-      }
-   }
-
-   @Nullable
-   public fdp a(af $$0) {
-      return this.j.get($$0);
-   }
-
-   public fdr f() {
-      return this.b;
+   @Override
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
+      $$0.a(this.i, l, this.g / 2, 82, 16777215);
+      $$0.a(this.i, m, this.g / 2, 142, 16777215);
    }
 }

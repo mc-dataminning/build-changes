@@ -1,37 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dyi extends dyr {
-   public static final Codec<dyi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dyi::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class dyi extends dyv {
+   public static final Codec<dyi> a = dou.a.c.fieldOf("step").xmap(dyi::new, $$0 -> $$0.c).codec();
+   private final dou.a c;
 
-   private dyi(int $$0, double $$1, double $$2) {
+   private dyi(dou.a $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static dyi a(int $$0, double $$1, double $$2) {
-      return new dyi($$0, $$1, $$2);
-   }
-
-   @Override
-   protected int a(auv $$0, hx $$1) {
-      double $$2 = cuo.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public static dyi a(dou.a $$0) {
+      return new dyi($$0);
    }
 
    @Override
-   public dyo<?> b() {
-      return dyo.g;
+   public Stream<hx> a_(dyt $$0, auw $$1, hx $$2) {
+      cte $$3 = new cte($$2);
+      return $$0.a($$3, this.c).a($$3);
+   }
+
+   @Override
+   public dyw<?> b() {
+      return dyw.o;
    }
 }

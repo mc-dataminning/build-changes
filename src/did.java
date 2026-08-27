@@ -1,229 +1,143 @@
-import java.util.List;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Optional;
 
-public class did extends dhz implements bkm {
-   public static final int e = 9;
-   public static final int f = 3;
-   public static final int g = 27;
-   public static final int h = 1;
-   public static final int i = 10;
-   public static final float j = 0.5F;
-   public static final float k = 270.0F;
-   public static final String l = "Items";
-   private static final int[] r = IntStream.range(0, 27).toArray();
-   private iq<cmy> s = iq.a(27, cmy.f);
-   private int t;
-   private did.a u = did.a.a;
-   private float v;
-   private float w;
-   @Nullable
-   private final clm x;
+public class did extends dhd {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private ahh h = new ahh("empty");
+   private ahh i = new ahh("empty");
+   private ahg<eax> j = ahg.a(ke.aG, new ahh("empty"));
+   private did.a k = did.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int n;
 
-   public did(@Nullable clm $$0, hx $$1, djh $$2) {
-      super(dgx.x, $$1, $$2);
-      this.x = $$0;
+   public did(hx $$0, djp $$1) {
+      super(dhf.F, $$0, $$1);
    }
 
-   public did(hx $$0, djh $$1) {
-      super(dgx.x, $$0, $$1);
-      this.x = ddo.a($$1.b());
+   public ahh c() {
+      return this.h;
    }
 
-   public static void a(ctp $$0, hx $$1, djh $$2, did $$3) {
-      $$3.b($$0, $$1, $$2);
+   public ahh d() {
+      return this.i;
    }
 
-   private void b(ctp $$0, hx $$1, djh $$2) {
-      this.w = this.v;
-      switch (this.u) {
-         case a:
-            this.v = 0.0F;
-            break;
-         case b:
-            this.v += 0.1F;
-            if (this.w == 0.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.v >= 1.0F) {
-               this.u = did.a.c;
-               this.v = 1.0F;
-               d($$0, $$1, $$2);
-            }
-
-            this.c($$0, $$1, $$2);
-            break;
-         case d:
-            this.v -= 0.1F;
-            if (this.w == 1.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.v <= 0.0F) {
-               this.u = did.a.a;
-               this.v = 0.0F;
-               d($$0, $$1, $$2);
-            }
-            break;
-         case c:
-            this.v = 1.0F;
-      }
+   public ahg<eax> f() {
+      return this.j;
    }
 
-   public did.a m() {
-      return this.u;
+   public String g() {
+      return this.l;
    }
 
-   public elo a(djh $$0) {
-      return ccv.a($$0.c(ddo.b), 0.5F * this.a(1.0F));
+   public did.a k() {
+      return this.k;
    }
 
-   private void c(ctp $$0, hx $$1, djh $$2) {
-      if ($$2.b() instanceof ddo) {
-         ic $$3 = $$2.c(ddo.b);
-         elo $$4 = ccv.a($$3, this.w, this.v).a($$1);
-         List<blv> $$5 = $$0.a_(null, $$4);
-         if (!$$5.isEmpty()) {
-            for (blv $$6 : $$5) {
-               if ($$6.s_() != eew.d) {
-                  $$6.a(bmr.d, new elt(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
-               }
-            }
-         }
-      }
+   public int l() {
+      return this.m;
+   }
+
+   public int m() {
+      return this.n;
+   }
+
+   public void a(ahh $$0) {
+      this.h = $$0;
+   }
+
+   public void b(ahh $$0) {
+      this.i = $$0;
+   }
+
+   public void a(ahg<eax> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(did.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
+      this.m = $$0;
+   }
+
+   public void b(int $$0) {
+      this.n = $$0;
    }
 
    @Override
-   public int b() {
-      return this.s.size();
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.t = $$1;
-         if ($$1 == 0) {
-            this.u = did.a.d;
-         }
-
-         if ($$1 == 1) {
-            this.u = did.a.b;
-         }
-
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   private static void d(ctp $$0, hx $$1, djh $$2) {
-      $$2.a($$0, $$1, 3);
-      $$0.a($$1, $$2.b());
-   }
-
-   @Override
-   public void d_(cfi $$0) {
-      if (!this.q && !$$0.P_()) {
-         if (this.t < 0) {
-            this.t = 0;
-         }
-
-         this.t++;
-         this.o.a(this.p, this.r().b(), 1, this.t);
-         if (this.t == 1) {
-            this.o.a($$0, dnr.k, this.p);
-            this.o.a(null, this.p, ars.vQ, art.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   public void c(cfi $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.t--;
-         this.o.a(this.p, this.r().b(), 1, this.t);
-         if (this.t <= 0) {
-            this.o.a($$0, dnr.j, this.p);
-            this.o.a(null, this.p, ars.vP, art.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   protected vf l() {
-      return vf.c("container.shulkerBox");
-   }
-
-   @Override
-   public void a(sn $$0) {
-      super.a($$0);
-      this.d($$0);
-   }
-
-   @Override
-   protected void b(sn $$0) {
+   protected void b(so $$0) {
       super.b($$0);
-      if (!this.d_($$0)) {
-         bjv.a($$0, this.s, false);
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.n);
+   }
+
+   @Override
+   public void a(so $$0) {
+      super.a($$0);
+      this.h = new ahh($$0.l("name"));
+      this.i = new ahh($$0.l("target"));
+      this.j = ahg.a(ke.aG, new ahh($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = did.a.a($$0.l("joint")).orElseGet(() -> daz.h(this.r()).o().d() ? did.a.b : did.a.a);
+      this.m = $$0.h("placement_priority");
+      this.n = $$0.h("selection_priority");
+   }
+
+   public zi w() {
+      return zi.a(this);
+   }
+
+   @Override
+   public so aA_() {
+      return this.q();
+   }
+
+   public void a(ane $$0, int $$1, boolean $$2) {
+      hx $$3 = this.aE_().a(this.r().c(daz.b).a());
+      it<eax> $$4 = $$0.I_().d(ke.aG);
+      ih<eax> $$5 = $$4.f(this.j);
+      ear.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements avl {
+      a("rollable"),
+      b("aligned");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
       }
-   }
 
-   @Override
-   public void d(sn $$0) {
-      this.s = iq.a(this.b(), cmy.f);
-      if (!this.c_($$0) && $$0.b("Items", 9)) {
-         bjv.b($$0, this.s);
+      @Override
+      public String c() {
+         return this.c;
       }
-   }
 
-   @Override
-   protected iq<cmy> k() {
-      return this.s;
-   }
+      public static Optional<did.a> a(String $$0) {
+         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
+      }
 
-   @Override
-   protected void a(iq<cmy> $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public int[] a(ic $$0) {
-      return r;
-   }
-
-   @Override
-   public boolean a(int $$0, cmy $$1, @Nullable ic $$2) {
-      return !(cwq.a($$1.d()) instanceof ddo);
-   }
-
-   @Override
-   public boolean b(int $$0, cmy $$1, ic $$2) {
-      return true;
-   }
-
-   public float a(float $$0) {
-      return auo.i($$0, this.w, this.v);
-   }
-
-   @Nullable
-   public clm w() {
-      return this.x;
-   }
-
-   @Override
-   protected cib a(int $$0, cfh $$1) {
-      return new cjt($$0, $$1, this);
-   }
-
-   public boolean x() {
-      return this.u == did.a.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+      public vg a() {
+         return vg.c("jigsaw_block.joint." + this.c);
+      }
    }
 }

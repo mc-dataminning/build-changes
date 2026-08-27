@@ -1,9 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public abstract class eda {
-   public static final Codec<eda> c = kd.o.q().dispatch("predicate_type", eda::a, edb::codec);
+public class eda extends edb {
+   public static final Codec<eda> a = Codec.unit(() -> eda.b);
+   public static final eda b = new eda();
 
-   public abstract boolean a(djh var1, auv var2);
+   private eda() {
+   }
 
-   protected abstract edb<?> a();
+   @Override
+   public boolean a(hx $$0, hx $$1, hx $$2, auw $$3) {
+      return true;
+   }
+
+   @Override
+   protected edc<?> a() {
+      return edc.a;
+   }
 }

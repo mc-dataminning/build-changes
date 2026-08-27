@@ -1,5 +1,10 @@
-public interface gai<T extends blv, M extends fjx<T>> {
-   M a();
+public class gai<T extends blw> extends fyz<T> {
+   public gai(fza.a $$0) {
+      super($$0);
+   }
 
-   ahg a(T var1);
+   @Override
+   public ahh a(T $$0) {
+      return gfa.e;
+   }
 }

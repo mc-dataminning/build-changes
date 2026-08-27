@@ -254,8 +254,8 @@ public class bci extends DataFix {
    }
 
    private TypeRewriteRule b() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.D);
-      Type<?> $$1 = this.getOutputSchema().getType(bbw.D);
+      Type<?> $$0 = this.getInputSchema().getType(bbw.E);
+      Type<?> $$1 = this.getOutputSchema().getType(bbw.E);
       return this.fixTypeEverywhereTyped("ObjectiveStatFix", $$0, $$1, $$1x -> {
          Dynamic<?> $$2 = (Dynamic<?>)$$1x.get(DSL.remainderFinder());
          Dynamic<?> $$3 = $$2.update("CriteriaName", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map($$0xxx -> {

@@ -1,160 +1,154 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class fhk extends exm<fhi> {
-   private final fhl a;
-   private final List<fhi> m = Lists.newArrayList();
-   @Nullable
-   private String n;
+public abstract class fhk<B extends fpe.a<?>> extends fdm {
+   private static final vg r = vg.c("gui.abuseReport.report_sent_msg");
+   private static final vg t = vg.c("gui.abuseReport.sending.title").a(n.r);
+   private static final vg u = vg.c("gui.abuseReport.sent.title").a(n.r);
+   private static final vg v = vg.c("gui.abuseReport.error.title").a(n.r);
+   private static final vg w = vg.c("gui.abuseReport.send.generic_error");
+   protected static final vg a = vg.c("gui.abuseReport.send");
+   protected static final vg b = vg.c("gui.abuseReport.observed_what");
+   protected static final vg c = vg.c("gui.abuseReport.select_reason");
+   private static final vg x = vg.c("gui.abuseReport.describe");
+   protected static final vg k = vg.c("gui.abuseReport.more_comments");
+   private static final vg y = vg.c("gui.abuseReport.comments");
+   protected static final int l = 20;
+   protected static final int m = 280;
+   protected static final int n = 8;
+   private static final Logger z = LogUtils.getLogger();
+   protected final fdm o;
+   protected final fpi p;
+   protected B q;
 
-   public fhk(fhl $$0, evi $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.a = $$0;
-      this.c(false);
+   protected fhk(vg $$0, fdm $$1, fpi $$2, B $$3) {
+      super($$0);
+      this.o = $$1;
+      this.p = $$2;
+      this.q = $$3;
+   }
+
+   protected eyj a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.p.a().b();
+      eyj $$4 = new eyj(this.i, 0, 0, $$0, $$1, x, y);
+      $$4.a(this.q.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
+   }
+
+   protected void o() {
+      this.q.a(this.p).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.p.a().a($$0.a(), $$0.b(), $$0.c());
+         this.f.a(fct.a(t, vf.e, () -> {
+            this.f.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.E();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
+
+               this.a($$1x);
+            }
+
+            return null;
+         }, this.f);
+      }).ifRight($$0 -> this.a($$0.b()));
+   }
+
+   private void E() {
+      this.I();
+      this.f.a(fct.a(u, r, vf.d, () -> this.f.a(null)));
+   }
+
+   private void a(Throwable $$0) {
+      z.error("Encountered error while sending abuse report", $$0);
+      vg $$2;
+      if ($$0.getCause() instanceof wg $$1) {
+         $$2 = $$1.b();
+      } else {
+         $$2 = w;
+      }
+
+      this.a($$2);
+   }
+
+   private void a(vg $$0) {
+      vg $$1 = $$0.f().a(n.m);
+      this.f.a(fct.a(v, $$1, vf.k, () -> this.f.a(this)));
+   }
+
+   void H() {
+      if (this.q.b()) {
+         this.p.a(this.q.e().b());
+      }
+   }
+
+   void I() {
+      this.p.a(null);
    }
 
    @Override
-   protected void a(ewu $$0) {
-      $$0.c(this.B(), this.C() + 4, this.D(), this.E());
-   }
-
-   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
-      Map<UUID, fhi> $$3 = new HashMap<>();
-      this.a($$0, $$3);
-      this.a($$3, $$2);
-      this.a($$3.values(), $$1);
-   }
-
-   private void a(Collection<UUID> $$0, Map<UUID, fhi> $$1) {
-      fnt $$2 = this.c.s.cn;
-
-      for (UUID $$3 : $$0) {
-         fob $$4 = $$2.a($$3);
-         if ($$4 != null) {
-            boolean $$5 = $$4.d();
-            $$1.put($$3, new fhi(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
-         }
+   public void d() {
+      if (this.q.b()) {
+         this.f.a(new fhk.a());
+      } else {
+         this.f.a(this.o);
       }
    }
 
-   private void a(Map<UUID, fhi> $$0, boolean $$1) {
-      for (GameProfile $$3 : a(this.c.aY().b())) {
-         fhi $$4;
-         if ($$1) {
-            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
-               fhi $$2 = new fhi(this.c, this.a, $$3.getId(), $$3.getName(), this.c.al().a($$3), true);
-               $$2.c(true);
-               return $$2;
-            });
-         } else {
-            $$4 = $$0.get($$3.getId());
-            if ($$4 == null) {
-               continue;
-            }
-         }
-
-         $$4.d(true);
-      }
-   }
-
-   private static Collection<GameProfile> a(foh $$0) {
-      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
-
-      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
-         foj $$3 = $$0.b($$2);
-         if ($$3 instanceof fok.a) {
-            fok.a $$4 = (fok.a)$$3;
-            if ($$4.g().i()) {
-               $$1.add($$4.f());
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private void e() {
-      this.m.sort(Comparator.<fhi, Integer>comparing($$0 -> {
-         if (this.c.b($$0.c())) {
-            return 0;
-         } else if (this.c.aY().a($$0.c())) {
-            return 1;
-         } else if ($$0.c().version() == 2) {
-            return 4;
-         } else {
-            return $$0.i() ? 2 : 3;
-         }
-      }).thenComparing($$0 -> {
-         if (!$$0.b().isBlank()) {
-            int $$1 = $$0.b().codePointAt(0);
-            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
-               return 0;
-            }
-         }
-
-         return 1;
-      }).thenComparing(fhi::b, String::compareToIgnoreCase));
-   }
-
-   private void a(Collection<fhi> $$0, double $$1) {
-      this.m.clear();
-      this.m.addAll($$0);
-      this.e();
+   @Override
+   public void k() {
       this.H();
-      this.a(this.m);
-      this.a($$1);
+      super.k();
    }
 
-   private void H() {
-      if (this.n != null) {
-         this.m.removeIf($$0 -> !$$0.b().toLowerCase(Locale.ROOT).contains(this.n));
-         this.a(this.m);
-      }
-   }
+   class a extends fgp {
+      private static final int c = 20;
+      private static final vg k = vg.c("gui.abuseReport.discard.title").a(n.r);
+      private static final vg l = vg.c("gui.abuseReport.discard.content");
+      private static final vg m = vg.c("gui.abuseReport.discard.return");
+      private static final vg n = vg.c("gui.abuseReport.discard.draft");
+      private static final vg o = vg.c("gui.abuseReport.discard.discard");
 
-   public void a(String $$0) {
-      this.n = $$0;
-   }
-
-   public boolean d() {
-      return this.m.isEmpty();
-   }
-
-   public void a(fob $$0, fhl.a $$1) {
-      UUID $$2 = $$0.a().getId();
-
-      for (fhi $$3 : this.m) {
-         if ($$3.c().equals($$2)) {
-            $$3.c(false);
-            return;
-         }
+      protected a() {
+         super(k, l, l);
       }
 
-      if (($$1 == fhl.a.a || this.c.aK().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
-         boolean $$4 = $$0.d();
-         fhi $$5 = new fhi(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
-         this.b($$5);
-         this.m.add($$5);
+      @Override
+      protected void a(int $$0) {
+         this.d(exr.a(m, $$0x -> this.d()).a(this.g / 2 - 155, 100 + $$0).a());
+         this.d(exr.a(n, $$0x -> {
+            fhk.this.H();
+            this.f.a(fhk.this.o);
+         }).a(this.g / 2 + 5, 100 + $$0).a());
+         this.d(exr.a(o, $$0x -> {
+            fhk.this.I();
+            this.f.a(fhk.this.o);
+         }).a(this.g / 2 - 75, 130 + $$0).a());
       }
-   }
 
-   public void a(UUID $$0) {
-      for (fhi $$1 : this.m) {
-         if ($$1.c().equals($$0)) {
-            $$1.c(true);
-            return;
-         }
+      @Override
+      public void d() {
+         this.f.a(fhk.this);
+      }
+
+      @Override
+      public boolean aN_() {
+         return false;
+      }
+
+      @Override
+      protected void c(exe $$0) {
+         $$0.b(this.i, this.e, this.g / 2 - 155, 30, -1);
       }
    }
 }

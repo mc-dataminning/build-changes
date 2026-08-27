@@ -1,25 +1,24 @@
-public class fzq extends fym<cfz> {
-   private static final ahg a = new ahg("textures/entity/llama/spit.png");
-   private final fkr<cfz> f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fzq(fyn.a $$0) {
-      super($$0);
-      this.f = new fkr<>($$0.a(fmw.aw));
+public final class fzq extends fxv<cag, fku<cag>> {
+   private static final Map<can, ahh> a = ac.a(Maps.newEnumMap(can.class), $$0 -> {
+      $$0.put(can.a, new ahh("textures/entity/horse/horse_white.png"));
+      $$0.put(can.b, new ahh("textures/entity/horse/horse_creamy.png"));
+      $$0.put(can.c, new ahh("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(can.d, new ahh("textures/entity/horse/horse_brown.png"));
+      $$0.put(can.e, new ahh("textures/entity/horse/horse_black.png"));
+      $$0.put(can.f, new ahh("textures/entity/horse/horse_gray.png"));
+      $$0.put(can.g, new ahh("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public fzq(fza.a $$0) {
+      super($$0, new fku<>($$0.a(fni.al)), 1.1F);
+      this.a(new gda(this));
+      this.a(new gcz(this, $$0.f()));
    }
 
-   public void a(cfz $$0, float $$1, float $$2, eqb $$3, fth $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(auo.i($$2, $$0.N, $$0.dC()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(auo.i($$2, $$0.O, $$0.dE())));
-      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      eqf $$6 = $$4.getBuffer(this.f.a(a));
-      this.f.a($$3, $$6, $$5, gee.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public ahg a(cfz $$0) {
-      return a;
+   public ahh a(cag $$0) {
+      return a.get($$0.w());
    }
 }

@@ -1,450 +1,437 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.List;
-import java.util.ListIterator;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import java.util.function.DoubleFunction;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableFloat;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableObject;
+import org.slf4j.Logger;
 
-public class evu {
-   final evu.f a;
+public final class evu<T> {
+   private static final Logger c = LogUtils.getLogger();
+   public static final evu.e<Boolean> a = new evu.e<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
+   public static final evu.b<Boolean> b = ($$0, $$1) -> $$1 ? vf.b : vf.c;
+   private final evu.l<T> d;
+   final Function<T, vg> e;
+   private final evu.n<T> f;
+   private final Codec<T> g;
+   private final T h;
+   private final Consumer<T> i;
+   final vg j;
+   T k;
 
-   public evu(evu.f $$0) {
-      this.a = $$0;
+   public static evu<Boolean> a(String $$0, boolean $$1, Consumer<Boolean> $$2) {
+      return a($$0, a(), $$1, $$2);
    }
 
-   public float a(@Nullable String $$0) {
-      if ($$0 == null) {
-         return 0.0F;
+   public static evu<Boolean> a(String $$0, boolean $$1) {
+      return a($$0, a(), $$1, $$0x -> {
+      });
+   }
+
+   public static evu<Boolean> a(String $$0, evu.l<Boolean> $$1, boolean $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
+   }
+
+   public static evu<Boolean> a(String $$0, evu.l<Boolean> $$1, boolean $$2, Consumer<Boolean> $$3) {
+      return a($$0, $$1, b, $$2, $$3);
+   }
+
+   public static evu<Boolean> a(String $$0, evu.l<Boolean> $$1, evu.b<Boolean> $$2, boolean $$3, Consumer<Boolean> $$4) {
+      return new evu<>($$0, $$1, $$2, a, $$3, $$4);
+   }
+
+   public evu(String $$0, evu.l<T> $$1, evu.b<T> $$2, evu.n<T> $$3, T $$4, Consumer<T> $$5) {
+      this($$0, $$1, $$2, $$3, $$3.f(), $$4, $$5);
+   }
+
+   public evu(String $$0, evu.l<T> $$1, evu.b<T> $$2, evu.n<T> $$3, Codec<T> $$4, T $$5, Consumer<T> $$6) {
+      this.j = vg.c($$0);
+      this.d = $$1;
+      this.e = $$1x -> $$2.toString(this.j, (T)$$1x);
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.k = this.h;
+   }
+
+   public static <T> evu.l<T> a() {
+      return $$0 -> null;
+   }
+
+   public static <T> evu.l<T> a(vg $$0) {
+      return $$1 -> ezc.a($$0);
+   }
+
+   public static <T extends aur> evu.b<T> b() {
+      return ($$0, $$1) -> $$1.d();
+   }
+
+   public exp a(evv $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, $$0x -> {
+      });
+   }
+
+   public exp a(evv $$0, int $$1, int $$2, int $$3, Consumer<T> $$4) {
+      return this.f.a(this.d, $$0, $$1, $$2, $$3, $$4).apply(this);
+   }
+
+   public T c() {
+      return this.k;
+   }
+
+   public Codec<T> d() {
+      return this.g;
+   }
+
+   @Override
+   public String toString() {
+      return this.j.getString();
+   }
+
+   public void a(T $$0) {
+      T $$1 = this.f.a($$0).orElseGet(() -> {
+         c.error("Illegal option value " + $$0 + " for " + this.j);
+         return this.h;
+      });
+      if (!evr.O().q()) {
+         this.k = $$1;
       } else {
-         MutableFloat $$1 = new MutableFloat();
-         avj.c($$0, wc.a, ($$1x, $$2, $$3) -> {
-            $$1.add(this.a.getWidth($$3, $$2));
-            return true;
-         });
-         return $$1.floatValue();
-      }
-   }
-
-   public float a(vk $$0) {
-      MutableFloat $$1 = new MutableFloat();
-      avj.a($$0, wc.a, ($$1x, $$2, $$3) -> {
-         $$1.add(this.a.getWidth($$3, $$2));
-         return true;
-      });
-      return $$1.floatValue();
-   }
-
-   public float a(aua $$0) {
-      MutableFloat $$1 = new MutableFloat();
-      $$0.accept(($$1x, $$2, $$3) -> {
-         $$1.add(this.a.getWidth($$3, $$2));
-         return true;
-      });
-      return $$1.floatValue();
-   }
-
-   public int a(String $$0, int $$1, wc $$2) {
-      evu.e $$3 = new evu.e((float)$$1);
-      avj.a($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   public String b(String $$0, int $$1, wc $$2) {
-      return $$0.substring(0, this.a($$0, $$1, $$2));
-   }
-
-   public String c(String $$0, int $$1, wc $$2) {
-      MutableFloat $$3 = new MutableFloat();
-      MutableInt $$4 = new MutableInt($$0.length());
-      avj.b($$0, $$2, ($$3x, $$4x, $$5) -> {
-         float $$6 = $$3.addAndGet(this.a.getWidth($$5, $$4x));
-         if ($$6 > (float)$$1) {
-            return false;
-         } else {
-            $$4.setValue($$3x);
-            return true;
-         }
-      });
-      return $$0.substring($$4.intValue());
-   }
-
-   public int d(String $$0, int $$1, wc $$2) {
-      evu.e $$3 = new evu.e((float)$$1);
-      avj.c($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   @Nullable
-   public wc a(vk $$0, int $$1) {
-      evu.e $$2 = new evu.e((float)$$1);
-      return $$0.<wc>a(($$1x, $$2x) -> avj.c($$2x, $$1x, $$2) ? Optional.empty() : Optional.of($$1x), wc.a).orElse(null);
-   }
-
-   @Nullable
-   public wc a(aua $$0, int $$1) {
-      evu.e $$2 = new evu.e((float)$$1);
-      MutableObject<wc> $$3 = new MutableObject();
-      $$0.accept(($$2x, $$3x, $$4) -> {
-         if (!$$2.accept($$2x, $$3x, $$4)) {
-            $$3.setValue($$3x);
-            return false;
-         } else {
-            return true;
-         }
-      });
-      return (wc)$$3.getValue();
-   }
-
-   public String e(String $$0, int $$1, wc $$2) {
-      return $$0.substring(0, this.d($$0, $$1, $$2));
-   }
-
-   public vk a(vk $$0, int $$1, wc $$2) {
-      final evu.e $$3 = new evu.e((float)$$1);
-      return $$0.a(new vk.b<vk>() {
-         private final euy c = new euy();
-
-         @Override
-         public Optional<vk> accept(wc $$0, String $$1) {
-            $$3.b();
-            if (!avj.c($$1, $$0, $$3)) {
-               String $$2 = $$1.substring(0, $$3.a());
-               if (!$$2.isEmpty()) {
-                  this.c.a(vk.a($$2, $$0));
-               }
-
-               return Optional.of(this.c.b());
-            } else {
-               if (!$$1.isEmpty()) {
-                  this.c.a(vk.a($$1, $$0));
-               }
-
-               return Optional.empty();
-            }
-         }
-      }, $$2).orElse($$0);
-   }
-
-   public int f(String $$0, int $$1, wc $$2) {
-      evu.b $$3 = new evu.b((float)$$1);
-      avj.c($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   public static int a(String $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$2;
-      boolean $$5 = $$1 < 0;
-      int $$6 = Math.abs($$1);
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         if ($$5) {
-            while ($$3 && $$4 > 0 && ($$0.charAt($$4 - 1) == ' ' || $$0.charAt($$4 - 1) == '\n')) {
-               $$4--;
-            }
-
-            while ($$4 > 0 && $$0.charAt($$4 - 1) != ' ' && $$0.charAt($$4 - 1) != '\n') {
-               $$4--;
-            }
-         } else {
-            int $$8 = $$0.length();
-            int $$9 = $$0.indexOf(32, $$4);
-            int $$10 = $$0.indexOf(10, $$4);
-            if ($$9 == -1 && $$10 == -1) {
-               $$4 = -1;
-            } else if ($$9 != -1 && $$10 != -1) {
-               $$4 = Math.min($$9, $$10);
-            } else if ($$9 != -1) {
-               $$4 = $$9;
-            } else {
-               $$4 = $$10;
-            }
-
-            if ($$4 == -1) {
-               $$4 = $$8;
-            } else {
-               while ($$3 && $$4 < $$8 && ($$0.charAt($$4) == ' ' || $$0.charAt($$4) == '\n')) {
-                  $$4++;
-               }
-            }
+         if (!Objects.equals(this.k, $$1)) {
+            this.k = $$1;
+            this.i.accept(this.k);
          }
       }
-
-      return $$4;
    }
 
-   public void a(String $$0, int $$1, wc $$2, boolean $$3, evu.d $$4) {
-      int $$5 = 0;
-      int $$6 = $$0.length();
-      wc $$7 = $$2;
-
-      while ($$5 < $$6) {
-         evu.b $$8 = new evu.b((float)$$1);
-         boolean $$9 = avj.a($$0, $$5, $$7, $$2, $$8);
-         if ($$9) {
-            $$4.accept($$7, $$5, $$6);
-            break;
-         }
-
-         int $$10 = $$8.a();
-         char $$11 = $$0.charAt($$10);
-         int $$12 = $$11 != '\n' && $$11 != ' ' ? $$10 : $$10 + 1;
-         $$4.accept($$7, $$5, $$3 ? $$12 : $$10);
-         $$5 = $$12;
-         $$7 = $$8.b();
-      }
+   public evu.n<T> e() {
+      return this.f;
    }
 
-   public List<vk> g(String $$0, int $$1, wc $$2) {
-      List<vk> $$3 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, false, ($$2x, $$3x, $$4) -> $$3.add(vk.a($$0.substring($$3x, $$4), $$2x)));
-      return $$3;
-   }
-
-   public List<vk> b(vk $$0, int $$1, wc $$2) {
-      List<vk> $$3 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, ($$1x, $$2x) -> $$3.add($$1x));
-      return $$3;
-   }
-
-   public List<vk> a(vk $$0, int $$1, wc $$2, vk $$3) {
-      List<vk> $$4 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, ($$2x, $$3x) -> $$4.add($$3x ? vk.a($$3, $$2x) : $$2x));
-      return $$4;
-   }
-
-   public void a(vk $$0, int $$1, wc $$2, BiConsumer<vk, Boolean> $$3) {
-      List<evu.c> $$4 = Lists.newArrayList();
-      $$0.a(($$1x, $$2x) -> {
-         if (!$$2x.isEmpty()) {
-            $$4.add(new evu.c($$2x, $$1x));
-         }
-
-         return Optional.empty();
-      }, $$2);
-      evu.a $$5 = new evu.a($$4);
-      boolean $$6 = true;
-      boolean $$7 = false;
-      boolean $$8 = false;
-
-      while ($$6) {
-         $$6 = false;
-         evu.b $$9 = new evu.b((float)$$1);
-
-         for (evu.c $$10 : $$5.a) {
-            boolean $$11 = avj.a($$10.c, 0, $$10.d, $$2, $$9);
-            if (!$$11) {
-               int $$12 = $$9.a();
-               wc $$13 = $$9.b();
-               char $$14 = $$5.a($$12);
-               boolean $$15 = $$14 == '\n';
-               boolean $$16 = $$15 || $$14 == ' ';
-               $$7 = $$15;
-               vk $$17 = $$5.a($$12, $$16 ? 1 : 0, $$13);
-               $$3.accept($$17, $$8);
-               $$8 = !$$15;
-               $$6 = true;
-               break;
-            }
-
-            $$9.a($$10.c.length());
-         }
-      }
-
-      vk $$18 = $$5.a();
-      if ($$18 != null) {
-         $$3.accept($$18, $$8);
-      } else if ($$7) {
-         $$3.accept(vk.b, false);
-      }
-   }
-
-   static class a {
-      final List<evu.c> a;
-      private String b;
-
-      public a(List<evu.c> $$0) {
-         this.a = $$0;
-         this.b = $$0.stream().map($$0x -> $$0x.c).collect(Collectors.joining());
-      }
-
-      public char a(int $$0) {
-         return this.b.charAt($$0);
-      }
-
-      public vk a(int $$0, int $$1, wc $$2) {
-         euy $$3 = new euy();
-         ListIterator<evu.c> $$4 = this.a.listIterator();
-         int $$5 = $$0;
-         boolean $$6 = false;
-
-         while ($$4.hasNext()) {
-            evu.c $$7 = $$4.next();
-            String $$8 = $$7.c;
-            int $$9 = $$8.length();
-            if (!$$6) {
-               if ($$5 > $$9) {
-                  $$3.a($$7);
-                  $$4.remove();
-                  $$5 -= $$9;
-               } else {
-                  String $$10 = $$8.substring(0, $$5);
-                  if (!$$10.isEmpty()) {
-                     $$3.a(vk.a($$10, $$7.d));
-                  }
-
-                  $$5 += $$1;
-                  $$6 = true;
-               }
-            }
-
-            if ($$6) {
-               if ($$5 <= $$9) {
-                  String $$11 = $$8.substring($$5);
-                  if ($$11.isEmpty()) {
-                     $$4.remove();
-                  } else {
-                     $$4.set(new evu.c($$11, $$2));
-                  }
-                  break;
-               }
-
-               $$4.remove();
-               $$5 -= $$9;
-            }
-         }
-
-         this.b = this.b.substring($$0 + $$1);
-         return $$3.b();
-      }
-
-      @Nullable
-      public vk a() {
-         euy $$0 = new euy();
-         this.a.forEach($$0::a);
-         this.a.clear();
-         return $$0.a();
-      }
-   }
-
-   class b implements aub {
-      private final float b;
-      private int c = -1;
-      private wc d = wc.a;
-      private boolean e;
-      private float f;
-      private int g = -1;
-      private wc h = wc.a;
-      private int i;
-      private int j;
-
-      public b(float $$0) {
-         this.b = Math.max($$0, 1.0F);
+   public static record a<T>(List<T> a, List<T> b, BooleanSupplier c, evu.d.a<T> d, Codec<T> e) implements evu.d<T> {
+      @Override
+      public exy.c<T> a() {
+         return exy.c.a(this.c, this.a, this.b);
       }
 
       @Override
-      public boolean accept(int $$0, wc $$1, int $$2) {
-         int $$3 = $$0 + this.j;
-         switch ($$2) {
-            case 10:
-               return this.a($$3, $$1);
-            case 32:
-               this.g = $$3;
-               this.h = $$1;
-            default:
-               float $$4 = evu.this.a.getWidth($$2, $$1);
-               this.f += $$4;
-               if (!this.e || !(this.f > this.b)) {
-                  this.e |= $$4 != 0.0F;
-                  this.i = $$3 + Character.charCount($$2);
-                  return true;
-               } else {
-                  return this.g != -1 ? this.a(this.g, this.h) : this.a($$3, $$1);
-               }
-         }
+      public Optional<T> a(T $$0) {
+         return (this.c.getAsBoolean() ? this.b : this.a).contains($$0) ? Optional.of($$0) : Optional.empty();
       }
 
-      private boolean a(int $$0, wc $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         return false;
+      public List<T> b() {
+         return this.a;
       }
 
-      private boolean c() {
-         return this.c != -1;
+      public List<T> c() {
+         return this.b;
       }
 
-      public int a() {
-         return this.c() ? this.c : this.i;
-      }
-
-      public wc b() {
-         return this.d;
-      }
-
-      public void a(int $$0) {
-         this.j += $$0;
-      }
-   }
-
-   static class c implements vk {
-      final String c;
-      final wc d;
-
-      public c(String $$0, wc $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public <T> Optional<T> a(vk.a<T> $$0) {
-         return $$0.accept(this.c);
-      }
-
-      @Override
-      public <T> Optional<T> a(vk.b<T> $$0, wc $$1) {
-         return $$0.accept(this.d.a($$1), this.c);
-      }
-   }
-
-   @FunctionalInterface
-   public interface d {
-      void accept(wc var1, int var2, int var3);
-   }
-
-   class e implements aub {
-      private float b;
-      private int c;
-
-      public e(float $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public boolean accept(int $$0, wc $$1, int $$2) {
-         this.b = this.b - evu.this.a.getWidth($$2, $$1);
-         if (this.b >= 0.0F) {
-            this.c = $$0 + Character.charCount($$2);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public int a() {
+      public BooleanSupplier d() {
          return this.c;
       }
 
-      public void b() {
-         this.c = 0;
+      @Override
+      public evu.d.a<T> e() {
+         return this.d;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.e;
+      }
+   }
+
+   public interface b<T> {
+      vg toString(vg var1, T var2);
+   }
+
+   public static record c(int a, IntSupplier b, int c) implements evu.g, evu.j<Integer> {
+      public Optional<Integer> a(Integer $$0) {
+         return Optional.of(aup.a($$0, this.d(), this.b()));
+      }
+
+      @Override
+      public int b() {
+         return this.b.getAsInt();
+      }
+
+      @Override
+      public Codec<Integer> f() {
+         return atx.a(
+            Codec.INT,
+            $$0 -> {
+               int $$1 = this.c + 1;
+               return $$0.compareTo(this.a) >= 0 && $$0.compareTo($$1) <= 0
+                  ? DataResult.success($$0)
+                  : DataResult.error(() -> "Value " + $$0 + " outside of range [" + this.a + ":" + $$1 + "]", $$0);
+            }
+         );
+      }
+
+      @Override
+      public boolean c() {
+         return true;
+      }
+
+      @Override
+      public exy.c<Integer> a() {
+         return exy.c.a(IntStream.range(this.a, this.b() + 1).boxed().toList());
+      }
+
+      @Override
+      public int d() {
+         return this.a;
+      }
+
+      public IntSupplier g() {
+         return this.b;
+      }
+
+      public int h() {
+         return this.c;
+      }
+   }
+
+   interface d<T> extends evu.n<T> {
+      exy.c<T> a();
+
+      default evu.d.a<T> e() {
+         return evu::a;
+      }
+
+      @Override
+      default Function<evu<T>, exp> a(evu.l<T> $$0, evv $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return $$6 -> exy.a($$6.e).a(this.a()).a($$0).a($$6.k).a($$2, $$3, $$4, 20, $$6.j, ($$3xx, $$4xx) -> {
+               this.e().set($$6, (T)$$4xx);
+               $$1.as();
+               $$5.accept((T)$$4xx);
+            });
+      }
+
+      public interface a<T> {
+         void set(evu<T> var1, T var2);
+      }
+   }
+
+   public static record e<T>(List<T> a, Codec<T> b) implements evu.d<T> {
+      @Override
+      public Optional<T> a(T $$0) {
+         return this.a.contains($$0) ? Optional.of($$0) : Optional.empty();
+      }
+
+      @Override
+      public exy.c<T> a() {
+         return exy.c.a(this.a);
+      }
+
+      public List<T> b() {
+         return this.a;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.b;
+      }
+   }
+
+   public static record f(int a, int b) implements evu.g {
+      public Optional<Integer> a(Integer $$0) {
+         return $$0.compareTo(this.d()) >= 0 && $$0.compareTo(this.b()) <= 0 ? Optional.of($$0) : Optional.empty();
+      }
+
+      @Override
+      public Codec<Integer> f() {
+         return Codec.intRange(this.a, this.b + 1);
+      }
+
+      @Override
+      public int d() {
+         return this.a;
+      }
+   }
+
+   interface g extends evu.k<Integer> {
+      int d();
+
+      int b();
+
+      default double b(Integer $$0) {
+         return (double)aup.c((float)$$0.intValue(), (float)this.d(), (float)this.b(), 0.0F, 1.0F);
+      }
+
+      default Integer a(double $$0) {
+         return aup.a(aup.b($$0, 0.0, 1.0, (double)this.d(), (double)this.b()));
+      }
+
+      default <R> evu.k<R> a(final IntFunction<? extends R> $$0, final ToIntFunction<? super R> $$1) {
+         return new evu.k<R>() {
+            @Override
+            public Optional<R> a(R $$0x) {
+               return g.this.a(Integer.valueOf($$1.applyAsInt($$0))).map($$0::apply);
+            }
+
+            @Override
+            public double b(R $$0x) {
+               return g.this.b($$1.applyAsInt($$0));
+            }
+
+            @Override
+            public R b(double $$0x) {
+               return (R)$$0.apply(g.this.a($$0));
+            }
+
+            @Override
+            public Codec<R> f() {
+               return g.this.f().xmap($$0::apply, $$1::applyAsInt);
+            }
+         };
+      }
+   }
+
+   public static record h<T>(Supplier<List<T>> a, Function<T, Optional<T>> b, Codec<T> c) implements evu.d<T> {
+      @Override
+      public Optional<T> a(T $$0) {
+         return this.b.apply($$0);
+      }
+
+      @Override
+      public exy.c<T> a() {
+         return exy.c.a(this.a.get());
+      }
+
+      public Supplier<List<T>> b() {
+         return this.a;
+      }
+
+      public Function<T, Optional<T>> c() {
+         return this.b;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.c;
+      }
+   }
+
+   static final class i<N> extends exk {
+      private final evu<N> d;
+      private final evu.k<N> e;
+      private final evu.l<N> f;
+      private final Consumer<N> m;
+
+      i(evv $$0, int $$1, int $$2, int $$3, int $$4, evu<N> $$5, evu.k<N> $$6, evu.l<N> $$7, Consumer<N> $$8) {
+         super($$0, $$1, $$2, $$3, $$4, $$6.b($$5.c()));
+         this.d = $$5;
+         this.e = $$6;
+         this.f = $$7;
+         this.m = $$8;
+         this.b();
+      }
+
+      @Override
+      protected void b() {
+         this.b(this.d.e.apply(this.d.c()));
+         this.a(this.f.apply(this.e.b(this.c)));
+      }
+
+      @Override
+      protected void a() {
+         this.d.a(this.e.b(this.c));
+         this.a.as();
+         this.m.accept(this.d.c());
+      }
+   }
+
+   interface j<T> extends evu.d<T>, evu.k<T> {
+      boolean c();
+
+      @Override
+      default Function<evu<T>, exp> a(evu.l<T> $$0, evv $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return this.c() ? evu.d.super.a($$0, $$1, $$2, $$3, $$4, $$5) : evu.k.super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   interface k<T> extends evu.n<T> {
+      double b(T var1);
+
+      T b(double var1);
+
+      @Override
+      default Function<evu<T>, exp> a(evu.l<T> $$0, evv $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return $$6 -> new evu.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5);
       }
    }
 
    @FunctionalInterface
-   public interface f {
-      float getWidth(int var1, wc var2);
+   public interface l<T> {
+      @Nullable
+      ezc apply(T var1);
+   }
+
+   public static enum m implements evu.k<Double> {
+      a;
+
+      public Optional<Double> a(Double $$0) {
+         return $$0 >= 0.0 && $$0 <= 1.0 ? Optional.of($$0) : Optional.empty();
+      }
+
+      public double b(Double $$0) {
+         return $$0;
+      }
+
+      public Double a(double $$0) {
+         return $$0;
+      }
+
+      public <R> evu.k<R> a(final DoubleFunction<? extends R> $$0, final ToDoubleFunction<? super R> $$1) {
+         return new evu.k<R>() {
+            @Override
+            public Optional<R> a(R $$0x) {
+               return m.this.a(Double.valueOf($$1.applyAsDouble($$0))).map($$0::apply);
+            }
+
+            @Override
+            public double b(R $$0x) {
+               return m.this.b(Double.valueOf($$1.applyAsDouble($$0)));
+            }
+
+            @Override
+            public R b(double $$0x) {
+               return (R)$$0.apply(m.this.a($$0));
+            }
+
+            @Override
+            public Codec<R> f() {
+               return m.this.f().xmap($$0::apply, $$1::applyAsDouble);
+            }
+         };
+      }
+
+      @Override
+      public Codec<Double> f() {
+         return atx.a(Codec.doubleRange(0.0, 1.0), Codec.BOOL, $$0 -> $$0 ? 1.0 : 0.0);
+      }
+   }
+
+   interface n<T> {
+      Function<evu<T>, exp> a(evu.l<T> var1, evv var2, int var3, int var4, int var5, Consumer<T> var6);
+
+      Optional<T> a(T var1);
+
+      Codec<T> f();
    }
 }

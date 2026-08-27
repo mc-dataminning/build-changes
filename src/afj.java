@@ -1,44 +1,29 @@
-public record afj(int a, String b, int c, afi d) implements xf<afk> {
-   private static final int e = 255;
+public enum afj {
+   a,
+   b;
 
-   @Deprecated
-   public afj(int a, String b, int c, afi d) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   private static final int c = 1;
+   private static final int d = 2;
+
+   public static afj a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   public afj(ui $$0) {
-      this($$0.n(), $$0.d(255), $$0.readUnsignedShort(), afi.a($$0.n()));
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+      };
    }
 
-   @Override
-   public void a(ui $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.c(this.d.a());
-   }
-
-   public void a(afk $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public uh c() {
-      return this.d.b();
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public afi f() {
-      return this.d;
+   public ui b() {
+      return switch (this) {
+         case a -> ui.c;
+         case b -> ui.d;
+      };
    }
 }

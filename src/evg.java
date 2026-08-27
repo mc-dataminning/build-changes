@@ -1,166 +1,54 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import org.slf4j.Logger;
 
-public class evg implements Comparable<evg> {
-   private static final Map<String, evg> h = Maps.newHashMap();
-   private static final Map<eow.a, evg> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final eow.a m;
-   private final String n;
-   private eow.a o;
-   private boolean p;
-   private int q;
+public class evg {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 50;
+   private static final String c = "command_history.txt";
+   private final Path d;
+   private final ate<String> e = new ate<>(50);
 
-   public static void a(eow.a $$0) {
-      evg $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
-      }
-   }
-
-   public static void a(eow.a $$0, boolean $$1) {
-      evg $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
-
-   public static void a() {
-      for (evg $$0 : h.values()) {
-         if ($$0.o.a() == eow.b.a && $$0.o.b() != eow.bv.b()) {
-            $$0.a(eow.a(evi.O().aM().i(), $$0.o.b()));
+   public evg(Path $$0) {
+      this.d = $$0.resolve("command_history.txt");
+      if (Files.exists(this.d)) {
+         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
+            this.e.addAll($$1.lines().toList());
+         } catch (Exception var7) {
+            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
          }
       }
    }
 
-   public static void b() {
-      for (evg $$0 : h.values()) {
-         $$0.n();
-      }
-   }
-
-   public static void c() {
-      for (evg $$0 : h.values()) {
-         if ($$0 instanceof evw $$1) {
-            $$1.n();
+   public void a(String $$0) {
+      if (!$$0.equals(this.e.peekLast())) {
+         if (this.e.size() >= 50) {
+            this.e.removeFirst();
          }
+
+         this.e.addLast($$0);
+         this.b();
       }
    }
 
-   public static void d() {
-      i.clear();
-
-      for (evg $$0 : h.values()) {
-         i.put($$0.o, $$0);
+   private void b() {
+      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
+         for (String $$1 : this.e) {
+            $$0.write($$1);
+            $$0.newLine();
+         }
+      } catch (IOException var6) {
+         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
       }
    }
 
-   public evg(String $$0, int $$1, String $$2) {
-      this($$0, eow.b.a, $$1, $$2);
-   }
-
-   public evg(String $$0, eow.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
-      } else {
-         this.q--;
-         return true;
-      }
-   }
-
-   private void n() {
-      this.q = 0;
-      this.a(false);
-   }
-
-   public String h() {
-      return this.l;
-   }
-
-   public eow.a i() {
-      return this.m;
-   }
-
-   public void b(eow.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(evg $$0) {
-      return this.n.equals($$0.n) ? gfs.a(this.l).compareTo(gfs.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<vf> a(String $$0) {
-      evg $$1 = h.get($$0);
-      return $$1 == null ? () -> vf.c($$0) : $$1::k;
-   }
-
-   public boolean b(evg $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(eow.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == eow.bv.b() ? this.o.a() == eow.b.b && this.o.b() == $$1 : this.o.a() == eow.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == eow.b.c && this.o.b() == $$0;
-   }
-
-   public vf k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
+   public Collection<String> a() {
+      return this.e;
    }
 }

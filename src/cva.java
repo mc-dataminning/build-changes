@@ -1,134 +1,141 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cva {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final bip<cva.c> a = bip.c();
-   public static final cva b = new cva.a().a();
-   public static final MapCodec<cva> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bmo.i, bip.c(cva.c.a).promotePartial(ac.a("Spawn data: ", d::error)), avk.a(bmo.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(kd.g.q(), cva.b.a, kd.g).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, cva::new)
-   );
-   private final float f;
-   private final Map<bmo, bip<cva.c>> g;
-   private final Map<blz<?>, cva.b> h;
+public abstract class cva implements cuz {
+   public static final Codec<cva> a = kd.ab.q().dispatchStable(cva::a, Function.identity());
+   private final Supplier<Set<ih<cuw>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
 
-   cva(float $$0, Map<bmo, bip<cva.c>> $$1, Map<blz<?>, cva.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+   protected cva() {
    }
 
-   public bip<cva.c> a(bmo $$0) {
-      return this.g.getOrDefault($$0, a);
+   protected abstract Codec<? extends cva> a();
+
+   protected abstract Stream<ih<cuw>> b();
+
+   public Set<ih<cuw>> c() {
+      return this.b.get();
+   }
+
+   public Set<ih<cuw>> a(int $$0, int $$1, int $$2, int $$3, cvf.f $$4) {
+      int $$5 = is.a($$0 - $$3);
+      int $$6 = is.a($$1 - $$3);
+      int $$7 = is.a($$2 - $$3);
+      int $$8 = is.a($$0 + $$3);
+      int $$9 = is.a($$1 + $$3);
+      int $$10 = is.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<ih<cuw>> $$14 = Sets.newHashSet();
+
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
+            }
+         }
+      }
+
+      return $$14;
    }
 
    @Nullable
-   public cva.b a(blz<?> $$0) {
-      return this.h.get($$0);
+   public Pair<hx, ih<cuw>> a(int $$0, int $$1, int $$2, int $$3, Predicate<ih<cuw>> $$4, auw $$5, cvf.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
    }
 
-   public float a() {
-      return this.f;
-   }
+   @Nullable
+   public Pair<hx, ih<cuw>> a(hx $$0, int $$1, int $$2, int $$3, Predicate<ih<cuw>> $$4, cvf.f $$5, cua $$6) {
+      Set<ih<cuw>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
+      } else {
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = aup.a($$0.v(), $$6.J_() + 1, $$6.al(), $$3).toArray();
 
-   public static class a {
-      private final Map<bmo, List<cva.c>> a = Stream.of(bmo.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
-      private final Map<blz<?>, cva.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
+         for (hx.a $$10 : hx.a(hx.b, $$8, ic.f, ic.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = is.a($$11);
+            int $$14 = is.a($$12);
 
-      public cva.a a(bmo $$0, cva.c $$1) {
-         this.a.get($$0).add($$1);
-         return this;
-      }
+            for (int $$15 : $$9) {
+               int $$16 = is.a($$15);
+               ih<cuw> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new hx($$11, $$15, $$12), $$17);
+               }
+            }
+         }
 
-      public cva.a a(blz<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new cva.b($$2, $$1));
-         return this;
-      }
-
-      public cva.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public cva a() {
-         return new cva(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bip.a((List)$$0.getValue()))),
-            ImmutableMap.copyOf(this.b)
-         );
+         return null;
       }
    }
 
-   public static record b(double b, double c) {
-      public static final Codec<cva.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, cva.b::new)
-      );
+   @Nullable
+   public Pair<hx, ih<cuw>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ih<cuw>> $$5, auw $$6, boolean $$7, cvf.f $$8) {
+      int $$9 = is.a($$0);
+      int $$10 = is.a($$2);
+      int $$11 = is.a($$3);
+      int $$12 = is.a($$1);
+      Pair<hx, ih<cuw>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
 
-      public double a() {
-         return this.b;
+      while ($$16 <= $$11) {
+         for (int $$17 = aa.at ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
+
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
+
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               ih<cuw> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     hx $$24 = new hx(is.c($$21), $$1, is.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
+         }
+
+         $$16 += $$4;
       }
 
-      public double b() {
-         return this.c;
-      }
+      return $$13;
    }
 
-   public static class c extends bin.a {
-      public static final Codec<cva.c> a = atw.a(
-         RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     kd.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     bim.a.fieldOf("weight").forGetter(bin.a::a),
-                     atw.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     atw.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, cva.c::new)
-         ),
-         (Function<cva.c, DataResult<cva.c>>)($$0 -> $$0.c > $$0.d
-               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
-               : DataResult.success($$0))
-      );
-      public final blz<?> b;
-      public final int c;
-      public final int d;
+   @Override
+   public abstract ih<cuw> getNoiseBiome(int var1, int var2, int var3, cvf.f var4);
 
-      public c(blz<?> $$0, int $$1, int $$2, int $$3) {
-         this($$0, bim.a($$1), $$2, $$3);
-      }
-
-      public c(blz<?> $$0, bim $$1, int $$2, int $$3) {
-         super($$1);
-         this.b = $$0.f() == bmo.h ? blz.aw : $$0;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public String toString() {
-         return blz.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
-      }
+   public void a(List<String> $$0, hx $$1, cvf.f $$2) {
    }
 }

@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.Set;
 import org.slf4j.Logger;
 
-public class azc extends awb {
+public class azc extends awc {
    private static final Logger b = LogUtils.getLogger();
    private static final Set<String> c = Sets.newHashSet();
    private static final Set<String> d = Sets.newHashSet();
@@ -19,7 +19,7 @@ public class azc extends awb {
    private static final Set<String> h = Sets.newHashSet();
 
    public azc(Schema $$0) {
-      super($$0, bbw.x);
+      super($$0, bbw.y);
    }
 
    protected TypeRewriteRule makeRule() {

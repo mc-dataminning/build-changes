@@ -1,19 +1,18 @@
-import java.util.List;
+public record yn(hx b, int c) implements yb {
+   public static final ahh a = new ahh("debug/poi_ticket_count");
 
-public record yn(List<hx> b) implements ya {
-   public static final ahg a = new ahg("debug/raids");
-
-   public yn(ui $$0) {
-      this($$0.a(ui::e));
+   public yn(uj $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.b, ui::a);
+   public void a(uj $$0) {
+      $$0.a(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public ahg a() {
+   public ahh a() {
       return a;
    }
 }

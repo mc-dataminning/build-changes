@@ -17,8 +17,8 @@ public abstract class ayu extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbw.x);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbw.x);
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbw.y);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbw.y);
       return this.fixTypeEverywhere(
          this.a,
          $$0,

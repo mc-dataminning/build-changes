@@ -1,53 +1,41 @@
-public class fqm extends frv {
-   fqm(fns $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+public class fqm<T extends js> extends fsh {
+   private final fsc a;
+
+   protected fqm(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, fsc $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
       this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+      this.a = $$8;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.v = this.a($$7.e().x(), $$9);
+      this.w = this.a($$7.e().y(), $$9);
+      this.x = this.a($$7.e().z(), $$9);
+      this.D = this.D * 0.75F * $$7.f();
+      int $$10 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$10 * $$7.f(), 1.0F);
+      this.b($$8);
+   }
+
+   protected float a(float $$0, float $$1) {
+      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
    }
 
    @Override
-   public fqz b() {
-      return fqz.b;
+   public frl b() {
+      return frl.b;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * auo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      return this.D * aup.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static class a implements fqy<ka> {
-      private final frq a;
-
-      public a(frq $$0) {
-         this.a = $$0;
-      }
-
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqm $$8 = new fqm($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements fqy<ka> {
-      private final frq a;
-
-      public b(frq $$0) {
-         this.a = $$0;
-      }
-
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqm $$8 = new fqm($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
-      }
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 }

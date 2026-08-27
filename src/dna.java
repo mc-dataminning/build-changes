@@ -1,61 +1,91 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 
-public class dna<T extends dmy> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> c = Maps.newHashMap();
+public enum dna {
+   a {
+      @Override
+      public void a(ane $$0, dnb $$1, List<cau> $$2, int $$3, hx $$4) {
+         hx $$5 = new hx(0, 128, 0);
 
-   public <U extends T> void a(dnf<T, U> $$0, atc<U> $$1) {
-      ObjectIterator var3 = this.b.values().iterator();
+         for (cau $$6 : $$2) {
+            $$6.a($$5);
+         }
 
-      while (var3.hasNext()) {
-         T $$2 = (T)var3.next();
-         U $$3 = (U)$$0.a($$2);
-         if ($$3 != null && $$1.accept($$3).a()) {
-            return;
+         $$1.a(b);
+      }
+   },
+   b {
+      @Override
+      public void a(ane $$0, dnb $$1, List<cau> $$2, int $$3, hx $$4) {
+         if ($$3 < 100) {
+            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
+               $$0.c(3001, new hx(0, 128, 0), 0);
+            }
+         } else {
+            $$1.a(c);
          }
       }
-   }
+   },
+   c {
+      @Override
+      public void a(ane $$0, dnb $$1, List<cau> $$2, int $$3, hx $$4) {
+         int $$5 = 40;
+         boolean $$6 = $$3 % 40 == 0;
+         boolean $$7 = $$3 % 40 == 39;
+         if ($$6 || $$7) {
+            List<dtm.a> $$8 = dtm.a($$0);
+            int $$9 = $$3 / 40;
+            if ($$9 < $$8.size()) {
+               dtm.a $$10 = $$8.get($$9);
+               if ($$6) {
+                  for (cau $$11 : $$2) {
+                     $$11.a(new hx($$10.a(), $$10.d() + 1, $$10.b()));
+                  }
+               } else {
+                  int $$12 = 10;
 
-   public Iterable<T> a() {
-      return Iterables.unmodifiableIterable(this.b.values());
-   }
+                  for (hx $$13 : hx.a(new hx($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new hx($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
+                     $$0.a($$13, false);
+                  }
 
-   public void a(T $$0) {
-      UUID $$1 = $$0.cw();
-      if (this.c.containsKey($$1)) {
-         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
-      } else {
-         this.c.put($$1, $$0);
-         this.b.put($$0.aj(), $$0);
+                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, ctx.a.b);
+                  dva $$14 = new dva(true, ImmutableList.of($$10), new hx(0, 128, 0));
+                  dsc.J.a($$14, $$0, $$0.l().g(), auw.a(), new hx($$10.a(), 45, $$10.b()));
+               }
+            } else if ($$6) {
+               $$1.a(d);
+            }
+         }
       }
-   }
+   },
+   d {
+      @Override
+      public void a(ane $$0, dnb $$1, List<cau> $$2, int $$3, hx $$4) {
+         if ($$3 >= 100) {
+            $$1.a(e);
+            $$1.h();
 
-   public void b(T $$0) {
-      this.c.remove($$0.cw());
-      this.b.remove($$0.aj());
-   }
+            for (cau $$5 : $$2) {
+               $$5.a(null);
+               $$0.a($$5, $$5.dq(), $$5.ds(), $$5.dw(), 6.0F, ctx.a.a);
+               $$5.am();
+            }
+         } else if ($$3 >= 80) {
+            $$0.c(3001, new hx(0, 128, 0), 0);
+         } else if ($$3 == 0) {
+            for (cau $$6 : $$2) {
+               $$6.a(new hx(0, 128, 0));
+            }
+         } else if ($$3 < 5) {
+            $$0.c(3001, new hx(0, 128, 0), 0);
+         }
+      }
+   },
+   e {
+      @Override
+      public void a(ane $$0, dnb $$1, List<cau> $$2, int $$3, hx $$4) {
+      }
+   };
 
-   @Nullable
-   public T a(int $$0) {
-      return (T)this.b.get($$0);
-   }
-
-   @Nullable
-   public T a(UUID $$0) {
-      return this.c.get($$0);
-   }
-
-   public int b() {
-      return this.c.size();
-   }
+   public abstract void a(ane var1, dnb var2, List<cau> var3, int var4, hx var5);
 }

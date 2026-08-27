@@ -8,7 +8,7 @@ public class bcs extends baw {
    private static final double b = 48.0;
 
    public bcs(Schema $$0) {
-      super($$0, false, "Villager Follow Range Fix", bbw.x, "minecraft:villager");
+      super($$0, false, "Villager Follow Range Fix", bbw.y, "minecraft:villager");
    }
 
    @Override

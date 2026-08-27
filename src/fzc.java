@@ -1,15 +1,35 @@
-public class fzc extends fzt<cds, fkh<cds>> {
-   private static final ahg a = new ahg("textures/entity/hoglin/hoglin.png");
+public class fzc extends fyz<cga> {
+   private static final ahh a = new ahh("textures/entity/illager/evoker_fangs.png");
+   private final fkk<cga> f;
 
-   public fzc(fyn.a $$0) {
-      super($$0, new fkh<>($$0.a(fmw.ak)), 0.7F);
+   public fzc(fza.a $$0) {
+      super($$0);
+      this.f = new fkk<>($$0.a(fni.Y));
    }
 
-   public ahg a(cds $$0) {
+   public void a(cga $$0, float $$1, float $$2, eqk $$3, ftt $$4, int $$5) {
+      float $$6 = $$0.a($$2);
+      if ($$6 != 0.0F) {
+         float $$7 = 2.0F;
+         if ($$6 > 0.9F) {
+            $$7 *= (1.0F - $$6) / 0.1F;
+         }
+
+         $$3.a();
+         $$3.a(a.d.rotationDegrees(90.0F - $$0.dB()));
+         $$3.b(-$$7, -$$7, $$7);
+         float $$8 = 0.03125F;
+         $$3.a(0.0, -0.626, 0.0);
+         $$3.b(0.5F, 0.5F, 0.5F);
+         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dB(), $$0.dD());
+         eqo $$9 = $$4.getBuffer(this.f.a(a));
+         this.f.a($$3, $$9, $$5, ges.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   public ahh a(cga $$0) {
       return a;
-   }
-
-   protected boolean b(cds $$0) {
-      return super.a($$0) || $$0.A();
    }
 }

@@ -20,7 +20,7 @@ public class azx extends DataFix {
 
    public TypeRewriteRule makeRule() {
       Type<?> $$0 = this.getInputSchema().getType(bbw.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bbw.z.typeName(), bde.a()));
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bbw.A.typeName(), bde.a()));
       OpticFinder<?> $$2 = $$0.findField("tag");
       OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
       return this.fixTypeEverywhereTyped("ItemRemoveBlockEntityTagFix", $$0, $$3x -> {

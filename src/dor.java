@@ -1,77 +1,105 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class dor implements dof {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dos i = new dos(this);
+public interface dor {
+   Codec<dor> b = dos.b;
+   Codec<ih<dor>> c = ahd.a(ke.ax, b);
+   Codec<dor> d = c.xmap(dos.j::new, $$0 -> (ih)($$0 instanceof dos.j $$1 ? $$1.j() : new ih.a<>($$0)));
 
-   public dor(long $$0) {
-      this.b($$0);
+   double a(dor.b var1);
+
+   void a(double[] var1, dor.a var2);
+
+   dor a(dor.f var1);
+
+   double a();
+
+   double b();
+
+   auj<? extends dor> c();
+
+   default dor a(double $$0, double $$1) {
+      return new dos.g(this, $$0, $$1);
    }
 
-   @Override
-   public auv d() {
-      return new dor(this.g());
+   default dor d() {
+      return dos.a(this, dos.k.a.a);
    }
 
-   @Override
-   public dpd e() {
-      return new dor.a(this.g());
+   default dor e() {
+      return dos.a(this, dos.k.a.b);
    }
 
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw avn.a("LegacyRandomSource", null);
-      } else {
-         this.i.a();
+   default dor f() {
+      return dos.a(this, dos.k.a.c);
+   }
+
+   default dor g() {
+      return dos.a(this, dos.k.a.d);
+   }
+
+   default dor h() {
+      return dos.a(this, dos.k.a.e);
+   }
+
+   default dor i() {
+      return dos.a(this, dos.k.a.f);
+   }
+
+   public interface a {
+      dor.b a(int var1);
+
+      void a(double[] var1, dor var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default dqa d() {
+         return dqa.a();
       }
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw avn.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
+   public static record c(ih<eec.a> b, @Nullable eec c) {
+      public static final Codec<dor.c> a = eec.a.b.xmap($$0 -> new dor.c($$0, null), dor.c::b);
+
+      public c(ih<eec.a> $$0) {
+         this($$0, null);
+      }
+
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
+      }
+
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
       }
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
-   }
-
-   public static class a implements dpd {
-      private final long a;
-
-      public a(long $$0) {
-         this.a = $$0;
+   public interface d extends dor {
+      @Override
+      default void a(double[] $$0, dor.a $$1) {
+         $$1.a($$0, this);
       }
 
       @Override
-      public auv a(int $$0, int $$1, int $$2) {
-         long $$3 = auo.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dor($$4);
+      default dor a(dor.f $$0) {
+         return $$0.apply(this);
       }
+   }
 
-      @Override
-      public auv a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new dor((long)$$1 ^ this.a);
-      }
+   public static record e(int a, int b, int c) implements dor.b {
+   }
 
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+   public interface f {
+      dor apply(dor var1);
+
+      default dor.c a(dor.c $$0) {
+         return $$0;
       }
    }
 }

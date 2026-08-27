@@ -1,35 +1,47 @@
-public class ftq {
-   private final long[] a;
-   private int b;
-   private int c;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-   public ftq(int $$0) {
-      this.a = new long[$$0];
+public class ftq {
+   public final Int2ObjectMap<ghi> a = new Int2ObjectOpenHashMap(256);
+   private final Int2ObjectMap<ghb> b = new Int2ObjectOpenHashMap(256);
+   private final ghh c;
+
+   public ftq(ghh $$0) {
+      this.c = $$0;
    }
 
-   public long a(long $$0) {
-      if (this.b < this.a.length) {
-         this.b++;
-      }
+   public ghb a(cng $$0) {
+      ghb $$1 = this.a($$0.d());
+      return $$1 == null ? this.c.a() : $$1;
+   }
 
-      this.a[this.c] = $$0;
-      this.c = (this.c + 1) % this.a.length;
-      long $$1 = Long.MAX_VALUE;
-      long $$2 = Long.MIN_VALUE;
-      long $$3 = 0L;
+   @Nullable
+   public ghb a(cnb $$0) {
+      return (ghb)this.b.get(b($$0));
+   }
 
-      for (int $$4 = 0; $$4 < this.b; $$4++) {
-         long $$5 = this.a[$$4];
-         $$3 += $$5;
-         $$1 = Math.min($$1, $$5);
-         $$2 = Math.max($$2, $$5);
-      }
+   private static int b(cnb $$0) {
+      return cnb.a($$0);
+   }
 
-      if (this.b > 2) {
-         $$3 -= $$1 + $$2;
-         return $$3 / (long)(this.b - 2);
-      } else {
-         return $$3 > 0L ? (long)this.b / $$3 : 0L;
+   public void a(cnb $$0, ghi $$1) {
+      this.a.put(b($$0), $$1);
+   }
+
+   public ghh a() {
+      return this.c;
+   }
+
+   public void b() {
+      this.b.clear();
+      ObjectIterator var1 = this.a.entrySet().iterator();
+
+      while (var1.hasNext()) {
+         Entry<Integer, ghi> $$0 = (Entry<Integer, ghi>)var1.next();
+         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
       }
    }
 }

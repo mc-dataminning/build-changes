@@ -15,8 +15,8 @@ public class bch extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.B);
-      Type<?> $$1 = this.getOutputSchema().getType(bbw.B);
+      Type<?> $$0 = this.getInputSchema().getType(bbw.C);
+      Type<?> $$1 = this.getOutputSchema().getType(bbw.C);
       OpticFinder<?> $$2 = $$0.findField("SpawnData");
       Type<?> $$3 = $$1.findField("SpawnData").type();
       OpticFinder<?> $$4 = $$0.findField("SpawnPotentials");

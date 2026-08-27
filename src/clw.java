@@ -1,49 +1,46 @@
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class clw extends cmt {
-   public clw(cmt.a $$0) {
-      super($$0);
+public class clw extends cnb implements cof {
+   private static final Map<clv, clw> a = Maps.newEnumMap(clv.class);
+   private final clv b;
+
+   public clw(clv $$0, cnb.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public bkb a(cpj $$0) {
-      ctp $$1 = $$0.q();
-      hx $$2 = $$0.a();
-      djh $$3 = $$1.a_($$2);
-      if (!$$3.a(cws.co) && !$$3.a(cws.F)) {
-         return bkb.e;
-      } else {
-         hx $$4 = $$2.c();
-         if (!$$1.u($$4)) {
-            return bkb.e;
-         } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<blv> $$8 = $$1.a_(null, new elo($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bkb.e;
-            } else {
-               if ($$1 instanceof and) {
-                  can $$9 = new can($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), dnr.t, $$4);
-                  dmt $$10 = ((and)$$1).D();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
-
-               $$0.n().h(1);
-               return bkb.a($$1.B);
-            }
+   public bkc a(cng $$0, cfq $$1, bmo $$2, bkb $$3) {
+      if ($$2 instanceof byy $$4 && $$4.bx() && !$$4.A() && $$4.w() != this.b) {
+         $$4.dL().a($$1, $$4, art.hx, aru.h, 1.0F, 1.0F);
+         if (!$$1.dL().B) {
+            $$4.b(this.b);
+            $$0.h(1);
          }
+
+         return bkc.a($$1.dL().B);
       }
+
+      return bkc.d;
+   }
+
+   public clv d() {
+      return this.b;
+   }
+
+   public static clw a(clv $$0) {
+      return a.get($$0);
    }
 
    @Override
-   public boolean i(cmy $$0) {
-      return true;
+   public boolean a(ctx $$0, dim $$1, boolean $$2, cfq $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.d()), $$2)) {
+         $$0.a(null, $$1.aE_(), art.hx, aru.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

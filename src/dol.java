@@ -1,111 +1,148 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public class dol extends dle {
-   public static final Codec<dol> c = RecordCodecBuilder.create($$0 -> $$0.group(dxj.a.fieldOf("settings").forGetter(dol::g)).apply($$0, $$0.stable(dol::new)));
-   private final dxj d;
-
-   public dol(dxj $$0) {
-      super(new cuz($$0.d()), ac.b($$0::a));
-      this.d = $$0;
-   }
-
-   @Override
-   public dlf a(ij<dzm> $$0, dpe $$1, long $$2) {
-      Stream<ih<dzm>> $$3 = this.d.c().map(il::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
-      return dlf.a($$1, $$2, this.b, $$3);
-   }
-
-   @Override
-   protected Codec<? extends dle> a() {
-      return c;
-   }
-
-   public dxj g() {
-      return this.d;
-   }
-
-   @Override
-   public void a(ank $$0, cui $$1, dpe $$2, dld $$3) {
-   }
-
-   @Override
-   public int a(ctr $$0) {
-      return $$0.J_() + Math.min($$0.K_(), this.d.f().size());
-   }
-
-   @Override
-   public CompletableFuture<dld> a(Executor $$0, dps $$1, dpe $$2, cui $$3, dld $$4) {
-      List<djh> $$5 = this.d.f();
-      hx.a $$6 = new hx.a();
-      doq $$7 = $$4.a(doq.a.c);
-      doq $$8 = $$4.a(doq.a.a);
-
-      for (int $$9 = 0; $$9 < Math.min($$4.K_(), $$5.size()); $$9++) {
-         djh $$10 = $$5.get($$9);
-         if ($$10 != null) {
-            int $$11 = $$4.J_() + $$9;
-
-            for (int $$12 = 0; $$12 < 16; $$12++) {
-               for (int $$13 = 0; $$13 < 16; $$13++) {
-                  $$4.a($$6.d($$12, $$11, $$13), $$10, false);
-                  $$7.a($$12, $$11, $$13, $$10);
-                  $$8.a($$12, $$11, $$13, $$10);
-               }
+public class dol implements dos.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ac.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)b($$2 - 12, $$3 - 12, $$1 - 12);
             }
          }
       }
+   });
+   private final ObjectListIterator<dol.a> h;
+   private final ObjectListIterator<eaq> i;
 
-      return CompletableFuture.completedFuture($$4);
+   public static dol a(cuq $$0, cte $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<dol.a> $$4 = new ObjectArrayList(10);
+      ObjectList<eaq> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != dzz.a).forEach($$5x -> {
+         dzz $$6 = $$5x.h().d();
+
+         for (dzs $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof dzk) {
+                  dzk $$8 = (dzk)$$7;
+                  eax.a $$9 = $$8.b().e();
+                  if ($$9 == eax.a.b) {
+                     $$4.add(new dol.a($$8.f(), $$6, $$8.d()));
+                  }
+
+                  for (eaq $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new dol.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new dol($$4.iterator(), $$5.iterator());
+   }
+
+   @VisibleForTesting
+   public dol(ObjectListIterator<dol.a> $$0, ObjectListIterator<eaq> $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public int a(int $$0, int $$1, doq.a $$2, ctr $$3, dpe $$4) {
-      List<djh> $$5 = this.d.f();
+   public double a(dor.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
 
-      for (int $$6 = Math.min($$5.size(), $$3.al()) - 1; $$6 >= 0; $$6--) {
-         djh $$7 = $$5.get($$6);
-         if ($$7 != null && $$2.e().test($$7)) {
-            return $$3.J_() + $$6 + 1;
-         }
+      while (this.h.hasNext()) {
+         dol.a $$5 = (dol.a)this.h.next();
+         dzg $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a($$8, $$12, $$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+         };
       }
 
-      return $$3.J_();
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         eaq $$13 = (eaq)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
    }
 
    @Override
-   public cub a(int $$0, int $$1, ctr $$2, dpe $$3) {
-      return new cub($$2.J_(), this.d.f().stream().limit((long)$$2.K_()).map($$0x -> $$0x == null ? cws.a.o() : $$0x).toArray(djh[]::new));
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
    }
 
    @Override
-   public void a(List<String> $$0, dpe $$1, hx $$2) {
+   public double b() {
+      return Double.POSITIVE_INFINITY;
    }
 
-   @Override
-   public void a(ank $$0, long $$1, dpe $$2, cuq $$3, cui $$4, dld $$5, dom.a $$6) {
+   private static double a(int $$0, int $$1, int $$2) {
+      double $$3 = aup.g((double)$$0, (double)$$1 / 2.0, (double)$$2);
+      return aup.a($$3, 0.0, 6.0, 1.0, 0.0);
    }
 
-   @Override
-   public void a(ank $$0) {
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = aup.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * aup.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
+      }
    }
 
-   @Override
-   public int f() {
-      return 0;
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
    }
 
-   @Override
-   public int d() {
-      return 384;
+   private static double b(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
    }
 
-   @Override
-   public int e() {
-      return -63;
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = aup.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
+
+   @VisibleForTesting
+   public static record a(dzg a, dzz b, int c) {
    }
 }

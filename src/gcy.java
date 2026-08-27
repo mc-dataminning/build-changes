@@ -1,48 +1,45 @@
-public abstract class gcy<T extends blv, M extends fjx<T>> {
-   private final gai<T, M> a;
+public class gcy extends gdl<bym, fkl<bym>> {
+   private final ftp a;
 
-   public gcy(gai<T, M> $$0) {
-      this.a = $$0;
+   public gcy(gav<bym, fkl<bym>> $$0, ftp $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   protected static <T extends bml> void a(
-      fjx<T> $$0,
-      fjx<T> $$1,
-      ahg $$2,
-      eqb $$3,
-      fth $$4,
-      int $$5,
-      T $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      if (!$$6.ce()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
+   public void a(eqk $$0, ftt $$1, int $$2, bym $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fD();
+      boolean $$11 = $$3.o_();
+      $$0.a();
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
       }
-   }
 
-   protected static <T extends bml> void a(fjx<T> $$0, ahg $$1, eqb $$2, fth $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
-      eqf $$9 = $$3.getBuffer(ftp.e($$1));
-      $$0.a($$2, $$9, $$4, fzo.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
-   }
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.D($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.o_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
+         }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
+      } else {
+         $$0.a(0.06F, 0.27F, -0.5F);
+      }
 
-   public M c() {
-      return this.a.a();
-   }
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
+      }
 
-   protected ahg a(T $$0) {
-      return this.a.a($$0);
+      cng $$14 = $$3.c(bmd.a);
+      this.a.a($$3, $$14, cnd.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
-
-   public abstract void a(eqb var1, fth var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

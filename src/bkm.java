@@ -1,9 +1,19 @@
-import javax.annotation.Nullable;
+public final class bkm implements bkg {
+   private final vg a;
+   private final cjp b;
 
-public interface bkm extends bju {
-   int[] a(ic var1);
+   public bkm(cjp $$0, vg $$1) {
+      this.b = $$0;
+      this.a = $$1;
+   }
 
-   boolean a(int var1, cmy var2, @Nullable ic var3);
+   @Override
+   public vg Q_() {
+      return this.a;
+   }
 
-   boolean b(int var1, cmy var2, ic var3);
+   @Override
+   public cij createMenu(int $$0, cfp $$1, cfq $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
+   }
 }

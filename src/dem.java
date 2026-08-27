@@ -1,76 +1,73 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dem extends cwq {
+public class dem extends cwy {
    public static final MapCodec<dem> a = b(dem::new);
-   private static final vf d = vf.c("container.stonecutter");
-   public static final dkb b = dal.aE;
-   protected static final emm c = cwq.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final ic[] d = ic.values();
 
    @Override
    public MapCodec<dem> a() {
       return a;
    }
 
-   public dem(djg.d $$0) {
+   protected dem(djo.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ic.c));
    }
 
    @Override
-   public djh a(cph $$0) {
-      return this.o().a(b, $$0.g().g());
-   }
-
-   @Override
-   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
-      if ($$1.B) {
-         return bkb.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(asc.ay);
-         return bkb.b;
+   public void b(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
-   @Nullable
    @Override
-   public bke b(djh $$0, ctp $$1, hx $$2) {
-      return new bkk(($$2x, $$3, $$4) -> new cka($$2x, $$3, cim.a($$1, $$2)), d);
+   public void a(djp $$0, ctx $$1, hx $$2, cwy $$3, hx $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return c;
+   protected void a(ctx $$0, hx $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, cxa.aP.o(), 2);
+         $$0.a(null, $$1, art.yo, aru.e, 1.0F, 1.0F);
+      }
    }
 
-   @Override
-   public boolean g_(djh $$0) {
-      return true;
-   }
+   private boolean b(ctx $$0, hx $$1) {
+      return hx.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (ic $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return true;
+         } else {
+            djp $$3 = $$0.a_($$2);
+            eez $$4 = $$0.b_($$2);
+            if (!$$4.a(asn.a)) {
+               return false;
+            } else {
+               if ($$3.b() instanceof cxf $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
+                  return true;
+               }
 
-   @Override
-   public dcv b_(djh $$0) {
-      return dcv.c;
-   }
+               if ($$3.b() instanceof dbn) {
+                  $$0.a($$2, cxa.a.o(), 3);
+               } else {
+                  if (!$$3.a(cxa.mc) && !$$3.a(cxa.md) && !$$3.a(cxa.bw) && !$$3.a(cxa.bx)) {
+                     return false;
+                  }
 
-   @Override
-   public djh a(djh $$0, ddc $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
+                  dhd $$7 = $$3.t() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, cxa.a.o(), 3);
+               }
 
-   @Override
-   public djh a(djh $$0, dbm $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
-      return false;
+               return true;
+            }
+         }
+      }) > 1;
    }
 }

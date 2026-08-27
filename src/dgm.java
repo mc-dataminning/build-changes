@@ -1,56 +1,54 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgm {
-   final String a;
+public class dgm extends cwm {
+   public static final MapCodec<dgm> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dke.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, dgm::new)
+   );
+   public static final dkp f = dkf.aT;
+   private final int g;
 
-   public dgm(String $$0) {
-      this.a = $$0;
+   @Override
+   public MapCodec<dgm> a() {
+      return e;
    }
 
-   public static ahg a(ahf<dgm> $$0, boolean $$1) {
-      String $$2 = $$1 ? "banner" : "shield";
-      return $$0.a().d("entity/" + $$2 + "/");
+   protected dgm(int $$0, dke $$1, djo.d $$2) {
+      super($$2, $$1);
+      this.k(this.E.b().a(f, Integer.valueOf(0)));
+      this.g = $$0;
    }
 
-   public String a() {
-      return this.a;
+   @Override
+   protected int b(ctx $$0, hx $$1) {
+      int $$2 = Math.min(a($$0, c.a($$1), blw.class), this.g);
+      if ($$2 > 0) {
+         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
+         return aup.f($$3 * 15.0F);
+      } else {
+         return 0;
+      }
    }
 
-   @Nullable
-   public static ih<dgm> a(String $$0) {
-      return kd.am.h().filter($$1 -> $$1.a().a.equals($$0)).findAny().orElse(null);
+   @Override
+   protected int g(djp $$0) {
+      return $$0.c(f);
    }
 
-   public static class a {
-      private final List<Pair<ih<dgm>, clm>> a = Lists.newArrayList();
+   @Override
+   protected djp a(djp $$0, int $$1) {
+      return $$0.a(f, Integer.valueOf($$1));
+   }
 
-      public dgm.a a(ahf<dgm> $$0, clm $$1) {
-         return this.a(kd.am.f($$0), $$1);
-      }
+   @Override
+   protected int b() {
+      return 10;
+   }
 
-      public dgm.a a(ih<dgm> $$0, clm $$1) {
-         return this.a(Pair.of($$0, $$1));
-      }
-
-      public dgm.a a(Pair<ih<dgm>, clm> $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public st a() {
-         st $$0 = new st();
-
-         for (Pair<ih<dgm>, clm> $$1 : this.a) {
-            sn $$2 = new sn();
-            $$2.a("Pattern", ((dgm)((ih)$$1.getFirst()).a()).a);
-            $$2.a("Color", ((clm)$$1.getSecond()).a());
-            $$0.add($$2);
-         }
-
-         return $$0;
-      }
+   @Override
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(f);
    }
 }

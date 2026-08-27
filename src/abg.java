@@ -1,74 +1,78 @@
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class abg implements xf<za> {
+public class abg implements xg<zb> {
    private final double a;
    private final double b;
    private final double c;
-   private final float d;
-   private final float e;
-   private final Set<bmz> f;
-   private final int g;
+   private final int d;
+   private final ee.a e;
+   private final ee.a f;
+   private final boolean g;
 
-   public abg(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bmz> $$5, int $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   public abg(ee.a $$0, double $$1, double $$2, double $$3) {
+      this.e = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = 0;
+      this.g = false;
+      this.f = null;
    }
 
-   public abg(ui $$0) {
+   public abg(ee.a $$0, blw $$1, ee.a $$2) {
+      this.e = $$0;
+      this.d = $$1.aj();
+      this.f = $$2;
+      emc $$3 = $$2.a($$1);
+      this.a = $$3.c;
+      this.b = $$3.d;
+      this.c = $$3.e;
+      this.g = true;
+   }
+
+   public abg(uj $$0) {
+      this.e = $$0.b(ee.a.class);
       this.a = $$0.readDouble();
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = bmz.a($$0.readUnsignedByte());
-      this.g = $$0.n();
+      this.g = $$0.readBoolean();
+      if (this.g) {
+         this.d = $$0.n();
+         this.f = $$0.b(ee.a.class);
+      } else {
+         this.d = 0;
+         this.f = null;
+      }
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
+      $$0.a(this.e);
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(bmz.a(this.f));
-      $$0.c(this.g);
+      $$0.a(this.g);
+      if (this.g) {
+         $$0.c(this.d);
+         $$0.a(this.f);
+      }
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
-   }
-
-   public double d() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
+   public ee.a a() {
       return this.e;
    }
 
-   public int h() {
-      return this.g;
-   }
-
-   public Set<bmz> i() {
-      return this.f;
+   @Nullable
+   public emc a(ctx $$0) {
+      if (this.g) {
+         blw $$1 = $$0.a(this.d);
+         return $$1 == null ? new emc(this.a, this.b, this.c) : this.f.a($$1);
+      } else {
+         return new emc(this.a, this.b, this.c);
+      }
    }
 }

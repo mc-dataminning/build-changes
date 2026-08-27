@@ -20,10 +20,10 @@ public class axx extends DataFix {
    protected TypeRewriteRule makeRule() {
       Schema $$0 = this.getInputSchema();
       Type<?> $$1 = this.getInputSchema().getType(bbw.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bbw.z.typeName(), bde.a()));
+      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bbw.A.typeName(), bde.a()));
       OpticFinder<?> $$3 = $$1.findField("tag");
       return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bbw.x), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
+         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bbw.y), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
          new TypeRewriteRule[]{
             this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(bbw.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
             this.fixTypeEverywhereTyped("EffectDurationItem", $$1, $$2x -> {

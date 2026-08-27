@@ -8,24 +8,24 @@ public class cu extends cv<cu.a> {
       return cu.a.a;
    }
 
-   public void a(ane $$0, cmy $$1) {
+   public void a(anf $$0, cng $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static record a(Optional<bb> b, Optional<ca> c) implements cv.a {
       public static final Codec<cu.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atw.a(bp.b, "player").forGetter(cu.a::a), atw.a(ca.a, "item").forGetter(cu.a::b)).apply($$0, cu.a::new)
+         $$0 -> $$0.group(atx.a(bp.b, "player").forGetter(cu.a::a), atx.a(ca.a, "item").forGetter(cu.a::b)).apply($$0, cu.a::new)
       );
 
       public static an<cu.a> a(Optional<ca> $$0) {
          return am.G.a(new cu.a(Optional.empty(), $$0));
       }
 
-      public static an<cu.a> a(cto $$0) {
+      public static an<cu.a> a(ctw $$0) {
          return am.G.a(new cu.a(Optional.empty(), Optional.of(ca.a.a().a($$0).b())));
       }
 
-      public boolean a(cmy $$0) {
+      public boolean a(cng $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

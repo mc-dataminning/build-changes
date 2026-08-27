@@ -1,83 +1,13 @@
-public abstract class fal implements far {
-   private int c;
-   private int d;
-   protected int a;
-   protected int b;
+import org.joml.Matrix4f;
 
-   public fal(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
+public class fal extends fak {
+   public static final fal a = new fal();
+
+   public fal() {
+      super(fai.b(new ahh("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
    }
 
    @Override
-   public void n(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.B() + ($$0 - this.B());
-         $$1.n($$2);
-      });
-      this.c = $$0;
-   }
-
-   @Override
-   public void o(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.C() + ($$0 - this.C());
-         $$1.o($$2);
-      });
-      this.d = $$0;
-   }
-
-   @Override
-   public int B() {
-      return this.c;
-   }
-
-   @Override
-   public int C() {
-      return this.d;
-   }
-
-   @Override
-   public int w() {
-      return this.a;
-   }
-
-   @Override
-   public int u() {
-      return this.b;
-   }
-
-   protected abstract static class a {
-      public final fas a;
-      public final fat.a b;
-
-      protected a(fas $$0, fat $$1) {
-         this.a = $$0;
-         this.b = $$1.h();
-      }
-
-      public int a() {
-         return this.a.u() + this.b.b + this.b.d;
-      }
-
-      public int b() {
-         return this.a.w() + this.b.a + this.b.c;
-      }
-
-      public void a(int $$0, int $$1) {
-         float $$2 = (float)this.b.a;
-         float $$3 = (float)($$1 - this.a.w() - this.b.c);
-         int $$4 = (int)auo.i(this.b.e, $$2, $$3);
-         this.a.n($$4 + $$0);
-      }
-
-      public void b(int $$0, int $$1) {
-         float $$2 = (float)this.b.b;
-         float $$3 = (float)($$1 - this.a.u() - this.b.d);
-         int $$4 = Math.round(auo.i(this.b.f, $$2, $$3));
-         this.a.o($$4 + $$0);
-      }
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, eqo $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
 }

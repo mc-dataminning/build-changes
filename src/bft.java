@@ -22,7 +22,7 @@ public class bft extends bde {
          $$1,
          "minecraft:trial_spawner",
          () -> DSL.optionalFields(
-               "spawn_potentials", DSL.list(DSL.fields("data", DSL.fields("entity", bbw.w.in($$0)))), "spawn_data", DSL.fields("entity", bbw.w.in($$0))
+               "spawn_potentials", DSL.list(DSL.fields("data", DSL.fields("entity", bbw.x.in($$0)))), "spawn_data", DSL.fields("entity", bbw.x.in($$0))
             )
       );
       return $$1;

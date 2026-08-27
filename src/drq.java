@@ -1,111 +1,57 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class drq {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
-
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+public class drq extends drr {
+   public drq(Codec<dun> $$0) {
+      super($$0);
    }
 
-   protected static boolean a(cuk $$0, hx $$1, int $$2) {
-      if (b($$0, $$1)) {
+   @Override
+   protected boolean a(cty $$0, auw $$1, hx $$2, djp $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
          return false;
       } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
+         ic $$4 = ic.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<ic> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(auo.b($$5) * (float)$$2);
-            int $$7 = (int)(auo.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
+         for (ic $$8 : $$6.subList(0, $$5)) {
+            hx.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            ic $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(ic.b);
+               ic[] $$13 = new ic[]{$$8, ic.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(ic.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(ic.b);
+               }
             }
          }
 
          return true;
       }
-   }
-
-   protected static boolean a(ctq $$0, hx $$1) {
-      return $$0.a($$1, drq::c);
-   }
-
-   protected static boolean b(ctq $$0, hx $$1) {
-      return $$0.a($$1, drq::e);
-   }
-
-   protected static void a(ic $$0, int $$1, boolean $$2, Consumer<djh> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dke.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dke.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dke.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dke.a : dke.b));
-      }
-   }
-
-   protected static void a(ctq $$0, hx $$1, ic $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         hx.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(cws.st)) {
-               $$3x = $$3x.a(dch.d, Boolean.valueOf($$0.z($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
-   }
-
-   protected static boolean c(ctq $$0, hx $$1) {
-      djh $$2 = $$0.a_($$1);
-      if ($$2.a(ash.br)) {
-         $$0.a($$1, cws.su.o(), 2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static djh a(ic $$0, dke $$1) {
-      return cws.st.o().a(dch.b, $$0).a(dch.c, $$1);
-   }
-
-   public static boolean a(djh $$0) {
-      return b($$0) || $$0.a(cws.H);
-   }
-
-   public static boolean b(djh $$0) {
-      return $$0.a(cws.su) || $$0.a(ash.br);
-   }
-
-   public static boolean c(djh $$0) {
-      return $$0.i() || $$0.a(cws.G);
-   }
-
-   public static boolean d(djh $$0) {
-      return !$$0.i() && !$$0.a(cws.G);
-   }
-
-   public static boolean e(djh $$0) {
-      return $$0.i() || $$0.a(cws.G) || $$0.a(cws.H);
    }
 }

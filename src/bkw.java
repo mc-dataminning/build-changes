@@ -1,93 +1,247 @@
-public interface bkw {
-   ahf<bkv> a = ahf.a(ke.r, new ahg("in_fire"));
-   ahf<bkv> b = ahf.a(ke.r, new ahg("lightning_bolt"));
-   ahf<bkv> c = ahf.a(ke.r, new ahg("on_fire"));
-   ahf<bkv> d = ahf.a(ke.r, new ahg("lava"));
-   ahf<bkv> e = ahf.a(ke.r, new ahg("hot_floor"));
-   ahf<bkv> f = ahf.a(ke.r, new ahg("in_wall"));
-   ahf<bkv> g = ahf.a(ke.r, new ahg("cramming"));
-   ahf<bkv> h = ahf.a(ke.r, new ahg("drown"));
-   ahf<bkv> i = ahf.a(ke.r, new ahg("starve"));
-   ahf<bkv> j = ahf.a(ke.r, new ahg("cactus"));
-   ahf<bkv> k = ahf.a(ke.r, new ahg("fall"));
-   ahf<bkv> l = ahf.a(ke.r, new ahg("fly_into_wall"));
-   ahf<bkv> m = ahf.a(ke.r, new ahg("out_of_world"));
-   ahf<bkv> n = ahf.a(ke.r, new ahg("generic"));
-   ahf<bkv> o = ahf.a(ke.r, new ahg("magic"));
-   ahf<bkv> p = ahf.a(ke.r, new ahg("wither"));
-   ahf<bkv> q = ahf.a(ke.r, new ahg("dragon_breath"));
-   ahf<bkv> r = ahf.a(ke.r, new ahg("dry_out"));
-   ahf<bkv> s = ahf.a(ke.r, new ahg("sweet_berry_bush"));
-   ahf<bkv> t = ahf.a(ke.r, new ahg("freeze"));
-   ahf<bkv> u = ahf.a(ke.r, new ahg("stalagmite"));
-   ahf<bkv> v = ahf.a(ke.r, new ahg("falling_block"));
-   ahf<bkv> w = ahf.a(ke.r, new ahg("falling_anvil"));
-   ahf<bkv> x = ahf.a(ke.r, new ahg("falling_stalactite"));
-   ahf<bkv> y = ahf.a(ke.r, new ahg("sting"));
-   ahf<bkv> z = ahf.a(ke.r, new ahg("mob_attack"));
-   ahf<bkv> A = ahf.a(ke.r, new ahg("mob_attack_no_aggro"));
-   ahf<bkv> B = ahf.a(ke.r, new ahg("player_attack"));
-   ahf<bkv> C = ahf.a(ke.r, new ahg("arrow"));
-   ahf<bkv> D = ahf.a(ke.r, new ahg("trident"));
-   ahf<bkv> E = ahf.a(ke.r, new ahg("mob_projectile"));
-   ahf<bkv> F = ahf.a(ke.r, new ahg("fireworks"));
-   ahf<bkv> G = ahf.a(ke.r, new ahg("fireball"));
-   ahf<bkv> H = ahf.a(ke.r, new ahg("unattributed_fireball"));
-   ahf<bkv> I = ahf.a(ke.r, new ahg("wither_skull"));
-   ahf<bkv> J = ahf.a(ke.r, new ahg("thrown"));
-   ahf<bkv> K = ahf.a(ke.r, new ahg("indirect_magic"));
-   ahf<bkv> L = ahf.a(ke.r, new ahg("thorns"));
-   ahf<bkv> M = ahf.a(ke.r, new ahg("explosion"));
-   ahf<bkv> N = ahf.a(ke.r, new ahg("player_explosion"));
-   ahf<bkv> O = ahf.a(ke.r, new ahg("sonic_boom"));
-   ahf<bkv> P = ahf.a(ke.r, new ahg("bad_respawn_point"));
-   ahf<bkv> Q = ahf.a(ke.r, new ahg("outside_border"));
-   ahf<bkv> R = ahf.a(ke.r, new ahg("generic_kill"));
+import javax.annotation.Nullable;
 
-   static void a(pe<bkv> $$0) {
-      $$0.a(a, new bkv("inFire", 0.1F, bkr.d));
-      $$0.a(b, new bkv("lightningBolt", 0.1F));
-      $$0.a(c, new bkv("onFire", 0.0F, bkr.d));
-      $$0.a(d, new bkv("lava", 0.1F, bkr.d));
-      $$0.a(e, new bkv("hotFloor", 0.1F, bkr.d));
-      $$0.a(f, new bkv("inWall", 0.0F));
-      $$0.a(g, new bkv("cramming", 0.0F));
-      $$0.a(h, new bkv("drown", 0.0F, bkr.c));
-      $$0.a(i, new bkv("starve", 0.0F));
-      $$0.a(j, new bkv("cactus", 0.1F));
-      $$0.a(k, new bkv("fall", bks.b, 0.0F, bkr.a, bkx.b));
-      $$0.a(l, new bkv("flyIntoWall", 0.0F));
-      $$0.a(m, new bkv("outOfWorld", 0.0F));
-      $$0.a(n, new bkv("generic", 0.0F));
-      $$0.a(o, new bkv("magic", 0.0F));
-      $$0.a(p, new bkv("wither", 0.0F));
-      $$0.a(q, new bkv("dragonBreath", 0.0F));
-      $$0.a(r, new bkv("dryout", 0.1F));
-      $$0.a(s, new bkv("sweetBerryBush", 0.1F, bkr.e));
-      $$0.a(t, new bkv("freeze", 0.0F, bkr.f));
-      $$0.a(u, new bkv("stalagmite", 0.0F));
-      $$0.a(v, new bkv("fallingBlock", 0.1F));
-      $$0.a(w, new bkv("anvil", 0.1F));
-      $$0.a(x, new bkv("fallingStalactite", 0.1F));
-      $$0.a(y, new bkv("sting", 0.1F));
-      $$0.a(z, new bkv("mob", 0.1F));
-      $$0.a(A, new bkv("mob", 0.1F));
-      $$0.a(B, new bkv("player", 0.1F));
-      $$0.a(C, new bkv("arrow", 0.1F));
-      $$0.a(D, new bkv("trident", 0.1F));
-      $$0.a(E, new bkv("mob", 0.1F));
-      $$0.a(F, new bkv("fireworks", 0.1F));
-      $$0.a(H, new bkv("onFire", 0.1F, bkr.d));
-      $$0.a(G, new bkv("fireball", 0.1F, bkr.d));
-      $$0.a(I, new bkv("witherSkull", 0.1F));
-      $$0.a(J, new bkv("thrown", 0.1F));
-      $$0.a(K, new bkv("indirectMagic", 0.0F));
-      $$0.a(L, new bkv("thorns", 0.1F, bkr.b));
-      $$0.a(M, new bkv("explosion", bks.c, 0.1F));
-      $$0.a(N, new bkv("explosion.player", bks.c, 0.1F));
-      $$0.a(O, new bkv("sonic_boom", bks.c, 0.0F));
-      $$0.a(P, new bkv("badRespawnPoint", bks.c, 0.1F, bkr.a, bkx.c));
-      $$0.a(Q, new bkv("outsideBorder", 0.0F));
-      $$0.a(R, new bkv("genericKill", 0.0F));
+public class bkw {
+   private final it<bkx> a;
+   private final bkv b;
+   private final bkv c;
+   private final bkv d;
+   private final bkv e;
+   private final bkv f;
+   private final bkv g;
+   private final bkv h;
+   private final bkv i;
+   private final bkv j;
+   private final bkv k;
+   private final bkv l;
+   private final bkv m;
+   private final bkv n;
+   private final bkv o;
+   private final bkv p;
+   private final bkv q;
+   private final bkv r;
+   private final bkv s;
+   private final bkv t;
+   private final bkv u;
+   private final bkv v;
+   private final bkv w;
+   private final bkv x;
+
+   public bkw(iu $$0) {
+      this.a = $$0.d(ke.r);
+      this.b = this.a(bky.a);
+      this.c = this.a(bky.b);
+      this.d = this.a(bky.c);
+      this.e = this.a(bky.d);
+      this.f = this.a(bky.e);
+      this.g = this.a(bky.f);
+      this.h = this.a(bky.g);
+      this.i = this.a(bky.h);
+      this.j = this.a(bky.i);
+      this.k = this.a(bky.j);
+      this.l = this.a(bky.k);
+      this.m = this.a(bky.l);
+      this.n = this.a(bky.m);
+      this.o = this.a(bky.n);
+      this.p = this.a(bky.o);
+      this.q = this.a(bky.p);
+      this.r = this.a(bky.q);
+      this.s = this.a(bky.r);
+      this.t = this.a(bky.s);
+      this.u = this.a(bky.t);
+      this.v = this.a(bky.u);
+      this.w = this.a(bky.S);
+      this.x = this.a(bky.T);
+   }
+
+   private bkv a(ahg<bkx> $$0) {
+      return new bkv(this.a.f($$0));
+   }
+
+   private bkv a(ahg<bkx> $$0, @Nullable blw $$1) {
+      return new bkv(this.a.f($$0), $$1);
+   }
+
+   private bkv a(ahg<bkx> $$0, @Nullable blw $$1, @Nullable blw $$2) {
+      return new bkv(this.a.f($$0), $$1, $$2);
+   }
+
+   public bkv a() {
+      return this.b;
+   }
+
+   public bkv b() {
+      return this.c;
+   }
+
+   public bkv c() {
+      return this.d;
+   }
+
+   public bkv d() {
+      return this.e;
+   }
+
+   public bkv e() {
+      return this.f;
+   }
+
+   public bkv f() {
+      return this.g;
+   }
+
+   public bkv g() {
+      return this.h;
+   }
+
+   public bkv h() {
+      return this.i;
+   }
+
+   public bkv i() {
+      return this.j;
+   }
+
+   public bkv j() {
+      return this.k;
+   }
+
+   public bkv k() {
+      return this.l;
+   }
+
+   public bkv l() {
+      return this.m;
+   }
+
+   public bkv m() {
+      return this.n;
+   }
+
+   public bkv n() {
+      return this.o;
+   }
+
+   public bkv o() {
+      return this.p;
+   }
+
+   public bkv p() {
+      return this.q;
+   }
+
+   public bkv q() {
+      return this.r;
+   }
+
+   public bkv r() {
+      return this.s;
+   }
+
+   public bkv s() {
+      return this.t;
+   }
+
+   public bkv t() {
+      return this.u;
+   }
+
+   public bkv u() {
+      return this.v;
+   }
+
+   public bkv a(blw $$0) {
+      return this.a(bky.v, $$0);
+   }
+
+   public bkv b(blw $$0) {
+      return this.a(bky.w, $$0);
+   }
+
+   public bkv c(blw $$0) {
+      return this.a(bky.x, $$0);
+   }
+
+   public bkv a(bmo $$0) {
+      return this.a(bky.y, $$0);
+   }
+
+   public bkv b(bmo $$0) {
+      return this.a(bky.z, $$0);
+   }
+
+   public bkv c(bmo $$0) {
+      return this.a(bky.A, $$0);
+   }
+
+   public bkv a(cfq $$0) {
+      return this.a(bky.B, $$0);
+   }
+
+   public bkv a(cfw $$0, @Nullable blw $$1) {
+      return this.a(bky.C, $$0, $$1);
+   }
+
+   public bkv a(blw $$0, @Nullable blw $$1) {
+      return this.a(bky.D, $$0, $$1);
+   }
+
+   public bkv a(blw $$0, @Nullable bmo $$1) {
+      return this.a(bky.E, $$0, $$1);
+   }
+
+   public bkv b(blw $$0, @Nullable bmo $$1) {
+      return this.a(bky.F, $$0, $$1);
+   }
+
+   public bkv c(blw $$0, @Nullable bmo $$1) {
+      return this.a(bky.G, $$0, $$1);
+   }
+
+   public bkv a(cgd $$0, @Nullable blw $$1) {
+      return this.a(bky.H, $$0, $$1);
+   }
+
+   public bkv a(cgc $$0, @Nullable blw $$1) {
+      return $$1 == null ? this.a(bky.J, $$0) : this.a(bky.I, $$0, $$1);
+   }
+
+   public bkv a(cgw $$0, blw $$1) {
+      return this.a(bky.K, $$0, $$1);
+   }
+
+   public bkv b(blw $$0, @Nullable blw $$1) {
+      return this.a(bky.L, $$0, $$1);
+   }
+
+   public bkv c(blw $$0, @Nullable blw $$1) {
+      return this.a(bky.M, $$0, $$1);
+   }
+
+   public bkv d(blw $$0) {
+      return this.a(bky.N, $$0);
+   }
+
+   public bkv a(@Nullable ctp $$0) {
+      return $$0 != null ? this.d($$0.g(), $$0.f()) : this.d(null, null);
+   }
+
+   public bkv d(@Nullable blw $$0, @Nullable blw $$1) {
+      return this.a($$1 != null && $$0 != null ? bky.P : bky.O, $$0, $$1);
+   }
+
+   public bkv e(blw $$0) {
+      return this.a(bky.Q, $$0);
+   }
+
+   public bkv a(emc $$0) {
+      return new bkv(this.a.f(bky.R), $$0);
+   }
+
+   public bkv v() {
+      return this.w;
+   }
+
+   public bkv w() {
+      return this.x;
    }
 }

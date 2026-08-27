@@ -1,28 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class dvj extends dvf {
-   public static final Codec<dvj> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dvj::new));
+public class dvj extends dvh {
+   public static final Codec<dvj> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
+               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
+               a()
+            )
+            .apply($$0, dvj::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   public dvj(bjg $$0, bjg $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public dvj(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
+      super($$5);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
    @Override
-   protected dvl<?> a() {
-      return dvl.f;
+   protected dvi<?> b() {
+      return dvi.b;
    }
 
    @Override
-   protected void a(ctv $$0, dvk.b $$1, auv $$2, duu $$3, int $$4, dvk.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+   public int a(int $$0, int $$1) {
+      if ($$1 < this.e) {
+         return this.g;
+      } else {
+         return $$1 >= $$0 - this.f ? this.i : this.h;
       }
-   }
-
-   @Override
-   protected boolean a(auv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return auo.k((float)$$1 + 0.5F) + auo.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

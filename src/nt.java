@@ -30,8 +30,8 @@ public class nt implements kk {
       return this;
    }
 
-   private sn a(String $$0, sn $$1) {
-      sn $$2 = $$1;
+   private so a(String $$0, so $$1) {
+      so $$2 = $$1;
 
       for (nt.a $$3 : this.g) {
          $$2 = $$3.apply($$0, $$2);
@@ -81,10 +81,10 @@ public class nt implements kk {
          nt.c var10;
          try (BufferedReader $$2 = Files.newBufferedReader($$0)) {
             String $$3 = IOUtils.toString($$2);
-            sn $$4 = this.a($$1, tc.a($$3));
+            so $$4 = this.a($$1, td.a($$3));
             ByteArrayOutputStream $$5 = new ByteArrayOutputStream();
             HashingOutputStream $$6 = new HashingOutputStream(Hashing.sha1(), $$5);
-            ta.a($$4, $$6);
+            tb.a($$4, $$6);
             byte[] $$7 = $$5.toByteArray();
             HashCode $$8 = $$6.hash();
             var10 = new nt.c($$1, $$7, $$8);
@@ -108,7 +108,7 @@ public class nt implements kk {
 
    @FunctionalInterface
    public interface a {
-      sn apply(String var1, sn var2);
+      so apply(String var1, so var2);
    }
 
    static class b extends RuntimeException {

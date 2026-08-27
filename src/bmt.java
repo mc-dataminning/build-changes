@@ -1,15 +1,7 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
-
-public interface bmt {
-   @Nullable
-   UUID d();
-
-   ctg e();
-
-   @Nullable
-   default bml R_() {
-      UUID $$0 = this.d();
-      return $$0 == null ? null : this.e().b($$0);
-   }
+public class bmt {
+   public static final bmt a = new bmt();
+   public static final bmt b = new bmt();
+   public static final bmt c = new bmt();
+   public static final bmt d = new bmt();
+   public static final bmt e = new bmt();
 }

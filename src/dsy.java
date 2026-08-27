@@ -1,60 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dsy extends dru<dup> {
+public class dsy extends dsc<dup> {
    public dsy(Codec<dup> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drw<dup> $$0) {
-      cuk $$1 = $$0.b();
+   public boolean a(dse<dup> $$0) {
+      cty $$1 = $$0.b();
       hx $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
+      auw $$3 = $$0.d();
+      dup $$4 = $$0.f();
+      Optional<ic> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
          return false;
       } else {
-         dup $$3 = $$0.f();
-         auv $$4 = $$0.d();
-         ddk $$5 = ddk.b();
-         int $$6 = $$3.f() + $$3.d();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
-            }
-
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
-         }
-
-         hx $$11 = $$2.d();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
-            $$1.a($$2, cws.qU.o(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            hx $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ic.b)) {
-               $$1.a($$14, cws.qV.o().a(ddj.d, Boolean.valueOf(true)), 3);
-            }
-         }
-
+         hx $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && dry.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         dry.a($$1, $$2, $$5.get(), $$7, false);
          return true;
       }
    }
 
-   private boolean a(ctq $$0, hx $$1) {
-      djh $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof ddf) {
-         return true;
+   private static Optional<ic> a(cty $$0, hx $$1, auw $$2) {
+      boolean $$3 = dry.b($$0.a_($$1.c()));
+      boolean $$4 = dry.b($$0.a_($$1.d()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? ic.a : ic.b);
+      } else if ($$3) {
+         return Optional.of(ic.a);
       } else {
-         return !$$2.i() && (!$$2.a(cws.G) || !$$2.u().b()) ? false : ic.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
+         return $$4 ? Optional.of(ic.b) : Optional.empty();
+      }
+   }
+
+   private static void a(cty $$0, auw $$1, hx $$2, dup $$3) {
+      dry.c($$0, $$2);
+
+      for (ic $$4 : ic.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            hx $$5 = $$2.a($$4);
+            dry.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               hx $$6 = $$5.a(ic.b($$1));
+               dry.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  hx $$7 = $$6.a(ic.b($$1));
+                  dry.c($$0, $$7);
+               }
+            }
+         }
       }
    }
 }

@@ -1,56 +1,141 @@
-public class aeh implements xf<adj> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
+public abstract class aeh implements xg<adk> {
+   protected final double a;
+   protected final double b;
+   protected final double c;
+   protected final float d;
+   protected final float e;
+   protected final boolean f;
+   protected final boolean g;
+   protected final boolean h;
 
-   public aeh(blv $$0) {
-      this.a = $$0.dr();
-      this.b = $$0.dt();
-      this.c = $$0.dx();
-      this.d = $$0.dC();
-      this.e = $$0.dE();
+   protected aeh(double $$0, double $$1, double $$2, float $$3, float $$4, boolean $$5, boolean $$6, boolean $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 
-   public aeh(ui $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-   }
-
-   @Override
-   public void a(ui $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-   }
-
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
+   public double a(double $$0) {
+      return this.g ? this.a : $$0;
    }
 
-   public double d() {
-      return this.b;
+   public double b(double $$0) {
+      return this.g ? this.b : $$0;
    }
 
-   public double e() {
-      return this.c;
+   public double c(double $$0) {
+      return this.g ? this.c : $$0;
    }
 
-   public float f() {
-      return this.d;
+   public float a(float $$0) {
+      return this.h ? this.d : $$0;
    }
 
-   public float g() {
-      return this.e;
+   public float b(float $$0) {
+      return this.h ? this.e : $$0;
+   }
+
+   public boolean a() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g;
+   }
+
+   public boolean e() {
+      return this.h;
+   }
+
+   public static class a extends aeh {
+      public a(double $$0, double $$1, double $$2, boolean $$3) {
+         super($$0, $$1, $$2, 0.0F, 0.0F, $$3, true, false);
+      }
+
+      public static aeh.a b(uj $$0) {
+         double $$1 = $$0.readDouble();
+         double $$2 = $$0.readDouble();
+         double $$3 = $$0.readDouble();
+         boolean $$4 = $$0.readUnsignedByte() != 0;
+         return new aeh.a($$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void a(uj $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.k(this.f ? 1 : 0);
+      }
+   }
+
+   public static class b extends aeh {
+      public b(double $$0, double $$1, double $$2, float $$3, float $$4, boolean $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, true, true);
+      }
+
+      public static aeh.b b(uj $$0) {
+         double $$1 = $$0.readDouble();
+         double $$2 = $$0.readDouble();
+         double $$3 = $$0.readDouble();
+         float $$4 = $$0.readFloat();
+         float $$5 = $$0.readFloat();
+         boolean $$6 = $$0.readUnsignedByte() != 0;
+         return new aeh.b($$1, $$2, $$3, $$4, $$5, $$6);
+      }
+
+      @Override
+      public void a(uj $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+         $$0.a(this.e);
+         $$0.k(this.f ? 1 : 0);
+      }
+   }
+
+   public static class c extends aeh {
+      public c(float $$0, float $$1, boolean $$2) {
+         super(0.0, 0.0, 0.0, $$0, $$1, $$2, false, true);
+      }
+
+      public static aeh.c b(uj $$0) {
+         float $$1 = $$0.readFloat();
+         float $$2 = $$0.readFloat();
+         boolean $$3 = $$0.readUnsignedByte() != 0;
+         return new aeh.c($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(uj $$0) {
+         $$0.a(this.d);
+         $$0.a(this.e);
+         $$0.k(this.f ? 1 : 0);
+      }
+   }
+
+   public static class d extends aeh {
+      public d(boolean $$0) {
+         super(0.0, 0.0, 0.0, 0.0F, 0.0F, $$0, false, false);
+      }
+
+      public static aeh.d b(uj $$0) {
+         boolean $$1 = $$0.readUnsignedByte() != 0;
+         return new aeh.d($$1);
+      }
+
+      @Override
+      public void a(uj $$0) {
+         $$0.k(this.f ? 1 : 0);
+      }
    }
 }

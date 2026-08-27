@@ -1,56 +1,57 @@
-public class eyn extends exd {
-   private float a = 0.5F;
+import javax.annotation.Nullable;
 
-   public eyn(vf $$0, ews $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+public abstract class eyn<E extends eyn.a<E>> extends exm<E> {
+   private static final vg a = vg.c("narration.selection.usage");
+
+   public eyn(evr $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public eyn(int $$0, int $$1, vf $$2, ews $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
-   }
+   @Nullable
+   @Override
+   public exb a(fbq $$0) {
+      if (this.n() == 0) {
+         return null;
+      } else if (this.aK_() && $$0 instanceof fbq.a $$1) {
+         E $$2 = this.a($$1.b());
+         return $$2 != null ? exb.a(this, exb.a($$2)) : null;
+      } else if (!this.aK_()) {
+         E $$3 = this.i();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
 
-   public eyn(int $$0, int $$1, int $$2, int $$3, vf $$4, ews $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.j = false;
-   }
-
-   public eyn b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   private eyn b(float $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public eyn d() {
-      return this.b(0.0F);
-   }
-
-   public eyn e() {
-      return this.b(0.5F);
-   }
-
-   public eyn f() {
-      return this.b(1.0F);
+         return $$3 == null ? null : exb.a(this, exb.a($$3));
+      } else {
+         return null;
+      }
    }
 
    @Override
-   public void b(ewu $$0, int $$1, int $$2, float $$3) {
-      vf $$4 = this.x();
-      ews $$5 = this.a();
-      int $$6 = this.w();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.B() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.C() + (this.u() - 9) / 2;
-      aua $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
+   public void a(fbk $$0) {
+      E $$1 = this.t();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.i();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
+         }
+      }
+
+      if (this.aK_()) {
+         $$0.a(fbj.d, a);
+      }
    }
 
-   private aua a(vf $$0, int $$1) {
-      ews $$2 = this.a();
-      vk $$3 = $$2.a($$0, $$1 - $$2.a(ve.t));
-      return si.a().a(vk.a($$3, ve.t));
+   public abstract static class a<E extends eyn.a<E>> extends exm.a<E> implements fbl {
+      public abstract vg a();
+
+      @Override
+      public void b(fbk $$0) {
+         $$0.a(fbj.a, this.a());
+      }
    }
 }

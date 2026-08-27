@@ -1,87 +1,89 @@
-public abstract class chn extends blv {
-   protected static final agm<Integer> f = agp.a(chn.class, ago.b);
-   protected static final agm<Integer> g = agp.a(chn.class, ago.b);
-   protected static final agm<Float> h = agp.a(chn.class, ago.d);
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public chn(blz<?> $$0, ctp $$1) {
-      super($$0, $$1);
+public class chn {
+   public static int[][] a(ic $$0) {
+      ic $$1 = $$0.h();
+      ic $$2 = $$1.g();
+      ic $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   @Override
-   public boolean a(bkt $$0, float $$1) {
-      if (this.dM().B || this.dH()) {
-         return true;
-      } else if (this.b($$0)) {
-         return false;
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
+   }
+
+   public static boolean a(cth $$0, bmo $$1, elx $$2) {
+      for (emv $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
+      }
+
+      return $$0.D_().a($$2);
+   }
+
+   public static boolean a(cth $$0, emc $$1, bmo $$2, bna $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
+   }
+
+   public static emv a(ctd $$0, hx $$1) {
+      djp $$2 = $$0.a_($$1);
+      return !$$2.a(asi.aO) && (!($$2.b() instanceof dfk) || !$$2.c(dfk.b)) ? $$2.k($$0, $$1) : ems.a();
+   }
+
+   public static double a(hx $$0, int $$1, Function<hx, emv> $$2) {
+      hx.a $$3 = $$0.j();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         emv $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(ic.a.b);
+         }
+
+         $$4++;
+         $$3.c(ic.b);
+      }
+
+      return Double.POSITIVE_INFINITY;
+   }
+
+   @Nullable
+   public static emc a(bmc<?> $$0, cth $$1, hx $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
       } else {
-         this.m(-this.P());
-         this.d(10);
-         this.bq();
-         this.b(this.N() + $$1 * 10.0F);
-         this.a(dnr.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof cfi && ((cfi)$$0.d()).fT().d;
-         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
-            if ($$2) {
-               this.am();
-            }
+         double $$4 = $$1.a(a((ctd)$$1, $$2), () -> a((ctd)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
          } else {
-            this.a($$0);
-         }
+            emc $$5 = emc.a($$2, $$4);
+            elx $$6 = $$0.n().a($$5);
 
-         return true;
+            for (emv $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
+
+            if ($$0 != bmc.bw || !$$1.a_($$2).a(asi.ci) && !$$1.a_($$2.c()).a(asi.ci)) {
+               return !$$1.D_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
       }
    }
-
-   boolean d(bkt $$0) {
-      return false;
-   }
-
-   public void b(cmt $$0) {
-      this.al();
-      if (this.dM().Z().b(ctl.i)) {
-         cmy $$1 = new cmy($$0);
-         if (this.ae()) {
-            $$1.a(this.af());
-         }
-
-         this.b($$1);
-      }
-   }
-
-   @Override
-   protected void c_() {
-      this.an.a(f, 0);
-      this.an.a(g, 1);
-      this.an.a(h, 0.0F);
-   }
-
-   public void d(int $$0) {
-      this.an.b(f, $$0);
-   }
-
-   public void m(int $$0) {
-      this.an.b(g, $$0);
-   }
-
-   public void b(float $$0) {
-      this.an.b(h, $$0);
-   }
-
-   public float N() {
-      return this.an.b(h);
-   }
-
-   public int O() {
-      return this.an.b(f);
-   }
-
-   public int P() {
-      return this.an.b(g);
-   }
-
-   protected void a(bkt $$0) {
-      this.b(this.ah_());
-   }
-
-   abstract cmt ah_();
 }

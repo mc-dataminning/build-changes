@@ -1,118 +1,53 @@
-public class frt extends frv {
-   frt(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      float $$7 = this.r.i() * 0.1F + 0.2F;
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
-      this.j *= 0.02F;
-      this.k *= 0.02F;
-      this.l *= 0.02F;
-      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
+public class frt extends fsh {
+   protected final fsc a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
+
+   protected frt(foe $$0, double $$1, double $$2, double $$3, fsc $$4, float $$5) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
+   }
+
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
+   }
+
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
    }
 
    @Override
-   public fqz b() {
-      return fqz.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public frl b() {
+      return frl.c;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.99;
-         this.k *= 0.99;
-         this.l *= 0.99;
+      super.a();
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
+         }
       }
    }
 
-   public static class a implements fqy<ka> {
-      private final frq a;
-
-      public a(frq $$0) {
-         this.a = $$0;
-      }
-
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frt $$8 = new frt($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         $$8.a(3 + $$1.F_().a(5));
-         return $$8;
-      }
-   }
-
-   public static class b implements fqy<ka> {
-      private final frq a;
-
-      public b(frq $$0) {
-         this.a = $$0;
-      }
-
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frt $$8 = new frt($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(0.3F, 0.5F, 1.0F);
-         $$8.a(this.a);
-         $$8.e(1.0F - $$1.z.i() * 0.7F);
-         $$8.a($$8.j() / 2);
-         return $$8;
-      }
-   }
-
-   public static class c implements fqy<ka> {
-      private final frq a;
-
-      public c(frq $$0) {
-         this.a = $$0;
-      }
-
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frt $$8 = new frt($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class d implements fqy<ka> {
-      private final frq a;
-
-      public d(frq $$0) {
-         this.a = $$0;
-      }
-
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frt $$8 = new frt($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class e implements fqy<ka> {
-      private final frq a;
-
-      public e(frq $$0) {
-         this.a = $$0;
-      }
-
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frt $$8 = new frt($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 }

@@ -1,32 +1,55 @@
-public class btz extends bsy {
-   private final boolean a;
-   private int b;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public btz(bmn $$0, boolean $$1) {
-      super($$0);
-      this.d = $$0;
-      this.a = $$1;
+public class btz extends btk {
+   private final bmx a;
+   @Nullable
+   private bmo b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
+
+   public btz(bmx $$0, double $$1, float $$2) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(btk.a.a));
+   }
+
+   @Override
+   public boolean a() {
+      this.b = this.a.q();
+      if (this.b == null) {
+         return false;
+      } else if (this.b.f(this.a) > (double)(this.g * this.g)) {
+         return false;
+      } else {
+         emc $$0 = bxh.a(this.a, 16, 7, this.b.dj(), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      return this.a && this.b > 0 && super.b();
-   }
-
-   @Override
-   public void c() {
-      this.b = 20;
-      this.a(true);
+      return !this.a.N().l() && this.b.bx() && this.b.f(this.a) < (double)(this.g * this.g);
    }
 
    @Override
    public void d() {
-      this.a(false);
+      this.b = null;
    }
 
    @Override
-   public void e() {
-      this.b--;
-      super.e();
+   public void c() {
+      this.a.N().a(this.c, this.d, this.e, this.f);
    }
 }

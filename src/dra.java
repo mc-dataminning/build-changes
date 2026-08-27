@@ -1,83 +1,171 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class dra extends dru<duf> {
-   public dra(Codec<duf> $$0) {
+public class dra extends drd<dqz> {
+   public dra(Codec<dqz> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(drw<duf> $$0) {
-      hx $$1 = $$0.e();
-      cuk $$2 = $$0.b();
-      auv $$3 = $$0.d();
-      if ($$2.u($$1) && !$$2.u($$1.c())) {
-         hx.a $$4 = $$1.j();
-         hx.a $$5 = $$1.j();
-         boolean $$6 = true;
-         boolean $$7 = true;
-         boolean $$8 = true;
-         boolean $$9 = true;
+   public boolean a(dqz $$0, auw $$1) {
+      return $$1.i() <= $$0.l;
+   }
 
-         while ($$2.u($$4)) {
-            if ($$2.s($$4)) {
-               return true;
-            }
+   public boolean a(dqy $$0, dqz $$1, dll $$2, Function<hx, ih<cuw>> $$3, auw $$4, dok $$5, cte $$6, dlk $$7) {
+      int $$8 = iz.c(this.d() * 2 - 1);
+      int $$9 = $$4.a($$4.a($$4.a(this.a()) + 1) + 1);
 
-            $$2.a($$4, cws.dY.o(), 2);
-            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, ic.c));
-            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, ic.d));
-            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, ic.e));
-            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, ic.f));
-            $$4.c(ic.a);
+      for (int $$10 = 0; $$10 < $$9; $$10++) {
+         double $$11 = (double)$$6.a($$4.a(16));
+         double $$12 = (double)$$1.e.a($$4, $$0);
+         double $$13 = (double)$$6.b($$4.a(16));
+         double $$14 = (double)$$1.b.a($$4);
+         double $$15 = (double)$$1.c.a($$4);
+         double $$16 = (double)$$1.j.a($$4);
+         drd.a $$17 = ($$1x, $$2x, $$3x, $$4x, $$5x) -> a($$2x, $$3x, $$4x, $$16);
+         int $$18 = 1;
+         if ($$4.a(4) == 0) {
+            double $$19 = (double)$$1.f.a($$4);
+            float $$20 = 1.0F + $$4.i() * 6.0F;
+            this.a($$0, $$1, $$2, $$3, $$5, $$11, $$12, $$13, $$20, $$19, $$7, $$17);
+            $$18 += $$4.a(4);
          }
 
-         $$4.c(ic.b);
-         this.a($$2, $$3, $$5.a($$4, ic.c));
-         this.a($$2, $$3, $$5.a($$4, ic.d));
-         this.a($$2, $$3, $$5.a($$4, ic.e));
-         this.a($$2, $$3, $$5.a($$4, ic.f));
-         $$4.c(ic.a);
-         hx.a $$10 = new hx.a();
+         for (int $$21 = 0; $$21 < $$18; $$21++) {
+            float $$22 = $$4.i() * (float) (Math.PI * 2);
+            float $$23 = ($$4.i() - 0.5F) / 4.0F;
+            float $$24 = this.a($$4);
+            int $$25 = $$8 - $$4.a($$8 / 4);
+            int $$26 = 0;
+            this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$11, $$12, $$13, $$14, $$15, $$24, $$22, $$23, 0, $$25, this.b(), $$7, $$17);
+         }
+      }
 
-         for (int $$11 = -3; $$11 < 4; $$11++) {
-            for (int $$12 = -3; $$12 < 4; $$12++) {
-               int $$13 = auo.a($$11) * auo.a($$12);
-               if ($$3.a(10) < 10 - $$13) {
-                  $$10.g($$4.b($$11, 0, $$12));
-                  int $$14 = 3;
+      return true;
+   }
 
-                  while ($$2.u($$5.a($$10, ic.a))) {
-                     $$10.c(ic.a);
-                     if (--$$14 <= 0) {
-                        break;
-                     }
-                  }
+   protected int a() {
+      return 15;
+   }
 
-                  if (!$$2.u($$5.a($$10, ic.a))) {
-                     $$2.a($$10, cws.dY.o(), 2);
-                  }
-               }
-            }
+   protected float a(auw $$0) {
+      float $$1 = $$0.i() * 2.0F + $$0.i();
+      if ($$0.a(10) == 0) {
+         $$1 *= $$0.i() * $$0.i() * 3.0F + 1.0F;
+      }
+
+      return $$1;
+   }
+
+   protected double b() {
+      return 1.0;
+   }
+
+   protected void a(
+      dqy $$0, dqz $$1, dll $$2, Function<hx, ih<cuw>> $$3, dok $$4, double $$5, double $$6, double $$7, float $$8, double $$9, dlk $$10, drd.a $$11
+   ) {
+      double $$12 = 1.5 + (double)(aup.a((float) (Math.PI / 2)) * $$8);
+      double $$13 = $$12 * $$9;
+      this.a($$0, $$1, $$2, $$3, $$4, $$5 + 1.0, $$6, $$7, $$12, $$13, $$10, $$11);
+   }
+
+   protected void a(
+      dqy $$0,
+      dqz $$1,
+      dll $$2,
+      Function<hx, ih<cuw>> $$3,
+      long $$4,
+      dok $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      double $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      int $$14,
+      int $$15,
+      double $$16,
+      dlk $$17,
+      drd.a $$18
+   ) {
+      auw $$19 = auw.a($$4);
+      int $$20 = $$19.a($$15 / 2) + $$15 / 4;
+      boolean $$21 = $$19.a(6) == 0;
+      float $$22 = 0.0F;
+      float $$23 = 0.0F;
+
+      for (int $$24 = $$14; $$24 < $$15; $$24++) {
+         double $$25 = 1.5 + (double)(aup.a((float) Math.PI * (float)$$24 / (float)$$15) * $$11);
+         double $$26 = $$25 * $$16;
+         float $$27 = aup.b($$13);
+         $$6 += (double)(aup.b($$12) * $$27);
+         $$7 += (double)aup.a($$13);
+         $$8 += (double)(aup.a($$12) * $$27);
+         $$13 *= $$21 ? 0.92F : 0.7F;
+         $$13 += $$23 * 0.1F;
+         $$12 += $$22 * 0.1F;
+         $$23 *= 0.9F;
+         $$22 *= 0.75F;
+         $$23 += ($$19.i() - $$19.i()) * $$19.i() * 2.0F;
+         $$22 += ($$19.i() - $$19.i()) * $$19.i() * 4.0F;
+         if ($$24 == $$20 && $$11 > 1.0F) {
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 - (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 + (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            return;
          }
 
-         return true;
-      } else {
-         return false;
+         if ($$19.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$24, $$15, $$11)) {
+               return;
+            }
+
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$25 * $$9, $$26 * $$10, $$17, $$18);
+         }
       }
    }
 
-   private void a(ctq $$0, auv $$1, hx $$2) {
-      if ($$1.h()) {
-         $$0.a($$2, cws.dY.o(), 2);
-      }
-   }
-
-   private boolean b(ctq $$0, auv $$1, hx $$2) {
-      if ($$1.a(10) != 0) {
-         $$0.a($$2, cws.dY.o(), 2);
-         return true;
-      } else {
-         return false;
-      }
+   private static boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return $$1 <= $$3 ? true : $$0 * $$0 + $$1 * $$1 + $$2 * $$2 >= 1.0;
    }
 }

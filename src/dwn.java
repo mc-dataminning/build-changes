@@ -1,49 +1,62 @@
 import com.mojang.serialization.Codec;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dwn extends dwq {
-   public static final Codec<dwn> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dwn::new, $$0 -> $$0.d).codec();
-   private static final ic b = ic.d;
-   private static final ic[] c = ic.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ic[]::new);
-   private final float d;
+public class dwn extends dwh {
+   public static final Codec<dwn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dwh.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bjh.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dwn::new)
+   );
+   private final dwh c;
+   private final String d;
+   @Nullable
+   private dkp e;
+   private final bjh f;
 
-   public dwn(float $$0) {
-      this.d = $$0;
-   }
+   public dwn(dwh $$0, dkp $$1, bjh $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
 
-   @Override
-   protected dwr<?> a() {
-      return dwr.d;
-   }
-
-   @Override
-   public void a(dwq.a $$0) {
-      auv $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<hx> $$2 = $$0.d();
-         List<hx> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<hx> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<hx> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), cws.pe.o().a(cwk.b, b));
-               $$0.a().a($$6.get(), dgx.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
-
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     sn $$4x = new sn();
-                     $$4x.a("id", kd.g.b(blz.h).toString());
-                     $$1x.a($$4x, $$1.a(599), false);
-                  }
-               });
-            }
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
          }
       }
+   }
+
+   public dwn(dwh $$0, String $$1, bjh $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   protected dwi<?> a() {
+      return dwi.g;
+   }
+
+   @Override
+   public djp a(auw $$0, hx $$1) {
+      djp $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         this.e = a($$2, this.d);
+      }
+
+      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   private static dkp a(djp $$0, String $$1) {
+      Collection<dks<?>> $$2 = $$0.B();
+      Optional<dkp> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dkp).map($$0x -> (dkp)$$0x).findAny();
+      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

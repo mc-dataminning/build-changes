@@ -2,227 +2,40 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class pc {
-   public static void a(pe<eap> $$0) {
-      ii<ede> $$1 = $$0.a(ke.aE);
-      ih<ede> $$2 = $$1.b(pm.s);
-      ih<ede> $$3 = $$1.b(pm.B);
-      ih<ede> $$4 = $$1.b(pm.r);
-      ih<ede> $$5 = $$1.b(pm.C);
-      ih<ede> $$6 = $$1.b(pm.A);
-      ii<eap> $$7 = $$0.a(ke.aG);
-      ih<eap> $$8 = $$7.b(pl.a);
-      pl.a($$0, "bastion/treasure/bases", new eap($$8, ImmutableList.of(Pair.of(ean.b("bastion/treasure/bases/lava_basin", $$2), 1)), eap.a.b));
-      pl.a($$0, "bastion/treasure/stairs", new eap($$8, ImmutableList.of(Pair.of(ean.b("bastion/treasure/stairs/lower_stairs", $$2), 1)), eap.a.b));
-      pl.a(
+   public static void a(pf<eax> $$0) {
+      ii<eax> $$1 = $$0.a(ke.aG);
+      ih<eax> $$2 = $$1.b(pm.a);
+      pm.a(
          $$0,
-         "bastion/treasure/bases/centers",
-         new eap(
-            $$8,
+         "bastion/mobs/piglin",
+         new eax(
+            $$2,
             ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/bases/centers/center_0", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/bases/centers/center_1", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/bases/centers/center_2", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/bases/centers/center_3", $$2), 1)
+               Pair.of(eav.b("bastion/mobs/melee_piglin"), 1),
+               Pair.of(eav.b("bastion/mobs/sword_piglin"), 4),
+               Pair.of(eav.b("bastion/mobs/crossbow_piglin"), 4),
+               Pair.of(eav.b("bastion/mobs/empty"), 1)
             ),
-            eap.a.b
+            eax.a.b
          )
       );
-      pl.a($$0, "bastion/treasure/brains", new eap($$8, ImmutableList.of(Pair.of(ean.b("bastion/treasure/brains/center_brain", $$2), 1)), eap.a.b));
-      pl.a(
-         $$0,
-         "bastion/treasure/walls",
-         new eap(
-            $$8,
-            ImmutableList.of(Pair.of(ean.b("bastion/treasure/walls/lava_wall", $$2), 1), Pair.of(ean.b("bastion/treasure/walls/entrance_wall", $$3), 1)),
-            eap.a.b
-         )
+      pm.a(
+         $$0, "bastion/mobs/hoglin", new eax($$2, ImmutableList.of(Pair.of(eav.b("bastion/mobs/hoglin"), 2), Pair.of(eav.b("bastion/mobs/empty"), 1)), eax.a.b)
       );
-      pl.a(
+      pm.a(
+         $$0, "bastion/blocks/gold", new eax($$2, ImmutableList.of(Pair.of(eav.b("bastion/blocks/air"), 3), Pair.of(eav.b("bastion/blocks/gold"), 1)), eax.a.b)
+      );
+      pm.a(
          $$0,
-         "bastion/treasure/walls/outer",
-         new eap(
-            $$8,
+         "bastion/mobs/piglin_melee",
+         new eax(
+            $$2,
             ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/walls/outer/top_corner", $$3), 1),
-               Pair.of(ean.b("bastion/treasure/walls/outer/mid_corner", $$3), 1),
-               Pair.of(ean.b("bastion/treasure/walls/outer/bottom_corner", $$3), 1),
-               Pair.of(ean.b("bastion/treasure/walls/outer/outer_wall", $$3), 1),
-               Pair.of(ean.b("bastion/treasure/walls/outer/medium_outer_wall", $$3), 1),
-               Pair.of(ean.b("bastion/treasure/walls/outer/tall_outer_wall", $$3), 1)
+               Pair.of(eav.b("bastion/mobs/melee_piglin_always"), 1),
+               Pair.of(eav.b("bastion/mobs/melee_piglin"), 5),
+               Pair.of(eav.b("bastion/mobs/sword_piglin"), 1)
             ),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "bastion/treasure/walls/bottom",
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/walls/bottom/wall_0", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/walls/bottom/wall_1", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/walls/bottom/wall_2", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/walls/bottom/wall_3", $$2), 1)
-            ),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "bastion/treasure/walls/mid",
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/walls/mid/wall_0", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/walls/mid/wall_1", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/walls/mid/wall_2", $$2), 1)
-            ),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "bastion/treasure/walls/top",
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/walls/top/main_entrance", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/walls/top/wall_0", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/walls/top/wall_1", $$2), 1)
-            ),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "bastion/treasure/connectors",
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/connectors/center_to_wall_middle", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/connectors/center_to_wall_top", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/connectors/center_to_wall_top_entrance", $$2), 1)
-            ),
-            eap.a.b
-         )
-      );
-      pl.a($$0, "bastion/treasure/entrances", new eap($$8, ImmutableList.of(Pair.of(ean.b("bastion/treasure/entrances/entrance_0", $$2), 1)), eap.a.b));
-      pl.a(
-         $$0,
-         "bastion/treasure/ramparts",
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/ramparts/mid_wall_main", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/ramparts/mid_wall_side", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/ramparts/bottom_wall_0", $$4), 1),
-               Pair.of(ean.b("bastion/treasure/ramparts/top_wall", $$5), 1),
-               Pair.of(ean.b("bastion/treasure/ramparts/lava_basin_side", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/ramparts/lava_basin_main", $$2), 1)
-            ),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "bastion/treasure/corners/bottom",
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/corners/bottom/corner_0", $$2), 1), Pair.of(ean.b("bastion/treasure/corners/bottom/corner_1", $$2), 1)
-            ),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "bastion/treasure/corners/edges",
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/corners/edges/bottom", $$3), 1),
-               Pair.of(ean.b("bastion/treasure/corners/edges/middle", $$3), 1),
-               Pair.of(ean.b("bastion/treasure/corners/edges/top", $$3), 1)
-            ),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "bastion/treasure/corners/middle",
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/corners/middle/corner_0", $$2), 1), Pair.of(ean.b("bastion/treasure/corners/middle/corner_1", $$2), 1)
-            ),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "bastion/treasure/corners/top",
-         new eap(
-            $$8,
-            ImmutableList.of(Pair.of(ean.b("bastion/treasure/corners/top/corner_0", $$2), 1), Pair.of(ean.b("bastion/treasure/corners/top/corner_1", $$2), 1)),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "bastion/treasure/extensions/large_pool",
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/fire_room", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/large_bridge_0", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/large_bridge_1", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/large_bridge_2", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/large_bridge_3", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/roofed_bridge", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/empty", $$2), 1)
-            ),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "bastion/treasure/extensions/small_pool",
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/fire_room", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/small_bridge_0", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/small_bridge_1", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/small_bridge_2", $$2), 1),
-               Pair.of(ean.b("bastion/treasure/extensions/small_bridge_3", $$2), 1)
-            ),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "bastion/treasure/extensions/houses",
-         new eap(
-            $$8,
-            ImmutableList.of(Pair.of(ean.b("bastion/treasure/extensions/house_0", $$2), 1), Pair.of(ean.b("bastion/treasure/extensions/house_1", $$2), 1)),
-            eap.a.b
-         )
-      );
-      pl.a(
-         $$0,
-         "bastion/treasure/roofs",
-         new eap(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ean.b("bastion/treasure/roofs/wall_roof", $$6), 1),
-               Pair.of(ean.b("bastion/treasure/roofs/corner_roof", $$6), 1),
-               Pair.of(ean.b("bastion/treasure/roofs/center_roof", $$6), 1)
-            ),
-            eap.a.b
+            eax.a.b
          )
       );
    }

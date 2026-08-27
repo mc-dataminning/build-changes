@@ -1,185 +1,69 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
-import javax.annotation.Nullable;
+public class cby {
+   public static final ahg<cbx> a = a("kebab");
+   public static final ahg<cbx> b = a("aztec");
+   public static final ahg<cbx> c = a("alban");
+   public static final ahg<cbx> d = a("aztec2");
+   public static final ahg<cbx> e = a("bomb");
+   public static final ahg<cbx> f = a("plant");
+   public static final ahg<cbx> g = a("wasteland");
+   public static final ahg<cbx> h = a("pool");
+   public static final ahg<cbx> i = a("courbet");
+   public static final ahg<cbx> j = a("sea");
+   public static final ahg<cbx> k = a("sunset");
+   public static final ahg<cbx> l = a("creebet");
+   public static final ahg<cbx> m = a("wanderer");
+   public static final ahg<cbx> n = a("graham");
+   public static final ahg<cbx> o = a("match");
+   public static final ahg<cbx> p = a("bust");
+   public static final ahg<cbx> q = a("stage");
+   public static final ahg<cbx> r = a("void");
+   public static final ahg<cbx> s = a("skull_and_roses");
+   public static final ahg<cbx> t = a("wither");
+   public static final ahg<cbx> u = a("fighters");
+   public static final ahg<cbx> v = a("pointer");
+   public static final ahg<cbx> w = a("pigscene");
+   public static final ahg<cbx> x = a("burning_skull");
+   public static final ahg<cbx> y = a("skeleton");
+   public static final ahg<cbx> z = a("donkey_kong");
+   public static final ahg<cbx> A = a("earth");
+   public static final ahg<cbx> B = a("wind");
+   public static final ahg<cbx> C = a("water");
+   public static final ahg<cbx> D = a("fire");
 
-public abstract class cby extends ccp implements cct {
-   private final buh<cby> b = new buh<>(this, 1.0, 20, 15.0F);
-   private final btr c = new btr(this, 1.2, false) {
-      @Override
-      public void d() {
-         super.d();
-         cby.this.v(false);
-      }
-
-      @Override
-      public void c() {
-         super.c();
-         cby.this.v(true);
-      }
-   };
-
-   protected cby(blz<? extends cby> $$0, ctp $$1) {
-      super($$0, $$1);
-      this.A();
+   public static cbx a(it<cbx> $$0) {
+      it.a($$0, a, new cbx(16, 16));
+      it.a($$0, b, new cbx(16, 16));
+      it.a($$0, c, new cbx(16, 16));
+      it.a($$0, d, new cbx(16, 16));
+      it.a($$0, e, new cbx(16, 16));
+      it.a($$0, f, new cbx(16, 16));
+      it.a($$0, g, new cbx(16, 16));
+      it.a($$0, h, new cbx(32, 16));
+      it.a($$0, i, new cbx(32, 16));
+      it.a($$0, j, new cbx(32, 16));
+      it.a($$0, k, new cbx(32, 16));
+      it.a($$0, l, new cbx(32, 16));
+      it.a($$0, m, new cbx(16, 32));
+      it.a($$0, n, new cbx(16, 32));
+      it.a($$0, o, new cbx(32, 32));
+      it.a($$0, p, new cbx(32, 32));
+      it.a($$0, q, new cbx(32, 32));
+      it.a($$0, r, new cbx(32, 32));
+      it.a($$0, s, new cbx(32, 32));
+      it.a($$0, t, new cbx(32, 32));
+      it.a($$0, u, new cbx(64, 32));
+      it.a($$0, v, new cbx(64, 64));
+      it.a($$0, w, new cbx(64, 64));
+      it.a($$0, x, new cbx(64, 64));
+      it.a($$0, y, new cbx(64, 48));
+      it.a($$0, A, new cbx(32, 32));
+      it.a($$0, B, new cbx(32, 32));
+      it.a($$0, C, new cbx(32, 32));
+      it.a($$0, D, new cbx(32, 32));
+      return it.a($$0, z, new cbx(64, 48));
    }
 
-   @Override
-   protected void B() {
-      this.bO.a(2, new buk(this));
-      this.bO.a(3, new bta(this, 1.0));
-      this.bO.a(3, new bso<>(this, bzb.class, 6.0F, 1.0, 1.2));
-      this.bO.a(5, new buu(this, 1.0));
-      this.bO.a(6, new btp(this, cfi.class, 8.0F));
-      this.bO.a(6, new buc(this));
-      this.bP.a(1, new buz(this));
-      this.bP.a(2, new bva<>(this, cfi.class, true));
-      this.bP.a(3, new bva<>(this, byk.class, true));
-      this.bP.a(3, new bva<>(this, byz.class, 10, true, false, byz.bU));
-   }
-
-   public static bnq.a u() {
-      return ccp.gk().a(bnr.m, 0.25);
-   }
-
-   @Override
-   protected void b(hx $$0, djh $$1) {
-      this.a(this.w(), 0.15F, 1.0F);
-   }
-
-   abstract arr w();
-
-   @Override
-   public bmq eS() {
-      return bmq.b;
-   }
-
-   @Override
-   public void d_() {
-      boolean $$0 = this.fY();
-      if ($$0) {
-         cmy $$1 = this.c(bma.f);
-         if (!$$1.b()) {
-            if ($$1.i()) {
-               $$1.b($$1.k() + this.ag.a(2));
-               if ($$1.k() >= $$1.l()) {
-                  this.d(bma.f);
-                  this.a(bma.f, cmy.f);
-               }
-            }
-
-            $$0 = false;
-         }
-
-         if ($$0) {
-            this.g(8);
-         }
-      }
-
-      super.d_();
-   }
-
-   @Override
-   public void t() {
-      super.t();
-      if (this.da() instanceof bmu $$0) {
-         this.aU = $$0.aU;
-      }
-   }
-
-   @Override
-   protected void a(auv $$0, bjz $$1) {
-      super.a($$0, $$1);
-      this.a(bma.a, new cmy(cnb.or));
-   }
-
-   @Nullable
-   @Override
-   public bne a(cue $$0, bjz $$1, bmp $$2, @Nullable bne $$3, @Nullable sn $$4) {
-      $$3 = super.a($$0, $$1, $$2, $$3, $$4);
-      auv $$5 = $$0.F_();
-      this.a($$5, $$1);
-      this.b($$5, $$1);
-      this.A();
-      this.s($$5.i() < 0.55F * $$1.d());
-      if (this.c(bma.f).b()) {
-         LocalDate $$6 = LocalDate.now();
-         int $$7 = $$6.get(ChronoField.DAY_OF_MONTH);
-         int $$8 = $$6.get(ChronoField.MONTH_OF_YEAR);
-         if ($$8 == 10 && $$7 == 31 && $$5.i() < 0.25F) {
-            this.a(bma.f, new cmy($$5.i() < 0.1F ? cws.ef : cws.ee));
-            this.bR[bma.f.b()] = 0.0F;
-         }
-      }
-
-      return $$3;
-   }
-
-   public void A() {
-      if (this.dM() != null && !this.dM().B) {
-         this.bO.a(this.c);
-         this.bO.a(this.b);
-         cmy $$0 = this.b(cgb.a(this, cnb.or));
-         if ($$0.a(cnb.or)) {
-            int $$1 = 20;
-            if (this.dM().ak() != bjy.d) {
-               $$1 = 40;
-            }
-
-            this.b.c($$1);
-            this.bO.a(4, this.b);
-         } else {
-            this.bO.a(4, this.c);
-         }
-      }
-   }
-
-   @Override
-   public void a(bml $$0, float $$1) {
-      cmy $$2 = this.g(this.b(cgb.a(this, cnb.or)));
-      cfo $$3 = this.b($$2, $$1);
-      double $$4 = $$0.dr() - this.dr();
-      double $$5 = $$0.e(0.3333333333333333) - $$3.dt();
-      double $$6 = $$0.dx() - this.dx();
-      double $$7 = Math.sqrt($$4 * $$4 + $$6 * $$6);
-      $$3.c($$4, $$5 + $$7 * 0.2F, $$6, 1.6F, (float)(14 - this.dM().ak().a() * 4));
-      this.a(ars.wq, 1.0F, 1.0F / (this.eg().i() * 0.4F + 0.8F));
-      this.dM().b($$3);
-   }
-
-   protected cfo b(cmy $$0, float $$1) {
-      return cgb.a(this, $$0, $$1);
-   }
-
-   @Override
-   public boolean a(cno $$0) {
-      return $$0 == cnb.or;
-   }
-
-   @Override
-   public void a(sn $$0) {
-      super.a($$0);
-      this.A();
-   }
-
-   @Override
-   public void a(bma $$0, cmy $$1) {
-      super.a($$0, $$1);
-      if (!this.dM().B) {
-         this.A();
-      }
-   }
-
-   @Override
-   protected float b(bmx $$0, blw $$1) {
-      return 1.74F;
-   }
-
-   @Override
-   protected float l(blv $$0) {
-      return -0.7F;
-   }
-
-   public boolean ge() {
-      return this.cl();
+   private static ahg<cbx> a(String $$0) {
+      return ahg.a(ke.R, new ahh($$0));
    }
 }

@@ -1,26 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public enum al implements avk {
+public enum al implements avl {
    a("task", n.k),
    b("challenge", n.f),
    c("goal", n.k);
 
-   public static final Codec<al> d = avk.a(al::values);
+   public static final Codec<al> d = avl.a(al::values);
    private final String e;
    private final n f;
-   private final vf g;
+   private final vg g;
 
    private al(String $$0, n $$1) {
       this.e = $$0;
       this.f = $$1;
-      this.g = vf.c("advancements.toast." + $$0);
+      this.g = vg.c("advancements.toast." + $$0);
    }
 
    public n a() {
       return this.f;
    }
 
-   public vf b() {
+   public vg b() {
       return this.g;
    }
 
@@ -29,7 +29,7 @@ public enum al implements avk {
       return this.e;
    }
 
-   public vt a(af $$0, ane $$1) {
-      return vf.a("chat.type.advancement." + this.e, $$1.Q_(), ae.a($$0));
+   public vu a(af $$0, anf $$1) {
+      return vg.a("chat.type.advancement." + this.e, $$1.Q_(), ae.a($$0));
    }
 }

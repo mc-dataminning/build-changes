@@ -1,54 +1,130 @@
-public class coz {
-   public static ahf<cow> a = ahf.a(ke.X, new ahg("empty"));
-   public static final cow b = a(a, new cow());
-   public static final cow c = a("water", new cow());
-   public static final cow d = a("mundane", new cow());
-   public static final cow e = a("thick", new cow());
-   public static final cow f = a("awkward", new cow());
-   public static final cow g = a("night_vision", new cow(new bli(blk.p, 3600)));
-   public static final cow h = a("long_night_vision", new cow("night_vision", new bli(blk.p, 9600)));
-   public static final cow i = a("invisibility", new cow(new bli(blk.n, 3600)));
-   public static final cow j = a("long_invisibility", new cow("invisibility", new bli(blk.n, 9600)));
-   public static final cow k = a("leaping", new cow(new bli(blk.h, 3600)));
-   public static final cow l = a("long_leaping", new cow("leaping", new bli(blk.h, 9600)));
-   public static final cow m = a("strong_leaping", new cow("leaping", new bli(blk.h, 1800, 1)));
-   public static final cow n = a("fire_resistance", new cow(new bli(blk.l, 3600)));
-   public static final cow o = a("long_fire_resistance", new cow("fire_resistance", new bli(blk.l, 9600)));
-   public static final cow p = a("swiftness", new cow(new bli(blk.a, 3600)));
-   public static final cow q = a("long_swiftness", new cow("swiftness", new bli(blk.a, 9600)));
-   public static final cow r = a("strong_swiftness", new cow("swiftness", new bli(blk.a, 1800, 1)));
-   public static final cow s = a("slowness", new cow(new bli(blk.b, 1800)));
-   public static final cow t = a("long_slowness", new cow("slowness", new bli(blk.b, 4800)));
-   public static final cow u = a("strong_slowness", new cow("slowness", new bli(blk.b, 400, 3)));
-   public static final cow v = a("turtle_master", new cow("turtle_master", new bli(blk.b, 400, 3), new bli(blk.k, 400, 2)));
-   public static final cow w = a("long_turtle_master", new cow("turtle_master", new bli(blk.b, 800, 3), new bli(blk.k, 800, 2)));
-   public static final cow x = a("strong_turtle_master", new cow("turtle_master", new bli(blk.b, 400, 5), new bli(blk.k, 400, 3)));
-   public static final cow y = a("water_breathing", new cow(new bli(blk.m, 3600)));
-   public static final cow z = a("long_water_breathing", new cow("water_breathing", new bli(blk.m, 9600)));
-   public static final cow A = a("healing", new cow(new bli(blk.f, 1)));
-   public static final cow B = a("strong_healing", new cow("healing", new bli(blk.f, 1, 1)));
-   public static final cow C = a("harming", new cow(new bli(blk.g, 1)));
-   public static final cow D = a("strong_harming", new cow("harming", new bli(blk.g, 1, 1)));
-   public static final cow E = a("poison", new cow(new bli(blk.s, 900)));
-   public static final cow F = a("long_poison", new cow("poison", new bli(blk.s, 1800)));
-   public static final cow G = a("strong_poison", new cow("poison", new bli(blk.s, 432, 1)));
-   public static final cow H = a("regeneration", new cow(new bli(blk.j, 900)));
-   public static final cow I = a("long_regeneration", new cow("regeneration", new bli(blk.j, 1800)));
-   public static final cow J = a("strong_regeneration", new cow("regeneration", new bli(blk.j, 450, 1)));
-   public static final cow K = a("strength", new cow(new bli(blk.e, 3600)));
-   public static final cow L = a("long_strength", new cow("strength", new bli(blk.e, 9600)));
-   public static final cow M = a("strong_strength", new cow("strength", new bli(blk.e, 1800, 1)));
-   public static final cow N = a("weakness", new cow(new bli(blk.r, 1800)));
-   public static final cow O = a("long_weakness", new cow("weakness", new bli(blk.r, 4800)));
-   public static final cow P = a("luck", new cow("luck", new bli(blk.z, 6000)));
-   public static final cow Q = a("slow_falling", new cow(new bli(blk.B, 1800)));
-   public static final cow R = a("long_slow_falling", new cow("slow_falling", new bli(blk.B, 4800)));
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-   private static cow a(String $$0, cow $$1) {
-      return it.a(kd.i, $$0, $$1);
+public class coz extends cnb implements cpb {
+   public static final int a = 10;
+   public static final float b = 8.0F;
+   public static final float c = 2.5F;
+   private final Multimap<ih<bnp>, bns> d;
+
+   public coz(cnb.a $$0) {
+      super($$0);
+      Builder<ih<bnp>, bns> $$1 = ImmutableMultimap.builder();
+      $$1.put(bnu.c, new bns(m, "Tool modifier", 8.0, bns.a.a));
+      $$1.put(bnu.e, new bns(n, "Tool modifier", -2.9F, bns.a.a));
+      this.d = $$1.build();
    }
 
-   private static cow a(ahf<cow> $$0, cow $$1) {
-      return it.a(kd.i, $$0, $$1);
+   @Override
+   public boolean a(djp $$0, ctx $$1, hx $$2, cfq $$3) {
+      return !$$3.f();
+   }
+
+   @Override
+   public cpa c(cng $$0) {
+      return cpa.f;
+   }
+
+   @Override
+   public int b(cng $$0) {
+      return 72000;
+   }
+
+   @Override
+   public void a(cng $$0, ctx $$1, bmo $$2, int $$3) {
+      if ($$2 instanceof cfq $$4) {
+         int $$5 = this.b($$0) - $$3;
+         if ($$5 >= 10) {
+            int $$6 = crt.h($$0);
+            if ($$6 <= 0 || $$4.ba()) {
+               if (!$$1.B) {
+                  $$0.a(1, $$4, $$1x -> $$1x.d($$2.fo()));
+                  if ($$6 == 0) {
+                     cgu $$7 = new cgu($$1, $$4, $$0);
+                     $$7.a($$4, $$4.dD(), $$4.dB(), 0.0F, 2.5F + (float)$$6 * 0.5F, 1.0F);
+                     if ($$4.fT().d) {
+                        $$7.d = cfw.a.c;
+                     }
+
+                     $$1.b($$7);
+                     $$1.a(null, $$7, art.yY, aru.h, 1.0F, 1.0F);
+                     if (!$$4.fT().d) {
+                        $$4.fS().g($$0);
+                     }
+                  }
+               }
+
+               $$4.b(asd.c.b(this));
+               if ($$6 > 0) {
+                  float $$8 = $$4.dB();
+                  float $$9 = $$4.dD();
+                  float $$10 = -aup.a($$8 * (float) (Math.PI / 180.0)) * aup.b($$9 * (float) (Math.PI / 180.0));
+                  float $$11 = -aup.a($$9 * (float) (Math.PI / 180.0));
+                  float $$12 = aup.b($$8 * (float) (Math.PI / 180.0)) * aup.b($$9 * (float) (Math.PI / 180.0));
+                  float $$13 = aup.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
+                  float $$14 = 3.0F * ((1.0F + (float)$$6) / 4.0F);
+                  $$10 *= $$14 / $$13;
+                  $$11 *= $$14 / $$13;
+                  $$12 *= $$14 / $$13;
+                  $$4.j((double)$$10, (double)$$11, (double)$$12);
+                  $$4.t(20);
+                  if ($$4.aC()) {
+                     float $$15 = 1.1999999F;
+                     $$4.a(bmu.a, new emc(0.0, 1.1999999F, 0.0));
+                  }
+
+                  ars $$16;
+                  if ($$6 >= 3) {
+                     $$16 = art.yX;
+                  } else if ($$6 == 2) {
+                     $$16 = art.yW;
+                  } else {
+                     $$16 = art.yV;
+                  }
+
+                  $$1.a(null, $$4, $$16, aru.h, 1.0F, 1.0F);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
+      cng $$3 = $$1.b($$2);
+      if ($$3.k() >= $$3.l() - 1) {
+         return bkd.d($$3);
+      } else if (crt.h($$3) > 0 && !$$1.ba()) {
+         return bkd.d($$3);
+      } else {
+         $$1.c($$2);
+         return bkd.b($$3);
+      }
+   }
+
+   @Override
+   public boolean a(cng $$0, bmo $$1, bmo $$2) {
+      $$0.a(1, $$2, $$0x -> $$0x.d(bmd.a));
+      return true;
+   }
+
+   @Override
+   public boolean a(cng $$0, ctx $$1, djp $$2, hx $$3, bmo $$4) {
+      if ((double)$$2.h($$1, $$3) != 0.0) {
+         $$0.a(2, $$4, $$0x -> $$0x.d(bmd.a));
+      }
+
+      return true;
+   }
+
+   @Override
+   public Multimap<ih<bnp>, bns> a(bmd $$0) {
+      return $$0 == bmd.a ? this.d : super.a($$0);
+   }
+
+   @Override
+   public int an_() {
+      return 1;
    }
 }

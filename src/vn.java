@@ -1,77 +1,71 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.Codec;
+import java.security.SignatureException;
+import java.util.ArrayList;
 import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public class vn {
-   private final vp[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private vr d;
+public record vn(List<vs> d) {
+   public static final Codec<vn> a = vs.a.listOf().xmap(vn::new, vn::a);
+   public static vn b = new vn(List.of());
+   public static final int c = 20;
 
-   public vn(int $$0) {
-      this.a = new vp[$$0];
-   }
+   public void a(avc.a $$0) throws SignatureException {
+      $$0.update(Ints.toByteArray(this.d.size()));
 
-   public boolean a(vr $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new vp($$0, true) : null);
-         return true;
+      for (vs $$1 : this.d) {
+         $$0.update($$1.b());
       }
    }
 
-   private void a(@Nullable vp $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
+   public vn.a a(vt $$0) {
+      return new vn.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
    }
 
-   public void a(vr $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         vp $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
+   public List<vs> a() {
+      return this.d;
+   }
+
+   public static record a(List<vs.a> b) {
+      public static final vn.a a = new vn.a(List.of());
+
+      public a(uj $$0) {
+         this($$0.a(uj.a(ArrayList::new, 20), vs.a::a));
+      }
+
+      public void a(uj $$0) {
+         $$0.a(this.b, vs.a::a);
+      }
+
+      public Optional<vn> a(vt $$0) {
+         List<vs> $$1 = new ArrayList<>(this.b.size());
+
+         for (vs.a $$2 : this.b) {
+            Optional<vs> $$3 = $$2.a($$0);
+            if ($$3.isEmpty()) {
+               return Optional.empty();
+            }
+
+            $$1.add($$3.get());
          }
+
+         return Optional.of(new vn($$1));
+      }
+
+      public List<vs.a> a() {
+         return this.b;
       }
    }
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
-
-   public vn.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<vr> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         vp $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
+   public static record b(int a, BitSet b) {
+      public b(uj $$0) {
+         this($$0.n(), $$0.e(20));
       }
 
-      vm $$6 = new vm($$2);
-      vm.b $$7 = new vm.b($$0, $$1);
-      return new vn.a($$6, $$7);
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(vm a, vm.b b) {
+      public void a(uj $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b, 20);
+      }
    }
 }

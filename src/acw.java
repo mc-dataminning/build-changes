@@ -1,32 +1,24 @@
-public class acw implements xf<za> {
-   private final vf a;
-   private final vf b;
-
-   public acw(vf $$0, vf $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public acw(ui $$0) {
-      this.a = $$0.m();
-      this.b = $$0.m();
+public record acw(vg a, boolean b) implements xg<zb> {
+   public acw(uj $$0) {
+      this($$0.m(), $$0.readBoolean());
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public vf a() {
-      return this.a;
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public vf d() {
+   public boolean d() {
       return this.b;
    }
 }

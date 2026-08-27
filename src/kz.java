@@ -16,8 +16,8 @@ public class kz implements kk {
    private static final Logger d = LogUtils.getLogger();
    private final Path e;
    private final CompletableFuture<ij.b> f;
-   private static final MapCodec<ahf<cuo>> g = ahf.a(ke.at).fieldOf("biome");
-   private static final Codec<cux.c<ahf<cuo>>> h = cux.c.a(g).fieldOf("biomes").codec();
+   private static final MapCodec<ahg<cuw>> g = ahg.a(ke.at).fieldOf("biome");
+   private static final Codec<cvf.c<ahg<cuw>>> h = cvf.c.a(g).fieldOf("biomes").codec();
 
    public kz(km $$0, CompletableFuture<ij.b> $$1) {
       this.e = $$0.a(km.b.c).resolve("biome_parameters");
@@ -27,9 +27,9 @@ public class kz implements kk {
    @Override
    public CompletableFuture<?> a(ki $$0) {
       return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = ahe.a(JsonOps.INSTANCE, $$1);
+         DynamicOps<JsonElement> $$2 = ahf.a(JsonOps.INSTANCE, $$1);
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         cvc.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
+         cvk.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
          return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
       });
    }
@@ -39,7 +39,7 @@ public class kz implements kk {
       return $$5.isPresent() ? kk.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
    }
 
-   private Path a(ahg $$0) {
+   private Path a(ahh $$0) {
       return this.e.resolve($$0.b()).resolve($$0.a() + ".json");
    }
 

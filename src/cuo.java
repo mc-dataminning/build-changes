@@ -1,384 +1,71 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public final class cuo {
-   public static final Codec<cuo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cuo.b.a.forGetter($$0x -> $$0x.i),
-               cuu.a.fieldOf("effects").forGetter($$0x -> $$0x.l),
-               cup.b.forGetter($$0x -> $$0x.j),
-               cva.c.forGetter($$0x -> $$0x.k)
-            )
+public record cuo(so d, Optional<cuo.a> e) {
+   public static final String a = "entity";
+   public static final Codec<cuo> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(so.a.fieldOf("entity").forGetter($$0x -> $$0x.d), cuo.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
             .apply($$0, cuo::new)
    );
-   public static final Codec<cuo> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cuo.b.a.forGetter($$0x -> $$0x.i), cuu.a.fieldOf("effects").forGetter($$0x -> $$0x.l))
-            .apply($$0, ($$0x, $$1) -> new cuo($$0x, $$1, cup.a, cva.b))
-   );
-   public static final Codec<ih<cuo>> c = ahc.a(ke.at, a);
-   public static final Codec<il<cuo>> d = iv.a(ke.at, a);
-   private static final edw f = new edw(new dpp(new dor(1234L)), ImmutableList.of(0));
-   static final edw g = new edw(new dpp(new dor(3456L)), ImmutableList.of(-2, -1, 0));
-   @Deprecated(
-      forRemoval = true
-   )
-   public static final edw e = new edw(new dpp(new dor(2345L)), ImmutableList.of(0));
-   private static final int h = 1024;
-   private final cuo.b i;
-   private final cup j;
-   private final cva k;
-   private final cuu l;
-   private final ThreadLocal<Long2FloatLinkedOpenHashMap> m = ThreadLocal.withInitial(() -> ac.a(() -> {
-         Long2FloatLinkedOpenHashMap $$0x = new Long2FloatLinkedOpenHashMap(1024, 0.25F) {
-            protected void rehash(int $$0) {
-            }
-         };
-         $$0x.defaultReturnValue(Float.NaN);
-         return $$0x;
-      }));
+   public static final Codec<bim<cuo>> c = bim.a(b);
 
-   cuo(cuo.b $$0, cuu $$1, cup $$2, cva $$3) {
-      this.i = $$0;
-      this.j = $$2;
-      this.k = $$3;
-      this.l = $$1;
+   public cuo() {
+      this(new so(), Optional.empty());
    }
 
-   public int a() {
-      return this.l.d();
-   }
-
-   public cva b() {
-      return this.k;
-   }
-
-   public boolean c() {
-      return this.i.a();
-   }
-
-   public cuo.c a(hx $$0) {
-      if (!this.c()) {
-         return cuo.c.a;
-      } else {
-         return this.b($$0) ? cuo.c.c : cuo.c.b;
-      }
-   }
-
-   private float e(hx $$0) {
-      float $$1 = this.i.d.a($$0, this.g());
-      if ($$0.v() > 80) {
-         float $$2 = (float)(f.a((double)((float)$$0.u() / 8.0F), (double)((float)$$0.w() / 8.0F), false) * 8.0);
-         return $$1 - ($$2 + (float)$$0.v() - 80.0F) * 0.05F / 40.0F;
-      } else {
-         return $$1;
-      }
-   }
-
-   @Deprecated
-   private float f(hx $$0) {
-      long $$1 = $$0.a();
-      Long2FloatLinkedOpenHashMap $$2 = this.m.get();
-      float $$3 = $$2.get($$1);
-      if (!Float.isNaN($$3)) {
-         return $$3;
-      } else {
-         float $$4 = this.e($$0);
-         if ($$2.size() == 1024) {
-            $$2.removeFirstFloat();
-         }
-
-         $$2.put($$1, $$4);
-         return $$4;
-      }
-   }
-
-   public boolean a(cts $$0, hx $$1) {
-      return this.a($$0, $$1, true);
-   }
-
-   public boolean a(cts $$0, hx $$1, boolean $$2) {
-      if (this.c($$1)) {
-         return false;
-      } else {
-         if ($$1.v() >= $$0.J_() && $$1.v() < $$0.al() && $$0.a(cty.b, $$1) < 10) {
-            djh $$3 = $$0.a_($$1);
-            eer $$4 = $$0.b_($$1);
-            if ($$4.a() == ees.c && $$3.b() instanceof dbf) {
-               if (!$$2) {
-                  return true;
-               }
-
-               boolean $$5 = $$0.z($$1.g()) && $$0.z($$1.h()) && $$0.z($$1.e()) && $$0.z($$1.f());
-               if (!$$5) {
-                  return true;
-               }
-            }
-         }
-
-         return false;
-      }
-   }
-
-   public boolean b(hx $$0) {
-      return !this.c($$0);
-   }
-
-   public boolean c(hx $$0) {
-      return this.f($$0) >= 0.15F;
-   }
-
-   public boolean d(hx $$0) {
-      return this.f($$0) > 0.1F;
-   }
-
-   public boolean b(cts $$0, hx $$1) {
-      if (this.c($$1)) {
-         return false;
-      } else {
-         if ($$1.v() >= $$0.J_() && $$1.v() < $$0.al() && $$0.a(cty.b, $$1) < 10) {
-            djh $$2 = $$0.a_($$1);
-            if (($$2.i() || $$2.a(cws.dN)) && cws.dN.o().a($$0, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   public cup d() {
-      return this.j;
-   }
-
-   public int e() {
-      return this.l.a();
-   }
-
-   public int a(double $$0, double $$1) {
-      int $$2 = this.l.f().orElseGet(this::p);
-      return this.l.g().a($$0, $$1, $$2);
-   }
-
-   private int p() {
-      double $$0 = (double)auo.a(this.i.c, 0.0F, 1.0F);
-      double $$1 = (double)auo.a(this.i.e, 0.0F, 1.0F);
-      return ctn.a($$0, $$1);
-   }
-
-   public int f() {
-      return this.l.e().orElseGet(this::q);
-   }
-
-   private int q() {
-      double $$0 = (double)auo.a(this.i.c, 0.0F, 1.0F);
-      double $$1 = (double)auo.a(this.i.e, 0.0F, 1.0F);
-      return ctj.a($$0, $$1);
-   }
-
-   public float g() {
-      return this.i.c;
-   }
-
-   public cuu h() {
-      return this.l;
-   }
-
-   public int i() {
-      return this.l.b();
-   }
-
-   public int j() {
-      return this.l.c();
-   }
-
-   public Optional<cun> k() {
-      return this.l.h();
-   }
-
-   public Optional<ih<arr>> l() {
-      return this.l.i();
-   }
-
-   public Optional<cum> m() {
-      return this.l.j();
-   }
-
-   public Optional<cul> n() {
-      return this.l.k();
-   }
-
-   public Optional<arp> o() {
-      return this.l.l();
-   }
-
-   public static class a {
-      private boolean a = true;
-      @Nullable
-      private Float b;
-      private cuo.d c = cuo.d.a;
-      @Nullable
-      private Float d;
-      @Nullable
-      private cuu e;
-      @Nullable
-      private cva f;
-      @Nullable
-      private cup g;
-
-      public cuo.a a(boolean $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public cuo.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public cuo.a b(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public cuo.a a(cuu $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public cuo.a a(cva $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public cuo.a a(cup $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public cuo.a a(cuo.d $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public cuo a() {
-         if (this.b != null && this.d != null && this.e != null && this.f != null && this.g != null) {
-            return new cuo(new cuo.b(this.a, this.b, this.c, this.d), this.e, this.g, this.f);
+   public cuo(so d, Optional<cuo.a> e) {
+      if (d.e("id")) {
+         ahh $$2 = ahh.a(d.l("id"));
+         if ($$2 != null) {
+            d.a("id", $$2.toString());
          } else {
-            throw new IllegalStateException("You are missing parameters to build a proper biome\n" + this);
+            d.r("id");
          }
       }
 
-      @Override
-      public String toString() {
-         return "BiomeBuilder{\nhasPrecipitation="
-            + this.a
-            + ",\ntemperature="
-            + this.b
-            + ",\ntemperatureModifier="
-            + this.c
-            + ",\ndownfall="
-            + this.d
-            + ",\nspecialEffects="
-            + this.e
-            + ",\nmobSpawnSettings="
-            + this.f
-            + ",\ngenerationSettings="
-            + this.g
-            + ",\n}";
-      }
+      this.d = d;
+      this.e = e;
    }
 
-   static record b(boolean b, float c, cuo.d d, float e) {
-      public static final MapCodec<cuo.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("has_precipitation").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("temperature").forGetter($$0x -> $$0x.c),
-                  cuo.d.c.optionalFieldOf("temperature_modifier", cuo.d.a).forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("downfall").forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, cuo.b::new)
+   public so a() {
+      return this.d;
+   }
+
+   public Optional<cuo.a> b() {
+      return this.e;
+   }
+
+   public so c() {
+      return this.d;
+   }
+
+   public Optional<cuo.a> d() {
+      return this.e;
+   }
+
+   public static record a(auh<Integer> b, auh<Integer> c) {
+      private static final auh<Integer> d = new auh<>(0, 15);
+      public static final Codec<cuo.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, cuo.a::new)
       );
 
-      public boolean a() {
+      private static DataResult<auh<Integer>> a(auh<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      }
+
+      private static MapCodec<auh<Integer>> a(String $$0) {
+         return atx.a(auh.a.optionalFieldOf($$0, d), cuo.a::a);
+      }
+
+      public auh<Integer> a() {
          return this.b;
       }
 
-      public float b() {
+      public auh<Integer> b() {
          return this.c;
-      }
-
-      public cuo.d c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
-   }
-
-   public static enum c implements avk {
-      a("none"),
-      b("rain"),
-      c("snow");
-
-      public static final Codec<cuo.c> d = avk.a(cuo.c::values);
-      private final String e;
-
-      private c(String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-   }
-
-   public static enum d implements avk {
-      a("none") {
-         @Override
-         public float a(hx $$0, float $$1) {
-            return $$1;
-         }
-      },
-      b("frozen") {
-         @Override
-         public float a(hx $$0, float $$1) {
-            double $$2 = cuo.g.a((double)$$0.u() * 0.05, (double)$$0.w() * 0.05, false) * 7.0;
-            double $$3 = cuo.e.a((double)$$0.u() * 0.2, (double)$$0.w() * 0.2, false);
-            double $$4 = $$2 + $$3;
-            if ($$4 < 0.3) {
-               double $$5 = cuo.e.a((double)$$0.u() * 0.09, (double)$$0.w() * 0.09, false);
-               if ($$5 < 0.8) {
-                  return 0.2F;
-               }
-            }
-
-            return $$1;
-         }
-      };
-
-      private final String d;
-      public static final Codec<cuo.d> c = avk.a(cuo.d::values);
-
-      public abstract float a(hx var1, float var2);
-
-      d(String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
       }
    }
 }

@@ -18,11 +18,11 @@ public class azt extends DataFix {
          Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
          Optional<String> $$3 = $$2.get("Name").asString().result();
          if ($$3.isPresent()) {
-            $$2 = $$2.set("Name", avv.a($$2.getOps(), $$3.get()));
+            $$2 = $$2.set("Name", avw.a($$2.getOps(), $$3.get()));
          } else {
             Optional<String> $$4 = $$2.get("LocName").asString().result();
             if ($$4.isPresent()) {
-               $$2 = $$2.set("Name", avv.b($$2.getOps(), $$4.get()));
+               $$2 = $$2.set("Name", avw.b($$2.getOps(), $$4.get()));
                $$2 = $$2.remove("LocName");
             }
          }

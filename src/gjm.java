@@ -1,16 +1,58 @@
-import java.util.function.Consumer;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-@FunctionalInterface
-public interface gjm {
-   gjm a = ($$0, $$1) -> {
-   };
+public class gjm implements gjk {
+   private final gjm.a a;
+   private gjk b;
+   private final BufferedInputStream c;
 
-   default gjm decorate(Consumer<gjq.a> $$0) {
-      return ($$1, $$2) -> this.send($$1, $$2x -> {
-            $$2.accept($$2x);
-            $$0.accept($$2x);
-         });
+   public gjm(gjm.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new gjm.b(this.c));
    }
 
-   void send(gjn var1, Consumer<gjq.a> var2);
+   @Override
+   public AudioFormat a() {
+      return this.b.a();
+   }
+
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new gjm.b(this.c));
+         $$1 = this.b.a($$0);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      gjk create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
+      }
+
+      @Override
+      public void close() {
+      }
+   }
 }

@@ -1,139 +1,122 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class bxo {
+public class bxo implements ctk {
    private static final Logger a = LogUtils.getLogger();
-   private final Short2ObjectMap<bxn> b = new Short2ObjectOpenHashMap();
-   private final Map<ih<bxp>, Set<bxn>> c = Maps.newHashMap();
-   private final Runnable d;
-   private boolean e;
+   private boolean b;
+   private bxo.a c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   public static Codec<bxo> a(Runnable $$0) {
-      return RecordCodecBuilder.create(
-            $$1 -> $$1.group(
-                     RecordCodecBuilder.point($$0),
-                     Codec.BOOL.optionalFieldOf("Valid", false).forGetter($$0xx -> $$0xx.e),
-                     bxn.a($$0).listOf().fieldOf("Records").forGetter($$0xx -> ImmutableList.copyOf($$0xx.b.values()))
-                  )
-                  .apply($$1, bxo::new)
-         )
-         .orElseGet(ac.a("Failed to read POI section: ", a::error), () -> new bxo($$0, false, ImmutableList.of()));
+   public bxo() {
+      this.c = bxo.a.c;
    }
 
-   public bxo(Runnable $$0) {
-      this($$0, true, ImmutableList.of());
-   }
-
-   private bxo(Runnable $$0, boolean $$1, List<bxn> $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      $$2.forEach(this::a);
-   }
-
-   public Stream<bxn> a(Predicate<ih<bxp>> $$0, bxm.b $$1) {
-      return this.c.entrySet().stream().filter($$1x -> $$0.test((ih<bxp>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
-   }
-
-   public void a(hx $$0, ih<bxp> $$1) {
-      if (this.a(new bxn($$0, $$1, this.d))) {
-         a.debug("Added POI of type {} @ {}", $$1.e().map($$0x -> $$0x.a().toString()).orElse("[unregistered]"), $$0);
-         this.d.run();
-      }
-   }
-
-   private boolean a(bxn $$0) {
-      hx $$1 = $$0.f();
-      ih<bxp> $$2 = $$0.g();
-      short $$3 = iz.b($$1);
-      bxn $$4 = (bxn)this.b.get($$3);
-      if ($$4 != null) {
-         if ($$2.equals($$4.g())) {
-            return false;
+   @Override
+   public int a(ane $$0, boolean $$1, boolean $$2) {
+      if (!$$0.P() && $$1) {
+         float $$3 = $$0.f(0.0F);
+         if ((double)$$3 == 0.5) {
+            this.c = $$0.z.a(10) == 0 ? bxo.a.b : bxo.a.c;
          }
 
-         ac.a("POI data mismatch: already registered at " + $$1);
-      }
+         if (this.c == bxo.a.c) {
+            return 0;
+         } else {
+            if (!this.b) {
+               if (!this.a($$0)) {
+                  return 0;
+               }
 
-      this.b.put($$3, $$0);
-      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
-      return true;
-   }
+               this.b = true;
+            }
 
-   public void a(hx $$0) {
-      bxn $$1 = (bxn)this.b.remove(iz.b($$0));
-      if ($$1 == null) {
-         a.error("POI data mismatch: never registered at {}", $$0);
+            if (this.e > 0) {
+               this.e--;
+               return 0;
+            } else {
+               this.e = 2;
+               if (this.d > 0) {
+                  this.b($$0);
+                  this.d--;
+               } else {
+                  this.c = bxo.a.c;
+               }
+
+               return 1;
+            }
+         }
       } else {
-         this.c.get($$1.g()).remove($$1);
-         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::g), LogUtils.defer($$1::f));
-         this.d.run();
+         this.c = bxo.a.c;
+         this.b = false;
+         return 0;
       }
    }
 
-   @Deprecated
-   @avt
-   public int b(hx $$0) {
-      return this.e($$0).map(bxn::a).orElse(0);
+   private boolean a(ane $$0) {
+      for (cfq $$1 : $$0.x()) {
+         if (!$$1.P_()) {
+            hx $$2 = $$1.dl();
+            if ($$0.c($$2) && !$$0.t($$2).a(ash.af)) {
+               for (int $$3 = 0; $$3 < 10; $$3++) {
+                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
+                  this.f = $$2.u() + aup.d(aup.b($$4) * 32.0F);
+                  this.g = $$2.v();
+                  this.h = $$2.w() + aup.d(aup.a($$4) * 32.0F);
+                  if (this.a($$0, new hx(this.f, this.g, this.h)) != null) {
+                     this.e = 0;
+                     this.d = 20;
+                     break;
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
-   public boolean c(hx $$0) {
-      bxn $$1 = (bxn)this.b.get(iz.b($$0));
-      if ($$1 == null) {
-         throw (IllegalStateException)ac.b(new IllegalStateException("POI never registered at " + $$0));
-      } else {
-         boolean $$2 = $$1.c();
-         this.d.run();
-         return $$2;
+   private void b(ane $$0) {
+      emc $$1 = this.a($$0, new hx(this.f, this.g, this.h));
+      if ($$1 != null) {
+         cdp $$2;
+         try {
+            $$2 = new cdp($$0);
+            $$2.a($$0, $$0.d_($$2.dl()), bms.h, null, null);
+         } catch (Exception var5) {
+            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
+            return;
+         }
+
+         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
+         $$0.a_($$2);
       }
    }
 
-   public boolean a(hx $$0, Predicate<ih<bxp>> $$1) {
-      return this.d($$0).filter($$1).isPresent();
-   }
-
-   public Optional<ih<bxp>> d(hx $$0) {
-      return this.e($$0).map(bxn::g);
-   }
-
-   private Optional<bxn> e(hx $$0) {
-      return Optional.ofNullable((bxn)this.b.get(iz.b($$0)));
-   }
-
-   public void a(Consumer<BiConsumer<hx, ih<bxp>>> $$0) {
-      if (!this.e) {
-         Short2ObjectMap<bxn> $$1 = new Short2ObjectOpenHashMap(this.b);
-         this.b();
-         $$0.accept(($$1x, $$2) -> {
-            short $$3 = iz.b($$1x);
-            bxn $$4 = (bxn)$$1.computeIfAbsent($$3, $$2x -> new bxn($$1x, $$2, this.d));
-            this.a($$4);
-         });
-         this.e = true;
-         this.d.run();
+   @Nullable
+   private emc a(ane $$0, hx $$1) {
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         int $$3 = $$1.u() + $$0.z.a(16) - 8;
+         int $$4 = $$1.w() + $$0.z.a(16) - 8;
+         int $$5 = $$0.a(doy.a.b, $$3, $$4);
+         hx $$6 = new hx($$3, $$5, $$4);
+         if ($$0.c($$6) && ccw.b(bmc.bs, $$0, bms.h, $$6, $$0.z)) {
+            return emc.c($$6);
+         }
       }
+
+      return null;
    }
 
-   private void b() {
-      this.b.clear();
-      this.c.clear();
-   }
-
-   boolean a() {
-      return this.e;
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

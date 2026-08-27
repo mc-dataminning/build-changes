@@ -1,147 +1,415 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class dnr {
-   public static final dnr a = a("block_activate");
-   public static final dnr b = a("block_attach");
-   public static final dnr c = a("block_change");
-   public static final dnr d = a("block_close");
-   public static final dnr e = a("block_deactivate");
-   public static final dnr f = a("block_destroy");
-   public static final dnr g = a("block_detach");
-   public static final dnr h = a("block_open");
-   public static final dnr i = a("block_place");
-   public static final dnr j = a("container_close");
-   public static final dnr k = a("container_open");
-   public static final dnr l = a("drink");
-   public static final dnr m = a("eat");
-   public static final dnr n = a("elytra_glide");
-   public static final dnr o = a("entity_damage");
-   public static final dnr p = a("entity_die");
-   public static final dnr q = a("entity_dismount");
-   public static final dnr r = a("entity_interact");
-   public static final dnr s = a("entity_mount");
-   public static final dnr t = a("entity_place");
-   public static final dnr u = a("entity_action");
-   public static final dnr v = a("equip");
-   public static final dnr w = a("explode");
-   public static final dnr x = a("flap");
-   public static final dnr y = a("fluid_pickup");
-   public static final dnr z = a("fluid_place");
-   public static final dnr A = a("hit_ground");
-   public static final dnr B = a("instrument_play");
-   public static final dnr C = a("item_interact_finish");
-   public static final dnr D = a("item_interact_start");
-   public static final dnr E = a("jukebox_play", 10);
-   public static final dnr F = a("jukebox_stop_play", 10);
-   public static final dnr G = a("lightning_strike");
-   public static final dnr H = a("note_block_play");
-   public static final dnr I = a("prime_fuse");
-   public static final dnr J = a("projectile_land");
-   public static final dnr K = a("projectile_shoot");
-   public static final dnr L = a("sculk_sensor_tendrils_clicking");
-   public static final dnr M = a("shear");
-   public static final dnr N = a("shriek", 32);
-   public static final dnr O = a("splash");
-   public static final dnr P = a("step");
-   public static final dnr Q = a("swim");
-   public static final dnr R = a("teleport");
-   public static final dnr S = a("unequip");
-   public static final dnr T = a("resonate_1");
-   public static final dnr U = a("resonate_2");
-   public static final dnr V = a("resonate_3");
-   public static final dnr W = a("resonate_4");
-   public static final dnr X = a("resonate_5");
-   public static final dnr Y = a("resonate_6");
-   public static final dnr Z = a("resonate_7");
-   public static final dnr aa = a("resonate_8");
-   public static final dnr ab = a("resonate_9");
-   public static final dnr ac = a("resonate_10");
-   public static final dnr ad = a("resonate_11");
-   public static final dnr ae = a("resonate_12");
-   public static final dnr af = a("resonate_13");
-   public static final dnr ag = a("resonate_14");
-   public static final dnr ah = a("resonate_15");
-   public static final int ai = 16;
-   private final int aj;
-   private final ih.c<dnr> ak = kd.a.f(this);
+public class dnr<T extends dng> implements AutoCloseable {
+   static final Logger a = LogUtils.getLogger();
+   final Set<UUID> b = Sets.newHashSet();
+   final dno<T> c;
+   private final dnj<T> d;
+   private final dni<T> e;
+   final dnl<T> f;
+   private final dnp<T> g;
+   private final Long2ObjectMap<dnt> h = new Long2ObjectOpenHashMap();
+   private final Long2ObjectMap<dnr.b> i = new Long2ObjectOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   private final Queue<dne<T>> k = Queues.newConcurrentLinkedQueue();
 
-   public dnr(int $$0) {
-      this.aj = $$0;
+   public dnr(Class<T> $$0, dno<T> $$1, dnj<T> $$2) {
+      this.e = new dni<>();
+      this.f = new dnl<>($$0, this.h);
+      this.h.defaultReturnValue(dnt.a);
+      this.i.defaultReturnValue(dnr.b.a);
+      this.c = $$1;
+      this.d = $$2;
+      this.g = new dnq<>(this.e, this.f);
    }
 
-   public int a() {
-      return this.aj;
+   void a(long $$0, dnk<T> $$1) {
+      if ($$1.a()) {
+         this.f.e($$0);
+      }
    }
 
-   private static dnr a(String $$0) {
-      return a($$0, 16);
+   private boolean b(T $$0) {
+      if (!this.b.add($$0.cw())) {
+         a.warn("UUID of added entity already exists: {}", $$0);
+         return false;
+      } else {
+         return true;
+      }
    }
 
-   private static dnr a(String $$0, int $$1) {
-      return it.a(kd.a, $$0, new dnr($$1));
+   public boolean a(T $$0) {
+      return this.a($$0, false);
+   }
+
+   private boolean a(T $$0, boolean $$1) {
+      if (!this.b($$0)) {
+         return false;
+      } else {
+         long $$2 = iz.c($$0.dl());
+         dnk<T> $$3 = this.f.c($$2);
+         $$3.a($$0);
+         $$0.a(new dnr.a($$0, $$2, $$3));
+         if (!$$1) {
+            this.c.g($$0);
+         }
+
+         dnt $$4 = a($$0, $$3.c());
+         if ($$4.b()) {
+            this.e($$0);
+         }
+
+         if ($$4.a()) {
+            this.c($$0);
+         }
+
+         return true;
+      }
+   }
+
+   static <T extends dng> dnt a(T $$0, dnt $$1) {
+      return $$0.dK() ? dnt.c : $$1;
+   }
+
+   public void a(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, true));
+   }
+
+   public void b(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, false));
+   }
+
+   void c(T $$0) {
+      this.c.e($$0);
+   }
+
+   void d(T $$0) {
+      this.c.d($$0);
+   }
+
+   void e(T $$0) {
+      this.e.a($$0);
+      this.c.c($$0);
+   }
+
+   void f(T $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+   }
+
+   public void a(cte $$0, amx $$1) {
+      dnt $$2 = dnt.a($$1);
+      this.a($$0, $$2);
+   }
+
+   public void a(cte $$0, dnt $$1) {
+      long $$2 = $$0.a();
+      if ($$1 == dnt.a) {
+         this.h.remove($$2);
+         this.j.add($$2);
+      } else {
+         this.h.put($$2, $$1);
+         this.j.remove($$2);
+         this.b($$2);
+      }
+
+      this.f.b($$2).forEach($$1x -> {
+         dnt $$2x = $$1x.a($$1);
+         boolean $$3 = $$2x.b();
+         boolean $$4 = $$1.b();
+         boolean $$5 = $$2x.a();
+         boolean $$6 = $$1.a();
+         if ($$5 && !$$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dK()).forEach(this::d);
+         }
+
+         if ($$3 && !$$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dK()).forEach(this::f);
+         } else if (!$$3 && $$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dK()).forEach(this::e);
+         }
+
+         if (!$$5 && $$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dK()).forEach(this::c);
+         }
+      });
+   }
+
+   private void b(long $$0) {
+      dnr.b $$1 = (dnr.b)this.i.get($$0);
+      if ($$1 == dnr.b.a) {
+         this.c($$0);
+      }
+   }
+
+   private boolean a(long $$0, Consumer<T> $$1) {
+      dnr.b $$2 = (dnr.b)this.i.get($$0);
+      if ($$2 == dnr.b.b) {
+         return false;
+      } else {
+         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(dng::dJ)).collect(Collectors.toList());
+         if ($$3.isEmpty()) {
+            if ($$2 == dnr.b.c) {
+               this.d.a(new dne<>(new cte($$0), ImmutableList.of()));
+            }
+
+            return true;
+         } else if ($$2 == dnr.b.a) {
+            this.c($$0);
+            return false;
+         } else {
+            this.d.a(new dne<>(new cte($$0), $$3));
+            $$3.forEach($$1);
+            return true;
+         }
+      }
+   }
+
+   private void c(long $$0) {
+      this.i.put($$0, dnr.b.b);
+      cte $$1 = new cte($$0);
+      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
+         a.error("Failed to read chunk {}", $$1, $$1x);
+         return null;
+      });
+   }
+
+   private boolean d(long $$0) {
+      boolean $$1 = this.a($$0, $$0x -> $$0x.cS().forEach(this::g));
+      if (!$$1) {
+         return false;
+      } else {
+         this.i.remove($$0);
+         return true;
+      }
+   }
+
+   private void g(dng $$0) {
+      $$0.b(blw.c.c);
+      $$0.a(dnh.a);
+   }
+
+   private void g() {
+      this.j.removeIf($$0 -> this.h.get($$0) != dnt.a ? true : this.d($$0));
+   }
+
+   private void h() {
+      dne<T> $$0;
+      while (($$0 = this.k.poll()) != null) {
+         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
+         this.i.put($$0.a().a(), dnr.b.c);
+      }
+   }
+
+   public void a() {
+      this.h();
+      this.g();
+   }
+
+   private LongSet i() {
+      LongSet $$0 = this.f.a();
+      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
+
+      while (var2.hasNext()) {
+         Entry<dnr.b> $$1 = (Entry<dnr.b>)var2.next();
+         if ($$1.getValue() == dnr.b.c) {
+            $$0.add($$1.getLongKey());
+         }
+      }
+
+      return $$0;
+   }
+
+   public void b() {
+      this.i().forEach($$0 -> {
+         boolean $$1 = this.h.get($$0) == dnt.a;
+         if ($$1) {
+            this.d($$0);
+         } else {
+            this.a($$0, $$0x -> {
+            });
+         }
+      });
+   }
+
+   public void c() {
+      LongSet $$0 = this.i();
+
+      while (!$$0.isEmpty()) {
+         this.d.a(false);
+         this.h();
+         $$0.removeIf($$0x -> {
+            boolean $$1 = this.h.get($$0x) == dnt.a;
+            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
+            });
+         });
+      }
+
+      this.d.a(true);
    }
 
    @Override
-   public String toString() {
-      return "Game Event{ " + this.b().g().a() + " , " + this.aj + "}";
+   public void close() throws IOException {
+      this.c();
+      this.d.close();
    }
 
-   @Deprecated
-   public ih.c<dnr> b() {
-      return this.ak;
+   public boolean a(UUID $$0) {
+      return this.b.contains($$0);
    }
 
-   public boolean a(asw<dnr> $$0) {
-      return this.ak.a($$0);
+   public dnp<T> d() {
+      return this.g;
    }
 
-   public static record a(@Nullable blv a, @Nullable djh b) {
-      public static dnr.a a(@Nullable blv $$0) {
-         return new dnr.a($$0, null);
+   public boolean a(hx $$0) {
+      return ((dnt)this.h.get(cte.a($$0))).a();
+   }
+
+   public boolean a(cte $$0) {
+      return ((dnt)this.h.get($$0.a())).a();
+   }
+
+   public boolean a(long $$0) {
+      return this.i.get($$0) == dnr.b.c;
+   }
+
+   public void a(Writer $$0) throws IOException {
+      atp $$1 = atp.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
+      this.f.a().forEach($$1x -> {
+         dnr.b $$2 = (dnr.b)this.i.get($$1x);
+         this.f.a($$1x).forEach($$2x -> {
+            dnk<T> $$3 = this.f.d($$2x);
+            if ($$3 != null) {
+               try {
+                  $$1.a(iz.b($$2x), iz.c($$2x), iz.d($$2x), $$3.c(), $$2, $$3.d());
+               } catch (IOException var7) {
+                  throw new UncheckedIOException(var7);
+               }
+            }
+         });
+      });
+   }
+
+   @avu
+   public String e() {
+      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
+   }
+
+   @avu
+   public int f() {
+      return this.e.b();
+   }
+
+   class a implements dnh {
+      private final T c;
+      private long d;
+      private dnk<T> e;
+
+      a(T $$0, long $$1, dnk<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
 
-      public static dnr.a a(@Nullable djh $$0) {
-         return new dnr.a(null, $$0);
+      @Override
+      public void a() {
+         hx $$0 = this.c.dl();
+         long $$1 = iz.c($$0);
+         if ($$1 != this.d) {
+            dnt $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               dnr.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, iz.a(this.d), $$1});
+            }
+
+            dnr.this.a(this.d, this.e);
+            dnk<T> $$3 = dnr.this.f.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            this.a($$2, $$3.c());
+         }
       }
 
-      public static dnr.a a(@Nullable blv $$0, @Nullable djh $$1) {
-         return new dnr.a($$0, $$1);
+      private void a(dnt $$0, dnt $$1) {
+         dnt $$2 = dnr.a(this.c, $$0);
+         dnt $$3 = dnr.a(this.c, $$1);
+         if ($$2 == $$3) {
+            if ($$3.b()) {
+               dnr.this.c.a(this.c);
+            }
+         } else {
+            boolean $$4 = $$2.b();
+            boolean $$5 = $$3.b();
+            if ($$4 && !$$5) {
+               dnr.this.f(this.c);
+            } else if (!$$4 && $$5) {
+               dnr.this.e(this.c);
+            }
+
+            boolean $$6 = $$2.a();
+            boolean $$7 = $$3.a();
+            if ($$6 && !$$7) {
+               dnr.this.d(this.c);
+            } else if (!$$6 && $$7) {
+               dnr.this.c(this.c);
+            }
+
+            if ($$5) {
+               dnr.this.c.a(this.c);
+            }
+         }
+      }
+
+      @Override
+      public void a(blw.c $$0) {
+         if (!this.e.b(this.c)) {
+            dnr.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, iz.a(this.d), $$0});
+         }
+
+         dnt $$1 = dnr.a(this.c, this.e.c());
+         if ($$1.a()) {
+            dnr.this.d(this.c);
+         }
+
+         if ($$1.b()) {
+            dnr.this.f(this.c);
+         }
+
+         if ($$0.a()) {
+            dnr.this.c.f(this.c);
+         }
+
+         dnr.this.b.remove(this.c.cw());
+         this.c.a(a);
+         dnr.this.a(this.d, this.e);
       }
    }
 
-   public static final class b implements Comparable<dnr.b> {
-      private final dnr a;
-      private final elt b;
-      private final dnr.a c;
-      private final dnt d;
-      private final double e;
-
-      public b(dnr $$0, elt $$1, dnr.a $$2, dnt $$3, elt $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$1.g($$4);
-      }
-
-      public int a(dnr.b $$0) {
-         return Double.compare(this.e, $$0.e);
-      }
-
-      public dnr a() {
-         return this.a;
-      }
-
-      public elt b() {
-         return this.b;
-      }
-
-      public dnr.a c() {
-         return this.c;
-      }
-
-      public dnt d() {
-         return this.d;
-      }
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

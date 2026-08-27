@@ -1,28 +1,24 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class afd implements xg<adk> {
+   private final bkb a;
 
-public class afd implements xf<adj> {
-   private final UUID a;
-
-   public afd(UUID $$0) {
+   public afd(bkb $$0) {
       this.a = $$0;
    }
 
-   public afd(ui $$0) {
-      this.a = $$0.p();
+   public afd(uj $$0) {
+      this.a = $$0.b(bkb.class);
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.a(this.a);
    }
 
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public blv a(and $$0) {
-      return $$0.a(this.a);
+   public bkb a() {
+      return this.a;
    }
 }

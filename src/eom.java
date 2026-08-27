@@ -1,94 +1,26 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.function.Function;
 
-public class eom {
-   private final List<ConcurrentLinkedQueue<eol>> a = ImmutableList.of(
-      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
-   );
-   private volatile boolean b;
-   private volatile int c;
-   private volatile boolean d;
-   private volatile int e;
-   private volatile int f;
+public interface eom {
+   float getAdvance();
 
-   public eom() {
-      this.c = this.e = this.f + 1;
+   default float a(boolean $$0) {
+      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
    }
 
-   public boolean a() {
-      return !this.b && this.c == this.e;
+   default float a() {
+      return 1.0F;
    }
 
-   public boolean b() {
-      if (this.b) {
-         throw new RuntimeException("ALREADY RECORDING !!!");
-      } else if (this.a()) {
-         this.c = (this.e + 1) % this.a.size();
-         this.b = true;
-         return true;
-      } else {
-         return false;
+   default float b() {
+      return 1.0F;
+   }
+
+   fak bake(Function<eoo, fak> var1);
+
+   public interface a extends eom {
+      @Override
+      default fak bake(Function<eoo, fak> $$0) {
+         return fal.a;
       }
-   }
-
-   public void a(eol $$0) {
-      if (!this.b) {
-         throw new RuntimeException("NOT RECORDING !!!");
-      } else {
-         ConcurrentLinkedQueue<eol> $$1 = this.i();
-         $$1.add($$0);
-      }
-   }
-
-   public void c() {
-      if (this.b) {
-         this.b = false;
-      } else {
-         throw new RuntimeException("NOT RECORDING !!!");
-      }
-   }
-
-   public boolean d() {
-      return !this.d && this.c != this.e;
-   }
-
-   public boolean e() {
-      if (this.d) {
-         throw new RuntimeException("ALREADY PROCESSING !!!");
-      } else if (this.d()) {
-         this.d = true;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void f() {
-      if (!this.d) {
-         throw new RuntimeException("NOT PROCESSING !!!");
-      }
-   }
-
-   public void g() {
-      if (this.d) {
-         this.d = false;
-         this.f = this.e;
-         this.e = this.c;
-      } else {
-         throw new RuntimeException("NOT PROCESSING !!!");
-      }
-   }
-
-   public ConcurrentLinkedQueue<eol> h() {
-      return this.a.get(this.f);
-   }
-
-   public ConcurrentLinkedQueue<eol> i() {
-      return this.a.get(this.c);
-   }
-
-   public ConcurrentLinkedQueue<eol> j() {
-      return this.a.get(this.e);
    }
 }

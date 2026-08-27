@@ -1,91 +1,77 @@
-public class cpp extends cpu {
-   public cpp(cps $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class cpp extends cpr {
+   private final hx b;
+   protected boolean a = true;
+
+   public cpp(cfq $$0, bkb $$1, cng $$2, ely $$3) {
+      this($$0.dL(), $$0, $$1, $$2, $$3);
    }
 
-   public boolean a(cir $$0, ctp $$1) {
-      int $$2 = 0;
-      cmy $$3 = cmy.f;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmy $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cnb.tU)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cnb.tT)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$3.u() && $$2 > 0;
+   public cpp(cpr $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
    }
 
-   public cmy a(cir $$0, iu $$1) {
-      int $$2 = 0;
-      cmy $$3 = cmy.f;
+   protected cpp(ctx $$0, @Nullable cfq $$1, bkb $$2, cng $$3, ely $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.a().a($$4.b());
+      this.a = $$0.a_($$4.a()).a(this);
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmy $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cnb.tU)) {
-               if (!$$3.b()) {
-                  return cmy.f;
-               }
+   public static cpp a(cpp $$0, hx $$1, ic $$2) {
+      return new cpp(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new ely(
+            new emc((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
+   }
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cnb.tT)) {
-                  return cmy.f;
-               }
+   @Override
+   public hx a() {
+      return this.a ? super.a() : this.b;
+   }
 
-               $$2++;
-            }
-         }
-      }
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
+   }
 
-      if (!$$3.b() && $$3.u() && $$2 >= 1 && cov.d($$3) < 2) {
-         cmy $$6 = new cmy(cnb.tU, $$2);
-         sn $$7 = $$3.v().h();
-         $$7.a("generation", cov.d($$3) + 1);
-         $$6.c($$7);
-         return $$6;
+   public boolean c() {
+      return this.a;
+   }
+
+   public ic d() {
+      return ic.a(this.o())[0];
+   }
+
+   public ic e() {
+      return ic.a(this.o(), ic.a.b);
+   }
+
+   public ic[] f() {
+      ic[] $$0 = ic.a(this.o());
+      if (this.a) {
+         return $$0;
       } else {
-         return cmy.f;
-      }
-   }
+         ic $$1 = this.k();
+         int $$2 = 0;
 
-   public iq<cmy> a(cir $$0) {
-      iq<cmy> $$1 = iq.a($$0.b(), cmy.f);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cmy $$3 = $$0.a($$2);
-         if ($$3.d().t()) {
-            $$1.set($$2, new cmy($$3.d().s()));
-         } else if ($$3.d() instanceof cov) {
-            $$1.set($$2, $$3.c(1));
-            break;
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
          }
+
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
       }
-
-      return $$1;
-   }
-
-   @Override
-   public cqg<?> ar_() {
-      return cqg.d;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
    }
 }

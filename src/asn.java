@@ -1,11 +1,11 @@
-public class asn {
-   public static final asw<dnr> a = a("vibrations");
-   public static final asw<dnr> b = a("warden_can_listen");
-   public static final asw<dnr> c = a("shrieker_can_listen");
-   public static final asw<dnr> d = a("ignore_vibrations_sneaking");
-   public static final asw<dnr> e = a("allay_can_listen");
+public final class asn {
+   public static final asx<eey> a = a("water");
+   public static final asx<eey> b = a("lava");
 
-   private static asw<dnr> a(String $$0) {
-      return asw.a(ke.B, new ahg($$0));
+   private asn() {
+   }
+
+   private static asx<eey> a(String $$0) {
+      return asx.a(ke.y, new ahh($$0));
    }
 }

@@ -1,20 +1,24 @@
 import com.mojang.serialization.Codec;
 
-public class dwi extends dvz {
-   public static final Codec<dwi> b = djh.b.fieldOf("state").xmap(dwi::new, $$0 -> $$0.c).codec();
-   private final djh c;
+public class dwi<P extends dwh> {
+   public static final dwi<dwq> a = a("simple_state_provider", dwq.b);
+   public static final dwi<dwr> b = a("weighted_state_provider", dwr.b);
+   public static final dwi<dwm> c = a("noise_threshold_provider", dwm.b);
+   public static final dwi<dwl> d = a("noise_provider", dwl.g);
+   public static final dwi<dwj> e = a("dual_noise_provider", dwj.b);
+   public static final dwi<dwo> f = a("rotated_block_provider", dwo.b);
+   public static final dwi<dwn> g = a("randomized_int_state_provider", dwn.b);
+   private final Codec<P> h;
 
-   protected dwi(djh $$0) {
-      this.c = $$0;
+   private static <P extends dwh> dwi<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.V, $$0, new dwi<>($$1));
    }
 
-   @Override
-   protected dwa<?> a() {
-      return dwa.a;
+   private dwi(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public djh a(auv $$0, hx $$1) {
-      return this.c;
+   public Codec<P> a() {
+      return this.h;
    }
 }

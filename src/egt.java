@@ -1,16 +1,28 @@
-public interface egt extends egi {
-   void b(int var1);
+public class egt {
+   public static final egt a = new egt("advancements");
+   public static final egt b = new egt("stats");
+   public static final egt c = new egt("playerdata");
+   public static final egt d = new egt("players");
+   public static final egt e = new egt("level.dat");
+   public static final egt f = new egt("level.dat_old");
+   public static final egt g = new egt("icon.png");
+   public static final egt h = new egt("session.lock");
+   public static final egt i = new egt("generated");
+   public static final egt j = new egt("datapacks");
+   public static final egt k = new egt("resources.zip");
+   public static final egt l = new egt(".");
+   private final String m;
 
-   void c(int var1);
+   private egt(String $$0) {
+      this.m = $$0;
+   }
 
-   void d(int var1);
+   public String a() {
+      return this.m;
+   }
 
-   void a(float var1);
-
-   default void a(hx $$0, float $$1) {
-      this.b($$0.u());
-      this.c($$0.v());
-      this.d($$0.w());
-      this.a($$1);
+   @Override
+   public String toString() {
+      return "/" + this.m;
    }
 }

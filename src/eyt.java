@@ -1,17 +1,152 @@
-public record eyt(ahg a, ahg b, ahg c, ahg d) {
-   public eyt(ahg $$0, ahg $$1) {
-      this($$0, $$0, $$1, $$1);
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+
+public class eyt extends fdm {
+   private static final ahh a = new ahh("popup/background");
+   private static final int b = 12;
+   private static final int c = 18;
+   private static final int k = 6;
+   private static final int l = 130;
+   private static final int m = 64;
+   private static final int n = 250;
+   private final fdm o;
+   @Nullable
+   private final ahh p;
+   private final vg q;
+   private final List<eyt.b> r;
+   @Nullable
+   private final Runnable t;
+   private final int u;
+   private final fbf v = fbf.d();
+
+   eyt(fdm $$0, int $$1, @Nullable ahh $$2, vg $$3, vg $$4, List<eyt.b> $$5, @Nullable Runnable $$6) {
+      super($$3);
+      this.o = $$0;
+      this.p = $$2;
+      this.q = $$4;
+      this.r = $$5;
+      this.t = $$6;
+      this.u = $$1 - 36;
    }
 
-   public eyt(ahg $$0, ahg $$1, ahg $$2) {
-      this($$0, $$1, $$2, $$1);
+   @Override
+   public void aH_() {
+      super.aH_();
+      this.o.q();
    }
 
-   public ahg a(boolean $$0, boolean $$1) {
-      if ($$0) {
-         return $$1 ? this.c : this.a;
-      } else {
-         return $$1 ? this.d : this.b;
+   @Override
+   protected void aP_() {
+      this.v.a(12).c().b();
+      this.v.a(new eyl(this.e.f().a(n.r), this.i).c(this.u).b(true));
+      if (this.p != null) {
+         this.v.a(eye.a(130, 64, this.p, 130, 64));
       }
+
+      this.v.a(new eyl(this.q, this.i).c(this.u).b(true));
+      this.v.a(this.o());
+      this.v.a($$1 -> {
+         exp var10000 = this.d($$1);
+      });
+      this.c();
+   }
+
+   private fbf o() {
+      int $$0 = 6 * (this.r.size() - 1);
+      int $$1 = Math.min((this.u - $$0) / this.r.size(), 150);
+      fbf $$2 = fbf.e();
+      $$2.a(6);
+
+      for (eyt.b $$3 : this.r) {
+         $$2.a(exr.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
+      }
+
+      return $$2;
+   }
+
+   @Override
+   protected void c() {
+      this.o.a(this.f, this.g, this.h);
+      this.v.a();
+      faz.a(this.v, this.F());
+   }
+
+   @Override
+   public void b(exe $$0, int $$1, int $$2, float $$3) {
+      this.o.a($$0, -1, -1, $$3);
+      $$0.e();
+      RenderSystem.clear(256, evr.a);
+      this.a($$0);
+      $$0.a(a, this.v.B() - 18, this.v.C() - 18, this.v.w() + 36, this.v.u() + 36);
+   }
+
+   @Override
+   public vg i() {
+      return vf.a(this.e, this.q);
+   }
+
+   @Override
+   public void d() {
+      if (this.t != null) {
+         this.t.run();
+      }
+
+      this.f.a(this.o);
+   }
+
+   public static class a {
+      private final fdm a;
+      private final vg b;
+      private vg c = vf.a;
+      private int d = 250;
+      @Nullable
+      private ahh e;
+      private final List<eyt.b> f = new ArrayList<>();
+      @Nullable
+      private Runnable g = null;
+
+      public a(fdm $$0, vg $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public eyt.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public eyt.a a(ahh $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public eyt.a a(vg $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public eyt.a a(vg $$0, Consumer<eyt> $$1) {
+         this.f.add(new eyt.b($$0, $$1));
+         return this;
+      }
+
+      public eyt.a a(Runnable $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public eyt a() {
+         if (this.f.isEmpty()) {
+            throw new IllegalStateException("Popup must have at least one button");
+         } else {
+            return new eyt(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+         }
+      }
+   }
+
+   static record b(vg a, Consumer<eyt> b) {
    }
 }

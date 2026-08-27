@@ -17,10 +17,10 @@ public abstract class bcg extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbw.x);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbw.x);
-      Type<Pair<String, String>> $$2 = DSL.named(bbw.v.typeName(), bde.a());
-      if (!Objects.equals(this.getOutputSchema().getType(bbw.v), $$2)) {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbw.y);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbw.y);
+      Type<Pair<String, String>> $$2 = DSL.named(bbw.w.typeName(), bde.a());
+      if (!Objects.equals(this.getOutputSchema().getType(bbw.w), $$2)) {
          throw new IllegalStateException("Entity name type is not what was expected.");
       } else {
          return TypeRewriteRule.seq(this.fixTypeEverywhere(this.a, $$0, $$1, $$2x -> $$2xx -> $$2xx.mapFirst($$2xxx -> {

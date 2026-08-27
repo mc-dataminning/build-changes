@@ -1,44 +1,81 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public interface clz extends cot {
-   bma g();
+public interface clz {
+   String q_ = "color";
+   String r_ = "display";
+   int s_ = 10511680;
 
-   default arr as_() {
-      return ars.af;
+   default boolean a(cng $$0) {
+      so $$1 = $$0.b("display");
+      return $$1 != null && $$1.b("color", 99);
    }
 
-   default bkc<cmy> a(cmt $$0, ctp $$1, cfi $$2, bka $$3) {
-      cmy $$4 = $$2.b($$3);
-      bma $$5 = bmn.h($$4);
-      cmy $$6 = $$2.c($$5);
-      if ((!crl.d($$6) || $$2.f()) && !cmy.a($$4, $$6)) {
-         if (!$$1.y_()) {
-            $$2.b(asc.c.b($$0));
-         }
+   default int e_(cng $$0) {
+      so $$1 = $$0.b("display");
+      return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
+   }
 
-         cmy $$7 = $$6.b() ? $$4 : $$6.c();
-         cmy $$8 = $$4.c();
-         $$2.a($$5, $$8);
-         return bkc.a($$7, $$1.y_());
-      } else {
-         return bkc.d($$4);
+   default void f_(cng $$0) {
+      so $$1 = $$0.b("display");
+      if ($$1 != null && $$1.e("color")) {
+         $$1.r("color");
       }
    }
 
-   @Nullable
-   static clz c_(cmy $$0) {
-      cmt $$3 = $$0.d();
-      if ($$3 instanceof clz) {
-         return (clz)$$3;
-      } else {
-         if ($$0.d() instanceof ckr $$2) {
-            cwq var6 = $$2.e();
-            if (var6 instanceof clz) {
-               return (clz)var6;
-            }
+   default void a(cng $$0, int $$1) {
+      $$0.a("display").a("color", $$1);
+   }
+
+   static cng a(cng $$0, List<clw> $$1) {
+      cng $$2 = cng.f;
+      int[] $$3 = new int[3];
+      int $$4 = 0;
+      int $$5 = 0;
+      clz $$6 = null;
+      cnb $$7 = $$0.d();
+      if ($$7 instanceof clz) {
+         $$6 = (clz)$$7;
+         $$2 = $$0.c(1);
+         if ($$6.a($$0)) {
+            int $$8 = $$6.e_($$2);
+            float $$9 = (float)($$8 >> 16 & 0xFF) / 255.0F;
+            float $$10 = (float)($$8 >> 8 & 0xFF) / 255.0F;
+            float $$11 = (float)($$8 & 0xFF) / 255.0F;
+            $$4 += (int)(Math.max($$9, Math.max($$10, $$11)) * 255.0F);
+            $$3[0] += (int)($$9 * 255.0F);
+            $$3[1] += (int)($$10 * 255.0F);
+            $$3[2] += (int)($$11 * 255.0F);
+            $$5++;
          }
 
-         return null;
+         for (clw $$12 : $$1) {
+            float[] $$13 = $$12.d().d();
+            int $$14 = (int)($$13[0] * 255.0F);
+            int $$15 = (int)($$13[1] * 255.0F);
+            int $$16 = (int)($$13[2] * 255.0F);
+            $$4 += Math.max($$14, Math.max($$15, $$16));
+            $$3[0] += $$14;
+            $$3[1] += $$15;
+            $$3[2] += $$16;
+            $$5++;
+         }
+      }
+
+      if ($$6 == null) {
+         return cng.f;
+      } else {
+         int $$17 = $$3[0] / $$5;
+         int $$18 = $$3[1] / $$5;
+         int $$19 = $$3[2] / $$5;
+         float $$20 = (float)$$4 / (float)$$5;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int var26 = ($$17 << 8) + $$18;
+         var26 = (var26 << 8) + $$19;
+         $$6.a($$2, var26);
+         return $$2;
       }
    }
 }

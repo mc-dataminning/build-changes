@@ -22,7 +22,7 @@ public class bek extends bde {
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:beehive", () -> DSL.optionalFields("Bees", DSL.list(DSL.optionalFields("EntityData", bbw.w.in($$0)))));
+      $$0.register($$1, "minecraft:beehive", () -> DSL.optionalFields("Bees", DSL.list(DSL.optionalFields("EntityData", bbw.x.in($$0)))));
       return $$1;
    }
 }

@@ -1,148 +1,77 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class ts implements th {
-   private String a = "";
-   @Nullable
-   private tk b;
-   private final Deque<Consumer<tk>> c = new ArrayDeque<>();
+public class ts extends tt {
+   private int a;
+   private final Set<tn<?>> b;
+   private final Deque<tv> c = new ArrayDeque<>();
 
-   @Nullable
-   public tk d() {
-      return this.b;
-   }
+   public ts(tu... $$0) {
+      this.a = $$0.length;
+      Builder<tn<?>> $$1 = ImmutableSet.builder();
+      tv $$2 = tv.a();
 
-   protected int e() {
-      return this.c.size();
-   }
-
-   private void a(tk $$0) {
-      this.c.getLast().accept($$0);
-   }
-
-   @Override
-   public th.b a() {
-      this.a(sp.b);
-      return th.b.a;
-   }
-
-   @Override
-   public th.b a(String $$0) {
-      this.a(ti.a($$0));
-      return th.b.a;
-   }
-
-   @Override
-   public th.b a(byte $$0) {
-      this.a(sl.a($$0));
-      return th.b.a;
-   }
-
-   @Override
-   public th.b a(short $$0) {
-      this.a(tf.a($$0));
-      return th.b.a;
-   }
-
-   @Override
-   public th.b a(int $$0) {
-      this.a(ss.a($$0));
-      return th.b.a;
-   }
-
-   @Override
-   public th.b a(long $$0) {
-      this.a(sv.a($$0));
-      return th.b.a;
-   }
-
-   @Override
-   public th.b a(float $$0) {
-      this.a(sq.a($$0));
-      return th.b.a;
-   }
-
-   @Override
-   public th.b a(double $$0) {
-      this.a(so.a($$0));
-      return th.b.a;
-   }
-
-   @Override
-   public th.b a(byte[] $$0) {
-      this.a(new sk($$0));
-      return th.b.a;
-   }
-
-   @Override
-   public th.b a(int[] $$0) {
-      this.a(new sr($$0));
-      return th.b.a;
-   }
-
-   @Override
-   public th.b a(long[] $$0) {
-      this.a(new su($$0));
-      return th.b.a;
-   }
-
-   @Override
-   public th.b a(tm<?> $$0, int $$1) {
-      return th.b.a;
-   }
-
-   @Override
-   public th.a b(tm<?> $$0, int $$1) {
-      this.c($$0);
-      return th.a.a;
-   }
-
-   @Override
-   public th.a a(tm<?> $$0) {
-      return th.a.a;
-   }
-
-   @Override
-   public th.a a(tm<?> $$0, String $$1) {
-      this.a = $$1;
-      this.c($$0);
-      return th.a.a;
-   }
-
-   private void c(tm<?> $$0) {
-      if ($$0 == st.a) {
-         st $$1 = new st();
-         this.a($$1);
-         this.c.addLast($$1::add);
-      } else if ($$0 == sn.b) {
-         sn $$2 = new sn();
-         this.a($$2);
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+      for (tu $$3 : $$0) {
+         $$2.a($$3);
+         $$1.add($$3.b());
       }
+
+      this.c.push($$2);
+      $$1.add(so.b);
+      this.b = $$1.build();
    }
 
    @Override
-   public th.b b() {
-      this.c.removeLast();
-      return th.b.a;
+   public ti.b b(tn<?> $$0) {
+      return $$0 != so.b ? ti.b.c : super.b($$0);
    }
 
    @Override
-   public th.b b(tm<?> $$0) {
-      if ($$0 == st.a) {
-         st $$1 = new st();
-         this.b = $$1;
-         this.c.addLast($$1::add);
-      } else if ($$0 == sn.b) {
-         sn $$2 = new sn();
-         this.b = $$2;
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+   public ti.a a(tn<?> $$0) {
+      tv $$1 = this.c.element();
+      if (this.e() > $$1.b()) {
+         return super.a($$0);
+      } else if (this.a <= 0) {
+         return ti.a.d;
       } else {
-         this.c.addLast($$0x -> this.b = $$0x);
+         return !this.b.contains($$0) ? ti.a.b : super.a($$0);
+      }
+   }
+
+   @Override
+   public ti.a a(tn<?> $$0, String $$1) {
+      tv $$2 = this.c.element();
+      if (this.e() > $$2.b()) {
+         return super.a($$0, $$1);
+      } else if ($$2.c().remove($$1, $$0)) {
+         this.a--;
+         return super.a($$0, $$1);
+      } else {
+         if ($$0 == so.b) {
+            tv $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.c.push($$3);
+               return super.a($$0, $$1);
+            }
+         }
+
+         return ti.a.b;
+      }
+   }
+
+   @Override
+   public ti.b b() {
+      if (this.e() == this.c.element().b()) {
+         this.c.pop();
       }
 
-      return th.b.a;
+      return super.b();
+   }
+
+   public int c() {
+      return this.a;
    }
 }

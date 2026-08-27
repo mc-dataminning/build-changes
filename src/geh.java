@@ -1,316 +1,100 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.IntStream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class geh implements gek.a, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final ahg b;
-   final int c;
-   final int d;
-   private final epc e;
-   epc[] f;
-   @Nullable
-   private final geh.a g;
-   private final aqk h;
+public class geh implements geg {
+   public static final int a = 0;
+   private final geh.b c = new geh.b();
+   private final geh.b d = new geh.b();
+   public final geh.a b;
 
-   public geh(ahg $$0, gfz $$1, epc $$2, aqk $$3) {
+   public geh(geh.a $$0) {
       this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$1.b();
-      this.h = $$3;
-      gfx $$4 = $$3.a(gfx.a).orElse(gfx.e);
-      this.g = this.a($$1, $$2.a(), $$2.b(), $$4);
-      this.e = $$2;
-      this.f = new epc[]{this.e};
    }
 
-   public void a(int $$0) {
-      try {
-         this.f = gec.a(this.f, $$0);
-      } catch (Throwable var6) {
-         o $$2 = o.a(var6, "Generating mipmaps for frame");
-         p $$3 = $$2.a("Sprite being mipmapped");
-         $$3.a("First frame", () -> {
-            StringBuilder $$0x = new StringBuilder();
-            if ($$0x.length() > 0) {
-               $$0x.append(", ");
-            }
-
-            $$0x.append(this.e.a()).append("x").append(this.e.b());
-            return $$0x.toString();
-         });
-         p $$4 = $$2.a("Frame being iterated");
-         $$4.a("Sprite name", this.b);
-         $$4.a("Sprite size", () -> this.c + " x " + this.d);
-         $$4.a("Sprite frames", () -> this.g() + " frames");
-         $$4.a("Mipmap levels", $$0);
-         throw new y($$2);
+   @Override
+   public float unclampedCall(cng $$0, @Nullable foe $$1, @Nullable bmo $$2, int $$3) {
+      blw $$4 = (blw)($$2 != null ? $$2 : $$0.H());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         $$1 = this.a($$4, $$1);
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
       }
    }
 
-   private int g() {
-      return this.g != null ? this.g.b.size() : 1;
+   private float a(cng $$0, foe $$1, int $$2, blw $$3) {
+      ig $$4 = this.b.getPos($$1, $$0, $$3);
+      long $$5 = $$1.X();
+      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
+   }
+
+   private float a(int $$0, long $$1) {
+      if (this.d.a($$1)) {
+         this.d.a($$1, Math.random());
+      }
+
+      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
+      return aup.b((float)$$2, 1.0F);
+   }
+
+   private float a(blw $$0, long $$1, hx $$2) {
+      double $$3 = this.a($$0, $$2);
+      double $$4 = this.a($$0);
+      if ($$0 instanceof cfq $$5 && $$5.g()) {
+         if (this.c.a($$1)) {
+            this.c.a($$1, 0.5 - ($$4 - 0.25));
+         }
+
+         double $$6 = $$3 + this.c.a;
+         return aup.b((float)$$6, 1.0F);
+      }
+
+      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
+      return aup.b((float)$$7, 1.0F);
    }
 
    @Nullable
-   private geh.a a(gfz $$0, int $$1, int $$2, gfx $$3) {
-      int $$4 = $$1 / $$0.a();
-      int $$5 = $$2 / $$0.b();
-      int $$6 = $$4 * $$5;
-      List<geh.b> $$7 = new ArrayList<>();
-      $$3.a(($$1x, $$2x) -> $$7.add(new geh.b($$1x, $$2x)));
-      if ($$7.isEmpty()) {
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            $$7.add(new geh.b($$8, $$3.a()));
-         }
-      } else {
-         int $$9 = 0;
-         IntSet $$10 = new IntOpenHashSet();
-
-         for (Iterator<geh.b> $$11 = $$7.iterator(); $$11.hasNext(); $$9++) {
-            geh.b $$12 = $$11.next();
-            boolean $$13 = true;
-            if ($$12.b <= 0) {
-               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.b});
-               $$13 = false;
-            }
-
-            if ($$12.a < 0 || $$12.a >= $$6) {
-               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.a});
-               $$13 = false;
-            }
-
-            if ($$13) {
-               $$10.add($$12.a);
-            } else {
-               $$11.remove();
-            }
-         }
-
-         int[] $$14 = IntStream.range(0, $$6).filter($$1x -> !$$10.contains($$1x)).toArray();
-         if ($$14.length > 0) {
-            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$14));
-         }
-      }
-
-      return $$7.size() <= 1 ? null : new geh.a(ImmutableList.copyOf($$7), $$4, $$3.b());
+   private foe a(blw $$0, @Nullable foe $$1) {
+      return $$1 == null && $$0.dL() instanceof foe ? (foe)$$0.dL() : $$1;
    }
 
-   void a(int $$0, int $$1, int $$2, int $$3, epc[] $$4) {
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, this.f.length > 1, false);
-      }
+   private boolean a(blw $$0, @Nullable ig $$1) {
+      return $$1 != null && $$1.a() == $$0.dL().ae() && !($$1.b().b($$0.dj()) < 1.0E-5F);
    }
 
-   @Override
-   public int a() {
-      return this.c;
+   private double a(blw $$0, hx $$1) {
+      emc $$2 = emc.b($$1);
+      return Math.atan2($$2.c() - $$0.dw(), $$2.a() - $$0.dq()) / (float) (Math.PI * 2);
    }
 
-   @Override
-   public int b() {
-      return this.d;
+   private double a(blw $$0) {
+      return aup.c((double)($$0.dC() / 360.0F), 1.0);
    }
 
-   @Override
-   public ahg c() {
-      return this.b;
+   private int a(int $$0) {
+      return $$0 * 1327217883;
    }
 
-   public IntStream d() {
-      return this.g != null ? this.g.b() : IntStream.of(1);
-   }
-
-   @Nullable
-   public gej e() {
-      return this.g != null ? this.g.a() : null;
-   }
-
-   public aqk f() {
-      return this.h;
-   }
-
-   @Override
-   public void close() {
-      for (epc $$0 : this.f) {
-         $$0.close();
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
-   }
-
-   public boolean a(int $$0, int $$1, int $$2) {
-      int $$3 = $$1;
-      int $$4 = $$2;
-      if (this.g != null) {
-         $$3 = $$1 + this.g.a($$0) * this.c;
-         $$4 = $$2 + this.g.b($$0) * this.d;
-      }
-
-      return (this.e.a($$3, $$4) >> 24 & 0xFF) == 0;
-   }
-
-   public void a(int $$0, int $$1) {
-      if (this.g != null) {
-         this.g.a($$0, $$1);
-      } else {
-         this.a($$0, $$1, 0, 0, this.f);
-      }
-   }
-
-   class a {
-      final List<geh.b> b;
-      private final int c;
-      private final boolean d;
-
-      a(List<geh.b> $$0, int $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      int a(int $$0) {
-         return $$0 % this.c;
-      }
-
-      int b(int $$0) {
-         return $$0 / this.c;
-      }
-
-      void a(int $$0, int $$1, int $$2) {
-         int $$3 = this.a($$2) * geh.this.c;
-         int $$4 = this.b($$2) * geh.this.d;
-         geh.this.a($$0, $$1, $$3, $$4, geh.this.f);
-      }
-
-      public gej a() {
-         return geh.this.new d(this, this.d ? geh.this.new c() : null);
-      }
-
-      public void a(int $$0, int $$1) {
-         this.a($$0, $$1, this.b.get(0).a);
-      }
-
-      public IntStream b() {
-         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
-      }
+   public interface a {
+      @Nullable
+      ig getPos(foe var1, cng var2, blw var3);
    }
 
    static class b {
-      final int a;
-      final int b;
+      double a;
+      private double b;
+      private long c;
 
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
-
-   final class c implements AutoCloseable {
-      private final epc[] b = new epc[geh.this.f.length];
-
-      c() {
-         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
-            int $$1 = geh.this.c >> $$0;
-            int $$2 = geh.this.d >> $$0;
-            this.b[$$0] = new epc($$1, $$2, false);
-         }
+      boolean a(long $$0) {
+         return this.c != $$0;
       }
 
-      void a(int $$0, int $$1, geh.d $$2) {
-         geh.a $$3 = $$2.d;
-         List<geh.b> $$4 = $$3.b;
-         geh.b $$5 = $$4.get($$2.b);
-         double $$6 = 1.0 - (double)$$2.c / (double)$$5.b;
-         int $$7 = $$5.a;
-         int $$8 = $$4.get(($$2.b + 1) % $$4.size()).a;
-         if ($$7 != $$8) {
-            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
-               int $$10 = geh.this.c >> $$9;
-               int $$11 = geh.this.d >> $$9;
-
-               for (int $$12 = 0; $$12 < $$11; $$12++) {
-                  for (int $$13 = 0; $$13 < $$10; $$13++) {
-                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
-                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
-                     int $$16 = this.a($$6, $$14 >> 16 & 0xFF, $$15 >> 16 & 0xFF);
-                     int $$17 = this.a($$6, $$14 >> 8 & 0xFF, $$15 >> 8 & 0xFF);
-                     int $$18 = this.a($$6, $$14 & 0xFF, $$15 & 0xFF);
-                     this.b[$$9].a($$13, $$12, $$14 & 0xFF000000 | $$16 << 16 | $$17 << 8 | $$18);
-                  }
-               }
-            }
-
-            geh.this.a($$0, $$1, 0, 0, this.b);
-         }
-      }
-
-      private int a(geh.a $$0, int $$1, int $$2, int $$3, int $$4) {
-         return geh.this.f[$$2].a($$3 + ($$0.a($$1) * geh.this.c >> $$2), $$4 + ($$0.b($$1) * geh.this.d >> $$2));
-      }
-
-      private int a(double $$0, int $$1, int $$2) {
-         return (int)($$0 * (double)$$1 + (1.0 - $$0) * (double)$$2);
-      }
-
-      @Override
-      public void close() {
-         for (epc $$0 : this.b) {
-            $$0.close();
-         }
-      }
-   }
-
-   class d implements gej {
-      int b;
-      int c;
-      final geh.a d;
-      @Nullable
-      private final geh.c e;
-
-      d(geh.a $$0, @Nullable geh.c $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         this.c++;
-         geh.b $$2 = this.d.b.get(this.b);
-         if (this.c >= $$2.b) {
-            int $$3 = $$2.a;
-            this.b = (this.b + 1) % this.d.b.size();
-            this.c = 0;
-            int $$4 = this.d.b.get(this.b).a;
-            if ($$3 != $$4) {
-               this.d.a($$0, $$1, $$4);
-            }
-         } else if (this.e != null) {
-            if (!RenderSystem.isOnRenderThread()) {
-               RenderSystem.recordRenderCall(() -> this.e.a($$0, $$1, this));
-            } else {
-               this.e.a($$0, $$1, this);
-            }
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.e != null) {
-            this.e.close();
-         }
+      void a(long $$0, double $$1) {
+         this.c = $$0;
+         double $$2 = $$1 - this.a;
+         $$2 = aup.c($$2 + 0.5, 1.0) - 0.5;
+         this.b += $$2 * 0.1;
+         this.b *= 0.8;
+         this.a = aup.c(this.a + this.b, 1.0);
       }
    }
 }

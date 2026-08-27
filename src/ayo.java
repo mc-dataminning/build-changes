@@ -38,11 +38,11 @@ public class ayo extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bbw.x, "Painting");
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bbw.y, "Painting");
       OpticFinder<?> $$1 = DSL.namedChoice("Painting", $$0);
-      Type<?> $$2 = this.getInputSchema().getChoiceType(bbw.x, "ItemFrame");
+      Type<?> $$2 = this.getInputSchema().getChoiceType(bbw.y, "ItemFrame");
       OpticFinder<?> $$3 = DSL.namedChoice("ItemFrame", $$2);
-      Type<?> $$4 = this.getInputSchema().getType(bbw.x);
+      Type<?> $$4 = this.getInputSchema().getType(bbw.y);
       TypeRewriteRule $$5 = this.fixTypeEverywhereTyped(
          "EntityPaintingFix", $$4, $$2x -> $$2x.updateTyped($$1, $$0, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, true, false)))
       );

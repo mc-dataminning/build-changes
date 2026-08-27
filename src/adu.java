@@ -1,29 +1,14 @@
-public class adu implements xf<adj> {
-   private final adu.a a;
-
-   public adu(adu.a $$0) {
-      this.a = $$0;
-   }
-
-   public adu(ui $$0) {
-      this.a = $$0.b(adu.a.class);
+public record adu(float a) implements xg<adk> {
+   public adu(uj $$0) {
+      this($$0.readFloat());
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.a(this.a);
    }
 
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
-   }
-
-   public adu.a a() {
-      return this.a;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

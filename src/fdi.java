@@ -1,176 +1,274 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fdi extends fct {
-   private static final vf c = vf.c("options.graphics.fabulous").a(n.u);
-   private static final vf k = vf.a("options.graphics.warning.message", c, c);
-   private static final vf l = vf.c("options.graphics.warning.title").a(n.m);
-   private static final vf m = vf.c("options.graphics.warning.accept");
-   private static final vf n = vf.c("options.graphics.warning.cancel");
-   private eyd o;
-   private final ftb p;
-   private final int q;
+public class fdi extends fdm {
+   static final ahh b = new ahh("container/slot");
+   static final Logger c = LogUtils.getLogger();
+   private static final int k = 18;
+   private static final int l = 20;
+   private static final int m = 1;
+   private static final int n = 1;
+   private static final int o = 2;
+   private static final int p = 2;
+   private static final ahg<cuw> q = cvd.b;
+   public static final vg a = vg.c("flat_world_preset.unknown");
+   private final fci r;
+   private vg t;
+   private vg u;
+   private fdi.a v;
+   private exr w;
+   eya x;
+   dxr y;
 
-   private static evl<?>[] a(evm $$0) {
-      return new evl[]{
-         $$0.j(),
-         $$0.e(),
-         $$0.l(),
-         $$0.f(),
-         $$0.k(),
-         $$0.h(),
-         $$0.L(),
-         $$0.Y(),
-         $$0.an(),
-         $$0.B(),
-         $$0.am(),
-         $$0.i(),
-         $$0.X(),
-         $$0.ao(),
-         $$0.A(),
-         $$0.M(),
-         $$0.ag(),
-         $$0.g(),
-         $$0.ah(),
-         $$0.ac(),
-         $$0.aj(),
-         $$0.ak()
-      };
+   public fdi(fci $$0) {
+      super(vg.c("createWorld.customize.presets.title"));
+      this.r = $$0;
    }
 
-   public fdi(fdb $$0, evm $$1) {
-      super($$0, $$1, vf.c("options.videoTitle"));
-      this.p = $$0.f.ah();
-      this.p.i();
-      if ($$1.j().c() == evb.c) {
-         this.p.e();
-      }
+   @Nullable
+   private static dxo a(ii<cwy> $$0, String $$1, int $$2) {
+      List<String> $$3 = Splitter.on('*').limit(2).splitToList($$1);
+      int $$5;
+      String $$4;
+      if ($$3.size() == 2) {
+         $$4 = $$3.get(1);
 
-      this.q = $$1.A().c();
-   }
-
-   @Override
-   protected void aN_() {
-      this.o = this.d(new eyd(this.f, this.g, this.h - 64, 32, 25));
-      int $$0 = -1;
-      epf $$1 = this.f.aM();
-      epa $$2 = $$1.t();
-      int $$3;
-      if ($$2 == null) {
-         $$3 = -1;
+         try {
+            $$5 = Math.max(Integer.parseInt($$3.get(0)), 0);
+         } catch (NumberFormatException var11) {
+            c.error("Error while parsing flat world string", var11);
+            return null;
+         }
       } else {
-         Optional<epe> $$4 = $$1.f();
-         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
+         $$4 = $$3.get(0);
+         $$5 = 1;
       }
 
-      evl<Integer> $$6 = new evl<>("options.fullscreen.resolution", evl.a(), ($$1x, $$2x) -> {
-         if ($$2 == null) {
-            return vf.c("options.fullscreen.unavailable");
-         } else if ($$2x == -1) {
-            return evm.a($$1x, vf.c("options.fullscreen.current"));
+      int $$9 = Math.min($$2 + $$5, dmy.c);
+      int $$10 = $$9 - $$2;
+
+      Optional<ih.c<cwy>> $$11;
+      try {
+         $$11 = $$0.a(ahg.a(ke.f, new ahh($$4)));
+      } catch (Exception var10) {
+         c.error("Error while parsing flat world string", var10);
+         return null;
+      }
+
+      if ($$11.isEmpty()) {
+         c.error("Error while parsing flat world string => Unknown block, {}", $$4);
+         return null;
+      } else {
+         return new dxo($$10, $$11.get().a());
+      }
+   }
+
+   private static List<dxo> a(ii<cwy> $$0, String $$1) {
+      List<dxo> $$2 = Lists.newArrayList();
+      String[] $$3 = $$1.split(",");
+      int $$4 = 0;
+
+      for (String $$5 : $$3) {
+         dxo $$6 = a($$0, $$5, $$4);
+         if ($$6 == null) {
+            return Collections.emptyList();
+         }
+
+         $$2.add($$6);
+         $$4 += $$6.a();
+      }
+
+      return $$2;
+   }
+
+   public static dxr a(ii<cwy> $$0, ii<cuw> $$1, ii<dzu> $$2, ii<dys> $$3, String $$4, dxr $$5) {
+      Iterator<String> $$6 = Splitter.on(';').split($$4).iterator();
+      if (!$$6.hasNext()) {
+         return dxr.a($$1, $$2, $$3);
+      } else {
+         List<dxo> $$7 = a($$0, $$6.next());
+         if ($$7.isEmpty()) {
+            return dxr.a($$1, $$2, $$3);
          } else {
-            epe $$3x = $$2.a($$2x);
-            return evm.a($$1x, vf.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
+            ih.c<cuw> $$8 = $$1.b(q);
+            ih<cuw> $$9 = $$8;
+            if ($$6.hasNext()) {
+               String $$10 = $$6.next();
+               $$9 = Optional.ofNullable(ahh.a($$10)).map($$0x -> ahg.a(ke.at, $$0x)).flatMap($$1::a).orElseGet(() -> {
+                  c.warn("Invalid biome: {}", $$10);
+                  return $$8;
+               });
+            }
+
+            return $$5.a($$7, $$5.c(), $$9);
          }
-      }, new evl.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
-         if ($$2 != null) {
-            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
+      }
+   }
+
+   static String a(dxr $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (int $$2 = 0; $$2 < $$0.e().size(); $$2++) {
+         if ($$2 > 0) {
+            $$1.append(",");
          }
-      });
-      this.o.a($$6);
-      this.o.a(this.b.C());
-      this.o.a(a(this.b));
-      this.d(exg.a(ve.d, $$1x -> {
-         this.f.m.as();
-         $$1.g();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+
+         $$1.append($$0.e().get($$2));
+      }
+
+      $$1.append(";");
+      $$1.append($$0.d().e().map(ahg::a).orElseThrow(() -> new IllegalStateException("Biome not registered")));
+      return $$1.toString();
    }
 
    @Override
-   public void j() {
-      if (this.b.A().c() != this.q) {
-         this.f.b(this.b.A().c());
-         this.f.P();
-      }
-
-      super.j();
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      int $$3 = this.b.an().c();
-      if (super.a($$0, $$1, $$2)) {
-         if (this.b.an().c() != $$3) {
-            this.f.a();
-         }
-
-         if (this.p.g()) {
-            List<vf> $$4 = Lists.newArrayList(new vf[]{k, ve.r});
-            String $$5 = this.p.j();
-            if ($$5 != null) {
-               $$4.add(ve.r);
-               $$4.add(vf.a("options.graphics.warning.renderer", $$5).a(n.h));
-            }
-
-            String $$6 = this.p.l();
-            if ($$6 != null) {
-               $$4.add(ve.r);
-               $$4.add(vf.a("options.graphics.warning.vendor", $$6).a(n.h));
-            }
-
-            String $$7 = this.p.k();
-            if ($$7 != null) {
-               $$4.add(ve.r);
-               $$4.add(vf.a("options.graphics.warning.version", $$7).a(n.h));
-            }
-
-            this.f.a(new fdh(l, $$4, ImmutableList.of(new fdh.a(m, $$0x -> {
-               this.b.j().a(evb.c);
-               evi.O().f.f();
-               this.p.e();
-               this.f.a(this);
-            }), new fdh.a(n, $$0x -> {
-               this.p.f();
-               this.f.a(this);
-            }))));
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   protected void aP_() {
+      this.t = vg.c("createWorld.customize.presets.share");
+      this.u = vg.c("createWorld.customize.presets.list");
+      this.x = new eya(this.i, 50, 40, this.g - 100, 20, this.t);
+      this.x.f(1230);
+      fik $$0 = this.r.a.o().k();
+      iu $$1 = $$0.a();
+      cia $$2 = $$0.g().b();
+      ii<cuw> $$3 = $$1.b(ke.at);
+      ii<dzu> $$4 = $$1.b(ke.aF);
+      ii<dys> $$5 = $$1.b(ke.aC);
+      ii<cwy> $$6 = $$1.b(ke.f).a($$2);
+      this.x.a(a(this.r.n()));
+      this.y = this.r.n();
+      this.e(this.x);
+      this.v = this.d(new fdi.a($$1, $$2));
+      this.w = this.d(exr.a(vg.c("createWorld.customize.presets.select"), $$4x -> {
+         dxr $$5x = a($$6, $$3, $$4, $$5, this.x.a(), this.y);
+         this.r.a($$5x);
+         this.f.a(this.r);
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
+      this.d(exr.a(vf.e, $$0x -> this.f.a(this.r)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+      this.c(this.v.i() != null);
    }
 
    @Override
    public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (fdb.s()) {
-         evl<Integer> $$4 = this.b.an();
-         int $$5 = $$4.c() + (int)Math.signum($$3);
-         if ($$5 != 0) {
-            $$4.a($$5);
-            if ($$4.c() == $$5) {
-               this.f.a();
-               return true;
+      return this.v.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(evr $$0, int $$1, int $$2) {
+      String $$3 = this.x.a();
+      this.b($$0, $$1, $$2);
+      this.x.a($$3);
+   }
+
+   @Override
+   public void d() {
+      this.f.a(this.r);
+   }
+
+   @Override
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 400.0F);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      $$0.b(this.i, this.t, 51, 30, 10526880);
+      $$0.b(this.i, this.u, 51, 70, 10526880);
+      $$0.c().b();
+      this.x.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void c(boolean $$0) {
+      this.w.j = $$0 || this.x.a().length() > 1;
+   }
+
+   class a extends eyn<fdi.a.a> {
+      public a(iu $$0, cia $$1) {
+         super(fdi.this.f, fdi.this.g, fdi.this.h - 117, 80, 24);
+
+         for (ih<dxp> $$2 : $$0.d(ke.az).c(asm.a)) {
+            Set<cwy> $$3 = $$2.a().b().e().stream().map($$0x -> $$0x.b().b()).filter($$1x -> !$$1x.a($$1)).collect(Collectors.toSet());
+            if (!$$3.isEmpty()) {
+               fdi.c
+                  .info(
+                     "Discarding flat world preset {} since it contains experimental blocks {}",
+                     $$2.e().map($$0x -> $$0x.a().toString()).orElse("<unknown>"),
+                     $$3
+                  );
+            } else {
+               this.b(new fdi.a.a($$2));
             }
          }
-
-         return false;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
       }
-   }
 
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-   }
+      public void a(@Nullable fdi.a.a $$0) {
+         super.a($$0);
+         fdi.this.c($$0 != null);
+      }
 
-   @Override
-   public void b(ewu $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         if (super.a($$0, $$1, $$2)) {
+            return true;
+         } else {
+            if (fbp.a($$0) && this.i() != null) {
+               this.i().b();
+            }
+
+            return false;
+         }
+      }
+
+      public class a extends eyn.a<fdi.a.a> {
+         private static final ahh b = new ahh("textures/gui/container/stats_icons.png");
+         private final dxp c;
+         private final vg d;
+
+         public a(ih<dxp> $$1) {
+            this.c = $$1.a();
+            this.d = $$1.e().map($$0x -> vg.c($$0x.a().f("flat_world_preset"))).orElse(fdi.a);
+         }
+
+         @Override
+         public void a(exe $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            this.a($$0, $$3, $$2, this.c.a().a());
+            $$0.a(fdi.this.i, this.d, $$3 + 18 + 5, $$2 + 6, 16777215, false);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            return true;
+         }
+
+         void b() {
+            a.this.a(this);
+            fdi.this.y = this.c.b();
+            fdi.this.x.a(fdi.a(fdi.this.y));
+            fdi.this.x.b(false);
+         }
+
+         private void a(exe $$0, int $$1, int $$2, cnb $$3) {
+            this.a($$0, $$1 + 1, $$2 + 1);
+            $$0.b(new cng($$3), $$1 + 2, $$2 + 2);
+         }
+
+         private void a(exe $$0, int $$1, int $$2) {
+            $$0.a(fdi.b, $$1, $$2, 0, 18, 18);
+         }
+
+         @Override
+         public vg a() {
+            return vg.a("narrator.select", this.d);
+         }
+      }
    }
 }

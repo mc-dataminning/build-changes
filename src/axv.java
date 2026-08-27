@@ -36,7 +36,7 @@ public class axv extends baw {
          if ($$2.isEmpty()) {
             return $$0;
          } else {
-            Dynamic<T> $$3 = avv.a($$0.getOps());
+            Dynamic<T> $$3 = avw.a($$0.getOps());
             List<Dynamic<T>> $$4 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
             List<Dynamic<T>> $$5 = Streams.mapWithIndex($$2.get(), ($$2x, $$3x) -> {
                Dynamic<T> $$4x = $$3x < (long)$$4.size() ? $$4.get((int)$$3x) : $$3;

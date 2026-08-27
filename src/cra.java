@@ -1,20 +1,22 @@
-public class cra extends crj {
-   public cra(crj.a $$0, bma... $$1) {
-      super($$0, crk.k, $$1);
+public interface cra extends cqk<bjv> {
+   @Override
+   default cqp<?> e() {
+      return cqp.g;
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
+   default boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 1;
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
+   default cng g() {
+      return new cng(cxa.ob);
    }
 
-   @Override
-   public int a() {
-      return 5;
-   }
+   boolean a(cng var1);
+
+   boolean b(cng var1);
+
+   boolean c(cng var1);
 }

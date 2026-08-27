@@ -5,10 +5,10 @@ import com.mojang.serialization.Dynamic;
 
 public class azg extends baw {
    private static final int a = 6;
-   private static final auv b = auv.a();
+   private static final auw b = auw.a();
 
    public azg(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityZombieVillagerTypeFix", bbw.x, "Zombie");
+      super($$0, $$1, "EntityZombieVillagerTypeFix", bbw.y, "Zombie");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

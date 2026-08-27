@@ -1,15 +1,17 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bpz<E extends bml> extends boq<E> {
-   public bpz(List<Pair<? extends bod<? super E>, Integer>> $$0) {
-      this(ImmutableMap.of(), $$0);
-   }
-
-   public bpz(Map<bvn<?>, bvo> $$0, List<Pair<? extends bod<? super E>, Integer>> $$1) {
-      super($$0, ImmutableSet.of(), boq.a.b, boq.b.a, $$1);
+public class bpz {
+   public static bog<cfd> a() {
+      return brs.a((Function<brs.b<cfd>, ? extends App<brs.c<cfd>, brv<cfd>>>)($$0 -> $$0.group($$0.c(bvq.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               cfe $$3 = $$1.gq();
+               if ($$3.b() != cfg.b && $$3.b() != cfg.m && $$1.w() == 0 && $$3.c() <= 1) {
+                  $$1.a($$1.gq().a(cfg.b));
+                  $$1.c($$0xx);
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

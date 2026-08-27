@@ -1,71 +1,35 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cpm extends cpu {
-   public cpm(cps $$0) {
-      super($$0);
+public record cpm(ahh c, ih<cnb> d, vg e, boolean f) {
+   public static final Codec<cpm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ahh.a.fieldOf("asset_id").forGetter(cpm::a),
+               ahe.a(ke.F).fieldOf("template_item").forGetter(cpm::b),
+               vi.a.fieldOf("description").forGetter(cpm::c),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cpm::d)
+            )
+            .apply($$0, cpm::new)
+   );
+   public static final Codec<ih<cpm>> b = ahd.a(ke.aJ, a);
+
+   public vg a(ih<cpk> $$0) {
+      return this.e.f().c($$0.a().e().a());
    }
 
-   public boolean a(cir $$0, ctp $$1) {
-      cmy $$2 = cmy.f;
-      List<cmy> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmy $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof clq) {
-               if (!$$2.b()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.d() instanceof cln)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
-      }
-
-      return !$$2.b() && !$$3.isEmpty();
+   public ahh a() {
+      return this.c;
    }
 
-   public cmy a(cir $$0, iu $$1) {
-      List<cln> $$2 = Lists.newArrayList();
-      cmy $$3 = cmy.f;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmy $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            cmt $$6 = $$5.d();
-            if ($$6 instanceof clq) {
-               if (!$$3.b()) {
-                  return cmy.f;
-               }
-
-               $$3 = $$5.p();
-            } else {
-               if (!($$6 instanceof cln)) {
-                  return cmy.f;
-               }
-
-               $$2.add((cln)$$6);
-            }
-         }
-      }
-
-      return !$$3.b() && !$$2.isEmpty() ? clq.a($$3, $$2) : cmy.f;
+   public ih<cnb> b() {
+      return this.d;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public vg c() {
+      return this.e;
    }
 
-   @Override
-   public cqg<?> ar_() {
-      return cqg.c;
+   public boolean d() {
+      return this.f;
    }
 }

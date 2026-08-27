@@ -1,19 +1,24 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface emt {
-   int a();
+public class emt extends emv {
+   private final emv b;
+   private final ic.a c;
+   private static final DoubleList d = new emi(1);
 
-   boolean b();
-
-   @Nullable
-   wv c();
-
-   default vt a(wv $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
+   public emt(emv $$0, ic.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   static vt a(@Nullable emt $$0, wv $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
+   private static eml a(eml $$0, ic.a $$1, int $$2) {
+      return new emu(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
+   }
+
+   @Override
+   protected DoubleList a(ic.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

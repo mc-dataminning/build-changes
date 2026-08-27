@@ -1,41 +1,34 @@
-public class bom implements bod<bml> {
-   private final int a;
-   private final int b;
-   private boc.a c = boc.a.a;
-   private long d;
+import com.google.common.collect.ImmutableMap;
 
-   public bom(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bom extends bof<bzu> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
+
+   public bom() {
+      super(ImmutableMap.of(bvq.m, bvr.b), 100);
    }
 
-   @Override
-   public boc.a a() {
-      return this.c;
+   protected boolean a(ane $$0, bzu $$1) {
+      return $$1.ap() == bna.a;
    }
 
-   @Override
-   public final boolean e(and $$0, bml $$1, long $$2) {
-      this.c = boc.a.b;
-      int $$3 = this.a + $$0.F_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
+   protected boolean a(ane $$0, bzu $$1, long $$2) {
+      return this.e < 60;
    }
 
-   @Override
-   public final void f(and $$0, bml $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
+   protected void b(ane $$0, bzu $$1, long $$2) {
+      if (!$$1.bd()) {
+         $$1.b(bna.i);
+         this.e = 0;
       }
    }
 
-   @Override
-   public final void g(and $$0, bml $$1, long $$2) {
-      this.c = boc.a.a;
+   protected void c(ane $$0, bzu $$1, long $$2) {
+      $$1.b(bna.a);
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void d(ane $$0, bzu $$1, long $$2) {
+      this.e++;
    }
 }

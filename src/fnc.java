@@ -1,83 +1,44 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+public class fnc<T extends cdp> extends fkw<T> implements fmt {
+   private final fnj a = this.l.b("hat_rim");
 
-public class fnc {
-   private static final Set<ic> a = EnumSet.allOf(ic.class);
-   private final List<fna> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
-
-   public fnc a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
+   public fnc(fnj $$0) {
+      super($$0);
    }
 
-   public fnc a() {
-      return this.a(true);
+   public static fnp c() {
+      fnr $$0 = fkw.a(fnn.a, 0.0F);
+      fns $$1 = $$0.a();
+      $$1.a("head", new fno().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -3.0F, -6.0F, 2.0F, 4.0F, 2.0F), fnl.a);
+      fns $$2 = $$1.a("hat", fno.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new fnn(0.5F)), fnl.a);
+      $$2.a("hat_rim", fno.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), fnl.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("body", fno.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fnn(0.05F)), fnl.a);
+      $$1.a("right_arm", fno.c().a(44, 22).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fnl.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fno.c().a(44, 22).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fnl.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", fno.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fnl.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fno.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fnl.a(2.0F, 12.0F, 0.0F));
+      return fnp.a($$0, 64, 64);
    }
 
-   public fnc a(boolean $$0) {
-      this.e = $$0;
-      return this;
+   public static fnp a(fnn $$0) {
+      fnr $$1 = fkw.a($$0, 0.0F);
+      fns $$2 = $$1.a();
+      $$2.a("head", fno.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fnl.a);
+      $$2.a("body", fno.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.1F)), fnl.a);
+      $$2.a("right_leg", fno.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fnl.a(-2.0F, 12.0F, 0.0F));
+      $$2.a("left_leg", fno.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fnl.a(2.0F, 12.0F, 0.0F));
+      $$2.a("hat").a("hat_rim", fno.c(), fnl.a);
+      return fnp.a($$1, 64, 32);
    }
 
-   public fnc a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fnb $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new fna($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      fjh.a(this.o, this.n, $$0.fX(), this.c, $$3);
    }
 
-   public fnc a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new fna($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fnb.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fnc a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new fna(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fnb.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fnc a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<ic> $$6) {
-      this.b.add(new fna(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fnb.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public fnc a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new fna($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fnb.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fnc a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fnb $$7) {
-      this.b.add(new fna($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fnc a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new fna(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fnb.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fnc a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fnb $$6, float $$7, float $$8) {
-      this.b.add(new fna(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public fnc a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fnb $$6) {
-      this.b.add(new fna(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<fna> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static fnc c() {
-      return new fnc();
+   @Override
+   public void a(boolean $$0) {
+      this.k.k = $$0;
+      this.l.k = $$0;
+      this.a.k = $$0;
    }
 }

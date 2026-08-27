@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class ayn extends baw {
    public ayn(Schema $$0) {
-      super($$0, false, "EntityPaintingFieldsRenameFix", bbw.x, "minecraft:painting");
+      super($$0, false, "EntityPaintingFieldsRenameFix", bbw.y, "minecraft:painting");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

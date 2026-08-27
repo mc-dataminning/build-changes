@@ -1,106 +1,57 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class daf extends dad implements cwt {
-   public static final dkh e = djx.ax;
-   public static final int f = 25;
-   private final double c;
+public class daf extends cvt {
+   public static final MapCodec<daf> c = b(daf::new);
 
-   protected daf(djg.d $$0, ic $$1, emm $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.k(this.E.b().a(e, Integer.valueOf(0)));
+   @Override
+   public MapCodec<daf> a() {
+      return c;
+   }
+
+   protected daf(djo.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends daf> a();
+   public dhd a(hx $$0, djp $$1) {
+      return new dhz($$0, $$1);
+   }
 
+   @Nullable
    @Override
-   public djh a(ctq $$0) {
-      return this.o().a(e, Integer.valueOf($$0.F_().a(25)));
+   public <T extends dhd> dhe<T> a(ctx $$0, djp $$1, dhf<T> $$2) {
+      return a($$0, $$2, dhf.a);
    }
 
    @Override
-   public boolean e_(djh $$0) {
-      return $$0.c(e) < 25;
-   }
-
-   @Override
-   public void b(djh $$0, and $$1, hx $$2, auv $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         hx $$4 = $$2.a(this.a);
-         if (this.g($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.z));
-         }
+   protected void a(ctx $$0, hx $$1, cfq $$2) {
+      dhd $$3 = $$0.c_($$1);
+      if ($$3 instanceof dhz) {
+         $$2.a((bkg)$$3);
+         $$2.a(asd.am);
       }
    }
 
-   protected djh a(djh $$0, auv $$1) {
-      return $$0.a(e);
-   }
-
-   public djh n(djh $$0) {
-      return $$0.a(e, Integer.valueOf(25));
-   }
-
-   public boolean o(djh $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected djh a(djh $$0, djh $$1) {
-      return $$1;
-   }
-
    @Override
-   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
-         if (this.b) {
-            $$3.a($$4, ees.c, ees.c.a($$3));
+   public void a(djp $$0, ctx $$1, hx $$2, auw $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, art.jJ, aru.e, 1.0F, 1.0F, false);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return this.a($$0, this.b().o());
+         ic $$7 = $$0.c(a);
+         ic.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ic.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == ic.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(jx.ab, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(jx.E, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
-   }
-
-   @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   public boolean b(cts $$0, hx $$1, djh $$2) {
-      return this.g($$0.a_($$1.a(this.a)));
-   }
-
-   @Override
-   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
-      hx $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
-
-      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
-      }
-   }
-
-   protected abstract int a(auv var1);
-
-   protected abstract boolean g(djh var1);
-
-   @Override
-   protected daf c() {
-      return this;
    }
 }

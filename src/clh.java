@@ -1,87 +1,112 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+public class clh extends cnb {
+   public static final int a = 10;
+   private static final int b = 200;
 
-public class clh extends cmt {
-   public clh(cmt.a $$0) {
+   public clh(cnb.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean i(cmy $$0) {
-      return true;
+   public bkc a(cpr $$0) {
+      cfq $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).c() == ema.a.b) {
+         $$1.c($$0.p());
+      }
+
+      return bkc.b;
    }
 
    @Override
-   public boolean a(djh $$0, ctp $$1, hx $$2, cfi $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(bka.a));
-      }
-
-      return false;
+   public cpa c(cng $$0) {
+      return cpa.j;
    }
 
    @Override
-   public bkb a(cpj $$0) {
-      cfi $$1 = $$0.o();
-      ctp $$2 = $$0.q();
-      if (!$$2.B && $$1 != null) {
-         hx $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bkb.e;
-         }
-      }
-
-      return bkb.a($$2.B);
+   public int b(cng $$0) {
+      return 200;
    }
 
-   private boolean a(cfi $$0, djh $$1, ctq $$2, hx $$3, boolean $$4, cmy $$5) {
-      if (!$$0.gp()) {
-         return false;
-      } else {
-         cwq $$6 = $$1.b();
-         dji<cwq, djh> $$7 = $$6.n();
-         Collection<dkk<?>> $$8 = $$7.d();
-         String $$9 = kd.e.b($$6).toString();
-         if ($$8.isEmpty()) {
-            a($$0, vf.a(this.a() + ".empty", $$9));
-            return false;
-         } else {
-            sn $$10 = $$5.a("DebugProperty");
-            String $$11 = $$10.l($$9);
-            dkk<?> $$12 = $$7.a($$11);
-            if ($$4) {
-               if ($$12 == null) {
-                  $$12 = $$8.iterator().next();
+   @Override
+   public void a(ctx $$0, bmo $$1, cng $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof cfq $$4) {
+         ema $$6 = this.a($$4);
+         if ($$6 instanceof ely $$7 && $$6.c() == ema.a.b) {
+            int $$9 = this.b($$2) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               hx $$11 = $$7.a();
+               djp $$12 = $$0.a_($$11);
+               bmi $$13 = $$1.fo() == bkb.a ? $$4.fm() : $$4.fm().e();
+               if ($$12.z() && $$12.l() != ddd.a) {
+                  this.a($$0, $$7, $$12, $$1.f(0.0F), $$13);
                }
 
-               djh $$13 = a($$1, $$12, $$0.fI());
-               $$2.a($$3, $$13, 18);
-               a($$0, vf.a(this.a() + ".update", $$12.f(), a($$13, $$12)));
-            } else {
-               $$12 = a($$8, $$12, $$0.fI());
-               String $$14 = $$12.f();
-               $$10.a($$9, $$14);
-               a($$0, vf.a(this.a() + ".select", $$14, a($$1, $$12)));
+               ars $$15;
+               if ($$12.b() instanceof cxd $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = art.cJ;
+               }
+
+               $$0.a($$4, $$11, $$15, aru.e);
+               if (!$$0.y_() && $$0.c_($$11) instanceof dhh $$17) {
+                  boolean $$18 = $$17.a($$0.X(), $$4, $$7.b());
+                  if ($$18) {
+                     bmd $$19 = $$2.equals($$4.c(bmd.b)) ? bmd.b : bmd.a;
+                     $$2.a(1, $$1, $$1x -> $$1x.d($$19));
+                  }
+               }
             }
 
-            return true;
+            return;
          }
+
+         $$1.fs();
+      } else {
+         $$1.fs();
       }
    }
 
-   private static <T extends Comparable<T>> djh a(djh $$0, dkk<T> $$1, boolean $$2) {
-      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
+   private ema a(cfq $$0) {
+      return cgj.a($$0, $$0x -> !$$0x.P_() && $$0x.bt(), $$0.gs());
    }
 
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
+   private void a(ctx $$0, ely $$1, djp $$2, emc $$3, bmi $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bmi.b ? 1 : -1;
+      int $$7 = $$0.F_().b(7, 12);
+      jp $$8 = new jp(jx.c, $$2);
+      ic $$9 = $$1.b();
+      clh.a $$10 = clh.a.a($$3, $$9);
+      emc $$11 = $$1.e();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.c - (double)($$9 == ic.e ? 1.0E-6F : 0.0F),
+            $$11.d,
+            $$11.e - (double)($$9 == ic.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.F_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.F_().j()
+         );
+      }
    }
 
-   private static void a(cfi $$0, vf $$1) {
-      ((ane)$$0).b($$1, true);
-   }
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
 
-   private static <T extends Comparable<T>> String a(djh $$0, dkk<T> $$1) {
-      return $$1.a($$0.c($$1));
+      public static clh.a a(emc $$0, ic $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new clh.a($$0.c(), 0.0, -$$0.a());
+            case c -> new clh.a(1.0, 0.0, -0.1);
+            case d -> new clh.a(-1.0, 0.0, 0.1);
+            case e -> new clh.a(-0.1, 0.0, -1.0);
+            case f -> new clh.a(0.1, 0.0, 1.0);
+         };
+      }
    }
 }

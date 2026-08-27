@@ -1,83 +1,40 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalLong;
-import org.apache.commons.lang3.StringUtils;
+public class dpo implements don {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final dpa i = new dpa(this);
 
-public class dpo {
-   public static final MapCodec<dpo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.LONG.fieldOf("seed").stable().forGetter(dpo::b),
-               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dpo::c),
-               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dpo::d),
-               Codec.STRING.optionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, $$0.stable(dpo::new))
-   );
-   public static final dpo b = new dpo((long)"North Carolina".hashCode(), true, true);
-   private final long c;
-   private final boolean d;
-   private final boolean e;
-   private final Optional<String> f;
-
-   public dpo(long $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, Optional.empty());
+   public dpo(long $$0) {
+      this.b($$0);
    }
 
-   public static dpo a() {
-      return new dpo(f(), true, false);
+   @Override
+   public auw d() {
+      return new dpo(this.g());
    }
 
-   private dpo(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   @Override
+   public dpl e() {
+      return new doz.a(this.g());
    }
 
-   public long b() {
-      return this.c;
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
    }
 
-   public boolean c() {
-      return this.d;
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
    }
 
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f.isPresent();
-   }
-
-   public dpo a(boolean $$0) {
-      return new dpo(this.c, this.d, $$0, this.f);
-   }
-
-   public dpo b(boolean $$0) {
-      return new dpo(this.c, $$0, this.e, this.f);
-   }
-
-   public dpo a(OptionalLong $$0) {
-      return new dpo($$0.orElse(f()), this.d, this.e, this.f);
-   }
-
-   public static OptionalLong a(String $$0) {
-      $$0 = $$0.trim();
-      if (StringUtils.isEmpty($$0)) {
-         return OptionalLong.empty();
-      } else {
-         try {
-            return OptionalLong.of(Long.parseLong($$0));
-         } catch (NumberFormatException var2) {
-            return OptionalLong.of((long)$$0.hashCode());
-         }
-      }
-   }
-
-   public static long f() {
-      return auv.a().g();
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

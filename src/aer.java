@@ -1,24 +1,24 @@
-public class aer implements xf<adj> {
-   private final String a;
+public class aer implements xg<adk> {
+   private final ahh a;
 
-   public aer(String $$0) {
-      this.a = $$0;
+   public aer(cqm<?> $$0) {
+      this.a = $$0.a();
    }
 
-   public aer(ui $$0) {
-      this.a = $$0.s();
+   public aer(uj $$0) {
+      this.a = $$0.t();
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.a(this.a);
    }
 
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public ahh a() {
       return this.a;
    }
 }

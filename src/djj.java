@@ -1,170 +1,145 @@
-import com.google.common.collect.ArrayTable;
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Table;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public abstract class djj<O, S> {
-   public static final String c = "Name";
-   public static final String d = "Properties";
-   private static final Function<Entry<dkk<?>, Comparable<?>>, String> a = new Function<Entry<dkk<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<dkk<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
-         } else {
-            dkk<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
-         }
-      }
+public class djj extends czb {
+   public static final MapCodec<djj> b = b(djj::new);
+   public static final dkn<dkr> c = dkf.bg;
+   public static final dkg d = dkf.x;
+   public static final float e = 4.0F;
+   protected static final emv f = cwy.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final emv g = cwy.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
+   protected static final emv h = cwy.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
+   protected static final emv i = cwy.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
+   protected static final emv j = cwy.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final emv k = cwy.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
+   protected static final float l = 2.0F;
+   protected static final float m = 6.0F;
+   protected static final float n = 10.0F;
+   protected static final emv o = cwy.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final emv F = cwy.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
+   protected static final emv G = cwy.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
+   protected static final emv H = cwy.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
+   protected static final emv I = cwy.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final emv J = cwy.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
+   protected static final emv K = cwy.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final emv L = cwy.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final emv M = cwy.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
+   protected static final emv N = cwy.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
+   protected static final emv O = cwy.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final emv P = cwy.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+   private static final emv[] Q = a(true);
+   private static final emv[] R = a(false);
 
-      private <T extends Comparable<T>> String a(dkk<T> $$0, Comparable<?> $$1) {
-         return $$0.a((T)$$1);
-      }
-   };
-   protected final O e;
-   private final ImmutableMap<dkk<?>, Comparable<?>> b;
-   private Table<dkk<?>, Comparable<?>, S> g;
-   protected final MapCodec<S> f;
-
-   protected djj(O $$0, ImmutableMap<dkk<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.e = $$0;
-      this.b = $$1;
-      this.f = $$2;
+   @Override
+   protected MapCodec<djj> a() {
+      return b;
    }
 
-   public <T extends Comparable<T>> S a(dkk<T> $$0) {
-      return this.a($$0, a($$0.a(), this.c($$0)));
+   private static emv[] a(boolean $$0) {
+      return Arrays.stream(ic.values()).map($$1 -> a($$1, $$0)).toArray(emv[]::new);
    }
 
-   protected static <T> T a(Collection<T> $$0, T $$1) {
-      Iterator<T> $$2 = $$0.iterator();
-
-      while ($$2.hasNext()) {
-         if ($$2.next().equals($$1)) {
-            if ($$2.hasNext()) {
-               return $$2.next();
-            }
-
-            return $$0.iterator().next();
-         }
+   private static emv a(ic $$0, boolean $$1) {
+      switch ($$0) {
+         case a:
+         default:
+            return ems.a(k, $$1 ? L : F);
+         case b:
+            return ems.a(j, $$1 ? K : o);
+         case c:
+            return ems.a(i, $$1 ? N : H);
+         case d:
+            return ems.a(h, $$1 ? M : G);
+         case e:
+            return ems.a(g, $$1 ? P : J);
+         case f:
+            return ems.a(f, $$1 ? O : I);
       }
+   }
 
-      return $$2.next();
+   public djj(djo.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, ic.c).a(c, dkr.a).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.e);
-      if (!this.C().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.C().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
+   public boolean g_(djp $$0) {
+      return true;
+   }
+
+   @Override
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return ($$0.c(d) ? Q : R)[$$0.c(a).ordinal()];
+   }
+
+   private boolean a(djp $$0, djp $$1) {
+      cwy $$2 = $$0.c(c) == dkr.a ? cxa.by : cxa.br;
+      return $$1.a($$2) && $$1.c(dji.c) && $$1.c(a) == $$0.c(a);
+   }
+
+   @Override
+   public djp a(ctx $$0, hx $$1, djp $$2, cfq $$3) {
+      if (!$$0.B && $$3.fT().d) {
+         hx $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
+         }
       }
 
-      return $$0.toString();
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   public Collection<dkk<?>> B() {
-      return Collections.unmodifiableCollection(this.b.keySet());
-   }
-
-   public <T extends Comparable<T>> boolean b(dkk<T> $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public <T extends Comparable<T>> T c(dkk<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.e);
-      } else {
-         return $$0.g().cast($$1);
-      }
-   }
-
-   public <T extends Comparable<T>> Optional<T> d(dkk<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      return $$1 == null ? Optional.empty() : Optional.of($$0.g().cast($$1));
-   }
-
-   public <T extends Comparable<T>, V extends T> S a(dkk<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.e);
-      } else if ($$2.equals($$1)) {
-         return (S)this;
-      } else {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
-         } else {
-            return $$3;
+   @Override
+   public void a(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         hx $$5 = $$2.a($$0.c(a).g());
+         if (this.a($$0, $$1.a_($$5))) {
+            $$1.b($$5, true);
          }
       }
    }
 
-   public <T extends Comparable<T>, V extends T> S b(dkk<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 != null && !$$2.equals($$1)) {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
-         } else {
-            return $$3;
-         }
-      } else {
-         return (S)this;
+   @Override
+   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? cxa.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(djp $$0, cua $$1, hx $$2) {
+      djp $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(cxa.bQ) && $$3.c(a) == $$0.c(a);
+   }
+
+   @Override
+   public void a(djp $$0, ctx $$1, hx $$2, cwy $$3, hx $$4, boolean $$5) {
+      if ($$0.a((cua)$$1, $$2)) {
+         $$1.a($$2.a($$0.c(a).g()), $$3, $$4);
       }
    }
 
-   public void a(Map<Map<dkk<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Table<dkk<?>, Comparable<?>, S> $$1 = HashBasedTable.create();
-         UnmodifiableIterator var3 = this.b.entrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<dkk<?>, Comparable<?>> $$2 = (Entry<dkk<?>, Comparable<?>>)var3.next();
-            dkk<?> $$3 = $$2.getKey();
-
-            for (Comparable<?> $$4 : $$3.a()) {
-               if (!$$4.equals($$2.getValue())) {
-                  $$1.put($$3, $$4, $$0.get(this.c($$3, $$4)));
-               }
-            }
-         }
-
-         this.g = (Table<dkk<?>, Comparable<?>, S>)($$1.isEmpty() ? $$1 : ArrayTable.create($$1));
-      }
+   @Override
+   public cng a(cua $$0, hx $$1, djp $$2) {
+      return new cng($$2.c(c) == dkr.b ? cxa.br : cxa.by);
    }
 
-   private Map<dkk<?>, Comparable<?>> c(dkk<?> $$0, Comparable<?> $$1) {
-      Map<dkk<?>, Comparable<?>> $$2 = Maps.newHashMap(this.b);
-      $$2.put($$0, $$1);
-      return $$2;
+   @Override
+   public djp a(djp $$0, ddk $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
-   public ImmutableMap<dkk<?>, Comparable<?>> C() {
-      return this.b;
+   @Override
+   public djp a(djp $$0, dbu $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
-   protected static <O, S extends djj<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.e, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.C().isEmpty() ? Codec.unit($$2) : $$2.f.codec().optionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of).codec();
-      });
+   @Override
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(a, c, d);
+   }
+
+   @Override
+   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
+      return false;
    }
 }

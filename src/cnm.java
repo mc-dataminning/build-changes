@@ -1,35 +1,19 @@
-public class cnm extends coh {
-   public static final String c = "SkullOwner";
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cnm(cwq $$0, cwq $$1, cmt.a $$2) {
-      super($$0, $$1, $$2, ic.a);
+public class cnm extends cot {
+   public cnm(cnb.a $$0) {
+      super($$0);
    }
 
    @Override
-   public vf m(cmy $$0) {
-      if ($$0.a(cnb.ug) && $$0.u()) {
-         String $$1 = null;
-         sn $$2 = $$0.v();
-         if ($$2.b("SkullOwner", 8)) {
-            $$1 = $$2.l("SkullOwner");
-         } else if ($$2.b("SkullOwner", 10)) {
-            sn $$3 = $$2.p("SkullOwner");
-            if ($$3.b("Name", 8)) {
-               $$1 = $$3.l("Name");
-            }
-         }
-
-         if ($$1 != null) {
-            return vf.a(this.a() + ".named", $$1);
-         }
-      }
-
-      return super.m($$0);
+   public void a(cng $$0, @Nullable ctx $$1, List<vg> $$2, coy $$3) {
+      cpg.a($$0, $$2, 0.25F, $$1 == null ? 20.0F : $$1.s().f());
    }
 
    @Override
-   public void b(sn $$0) {
-      super.b($$0);
-      dig.e($$0);
+   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
+      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), art.ny, aru.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

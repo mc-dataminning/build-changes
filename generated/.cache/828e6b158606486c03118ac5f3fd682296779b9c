@@ -1,4 +1,4 @@
-// 1.20.4	2026-08-28T01:17:45.5435536	vanilla/Loot Tables
+// 23w51a	2026-08-28T01:19:14.4414928	vanilla/Loot Tables
 16627d78901fd7f72f23ebcc81e717877a2d5c67 data\minecraft\loot_tables\blocks\spruce_hanging_sign.json
 1fc86ccb339e075dc1ef8949f3f32cf0b63e6610 data\minecraft\loot_tables\blocks\deepslate.json
 747b419c8834a94b61e4bdd0a39e0f199bb60578 data\minecraft\loot_tables\archaeology\trail_ruins_common.json
@@ -811,8 +811,8 @@ b308b3258a8e1fcbb0724a0e680e43780bb877ef data\minecraft\loot_tables\blocks\dead_
 a26ebbb8ff24e73c4bc7a98de20186e3c2b3b305 data\minecraft\loot_tables\blocks\polished_granite_slab.json
 69b9f1639063c2c51a19f5244c78e759605e0248 data\minecraft\loot_tables\entities\sheep\white.json
 b4e977718f68a9c592e1a21041451a9d94d54ac6 data\minecraft\loot_tables\blocks\blue_banner.json
-e386969f22b97a642671c15327451ffb156abf3e data\minecraft\loot_tables\blocks\acacia_slab.json
 60eab0dbcfc13370159e0edde267bd6830a5e980 data\minecraft\loot_tables\entities\chicken.json
+e386969f22b97a642671c15327451ffb156abf3e data\minecraft\loot_tables\blocks\acacia_slab.json
 1d6a5c5c1285cc95c7c55fc9d85f266bc686d26e data\minecraft\loot_tables\blocks\white_candle.json
 2a0670a0f9d88a471067c9e09071c441d544e6e8 data\minecraft\loot_tables\blocks\orange_tulip.json
 fff7828b72f8a4eba6d739ad85d8f9f12cbc90e1 data\minecraft\loot_tables\blocks\stripped_crimson_stem.json
@@ -845,8 +845,8 @@ dc71b50d90dd060d1146c204e1a922341f4a4220 data\minecraft\loot_tables\entities\par
 b01c18c933492c1dc33292bc446cb21bdafa818f data\minecraft\loot_tables\blocks\magenta_concrete.json
 0b2dd5a0d26459bc5333889a34c10e52893e902f data\minecraft\loot_tables\blocks\brewing_stand.json
 3af3c1e95ec02c5475922fb4f8a0b3c29f482872 data\minecraft\loot_tables\entities\cave_spider.json
-953d74aa04f5fdb6f0d0b09df403630334930f83 data\minecraft\loot_tables\chests\village\village_snowy_house.json
 90a1242dd7f394a8751bae7375c57a379b9f86b1 data\minecraft\loot_tables\blocks\black_wool.json
+953d74aa04f5fdb6f0d0b09df403630334930f83 data\minecraft\loot_tables\chests\village\village_snowy_house.json
 e67874f8a84cc41fd149007dd0d59a5e1838280c data\minecraft\loot_tables\blocks\netherite_block.json
 ad89351cd61f129f54d7e2a1acb0b37ce44d7887 data\minecraft\loot_tables\entities\zombie.json
 ac024a50f38e4ff8b3be31806c7566d8f8a18b21 data\minecraft\loot_tables\blocks\dead_fire_coral.json
@@ -1027,6 +1027,7 @@ fb3130e966990e2bcc76bdcfe9a6d9017c89578d data\minecraft\loot_tables\blocks\small
 b4c1a84697abe1ef65d887544eeb3b23ba458fa9 data\minecraft\loot_tables\blocks\azure_bluet.json
 250af4cbcd5923ec57db1cc5615bb6cac44ea6e6 data\minecraft\loot_tables\blocks\prismarine_brick_slab.json
 4e1119a839a64dde45066df772174b83e508cd95 data\minecraft\loot_tables\blocks\deepslate_diamond_ore.json
+e508c4b1e20690f30ffe84e1927cdabe9bdb77aa data\minecraft\loot_tables\entities\armadillo.json
 92c3466718f865125697cb7c4a05cfb51997229d data\minecraft\loot_tables\blocks\red_sandstone_slab.json
 c8175cc99eea1ffb09944bbc300e10cdea453209 data\minecraft\loot_tables\blocks\warped_sign.json
 36d0859e0f49a2958129dca33921cc0bb11bcd59 data\minecraft\loot_tables\blocks\red_nether_brick_wall.json

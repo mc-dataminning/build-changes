@@ -1,7 +1,7 @@
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public enum ie implements avk {
+public enum ie implements avl {
    a("down_east", ic.a, ic.f),
    b("down_north", ic.a, ic.c),
    c("down_south", ic.a, ic.d),

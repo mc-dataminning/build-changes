@@ -1,20 +1,29 @@
-public interface dnt {
-   dnv a();
+public enum dnt {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-   int b();
+   private final boolean d;
+   private final boolean e;
 
-   boolean a(and var1, dnr var2, dnr.a var3, elt var4);
-
-   default dnt.a c() {
-      return dnt.a.a;
+   private dnt(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static enum a {
-      a,
-      b;
+   public boolean a() {
+      return this.e;
    }
 
-   public interface b<T extends dnt> {
-      T d();
+   public boolean b() {
+      return this.d;
+   }
+
+   public static dnt a(amx $$0) {
+      if ($$0.a(amx.d)) {
+         return c;
+      } else {
+         return $$0.a(amx.b) ? b : a;
+      }
    }
 }

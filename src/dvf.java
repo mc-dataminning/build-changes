@@ -1,42 +1,43 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dvf extends dvk {
-   public static final Codec<dvf> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dvf::new));
-   protected final int b;
+public class dvf implements dug {
+   public static final Codec<dvf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               asx.b(ke.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               dwh.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               dys.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               dyj.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bjh.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bjh.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, dvf::new)
+   );
+   public final asx<cwy> b;
+   public final dwh c;
+   public final ih<dys> d;
+   public final dyj e;
+   public final bjh f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bjh j;
+   public final float k;
 
-   protected static <P extends dvf> P3<Mu<P>, bjg, bjg, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
-   }
-
-   public dvf(bjg $$0, bjg $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected dvl<?> a() {
-      return dvl.a;
-   }
-
-   @Override
-   protected void a(ctv $$0, dvk.b $$1, auv $$2, duu $$3, int $$4, dvk.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(auv $$0, int $$1, duu $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(auv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   public dvf(asx<cwy> $$0, dwh $$1, ih<dys> $$2, dyj $$3, bjh $$4, float $$5, int $$6, float $$7, bjh $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

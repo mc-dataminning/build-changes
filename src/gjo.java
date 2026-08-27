@@ -1,59 +1,56 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Maps;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.concurrent.CompletionException;
 
-public class gjo implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bge d;
-   @Nullable
-   private CompletableFuture<Optional<gjk>> e;
+public class gjo {
+   private final aqm a;
+   private final Map<ahh, CompletableFuture<eok>> b = Maps.newHashMap();
 
-   private gjo(bge $$0) {
-      this.d = $$0;
+   public gjo(aqm $$0) {
+      this.a = $$0;
    }
 
-   public static CompletableFuture<Optional<gjo>> a(Path $$0) {
+   public CompletableFuture<eok> a(ahh $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               eok var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  eoi $$2 = new eoi($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new eok($$3, $$2.a());
+               }
+
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
+            }
+         }, ac.f()));
+   }
+
+   public CompletableFuture<gjk> a(ahh $$0, boolean $$1) {
       return CompletableFuture.supplyAsync(() -> {
          try {
-            bge $$1 = bge.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new gjo($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
+            InputStream $$2 = this.a.open($$0);
+            return (gjk)($$1 ? new gjm(eoi::new, $$2) : new eoi($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
          }
       }, ac.f());
    }
 
-   public CompletableFuture<Optional<gjl>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bge.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new gjk($$1, ac.f()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ac.f());
-      }
-
-      return this.e.thenApply($$0 -> $$0.map(gjk::a));
+   public void a() {
+      this.b.values().forEach($$0 -> $$0.thenAccept(eok::b));
+      this.b.clear();
    }
 
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(gjk::close));
-      }
+   public CompletableFuture<?> a(Collection<gil> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

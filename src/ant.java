@@ -1,14 +1,7 @@
-import java.util.function.Consumer;
+import com.mojang.authlib.GameProfile;
 
-public interface ant {
-   void a(Consumer<xf<?>> var1);
-
-   ant.a a();
-
-   public static record a(String a) {
-      @Override
-      public String toString() {
-         return this.a;
-      }
+public record ant(GameProfile a, int b, amt c) {
+   public static ant a(GameProfile $$0) {
+      return new ant($$0, 0, amt.a());
    }
 }

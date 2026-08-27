@@ -1,35 +1,14 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public record anu(String b, vj c) {
-   public static final anu a = a("");
+public interface anu {
+   void a(Consumer<xg<?>> var1);
 
-   public static anu a(String $$0) {
-      return new anu($$0, vj.c);
-   }
+   anu.a a();
 
-   public static anu b(String $$0) {
-      return new anu($$0, vj.b);
-   }
-
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
-   }
-
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
-   }
-
-   public boolean c() {
-      return !this.c.a();
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public vj e() {
-      return this.c;
+   public static record a(String a) {
+      @Override
+      public String toString() {
+         return this.a;
+      }
    }
 }

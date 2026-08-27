@@ -1,75 +1,59 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class ges {
-   private static final Logger a = LogUtils.getLogger();
-   private static final agz b = new agz("atlases", ".json");
-   private final List<ger> c;
+public class ges implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final geo f = new geo(16, 16, false);
 
-   private ges(List<ger> $$0) {
-      this.c = $$0;
-   }
+   public ges() {
+      epl $$0 = this.f.e();
 
-   public List<Function<geq, geh>> a(aqi $$0) {
-      final Map<ahg, ger.b> $$1 = new HashMap<>();
-      ger.a $$2 = new ger.a() {
-         @Override
-         public void a(ahg $$0, ger.b $$1x) {
-            ger.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1308622593);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, $$3 << 24 | 16777215);
             }
-         }
-
-         @Override
-         public void a(Predicate<ahg> $$0) {
-            Iterator<Entry<ahg, ger.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<ahg, ger.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<geq, geh>> $$3 = ImmutableList.builder();
-      $$3.add((Function<geq, geh>)$$0x -> ged.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
-   }
-
-   public static ges a(aqi $$0, ahg $$1) {
-      ahg $$2 = b.a($$1);
-      List<ger> $$3 = new ArrayList<>();
-
-      for (aqg $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends ger>)geu.h.parse($$6).getOrThrow(false, a::error));
-         } catch (Exception var11) {
-            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
          }
       }
 
-      return new ges($$3);
+      RenderSystem.activeTexture(33985);
+      this.f.c();
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
+      RenderSystem.activeTexture(33984);
+   }
+
+   @Override
+   public void close() {
+      this.f.close();
+   }
+
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f::a, 16);
+   }
+
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
+   }
+
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
+   }
+
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
+
+   public void b() {
+      RenderSystem.teardownOverlayColor();
    }
 }

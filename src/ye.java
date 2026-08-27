@@ -1,20 +1,18 @@
-public record ye(hx b, int c, String d, int e) implements ya {
-   public static final ahg a = new ahg("debug/game_test_add_marker");
+public record ye(dod b, int c) implements yb {
+   public static final ahh a = new ahh("debug/game_event_listeners");
 
-   public ye(ui $$0) {
-      this($$0.e(), $$0.readInt(), $$0.s(), $$0.readInt());
+   public ye(uj $$0) {
+      this(doe.c($$0), $$0.n());
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.b);
-      $$0.p(this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
+   public void a(uj $$0) {
+      doe.a(this.b, $$0);
+      $$0.c(this.c);
    }
 
    @Override
-   public ahg a() {
+   public ahh a() {
       return a;
    }
 }

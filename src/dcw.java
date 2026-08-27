@@ -1,81 +1,165 @@
 import com.mojang.serialization.MapCodec;
 
-public class dcw extends cys {
-   public static final MapCodec<dcw> a = b(dcw::new);
-   public static final djy b = djx.s;
-   public static final dkh e = djx.aA;
+public class dcw extends cwn {
+   public static final MapCodec<dcw> d = b(dcw::new);
+   public static final dkn<dkt> e = dkf.ag;
 
    @Override
    public MapCodec<dcw> a() {
-      return a;
+      return d;
    }
 
-   protected dcw(djg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(aE, ic.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+   protected dcw(djo.d $$0) {
+      super(false, $$0);
+      this.k(this.E.b().a(e, dkt.a).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
-      if (!$$3.fT().e) {
-         return bkb.d;
-      } else {
-         $$1.a($$2, $$0.a(e), 3);
-         return bkb.a($$1.B);
+   protected void a(djp $$0, ctx $$1, hx $$2, cwy $$3) {
+      if ($$3.o().m() && new dcx($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   protected int g(djh $$0) {
-      return $$0.c(e) * 2;
+   public dks<dkt> c() {
+      return e;
    }
 
    @Override
-   public djh a(cph $$0) {
-      djh $$1 = super.a($$0);
-      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
-   }
+   public djp a(djp $$0, ddk $$1) {
+      dkt $$2 = $$0.c(e);
 
-   @Override
-   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
-      if ($$1 == ic.a && !this.b($$3, $$5, $$2)) {
-         return cws.a.o();
-      } else {
-         return !$$3.y_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public boolean c(cts $$0, hx $$1, djh $$2) {
-      return this.a((cuf)$$0, $$1, $$2) > 0;
-   }
-
-   @Override
-   protected boolean b() {
-      return true;
-   }
-
-   @Override
-   public void a(djh $$0, ctp $$1, hx $$2, auv $$3) {
-      if ($$0.c(d)) {
-         ic $$4 = $$0.c(aE);
-         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
-         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         float $$8 = -5.0F;
-         if ($$3.h()) {
-            $$8 = (float)($$0.c(e) * 2 - 1);
+      return $$0.a(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dkt.a;
+               case b:
+                  yield dkt.b;
+               case c:
+                  yield dkt.d;
+               case d:
+                  yield dkt.c;
+               case e:
+                  yield dkt.f;
+               case f:
+                  yield dkt.e;
+               case g:
+                  yield dkt.i;
+               case h:
+                  yield dkt.j;
+               case i:
+                  yield dkt.g;
+               case j:
+                  yield dkt.h;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
          }
-
-         $$8 /= 16.0F;
-         double $$9 = (double)($$8 * (float)$$4.j());
-         double $$10 = (double)($$8 * (float)$$4.l());
-         $$1.a(jr.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
-      }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dkt.b;
+               case b:
+                  yield dkt.a;
+               case c:
+                  yield dkt.e;
+               case d:
+                  yield dkt.f;
+               case e:
+                  yield dkt.d;
+               case f:
+                  yield dkt.c;
+               case g:
+                  yield dkt.j;
+               case h:
+                  yield dkt.g;
+               case i:
+                  yield dkt.h;
+               case j:
+                  yield dkt.i;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dkt.b;
+               case b:
+                  yield dkt.a;
+               case c:
+                  yield dkt.f;
+               case d:
+                  yield dkt.e;
+               case e:
+                  yield dkt.c;
+               case f:
+                  yield dkt.d;
+               case g:
+                  yield dkt.h;
+               case h:
+                  yield dkt.i;
+               case i:
+                  yield dkt.j;
+               case j:
+                  yield dkt.g;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         default -> $$2;
+      });
    }
 
    @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(aE, e, b, d);
+   public djp a(djp $$0, dbu $$1) {
+      dkt $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(e, dkt.f);
+               case f:
+                  return $$0.a(e, dkt.e);
+               case g:
+                  return $$0.a(e, dkt.j);
+               case h:
+                  return $$0.a(e, dkt.i);
+               case i:
+                  return $$0.a(e, dkt.h);
+               case j:
+                  return $$0.a(e, dkt.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(e, dkt.d);
+               case d:
+                  return $$0.a(e, dkt.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(e, dkt.h);
+               case h:
+                  return $$0.a(e, dkt.g);
+               case i:
+                  return $$0.a(e, dkt.j);
+               case j:
+                  return $$0.a(e, dkt.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(e, c);
    }
 }

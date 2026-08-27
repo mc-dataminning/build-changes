@@ -1,136 +1,255 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class fgs extends exe {
-   private static final ahg b = new ahg("recipe_book/slot_many_craftable");
-   private static final ahg c = new ahg("recipe_book/slot_craftable");
-   private static final ahg d = new ahg("recipe_book/slot_many_uncraftable");
-   private static final ahg e = new ahg("recipe_book/slot_uncraftable");
-   private static final float f = 15.0F;
-   private static final int m = 25;
-   public static final int a = 30;
-   private static final vf n = vf.c("gui.recipebook.moreRecipes");
-   private cjo<?> o;
-   private arv p;
-   private fgt q;
-   private float r;
-   private float t;
-   private int u;
+public class fgs {
+   private final apu a;
+   final List<apr> b;
+   final List<apr> c;
+   final Function<apr, ahh> d;
+   final Runnable e;
+   private final Consumer<apu> f;
 
-   public fgs() {
-      super(0, 0, 25, 25, ve.a);
+   public fgs(Runnable $$0, Function<apr, ahh> $$1, apu $$2, Consumer<apu> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   public void a(fgt $$0, fgq $$1) {
-      this.q = $$0;
-      this.o = (cjo<?>)$$1.d().s.bS;
-      this.p = $$1.e();
-      List<cqe<?>> $$2 = $$0.a(this.p.a(this.o));
+   public Stream<fgs.a> a() {
+      return this.c.stream().map($$0 -> new fgs.d($$0));
+   }
 
-      for (cqe<?> $$3 : $$2) {
-         if (this.p.d($$3)) {
-            $$1.a($$2);
-            this.t = 15.0F;
-            break;
+   public Stream<fgs.a> b() {
+      return this.b.stream().map($$0 -> new fgs.c($$0));
+   }
+
+   void e() {
+      this.a.a(Lists.reverse(this.b).stream().map(apr::f).collect(ImmutableList.toImmutableList()));
+   }
+
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
+   }
+
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      ahh a();
+
+      aps b();
+
+      String c();
+
+      vg d();
+
+      vg e();
+
+      apv f();
+
+      default vg g() {
+         return this.f().a(this.e());
+      }
+
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements fgs.a {
+      private final apr b;
+
+      public b(apr $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<apr> s();
+
+      protected abstract List<apr> t();
+
+      @Override
+      public ahh a() {
+         return fgs.this.d.apply(this.b);
+      }
+
+      @Override
+      public aps b() {
+         return this.b.c();
+      }
+
+      @Override
+      public String c() {
+         return this.b.f();
+      }
+
+      @Override
+      public vg d() {
+         return this.b.a();
+      }
+
+      @Override
+      public vg e() {
+         return this.b.b();
+      }
+
+      @Override
+      public apv f() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.h();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.g();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.i().a(this.t(), this.b, Function.identity(), true);
+         fgs.this.e.run();
+         fgs.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.f().equals("high_contrast")) {
+            evu<Boolean> $$0 = evr.O().m.r();
+            $$0.a(!$$0.c());
          }
       }
-   }
 
-   public fgt a() {
-      return this.q;
-   }
-
-   @Override
-   public void b(ewu $$0, int $$1, int $$2, float $$3) {
-      if (!fdb.s()) {
-         this.r += $$3;
+      protected void a(int $$0) {
+         List<apr> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         fgs.this.e.run();
       }
 
-      ahg $$4;
-      if (this.q.c()) {
-         if (this.q.a(this.p.a(this.o)).size() > 1) {
-            $$4 = b;
-         } else {
-            $$4 = c;
-         }
-      } else if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$4 = d;
-      } else {
-         $$4 = e;
+      @Override
+      public boolean q() {
+         List<apr> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).h();
       }
 
-      boolean $$8 = this.t > 0.0F;
-      if ($$8) {
-         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.t / 15.0F * (float) Math.PI));
-         $$0.c().a();
-         $$0.c().a((float)(this.B() + 8), (float)(this.C() + 12), 0.0F);
-         $$0.c().b($$9, $$9, 1.0F);
-         $$0.c().a((float)(-(this.B() + 8)), (float)(-(this.C() + 12)), 0.0F);
-         this.t -= $$3;
+      @Override
+      public void l() {
+         this.a(-1);
       }
 
-      $$0.a($$4, this.B(), this.C(), this.g, this.h);
-      List<cqe<?>> $$10 = this.f();
-      this.u = auo.d(this.r / 30.0F) % $$10.size();
-      cmy $$11 = $$10.get(this.u).b().a(this.q.a());
-      int $$12 = 4;
-      if (this.q.f() && this.f().size() > 1) {
-         $$0.a($$11, this.B() + $$12 + 1, this.C() + $$12 + 1, 0, 10);
-         $$12--;
+      @Override
+      public boolean r() {
+         List<apr> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).h();
       }
 
-      $$0.b($$11, this.B() + $$12, this.C() + $$12);
-      if ($$8) {
-         $$0.c().b();
+      @Override
+      public void m() {
+         this.a(1);
       }
    }
 
-   private List<cqe<?>> f() {
-      List<cqe<?>> $$0 = this.q.b(true);
-      if (!this.p.a(this.o)) {
-         $$0.addAll(this.q.b(false));
+   class c extends fgs.b {
+      public c(apr $$0) {
+         super($$0);
       }
 
-      return $$0;
-   }
-
-   public boolean b() {
-      return this.f().size() == 1;
-   }
-
-   public cqe<?> d() {
-      List<cqe<?>> $$0 = this.f();
-      return $$0.get(this.u);
-   }
-
-   public List<vf> e() {
-      cmy $$0 = this.f().get(this.u).b().a(this.q.a());
-      List<vf> $$1 = Lists.newArrayList(fdb.a(evi.O(), $$0));
-      if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$1.add(n);
+      @Override
+      protected List<apr> s() {
+         return fgs.this.b;
       }
 
-      return $$1;
-   }
+      @Override
+      protected List<apr> t() {
+         return fgs.this.c;
+      }
 
-   @Override
-   public void a(faz $$0) {
-      cmy $$1 = this.f().get(this.u).b().a(this.q.a());
-      $$0.a(fay.a, vf.a("narration.recipe", $$1.y()));
-      if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$0.a(fay.d, vf.c("narration.button.usage.hovered"), vf.c("narration.recipe.usage.more"));
-      } else {
-         $$0.a(fay.d, vf.c("narration.button.usage.hovered"));
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
       }
    }
 
-   @Override
-   public int w() {
-      return 25;
-   }
+   class d extends fgs.b {
+      public d(apr $$0) {
+         super($$0);
+      }
 
-   @Override
-   protected boolean k(int $$0) {
-      return $$0 == 0 || $$0 == 1;
+      @Override
+      protected List<apr> s() {
+         return fgs.this.c;
+      }
+
+      @Override
+      protected List<apr> t() {
+         return fgs.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
+      }
    }
 }

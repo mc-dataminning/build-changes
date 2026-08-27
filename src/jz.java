@@ -13,7 +13,7 @@ public class jz implements jv {
          return new jz($$2);
       }
 
-      public jz a(jw<jz> $$0, ui $$1) {
+      public jz a(jw<jz> $$0, uj $$1) {
          return new jz($$1.n());
       }
    };
@@ -24,7 +24,7 @@ public class jz implements jv {
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.c(this.c);
    }
 

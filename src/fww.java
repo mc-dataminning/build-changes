@@ -1,64 +1,74 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import org.joml.FrustumIntersection;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class fww implements fws.a {
-   private final evi a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+public class fww {
+   public static final int a = 4;
+   private final FrustumIntersection b = new FrustumIntersection();
+   private final Matrix4f c = new Matrix4f();
+   private Vector4f d;
+   private double e;
+   private double f;
+   private double g;
 
-   public fww(evi $$0) {
-      this.a = $$0;
+   public fww(Matrix4f $$0, Matrix4f $$1) {
+      this.a($$0, $$1);
    }
 
-   @Override
-   public void a(eqb $$0, fth $$1, double $$2, double $$3, double $$4) {
-      ctq $$5 = this.a.r;
-      eqf $$6 = $$1.getBuffer(ftp.y());
-      hx $$7 = hx.a($$2, 0.0, $$4);
+   public fww(fww $$0) {
+      this.b.set($$0.c);
+      this.c.set($$0.c);
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.d = $$0.d;
+   }
 
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            dld $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
+   public fww a(int $$0) {
+      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
+      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
+      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
+      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
+      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
 
-            for (Entry<doq.a, doq> $$11 : $$10.e()) {
-               doq.a $$12 = $$11.getKey();
-               csw $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = iz.a($$13.e, $$15);
-                     int $$18 = iz.a($$13.f, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     ftf.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
-            }
-         }
+      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
+         this.b
+               .intersectAab(
+                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
+               )
+            != -2;
+         this.g = this.g - (double)(this.d.z() * 4.0F)
+      ) {
+         this.e = this.e - (double)(this.d.x() * 4.0F);
+         this.f = this.f - (double)(this.d.y() * 4.0F);
       }
+
+      return this;
    }
 
-   private Vector3f a(doq.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   public void a(double $$0, double $$1, double $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   private void a(Matrix4f $$0, Matrix4f $$1) {
+      $$1.mul($$0, this.c);
+      this.b.set(this.c);
+      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
+   }
+
+   public boolean a(elx $$0) {
+      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   private boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - this.e);
+      float $$7 = (float)($$1 - this.f);
+      float $$8 = (float)($$2 - this.g);
+      float $$9 = (float)($$3 - this.e);
+      float $$10 = (float)($$4 - this.f);
+      float $$11 = (float)($$5 - this.g);
+      return this.b.testAab($$6, $$7, $$8, $$9, $$10, $$11);
    }
 }

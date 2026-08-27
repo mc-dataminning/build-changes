@@ -1,17 +1,18 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class edm implements edo {
-   private static final edm b = new edm();
-   public static final Codec<edm> a = Codec.unit(b);
+public class edm {
+   private final List<edl> a;
 
-   @Override
-   public sn a(auv $$0, @Nullable sn $$1) {
-      return new sn();
+   public edm(List<edl> $$0) {
+      this.a = $$0;
+   }
+
+   public List<edl> a() {
+      return this.a;
    }
 
    @Override
-   public edp<?> a() {
-      return edp.a;
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
    }
 }

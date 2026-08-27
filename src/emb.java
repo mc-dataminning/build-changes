@@ -1,38 +1,60 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public class emb {
+   public static final emb a = new emb(0.0F, 0.0F);
+   public static final emb b = new emb(1.0F, 1.0F);
+   public static final emb c = new emb(1.0F, 0.0F);
+   public static final emb d = new emb(-1.0F, 0.0F);
+   public static final emb e = new emb(0.0F, 1.0F);
+   public static final emb f = new emb(0.0F, -1.0F);
+   public static final emb g = new emb(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final emb h = new emb(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-public final class emb implements emf {
-   private final elz a;
-   private final int b;
-   private final int c;
-
-   emb(int $$0, int $$1) {
-      this.a = new elz((int)emj.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+   public emb(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   @Override
-   public boolean a(emf.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   public emb a(float $$0) {
+      return new emb(this.i * $$0, this.j * $$0);
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
+   public float a(emb $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
    }
 
-   @Override
-   public DoubleList a() {
-      return this.a;
+   public emb b(emb $$0) {
+      return new emb(this.i + $$0.i, this.j + $$0.j);
+   }
+
+   public emb b(float $$0) {
+      return new emb(this.i + $$0, this.j + $$0);
+   }
+
+   public boolean c(emb $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
+   }
+
+   public emb a() {
+      float $$0 = aup.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new emb(this.i / $$0, this.j / $$0);
+   }
+
+   public float b() {
+      return aup.c(this.i * this.i + this.j * this.j);
+   }
+
+   public float c() {
+      return this.i * this.i + this.j * this.j;
+   }
+
+   public float d(emb $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
+   }
+
+   public emb d() {
+      return new emb(-this.i, -this.j);
    }
 }

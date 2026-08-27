@@ -1,33 +1,34 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Stream;
+public class gig extends ghx {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final ccs r;
 
-public class gig<T> implements gik<T> {
-   protected final Comparator<T> a;
-   protected final gil<T> b;
-
-   public gig(Function<T, Stream<ahg>> $$0, List<T> $$1) {
-      ToIntFunction<T> $$2 = ac.e($$1);
-      this.a = Comparator.comparingInt($$2);
-      this.b = gil.a($$1, $$0);
+   public gig(ccs $$0) {
+      super(art.ld, aru.f, gio.t());
+      this.r = $$0;
+      this.k = gio.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
    @Override
-   public List<T> search(String $$0) {
-      int $$1 = $$0.indexOf(58);
-      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
+   public boolean s() {
+      return !this.r.aU();
    }
 
-   protected List<T> a(String $$0) {
-      return this.b.b($$0);
-   }
-
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      return ImmutableList.copyOf(new gih<T>($$2.iterator(), $$3.iterator(), this.a));
+   @Override
+   public void q() {
+      if (!this.r.dG() && this.r.q() == null) {
+         this.f = (double)((float)this.r.dq());
+         this.g = (double)((float)this.r.ds());
+         this.h = (double)((float)this.r.dw());
+         float $$0 = this.r.F(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
+      }
    }
 }

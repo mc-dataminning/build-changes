@@ -1,3 +1,2 @@
-public interface ctc {
-   int a(and var1, boolean var2, boolean var3);
+public record ctc(hx a, cwy b, int c, int d) {
 }

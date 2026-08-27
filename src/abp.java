@@ -1,42 +1,28 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class abp implements xf<za> {
-   private final vf a;
-   private final Optional<byte[]> b;
-   private final boolean c;
+public class abp implements xg<zb> {
+   @Nullable
+   private final ahh a;
 
-   public abp(vf $$0, Optional<byte[]> $$1, boolean $$2) {
+   public abp(@Nullable ahh $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public abp(ui $$0) {
-      this.a = $$0.m();
-      this.b = $$0.b(ui::b);
-      this.c = $$0.readBoolean();
-   }
-
-   @Override
-   public void a(ui $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, ui::a);
-      $$0.a(this.c);
-   }
-
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public vf a() {
+   public abp(uj $$0) {
+      this.a = $$0.c(uj::t);
+   }
+
+   @Override
+   public void a(uj $$0) {
+      $$0.a(this.a, uj::a);
+   }
+
+   @Nullable
+   public ahh a() {
       return this.a;
-   }
-
-   public Optional<byte[]> d() {
-      return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

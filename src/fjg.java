@@ -1,123 +1,98 @@
-public class fjg<T extends cdl> extends fkg<T> {
-   private static final float a = 0.6F;
-   private static final float b = 0.8F;
-   private static final float f = 1.0F;
-   private final fmx g;
-   private final fmx h;
-   private final fmx i;
-   private final fmx j;
-   private final fmx k;
-   private final fmx l;
-   private final fmx m;
+public class fjg extends fks<bzg> implements fjj {
+   private final fnj a;
+   private final fnj b;
+   private final fnj f;
+   private final fnj g;
+   private final fnj h;
+   private final fnj i;
+   private final fnj j;
+   private static final float k = (float) (Math.PI / 4);
+   private static final float l = -1.134464F;
+   private static final float m = (float) (-Math.PI / 3);
 
-   public fjg(fmx $$0) {
-      super(ftp::i);
-      this.g = $$0;
-      this.i = $$0.b("wind_body");
-      this.l = this.i.b("wind_bottom");
-      this.k = this.l.b("wind_mid");
-      this.j = this.k.b("wind_top");
-      this.h = $$0.b("body").b("head");
-      this.m = $$0.b("body").b("rods");
-   }
-
-   public static fnd b() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      fng $$2 = $$1.a("body", fnc.c(), fmz.a(0.0F, 0.0F, 0.0F));
-      fng $$3 = $$2.a("rods", fnc.c(), fmz.a(0.0F, 8.0F, 0.0F));
-      $$3.a("rod_1", fnc.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fnb(0.0F)), fmz.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
-      $$3.a("rod_2", fnc.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fnb(0.0F)), fmz.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
-      $$3.a("rod_3", fnc.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fnb(0.0F)), fmz.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
-      fng $$4 = $$2.a("head", fnc.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fnb(0.0F)), fmz.a(0.0F, 4.0F, 0.0F));
-      fng $$5 = $$1.a("wind_body", fnc.c(), fmz.a(0.0F, 0.0F, 0.0F));
-      fng $$6 = $$5.a("wind_bottom", fnc.c(), fmz.a(0.0F, 24.0F, 0.0F));
-      fng $$7 = $$6.a("wind_mid", fnc.c(), fmz.a(0.0F, -7.0F, 0.0F));
-      $$7.a("wind_top", fnc.c(), fmz.a(0.0F, -6.0F, 0.0F));
-      return fnd.a($$0, 32, 32);
-   }
-
-   public static fnd c() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      fng $$2 = $$1.a("body", fnc.c(), fmz.a(0.0F, 0.0F, 0.0F));
-      fng $$3 = $$2.a("rods", fnc.c(), fmz.a(0.0F, 8.0F, 0.0F));
-      fng $$4 = $$2.a("head", fnc.c(), fmz.a(0.0F, 4.0F, 0.0F));
-      $$4.a(
-         "eyes",
-         fnc.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fnb(0.0F)).a(7, 16).a(-4.0F, -2.0F, -4.0F, 8.0F, 1.0F, 1.0F, new fnb(0.0F)),
-         fmz.a(0.0F, 0.0F, 0.0F)
-      );
-      fng $$5 = $$1.a("wind_body", fnc.c(), fmz.a(0.0F, 0.0F, 0.0F));
-      fng $$6 = $$5.a("wind_bottom", fnc.c(), fmz.a(0.0F, 24.0F, 0.0F));
-      fng $$7 = $$6.a("wind_mid", fnc.c(), fmz.a(0.0F, -7.0F, 0.0F));
-      $$7.a("wind_top", fnc.c(), fmz.a(0.0F, -6.0F, 0.0F));
-      return fnd.a($$0, 32, 32);
-   }
-
-   public static fnd d() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      fng $$2 = $$1.a("body", fnc.c(), fmz.a(0.0F, 0.0F, 0.0F));
-      fng $$3 = $$2.a("rods", fnc.c(), fmz.a(0.0F, 8.0F, 0.0F));
-      $$2.a("head", fnc.c(), fmz.a(0.0F, 4.0F, 0.0F));
-      fng $$4 = $$1.a("wind_body", fnc.c(), fmz.a(0.0F, 0.0F, 0.0F));
-      fng $$5 = $$4.a("wind_bottom", fnc.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new fnb(0.0F)), fmz.a(0.0F, 24.0F, 0.0F));
-      fng $$6 = $$5.a(
-         "wind_mid",
-         fnc.c()
-            .a(74, 28)
-            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new fnb(0.0F))
-            .a(78, 32)
-            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new fnb(0.0F))
-            .a(49, 71)
-            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new fnb(0.0F)),
-         fmz.a(0.0F, -7.0F, 0.0F)
-      );
-      $$6.a(
-         "wind_top",
-         fnc.c()
-            .a(0, 0)
-            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new fnb(0.0F))
-            .a(6, 6)
-            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new fnb(0.0F))
-            .a(105, 57)
-            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new fnb(0.0F)),
-         fmz.a(0.0F, -6.0F, 0.0F)
-      );
-      return fnd.a($$0, 128, 128);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fmx::c);
-      float $$6 = $$3 * (float) Math.PI * -0.1F;
-      this.j.b = auo.b($$6) * 1.0F * 0.6F;
-      this.j.d = auo.a($$6) * 1.0F * 0.6F;
-      this.k.b = auo.a($$6) * 0.5F * 0.8F;
-      this.k.d = auo.b($$6) * 0.8F;
-      this.l.b = auo.b($$6) * -0.25F * 1.0F;
-      this.l.d = auo.a($$6) * -0.25F * 1.0F;
-      this.h.c = 4.0F + auo.b($$6) / 4.0F;
-      this.m.f = $$3 * (float) Math.PI * 0.1F;
-      this.a($$0.e, ewd.a, $$3);
-      this.a($$0.c, ewd.c, $$3);
-      this.a($$0.d, ewd.b, $$3);
+   public fjg(fnj $$0) {
+      super(fub::i);
+      this.a = $$0.b("root");
+      this.b = this.a.b("head");
+      this.f = this.a.b("body");
+      this.g = this.f.b("right_arm");
+      this.h = this.f.b("left_arm");
+      this.i = this.f.b("right_wing");
+      this.j = this.f.b("left_wing");
    }
 
    @Override
-   public fmx a() {
-      return this.g;
+   public fnj a() {
+      return this.a;
    }
 
-   public fmx e() {
-      return this.j;
+   public static fnp b() {
+      fnr $$0 = new fnr();
+      fns $$1 = $$0.a();
+      fns $$2 = $$1.a("root", fno.c(), fnl.a(0.0F, 23.5F, 0.0F));
+      $$2.a("head", fno.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new fnn(0.0F)), fnl.a(0.0F, -3.99F, 0.0F));
+      fns $$3 = $$2.a(
+         "body",
+         fno.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new fnn(0.0F)).a(0, 16).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fnn(-0.2F)),
+         fnl.a(0.0F, -4.0F, 0.0F)
+      );
+      $$3.a("right_arm", fno.c().a(23, 0).a(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new fnn(-0.01F)), fnl.a(-1.75F, 0.5F, 0.0F));
+      $$3.a("left_arm", fno.c().a(23, 6).a(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new fnn(-0.01F)), fnl.a(1.75F, 0.5F, 0.0F));
+      $$3.a("right_wing", fno.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fnn(0.0F)), fnl.a(-0.5F, 0.0F, 0.6F));
+      $$3.a("left_wing", fno.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fnn(0.0F)), fnl.a(0.5F, 0.0F, 0.6F));
+      return fnp.a($$0, 32, 32);
    }
 
-   public fmx f() {
-      return this.k;
+   public void a(bzg $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fnj::c);
+      float $$6 = $$3 * 20.0F * (float) (Math.PI / 180.0) + $$1;
+      float $$7 = aup.b($$6) * (float) Math.PI * 0.15F + $$2;
+      float $$8 = $$3 - (float)$$0.ah;
+      float $$9 = $$3 * 9.0F * (float) (Math.PI / 180.0);
+      float $$10 = Math.min($$2 / 0.3F, 1.0F);
+      float $$11 = 1.0F - $$10;
+      float $$12 = $$0.D($$8);
+      if ($$0.gf()) {
+         float $$13 = $$3 * 8.0F * (float) (Math.PI / 180.0) + $$2;
+         float $$14 = aup.b($$13) * 16.0F * (float) (Math.PI / 180.0);
+         float $$15 = $$0.E($$8);
+         float $$16 = aup.b($$13) * 14.0F * (float) (Math.PI / 180.0);
+         float $$17 = aup.b($$13) * 30.0F * (float) (Math.PI / 180.0);
+         this.a.f = $$0.gg() ? (float) (Math.PI * 4) * $$15 : this.a.f;
+         this.a.g = $$14 * (1.0F - $$15);
+         this.b.f = $$17 * (1.0F - $$15);
+         this.b.g = $$16 * (1.0F - $$15);
+      } else {
+         this.b.e = $$5 * (float) (Math.PI / 180.0);
+         this.b.f = $$4 * (float) (Math.PI / 180.0);
+      }
+
+      this.i.e = 0.43633232F * (1.0F - $$10);
+      this.i.f = (float) (-Math.PI / 4) + $$7;
+      this.j.e = 0.43633232F * (1.0F - $$10);
+      this.j.f = (float) (Math.PI / 4) - $$7;
+      this.f.e = $$10 * (float) (Math.PI / 4);
+      float $$18 = $$12 * aup.i($$10, (float) (-Math.PI / 3), -1.134464F);
+      this.a.c = this.a.c + (float)Math.cos((double)$$9) * 0.25F * $$11;
+      this.g.e = $$18;
+      this.h.e = $$18;
+      float $$19 = $$11 * (1.0F - $$12);
+      float $$20 = 0.43633232F - aup.b($$9 + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * $$19;
+      this.h.g = -$$20;
+      this.g.g = $$20;
+      this.g.f = 0.27925268F * $$12;
+      this.h.f = -0.27925268F * $$12;
    }
 
-   public fmx g() {
-      return this.l;
+   @Override
+   public void a(bmi $$0, eqk $$1) {
+      float $$2 = 1.0F;
+      float $$3 = 3.0F;
+      this.a.a($$1);
+      this.f.a($$1);
+      $$1.a(0.0F, 0.0625F, 0.1875F);
+      $$1.a(a.b.rotation(this.g.e));
+      $$1.b(0.7F, 0.7F, 0.7F);
+      $$1.a(0.0625F, 0.0F, 0.0F);
    }
 }

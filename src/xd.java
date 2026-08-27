@@ -1,15 +1,10 @@
-public abstract class xd<T extends uo> implements xf<T> {
-   private final Iterable<xf<T>> a;
-
-   protected xd(Iterable<xf<T>> $$0) {
-      this.a = $$0;
-   }
-
-   public final Iterable<xf<T>> a() {
-      return this.a;
+public class xd<T extends up> implements xg<T> {
+   @Override
+   public final void a(uj $$0) {
    }
 
    @Override
-   public final void a(ui $$0) {
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
    }
 }

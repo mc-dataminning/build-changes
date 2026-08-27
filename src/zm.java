@@ -1,32 +1,9 @@
-public class zm implements xf<za> {
-   private final bjy a;
-   private final boolean b;
-
-   public zm(bjy $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class zm extends xe<zb> {
+   public zm(Iterable<xg<zb>> $$0) {
+      super($$0);
    }
 
-   public zm(ui $$0) {
-      this.a = bjy.a($$0.readUnsignedByte());
-      this.b = $$0.readBoolean();
-   }
-
-   @Override
-   public void a(ui $$0) {
-      $$0.k(this.a.a());
-      $$0.a(this.b);
-   }
-
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
-   }
-
-   public boolean a() {
-      return this.b;
-   }
-
-   public bjy d() {
-      return this.a;
    }
 }

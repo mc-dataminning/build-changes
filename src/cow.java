@@ -1,52 +1,56 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class cow {
-   @Nullable
-   private final String a;
-   private final ImmutableList<bli> b;
-   private final ih.c<cow> c = kd.i.f(this);
+public enum cow implements cou {
+   a(0, 59, 2.0F, 0.0F, 15, () -> cqh.a(asq.b)),
+   b(1, 131, 4.0F, 1.0F, 5, () -> cqh.a(asq.ax)),
+   c(2, 250, 6.0F, 2.0F, 14, () -> cqh.a(cnj.oD)),
+   d(3, 1561, 8.0F, 3.0F, 10, () -> cqh.a(cnj.ox)),
+   e(0, 32, 12.0F, 0.0F, 22, () -> cqh.a(cnj.oH)),
+   f(4, 2031, 9.0F, 4.0F, 15, () -> cqh.a(cnj.oI));
 
-   public static cow a(String $$0) {
-      return kd.i.a(ahg.a($$0));
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final auk<cqh> l;
+
+   private cow(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cqh> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = new auk<>($$5);
    }
 
-   public cow(bli... $$0) {
-      this(null, $$0);
+   @Override
+   public int a() {
+      return this.h;
    }
 
-   public cow(@Nullable String $$0, bli... $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
+   @Override
+   public float b() {
+      return this.i;
    }
 
-   public String b(String $$0) {
-      return $$0 + (this.a == null ? kd.i.b(this).a() : this.a);
+   @Override
+   public float c() {
+      return this.j;
    }
 
-   public List<bli> a() {
-      return this.b;
+   @Override
+   public int d() {
+      return this.g;
    }
 
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         UnmodifiableIterator var1 = this.b.iterator();
-
-         while (var1.hasNext()) {
-            bli $$0 = (bli)var1.next();
-            if ($$0.c().a()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   @Override
+   public int e() {
+      return this.k;
    }
 
-   @Deprecated
-   public ih.c<cow> c() {
-      return this.c;
+   @Override
+   public cqh f() {
+      return this.l.a();
    }
 }

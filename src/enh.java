@@ -1,268 +1,197 @@
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMaps;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.LongSummaryStatistics;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.LongPredicate;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class enh<T> implements eng<T> {
-   private static final Comparator<enf<?>> a = ($$0, $$1) -> enk.b.compare($$0.b(), $$1.b());
-   private final LongPredicate b;
-   private final Supplier<bgs> c;
-   private final Long2ObjectMap<enf<T>> d = new Long2ObjectOpenHashMap();
-   private final Long2LongMap e = ac.a(new Long2LongOpenHashMap(), $$0x -> $$0x.defaultReturnValue(Long.MAX_VALUE));
-   private final Queue<enf<T>> f = new PriorityQueue<>(a);
-   private final Queue<enk<T>> g = new ArrayDeque<>();
-   private final List<enk<T>> h = new ArrayList<>();
-   private final Set<enk<?>> i = new ObjectOpenCustomHashSet(enk.c);
-   private final BiConsumer<enf<T>, enk<T>> j = ($$0x, $$1x) -> {
-      if ($$1x.equals($$0x.b())) {
-         this.b($$1x);
-      }
-   };
+public class enh extends ege {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "scoreboard";
+   private final eng c;
 
-   public enh(LongPredicate $$0, Supplier<bgs> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public enh(eng $$0) {
+      this.c = $$0;
    }
 
-   public void a(csw $$0, enf<T> $$1) {
-      long $$2 = $$0.a();
-      this.d.put($$2, $$1);
-      enk<T> $$3 = $$1.b();
-      if ($$3 != null) {
-         this.e.put($$2, $$3.c());
+   public enh b(so $$0) {
+      this.b($$0.c("Objectives", 10));
+      this.c.a($$0.c("PlayerScores", 10));
+      if ($$0.b("DisplaySlots", 10)) {
+         this.c($$0.p("DisplaySlots"));
       }
 
-      $$1.a(this.j);
-   }
-
-   public void a(csw $$0) {
-      long $$1 = $$0.a();
-      enf<T> $$2 = (enf<T>)this.d.remove($$1);
-      this.e.remove($$1);
-      if ($$2 != null) {
-         $$2.a(null);
+      if ($$0.b("Teams", 9)) {
+         this.a($$0.c("Teams", 10));
       }
+
+      return this;
    }
 
-   @Override
-   public void a(enk<T> $$0) {
-      long $$1 = csw.a($$0.b());
-      enf<T> $$2 = (enf<T>)this.d.get($$1);
-      if ($$2 == null) {
-         ac.b(new IllegalStateException("Trying to schedule tick in not loaded position " + $$0.b()));
-      } else {
-         $$2.a($$0);
-      }
-   }
+   private void a(su $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         so $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         enb $$4 = this.c.c($$3);
+         vg $$5 = vg.a.a($$2.l("DisplayName"));
+         if ($$5 != null) {
+            $$4.a($$5);
+         }
 
-   public void a(long $$0, int $$1, BiConsumer<hx, T> $$2) {
-      bgs $$3 = this.c.get();
-      $$3.a("collect");
-      this.a($$0, $$1, $$3);
-      $$3.b("run");
-      $$3.a("ticksToRun", this.g.size());
-      this.a($$2);
-      $$3.b("cleanup");
-      this.c();
-      $$3.c();
-   }
+         if ($$2.b("TeamColor", 8)) {
+            $$4.a(n.b($$2.l("TeamColor")));
+         }
 
-   private void a(long $$0, int $$1, bgs $$2) {
-      this.a($$0);
-      $$2.a("containersToTick", this.f.size());
-      this.a($$0, $$1);
-      this.b();
-   }
+         if ($$2.b("AllowFriendlyFire", 99)) {
+            $$4.a($$2.q("AllowFriendlyFire"));
+         }
 
-   private void a(long $$0) {
-      ObjectIterator<Entry> $$1 = Long2LongMaps.fastIterator(this.e);
+         if ($$2.b("SeeFriendlyInvisibles", 99)) {
+            $$4.b($$2.q("SeeFriendlyInvisibles"));
+         }
 
-      while ($$1.hasNext()) {
-         Entry $$2 = (Entry)$$1.next();
-         long $$3 = $$2.getLongKey();
-         long $$4 = $$2.getLongValue();
-         if ($$4 <= $$0) {
-            enf<T> $$5 = (enf<T>)this.d.get($$3);
-            if ($$5 == null) {
-               $$1.remove();
-            } else {
-               enk<T> $$6 = $$5.b();
-               if ($$6 == null) {
-                  $$1.remove();
-               } else if ($$6.c() > $$0) {
-                  $$2.setValue($$6.c());
-               } else if (this.b.test($$3)) {
-                  $$1.remove();
-                  this.f.add($$5);
-               }
+         if ($$2.b("MemberNamePrefix", 8)) {
+            vg $$6 = vg.a.a($$2.l("MemberNamePrefix"));
+            if ($$6 != null) {
+               $$4.b($$6);
             }
          }
-      }
-   }
 
-   private void a(long $$0, int $$1) {
-      enf<T> $$2;
-      while (this.a($$1) && ($$2 = this.f.poll()) != null) {
-         enk<T> $$3 = $$2.c();
-         this.c($$3);
-         this.a(this.f, $$2, $$0, $$1);
-         enk<T> $$4 = $$2.b();
-         if ($$4 != null) {
-            if ($$4.c() <= $$0 && this.a($$1)) {
-               this.f.add($$2);
-            } else {
-               this.b($$4);
+         if ($$2.b("MemberNameSuffix", 8)) {
+            vg $$7 = vg.a.a($$2.l("MemberNameSuffix"));
+            if ($$7 != null) {
+               $$4.c($$7);
             }
          }
-      }
-   }
 
-   private void b() {
-      for (enf<T> $$0 : this.f) {
-         this.b($$0.b());
-      }
-   }
-
-   private void b(enk<T> $$0) {
-      this.e.put(csw.a($$0.b()), $$0.c());
-   }
-
-   private void a(Queue<enf<T>> $$0, enf<T> $$1, long $$2, int $$3) {
-      if (this.a($$3)) {
-         enf<T> $$4 = $$0.peek();
-         enk<T> $$5 = $$4 != null ? $$4.b() : null;
-
-         while (this.a($$3)) {
-            enk<T> $$6 = $$1.b();
-            if ($$6 == null || $$6.c() > $$2 || $$5 != null && enk.b.compare($$6, $$5) > 0) {
-               break;
+         if ($$2.b("NameTagVisibility", 8)) {
+            eni.b $$8 = eni.b.a($$2.l("NameTagVisibility"));
+            if ($$8 != null) {
+               $$4.a($$8);
             }
-
-            $$1.c();
-            this.c($$6);
-         }
-      }
-   }
-
-   private void c(enk<T> $$0) {
-      this.g.add($$0);
-   }
-
-   private boolean a(int $$0) {
-      return this.g.size() < $$0;
-   }
-
-   private void a(BiConsumer<hx, T> $$0) {
-      while (!this.g.isEmpty()) {
-         enk<T> $$1 = this.g.poll();
-         if (!this.i.isEmpty()) {
-            this.i.remove($$1);
          }
 
-         this.h.add($$1);
-         $$0.accept($$1.b(), $$1.a());
-      }
-   }
-
-   private void c() {
-      this.g.clear();
-      this.f.clear();
-      this.h.clear();
-      this.i.clear();
-   }
-
-   @Override
-   public boolean a(hx $$0, T $$1) {
-      enf<T> $$2 = (enf<T>)this.d.get(csw.a($$0));
-      return $$2 != null && $$2.a($$0, $$1);
-   }
-
-   @Override
-   public boolean b(hx $$0, T $$1) {
-      this.d();
-      return this.i.contains(enk.a($$1, $$0));
-   }
-
-   private void d() {
-      if (this.i.isEmpty() && !this.g.isEmpty()) {
-         this.i.addAll(this.g);
-      }
-   }
-
-   private void a(dyy $$0, enh.a<T> $$1) {
-      int $$2 = iz.a((double)$$0.h());
-      int $$3 = iz.a((double)$$0.j());
-      int $$4 = iz.a((double)$$0.k());
-      int $$5 = iz.a((double)$$0.m());
-
-      for (int $$6 = $$2; $$6 <= $$4; $$6++) {
-         for (int $$7 = $$3; $$7 <= $$5; $$7++) {
-            long $$8 = csw.c($$6, $$7);
-            enf<T> $$9 = (enf<T>)this.d.get($$8);
+         if ($$2.b("DeathMessageVisibility", 8)) {
+            eni.b $$9 = eni.b.a($$2.l("DeathMessageVisibility"));
             if ($$9 != null) {
-               $$1.accept($$8, $$9);
+               $$4.b($$9);
             }
+         }
+
+         if ($$2.b("CollisionRule", 8)) {
+            eni.a $$10 = eni.a.a($$2.l("CollisionRule"));
+            if ($$10 != null) {
+               $$4.a($$10);
+            }
+         }
+
+         this.a($$4, $$2.c("Players", 8));
+      }
+   }
+
+   private void a(enb $$0, su $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c.a($$1.j($$2), $$0);
+      }
+   }
+
+   private void c(so $$0) {
+      for (String $$1 : $$0.e()) {
+         emx $$2 = emx.t.a($$1);
+         if ($$2 != null) {
+            String $$3 = $$0.l($$1);
+            emy $$4 = this.c.a($$3);
+            this.c.a($$2, $$4);
          }
       }
    }
 
-   public void a(dyy $$0) {
-      Predicate<enk<T>> $$1 = $$1x -> $$0.b($$1x.b());
-      this.a($$0, ($$1x, $$2) -> {
-         enk<T> $$3 = $$2.b();
-         $$2.a($$1);
-         enk<T> $$4 = $$2.b();
-         if ($$4 != $$3) {
-            if ($$4 != null) {
-               this.b($$4);
-            } else {
-               this.e.remove($$1x);
-            }
-         }
-      });
-      this.h.removeIf($$1);
-      this.g.removeIf($$1);
-   }
-
-   public void a(dyy $$0, jb $$1) {
-      this.a(this, $$0, $$1);
-   }
-
-   public void a(enh<T> $$0, dyy $$1, jb $$2) {
-      List<enk<T>> $$3 = new ArrayList<>();
-      Predicate<enk<T>> $$4 = $$1x -> $$1.b($$1x.b());
-      $$0.h.stream().filter($$4).forEach($$3::add);
-      $$0.g.stream().filter($$4).forEach($$3::add);
-      $$0.a($$1, ($$2x, $$3x) -> $$3x.d().filter($$4).forEach($$3::add));
-      LongSummaryStatistics $$5 = $$3.stream().mapToLong(enk::e).summaryStatistics();
-      long $$6 = $$5.getMin();
-      long $$7 = $$5.getMax();
-      $$3.forEach($$3x -> this.a(new enk<>((T)$$3x.a(), $$3x.b().a($$2), $$3x.c(), $$3x.d(), $$3x.e() - $$6 + $$7 + 1L)));
+   private void b(su $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         so $$2 = $$0.a($$1);
+         String $$3 = $$2.l("CriteriaName");
+         enj $$4 = enj.a($$3).orElseGet(() -> {
+            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$3, enj.a.d());
+            return enj.a;
+         });
+         String $$5 = $$2.l("Name");
+         vg $$6 = vg.a.a($$2.l("DisplayName"));
+         enj.a $$7 = enj.a.a($$2.l("RenderType"));
+         boolean $$8 = $$2.q("display_auto_update");
+         ww $$9 = (ww)wy.b.parse(tc.a, $$2.c("format")).result().orElse(null);
+         this.c.a($$5, $$4, $$6, $$7, $$8, $$9);
+      }
    }
 
    @Override
-   public int a() {
-      return this.d.values().stream().mapToInt(enm::a).sum();
+   public so a(so $$0) {
+      $$0.a("Objectives", this.b());
+      $$0.a("PlayerScores", this.c.h());
+      $$0.a("Teams", this.a());
+      this.d($$0);
+      return $$0;
    }
 
-   @FunctionalInterface
-   interface a<T> {
-      void accept(long var1, enf<T> var3);
+   private su a() {
+      su $$0 = new su();
+
+      for (enb $$2 : this.c.g()) {
+         so $$3 = new so();
+         $$3.a("Name", $$2.b());
+         $$3.a("DisplayName", vg.a.a($$2.c()));
+         if ($$2.n().b() >= 0) {
+            $$3.a("TeamColor", $$2.n().g());
+         }
+
+         $$3.a("AllowFriendlyFire", $$2.h());
+         $$3.a("SeeFriendlyInvisibles", $$2.i());
+         $$3.a("MemberNamePrefix", vg.a.a($$2.e()));
+         $$3.a("MemberNameSuffix", vg.a.a($$2.f()));
+         $$3.a("NameTagVisibility", $$2.j().e);
+         $$3.a("DeathMessageVisibility", $$2.k().e);
+         $$3.a("CollisionRule", $$2.l().e);
+         su $$4 = new su();
+
+         for (String $$5 : $$2.g()) {
+            $$4.add(tj.a($$5));
+         }
+
+         $$3.a("Players", $$4);
+         $$0.add($$3);
+      }
+
+      return $$0;
+   }
+
+   private void d(so $$0) {
+      so $$1 = new so();
+
+      for (emx $$2 : emx.values()) {
+         emy $$3 = this.c.a($$2);
+         if ($$3 != null) {
+            $$1.a($$2.c(), $$3.b());
+         }
+      }
+
+      if (!$$1.g()) {
+         $$0.a("DisplaySlots", $$1);
+      }
+   }
+
+   private su b() {
+      su $$0 = new su();
+
+      for (emy $$2 : this.c.c()) {
+         so $$3 = new so();
+         $$3.a("Name", $$2.b());
+         $$3.a("CriteriaName", $$2.c().d());
+         $$3.a("DisplayName", vg.a.a($$2.d()));
+         $$3.a("RenderType", $$2.h().a());
+         $$3.a("display_auto_update", $$2.e());
+         ww $$4 = $$2.f();
+         if ($$4 != null) {
+            wy.b.encodeStart(tc.a, $$4).result().ifPresent($$1 -> $$3.a("format", $$1));
+         }
+
+         $$0.add($$3);
+      }
+
+      return $$0;
    }
 }

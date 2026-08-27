@@ -1,65 +1,73 @@
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cjm extends cjw {
-   public cjm(bju $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
+public class cjm {
+   private final List<cjm.b> a;
+   private final cjm.b b;
+
+   cjm(List<cjm.b> $$0, cjm.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cjm.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
+      } else {
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+      }
    }
 
-   @Override
-   public void b(cmy $$0, cmy $$1) {
+   public static cjm.a a() {
+      return new cjm.a();
    }
 
-   @Override
-   public boolean a(cfi $$0) {
-      return false;
+   public boolean a(int $$0) {
+      return this.a.size() >= $$0;
    }
 
-   @Override
-   public Optional<cmy> a(int $$0, int $$1, cfi $$2) {
-      return Optional.empty();
+   public cjm.b b(int $$0) {
+      return this.a.get($$0);
    }
 
-   @Override
-   public cmy b(int $$0, int $$1, cfi $$2) {
-      return cmy.f;
+   public cjm.b b() {
+      return this.b;
    }
 
-   @Override
-   public cmy d(cmy $$0) {
-      return $$0;
+   public List<cjm.b> c() {
+      return this.a;
    }
 
-   @Override
-   public cmy b(cmy $$0, int $$1) {
-      return this.d($$0);
+   public int d() {
+      return this.a.size();
    }
 
-   @Override
-   public boolean b(cfi $$0) {
-      return false;
+   public int e() {
+      return this.d();
    }
 
-   @Override
-   public boolean a(cmy $$0) {
-      return false;
+   public List<Integer> f() {
+      return this.a.stream().map(cjm.b::a).collect(Collectors.toList());
    }
 
-   @Override
-   public cmy a(int $$0) {
-      return cmy.f;
+   public static class a {
+      private final List<cjm.b> a = new ArrayList<>();
+      private cjm.b b = cjm.b.e;
+
+      public cjm.a a(int $$0, int $$1, int $$2, Predicate<cng> $$3) {
+         this.a.add(new cjm.b($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      public cjm.a a(int $$0, int $$1, int $$2) {
+         this.b = new cjm.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
+
+      public cjm a() {
+         return new cjm(this.a, this.b);
+      }
    }
 
-   @Override
-   public void a(cfi $$0, cmy $$1) {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public boolean f() {
-      return true;
+   public static record b(int a, int b, int c, Predicate<cng> d) {
+      static final cjm.b e = new cjm.b(0, 0, 0, $$0 -> true);
    }
 }

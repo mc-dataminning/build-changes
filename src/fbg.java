@@ -1,29 +1,61 @@
-public enum fbg {
-   a,
-   b;
+import java.util.function.Consumer;
 
-   public fbg a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+public class fbg implements fbd {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
+
+   public fbg(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public fbh b() {
-      return switch (this) {
-         case a -> fbh.d;
-         case b -> fbh.b;
-      };
+   public fbg(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public fbh c() {
-      return switch (this) {
-         case a -> fbh.c;
-         case b -> fbh.a;
-      };
+   public static fbg a(int $$0) {
+      return new fbg($$0, 0);
    }
 
-   public fbh a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
+   public static fbg b(int $$0) {
+      return new fbg(0, $$0);
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void o(int $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public int B() {
+      return this.a;
+   }
+
+   @Override
+   public int C() {
+      return this.b;
+   }
+
+   @Override
+   public int w() {
+      return this.c;
+   }
+
+   @Override
+   public int u() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<exp> $$0) {
    }
 }

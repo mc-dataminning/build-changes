@@ -1,14 +1,24 @@
-public interface afs extends adk {
-   @Override
-   default uh b() {
-      return uh.d;
+public class afs implements xg<afn> {
+   private final vg a;
+
+   public afs(vg $$0) {
+      this.a = $$0;
    }
 
-   void a(afu var1);
+   public afs(uj $$0) {
+      this.a = vg.a.b($$0.d(262144));
+   }
 
-   void a(afv var1);
+   @Override
+   public void a(uj $$0) {
+      $$0.a(vg.a.a(this.a));
+   }
 
-   void a(aft var1);
+   public void a(afn $$0) {
+      $$0.a(this);
+   }
 
-   void a(afw var1);
+   public vg a() {
+      return this.a;
+   }
 }

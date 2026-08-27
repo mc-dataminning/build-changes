@@ -1,17 +1,20 @@
-public class gbg extends fzt<cdd, fmg> {
-   private static final ahg a = new ahg("textures/entity/illager/vex.png");
-   private static final ahg i = new ahg("textures/entity/illager/vex_charging.png");
+public class gbg<T extends cdh> extends gag<T, fmk<T>> {
+   private static final ahh a = new ahh("textures/entity/spider/spider.png");
 
-   public gbg(fyn.a $$0) {
-      super($$0, new fmg($$0.a(fmw.bL)), 0.3F);
-      this.a(new gcr<>(this, $$0.d()));
+   public gbg(fza.a $$0) {
+      this($$0, fni.bt);
    }
 
-   protected int a(cdd $$0, hx $$1) {
-      return 15;
+   public gbg(fza.a $$0, fnh $$1) {
+      super($$0, new fmk<>($$0.a($$1)), 0.8F);
+      this.a(new gdr<>(this));
    }
 
-   public ahg a(cdd $$0) {
-      return $$0.gf() ? i : a;
+   protected float b(T $$0) {
+      return 180.0F;
+   }
+
+   public ahh a(T $$0) {
+      return a;
    }
 }

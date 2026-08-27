@@ -1,85 +1,67 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public class fsg extends fsh {
+   private final hx a;
+   private final float b;
+   private final float F;
 
-public abstract class fsg extends cfi {
-   @Nullable
-   private fob cm;
-   protected elt b;
-   public float c;
-   public float d;
-   public float e;
-   public final fns f;
+   public fsg(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, djp $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, hx.a($$1, $$2, $$3));
+   }
 
-   public fsg(fns $$0, GameProfile $$1) {
-      super($$0, $$0.T(), $$0.U(), $$1);
-      this.b = elt.b;
-      this.f = $$0;
+   public fsg(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, djp $$7, hx $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(evr.O().an().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(cxa.i)) {
+         int $$9 = evr.O().au().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
+      }
+
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
    @Override
-   public boolean P_() {
-      fob $$0 = this.a();
-      return $$0 != null && $$0.e() == ctm.d;
+   public frl b() {
+      return frl.a;
    }
 
    @Override
-   public boolean f() {
-      fob $$0 = this.a();
-      return $$0 != null && $$0.e() == ctm.b;
-   }
-
-   @Nullable
-   protected fob a() {
-      if (this.cm == null) {
-         this.cm = evi.O().J().a(this.cw());
-      }
-
-      return this.cm;
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
    }
 
    @Override
-   public void l() {
-      this.b = this.dp();
-      super.l();
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
    }
 
-   public elt C(float $$0) {
-      return this.b.a(this.dp(), (double)$$0);
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
    }
 
-   public gfm b() {
-      fob $$0 = this.a();
-      return $$0 == null ? gff.a(this.cw()) : $$0.g();
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
    }
 
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.fT().b) {
-         $$0 *= 1.1F;
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.B(this.a) ? ftr.a(this.c, this.a) : $$1;
+   }
+
+   public static class a implements frk<jp> {
+      public frh a(jp $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         djp $$8 = $$0.c();
+         return !$$8.i() && !$$8.a(cxa.bQ) && $$8.z() ? new fsg($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
       }
-
-      $$0 *= ((float)this.b(bnr.m) / this.fT().b() + 1.0F) / 2.0F;
-      if (this.fT().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
-      }
-
-      cmy $$1 = this.fp();
-      if (this.fn()) {
-         if ($$1.a(cnb.or)) {
-            int $$2 = this.fr();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
-            }
-
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (evi.O().m.ax().a() && this.gq()) {
-            return 0.1F;
-         }
-      }
-
-      return auo.i(evi.O().m.ah().c().floatValue(), 1.0F, $$0);
    }
 }

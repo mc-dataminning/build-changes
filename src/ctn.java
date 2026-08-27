@@ -1,19 +1,19 @@
-public class ctn {
-   private static int[] a = new int[65536];
+import java.util.Optional;
 
-   public static void a(int[] $$0) {
-      a = $$0;
+public class ctn extends ctq {
+   private final blw a;
+
+   public ctn(blw $$0) {
+      this.a = $$0;
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? -65281 : a[$$4];
+   @Override
+   public Optional<Float> a(ctp $$0, ctd $$1, hx $$2, djp $$3, eez $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   public static int a() {
-      return a(0.5, 1.0);
+   @Override
+   public boolean a(ctp $$0, ctd $$1, hx $$2, djp $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

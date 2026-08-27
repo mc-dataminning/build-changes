@@ -1,32 +1,40 @@
-public class zi implements xf<za> {
-   private final hx a;
-   private final int b;
-   private final int c;
-   private final cwq d;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public zi(hx $$0, cwq $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.d = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class zi implements xg<zb> {
+   private final hx a;
+   private final dhf<?> b;
+   @Nullable
+   private final so c;
+
+   public static zi a(dhd $$0, Function<dhd, so> $$1) {
+      return new zi($$0.aE_(), $$0.v(), $$1.apply($$0));
    }
 
-   public zi(ui $$0) {
+   public static zi a(dhd $$0) {
+      return a($$0, dhd::aA_);
+   }
+
+   private zi(hx $$0, dhf<?> $$1, so $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2.g() ? null : $$2;
+   }
+
+   public zi(uj $$0) {
       this.a = $$0.e();
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.a(kd.e);
+      this.b = $$0.a(kd.k);
+      this.c = $$0.q();
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.a(this.a);
-      $$0.k(this.b);
-      $$0.k(this.c);
-      $$0.a(kd.e, this.d);
+      $$0.a(kd.k, this.b);
+      $$0.a((tl)this.c);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
@@ -34,15 +42,12 @@ public class zi implements xf<za> {
       return this.a;
    }
 
-   public int d() {
+   public dhf<?> d() {
       return this.b;
    }
 
-   public int e() {
+   @Nullable
+   public so e() {
       return this.c;
-   }
-
-   public cwq f() {
-      return this.d;
    }
 }

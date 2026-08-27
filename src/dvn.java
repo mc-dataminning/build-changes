@@ -1,49 +1,42 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dvn extends dvk {
-   public static final Codec<dvn> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bjg.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, dvn::new)
-   );
-   private final bjg b;
+public class dvn extends dvs {
+   public static final Codec<dvn> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dvn::new));
+   protected final int b;
 
-   public dvn(bjg $$0, bjg $$1, bjg $$2) {
+   protected static <P extends dvn> P3<Mu<P>, bjh, bjh, Integer> a(Instance<P> $$0) {
+      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
+   }
+
+   public dvn(bjh $$0, bjh $$1, int $$2) {
       super($$0, $$1);
       this.b = $$2;
    }
 
    @Override
-   protected dvl<?> a() {
-      return dvl.h;
+   protected dvt<?> a() {
+      return dvt.a;
    }
 
    @Override
-   protected void a(ctv $$0, dvk.b $$1, auv $$2, duu $$3, int $$4, dvk.a $$5, int $$6, int $$7, int $$8) {
-      hx $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + auo.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
-         }
-
-         this.a($$0, $$1, $$2, $$3, new hx($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
+   protected void a(cud $$0, dvs.b $$1, auw $$2, dvc $$3, int $$4, dvs.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
    }
 
    @Override
-   public int a(auv $$0, int $$1, duu $$2) {
-      return this.b.a($$0);
+   public int a(auw $$0, int $$1, dvc $$2) {
+      return this.b;
    }
 
    @Override
-   protected boolean a(auv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   protected boolean a(auw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
    }
 }

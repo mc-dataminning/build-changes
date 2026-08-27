@@ -1,40 +1,15 @@
-public class flf<T extends blv> extends fkg<T> {
-   private final fmx a;
-   private final fmx b;
-   private final fmx f;
+import java.util.function.Function;
 
-   public flf(fmx $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.f = $$0.b("right_blue_fin");
+public abstract class flf {
+   protected final Function<ahh, fub> v;
+
+   public flf(Function<ahh, fub> $$0) {
+      this.v = $$0;
    }
 
-   public static fnd b() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fnc.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), fmz.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", fnc.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fmz.a(-2.5F, 17.0F, -1.5F));
-      $$1.a("left_blue_fin", fnc.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fmz.a(2.5F, 17.0F, -1.5F));
-      $$1.a("top_front_fin", fnc.c().a(15, 16).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 1.0F), fmz.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_back_fin", fnc.c().a(10, 16).a(-2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 1.0F), fmz.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", fnc.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fmz.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("right_back_fin", fnc.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fmz.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", fnc.c().a(4, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fmz.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", fnc.c().a(0, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fmz.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_back_fin", fnc.c().a(8, 22).a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F), fmz.a(0.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_front_fin", fnc.c().a(17, 21).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), fmz.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      return fnd.a($$0, 32, 32);
+   public final fub a(ahh $$0) {
+      return this.v.apply($$0);
    }
 
-   @Override
-   public fmx a() {
-      return this.a;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * auo.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * auo.a($$3 * 0.2F);
-   }
+   public abstract void a(eqk var1, eqo var2, int var3, int var4, float var5, float var6, float var7, float var8);
 }

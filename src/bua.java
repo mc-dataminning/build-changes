@@ -1,79 +1,65 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bua extends bth {
-   public static final int a = 1;
-   protected final bmu b;
-   protected final double c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected boolean g;
+public class bua extends btk {
+   private final bmq a;
+   private bmo b;
+   private int c;
 
-   public bua(bmu $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bth.a.a));
+   public bua(bmq $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(btk.a.a, btk.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!this.h()) {
-         return false;
-      } else {
-         if (this.b.bN()) {
-            hx $$0 = this.a(this.b.dM(), this.b, 5);
-            if ($$0 != null) {
-               this.d = (double)$$0.u();
-               this.e = (double)$$0.v();
-               this.f = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
-      }
-   }
-
-   protected boolean h() {
-      return this.b.eh() != null || this.b.dB() || this.b.bN();
-   }
-
-   protected boolean i() {
-      elt $$0 = bxd.a(this.b, 5, 4);
+      bmo $$0 = this.a.q();
       if ($$0 == null) {
          return false;
       } else {
-         this.d = $$0.c;
-         this.e = $$0.d;
-         this.f = $$0.e;
+         this.b = $$0;
          return true;
       }
    }
 
-   public boolean k() {
-      return this.g;
-   }
-
    @Override
-   public void c() {
-      this.b.N().a(this.d, this.e, this.f, this.c);
-      this.g = true;
+   public boolean b() {
+      if (!this.b.bx()) {
+         return false;
+      } else {
+         return this.a.f(this.b) > 225.0 ? false : !this.a.N().l() || this.a();
+      }
    }
 
    @Override
    public void d() {
-      this.g = false;
+      this.b = null;
+      this.a.N().n();
    }
 
    @Override
-   public boolean b() {
-      return !this.b.N().l();
+   public boolean T_() {
+      return true;
    }
 
-   @Nullable
-   protected hx a(csv $$0, blv $$1, int $$2) {
-      hx $$3 = $$1.dm();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : hx.a($$1.dm(), $$2, 1, $$1x -> $$0.b_($$1x).a(asm.a)).orElse(null);
+   @Override
+   public void e() {
+      this.a.I().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dg() * 2.0F * this.a.dg() * 2.0F);
+      double $$1 = this.a.i(this.b.dq(), this.b.ds(), this.b.dw());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.N().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.B(this.b);
+         }
+      }
    }
 }

@@ -1,26 +1,44 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-@FunctionalInterface
-public interface dzu<C extends dty> {
-   Optional<dzt<C>> createGenerator(dzu.a<C> var1);
+public record dzu(List<dzu.a> c, eal d) {
+   public static final Codec<dzu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dzu.a.a.listOf().fieldOf("structures").forGetter(dzu::a), eal.b.fieldOf("placement").forGetter(dzu::b)).apply($$0, dzu::new)
+   );
+   public static final Codec<ih<dzu>> b = ahd.a(ke.aF, a);
 
-   static <C extends dty> dzu<C> simple(Predicate<dzu.a<C>> $$0, dzt<C> $$1) {
-      Optional<dzt<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   public dzu(ih<dzo> $$0, eal $$1) {
+      this(List.of(new dzu.a($$0, 1)), $$1);
    }
 
-   static <C extends dty> Predicate<dzu.a<C>> checkForBiomeOnTop(doq.a $$0) {
-      return $$1 -> $$1.a($$0);
+   public static dzu.a a(ih<dzo> $$0, int $$1) {
+      return new dzu.a($$0, $$1);
    }
 
-   public static record a<C extends dty>(dle a, cus b, dpe c, long d, csw e, C f, ctr g, Predicate<ih<cuo>> h, edh i, iu j) {
-      public boolean a(doq.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         ih<cuo> $$4 = this.a.c().getNoiseBiome(is.a($$1), is.a($$3), is.a($$2), this.c.b());
-         return this.h.test($$4);
+   public static dzu.a a(ih<dzo> $$0) {
+      return new dzu.a($$0, 1);
+   }
+
+   public List<dzu.a> a() {
+      return this.c;
+   }
+
+   public eal b() {
+      return this.d;
+   }
+
+   public static record a(ih<dzo> b, int c) {
+      public static final Codec<dzu.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dzo.b.fieldOf("structure").forGetter(dzu.a::a), atx.j.fieldOf("weight").forGetter(dzu.a::b)).apply($$0, dzu.a::new)
+      );
+
+      public ih<dzo> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
       }
    }
 }

@@ -1,47 +1,56 @@
-import com.mojang.serialization.Codec;
+public class dsb extends dsc<dun> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final hx an = hx.b;
+   private final boolean ao;
 
-public class dsb extends dru<duf> {
-   public dsb(Codec<duf> $$0) {
-      super($$0);
+   public static hx a(hx $$0) {
+      return an.a((jb)$$0);
+   }
+
+   public dsb(boolean $$0) {
+      super(dun.a);
+      this.ao = $$0;
    }
 
    @Override
-   public boolean a(drw<duf> $$0) {
-      cuk $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      auv $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         djh $$4 = $$1.a_($$2.c());
-         if (!$$4.a(cws.dV) && !$$4.a(cws.dY) && !$$4.a(cws.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, cws.ec.o(), 2);
+   public boolean a(dse<dun> $$0) {
+      hx $$1 = $$0.e();
+      cus $$2 = $$0.b();
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               hx $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).i()) {
-                  int $$7 = 0;
-
-                  for (ic $$8 : ic.values()) {
-                     if ($$1.a_($$6.a($$8)).a(cws.ec)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, cws.ec.o(), 2);
-                  }
+      for (hx $$3 : hx.a(new hx($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new hx($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, cxa.F.o());
+               } else if ($$3.v() < $$1.v()) {
+                  this.a($$2, $$3, cxa.fz.o());
                }
+            } else if ($$3.v() > $$1.v()) {
+               this.a($$2, $$3, cxa.a.o());
+            } else if (!$$4) {
+               this.a($$2, $$3, cxa.F.o());
+            } else if (this.ao) {
+               this.a($$2, new hx($$3), cxa.fx.o());
+            } else {
+               this.a($$2, new hx($$3), cxa.a.o());
             }
-
-            return true;
          }
       }
+
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), cxa.F.o());
+      }
+
+      hx $$6 = $$1.b(2);
+
+      for (ic $$7 : ic.c.a) {
+         this.a($$2, $$6.a($$7), cxa.cq.o().a(dfy.g, $$7));
+      }
+
+      return true;
    }
 }

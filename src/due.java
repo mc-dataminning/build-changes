@@ -1,21 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class due extends dtq {
-   public static final Codec<due> c = RecordCodecBuilder.create(
+public class due implements dug {
+   public static final Codec<due> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dvz.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               atw.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               atw.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
+               bjh.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
+               bjh.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
+               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
+               bjh.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
+               bjf.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
+               bjf.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
             )
             .apply($$0, due::new)
    );
-   public final int d;
+   public final int b;
+   public final bjh c;
+   public final bjh d;
    public final int e;
+   public final int f;
+   public final bjh g;
+   public final bjf h;
+   public final bjf i;
+   public final float j;
+   public final int k;
+   public final int l;
 
-   public due(dvz $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public due(int $$0, bjh $$1, bjh $$2, int $$3, int $$4, bjh $$5, bjf $$6, bjf $$7, float $$8, int $$9, int $$10) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
    }
 }

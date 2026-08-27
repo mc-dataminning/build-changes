@@ -1,44 +1,23 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dwz extends dxc {
-   public static final Codec<dwz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dwz::new));
+public class dwz<P extends dwy> {
+   public static final dwz<dxa> a = a("trunk_vine", dxa.a);
+   public static final dwz<dwx> b = a("leave_vine", dwx.a);
+   public static final dwz<dww> c = a("cocoa", dww.a);
+   public static final dwz<dwv> d = a("beehive", dwv.a);
+   public static final dwz<dwt> e = a("alter_ground", dwt.a);
+   public static final dwz<dwu> f = a("attached_to_leaves", dwu.a);
+   private final Codec<P> g;
 
-   public dwz(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <P extends dwy> dwz<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.Z, $$0, new dwz<>($$1));
    }
 
-   @Override
-   protected dxd<?> a() {
-      return dxd.c;
+   private dwz(Codec<P> $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public List<dvk.a> a(ctv $$0, BiConsumer<hx, djh> $$1, auv $$2, int $$3, hx $$4, duu $$5) {
-      hx $$6 = $$4.d();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.h(), $$5);
-      a($$0, $$1, $$2, $$6.f(), $$5);
-      a($$0, $$1, $$2, $$6.f().h(), $$5);
-      hx.a $$7 = new hx.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
-         }
-      }
-
-      return ImmutableList.of(new dvk.a($$4.b($$3), 0, true));
-   }
-
-   private void a(ctv $$0, BiConsumer<hx, djh> $$1, auv $$2, hx.a $$3, duu $$4, hx $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+   public Codec<P> a() {
+      return this.g;
    }
 }

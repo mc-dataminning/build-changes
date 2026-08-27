@@ -1,84 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class den extends cwc implements czy {
+public class den extends cwy {
    public static final MapCodec<den> a = b(den::new);
-   public static final dkf<dkr> b = djx.bj;
+   private static final emv b = cwy.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
+   private static final int c = 14;
+   private static final int d = 10;
+   private static final int e = 10;
 
    @Override
    public MapCodec<den> a() {
       return a;
    }
 
-   protected den(djg.d $$0) {
+   public den(djo.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dkr.b));
    }
 
    @Override
-   public dgv a(hx $$0, djh $$1) {
-      return new dij($$0, $$1);
+   public boolean a(djp $$0, cua $$1, hx $$2) {
+      return cwy.a($$1, $$2.c(), ic.a) && !$$1.z($$2);
    }
 
    @Override
-   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
-      dgv $$6 = $$1.c_($$2);
-      if ($$6 instanceof dij) {
-         return ((dij)$$6).a($$3) ? bkb.a($$1.B) : bkb.d;
-      } else {
-         return bkb.d;
-      }
+   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
+      return $$1 == ic.b && !this.a($$0, $$3, $$4) ? cxa.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(ctp $$0, hx $$1, djh $$2, @Nullable bml $$3, cmy $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            dgv $$5 = $$0.c_($$1);
-            if ($$5 instanceof dij) {
-               ((dij)$$5).a($$3);
-            }
+   public void a(djp $$0, ctx $$1, hx $$2, auw $$3) {
+      int $$4 = $$2.u();
+      int $$5 = $$2.v();
+      int $$6 = $$2.w();
+      double $$7 = (double)$$4 + $$3.j();
+      double $$8 = (double)$$5 + 0.7;
+      double $$9 = (double)$$6 + $$3.j();
+      $$1.a(jx.aw, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+      hx.a $$10 = new hx.a();
+
+      for (int $$11 = 0; $$11 < 14; $$11++) {
+         $$10.d($$4 + aup.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + aup.a($$3, -10, 10));
+         djp $$12 = $$1.a_($$10);
+         if (!$$12.r($$1, $$10)) {
+            $$1.a(jx.aA, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
          }
       }
    }
 
    @Override
-   public dcv b_(djh $$0) {
-      return dcv.c;
-   }
-
-   @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public void a(djh $$0, ctp $$1, hx $$2, cwq $$3, hx $$4, boolean $$5) {
-      if ($$1 instanceof and) {
-         if ($$1.c_($$2) instanceof dij $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.F();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((and)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(and $$0, dij $$1) {
-      switch ($$1.x()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.D();
-         case d:
-      }
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return b;
    }
 }

@@ -151,14 +151,14 @@ public class mp {
    }
 
    private static mo a(String $$0, mr... $$1) {
-      return new mo(Optional.of(new ahg("minecraft", "block/" + $$0)), Optional.empty(), $$1);
+      return new mo(Optional.of(new ahh("minecraft", "block/" + $$0)), Optional.empty(), $$1);
    }
 
    private static mo b(String $$0, mr... $$1) {
-      return new mo(Optional.of(new ahg("minecraft", "item/" + $$0)), Optional.empty(), $$1);
+      return new mo(Optional.of(new ahh("minecraft", "item/" + $$0)), Optional.empty(), $$1);
    }
 
    private static mo a(String $$0, String $$1, mr... $$2) {
-      return new mo(Optional.of(new ahg("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+      return new mo(Optional.of(new ahh("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
    }
 }

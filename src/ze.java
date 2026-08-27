@@ -1,40 +1,37 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
+public class ze implements xg<zb> {
+   public static final int a = 0;
+   public static final int b = 2;
+   public static final int c = 3;
+   public static final int d = 4;
+   public static final int e = 5;
+   private final int f;
+   private final int g;
 
-public class ze implements xf<za> {
-   private final Object2IntMap<arz<?>> a;
-
-   public ze(Object2IntMap<arz<?>> $$0) {
-      this.a = $$0;
+   public ze(blw $$0, int $$1) {
+      this.f = $$0.aj();
+      this.g = $$1;
    }
 
-   public ze(ui $$0) {
-      this.a = $$0.a(Object2IntOpenHashMap::new, $$1 -> {
-         asb<?> $$2 = $$1.a(kd.x);
-         return a($$0, $$2);
-      }, ui::n);
-   }
-
-   private static <T> arz<T> a(ui $$0, asb<T> $$1) {
-      return $$1.b($$0.a($$1.a()));
-   }
-
-   public void a(za $$0) {
-      $$0.a(this);
+   public ze(uj $$0) {
+      this.f = $$0.n();
+      this.g = $$0.readUnsignedByte();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.a, ze::a, ui::c);
+   public void a(uj $$0) {
+      $$0.c(this.f);
+      $$0.k(this.g);
    }
 
-   private static <T> void a(ui $$0, arz<T> $$1) {
-      $$0.a(kd.x, $$1.a());
-      $$0.a($$1.a().a(), $$1.b());
+   public void a(zb $$0) {
+      $$0.a(this);
    }
 
-   public Map<arz<?>, Integer> a() {
-      return this.a;
+   public int a() {
+      return this.f;
+   }
+
+   public int d() {
+      return this.g;
    }
 }

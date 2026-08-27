@@ -1,17 +1,9 @@
-public interface ahw extends ahv {
-   amb a();
+public interface ahw {
+   String ac();
 
-   String b();
+   String I();
 
-   int d();
+   int J();
 
-   String f();
-
-   String[] L();
-
-   String q();
-
-   String s();
-
-   String a(String var1);
+   int K();
 }

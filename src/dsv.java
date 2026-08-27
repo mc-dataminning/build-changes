@@ -1,23 +1,37 @@
 import com.mojang.serialization.Codec;
 
-public class dsv extends dru<dum> {
+public class dsv extends dsc<dum> {
    public dsv(Codec<dum> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drw<dum> $$0) {
-      cuk $$1 = $$0.b();
+   public boolean a(dse<dum> $$0) {
+      cus $$1 = $$0.b();
       hx $$2 = $$0.e();
-      dum $$3 = $$0.f();
+      djp $$3 = $$1.a_($$2.d());
+      dum $$4 = $$0.f();
+      auw $$5 = $$0.d();
+      if (!$$3.a(asi.aK)) {
+         return false;
+      } else {
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.J_() + 1 && $$6 + 1 < $$1.al()) {
+            int $$7 = 0;
 
-      for (dug.a $$4 : $$3.b) {
-         if ($$4.b.a($$1.a_($$2), $$0.d())) {
-            $$1.a($$2, $$4.c, 2);
-            break;
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               hx $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               djp $$10 = $$4.b.a($$5, $$9);
+               if ($$1.u($$9) && $$9.v() > $$1.J_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
+            }
+
+            return $$7 > 0;
+         } else {
+            return false;
          }
       }
-
-      return true;
    }
 }

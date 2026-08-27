@@ -1,25 +1,25 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface edf<P extends edd> {
-   Codec<edd> a = kd.ah.q().dispatch("processor_type", edd::a, edf::codec);
-   Codec<ede> b = a.listOf().xmap(ede::new, ede::a);
-   Codec<ede> c = atw.e(b.fieldOf("processors").codec(), b);
-   Codec<ih<ede>> d = ahc.a(ke.aE, c);
-   edf<eci> e = a("block_ignore", eci.a);
-   edf<eck> f = a("block_rot", eck.a);
-   edf<ecn> g = a("gravity", ecn.a);
-   edf<eco> h = a("jigsaw_replacement", eco.a);
-   edf<ecz> i = a("rule", ecz.a);
-   edf<ecr> j = a("nop", ecr.a);
-   edf<ech> k = a("block_age", ech.a);
-   edf<ecg> l = a("blackstone_replace", ecg.a);
-   edf<ecp> m = a("lava_submerged_block", ecp.a);
-   edf<ecw> n = a("protected_blocks", ecw.b);
-   edf<ecm> o = a("capped", ecm.a);
+public class edf extends edi {
+   public static final Codec<edf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kd.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, edf::new)
+   );
+   private final cwy b;
+   private final float d;
 
-   Codec<P> codec();
+   public edf(cwy $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
 
-   static <P extends edd> edf<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.ah, $$0, () -> $$1);
+   @Override
+   public boolean a(djp $$0, auw $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
+   }
+
+   @Override
+   protected edj<?> a() {
+      return edj.e;
    }
 }

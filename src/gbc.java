@@ -1,34 +1,27 @@
-public class gbc extends fym<cbv> {
-   private final fub a;
+public class gbc extends gag<cdf, fmh<cdf>> {
+   private static final ahh a = new ahh("textures/entity/slime/slime.png");
 
-   public gbc(fyn.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public gbc(fza.a $$0) {
+      super($$0, new fmh<>($$0.a(fni.bo)), 0.25F);
+      this.a(new gdp<>(this, $$0.f()));
    }
 
-   public void a(cbv $$0, float $$1, float $$2, eqb $$3, fth $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.s();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = auo.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      gbb.a(this.a, $$0.u(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
+   public void a(cdf $$0, float $$1, float $$2, eqk $$3, ftt $$4, int $$5) {
+      this.d = 0.25F * (float)$$0.gg();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ahg a(cbv $$0) {
-      return gem.e;
+   protected void a(cdf $$0, eqk $$1, float $$2) {
+      float $$3 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$4 = (float)$$0.gg();
+      float $$5 = aup.i($$2, $$0.bT, $$0.e) / ($$4 * 0.5F + 1.0F);
+      float $$6 = 1.0F / ($$5 + 1.0F);
+      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
+   }
+
+   public ahh a(cdf $$0) {
+      return a;
    }
 }

@@ -1,71 +1,42 @@
-public class fcj extends fbs {
-   private exg c;
+public class fcj extends fdm {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final vg c = vg.c("credits_and_attribution.screen.title");
+   private static final vg k = vg.c("credits_and_attribution.button.credits");
+   private static final vg l = vg.c("credits_and_attribution.button.attribution");
+   private static final vg m = vg.c("credits_and_attribution.button.licenses");
+   private final fdm n;
+   private final fbb o = new fbb(this);
 
-   public fcj() {
-      super("");
+   public fcj(fdm $$0) {
+      super(c);
+      this.n = $$0;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.c = exg.a(vf.c("multiplayer.stopSleeping"), $$0 -> this.D()).a(this.g / 2 - 100, this.h - 40, 200, 20).a();
-      this.d(this.c);
+   protected void aP_() {
+      this.o.a(new eyy(this.p(), this.i));
+      fbf $$0 = this.o.c(fbf.d()).a(8);
+      $$0.c().b();
+      $$0.a(exr.a(k, $$0x -> this.o()).a(210).a());
+      $$0.a(exr.a(l, fce.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
+      $$0.a(exr.a(m, fce.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
+      this.o.b(exr.a(vf.d, $$0x -> this.d()).a());
+      this.o.a();
+      this.o.a(this::d);
    }
 
    @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      if (!this.f.H().a(this.f.R())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
+   protected void c() {
+      this.o.a();
+   }
+
+   private void o() {
+      this.f.a(new fdu(false, () -> this.f.a(this)));
    }
 
    @Override
-   public void b(ewu $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   public void aE_() {
-      this.D();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.f.H().a(this.f.R()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.D();
-      }
-
-      if (!this.f.H().a(this.f.R())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         if (this.b(this.b.a(), true)) {
-            this.f.a(null);
-            this.b.a("");
-            this.f.l.d().d();
-         }
-
-         return true;
-      }
-   }
-
-   private void D() {
-      fnt $$0 = this.f.s.cn;
-      $$0.b(new aen(this.f.s, aen.a.c));
-   }
-
-   public void n() {
-      if (this.b.a().isEmpty()) {
-         this.f.a(null);
-      } else {
-         this.f.a(new fbs(this.b.a()));
-      }
+   public void d() {
+      this.f.a(this.n);
    }
 }

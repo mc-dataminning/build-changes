@@ -1,20 +1,12 @@
-public class gao extends fze<cby, fls<cby>> {
-   private static final ahg a = new ahg("textures/entity/skeleton/skeleton.png");
+public class gao extends gag<byt, fll<byt>> {
+   private static final ahh a = new ahh("textures/entity/pig/pig.png");
 
-   public gao(fyn.a $$0) {
-      this($$0, fmw.bk, fmw.bm, fmw.bn);
+   public gao(fza.a $$0) {
+      super($$0, new fll<>($$0.a(fni.aE)), 0.7F);
+      this.a(new gdm<>(this, new fll<>($$0.a(fni.aM)), new ahh("textures/entity/pig/pig_saddle.png")));
    }
 
-   public gao(fyn.a $$0, fmv $$1, fmv $$2, fmv $$3) {
-      super($$0, new fls<>($$0.a($$1)), 0.5F);
-      this.a(new gco<>(this, new fls($$0.a($$2)), new fls($$0.a($$3)), $$0.g()));
-   }
-
-   public ahg a(cby $$0) {
+   public ahh a(byt $$0) {
       return a;
-   }
-
-   protected boolean b(cby $$0) {
-      return $$0.ge();
    }
 }

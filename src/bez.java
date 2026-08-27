@@ -13,9 +13,9 @@ public class bez extends bde {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          true,
-         bbw.B,
+         bbw.C,
          () -> DSL.optionalFields(
-               "SpawnPotentials", DSL.list(DSL.fields("data", DSL.fields("entity", bbw.w.in($$0)))), "SpawnData", DSL.fields("entity", bbw.w.in($$0))
+               "SpawnPotentials", DSL.list(DSL.fields("data", DSL.fields("entity", bbw.x.in($$0)))), "SpawnData", DSL.fields("entity", bbw.x.in($$0))
             )
       );
    }

@@ -1,49 +1,24 @@
-public class gda extends gcy<byu, fln<byu>> {
-   private static final ahg a = new ahg("textures/entity/sheep/sheep_fur.png");
-   private final flm<byu> b;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gda(gai<byu, fln<byu>> $$0, fmt $$1) {
+public class gda extends gdl<cag, fku<cag>> {
+   private static final Map<cai, ahh> a = ac.a(Maps.newEnumMap(cai.class), $$0 -> {
+      $$0.put(cai.a, null);
+      $$0.put(cai.b, new ahh("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cai.c, new ahh("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cai.d, new ahh("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cai.e, new ahh("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public gda(gav<cag, fku<cag>> $$0) {
       super($$0);
-      this.b = new flm<>($$1.a(fmw.bf));
    }
 
-   public void a(eqb $$0, fth $$1, int $$2, byu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.A()) {
-         if ($$3.ce()) {
-            evi $$10 = evi.O();
-            boolean $$11 = $$10.b($$3);
-            if ($$11) {
-               this.c().a(this.b);
-               this.b.a($$3, $$4, $$5, $$6);
-               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-               eqf $$12 = $$1.getBuffer(ftp.r(a));
-               this.b.a($$0, $$12, $$2, fzo.c($$3, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
-            }
-         } else {
-            float $$21;
-            float $$22;
-            float $$23;
-            if ($$3.ae() && "jeb_".equals($$3.ad().getString())) {
-               int $$13 = 25;
-               int $$14 = $$3.ah / 25 + $$3.aj();
-               int $$15 = clm.values().length;
-               int $$16 = $$14 % $$15;
-               int $$17 = ($$14 + 1) % $$15;
-               float $$18 = ((float)($$3.ah % 25) + $$6) / 25.0F;
-               float[] $$19 = byu.a(clm.a($$16));
-               float[] $$20 = byu.a(clm.a($$17));
-               $$21 = $$19[0] * (1.0F - $$18) + $$20[0] * $$18;
-               $$22 = $$19[1] * (1.0F - $$18) + $$20[1] * $$18;
-               $$23 = $$19[2] * (1.0F - $$18) + $$20[2] * $$18;
-            } else {
-               float[] $$24 = byu.a($$3.w());
-               $$21 = $$24[0];
-               $$22 = $$24[1];
-               $$23 = $$24[2];
-            }
-
-            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21, $$22, $$23);
-         }
+   public void a(eqk $$0, ftt $$1, int $$2, cag $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ahh $$10 = a.get($$3.gf());
+      if ($$10 != null && !$$3.ce()) {
+         eqo $$11 = $$1.getBuffer(fub.i($$10));
+         this.c().a($$0, $$11, $$2, gab.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

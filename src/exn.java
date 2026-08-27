@@ -1,274 +1,127 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class exn<T> extends ewx {
-   public static final BooleanSupplier a = fdb::v;
-   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final vf c;
-   private int d;
-   private T f;
-   private final exn.c<T> m;
-   private final Function<T, vf> n;
-   private final Function<exn<T>, vt> o;
-   private final exn.b<T> p;
-   private final boolean q;
-   private final evl.l<T> r;
+public abstract class exn extends exp {
+   private static final ahh a = new ahh("widget/slider");
+   private static final ahh d = new ahh("widget/slider_highlighted");
+   private static final ahh e = new ahh("widget/slider_handle");
+   private static final ahh f = new ahh("widget/slider_handle_highlighted");
+   protected static final int b = 2;
+   private static final int m = 8;
+   private static final int n = 4;
+   protected double c;
+   private boolean o;
 
-   exn(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      vf $$4,
-      vf $$5,
-      int $$6,
-      T $$7,
-      exn.c<T> $$8,
-      Function<T, vf> $$9,
-      Function<exn<T>, vt> $$10,
-      exn.b<T> $$11,
-      evl.l<T> $$12,
-      boolean $$13
-   ) {
+   public exn(int $$0, int $$1, int $$2, int $$3, vg $$4, double $$5) {
       super($$0, $$1, $$2, $$3, $$4);
       this.c = $$5;
-      this.d = $$6;
-      this.f = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$13;
-      this.r = $$12;
-      this.f();
    }
 
-   private void f() {
-      this.a(this.r.apply(this.f));
+   private ahh d() {
+      return this.aK_() && !this.o ? d : a;
+   }
+
+   private ahh e() {
+      return !this.i && !this.o ? e : f;
    }
 
    @Override
-   public void b() {
-      if (fdb.t()) {
-         this.a(-1);
-      } else {
-         this.a(1);
-      }
-   }
-
-   private void a(int $$0) {
-      List<T> $$1 = this.m.a();
-      this.d = auo.b(this.d + $$0, $$1.size());
-      T $$2 = $$1.get(this.d);
-      this.b($$2);
-      this.p.onValueChange(this, $$2);
-   }
-
-   private T b(int $$0) {
-      List<T> $$1 = this.m.a();
-      return $$1.get(auo.b(this.d + $$0, $$1.size()));
+   protected vu aM_() {
+      return vg.a("gui.narrate.slider", this.x());
    }
 
    @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$3 > 0.0) {
-         this.a(-1);
-      } else if ($$3 < 0.0) {
-         this.a(1);
-      }
-
-      return true;
-   }
-
-   public void a(T $$0) {
-      List<T> $$1 = this.m.a();
-      int $$2 = $$1.indexOf($$0);
-      if ($$2 != -1) {
-         this.d = $$2;
-      }
-
-      this.b($$0);
-   }
-
-   private void b(T $$0) {
-      vf $$1 = this.c($$0);
-      this.b($$1);
-      this.f = $$0;
-      this.f();
-   }
-
-   private vf c(T $$0) {
-      return (vf)(this.q ? this.n.apply($$0) : this.d($$0));
-   }
-
-   private vt d(T $$0) {
-      return ve.a(this.c, this.n.apply($$0));
-   }
-
-   public T a() {
-      return this.f;
-   }
-
-   @Override
-   protected vt aK_() {
-      return this.o.apply(this);
-   }
-
-   @Override
-   public void a(faz $$0) {
-      $$0.a(fay.a, this.aK_());
+   public void a(fbk $$0) {
+      $$0.a(fbj.a, this.aM_());
       if (this.j) {
-         T $$1 = this.b(1);
-         vf $$2 = this.c($$1);
-         if (this.aI_()) {
-            $$0.a(fay.d, vf.a("narration.cycle_button.usage.focused", $$2));
+         if (this.aK_()) {
+            $$0.a(fbj.d, vg.c("narration.slider.usage.focused"));
          } else {
-            $$0.a(fay.d, vf.a("narration.cycle_button.usage.hovered", $$2));
+            $$0.a(fbj.d, vg.c("narration.slider.usage.hovered"));
          }
       }
    }
 
-   public vt d() {
-      return a_((vf)(this.q ? this.d(this.f) : this.x()));
+   @Override
+   public void b(exe $$0, int $$1, int $$2, float $$3) {
+      evr $$4 = evr.O();
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.enableDepthTest();
+      $$0.a(this.d(), this.B(), this.C(), this.w(), this.u());
+      $$0.a(this.e(), this.B() + (int)(this.c * (double)(this.g - 8)), this.C(), 8, this.u());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, 2, $$5 | aup.f(this.l * 255.0F) << 24);
    }
 
-   public static <T> exn.a<T> a(Function<T, vf> $$0) {
-      return new exn.a<>($$0);
+   @Override
+   public void a(double $$0, double $$1) {
+      this.a($$0);
    }
 
-   public static exn.a<Boolean> a(vf $$0, vf $$1) {
-      return new exn.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
-   }
-
-   public static exn.a<Boolean> e() {
-      return new exn.a<Boolean>($$0 -> $$0 ? ve.b : ve.c).a(b);
-   }
-
-   public static exn.a<Boolean> b(boolean $$0) {
-      return e().a($$0);
-   }
-
-   public static class a<T> {
-      private int a;
-      @Nullable
-      private T b;
-      private final Function<T, vf> c;
-      private evl.l<T> d = $$0x -> null;
-      private Function<exn<T>, vt> e = exn::d;
-      private exn.c<T> f = exn.c.a(ImmutableList.of());
-      private boolean g;
-
-      public a(Function<T, vf> $$0) {
-         this.c = $$0;
-      }
-
-      public exn.a<T> a(Collection<T> $$0) {
-         return this.a(exn.c.a($$0));
-      }
-
-      @SafeVarargs
-      public final exn.a<T> a(T... $$0) {
-         return this.a(ImmutableList.copyOf($$0));
-      }
-
-      public exn.a<T> a(List<T> $$0, List<T> $$1) {
-         return this.a(exn.c.a(exn.a, $$0, $$1));
-      }
-
-      public exn.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         return this.a(exn.c.a($$0, $$1, $$2));
-      }
-
-      public exn.a<T> a(exn.c<T> $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public exn.a<T> a(evl.l<T> $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public exn.a<T> a(T $$0) {
-         this.b = $$0;
-         int $$1 = this.f.b().indexOf($$0);
-         if ($$1 != -1) {
-            this.a = $$1;
-         }
-
-         return this;
-      }
-
-      public exn.a<T> a(Function<exn<T>, vt> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public exn.a<T> a() {
-         this.g = true;
-         return this;
-      }
-
-      public exn<T> a(int $$0, int $$1, int $$2, int $$3, vf $$4) {
-         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
-         });
-      }
-
-      public exn<T> a(int $$0, int $$1, int $$2, int $$3, vf $$4, exn.b<T> $$5) {
-         List<T> $$6 = this.f.b();
-         if ($$6.isEmpty()) {
-            throw new IllegalStateException("No values for cycle button");
-         } else {
-            T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            vf $$8 = this.c.apply($$7);
-            vf $$9 = (vf)(this.g ? $$8 : ve.a($$4, $$8));
-            return new exn<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if (!$$0) {
+         this.o = false;
+      } else {
+         evo $$1 = evr.O().aV();
+         if ($$1 == evo.b || $$1 == evo.d) {
+            this.o = true;
          }
       }
    }
 
-   public interface b<T> {
-      void onValueChange(exn<T> var1, T var2);
-   }
-
-   public interface c<T> {
-      List<T> a();
-
-      List<T> b();
-
-      static <T> exn.c<T> a(Collection<T> $$0) {
-         final List<T> $$1 = ImmutableList.copyOf($$0);
-         return new exn.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$1;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (fbp.a($$0)) {
+         this.o = !this.o;
+         return true;
+      } else {
+         if (this.o) {
+            boolean $$3 = $$0 == 263;
+            if ($$3 || $$0 == 262) {
+               float $$4 = $$3 ? -1.0F : 1.0F;
+               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
+               return true;
             }
+         }
 
-            @Override
-            public List<T> b() {
-               return $$1;
-            }
-         };
-      }
-
-      static <T> exn.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         final List<T> $$3 = ImmutableList.copyOf($$1);
-         final List<T> $$4 = ImmutableList.copyOf($$2);
-         return new exn.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$0.getAsBoolean() ? $$4 : $$3;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$3;
-            }
-         };
+         return false;
       }
    }
+
+   private void a(double $$0) {
+      this.b(($$0 - (double)(this.B() + 4)) / (double)(this.g - 8));
+   }
+
+   private void b(double $$0) {
+      double $$1 = this.c;
+      this.c = aup.a($$0, 0.0, 1.0);
+      if ($$1 != this.c) {
+         this.a();
+      }
+
+      this.b();
+   }
+
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.a($$0);
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(gjs $$0) {
+   }
+
+   @Override
+   public void a_(double $$0, double $$1) {
+      super.a(evr.O().ai());
+   }
+
+   protected abstract void b();
+
+   protected abstract void a();
 }

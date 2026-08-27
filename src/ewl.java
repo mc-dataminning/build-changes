@@ -1,78 +1,289 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
-
 public class ewl {
-   private static final int a = -1;
-   private final in<ewk> b = new in<>(32);
-   private final Map<cwq, Set<dkk<?>>> c = Maps.newHashMap();
-
-   public static ewl a() {
-      ewl $$0 = new ewl();
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fst.a($$1, $$0x.c(cyy.b) == dkd.a ? $$2.d() : $$2) : ctn.a(), cws.iI, cws.iH);
-      $$0.a(cyy.b, cws.iI, cws.iH);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fst.a($$1, $$2) : ctn.a(), cws.i, cws.bu, cws.bt, cws.gb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         if ($$3 != 0) {
-            return $$1 != null && $$2 != null ? fst.a($$1, $$2) : ctn.a();
-         } else {
-            return -1;
-         }
-      }, cws.sB);
-      $$0.a(($$0x, $$1, $$2, $$3) -> ctj.a(), cws.aF);
-      $$0.a(($$0x, $$1, $$2, $$3) -> ctj.b(), cws.aG);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fst.b($$1, $$2) : ctj.c(), cws.aE, cws.aH, cws.aI, cws.aK, cws.ff, cws.aL);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fst.c($$1, $$2) : -1, cws.G, cws.nd, cws.fu);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dcr.b($$0x.c(dcr.f)), cws.cw);
-      $$0.a(dcr.f, cws.cw);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fst.a($$1, $$2) : -1, cws.dS);
-      $$0.a(($$0x, $$1, $$2, $$3) -> 14731036, cws.fc, cws.fb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         int $$4 = $$0x.c(del.c);
-         int $$5 = $$4 * 32;
-         int $$6 = 255 - $$4 * 8;
-         int $$7 = $$4 * 4;
-         return $$5 << 16 | $$6 << 8 | $$7;
-      }, cws.fe, cws.fd);
-      $$0.a(del.c, cws.fe, cws.fd);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? 2129968 : 7455580, cws.fm);
-      return $$0;
-   }
-
-   public int a(djh $$0, ctp $$1, hx $$2) {
-      ewk $$3 = this.b.a(kd.e.a($$0.b()));
-      if ($$3 != null) {
-         return $$3.getColor($$0, null, null, 0);
-      } else {
-         eev $$4 = $$0.d($$1, $$2);
-         return $$4 != null ? $$4.ak : -1;
-      }
-   }
-
-   public int a(djh $$0, @Nullable css $$1, @Nullable hx $$2, int $$3) {
-      ewk $$4 = this.b.a(kd.e.a($$0.b()));
-      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
-   }
-
-   public void a(ewk $$0, cwq... $$1) {
-      for (cwq $$2 : $$1) {
-         this.b.a($$0, kd.e.a($$2));
-      }
-   }
-
-   private void a(Set<dkk<?>> $$0, cwq... $$1) {
-      for (cwq $$2 : $$1) {
-         this.c.put($$2, $$0);
-      }
-   }
-
-   private void a(dkk<?> $$0, cwq... $$1) {
-      this.a(ImmutableSet.of($$0), $$1);
-   }
-
-   public Set<dkk<?>> a(cwq $$0) {
-      return this.c.getOrDefault($$0, ImmutableSet.of());
-   }
+   public static final ewi a = ewi.a.a(0.375F)
+      .a("body", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a), new ewj(0.1667F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)))
+      .a(
+         "body",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.1667F, ewk.a(0.0F, 5.0F, 0.0F), ewh.b.a),
+            new ewj(0.2083F, ewk.a(0.0F, 6.0F, -1.0F), ewh.b.a),
+            new ewj(0.25F, ewk.a(0.0F, 6.0F, -1.0F), ewh.b.a),
+            new ewj(0.375F, ewk.a(0.0F, -1.0F, -1.0F), ewh.b.a)
+         )
+      )
+      .a("tail", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a), new ewj(0.1667F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)))
+      .a(
+         "tail",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.1667F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.2083F, ewk.a(0.0F, 0.0F, -2.0F), ewh.b.a),
+            new ewj(0.25F, ewk.a(0.0F, 0.0F, -2.0F), ewh.b.a)
+         )
+      )
+      .a("head", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a), new ewj(0.1667F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)))
+      .a(
+         "head",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.1667F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.2083F, ewk.a(0.0F, 2.0F, 1.0F), ewh.b.a),
+            new ewj(0.25F, ewk.a(0.0F, 2.0F, 1.0F), ewh.b.a),
+            new ewj(0.375F, ewk.a(0.0F, 2.0F, 1.0F), ewh.b.a)
+         )
+      )
+      .a("right_hind_leg", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a), new ewj(0.1667F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)))
+      .a(
+         "right_hind_leg",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.1667F, ewk.a(0.0F, 4.0F, 0.0F), ewh.b.a),
+            new ewj(0.2083F, ewk.a(0.0F, 8.0F, -2.0F), ewh.b.a),
+            new ewj(0.25F, ewk.a(0.0F, 8.0F, -2.0F), ewh.b.a),
+            new ewj(0.375F, ewk.a(0.0F, 5.0F, -2.0F), ewh.b.a)
+         )
+      )
+      .a("left_hind_leg", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a), new ewj(0.1667F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)))
+      .a(
+         "left_hind_leg",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.1667F, ewk.a(0.0F, 4.0F, 0.0F), ewh.b.a),
+            new ewj(0.2083F, ewk.a(0.0F, 8.0F, -2.0F), ewh.b.a),
+            new ewj(0.25F, ewk.a(0.0F, 8.0F, -2.0F), ewh.b.a),
+            new ewj(0.375F, ewk.a(0.0F, 3.0F, -2.0F), ewh.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new ewh(
+            ewh.d.b,
+            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.1667F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.2083F, ewk.b(-32.5F, 0.0F, 0.0F), ewh.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.1667F, ewk.a(0.0F, 4.0F, 0.0F), ewh.b.a),
+            new ewj(0.2083F, ewk.a(-1.0F, 9.0F, -1.0F), ewh.b.a),
+            new ewj(0.25F, ewk.a(-1.0F, 9.0F, -1.0F), ewh.b.a),
+            new ewj(0.375F, ewk.a(-1.0F, 2.0F, -1.0F), ewh.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new ewh(
+            ewh.d.b,
+            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.1667F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.2083F, ewk.b(-35.0F, 0.0F, 0.0F), ewh.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.1667F, ewk.a(0.0F, 4.0F, 0.0F), ewh.b.a),
+            new ewj(0.2083F, ewk.a(1.0F, 9.0F, -1.0F), ewh.b.a),
+            new ewj(0.25F, ewk.a(1.0F, 9.0F, -1.0F), ewh.b.a),
+            new ewj(0.375F, ewk.a(1.0F, 2.0F, -1.0F), ewh.b.a)
+         )
+      )
+      .a("cube", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a), new ewj(0.1667F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)))
+      .a(
+         "cube",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 3.0F, 0.0F), ewh.b.a),
+            new ewj(0.1667F, ewk.a(0.0F, 8.0F, 0.0F), ewh.b.a),
+            new ewj(0.2083F, ewk.a(0.0F, 7.0F, 0.0F), ewh.b.a),
+            new ewj(0.25F, ewk.a(0.0F, 7.0F, 0.0F), ewh.b.a),
+            new ewj(0.375F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
+         )
+      )
+      .b();
+   public static final ewi b = ewi.a.a(1.45833F)
+      .a()
+      .a(
+         "body",
+         new ewh(
+            ewh.d.b,
+            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.125F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.25F, ewk.b(0.0F, 0.0F, 2.1F), ewh.b.a),
+            new ewj(0.5F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.8333F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.9583F, ewk.b(0.0F, 0.0F, -2.1F), ewh.b.a),
+            new ewj(1.25F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.4583F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)
+         )
+      )
+      .a(
+         "body",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.125F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.25F, ewk.a(0.0F, -0.2F, 0.0F), ewh.b.a),
+            new ewj(0.5F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.8333F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.9583F, ewk.a(0.0F, -0.2F, 0.0F), ewh.b.a),
+            new ewj(1.25F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.4583F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
+         )
+      )
+      .a(
+         "tail",
+         new ewh(
+            ewh.d.b,
+            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.25F, ewk.b(5.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.5F, ewk.b(-2.5F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.7083F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.9583F, ewk.b(5.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.2083F, ewk.b(-2.5F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.4583F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new ewh(
+            ewh.d.b,
+            new ewj(0.0F, ewk.b(-50.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.25F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.5F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.75F, ewk.b(50.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.0F, ewk.b(50.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.2917F, ewk.b(-20.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.4583F, ewk.b(-50.0F, 0.0F, 0.0F), ewh.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.25F, ewk.a(0.0F, 0.0F, -0.5F), ewh.b.a),
+            new ewj(0.5F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.0F, ewk.a(0.0F, 0.0F, -0.5F), ewh.b.a),
+            new ewj(1.2917F, ewk.a(0.0F, 1.0F, -0.18F), ewh.b.a),
+            new ewj(1.4583F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new ewh(
+            ewh.d.b,
+            new ewj(0.0F, ewk.b(50.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.25F, ewk.b(50.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.5417F, ewk.b(-20.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.7083F, ewk.b(-50.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.9583F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.2083F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.4583F, ewk.b(50.0F, 0.0F, 0.0F), ewh.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 0.0F, -0.25F), ewh.b.a),
+            new ewj(0.25F, ewk.a(0.0F, 0.0F, -0.5F), ewh.b.a),
+            new ewj(0.5417F, ewk.a(0.0F, 1.0F, -0.18F), ewh.b.a),
+            new ewj(0.7083F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.9583F, ewk.a(0.0F, 0.0F, -0.5F), ewh.b.a),
+            new ewj(1.2083F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.4583F, ewk.a(0.0F, 0.0F, -0.25F), ewh.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new ewh(
+            ewh.d.b,
+            new ewj(0.0F, ewk.b(50.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.25F, ewk.b(50.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.5417F, ewk.b(-20.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.7083F, ewk.b(-50.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.9583F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.2083F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.4583F, ewk.b(50.0F, 0.0F, 0.0F), ewh.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 0.0F, -0.25F), ewh.b.a),
+            new ewj(0.25F, ewk.a(0.0F, 0.0F, -0.5F), ewh.b.a),
+            new ewj(0.5417F, ewk.a(0.0F, 1.0F, -0.18F), ewh.b.a),
+            new ewj(0.7083F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.9583F, ewk.a(0.0F, 0.0F, -0.5F), ewh.b.a),
+            new ewj(1.2083F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.4583F, ewk.a(0.0F, 0.0F, -0.25F), ewh.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new ewh(
+            ewh.d.b,
+            new ewj(0.0F, ewk.b(-50.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.25F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.5F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.75F, ewk.b(50.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.0F, ewk.b(50.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.2917F, ewk.b(-20.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.4583F, ewk.b(-50.0F, 0.0F, 0.0F), ewh.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new ewh(
+            ewh.d.a,
+            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(0.25F, ewk.a(0.0F, 0.0F, -0.5F), ewh.b.a),
+            new ewj(0.5F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
+            new ewj(1.0F, ewk.a(0.0F, 0.0F, -0.5F), ewh.b.a),
+            new ewj(1.2917F, ewk.a(0.0F, 1.0F, -0.18F), ewh.b.a),
+            new ewj(1.4583F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
+         )
+      )
+      .b();
+   public static final ewi c = ewi.a.a(1.5F)
+      .a()
+      .a("body", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, -1.0F, -1.0F), ewh.b.a)))
+      .a("head", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 2.0F, 1.0F), ewh.b.a)))
+      .a("right_hind_leg", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 5.0F, -2.0F), ewh.b.a)))
+      .a("left_hind_leg", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 3.0F, -2.0F), ewh.b.a)))
+      .a(
+         "right_front_leg",
+         new ewh(
+            ewh.d.b,
+            new ewj(0.0F, ewk.b(-32.5F, 0.0F, 0.0F), ewh.b.b),
+            new ewj(0.75F, ewk.b(-45.0F, 0.0F, 0.0F), ewh.b.b),
+            new ewj(1.5F, ewk.b(-32.5F, 0.0F, 0.0F), ewh.b.b)
+         )
+      )
+      .a("right_front_leg", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(-1.0F, 2.0F, -1.0F), ewh.b.b)))
+      .a(
+         "left_front_leg",
+         new ewh(
+            ewh.d.b,
+            new ewj(0.0F, ewk.b(-35.0F, 0.0F, 0.0F), ewh.b.b),
+            new ewj(0.75F, ewk.b(-22.5F, 0.0F, 0.0F), ewh.b.b),
+            new ewj(1.5F, ewk.b(-35.0F, 0.0F, 0.0F), ewh.b.b)
+         )
+      )
+      .a("left_front_leg", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(1.0F, 2.0F, -1.0F), ewh.b.b)))
+      .a("cube", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)))
+      .b();
 }

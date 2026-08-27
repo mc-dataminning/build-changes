@@ -7,7 +7,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bas extends baw {
    public bas(Schema $$0, String $$1) {
-      super($$0, false, "Memory expiry data fix (" + $$1 + ")", bbw.x, $$1);
+      super($$0, false, "Memory expiry data fix (" + $$1 + ")", bbw.y, $$1);
    }
 
    @Override

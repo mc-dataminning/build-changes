@@ -1,53 +1,55 @@
 import java.util.List;
 
 public class ql {
-   public static final ahf<drh<?, ?>> a = qj.a("delta");
-   public static final ahf<drh<?, ?>> b = qj.a("small_basalt_columns");
-   public static final ahf<drh<?, ?>> c = qj.a("large_basalt_columns");
-   public static final ahf<drh<?, ?>> d = qj.a("basalt_blobs");
-   public static final ahf<drh<?, ?>> e = qj.a("blackstone_blobs");
-   public static final ahf<drh<?, ?>> f = qj.a("glowstone_extra");
-   public static final ahf<drh<?, ?>> g = qj.a("crimson_forest_vegetation");
-   public static final ahf<drh<?, ?>> h = qj.a("crimson_forest_vegetation_bonemeal");
-   public static final ahf<drh<?, ?>> i = qj.a("warped_forest_vegetation");
-   public static final ahf<drh<?, ?>> j = qj.a("warped_forest_vegetation_bonemeal");
-   public static final ahf<drh<?, ?>> k = qj.a("nether_sprouts");
-   public static final ahf<drh<?, ?>> l = qj.a("nether_sprouts_bonemeal");
-   public static final ahf<drh<?, ?>> m = qj.a("twisting_vines");
-   public static final ahf<drh<?, ?>> n = qj.a("twisting_vines_bonemeal");
-   public static final ahf<drh<?, ?>> o = qj.a("weeping_vines");
-   public static final ahf<drh<?, ?>> p = qj.a("patch_crimson_roots");
-   public static final ahf<drh<?, ?>> q = qj.a("basalt_pillar");
-   public static final ahf<drh<?, ?>> r = qj.a("spring_lava_nether");
-   public static final ahf<drh<?, ?>> s = qj.a("spring_nether_closed");
-   public static final ahf<drh<?, ?>> t = qj.a("spring_nether_open");
-   public static final ahf<drh<?, ?>> u = qj.a("patch_fire");
-   public static final ahf<drh<?, ?>> v = qj.a("patch_soul_fire");
+   public static final ahg<drp<?, ?>> a = qk.a("ice_spike");
+   public static final ahg<drp<?, ?>> b = qk.a("ice_patch");
+   public static final ahg<drp<?, ?>> c = qk.a("forest_rock");
+   public static final ahg<drp<?, ?>> d = qk.a("iceberg_packed");
+   public static final ahg<drp<?, ?>> e = qk.a("iceberg_blue");
+   public static final ahg<drp<?, ?>> f = qk.a("blue_ice");
+   public static final ahg<drp<?, ?>> g = qk.a("lake_lava");
+   public static final ahg<drp<?, ?>> h = qk.a("disk_clay");
+   public static final ahg<drp<?, ?>> i = qk.a("disk_gravel");
+   public static final ahg<drp<?, ?>> j = qk.a("disk_sand");
+   public static final ahg<drp<?, ?>> k = qk.a("freeze_top_layer");
+   public static final ahg<drp<?, ?>> l = qk.a("disk_grass");
+   public static final ahg<drp<?, ?>> m = qk.a("bonus_chest");
+   public static final ahg<drp<?, ?>> n = qk.a("void_start_platform");
+   public static final ahg<drp<?, ?>> o = qk.a("desert_well");
+   public static final ahg<drp<?, ?>> p = qk.a("spring_lava_overworld");
+   public static final ahg<drp<?, ?>> q = qk.a("spring_lava_frozen");
+   public static final ahg<drp<?, ?>> r = qk.a("spring_water");
 
-   public static void a(pe<drh<?, ?>> $$0) {
-      qj.a($$0, a, dru.Z, new dtu(cws.H.o(), cws.kJ.o(), bjm.a(3, 7), bjm.a(0, 2)));
-      qj.a($$0, b, dru.Y, new dts(bjd.a(1), bjm.a(1, 4)));
-      qj.a($$0, c, dru.Y, new dts(bjm.a(2, 3), bjm.a(5, 10)));
-      qj.a($$0, d, dru.aa, new dun(cws.dV.o(), cws.dY.o(), bjm.a(3, 7)));
-      qj.a($$0, e, dru.aa, new dun(cws.dV.o(), cws.pr.o(), bjm.a(3, 7)));
-      qj.a($$0, f, dru.t);
-      dwj $$1 = new dwj(bil.<djh>a().a(cws.oD.o(), 87).a(cws.ox.o(), 11).a(cws.oo.o(), 1));
-      qj.a($$0, g, dru.V, new due($$1, 8, 4));
-      qj.a($$0, h, dru.V, new due($$1, 3, 1));
-      dwj $$2 = new dwj(bil.<djh>a().a(cws.oq.o(), 85).a(cws.oD.o(), 1).a(cws.oo.o(), 13).a(cws.ox.o(), 1));
-      qj.a($$0, i, dru.V, new due($$2, 8, 4));
-      qj.a($$0, j, dru.V, new due($$2, 3, 1));
-      qj.a($$0, k, dru.V, new due(dvz.a(cws.or), 8, 4));
-      qj.a($$0, l, dru.V, new due(dvz.a(cws.or), 3, 1));
-      qj.a($$0, m, dru.X, new duv(8, 4, 8));
-      qj.a($$0, n, dru.X, new duv(3, 1, 2));
-      qj.a($$0, o, dru.W);
-      qj.a($$0, p, dru.i, qj.a(dru.S, new duq(dvz.a(cws.oD))));
-      qj.a($$0, q, dru.ad);
-      qj.a($$0, r, dru.k, new dut(ees.e.g(), true, 4, 1, il.a(cwq::r, cws.dV, cws.dW, cws.L, cws.kJ, cws.pr)));
-      qj.a($$0, s, dru.k, new dut(ees.e.g(), false, 5, 0, il.a(cwq::r, cws.dV)));
-      qj.a($$0, t, dru.k, new dut(ees.e.g(), false, 4, 1, il.a(cwq::r, cws.dV)));
-      qj.a($$0, u, dru.i, qj.a(dru.S, new duq(dvz.a(cws.cr)), List.of(cws.dV)));
-      qj.a($$0, v, dru.i, qj.a(dru.S, new duq(dvz.a(cws.cs)), List.of(cws.dX)));
+   public static void a(pf<drp<?, ?>> $$0) {
+      qk.a($$0, a, dsc.s);
+      qk.a($$0, b, dsc.G, new dud(dwp.a(cxa.iC), dqf.c(List.of(cxa.j, cxa.i, cxa.l, cxa.k, cxa.fl, cxa.dP, cxa.dO)), bjn.a(2, 3), 1));
+      qk.a($$0, c, dsc.F, new dtz(cxa.cn.o()));
+      qk.a($$0, d, dsc.E, new dtz(cxa.iC.o()));
+      qk.a($$0, e, dsc.E, new dtz(cxa.mW.o()));
+      qk.a($$0, f, dsc.D);
+      qk.a($$0, g, dsc.H, new dsr.a(dwh.a(cxa.H.o()), dwh.a(cxa.b.o())));
+      qk.a($$0, h, dsc.G, new dud(dwp.a(cxa.dR), dqf.c(List.of(cxa.j, cxa.dR)), bjn.a(2, 3), 1));
+      qk.a($$0, i, dsc.G, new dud(dwp.a(cxa.L), dqf.c(List.of(cxa.j, cxa.i)), bjn.a(2, 5), 2));
+      qk.a(
+         $$0, j, dsc.G, new dud(new dwp(dwh.a(cxa.I), List.of(new dwp.a(dqf.a(ic.a.q(), cxa.a), dwh.a(cxa.aV)))), dqf.c(List.of(cxa.j, cxa.i)), bjn.a(2, 6), 2)
+      );
+      qk.a($$0, k, dsc.u);
+      qk.a(
+         $$0,
+         l,
+         dsc.G,
+         new dud(
+            new dwp(dwh.a(cxa.j), List.of(new dwp.a(dqf.a(dqf.b(dqf.b(ic.b.q()), dqf.a(ic.b.q(), efa.c))), dwh.a(cxa.i)))),
+            dqf.c(List.of(cxa.j, cxa.sI)),
+            bjn.a(2, 6),
+            2
+         )
+      );
+      qk.a($$0, m, dsc.ac);
+      qk.a($$0, n, dsc.n);
+      qk.a($$0, o, dsc.o);
+      qk.a($$0, p, dsc.k, new dvb(efa.e.g(), true, 4, 1, il.a(cwy::r, cxa.b, cxa.c, cxa.e, cxa.g, cxa.sJ, cxa.qz, cxa.qN, cxa.j)));
+      qk.a($$0, q, dsc.k, new dvb(efa.e.g(), true, 4, 1, il.a(cwy::r, cxa.dP, cxa.qP, cxa.iC)));
+      qk.a($$0, r, dsc.k, new dvb(efa.c.g(), true, 4, 1, il.a(cwy::r, cxa.b, cxa.c, cxa.e, cxa.g, cxa.sJ, cxa.qz, cxa.qN, cxa.j, cxa.dP, cxa.qP, cxa.iC)));
    }
 }

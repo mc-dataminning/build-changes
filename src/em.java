@@ -11,17 +11,17 @@ import java.util.concurrent.CompletableFuture;
 
 public class em implements ArgumentType<String> {
    private static final Collection<String> a = Arrays.asList("foo", "*", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vf.b("arguments.objective.notFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vf.b("arguments.objective.readonly", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vg.b("arguments.objective.notFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vg.b("arguments.objective.readonly", $$0));
 
    public static em a() {
       return new em();
    }
 
-   public static emp a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static emy a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      emx $$3 = ((ds)$$0.getSource()).l().aH();
-      emp $$4 = $$3.a($$2);
+      eng $$3 = ((ds)$$0.getSource()).l().aH();
+      emy $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class em implements ArgumentType<String> {
       }
    }
 
-   public static emp b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      emp $$2 = a($$0, $$1);
+   public static emy b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      emy $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

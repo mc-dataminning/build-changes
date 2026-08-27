@@ -1,43 +1,39 @@
 import com.mojang.serialization.Codec;
 
-public class dtl extends dru<duf> {
-   private static final hx a = new hx(8, 3, 8);
-   private static final csw b = new csw(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public dtl(Codec<duf> $$0) {
+public class dtl extends dsc<dun> {
+   public dtl(Codec<dun> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
    @Override
-   public boolean a(drw<duf> $$0) {
-      cuk $$1 = $$0.b();
-      csw $$2 = new csw($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
-      } else {
-         hx $$3 = a.h($$0.e().v() + a.v());
-         hx.a $$4 = new hx.a();
+   public boolean a(dse<dun> $$0) {
+      cus $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      hx.a $$3 = new hx.a();
+      hx.a $$4 = new hx.a();
 
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, cws.m.o(), 2);
-                  } else {
-                     $$1.a($$4, cws.b.o(), 2);
-                  }
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(doy.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(ic.a, 1);
+            cuw $$10 = $$1.t($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, cxa.dO.o(), 2);
+            }
+
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, cxa.dN.o(), 2);
+               djp $$11 = $$1.a_($$4);
+               if ($$11.b(deh.c)) {
+                  $$1.a($$4, $$11.a(deh.c, Boolean.valueOf(true)), 2);
                }
             }
          }
-
-         return true;
       }
+
+      return true;
    }
 }

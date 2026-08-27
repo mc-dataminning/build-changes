@@ -1,25 +1,66 @@
-import java.util.Optional;
+import java.util.Locale;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-@FunctionalInterface
-public interface eha {
+public interface eha extends ehc {
+   @Override
+   String g();
+
+   void a(boolean var1);
+
+   int l();
+
+   void f(int var1);
+
+   void e(int var1);
+
+   int j();
+
+   @Override
+   default void a(p $$0, ctz $$1) {
+      ehc.super.a($$0, $$1);
+      $$0.a("Level name", this::g);
+      $$0.a(
+         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
+   }
+
+   int h();
+
+   void a(int var1);
+
+   int v();
+
+   void g(int var1);
+
+   int w();
+
+   void h(int var1);
+
    @Nullable
-   <T> T getElement(egy<T> var1);
+   UUID x();
 
-   @Nullable
-   default <T> T getElement(ehb<T> $$0, ahg $$1) {
-      return this.getElement(new egy<>($$0, $$1));
-   }
+   void a(UUID var1);
 
-   default <T> Optional<T> getElementOptional(egy<T> $$0) {
-      return Optional.ofNullable(this.getElement($$0));
-   }
+   ctu m();
 
-   default <T> Optional<T> getElementOptional(ehb<T> $$0, ahg $$1) {
-      return this.getElementOptional(new egy<>($$0, $$1));
-   }
+   void a(dlg.c var1);
 
-   default ehe getLootTable(ahg $$0) {
-      return this.getElementOptional(ehb.c, $$0).orElse(ehe.a);
-   }
+   dlg.c r();
+
+   boolean p();
+
+   void c(boolean var1);
+
+   boolean o();
+
+   void a(ctu var1);
+
+   elp<MinecraftServer> u();
+
+   void a(long var1);
+
+   void b(long var1);
 }

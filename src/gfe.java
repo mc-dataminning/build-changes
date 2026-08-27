@@ -1,69 +1,44 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gfe extends apo {
-   private static final apk c = new apk(vf.c("resourcePack.vanilla.description"), aa.b().a(aox.a), Optional.empty());
-   private static final aop d = aop.a(apk.b, c);
-   private static final vf e = vf.c("resourcePack.vanilla.name");
-   public static final String b = "high_contrast";
-   private static final Map<String, vf> f = Map.of(
-      "programmer_art", vf.c("resourcePack.programmer_art.name"), "high_contrast", vf.c("resourcePack.high_contrast.name")
-   );
-   private static final ahg g = new ahg("minecraft", "resourcepacks");
-   @Nullable
-   private final Path h;
+@FunctionalInterface
+public interface gfe {
+   Logger a = LogUtils.getLogger();
 
-   public gfe(Path $$0, elj $$1) {
-      super(aox.a, b($$0), g, $$1);
-      this.h = this.a($$0);
-   }
-
-   @Nullable
-   private Path a(Path $$0) {
-      if (aa.aW && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
+   static gfe create(Collection<apj<?>> $$0) {
+      return ($$1, $$2) -> {
+         aql $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
          }
-      }
 
-      return null;
-   }
+         epl $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = epl.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
 
-   private static aoz b(Path $$0) {
-      apa $$1 = new apa().a(d).a("minecraft", "realms");
-      return $$1.b().a().a(aox.a, $$0).c();
-   }
-
-   @Override
-   protected vf a(String $$0) {
-      vf $$1 = f.get($$0);
-      return (vf)($$1 != null ? $$1 : vf.b($$0));
+         ggl $$11 = $$3.a(ggl.a).orElse(ggl.e);
+         ggn $$12 = $$11.a($$7.a(), $$7.b());
+         if (aup.c($$7.a(), $$12.a()) && aup.c($$7.b(), $$12.b())) {
+            return new gev($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
 
    @Nullable
-   @Override
-   protected apq a(aow $$0) {
-      return apq.a("vanilla", e, true, b($$0), aox.a, apq.b.b, apu.c);
-   }
-
-   @Nullable
-   @Override
-   protected apq a(String $$0, apq.c $$1, vf $$2) {
-      return apq.a($$0, $$2, false, $$1, aox.a, apq.b.a, apu.c);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, apq>> $$0) {
-      super.a($$0);
-      if (this.h != null) {
-         this.a(this.h, $$0);
-      }
-   }
+   gev loadSprite(ahh var1, aqh var2);
 }

@@ -1,102 +1,97 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fbu extends fdb {
-   private static final int k = 20;
-   private final vf l;
-   private exz m = exz.a;
-   protected vf a;
-   protected vf b;
-   private int n;
-   protected final BooleanConsumer c;
-   private final List<exg> o = Lists.newArrayList();
+public record fbu(fbt a, int b, int c) {
+   private static final fbu d = new fbu(0, 0, 0, 0);
 
-   public fbu(BooleanConsumer $$0, vf $$1, vf $$2) {
-      this($$0, $$1, $$2, ve.f, ve.g);
+   public fbu(int $$0, int $$1, int $$2, int $$3) {
+      this(new fbt($$0, $$1), $$2, $$3);
    }
 
-   public fbu(BooleanConsumer $$0, vf $$1, vf $$2, vf $$3, vf $$4) {
-      super($$1);
-      this.c = $$0;
-      this.l = $$2;
-      this.a = $$3;
-      this.b = $$4;
+   public static fbu a() {
+      return d;
    }
 
-   @Override
-   public vf h() {
-      return ve.a(super.h(), this.l);
+   public static fbu a(fbr $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fbu($$1, $$2, $$3, $$4);
+         case b -> new fbu($$2, $$1, $$4, $$3);
+      };
    }
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.m = exz.a(this.i, this.l, this.g - 50);
-      int $$0 = auo.a(this.D() + this.E() + 20, this.h / 6 + 96, this.h - 24);
-      this.o.clear();
-      this.a($$0);
+   public fbu a(fbs $$0) {
+      return new fbu(this.a.a($$0), this.b, this.c);
    }
 
-   protected void a(int $$0) {
-      this.a(exg.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 155, $$0, 150, 20).a());
-      this.a(exg.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 155 + 160, $$0, 150, 20).a());
+   public int a(fbr $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   protected void a(exg $$0) {
-      this.o.add(this.d($$0));
+   public int b(fbs $$0) {
+      fbr $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
    }
 
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.n(), 16777215);
-      this.m.a($$0, this.g / 2, this.D());
+   public fbu c(fbs $$0) {
+      int $$1 = this.b($$0);
+      fbr $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
    }
 
-   private int n() {
-      int $$0 = (this.h - this.E()) / 2;
-      return auo.a($$0 - 20 - 9, 10, 80);
+   public boolean a(fbu $$0) {
+      return this.a($$0, fbr.a) && this.a($$0, fbr.b);
    }
 
-   private int D() {
-      return this.n() + 20;
+   public boolean a(fbu $$0, fbr $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
    }
 
-   private int E() {
-      return this.m.a() * 9;
+   public int b(fbr $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
    }
 
-   public void b(int $$0) {
-      this.n = $$0;
-
-      for (exg $$1 : this.o) {
-         $$1.j = false;
-      }
+   @Nullable
+   public fbu b(fbu $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fbu($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
    }
 
-   @Override
-   public void d() {
-      super.d();
-      if (--this.n == 0) {
-         for (exg $$0 : this.o) {
-            $$0.j = true;
-         }
-      }
+   public int b() {
+      return this.a.b();
    }
 
-   @Override
-   public boolean aL_() {
-      return false;
+   public int c() {
+      return this.a.b() + this.c;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public fbt f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

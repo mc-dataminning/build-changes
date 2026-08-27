@@ -1,66 +1,33 @@
-public class fpp extends frv {
-   private final float a;
-   private final float b;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.mojang.blocklist.BlockListSupplier;
+import java.util.Objects;
+import java.util.ServiceLoader;
+import java.util.function.Predicate;
 
-   fpp(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cmy $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-   }
+public interface fpp {
+   boolean a(fpq var1);
 
-   @Override
-   public fqz b() {
-      return fqz.a;
-   }
+   boolean a(fpr var1);
 
-   protected fpp(fns $$0, double $$1, double $$2, double $$3, cmy $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(evi.O().aq().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
+   static fpp a() {
+      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
+         .<Predicate>map(BlockListSupplier::createBlockList)
+         .filter(Objects::nonNull)
+         .collect(ImmutableList.toImmutableList());
+      return new fpp() {
+         @Override
+         public boolean a(fpq $$0x) {
+            String $$1 = $$0.a();
+            String $$2 = $$0.b();
+            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
+         }
 
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements fqy<jt> {
-      public fqv a(jt $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpp($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
-      }
-   }
-
-   public static class b implements fqy<ka> {
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpp($$1, $$2, $$3, $$4, new cmy(cnb.qN));
-      }
-   }
-
-   public static class c implements fqy<ka> {
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpp($$1, $$2, $$3, $$4, new cmy(cnb.qz));
-      }
+         @Override
+         public boolean a(fpr $$0x) {
+            String $$1 = $$0.a();
+            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
+         }
+      };
    }
 }

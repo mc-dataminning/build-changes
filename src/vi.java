@@ -1,131 +1,110 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Collection;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class vi {
-   public static final String a = ", ";
-   public static final vf b = vf.b(", ").a(n.h);
-   public static final vf c = vf.b(", ");
+   public static final Codec<vg> a = atx.a("Component", vi::a);
+   public static final Codec<vg> b = atx.c.flatXmap($$0 -> a.parse(JsonOps.INSTANCE, $$0), $$0 -> a.encodeStart(JsonOps.INSTANCE, $$0));
 
-   public static vt a(vt $$0, wc $$1) {
-      if ($$1.g()) {
-         return $$0;
-      } else {
-         wc $$2 = $$0.a();
-         if ($$2.g()) {
-            return $$0.b($$1);
-         } else {
-            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
-         }
-      }
-   }
+   private static vu a(List<vg> $$0) {
+      vu $$1 = $$0.get(0).f();
 
-   public static Optional<vt> a(@Nullable ds $$0, Optional<vf> $$1, @Nullable blv $$2, int $$3) throws CommandSyntaxException {
-      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
-   }
-
-   public static vt a(@Nullable ds $$0, vf $$1, @Nullable blv $$2, int $$3) throws CommandSyntaxException {
-      if ($$3 > 100) {
-         return $$1.f();
-      } else {
-         vt $$4 = $$1.b().a($$0, $$2, $$3 + 1);
-
-         for (vf $$5 : $$1.c()) {
-            $$4.b(a($$0, $$5, $$2, $$3 + 1));
-         }
-
-         return $$4.c(a($$0, $$1.a(), $$2, $$3));
-      }
-   }
-
-   private static wc a(@Nullable ds $$0, wc $$1, @Nullable blv $$2, int $$3) throws CommandSyntaxException {
-      vl $$4 = $$1.i();
-      if ($$4 != null) {
-         vf $$5 = $$4.a(vl.a.a);
-         if ($$5 != null) {
-            vl $$6 = new vl(vl.a.a, a($$0, $$5, $$2, $$3 + 1));
-            return $$1.a($$6);
-         }
+      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
+         $$1.b($$0.get($$2));
       }
 
       return $$1;
    }
 
-   public static vf a(Collection<String> $$0) {
-      return a($$0, $$0x -> vf.b($$0x).a(n.k));
+   public static <T extends avl, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
+      MapCodec<E> $$4 = new vi.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
+      Codec<T> $$5 = avl.b((Supplier<T[]>)(() -> $$0));
+      MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1x -> $$1.apply((T)$$1x).codec());
+      MapCodec<E> $$7 = new vi.b($$3, $$6, $$4);
+      return atx.a($$7, $$6);
    }
 
-   public static <T extends Comparable<T>> vf a(Collection<T> $$0, Function<T, vf> $$1) {
-      if ($$0.isEmpty()) {
-         return ve.a;
-      } else if ($$0.size() == 1) {
-         return $$1.apply($$0.iterator().next());
-      } else {
-         List<T> $$2 = Lists.newArrayList($$0);
-         $$2.sort(Comparable::compareTo);
-         return b($$2, $$1);
+   private static Codec<vg> a(Codec<vg> $$0) {
+      vh.a<?>[] $$1 = new vh.a[]{wn.b, wr.c, wk.b, wo.c, wp.b, wm.b};
+      MapCodec<vh> $$2 = a($$1, vh.a::a, vh::a, "type");
+      Codec<vg> $$3 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group($$2.forGetter(vg::b), atx.a(atx.a($$0.listOf()), "extra", List.of()).forGetter(vg::c), wd.b.a.forGetter(vg::a))
+               .apply($$2x, vu::new)
+      );
+      return Codec.either(Codec.either(Codec.STRING, atx.a($$0.listOf())), $$3)
+         .xmap($$0x -> (vg)$$0x.map($$0xx -> (vg)$$0xx.map(vg::b, vi::a), $$0xx -> $$0xx), $$0x -> {
+            String $$1x = $$0x.d();
+            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
+         });
+   }
+
+   static class a<T> extends MapCodec<T> {
+      private final List<MapCodec<? extends T>> a;
+      private final Function<T, MapEncoder<? extends T>> b;
+
+      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
 
-   public static <T> vf b(Collection<? extends T> $$0, Function<T, vf> $$1) {
-      return a($$0, b, $$1);
-   }
-
-   public static <T> vt a(Collection<? extends T> $$0, Optional<? extends vf> $$1, Function<T, vf> $$2) {
-      return a($$0, (vf)DataFixUtils.orElse($$1, b), $$2);
-   }
-
-   public static vf a(Collection<? extends vf> $$0, vf $$1) {
-      return a($$0, $$1, Function.identity());
-   }
-
-   public static <T> vt a(Collection<? extends T> $$0, vf $$1, Function<T, vf> $$2) {
-      if ($$0.isEmpty()) {
-         return vf.i();
-      } else if ($$0.size() == 1) {
-         return $$2.apply((T)$$0.iterator().next()).f();
-      } else {
-         vt $$3 = vf.i();
-         boolean $$4 = true;
-
-         for (T $$5 : $$0) {
-            if (!$$4) {
-               $$3.b($$1);
+      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
+         for (MapDecoder<? extends T> $$2 : this.a) {
+            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
+            if ($$3.result().isPresent()) {
+               return (DataResult<T>)$$3;
             }
-
-            $$3.b($$2.apply($$5));
-            $$4 = false;
          }
 
-         return $$3;
+         return DataResult.error(() -> "No matching codec found");
+      }
+
+      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
+         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
+         return $$3.encode($$0, $$1, $$2);
+      }
+
+      public <S> Stream<S> keys(DynamicOps<S> $$0) {
+         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
+      }
+
+      public String toString() {
+         return "FuzzyCodec[" + this.a + "]";
       }
    }
 
-   public static vt a(vf $$0) {
-      return vf.a("chat.square_brackets", $$0);
-   }
+   static class b<T> extends MapCodec<T> {
+      private final String a;
+      private final MapCodec<T> b;
+      private final MapCodec<T> c;
 
-   public static vf a(Message $$0) {
-      return (vf)($$0 instanceof vf ? (vf)$$0 : vf.b($$0.getString()));
-   }
-
-   public static boolean b(@Nullable vf $$0) {
-      if ($$0 != null && $$0.b() instanceof wq $$1) {
-         String $$2 = $$1.b();
-         String $$3 = $$1.c();
-         return $$3 != null || si.a().b($$2);
-      } else {
-         return true;
+      public b(String $$0, MapCodec<T> $$1, MapCodec<T> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
-   }
 
-   public static vt a(String $$0) {
-      return a((vf)vf.b($$0).a($$1 -> $$1.a(n.k).a(new vd(vd.a.f, $$0)).a(new vl(vl.a.a, vf.c("chat.copy.click"))).a($$0)));
+      public <O> DataResult<T> decode(DynamicOps<O> $$0, MapLike<O> $$1) {
+         return $$1.get(this.a) != null ? this.b.decode($$0, $$1) : this.c.decode($$0, $$1);
+      }
+
+      public <O> RecordBuilder<O> encode(T $$0, DynamicOps<O> $$1, RecordBuilder<O> $$2) {
+         return this.c.encode($$0, $$1, $$2);
+      }
+
+      public <T1> Stream<T1> keys(DynamicOps<T1> $$0) {
+         return Stream.concat(this.b.keys($$0), this.c.keys($$0)).distinct();
+      }
    }
 }

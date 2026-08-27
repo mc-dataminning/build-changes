@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class fe extends fa<ddc> {
+public class fe extends fa<ddk> {
    private fe() {
-      super(ddc.e, ddc::values);
+      super(ddk.e, ddk::values);
    }
 
    public static fe a() {
       return new fe();
    }
 
-   public static ddc a(CommandContext<ds> $$0, String $$1) {
-      return (ddc)$$0.getArgument($$1, ddc.class);
+   public static ddk a(CommandContext<ds> $$0, String $$1) {
+      return (ddk)$$0.getArgument($$1, ddk.class);
    }
 }

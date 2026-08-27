@@ -1,49 +1,30 @@
-public class fqn extends frv {
-   private final frq a;
+public class fqn extends fpz {
+   private static final int a = 12235202;
 
-   protected fqn(fns $$0, double $$1, double $$2, double $$3, double $$4, frq $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   protected fqn(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fsc $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)atz.b.b(12235202) / 255.0F - $$9;
+      this.w = (float)atz.b.c(12235202) / 255.0F - $$9;
+      this.x = (float)atz.b.d(12235202) / 255.0F - $$9;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
+      super.a();
    }
 
-   @Override
-   public fqz b() {
-      return fqz.d;
-   }
+   public static class a implements frk<ka> {
+      private final fsc a;
 
-   public static class a implements fqy<ka> {
-      private final frq a;
-
-      public a(frq $$0) {
+      public a(fsc $$0) {
          this.a = $$0;
       }
 
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqn($$1, $$2, $$3, $$4, $$5, this.a);
+      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fqn($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

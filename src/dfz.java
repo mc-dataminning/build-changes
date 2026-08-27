@@ -1,33 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dfz extends dej implements dft {
-   public static final MapCodec<dfz> I = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dft.a.e.fieldOf("weathering_state").forGetter(cxr::c), djh.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, dfz::new)
-   );
-   private final dft.a J;
+public class dfz extends cxh {
+   public static final MapCodec<dfz> a = b(dfz::new);
+   protected static final emv b = cwy.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
    public MapCodec<dfz> a() {
-      return I;
+      return a;
    }
 
-   public dfz(dft.a $$0, djh $$1, djg.d $$2) {
-      super($$1, $$2);
-      this.J = $$0;
-   }
-
-   @Override
-   public void b(djh $$0, and $$1, hx $$2, auv $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected dfz(djo.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean e_(djh $$0) {
-      return dft.c($$0.b()).isPresent();
+   public void a(djp $$0, ctx $$1, hx $$2, blw $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof ane && $$3 instanceof chk) {
+         $$1.a(new hx($$2), true, $$3);
+      }
    }
 
-   public dft.a g() {
-      return this.J;
+   @Override
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean b(djp $$0, ctd $$1, hx $$2) {
+      eez $$3 = $$1.b_($$2);
+      eez $$4 = $$1.b_($$2.c());
+      return ($$3.a() == efa.c || $$0.b() instanceof dav) && $$4.a() == efa.a;
    }
 }

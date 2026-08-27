@@ -28,11 +28,11 @@ public class km {
          this.b = $$2;
       }
 
-      public Path a(ahg $$0, String $$1) {
+      public Path a(ahh $$0, String $$1) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
       }
 
-      public Path a(ahg $$0) {
+      public Path a(ahh $$0) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
       }
    }

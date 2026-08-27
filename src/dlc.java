@@ -1,51 +1,57 @@
-import java.util.BitSet;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 import java.util.stream.Stream;
 
-public class dlc {
-   private final int a;
-   private final BitSet b;
-   private dlc.a c = ($$0x, $$1x, $$2) -> false;
+public record dlc(String m, dke n, dek o, dek p, ars q, ars r) {
+   private static final Map<String, dlc> s = new Object2ObjectArrayMap();
+   public static final Codec<dlc> a = atx.a(dlc::b, s::get);
+   public static final dlc b = a(new dlc("oak", dke.g));
+   public static final dlc c = a(new dlc("spruce", dke.h));
+   public static final dlc d = a(new dlc("birch", dke.i));
+   public static final dlc e = a(new dlc("acacia", dke.j));
+   public static final dlc f = a(new dlc("cherry", dke.k, dek.aU, dek.aX, art.eD, art.eE));
+   public static final dlc g = a(new dlc("jungle", dke.l));
+   public static final dlc h = a(new dlc("dark_oak", dke.m));
+   public static final dlc i = a(new dlc("crimson", dke.n, dek.aT, dek.aQ, art.qq, art.qr));
+   public static final dlc j = a(new dlc("warped", dke.o, dek.aT, dek.aQ, art.qq, art.qr));
+   public static final dlc k = a(new dlc("mangrove", dke.p));
+   public static final dlc l = a(new dlc("bamboo", dke.q, dek.aS, dek.aR, art.bt, art.bu));
 
-   public dlc(int $$0, int $$1) {
-      this.a = $$1;
-      this.b = new BitSet(256 * $$0);
+   public dlc(String $$0, dke $$1) {
+      this($$0, $$1, dek.b, dek.aP, art.it, art.iu);
    }
 
-   public void a(dlc.a $$0) {
-      this.c = $$0;
+   private static dlc a(dlc $$0) {
+      s.put($$0.b(), $$0);
+      return $$0;
    }
 
-   public dlc(long[] $$0, int $$1) {
-      this.a = $$1;
-      this.b = BitSet.valueOf($$0);
+   public static Stream<dlc> a() {
+      return s.values().stream();
    }
 
-   private int c(int $$0, int $$1, int $$2) {
-      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
+   public String b() {
+      return this.m;
    }
 
-   public void a(int $$0, int $$1, int $$2) {
-      this.b.set(this.c($$0, $$1, $$2));
+   public dke c() {
+      return this.n;
    }
 
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
+   public dek d() {
+      return this.o;
    }
 
-   public Stream<hx> a(csw $$0) {
-      return this.b.stream().mapToObj($$1 -> {
-         int $$2 = $$1 & 15;
-         int $$3 = $$1 >> 4 & 15;
-         int $$4 = $$1 >> 8;
-         return $$0.a($$2, $$4 + this.a, $$3);
-      });
+   public dek e() {
+      return this.p;
    }
 
-   public long[] a() {
-      return this.b.toLongArray();
+   public ars f() {
+      return this.q;
    }
 
-   public interface a {
-      boolean test(int var1, int var2, int var3);
+   public ars g() {
+      return this.r;
    }
 }

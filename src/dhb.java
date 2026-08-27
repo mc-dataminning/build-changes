@@ -1,136 +1,106 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class dhb extends dgv implements bjs {
-   private static final int a = 2;
-   private static final int b = 4;
-   private final iq<cmy> c = iq.a(4, cmy.f);
-   private final int[] d = new int[4];
-   private final int[] e = new int[4];
-   private final cqf.a<bju, cpq> f = cqf.b(cqh.e);
+public class dhb extends dhd {
+   private static final int d = 50;
+   private static final int e = 60;
+   private static final int f = 60;
+   private static final int g = 40;
+   private static final int h = 5;
+   private static final int i = 48;
+   private static final int j = 32;
+   private static final int k = 48;
+   private long l;
+   public int a;
+   public boolean b;
+   public ic c;
+   private List<bmo> m;
+   private boolean n;
+   private int r;
 
-   public dhb(hx $$0, djh $$1) {
-      super(dgx.G, $$0, $$1);
+   public dhb(hx $$0, djp $$1) {
+      super(dhf.E, $$0, $$1);
    }
 
-   public static void a(ctp $$0, hx $$1, djh $$2, dhb $$3) {
-      boolean $$4 = false;
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.c();
+         this.r = 0;
+         this.c = ic.a($$1);
+         this.a = 0;
+         this.b = true;
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
 
-      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
-         cmy $$6 = $$3.c.get($$5);
-         if (!$$6.b()) {
-            $$4 = true;
-            $$3.d[$$5]++;
-            if ($$3.d[$$5] >= $$3.e[$$5]) {
-               bju $$7 = new bkj($$6);
-               cmy $$8 = $$3.f.a($$7, $$0).map($$2x -> ((cpq)$$2x.b()).a($$7, $$0.I_())).orElse($$6);
-               if ($$8.a($$0.I())) {
-                  bjx.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$8);
-                  $$3.c.set($$5, cmy.f);
-                  $$0.a($$1, $$2, $$2, 3);
-                  $$0.a(dnr.c, $$1, dnr.a.a($$2));
-               }
+   private static void a(ctx $$0, hx $$1, djp $$2, dhb $$3, dhb.a $$4) {
+      if ($$3.b) {
+         $$3.a++;
+      }
+
+      if ($$3.a >= 50) {
+         $$3.b = false;
+         $$3.a = 0;
+      }
+
+      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
+         $$3.n = true;
+         $$0.a(null, $$1, art.bX, aru.e, 1.0F, 1.0F);
+      }
+
+      if ($$3.n) {
+         if ($$3.r < 40) {
+            $$3.r++;
+         } else {
+            $$4.run($$0, $$1, $$3.m);
+            $$3.n = false;
+         }
+      }
+   }
+
+   public static void a(ctx $$0, hx $$1, djp $$2, dhb $$3) {
+      a($$0, $$1, $$2, $$3, dhb::b);
+   }
+
+   public static void b(ctx $$0, hx $$1, djp $$2, dhb $$3) {
+      a($$0, $$1, $$2, $$3, dhb::a);
+   }
+
+   public void a(ic $$0) {
+      hx $$1 = this.aE_();
+      this.c = $$0;
+      if (this.b) {
+         this.a = 0;
+      } else {
+         this.b = true;
+      }
+
+      this.o.a($$1, this.r().b(), 1, $$0.d());
+   }
+
+   private void c() {
+      hx $$0 = this.aE_();
+      if (this.o.X() > this.l + 60L || this.m == null) {
+         this.l = this.o.X();
+         elx $$1 = new elx($$0).g(48.0);
+         this.m = this.o.a(bmo.class, $$1);
+      }
+
+      if (!this.o.B) {
+         for (bmo $$2 : this.m) {
+            if ($$2.bx() && !$$2.dG() && $$0.a($$2.dj(), 32.0)) {
+               $$2.dN().a(bvq.D, this.o.X());
             }
          }
       }
-
-      if ($$4) {
-         a($$0, $$1, $$2);
-      }
    }
 
-   public static void b(ctp $$0, hx $$1, djh $$2, dhb $$3) {
-      boolean $$4 = false;
-
-      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
-         if ($$3.d[$$5] > 0) {
-            $$4 = true;
-            $$3.d[$$5] = auo.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
-         }
-      }
-
-      if ($$4) {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   public static void c(ctp $$0, hx $$1, djh $$2, dhb $$3) {
-      auv $$4 = $$0.z;
-      if ($$4.i() < 0.11F) {
-         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
-            cxe.a($$0, $$1, $$2.c(cxe.d), false);
-         }
-      }
-
-      int $$6 = $$2.c(cxe.f).e();
-
-      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
-         if (!$$3.c.get($$7).b() && $$4.i() < 0.2F) {
-            ic $$8 = ic.b(Math.floorMod($$7 + $$6, 4));
-            float $$9 = 0.3125F;
-            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
-            double $$11 = (double)$$1.v() + 0.5;
-            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
-
-            for (int $$13 = 0; $$13 < 4; $$13++) {
-               $$0.a(jx.ab, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
-            }
-         }
-      }
-   }
-
-   public iq<cmy> c() {
-      return this.c;
-   }
-
-   @Override
-   public void a(sn $$0) {
-      super.a($$0);
-      this.c.clear();
-      bjv.b($$0, this.c);
-      if ($$0.b("CookingTimes", 11)) {
-         int[] $$1 = $$0.n("CookingTimes");
-         System.arraycopy($$1, 0, this.d, 0, Math.min(this.e.length, $$1.length));
-      }
-
-      if ($$0.b("CookingTotalTimes", 11)) {
-         int[] $$2 = $$0.n("CookingTotalTimes");
-         System.arraycopy($$2, 0, this.e, 0, Math.min(this.e.length, $$2.length));
-      }
-   }
-
-   @Override
-   protected void b(sn $$0) {
-      super.b($$0);
-      bjv.a($$0, this.c, true);
-      $$0.a("CookingTimes", this.d);
-      $$0.a("CookingTotalTimes", this.e);
-   }
-
-   public zh d() {
-      return zh.a(this);
-   }
-
-   @Override
-   public sn ax_() {
-      sn $$0 = new sn();
-      bjv.a($$0, this.c, true);
-      return $$0;
-   }
-
-   public Optional<cqe<cpq>> a(cmy $$0) {
-      return this.c.stream().noneMatch(cmy::b) ? Optional.empty() : this.f.a(new bkj($$0), this.o);
-   }
-
-   public boolean a(@Nullable blv $$0, cmy $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
-         cmy $$4 = this.c.get($$3);
-         if ($$4.b()) {
-            this.e[$$3] = $$2;
-            this.d[$$3] = 0;
-            this.c.set($$3, $$1.a(1));
-            this.o.a(dnr.c, this.aB_(), dnr.a.a($$0, this.r()));
-            this.g();
+   private static boolean a(hx $$0, List<bmo> $$1) {
+      for (bmo $$2 : $$1) {
+         if ($$2.bx() && !$$2.dG() && $$0.a($$2.dj(), 32.0) && $$2.ai().a(asl.c)) {
             return true;
          }
       }
@@ -138,19 +108,40 @@ public class dhb extends dgv implements bjs {
       return false;
    }
 
-   private void g() {
-      this.e();
-      this.i().a(this.aB_(), this.r(), this.r(), 3);
+   private static void a(ctx $$0, hx $$1, List<bmo> $$2) {
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dhb::a);
    }
 
-   @Override
-   public void a() {
-      this.c.clear();
+   private static void b(ctx $$0, hx $$1, List<bmo> $$2) {
+      MutableInt $$3 = new MutableInt(16700985);
+      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dj(), 48.0)).count();
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
+         float $$5 = 1.0F;
+         double $$6 = Math.sqrt(($$4x.dq() - (double)$$1.u()) * ($$4x.dq() - (double)$$1.u()) + ($$4x.dw() - (double)$$1.w()) * ($$4x.dw() - (double)$$1.w()));
+         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dq() - (double)$$1.u());
+         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dw() - (double)$$1.w());
+         int $$9 = aup.a(($$4 - 21) / -2, 3, 15);
+
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            int $$11 = $$3.addAndGet(5);
+            double $$12 = (double)atz.b.b($$11) / 255.0;
+            double $$13 = (double)atz.b.c($$11) / 255.0;
+            double $$14 = (double)atz.b.d($$11) / 255.0;
+            $$0.a(jx.v, $$7, (double)((float)$$1.v() + 0.5F), $$8, $$12, $$13, $$14);
+         }
+      });
    }
 
-   public void f() {
-      if (this.o != null) {
-         this.g();
-      }
+   private static boolean a(hx $$0, bmo $$1) {
+      return $$1.bx() && !$$1.dG() && $$0.a($$1.dj(), 48.0) && $$1.ai().a(asl.c);
+   }
+
+   private static void a(bmo $$0) {
+      $$0.b(new blj(bll.x, 60));
+   }
+
+   @FunctionalInterface
+   interface a {
+      void run(ctx var1, hx var2, List<bmo> var3);
    }
 }

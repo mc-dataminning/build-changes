@@ -4,7 +4,7 @@ import com.mojang.datafixers.schemas.Schema;
 
 public class ayg extends baw {
    public ayg(Schema $$0) {
-      super($$0, false, "EntityGoatMissingStateFix", bbw.x, "minecraft:goat");
+      super($$0, false, "EntityGoatMissingStateFix", bbw.y, "minecraft:goat");
    }
 
    @Override

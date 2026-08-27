@@ -1,17 +1,34 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public record dxu(List<dou.c> a) implements dou.c {
-   @Nullable
+public class dxu extends dxv {
+   public static final dxu a = new dxu(dps.a(0));
+   public static final Codec<dxu> b = atx.e(dps.a, dps.a.fieldOf("value").codec()).xmap(dxu::new, dxu::b);
+   private final dps d;
+
+   public static dxu a(dps $$0) {
+      return new dxu($$0);
+   }
+
+   private dxu(dps $$0) {
+      this.d = $$0;
+   }
+
+   public dps b() {
+      return this.d;
+   }
+
    @Override
-   public djh calculate(doj.b $$0) {
-      for (dou.c $$1 : this.a) {
-         djh $$2 = $$1.calculate($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
+   public int a(auw $$0, dpv $$1) {
+      return this.d.a($$1);
+   }
 
-      return null;
+   @Override
+   public dxw<?> a() {
+      return dxw.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

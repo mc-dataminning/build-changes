@@ -1,50 +1,31 @@
-import com.mojang.datafixers.util.Either;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
 
-public interface bit<Msg> extends AutoCloseable {
-   String bs();
+public class bit implements ThreadFactory {
+   private static final Logger a = LogUtils.getLogger();
+   private final ThreadGroup b;
+   private final AtomicInteger c = new AtomicInteger(1);
+   private final String d;
 
-   void a(Msg var1);
+   public bit(String $$0) {
+      SecurityManager $$1 = System.getSecurityManager();
+      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
+      this.d = $$0 + "-";
+   }
 
    @Override
-   default void close() {
-   }
+   public Thread newThread(Runnable $$0) {
+      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
+      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
+         a.error("Caught exception in thread {} from {}", $$1x, $$0);
+         a.error("", $$2);
+      });
+      if ($$1.getPriority() != 5) {
+         $$1.setPriority(5);
+      }
 
-   default <Source> CompletableFuture<Source> b(Function<? super bit<Source>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
-      this.a($$2);
       return $$1;
-   }
-
-   default <Source> CompletableFuture<Source> c(Function<? super bit<Either<Source, Exception>>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
-         $$1x.ifLeft($$1::complete);
-         $$1x.ifRight($$1::completeExceptionally);
-      }));
-      this.a($$2);
-      return $$1;
-   }
-
-   static <Msg> bit<Msg> a(final String $$0, final Consumer<Msg> $$1) {
-      return new bit<Msg>() {
-         @Override
-         public String bs() {
-            return $$0;
-         }
-
-         @Override
-         public void a(Msg $$0x) {
-            $$1.accept($$0);
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
    }
 }

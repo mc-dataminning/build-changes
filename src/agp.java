@@ -1,294 +1,166 @@
-import com.mojang.logging.LogUtils;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.ObjectUtils;
-import org.slf4j.Logger;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class agp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Object2IntMap<Class<? extends blv>> b = new Object2IntOpenHashMap();
-   private static final int c = 254;
-   private final blv d;
-   private final Int2ObjectMap<agp.a<?>> e = new Int2ObjectOpenHashMap();
-   private final ReadWriteLock f = new ReentrantReadWriteLock();
-   private boolean g;
+   private static final atm<ago<?>> D = atm.c(16);
+   public static final ago<Byte> a = ago.a(($$0, $$1) -> $$0.k($$1), uj::readByte);
+   public static final ago<Integer> b = ago.a(uj::c, uj::n);
+   public static final ago<Long> c = ago.a(uj::a, uj::o);
+   public static final ago<Float> d = ago.a(uj::a, uj::readFloat);
+   public static final ago<String> e = ago.a(uj::a, uj::s);
+   public static final ago<vg> f = ago.a(uj::a, uj::m);
+   public static final ago<Optional<vg>> g = ago.b(uj::a, uj::m);
+   public static final ago<cng> h = new ago<cng>() {
+      public void a(uj $$0, cng $$1) {
+         $$0.a($$1);
+      }
 
-   public agp(blv $$0) {
-      this.d = $$0;
-   }
+      public cng b(uj $$0) {
+         return $$0.r();
+      }
 
-   public static <T> agm<T> a(Class<? extends blv> $$0, agn<T> $$1) {
-      if (a.isDebugEnabled()) {
-         try {
-            Class<?> $$2 = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
-            if (!$$2.equals($$0)) {
-               a.debug("defineId called for: {} from {}", new Object[]{$$0, $$2, new RuntimeException()});
-            }
-         } catch (ClassNotFoundException var5) {
+      public cng a(cng $$0) {
+         return $$0.p();
+      }
+   };
+   public static final ago<djp> i = ago.a(cwy.q);
+   public static final ago<Optional<djp>> j = new ago.a<Optional<djp>>() {
+      public void a(uj $$0, Optional<djp> $$1) {
+         if ($$1.isPresent()) {
+            $$0.c(cwy.i($$1.get()));
+         } else {
+            $$0.c(0);
          }
       }
 
-      int $$3;
-      if (b.containsKey($$0)) {
-         $$3 = b.getInt($$0) + 1;
-      } else {
-         int $$4 = 0;
-         Class<?> $$5 = $$0;
-
-         while ($$5 != blv.class) {
-            $$5 = $$5.getSuperclass();
-            if (b.containsKey($$5)) {
-               $$4 = b.getInt($$5) + 1;
-               break;
-            }
-         }
-
-         $$3 = $$4;
+      public Optional<djp> b(uj $$0) {
+         int $$1 = $$0.n();
+         return $$1 == 0 ? Optional.empty() : Optional.of(cwy.a($$1));
+      }
+   };
+   public static final ago<Boolean> k = ago.a(uj::a, uj::readBoolean);
+   public static final ago<jv> l = new ago.a<jv>() {
+      public void a(uj $$0, jv $$1) {
+         $$0.a(kd.j, $$1.b());
+         $$1.a($$0);
       }
 
-      if ($$3 > 254) {
-         throw new IllegalArgumentException("Data value id is too big with " + $$3 + "! (Max is 254)");
-      } else {
-         b.put($$0, $$3);
-         return $$1.a($$3);
-      }
-   }
-
-   public <T> void a(agm<T> $$0, T $$1) {
-      int $$2 = $$0.a();
-      if ($$2 > 254) {
-         throw new IllegalArgumentException("Data value id is too big with " + $$2 + "! (Max is 254)");
-      } else if (this.e.containsKey($$2)) {
-         throw new IllegalArgumentException("Duplicate id value for " + $$2 + "!");
-      } else if (ago.b($$0.b()) < 0) {
-         throw new IllegalArgumentException("Unregistered serializer " + $$0.b() + " for " + $$2 + "!");
-      } else {
-         this.c($$0, $$1);
-      }
-   }
-
-   private <T> void c(agm<T> $$0, T $$1) {
-      agp.a<T> $$2 = new agp.a<>($$0, $$1);
-      this.f.writeLock().lock();
-      this.e.put($$0.a(), $$2);
-      this.f.writeLock().unlock();
-   }
-
-   public <T> boolean a(agm<T> $$0) {
-      return this.e.containsKey($$0.a());
-   }
-
-   private <T> agp.a<T> c(agm<T> $$0) {
-      this.f.readLock().lock();
-
-      agp.a<T> $$1;
-      try {
-         $$1 = (agp.a<T>)this.e.get($$0.a());
-      } catch (Throwable var9) {
-         o $$3 = o.a(var9, "Getting synched entity data");
-         p $$4 = $$3.a("Synched entity data");
-         $$4.a("Data ID", $$0);
-         throw new y($$3);
-      } finally {
-         this.f.readLock().unlock();
+      public jv b(uj $$0) {
+         return this.a($$0, $$0.a(kd.j));
       }
 
-      return $$1;
-   }
-
-   public <T> T b(agm<T> $$0) {
-      return this.c($$0).b();
-   }
-
-   public <T> void b(agm<T> $$0, T $$1) {
-      this.a($$0, $$1, false);
-   }
-
-   public <T> void a(agm<T> $$0, T $$1, boolean $$2) {
-      agp.a<T> $$3 = this.c($$0);
-      if ($$2 || ObjectUtils.notEqual($$1, $$3.b())) {
-         $$3.a($$1);
-         this.d.a($$0);
-         $$3.a(true);
-         this.g = true;
+      private <T extends jv> T a(uj $$0, jw<T> $$1) {
+         return $$1.d().b($$1, $$0);
       }
-   }
+   };
+   public static final ago<iy> m = new ago.a<iy>() {
+      public void a(uj $$0, iy $$1) {
+         $$0.a($$1.b());
+         $$0.a($$1.c());
+         $$0.a($$1.d());
+      }
 
-   public boolean a() {
-      return this.g;
+      public iy b(uj $$0) {
+         return new iy($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+      }
+   };
+   public static final ago<hx> n = ago.a(uj::a, uj::e);
+   public static final ago<Optional<hx>> o = ago.b(uj::a, uj::e);
+   public static final ago<ic> p = ago.a(ic.class);
+   public static final ago<Optional<UUID>> q = ago.b(uj::a, uj::p);
+   public static final ago<Optional<ig>> r = ago.b(uj::a, uj::h);
+   public static final ago<so> s = new ago<so>() {
+      public void a(uj $$0, so $$1) {
+         $$0.a((tl)$$1);
+      }
+
+      public so b(uj $$0) {
+         return $$0.q();
+      }
+
+      public so a(so $$0) {
+         return $$0.h();
+      }
+   };
+   public static final ago<cfe> t = new ago.a<cfe>() {
+      public void a(uj $$0, cfe $$1) {
+         $$0.a(kd.y, $$1.a());
+         $$0.a(kd.z, $$1.b());
+         $$0.c($$1.c());
+      }
+
+      public cfe b(uj $$0) {
+         return new cfe($$0.a(kd.y), $$0.a(kd.z), $$0.n());
+      }
+   };
+   public static final ago<OptionalInt> u = new ago.a<OptionalInt>() {
+      public void a(uj $$0, OptionalInt $$1) {
+         $$0.c($$1.orElse(-1) + 1);
+      }
+
+      public OptionalInt b(uj $$0) {
+         int $$1 = $$0.n();
+         return $$1 == 0 ? OptionalInt.empty() : OptionalInt.of($$1 - 1);
+      }
+   };
+   public static final ago<bna> v = ago.a(bna.class);
+   public static final ago<byg> w = ago.a(kd.ak);
+   public static final ago<byn> x = ago.a(kd.al);
+   public static final ago<ih<cbx>> y = ago.a(kd.l.t());
+   public static final ago<car.a> z = ago.a(car.a.class);
+   public static final ago<bzj.a> A = ago.a(bzj.a.class);
+   public static final ago<Vector3f> B = ago.a(uj::a, uj::i);
+   public static final ago<Quaternionf> C = ago.a(uj::a, uj::j);
+
+   public static void a(ago<?> $$0) {
+      D.c($$0);
    }
 
    @Nullable
-   public List<agp.b<?>> b() {
-      List<agp.b<?>> $$0 = null;
-      if (this.g) {
-         this.f.readLock().lock();
-         ObjectIterator var2 = this.e.values().iterator();
-
-         while (var2.hasNext()) {
-            agp.a<?> $$1 = (agp.a<?>)var2.next();
-            if ($$1.c()) {
-               $$1.a(false);
-               if ($$0 == null) {
-                  $$0 = new ArrayList<>();
-               }
-
-               $$0.add($$1.e());
-            }
-         }
-
-         this.f.readLock().unlock();
-      }
-
-      this.g = false;
-      return $$0;
+   public static ago<?> a(int $$0) {
+      return D.a($$0);
    }
 
-   @Nullable
-   public List<agp.b<?>> c() {
-      List<agp.b<?>> $$0 = null;
-      this.f.readLock().lock();
-      ObjectIterator var2 = this.e.values().iterator();
-
-      while (var2.hasNext()) {
-         agp.a<?> $$1 = (agp.a<?>)var2.next();
-         if (!$$1.d()) {
-            if ($$0 == null) {
-               $$0 = new ArrayList<>();
-            }
-
-            $$0.add($$1.e());
-         }
-      }
-
-      this.f.readLock().unlock();
-      return $$0;
+   public static int b(ago<?> $$0) {
+      return D.a($$0);
    }
 
-   public void a(List<agp.b<?>> $$0) {
-      this.f.writeLock().lock();
-
-      try {
-         for (agp.b<?> $$1 : $$0) {
-            agp.a<?> $$2 = (agp.a<?>)this.e.get($$1.a);
-            if ($$2 != null) {
-               this.a($$2, $$1);
-               this.d.a($$2.a());
-            }
-         }
-      } finally {
-         this.f.writeLock().unlock();
-      }
-
-      this.d.b($$0);
+   private agp() {
    }
 
-   private <T> void a(agp.a<T> $$0, agp.b<?> $$1) {
-      if (!Objects.equals($$1.b(), $$0.a.b())) {
-         throw new IllegalStateException(
-            String.format(
-               Locale.ROOT,
-               "Invalid entity data item type for field %d on entity %s: old=%s(%s), new=%s(%s)",
-               $$0.a.a(),
-               this.d,
-               $$0.b,
-               $$0.b.getClass(),
-               $$1.c,
-               $$1.c.getClass()
-            )
-         );
-      } else {
-         $$0.a((T)$$1.c);
-      }
-   }
-
-   public boolean d() {
-      return this.e.isEmpty();
-   }
-
-   public static class a<T> {
-      final agm<T> a;
-      T b;
-      private final T c;
-      private boolean d;
-
-      public a(agm<T> $$0, T $$1) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$1;
-      }
-
-      public agm<T> a() {
-         return this.a;
-      }
-
-      public void a(T $$0) {
-         this.b = $$0;
-      }
-
-      public T b() {
-         return this.b;
-      }
-
-      public boolean c() {
-         return this.d;
-      }
-
-      public void a(boolean $$0) {
-         this.d = $$0;
-      }
-
-      public boolean d() {
-         return this.c.equals(this.b);
-      }
-
-      public agp.b<T> e() {
-         return agp.b.a(this.a, this.b);
-      }
-   }
-
-   public static record b<T>(int a, agn<T> b, T c) {
-
-      public static <T> agp.b<T> a(agm<T> $$0, T $$1) {
-         agn<T> $$2 = $$0.b();
-         return new agp.b<>($$0.a(), $$2, $$2.a($$1));
-      }
-
-      public void a(ui $$0) {
-         int $$1 = ago.b(this.b);
-         if ($$1 < 0) {
-            throw new EncoderException("Unknown serializer type " + this.b);
-         } else {
-            $$0.k(this.a);
-            $$0.c($$1);
-            this.b.a($$0, this.c);
-         }
-      }
-
-      public static agp.b<?> a(ui $$0, int $$1) {
-         int $$2 = $$0.n();
-         agn<?> $$3 = ago.a($$2);
-         if ($$3 == null) {
-            throw new DecoderException("Unknown serializer type " + $$2);
-         } else {
-            return a($$0, $$1, $$3);
-         }
-      }
-
-      private static <T> agp.b<T> a(ui $$0, int $$1, agn<T> $$2) {
-         return new agp.b<>($$1, $$2, $$2.a($$0));
-      }
+   static {
+      a(a);
+      a(b);
+      a(c);
+      a(d);
+      a(e);
+      a(f);
+      a(g);
+      a(h);
+      a(k);
+      a(m);
+      a(n);
+      a(o);
+      a(p);
+      a(q);
+      a(i);
+      a(j);
+      a(s);
+      a(l);
+      a(t);
+      a(u);
+      a(v);
+      a(w);
+      a(x);
+      a(r);
+      a(y);
+      a(z);
+      a(A);
+      a(B);
+      a(C);
    }
 }

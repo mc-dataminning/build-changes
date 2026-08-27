@@ -1,35 +1,15 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Collection;
+import java.util.Locale;
 
-public class gez implements ger {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<gez> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ahg.a.fieldOf("resource").forGetter($$0x -> $$0x.d), ahg.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gez::new)
-   );
-   private final ahg d;
-   private final Optional<ahg> e;
+public class gez extends RuntimeException {
+   private final Collection<gey.a> a;
 
-   public gez(ahg $$0, Optional<ahg> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public gez(gey.a $$0, Collection<gey.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   @Override
-   public void a(aqi $$0, ger.a $$1) {
-      ahg $$2 = a.a(this.d);
-      Optional<aqg> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
-   }
-
-   @Override
-   public get a() {
-      return geu.a;
+   public Collection<gey.a> a() {
+      return this.a;
    }
 }

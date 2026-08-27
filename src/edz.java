@@ -1,113 +1,159 @@
 import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
+import java.util.stream.IntStream;
 
-public final class edz extends eei<eea.a, eea> {
-   private final hx.a g = new hx.a();
+public class edz implements dor.d {
+   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
+   private static final MapCodec<edz> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
+               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
+               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
+               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
+               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
+            )
+            .apply($$0, edz::a)
+   );
+   public static final auj<edz> a = auj.a(f);
+   private final eed g;
+   private final eed h;
+   private final eed i;
+   private final double j;
+   private final double k;
+   private final double l;
+   private final double m;
+   private final double n;
+   private final double o;
+   private final double p;
+   private final double q;
 
-   public edz(dlr $$0) {
-      this($$0, new eea($$0));
+   public static edz a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      return new edz(new dpz(0L), $$0, $$1, $$2, $$3, $$4);
+   }
+
+   private edz(eed $$0, eed $$1, eed $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.l = $$5;
+      this.m = $$6;
+      this.n = $$7;
+      this.j = 684.412 * this.p;
+      this.k = 684.412 * this.q;
+      this.o = $$0.a(this.k);
    }
 
    @VisibleForTesting
-   public edz(dlr $$0, eea $$1) {
-      super($$0, $$1);
+   public edz(auw $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this(
+         eed.a($$0, IntStream.rangeClosed(-15, 0)),
+         eed.a($$0, IntStream.rangeClosed(-15, 0)),
+         eed.a($$0, IntStream.rangeClosed(-7, 0)),
+         $$1,
+         $$2,
+         $$3,
+         $$4,
+         $$5
+      );
+   }
+
+   public edz a(auw $$0) {
+      return new edz($$0, this.p, this.q, this.l, this.m, this.n);
    }
 
    @Override
-   protected void a(long $$0) {
-      long $$1 = iz.e($$0);
-      if (this.f.b($$1)) {
-         djh $$2 = this.c(this.g.f($$0));
-         int $$3 = this.a($$0, $$2);
-         int $$4 = this.f.e($$0);
-         if ($$3 < $$4) {
-            this.f.a($$0, 0);
-            this.b($$0, eei.a.a($$4));
-         } else {
-            this.b($$0, c);
+   public double a(dor.b $$0) {
+      double $$1 = (double)$$0.a() * this.j;
+      double $$2 = (double)$$0.b() * this.k;
+      double $$3 = (double)$$0.c() * this.j;
+      double $$4 = $$1 / this.l;
+      double $$5 = $$2 / this.m;
+      double $$6 = $$3 / this.l;
+      double $$7 = this.k * this.n;
+      double $$8 = $$7 / this.m;
+      double $$9 = 0.0;
+      double $$10 = 0.0;
+      double $$11 = 0.0;
+      boolean $$12 = true;
+      double $$13 = 1.0;
+
+      for (int $$14 = 0; $$14 < 8; $$14++) {
+         eea $$15 = this.i.a($$14);
+         if ($$15 != null) {
+            $$11 += $$15.a(eed.b($$4 * $$13), eed.b($$5 * $$13), eed.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
          }
 
-         if ($$3 > 0) {
-            this.c($$0, eei.a.a($$3, a($$2)));
-         }
+         $$13 /= 2.0;
       }
-   }
 
-   @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      djh $$3 = null;
+      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
+      boolean $$17 = $$16 >= 1.0;
+      boolean $$18 = $$16 <= 0.0;
+      $$13 = 1.0;
 
-      for (ic $$4 : d) {
-         if (eei.a.a($$1, $$4)) {
-            long $$5 = hx.a($$0, $$4);
-            if (this.f.b(iz.e($$5))) {
-               int $$6 = this.f.e($$5);
-               int $$7 = $$2 - 1;
-               if ($$7 > $$6) {
-                  this.g.f($$5);
-                  djh $$8 = this.c(this.g);
-                  int $$9 = $$2 - this.a($$8, this.g);
-                  if ($$9 > $$6) {
-                     if ($$3 == null) {
-                        $$3 = eei.a.b($$1) ? cws.a.o() : this.c(this.g.f($$0));
-                     }
-
-                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
-                        this.f.a($$5, $$9);
-                        if ($$9 > 1) {
-                           this.c($$5, eei.a.a($$9, a($$8), $$4.g()));
-                        }
-                     }
-                  }
-               }
+      for (int $$19 = 0; $$19 < 16; $$19++) {
+         double $$20 = eed.b($$1 * $$13);
+         double $$21 = eed.b($$2 * $$13);
+         double $$22 = eed.b($$3 * $$13);
+         double $$23 = $$7 * $$13;
+         if (!$$17) {
+            eea $$24 = this.g.a($$19);
+            if ($$24 != null) {
+               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
             }
          }
-      }
-   }
 
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = eei.a.a($$1);
-
-      for (ic $$3 : d) {
-         if (eei.a.a($$1, $$3)) {
-            long $$4 = hx.a($$0, $$3);
-            if (this.f.b(iz.e($$4))) {
-               int $$5 = this.f.e($$4);
-               if ($$5 != 0) {
-                  if ($$5 <= $$2 - 1) {
-                     djh $$6 = this.c(this.g.f($$4));
-                     int $$7 = this.a($$4, $$6);
-                     this.f.a($$4, 0);
-                     if ($$7 < $$5) {
-                        this.b($$4, eei.a.a($$5, $$3.g()));
-                     }
-
-                     if ($$7 > 0) {
-                        this.c($$4, eei.a.a($$7, a($$6)));
-                     }
-                  } else {
-                     this.c($$4, eei.a.b($$5, false, $$3.g()));
-                  }
-               }
+         if (!$$18) {
+            eea $$25 = this.h.a($$19);
+            if ($$25 != null) {
+               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
             }
          }
-      }
-   }
 
-   private int a(long $$0, djh $$1) {
-      int $$2 = $$1.h();
-      return $$2 > 0 && this.f.j(iz.e($$0)) ? $$2 : 0;
+         $$13 /= 2.0;
+      }
+
+      return aup.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
    }
 
    @Override
-   public void b(csw $$0) {
-      this.a($$0, true);
-      dlq $$1 = this.e.c($$0.e, $$0.f);
-      if ($$1 != null) {
-         $$1.a(($$0x, $$1x) -> {
-            int $$2 = $$1x.h();
-            this.c($$0x.a(), eei.a.a($$2, a($$1x)));
-         });
-      }
+   public double a() {
+      return -this.b();
+   }
+
+   @Override
+   public double b() {
+      return this.o;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("BlendedNoise{minLimitNoise=");
+      this.g.a($$0);
+      $$0.append(", maxLimitNoise=");
+      this.h.a($$0);
+      $$0.append(", mainNoise=");
+      this.i.a($$0);
+      $$0.append(
+            String.format(
+               Locale.ROOT,
+               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
+               684.412,
+               684.412,
+               8.555150000000001,
+               4.277575000000001
+            )
+         )
+         .append('}');
+   }
+
+   @Override
+   public auj<? extends dor> c() {
+      return a;
    }
 }

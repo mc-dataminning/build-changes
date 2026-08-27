@@ -1,79 +1,146 @@
-public class dhn extends dhz {
-   public static final int e = 9;
-   private iq<cmy> f = iq.a(9, cmy.f);
-
-   protected dhn(dgx<?> $$0, hx $$1, djh $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public dhn(hx $$0, djh $$1) {
-      this(dgx.f, $$0, $$1);
-   }
-
-   @Override
-   public int b() {
-      return 9;
-   }
-
-   public int a(auv $$0) {
-      this.e_(null);
-      int $$1 = -1;
-      int $$2 = 1;
-
-      for (int $$3 = 0; $$3 < this.f.size(); $$3++) {
-         if (!this.f.get($$3).b() && $$0.a($$2++) == 0) {
-            $$1 = $$3;
-         }
+public class dhn extends dhd {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final csy d = new csy() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         dhn.this.e();
       }
 
-      return $$1;
-   }
-
-   public int a(cmy $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         if (this.f.get($$1).b()) {
-            this.a($$1, $$0);
-            return $$1;
-         }
+      @Override
+      public ane e() {
+         return (ane)dhn.this.o;
       }
 
-      return -1;
-   }
-
-   @Override
-   protected vf l() {
-      return vf.c("container.dispenser");
-   }
-
-   @Override
-   public void a(sn $$0) {
-      super.a($$0);
-      this.f = iq.a(this.b(), cmy.f);
-      if (!this.c_($$0)) {
-         bjv.b($$0, this.f);
+      @Override
+      public void f() {
+         djp $$0 = dhn.this.o.a_(dhn.this.p);
+         this.e().a(dhn.this.p, $$0, $$0, 3);
       }
+
+      @Override
+      public emc g() {
+         return emc.b(dhn.this.p);
+      }
+
+      @Override
+      public ds i() {
+         ic $$0 = dhn.this.r().c(cyh.b);
+         return new ds(this, emc.b(dhn.this.p), new emb(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !dhn.this.s();
+      }
+   };
+
+   public dhn(hx $$0, djp $$1) {
+      super(dhf.w, $$0, $$1);
    }
 
    @Override
-   protected void b(sn $$0) {
+   protected void b(so $$0) {
       super.b($$0);
-      if (!this.d_($$0)) {
-         bjv.a($$0, this.f);
+      this.d.a($$0);
+      $$0.a("powered", this.d());
+      $$0.a("conditionMet", this.k());
+      $$0.a("auto", this.f());
+   }
+
+   @Override
+   public void a(so $$0) {
+      super.a($$0);
+      this.d.b($$0);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
+   }
+
+   @Override
+   public boolean u() {
+      return true;
+   }
+
+   public csy c() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean d() {
+      return this.a;
+   }
+
+   public boolean f() {
+      return this.b;
+   }
+
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.m() != dhn.a.a) {
+         this.x();
       }
    }
 
-   @Override
-   protected iq<cmy> k() {
-      return this.f;
+   public void g() {
+      dhn.a $$0 = this.m();
+      if ($$0 == dhn.a.b && (this.a || this.b) && this.o != null) {
+         this.x();
+      }
    }
 
-   @Override
-   protected void a(iq<cmy> $$0) {
-      this.f = $$0;
+   private void x() {
+      cwy $$0 = this.r().b();
+      if ($$0 instanceof cyh) {
+         this.l();
+         this.o.a(this.p, $$0, 1);
+      }
    }
 
-   @Override
-   protected cib a(int $$0, cfh $$1) {
-      return new ciu($$0, $$1, this);
+   public boolean k() {
+      return this.c;
+   }
+
+   public boolean l() {
+      this.c = true;
+      if (this.w()) {
+         hx $$0 = this.p.a(this.o.a_(this.p).c(cyh.b).g());
+         if (this.o.a_($$0).b() instanceof cyh) {
+            dhd $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof dhn && ((dhn)$$1).c().k() > 0;
+         } else {
+            this.c = false;
+         }
+      }
+
+      return this.c;
+   }
+
+   public dhn.a m() {
+      djp $$0 = this.r();
+      if ($$0.a(cxa.fN)) {
+         return dhn.a.c;
+      } else if ($$0.a(cxa.kG)) {
+         return dhn.a.b;
+      } else {
+         return $$0.a(cxa.kH) ? dhn.a.a : dhn.a.c;
+      }
+   }
+
+   public boolean w() {
+      djp $$0 = this.o.a_(this.aE_());
+      return $$0.b() instanceof cyh ? $$0.c(cyh.c) : false;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

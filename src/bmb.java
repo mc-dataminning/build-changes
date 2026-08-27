@@ -1,294 +1,71 @@
-import java.util.List;
-import java.util.Map.Entry;
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bmb extends blv {
-   private static final int b = 6000;
-   private static final int c = 20;
-   private static final int d = 8;
-   private static final int e = 40;
-   private static final double f = 0.5;
-   private int g;
-   private int h = 5;
-   private int i;
-   private int j = 1;
-   private cfi k;
+public final class bmb {
+   public static final Predicate<blw> a = blw::bx;
+   public static final Predicate<blw> b = $$0 -> $$0.bx() && $$0 instanceof bmo;
+   public static final Predicate<blw> c = $$0 -> $$0.bx() && !$$0.bP() && !$$0.bO();
+   public static final Predicate<blw> d = $$0 -> $$0 instanceof bjv && $$0.bx();
+   public static final Predicate<blw> e = $$0 -> !($$0 instanceof cfq) || !$$0.P_() && !((cfq)$$0).f();
+   public static final Predicate<blw> f = $$0 -> !$$0.P_();
+   public static final Predicate<blw> g = f.and(blw::bz);
 
-   public bmb(ctp $$0, double $$1, double $$2, double $$3, int $$4) {
-      this(blz.K, $$0);
-      this.a_($$1, $$2, $$3);
-      this.r((float)(this.ag.j() * 360.0));
-      this.o((this.ag.j() * 0.2F - 0.1F) * 2.0, this.ag.j() * 0.2 * 2.0, (this.ag.j() * 0.2F - 0.1F) * 2.0);
-      this.i = $$4;
+   private bmb() {
    }
 
-   public bmb(blz<? extends bmb> $$0, ctp $$1) {
-      super($$0, $$1);
+   public static Predicate<blw> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   @Override
-   protected blv.b aW() {
-      return blv.b.a;
-   }
-
-   @Override
-   protected void c_() {
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.K = this.dr();
-      this.L = this.dt();
-      this.M = this.dx();
-      if (this.a(asm.a)) {
-         this.w();
-      } else if (!this.aV()) {
-         this.g(this.dp().b(0.0, -0.03, 0.0));
-      }
-
-      if (this.dM().b_(this.dm()).a(asm.b)) {
-         this.o((double)((this.ag.i() - this.ag.i()) * 0.2F), 0.2F, (double)((this.ag.i() - this.ag.i()) * 0.2F));
-      }
-
-      if (!this.dM().b(this.cH())) {
-         this.m(this.dr(), (this.cH().b + this.cH().e) / 2.0, this.dx());
-      }
-
-      if (this.ah % 20 == 1) {
-         this.u();
-      }
-
-      if (this.k != null && (this.k.P_() || this.k.ew())) {
-         this.k = null;
-      }
-
-      if (this.k != null) {
-         elt $$0 = new elt(this.k.dr() - this.dr(), this.k.dt() + (double)this.k.cI() / 2.0 - this.dt(), this.k.dx() - this.dx());
-         double $$1 = $$0.g();
-         if ($$1 < 64.0) {
-            double $$2 = 1.0 - Math.sqrt($$1) / 8.0;
-            this.g(this.dp().e($$0.d().a($$2 * $$2 * 0.1)));
-         }
-      }
-
-      this.a(bmr.a, this.dp());
-      float $$3 = 0.98F;
-      if (this.aC()) {
-         $$3 = this.dM().a_(this.aI()).b().i() * 0.98F;
-      }
-
-      this.g(this.dp().d((double)$$3, 0.98, (double)$$3));
-      if (this.aC()) {
-         this.g(this.dp().d(1.0, -0.9, 1.0));
-      }
-
-      this.g++;
-      if (this.g >= 6000) {
-         this.am();
-      }
-   }
-
-   @Override
-   protected hx aI() {
-      return this.d(0.999999F);
-   }
-
-   private void u() {
-      if (this.k == null || this.k.f(this) > 64.0) {
-         this.k = this.dM().a(this, 8.0);
-      }
-
-      if (this.dM() instanceof and) {
-         for (bmb $$1 : this.dM().a(dnf.a(bmb.class), this.cH().g(0.5), this::a)) {
-            this.b($$1);
-         }
-      }
-   }
-
-   public static void a(and $$0, elt $$1, int $$2) {
-      while ($$2 > 0) {
-         int $$3 = b($$2);
-         $$2 -= $$3;
-         if (!b($$0, $$1, $$3)) {
-            $$0.b(new bmb($$0, $$1.a(), $$1.b(), $$1.c(), $$3));
-         }
-      }
-   }
-
-   private static boolean b(and $$0, elt $$1, int $$2) {
-      elo $$3 = elo.a($$1, 1.0, 1.0, 1.0);
-      int $$4 = $$0.F_().a(40);
-      List<bmb> $$5 = $$0.a(dnf.a(bmb.class), $$3, $$2x -> a($$2x, $$4, $$2));
-      if (!$$5.isEmpty()) {
-         bmb $$6 = $$5.get(0);
-         $$6.j++;
-         $$6.g = 0;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean a(bmb $$0) {
-      return $$0 != this && a($$0, this.aj(), this.i);
-   }
-
-   private static boolean a(bmb $$0, int $$1, int $$2) {
-      return !$$0.dH() && ($$0.aj() - $$1) % 40 == 0 && $$0.i == $$2;
-   }
-
-   private void b(bmb $$0) {
-      this.j = this.j + $$0.j;
-      this.g = Math.min(this.g, $$0.g);
-      $$0.am();
-   }
-
-   private void w() {
-      elt $$0 = this.dp();
-      this.o($$0.c * 0.99F, Math.min($$0.d + 5.0E-4F, 0.06F), $$0.e * 0.99F);
-   }
-
-   @Override
-   protected void bi() {
-   }
-
-   @Override
-   public boolean a(bkt $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
-      } else if (this.dM().B) {
-         return true;
-      } else {
-         this.bq();
-         this.h = (int)((float)this.h - $$1);
-         if (this.h <= 0) {
-            this.am();
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public void b(sn $$0) {
-      $$0.a("Health", (short)this.h);
-      $$0.a("Age", (short)this.g);
-      $$0.a("Value", (short)this.i);
-      $$0.a("Count", this.j);
-   }
-
-   @Override
-   public void a(sn $$0) {
-      this.h = $$0.g("Health");
-      this.g = $$0.g("Age");
-      this.i = $$0.g("Value");
-      this.j = Math.max($$0.h("Count"), 1);
-   }
-
-   @Override
-   public void b_(cfi $$0) {
-      if (!this.dM().B) {
-         if ($$0.bX == 0) {
-            $$0.bX = 2;
-            $$0.a(this, 1);
-            int $$1 = this.a($$0, this.i);
-            if ($$1 > 0) {
-               $$0.d($$1);
+   public static Predicate<blw> a(blw $$0) {
+      eni $$1 = $$0.cg();
+      eni.a $$2 = $$1 == null ? eni.a.a : $$1.l();
+      return (Predicate<blw>)($$2 == eni.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bu()) {
+            return false;
+         } else if (!$$0.dL().B || $$3 instanceof cfq && ((cfq)$$3).g()) {
+            eni $$4 = $$3.cg();
+            eni.a $$5 = $$4 == null ? eni.a.a : $$4.l();
+            if ($$5 == eni.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == eni.a.d || $$5 == eni.a.d) && $$6 ? false : $$2 != eni.a.c && $$5 != eni.a.c || $$6;
             }
+         } else {
+            return false;
+         }
+      }));
+   }
 
-            this.j--;
-            if (this.j == 0) {
-               this.am();
+   public static Predicate<blw> b(blw $$0) {
+      return $$1 -> {
+         while ($$1.bO()) {
+            $$1 = $$1.cZ();
+            if ($$1 == $$0) {
+               return false;
             }
          }
+
+         return true;
+      };
+   }
+
+   public static class a implements Predicate<blw> {
+      private final cng a;
+
+      public a(cng $$0) {
+         this.a = $$0;
       }
-   }
 
-   private int a(cfi $$0, int $$1) {
-      Entry<bma, cmy> $$2 = crl.a(crn.L, $$0, cmy::j);
-      if ($$2 != null) {
-         cmy $$3 = $$2.getValue();
-         int $$4 = Math.min(this.d($$1), $$3.k());
-         $$3.b($$3.k() - $$4);
-         int $$5 = $$1 - this.c($$4);
-         return $$5 > 0 ? this.a($$0, $$5) : 0;
-      } else {
-         return $$1;
+      public boolean a(@Nullable blw $$0) {
+         if (!$$0.bx()) {
+            return false;
+         } else {
+            return !($$0 instanceof bmo $$1) ? false : $$1.f(this.a);
+         }
       }
-   }
-
-   private int c(int $$0) {
-      return $$0 / 2;
-   }
-
-   private int d(int $$0) {
-      return $$0 * 2;
-   }
-
-   public int q() {
-      return this.i;
-   }
-
-   public int s() {
-      if (this.i >= 2477) {
-         return 10;
-      } else if (this.i >= 1237) {
-         return 9;
-      } else if (this.i >= 617) {
-         return 8;
-      } else if (this.i >= 307) {
-         return 7;
-      } else if (this.i >= 149) {
-         return 6;
-      } else if (this.i >= 73) {
-         return 5;
-      } else if (this.i >= 37) {
-         return 4;
-      } else if (this.i >= 17) {
-         return 3;
-      } else if (this.i >= 7) {
-         return 2;
-      } else {
-         return this.i >= 3 ? 1 : 0;
-      }
-   }
-
-   public static int b(int $$0) {
-      if ($$0 >= 2477) {
-         return 2477;
-      } else if ($$0 >= 1237) {
-         return 1237;
-      } else if ($$0 >= 617) {
-         return 617;
-      } else if ($$0 >= 307) {
-         return 307;
-      } else if ($$0 >= 149) {
-         return 149;
-      } else if ($$0 >= 73) {
-         return 73;
-      } else if ($$0 >= 37) {
-         return 37;
-      } else if ($$0 >= 17) {
-         return 17;
-      } else if ($$0 >= 7) {
-         return 7;
-      } else {
-         return $$0 >= 3 ? 3 : 1;
-      }
-   }
-
-   @Override
-   public boolean cq() {
-      return false;
-   }
-
-   @Override
-   public xf<za> dj() {
-      return new zc(this);
-   }
-
-   @Override
-   public art db() {
-      return art.i;
    }
 }

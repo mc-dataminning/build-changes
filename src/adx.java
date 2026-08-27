@@ -1,32 +1,18 @@
-public class adx implements xf<adj> {
-   private final int a;
-   private final int b;
-
-   public adx(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a(adj $$0) {
-      $$0.a(this);
-   }
-
-   public adx(ui $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.readByte();
+public record adx() implements xg<adk> {
+   public adx(uj $$0) {
+      this();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.k(this.a);
-      $$0.k(this.b);
+   public void a(uj $$0) {
    }
 
-   public int a() {
-      return this.a;
+   public void a(adk $$0) {
+      $$0.a(this);
    }
 
-   public int d() {
-      return this.b;
+   @Override
+   public ui c() {
+      return ui.e;
    }
 }

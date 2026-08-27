@@ -1,39 +1,24 @@
-public class fue {
-   protected final int[] a;
-   protected final int b;
-   protected final ic c;
-   protected final gen d;
-   private final boolean e;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-   public fue(int[] $$0, int $$1, ic $$2, gen $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+public class fue implements AutoCloseable {
+   public static final int a = fub.F().stream().mapToInt(fub::G).sum();
+   private final Map<fub, eqf> b = fub.F().stream().collect(Collectors.toMap($$0 -> (fub)$$0, $$0 -> new eqf($$0.G())));
+
+   public eqf a(fub $$0) {
+      return this.b.get($$0);
    }
 
-   public gen a() {
-      return this.d;
+   public void a() {
+      this.b.values().forEach(eqf::g);
    }
 
-   public int[] b() {
-      return this.a;
+   public void b() {
+      this.b.values().forEach(eqf::h);
    }
 
-   public boolean c() {
-      return this.b != -1;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public ic e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.e;
+   @Override
+   public void close() {
+      this.b.values().forEach(eqf::i);
    }
 }

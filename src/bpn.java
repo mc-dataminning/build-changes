@@ -1,37 +1,27 @@
-public abstract class bpn<E extends bml> implements bod<E>, brs<E> {
-   private boc.a a;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public bpn() {
-      this.a = boc.a.a;
-   }
+public class bpn {
+   private static final int a = 1;
 
-   @Override
-   public final boc.a a() {
-      return this.a;
-   }
+   public static bog<bmo> a(float $$0) {
+      return brs.a(
+         (Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$1 -> $$1.group($$1.a(bvq.n), $$1.c(bvq.m), $$1.b(bvq.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bO()) {
+                        return false;
+                     } else {
+                        blw $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.m($$8);
+                        } else {
+                           $$2.a(new boq($$8, true));
+                           $$3.a(new bvt(new boq($$8, false), $$0, 1));
+                        }
 
-   @Override
-   public final boolean e(and $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = boc.a.b;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public final void f(and $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(and $$0, E $$1, long $$2) {
-      this.a = boc.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

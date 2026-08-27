@@ -26,7 +26,7 @@ public class bcc extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      return this.writeFixAndRead("SavedDataFeaturePoolElementFix", this.getInputSchema().getType(bbw.C), this.getOutputSchema().getType(bbw.C), bcc::b);
+      return this.writeFixAndRead("SavedDataFeaturePoolElementFix", this.getInputSchema().getType(bbw.D), this.getOutputSchema().getType(bbw.D), bcc::b);
    }
 
    private static <T> Dynamic<T> b(Dynamic<T> $$0) {

@@ -1,33 +1,20 @@
-public class gbb extends fzs<chm> {
-   private final fub f;
+public class gbb extends fzr<ccf, fme<ccf>> {
+   private static final ahh a = new ahh("textures/entity/skeleton/skeleton.png");
 
-   public gbb(fyn.a $$0) {
-      super($$0, fmw.bD);
-      this.f = $$0.c();
+   public gbb(fza.a $$0) {
+      this($$0, fni.bj, fni.bl, fni.bm);
    }
 
-   protected void a(chm $$0, float $$1, djh $$2, eqb $$3, fth $$4, int $$5) {
-      int $$6 = $$0.D();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = auo.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   public gbb(fza.a $$0, fnh $$1, fnh $$2, fnh $$3) {
+      super($$0, new fme<>($$0.a($$1)), 0.5F);
+      this.a(new gdb<>(this, new fme($$0.a($$2)), new fme($$0.a($$3)), $$0.g()));
    }
 
-   public static void a(fub $$0, djh $$1, eqb $$2, fth $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gee.a(gee.a(1.0F), 10);
-      } else {
-         $$6 = gee.d;
-      }
+   public ahh a(ccf $$0) {
+      return a;
+   }
 
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   protected boolean b(ccf $$0) {
+      return $$0.gf();
    }
 }

@@ -1,40 +1,40 @@
+import com.google.common.collect.ImmutableSet;
+import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
+import java.util.Set;
 
-public class ein implements eij {
-   public static final Codec<ein> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eil.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, ein::new)
-   );
-   public static final Codec<ein> b = eil.b.listOf().xmap(ein::new, $$0 -> $$0.c);
-   private final List<eij> c;
-   private final BiFunction<cmy, egw, cmy> d;
+public class ein extends eir {
+   public static final Codec<ein> a = RecordCodecBuilder.create($$0 -> a($$0).and(ehf.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, ein::new));
+   private final ehf.b b;
 
-   private ein(List<eij> $$0) {
-      this.c = $$0;
-      this.d = eil.a($$0);
-   }
-
-   public static ein a(List<eij> $$0) {
-      return new ein(List.copyOf($$0));
-   }
-
-   public cmy a(cmy $$0, egw $$1) {
-      return this.d.apply($$0, $$1);
+   public ein(List<eke> $$0, ehf.b $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public void a(ehf $$0) {
-      eij.super.a($$0);
+   public eit b() {
+      return eiu.v;
+   }
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+   @Override
+   public Set<ejn<?>> a() {
+      return ImmutableSet.of(this.b.a());
+   }
+
+   @Override
+   public cng a(cng $$0, ehf $$1) {
+      if ($$0.a(cnj.uj) && $$1.c(this.b.a()) instanceof cfq $$2) {
+         GameProfile $$3 = $$2.fR();
+         $$0.w().a("SkullOwner", td.a(new so(), $$3));
       }
+
+      return $$0;
    }
 
-   @Override
-   public eik b() {
-      return eil.C;
+   public static eir.a<?> a(ehf.b $$0) {
+      return a($$1 -> new ein($$1, $$0));
    }
 }

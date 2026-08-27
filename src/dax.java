@@ -1,36 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dax extends cvj {
-   public static final MapCodec<dax> d = b(dax::new);
+public class dax extends daw {
+   public static final MapCodec<dax> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kd.e.q().fieldOf("host").forGetter(daw::b), u()).apply($$0, dax::new));
 
    @Override
    public MapCodec<dax> a() {
-      return d;
+      return b;
    }
 
-   public dax(djg.d $$0) {
-      super($$0, jd.e);
-   }
-
-   @Override
-   protected double b(djh $$0) {
-      return 0.9375;
+   public dax(cwy $$0, djo.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(ddj.i, ic.a.b));
    }
 
    @Override
-   public boolean d(djh $$0) {
-      return true;
+   public djp a(djp $$0, ddk $$1) {
+      return ddj.b($$0, $$1);
    }
 
    @Override
-   public void a(djh $$0, ctp $$1, hx $$2, blv $$3) {
-      if (this.a($$0, $$2, $$3)) {
-         $$3.ay();
-      }
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(ddj.i);
    }
 
    @Override
-   public int a(djh $$0, ctp $$1, hx $$2) {
-      return 3;
+   public djp a(cpp $$0) {
+      return this.o().a(ddj.i, $$0.k().o());
    }
 }

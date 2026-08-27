@@ -25,7 +25,7 @@ public class ayj extends ayu {
             default -> "Horse";
          };
          $$2.remove("Type");
-         Type<?> $$5 = (Type<?>)this.getOutputSchema().findChoiceType(bbw.x).types().get($$4);
+         Type<?> $$5 = (Type<?>)this.getOutputSchema().findChoiceType(bbw.y).types().get($$4);
          return Pair.of($$4, ac.a($$1, $$5, $$0x -> $$0x));
       } else {
          return Pair.of($$0, $$1);

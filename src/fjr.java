@@ -1,46 +1,61 @@
-public class fjr<T extends blv> extends fkg<T> {
-   private final fmx a;
-   private final fmx b;
-   private final fmx f;
-   private final fmx g;
-   private final fmx h;
-   private final fmx i;
-   private static final int j = 6;
+public class fjr extends flf {
+   private static final String a = "left_pages";
+   private static final String b = "right_pages";
+   private static final String c = "flip_page1";
+   private static final String d = "flip_page2";
+   private final fnj e;
+   private final fnj f;
+   private final fnj g;
+   private final fnj h;
+   private final fnj i;
+   private final fnj j;
+   private final fnj k;
 
-   public fjr(fmx $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.g = $$0.b("right_hind_leg");
-      this.f = $$0.b("left_hind_leg");
-      this.i = $$0.b("right_front_leg");
-      this.h = $$0.b("left_front_leg");
+   public fjr(fnj $$0) {
+      super(fub::c);
+      this.e = $$0;
+      this.f = $$0.b("left_lid");
+      this.g = $$0.b("right_lid");
+      this.h = $$0.b("left_pages");
+      this.i = $$0.b("right_pages");
+      this.j = $$0.b("flip_page1");
+      this.k = $$0.b("flip_page2");
    }
 
-   public static fnd a(fnb $$0) {
-      fnf $$1 = new fnf();
-      fng $$2 = $$1.a();
-      $$2.a("head", fnc.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fmz.a(0.0F, 6.0F, 0.0F));
-      $$2.a("body", fnc.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fmz.a(0.0F, 6.0F, 0.0F));
-      fnc $$3 = fnc.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$3, fmz.a(-2.0F, 18.0F, 4.0F));
-      $$2.a("left_hind_leg", $$3, fmz.a(2.0F, 18.0F, 4.0F));
-      $$2.a("right_front_leg", $$3, fmz.a(-2.0F, 18.0F, -4.0F));
-      $$2.a("left_front_leg", $$3, fmz.a(2.0F, 18.0F, -4.0F));
-      return fnd.a($$1, 64, 32);
+   public static fnp a() {
+      fnr $$0 = new fnr();
+      fns $$1 = $$0.a();
+      $$1.a("left_lid", fno.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fnl.a(0.0F, 0.0F, -1.0F));
+      $$1.a("right_lid", fno.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fnl.a(0.0F, 0.0F, 1.0F));
+      $$1.a("seam", fno.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), fnl.b(0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left_pages", fno.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), fnl.a);
+      $$1.a("right_pages", fno.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), fnl.a);
+      fno $$2 = fno.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
+      $$1.a("flip_page1", $$2, fnl.a);
+      $$1.a("flip_page2", $$2, fnl.a);
+      return fnp.a($$0, 64, 32);
    }
 
    @Override
-   public fmx a() {
-      return this.a;
+   public void a(eqk $$0, eqo $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.f.e = auo.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = auo.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = auo.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = auo.b($$1 * 0.6662F) * 1.4F * $$2;
+   public void b(eqk $$0, eqo $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      float $$4 = (aup.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
+      this.f.f = (float) Math.PI + $$4;
+      this.g.f = -$$4;
+      this.h.f = $$4;
+      this.i.f = -$$4;
+      this.j.f = $$4 - $$4 * 2.0F * $$1;
+      this.k.f = $$4 - $$4 * 2.0F * $$2;
+      this.h.b = aup.a($$4);
+      this.i.b = aup.a($$4);
+      this.j.b = aup.a($$4);
+      this.k.b = aup.a($$4);
    }
 }

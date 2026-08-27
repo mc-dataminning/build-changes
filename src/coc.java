@@ -1,47 +1,66 @@
-import javax.annotation.Nullable;
-
-public class coc extends ckr implements clk {
-   private final arr c;
-
-   public coc(cwq $$0, arr $$1, cmt.a $$2) {
-      super($$0, $$2);
-      this.c = $$1;
+public class coc extends cnb {
+   public coc(cnb.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bkb a(cpj $$0) {
-      bkb $$1 = super.a($$0);
-      cfi $$2 = $$0.o();
-      if ($$1.a() && $$2 != null && !$$2.f()) {
-         bka $$3 = $$0.p();
-         $$2.a($$3, cnb.qv.am_());
+   public boolean a(cng $$0, ctx $$1, djp $$2, hx $$3, bmo $$4) {
+      if (!$$1.B && !$$2.a(asi.aJ)) {
+         $$0.a(1, $$4, $$0x -> $$0x.d(bmd.a));
       }
 
-      return $$1;
+      return !$$2.a(asi.O)
+            && !$$2.a(cxa.bs)
+            && !$$2.a(cxa.bt)
+            && !$$2.a(cxa.bu)
+            && !$$2.a(cxa.bv)
+            && !$$2.a(cxa.sG)
+            && !$$2.a(cxa.ff)
+            && !$$2.a(cxa.fI)
+            && !$$2.a(asi.a)
+         ? super.a($$0, $$1, $$2, $$3, $$4)
+         : true;
    }
 
    @Override
-   public String a() {
-      return this.q();
+   public boolean a_(djp $$0) {
+      return $$0.a(cxa.bs) || $$0.a(cxa.cw) || $$0.a(cxa.fI);
    }
 
    @Override
-   protected arr a(djh $$0) {
-      return this.c;
+   public float a(cng $$0, djp $$1) {
+      if ($$1.a(cxa.bs) || $$1.a(asi.O)) {
+         return 15.0F;
+      } else if ($$1.a(asi.a)) {
+         return 5.0F;
+      } else {
+         return !$$1.a(cxa.ff) && !$$1.a(cxa.fg) ? super.a($$0, $$1) : 2.0F;
+      }
    }
 
    @Override
-   public boolean a(@Nullable cfi $$0, ctp $$1, hx $$2, @Nullable elp $$3) {
-      if ($$1.k($$2) && $$1.u($$2)) {
-         if (!$$1.B) {
-            $$1.a($$2, this.e().o(), 3);
+   public bkc a(cpr $$0) {
+      ctx $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      djp $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dan $$5 && !$$5.o($$3)) {
+         cfq $$6 = $$0.o();
+         cng $$7 = $$0.n();
+         if ($$6 instanceof anf) {
+            am.N.a((anf)$$6, $$2, $$7);
          }
 
-         $$1.a($$0, dnr.z, $$2);
-         $$1.a($$0, $$2, this.c, art.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
+         $$1.a($$6, $$2, art.la, aru.e, 1.0F, 1.0F);
+         djp $$8 = $$5.n($$3);
+         $$1.b($$2, $$8);
+         $$1.a(dnz.c, $$2, dnz.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, $$1x -> $$1x.d($$0.p()));
+         }
+
+         return bkc.a($$1.B);
       }
+
+      return super.a($$0);
    }
 }

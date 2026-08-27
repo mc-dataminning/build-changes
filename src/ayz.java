@@ -13,7 +13,7 @@ public class ayz extends DataFix {
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "EntityStringUuidFix",
-         this.getInputSchema().getType(bbw.x),
+         this.getInputSchema().getType(bbw.y),
          $$0 -> $$0.update(
                DSL.remainderFinder(),
                $$0x -> {

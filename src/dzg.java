@@ -1,192 +1,259 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.base.MoreObjects;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public abstract class dzg {
-   public static final Codec<dzg> a = kd.T.q().dispatch(dzg::e, dzp::codec);
-   public static final Codec<ih<dzg>> b = ahc.a(ke.aD, a);
-   protected final dzg.c c;
+public class dzg {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<dzg> a = Codec.INT_STREAM
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 6).map($$0x -> new dzg($$0x[0], $$0x[1], $$0x[2], $$0x[3], $$0x[4], $$0x[5])),
+         $$0 -> IntStream.of($$0.c, $$0.d, $$0.e, $$0.f, $$0.g, $$0.h)
+      )
+      .stable();
+   private int c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   public static <S extends dzg> RecordCodecBuilder<S, dzg.c> a(Instance<S> $$0) {
-      return dzg.c.a.forGetter($$0x -> $$0x.c);
+   public dzg(hx $$0) {
+      this($$0.u(), $$0.v(), $$0.w(), $$0.u(), $$0.v(), $$0.w());
    }
 
-   public static <S extends dzg> Codec<S> a(Function<dzg.c, S> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(a($$1)).apply($$1, $$0));
-   }
-
-   protected dzg(dzg.c $$0) {
+   public dzg(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
       this.c = $$0;
-   }
-
-   public il<cuo> a() {
-      return this.c.b;
-   }
-
-   public Map<bmo, dzn> b() {
-      return this.c.c;
-   }
-
-   public dom.b c() {
-      return this.c.d;
-   }
-
-   public dzr d() {
-      return this.c.e;
-   }
-
-   public dyy a(dyy $$0) {
-      return this.d() != dzr.a ? $$0.a(12) : $$0;
-   }
-
-   public dzo a(iu $$0, dle $$1, cus $$2, dpe $$3, edh $$4, long $$5, csw $$6, int $$7, ctr $$8, Predicate<ih<cuo>> $$9) {
-      dzg.a $$10 = new dzg.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9);
-      Optional<dzg.b> $$11 = this.b($$10);
-      if ($$11.isPresent()) {
-         dzy $$12 = $$11.get().a();
-         dzo $$13 = new dzo(this, $$6, $$7, $$12.a());
-         if ($$13.b()) {
-            return $$13;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      if ($$3 < $$0 || $$4 < $$1 || $$5 < $$2) {
+         String $$6 = "Invalid bounding box data, inverted bounds for: " + this;
+         if (aa.aW) {
+            throw new IllegalStateException($$6);
          }
+
+         b.error($$6);
+         this.c = Math.min($$0, $$3);
+         this.d = Math.min($$1, $$4);
+         this.e = Math.min($$2, $$5);
+         this.f = Math.max($$0, $$3);
+         this.g = Math.max($$1, $$4);
+         this.h = Math.max($$2, $$5);
       }
-
-      return dzo.b;
    }
 
-   protected static Optional<dzg.b> a(dzg.a $$0, doq.a $$1, Consumer<dzy> $$2) {
-      csw $$3 = $$0.h();
-      int $$4 = $$3.b();
-      int $$5 = $$3.c();
-      int $$6 = $$0.b().c($$4, $$5, $$1, $$0.i(), $$0.d());
-      return Optional.of(new dzg.b(new hx($$4, $$6, $$5), $$2));
+   public static dzg a(jb $$0, jb $$1) {
+      return new dzg(
+         Math.min($$0.u(), $$1.u()),
+         Math.min($$0.v(), $$1.v()),
+         Math.min($$0.w(), $$1.w()),
+         Math.max($$0.u(), $$1.u()),
+         Math.max($$0.v(), $$1.v()),
+         Math.max($$0.w(), $$1.w())
+      );
    }
 
-   private static boolean a(dzg.b $$0, dzg.a $$1) {
-      hx $$2 = $$0.b();
-      return $$1.j.test($$1.b.c().getNoiseBiome(is.a($$2.u()), is.a($$2.v()), is.a($$2.w()), $$1.d.b()));
+   public static dzg a() {
+      return new dzg(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
    }
 
-   public void a(cuk $$0, cui $$1, dle $$2, auv $$3, dyy $$4, csw $$5, dzv $$6) {
+   public static dzg a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, ic $$9) {
+      switch ($$9) {
+         case d:
+         default:
+            return new dzg($$0 + $$3, $$1 + $$4, $$2 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$8 - 1 + $$5);
+         case c:
+            return new dzg($$0 + $$3, $$1 + $$4, $$2 - $$8 + 1 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$5);
+         case e:
+            return new dzg($$0 - $$8 + 1 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
+         case f:
+            return new dzg($$0 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$8 - 1 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
+      }
    }
 
-   private static int[] b(dzg.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      dle $$5 = $$0.b();
-      ctr $$6 = $$0.i();
-      dpe $$7 = $$0.d();
-      return new int[]{
-         $$5.c($$1, $$3, doq.a.a, $$6, $$7),
-         $$5.c($$1, $$3 + $$4, doq.a.a, $$6, $$7),
-         $$5.c($$1 + $$2, $$3, doq.a.a, $$6, $$7),
-         $$5.c($$1 + $$2, $$3 + $$4, doq.a.a, $$6, $$7)
-      };
+   public Stream<cte> b() {
+      int $$0 = iz.a(this.h());
+      int $$1 = iz.a(this.j());
+      int $$2 = iz.a(this.k());
+      int $$3 = iz.a(this.m());
+      return cte.a(new cte($$0, $$1), new cte($$2, $$3));
    }
 
-   protected static int a(dzg.a $$0, int $$1, int $$2) {
-      csw $$3 = $$0.h();
-      int $$4 = $$3.d();
-      int $$5 = $$3.e();
-      return a($$0, $$4, $$5, $$1, $$2);
+   public boolean a(dzg $$0) {
+      return this.f >= $$0.c && this.c <= $$0.f && this.h >= $$0.e && this.e <= $$0.h && this.g >= $$0.d && this.d <= $$0.g;
    }
 
-   protected static int a(dzg.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      int[] $$5 = b($$0, $$1, $$3, $$2, $$4);
-      return Math.min(Math.min($$5[0], $$5[1]), Math.min($$5[2], $$5[3]));
+   public boolean a(int $$0, int $$1, int $$2, int $$3) {
+      return this.f >= $$0 && this.c <= $$2 && this.h >= $$1 && this.e <= $$3;
+   }
+
+   public static Optional<dzg> a(Iterable<hx> $$0) {
+      Iterator<hx> $$1 = $$0.iterator();
+      if (!$$1.hasNext()) {
+         return Optional.empty();
+      } else {
+         dzg $$2 = new dzg($$1.next());
+         $$1.forEachRemaining($$2::a);
+         return Optional.of($$2);
+      }
+   }
+
+   public static Optional<dzg> b(Iterable<dzg> $$0) {
+      Iterator<dzg> $$1 = $$0.iterator();
+      if (!$$1.hasNext()) {
+         return Optional.empty();
+      } else {
+         dzg $$2 = $$1.next();
+         dzg $$3 = new dzg($$2.c, $$2.d, $$2.e, $$2.f, $$2.g, $$2.h);
+         $$1.forEachRemaining($$3::b);
+         return Optional.of($$3);
+      }
    }
 
    @Deprecated
-   protected hx a(dzg.a $$0, ddc $$1) {
-      int $$2 = 5;
-      int $$3 = 5;
-      if ($$1 == ddc.b) {
-         $$2 = -5;
-      } else if ($$1 == ddc.c) {
-         $$2 = -5;
-         $$3 = -5;
-      } else if ($$1 == ddc.d) {
-         $$3 = -5;
-      }
-
-      csw $$4 = $$0.h();
-      int $$5 = $$4.a(7);
-      int $$6 = $$4.b(7);
-      return new hx($$5, a($$0, $$5, $$6, $$2, $$3), $$6);
+   public dzg b(dzg $$0) {
+      this.c = Math.min(this.c, $$0.c);
+      this.d = Math.min(this.d, $$0.d);
+      this.e = Math.min(this.e, $$0.e);
+      this.f = Math.max(this.f, $$0.f);
+      this.g = Math.max(this.g, $$0.g);
+      this.h = Math.max(this.h, $$0.h);
+      return this;
    }
 
-   protected abstract Optional<dzg.b> a(dzg.a var1);
-
-   public Optional<dzg.b> b(dzg.a $$0) {
-      return this.a($$0).filter($$1 -> a($$1, $$0));
+   @Deprecated
+   public dzg a(hx $$0) {
+      this.c = Math.min(this.c, $$0.u());
+      this.d = Math.min(this.d, $$0.v());
+      this.e = Math.min(this.e, $$0.w());
+      this.f = Math.max(this.f, $$0.u());
+      this.g = Math.max(this.g, $$0.v());
+      this.h = Math.max(this.h, $$0.w());
+      return this;
    }
 
-   public abstract dzp<?> e();
+   @Deprecated
+   public dzg a(int $$0, int $$1, int $$2) {
+      this.c += $$0;
+      this.d += $$1;
+      this.e += $$2;
+      this.f += $$0;
+      this.g += $$1;
+      this.h += $$2;
+      return this;
+   }
 
-   public static record a(iu a, dle b, cus c, dpe d, edh e, dpp f, long g, csw h, ctr i, Predicate<ih<cuo>> j) {
+   @Deprecated
+   public dzg a(jb $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
+   }
 
-      public a(iu $$0, dle $$1, cus $$2, dpe $$3, edh $$4, long $$5, csw $$6, ctr $$7, Predicate<ih<cuo>> $$8) {
-         this($$0, $$1, $$2, $$3, $$4, a($$5, $$6), $$5, $$6, $$7, $$8);
-      }
+   public dzg b(int $$0, int $$1, int $$2) {
+      return new dzg(this.c + $$0, this.d + $$1, this.e + $$2, this.f + $$0, this.g + $$1, this.h + $$2);
+   }
 
-      private static dpp a(long $$0, csw $$1) {
-         dpp $$2 = new dpp(new dor(0L));
-         $$2.c($$0, $$1.e, $$1.f);
-         return $$2;
+   public dzg a(int $$0) {
+      return new dzg(this.h() - $$0, this.i() - $$0, this.j() - $$0, this.k() + $$0, this.l() + $$0, this.m() + $$0);
+   }
+
+   public boolean b(jb $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public boolean c(int $$0, int $$1, int $$2) {
+      return $$0 >= this.c && $$0 <= this.f && $$2 >= this.e && $$2 <= this.h && $$1 >= this.d && $$1 <= this.g;
+   }
+
+   public jb c() {
+      return new jb(this.f - this.c, this.g - this.d, this.h - this.e);
+   }
+
+   public int d() {
+      return this.f - this.c + 1;
+   }
+
+   public int e() {
+      return this.g - this.d + 1;
+   }
+
+   public int f() {
+      return this.h - this.e + 1;
+   }
+
+   public hx g() {
+      return new hx(this.c + (this.f - this.c + 1) / 2, this.d + (this.g - this.d + 1) / 2, this.e + (this.h - this.e + 1) / 2);
+   }
+
+   public void a(Consumer<hx> $$0) {
+      hx.a $$1 = new hx.a();
+      $$0.accept($$1.d(this.f, this.g, this.h));
+      $$0.accept($$1.d(this.c, this.g, this.h));
+      $$0.accept($$1.d(this.f, this.d, this.h));
+      $$0.accept($$1.d(this.c, this.d, this.h));
+      $$0.accept($$1.d(this.f, this.g, this.e));
+      $$0.accept($$1.d(this.c, this.g, this.e));
+      $$0.accept($$1.d(this.f, this.d, this.e));
+      $$0.accept($$1.d(this.c, this.d, this.e));
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+         .add("minX", this.c)
+         .add("minY", this.d)
+         .add("minZ", this.e)
+         .add("maxX", this.f)
+         .add("maxY", this.g)
+         .add("maxZ", this.h)
+         .toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dzg $$1)
+            ? false
+            : this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f && this.g == $$1.g && this.h == $$1.h;
       }
    }
 
-   public static record b(hx a, Either<Consumer<dzy>, dzy> b) {
-      public b(hx $$0, Consumer<dzy> $$1) {
-         this($$0, Either.left($$1));
-      }
-
-      public dzy a() {
-         return (dzy)this.b.map($$0 -> {
-            dzy $$1 = new dzy();
-            $$0.accept($$1);
-            return $$1;
-         }, $$0 -> $$0);
-      }
-
-      public hx b() {
-         return this.a;
-      }
-
-      public Either<Consumer<dzy>, dzy> c() {
-         return this.b;
-      }
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.d, this.e, this.f, this.g, this.h);
    }
 
-   public static record c(il<cuo> b, Map<bmo, dzn> c, dom.b d, dzr e) {
-      public static final MapCodec<dzg.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  iv.a(ke.at).fieldOf("biomes").forGetter(dzg.c::a),
-                  Codec.simpleMap(bmo.i, dzn.a, avk.a(bmo.values())).fieldOf("spawn_overrides").forGetter(dzg.c::b),
-                  dom.b.l.fieldOf("step").forGetter(dzg.c::c),
-                  dzr.e.optionalFieldOf("terrain_adaptation", dzr.a).forGetter(dzg.c::d)
-               )
-               .apply($$0, dzg.c::new)
-      );
+   public int h() {
+      return this.c;
+   }
 
-      public il<cuo> a() {
-         return this.b;
-      }
+   public int i() {
+      return this.d;
+   }
 
-      public Map<bmo, dzn> b() {
-         return this.c;
-      }
+   public int j() {
+      return this.e;
+   }
 
-      public dom.b c() {
-         return this.d;
-      }
+   public int k() {
+      return this.f;
+   }
 
-      public dzr d() {
-         return this.e;
-      }
+   public int l() {
+      return this.g;
+   }
+
+   public int m() {
+      return this.h;
    }
 }

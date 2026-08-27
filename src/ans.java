@@ -1,7 +1,8 @@
-import com.mojang.authlib.GameProfile;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record ans(GameProfile a, int b, ams c) {
-   public static ans a(GameProfile $$0) {
-      return new ans($$0, 0, ams.a());
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ans {
 }

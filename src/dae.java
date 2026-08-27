@@ -1,73 +1,55 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public abstract class dae extends dad implements cwt {
-   protected dae(djg.d $$0, ic $$1, emm $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class dae extends cxh implements cxb {
+   public static final MapCodec<dae> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ahg.a(ke.aw).fieldOf("feature").forGetter($$0x -> $$0x.e), kd.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, dae::new)
+   );
+   protected static final emv b = cwy.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final cwy d;
+   private final ahg<drp<?, ?>> e;
+
+   @Override
+   public MapCodec<dae> a() {
+      return a;
+   }
+
+   protected dae(ahg<drp<?, ?>> $$0, cwy $$1, djo.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected abstract MapCodec<? extends dae> a();
-
-   protected djh a(djh $$0, djh $$1) {
-      return $$1;
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return b;
    }
 
    @Override
-   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
+   protected boolean b(djp $$0, ctd $$1, hx $$2) {
+      return $$0.a(asi.aK) || $$0.a(cxa.fl) || $$0.a(cxa.dX) || super.b($$0, $$1, $$2);
+   }
 
-      daf $$6 = this.c();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, ees.c, ees.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   private Optional<? extends ih<drp<?, ?>>> a(cua $$0) {
+      return $$0.I_().d(ke.aw).b(this.e);
    }
 
    @Override
-   public cmy a(cts $$0, hx $$1, djh $$2) {
-      return new cmy(this.c());
+   public boolean b(cua $$0, hx $$1, djp $$2) {
+      djp $$3 = $$0.a_($$1.d());
+      return $$3.a(this.d);
    }
 
    @Override
-   public boolean b(cts $$0, hx $$1, djh $$2) {
-      Optional<hx> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
+   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   public boolean a(ctp $$0, auv $$1, hx $$2, djh $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(and $$0, auv $$1, hx $$2, djh $$3) {
-      Optional<hx> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         djh $$5 = $$0.a_($$4.get());
-         ((daf)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
-   }
-
-   private Optional<hx> a(csv $$0, hx $$1, cwq $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
-   }
-
-   @Override
-   public boolean a(djh $$0, cph $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().k()) ? false : $$2;
-   }
-
-   @Override
-   protected cwq b() {
-      return this;
+   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
+      this.a($$0).ifPresent($$3x -> ((drp)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
    }
 }

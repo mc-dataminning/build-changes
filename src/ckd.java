@@ -1,17 +1,22 @@
-public class ckd implements cke {
-   private final iq<cmy> a;
-   private final int b;
+public class ckd implements cit {
+   private final int[] a;
 
-   public ckd(iq<cmy> $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ckd(int $$0) {
+      this.a = new int[$$0];
    }
 
-   public iq<cmy> a() {
-      return this.a;
+   @Override
+   public int a(int $$0) {
+      return this.a[$$0];
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public void a(int $$0, int $$1) {
+      this.a[$$0] = $$1;
+   }
+
+   @Override
+   public int a() {
+      return this.a.length;
    }
 }

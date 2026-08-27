@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cpa {
+public enum cpa {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h,
+   i,
+   j;
 }

@@ -1,160 +1,83 @@
-public class cft extends blv implements cfx {
-   private static final agm<cmy> b = agp.a(cft.class, ago.h);
-   private double c;
-   private double d;
-   private double e;
-   private int f;
-   private boolean g;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.UUID;
 
-   public cft(blz<? extends cft> $$0, ctp $$1) {
-      super($$0, $$1);
-   }
+public record cft(cft.a d) {
+   public static final vg a = vg.c("multiplayer.disconnect.expired_public_key");
+   private static final vg e = vg.c("multiplayer.disconnect.invalid_public_key_signature.new");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<cft> c = cft.a.a.xmap(cft::new, cft::b);
 
-   public cft(ctp $$0, double $$1, double $$2, double $$3) {
-      this(blz.L, $$0);
-      this.a_($$1, $$2, $$3);
-   }
-
-   public void a(cmy $$0) {
-      if (!$$0.a(cnb.sp) || $$0.u()) {
-         this.an().b(b, $$0.c(1));
-      }
-   }
-
-   private cmy s() {
-      return this.an().b(b);
-   }
-
-   @Override
-   public cmy q() {
-      cmy $$0 = this.s();
-      return $$0.b() ? new cmy(cnb.sp) : $$0;
-   }
-
-   @Override
-   protected void c_() {
-      this.an().a(b, cmy.f);
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 4.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 4.0;
-      }
-
-      $$1 *= 64.0;
-      return $$0 < $$1 * $$1;
-   }
-
-   public void a(hx $$0) {
-      double $$1 = (double)$$0.u();
-      int $$2 = $$0.v();
-      double $$3 = (double)$$0.w();
-      double $$4 = $$1 - this.dr();
-      double $$5 = $$3 - this.dx();
-      double $$6 = Math.sqrt($$4 * $$4 + $$5 * $$5);
-      if ($$6 > 12.0) {
-         this.c = this.dr() + $$4 / $$6 * 12.0;
-         this.e = this.dx() + $$5 / $$6 * 12.0;
-         this.d = this.dt() + 8.0;
+   public static cft a(avd $$0, UUID $$1, cft.a $$2) throws cft.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new cft.b(e);
       } else {
-         this.c = $$1;
-         this.d = (double)$$2;
-         this.e = $$3;
-      }
-
-      this.f = 0;
-      this.g = this.ag.a(5) > 0;
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.o($$0, $$1, $$2);
-      if (this.O == 0.0F && this.N == 0.0F) {
-         double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         this.r((float)(auo.d($$0, $$2) * 180.0F / (float)Math.PI));
-         this.s((float)(auo.d($$1, $$3) * 180.0F / (float)Math.PI));
-         this.N = this.dC();
-         this.O = this.dE();
+         return new cft($$2);
       }
    }
 
-   @Override
-   public void l() {
-      super.l();
-      elt $$0 = this.dp();
-      double $$1 = this.dr() + $$0.c;
-      double $$2 = this.dt() + $$0.d;
-      double $$3 = this.dx() + $$0.e;
-      double $$4 = $$0.h();
-      this.s(cga.d(this.O, (float)(auo.d($$0.d, $$4) * 180.0F / (float)Math.PI)));
-      this.r(cga.d(this.N, (float)(auo.d($$0.c, $$0.e) * 180.0F / (float)Math.PI)));
-      if (!this.dM().B) {
-         double $$5 = this.c - $$1;
-         double $$6 = this.e - $$3;
-         float $$7 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6);
-         float $$8 = (float)auo.d($$6, $$5);
-         double $$9 = auo.d(0.0025, $$4, (double)$$7);
-         double $$10 = $$0.d;
-         if ($$7 < 1.0F) {
-            $$9 *= 0.8;
-            $$10 *= 0.8;
-         }
-
-         int $$11 = this.dt() < this.d ? 1 : -1;
-         $$0 = new elt(Math.cos((double)$$8) * $$9, $$10 + ((double)$$11 - $$10) * 0.015F, Math.sin((double)$$8) * $$9);
-         this.g($$0);
-      }
-
-      float $$12 = 0.25F;
-      if (this.aZ()) {
-         for (int $$13 = 0; $$13 < 4; $$13++) {
-            this.dM().a(jx.e, $$1 - $$0.c * 0.25, $$2 - $$0.d * 0.25, $$3 - $$0.e * 0.25, $$0.c, $$0.d, $$0.e);
-         }
-      } else {
-         this.dM()
-            .a(jx.Z, $$1 - $$0.c * 0.25 + this.ag.j() * 0.6 - 0.3, $$2 - $$0.d * 0.25 - 0.5, $$3 - $$0.e * 0.25 + this.ag.j() * 0.6 - 0.3, $$0.c, $$0.d, $$0.e);
-      }
-
-      if (!this.dM().B) {
-         this.a_($$1, $$2, $$3);
-         this.f++;
-         if (this.f > 80 && !this.dM().B) {
-            this.a(ars.hD, 1.0F, 1.0F);
-            this.am();
-            if (this.g) {
-               this.dM().b(new cbu(this.dM(), this.dr(), this.dt(), this.dx(), this.q()));
-            } else {
-               this.dM().c(2003, this.dm(), 0);
-            }
-         }
-      } else {
-         this.p($$1, $$2, $$3);
-      }
+   public avd a() {
+      return avd.a(this.d.c, "SHA256withRSA");
    }
 
-   @Override
-   public void b(sn $$0) {
-      cmy $$1 = this.s();
-      if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new sn()));
+   public cft.a b() {
+      return this.d;
+   }
+
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<cft.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  atx.m.fieldOf("expires_at").forGetter(cft.a::b), atn.f.fieldOf("key").forGetter(cft.a::c), atx.n.fieldOf("signature_v2").forGetter(cft.a::d)
+               )
+               .apply($$0, cft.a::new)
+      );
+
+      public a(uj $$0) {
+         this($$0.w(), $$0.x(), $$0.a(4096));
+      }
+
+      public void a(uj $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+      }
+
+      boolean a(avd $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
+
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
+
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
+
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof cft.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
       }
    }
 
-   @Override
-   public void a(sn $$0) {
-      cmy $$1 = cmy.a($$0.p("Item"));
-      this.a($$1);
-   }
-
-   @Override
-   public float bo() {
-      return 1.0F;
-   }
-
-   @Override
-   public boolean cq() {
-      return false;
+   public static class b extends wg {
+      public b(vg $$0) {
+         super($$0);
+      }
    }
 }

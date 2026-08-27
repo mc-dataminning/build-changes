@@ -1,23 +1,40 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class cop extends cnb {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class cop extends ckm {
-   public cop(cmt.a $$0) {
+   public cop(cnb.a $$0) {
       super($$0);
    }
 
    @Override
-   public cmy am_() {
-      return coy.a(super.am_(), coz.E);
+   public int b(cng $$0) {
+      return 1200;
    }
 
    @Override
-   public void a(cmy $$0, @Nullable ctp $$1, List<vf> $$2, coq $$3) {
-      coy.a($$0, $$2, 0.125F, $$1 == null ? 20.0F : $$1.s().f());
+   public cpa c(cng $$0) {
+      return cpa.h;
    }
 
    @Override
-   public String j(cmy $$0) {
-      return coy.d($$0).b(this.a() + ".effect.");
+   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
+      $$1.a(art.yp, 1.0F, 1.0F);
+      $$1.b(asd.c.b(this));
+      return cni.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cng a(cng $$0, ctx $$1, bmo $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(cng $$0, ctx $$1, bmo $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(bmo $$0) {
+      $$0.a(art.yq, 1.0F, 1.0F);
    }
 }

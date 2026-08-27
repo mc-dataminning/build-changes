@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bck extends baw {
    public bck(Schema $$0, boolean $$1) {
-      super($$0, $$1, "StriderGravityFix", bbw.x, "minecraft:strider");
+      super($$0, $$1, "StriderGravityFix", bbw.y, "minecraft:strider");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

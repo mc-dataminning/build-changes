@@ -1,20 +1,73 @@
-import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class fam {
-   private static final int a = 4;
+public enum fam implements eom {
+   a(() -> a(5, 8, ($$0, $$1) -> -1)),
+   b(() -> {
+      int $$0 = 5;
+      int $$1 = 8;
+      return a(5, 8, ($$0x, $$1x) -> {
+         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
+         return $$2 ? -1 : 0;
+      });
+   });
 
-   private fam() {
+   final epl c;
+
+   private static epl a(int $$0, int $$1, fam.a $$2) {
+      epl $$3 = new epl(epl.a.a, $$0, $$1, false);
+
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
+         }
+      }
+
+      $$3.i();
+      return $$3;
    }
 
-   public static far a(ews $$0, fas $$1, vf $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
+   private fam(Supplier<epl> $$0) {
+      this.c = $$0.get();
+   }
+
+   @Override
+   public float getAdvance() {
+      return (float)(this.c.a() + 1);
+   }
+
+   @Override
+   public fak bake(Function<eoo, fak> $$0) {
+      return $$0.apply(new eoo() {
+         @Override
+         public int a() {
+            return fam.this.c.a();
+         }
+
+         @Override
+         public int b() {
+            return fam.this.c.b();
+         }
+
+         @Override
+         public float d() {
+            return 1.0F;
+         }
+
+         @Override
+         public void a(int $$0, int $$1) {
+            fam.this.c.a(0, $$0, $$1, false);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
       });
    }
 
-   public static far a(ews $$0, fas $$1, vf $$2, Consumer<fat> $$3) {
-      fau $$4 = fau.d().a(4);
-      $$4.a(new eyn($$2, $$0));
-      $$4.a($$1, $$3);
-      return $$4;
+   @FunctionalInterface
+   interface a {
+      int getColor(int var1, int var2);
    }
 }

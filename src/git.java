@@ -1,101 +1,37 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
+import com.google.common.collect.ImmutableList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class git {
-   static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
+public class git<T> extends giu<T> {
+   private final List<T> c;
+   private final Function<T, Stream<String>> d;
+   private gix<T> e = gix.a();
 
-   public static class a extends Thread {
-      private final git.b a;
-      private final InetAddress b;
-      private final MulticastSocket c;
-
-      public a(git.b $$0) throws IOException {
-         super("LanServerDetector #" + git.a.incrementAndGet());
-         this.a = $$0;
-         this.setDaemon(true);
-         this.setUncaughtExceptionHandler(new r(git.b));
-         this.c = new MulticastSocket(4445);
-         this.b = InetAddress.getByName("224.0.2.60");
-         this.c.setSoTimeout(5000);
-         this.c.joinGroup(this.b);
-      }
-
-      @Override
-      public void run() {
-         byte[] $$0 = new byte[1024];
-
-         while (!this.isInterrupted()) {
-            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
-
-            try {
-               this.c.receive($$1);
-            } catch (SocketTimeoutException var5) {
-               continue;
-            } catch (IOException var6) {
-               git.b.error("Couldn't ping server", var6);
-               break;
-            }
-
-            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
-            git.b.debug("{}: {}", $$1.getAddress(), $$4);
-            this.a.a($$4, $$1.getAddress());
-         }
-
-         try {
-            this.c.leaveGroup(this.b);
-         } catch (IOException var4) {
-         }
-
-         this.c.close();
-      }
+   public git(Function<T, Stream<String>> $$0, Function<T, Stream<ahh>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = $$2;
+      this.d = $$0;
    }
 
-   public static class b {
-      private final List<gis> a = Lists.newArrayList();
-      private boolean b;
+   @Override
+   public void a() {
+      super.a();
+      this.e = gix.a(this.c, this.d);
+   }
 
-      @Nullable
-      public synchronized List<gis> a() {
-         if (this.b) {
-            List<gis> $$0 = List.copyOf(this.a);
-            this.b = false;
-            return $$0;
-         } else {
-            return null;
-         }
-      }
+   @Override
+   protected List<T> a(String $$0) {
+      return this.e.search($$0);
+   }
 
-      public synchronized void a(String $$0, InetAddress $$1) {
-         String $$2 = giu.a($$0);
-         String $$3 = giu.b($$0);
-         if ($$3 != null) {
-            $$3 = $$1.getHostAddress() + ":" + $$3;
-            boolean $$4 = false;
-
-            for (gis $$5 : this.a) {
-               if ($$5.b().equals($$3)) {
-                  $$5.c();
-                  $$4 = true;
-                  break;
-               }
-            }
-
-            if (!$$4) {
-               this.a.add(new gis($$2, $$3));
-               this.b = true;
-            }
-         }
-      }
+   @Override
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.e.search($$1);
+      Iterator<T> $$5 = new giw<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new giv<T>($$2.iterator(), $$5, this.a));
    }
 }

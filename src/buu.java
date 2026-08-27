@@ -1,26 +1,30 @@
-import javax.annotation.Nullable;
+public class buu extends btk {
+   private final bmx a;
 
-public class buu extends bue {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public buu(bmu $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public buu(bmx $$0) {
+      this.a = $$0;
    }
 
-   public buu(bmu $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected elt h() {
-      if (this.b.bc()) {
-         elt $$0 = bxg.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.eg().i() >= this.j ? bxg.a(this.b, 10, 7) : super.h();
+   public boolean a() {
+      return this.a.aC() && !this.a.dL().b_(this.a.dl()).a(asn.a);
+   }
+
+   @Override
+   public void c() {
+      hx $$0 = null;
+
+      for (hx $$2 : hx.b(
+         aup.a(this.a.dq() - 2.0), aup.a(this.a.ds() - 2.0), aup.a(this.a.dw() - 2.0), aup.a(this.a.dq() + 2.0), this.a.dr(), aup.a(this.a.dw() + 2.0)
+      )) {
+         if (this.a.dL().b_($$2).a(asn.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.K().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

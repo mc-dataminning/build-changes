@@ -1,49 +1,274 @@
-import java.util.Collection;
-import java.util.Comparator;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalLong;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fil implements fih, fii {
-   private static final ahg a = new ahg("spectator/teleport_to_player");
-   private static final Comparator<fob> b = Comparator.comparing($$0 -> $$0.a().getId());
-   private static final vf c = vf.c("spectatorMenu.teleport");
-   private static final vf d = vf.c("spectatorMenu.teleport.prompt");
-   private final List<fii> e;
+public class fil {
+   private static final vg a = vg.c("selectWorld.newWorld");
+   private final List<Consumer<fil>> b = new ArrayList<>();
+   private String c = a.getString();
+   private fil.a d = fil.a.a;
+   private bjz e = bjz.c;
+   @Nullable
+   private Boolean f;
+   private String g;
+   private boolean h;
+   private boolean i;
+   private final Path j;
+   private String k;
+   private fik l;
+   private fil.b m;
+   private final List<fil.b> n = new ArrayList<>();
+   private final List<fil.b> o = new ArrayList<>();
+   private ctt p = new ctt();
 
-   public fil() {
-      this(evi.O().J().n());
+   public fil(Path $$0, fik $$1, Optional<ahg<dzd>> $$2, OptionalLong $$3) {
+      this.j = $$0;
+      this.l = $$1;
+      this.m = new fil.b(a($$1, $$2).orElse(null));
+      this.r();
+      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
+      this.h = $$1.b().c();
+      this.i = $$1.b().d();
+      this.k = this.c(this.c);
    }
 
-   public fil(Collection<fob> $$0) {
-      this.e = $$0.stream().filter($$0x -> $$0x.e() != ctm.d).sorted(b).map($$0x -> new fie($$0x.a())).toList();
+   public void a(Consumer<fil> $$0) {
+      this.b.add($$0);
    }
 
-   @Override
-   public List<fii> a() {
-      return this.e;
+   public void a() {
+      boolean $$0 = this.j();
+      if ($$0 != this.l.b().d()) {
+         this.l = this.l.a($$1x -> $$1x.a($$0));
+      }
+
+      boolean $$1 = this.i();
+      if ($$1 != this.l.b().c()) {
+         this.l = this.l.a($$1x -> $$1x.b($$1));
+      }
+
+      for (Consumer<fil> $$2 : this.b) {
+         $$2.accept(this);
+      }
    }
 
-   @Override
-   public vf b() {
-      return d;
+   public void a(String $$0) {
+      this.c = $$0;
+      this.k = this.c($$0);
+      this.a();
    }
 
-   @Override
-   public void a(fig $$0) {
-      $$0.a(this);
+   private String c(String $$0) {
+      String $$1 = $$0.trim();
+
+      try {
+         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
+      } catch (Exception var5) {
+         try {
+            return v.a(this.j, "World", "");
+         } catch (IOException var4) {
+            throw new RuntimeException("Could not create save folder", var4);
+         }
+      }
    }
 
-   @Override
-   public vf aO_() {
-      return c;
+   public String b() {
+      return this.c;
    }
 
-   @Override
-   public void a(ewu $$0, float $$1, int $$2) {
-      $$0.a(a, 0, 0, 16, 16);
+   public String c() {
+      return this.k;
    }
 
-   @Override
-   public boolean aP_() {
-      return !this.e.isEmpty();
+   public void a(fil.a $$0) {
+      this.d = $$0;
+      this.a();
+   }
+
+   public fil.a d() {
+      return this.l() ? fil.a.d : this.d;
+   }
+
+   public void a(bjz $$0) {
+      this.e = $$0;
+      this.a();
+   }
+
+   public bjz e() {
+      return this.f() ? bjz.d : this.e;
+   }
+
+   public boolean f() {
+      return this.d() == fil.a.b;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+      this.a();
+   }
+
+   public boolean g() {
+      if (this.l()) {
+         return true;
+      } else if (this.f()) {
+         return false;
+      } else {
+         return this.f == null ? this.d() == fil.a.c : this.f;
+      }
+   }
+
+   public void b(String $$0) {
+      this.g = $$0;
+      this.l = this.l.a($$0x -> $$0x.a(dpw.a(this.h())));
+      this.a();
+   }
+
+   public String h() {
+      return this.g;
+   }
+
+   public void b(boolean $$0) {
+      this.h = $$0;
+      this.a();
+   }
+
+   public boolean i() {
+      return this.l() ? false : this.h;
+   }
+
+   public void c(boolean $$0) {
+      this.i = $$0;
+      this.a();
+   }
+
+   public boolean j() {
+      return !this.l() && !this.f() ? this.i : false;
+   }
+
+   public void a(fik $$0) {
+      this.l = $$0;
+      this.r();
+      this.a();
+   }
+
+   public fik k() {
+      return this.l;
+   }
+
+   public void a(fik.a $$0) {
+      this.l = this.l.a($$0);
+      this.a();
+   }
+
+   protected boolean a(cur $$0) {
+      cur $$1 = this.l.g();
+      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
+         this.l = new fik(this.l.b(), this.l.c(), this.l.d(), this.l.e(), this.l.f(), $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean l() {
+      return this.l.d().c();
+   }
+
+   public void a(fil.b $$0) {
+      this.m = $$0;
+      ih<dzd> $$1 = $$0.c();
+      if ($$1 != null) {
+         this.a(($$1x, $$2) -> $$1.a().a());
+      }
+   }
+
+   public fil.b m() {
+      return this.m;
+   }
+
+   @Nullable
+   public fih n() {
+      ih<dzd> $$0 = this.m().c();
+      return $$0 != null ? fih.a.get($$0.e()) : null;
+   }
+
+   public List<fil.b> o() {
+      return this.n;
+   }
+
+   public List<fil.b> p() {
+      return this.o;
+   }
+
+   private void r() {
+      it<dzd> $$0 = this.k().a().d(ke.aK);
+      this.n.clear();
+      this.n.addAll(a($$0, atb.a).orElseGet(() -> $$0.h().map(fil.b::new).toList()));
+      this.o.clear();
+      this.o.addAll(a($$0, atb.b).orElse(this.n));
+      ih<dzd> $$1 = this.m.c();
+      if ($$1 != null) {
+         this.m = a(this.k(), $$1.e()).map(fil.b::new).orElse(this.n.get(0));
+      }
+   }
+
+   private static Optional<ih<dzd>> a(fik $$0, Optional<ahg<dzd>> $$1) {
+      return $$1.flatMap($$1x -> $$0.a().d(ke.aK).b($$1x));
+   }
+
+   private static Optional<List<fil.b>> a(it<dzd> $$0, asx<dzd> $$1) {
+      return $$0.b($$1).map($$0x -> $$0x.a().map(fil.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
+   }
+
+   public void a(ctt $$0) {
+      this.p = $$0;
+      this.a();
+   }
+
+   public ctt q() {
+      return this.p;
+   }
+
+   public static enum a {
+      a("survival", ctu.a),
+      b("hardcore", ctu.a),
+      c("creative", ctu.b),
+      d("spectator", ctu.d);
+
+      public final ctu e;
+      public final vg f;
+      private final vg g;
+
+      private a(String $$0, ctu $$1) {
+         this.e = $$1;
+         this.f = vg.c("selectWorld.gameMode." + $$0);
+         this.g = vg.c("selectWorld.gameMode." + $$0 + ".info");
+      }
+
+      public vg a() {
+         return this.g;
+      }
+   }
+
+   public static record b(@Nullable ih<dzd> a) {
+      private static final vg b = vg.c("generator.custom");
+
+      public vg a() {
+         return Optional.ofNullable(this.a).flatMap(ih::e).map($$0 -> vg.c($$0.a().f("generator"))).orElse(b);
+      }
+
+      public boolean b() {
+         return Optional.ofNullable(this.a).flatMap(ih::e).filter($$0 -> $$0.equals(dze.d)).isPresent();
+      }
+
+      @Nullable
+      public ih<dzd> c() {
+         return this.a;
+      }
    }
 }

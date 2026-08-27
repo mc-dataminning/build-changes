@@ -1,115 +1,53 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class ezw extends gdy implements gdz {
-   private static final int e = 256;
-   private final ezx f;
-   private final boolean g;
-   private final ezw.a h;
+public class ezw implements ezz {
+   private static final ahh d = new ahh("toast/advancement");
+   public static final int a = 5000;
+   private final af e;
+   private boolean f;
 
-   public ezw(ezx $$0, boolean $$1) {
-      this.g = $$1;
-      this.h = new ezw.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? epc.b.a : epc.b.d, this.a(), 256, 256);
-      this.f = $$0;
+   public ezw(af $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public void a(aqi $$0) {
-   }
-
-   @Override
-   public void close() {
-      this.b();
-   }
-
-   @Nullable
-   public ezz a(eof $$0) {
-      if ($$0.c() != this.g) {
-         return null;
-      } else {
-         ezw.a $$1 = this.h.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new ezz(
-               this.f,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
+   public ezz.a a(exe $$0, faa $$1, long $$2) {
+      ar $$3 = this.e.b().c().orElse(null);
+      $$0.a(d, 0, 0, this.a(), this.b());
+      if ($$3 != null) {
+         List<aub> $$4 = $$1.b().h.c($$3.a(), 125);
+         int $$5 = $$3.e() == al.b ? 16746751 : 16776960;
+         if ($$4.size() == 1) {
+            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
+            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
          } else {
-            return null;
-         }
-      }
-   }
-
-   @Override
-   public void a(ahg $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
-   }
-
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private ezw.a e;
-      @Nullable
-      private ezw.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Nullable
-      ezw.a a(eof $$0) {
-         if (this.e != null && this.f != null) {
-            ezw.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = aup.d(aup.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
             } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new ezw.a(this.a, this.b, $$2, this.d);
-                  this.f = new ezw.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new ezw.a(this.a, this.b, this.c, $$3);
-                  this.f = new ezw.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
+               int $$9 = aup.d(aup.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
 
-               return this.e.a($$0);
+               for (aub $$11 : $$4) {
+                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
             }
          }
+
+         if (!this.f && $$2 > 0L) {
+            this.f = true;
+            if ($$3.e() == al.b) {
+               $$1.b().ai().a(gij.a(art.zP, 1.0F, 1.0F));
+            }
+         }
+
+         $$0.b($$3.c(), 8, 8);
+         return (double)$$2 >= 5000.0 * $$1.c() ? ezz.a.b : ezz.a.a;
+      } else {
+         return ezz.a.b;
       }
    }
 }

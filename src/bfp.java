@@ -11,7 +11,7 @@ public class bfp extends bde {
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:decorated_pot", () -> DSL.optionalFields("sherds", DSL.list(bbw.z.in($$0)), "item", bbw.t.in($$0)));
+      $$0.register($$1, "minecraft:decorated_pot", () -> DSL.optionalFields("sherds", DSL.list(bbw.A.in($$0)), "item", bbw.t.in($$0)));
       return $$1;
    }
 }

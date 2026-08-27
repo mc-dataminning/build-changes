@@ -1,87 +1,56 @@
+import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Set;
 
-public class bue extends bth {
-   public static final int a = 120;
-   protected final bmu b;
-   protected double c;
-   protected double d;
-   protected double e;
-   protected final double f;
-   protected int g;
-   protected boolean h;
-   private final boolean i;
+public class bue<T extends cgz> extends btk {
+   private static final int a = 20;
+   private static final float b = 1.0F;
+   private final T c;
+   private int d;
 
-   public bue(bmu $$0, double $$1) {
-      this($$0, $$1, 120);
-   }
-
-   public bue(bmu $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public bue(bmu $$0, double $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(bth.a.a));
+   public bue(T $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(btk.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.b.cO()) {
-         return false;
-      } else {
-         if (!this.h) {
-            if (this.i && this.b.el() >= 100) {
-               return false;
-            }
-
-            if (this.b.eg().a(b(this.g)) != 0) {
-               return false;
-            }
-         }
-
-         elt $$0 = this.h();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            this.h = false;
-            return true;
-         }
-      }
-   }
-
-   @Nullable
-   protected elt h() {
-      return bxd.a(this.b, 10, 7);
+      return this.c.q() == null && !this.c.cO() && this.c.gu() && !this.c.gt().a() && !((ane)this.c.dL()).c(this.c.dl());
    }
 
    @Override
    public boolean b() {
-      return !this.b.N().l() && !this.b.cO();
+      return this.c.gu() && !this.c.gt().a() && this.c.dL() instanceof ane && !((ane)this.c.dL()).c(this.c.dl());
    }
 
    @Override
-   public void c() {
-      this.b.N().a(this.c, this.d, this.e, this.f);
+   public void e() {
+      if (this.c.gu()) {
+         cgy $$0 = this.c.gt();
+         if (this.c.ah > this.d) {
+            this.d = this.c.ah + 20;
+            this.a($$0);
+         }
+
+         if (!this.c.gb()) {
+            emc $$1 = bxh.a(this.c, 15, 4, emc.c($$0.t()), (float) (Math.PI / 2));
+            if ($$1 != null) {
+               this.c.N().a($$1.c, $$1.d, $$1.e, 1.0);
+            }
+         }
+      }
    }
 
-   @Override
-   public void d() {
-      this.b.N().n();
-      super.d();
-   }
+   private void a(cgy $$0) {
+      if ($$0.v()) {
+         Set<cgz> $$1 = Sets.newHashSet();
+         List<cgz> $$2 = this.c.dL().a(cgz.class, this.c.cH().g(16.0), $$1x -> !$$1x.gu() && cha.a($$1x, $$0));
+         $$1.addAll($$2);
 
-   public void i() {
-      this.h = true;
-   }
-
-   public void c(int $$0) {
-      this.g = $$0;
+         for (cgz $$3 : $$1) {
+            $$0.a($$0.k(), $$3, null, true);
+         }
+      }
    }
 }

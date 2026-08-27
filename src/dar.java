@@ -1,78 +1,114 @@
 import com.mojang.serialization.MapCodec;
 
-public class dar extends cwq implements czi, czy {
+public class dar extends dao {
    public static final MapCodec<dar> a = b(dar::new);
-   public static final dkf<ie> b = djx.T;
+   private static final double c = 0.13;
+   private static final double e = 0.08;
+   private static final double f = 0.05;
+   private static final int g = 20;
+   protected static final emv b = cwy.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
    @Override
    public MapCodec<dar> a() {
       return a;
    }
 
-   protected dar(djg.d $$0) {
+   public dar(djo.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ie.k));
+   }
+
+   private static boolean c(blw $$0) {
+      return $$0 instanceof bmo || $$0 instanceof chi || $$0 instanceof ccc || $$0 instanceof chk;
    }
 
    @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(b);
+   public emv b(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return b;
    }
 
    @Override
-   public djh a(djh $$0, ddc $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public djh a(djh $$0, dbm $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public djh a(cph $$0) {
-      ic $$1 = $$0.k();
-      ic $$2;
-      if ($$1.o() == ic.a.b) {
-         $$2 = $$0.g().g();
-      } else {
-         $$2 = ic.b;
+   public void a(ctx $$0, djp $$1, hx $$2, blw $$3, float $$4) {
+      $$3.a(art.mb, 1.0F, 1.0F);
+      if (!$$0.B) {
+         $$0.a($$3, (byte)54);
       }
 
-      return this.o().a(b, ie.a($$1, $$2));
-   }
-
-   @Override
-   public dgv a(hx $$0, djh $$1) {
-      return new dhv($$0, $$1);
-   }
-
-   @Override
-   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
-      dgv $$6 = $$1.c_($$2);
-      if ($$6 instanceof dhv && $$3.gp()) {
-         $$3.a((dhv)$$6);
-         return bkb.a($$1.B);
-      } else {
-         return bkb.d;
+      if ($$3.a($$4, 0.2F, $$0.ai().k())) {
+         $$3.a(this.aJ.g(), this.aJ.a() * 0.5F, this.aJ.b() * 0.75F);
       }
    }
 
-   public static boolean a(edg.c $$0, edg.c $$1) {
-      ic $$2 = h($$0.b());
-      ic $$3 = h($$1.b());
-      ic $$4 = n($$0.b());
-      ic $$5 = n($$1.b());
-      dhv.a $$6 = dhv.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dhv.a.b : dhv.a.a);
-      boolean $$7 = $$6 == dhv.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
+   @Override
+   public void a(djp $$0, ctx $$1, hx $$2, blw $$3) {
+      if (this.a($$2, $$3)) {
+         this.a($$3, $$2);
+         this.d($$3);
+         this.a($$1, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public static ic h(djh $$0) {
-      return $$0.c(b).a();
+   private boolean a(hx $$0, blw $$1) {
+      if ($$1.aC()) {
+         return false;
+      } else if ($$1.ds() > (double)$$0.v() + 0.9375 - 1.0E-7) {
+         return false;
+      } else if ($$1.do().d >= -0.08) {
+         return false;
+      } else {
+         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dq());
+         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dw());
+         double $$4 = 0.4375 + (double)($$1.dg() / 2.0F);
+         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
+      }
    }
 
-   public static ic n(djh $$0) {
-      return $$0.c(b).b();
+   private void a(blw $$0, hx $$1) {
+      if ($$0 instanceof anf && $$0.dL().X() % 20L == 0L) {
+         am.K.a((anf)$$0, $$0.dL().a_($$1));
+      }
+   }
+
+   private void d(blw $$0) {
+      emc $$1 = $$0.do();
+      if ($$1.d < -0.13) {
+         double $$2 = -0.05 / $$1.d;
+         $$0.g(new emc($$1.c * $$2, -0.05, $$1.e * $$2));
+      } else {
+         $$0.g(new emc($$1.c, -0.05, $$1.e));
+      }
+
+      $$0.n();
+   }
+
+   private void a(ctx $$0, blw $$1) {
+      if (c($$1)) {
+         if ($$0.z.a(5) == 0) {
+            $$1.a(art.mb, 1.0F, 1.0F);
+         }
+
+         if (!$$0.B && $$0.z.a(5) == 0) {
+            $$0.a($$1, (byte)53);
+         }
+      }
+   }
+
+   public static void a(blw $$0) {
+      a($$0, 5);
+   }
+
+   public static void b(blw $$0) {
+      a($$0, 10);
+   }
+
+   private static void a(blw $$0, int $$1) {
+      if ($$0.dL().B) {
+         djp $$2 = cxa.pg.o();
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$0.dL().a(new jp(jx.c, $$2), $$0.dq(), $$0.ds(), $$0.dw(), 0.0, 0.0, 0.0);
+         }
+      }
    }
 }

@@ -1,10 +1,25 @@
-public class crm extends bin.a {
-   public final crj a;
-   public final int b;
+public class crm extends crr {
+   public crm(crr.a $$0, bmd... $$1) {
+      super($$0, crs.m, $$1);
+   }
 
-   public crm(crj $$0, int $$1) {
-      super($$0.d().a());
-      this.a = $$0;
-      this.b = $$1;
+   @Override
+   public int a(int $$0) {
+      return 1 + ($$0 - 1) * 10;
+   }
+
+   @Override
+   public int b(int $$0) {
+      return 50;
+   }
+
+   @Override
+   public int a() {
+      return 4;
+   }
+
+   @Override
+   public boolean a(crr $$0) {
+      return super.a($$0) && $$0 != crv.I;
    }
 }

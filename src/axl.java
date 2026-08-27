@@ -409,7 +409,7 @@ public class axl extends DataFix {
       return $$0.get("Properties").get($$1).asString("");
    }
 
-   public static int a(atl<Dynamic<?>> $$0, Dynamic<?> $$1) {
+   public static int a(atm<Dynamic<?>> $$0, Dynamic<?> $$1) {
       int $$2 = $$0.a($$1);
       if ($$2 == -1) {
          $$2 = $$0.c($$1);
@@ -596,7 +596,7 @@ public class axl extends DataFix {
    }
 
    static class c {
-      private final atl<Dynamic<?>> b = atl.c(32);
+      private final atm<Dynamic<?>> b = atm.c(32);
       private final List<Dynamic<?>> c;
       private final Dynamic<?> d;
       private final boolean e;
@@ -683,7 +683,7 @@ public class axl extends DataFix {
          } else {
             $$0 = $$0.set("Palette", $$0.createList(this.c.stream()));
             int $$1 = Math.max(4, DataFixUtils.ceillog2(this.h.size()));
-            avy $$2 = new avy($$1, 4096);
+            avz $$2 = new avz($$1, 4096);
 
             for (int $$3 = 0; $$3 < this.i.length; $$3++) {
                $$2.a($$3, this.i[$$3]);

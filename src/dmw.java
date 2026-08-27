@@ -1,24 +1,13 @@
-import java.util.List;
-import java.util.stream.Stream;
+public class dmw {
+   public static final ahg<dmy> a = a("overworld");
+   public static final ahg<dmy> b = a("the_nether");
+   public static final ahg<dmy> c = a("the_end");
+   public static final ahg<dmy> d = a("overworld_caves");
+   public static final ahh e = new ahh("overworld");
+   public static final ahh f = new ahh("the_nether");
+   public static final ahh g = new ahh("the_end");
 
-public class dmw<T> {
-   private final csw a;
-   private final List<T> b;
-
-   public dmw(csw $$0, List<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public csw a() {
-      return this.a;
-   }
-
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public boolean c() {
-      return this.b.isEmpty();
+   private static ahg<dmy> a(String $$0) {
+      return ahg.a(ke.ay, new ahh($$0));
    }
 }

@@ -1,32 +1,29 @@
-import org.lwjgl.openal.AL10;
+public enum enx {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-public class enx {
-   private float a = 1.0F;
-   private eny b = eny.a;
+   private final int h;
 
-   public void a(eny $$0) {
-      this.b = $$0;
-      elt $$1 = $$0.b();
-      elt $$2 = $$0.c();
-      elt $$3 = $$0.d();
-      AL10.alListener3f(4100, (float)$$1.c, (float)$$1.d, (float)$$1.e);
-      AL10.alListenerfv(4111, new float[]{(float)$$2.c, (float)$$2.d, (float)$$2.e, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
+   private enx(int $$0) {
+      this.h = $$0;
    }
 
-   public void a(float $$0) {
-      AL10.alListenerf(4106, $$0);
-      this.a = $$0;
+   public static enx a(int $$0) {
+      for (enx $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
+      }
+
+      return $$0 < a.h ? a : g;
    }
 
-   public float a() {
-      return this.a;
-   }
-
-   public void b() {
-      this.a(eny.a);
-   }
-
-   public eny c() {
-      return this.b;
+   public int a() {
+      return this.h;
    }
 }

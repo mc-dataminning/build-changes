@@ -1,45 +1,62 @@
-public class bsv extends btu {
-   private final byb g;
+import java.util.EnumSet;
 
-   public bsv(byb $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
+public class bsv extends btk {
+   private final bmx a;
+
+   public bsv(bmx $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(btk.a.a, btk.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.g.u() && !this.g.ge() && super.a();
+      return this.a.ci() < 140;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a();
+   }
+
+   @Override
+   public boolean S_() {
+      return false;
    }
 
    @Override
    public void c() {
-      super.c();
-      this.g.y(false);
+      this.h();
    }
 
-   @Override
-   public void d() {
-      super.d();
-      this.g.y(false);
+   private void h() {
+      Iterable<hx> $$0 = hx.b(
+         aup.a(this.a.dq() - 1.0), this.a.dr(), aup.a(this.a.dw() - 1.0), aup.a(this.a.dq() + 1.0), aup.a(this.a.ds() + 8.0), aup.a(this.a.dw() + 1.0)
+      );
+      hx $$1 = null;
+
+      for (hx $$2 : $$0) {
+         if (this.a(this.a.dL(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = hx.a(this.a.dq(), this.a.ds() + 8.0, this.a.dw());
+      }
+
+      this.a.N().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
    public void e() {
-      super.e();
-      this.g.y(this.m());
+      this.h();
+      this.a.a(0.02F, new emc((double)this.a.bk, (double)this.a.bl, (double)this.a.bm));
+      this.a.a(bmu.a, this.a.do());
    }
 
-   @Override
-   protected boolean a(cts $$0, hx $$1) {
-      if (!$$0.u($$1.c())) {
-         return false;
-      } else {
-         djh $$2 = $$0.a_($$1);
-         if ($$2.a(cws.cv)) {
-            return dhc.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(cws.cD) && $$2.c(czx.b) ? true : $$2.a(ash.R, $$0x -> $$0x.d(cwj.b).map($$0xx -> $$0xx != dju.a).orElse(true));
-         }
-      }
+   private boolean a(cua $$0, hx $$1) {
+      djp $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(cxa.nd)) && $$2.a($$0, $$1, efp.a);
    }
 }

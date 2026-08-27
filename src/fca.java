@@ -1,147 +1,57 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
-import javax.annotation.Nullable;
+public class fca extends fdm {
+   private final Runnable c;
+   protected final fca.a a;
+   private final vg k;
+   private final boolean l;
+   private eyk m = eyk.a;
+   protected int b;
+   private ext n;
 
-public class fca extends fdb {
-   private static final ahg a = new ahg("icon/draft_report");
-   private int b;
-   private final vf c;
-   private final boolean k;
-   private vf l;
-   private final List<exg> m = Lists.newArrayList();
-   @Nullable
-   private exg n;
-
-   public fca(@Nullable vf $$0, boolean $$1) {
-      super(vf.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+   public fca(Runnable $$0, fca.a $$1, vg $$2, vg $$3, boolean $$4) {
+      super($$2);
       this.c = $$0;
-      this.k = $$1;
+      this.a = $$1;
+      this.k = $$3;
+      this.l = $$4;
    }
 
    @Override
-   protected void aN_() {
-      this.b = 0;
-      this.m.clear();
-      vf $$0 = this.k ? vf.c("deathScreen.spectate") : vf.c("deathScreen.respawn");
-      this.m.add(this.d(exg.a($$0, $$0x -> {
-         this.f.s.fQ();
-         $$0x.j = false;
-      }).a(this.g / 2 - 100, this.h / 4 + 72, 200, 20).a()));
-      this.n = this.d(
-         exg.a(vf.c("deathScreen.titleScreen"), $$0x -> this.f.aY().a(this.f, this, this::n, true)).a(this.g / 2 - 100, this.h / 4 + 96, 200, 20).a()
-      );
-      this.m.add(this.n);
-      this.c(false);
-      this.l = vf.a("deathScreen.score.value", vf.b(Integer.toString(this.f.s.fN())).a(n.o));
-   }
-
-   @Override
-   public boolean aL_() {
-      return false;
-   }
-
-   private void n() {
-      if (this.k) {
-         this.D();
-      } else {
-         fbu $$0 = new fca.a($$0x -> {
-            if ($$0x) {
-               this.D();
-            } else {
-               this.f.s.fQ();
-               this.f.a(null);
-            }
-         }, vf.c("deathScreen.quit.confirm"), ve.a, vf.c("deathScreen.titleScreen"), vf.c("deathScreen.respawn"));
-         this.f.a($$0);
-         $$0.b(20);
+   protected void aP_() {
+      super.aP_();
+      this.m = eyk.a(this.i, this.k, this.g - 50);
+      int $$0 = (this.m.a() + 1) * 9;
+      this.d(exr.a(vg.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.n.a())).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
+      this.d(exr.a(vg.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.n.a())).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.d(exr.a(vf.e, $$0x -> this.c.run()).a(this.g / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+      this.n = ext.a(vg.c("selectWorld.backupEraseCache"), this.i).a(this.g / 2 - 155 + 80, 76 + $$0).a();
+      if (this.l) {
+         this.d(this.n);
       }
    }
 
-   private void D() {
-      if (this.f.r != null) {
-         this.f.r.W();
-      }
-
-      this.f.b(new fch(vf.c("menu.savingLevel")));
-      this.f.a(new fdg());
-   }
-
    @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().b(2.0F, 2.0F, 2.0F);
-      $$0.a(this.i, this.e, this.g / 2 / 2, 30, 16777215);
-      $$0.c().b();
-      if (this.c != null) {
-         $$0.a(this.i, this.c, this.g / 2, 85, 16777215);
-      }
-
-      $$0.a(this.i, this.l, this.g / 2, 100, 16777215);
-      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         wc $$4 = this.a($$1);
-         $$0.a(this.i, $$4, $$1, $$2);
-      }
-
-      if (this.n != null && this.f.aY().c()) {
-         $$0.a(a, this.n.B() + this.n.w() - 17, this.n.C() + 3, 15, 15);
-      }
+      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
+      this.m.a($$0, this.g / 2, 70);
    }
 
    @Override
-   public void b(ewu $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.g, this.h, 1615855616, -1602211792);
-   }
-
-   @Nullable
-   private wc a(int $$0) {
-      if (this.c == null) {
-         return null;
-      } else {
-         int $$1 = this.f.h.a(this.c);
-         int $$2 = this.g / 2 - $$1 / 2;
-         int $$3 = this.g / 2 + $$1 / 2;
-         return $$0 >= $$2 && $$0 <= $$3 ? this.f.h.b().a(this.c, $$0 - $$2) : null;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         wc $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.h() != null && $$3.h().a() == vd.a.a) {
-            this.a($$3);
-            return false;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean k() {
+   public boolean aN_() {
       return false;
    }
 
    @Override
-   public void d() {
-      super.d();
-      this.b++;
-      if (this.b == 20) {
-         this.c(true);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.run();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   private void c(boolean $$0) {
-      for (exg $$1 : this.m) {
-         $$1.j = $$0;
-      }
-   }
-
-   public static class a extends fbu {
-      public a(BooleanConsumer $$0, vf $$1, vf $$2, vf $$3, vf $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
-      }
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

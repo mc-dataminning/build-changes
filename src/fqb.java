@@ -1,30 +1,66 @@
-public class fqb extends fpn {
-   private static final int a = 12235202;
+public class fqb extends fsh {
+   private final float a;
+   private final float b;
 
-   protected fqb(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, frq $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)aty.b.b(12235202) / 255.0F - $$9;
-      this.w = (float)aty.b.c(12235202) / 255.0F - $$9;
-      this.x = (float)aty.b.d(12235202) / 255.0F - $$9;
+   fqb(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cng $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
-      super.a();
+   public frl b() {
+      return frl.a;
    }
 
-   public static class a implements fqy<ka> {
-      private final frq a;
+   protected fqb(foe $$0, double $$1, double $$2, double $$3, cng $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(evr.O().aq().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
+   }
 
-      public a(frq $$0) {
-         this.a = $$0;
+   @Override
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a implements frk<jt> {
+      public frh a(jt $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fqb($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
       }
+   }
 
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqb($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+   public static class b implements frk<ka> {
+      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fqb($$1, $$2, $$3, $$4, new cng(cnj.qP));
+      }
+   }
+
+   public static class c implements frk<ka> {
+      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fqb($$1, $$2, $$3, $$4, new cng(cnj.qB));
       }
    }
 }

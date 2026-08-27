@@ -1,29 +1,42 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class elc implements ele<MinecraftServer> {
-   final ahg a;
+public record elc(ekz b, ekz c) implements ekz {
+   public static final Codec<elc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ela.a.fieldOf("min").forGetter(elc::c), ela.a.fieldOf("max").forGetter(elc::d)).apply($$0, elc::new)
+   );
 
-   public elc(ahg $$0) {
-      this.a = $$0;
+   @Override
+   public eky b() {
+      return ela.c;
    }
 
-   public void a(MinecraftServer $$0, elg<MinecraftServer> $$1, long $$2) {
-      ahu $$3 = $$0.aC();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   public static elc a(float $$0, float $$1) {
+      return new elc(ekx.a($$0), ekx.a($$1));
    }
 
-   public static class a extends ele.a<MinecraftServer, elc> {
-      public a() {
-         super(new ahg("function"), elc.class);
-      }
+   @Override
+   public int a(ehf $$0) {
+      return aup.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   }
 
-      public void a(sn $$0, elc $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   @Override
+   public float b(ehf $$0) {
+      return aup.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
 
-      public elc a(sn $$0) {
-         ahg $$1 = new ahg($$0.l("Name"));
-         return new elc($$1);
-      }
+   @Override
+   public Set<ejn<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public ekz c() {
+      return this.b;
+   }
+
+   public ekz d() {
+      return this.c;
    }
 }

@@ -1,12 +1,18 @@
-public class fyd extends fzt<byg, fjs<byg>> {
-   private static final ahg a = new ahg("textures/entity/dolphin.png");
+public class fyd extends gag<byd, fjo<byd>> {
+   private static final ahh a = new ahh("textures/entity/bee/bee_angry.png");
+   private static final ahh i = new ahh("textures/entity/bee/bee_angry_nectar.png");
+   private static final ahh j = new ahh("textures/entity/bee/bee.png");
+   private static final ahh k = new ahh("textures/entity/bee/bee_nectar.png");
 
-   public fyd(fyn.a $$0) {
-      super($$0, new fjs<>($$0.a(fmw.J)), 0.7F);
-      this.a(new gcf(this, $$0.d()));
+   public fyd(fza.a $$0) {
+      super($$0, new fjo<>($$0.a(fni.k)), 0.4F);
    }
 
-   public ahg a(byg $$0) {
-      return a;
+   public ahh a(byd $$0) {
+      if ($$0.aa_()) {
+         return $$0.gp() ? i : a;
+      } else {
+         return $$0.gp() ? k : j;
+      }
    }
 }

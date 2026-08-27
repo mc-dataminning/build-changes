@@ -1,71 +1,95 @@
-import com.google.common.base.Predicates;
-import java.util.function.Predicate;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public final class bly {
-   public static final Predicate<blv> a = blv::bx;
-   public static final Predicate<blv> b = $$0 -> $$0.bx() && $$0 instanceof bml;
-   public static final Predicate<blv> c = $$0 -> $$0.bx() && !$$0.bP() && !$$0.bO();
-   public static final Predicate<blv> d = $$0 -> $$0 instanceof bju && $$0.bx();
-   public static final Predicate<blv> e = $$0 -> !($$0 instanceof cfi) || !$$0.P_() && !((cfi)$$0).f();
-   public static final Predicate<blv> f = $$0 -> !$$0.P_();
-   public static final Predicate<blv> g = f.and(blv::bz);
+public class bly {
+   public static final bly a = new bly(Map.of());
+   private final Map<blx, List<emc>> b;
 
-   private bly() {
+   bly(Map<blx, List<emc>> $$0) {
+      this.b = $$0;
    }
 
-   public static Predicate<blv> a(double $$0, double $$1, double $$2, double $$3) {
-      double $$4 = $$3 * $$3;
-      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
+   public static bly.a a() {
+      return new bly.a();
    }
 
-   public static Predicate<blv> a(blv $$0) {
-      emz $$1 = $$0.cg();
-      emz.a $$2 = $$1 == null ? emz.a.a : $$1.l();
-      return (Predicate<blv>)($$2 == emz.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
-         if (!$$3.bu()) {
-            return false;
-         } else if (!$$0.dM().B || $$3 instanceof cfi && ((cfi)$$3).g()) {
-            emz $$4 = $$3.cg();
-            emz.a $$5 = $$4 == null ? emz.a.a : $$4.l();
-            if ($$5 == emz.a.b) {
-               return false;
-            } else {
-               boolean $$6 = $$1 != null && $$1.a($$4);
-               return ($$2 == emz.a.d || $$5 == emz.a.d) && $$6 ? false : $$2 != emz.a.c && $$5 != emz.a.c || $$6;
-            }
-         } else {
-            return false;
-         }
-      }));
-   }
+   public bly a(float $$0, float $$1, float $$2) {
+      Map<blx, List<emc>> $$3 = new EnumMap<>(blx.class);
 
-   public static Predicate<blv> b(blv $$0) {
-      return $$1 -> {
-         while ($$1.bO()) {
-            $$1 = $$1.cZ();
-            if ($$1 == $$0) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-   }
-
-   public static class a implements Predicate<blv> {
-      private final cmy a;
-
-      public a(cmy $$0) {
-         this.a = $$0;
+      for (Entry<blx, List<emc>> $$4 : this.b.entrySet()) {
+         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
       }
 
-      public boolean a(@Nullable blv $$0) {
-         if (!$$0.bx()) {
-            return false;
-         } else {
-            return !($$0 instanceof bml $$1) ? false : $$1.f(this.a);
+      return new bly($$3);
+   }
+
+   private static List<emc> a(List<emc> $$0, float $$1, float $$2, float $$3) {
+      List<emc> $$4 = new ArrayList<>($$0.size());
+
+      for (emc $$5 : $$0) {
+         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      return $$4;
+   }
+
+   @Nullable
+   public emc a(blx $$0, int $$1, float $$2) {
+      List<emc> $$3 = this.b.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
+   }
+
+   public emc b(blx $$0, int $$1, float $$2) {
+      emc $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
+      } else {
+         return $$3;
+      }
+   }
+
+   public emc c(blx $$0, int $$1, float $$2) {
+      List<emc> $$3 = this.b.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         emc $$4 = $$3.get(aup.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
+      }
+   }
+
+   private static emc a(emc $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
+   }
+
+   public static class a {
+      private final Map<blx, List<emc>> a = new EnumMap<>(blx.class);
+
+      a() {
+      }
+
+      public bly.a a(blx $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new emc((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      public bly.a a(blx $$0, emc $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
+
+      public bly a(float $$0, float $$1) {
+         Map<blx, List<emc>> $$2 = new EnumMap<>(blx.class);
+
+         for (blx $$3 : blx.values()) {
+            List<emc> $$4 = this.a.get($$3);
+            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
          }
+
+         return new bly($$2);
       }
    }
 }

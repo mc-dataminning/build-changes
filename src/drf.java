@@ -1,48 +1,73 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
 
-public class drf extends dru<duf> {
-   public drf(Codec<duf> $$0) {
+public abstract class drf extends dsc<dui> {
+   public drf(Codec<dui> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(drw<duf> $$0) {
-      auv $$1 = $$0.d();
-      cuk $$2 = $$0.b();
-      csw $$3 = new csw($$0.e());
-      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      hx.a $$6 = new hx.a();
-      IntListIterator var8 = $$4.iterator();
-
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            hx $$9 = $$2.a(doq.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, cws.cv.o(), 2);
-               bki.a($$2, $$1, $$9, egu.b);
-               djh $$10 = cws.cp.o();
-
-               for (ic $$11 : ic.c.a) {
-                  hx $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
-            }
+   protected void a(cty $$0, auw $$1, hx $$2, dui $$3, int $$4, hx.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(ic.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
          }
       }
-
-      return false;
    }
+
+   protected int a(auw $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(cty $$0, hx $$1, int $$2, hx.a $$3, dui $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.J_() + 1 && $$5 + $$2 + 1 < $$0.al()) {
+         djp $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(asi.aZ)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     djp $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(asi.O)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(dse<dui> $$0) {
+      cus $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      auw $$3 = $$0.d();
+      dui $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      hx.a $$6 = new hx.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
+   }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(cty var1, auw var2, hx var3, int var4, hx.a var5, dui var6);
 }

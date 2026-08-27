@@ -1,188 +1,119 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Supplier;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class eia extends eii {
-   public static final Codec<eia> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(ekk.a.fieldOf("source").forGetter($$0x -> $$0x.b), eia.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
-            .apply($$0, eia::new)
-   );
-   private final ekj b;
-   private final List<eia.b> c;
+public abstract class eia extends ehy {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<eis> i;
+   final BiFunction<cng, ehf, cng> a;
+   private final ehx j = new eia.c() {
+      @Override
+      public void a(Consumer<cng> $$0, ehf $$1) {
+         eia.this.a(eis.a(eia.this.a, $$0, $$1), $$1);
+      }
+   };
 
-   eia(List<ejv> $$0, ekj $$1, List<eia.b> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+   protected eia(int $$0, int $$1, List<eke> $$2, List<eis> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = eiu.a($$3);
+   }
+
+   protected static <T extends eia> P4<Mu<T>, Integer, Integer, List<eke>, List<eis>> b(Instance<T> $$0) {
+      return $$0.group(
+            atx.a(Codec.INT, "weight", Integer.valueOf(1)).forGetter($$0x -> $$0x.g), atx.a(Codec.INT, "quality", Integer.valueOf(0)).forGetter($$0x -> $$0x.h)
+         )
+         .and(a($$0).t1())
+         .and(atx.a(eiu.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.i));
    }
 
    @Override
-   public eik b() {
-      return eil.w;
+   public void a(eho $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public Set<eje<?>> a() {
-      return this.b.b();
-   }
+   protected abstract void a(Consumer<cng> var1, ehf var2);
 
    @Override
-   public cmy a(cmy $$0, egw $$1) {
-      tk $$2 = this.b.a($$1);
-      if ($$2 != null) {
-         this.c.forEach($$2x -> $$2x.a($$0::w, $$2));
+   public boolean expand(ehf $$0, Consumer<ehx> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static eia.a<?> a(eia.d $$0) {
+      return new eia.b($$0);
+   }
+
+   public abstract static class a<T extends eia.a<T>> extends ehy.a<T> implements eip<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<eis> c = ImmutableList.builder();
+
+      public T a(eis.a $$0) {
+         this.c.add($$0.b());
+         return this.aG_();
       }
 
-      return $$0;
-   }
+      protected List<eis> a() {
+         return this.c.build();
+      }
 
-   public static eia.a a(ekj $$0) {
-      return new eia.a($$0);
-   }
-
-   public static eia.a a(egw.b $$0) {
-      return new eia.a(ekh.a($$0));
-   }
-
-   public static class a extends eii.a<eia.a> {
-      private final ekj a;
-      private final List<eia.b> b = Lists.newArrayList();
-
-      a(ekj $$0) {
+      public T a(int $$0) {
          this.a = $$0;
+         return this.aG_();
       }
 
-      public eia.a a(String $$0, String $$1, eia.c $$2) {
-         try {
-            this.b.add(new eia.b(eia.d.a($$0), eia.d.a($$1), $$2));
-            return this;
-         } catch (CommandSyntaxException var5) {
-            throw new IllegalArgumentException(var5);
-         }
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.aG_();
+      }
+   }
+
+   static class b extends eia.a<eia.b> {
+      private final eia.d c;
+
+      public b(eia.d $$0) {
+         this.c = $$0;
       }
 
-      public eia.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, eia.c.a);
-      }
-
-      protected eia.a a() {
+      protected eia.b g() {
          return this;
       }
 
       @Override
-      public eij b() {
-         return new eia(this.g(), this.a, this.b);
+      public ehy b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
       }
    }
 
-   static record b(eia.d b, eia.d c, eia.c d) {
-      public static final Codec<eia.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  eia.d.a.fieldOf("source").forGetter(eia.b::a), eia.d.a.fieldOf("target").forGetter(eia.b::b), eia.c.d.fieldOf("op").forGetter(eia.b::c)
-               )
-               .apply($$0, eia.b::new)
-      );
-
-      public void a(Supplier<tk> $$0, tk $$1) {
-         try {
-            List<tk> $$2 = this.b.b().a($$1);
-            if (!$$2.isEmpty()) {
-               this.d.a($$0.get(), this.c.b(), $$2);
-            }
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      public eia.d a() {
-         return this.b;
-      }
-
-      public eia.d b() {
-         return this.c;
-      }
-
-      public eia.c c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements avk {
-      a("replace") {
-         @Override
-         public void a(tk $$0, ek.g $$1, List<tk> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (tk)Iterables.getLast($$2));
-         }
-      },
-      b("append") {
-         @Override
-         public void a(tk $$0, ek.g $$1, List<tk> $$2) throws CommandSyntaxException {
-            List<tk> $$3 = $$1.a($$0, st::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof st) {
-                  $$2.forEach($$1xx -> ((st)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(tk $$0, ek.g $$1, List<tk> $$2) throws CommandSyntaxException {
-            List<tk> $$3 = $$1.a($$0, sn::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof sn) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof sn) {
-                        ((sn)$$1x).a((sn)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      public static final Codec<eia.c> d = avk.a(eia.c::values);
-      private final String e;
-
-      public abstract void a(tk var1, ek.g var2, List<tk> var3) throws CommandSyntaxException;
-
-      c(String $$0) {
-         this.e = $$0;
-      }
-
+   protected abstract class c implements ehx {
       @Override
-      public String c() {
-         return this.e;
+      public int a(float $$0) {
+         return Math.max(aup.d((float)eia.this.g + (float)eia.this.h * $$0), 0);
       }
    }
 
-   static record d(String b, ek.g c) {
-      public static final Codec<eia.d> a = Codec.STRING.comapFlatMap($$0 -> {
-         try {
-            return DataResult.success(a($$0));
-         } catch (CommandSyntaxException var2) {
-            return DataResult.error(() -> "Failed to parse path " + $$0 + ": " + var2.getMessage());
-         }
-      }, eia.d::a);
-
-      public static eia.d a(String $$0) throws CommandSyntaxException {
-         ek.g $$1 = new ek().a(new StringReader($$0));
-         return new eia.d($$0, $$1);
-      }
-
-      public String a() {
-         return this.b;
-      }
-
-      public ek.g b() {
-         return this.c;
-      }
+   @FunctionalInterface
+   protected interface d {
+      eia build(int var1, int var2, List<eke> var3, List<eis> var4);
    }
 }

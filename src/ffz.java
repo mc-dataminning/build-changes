@@ -1,262 +1,384 @@
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
-public class ffz extends fdb {
-   public static final int a = 308;
-   public static final int b = 100;
-   public static final int c = 74;
-   public static final int k = 64;
-   private static final Logger m = LogUtils.getLogger();
-   private final fof n = new fof();
-   private final fdb o;
-   protected fgd l;
-   private foe p;
-   private exg q;
-   private exg r;
-   private exg t;
-   @Nullable
-   private List<vf> u;
-   private fod v;
-   private git.b w;
-   @Nullable
-   private git.a x;
+public class ffz extends fdm {
+   private static final vg a = vg.c("structure_block.structure_name");
+   private static final vg b = vg.c("structure_block.position");
+   private static final vg c = vg.c("structure_block.size");
+   private static final vg k = vg.c("structure_block.integrity");
+   private static final vg l = vg.c("structure_block.custom_data");
+   private static final vg m = vg.c("structure_block.include_entities");
+   private static final vg n = vg.c("structure_block.detect_size");
+   private static final vg o = vg.c("structure_block.show_air");
+   private static final vg p = vg.c("structure_block.show_boundingbox");
+   private static final ImmutableList<dkz> q = ImmutableList.copyOf(dkz.values());
+   private static final ImmutableList<dkz> r = q.stream().filter($$0 -> $$0 != dkz.d).collect(ImmutableList.toImmutableList());
+   private final dir t;
+   private dbu u = dbu.a;
+   private ddk v = ddk.a;
+   private dkz w = dkz.d;
+   private boolean x;
    private boolean y;
+   private boolean z;
+   private eya A;
+   private eya B;
+   private eya C;
+   private eya D;
+   private eya E;
+   private eya F;
+   private eya G;
+   private eya H;
+   private eya I;
+   private eya J;
+   private exr K;
+   private exr L;
+   private exr M;
+   private exr N;
+   private exr O;
+   private exr P;
+   private exr Q;
+   private exy<Boolean> R;
+   private exy<dbu> S;
+   private exy<Boolean> T;
+   private exy<Boolean> U;
+   private final DecimalFormat V = new DecimalFormat("0.0###");
 
-   public ffz(fdb $$0) {
-      super(vf.c("multiplayer.title"));
-      this.o = $$0;
+   public ffz(dir $$0) {
+      super(vg.c(cxa.pa.h()));
+      this.t = $$0;
+      this.V.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT));
+   }
+
+   private void o() {
+      if (this.a(dir.a.a)) {
+         this.f.a(null);
+      }
+   }
+
+   private void E() {
+      this.t.a(this.u);
+      this.t.a(this.v);
+      this.t.a(this.w);
+      this.t.a(this.x);
+      this.t.d(this.y);
+      this.t.e(this.z);
+      this.f.a(null);
    }
 
    @Override
-   protected void aN_() {
-      if (this.y) {
-         this.l.a(this.g, this.h - 64 - 32, 0, 32);
-      } else {
-         this.y = true;
-         this.p = new foe(this.f);
-         this.p.a();
-         this.w = new git.b();
-
-         try {
-            this.x = new git.a(this.w);
-            this.x.start();
-         } catch (Exception var8) {
-            m.warn("Unable to start LAN server detection: {}", var8.getMessage());
+   protected void aP_() {
+      this.d(exr.a(vf.d, $$0x -> this.o()).a(this.g / 2 - 4 - 150, 210, 150, 20).a());
+      this.d(exr.a(vf.e, $$0x -> this.E()).a(this.g / 2 + 4, 210, 150, 20).a());
+      this.u = this.t.l();
+      this.v = this.t.m();
+      this.w = this.t.x();
+      this.x = this.t.y();
+      this.y = this.t.G();
+      this.z = this.t.H();
+      this.K = this.d(exr.a(vg.c("structure_block.button.save"), $$0x -> {
+         if (this.t.x() == dkz.a) {
+            this.a(dir.a.b);
+            this.f.a(null);
          }
+      }).a(this.g / 2 + 4 + 100, 185, 50, 20).a());
+      this.L = this.d(exr.a(vg.c("structure_block.button.load"), $$0x -> {
+         if (this.t.x() == dkz.b) {
+            this.a(dir.a.c);
+            this.f.a(null);
+         }
+      }).a(this.g / 2 + 4 + 100, 185, 50, 20).a());
+      this.d(
+         exy.<dkz>a($$0x -> vg.c("structure_block.mode." + $$0x.c()))
+            .a(r, q)
+            .a()
+            .a(this.w)
+            .a(this.g / 2 - 4 - 150, 185, 50, 20, vg.b("MODE"), ($$0x, $$1x) -> {
+               this.t.a($$1x);
+               this.a($$1x);
+            })
+      );
+      this.Q = this.d(exr.a(vg.c("structure_block.button.detect_size"), $$0x -> {
+         if (this.t.x() == dkz.a) {
+            this.a(dir.a.d);
+            this.f.a(null);
+         }
+      }).a(this.g / 2 + 4 + 100, 120, 50, 20).a());
+      this.R = this.d(exy.b(!this.t.y()).a().a(this.g / 2 + 4 + 100, 160, 50, 20, m, ($$0x, $$1x) -> this.t.a(!$$1x)));
+      this.S = this.d(exy.<dbu>a(dbu::b).a(dbu.values()).a().a(this.u).a(this.g / 2 - 20, 185, 40, 20, vg.b("MIRROR"), ($$0x, $$1x) -> this.t.a($$1x)));
+      this.T = this.d(exy.b(this.t.G()).a().a(this.g / 2 + 4 + 100, 80, 50, 20, o, ($$0x, $$1x) -> this.t.d($$1x)));
+      this.U = this.d(exy.b(this.t.H()).a().a(this.g / 2 + 4 + 100, 80, 50, 20, p, ($$0x, $$1x) -> this.t.e($$1x)));
+      this.M = this.d(exr.a(vg.b("0"), $$0x -> {
+         this.t.a(ddk.a);
+         this.H();
+      }).a(this.g / 2 - 1 - 40 - 1 - 40 - 20, 185, 40, 20).a());
+      this.N = this.d(exr.a(vg.b("90"), $$0x -> {
+         this.t.a(ddk.b);
+         this.H();
+      }).a(this.g / 2 - 1 - 40 - 20, 185, 40, 20).a());
+      this.O = this.d(exr.a(vg.b("180"), $$0x -> {
+         this.t.a(ddk.c);
+         this.H();
+      }).a(this.g / 2 + 1 + 20, 185, 40, 20).a());
+      this.P = this.d(exr.a(vg.b("270"), $$0x -> {
+         this.t.a(ddk.d);
+         this.H();
+      }).a(this.g / 2 + 1 + 40 + 1 + 20, 185, 40, 20).a());
+      this.A = new eya(this.i, this.g / 2 - 152, 40, 300, 20, vg.c("structure_block.structure_name")) {
+         @Override
+         public boolean a(char $$0, int $$1) {
+            return !ffz.this.a(this.a(), $$0, this.e()) ? false : super.a($$0, $$1);
+         }
+      };
+      this.A.f(128);
+      this.A.a(this.t.d());
+      this.e(this.A);
+      hx $$0 = this.t.g();
+      this.B = new eya(this.i, this.g / 2 - 152, 80, 80, 20, vg.c("structure_block.position.x"));
+      this.B.f(15);
+      this.B.a(Integer.toString($$0.u()));
+      this.e(this.B);
+      this.C = new eya(this.i, this.g / 2 - 72, 80, 80, 20, vg.c("structure_block.position.y"));
+      this.C.f(15);
+      this.C.a(Integer.toString($$0.v()));
+      this.e(this.C);
+      this.D = new eya(this.i, this.g / 2 + 8, 80, 80, 20, vg.c("structure_block.position.z"));
+      this.D.f(15);
+      this.D.a(Integer.toString($$0.w()));
+      this.e(this.D);
+      jb $$1 = this.t.k();
+      this.E = new eya(this.i, this.g / 2 - 152, 120, 80, 20, vg.c("structure_block.size.x"));
+      this.E.f(15);
+      this.E.a(Integer.toString($$1.u()));
+      this.e(this.E);
+      this.F = new eya(this.i, this.g / 2 - 72, 120, 80, 20, vg.c("structure_block.size.y"));
+      this.F.f(15);
+      this.F.a(Integer.toString($$1.v()));
+      this.e(this.F);
+      this.G = new eya(this.i, this.g / 2 + 8, 120, 80, 20, vg.c("structure_block.size.z"));
+      this.G.f(15);
+      this.G.a(Integer.toString($$1.w()));
+      this.e(this.G);
+      this.H = new eya(this.i, this.g / 2 - 152, 120, 80, 20, vg.c("structure_block.integrity.integrity"));
+      this.H.f(15);
+      this.H.a(this.V.format((double)this.t.z()));
+      this.e(this.H);
+      this.I = new eya(this.i, this.g / 2 - 72, 120, 80, 20, vg.c("structure_block.integrity.seed"));
+      this.I.f(31);
+      this.I.a(Long.toString(this.t.A()));
+      this.e(this.I);
+      this.J = new eya(this.i, this.g / 2 - 152, 120, 240, 20, vg.c("structure_block.custom_data"));
+      this.J.f(128);
+      this.J.a(this.t.w());
+      this.e(this.J);
+      this.H();
+      this.a(this.w);
+      this.c(this.A);
+   }
 
-         this.l = new fgd(this, this.f, this.g, this.h - 64 - 32, 32, 36);
-         this.l.a(this.p);
+   @Override
+   public void a(evr $$0, int $$1, int $$2) {
+      String $$3 = this.A.a();
+      String $$4 = this.B.a();
+      String $$5 = this.C.a();
+      String $$6 = this.D.a();
+      String $$7 = this.E.a();
+      String $$8 = this.F.a();
+      String $$9 = this.G.a();
+      String $$10 = this.H.a();
+      String $$11 = this.I.a();
+      String $$12 = this.J.a();
+      this.b($$0, $$1, $$2);
+      this.A.a($$3);
+      this.B.a($$4);
+      this.C.a($$5);
+      this.D.a($$6);
+      this.E.a($$7);
+      this.F.a($$8);
+      this.G.a($$9);
+      this.H.a($$10);
+      this.I.a($$11);
+      this.J.a($$12);
+   }
+
+   private void H() {
+      this.M.j = true;
+      this.N.j = true;
+      this.O.j = true;
+      this.P.j = true;
+      switch (this.t.m()) {
+         case a:
+            this.M.j = false;
+            break;
+         case c:
+            this.O.j = false;
+            break;
+         case d:
+            this.P.j = false;
+            break;
+         case b:
+            this.N.j = false;
       }
+   }
 
-      this.e(this.l);
-      this.r = this.d(exg.a(vf.c("selectServer.select"), $$0 -> this.n()).a(100).a());
-      exg $$1 = this.d(exg.a(vf.c("selectServer.direct"), $$0 -> {
-         this.v = new fod(gfs.a("selectServer.defaultName"), "", fod.b.c);
-         this.f.a(new fcc(this, this::g, this.v));
-      }).a(100).a());
-      exg $$2 = this.d(exg.a(vf.c("selectServer.add"), $$0 -> {
-         this.v = new fod(gfs.a("selectServer.defaultName"), "", fod.b.c);
-         this.f.a(new fce(this, this::f, this.v));
-      }).a(100).a());
-      this.q = this.d(exg.a(vf.c("selectServer.edit"), $$0 -> {
-         fgd.a $$1x = this.l.i();
-         if ($$1x instanceof fgd.d) {
-            fod $$2x = ((fgd.d)$$1x).c();
-            this.v = new fod($$2x.a, $$2x.b, fod.b.c);
-            this.v.b($$2x);
-            this.f.a(new fce(this, this::e, this.v));
-         }
-      }).a(74).a());
-      this.t = this.d(exg.a(vf.c("selectServer.delete"), $$0 -> {
-         fgd.a $$1x = this.l.i();
-         if ($$1x instanceof fgd.d) {
-            String $$2x = ((fgd.d)$$1x).c().a;
-            if ($$2x != null) {
-               vf $$3x = vf.c("selectServer.deleteQuestion");
-               vf $$4x = vf.a("selectServer.deleteWarning", $$2x);
-               vf $$5x = vf.c("selectServer.deleteButton");
-               vf $$6x = ve.e;
-               this.f.a(new fbu(this::c, $$3x, $$4x, $$5x, $$6x));
-            }
-         }
-      }).a(74).a());
-      exg $$3 = this.d(exg.a(vf.c("selectServer.refresh"), $$0 -> this.I()).a(74).a());
-      exg $$4 = this.d(exg.a(ve.k, $$0 -> this.f.a(this.o)).a(74).a());
-      fau $$5 = fau.d();
-      fan $$6 = $$5.a(new fan(308, 20, fan.b.a));
-      $$6.a(this.r);
-      $$6.a($$1);
-      $$6.a($$2);
-      $$5.a(fav.b(4));
-      fan $$7 = $$5.a(new fan(308, 20, fan.b.a));
-      $$7.a(this.q);
-      $$7.a(this.t);
-      $$7.a($$3);
-      $$7.a($$4);
-      $$5.a();
-      fao.a($$5, 0, this.h - 64, this.g, 64);
-      this.D();
+   private void a(dkz $$0) {
+      this.A.g(false);
+      this.B.g(false);
+      this.C.g(false);
+      this.D.g(false);
+      this.E.g(false);
+      this.F.g(false);
+      this.G.g(false);
+      this.H.g(false);
+      this.I.g(false);
+      this.J.g(false);
+      this.K.k = false;
+      this.L.k = false;
+      this.Q.k = false;
+      this.R.k = false;
+      this.S.k = false;
+      this.M.k = false;
+      this.N.k = false;
+      this.O.k = false;
+      this.P.k = false;
+      this.T.k = false;
+      this.U.k = false;
+      switch ($$0) {
+         case a:
+            this.A.g(true);
+            this.B.g(true);
+            this.C.g(true);
+            this.D.g(true);
+            this.E.g(true);
+            this.F.g(true);
+            this.G.g(true);
+            this.K.k = true;
+            this.Q.k = true;
+            this.R.k = true;
+            this.T.k = true;
+            break;
+         case b:
+            this.A.g(true);
+            this.B.g(true);
+            this.C.g(true);
+            this.D.g(true);
+            this.H.g(true);
+            this.I.g(true);
+            this.L.k = true;
+            this.R.k = true;
+            this.S.k = true;
+            this.M.k = true;
+            this.N.k = true;
+            this.O.k = true;
+            this.P.k = true;
+            this.U.k = true;
+            this.H();
+            break;
+         case c:
+            this.A.g(true);
+            break;
+         case d:
+            this.J.g(true);
+      }
+   }
+
+   private boolean a(dir.a $$0) {
+      hx $$1 = new hx(this.c(this.B.a()), this.c(this.C.a()), this.c(this.D.a()));
+      jb $$2 = new jb(this.c(this.E.a()), this.c(this.F.a()), this.c(this.G.a()));
+      float $$3 = this.b(this.H.a());
+      long $$4 = this.a(this.I.a());
+      this.f
+         .J()
+         .b(new afb(this.t.aE_(), $$0, this.t.x(), this.A.a(), $$1, $$2, this.t.l(), this.t.m(), this.J.a(), this.t.y(), this.t.G(), this.t.H(), $$3, $$4));
+      return true;
+   }
+
+   private long a(String $$0) {
+      try {
+         return Long.valueOf($$0);
+      } catch (NumberFormatException var3) {
+         return 0L;
+      }
+   }
+
+   private float b(String $$0) {
+      try {
+         return Float.valueOf($$0);
+      } catch (NumberFormatException var3) {
+         return 1.0F;
+      }
+   }
+
+   private int c(String $$0) {
+      try {
+         return Integer.parseInt($$0);
+      } catch (NumberFormatException var3) {
+         return 0;
+      }
    }
 
    @Override
    public void d() {
-      super.d();
-      List<gis> $$0 = this.w.a();
-      if ($$0 != null) {
-         this.l.a($$0);
-      }
-
-      this.n.a();
-   }
-
-   @Override
-   public void j() {
-      if (this.x != null) {
-         this.x.interrupt();
-         this.x = null;
-      }
-
-      this.n.b();
-      this.l.d();
-   }
-
-   private void I() {
-      this.f.a(new ffz(this.o));
-   }
-
-   private void c(boolean $$0) {
-      fgd.a $$1 = this.l.i();
-      if ($$0 && $$1 instanceof fgd.d) {
-         this.p.a(((fgd.d)$$1).c());
-         this.p.b();
-         this.l.a(null);
-         this.l.a(this.p);
-      }
-
-      this.f.a(this);
-   }
-
-   private void e(boolean $$0) {
-      fgd.a $$1 = this.l.i();
-      if ($$0 && $$1 instanceof fgd.d) {
-         fod $$2 = ((fgd.d)$$1).c();
-         $$2.a = this.v.a;
-         $$2.b = this.v.b;
-         $$2.b(this.v);
-         this.p.b();
-         this.l.a(this.p);
-      }
-
-      this.f.a(this);
-   }
-
-   private void f(boolean $$0) {
-      if ($$0) {
-         fod $$1 = this.p.b(this.v.b);
-         if ($$1 != null) {
-            $$1.a(this.v);
-            this.p.b();
-         } else {
-            this.p.a(this.v, false);
-            this.p.b();
-         }
-
-         this.l.a(null);
-         this.l.a(this.p);
-      }
-
-      this.f.a(this);
-   }
-
-   private void g(boolean $$0) {
-      if ($$0) {
-         fod $$1 = this.p.a(this.v.b);
-         if ($$1 == null) {
-            this.p.a(this.v, true);
-            this.p.b();
-            this.a(this.v);
-         } else {
-            this.a($$1);
-         }
-      } else {
-         this.f.a(this);
-      }
+      this.E();
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if (super.a($$0, $$1, $$2)) {
          return true;
-      } else if ($$0 == 294) {
-         this.I();
-         return true;
-      } else if (this.l.i() != null) {
-         if (fbe.a($$0)) {
-            this.n();
-            return true;
-         } else {
-            return this.l.a($$0, $$1, $$2);
-         }
-      } else {
+      } else if ($$0 != 257 && $$0 != 335) {
          return false;
+      } else {
+         this.o();
+         return true;
       }
    }
 
    @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.u = null;
-      this.l.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      if (this.u != null) {
-         $$0.a(this.i, this.u, $$1, $$2);
+      dkz $$4 = this.t.x();
+      $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
+      if ($$4 != dkz.d) {
+         $$0.b(this.i, a, this.g / 2 - 153, 30, 10526880);
+         this.A.a($$0, $$1, $$2, $$3);
       }
-   }
 
-   public void n() {
-      fgd.a $$0 = this.l.i();
-      if ($$0 instanceof fgd.d) {
-         this.a(((fgd.d)$$0).c());
-      } else if ($$0 instanceof fgd.c) {
-         gis $$1 = ((fgd.c)$$0).b();
-         this.a(new fod($$1.a(), $$1.b(), fod.b.a));
+      if ($$4 == dkz.b || $$4 == dkz.a) {
+         $$0.b(this.i, b, this.g / 2 - 153, 70, 10526880);
+         this.B.a($$0, $$1, $$2, $$3);
+         this.C.a($$0, $$1, $$2, $$3);
+         this.D.a($$0, $$1, $$2, $$3);
+         $$0.b(this.i, m, this.g / 2 + 154 - this.i.a(m), 150, 10526880);
       }
-   }
 
-   private void a(fod $$0) {
-      fbv.a(this, this.f, fpf.a($$0.b), $$0, false);
-   }
-
-   public void a(fgd.a $$0) {
-      this.l.a($$0);
-      this.D();
-   }
-
-   protected void D() {
-      this.r.j = false;
-      this.q.j = false;
-      this.t.j = false;
-      fgd.a $$0 = this.l.i();
-      if ($$0 != null && !($$0 instanceof fgd.b)) {
-         this.r.j = true;
-         if ($$0 instanceof fgd.d) {
-            this.q.j = true;
-            this.t.j = true;
-         }
+      if ($$4 == dkz.a) {
+         $$0.b(this.i, c, this.g / 2 - 153, 110, 10526880);
+         this.E.a($$0, $$1, $$2, $$3);
+         this.F.a($$0, $$1, $$2, $$3);
+         this.G.a($$0, $$1, $$2, $$3);
+         $$0.b(this.i, n, this.g / 2 + 154 - this.i.a(n), 110, 10526880);
+         $$0.b(this.i, o, this.g / 2 + 154 - this.i.a(o), 70, 10526880);
       }
+
+      if ($$4 == dkz.b) {
+         $$0.b(this.i, k, this.g / 2 - 153, 110, 10526880);
+         this.H.a($$0, $$1, $$2, $$3);
+         this.I.a($$0, $$1, $$2, $$3);
+         $$0.b(this.i, p, this.g / 2 + 154 - this.i.a(p), 70, 10526880);
+      }
+
+      if ($$4 == dkz.d) {
+         $$0.b(this.i, l, this.g / 2 - 153, 110, 10526880);
+         this.J.a($$0, $$1, $$2, $$3);
+      }
+
+      $$0.b(this.i, $$4.a(), this.g / 2 - 153, 174, 10526880);
    }
 
-   public fof E() {
-      return this.n;
-   }
-
-   public void c(List<vf> $$0) {
-      this.u = $$0;
-   }
-
-   public foe H() {
-      return this.p;
+   @Override
+   public boolean m() {
+      return false;
    }
 }

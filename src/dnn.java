@@ -1,37 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dnn implements dnv {
-   public static final Codec<dnn> a = RecordCodecBuilder.create($$0 -> $$0.group(hx.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, dnn::new));
-   final hx c;
+public interface dnn<B, T extends B> {
+   static <B, T extends B> dnn<B, T> a(final Class<T> $$0) {
+      return new dnn<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.isInstance($$0) ? $$0 : null);
+         }
 
-   public dnn(hx $$0) {
-      this.c = $$0;
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
    }
 
-   @Override
-   public Optional<elt> a(ctp $$0) {
-      return Optional.of(elt.b(this.c));
+   static <B, T extends B> dnn<B, T> b(final Class<T> $$0) {
+      return new dnn<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
+         }
+
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
    }
 
-   @Override
-   public dnw<?> a() {
-      return dnw.a;
-   }
+   @Nullable
+   T a(B var1);
 
-   public static class a implements dnw<dnn> {
-      public dnn a(ui $$0) {
-         return new dnn($$0.e());
-      }
-
-      public void a(ui $$0, dnn $$1) {
-         $$0.a($$1.c);
-      }
-
-      @Override
-      public Codec<dnn> a() {
-         return dnn.a;
-      }
-   }
+   Class<? extends B> a();
 }

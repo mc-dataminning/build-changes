@@ -1,17 +1,14 @@
 class blo extends blg {
-   protected blo(blh $$0, int $$1) {
+   protected blo(bli $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public void a(bml $$0, int $$1) {
-      super.a($$0, $$1);
-      $$0.a($$0.dN().p(), 1.0F);
-   }
+   public boolean a(bmo $$0, int $$1) {
+      if (!$$0.dL().B && $$0 instanceof cfq $$2) {
+         $$2.gc().a($$1 + 1, 1.0F);
+      }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+      return true;
    }
 }

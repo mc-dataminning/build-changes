@@ -1,24 +1,14 @@
-public class acn implements xf<za> {
-   private final vf a;
-
-   public acn(vf $$0) {
-      this.a = $$0;
-   }
-
-   public acn(ui $$0) {
-      this.a = $$0.m();
+public record acn(int a) implements xg<zb> {
+   public acn(uj $$0) {
+      this($$0.n());
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.a);
+   public void a(uj $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
-   }
-
-   public vf a() {
-      return this.a;
    }
 }

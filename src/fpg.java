@@ -1,22 +1,37 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-@FunctionalInterface
-public interface fpg {
-   Logger a = LogUtils.getLogger();
-   fpg b = $$0 -> {
-      try {
-         InetAddress $$1 = InetAddress.getByName($$0.a());
-         return Optional.of(fpe.a(new InetSocketAddress($$1, $$0.b())));
-      } catch (UnknownHostException var2) {
-         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
-         return Optional.empty();
-      }
-   };
+public enum fpg {
+   a("generic"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery");
 
-   Optional<fpe> resolve(fpf var1);
+   private final String k;
+   private final vg l;
+   private final vg m;
+
+   private fpg(String $$0) {
+      this.k = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.l = vg.c($$1);
+      this.m = vg.c($$1 + ".description");
+   }
+
+   public String a() {
+      return this.k;
+   }
+
+   public vg b() {
+      return this.l;
+   }
+
+   public vg c() {
+      return this.m;
+   }
 }

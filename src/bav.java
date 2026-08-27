@@ -46,8 +46,8 @@ public class bav extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bbw.B);
-      return this.fixTypeEverywhereTyped("MobSpawnerEntityIdentifiersFix", this.getInputSchema().getType(bbw.B), $$0, $$1 -> {
+      Type<?> $$0 = this.getOutputSchema().getType(bbw.C);
+      return this.fixTypeEverywhereTyped("MobSpawnerEntityIdentifiersFix", this.getInputSchema().getType(bbw.C), $$0, $$1 -> {
          Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
          $$2 = $$2.set("id", $$2.createString("MobSpawner"));
          DataResult<? extends Pair<? extends Typed<?>, ?>> $$3 = $$0.readTyped(this.a($$2));

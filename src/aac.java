@@ -1,35 +1,24 @@
-import javax.annotation.Nullable;
-
-public class aac implements xf<za> {
-   private final int a;
-   private final byte b;
-
-   public aac(blv $$0, byte $$1) {
-      this.a = $$0.aj();
-      this.b = $$1;
-   }
-
-   public aac(ui $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readByte();
+public record aac(vg a, vc.b b) implements xg<zb> {
+   public aac(uj $$0) {
+      this($$0.m(), new vc.b($$0));
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.p(this.a);
-      $$0.k(this.b);
+   public void a(uj $$0) {
+      $$0.a(this.a);
+      this.b.a($$0);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public blv a(ctp $$0) {
-      return $$0.a(this.a);
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public byte a() {
+   public vc.b d() {
       return this.b;
    }
 }

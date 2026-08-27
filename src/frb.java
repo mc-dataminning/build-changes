@@ -1,91 +1,76 @@
-public class frb extends frv {
-   private final double a;
-   private final double b;
-   private final double F;
+public class frb extends frh {
+   private static final int a = 3;
+   private final ftz b;
+   private final blw D;
+   private final blw E;
+   private int F;
+   private final fyy G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
+   private double M;
 
-   protected frb(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.a = this.g;
-      this.b = this.h;
-      this.F = this.i;
-      this.D = 0.1F * (this.r.i() * 0.2F + 0.5F);
-      float $$7 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$7 * 0.9F;
-      this.w = $$7 * 0.3F;
-      this.x = $$7;
-      this.t = (int)(Math.random() * 10.0) + 40;
+   public frb(fyy $$0, ftz $$1, foe $$2, blw $$3, blw $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.do());
+   }
+
+   private frb(fyy $$0, ftz $$1, foe $$2, blw $$3, blw $$4, emc $$5) {
+      super($$2, $$3.dq(), $$3.ds(), $$3.dw(), $$5.c, $$5.d, $$5.e);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
+      this.c();
+      this.d();
+   }
+
+   private blw a(blw $$0) {
+      return (blw)(!($$0 instanceof ccb) ? $$0 : ((ccb)$$0).D());
    }
 
    @Override
-   public fqz b() {
-      return fqz.b;
+   public frl b() {
+      return frl.e;
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = 1.0F - $$1;
-      $$1 *= $$1;
-      $$1 = 1.0F - $$1;
-      return this.D * $$1;
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      float $$2 = (float)this.s / (float)this.t;
-      $$2 *= $$2;
-      $$2 *= $$2;
-      int $$3 = $$1 & 0xFF;
-      int $$4 = $$1 >> 16 & 0xFF;
-      $$4 += (int)($$2 * 15.0F * 16.0F);
-      if ($$4 > 240) {
-         $$4 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+   public void a(eqo $$0, evc $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = aup.d((double)$$2, this.K, this.H);
+      double $$5 = aup.d((double)$$2, this.L, this.I);
+      double $$6 = aup.d((double)$$2, this.M, this.J);
+      double $$7 = aup.d((double)$$3, this.D.dq(), $$4);
+      double $$8 = aup.d((double)$$3, this.D.ds(), $$5);
+      double $$9 = aup.d((double)$$3, this.D.dw(), $$6);
+      ftt.a $$10 = this.b.c();
+      emc $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dB(), $$2, new eqk(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
+      this.F++;
+      if (this.F == 3) {
          this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         float var3 = -$$0 + $$0 * $$0 * 2.0F;
-         float var4 = 1.0F - var3;
-         this.g = this.a + this.j * (double)var4;
-         this.h = this.b + this.k * (double)var4 + (double)(1.0F - $$0);
-         this.i = this.F + this.l * (double)var4;
       }
+
+      this.d();
+      this.c();
    }
 
-   public static class a implements fqy<ka> {
-      private final frq a;
+   private void c() {
+      this.H = this.E.dq();
+      this.I = (this.E.ds() + this.E.du()) / 2.0;
+      this.J = this.E.dw();
+   }
 
-      public a(frq $$0) {
-         this.a = $$0;
-      }
-
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frb $$8 = new frb($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   private void d() {
+      this.K = this.H;
+      this.L = this.I;
+      this.M = this.J;
    }
 }

@@ -1,20 +1,31 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bqe {
-   public static bod<bml> a(blz<?> $$0, int $$1) {
-      int $$2 = $$1 * $$1;
-      return brp.a(
-         (Function<brp.b<bml>, ? extends App<brp.c<bml>, brs<bml>>>)($$2x -> $$2x.group($$2x.a(bvn.n), $$2x.c(bvn.q), $$2x.b(bvn.h))
-               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bml> $$9 = $$2x.<bvp>b($$5).a($$3xx -> $$3xx.f((blv)$$7) <= (double)$$2 && $$0.equals($$3xx.ai()));
-                     if ($$9.isEmpty()) {
+   public static bog<bmo> a(bmr $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ai().f()), $$1);
+   }
+
+   public static bpq<bmo> a(bmc<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ai()), $$1);
+   }
+
+   public static bpq<bmo> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bpq<bmo> a(Predicate<bmo> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return brs.a(
+         (Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$2x -> $$2x.group($$2x.c(bvq.n), $$2x.b(bvq.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bmo> $$8 = $$2x.<bvs>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((blw)$$6) <= (double)$$2 && !$$6.w($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
                      } else {
-                        bml $$10 = $$9.get();
-                        $$4.a($$10);
-                        $$3.a(new bon($$10, true));
+                        $$3.a(new boq($$8.get(), true));
                         return true;
                      }
                   }))

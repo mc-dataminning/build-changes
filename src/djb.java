@@ -1,145 +1,169 @@
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class djb extends cyt {
-   public static final MapCodec<djb> b = b(djb::new);
-   public static final dkf<dkj> c = djx.bg;
-   public static final djy d = djx.x;
-   public static final float e = 4.0F;
-   protected static final emm f = cwq.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final emm g = cwq.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
-   protected static final emm h = cwq.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
-   protected static final emm i = cwq.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
-   protected static final emm j = cwq.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final emm k = cwq.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
-   protected static final float l = 2.0F;
-   protected static final float m = 6.0F;
-   protected static final float n = 10.0F;
-   protected static final emm o = cwq.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
-   protected static final emm F = cwq.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
-   protected static final emm G = cwq.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
-   protected static final emm H = cwq.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
-   protected static final emm I = cwq.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
-   protected static final emm J = cwq.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
-   protected static final emm K = cwq.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
-   protected static final emm L = cwq.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final emm M = cwq.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
-   protected static final emm N = cwq.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
-   protected static final emm O = cwq.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
-   protected static final emm P = cwq.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
-   private static final emm[] Q = a(true);
-   private static final emm[] R = a(false);
+public class djb {
+   public static final String a = "spawn_data";
+   private static final String n = "next_mob_spawns_at";
+   public static MapCodec<djb> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ja.b.optionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
+               ja.b.optionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
+               Codec.LONG.optionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
+               Codec.LONG.optionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
+               cuo.b.optionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
+               ahh.a.optionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, djb::new)
+   );
+   protected final Set<UUID> c = new HashSet<>();
+   protected final Set<UUID> d = new HashSet<>();
+   protected long e;
+   protected long f;
+   protected int g;
+   protected Optional<cuo> h;
+   protected Optional<ahh> i;
+   protected bim<cuo> j;
+   @Nullable
+   protected blw k;
+   protected double l;
+   protected double m;
 
-   @Override
-   protected MapCodec<djb> a() {
-      return b;
+   public djb() {
+      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
    }
 
-   private static emm[] a(boolean $$0) {
-      return Arrays.stream(ic.values()).map($$1 -> a($$1, $$0)).toArray(emm[]::new);
+   public djb(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<cuo> $$5, Optional<ahh> $$6) {
+      this.c.addAll($$0);
+      this.d.addAll($$1);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
-   private static emm a(ic $$0, boolean $$1) {
-      switch ($$0) {
-         case a:
-         default:
-            return emj.a(k, $$1 ? L : F);
-         case b:
-            return emj.a(j, $$1 ? K : o);
-         case c:
-            return emj.a(i, $$1 ? N : H);
-         case d:
-            return emj.a(h, $$1 ? M : G);
-         case e:
-            return emj.a(g, $$1 ? P : J);
-         case f:
-            return emj.a(f, $$1 ? O : I);
+   public void a(dja $$0) {
+      bim<cuo> $$1 = $$0.i();
+      if ($$1.d()) {
+         this.j = bim.a(this.h.orElseGet(cuo::new));
+      } else {
+         this.j = $$1;
       }
    }
 
-   public djb(djg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, ic.c).a(c, dkj.a).a(d, Boolean.valueOf(false)));
+   public void a() {
+      this.c.clear();
+      this.g = 0;
+      this.f = 0L;
+      this.e = 0L;
+      this.d.clear();
    }
 
-   @Override
-   public boolean g_(djh $$0) {
-      return true;
+   public boolean b() {
+      boolean $$0 = this.h.isPresent() && this.h.get().a().b("id", 8);
+      return $$0 || !this.j.d();
    }
 
-   @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return ($$0.c(d) ? Q : R)[$$0.c(a).ordinal()];
+   public boolean a(dja $$0, int $$1) {
+      return this.g >= $$0.a($$1);
    }
 
-   private boolean a(djh $$0, djh $$1) {
-      cwq $$2 = $$0.c(c) == dkj.a ? cws.by : cws.br;
-      return $$1.a($$2) && $$1.c(dja.c) && $$1.c(a) == $$0.c(a);
+   public boolean c() {
+      return this.d.isEmpty();
    }
 
-   @Override
-   public djh a(ctp $$0, hx $$1, djh $$2, cfi $$3) {
-      if (!$$0.B && $$3.fT().d) {
-         hx $$4 = $$1.a($$2.c(a).g());
-         if (this.a($$2, $$0.a_($$4))) {
-            $$0.b($$4, false);
+   public boolean a(ane $$0, dja $$1, int $$2) {
+      return $$0.X() >= this.f && this.d.size() < $$1.b($$2);
+   }
+
+   public int a(hx $$0) {
+      if (this.c.isEmpty()) {
+         ac.a("Trial Spawner at " + $$0 + " has no detected players");
+      }
+
+      return Math.max(0, this.c.size() - 1);
+   }
+
+   public void a(ane $$0, hx $$1, diy $$2, int $$3) {
+      List<UUID> $$4 = $$2.detect($$0, $$1, $$3);
+      boolean $$5 = this.c.addAll($$4);
+      if ($$5) {
+         this.f = Math.max($$0.X() + 40L, this.f);
+         $$0.c(3013, $$1, this.c.size());
+      }
+   }
+
+   public boolean a(ane $$0, dja $$1, float $$2) {
+      long $$3 = this.e - (long)$$1.h();
+      return (float)$$0.X() >= (float)$$3 + $$2;
+   }
+
+   public boolean b(ane $$0, dja $$1, float $$2) {
+      long $$3 = this.e - (long)$$1.h();
+      return (float)($$0.X() - $$3) % $$2 == 0.0F;
+   }
+
+   public boolean a(ane $$0) {
+      return $$0.X() >= this.e;
+   }
+
+   public void a(diz $$0, auw $$1, bmc<?> $$2) {
+      this.a($$0, $$1).a().a("id", kd.g.b($$2).toString());
+   }
+
+   protected cuo a(diz $$0, auw $$1) {
+      if (this.h.isPresent()) {
+         return this.h.get();
+      } else {
+         this.h = Optional.of(this.j.b($$1).map(bio.b::b).orElseGet(cuo::new));
+         $$0.e();
+         return this.h.get();
+      }
+   }
+
+   @Nullable
+   public blw a(diz $$0, ctx $$1, djc $$2) {
+      if ($$0.a($$1) && $$2.d()) {
+         if (this.k == null) {
+            so $$3 = this.a($$0, $$1.F_()).a();
+            if ($$3.b("id", 8)) {
+               this.k = bmc.a($$3, $$1, Function.identity());
+            }
          }
-      }
 
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(djh $$0, ctp $$1, hx $$2, djh $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         hx $$5 = $$2.a($$0.c(a).g());
-         if (this.a($$0, $$1.a_($$5))) {
-            $$1.b($$5, true);
-         }
+         return this.k;
+      } else {
+         return null;
       }
    }
 
-   @Override
-   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
-      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? cws.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(djh $$0, cts $$1, hx $$2) {
-      djh $$3 = $$1.a_($$2.a($$0.c(a).g()));
-      return this.a($$0, $$3) || $$3.a(cws.bQ) && $$3.c(a) == $$0.c(a);
-   }
-
-   @Override
-   public void a(djh $$0, ctp $$1, hx $$2, cwq $$3, hx $$4, boolean $$5) {
-      if ($$0.a((cts)$$1, $$2)) {
-         $$1.a($$2.a($$0.c(a).g()), $$3, $$4);
+   public so a(djc $$0) {
+      so $$1 = new so();
+      if ($$0 == djc.c) {
+         $$1.a("next_mob_spawns_at", this.f);
       }
+
+      this.h
+         .ifPresent($$1x -> $$1.a("spawn_data", (tl)cuo.b.encodeStart(tc.a, $$1x).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData"))));
+      return $$1;
    }
 
-   @Override
-   public cmy a(cts $$0, hx $$1, djh $$2) {
-      return new cmy($$2.c(c) == dkj.b ? cws.br : cws.by);
+   public double d() {
+      return this.l;
    }
 
-   @Override
-   public djh a(djh $$0, ddc $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public djh a(djh $$0, dbm $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(a, c, d);
-   }
-
-   @Override
-   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
-      return false;
+   public double e() {
+      return this.m;
    }
 }

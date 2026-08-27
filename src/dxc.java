@@ -1,76 +1,69 @@
-import com.mojang.datafixers.Products.P3;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public abstract class dxc {
-   public static final Codec<dxc> c = kd.X.q().dispatch(dxc::a, dxd::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
+public class dxc extends dxk {
+   public static final Codec<dxc> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  atx.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bjh.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, dxc::new)
+   );
+   private final int b;
+   private final bjh h;
 
-   protected static <P extends dxc> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
+   public dxc(int $$0, int $$1, int $$2, int $$3, bjh $$4) {
+      super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
    }
 
-   public dxc(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   protected dxl<?> a() {
+      return dxl.g;
    }
 
-   protected abstract dxd<?> a();
+   @Override
+   public List<dvs.a> a(cud $$0, BiConsumer<hx, djp> $$1, auw $$2, int $$3, hx $$4, dvc $$5) {
+      ic $$6 = ic.c.a.a($$2);
+      int $$7 = $$3 - 1;
+      hx.a $$8 = $$4.j();
+      hx $$9 = $$8.d();
+      a($$0, $$1, $$2, $$9, $$5);
+      List<dvs.a> $$10 = Lists.newArrayList();
 
-   public abstract List<dvk.a> a(ctv var1, BiConsumer<hx, djh> var2, auv var3, int var4, hx var5, duu var6);
+      for (int $$11 = 0; $$11 <= $$7; $$11++) {
+         if ($$11 + 1 >= $$7 + $$2.a(2)) {
+            $$8.c($$6);
+         }
 
-   public int a(auv $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
-   }
+         if (dto.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
 
-   private static boolean c(ctv $$0, hx $$1) {
-      return $$0.a($$1, $$0x -> dru.b($$0x) && !$$0x.a(cws.i) && !$$0x.a(cws.fl));
-   }
+         if ($$11 >= this.b) {
+            $$10.add(new dvs.a($$8.i(), 0, false));
+         }
 
-   protected static void a(ctv $$0, BiConsumer<hx, djh> $$1, auv $$2, hx $$3, duu $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+         $$8.c(ic.b);
       }
-   }
 
-   protected boolean b(ctv $$0, BiConsumer<hx, djh> $$1, auv $$2, hx $$3, duu $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
+      int $$12 = this.h.a($$2);
 
-   protected boolean a(ctv $$0, BiConsumer<hx, djh> $$1, auv $$2, hx $$3, duu $$4, Function<djh, djh> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
+      for (int $$13 = 0; $$13 <= $$12; $$13++) {
+         if (dto.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         $$10.add(new dvs.a($$8.i(), 0, false));
+         $$8.c($$6);
       }
-   }
 
-   protected void a(ctv $$0, BiConsumer<hx, djh> $$1, auv $$2, hx.a $$3, duu $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected boolean a(ctv $$0, hx $$1) {
-      return dtg.c($$0, $$1);
-   }
-
-   public boolean b(ctv $$0, hx $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(ash.t));
+      return $$10;
    }
 }

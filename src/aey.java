@@ -1,32 +1,44 @@
-public class aey implements xf<adj> {
+import javax.annotation.Nullable;
+
+public class aey implements xg<adk> {
    private final int a;
-   private final cmy b;
+   private final String b;
+   private final boolean c;
 
-   public aey(int $$0, cmy $$1) {
+   public aey(int $$0, String $$1, boolean $$2) {
       this.a = $$0;
-      this.b = $$1.p();
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public void a(adj $$0) {
-      $$0.a(this);
-   }
-
-   public aey(ui $$0) {
-      this.a = $$0.readShort();
-      this.b = $$0.r();
+   public aey(uj $$0) {
+      this.a = $$0.n();
+      this.b = $$0.s();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.l(this.a);
+   public void a(uj $$0) {
+      $$0.c(this.a);
       $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public int a() {
-      return this.a;
+   public void a(adk $$0) {
+      $$0.a(this);
    }
 
-   public cmy d() {
+   @Nullable
+   public csy a(ctx $$0) {
+      blw $$1 = $$0.a(this.a);
+      return $$1 instanceof chq ? ((chq)$$1).C() : null;
+   }
+
+   public String a() {
       return this.b;
+   }
+
+   public boolean d() {
+      return this.c;
    }
 }

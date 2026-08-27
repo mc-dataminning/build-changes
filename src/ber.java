@@ -14,7 +14,7 @@ public class ber extends bde {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          false,
-         bbw.I,
+         bbw.J,
          () -> DSL.fields(
                "dimensions",
                DSL.compoundList(
@@ -29,7 +29,7 @@ public class ber extends bde {
                            DSL::remainder,
                            "minecraft:flat",
                            (Supplier<TypeTemplate>)() -> DSL.optionalFields(
-                                 "settings", DSL.optionalFields("biome", bbw.G.in($$0), "layers", DSL.list(DSL.optionalFields("block", bbw.y.in($$0))))
+                                 "settings", DSL.optionalFields("biome", bbw.H.in($$0), "layers", DSL.list(DSL.optionalFields("block", bbw.z.in($$0))))
                               ),
                            "minecraft:noise",
                            (Supplier<TypeTemplate>)() -> DSL.optionalFields(
@@ -39,11 +39,11 @@ public class ber extends bde {
                                     DSL.string(),
                                     ImmutableMap.of(
                                        "minecraft:fixed",
-                                       (Supplier<TypeTemplate>)() -> DSL.fields("biome", bbw.G.in($$0)),
+                                       (Supplier<TypeTemplate>)() -> DSL.fields("biome", bbw.H.in($$0)),
                                        "minecraft:multi_noise",
-                                       (Supplier<TypeTemplate>)() -> DSL.list(DSL.fields("biome", bbw.G.in($$0))),
+                                       (Supplier<TypeTemplate>)() -> DSL.list(DSL.fields("biome", bbw.H.in($$0))),
                                        "minecraft:checkerboard",
-                                       (Supplier<TypeTemplate>)() -> DSL.fields("biomes", DSL.list(bbw.G.in($$0))),
+                                       (Supplier<TypeTemplate>)() -> DSL.fields("biomes", DSL.list(bbw.H.in($$0))),
                                        "minecraft:vanilla_layered",
                                        DSL::remainder,
                                        "minecraft:the_end",
@@ -51,7 +51,7 @@ public class ber extends bde {
                                     )
                                  ),
                                  "settings",
-                                 DSL.or(DSL.constType(DSL.string()), DSL.optionalFields("default_block", bbw.y.in($$0), "default_fluid", bbw.y.in($$0)))
+                                 DSL.or(DSL.constType(DSL.string()), DSL.optionalFields("default_block", bbw.z.in($$0), "default_fluid", bbw.z.in($$0)))
                               )
                         )
                      )

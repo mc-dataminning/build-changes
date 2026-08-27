@@ -1,86 +1,11 @@
-public class bjt implements bju {
-   private final bju c;
-   private final bju d;
+import javax.annotation.Nullable;
 
-   public bjt(bju $$0, bju $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+public interface bjt {
+   void a();
 
-   @Override
-   public int b() {
-      return this.c.b() + this.d.b();
-   }
-
-   @Override
-   public boolean ai_() {
-      return this.c.ai_() && this.d.ai_();
-   }
-
-   public boolean a(bju $$0) {
-      return this.c == $$0 || this.d == $$0;
-   }
-
-   @Override
-   public cmy a(int $$0) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
-   }
-
-   @Override
-   public cmy a(int $$0, int $$1) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
-   }
-
-   @Override
-   public cmy b(int $$0) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cmy $$1) {
-      if ($$0 >= this.c.b()) {
-         this.d.a($$0 - this.c.b(), $$1);
-      } else {
-         this.c.a($$0, $$1);
+   static void a_(@Nullable Object $$0) {
+      if ($$0 instanceof bjt) {
+         ((bjt)$$0).a();
       }
-   }
-
-   @Override
-   public int ak_() {
-      return this.c.ak_();
-   }
-
-   @Override
-   public void e() {
-      this.c.e();
-      this.d.e();
-   }
-
-   @Override
-   public boolean a(cfi $$0) {
-      return this.c.a($$0) && this.d.a($$0);
-   }
-
-   @Override
-   public void d_(cfi $$0) {
-      this.c.d_($$0);
-      this.d.d_($$0);
-   }
-
-   @Override
-   public void c(cfi $$0) {
-      this.c.c($$0);
-      this.d.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cmy $$1) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.c.a();
-      this.d.a();
    }
 }

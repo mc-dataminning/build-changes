@@ -1,110 +1,86 @@
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ckw extends cno implements cot {
-   public static final int a = 20;
-   public static final int b = 15;
+public class ckw extends clr {
+   protected static final Map<cwy, cwy> a = new Builder()
+      .put(cxa.ao, cxa.aw)
+      .put(cxa.U, cxa.al)
+      .put(cxa.au, cxa.aC)
+      .put(cxa.aa, cxa.ak)
+      .put(cxa.as, cxa.aA)
+      .put(cxa.Y, cxa.ai)
+      .put(cxa.at, cxa.aB)
+      .put(cxa.Z, cxa.aj)
+      .put(cxa.aq, cxa.ay)
+      .put(cxa.W, cxa.ag)
+      .put(cxa.ar, cxa.az)
+      .put(cxa.X, cxa.ah)
+      .put(cxa.ap, cxa.ax)
+      .put(cxa.V, cxa.af)
+      .put(cxa.oj, cxa.ok)
+      .put(cxa.ol, cxa.om)
+      .put(cxa.os, cxa.ot)
+      .put(cxa.ou, cxa.ov)
+      .put(cxa.av, cxa.aD)
+      .put(cxa.ab, cxa.am)
+      .put(cxa.ae, cxa.an)
+      .build();
 
-   public ckw(cmt.a $$0) {
-      super($$0);
+   protected ckw(cou $$0, float $$1, float $$2, cnb.a $$3) {
+      super($$1, $$2, $$0, asi.bz, $$3);
    }
 
    @Override
-   public void a(cmy $$0, ctp $$1, bml $$2, int $$3) {
-      if ($$2 instanceof cfi $$4) {
-         boolean $$5 = $$4.fT().d || crl.a(crn.B, $$0) > 0;
-         cmy $$6 = $$4.g($$0);
-         if (!$$6.b() || $$5) {
-            if ($$6.b()) {
-               $$6 = new cmy(cnb.os);
-            }
+   public bkc a(cpr $$0) {
+      ctx $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      cfq $$3 = $$0.o();
+      Optional<djp> $$4 = this.a($$1, $$2, $$3, $$1.a_($$2));
+      if ($$4.isEmpty()) {
+         return bkc.d;
+      } else {
+         cng $$5 = $$0.n();
+         if ($$3 instanceof anf) {
+            am.N.a((anf)$$3, $$2, $$5);
+         }
 
-            int $$7 = this.b($$0) - $$3;
-            float $$8 = a($$7);
-            if (!((double)$$8 < 0.1)) {
-               boolean $$9 = $$5 && $$6.a(cnb.os);
-               if (!$$1.B) {
-                  ckm $$10 = (ckm)($$6.d() instanceof ckm ? $$6.d() : cnb.os);
-                  cfo $$11 = $$10.a($$1, $$6, $$4);
-                  $$11.a($$4, $$4.dE(), $$4.dC(), 0.0F, $$8 * 3.0F, 1.0F);
-                  if ($$8 == 1.0F) {
-                     $$11.a(true);
-                  }
+         $$1.a($$2, $$4.get(), 11);
+         $$1.a(dnz.c, $$2, dnz.a.a($$3, $$4.get()));
+         if ($$3 != null) {
+            $$5.a(1, $$3, $$1x -> $$1x.d($$0.p()));
+         }
 
-                  int $$12 = crl.a(crn.y, $$0);
-                  if ($$12 > 0) {
-                     $$11.h($$11.A() + (double)$$12 * 0.5 + 0.5);
-                  }
+         return bkc.a($$1.B);
+      }
+   }
 
-                  int $$13 = crl.a(crn.z, $$0);
-                  if ($$13 > 0) {
-                     $$11.b($$13);
-                  }
-
-                  if (crl.a(crn.A, $$0) > 0) {
-                     $$11.g(100);
-                  }
-
-                  $$0.a(1, $$4, $$1x -> $$1x.d($$4.fo()));
-                  if ($$9 || $$4.fT().d && ($$6.a(cnb.vi) || $$6.a(cnb.vj))) {
-                     $$11.d = cfo.a.c;
-                  }
-
-                  $$1.b($$11);
-               }
-
-               $$1.a(null, $$4.dr(), $$4.dt(), $$4.dx(), ars.ar, art.h, 1.0F, 1.0F / ($$1.F_().i() * 0.4F + 1.2F) + $$8 * 0.5F);
-               if (!$$9 && !$$4.fT().d) {
-                  $$6.h(1);
-                  if ($$6.b()) {
-                     $$4.fS().g($$6);
-                  }
-               }
-
-               $$4.b(asc.c.b(this));
+   private Optional<djp> a(ctx $$0, hx $$1, @Nullable cfq $$2, djp $$3) {
+      Optional<djp> $$4 = this.b($$3);
+      if ($$4.isPresent()) {
+         $$0.a($$2, $$1, art.aE, aru.e, 1.0F, 1.0F);
+         return $$4;
+      } else {
+         Optional<djp> $$5 = dgb.b($$3);
+         if ($$5.isPresent()) {
+            $$0.a($$2, $$1, art.aF, aru.e, 1.0F, 1.0F);
+            $$0.a($$2, 3005, $$1, 0);
+            return $$5;
+         } else {
+            Optional<djp> $$6 = Optional.ofNullable((cwy)cmw.b.get().get($$3.b())).map($$1x -> $$1x.l($$3));
+            if ($$6.isPresent()) {
+               $$0.a($$2, $$1, art.aG, aru.e, 1.0F, 1.0F);
+               $$0.a($$2, 3004, $$1, 0);
+               return $$6;
+            } else {
+               return Optional.empty();
             }
          }
       }
    }
 
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public int b(cmy $$0) {
-      return 72000;
-   }
-
-   @Override
-   public cos c(cmy $$0) {
-      return cos.e;
-   }
-
-   @Override
-   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
-      cmy $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.g($$3).b();
-      if (!$$1.fT().d && !$$4) {
-         return bkc.d($$3);
-      } else {
-         $$1.c($$2);
-         return bkc.b($$3);
-      }
-   }
-
-   @Override
-   public Predicate<cmy> b() {
-      return c;
-   }
-
-   @Override
-   public int d() {
-      return 15;
+   private Optional<djp> b(djp $$0) {
+      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.o().a(ddj.i, $$0.c(ddj.i)));
    }
 }

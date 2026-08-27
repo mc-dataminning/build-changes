@@ -1,50 +1,40 @@
-public class zw implements xf<za> {
-   public static final int a = -1;
-   public static final int b = -2;
+public class zw implements xg<zb> {
+   private final int a;
+   private final int b;
    private final int c;
-   private final int d;
-   private final int e;
-   private final cmy f;
 
-   public zw(int $$0, int $$1, int $$2, cmy $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3.p();
+   public zw(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public zw(ui $$0) {
-      this.c = $$0.readByte();
-      this.d = $$0.n();
-      this.e = $$0.readShort();
-      this.f = $$0.r();
+   public zw(uj $$0) {
+      this.a = $$0.readUnsignedByte();
+      this.b = $$0.readShort();
+      this.c = $$0.readShort();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.k(this.c);
-      $$0.c(this.d);
-      $$0.l(this.e);
-      $$0.a(this.f);
+   public void a(uj $$0) {
+      $$0.k(this.a);
+      $$0.l(this.b);
+      $$0.l(this.c);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
    public int a() {
-      return this.c;
+      return this.a;
    }
 
    public int d() {
-      return this.e;
+      return this.b;
    }
 
-   public cmy e() {
-      return this.f;
-   }
-
-   public int f() {
-      return this.d;
+   public int e() {
+      return this.c;
    }
 }

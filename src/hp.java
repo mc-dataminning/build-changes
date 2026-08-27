@@ -2,7 +2,7 @@ import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 
 public class hp implements hj<FloatArgumentType, hp.a> {
-   public void a(hp.a $$0, ui $$1) {
+   public void a(hp.a $$0, uj $$1) {
       boolean $$2 = $$0.b != -Float.MAX_VALUE;
       boolean $$3 = $$0.c != Float.MAX_VALUE;
       $$1.k(hl.a($$2, $$3));
@@ -15,7 +15,7 @@ public class hp implements hj<FloatArgumentType, hp.a> {
       }
    }
 
-   public hp.a a(ui $$0) {
+   public hp.a a(uj $$0) {
       byte $$1 = $$0.readByte();
       float $$2 = hl.a($$1) ? $$0.readFloat() : -Float.MAX_VALUE;
       float $$3 = hl.b($$1) ? $$0.readFloat() : Float.MAX_VALUE;

@@ -1,147 +1,164 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class eww implements AutoCloseable {
-   private static final ahg a = new ahg("textures/map/map_icons.png");
-   static final ftp b = ftp.t(a);
-   private static final int c = 128;
-   private static final int d = 128;
-   final geo e;
-   private final Int2ObjectMap<eww.a> f = new Int2ObjectOpenHashMap();
+public class eww {
+   private static final int a = 256;
+   private final ThreadLocal<eww.b> b = ThreadLocal.withInitial(eww.b::new);
+   private final Long2ObjectLinkedOpenHashMap<eww.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
+   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
+   private final ToIntFunction<hx> e;
 
-   public eww(geo $$0) {
+   public eww(ToIntFunction<hx> $$0) {
       this.e = $$0;
    }
 
-   public void a(int $$0, egb $$1) {
-      this.b($$0, $$1).a();
+   public int a(hx $$0) {
+      int $$1 = iz.a($$0.u());
+      int $$2 = iz.a($$0.w());
+      eww.b $$3 = this.b.get();
+      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
+         $$3.a = $$1;
+         $$3.b = $$2;
+         $$3.c = this.b($$1, $$2);
+      }
+
+      int[] $$4 = $$3.c.a($$0.v());
+      int $$5 = $$0.u() & 15;
+      int $$6 = $$0.w() & 15;
+      int $$7 = $$6 << 4 | $$5;
+      int $$8 = $$4[$$7];
+      if ($$8 != -1) {
+         return $$8;
+      } else {
+         int $$9 = this.e.applyAsInt($$0);
+         $$4[$$7] = $$9;
+         return $$9;
+      }
    }
 
-   public void a(eqb $$0, fth $$1, int $$2, egb $$3, boolean $$4, int $$5) {
-      this.b($$2, $$3).a($$0, $$1, $$4, $$5);
-   }
+   public void a(int $$0, int $$1) {
+      try {
+         this.d.writeLock().lock();
 
-   private eww.a b(int $$0, egb $$1) {
-      return (eww.a)this.f.compute($$0, ($$1x, $$2) -> {
-         if ($$2 == null) {
-            return new eww.a($$1x, $$1);
-         } else {
-            $$2.a($$1);
-            return $$2;
+         for (int $$2 = -1; $$2 <= 1; $$2++) {
+            for (int $$3 = -1; $$3 <= 1; $$3++) {
+               long $$4 = cte.c($$0 + $$2, $$1 + $$3);
+               eww.a $$5 = (eww.a)this.c.remove($$4);
+               if ($$5 != null) {
+                  $$5.b();
+               }
+            }
          }
-      });
+      } finally {
+         this.d.writeLock().unlock();
+      }
    }
 
    public void a() {
-      ObjectIterator var1 = this.f.values().iterator();
-
-      while (var1.hasNext()) {
-         eww.a $$0 = (eww.a)var1.next();
-         $$0.close();
+      try {
+         this.d.writeLock().lock();
+         this.c.values().forEach(eww.a::b);
+         this.c.clear();
+      } finally {
+         this.d.writeLock().unlock();
       }
-
-      this.f.clear();
    }
 
-   @Override
-   public void close() {
-      this.a();
-   }
+   private eww.a b(int $$0, int $$1) {
+      long $$2 = cte.c($$0, $$1);
+      this.d.readLock().lock();
 
-   class a implements AutoCloseable {
-      private egb b;
-      private final gea c;
-      private final ftp d;
-      private boolean e = true;
-
-      a(int $$0, egb $$1) {
-         this.b = $$1;
-         this.c = new gea(128, 128, true);
-         ahg $$2 = eww.this.e.a("map/" + $$0, this.c);
-         this.d = ftp.t($$2);
-      }
-
-      void a(egb $$0) {
-         boolean $$1 = this.b != $$0;
-         this.b = $$0;
-         this.e |= $$1;
-      }
-
-      public void a() {
-         this.e = true;
-      }
-
-      private void b() {
-         for (int $$0 = 0; $$0 < 128; $$0++) {
-            for (int $$1 = 0; $$1 < 128; $$1++) {
-               int $$2 = $$1 + $$0 * 128;
-               this.c.e().a($$1, $$0, eev.b(this.b.g[$$2]));
-            }
+      try {
+         eww.a $$3 = (eww.a)this.c.get($$2);
+         if ($$3 != null) {
+            return $$3;
          }
-
-         this.c.d();
+      } finally {
+         this.d.readLock().unlock();
       }
 
-      void a(eqb $$0, fth $$1, boolean $$2, int $$3) {
-         if (this.e) {
-            this.b();
-            this.e = false;
-         }
+      this.d.writeLock().lock();
 
-         int $$4 = 0;
-         int $$5 = 0;
-         float $$6 = 0.0F;
-         Matrix4f $$7 = $$0.c().a();
-         eqf $$8 = $$1.getBuffer(this.d);
-         $$8.a($$7, 0.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 1.0F).b($$3).e();
-         $$8.a($$7, 128.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 1.0F).b($$3).e();
-         $$8.a($$7, 128.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 0.0F).b($$3).e();
-         $$8.a($$7, 0.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 0.0F).b($$3).e();
-         int $$9 = 0;
-
-         for (efy $$10 : this.b.g()) {
-            if (!$$2 || $$10.b()) {
-               $$0.a();
-               $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F, -0.02F);
-               $$0.a(a.f.rotationDegrees((float)($$10.f() * 360) / 16.0F));
-               $$0.b(4.0F, 4.0F, 3.0F);
-               $$0.a(-0.125F, 0.125F, 0.0F);
-               byte $$11 = $$10.a();
-               float $$12 = (float)($$11 % 16 + 0) / 16.0F;
-               float $$13 = (float)($$11 / 16 + 0) / 16.0F;
-               float $$14 = (float)($$11 % 16 + 1) / 16.0F;
-               float $$15 = (float)($$11 / 16 + 1) / 16.0F;
-               Matrix4f $$16 = $$0.c().a();
-               float $$17 = -0.001F;
-               eqf $$18 = $$1.getBuffer(eww.b);
-               $$18.a($$16, -1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$12, $$13).b($$3).e();
-               $$18.a($$16, 1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$13).b($$3).e();
-               $$18.a($$16, 1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$15).b($$3).e();
-               $$18.a($$16, -1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$12, $$15).b($$3).e();
-               $$0.b();
-               if ($$10.g() != null) {
-                  ews $$19 = evi.O().h;
-                  vf $$20 = $$10.g();
-                  float $$21 = (float)$$19.a($$20);
-                  float $$22 = auo.a(25.0F / $$21, 0.0F, 6.0F / 9.0F);
-                  $$0.a();
-                  $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F - $$21 * $$22 / 2.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F + 4.0F, -0.025F);
-                  $$0.b($$22, $$22, 1.0F);
-                  $$0.a(0.0F, 0.0F, -0.1F);
-                  $$19.a($$20, 0.0F, 0.0F, -1, false, $$0.c().a(), $$1, ews.a.a, Integer.MIN_VALUE, $$3);
-                  $$0.b();
+      eww.a $$5;
+      try {
+         eww.a $$4 = (eww.a)this.c.get($$2);
+         if ($$4 == null) {
+            $$5 = new eww.a();
+            if (this.c.size() >= 256) {
+               eww.a $$6 = (eww.a)this.c.removeFirst();
+               if ($$6 != null) {
+                  $$6.b();
                }
-
-               $$9++;
             }
+
+            this.c.put($$2, $$5);
+            return $$5;
          }
+
+         $$5 = $$4;
+      } finally {
+         this.d.writeLock().unlock();
       }
 
-      @Override
-      public void close() {
-         this.c.close();
+      return $$5;
+   }
+
+   static class a {
+      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
+      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
+      private static final int c = aup.h(16);
+      private volatile boolean d;
+
+      public int[] a(int $$0) {
+         this.b.readLock().lock();
+
+         try {
+            int[] $$1 = (int[])this.a.get($$0);
+            if ($$1 != null) {
+               return $$1;
+            }
+         } finally {
+            this.b.readLock().unlock();
+         }
+
+         this.b.writeLock().lock();
+
+         int[] var12;
+         try {
+            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
+         } finally {
+            this.b.writeLock().unlock();
+         }
+
+         return var12;
+      }
+
+      private int[] c() {
+         int[] $$0 = new int[c];
+         Arrays.fill($$0, -1);
+         return $$0;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public void b() {
+         this.d = true;
+      }
+   }
+
+   static class b {
+      public int a = Integer.MIN_VALUE;
+      public int b = Integer.MIN_VALUE;
+      @Nullable
+      eww.a c;
+
+      private b() {
       }
    }
 }

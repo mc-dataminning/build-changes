@@ -1,24 +1,24 @@
-public class xl implements xf<xi> {
-   private final long a;
+public class xl implements xg<xj> {
+   private final vg a;
 
-   public xl(long $$0) {
+   public xl(vg $$0) {
       this.a = $$0;
    }
 
-   public xl(ui $$0) {
-      this.a = $$0.readLong();
+   public xl(uj $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.b(this.a);
+   public void a(uj $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(xi $$0) {
+   public void a(xj $$0) {
       $$0.a(this);
    }
 
-   public long a() {
+   public vg a() {
       return this.a;
    }
 }

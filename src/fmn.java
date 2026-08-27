@@ -1,77 +1,38 @@
-public class fmn<T extends cbi> extends fkg<T> {
-   private static final String a = "ribcage";
-   private static final String b = "center_head";
-   private static final String f = "right_head";
-   private static final String g = "left_head";
-   private static final float h = 0.065F;
-   private static final float i = 0.265F;
-   private final fmx j;
-   private final fmx k;
-   private final fmx l;
-   private final fmx m;
-   private final fmx n;
-   private final fmx o;
+import com.google.common.collect.ImmutableList;
 
-   public fmn(fmx $$0) {
-      this.j = $$0;
-      this.n = $$0.b("ribcage");
-      this.o = $$0.b("tail");
-      this.k = $$0.b("center_head");
-      this.l = $$0.b("right_head");
-      this.m = $$0.b("left_head");
+public class fmn<T extends bzx> extends fjf<T> {
+   private final fnj a;
+   private final fnj b;
+
+   public fmn(fnj $$0) {
+      super(true, 8.0F, 3.35F);
+      this.a = $$0;
+      this.b = $$0.b("tail");
    }
 
-   public static fnd a(fnb $$0) {
-      fnf $$1 = new fnf();
-      fng $$2 = $$1.a();
-      $$2.a("shoulders", fnc.c().a(0, 16).a(-10.0F, 3.9F, -0.5F, 20.0F, 3.0F, 3.0F, $$0), fmz.a);
-      float $$3 = 0.20420352F;
-      $$2.a(
-         "ribcage",
-         fnc.c()
-            .a(0, 22)
-            .a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 1.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 4.0F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 6.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0),
-         fmz.a(-2.0F, 6.9F, -0.5F, 0.20420352F, 0.0F, 0.0F)
-      );
-      $$2.a(
-         "tail",
-         fnc.c().a(12, 22).a(0.0F, 0.0F, 0.0F, 3.0F, 6.0F, 3.0F, $$0),
-         fmz.a(-2.0F, 6.9F + auo.b(0.20420352F) * 10.0F, -0.5F + auo.a(0.20420352F) * 10.0F, 0.83252203F, 0.0F, 0.0F)
-      );
-      $$2.a("center_head", fnc.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fmz.a);
-      fnc $$4 = fnc.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, $$0);
-      $$2.a("right_head", $$4, fmz.a(-8.0F, 4.0F, 0.0F));
-      $$2.a("left_head", $$4, fmz.a(10.0F, 4.0F, 0.0F));
-      return fnd.a($$1, 64, 64);
+   public static fnp c() {
+      fnr $$0 = new fnr();
+      fns $$1 = $$0.a();
+      float $$2 = 0.0F;
+      float $$3 = 22.0F;
+      float $$4 = -3.0F;
+      $$1.a("body", fno.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), fnl.a(0.0F, 22.0F, -3.0F));
+      $$1.a("tail", fno.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), fnl.a(0.0F, 22.0F, 0.0F));
+      return fnp.a($$0, 16, 16);
    }
 
    @Override
-   public fmx a() {
-      return this.j;
+   protected Iterable<fnj> a() {
+      return ImmutableList.of(this.a);
+   }
+
+   @Override
+   protected Iterable<fnj> b() {
+      return ImmutableList.of(this.b);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = auo.b($$3 * 0.1F);
-      this.n.e = (0.065F + 0.05F * $$6) * (float) Math.PI;
-      this.o.a(-2.0F, 6.9F + auo.b(this.n.e) * 10.0F, -0.5F + auo.a(this.n.e) * 10.0F);
-      this.o.e = (0.265F + 0.1F * $$6) * (float) Math.PI;
-      this.k.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = $$5 * (float) (Math.PI / 180.0);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      a($$0, this.l, 0);
-      a($$0, this.m, 1);
-   }
-
-   private static <T extends cbi> void a(T $$0, fmx $$1, int $$2) {
-      $$1.f = ($$0.b($$2) - $$0.aU) * (float) (Math.PI / 180.0);
-      $$1.e = $$0.c($$2) * (float) (Math.PI / 180.0);
+      float $$6 = $$0.aZ() ? 1.0F : 1.5F;
+      this.b.f = -$$6 * 0.25F * aup.a(0.3F * $$3);
    }
 }

@@ -1,123 +1,260 @@
-import com.google.common.collect.Iterables;
-import java.util.List;
+import com.mojang.logging.LogUtils;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface csz extends csv {
-   dky D_();
+public abstract class csz {
+   public static final String b = "SpawnData";
+   private static final Logger a = LogUtils.getLogger();
+   private static final int c = 1;
+   private int d = 20;
+   private bim<cuo> e = bim.b();
+   @Nullable
+   private cuo f;
+   private double g;
+   private double h;
+   private int i = 200;
+   private int j = 800;
+   private int k = 4;
+   @Nullable
+   private blw l;
+   private int m = 6;
+   private int n = 16;
+   private int o = 4;
+
+   public void a(bmc<?> $$0, @Nullable ctx $$1, auw $$2, hx $$3) {
+      this.a($$1, $$2, $$3).a().a("id", kd.g.b($$0).toString());
+   }
+
+   private boolean c(ctx $$0, hx $$1) {
+      return $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, (double)this.n);
+   }
+
+   public void a(ctx $$0, hx $$1) {
+      if (!this.c($$0, $$1)) {
+         this.h = this.g;
+      } else if (this.l != null) {
+         auw $$2 = $$0.F_();
+         double $$3 = (double)$$1.u() + $$2.j();
+         double $$4 = (double)$$1.v() + $$2.j();
+         double $$5 = (double)$$1.w() + $$2.j();
+         $$0.a(jx.ab, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         $$0.a(jx.E, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         if (this.d > 0) {
+            this.d--;
+         }
+
+         this.h = this.g;
+         this.g = (this.g + (double)(1000.0F / ((float)this.d + 200.0F))) % 360.0;
+      }
+   }
+
+   public void a(ane $$0, hx $$1) {
+      if (this.c($$0, $$1)) {
+         if (this.d == -1) {
+            this.d($$0, $$1);
+         }
+
+         if (this.d > 0) {
+            this.d--;
+         } else {
+            boolean $$2 = false;
+            auw $$3 = $$0.F_();
+            cuo $$4 = this.a($$0, $$3, $$1);
+
+            for (int $$5 = 0; $$5 < this.k; $$5++) {
+               so $$6 = $$4.a();
+               Optional<bmc<?>> $$7 = bmc.a($$6);
+               if ($$7.isEmpty()) {
+                  this.d($$0, $$1);
+                  return;
+               }
+
+               su $$8 = $$6.c("Pos", 6);
+               int $$9 = $$8.size();
+               double $$10 = $$9 >= 1 ? $$8.h(0) : (double)$$1.u() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               double $$11 = $$9 >= 2 ? $$8.h(1) : (double)($$1.v() + $$3.a(3) - 1);
+               double $$12 = $$9 >= 3 ? $$8.h(2) : (double)$$1.w() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               if ($$0.b($$7.get().a($$10, $$11, $$12))) {
+                  hx $$13 = hx.a($$10, $$11, $$12);
+                  if ($$4.b().isPresent()) {
+                     if (!$$7.get().f().d() && $$0.ak() == bjz.a) {
+                        continue;
+                     }
+
+                     cuo.a $$14 = $$4.b().get();
+                     if (!$$14.a().a($$0.a(cug.b, $$13)) || !$$14.b().a($$0.a(cug.a, $$13))) {
+                        continue;
+                     }
+                  } else if (!bni.a($$7.get(), $$0, bms.c, $$13, $$0.F_())) {
+                     continue;
+                  }
+
+                  blw $$15 = bmc.a($$6, $$0, $$3x -> {
+                     $$3x.b($$10, $$11, $$12, $$3x.dB(), $$3x.dD());
+                     return $$3x;
+                  });
+                  if ($$15 == null) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  int $$16 = $$0.a(
+                        dnn.b($$15.getClass()),
+                        new elx((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 1), (double)($$1.w() + 1))
+                           .g((double)this.o),
+                        bmb.f
+                     )
+                     .size();
+                  if ($$16 >= this.m) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  $$15.b($$15.dq(), $$15.ds(), $$15.dw(), $$3.i() * 360.0F, 0.0F);
+                  if ($$15 instanceof bmq $$17) {
+                     if ($$4.b().isEmpty() && !$$17.a($$0, bms.c) || !$$17.a($$0)) {
+                        continue;
+                     }
+
+                     if ($$4.a().f() == 1 && $$4.a().b("id", 8)) {
+                        ((bmq)$$15).a($$0, $$0.d_($$15.dl()), bms.c, null, null);
+                     }
+                  }
+
+                  if (!$$0.e($$15)) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  $$0.c(2004, $$1, 0);
+                  $$0.a($$15, dnz.t, $$13);
+                  if ($$15 instanceof bmq) {
+                     ((bmq)$$15).S();
+                  }
+
+                  $$2 = true;
+               }
+            }
+
+            if ($$2) {
+               this.d($$0, $$1);
+            }
+         }
+      }
+   }
+
+   private void d(ctx $$0, hx $$1) {
+      auw $$2 = $$0.z;
+      if (this.j <= this.i) {
+         this.d = this.i;
+      } else {
+         this.d = this.i + $$2.a(this.j - this.i);
+      }
+
+      this.e.b($$2).ifPresent($$2x -> this.a($$0, $$1, (cuo)$$2x.b()));
+      this.a($$0, $$1, 1);
+   }
+
+   public void a(@Nullable ctx $$0, hx $$1, so $$2) {
+      this.d = $$2.g("Delay");
+      boolean $$3 = $$2.b("SpawnData", 10);
+      if ($$3) {
+         cuo $$4 = cuo.b.parse(tc.a, $$2.p("SpawnData")).resultOrPartial($$0x -> a.warn("Invalid SpawnData: {}", $$0x)).orElseGet(cuo::new);
+         this.a($$0, $$1, $$4);
+      }
+
+      boolean $$5 = $$2.b("SpawnPotentials", 9);
+      if ($$5) {
+         su $$6 = $$2.c("SpawnPotentials", 10);
+         this.e = cuo.c.parse(tc.a, $$6).resultOrPartial($$0x -> a.warn("Invalid SpawnPotentials list: {}", $$0x)).orElseGet(bim::b);
+      } else {
+         this.e = bim.a(this.f != null ? this.f : new cuo());
+      }
+
+      if ($$2.b("MinSpawnDelay", 99)) {
+         this.i = $$2.g("MinSpawnDelay");
+         this.j = $$2.g("MaxSpawnDelay");
+         this.k = $$2.g("SpawnCount");
+      }
+
+      if ($$2.b("MaxNearbyEntities", 99)) {
+         this.m = $$2.g("MaxNearbyEntities");
+         this.n = $$2.g("RequiredPlayerRange");
+      }
+
+      if ($$2.b("SpawnRange", 99)) {
+         this.o = $$2.g("SpawnRange");
+      }
+
+      this.l = null;
+   }
+
+   public so a(so $$0) {
+      $$0.a("Delay", (short)this.d);
+      $$0.a("MinSpawnDelay", (short)this.i);
+      $$0.a("MaxSpawnDelay", (short)this.j);
+      $$0.a("SpawnCount", (short)this.k);
+      $$0.a("MaxNearbyEntities", (short)this.m);
+      $$0.a("RequiredPlayerRange", (short)this.n);
+      $$0.a("SpawnRange", (short)this.o);
+      if (this.f != null) {
+         $$0.a("SpawnData", (tl)cuo.b.encodeStart(tc.a, this.f).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData")));
+      }
+
+      $$0.a("SpawnPotentials", (tl)cuo.c.encodeStart(tc.a, this.e).result().orElseThrow());
+      return $$0;
+   }
 
    @Nullable
-   csv c(int var1, int var2);
+   public blw b(ctx $$0, hx $$1) {
+      if (this.l == null) {
+         so $$2 = this.a($$0, $$0.F_(), $$1).a();
+         if (!$$2.b("id", 8)) {
+            return null;
+         }
 
-   default boolean a(@Nullable blv $$0, emm $$1) {
-      return true;
-   }
-
-   default boolean a(djh $$0, hx $$1, ely $$2) {
-      emm $$3 = $$0.b(this, $$1, $$2);
-      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
-   }
-
-   default boolean f(blv $$0) {
-      return this.a($$0, emj.a($$0.cH()));
-   }
-
-   default boolean b(elo $$0) {
-      return this.a(null, $$0);
-   }
-
-   default boolean g(blv $$0) {
-      return this.a($$0, $$0.cH());
-   }
-
-   default boolean a(@Nullable blv $$0, elo $$1) {
-      for (emm $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
+         this.l = bmc.a($$2, $$0, Function.identity());
+         if ($$2.f() == 1 && this.l instanceof bmq) {
          }
       }
 
-      if (!this.c($$0, $$1).isEmpty()) {
-         return false;
-      } else if ($$0 == null) {
+      return this.l;
+   }
+
+   public boolean a(ctx $$0, int $$1) {
+      if ($$1 == 1) {
+         if ($$0.B) {
+            this.d = this.i;
+         }
+
          return true;
       } else {
-         emm $$3 = this.h($$0, $$1);
-         return $$3 == null || !emj.c($$3, emj.a($$1), elx.i);
+         return false;
       }
    }
 
-   default boolean b(@Nullable blv $$0, elo $$1) {
-      for (emm $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
-
-      return true;
+   protected void a(@Nullable ctx $$0, hx $$1, cuo $$2) {
+      this.f = $$2;
    }
 
-   List<emm> c(@Nullable blv var1, elo var2);
-
-   default Iterable<emm> d(@Nullable blv $$0, elo $$1) {
-      List<emm> $$2 = this.c($$0, $$1);
-      Iterable<emm> $$3 = this.e($$0, $$1);
-      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
-   }
-
-   default Iterable<emm> e(@Nullable blv $$0, elo $$1) {
-      return () -> new cst<emm>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
-   }
-
-   @Nullable
-   private emm h(blv $$0, elo $$1) {
-      dky $$2 = this.D_();
-      return $$2.a($$0, $$1) ? $$2.c() : null;
-   }
-
-   default boolean f(@Nullable blv $$0, elo $$1) {
-      cst<emm> $$2 = new cst<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
-
-      while ($$2.hasNext()) {
-         if (!((emm)$$2.next()).c()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   default Optional<hx> g(blv $$0, elo $$1) {
-      hx $$2 = null;
-      double $$3 = Double.MAX_VALUE;
-      cst<hx> $$4 = new cst<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
-
-      while ($$4.hasNext()) {
-         hx $$5 = (hx)$$4.next();
-         double $$6 = $$5.b($$0.dk());
-         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
-            $$2 = $$5.i();
-            $$3 = $$6;
-         }
-      }
-
-      return Optional.ofNullable($$2);
-   }
-
-   default Optional<elt> a(@Nullable blv $$0, emm $$1, elt $$2, double $$3, double $$4, double $$5) {
-      if ($$1.c()) {
-         return Optional.empty();
+   private cuo a(@Nullable ctx $$0, auw $$1, hx $$2) {
+      if (this.f != null) {
+         return this.f;
       } else {
-         elo $$6 = $$1.a().c($$3, $$4, $$5);
-         emm $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
-            .filter($$0x -> this.D_() == null || this.D_().a($$0x.a()))
-            .flatMap($$0x -> $$0x.e().stream())
-            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
-            .map(emj::a)
-            .reduce(emj.a(), emj::a);
-         emm $$8 = emj.a($$1, $$7, elx.e);
-         return $$8.a($$2);
+         this.a($$0, $$2, this.e.b($$1).map(bio.b::b).orElseGet(cuo::new));
+         return this.f;
       }
+   }
+
+   public abstract void a(ctx var1, hx var2, int var3);
+
+   public double a() {
+      return this.g;
+   }
+
+   public double b() {
+      return this.h;
    }
 }

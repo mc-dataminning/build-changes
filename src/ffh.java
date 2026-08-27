@@ -1,30 +1,24 @@
-public class ffh extends fdz {
-   private final csq m;
+public class ffh extends fel<cjh> {
+   private static final ahh x = new ahh("container/grindstone/error");
+   private static final ahh y = new ahh("textures/gui/container/grindstone.png");
 
-   public ffh(csq $$0) {
-      this.m = $$0;
+   public ffh(cjh $$0, cfp $$1, vg $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public csq n() {
-      return this.m;
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   int D() {
-      return 150;
-   }
-
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.a.a(this.n().m());
-   }
-
-   @Override
-   protected void a(csq $$0) {
-      if ($$0 instanceof chi.a $$1) {
-         this.f.J().b(new aex($$1.h().aj(), this.a.a(), $$0.o()));
+   protected void a(exe $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(y, $$4, $$5, 0, 0, this.c, this.k);
+      if ((this.p.b(0).h() || this.p.b(1).h()) && !this.p.b(2).h()) {
+         $$0.a(x, $$4 + 92, $$5 + 31, 28, 21);
       }
    }
 }

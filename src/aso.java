@@ -1,9 +1,11 @@
-public interface aso {
-   asw<cmq> a = a("regular_goat_horns");
-   asw<cmq> b = a("screaming_goat_horns");
-   asw<cmq> c = a("goat_horns");
+public class aso {
+   public static final asx<dnz> a = a("vibrations");
+   public static final asx<dnz> b = a("warden_can_listen");
+   public static final asx<dnz> c = a("shrieker_can_listen");
+   public static final asx<dnz> d = a("ignore_vibrations_sneaking");
+   public static final asx<dnz> e = a("allay_can_listen");
 
-   private static asw<cmq> a(String $$0) {
-      return asw.a(ke.D, new ahg($$0));
+   private static asx<dnz> a(String $$0) {
+      return asx.a(ke.B, new ahh($$0));
    }
 }

@@ -1,81 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+public class ebg {
+   public static class a extends dzs {
+      public a(hx $$0) {
+         super(eaf.aa, 0, new dzg($$0));
+      }
 
-public final class ebg extends dzg {
-   public static final int d = 128;
-   public static final int e = 20;
-   public static final Codec<ebg> f = atw.<ebg>a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     a($$0),
-                     eap.b.fieldOf("start_pool").forGetter($$0x -> $$0x.g),
-                     ahg.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.h),
-                     Codec.intRange(0, 20).fieldOf("size").forGetter($$0x -> $$0x.i),
-                     dxn.c.fieldOf("start_height").forGetter($$0x -> $$0x.j),
-                     Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.k),
-                     doq.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.l),
-                     Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.m),
-                     Codec.list(ear.b).optionalFieldOf("pool_aliases", List.of()).forGetter($$0x -> $$0x.n)
-                  )
-                  .apply($$0, ebg::new)
-         ),
-         ebg::a
-      )
-      .codec();
-   private final ih<eap> g;
-   private final Optional<ahg> h;
-   private final int i;
-   private final dxn j;
-   private final boolean k;
-   private final Optional<doq.a> l;
-   private final int m;
-   private final List<ear> n;
+      public a(so $$0) {
+         super(eaf.aa, $$0);
+      }
 
-   private static DataResult<ebg> a(ebg $$0) {
-      int $$1 = switch ($$0.d()) {
-         case a -> 0;
-         case b, c, d -> 12;
-      };
-      return $$0.m + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
-   }
+      @Override
+      protected void a(eae $$0, so $$1) {
+      }
 
-   public ebg(dzg.c $$0, ih<eap> $$1, Optional<ahg> $$2, int $$3, dxn $$4, boolean $$5, Optional<doq.a> $$6, int $$7, List<ear> $$8) {
-      super($$0);
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.m = $$7;
-      this.n = $$8;
-   }
+      @Override
+      public void a(cus $$0, cuq $$1, dlm $$2, auw $$3, dzg $$4, cte $$5, hx $$6) {
+         int $$7 = $$0.a(doy.a.c, this.f.h(), this.f.j());
+         hx.a $$8 = new hx.a(this.f.h(), $$7, this.f.j());
 
-   public ebg(dzg.c $$0, ih<eap> $$1, int $$2, dxn $$3, boolean $$4, doq.a $$5) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80, List.of());
-   }
+         while ($$8.v() > $$0.J_()) {
+            djp $$9 = $$0.a_($$8);
+            djp $$10 = $$0.a_($$8.d());
+            if ($$10 == cxa.aV.o() || $$10 == cxa.b.o() || $$10 == cxa.g.o() || $$10 == cxa.c.o() || $$10 == cxa.e.o()) {
+               djp $$11 = !$$9.i() && !this.b($$9) ? $$9 : cxa.I.o();
 
-   public ebg(dzg.c $$0, ih<eap> $$1, int $$2, dxn $$3, boolean $$4) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80, List.of());
-   }
+               for (ic $$12 : ic.values()) {
+                  hx $$13 = $$8.a($$12);
+                  djp $$14 = $$0.a_($$13);
+                  if ($$14.i() || this.b($$14)) {
+                     hx $$15 = $$13.d();
+                     djp $$16 = $$0.a_($$15);
+                     if (($$16.i() || this.b($$16)) && $$12 != ic.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
 
-   @Override
-   public Optional<dzg.b> a(dzg.a $$0) {
-      csw $$1 = $$0.h();
-      int $$2 = this.j.a($$0.f(), new dpn($$0.b(), $$0.i()));
-      hx $$3 = new hx($$1.d(), $$2, $$1.e());
-      return eaj.a($$0, this.g, this.h, this.i, $$3, this.k, this.l, this.m, eat.create(this.n, $$3, $$0.g()));
-   }
+               this.f = new dzg($$8);
+               this.a($$0, $$4, $$3, $$8, ehd.G, null);
+               return;
+            }
 
-   @Override
-   public dzp<?> e() {
-      return dzp.f;
-   }
+            $$8.e(0, -1, 0);
+         }
+      }
 
-   public List<ear> f() {
-      return this.n;
+      private boolean b(djp $$0) {
+         return $$0 == cxa.G.o() || $$0 == cxa.H.o();
+      }
    }
 }

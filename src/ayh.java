@@ -70,6 +70,6 @@ public class ayh extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bbw.x), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bbw.y), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 }

@@ -1,27 +1,44 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
 
-public abstract class bje implements bjj {
-   private static final Codec<Either<Float, bje>> a = Codec.either(Codec.FLOAT, kd.L.q().dispatch(bje::c, bjf::codec));
-   public static final Codec<bje> c = a.xmap(
-      $$0 -> (bje)$$0.map(bjc::a, $$0x -> $$0x), $$0 -> $$0.c() == bjf.a ? Either.left(((bjc)$$0).d()) : Either.right($$0)
-   );
+public class bje extends bjh {
+   public static final bje a = new bje(0);
+   public static final Codec<bje> b = atx.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bje::new, bje::d);
+   private final int f;
 
-   public static Codec<bje> a(float $$0, float $$1) {
-      return atw.a(c, (Function<bje, DataResult<bje>>)($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      }));
+   public static bje a(int $$0) {
+      return $$0 == 0 ? a : new bje($$0);
    }
 
-   public abstract float a();
+   private bje(int $$0) {
+      this.f = $$0;
+   }
 
-   public abstract float b();
+   public int d() {
+      return this.f;
+   }
 
-   public abstract bjf<?> c();
+   @Override
+   public int a(auw $$0) {
+      return this.f;
+   }
+
+   @Override
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bji<?> c() {
+      return bji.a;
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.f);
+   }
 }

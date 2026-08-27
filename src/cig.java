@@ -1,177 +1,88 @@
-public class cig extends cib {
-   private static final int k = 0;
-   private static final int l = 2;
-   private static final int m = 3;
-   private static final int n = 4;
-   private static final int o = 5;
-   private static final int p = 2;
-   private static final int q = 5;
-   private static final int r = 32;
-   private static final int s = 32;
-   private static final int t = 41;
-   private final bju u;
-   private final cil v;
-   private final cjw w;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
-   public cig(int $$0, cfh $$1) {
-      this($$0, $$1, new bkj(5), new cjv(2));
+public class cig {
+   private final int a;
+   private final float b;
+   private final boolean c;
+   private final boolean d;
+   private final boolean e;
+   private final List<Pair<blj, Float>> f;
+
+   cig(int $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, List<Pair<blj, Float>> $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public cig(int $$0, cfh $$1, bju $$2, cil $$3) {
-      super(cji.l, $$0);
-      a($$2, 5);
-      a($$3, 2);
-      this.u = $$2;
-      this.v = $$3;
-      this.a(new cig.c($$2, 0, 56, 51));
-      this.a(new cig.c($$2, 1, 79, 58));
-      this.a(new cig.c($$2, 2, 102, 51));
-      this.w = this.a(new cig.b($$2, 3, 79, 17));
-      this.a(new cig.a($$2, 4, 17, 17));
-      this.a($$3);
-
-      for (int $$4 = 0; $$4 < 3; $$4++) {
-         for (int $$5 = 0; $$5 < 9; $$5++) {
-            this.a(new cjw($$1, $$5 + $$4 * 9 + 9, 8 + $$5 * 18, 84 + $$4 * 18));
-         }
-      }
-
-      for (int $$6 = 0; $$6 < 9; $$6++) {
-         this.a(new cjw($$1, $$6, 8 + $$6 * 18, 142));
-      }
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public boolean a(cfi $$0) {
-      return this.u.a($$0);
+   public float b() {
+      return this.b;
    }
 
-   @Override
-   public cmy a(cfi $$0, int $$1) {
-      cmy $$2 = cmy.f;
-      cjw $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cmy $$4 = $$3.g();
-         $$2 = $$4.p();
-         if (($$1 < 0 || $$1 > 2) && $$1 != 3 && $$1 != 4) {
-            if (cig.a.b($$2)) {
-               if (this.a($$4, 4, 5, false) || this.w.a($$4) && !this.a($$4, 3, 4, false)) {
-                  return cmy.f;
-               }
-            } else if (this.w.a($$4)) {
-               if (!this.a($$4, 3, 4, false)) {
-                  return cmy.f;
-               }
-            } else if (cig.c.b($$2) && $$2.L() == 1) {
-               if (!this.a($$4, 0, 3, false)) {
-                  return cmy.f;
-               }
-            } else if ($$1 >= 5 && $$1 < 32) {
-               if (!this.a($$4, 32, 41, false)) {
-                  return cmy.f;
-               }
-            } else if ($$1 >= 32 && $$1 < 41) {
-               if (!this.a($$4, 5, 32, false)) {
-                  return cmy.f;
-               }
-            } else if (!this.a($$4, 5, 41, false)) {
-               return cmy.f;
-            }
-         } else {
-            if (!this.a($$4, 5, 41, true)) {
-               return cmy.f;
-            }
-
-            $$3.b($$4, $$2);
-         }
-
-         if ($$4.b()) {
-            $$3.e(cmy.f);
-         } else {
-            $$3.b();
-         }
-
-         if ($$4.L() == $$2.L()) {
-            return cmy.f;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
+   public boolean c() {
+      return this.c;
    }
 
-   public int l() {
-      return this.v.a(1);
+   public boolean d() {
+      return this.d;
    }
 
-   public int m() {
-      return this.v.a(0);
+   public boolean e() {
+      return this.e;
    }
 
-   static class a extends cjw {
-      public a(bju $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cmy $$0) {
-         return b($$0);
-      }
-
-      public static boolean b(cmy $$0) {
-         return $$0.a(cnb.sl);
-      }
-
-      @Override
-      public int a() {
-         return 64;
-      }
+   public List<Pair<blj, Float>> f() {
+      return this.f;
    }
 
-   static class b extends cjw {
-      public b(bju $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+      private boolean d;
+      private boolean e;
+      private final List<Pair<blj, Float>> f = Lists.newArrayList();
+
+      public cig.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      @Override
-      public boolean a(cmy $$0) {
-         return cox.a($$0);
+      public cig.a a(float $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      @Override
-      public int a() {
-         return 64;
-      }
-   }
-
-   static class c extends cjw {
-      public c(bju $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
+      public cig.a a() {
+         this.c = true;
+         return this;
       }
 
-      @Override
-      public boolean a(cmy $$0) {
-         return b($$0);
+      public cig.a b() {
+         this.d = true;
+         return this;
       }
 
-      @Override
-      public int a() {
-         return 1;
+      public cig.a c() {
+         this.e = true;
+         return this;
       }
 
-      @Override
-      public void a(cfi $$0, cmy $$1) {
-         cow $$2 = coy.d($$1);
-         if ($$0 instanceof ane) {
-            am.l.a((ane)$$0, $$2.c());
-         }
-
-         super.a($$0, $$1);
+      public cig.a a(blj $$0, float $$1) {
+         this.f.add(Pair.of($$0, $$1));
+         return this;
       }
 
-      public static boolean b(cmy $$0) {
-         return $$0.a(cnb.sh) || $$0.a(cnb.vh) || $$0.a(cnb.vk) || $$0.a(cnb.si);
+      public cig d() {
+         return new cig(this.a, this.b, this.c, this.d, this.e, this.f);
       }
    }
 }

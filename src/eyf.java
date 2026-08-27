@@ -1,39 +1,31 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.UUID;
 
-public class eyf {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
+public class eyf extends bjs {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   public static void a(ewu $$0, gfm $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1.a(), $$2, $$3, $$4);
+   public eyf(UUID $$0, vg $$1, float $$2, bjs.a $$3, bjs.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ac.b();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
-   public static void a(ewu $$0, ahg $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, true, false);
+   @Override
+   public void a(float $$0) {
+      this.b = this.k();
+      this.h = $$0;
+      this.i = ac.b();
    }
 
-   public static void a(ewu $$0, ahg $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
-      int $$7 = 8 + ($$6 ? 8 : 0);
-      int $$8 = 8 * ($$6 ? -1 : 1);
-      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6);
-      }
-   }
-
-   private static void a(ewu $$0, ahg $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = 8 + ($$5 ? 8 : 0);
-      int $$7 = 8 * ($$5 ? -1 : 1);
-      RenderSystem.enableBlend();
-      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
-      RenderSystem.disableBlend();
+   @Override
+   public float k() {
+      long $$0 = ac.b() - this.i;
+      float $$1 = aup.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return aup.i($$1, this.b, this.h);
    }
 }

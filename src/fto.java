@@ -1,539 +1,382 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.tuple.Triple;
-import org.joml.Matrix4f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public abstract class fto {
-   private static final float aS = 0.99975586F;
-   public static final double a = 8.0;
-   protected final String b;
-   private final Runnable aT;
-   private final Runnable aU;
-   protected static final fto.p c = new fto.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
+public class fto {
+   private static final Map<cwy, fub> a = ac.a(Maps.newHashMap(), $$0 -> {
+      fub $$1 = fub.t();
+      $$0.put(cxa.fI, $$1);
+      fub $$2 = fub.d();
+      $$0.put(cxa.i, $$2);
+      $$0.put(cxa.eW, $$2);
+      $$0.put(cxa.eY, $$2);
+      $$0.put(cxa.fH, $$2);
+      $$0.put(cxa.hc, $$2);
+      $$0.put(cxa.eX, $$2);
+      $$0.put(cxa.aH, $$2);
+      $$0.put(cxa.aE, $$2);
+      $$0.put(cxa.aF, $$2);
+      $$0.put(cxa.aI, $$2);
+      $$0.put(cxa.aJ, $$2);
+      $$0.put(cxa.aG, $$2);
+      $$0.put(cxa.aK, $$2);
+      $$0.put(cxa.aM, $$2);
+      $$0.put(cxa.aN, $$2);
+      $$0.put(cxa.ac, $$2);
+      $$0.put(cxa.aL, $$2);
+      fub $$3 = fub.e();
+      $$0.put(cxa.x, $$3);
+      $$0.put(cxa.y, $$3);
+      $$0.put(cxa.z, $$3);
+      $$0.put(cxa.A, $$3);
+      $$0.put(cxa.B, $$3);
+      $$0.put(cxa.C, $$3);
+      $$0.put(cxa.D, $$3);
+      $$0.put(cxa.aQ, $$3);
+      $$0.put(cxa.aZ, $$3);
+      $$0.put(cxa.ba, $$3);
+      $$0.put(cxa.bb, $$3);
+      $$0.put(cxa.bc, $$3);
+      $$0.put(cxa.bd, $$3);
+      $$0.put(cxa.be, $$3);
+      $$0.put(cxa.bf, $$3);
+      $$0.put(cxa.bg, $$3);
+      $$0.put(cxa.bh, $$3);
+      $$0.put(cxa.bi, $$3);
+      $$0.put(cxa.bj, $$3);
+      $$0.put(cxa.bk, $$3);
+      $$0.put(cxa.bl, $$3);
+      $$0.put(cxa.bm, $$3);
+      $$0.put(cxa.bn, $$3);
+      $$0.put(cxa.bo, $$3);
+      $$0.put(cxa.bp, $$3);
+      $$0.put(cxa.bq, $$3);
+      $$0.put(cxa.bs, $$3);
+      $$0.put(cxa.bt, $$3);
+      $$0.put(cxa.bu, $$3);
+      $$0.put(cxa.bv, $$3);
+      $$0.put(cxa.bw, $$3);
+      $$0.put(cxa.bx, $$3);
+      $$0.put(cxa.bR, $$3);
+      $$0.put(cxa.bT, $$3);
+      $$0.put(cxa.bU, $$3);
+      $$0.put(cxa.bV, $$3);
+      $$0.put(cxa.bW, $$3);
+      $$0.put(cxa.bX, $$3);
+      $$0.put(cxa.bY, $$3);
+      $$0.put(cxa.bZ, $$3);
+      $$0.put(cxa.ca, $$3);
+      $$0.put(cxa.cb, $$3);
+      $$0.put(cxa.cc, $$3);
+      $$0.put(cxa.cd, $$3);
+      $$0.put(cxa.ce, $$3);
+      $$0.put(cxa.cf, $$3);
+      $$0.put(cxa.cg, $$3);
+      $$0.put(cxa.cp, $$3);
+      $$0.put(cxa.cq, $$3);
+      $$0.put(cxa.ea, $$3);
+      $$0.put(cxa.eb, $$3);
+      $$0.put(cxa.cr, $$3);
+      $$0.put(cxa.cs, $$3);
+      $$0.put(cxa.ct, $$3);
+      $$0.put(cxa.tr, $$3);
+      $$0.put(cxa.cw, $$3);
+      $$0.put(cxa.cB, $$3);
+      $$0.put(cxa.cN, $$3);
+      $$0.put(cxa.cO, $$3);
+      $$0.put(cxa.cP, $$3);
+      $$0.put(cxa.dy, $$3);
+      $$0.put(cxa.dK, $$3);
+      $$0.put(cxa.dL, $$3);
+      $$0.put(cxa.dQ, $$3);
+      $$0.put(cxa.dS, $$3);
+      $$0.put(cxa.eh, $$3);
+      $$0.put(cxa.ey, $$3);
+      $$0.put(cxa.ez, $$3);
+      $$0.put(cxa.eA, $$3);
+      $$0.put(cxa.eB, $$3);
+      $$0.put(cxa.eC, $$3);
+      $$0.put(cxa.eD, $$3);
+      $$0.put(cxa.eE, $$3);
+      $$0.put(cxa.oM, $$3);
+      $$0.put(cxa.oN, $$3);
+      $$0.put(cxa.eF, $$3);
+      $$0.put(cxa.eG, $$3);
+      $$0.put(cxa.rU, $$3);
+      $$0.put(cxa.rV, $$3);
+      $$0.put(cxa.rX, $$3);
+      $$0.put(cxa.rW, $$3);
+      $$0.put(cxa.rY, $$3);
+      $$0.put(cxa.rZ, $$3);
+      $$0.put(cxa.sb, $$3);
+      $$0.put(cxa.sa, $$3);
+      $$0.put(cxa.fb, $$3);
+      $$0.put(cxa.fc, $$3);
+      $$0.put(cxa.fd, $$3);
+      $$0.put(cxa.fe, $$3);
+      $$0.put(cxa.ff, $$3);
+      $$0.put(cxa.fg, $$3);
+      $$0.put(cxa.fm, $$3);
+      $$0.put(cxa.fq, $$3);
+      $$0.put(cxa.fs, $$3);
+      $$0.put(cxa.fC, $$3);
+      $$0.put(cxa.fO, $$3);
+      $$0.put(cxa.fR, $$3);
+      $$0.put(cxa.fT, $$3);
+      $$0.put(cxa.fU, $$3);
+      $$0.put(cxa.fV, $$3);
+      $$0.put(cxa.fW, $$3);
+      $$0.put(cxa.fX, $$3);
+      $$0.put(cxa.fY, $$3);
+      $$0.put(cxa.fZ, $$3);
+      $$0.put(cxa.ga, $$3);
+      $$0.put(cxa.gb, $$3);
+      $$0.put(cxa.gc, $$3);
+      $$0.put(cxa.gd, $$3);
+      $$0.put(cxa.ge, $$3);
+      $$0.put(cxa.gf, $$3);
+      $$0.put(cxa.gg, $$3);
+      $$0.put(cxa.gh, $$3);
+      $$0.put(cxa.gi, $$3);
+      $$0.put(cxa.gj, $$3);
+      $$0.put(cxa.gk, $$3);
+      $$0.put(cxa.gl, $$3);
+      $$0.put(cxa.gm, $$3);
+      $$0.put(cxa.gn, $$3);
+      $$0.put(cxa.go, $$3);
+      $$0.put(cxa.gp, $$3);
+      $$0.put(cxa.gq, $$3);
+      $$0.put(cxa.gr, $$3);
+      $$0.put(cxa.gs, $$3);
+      $$0.put(cxa.ti, $$3);
+      $$0.put(cxa.tj, $$3);
+      $$0.put(cxa.fS, $$3);
+      $$0.put(cxa.gt, $$3);
+      $$0.put(cxa.gu, $$3);
+      $$0.put(cxa.gY, $$3);
+      $$0.put(cxa.hh, $$3);
+      $$0.put(cxa.hY, $$3);
+      $$0.put(cxa.iD, $$3);
+      $$0.put(cxa.iE, $$3);
+      $$0.put(cxa.iF, $$3);
+      $$0.put(cxa.iG, $$3);
+      $$0.put(cxa.iH, $$3);
+      $$0.put(cxa.iI, $$3);
+      $$0.put(cxa.kl, $$3);
+      $$0.put(cxa.km, $$3);
+      $$0.put(cxa.kn, $$3);
+      $$0.put(cxa.ko, $$3);
+      $$0.put(cxa.kp, $$3);
+      $$0.put(cxa.kq, $$3);
+      $$0.put(cxa.kr, $$3);
+      $$0.put(cxa.ks, $$3);
+      $$0.put(cxa.rM, $$3);
+      $$0.put(cxa.rN, $$3);
+      $$0.put(cxa.rP, $$3);
+      $$0.put(cxa.rO, $$3);
+      $$0.put(cxa.rQ, $$3);
+      $$0.put(cxa.rR, $$3);
+      $$0.put(cxa.rT, $$3);
+      $$0.put(cxa.rS, $$3);
+      $$0.put(cxa.kt, $$3);
+      $$0.put(cxa.ku, $$3);
+      $$0.put(cxa.kv, $$3);
+      $$0.put(cxa.bS, $$3);
+      $$0.put(cxa.kA, $$3);
+      $$0.put(cxa.kC, $$3);
+      $$0.put(cxa.kB, $$3);
+      $$0.put(cxa.kD, $$3);
+      $$0.put(cxa.mc, $$3);
+      $$0.put(cxa.md, $$3);
+      $$0.put(cxa.mf, $$3);
+      $$0.put(cxa.mr, $$3);
+      $$0.put(cxa.ms, $$3);
+      $$0.put(cxa.mt, $$3);
+      $$0.put(cxa.mu, $$3);
+      $$0.put(cxa.mv, $$3);
+      $$0.put(cxa.mw, $$3);
+      $$0.put(cxa.mx, $$3);
+      $$0.put(cxa.my, $$3);
+      $$0.put(cxa.mz, $$3);
+      $$0.put(cxa.mA, $$3);
+      $$0.put(cxa.mB, $$3);
+      $$0.put(cxa.mC, $$3);
+      $$0.put(cxa.mD, $$3);
+      $$0.put(cxa.mE, $$3);
+      $$0.put(cxa.mF, $$3);
+      $$0.put(cxa.mG, $$3);
+      $$0.put(cxa.mH, $$3);
+      $$0.put(cxa.mI, $$3);
+      $$0.put(cxa.mJ, $$3);
+      $$0.put(cxa.mK, $$3);
+      $$0.put(cxa.mL, $$3);
+      $$0.put(cxa.mM, $$3);
+      $$0.put(cxa.mN, $$3);
+      $$0.put(cxa.mO, $$3);
+      $$0.put(cxa.mP, $$3);
+      $$0.put(cxa.mQ, $$3);
+      $$0.put(cxa.mR, $$3);
+      $$0.put(cxa.mS, $$3);
+      $$0.put(cxa.mT, $$3);
+      $$0.put(cxa.mU, $$3);
+      $$0.put(cxa.mV, $$3);
+      $$0.put(cxa.mX, $$3);
+      $$0.put(cxa.mY, $$3);
+      $$0.put(cxa.mZ, $$3);
+      $$0.put(cxa.na, $$3);
+      $$0.put(cxa.nS, $$3);
+      $$0.put(cxa.oc, $$3);
+      $$0.put(cxa.oe, $$3);
+      $$0.put(cxa.of, $$3);
+      $$0.put(cxa.og, $$3);
+      $$0.put(cxa.oh, $$3);
+      $$0.put(cxa.oi, $$3);
+      $$0.put(cxa.oz, $$3);
+      $$0.put(cxa.oA, $$3);
+      $$0.put(cxa.oB, $$3);
+      $$0.put(cxa.oC, $$3);
+      $$0.put(cxa.or, $$3);
+      $$0.put(cxa.ox, $$3);
+      $$0.put(cxa.oo, $$3);
+      $$0.put(cxa.oD, $$3);
+      $$0.put(cxa.oq, $$3);
+      $$0.put(cxa.pm, $$3);
+      $$0.put(cxa.pn, $$3);
+      $$0.put(cxa.po, $$3);
+      $$0.put(cxa.pp, $$3);
+      $$0.put(cxa.oU, $$3);
+      $$0.put(cxa.oV, $$3);
+      $$0.put(cxa.st, $$3);
+      $$0.put(cxa.qy, $$3);
+      $$0.put(cxa.qx, $$3);
+      $$0.put(cxa.qw, $$3);
+      $$0.put(cxa.qv, $$3);
+      $$0.put(cxa.ss, $$3);
+      $$0.put(cxa.sv, $$3);
+      $$0.put(cxa.sw, $$3);
+      $$0.put(cxa.sx, $$3);
+      $$0.put(cxa.sz, $$3);
+      $$0.put(cxa.sy, $$3);
+      $$0.put(cxa.sA, $$3);
+      $$0.put(cxa.sB, $$3);
+      $$0.put(cxa.sD, $$3);
+      $$0.put(cxa.sE, $$3);
+      $$0.put(cxa.sF, $$3);
+      $$0.put(cxa.sG, $$3);
+      $$0.put(cxa.qQ, $$3);
+      $$0.put(cxa.qR, $$3);
+      $$0.put(cxa.qT, $$3);
+      $$0.put(cxa.qV, $$3);
+      $$0.put(cxa.E, $$3);
+      $$0.put(cxa.tn, $$3);
+      $$0.put(cxa.sc, $$3);
+      $$0.put(cxa.sd, $$3);
+      $$0.put(cxa.se, $$3);
+      $$0.put(cxa.sf, $$3);
+      $$0.put(cxa.sg, $$3);
+      $$0.put(cxa.sh, $$3);
+      $$0.put(cxa.si, $$3);
+      $$0.put(cxa.sj, $$3);
+      fub $$4 = fub.f();
+      $$0.put(cxa.dO, $$4);
+      $$0.put(cxa.ed, $$4);
+      $$0.put(cxa.ei, $$4);
+      $$0.put(cxa.ej, $$4);
+      $$0.put(cxa.ek, $$4);
+      $$0.put(cxa.el, $$4);
+      $$0.put(cxa.em, $$4);
+      $$0.put(cxa.en, $$4);
+      $$0.put(cxa.eo, $$4);
+      $$0.put(cxa.ep, $$4);
+      $$0.put(cxa.eq, $$4);
+      $$0.put(cxa.er, $$4);
+      $$0.put(cxa.es, $$4);
+      $$0.put(cxa.et, $$4);
+      $$0.put(cxa.eu, $$4);
+      $$0.put(cxa.ev, $$4);
+      $$0.put(cxa.ew, $$4);
+      $$0.put(cxa.ex, $$4);
+      $$0.put(cxa.hz, $$4);
+      $$0.put(cxa.hA, $$4);
+      $$0.put(cxa.hB, $$4);
+      $$0.put(cxa.hC, $$4);
+      $$0.put(cxa.hD, $$4);
+      $$0.put(cxa.hE, $$4);
+      $$0.put(cxa.hF, $$4);
+      $$0.put(cxa.hG, $$4);
+      $$0.put(cxa.hH, $$4);
+      $$0.put(cxa.hI, $$4);
+      $$0.put(cxa.hJ, $$4);
+      $$0.put(cxa.hK, $$4);
+      $$0.put(cxa.hL, $$4);
+      $$0.put(cxa.hM, $$4);
+      $$0.put(cxa.hN, $$4);
+      $$0.put(cxa.hO, $$4);
+      $$0.put(cxa.hV, $$4);
+      $$0.put(cxa.pg, $$4);
+      $$0.put(cxa.kI, $$4);
+      $$0.put(cxa.nd, $$4);
+      $$0.put(cxa.qO, $$4);
    });
-   protected static final fto.p d = new fto.p("additive_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
+   private static final Map<eey, fub> b = ac.a(Maps.newHashMap(), $$0 -> {
+      fub $$1 = fub.f();
+      $$0.put(efa.b, $$1);
+      $$0.put(efa.c, $$1);
    });
-   protected static final fto.p e = new fto.p("lightning_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   });
-   protected static final fto.p f = new fto.p(
-      "glint_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final fto.p g = new fto.p(
-      "crumbling_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final fto.p h = new fto.p(
-      "translucent_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_ALPHA,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-            GlStateManager.SourceFactor.ONE,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final fto.m i = new fto.m();
-   protected static final fto.m j = new fto.m(fta::v);
-   protected static final fto.m k = new fto.m(fta::p);
-   protected static final fto.m l = new fto.m(fta::r);
-   protected static final fto.m m = new fto.m(fta::s);
-   protected static final fto.m n = new fto.m(fta::w);
-   protected static final fto.m o = new fto.m(fta::q);
-   protected static final fto.m p = new fto.m(fta::z);
-   protected static final fto.m q = new fto.m(fta::A);
-   protected static final fto.m r = new fto.m(fta::B);
-   protected static final fto.m s = new fto.m(fta::C);
-   protected static final fto.m t = new fto.m(fta::D);
-   protected static final fto.m u = new fto.m(fta::E);
-   protected static final fto.m v = new fto.m(fta::F);
-   protected static final fto.m w = new fto.m(fta::G);
-   protected static final fto.m x = new fto.m(fta::H);
-   protected static final fto.m y = new fto.m(fta::I);
-   protected static final fto.m z = new fto.m(fta::J);
-   protected static final fto.m A = new fto.m(fta::K);
-   protected static final fto.m B = new fto.m(fta::L);
-   protected static final fto.m C = new fto.m(fta::M);
-   protected static final fto.m D = new fto.m(fta::N);
-   protected static final fto.m E = new fto.m(fta::O);
-   protected static final fto.m F = new fto.m(fta::P);
-   protected static final fto.m G = new fto.m(fta::Q);
-   protected static final fto.m H = new fto.m(fta::R);
-   protected static final fto.m I = new fto.m(fta::S);
-   protected static final fto.m J = new fto.m(fta::T);
-   protected static final fto.m K = new fto.m(fta::U);
-   protected static final fto.m L = new fto.m(fta::W);
-   protected static final fto.m M = new fto.m(fta::X);
-   protected static final fto.m N = new fto.m(fta::Y);
-   protected static final fto.m O = new fto.m(fta::Z);
-   protected static final fto.m P = new fto.m(fta::aa);
-   protected static final fto.m Q = new fto.m(fta::ab);
-   protected static final fto.m R = new fto.m(fta::ac);
-   protected static final fto.m S = new fto.m(fta::ad);
-   protected static final fto.m T = new fto.m(fta::ae);
-   protected static final fto.m U = new fto.m(fta::af);
-   protected static final fto.m V = new fto.m(fta::ar);
-   protected static final fto.m W = new fto.m(fta::ag);
-   protected static final fto.m X = new fto.m(fta::ah);
-   protected static final fto.m Y = new fto.m(fta::ai);
-   protected static final fto.m Z = new fto.m(fta::aj);
-   protected static final fto.m aa = new fto.m(fta::ak);
-   protected static final fto.m ab = new fto.m(fta::al);
-   protected static final fto.m ac = new fto.m(fta::am);
-   protected static final fto.m ad = new fto.m(fta::an);
-   protected static final fto.m ae = new fto.m(fta::ao);
-   protected static final fto.m af = new fto.m(fta::ap);
-   protected static final fto.m ag = new fto.m(fta::aq);
-   protected static final fto.m ah = new fto.m(fta::as);
-   protected static final fto.m ai = new fto.m(fta::at);
-   protected static final fto.m aj = new fto.m(fta::au);
-   protected static final fto.m ak = new fto.m(fta::av);
-   protected static final fto.m al = new fto.m(fta::V);
-   protected static final fto.n am = new fto.n(gem.e, false, true);
-   protected static final fto.n an = new fto.n(gem.e, false, false);
-   protected static final fto.e ao = new fto.e();
-   protected static final fto.o ap = new fto.o("default_texturing", () -> {
-   }, () -> {
-   });
-   protected static final fto.o aq = new fto.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
-   protected static final fto.o ar = new fto.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
-   protected static final fto.g as = new fto.g(true);
-   protected static final fto.g at = new fto.g(false);
-   protected static final fto.l au = new fto.l(true);
-   protected static final fto.l av = new fto.l(false);
-   protected static final fto.c aw = new fto.c(true);
-   protected static final fto.c ax = new fto.c(false);
-   protected static final fto.d ay = new fto.d("always", 519);
-   protected static final fto.d az = new fto.d("==", 514);
-   protected static final fto.d aA = new fto.d("<=", 515);
-   protected static final fto.d aB = new fto.d(">", 516);
-   protected static final fto.q aC = new fto.q(true, true);
-   protected static final fto.q aD = new fto.q(true, false);
-   protected static final fto.q aE = new fto.q(false, true);
-   protected static final fto.f aF = new fto.f("no_layering", () -> {
-   }, () -> {
-   });
-   protected static final fto.f aG = new fto.f("polygon_offset_layering", () -> {
-      RenderSystem.polygonOffset(-1.0F, -10.0F);
-      RenderSystem.enablePolygonOffset();
-   }, () -> {
-      RenderSystem.polygonOffset(0.0F, 0.0F);
-      RenderSystem.disablePolygonOffset();
-   });
-   protected static final fto.f aH = new fto.f("view_offset_z_layering", () -> {
-      eqb $$0 = RenderSystem.getModelViewStack();
-      $$0.a();
-      $$0.b(0.99975586F, 0.99975586F, 0.99975586F);
-      RenderSystem.applyModelViewMatrix();
-   }, () -> {
-      eqb $$0 = RenderSystem.getModelViewStack();
-      $$0.b();
-      RenderSystem.applyModelViewMatrix();
-   });
-   protected static final fto.k aI = new fto.k("main_target", () -> {
-   }, () -> {
-   });
-   protected static final fto.k aJ = new fto.k("outline_target", () -> evi.O().f.s().a(false), () -> evi.O().g().a(false));
-   protected static final fto.k aK = new fto.k("translucent_target", () -> {
-      if (evi.M()) {
-         evi.O().f.t().a(false);
-      }
-   }, () -> {
-      if (evi.M()) {
-         evi.O().g().a(false);
-      }
-   });
-   protected static final fto.k aL = new fto.k("particles_target", () -> {
-      if (evi.M()) {
-         evi.O().f.v().a(false);
-      }
-   }, () -> {
-      if (evi.M()) {
-         evi.O().g().a(false);
-      }
-   });
-   protected static final fto.k aM = new fto.k("weather_target", () -> {
-      if (evi.M()) {
-         evi.O().f.w().a(false);
-      }
-   }, () -> {
-      if (evi.M()) {
-         evi.O().g().a(false);
-      }
-   });
-   protected static final fto.k aN = new fto.k("clouds_target", () -> {
-      if (evi.M()) {
-         evi.O().f.x().a(false);
-      }
-   }, () -> {
-      if (evi.M()) {
-         evi.O().g().a(false);
-      }
-   });
-   protected static final fto.k aO = new fto.k("item_entity_target", () -> {
-      if (evi.M()) {
-         evi.O().f.u().a(false);
-      }
-   }, () -> {
-      if (evi.M()) {
-         evi.O().g().a(false);
-      }
-   });
-   protected static final fto.h aP = new fto.h(OptionalDouble.of(1.0));
-   protected static final fto.b aQ = new fto.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
-   });
-   protected static final fto.b aR = new fto.b("or_reverse", () -> {
-      RenderSystem.enableColorLogicOp();
-      RenderSystem.logicOp(GlStateManager.g.n);
-   }, () -> RenderSystem.disableColorLogicOp());
+   private static boolean c;
 
-   public fto(String $$0, Runnable $$1, Runnable $$2) {
-      this.b = $$0;
-      this.aT = $$1;
-      this.aU = $$2;
-   }
-
-   public void a() {
-      this.aT.run();
-   }
-
-   public void b() {
-      this.aU.run();
-   }
-
-   @Override
-   public String toString() {
-      return this.b;
-   }
-
-   private static void a(float $$0) {
-      long $$1 = (long)((double)ac.b() * evi.O().m.aj().c() * 8.0);
-      float $$2 = (float)($$1 % 110000L) / 110000.0F;
-      float $$3 = (float)($$1 % 30000L) / 30000.0F;
-      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
-      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
-      RenderSystem.setTextureMatrix($$4);
-   }
-
-   static class a extends fto {
-      private final boolean aS;
-
-      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
-         super($$0, $$1, $$2);
-         this.aS = $$3;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aS + "]";
-      }
-   }
-
-   protected static class b extends fto {
-      public b(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class c extends fto.a {
-      public c(boolean $$0) {
-         super("cull", () -> {
-            if (!$$0) {
-               RenderSystem.disableCull();
-            }
-         }, () -> {
-            if (!$$0) {
-               RenderSystem.enableCull();
-            }
-         }, $$0);
-      }
-   }
-
-   protected static class d extends fto {
-      private final String aS;
-
-      public d(String $$0, int $$1) {
-         super("depth_test", () -> {
-            if ($$1 != 519) {
-               RenderSystem.enableDepthTest();
-               RenderSystem.depthFunc($$1);
-            }
-         }, () -> {
-            if ($$1 != 519) {
-               RenderSystem.disableDepthTest();
-               RenderSystem.depthFunc(515);
-            }
-         });
-         this.aS = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aS + "]";
-      }
-   }
-
-   protected static class e extends fto {
-      public e(Runnable $$0, Runnable $$1) {
-         super("texture", $$0, $$1);
-      }
-
-      e() {
-         super("texture", () -> {
-         }, () -> {
-         });
-      }
-
-      protected Optional<ahg> c() {
-         return Optional.empty();
-      }
-   }
-
-   protected static class f extends fto {
-      public f(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class g extends fto.a {
-      public g(boolean $$0) {
-         super("lightmap", () -> {
-            if ($$0) {
-               evi.O().j.n().c();
-            }
-         }, () -> {
-            if ($$0) {
-               evi.O().j.n().b();
-            }
-         }, $$0);
+   public static fub a(djp $$0) {
+      cwy $$1 = $$0.b();
+      if ($$1 instanceof dbh) {
+         return c ? fub.d() : fub.c();
+      } else {
+         fub $$2 = a.get($$1);
+         return $$2 != null ? $$2 : fub.c();
       }
    }
 
-   protected static class h extends fto {
-      private final OptionalDouble aS;
-
-      public h(OptionalDouble $$0) {
-         super("line_width", () -> {
-            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
-               if ($$0.isPresent()) {
-                  RenderSystem.lineWidth((float)$$0.getAsDouble());
-               } else {
-                  RenderSystem.lineWidth(Math.max(2.5F, (float)evi.O().aM().k() / 1920.0F * 2.5F));
-               }
-            }
-         }, () -> {
-            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
-               RenderSystem.lineWidth(1.0F);
-            }
-         });
-         this.aS = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + (this.aS.isPresent() ? this.aS.getAsDouble() : "window_scale") + "]";
-      }
-   }
-
-   protected static class i extends fto.e {
-      private final Optional<ahg> aS;
-
-      i(ImmutableList<Triple<ahg, Boolean, Boolean>> $$0) {
-         super(() -> {
-            int $$1 = 0;
-            UnmodifiableIterator var2 = $$0.iterator();
-
-            while (var2.hasNext()) {
-               Triple<ahg, Boolean, Boolean> $$2 = (Triple<ahg, Boolean, Boolean>)var2.next();
-               geo $$3 = evi.O().Y();
-               $$3.b((ahg)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
-               RenderSystem.setShaderTexture($$1++, (ahg)$$2.getLeft());
-            }
-         }, () -> {
-         });
-         this.aS = $$0.stream().findFirst().map(Triple::getLeft);
-      }
-
-      @Override
-      protected Optional<ahg> c() {
-         return this.aS;
-      }
-
-      public static fto.i.a d() {
-         return new fto.i.a();
-      }
-
-      public static final class a {
-         private final Builder<Triple<ahg, Boolean, Boolean>> a = new Builder();
-
-         public fto.i.a a(ahg $$0, boolean $$1, boolean $$2) {
-            this.a.add(Triple.of($$0, $$1, $$2));
-            return this;
-         }
-
-         public fto.i a() {
-            return new fto.i(this.a.build());
+   public static fub b(djp $$0) {
+      cwy $$1 = $$0.b();
+      if ($$1 instanceof dbh) {
+         return c ? fub.d() : fub.c();
+      } else {
+         fub $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == fub.f() ? fub.g() : $$2;
+         } else {
+            return fub.c();
          }
       }
    }
 
-   protected static final class j extends fto.o {
-      public j(float $$0, float $$1) {
-         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
+   public static fub a(djp $$0, boolean $$1) {
+      fub $$2 = a($$0);
+      if ($$2 == fub.f()) {
+         if (!evr.M()) {
+            return fui.k();
+         } else {
+            return $$1 ? fui.k() : fui.j();
+         }
+      } else {
+         return fui.i();
       }
    }
 
-   protected static class k extends fto {
-      public k(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
+   public static fub a(cng $$0, boolean $$1) {
+      cnb $$2 = $$0.d();
+      if ($$2 instanceof cla) {
+         cwy $$3 = ((cla)$$2).e();
+         return a($$3.o(), $$1);
+      } else {
+         return $$1 ? fui.k() : fui.j();
       }
    }
 
-   protected static class l extends fto.a {
-      public l(boolean $$0) {
-         super("overlay", () -> {
-            if ($$0) {
-               evi.O().j.o().a();
-            }
-         }, () -> {
-            if ($$0) {
-               evi.O().j.o().b();
-            }
-         }, $$0);
-      }
+   public static fub a(eez $$0) {
+      fub $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : fub.c();
    }
 
-   protected static class m extends fto {
-      private final Optional<Supplier<ftv>> aS;
-
-      public m(Supplier<ftv> $$0) {
-         super("shader", () -> RenderSystem.setShader($$0), () -> {
-         });
-         this.aS = Optional.of($$0);
-      }
-
-      public m() {
-         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
-         });
-         this.aS = Optional.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aS + "]";
-      }
-   }
-
-   protected static class n extends fto.e {
-      private final Optional<ahg> aS;
-      private final boolean aT;
-      private final boolean aU;
-
-      public n(ahg $$0, boolean $$1, boolean $$2) {
-         super(() -> {
-            geo $$3 = evi.O().Y();
-            $$3.b($$0).a($$1, $$2);
-            RenderSystem.setShaderTexture(0, $$0);
-         }, () -> {
-         });
-         this.aS = Optional.of($$0);
-         this.aT = $$1;
-         this.aU = $$2;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aS + "(blur=" + this.aT + ", mipmap=" + this.aU + ")]";
-      }
-
-      @Override
-      protected Optional<ahg> c() {
-         return this.aS;
-      }
-   }
-
-   protected static class o extends fto {
-      public o(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class p extends fto {
-      public p(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class q extends fto {
-      private final boolean aS;
-      private final boolean aT;
-
-      public q(boolean $$0, boolean $$1) {
-         super("write_mask_state", () -> {
-            if (!$$1) {
-               RenderSystem.depthMask($$1);
-            }
-
-            if (!$$0) {
-               RenderSystem.colorMask($$0, $$0, $$0, $$0);
-            }
-         }, () -> {
-            if (!$$1) {
-               RenderSystem.depthMask(true);
-            }
-
-            if (!$$0) {
-               RenderSystem.colorMask(true, true, true, true);
-            }
-         });
-         this.aS = $$0;
-         this.aT = $$1;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[writeColor=" + this.aS + ", writeDepth=" + this.aT + "]";
-      }
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

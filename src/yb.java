@@ -1,5 +1,5 @@
-public record yb(ahg a) implements ya {
-   @Override
-   public void a(ui $$0) {
-   }
+public interface yb {
+   void a(uj var1);
+
+   ahh a();
 }

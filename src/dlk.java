@@ -1,69 +1,51 @@
-import javax.annotation.Nullable;
+import java.util.BitSet;
+import java.util.stream.Stream;
 
-public class dlk extends dlo {
-   private final ih<cuo> n;
+public class dlk {
+   private final int a;
+   private final BitSet b;
+   private dlk.a c = ($$0x, $$1x, $$2) -> false;
 
-   public dlk(ctp $$0, csw $$1, ih<cuo> $$2) {
-      super($$0, $$1);
-      this.n = $$2;
+   public dlk(int $$0, int $$1) {
+      this.a = $$1;
+      this.b = new BitSet(256 * $$0);
    }
 
-   @Override
-   public djh a_(hx $$0) {
-      return cws.nb.o();
+   public void a(dlk.a $$0) {
+      this.c = $$0;
    }
 
-   @Nullable
-   @Override
-   public djh a(hx $$0, djh $$1, boolean $$2) {
-      return null;
+   public dlk(long[] $$0, int $$1) {
+      this.a = $$1;
+      this.b = BitSet.valueOf($$0);
    }
 
-   @Override
-   public eer b_(hx $$0) {
-      return ees.a.g();
+   private int c(int $$0, int $$1, int $$2) {
+      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
    }
 
-   @Override
-   public int i(hx $$0) {
-      return 0;
+   public void a(int $$0, int $$1, int $$2) {
+      this.b.set(this.c($$0, $$1, $$2));
    }
 
-   @Nullable
-   @Override
-   public dgv a(hx $$0, dlo.b $$1) {
-      return null;
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
    }
 
-   @Override
-   public void b(dgv $$0) {
+   public Stream<hx> a(cte $$0) {
+      return this.b.stream().mapToObj($$1 -> {
+         int $$2 = $$1 & 15;
+         int $$3 = $$1 >> 4 & 15;
+         int $$4 = $$1 >> 8;
+         return $$0.a($$2, $$4 + this.a, $$3);
+      });
    }
 
-   @Override
-   public void a(dgv $$0) {
+   public long[] a() {
+      return this.b.toLongArray();
    }
 
-   @Override
-   public void d(hx $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public amw D() {
-      return amw.b;
-   }
-
-   @Override
-   public ih<cuo> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n;
+   public interface a {
+      boolean test(int var1, int var2, int var3);
    }
 }

@@ -1,118 +1,136 @@
-import java.util.EnumSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.List;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 
-public class fvp implements fvh<dhl> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final fmx h;
-   private final fmx i;
-   private final fmx j;
-   private final fmx k;
-   private final fmx l;
-   private final fmx m;
-   private final fmx n;
-   private final ggq o = Objects.requireNonNull(ftw.c(dhm.a));
-   private static final float p = 0.125F;
+public class fvp implements fvt<dgy> {
+   public static final ahh a = new ahh("textures/entity/beacon_beam.png");
+   public static final int b = 1024;
 
-   public fvp(fvi.a $$0) {
-      fmx $$1 = $$0.a(fmw.H);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      fmx $$2 = $$0.a(fmw.I);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
+   public fvp(fvu.a $$0) {
    }
 
-   public static fnd b() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      fnb $$2 = new fnb(0.2F);
-      fnb $$3 = new fnb(-0.1F);
-      $$1.a(
-         "neck",
-         fnc.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         fmz.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      fnc $$4 = fnc.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, fmz.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, fmz.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return fnd.a($$0, 32, 32);
-   }
+   public void a(dgy $$0, float $$1, eqk $$2, ftt $$3, int $$4, int $$5) {
+      long $$6 = $$0.i().X();
+      List<dgy.a> $$7 = $$0.c();
+      int $$8 = 0;
 
-   public static fnd c() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      fnc $$2 = fnc.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(ic.c));
-      $$1.a("back", $$2, fmz.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, fmz.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, fmz.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, fmz.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return fnd.a($$0, 16, 16);
-   }
-
-   @Nullable
-   private static ggq a(cmt $$0) {
-      ggq $$1 = ftw.c(dhm.a($$0));
-      if ($$1 == null) {
-         $$1 = ftw.c(dhm.a(cnb.qI));
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         dgy.a $$10 = $$7.get($$9);
+         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
+         $$8 += $$10.c();
       }
-
-      return $$1;
    }
 
-   public void a(dhl $$0, float $$1, eqb $$2, fth $$3, int $$4, int $$5) {
-      $$2.a();
-      ic $$6 = $$0.l();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      dhl.b $$7 = $$0.i;
-      if ($$7 != null && $$0.i() != null) {
-         float $$8 = ((float)($$0.i().X() - $$0.h) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == dhl.b.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (auo.b($$10) + 0.5F) * auo.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = auo.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
-            } else {
-               float $$13 = auo.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
-            }
-         }
-      }
-
-      eqf $$15 = this.o.a($$3, ftp::c);
-      this.h.a($$2, $$15, $$4, $$5);
-      this.m.a($$2, $$15, $$4, $$5);
-      this.n.a($$2, $$15, $$4, $$5);
-      dhl.a $$16 = $$0.m();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
-      $$2.b();
+   private static void a(eqk $$0, ftt $$1, float $$2, long $$3, int $$4, int $$5, float[] $$6) {
+      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
    }
 
-   private void a(fmx $$0, eqb $$1, fth $$2, int $$3, int $$4, @Nullable ggq $$5) {
-      if ($$5 == null) {
-         $$5 = a(cnb.qI);
-      }
+   public static void a(eqk $$0, ftt $$1, ahh $$2, float $$3, float $$4, long $$5, int $$6, int $$7, float[] $$8, float $$9, float $$10) {
+      int $$11 = $$6 + $$7;
+      $$0.a();
+      $$0.a(0.5, 0.0, 0.5);
+      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
+      float $$13 = $$7 < 0 ? $$12 : -$$12;
+      float $$14 = aup.h($$13 * 0.2F - (float)aup.d($$13 * 0.1F));
+      float $$15 = $$8[0];
+      float $$16 = $$8[1];
+      float $$17 = $$8[2];
+      $$0.a();
+      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
+      float $$18 = 0.0F;
+      float $$21 = 0.0F;
+      float $$22 = -$$9;
+      float $$23 = 0.0F;
+      float $$24 = 0.0F;
+      float $$25 = -$$9;
+      float $$26 = 0.0F;
+      float $$27 = 1.0F;
+      float $$28 = -1.0F + $$14;
+      float $$29 = (float)$$7 * $$4 * (0.5F / $$9) + $$28;
+      a($$0, $$1.getBuffer(fub.e($$2, false)), $$15, $$16, $$17, 1.0F, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$22, 0.0F, 0.0F, $$25, 0.0F, 1.0F, $$29, $$28);
+      $$0.b();
+      $$18 = -$$10;
+      float $$31 = -$$10;
+      $$21 = -$$10;
+      $$22 = -$$10;
+      $$26 = 0.0F;
+      $$27 = 1.0F;
+      $$28 = -1.0F + $$14;
+      $$29 = (float)$$7 * $$4 + $$28;
+      a($$0, $$1.getBuffer(fub.e($$2, true)), $$15, $$16, $$17, 0.125F, $$6, $$11, $$18, $$31, $$10, $$21, $$22, $$10, $$10, $$10, 0.0F, 1.0F, $$29, $$28);
+      $$0.b();
+   }
 
-      if ($$5 != null) {
-         $$0.a($$1, $$5.a($$2, ftp::c), $$3, $$4);
-      }
+   private static void a(
+      eqk $$0,
+      eqo $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      int $$6,
+      int $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16,
+      float $$17,
+      float $$18,
+      float $$19
+   ) {
+      eqk.a $$20 = $$0.c();
+      Matrix4f $$21 = $$20.a();
+      Matrix3f $$22 = $$20.b();
+      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$16, $$17, $$18, $$19);
+      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$14, $$15, $$12, $$13, $$16, $$17, $$18, $$19);
+      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$10, $$11, $$14, $$15, $$16, $$17, $$18, $$19);
+      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$12, $$13, $$8, $$9, $$16, $$17, $$18, $$19);
+   }
+
+   private static void a(
+      Matrix4f $$0,
+      Matrix3f $$1,
+      eqo $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      int $$7,
+      int $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16
+   ) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9, $$10, $$14, $$15);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$9, $$10, $$14, $$16);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$11, $$12, $$13, $$16);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$11, $$12, $$13, $$15);
+   }
+
+   private static void a(Matrix4f $$0, Matrix3f $$1, eqo $$2, float $$3, float $$4, float $$5, float $$6, int $$7, float $$8, float $$9, float $$10, float $$11) {
+      $$2.a($$0, $$8, (float)$$7, $$9).a($$3, $$4, $$5, $$6).a($$10, $$11).c(ges.d).b(15728880).a($$1, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   public boolean a(dgy $$0) {
+      return true;
+   }
+
+   @Override
+   public int aS_() {
+      return 256;
+   }
+
+   public boolean a(dgy $$0, emc $$1) {
+      return emc.b($$0.aE_()).d(1.0, 0.0, 1.0).a((ir)$$1.d(1.0, 0.0, 1.0), (double)this.aS_());
    }
 }

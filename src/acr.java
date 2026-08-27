@@ -1,64 +1,40 @@
-public class acr implements xf<za> {
-   private final ih<arr> a;
-   private final art b;
+public class acr implements xg<zb> {
+   private final int a;
+   private final int b;
    private final int c;
-   private final float d;
-   private final float e;
-   private final long f;
 
-   public acr(ih<arr> $$0, art $$1, blv $$2, float $$3, float $$4, long $$5) {
+   public acr(int $$0, int $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2.aj();
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+      this.c = $$2;
    }
 
-   public acr(ui $$0) {
-      this.a = $$0.a(kd.b.t(), arr::b);
-      this.b = $$0.b(art.class);
-      this.c = $$0.n();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = $$0.readLong();
+   public acr(uj $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(kd.b.t(), this.a, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.b(this.f);
+   public void a(uj $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
-   public ih<arr> a() {
+   public void a(zb $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
       return this.a;
    }
 
-   public art d() {
+   public int d() {
       return this.b;
    }
 
    public int e() {
       return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public long h() {
-      return this.f;
-   }
-
-   public void a(za $$0) {
-      $$0.a(this);
    }
 }

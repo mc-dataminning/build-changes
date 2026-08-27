@@ -1,61 +1,57 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.BitSet;
+import java.util.Set;
 
-public class fwu implements fws.a {
-   private static final float a = 0.02F;
-   private final Map<hx, fwu.a> b = Maps.newHashMap();
+public class fwu {
+   private static final int a = ic.values().length;
+   private final BitSet b = new BitSet(a * a);
 
-   public void a(hx $$0, int $$1, String $$2, int $$3) {
-      this.b.put($$0, new fwu.a($$1, $$2, ac.b() + (long)$$3));
+   public void a(Set<ic> $$0) {
+      for (ic $$1 : $$0) {
+         for (ic $$2 : $$0) {
+            this.a($$1, $$2, true);
+         }
+      }
+   }
+
+   public void a(ic $$0, ic $$1, boolean $$2) {
+      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
+      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   }
+
+   public void a(boolean $$0) {
+      this.b.set(0, this.b.size(), $$0);
+   }
+
+   public boolean a(ic $$0, ic $$1) {
+      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(' ');
 
-   @Override
-   public void a(eqb $$0, fth $$1, double $$2, double $$3, double $$4) {
-      long $$5 = ac.b();
-      this.b.entrySet().removeIf($$1x -> $$5 > ((fwu.a)$$1x.getValue()).c);
-      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
-   }
-
-   private void a(eqb $$0, fth $$1, hx $$2, fwu.a $$3) {
-      fws.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
-      if (!$$3.b.isEmpty()) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v() + 1.2;
-         double $$6 = (double)$$2.w() + 0.5;
-         fws.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
-      }
-   }
-
-   static class a {
-      public int a;
-      public String b;
-      public long c;
-
-      public a(int $$0, String $$1, long $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      for (ic $$1 : ic.values()) {
+         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
       }
 
-      public float a() {
-         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      $$0.append('\n');
+
+      for (ic $$2 : ic.values()) {
+         $$0.append($$2.toString().toUpperCase().charAt(0));
+
+         for (ic $$3 : ic.values()) {
+            if ($$2 == $$3) {
+               $$0.append("  ");
+            } else {
+               boolean $$4 = this.a($$2, $$3);
+               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+            }
+         }
+
+         $$0.append('\n');
       }
 
-      public float b() {
-         return (float)(this.a >> 8 & 0xFF) / 255.0F;
-      }
-
-      public float c() {
-         return (float)(this.a & 0xFF) / 255.0F;
-      }
-
-      public float d() {
-         return (float)(this.a >> 24 & 0xFF) / 255.0F;
-      }
+      return $$0.toString();
    }
 }

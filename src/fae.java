@@ -1,242 +1,110 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
+import java.util.Arrays;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fae implements eoe {
-   static final Logger a = LogUtils.getLogger();
-   private final epc b;
-   private final ezt<fae.b> c;
+public class fae<T> {
+   private static final int a = 8;
+   private static final int b = 256;
+   private static final int c = 255;
+   private static final int d = 4351;
+   private static final int e = 4352;
+   private final T[] f;
+   private final T[][] g;
+   private final IntFunction<T[]> h;
 
-   fae(epc $$0, ezt<fae.b> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fae(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
+      this.f = (T[])((Object[])$$0.apply(256));
+      this.g = (T[][])((Object[][])$$1.apply(4352));
+      Arrays.fill(this.g, this.f);
+      this.h = $$0;
    }
 
-   @Override
-   public void close() {
-      this.b.close();
+   public void a() {
+      Arrays.fill(this.g, this.f);
    }
 
    @Nullable
-   @Override
-   public eod a(int $$0) {
-      return this.c.a($$0);
+   public T a(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      return this.g[$$1][$$2];
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.c.b());
-   }
-
-   public static record a(ahg c, int d, int e, int[][] f) implements faf {
-      private static final Codec<int[][]> g = atw.a(Codec.STRING.listOf().xmap($$0 -> {
-         int $$1 = $$0.size();
-         int[][] $$2 = new int[$$1][];
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
-         }
-
-         return $$2;
-      }, $$0 -> {
-         List<String> $$1 = new ArrayList<>($$0.length);
-
-         for (int[] $$2 : $$0) {
-            $$1.add(new String($$2, 0, $$2.length));
-         }
-
-         return $$1;
-      }), fae.a::a);
-      public static final MapCodec<fae.a> a = atw.a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     ahg.a.fieldOf("file").forGetter(fae.a::c),
-                     Codec.INT.optionalFieldOf("height", 8).forGetter(fae.a::d),
-                     Codec.INT.fieldOf("ascent").forGetter(fae.a::e),
-                     g.fieldOf("chars").forGetter(fae.a::f)
-                  )
-                  .apply($$0, fae.a::new)
-         ),
-         fae.a::a
-      );
-
-      private static DataResult<int[][]> a(int[][] $$0) {
-         int $$1 = $$0.length;
-         if ($$1 == 0) {
-            return DataResult.error(() -> "Expected to find data in codepoint grid");
-         } else {
-            int[] $$2 = $$0[0];
-            int $$3 = $$2.length;
-            if ($$3 == 0) {
-               return DataResult.error(() -> "Expected to find data in codepoint grid");
-            } else {
-               for (int $$4 = 1; $$4 < $$1; $$4++) {
-                  int[] $$5 = $$0[$$4];
-                  if ($$5.length != $$3) {
-                     return DataResult.error(
-                        () -> "Lines in codepoint grid have to be the same length (found: "
-                              + $$5.length
-                              + " codepoints, expected: "
-                              + $$3
-                              + "), pad with \\u0000"
-                     );
-                  }
-               }
-
-               return DataResult.success($$0);
-            }
-         }
-      }
-
-      private static DataResult<fae.a> a(fae.a $$0) {
-         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
-      }
-
-      @Override
-      public fag a() {
-         return fag.a;
-      }
-
-      @Override
-      public Either<faf.a, faf.b> b() {
-         return Either.left(this::a);
-      }
-
-      private eoe a(aqi $$0) throws IOException {
-         ahg $$1 = this.c.d("textures/");
-
-         fae var22;
-         try (InputStream $$2 = $$0.open($$1)) {
-            epc $$3 = epc.a(epc.a.a, $$2);
-            int $$4 = $$3.a();
-            int $$5 = $$3.b();
-            int $$6 = $$4 / this.f[0].length;
-            int $$7 = $$5 / this.f.length;
-            float $$8 = (float)this.d / (float)$$7;
-            ezt<fae.b> $$9 = new ezt<>(fae.b[]::new, fae.b[][]::new);
-
-            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
-               int $$11 = 0;
-
-               for (int $$12 : this.f[$$10]) {
-                  int $$13 = $$11++;
-                  if ($$12 != 0) {
-                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
-                     fae.b $$15 = $$9.a($$12, new fae.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
-                     if ($$15 != null) {
-                        fae.a.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
-                     }
-                  }
-               }
-            }
-
-            var22 = new fae($$3, $$9);
-         }
-
-         return var22;
-      }
-
-      private int a(epc $$0, int $$1, int $$2, int $$3, int $$4) {
-         int $$5;
-         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
-            int $$6 = $$3 * $$1 + $$5;
-
-            for (int $$7 = 0; $$7 < $$2; $$7++) {
-               int $$8 = $$4 * $$2 + $$7;
-               if ($$0.e($$6, $$8) != 0) {
-                  return $$5 + 1;
-               }
-            }
-         }
-
-         return $$5 + 1;
+   @Nullable
+   public T a(int $$0, T $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      if ($$4 == this.f) {
+         $$4 = (T[])((Object[])this.h.apply(256));
+         this.g[$$2] = $$4;
+         $$4[$$3] = $$1;
+         return null;
+      } else {
+         T $$5 = $$4[$$3];
+         $$4[$$3] = $$1;
+         return $$5;
       }
    }
 
-   static record b(float a, epc b, int c, int d, int e, int f, int g, int h) implements eod {
+   public T a(int $$0, IntFunction<T> $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      T $$5 = $$4[$$3];
+      if ($$5 != null) {
+         return $$5;
+      } else {
+         if ($$4 == this.f) {
+            $$4 = (T[])((Object[])this.h.apply(256));
+            this.g[$$2] = $$4;
+         }
 
-      @Override
-      public float getAdvance() {
-         return (float)this.g;
+         T $$6 = $$1.apply($$0);
+         $$4[$$3] = $$6;
+         return $$6;
       }
+   }
 
-      @Override
-      public ezz bake(Function<eof, ezz> $$0) {
-         return $$0.apply(new eof() {
-            @Override
-            public float d() {
-               return 1.0F / b.this.a;
+   @Nullable
+   public T b(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      T[] $$3 = this.g[$$1];
+      if ($$3 == this.f) {
+         return null;
+      } else {
+         T $$4 = $$3[$$2];
+         $$3[$$2] = null;
+         return $$4;
+      }
+   }
+
+   public void a(fae.a<T> $$0) {
+      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
+         T[] $$2 = this.g[$$1];
+         if ($$2 != this.f) {
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               T $$4 = $$2[$$3];
+               if ($$4 != null) {
+                  int $$5 = $$1 << 8 | $$3;
+                  $$0.accept($$5, $$4);
+               }
             }
-
-            @Override
-            public int a() {
-               return b.this.e;
-            }
-
-            @Override
-            public int b() {
-               return b.this.f;
-            }
-
-            @Override
-            public float j() {
-               return eof.super.j() + 7.0F - (float)b.this.h;
-            }
-
-            @Override
-            public void a(int $$0, int $$1) {
-               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
-            }
-
-            @Override
-            public boolean c() {
-               return b.this.b.c().a() > 1;
-            }
-         });
+         }
       }
+   }
 
-      public float c() {
-         return this.a;
-      }
+   public IntSet b() {
+      IntOpenHashSet $$0 = new IntOpenHashSet();
+      this.a(($$1, $$2) -> $$0.add($$1));
+      return $$0;
+   }
 
-      public epc d() {
-         return this.b;
-      }
-
-      public int e() {
-         return this.c;
-      }
-
-      public int f() {
-         return this.d;
-      }
-
-      public int g() {
-         return this.e;
-      }
-
-      public int h() {
-         return this.f;
-      }
-
-      public int i() {
-         return this.g;
-      }
-
-      public int j() {
-         return this.h;
-      }
+   @FunctionalInterface
+   public interface a<T> {
+      void accept(int var1, T var2);
    }
 }

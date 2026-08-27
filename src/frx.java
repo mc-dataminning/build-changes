@@ -1,42 +1,20 @@
-public class frx extends fqt {
-   private final blv a;
-   private int b;
-   private final int D;
-   private final jv E;
-
-   public frx(fns $$0, blv $$1, jv $$2) {
-      this($$0, $$1, $$2, 3);
+public class frx extends fqz {
+   protected frx(foe $$0, double $$1, double $$2, double $$3, double $$4, fsc $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.t = 16;
+      this.D = 1.5F;
+      this.b($$5);
    }
 
-   public frx(fns $$0, blv $$1, jv $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.dp());
-   }
+   public static class a implements frk<ka> {
+      private final fsc a;
 
-   private frx(fns $$0, blv $$1, jv $$2, int $$3, elt $$4) {
-      super($$0, $$1.dr(), $$1.e(0.5), $$1.dx(), $$4.c, $$4.d, $$4.e);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
-   }
-
-   @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
+      public a(fsc $$0) {
+         this.a = $$0;
       }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new frx($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

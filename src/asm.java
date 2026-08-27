@@ -1,11 +1,10 @@
-public final class asm {
-   public static final asw<eeq> a = a("water");
-   public static final asw<eeq> b = a("lava");
+public class asm {
+   public static final asx<dxp> a = a("visible");
 
    private asm() {
    }
 
-   private static asw<eeq> a(String $$0) {
-      return asw.a(ke.y, new ahg($$0));
+   private static asx<dxp> a(String $$0) {
+      return asx.a(ke.az, new ahh($$0));
    }
 }

@@ -1,32 +1,29 @@
-public class adv implements xf<adj> {
-   private final int a;
-   private final String b;
+public class adv implements xg<adk> {
+   private final adv.a a;
 
-   public adv(int $$0, String $$1) {
+   public adv(adv.a $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public adv(ui $$0) {
-      this.a = $$0.n();
-      this.b = $$0.d(32500);
+   public adv(uj $$0) {
+      this.a = $$0.b(adv.a.class);
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, 32500);
+   public void a(uj $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public adv.a a() {
       return this.a;
    }
 
-   public String d() {
-      return this.b;
+   public static enum a {
+      a,
+      b;
    }
 }

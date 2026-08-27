@@ -1,55 +1,34 @@
-public interface ene extends bju {
-   cmy x();
+import javax.annotation.Nullable;
 
-   cmy c(int var1);
+public interface ene {
+   int a();
 
-   void b(cmy var1);
+   void a(int var1);
 
-   dgv y();
-
-   default cmy h() {
-      return this.c(this.ak_());
+   default int b(int $$0) {
+      int $$1 = this.a() + $$0;
+      this.a($$1);
+      return $$1;
    }
 
-   @Override
    default int b() {
-      return 1;
+      return this.b(1);
    }
 
-   @Override
-   default boolean ai_() {
-      return this.x().b();
+   default void c() {
+      this.a(0);
    }
 
-   @Override
-   default void a() {
-      this.h();
-   }
+   boolean d();
 
-   @Override
-   default cmy b(int $$0) {
-      return this.a($$0, this.ak_());
-   }
+   void e();
 
-   @Override
-   default cmy a(int $$0) {
-      return $$0 == 0 ? this.x() : cmy.f;
-   }
+   void f();
 
-   @Override
-   default cmy a(int $$0, int $$1) {
-      return $$0 != 0 ? cmy.f : this.c($$1);
-   }
+   @Nullable
+   vg g();
 
-   @Override
-   default void a(int $$0, cmy $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
-      }
-   }
+   void a(@Nullable vg var1);
 
-   @Override
-   default boolean a(cfi $$0) {
-      return bju.a(this.y(), $$0);
-   }
+   void a(@Nullable ww var1);
 }

@@ -17,8 +17,8 @@ public class azl extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.x);
-      Type<?> $$1 = this.getOutputSchema().getType(bbw.x);
+      Type<?> $$0 = this.getInputSchema().getType(bbw.y);
+      Type<?> $$1 = this.getOutputSchema().getType(bbw.y);
       return this.fixTypeEverywhereTyped(
          "Fix AbstractArrow item type",
          $$0,
@@ -39,8 +39,8 @@ public class azl extends DataFix {
    }
 
    private Function<Typed<?>, Typed<?>> a(String $$0, azl.a<?> $$1) {
-      Type<?> $$2 = this.getInputSchema().getChoiceType(bbw.x, $$0);
-      Type<?> $$3 = this.getOutputSchema().getChoiceType(bbw.x, $$0);
+      Type<?> $$2 = this.getInputSchema().getChoiceType(bbw.y, $$0);
+      Type<?> $$3 = this.getOutputSchema().getChoiceType(bbw.y, $$0);
       return a($$0, $$1, $$2, $$3);
    }
 

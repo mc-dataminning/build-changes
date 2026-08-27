@@ -1,5 +1,10 @@
-class rf extends Throwable {
-   public rf(int $$0, int $$1, ro $$2) {
-      super("Not enough successes: " + $$1 + " out of " + $$0 + " attempts. Required successes: " + $$2.A() + ". max attempts: " + $$2.z() + ".", $$2.o());
-   }
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface rf {
+   String a();
 }

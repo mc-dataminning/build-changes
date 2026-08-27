@@ -22,16 +22,16 @@ public class iw {
    static <T> ii<T> a(final ij.c<T> $$0) {
       return new iw.c<T>($$0) {
          @Override
-         public Optional<ih.c<T>> a(ahf<T> $$0x) {
+         public Optional<ih.c<T>> a(ahg<T> $$0x) {
             return $$0.a($$0);
          }
       };
    }
 
-   static <T> ij.c<T> a(final ahf<? extends it<? extends T>> $$0, final Lifecycle $$1, final Map<ahf<T>, ih.c<T>> $$2) {
+   static <T> ij.c<T> a(final ahg<? extends it<? extends T>> $$0, final Lifecycle $$1, final Map<ahg<T>, ih.c<T>> $$2) {
       return new ij.c<T>() {
          @Override
-         public ahf<? extends it<? extends T>> f() {
+         public ahg<? extends it<? extends T>> f() {
             return $$0;
          }
 
@@ -41,7 +41,7 @@ public class iw {
          }
 
          @Override
-         public Optional<ih.c<T>> a(ahf<T> $$0x) {
+         public Optional<ih.c<T>> a(ahg<T> $$0x) {
             return Optional.ofNullable($$2.get($$0));
          }
 
@@ -51,7 +51,7 @@ public class iw {
          }
 
          @Override
-         public Optional<il.c<T>> a(asw<T> $$0x) {
+         public Optional<il.c<T>> a(asx<T> $$0x) {
             return Optional.empty();
          }
 
@@ -62,12 +62,12 @@ public class iw {
       };
    }
 
-   public <T> iw a(ahf<? extends it<T>> $$0, Lifecycle $$1, iw.g<T> $$2) {
+   public <T> iw a(ahg<? extends it<T>> $$0, Lifecycle $$1, iw.g<T> $$2) {
       this.a.add(new iw.i<>($$0, $$1, $$2));
       return this;
    }
 
-   public <T> iw a(ahf<? extends it<T>> $$0, iw.g<T> $$1) {
+   public <T> iw a(ahg<? extends it<T>> $$0, iw.g<T> $$1) {
       return this.a($$0, Lifecycle.stable(), $$1);
    }
 
@@ -92,7 +92,7 @@ public class iw {
       return $$3;
    }
 
-   private ij.b a(iu $$0, ij.b $$1, hy.a $$2, Map<ahf<? extends it<?>>, iw.h<?>> $$3, ij.b $$4) {
+   private ij.b a(iu $$0, ij.b $$1, hy.a $$2, Map<ahg<? extends it<?>>, iw.h<?>> $$3, ij.b $$4) {
       iw.b $$5 = new iw.b();
       MutableObject<ij.b> $$6 = new MutableObject();
       List<ij.c<?>> $$7 = $$3.keySet().stream().map($$5x -> this.a($$5, $$2, $$5x, $$4, $$1, $$6)).peek($$5::b).collect(Collectors.toUnmodifiableList());
@@ -101,22 +101,22 @@ public class iw {
       return $$8;
    }
 
-   private <T> ij.c<T> a(ik<T> $$0, hy.a $$1, ahf<? extends it<? extends T>> $$2, ij.b $$3, ij.b $$4, MutableObject<ij.b> $$5) {
+   private <T> ij.c<T> a(ik<T> $$0, hy.a $$1, ahg<? extends it<? extends T>> $$2, ij.b $$3, ij.b $$4, MutableObject<ij.b> $$5) {
       hy<T> $$6 = $$1.a($$2);
       if ($$6 == null) {
          throw new NullPointerException("No cloner for " + $$2.a());
       } else {
-         Map<ahf<T>, ih.c<T>> $$7 = new HashMap<>();
+         Map<ahg<T>, ih.c<T>> $$7 = new HashMap<>();
          ij.c<T> $$8 = $$3.b($$2);
          $$8.b().forEach($$5x -> {
-            ahf<T> $$6x = $$5x.g();
+            ahg<T> $$6x = $$5x.h();
             iw.d<T> $$7x = new iw.d<>($$0, $$6x);
             $$7x.a = () -> $$6.a((T)$$5x.a(), $$3, (ij.b)$$5.getValue());
             $$7.put($$6x, $$7x);
          });
          ij.c<T> $$9 = $$4.b($$2);
          $$9.b().forEach($$5x -> {
-            ahf<T> $$6x = $$5x.g();
+            ahg<T> $$6x = $$5x.h();
             $$7.computeIfAbsent($$6x, $$6xx -> {
                iw.d<T> $$7x = new iw.d<>($$0, $$6x);
                $$7x.a = () -> $$6.a((T)$$5x.a(), $$4, (ij.b)$$5.getValue());
@@ -130,9 +130,9 @@ public class iw {
 
    public iw.e a(iu $$0, ij.b $$1, hy.a $$2) {
       iw.a $$3 = this.b($$0);
-      Map<ahf<? extends it<?>>, iw.h<?>> $$4 = new HashMap<>();
+      Map<ahg<? extends it<?>>, iw.h<?>> $$4 = new HashMap<>();
       this.a.stream().map($$1x -> $$1x.a($$3)).forEach($$1x -> $$4.put($$1x.a, $$1x));
-      Set<ahf<? extends it<?>>> $$5 = $$0.a().collect(Collectors.toUnmodifiableSet());
+      Set<ahg<? extends it<?>>> $$5 = $$0.a().collect(Collectors.toUnmodifiableSet());
       $$1.a().filter($$1x -> !$$5.contains($$1x)).forEach($$1x -> $$4.putIfAbsent($$1x, new iw.h($$1x, Lifecycle.stable(), Map.of())));
       Stream<ij.c<?>> $$6 = $$4.values().stream().map($$1x -> $$1x.a($$3.a));
       ij.b $$7 = a($$0, $$6);
@@ -142,22 +142,22 @@ public class iw {
       return new iw.e($$8, $$7);
    }
 
-   static record a(iw.b a, iw.j b, Map<ahg, ii<?>> c, Map<ahf<?>, iw.f<?>> d, List<RuntimeException> e) {
+   static record a(iw.b a, iw.j b, Map<ahh, ii<?>> c, Map<ahg<?>, iw.f<?>> d, List<RuntimeException> e) {
 
-      public static iw.a a(iu $$0, Stream<ahf<? extends it<?>>> $$1) {
+      public static iw.a a(iu $$0, Stream<ahg<? extends it<?>>> $$1) {
          iw.b $$2 = new iw.b();
          List<RuntimeException> $$3 = new ArrayList<>();
          iw.j $$4 = new iw.j($$2);
-         Builder<ahg, ii<?>> $$5 = ImmutableMap.builder();
+         Builder<ahh, ii<?>> $$5 = ImmutableMap.builder();
          $$0.c().forEach($$1x -> $$5.put($$1x.a().a(), iw.a($$1x.b().p())));
          $$1.forEach($$2x -> $$5.put($$2x.a(), $$4));
          return new iw.a($$2, $$4, $$5.build(), new HashMap<>(), $$3);
       }
 
-      public <T> pe<T> a() {
-         return new pe<T>() {
+      public <T> pf<T> a() {
+         return new pf<T>() {
             @Override
-            public ih.c<T> a(ahf<T> $$0, T $$1, Lifecycle $$2) {
+            public ih.c<T> a(ahg<T> $$0, T $$1, Lifecycle $$2) {
                iw.f<?> $$3 = a.this.d.put($$0, new iw.f($$1, $$2));
                if ($$3 != null) {
                   a.this.e.add(new IllegalStateException("Duplicate registration for " + $$0 + ", new=" + $$1 + ", old=" + $$3.a));
@@ -167,7 +167,7 @@ public class iw {
             }
 
             @Override
-            public <S> ii<S> a(ahf<? extends it<? extends S>> $$0) {
+            public <S> ii<S> a(ahg<? extends it<? extends S>> $$0) {
                return (ii<S>)a.this.c.getOrDefault($$0.a(), a.this.b);
             }
          };
@@ -178,7 +178,7 @@ public class iw {
       }
 
       public void c() {
-         for (ahf<Object> $$0 : this.b.a.keySet()) {
+         for (ahg<Object> $$0 : this.b.a.keySet()) {
             this.e.add(new IllegalStateException("Unreferenced key: " + $$0));
          }
       }
@@ -203,11 +203,11 @@ public class iw {
          return this.b;
       }
 
-      public Map<ahg, ii<?>> g() {
+      public Map<ahh, ii<?>> g() {
          return this.c;
       }
 
-      public Map<ahf<?>, iw.f<?>> h() {
+      public Map<ahg<?>, iw.f<?>> h() {
          return this.d;
       }
 
@@ -241,7 +241,7 @@ public class iw {
       }
 
       @Override
-      public Optional<il.c<T>> a(asw<T> $$0) {
+      public Optional<il.c<T>> a(asx<T> $$0) {
          return Optional.of(il.a(this.b, $$0));
       }
    }
@@ -250,7 +250,7 @@ public class iw {
       @Nullable
       Supplier<T> a;
 
-      protected d(ik<T> $$0, @Nullable ahf<T> $$1) {
+      protected d(ik<T> $$0, @Nullable ahg<T> $$1) {
          super(ih.c.a.a, $$0, $$1, null);
       }
 
@@ -278,15 +278,15 @@ public class iw {
 
    @FunctionalInterface
    public interface g<T> {
-      void run(pe<T> var1);
+      void run(pf<T> var1);
    }
 
-   static record h<T>(ahf<? extends it<? extends T>> a, Lifecycle b, Map<ahf<T>, iw.k<T>> c) {
+   static record h<T>(ahg<? extends it<? extends T>> a, Lifecycle b, Map<ahg<T>, iw.k<T>> c) {
 
       public ij.c<T> a(iw.b $$0) {
-         Map<ahf<T>, ih.c<T>> $$1 = this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$1x -> {
+         Map<ahg<T>, ih.c<T>> $$1 = this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$1x -> {
             iw.k<T> $$2x = (iw.k<T>)$$1x.getValue();
-            ih.c<T> $$3 = $$2x.b().orElseGet(() -> ih.c.a($$0.a(), (ahf<T>)$$1x.getKey()));
+            ih.c<T> $$3 = $$2x.b().orElseGet(() -> ih.c.a($$0.a(), (ahg<T>)$$1x.getKey()));
             $$3.b($$2x.a().a());
             return $$3;
          }));
@@ -296,22 +296,22 @@ public class iw {
       }
    }
 
-   static record i<T>(ahf<? extends it<T>> a, Lifecycle b, iw.g<T> c) {
+   static record i<T>(ahg<? extends it<T>> a, Lifecycle b, iw.g<T> c) {
       void b(iw.a $$0) {
          this.c.run($$0.a());
       }
 
       public iw.h<T> a(iw.a $$0) {
-         Map<ahf<T>, iw.k<T>> $$1 = new HashMap<>();
-         Iterator<Entry<ahf<?>, iw.f<?>>> $$2 = $$0.d.entrySet().iterator();
+         Map<ahg<T>, iw.k<T>> $$1 = new HashMap<>();
+         Iterator<Entry<ahg<?>, iw.f<?>>> $$2 = $$0.d.entrySet().iterator();
 
          while ($$2.hasNext()) {
-            Entry<ahf<?>, iw.f<?>> $$3 = $$2.next();
-            ahf<?> $$4 = $$3.getKey();
+            Entry<ahg<?>, iw.f<?>> $$3 = $$2.next();
+            ahg<?> $$4 = $$3.getKey();
             if ($$4.b(this.a)) {
                iw.f<T> $$6 = (iw.f<T>)$$3.getValue();
                ih.c<T> $$7 = (ih.c<T>)$$0.b.a.remove($$4);
-               $$1.put((ahf<T>)$$4, new iw.k<>($$6, Optional.ofNullable($$7)));
+               $$1.put((ahg<T>)$$4, new iw.k<>($$6, Optional.ofNullable($$7)));
                $$2.remove();
             }
          }
@@ -321,18 +321,18 @@ public class iw {
    }
 
    static class j extends iw.c<Object> {
-      final Map<ahf<Object>, ih.c<Object>> a = new HashMap<>();
+      final Map<ahg<Object>, ih.c<Object>> a = new HashMap<>();
 
       public j(ik<Object> $$0) {
          super($$0);
       }
 
       @Override
-      public Optional<ih.c<Object>> a(ahf<Object> $$0) {
+      public Optional<ih.c<Object>> a(ahg<Object> $$0) {
          return Optional.of(this.c($$0));
       }
 
-      <T> ih.c<T> c(ahf<T> $$0) {
+      <T> ih.c<T> c(ahg<T> $$0) {
          return (ih.c<T>)this.a.computeIfAbsent($$0, $$0x -> ih.c.a(this.b, $$0x));
       }
    }

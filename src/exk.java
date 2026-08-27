@@ -1,10 +1,8 @@
-public class exk {
-   public static eyl a(int $$0, exg.c $$1, boolean $$2) {
-      return eyl.a(vf.c("options.language"), $$1, $$2).a($$0).a(new ahg("icon/language"), 15, 15).a();
-   }
+public abstract class exk extends exn {
+   protected final evv a;
 
-   public static eyl b(int $$0, exg.c $$1, boolean $$2) {
-      vf $$3 = $$2 ? vf.c("options.accessibility") : vf.c("accessibility.onboarding.accessibility.button");
-      return eyl.a($$3, $$1, $$2).a($$0).a(new ahg("icon/accessibility"), 15, 15).a();
+   protected exk(evv $$0, int $$1, int $$2, int $$3, int $$4, double $$5) {
+      super($$1, $$2, $$3, $$4, vf.a, $$5);
+      this.a = $$0;
    }
 }

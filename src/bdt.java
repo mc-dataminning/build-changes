@@ -28,8 +28,8 @@ public class bdt extends bde {
                         return Pair.of("_special", $$0x);
                      } else {
                         try {
-                           ahg $$2x = ahg.a($$0x.substring(0, $$1x), '.');
-                           ahg $$3 = ahg.a($$0x.substring($$1x + 1), '.');
+                           ahh $$2x = ahh.a($$0x.substring(0, $$1x), '.');
+                           ahh $$3 = ahh.a($$0x.substring($$1x + 1), '.');
                            return Pair.of($$2x.toString(), $$3.toString());
                         } catch (Exception var4) {
                            return Pair.of("_special", $$0x);
@@ -77,7 +77,7 @@ public class bdt extends bde {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      Supplier<TypeTemplate> $$3 = () -> DSL.compoundList(bbw.z.in($$0), DSL.constType(DSL.intType()));
+      Supplier<TypeTemplate> $$3 = () -> DSL.compoundList(bbw.A.in($$0), DSL.constType(DSL.intType()));
       $$0.registerType(
          false,
          bbw.g,
@@ -85,7 +85,7 @@ public class bdt extends bde {
                "stats",
                DSL.optionalFields(
                   "minecraft:mined",
-                  DSL.compoundList(bbw.y.in($$0), DSL.constType(DSL.intType())),
+                  DSL.compoundList(bbw.z.in($$0), DSL.constType(DSL.intType())),
                   "minecraft:crafted",
                   $$3.get(),
                   "minecraft:used",
@@ -98,9 +98,9 @@ public class bdt extends bde {
                      "minecraft:dropped",
                      $$3.get(),
                      "minecraft:killed",
-                     DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.intType())),
+                     DSL.compoundList(bbw.w.in($$0), DSL.constType(DSL.intType())),
                      "minecraft:killed_by",
-                     DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.intType())),
+                     DSL.compoundList(bbw.w.in($$0), DSL.constType(DSL.intType())),
                      "minecraft:custom",
                      DSL.compoundList(DSL.constType(a()), DSL.constType(DSL.intType()))
                   )
@@ -108,13 +108,13 @@ public class bdt extends bde {
             )
       );
       Map<String, Supplier<TypeTemplate>> $$4 = a($$0);
-      $$0.registerType(false, bbw.D, () -> DSL.hook(DSL.optionalFields("CriteriaType", DSL.taggedChoiceLazy("type", DSL.string(), $$4)), c, d));
+      $$0.registerType(false, bbw.E, () -> DSL.hook(DSL.optionalFields("CriteriaType", DSL.taggedChoiceLazy("type", DSL.string(), $$4)), c, d));
    }
 
    protected static Map<String, Supplier<TypeTemplate>> a(Schema $$0) {
-      Supplier<TypeTemplate> $$1 = () -> DSL.optionalFields("id", bbw.z.in($$0));
-      Supplier<TypeTemplate> $$2 = () -> DSL.optionalFields("id", bbw.y.in($$0));
-      Supplier<TypeTemplate> $$3 = () -> DSL.optionalFields("id", bbw.v.in($$0));
+      Supplier<TypeTemplate> $$1 = () -> DSL.optionalFields("id", bbw.A.in($$0));
+      Supplier<TypeTemplate> $$2 = () -> DSL.optionalFields("id", bbw.z.in($$0));
+      Supplier<TypeTemplate> $$3 = () -> DSL.optionalFields("id", bbw.w.in($$0));
       Map<String, Supplier<TypeTemplate>> $$4 = Maps.newHashMap();
       $$4.put("minecraft:mined", $$2);
       $$4.put("minecraft:crafted", $$1);
@@ -130,7 +130,7 @@ public class bdt extends bde {
    }
 
    public static String b(String $$0) {
-      ahg $$1 = ahg.a($$0);
+      ahh $$1 = ahh.a($$0);
       return $$1 != null ? $$1.b() + "." + $$1.a() : $$0;
    }
 }

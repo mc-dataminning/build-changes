@@ -1,25 +1,26 @@
-public class fgb extends fge {
-   private static final vf b = vf.c("multiplayerWarning.header").a(n.r);
-   private static final vf c = vf.c("multiplayerWarning.message");
-   private static final vf k = vf.c("multiplayerWarning.check");
-   private static final vf l = b.f().f("\n").b(c);
-   private final fdb m;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fgb(fdb $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+public class fgb implements fgf {
+   private final fbu a;
+
+   public fgb(fbu $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(exg.a(ve.i, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.v = true;
-            this.f.m.as();
-         }
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
+      }
 
-         this.f.a(new ffz(this.m));
-      }).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(exg.a(ve.k, $$0x -> this.f.a(this.m)).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
+
+      return $$6;
    }
 }

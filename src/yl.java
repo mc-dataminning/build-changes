@@ -1,17 +1,19 @@
-public record yl(hx b) implements ya {
-   public static final ahg a = new ahg("debug/poi_removed");
+public record yl(hx b, String c, int d) implements yb {
+   public static final ahh a = new ahh("debug/poi_added");
 
-   public yl(ui $$0) {
-      this($$0.e());
+   public yl(uj $$0) {
+      this($$0.e(), $$0.s(), $$0.readInt());
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public ahg a() {
+   public ahh a() {
       return a;
    }
 }

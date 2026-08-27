@@ -8,12 +8,12 @@ public record dz(List<dz.a> b) {
    private static final int c = 8;
    private static final int d = 16;
 
-   public dz(ui $$0) {
-      this($$0.a(ui.a(ArrayList::new, 8), dz.a::new));
+   public dz(uj $$0) {
+      this($$0.a(uj.a(ArrayList::new, 8), dz.a::new));
    }
 
    @Nullable
-   public vr a(String $$0) {
+   public vs a(String $$0) {
       for (dz.a $$1 : this.b) {
          if ($$1.a.equals($$0)) {
             return $$1.b;
@@ -23,13 +23,13 @@ public record dz(List<dz.a> b) {
       return null;
    }
 
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static dz a(vx<?> $$0, dz.b $$1) {
+   public static dz a(vy<?> $$0, dz.b $$1) {
       List<dz.a> $$2 = $$0.a().stream().map($$1x -> {
-         vr $$2x = $$1.sign($$1x.c());
+         vs $$2x = $$1.sign($$1x.c());
          return $$2x != null ? new dz.a($$1x.a(), $$2x) : null;
       }).filter(Objects::nonNull).toList();
       return new dz($$2);
@@ -39,21 +39,21 @@ public record dz(List<dz.a> b) {
       return this.b;
    }
 
-   public static record a(String a, vr b) {
+   public static record a(String a, vs b) {
 
-      public a(ui $$0) {
-         this($$0.d(16), vr.a($$0));
+      public a(uj $$0) {
+         this($$0.d(16), vs.a($$0));
       }
 
-      public void a(ui $$0) {
+      public void a(uj $$0) {
          $$0.a(this.a, 16);
-         vr.a($$0, this.b);
+         vs.a($$0, this.b);
       }
    }
 
    @FunctionalInterface
    public interface b {
       @Nullable
-      vr sign(String var1);
+      vs sign(String var1);
    }
 }

@@ -43,7 +43,7 @@ public class bcp extends DataFix {
             Type<?> $$9 = ((ListType)$$8).getElement();
             OpticFinder<?> $$10 = DSL.typeFinder($$9);
             return TypeRewriteRule.seq(
-               new awd(this.getOutputSchema(), "AddTrappedChestFix", bbw.s).makeRule(),
+               new awe(this.getOutputSchema(), "AddTrappedChestFix", bbw.s).makeRule(),
                this.fixTypeEverywhereTyped("Trapped Chest fix", $$5, $$4x -> $$4x.updateTyped($$6, $$3xx -> {
                      Optional<? extends Typed<?>> $$4xx = $$3xx.getOptionalTyped($$7);
                      if ($$4xx.isEmpty()) {

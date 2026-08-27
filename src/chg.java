@@ -1,48 +1,59 @@
-public class chg extends cha {
-   public chg(blz<?> $$0, ctp $$1) {
-      super($$0, $$1);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
+
+public class chg {
+   private final List<chd> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<chd> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public chg(ctp $$0, double $$1, double $$2, double $$3) {
-      super(blz.ao, $$0, $$1, $$2, $$3);
+   public chg a(int $$0, float $$1) {
+      this.a.add(new chd($$0, $$1));
+      this.b();
+      return this;
    }
 
-   @Override
-   public bkb a(cfi $$0, bka $$1) {
-      if ($$0.fI()) {
-         return bkb.d;
-      } else if (this.bP()) {
-         return bkb.d;
-      } else if (!this.dM().B) {
-         return $$0.n(this) ? bkb.b : bkb.d;
+   public chg a(Collection<chd> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
+   }
+
+   private void b() {
+      Int2ObjectSortedMap<chd> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
       } else {
-         return bkb.a;
-      }
-   }
+         chd $$1 = this.a.get(this.b);
+         chd $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
 
-   @Override
-   protected cmt ah_() {
-      return cnb.nL;
-   }
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            chd $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
 
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3) {
-         if (this.bP()) {
-            this.bB();
+            this.b = $$6;
+            $$5 = $$7.b();
          }
 
-         if (this.O() == 0) {
-            this.m(-this.P());
-            this.d(10);
-            this.b(50.0F);
-            this.bq();
-         }
+         return $$5;
       }
-   }
-
-   @Override
-   public cha.a w() {
-      return cha.a.a;
    }
 }

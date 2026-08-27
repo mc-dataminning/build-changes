@@ -1,59 +1,116 @@
-public class fhe extends fdb {
-   private static final vf a = vf.c("gui.abuseReport.title");
-   private static final vf b = vf.c("gui.abuseReport.message");
-   private static final vf c = vf.c("gui.abuseReport.type.chat");
-   private static final vf k = vf.c("gui.abuseReport.type.skin");
-   private static final vf l = vf.c("gui.abuseReport.type.name");
-   private static final int m = 6;
-   private final fdb n;
-   private final fow o;
-   private final fhi p;
-   private final fau q = fau.d().a(6);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Set;
 
-   public fhe(fdb $$0, fow $$1, fhi $$2) {
-      super(a);
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
+public class fhe {
+   private final iu a;
+   private final List<cqm<?>> b;
+   private final boolean c;
+   private final Set<cqm<?>> d = Sets.newHashSet();
+   private final Set<cqm<?>> e = Sets.newHashSet();
+   private final Set<cqm<?>> f = Sets.newHashSet();
+
+   public fhe(iu $$0, List<cqm<?>> $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      if ($$1.size() <= 1) {
+         this.c = true;
+      } else {
+         this.c = a($$0, $$1);
+      }
    }
 
-   @Override
-   public vf h() {
-      return ve.a(super.h(), b);
-   }
+   private static boolean a(iu $$0, List<cqm<?>> $$1) {
+      int $$2 = $$1.size();
+      cng $$3 = $$1.get(0).b().a($$0);
 
-   @Override
-   protected void aN_() {
-      this.q.c().b();
-      this.q.a(new eyn(this.e, this.i), this.q.b().e(6));
-      this.q.a(new eya(b, this.i).b(true), this.q.b().e(6));
-      exg $$0 = this.q.a(exg.a(c, $$0x -> this.f.a(new fha(this.n, this.o, this.p.c()))).a());
-      if (!this.p.j()) {
-         $$0.j = false;
-         $$0.a(eyr.a(vf.c("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.p.i()) {
-         $$0.j = false;
-         $$0.a(eyr.a(vf.a("gui.socialInteractions.tooltip.report.no_messages", this.p.b())));
+      for (int $$4 = 1; $$4 < $$2; $$4++) {
+         cng $$5 = $$1.get($$4).b().a($$0);
+         if (!cng.c($$3, $$5)) {
+            return false;
+         }
       }
 
-      this.q.a(exg.a(k, $$0x -> this.f.a(new fhg(this.n, this.o, this.p.c(), this.p.d()))).a());
-      this.q.a(exg.a(l, $$0x -> this.f.a(new fhd(this.n, this.o, this.p.c(), this.p.b()))).a());
-      this.q.a(fav.b(20));
-      this.q.a(exg.a(ve.e, $$0x -> this.aE_()).a());
-      this.q.a($$1 -> {
-         exe var10000 = this.d($$1);
-      });
-      this.c();
+      return true;
    }
 
-   @Override
-   protected void c() {
-      this.q.a();
-      fao.a(this.q, this.F());
+   public iu a() {
+      return this.a;
    }
 
-   @Override
-   public void aE_() {
-      this.f.a(this.n);
+   public boolean b() {
+      return !this.f.isEmpty();
+   }
+
+   public void a(arw $$0) {
+      for (cqm<?> $$1 : this.b) {
+         if ($$0.b($$1)) {
+            this.f.add($$1);
+         }
+      }
+   }
+
+   public void a(cfu $$0, int $$1, int $$2, arw $$3) {
+      for (cqm<?> $$4 : this.b) {
+         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
+         if ($$5) {
+            this.e.add($$4);
+         } else {
+            this.e.remove($$4);
+         }
+
+         if ($$5 && $$0.a($$4.b(), null)) {
+            this.d.add($$4);
+         } else {
+            this.d.remove($$4);
+         }
+      }
+   }
+
+   public boolean a(cqm<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean c() {
+      return !this.d.isEmpty();
+   }
+
+   public boolean d() {
+      return !this.e.isEmpty();
+   }
+
+   public List<cqm<?>> e() {
+      return this.b;
+   }
+
+   public List<cqm<?>> a(boolean $$0) {
+      List<cqm<?>> $$1 = Lists.newArrayList();
+      Set<cqm<?>> $$2 = $$0 ? this.d : this.e;
+
+      for (cqm<?> $$3 : this.b) {
+         if ($$2.contains($$3)) {
+            $$1.add($$3);
+         }
+      }
+
+      return $$1;
+   }
+
+   public List<cqm<?>> b(boolean $$0) {
+      List<cqm<?>> $$1 = Lists.newArrayList();
+
+      for (cqm<?> $$2 : this.b) {
+         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public boolean f() {
+      return this.c;
    }
 }

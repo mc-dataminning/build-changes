@@ -1,24 +1,32 @@
-public class ado implements xf<adj> {
-   private final bjy a;
+public class ado implements xg<adk> {
+   private final int a;
+   private final hx b;
 
-   public ado(bjy $$0) {
+   public ado(int $$0, hx $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(adj $$0) {
-      $$0.a(this);
-   }
-
-   public ado(ui $$0) {
-      this.a = bjy.a($$0.readUnsignedByte());
+   public ado(uj $$0) {
+      this.a = $$0.n();
+      this.b = $$0.e();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.k(this.a.a());
+   public void a(uj $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
    }
 
-   public bjy a() {
+   public void a(adk $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
       return this.a;
+   }
+
+   public hx d() {
+      return this.b;
    }
 }

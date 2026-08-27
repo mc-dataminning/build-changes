@@ -1,358 +1,80 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.Applicative;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.OptionalBox.Mu;
-import com.mojang.datafixers.util.Function3;
-import com.mojang.datafixers.util.Function4;
-import com.mojang.datafixers.util.Unit;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public class brp<E extends bml, M> implements App<brp.c<E>, M> {
-   private final brp.e<E, M> a;
+public class brp extends brq {
+   private static final List<cnb> c = ImmutableList.of(cnj.pu, cnj.vh);
 
-   public static <E extends bml, M> brp<E, M> a(App<brp.c<E>, M> $$0) {
-      return (brp<E, M>)$$0;
-   }
-
-   public static <E extends bml> brp.b<E> a() {
-      return new brp.b<>();
-   }
-
-   public static <E extends bml> bpn<E> a(Function<brp.b<E>, ? extends App<brp.c<E>, brs<E>>> $$0) {
-      final brp.e<E, brs<E>> $$1 = b((App<brp.c<E>, brs<E>>)$$0.apply(a()));
-      return new bpn<E>() {
-         @Override
-         public boolean trigger(and $$0, E $$1x, long $$2) {
-            brs<E> $$3 = $$1.a($$0, $$1, $$2);
-            return $$3 == null ? false : $$3.trigger($$0, $$1, $$2);
-         }
-
-         @Override
-         public String b() {
-            return "OneShot[" + $$1.a() + "]";
-         }
-
-         @Override
-         public String toString() {
-            return this.b();
-         }
-      };
-   }
-
-   public static <E extends bml> bpn<E> a(brs<? super E> $$0, brs<? super E> $$1) {
-      return a((Function<brp.b<E>, ? extends App<brp.c<E>, brs<E>>>)($$2 -> $$2.group($$2.a($$0)).apply($$2, $$1xx -> $$1::trigger)));
-   }
-
-   public static <E extends bml> bpn<E> a(Predicate<E> $$0, bpn<? super E> $$1) {
-      return a(a($$0), $$1);
-   }
-
-   public static <E extends bml> bpn<E> a(Predicate<E> $$0) {
-      return a((Function<brp.b<E>, ? extends App<brp.c<E>, brs<E>>>)($$1 -> $$1.a((brs<E>)(($$1x, $$2, $$3) -> $$0.test($$2)))));
-   }
-
-   public static <E extends bml> bpn<E> a(BiPredicate<and, E> $$0) {
-      return a((Function<brp.b<E>, ? extends App<brp.c<E>, brs<E>>>)($$1 -> $$1.a((brs<E>)(($$1x, $$2, $$3) -> $$0.test($$1x, $$2)))));
-   }
-
-   static <E extends bml, M> brp.e<E, M> b(App<brp.c<E>, M> $$0) {
-      return a($$0).a;
-   }
-
-   brp(brp.e<E, M> $$0) {
-      this.a = $$0;
-   }
-
-   static <E extends bml, M> brp<E, M> a(brp.e<E, M> $$0) {
-      return new brp<>($$0);
-   }
-
-   static final class a<E extends bml, A> extends brp<E, A> {
-      a(A $$0) {
-         this($$0, () -> "C[" + $$0 + "]");
-      }
-
-      a(final A $$0, final Supplier<String> $$1) {
-         super(new brp.e<E, A>() {
-            @Override
-            public A a(and $$0x, E $$1x, long $$2) {
-               return $$0;
-            }
-
-            @Override
-            public String a() {
-               return $$1.get();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-   }
-
-   public static final class b<E extends bml> implements Applicative<brp.c<E>, brp.b.a<E>> {
-      public <Value> Optional<Value> a(brq<Mu, Value> $$0) {
-         return OptionalBox.unbox($$0.a());
-      }
-
-      public <Value> Value b(brq<com.mojang.datafixers.kinds.IdF.Mu, Value> $$0) {
-         return (Value)IdF.get($$0.a());
-      }
-
-      public <Value> brp<E, brq<Mu, Value>> a(bvn<Value> $$0) {
-         return new brp.d<>(new brr.c<>($$0));
-      }
-
-      public <Value> brp<E, brq<com.mojang.datafixers.kinds.IdF.Mu, Value>> b(bvn<Value> $$0) {
-         return new brp.d<>(new brr.b<>($$0));
-      }
-
-      public <Value> brp<E, brq<com.mojang.datafixers.kinds.Const.Mu<Unit>, Value>> c(bvn<Value> $$0) {
-         return new brp.d<>(new brr.a<>($$0));
-      }
-
-      public brp<E, Unit> a(brs<? super E> $$0) {
-         return new brp.f<>($$0);
-      }
-
-      public <A> brp<E, A> a(A $$0) {
-         return new brp.a<>($$0);
-      }
-
-      public <A> brp<E, A> a(Supplier<String> $$0, A $$1) {
-         return new brp.a<>($$1, $$0);
-      }
-
-      public <A, R> Function<App<brp.c<E>, A>, App<brp.c<E>, R>> lift1(App<brp.c<E>, Function<A, R>> $$0) {
-         return $$1 -> {
-            final brp.e<E, A> $$2 = (brp.e<E, A>)brp.b((App<brp.c<E>, M>)$$1);
-            final brp.e<E, Function<A, R>> $$3 = brp.b($$0);
-            return brp.a(new brp.e<E, R>() {
-               @Override
-               public R a(and $$0, E $$1, long $$2x) {
-                  A $$3 = (A)$$2.a($$0, $$1, $$2);
-                  if ($$3 == null) {
-                     return null;
-                  } else {
-                     Function<A, R> $$4 = (Function<A, R>)$$3.a($$0, $$1, $$2);
-                     return (R)($$4 == null ? null : $$4.apply($$3));
-                  }
-               }
-
-               @Override
-               public String a() {
-                  return $$3.a() + " * " + $$2.a();
-               }
-
-               @Override
-               public String toString() {
-                  return this.a();
-               }
-            });
-         };
-      }
-
-      public <T, R> brp<E, R> a(final Function<? super T, ? extends R> $$0, App<brp.c<E>, T> $$1) {
-         final brp.e<E, T> $$2 = (brp.e<E, T>)brp.b((App<brp.c<E>, M>)$$1);
-         return brp.a(new brp.e<E, R>() {
-            @Override
-            public R a(and $$0x, E $$1, long $$2x) {
-               T $$3 = $$2.a($$0, $$1, $$2);
-               return (R)($$3 == null ? null : $$0.apply($$3));
-            }
-
-            @Override
-            public String a() {
-               return $$2.a() + ".map[" + $$0 + "]";
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <A, B, R> brp<E, R> a(App<brp.c<E>, BiFunction<A, B, R>> $$0, App<brp.c<E>, A> $$1, App<brp.c<E>, B> $$2) {
-         final brp.e<E, A> $$3 = (brp.e<E, A>)brp.b((App<brp.c<E>, M>)$$1);
-         final brp.e<E, B> $$4 = (brp.e<E, B>)brp.b((App<brp.c<E>, M>)$$2);
-         final brp.e<E, BiFunction<A, B, R>> $$5 = brp.b($$0);
-         return brp.a(new brp.e<E, R>() {
-            @Override
-            public R a(and $$0, E $$1, long $$2) {
-               A $$3 = $$3.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  B $$4 = $$4.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     BiFunction<A, B, R> $$5 = $$5.a($$0, $$1, $$2);
-                     return $$5 == null ? null : $$5.apply($$3, $$4);
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$5.a() + " * " + $$3.a() + " * " + $$4.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <T1, T2, T3, R> brp<E, R> a(App<brp.c<E>, Function3<T1, T2, T3, R>> $$0, App<brp.c<E>, T1> $$1, App<brp.c<E>, T2> $$2, App<brp.c<E>, T3> $$3) {
-         final brp.e<E, T1> $$4 = (brp.e<E, T1>)brp.b((App<brp.c<E>, M>)$$1);
-         final brp.e<E, T2> $$5 = (brp.e<E, T2>)brp.b((App<brp.c<E>, M>)$$2);
-         final brp.e<E, T3> $$6 = (brp.e<E, T3>)brp.b((App<brp.c<E>, M>)$$3);
-         final brp.e<E, Function3<T1, T2, T3, R>> $$7 = brp.b($$0);
-         return brp.a(new brp.e<E, R>() {
-            @Override
-            public R a(and $$0, E $$1, long $$2) {
-               T1 $$3 = $$4.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  T2 $$4 = $$5.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     T3 $$5 = $$6.a($$0, $$1, $$2);
-                     if ($$5 == null) {
-                        return null;
-                     } else {
-                        Function3<T1, T2, T3, R> $$6 = $$7.a($$0, $$1, $$2);
-                        return (R)($$6 == null ? null : $$6.apply($$3, $$4, $$5));
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$7.a() + " * " + $$4.a() + " * " + $$5.a() + " * " + $$6.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <T1, T2, T3, T4, R> brp<E, R> a(
-         App<brp.c<E>, Function4<T1, T2, T3, T4, R>> $$0, App<brp.c<E>, T1> $$1, App<brp.c<E>, T2> $$2, App<brp.c<E>, T3> $$3, App<brp.c<E>, T4> $$4
-      ) {
-         final brp.e<E, T1> $$5 = (brp.e<E, T1>)brp.b((App<brp.c<E>, M>)$$1);
-         final brp.e<E, T2> $$6 = (brp.e<E, T2>)brp.b((App<brp.c<E>, M>)$$2);
-         final brp.e<E, T3> $$7 = (brp.e<E, T3>)brp.b((App<brp.c<E>, M>)$$3);
-         final brp.e<E, T4> $$8 = (brp.e<E, T4>)brp.b((App<brp.c<E>, M>)$$4);
-         final brp.e<E, Function4<T1, T2, T3, T4, R>> $$9 = brp.b($$0);
-         return brp.a(new brp.e<E, R>() {
-            @Override
-            public R a(and $$0, E $$1, long $$2) {
-               T1 $$3 = $$5.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  T2 $$4 = $$6.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     T3 $$5 = $$7.a($$0, $$1, $$2);
-                     if ($$5 == null) {
-                        return null;
-                     } else {
-                        T4 $$6 = $$8.a($$0, $$1, $$2);
-                        if ($$6 == null) {
-                           return null;
-                        } else {
-                           Function4<T1, T2, T3, T4, R> $$7 = $$9.a($$0, $$1, $$2);
-                           return (R)($$7 == null ? null : $$7.apply($$3, $$4, $$5, $$6));
-                        }
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$9.a() + " * " + $$5.a() + " * " + $$6.a() + " * " + $$7.a() + " * " + $$8.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      static final class a<E extends bml> implements com.mojang.datafixers.kinds.Applicative.Mu {
-         private a() {
+   @Override
+   protected void a(ane $$0, cfd $$1) {
+      Optional<ig> $$2 = $$1.dN().c(bvq.c);
+      if (!$$2.isEmpty()) {
+         ig $$3 = $$2.get();
+         djp $$4 = $$0.a_($$3.b());
+         if ($$4.a(cxa.pc)) {
+            this.a($$1);
+            this.a($$0, $$1, $$3, $$4);
          }
       }
    }
 
-   public static final class c<E extends bml> implements K1 {
-   }
-
-   static final class d<E extends bml, F extends K1, Value> extends brp<E, brq<F, Value>> {
-      d(final brr<F, Value> $$0) {
-         super(new brp.e<E, brq<F, Value>>() {
-            public brq<F, Value> b(and $$0x, E $$1, long $$2) {
-               bnl<?> $$3 = $$1.dO();
-               Optional<Value> $$4 = $$3.d($$0.a());
-               return $$4 == null ? null : $$0.a($$3, $$4);
-            }
-
-            @Override
-            public String a() {
-               return "M[" + $$0 + "]";
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
+   private void a(ane $$0, cfd $$1, ig $$2, djp $$3) {
+      hx $$4 = $$2.b();
+      if ($$3.c(cyj.e) == 8) {
+         $$3 = cyj.a($$1, $$3, (ctx)$$0, $$4);
       }
+
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      bkl $$8 = $$1.A();
+      int $$9 = $$8.b();
+      djp $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         cng $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.d());
+         if ($$13 != -1) {
+            int $$14 = $$12.L();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = cyj.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(cyj.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      this.a($$0, $$3, $$4, $$10);
    }
 
-   interface e<E extends bml, R> {
-      @Nullable
-      R a(and var1, E var2, long var3);
-
-      String a();
+   private void a(ane $$0, djp $$1, hx $$2, djp $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
    }
 
-   static final class f<E extends bml> extends brp<E, Unit> {
-      f(final brs<? super E> $$0) {
-         super(new brp.e<E, Unit>() {
-            @Nullable
-            public Unit b(and $$0x, E $$1, long $$2) {
-               return $$0.trigger($$0, $$1, $$2) ? Unit.INSTANCE : null;
+   private void a(cfd $$0) {
+      bkl $$1 = $$0.A();
+      if ($$1.a_(cnj.pw) <= 36) {
+         int $$2 = $$1.a_(cnj.pv);
+         int $$3 = 3;
+         int $$4 = 3;
+         int $$5 = Math.min(3, $$2 / 3);
+         if ($$5 != 0) {
+            int $$6 = $$5 * 3;
+            $$1.a(cnj.pv, $$6);
+            cng $$7 = $$1.a(new cng(cnj.pw, $$5));
+            if (!$$7.b()) {
+               $$0.a($$7, 0.5F);
             }
-
-            @Override
-            public String a() {
-               return "T[" + $$0 + "]";
-            }
-         });
+         }
       }
    }
 }

@@ -11,7 +11,7 @@ public class bcl extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.C);
+      Type<?> $$0 = this.getInputSchema().getType(bbw.D);
       return this.fixTypeEverywhereTyped("Structure Reference Fix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bcl::a));
    }
 

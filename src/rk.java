@@ -1,108 +1,44 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongArraySet;
-import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class rk {
-   private static final Logger a = LogUtils.getLogger();
-   private final hx b;
-   final and c;
-   private final ru d;
-   private final int e;
-   private final List<ro> f;
-   private final List<Pair<rj, Collection<ro>>> g;
-   private int h;
-   private elo i;
-   private final hx.a j;
+   public static final String a = "defaultBatch";
+   private final String b;
+   private final Collection<sf> c;
+   @Nullable
+   private final Consumer<ane> d;
+   @Nullable
+   private final Consumer<ane> e;
 
-   public rk(Collection<rj> $$0, hx $$1, ddc $$2, and $$3, ru $$4, int $$5) {
-      this.j = $$1.j();
-      this.i = new elo(this.j);
-      this.b = $$1;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
-      this.g = $$0.stream().map($$2x -> {
-         Collection<ro> $$3x = $$2x.b().stream().map($$2xx -> new ro($$2xx, $$2, $$3)).collect(ImmutableList.toImmutableList());
-         return Pair.of($$2x, $$3x);
-      }).collect(ImmutableList.toImmutableList());
-      this.f = this.g.stream().flatMap($$0x -> ((Collection)$$0x.getSecond()).stream()).collect(ImmutableList.toImmutableList());
-   }
-
-   public List<ro> a() {
-      return this.f;
-   }
-
-   public void b() {
-      this.a(0);
-   }
-
-   void a(final int $$0) {
-      if ($$0 < this.g.size()) {
-         Pair<rj, Collection<ro>> $$1 = this.g.get($$0);
-         final rj $$2 = (rj)$$1.getFirst();
-         Collection<ro> $$3 = (Collection<ro>)$$1.getSecond();
-         Map<ro, hx> $$4 = this.a($$3);
-         String $$5 = $$2.a();
-         a.info("Running test batch '{}' ({} tests)...", $$5, $$3.size());
-         $$2.a(this.c);
-         final rz $$6 = new rz();
-         $$3.forEach($$6::a);
-         $$6.a(new rp() {
-            private void a() {
-               if ($$6.i()) {
-                  $$2.b(rk.this.c);
-                  LongSet $$0 = new LongArraySet(rk.this.c.w());
-                  $$0.forEach($$0xxx -> rk.this.c.a(csw.a($$0xxx), csw.b($$0xxx), false));
-                  rk.this.a($$0 + 1);
-               }
-            }
-
-            @Override
-            public void a(ro $$0x) {
-            }
-
-            @Override
-            public void b(ro $$0x) {
-               this.a();
-            }
-
-            @Override
-            public void c(ro $$0x) {
-               this.a();
-            }
-         });
-         $$3.forEach($$1x -> {
-            hx $$2x = $$4.get($$1x);
-            rr.a($$1x, $$2x, this.d);
-         });
+   public rk(String $$0, Collection<sf> $$1, @Nullable Consumer<ane> $$2, @Nullable Consumer<ane> $$3) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("A GameTestBatch must include at least one TestFunction!");
+      } else {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
       }
    }
 
-   private Map<ro, hx> a(Collection<ro> $$0) {
-      Map<ro, hx> $$1 = Maps.newHashMap();
+   public String a() {
+      return this.b;
+   }
 
-      for (ro $$2 : $$0) {
-         hx $$3 = new hx(this.j);
-         dij $$4 = sb.a($$2, $$3, $$2.v(), this.c);
-         elo $$5 = sb.a($$4);
-         $$2.a($$4.aB_());
-         $$1.put($$2, new hx(this.j));
-         this.i = this.i.b($$5);
-         this.j.e((int)$$5.b() + 5, 0, 0);
-         if (this.h++ % this.e == this.e - 1) {
-            this.j.e(0, 0, (int)this.i.d() + 6);
-            this.j.p(this.b.u());
-            this.i = new elo(this.j);
-         }
+   public Collection<sf> b() {
+      return this.c;
+   }
+
+   public void a(ane $$0) {
+      if (this.d != null) {
+         this.d.accept($$0);
       }
+   }
 
-      return $$1;
+   public void b(ane $$0) {
+      if (this.e != null) {
+         this.e.accept($$0);
+      }
    }
 }

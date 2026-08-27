@@ -1,30 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public interface dnw<T extends dnv> {
-   dnw<dnn> a = a("block", new dnn.a());
-   dnw<dnp> b = a("entity", new dnp.a());
+public class dnw<T extends dob> {
+   private final T a;
+   @Nullable
+   private iz b;
 
-   T b(ui var1);
-
-   void a(ui var1, T var2);
-
-   Codec<T> a();
-
-   static <S extends dnw<T>, T extends dnv> S a(String $$0, S $$1) {
-      return it.a(kd.v, $$0, $$1);
+   public dnw(T $$0) {
+      this.a = $$0;
    }
 
-   static dnv c(ui $$0) {
-      dnw<?> $$1 = $$0.a(kd.v);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Unknown position source type");
-      } else {
-         return $$1.b($$0);
+   public void a(ane $$0) {
+      this.c($$0);
+   }
+
+   public T a() {
+      return this.a;
+   }
+
+   public void b(ane $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
+   }
+
+   public void c(ane $$0) {
+      this.a.a().a($$0).map(iz::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
+   }
+
+   private static void a(cua $$0, @Nullable iz $$1, Consumer<doc> $$2) {
+      if ($$1 != null) {
+         dll $$3 = $$0.a($$1.a(), $$1.c(), dlq.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
       }
-   }
-
-   static <T extends dnv> void a(T $$0, ui $$1) {
-      $$1.a(kd.v, $$0.a());
-      ((dnw<T>)$$0.a()).a($$1, $$0);
    }
 }

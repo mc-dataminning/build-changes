@@ -1,27 +1,7 @@
-public interface to {
-   void a(ti var1);
+public class to {
+   private static final tn<?>[] a = new tn[]{sq.a, sm.a, tg.a, st.a, sw.a, sr.b, sp.b, sl.a, tj.a, su.a, so.b, ss.a, sv.a};
 
-   void a(sl var1);
-
-   void a(tf var1);
-
-   void a(ss var1);
-
-   void a(sv var1);
-
-   void a(sq var1);
-
-   void a(so var1);
-
-   void a(sk var1);
-
-   void a(sr var1);
-
-   void a(su var1);
-
-   void a(st var1);
-
-   void a(sn var1);
-
-   void a(sp var1);
+   public static tn<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < a.length ? a[$$0] : tn.a($$0);
+   }
 }

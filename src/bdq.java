@@ -28,7 +28,7 @@ public class bdq extends bde {
       $$0.register($$1, "minecraft:furnace_minecart", () -> DSL.optionalFields("DisplayState", bbw.u.in($$0)));
       $$0.register($$1, "minecraft:hopper_minecart", () -> DSL.optionalFields("DisplayState", bbw.u.in($$0), "Items", DSL.list(bbw.t.in($$0))));
       $$0.register($$1, "minecraft:minecart", () -> DSL.optionalFields("DisplayState", bbw.u.in($$0)));
-      $$0.register($$1, "minecraft:spawner_minecart", () -> DSL.optionalFields("DisplayState", bbw.u.in($$0), bbw.B.in($$0)));
+      $$0.register($$1, "minecraft:spawner_minecart", () -> DSL.optionalFields("DisplayState", bbw.u.in($$0), bbw.C.in($$0)));
       $$0.register($$1, "minecraft:tnt_minecart", () -> DSL.optionalFields("DisplayState", bbw.u.in($$0)));
       return $$1;
    }

@@ -11,6 +11,6 @@ public class bdr extends bde {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, bbw.y, () -> DSL.constType(a()));
+      $$0.registerType(false, bbw.z, () -> DSL.constType(a()));
    }
 }

@@ -1,46 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtw implements dty {
+public class dtw {
    public static final Codec<dtw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               bjg.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               bjg.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               bjg.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bje.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bje.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
-            )
+      $$0 -> $$0.group(dys.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, dtw::new)
    );
-   public final int b;
-   public final bjg c;
-   public final bjg d;
-   public final int e;
-   public final int f;
-   public final bjg g;
-   public final bje h;
-   public final bje i;
-   public final float j;
-   public final int k;
-   public final int l;
+   public final ih<dys> b;
+   public final float c;
 
-   public dtw(int $$0, bjg $$1, bjg $$2, int $$3, int $$4, bjg $$5, bje $$6, bje $$7, float $$8, int $$9, int $$10) {
+   public dtw(ih<dys> $$0, float $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   }
+
+   public boolean a(cus $$0, dlm $$1, auw $$2, hx $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

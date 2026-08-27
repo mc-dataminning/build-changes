@@ -89,7 +89,6 @@ public class bau extends DataFix {
       $$0 = a($$0, "Duration", "duration");
       $$0 = a($$0, "ShowParticles", "show_particles");
       $$0 = a($$0, "ShowIcon", "show_icon");
-      $$0 = a($$0, "FactorCalculationData", "factor_calculation_data");
       Optional<Dynamic<T>> $$1 = $$0.get("HiddenEffect").result().map(bau::a);
       return a($$0, "HiddenEffect", "hidden_effect", $$1);
    }
@@ -146,11 +145,11 @@ public class bau extends DataFix {
    }
 
    private TypeRewriteRule b() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.x);
+      Type<?> $$0 = this.getInputSchema().getType(bbw.y);
       return this.fixTypeEverywhereTyped("EntityMobEffectIdFix", $$0, $$0x -> {
-         $$0x = this.a($$0x, bbw.x, "minecraft:mooshroom", bau::c);
-         $$0x = this.a($$0x, bbw.x, "minecraft:arrow", bau::d);
-         $$0x = this.a($$0x, bbw.x, "minecraft:area_effect_cloud", bau::e);
+         $$0x = this.a($$0x, bbw.y, "minecraft:mooshroom", bau::c);
+         $$0x = this.a($$0x, bbw.y, "minecraft:arrow", bau::d);
+         $$0x = this.a($$0x, bbw.y, "minecraft:area_effect_cloud", bau::e);
          return $$0x.update(DSL.remainderFinder(), bau::f);
       });
    }
@@ -166,7 +165,7 @@ public class bau extends DataFix {
    }
 
    private TypeRewriteRule d() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bbw.z.typeName(), bde.a()));
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bbw.A.typeName(), bde.a()));
       Type<?> $$1 = this.getInputSchema().getType(bbw.t);
       OpticFinder<?> $$2 = $$1.findField("tag");
       return this.fixTypeEverywhereTyped("ItemStackMobEffectIdFix", $$1, $$2x -> {

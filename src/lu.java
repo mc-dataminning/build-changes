@@ -4,15 +4,15 @@ public class lu {
    public static lg a(km $$0) {
       return new lg(
          $$0,
-         egu.a(),
+         ehd.a(),
          List.of(
-            new lg.a(ls::new, ejg.f),
-            new lg.a(lq::new, ejg.c),
-            new lg.a(lr::new, ejg.g),
-            new lg.a(lp::new, ejg.o),
-            new lg.a(lv::new, ejg.j),
-            new lg.a(lt::new, ejg.i),
-            new lg.a(lo::new, ejg.h)
+            new lg.a(ls::new, ejp.f),
+            new lg.a(lq::new, ejp.c),
+            new lg.a(lr::new, ejp.g),
+            new lg.a(lp::new, ejp.o),
+            new lg.a(lv::new, ejp.j),
+            new lg.a(lt::new, ejp.i),
+            new lg.a(lo::new, ejp.h)
          )
       );
    }

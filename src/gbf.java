@@ -1,17 +1,11 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gbf extends fya<cgn> {
+   public static final ahh a = new ahh("textures/entity/projectiles/spectral_arrow.png");
 
-public class gbf extends fxj<bzx, fki<bzx>> {
-   private static final Map<blz<?>, ahg> a = Maps.newHashMap(
-      ImmutableMap.of(blz.bs, new ahg("textures/entity/horse/horse_zombie.png"), blz.aL, new ahg("textures/entity/horse/horse_skeleton.png"))
-   );
-
-   public gbf(fyn.a $$0, fmv $$1) {
-      super($$0, new fki<>($$0.a($$1)), 1.0F);
+   public gbf(fza.a $$0) {
+      super($$0);
    }
 
-   public ahg a(bzx $$0) {
-      return a.get($$0.ai());
+   public ahh a(cgn $$0) {
+      return a;
    }
 }

@@ -1,55 +1,83 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
-import org.slf4j.Logger;
 
-public class eiv extends eii {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eiv> a = RecordCodecBuilder.create(
+public class eiv extends eir {
+   public static final int a = 0;
+   public static final Codec<eiv> b = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and($$0.group(ekr.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .and($$0.group(ela.a.fieldOf("count").forGetter($$0x -> $$0x.c), atx.a(Codec.INT, "limit", Integer.valueOf(0)).forGetter($$0x -> $$0x.d)))
             .apply($$0, eiv::new)
    );
-   private final ekq c;
-   private final boolean d;
+   private final ekz c;
+   private final int d;
 
-   private eiv(List<ejv> $$0, ekq $$1, boolean $$2) {
+   eiv(List<eke> $$0, ekz $$1, int $$2) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
    }
 
    @Override
-   public eik b() {
-      return eil.j;
+   public eit b() {
+      return eiu.i;
    }
 
    @Override
-   public Set<eje<?>> a() {
-      return this.c.a();
+   public Set<ejn<?>> a() {
+      return Sets.union(ImmutableSet.of(ejq.d), this.c.a());
+   }
+
+   private boolean c() {
+      return this.d > 0;
    }
 
    @Override
-   public cmy a(cmy $$0, egw $$1) {
-      if ($$0.i()) {
-         int $$2 = $$0.l();
-         float $$3 = this.d ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - auo.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(auo.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
+   public cng a(cng $$0, ehf $$1) {
+      blw $$2 = $$1.c(ejq.d);
+      if ($$2 instanceof bmo) {
+         int $$3 = crt.h((bmo)$$2);
+         if ($$3 == 0) {
+            return $$0;
+         }
+
+         float $$4 = (float)$$3 * this.c.b($$1);
+         $$0.g(Math.round($$4));
+         if (this.c() && $$0.L() > this.d) {
+            $$0.f(this.d);
+         }
       }
 
       return $$0;
    }
 
-   public static eii.a<?> a(ekq $$0) {
-      return a($$1 -> new eiv($$1, $$0, false));
+   public static eiv.a a(ekz $$0) {
+      return new eiv.a($$0);
    }
 
-   public static eii.a<?> a(ekq $$0, boolean $$1) {
-      return a($$2 -> new eiv($$2, $$0, $$1));
+   public static class a extends eir.a<eiv.a> {
+      private final ekz a;
+      private int b = 0;
+
+      public a(ekz $$0) {
+         this.a = $$0;
+      }
+
+      protected eiv.a a() {
+         return this;
+      }
+
+      public eiv.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      @Override
+      public eis b() {
+         return new eiv(this.g(), this.a, this.b);
+      }
    }
 }

@@ -3,13 +3,13 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import java.util.Optional;
 
-public record br(il<blz<?>> b) {
-   public static final Codec<br> a = Codec.either(asw.b(ke.u), kd.g.r())
+public record br(il<bmc<?>> b) {
+   public static final Codec<br> a = Codec.either(asx.b(ke.u), kd.g.r())
       .flatComapMap(
          $$0 -> (br)$$0.map($$0x -> new br(kd.g.a($$0x)), $$0x -> new br(il.a($$0x))),
          $$0 -> {
-            il<blz<?>> $$1 = $$0.a();
-            Optional<asw<blz<?>>> $$2 = $$1.d();
+            il<bmc<?>> $$1 = $$0.a();
+            Optional<asx<bmc<?>>> $$2 = $$1.d();
             if ($$2.isPresent()) {
                return DataResult.success(Either.left($$2.get()));
             } else {
@@ -20,19 +20,19 @@ public record br(il<blz<?>> b) {
          }
       );
 
-   public static br a(blz<?> $$0) {
+   public static br a(bmc<?> $$0) {
       return new br(il.a($$0.r()));
    }
 
-   public static br a(asw<blz<?>> $$0) {
+   public static br a(asx<bmc<?>> $$0) {
       return new br(kd.g.a($$0));
    }
 
-   public boolean b(blz<?> $$0) {
+   public boolean b(bmc<?> $$0) {
       return $$0.a(this.b);
    }
 
-   public il<blz<?>> a() {
+   public il<bmc<?>> a() {
       return this.b;
    }
 }

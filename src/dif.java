@@ -1,127 +1,211 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dif {
-   private static final Codec<vf[]> c = vh.b
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ac.a($$0, 4).map($$0x -> new vf[]{(vf)$$0x.get(0), (vf)$$0x.get(1), (vf)$$0x.get(2), (vf)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dif> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.optionalFieldOf("filtered_messages").forGetter(dif::d),
-               clm.q.fieldOf("color").orElse(clm.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dif::a)
-   );
-   public static final int b = 4;
-   private final vf[] d;
-   private final vf[] e;
-   private final clm f;
-   private final boolean g;
-   @Nullable
-   private aua[] h;
-   private boolean i;
+public class dif extends dhd implements bjt, bkg {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 0;
+   public static final int d = 1;
+   private final bjv e = new bjv() {
+      @Override
+      public int b() {
+         return 1;
+      }
 
-   public dif() {
-      this(c(), c(), clm.p, false);
+      @Override
+      public boolean aj_() {
+         return dif.this.g.b();
+      }
+
+      @Override
+      public cng a(int $$0) {
+         return $$0 == 0 ? dif.this.g : cng.f;
+      }
+
+      @Override
+      public cng a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            cng $$2 = dif.this.g.a($$1);
+            if (dif.this.g.b()) {
+               dif.this.l();
+            }
+
+            return $$2;
+         } else {
+            return cng.f;
+         }
+      }
+
+      @Override
+      public cng b(int $$0) {
+         if ($$0 == 0) {
+            cng $$1 = dif.this.g;
+            dif.this.g = cng.f;
+            dif.this.l();
+            return $$1;
+         } else {
+            return cng.f;
+         }
+      }
+
+      @Override
+      public void a(int $$0, cng $$1) {
+      }
+
+      @Override
+      public int al_() {
+         return 1;
+      }
+
+      @Override
+      public void e() {
+         dif.this.e();
+      }
+
+      @Override
+      public boolean a(cfq $$0) {
+         return bjv.a(dif.this, $$0) && dif.this.f();
+      }
+
+      @Override
+      public boolean b(int $$0, cng $$1) {
+         return false;
+      }
+
+      @Override
+      public void a() {
+      }
+   };
+   private final cit f = new cit() {
+      @Override
+      public int a(int $$0) {
+         return $$0 == 0 ? dif.this.h : 0;
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            dif.this.a($$1);
+         }
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
+   };
+   cng g = cng.f;
+   int h;
+   private int i;
+
+   public dif(hx $$0, djp $$1) {
+      super(dhf.D, $$0, $$1);
    }
 
-   public dif(vf[] $$0, vf[] $$1, clm $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   private static vf[] c() {
-      return new vf[]{ve.a, ve.a, ve.a, ve.a};
-   }
-
-   private static dif a(vf[] $$0, Optional<vf[]> $$1, clm $$2, boolean $$3) {
-      return new dif($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
-   }
-
-   public boolean a() {
+   public cng c() {
       return this.g;
    }
 
-   public dif a(boolean $$0) {
-      return $$0 == this.g ? this : new dif(this.d, this.e, this.f, $$0);
+   public boolean f() {
+      return this.g.a(cnj.tW) || this.g.a(cnj.tX);
    }
 
-   public clm b() {
-      return this.f;
+   public void a(cng $$0) {
+      this.a($$0, null);
    }
 
-   public dif a(clm $$0) {
-      return $$0 == this.b() ? this : new dif(this.d, this.e, $$0, this.g);
+   void l() {
+      this.h = 0;
+      this.i = 0;
+      dbi.a(null, this.i(), this.aE_(), this.r(), false);
    }
 
-   public vf a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
+   public void a(cng $$0, @Nullable cfq $$1) {
+      this.g = this.b($$0, $$1);
+      this.h = 0;
+      this.i = cpd.k(this.g);
+      this.e();
    }
 
-   public dif a(int $$0, vf $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public dif a(int $$0, vf $$1, vf $$2) {
-      vf[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      vf[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dif($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(cfi $$0) {
-      return Arrays.stream(this.b($$0.Y())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public vf[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public aua[] a(boolean $$0, Function<vf, aua> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new aua[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
-         }
+   void a(int $$0) {
+      int $$1 = aup.a($$0, 0, this.i - 1);
+      if ($$1 != this.h) {
+         this.h = $$1;
+         this.e();
+         dbi.a(this.i(), this.aE_(), this.r());
       }
+   }
 
+   public int g() {
       return this.h;
    }
 
-   private Optional<vf[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
-      }
-
-      return Optional.empty();
+   public int k() {
+      float $$0 = this.i > 1 ? (float)this.g() / ((float)this.i - 1.0F) : 1.0F;
+      return aup.d($$0 * 14.0F) + (this.f() ? 1 : 0);
    }
 
-   public boolean b(cfi $$0) {
-      for (vf $$1 : this.b($$0.Y())) {
-         wc $$2 = $$1.a();
-         vd $$3 = $$2.h();
-         if ($$3 != null && $$3.a() == vd.a.c) {
-            return true;
-         }
+   private cng b(cng $$0, @Nullable cfq $$1) {
+      if (this.o instanceof ane && $$0.a(cnj.tX)) {
+         cpd.a($$0, this.a($$1), $$1);
       }
 
-      return false;
+      return $$0;
+   }
+
+   private ds a(@Nullable cfq $$0) {
+      String $$1;
+      vg $$2;
+      if ($$0 == null) {
+         $$1 = "Lectern";
+         $$2 = vg.b("Lectern");
+      } else {
+         $$1 = $$0.ad().getString();
+         $$2 = $$0.Q_();
+      }
+
+      emc $$5 = emc.b(this.p);
+      return new ds(dr.a, $$5, emb.a, (ane)this.o, 2, $$1, $$2, this.o.o(), $$0);
+   }
+
+   @Override
+   public boolean u() {
+      return true;
+   }
+
+   @Override
+   public void a(so $$0) {
+      super.a($$0);
+      if ($$0.b("Book", 10)) {
+         this.g = this.b(cng.a($$0.p("Book")), null);
+      } else {
+         this.g = cng.f;
+      }
+
+      this.i = cpd.k(this.g);
+      this.h = aup.a($$0.h("Page"), 0, this.i - 1);
+   }
+
+   @Override
+   protected void b(so $$0) {
+      super.b($$0);
+      if (!this.c().b()) {
+         $$0.a("Book", this.c().b(new so()));
+         $$0.a("Page", this.h);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.a(cng.f);
+   }
+
+   @Override
+   public cij createMenu(int $$0, cfp $$1, cfq $$2) {
+      return new cjn($$0, this.e, this.f);
+   }
+
+   @Override
+   public vg Q_() {
+      return vg.c("container.lectern");
    }
 }

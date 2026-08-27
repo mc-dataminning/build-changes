@@ -1,19 +1,34 @@
-public class dbv {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(djh $$0) {
-      return $$0.i();
+public class dbv extends cwy implements cxb {
+   public static final MapCodec<dbv> a = b(dbv::new);
+
+   @Override
+   public MapCodec<dbv> a() {
+      return a;
    }
 
-   public static int a(auv $$0) {
-      double $$1 = 1.0;
+   public dbv(djo.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
+   @Override
+   public boolean b(cua $$0, hx $$1, djp $$2) {
+      return $$0.a_($$1.c()).i();
+   }
 
-      return $$2;
+   @Override
+   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
+      $$0.I_().c(ke.aw).flatMap($$0x -> $$0x.b(qi.n)).ifPresent($$3x -> ((drp)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
+   }
+
+   @Override
+   public cxb.a av_() {
+      return cxb.a.a;
    }
 }

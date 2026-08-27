@@ -1,23 +1,23 @@
 import java.util.concurrent.CompletableFuture;
 
-public class oj extends ok<dzg> {
+public class oj extends ok<dzo> {
    public oj(km $$0, CompletableFuture<ij.b> $$1) {
       super($$0, ke.aD, $$1);
    }
 
    @Override
    protected void a(ij.b $$0) {
-      this.b(ass.o).a(dza.t).a(dza.u).a(dza.v).a(dza.w).a(dza.x);
-      this.b(ass.p).a(dza.b).a(dza.c);
-      this.b(ass.s).a(dza.m).a(dza.n);
-      this.b(ass.q).a(dza.h).a(dza.i);
-      this.b(ass.r).a(dza.z).a(dza.A).a(dza.C).a(dza.E).a(dza.D).a(dza.y).a(dza.B);
-      this.b(ass.m).a(dza.j);
-      this.b(ass.n).a(dza.j);
-      this.b(ass.a).a(dza.k);
-      this.b(ass.b).b(ass.s).b(ass.q);
-      this.b(ass.c).a(dza.d);
-      this.b(ass.d).a(dza.l);
-      this.b(ass.l).a(dza.r);
+      this.b(ast.o).a(dzi.t).a(dzi.u).a(dzi.v).a(dzi.w).a(dzi.x);
+      this.b(ast.p).a(dzi.b).a(dzi.c);
+      this.b(ast.s).a(dzi.m).a(dzi.n);
+      this.b(ast.q).a(dzi.h).a(dzi.i);
+      this.b(ast.r).a(dzi.z).a(dzi.A).a(dzi.C).a(dzi.E).a(dzi.D).a(dzi.y).a(dzi.B);
+      this.b(ast.m).a(dzi.j);
+      this.b(ast.n).a(dzi.j);
+      this.b(ast.a).a(dzi.k);
+      this.b(ast.b).b(ast.s).b(ast.q);
+      this.b(ast.c).a(dzi.d);
+      this.b(ast.d).a(dzi.l);
+      this.b(ast.l).a(dzi.r);
    }
 }

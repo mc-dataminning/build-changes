@@ -1,82 +1,158 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
 public class aki {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vf.c("commands.recipe.take.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.random.error.range_too_large"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vg.c("commands.random.error.range_too_small"));
 
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("recipe").requires($$0x -> $$0x.c(2)))
-               .then(
-                  dt.a("give")
-                     .then(
-                        ((RequiredArgumentBuilder)dt.a("targets", ef.d())
-                              .then(
-                                 dt.a("recipe", et.a())
-                                    .suggests(hn.b)
-                                    .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), Collections.singleton(et.b($$0x, "recipe"))))
-                              ))
-                           .then(dt.a("*").executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aG().b())))
-                     )
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("random").then(a("value", false))).then(a("roll", true)))
             .then(
-               dt.a("take")
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("targets", ef.d())
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("reset").requires($$0x -> $$0x.c(2)))
+                     .then(
+                        ((LiteralArgumentBuilder)dt.a("*").executes($$0x -> a((ds)$$0x.getSource())))
                            .then(
-                              dt.a("recipe", et.a())
-                                 .suggests(hn.b)
-                                 .executes($$0x -> b((ds)$$0x.getSource(), ef.f($$0x, "targets"), Collections.singleton(et.b($$0x, "recipe"))))
-                           ))
-                        .then(dt.a("*").executes($$0x -> b((ds)$$0x.getSource(), ef.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aG().b())))
+                              ((RequiredArgumentBuilder)dt.a("seed", IntegerArgumentType.integer())
+                                    .executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                                 .then(
+                                    ((RequiredArgumentBuilder)dt.a("includeWorldSeed", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ds)$$0x.getSource(),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   true
+                                                )
+                                          ))
+                                       .then(
+                                          dt.a("includeSequenceId", BoolArgumentType.bool())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ds)$$0x.getSource(),
+                                                      IntegerArgumentType.getInteger($$0x, "seed"),
+                                                      BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                      BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                   )
+                                             )
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(
+                     ((RequiredArgumentBuilder)dt.a("sequence", et.a()).suggests(aki::a).executes($$0x -> a((ds)$$0x.getSource(), et.e($$0x, "sequence"))))
+                        .then(
+                           ((RequiredArgumentBuilder)dt.a("seed", IntegerArgumentType.integer())
+                                 .executes($$0x -> a((ds)$$0x.getSource(), et.e($$0x, "sequence"), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                              .then(
+                                 ((RequiredArgumentBuilder)dt.a("includeWorldSeed", BoolArgumentType.bool())
+                                       .executes(
+                                          $$0x -> a(
+                                                (ds)$$0x.getSource(),
+                                                et.e($$0x, "sequence"),
+                                                IntegerArgumentType.getInteger($$0x, "seed"),
+                                                BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                true
+                                             )
+                                       ))
+                                    .then(
+                                       dt.a("includeSequenceId", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ds)$$0x.getSource(),
+                                                   et.e($$0x, "sequence"),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
                   )
             )
       );
    }
 
-   private static int a(ds $$0, Collection<ane> $$1, Collection<cqe<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
+   private static LiteralArgumentBuilder<ds> a(String $$0, boolean $$1) {
+      return (LiteralArgumentBuilder<ds>)dt.a($$0)
+         .then(
+            ((RequiredArgumentBuilder)dt.a("range", eq.a()).executes($$1x -> a((ds)$$1x.getSource(), eq.b.a($$1x, "range"), null, $$1)))
+               .then(
+                  ((RequiredArgumentBuilder)dt.a("sequence", et.a()).suggests(aki::a).requires($$0x -> $$0x.c(2)))
+                     .executes($$1x -> a((ds)$$1x.getSource(), eq.b.a($$1x, "range"), et.e($$1x, "sequence"), $$1))
+               )
+         );
+   }
 
-      for (ane $$4 : $$1) {
-         $$3 += $$4.a($$2);
+   private static CompletableFuture<Suggestions> a(CommandContext<ds> $$0, SuggestionsBuilder $$1) {
+      List<String> $$2 = Lists.newArrayList();
+      ((ds)$$0.getSource()).e().J().a(($$1x, $$2x) -> $$2.add($$1x.toString()));
+      return dx.b($$2, $$1);
+   }
+
+   private static int a(ds $$0, ck.d $$1, @Nullable ahh $$2, boolean $$3) throws CommandSyntaxException {
+      auw $$4;
+      if ($$2 != null) {
+         $$4 = $$0.e().a($$2);
+      } else {
+         $$4 = $$0.e().F_();
       }
 
-      if ($$3 == 0) {
+      int $$6 = $$1.a().orElse(Integer.MIN_VALUE);
+      int $$7 = $$1.b().orElse(Integer.MAX_VALUE);
+      long $$8 = (long)$$7 - (long)$$6;
+      if ($$8 == 0L) {
+         throw b.create();
+      } else if ($$8 >= 2147483647L) {
          throw a.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vf.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
+         int $$9 = aup.b($$4, $$6, $$7);
+         if ($$3) {
+            $$0.l().ae().a(vg.a("commands.random.roll", $$0.b(), $$9, $$6, $$7), false);
          } else {
-            $$0.a(() -> vf.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
+            $$0.a(() -> vg.a("commands.random.sample.success", $$9), false);
          }
 
-         return $$3;
+         return $$9;
       }
    }
 
-   private static int b(ds $$0, Collection<ane> $$1, Collection<cqe<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
+   private static int a(ds $$0, ahh $$1) throws CommandSyntaxException {
+      $$0.e().J().b($$1);
+      $$0.a(() -> vg.a("commands.random.reset.success", vg.a($$1)), false);
+      return 1;
+   }
 
-      for (ane $$4 : $$1) {
-         $$3 += $$4.b($$2);
-      }
+   private static int a(ds $$0, ahh $$1, int $$2, boolean $$3, boolean $$4) throws CommandSyntaxException {
+      $$0.e().J().a($$1, $$2, $$3, $$4);
+      $$0.a(() -> vg.a("commands.random.reset.success", vg.a($$1)), false);
+      return 1;
+   }
 
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vf.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vf.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
-         }
+   private static int a(ds $$0) {
+      int $$1 = $$0.e().J().a();
+      $$0.a(() -> vg.a("commands.random.reset.all.success", $$1), false);
+      return $$1;
+   }
 
-         return $$3;
-      }
+   private static int a(ds $$0, int $$1, boolean $$2, boolean $$3) {
+      bkj $$4 = $$0.e().J();
+      $$4.a($$1, $$2, $$3);
+      int $$5 = $$4.a();
+      $$0.a(() -> vg.a("commands.random.reset.all.success", $$5), false);
+      return $$5;
    }
 }

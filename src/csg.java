@@ -1,20 +1,35 @@
-public class csg extends crj {
-   protected csg(crj.a $$0, bma... $$1) {
-      super($$0, crk.g, $$1);
+public class csg extends crr {
+   public csg(crr.a $$0, bmd... $$1) {
+      super($$0, crs.b, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15;
+      return $$0 * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
+      return this.a($$0) + 15;
    }
 
    @Override
-   public boolean a(crj $$0) {
-      return super.a($$0) && $$0 != crn.x;
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public boolean i() {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

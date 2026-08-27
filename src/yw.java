@@ -1,17 +1,16 @@
-import java.util.HashSet;
-import java.util.Set;
+public record yw(iu.b a) implements xg<yu> {
+   private static final ahf<tl> b = ahf.a(tc.a, iu.a(kd.as));
 
-public record yw(Set<ahg> a) implements xf<yt> {
-   public yw(ui $$0) {
-      this($$0.a(HashSet::new, ui::t));
+   public yw(uj $$0) {
+      this($$0.<iu>a(b, ix.a).d());
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.a, ui::a);
+   public void a(uj $$0) {
+      $$0.a(b, ix.a, this.a);
    }
 
-   public void a(yt $$0) {
+   public void a(yu $$0) {
       $$0.a(this);
    }
 }

@@ -19,9 +19,9 @@ public class bcz extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.I);
+      Type<?> $$0 = this.getInputSchema().getType(bbw.J);
       OpticFinder<?> $$1 = $$0.findField("dimensions");
-      Type<?> $$2 = this.getOutputSchema().getType(bbw.I);
+      Type<?> $$2 = this.getOutputSchema().getType(bbw.J);
       Type<?> $$3 = $$2.findFieldType("dimensions");
       return this.fixTypeEverywhereTyped(
          "WorldGenSettingsHeightAndBiomeFix",

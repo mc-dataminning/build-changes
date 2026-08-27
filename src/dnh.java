@@ -1,19 +1,15 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public interface dnh {
+   dnh a = new dnh() {
+      @Override
+      public void a() {
+      }
 
-public interface dnh<T extends dmy> {
-   @Nullable
-   T a(int var1);
+      @Override
+      public void a(blw.c $$0) {
+      }
+   };
 
-   @Nullable
-   T a(UUID var1);
+   void a();
 
-   Iterable<T> a();
-
-   <U extends T> void a(dnf<T, U> var1, atc<U> var2);
-
-   void a(elo var1, Consumer<T> var2);
-
-   <U extends T> void a(dnf<T, U> var1, elo var2, atc<U> var3);
+   void a(blw.c var1);
 }

@@ -5,14 +5,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
 public class nk extends mz {
-   private static final ImmutableList<cto> d = ImmutableList.of(cnb.ak, cnb.al);
-   private static final ImmutableList<cto> e = ImmutableList.of(cnb.am, cnb.an, cnb.oA);
-   private static final ImmutableList<cto> f = ImmutableList.of(cnb.ao, cnb.ap, cnb.oC);
-   private static final ImmutableList<cto> g = ImmutableList.of(cnb.aq, cnb.ar, cnb.aA, cnb.oE);
-   private static final ImmutableList<cto> h = ImmutableList.of(cnb.ay, cnb.az);
-   private static final ImmutableList<cto> i = ImmutableList.of(cnb.aw, cnb.ax);
-   private static final ImmutableList<cto> j = ImmutableList.of(cnb.as, cnb.at);
-   private static final ImmutableList<cto> k = ImmutableList.of(cnb.au, cnb.av);
+   private static final ImmutableList<ctw> d = ImmutableList.of(cnj.ak, cnj.al);
+   private static final ImmutableList<ctw> e = ImmutableList.of(cnj.am, cnj.an, cnj.oC);
+   private static final ImmutableList<ctw> f = ImmutableList.of(cnj.ao, cnj.ap, cnj.oE);
+   private static final ImmutableList<ctw> g = ImmutableList.of(cnj.aq, cnj.ar, cnj.aA, cnj.oG);
+   private static final ImmutableList<ctw> h = ImmutableList.of(cnj.ay, cnj.az);
+   private static final ImmutableList<ctw> i = ImmutableList.of(cnj.aw, cnj.ax);
+   private static final ImmutableList<ctw> j = ImmutableList.of(cnj.as, cnj.at);
+   private static final ImmutableList<ctw> k = ImmutableList.of(cnj.au, cnj.av);
 
    public nk(km $$0) {
       super($$0);
@@ -25,1020 +25,1021 @@ public class nk extends mz {
 
    @Override
    protected void a(my $$0) {
-      a($$0, chs.a(chu.a));
-      a($$0, cws.r, asp.v, 4);
-      b($$0, cws.p, asp.u, 4);
-      b($$0, cws.oE, asp.A, 4);
-      a($$0, cws.t, asp.s, 4);
-      b($$0, cws.q, asp.x, 4);
-      b($$0, cws.n, asp.t, 4);
-      b($$0, cws.o, asp.y, 4);
-      b($$0, cws.oF, asp.B, 4);
-      b($$0, cws.u, asp.z, 4);
-      a($$0, (cto)cws.as, (cto)cws.Y);
-      a($$0, (cto)cws.aq, (cto)cws.W);
-      a($$0, (cto)cws.au, (cto)cws.aa);
-      a($$0, (cto)cws.ar, (cto)cws.X);
-      a($$0, (cto)cws.ao, (cto)cws.U);
-      a($$0, (cto)cws.ap, (cto)cws.V);
-      a($$0, (cto)cws.ou, (cto)cws.os);
-      a($$0, (cto)cws.ol, (cto)cws.oj);
-      a($$0, (cto)cws.av, (cto)cws.ab);
-      a($$0, (cto)cws.aA, (cto)cws.ai);
-      a($$0, (cto)cws.ay, (cto)cws.ag);
-      a($$0, (cto)cws.aC, (cto)cws.ak);
-      a($$0, (cto)cws.az, (cto)cws.ah);
-      a($$0, (cto)cws.aw, (cto)cws.al);
-      a($$0, (cto)cws.ax, (cto)cws.af);
-      a($$0, (cto)cws.ov, (cto)cws.ot);
-      a($$0, (cto)cws.om, (cto)cws.ok);
-      a($$0, (cto)cws.aD, (cto)cws.am);
-      b($$0, cnb.ob, cws.r);
-      b($$0, cnb.nX, cws.p);
-      b($$0, cnb.of, cws.t);
-      b($$0, cnb.nZ, cws.q);
-      b($$0, cnb.nT, cws.n);
-      b($$0, cnb.nV, cws.o);
-      b($$0, cnb.oh, cws.u);
-      List<cmt> $$1 = List.of(cnb.ru, cnb.rq, cnb.rr, cnb.ro, cnb.rm, cnb.rs, cnb.ri, cnb.rn, cnb.rk, cnb.rh, cnb.rg, cnb.rl, cnb.rp, cnb.rt, cnb.rj, cnb.rf);
-      List<cmt> $$2 = List.of(cnb.di, cnb.de, cnb.df, cnb.dc, cnb.da, cnb.dg, cnb.cW, cnb.db, cnb.cY, cnb.cV, cnb.cU, cnb.cZ, cnb.dd, cnb.dh, cnb.cX, cnb.cT);
-      List<cmt> $$3 = List.of(cnb.rO, cnb.rK, cnb.rL, cnb.rI, cnb.rG, cnb.rM, cnb.rC, cnb.rH, cnb.rE, cnb.rB, cnb.rA, cnb.rF, cnb.rJ, cnb.rN, cnb.rD, cnb.rz);
-      List<cmt> $$4 = List.of(cnb.hS, cnb.hO, cnb.hP, cnb.hM, cnb.hK, cnb.hQ, cnb.hG, cnb.hL, cnb.hI, cnb.hF, cnb.hE, cnb.hJ, cnb.hN, cnb.hR, cnb.hH, cnb.hD);
+      a($$0, cia.a(cic.a));
+      a($$0, cxa.r, asq.v, 4);
+      b($$0, cxa.p, asq.u, 4);
+      b($$0, cxa.oE, asq.A, 4);
+      a($$0, cxa.t, asq.s, 4);
+      b($$0, cxa.q, asq.x, 4);
+      b($$0, cxa.n, asq.t, 4);
+      b($$0, cxa.o, asq.y, 4);
+      b($$0, cxa.oF, asq.B, 4);
+      b($$0, cxa.u, asq.z, 4);
+      a($$0, (ctw)cxa.as, (ctw)cxa.Y);
+      a($$0, (ctw)cxa.aq, (ctw)cxa.W);
+      a($$0, (ctw)cxa.au, (ctw)cxa.aa);
+      a($$0, (ctw)cxa.ar, (ctw)cxa.X);
+      a($$0, (ctw)cxa.ao, (ctw)cxa.U);
+      a($$0, (ctw)cxa.ap, (ctw)cxa.V);
+      a($$0, (ctw)cxa.ou, (ctw)cxa.os);
+      a($$0, (ctw)cxa.ol, (ctw)cxa.oj);
+      a($$0, (ctw)cxa.av, (ctw)cxa.ab);
+      a($$0, (ctw)cxa.aA, (ctw)cxa.ai);
+      a($$0, (ctw)cxa.ay, (ctw)cxa.ag);
+      a($$0, (ctw)cxa.aC, (ctw)cxa.ak);
+      a($$0, (ctw)cxa.az, (ctw)cxa.ah);
+      a($$0, (ctw)cxa.aw, (ctw)cxa.al);
+      a($$0, (ctw)cxa.ax, (ctw)cxa.af);
+      a($$0, (ctw)cxa.ov, (ctw)cxa.ot);
+      a($$0, (ctw)cxa.om, (ctw)cxa.ok);
+      a($$0, (ctw)cxa.aD, (ctw)cxa.am);
+      b($$0, cnj.ob, cxa.r);
+      b($$0, cnj.nX, cxa.p);
+      b($$0, cnj.of, cxa.t);
+      b($$0, cnj.nZ, cxa.q);
+      b($$0, cnj.nT, cxa.n);
+      b($$0, cnj.nV, cxa.o);
+      b($$0, cnj.oh, cxa.u);
+      List<cnb> $$1 = List.of(cnj.rw, cnj.rs, cnj.rt, cnj.rq, cnj.ro, cnj.ru, cnj.rk, cnj.rp, cnj.rm, cnj.rj, cnj.ri, cnj.rn, cnj.rr, cnj.rv, cnj.rl, cnj.rh);
+      List<cnb> $$2 = List.of(cnj.di, cnj.de, cnj.df, cnj.dc, cnj.da, cnj.dg, cnj.cW, cnj.db, cnj.cY, cnj.cV, cnj.cU, cnj.cZ, cnj.dd, cnj.dh, cnj.cX, cnj.cT);
+      List<cnb> $$3 = List.of(cnj.rQ, cnj.rM, cnj.rN, cnj.rK, cnj.rI, cnj.rO, cnj.rE, cnj.rJ, cnj.rG, cnj.rD, cnj.rC, cnj.rH, cnj.rL, cnj.rP, cnj.rF, cnj.rB);
+      List<cnb> $$4 = List.of(cnj.hS, cnj.hO, cnj.hP, cnj.hM, cnj.hK, cnj.hQ, cnj.hG, cnj.hL, cnj.hI, cnj.hF, cnj.hE, cnj.hJ, cnj.hN, cnj.hR, cnj.hH, cnj.hD);
       a($$0, $$1, $$2, "wool");
       a($$0, $$1, $$3, "bed");
       a($$0, $$1, $$4, "carpet");
-      f($$0, cws.iz, cws.bP);
-      g($$0, cnb.rO, cws.bP);
-      h($$0, cnb.uX, cws.bP);
-      f($$0, cws.iv, cws.bL);
-      g($$0, cnb.rK, cws.bL);
-      h($$0, cnb.uT, cws.bL);
-      f($$0, cws.iw, cws.bM);
-      g($$0, cnb.rL, cws.bM);
-      h($$0, cnb.uU, cws.bM);
-      f($$0, cws.it, cws.bJ);
-      g($$0, cnb.rI, cws.bJ);
-      h($$0, cnb.uR, cws.bJ);
-      f($$0, cws.ir, cws.bH);
-      g($$0, cnb.rG, cws.bH);
-      h($$0, cnb.uP, cws.bH);
-      f($$0, cws.ix, cws.bN);
-      g($$0, cnb.rM, cws.bN);
-      h($$0, cnb.uV, cws.bN);
-      f($$0, cws.in, cws.bD);
-      g($$0, cnb.rC, cws.bD);
-      h($$0, cnb.uL, cws.bD);
-      f($$0, cws.is, cws.bI);
-      g($$0, cnb.rH, cws.bI);
-      h($$0, cnb.uQ, cws.bI);
-      f($$0, cws.ip, cws.bF);
-      g($$0, cnb.rE, cws.bF);
-      h($$0, cnb.uN, cws.bF);
-      f($$0, cws.im, cws.bC);
-      g($$0, cnb.rB, cws.bC);
-      h($$0, cnb.uK, cws.bC);
-      f($$0, cws.il, cws.bB);
-      g($$0, cnb.rA, cws.bB);
-      h($$0, cnb.uJ, cws.bB);
-      f($$0, cws.iq, cws.bG);
-      g($$0, cnb.rF, cws.bG);
-      h($$0, cnb.uO, cws.bG);
-      f($$0, cws.iu, cws.bK);
-      g($$0, cnb.rJ, cws.bK);
-      h($$0, cnb.uS, cws.bK);
-      f($$0, cws.iy, cws.bO);
-      g($$0, cnb.rN, cws.bO);
-      h($$0, cnb.uW, cws.bO);
-      f($$0, cws.ik, cws.bA);
-      g($$0, cnb.rz, cws.bA);
-      h($$0, cnb.uI, cws.bA);
-      f($$0, cws.io, cws.bE);
-      g($$0, cnb.rD, cws.bE);
-      h($$0, cnb.uM, cws.bE);
-      f($$0, cws.sA, cws.sC);
-      i($$0, cws.ex, cnb.ru);
-      j($$0, cws.hO, cws.ex);
-      k($$0, cws.hO, cnb.ru);
-      i($$0, cws.et, cnb.rq);
-      j($$0, cws.hK, cws.et);
-      k($$0, cws.hK, cnb.rq);
-      i($$0, cws.eu, cnb.rr);
-      j($$0, cws.hL, cws.eu);
-      k($$0, cws.hL, cnb.rr);
-      i($$0, cws.er, cnb.ro);
-      j($$0, cws.hI, cws.er);
-      k($$0, cws.hI, cnb.ro);
-      i($$0, cws.ep, cnb.rm);
-      j($$0, cws.hG, cws.ep);
-      k($$0, cws.hG, cnb.rm);
-      i($$0, cws.ev, cnb.rs);
-      j($$0, cws.hM, cws.ev);
-      k($$0, cws.hM, cnb.rs);
-      i($$0, cws.el, cnb.ri);
-      j($$0, cws.hC, cws.el);
-      k($$0, cws.hC, cnb.ri);
-      i($$0, cws.eq, cnb.rn);
-      j($$0, cws.hH, cws.eq);
-      k($$0, cws.hH, cnb.rn);
-      i($$0, cws.en, cnb.rk);
-      j($$0, cws.hE, cws.en);
-      k($$0, cws.hE, cnb.rk);
-      i($$0, cws.ek, cnb.rh);
-      j($$0, cws.hB, cws.ek);
-      k($$0, cws.hB, cnb.rh);
-      i($$0, cws.ej, cnb.rg);
-      j($$0, cws.hA, cws.ej);
-      k($$0, cws.hA, cnb.rg);
-      i($$0, cws.eo, cnb.rl);
-      j($$0, cws.hF, cws.eo);
-      k($$0, cws.hF, cnb.rl);
-      i($$0, cws.es, cnb.rp);
-      j($$0, cws.hJ, cws.es);
-      k($$0, cws.hJ, cnb.rp);
-      i($$0, cws.ew, cnb.rt);
-      j($$0, cws.hN, cws.ew);
-      k($$0, cws.hN, cnb.rt);
-      i($$0, cws.ei, cnb.rf);
-      j($$0, cws.hz, cws.ei);
-      k($$0, cws.hz, cnb.rf);
-      i($$0, cws.em, cnb.rj);
-      j($$0, cws.hD, cws.em);
-      k($$0, cws.hD, cnb.rj);
-      l($$0, cws.hy, cnb.ru);
-      l($$0, cws.hu, cnb.rq);
-      l($$0, cws.hv, cnb.rr);
-      l($$0, cws.hs, cnb.ro);
-      l($$0, cws.hq, cnb.rm);
-      l($$0, cws.hw, cnb.rs);
-      l($$0, cws.hm, cnb.ri);
-      l($$0, cws.hr, cnb.rn);
-      l($$0, cws.ho, cnb.rk);
-      l($$0, cws.hl, cnb.rh);
-      l($$0, cws.hk, cnb.rg);
-      l($$0, cws.hp, cnb.rl);
-      l($$0, cws.ht, cnb.rp);
-      l($$0, cws.hx, cnb.rt);
-      l($$0, cws.hj, cnb.rf);
-      l($$0, cws.hn, cnb.rj);
-      m($$0, cws.mb, cnb.ru);
-      m($$0, cws.lX, cnb.rq);
-      m($$0, cws.lY, cnb.rr);
-      m($$0, cws.lV, cnb.ro);
-      m($$0, cws.lT, cnb.rm);
-      m($$0, cws.lZ, cnb.rs);
-      m($$0, cws.lP, cnb.ri);
-      m($$0, cws.lU, cnb.rn);
-      m($$0, cws.lR, cnb.rk);
-      m($$0, cws.lO, cnb.rh);
-      m($$0, cws.lN, cnb.rg);
-      m($$0, cws.lS, cnb.rl);
-      m($$0, cws.lW, cnb.rp);
-      m($$0, cws.ma, cnb.rt);
-      m($$0, cws.lM, cnb.rf);
-      m($$0, cws.lQ, cnb.rj);
-      na.a(mx.b, cnb.wH).a('S', cnb.pp).a('H', cnb.wn).b("S").b("H").b("has_string", a((cto)cnb.pp)).b("has_honeycomb", a((cto)cnb.wn)).a($$0);
-      n($$0, cws.qb, cnb.ru);
-      n($$0, cws.pX, cnb.rq);
-      n($$0, cws.pY, cnb.rr);
-      n($$0, cws.pV, cnb.ro);
-      n($$0, cws.pT, cnb.rm);
-      n($$0, cws.pZ, cnb.rs);
-      n($$0, cws.pP, cnb.ri);
-      n($$0, cws.pU, cnb.rn);
-      n($$0, cws.pR, cnb.rk);
-      n($$0, cws.pO, cnb.rh);
-      n($$0, cws.pN, cnb.rg);
-      n($$0, cws.pS, cnb.rl);
-      n($$0, cws.pW, cnb.rp);
-      n($$0, cws.qa, cnb.rt);
-      n($$0, cws.pM, cnb.rf);
-      n($$0, cws.pQ, cnb.rj);
-      nb.a(mx.a, cws.eL, 1).b(cws.sI).b(cnb.pt).b("has_mud", a(cws.sI)).a($$0);
-      na.a(mx.a, cws.eM, 4).a('#', cws.eL).b("##").b("##").b("has_packed_mud", a(cws.eL)).a($$0);
-      nb.a(mx.a, cws.ad, 1).b(cws.sI).b(cnb.bJ).b("has_mangrove_roots", a(cws.ac)).a($$0);
-      na.a(mx.d, cws.hh, 6).a('#', cws.dK).a('S', cnb.pm).a('X', cnb.oB).b("XSX").b("X#X").b("XSX").b("has_rail", a(cws.cP)).a($$0);
-      nb.a(mx.a, cws.g, 2).b(cws.e).b(cws.m).b("has_stone", a(cws.e)).a($$0);
-      na.a(mx.b, cws.gS).a('I', cws.ci).a('i', cnb.oB).b("III").b(" i ").b("iii").b("has_iron_block", a(cws.ci)).a($$0);
-      na.a(mx.b, cnb.uy).a('/', cnb.pm).a('_', cws.jE).b("///").b(" / ").b("/_/").b("has_stone_slab", a(cws.jE)).a($$0);
-      na.a(mx.f, cnb.os, 4)
-         .a('#', cnb.pm)
-         .a('X', cnb.pT)
-         .a('Y', cnb.pq)
+      f($$0, cxa.iz, cxa.bP);
+      g($$0, cnj.rQ, cxa.bP);
+      h($$0, cnj.va, cxa.bP);
+      f($$0, cxa.iv, cxa.bL);
+      g($$0, cnj.rM, cxa.bL);
+      h($$0, cnj.uW, cxa.bL);
+      f($$0, cxa.iw, cxa.bM);
+      g($$0, cnj.rN, cxa.bM);
+      h($$0, cnj.uX, cxa.bM);
+      f($$0, cxa.it, cxa.bJ);
+      g($$0, cnj.rK, cxa.bJ);
+      h($$0, cnj.uU, cxa.bJ);
+      f($$0, cxa.ir, cxa.bH);
+      g($$0, cnj.rI, cxa.bH);
+      h($$0, cnj.uS, cxa.bH);
+      f($$0, cxa.ix, cxa.bN);
+      g($$0, cnj.rO, cxa.bN);
+      h($$0, cnj.uY, cxa.bN);
+      f($$0, cxa.in, cxa.bD);
+      g($$0, cnj.rE, cxa.bD);
+      h($$0, cnj.uO, cxa.bD);
+      f($$0, cxa.is, cxa.bI);
+      g($$0, cnj.rJ, cxa.bI);
+      h($$0, cnj.uT, cxa.bI);
+      f($$0, cxa.ip, cxa.bF);
+      g($$0, cnj.rG, cxa.bF);
+      h($$0, cnj.uQ, cxa.bF);
+      f($$0, cxa.im, cxa.bC);
+      g($$0, cnj.rD, cxa.bC);
+      h($$0, cnj.uN, cxa.bC);
+      f($$0, cxa.il, cxa.bB);
+      g($$0, cnj.rC, cxa.bB);
+      h($$0, cnj.uM, cxa.bB);
+      f($$0, cxa.iq, cxa.bG);
+      g($$0, cnj.rH, cxa.bG);
+      h($$0, cnj.uR, cxa.bG);
+      f($$0, cxa.iu, cxa.bK);
+      g($$0, cnj.rL, cxa.bK);
+      h($$0, cnj.uV, cxa.bK);
+      f($$0, cxa.iy, cxa.bO);
+      g($$0, cnj.rP, cxa.bO);
+      h($$0, cnj.uZ, cxa.bO);
+      f($$0, cxa.ik, cxa.bA);
+      g($$0, cnj.rB, cxa.bA);
+      h($$0, cnj.uL, cxa.bA);
+      f($$0, cxa.io, cxa.bE);
+      g($$0, cnj.rF, cxa.bE);
+      h($$0, cnj.uP, cxa.bE);
+      f($$0, cxa.sA, cxa.sC);
+      i($$0, cxa.ex, cnj.rw);
+      j($$0, cxa.hO, cxa.ex);
+      k($$0, cxa.hO, cnj.rw);
+      i($$0, cxa.et, cnj.rs);
+      j($$0, cxa.hK, cxa.et);
+      k($$0, cxa.hK, cnj.rs);
+      i($$0, cxa.eu, cnj.rt);
+      j($$0, cxa.hL, cxa.eu);
+      k($$0, cxa.hL, cnj.rt);
+      i($$0, cxa.er, cnj.rq);
+      j($$0, cxa.hI, cxa.er);
+      k($$0, cxa.hI, cnj.rq);
+      i($$0, cxa.ep, cnj.ro);
+      j($$0, cxa.hG, cxa.ep);
+      k($$0, cxa.hG, cnj.ro);
+      i($$0, cxa.ev, cnj.ru);
+      j($$0, cxa.hM, cxa.ev);
+      k($$0, cxa.hM, cnj.ru);
+      i($$0, cxa.el, cnj.rk);
+      j($$0, cxa.hC, cxa.el);
+      k($$0, cxa.hC, cnj.rk);
+      i($$0, cxa.eq, cnj.rp);
+      j($$0, cxa.hH, cxa.eq);
+      k($$0, cxa.hH, cnj.rp);
+      i($$0, cxa.en, cnj.rm);
+      j($$0, cxa.hE, cxa.en);
+      k($$0, cxa.hE, cnj.rm);
+      i($$0, cxa.ek, cnj.rj);
+      j($$0, cxa.hB, cxa.ek);
+      k($$0, cxa.hB, cnj.rj);
+      i($$0, cxa.ej, cnj.ri);
+      j($$0, cxa.hA, cxa.ej);
+      k($$0, cxa.hA, cnj.ri);
+      i($$0, cxa.eo, cnj.rn);
+      j($$0, cxa.hF, cxa.eo);
+      k($$0, cxa.hF, cnj.rn);
+      i($$0, cxa.es, cnj.rr);
+      j($$0, cxa.hJ, cxa.es);
+      k($$0, cxa.hJ, cnj.rr);
+      i($$0, cxa.ew, cnj.rv);
+      j($$0, cxa.hN, cxa.ew);
+      k($$0, cxa.hN, cnj.rv);
+      i($$0, cxa.ei, cnj.rh);
+      j($$0, cxa.hz, cxa.ei);
+      k($$0, cxa.hz, cnj.rh);
+      i($$0, cxa.em, cnj.rl);
+      j($$0, cxa.hD, cxa.em);
+      k($$0, cxa.hD, cnj.rl);
+      l($$0, cxa.hy, cnj.rw);
+      l($$0, cxa.hu, cnj.rs);
+      l($$0, cxa.hv, cnj.rt);
+      l($$0, cxa.hs, cnj.rq);
+      l($$0, cxa.hq, cnj.ro);
+      l($$0, cxa.hw, cnj.ru);
+      l($$0, cxa.hm, cnj.rk);
+      l($$0, cxa.hr, cnj.rp);
+      l($$0, cxa.ho, cnj.rm);
+      l($$0, cxa.hl, cnj.rj);
+      l($$0, cxa.hk, cnj.ri);
+      l($$0, cxa.hp, cnj.rn);
+      l($$0, cxa.ht, cnj.rr);
+      l($$0, cxa.hx, cnj.rv);
+      l($$0, cxa.hj, cnj.rh);
+      l($$0, cxa.hn, cnj.rl);
+      m($$0, cxa.mb, cnj.rw);
+      m($$0, cxa.lX, cnj.rs);
+      m($$0, cxa.lY, cnj.rt);
+      m($$0, cxa.lV, cnj.rq);
+      m($$0, cxa.lT, cnj.ro);
+      m($$0, cxa.lZ, cnj.ru);
+      m($$0, cxa.lP, cnj.rk);
+      m($$0, cxa.lU, cnj.rp);
+      m($$0, cxa.lR, cnj.rm);
+      m($$0, cxa.lO, cnj.rj);
+      m($$0, cxa.lN, cnj.ri);
+      m($$0, cxa.lS, cnj.rn);
+      m($$0, cxa.lW, cnj.rr);
+      m($$0, cxa.ma, cnj.rv);
+      m($$0, cxa.lM, cnj.rh);
+      m($$0, cxa.lQ, cnj.rl);
+      na.a(mx.b, cnj.wK).a('S', cnj.pr).a('H', cnj.wq).b("S").b("H").b("has_string", a((ctw)cnj.pr)).b("has_honeycomb", a((ctw)cnj.wq)).a($$0);
+      n($$0, cxa.qb, cnj.rw);
+      n($$0, cxa.pX, cnj.rs);
+      n($$0, cxa.pY, cnj.rt);
+      n($$0, cxa.pV, cnj.rq);
+      n($$0, cxa.pT, cnj.ro);
+      n($$0, cxa.pZ, cnj.ru);
+      n($$0, cxa.pP, cnj.rk);
+      n($$0, cxa.pU, cnj.rp);
+      n($$0, cxa.pR, cnj.rm);
+      n($$0, cxa.pO, cnj.rj);
+      n($$0, cxa.pN, cnj.ri);
+      n($$0, cxa.pS, cnj.rn);
+      n($$0, cxa.pW, cnj.rr);
+      n($$0, cxa.qa, cnj.rv);
+      n($$0, cxa.pM, cnj.rh);
+      n($$0, cxa.pQ, cnj.rl);
+      nb.a(mx.a, cxa.eL, 1).b(cxa.sI).b(cnj.pv).b("has_mud", a(cxa.sI)).a($$0);
+      na.a(mx.a, cxa.eM, 4).a('#', cxa.eL).b("##").b("##").b("has_packed_mud", a(cxa.eL)).a($$0);
+      nb.a(mx.a, cxa.ad, 1).b(cxa.sI).b(cnj.bJ).b("has_mangrove_roots", a(cxa.ac)).a($$0);
+      na.a(mx.d, cxa.hh, 6).a('#', cxa.dK).a('S', cnj.po).a('X', cnj.oD).b("XSX").b("X#X").b("XSX").b("has_rail", a(cxa.cP)).a($$0);
+      nb.a(mx.a, cxa.g, 2).b(cxa.e).b(cxa.m).b("has_stone", a(cxa.e)).a($$0);
+      na.a(mx.b, cxa.gS).a('I', cxa.ci).a('i', cnj.oD).b("III").b(" i ").b("iii").b("has_iron_block", a(cxa.ci)).a($$0);
+      na.a(mx.b, cnj.uB).a('/', cnj.po).a('_', cxa.jE).b("///").b(" / ").b("/_/").b("has_stone_slab", a(cxa.jE)).a($$0);
+      na.a(mx.f, cnj.ou, 4)
+         .a('#', cnj.po)
+         .a('X', cnj.pV)
+         .a('Y', cnj.ps)
          .b("X")
          .b("#")
          .b("Y")
-         .b("has_feather", a((cto)cnb.pq))
-         .b("has_flint", a((cto)cnb.pT))
+         .b("has_feather", a((ctw)cnj.ps))
+         .b("has_flint", a((ctw)cnj.pV))
          .a($$0);
-      na.a(mx.b, cws.nU, 1).a('P', asp.b).a('S', asp.j).b("PSP").b("P P").b("PSP").b("has_planks", a(asp.b)).b("has_wood_slab", a(asp.j)).a($$0);
-      na.a(mx.i, cws.fO).a('S', cnb.ul).a('G', cws.aQ).a('O', cws.co).b("GGG").b("GSG").b("OOO").b("has_nether_star", a((cto)cnb.ul)).a($$0);
-      na.a(mx.b, cws.pf).a('P', asp.b).a('H', cnb.wn).b("PPP").b("HHH").b("PPP").b("has_honeycomb", a((cto)cnb.wn)).a($$0);
-      nb.a(mx.g, cnb.vf).b(cnb.pn).a(cnb.vd, 6).b("has_beetroot", a((cto)cnb.vd)).a($$0);
-      nb.a(mx.i, cnb.ru).b(cnb.rc).b("black_dye").b("has_ink_sac", a((cto)cnb.rc)).a($$0);
-      a($$0, cnb.ru, cws.cd, "black_dye");
-      nb.a(mx.h, cnb.sl, 2).b(cnb.sd).b("has_blaze_rod", a((cto)cnb.sd)).a($$0);
-      nb.a(mx.i, cnb.rq).b(cnb.ox).b("blue_dye").b("has_lapis_lazuli", a((cto)cnb.ox)).a($$0);
-      a($$0, cnb.rq, cws.cc, "blue_dye");
-      b($$0, mx.a, cws.mW, cws.iC);
-      nb.a(mx.i, cnb.rv, 3).b(cnb.rw).b("bonemeal").b("has_bone", a((cto)cnb.rw)).a($$0);
-      b($$0, mx.i, cnb.rv, mx.a, cnb.iZ, "bone_meal_from_bone_block", "bonemeal");
-      nb.a(mx.i, cnb.qM).a(cnb.qL, 3).b(cnb.qA).b("has_paper", a((cto)cnb.qL)).a($$0);
-      na.a(mx.a, cws.cl).a('#', asp.b).a('X', cnb.qM).b("###").b("XXX").b("###").b("has_book", a((cto)cnb.qM)).a($$0);
-      na.a(mx.f, cnb.or).a('#', cnb.pm).a('X', cnb.pp).b(" #X").b("# X").b(" #X").b("has_string", a((cto)cnb.pp)).a($$0);
-      na.a(mx.i, cnb.pn, 4)
-         .a('#', asp.b)
+      na.a(mx.b, cxa.nU, 1).a('P', asq.b).a('S', asq.j).b("PSP").b("P P").b("PSP").b("has_planks", a(asq.b)).b("has_wood_slab", a(asq.j)).a($$0);
+      na.a(mx.i, cxa.fO).a('S', cnj.uo).a('G', cxa.aQ).a('O', cxa.co).b("GGG").b("GSG").b("OOO").b("has_nether_star", a((ctw)cnj.uo)).a($$0);
+      na.a(mx.b, cxa.pf).a('P', asq.b).a('H', cnj.wq).b("PPP").b("HHH").b("PPP").b("has_honeycomb", a((ctw)cnj.wq)).a($$0);
+      nb.a(mx.g, cnj.vi).b(cnj.pp).a(cnj.vg, 6).b("has_beetroot", a((ctw)cnj.vg)).a($$0);
+      nb.a(mx.i, cnj.rw).b(cnj.re).b("black_dye").b("has_ink_sac", a((ctw)cnj.re)).a($$0);
+      a($$0, cnj.rw, cxa.cd, "black_dye");
+      nb.a(mx.h, cnj.sn, 2).b(cnj.sf).b("has_blaze_rod", a((ctw)cnj.sf)).a($$0);
+      nb.a(mx.i, cnj.rs).b(cnj.oz).b("blue_dye").b("has_lapis_lazuli", a((ctw)cnj.oz)).a($$0);
+      a($$0, cnj.rs, cxa.cc, "blue_dye");
+      b($$0, mx.a, cxa.mW, cxa.iC);
+      nb.a(mx.i, cnj.rx, 3).b(cnj.ry).b("bonemeal").b("has_bone", a((ctw)cnj.ry)).a($$0);
+      b($$0, mx.i, cnj.rx, mx.a, cnj.iZ, "bone_meal_from_bone_block", "bonemeal");
+      nb.a(mx.i, cnj.qO).a(cnj.qN, 3).b(cnj.qC).b("has_paper", a((ctw)cnj.qN)).a($$0);
+      na.a(mx.a, cxa.cl).a('#', asq.b).a('X', cnj.qO).b("###").b("XXX").b("###").b("has_book", a((ctw)cnj.qO)).a($$0);
+      na.a(mx.f, cnj.ot).a('#', cnj.po).a('X', cnj.pr).b(" #X").b("# X").b(" #X").b("has_string", a((ctw)cnj.pr)).a($$0);
+      na.a(mx.i, cnj.pp, 4)
+         .a('#', asq.b)
          .b("# #")
          .b(" # ")
-         .b("has_brown_mushroom", a(cws.cf))
-         .b("has_red_mushroom", a(cws.cg))
-         .b("has_mushroom_stew", a((cto)cnb.po))
+         .b("has_brown_mushroom", a(cxa.cf))
+         .b("has_red_mushroom", a(cxa.cg))
+         .b("has_mushroom_stew", a((ctw)cnj.pq))
          .a($$0);
-      na.a(mx.g, cnb.pu).a('#', cnb.pt).b("###").b("has_wheat", a((cto)cnb.pt)).a($$0);
-      na.a(mx.h, cws.fs).a('B', cnb.sd).a('#', asp.ay).b(" B ").b("###").b("has_blaze_rod", a((cto)cnb.sd)).a($$0);
-      na.a(mx.a, cws.cj).a('#', cnb.qI).b("##").b("##").b("has_brick", a((cto)cnb.qI)).a($$0);
-      nb.a(mx.i, cnb.rr).b(cnb.re).b("brown_dye").b("has_cocoa_beans", a((cto)cnb.re)).a($$0);
-      na.a(mx.i, cnb.qv).a('#', cnb.oB).b("# #").b(" # ").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      na.a(mx.g, cws.eg).a('A', cnb.qB).a('B', cnb.rx).a('C', cnb.pt).a('E', cnb.qO).b("AAA").b("BEB").b("CCC").b("has_egg", a((cto)cnb.qO)).a($$0);
-      na.a(mx.b, cws.og).a('L', asp.r).a('S', cnb.pm).a('C', asp.as).b(" S ").b("SCS").b("LLL").b("has_stick", a((cto)cnb.pm)).b("has_coal", a(asp.as)).a($$0);
-      na.a(mx.d, cnb.nQ).a('#', cnb.qS).a('X', cnb.tY).b("# ").b(" X").b("has_carrot", a((cto)cnb.tY)).a($$0);
-      na.a(mx.d, cnb.nR).a('#', cnb.qS).a('X', cnb.dC).b("# ").b(" X").b("has_warped_fungus", a((cto)cnb.dC)).a($$0);
-      na.a(mx.h, cws.ft).a('#', cnb.oB).b("# #").b("# #").b("###").b("has_water_bucket", a((cto)cnb.qw)).a($$0);
-      na.a(mx.b, cws.pc).a('#', asp.j).b("# #").b("# #").b("###").b("has_wood_slab", a(asp.j)).a($$0);
-      na.a(mx.b, cws.cv)
-         .a('#', asp.b)
+      na.a(mx.g, cnj.pw).a('#', cnj.pv).b("###").b("has_wheat", a((ctw)cnj.pv)).a($$0);
+      na.a(mx.h, cxa.fs).a('B', cnj.sf).a('#', asq.ay).b(" B ").b("###").b("has_blaze_rod", a((ctw)cnj.sf)).a($$0);
+      na.a(mx.a, cxa.cj).a('#', cnj.qK).b("##").b("##").b("has_brick", a((ctw)cnj.qK)).a($$0);
+      nb.a(mx.i, cnj.rt).b(cnj.rg).b("brown_dye").b("has_cocoa_beans", a((ctw)cnj.rg)).a($$0);
+      na.a(mx.i, cnj.qx).a('#', cnj.oD).b("# #").b(" # ").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      na.a(mx.g, cxa.eg).a('A', cnj.qD).a('B', cnj.rz).a('C', cnj.pv).a('E', cnj.qQ).b("AAA").b("BEB").b("CCC").b("has_egg", a((ctw)cnj.qQ)).a($$0);
+      na.a(mx.b, cxa.og).a('L', asq.r).a('S', cnj.po).a('C', asq.as).b(" S ").b("SCS").b("LLL").b("has_stick", a((ctw)cnj.po)).b("has_coal", a(asq.as)).a($$0);
+      na.a(mx.d, cnj.nQ).a('#', cnj.qU).a('X', cnj.ub).b("# ").b(" X").b("has_carrot", a((ctw)cnj.ub)).a($$0);
+      na.a(mx.d, cnj.nR).a('#', cnj.qU).a('X', cnj.dC).b("# ").b(" X").b("has_warped_fungus", a((ctw)cnj.dC)).a($$0);
+      na.a(mx.h, cxa.ft).a('#', cnj.oD).b("# #").b("# #").b("###").b("has_water_bucket", a((ctw)cnj.qy)).a($$0);
+      na.a(mx.b, cxa.pc).a('#', asq.j).b("# #").b("# #").b("###").b("has_wood_slab", a(asq.j)).a($$0);
+      na.a(mx.b, cxa.cv)
+         .a('#', asq.b)
          .b("###")
          .b("# #")
          .b("###")
          .b("has_lots_of_items", am.f.a(new by.a(Optional.empty(), new by.a.a(ck.d.b(10), ck.d.c, ck.d.c), List.of())))
          .a($$0);
-      nb.a(mx.d, cnb.nM).b(cws.cv).b(cnb.nL).b("has_minecart", a((cto)cnb.nL)).a($$0);
-      c($$0, cnb.oc, cnb.ob);
-      c($$0, cnb.nY, cnb.nX);
-      c($$0, cnb.og, cnb.of);
-      c($$0, cnb.oa, cnb.nZ);
-      c($$0, cnb.nU, cnb.nT);
-      c($$0, cnb.nW, cnb.nV);
-      c($$0, cnb.oi, cnb.oh);
-      b(mx.a, cws.he, cpz.a(cws.jN)).b("has_chiseled_quartz_block", a(cws.he)).b("has_quartz_block", a(cws.hd)).b("has_quartz_pillar", a(cws.hf)).a($$0);
-      b(mx.a, cws.eK, cpz.a(cws.jK)).b("has_tag", a(asp.c)).a($$0);
-      a($$0, mx.a, cws.dR, cnb.qJ);
-      na.a(mx.e, cnb.qT).a('#', cnb.oF).a('X', cnb.lG).b(" # ").b("#X#").b(" # ").b("has_redstone", a((cto)cnb.lG)).a($$0);
-      a($$0, mx.i, cnb.ot, mx.a, cnb.aD);
-      na.a(mx.a, cws.k, 4).a('D', cws.j).a('G', cws.L).b("DG").b("GD").b("has_gravel", a(cws.L)).a($$0);
-      na.a(mx.c, cws.gY).a('#', cws.dK).a('X', cnb.oy).a('I', cws.b).b(" # ").b("#X#").b("III").b("has_quartz", a((cto)cnb.oy)).a($$0);
-      na.a(mx.e, cnb.qP).a('#', cnb.oB).a('X', cnb.lG).b(" # ").b("#X#").b(" # ").b("has_redstone", a((cto)cnb.lG)).a($$0);
-      na.a(mx.g, cnb.rP, 8).a('#', cnb.pt).a('X', cnb.re).b("#X#").b("has_cocoa", a((cto)cnb.re)).a($$0);
-      na.a(mx.b, cws.cA).a('#', asp.b).b("##").b("##").b("unlock_right_away", cr.a.e()).a(false).a($$0);
-      na.a(mx.f, cnb.vM)
-         .a('~', cnb.pp)
-         .a('#', cnb.pm)
-         .a('&', cnb.oB)
-         .a('$', cws.fH)
+      nb.a(mx.d, cnj.nM).b(cxa.cv).b(cnj.nL).b("has_minecart", a((ctw)cnj.nL)).a($$0);
+      c($$0, cnj.oc, cnj.ob);
+      c($$0, cnj.nY, cnj.nX);
+      c($$0, cnj.og, cnj.of);
+      c($$0, cnj.oa, cnj.nZ);
+      c($$0, cnj.nU, cnj.nT);
+      c($$0, cnj.nW, cnj.nV);
+      c($$0, cnj.oi, cnj.oh);
+      b(mx.a, cxa.he, cqh.a(cxa.jN)).b("has_chiseled_quartz_block", a(cxa.he)).b("has_quartz_block", a(cxa.hd)).b("has_quartz_pillar", a(cxa.hf)).a($$0);
+      b(mx.a, cxa.eK, cqh.a(cxa.jK)).b("has_tag", a(asq.c)).a($$0);
+      a($$0, mx.a, cxa.dR, cnj.qL);
+      na.a(mx.e, cnj.qV).a('#', cnj.oH).a('X', cnj.lG).b(" # ").b("#X#").b(" # ").b("has_redstone", a((ctw)cnj.lG)).a($$0);
+      a($$0, mx.i, cnj.ov, mx.a, cnj.aD);
+      na.a(mx.a, cxa.k, 4).a('D', cxa.j).a('G', cxa.L).b("DG").b("GD").b("has_gravel", a(cxa.L)).a($$0);
+      na.a(mx.c, cxa.gY).a('#', cxa.dK).a('X', cnj.oA).a('I', cxa.b).b(" # ").b("#X#").b("III").b("has_quartz", a((ctw)cnj.oA)).a($$0);
+      na.a(mx.e, cnj.qR).a('#', cnj.oD).a('X', cnj.lG).b(" # ").b("#X#").b(" # ").b("has_redstone", a((ctw)cnj.lG)).a($$0);
+      na.a(mx.g, cnj.rR, 8).a('#', cnj.pv).a('X', cnj.rg).b("#X#").b("has_cocoa", a((ctw)cnj.rg)).a($$0);
+      na.a(mx.b, cxa.cA).a('#', asq.b).b("##").b("##").b("unlock_right_away", cr.a.e()).a(false).a($$0);
+      na.a(mx.f, cnj.vP)
+         .a('~', cnj.pr)
+         .a('#', cnj.po)
+         .a('&', cnj.oD)
+         .a('$', cxa.fH)
          .b("#&#")
          .b("~$~")
          .b(" # ")
-         .b("has_string", a((cto)cnb.pp))
-         .b("has_iron_ingot", a((cto)cnb.oB))
-         .b("has_tripwire_hook", a(cws.fH))
+         .b("has_string", a((ctw)cnj.pr))
+         .b("has_iron_ingot", a((ctw)cnj.oD))
+         .b("has_tripwire_hook", a(cxa.fH))
          .a($$0);
-      na.a(mx.b, cws.nT).a('#', asp.b).a('@', cnb.pp).b("@@").b("##").b("has_string", a((cto)cnb.pp)).a($$0);
-      b(mx.a, cws.jq, cpz.a(cws.jO)).b("has_red_sandstone", a(cws.jp)).b("has_chiseled_red_sandstone", a(cws.jq)).b("has_cut_red_sandstone", a(cws.jr)).a($$0);
-      g($$0, mx.a, cws.aW, cws.jF);
-      b($$0, mx.i, cnb.oD, mx.a, cnb.aK, d(cnb.oD), c(cnb.oD));
-      nb.a(mx.i, cnb.oD, 9).b(cws.rw).b(c(cnb.oD)).b(b(cws.rw), a(cws.rw)).a($$0, a(cnb.oD, cws.rw));
-      b($$0, chs.a(chu.a));
-      nb.a(mx.i, cnb.ro, 2).b(cnb.rq).b(cnb.rs).b("cyan_dye").b("has_green_dye", a((cto)cnb.rs)).b("has_blue_dye", a((cto)cnb.rq)).a($$0);
-      na.a(mx.a, cws.ib).a('S', cnb.ur).a('I', cnb.ru).b("SSS").b("SIS").b("SSS").b("has_prismarine_shard", a((cto)cnb.ur)).a($$0);
-      na.a(mx.c, cws.gZ).a('Q', cnb.oy).a('G', cws.aQ).a('W', cpz.a(asp.j)).b("GGG").b("QQQ").b("WWW").b("has_quartz", a((cto)cnb.oy)).a($$0);
-      na.a(mx.a, cws.sW, 4).a('S', cws.sO).b("SS").b("SS").b("has_polished_deepslate", a(cws.sO)).a($$0);
-      na.a(mx.a, cws.sS, 4).a('S', cws.sW).b("SS").b("SS").b("has_deepslate_bricks", a(cws.sW)).a($$0);
-      na.a(mx.d, cws.bq, 6).a('R', cnb.lG).a('#', cws.dx).a('X', cnb.oB).b("X X").b("X#X").b("XRX").b("has_rail", a(cws.cP)).a($$0);
-      na.a(mx.e, cnb.pf).a('#', cnb.pm).a('X', cnb.ov).b("XX").b("X#").b(" #").b("has_diamond", a((cto)cnb.ov)).a($$0);
-      a($$0, mx.i, cnb.ov, mx.a, cnb.aM);
-      na.a(mx.f, cnb.pK).a('X', cnb.ov).b("X X").b("X X").b("has_diamond", a((cto)cnb.ov)).a($$0);
-      na.a(mx.f, cnb.pI).a('X', cnb.ov).b("X X").b("XXX").b("XXX").b("has_diamond", a((cto)cnb.ov)).a($$0);
-      na.a(mx.f, cnb.pH).a('X', cnb.ov).b("XXX").b("X X").b("has_diamond", a((cto)cnb.ov)).a($$0);
-      na.a(mx.e, cnb.pg).a('#', cnb.pm).a('X', cnb.ov).b("XX").b(" #").b(" #").b("has_diamond", a((cto)cnb.ov)).a($$0);
-      na.a(mx.f, cnb.pJ).a('X', cnb.ov).b("XXX").b("X X").b("X X").b("has_diamond", a((cto)cnb.ov)).a($$0);
-      na.a(mx.e, cnb.pe).a('#', cnb.pm).a('X', cnb.ov).b("XXX").b(" # ").b(" # ").b("has_diamond", a((cto)cnb.ov)).a($$0);
-      na.a(mx.e, cnb.pd).a('#', cnb.pm).a('X', cnb.ov).b("X").b("#").b("#").b("has_diamond", a((cto)cnb.ov)).a($$0);
-      na.a(mx.f, cnb.pc).a('#', cnb.pm).a('X', cnb.ov).b("X").b("X").b("#").b("has_diamond", a((cto)cnb.ov)).a($$0);
-      na.a(mx.a, cws.e, 2).a('Q', cnb.oy).a('C', cws.m).b("CQ").b("QC").b("has_quartz", a((cto)cnb.oy)).a($$0);
-      na.a(mx.c, cws.aU).a('R', cnb.lG).a('#', cws.m).a('X', cnb.or).b("###").b("#X#").b("#R#").b("has_bow", a((cto)cnb.or)).a($$0);
-      a($$0, mx.a, cws.su, cnb.xc);
-      na.a(mx.c, cws.hi).a('R', cnb.lG).a('#', cws.m).b("###").b("# #").b("#R#").b("has_redstone", a((cto)cnb.lG)).a($$0);
-      a($$0, mx.i, cnb.ow, mx.a, cnb.gr);
-      na.a(mx.b, cws.fr).a('B', cnb.qM).a('#', cws.co).a('D', cnb.ov).b(" B ").b("D#D").b("###").b("has_obsidian", a(cws.co)).a($$0);
-      na.a(mx.b, cws.fG).a('#', cws.co).a('E', cnb.sp).b("###").b("#E#").b("###").b("has_ender_eye", a((cto)cnb.sp)).a($$0);
-      nb.a(mx.i, cnb.sp).b(cnb.sc).b(cnb.sl).b("has_blaze_powder", a((cto)cnb.sl)).a($$0);
-      na.a(mx.a, cws.kz, 4).a('#', cws.fz).b("##").b("##").b("has_end_stone", a(cws.fz)).a($$0);
-      na.a(mx.b, cnb.uY).a('T', cnb.se).a('E', cnb.sp).a('G', cws.aQ).b("GGG").b("GEG").b("GTG").b("has_ender_eye", a((cto)cnb.sp)).a($$0);
-      na.a(mx.b, cws.kt, 4).a('#', cnb.va).a('/', cnb.sd).b("/").b("#").b("has_chorus_fruit_popped", a((cto)cnb.va)).a($$0);
-      nb.a(mx.h, cnb.sk).b(cnb.sj).b(cws.cf).b(cnb.rx).b("has_spider_eye", a((cto)cnb.sj)).a($$0);
-      nb.a(mx.i, cnb.tS, 3).b(cnb.pr).b(cnb.sl).a(cpz.a(cnb.ot, cnb.ou)).b("has_blaze_powder", a((cto)cnb.sl)).a($$0);
-      nb.a(mx.i, cnb.un, 3).b(cnb.pr).b(cnb.qL).b("has_gunpowder", a((cto)cnb.pr)).a($$0, "firework_rocket_simple");
-      na.a(mx.e, cnb.qS).a('#', cnb.pm).a('X', cnb.pp).b("  #").b(" #X").b("# X").b("has_string", a((cto)cnb.pp)).a($$0);
-      nb.a(mx.e, cnb.op).b(cnb.oB).b(cnb.pT).b("has_flint", a((cto)cnb.pT)).b("has_obsidian", a(cws.co)).a($$0);
-      na.a(mx.b, cws.fR).a('#', cnb.qI).b("# #").b(" # ").b("has_brick", a((cto)cnb.qI)).a($$0);
-      na.a(mx.b, cws.cD).a('#', asp.ay).b("###").b("# #").b("###").b("has_cobblestone", a(asp.ay)).a($$0);
-      nb.a(mx.d, cnb.nN).b(cws.cD).b(cnb.nL).b("has_minecart", a((cto)cnb.nL)).a($$0);
-      na.a(mx.h, cnb.si, 3).a('#', cws.aQ).b("# #").b(" # ").b("has_glass", a(cws.aQ)).a($$0);
-      na.a(mx.b, cws.eY, 16).a('#', cws.aQ).b("###").b("###").b("has_glass", a(cws.aQ)).a($$0);
-      a($$0, mx.a, cws.ec, cnb.qV);
-      nb.a(mx.b, cnb.tW).b(cnb.tV).b(cnb.rd).b("has_item_frame", a((cto)cnb.tV)).b("has_glow_ink_sac", a((cto)cnb.rd)).a($$0);
-      na.a(mx.g, cnb.pX).a('#', cnb.oF).a('X', cnb.oq).b("###").b("#X#").b("###").b("has_gold_ingot", a((cto)cnb.oF)).a($$0);
-      na.a(mx.e, cnb.oV).a('#', cnb.pm).a('X', cnb.oF).b("XX").b("X#").b(" #").b("has_gold_ingot", a((cto)cnb.oF)).a($$0);
-      na.a(mx.f, cnb.pO).a('X', cnb.oF).b("X X").b("X X").b("has_gold_ingot", a((cto)cnb.oF)).a($$0);
-      na.a(mx.h, cnb.ud).a('#', cnb.sf).a('X', cnb.tY).b("###").b("#X#").b("###").b("has_gold_nugget", a((cto)cnb.sf)).a($$0);
-      na.a(mx.f, cnb.pM).a('X', cnb.oF).b("X X").b("XXX").b("XXX").b("has_gold_ingot", a((cto)cnb.oF)).a($$0);
-      na.a(mx.f, cnb.pL).a('X', cnb.oF).b("XXX").b("X X").b("has_gold_ingot", a((cto)cnb.oF)).a($$0);
-      na.a(mx.e, cnb.oW).a('#', cnb.pm).a('X', cnb.oF).b("XX").b(" #").b(" #").b("has_gold_ingot", a((cto)cnb.oF)).a($$0);
-      na.a(mx.f, cnb.pN).a('X', cnb.oF).b("XXX").b("X X").b("X X").b("has_gold_ingot", a((cto)cnb.oF)).a($$0);
-      na.a(mx.e, cnb.oU).a('#', cnb.pm).a('X', cnb.oF).b("XXX").b(" # ").b(" # ").b("has_gold_ingot", a((cto)cnb.oF)).a($$0);
-      na.a(mx.d, cws.bp, 6).a('R', cnb.lG).a('#', cnb.pm).a('X', cnb.oF).b("X X").b("X#X").b("XRX").b("has_rail", a(cws.cP)).a($$0);
-      na.a(mx.e, cnb.oT).a('#', cnb.pm).a('X', cnb.oF).b("X").b("#").b("#").b("has_gold_ingot", a((cto)cnb.oF)).a($$0);
-      na.a(mx.f, cnb.oS).a('#', cnb.pm).a('X', cnb.oF).b("X").b("X").b("#").b("has_gold_ingot", a((cto)cnb.oF)).a($$0);
-      b($$0, mx.i, cnb.oF, mx.a, cnb.aL, "gold_ingot_from_gold_block", "gold_ingot");
-      a($$0, mx.i, cnb.sf, mx.i, cnb.oF, "gold_ingot_from_nuggets", "gold_ingot");
-      nb.a(mx.a, cws.c).b(cws.e).b(cnb.oy).b("has_quartz", a((cto)cnb.oy)).a($$0);
-      nb.a(mx.i, cnb.rm, 2).b(cnb.ru).b(cnb.rf).b("has_white_dye", a((cto)cnb.rf)).b("has_black_dye", a((cto)cnb.ru)).a($$0);
-      b($$0, mx.a, cws.ij, cnb.pt);
-      d($$0, cws.gX, cnb.oB);
-      nb.a(mx.g, cnb.wq, 4).b(cnb.lO).a(cnb.si, 4).b("has_honey_block", a(cws.pg)).a($$0);
-      a($$0, mx.c, cws.pg, cnb.wq);
-      a($$0, mx.b, cws.ph, cnb.wn);
-      na.a(mx.c, cws.hc).a('C', cws.cv).a('I', cnb.oB).b("I I").b("ICI").b(" I ").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      nb.a(mx.d, cnb.nP).b(cws.hc).b(cnb.nL).b("has_minecart", a((cto)cnb.nL)).a($$0);
-      na.a(mx.e, cnb.pa).a('#', cnb.pm).a('X', cnb.oB).b("XX").b("X#").b(" #").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      na.a(mx.b, cws.eW, 16).a('#', cnb.oB).b("###").b("###").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      na.a(mx.f, cnb.pG).a('X', cnb.oB).b("X X").b("X X").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      na.a(mx.f, cnb.pE).a('X', cnb.oB).b("X X").b("XXX").b("XXX").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      a(cws.dy, cpz.a(cnb.oB)).a(b(cnb.oB), a((cto)cnb.oB)).a($$0);
-      na.a(mx.f, cnb.pD).a('X', cnb.oB).b("XXX").b("X X").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      na.a(mx.e, cnb.pb).a('#', cnb.pm).a('X', cnb.oB).b("XX").b(" #").b(" #").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      b($$0, mx.i, cnb.oB, mx.a, cnb.aJ, "iron_ingot_from_iron_block", "iron_ingot");
-      a($$0, mx.i, cnb.vo, mx.i, cnb.oB, "iron_ingot_from_nuggets", "iron_ingot");
-      na.a(mx.f, cnb.pF).a('X', cnb.oB).b("XXX").b("X X").b("X X").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      na.a(mx.e, cnb.oZ).a('#', cnb.pm).a('X', cnb.oB).b("XXX").b(" # ").b(" # ").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      na.a(mx.e, cnb.oY).a('#', cnb.pm).a('X', cnb.oB).b("X").b("#").b("#").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      na.a(mx.f, cnb.oX).a('#', cnb.pm).a('X', cnb.oB).b("X").b("X").b("#").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      a($$0, mx.c, cws.hY, cnb.oB);
-      na.a(mx.b, cnb.tV).a('#', cnb.pm).a('X', cnb.qA).b("###").b("#X#").b("###").b("has_leather", a((cto)cnb.qA)).a($$0);
-      na.a(mx.b, cws.dT).a('#', asp.b).a('X', cnb.ov).b("###").b("#X#").b("###").b("has_diamond", a((cto)cnb.ov)).a($$0);
-      na.a(mx.b, cws.cO, 3).a('#', cnb.pm).b("# #").b("###").b("# #").b("has_stick", a((cto)cnb.pm)).a($$0);
-      a($$0, mx.i, cnb.ox, mx.a, cnb.cH);
-      na.a(mx.e, cnb.uD, 2).a('~', cnb.pp).a('O', cnb.qN).b("~~ ").b("~O ").b("  ~").b("has_slime_ball", a((cto)cnb.qN)).a($$0);
-      a($$0, mx.i, cnb.qA, cnb.ux);
-      na.a(mx.f, cnb.py).a('X', cnb.qA).b("X X").b("X X").b("has_leather", a((cto)cnb.qA)).a($$0);
-      na.a(mx.f, cnb.pw).a('X', cnb.qA).b("X X").b("XXX").b("XXX").b("has_leather", a((cto)cnb.qA)).a($$0);
-      na.a(mx.f, cnb.pv).a('X', cnb.qA).b("XXX").b("X X").b("has_leather", a((cto)cnb.qA)).a($$0);
-      na.a(mx.f, cnb.px).a('X', cnb.qA).b("XXX").b("X X").b("X X").b("has_leather", a((cto)cnb.qA)).a($$0);
-      na.a(mx.i, cnb.uC).a('X', cnb.qA).b("X X").b("XXX").b("X X").b("has_leather", a((cto)cnb.qA)).a($$0);
-      na.a(mx.c, cws.oa).a('S', asp.j).a('B', cws.cl).b("SSS").b(" B ").b(" S ").b("has_book", a((cto)cnb.qM)).a($$0);
-      na.a(mx.c, cws.dw).a('#', cws.m).a('X', cnb.pm).b("X").b("#").b("has_cobblestone", a(cws.m)).a($$0);
-      a($$0, cnb.ri, cws.bU, "light_blue_dye");
-      nb.a(mx.i, cnb.ri, 2)
-         .b(cnb.rq)
-         .b(cnb.rf)
+      na.a(mx.b, cxa.nT).a('#', asq.b).a('@', cnj.pr).b("@@").b("##").b("has_string", a((ctw)cnj.pr)).a($$0);
+      b(mx.a, cxa.jq, cqh.a(cxa.jO)).b("has_red_sandstone", a(cxa.jp)).b("has_chiseled_red_sandstone", a(cxa.jq)).b("has_cut_red_sandstone", a(cxa.jr)).a($$0);
+      g($$0, mx.a, cxa.aW, cxa.jF);
+      b($$0, mx.i, cnj.oF, mx.a, cnj.aK, d(cnj.oF), c(cnj.oF));
+      nb.a(mx.i, cnj.oF, 9).b(cxa.rw).b(c(cnj.oF)).b(b(cxa.rw), a(cxa.rw)).a($$0, a(cnj.oF, cxa.rw));
+      b($$0, cia.a(cic.a));
+      nb.a(mx.i, cnj.rq, 2).b(cnj.rs).b(cnj.ru).b("cyan_dye").b("has_green_dye", a((ctw)cnj.ru)).b("has_blue_dye", a((ctw)cnj.rs)).a($$0);
+      na.a(mx.a, cxa.ib).a('S', cnj.uu).a('I', cnj.rw).b("SSS").b("SIS").b("SSS").b("has_prismarine_shard", a((ctw)cnj.uu)).a($$0);
+      na.a(mx.c, cxa.gZ).a('Q', cnj.oA).a('G', cxa.aQ).a('W', cqh.a(asq.j)).b("GGG").b("QQQ").b("WWW").b("has_quartz", a((ctw)cnj.oA)).a($$0);
+      na.a(mx.a, cxa.sW, 4).a('S', cxa.sO).b("SS").b("SS").b("has_polished_deepslate", a(cxa.sO)).a($$0);
+      na.a(mx.a, cxa.sS, 4).a('S', cxa.sW).b("SS").b("SS").b("has_deepslate_bricks", a(cxa.sW)).a($$0);
+      na.a(mx.d, cxa.bq, 6).a('R', cnj.lG).a('#', cxa.dx).a('X', cnj.oD).b("X X").b("X#X").b("XRX").b("has_rail", a(cxa.cP)).a($$0);
+      na.a(mx.e, cnj.ph).a('#', cnj.po).a('X', cnj.ox).b("XX").b("X#").b(" #").b("has_diamond", a((ctw)cnj.ox)).a($$0);
+      a($$0, mx.i, cnj.ox, mx.a, cnj.aM);
+      na.a(mx.f, cnj.pM).a('X', cnj.ox).b("X X").b("X X").b("has_diamond", a((ctw)cnj.ox)).a($$0);
+      na.a(mx.f, cnj.pK).a('X', cnj.ox).b("X X").b("XXX").b("XXX").b("has_diamond", a((ctw)cnj.ox)).a($$0);
+      na.a(mx.f, cnj.pJ).a('X', cnj.ox).b("XXX").b("X X").b("has_diamond", a((ctw)cnj.ox)).a($$0);
+      na.a(mx.e, cnj.pi).a('#', cnj.po).a('X', cnj.ox).b("XX").b(" #").b(" #").b("has_diamond", a((ctw)cnj.ox)).a($$0);
+      na.a(mx.f, cnj.pL).a('X', cnj.ox).b("XXX").b("X X").b("X X").b("has_diamond", a((ctw)cnj.ox)).a($$0);
+      na.a(mx.e, cnj.pg).a('#', cnj.po).a('X', cnj.ox).b("XXX").b(" # ").b(" # ").b("has_diamond", a((ctw)cnj.ox)).a($$0);
+      na.a(mx.e, cnj.pf).a('#', cnj.po).a('X', cnj.ox).b("X").b("#").b("#").b("has_diamond", a((ctw)cnj.ox)).a($$0);
+      na.a(mx.f, cnj.pe).a('#', cnj.po).a('X', cnj.ox).b("X").b("X").b("#").b("has_diamond", a((ctw)cnj.ox)).a($$0);
+      na.a(mx.a, cxa.e, 2).a('Q', cnj.oA).a('C', cxa.m).b("CQ").b("QC").b("has_quartz", a((ctw)cnj.oA)).a($$0);
+      na.a(mx.c, cxa.aU).a('R', cnj.lG).a('#', cxa.m).a('X', cnj.ot).b("###").b("#X#").b("#R#").b("has_bow", a((ctw)cnj.ot)).a($$0);
+      a($$0, mx.a, cxa.su, cnj.xf);
+      na.a(mx.c, cxa.hi).a('R', cnj.lG).a('#', cxa.m).b("###").b("# #").b("#R#").b("has_redstone", a((ctw)cnj.lG)).a($$0);
+      a($$0, mx.i, cnj.oy, mx.a, cnj.gr);
+      na.a(mx.b, cxa.fr).a('B', cnj.qO).a('#', cxa.co).a('D', cnj.ox).b(" B ").b("D#D").b("###").b("has_obsidian", a(cxa.co)).a($$0);
+      na.a(mx.b, cxa.fG).a('#', cxa.co).a('E', cnj.sr).b("###").b("#E#").b("###").b("has_ender_eye", a((ctw)cnj.sr)).a($$0);
+      nb.a(mx.i, cnj.sr).b(cnj.se).b(cnj.sn).b("has_blaze_powder", a((ctw)cnj.sn)).a($$0);
+      na.a(mx.a, cxa.kz, 4).a('#', cxa.fz).b("##").b("##").b("has_end_stone", a(cxa.fz)).a($$0);
+      na.a(mx.b, cnj.vb).a('T', cnj.sg).a('E', cnj.sr).a('G', cxa.aQ).b("GGG").b("GEG").b("GTG").b("has_ender_eye", a((ctw)cnj.sr)).a($$0);
+      na.a(mx.b, cxa.kt, 4).a('#', cnj.vd).a('/', cnj.sf).b("/").b("#").b("has_chorus_fruit_popped", a((ctw)cnj.vd)).a($$0);
+      nb.a(mx.h, cnj.sm).b(cnj.sl).b(cxa.cf).b(cnj.rz).b("has_spider_eye", a((ctw)cnj.sl)).a($$0);
+      nb.a(mx.i, cnj.tV, 3).b(cnj.pt).b(cnj.sn).a(cqh.a(cnj.ov, cnj.ow)).b("has_blaze_powder", a((ctw)cnj.sn)).a($$0);
+      nb.a(mx.i, cnj.uq, 3).b(cnj.pt).b(cnj.qN).b("has_gunpowder", a((ctw)cnj.pt)).a($$0, "firework_rocket_simple");
+      na.a(mx.e, cnj.qU).a('#', cnj.po).a('X', cnj.pr).b("  #").b(" #X").b("# X").b("has_string", a((ctw)cnj.pr)).a($$0);
+      nb.a(mx.e, cnj.or).b(cnj.oD).b(cnj.pV).b("has_flint", a((ctw)cnj.pV)).b("has_obsidian", a(cxa.co)).a($$0);
+      na.a(mx.b, cxa.fR).a('#', cnj.qK).b("# #").b(" # ").b("has_brick", a((ctw)cnj.qK)).a($$0);
+      na.a(mx.b, cxa.cD).a('#', asq.ay).b("###").b("# #").b("###").b("has_cobblestone", a(asq.ay)).a($$0);
+      nb.a(mx.d, cnj.nN).b(cxa.cD).b(cnj.nL).b("has_minecart", a((ctw)cnj.nL)).a($$0);
+      na.a(mx.h, cnj.sk, 3).a('#', cxa.aQ).b("# #").b(" # ").b("has_glass", a(cxa.aQ)).a($$0);
+      na.a(mx.b, cxa.eY, 16).a('#', cxa.aQ).b("###").b("###").b("has_glass", a(cxa.aQ)).a($$0);
+      a($$0, mx.a, cxa.ec, cnj.qX);
+      nb.a(mx.b, cnj.tZ).b(cnj.tY).b(cnj.rf).b("has_item_frame", a((ctw)cnj.tY)).b("has_glow_ink_sac", a((ctw)cnj.rf)).a($$0);
+      na.a(mx.g, cnj.pZ).a('#', cnj.oH).a('X', cnj.os).b("###").b("#X#").b("###").b("has_gold_ingot", a((ctw)cnj.oH)).a($$0);
+      na.a(mx.e, cnj.oX).a('#', cnj.po).a('X', cnj.oH).b("XX").b("X#").b(" #").b("has_gold_ingot", a((ctw)cnj.oH)).a($$0);
+      na.a(mx.f, cnj.pQ).a('X', cnj.oH).b("X X").b("X X").b("has_gold_ingot", a((ctw)cnj.oH)).a($$0);
+      na.a(mx.h, cnj.ug).a('#', cnj.sh).a('X', cnj.ub).b("###").b("#X#").b("###").b("has_gold_nugget", a((ctw)cnj.sh)).a($$0);
+      na.a(mx.f, cnj.pO).a('X', cnj.oH).b("X X").b("XXX").b("XXX").b("has_gold_ingot", a((ctw)cnj.oH)).a($$0);
+      na.a(mx.f, cnj.pN).a('X', cnj.oH).b("XXX").b("X X").b("has_gold_ingot", a((ctw)cnj.oH)).a($$0);
+      na.a(mx.e, cnj.oY).a('#', cnj.po).a('X', cnj.oH).b("XX").b(" #").b(" #").b("has_gold_ingot", a((ctw)cnj.oH)).a($$0);
+      na.a(mx.f, cnj.pP).a('X', cnj.oH).b("XXX").b("X X").b("X X").b("has_gold_ingot", a((ctw)cnj.oH)).a($$0);
+      na.a(mx.e, cnj.oW).a('#', cnj.po).a('X', cnj.oH).b("XXX").b(" # ").b(" # ").b("has_gold_ingot", a((ctw)cnj.oH)).a($$0);
+      na.a(mx.d, cxa.bp, 6).a('R', cnj.lG).a('#', cnj.po).a('X', cnj.oH).b("X X").b("X#X").b("XRX").b("has_rail", a(cxa.cP)).a($$0);
+      na.a(mx.e, cnj.oV).a('#', cnj.po).a('X', cnj.oH).b("X").b("#").b("#").b("has_gold_ingot", a((ctw)cnj.oH)).a($$0);
+      na.a(mx.f, cnj.oU).a('#', cnj.po).a('X', cnj.oH).b("X").b("X").b("#").b("has_gold_ingot", a((ctw)cnj.oH)).a($$0);
+      b($$0, mx.i, cnj.oH, mx.a, cnj.aL, "gold_ingot_from_gold_block", "gold_ingot");
+      a($$0, mx.i, cnj.sh, mx.i, cnj.oH, "gold_ingot_from_nuggets", "gold_ingot");
+      nb.a(mx.a, cxa.c).b(cxa.e).b(cnj.oA).b("has_quartz", a((ctw)cnj.oA)).a($$0);
+      nb.a(mx.i, cnj.ro, 2).b(cnj.rw).b(cnj.rh).b("has_white_dye", a((ctw)cnj.rh)).b("has_black_dye", a((ctw)cnj.rw)).a($$0);
+      b($$0, mx.a, cxa.ij, cnj.pv);
+      d($$0, cxa.gX, cnj.oD);
+      nb.a(mx.g, cnj.wt, 4).b(cnj.lO).a(cnj.sk, 4).b("has_honey_block", a(cxa.pg)).a($$0);
+      a($$0, mx.c, cxa.pg, cnj.wt);
+      a($$0, mx.b, cxa.ph, cnj.wq);
+      na.a(mx.c, cxa.hc).a('C', cxa.cv).a('I', cnj.oD).b("I I").b("ICI").b(" I ").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      nb.a(mx.d, cnj.nP).b(cxa.hc).b(cnj.nL).b("has_minecart", a((ctw)cnj.nL)).a($$0);
+      na.a(mx.e, cnj.pc).a('#', cnj.po).a('X', cnj.oD).b("XX").b("X#").b(" #").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      na.a(mx.b, cxa.eW, 16).a('#', cnj.oD).b("###").b("###").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      na.a(mx.f, cnj.pI).a('X', cnj.oD).b("X X").b("X X").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      na.a(mx.f, cnj.pG).a('X', cnj.oD).b("X X").b("XXX").b("XXX").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      a(cxa.dy, cqh.a(cnj.oD)).a(b(cnj.oD), a((ctw)cnj.oD)).a($$0);
+      na.a(mx.f, cnj.pF).a('X', cnj.oD).b("XXX").b("X X").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      na.a(mx.e, cnj.pd).a('#', cnj.po).a('X', cnj.oD).b("XX").b(" #").b(" #").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      b($$0, mx.i, cnj.oD, mx.a, cnj.aJ, "iron_ingot_from_iron_block", "iron_ingot");
+      a($$0, mx.i, cnj.vr, mx.i, cnj.oD, "iron_ingot_from_nuggets", "iron_ingot");
+      na.a(mx.f, cnj.pH).a('X', cnj.oD).b("XXX").b("X X").b("X X").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      na.a(mx.e, cnj.pb).a('#', cnj.po).a('X', cnj.oD).b("XXX").b(" # ").b(" # ").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      na.a(mx.e, cnj.pa).a('#', cnj.po).a('X', cnj.oD).b("X").b("#").b("#").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      na.a(mx.f, cnj.oZ).a('#', cnj.po).a('X', cnj.oD).b("X").b("X").b("#").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      a($$0, mx.c, cxa.hY, cnj.oD);
+      na.a(mx.b, cnj.tY).a('#', cnj.po).a('X', cnj.qC).b("###").b("#X#").b("###").b("has_leather", a((ctw)cnj.qC)).a($$0);
+      na.a(mx.b, cxa.dT).a('#', asq.b).a('X', cnj.ox).b("###").b("#X#").b("###").b("has_diamond", a((ctw)cnj.ox)).a($$0);
+      na.a(mx.b, cxa.cO, 3).a('#', cnj.po).b("# #").b("###").b("# #").b("has_stick", a((ctw)cnj.po)).a($$0);
+      a($$0, mx.i, cnj.oz, mx.a, cnj.cH);
+      na.a(mx.e, cnj.uG, 2).a('~', cnj.pr).a('O', cnj.qP).b("~~ ").b("~O ").b("  ~").b("has_slime_ball", a((ctw)cnj.qP)).a($$0);
+      a($$0, mx.i, cnj.qC, cnj.uA);
+      na.a(mx.f, cnj.pA).a('X', cnj.qC).b("X X").b("X X").b("has_leather", a((ctw)cnj.qC)).a($$0);
+      na.a(mx.f, cnj.py).a('X', cnj.qC).b("X X").b("XXX").b("XXX").b("has_leather", a((ctw)cnj.qC)).a($$0);
+      na.a(mx.f, cnj.px).a('X', cnj.qC).b("XXX").b("X X").b("has_leather", a((ctw)cnj.qC)).a($$0);
+      na.a(mx.f, cnj.pz).a('X', cnj.qC).b("XXX").b("X X").b("X X").b("has_leather", a((ctw)cnj.qC)).a($$0);
+      na.a(mx.i, cnj.uF).a('X', cnj.qC).b("X X").b("XXX").b("X X").b("has_leather", a((ctw)cnj.qC)).a($$0);
+      na.a(mx.c, cxa.oa).a('S', asq.j).a('B', cxa.cl).b("SSS").b(" B ").b(" S ").b("has_book", a((ctw)cnj.qO)).a($$0);
+      na.a(mx.c, cxa.dw).a('#', cxa.m).a('X', cnj.po).b("X").b("#").b("has_cobblestone", a(cxa.m)).a($$0);
+      a($$0, cnj.rk, cxa.bU, "light_blue_dye");
+      nb.a(mx.i, cnj.rk, 2)
+         .b(cnj.rs)
+         .b(cnj.rh)
          .b("light_blue_dye")
-         .b("has_blue_dye", a((cto)cnb.rq))
-         .b("has_white_dye", a((cto)cnb.rf))
+         .b("has_blue_dye", a((ctw)cnj.rs))
+         .b("has_white_dye", a((ctw)cnj.rh))
          .a($$0, "light_blue_dye_from_blue_white_dye");
-      a($$0, cnb.rn, cws.bW, "light_gray_dye");
-      nb.a(mx.i, cnb.rn, 2)
-         .b(cnb.rm)
-         .b(cnb.rf)
+      a($$0, cnj.rp, cxa.bW, "light_gray_dye");
+      nb.a(mx.i, cnj.rp, 2)
+         .b(cnj.ro)
+         .b(cnj.rh)
          .b("light_gray_dye")
-         .b("has_gray_dye", a((cto)cnb.rm))
-         .b("has_white_dye", a((cto)cnb.rf))
+         .b("has_gray_dye", a((ctw)cnj.ro))
+         .b("has_white_dye", a((ctw)cnj.rh))
          .a($$0, "light_gray_dye_from_gray_white_dye");
-      nb.a(mx.i, cnb.rn, 3)
-         .b(cnb.ru)
-         .a(cnb.rf, 2)
+      nb.a(mx.i, cnj.rp, 3)
+         .b(cnj.rw)
+         .a(cnj.rh, 2)
          .b("light_gray_dye")
-         .b("has_white_dye", a((cto)cnb.rf))
-         .b("has_black_dye", a((cto)cnb.ru))
+         .b("has_white_dye", a((ctw)cnj.rh))
+         .b("has_black_dye", a((ctw)cnj.rw))
          .a($$0, "light_gray_dye_from_black_white_dye");
-      a($$0, cnb.rn, cws.cb, "light_gray_dye");
-      a($$0, cnb.rn, cws.bZ, "light_gray_dye");
-      d($$0, cws.gW, cnb.oF);
-      na.a(mx.c, cws.ss).a('#', cnb.oD).b("#").b("#").b("#").b("has_copper_ingot", a((cto)cnb.oD)).a($$0);
-      nb.a(mx.i, cnb.rk, 2).b(cnb.rs).b(cnb.rf).b("has_green_dye", a((cto)cnb.rs)).b("has_white_dye", a((cto)cnb.rf)).a($$0);
-      na.a(mx.a, cws.ef).a('A', cws.ee).a('B', cws.cp).b("A").b("B").b("has_carved_pumpkin", a(cws.ee)).a($$0);
-      a($$0, cnb.rh, cws.bV, "magenta_dye");
-      nb.a(mx.i, cnb.rh, 4)
-         .b(cnb.rq)
-         .a(cnb.rt, 2)
-         .b(cnb.rf)
+      a($$0, cnj.rp, cxa.cb, "light_gray_dye");
+      a($$0, cnj.rp, cxa.bZ, "light_gray_dye");
+      d($$0, cxa.gW, cnj.oH);
+      na.a(mx.c, cxa.ss).a('#', cnj.oF).b("#").b("#").b("#").b("has_copper_ingot", a((ctw)cnj.oF)).a($$0);
+      nb.a(mx.i, cnj.rm, 2).b(cnj.ru).b(cnj.rh).b("has_green_dye", a((ctw)cnj.ru)).b("has_white_dye", a((ctw)cnj.rh)).a($$0);
+      na.a(mx.a, cxa.ef).a('A', cxa.ee).a('B', cxa.cp).b("A").b("B").b("has_carved_pumpkin", a(cxa.ee)).a($$0);
+      a($$0, cnj.rj, cxa.bV, "magenta_dye");
+      nb.a(mx.i, cnj.rj, 4)
+         .b(cnj.rs)
+         .a(cnj.rv, 2)
+         .b(cnj.rh)
          .b("magenta_dye")
-         .b("has_blue_dye", a((cto)cnb.rq))
-         .b("has_rose_red", a((cto)cnb.rt))
-         .b("has_white_dye", a((cto)cnb.rf))
+         .b("has_blue_dye", a((ctw)cnj.rs))
+         .b("has_rose_red", a((ctw)cnj.rv))
+         .b("has_white_dye", a((ctw)cnj.rh))
          .a($$0, "magenta_dye_from_blue_red_white_dye");
-      nb.a(mx.i, cnb.rh, 3)
-         .b(cnb.rq)
-         .b(cnb.rt)
-         .b(cnb.rl)
+      nb.a(mx.i, cnj.rj, 3)
+         .b(cnj.rs)
+         .b(cnj.rv)
+         .b(cnj.rn)
          .b("magenta_dye")
-         .b("has_pink_dye", a((cto)cnb.rl))
-         .b("has_blue_dye", a((cto)cnb.rq))
-         .b("has_red_dye", a((cto)cnb.rt))
+         .b("has_pink_dye", a((ctw)cnj.rn))
+         .b("has_blue_dye", a((ctw)cnj.rs))
+         .b("has_red_dye", a((ctw)cnj.rv))
          .a($$0, "magenta_dye_from_blue_red_pink");
-      a($$0, cnb.rh, cws.iE, "magenta_dye", 2);
-      nb.a(mx.i, cnb.rh, 2)
-         .b(cnb.rp)
-         .b(cnb.rl)
+      a($$0, cnj.rj, cxa.iE, "magenta_dye", 2);
+      nb.a(mx.i, cnj.rj, 2)
+         .b(cnj.rr)
+         .b(cnj.rn)
          .b("magenta_dye")
-         .b("has_pink_dye", a((cto)cnb.rl))
-         .b("has_purple_dye", a((cto)cnb.rp))
+         .b("has_pink_dye", a((ctw)cnj.rn))
+         .b("has_purple_dye", a((ctw)cnj.rr))
          .a($$0, "magenta_dye_from_purple_and_pink");
-      a($$0, mx.a, cws.kJ, cnb.sm);
-      nb.a(mx.h, cnb.sm).b(cnb.sl).b(cnb.qN).b("has_blaze_powder", a((cto)cnb.sl)).a($$0);
-      na.a(mx.i, cnb.uc).a('#', cnb.qL).a('X', cnb.qP).b("###").b("#X#").b("###").b("has_compass", a((cto)cnb.qP)).a($$0);
-      a($$0, mx.a, cws.fa, cnb.rT, "has_melon");
-      nb.a(mx.i, cnb.rW).b(cnb.rT).b("has_melon", a((cto)cnb.rT)).a($$0);
-      na.a(mx.d, cnb.nL).a('#', cnb.oB).b("# #").b("###").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      nb.a(mx.a, cws.cn).b(cws.m).b(cws.ff).b("mossy_cobblestone").b("has_vine", a(cws.ff)).a($$0, a(cws.cn, cws.ff));
-      nb.a(mx.a, cws.eI).b(cws.eH).b(cws.ff).b("mossy_stone_bricks").b("has_vine", a(cws.ff)).a($$0, a(cws.eI, cws.ff));
-      nb.a(mx.a, cws.cn).b(cws.m).b(cws.sC).b("mossy_cobblestone").b("has_moss_block", a(cws.sC)).a($$0, a(cws.cn, cws.sC));
-      nb.a(mx.a, cws.eI).b(cws.eH).b(cws.sC).b("mossy_stone_bricks").b("has_moss_block", a(cws.sC)).a($$0, a(cws.eI, cws.sC));
-      nb.a(mx.g, cnb.po)
-         .b(cws.cf)
-         .b(cws.cg)
-         .b(cnb.pn)
-         .b("has_mushroom_stew", a((cto)cnb.po))
-         .b("has_bowl", a((cto)cnb.pn))
-         .b("has_brown_mushroom", a(cws.cf))
-         .b("has_red_mushroom", a(cws.cg))
+      a($$0, mx.a, cxa.kJ, cnj.so);
+      nb.a(mx.h, cnj.so).b(cnj.sn).b(cnj.qP).b("has_blaze_powder", a((ctw)cnj.sn)).a($$0);
+      na.a(mx.i, cnj.uf).a('#', cnj.qN).a('X', cnj.qR).b("###").b("#X#").b("###").b("has_compass", a((ctw)cnj.qR)).a($$0);
+      a($$0, mx.a, cxa.fa, cnj.rV, "has_melon");
+      nb.a(mx.i, cnj.rY).b(cnj.rV).b("has_melon", a((ctw)cnj.rV)).a($$0);
+      na.a(mx.d, cnj.nL).a('#', cnj.oD).b("# #").b("###").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      nb.a(mx.a, cxa.cn).b(cxa.m).b(cxa.ff).b("mossy_cobblestone").b("has_vine", a(cxa.ff)).a($$0, a(cxa.cn, cxa.ff));
+      nb.a(mx.a, cxa.eI).b(cxa.eH).b(cxa.ff).b("mossy_stone_bricks").b("has_vine", a(cxa.ff)).a($$0, a(cxa.eI, cxa.ff));
+      nb.a(mx.a, cxa.cn).b(cxa.m).b(cxa.sC).b("mossy_cobblestone").b("has_moss_block", a(cxa.sC)).a($$0, a(cxa.cn, cxa.sC));
+      nb.a(mx.a, cxa.eI).b(cxa.eH).b(cxa.sC).b("mossy_stone_bricks").b("has_moss_block", a(cxa.sC)).a($$0, a(cxa.eI, cxa.sC));
+      nb.a(mx.g, cnj.pq)
+         .b(cxa.cf)
+         .b(cxa.cg)
+         .b(cnj.pp)
+         .b("has_mushroom_stew", a((ctw)cnj.pq))
+         .b("has_bowl", a((ctw)cnj.pp))
+         .b("has_brown_mushroom", a(cxa.cf))
+         .b("has_red_mushroom", a(cxa.cg))
          .a($$0);
-      a($$0, mx.a, cws.fn, cnb.uq);
-      b($$0, mx.a, cws.kK, cnb.sg);
-      na.a(mx.c, cws.aY).a('#', asp.b).a('X', cnb.lG).b("###").b("#X#").b("###").b("has_redstone", a((cto)cnb.lG)).a($$0);
-      na.a(mx.c, cws.kO).a('Q', cnb.oy).a('R', cnb.lG).a('#', cws.m).b("###").b("RRQ").b("###").b("has_quartz", a((cto)cnb.oy)).a($$0);
-      a($$0, cnb.rg, cws.bY, "orange_dye");
-      nb.a(mx.i, cnb.rg, 2)
-         .b(cnb.rt)
-         .b(cnb.rj)
+      a($$0, mx.a, cxa.fn, cnj.ut);
+      b($$0, mx.a, cxa.kK, cnj.si);
+      na.a(mx.c, cxa.aY).a('#', asq.b).a('X', cnj.lG).b("###").b("#X#").b("###").b("has_redstone", a((ctw)cnj.lG)).a($$0);
+      na.a(mx.c, cxa.kO).a('Q', cnj.oA).a('R', cnj.lG).a('#', cxa.m).b("###").b("RRQ").b("###").b("has_quartz", a((ctw)cnj.oA)).a($$0);
+      a($$0, cnj.ri, cxa.bY, "orange_dye");
+      nb.a(mx.i, cnj.ri, 2)
+         .b(cnj.rv)
+         .b(cnj.rl)
          .b("orange_dye")
-         .b("has_red_dye", a((cto)cnb.rt))
-         .b("has_yellow_dye", a((cto)cnb.rj))
+         .b("has_red_dye", a((ctw)cnj.rv))
+         .b("has_yellow_dye", a((ctw)cnj.rl))
          .a($$0, "orange_dye_from_red_yellow");
-      na.a(mx.b, cnb.pW).a('#', cnb.pm).a('X', cpz.a(asp.a)).b("###").b("#X#").b("###").b("has_wool", a(asp.a)).a($$0);
-      na.a(mx.i, cnb.qL, 3).a('#', cws.dS).b("###").b("has_reeds", a(cws.dS)).a($$0);
-      na.a(mx.a, cws.hf, 2)
-         .a('#', cws.hd)
+      na.a(mx.b, cnj.pY).a('#', cnj.po).a('X', cqh.a(asq.a)).b("###").b("#X#").b("###").b("has_wool", a(asq.a)).a($$0);
+      na.a(mx.i, cnj.qN, 3).a('#', cxa.dS).b("###").b("has_reeds", a(cxa.dS)).a($$0);
+      na.a(mx.a, cxa.hf, 2)
+         .a('#', cxa.hd)
          .b("#")
          .b("#")
-         .b("has_chiseled_quartz_block", a(cws.he))
-         .b("has_quartz_block", a(cws.hd))
-         .b("has_quartz_pillar", a(cws.hf))
+         .b("has_chiseled_quartz_block", a(cxa.he))
+         .b("has_quartz_block", a(cxa.hd))
+         .b("has_quartz_pillar", a(cxa.hf))
          .a($$0);
-      b($$0, mx.a, cws.iC, cws.dO);
-      a($$0, cnb.rl, cws.iG, "pink_dye", 2);
-      a($$0, cnb.rl, cws.ca, "pink_dye");
-      nb.a(mx.i, cnb.rl, 2)
-         .b(cnb.rt)
-         .b(cnb.rf)
+      b($$0, mx.a, cxa.iC, cxa.dO);
+      a($$0, cnj.rn, cxa.iG, "pink_dye", 2);
+      a($$0, cnj.rn, cxa.ca, "pink_dye");
+      nb.a(mx.i, cnj.rn, 2)
+         .b(cnj.rv)
+         .b(cnj.rh)
          .b("pink_dye")
-         .b("has_white_dye", a((cto)cnb.rf))
-         .b("has_red_dye", a((cto)cnb.rt))
+         .b("has_white_dye", a((ctw)cnj.rh))
+         .b("has_red_dye", a((ctw)cnj.rv))
          .a($$0, "pink_dye_from_red_white_dye");
-      na.a(mx.c, cws.by).a('R', cnb.lG).a('#', cws.m).a('T', asp.b).a('X', cnb.oB).b("TTT").b("#X#").b("#R#").b("has_redstone", a((cto)cnb.lG)).a($$0);
-      e($$0, mx.a, cws.dZ, cws.dY);
-      a($$0, mx.a, cws.hZ, cnb.ur);
-      b($$0, mx.a, cws.ia, cnb.ur);
-      nb.a(mx.g, cnb.um).b(cws.eZ).b(cnb.rx).b(cnb.qO).b("has_carved_pumpkin", a(cws.ee)).b("has_pumpkin", a(cws.eZ)).a($$0);
-      nb.a(mx.i, cnb.rV, 4).b(cws.eZ).b("has_pumpkin", a(cws.eZ)).a($$0);
-      nb.a(mx.i, cnb.rp, 2).b(cnb.rq).b(cnb.rt).b("has_blue_dye", a((cto)cnb.rq)).b("has_red_dye", a((cto)cnb.rt)).a($$0);
-      na.a(mx.b, cws.kP).a('#', cws.cv).a('-', cnb.vn).b("-").b("#").b("-").b("has_shulker_shell", a((cto)cnb.vn)).a($$0);
-      na.a(mx.a, cws.kw, 4).a('F', cnb.va).b("FF").b("FF").b("has_chorus_fruit_popped", a((cto)cnb.va)).a($$0);
-      na.a(mx.a, cws.kx).a('#', cws.jQ).b("#").b("#").b("has_purpur_block", a(cws.kw)).a($$0);
-      a(mx.a, cws.jQ, cpz.a(cws.kw, cws.kx)).a("has_purpur_block", a(cws.kw)).a($$0);
-      b(cws.ky, cpz.a(cws.kw, cws.kx)).a("has_purpur_block", a(cws.kw)).a($$0);
-      a($$0, mx.a, cws.hd, cnb.oy);
-      na.a(mx.a, cws.pK, 4).a('#', cws.hd).b("##").b("##").b("has_quartz_block", a(cws.hd)).a($$0);
-      a(mx.a, cws.jN, cpz.a(cws.he, cws.hd, cws.hf))
-         .a("has_chiseled_quartz_block", a(cws.he))
-         .a("has_quartz_block", a(cws.hd))
-         .a("has_quartz_pillar", a(cws.hf))
+      na.a(mx.c, cxa.by).a('R', cnj.lG).a('#', cxa.m).a('T', asq.b).a('X', cnj.oD).b("TTT").b("#X#").b("#R#").b("has_redstone", a((ctw)cnj.lG)).a($$0);
+      e($$0, mx.a, cxa.dZ, cxa.dY);
+      a($$0, mx.a, cxa.hZ, cnj.uu);
+      b($$0, mx.a, cxa.ia, cnj.uu);
+      nb.a(mx.g, cnj.up).b(cxa.eZ).b(cnj.rz).b(cnj.qQ).b("has_carved_pumpkin", a(cxa.ee)).b("has_pumpkin", a(cxa.eZ)).a($$0);
+      nb.a(mx.i, cnj.rX, 4).b(cxa.eZ).b("has_pumpkin", a(cxa.eZ)).a($$0);
+      nb.a(mx.i, cnj.rr, 2).b(cnj.rs).b(cnj.rv).b("has_blue_dye", a((ctw)cnj.rs)).b("has_red_dye", a((ctw)cnj.rv)).a($$0);
+      na.a(mx.b, cxa.kP).a('#', cxa.cv).a('-', cnj.vq).b("-").b("#").b("-").b("has_shulker_shell", a((ctw)cnj.vq)).a($$0);
+      na.a(mx.a, cxa.kw, 4).a('F', cnj.vd).b("FF").b("FF").b("has_chorus_fruit_popped", a((ctw)cnj.vd)).a($$0);
+      na.a(mx.a, cxa.kx).a('#', cxa.jQ).b("#").b("#").b("has_purpur_block", a(cxa.kw)).a($$0);
+      a(mx.a, cxa.jQ, cqh.a(cxa.kw, cxa.kx)).a("has_purpur_block", a(cxa.kw)).a($$0);
+      b(cxa.ky, cqh.a(cxa.kw, cxa.kx)).a("has_purpur_block", a(cxa.kw)).a($$0);
+      a($$0, mx.a, cxa.hd, cnj.oA);
+      na.a(mx.a, cxa.pK, 4).a('#', cxa.hd).b("##").b("##").b("has_quartz_block", a(cxa.hd)).a($$0);
+      a(mx.a, cxa.jN, cqh.a(cxa.he, cxa.hd, cxa.hf))
+         .a("has_chiseled_quartz_block", a(cxa.he))
+         .a("has_quartz_block", a(cxa.hd))
+         .a("has_quartz_pillar", a(cxa.hf))
          .a($$0);
-      b(cws.hg, cpz.a(cws.he, cws.hd, cws.hf))
-         .a("has_chiseled_quartz_block", a(cws.he))
-         .a("has_quartz_block", a(cws.hd))
-         .a("has_quartz_pillar", a(cws.hf))
+      b(cxa.hg, cqh.a(cxa.he, cxa.hd, cxa.hf))
+         .a("has_chiseled_quartz_block", a(cxa.he))
+         .a("has_quartz_block", a(cxa.hd))
+         .a("has_quartz_pillar", a(cxa.hf))
          .a($$0);
-      nb.a(mx.g, cnb.uv).b(cnb.ua).b(cnb.uu).b(cnb.pn).b(cnb.tY).b(cws.cf).b("rabbit_stew").b("has_cooked_rabbit", a((cto)cnb.uu)).a($$0, a(cnb.uv, cnb.dz));
-      nb.a(mx.g, cnb.uv).b(cnb.ua).b(cnb.uu).b(cnb.pn).b(cnb.tY).b(cws.cg).b("rabbit_stew").b("has_cooked_rabbit", a((cto)cnb.uu)).a($$0, a(cnb.uv, cnb.dA));
-      na.a(mx.d, cws.cP, 16).a('#', cnb.pm).a('X', cnb.oB).b("X X").b("X#X").b("X X").b("has_minecart", a((cto)cnb.nL)).a($$0);
-      a($$0, mx.c, cnb.lG, mx.c, cnb.lI);
-      na.a(mx.c, cws.fB).a('R', cnb.lG).a('G', cws.ec).b(" R ").b("RGR").b(" R ").b("has_glowstone", a(cws.ec)).a($$0);
-      na.a(mx.c, cws.dK).a('#', cnb.pm).a('X', cnb.lG).b("X").b("#").b("has_redstone", a((cto)cnb.lG)).a($$0);
-      a($$0, cnb.rt, cnb.vd, "red_dye");
-      a($$0, cnb.rt, cws.bT, "red_dye");
-      a($$0, cnb.rt, cws.iF, "red_dye", 2);
-      nb.a(mx.i, cnb.rt).b(cws.bX).b("red_dye").b("has_red_flower", a(cws.bX)).a($$0, "red_dye_from_tulip");
-      na.a(mx.a, cws.kL).a('W', cnb.sg).a('N', cnb.uq).b("NW").b("WN").b("has_nether_wart", a((cto)cnb.sg)).a($$0);
-      na.a(mx.a, cws.jp).a('#', cws.K).b("##").b("##").b("has_sand", a(cws.K)).a($$0);
-      a(mx.a, cws.jO, cpz.a(cws.jp, cws.jq)).a("has_red_sandstone", a(cws.jp)).a("has_chiseled_red_sandstone", a(cws.jq)).a($$0);
-      b(cws.js, cpz.a(cws.jp, cws.jq, cws.jr))
-         .a("has_red_sandstone", a(cws.jp))
-         .a("has_chiseled_red_sandstone", a(cws.jq))
-         .a("has_cut_red_sandstone", a(cws.jr))
+      nb.a(mx.g, cnj.uy).b(cnj.ud).b(cnj.ux).b(cnj.pp).b(cnj.ub).b(cxa.cf).b("rabbit_stew").b("has_cooked_rabbit", a((ctw)cnj.ux)).a($$0, a(cnj.uy, cnj.dz));
+      nb.a(mx.g, cnj.uy).b(cnj.ud).b(cnj.ux).b(cnj.pp).b(cnj.ub).b(cxa.cg).b("rabbit_stew").b("has_cooked_rabbit", a((ctw)cnj.ux)).a($$0, a(cnj.uy, cnj.dA));
+      na.a(mx.d, cxa.cP, 16).a('#', cnj.po).a('X', cnj.oD).b("X X").b("X#X").b("X X").b("has_minecart", a((ctw)cnj.nL)).a($$0);
+      a($$0, mx.c, cnj.lG, mx.c, cnj.lI);
+      na.a(mx.c, cxa.fB).a('R', cnj.lG).a('G', cxa.ec).b(" R ").b("RGR").b(" R ").b("has_glowstone", a(cxa.ec)).a($$0);
+      na.a(mx.c, cxa.dK).a('#', cnj.po).a('X', cnj.lG).b("X").b("#").b("has_redstone", a((ctw)cnj.lG)).a($$0);
+      a($$0, cnj.rv, cnj.vg, "red_dye");
+      a($$0, cnj.rv, cxa.bT, "red_dye");
+      a($$0, cnj.rv, cxa.iF, "red_dye", 2);
+      nb.a(mx.i, cnj.rv).b(cxa.bX).b("red_dye").b("has_red_flower", a(cxa.bX)).a($$0, "red_dye_from_tulip");
+      na.a(mx.a, cxa.kL).a('W', cnj.si).a('N', cnj.ut).b("NW").b("WN").b("has_nether_wart", a((ctw)cnj.si)).a($$0);
+      na.a(mx.a, cxa.jp).a('#', cxa.K).b("##").b("##").b("has_sand", a(cxa.K)).a($$0);
+      a(mx.a, cxa.jO, cqh.a(cxa.jp, cxa.jq)).a("has_red_sandstone", a(cxa.jp)).a("has_chiseled_red_sandstone", a(cxa.jq)).a($$0);
+      b(cxa.js, cqh.a(cxa.jp, cxa.jq, cxa.jr))
+         .a("has_red_sandstone", a(cxa.jp))
+         .a("has_chiseled_red_sandstone", a(cxa.jq))
+         .a("has_cut_red_sandstone", a(cxa.jr))
          .a($$0);
-      na.a(mx.c, cws.eh).a('#', cws.dK).a('X', cnb.lG).a('I', cws.b).b("#X#").b("III").b("has_redstone_torch", a(cws.dK)).a($$0);
-      a($$0, mx.a, cws.aV, cws.I);
-      a(mx.a, cws.jF, cpz.a(cws.aV, cws.aW)).a("has_sandstone", a(cws.aV)).a("has_chiseled_sandstone", a(cws.aW)).a($$0);
-      b(cws.fD, cpz.a(cws.aV, cws.aW, cws.aX)).a("has_sandstone", a(cws.aV)).a("has_chiseled_sandstone", a(cws.aW)).a("has_cut_sandstone", a(cws.aX)).a($$0);
-      na.a(mx.a, cws.ii).a('S', cnb.ur).a('C', cnb.us).b("SCS").b("CCC").b("SCS").b("has_prismarine_crystals", a((cto)cnb.us)).a($$0);
-      na.a(mx.e, cnb.rS).a('#', cnb.oB).b(" #").b("# ").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      na.a(mx.f, cnb.vl).a('W', asp.b).a('o', cnb.oB).b("WoW").b("WWW").b(" W ").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      a($$0, mx.i, cnb.qN, mx.c, cnb.lN);
-      f($$0, mx.a, cws.jr, cws.jp);
-      f($$0, mx.a, cws.aX, cws.aV);
-      a($$0, mx.a, cws.dP, cnb.qz);
-      na.a(mx.b, cws.dN, 6).a('#', cws.dP).b("###").b("has_snowball", a((cto)cnb.qz)).a($$0);
-      na.a(mx.b, cws.oh).a('L', asp.r).a('S', cnb.pm).a('#', asp.ah).b(" S ").b("S#S").b("LLL").b("has_soul_sand", a(asp.ah)).a($$0);
-      na.a(mx.h, cnb.sq).a('#', cnb.sf).a('X', cnb.rT).b("###").b("#X#").b("###").b("has_melon", a((cto)cnb.rT)).a($$0);
-      na.a(mx.f, cnb.vi, 2).a('#', cnb.qV).a('X', cnb.os).b(" # ").b("#X#").b(" # ").b("has_glowstone_dust", a((cto)cnb.qV)).a($$0);
-      na.a(mx.e, cnb.qU).a('#', cnb.oz).a('X', cnb.oD).b(" # ").b(" X ").b(" X ").b("has_amethyst_shard", a((cto)cnb.oz)).a($$0);
-      na.a(mx.i, cnb.pm, 4).a('#', asp.b).b("#").b("#").c("sticks").b("has_planks", a(asp.b)).a($$0);
-      na.a(mx.i, cnb.pm, 1).a('#', cws.mZ).b("#").b("#").c("sticks").b("has_bamboo", a(cws.mZ)).a($$0, "stick_from_bamboo_item");
-      na.a(mx.c, cws.br).a('P', cws.by).a('S', cnb.qN).b("S").b("P").b("has_slime_ball", a((cto)cnb.qN)).a($$0);
-      na.a(mx.a, cws.eH, 4).a('#', cws.b).b("##").b("##").b("has_stone", a(cws.b)).a($$0);
-      na.a(mx.e, cnb.oQ).a('#', cnb.pm).a('X', asp.ax).b("XX").b("X#").b(" #").b("has_cobblestone", a(asp.ax)).a($$0);
-      a(mx.a, cws.jK, cpz.a(cws.eH)).a("has_stone_bricks", a(asp.c)).a($$0);
-      b(cws.fj, cpz.a(cws.eH)).a("has_stone_bricks", a(asp.c)).a($$0);
-      na.a(mx.e, cnb.oR).a('#', cnb.pm).a('X', asp.ax).b("XX").b(" #").b(" #").b("has_cobblestone", a(asp.ax)).a($$0);
-      na.a(mx.e, cnb.oP).a('#', cnb.pm).a('X', asp.ax).b("XXX").b(" # ").b(" # ").b("has_cobblestone", a(asp.ax)).a($$0);
-      na.a(mx.e, cnb.oO).a('#', cnb.pm).a('X', asp.ax).b("X").b("#").b("#").b("has_cobblestone", a(asp.ax)).a($$0);
-      c($$0, mx.a, cws.jE, cws.jR);
-      na.a(mx.f, cnb.oN).a('#', cnb.pm).a('X', asp.ax).b("X").b("X").b("#").b("has_cobblestone", a(asp.ax)).a($$0);
-      na.a(mx.a, cws.bA).a('#', cnb.pp).b("##").b("##").b("has_string", a((cto)cnb.pp)).a($$0, a(cws.bA, cnb.pp));
-      a($$0, cnb.rx, cws.dS, "sugar");
-      nb.a(mx.i, cnb.rx, 3).b(cnb.wq).b("sugar").b("has_honey_bottle", a((cto)cnb.wq)).a($$0, a(cnb.rx, cnb.wq));
-      na.a(mx.c, cws.pd).a('H', cnb.hC).a('R', cnb.lG).b(" R ").b("RHR").b(" R ").b("has_redstone", a((cto)cnb.lG)).b("has_hay_block", a(cws.ij)).a($$0);
-      na.a(mx.c, cws.ck).a('#', cpz.a(cws.I, cws.K)).a('X', cnb.pr).b("X#X").b("#X#").b("X#X").b("has_gunpowder", a((cto)cnb.pr)).a($$0);
-      nb.a(mx.d, cnb.nO).b(cws.ck).b(cnb.nL).b("has_minecart", a((cto)cnb.nL)).a($$0);
-      na.a(mx.b, cws.cp, 4).a('#', cnb.pm).a('X', cpz.a(cnb.ot, cnb.ou)).b("X").b("#").b("has_stone_pickaxe", a((cto)cnb.oP)).a($$0);
-      na.a(mx.b, cws.ea, 4).a('X', cpz.a(cnb.ot, cnb.ou)).a('#', cnb.pm).a('S', asp.ah).b("X").b("#").b("S").b("has_soul_sand", a(asp.ah)).a($$0);
-      na.a(mx.b, cws.oe)
-         .a('#', cnb.eE)
-         .a('X', cnb.vo)
+      na.a(mx.c, cxa.eh).a('#', cxa.dK).a('X', cnj.lG).a('I', cxa.b).b("#X#").b("III").b("has_redstone_torch", a(cxa.dK)).a($$0);
+      a($$0, mx.a, cxa.aV, cxa.I);
+      a(mx.a, cxa.jF, cqh.a(cxa.aV, cxa.aW)).a("has_sandstone", a(cxa.aV)).a("has_chiseled_sandstone", a(cxa.aW)).a($$0);
+      b(cxa.fD, cqh.a(cxa.aV, cxa.aW, cxa.aX)).a("has_sandstone", a(cxa.aV)).a("has_chiseled_sandstone", a(cxa.aW)).a("has_cut_sandstone", a(cxa.aX)).a($$0);
+      na.a(mx.a, cxa.ii).a('S', cnj.uu).a('C', cnj.uv).b("SCS").b("CCC").b("SCS").b("has_prismarine_crystals", a((ctw)cnj.uv)).a($$0);
+      na.a(mx.e, cnj.rU).a('#', cnj.oD).b(" #").b("# ").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      na.a(mx.f, cnj.vo).a('W', asq.b).a('o', cnj.oD).b("WoW").b("WWW").b(" W ").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      a($$0, mx.i, cnj.qP, mx.c, cnj.lN);
+      f($$0, mx.a, cxa.jr, cxa.jp);
+      f($$0, mx.a, cxa.aX, cxa.aV);
+      a($$0, mx.a, cxa.dP, cnj.qB);
+      na.a(mx.b, cxa.dN, 6).a('#', cxa.dP).b("###").b("has_snowball", a((ctw)cnj.qB)).a($$0);
+      na.a(mx.b, cxa.oh).a('L', asq.r).a('S', cnj.po).a('#', asq.ah).b(" S ").b("S#S").b("LLL").b("has_soul_sand", a(asq.ah)).a($$0);
+      na.a(mx.h, cnj.ss).a('#', cnj.sh).a('X', cnj.rV).b("###").b("#X#").b("###").b("has_melon", a((ctw)cnj.rV)).a($$0);
+      na.a(mx.f, cnj.vl, 2).a('#', cnj.qX).a('X', cnj.ou).b(" # ").b("#X#").b(" # ").b("has_glowstone_dust", a((ctw)cnj.qX)).a($$0);
+      na.a(mx.e, cnj.qW).a('#', cnj.oB).a('X', cnj.oF).b(" # ").b(" X ").b(" X ").b("has_amethyst_shard", a((ctw)cnj.oB)).a($$0);
+      na.a(mx.i, cnj.po, 4).a('#', asq.b).b("#").b("#").c("sticks").b("has_planks", a(asq.b)).a($$0);
+      na.a(mx.i, cnj.po, 1).a('#', cxa.mZ).b("#").b("#").c("sticks").b("has_bamboo", a(cxa.mZ)).a($$0, "stick_from_bamboo_item");
+      na.a(mx.c, cxa.br).a('P', cxa.by).a('S', cnj.qP).b("S").b("P").b("has_slime_ball", a((ctw)cnj.qP)).a($$0);
+      na.a(mx.a, cxa.eH, 4).a('#', cxa.b).b("##").b("##").b("has_stone", a(cxa.b)).a($$0);
+      na.a(mx.e, cnj.oS).a('#', cnj.po).a('X', asq.ax).b("XX").b("X#").b(" #").b("has_cobblestone", a(asq.ax)).a($$0);
+      a(mx.a, cxa.jK, cqh.a(cxa.eH)).a("has_stone_bricks", a(asq.c)).a($$0);
+      b(cxa.fj, cqh.a(cxa.eH)).a("has_stone_bricks", a(asq.c)).a($$0);
+      na.a(mx.e, cnj.oT).a('#', cnj.po).a('X', asq.ax).b("XX").b(" #").b(" #").b("has_cobblestone", a(asq.ax)).a($$0);
+      na.a(mx.e, cnj.oR).a('#', cnj.po).a('X', asq.ax).b("XXX").b(" # ").b(" # ").b("has_cobblestone", a(asq.ax)).a($$0);
+      na.a(mx.e, cnj.oQ).a('#', cnj.po).a('X', asq.ax).b("X").b("#").b("#").b("has_cobblestone", a(asq.ax)).a($$0);
+      c($$0, mx.a, cxa.jE, cxa.jR);
+      na.a(mx.f, cnj.oP).a('#', cnj.po).a('X', asq.ax).b("X").b("X").b("#").b("has_cobblestone", a(asq.ax)).a($$0);
+      na.a(mx.a, cxa.bA).a('#', cnj.pr).b("##").b("##").b("has_string", a((ctw)cnj.pr)).a($$0, a(cxa.bA, cnj.pr));
+      a($$0, cnj.rz, cxa.dS, "sugar");
+      nb.a(mx.i, cnj.rz, 3).b(cnj.wt).b("sugar").b("has_honey_bottle", a((ctw)cnj.wt)).a($$0, a(cnj.rz, cnj.wt));
+      na.a(mx.c, cxa.pd).a('H', cnj.hC).a('R', cnj.lG).b(" R ").b("RHR").b(" R ").b("has_redstone", a((ctw)cnj.lG)).b("has_hay_block", a(cxa.ij)).a($$0);
+      na.a(mx.c, cxa.ck).a('#', cqh.a(cxa.I, cxa.K)).a('X', cnj.pt).b("X#X").b("#X#").b("X#X").b("has_gunpowder", a((ctw)cnj.pt)).a($$0);
+      nb.a(mx.d, cnj.nO).b(cxa.ck).b(cnj.nL).b("has_minecart", a((ctw)cnj.nL)).a($$0);
+      na.a(mx.b, cxa.cp, 4).a('#', cnj.po).a('X', cqh.a(cnj.ov, cnj.ow)).b("X").b("#").b("has_stone_pickaxe", a((ctw)cnj.oR)).a($$0);
+      na.a(mx.b, cxa.ea, 4).a('X', cqh.a(cnj.ov, cnj.ow)).a('#', cnj.po).a('S', asq.ah).b("X").b("#").b("S").b("has_soul_sand", a(asq.ah)).a($$0);
+      na.a(mx.b, cxa.oe)
+         .a('#', cnj.eE)
+         .a('X', cnj.vr)
          .b("XXX")
          .b("X#X")
          .b("XXX")
-         .b("has_iron_nugget", a((cto)cnb.vo))
-         .b("has_iron_ingot", a((cto)cnb.oB))
+         .b("has_iron_nugget", a((ctw)cnj.vr))
+         .b("has_iron_ingot", a((ctw)cnj.oD))
          .a($$0);
-      na.a(mx.b, cws.of).a('#', cnb.fs).a('X', cnb.vo).b("XXX").b("X#X").b("XXX").b("has_soul_torch", a((cto)cnb.fs)).a($$0);
-      nb.a(mx.c, cws.gV).b(cws.cv).b(cws.fH).b("has_tripwire_hook", a(cws.fH)).a($$0);
-      na.a(mx.c, cws.fH, 2).a('#', asp.b).a('S', cnb.pm).a('I', cnb.oB).b("I").b("S").b("#").b("has_string", a((cto)cnb.pp)).a($$0);
-      na.a(mx.f, cnb.on).a('X', cnb.oo).b("XXX").b("X X").b("has_scute", a((cto)cnb.oo)).a($$0);
-      nb.a(mx.i, cnb.pt, 9).b(cws.ij).b("has_hay_block", a(cws.ij)).a($$0);
-      nb.a(mx.i, cnb.rf).b(cnb.rv).b("white_dye").b("has_bone_meal", a((cto)cnb.rv)).a($$0);
-      a($$0, cnb.rf, cws.ce, "white_dye");
-      na.a(mx.e, cnb.oL).a('#', cnb.pm).a('X', asp.b).b("XX").b("X#").b(" #").b("has_stick", a((cto)cnb.pm)).a($$0);
-      na.a(mx.e, cnb.oM).a('#', cnb.pm).a('X', asp.b).b("XX").b(" #").b(" #").b("has_stick", a((cto)cnb.pm)).a($$0);
-      na.a(mx.e, cnb.oK).a('#', cnb.pm).a('X', asp.b).b("XXX").b(" # ").b(" # ").b("has_stick", a((cto)cnb.pm)).a($$0);
-      na.a(mx.e, cnb.oJ).a('#', cnb.pm).a('X', asp.b).b("X").b("#").b("#").b("has_stick", a((cto)cnb.pm)).a($$0);
-      na.a(mx.f, cnb.oI).a('#', cnb.pm).a('X', asp.b).b("X").b("X").b("#").b("has_stick", a((cto)cnb.pm)).a($$0);
-      nb.a(mx.i, cnb.tT).b(cnb.qM).b(cnb.rc).b(cnb.pq).b("has_book", a((cto)cnb.qM)).a($$0);
-      a($$0, cnb.rj, cws.bR, "yellow_dye");
-      a($$0, cnb.rj, cws.iD, "yellow_dye", 2);
-      a($$0, mx.g, cnb.rU, mx.a, cnb.qK);
-      na.a(mx.i, cws.mX)
-         .a('#', cnb.vK)
-         .a('X', cnb.vL)
+      na.a(mx.b, cxa.of).a('#', cnj.fs).a('X', cnj.vr).b("XXX").b("X#X").b("XXX").b("has_soul_torch", a((ctw)cnj.fs)).a($$0);
+      nb.a(mx.c, cxa.gV).b(cxa.cv).b(cxa.fH).b("has_tripwire_hook", a(cxa.fH)).a($$0);
+      na.a(mx.c, cxa.fH, 2).a('#', asq.b).a('S', cnj.po).a('I', cnj.oD).b("I").b("S").b("#").b("has_string", a((ctw)cnj.pr)).a($$0);
+      na.a(mx.f, cnj.on).a('X', cnj.oo).b("XXX").b("X X").b("has_turtle_scute", a((ctw)cnj.oo)).a($$0);
+      na.a(mx.f, cnj.oq).a('X', cnj.op).b("X  ").b("XXX").b("X X").b("has_armadillo_scute", a((ctw)cnj.op)).a($$0);
+      nb.a(mx.i, cnj.pv, 9).b(cxa.ij).b("has_hay_block", a(cxa.ij)).a($$0);
+      nb.a(mx.i, cnj.rh).b(cnj.rx).b("white_dye").b("has_bone_meal", a((ctw)cnj.rx)).a($$0);
+      a($$0, cnj.rh, cxa.ce, "white_dye");
+      na.a(mx.e, cnj.oN).a('#', cnj.po).a('X', asq.b).b("XX").b("X#").b(" #").b("has_stick", a((ctw)cnj.po)).a($$0);
+      na.a(mx.e, cnj.oO).a('#', cnj.po).a('X', asq.b).b("XX").b(" #").b(" #").b("has_stick", a((ctw)cnj.po)).a($$0);
+      na.a(mx.e, cnj.oM).a('#', cnj.po).a('X', asq.b).b("XXX").b(" # ").b(" # ").b("has_stick", a((ctw)cnj.po)).a($$0);
+      na.a(mx.e, cnj.oL).a('#', cnj.po).a('X', asq.b).b("X").b("#").b("#").b("has_stick", a((ctw)cnj.po)).a($$0);
+      na.a(mx.f, cnj.oK).a('#', cnj.po).a('X', asq.b).b("X").b("X").b("#").b("has_stick", a((ctw)cnj.po)).a($$0);
+      nb.a(mx.i, cnj.tW).b(cnj.qO).b(cnj.re).b(cnj.ps).b("has_book", a((ctw)cnj.qO)).a($$0);
+      a($$0, cnj.rl, cxa.bR, "yellow_dye");
+      a($$0, cnj.rl, cxa.iD, "yellow_dye", 2);
+      a($$0, mx.g, cnj.rW, mx.a, cnj.qM);
+      na.a(mx.i, cxa.mX)
+         .a('#', cnj.vN)
+         .a('X', cnj.vO)
          .b("###")
          .b("#X#")
          .b("###")
-         .b("has_nautilus_core", a((cto)cnb.vL))
-         .b("has_nautilus_shell", a((cto)cnb.vK))
+         .b("has_nautilus_core", a((ctw)cnj.vO))
+         .b("has_nautilus_shell", a((ctw)cnj.vN))
          .a($$0);
-      d($$0, mx.b, cws.nH, cws.jp);
-      d($$0, mx.b, cws.nK, cws.eH);
-      d($$0, mx.b, cws.nP, cws.aV);
-      nb.a(mx.i, cnb.vQ).b(cnb.qL).b(cnb.ui).b("has_creeper_head", a((cto)cnb.ui)).a($$0);
-      nb.a(mx.i, cnb.vR).b(cnb.qL).b(cnb.uf).b("has_wither_skeleton_skull", a((cto)cnb.uf)).a($$0);
-      nb.a(mx.i, cnb.vP).b(cnb.qL).b(cws.cb).b("has_oxeye_daisy", a(cws.cb)).a($$0);
-      nb.a(mx.i, cnb.vS).b(cnb.qL).b(cnb.pY).b("has_enchanted_golden_apple", a((cto)cnb.pY)).a($$0);
-      na.a(mx.b, cws.nS, 6).a('~', cnb.pp).a('I', cws.mZ).b("I~I").b("I I").b("I I").b("has_bamboo", a(cws.mZ)).a($$0);
-      na.a(mx.b, cws.nZ).a('I', cnb.pm).a('-', cws.jD).a('#', asp.b).b("I-I").b("# #").b("has_stone_slab", a(cws.jD)).a($$0);
-      na.a(mx.b, cws.nW).a('#', cws.jR).a('X', cws.cD).a('I', cnb.oB).b("III").b("IXI").b("###").b("has_smooth_stone", a(cws.jR)).a($$0);
-      na.a(mx.b, cws.nV).a('#', asp.r).a('X', cws.cD).b(" # ").b("#X#").b(" # ").b("has_furnace", a(cws.cD)).a($$0);
-      na.a(mx.b, cws.nX).a('#', asp.b).a('@', cnb.qL).b("@@").b("##").b("##").b("has_paper", a((cto)cnb.qL)).a($$0);
-      na.a(mx.b, cws.ob).a('#', asp.b).a('@', cnb.oB).b("@@").b("##").b("##").b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      na.a(mx.b, cws.nY).a('#', asp.b).a('@', cnb.pT).b("@@").b("##").b("##").b("has_flint", a((cto)cnb.pT)).a($$0);
-      na.a(mx.b, cws.oc).a('I', cnb.oB).a('#', cws.b).b(" I ").b("###").b("has_stone", a(cws.b)).a($$0);
-      na.a(mx.b, cws.pq).a('S', cnb.fE).a('#', cnb.oG).b("SSS").b("S#S").b("SSS").b("has_netherite_ingot", a((cto)cnb.oG)).a($$0);
-      b($$0, mx.i, cnb.oG, mx.a, cnb.aN, "netherite_ingot_from_netherite_block", "netherite_ingot");
-      nb.a(mx.i, cnb.oG).a(cnb.oH, 4).a(cnb.oF, 4).b("netherite_ingot").b("has_netherite_scrap", a((cto)cnb.oH)).a($$0);
-      na.a(mx.b, cws.pl).a('O', cws.pk).a('G', cws.ec).b("OOO").b("GGG").b("OOO").b("has_obsidian", a(cws.pk)).a($$0);
-      na.a(mx.b, cws.eX).a('I', cnb.oB).a('N', cnb.vo).b("N").b("I").b("N").b("has_iron_nugget", a((cto)cnb.vo)).b("has_iron_ingot", a((cto)cnb.oB)).a($$0);
-      na.a(mx.a, cws.qO, 2).a('G', cws.aQ).a('S', cnb.oz).b(" S ").b("SGS").b(" S ").b("has_amethyst_shard", a((cto)cnb.oz)).a($$0);
-      a($$0, mx.a, cws.qt, cnb.oz);
-      na.a(mx.e, cnb.qQ).a('C', cnb.qP).a('S', cnb.xh).b("SSS").b("SCS").b("SSS").b("has_echo_shard", a((cto)cnb.xh)).a($$0);
-      na.a(mx.c, cnb.lZ).a('#', cnb.oz).a('X', cnb.lY).b(" # ").b("#X#").b("has_amethyst_shard", a((cto)cnb.oz)).a($$0);
-      b($$0, mx.i, cnb.vF, cnb.vH);
-      ng.a(cpm::new).a($$0, "armor_dye");
-      ng.a(cpn::new).a($$0, "banner_duplicate");
-      ng.a(cpp::new).a($$0, "book_cloning");
-      ng.a(cpw::new).a($$0, "firework_rocket");
-      ng.a(cpy::new).a($$0, "firework_star");
-      ng.a(cpx::new).a($$0, "firework_star_fade");
-      ng.a(cqa::new).a($$0, "map_cloning");
-      ng.a(cqb::new).a($$0, "map_extending");
-      ng.a(cqi::new).a($$0, "repair_item");
-      ng.a(cqm::new).a($$0, "shield_decoration");
-      ng.a(cqn::new).a($$0, "shulker_box_coloring");
-      ng.a(cqy::new).a($$0, "tipped_arrow");
-      ng.a(cqx::new).a($$0, "suspicious_stew");
-      nc.c(cpz.a(cnb.tZ), mx.g, cnb.ua, 0.35F, 200).b("has_potato", a((cto)cnb.tZ)).a($$0);
-      nc.c(cpz.a(cnb.qJ), mx.i, cnb.qI, 0.3F, 200).b("has_clay_ball", a((cto)cnb.qJ)).a($$0);
-      nc.c(cpz.a(asp.q), mx.i, cnb.ou, 0.15F, 200).b("has_log", a(asp.q)).a($$0);
-      nc.c(cpz.a(cnb.uZ), mx.i, cnb.va, 0.1F, 200).b("has_chorus_fruit", a((cto)cnb.uZ)).a($$0);
-      nc.c(cpz.a(cnb.rX), mx.g, cnb.rY, 0.35F, 200).b("has_beef", a((cto)cnb.rX)).a($$0);
-      nc.c(cpz.a(cnb.rZ), mx.g, cnb.sa, 0.35F, 200).b("has_chicken", a((cto)cnb.rZ)).a($$0);
-      nc.c(cpz.a(cnb.qW), mx.g, cnb.ra, 0.35F, 200).b("has_cod", a((cto)cnb.qW)).a($$0);
-      nc.c(cpz.a(cws.mc), mx.g, cnb.rU, 0.1F, 200).b("has_kelp", a(cws.mc)).a($$0, e(cnb.rU));
-      nc.c(cpz.a(cnb.qX), mx.g, cnb.rb, 0.35F, 200).b("has_salmon", a((cto)cnb.qX)).a($$0);
-      nc.c(cpz.a(cnb.uG), mx.g, cnb.uH, 0.35F, 200).b("has_mutton", a((cto)cnb.uG)).a($$0);
-      nc.c(cpz.a(cnb.pU), mx.g, cnb.pV, 0.35F, 200).b("has_porkchop", a((cto)cnb.pU)).a($$0);
-      nc.c(cpz.a(cnb.ut), mx.g, cnb.uu, 0.35F, 200).b("has_rabbit", a((cto)cnb.ut)).a($$0);
-      a($$0, d, mx.i, cnb.ot, 0.1F, 200, "coal");
-      a($$0, e, mx.i, cnb.oB, 0.7F, 200, "iron_ingot");
-      a($$0, f, mx.i, cnb.oD, 0.7F, 200, "copper_ingot");
-      a($$0, g, mx.i, cnb.oF, 1.0F, 200, "gold_ingot");
-      a($$0, h, mx.i, cnb.ov, 1.0F, 200, "diamond");
-      a($$0, i, mx.i, cnb.ox, 0.2F, 200, "lapis_lazuli");
-      a($$0, j, mx.c, cnb.lG, 0.7F, 200, "redstone");
-      a($$0, k, mx.i, cnb.ow, 1.0F, 200, "emerald");
-      a($$0, mx.i, cnb.oA, mx.a, cnb.aE);
-      a($$0, mx.i, cnb.oC, mx.a, cnb.aF);
-      a($$0, mx.i, cnb.oE, mx.a, cnb.aG);
-      nc.c(cpz.a(asp.G), mx.a, cws.aQ.k(), 0.1F, 200).b("has_smelts_to_glass", a(asp.G)).a($$0);
-      nc.c(cpz.a(cws.mV), mx.i, cnb.rk, 0.1F, 200).b("has_sea_pickle", a(cws.mV)).a($$0, e(cnb.rk));
-      nc.c(cpz.a(cws.dQ.k()), mx.i, cnb.rs, 1.0F, 200).b("has_cactus", a(cws.dQ)).a($$0);
-      nc.c(cpz.a(cnb.oU, cnb.oT, cnb.oV, cnb.oW, cnb.oS, cnb.pL, cnb.pM, cnb.pN, cnb.pO, cnb.uA), mx.i, cnb.sf, 0.1F, 200)
-         .b("has_golden_pickaxe", a((cto)cnb.oU))
-         .b("has_golden_shovel", a((cto)cnb.oT))
-         .b("has_golden_axe", a((cto)cnb.oV))
-         .b("has_golden_hoe", a((cto)cnb.oW))
-         .b("has_golden_sword", a((cto)cnb.oS))
-         .b("has_golden_helmet", a((cto)cnb.pL))
-         .b("has_golden_chestplate", a((cto)cnb.pM))
-         .b("has_golden_leggings", a((cto)cnb.pN))
-         .b("has_golden_boots", a((cto)cnb.pO))
-         .b("has_golden_horse_armor", a((cto)cnb.uA))
-         .a($$0, e(cnb.sf));
-      nc.c(cpz.a(cnb.oZ, cnb.oY, cnb.pa, cnb.pb, cnb.oX, cnb.pD, cnb.pE, cnb.pF, cnb.pG, cnb.uz, cnb.pz, cnb.pA, cnb.pB, cnb.pC), mx.i, cnb.vo, 0.1F, 200)
-         .b("has_iron_pickaxe", a((cto)cnb.oZ))
-         .b("has_iron_shovel", a((cto)cnb.oY))
-         .b("has_iron_axe", a((cto)cnb.pa))
-         .b("has_iron_hoe", a((cto)cnb.pb))
-         .b("has_iron_sword", a((cto)cnb.oX))
-         .b("has_iron_helmet", a((cto)cnb.pD))
-         .b("has_iron_chestplate", a((cto)cnb.pE))
-         .b("has_iron_leggings", a((cto)cnb.pF))
-         .b("has_iron_boots", a((cto)cnb.pG))
-         .b("has_iron_horse_armor", a((cto)cnb.uz))
-         .b("has_chainmail_helmet", a((cto)cnb.pz))
-         .b("has_chainmail_chestplate", a((cto)cnb.pA))
-         .b("has_chainmail_leggings", a((cto)cnb.pB))
-         .b("has_chainmail_boots", a((cto)cnb.pC))
-         .a($$0, e(cnb.vo));
-      nc.c(cpz.a(cws.dR), mx.a, cws.iA.k(), 0.35F, 200).b("has_clay_block", a(cws.dR)).a($$0);
-      nc.c(cpz.a(cws.dV), mx.i, cnb.uq, 0.1F, 200).b("has_netherrack", a(cws.dV)).a($$0);
-      nc.c(cpz.a(cws.hb), mx.i, cnb.oy, 0.2F, 200).b("has_nether_quartz_ore", a(cws.hb)).a($$0);
-      nc.c(cpz.a(cws.aP), mx.a, cws.aO.k(), 0.15F, 200).b("has_wet_sponge", a(cws.aP)).a($$0);
-      nc.c(cpz.a(cws.m), mx.a, cws.b.k(), 0.1F, 200).b("has_cobblestone", a(cws.m)).a($$0);
-      nc.c(cpz.a(cws.b), mx.a, cws.jR.k(), 0.1F, 200).b("has_stone", a(cws.b)).a($$0);
-      nc.c(cpz.a(cws.aV), mx.a, cws.jS.k(), 0.1F, 200).b("has_sandstone", a(cws.aV)).a($$0);
-      nc.c(cpz.a(cws.jp), mx.a, cws.jU.k(), 0.1F, 200).b("has_red_sandstone", a(cws.jp)).a($$0);
-      nc.c(cpz.a(cws.hd), mx.a, cws.jT.k(), 0.1F, 200).b("has_quartz_block", a(cws.hd)).a($$0);
-      nc.c(cpz.a(cws.eH), mx.a, cws.eJ.k(), 0.1F, 200).b("has_stone_bricks", a(cws.eH)).a($$0);
-      nc.c(cpz.a(cws.hy), mx.b, cws.lv.k(), 0.1F, 200).b("has_black_terracotta", a(cws.hy)).a($$0);
-      nc.c(cpz.a(cws.hu), mx.b, cws.lr.k(), 0.1F, 200).b("has_blue_terracotta", a(cws.hu)).a($$0);
-      nc.c(cpz.a(cws.hv), mx.b, cws.ls.k(), 0.1F, 200).b("has_brown_terracotta", a(cws.hv)).a($$0);
-      nc.c(cpz.a(cws.hs), mx.b, cws.lp.k(), 0.1F, 200).b("has_cyan_terracotta", a(cws.hs)).a($$0);
-      nc.c(cpz.a(cws.hq), mx.b, cws.ln.k(), 0.1F, 200).b("has_gray_terracotta", a(cws.hq)).a($$0);
-      nc.c(cpz.a(cws.hw), mx.b, cws.lt.k(), 0.1F, 200).b("has_green_terracotta", a(cws.hw)).a($$0);
-      nc.c(cpz.a(cws.hm), mx.b, cws.lj.k(), 0.1F, 200).b("has_light_blue_terracotta", a(cws.hm)).a($$0);
-      nc.c(cpz.a(cws.hr), mx.b, cws.lo.k(), 0.1F, 200).b("has_light_gray_terracotta", a(cws.hr)).a($$0);
-      nc.c(cpz.a(cws.ho), mx.b, cws.ll.k(), 0.1F, 200).b("has_lime_terracotta", a(cws.ho)).a($$0);
-      nc.c(cpz.a(cws.hl), mx.b, cws.li.k(), 0.1F, 200).b("has_magenta_terracotta", a(cws.hl)).a($$0);
-      nc.c(cpz.a(cws.hk), mx.b, cws.lh.k(), 0.1F, 200).b("has_orange_terracotta", a(cws.hk)).a($$0);
-      nc.c(cpz.a(cws.hp), mx.b, cws.lm.k(), 0.1F, 200).b("has_pink_terracotta", a(cws.hp)).a($$0);
-      nc.c(cpz.a(cws.ht), mx.b, cws.lq.k(), 0.1F, 200).b("has_purple_terracotta", a(cws.ht)).a($$0);
-      nc.c(cpz.a(cws.hx), mx.b, cws.lu.k(), 0.1F, 200).b("has_red_terracotta", a(cws.hx)).a($$0);
-      nc.c(cpz.a(cws.hj), mx.b, cws.lg.k(), 0.1F, 200).b("has_white_terracotta", a(cws.hj)).a($$0);
-      nc.c(cpz.a(cws.hn), mx.b, cws.lk.k(), 0.1F, 200).b("has_yellow_terracotta", a(cws.hn)).a($$0);
-      nc.c(cpz.a(cws.pj), mx.i, cnb.oH, 2.0F, 200).b("has_ancient_debris", a(cws.pj)).a($$0);
-      nc.c(cpz.a(cws.dY), mx.a, cws.te, 0.1F, 200).b("has_basalt", a(cws.dY)).a($$0);
-      nc.c(cpz.a(cws.sK), mx.a, cws.sJ, 0.1F, 200).b("has_cobbled_deepslate", a(cws.sK)).a($$0);
-      b($$0, d, mx.i, cnb.ot, 0.1F, 100, "coal");
-      b($$0, e, mx.i, cnb.oB, 0.7F, 100, "iron_ingot");
-      b($$0, f, mx.i, cnb.oD, 0.7F, 100, "copper_ingot");
-      b($$0, g, mx.i, cnb.oF, 1.0F, 100, "gold_ingot");
-      b($$0, h, mx.i, cnb.ov, 1.0F, 100, "diamond");
-      b($$0, i, mx.i, cnb.ox, 0.2F, 100, "lapis_lazuli");
-      b($$0, j, mx.c, cnb.lG, 0.7F, 100, "redstone");
-      b($$0, k, mx.i, cnb.ow, 1.0F, 100, "emerald");
-      nc.b(cpz.a(cws.hb), mx.i, cnb.oy, 0.2F, 100).b("has_nether_quartz_ore", a(cws.hb)).a($$0, f(cnb.oy));
-      nc.b(cpz.a(cnb.oU, cnb.oT, cnb.oV, cnb.oW, cnb.oS, cnb.pL, cnb.pM, cnb.pN, cnb.pO, cnb.uA), mx.i, cnb.sf, 0.1F, 100)
-         .b("has_golden_pickaxe", a((cto)cnb.oU))
-         .b("has_golden_shovel", a((cto)cnb.oT))
-         .b("has_golden_axe", a((cto)cnb.oV))
-         .b("has_golden_hoe", a((cto)cnb.oW))
-         .b("has_golden_sword", a((cto)cnb.oS))
-         .b("has_golden_helmet", a((cto)cnb.pL))
-         .b("has_golden_chestplate", a((cto)cnb.pM))
-         .b("has_golden_leggings", a((cto)cnb.pN))
-         .b("has_golden_boots", a((cto)cnb.pO))
-         .b("has_golden_horse_armor", a((cto)cnb.uA))
-         .a($$0, f(cnb.sf));
-      nc.b(cpz.a(cnb.oZ, cnb.oY, cnb.pa, cnb.pb, cnb.oX, cnb.pD, cnb.pE, cnb.pF, cnb.pG, cnb.uz, cnb.pz, cnb.pA, cnb.pB, cnb.pC), mx.i, cnb.vo, 0.1F, 100)
-         .b("has_iron_pickaxe", a((cto)cnb.oZ))
-         .b("has_iron_shovel", a((cto)cnb.oY))
-         .b("has_iron_axe", a((cto)cnb.pa))
-         .b("has_iron_hoe", a((cto)cnb.pb))
-         .b("has_iron_sword", a((cto)cnb.oX))
-         .b("has_iron_helmet", a((cto)cnb.pD))
-         .b("has_iron_chestplate", a((cto)cnb.pE))
-         .b("has_iron_leggings", a((cto)cnb.pF))
-         .b("has_iron_boots", a((cto)cnb.pG))
-         .b("has_iron_horse_armor", a((cto)cnb.uz))
-         .b("has_chainmail_helmet", a((cto)cnb.pz))
-         .b("has_chainmail_chestplate", a((cto)cnb.pA))
-         .b("has_chainmail_leggings", a((cto)cnb.pB))
-         .b("has_chainmail_boots", a((cto)cnb.pC))
-         .a($$0, f(cnb.vo));
-      nc.b(cpz.a(cws.pj), mx.i, cnb.oH, 2.0F, 100).b("has_ancient_debris", a(cws.pj)).a($$0, f(cnb.oH));
-      a($$0, "smoking", cqg.r, cqv::new, 100);
-      a($$0, "campfire_cooking", cqg.s, cpq::new, 600);
-      a($$0, mx.a, cws.jD, cws.b, 2);
-      i($$0, mx.a, cws.nk, cws.b);
-      i($$0, mx.a, cws.eH, cws.b);
-      a($$0, mx.a, cws.jK, cws.b, 2);
-      i($$0, mx.a, cws.fj, cws.b);
-      nd.a(cpz.a(cws.b), mx.a, cws.eK).b("has_stone", a(cws.b)).a($$0, "chiseled_stone_bricks_stone_from_stonecutting");
-      nd.a(cpz.a(cws.b), mx.b, cws.nK).b("has_stone", a(cws.b)).a($$0, "stone_brick_walls_from_stone_stonecutting");
-      i($$0, mx.a, cws.aX, cws.aV);
-      a($$0, mx.a, cws.jF, cws.aV, 2);
-      a($$0, mx.a, cws.jG, cws.aV, 2);
-      a($$0, mx.a, cws.jG, cws.aX, 2);
-      i($$0, mx.a, cws.fD, cws.aV);
-      i($$0, mx.b, cws.nP, cws.aV);
-      i($$0, mx.a, cws.aW, cws.aV);
-      i($$0, mx.a, cws.jr, cws.jp);
-      a($$0, mx.a, cws.jO, cws.jp, 2);
-      a($$0, mx.a, cws.jP, cws.jp, 2);
-      a($$0, mx.a, cws.jP, cws.jr, 2);
-      i($$0, mx.a, cws.js, cws.jp);
-      i($$0, mx.b, cws.nH, cws.jp);
-      i($$0, mx.a, cws.jq, cws.jp);
-      nd.a(cpz.a(cws.hd), mx.a, cws.jN, 2).b("has_quartz_block", a(cws.hd)).a($$0, "quartz_slab_from_stonecutting");
-      i($$0, mx.a, cws.hg, cws.hd);
-      i($$0, mx.a, cws.hf, cws.hd);
-      i($$0, mx.a, cws.he, cws.hd);
-      i($$0, mx.a, cws.pK, cws.hd);
-      i($$0, mx.a, cws.cQ, cws.m);
-      a($$0, mx.a, cws.jI, cws.m, 2);
-      i($$0, mx.b, cws.fP, cws.m);
-      a($$0, mx.a, cws.jK, cws.eH, 2);
-      i($$0, mx.a, cws.fj, cws.eH);
-      nd.a(cpz.a(cws.eH), mx.b, cws.nK).b("has_stone_bricks", a(cws.eH)).a($$0, "stone_brick_wall_from_stone_bricks_stonecutting");
-      i($$0, mx.a, cws.eK, cws.eH);
-      a($$0, mx.a, cws.jJ, cws.cj, 2);
-      i($$0, mx.a, cws.fi, cws.cj);
-      i($$0, mx.b, cws.nF, cws.cj);
-      a($$0, mx.a, cws.jL, cws.eM, 2);
-      i($$0, mx.a, cws.fk, cws.eM);
-      i($$0, mx.b, cws.nL, cws.eM);
-      a($$0, mx.a, cws.jM, cws.fn, 2);
-      i($$0, mx.a, cws.fp, cws.fn);
-      i($$0, mx.b, cws.nM, cws.fn);
-      i($$0, mx.a, cws.pI, cws.fn);
-      a($$0, mx.a, cws.nC, cws.kL, 2);
-      i($$0, mx.a, cws.np, cws.kL);
-      i($$0, mx.b, cws.nO, cws.kL);
-      a($$0, mx.a, cws.jQ, cws.kw, 2);
-      i($$0, mx.a, cws.ky, cws.kw);
-      i($$0, mx.a, cws.kx, cws.kw);
-      a($$0, mx.a, cws.if, cws.hZ, 2);
-      i($$0, mx.a, cws.ic, cws.hZ);
-      i($$0, mx.b, cws.nG, cws.hZ);
-      nd.a(cpz.a(cws.ia), mx.a, cws.ig, 2).b("has_prismarine_brick", a(cws.ia)).a($$0, "prismarine_brick_slab_from_prismarine_stonecutting");
-      nd.a(cpz.a(cws.ia), mx.a, cws.id).b("has_prismarine_brick", a(cws.ia)).a($$0, "prismarine_brick_stairs_from_prismarine_stonecutting");
-      a($$0, mx.a, cws.ih, cws.ib, 2);
-      i($$0, mx.a, cws.ie, cws.ib);
-      a($$0, mx.a, cws.nB, cws.g, 2);
-      i($$0, mx.a, cws.no, cws.g);
-      i($$0, mx.b, cws.nN, cws.g);
-      i($$0, mx.a, cws.h, cws.g);
-      a($$0, mx.a, cws.nD, cws.g, 2);
-      i($$0, mx.a, cws.nq, cws.g);
-      a($$0, mx.a, cws.nD, cws.h, 2);
-      i($$0, mx.a, cws.nq, cws.h);
-      i($$0, mx.a, cws.dZ, cws.dY);
-      a($$0, mx.a, cws.nA, cws.c, 2);
-      i($$0, mx.a, cws.nn, cws.c);
-      i($$0, mx.b, cws.nJ, cws.c);
-      i($$0, mx.a, cws.d, cws.c);
-      a($$0, mx.a, cws.ns, cws.c, 2);
-      i($$0, mx.a, cws.ne, cws.c);
-      a($$0, mx.a, cws.ns, cws.d, 2);
-      i($$0, mx.a, cws.ne, cws.d);
-      a($$0, mx.a, cws.nE, cws.e, 2);
-      i($$0, mx.a, cws.nr, cws.e);
-      i($$0, mx.b, cws.nR, cws.e);
-      i($$0, mx.a, cws.f, cws.e);
-      a($$0, mx.a, cws.nv, cws.e, 2);
-      i($$0, mx.a, cws.nh, cws.e);
-      a($$0, mx.a, cws.nv, cws.f, 2);
-      i($$0, mx.a, cws.nh, cws.f);
-      nd.a(cpz.a(cws.eI), mx.a, cws.nu, 2).b("has_mossy_stone_bricks", a(cws.eI)).a($$0, "mossy_stone_brick_slab_from_mossy_stone_brick_stonecutting");
-      nd.a(cpz.a(cws.eI), mx.a, cws.ng).b("has_mossy_stone_bricks", a(cws.eI)).a($$0, "mossy_stone_brick_stairs_from_mossy_stone_brick_stonecutting");
-      nd.a(cpz.a(cws.eI), mx.b, cws.nI).b("has_mossy_stone_bricks", a(cws.eI)).a($$0, "mossy_stone_brick_wall_from_mossy_stone_brick_stonecutting");
-      a($$0, mx.a, cws.nw, cws.cn, 2);
-      i($$0, mx.a, cws.ni, cws.cn);
-      i($$0, mx.b, cws.fQ, cws.cn);
-      a($$0, mx.a, cws.ny, cws.jS, 2);
-      i($$0, mx.a, cws.nl, cws.jS);
-      a($$0, mx.a, cws.nt, cws.jU, 2);
-      i($$0, mx.a, cws.nf, cws.jU);
-      a($$0, mx.a, cws.nz, cws.jT, 2);
-      i($$0, mx.a, cws.nm, cws.jT);
-      nd.a(cpz.a(cws.kz), mx.a, cws.nx, 2).b("has_end_stone_brick", a(cws.kz)).a($$0, "end_stone_brick_slab_from_end_stone_brick_stonecutting");
-      nd.a(cpz.a(cws.kz), mx.a, cws.nj).b("has_end_stone_brick", a(cws.kz)).a($$0, "end_stone_brick_stairs_from_end_stone_brick_stonecutting");
-      nd.a(cpz.a(cws.kz), mx.b, cws.nQ).b("has_end_stone_brick", a(cws.kz)).a($$0, "end_stone_brick_wall_from_end_stone_brick_stonecutting");
-      i($$0, mx.a, cws.kz, cws.fz);
-      a($$0, mx.a, cws.nx, cws.fz, 2);
-      i($$0, mx.a, cws.nj, cws.fz);
-      i($$0, mx.b, cws.nQ, cws.fz);
-      a($$0, mx.a, cws.jE, cws.jR, 2);
-      a($$0, mx.a, cws.pu, cws.pr, 2);
-      i($$0, mx.a, cws.ps, cws.pr);
-      i($$0, mx.b, cws.pt, cws.pr);
-      i($$0, mx.a, cws.pv, cws.pr);
-      i($$0, mx.b, cws.pH, cws.pr);
-      a($$0, mx.a, cws.pE, cws.pr, 2);
-      i($$0, mx.a, cws.pD, cws.pr);
-      i($$0, mx.a, cws.py, cws.pr);
-      i($$0, mx.a, cws.pw, cws.pr);
-      a($$0, mx.a, cws.pz, cws.pr, 2);
-      i($$0, mx.a, cws.pA, cws.pr);
-      i($$0, mx.b, cws.pB, cws.pr);
-      a($$0, mx.a, cws.pE, cws.pv, 2);
-      i($$0, mx.a, cws.pD, cws.pv);
-      i($$0, mx.a, cws.pw, cws.pv);
-      i($$0, mx.b, cws.pH, cws.pv);
-      a($$0, mx.a, cws.pz, cws.pv, 2);
-      i($$0, mx.a, cws.pA, cws.pv);
-      i($$0, mx.b, cws.pB, cws.pv);
-      i($$0, mx.a, cws.py, cws.pv);
-      a($$0, mx.a, cws.pz, cws.pw, 2);
-      i($$0, mx.a, cws.pA, cws.pw);
-      i($$0, mx.b, cws.pB, cws.pw);
-      a($$0, mx.a, cws.rv, cws.rf, 2);
-      i($$0, mx.a, cws.rr, cws.rf);
-      a($$0, mx.a, cws.ru, cws.re, 2);
-      i($$0, mx.a, cws.rq, cws.re);
-      a($$0, mx.a, cws.rt, cws.rd, 2);
-      i($$0, mx.a, cws.rp, cws.rd);
-      a($$0, mx.a, cws.rs, cws.rc, 2);
-      i($$0, mx.a, cws.ro, cws.rc);
-      a($$0, mx.a, cws.rL, cws.rD, 2);
-      i($$0, mx.a, cws.rH, cws.rD);
-      a($$0, mx.a, cws.rK, cws.rC, 2);
-      i($$0, mx.a, cws.rG, cws.rC);
-      a($$0, mx.a, cws.rJ, cws.rB, 2);
-      i($$0, mx.a, cws.rF, cws.rB);
-      a($$0, mx.a, cws.rI, cws.rA, 2);
-      i($$0, mx.a, cws.rE, cws.rA);
-      a($$0, mx.a, cws.rf, cws.qW, 4);
-      a($$0, mx.a, cws.rr, cws.qW, 4);
-      a($$0, mx.a, cws.rv, cws.qW, 8);
-      a($$0, mx.a, cws.re, cws.qX, 4);
-      a($$0, mx.a, cws.rq, cws.qX, 4);
-      a($$0, mx.a, cws.ru, cws.qX, 8);
-      a($$0, mx.a, cws.rd, cws.qY, 4);
-      a($$0, mx.a, cws.rp, cws.qY, 4);
-      a($$0, mx.a, cws.rt, cws.qY, 8);
-      a($$0, mx.a, cws.rc, cws.qZ, 4);
-      a($$0, mx.a, cws.ro, cws.qZ, 4);
-      a($$0, mx.a, cws.rs, cws.qZ, 8);
-      a($$0, mx.a, cws.rD, cws.rw, 4);
-      a($$0, mx.a, cws.rH, cws.rw, 4);
-      a($$0, mx.a, cws.rL, cws.rw, 8);
-      a($$0, mx.a, cws.rC, cws.ry, 4);
-      a($$0, mx.a, cws.rG, cws.ry, 4);
-      a($$0, mx.a, cws.rK, cws.ry, 8);
-      a($$0, mx.a, cws.rB, cws.rx, 4);
-      a($$0, mx.a, cws.rF, cws.rx, 4);
-      a($$0, mx.a, cws.rJ, cws.rx, 8);
-      a($$0, mx.a, cws.rA, cws.rz, 4);
-      a($$0, mx.a, cws.rE, cws.rz, 4);
-      a($$0, mx.a, cws.rI, cws.rz, 8);
-      a($$0, mx.a, cws.sM, cws.sK, 2);
-      i($$0, mx.a, cws.sL, cws.sK);
-      i($$0, mx.b, cws.sN, cws.sK);
-      i($$0, mx.a, cws.ta, cws.sK);
-      i($$0, mx.a, cws.sO, cws.sK);
-      a($$0, mx.a, cws.sQ, cws.sK, 2);
-      i($$0, mx.a, cws.sP, cws.sK);
-      i($$0, mx.b, cws.sR, cws.sK);
-      i($$0, mx.a, cws.sW, cws.sK);
-      a($$0, mx.a, cws.sY, cws.sK, 2);
-      i($$0, mx.a, cws.sX, cws.sK);
-      i($$0, mx.b, cws.sZ, cws.sK);
-      i($$0, mx.a, cws.sS, cws.sK);
-      a($$0, mx.a, cws.sU, cws.sK, 2);
-      i($$0, mx.a, cws.sT, cws.sK);
-      i($$0, mx.b, cws.sV, cws.sK);
-      a($$0, mx.a, cws.sQ, cws.sO, 2);
-      i($$0, mx.a, cws.sP, cws.sO);
-      i($$0, mx.b, cws.sR, cws.sO);
-      i($$0, mx.a, cws.sW, cws.sO);
-      a($$0, mx.a, cws.sY, cws.sO, 2);
-      i($$0, mx.a, cws.sX, cws.sO);
-      i($$0, mx.b, cws.sZ, cws.sO);
-      i($$0, mx.a, cws.sS, cws.sO);
-      a($$0, mx.a, cws.sU, cws.sO, 2);
-      i($$0, mx.a, cws.sT, cws.sO);
-      i($$0, mx.b, cws.sV, cws.sO);
-      a($$0, mx.a, cws.sY, cws.sW, 2);
-      i($$0, mx.a, cws.sX, cws.sW);
-      i($$0, mx.b, cws.sZ, cws.sW);
-      i($$0, mx.a, cws.sS, cws.sW);
-      a($$0, mx.a, cws.sU, cws.sW, 2);
-      i($$0, mx.a, cws.sT, cws.sW);
-      i($$0, mx.b, cws.sV, cws.sW);
-      a($$0, mx.a, cws.sU, cws.sS, 2);
-      i($$0, mx.a, cws.sT, cws.sS);
-      i($$0, mx.b, cws.sV, cws.sS);
+      d($$0, mx.b, cxa.nH, cxa.jp);
+      d($$0, mx.b, cxa.nK, cxa.eH);
+      d($$0, mx.b, cxa.nP, cxa.aV);
+      nb.a(mx.i, cnj.vT).b(cnj.qN).b(cnj.ul).b("has_creeper_head", a((ctw)cnj.ul)).a($$0);
+      nb.a(mx.i, cnj.vU).b(cnj.qN).b(cnj.ui).b("has_wither_skeleton_skull", a((ctw)cnj.ui)).a($$0);
+      nb.a(mx.i, cnj.vS).b(cnj.qN).b(cxa.cb).b("has_oxeye_daisy", a(cxa.cb)).a($$0);
+      nb.a(mx.i, cnj.vV).b(cnj.qN).b(cnj.qa).b("has_enchanted_golden_apple", a((ctw)cnj.qa)).a($$0);
+      na.a(mx.b, cxa.nS, 6).a('~', cnj.pr).a('I', cxa.mZ).b("I~I").b("I I").b("I I").b("has_bamboo", a(cxa.mZ)).a($$0);
+      na.a(mx.b, cxa.nZ).a('I', cnj.po).a('-', cxa.jD).a('#', asq.b).b("I-I").b("# #").b("has_stone_slab", a(cxa.jD)).a($$0);
+      na.a(mx.b, cxa.nW).a('#', cxa.jR).a('X', cxa.cD).a('I', cnj.oD).b("III").b("IXI").b("###").b("has_smooth_stone", a(cxa.jR)).a($$0);
+      na.a(mx.b, cxa.nV).a('#', asq.r).a('X', cxa.cD).b(" # ").b("#X#").b(" # ").b("has_furnace", a(cxa.cD)).a($$0);
+      na.a(mx.b, cxa.nX).a('#', asq.b).a('@', cnj.qN).b("@@").b("##").b("##").b("has_paper", a((ctw)cnj.qN)).a($$0);
+      na.a(mx.b, cxa.ob).a('#', asq.b).a('@', cnj.oD).b("@@").b("##").b("##").b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      na.a(mx.b, cxa.nY).a('#', asq.b).a('@', cnj.pV).b("@@").b("##").b("##").b("has_flint", a((ctw)cnj.pV)).a($$0);
+      na.a(mx.b, cxa.oc).a('I', cnj.oD).a('#', cxa.b).b(" I ").b("###").b("has_stone", a(cxa.b)).a($$0);
+      na.a(mx.b, cxa.pq).a('S', cnj.fE).a('#', cnj.oI).b("SSS").b("S#S").b("SSS").b("has_netherite_ingot", a((ctw)cnj.oI)).a($$0);
+      b($$0, mx.i, cnj.oI, mx.a, cnj.aN, "netherite_ingot_from_netherite_block", "netherite_ingot");
+      nb.a(mx.i, cnj.oI).a(cnj.oJ, 4).a(cnj.oH, 4).b("netherite_ingot").b("has_netherite_scrap", a((ctw)cnj.oJ)).a($$0);
+      na.a(mx.b, cxa.pl).a('O', cxa.pk).a('G', cxa.ec).b("OOO").b("GGG").b("OOO").b("has_obsidian", a(cxa.pk)).a($$0);
+      na.a(mx.b, cxa.eX).a('I', cnj.oD).a('N', cnj.vr).b("N").b("I").b("N").b("has_iron_nugget", a((ctw)cnj.vr)).b("has_iron_ingot", a((ctw)cnj.oD)).a($$0);
+      na.a(mx.a, cxa.qO, 2).a('G', cxa.aQ).a('S', cnj.oB).b(" S ").b("SGS").b(" S ").b("has_amethyst_shard", a((ctw)cnj.oB)).a($$0);
+      a($$0, mx.a, cxa.qt, cnj.oB);
+      na.a(mx.e, cnj.qS).a('C', cnj.qR).a('S', cnj.xk).b("SSS").b("SCS").b("SSS").b("has_echo_shard", a((ctw)cnj.xk)).a($$0);
+      na.a(mx.c, cnj.lZ).a('#', cnj.oB).a('X', cnj.lY).b(" # ").b("#X#").b("has_amethyst_shard", a((ctw)cnj.oB)).a($$0);
+      b($$0, mx.i, cnj.vI, cnj.vK);
+      ng.a(cpu::new).a($$0, "armor_dye");
+      ng.a(cpv::new).a($$0, "banner_duplicate");
+      ng.a(cpx::new).a($$0, "book_cloning");
+      ng.a(cqe::new).a($$0, "firework_rocket");
+      ng.a(cqg::new).a($$0, "firework_star");
+      ng.a(cqf::new).a($$0, "firework_star_fade");
+      ng.a(cqi::new).a($$0, "map_cloning");
+      ng.a(cqj::new).a($$0, "map_extending");
+      ng.a(cqq::new).a($$0, "repair_item");
+      ng.a(cqu::new).a($$0, "shield_decoration");
+      ng.a(cqv::new).a($$0, "shulker_box_coloring");
+      ng.a(crg::new).a($$0, "tipped_arrow");
+      ng.a(crf::new).a($$0, "suspicious_stew");
+      nc.c(cqh.a(cnj.uc), mx.g, cnj.ud, 0.35F, 200).b("has_potato", a((ctw)cnj.uc)).a($$0);
+      nc.c(cqh.a(cnj.qL), mx.i, cnj.qK, 0.3F, 200).b("has_clay_ball", a((ctw)cnj.qL)).a($$0);
+      nc.c(cqh.a(asq.q), mx.i, cnj.ow, 0.15F, 200).b("has_log", a(asq.q)).a($$0);
+      nc.c(cqh.a(cnj.vc), mx.i, cnj.vd, 0.1F, 200).b("has_chorus_fruit", a((ctw)cnj.vc)).a($$0);
+      nc.c(cqh.a(cnj.rZ), mx.g, cnj.sa, 0.35F, 200).b("has_beef", a((ctw)cnj.rZ)).a($$0);
+      nc.c(cqh.a(cnj.sb), mx.g, cnj.sc, 0.35F, 200).b("has_chicken", a((ctw)cnj.sb)).a($$0);
+      nc.c(cqh.a(cnj.qY), mx.g, cnj.rc, 0.35F, 200).b("has_cod", a((ctw)cnj.qY)).a($$0);
+      nc.c(cqh.a(cxa.mc), mx.g, cnj.rW, 0.1F, 200).b("has_kelp", a(cxa.mc)).a($$0, e(cnj.rW));
+      nc.c(cqh.a(cnj.qZ), mx.g, cnj.rd, 0.35F, 200).b("has_salmon", a((ctw)cnj.qZ)).a($$0);
+      nc.c(cqh.a(cnj.uJ), mx.g, cnj.uK, 0.35F, 200).b("has_mutton", a((ctw)cnj.uJ)).a($$0);
+      nc.c(cqh.a(cnj.pW), mx.g, cnj.pX, 0.35F, 200).b("has_porkchop", a((ctw)cnj.pW)).a($$0);
+      nc.c(cqh.a(cnj.uw), mx.g, cnj.ux, 0.35F, 200).b("has_rabbit", a((ctw)cnj.uw)).a($$0);
+      a($$0, d, mx.i, cnj.ov, 0.1F, 200, "coal");
+      a($$0, e, mx.i, cnj.oD, 0.7F, 200, "iron_ingot");
+      a($$0, f, mx.i, cnj.oF, 0.7F, 200, "copper_ingot");
+      a($$0, g, mx.i, cnj.oH, 1.0F, 200, "gold_ingot");
+      a($$0, h, mx.i, cnj.ox, 1.0F, 200, "diamond");
+      a($$0, i, mx.i, cnj.oz, 0.2F, 200, "lapis_lazuli");
+      a($$0, j, mx.c, cnj.lG, 0.7F, 200, "redstone");
+      a($$0, k, mx.i, cnj.oy, 1.0F, 200, "emerald");
+      a($$0, mx.i, cnj.oC, mx.a, cnj.aE);
+      a($$0, mx.i, cnj.oE, mx.a, cnj.aF);
+      a($$0, mx.i, cnj.oG, mx.a, cnj.aG);
+      nc.c(cqh.a(asq.G), mx.a, cxa.aQ.j(), 0.1F, 200).b("has_smelts_to_glass", a(asq.G)).a($$0);
+      nc.c(cqh.a(cxa.mV), mx.i, cnj.rm, 0.1F, 200).b("has_sea_pickle", a(cxa.mV)).a($$0, e(cnj.rm));
+      nc.c(cqh.a(cxa.dQ.j()), mx.i, cnj.ru, 1.0F, 200).b("has_cactus", a(cxa.dQ)).a($$0);
+      nc.c(cqh.a(cnj.oW, cnj.oV, cnj.oX, cnj.oY, cnj.oU, cnj.pN, cnj.pO, cnj.pP, cnj.pQ, cnj.uD), mx.i, cnj.sh, 0.1F, 200)
+         .b("has_golden_pickaxe", a((ctw)cnj.oW))
+         .b("has_golden_shovel", a((ctw)cnj.oV))
+         .b("has_golden_axe", a((ctw)cnj.oX))
+         .b("has_golden_hoe", a((ctw)cnj.oY))
+         .b("has_golden_sword", a((ctw)cnj.oU))
+         .b("has_golden_helmet", a((ctw)cnj.pN))
+         .b("has_golden_chestplate", a((ctw)cnj.pO))
+         .b("has_golden_leggings", a((ctw)cnj.pP))
+         .b("has_golden_boots", a((ctw)cnj.pQ))
+         .b("has_golden_horse_armor", a((ctw)cnj.uD))
+         .a($$0, e(cnj.sh));
+      nc.c(cqh.a(cnj.pb, cnj.pa, cnj.pc, cnj.pd, cnj.oZ, cnj.pF, cnj.pG, cnj.pH, cnj.pI, cnj.uC, cnj.pB, cnj.pC, cnj.pD, cnj.pE), mx.i, cnj.vr, 0.1F, 200)
+         .b("has_iron_pickaxe", a((ctw)cnj.pb))
+         .b("has_iron_shovel", a((ctw)cnj.pa))
+         .b("has_iron_axe", a((ctw)cnj.pc))
+         .b("has_iron_hoe", a((ctw)cnj.pd))
+         .b("has_iron_sword", a((ctw)cnj.oZ))
+         .b("has_iron_helmet", a((ctw)cnj.pF))
+         .b("has_iron_chestplate", a((ctw)cnj.pG))
+         .b("has_iron_leggings", a((ctw)cnj.pH))
+         .b("has_iron_boots", a((ctw)cnj.pI))
+         .b("has_iron_horse_armor", a((ctw)cnj.uC))
+         .b("has_chainmail_helmet", a((ctw)cnj.pB))
+         .b("has_chainmail_chestplate", a((ctw)cnj.pC))
+         .b("has_chainmail_leggings", a((ctw)cnj.pD))
+         .b("has_chainmail_boots", a((ctw)cnj.pE))
+         .a($$0, e(cnj.vr));
+      nc.c(cqh.a(cxa.dR), mx.a, cxa.iA.j(), 0.35F, 200).b("has_clay_block", a(cxa.dR)).a($$0);
+      nc.c(cqh.a(cxa.dV), mx.i, cnj.ut, 0.1F, 200).b("has_netherrack", a(cxa.dV)).a($$0);
+      nc.c(cqh.a(cxa.hb), mx.i, cnj.oA, 0.2F, 200).b("has_nether_quartz_ore", a(cxa.hb)).a($$0);
+      nc.c(cqh.a(cxa.aP), mx.a, cxa.aO.j(), 0.15F, 200).b("has_wet_sponge", a(cxa.aP)).a($$0);
+      nc.c(cqh.a(cxa.m), mx.a, cxa.b.j(), 0.1F, 200).b("has_cobblestone", a(cxa.m)).a($$0);
+      nc.c(cqh.a(cxa.b), mx.a, cxa.jR.j(), 0.1F, 200).b("has_stone", a(cxa.b)).a($$0);
+      nc.c(cqh.a(cxa.aV), mx.a, cxa.jS.j(), 0.1F, 200).b("has_sandstone", a(cxa.aV)).a($$0);
+      nc.c(cqh.a(cxa.jp), mx.a, cxa.jU.j(), 0.1F, 200).b("has_red_sandstone", a(cxa.jp)).a($$0);
+      nc.c(cqh.a(cxa.hd), mx.a, cxa.jT.j(), 0.1F, 200).b("has_quartz_block", a(cxa.hd)).a($$0);
+      nc.c(cqh.a(cxa.eH), mx.a, cxa.eJ.j(), 0.1F, 200).b("has_stone_bricks", a(cxa.eH)).a($$0);
+      nc.c(cqh.a(cxa.hy), mx.b, cxa.lv.j(), 0.1F, 200).b("has_black_terracotta", a(cxa.hy)).a($$0);
+      nc.c(cqh.a(cxa.hu), mx.b, cxa.lr.j(), 0.1F, 200).b("has_blue_terracotta", a(cxa.hu)).a($$0);
+      nc.c(cqh.a(cxa.hv), mx.b, cxa.ls.j(), 0.1F, 200).b("has_brown_terracotta", a(cxa.hv)).a($$0);
+      nc.c(cqh.a(cxa.hs), mx.b, cxa.lp.j(), 0.1F, 200).b("has_cyan_terracotta", a(cxa.hs)).a($$0);
+      nc.c(cqh.a(cxa.hq), mx.b, cxa.ln.j(), 0.1F, 200).b("has_gray_terracotta", a(cxa.hq)).a($$0);
+      nc.c(cqh.a(cxa.hw), mx.b, cxa.lt.j(), 0.1F, 200).b("has_green_terracotta", a(cxa.hw)).a($$0);
+      nc.c(cqh.a(cxa.hm), mx.b, cxa.lj.j(), 0.1F, 200).b("has_light_blue_terracotta", a(cxa.hm)).a($$0);
+      nc.c(cqh.a(cxa.hr), mx.b, cxa.lo.j(), 0.1F, 200).b("has_light_gray_terracotta", a(cxa.hr)).a($$0);
+      nc.c(cqh.a(cxa.ho), mx.b, cxa.ll.j(), 0.1F, 200).b("has_lime_terracotta", a(cxa.ho)).a($$0);
+      nc.c(cqh.a(cxa.hl), mx.b, cxa.li.j(), 0.1F, 200).b("has_magenta_terracotta", a(cxa.hl)).a($$0);
+      nc.c(cqh.a(cxa.hk), mx.b, cxa.lh.j(), 0.1F, 200).b("has_orange_terracotta", a(cxa.hk)).a($$0);
+      nc.c(cqh.a(cxa.hp), mx.b, cxa.lm.j(), 0.1F, 200).b("has_pink_terracotta", a(cxa.hp)).a($$0);
+      nc.c(cqh.a(cxa.ht), mx.b, cxa.lq.j(), 0.1F, 200).b("has_purple_terracotta", a(cxa.ht)).a($$0);
+      nc.c(cqh.a(cxa.hx), mx.b, cxa.lu.j(), 0.1F, 200).b("has_red_terracotta", a(cxa.hx)).a($$0);
+      nc.c(cqh.a(cxa.hj), mx.b, cxa.lg.j(), 0.1F, 200).b("has_white_terracotta", a(cxa.hj)).a($$0);
+      nc.c(cqh.a(cxa.hn), mx.b, cxa.lk.j(), 0.1F, 200).b("has_yellow_terracotta", a(cxa.hn)).a($$0);
+      nc.c(cqh.a(cxa.pj), mx.i, cnj.oJ, 2.0F, 200).b("has_ancient_debris", a(cxa.pj)).a($$0);
+      nc.c(cqh.a(cxa.dY), mx.a, cxa.te, 0.1F, 200).b("has_basalt", a(cxa.dY)).a($$0);
+      nc.c(cqh.a(cxa.sK), mx.a, cxa.sJ, 0.1F, 200).b("has_cobbled_deepslate", a(cxa.sK)).a($$0);
+      b($$0, d, mx.i, cnj.ov, 0.1F, 100, "coal");
+      b($$0, e, mx.i, cnj.oD, 0.7F, 100, "iron_ingot");
+      b($$0, f, mx.i, cnj.oF, 0.7F, 100, "copper_ingot");
+      b($$0, g, mx.i, cnj.oH, 1.0F, 100, "gold_ingot");
+      b($$0, h, mx.i, cnj.ox, 1.0F, 100, "diamond");
+      b($$0, i, mx.i, cnj.oz, 0.2F, 100, "lapis_lazuli");
+      b($$0, j, mx.c, cnj.lG, 0.7F, 100, "redstone");
+      b($$0, k, mx.i, cnj.oy, 1.0F, 100, "emerald");
+      nc.b(cqh.a(cxa.hb), mx.i, cnj.oA, 0.2F, 100).b("has_nether_quartz_ore", a(cxa.hb)).a($$0, f(cnj.oA));
+      nc.b(cqh.a(cnj.oW, cnj.oV, cnj.oX, cnj.oY, cnj.oU, cnj.pN, cnj.pO, cnj.pP, cnj.pQ, cnj.uD), mx.i, cnj.sh, 0.1F, 100)
+         .b("has_golden_pickaxe", a((ctw)cnj.oW))
+         .b("has_golden_shovel", a((ctw)cnj.oV))
+         .b("has_golden_axe", a((ctw)cnj.oX))
+         .b("has_golden_hoe", a((ctw)cnj.oY))
+         .b("has_golden_sword", a((ctw)cnj.oU))
+         .b("has_golden_helmet", a((ctw)cnj.pN))
+         .b("has_golden_chestplate", a((ctw)cnj.pO))
+         .b("has_golden_leggings", a((ctw)cnj.pP))
+         .b("has_golden_boots", a((ctw)cnj.pQ))
+         .b("has_golden_horse_armor", a((ctw)cnj.uD))
+         .a($$0, f(cnj.sh));
+      nc.b(cqh.a(cnj.pb, cnj.pa, cnj.pc, cnj.pd, cnj.oZ, cnj.pF, cnj.pG, cnj.pH, cnj.pI, cnj.uC, cnj.pB, cnj.pC, cnj.pD, cnj.pE), mx.i, cnj.vr, 0.1F, 100)
+         .b("has_iron_pickaxe", a((ctw)cnj.pb))
+         .b("has_iron_shovel", a((ctw)cnj.pa))
+         .b("has_iron_axe", a((ctw)cnj.pc))
+         .b("has_iron_hoe", a((ctw)cnj.pd))
+         .b("has_iron_sword", a((ctw)cnj.oZ))
+         .b("has_iron_helmet", a((ctw)cnj.pF))
+         .b("has_iron_chestplate", a((ctw)cnj.pG))
+         .b("has_iron_leggings", a((ctw)cnj.pH))
+         .b("has_iron_boots", a((ctw)cnj.pI))
+         .b("has_iron_horse_armor", a((ctw)cnj.uC))
+         .b("has_chainmail_helmet", a((ctw)cnj.pB))
+         .b("has_chainmail_chestplate", a((ctw)cnj.pC))
+         .b("has_chainmail_leggings", a((ctw)cnj.pD))
+         .b("has_chainmail_boots", a((ctw)cnj.pE))
+         .a($$0, f(cnj.vr));
+      nc.b(cqh.a(cxa.pj), mx.i, cnj.oJ, 2.0F, 100).b("has_ancient_debris", a(cxa.pj)).a($$0, f(cnj.oJ));
+      a($$0, "smoking", cqo.r, crd::new, 100);
+      a($$0, "campfire_cooking", cqo.s, cpy::new, 600);
+      a($$0, mx.a, cxa.jD, cxa.b, 2);
+      i($$0, mx.a, cxa.nk, cxa.b);
+      i($$0, mx.a, cxa.eH, cxa.b);
+      a($$0, mx.a, cxa.jK, cxa.b, 2);
+      i($$0, mx.a, cxa.fj, cxa.b);
+      nd.a(cqh.a(cxa.b), mx.a, cxa.eK).b("has_stone", a(cxa.b)).a($$0, "chiseled_stone_bricks_stone_from_stonecutting");
+      nd.a(cqh.a(cxa.b), mx.b, cxa.nK).b("has_stone", a(cxa.b)).a($$0, "stone_brick_walls_from_stone_stonecutting");
+      i($$0, mx.a, cxa.aX, cxa.aV);
+      a($$0, mx.a, cxa.jF, cxa.aV, 2);
+      a($$0, mx.a, cxa.jG, cxa.aV, 2);
+      a($$0, mx.a, cxa.jG, cxa.aX, 2);
+      i($$0, mx.a, cxa.fD, cxa.aV);
+      i($$0, mx.b, cxa.nP, cxa.aV);
+      i($$0, mx.a, cxa.aW, cxa.aV);
+      i($$0, mx.a, cxa.jr, cxa.jp);
+      a($$0, mx.a, cxa.jO, cxa.jp, 2);
+      a($$0, mx.a, cxa.jP, cxa.jp, 2);
+      a($$0, mx.a, cxa.jP, cxa.jr, 2);
+      i($$0, mx.a, cxa.js, cxa.jp);
+      i($$0, mx.b, cxa.nH, cxa.jp);
+      i($$0, mx.a, cxa.jq, cxa.jp);
+      nd.a(cqh.a(cxa.hd), mx.a, cxa.jN, 2).b("has_quartz_block", a(cxa.hd)).a($$0, "quartz_slab_from_stonecutting");
+      i($$0, mx.a, cxa.hg, cxa.hd);
+      i($$0, mx.a, cxa.hf, cxa.hd);
+      i($$0, mx.a, cxa.he, cxa.hd);
+      i($$0, mx.a, cxa.pK, cxa.hd);
+      i($$0, mx.a, cxa.cQ, cxa.m);
+      a($$0, mx.a, cxa.jI, cxa.m, 2);
+      i($$0, mx.b, cxa.fP, cxa.m);
+      a($$0, mx.a, cxa.jK, cxa.eH, 2);
+      i($$0, mx.a, cxa.fj, cxa.eH);
+      nd.a(cqh.a(cxa.eH), mx.b, cxa.nK).b("has_stone_bricks", a(cxa.eH)).a($$0, "stone_brick_wall_from_stone_bricks_stonecutting");
+      i($$0, mx.a, cxa.eK, cxa.eH);
+      a($$0, mx.a, cxa.jJ, cxa.cj, 2);
+      i($$0, mx.a, cxa.fi, cxa.cj);
+      i($$0, mx.b, cxa.nF, cxa.cj);
+      a($$0, mx.a, cxa.jL, cxa.eM, 2);
+      i($$0, mx.a, cxa.fk, cxa.eM);
+      i($$0, mx.b, cxa.nL, cxa.eM);
+      a($$0, mx.a, cxa.jM, cxa.fn, 2);
+      i($$0, mx.a, cxa.fp, cxa.fn);
+      i($$0, mx.b, cxa.nM, cxa.fn);
+      i($$0, mx.a, cxa.pI, cxa.fn);
+      a($$0, mx.a, cxa.nC, cxa.kL, 2);
+      i($$0, mx.a, cxa.np, cxa.kL);
+      i($$0, mx.b, cxa.nO, cxa.kL);
+      a($$0, mx.a, cxa.jQ, cxa.kw, 2);
+      i($$0, mx.a, cxa.ky, cxa.kw);
+      i($$0, mx.a, cxa.kx, cxa.kw);
+      a($$0, mx.a, cxa.if, cxa.hZ, 2);
+      i($$0, mx.a, cxa.ic, cxa.hZ);
+      i($$0, mx.b, cxa.nG, cxa.hZ);
+      nd.a(cqh.a(cxa.ia), mx.a, cxa.ig, 2).b("has_prismarine_brick", a(cxa.ia)).a($$0, "prismarine_brick_slab_from_prismarine_stonecutting");
+      nd.a(cqh.a(cxa.ia), mx.a, cxa.id).b("has_prismarine_brick", a(cxa.ia)).a($$0, "prismarine_brick_stairs_from_prismarine_stonecutting");
+      a($$0, mx.a, cxa.ih, cxa.ib, 2);
+      i($$0, mx.a, cxa.ie, cxa.ib);
+      a($$0, mx.a, cxa.nB, cxa.g, 2);
+      i($$0, mx.a, cxa.no, cxa.g);
+      i($$0, mx.b, cxa.nN, cxa.g);
+      i($$0, mx.a, cxa.h, cxa.g);
+      a($$0, mx.a, cxa.nD, cxa.g, 2);
+      i($$0, mx.a, cxa.nq, cxa.g);
+      a($$0, mx.a, cxa.nD, cxa.h, 2);
+      i($$0, mx.a, cxa.nq, cxa.h);
+      i($$0, mx.a, cxa.dZ, cxa.dY);
+      a($$0, mx.a, cxa.nA, cxa.c, 2);
+      i($$0, mx.a, cxa.nn, cxa.c);
+      i($$0, mx.b, cxa.nJ, cxa.c);
+      i($$0, mx.a, cxa.d, cxa.c);
+      a($$0, mx.a, cxa.ns, cxa.c, 2);
+      i($$0, mx.a, cxa.ne, cxa.c);
+      a($$0, mx.a, cxa.ns, cxa.d, 2);
+      i($$0, mx.a, cxa.ne, cxa.d);
+      a($$0, mx.a, cxa.nE, cxa.e, 2);
+      i($$0, mx.a, cxa.nr, cxa.e);
+      i($$0, mx.b, cxa.nR, cxa.e);
+      i($$0, mx.a, cxa.f, cxa.e);
+      a($$0, mx.a, cxa.nv, cxa.e, 2);
+      i($$0, mx.a, cxa.nh, cxa.e);
+      a($$0, mx.a, cxa.nv, cxa.f, 2);
+      i($$0, mx.a, cxa.nh, cxa.f);
+      nd.a(cqh.a(cxa.eI), mx.a, cxa.nu, 2).b("has_mossy_stone_bricks", a(cxa.eI)).a($$0, "mossy_stone_brick_slab_from_mossy_stone_brick_stonecutting");
+      nd.a(cqh.a(cxa.eI), mx.a, cxa.ng).b("has_mossy_stone_bricks", a(cxa.eI)).a($$0, "mossy_stone_brick_stairs_from_mossy_stone_brick_stonecutting");
+      nd.a(cqh.a(cxa.eI), mx.b, cxa.nI).b("has_mossy_stone_bricks", a(cxa.eI)).a($$0, "mossy_stone_brick_wall_from_mossy_stone_brick_stonecutting");
+      a($$0, mx.a, cxa.nw, cxa.cn, 2);
+      i($$0, mx.a, cxa.ni, cxa.cn);
+      i($$0, mx.b, cxa.fQ, cxa.cn);
+      a($$0, mx.a, cxa.ny, cxa.jS, 2);
+      i($$0, mx.a, cxa.nl, cxa.jS);
+      a($$0, mx.a, cxa.nt, cxa.jU, 2);
+      i($$0, mx.a, cxa.nf, cxa.jU);
+      a($$0, mx.a, cxa.nz, cxa.jT, 2);
+      i($$0, mx.a, cxa.nm, cxa.jT);
+      nd.a(cqh.a(cxa.kz), mx.a, cxa.nx, 2).b("has_end_stone_brick", a(cxa.kz)).a($$0, "end_stone_brick_slab_from_end_stone_brick_stonecutting");
+      nd.a(cqh.a(cxa.kz), mx.a, cxa.nj).b("has_end_stone_brick", a(cxa.kz)).a($$0, "end_stone_brick_stairs_from_end_stone_brick_stonecutting");
+      nd.a(cqh.a(cxa.kz), mx.b, cxa.nQ).b("has_end_stone_brick", a(cxa.kz)).a($$0, "end_stone_brick_wall_from_end_stone_brick_stonecutting");
+      i($$0, mx.a, cxa.kz, cxa.fz);
+      a($$0, mx.a, cxa.nx, cxa.fz, 2);
+      i($$0, mx.a, cxa.nj, cxa.fz);
+      i($$0, mx.b, cxa.nQ, cxa.fz);
+      a($$0, mx.a, cxa.jE, cxa.jR, 2);
+      a($$0, mx.a, cxa.pu, cxa.pr, 2);
+      i($$0, mx.a, cxa.ps, cxa.pr);
+      i($$0, mx.b, cxa.pt, cxa.pr);
+      i($$0, mx.a, cxa.pv, cxa.pr);
+      i($$0, mx.b, cxa.pH, cxa.pr);
+      a($$0, mx.a, cxa.pE, cxa.pr, 2);
+      i($$0, mx.a, cxa.pD, cxa.pr);
+      i($$0, mx.a, cxa.py, cxa.pr);
+      i($$0, mx.a, cxa.pw, cxa.pr);
+      a($$0, mx.a, cxa.pz, cxa.pr, 2);
+      i($$0, mx.a, cxa.pA, cxa.pr);
+      i($$0, mx.b, cxa.pB, cxa.pr);
+      a($$0, mx.a, cxa.pE, cxa.pv, 2);
+      i($$0, mx.a, cxa.pD, cxa.pv);
+      i($$0, mx.a, cxa.pw, cxa.pv);
+      i($$0, mx.b, cxa.pH, cxa.pv);
+      a($$0, mx.a, cxa.pz, cxa.pv, 2);
+      i($$0, mx.a, cxa.pA, cxa.pv);
+      i($$0, mx.b, cxa.pB, cxa.pv);
+      i($$0, mx.a, cxa.py, cxa.pv);
+      a($$0, mx.a, cxa.pz, cxa.pw, 2);
+      i($$0, mx.a, cxa.pA, cxa.pw);
+      i($$0, mx.b, cxa.pB, cxa.pw);
+      a($$0, mx.a, cxa.rv, cxa.rf, 2);
+      i($$0, mx.a, cxa.rr, cxa.rf);
+      a($$0, mx.a, cxa.ru, cxa.re, 2);
+      i($$0, mx.a, cxa.rq, cxa.re);
+      a($$0, mx.a, cxa.rt, cxa.rd, 2);
+      i($$0, mx.a, cxa.rp, cxa.rd);
+      a($$0, mx.a, cxa.rs, cxa.rc, 2);
+      i($$0, mx.a, cxa.ro, cxa.rc);
+      a($$0, mx.a, cxa.rL, cxa.rD, 2);
+      i($$0, mx.a, cxa.rH, cxa.rD);
+      a($$0, mx.a, cxa.rK, cxa.rC, 2);
+      i($$0, mx.a, cxa.rG, cxa.rC);
+      a($$0, mx.a, cxa.rJ, cxa.rB, 2);
+      i($$0, mx.a, cxa.rF, cxa.rB);
+      a($$0, mx.a, cxa.rI, cxa.rA, 2);
+      i($$0, mx.a, cxa.rE, cxa.rA);
+      a($$0, mx.a, cxa.rf, cxa.qW, 4);
+      a($$0, mx.a, cxa.rr, cxa.qW, 4);
+      a($$0, mx.a, cxa.rv, cxa.qW, 8);
+      a($$0, mx.a, cxa.re, cxa.qX, 4);
+      a($$0, mx.a, cxa.rq, cxa.qX, 4);
+      a($$0, mx.a, cxa.ru, cxa.qX, 8);
+      a($$0, mx.a, cxa.rd, cxa.qY, 4);
+      a($$0, mx.a, cxa.rp, cxa.qY, 4);
+      a($$0, mx.a, cxa.rt, cxa.qY, 8);
+      a($$0, mx.a, cxa.rc, cxa.qZ, 4);
+      a($$0, mx.a, cxa.ro, cxa.qZ, 4);
+      a($$0, mx.a, cxa.rs, cxa.qZ, 8);
+      a($$0, mx.a, cxa.rD, cxa.rw, 4);
+      a($$0, mx.a, cxa.rH, cxa.rw, 4);
+      a($$0, mx.a, cxa.rL, cxa.rw, 8);
+      a($$0, mx.a, cxa.rC, cxa.ry, 4);
+      a($$0, mx.a, cxa.rG, cxa.ry, 4);
+      a($$0, mx.a, cxa.rK, cxa.ry, 8);
+      a($$0, mx.a, cxa.rB, cxa.rx, 4);
+      a($$0, mx.a, cxa.rF, cxa.rx, 4);
+      a($$0, mx.a, cxa.rJ, cxa.rx, 8);
+      a($$0, mx.a, cxa.rA, cxa.rz, 4);
+      a($$0, mx.a, cxa.rE, cxa.rz, 4);
+      a($$0, mx.a, cxa.rI, cxa.rz, 8);
+      a($$0, mx.a, cxa.sM, cxa.sK, 2);
+      i($$0, mx.a, cxa.sL, cxa.sK);
+      i($$0, mx.b, cxa.sN, cxa.sK);
+      i($$0, mx.a, cxa.ta, cxa.sK);
+      i($$0, mx.a, cxa.sO, cxa.sK);
+      a($$0, mx.a, cxa.sQ, cxa.sK, 2);
+      i($$0, mx.a, cxa.sP, cxa.sK);
+      i($$0, mx.b, cxa.sR, cxa.sK);
+      i($$0, mx.a, cxa.sW, cxa.sK);
+      a($$0, mx.a, cxa.sY, cxa.sK, 2);
+      i($$0, mx.a, cxa.sX, cxa.sK);
+      i($$0, mx.b, cxa.sZ, cxa.sK);
+      i($$0, mx.a, cxa.sS, cxa.sK);
+      a($$0, mx.a, cxa.sU, cxa.sK, 2);
+      i($$0, mx.a, cxa.sT, cxa.sK);
+      i($$0, mx.b, cxa.sV, cxa.sK);
+      a($$0, mx.a, cxa.sQ, cxa.sO, 2);
+      i($$0, mx.a, cxa.sP, cxa.sO);
+      i($$0, mx.b, cxa.sR, cxa.sO);
+      i($$0, mx.a, cxa.sW, cxa.sO);
+      a($$0, mx.a, cxa.sY, cxa.sO, 2);
+      i($$0, mx.a, cxa.sX, cxa.sO);
+      i($$0, mx.b, cxa.sZ, cxa.sO);
+      i($$0, mx.a, cxa.sS, cxa.sO);
+      a($$0, mx.a, cxa.sU, cxa.sO, 2);
+      i($$0, mx.a, cxa.sT, cxa.sO);
+      i($$0, mx.b, cxa.sV, cxa.sO);
+      a($$0, mx.a, cxa.sY, cxa.sW, 2);
+      i($$0, mx.a, cxa.sX, cxa.sW);
+      i($$0, mx.b, cxa.sZ, cxa.sW);
+      i($$0, mx.a, cxa.sS, cxa.sW);
+      a($$0, mx.a, cxa.sU, cxa.sW, 2);
+      i($$0, mx.a, cxa.sT, cxa.sW);
+      i($$0, mx.b, cxa.sV, cxa.sW);
+      a($$0, mx.a, cxa.sU, cxa.sS, 2);
+      i($$0, mx.a, cxa.sT, cxa.sS);
+      i($$0, mx.b, cxa.sV, cxa.sS);
       b().forEach($$1x -> a($$0, $$1x.a(), $$1x.b()));
-      a($$0, cnb.pI, mx.f, cnb.pQ);
-      a($$0, cnb.pJ, mx.f, cnb.pR);
-      a($$0, cnb.pH, mx.f, cnb.pP);
-      a($$0, cnb.pK, mx.f, cnb.pS);
-      a($$0, cnb.pc, mx.f, cnb.ph);
-      a($$0, cnb.pf, mx.e, cnb.pk);
-      a($$0, cnb.pe, mx.e, cnb.pj);
-      a($$0, cnb.pg, mx.e, cnb.pl);
-      a($$0, cnb.pd, mx.e, cnb.pi);
-      o($$0, cnb.xj, cnb.fm);
-      o($$0, cnb.xk, cnb.J);
-      o($$0, cnb.xl, cnb.cI);
-      o($$0, cnb.xm, cnb.J);
-      o($$0, cnb.xn, cnb.eC);
-      o($$0, cnb.xo, cnb.j);
-      o($$0, cnb.xp, cnb.gm);
-      o($$0, cnb.xq, cnb.J);
-      o($$0, cnb.xr, cnb.iI);
-      o($$0, cnb.xs, cnb.wu);
-      o($$0, cnb.xt, cnb.fm);
-      o($$0, cnb.xu, cnb.eI);
-      o($$0, cnb.xx, cnb.j);
-      o($$0, cnb.xv, cnb.hT);
-      o($$0, cnb.xw, cnb.hT);
-      o($$0, cnb.xy, cnb.hT);
-      o($$0, cnb.xz, cnb.hT);
-      b($$0, mx.a, cws.ae, cnb.dQ);
-      b($$0, cws.v, asp.C, 2);
-      h($$0, mx.b, cws.w, cws.jB);
-      b($$0, cnb.oj, cws.v);
-      c($$0, cnb.ok, cnb.oj);
-      e($$0, cnb.qk, cws.al);
-      e($$0, cnb.ql, cws.af);
-      e($$0, cnb.qm, cws.ag);
-      e($$0, cnb.qn, cws.ah);
-      e($$0, cnb.qo, cws.ai);
-      e($$0, cnb.qp, cws.aj);
-      e($$0, cnb.qq, cws.ak);
-      e($$0, cnb.qr, cws.am);
-      e($$0, cnb.qs, cnb.ci);
-      e($$0, cnb.qt, cws.ot);
-      e($$0, cnb.qu, cws.ok);
-      na.a(mx.a, cws.cm).a('#', asp.b).a('X', asp.j).b("###").b("XXX").b("###").b("has_book", a((cto)cnb.qM)).a($$0);
-      a($$0, cnb.rg, cws.bS, "orange_dye");
-      a($$0, cnb.ro, cws.kC, "cyan_dye", 2);
-      a($$0, cws.s, asp.w, 4);
-      a($$0, (cto)cws.at, (cto)cws.Z);
-      a($$0, (cto)cws.aB, (cto)cws.aj);
-      b($$0, cnb.od, cws.s);
-      c($$0, cnb.oe, cnb.od);
-      a($$0, cnb.rl, cnb.dL, "pink_dye", 1);
-      na.a(mx.e, cnb.xi).a('X', cnb.pq).a('#', cnb.oD).a('I', cnb.pm).b("X").b("#").b("I").b("has_copper_ingot", a((cto)cnb.oD)).a($$0);
-      na.a(mx.b, cnb.eB).a('#', cnb.qI).b(" # ").b("# #").b(" # ").b("has_brick", a(asp.aM)).a($$0, "decorated_pot_simple");
-      ng.a(cpv::new).a($$0, "decorated_pot");
+      a($$0, cnj.pK, mx.f, cnj.pS);
+      a($$0, cnj.pL, mx.f, cnj.pT);
+      a($$0, cnj.pJ, mx.f, cnj.pR);
+      a($$0, cnj.pM, mx.f, cnj.pU);
+      a($$0, cnj.pe, mx.f, cnj.pj);
+      a($$0, cnj.ph, mx.e, cnj.pm);
+      a($$0, cnj.pg, mx.e, cnj.pl);
+      a($$0, cnj.pi, mx.e, cnj.pn);
+      a($$0, cnj.pf, mx.e, cnj.pk);
+      o($$0, cnj.xm, cnj.fm);
+      o($$0, cnj.xn, cnj.J);
+      o($$0, cnj.xo, cnj.cI);
+      o($$0, cnj.xp, cnj.J);
+      o($$0, cnj.xq, cnj.eC);
+      o($$0, cnj.xr, cnj.j);
+      o($$0, cnj.xs, cnj.gm);
+      o($$0, cnj.xt, cnj.J);
+      o($$0, cnj.xu, cnj.iI);
+      o($$0, cnj.xv, cnj.wx);
+      o($$0, cnj.xw, cnj.fm);
+      o($$0, cnj.xx, cnj.eI);
+      o($$0, cnj.xA, cnj.j);
+      o($$0, cnj.xy, cnj.hT);
+      o($$0, cnj.xz, cnj.hT);
+      o($$0, cnj.xB, cnj.hT);
+      o($$0, cnj.xC, cnj.hT);
+      b($$0, mx.a, cxa.ae, cnj.dQ);
+      b($$0, cxa.v, asq.C, 2);
+      h($$0, mx.b, cxa.w, cxa.jB);
+      b($$0, cnj.oj, cxa.v);
+      c($$0, cnj.ok, cnj.oj);
+      e($$0, cnj.qm, cxa.al);
+      e($$0, cnj.qn, cxa.af);
+      e($$0, cnj.qo, cxa.ag);
+      e($$0, cnj.qp, cxa.ah);
+      e($$0, cnj.qq, cxa.ai);
+      e($$0, cnj.qr, cxa.aj);
+      e($$0, cnj.qs, cxa.ak);
+      e($$0, cnj.qt, cxa.am);
+      e($$0, cnj.qu, cnj.ci);
+      e($$0, cnj.qv, cxa.ot);
+      e($$0, cnj.qw, cxa.ok);
+      na.a(mx.a, cxa.cm).a('#', asq.b).a('X', asq.j).b("###").b("XXX").b("###").b("has_book", a((ctw)cnj.qO)).a($$0);
+      a($$0, cnj.ri, cxa.bS, "orange_dye");
+      a($$0, cnj.rq, cxa.kC, "cyan_dye", 2);
+      a($$0, cxa.s, asq.w, 4);
+      a($$0, (ctw)cxa.at, (ctw)cxa.Z);
+      a($$0, (ctw)cxa.aB, (ctw)cxa.aj);
+      b($$0, cnj.od, cxa.s);
+      c($$0, cnj.oe, cnj.od);
+      a($$0, cnj.rn, cnj.dL, "pink_dye", 1);
+      na.a(mx.e, cnj.xl).a('X', cnj.ps).a('#', cnj.oF).a('I', cnj.po).b("X").b("#").b("I").b("has_copper_ingot", a((ctw)cnj.oF)).a($$0);
+      na.a(mx.b, cnj.eB).a('#', cnj.qK).b(" # ").b("# #").b(" # ").b("has_brick", a(asq.aM)).a($$0, "decorated_pot_simple");
+      ng.a(cqd::new).a($$0, "decorated_pot");
    }
 
    public static Stream<nk.a> b() {
-      return Stream.of(cnb.xm, cnb.xl, cnb.xp, cnb.xz, cnb.xy, cnb.xt, cnb.xk, cnb.xw, cnb.xx, cnb.xs, cnb.xu, cnb.xr, cnb.xq, cnb.xo, cnb.xv, cnb.xn)
-         .map($$0 -> new nk.a($$0, new ahg(c($$0) + "_smithing_trim")));
+      return Stream.of(cnj.xp, cnj.xo, cnj.xs, cnj.xC, cnj.xB, cnj.xw, cnj.xn, cnj.xz, cnj.xA, cnj.xv, cnj.xx, cnj.xu, cnj.xt, cnj.xr, cnj.xy, cnj.xq)
+         .map($$0 -> new nk.a($$0, new ahh(c($$0) + "_smithing_trim")));
    }
 
-   public static record a(cmt a, ahg b) {
+   public static record a(cnb a, ahh b) {
    }
 }

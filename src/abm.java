@@ -1,32 +1,31 @@
-public class abm implements xf<za> {
-   private final int a;
-   private final byte b;
+public record abm(adh d, byte e) implements xg<zb> {
+   public static final byte a = 1;
+   public static final byte b = 2;
+   public static final byte c = 3;
 
-   public abm(blv $$0, byte $$1) {
-      this.a = $$0.aj();
-      this.b = $$1;
-   }
-
-   public abm(ui $$0) {
-      this.a = $$0.n();
-      this.b = $$0.readByte();
+   public abm(uj $$0) {
+      this(new adh($$0), $$0.readByte());
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.a);
-      $$0.k(this.b);
+   public void a(uj $$0) {
+      this.d.a($$0);
+      $$0.k(this.e);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public blv a(ctp $$0) {
-      return $$0.a(this.a);
+   public boolean a(byte $$0) {
+      return (this.e & $$0) != 0;
    }
 
-   public byte a() {
-      return this.b;
+   public adh a() {
+      return this.d;
+   }
+
+   public byte d() {
+      return this.e;
    }
 }

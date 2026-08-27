@@ -11,6 +11,6 @@ public class bdi extends Schema {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, bbw.B, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", bbw.w.in($$0))), "SpawnData", bbw.w.in($$0)));
+      $$0.registerType(true, bbw.C, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", bbw.x.in($$0))), "SpawnData", bbw.x.in($$0)));
    }
 }

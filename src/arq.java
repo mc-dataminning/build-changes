@@ -1,18 +1,41 @@
-public class arq {
-   private static final int h = 20;
-   private static final int i = 600;
-   private static final int j = 12000;
-   private static final int k = 24000;
-   private static final int l = 6000;
-   public static final arp a = new arp(ars.ph, 20, 600, true);
-   public static final arp b = new arp(ars.oM, 12000, 24000, false);
-   public static final arp c = new arp(ars.oN, 0, 0, true);
-   public static final arp d = new arp(ars.pe, 0, 0, true);
-   public static final arp e = new arp(ars.pf, 6000, 24000, true);
-   public static final arp f = a(ars.pG);
-   public static final arp g = a(ars.pg);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static arp a(ih<arr> $$0) {
-      return new arp($$0, 12000, 24000, false);
+public class arq {
+   public static final Codec<arq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ars.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, arq::new)
+   );
+   private final ih<ars> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
+
+   public arq(ih<ars> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   public ih<ars> a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
    }
 }

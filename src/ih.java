@@ -11,23 +11,30 @@ public interface ih<T> {
 
    boolean b();
 
-   boolean a(ahg var1);
+   boolean a(ahh var1);
 
-   boolean a(ahf<T> var1);
+   boolean a(ahg<T> var1);
 
-   boolean a(Predicate<ahf<T>> var1);
+   boolean a(Predicate<ahg<T>> var1);
 
-   boolean a(asw<T> var1);
+   boolean a(asx<T> var1);
 
-   Stream<asw<T>> c();
+   @Deprecated
+   boolean a(ih<T> var1);
 
-   Either<ahf<T>, T> d();
+   Stream<asx<T>> c();
 
-   Optional<ahf<T>> e();
+   Either<ahg<T>, T> d();
+
+   Optional<ahg<T>> e();
 
    ih.b f();
 
    boolean a(ik<T> var1);
+
+   default String g() {
+      return this.e().map($$0 -> $$0.a().toString()).orElse("[unregistered]");
+   }
 
    static <T> ih<T> a(T $$0) {
       return new ih.a<>($$0);
@@ -40,32 +47,37 @@ public interface ih<T> {
       }
 
       @Override
-      public boolean a(ahg $$0) {
+      public boolean a(ahh $$0) {
          return false;
       }
 
       @Override
-      public boolean a(ahf<T> $$0) {
+      public boolean a(ahg<T> $$0) {
          return false;
       }
 
       @Override
-      public boolean a(asw<T> $$0) {
+      public boolean a(asx<T> $$0) {
          return false;
       }
 
       @Override
-      public boolean a(Predicate<ahf<T>> $$0) {
+      public boolean a(ih<T> $$0) {
+         return this.a.equals($$0.a());
+      }
+
+      @Override
+      public boolean a(Predicate<ahg<T>> $$0) {
          return false;
       }
 
       @Override
-      public Either<ahf<T>, T> d() {
+      public Either<ahg<T>, T> d() {
          return Either.right(this.a);
       }
 
       @Override
-      public Optional<ahf<T>> e() {
+      public Optional<ahg<T>> e() {
          return Optional.empty();
       }
 
@@ -85,7 +97,7 @@ public interface ih<T> {
       }
 
       @Override
-      public Stream<asw<T>> c() {
+      public Stream<asx<T>> c() {
          return Stream.of();
       }
    }
@@ -97,21 +109,21 @@ public interface ih<T> {
 
    public static class c<T> implements ih<T> {
       private final ik<T> a;
-      private Set<asw<T>> b = Set.of();
+      private Set<asx<T>> b = Set.of();
       private final ih.c.a c;
       @Nullable
-      private ahf<T> d;
+      private ahg<T> d;
       @Nullable
       private T e;
 
-      protected c(ih.c.a $$0, ik<T> $$1, @Nullable ahf<T> $$2, @Nullable T $$3) {
+      protected c(ih.c.a $$0, ik<T> $$1, @Nullable ahg<T> $$2, @Nullable T $$3) {
          this.a = $$1;
          this.c = $$0;
          this.d = $$2;
          this.e = $$3;
       }
 
-      public static <T> ih.c<T> a(ik<T> $$0, ahf<T> $$1) {
+      public static <T> ih.c<T> a(ik<T> $$0, ahg<T> $$1) {
          return new ih.c<>(ih.c.a.a, $$0, $$1, null);
       }
 
@@ -120,7 +132,7 @@ public interface ih<T> {
          return new ih.c<>(ih.c.a.b, $$0, null, $$1);
       }
 
-      public ahf<T> g() {
+      public ahg<T> h() {
          if (this.d == null) {
             throw new IllegalStateException("Trying to access unbound value '" + this.e + "' from registry " + this.a);
          } else {
@@ -138,23 +150,28 @@ public interface ih<T> {
       }
 
       @Override
-      public boolean a(ahg $$0) {
-         return this.g().a().equals($$0);
+      public boolean a(ahh $$0) {
+         return this.h().a().equals($$0);
       }
 
       @Override
-      public boolean a(ahf<T> $$0) {
-         return this.g() == $$0;
+      public boolean a(ahg<T> $$0) {
+         return this.h() == $$0;
       }
 
       @Override
-      public boolean a(asw<T> $$0) {
+      public boolean a(asx<T> $$0) {
          return this.b.contains($$0);
       }
 
       @Override
-      public boolean a(Predicate<ahf<T>> $$0) {
-         return $$0.test(this.g());
+      public boolean a(ih<T> $$0) {
+         return $$0.a(this.h());
+      }
+
+      @Override
+      public boolean a(Predicate<ahg<T>> $$0) {
+         return $$0.test(this.h());
       }
 
       @Override
@@ -163,13 +180,13 @@ public interface ih<T> {
       }
 
       @Override
-      public Either<ahf<T>, T> d() {
-         return Either.left(this.g());
+      public Either<ahg<T>, T> d() {
+         return Either.left(this.h());
       }
 
       @Override
-      public Optional<ahf<T>> e() {
-         return Optional.of(this.g());
+      public Optional<ahg<T>> e() {
+         return Optional.of(this.h());
       }
 
       @Override
@@ -182,7 +199,7 @@ public interface ih<T> {
          return this.d != null && this.e != null;
       }
 
-      void b(ahf<T> $$0) {
+      void b(ahg<T> $$0) {
          if (this.d != null && $$0 != this.d) {
             throw new IllegalStateException("Can't change holder key: existing=" + this.d + ", new=" + $$0);
          } else {
@@ -198,12 +215,12 @@ public interface ih<T> {
          }
       }
 
-      void a(Collection<asw<T>> $$0) {
+      void a(Collection<asx<T>> $$0) {
          this.b = Set.copyOf($$0);
       }
 
       @Override
-      public Stream<asw<T>> c() {
+      public Stream<asx<T>> c() {
          return this.b.stream();
       }
 

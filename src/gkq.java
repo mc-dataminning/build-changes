@@ -1,29 +1,65 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+public class gkq implements gkw {
+   private static final int a = 1200;
+   private static final vg b = vg.c("tutorial.craft_planks.title");
+   private static final vg c = vg.c("tutorial.craft_planks.description");
+   private final gkv d;
+   private fab e;
+   private int f;
 
-public class gkq {
-   private final float a;
-   private final AtomicReference<gkq.a> b = new AtomicReference<>();
-
-   public gkq(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public gkq(gkv $$0) {
+      this.d = $$0;
    }
 
-   public void a(eva $$0, vf $$1) {
-      gkq.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gkq.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gkx.f);
+      } else {
+         if (this.f == 1) {
+            fsv $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.fS().a(asq.b)) {
+                  this.d.a(gkx.f);
+                  return;
+               }
+
+               if (a($$0, asq.b)) {
+                  this.d.a(gkx.f);
+                  return;
+               }
+            }
+         }
+
+         if (this.f >= 1200 && this.e == null) {
+            this.e = new fab(fab.a.e, b, c, false);
+            this.d.e().ay().a(this.e);
+         }
       }
    }
 
-   static class a {
-      final vf a;
-      final RateLimiter b;
-
-      a(vf $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
       }
+   }
+
+   @Override
+   public void a(cng $$0) {
+      if ($$0.a(asq.b)) {
+         this.d.a(gkx.f);
+      }
+   }
+
+   public static boolean a(fsv $$0, asx<cnb> $$1) {
+      for (ih<cnb> $$2 : kd.h.c($$1)) {
+         if ($$0.j().a(asd.b.b($$2.a())) > 0) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

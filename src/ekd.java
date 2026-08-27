@@ -1,59 +1,64 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record ekd(Optional<Long> b, egv c) implements ejv {
-   public static final Codec<ekd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atw.a(Codec.LONG, "period").forGetter(ekd::c), egv.a.fieldOf("value").forGetter(ekd::d)).apply($$0, ekd::new)
+public record ekd(ih<cwy> b, Optional<cz> c) implements eke {
+   public static final Codec<ekd> a = atx.a(
+      RecordCodecBuilder.create($$0 -> $$0.group(kd.e.r().fieldOf("block").forGetter(ekd::c), atx.a(cz.a, "properties").forGetter(ekd::d)).apply($$0, ekd::new)),
+      ekd::a
    );
 
-   @Override
-   public ejw b() {
-      return ejx.r;
+   private static DataResult<ekd> a(ekd $$0) {
+      return $$0.d()
+         .flatMap($$1 -> $$1.a($$0.c().a().n()))
+         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
+         .orElse(DataResult.success($$0));
    }
 
    @Override
-   public Set<eje<?>> a() {
-      return this.c.a();
+   public ekf b() {
+      return ekg.j;
    }
 
-   public boolean a(egw $$0) {
-      and $$1 = $$0.d();
-      long $$2 = $$1.Y();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   @Override
+   public Set<ejn<?>> a() {
+      return Set.of(ejq.g);
    }
 
-   public static ekd.a a(egv $$0) {
+   public boolean a(ehf $$0) {
+      djp $$1 = $$0.c(ejq.g);
+      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   }
+
+   public static ekd.a a(cwy $$0) {
       return new ekd.a($$0);
    }
 
-   public Optional<Long> c() {
+   public ih<cwy> c() {
       return this.b;
    }
 
-   public egv d() {
+   public Optional<cz> d() {
       return this.c;
    }
 
-   public static class a implements ejv.a {
-      private Optional<Long> a = Optional.empty();
-      private final egv b;
+   public static class a implements eke.a {
+      private final ih<cwy> a;
+      private Optional<cz> b = Optional.empty();
 
-      public a(egv $$0) {
-         this.b = $$0;
+      public a(cwy $$0) {
+         this.a = $$0.r();
       }
 
-      public ekd.a a(long $$0) {
-         this.a = Optional.of($$0);
+      public ekd.a a(cz.a $$0) {
+         this.b = $$0.b();
          return this;
       }
 
-      public ekd a() {
+      @Override
+      public eke build() {
          return new ekd(this.a, this.b);
       }
    }

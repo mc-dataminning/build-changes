@@ -1,47 +1,52 @@
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bio {
-   private bio() {
+public interface bio {
+   bin a();
+
+   static <T> bio.b<T> a(T $$0, int $$1) {
+      return new bio.b<>($$0, bin.a($$1));
    }
 
-   public static int a(List<? extends bin> $$0) {
-      long $$1 = 0L;
+   public static class a implements bio {
+      private final bin a;
 
-      for (bin $$2 : $$0) {
-         $$1 += (long)$$2.a().a();
+      public a(int $$0) {
+         this.a = bin.a($$0);
       }
 
-      if ($$1 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-      } else {
-         return (int)$$1;
+      public a(bin $$0) {
+         this.a = $$0;
       }
-   }
 
-   public static <T extends bin> Optional<T> a(auv $$0, List<T> $$1, int $$2) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$3 = $$0.a($$2);
-         return a($$1, $$3);
+      @Override
+      public bin a() {
+         return this.a;
       }
    }
 
-   public static <T extends bin> Optional<T> a(List<T> $$0, int $$1) {
-      for (T $$2 : $$0) {
-         $$1 -= $$2.a().a();
-         if ($$1 < 0) {
-            return Optional.of($$2);
-         }
+   public static class b<T> implements bio {
+      private final T a;
+      private final bin b;
+
+      b(T $$0, bin $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return Optional.empty();
-   }
+      public T b() {
+         return this.a;
+      }
 
-   public static <T extends bin> Optional<T> a(auv $$0, List<T> $$1) {
-      return a($$0, $$1, a($$1));
+      @Override
+      public bin a() {
+         return this.b;
+      }
+
+      public static <E> Codec<bio.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bio.b::b), bin.a.fieldOf("weight").forGetter(bio.b::a)).apply($$1, bio.b::new)
+         );
+      }
    }
 }

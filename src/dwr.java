@@ -1,23 +1,29 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public class dwr<P extends dwq> {
-   public static final dwr<dws> a = a("trunk_vine", dws.a);
-   public static final dwr<dwp> b = a("leave_vine", dwp.a);
-   public static final dwr<dwo> c = a("cocoa", dwo.a);
-   public static final dwr<dwn> d = a("beehive", dwn.a);
-   public static final dwr<dwl> e = a("alter_ground", dwl.a);
-   public static final dwr<dwm> f = a("attached_to_leaves", dwm.a);
-   private final Codec<P> g;
+public class dwr extends dwh {
+   public static final Codec<dwr> b = bim.b(djp.b).comapFlatMap(dwr::a, $$0 -> $$0.c).fieldOf("entries").codec();
+   private final bim<djp> c;
 
-   private static <P extends dwq> dwr<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.Z, $$0, new dwr<>($$1));
+   private static DataResult<dwr> a(bim<djp> $$0) {
+      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new dwr($$0));
    }
 
-   private dwr(Codec<P> $$0) {
-      this.g = $$0;
+   public dwr(bim<djp> $$0) {
+      this.c = $$0;
    }
 
-   public Codec<P> a() {
-      return this.g;
+   public dwr(bim.a<djp> $$0) {
+      this($$0.a());
+   }
+
+   @Override
+   protected dwi<?> a() {
+      return dwi.b;
+   }
+
+   @Override
+   public djp a(auw $$0, hx $$1) {
+      return this.c.a($$0).orElseThrow(IllegalStateException::new);
    }
 }

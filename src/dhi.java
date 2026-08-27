@@ -1,80 +1,34 @@
-public abstract class dhi {
-   private static final int a = 5;
-   private int b;
+import javax.annotation.Nullable;
 
-   protected abstract void a(ctp var1, hx var2, djh var3);
+public class dhi extends dij {
+   public dhi(hx $$0, djp $$1) {
+      super(dhf.J, $$0, $$1);
+   }
 
-   protected abstract void b(ctp var1, hx var2, djh var3);
+   @Override
+   public doi.d c() {
+      return new dhi.a(this.aE_());
+   }
 
-   protected abstract void a(ctp var1, hx var2, djh var3, int var4, int var5);
-
-   protected abstract boolean a(cfi var1);
-
-   public void a(cfi $$0, ctp $$1, hx $$2, djh $$3) {
-      int $$4 = this.b++;
-      if ($$4 == 0) {
-         this.a($$1, $$2, $$3);
-         $$1.a($$0, dnr.k, $$2);
-         d($$1, $$2, $$3);
+   protected class a extends dij.a {
+      public a(hx $$1) {
+         super($$1);
       }
 
-      this.a($$1, $$2, $$3, $$4, this.b);
-   }
-
-   public void b(cfi $$0, ctp $$1, hx $$2, djh $$3) {
-      int $$4 = this.b--;
-      if (this.b == 0) {
-         this.b($$1, $$2, $$3);
-         $$1.a($$0, dnr.j, $$2);
+      @Override
+      public int a() {
+         return 16;
       }
 
-      this.a($$1, $$2, $$3, $$4, this.b);
-   }
-
-   private int a(ctp $$0, hx $$1) {
-      int $$2 = $$1.u();
-      int $$3 = $$1.v();
-      int $$4 = $$1.w();
-      float $$5 = 5.0F;
-      elo $$6 = new elo(
-         (double)((float)$$2 - 5.0F),
-         (double)((float)$$3 - 5.0F),
-         (double)((float)$$4 - 5.0F),
-         (double)((float)($$2 + 1) + 5.0F),
-         (double)((float)($$3 + 1) + 5.0F),
-         (double)((float)($$4 + 1) + 5.0F)
-      );
-      return $$0.a(dnf.a(cfi.class), $$6, this::a).size();
-   }
-
-   public void c(ctp $$0, hx $$1, djh $$2) {
-      int $$3 = this.a($$0, $$1);
-      int $$4 = this.b;
-      if ($$4 != $$3) {
-         boolean $$5 = $$3 != 0;
-         boolean $$6 = $$4 != 0;
-         if ($$5 && !$$6) {
-            this.a($$0, $$1, $$2);
-            $$0.a(null, dnr.k, $$1);
-         } else if (!$$5) {
-            this.b($$0, $$1, $$2);
-            $$0.a(null, dnr.j, $$1);
-         }
-
-         this.b = $$3;
+      @Override
+      public boolean a(ane $$0, hx $$1, ih<dnz> $$2, @Nullable dnz.a $$3) {
+         int $$4 = this.a($$0, this.c, dhi.this.r());
+         return $$4 != 0 && doi.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
       }
 
-      this.a($$0, $$1, $$2, $$4, $$3);
-      if ($$3 > 0) {
-         d($$0, $$1, $$2);
+      private int a(ctx $$0, hx $$1, djp $$2) {
+         ic $$3 = $$2.c(cxl.b).g();
+         return $$0.c($$1.a($$3), $$3);
       }
-   }
-
-   public int a() {
-      return this.b;
-   }
-
-   private static void d(ctp $$0, hx $$1, djh $$2) {
-      $$0.a($$1, $$2.b(), 5);
    }
 }

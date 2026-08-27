@@ -1,62 +1,23 @@
-import javax.annotation.Nullable;
+public class fwe implements fvt<dif> {
+   private final fjr a;
 
-public class fwe implements css {
-   private final int c;
-   private final int d;
-   protected final fwd[][] a;
-   protected final ctp b;
-
-   fwe(ctp $$0, int $$1, int $$2, fwd[][] $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.a = $$3;
+   public fwe(fvu.a $$0) {
+      this.a = new fjr($$0.a(fni.n));
    }
 
-   @Override
-   public djh a_(hx $$0) {
-      int $$1 = iz.a($$0.u()) - this.c;
-      int $$2 = iz.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].b($$0);
-   }
-
-   @Override
-   public eer b_(hx $$0) {
-      int $$1 = iz.a($$0.u()) - this.c;
-      int $$2 = iz.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].b($$0).u();
-   }
-
-   @Override
-   public float a(ic $$0, boolean $$1) {
-      return this.b.a($$0, $$1);
-   }
-
-   @Override
-   public eeg z_() {
-      return this.b.z_();
-   }
-
-   @Nullable
-   @Override
-   public dgv c_(hx $$0) {
-      int $$1 = iz.a($$0.u()) - this.c;
-      int $$2 = iz.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].a($$0);
-   }
-
-   @Override
-   public int a(hx $$0, cta $$1) {
-      return this.b.a($$0, $$1);
-   }
-
-   @Override
-   public int J_() {
-      return this.b.J_();
-   }
-
-   @Override
-   public int K_() {
-      return this.b.K_();
+   public void a(dif $$0, float $$1, eqk $$2, ftt $$3, int $$4, int $$5) {
+      djp $$6 = $$0.r();
+      if ($$6.c(dbi.d)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$7 = $$6.c(dbi.b).h().p();
+         $$2.a(a.d.rotationDegrees(-$$7));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         eqo $$8 = fwc.a.a($$3, fub::c);
+         this.a.b($$2, $$8, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$2.b();
+      }
    }
 }

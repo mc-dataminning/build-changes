@@ -1,60 +1,146 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eif extends eii {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eif> a = RecordCodecBuilder.create($$0 -> a($$0).and(ahg.a.fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, eif::new));
-   private final ahg c;
+public class eif extends eir {
+   private static final Map<ahh, eif.c> b = Stream.of(eif.a.a, eif.d.b, eif.e.b).collect(Collectors.toMap(eif.c::a, Function.identity()));
+   private static final Codec<eif.c> c = ahh.a.comapFlatMap($$0 -> {
+      eif.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, eif.c::a);
+   private static final MapCodec<eif.b> d = atx.a("formula", "parameters", c, eif.b::a, eif.c::b);
+   public static final Codec<eif> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and($$0.group(kd.f.r().fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, eif::new)
+   );
+   private final ih<crr> e;
+   private final eif.b f;
 
-   private eif(List<ejv> $$0, ahg $$1) {
+   private eif(List<eke> $$0, ih<crr> $$1, eif.b $$2) {
       super($$0);
-      this.c = $$1;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public eik b() {
-      return eil.B;
+   public eit b() {
+      return eiu.r;
    }
 
    @Override
-   public void a(ehf $$0) {
-      egy<eij> $$1 = new egy<>(ehb.b, this.c);
-      if ($$0.a($$1)) {
-         $$0.b("Function " + this.c + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.c + "}", $$1)), () -> $$0.b("Unknown function table called " + this.c));
+   public Set<ejn<?>> a() {
+      return ImmutableSet.of(ejq.i);
+   }
+
+   @Override
+   public cng a(cng $$0, ehf $$1) {
+      cng $$2 = $$1.c(ejq.i);
+      if ($$2 != null) {
+         int $$3 = crt.a(this.e.a(), $$2);
+         int $$4 = this.f.a($$1.b(), $$0.L(), $$3);
+         $$0.f($$4);
+      }
+
+      return $$0;
+   }
+
+   public static eir.a<?> a(crr $$0, float $$1, int $$2) {
+      return a($$3 -> new eif($$3, $$0.j(), new eif.a($$2, $$1)));
+   }
+
+   public static eir.a<?> a(crr $$0) {
+      return a($$1 -> new eif($$1, $$0.j(), new eif.d()));
+   }
+
+   public static eir.a<?> b(crr $$0) {
+      return a($$1 -> new eif($$1, $$0.j(), new eif.e(1)));
+   }
+
+   public static eir.a<?> a(crr $$0, int $$1) {
+      return a($$2 -> new eif($$2, $$0.j(), new eif.e($$1)));
+   }
+
+   static record a(int b, float c) implements eif.b {
+      private static final Codec<eif.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(eif.a::b), Codec.FLOAT.fieldOf("probability").forGetter(eif.a::c)).apply($$0, eif.a::new)
+      );
+      public static final eif.c a = new eif.c(new ahh("binomial_with_bonus_count"), d);
+
+      @Override
+      public int a(auw $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
+            }
+         }
+
+         return $$1;
+      }
+
+      @Override
+      public eif.c a() {
+         return a;
       }
    }
 
-   @Override
-   protected cmy a(cmy $$0, egw $$1) {
-      eij $$2 = $$1.a().getElement(ehb.b, this.c);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c);
-         return $$0;
-      } else {
-         egw.c<?> $$3 = egw.a($$2);
-         if ($$1.b($$3)) {
-            cmy var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
+   interface b {
+      int a(auw var1, int var2, int var3);
+
+      eif.c a();
+   }
+
+   static record c(ahh a, Codec<? extends eif.b> b) {
+   }
+
+   static record d() implements eif.b {
+      public static final Codec<eif.d> a = Codec.unit(eif.d::new);
+      public static final eif.c b = new eif.c(new ahh("ore_drops"), a);
+
+      @Override
+      public int a(auw $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
             }
 
-            return var5;
+            return $$1 * ($$3 + 1);
          } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
+            return $$1;
          }
+      }
+
+      @Override
+      public eif.c a() {
+         return b;
       }
    }
 
-   public static eii.a<?> a(ahg $$0) {
-      return a($$1 -> new eif($$1, $$0));
+   static record e(int c) implements eif.b {
+      public static final Codec<eif.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(eif.e::b)).apply($$0, eif.e::new)
+      );
+      public static final eif.c b = new eif.c(new ahh("uniform_bonus_count"), a);
+
+      @Override
+      public int a(auw $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
+      }
+
+      @Override
+      public eif.c a() {
+         return b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

@@ -20,28 +20,28 @@ public record bp(
    Optional<bp> n,
    Optional<String> o
 ) {
-   public static final Codec<bp> a = atw.a(
+   public static final Codec<bp> a = atx.a(
       "EntityPredicate",
       $$0 -> RecordCodecBuilder.create(
             $$1 -> $$1.group(
-                     atw.a(br.a, "type").forGetter(bp::a),
-                     atw.a(bg.a, "distance").forGetter(bp::b),
-                     atw.a(ci.a, "location").forGetter(bp::c),
-                     atw.a(ci.a, "stepping_on").forGetter(bp::d),
-                     atw.a(cl.a, "effects").forGetter(bp::e),
-                     atw.a(cm.a, "nbt").forGetter(bp::f),
-                     atw.a(bn.a, "flags").forGetter(bp::g),
-                     atw.a(bm.a, "equipment").forGetter(bp::h),
-                     atw.a(bq.a, "type_specific").forGetter(bp::i),
-                     atw.a($$0, "vehicle").forGetter(bp::j),
-                     atw.a($$0, "passenger").forGetter(bp::k),
-                     atw.a($$0, "targeted_entity").forGetter(bp::l),
-                     atw.a(Codec.STRING, "team").forGetter(bp::m)
+                     atx.a(br.a, "type").forGetter(bp::a),
+                     atx.a(bg.a, "distance").forGetter(bp::b),
+                     atx.a(ci.a, "location").forGetter(bp::c),
+                     atx.a(ci.a, "stepping_on").forGetter(bp::d),
+                     atx.a(cl.a, "effects").forGetter(bp::e),
+                     atx.a(cm.a, "nbt").forGetter(bp::f),
+                     atx.a(bn.a, "flags").forGetter(bp::g),
+                     atx.a(bm.a, "equipment").forGetter(bp::h),
+                     atx.a(bq.a, "type_specific").forGetter(bp::i),
+                     atx.a($$0, "vehicle").forGetter(bp::j),
+                     atx.a($$0, "passenger").forGetter(bp::k),
+                     atx.a($$0, "targeted_entity").forGetter(bp::l),
+                     atx.a(Codec.STRING, "team").forGetter(bp::m)
                   )
                   .apply($$1, bp::new)
          )
    );
-   public static final Codec<bb> b = atw.a(bb.a, a, bp::a);
+   public static final Codec<bb> b = atx.a(bb.a, a, bp::a);
 
    public static bb a(bp.a $$0) {
       return a($$0.b());
@@ -56,15 +56,15 @@ public record bp(
    }
 
    public static bb a(bp $$0) {
-      ejv $$1 = ejy.a(egw.b.a, $$0).build();
+      eke $$1 = ekh.a(ehf.b.a, $$0).build();
       return new bb(List.of($$1));
    }
 
-   public boolean a(ane $$0, @Nullable blv $$1) {
-      return this.a($$0.z(), $$0.dk(), $$1);
+   public boolean a(anf $$0, @Nullable blw $$1) {
+      return this.a($$0.z(), $$0.dj(), $$1);
    }
 
-   public boolean a(and $$0, @Nullable elt $$1, @Nullable blv $$2) {
+   public boolean a(ane $$0, @Nullable emc $$1, @Nullable blw $$2) {
       if ($$2 == null) {
          return false;
       } else if (this.c.isPresent() && !this.c.get().b($$2.ai())) {
@@ -74,15 +74,15 @@ public record bp(
             if (this.d.isPresent()) {
                return false;
             }
-         } else if (this.d.isPresent() && !this.d.get().a($$1.c, $$1.d, $$1.e, $$2.dr(), $$2.dt(), $$2.dx())) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.c, $$1.d, $$1.e, $$2.dq(), $$2.ds(), $$2.dw())) {
             return false;
          }
 
-         if (this.e.isPresent() && !this.e.get().a($$0, $$2.dr(), $$2.dt(), $$2.dx())) {
+         if (this.e.isPresent() && !this.e.get().a($$0, $$2.dq(), $$2.ds(), $$2.dw())) {
             return false;
          } else {
             if (this.f.isPresent()) {
-               elt $$3 = elt.b($$2.aJ());
+               emc $$3 = emc.b($$2.aJ());
                if (!this.f.get().a($$0, $$3.a(), $$3.b(), $$3.c())) {
                   return false;
                }
@@ -102,11 +102,11 @@ public record bp(
                return false;
             } else if (this.m.isPresent() && $$2.cP().stream().noneMatch($$2x -> this.m.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof bmn ? ((bmn)$$2).q() : null)) {
+            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof bmq ? ((bmq)$$2).q() : null)) {
                return false;
             } else {
                if (this.o.isPresent()) {
-                  emz $$4 = $$2.cg();
+                  eni $$4 = $$2.cg();
                   if ($$4 == null || !this.o.get().equals($$4.b())) {
                      return false;
                   }
@@ -118,9 +118,9 @@ public record bp(
       }
    }
 
-   public static egw b(ane $$0, blv $$1) {
-      ehc $$2 = new ehc.a($$0.z()).a(ejh.a, $$1).a(ejh.f, $$0.dk()).a(ejg.l);
-      return new egw.a($$2).a(Optional.empty());
+   public static ehf b(anf $$0, blw $$1) {
+      ehl $$2 = new ehl.a($$0.z()).a(ejq.a, $$1).a(ejq.f, $$0.dj()).a(ejp.l);
+      return new ehf.a($$2).a(Optional.empty());
    }
 
    public Optional<br> a() {
@@ -194,12 +194,12 @@ public record bp(
          return new bp.a();
       }
 
-      public bp.a a(blz<?> $$0) {
+      public bp.a a(bmc<?> $$0) {
          this.a = Optional.of(br.a($$0));
          return this;
       }
 
-      public bp.a a(asw<blz<?>> $$0) {
+      public bp.a a(asx<bmc<?>> $$0) {
          this.a = Optional.of(br.a($$0));
          return this;
       }

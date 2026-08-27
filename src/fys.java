@@ -1,28 +1,23 @@
-public class fys extends fym<cbt> {
-   private final fub a;
+public class fys extends fxw<cck, fkf<cck>> {
+   private static final ahh a = new ahh("textures/entity/zombie/drowned.png");
 
-   public fys(fyn.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public fys(fza.a $$0) {
+      super($$0, new fkf<>($$0.a(fni.N)), new fkf<>($$0.a(fni.O)), new fkf<>($$0.a(fni.P)));
+      this.a(new gct<>(this, $$0.f()));
    }
 
-   public void a(cbt $$0, float $$1, float $$2, eqb $$3, fth $$4, int $$5) {
-      djh $$6 = $$0.u();
-      if ($$6.l() == dcv.c) {
-         ctp $$7 = $$0.dM();
-         if ($$6 != $$7.a_($$0.dm()) && $$6.l() != dcv.a) {
-            $$3.a();
-            hx $$8 = hx.a($$0.dr(), $$0.cH().e, $$0.dx());
-            $$3.a(-0.5, 0.0, -0.5);
-            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(ftc.b($$6)), false, auv.a(), $$6.a($$0.q()), gee.d);
-            $$3.b();
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
+   @Override
+   public ahh a(cdp $$0) {
+      return a;
+   }
+
+   protected void a(cck $$0, eqk $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = $$0.a($$4);
+      if ($$5 > 0.0F) {
+         float $$6 = -10.0F - $$0.dD();
+         float $$7 = aup.i($$5, 0.0F, $$6);
+         $$1.a(a.b.rotationDegrees($$7), 0.0F, $$0.dh() / 2.0F, 0.0F);
       }
-   }
-
-   public ahg a(cbt $$0) {
-      return gem.e;
    }
 }

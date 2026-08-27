@@ -1,25 +1,18 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class eli extends Exception {
-   private final Path a;
-   private final List<elk> b;
+public class eli {
+   private static final Codec<elh> d = kd.K.q().dispatch(elh::a, elg::a);
+   public static final Codec<elh> a = atx.a(
+      (Supplier<Codec<elh>>)(() -> Codec.either(ele.b, d)
+            .xmap($$0 -> (elh)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof ele $$1 ? Either.left($$1) : Either.right($$0)))
+   );
+   public static final elg b = a("fixed", elf.a);
+   public static final elg c = a("context", ele.a);
 
-   public eli(Path $$0, List<elk> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
-   }
-
-   public static String a(Path $$0, List<elk> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   private static elg a(String $$0, Codec<? extends elh> $$1) {
+      return it.a(kd.K, new ahh($$0), new elg($$1));
    }
 }

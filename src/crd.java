@@ -1,20 +1,15 @@
-public class crd extends crj {
-   public crd(crj.a $$0, bma... $$1) {
-      super($$0, crk.k, $$1);
+public class crd extends cpt {
+   public crd(String $$0, cpz $$1, cqh $$2, cng $$3, float $$4, int $$5) {
+      super(cqp.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 12 + ($$0 - 1) * 20;
+   public cng g() {
+      return new cng(cxa.nV);
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 25;
-   }
-
-   @Override
-   public int a() {
-      return 2;
+   public cqo<?> at_() {
+      return cqo.r;
    }
 }

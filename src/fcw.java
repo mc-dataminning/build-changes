@@ -1,121 +1,103 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class fcw extends fdb {
-   private static final ahg a = new ahg("icon/draft_report");
-   private static final int b = 2;
-   private static final int c = 50;
-   private static final int k = 4;
-   private static final int l = 204;
-   private static final int m = 98;
-   private static final vf n = vf.c("menu.returnToGame");
-   private static final vf o = vf.c("gui.advancements");
-   private static final vf p = vf.c("gui.stats");
-   private static final vf q = vf.c("menu.sendFeedback");
-   private static final vf r = vf.c("menu.reportBugs");
-   private static final vf t = vf.c("menu.options");
-   private static final vf u = vf.c("menu.shareToLan");
-   private static final vf v = vf.c("menu.playerReporting");
-   private static final vf w = vf.c("menu.returnToMenu");
-   private static final vf x = vf.c("menu.savingLevel");
-   private static final vf y = vf.c("menu.game");
-   private static final vf z = vf.c("menu.paused");
-   private final boolean A;
-   @Nullable
-   private exg B;
+public class fcw extends fdm {
+   private static final long a = 2000L;
+   private final anr b;
+   private long c = -1L;
+   private boolean k;
+   private static final Object2IntMap<dlq> l = ac.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(dlq.c, 5526612);
+      $$0.put(dlq.d, 10066329);
+      $$0.put(dlq.e, 6250897);
+      $$0.put(dlq.f, 8434258);
+      $$0.put(dlq.g, 13750737);
+      $$0.put(dlq.h, 7497737);
+      $$0.put(dlq.i, 3159410);
+      $$0.put(dlq.j, 2213376);
+      $$0.put(dlq.k, 13421772);
+      $$0.put(dlq.l, 16769184);
+      $$0.put(dlq.m, 15884384);
+      $$0.put(dlq.n, 16777215);
+   });
 
-   public fcw(boolean $$0) {
-      super($$0 ? y : z);
-      this.A = $$0;
-   }
-
-   public boolean n() {
-      return this.A;
+   public fcw(anr $$0) {
+      super(evj.a);
+      this.b = $$0;
    }
 
    @Override
-   protected void aN_() {
-      if (this.A) {
-         this.D();
-      }
-
-      this.d(new eyn(0, this.A ? 40 : 10, this.g, 9, this.e, this.i));
-   }
-
-   private void D() {
-      fap $$0 = new fap();
-      $$0.c().a(4, 4, 4, 0);
-      fap.b $$1 = $$0.d(2);
-      $$1.a(exg.a(n, $$0x -> {
-         this.f.a(null);
-         this.f.n.i();
-      }).a(204).a(), 2, $$0.b().c(50));
-      $$1.a(this.a(o, () -> new fdr(this.f.s.cn.r())));
-      $$1.a(this.a(p, () -> new fdk(this, this.f.s.j())));
-      $$1.a(this.a(q, aa.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
-      $$1.a(this.a(r, "https://aka.ms/snapshotbugs?ref=game")).j = !aa.b().d().a();
-      $$1.a(this.a(t, () -> new fcs(this, this.f.m)));
-      if (this.f.S() && !this.f.T().p()) {
-         $$1.a(this.a(u, () -> new fdc(this)));
-      } else {
-         $$1.a(this.a(v, fhl::new));
-      }
-
-      vf $$2 = this.f.R() ? w : ve.p;
-      this.B = $$1.a(exg.a($$2, $$0x -> {
-         $$0x.j = false;
-         this.f.aY().a(this.f, this, this::E, true);
-      }).a(204).a(), 2);
-      $$0.a();
-      fao.a($$0, 0, 0, this.g, this.h, 0.5F, 0.25F);
-      $$0.a(this::d);
-   }
-
-   private void E() {
-      boolean $$0 = this.f.R();
-      fod $$1 = this.f.Q();
-      this.f.r.W();
-      if ($$0) {
-         this.f.b(new fch(x));
-      } else {
-         this.f.y();
-      }
-
-      fdg $$2 = new fdg();
-      if ($$0) {
-         this.f.a($$2);
-      } else if ($$1 != null && $$1.e()) {
-         this.f.a(new eqm($$2));
-      } else {
-         this.f.a(new ffz($$2));
-      }
+   public boolean aN_() {
+      return false;
    }
 
    @Override
-   public void d() {
-      super.d();
+   protected boolean aO_() {
+      return false;
    }
 
    @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+   public void k() {
+      this.k = true;
+      this.d(true);
+   }
+
+   @Override
+   protected void b(fbk $$0) {
+      if (this.k) {
+         $$0.a(fbj.a, vg.c("narrator.loading.done"));
+      } else {
+         $$0.a(fbj.a, this.o());
+      }
+   }
+
+   private vg o() {
+      return vg.a("loading.progress", aup.a(this.b.e(), 0, 100));
+   }
+
+   @Override
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.A && this.f != null && this.f.aY().c() && this.B != null) {
-         $$0.a(a, this.B.B() + this.B.w() - 17, this.B.C() + 3, 15, 15);
+      long $$4 = ac.b();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
       }
+
+      int $$5 = this.g / 2;
+      int $$6 = this.h / 2;
+      int $$7 = 30;
+      a($$0, this.b, $$5, $$6 + 30, 2, 0);
+      $$0.a(this.i, this.o(), $$5, $$6 - 9 / 2 - 30, 16777215);
    }
 
-   @Override
-   public void b(ewu $$0, int $$1, int $$2, float $$3) {
-      if (this.A) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
+   public static void a(exe $$0, anr $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.c();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.d();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      $$0.a(() -> {
+         if ($$5 != 0) {
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+         }
 
-   private exg a(vf $$0, Supplier<fdb> $$1) {
-      return exg.a($$0, $$1x -> this.f.a($$1.get())).a(98).a();
-   }
-
-   private exg a(vf $$0, String $$1) {
-      return exg.a($$0, fbt.b(this, $$1)).a(98).a();
+         for (int $$11x = 0; $$11x < $$9; $$11x++) {
+            for (int $$12x = 0; $$12x < $$9; $$12x++) {
+               dlq $$13x = $$1.a($$11x, $$12x);
+               int $$14x = $$11 + $$11x * $$6;
+               int $$15 = $$12 + $$12x * $$6;
+               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, l.getInt($$13x) | 0xFF000000);
+            }
+         }
+      });
    }
 }

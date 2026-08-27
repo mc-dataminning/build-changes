@@ -1,14 +1,70 @@
-public class cvd {
-   public static final ahf<cvc> a = a("nether");
-   public static final ahf<cvc> b = a("overworld");
+public abstract class cvd {
+   public static final ahg<cuw> a = a("the_void");
+   public static final ahg<cuw> b = a("plains");
+   public static final ahg<cuw> c = a("sunflower_plains");
+   public static final ahg<cuw> d = a("snowy_plains");
+   public static final ahg<cuw> e = a("ice_spikes");
+   public static final ahg<cuw> f = a("desert");
+   public static final ahg<cuw> g = a("swamp");
+   public static final ahg<cuw> h = a("mangrove_swamp");
+   public static final ahg<cuw> i = a("forest");
+   public static final ahg<cuw> j = a("flower_forest");
+   public static final ahg<cuw> k = a("birch_forest");
+   public static final ahg<cuw> l = a("dark_forest");
+   public static final ahg<cuw> m = a("old_growth_birch_forest");
+   public static final ahg<cuw> n = a("old_growth_pine_taiga");
+   public static final ahg<cuw> o = a("old_growth_spruce_taiga");
+   public static final ahg<cuw> p = a("taiga");
+   public static final ahg<cuw> q = a("snowy_taiga");
+   public static final ahg<cuw> r = a("savanna");
+   public static final ahg<cuw> s = a("savanna_plateau");
+   public static final ahg<cuw> t = a("windswept_hills");
+   public static final ahg<cuw> u = a("windswept_gravelly_hills");
+   public static final ahg<cuw> v = a("windswept_forest");
+   public static final ahg<cuw> w = a("windswept_savanna");
+   public static final ahg<cuw> x = a("jungle");
+   public static final ahg<cuw> y = a("sparse_jungle");
+   public static final ahg<cuw> z = a("bamboo_jungle");
+   public static final ahg<cuw> A = a("badlands");
+   public static final ahg<cuw> B = a("eroded_badlands");
+   public static final ahg<cuw> C = a("wooded_badlands");
+   public static final ahg<cuw> D = a("meadow");
+   public static final ahg<cuw> E = a("cherry_grove");
+   public static final ahg<cuw> F = a("grove");
+   public static final ahg<cuw> G = a("snowy_slopes");
+   public static final ahg<cuw> H = a("frozen_peaks");
+   public static final ahg<cuw> I = a("jagged_peaks");
+   public static final ahg<cuw> J = a("stony_peaks");
+   public static final ahg<cuw> K = a("river");
+   public static final ahg<cuw> L = a("frozen_river");
+   public static final ahg<cuw> M = a("beach");
+   public static final ahg<cuw> N = a("snowy_beach");
+   public static final ahg<cuw> O = a("stony_shore");
+   public static final ahg<cuw> P = a("warm_ocean");
+   public static final ahg<cuw> Q = a("lukewarm_ocean");
+   public static final ahg<cuw> R = a("deep_lukewarm_ocean");
+   public static final ahg<cuw> S = a("ocean");
+   public static final ahg<cuw> T = a("deep_ocean");
+   public static final ahg<cuw> U = a("cold_ocean");
+   public static final ahg<cuw> V = a("deep_cold_ocean");
+   public static final ahg<cuw> W = a("frozen_ocean");
+   public static final ahg<cuw> X = a("deep_frozen_ocean");
+   public static final ahg<cuw> Y = a("mushroom_fields");
+   public static final ahg<cuw> Z = a("dripstone_caves");
+   public static final ahg<cuw> aa = a("lush_caves");
+   public static final ahg<cuw> ab = a("deep_dark");
+   public static final ahg<cuw> ac = a("nether_wastes");
+   public static final ahg<cuw> ad = a("warped_forest");
+   public static final ahg<cuw> ae = a("crimson_forest");
+   public static final ahg<cuw> af = a("soul_sand_valley");
+   public static final ahg<cuw> ag = a("basalt_deltas");
+   public static final ahg<cuw> ah = a("the_end");
+   public static final ahg<cuw> ai = a("end_highlands");
+   public static final ahg<cuw> aj = a("end_midlands");
+   public static final ahg<cuw> ak = a("small_end_islands");
+   public static final ahg<cuw> al = a("end_barrens");
 
-   public static void a(pe<cvc> $$0) {
-      ii<cuo> $$1 = $$0.a(ke.at);
-      $$0.a(a, new cvc(cvc.a.a, $$1));
-      $$0.a(b, new cvc(cvc.a.b, $$1));
-   }
-
-   private static ahf<cvc> a(String $$0) {
-      return ahf.a(ke.aL, new ahg($$0));
+   private static ahg<cuw> a(String $$0) {
+      return ahg.a(ke.at, new ahh($$0));
    }
 }

@@ -1,51 +1,37 @@
-public class cnd extends cmt {
-   public cnd(cmt.a $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
+
+public enum cnd implements avl {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
+
+   public static final Codec<cnd> j = avl.a(cnd::values);
+   public static final IntFunction<cnd> k = ath.a(cnd::a, values(), ath.a.a);
+   private final byte l;
+   private final String m;
+
+   private cnd(int $$0, String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
    @Override
-   public bkb a(cpj $$0) {
-      ctp $$1 = $$0.q();
-      hx $$2 = $$0.a();
-      djh $$3 = $$1.a_($$2);
-      if ($$3.a(ash.S)) {
-         cfi $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
-         }
-
-         return bkb.a($$1.B);
-      } else {
-         return bkb.d;
-      }
+   public String c() {
+      return this.m;
    }
 
-   public static bkb a(cfi $$0, ctp $$1, hx $$2) {
-      cbo $$3 = null;
-      boolean $$4 = false;
-      double $$5 = 7.0;
-      int $$6 = $$2.u();
-      int $$7 = $$2.v();
-      int $$8 = $$2.w();
+   public byte a() {
+      return this.l;
+   }
 
-      for (bmn $$10 : $$1.a(
-         bmn.class, new elo((double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$8 - 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0, (double)$$8 + 7.0)
-      )) {
-         if ($$10.fT() == $$0) {
-            if ($$3 == null) {
-               $$3 = cbo.b($$1, $$2);
-               $$3.D();
-            }
-
-            $$10.b($$3, true);
-            $$4 = true;
-         }
-      }
-
-      if ($$4) {
-         $$1.a(dnr.b, $$2, dnr.a.a($$0));
-      }
-
-      return $$4 ? bkb.a : bkb.d;
+   public boolean b() {
+      return this == d || this == e;
    }
 }

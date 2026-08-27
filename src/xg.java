@@ -1,8 +1,16 @@
-public enum xg {
-   a,
-   b;
+import javax.annotation.Nullable;
 
-   public xg a() {
-      return this == b ? a : b;
+public interface xg<T extends up> {
+   void a(uj var1);
+
+   void a(T var1);
+
+   default boolean b() {
+      return false;
+   }
+
+   @Nullable
+   default ui c() {
+      return null;
    }
 }

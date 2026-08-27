@@ -1,39 +1,57 @@
 import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageCodec;
+import io.netty.handler.codec.MessageToByteEncoder;
 import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
-import io.netty.util.ReferenceCountUtil;
-import java.util.List;
+import java.io.IOException;
 import org.slf4j.Logger;
 
-public class un extends MessageToMessageCodec<xf<?>, xf<?>> {
+public class un extends MessageToByteEncoder<xg<?>> {
    private static final Logger a = LogUtils.getLogger();
-   private final AttributeKey<uh.a<?>> b;
-   private final AttributeKey<uh.a<?>> c;
+   private final AttributeKey<ui.a<?>> b;
 
-   public un(AttributeKey<uh.a<?>> $$0, AttributeKey<uh.a<?>> $$1) {
+   public un(AttributeKey<ui.a<?>> $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private static void a(ChannelHandlerContext $$0, xf<?> $$1, List<Object> $$2, AttributeKey<uh.a<?>> $$3) {
-      Attribute<uh.a<?>> $$4 = $$0.channel().attr($$3);
-      uh.a<?> $$5 = (uh.a<?>)$$4.get();
-      if (!$$5.b($$1)) {
-         a.error("Unrecognized packet in pipeline {}:{} - {}", new Object[]{$$5.a().a(), $$5.b(), $$1});
+   protected void a(ChannelHandlerContext $$0, xg<?> $$1, ByteBuf $$2) throws Exception {
+      Attribute<ui.a<?>> $$3 = $$0.channel().attr(this.b);
+      ui.a<?> $$4 = (ui.a<?>)$$3.get();
+      if ($$4 == null) {
+         throw new RuntimeException("ConnectionProtocol unknown: " + $$1);
+      } else {
+         int $$5 = $$4.a($$1);
+         if (a.isDebugEnabled()) {
+            a.debug(uh.d, "OUT: [{}:{}] {}", new Object[]{$$4.a().a(), $$5, $$1.getClass().getName()});
+         }
+
+         if ($$5 == -1) {
+            throw new IOException("Can't serialize unregistered packet");
+         } else {
+            uj $$6 = new uj($$2);
+            $$6.c($$5);
+
+            try {
+               int $$7 = $$6.writerIndex();
+               $$1.a($$6);
+               int $$8 = $$6.writerIndex() - $$7;
+               if ($$8 > 8388608) {
+                  throw new IllegalArgumentException("Packet too big (is " + $$8 + ", should be less than 8388608): " + $$1);
+               }
+
+               bgz.e.b($$4.a(), $$5, $$0.channel().remoteAddress(), $$8);
+            } catch (Throwable var13) {
+               a.error("Error receiving packet {}", $$5, var13);
+               if ($$1.b()) {
+                  throw new uu(var13);
+               }
+
+               throw var13;
+            } finally {
+               ur.a($$3, $$1);
+            }
+         }
       }
-
-      ReferenceCountUtil.retain($$1);
-      $$2.add($$1);
-      uq.a($$4, $$1);
-   }
-
-   protected void a(ChannelHandlerContext $$0, xf<?> $$1, List<Object> $$2) throws Exception {
-      a($$0, $$1, $$2, this.b);
-   }
-
-   protected void b(ChannelHandlerContext $$0, xf<?> $$1, List<Object> $$2) throws Exception {
-      a($$0, $$1, $$2, this.c);
    }
 }

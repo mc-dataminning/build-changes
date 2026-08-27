@@ -86,7 +86,7 @@ public class bdu extends bde {
       $$0.registerSimple($$1, "minecraft:small_fireball");
       $$0.registerSimple($$1, "minecraft:snowball");
       a($$0, $$1, "minecraft:snowman");
-      $$0.register($$1, "minecraft:spawner_minecart", $$1x -> DSL.optionalFields("DisplayState", bbw.u.in($$0), bbw.B.in($$0)));
+      $$0.register($$1, "minecraft:spawner_minecart", $$1x -> DSL.optionalFields("DisplayState", bbw.u.in($$0), bbw.C.in($$0)));
       $$0.register($$1, "minecraft:spectral_arrow", $$1x -> DSL.optionalFields("inBlockState", bbw.u.in($$0)));
       a($$0, $$1, "minecraft:spider");
       a($$0, $$1, "minecraft:squid");
@@ -131,7 +131,7 @@ public class bdu extends bde {
       b($$0, $$1, "minecraft:dispenser");
       b($$0, $$1, "minecraft:dropper");
       $$0.registerSimple($$1, "minecraft:sign");
-      $$0.register($$1, "minecraft:mob_spawner", $$1x -> bbw.B.in($$0));
+      $$0.register($$1, "minecraft:mob_spawner", $$1x -> bbw.C.in($$0));
       $$0.register($$1, "minecraft:piston", $$1x -> DSL.optionalFields("blockState", bbw.u.in($$0)));
       b($$0, $$1, "minecraft:brewing_stand");
       $$0.registerSimple($$1, "minecraft:enchanting_table");
@@ -152,24 +152,24 @@ public class bdu extends bde {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       $$0.registerType(false, bbw.a, DSL::remainder);
-      $$0.registerType(false, bbw.F, () -> DSL.constType(a()));
+      $$0.registerType(false, bbw.G, () -> DSL.constType(a()));
       $$0.registerType(
          false,
          bbw.b,
          () -> DSL.optionalFields(
                "RootVehicle",
-               DSL.optionalFields("Entity", bbw.w.in($$0)),
+               DSL.optionalFields("Entity", bbw.x.in($$0)),
                "Inventory",
                DSL.list(bbw.t.in($$0)),
                "EnderItems",
                DSL.list(bbw.t.in($$0)),
                DSL.optionalFields(
                   "ShoulderEntityLeft",
-                  bbw.w.in($$0),
+                  bbw.x.in($$0),
                   "ShoulderEntityRight",
-                  bbw.w.in($$0),
+                  bbw.x.in($$0),
                   "recipeBook",
-                  DSL.optionalFields("recipes", DSL.list(bbw.F.in($$0)), "toBeDisplayed", DSL.list(bbw.F.in($$0)))
+                  DSL.optionalFields("recipes", DSL.list(bbw.G.in($$0)), "toBeDisplayed", DSL.list(bbw.G.in($$0)))
                )
             )
       );
@@ -180,41 +180,41 @@ public class bdu extends bde {
                "Level",
                DSL.optionalFields(
                   "Entities",
-                  DSL.list(bbw.w.in($$0)),
+                  DSL.list(bbw.x.in($$0)),
                   "TileEntities",
                   DSL.list(DSL.or(bbw.s.in($$0), DSL.remainder())),
                   "TileTicks",
-                  DSL.list(DSL.fields("i", bbw.y.in($$0))),
+                  DSL.list(DSL.fields("i", bbw.z.in($$0))),
                   "Sections",
                   DSL.list(DSL.optionalFields("Palette", DSL.list(bbw.u.in($$0))))
                )
             )
       );
       $$0.registerType(true, bbw.s, () -> DSL.taggedChoiceLazy("id", a(), $$2));
-      $$0.registerType(true, bbw.w, () -> DSL.optionalFields("Passengers", DSL.list(bbw.w.in($$0)), bbw.x.in($$0)));
-      $$0.registerType(true, bbw.x, () -> DSL.taggedChoiceLazy("id", a(), $$1));
+      $$0.registerType(true, bbw.x, () -> DSL.optionalFields("Passengers", DSL.list(bbw.x.in($$0)), bbw.y.in($$0)));
+      $$0.registerType(true, bbw.y, () -> DSL.taggedChoiceLazy("id", a(), $$1));
       $$0.registerType(
          true,
          bbw.t,
          () -> DSL.hook(
                DSL.optionalFields(
                   "id",
-                  bbw.z.in($$0),
+                  bbw.A.in($$0),
                   "tag",
                   DSL.optionalFields(
                      "EntityTag",
-                     bbw.w.in($$0),
+                     bbw.x.in($$0),
                      "BlockEntityTag",
                      bbw.s.in($$0),
                      "CanDestroy",
-                     DSL.list(bbw.y.in($$0)),
+                     DSL.list(bbw.z.in($$0)),
                      "CanPlaceOn",
-                     DSL.list(bbw.y.in($$0)),
+                     DSL.list(bbw.z.in($$0)),
                      "Items",
                      DSL.list(bbw.t.in($$0))
                   )
                ),
-               bga.b,
+               bgb.b,
                HookFunction.IDENTITY
             )
       );
@@ -225,17 +225,18 @@ public class bdu extends bde {
          bbw.f,
          () -> DSL.optionalFields(
                "entities",
-               DSL.list(DSL.optionalFields("nbt", bbw.w.in($$0))),
+               DSL.list(DSL.optionalFields("nbt", bbw.x.in($$0))),
                "blocks",
                DSL.list(DSL.optionalFields("nbt", bbw.s.in($$0))),
                "palette",
                DSL.list(bbw.u.in($$0))
             )
       );
-      $$0.registerType(false, bbw.y, () -> DSL.constType(a()));
       $$0.registerType(false, bbw.z, () -> DSL.constType(a()));
+      $$0.registerType(false, bbw.A, () -> DSL.constType(a()));
       $$0.registerType(false, bbw.u, DSL::remainder);
-      Supplier<TypeTemplate> $$3 = () -> DSL.compoundList(bbw.z.in($$0), DSL.constType(DSL.intType()));
+      $$0.registerType(false, bbw.v, DSL::remainder);
+      Supplier<TypeTemplate> $$3 = () -> DSL.compoundList(bbw.A.in($$0), DSL.constType(DSL.intType()));
       $$0.registerType(
          false,
          bbw.g,
@@ -243,7 +244,7 @@ public class bdu extends bde {
                "stats",
                DSL.optionalFields(
                   "minecraft:mined",
-                  DSL.compoundList(bbw.y.in($$0), DSL.constType(DSL.intType())),
+                  DSL.compoundList(bbw.z.in($$0), DSL.constType(DSL.intType())),
                   "minecraft:crafted",
                   $$3.get(),
                   "minecraft:used",
@@ -256,9 +257,9 @@ public class bdu extends bde {
                      "minecraft:dropped",
                      $$3.get(),
                      "minecraft:killed",
-                     DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.intType())),
+                     DSL.compoundList(bbw.w.in($$0), DSL.constType(DSL.intType())),
                      "minecraft:killed_by",
-                     DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.intType())),
+                     DSL.compoundList(bbw.w.in($$0), DSL.constType(DSL.intType())),
                      "minecraft:custom",
                      DSL.compoundList(DSL.constType(a()), DSL.constType(DSL.intType()))
                   )
@@ -272,32 +273,32 @@ public class bdu extends bde {
       $$0.registerType(false, bbw.l, DSL::remainder);
       $$0.registerType(false, bbw.m, DSL::remainder);
       $$0.registerType(
-         false, bbw.o, () -> DSL.optionalFields("data", DSL.optionalFields("Objectives", DSL.list(bbw.D.in($$0)), "Teams", DSL.list(bbw.E.in($$0))))
+         false, bbw.o, () -> DSL.optionalFields("data", DSL.optionalFields("Objectives", DSL.list(bbw.E.in($$0)), "Teams", DSL.list(bbw.F.in($$0))))
       );
-      $$0.registerType(false, bbw.n, () -> DSL.optionalFields("data", DSL.optionalFields("Features", DSL.compoundList(bbw.C.in($$0)))));
-      $$0.registerType(false, bbw.C, DSL::remainder);
+      $$0.registerType(false, bbw.n, () -> DSL.optionalFields("data", DSL.optionalFields("Features", DSL.compoundList(bbw.D.in($$0)))));
+      $$0.registerType(false, bbw.D, DSL::remainder);
       Map<String, Supplier<TypeTemplate>> $$4 = bdt.a($$0);
-      $$0.registerType(false, bbw.D, () -> DSL.hook(DSL.optionalFields("CriteriaType", DSL.taggedChoiceLazy("type", DSL.string(), $$4)), bdt.c, bdt.d));
-      $$0.registerType(false, bbw.E, DSL::remainder);
-      $$0.registerType(true, bbw.B, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", bbw.w.in($$0))), "SpawnData", bbw.w.in($$0)));
+      $$0.registerType(false, bbw.E, () -> DSL.hook(DSL.optionalFields("CriteriaType", DSL.taggedChoiceLazy("type", DSL.string(), $$4)), bdt.c, bdt.d));
+      $$0.registerType(false, bbw.F, DSL::remainder);
+      $$0.registerType(true, bbw.C, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", bbw.x.in($$0))), "SpawnData", bbw.x.in($$0)));
       $$0.registerType(
          false,
          bbw.p,
          () -> DSL.optionalFields(
                "minecraft:adventure/adventuring_time",
-               DSL.optionalFields("criteria", DSL.compoundList(bbw.G.in($$0), DSL.constType(DSL.string()))),
+               DSL.optionalFields("criteria", DSL.compoundList(bbw.H.in($$0), DSL.constType(DSL.string()))),
                "minecraft:adventure/kill_a_mob",
-               DSL.optionalFields("criteria", DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.string()))),
+               DSL.optionalFields("criteria", DSL.compoundList(bbw.w.in($$0), DSL.constType(DSL.string()))),
                "minecraft:adventure/kill_all_mobs",
-               DSL.optionalFields("criteria", DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.string()))),
+               DSL.optionalFields("criteria", DSL.compoundList(bbw.w.in($$0), DSL.constType(DSL.string()))),
                "minecraft:husbandry/bred_all_animals",
-               DSL.optionalFields("criteria", DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.string())))
+               DSL.optionalFields("criteria", DSL.compoundList(bbw.w.in($$0), DSL.constType(DSL.string())))
             )
       );
-      $$0.registerType(false, bbw.G, () -> DSL.constType(a()));
-      $$0.registerType(false, bbw.v, () -> DSL.constType(a()));
+      $$0.registerType(false, bbw.H, () -> DSL.constType(a()));
+      $$0.registerType(false, bbw.w, () -> DSL.constType(a()));
       $$0.registerType(false, bbw.q, DSL::remainder);
-      $$0.registerType(false, bbw.I, DSL::remainder);
-      $$0.registerType(false, bbw.r, () -> DSL.optionalFields("Entities", DSL.list(bbw.w.in($$0))));
+      $$0.registerType(false, bbw.J, DSL::remainder);
+      $$0.registerType(false, bbw.r, () -> DSL.optionalFields("Entities", DSL.list(bbw.x.in($$0))));
    }
 }

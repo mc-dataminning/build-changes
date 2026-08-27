@@ -1,37 +1,53 @@
 import com.mojang.serialization.Codec;
 
-public class dsn extends dru<due> {
-   public dsn(Codec<due> $$0) {
+public class dsn extends drf {
+   public dsn(Codec<dui> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drw<due> $$0) {
-      cuk $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      djh $$3 = $$1.a_($$2.d());
-      due $$4 = $$0.f();
-      auv $$5 = $$0.d();
-      if (!$$3.a(ash.aK)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.J_() + 1 && $$6 + 1 < $$1.al()) {
-            int $$7 = 0;
+   protected void a(cty $$0, auw $$1, hx $$2, int $$3, hx.a $$4, dui $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
 
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               hx $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               djh $$10 = $$4.b.a($$5, $$9);
-               if ($$1.u($$9) && $$9.v() > $$1.J_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  if (!$$0.a_($$4).i($$0, $$4)) {
+                     djp $$17 = $$5.b.a($$1, $$2);
+                     if ($$17.b(dau.e) && $$17.b(dau.c) && $$17.b(dau.b) && $$17.b(dau.d) && $$17.b(dau.f)) {
+                        $$17 = $$17.a(dau.f, Boolean.valueOf($$6 >= $$3 - 1))
+                           .a(dau.e, Boolean.valueOf($$9 < -$$8))
+                           .a(dau.c, Boolean.valueOf($$9 > $$8))
+                           .a(dau.b, Boolean.valueOf($$10 < -$$8))
+                           .a(dau.d, Boolean.valueOf($$10 > $$8));
+                     }
+
+                     this.a($$0, $$4, $$17);
+                  }
                }
             }
-
-            return $$7 > 0;
-         } else {
-            return false;
          }
       }
+   }
+
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
+      }
+
+      return $$4;
    }
 }

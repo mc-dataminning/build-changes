@@ -1,84 +1,104 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class fxc implements fws.a {
-   private final evi a;
+public class fxc implements fxe.a {
+   final evr a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private fxc.a d;
 
-   public fxc(evi $$0) {
+   public fxc(evr $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(eqb $$0, fth $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      csv $$6 = this.a.s.dM();
-      hx $$7 = hx.a($$2, $$3, $$4);
+   public void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         gjf $$6 = this.a.T();
+         if ($$6 != null) {
+            this.d = new fxc.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
+         }
+      }
 
-      for (hx $$8 : hx.a($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         djh $$9 = $$6.a_($$8);
-         if (!$$9.a(cws.a)) {
-            emm $$10 = $$9.j($$6, $$8);
+      if (this.d != null) {
+         Map<cte, String> $$7 = this.d.c.getNow(null);
+         double $$8 = this.a.j.m().b().d * 0.85;
 
-            for (elo $$11 : $$10.e()) {
-               elo $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               float $$19 = 1.0F;
-               float $$20 = 0.0F;
-               float $$21 = 0.0F;
-               float $$22 = 0.5F;
-               if ($$9.d($$6, $$8, ic.e)) {
-                  eqf $$23 = $$1.getBuffer(ftp.y());
-                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+         for (Entry<cte, String> $$9 : this.d.b.entrySet()) {
+            cte $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
 
-               if ($$9.d($$6, $$8, ic.d)) {
-                  eqf $$24 = $$1.getBuffer(ftp.y());
-                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
 
-               if ($$9.d($$6, $$8, ic.f)) {
-                  eqf $$25 = $$1.getBuffer(ftp.y());
-                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ic.c)) {
-                  eqf $$26 = $$1.getBuffer(ftp.y());
-                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ic.a)) {
-                  eqf $$27 = $$1.getBuffer(ftp.y());
-                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ic.b)) {
-                  eqf $$28 = $$1.getBuffer(ftp.y());
-                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+            for (String $$14 : $$12) {
+               fxe.a($$0, $$1, $$14, (double)iz.a($$10.e, 8), $$8 + (double)$$13, (double)iz.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
             }
          }
+      }
+   }
+
+   final class a {
+      final Map<cte, String> b;
+      final CompletableFuture<Map<cte, String>> c;
+
+      a(gjf $$0, double $$1, double $$2) {
+         foe $$3 = fxc.this.a.r;
+         ahg<ctx> $$4 = $$3.ae();
+         int $$5 = iz.a($$1);
+         int $$6 = iz.a($$2);
+         Builder<cte, String> $$7 = ImmutableMap.builder();
+         foa $$8 = $$3.i();
+
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               cte $$11 = new cte($$9, $$10);
+               String $$12 = "";
+               dlw $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.C() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
+
+               $$7.put($$11, $$12);
+            }
+         }
+
+         this.b = $$7.build();
+         this.c = $$0.a(() -> {
+            ane $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<cte, String> $$5x = ImmutableMap.builder();
+               anc $$6x = $$4x.l();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     cte $$9x = new cte($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
       }
    }
 }

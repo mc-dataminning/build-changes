@@ -1,20 +1,15 @@
-public class fzp extends fzt<caa, fkq<caa>> {
-   private static final ahg a = new ahg("textures/entity/llama/creamy.png");
-   private static final ahg i = new ahg("textures/entity/llama/white.png");
-   private static final ahg j = new ahg("textures/entity/llama/brown.png");
-   private static final ahg k = new ahg("textures/entity/llama/gray.png");
+public class fzp extends gag<cea, fkt<cea>> {
+   private static final ahh a = new ahh("textures/entity/hoglin/hoglin.png");
 
-   public fzp(fyn.a $$0, fmv $$1) {
-      super($$0, new fkq<>($$0.a($$1)), 0.7F);
-      this.a(new gcs(this, $$0.f()));
+   public fzp(fza.a $$0) {
+      super($$0, new fkt<>($$0.a(fni.aj)), 0.7F);
    }
 
-   public ahg a(caa $$0) {
-      return switch ($$0.gq()) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-      };
+   public ahh a(cea $$0) {
+      return a;
+   }
+
+   protected boolean b(cea $$0) {
+      return super.a($$0) || $$0.A();
    }
 }

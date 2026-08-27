@@ -1,52 +1,94 @@
-public class cqy extends cpu {
-   public cqy(cps $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public abstract class cqy implements cqk<bjv> {
+   protected final cqh a;
+   protected final cng b;
+   private final cqp<?> d;
+   private final cqo<?> e;
+   protected final String c;
+
+   public cqy(cqp<?> $$0, cqo<?> $$1, String $$2, cqh $$3, cng $$4) {
+      this.d = $$0;
+      this.e = $$1;
+      this.c = $$2;
+      this.a = $$3;
+      this.b = $$4;
    }
 
-   public boolean a(cir $$0, ctp $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.f(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.g(); $$3++) {
-               cmy $$4 = $$0.a($$2 + $$3 * $$0.f());
-               if ($$4.b()) {
-                  return false;
-               }
-
-               if ($$2 == 1 && $$3 == 1) {
-                  if (!$$4.a(cnb.vk)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cnb.os)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public cqp<?> e() {
+      return this.d;
    }
 
-   public cmy a(cir $$0, iu $$1) {
-      cmy $$2 = $$0.a(1 + $$0.f());
-      if (!$$2.a(cnb.vk)) {
-         return cmy.f;
-      } else {
-         cmy $$3 = new cmy(cnb.vj, 8);
-         coy.a($$3, coy.d($$2));
-         coy.a($$3, coy.b($$2));
-         return $$3;
-      }
+   @Override
+   public cqo<?> at_() {
+      return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   @Override
+   public cng a(iu $$0) {
+      return this.b;
+   }
+
+   @Override
+   public iq<cqh> a() {
+      iq<cqh> $$0 = iq.a();
+      $$0.add(this.a);
+      return $$0;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+      return true;
    }
 
    @Override
-   public cqg<?> ar_() {
-      return cqg.j;
+   public cng a(bjv $$0, iu $$1) {
+      return this.b.p();
+   }
+
+   public interface a<T extends cqy> {
+      T create(String var1, cqh var2, cng var3);
+   }
+
+   public static class b<T extends cqy> implements cqo<T> {
+      final cqy.a<T> x;
+      private final Codec<T> y;
+
+      protected b(cqy.a<T> $$0) {
+         this.x = $$0;
+         this.y = RecordCodecBuilder.create(
+            $$1 -> $$1.group(
+                     atx.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                     cqh.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
+                     cng.e.forGetter($$0xx -> $$0xx.b)
+                  )
+                  .apply($$1, $$0::create)
+         );
+      }
+
+      @Override
+      public Codec<T> a() {
+         return this.y;
+      }
+
+      public T b(uj $$0) {
+         String $$1 = $$0.s();
+         cqh $$2 = cqh.b($$0);
+         cng $$3 = $$0.r();
+         return this.x.create($$1, $$2, $$3);
+      }
+
+      public void a(uj $$0, T $$1) {
+         $$0.a($$1.c);
+         $$1.a.a($$0);
+         $$0.a($$1.b);
+      }
    }
 }

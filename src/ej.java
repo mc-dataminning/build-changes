@@ -17,43 +17,43 @@ public class ej implements ey<ej.a> {
       return new ej();
    }
 
-   public static vf a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+   public static vg a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
       ej.a $$2 = (ej.a)$$0.getArgument($$1, ej.a.class);
       return $$2.a((ds)$$0.getSource());
    }
 
-   public static void a(CommandContext<ds> $$0, String $$1, Consumer<vv> $$2) throws CommandSyntaxException {
+   public static void a(CommandContext<ds> $$0, String $$1, Consumer<vw> $$2) throws CommandSyntaxException {
       ej.a $$3 = (ej.a)$$0.getArgument($$1, ej.a.class);
       ds $$4 = (ds)$$0.getSource();
-      vf $$5 = $$3.a($$4);
+      vg $$5 = $$3.a($$4);
       dq $$6 = $$4.n();
-      vv $$7 = $$6.a($$1);
+      vw $$7 = $$6.a($$1);
       if ($$7 != null) {
          a($$2, $$4, $$7.a($$5));
       } else {
-         b($$2, $$4, vv.a($$3.a).a($$5));
+         b($$2, $$4, vw.a($$3.a).a($$5));
       }
    }
 
-   private static void a(Consumer<vv> $$0, ds $$1, vv $$2) {
+   private static void a(Consumer<vw> $$0, ds $$1, vw $$2) {
       MinecraftServer $$3 = $$1.l();
-      CompletableFuture<anu> $$4 = a($$1, $$2);
-      vf $$5 = $$3.bi().decorate($$1.i(), $$2.d());
+      CompletableFuture<anv> $$4 = a($$1, $$2);
+      vg $$5 = $$3.bi().decorate($$1.i(), $$2.d());
       $$1.o().append($$4, $$3x -> {
-         vv $$4x = $$2.a($$5).a($$3x.e());
+         vw $$4x = $$2.a($$5).a($$3x.e());
          $$0.accept($$4x);
       });
    }
 
-   private static void b(Consumer<vv> $$0, ds $$1, vv $$2) {
-      va $$3 = $$1.l().bi();
-      vf $$4 = $$3.decorate($$1.i(), $$2.d());
+   private static void b(Consumer<vw> $$0, ds $$1, vw $$2) {
+      vb $$3 = $$1.l().bi();
+      vg $$4 = $$3.decorate($$1.i(), $$2.d());
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<anu> a(ds $$0, vv $$1) {
-      ane $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(anu.a($$1.c()));
+   private static CompletableFuture<anv> a(ds $$0, vw $$1) {
+      anf $$2 = $$0.i();
+      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(anv.a($$1.c()));
    }
 
    public ej.a a(StringReader $$0) throws CommandSyntaxException {
@@ -81,17 +81,17 @@ public class ej implements ey<ej.a> {
          return this.b;
       }
 
-      vf a(ds $$0) throws CommandSyntaxException {
+      vg a(ds $$0) throws CommandSyntaxException {
          return this.a($$0, $$0.c(2));
       }
 
-      public vf a(ds $$0, boolean $$1) throws CommandSyntaxException {
+      public vg a(ds $$0, boolean $$1) throws CommandSyntaxException {
          if (this.b.length != 0 && $$1) {
-            vt $$2 = vf.b(this.a.substring(0, this.b[0].a()));
+            vu $$2 = vg.b(this.a.substring(0, this.b[0].a()));
             int $$3 = this.b[0].a();
 
             for (ej.b $$4 : this.b) {
-               vf $$5 = $$4.a($$0);
+               vg $$5 = $$4.a($$0);
                if ($$3 < $$4.a()) {
                   $$2.f(this.a.substring($$3, $$4.a()));
                }
@@ -109,7 +109,7 @@ public class ej implements ey<ej.a> {
 
             return $$2;
          } else {
-            return vf.b(this.a);
+            return vg.b(this.a);
          }
       }
 
@@ -179,7 +179,7 @@ public class ej implements ey<ej.a> {
       }
 
       @Nullable
-      public vf a(ds $$0) throws CommandSyntaxException {
+      public vg a(ds $$0) throws CommandSyntaxException {
          return ge.a(this.c.b($$0));
       }
    }

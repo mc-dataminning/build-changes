@@ -1,24 +1,24 @@
-public class abu implements xf<za> {
-   private final int a;
+public class abu implements xg<zb> {
+   private final double a;
 
-   public abu(dky $$0) {
-      this.a = $$0.q();
+   public abu(dlg $$0) {
+      this.a = $$0.k();
    }
 
-   public abu(ui $$0) {
-      this.a = $$0.n();
+   public abu(uj $$0) {
+      this.a = $$0.readDouble();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.a);
+   public void a(uj $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
       return this.a;
    }
 }

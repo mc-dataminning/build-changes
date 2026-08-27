@@ -1,166 +1,108 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
 public class fuk {
-   private final Map<String, fur> a = Maps.newLinkedHashMap();
-   private fuw b;
+   protected final ftr a;
+   protected final ctx b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   public fws.b[] f;
 
-   public static fuk a(fuk.a $$0, Reader $$1) {
-      return aue.a($$0.a, $$1, fuk.class);
-   }
-
-   public static fuk a(fuk.a $$0, JsonElement $$1) {
-      return (fuk)$$0.a.fromJson($$1, fuk.class);
-   }
-
-   public fuk(Map<String, fur> $$0, fuw $$1) {
+   public fuk(fws $$0, ctx $$1, int $$2, ftr $$3) {
+      this.a = $$3;
       this.b = $$1;
-      this.a.putAll($$0);
+      this.a($$2);
+      this.a($$0);
    }
 
-   public fuk(List<fuk> $$0) {
-      fuk $$1 = null;
-
-      for (fuk $$2 : $$0) {
-         if ($$2.c()) {
-            this.a.clear();
-            $$1 = $$2;
-         }
-
-         this.a.putAll($$2.a);
-      }
-
-      if ($$1 != null) {
-         this.b = $$1.b;
-      }
-   }
-
-   @VisibleForTesting
-   public boolean a(String $$0) {
-      return this.a.get($$0) != null;
-   }
-
-   @VisibleForTesting
-   public fur b(String $$0) {
-      fur $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new fuk.c();
+   protected void a(fws $$0) {
+      if (!evr.O().bq()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
       } else {
-         return $$1;
-      }
-   }
+         int $$1 = this.d * this.c * this.e;
+         this.f = new fws.b[$$1];
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof fuk $$1 && this.a.equals($$1.a)) {
-            return this.c() ? this.b.equals($$1.b) : !$$1.c();
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.J_() + $$3 * 16, $$4 * 16);
+               }
+            }
          }
-
-         return false;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
-   }
-
-   public Map<String, fur> a() {
-      return this.a;
-   }
-
-   @VisibleForTesting
-   public Set<fur> b() {
-      Set<fur> $$0 = Sets.newHashSet(this.a.values());
-      if (this.c()) {
-         $$0.addAll(this.b.b());
+   public void a() {
+      for (fws.b $$0 : this.f) {
+         $$0.e();
       }
-
-      return $$0;
    }
 
-   public boolean c() {
-      return this.b != null;
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
    }
 
-   public fuw d() {
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.am();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public ctz c() {
       return this.b;
    }
 
-   public static final class a {
-      protected final Gson a = new GsonBuilder()
-         .registerTypeAdapter(fuk.class, new fuk.b())
-         .registerTypeAdapter(fus.class, new fus.a())
-         .registerTypeAdapter(fur.class, new fur.a())
-         .registerTypeAdapter(fuw.class, new fuw.a(this))
-         .registerTypeAdapter(fuy.class, new fuy.a())
-         .create();
-      private dji<cwq, djh> b;
+   public void a(double $$0, double $$1) {
+      int $$2 = aup.c($$0);
+      int $$3 = aup.c($$1);
 
-      public dji<cwq, djh> a() {
-         return this.b;
-      }
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         int $$5 = this.d * 16;
+         int $$6 = $$2 - 8 - $$5 / 2;
+         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
 
-      public void a(dji<cwq, djh> $$0) {
-         this.b = $$0;
-      }
-   }
+         for (int $$8 = 0; $$8 < this.e; $$8++) {
+            int $$9 = this.e * 16;
+            int $$10 = $$3 - 8 - $$9 / 2;
+            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
 
-   public static class b implements JsonDeserializer<fuk> {
-      public fuk a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Map<String, fur> $$4 = this.a($$2, $$3);
-         fuw $$5 = this.b($$2, $$3);
-         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
-            return new fuk($$4, $$5);
-         } else {
-            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
-         }
-      }
-
-      protected Map<String, fur> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<String, fur> $$2 = Maps.newHashMap();
-         if ($$1.has("variants")) {
-            JsonObject $$3 = aue.u($$1, "variants");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), (fur)$$0.deserialize($$4.getValue(), fur.class));
+            for (int $$12 = 0; $$12 < this.c; $$12++) {
+               int $$13 = this.b.J_() + $$12 * 16;
+               fws.b $$14 = this.f[this.a($$4, $$12, $$8)];
+               hx $$15 = $$14.f();
+               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
+                  $$14.a($$7, $$13, $$11);
+               }
             }
          }
-
-         return $$2;
-      }
-
-      @Nullable
-      protected fuw b(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("multipart")) {
-            return null;
-         } else {
-            JsonArray $$2 = aue.v($$1, "multipart");
-            return (fuw)$$0.deserialize($$2, fuw.class);
-         }
       }
    }
 
-   protected class c extends RuntimeException {
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = Math.floorMod($$0, this.d);
+      int $$5 = Math.floorMod($$1 - this.b.an(), this.c);
+      int $$6 = Math.floorMod($$2, this.e);
+      fws.b $$7 = this.f[this.a($$4, $$5, $$6)];
+      $$7.a($$3);
+   }
+
+   @Nullable
+   protected fws.b a(hx $$0) {
+      int $$1 = aup.a($$0.v() - this.b.J_(), 16);
+      if ($$1 >= 0 && $$1 < this.c) {
+         int $$2 = aup.b(aup.a($$0.u(), 16), this.d);
+         int $$3 = aup.b(aup.a($$0.w(), 16), this.e);
+         return this.f[this.a($$2, $$1, $$3)];
+      } else {
+         return null;
+      }
    }
 }

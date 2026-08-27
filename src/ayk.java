@@ -91,8 +91,8 @@ public class ayk extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbw.x);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbw.x);
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbw.y);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbw.y);
       Type<?> $$2 = this.getInputSchema().getType(bbw.t);
       Type<?> $$3 = this.getOutputSchema().getType(bbw.t);
       return TypeRewriteRule.seq(

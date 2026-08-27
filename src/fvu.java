@@ -1,39 +1,50 @@
-public class fvu implements fvh<did> {
-   private final flq<?> a;
+@FunctionalInterface
+public interface fvu<T extends dhd> {
+   fvt<T> create(fvu.a var1);
 
-   public fvu(fvi.a $$0) {
-      this.a = new flq($$0.a(fmw.bh));
-   }
+   public static class a {
+      private final fvs a;
+      private final fun b;
+      private final fzy c;
+      private final fyy d;
+      private final fnf e;
+      private final exc f;
 
-   public void a(did $$0, float $$1, eqb $$2, fth $$3, int $$4, int $$5) {
-      ic $$6 = ic.b;
-      if ($$0.n()) {
-         djh $$7 = $$0.i().a_($$0.aB_());
-         if ($$7.b() instanceof ddo) {
-            $$6 = $$7.c(ddo.b);
-         }
+      public a(fvs $$0, fun $$1, fzy $$2, fyy $$3, fnf $$4, exc $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
       }
 
-      clm $$8 = $$0.w();
-      ggq $$9;
-      if ($$8 == null) {
-         $$9 = ftw.i;
-      } else {
-         $$9 = ftw.j.get($$8.a());
+      public fvs a() {
+         return this.a;
       }
 
-      $$2.a();
-      $$2.a(0.5F, 0.5F, 0.5F);
-      float $$11 = 0.9995F;
-      $$2.b(0.9995F, 0.9995F, 0.9995F);
-      $$2.a($$6.b());
-      $$2.b(1.0F, -1.0F, -1.0F);
-      $$2.a(0.0F, -1.0F, 0.0F);
-      fmx $$12 = this.a.b();
-      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
-      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
-      eqf $$13 = $$9.a($$3, ftp::e);
-      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+      public fun b() {
+         return this.b;
+      }
+
+      public fyy c() {
+         return this.d;
+      }
+
+      public fzy d() {
+         return this.c;
+      }
+
+      public fnf e() {
+         return this.e;
+      }
+
+      public fnj a(fnh $$0) {
+         return this.e.a($$0);
+      }
+
+      public exc f() {
+         return this.f;
+      }
    }
 }

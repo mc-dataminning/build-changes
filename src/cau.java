@@ -1,124 +1,129 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cau extends caq {
-   private static final bwz b = bwz.a().d();
-   @Nullable
-   private efg c;
-   @Nullable
-   private elt d;
-   private boolean e;
+public class cau extends blw {
+   private static final agn<Optional<hx>> c = agq.a(cau.class, agp.o);
+   private static final agn<Boolean> d = agq.a(cau.class, agp.k);
+   public int b;
 
-   public cau(cao $$0) {
-      super($$0);
+   public cau(bmc<? extends cau> $$0, ctx $$1) {
+      super($$0, $$1);
+      this.I = true;
+      this.b = this.ag.a(100000);
+   }
+
+   public cau(ctx $$0, double $$1, double $$2, double $$3) {
+      this(bmc.D, $$0);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   public cbe<cau> i() {
-      return cbe.a;
+   protected blw.b aW() {
+      return blw.b.a;
    }
 
    @Override
-   public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dr(), this.a.dt(), this.a.dx());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
-         this.j();
+   protected void c_() {
+      this.an().a(c, Optional.empty());
+      this.an().a(d, true);
+   }
+
+   @Override
+   public void l() {
+      this.b++;
+      if (this.dL() instanceof ane) {
+         hx $$0 = this.dl();
+         if (((ane)this.dL()).D() != null && this.dL().a_($$0).i()) {
+            this.dL().b($$0, cwl.a(this.dL(), $$0));
+         }
       }
    }
 
    @Override
-   public void d() {
-      this.c = null;
-      this.d = null;
-   }
-
-   @Nullable
-   @Override
-   public elt g() {
-      return this.d;
-   }
-
-   private void j() {
-      if (this.c != null && this.c.c()) {
-         hx $$0 = this.a.dM().a(doq.a.f, new hx(drt.a(this.a.u())));
-         int $$1 = this.a.gc() == null ? 0 : this.a.gc().e();
-         if (this.a.eg().a($$1 + 3) == 0) {
-            this.a.gb().a(cbe.c);
-            return;
-         }
-
-         cfi $$2 = this.a.dM().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-         double $$3;
-         if ($$2 != null) {
-            $$3 = $$0.b($$2.dk()) / 512.0;
-         } else {
-            $$3 = 64.0;
-         }
-
-         if ($$2 != null && (this.a.eg().a((int)($$3 + 2.0)) == 0 || this.a.eg().a($$1 + 2) == 0)) {
-            this.a($$2);
-            return;
-         }
+   protected void b(so $$0) {
+      if (this.q() != null) {
+         $$0.a("BeamTarget", td.a(this.q()));
       }
 
-      if (this.c == null || this.c.c()) {
-         int $$5 = this.a.A();
-         int $$6 = $$5;
-         if (this.a.eg().a(8) == 0) {
-            this.e = !this.e;
-            $$6 = $$5 + 6;
-         }
+      $$0.a("ShowBottom", this.s());
+   }
 
-         if (this.e) {
-            $$6++;
-         } else {
-            $$6--;
-         }
+   @Override
+   protected void a(so $$0) {
+      if ($$0.b("BeamTarget", 10)) {
+         this.a(td.b($$0.p("BeamTarget")));
+      }
 
-         if (this.a.gc() != null && this.a.gc().e() >= 0) {
-            $$6 %= 12;
-            if ($$6 < 0) {
-               $$6 += 12;
+      if ($$0.b("ShowBottom", 1)) {
+         this.a($$0.q("ShowBottom"));
+      }
+   }
+
+   @Override
+   public boolean bt() {
+      return true;
+   }
+
+   @Override
+   public boolean a(bkv $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else if ($$0.d() instanceof cav) {
+         return false;
+      } else {
+         if (!this.dG() && !this.dL().B) {
+            this.a(blw.c.a);
+            if (!$$0.a(ask.m)) {
+               bkv $$2 = $$0.d() != null ? this.dM().d(this, $$0.d()) : null;
+               this.dL().a(this, $$2, null, this.dq(), this.ds(), this.dw(), 6.0F, false, ctx.a.b);
             }
-         } else {
-            $$6 -= 12;
-            $$6 &= 7;
-            $$6 += 12;
+
+            this.a($$0);
          }
 
-         this.c = this.a.a($$5, $$6, null);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.k();
-   }
-
-   private void a(cfi $$0) {
-      this.a.gb().a(cbe.b);
-      this.a.gb().b(cbe.b).a($$0);
-   }
-
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         jb $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.eg().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new elt($$1, $$3, $$2);
+         return true;
       }
    }
 
    @Override
-   public void a(can $$0, hx $$1, bkt $$2, @Nullable cfi $$3) {
-      if ($$3 != null && this.a.c($$3)) {
-         this.a($$3);
+   public void al() {
+      this.a(this.dM().n());
+      super.al();
+   }
+
+   private void a(bkv $$0) {
+      if (this.dL() instanceof ane) {
+         dnb $$1 = ((ane)this.dL()).D();
+         if ($$1 != null) {
+            $$1.a(this, $$0);
+         }
       }
+   }
+
+   public void a(@Nullable hx $$0) {
+      this.an().b(c, Optional.ofNullable($$0));
+   }
+
+   @Nullable
+   public hx q() {
+      return this.an().b(c).orElse(null);
+   }
+
+   public void a(boolean $$0) {
+      this.an().b(d, $$0);
+   }
+
+   public boolean s() {
+      return this.an().b(d);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return super.a($$0) || this.q() != null;
+   }
+
+   @Override
+   public cng dy() {
+      return new cng(cnj.vb);
    }
 }

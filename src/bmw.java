@@ -1,13 +1,15 @@
-public interface bmw extends bmv {
-   void b(int var1);
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface bmw {
+   @Nullable
+   UUID d();
 
-   void c(int var1);
+   cto e();
 
-   void b();
-
-   default int ad_() {
-      return 0;
+   @Nullable
+   default bmo R_() {
+      UUID $$0 = this.d();
+      return $$0 == null ? null : this.e().b($$0);
    }
 }

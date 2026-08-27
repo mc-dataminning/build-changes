@@ -1,24 +1,40 @@
-public class aeq implements xf<adj> {
-   private final ahg a;
+public class aeq implements xg<adk> {
+   private final cjx a;
+   private final boolean b;
+   private final boolean c;
 
-   public aeq(cqe<?> $$0) {
-      this.a = $$0.a();
+   public aeq(cjx $$0, boolean $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public aeq(ui $$0) {
-      this.a = $$0.t();
+   public aeq(uj $$0) {
+      this.a = $$0.b(cjx.class);
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   public ahg a() {
+   public cjx a() {
       return this.a;
+   }
+
+   public boolean d() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

@@ -3,7 +3,7 @@ import com.google.gson.JsonPrimitive;
 public class mj {
    public static final mk<mj.a> a = new mk<>("x", $$0 -> new JsonPrimitive($$0.e));
    public static final mk<mj.a> b = new mk<>("y", $$0 -> new JsonPrimitive($$0.e));
-   public static final mk<ahg> c = new mk<>("model", $$0 -> new JsonPrimitive($$0.toString()));
+   public static final mk<ahh> c = new mk<>("model", $$0 -> new JsonPrimitive($$0.toString()));
    public static final mk<Boolean> d = new mk<>("uvlock", JsonPrimitive::new);
    public static final mk<Integer> e = new mk<>("weight", JsonPrimitive::new);
 

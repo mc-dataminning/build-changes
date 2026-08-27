@@ -1,29 +1,28 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class bqt {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
-
-   public static bpn<bmu> a(bvn<ig> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return brp.a(
-         (Function<brp.b<bmu>, ? extends App<brp.c<bmu>, brs<bmu>>>)($$4 -> $$4.group($$4.a(bvn.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  ig $$9 = $$4.b($$5);
-                  if ($$6.ae() != $$9.a() || !$$9.b().a($$7.dk(), (double)$$2)) {
-                     return false;
-                  } else if ($$8 <= $$3.getValue()) {
-                     return true;
-                  } else {
-                     Optional<elt> $$10 = Optional.ofNullable(bxg.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new bvq($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
-                     return true;
-                  }
-               }))
+   public static bog<bmo> a(Function<bmo, Optional<bpt>> $$0, Predicate<bmo> $$1, int $$2, int $$3, float $$4) {
+      return brs.a(
+         (Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$5 -> $$5.group($$5.a(bvq.n), $$5.a(bvq.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bpt> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bpt $$11 = $$10.get();
+                        if ($$8.dj().a((ir)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           bpt $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new bvt($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
+                     }
+                  }))
       );
    }
 }

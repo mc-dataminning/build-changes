@@ -1,44 +1,35 @@
-import java.util.Collection;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class rj {
-   public static final String a = "defaultBatch";
-   private final String b;
-   private final Collection<se> c;
-   @Nullable
-   private final Consumer<and> d;
-   @Nullable
-   private final Consumer<and> e;
+public class rj extends ri {
+   private final hx a;
+   private final hx b;
+   private final long c;
 
-   public rj(String $$0, Collection<se> $$1, @Nullable Consumer<and> $$2, @Nullable Consumer<and> $$3) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("A GameTestBatch must include at least one TestFunction!");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
+   public rj(String $$0, hx $$1, hx $$2, long $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
+   @Override
+   public String getMessage() {
+      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
+      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
+   }
+
+   @Nullable
    public String a() {
+      return super.getMessage();
+   }
+
+   @Nullable
+   public hx b() {
       return this.b;
    }
 
-   public Collection<se> b() {
-      return this.c;
-   }
-
-   public void a(and $$0) {
-      if (this.d != null) {
-         this.d.accept($$0);
-      }
-   }
-
-   public void b(and $$0) {
-      if (this.e != null) {
-         this.e.accept($$0);
-      }
+   @Nullable
+   public hx c() {
+      return this.a;
    }
 }

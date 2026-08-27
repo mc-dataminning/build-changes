@@ -1,7 +1,7 @@
 import java.util.List;
 
 public interface hd<T> {
-   ahg a();
+   ahh a();
 
    List<gs<T>> b();
 }

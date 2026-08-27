@@ -1,26 +1,17 @@
-public class fql extends fqt {
-   fql(fns $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 7;
+public class fql extends fqm<jr> {
+   protected fql(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, jr $$7, fsc $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 3; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(jx.y, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+   public static class a implements frk<jr> {
+      private final fsc a;
+
+      public a(fsc $$0) {
+         this.a = $$0;
       }
 
-      if (this.s++ == this.t) {
-         this.k();
-      }
-   }
-
-   public static class a implements fqy<ka> {
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fql($$1, $$2, $$3, $$4);
+      public frh a(jr $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fql($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

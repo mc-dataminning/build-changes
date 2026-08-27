@@ -1,83 +1,78 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public class fhu extends fdb {
-   private static final int a = 310;
-   private final faq b = new faq(this);
-   private final fdb c;
-   private final apt k;
-   private final Consumer<apt> l;
-   private final Object2BooleanMap<apq> m = new Object2BooleanLinkedOpenHashMap();
+public class fhu {
+   private final evr a;
+   private final Set<UUID> b = Sets.newHashSet();
+   private final UserApiService c;
+   private final Map<String, UUID> d = Maps.newHashMap();
+   private boolean e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
 
-   public fhu(fdb $$0, apt $$1, Consumer<apt> $$2) {
-      super(vf.c("experiments_screen.title"));
-      this.c = $$0;
-      this.k = $$1;
-      this.l = $$2;
+   public fhu(evr $$0, UserApiService $$1) {
+      this.a = $$0;
+      this.c = $$1;
+   }
 
-      for (apq $$3 : $$1.c()) {
-         if ($$3.j() == apu.d) {
-            this.m.put($$3, $$1.f().contains($$3));
-         }
+   public void a(UUID $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(UUID $$0) {
+      this.b.remove($$0);
+   }
+
+   public boolean c(UUID $$0) {
+      return this.d($$0) || this.e($$0);
+   }
+
+   public boolean d(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public void a() {
+      this.e = true;
+      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.g());
+   }
+
+   public void b() {
+      this.e = false;
+   }
+
+   public boolean e(UUID $$0) {
+      if (!this.e) {
+         return false;
+      } else {
+         this.f.join();
+         return this.c.isBlockedPlayer($$0);
       }
    }
 
-   @Override
-   protected void aN_() {
-      this.b.a(new eyn(vf.c("selectWorld.experiments"), this.i));
-      fau $$0 = this.b.c(fau.d());
-      $$0.a(new eya(vf.c("selectWorld.experiments.info").a(n.m), this.i).c(310), $$0x -> $$0x.e(15));
-      fhy.a $$1 = fhy.a(310).a(2, true).b(4);
-      this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.b()));
-      $$1.a($$0::a);
-      fap.b $$2 = this.b.b(new fap().a(10)).d(2);
-      $$2.a(exg.a(ve.d, $$0x -> this.n()).a());
-      $$2.a(exg.a(ve.e, $$0x -> this.aE_()).a());
-      this.b.a($$1x -> {
-         exe var10000 = this.d($$1x);
-      });
-      this.c();
+   public Set<UUID> c() {
+      return this.b;
    }
 
-   private static vf a(apq $$0) {
-      String $$1 = "dataPack." + $$0.f() + ".name";
-      return (vf)(gfs.a($$1) ? vf.c($$1) : $$0.a());
+   public UUID a(String $$0) {
+      return this.d.getOrDefault($$0, ac.d);
    }
 
-   @Override
-   public void aE_() {
-      this.f.a(this.c);
+   public void a(fon $$0) {
+      GameProfile $$1 = $$0.a();
+      this.d.put($$1.getName(), $$1.getId());
+      if (this.a.y instanceof fhw $$2) {
+         $$2.a($$0);
+      }
    }
 
-   private void n() {
-      List<apq> $$0 = new ArrayList<>(this.k.f());
-      List<apq> $$1 = new ArrayList<>();
-      this.m.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
-         }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.k.a($$0.stream().map(apq::f).toList());
-      this.l.accept(this.k);
-   }
-
-   @Override
-   protected void c() {
-      this.b.a();
-   }
-
-   @Override
-   public void b(ewu $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      $$0.a(0.125F, 0.125F, 0.125F, 1.0F);
-      int $$4 = 32;
-      $$0.a(d, 0, this.b.c(), 0.0F, 0.0F, this.g, this.h - this.b.c() - this.b.b(), 32, 32);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public void f(UUID $$0) {
+      if (this.a.y instanceof fhw $$1) {
+         $$1.a($$0);
+      }
    }
 }

@@ -14,7 +14,7 @@ public class bct extends DataFix {
    private static final int[] b = new int[]{0, 10, 50, 100, 150};
 
    public static int a(int $$0) {
-      return b[auo.a($$0 - 1, 0, b.length - 1)];
+      return b[aup.a($$0 - 1, 0, b.length - 1)];
    }
 
    public bct(Schema $$0, boolean $$1) {
@@ -22,20 +22,20 @@ public class bct extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bbw.x, "minecraft:villager");
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bbw.y, "minecraft:villager");
       OpticFinder<?> $$1 = DSL.namedChoice("minecraft:villager", $$0);
       OpticFinder<?> $$2 = $$0.findField("Offers");
       Type<?> $$3 = $$2.type();
       OpticFinder<?> $$4 = $$3.findField("Recipes");
       ListType<?> $$5 = (ListType<?>)$$4.type();
       OpticFinder<?> $$6 = $$5.getElement().finder();
-      return this.fixTypeEverywhereTyped("Villager level and xp rebuild", this.getInputSchema().getType(bbw.x), $$5x -> $$5x.updateTyped($$1, $$0, $$3xx -> {
+      return this.fixTypeEverywhereTyped("Villager level and xp rebuild", this.getInputSchema().getType(bbw.y), $$5x -> $$5x.updateTyped($$1, $$0, $$3xx -> {
             Dynamic<?> $$4xx = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
             int $$5xx = $$4xx.get("VillagerData").get("level").asInt(0);
             Typed<?> $$6x = $$3xx;
             if ($$5xx == 0 || $$5xx == 1) {
                int $$7 = $$3xx.getOptionalTyped($$2).flatMap($$1xxx -> $$1xxx.getOptionalTyped($$4)).map($$1xxx -> $$1xxx.getAllTyped($$6).size()).orElse(0);
-               $$5xx = auo.a($$7 / 2, 1, 5);
+               $$5xx = aup.a($$7 / 2, 1, 5);
                if ($$5xx > 1) {
                   $$6x = a($$3xx, $$5xx);
                }

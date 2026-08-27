@@ -1,22 +1,10 @@
-public class com extends cmt {
-   private final col a;
-
-   public com(col $$0, cmt.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
-   }
-
-   public col i() {
-      return this.a;
+public class com extends ckv {
+   public com(cnb.a $$0) {
+      super($$0);
    }
 
    @Override
-   public int c() {
-      return this.a.e();
-   }
-
-   @Override
-   public boolean a(cmy $$0, cmy $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+   public cfw a(ctx $$0, cng $$1, bmo $$2) {
+      return new cgn($$0, $$2, $$1.c(1));
    }
 }

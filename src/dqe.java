@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-class dqe extends dqi {
-   private final il<eeq> e;
-   public static final Codec<dqe> a = RecordCodecBuilder.create($$0 -> a($$0).and(iv.a(ke.y).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dqe::new));
+class dqe extends dqh {
+   public static final Codec<dqe> a = a(dqe::new);
 
-   public dqe(jb $$0, il<eeq> $$1) {
+   public dqe(List<dqf> $$0) {
       super($$0);
-      this.e = $$1;
+   }
+
+   public boolean a(cus $$0, hx $$1) {
+      for (dqf $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   protected boolean a(djh $$0) {
-      return $$0.u().a(this.e);
-   }
-
-   @Override
-   public dpy<?> a() {
-      return dpy.c;
+   public dqg<?> a() {
+      return dqg.i;
    }
 }

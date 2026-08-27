@@ -1,77 +1,112 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
+import java.util.List;
 
-public abstract class eec<M extends eec<M>> {
-   private static final int b = 2;
-   private final long[] c = new long[2];
-   private final dlj[] d = new dlj[2];
-   private boolean e;
-   protected final Long2ObjectOpenHashMap<dlj> a;
+public class eec {
+   private static final double a = 1.0181268882175227;
+   private static final double b = 0.3333333333333333;
+   private final double c;
+   private final eed d;
+   private final eed e;
+   private final double f;
+   private final eec.a g;
 
-   protected eec(Long2ObjectOpenHashMap<dlj> $$0) {
-      this.a = $$0;
-      this.c();
-      this.e = true;
+   @Deprecated
+   public static eec a(auw $$0, eec.a $$1) {
+      return new eec($$0, $$1, false);
    }
 
-   public abstract M b();
-
-   public dlj a(long $$0) {
-      dlj $$1 = ((dlj)this.a.get($$0)).b();
-      this.a.put($$0, $$1);
-      this.c();
-      return $$1;
+   public static eec a(auw $$0, int $$1, double... $$2) {
+      return b($$0, new eec.a($$1, new DoubleArrayList($$2)));
    }
 
-   public boolean b(long $$0) {
-      return this.a.containsKey($$0);
+   public static eec b(auw $$0, eec.a $$1) {
+      return new eec($$0, $$1, true);
    }
 
-   @Nullable
-   public dlj c(long $$0) {
-      if (this.e) {
-         for (int $$1 = 0; $$1 < 2; $$1++) {
-            if ($$0 == this.c[$$1]) {
-               return this.d[$$1];
-            }
-         }
-      }
-
-      dlj $$2 = (dlj)this.a.get($$0);
-      if ($$2 == null) {
-         return null;
+   private eec(auw $$0, eec.a $$1, boolean $$2) {
+      int $$3 = $$1.c;
+      DoubleList $$4 = $$1.d;
+      this.g = $$1;
+      if ($$2) {
+         this.d = eed.b($$0, $$3, $$4);
+         this.e = eed.b($$0, $$3, $$4);
       } else {
-         if (this.e) {
-            for (int $$3 = 1; $$3 > 0; $$3--) {
-               this.c[$$3] = this.c[$$3 - 1];
-               this.d[$$3] = this.d[$$3 - 1];
-            }
+         this.d = eed.a($$0, $$3, $$4);
+         this.e = eed.a($$0, $$3, $$4);
+      }
 
-            this.c[0] = $$0;
-            this.d[0] = $$2;
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = Integer.MIN_VALUE;
+      DoubleListIterator $$7 = $$4.iterator();
+
+      while ($$7.hasNext()) {
+         int $$8 = $$7.nextIndex();
+         double $$9 = $$7.nextDouble();
+         if ($$9 != 0.0) {
+            $$5 = Math.min($$5, $$8);
+            $$6 = Math.max($$6, $$8);
          }
-
-         return $$2;
       }
+
+      this.c = 0.16666666666666666 / a($$6 - $$5);
+      this.f = (this.d.a() + this.e.a()) * this.c;
    }
 
-   @Nullable
-   public dlj d(long $$0) {
-      return (dlj)this.a.remove($$0);
+   public double a() {
+      return this.f;
    }
 
-   public void a(long $$0, dlj $$1) {
-      this.a.put($$0, $$1);
+   private static double a(int $$0) {
+      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
    }
 
-   public void c() {
-      for (int $$0 = 0; $$0 < 2; $$0++) {
-         this.c[$$0] = Long.MAX_VALUE;
-         this.d[$$0] = null;
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = $$0 * 1.0181268882175227;
+      double $$4 = $$1 * 1.0181268882175227;
+      double $$5 = $$2 * 1.0181268882175227;
+      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
+   }
+
+   public eec.a b() {
+      return this.g;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("NormalNoise {");
+      $$0.append("first: ");
+      this.d.a($$0);
+      $$0.append(", second: ");
+      this.e.a($$0);
+      $$0.append("}");
+   }
+
+   public static record a(int c, DoubleList d) {
+      public static final Codec<eec.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(eec.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(eec.a::b))
+               .apply($$0, eec.a::new)
+      );
+      public static final Codec<ih<eec.a>> b = ahd.a(ke.aB, a);
+
+      public a(int $$0, List<Double> $$1) {
+         this($$0, new DoubleArrayList($$1));
       }
-   }
 
-   public void d() {
-      this.e = false;
+      public a(int $$0, double $$1, double... $$2) {
+         this($$0, ac.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
+      }
+
+      public int a() {
+         return this.c;
+      }
+
+      public DoubleList b() {
+         return this.d;
+      }
    }
 }

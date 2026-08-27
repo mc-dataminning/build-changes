@@ -1,31 +1,45 @@
-public class fks<T extends blv> extends fkg<T> {
-   private final fmx a;
+import java.util.Optional;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
-   public fks(fmx $$0) {
-      this.a = $$0;
+public abstract class fks<E extends blw> extends fkj<E> {
+   private static final Vector3f a = new Vector3f();
+
+   public fks() {
+      this(fub::e);
    }
 
-   public static fnd b() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      int $$2 = 20;
-      int $$3 = 8;
-      int $$4 = 16;
-      int $$5 = 4;
-      $$1.a("bottom", fnc.c().a(0, 10).a(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F), fmz.a(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("front", fnc.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fmz.a(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$1.a("back", fnc.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fmz.a(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left", fnc.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fmz.a(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$1.a("right", fnc.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fmz.a(0.0F, 4.0F, 7.0F));
-      return fnd.a($$0, 64, 32);
+   public fks(Function<ahh, fub> $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   public void a(eqk $$0, eqo $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   public fmx a() {
-      return this.a;
+   public abstract fnj a();
+
+   public Optional<fnj> a(String $$0) {
+      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
+   }
+
+   protected void a(bls $$0, ewi $$1, float $$2) {
+      this.a($$0, $$1, $$2, 1.0F);
+   }
+
+   protected void a(ewi $$0, float $$1, float $$2, float $$3, float $$4) {
+      long $$5 = (long)($$1 * 50.0F * $$3);
+      float $$6 = Math.min($$2 * $$4, 1.0F);
+      ewk.a(this, $$0, $$5, $$6, a);
+   }
+
+   protected void a(bls $$0, ewi $$1, float $$2, float $$3) {
+      $$0.a($$2, $$3);
+      $$0.a($$1x -> ewk.a(this, $$1, $$1x.b(), 1.0F, a));
+   }
+
+   protected void a(ewi $$0) {
+      ewk.a(this, $$0, 0L, 1.0F, a);
    }
 }

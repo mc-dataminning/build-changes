@@ -1,75 +1,81 @@
-import java.util.Arrays;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class ve {
-   public static final vf a = vf.i();
-   public static final vf b = vf.c("options.on");
-   public static final vf c = vf.c("options.off");
-   public static final vf d = vf.c("gui.done");
-   public static final vf e = vf.c("gui.cancel");
-   public static final vf f = vf.c("gui.yes");
-   public static final vf g = vf.c("gui.no");
-   public static final vf h = vf.c("gui.ok");
-   public static final vf i = vf.c("gui.proceed");
-   public static final vf j = vf.c("gui.continue");
-   public static final vf k = vf.c("gui.back");
-   public static final vf l = vf.c("gui.toTitle");
-   public static final vf m = vf.c("gui.acknowledge");
-   public static final vf n = vf.c("chat.link.open");
-   public static final vf o = vf.c("gui.copy_link_to_clipboard");
-   public static final vf p = vf.c("menu.disconnect");
-   public static final vf q = vf.c("connect.failed");
-   public static final vf r = vf.b("\n");
-   public static final vf s = vf.b(". ");
-   public static final vf t = vf.b("...");
-   public static final vf u = a();
+   public static final Codec<ve> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ve.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, ve::new)
+   );
+   private final ve.a b;
+   private final String c;
 
-   public static vt a() {
-      return vf.b(" ");
+   public ve(ve.a $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static vt a(long $$0) {
-      return vf.a("gui.days", $$0);
+   public ve.a a() {
+      return this.b;
    }
 
-   public static vt b(long $$0) {
-      return vf.a("gui.hours", $$0);
+   public String b() {
+      return this.c;
    }
 
-   public static vt c(long $$0) {
-      return vf.a("gui.minutes", $$0);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ve $$1 = (ve)$$0;
+         return this.b == $$1.b && this.c.equals($$1.c);
+      } else {
+         return false;
+      }
    }
 
-   public static vf a(boolean $$0) {
-      return $$0 ? b : c;
+   @Override
+   public String toString() {
+      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
    }
 
-   public static vt a(vf $$0, boolean $$1) {
-      return vf.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 
-   public static vt a(vf $$0, vf $$1) {
-      return vf.a("options.generic_value", $$0, $$1);
-   }
+   public static enum a implements avl {
+      a("open_url", true),
+      b("open_file", false),
+      c("run_command", true),
+      d("suggest_command", true),
+      e("change_page", true),
+      f("copy_to_clipboard", true);
 
-   public static vt a(vf... $$0) {
-      vt $$1 = vf.i();
+      public static final MapCodec<ve.a> g = avl.a(ve.a::values).fieldOf("action");
+      public static final MapCodec<ve.a> h = atx.a(g, ve.a::a);
+      private final boolean i;
+      private final String j;
 
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(s);
-         }
+      private a(String $$0, boolean $$1) {
+         this.j = $$0;
+         this.i = $$1;
       }
 
-      return $$1;
-   }
+      public boolean a() {
+         return this.i;
+      }
 
-   public static vf b(vf... $$0) {
-      return a(Arrays.asList($$0));
-   }
+      @Override
+      public String c() {
+         return this.j;
+      }
 
-   public static vf a(Collection<? extends vf> $$0) {
-      return vi.a($$0, r);
+      public static DataResult<ve.a> a(ve.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      }
    }
 }

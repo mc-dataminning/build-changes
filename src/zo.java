@@ -1,13 +1,14 @@
-public record zo() implements xf<za> {
-   public zo(ui $$0) {
-      this();
+public record zo(int a) implements xg<zb> {
+   public zo(uj $$0) {
+      this($$0.n());
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 }

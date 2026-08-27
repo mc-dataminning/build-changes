@@ -1,16 +1,29 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dxo<P extends dxn> {
-   dxo<dxm> a = a("constant", dxm.b);
-   dxo<dxq> b = a("uniform", dxq.a);
-   dxo<dxl> c = a("biased_to_bottom", dxl.a);
-   dxo<dxr> d = a("very_biased_to_bottom", dxr.a);
-   dxo<dxp> e = a("trapezoid", dxp.a);
-   dxo<dxs> f = a("weighted_list", dxs.a);
+public class dxo {
+   public static final Codec<dxo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, dmy.c).fieldOf("height").forGetter(dxo::a), kd.e.q().fieldOf("block").orElse(cxa.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, dxo::new)
+   );
+   private final cwy b;
+   private final int c;
 
-   Codec<P> codec();
+   public dxo(int $$0, cwy $$1) {
+      this.c = $$0;
+      this.b = $$1;
+   }
 
-   private static <P extends dxn> dxo<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.N, $$0, () -> $$1);
+   public int a() {
+      return this.c;
+   }
+
+   public djp b() {
+      return this.b.o();
+   }
+
+   @Override
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + kd.e.b(this.b);
    }
 }

@@ -28,7 +28,7 @@ public class bdf extends Schema {
       a($$0, $$1, "Slime");
       a($$0, $$1, "Ghast");
       a($$0, $$1, "PigZombie");
-      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", bbw.y.in($$0), a($$0)));
+      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", bbw.z.in($$0), a($$0)));
       a($$0, $$1, "CaveSpider");
       a($$0, $$1, "Silverfish");
       a($$0, $$1, "Blaze");
@@ -77,7 +77,7 @@ public class bdf extends Schema {
          bbw.f,
          () -> DSL.optionalFields(
                "entities",
-               DSL.list(DSL.optionalFields("nbt", bbw.w.in($$0))),
+               DSL.list(DSL.optionalFields("nbt", bbw.x.in($$0))),
                "blocks",
                DSL.list(DSL.optionalFields("nbt", bbw.s.in($$0))),
                "palette",
@@ -85,5 +85,6 @@ public class bdf extends Schema {
             )
       );
       $$0.registerType(false, bbw.u, DSL::remainder);
+      $$0.registerType(false, bbw.v, DSL::remainder);
    }
 }

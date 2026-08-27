@@ -1,7 +1,8 @@
-import java.util.UUID;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface blb {
-   UUID a();
-
-   bnp a(int var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface blb {
 }

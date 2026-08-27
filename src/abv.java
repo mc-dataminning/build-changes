@@ -1,20 +1,20 @@
-public class abv implements xf<za> {
+public class abv implements xg<zb> {
    private final int a;
 
-   public abv(dky $$0) {
-      this.a = $$0.r();
+   public abv(dlg $$0) {
+      this.a = $$0.q();
    }
 
-   public abv(ui $$0) {
+   public abv(uj $$0) {
       this.a = $$0.n();
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.c(this.a);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 

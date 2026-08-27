@@ -1,125 +1,94 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class buj extends btu {
-   private final cwq g;
-   private final bmn h;
-   private int i;
-   private static final int j = 20;
+public class buj extends btk {
+   private final bmq a;
+   private final cda b;
+   @Nullable
+   private bmo c;
+   private int d = -1;
+   private final double e;
+   private int f;
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
 
-   public buj(cwq $$0, bmu $$1, double $$2, int $$3) {
-      super($$1, $$2, 24, $$3);
-      this.g = $$0;
-      this.h = $$1;
+   public buj(cda $$0, double $$1, int $$2, float $$3) {
+      this($$0, $$1, $$2, $$2, $$3);
+   }
+
+   public buj(cda $$0, double $$1, int $$2, int $$3, float $$4) {
+      if (!($$0 instanceof bmo)) {
+         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
+      } else {
+         this.b = $$0;
+         this.a = (bmq)$$0;
+         this.e = $$1;
+         this.g = $$2;
+         this.h = $$3;
+         this.i = $$4;
+         this.j = $$4 * $$4;
+         this.a(EnumSet.of(btk.a.a, btk.a.b));
+      }
    }
 
    @Override
    public boolean a() {
-      if (!this.h.dM().Z().b(ctl.c)) {
-         return false;
-      } else if (this.c > 0) {
-         this.c--;
-         return false;
-      } else if (this.n()) {
-         this.c = b(20);
+      bmo $$0 = this.a.q();
+      if ($$0 != null && $$0.bx()) {
+         this.c = $$0;
          return true;
       } else {
-         this.c = this.a(this.a);
          return false;
       }
+   }
+
+   @Override
+   public boolean b() {
+      return this.a() || this.c.bx() && !this.a.N().l();
    }
 
    @Override
    public void d() {
-      super.d();
-      this.h.ab = 1.0F;
+      this.c = null;
+      this.f = 0;
+      this.d = -1;
    }
 
    @Override
-   public void c() {
-      super.c();
-      this.i = 0;
-   }
-
-   public void a(ctq $$0, hx $$1) {
-   }
-
-   public void a(ctp $$0, hx $$1) {
+   public boolean T_() {
+      return true;
    }
 
    @Override
    public void e() {
-      super.e();
-      ctp $$0 = this.h.dM();
-      hx $$1 = this.h.dm();
-      hx $$2 = this.a($$1, $$0);
-      auv $$3 = this.h.eg();
-      if (this.m() && $$2 != null) {
-         if (this.i > 0) {
-            elt $$4 = this.h.dp();
-            this.h.o($$4.c, 0.3, $$4.e);
-            if (!$$0.B) {
-               double $$5 = 0.08;
-               ((and)$$0)
-                  .a(
-                     new jt(jx.Q, new cmy(cnb.qO)),
-                     (double)$$2.u() + 0.5,
-                     (double)$$2.v() + 0.7,
-                     (double)$$2.w() + 0.5,
-                     3,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     0.15F
-                  );
-            }
-         }
-
-         if (this.i % 2 == 0) {
-            elt $$6 = this.h.dp();
-            this.h.o($$6.c, -0.3, $$6.e);
-            if (this.i % 6 == 0) {
-               this.a((ctq)$$0, this.e);
-            }
-         }
-
-         if (this.i > 60) {
-            $$0.a($$2, false);
-            if (!$$0.B) {
-               for (int $$7 = 0; $$7 < 20; $$7++) {
-                  double $$8 = $$3.k() * 0.02;
-                  double $$9 = $$3.k() * 0.02;
-                  double $$10 = $$3.k() * 0.02;
-                  ((and)$$0).a(jx.Y, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
-               }
-
-               this.a($$0, $$2);
-            }
-         }
-
-         this.i++;
-      }
-   }
-
-   @Nullable
-   private hx a(hx $$0, csv $$1) {
-      if ($$1.a_($$0).a(this.g)) {
-         return $$0;
+      double $$0 = this.a.i(this.c.dq(), this.c.ds(), this.c.dw());
+      boolean $$1 = this.a.O().a(this.c);
+      if ($$1) {
+         this.f++;
       } else {
-         hx[] $$2 = new hx[]{$$0.d(), $$0.g(), $$0.h(), $$0.e(), $$0.f(), $$0.d().d()};
+         this.f = 0;
+      }
 
-         for (hx $$3 : $$2) {
-            if ($$1.a_($$3).a(this.g)) {
-               return $$3;
-            }
+      if (!($$0 > (double)this.j) && this.f >= 5) {
+         this.a.N().n();
+      } else {
+         this.a.N().a(this.c, this.e);
+      }
+
+      this.a.I().a(this.c, 30.0F, 30.0F);
+      if (--this.d == 0) {
+         if (!$$1) {
+            return;
          }
 
-         return null;
+         float $$2 = (float)Math.sqrt($$0) / this.i;
+         float $$3 = aup.a($$2, 0.1F, 1.0F);
+         this.b.a(this.c, $$3);
+         this.d = aup.d($$2 * (float)(this.h - this.g) + (float)this.g);
+      } else if (this.d < 0) {
+         this.d = aup.a(aup.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
       }
-   }
-
-   @Override
-   protected boolean a(cts $$0, hx $$1) {
-      dld $$2 = $$0.a(iz.a($$1.u()), iz.a($$1.w()), dli.n, false);
-      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.c()).i() && $$2.a_($$1.b(2)).i();
    }
 }

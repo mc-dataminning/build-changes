@@ -1,26 +1,33 @@
-import java.util.function.Function;
+public class fjx<T extends cad> extends fku<T> {
+   private final fnj g = this.b.b("left_chest");
+   private final fnj h = this.b.b("right_chest");
 
-public abstract class fjx<T extends blv> extends fkt {
-   public float c;
-   public boolean d;
-   public boolean e = true;
-
-   protected fjx() {
-      this(ftp::e);
-   }
-
-   protected fjx(Function<ahg, ftp> $$0) {
+   public fjx(fnj $$0) {
       super($$0);
    }
 
-   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
+   public static fnp c() {
+      fnr $$0 = fku.a(fnn.a);
+      fns $$1 = $$0.a();
+      fns $$2 = $$1.a("body");
+      fno $$3 = fno.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
+      $$2.a("left_chest", $$3, fnl.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$2.a("right_chest", $$3, fnl.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      fns $$4 = $$1.a("head_parts").a("head");
+      fno $$5 = fno.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
+      $$4.a("left_ear", $$5, fnl.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
+      $$4.a("right_ear", $$5, fnl.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
+      return fnp.a($$0, 64, 64);
    }
 
-   public void a(fjx<T> $$0) {
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.w()) {
+         this.g.k = true;
+         this.h.k = true;
+      } else {
+         this.g.k = false;
+         this.h.k = false;
+      }
    }
 }

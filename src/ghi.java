@@ -1,107 +1,57 @@
-public abstract class ghi implements gia {
-   protected ghx a;
-   protected final art b;
-   protected final ahg c;
-   protected float d = 1.0F;
-   protected float e = 1.0F;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected boolean i;
-   protected int j;
-   protected gia.a k = gia.a.b;
-   protected boolean l;
-   protected auv m;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   protected ghi(arr $$0, art $$1, auv $$2) {
-      this($$0.a(), $$1, $$2);
+public class ghi extends ahh {
+   @VisibleForTesting
+   static final char e = '#';
+   private final String f;
+
+   private ghi(String $$0, String $$1, String $$2, @Nullable ahh.a $$3) {
+      super($$0, $$1, $$3);
+      this.f = $$2;
    }
 
-   protected ghi(ahg $$0, art $$1, auv $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.m = $$2;
+   public ghi(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.f = j($$2);
    }
 
-   @Override
-   public ahg a() {
-      return this.c;
+   public ghi(ahh $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
    }
 
-   @Override
-   public gjf a(gje $$0) {
-      if (this.c.equals(gje.b)) {
-         this.a = gje.d;
-         return gje.c;
-      } else {
-         gjf $$1 = $$0.a(this.c);
-         if ($$1 == null) {
-            this.a = gje.a;
-         } else {
-            this.a = $$1.a(this.m);
-         }
-
-         return $$1;
-      }
+   public static ghi c(String $$0, String $$1) {
+      return new ghi("minecraft", $$0, $$1);
    }
 
-   @Override
-   public ghx b() {
-      return this.a;
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
    }
 
-   @Override
-   public art c() {
-      return this.b;
-   }
-
-   @Override
-   public boolean d() {
-      return this.i;
-   }
-
-   @Override
-   public int e() {
-      return this.j;
-   }
-
-   @Override
-   public float f() {
-      return this.d * this.a.c().a(this.m);
-   }
-
-   @Override
-   public float g() {
-      return this.e * this.a.d().a(this.m);
-   }
-
-   @Override
-   public double h() {
+   public String f() {
       return this.f;
    }
 
    @Override
-   public double i() {
-      return this.g;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof ghi && super.equals($$0)) {
+         ghi $$1 = (ghi)$$0;
+         return this.f.equals($$1.f);
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public double j() {
-      return this.h;
-   }
-
-   @Override
-   public gia.a k() {
-      return this.k;
-   }
-
-   @Override
-   public boolean l() {
-      return this.l;
+   public int hashCode() {
+      return 31 * super.hashCode() + this.f.hashCode();
    }
 
    @Override
    public String toString() {
-      return "SoundInstance[" + this.c + "]";
+      return super.toString() + "#" + this.f;
    }
 }

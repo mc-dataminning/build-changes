@@ -1,40 +1,21 @@
-public class cog extends cmt {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
+import javax.annotation.Nullable;
 
-   public cog(cmt.a $$0) {
-      super($$0);
+public class cog extends coq {
+   public cog(cnb.a $$0, cwy $$1, cwy $$2) {
+      super($$1, $$2, $$0, ic.a);
+   }
+
+   public cog(cnb.a $$0, cwy $$1, cwy $$2, ic $$3) {
+      super($$1, $$2, $$0, $$3);
    }
 
    @Override
-   public int b(cmy $$0) {
-      return 1200;
-   }
+   protected boolean a(hx $$0, ctx $$1, @Nullable cfq $$2, cng $$3, djp $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dim $$6 && $$1.a_($$0).b() instanceof ddx $$7) {
+         $$7.a($$2, $$6, true);
+      }
 
-   @Override
-   public cos c(cmy $$0) {
-      return cos.h;
-   }
-
-   @Override
-   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
-      $$1.a(ars.ya, 1.0F, 1.0F);
-      $$1.b(asc.c.b(this));
-      return cna.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public cmy a(cmy $$0, ctp $$1, bml $$2) {
-      this.a($$2);
-      return $$0;
-   }
-
-   @Override
-   public void a(cmy $$0, ctp $$1, bml $$2, int $$3) {
-      this.a($$2);
-   }
-
-   private void a(bml $$0) {
-      $$0.a(ars.yb, 1.0F, 1.0F);
+      return $$5;
    }
 }

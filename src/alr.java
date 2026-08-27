@@ -1,194 +1,120 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
+import java.util.Collection;
 
 public class alr {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("commands.worldborder.center.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vf.c("commands.worldborder.set.failed.nochange"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vf.c("commands.worldborder.set.failed.small"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vf.a("commands.worldborder.set.failed.big", 5.999997E7F));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vf.a("commands.worldborder.set.failed.far", 2.9999984E7));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(vf.c("commands.worldborder.warning.time.failed"));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(vf.c("commands.worldborder.warning.distance.failed"));
-   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(vf.c("commands.worldborder.damage.buffer.failed"));
-   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(vf.c("commands.worldborder.damage.amount.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.whitelist.alreadyOn"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vg.c("commands.whitelist.alreadyOff"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vg.c("commands.whitelist.add.failed"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vg.c("commands.whitelist.remove.failed"));
 
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
-                                 "worldborder"
+                                 "whitelist"
                               )
-                              .requires($$0x -> $$0x.c(2)))
-                           .then(
-                              dt.a("add")
-                                 .then(
-                                    ((RequiredArgumentBuilder)dt.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ds)$$0x.getSource(),
-                                                   ((ds)$$0x.getSource()).e().D_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
-                                                   0L
-                                                )
-                                          ))
-                                       .then(
-                                          dt.a("time", IntegerArgumentType.integer(0))
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ds)$$0x.getSource(),
-                                                      ((ds)$$0x.getSource()).e().D_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
-                                                      ((ds)$$0x.getSource()).e().D_().j() + (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
-                                                   )
-                                             )
-                                       )
-                                 )
-                           ))
-                        .then(
-                           dt.a("set")
-                              .then(
-                                 ((RequiredArgumentBuilder)dt.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
-                                       .executes($$0x -> a((ds)$$0x.getSource(), DoubleArgumentType.getDouble($$0x, "distance"), 0L)))
-                                    .then(
-                                       dt.a("time", IntegerArgumentType.integer(0))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ds)$$0x.getSource(),
-                                                   DoubleArgumentType.getDouble($$0x, "distance"),
-                                                   (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
-                                                )
-                                          )
-                                    )
-                              )
-                        ))
-                     .then(dt.a("center").then(dt.a("pos", fs.a()).executes($$0x -> a((ds)$$0x.getSource(), fs.a($$0x, "pos"))))))
-                  .then(
-                     ((LiteralArgumentBuilder)dt.a("damage")
-                           .then(
-                              dt.a("amount")
-                                 .then(
-                                    dt.a("damagePerBlock", FloatArgumentType.floatArg(0.0F))
-                                       .executes($$0x -> b((ds)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "damagePerBlock")))
-                                 )
-                           ))
-                        .then(
-                           dt.a("buffer")
-                              .then(
-                                 dt.a("distance", FloatArgumentType.floatArg(0.0F))
-                                    .executes($$0x -> a((ds)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "distance")))
-                              )
-                        )
-                  ))
-               .then(dt.a("get").executes($$0x -> a((ds)$$0x.getSource()))))
-            .then(
-               ((LiteralArgumentBuilder)dt.a("warning")
+                              .requires($$0x -> $$0x.c(3)))
+                           .then(dt.a("on").executes($$0x -> b((ds)$$0x.getSource()))))
+                        .then(dt.a("off").executes($$0x -> c((ds)$$0x.getSource()))))
+                     .then(dt.a("list").executes($$0x -> d((ds)$$0x.getSource()))))
+                  .then(dt.a("add").then(dt.a("targets", eh.a()).suggests(($$0x, $$1) -> {
+                     aqw $$2 = ((ds)$$0x.getSource()).l().ae();
+                     return dx.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.fR())).map($$0xx -> $$0xx.fR().getName()), $$1);
+                  }).executes($$0x -> a((ds)$$0x.getSource(), eh.a($$0x, "targets"))))))
+               .then(
+                  dt.a("remove")
                      .then(
-                        dt.a("distance")
-                           .then(
-                              dt.a("distance", IntegerArgumentType.integer(0))
-                                 .executes($$0x -> b((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "distance")))
-                           )
-                     ))
-                  .then(
-                     dt.a("time")
-                        .then(
-                           dt.a("time", IntegerArgumentType.integer(0)).executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                        )
-                  )
-            )
+                        dt.a("targets", eh.a())
+                           .suggests(($$0x, $$1) -> dx.a(((ds)$$0x.getSource()).l().ae().j(), $$1))
+                           .executes($$0x -> b((ds)$$0x.getSource(), eh.a($$0x, "targets")))
+                     )
+               ))
+            .then(dt.a("reload").executes($$0x -> a((ds)$$0x.getSource())))
       );
    }
 
-   private static int a(ds $$0, float $$1) throws CommandSyntaxException {
-      dky $$2 = $$0.l().F().D_();
-      if ($$2.n() == (double)$$1) {
-         throw h.create();
-      } else {
-         $$2.b((double)$$1);
-         $$0.a(() -> vf.a("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
-         return (int)$$1;
-      }
-   }
-
-   private static int b(ds $$0, float $$1) throws CommandSyntaxException {
-      dky $$2 = $$0.l().F().D_();
-      if ($$2.o() == (double)$$1) {
-         throw i.create();
-      } else {
-         $$2.c((double)$$1);
-         $$0.a(() -> vf.a("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
-         return (int)$$1;
-      }
-   }
-
-   private static int a(ds $$0, int $$1) throws CommandSyntaxException {
-      dky $$2 = $$0.l().F().D_();
-      if ($$2.q() == $$1) {
-         throw f.create();
-      } else {
-         $$2.b($$1);
-         $$0.a(() -> vf.a("commands.worldborder.warning.time.success", $$1), true);
-         return $$1;
-      }
-   }
-
-   private static int b(ds $$0, int $$1) throws CommandSyntaxException {
-      dky $$2 = $$0.l().F().D_();
-      if ($$2.r() == $$1) {
-         throw g.create();
-      } else {
-         $$2.c($$1);
-         $$0.a(() -> vf.a("commands.worldborder.warning.distance.success", $$1), true);
-         return $$1;
-      }
-   }
-
    private static int a(ds $$0) {
-      double $$1 = $$0.l().F().D_().i();
-      $$0.a(() -> vf.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
-      return auo.a($$1 + 0.5);
+      $$0.l().ae().a();
+      $$0.a(() -> vg.c("commands.whitelist.reloaded"), true);
+      $$0.l().a($$0);
+      return 1;
    }
 
-   private static int a(ds $$0, els $$1) throws CommandSyntaxException {
-      dky $$2 = $$0.l().F().D_();
-      if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
-         throw a.create();
-      } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
-         $$2.c((double)$$1.i, (double)$$1.j);
-         $$0.a(() -> vf.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
-         return 0;
+   private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      are $$2 = $$0.l().ae().i();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.a($$4)) {
+            arf $$5 = new arf($$4);
+            $$2.a($$5);
+            $$0.a(() -> vg.a("commands.whitelist.add.success", vg.b($$4.getName())), true);
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw c.create();
       } else {
-         throw e.create();
+         return $$3;
       }
    }
 
-   private static int a(ds $$0, double $$1, long $$2) throws CommandSyntaxException {
-      dky $$3 = $$0.l().F().D_();
-      double $$4 = $$3.i();
-      if ($$4 == $$1) {
-         throw b.create();
-      } else if ($$1 < 1.0) {
-         throw c.create();
-      } else if ($$1 > 5.999997E7F) {
+   private static int b(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      are $$2 = $$0.l().ae().i();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            arf $$5 = new arf($$4);
+            $$2.b($$5);
+            $$0.a(() -> vg.a("commands.whitelist.remove.success", vg.b($$4.getName())), true);
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
          throw d.create();
       } else {
-         if ($$2 > 0L) {
-            $$3.a($$4, $$1, $$2);
-            if ($$1 > $$4) {
-               $$0.a(() -> vf.a("commands.worldborder.set.grow", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
-            } else {
-               $$0.a(() -> vf.a("commands.worldborder.set.shrink", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
-            }
-         } else {
-            $$3.a($$1);
-            $$0.a(() -> vf.a("commands.worldborder.set.immediate", String.format(Locale.ROOT, "%.1f", $$1)), true);
-         }
-
-         return (int)($$1 - $$4);
+         $$0.l().a($$0);
+         return $$3;
       }
+   }
+
+   private static int b(ds $$0) throws CommandSyntaxException {
+      aqw $$1 = $$0.l().ae();
+      if ($$1.o()) {
+         throw a.create();
+      } else {
+         $$1.a(true);
+         $$0.a(() -> vg.c("commands.whitelist.enabled"), true);
+         $$0.l().a($$0);
+         return 1;
+      }
+   }
+
+   private static int c(ds $$0) throws CommandSyntaxException {
+      aqw $$1 = $$0.l().ae();
+      if (!$$1.o()) {
+         throw b.create();
+      } else {
+         $$1.a(false);
+         $$0.a(() -> vg.c("commands.whitelist.disabled"), true);
+         return 1;
+      }
+   }
+
+   private static int d(ds $$0) {
+      String[] $$1 = $$0.l().ae().j();
+      if ($$1.length == 0) {
+         $$0.a(() -> vg.c("commands.whitelist.none"), false);
+      } else {
+         $$0.a(() -> vg.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
+      }
+
+      return $$1.length;
    }
 }

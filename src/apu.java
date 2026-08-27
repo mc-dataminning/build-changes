@@ -1,33 +1,117 @@
-import java.util.function.UnaryOperator;
+import com.google.common.base.Functions;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface apu {
-   UnaryOperator<vf> a = UnaryOperator.identity();
-   apu b = a(a, true);
-   apu c = a(a("pack.source.builtin"), true);
-   apu d = a(a("pack.source.feature"), false);
-   apu e = a(a("pack.source.world"), true);
-   apu f = a(a("pack.source.server"), true);
+public class apu {
+   private final Set<apw> a;
+   private Map<String, apr> b = ImmutableMap.of();
+   private List<apr> c = ImmutableList.of();
 
-   vf a(vf var1);
-
-   boolean a();
-
-   static apu a(final UnaryOperator<vf> $$0, final boolean $$1) {
-      return new apu() {
-         @Override
-         public vf a(vf $$0x) {
-            return $$0.apply($$0);
-         }
-
-         @Override
-         public boolean a() {
-            return $$1;
-         }
-      };
+   public apu(apw... $$0) {
+      this.a = ImmutableSet.copyOf($$0);
    }
 
-   private static UnaryOperator<vf> a(String $$0) {
-      vf $$1 = vf.c($$0);
-      return $$1x -> vf.a("pack.nameAndSource", $$1x, $$1).a(n.h);
+   public void a() {
+      List<String> $$0 = this.c.stream().map(apr::f).collect(ImmutableList.toImmutableList());
+      this.b = this.h();
+      this.c = this.b($$0);
+   }
+
+   private Map<String, apr> h() {
+      Map<String, apr> $$0 = Maps.newTreeMap();
+
+      for (apw $$1 : this.a) {
+         $$1.loadPacks($$1x -> $$0.put($$1x.f(), $$1x));
+      }
+
+      return ImmutableMap.copyOf($$0);
+   }
+
+   public void a(Collection<String> $$0) {
+      this.c = this.b($$0);
+   }
+
+   public boolean a(String $$0) {
+      apr $$1 = this.b.get($$0);
+      if ($$1 != null && !this.c.contains($$1)) {
+         List<apr> $$2 = Lists.newArrayList(this.c);
+         $$2.add($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(String $$0) {
+      apr $$1 = this.b.get($$0);
+      if ($$1 != null && this.c.contains($$1)) {
+         List<apr> $$2 = Lists.newArrayList(this.c);
+         $$2.remove($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private List<apr> b(Collection<String> $$0) {
+      List<apr> $$1 = this.c($$0).collect(Collectors.toList());
+
+      for (apr $$2 : this.b.values()) {
+         if ($$2.g() && !$$1.contains($$2)) {
+            $$2.i().a($$1, $$2, Functions.identity(), false);
+         }
+      }
+
+      return ImmutableList.copyOf($$1);
+   }
+
+   private Stream<apr> c(Collection<String> $$0) {
+      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
+   }
+
+   public Collection<String> b() {
+      return this.b.keySet();
+   }
+
+   public Collection<apr> c() {
+      return this.b.values();
+   }
+
+   public Collection<String> d() {
+      return this.c.stream().map(apr::f).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public cia e() {
+      return this.f().stream().map(apr::d).reduce(cia::b).orElse(cia.a());
+   }
+
+   public Collection<apr> f() {
+      return this.c;
+   }
+
+   @Nullable
+   public apr c(String $$0) {
+      return this.b.get($$0);
+   }
+
+   public boolean d(String $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public List<aox> g() {
+      return this.c.stream().map(apr::e).collect(ImmutableList.toImmutableList());
    }
 }

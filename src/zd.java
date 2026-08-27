@@ -1,37 +1,56 @@
-public class zd implements xf<za> {
-   public static final int a = 0;
-   public static final int b = 2;
-   public static final int c = 3;
-   public static final int d = 4;
-   public static final int e = 5;
-   private final int f;
-   private final int g;
+public class zd implements xg<zb> {
+   private final int a;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final int e;
 
-   public zd(blv $$0, int $$1) {
-      this.f = $$0.aj();
-      this.g = $$1;
+   public zd(bme $$0) {
+      this.a = $$0.aj();
+      this.b = $$0.dq();
+      this.c = $$0.ds();
+      this.d = $$0.dw();
+      this.e = $$0.q();
    }
 
-   public zd(ui $$0) {
-      this.f = $$0.n();
-      this.g = $$0.readUnsignedByte();
+   public zd(uj $$0) {
+      this.a = $$0.n();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readShort();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.f);
-      $$0.k(this.g);
+   public void a(uj $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.l(this.e);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
    public int a() {
-      return this.f;
+      return this.a;
    }
 
-   public int d() {
-      return this.g;
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
    }
 }

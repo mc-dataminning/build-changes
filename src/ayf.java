@@ -32,8 +32,8 @@ public class ayf extends DataFix {
       OpticFinder<List<IS>> $$4 = DSL.fieldFinder("Equipment", DSL.list($$0));
       return this.fixTypeEverywhereTyped(
          "EntityEquipmentToArmorAndHandFix",
-         this.getInputSchema().getType(bbw.x),
-         this.getOutputSchema().getType(bbw.x),
+         this.getInputSchema().getType(bbw.y),
+         this.getOutputSchema().getType(bbw.y),
          $$4x -> {
             Either<List<IS>, Unit> $$5 = Either.right(DSL.unit());
             Either<List<IS>, Unit> $$6 = Either.right(DSL.unit());

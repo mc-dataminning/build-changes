@@ -1,62 +1,54 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class giz {
-   private static final int a = 100;
-   private final auv b = auv.a();
-   private final evi c;
-   @Nullable
-   private gia d;
-   private int e = 100;
-
-   public giz(evi $$0) {
-      this.c = $$0;
-   }
-
-   public void a() {
-      arp $$0 = this.c.aj();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.ai().b(this.d);
-            this.e = auo.a(this.b, 0, $$0.b() / 2);
+public interface giz<T> {
+   static <T> giz<T> a() {
+      return new giz<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
          }
 
-         if (!this.c.ai().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, auo.a(this.b, $$0.b(), $$0.c()));
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
          }
-      }
+      };
+   }
 
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
+   static <T> giz<T> a(List<T> $$0, Function<T, Stream<ahh>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final gjc<T> $$2 = new gjc<>();
+         final gjc<T> $$3 = new gjc<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new giz<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
    }
 
-   public void a(arp $$0) {
-      this.d = ghv.a($$0.a().a());
-      if (this.d.b() != gje.a) {
-         this.c.ai().a(this.d);
-      }
+   List<T> a(String var1);
 
-      this.e = Integer.MAX_VALUE;
-   }
-
-   public void b(arp $$0) {
-      if (this.c($$0)) {
-         this.b();
-      }
-   }
-
-   public void b() {
-      if (this.d != null) {
-         this.c.ai().b(this.d);
-         this.d = null;
-      }
-
-      this.e += 100;
-   }
-
-   public boolean c(arp $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
-   }
+   List<T> b(String var1);
 }

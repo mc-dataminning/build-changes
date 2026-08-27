@@ -1,40 +1,22 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class brk extends boc<cev> {
-   public brk() {
-      super(ImmutableMap.of());
-   }
+public class brk {
+   private static final int a = 36;
 
-   protected boolean a(and $$0, cev $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
+   public static bog<bmo> a() {
+      return brs.a(
+         (Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$0 -> $$0.group($$0.a(bvq.x), $$0.a(bvq.y), $$0.a(bvq.A))
+               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
+                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bmo>a($$2).filter($$1xx -> $$1xx.f((blw)$$5) <= 36.0).isPresent();
+                     if (!$$7) {
+                        $$1.b();
+                        $$2.b();
+                        $$5.dN().a($$4.Y(), $$4.X());
+                     }
 
-   protected void b(and $$0, cev $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bnl<?> $$3 = $$1.dO();
-         if (!$$3.c(cgu.g)) {
-            $$3.b(bvn.t);
-            $$3.b(bvn.m);
-            $$3.b(bvn.n);
-            $$3.b(bvn.r);
-            $$3.b(bvn.q);
-         }
-
-         $$3.a(cgu.g);
-      }
-   }
-
-   protected void c(and $$0, cev $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bml $$0) {
-      return $$0.dO().a(bvn.A);
-   }
-
-   public static boolean c(bml $$0) {
-      return $$0.dO().a(bvn.x);
+                     return true;
+                  }))
+      );
    }
 }

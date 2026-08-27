@@ -1,151 +1,130 @@
-import com.google.common.collect.Queues;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public class ezp {
-   private static final int a = 5;
-   private static final int b = -1;
-   final evi c;
-   private final List<ezp.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<ezo> f = Queues.newArrayDeque();
-
-   public ezp(evi $$0) {
-      this.c = $$0;
-   }
-
-   public void a(ewu $$0) {
-      if (!this.c.m.Z) {
-         int $$1 = $$0.a();
-         this.d.removeIf($$2 -> {
-            if ($$2 != null && $$2.a($$1, $$0)) {
-               this.e.clear($$2.d, $$2.d + $$2.e);
-               return true;
-            } else {
-               return false;
-            }
-         });
-         if (!this.f.isEmpty() && this.d() > 0) {
-            this.f.removeIf($$0x -> {
-               int $$1x = $$0x.f();
-               int $$2 = this.a($$1x);
-               if ($$2 != -1) {
-                  this.d.add(new ezp.a<>($$0x, $$2, $$1x));
-                  this.e.set($$2, $$2 + $$1x);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-         }
-      }
-   }
-
-   private int a(int $$0) {
-      if (this.d() >= $$0) {
-         int $$1 = 0;
-
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
-            }
-         }
-      }
-
-      return -1;
-   }
-
-   private int d() {
-      return 5 - this.e.cardinality();
-   }
-
+public class ezp implements fiu {
+   private static final ahh a = new ahh("hud/hotbar");
+   private static final ahh b = new ahh("hud/hotbar_selection");
+   private static final long c = 5000L;
+   private static final long d = 2000L;
+   private final evr e;
+   private long f;
    @Nullable
-   public <T extends ezo> T a(Class<? extends T> $$0, Object $$1) {
-      for (ezp.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
-            return (T)$$2.a();
-         }
-      }
+   private fir g;
 
-      for (ezo $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
-            return (T)$$3;
-         }
-      }
-
-      return null;
+   public ezp(evr $$0) {
+      this.e = $$0;
    }
 
-   public void a() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
+   public void a(int $$0) {
+      this.f = ac.b();
+      if (this.g != null) {
+         this.g.b($$0);
+      } else {
+         this.g = new fir(this);
+      }
    }
 
-   public void a(ezo $$0) {
-      this.f.add($$0);
+   private float c() {
+      long $$0 = this.f - ac.b() + 5000L;
+      return aup.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
    }
 
-   public evi b() {
-      return this.c;
+   public void a(exe $$0) {
+      if (this.g != null) {
+         float $$1 = this.c();
+         if ($$1 <= 0.0F) {
+            this.g.d();
+         } else {
+            int $$2 = $$0.a() / 2;
+            $$0.c().a();
+            $$0.c().a(0.0F, 0.0F, -90.0F);
+            int $$3 = aup.d((float)$$0.b() - 22.0F * $$1);
+            fiv $$4 = this.g.f();
+            this.a($$0, $$1, $$2, $$3, $$4);
+            $$0.c().b();
+         }
+      }
    }
 
-   public double c() {
-      return this.c.m.z().c();
-   }
-
-   class a<T extends ezo> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      private ezo.a h = ezo.a.a;
-
-      a(T $$0, int $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+   protected void a(exe $$0, float $$1, int $$2, int $$3, fiv $$4) {
+      RenderSystem.enableBlend();
+      $$0.a(1.0F, 1.0F, 1.0F, $$1);
+      $$0.a(a, $$2 - 91, $$3, 182, 22);
+      if ($$4.a() >= 0) {
+         $$0.a(b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23);
       }
 
-      public T a() {
-         return this.c;
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a($$0, $$5, $$0.a() / 2 - 90 + $$5 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$5));
       }
 
-      private float a(long $$0) {
-         float $$1 = auo.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         return this.h == ezo.a.b ? 1.0F - $$1 : $$1;
+      RenderSystem.disableBlend();
+   }
+
+   private void a(exe $$0, int $$1, int $$2, float $$3, float $$4, fit $$5) {
+      if ($$5 != fir.a) {
+         int $$6 = (int)($$4 * 255.0F);
+         $$0.c().a();
+         $$0.c().a((float)$$2, $$3, 0.0F);
+         float $$7 = $$5.aR_() ? 1.0F : 0.25F;
+         $$0.a($$7, $$7, $$7, $$4);
+         $$5.a($$0, $$7, $$6);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.c().b();
+         if ($$6 > 3 && $$5.aR_()) {
+            vg $$8 = this.e.m.U[$$1].k();
+            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$6 << 24));
+         }
+      }
+   }
+
+   public void b(exe $$0) {
+      int $$1 = (int)(this.c() * 255.0F);
+      if ($$1 > 3 && this.g != null) {
+         fit $$2 = this.g.b();
+         vg $$3 = $$2 == fir.a ? this.g.c().b() : $$2.aQ_();
+         if ($$3 != null) {
+            int $$4 = ($$0.a() - this.e.h.a($$3)) / 2;
+            int $$5 = $$0.b() - 35;
+            $$0.b(this.e.h, $$3, $$4, $$5, 16777215 + ($$1 << 24));
+         }
+      }
+   }
+
+   @Override
+   public void a(fir $$0) {
+      this.g = null;
+      this.f = 0L;
+   }
+
+   public boolean a() {
+      return this.g != null;
+   }
+
+   public void b(int $$0) {
+      int $$1 = this.g.e() + $$0;
+
+      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == fir.a || !this.g.a($$1).aR_())) {
+         $$1 += $$0;
       }
 
-      public boolean a(int $$0, ewu $$1) {
-         long $$2 = ac.b();
-         if (this.f == -1L) {
-            this.f = $$2;
-            this.h.a(ezp.this.c.ai());
-         }
+      if ($$1 >= 0 && $$1 <= 8) {
+         this.g.b($$1);
+         this.f = ac.b();
+      }
+   }
 
-         if (this.h == ezo.a.a && $$2 - this.f <= 600L) {
-            this.g = $$2;
+   public void b() {
+      this.f = ac.b();
+      if (this.a()) {
+         int $$0 = this.g.e();
+         if ($$0 != -1) {
+            this.g.b($$0);
          }
-
-         $$1.c().a();
-         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
-         ezo.a $$3 = this.c.a($$1, ezp.this, $$2 - this.g);
-         $$1.c().b();
-         if ($$3 != this.h) {
-            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
-            this.h = $$3;
-            this.h.a(ezp.this.c.ai());
-         }
-
-         return this.h == ezo.a.b && $$2 - this.f > 600L;
+      } else {
+         this.g = new fir(this);
       }
    }
 }

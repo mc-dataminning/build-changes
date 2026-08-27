@@ -1,34 +1,22 @@
-public class eue extends eui {
-   private static final vf b = vf.c("mco.connect.connecting");
-   private final gkm c;
-   private final eri d;
-   private final erj e;
+public enum eue {
+   a(0, dze.a),
+   b(1, dze.b),
+   c(2, dze.c),
+   d(3, dze.d);
 
-   public eue(fdb $$0, eri $$1, erj $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new gkm($$0);
+   private final int e;
+   private final vg f;
+
+   private eue(int $$0, ahg<dzd> $$1) {
+      this.e = $$0;
+      this.f = vg.c($$1.a().f("generator"));
    }
 
-   @Override
-   public void run() {
-      this.c.a(this.d, fpf.a(this.e.a));
+   public vg a() {
+      return this.f;
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      evi.O().ac().i();
-   }
-
-   @Override
-   public void c() {
-      this.c.b();
-   }
-
-   @Override
-   public vf a() {
-      return b;
+   public int b() {
+      return this.e;
    }
 }

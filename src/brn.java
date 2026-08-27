@@ -1,48 +1,40 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
 
-public class brn extends boc<cev> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
-
+public class brn extends bof<cfd> {
    public brn() {
-      super(ImmutableMap.of(bvn.c, bvo.a, bvn.n, bvo.c));
+      super(ImmutableMap.of());
    }
 
-   protected boolean b(and $$0, cev $$1) {
-      if ($$0.X() - this.e < 300L) {
-         return false;
-      } else if ($$0.z.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.X();
-         ig $$2 = $$1.dO().c(bvn.c).get();
-         return $$2.a() == $$0.ae() && $$2.b().a($$1.dk(), 1.73);
+   protected boolean a(ane $$0, cfd $$1, long $$2) {
+      return c($$1) || b($$1);
+   }
+
+   protected void b(ane $$0, cfd $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         bno<?> $$3 = $$1.dN();
+         if (!$$3.c(chc.g)) {
+            $$3.b(bvq.t);
+            $$3.b(bvq.m);
+            $$3.b(bvq.n);
+            $$3.b(bvq.r);
+            $$3.b(bvq.q);
+         }
+
+         $$3.a(chc.g);
       }
    }
 
-   protected void a(and $$0, cev $$1, long $$2) {
-      bnl<cev> $$3 = $$1.dO();
-      $$3.a(bvn.I, $$2);
-      $$3.c(bvn.c).ifPresent($$1x -> $$3.a(bvn.n, new bof($$1x.b())));
-      $$1.gt();
-      this.a($$0, $$1);
-      if ($$1.gs()) {
-         $$1.gr();
+   protected void c(ane $$0, cfd $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
       }
    }
 
-   protected void a(and $$0, cev $$1) {
+   public static boolean b(bmo $$0) {
+      return $$0.dN().a(bvq.A);
    }
 
-   protected boolean b(and $$0, cev $$1, long $$2) {
-      Optional<ig> $$3 = $$1.dO().c(bvn.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         ig $$4 = $$3.get();
-         return $$4.a() == $$0.ae() && $$4.b().a($$1.dk(), 1.73);
-      }
+   public static boolean c(bmo $$0) {
+      return $$0.dN().a(bvq.x);
    }
 }

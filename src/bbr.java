@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public class bbr extends bax {
    public bbr(Schema $$0) {
-      super($$0, true, "PrimedTnt BlockState fixer", bbw.x, "minecraft:tnt");
+      super($$0, true, "PrimedTnt BlockState fixer", bbw.y, "minecraft:tnt");
    }
 
    private static <T> Dynamic<T> b(Dynamic<T> $$0) {

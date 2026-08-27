@@ -10,7 +10,7 @@ public class bcx extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.I);
+      Type<?> $$0 = this.getInputSchema().getType(bbw.J);
       OpticFinder<?> $$1 = $$0.findField("dimensions");
       return this.fixTypeEverywhereTyped(
          "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(), $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> {

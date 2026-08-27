@@ -1,18 +1,23 @@
-public class gbj extends fzt<cfb, fmi<cfb>> {
-   private static final ahg a = new ahg("textures/entity/wandering_trader.png");
+public class gbj extends gag<cdj, fmm<cdj>> {
+   private static final ahh a = new ahh("textures/entity/strider/strider.png");
+   private static final ahh i = new ahh("textures/entity/strider/strider_cold.png");
+   private static final float j = 0.5F;
 
-   public gbj(fyn.a $$0) {
-      super($$0, new fmi<>($$0.a(fmw.bP)), 0.5F);
-      this.a(new gcd<>(this, $$0.f(), $$0.d()));
-      this.a(new gcc<>(this, $$0.d()));
+   public gbj(fza.a $$0) {
+      super($$0, new fmm<>($$0.a(fni.bz)), 0.5F);
+      this.a(new gdm<>(this, new fmm<>($$0.a(fni.bA)), new ahh("textures/entity/strider/strider_saddle.png")));
    }
 
-   public ahg a(cfb $$0) {
-      return a;
+   public ahh a(cdj $$0) {
+      return $$0.u() ? i : a;
    }
 
-   protected void a(cfb $$0, eqb $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   protected float b(cdj $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
+   }
+
+   protected boolean c(cdj $$0) {
+      return super.a($$0) || $$0.u();
    }
 }

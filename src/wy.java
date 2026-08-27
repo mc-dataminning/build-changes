@@ -1,39 +1,24 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public class wy implements wv {
-   public static final ww<wy> a = new ww<wy>() {
-      private static final MapCodec<wy> a = wc.b.a.xmap(wy::new, $$0 -> $$0.e);
+public class wy {
+   public static final MapCodec<ww> a = kd.ar.q().dispatchMap(ww::a, $$0 -> $$0.a().codec());
+   public static final Codec<ww> b = a.codec();
 
-      @Override
-      public MapCodec<wy> a() {
-         return a;
-      }
-
-      public void a(ui $$0, wy $$1) {
-         $$0.a(tb.a, wc.b.b, $$1.e);
-      }
-
-      public wy a(ui $$0) {
-         wc $$1 = $$0.a(tb.a, wc.b.b);
-         return new wy($$1);
-      }
-   };
-   public static final wy b = new wy(wc.a);
-   public static final wy c = new wy(wc.a.a(n.m));
-   public static final wy d = new wy(wc.a.a(n.o));
-   final wc e;
-
-   public wy(wc $$0) {
-      this.e = $$0;
+   public static wx<?> a(it<wx<?>> $$0) {
+      it.a($$0, "blank", wu.b);
+      it.a($$0, "styled", wz.a);
+      return it.a($$0, "fixed", wv.a);
    }
 
-   @Override
-   public vt a(int $$0) {
-      return vf.b(Integer.toString($$0)).c(this.e);
+   public static <T extends ww> void a(uj $$0, T $$1) {
+      wx<T> $$2 = (wx<T>)$$1.a();
+      $$0.a(kd.ar, $$2);
+      $$2.a($$0, $$1);
    }
 
-   @Override
-   public ww<wy> a() {
-      return a;
+   public static ww a(uj $$0) {
+      wx<?> $$1 = $$0.a(kd.ar);
+      return $$1.b($$0);
    }
 }

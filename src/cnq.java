@@ -1,71 +1,62 @@
-import com.google.common.collect.Maps;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cnq extends cmt {
-   private static final Map<arr, cnq> a = Maps.newHashMap();
-   private final int b;
-   private final arr c;
-   private final int d;
+public class cnq extends cli {
+   private final bmc<?> a;
+   private final ars b;
 
-   protected cnq(int $$0, arr $$1, cmt.a $$2, int $$3) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3 * 20;
-      a.put(this.c, this);
+   public cnq(bmc<?> $$0, eey $$1, ars $$2, cnb.a $$3) {
+      super($$1, $$3);
+      this.a = $$0;
+      this.b = $$2;
    }
 
    @Override
-   public bkb a(cpj $$0) {
-      ctp $$1 = $$0.q();
-      hx $$2 = $$0.a();
-      djh $$3 = $$1.a_($$2);
-      if ($$3.a(cws.dT) && !$$3.c(das.b)) {
-         cmy $$4 = $$0.n();
-         if (!$$1.B) {
-            cfi $$5 = $$0.o();
-            if ($$1.c_($$2) instanceof dhw $$6) {
-               $$6.b($$4.p());
-               $$1.a(dnr.c, $$2, dnr.a.a($$5, $$3));
-            }
-
-            $$4.h(1);
-            if ($$5 != null) {
-               $$5.a(asc.al);
-            }
-         }
-
-         return bkb.a($$1.B);
-      } else {
-         return bkb.d;
+   public void a(@Nullable cfq $$0, ctx $$1, cng $$2, hx $$3) {
+      if ($$1 instanceof ane) {
+         this.a((ane)$$1, $$2, $$3);
+         $$1.a($$0, dnz.t, $$3);
       }
    }
 
-   public int h() {
-      return this.b;
+   @Override
+   protected void a(@Nullable cfq $$0, cty $$1, hx $$2) {
+      $$1.a($$0, $$2, this.b, aru.g, 1.0F, 1.0F);
+   }
+
+   private void a(ane $$0, cng $$1, hx $$2) {
+      if (this.a.a($$0, $$1, null, $$2, bms.l, true, false) instanceof bye $$4) {
+         $$4.c($$1.w());
+         $$4.w(true);
+      }
    }
 
    @Override
-   public void a(cmy $$0, @Nullable ctp $$1, List<vf> $$2, coq $$3) {
-      $$2.add(this.i().a(n.h));
-   }
+   public void a(cng $$0, @Nullable ctx $$1, List<vg> $$2, coy $$3) {
+      if (this.a == bmc.be) {
+         so $$4 = $$0.v();
+         if ($$4 != null && $$4.b("BucketVariantTag", 3)) {
+            int $$5 = $$4.h("BucketVariantTag");
+            n[] $$6 = new n[]{n.u, n.h};
+            String $$7 = "color.minecraft." + bzc.s($$5);
+            String $$8 = "color.minecraft." + bzc.t($$5);
 
-   public vt i() {
-      return vf.c(this.a() + ".desc");
-   }
+            for (int $$9 = 0; $$9 < bzc.c.size(); $$9++) {
+               if ($$5 == bzc.c.get($$9).a()) {
+                  $$2.add(vg.c(bzc.c($$9)).a($$6));
+                  return;
+               }
+            }
 
-   @Nullable
-   public static cnq a(arr $$0) {
-      return a.get($$0);
-   }
+            $$2.add(bzc.u($$5).d().e().a($$6));
+            vu $$10 = vg.c($$7);
+            if (!$$7.equals($$8)) {
+               $$10.f(", ").b(vg.c($$8));
+            }
 
-   public arr x() {
-      return this.c;
-   }
-
-   public int y() {
-      return this.d;
+            $$10.a($$6);
+            $$2.add($$10);
+         }
+      }
    }
 }

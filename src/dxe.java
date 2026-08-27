@@ -4,92 +4,69 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class dxe extends dxc {
-   public static final Codec<dxe> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  bjg.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
-                  bjg.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
-                  iv.a(ke.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
-               )
-            )
-            .apply($$0, dxe::new)
-   );
-   private final bjg b;
-   private final float h;
-   private final bjg i;
-   private final il<cwq> j;
+public class dxe extends dxk {
+   public static final Codec<dxe> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dxe::new));
 
-   public dxe(int $$0, int $$1, int $$2, bjg $$3, float $$4, bjg $$5, il<cwq> $$6) {
+   public dxe(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
    }
 
    @Override
-   protected dxd<?> a() {
-      return dxd.h;
+   protected dxl<?> a() {
+      return dxl.e;
    }
 
    @Override
-   public List<dvk.a> a(ctv $$0, BiConsumer<hx, djh> $$1, auv $$2, int $$3, hx $$4, duu $$5) {
-      List<dvk.a> $$6 = Lists.newArrayList();
-      hx.a $$7 = new hx.a();
+   public List<dvs.a> a(cud $$0, BiConsumer<hx, djp> $$1, auw $$2, int $$3, hx $$4, dvc $$5) {
+      List<dvs.a> $$6 = Lists.newArrayList();
+      hx $$7 = $$4.d();
+      a($$0, $$1, $$2, $$7, $$5);
+      a($$0, $$1, $$2, $$7.h(), $$5);
+      a($$0, $$1, $$2, $$7.f(), $$5);
+      a($$0, $$1, $$2, $$7.f().h(), $$5);
+      ic $$8 = ic.c.a.a($$2);
+      int $$9 = $$3 - $$2.a(4);
+      int $$10 = 2 - $$2.a(3);
+      int $$11 = $$4.u();
+      int $$12 = $$4.v();
+      int $$13 = $$4.w();
+      int $$14 = $$11;
+      int $$15 = $$13;
+      int $$16 = $$12 + $$3 - 1;
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         int $$9 = $$4.v() + $$8;
-         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
-            ic $$10 = ic.c.a.a($$2);
-            int $$11 = this.i.a($$2);
-            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
-            int $$13 = this.b.a($$2);
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
+      for (int $$17 = 0; $$17 < $$3; $$17++) {
+         if ($$17 >= $$9 && $$10 > 0) {
+            $$14 += $$8.j();
+            $$15 += $$8.l();
+            $$10--;
          }
 
-         if ($$8 == $$3 - 1) {
-            $$6.add(new dvk.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
+         int $$18 = $$12 + $$17;
+         hx $$19 = new hx($$14, $$18, $$15);
+         if (dto.b($$0, $$19)) {
+            this.b($$0, $$1, $$2, $$19, $$5);
+            this.b($$0, $$1, $$2, $$19.h(), $$5);
+            this.b($$0, $$1, $$2, $$19.f(), $$5);
+            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
+         }
+      }
+
+      $$6.add(new dvs.a(new hx($$14, $$16, $$15), 0, true));
+
+      for (int $$20 = -1; $$20 <= 2; $$20++) {
+         for (int $$21 = -1; $$21 <= 2; $$21++) {
+            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
+               int $$22 = $$2.a(3) + 2;
+
+               for (int $$23 = 0; $$23 < $$22; $$23++) {
+                  this.b($$0, $$1, $$2, new hx($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
+               }
+
+               $$6.add(new dvs.a(new hx($$14 + $$20, $$16, $$15 + $$21), 0, false));
+            }
          }
       }
 
       return $$6;
-   }
-
-   private void a(ctv $$0, BiConsumer<hx, djh> $$1, auv $$2, int $$3, duu $$4, List<dvk.a> $$5, hx.a $$6, int $$7, ic $$8, int $$9, int $$10) {
-      int $$11 = $$7 + $$9;
-      int $$12 = $$6.u();
-      int $$13 = $$6.w();
-      int $$14 = $$9;
-
-      while ($$14 < $$3 && $$10 > 0) {
-         if ($$14 >= 1) {
-            int $$15 = $$7 + $$14;
-            $$12 += $$8.j();
-            $$13 += $$8.l();
-            $$11 = $$15;
-            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
-               $$11 = $$15 + 1;
-            }
-
-            $$5.add(new dvk.a($$6.i(), 0, false));
-         }
-
-         $$14++;
-         $$10--;
-      }
-
-      if ($$11 - $$7 > 1) {
-         hx $$16 = new hx($$12, $$11, $$13);
-         $$5.add(new dvk.a($$16, 0, false));
-         $$5.add(new dvk.a($$16.c(2), 0, false));
-      }
-   }
-
-   @Override
-   protected boolean a(ctv $$0, hx $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
    }
 }

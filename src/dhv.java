@@ -1,143 +1,79 @@
-import java.util.Arrays;
-import java.util.Optional;
+public class dhv extends dih {
+   public static final int e = 9;
+   private iq<cng> f = iq.a(9, cng.f);
 
-public class dhv extends dgv {
-   public static final String a = "target";
-   public static final String b = "pool";
-   public static final String c = "joint";
-   public static final String d = "placement_priority";
-   public static final String e = "selection_priority";
-   public static final String f = "name";
-   public static final String g = "final_state";
-   private ahg h = new ahg("empty");
-   private ahg i = new ahg("empty");
-   private ahf<eap> j = ahf.a(ke.aG, new ahg("empty"));
-   private dhv.a k = dhv.a.a;
-   private String l = "minecraft:air";
-   private int m;
-   private int n;
-
-   public dhv(hx $$0, djh $$1) {
-      super(dgx.F, $$0, $$1);
+   protected dhv(dhf<?> $$0, hx $$1, djp $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public ahg c() {
-      return this.h;
-   }
-
-   public ahg d() {
-      return this.i;
-   }
-
-   public ahf<eap> f() {
-      return this.j;
-   }
-
-   public String g() {
-      return this.l;
-   }
-
-   public dhv.a k() {
-      return this.k;
-   }
-
-   public int l() {
-      return this.m;
-   }
-
-   public int m() {
-      return this.n;
-   }
-
-   public void a(ahg $$0) {
-      this.h = $$0;
-   }
-
-   public void b(ahg $$0) {
-      this.i = $$0;
-   }
-
-   public void a(ahf<eap> $$0) {
-      this.j = $$0;
-   }
-
-   public void a(String $$0) {
-      this.l = $$0;
-   }
-
-   public void a(dhv.a $$0) {
-      this.k = $$0;
-   }
-
-   public void a(int $$0) {
-      this.m = $$0;
-   }
-
-   public void b(int $$0) {
-      this.n = $$0;
+   public dhv(hx $$0, djp $$1) {
+      this(dhf.f, $$0, $$1);
    }
 
    @Override
-   protected void b(sn $$0) {
-      super.b($$0);
-      $$0.a("name", this.h.toString());
-      $$0.a("target", this.i.toString());
-      $$0.a("pool", this.j.a().toString());
-      $$0.a("final_state", this.l);
-      $$0.a("joint", this.k.c());
-      $$0.a("placement_priority", this.m);
-      $$0.a("selection_priority", this.n);
+   public int b() {
+      return 9;
+   }
+
+   public int a(auw $$0) {
+      this.e_(null);
+      int $$1 = -1;
+      int $$2 = 1;
+
+      for (int $$3 = 0; $$3 < this.f.size(); $$3++) {
+         if (!this.f.get($$3).b() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1;
+   }
+
+   public int a(cng $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         if (this.f.get($$1).b()) {
+            this.a($$1, $$0);
+            return $$1;
+         }
+      }
+
+      return -1;
    }
 
    @Override
-   public void a(sn $$0) {
+   protected vg l() {
+      return vg.c("container.dispenser");
+   }
+
+   @Override
+   public void a(so $$0) {
       super.a($$0);
-      this.h = new ahg($$0.l("name"));
-      this.i = new ahg($$0.l("target"));
-      this.j = ahf.a(ke.aG, new ahg($$0.l("pool")));
-      this.l = $$0.l("final_state");
-      this.k = dhv.a.a($$0.l("joint")).orElseGet(() -> dar.h(this.r()).o().d() ? dhv.a.b : dhv.a.a);
-      this.m = $$0.h("placement_priority");
-      this.n = $$0.h("selection_priority");
-   }
-
-   public zh w() {
-      return zh.a(this);
+      this.f = iq.a(this.b(), cng.f);
+      if (!this.c_($$0)) {
+         bjw.b($$0, this.f);
+      }
    }
 
    @Override
-   public sn ax_() {
-      return this.q();
+   protected void b(so $$0) {
+      super.b($$0);
+      if (!this.d_($$0)) {
+         bjw.a($$0, this.f);
+      }
    }
 
-   public void a(and $$0, int $$1, boolean $$2) {
-      hx $$3 = this.aB_().a(this.r().c(dar.b).a());
-      it<eap> $$4 = $$0.I_().d(ke.aG);
-      ih<eap> $$5 = $$4.f(this.j);
-      eaj.a($$0, $$5, this.i, $$1, $$3, $$2);
+   @Override
+   protected iq<cng> k() {
+      return this.f;
    }
 
-   public static enum a implements avk {
-      a("rollable"),
-      b("aligned");
+   @Override
+   protected void a(iq<cng> $$0) {
+      this.f = $$0;
+   }
 
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.c;
-      }
-
-      public static Optional<dhv.a> a(String $$0) {
-         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
-      }
-
-      public vf a() {
-         return vf.c("jigsaw_block.joint." + this.c);
-      }
+   @Override
+   protected cij a(int $$0, cfp $$1) {
+      return new cjc($$0, $$1, this);
    }
 }

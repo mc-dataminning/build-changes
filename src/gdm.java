@@ -1,24 +1,21 @@
-public class gdm extends gcj<cbi, fmn<cbi>> {
-   private static final ahg a = new ahg("textures/entity/wither/wither_armor.png");
-   private final fmn<cbi> b;
+public class gdm<T extends blw & bne, M extends fkj<T>> extends gdl<T, M> {
+   private final ahh a;
+   private final M b;
 
-   public gdm(gai<cbi, fmn<cbi>> $$0, fmt $$1) {
+   public gdm(gav<T, M> $$0, M $$1, ahh $$2) {
       super($$0);
-      this.b = new fmn<>($$1.a(fmw.bT));
+      this.b = $$1;
+      this.a = $$2;
    }
 
    @Override
-   protected float a(float $$0) {
-      return auo.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected ahg a() {
-      return a;
-   }
-
-   @Override
-   protected fjx<cbi> b() {
-      return this.b;
+   public void a(eqk $$0, ftt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.i()) {
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$6);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         eqo $$10 = $$1.getBuffer(fub.e(this.a));
+         this.b.a($$0, $$10, $$2, ges.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      }
    }
 }

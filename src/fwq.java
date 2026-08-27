@@ -1,104 +1,62 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 
-public class fwq implements fws.a {
-   final evi a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
-   @Nullable
-   private fwq.a d;
+public class fwq implements cta {
+   private final int c;
+   private final int d;
+   protected final fwp[][] a;
+   protected final ctx b;
 
-   public fwq(evi $$0) {
-      this.a = $$0;
+   fwq(ctx $$0, int $$1, int $$2, fwp[][] $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.a = $$3;
    }
 
    @Override
-   public void a(eqb $$0, fth $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         gir $$6 = this.a.T();
-         if ($$6 != null) {
-            this.d = new fwq.a($$6, $$2, $$4);
-         } else {
-            this.d = null;
-         }
-      }
-
-      if (this.d != null) {
-         Map<csw, String> $$7 = this.d.c.getNow(null);
-         double $$8 = this.a.j.m().b().d * 0.85;
-
-         for (Entry<csw, String> $$9 : this.d.b.entrySet()) {
-            csw $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
-            }
-
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
-
-            for (String $$14 : $$12) {
-               fws.a($$0, $$1, $$14, (double)iz.a($$10.e, 8), $$8 + (double)$$13, (double)iz.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
-            }
-         }
-      }
+   public djp a_(hx $$0) {
+      int $$1 = iz.a($$0.u()) - this.c;
+      int $$2 = iz.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0);
    }
 
-   final class a {
-      final Map<csw, String> b;
-      final CompletableFuture<Map<csw, String>> c;
+   @Override
+   public eez b_(hx $$0) {
+      int $$1 = iz.a($$0.u()) - this.c;
+      int $$2 = iz.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0).u();
+   }
 
-      a(gir $$0, double $$1, double $$2) {
-         fns $$3 = fwq.this.a.r;
-         ahf<ctp> $$4 = $$3.ae();
-         int $$5 = iz.a($$1);
-         int $$6 = iz.a($$2);
-         Builder<csw, String> $$7 = ImmutableMap.builder();
-         fno $$8 = $$3.i();
+   @Override
+   public float a(ic $$0, boolean $$1) {
+      return this.b.a($$0, $$1);
+   }
 
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               csw $$11 = new csw($$9, $$10);
-               String $$12 = "";
-               dlo $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.C() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
+   @Override
+   public eeo z_() {
+      return this.b.z_();
+   }
 
-               $$7.put($$11, $$12);
-            }
-         }
+   @Nullable
+   @Override
+   public dhd c_(hx $$0) {
+      int $$1 = iz.a($$0.u()) - this.c;
+      int $$2 = iz.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].a($$0);
+   }
 
-         this.b = $$7.build();
-         this.c = $$0.a(() -> {
-            and $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<csw, String> $$5x = ImmutableMap.builder();
-               anb $$6x = $$4x.l();
+   @Override
+   public int a(hx $$0, cti $$1) {
+      return this.b.a($$0, $$1);
+   }
 
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     csw $$9x = new csw($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
-                  }
-               }
+   @Override
+   public int J_() {
+      return this.b.J_();
+   }
 
-               return $$5x.build();
-            }
-         });
-      }
+   @Override
+   public int K_() {
+      return this.b.K_();
    }
 }

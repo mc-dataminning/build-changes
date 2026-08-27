@@ -5,21 +5,21 @@ import java.util.Optional;
 public class ar {
    public static final Codec<ar> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cmy.b.fieldOf("icon").forGetter(ar::c),
-               vh.a.fieldOf("title").forGetter(ar::a),
-               vh.a.fieldOf("description").forGetter(ar::b),
-               atw.a(ahg.a, "background").forGetter(ar::d),
-               atw.a(al.d, "frame", al.a).forGetter(ar::e),
-               atw.a(Codec.BOOL, "show_toast", true).forGetter(ar::h),
-               atw.a(Codec.BOOL, "announce_to_chat", true).forGetter(ar::i),
-               atw.a(Codec.BOOL, "hidden", false).forGetter(ar::j)
+               cng.b.fieldOf("icon").forGetter(ar::c),
+               vi.a.fieldOf("title").forGetter(ar::a),
+               vi.a.fieldOf("description").forGetter(ar::b),
+               atx.a(ahh.a, "background").forGetter(ar::d),
+               atx.a(al.d, "frame", al.a).forGetter(ar::e),
+               atx.a(Codec.BOOL, "show_toast", true).forGetter(ar::h),
+               atx.a(Codec.BOOL, "announce_to_chat", true).forGetter(ar::i),
+               atx.a(Codec.BOOL, "hidden", false).forGetter(ar::j)
             )
             .apply($$0, ar::new)
    );
-   private final vf b;
-   private final vf c;
-   private final cmy d;
-   private final Optional<ahg> e;
+   private final vg b;
+   private final vg c;
+   private final cng d;
+   private final Optional<ahh> e;
    private final al f;
    private final boolean g;
    private final boolean h;
@@ -27,7 +27,7 @@ public class ar {
    private float j;
    private float k;
 
-   public ar(cmy $$0, vf $$1, vf $$2, Optional<ahg> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public ar(cng $$0, vg $$1, vg $$2, Optional<ahh> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.b = $$1;
       this.c = $$2;
       this.d = $$0;
@@ -43,19 +43,19 @@ public class ar {
       this.k = $$1;
    }
 
-   public vf a() {
+   public vg a() {
       return this.b;
    }
 
-   public vf b() {
+   public vg b() {
       return this.c;
    }
 
-   public cmy c() {
+   public cng c() {
       return this.d;
    }
 
-   public Optional<ahg> d() {
+   public Optional<ahh> d() {
       return this.e;
    }
 
@@ -83,7 +83,7 @@ public class ar {
       return this.i;
    }
 
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
@@ -107,13 +107,13 @@ public class ar {
       $$0.a(this.k);
    }
 
-   public static ar b(ui $$0) {
-      vf $$1 = $$0.m();
-      vf $$2 = $$0.m();
-      cmy $$3 = $$0.r();
+   public static ar b(uj $$0) {
+      vg $$1 = $$0.m();
+      vg $$2 = $$0.m();
+      cng $$3 = $$0.r();
       al $$4 = $$0.b(al.class);
       int $$5 = $$0.readInt();
-      Optional<ahg> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.t()) : Optional.empty();
+      Optional<ahh> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.t()) : Optional.empty();
       boolean $$7 = ($$5 & 2) != 0;
       boolean $$8 = ($$5 & 4) != 0;
       ar $$9 = new ar($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);

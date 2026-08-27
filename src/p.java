@@ -12,15 +12,15 @@ public class p {
       this.a = $$0;
    }
 
-   public static String a(ctr $$0, double $$1, double $$2, double $$3) {
+   public static String a(ctz $$0, double $$1, double $$2, double $$3) {
       return String.format(Locale.ROOT, "%.2f,%.2f,%.2f - %s", $$1, $$2, $$3, a($$0, hx.a($$1, $$2, $$3)));
    }
 
-   public static String a(ctr $$0, hx $$1) {
+   public static String a(ctz $$0, hx $$1) {
       return a($$0, $$1.u(), $$1.v(), $$1.w());
    }
 
-   public static String a(ctr $$0, int $$1, int $$2, int $$3) {
+   public static String a(ctz $$0, int $$1, int $$2, int $$3) {
       StringBuilder $$4 = new StringBuilder();
 
       try {
@@ -190,7 +190,7 @@ public class p {
       return this.c;
    }
 
-   public static void a(p $$0, ctr $$1, hx $$2, @Nullable djh $$3) {
+   public static void a(p $$0, ctz $$1, hx $$2, @Nullable djp $$3) {
       if ($$3 != null) {
          $$0.a("Block", $$3::toString);
       }

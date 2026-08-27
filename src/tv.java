@@ -1,89 +1,36 @@
-public interface tv extends th {
-   tv a = new tv() {
-   };
+import java.util.HashMap;
+import java.util.Map;
 
-   @Override
-   default th.b a() {
-      return th.b.a;
+public record tv(int a, Map<String, tn<?>> b, Map<String, tv> c) {
+   private tv(int $$0) {
+      this($$0, new HashMap<>(), new HashMap<>());
    }
 
-   @Override
-   default th.b a(String $$0) {
-      return th.b.a;
+   public static tv a() {
+      return new tv(1);
    }
 
-   @Override
-   default th.b a(byte $$0) {
-      return th.b.a;
+   public void a(tu $$0) {
+      if (this.a <= $$0.a().size()) {
+         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new tv(this.a + 1)).a($$0);
+      } else {
+         this.b.put($$0.c(), $$0.b());
+      }
    }
 
-   @Override
-   default th.b a(short $$0) {
-      return th.b.a;
+   public boolean a(tn<?> $$0, String $$1) {
+      return $$0.equals(this.c().get($$1));
    }
 
-   @Override
-   default th.b a(int $$0) {
-      return th.b.a;
+   public int b() {
+      return this.a;
    }
 
-   @Override
-   default th.b a(long $$0) {
-      return th.b.a;
+   public Map<String, tn<?>> c() {
+      return this.b;
    }
 
-   @Override
-   default th.b a(float $$0) {
-      return th.b.a;
-   }
-
-   @Override
-   default th.b a(double $$0) {
-      return th.b.a;
-   }
-
-   @Override
-   default th.b a(byte[] $$0) {
-      return th.b.a;
-   }
-
-   @Override
-   default th.b a(int[] $$0) {
-      return th.b.a;
-   }
-
-   @Override
-   default th.b a(long[] $$0) {
-      return th.b.a;
-   }
-
-   @Override
-   default th.b a(tm<?> $$0, int $$1) {
-      return th.b.a;
-   }
-
-   @Override
-   default th.a b(tm<?> $$0, int $$1) {
-      return th.a.b;
-   }
-
-   @Override
-   default th.a a(tm<?> $$0) {
-      return th.a.b;
-   }
-
-   @Override
-   default th.a a(tm<?> $$0, String $$1) {
-      return th.a.b;
-   }
-
-   @Override
-   default th.b b() {
-      return th.b.a;
-   }
-
-   @Override
-   default th.b b(tm<?> $$0) {
-      return th.b.a;
+   public Map<String, tv> d() {
+      return this.c;
    }
 }

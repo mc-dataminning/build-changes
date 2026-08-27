@@ -10,9 +10,9 @@ public class bba extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.D);
+      Type<?> $$0 = this.getInputSchema().getType(bbw.E);
       return this.fixTypeEverywhereTyped(
-         "ObjectiveDisplayNameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("DisplayName", avv::a))
+         "ObjectiveDisplayNameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("DisplayName", avw::a))
       );
    }
 }

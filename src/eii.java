@@ -1,77 +1,59 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class eii implements eij {
-   protected final List<ejv> g;
-   private final Predicate<egw> a;
+public class eii extends eir {
+   public static final Codec<eii> a = RecordCodecBuilder.create($$0 -> a($$0).and(eii.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, eii::new));
+   private final eii.a b;
 
-   protected eii(List<ejv> $$0) {
-      this.g = $$0;
-      this.a = ejx.a($$0);
+   private eii(List<eke> $$0, eii.a $$1) {
+      super($$0);
+      this.b = $$1;
    }
-
-   protected static <T extends eii> P1<Mu<T>, List<ejv>> a(Instance<T> $$0) {
-      return $$0.group(atw.a(ejx.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.g));
-   }
-
-   public final cmy b(cmy $$0, egw $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract cmy a(cmy var1, egw var2);
 
    @Override
-   public void a(ehf $$0) {
-      eij.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
-      }
+   public eit b() {
+      return eiu.o;
    }
 
-   protected static eii.a<?> a(Function<List<ejv>, eij> $$0) {
-      return new eii.b($$0);
+   @Override
+   public Set<ejn<?>> a() {
+      return ImmutableSet.of(this.b.g);
    }
 
-   public abstract static class a<T extends eii.a<T>> implements eij.a, ejo<T> {
-      private final Builder<ejv> a = ImmutableList.builder();
-
-      public T a(ejv.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
+   @Override
+   public cng a(cng $$0, ehf $$1) {
+      if ($$1.c(this.b.g) instanceof bkh $$3 && $$3.ae()) {
+         $$0.a($$3.Q_());
       }
 
-      public final T f() {
-         return this.c();
-      }
-
-      protected abstract T c();
-
-      protected List<ejv> g() {
-         return this.a.build();
-      }
+      return $$0;
    }
 
-   static final class b extends eii.a<eii.b> {
-      private final Function<List<ejv>, eij> a;
+   public static eir.a<?> a(eii.a $$0) {
+      return a($$1 -> new eii($$1, $$0));
+   }
 
-      public b(Function<List<ejv>, eij> $$0) {
-         this.a = $$0;
-      }
+   public static enum a implements avl {
+      a("this", ejq.a),
+      b("killer", ejq.d),
+      c("killer_player", ejq.b),
+      d("block_entity", ejq.h);
 
-      protected eii.b a() {
-         return this;
+      public static final Codec<eii.a> e = avl.a(eii.a::values);
+      private final String f;
+      final ejn<?> g;
+
+      private a(String $$0, ejn<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
       @Override
-      public eij b() {
-         return this.a.apply(this.g());
+      public String c() {
+         return this.f;
       }
    }
 }

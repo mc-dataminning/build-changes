@@ -1,151 +1,155 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
+import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
+import java.util.BitSet;
+import java.util.EnumSet;
+import java.util.Set;
 
-public class fwt implements fws.a {
-   private final evi a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<fwt.a> d = Lists.newArrayList();
-   private final List<fwt.b> e = Lists.newArrayList();
+public class fwt {
+   private static final int a = 4;
+   private static final int b = 16;
+   private static final int c = 15;
+   private static final int d = 4096;
+   private static final int e = 0;
+   private static final int f = 4;
+   private static final int g = 8;
+   private static final int h = (int)Math.pow(16.0, 0.0);
+   private static final int i = (int)Math.pow(16.0, 1.0);
+   private static final int j = (int)Math.pow(16.0, 2.0);
+   private static final int k = -1;
+   private static final ic[] l = ic.values();
+   private final BitSet m = new BitSet(4096);
+   private static final int[] n = ac.a(new int[1352], $$0 -> {
+      int $$1 = 0;
+      int $$2 = 15;
+      int $$3 = 0;
 
-   public fwt(evi $$0) {
-      this.a = $$0;
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            for (int $$6 = 0; $$6 < 16; $$6++) {
+               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
+                  $$0[$$3++] = a($$4, $$5, $$6);
+               }
+            }
+         }
+      }
+   });
+   private int o = 4096;
+
+   public void a(hx $$0) {
+      this.m.set(b($$0), true);
+      this.o--;
    }
 
-   @Override
-   public void a(eqb $$0, fth $$1, double $$2, double $$3, double $$4) {
-      ctp $$5 = this.a.r;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
+   private static int b(hx $$0) {
+      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
+   }
+
+   private static int a(int $$0, int $$1, int $$2) {
+      return $$0 << 0 | $$1 << 8 | $$2 << 4;
+   }
+
+   public fwu a() {
+      fwu $$0 = new fwu();
+      if (4096 - this.o < 256) {
+         $$0.a(true);
+      } else if (this.o == 0) {
+         $$0.a(false);
       } else {
-         elt $$6 = new elt($$2, 0.0, $$4);
-         this.d.removeIf(fwt.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         eqf $$7 = $$1.getBuffer(ftp.w());
-
-         for (fwt.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               ftf.a($$0, $$7, emj.a(new elo($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
-         }
-
-         eqf $$9 = $$1.getBuffer(ftp.y());
-
-         for (fwt.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> ftf.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
-
-         for (fwt.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               fws.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               fws.a($$0, $$1, hx.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
-
-         for (fwt.a $$12 : this.d) {
-            elt $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.c - 0.2F;
-            double $$16 = $$13.d - 0.2F;
-            double $$17 = $$13.e - 0.2F;
-            double $$18 = $$13.c + 0.2F;
-            double $$19 = $$13.d + 0.2F + 0.5;
-            double $$20 = $$13.e + 0.2F;
-            a($$0, $$1, new elo($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            fws.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
+         for (int $$1 : n) {
+            if (!this.m.get($$1)) {
+               $$0.a(this.a($$1));
+            }
          }
       }
+
+      return $$0;
    }
 
-   private static void a(eqb $$0, fth $$1, elo $$2, float $$3, float $$4, float $$5, float $$6) {
-      eut $$7 = evi.O().j.m();
-      if ($$7.h()) {
-         elt $$8 = $$7.b().e();
-         fws.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+   private Set<ic> a(int $$0) {
+      Set<ic> $$1 = EnumSet.noneOf(ic.class);
+      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
+      $$2.enqueue($$0);
+      this.m.set($$0, true);
+
+      while (!$$2.isEmpty()) {
+         int $$3 = $$2.dequeueInt();
+         this.a($$3, $$1);
+
+         for (ic $$4 : l) {
+            int $$5 = this.a($$3, $$4);
+            if ($$5 >= 0 && !this.m.get($$5)) {
+               this.m.set($$5, true);
+               $$2.enqueue($$5);
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private void a(int $$0, Set<ic> $$1) {
+      int $$2 = $$0 >> 0 & 15;
+      if ($$2 == 0) {
+         $$1.add(ic.e);
+      } else if ($$2 == 15) {
+         $$1.add(ic.f);
+      }
+
+      int $$3 = $$0 >> 8 & 15;
+      if ($$3 == 0) {
+         $$1.add(ic.a);
+      } else if ($$3 == 15) {
+         $$1.add(ic.b);
+      }
+
+      int $$4 = $$0 >> 4 & 15;
+      if ($$4 == 0) {
+         $$1.add(ic.c);
+      } else if ($$4 == 15) {
+         $$1.add(ic.d);
       }
    }
 
-   public void a(ahf<dnr> $$0, elt $$1) {
-      this.d.add(new fwt.a(ac.b(), $$0, $$1));
-   }
+   private int a(int $$0, ic $$1) {
+      switch ($$1) {
+         case a:
+            if (($$0 >> 8 & 15) == 0) {
+               return -1;
+            }
 
-   public void a(dnv $$0, int $$1) {
-      this.e.add(new fwt.b($$0, $$1));
-   }
+            return $$0 - j;
+         case b:
+            if (($$0 >> 8 & 15) == 15) {
+               return -1;
+            }
 
-   static record a(long a, ahf<dnr> b, elt c) {
+            return $$0 + j;
+         case c:
+            if (($$0 >> 4 & 15) == 0) {
+               return -1;
+            }
 
-      public boolean a() {
-         return ac.b() - this.a > 3000L;
-      }
+            return $$0 - i;
+         case d:
+            if (($$0 >> 4 & 15) == 15) {
+               return -1;
+            }
 
-      public long b() {
-         return this.a;
-      }
+            return $$0 + i;
+         case e:
+            if (($$0 >> 0 & 15) == 0) {
+               return -1;
+            }
 
-      public ahf<dnr> c() {
-         return this.b;
-      }
+            return $$0 - h;
+         case f:
+            if (($$0 >> 0 & 15) == 15) {
+               return -1;
+            }
 
-      public elt d() {
-         return this.c;
-      }
-   }
-
-   static class b implements dnt {
-      public final dnv a;
-      public final int b;
-
-      public b(dnv $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public boolean a(ctp $$0, elt $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
-      }
-
-      public Optional<elt> a(ctp $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public dnv a() {
-         return this.a;
-      }
-
-      @Override
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public boolean a(and $$0, dnr $$1, dnr.a $$2, elt $$3) {
-         return false;
+            return $$0 + h;
+         default:
+            return -1;
       }
    }
 }

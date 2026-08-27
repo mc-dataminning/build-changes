@@ -1,19 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class bwa extends bvy {
+   private boolean p;
 
-public class bwa extends bws<blq> {
+   public bwa(bmq $$0, ctx $$1) {
+      super($$0, $$1);
+   }
+
    @Override
-   public Set<bvn<?>> a() {
-      return ImmutableSet.of(bvn.J, bvn.h);
+   protected efq a(int $$0) {
+      this.p = this.a.ai() == bmc.x;
+      this.o = new efr(this.p);
+      return new efq(this.o, $$0);
    }
 
-   protected void a(and $$0, blq $$1) {
-      $$1.dO().c(bvn.h).ifPresent($$1x -> this.a($$1, $$1x));
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bd();
    }
 
-   private void a(blq $$0, bvp $$1) {
-      Optional<blq> $$2 = $$1.a($$1x -> $$1x.ai() == $$0.ai() && !$$1x.o_()).map(blq.class::cast);
-      $$0.dO().a(bvn.J, $$2);
+   @Override
+   protected emc b() {
+      return new emc(this.a.dq(), this.a.e(0.5), this.a.dw());
+   }
+
+   @Override
+   protected double a(emc $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(emc $$0, emc $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(hx $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

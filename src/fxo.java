@@ -1,19 +1,84 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+import org.joml.Matrix4f;
 
-public class fxo extends fzt<bzf, fja<bzf>> {
-   private static final Map<bzf.d, ahg> a = ac.a(Maps.newHashMap(), $$0 -> {
-      for (bzf.d $$1 : bzf.d.values()) {
-         $$0.put($$1, new ahg(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
+public class fxo implements fxe.a {
+   private final evr a;
 
-   public fxo(fyn.a $$0) {
-      super($$0, new fja<>($$0.a(fmw.e)), 0.5F);
+   public fxo(evr $$0) {
+      this.a = $$0;
    }
 
-   public ahg a(bzf $$0) {
-      return a.get($$0.ge());
+   @Override
+   public void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4) {
+      Matrix4f $$5 = $$0.c().a();
+      ctd $$6 = this.a.s.dL();
+      hx $$7 = hx.a($$2, $$3, $$4);
+
+      for (hx $$8 : hx.a($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
+         djp $$9 = $$6.a_($$8);
+         if (!$$9.a(cxa.a)) {
+            emv $$10 = $$9.j($$6, $$8);
+
+            for (elx $$11 : $$10.e()) {
+               elx $$12 = $$11.a($$8).g(0.002);
+               float $$13 = (float)($$12.a - $$2);
+               float $$14 = (float)($$12.b - $$3);
+               float $$15 = (float)($$12.c - $$4);
+               float $$16 = (float)($$12.d - $$2);
+               float $$17 = (float)($$12.e - $$3);
+               float $$18 = (float)($$12.f - $$4);
+               float $$19 = 1.0F;
+               float $$20 = 0.0F;
+               float $$21 = 0.0F;
+               float $$22 = 0.5F;
+               if ($$9.d($$6, $$8, ic.e)) {
+                  eqo $$23 = $$1.getBuffer(fub.y());
+                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ic.d)) {
+                  eqo $$24 = $$1.getBuffer(fub.y());
+                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ic.f)) {
+                  eqo $$25 = $$1.getBuffer(fub.y());
+                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ic.c)) {
+                  eqo $$26 = $$1.getBuffer(fub.y());
+                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ic.a)) {
+                  eqo $$27 = $$1.getBuffer(fub.y());
+                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ic.b)) {
+                  eqo $$28 = $$1.getBuffer(fub.y());
+                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+            }
+         }
+      }
    }
 }

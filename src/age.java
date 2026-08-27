@@ -1,8 +1,8 @@
-public interface age extends uc, ud {
-   @Override
-   default uh b() {
-      return uh.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(agg var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface age {
 }

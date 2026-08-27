@@ -1,110 +1,76 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class cvq extends czm {
-   public static final MapCodec<cvq> a = b(cvq::new);
-   public static final dkb b = dal.aE;
-   private static final emm c = cwq.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-   private static final emm d = cwq.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
-   private static final emm e = cwq.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
-   private static final emm f = cwq.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
-   private static final emm g = cwq.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
-   private static final emm h = cwq.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
-   private static final emm i = cwq.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
-   private static final emm j = emj.a(c, d, e, f);
-   private static final emm k = emj.a(c, g, h, i);
-   private static final vf l = vf.c("container.repair");
-   private static final float m = 2.0F;
-   private static final int n = 40;
+public abstract class cvq extends cwy {
+   public static final int a = 3;
+   public static final dkg b = dkf.r;
 
    @Override
-   public MapCodec<cvq> a() {
-      return a;
-   }
+   protected abstract MapCodec<? extends cvq> a();
 
-   public cvq(djg.d $$0) {
+   protected cvq(djo.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ic.c));
+   }
+
+   protected abstract Iterable<emc> b(djp var1);
+
+   public static boolean c(djp $$0) {
+      return $$0.b(b) && ($$0.a(asi.ae) || $$0.a(asi.bj)) && $$0.c(b);
    }
 
    @Override
-   public djh a(cph $$0) {
-      return this.o().a(b, $$0.g().h());
-   }
-
-   @Override
-   public bkb a(djh $$0, ctp $$1, hx $$2, cfi $$3, bka $$4, elp $$5) {
-      if ($$1.B) {
-         return bkb.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(asc.aC);
-         return bkb.b;
+   public void a(ctx $$0, djp $$1, ely $$2, cgi $$3) {
+      if (!$$0.B && $$3.bN() && this.d($$1)) {
+         a($$0, $$1, $$2.a(), true);
       }
    }
 
-   @Nullable
-   @Override
-   public bke b(djh $$0, ctp $$1, hx $$2) {
-      return new bkk(($$2x, $$3, $$4) -> new cid($$2x, $$3, cim.a($$1, $$2)), l);
+   protected boolean d(djp $$0) {
+      return !$$0.c(b);
    }
 
    @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      ic $$4 = $$0.c(b);
-      return $$4.o() == ic.a.a ? j : k;
-   }
-
-   @Override
-   protected void a(cbt $$0) {
-      $$0.b(2.0F, 40);
-   }
-
-   @Override
-   public void a(ctp $$0, hx $$1, djh $$2, djh $$3, cbt $$4) {
-      if (!$$4.aU()) {
-         $$0.c(1031, $$1, 0);
+   public void a(djp $$0, ctx $$1, hx $$2, auw $$3) {
+      if ($$0.c(b)) {
+         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
       }
    }
 
-   @Override
-   public void a(ctp $$0, hx $$1, cbt $$2) {
-      if (!$$2.aU()) {
-         $$0.c(1029, $$1, 0);
+   private static void a(ctx $$0, emc $$1, auw $$2) {
+      float $$3 = $$2.i();
+      if ($$3 < 0.3F) {
+         $$0.a(jx.ab, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
+         if ($$3 < 0.17F) {
+            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, art.dA, aru.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+         }
       }
+
+      $$0.a(jx.aG, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
    }
 
-   @Override
-   public bkt a(blv $$0) {
-      return $$0.dN().b($$0);
-   }
-
-   @Nullable
-   public static djh e(djh $$0) {
-      if ($$0.a(cws.gS)) {
-         return cws.gT.o().a(b, $$0.c(b));
-      } else {
-         return $$0.a(cws.gT) ? cws.gU.o().a(b, $$0.c(b)) : null;
+   public static void a(@Nullable cfq $$0, djp $$1, cty $$2, hx $$3) {
+      a($$2, $$1, $$3, false);
+      if ($$1.b() instanceof cvq) {
+         ((cvq)$$1.b())
+            .b($$1)
+            .forEach($$2x -> $$2.a(jx.ab, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
       }
+
+      $$2.a(null, $$3, art.dC, aru.e, 1.0F, 1.0F);
+      $$2.a($$0, dnz.c, $$3);
+   }
+
+   private static void a(cty $$0, djp $$1, hx $$2, boolean $$3) {
+      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
    }
 
    @Override
-   public djh a(djh $$0, ddc $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
+   public void a(djp $$0, ctx $$1, hx $$2, ctp $$3, BiConsumer<cng, hx> $$4) {
+      if ($$3.j() == ctp.a.d && !$$1.y_() && $$0.c(b)) {
+         a(null, $$0, $$1, $$2);
+      }
 
-   @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(djh $$0, csv $$1, hx $$2, efh $$3) {
-      return false;
-   }
-
-   @Override
-   public int b(djh $$0, csv $$1, hx $$2) {
-      return $$0.d($$1, $$2).ak;
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

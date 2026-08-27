@@ -1,30 +1,8 @@
-public class clt extends cld {
-   public clt(cmt.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface clt {
+   default void a(@Nullable cfq $$0, ctx $$1, cng $$2, hx $$3) {
    }
 
-   @Override
-   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
-      cmy $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bkc.a($$3);
-      } else {
-         if (!$$1.fT().d) {
-            $$3.h(1);
-         }
-
-         $$1.b(asc.c.b(this));
-         $$1.dM().a(null, $$1, ars.zx, $$1.db(), 1.0F, 1.0F);
-         cmy $$4 = cnf.a($$0, $$1.dq(), $$1.dw(), (byte)0, true, false);
-         if ($$3.b()) {
-            return bkc.b($$4);
-         } else {
-            if (!$$1.fS().e($$4.p())) {
-               $$1.a($$4, false);
-            }
-
-            return bkc.b($$3);
-         }
-      }
-   }
+   boolean a(@Nullable cfq var1, ctx var2, hx var3, @Nullable ely var4);
 }

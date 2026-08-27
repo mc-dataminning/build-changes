@@ -1,14 +1,49 @@
-public class gdn extends gcy<bzb, fmo<bzb>> {
-   private static final ahg a = new ahg("textures/entity/wolf/wolf_collar.png");
+public class gdn extends gdl<byy, flz<byy>> {
+   private static final ahh a = new ahh("textures/entity/sheep/sheep_fur.png");
+   private final fly<byy> b;
 
-   public gdn(gai<bzb, fmo<bzb>> $$0) {
+   public gdn(gav<byy, flz<byy>> $$0, fnf $$1) {
       super($$0);
+      this.b = new fly<>($$1.a(fni.be));
    }
 
-   public void a(eqb $$0, fth $$1, int $$2, bzb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.u() && !$$3.ce()) {
-         float[] $$10 = $$3.gn().d();
-         a(this.c(), a, $$0, $$1, $$2, $$3, $$10[0], $$10[1], $$10[2]);
+   public void a(eqk $$0, ftt $$1, int $$2, byy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.A()) {
+         if ($$3.ce()) {
+            evr $$10 = evr.O();
+            boolean $$11 = $$10.b($$3);
+            if ($$11) {
+               this.c().a(this.b);
+               this.b.a($$3, $$4, $$5, $$6);
+               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+               eqo $$12 = $$1.getBuffer(fub.r(a));
+               this.b.a($$0, $$12, $$2, gab.c($$3, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
+            }
+         } else {
+            float $$21;
+            float $$22;
+            float $$23;
+            if ($$3.ae() && "jeb_".equals($$3.ad().getString())) {
+               int $$13 = 25;
+               int $$14 = $$3.ah / 25 + $$3.aj();
+               int $$15 = clv.values().length;
+               int $$16 = $$14 % $$15;
+               int $$17 = ($$14 + 1) % $$15;
+               float $$18 = ((float)($$3.ah % 25) + $$6) / 25.0F;
+               float[] $$19 = byy.a(clv.a($$16));
+               float[] $$20 = byy.a(clv.a($$17));
+               $$21 = $$19[0] * (1.0F - $$18) + $$20[0] * $$18;
+               $$22 = $$19[1] * (1.0F - $$18) + $$20[1] * $$18;
+               $$23 = $$19[2] * (1.0F - $$18) + $$20[2] * $$18;
+            } else {
+               float[] $$24 = byy.a($$3.w());
+               $$21 = $$24[0];
+               $$22 = $$24[1];
+               $$23 = $$24[2];
+            }
+
+            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21, $$22, $$23);
+         }
       }
    }
 }

@@ -1,78 +1,136 @@
+import com.google.common.base.MoreObjects;
+import com.mojang.authlib.GameProfile;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class abf implements xf<za> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final int d;
-   private final ee.a e;
-   private final ee.a f;
-   private final boolean g;
+public class abf implements xg<zb> {
+   private final EnumSet<abf.a> a;
+   private final List<abf.b> b;
 
-   public abf(ee.a $$0, double $$1, double $$2, double $$3) {
-      this.e = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = 0;
-      this.g = false;
-      this.f = null;
+   public abf(EnumSet<abf.a> $$0, Collection<anf> $$1) {
+      this.a = $$0;
+      this.b = $$1.stream().map(abf.b::new).toList();
    }
 
-   public abf(ee.a $$0, blv $$1, ee.a $$2) {
-      this.e = $$0;
-      this.d = $$1.aj();
-      this.f = $$2;
-      elt $$3 = $$2.a($$1);
-      this.a = $$3.c;
-      this.b = $$3.d;
-      this.c = $$3.e;
-      this.g = true;
+   public abf(abf.a $$0, anf $$1) {
+      this.a = EnumSet.of($$0);
+      this.b = List.of(new abf.b($$1));
    }
 
-   public abf(ui $$0) {
-      this.e = $$0.b(ee.a.class);
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.g = $$0.readBoolean();
-      if (this.g) {
-         this.d = $$0.n();
-         this.f = $$0.b(ee.a.class);
-      } else {
-         this.d = 0;
-         this.f = null;
-      }
+   public static abf a(Collection<anf> $$0) {
+      EnumSet<abf.a> $$1 = EnumSet.of(abf.a.a, abf.a.b, abf.a.c, abf.a.d, abf.a.e, abf.a.f);
+      return new abf($$1, $$0);
+   }
+
+   public abf(uj $$0) {
+      this.a = $$0.a(abf.a.class);
+      this.b = $$0.a((uj.a<abf.b>)($$0x -> {
+         abf.c $$1 = new abf.c($$0x.p());
+
+         for (abf.a $$2 : this.a) {
+            $$2.g.read($$1, $$0x);
+         }
+
+         return $$1.a();
+      }));
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.e);
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.g);
-      if (this.g) {
-         $$0.c(this.d);
-         $$0.a(this.f);
-      }
+   public void a(uj $$0) {
+      $$0.a(this.a, abf.a.class);
+      $$0.a(this.b, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
+
+         for (abf.a $$2 : this.a) {
+            $$2.h.write($$0x, $$1);
+         }
+      });
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   public ee.a a() {
-      return this.e;
+   public EnumSet<abf.a> a() {
+      return this.a;
    }
 
-   @Nullable
-   public elt a(ctp $$0) {
-      if (this.g) {
-         blv $$1 = $$0.a(this.d);
-         return $$1 == null ? new elt(this.a, this.b, this.c) : this.f.a($$1);
-      } else {
-         return new elt(this.a, this.b, this.c);
+   public List<abf.b> d() {
+      return this.b;
+   }
+
+   public List<abf.b> e() {
+      return this.a.contains(abf.a.a) ? this.b : List.of();
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("actions", this.a).add("entries", this.b).toString();
+   }
+
+   public static enum a {
+      a(($$0, $$1) -> {
+         GameProfile $$2 = new GameProfile($$0.a, $$1.d(16));
+         $$2.getProperties().putAll($$1.B());
+         $$0.b = $$2;
+      }, ($$0, $$1) -> {
+         GameProfile $$2 = Objects.requireNonNull($$1.b());
+         $$0.a($$2.getName(), 16);
+         $$0.a($$2.getProperties());
+      }),
+      b(($$0, $$1) -> $$0.g = $$1.c(vx.a::a), ($$0, $$1) -> $$0.a($$1.g, vx.a::a)),
+      c(($$0, $$1) -> $$0.e = ctu.a($$1.n()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
+      e(($$0, $$1) -> $$0.d = $$1.n(), ($$0, $$1) -> $$0.c($$1.d())),
+      f(($$0, $$1) -> $$0.f = $$1.c(uj::m), ($$0, $$1) -> $$0.a($$1.f(), uj::a));
+
+      final abf.a.a g;
+      final abf.a.b h;
+
+      private a(abf.a.a $$0, abf.a.b $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public interface a {
+         void read(abf.c var1, uj var2);
+      }
+
+      public interface b {
+         void write(uj var1, abf.b var2);
+      }
+   }
+
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, ctu e, @Nullable vg f, @Nullable vx.a g) {
+
+      b(anf $$0) {
+         this($$0.cw(), $$0.fR(), true, $$0.c.l(), $$0.e.b(), $$0.N(), x.a($$0.ab(), vx::a));
+      }
+   }
+
+   static class c {
+      final UUID a;
+      @Nullable
+      GameProfile b;
+      boolean c;
+      int d;
+      ctu e;
+      @Nullable
+      vg f;
+      @Nullable
+      vx.a g;
+
+      c(UUID $$0) {
+         this.e = ctu.e;
+         this.a = $$0;
+      }
+
+      abf.b a() {
+         return new abf.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g);
       }
    }
 }

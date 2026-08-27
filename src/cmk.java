@@ -1,14 +1,39 @@
-public class cmk extends cny {
-   public cmk(cwq $$0, cwq $$1, cmt.a $$2) {
-      super($$2, $$0, $$1, ic.b);
+public class cmk extends cnb {
+   public cmk(cnb.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(cts $$0, djh $$1, hx $$2) {
-      if ($$1.b() instanceof dfn $$3 && !$$3.b($$1, $$0, $$2)) {
-         return false;
+   public bkc a(cpr $$0) {
+      ctx $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      djp $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!cxm.h($$3) && !cxn.g($$3) && !cxo.g($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (cwl.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, cwl.a($$1, $$2));
+            $$1.a($$0.o(), dnz.i, $$2);
+            $$4 = true;
+         }
+      } else {
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.a(dkf.r, Boolean.valueOf(true)));
+         $$1.a($$0.o(), dnz.c, $$2);
+         $$4 = true;
       }
 
-      return super.a($$0, $$1, $$2);
+      if ($$4) {
+         $$0.n().h(1);
+         return bkc.a($$1.B);
+      } else {
+         return bkc.e;
+      }
+   }
+
+   private void a(ctx $$0, hx $$1) {
+      auw $$2 = $$0.F_();
+      $$0.a(null, $$1, art.iv, aru.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 }

@@ -1,35 +1,49 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record cpe(ahg c, ih<cmt> d, vf e, boolean f) {
-   public static final Codec<cpe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ahg.a.fieldOf("asset_id").forGetter(cpe::a),
-               ahd.a(ke.F).fieldOf("template_item").forGetter(cpe::b),
-               vh.a.fieldOf("description").forGetter(cpe::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cpe::d)
-            )
-            .apply($$0, cpe::new)
-   );
-   public static final Codec<ih<cpe>> b = ahc.a(ke.aJ, a);
+public class cpe {
+   @Nullable
+   private final String a;
+   private final List<blj> b;
 
-   public vf a(ih<cpc> $$0) {
-      return this.e.f().c($$0.a().e().a());
+   public static ih<cpe> a(String $$0) {
+      ahh $$1 = ahh.a($$0);
+      return $$1 == null ? cph.b : kd.i.c($$1).map(Function.identity()).orElse(cph.b);
    }
 
-   public ahg a() {
-      return this.c;
+   public cpe(blj... $$0) {
+      this(null, $$0);
    }
 
-   public ih<cmt> b() {
-      return this.d;
+   public cpe(@Nullable String $$0, blj... $$1) {
+      this.a = $$0;
+      this.b = List.of($$1);
    }
 
-   public vf c() {
-      return this.e;
+   public static String a(ih<cpe> $$0, String $$1) {
+      String $$2 = $$0.a().a;
+      if ($$2 != null) {
+         return $$1 + $$2;
+      } else {
+         ahg<cpe> $$3 = $$0.e().orElse(cph.a);
+         return $$1 + $$3.a().a();
+      }
    }
 
-   public boolean d() {
-      return this.f;
+   public List<blj> a() {
+      return this.b;
+   }
+
+   public boolean b() {
+      if (!this.b.isEmpty()) {
+         for (blj $$0 : this.b) {
+            if ($$0.b().a().a()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 }

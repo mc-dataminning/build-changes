@@ -35,12 +35,12 @@ public class iz extends jb {
       return new iz(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static iz a(csw $$0, int $$1) {
+   public static iz a(cte $$0, int $$1) {
       return new iz($$0.e, $$1, $$0.f);
    }
 
-   public static iz a(dmy $$0) {
-      return a($$0.dm());
+   public static iz a(dng $$0) {
+      return a($$0.dl());
    }
 
    public static iz a(ir $$0) {
@@ -51,7 +51,7 @@ public class iz extends jb {
       return new iz(b($$0), c($$0), d($$0));
    }
 
-   public static iz a(dld $$0) {
+   public static iz a(dll $$0) {
       return a($$0.f(), $$0.an());
    }
 
@@ -64,7 +64,7 @@ public class iz extends jb {
    }
 
    public static int a(double $$0) {
-      return a(auo.a($$0));
+      return a(aup.a($$0));
    }
 
    public static int a(int $$0) {
@@ -72,7 +72,7 @@ public class iz extends jb {
    }
 
    public static int b(double $$0) {
-      return auo.a($$0) >> 4;
+      return aup.a($$0) >> 4;
    }
 
    public static int b(int $$0) {
@@ -191,8 +191,8 @@ public class iz extends jb {
       return this.j().b(8, 8, 8);
    }
 
-   public csw r() {
-      return new csw(this.a(), this.c());
+   public cte r() {
+      return new cte(this.a(), this.c());
    }
 
    public static long c(hx $$0) {
@@ -225,7 +225,7 @@ public class iz extends jb {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<iz> a(csw $$0, int $$1, int $$2, int $$3) {
+   public static Stream<iz> a(cte $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.e;
       int $$5 = $$0.f;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);

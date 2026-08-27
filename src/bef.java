@@ -1,3 +1,4 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
@@ -10,7 +11,7 @@ public class bef extends bde {
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.registerSimple($$1, "minecraft:jigsaw");
+      $$0.register($$1, "minecraft:jigsaw", () -> DSL.optionalFields("final_state", bbw.v.in($$0)));
       return $$1;
    }
 }

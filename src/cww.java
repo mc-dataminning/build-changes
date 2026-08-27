@@ -1,142 +1,114 @@
 import com.mojang.serialization.MapCodec;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class cww extends cwq implements cwx {
+public class cww extends dat implements cxb, ddy {
    public static final MapCodec<cww> a = b(cww::new);
-   public static final djy b = djx.e;
-   private static final int c = 5;
+   private static final dkg f = dkf.C;
+   private static final int g = 6;
+   protected static final emv b = cwy.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
+   protected static final emv c = cwy.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
+   protected static final emv d = cwy.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
+   protected static final emv e = cwy.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
 
    @Override
    public MapCodec<cww> a() {
       return a;
    }
 
-   public cww(djg.d $$0) {
+   protected cww(djo.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(true)));
+      this.k(this.E.b().a(f, Boolean.valueOf(false)).a(aE, ic.c));
    }
 
    @Override
-   public void a(djh $$0, ctp $$1, hx $$2, blv $$3) {
-      djh $$4 = $$1.a_($$2.c());
-      if ($$4.i()) {
-         $$3.k($$0.c(b));
-         if (!$$1.B) {
-            and $$5 = (and)$$1;
-
-            for (int $$6 = 0; $$6 < 2; $$6++) {
-               $$5.a(jx.aj, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
-               $$5.a(jx.e, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.01, 0.0, 0.2);
-            }
-         }
-      } else {
-         $$3.l($$0.c(b));
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      switch ((ic)$$0.c(aE)) {
+         case d:
+            return c;
+         case c:
+         default:
+            return b;
+         case e:
+            return e;
+         case f:
+            return d;
       }
    }
 
    @Override
-   public void a(djh $$0, and $$1, hx $$2, auv $$3) {
-      a($$1, $$2, $$0, $$1.a_($$2.d()));
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(f, aE);
    }
 
    @Override
-   public eer c_(djh $$0) {
-      return ees.c.a(false);
-   }
-
-   public static void b(ctq $$0, hx $$1, djh $$2) {
-      a($$0, $$1, $$0.a_($$1), $$2);
-   }
-
-   public static void a(ctq $$0, hx $$1, djh $$2, djh $$3) {
-      if (h($$2)) {
-         djh $$4 = n($$3);
-         $$0.a($$1, $$4, 2);
-         hx.a $$5 = $$1.j().c(ic.b);
-
-         while (h($$0.a_($$5))) {
-            if (!$$0.a($$5, $$4, 2)) {
-               return;
-            }
-
-            $$5.c(ic.b);
-         }
-      }
-   }
-
-   private static boolean h(djh $$0) {
-      return $$0.a(cws.nd) || $$0.a(cws.G) && $$0.u().e() >= 8 && $$0.u().b();
-   }
-
-   private static djh n(djh $$0) {
-      if ($$0.a(cws.nd)) {
-         return $$0;
-      } else if ($$0.a(cws.dW)) {
-         return cws.nd.o().a(b, Boolean.valueOf(false));
-      } else {
-         return $$0.a(cws.kJ) ? cws.nd.o().a(b, Boolean.valueOf(true)) : cws.G.o();
-      }
+   public eez c_(djp $$0) {
+      return $$0.c(f) ? efa.c.a(false) : super.c_($$0);
    }
 
    @Override
-   public void a(djh $$0, ctp $$1, hx $$2, auv $$3) {
-      double $$4 = (double)$$2.u();
-      double $$5 = (double)$$2.v();
-      double $$6 = (double)$$2.w();
-      if ($$0.c(b)) {
-         $$1.b(jx.am, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, ars.cC, art.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      } else {
-         $$1.b(jx.an, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
-         $$1.b(jx.an, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, ars.cA, art.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      }
+   public boolean a(djp $$0, cua $$1, hx $$2) {
+      hx $$3 = $$2.d();
+      djp $$4 = $$1.a_($$3);
+      djp $$5 = $$1.a_($$2.c());
+      return ($$4.a(this) || $$4.a(asi.bx)) && ($$5.a(this) || $$5.a(cxa.sD));
+   }
+
+   protected static boolean a(cty $$0, hx $$1, eez $$2, ic $$3) {
+      djp $$4 = cxa.sE.o().a(f, Boolean.valueOf($$2.a(efa.c))).a(aE, $$3);
+      return $$0.a($$1, $$4, 3);
    }
 
    @Override
-   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
-      $$3.a($$4, ees.c, ees.c.a($$3));
-      if (!$$0.a($$3, $$4) || $$1 == ic.a || $$1 == ic.b && !$$2.a(cws.nd) && h($$2)) {
-         $$3.a($$4, this, 5);
+   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
+      if (($$1 == ic.a || $$1 == ic.b) && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      if ($$0.c(f)) {
+         $$3.a($$4, efa.c, efa.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(djh $$0, cts $$1, hx $$2) {
-      djh $$3 = $$1.a_($$2.d());
-      return $$3.a(cws.nd) || $$3.a(cws.kJ) || $$3.a(cws.dW);
+   public void a(djp $$0, ane $$1, hx $$2, auw $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return emj.a();
+   public boolean b(cua $$0, hx $$1, djp $$2) {
+      Optional<hx> $$3 = l.a($$0, $$1, $$2.b(), ic.b, cxa.sD);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         hx $$4 = $$3.get().c();
+         djp $$5 = $$0.a_($$4);
+         return cwv.a($$0, $$4, $$5);
+      }
    }
 
    @Override
-   public dcv b_(djh $$0) {
-      return dcv.a;
+   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
+      return true;
    }
 
    @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(b);
+   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
+      Optional<hx> $$4 = l.a($$0, $$2, $$3.b(), ic.b, cxa.sD);
+      if (!$$4.isEmpty()) {
+         hx $$5 = $$4.get();
+         hx $$6 = $$5.c();
+         ic $$7 = $$3.c(aE);
+         a($$0, $$5, $$0.b_($$5), $$7);
+         cwv.a($$0, $$6, $$0.b_($$6), $$7);
+      }
    }
 
    @Override
-   public cmy a(@Nullable cfi $$0, ctq $$1, hx $$2, djh $$3) {
-      $$1.a($$2, cws.a.o(), 11);
-      return new cmy(cnb.qw);
-   }
-
-   @Override
-   public Optional<arr> au_() {
-      return ees.c.j();
+   public cng a(cua $$0, hx $$1, djp $$2) {
+      return new cng(cxa.sD);
    }
 }

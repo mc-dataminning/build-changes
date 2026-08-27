@@ -1,80 +1,99 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public class brm extends brn {
-   private static final List<cmt> c = ImmutableList.of(cnb.ps, cnb.ve);
+public class brm extends bof<cfd> {
+   private static final int c = 5;
+   private static final float d = 0.5F;
+   private long e;
 
-   @Override
-   protected void a(and $$0, cev $$1) {
-      Optional<ig> $$2 = $$1.dO().c(bvn.c);
-      if (!$$2.isEmpty()) {
-         ig $$3 = $$2.get();
-         djh $$4 = $$0.a_($$3.b());
-         if ($$4.a(cws.pc)) {
-            this.a($$1);
-            this.a($$0, $$1, $$3, $$4);
+   public brm() {
+      super(ImmutableMap.of(bvq.r, bvr.a, bvq.h, bvr.a), 350, 350);
+   }
+
+   protected boolean a(ane $$0, cfd $$1) {
+      return this.a($$1);
+   }
+
+   protected boolean a(ane $$0, cfd $$1, long $$2) {
+      return $$2 <= this.e && this.a($$1);
+   }
+
+   protected void b(ane $$0, cfd $$1, long $$2) {
+      blr $$3 = $$1.dN().c(bvq.r).get();
+      boh.a($$1, $$3, 0.5F);
+      $$0.a($$3, (byte)18);
+      $$0.a($$1, (byte)18);
+      int $$4 = 275 + $$1.eg().a(50);
+      this.e = $$2 + (long)$$4;
+   }
+
+   protected void c(ane $$0, cfd $$1, long $$2) {
+      cfd $$3 = (cfd)$$1.dN().c(bvq.r).get();
+      if (!($$1.f($$3) > 5.0)) {
+         boh.a($$1, $$3, 0.5F);
+         if ($$2 >= this.e) {
+            $$1.gw();
+            $$3.gw();
+            this.a($$0, $$1, $$3);
+         } else if ($$1.eg().a(35) == 0) {
+            $$0.a($$3, (byte)12);
+            $$0.a($$1, (byte)12);
          }
       }
    }
 
-   private void a(and $$0, cev $$1, ig $$2, djh $$3) {
-      hx $$4 = $$2.b();
-      if ($$3.c(cyb.e) == 8) {
-         $$3 = cyb.a($$1, $$3, (ctp)$$0, $$4);
-      }
-
-      int $$5 = 20;
-      int $$6 = 10;
-      int[] $$7 = new int[c.size()];
-      bkj $$8 = $$1.A();
-      int $$9 = $$8.b();
-      djh $$10 = $$3;
-
-      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
-         cmy $$12 = $$8.a($$11);
-         int $$13 = c.indexOf($$12.d());
-         if ($$13 != -1) {
-            int $$14 = $$12.L();
-            int $$15 = $$7[$$13] + $$14;
-            $$7[$$13] = $$15;
-            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
-            if ($$16 > 0) {
-               $$5 -= $$16;
-
-               for (int $$17 = 0; $$17 < $$16; $$17++) {
-                  $$10 = cyb.a($$1, $$10, $$0, $$12, $$4);
-                  if ($$10.c(cyb.e) == 7) {
-                     this.a($$0, $$3, $$4, $$10);
-                     return;
-                  }
-               }
-            }
+   private void a(ane $$0, cfd $$1, cfd $$2) {
+      Optional<hx> $$3 = this.b($$0, $$1);
+      if ($$3.isEmpty()) {
+         $$0.a($$2, (byte)13);
+         $$0.a($$1, (byte)13);
+      } else {
+         Optional<cfd> $$4 = this.b($$0, $$1, $$2);
+         if ($$4.isPresent()) {
+            this.a($$0, $$4.get(), $$3.get());
+         } else {
+            $$0.y().b($$3.get());
+            adj.c($$0, $$3.get());
          }
       }
-
-      this.a($$0, $$3, $$4, $$10);
    }
 
-   private void a(and $$0, djh $$1, hx $$2, djh $$3) {
-      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   protected void d(ane $$0, cfd $$1, long $$2) {
+      $$1.dN().b(bvq.r);
    }
 
-   private void a(cev $$0) {
-      bkj $$1 = $$0.A();
-      if ($$1.a_(cnb.pu) <= 36) {
-         int $$2 = $$1.a_(cnb.pt);
-         int $$3 = 3;
-         int $$4 = 3;
-         int $$5 = Math.min(3, $$2 / 3);
-         if ($$5 != 0) {
-            int $$6 = $$5 * 3;
-            $$1.a(cnb.pt, $$6);
-            cmy $$7 = $$1.a(new cmy(cnb.pu, $$5));
-            if (!$$7.b()) {
-               $$0.a($$7, 0.5F);
-            }
-         }
+   private boolean a(cfd $$0) {
+      bno<cfd> $$1 = $$0.dN();
+      Optional<blr> $$2 = $$1.c(bvq.r).filter($$0x -> $$0x.ai() == bmc.bh);
+      return $$2.isEmpty() ? false : boh.a($$1, bvq.r, bmc.bh) && $$0.Y_() && $$2.get().Y_();
+   }
+
+   private Optional<hx> b(ane $$0, cfd $$1) {
+      return $$0.y().a($$0x -> $$0x.a(bxu.n), ($$1x, $$2) -> this.a($$1, $$2, $$1x), $$1.dl(), 48);
+   }
+
+   private boolean a(cfd $$0, hx $$1, ih<bxt> $$2) {
+      efo $$3 = $$0.N().a($$1, $$2.a().c());
+      return $$3 != null && $$3.j();
+   }
+
+   private Optional<cfd> b(ane $$0, cfd $$1, cfd $$2) {
+      cfd $$3 = $$1.b($$0, $$2);
+      if ($$3 == null) {
+         return Optional.empty();
+      } else {
+         $$1.c_(6000);
+         $$2.c_(6000);
+         $$3.c_(-24000);
+         $$3.b($$1.dq(), $$1.ds(), $$1.dw(), 0.0F, 0.0F);
+         $$0.a_($$3);
+         $$0.a($$3, (byte)12);
+         return Optional.of($$3);
       }
+   }
+
+   private void a(ane $$0, cfd $$1, hx $$2) {
+      ig $$3 = ig.a($$0.ae(), $$2);
+      $$1.dN().a(bvq.b, $$3);
    }
 }

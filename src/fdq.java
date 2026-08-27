@@ -1,38 +1,41 @@
-public enum fdq {
-   a(
-      new ahg("advancements/box_obtained"),
-      new ahg("advancements/task_frame_obtained"),
-      new ahg("advancements/challenge_frame_obtained"),
-      new ahg("advancements/goal_frame_obtained")
-   ),
-   b(
-      new ahg("advancements/box_unobtained"),
-      new ahg("advancements/task_frame_unobtained"),
-      new ahg("advancements/challenge_frame_unobtained"),
-      new ahg("advancements/goal_frame_unobtained")
-   );
+import java.util.Arrays;
 
-   private final ahg c;
-   private final ahg d;
-   private final ahg e;
-   private final ahg f;
+public class fdq extends fde {
+   private eyo c;
 
-   private fdq(ahg $$0, ahg $$1, ahg $$2, ahg $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   private static evu<?>[] a(evv $$0) {
+      return new evu[]{$$0.T(), $$0.U()};
    }
 
-   public ahg a() {
-      return this.c;
+   public fdq(fdm $$0, evv $$1) {
+      super($$0, $$1, vg.c("options.sounds.title"));
    }
 
-   public ahg a(al $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   @Override
+   protected void aP_() {
+      this.c = this.d(new eyo(this.f, this.g, this.h - 64, 32, 25));
+      this.c.a(this.b.b(aru.a));
+      this.c.a(this.o());
+      this.c.a(this.b.aq());
+      this.c.a(a(this.b));
+      this.d(exr.a(vf.d, $$0 -> {
+         this.f.m.as();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+   }
+
+   private evu<?>[] o() {
+      return Arrays.stream(aru.values()).filter($$0 -> $$0 != aru.a).map($$0 -> this.b.b($$0)).toArray(evu[]::new);
+   }
+
+   @Override
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+   }
+
+   @Override
+   public void b(exe $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

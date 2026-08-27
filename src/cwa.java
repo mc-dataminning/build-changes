@@ -1,72 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class cwa extends cwq implements ddq {
-   public static final djy d = djx.C;
-   private static final emm a = cwq.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-
-   protected cwa(djg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
-   }
+public class cwa extends cxh implements cxb {
+   public static final MapCodec<cwa> a = b(cwa::new);
+   private static final emv b = ems.a(cwy.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), cwy.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
 
    @Override
-   protected abstract MapCodec<? extends cwa> a();
-
-   protected void a(djh $$0, ctq $$1, hx $$2) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this, 60 + $$1.F_().a(40));
-      }
-   }
-
-   protected static boolean e(djh $$0, csv $$1, hx $$2) {
-      if ($$0.c(d)) {
-         return true;
-      } else {
-         for (ic $$3 : ic.values()) {
-            if ($$1.b_($$2.a($$3)).a(asm.a)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Nullable
-   @Override
-   public djh a(cph $$0) {
-      eer $$1 = $$0.q().b_($$0.a());
-      return this.o().a(d, Boolean.valueOf($$1.a(asm.a) && $$1.e() == 8));
-   }
-
-   @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
+   public MapCodec<cwa> a() {
       return a;
    }
 
-   @Override
-   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ees.c, ees.c.a($$3));
-      }
-
-      return $$1 == ic.a && !this.a($$0, (cts)$$3, $$4) ? cws.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected cwa(djo.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(djh $$0, cts $$1, hx $$2) {
-      hx $$3 = $$2.d();
-      return $$1.a_($$3).d($$1, $$3, ic.b);
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(d);
+   protected boolean b(djp $$0, ctd $$1, hx $$2) {
+      return $$0.a(cxa.dR) || super.b($$0, $$1, $$2);
    }
 
    @Override
-   public eer c_(djh $$0) {
-      return $$0.c(d) ? ees.c.a(false) : super.c_($$0);
+   public boolean b(cua $$0, hx $$1, djp $$2) {
+      return $$0.b_($$1.c()).c();
+   }
+
+   @Override
+   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
+      return (double)$$0.z.i() < 0.45;
+   }
+
+   @Override
+   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
+      dje.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
    }
 }

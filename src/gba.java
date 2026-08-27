@@ -1,12 +1,15 @@
-public class gba extends fxn<cfq> {
-   public static final ahg a = new ahg("textures/entity/projectiles/arrow.png");
-   public static final ahg f = new ahg("textures/entity/projectiles/tipped_arrow.png");
+public class gba extends gag<cdd, fmd<cdd>> {
+   private static final ahh a = new ahh("textures/entity/silverfish.png");
 
-   public gba(fyn.a $$0) {
-      super($$0);
+   public gba(fza.a $$0) {
+      super($$0, new fmd<>($$0.a(fni.bi)), 0.3F);
    }
 
-   public ahg a(cfq $$0) {
-      return $$0.I() > 0 ? f : a;
+   protected float a(cdd $$0) {
+      return 180.0F;
+   }
+
+   public ahh b(cdd $$0) {
+      return a;
    }
 }

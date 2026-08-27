@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public class bdb extends baw {
    public bdb(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Zombie Villager XP rebuild", bbw.x, "minecraft:zombie_villager");
+      super($$0, $$1, "Zombie Villager XP rebuild", bbw.y, "minecraft:zombie_villager");
    }
 
    @Override

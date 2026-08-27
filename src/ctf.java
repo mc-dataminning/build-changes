@@ -1,19 +1,25 @@
-import java.util.Optional;
+import java.util.function.Predicate;
 
-public class ctf extends cti {
-   private final blv a;
+public class ctf {
+   private final emc a;
+   private final emc b;
+   private final Predicate<djp> c;
 
-   public ctf(blv $$0) {
+   public ctf(emc $$0, emc $$1, Predicate<djp> $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public Optional<Float> a(cth $$0, csv $$1, hx $$2, djh $$3, eer $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public emc a() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(cth $$0, csv $$1, hx $$2, djh $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   public emc b() {
+      return this.a;
+   }
+
+   public Predicate<djp> c() {
+      return this.c;
    }
 }

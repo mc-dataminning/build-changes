@@ -1,95 +1,71 @@
 import java.util.List;
 
 public class qz {
-   public static final ahf<dyk> a = qy.a("crimson_fungi");
-   public static final ahf<dyk> b = qy.a("warped_fungi");
-   public static final ahf<dyk> c = qy.a("oak_checked");
-   public static final ahf<dyk> d = qy.a("dark_oak_checked");
-   public static final ahf<dyk> e = qy.a("birch_checked");
-   public static final ahf<dyk> f = qy.a("acacia_checked");
-   public static final ahf<dyk> g = qy.a("spruce_checked");
-   public static final ahf<dyk> h = qy.a("mangrove_checked");
-   public static final ahf<dyk> i = qy.a("cherry_checked");
-   public static final ahf<dyk> j = qy.a("pine_on_snow");
-   public static final ahf<dyk> k = qy.a("spruce_on_snow");
-   public static final ahf<dyk> l = qy.a("pine_checked");
-   public static final ahf<dyk> m = qy.a("jungle_tree");
-   public static final ahf<dyk> n = qy.a("fancy_oak_checked");
-   public static final ahf<dyk> o = qy.a("mega_jungle_tree_checked");
-   public static final ahf<dyk> p = qy.a("mega_spruce_checked");
-   public static final ahf<dyk> q = qy.a("mega_pine_checked");
-   public static final ahf<dyk> r = qy.a("tall_mangrove_checked");
-   public static final ahf<dyk> s = qy.a("jungle_bush");
-   public static final ahf<dyk> t = qy.a("super_birch_bees_0002");
-   public static final ahf<dyk> u = qy.a("super_birch_bees");
-   public static final ahf<dyk> v = qy.a("oak_bees_0002");
-   public static final ahf<dyk> w = qy.a("oak_bees_002");
-   public static final ahf<dyk> x = qy.a("birch_bees_0002");
-   public static final ahf<dyk> y = qy.a("birch_bees_002");
-   public static final ahf<dyk> z = qy.a("fancy_oak_bees_0002");
-   public static final ahf<dyk> A = qy.a("fancy_oak_bees_002");
-   public static final ahf<dyk> B = qy.a("fancy_oak_bees");
-   public static final ahf<dyk> C = qy.a("cherry_bees_005");
+   public static final dyv a = dyo.a(doy.a.e);
+   public static final dyv b = dyo.a(doy.a.c);
+   public static final dyv c = dyo.a(doy.a.a);
+   public static final dyv d = dyo.a(doy.a.d);
+   public static final dyv e = dyn.a(dps.a(), dps.b());
+   public static final dyv f = dyn.a(dps.b(10), dps.c(10));
+   public static final dyv g = dyn.a(dps.b(8), dps.c(8));
+   public static final dyv h = dyn.a(dps.b(4), dps.c(4));
+   public static final dyv i = dyn.a(dps.a(), dps.a(256));
 
-   public static void a(pe<dyk> $$0) {
-      ii<drh<?, ?>> $$1 = $$0.a(ke.aw);
-      ih<drh<?, ?>> $$2 = $$1.b(qo.a);
-      ih<drh<?, ?>> $$3 = $$1.b(qo.c);
-      ih<drh<?, ?>> $$4 = $$1.b(qo.g);
-      ih<drh<?, ?>> $$5 = $$1.b(qo.h);
-      ih<drh<?, ?>> $$6 = $$1.b(qo.i);
-      ih<drh<?, ?>> $$7 = $$1.b(qo.j);
-      ih<drh<?, ?>> $$8 = $$1.b(qo.k);
-      ih<drh<?, ?>> $$9 = $$1.b(qo.x);
-      ih<drh<?, ?>> $$10 = $$1.b(qo.z);
-      ih<drh<?, ?>> $$11 = $$1.b(qo.l);
-      ih<drh<?, ?>> $$12 = $$1.b(qo.m);
-      ih<drh<?, ?>> $$13 = $$1.b(qo.n);
-      ih<drh<?, ?>> $$14 = $$1.b(qo.p);
-      ih<drh<?, ?>> $$15 = $$1.b(qo.q);
-      ih<drh<?, ?>> $$16 = $$1.b(qo.r);
-      ih<drh<?, ?>> $$17 = $$1.b(qo.y);
-      ih<drh<?, ?>> $$18 = $$1.b(qo.v);
-      ih<drh<?, ?>> $$19 = $$1.b(qo.s);
-      ih<drh<?, ?>> $$20 = $$1.b(qo.t);
-      ih<drh<?, ?>> $$21 = $$1.b(qo.A);
-      ih<drh<?, ?>> $$22 = $$1.b(qo.B);
-      ih<drh<?, ?>> $$23 = $$1.b(qo.D);
-      ih<drh<?, ?>> $$24 = $$1.b(qo.E);
-      ih<drh<?, ?>> $$25 = $$1.b(qo.G);
-      ih<drh<?, ?>> $$26 = $$1.b(qo.H);
-      ih<drh<?, ?>> $$27 = $$1.b(qo.J);
-      ih<drh<?, ?>> $$28 = $$1.b(qo.K);
-      qy.a($$0, a, $$2, dyc.a(8), dxy.a());
-      qy.a($$0, b, $$3, dyc.a(8), dxy.a());
-      qy.a($$0, c, $$4, qy.a(cws.x));
-      qy.a($$0, d, $$5, qy.a(cws.D));
-      qy.a($$0, e, $$6, qy.a(cws.z));
-      qy.a($$0, f, $$7, qy.a(cws.B));
-      qy.a($$0, g, $$8, qy.a(cws.y));
-      qy.a($$0, h, $$9, qy.a(cws.E));
-      qy.a($$0, i, $$10, qy.a(cws.C));
-      dpx $$29 = dpx.a(ic.a.q(), cws.dP, cws.qP);
-      List<dyn> $$30 = List.of(dye.a(ic.b, dpx.a(dpx.a(cws.qP)), 8), dxz.a($$29));
-      qy.a($$0, j, $$11, $$30);
-      qy.a($$0, k, $$8, $$30);
-      qy.a($$0, l, $$11, qy.a(cws.y));
-      qy.a($$0, m, $$12, qy.a(cws.A));
-      qy.a($$0, n, $$13, qy.a(cws.x));
-      qy.a($$0, o, $$14, qy.a(cws.A));
-      qy.a($$0, p, $$15, qy.a(cws.y));
-      qy.a($$0, q, $$16, qy.a(cws.y));
-      qy.a($$0, r, $$17, qy.a(cws.E));
-      qy.a($$0, s, $$18, qy.a(cws.x));
-      qy.a($$0, t, $$19, qy.a(cws.z));
-      qy.a($$0, u, $$20, qy.a(cws.z));
-      qy.a($$0, v, $$21, qy.a(cws.x));
-      qy.a($$0, w, $$22, qy.a(cws.x));
-      qy.a($$0, x, $$23, qy.a(cws.z));
-      qy.a($$0, y, $$24, qy.a(cws.z));
-      qy.a($$0, z, $$25, qy.a(cws.x));
-      qy.a($$0, A, $$26, qy.a(cws.x));
-      qy.a($$0, B, $$27, qy.a(cws.x));
-      qy.a($$0, C, $$28, qy.a(cws.C));
+   public static void a(pf<dys> $$0) {
+      qt.a($$0);
+      qu.a($$0);
+      qv.a($$0);
+      qw.a($$0);
+      qx.a($$0);
+      qy.a($$0);
+      ra.a($$0);
+      rb.a($$0);
+      rc.a($$0);
+   }
+
+   public static ahg<dys> a(String $$0) {
+      return ahg.a(ke.aC, new ahh($$0));
+   }
+
+   public static void a(pf<dys> $$0, ahg<dys> $$1, ih<drp<?, ?>> $$2, List<dyv> $$3) {
+      $$0.a($$1, new dys($$2, List.copyOf($$3)));
+   }
+
+   public static void a(pf<dys> $$0, ahg<dys> $$1, ih<drp<?, ?>> $$2, dyv... $$3) {
+      a($$0, $$1, $$2, List.of($$3));
+   }
+
+   public static dyv a(int $$0, float $$1, int $$2) {
+      float $$3 = 1.0F / $$1;
+      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
+         throw new IllegalStateException("Chance data cannot be represented as list weight");
+      } else {
+         bim<bjh> $$4 = bim.<bjh>a().a(bje.a($$0), (int)$$3 - 1).a(bje.a($$0 + $$2), 1).a();
+         return dyl.a(new bjo($$4));
+      }
+   }
+
+   public static dyu a() {
+      return dyh.a(dqf.c);
+   }
+
+   public static dyh a(cwy $$0) {
+      return dyh.a(dqf.a($$0.o(), hx.b));
+   }
+
+   public static ih<dys> a(ih<drp<?, ?>> $$0, dyv... $$1) {
+      return ih.a(new dys($$0, List.of($$1)));
+   }
+
+   public static <FC extends dug, F extends dsc<FC>> ih<dys> a(F $$0, FC $$1, dyv... $$2) {
+      return a(ih.a(new drp($$0, $$1)), $$2);
+   }
+
+   public static <FC extends dug, F extends dsc<FC>> ih<dys> a(F $$0, FC $$1) {
+      return a($$0, $$1, dqf.c);
+   }
+
+   public static <FC extends dug, F extends dsc<FC>> ih<dys> a(F $$0, FC $$1, dqf $$2) {
+      return a($$0, $$1, dyh.a($$2));
    }
 }

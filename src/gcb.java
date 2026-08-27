@@ -1,24 +1,16 @@
-public class gcb extends gcj<ccb, fjr<ccb>> {
-   private static final ahg a = new ahg("textures/entity/creeper/creeper_armor.png");
-   private final fjr<ccb> b;
+public class gcb extends gbb {
+   private static final ahh a = new ahh("textures/entity/skeleton/wither_skeleton.png");
 
-   public gcb(gai<ccb, fjr<ccb>> $$0, fmt $$1) {
-      super($$0);
-      this.b = new fjr<>($$1.a(fmw.F));
+   public gcb(fza.a $$0) {
+      super($$0, fni.bT, fni.bU, fni.bV);
    }
 
    @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected ahg a() {
+   public ahh a(ccf $$0) {
       return a;
    }
 
-   @Override
-   protected fjx<ccb> b() {
-      return this.b;
+   protected void a(ccf $$0, eqk $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

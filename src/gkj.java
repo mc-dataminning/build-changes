@@ -1,36 +1,60 @@
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public enum gkj {
-   a("movement", gke::new),
-   b("find_tree", gkd::new),
-   c("punch_tree", gkg::new),
-   d("open_inventory", gkf::new),
-   e("craft_planks", gkc::new),
-   f("none", gkb::new);
+public class gkj {
+   private boolean a;
+   @Nullable
+   private gkd.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
 
-   private final String g;
-   private final Function<gkh, ? extends gki> h;
-
-   private <T extends gki> gkj(String $$0, Function<gkh, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public gkj(@Nullable String $$0) {
+      this.d = $$0;
    }
 
-   public gki a(gkh $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static gkj a(String $$0) {
-      for (gkj $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
+   public void a(gke.a $$0) {
+      if (this.c != null) {
+         $$0.a(gkd.j, !this.c.equals("vanilla"));
       }
 
-      return f;
+      $$0.a(gkd.k, this.a());
+   }
+
+   private gkd.c a() {
+      fop $$0 = evr.O().Q();
+      if ($$0 != null && $$0.e()) {
+         return gkd.c.a;
+      } else {
+         return evr.O().S() ? gkd.c.b : gkd.c.c;
+      }
+   }
+
+   public boolean a(gka $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(gkb.b, $$0x -> {
+            $$0x.a(gkd.n, this.b);
+            if (this.d != null) {
+               $$0x.a(gkd.o, this.d);
+            }
+         });
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void a(ctu $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? gkd.b.e : gkd.b.a;
+         case b -> gkd.b.b;
+         case c -> gkd.b.c;
+         case d -> gkd.b.d;
+      };
+   }
+
+   public void a(String $$0) {
+      this.c = $$0;
    }
 }

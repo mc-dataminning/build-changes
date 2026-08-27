@@ -1,218 +1,84 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Locale;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
 public class akd {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("commands.place.feature.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vf.c("commands.place.jigsaw.failed"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vf.c("commands.place.structure.failed"));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vf.b("commands.place.template.invalid", $$0));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vf.c("commands.place.template.failed"));
-   private static final SuggestionProvider<ds> f = ($$0, $$1) -> {
-      edh $$2 = ((ds)$$0.getSource()).e().q();
-      return dx.a($$2.a(), $$1);
-   };
+   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vg.c("commands.perf.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vg.c("commands.perf.alreadyRunning"));
 
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("place")
-                        .requires($$0x -> $$0x.c(2)))
-                     .then(
-                        dt.a("feature")
-                           .then(
-                              ((RequiredArgumentBuilder)dt.a("feature", es.a(ke.aw))
-                                    .executes($$0x -> a((ds)$$0x.getSource(), es.a($$0x, "feature"), hx.a(((ds)$$0x.getSource()).d()))))
-                                 .then(dt.a("pos", fm.a()).executes($$0x -> a((ds)$$0x.getSource(), es.a($$0x, "feature"), fm.a($$0x, "pos"))))
-                           )
-                     ))
-                  .then(
-                     dt.a("jigsaw")
-                        .then(
-                           dt.a("pool", es.a(ke.aG))
-                              .then(
-                                 dt.a("target", et.a())
-                                    .then(
-                                       ((RequiredArgumentBuilder)dt.a("max_depth", IntegerArgumentType.integer(1, 7))
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ds)$$0x.getSource(),
-                                                      es.c($$0x, "pool"),
-                                                      et.e($$0x, "target"),
-                                                      IntegerArgumentType.getInteger($$0x, "max_depth"),
-                                                      hx.a(((ds)$$0x.getSource()).d())
-                                                   )
-                                             ))
-                                          .then(
-                                             dt.a("position", fm.a())
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (ds)$$0x.getSource(),
-                                                         es.c($$0x, "pool"),
-                                                         et.e($$0x, "target"),
-                                                         IntegerArgumentType.getInteger($$0x, "max_depth"),
-                                                         fm.a($$0x, "position")
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  ))
-               .then(
-                  dt.a("structure")
-                     .then(
-                        ((RequiredArgumentBuilder)dt.a("structure", es.a(ke.aD))
-                              .executes($$0x -> b((ds)$$0x.getSource(), es.b($$0x, "structure"), hx.a(((ds)$$0x.getSource()).d()))))
-                           .then(dt.a("pos", fm.a()).executes($$0x -> b((ds)$$0x.getSource(), es.b($$0x, "structure"), fm.a($$0x, "pos"))))
-                     )
-               ))
-            .then(
-               dt.a("template")
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("template", et.a())
-                           .suggests(f)
-                           .executes($$0x -> a((ds)$$0x.getSource(), et.e($$0x, "template"), hx.a(((ds)$$0x.getSource()).d()), ddc.a, dbm.a, 1.0F, 0)))
-                        .then(
-                           ((RequiredArgumentBuilder)dt.a("pos", fm.a())
-                                 .executes($$0x -> a((ds)$$0x.getSource(), et.e($$0x, "template"), fm.a($$0x, "pos"), ddc.a, dbm.a, 1.0F, 0)))
-                              .then(
-                                 ((RequiredArgumentBuilder)dt.a("rotation", fe.a())
-                                       .executes(
-                                          $$0x -> a((ds)$$0x.getSource(), et.e($$0x, "template"), fm.a($$0x, "pos"), fe.a($$0x, "rotation"), dbm.a, 1.0F, 0)
-                                       ))
-                                    .then(
-                                       ((RequiredArgumentBuilder)dt.a("mirror", fd.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ds)$$0x.getSource(),
-                                                      et.e($$0x, "template"),
-                                                      fm.a($$0x, "pos"),
-                                                      fe.a($$0x, "rotation"),
-                                                      fd.a($$0x, "mirror"),
-                                                      1.0F,
-                                                      0
-                                                   )
-                                             ))
-                                          .then(
-                                             ((RequiredArgumentBuilder)dt.a("integrity", FloatArgumentType.floatArg(0.0F, 1.0F))
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ds)$$0x.getSource(),
-                                                            et.e($$0x, "template"),
-                                                            fm.a($$0x, "pos"),
-                                                            fe.a($$0x, "rotation"),
-                                                            fd.a($$0x, "mirror"),
-                                                            FloatArgumentType.getFloat($$0x, "integrity"),
-                                                            0
-                                                         )
-                                                   ))
-                                                .then(
-                                                   dt.a("seed", IntegerArgumentType.integer())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ds)$$0x.getSource(),
-                                                               et.e($$0x, "template"),
-                                                               fm.a($$0x, "pos"),
-                                                               fe.a($$0x, "rotation"),
-                                                               fd.a($$0x, "mirror"),
-                                                               FloatArgumentType.getFloat($$0x, "integrity"),
-                                                               IntegerArgumentType.getInteger($$0x, "seed")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("perf").requires($$0x -> $$0x.c(4)))
+               .then(dt.a("start").executes($$0x -> a((ds)$$0x.getSource()))))
+            .then(dt.a("stop").executes($$0x -> b((ds)$$0x.getSource())))
       );
    }
 
-   public static int a(ds $$0, ih.c<drh<?, ?>> $$1, hx $$2) throws CommandSyntaxException {
-      and $$3 = $$0.e();
-      drh<?, ?> $$4 = $$1.a();
-      csw $$5 = new csw($$2);
-      a($$3, new csw($$5.e - 1, $$5.f - 1), new csw($$5.e + 1, $$5.f + 1));
-      if (!$$4.a($$3, $$3.l().g(), $$3.F_(), $$2)) {
-         throw a.create();
-      } else {
-         String $$6 = $$1.g().a().toString();
-         $$0.a(() -> vf.a("commands.place.feature.success", $$6, $$2.u(), $$2.v(), $$2.w()), true);
-         return 1;
-      }
-   }
-
-   public static int a(ds $$0, ih<eap> $$1, ahg $$2, int $$3, hx $$4) throws CommandSyntaxException {
-      and $$5 = $$0.e();
-      if (!eaj.a($$5, $$1, $$2, $$3, $$4, false)) {
-         throw b.create();
-      } else {
-         $$0.a(() -> vf.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
-         return 1;
-      }
-   }
-
-   public static int b(ds $$0, ih.c<dzg> $$1, hx $$2) throws CommandSyntaxException {
-      and $$3 = $$0.e();
-      dzg $$4 = $$1.a();
-      dle $$5 = $$3.l().g();
-      dzo $$6 = $$4.a($$0.v(), $$5, $$5.c(), $$3.l().i(), $$3.q(), $$3.C(), new csw($$2), 0, $$3, $$0x -> true);
-      if (!$$6.b()) {
+   private static int a(ds $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aS()) {
          throw c.create();
       } else {
-         dyy $$7 = $$6.a();
-         csw $$8 = new csw(iz.a($$7.h()), iz.a($$7.j()));
-         csw $$9 = new csw(iz.a($$7.k()), iz.a($$7.m()));
-         a($$3, $$8, $$9);
-         csw.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.F_(), new dyy($$3x.d(), $$3.J_(), $$3x.e(), $$3x.f(), $$3.al(), $$3x.g()), $$3x));
-         String $$10 = $$1.g().a().toString();
-         $$0.a(() -> vf.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
-         return 1;
+         Consumer<bgs> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
+         $$1.a($$2, $$3);
+         $$0.a(() -> vg.c("commands.perf.started"), false);
+         return 0;
       }
    }
 
-   public static int a(ds $$0, ahg $$1, hx $$2, ddc $$3, dbm $$4, float $$5, int $$6) throws CommandSyntaxException {
-      and $$7 = $$0.e();
-      edh $$8 = $$7.q();
-
-      Optional<edg> $$9;
-      try {
-         $$9 = $$8.b($$1);
-      } catch (z var13) {
-         throw d.create($$1);
-      }
-
-      if ($$9.isEmpty()) {
-         throw d.create($$1);
+   private static int b(ds $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aS()) {
+         throw b.create();
       } else {
-         edg $$12 = $$9.get();
-         a($$7, new csw($$2), new csw($$2.a($$12.a())));
-         edc $$13 = new edc().a($$4).a($$3);
-         if ($$5 < 1.0F) {
-            $$13.b().a(new eck($$5)).a(dij.b((long)$$6));
-         }
-
-         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dij.b((long)$$6), 2);
-         if (!$$14) {
-            throw e.create();
-         } else {
-            $$0.a(() -> vf.a("commands.place.template.success", vf.a($$1), $$2.u(), $$2.v(), $$2.w()), true);
-            return 1;
-         }
+         $$1.aU();
+         return 0;
       }
    }
 
-   private static void a(and $$0, csw $$1, csw $$2) throws CommandSyntaxException {
-      if (csw.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
-         throw fm.a.create();
+   private static void a(ds $$0, Path $$1, MinecraftServer $$2) {
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.aY().g(), aa.b().b());
+
+      String $$4;
+      try {
+         $$4 = v.a(bii.a, $$3, ".zip");
+      } catch (IOException var11) {
+         $$0.b(vg.c("commands.perf.reportFailed"));
+         a.error("Failed to create report name", var11);
+         return;
+      }
+
+      try (aua $$7 = new aua(bii.a.resolve($$4))) {
+         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
+         $$7.a($$1);
+      }
+
+      try {
+         FileUtils.forceDelete($$1.toFile());
+      } catch (IOException var9) {
+         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
+      }
+
+      $$0.a(() -> vg.a("commands.perf.reportSaved", $$4), false);
+   }
+
+   private static void a(ds $$0, bgs $$1) {
+      if ($$1 != bgo.a) {
+         int $$2 = $$1.f();
+         double $$3 = (double)$$1.g() / (double)avq.a;
+         $$0.a(() -> vg.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
       }
    }
 }

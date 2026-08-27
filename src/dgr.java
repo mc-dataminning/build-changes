@@ -1,25 +1,21 @@
-public class dgr extends dgv {
-   private clm a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dgr(hx $$0, djh $$1) {
-      super(dgx.y, $$0, $$1);
-      this.a = ((cwj)$$1.b()).b();
+public class dgr extends cxp {
+   public static final MapCodec<dgr> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(clv.q.fieldOf("color").forGetter(dgr::b), u()).apply($$0, dgr::new));
+   private final clv d;
+
+   @Override
+   public MapCodec<dgr> a() {
+      return c;
    }
 
-   public dgr(hx $$0, djh $$1, clm $$2) {
-      super(dgx.y, $$0, $$1);
-      this.a = $$2;
+   protected dgr(clv $$0, djo.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
-   public zh c() {
-      return zh.a(this);
-   }
-
-   public clm d() {
-      return this.a;
-   }
-
-   public void a(clm $$0) {
-      this.a = $$0;
+   public clv b() {
+      return this.d;
    }
 }

@@ -1,41 +1,25 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class gff {
-   private static final gfm[] a = new gfm[]{
-      a("textures/entity/player/slim/alex.png", gfm.a.a),
-      a("textures/entity/player/slim/ari.png", gfm.a.a),
-      a("textures/entity/player/slim/efe.png", gfm.a.a),
-      a("textures/entity/player/slim/kai.png", gfm.a.a),
-      a("textures/entity/player/slim/makena.png", gfm.a.a),
-      a("textures/entity/player/slim/noor.png", gfm.a.a),
-      a("textures/entity/player/slim/steve.png", gfm.a.a),
-      a("textures/entity/player/slim/sunny.png", gfm.a.a),
-      a("textures/entity/player/slim/zuri.png", gfm.a.a),
-      a("textures/entity/player/wide/alex.png", gfm.a.b),
-      a("textures/entity/player/wide/ari.png", gfm.a.b),
-      a("textures/entity/player/wide/efe.png", gfm.a.b),
-      a("textures/entity/player/wide/kai.png", gfm.a.b),
-      a("textures/entity/player/wide/makena.png", gfm.a.b),
-      a("textures/entity/player/wide/noor.png", gfm.a.b),
-      a("textures/entity/player/wide/steve.png", gfm.a.b),
-      a("textures/entity/player/wide/sunny.png", gfm.a.b),
-      a("textures/entity/player/wide/zuri.png", gfm.a.b)
-   };
+public interface gff {
+   aha a = new aha("textures", ".png");
 
-   public static ahg a() {
-      return a[6].a();
+   void a(aqj var1, gff.a var2);
+
+   gfh a();
+
+   public interface a {
+      default void a(ahh $$0, aqh $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(ahh var1, gff.b var2);
+
+      void a(Predicate<ahh> var1);
    }
 
-   public static gfm a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
-   }
-
-   public static gfm a(GameProfile $$0) {
-      return a($$0.getId());
-   }
-
-   private static gfm a(String $$0, gfm.a $$1) {
-      return new gfm(new ahg($$0), null, null, null, $$1, true);
+   public interface b extends Function<gfe, gev> {
+      default void a() {
+      }
    }
 }

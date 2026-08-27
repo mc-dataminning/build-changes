@@ -1,328 +1,105 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ddk {
-   public static final int a = 24;
-   public static final int b = 1000;
-   public static final float c = 0.5F;
-   private static final int e = 32;
-   public static final int d = 11;
-   final boolean f;
-   private final asw<cwq> g;
-   private final int h;
-   private final int i;
-   private final int j;
-   private final int k;
-   private List<ddk.a> l = new ArrayList<>();
-   private static final Logger m = LogUtils.getLogger();
+public enum ddk implements avl {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   public ddk(boolean $$0, asw<cwq> $$1, int $$2, int $$3, int $$4, int $$5) {
+   public static final Codec<ddk> e = avl.a(ddk::values);
+   private final String f;
+   private final h g;
+
+   private ddk(String $$0, h $$1) {
       this.f = $$0;
       this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$5;
    }
 
-   public static ddk a() {
-      return new ddk(false, ash.bL, 10, 4, 10, 5);
+   public ddk a(ddk $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
+      }
    }
 
-   public static ddk b() {
-      return new ddk(true, ash.bM, 50, 1, 5, 10);
-   }
-
-   public asw<cwq> c() {
+   public h a() {
       return this.g;
    }
 
-   public int d() {
-      return this.h;
+   public ic a(ic $$0) {
+      if ($$0.o() == ic.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
+         }
+      }
    }
 
-   public int e() {
-      return this.i;
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
    }
 
-   public int f() {
-      return this.j;
+   public static ddk a(auw $$0) {
+      return ac.a(values(), $$0);
    }
 
-   public int g() {
-      return this.k;
+   public static List<ddk> b(auw $$0) {
+      return ac.b(values(), $$0);
    }
 
-   public boolean h() {
+   @Override
+   public String c() {
       return this.f;
-   }
-
-   @VisibleForTesting
-   public List<ddk.a> i() {
-      return this.l;
-   }
-
-   public void j() {
-      this.l.clear();
-   }
-
-   public void a(sn $$0) {
-      if ($$0.b("cursors", 9)) {
-         this.l.clear();
-         List<ddk.a> $$1 = (List<ddk.a>)ddk.a.b.listOf().parse(new Dynamic(tb.a, $$0.c("cursors", 10))).resultOrPartial(m::error).orElseGet(ArrayList::new);
-         int $$2 = Math.min($$1.size(), 32);
-
-         for (int $$3 = 0; $$3 < $$2; $$3++) {
-            this.a($$1.get($$3));
-         }
-      }
-   }
-
-   public void b(sn $$0) {
-      ddk.a.b.listOf().encodeStart(tb.a, this.l).resultOrPartial(m::error).ifPresent($$1 -> $$0.a("cursors", $$1));
-   }
-
-   public void a(hx $$0, int $$1) {
-      while ($$1 > 0) {
-         int $$2 = Math.min($$1, 1000);
-         this.a(new ddk.a($$0, $$2));
-         $$1 -= $$2;
-      }
-   }
-
-   private void a(ddk.a $$0) {
-      if (this.l.size() < 32) {
-         this.l.add($$0);
-      }
-   }
-
-   public void a(ctq $$0, hx $$1, auv $$2, boolean $$3) {
-      if (!this.l.isEmpty()) {
-         List<ddk.a> $$4 = new ArrayList<>();
-         Map<hx, ddk.a> $$5 = new HashMap<>();
-         Object2IntMap<hx> $$6 = new Object2IntOpenHashMap();
-
-         for (ddk.a $$7 : this.l) {
-            $$7.a($$0, $$1, $$2, this, $$3);
-            if ($$7.e <= 0) {
-               $$0.c(3006, $$7.a(), 0);
-            } else {
-               hx $$8 = $$7.a();
-               $$6.computeInt($$8, ($$1x, $$2x) -> ($$2x == null ? 0 : $$2x) + $$7.e);
-               ddk.a $$9 = $$5.get($$8);
-               if ($$9 == null) {
-                  $$5.put($$8, $$7);
-                  $$4.add($$7);
-               } else if (!this.h() && $$7.e + $$9.e <= 1000) {
-                  $$9.a($$7);
-               } else {
-                  $$4.add($$7);
-                  if ($$7.e < $$9.e) {
-                     $$5.put($$8, $$7);
-                  }
-               }
-            }
-         }
-
-         ObjectIterator var16 = $$6.object2IntEntrySet().iterator();
-
-         while (var16.hasNext()) {
-            Entry<hx> $$10 = (Entry<hx>)var16.next();
-            hx $$11 = (hx)$$10.getKey();
-            int $$12 = $$10.getIntValue();
-            ddk.a $$13 = $$5.get($$11);
-            Collection<ic> $$14 = $$13 == null ? null : $$13.d();
-            if ($$12 > 0 && $$14 != null) {
-               int $$15 = (int)(Math.log1p((double)$$12) / 2.3F) + 1;
-               int $$16 = ($$15 << 6) + dbp.a($$14);
-               $$0.c(3006, $$11, $$16);
-            }
-         }
-
-         this.l = $$4;
-      }
-   }
-
-   public static class a {
-      private static final ObjectArrayList<jb> c = ac.a(
-         new ObjectArrayList(18),
-         $$0 -> hx.b(new hx(-1, -1, -1), new hx(1, 1, 1))
-               .filter($$0x -> ($$0x.u() == 0 || $$0x.v() == 0 || $$0x.w() == 0) && !$$0x.equals(hx.b))
-               .map(hx::i)
-               .forEach($$0::add)
-      );
-      public static final int a = 1;
-      private hx d;
-      int e;
-      private int f;
-      private int g;
-      @Nullable
-      private Set<ic> h;
-      private static final Codec<Set<ic>> i = ic.g.listOf().xmap($$0 -> Sets.newEnumSet($$0, ic.class), Lists::newArrayList);
-      public static final Codec<ddk.a> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  hx.a.fieldOf("pos").forGetter(ddk.a::a),
-                  Codec.intRange(0, 1000).fieldOf("charge").orElse(0).forGetter(ddk.a::b),
-                  Codec.intRange(0, 1).fieldOf("decay_delay").orElse(1).forGetter(ddk.a::c),
-                  Codec.intRange(0, Integer.MAX_VALUE).fieldOf("update_delay").orElse(0).forGetter($$0x -> $$0x.f),
-                  i.optionalFieldOf("facings").forGetter($$0x -> Optional.ofNullable($$0x.d()))
-               )
-               .apply($$0, ddk.a::new)
-      );
-
-      private a(hx $$0, int $$1, int $$2, int $$3, Optional<Set<ic>> $$4) {
-         this.d = $$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.f = $$3;
-         this.h = $$4.orElse(null);
-      }
-
-      public a(hx $$0, int $$1) {
-         this($$0, $$1, 1, 0, Optional.empty());
-      }
-
-      public hx a() {
-         return this.d;
-      }
-
-      public int b() {
-         return this.e;
-      }
-
-      public int c() {
-         return this.g;
-      }
-
-      @Nullable
-      public Set<ic> d() {
-         return this.h;
-      }
-
-      private boolean a(ctq $$0, hx $$1, boolean $$2) {
-         if (this.e <= 0) {
-            return false;
-         } else if ($$2) {
-            return true;
-         } else {
-            return $$0 instanceof and $$3 ? $$3.n($$1) : false;
-         }
-      }
-
-      public void a(ctq $$0, hx $$1, auv $$2, ddk $$3, boolean $$4) {
-         if (this.a($$0, $$1, $$3.f)) {
-            if (this.f > 0) {
-               this.f--;
-            } else {
-               djh $$5 = $$0.a_(this.d);
-               ddf $$6 = a($$5);
-               if ($$4 && $$6.a($$0, this.d, $$5, this.h, $$3.h())) {
-                  if ($$6.d()) {
-                     $$5 = $$0.a_(this.d);
-                     $$6 = a($$5);
-                  }
-
-                  $$0.a(null, this.d, ars.uW, art.e, 1.0F, 1.0F);
-               }
-
-               this.e = $$6.a(this, $$0, $$1, $$2, $$3, $$4);
-               if (this.e <= 0) {
-                  $$6.a($$0, $$5, this.d, $$2);
-               } else {
-                  hx $$7 = a($$0, this.d, $$2);
-                  if ($$7 != null) {
-                     $$6.a($$0, $$5, this.d, $$2);
-                     this.d = $$7.i();
-                     if ($$3.h() && !this.d.a(new jb($$1.u(), this.d.v(), $$1.w()), 15.0)) {
-                        this.e = 0;
-                        return;
-                     }
-
-                     $$5 = $$0.a_($$7);
-                  }
-
-                  if ($$5.b() instanceof ddf) {
-                     this.h = dbp.h($$5);
-                  }
-
-                  this.g = $$6.i_(this.g);
-                  this.f = $$6.b();
-               }
-            }
-         }
-      }
-
-      void a(ddk.a $$0) {
-         this.e = this.e + $$0.e;
-         $$0.e = 0;
-         this.f = Math.min(this.f, $$0.f);
-      }
-
-      private static ddf a(djh $$0) {
-         return $$0.b() instanceof ddf $$1 ? $$1 : ddf.u_;
-      }
-
-      private static List<jb> a(auv $$0) {
-         return ac.a(c, $$0);
-      }
-
-      @Nullable
-      private static hx a(ctq $$0, hx $$1, auv $$2) {
-         hx.a $$3 = $$1.j();
-         hx.a $$4 = $$1.j();
-
-         for (jb $$5 : a($$2)) {
-            $$4.a($$1, $$5);
-            djh $$6 = $$0.a_($$4);
-            if ($$6.b() instanceof ddf && a($$0, $$1, $$4)) {
-               $$3.g($$4);
-               if (ddl.a($$0, $$6, $$4)) {
-                  break;
-               }
-            }
-         }
-
-         return $$3.equals($$1) ? null : $$3;
-      }
-
-      private static boolean a(ctq $$0, hx $$1, hx $$2) {
-         if ($$1.k($$2) == 1) {
-            return true;
-         } else {
-            hx $$3 = $$2.b($$1);
-            ic $$4 = ic.a(ic.a.a, $$3.u() < 0 ? ic.b.b : ic.b.a);
-            ic $$5 = ic.a(ic.a.b, $$3.v() < 0 ? ic.b.b : ic.b.a);
-            ic $$6 = ic.a(ic.a.c, $$3.w() < 0 ? ic.b.b : ic.b.a);
-            if ($$3.u() == 0) {
-               return a($$0, $$1, $$5) || a($$0, $$1, $$6);
-            } else {
-               return $$3.v() == 0 ? a($$0, $$1, $$4) || a($$0, $$1, $$6) : a($$0, $$1, $$4) || a($$0, $$1, $$5);
-            }
-         }
-      }
-
-      private static boolean a(ctq $$0, hx $$1, ic $$2) {
-         hx $$3 = $$1.a($$2);
-         return !$$0.a_($$3).d($$0, $$3, $$2.g());
-      }
    }
 }

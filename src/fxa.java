@@ -1,181 +1,66 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import org.joml.Matrix4f;
 
-public class fxa implements fws.a {
-   private final Map<Integer, efg> a = Maps.newHashMap();
-   private final Map<Integer, Float> b = Maps.newHashMap();
-   private final Map<Integer, Long> c = Maps.newHashMap();
-   private static final long d = 5000L;
-   private static final float e = 80.0F;
-   private static final boolean f = true;
-   private static final boolean g = false;
-   private static final boolean h = false;
-   private static final boolean i = true;
-   private static final boolean j = true;
-   private static final float k = 0.02F;
+public class fxa {
+   private static final int a = atz.b.a(255, 255, 100, 255);
+   private static final int b = atz.b.a(255, 100, 255, 255);
+   private static final int c = atz.b.a(255, 0, 255, 0);
+   private static final int d = atz.b.a(255, 255, 165, 0);
+   private static final int e = atz.b.a(255, 255, 0, 0);
+   private static final int f = 20;
+   private static final float g = (float) (Math.PI / 10);
+   private final evr h;
+   private final Map<Integer, ya.a> i = new HashMap<>();
 
-   public void a(int $$0, efg $$1, float $$2) {
-      this.a.put($$0, $$1);
-      this.c.put($$0, ac.b());
-      this.b.put($$0, $$2);
+   public fxa(evr $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public void a(eqb $$0, fth $$1, double $$2, double $$3, double $$4) {
-      if (!this.a.isEmpty()) {
-         long $$5 = ac.b();
-
-         for (Integer $$6 : this.a.keySet()) {
-            efg $$7 = this.a.get($$6);
-            float $$8 = this.b.get($$6);
-            a($$0, $$1, $$7, $$8, true, true, $$2, $$3, $$4);
-         }
-
-         for (Integer $$9 : this.c.keySet().toArray(new Integer[0])) {
-            if ($$5 - this.c.get($$9) > 5000L) {
-               this.a.remove($$9);
-               this.c.remove($$9);
-            }
-         }
-      }
+   public void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4) {
+      fsv $$5 = this.h.s;
+      $$5.dL().a(bmc.m, $$5.cH().g(100.0), $$0x -> true).forEach($$6 -> {
+         Optional<ya.a> $$7 = Optional.ofNullable(this.i.get($$6.aj()));
+         $$7.map(ya.a::d).map($$1xx -> $$5.dL().a($$1xx)).map($$0xx -> $$0xx.l(this.h.as())).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.dj(), $$6x, b);
+            emc $$7x = $$6x.b(0.0, 0.01F, 0.0);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(fub.a(2.0)), $$7x, 4.0F, c);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(fub.a(2.0)), $$7x, 8.0F, d);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(fub.a(2.0)), $$7x, 20.0F, e);
+         });
+         $$7.map(ya.a::e).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.dj(), $$6x.b(), a);
+            fxe.a($$0, $$1, elx.a(emc.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
+         });
+      });
    }
 
-   public static void a(eqb $$0, fth $$1, efg $$2, float $$3, boolean $$4, boolean $$5, double $$6, double $$7, double $$8) {
-      a($$0, $$1.getBuffer(ftp.a(6.0)), $$2, $$6, $$7, $$8);
-      hx $$9 = $$2.l();
-      if (a($$9, $$6, $$7, $$8) <= 80.0F) {
-         fws.a(
-            $$0,
-            $$1,
-            new elo(
-                  (double)((float)$$9.u() + 0.25F),
-                  (double)((float)$$9.v() + 0.25F),
-                  (double)$$9.w() + 0.25,
-                  (double)((float)$$9.u() + 0.75F),
-                  (double)((float)$$9.v() + 0.75F),
-                  (double)((float)$$9.w() + 0.75F)
-               )
-               .d(-$$6, -$$7, -$$8),
-            0.0F,
-            1.0F,
-            0.0F,
-            0.5F
-         );
-
-         for (int $$10 = 0; $$10 < $$2.e(); $$10++) {
-            efe $$11 = $$2.a($$10);
-            if (a($$11.a(), $$6, $$7, $$8) <= 80.0F) {
-               float $$12 = $$10 == $$2.f() ? 1.0F : 0.0F;
-               float $$13 = $$10 == $$2.f() ? 0.0F : 1.0F;
-               fws.a(
-                  $$0,
-                  $$1,
-                  new elo(
-                        (double)((float)$$11.a + 0.5F - $$3),
-                        (double)((float)$$11.b + 0.01F * (float)$$10),
-                        (double)((float)$$11.c + 0.5F - $$3),
-                        (double)((float)$$11.a + 0.5F + $$3),
-                        (double)((float)$$11.b + 0.25F + 0.01F * (float)$$10),
-                        (double)((float)$$11.c + 0.5F + $$3)
-                     )
-                     .d(-$$6, -$$7, -$$8),
-                  $$12,
-                  0.0F,
-                  $$13,
-                  0.5F
-               );
-            }
-         }
-      }
-
-      efg.a $$14 = $$2.k();
-      if ($$4 && $$14 != null) {
-         for (efe $$15 : $$14.b()) {
-            if (a($$15.a(), $$6, $$7, $$8) <= 80.0F) {
-               fws.a(
-                  $$0,
-                  $$1,
-                  new elo(
-                        (double)((float)$$15.a + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$15.b + 0.01F),
-                        (double)((float)$$15.c + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$15.a + 0.5F + $$3 / 2.0F),
-                        (double)$$15.b + 0.1,
-                        (double)((float)$$15.c + 0.5F + $$3 / 2.0F)
-                     )
-                     .d(-$$6, -$$7, -$$8),
-                  1.0F,
-                  0.8F,
-                  0.8F,
-                  0.5F
-               );
-            }
-         }
-
-         for (efe $$16 : $$14.a()) {
-            if (a($$16.a(), $$6, $$7, $$8) <= 80.0F) {
-               fws.a(
-                  $$0,
-                  $$1,
-                  new elo(
-                        (double)((float)$$16.a + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$16.b + 0.01F),
-                        (double)((float)$$16.c + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$16.a + 0.5F + $$3 / 2.0F),
-                        (double)$$16.b + 0.1,
-                        (double)((float)$$16.c + 0.5F + $$3 / 2.0F)
-                     )
-                     .d(-$$6, -$$7, -$$8),
-                  0.8F,
-                  1.0F,
-                  1.0F,
-                  0.5F
-               );
-            }
-         }
-      }
-
-      if ($$5) {
-         for (int $$17 = 0; $$17 < $$2.e(); $$17++) {
-            efe $$18 = $$2.a($$17);
-            if (a($$18.a(), $$6, $$7, $$8) <= 80.0F) {
-               fws.a($$0, $$1, String.valueOf($$18.l), (double)$$18.a + 0.5, (double)$$18.b + 0.75, (double)$$18.c + 0.5, -1, 0.02F, true, 0.0F, true);
-               fws.a(
-                  $$0,
-                  $$1,
-                  String.format(Locale.ROOT, "%.2f", $$18.k),
-                  (double)$$18.a + 0.5,
-                  (double)$$18.b + 0.25,
-                  (double)$$18.c + 0.5,
-                  -1,
-                  0.02F,
-                  true,
-                  0.0F,
-                  true
-               );
-            }
-         }
-      }
+   private static void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4, emc $$5, emc $$6, int $$7) {
+      eqo $$8 = $$1.getBuffer(fub.a(2.0));
+      $$8.a($$0.c().a(), (float)($$5.c - $$2), (float)($$5.d - $$3), (float)($$5.e - $$4)).a($$7).e();
+      $$8.a($$0.c().a(), (float)($$6.c - $$2), (float)($$6.d - $$3), (float)($$6.e - $$4)).a($$7).e();
    }
 
-   public static void a(eqb $$0, eqf $$1, efg $$2, double $$3, double $$4, double $$5) {
-      for (int $$6 = 0; $$6 < $$2.e(); $$6++) {
-         efe $$7 = $$2.a($$6);
-         if (!(a($$7.a(), $$3, $$4, $$5) > 80.0F)) {
-            float $$8 = (float)$$6 / (float)$$2.e() * 0.33F;
-            int $$9 = $$6 == 0 ? 0 : auo.h($$8, 0.9F, 0.9F);
-            int $$10 = $$9 >> 16 & 0xFF;
-            int $$11 = $$9 >> 8 & 0xFF;
-            int $$12 = $$9 & 0xFF;
-            $$1.a($$0.c().a(), (float)((double)$$7.a - $$3 + 0.5), (float)((double)$$7.b - $$4 + 0.5), (float)((double)$$7.c - $$5 + 0.5))
-               .a($$10, $$11, $$12, 255)
-               .e();
-         }
+   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, eqo $$4, emc $$5, float $$6, int $$7) {
+      for (int $$8 = 0; $$8 < 20; $$8++) {
+         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
+
+      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   private static float a(hx $$0, double $$1, double $$2, double $$3) {
-      return (float)(Math.abs((double)$$0.u() - $$1) + Math.abs((double)$$0.v() - $$2) + Math.abs((double)$$0.w() - $$3));
+   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, eqo $$5, emc $$6, float $$7, int $$8) {
+      float $$9 = (float)$$0 * (float) (Math.PI / 10);
+      emc $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
+      $$5.a($$1, (float)($$10.c - $$2), (float)($$10.d - $$3), (float)($$10.e - $$4)).a($$8).e();
+   }
+
+   public void a() {
+      this.i.clear();
+   }
+
+   public void a(ya.a $$0) {
+      this.i.put($$0.c(), $$0);
    }
 }

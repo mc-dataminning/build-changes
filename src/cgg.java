@@ -1,54 +1,49 @@
-public abstract class cgg extends cgh implements cfx {
-   private static final agm<cmy> b = agp.a(cgg.class, ago.h);
+public class cgg extends cgc {
+   private int e = 1;
 
-   public cgg(blz<? extends cgg> $$0, ctp $$1) {
+   public cgg(bmc<? extends cgg> $$0, ctx $$1) {
       super($$0, $$1);
    }
 
-   public cgg(blz<? extends cgg> $$0, double $$1, double $$2, double $$3, ctp $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public cgg(blz<? extends cgg> $$0, bml $$1, ctp $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(cmy $$0) {
-      if (!$$0.a(this.s()) || $$0.u()) {
-         this.an().b(b, $$0.c(1));
-      }
-   }
-
-   protected abstract cmt s();
-
-   protected cmy u() {
-      return this.an().b(b);
+   public cgg(ctx $$0, bmo $$1, double $$2, double $$3, double $$4, int $$5) {
+      super(bmc.ai, $$1, $$2, $$3, $$4, $$0);
+      this.e = $$5;
    }
 
    @Override
-   public cmy q() {
-      cmy $$0 = this.u();
-      return $$0.b() ? new cmy(this.s()) : $$0;
-   }
-
-   @Override
-   protected void c_() {
-      this.an().a(b, cmy.f);
-   }
-
-   @Override
-   public void b(sn $$0) {
-      super.b($$0);
-      cmy $$1 = this.u();
-      if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new sn()));
-      }
-   }
-
-   @Override
-   public void a(sn $$0) {
+   protected void a(ema $$0) {
       super.a($$0);
-      cmy $$1 = cmy.a($$0.p("Item"));
-      this.a($$1);
+      if (!this.dL().B) {
+         boolean $$1 = this.dL().Z().b(ctt.c);
+         this.dL().a(this, this.dq(), this.ds(), this.dw(), (float)this.e, $$1, ctx.a.c);
+         this.am();
+      }
+   }
+
+   @Override
+   protected void a(elz $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         blw $$1 = $$0.a();
+         blw $$2 = this.w();
+         $$1.a(this.dM().a((cgc)this, $$2), 6.0F);
+         if ($$2 instanceof bmo) {
+            this.a((bmo)$$2, $$1);
+         }
+      }
+   }
+
+   @Override
+   public void b(so $$0) {
+      super.b($$0);
+      $$0.a("ExplosionPower", (byte)this.e);
+   }
+
+   @Override
+   public void a(so $$0) {
+      super.a($$0);
+      if ($$0.b("ExplosionPower", 99)) {
+         this.e = $$0.f("ExplosionPower");
+      }
    }
 }

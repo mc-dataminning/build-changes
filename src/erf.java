@@ -1,13 +1,8 @@
-import com.google.gson.annotations.SerializedName;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class erf extends erx implements err {
-   @SerializedName("name")
-   public String a;
-   @SerializedName("description")
-   public String b;
-
-   public erf(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface erf {
 }

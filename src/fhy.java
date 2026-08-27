@@ -1,173 +1,144 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
+import java.util.function.DoubleConsumer;
 import javax.annotation.Nullable;
 
-class fhy {
-   private static final int a = 44;
-   private final List<fhy.c> b;
+public class fhy extends exl {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final vg e = vg.c("telemetry_info.property_title").a(n.t);
+   private final exc f;
+   private fhy.a m;
+   @Nullable
+   private DoubleConsumer n;
 
-   fhy(List<fhy.c> $$0) {
-      this.b = $$0;
+   public fhy(int $$0, int $$1, int $$2, int $$3, exc $$4) {
+      super($$0, $$1, $$2, $$3, vg.i());
+      this.f = $$4;
+      this.m = this.c(evr.O().A());
    }
 
-   public void a() {
-      this.b.forEach(fhy.c::a);
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
    }
 
-   public static fhy.a a(int $$0) {
-      return new fhy.a($$0);
+   private fhy.a c(boolean $$0) {
+      fhy.b $$1 = new fhy.b(this.j());
+      List<gkb> $$2 = new ArrayList<>(gkb.g());
+      $$2.sort(Comparator.comparing(gkb::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         gkb $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
+         }
+      }
+
+      return $$1.a();
    }
 
-   public static class a {
-      final int a;
-      private final List<fhy.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fhy.b> f = Optional.empty();
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
+   }
 
-      public a(int $$0) {
+   @Override
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
+      }
+   }
+
+   @Override
+   protected int g() {
+      return this.m.a().u();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(exe $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.C() + this.a();
+      int $$5 = this.B() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fbk $$0) {
+      $$0.a(fbj.a, this.m.b());
+   }
+
+   private vg a(vg $$0, boolean $$1) {
+      return (vg)($$1 ? $$0.f().a(n.h) : $$0);
+   }
+
+   private void a(fhy.b $$0, gkb $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.f, this.a(vg.a($$3, $$1.e()), $$2));
+      $$0.b(this.f, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.f, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(gkb $$0, fhy.b $$1, boolean $$2) {
+      for (gkd<?> $$3 : $$0.b()) {
+         $$1.a(this.f, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int j() {
+      return this.g - this.b();
+   }
+
+   static record a(fbc a, vg b) {
+   }
+
+   static class b {
+      private final int a;
+      private final fbf b;
+      private final vu c = vg.i();
+
+      public b(int $$0) {
          this.a = $$0;
+         this.b = fbf.d();
+         this.b.c().a();
+         this.b.a(fbg.a($$0));
       }
 
-      void a() {
-         this.e++;
+      public void a(exc $$0, vg $$1) {
+         this.a($$0, $$1, 0);
       }
 
-      public fhy.d a(vf $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fhy.d $$3 = new fhy.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
+      public void a(exc $$0, vg $$1, int $$2) {
+         this.b.a(new eyl($$1, $$0).c(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
       }
 
-      public fhy.a a(int $$0) {
-         this.c = $$0;
-         return this;
+      public void b(exc $$0, vg $$1) {
+         this.b.a(new eyl($$1, $$0).c(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
       }
 
-      public fhy.a b(int $$0) {
-         this.d = $$0;
-         return this;
+      public void a(int $$0) {
+         this.b.a(fbg.b($$0));
       }
 
-      public fhy a(Consumer<fas> $$0) {
-         fap $$1 = new fap().b(this.d);
-         $$1.a(fav.a(this.a - 44), 0, 0);
-         $$1.a(fav.a(44), 0, 1);
-         List<fhy.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (fhy.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
-         }
-
-         $$1.a();
-         $$0.accept($$1);
-         fhy $$4 = new fhy($$2);
-         $$4.a();
-         return $$4;
-      }
-
-      public fhy.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fhy.b($$0, $$1));
-         return this;
-      }
-   }
-
-   static record b(int a, boolean b) {
-   }
-
-   static record c(exn<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
-         }
-      }
-
-      public exn<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
-      }
-   }
-
-   public static class d {
-      private final vf a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private vf d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
-
-      d(vf $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
-
-      public fhy.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fhy.d a(vf $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      fhy.c a(fhy.a $$0, fap $$1, int $$2) {
-         $$0.a();
-         eyn $$3 = new eyn(this.a, evi.O().h).d();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fhy.b> $$4 = $$0.f;
-         exn.a<Boolean> $$5 = exn.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            eyr $$7 = eyr.a(this.d);
-            $$5.a($$1x -> $$7);
-         }
-
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> ve.a(this.a, $$0x.d(), this.d));
-         } else {
-            $$5.a($$0x -> ve.a(this.a, $$0x.d()));
-         }
-
-         exn<Boolean> $$8 = $$5.a(0, 0, this.f, 20, vf.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
-         }
-
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               vf $$4x = this.d.f().a(n.h);
-               ews $$5x = evi.O().h;
-               eya $$6x = new eya($$4x, $$5x);
-               $$6x.c($$0.a - $$0.c - this.f);
-               $$6x.d($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.u() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
-
-         return new fhy.c($$8, this.b, this.e);
+      public fhy.a a() {
+         this.b.a();
+         return new fhy.a(this.b, this.c);
       }
    }
 }

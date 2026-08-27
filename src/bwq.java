@@ -1,42 +1,27 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class bwq extends bws<cev> {
-   private static final int a = 40;
+public abstract class bwq extends bww<bmo> {
+   protected abstract boolean a(bmo var1, bmo var2);
 
-   public bwq() {
-      super(40);
-   }
+   protected abstract bvq<bmo> b();
 
-   protected void a(and $$0, cev $$1) {
-      ahf<ctp> $$2 = $$0.ae();
-      hx $$3 = $$1.dm();
-      List<ig> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               hx $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gp().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(ig.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bnl<?> $$10 = $$1.dO();
-      if (!$$4.isEmpty()) {
-         $$10.a(bvn.f, $$4);
-      } else {
-         $$10.b(bvn.f);
-      }
+   @Override
+   public Set<bvq<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
    @Override
-   public Set<bvn<?>> a() {
-      return ImmutableSet.of(bvn.f);
+   protected void a(ane $$0, bmo $$1) {
+      $$1.dN().a(this.b(), this.b($$1));
+   }
+
+   private Optional<bmo> b(bmo $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
+
+   protected Optional<bvs> a(bmo $$0) {
+      return $$0.dN().c(bvq.h);
    }
 }

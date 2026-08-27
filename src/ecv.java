@@ -2,50 +2,43 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class ecv {
-   public static final edn a = edn.a;
-   public static final Codec<ecv> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eda.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
-               eda.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
-               ect.c.optionalFieldOf("position_predicate", ecs.b).forGetter($$0x -> $$0x.e),
-               djh.b.fieldOf("output_state").forGetter($$0x -> $$0x.f),
-               edo.c.optionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
-            )
+public class ecv extends edl {
+   public static final Codec<ecv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(doy.a.g.fieldOf("heightmap").orElse(doy.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
             .apply($$0, ecv::new)
    );
-   private final eda c;
-   private final eda d;
-   private final ect e;
-   private final djh f;
-   private final edo g;
+   private final doy.a b;
+   private final int c;
 
-   public ecv(eda $$0, eda $$1, djh $$2) {
-      this($$0, $$1, ecs.b, $$2);
-   }
-
-   public ecv(eda $$0, eda $$1, ect $$2, djh $$3) {
-      this($$0, $$1, $$2, $$3, a);
-   }
-
-   public ecv(eda $$0, eda $$1, ect $$2, djh $$3, edo $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a(djh $$0, djh $$1, hx $$2, hx $$3, hx $$4, auv $$5) {
-      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
-   }
-
-   public djh a() {
-      return this.f;
+   public ecv(doy.a $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Nullable
-   public sn a(auv $$0, @Nullable sn $$1) {
-      return this.g.a($$0, $$1);
+   @Override
+   public edo.c a(cua $$0, hx $$1, hx $$2, edo.c $$3, edo.c $$4, edk $$5) {
+      doy.a $$6;
+      if ($$0 instanceof ane) {
+         if (this.b == doy.a.a) {
+            $$6 = doy.a.b;
+         } else if (this.b == doy.a.c) {
+            $$6 = doy.a.d;
+         } else {
+            $$6 = this.b;
+         }
+      } else {
+         $$6 = this.b;
+      }
+
+      hx $$10 = $$4.a();
+      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
+      int $$12 = $$3.a().v();
+      return new edo.c(new hx($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+   }
+
+   @Override
+   protected edn<?> a() {
+      return edn.g;
    }
 }

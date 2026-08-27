@@ -1,27 +1,112 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.List;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class cef {
-   public static bpn<cdy> a() {
-      return brp.a(
-         (Function<brp.b<cdy>, ? extends App<brp.c<cdy>, brs<cdy>>>)($$0 -> $$0.group($$0.b(bvn.aj), $$0.c(bvn.aa), $$0.c(bvn.ag), $$0.a(bvn.an))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     if (!$$4x.o_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(cef::a)).isPresent()) {
-                        cds $$6 = $$0.b($$1);
-                        cdz.c($$4x, $$6);
-                        cdz.c((cdx)$$4x);
-                        cdz.b($$4x, $$6);
-                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(cdz::c));
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public abstract class cef extends ccw {
+   protected static final agn<Boolean> b = agq.a(cef.class, agp.k);
+   protected static final int c = 300;
+   protected int d;
+
+   public cef(bmc<? extends cef> $$0, ctx $$1) {
+      super($$0, $$1);
+      this.s(true);
+      this.A();
+      this.a(efk.n, 16.0F);
+      this.a(efk.o, -1.0F);
    }
 
-   private static boolean a(cdx $$0) {
-      return $$0.dO().a(bvn.ag);
+   private void A() {
+      if (bxi.a(this)) {
+         ((bvx)this.N()).b(true);
+      }
    }
+
+   @Override
+   protected abstract boolean u();
+
+   public void w(boolean $$0) {
+      this.an().b(b, $$0);
+   }
+
+   protected boolean w() {
+      return this.an().b(b);
+   }
+
+   @Override
+   protected void c_() {
+      super.c_();
+      this.an.a(b, false);
+   }
+
+   @Override
+   public void b(so $$0) {
+      super.b($$0);
+      if (this.w()) {
+         $$0.a("IsImmuneToZombification", true);
+      }
+
+      $$0.a("TimeInOverworld", this.d);
+   }
+
+   @Override
+   public void a(so $$0) {
+      super.a($$0);
+      this.w($$0.q("IsImmuneToZombification"));
+      this.d = $$0.h("TimeInOverworld");
+   }
+
+   @Override
+   protected void aa() {
+      super.aa();
+      if (this.gf()) {
+         this.d++;
+      } else {
+         this.d = 0;
+      }
+
+      if (this.d > 300) {
+         this.gj();
+         this.c((ane)this.dL());
+      }
+   }
+
+   public boolean gf() {
+      return !this.dL().E_().b() && !this.w() && !this.fV();
+   }
+
+   protected void c(ane $$0) {
+      cdr $$1 = this.a(bmc.bv, true);
+      if ($$1 != null) {
+         $$1.b(new blj(bll.i, 200, 0));
+      }
+   }
+
+   public boolean gg() {
+      return !this.o_();
+   }
+
+   public abstract cei gh();
+
+   @Nullable
+   @Override
+   public bmo q() {
+      return this.bz.c(bvq.o).orElse(null);
+   }
+
+   protected boolean gi() {
+      return this.eT().d() instanceof cov;
+   }
+
+   @Override
+   public void R() {
+      if (ceh.d(this)) {
+         super.R();
+      }
+   }
+
+   @Override
+   protected void Z() {
+      super.Z();
+      adj.a(this);
+   }
+
+   protected abstract void gj();
 }

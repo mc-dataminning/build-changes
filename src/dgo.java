@@ -1,108 +1,48 @@
-public class dgo extends dhz {
-   private iq<cmy> e = iq.a(27, cmy.f);
-   private final dhi f = new dhi() {
-      @Override
-      protected void a(ctp $$0, hx $$1, djh $$2) {
-         dgo.this.a($$2, ars.bk);
-         dgo.this.a($$2, true);
-      }
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-      @Override
-      protected void b(ctp $$0, hx $$1, djh $$2) {
-         dgo.this.a($$2, ars.bj);
-         dgo.this.a($$2, false);
-      }
+public class dgo extends daa {
+   public static final MapCodec<dgo> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(daa::b), u()).apply($$0, dgo::new));
 
-      @Override
-      protected void a(ctp $$0, hx $$1, djh $$2, int $$3, int $$4) {
-      }
+   @Override
+   public MapCodec<dgo> a() {
+      return e;
+   }
 
-      @Override
-      protected boolean a(cfi $$0) {
-         if ($$0.bS instanceof cii) {
-            bju $$1 = ((cii)$$0.bS).l();
-            return $$1 == dgo.this;
-         } else {
-            return false;
+   public dgo(ih<blh> $$0, int $$1, djo.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
+
+   public dgo(List<dez.a> $$0, djo.d $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   protected boolean b(djp $$0, ctd $$1, hx $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(cxa.dV) || $$0.a(cxa.dW) || $$0.a(cxa.dX);
+   }
+
+   @Override
+   public void a(djp $$0, ctx $$1, hx $$2, auw $$3) {
+      emv $$4 = this.a($$0, $$1, $$2, emh.a());
+      emc $$5 = $$4.a().f();
+      double $$6 = (double)$$2.u() + $$5.c;
+      double $$7 = (double)$$2.w() + $$5.e;
+
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         if ($$3.h()) {
+            $$1.a(jx.ab, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
          }
       }
-   };
-
-   public dgo(hx $$0, djh $$1) {
-      super(dgx.A, $$0, $$1);
    }
 
    @Override
-   protected void b(sn $$0) {
-      super.b($$0);
-      if (!this.d_($$0)) {
-         bjv.a($$0, this.e);
+   public void a(djp $$0, ctx $$1, hx $$2, blw $$3) {
+      if (!$$1.B && $$1.ak() != bjz.a) {
+         if ($$3 instanceof bmo $$4 && !$$4.b($$1.ai().p())) {
+            $$4.b(new blj(bll.t, 40));
+         }
       }
-   }
-
-   @Override
-   public void a(sn $$0) {
-      super.a($$0);
-      this.e = iq.a(this.b(), cmy.f);
-      if (!this.c_($$0)) {
-         bjv.b($$0, this.e);
-      }
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected iq<cmy> k() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(iq<cmy> $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected vf l() {
-      return vf.c("container.barrel");
-   }
-
-   @Override
-   protected cib a(int $$0, cfh $$1) {
-      return cii.a($$0, $$1, this);
-   }
-
-   @Override
-   public void d_(cfi $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.f.a($$0, this.i(), this.aB_(), this.r());
-      }
-   }
-
-   @Override
-   public void c(cfi $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.f.b($$0, this.i(), this.aB_(), this.r());
-      }
-   }
-
-   public void m() {
-      if (!this.q) {
-         this.f.c(this.i(), this.aB_(), this.r());
-      }
-   }
-
-   void a(djh $$0, boolean $$1) {
-      this.o.a(this.aB_(), $$0.a(cvw.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(djh $$0, arr $$1) {
-      jb $$2 = $$0.c(cvw.b).q();
-      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.o.a(null, $$3, $$4, $$5, $$1, art.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
    }
 }

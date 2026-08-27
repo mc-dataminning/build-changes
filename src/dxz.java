@@ -1,25 +1,53 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class dxz extends dym {
-   public static final Codec<dxz> a = RecordCodecBuilder.create($$0 -> $$0.group(dpx.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, dxz::new));
-   private final dpx c;
+public class dxz extends dxv {
+   public static final Codec<dxz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dps.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dps.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dxz::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dps d;
+   private final dps e;
+   private final int f;
 
-   private dxz(dpx $$0) {
-      this.c = $$0;
+   private dxz(dps $$0, dps $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static dxz a(dpx $$0) {
-      return new dxz($$0);
+   public static dxz a(dps $$0, dps $$1, int $$2) {
+      return new dxz($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(dyl $$0, auv $$1, hx $$2) {
-      return this.c.test($$0.d(), $$2);
+   public int a(auw $$0, dpv $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = aup.a($$0, $$2 + this.f, $$3);
+         int $$5 = aup.a($$0, $$2, $$4 - 1);
+         return aup.a($$0, $$2, $$5 - 1 + this.f);
+      }
    }
 
    @Override
-   public dyo<?> b() {
-      return dyo.a;
+   public dxw<?> a() {
+      return dxw.d;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

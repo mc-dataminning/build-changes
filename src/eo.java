@@ -11,8 +11,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class eo implements ArgumentType<eo.a> {
    private static final Collection<String> a = Arrays.asList("=", ">", "<");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vf.c("arguments.operation.invalid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vf.c("arguments.operation.div0"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vg.c("arguments.operation.invalid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vg.c("arguments.operation.div0"));
 
    public static eo a() {
       return new eo();
@@ -62,14 +62,14 @@ public class eo implements ArgumentType<eo.a> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return auo.a($$0x, $$1);
+            return aup.a($$0x, $$1);
          }
       };
          case "%=" -> ($$0x, $$1) -> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return auo.b($$0x, $$1);
+            return aup.b($$0x, $$1);
          }
       };
          case "<" -> Math::min;
@@ -80,7 +80,7 @@ public class eo implements ArgumentType<eo.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(emv var1, emv var2) throws CommandSyntaxException;
+      void apply(ene var1, ene var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -88,7 +88,7 @@ public class eo implements ArgumentType<eo.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(emv $$0, emv $$1) throws CommandSyntaxException {
+      default void apply(ene $$0, ene $$1) throws CommandSyntaxException {
          $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }

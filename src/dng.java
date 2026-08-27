@@ -1,15 +1,24 @@
-public interface dng<T> {
-   void g(T var1);
+import java.util.UUID;
+import java.util.stream.Stream;
 
-   void f(T var1);
+public interface dng {
+   int aj();
 
-   void e(T var1);
+   UUID cw();
 
-   void d(T var1);
+   hx dl();
 
-   void c(T var1);
+   elx cH();
 
-   void b(T var1);
+   void a(dnh var1);
 
-   void a(T var1);
+   Stream<? extends dng> cR();
+
+   Stream<? extends dng> cS();
+
+   void b(blw.c var1);
+
+   boolean dJ();
+
+   boolean dK();
 }

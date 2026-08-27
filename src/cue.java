@@ -1,7 +1,15 @@
-public interface cue extends ctq {
-   and E();
+public interface cue extends cua {
+   long aj();
 
-   default void a_(blv $$0) {
-      $$0.cR().forEach(this::b);
+   default float ap() {
+      return dmy.i[this.E_().b(this.aj())];
+   }
+
+   default float f(float $$0) {
+      return this.E_().a(this.aj());
+   }
+
+   default int aq() {
+      return this.E_().b(this.aj());
    }
 }

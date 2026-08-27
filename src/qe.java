@@ -1,713 +1,203 @@
-import javax.annotation.Nullable;
-
 public class qe {
-   protected static final int a = 4159204;
-   protected static final int b = 329011;
-   private static final int c = 12638463;
-   @Nullable
-   private static final arp d = null;
-
-   protected static int a(float $$0) {
-      float $$1 = $$0 / 3.0F;
-      $$1 = auo.a($$1, -1.0F, 1.0F);
-      return auo.h(0.62222224F - $$1 * 0.05F, 0.5F + $$1 * 0.1F, 1.0F);
-   }
-
-   private static cuo a(boolean $$0, float $$1, float $$2, cva.a $$3, cup.a $$4, @Nullable arp $$5) {
-      return a($$0, $$1, $$2, 4159204, 329011, null, null, $$3, $$4, $$5);
-   }
-
-   private static cuo a(
-      boolean $$0, float $$1, float $$2, int $$3, int $$4, @Nullable Integer $$5, @Nullable Integer $$6, cva.a $$7, cup.a $$8, @Nullable arp $$9
-   ) {
-      cuu.a $$10 = new cuu.a().b($$3).c($$4).a(12638463).d(a($$1)).a(cum.b).a($$9);
-      if ($$5 != null) {
-         $$10.f($$5);
-      }
-
-      if ($$6 != null) {
-         $$10.e($$6);
-      }
-
-      return new cuo.a().a($$0).a($$1).b($$2).a($$10.a()).a($$7.a()).a($$8.a()).a();
-   }
-
-   private static void a(cup.a $$0) {
-      pd.a($$0);
-      pd.aw($$0);
-      pd.b($$0);
-      pd.c($$0);
-      pd.ap($$0);
-      pd.at($$0);
-   }
-
-   public static cuo a(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2) {
-      cva.a $$3 = new cva.a();
-      pd.a($$3);
-      $$3.a(bmo.b, new cva.c(blz.bp, 8, 4, 4));
-      $$3.a(bmo.b, new cva.c(blz.aD, 4, 2, 3));
-      $$3.a(bmo.b, new cva.c(blz.O, 8, 2, 4));
-      if ($$2) {
-         pd.c($$3);
-      } else {
-         pd.b($$3);
-         pd.a($$3, 100, 25, 100, false);
-      }
-
-      cup.a $$4 = new cup.a($$0, $$1);
-      a($$4);
-      pd.m($$4);
-      pd.n($$4);
-      pd.f($$4);
-      pd.j($$4);
-      $$4.a(dom.b.j, $$2 ? ra.ar : ra.as);
-      pd.V($$4);
-      pd.U($$4);
-      pd.ac($$4);
-      pd.ad($$4);
-      pd.p($$4);
-      arp $$5 = arq.a(ars.pr);
-      return a(true, $$2 ? 0.25F : 0.3F, 0.8F, $$3, $$4, $$5);
-   }
-
-   public static cuo a(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cva.a $$2 = new cva.a();
-      pd.i($$2);
-      return a($$0, $$1, 0.8F, false, true, false, $$2, arq.a(ars.pE));
-   }
-
-   public static cuo b(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cva.a $$2 = new cva.a();
-      pd.i($$2);
-      $$2.a(bmo.b, new cva.c(blz.au, 40, 1, 2)).a(bmo.a, new cva.c(blz.ar, 2, 1, 3)).a(bmo.b, new cva.c(blz.at, 1, 1, 2));
-      return a($$0, $$1, 0.9F, false, false, true, $$2, arq.a(ars.pD));
-   }
-
-   public static cuo c(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cva.a $$2 = new cva.a();
-      pd.i($$2);
-      $$2.a(bmo.b, new cva.c(blz.au, 40, 1, 2)).a(bmo.b, new cva.c(blz.at, 80, 1, 2)).a(bmo.a, new cva.c(blz.ar, 2, 1, 1));
-      return a($$0, $$1, 0.9F, true, false, true, $$2, arq.a(ars.pF));
-   }
-
-   private static cuo a(ii<dyk> $$0, ii<dqt<?>> $$1, float $$2, boolean $$3, boolean $$4, boolean $$5, cva.a $$6, arp $$7) {
-      cup.a $$8 = new cup.a($$0, $$1);
-      a($$8);
-      pd.f($$8);
-      pd.j($$8);
-      if ($$3) {
-         pd.r($$8);
-      } else {
-         if ($$5) {
-            pd.q($$8);
-         }
-
-         if ($$4) {
-            pd.F($$8);
-         } else {
-            pd.E($$8);
-         }
-      }
-
-      pd.Y($$8);
-      pd.I($$8);
-      pd.ac($$8);
-      pd.ad($$8);
-      pd.ah($$8);
-      if ($$4) {
-         pd.ag($$8);
-      } else {
-         pd.af($$8);
-      }
-
-      return a(true, 0.95F, $$2, $$6, $$8, $$7);
-   }
-
-   public static cuo b(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2) {
-      cva.a $$3 = new cva.a();
-      pd.a($$3);
-      $$3.a(bmo.b, new cva.c(blz.ak, 5, 4, 6));
-      pd.c($$3);
-      cup.a $$4 = new cup.a($$0, $$1);
-      a($$4);
-      pd.f($$4);
-      pd.j($$4);
-      if ($$2) {
-         pd.D($$4);
-      } else {
-         pd.C($$4);
-      }
-
-      pd.V($$4);
-      pd.Z($$4);
-      pd.ac($$4);
-      pd.ad($$4);
-      pd.h($$4);
-      pd.i($$4);
-      return a(true, 0.2F, 0.3F, $$3, $$4, d);
-   }
-
-   public static cuo d(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cva.a $$2 = new cva.a();
-      pd.f($$2);
-      cup.a $$3 = new cup.a($$0, $$1);
-      pd.al($$3);
-      a($$3);
-      pd.f($$3);
-      pd.j($$3);
-      pd.V($$3);
-      pd.Z($$3);
-      pd.T($$3);
-      pd.ac($$3);
-      pd.ai($$3);
-      pd.ak($$3);
-      return a(false, 2.0F, 0.0F, $$2, $$3, arq.a(ars.pB));
-   }
-
-   public static cuo a(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2, boolean $$3, boolean $$4) {
-      cva.a $$5 = new cva.a();
-      cup.a $$6 = new cup.a($$0, $$1);
-      a($$6);
-      if ($$3) {
-         $$5.a(0.07F);
-         pd.e($$5);
-         if ($$4) {
-            $$6.a(dom.b.e, qv.a);
-            $$6.a(dom.b.e, qv.b);
-         }
-      } else {
-         pd.d($$5);
-         pd.ab($$6);
-         if ($$2) {
-            $$6.a(dom.b.j, ra.d);
-         }
-      }
-
-      pd.f($$6);
-      pd.j($$6);
-      if ($$3) {
-         pd.H($$6);
-         pd.V($$6);
-         pd.Z($$6);
-      } else {
-         pd.S($$6);
-      }
-
-      pd.ac($$6);
-      if ($$2) {
-         $$6.a(dom.b.j, ra.E);
-         $$6.a(dom.b.j, ra.e);
-      } else {
-         pd.ad($$6);
-      }
-
-      float $$7 = $$3 ? 0.0F : 0.8F;
-      return a(true, $$7, $$3 ? 0.5F : 0.4F, $$5, $$6, d);
-   }
-
-   public static cuo e(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cva.a $$2 = new cva.a();
-      pd.h($$2);
-      cup.a $$3 = new cup.a($$0, $$1);
-      a($$3);
-      pd.f($$3);
-      pd.j($$3);
-      pd.R($$3);
-      pd.ad($$3);
-      return a(true, 0.9F, 1.0F, $$2, $$3, d);
-   }
-
-   public static cuo a(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2, boolean $$3) {
-      cup.a $$4 = new cup.a($$0, $$1);
-      a($$4);
-      if (!$$2) {
-         pd.J($$4);
-      }
-
-      pd.f($$4);
-      pd.j($$4);
-      if ($$2) {
-         pd.z($$4);
-         pd.V($$4);
-         pd.K($$4);
-      } else {
-         pd.y($$4);
-         pd.Y($$4);
-         pd.L($$4);
-      }
-
-      pd.ac($$4);
-      pd.ad($$4);
-      cva.a $$5 = new cva.a();
-      pd.a($$5);
-      $$5.a(bmo.b, new cva.c(blz.Z, 1, 2, 6)).a(bmo.b, new cva.c(blz.x, 1, 1, 1));
-      pd.c($$5);
-      if ($$3) {
-         $$5.a(bmo.b, new cva.c(blz.ak, 8, 4, 4));
-      }
-
-      return a(false, 2.0F, 0.0F, $$5, $$4, d);
-   }
-
-   public static cuo c(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2) {
-      cva.a $$3 = new cva.a();
-      pd.c($$3);
-      cup.a $$4 = new cup.a($$0, $$1);
-      a($$4);
-      pd.f($$4);
-      pd.g($$4);
-      pd.j($$4);
-      if ($$2) {
-         pd.G($$4);
-      }
-
-      pd.M($$4);
-      pd.ac($$4);
-      pd.ae($$4);
-      return new cuo.a()
+   public static cuw a(ii<dys> $$0, ii<drb<?>> $$1) {
+      cvi $$2 = new cvi.a()
+         .a(bmr.a, new cvi.c(bmc.S, 50, 4, 4))
+         .a(bmr.a, new cvi.c(bmc.bv, 100, 4, 4))
+         .a(bmr.a, new cvi.c(bmc.an, 2, 4, 4))
+         .a(bmr.a, new cvi.c(bmc.G, 1, 4, 4))
+         .a(bmr.a, new cvi.c(bmc.ay, 15, 4, 4))
+         .a(bmr.b, new cvi.c(bmc.aX, 60, 1, 2))
+         .a();
+      cux.a $$3 = new cux.a($$0, $$1).a(dou.a.a, pg.d).a(dou.b.j, qw.p);
+      pe.ac($$3);
+      $$3.a(dou.b.h, qx.r)
+         .a(dou.b.h, qx.t)
+         .a(dou.b.h, qx.s)
+         .a(dou.b.h, qx.f)
+         .a(dou.b.h, qx.g)
+         .a(dou.b.h, rb.F)
+         .a(dou.b.h, rb.G)
+         .a(dou.b.h, qy.a)
+         .a(dou.b.h, qx.p);
+      pe.au($$3);
+      return new cuw.a()
          .a(false)
          .a(2.0F)
          .b(0.0F)
-         .a(new cuu.a().b(4159204).c(329011).a(12638463).d(a(2.0F)).e(10387789).f(9470285).a(cum.b).a(arq.a(ars.pC)).a())
-         .a($$3.a())
-         .a($$4.a())
-         .a();
-   }
-
-   private static cuo a(cva.a $$0, int $$1, int $$2, cup.a $$3) {
-      return a(true, 0.5F, 0.5F, $$1, $$2, null, null, $$0, $$3, d);
-   }
-
-   private static cup.a s(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cup.a $$2 = new cup.a($$0, $$1);
-      a($$2);
-      pd.f($$2);
-      pd.j($$2);
-      pd.u($$2);
-      pd.V($$2);
-      pd.Z($$2);
-      pd.ac($$2);
-      pd.ad($$2);
-      return $$2;
-   }
-
-   public static cuo d(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2) {
-      cva.a $$3 = new cva.a();
-      pd.a($$3, 3, 4, 15);
-      $$3.a(bmo.g, new cva.c(blz.aF, 15, 1, 5));
-      cup.a $$4 = s($$0, $$1);
-      $$4.a(dom.b.j, $$2 ? qs.h : qs.c);
-      pd.an($$4);
-      pd.am($$4);
-      return a($$3, 4020182, 329011, $$4);
-   }
-
-   public static cuo e(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2) {
-      cva.a $$3 = new cva.a();
-      pd.a($$3, 1, 4, 10);
-      $$3.a(bmo.f, new cva.c(blz.w, 1, 1, 2));
-      cup.a $$4 = s($$0, $$1);
-      $$4.a(dom.b.j, $$2 ? qs.g : qs.b);
-      pd.an($$4);
-      pd.am($$4);
-      return a($$3, 4159204, 329011, $$4);
-   }
-
-   public static cuo f(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2) {
-      cva.a $$3 = new cva.a();
-      if ($$2) {
-         pd.a($$3, 8, 4, 8);
-      } else {
-         pd.a($$3, 10, 2, 15);
-      }
-
-      $$3.a(bmo.g, new cva.c(blz.aC, 5, 1, 3)).a(bmo.g, new cva.c(blz.bd, 25, 8, 8)).a(bmo.f, new cva.c(blz.w, 2, 1, 2));
-      cup.a $$4 = s($$0, $$1);
-      $$4.a(dom.b.j, $$2 ? qs.f : qs.a);
-      if ($$2) {
-         pd.an($$4);
-      }
-
-      pd.ao($$4);
-      return a($$3, 4566514, 267827, $$4);
-   }
-
-   public static cuo f(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cva.a $$2 = new cva.a().a(bmo.g, new cva.c(blz.aC, 15, 1, 3));
-      pd.a($$2, 10, 4);
-      cup.a $$3 = s($$0, $$1).a(dom.b.j, qs.m).a(dom.b.j, qs.a).a(dom.b.j, qs.j);
-      return a($$2, 4445678, 270131, $$3);
-   }
-
-   public static cuo g(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2) {
-      cva.a $$3 = new cva.a().a(bmo.f, new cva.c(blz.aU, 1, 1, 4)).a(bmo.g, new cva.c(blz.aF, 15, 1, 5)).a(bmo.b, new cva.c(blz.aA, 1, 1, 2));
-      pd.c($$3);
-      $$3.a(bmo.a, new cva.c(blz.z, 5, 1, 1));
-      float $$4 = $$2 ? 0.5F : 0.0F;
-      cup.a $$5 = new cup.a($$0, $$1);
-      pd.ar($$5);
-      a($$5);
-      pd.as($$5);
-      pd.f($$5);
-      pd.j($$5);
-      pd.u($$5);
-      pd.V($$5);
-      pd.Z($$5);
-      pd.ac($$5);
-      pd.ad($$5);
-      return new cuo.a().a(true).a($$4).a(cuo.d.b).b(0.5F).a(new cuu.a().b(3750089).c(329011).a(12638463).d(a($$4)).a(cum.b).a()).a($$3.a()).a($$5.a()).a();
-   }
-
-   public static cuo b(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2, boolean $$3, boolean $$4) {
-      cup.a $$5 = new cup.a($$0, $$1);
-      a($$5);
-      arp $$6;
-      if ($$4) {
-         $$6 = arq.a(ars.pA);
-         $$5.a(dom.b.j, ra.Y);
-      } else {
-         $$6 = arq.a(ars.pq);
-         pd.N($$5);
-      }
-
-      pd.f($$5);
-      pd.j($$5);
-      if ($$4) {
-         $$5.a(dom.b.j, ra.aa);
-         $$5.a(dom.b.j, ra.R);
-         pd.Z($$5);
-      } else {
-         if ($$2) {
-            if ($$3) {
-               pd.x($$5);
-            } else {
-               pd.v($$5);
-            }
-         } else {
-            pd.w($$5);
-         }
-
-         pd.V($$5);
-         pd.O($$5);
-      }
-
-      pd.ac($$5);
-      pd.ad($$5);
-      cva.a $$8 = new cva.a();
-      pd.a($$8);
-      pd.c($$8);
-      if ($$4) {
-         $$8.a(bmo.b, new cva.c(blz.aD, 4, 2, 3));
-      } else if (!$$2) {
-         $$8.a(bmo.b, new cva.c(blz.bp, 5, 4, 4));
-      }
-
-      float $$9 = $$2 ? 0.6F : 0.7F;
-      return a(true, $$9, $$2 ? 0.6F : 0.8F, $$8, $$5, $$6);
-   }
-
-   public static cuo h(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2) {
-      cva.a $$3 = new cva.a();
-      pd.a($$3);
-      $$3.a(bmo.b, new cva.c(blz.bp, 8, 4, 4)).a(bmo.b, new cva.c(blz.aD, 4, 2, 3)).a(bmo.b, new cva.c(blz.O, 8, 2, 4));
-      pd.c($$3);
-      float $$4 = $$2 ? -0.5F : 0.25F;
-      cup.a $$5 = new cup.a($$0, $$1);
-      a($$5);
-      pd.n($$5);
-      pd.f($$5);
-      pd.j($$5);
-      pd.s($$5);
-      pd.V($$5);
-      pd.aa($$5);
-      pd.ad($$5);
-      if ($$2) {
-         pd.o($$5);
-      } else {
-         pd.p($$5);
-      }
-
-      return a(true, $$4, $$2 ? 0.4F : 0.8F, $$2 ? 4020182 : 4159204, 329011, null, null, $$3, $$5, d);
-   }
-
-   public static cuo g(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cva.a $$2 = new cva.a();
-      pd.a($$2);
-      pd.c($$2);
-      cup.a $$3 = new cup.a($$0, $$1);
-      a($$3);
-      $$3.a(dom.b.j, ra.X);
-      pd.N($$3);
-      pd.f($$3);
-      pd.j($$3);
-      pd.V($$3);
-      pd.O($$3);
-      pd.ac($$3);
-      pd.ad($$3);
-      arp $$4 = arq.a(ars.pq);
-      return new cuo.a()
-         .a(true)
-         .a(0.7F)
-         .b(0.8F)
-         .a(new cuu.a().b(4159204).c(329011).a(12638463).d(a(0.7F)).a(cuu.b.b).a(cum.b).a($$4).a())
-         .a($$2.a())
+         .a(new cvc.a().b(4159204).c(329011).a(3344392).d(qf.a(2.0F)).a(art.p).a(new cuu(art.q, 6000, 8, 2.0)).a(new cut(art.o, 0.0111)).a(arr.a(art.pJ)).a())
+         .a($$2)
          .a($$3.a())
          .a();
    }
 
-   public static cuo h(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cva.a $$2 = new cva.a();
-      pd.a($$2);
-      pd.c($$2);
-      $$2.a(bmo.a, new cva.c(blz.aM, 1, 1, 1));
-      $$2.a(bmo.b, new cva.c(blz.P, 10, 2, 5));
-      cup.a $$3 = new cup.a($$0, $$1);
-      pd.al($$3);
-      a($$3);
-      pd.f($$3);
-      pd.k($$3);
-      pd.P($$3);
-      pd.ac($$3);
-      pd.aj($$3);
-      $$3.a(dom.b.j, qs.e);
-      arp $$4 = arq.a(ars.pp);
-      return new cuo.a()
-         .a(true)
-         .a(0.8F)
-         .b(0.9F)
-         .a(new cuu.a().b(6388580).c(2302743).a(12638463).d(a(0.8F)).e(6975545).a(cuu.b.c).a(cum.b).a($$4).a())
-         .a($$2.a())
+   public static cuw b(ii<dys> $$0, ii<drb<?>> $$1) {
+      double $$2 = 0.7;
+      double $$3 = 0.15;
+      cvi $$4 = new cvi.a()
+         .a(bmr.a, new cvi.c(bmc.aL, 20, 5, 5))
+         .a(bmr.a, new cvi.c(bmc.S, 50, 4, 4))
+         .a(bmr.a, new cvi.c(bmc.G, 1, 4, 4))
+         .a(bmr.b, new cvi.c(bmc.aX, 60, 1, 2))
+         .a(bmc.aL, 0.7, 0.15)
+         .a(bmc.S, 0.7, 0.15)
+         .a(bmc.G, 0.7, 0.15)
+         .a(bmc.aX, 0.7, 0.15)
+         .a();
+      cux.a $$5 = new cux.a($$0, $$1)
+         .a(dou.a.a, pg.d)
+         .a(dou.b.j, qw.p)
+         .a(dou.b.c, qx.n)
+         .a(dou.b.h, qx.r)
+         .a(dou.b.h, qx.t)
+         .a(dou.b.h, qx.s)
+         .a(dou.b.h, qx.f)
+         .a(dou.b.h, qx.g)
+         .a(dou.b.h, qx.m)
+         .a(dou.b.h, qy.a)
+         .a(dou.b.h, qx.p)
+         .a(dou.b.h, qy.b);
+      pe.au($$5);
+      return new cuw.a()
+         .a(false)
+         .a(2.0F)
+         .b(0.0F)
+         .a(
+            new cvc.a()
+               .b(4159204)
+               .c(329011)
+               .a(1787717)
+               .d(qf.a(2.0F))
+               .a(new cuv(jx.ax, 0.00625F))
+               .a(art.s)
+               .a(new cuu(art.t, 6000, 8, 2.0))
+               .a(new cut(art.r, 0.0111))
+               .a(arr.a(art.pM))
+               .a()
+         )
+         .a($$4)
+         .a($$5.a())
+         .a();
+   }
+
+   public static cuw c(ii<dys> $$0, ii<drb<?>> $$1) {
+      cvi $$2 = new cvi.a().a(bmr.a, new cvi.c(bmc.S, 40, 1, 1)).a(bmr.a, new cvi.c(bmc.an, 100, 2, 5)).a(bmr.b, new cvi.c(bmc.aX, 60, 1, 2)).a();
+      cux.a $$3 = new cux.a($$0, $$1)
+         .a(dou.a.a, pg.d)
+         .a(dou.b.e, qx.a)
+         .a(dou.b.e, qx.b)
+         .a(dou.b.e, qx.c)
+         .a(dou.b.h, qx.d)
+         .a(dou.b.h, qx.e)
+         .a(dou.b.h, qx.o)
+         .a(dou.b.h, qx.t)
+         .a(dou.b.h, qx.s)
+         .a(dou.b.h, qx.f)
+         .a(dou.b.h, qx.g)
+         .a(dou.b.h, rb.F)
+         .a(dou.b.h, rb.G)
+         .a(dou.b.h, qy.a)
+         .a(dou.b.h, qx.q)
+         .a(dou.b.h, qy.c)
+         .a(dou.b.h, qy.d);
+      pe.av($$3);
+      return new cuw.a()
+         .a(false)
+         .a(2.0F)
+         .b(0.0F)
+         .a(
+            new cvc.a()
+               .b(4159204)
+               .c(329011)
+               .a(6840176)
+               .d(qf.a(2.0F))
+               .a(new cuv(jx.aF, 0.118093334F))
+               .a(art.j)
+               .a(new cuu(art.k, 6000, 8, 2.0))
+               .a(new cut(art.i, 0.0111))
+               .a(arr.a(art.px))
+               .a()
+         )
+         .a($$2)
          .a($$3.a())
          .a();
    }
 
-   public static cuo i(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cva.a $$2 = new cva.a();
-      pd.c($$2);
-      $$2.a(bmo.a, new cva.c(blz.aM, 1, 1, 1));
-      $$2.a(bmo.b, new cva.c(blz.P, 10, 2, 5));
-      $$2.a(bmo.g, new cva.c(blz.bd, 25, 8, 8));
-      cup.a $$3 = new cup.a($$0, $$1);
-      pd.al($$3);
-      a($$3);
-      pd.f($$3);
-      pd.l($$3);
-      pd.Q($$3);
-      $$3.a(dom.b.j, qs.e);
-      arp $$4 = arq.a(ars.pp);
-      return new cuo.a()
-         .a(true)
-         .a(0.8F)
-         .b(0.9F)
-         .a(new cuu.a().b(3832426).c(5077600).a(12638463).d(a(0.8F)).e(9285927).a(cuu.b.c).a(cum.b).a($$4).a())
-         .a($$2.a())
+   public static cuw d(ii<dys> $$0, ii<drb<?>> $$1) {
+      cvi $$2 = new cvi.a()
+         .a(bmr.a, new cvi.c(bmc.bv, 1, 2, 4))
+         .a(bmr.a, new cvi.c(bmc.Y, 9, 3, 4))
+         .a(bmr.a, new cvi.c(bmc.ay, 5, 3, 4))
+         .a(bmr.b, new cvi.c(bmc.aX, 60, 1, 2))
+         .a();
+      cux.a $$3 = new cux.a($$0, $$1).a(dou.a.a, pg.d).a(dou.b.j, qw.p);
+      pe.ac($$3);
+      $$3.a(dou.b.h, qx.r)
+         .a(dou.b.h, qx.t)
+         .a(dou.b.h, qx.f)
+         .a(dou.b.h, qx.g)
+         .a(dou.b.h, qy.a)
+         .a(dou.b.h, qx.p)
+         .a(dou.b.j, qx.l)
+         .a(dou.b.j, ra.a)
+         .a(dou.b.j, qx.h);
+      pe.au($$3);
+      return new cuw.a()
+         .a(false)
+         .a(2.0F)
+         .b(0.0F)
+         .a(
+            new cvc.a()
+               .b(4159204)
+               .c(329011)
+               .a(3343107)
+               .d(qf.a(2.0F))
+               .a(new cuv(jx.ay, 0.025F))
+               .a(art.m)
+               .a(new cuu(art.n, 6000, 8, 2.0))
+               .a(new cut(art.l, 0.0111))
+               .a(arr.a(art.py))
+               .a()
+         )
+         .a($$2)
          .a($$3.a())
          .a();
    }
 
-   public static cuo i(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2) {
-      cva.a $$3 = new cva.a().a(bmo.f, new cva.c(blz.aU, 2, 1, 4)).a(bmo.g, new cva.c(blz.aF, 5, 1, 5));
-      pd.c($$3);
-      $$3.a(bmo.a, new cva.c(blz.z, $$2 ? 1 : 100, 1, 1));
-      cup.a $$4 = new cup.a($$0, $$1);
-      a($$4);
-      pd.f($$4);
-      pd.j($$4);
-      pd.u($$4);
-      pd.V($$4);
-      pd.Z($$4);
-      pd.ac($$4);
-      pd.ad($$4);
-      if (!$$2) {
-         $$4.a(dom.b.j, qs.d);
-      }
-
-      float $$5 = $$2 ? 0.0F : 0.5F;
-      return a(true, $$5, 0.5F, $$2 ? 3750089 : 4159204, 329011, null, null, $$3, $$4, d);
-   }
-
-   public static cuo b(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2, boolean $$3) {
-      cva.a $$4 = new cva.a();
-      boolean $$5 = !$$3 && !$$2;
-      if ($$5) {
-         $$4.a(bmo.b, new cva.c(blz.be, 5, 2, 5));
-      }
-
-      pd.c($$4);
-      cup.a $$6 = new cup.a($$0, $$1);
-      a($$6);
-      pd.f($$6);
-      pd.j($$6);
-      pd.V($$6);
-      pd.Z($$6);
-      pd.ac($$6);
-      pd.ad($$6);
-      float $$7;
-      if ($$2) {
-         $$7 = 0.05F;
-      } else if ($$3) {
-         $$7 = 0.2F;
-      } else {
-         $$7 = 0.8F;
-      }
-
-      return a(true, $$7, $$5 ? 0.4F : 0.3F, $$2 ? 4020182 : 4159204, 329011, null, null, $$4, $$6, d);
-   }
-
-   public static cuo j(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cup.a $$2 = new cup.a($$0, $$1);
-      $$2.a(dom.b.k, qv.n);
-      return a(false, 0.5F, 0.5F, new cva.a(), $$2, d);
-   }
-
-   public static cuo j(ii<dyk> $$0, ii<dqt<?>> $$1, boolean $$2) {
-      cup.a $$3 = new cup.a($$0, $$1);
-      cva.a $$4 = new cva.a();
-      $$4.a(bmo.b, new cva.c($$2 ? blz.aw : blz.x, 1, 1, 2)).a(bmo.b, new cva.c(blz.aD, 2, 2, 6)).a(bmo.b, new cva.c(blz.aG, 2, 2, 4));
-      pd.c($$4);
-      a($$3);
-      pd.ab($$3);
-      pd.f($$3);
-      pd.j($$3);
-      if ($$2) {
-         pd.W($$3);
-      } else {
-         pd.X($$3);
-      }
-
-      pd.h($$3);
-      pd.i($$3);
-      arp $$5 = arq.a($$2 ? ars.pt : ars.ps);
-      return $$2 ? a(true, 0.5F, 0.8F, 6141935, 6141935, 11983713, 11983713, $$4, $$3, $$5) : a(true, 0.5F, 0.8F, 937679, 329011, null, null, $$4, $$3, $$5);
-   }
-
-   public static cuo k(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cup.a $$2 = new cup.a($$0, $$1);
-      cva.a $$3 = new cva.a();
-      $$3.a(bmo.b, new cva.c(blz.V, 5, 1, 3));
-      pd.c($$3);
-      a($$2);
-      pd.aq($$2);
-      pd.f($$2);
-      pd.j($$2);
-      pd.h($$2);
-      pd.i($$2);
-      arp $$4 = arq.a(ars.pv);
-      return a(true, -0.7F, 0.9F, $$3, $$2, $$4);
-   }
-
-   public static cuo l(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cup.a $$2 = new cup.a($$0, $$1);
-      cva.a $$3 = new cva.a();
-      $$3.a(bmo.b, new cva.c(blz.V, 5, 1, 3));
-      pd.c($$3);
-      a($$2);
-      pd.aq($$2);
-      pd.f($$2);
-      pd.j($$2);
-      pd.h($$2);
-      pd.i($$2);
-      arp $$4 = arq.a(ars.pn);
-      return a(true, -0.7F, 0.9F, $$3, $$2, $$4);
-   }
-
-   public static cuo m(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cup.a $$2 = new cup.a($$0, $$1);
-      cva.a $$3 = new cva.a();
-      pd.c($$3);
-      a($$2);
-      pd.f($$2);
-      pd.j($$2);
-      pd.h($$2);
-      pd.i($$2);
-      arp $$4 = arq.a(ars.py);
-      return a(true, 1.0F, 0.3F, $$3, $$2, $$4);
-   }
-
-   public static cuo n(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cup.a $$2 = new cup.a($$0, $$1);
-      cva.a $$3 = new cva.a();
-      $$3.a(bmo.b, new cva.c(blz.aD, 4, 2, 3)).a(bmo.b, new cva.c(blz.V, 5, 1, 3));
-      pd.c($$3);
-      a($$2);
-      pd.aq($$2);
-      pd.f($$2);
-      pd.j($$2);
-      pd.ad($$2);
-      pd.h($$2);
-      pd.i($$2);
-      arp $$4 = arq.a(ars.pw);
-      return a(true, -0.3F, 0.9F, $$3, $$2, $$4);
-   }
-
-   public static cuo o(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cup.a $$2 = new cup.a($$0, $$1);
-      cva.a $$3 = new cva.a();
-      pd.a($$3);
-      $$3.a(bmo.b, new cva.c(blz.bp, 8, 4, 4)).a(bmo.b, new cva.c(blz.aD, 4, 2, 3)).a(bmo.b, new cva.c(blz.O, 8, 2, 4));
-      pd.c($$3);
-      a($$2);
-      pd.aq($$2);
-      pd.f($$2);
-      pd.j($$2);
-      pd.t($$2);
-      pd.ad($$2);
-      pd.h($$2);
-      pd.i($$2);
-      arp $$4 = arq.a(ars.pm);
-      return a(true, -0.2F, 0.8F, $$3, $$2, $$4);
-   }
-
-   public static cuo p(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cva.a $$2 = new cva.a();
-      $$2.a(bmo.d, new cva.c(blz.f, 10, 4, 6));
-      $$2.a(bmo.g, new cva.c(blz.bd, 25, 8, 8));
-      pd.c($$2);
-      cup.a $$3 = new cup.a($$0, $$1);
-      a($$3);
-      pd.ab($$3);
-      pd.f($$3);
-      pd.B($$3);
-      pd.j($$3);
-      pd.A($$3);
-      arp $$4 = arq.a(ars.po);
-      return a(true, 0.5F, 0.5F, $$2, $$3, $$4);
-   }
-
-   public static cuo q(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cva.a $$2 = new cva.a();
-      pd.g($$2);
-      cup.a $$3 = new cup.a($$0, $$1);
-      a($$3);
-      pd.ab($$3);
-      pd.a($$3, true);
-      pd.j($$3);
-      pd.S($$3);
-      pd.ac($$3);
-      pd.ad($$3);
-      pd.d($$3);
-      arp $$4 = arq.a(ars.pl);
-      return a(true, 0.8F, 0.4F, $$2, $$3, $$4);
-   }
-
-   public static cuo r(ii<dyk> $$0, ii<dqt<?>> $$1) {
-      cva.a $$2 = new cva.a();
-      cup.a $$3 = new cup.a($$0, $$1);
-      $$3.a(dom.a.a, pf.a);
-      $$3.a(dom.a.a, pf.b);
-      $$3.a(dom.a.a, pf.c);
-      pd.aw($$3);
-      pd.b($$3);
-      pd.c($$3);
-      pd.at($$3);
-      pd.ab($$3);
-      pd.f($$3);
-      pd.j($$3);
-      pd.S($$3);
-      pd.ac($$3);
-      pd.ad($$3);
-      pd.e($$3);
-      arp $$4 = arq.a(ars.pk);
-      return a(true, 0.8F, 0.4F, $$2, $$3, $$4);
+   public static cuw e(ii<dys> $$0, ii<drb<?>> $$1) {
+      cvi $$2 = new cvi.a().a(bmr.a, new cvi.c(bmc.G, 1, 4, 4)).a(bmr.b, new cvi.c(bmc.aX, 60, 1, 2)).a(bmc.G, 1.0, 0.12).a();
+      cux.a $$3 = new cux.a($$0, $$1).a(dou.a.a, pg.d).a(dou.b.j, qw.p);
+      pe.ac($$3);
+      $$3.a(dou.b.h, qx.r)
+         .a(dou.b.h, qx.t)
+         .a(dou.b.h, qx.s)
+         .a(dou.b.h, qx.f)
+         .a(dou.b.h, qx.g)
+         .a(dou.b.h, qy.a)
+         .a(dou.b.h, qx.p)
+         .a(dou.b.j, ra.b)
+         .a(dou.b.j, qx.i)
+         .a(dou.b.j, qx.j)
+         .a(dou.b.j, qx.k);
+      pe.au($$3);
+      return new cuw.a()
+         .a(false)
+         .a(2.0F)
+         .b(0.0F)
+         .a(
+            new cvc.a()
+               .b(4159204)
+               .c(329011)
+               .a(1705242)
+               .d(qf.a(2.0F))
+               .a(new cuv(jx.az, 0.01428F))
+               .a(art.v)
+               .a(new cuu(art.w, 6000, 8, 2.0))
+               .a(new cut(art.u, 0.0111))
+               .a(arr.a(art.pO))
+               .a()
+         )
+         .a($$2)
+         .a($$3.a())
+         .a();
    }
 }

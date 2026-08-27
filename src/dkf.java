@@ -1,78 +1,131 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
-public class dkf<T extends Enum<T> & avk> extends dkk<T> {
-   private final ImmutableSet<T> a;
-   private final Map<String, T> b = Maps.newHashMap();
-
-   protected dkf(String $$0, Class<T> $$1, Collection<T> $$2) {
-      super($$0, $$1);
-      this.a = ImmutableSet.copyOf($$2);
-
-      for (T $$3 : $$2) {
-         String $$4 = $$3.c();
-         if (this.b.containsKey($$4)) {
-            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
-         }
-
-         this.b.put($$4, $$3);
-      }
-   }
-
-   @Override
-   public Collection<T> a() {
-      return this.a;
-   }
-
-   @Override
-   public Optional<T> b(String $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public String a(T $$0) {
-      return $$0.c();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dkf<?> $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a) && this.b.equals($$1.b);
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int b() {
-      int $$0 = super.b();
-      $$0 = 31 * $$0 + this.a.hashCode();
-      return 31 * $$0 + this.b.hashCode();
-   }
-
-   public static <T extends Enum<T> & avk> dkf<T> a(String $$0, Class<T> $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   public static <T extends Enum<T> & avk> dkf<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
-      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
-   }
-
-   public static <T extends Enum<T> & avk> dkf<T> a(String $$0, Class<T> $$1, T... $$2) {
-      return a($$0, $$1, Lists.newArrayList($$2));
-   }
-
-   public static <T extends Enum<T> & avk> dkf<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
-      return new dkf<>($$0, $$1, $$2);
-   }
+public class dkf {
+   public static final dkg a = dkg.a("attached");
+   public static final dkg b = dkg.a("bottom");
+   public static final dkg c = dkg.a("conditional");
+   public static final dkg d = dkg.a("disarmed");
+   public static final dkg e = dkg.a("drag");
+   public static final dkg f = dkg.a("enabled");
+   public static final dkg g = dkg.a("extended");
+   public static final dkg h = dkg.a("eye");
+   public static final dkg i = dkg.a("falling");
+   public static final dkg j = dkg.a("hanging");
+   public static final dkg k = dkg.a("has_bottle_0");
+   public static final dkg l = dkg.a("has_bottle_1");
+   public static final dkg m = dkg.a("has_bottle_2");
+   public static final dkg n = dkg.a("has_record");
+   public static final dkg o = dkg.a("has_book");
+   public static final dkg p = dkg.a("inverted");
+   public static final dkg q = dkg.a("in_wall");
+   public static final dkg r = dkg.a("lit");
+   public static final dkg s = dkg.a("locked");
+   public static final dkg t = dkg.a("occupied");
+   public static final dkg u = dkg.a("open");
+   public static final dkg v = dkg.a("persistent");
+   public static final dkg w = dkg.a("powered");
+   public static final dkg x = dkg.a("short");
+   public static final dkg y = dkg.a("signal_fire");
+   public static final dkg z = dkg.a("snowy");
+   public static final dkg A = dkg.a("triggered");
+   public static final dkg B = dkg.a("unstable");
+   public static final dkg C = dkg.a("waterlogged");
+   public static final dkg D = dkg.a("berries");
+   public static final dkg E = dkg.a("bloom");
+   public static final dkg F = dkg.a("shrieking");
+   public static final dkg G = dkg.a("can_summon");
+   public static final dkn<ic.a> H = dkn.a("axis", ic.a.class, ic.a.a, ic.a.c);
+   public static final dkn<ic.a> I = dkn.a("axis", ic.a.class);
+   public static final dkg J = dkg.a("up");
+   public static final dkg K = dkg.a("down");
+   public static final dkg L = dkg.a("north");
+   public static final dkg M = dkg.a("east");
+   public static final dkg N = dkg.a("south");
+   public static final dkg O = dkg.a("west");
+   public static final dkj P = dkj.a("facing", ic.c, ic.f, ic.d, ic.e, ic.b, ic.a);
+   public static final dkj Q = dkj.a("facing", $$0 -> $$0 != ic.b);
+   public static final dkj R = dkj.a("facing", ic.c.a);
+   public static final dkp S = dkp.a("flower_amount", 1, 4);
+   public static final dkn<ie> T = dkn.a("orientation", ie.class);
+   public static final dkn<dka> U = dkn.a("face", dka.class);
+   public static final dkn<dkd> V = dkn.a("attachment", dkd.class);
+   public static final dkn<dlb> W = dkn.a("east", dlb.class);
+   public static final dkn<dlb> X = dkn.a("north", dlb.class);
+   public static final dkn<dlb> Y = dkn.a("south", dlb.class);
+   public static final dkn<dlb> Z = dkn.a("west", dlb.class);
+   public static final dkn<dku> aa = dkn.a("east", dku.class);
+   public static final dkn<dku> ab = dkn.a("north", dku.class);
+   public static final dkn<dku> ac = dkn.a("south", dku.class);
+   public static final dkn<dku> ad = dkn.a("west", dku.class);
+   public static final dkn<dkl> ae = dkn.a("half", dkl.class);
+   public static final dkn<dko> af = dkn.a("half", dko.class);
+   public static final dkn<dkt> ag = dkn.a("shape", dkt.class);
+   public static final dkn<dkt> ah = dkn.a("shape", dkt.class, $$0 -> $$0 != dkt.j && $$0 != dkt.i && $$0 != dkt.g && $$0 != dkt.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dkp aq = dkp.a("age", 0, 1);
+   public static final dkp ar = dkp.a("age", 0, 2);
+   public static final dkp as = dkp.a("age", 0, 3);
+   public static final dkp at = dkp.a("age", 0, 4);
+   public static final dkp au = dkp.a("age", 0, 5);
+   public static final dkp av = dkp.a("age", 0, 7);
+   public static final dkp aw = dkp.a("age", 0, 15);
+   public static final dkp ax = dkp.a("age", 0, 25);
+   public static final dkp ay = dkp.a("bites", 0, 6);
+   public static final dkp az = dkp.a("candles", 1, 4);
+   public static final dkp aA = dkp.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dkp aC = dkp.a("distance", 1, 7);
+   public static final dkp aD = dkp.a("eggs", 1, 4);
+   public static final dkp aE = dkp.a("hatch", 0, 2);
+   public static final dkp aF = dkp.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dkp aK = dkp.a("level", 1, 3);
+   public static final dkp aL = dkp.a("level", 0, 8);
+   public static final dkp aM = dkp.a("level", 1, 8);
+   public static final dkp aN = dkp.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dkp aP = dkp.a("level", 0, 15);
+   public static final dkp aQ = dkp.a("moisture", 0, 7);
+   public static final dkp aR = dkp.a("note", 0, 24);
+   public static final dkp aS = dkp.a("pickles", 1, 4);
+   public static final dkp aT = dkp.a("power", 0, 15);
+   public static final dkp aU = dkp.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dkp aW = dkp.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dkp aZ = dkp.a("charges", 0, 4);
+   public static final dkp ba = dkp.a("rotation", 0, dkv.a());
+   public static final dkn<dkc> bb = dkn.a("part", dkc.class);
+   public static final dkn<dkh> bc = dkn.a("type", dkh.class);
+   public static final dkn<dki> bd = dkn.a("mode", dki.class);
+   public static final dkn<dkk> be = dkn.a("hinge", dkk.class);
+   public static final dkn<dkq> bf = dkn.a("instrument", dkq.class);
+   public static final dkn<dkr> bg = dkn.a("type", dkr.class);
+   public static final dkn<dkx> bh = dkn.a("type", dkx.class);
+   public static final dkn<dky> bi = dkn.a("shape", dky.class);
+   public static final dkn<dkz> bj = dkn.a("mode", dkz.class);
+   public static final dkn<dkb> bk = dkn.a("leaves", dkb.class);
+   public static final dkn<dla> bl = dkn.a("tilt", dla.class);
+   public static final dkj bm = dkj.a("vertical_direction", ic.b, ic.a);
+   public static final dkn<dkm> bn = dkn.a("thickness", dkm.class);
+   public static final dkn<dkw> bo = dkn.a("sculk_sensor_phase", dkw.class);
+   public static final dkg bp = dkg.a("slot_0_occupied");
+   public static final dkg bq = dkg.a("slot_1_occupied");
+   public static final dkg br = dkg.a("slot_2_occupied");
+   public static final dkg bs = dkg.a("slot_3_occupied");
+   public static final dkg bt = dkg.a("slot_4_occupied");
+   public static final dkg bu = dkg.a("slot_5_occupied");
+   public static final dkp bv = dkp.a("dusted", 0, 3);
+   public static final dkg bw = dkg.a("cracked");
+   public static final dkg bx = dkg.a("crafting");
+   public static final dkn<djc> by = dkn.a("trial_spawner_state", djc.class);
 }

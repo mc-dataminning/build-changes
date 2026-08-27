@@ -1,48 +1,32 @@
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class ezi {
-   private final Consumer<exe> a;
-   private final Consumer<exe> b;
-   @Nullable
-   private ezh c;
-   @Nullable
-   private fbj d;
+public class ezi extends ezf {
+   private static final int f = -65536;
+   private static final int g = -256;
+   private static final int h = -16711936;
+   private static final int i = 500;
 
-   public ezi(Consumer<exe> $$0, Consumer<exe> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ezi(exc $$0, auz $$1) {
+      super($$0, $$1);
    }
 
-   public void a(fbj $$0) {
-      this.d = $$0;
-      ezh $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
+   @Override
+   protected void a(exe $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
    }
 
-   public void a(ezh $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
-
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
-
-         if ($$1) {
-            evi.O().ai().a(ghv.a(ars.zu, 1.0F));
-         }
-      }
+   @Override
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
    }
 
-   @Nullable
-   public ezh a() {
-      return this.c;
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round($$0 * 60.0 / 500.0);
+   }
+
+   @Override
+   protected int a(long $$0) {
+      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
    }
 }

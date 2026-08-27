@@ -1,47 +1,59 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.Collection;
+import java.util.function.Function;
 
 public class aln {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vf.c("commands.trigger.failed.invalid"));
-
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)dt.a("trigger")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("title").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("objective", em.a())
-                        .suggests(($$0x, $$1) -> a((ds)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((ds)$$0x.getSource(), ((ds)$$0x.getSource()).h(), em.a($$0x, "objective"))))
-                     .then(
-                        dt.a("add")
-                           .then(
-                              dt.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (ds)$$0x.getSource(),
-                                          ((ds)$$0x.getSource()).h(),
-                                          em.a($$0x, "objective"),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a(
+                                    "targets", ef.d()
                                  )
+                                 .then(dt.a("clear").executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets")))))
+                              .then(dt.a("reset").executes($$0x -> b((ds)$$0x.getSource(), ef.f($$0x, "targets")))))
+                           .then(
+                              dt.a("title")
+                                 .then(
+                                    dt.a("title", eb.a())
+                                       .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), eb.a($$0x, "title"), "title", acq::new))
+                                 )
+                           ))
+                        .then(
+                           dt.a("subtitle")
+                              .then(
+                                 dt.a("title", eb.a())
+                                    .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), eb.a($$0x, "title"), "subtitle", aco::new))
+                              )
+                        ))
+                     .then(
+                        dt.a("actionbar")
+                           .then(
+                              dt.a("title", eb.a())
+                                 .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), eb.a($$0x, "title"), "actionbar", abr::new))
                            )
                      ))
                   .then(
-                     dt.a("set")
+                     dt.a("times")
                         .then(
-                           dt.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (ds)$$0x.getSource(), ((ds)$$0x.getSource()).h(), em.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
+                           dt.a("fadeIn", ff.a())
+                              .then(
+                                 dt.a("stay", ff.a())
+                                    .then(
+                                       dt.a("fadeOut", ff.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ds)$$0x.getSource(),
+                                                   ef.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
                                     )
                               )
                         )
@@ -50,58 +62,65 @@ public class aln {
       );
    }
 
-   public static CompletableFuture<Suggestions> a(ds $$0, SuggestionsBuilder $$1) {
-      emw $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         emx $$4 = $$0.l().aH();
+   private static int a(ds $$0, Collection<anf> $$1) {
+      zr $$2 = new zr(false);
 
-         for (emp $$5 : $$4.c()) {
-            if ($$5.c() == ena.b) {
-               emt $$6 = $$4.d($$2, $$5);
-               if ($$6 != null && !$$6.b()) {
-                  $$3.add($$5.b());
-               }
-            }
-         }
+      for (anf $$3 : $$1) {
+         $$3.c.b($$2);
       }
 
-      return dx.b($$3, $$1);
-   }
-
-   private static int a(ds $$0, ane $$1, emp $$2, int $$3) throws CommandSyntaxException {
-      emv $$4 = a($$0.l().aH(), $$1, $$2);
-      int $$5 = $$4.b($$3);
-      $$0.a(() -> vf.a("commands.trigger.add.success", $$2.g(), $$3), true);
-      return $$5;
-   }
-
-   private static int b(ds $$0, ane $$1, emp $$2, int $$3) throws CommandSyntaxException {
-      emv $$4 = a($$0.l().aH(), $$1, $$2);
-      $$4.a($$3);
-      $$0.a(() -> vf.a("commands.trigger.set.success", $$2.g(), $$3), true);
-      return $$3;
-   }
-
-   private static int a(ds $$0, ane $$1, emp $$2) throws CommandSyntaxException {
-      emv $$3 = a($$0.l().aH(), $$1, $$2);
-      int $$4 = $$3.b(1);
-      $$0.a(() -> vf.a("commands.trigger.simple.success", $$2.g()), true);
-      return $$4;
-   }
-
-   private static emv a(emx $$0, emw $$1, emp $$2) throws CommandSyntaxException {
-      if ($$2.c() != ena.b) {
-         throw b.create();
+      if ($$1.size() == 1) {
+         $$0.a(() -> vg.a("commands.title.cleared.single", $$1.iterator().next().Q_()), true);
       } else {
-         emt $$3 = $$0.d($$1, $$2);
-         if ($$3 != null && !$$3.b()) {
-            emv $$4 = $$0.c($$1, $$2);
-            $$4.f();
-            return $$4;
-         } else {
-            throw a.create();
-         }
+         $$0.a(() -> vg.a("commands.title.cleared.multiple", $$1.size()), true);
       }
+
+      return $$1.size();
+   }
+
+   private static int b(ds $$0, Collection<anf> $$1) {
+      zr $$2 = new zr(true);
+
+      for (anf $$3 : $$1) {
+         $$3.c.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> vg.a("commands.title.reset.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> vg.a("commands.title.reset.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(ds $$0, Collection<anf> $$1, vg $$2, String $$3, Function<vg, xg<?>> $$4) throws CommandSyntaxException {
+      for (anf $$5 : $$1) {
+         $$5.c.b($$4.apply(vj.a($$0, $$2, $$5, 0)));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> vg.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> vg.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(ds $$0, Collection<anf> $$1, int $$2, int $$3, int $$4) {
+      acr $$5 = new acr($$2, $$3, $$4);
+
+      for (anf $$6 : $$1) {
+         $$6.c.b($$5);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> vg.a("commands.title.times.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> vg.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

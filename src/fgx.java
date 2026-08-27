@@ -1,15 +1,15 @@
 import java.util.Set;
 
-public class fgx extends fgl {
-   private static final vf i = vf.c("gui.recipebook.toggleRecipes.smokable");
+public class fgx extends fgw {
+   private static final vg i = vg.c("gui.recipebook.toggleRecipes.blastable");
 
    @Override
-   protected vf c() {
+   protected vg c() {
       return i;
    }
 
    @Override
-   protected Set<cmt> b() {
-      return dgk.f().keySet();
+   protected Set<cnb> b() {
+      return dgs.f().keySet();
    }
 }

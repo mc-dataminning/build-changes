@@ -1,23 +1,36 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record eka(float b) implements ejv {
-   public static final Codec<eka> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(eka::c)).apply($$0, eka::new));
+public class eka implements eke {
+   private static final eka b = new eka();
+   public static final Codec<eka> a = Codec.unit(b);
+
+   private eka() {
+   }
 
    @Override
-   public ejw b() {
-      return ejx.e;
+   public ekf b() {
+      return ekg.m;
    }
 
-   public boolean a(egw $$0) {
-      return $$0.b().i() < this.b;
+   @Override
+   public Set<ejn<?>> a() {
+      return ImmutableSet.of(ejq.j);
    }
 
-   public static ejv.a a(float $$0) {
-      return () -> new eka($$0);
+   public boolean a(ehf $$0) {
+      Float $$1 = $$0.c(ejq.j);
+      if ($$1 != null) {
+         auw $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public float c() {
-      return this.b;
+   public static eke.a c() {
+      return () -> b;
    }
 }

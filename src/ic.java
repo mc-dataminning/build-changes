@@ -14,7 +14,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-public enum ic implements avk {
+public enum ic implements avl {
    a(0, 1, -1, "down", ic.b.b, ic.a.b, new jb(0, -1, 0)),
    b(1, 0, -1, "up", ic.b.a, ic.a.b, new jb(0, 1, 0)),
    c(2, 3, 2, "north", ic.b.b, ic.a.c, new jb(0, 0, -1)),
@@ -22,8 +22,8 @@ public enum ic implements avk {
    e(4, 5, 1, "west", ic.b.b, ic.a.a, new jb(-1, 0, 0)),
    f(5, 4, 3, "east", ic.b.a, ic.a.a, new jb(1, 0, 0));
 
-   public static final avk.a<ic> g = avk.a(ic::values);
-   public static final Codec<ic> h = atw.a(g, ic::a);
+   public static final avl.a<ic> g = avl.a(ic::values);
+   public static final Codec<ic> h = atx.a(g, ic::a);
    private final int i;
    private final int j;
    private final int k;
@@ -45,13 +45,13 @@ public enum ic implements avk {
       this.o = $$6;
    }
 
-   public static ic[] a(blv $$0) {
+   public static ic[] a(blw $$0) {
       float $$1 = $$0.g(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.h(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = auo.a($$1);
-      float $$4 = auo.b($$1);
-      float $$5 = auo.a($$2);
-      float $$6 = auo.b($$2);
+      float $$3 = aup.a($$1);
+      float $$4 = aup.b($$1);
+      float $$5 = aup.a($$2);
+      float $$6 = aup.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -86,7 +86,7 @@ public enum ic implements avk {
       return a($$3.x(), $$3.y(), $$3.z());
    }
 
-   public static Collection<ic> a(auv $$0) {
+   public static Collection<ic> a(auw $$0) {
       return ac.b(values(), $$0);
    }
 
@@ -117,7 +117,7 @@ public enum ic implements avk {
       return this.n;
    }
 
-   public static ic a(blv $$0, ic.a $$1) {
+   public static ic a(blw $$0, ic.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.h(1.0F)) ? f : e;
          case c -> d.a($$0.h(1.0F)) ? d : c;
@@ -235,11 +235,11 @@ public enum ic implements avk {
    }
 
    public static ic a(int $$0) {
-      return q[auo.a($$0 % q.length)];
+      return q[aup.a($$0 % q.length)];
    }
 
    public static ic b(int $$0) {
-      return r[auo.a($$0 % r.length)];
+      return r[aup.a($$0 % r.length)];
    }
 
    @Nullable
@@ -272,7 +272,7 @@ public enum ic implements avk {
    }
 
    public static ic a(double $$0) {
-      return b(auo.a($$0 / 90.0 + 0.5) & 3);
+      return b(aup.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static ic a(ic.a $$0, ic.b $$1) {
@@ -287,7 +287,7 @@ public enum ic implements avk {
       return (float)((this.k & 3) * 90);
    }
 
-   public static ic b(auv $$0) {
+   public static ic b(auw $$0) {
       return ac.a(p, $$0);
    }
 
@@ -340,12 +340,12 @@ public enum ic implements avk {
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -auo.a($$1);
-      float $$3 = auo.b($$1);
+      float $$2 = -aup.a($$1);
+      float $$3 = aup.b($$1);
       return (float)this.o.u() * $$2 + (float)this.o.w() * $$3 > 0.0F;
    }
 
-   public static enum a implements avk, Predicate<ic> {
+   public static enum a implements avl, Predicate<ic> {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
@@ -381,7 +381,7 @@ public enum ic implements avk {
       };
 
       public static final ic.a[] d = values();
-      public static final avk.a<ic.a> e = avk.a(ic.a::values);
+      public static final avl.a<ic.a> e = avl.a(ic.a::values);
       private final String f;
 
       a(String $$0) {
@@ -410,7 +410,7 @@ public enum ic implements avk {
          return this.f;
       }
 
-      public static ic.a a(auv $$0) {
+      public static ic.a a(auw $$0) {
          return ac.a(d, $$0);
       }
 
@@ -477,11 +477,11 @@ public enum ic implements avk {
          this.d = $$1;
       }
 
-      public ic a(auv $$0) {
+      public ic a(auw $$0) {
          return ac.a(this.c, $$0);
       }
 
-      public ic.a b(auv $$0) {
+      public ic.a b(auw $$0) {
          return ac.a(this.d, $$0);
       }
 
@@ -498,7 +498,7 @@ public enum ic implements avk {
          return Arrays.stream(this.c);
       }
 
-      public List<ic> c(auv $$0) {
+      public List<ic> c(auw $$0) {
          return ac.b(this.c, $$0);
       }
    }

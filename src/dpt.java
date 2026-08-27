@@ -1,359 +1,166 @@
-import com.google.common.primitives.Doubles;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Arrays;
-import java.util.EnumSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.DoubleStream;
-import javax.annotation.Nullable;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public class dpt {
-   private static final double f = 0.1;
-   protected static final int a = 4;
-   protected static final int b = 8;
-   protected static final int c = 2;
-   private static final double g = 1.0;
-   private static final double h = -1.0;
-   private static final int i = 2;
-   private static final int j = is.a(16);
-   private static final int k = j - 1;
-   private static final int l = j;
-   private static final int m = 2 * k + 1;
-   private static final int n = 2 * l + 1;
-   private static final int o = m + n;
-   private final ctr p;
-   private static final List<cwq> q = List.of(cws.l, cws.L, cws.i, cws.b, cws.k, cws.I, cws.K, cws.fl, cws.dP, cws.iA, cws.j);
-   protected static final double d = Double.MAX_VALUE;
-   private boolean r;
-   private final double[] s;
-   private final List<List<ih<cuo>>> t;
-   private final transient double[][] u;
-   private static final Codec<double[]> v = Codec.DOUBLE.listOf().xmap(Doubles::toArray, Doubles::asList);
-   public static final Codec<dpt> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("min_section").forGetter($$0x -> $$0x.p.an()),
-                  Codec.INT.fieldOf("max_section").forGetter($$0x -> $$0x.p.ao()),
-                  v.optionalFieldOf("heights")
-                     .forGetter($$0x -> DoubleStream.of($$0x.s).anyMatch($$0xx -> $$0xx != Double.MAX_VALUE) ? Optional.of($$0x.s) : Optional.empty())
-               )
-               .apply($$0, dpt::new)
-      )
-      .comapFlatMap(dpt::a, Function.identity());
+public record dpt(it<dmz> b) {
+   public static final MapCodec<dpt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(iv.b(ke.aN, Lifecycle.stable(), dmz.a).fieldOf("dimensions").forGetter(dpt::d)).apply($$0, $$0.stable(dpt::new))
+   );
+   private static final Set<ahg<dmz>> c = ImmutableSet.of(dmz.b, dmz.c, dmz.d);
+   private static final int d = c.size();
 
-   private static DataResult<dpt> a(dpt $$0) {
-      return $$0.s.length != o ? DataResult.error(() -> "heights has to be of length " + o) : DataResult.success($$0);
-   }
-
-   private dpt(int $$0, int $$1, Optional<double[]> $$2) {
-      this.s = $$2.orElse(ac.a(new double[o], $$0x -> Arrays.fill($$0x, Double.MAX_VALUE)));
-      this.u = new double[o][];
-      ObjectArrayList<List<ih<cuo>>> $$3 = new ObjectArrayList(o);
-      $$3.size(o);
-      this.t = $$3;
-      int $$4 = iz.c($$0);
-      int $$5 = iz.c($$1) - $$4;
-      this.p = ctr.e($$4, $$5);
-   }
-
-   @Nullable
-   public static dpt a(ank $$0, int $$1, int $$2) {
-      dld $$3 = $$0.a($$1, $$2);
-      dpt $$4 = $$3.t();
-      if ($$4 != null && $$3.k().b(dli.f)) {
-         $$4.a($$3, a($$0, $$1, $$2, false));
-         return $$4;
+   public dpt(it<dmz> b) {
+      dmz $$1 = b.a(dmz.b);
+      if ($$1 == null) {
+         throw new IllegalStateException("Overworld settings missing");
       } else {
-         return null;
+         this.b = b;
       }
    }
 
-   public static Set<id> a(cuk $$0, int $$1, int $$2, boolean $$3) {
-      Set<id> $$4 = EnumSet.noneOf(id.class);
+   public static Stream<ahg<dmz>> a(Stream<ahg<dmz>> $$0) {
+      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
+   }
 
-      for (id $$5 : id.values()) {
-         int $$6 = $$1 + $$5.b();
-         int $$7 = $$2 + $$5.c();
-         if ($$0.a($$6, $$7).s() == $$3) {
-            $$4.add($$5);
+   public dpt a(iu $$0, dlm $$1) {
+      it<dmy> $$2 = $$0.d(ke.ay);
+      it<dmz> $$3 = a($$2, this.b, $$1);
+      return new dpt($$3);
+   }
+
+   public static it<dmz> a(it<dmy> $$0, it<dmz> $$1, dlm $$2) {
+      dmz $$3 = $$1.a(dmz.b);
+      ih<dmy> $$4 = (ih<dmy>)($$3 == null ? $$0.f(dmw.a) : $$3.a());
+      return a($$1, $$4, $$2);
+   }
+
+   public static it<dmz> a(it<dmz> $$0, ih<dmy> $$1, dlm $$2) {
+      jc<dmz> $$3 = new ip<>(ke.aN, Lifecycle.experimental());
+      $$3.a(dmz.b, new dmz($$1, $$2), Lifecycle.stable());
+
+      for (Entry<ahg<dmz>, dmz> $$4 : $$0.g()) {
+         ahg<dmz> $$5 = $$4.getKey();
+         if ($$5 != dmz.b) {
+            $$3.a($$5, $$4.getValue(), $$0.e($$4.getValue()));
          }
       }
 
-      return $$4;
+      return $$3.l();
    }
 
-   private void a(dld $$0, Set<id> $$1) {
-      if (!this.r) {
-         if ($$1.contains(id.a) || $$1.contains(id.g) || $$1.contains(id.h)) {
-            this.a(a(0, 0), $$0, 0, 0);
-         }
-
-         if ($$1.contains(id.a)) {
-            for (int $$2 = 1; $$2 < j; $$2++) {
-               this.a(a($$2, 0), $$0, 4 * $$2, 0);
-            }
-         }
-
-         if ($$1.contains(id.g)) {
-            for (int $$3 = 1; $$3 < j; $$3++) {
-               this.a(a(0, $$3), $$0, 0, 4 * $$3);
-            }
-         }
-
-         if ($$1.contains(id.c)) {
-            for (int $$4 = 1; $$4 < j; $$4++) {
-               this.a(b(l, $$4), $$0, 15, 4 * $$4);
-            }
-         }
-
-         if ($$1.contains(id.e)) {
-            for (int $$5 = 0; $$5 < j; $$5++) {
-               this.a(b($$5, l), $$0, 4 * $$5, 15);
-            }
-         }
-
-         if ($$1.contains(id.c) && $$1.contains(id.b)) {
-            this.a(b(l, 0), $$0, 15, 0);
-         }
-
-         if ($$1.contains(id.c) && $$1.contains(id.e) && $$1.contains(id.d)) {
-            this.a(b(l, l), $$0, 15, 15);
-         }
-
-         this.r = true;
-      }
-   }
-
-   private void a(int $$0, dld $$1, int $$2, int $$3) {
-      if (this.s[$$0] == Double.MAX_VALUE) {
-         this.s[$$0] = (double)this.a($$1, $$2, $$3);
-      }
-
-      this.u[$$0] = this.a($$1, $$2, $$3, auo.a(this.s[$$0]));
-      this.t.set($$0, this.b($$1, $$2, $$3));
-   }
-
-   private int a(dld $$0, int $$1, int $$2) {
-      int $$3;
-      if ($$0.b(doq.a.a)) {
-         $$3 = Math.min($$0.a(doq.a.a, $$1, $$2) + 1, this.p.al());
-      } else {
-         $$3 = this.p.al();
-      }
-
-      int $$5 = this.p.J_();
-      hx.a $$6 = new hx.a($$1, $$3, $$2);
-
-      while ($$6.v() > $$5) {
-         $$6.c(ic.a);
-         if (q.contains($$0.a_($$6).b())) {
-            return $$6.v();
-         }
-      }
-
-      return $$5;
-   }
-
-   private static double a(dld $$0, hx.a $$1) {
-      return a($$0, (hx)$$1.c(ic.a)) ? 1.0 : -1.0;
-   }
-
-   private static double b(dld $$0, hx.a $$1) {
-      double $$2 = 0.0;
-
-      for (int $$3 = 0; $$3 < 7; $$3++) {
-         $$2 += a($$0, $$1);
-      }
-
-      return $$2;
-   }
-
-   private double[] a(dld $$0, int $$1, int $$2, int $$3) {
-      double[] $$4 = new double[this.b()];
-      Arrays.fill($$4, -1.0);
-      hx.a $$5 = new hx.a($$1, this.p.al(), $$2);
-      double $$6 = b($$0, $$5);
-
-      for (int $$7 = $$4.length - 2; $$7 >= 0; $$7--) {
-         double $$8 = a($$0, $$5);
-         double $$9 = b($$0, $$5);
-         $$4[$$7] = ($$6 + $$8 + $$9) / 15.0;
-         $$6 = $$9;
-      }
-
-      int $$10 = this.a(auo.a($$3, 8));
-      if ($$10 >= 0 && $$10 < $$4.length - 1) {
-         double $$11 = ((double)$$3 + 0.5) % 8.0 / 8.0;
-         double $$12 = (1.0 - $$11) / $$11;
-         double $$13 = Math.max($$12, 1.0) * 0.25;
-         $$4[$$10 + 1] = -$$12 / $$13;
-         $$4[$$10] = 1.0 / $$13;
-      }
-
-      return $$4;
-   }
-
-   private List<ih<cuo>> b(dld $$0, int $$1, int $$2) {
-      ObjectArrayList<ih<cuo>> $$3 = new ObjectArrayList(this.c());
-      $$3.size(this.c());
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         int $$5 = $$4 + is.a(this.p.J_());
-         $$3.set($$4, $$0.getNoiseBiome(is.a($$1), $$5, is.a($$2)));
-      }
-
-      return $$3;
-   }
-
-   private static boolean a(dld $$0, hx $$1) {
-      djh $$2 = $$0.a_($$1);
-      if ($$2.i()) {
-         return false;
-      } else if ($$2.a(ash.O)) {
-         return false;
-      } else if ($$2.a(ash.t)) {
-         return false;
-      } else {
-         return $$2.a(cws.eT) || $$2.a(cws.eU) ? false : !$$2.k($$0, $$1).c();
-      }
-   }
-
-   protected double a(int $$0, int $$1, int $$2) {
-      if ($$0 == l || $$2 == l) {
-         return this.s[b($$0, $$2)];
-      } else {
-         return $$0 != 0 && $$2 != 0 ? Double.MAX_VALUE : this.s[a($$0, $$2)];
-      }
-   }
-
-   private double a(@Nullable double[] $$0, int $$1) {
+   public dlm a() {
+      dmz $$0 = this.b.a(dmz.b);
       if ($$0 == null) {
-         return Double.MAX_VALUE;
+         throw new IllegalStateException("Overworld settings missing");
       } else {
-         int $$2 = this.a($$1);
-         return $$2 >= 0 && $$2 < $$0.length ? $$0[$$2] * 0.1 : Double.MAX_VALUE;
+         return $$0.b();
       }
    }
 
-   protected double b(int $$0, int $$1, int $$2) {
-      if ($$1 == this.e()) {
-         return 0.1;
-      } else if ($$0 == l || $$2 == l) {
-         return this.a(this.u[b($$0, $$2)], $$1);
+   public Optional<dmz> a(ahg<dmz> $$0) {
+      return this.b.d($$0);
+   }
+
+   public ImmutableSet<ahg<ctx>> b() {
+      return this.d().g().stream().map(Entry::getKey).map(ke::a).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public boolean c() {
+      return this.a() instanceof dop;
+   }
+
+   private static egz.a b(it<dmz> $$0) {
+      return $$0.d(dmz.b).map($$0x -> {
+         dlm $$1 = $$0x.b();
+         if ($$1 instanceof dop) {
+            return egz.a.c;
+         } else {
+            return $$1 instanceof dot ? egz.a.b : egz.a.a;
+         }
+      }).orElse(egz.a.a);
+   }
+
+   static Lifecycle a(ahg<dmz> $$0, dmz $$1) {
+      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
+   }
+
+   private static boolean b(ahg<dmz> $$0, dmz $$1) {
+      if ($$0 == dmz.b) {
+         return a($$1);
+      } else if ($$0 == dmz.c) {
+         return b($$1);
       } else {
-         return $$0 != 0 && $$2 != 0 ? Double.MAX_VALUE : this.a(this.u[a($$0, $$2)], $$1);
+         return $$0 == dmz.d ? c($$1) : false;
       }
    }
 
-   protected void a(int $$0, int $$1, int $$2, dpt.a $$3) {
-      if ($$1 >= is.a(this.p.J_()) && $$1 < is.a(this.p.al())) {
-         int $$4 = $$1 - is.a(this.p.J_());
+   private static boolean a(dmz $$0) {
+      ih<dmy> $$1 = $$0.a();
+      if (!$$1.a(dmw.a) && !$$1.a(dmw.d)) {
+         return false;
+      } else {
+         if ($$0.b().c() instanceof cvj $$2 && !$$2.a(cvl.b)) {
+            return false;
+         }
 
-         for (int $$5 = 0; $$5 < this.t.size(); $$5++) {
-            if (this.t.get($$5) != null) {
-               ih<cuo> $$6 = this.t.get($$5).get($$4);
-               if ($$6 != null) {
-                  $$3.consume($$0 + b($$5), $$2 + c($$5), $$6);
-               }
-            }
+         return true;
+      }
+   }
+
+   private static boolean b(dmz $$0) {
+      return $$0.a().a(dmw.b) && $$0.b() instanceof dpb $$1 && $$1.a(dpd.f) && $$1.c() instanceof cvj $$2 && $$2.a(cvl.a);
+   }
+
+   private static boolean c(dmz $$0) {
+      return $$0.a().a(dmw.c) && $$0.b() instanceof dpb $$1 && $$1.a(dpd.g) && $$1.c() instanceof cvn;
+   }
+
+   public dpt.b a(it<dmz> $$0) {
+      Stream<ahg<dmz>> $$1 = Stream.concat($$0.f().stream(), this.b.f().stream()).distinct();
+
+      record a(ahg<dmz> a, dmz b) {
+
+         Lifecycle c() {
+            return dpt.a(this.a, this.b);
          }
       }
+
+      List<a> $$2 = new ArrayList<>();
+      a($$1).forEach($$2x -> $$0.d($$2x).or(() -> this.b.d($$2x)).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
+      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
+      jc<dmz> $$4 = new ip<>(ke.aN, $$3);
+      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
+      it<dmz> $$5 = $$4.l();
+      egz.a $$6 = b($$5);
+      return new dpt.b($$5.l(), $$6);
    }
 
-   protected void a(int $$0, int $$1, dpt.c $$2) {
-      for (int $$3 = 0; $$3 < this.s.length; $$3++) {
-         double $$4 = this.s[$$3];
-         if ($$4 != Double.MAX_VALUE) {
-            $$2.consume($$0 + b($$3), $$1 + c($$3), $$4);
-         }
+   public it<dmz> d() {
+      return this.b;
+   }
+
+   public static record b(it<dmz> a, egz.a b) {
+      public Lifecycle a() {
+         return this.a.d();
       }
-   }
 
-   protected void a(int $$0, int $$1, int $$2, int $$3, dpt.b $$4) {
-      int $$5 = this.d();
-      int $$6 = Math.max(0, $$2 - $$5);
-      int $$7 = Math.min(this.b(), $$3 - $$5);
-
-      for (int $$8 = 0; $$8 < this.u.length; $$8++) {
-         double[] $$9 = this.u[$$8];
-         if ($$9 != null) {
-            int $$10 = $$0 + b($$8);
-            int $$11 = $$1 + c($$8);
-
-            for (int $$12 = $$6; $$12 < $$7; $$12++) {
-               $$4.consume($$10, $$12 + $$5, $$11, $$9[$$12] * 0.1);
-            }
-         }
+      public iu.b b() {
+         return new iu.c(List.of(this.a)).d();
       }
-   }
 
-   private int b() {
-      return this.p.am() * 2;
-   }
-
-   private int c() {
-      return is.d(this.p.am());
-   }
-
-   private int d() {
-      return this.e() + 1;
-   }
-
-   private int e() {
-      return this.p.an() * 2;
-   }
-
-   private int a(int $$0) {
-      return $$0 - this.d();
-   }
-
-   private static int a(int $$0, int $$1) {
-      return k - $$0 + $$1;
-   }
-
-   private static int b(int $$0, int $$1) {
-      return m + $$0 + l - $$1;
-   }
-
-   private static int b(int $$0) {
-      if ($$0 < m) {
-         return d(k - $$0);
-      } else {
-         int $$1 = $$0 - m;
-         return l - d(l - $$1);
+      public it<dmz> c() {
+         return this.a;
       }
-   }
 
-   private static int c(int $$0) {
-      if ($$0 < m) {
-         return d($$0 - k);
-      } else {
-         int $$1 = $$0 - m;
-         return l - d($$1 - l);
+      public egz.a d() {
+         return this.b;
       }
-   }
-
-   private static int d(int $$0) {
-      return $$0 & ~($$0 >> 31);
-   }
-
-   public ctr a() {
-      return this.p;
-   }
-
-   protected interface a {
-      void consume(int var1, int var2, ih<cuo> var3);
-   }
-
-   protected interface b {
-      void consume(int var1, int var2, int var3, double var4);
-   }
-
-   protected interface c {
-      void consume(int var1, int var2, double var3);
    }
 }

@@ -1,181 +1,70 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public abstract class dog {
-   public static dog.b a(int $$0, int $$1) {
-      return new dog.b($$0 - 1, $$1 + 1);
+public record dog(ih<dnz> b, float c, emc d, @Nullable UUID e, @Nullable UUID f, @Nullable blw g) {
+   public static final Codec<dog> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kd.a.r().fieldOf("game_event").forGetter(dog::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dog::b),
+               emc.a.fieldOf("pos").forGetter(dog::c),
+               ja.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               ja.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dog($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
+   );
+
+   public dog(ih<dnz> $$0, float $$1, emc $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   public static dog.b b(int $$0, int $$1) {
-      return new dog.b($$0, $$1);
+   public dog(ih<dnz> $$0, float $$1, emc $$2, @Nullable blw $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cw(), a($$3), $$3);
    }
 
-   public static dog a(int $$0) {
-      return new dog.c($$0, false);
+   @Nullable
+   private static UUID a(@Nullable blw $$0) {
+      if ($$0 instanceof cgi $$1 && $$1.w() != null) {
+         return $$1.w().cw();
+      }
+
+      return null;
    }
 
-   public static dog b(int $$0) {
-      return new dog.c($$0 + 1, false);
+   public Optional<blw> a(ane $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
    }
 
-   public static dog c(int $$0) {
-      return new dog.c($$0, true);
+   public Optional<blw> b(ane $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof cgi).map($$0x -> (cgi)$$0x).map(cgi::w).or(() -> Optional.ofNullable(this.f).map($$0::a));
    }
 
-   public static dog d(int $$0) {
-      return new dog.c($$0 - 1, true);
+   public ih<dnz> a() {
+      return this.b;
    }
 
-   public static dog a() {
-      return dog.a.a;
+   public float b() {
+      return this.c;
    }
 
-   public static dog a(OptionalInt $$0, OptionalInt $$1) {
-      if ($$0.isPresent() && $$1.isPresent()) {
-         return b($$0.getAsInt(), $$1.getAsInt());
-      } else if ($$0.isPresent()) {
-         return c($$0.getAsInt());
-      } else {
-         return $$1.isPresent() ? a($$1.getAsInt()) : a();
-      }
+   public emc c() {
+      return this.d;
    }
 
-   public abstract OptionalInt b();
-
-   public abstract OptionalInt c();
-
-   public abstract OptionalInt d();
-
-   public dog a(OptionalInt $$0) {
-      return a($$0, this.b());
+   @Nullable
+   public UUID d() {
+      return this.e;
    }
 
-   public dog b(OptionalInt $$0) {
-      return a(this.c(), $$0);
+   @Nullable
+   public UUID e() {
+      return this.f;
    }
 
-   public static Optional<dog> a(ctv $$0, hx $$1, int $$2, Predicate<djh> $$3, Predicate<djh> $$4) {
-      hx.a $$5 = $$1.j();
-      if (!$$0.a($$1, $$3)) {
-         return Optional.empty();
-      } else {
-         int $$6 = $$1.v();
-         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ic.b);
-         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ic.a);
-         return Optional.of(a($$8, $$7));
-      }
-   }
-
-   private static OptionalInt a(ctv $$0, int $$1, Predicate<djh> $$2, Predicate<djh> $$3, hx.a $$4, int $$5, ic $$6) {
-      $$4.q($$5);
-
-      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
-         $$4.c($$6);
-      }
-
-      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
-   }
-
-   public static final class a extends dog {
-      static final dog.a a = new dog.a();
-
-      private a() {
-      }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "C(-)";
-      }
-   }
-
-   public static final class b extends dog {
-      private final int a;
-      private final int b;
-
-      protected b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         if (this.g() < 0) {
-            throw new IllegalArgumentException("Column of negative height: " + this);
-         }
-      }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.of(this.b);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.of(this.g());
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.a;
-      }
-
-      public int g() {
-         return this.b - this.a - 1;
-      }
-
-      @Override
-      public String toString() {
-         return "C(" + this.b + "-" + this.a + ")";
-      }
-   }
-
-   public static final class c extends dog {
-      private final int a;
-      private final boolean b;
-
-      public c(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public OptionalInt b() {
-         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
-      }
+   @Nullable
+   public blw f() {
+      return this.g;
    }
 }

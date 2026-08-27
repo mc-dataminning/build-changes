@@ -1,30 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgc extends daf {
-   public static final MapCodec<dgc> c = b(dgc::new);
-   protected static final emm g = cwq.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
-
-   @Override
-   public MapCodec<dgc> a() {
-      return c;
-   }
-
-   public dgc(djg.d $$0) {
-      super($$0, ic.a, g, false, 0.1);
-   }
+public class dgc extends cym implements dgb {
+   public static final MapCodec<dgc> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dgb.a.e.fieldOf("weathering_state").forGetter(dgc::g), u()).apply($$0, dgc::new)
+   );
+   private final dgb.a e;
 
    @Override
-   protected int a(auv $$0) {
-      return dbv.a($$0);
+   protected MapCodec<dgc> a() {
+      return d;
    }
 
-   @Override
-   protected cwq b() {
-      return cws.oA;
+   public dgc(dgb.a $$0, djo.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected boolean g(djh $$0) {
-      return dbv.a($$0);
+   public void b(djp $$0, ane $$1, hx $$2, auw $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean e_(djp $$0) {
+      return dgb.c($$0.b()).isPresent();
+   }
+
+   public dgb.a g() {
+      return this.e;
    }
 }

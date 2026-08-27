@@ -1,25 +1,104 @@
-public class crs extends crj {
-   protected crs(crj.a $$0, crk $$1, bma... $$2) {
-      super($$0, $$1, $$2);
-   }
+public enum crs {
+   a {
+      @Override
+      public boolean a(cnb $$0) {
+         return $$0 instanceof ckr;
+      }
+   },
+   b {
+      @Override
+      public boolean a(cnb $$0) {
+         if ($$0 instanceof ckr $$1 && $$1.g() == bmd.c) {
+            return true;
+         }
 
-   @Override
-   public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
-   }
+         return false;
+      }
+   },
+   c {
+      @Override
+      public boolean a(cnb $$0) {
+         if ($$0 instanceof ckr $$1 && $$1.g() == bmd.d) {
+            return true;
+         }
 
-   @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
+         return false;
+      }
+   },
+   d {
+      @Override
+      public boolean a(cnb $$0) {
+         if ($$0 instanceof ckr $$1 && $$1.g() == bmd.e) {
+            return true;
+         }
 
-   @Override
-   public int a() {
-      return 3;
-   }
+         return false;
+      }
+   },
+   e {
+      @Override
+      public boolean a(cnb $$0) {
+         if ($$0 instanceof ckr $$1 && $$1.g() == bmd.f) {
+            return true;
+         }
 
-   @Override
-   public boolean a(crj $$0) {
-      return super.a($$0) && $$0 != crn.v;
-   }
+         return false;
+      }
+   },
+   f {
+      @Override
+      public boolean a(cnb $$0) {
+         return $$0 instanceof cos;
+      }
+   },
+   g {
+      @Override
+      public boolean a(cnb $$0) {
+         return $$0 instanceof clr;
+      }
+   },
+   h {
+      @Override
+      public boolean a(cnb $$0) {
+         return $$0 instanceof cmn;
+      }
+   },
+   i {
+      @Override
+      public boolean a(cnb $$0) {
+         return $$0 instanceof coz;
+      }
+   },
+   j {
+      @Override
+      public boolean a(cnb $$0) {
+         return $$0.n();
+      }
+   },
+   k {
+      @Override
+      public boolean a(cnb $$0) {
+         return $$0 instanceof clf;
+      }
+   },
+   l {
+      @Override
+      public boolean a(cnb $$0) {
+         return $$0 instanceof cmi || cwy.a($$0) instanceof cmi;
+      }
+   },
+   m {
+      @Override
+      public boolean a(cnb $$0) {
+         return $$0 instanceof clp;
+      }
+   },
+   n {
+      @Override
+      public boolean a(cnb $$0) {
+         return $$0 instanceof cpb || cwy.a($$0) instanceof cpb || j.a($$0);
+      }
+   };
+
+   public abstract boolean a(cnb var1);
 }

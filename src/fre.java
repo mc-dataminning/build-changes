@@ -1,40 +1,37 @@
-public class fre extends frv {
-   private final frq a;
+public class fre extends frh {
+   private final flf a;
+   private final fub b = fub.i(fyt.a);
 
-   fre(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, frq $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
+   fre(foe $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new fkq(evr.O().aP().a(fni.R));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
+   public frl b() {
+      return frl.e;
    }
 
    @Override
-   public fqz b() {
-      return fqz.c;
+   public void a(eqo $$0, evc $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * aup.a($$3 * (float) Math.PI);
+      eqk $$5 = new eqk();
+      $$5.a($$1.f());
+      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$5.b(-1.0F, -1.0F, 1.0F);
+      $$5.a(0.0F, -1.101F, 1.5F);
+      ftt.a $$6 = evr.O().aO().c();
+      eqo $$7 = $$6.getBuffer(this.b);
+      this.a.a($$5, $$7, 15728880, ges.d, 1.0F, 1.0F, 1.0F, $$4);
+      $$6.b();
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   public static record a(frq a) implements fqy<jy> {
-      public fqv a(jy $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fre $$8 = new fre($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.c();
-         $$8.z = $$0.c();
-         $$8.a($$1.z.a(12) + 8);
-         return $$8;
+   public static class a implements frk<ka> {
+      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fre($$1, $$2, $$3, $$4);
       }
    }
 }

@@ -1,42 +1,70 @@
-import com.mojang.serialization.Codec;
-import java.util.Collections;
+import com.google.common.collect.Lists;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class eag extends ean {
-   public static final Codec<eag> a = Codec.unit(() -> eag.b);
-   public static final eag b = new eag();
-
-   private eag() {
-      super(eap.a.a);
-   }
+public class eag implements dzt {
+   private final List<dzs> a = Lists.newArrayList();
 
    @Override
-   public jb a(edh $$0, ddc $$1) {
-      return jb.g;
+   public void a(dzs $$0) {
+      this.a.add($$0);
    }
 
+   @Nullable
    @Override
-   public List<edg.c> a(edh $$0, hx $$1, ddc $$2, auv $$3) {
-      return Collections.emptyList();
+   public dzs a(dzg $$0) {
+      return dzs.a(this.a, $$0);
    }
 
-   @Override
-   public dyy a(edh $$0, hx $$1, ddc $$2) {
-      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   @Deprecated
+   public void a(int $$0) {
+      for (dzs $$1 : this.a) {
+         $$1.a(0, $$0, 0);
+      }
    }
 
-   @Override
-   public boolean a(edh $$0, cuk $$1, cui $$2, dle $$3, hx $$4, hx $$5, ddc $$6, dyy $$7, auv $$8, boolean $$9) {
-      return true;
+   @Deprecated
+   public int a(int $$0, int $$1, auw $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      dzg $$5 = this.d();
+      int $$6 = $$5.e() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
+      }
+
+      int $$7 = $$6 - $$5.l();
+      this.a($$7);
+      return $$7;
    }
 
-   @Override
-   public eao<?> a() {
-      return eao.d;
+   /** @deprecated */
+   public void a(auw $$0, int $$1, int $$2) {
+      dzg $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.e();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
+      } else {
+         $$5 = $$1;
+      }
+
+      int $$7 = $$5 - $$3.i();
+      this.a($$7);
    }
 
-   @Override
-   public String toString() {
-      return "Empty";
+   public ead a() {
+      return new ead(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public dzg d() {
+      return dzs.a(this.a.stream());
    }
 }

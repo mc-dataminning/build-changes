@@ -1,36 +1,31 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class abj implements xf<za> {
-   private final int a;
-   private final blg b;
+public class abj implements xg<zb> {
+   private final IntList a;
 
-   public abj(int $$0, blg $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public abj(IntList $$0) {
+      this.a = new IntArrayList($$0);
    }
 
-   public abj(ui $$0) {
-      this.a = $$0.n();
-      this.b = $$0.a(kd.d);
+   public abj(int... $$0) {
+      this.a = new IntArrayList($$0);
+   }
+
+   public abj(uj $$0) {
+      this.a = $$0.a();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.a);
-      $$0.a(kd.d, this.b);
+   public void a(uj $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public blv a(ctp $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Nullable
-   public blg a() {
-      return this.b;
+   public IntList a() {
+      return this.a;
    }
 }

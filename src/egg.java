@@ -1,210 +1,124 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class egg implements egr {
-   private final egs a;
-   private final egr b;
-
-   public egg(egs $$0, egr $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public record egg(egg.a a, byte b, byte c, byte d, @Nullable vg e) {
+   public byte a() {
+      return this.a.a();
    }
 
-   @Override
-   public int a() {
-      return this.b.a();
+   public boolean b() {
+      return this.a.d();
    }
 
-   @Override
-   public int b() {
-      return this.b.b();
+   public egg.a c() {
+      return this.a;
    }
 
-   @Override
-   public int c() {
-      return this.b.c();
+   public byte d() {
+      return this.b;
    }
 
-   @Override
-   public float d() {
-      return this.b.d();
+   public byte e() {
+      return this.c;
    }
 
-   @Override
-   public long e() {
-      return this.b.e();
+   public byte f() {
+      return this.d;
    }
 
-   @Override
-   public long f() {
-      return this.b.f();
+   @Nullable
+   public vg g() {
+      return this.e;
    }
 
-   @Override
-   public String g() {
-      return this.a.g();
-   }
+   public static enum a implements avl {
+      a("player", false, true),
+      b("frame", true, true),
+      c("red_marker", false, true),
+      d("blue_marker", false, true),
+      e("target_x", true, false),
+      f("target_point", true, false),
+      g("player_off_map", false, true),
+      h("player_off_limits", false, true),
+      i("mansion", true, 5393476, false, true),
+      j("monument", true, 3830373, false, true),
+      k("banner_white", true, true),
+      l("banner_orange", true, true),
+      m("banner_magenta", true, true),
+      n("banner_light_blue", true, true),
+      o("banner_yellow", true, true),
+      p("banner_lime", true, true),
+      q("banner_pink", true, true),
+      r("banner_gray", true, true),
+      s("banner_light_gray", true, true),
+      t("banner_cyan", true, true),
+      u("banner_purple", true, true),
+      v("banner_blue", true, true),
+      w("banner_brown", true, true),
+      x("banner_green", true, true),
+      y("banner_red", true, true),
+      z("banner_black", true, true),
+      A("red_x", true, false),
+      B("village_desert", true, efd.w.ak, false, true),
+      C("village_plains", true, efd.w.ak, false, true),
+      D("village_savanna", true, efd.w.ak, false, true),
+      E("village_snowy", true, efd.w.ak, false, true),
+      F("village_taiga", true, efd.w.ak, false, true),
+      G("jungle_temple", true, efd.w.ak, false, true),
+      H("swamp_hut", true, efd.w.ak, false, true);
 
-   @Override
-   public int h() {
-      return this.b.h();
-   }
+      public static final Codec<egg.a> I = avl.a(egg.a::values);
+      private final String J;
+      private final byte K;
+      private final boolean L;
+      private final int M;
+      private final boolean N;
+      private final boolean O;
 
-   @Override
-   public void a(int $$0) {
-   }
+      private a(String $$0, boolean $$1, boolean $$2) {
+         this($$0, $$1, -1, $$2, false);
+      }
 
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
+      private a(String $$0, boolean $$1, int $$2, boolean $$3, boolean $$4) {
+         this.J = $$0;
+         this.O = $$3;
+         this.K = (byte)this.ordinal();
+         this.L = $$1;
+         this.M = $$2;
+         this.N = $$4;
+      }
 
-   @Override
-   public int j() {
-      return this.b.j();
-   }
+      public byte a() {
+         return this.K;
+      }
 
-   @Override
-   public boolean k() {
-      return this.b.k();
-   }
+      public boolean b() {
+         return this.N;
+      }
 
-   @Override
-   public int l() {
-      return this.b.l();
-   }
+      public boolean d() {
+         return this.L;
+      }
 
-   @Override
-   public ctm m() {
-      return this.a.m();
-   }
+      public boolean e() {
+         return this.M >= 0;
+      }
 
-   @Override
-   public void b(int $$0) {
-   }
+      public int f() {
+         return this.M;
+      }
 
-   @Override
-   public void c(int $$0) {
-   }
+      public static egg.a a(byte $$0) {
+         return values()[aup.a($$0, 0, values().length - 1)];
+      }
 
-   @Override
-   public void d(int $$0) {
-   }
+      public boolean g() {
+         return this.O;
+      }
 
-   @Override
-   public void a(float $$0) {
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(hx $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void f(int $$0) {
-   }
-
-   @Override
-   public void a(ctm $$0) {
-   }
-
-   @Override
-   public boolean n() {
-      return this.a.n();
-   }
-
-   @Override
-   public boolean o() {
-      return this.a.o();
-   }
-
-   @Override
-   public boolean p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public ctl q() {
-      return this.a.q();
-   }
-
-   @Override
-   public dky.c r() {
-      return this.b.r();
-   }
-
-   @Override
-   public void a(dky.c $$0) {
-   }
-
-   @Override
-   public bjy s() {
-      return this.a.s();
-   }
-
-   @Override
-   public boolean t() {
-      return this.a.t();
-   }
-
-   @Override
-   public elg<MinecraftServer> u() {
-      return this.b.u();
-   }
-
-   @Override
-   public int v() {
-      return 0;
-   }
-
-   @Override
-   public void g(int $$0) {
-   }
-
-   @Override
-   public int w() {
-      return 0;
-   }
-
-   @Override
-   public void h(int $$0) {
-   }
-
-   @Override
-   public UUID x() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, ctr $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+      @Override
+      public String c() {
+         return this.J;
+      }
    }
 }

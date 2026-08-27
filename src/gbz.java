@@ -1,24 +1,22 @@
-public class gbz extends gcy<ccf, fjv<ccf>> {
-   private final fub a;
+public class gbz extends gag<cdm, fmy<cdm>> {
+   private static final ahh a = new ahh("textures/entity/witch.png");
 
-   public gbz(gai<ccf, fjv<ccf>> $$0, fub $$1) {
-      super($$0);
-      this.a = $$1;
+   public gbz(fza.a $$0) {
+      super($$0, new fmy<>($$0.a(fni.bQ)), 0.5F);
+      this.a(new gdy<>(this, $$0.d()));
    }
 
-   public void a(eqb $$0, fth $$1, int $$2, ccf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      djh $$10 = $$3.ge();
-      if ($$10 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$11 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$10, $$0, $$1, $$2, gee.d);
-         $$0.b();
-      }
+   public void a(cdm $$0, float $$1, float $$2, eqk $$3, ftt $$4, int $$5) {
+      this.f.b(!$$0.eT().b());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public ahh a(cdm $$0) {
+      return a;
+   }
+
+   protected void a(cdm $$0, eqk $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

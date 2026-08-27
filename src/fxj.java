@@ -1,13 +1,41 @@
-public abstract class fxj<T extends bzx, M extends fki<T>> extends fzt<T, M> {
-   private final float a;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   public fxj(fyn.a $$0, M $$1, float $$2) {
-      super($$0, $$1, 0.75F);
-      this.a = $$2;
+public class fxj implements fxe.a {
+   private final evr a;
+   private static final int b = 10;
+
+   public fxj(evr $$0) {
+      this.a = $$0;
    }
 
-   protected void a(T $$0, eqb $$1, float $$2) {
-      $$1.b(this.a, this.a, this.a);
-      super.a($$0, $$1, $$2);
+   @Override
+   public void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4) {
+      ctx $$5 = this.a.r;
+      hx $$6 = hx.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
+
+      for (hx $$8 : hx.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(cug.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = aup.h($$10, 0.9F, 0.9F);
+         long $$12 = iz.e($$8.a());
+         if ($$7.add($$12)) {
+            fxe.a(
+               $$0,
+               $$1,
+               $$5.L().p().a(cug.a, iz.a($$12)),
+               (double)iz.a(iz.b($$12), 8),
+               (double)iz.a(iz.c($$12), 8),
+               (double)iz.a(iz.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
+
+         if ($$9 != 15) {
+            fxe.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
+      }
    }
 }

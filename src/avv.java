@@ -1,33 +1,63 @@
-import com.google.gson.JsonObject;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import java.util.Arrays;
+import java.util.function.IntConsumer;
+import org.apache.commons.lang3.Validate;
 
-public class avv {
-   private static final String a = a("");
+public class avv implements atf {
+   public static final long[] a = new long[0];
+   private final int b;
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
-      String $$2 = a($$1);
-      return new Dynamic($$0, $$0.createString($$2));
+   public avv(int $$0) {
+      this.b = $$0;
    }
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
-      return new Dynamic($$0, $$0.createString(a));
+   @Override
+   public int a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+      return 0;
    }
 
-   private static String a(String $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("text", $$0);
-      return aue.e($$1);
+   @Override
+   public void b(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
    }
 
-   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
-      JsonObject $$2 = new JsonObject();
-      $$2.addProperty("translate", $$1);
-      return new Dynamic($$0, $$0.createString(aue.e($$2)));
+   @Override
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      return 0;
    }
 
-   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
+   @Override
+   public long[] a() {
+      return a;
+   }
+
+   @Override
+   public int b() {
+      return this.b;
+   }
+
+   @Override
+   public int c() {
+      return 0;
+   }
+
+   @Override
+   public void a(IntConsumer $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         $$0.accept(0);
+      }
+   }
+
+   @Override
+   public void a(int[] $$0) {
+      Arrays.fill($$0, 0, this.b, 0);
+   }
+
+   @Override
+   public atf d() {
+      return this;
    }
 }

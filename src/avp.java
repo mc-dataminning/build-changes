@@ -1,12 +1,14 @@
 import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
 
-public class avp {
-   public static final long a = TimeUnit.SECONDS.toNanos(1L);
-   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
-   public static final long c = TimeUnit.SECONDS.toMillis(1L);
-   public static final long d = TimeUnit.HOURS.toSeconds(1L);
+@FunctionalInterface
+public interface avp {
+   long get(TimeUnit var1);
 
-   public static bjm a(int $$0, int $$1) {
-      return bjm.a($$0 * 20, $$1 * 20);
+   public interface a extends avp, LongSupplier {
+      @Override
+      default long get(TimeUnit $$0) {
+         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
+      }
    }
 }

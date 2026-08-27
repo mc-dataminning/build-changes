@@ -1,23 +1,13 @@
-import java.util.UUID;
-
-public record vq(UUID a, cfk b) {
-   public static vq a(cfk $$0) {
-      return new vq(UUID.randomUUID(), $$0);
+public record vq(vs a, boolean b) {
+   public vq a() {
+      return this.b ? new vq(this.a, false) : this;
    }
 
-   public vz.c a(UUID $$0) {
-      return new vz($$0, this.a).a(avd.a(this.b.b(), "SHA256withRSA"));
-   }
-
-   public vw a() {
-      return new vw(this.a, this.b.c());
-   }
-
-   public UUID b() {
+   public vs b() {
       return this.a;
    }
 
-   public cfk c() {
+   public boolean c() {
       return this.b;
    }
 }

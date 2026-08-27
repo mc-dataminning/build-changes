@@ -1,50 +1,65 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class cnc extends cmt {
-   private static final String a = "Recipes";
-   private static final Logger b = LogUtils.getLogger();
+public class cnc {
+   private final Map<cnb, cnc.a> a = Maps.newHashMap();
+   private int b;
 
-   public cnc(cmt.a $$0) {
-      super($$0);
+   public boolean a(cnb $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Override
-   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
-      cmy $$3 = $$1.b($$2);
-      sn $$4 = $$3.v();
-      if (!$$1.fT().d) {
-         $$1.a($$2, cmy.f);
-      }
-
-      if ($$4 != null && $$4.b("Recipes", 9)) {
-         if (!$$0.B) {
-            st $$5 = $$4.c("Recipes", 8);
-            List<cqe<?>> $$6 = Lists.newArrayList();
-            cqf $$7 = $$0.o().aG();
-
-            for (int $$8 = 0; $$8 < $$5.size(); $$8++) {
-               String $$9 = $$5.j($$8);
-               Optional<cqe<?>> $$10 = $$7.a(new ahg($$9));
-               if (!$$10.isPresent()) {
-                  b.error("Invalid recipe: {}", $$9);
-                  return bkc.d($$3);
-               }
-
-               $$6.add($$10.get());
-            }
-
-            $$1.a($$6);
-            $$1.b(asc.c.b(this));
-         }
-
-         return bkc.a($$3, $$0.y_());
+   public float a(cnb $$0, float $$1) {
+      cnc.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return aup.a($$4 / $$3, 0.0F, 1.0F);
       } else {
-         b.error("Tag not valid: {}", $$4);
-         return bkc.d($$3);
+         return 0.0F;
+      }
+   }
+
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<cnb, cnc.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<cnb, cnc.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
+            }
+         }
+      }
+   }
+
+   public void a(cnb $$0, int $$1) {
+      this.a.put($$0, new cnc.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void b(cnb $$0) {
+      this.a.remove($$0);
+      this.c($$0);
+   }
+
+   protected void b(cnb $$0, int $$1) {
+   }
+
+   protected void c(cnb $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

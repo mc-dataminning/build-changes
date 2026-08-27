@@ -1,57 +1,35 @@
-public class fls<T extends bmn & cct> extends fkk<T> {
-   public fls(fmx $$0) {
-      super($$0);
+public class fls<T extends blw> extends fks<T> {
+   private final fnj a;
+   private final fnj b;
+   private final fnj f;
+
+   public fls(fnj $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_fin");
+      this.f = $$0.b("right_fin");
    }
 
-   public static fnd c() {
-      fnf $$0 = fkk.a(fnb.a, 0.0F);
-      fng $$1 = $$0.a();
-      $$1.a("right_arm", fnc.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fmz.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fnc.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fmz.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fnc.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fmz.a(-2.0F, 12.0F, 0.0F));
-      $$1.a("left_leg", fnc.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fmz.a(2.0F, 12.0F, 0.0F));
-      return fnd.a($$0, 64, 32);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fkk.a.a;
-      this.r = fkk.a.a;
-      cmy $$4 = $$0.b(bka.a);
-      if ($$4.a(cnb.or) && $$0.fW()) {
-         if ($$0.fm() == bmf.b) {
-            this.s = fkk.a.d;
-         } else {
-            this.r = fkk.a.d;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      cmy $$6 = $$0.eT();
-      if ($$0.fW() && ($$6.b() || !$$6.a(cnb.or))) {
-         float $$7 = auo.a(this.c * (float) Math.PI);
-         float $$8 = auo.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
-         this.n.g = 0.0F;
-         this.o.g = 0.0F;
-         this.n.f = -(0.1F - $$7 * 0.6F);
-         this.o.f = 0.1F - $$7 * 0.6F;
-         this.n.e = (float) (-Math.PI / 2);
-         this.o.e = (float) (-Math.PI / 2);
-         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
-         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
-         fiw.a(this.n, this.o, $$3);
-      }
+   public static fnp b() {
+      fnr $$0 = new fnr();
+      fns $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", fno.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fnl.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", fno.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fnl.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", fno.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fnl.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", fno.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fnl.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", fno.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fnl.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", fno.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fnl.a(1.5F, 22.0F, -1.5F));
+      return fnp.a($$0, 32, 32);
    }
 
    @Override
-   public void a(bmf $$0, eqb $$1) {
-      float $$2 = $$0 == bmf.b ? 1.0F : -1.0F;
-      fmx $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public fnj a() {
+      return this.a;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.g = -0.2F + 0.4F * aup.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * aup.a($$3 * 0.2F);
    }
 }

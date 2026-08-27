@@ -301,7 +301,7 @@ public class bal extends DataFix {
 
          int $$8 = this.m.get($$6);
          if (1 << this.g.b() <= $$8) {
-            avy $$9 = new avy(this.g.b() + 1, 4096);
+            avz $$9 = new avz(this.g.b() + 1, 4096);
 
             for (int $$10 = 0; $$10 < 4096; $$10++) {
                $$9.a($$10, this.g.a($$10));
@@ -323,7 +323,7 @@ public class bal extends DataFix {
       protected final List<Dynamic<?>> e;
       protected final int f;
       @Nullable
-      protected avy g;
+      protected avz g;
 
       public b(Typed<?> $$0, Schema $$1) {
          if (!Objects.equals($$1.getType(bbw.u), this.h)) {
@@ -343,7 +343,7 @@ public class bal extends DataFix {
          } else {
             long[] $$1 = $$0.get("BlockStates").asLongStream().toArray();
             int $$2 = Math.max(4, DataFixUtils.ceillog2(this.e.size()));
-            this.g = new avy($$2, 4096, $$1);
+            this.g = new avz($$2, 4096, $$1);
          }
       }
 

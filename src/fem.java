@@ -1,100 +1,107 @@
-public class fem extends fea<cip> {
-   private static final ahg x = new ahg("container/crafter/disabled_slot");
-   private static final ahg y = new ahg("container/crafter/powered_redstone");
-   private static final ahg z = new ahg("container/crafter/unpowered_redstone");
-   private static final ahg A = new ahg("textures/gui/container/crafter.png");
-   private static final vf B = vf.c("gui.togglable_slot");
-   private final cfi C;
+public abstract class fem<T extends cik> extends fel<T> implements fhg {
+   public final fgw x;
+   private boolean y;
+   private final ahh z;
+   private final ahh A;
+   private final ahh B;
 
-   public fem(cip $$0, cfh $$1, vf $$2) {
-      super($$0, $$1, $$2);
-      this.C = $$1.m;
+   public fem(T $$0, fgw $$1, cfp $$2, vg $$3, ahh $$4, ahh $$5, ahh $$6) {
+      super($$0, $$2, $$3);
+      this.x = $$1;
+      this.z = $$4;
+      this.A = $$5;
+      this.B = $$6;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
+   public void aP_() {
+      super.aP_();
+      this.y = this.g < 379;
+      this.x.a(this.g, this.h, this.f, this.y, this.p);
+      this.t = this.x.a(this.g, this.c);
+      this.d(new eyd(this.t + 20, this.h / 2 - 49, 20, 18, fha.a, $$0 -> {
+         this.x.e();
+         this.t = this.x.a(this.g, this.c);
+         $$0.c(this.t + 20, this.h / 2 - 49);
+      }));
       this.l = (this.c - this.i.a(this.e)) / 2;
    }
 
    @Override
-   protected void a(cjw $$0, int $$1, int $$2, cik $$3) {
-      if ($$0 instanceof ciq && !$$0.h() && !this.C.P_()) {
-         switch ($$3) {
-            case a:
-               if (this.p.e($$1)) {
-                  this.a($$1);
-               } else if (this.p.g().b()) {
-                  this.b($$1);
-               }
-               break;
-            case c:
-               cmy $$4 = this.C.fS().a($$2);
-               if (this.p.e($$1) && !$$4.b()) {
-                  this.a($$1);
-               }
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0) {
-      this.a($$0, true);
-   }
-
-   private void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      this.p.a($$0, $$1);
-      super.a($$0, this.p.j, $$1);
-      float $$2 = $$1 ? 1.0F : 0.75F;
-      this.C.a(ars.zu.a(), 0.4F, $$2);
+   public void E() {
+      super.E();
+      this.x.g();
    }
 
    @Override
-   public void a(ewu $$0, cjw $$1) {
-      if ($$1 instanceof ciq $$2 && this.p.e($$1.e)) {
-         this.a($$0, $$2);
-         return;
-      }
-
-      super.a($$0, $$1);
-   }
-
-   private void a(ewu $$0, ciq $$1) {
-      $$0.a(x, $$1.f - 1, $$1.g - 1, 18, 18);
-   }
-
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      this.a($$0, $$1, $$2);
-      if (this.r instanceof ciq && !this.p.e(this.r.e) && this.p.g().b() && !this.r.h()) {
-         $$0.a(this.i, B, $$1, $$2);
-      }
-   }
-
-   private void c(ewu $$0) {
-      int $$1 = this.g / 2 + 9;
-      int $$2 = this.h / 2 - 48;
-      ahg $$3;
-      if (this.p.l()) {
-         $$3 = y;
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      if (this.x.f() && this.y) {
+         this.b($$0, $$1, $$2, $$3);
+         this.x.a($$0, $$1, $$2, $$3);
       } else {
-         $$3 = z;
+         super.a($$0, $$1, $$2, $$3);
+         this.x.a($$0, $$1, $$2, $$3);
+         this.x.a($$0, this.t, this.u, true, $$3);
       }
 
-      $$0.a($$3, $$1, $$2, 16, 16);
+      this.a($$0, $$1, $$2);
+      this.x.a($$0, this.t, this.u, $$1, $$2);
    }
 
    @Override
-   protected void a(ewu $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
+   protected void a(exe $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(this.z, $$4, $$5, 0, 0, this.c, this.k);
+      if (this.p.s()) {
+         int $$6 = 14;
+         int $$7 = aup.f(this.p.r() * 13.0F) + 1;
+         $$0.a(this.A, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
+      }
+
+      int $$8 = 24;
+      int $$9 = aup.f(this.p.q() * 24.0F);
+      $$0.a(this.B, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.y && this.x.f() ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a(cke $$0, int $$1, int $$2, cis $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.x.a($$0);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? false : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
+      return this.x.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.x.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public void I() {
+      this.x.i();
+   }
+
+   @Override
+   public fha J() {
+      return this.x;
    }
 }

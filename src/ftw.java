@@ -1,197 +1,315 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class ftw {
-   public static final ahg a = new ahg("textures/atlas/shulker_boxes.png");
-   public static final ahg b = new ahg("textures/atlas/beds.png");
-   public static final ahg c = new ahg("textures/atlas/banner_patterns.png");
-   public static final ahg d = new ahg("textures/atlas/shield_patterns.png");
-   public static final ahg e = new ahg("textures/atlas/signs.png");
-   public static final ahg f = new ahg("textures/atlas/chest.png");
-   public static final ahg g = new ahg("textures/atlas/armor_trims.png");
-   public static final ahg h = new ahg("textures/atlas/decorated_pot.png");
-   private static final ftp A = ftp.e(a);
-   private static final ftp B = ftp.c(b);
-   private static final ftp C = ftp.m(c);
-   private static final ftp D = ftp.m(d);
-   private static final ftp E = ftp.e(e);
-   private static final ftp F = ftp.d(f);
-   private static final ftp G = ftp.a(g);
-   private static final ftp H = ftp.b(g);
-   private static final ftp I = ftp.c(gem.e);
-   private static final ftp J = ftp.d(gem.e);
-   private static final ftp K = ftp.g(gem.e);
-   private static final ftp L = ftp.h(gem.e);
-   public static final ggq i = new ggq(a, new ahg("entity/shulker/shulker"));
-   public static final List<ggq> j = Stream.of(
-         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
-      )
-      .map($$0 -> new ggq(a, new ahg("entity/shulker/shulker_" + $$0)))
-      .collect(ImmutableList.toImmutableList());
-   public static final Map<dku, ggq> k = dku.a().collect(Collectors.toMap(Function.identity(), ftw::c));
-   public static final Map<dku, ggq> l = dku.a().collect(Collectors.toMap(Function.identity(), ftw::d));
-   public static final Map<ahf<dgm>, ggq> m = kd.am.f().stream().collect(Collectors.toMap(Function.identity(), ftw::d));
-   public static final Map<ahf<dgm>, ggq> n = kd.am.f().stream().collect(Collectors.toMap(Function.identity(), ftw::e));
-   public static final Map<ahf<String>, ggq> o = kd.ao.f().stream().collect(Collectors.toMap(Function.identity(), ftw::f));
-   public static final ggq[] p = Arrays.stream(clm.values())
-      .sorted(Comparator.comparingInt(clm::a))
-      .map($$0 -> new ggq(b, new ahg("entity/bed/" + $$0.b())))
-      .toArray(ggq[]::new);
-   public static final ggq q = a("trapped");
-   public static final ggq r = a("trapped_left");
-   public static final ggq s = a("trapped_right");
-   public static final ggq t = a("christmas");
-   public static final ggq u = a("christmas_left");
-   public static final ggq v = a("christmas_right");
-   public static final ggq w = a("normal");
-   public static final ggq x = a("normal_left");
-   public static final ggq y = a("normal_right");
-   public static final ggq z = a("ender");
+public class ftw implements AutoCloseable {
+   private static final String a = "minecraft:main";
+   private final eow b;
+   private final aqj c;
+   private final String d;
+   private final List<ftx> e = Lists.newArrayList();
+   private final Map<String, eow> f = Maps.newHashMap();
+   private final List<eow> g = Lists.newArrayList();
+   private Matrix4f h;
+   private int i;
+   private int j;
+   private float k;
+   private float l;
 
-   public static ftp a() {
-      return C;
+   public ftw(gfc $$0, aqj $$1, eow $$2, ahh $$3) throws IOException, JsonSyntaxException {
+      this.c = $$1;
+      this.b = $$2;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.i = $$2.e;
+      this.j = $$2.f;
+      this.d = $$3.toString();
+      this.b();
+      this.a($$0, $$3);
    }
 
-   public static ftp b() {
-      return D;
+   private void a(gfc $$0, ahh $$1) throws IOException, JsonSyntaxException {
+      aqh $$2 = this.c.getResourceOrThrow($$1);
+
+      try {
+         try (Reader $$3 = $$2.e()) {
+            JsonObject $$4 = auf.a($$3);
+            if (auf.d($$4, "targets")) {
+               JsonArray $$5 = $$4.getAsJsonArray("targets");
+               int $$6 = 0;
+
+               for (JsonElement $$7 : $$5) {
+                  try {
+                     this.a($$7);
+                  } catch (Exception var14) {
+                     ahk $$9 = ahk.a(var14);
+                     $$9.a("targets[" + $$6 + "]");
+                     throw $$9;
+                  }
+
+                  $$6++;
+               }
+            }
+
+            if (auf.d($$4, "passes")) {
+               JsonArray $$10 = $$4.getAsJsonArray("passes");
+               int $$11 = 0;
+
+               for (JsonElement $$12 : $$10) {
+                  try {
+                     this.a($$0, $$12);
+                  } catch (Exception var13) {
+                     ahk $$14 = ahk.a(var13);
+                     $$14.a("passes[" + $$11 + "]");
+                     throw $$14;
+                  }
+
+                  $$11++;
+               }
+            }
+         }
+      } catch (Exception var16) {
+         ahk $$16 = ahk.a(var16);
+         $$16.b($$1.a() + " (" + $$2.b() + ")");
+         throw $$16;
+      }
    }
 
-   public static ftp c() {
-      return B;
+   private void a(JsonElement $$0) throws ahk {
+      if (auf.a($$0)) {
+         this.a($$0.getAsString(), this.i, this.j);
+      } else {
+         JsonObject $$1 = auf.m($$0, "target");
+         String $$2 = auf.i($$1, "name");
+         int $$3 = auf.a($$1, "width", this.i);
+         int $$4 = auf.a($$1, "height", this.j);
+         if (this.f.containsKey($$2)) {
+            throw new ahk($$2 + " is already defined");
+         }
+
+         this.a($$2, $$3, $$4);
+      }
    }
 
-   public static ftp d() {
-      return A;
+   private void a(gfc $$0, JsonElement $$1) throws IOException {
+      JsonObject $$2 = auf.m($$1, "pass");
+      String $$3 = auf.i($$2, "name");
+      String $$4 = auf.i($$2, "intarget");
+      String $$5 = auf.i($$2, "outtarget");
+      eow $$6 = this.b($$4);
+      eow $$7 = this.b($$5);
+      if ($$6 == null) {
+         throw new ahk("Input target '" + $$4 + "' does not exist");
+      } else if ($$7 == null) {
+         throw new ahk("Output target '" + $$5 + "' does not exist");
+      } else {
+         ftx $$8 = this.a($$3, $$6, $$7);
+         JsonArray $$9 = auf.a($$2, "auxtargets", null);
+         if ($$9 != null) {
+            int $$10 = 0;
+
+            for (JsonElement $$11 : $$9) {
+               try {
+                  JsonObject $$12 = auf.m($$11, "auxtarget");
+                  String $$13 = auf.i($$12, "name");
+                  String $$14 = auf.i($$12, "id");
+                  boolean $$15;
+                  String $$16;
+                  if ($$14.endsWith(":depth")) {
+                     $$15 = true;
+                     $$16 = $$14.substring(0, $$14.lastIndexOf(58));
+                  } else {
+                     $$15 = false;
+                     $$16 = $$14;
+                  }
+
+                  eow $$19 = this.b($$16);
+                  if ($$19 == null) {
+                     if ($$15) {
+                        throw new ahk("Render target '" + $$16 + "' can't be used as depth buffer");
+                     }
+
+                     ahh $$20 = new ahh("textures/effect/" + $$16 + ".png");
+                     this.c.getResource($$20).orElseThrow(() -> new ahk("Render target or texture '" + $$16 + "' does not exist"));
+                     RenderSystem.setShaderTexture(0, $$20);
+                     $$0.a($$20);
+                     gem $$21 = $$0.b($$20);
+                     int $$22 = auf.o($$12, "width");
+                     int $$23 = auf.o($$12, "height");
+                     boolean $$24 = auf.k($$12, "bilinear");
+                     if ($$24) {
+                        RenderSystem.texParameter(3553, 10241, 9729);
+                        RenderSystem.texParameter(3553, 10240, 9729);
+                     } else {
+                        RenderSystem.texParameter(3553, 10241, 9728);
+                        RenderSystem.texParameter(3553, 10240, 9728);
+                     }
+
+                     $$8.a($$13, $$21::a, $$22, $$23);
+                  } else if ($$15) {
+                     $$8.a($$13, $$19::g, $$19.c, $$19.d);
+                  } else {
+                     $$8.a($$13, $$19::f, $$19.c, $$19.d);
+                  }
+               } catch (Exception var26) {
+                  ahk $$26 = ahk.a(var26);
+                  $$26.a("auxtargets[" + $$10 + "]");
+                  throw $$26;
+               }
+
+               $$10++;
+            }
+         }
+
+         JsonArray $$27 = auf.a($$2, "uniforms", null);
+         if ($$27 != null) {
+            int $$28 = 0;
+
+            for (JsonElement $$29 : $$27) {
+               try {
+                  this.b($$29);
+               } catch (Exception var25) {
+                  ahk $$31 = ahk.a(var25);
+                  $$31.a("uniforms[" + $$28 + "]");
+                  throw $$31;
+               }
+
+               $$28++;
+            }
+         }
+      }
    }
 
-   public static ftp e() {
-      return E;
+   private void b(JsonElement $$0) throws ahk {
+      JsonObject $$1 = auf.m($$0, "uniform");
+      String $$2 = auf.i($$1, "name");
+      eqb $$3 = this.e.get(this.e.size() - 1).b().a($$2);
+      if ($$3 == null) {
+         throw new ahk("Uniform '" + $$2 + "' does not exist");
+      } else {
+         float[] $$4 = new float[4];
+         int $$5 = 0;
+
+         for (JsonElement $$7 : auf.v($$1, "values")) {
+            try {
+               $$4[$$5] = auf.e($$7, "value");
+            } catch (Exception var12) {
+               ahk $$9 = ahk.a(var12);
+               $$9.a("values[" + $$5 + "]");
+               throw $$9;
+            }
+
+            $$5++;
+         }
+
+         switch ($$5) {
+            case 0:
+            default:
+               break;
+            case 1:
+               $$3.a($$4[0]);
+               break;
+            case 2:
+               $$3.a($$4[0], $$4[1]);
+               break;
+            case 3:
+               $$3.a($$4[0], $$4[1], $$4[2]);
+               break;
+            case 4:
+               $$3.a($$4[0], $$4[1], $$4[2], $$4[3]);
+         }
+      }
    }
 
-   public static ftp f() {
-      return E;
+   public eow a(String $$0) {
+      return this.f.get($$0);
    }
 
-   public static ftp g() {
-      return F;
+   public void a(String $$0, int $$1, int $$2) {
+      eow $$3 = new eox($$1, $$2, true, evr.a);
+      $$3.a(0.0F, 0.0F, 0.0F, 0.0F);
+      this.f.put($$0, $$3);
+      if ($$1 == this.i && $$2 == this.j) {
+         this.g.add($$3);
+      }
    }
 
-   public static ftp a(boolean $$0) {
-      return $$0 ? H : G;
-   }
-
-   public static ftp h() {
-      return I;
-   }
-
-   public static ftp i() {
-      return J;
-   }
-
-   public static ftp j() {
-      return K;
-   }
-
-   public static ftp k() {
-      return L;
-   }
-
-   public static void a(Consumer<ggq> $$0) {
-      $$0.accept(i);
-      j.forEach($$0);
-      m.values().forEach($$0);
-      n.values().forEach($$0);
-      k.values().forEach($$0);
-      l.values().forEach($$0);
-
-      for (ggq $$1 : p) {
-         $$0.accept($$1);
+   @Override
+   public void close() {
+      for (eow $$0 : this.f.values()) {
+         $$0.a();
       }
 
-      $$0.accept(q);
-      $$0.accept(r);
-      $$0.accept(s);
-      $$0.accept(t);
-      $$0.accept(u);
-      $$0.accept(v);
-      $$0.accept(w);
-      $$0.accept(x);
-      $$0.accept(y);
-      $$0.accept(z);
+      for (ftx $$1 : this.e) {
+         $$1.close();
+      }
+
+      this.e.clear();
    }
 
-   private static ggq c(dku $$0) {
-      return new ggq(e, new ahg("entity/signs/" + $$0.b()));
+   public ftx a(String $$0, eow $$1, eow $$2) throws IOException {
+      ftx $$3 = new ftx(this.c, $$0, $$1, $$2);
+      this.e.add(this.e.size(), $$3);
+      return $$3;
    }
 
-   private static ggq d(dku $$0) {
-      return new ggq(e, new ahg("entity/signs/hanging/" + $$0.b()));
+   private void b() {
+      this.h = new Matrix4f().setOrtho(0.0F, (float)this.b.c, 0.0F, (float)this.b.d, 0.1F, 1000.0F);
    }
 
-   public static ggq a(dku $$0) {
-      return k.get($$0);
+   public void a(int $$0, int $$1) {
+      this.i = this.b.c;
+      this.j = this.b.d;
+      this.b();
+
+      for (ftx $$2 : this.e) {
+         $$2.a(this.h);
+      }
+
+      for (eow $$3 : this.g) {
+         $$3.a($$0, $$1, evr.a);
+      }
    }
 
-   public static ggq b(dku $$0) {
-      return l.get($$0);
+   public void a(float $$0) {
+      if ($$0 < this.l) {
+         this.k = this.k + (1.0F - this.l);
+         this.k += $$0;
+      } else {
+         this.k = this.k + ($$0 - this.l);
+      }
+
+      this.l = $$0;
+
+      while (this.k > 20.0F) {
+         this.k -= 20.0F;
+      }
+
+      for (ftx $$1 : this.e) {
+         $$1.a(this.k / 20.0F);
+      }
    }
 
-   private static ggq d(ahf<dgm> $$0) {
-      return new ggq(c, dgm.a($$0, true));
-   }
-
-   public static ggq a(ahf<dgm> $$0) {
-      return m.get($$0);
-   }
-
-   private static ggq e(ahf<dgm> $$0) {
-      return new ggq(d, dgm.a($$0, false));
-   }
-
-   public static ggq b(ahf<dgm> $$0) {
-      return n.get($$0);
-   }
-
-   private static ggq a(String $$0) {
-      return new ggq(f, new ahg("entity/chest/" + $$0));
-   }
-
-   private static ggq f(ahf<String> $$0) {
-      return new ggq(h, dhm.a($$0));
+   public final String a() {
+      return this.d;
    }
 
    @Nullable
-   public static ggq c(@Nullable ahf<String> $$0) {
-      return $$0 == null ? null : o.get($$0);
-   }
-
-   public static ggq a(dgv $$0, djz $$1, boolean $$2) {
-      if ($$0 instanceof dhq) {
-         return z;
-      } else if ($$2) {
-         return a($$1, t, u, v);
+   private eow b(@Nullable String $$0) {
+      if ($$0 == null) {
+         return null;
       } else {
-         return $$0 instanceof din ? a($$1, q, r, s) : a($$1, w, x, y);
-      }
-   }
-
-   private static ggq a(djz $$0, ggq $$1, ggq $$2, ggq $$3) {
-      switch ($$0) {
-         case b:
-            return $$2;
-         case c:
-            return $$3;
-         case a:
-         default:
-            return $$1;
+         return $$0.equals("minecraft:main") ? this.b : this.f.get($$0);
       }
    }
 }

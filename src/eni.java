@@ -1,54 +1,83 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class eni<T> implements enl<T>, enn<T> {
-   private final List<enj<T>> a = Lists.newArrayList();
-   private final Set<enj<?>> b = new ObjectOpenCustomHashSet(enj.a);
-
-   @Override
-   public void a(enk<T> $$0) {
-      enj<T> $$1 = new enj<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+public abstract class eni {
+   public boolean a(@Nullable eni $$0) {
+      return $$0 == null ? false : this == $$0;
    }
 
-   private void a(enj<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+   public abstract String b();
+
+   public abstract vu d(vg var1);
+
+   public abstract boolean i();
+
+   public abstract boolean h();
+
+   public abstract eni.b j();
+
+   public abstract n n();
+
+   public abstract Collection<String> g();
+
+   public abstract eni.b k();
+
+   public abstract eni.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, eni.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eni.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static eni.a a(String $$0) {
+         return g.get($$0);
+      }
+
+      private a(String $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public vg a() {
+         return vg.c("team.collision." + this.e);
       }
    }
 
-   @Override
-   public boolean a(hx $$0, T $$1) {
-      return this.b.contains(enj.a($$1, $$0));
-   }
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
 
-   @Override
-   public int a() {
-      return this.a.size();
-   }
+      private static final Map<String, eni.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eni.b)$$0));
+      public final String e;
+      public final int f;
 
-   @Override
-   public tk b(long $$0, Function<T, String> $$1) {
-      st $$2 = new st();
-
-      for (enj<T> $$3 : this.a) {
-         $$2.add($$3.a($$1));
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
       }
 
-      return $$2;
-   }
+      @Nullable
+      public static eni.b a(String $$0) {
+         return g.get($$0);
+      }
 
-   public List<enj<T>> b() {
-      return List.copyOf(this.a);
-   }
+      private b(String $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
 
-   public static <T> eni<T> a(st $$0, Function<String, Optional<T>> $$1, csw $$2) {
-      eni<T> $$3 = new eni<>();
-      enj.a($$0, $$1, $$2, $$3::a);
-      return $$3;
+      public vg b() {
+         return vg.c("team.visibility." + this.e);
+      }
    }
 }

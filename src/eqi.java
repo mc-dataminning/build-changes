@@ -1,207 +1,30 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableMap;
 
 public class eqi {
-   public static eqf a() {
-      throw new IllegalArgumentException();
-   }
-
-   public static eqf a(eqf $$0) {
-      return $$0;
-   }
-
-   public static eqf a(eqf $$0, eqf $$1) {
-      return new eqi.a($$0, $$1);
-   }
-
-   public static eqf a(eqf... $$0) {
-      return new eqi.b($$0);
-   }
-
-   static class a implements eqf {
-      private final eqf a;
-      private final eqf b;
-
-      public a(eqf $$0, eqf $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
-         } else {
-            this.a = $$0;
-            this.b = $$1;
-         }
-      }
-
-      @Override
-      public eqf a(double $$0, double $$1, double $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public eqf a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public eqf a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public eqf a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public eqf b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public eqf a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-      }
-
-      @Override
-      public void e() {
-         this.a.e();
-         this.b.e();
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-         this.a.b($$0, $$1, $$2, $$3);
-         this.b.b($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public void l() {
-         this.a.l();
-         this.b.l();
-      }
-   }
-
-   static class b implements eqf {
-      private final eqf[] a;
-
-      public b(eqf[] $$0) {
-         for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < $$0.length; $$2++) {
-               if ($$0[$$1] == $$0[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
-               }
-            }
-         }
-
-         this.a = $$0;
-      }
-
-      private void a(Consumer<eqf> $$0) {
-         for (eqf $$1 : this.a) {
-            $$0.accept($$1);
-         }
-      }
-
-      @Override
-      public eqf a(double $$0, double $$1, double $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public eqf a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
-      }
-
-      @Override
-      public eqf a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public eqf a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public eqf b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public eqf a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.a($$14 -> $$14.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13));
-      }
-
-      @Override
-      public void e() {
-         this.a(eqf::e);
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.b($$0, $$1, $$2, $$3));
-      }
-
-      @Override
-      public void l() {
-         this.a(eqf::l);
-      }
-   }
+   public static final eqq a = new eqq(0, eqq.a.a, eqq.b.a, 3);
+   public static final eqq b = new eqq(0, eqq.a.b, eqq.b.c, 4);
+   public static final eqq c = new eqq(0, eqq.a.a, eqq.b.d, 2);
+   public static final eqq d = new eqq(1, eqq.a.e, eqq.b.d, 2);
+   public static final eqq e = new eqq(2, eqq.a.e, eqq.b.d, 2);
+   public static final eqq f = new eqq(0, eqq.a.c, eqq.b.b, 3);
+   public static final eqq g = new eqq(0, eqq.a.c, eqq.b.e, 1);
+   public static final eqq h = c;
+   public static final eqp i = new eqp(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
+   public static final eqp j = new eqp(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final eqp k = new eqp(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final eqp l = new eqp(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
+   public static final eqp m = new eqp(ImmutableMap.builder().put("Position", a).build());
+   public static final eqp n = new eqp(ImmutableMap.builder().put("Position", a).put("Color", b).build());
+   public static final eqp o = new eqp(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
+   public static final eqp p = new eqp(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
+   public static final eqp q = new eqp(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
+   public static final eqp r = new eqp(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
+   public static final eqp s = new eqp(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
+   public static final eqp t = new eqp(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
+   public static final eqp u = new eqp(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
+   public static final eqp v = new eqp(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
 }

@@ -2,15 +2,15 @@ import com.mojang.serialization.Codec;
 
 public class bx implements ap<bx.a> {
    @Override
-   public void a(aho $$0, ap.a<bx.a> $$1) {
+   public void a(ahp $$0, ap.a<bx.a> $$1) {
    }
 
    @Override
-   public void b(aho $$0, ap.a<bx.a> $$1) {
+   public void b(ahp $$0, ap.a<bx.a> $$1) {
    }
 
    @Override
-   public void a(aho $$0) {
+   public void a(ahp $$0) {
    }
 
    @Override

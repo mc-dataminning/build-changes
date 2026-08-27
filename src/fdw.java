@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fdw {
+   String[] b = new String[]{"oooooo", "Oooooo", "oOoooo", "ooOooo", "oooOoo", "ooooOo", "oooooO"};
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fdw {
+   void H();
 }

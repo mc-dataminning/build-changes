@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class axc extends baw {
    public axc(Schema $$0, boolean $$1) {
-      super($$0, $$1, "CatTypeFix", bbw.x, "minecraft:cat");
+      super($$0, $$1, "CatTypeFix", bbw.y, "minecraft:cat");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

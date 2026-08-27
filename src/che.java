@@ -1,147 +1,39 @@
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public interface che extends bju, bke {
-   elt dk();
+public class che {
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final che c = a("empty").a(0, chc.b).a();
+   public static final che d = a("simple").a(5000, chc.c).a(11000, chc.e).a();
+   public static final che e = a("villager_baby").a(10, chc.b).a(3000, chc.d).a(6000, chc.b).a(10000, chc.d).a(12000, chc.e).a();
+   public static final che f = a("villager_default").a(10, chc.b).a(2000, chc.c).a(9000, chc.f).a(11000, chc.b).a(12000, chc.e).a();
+   private final Map<chc, chg> g = Maps.newHashMap();
 
-   @Nullable
-   ahg C();
-
-   void a(@Nullable ahg var1);
-
-   long D();
-
-   void a(long var1);
-
-   iq<cmy> E();
-
-   void G();
-
-   ctp dM();
-
-   boolean dH();
-
-   @Override
-   default boolean ai_() {
-      return this.g();
+   protected static chf a(String $$0) {
+      che $$1 = it.a(kd.D, $$0, new che());
+      return new chf($$1);
    }
 
-   default void c(sn $$0) {
-      if (this.C() != null) {
-         $$0.a("LootTable", this.C().toString());
-         if (this.D() != 0L) {
-            $$0.a("LootTableSeed", this.D());
-         }
-      } else {
-         bjv.a($$0, this.E());
+   protected void a(chc $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new chg());
       }
    }
 
-   default void b_(sn $$0) {
-      this.G();
-      if ($$0.b("LootTable", 8)) {
-         this.a(new ahg($$0.l("LootTable")));
-         this.a($$0.i("LootTableSeed"));
-      } else {
-         bjv.b($$0, this.E());
-      }
+   protected chg b(chc $$0) {
+      return this.g.get($$0);
    }
 
-   default void a(bkt $$0, ctp $$1, blv $$2) {
-      if ($$1.Z().b(ctl.i)) {
-         bjx.a($$1, $$2, this);
-         if (!$$1.B) {
-            blv $$3 = $$0.c();
-            if ($$3 != null && $$3.ai() == blz.bv) {
-               cdz.a((cfi)$$3, true);
-            }
-         }
-      }
+   protected List<chg> c(chc $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
    }
 
-   default bkb c_(cfi $$0) {
-      $$0.a(this);
-      return !$$0.dM().B ? bkb.b : bkb.a;
-   }
-
-   default void f(@Nullable cfi $$0) {
-      MinecraftServer $$1 = this.dM().o();
-      if (this.C() != null && $$1 != null) {
-         ehe $$2 = $$1.aJ().getLootTable(this.C());
-         if ($$0 != null) {
-            am.O.a((ane)$$0, this.C());
-         }
-
-         this.a(null);
-         ehc.a $$3 = new ehc.a((and)this.dM()).a(ejh.f, this.dk());
-         if ($$0 != null) {
-            $$3.a($$0.go()).a(ejh.a, $$0);
-         }
-
-         $$2.a(this, $$3.a(ejg.c), this.D());
-      }
-   }
-
-   default void f() {
-      this.f(null);
-      this.E().clear();
-   }
-
-   default boolean g() {
-      for (cmy $$0 : this.E()) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   default cmy e_(int $$0) {
-      this.f(null);
-      cmy $$1 = this.E().get($$0);
-      if ($$1.b()) {
-         return cmy.f;
-      } else {
-         this.E().set($$0, cmy.f);
-         return $$1;
-      }
-   }
-
-   default cmy f_(int $$0) {
-      this.f(null);
-      return this.E().get($$0);
-   }
-
-   default cmy b(int $$0, int $$1) {
-      this.f(null);
-      return bjv.a(this.E(), $$0, $$1);
-   }
-
-   default void c(int $$0, cmy $$1) {
-      this.f(null);
-      this.E().set($$0, $$1);
-      if (!$$1.b() && $$1.L() > this.ak_()) {
-         $$1.f(this.ak_());
-      }
-   }
-
-   default bnd g_(final int $$0) {
-      return $$0 >= 0 && $$0 < this.b() ? new bnd() {
-         @Override
-         public cmy a() {
-            return che.this.f_($$0);
-         }
-
-         @Override
-         public boolean a(cmy $$0x) {
-            che.this.c($$0, $$0);
-            return true;
-         }
-      } : bnd.b;
-   }
-
-   default boolean g(cfi $$0) {
-      return !this.dH() && this.dk().a((ir)$$0.dk(), 8.0);
+   public chc a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(chc.b);
    }
 }

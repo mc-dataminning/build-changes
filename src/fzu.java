@@ -1,18 +1,43 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fzu extends fzt<ccu> {
+   private static final ahh a = new ahh("textures/entity/illager/illusioner.png");
 
-public class fzu extends fzt<byl, fjq<byl>> {
-   private static final Map<byl.a, ahg> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(byl.a.b, new ahg("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(byl.a.a, new ahg("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public fzu(fyn.a $$0) {
-      super($$0, new fjq<>($$0.a(fmw.az)), 0.7F);
-      this.a(new gct<>(this, $$0.c()));
+   public fzu(fza.a $$0) {
+      super($$0, new fkx<>($$0.a(fni.aq)), 0.5F);
+      this.a(new gde<ccu, fkx<ccu>>(this, $$0.d()) {
+         public void a(eqk $$0, ftt $$1, int $$2, ccu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gp() || $$3.fX()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
+      this.f.c().k = true;
    }
 
-   public ahg a(byl $$0) {
-      return a.get($$0.w());
+   public ahh a(ccu $$0) {
+      return a;
+   }
+
+   public void a(ccu $$0, float $$1, float $$2, eqk $$3, ftt $$4, int $$5) {
+      if ($$0.ce()) {
+         emc[] $$6 = $$0.D($$2);
+         float $$7 = this.a($$0, $$2);
+
+         for (int $$8 = 0; $$8 < $$6.length; $$8++) {
+            $$3.a();
+            $$3.a(
+               $$6[$$8].c + (double)aup.b((float)$$8 + $$7 * 0.5F) * 0.025,
+               $$6[$$8].d + (double)aup.b((float)$$8 + $$7 * 0.75F) * 0.0125,
+               $$6[$$8].e + (double)aup.b((float)$$8 + $$7 * 0.7F) * 0.025
+            );
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            $$3.b();
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   protected boolean b(ccu $$0) {
+      return true;
    }
 }

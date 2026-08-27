@@ -1,27 +1,17 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class gcp<T extends bmo, M extends fkj<T>> extends gdl<T, M> {
+   private final ftp a;
 
-public class gcp extends gcy<byk, fkm<byk>> {
-   private static final Map<byk.a, ahg> a = ImmutableMap.of(
-      byk.a.b,
-      new ahg("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      byk.a.c,
-      new ahg("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      byk.a.d,
-      new ahg("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public gcp(gai<byk, fkm<byk>> $$0) {
+   public gcp(gav<T, M> $$0, ftp $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(eqb $$0, fth $$1, int $$2, byk $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ce()) {
-         byk.a $$10 = $$3.w();
-         if ($$10 != byk.a.a) {
-            ahg $$11 = a.get($$10);
-            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-         }
-      }
+   public void a(eqk $$0, ftt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      $$0.a();
+      $$0.a(0.0F, 0.4F, -0.4F);
+      $$0.a(a.b.rotationDegrees(180.0F));
+      cng $$10 = $$3.c(bmd.a);
+      this.a.a($$3, $$10, cnd.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

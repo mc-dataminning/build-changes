@@ -1,108 +1,70 @@
-import javax.annotation.Nullable;
-
 public class fty {
-   protected final ftf a;
-   protected final ctp b;
-   protected int c;
-   protected int d;
-   protected int e;
-   private int g;
-   public fwg.b[] f;
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-   public fty(fwg $$0, ctp $$1, int $$2, ftf $$3) {
-      this.a = $$3;
+   public fty(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
       this.b = $$1;
-      this.a($$2);
-      this.a($$0);
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   protected void a(fwg $$0) {
-      if (!evi.O().bq()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         int $$1 = this.d * this.c * this.e;
-         this.f = new fwg.b[$$1];
-
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.c; $$3++) {
-               for (int $$4 = 0; $$4 < this.e; $$4++) {
-                  int $$5 = this.a($$2, $$3, $$4);
-                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.J_() + $$3 * 16, $$4 * 16);
-               }
-            }
-         }
-      }
+   public fty a(fty $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
    }
 
-   public void a() {
-      for (fwg.b $$0 : this.f) {
-         $$0.e();
-      }
-   }
-
-   private int a(int $$0, int $$1, int $$2) {
-      return ($$2 * this.c + $$1) * this.d + $$0;
-   }
-
-   protected void a(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.d = $$1;
-      this.c = this.b.am();
-      this.e = $$1;
-      this.g = $$0;
+   public int a() {
+      return this.a;
    }
 
    public int b() {
-      return this.g;
-   }
-
-   public ctr c() {
       return this.b;
    }
 
-   public void a(double $$0, double $$1) {
-      int $$2 = auo.c($$0);
-      int $$3 = auo.c($$1);
-
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         int $$5 = this.d * 16;
-         int $$6 = $$2 - 8 - $$5 / 2;
-         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
-
-         for (int $$8 = 0; $$8 < this.e; $$8++) {
-            int $$9 = this.e * 16;
-            int $$10 = $$3 - 8 - $$9 / 2;
-            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
-
-            for (int $$12 = 0; $$12 < this.c; $$12++) {
-               int $$13 = this.b.J_() + $$12 * 16;
-               fwg.b $$14 = this.f[this.a($$4, $$12, $$8)];
-               hx $$15 = $$14.f();
-               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
-                  $$14.a($$7, $$13, $$11);
-               }
-            }
-         }
-      }
+   public void a(int $$0) {
+      this.a = $$0;
    }
 
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = Math.floorMod($$0, this.d);
-      int $$5 = Math.floorMod($$1 - this.b.an(), this.c);
-      int $$6 = Math.floorMod($$2, this.e);
-      fwg.b $$7 = this.f[this.a($$4, $$5, $$6)];
-      $$7.a($$3);
+   public void b(int $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   protected fwg.b a(hx $$0) {
-      int $$1 = auo.a($$0.v() - this.b.J_(), 16);
-      if ($$1 >= 0 && $$1 < this.c) {
-         int $$2 = auo.b(auo.a($$0.u(), 16), this.d);
-         int $$3 = auo.b(auo.a($$0.w(), 16), this.e);
-         return this.f[this.a($$2, $$1, $$3)];
-      } else {
-         return null;
-      }
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public void d(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

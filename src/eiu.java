@@ -1,45 +1,62 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
-public class eiu extends eii {
-   public static final Codec<eiu> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(ekr.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, eiu::new)
-   );
-   private final ekq b;
-   private final boolean c;
+public class eiu {
+   public static final BiFunction<cng, ehf, cng> a = ($$0, $$1) -> $$0;
+   private static final Codec<eis> D = kd.G.q().dispatch("function", eis::b, eit::a);
+   public static final Codec<eis> b = atx.a((Supplier<Codec<eis>>)(() -> atx.e(D, eiw.b)));
+   public static final eit c = a("set_count", ejd.a);
+   public static final eit d = a("enchant_with_levels", eil.a);
+   public static final eit e = a("enchant_randomly", eik.a);
+   public static final eit f = a("set_enchantments", ejb.a);
+   public static final eit g = a("set_nbt", ejh.a);
+   public static final eit h = a("furnace_smelt", ejk.a);
+   public static final eit i = a("looting_enchant", eiv.b);
+   public static final eit j = a("set_damage", eje.a);
+   public static final eit k = a("set_attributes", eix.a);
+   public static final eit l = a("set_name", ejg.a);
+   public static final eit m = a("exploration_map", eim.f);
+   public static final eit n = a("set_stew_effect", ejj.a);
+   public static final eit o = a("copy_name", eii.a);
+   public static final eit p = a("set_contents", eiz.a);
+   public static final eit q = a("limit_count", eiq.a);
+   public static final eit r = a("apply_bonus", eif.a);
+   public static final eit s = a("set_loot_table", eja.a);
+   public static final eit t = a("explosion_decay", eig.a);
+   public static final eit u = a("set_lore", ejf.a);
+   public static final eit v = a("fill_player_head", ein.a);
+   public static final eit w = a("copy_nbt", eij.a);
+   public static final eit x = a("copy_state", eih.a);
+   public static final eit y = a("set_banner_pattern", eiy.a);
+   public static final eit z = a("set_potion", eji.a);
+   public static final eit A = a("set_instrument", ejc.a);
+   public static final eit B = a("reference", eio.a);
+   public static final eit C = a("sequence", eiw.a);
 
-   private eiu(List<ejv> $$0, ekq $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   private static eit a(String $$0, Codec<? extends eis> $$1) {
+      return it.a(kd.G, new ahh($$0), new eit($$1));
    }
 
-   @Override
-   public eik b() {
-      return eil.c;
-   }
+   public static BiFunction<cng, ehf, cng> a(List<? extends BiFunction<cng, ehf, cng>> $$0) {
+      List<BiFunction<cng, ehf, cng>> $$1 = List.copyOf($$0);
 
-   @Override
-   public Set<eje<?>> a() {
-      return this.b.a();
-   }
+      return switch ($$1.size()) {
+         case 0 -> a;
+         case 1 -> (BiFunction)$$1.get(0);
+         case 2 -> {
+            BiFunction<cng, ehf, cng> $$2 = $$1.get(0);
+            BiFunction<cng, ehf, cng> $$3 = $$1.get(1);
+            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
+         }
+         default -> ($$1x, $$2x) -> {
+         for (BiFunction<cng, ehf, cng> $$3x : $$1) {
+            $$1x = $$3x.apply($$1x, $$2x);
+         }
 
-   @Override
-   public cmy a(cmy $$0, egw $$1) {
-      int $$2 = this.c ? $$0.L() : 0;
-      $$0.f(auo.a($$2 + this.b.a($$1), 0, $$0.g()));
-      return $$0;
-   }
-
-   public static eii.a<?> a(ekq $$0) {
-      return a($$1 -> new eiu($$1, $$0, false));
-   }
-
-   public static eii.a<?> a(ekq $$0, boolean $$1) {
-      return a($$2 -> new eiu($$2, $$0, $$1));
+         return $$1x;
+      };
+      };
    }
 }

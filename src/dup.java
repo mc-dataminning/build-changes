@@ -1,33 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dup(int b, int c, int d, int e, int f, bjg g, float h) implements dty {
+public class dup implements dug {
    public static final Codec<dup> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dup::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dup::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dup::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dup::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dup::f),
-               bjg.c.fieldOf("extra_rare_growths").forGetter(dup::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dup::h)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dup::new)
    );
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+   public dup(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

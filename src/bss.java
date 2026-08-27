@@ -1,62 +1,68 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bss extends bth {
-   private final bmu a;
+public class bss extends btk {
+   private final bzf a;
+   @Nullable
+   private cfq b;
+   private final ctx c;
+   private final float d;
+   private int e;
+   private final bxd f;
 
-   public bss(bmu $$0) {
+   public bss(bzf $$0, float $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(bth.a.a, bth.a.b));
+      this.c = $$0.dL();
+      this.d = $$1;
+      this.f = bxd.b().a((double)$$1);
+      this.a(EnumSet.of(btk.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.a.ci() < 140;
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
    @Override
    public boolean b() {
-      return this.a();
-   }
-
-   @Override
-   public boolean S_() {
-      return false;
+      if (!this.b.bx()) {
+         return false;
+      } else {
+         return this.a.f((blw)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+      }
    }
 
    @Override
    public void c() {
-      this.h();
+      this.a.B(true);
+      this.e = this.a(40 + this.a.eg().a(40));
    }
 
-   private void h() {
-      Iterable<hx> $$0 = hx.b(
-         auo.a(this.a.dr() - 1.0), this.a.ds(), auo.a(this.a.dx() - 1.0), auo.a(this.a.dr() + 1.0), auo.a(this.a.dt() + 8.0), auo.a(this.a.dx() + 1.0)
-      );
-      hx $$1 = null;
-
-      for (hx $$2 : $$0) {
-         if (this.a(this.a.dM(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
-      }
-
-      if ($$1 == null) {
-         $$1 = hx.a(this.a.dr(), this.a.dt() + 8.0, this.a.dx());
-      }
-
-      this.a.N().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
+   @Override
+   public void d() {
+      this.a.B(false);
+      this.b = null;
    }
 
    @Override
    public void e() {
-      this.h();
-      this.a.a(0.02F, new elt((double)this.a.bk, (double)this.a.bl, (double)this.a.bm));
-      this.a.a(bmr.a, this.a.dp());
+      this.a.I().a(this.b.dq(), this.b.du(), this.b.dw(), 10.0F, (float)this.a.ab());
+      this.e--;
    }
 
-   private boolean a(cts $$0, hx $$1) {
-      djh $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(cws.nd)) && $$2.a($$0, $$1, efh.a);
+   private boolean a(cfq $$0) {
+      for (bkb $$1 : bkb.values()) {
+         cng $$2 = $$0.b($$1);
+         if (this.a.u() && $$2.a(cnj.ry)) {
+            return true;
+         }
+
+         if (this.a.m($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

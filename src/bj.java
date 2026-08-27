@@ -8,13 +8,13 @@ public class bj extends cv<bj.a> {
       return bj.a.a;
    }
 
-   public void a(ane $$0, cmy $$1, int $$2) {
+   public void a(anf $$0, cng $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
    public static record a(Optional<bb> b, Optional<ca> c, ck.d d) implements cv.a {
       public static final Codec<bj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atw.a(bp.b, "player").forGetter(bj.a::a), atw.a(ca.a, "item").forGetter(bj.a::c), atw.a(ck.d.d, "levels", ck.d.c).forGetter(bj.a::d))
+         $$0 -> $$0.group(atx.a(bp.b, "player").forGetter(bj.a::a), atx.a(ca.a, "item").forGetter(bj.a::c), atx.a(ck.d.d, "levels", ck.d.c).forGetter(bj.a::d))
                .apply($$0, bj.a::new)
       );
 
@@ -22,7 +22,7 @@ public class bj extends cv<bj.a> {
          return am.j.a(new bj.a(Optional.empty(), Optional.empty(), ck.d.c));
       }
 
-      public boolean a(cmy $$0, int $$1) {
+      public boolean a(cng $$0, int $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
       }
 

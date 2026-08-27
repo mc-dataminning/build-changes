@@ -1,42 +1,97 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Set;
 
-public class ejb extends eii {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<ejb> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ejb::new));
+public class ejb extends eir {
+   public static final Codec<ejb> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  atx.a(Codec.unboundedMap(kd.f.r(), ela.a), "enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, ejb::new)
+   );
+   private final Map<ih<crr>, ekz> b;
+   private final boolean c;
 
-   private ejb(List<ejv> $$0) {
+   ejb(List<eke> $$0, Map<ih<crr>, ekz> $$1, boolean $$2) {
       super($$0);
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   public eik b() {
-      return eil.h;
+   public eit b() {
+      return eiu.f;
    }
 
    @Override
-   public cmy a(cmy $$0, egw $$1) {
-      if ($$0.b()) {
-         return $$0;
+   public Set<ejn<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public cng a(cng $$0, ehf $$1) {
+      Object2IntMap<crr> $$2 = new Object2IntOpenHashMap();
+      this.b.forEach(($$2x, $$3) -> $$2.put((crr)$$2x.a(), $$3.a($$1)));
+      if ($$0.d() == cnj.qO) {
+         cng $$3 = new cng(cnj.us);
+         $$2.forEach(($$1x, $$2x) -> cmd.a($$3, new cru($$1x, $$2x)));
+         return $$3;
       } else {
-         Optional<cqe<cqr>> $$2 = $$1.d().r().a(cqh.b, new bkj($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cmy $$3 = $$2.get().b().a($$1.d().I_());
-            if (!$$3.b()) {
-               return $$3.c($$0.L());
-            }
+         Map<crr, Integer> $$4 = crt.a($$0);
+         if (this.c) {
+            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$4.getOrDefault($$1x, 0) + $$2x, 0)));
+         } else {
+            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$2x, 0)));
          }
 
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         crt.a($$4, $$0);
          return $$0;
       }
    }
 
-   public static eii.a<?> c() {
-      return a(ejb::new);
+   private static void a(Map<crr, Integer> $$0, crr $$1, int $$2) {
+      if ($$2 == 0) {
+         $$0.remove($$1);
+      } else {
+         $$0.put($$1, $$2);
+      }
+   }
+
+   public static class a extends eir.a<ejb.a> {
+      private final Builder<ih<crr>, ekz> a = ImmutableMap.builder();
+      private final boolean b;
+
+      public a() {
+         this(false);
+      }
+
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected ejb.a a() {
+         return this;
+      }
+
+      public ejb.a a(crr $$0, ekz $$1) {
+         this.a.put($$0.j(), $$1);
+         return this;
+      }
+
+      @Override
+      public eis b() {
+         return new ejb(this.g(), this.a.build(), this.b);
+      }
    }
 }

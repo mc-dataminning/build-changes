@@ -1,36 +1,24 @@
-import java.util.UUID;
+public class xv implements xg<xr> {
+   private final int a;
 
-public record xv(UUID a, xv.a b) implements xf<xq> {
-   public xv(ui $$0) {
-      this($$0.p(), $$0.b(xv.a.class));
+   public xv(int $$0) {
+      this.a = $$0;
+   }
+
+   public xv(uj $$0) {
+      this.a = $$0.readInt();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(uj $$0) {
+      $$0.p(this.a);
    }
 
-   public void a(xq $$0) {
+   public void a(xr $$0) {
       $$0.a(this);
    }
 
-   public xv.a d() {
-      return this.b;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
+   public int a() {
+      return this.a;
    }
 }

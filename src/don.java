@@ -1,38 +1,55 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public interface don extends auw {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public class don {
-   public final dvz a;
-   public final dvz b;
-   public final dvz c;
-   public final dvz d;
-   public final dvz e;
-   public final List<djh> f;
-   public final asw<cwq> g;
-   public final asw<cwq> h;
-   public static final Codec<don> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dvz.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               dvz.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               dvz.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               dvz.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               dvz.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               atw.a(djh.b.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               asw.b(ke.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               asw.b(ke.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, don::new)
-   );
+   int c(int var1);
 
-   public don(dvz $$0, dvz $$1, dvz $$2, dvz $$3, dvz $$4, List<djh> $$5, asw<cwq> $$6, asw<cwq> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   @Override
+   default int f() {
+      return this.c(32);
+   }
+
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
+      } else {
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
+
+         return $$2;
+      }
+   }
+
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
+   }
+
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
+   }
+
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

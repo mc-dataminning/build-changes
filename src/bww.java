@@ -1,36 +1,47 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Set;
 
-public class bww extends bwm {
-   private static final ImmutableMap<blz<?>, Float> a = ImmutableMap.builder()
-      .put(blz.z, 8.0F)
-      .put(blz.H, 12.0F)
-      .put(blz.aa, 8.0F)
-      .put(blz.ab, 12.0F)
-      .put(blz.az, 15.0F)
-      .put(blz.aE, 12.0F)
-      .put(blz.bf, 8.0F)
-      .put(blz.bh, 10.0F)
-      .put(blz.bq, 10.0F)
-      .put(blz.br, 8.0F)
-      .put(blz.bt, 8.0F)
-      .build();
+public abstract class bww<E extends bmo> {
+   private static final auw a = auw.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final bxd d = bxd.b().a(16.0);
+   private static final bxd e = bxd.b().a(16.0).e();
+   private static final bxd f = bxd.a().a(16.0);
+   private static final bxd g = bxd.a().a(16.0).e();
+   private static final bxd h = bxd.a().a(16.0).d();
+   private static final bxd i = bxd.a().a(16.0).d().e();
+   private final int j;
+   private long k;
 
-   @Override
-   protected boolean a(bml $$0, bml $$1) {
-      return this.b($$1) && this.e($$0, $$1);
+   public bww(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   private boolean e(bml $$0, bml $$1) {
-      float $$2 = (Float)a.get($$1.ai());
-      return $$1.f((blv)$$0) <= (double)($$2 * $$2);
+   public bww() {
+      this(20);
    }
 
-   @Override
-   protected bvn<bml> b() {
-      return bvn.A;
+   public final void b(ane $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
+      }
    }
 
-   private boolean b(bml $$0) {
-      return a.containsKey($$0.ai());
+   protected abstract void a(ane var1, E var2);
+
+   public abstract Set<bvq<?>> a();
+
+   public static boolean b(bmo $$0, bmo $$1) {
+      return $$0.dN().b(bvq.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
+   }
+
+   public static boolean c(bmo $$0, bmo $$1) {
+      return $$0.dN().b(bvq.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
+   }
+
+   public static boolean d(bmo $$0, bmo $$1) {
+      return $$0.dN().b(bvq.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

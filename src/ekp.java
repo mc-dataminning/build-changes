@@ -1,4 +1,8 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record ekp(Codec<? extends ekq> a) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ekp {
 }

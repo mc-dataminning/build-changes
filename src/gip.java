@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface gip extends gio {
+   boolean m();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gip {
+   void q();
 }

@@ -22,16 +22,16 @@ public class bdk extends bde {
          bbw.p,
          () -> DSL.optionalFields(
                "minecraft:adventure/adventuring_time",
-               DSL.optionalFields("criteria", DSL.compoundList(bbw.G.in($$0), DSL.constType(DSL.string()))),
+               DSL.optionalFields("criteria", DSL.compoundList(bbw.H.in($$0), DSL.constType(DSL.string()))),
                "minecraft:adventure/kill_a_mob",
-               DSL.optionalFields("criteria", DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.string()))),
+               DSL.optionalFields("criteria", DSL.compoundList(bbw.w.in($$0), DSL.constType(DSL.string()))),
                "minecraft:adventure/kill_all_mobs",
-               DSL.optionalFields("criteria", DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.string()))),
+               DSL.optionalFields("criteria", DSL.compoundList(bbw.w.in($$0), DSL.constType(DSL.string()))),
                "minecraft:husbandry/bred_all_animals",
-               DSL.optionalFields("criteria", DSL.compoundList(bbw.v.in($$0), DSL.constType(DSL.string())))
+               DSL.optionalFields("criteria", DSL.compoundList(bbw.w.in($$0), DSL.constType(DSL.string())))
             )
       );
-      $$0.registerType(false, bbw.G, () -> DSL.constType(a()));
-      $$0.registerType(false, bbw.v, () -> DSL.constType(a()));
+      $$0.registerType(false, bbw.H, () -> DSL.constType(a()));
+      $$0.registerType(false, bbw.w, () -> DSL.constType(a()));
    }
 }

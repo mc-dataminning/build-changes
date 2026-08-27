@@ -1,13 +1,29 @@
-public interface bid {
-   void a();
+public class bid implements bie {
+   public static final bie a = new bid();
 
-   void b();
+   @Override
+   public void a() {
+   }
 
-   void c();
+   @Override
+   public void b() {
+   }
 
-   boolean e();
+   @Override
+   public void c() {
+   }
 
-   bgs f();
+   @Override
+   public boolean e() {
+      return false;
+   }
 
-   void d();
+   @Override
+   public bgt f() {
+      return bgq.a;
+   }
+
+   @Override
+   public void d() {
+   }
 }

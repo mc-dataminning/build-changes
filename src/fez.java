@@ -1,47 +1,16 @@
-public class fez extends fea<cjb> {
-   private static final ahg x = new ahg("container/horse/chest_slots");
-   private static final ahg y = new ahg("container/horse/saddle_slot");
-   private static final ahg z = new ahg("container/horse/llama_armor_slot");
-   private static final ahg A = new ahg("container/horse/armor_slot");
-   private static final ahg B = new ahg("textures/gui/container/horse.png");
-   private final bzx C;
-   private float D;
-   private float E;
+public class fez implements civ {
+   private final evr a;
 
-   public fez(cjb $$0, cfh $$1, bzx $$2) {
-      super($$0, $$1, $$2.Q_());
-      this.C = $$2;
+   public fez(evr $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void a(ewu $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(B, $$4, $$5, 0, 0, this.c, this.k);
-      if (this.C instanceof bzw $$6 && $$6.w()) {
-         $$0.a(x, 90, 54, 0, 0, $$4 + 79, $$5 + 17, $$6.gm() * 18, 54);
-      }
-
-      if (this.C.g()) {
-         $$0.a(y, $$4 + 7, $$5 + 35 - 18, 18, 18);
-      }
-
-      if (this.C.gN()) {
-         if (this.C instanceof caa) {
-            $$0.a(z, $$4 + 7, $$5 + 35, 18, 18);
-         } else {
-            $$0.a(A, $$4 + 7, $$5 + 35, 18, 18);
-         }
-      }
-
-      ffa.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.D, this.E, this.C);
+   public void a(cij $$0, int $$1, cng $$2) {
+      this.a.q.a($$2, $$1);
    }
 
    @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      this.D = (float)$$1;
-      this.E = (float)$$2;
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void a(cij $$0, int $$1, int $$2) {
    }
 }

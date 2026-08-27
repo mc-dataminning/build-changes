@@ -3,7 +3,7 @@ import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 
-public class bbo extends awb {
+public class bbo extends awc {
    public bbo(Schema $$0) {
       super($$0, bbw.b);
    }

@@ -1,97 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import javax.annotation.Nullable;
 
-public final class doe {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<dli> e = kd.n
-      .q()
-      .comapFlatMap($$0 -> $$0 == dli.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
-   public static final Codec<doe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(doe::a),
-               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
-            )
-            .apply($$0, doe::new)
-   );
-   private static final Set<ahf<cuo>> f = Set.of(cuv.aa, cuv.Z, cuv.ab);
-   public static final ctr b = new ctr() {
-      @Override
-      public int K_() {
-         return 64;
-      }
+public interface doe<T extends dod> {
+   doe<dnv> a = a("block", new dnv.a());
+   doe<dnx> b = a("entity", new dnx.a());
 
-      @Override
-      public int J_() {
-         return -64;
-      }
-   };
-   private final dli g;
-   private final BitSet h;
+   T b(uj var1);
 
-   private doe(dli $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
+   void a(uj var1, T var2);
+
+   Codec<T> a();
+
+   static <S extends doe<T>, T extends dod> S a(String $$0, S $$1) {
+      return it.a(kd.v, $$0, $$1);
    }
 
-   @Nullable
-   public static doe a(sn $$0) {
-      dli $$1 = dli.a($$0.l("target_status"));
-      return $$1 == dli.c ? null : new doe($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
-   }
-
-   public static void a(dly $$0) {
-      int $$1 = 4;
-      hx.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(cws.F)) {
-            $$0.a($$1x, cws.sJ.o(), false);
-         }
-      });
-   }
-
-   public void b(dly $$0) {
-      ctr $$1 = $$0.z();
-      int $$2 = $$1.J_();
-      int $$3 = $$1.al() - 1;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               hx.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, cws.a.o(), false));
-            }
-         }
-      }
-   }
-
-   public dli a() {
-      return this.g;
-   }
-
-   public boolean b() {
-      return !this.h.isEmpty();
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
-   }
-
-   public static cur a(cur $$0, dld $$1) {
-      if (!$$1.y()) {
-         return $$0;
+   static dod c(uj $$0) {
+      doe<?> $$1 = $$0.a(kd.v);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Unknown position source type");
       } else {
-         Predicate<ahf<cuo>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            ih<cuo> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
-         };
+         return $$1.b($$0);
       }
+   }
+
+   static <T extends dod> void a(T $$0, uj $$1) {
+      $$1.a(kd.v, $$0.a());
+      ((doe<T>)$$0.a()).a($$1, $$0);
    }
 }

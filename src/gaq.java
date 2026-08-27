@@ -1,11 +1,12 @@
-public class gaq extends fzt<cak, flw<cak>> {
-   private static final ahg a = new ahg("textures/entity/sniffer/sniffer.png");
+public class gaq extends fzt<ccz> {
+   private static final ahh a = new ahh("textures/entity/illager/pillager.png");
 
-   public gaq(fyn.a $$0) {
-      super($$0, new flw<>($$0.a(fmw.br)), 1.1F);
+   public gaq(fza.a $$0) {
+      super($$0, new fkx<>($$0.a(fni.aN)), 0.5F);
+      this.a(new gde<>(this, $$0.d()));
    }
 
-   public ahg a(cak $$0) {
+   public ahh a(ccz $$0) {
       return a;
    }
 }

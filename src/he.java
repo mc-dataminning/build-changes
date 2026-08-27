@@ -20,61 +20,62 @@ public class he<T extends du<T>> implements hb<T> {
    private static final int b = 8;
    private final List<String> c;
    private final Object2ObjectLinkedOpenHashMap<List<String>, hd<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final ahg e;
+   private final ahh e;
    private final List<he.a<T>> f;
 
-   public he(ahg $$0, List<he.a<T>> $$1, List<String> $$2) {
+   public he(ahh $$0, List<he.a<T>> $$1, List<String> $$2) {
       this.e = $$0;
       this.f = $$1;
       this.c = $$2;
    }
 
    @Override
-   public ahg a() {
+   public ahh a() {
       return this.e;
    }
 
-   public hd<T> a(@Nullable sn $$0, CommandDispatcher<T> $$1, T $$2) throws dv {
+   @Override
+   public hd<T> a(@Nullable so $$0, CommandDispatcher<T> $$1) throws dv {
       if ($$0 == null) {
-         throw new dv(vf.a("commands.function.error.missing_arguments", vf.a(this.a())));
+         throw new dv(vg.a("commands.function.error.missing_arguments", vg.a(this.a())));
       } else {
-         List<String> $$3 = new ArrayList<>(this.c.size());
+         List<String> $$2 = new ArrayList<>(this.c.size());
 
-         for (String $$4 : this.c) {
-            tk $$5 = $$0.c($$4);
-            if ($$5 == null) {
-               throw new dv(vf.a("commands.function.error.missing_argument", vf.a(this.a()), $$4));
+         for (String $$3 : this.c) {
+            tl $$4 = $$0.c($$3);
+            if ($$4 == null) {
+               throw new dv(vg.a("commands.function.error.missing_argument", vg.a(this.a()), $$3));
             }
 
-            $$3.add(a($$5));
+            $$2.add(a($$4));
          }
 
-         hd<T> $$6 = (hd<T>)this.d.getAndMoveToLast($$3);
-         if ($$6 != null) {
-            return $$6;
+         hd<T> $$5 = (hd<T>)this.d.getAndMoveToLast($$2);
+         if ($$5 != null) {
+            return $$5;
          } else {
             if (this.d.size() >= 8) {
                this.d.removeFirst();
             }
 
-            hd<T> $$7 = this.a(this.c, $$3, $$1, $$2);
-            this.d.put($$3, $$7);
-            return $$7;
+            hd<T> $$6 = this.a(this.c, $$2, $$1);
+            this.d.put($$2, $$6);
+            return $$6;
          }
       }
    }
 
-   private static String a(tk $$0) {
-      if ($$0 instanceof sq $$1) {
+   private static String a(tl $$0) {
+      if ($$0 instanceof sr $$1) {
          return a.format((double)$$1.k());
-      } else if ($$0 instanceof so $$2) {
+      } else if ($$0 instanceof sp $$2) {
          return a.format($$2.j());
-      } else if ($$0 instanceof sl $$3) {
+      } else if ($$0 instanceof sm $$3) {
          return String.valueOf($$3.i());
-      } else if ($$0 instanceof tf $$4) {
+      } else if ($$0 instanceof tg $$4) {
          return String.valueOf($$4.h());
       } else {
-         return $$0 instanceof sv $$5 ? String.valueOf($$5.f()) : $$0.t_();
+         return $$0 instanceof sw $$5 ? String.valueOf($$5.f()) : $$0.t_();
       }
    }
 
@@ -83,31 +84,33 @@ public class he<T extends du<T>> implements hb<T> {
       $$1.forEach($$2x -> $$2.add($$0.get($$2x)));
    }
 
-   private hd<T> a(List<String> $$0, List<String> $$1, CommandDispatcher<T> $$2, T $$3) throws dv {
-      List<gs<T>> $$4 = new ArrayList<>(this.f.size());
-      List<String> $$5 = new ArrayList<>($$1.size());
+   private hd<T> a(List<String> $$0, List<String> $$1, CommandDispatcher<T> $$2) throws dv {
+      List<gs<T>> $$3 = new ArrayList<>(this.f.size());
+      List<String> $$4 = new ArrayList<>($$1.size());
 
-      for (he.a<T> $$6 : this.f) {
-         a($$1, $$6.a(), $$5);
-         $$4.add($$6.a($$5, $$2, $$3, this.e));
+      for (he.a<T> $$5 : this.f) {
+         a($$1, $$5.a(), $$4);
+         $$3.add($$5.a($$4, $$2, this.e));
       }
 
-      return new hf<>(this.a().a((UnaryOperator<String>)($$1x -> $$1x + "/" + $$0.hashCode())), $$4);
+      return new hf<>(this.a().a((UnaryOperator<String>)($$1x -> $$1x + "/" + $$0.hashCode())), $$3);
    }
 
    interface a<T> {
       IntList a();
 
-      gs<T> a(List<String> var1, CommandDispatcher<T> var2, T var3, ahg var4) throws dv;
+      gs<T> a(List<String> var1, CommandDispatcher<T> var2, ahh var3) throws dv;
    }
 
    static class b<T extends du<T>> implements he.a<T> {
       private final hg a;
       private final IntList b;
+      private final T c;
 
-      public b(hg $$0, IntList $$1) {
+      public b(hg $$0, IntList $$1, T $$2) {
          this.a = $$0;
          this.b = $$1;
+         this.c = $$2;
       }
 
       @Override
@@ -115,13 +118,14 @@ public class he<T extends du<T>> implements hb<T> {
          return this.b;
       }
 
-      public gs<T> a(List<String> $$0, CommandDispatcher<T> $$1, T $$2, ahg $$3) throws dv {
-         String $$4 = this.a.a($$0);
+      @Override
+      public gs<T> a(List<String> $$0, CommandDispatcher<T> $$1, ahh $$2) throws dv {
+         String $$3 = this.a.a($$0);
 
          try {
-            return hb.a($$1, $$2, new StringReader($$4));
-         } catch (CommandSyntaxException var7) {
-            throw new dv(vf.a("commands.function.error.parse", vf.a($$3), $$4, var7.getMessage()));
+            return hb.a($$1, this.c, new StringReader($$3));
+         } catch (CommandSyntaxException var6) {
+            throw new dv(vg.a("commands.function.error.parse", vg.a($$2), $$3, var6.getMessage()));
          }
       }
    }
@@ -139,7 +143,7 @@ public class he<T extends du<T>> implements hb<T> {
       }
 
       @Override
-      public gs<T> a(List<String> $$0, CommandDispatcher<T> $$1, T $$2, ahg $$3) {
+      public gs<T> a(List<String> $$0, CommandDispatcher<T> $$1, ahh $$2) {
          return this.a;
       }
    }

@@ -1,25 +1,13 @@
-public class frp extends fsc {
-   frp(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.04F;
-      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
-         this.j = $$4;
-         this.k = 0.1;
-         this.l = $$6;
-      }
-   }
-
-   public static class a implements fqy<ka> {
-      private final frq a;
-
-      public a(frq $$0) {
-         this.a = $$0;
-      }
-
-      public fqv a(ka $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frp $$8 = new frp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+public abstract class frp extends fsh {
+   protected frp(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.j = this.j * 0.01F + $$4;
+      this.k = this.k * 0.01F + $$5;
+      this.l = this.l * 0.01F + $$6;
+      this.g = this.g + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.h = this.h + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.i = this.i + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2)) + 4;
    }
 }

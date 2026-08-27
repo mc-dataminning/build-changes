@@ -11,7 +11,7 @@ import java.util.List;
 
 public class gu<T extends du<T>> {
    @VisibleForTesting
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vf.b("command.forkLimit", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vg.b("command.forkLimit", $$0));
    private final String b;
    private final ContextChain<T> c;
 

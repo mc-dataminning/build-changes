@@ -339,14 +339,14 @@ public class azu extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<Either<Integer, Pair<String, String>>> $$0 = DSL.or(DSL.intType(), DSL.named(bbw.z.typeName(), bde.a()));
-      Type<Pair<String, String>> $$1 = DSL.named(bbw.z.typeName(), bde.a());
+      Type<Either<Integer, Pair<String, String>>> $$0 = DSL.or(DSL.intType(), DSL.named(bbw.A.typeName(), bde.a()));
+      Type<Pair<String, String>> $$1 = DSL.named(bbw.A.typeName(), bde.a());
       OpticFinder<Either<Integer, Pair<String, String>>> $$2 = DSL.fieldFinder("id", $$0);
       return this.fixTypeEverywhereTyped(
          "ItemIdFix",
          this.getInputSchema().getType(bbw.t),
          this.getOutputSchema().getType(bbw.t),
-         $$2x -> $$2x.update($$2, $$1, $$0xx -> (Pair)$$0xx.map($$0xxx -> Pair.of(bbw.z.typeName(), a($$0xxx.intValue())), $$0xxx -> $$0xxx))
+         $$2x -> $$2x.update($$2, $$1, $$0xx -> (Pair)$$0xx.map($$0xxx -> Pair.of(bbw.A.typeName(), a($$0xxx.intValue())), $$0xxx -> $$0xxx))
       );
    }
 }

@@ -1,20 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dfj extends dae {
-   public static final MapCodec<dfj> c = b(dfj::new);
-   public static final emm e = cwq.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public class dfj extends dao {
+   public static final MapCodec<dfj> b = b(dfj::new);
 
-   @Override
-   public MapCodec<dfj> a() {
-      return c;
-   }
-
-   public dfj(djg.d $$0) {
-      super($$0, ic.b, e, false);
+   protected dfj(djo.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected daf c() {
-      return (daf)cws.oB;
+   protected MapCodec<? extends dfj> a() {
+      return b;
+   }
+
+   @Override
+   public emv c(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return ems.a();
+   }
+
+   @Override
+   public float d(djp $$0, ctd $$1, hx $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   public boolean a_(djp $$0, ctd $$1, hx $$2) {
+      return true;
    }
 }

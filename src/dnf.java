@@ -1,38 +1,4 @@
-import javax.annotation.Nullable;
-
-public interface dnf<B, T extends B> {
-   static <B, T extends B> dnf<B, T> a(final Class<T> $$0) {
-      return new dnf<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
-
-   static <B, T extends B> dnf<B, T> b(final Class<T> $$0) {
-      return new dnf<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
-
-   @Nullable
-   T a(B var1);
-
-   Class<? extends B> a();
+@FunctionalInterface
+public interface dnf {
+   void onChunkStatusChange(cte var1, amx var2);
 }

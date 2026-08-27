@@ -1,49 +1,18 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+public class gbv extends fzt<cdl> {
+   private static final ahh a = new ahh("textures/entity/illager/vindicator.png");
 
-public class gbv<T extends bml, M extends flc<T>> extends gdh<T, M> {
-   private static final ahg a = new ahg("textures/entity/bee/bee_stinger.png");
-
-   public gbv(fzo<T, M> $$0) {
-      super($$0);
+   public gbv(fza.a $$0) {
+      super($$0, new fkx<>($$0.a(fni.bM)), 0.5F);
+      this.a(new gde<cdl, fkx<cdl>>(this, $$0.d()) {
+         public void a(eqk $$0, ftt $$1, int $$2, cdl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.fX()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eP();
-   }
-
-   @Override
-   protected void a(eqb $$0, fth $$1, int $$2, blv $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = auo.c($$4 * $$4 + $$6 * $$6);
-      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
-      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
-      $$0.a(0.0F, 0.0F, 0.0F);
-      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
-      $$0.a(a.f.rotationDegrees($$10));
-      float $$11 = 0.0F;
-      float $$12 = 0.125F;
-      float $$13 = 0.0F;
-      float $$14 = 0.0625F;
-      float $$15 = 0.03125F;
-      $$0.a(a.b.rotationDegrees(45.0F));
-      $$0.b(0.03125F, 0.03125F, 0.03125F);
-      $$0.a(2.5F, 0.0F, 0.0F);
-      eqf $$16 = $$1.getBuffer(ftp.e(a));
-
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         $$0.a(a.b.rotationDegrees(90.0F));
-         eqb.a $$18 = $$0.c();
-         Matrix4f $$19 = $$18.a();
-         Matrix3f $$20 = $$18.b();
-         a($$16, $$19, $$20, -4.5F, -1, 0.0F, 0.0F, $$2);
-         a($$16, $$19, $$20, 4.5F, -1, 0.125F, 0.0F, $$2);
-         a($$16, $$19, $$20, 4.5F, 1, 0.125F, 0.0625F, $$2);
-         a($$16, $$19, $$20, -4.5F, 1, 0.0F, 0.0625F, $$2);
-      }
-   }
-
-   private static void a(eqf $$0, Matrix4f $$1, Matrix3f $$2, float $$3, int $$4, float $$5, float $$6, int $$7) {
-      $$0.a($$1, $$3, (float)$$4, 0.0F).a(255, 255, 255, 255).a($$5, $$6).c(gee.d).b($$7).a($$2, 0.0F, 1.0F, 0.0F).e();
+   public ahh a(cdl $$0) {
+      return a;
    }
 }

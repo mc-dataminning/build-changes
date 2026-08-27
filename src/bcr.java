@@ -7,7 +7,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bcr extends baw {
    public bcr(Schema $$0, String $$1) {
-      super($$0, false, "Villager profession data fix (" + $$1 + ")", bbw.x, $$1);
+      super($$0, false, "Villager profession data fix (" + $$1 + ")", bbw.y, $$1);
    }
 
    @Override

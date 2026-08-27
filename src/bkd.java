@@ -1,26 +1,37 @@
-import javax.annotation.concurrent.Immutable;
+public class bkd<T> {
+   private final bkc a;
+   private final T b;
 
-@Immutable
-public class bkd {
-   public static final bkd a = new bkd("");
-   public static final String b = "Lock";
-   private final String c;
-
-   public bkd(String $$0) {
-      this.c = $$0;
+   public bkd(bkc $$0, T $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public boolean a(cmy $$0) {
-      return this.c.isEmpty() || !$$0.b() && $$0.A() && this.c.equals($$0.y().getString());
+   public bkc a() {
+      return this.a;
    }
 
-   public void a(sn $$0) {
-      if (!this.c.isEmpty()) {
-         $$0.a("Lock", this.c);
-      }
+   public T b() {
+      return this.b;
    }
 
-   public static bkd b(sn $$0) {
-      return $$0.b("Lock", 8) ? new bkd($$0.l("Lock")) : a;
+   public static <T> bkd<T> a(T $$0) {
+      return new bkd<>(bkc.a, $$0);
+   }
+
+   public static <T> bkd<T> b(T $$0) {
+      return new bkd<>(bkc.b, $$0);
+   }
+
+   public static <T> bkd<T> c(T $$0) {
+      return new bkd<>(bkc.d, $$0);
+   }
+
+   public static <T> bkd<T> d(T $$0) {
+      return new bkd<>(bkc.e, $$0);
+   }
+
+   public static <T> bkd<T> a(T $$0, boolean $$1) {
+      return $$1 ? a($$0) : b($$0);
    }
 }

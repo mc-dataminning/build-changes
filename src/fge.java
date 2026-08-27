@@ -1,59 +1,25 @@
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public abstract class fge extends fdb {
-   private final vf b;
-   @Nullable
-   private final vf c;
-   private final vf k;
-   @Nullable
-   protected exi a;
-   private exz l = exz.a;
-
-   protected fge(vf $$0, vf $$1, vf $$2) {
-      this($$0, $$1, null, $$2);
+public interface fge {
+   static fge a(aub $$0) {
+      return new fgd($$0);
    }
 
-   protected fge(vf $$0, vf $$1, @Nullable vf $$2, vf $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.k = $$3;
-   }
-
-   protected abstract void a(int var1);
-
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.l = exz.a(this.i, this.b, this.g - 100);
-      int $$0 = (this.l.a() + 1) * this.n();
-      if (this.c != null) {
-         int $$1 = this.i.a(this.c);
-         this.a = exi.a(this.c, this.i).a(this.g / 2 - $$1 / 2 - 8, 76 + $$0).a();
-         this.d(this.a);
+   static fge a(ckm $$0) {
+      if ($$0 instanceof ckl) {
+         return new fgc((ckl)$$0);
+      } else {
+         throw new IllegalArgumentException("Unknown TooltipComponent");
       }
-
-      this.a($$0);
    }
 
-   @Override
-   public vf h() {
-      return this.k;
+   int a();
+
+   int a(exc var1);
+
+   default void a(exc $$0, int $$1, int $$2, Matrix4f $$3, ftt.a $$4) {
    }
 
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      int $$4 = this.g / 2 - this.l.b() / 2;
-      this.l.b($$0, $$4, 70, this.n(), 16777215);
-   }
-
-   protected void c(ewu $$0) {
-      $$0.b(this.i, this.e, 25, 30, 16777215);
-   }
-
-   protected int n() {
-      return 9 * 2;
+   default void a(exc $$0, int $$1, int $$2, exe $$3) {
    }
 }

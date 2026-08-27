@@ -1,30 +1,68 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Supplier;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import java.util.List;
 
-public interface foj {
-   Codec<foj> a = avk.a(foj.a::values).dispatch(foj::a, foj.a::a);
+public class foj extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final fpr b;
+   private final foj.a c;
 
-   foj.a a();
+   public foj(fpr $$0, foj.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   public static enum a implements avk {
-      a("player", () -> fok.a.b),
-      b("system", () -> fok.b.b);
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
 
-      private final String c;
-      private final Supplier<Codec<? extends foj>> d;
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         anw.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         anw.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
+      }
+   }
 
-      private a(String $$0, Supplier<Codec<? extends foj>> $$1) {
-         this.c = $$0;
-         this.d = $$1;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = anw.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = aup.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = aup.a($$4.get(4), -1);
+            int $$9 = aup.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
+         }
       }
 
-      private Codec<? extends foj> a() {
-         return this.d.get();
-      }
+      $$0.close();
+   }
 
-      @Override
-      public String c() {
-         return this.c;
-      }
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

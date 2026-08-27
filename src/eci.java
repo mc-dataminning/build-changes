@@ -1,27 +1,24 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class eci extends edd {
-   public static final Codec<eci> a = djh.b.xmap(djg.a::b, cwq::o).listOf().fieldOf("blocks").xmap(eci::new, $$0 -> $$0.e).codec();
-   public static final eci b = new eci(ImmutableList.of(cws.pa));
-   public static final eci c = new eci(ImmutableList.of(cws.a));
-   public static final eci d = new eci(ImmutableList.of(cws.a, cws.pa));
-   private final ImmutableList<cwq> e;
+public class eci extends dzo {
+   public static final Codec<eci> d = a(eci::new);
 
-   public eci(List<cwq> $$0) {
-      this.e = ImmutableList.copyOf($$0);
-   }
-
-   @Nullable
-   @Override
-   public edg.c a(cts $$0, hx $$1, hx $$2, edg.c $$3, edg.c $$4, edc $$5) {
-      return this.e.contains($$4.b().b()) ? null : $$4;
+   public eci(dzo.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected edf<?> a() {
-      return edf.e;
+   public Optional<dzo.b> a(dzo.a $$0) {
+      return a($$0, doy.a.a, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(eag $$0, dzo.a $$1) {
+      $$0.a(new ech($$1.f(), $$1.h().d(), $$1.h().e()));
+   }
+
+   @Override
+   public dzx<?> e() {
+      return dzx.o;
    }
 }

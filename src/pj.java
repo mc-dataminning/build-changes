@@ -1,42 +1,72 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-
 public class pj {
-   public static final ahf<eap> a = pl.a("pillager_outpost/base_plates");
+   @Deprecated
+   public static final eec.a a = new eec.a(-3, 1.0, 1.0, 1.0, 0.0);
 
-   public static void a(pe<eap> $$0) {
-      ii<ede> $$1 = $$0.a(ke.aE);
-      ih<ede> $$2 = $$1.b(pm.q);
-      ii<eap> $$3 = $$0.a(ke.aG);
-      ih<eap> $$4 = $$3.b(pl.a);
-      $$0.a(a, new eap($$4, ImmutableList.of(Pair.of(ean.a("pillager_outpost/base_plate"), 1)), eap.a.b));
-      pl.a(
-         $$0,
-         "pillager_outpost/towers",
-         new eap(
-            $$4,
-            ImmutableList.of(Pair.of(ean.b(ImmutableList.of(ean.a("pillager_outpost/watchtower"), ean.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            eap.a.b
-         )
-      );
-      pl.a($$0, "pillager_outpost/feature_plates", new eap($$4, ImmutableList.of(Pair.of(ean.a("pillager_outpost/feature_plate"), 1)), eap.a.a));
-      pl.a(
-         $$0,
-         "pillager_outpost/features",
-         new eap(
-            $$4,
-            ImmutableList.of(
-               Pair.of(ean.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(ean.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(ean.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(ean.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(ean.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(ean.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(ean.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(ean.g(), 6)
-            ),
-            eap.a.b
-         )
-      );
+   public static void a(pf<eec.a> $$0) {
+      a($$0, 0, dph.a, dph.b, dph.c, dph.d);
+      a($$0, -2, dph.e, dph.f, dph.g, dph.h);
+      a($$0, dph.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
+      $$0.a(dph.j, a);
+      a($$0, dph.k, -3, 1.0);
+      a($$0, dph.l, -7, 1.0);
+      a($$0, dph.m, -1, 1.0);
+      a($$0, dph.n, -5, 1.0);
+      a($$0, dph.o, -7, 1.0, 1.0);
+      a($$0, dph.p, -8, 1.0);
+      a($$0, dph.q, -8, 1.0);
+      a($$0, dph.r, -7, 1.0);
+      a($$0, dph.s, -8, 1.0);
+      a($$0, dph.t, -11, 1.0);
+      a($$0, dph.u, -11, 1.0);
+      a($$0, dph.v, -7, 1.0);
+      a($$0, dph.w, -7, 1.0);
+      a($$0, dph.x, -11, 1.0);
+      a($$0, dph.y, -8, 1.0);
+      a($$0, dph.z, -5, 1.0);
+      a($$0, dph.A, -8, 1.0);
+      a($$0, dph.B, -7, 0.4, 0.5, 1.0);
+      a($$0, dph.C, -8, 1.0);
+      a($$0, dph.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
+      a($$0, dph.E, -8, 1.0);
+      a($$0, dph.F, -7, 1.0);
+      a($$0, dph.G, -7, 1.0);
+      a($$0, dph.H, -5, 1.0);
+      a($$0, dph.I, -8, 1.0);
+      a($$0, dph.J, -8, 1.0);
+      a($$0, dph.K, -7, 1.0);
+      a($$0, dph.L, -7, 1.0);
+      a($$0, dph.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dph.N, -6, 1.0, 1.0, 1.0);
+      a($$0, dph.O, -6, 1.0, 1.0, 0.0, 1.0);
+      a($$0, dph.P, -8, 1.0);
+      a($$0, dph.Q, -2, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dph.R, -8, 1.0);
+      a($$0, dph.S, -6, 1.0, 1.0, 1.0);
+      a($$0, dph.T, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dph.U, -3, 1.0);
+      a($$0, dph.V, -6, 1.0, 1.0, 1.0);
+      a($$0, dph.W, -2, 1.0);
+      a($$0, dph.X, -9, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dph.Y, -8, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dph.Z, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dph.aa, -7, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dph.ab, -4, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dph.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dph.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dph.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dph.af, -3, 1.0, 0.0, 0.0, 0.35);
+      a($$0, dph.ag, -3, 1.0, 0.0, 0.0, 0.9);
+      a($$0, dph.ah, -4, 1.0);
+   }
+
+   private static void a(pf<eec.a> $$0, int $$1, ahg<eec.a> $$2, ahg<eec.a> $$3, ahg<eec.a> $$4, ahg<eec.a> $$5) {
+      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
+      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
+   }
+
+   private static void a(pf<eec.a> $$0, ahg<eec.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new eec.a($$2, $$3, $$4));
    }
 }

@@ -1,24 +1,22 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class ckp extends cmt {
-   private final asw<dgm> a;
+public class ckp extends cnb {
+   private final cwy a;
 
-   public ckp(asw<dgm> $$0, cmt.a $$1) {
+   public ckp(cwy $$0, cnb.a $$1) {
       super($$1);
       this.a = $$0;
    }
 
-   public asw<dgm> b() {
-      return this.a;
+   @Override
+   public String a() {
+      return this.a.h();
    }
 
    @Override
-   public void a(cmy $$0, @Nullable ctp $$1, List<vf> $$2, coq $$3) {
-      $$2.add(this.d().a(n.h));
-   }
-
-   public vt d() {
-      return vf.c(this.a() + ".desc");
+   public void a(cng $$0, @Nullable ctx $$1, List<vg> $$2, coy $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 }

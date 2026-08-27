@@ -1,87 +1,109 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class czv extends dan {
+public class czv extends cwy {
    public static final MapCodec<czv> a = b(czv::new);
-   public static final int b = 3;
-   public static final dkh c = djx.as;
-   private static final int f = 4;
-   private static final int g = 2;
+   public static final dkp b = dkf.aQ;
+   protected static final emv c = cwy.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
+   public static final int d = 7;
 
    @Override
    public MapCodec<czv> a() {
       return a;
    }
 
-   public czv(djg.d $$0) {
+   protected czv(djo.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public void b(djh $$0, and $$1, hx $$2, auv $$3) {
-      this.a($$0, $$1, $$2, $$3);
+   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
+      if ($$1 == ic.b && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(djh $$0, and $$1, hx $$2, auv $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
-         hx.a $$4 = new hx.a();
-
-         for (ic $$5 : ic.values()) {
-            $$4.a($$2, $$5);
-            djh $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
-               $$1.a($$4, this, auo.a($$3, 20, 40));
-            }
-         }
-      } else {
-         $$1.a($$2, this, auo.a($$3, 20, 40));
-      }
-   }
-
-   private boolean e(djh $$0, ctp $$1, hx $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.d($$0, $$1, $$2);
-         return true;
-      }
+   public boolean a(djp $$0, cua $$1, hx $$2) {
+      djp $$3 = $$1.a_($$2.c());
+      return !$$3.e() || $$3.b() instanceof czx || $$3.b() instanceof djh;
    }
 
    @Override
-   public void a(djh $$0, ctp $$1, hx $$2, cwq $$3, hx $$4, boolean $$5) {
-      if ($$3.o().a(this) && this.a($$1, $$2, 2)) {
-         this.d($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public djp a(cpp $$0) {
+      return !this.o().a((cua)$$0.q(), $$0.a()) ? cxa.j.o() : super.a($$0);
    }
 
-   private boolean a(csv $$0, hx $$1, int $$2) {
-      int $$3 = 0;
-      hx.a $$4 = new hx.a();
-
-      for (ic $$5 : ic.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
-         }
-      }
-
+   @Override
+   public boolean g_(djp $$0) {
       return true;
    }
 
    @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(c);
+   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return c;
    }
 
    @Override
-   public cmy a(cts $$0, hx $$1, djh $$2) {
-      return cmy.f;
+   public void a(djp $$0, ane $$1, hx $$2, auw $$3) {
+      if (!$$0.a($$1, $$2)) {
+         a(null, $$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void b(djp $$0, ane $$1, hx $$2, auw $$3) {
+      int $$4 = $$0.c(b);
+      if (!a((cua)$$1, $$2) && !$$1.r($$2.c())) {
+         if ($$4 > 0) {
+            $$1.a($$2, $$0.a(b, Integer.valueOf($$4 - 1)), 2);
+         } else if (!a((ctd)$$1, $$2)) {
+            a(null, $$0, $$1, $$2);
+         }
+      } else if ($$4 < 7) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf(7)), 2);
+      }
+   }
+
+   @Override
+   public void a(ctx $$0, djp $$1, hx $$2, blw $$3, float $$4) {
+      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof bmo && ($$3 instanceof cfq || $$0.Z().b(ctt.c)) && $$3.dg() * $$3.dg() * $$3.dh() > 0.512F) {
+         a($$3, $$1, $$0, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static void a(@Nullable blw $$0, djp $$1, ctx $$2, hx $$3) {
+      djp $$4 = a($$1, cxa.j.o(), $$2, $$3);
+      $$2.b($$3, $$4);
+      $$2.a(dnz.c, $$3, dnz.a.a($$0, $$4));
+   }
+
+   private static boolean a(ctd $$0, hx $$1) {
+      return $$0.a_($$1.c()).a(asi.cp);
+   }
+
+   private static boolean a(cua $$0, hx $$1) {
+      for (hx $$2 : hx.a($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
+         if ($$0.b_($$2).a(asn.a)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
+      return false;
    }
 }

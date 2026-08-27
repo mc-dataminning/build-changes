@@ -19,7 +19,7 @@ public class bfg extends bde {
                "HandItems",
                DSL.list(bbw.t.in($$0)),
                "listener",
-               DSL.optionalFields("event", DSL.optionalFields("game_event", bbw.A.in($$0)))
+               DSL.optionalFields("event", DSL.optionalFields("game_event", bbw.B.in($$0)))
             )
       );
    }

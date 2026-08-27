@@ -52,31 +52,31 @@ public class ms {
       return this;
    }
 
-   public ahg a(cwq $$0, BiConsumer<ahg, Supplier<JsonElement>> $$1) {
+   public ahh a(cwy $$0, BiConsumer<ahh, Supplier<JsonElement>> $$1) {
       return this.B.a($$0, this.A, $$1);
    }
 
-   public ahg a(cwq $$0, String $$1, BiConsumer<ahg, Supplier<JsonElement>> $$2) {
+   public ahh a(cwy $$0, String $$1, BiConsumer<ahh, Supplier<JsonElement>> $$2) {
       return this.B.a($$0, $$1, this.A, $$2);
    }
 
-   private static ms.a a(Function<cwq, mq> $$0, mo $$1) {
+   private static ms.a a(Function<cwy, mq> $$0, mo $$1) {
       return $$2 -> new ms($$0.apply($$2), $$1);
    }
 
-   public static ms a(ahg $$0) {
+   public static ms a(ahh $$0) {
       return new ms(mq.b($$0), mp.c);
    }
 
    @FunctionalInterface
    public interface a {
-      ms get(cwq var1);
+      ms get(cwy var1);
 
-      default ahg create(cwq $$0, BiConsumer<ahg, Supplier<JsonElement>> $$1) {
+      default ahh create(cwy $$0, BiConsumer<ahh, Supplier<JsonElement>> $$1) {
          return this.get($$0).a($$0, $$1);
       }
 
-      default ahg createWithSuffix(cwq $$0, String $$1, BiConsumer<ahg, Supplier<JsonElement>> $$2) {
+      default ahh createWithSuffix(cwy $$0, String $$1, BiConsumer<ahh, Supplier<JsonElement>> $$2) {
          return this.get($$0).a($$0, $$1, $$2);
       }
 

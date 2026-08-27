@@ -1,64 +1,44 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public class ces implements csm {
-   private final cfi a;
-   private cso b = new cso();
-   private int c;
+public enum ces {
+   a(0, art.AL, art.AT),
+   b(40, art.AK, art.AU),
+   c(80, art.AM, art.AU);
 
-   public ces(cfi $$0) {
-      this.a = $$0;
+   private static final ces[] d = ac.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
+   private final int e;
+   private final ars f;
+   private final ars g;
+
+   private ces(int $$0, ars $$1, ars $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public cfi ge() {
-      return this.a;
+   public int a() {
+      return this.e;
    }
 
-   @Override
-   public void f(@Nullable cfi $$0) {
+   public ars b() {
+      return this.f;
    }
 
-   @Override
-   public cso gg() {
-      return this.b;
+   public ars c() {
+      return this.g;
    }
 
-   @Override
-   public void a(cso $$0) {
-      this.b = $$0;
+   public static ces a(int $$0) {
+      for (ces $$1 : d) {
+         if ($$0 >= $$1.e) {
+            return $$1;
+         }
+      }
+
+      return a;
    }
 
-   @Override
-   public void a(csn $$0) {
-      $$0.j();
-   }
-
-   @Override
-   public void l(cmy $$0) {
-   }
-
-   @Override
-   public boolean gm() {
-      return this.a.dM().B;
-   }
-
-   @Override
-   public int w() {
-      return this.c;
-   }
-
-   @Override
-   public void t(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public boolean gh() {
-      return true;
-   }
-
-   @Override
-   public arr gi() {
-      return ars.zN;
+   public boolean d() {
+      return this == c;
    }
 }

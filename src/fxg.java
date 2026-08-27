@@ -1,44 +1,61 @@
-public class fxg implements fws.a {
-   private final evi a;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fxg(evi $$0) {
-      this.a = $$0;
+public class fxg implements fxe.a {
+   private static final float a = 0.02F;
+   private final Map<hx, fxg.a> b = Maps.newHashMap();
+
+   public void a(hx $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new fxg.a($$1, $$2, ac.b() + (long)$$3));
    }
 
    @Override
-   public void a(eqb $$0, fth $$1, double $$2, double $$3, double $$4) {
-      hx $$5 = this.a.s.dm();
-      cts $$6 = this.a.s.dM();
+   public void a() {
+      this.b.clear();
+   }
 
-      for (hx $$7 : hx.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         eer $$8 = $$6.b_($$7);
-         if ($$8.a(asm.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            fws.a(
-               $$0,
-               $$1,
-               new elo(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
-         }
+   @Override
+   public void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ac.b();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((fxg.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
+
+   private void a(eqk $$0, ftt $$1, hx $$2, fxg.a $$3) {
+      fxe.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         fxe.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+      }
+   }
+
+   static class a {
+      public int a;
+      public String b;
+      public long c;
+
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      for (hx $$10 : hx.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         eer $$11 = $$6.b_($$10);
-         if ($$11.a(asm.a)) {
-            fws.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
-         }
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
       }
    }
 }

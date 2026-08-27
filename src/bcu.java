@@ -10,7 +10,7 @@ import java.util.function.Function;
 
 public class bcu extends baw {
    public bcu(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Villager trade fix", bbw.x, "minecraft:villager");
+      super($$0, $$1, "Villager trade fix", bbw.y, "minecraft:villager");
    }
 
    @Override
@@ -25,7 +25,7 @@ public class bcu extends baw {
          OpticFinder<?> $$7 = $$5.findField("buy");
          OpticFinder<?> $$8 = $$5.findField("buyB");
          OpticFinder<?> $$9 = $$5.findField("sell");
-         OpticFinder<Pair<String, String>> $$10 = DSL.fieldFinder("id", DSL.named(bbw.z.typeName(), bde.a()));
+         OpticFinder<Pair<String, String>> $$10 = DSL.fieldFinder("id", DSL.named(bbw.A.typeName(), bde.a()));
          Function<Typed<?>, Typed<?>> $$11 = $$1x -> this.a($$10, $$1x);
          return $$0.updateTyped(
             $$1,

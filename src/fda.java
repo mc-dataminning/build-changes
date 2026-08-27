@@ -1,132 +1,40 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-public class fda extends fdb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 25;
-   private static final vf c = vf.c("recover_world.title").a(n.r);
-   private static final vf k = vf.c("recover_world.bug_tracker");
-   private static final vf l = vf.c("recover_world.restore");
-   private static final vf m = vf.c("recover_world.no_fallback");
-   private static final vf n = vf.c("recover_world.done.title");
-   private static final vf o = vf.c("recover_world.done.success");
-   private static final vf p = vf.c("recover_world.done.failed");
-   private static final vf q = vf.c("recover_world.issue.none").a(n.k);
-   private static final vf r = vf.c("recover_world.issue.missing_file").a(n.m);
-   private final BooleanConsumer t;
-   private final fau u = fau.d().a(10);
-   private final vf v;
-   private final eya w;
-   private final eya x;
-   private final egm.c y;
+public class fda extends fde {
+   private eyo c;
 
-   public fda(evi $$0, BooleanConsumer $$1, egm.c $$2) {
-      super(c);
-      this.t = $$1;
-      this.v = vf.a("recover_world.message", vf.b($$2.d()).a(n.h));
-      this.w = new eya(this.v, $$0.h);
-      this.y = $$2;
-      Exception $$3 = this.a($$2, false);
-      Exception $$4 = this.a($$2, true);
-      vf $$5 = vf.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
-      this.x = new eya($$5, $$0.h);
-      boolean $$6 = $$3 != null && $$4 == null;
-      this.u.c().b();
-      this.u.a(new eyn(this.e, $$0.h));
-      this.u.a(this.w.b(true));
-      this.u.a(this.x);
-      fau $$7 = fau.e().a(5);
-      $$7.a(exg.a(k, fbt.b(this, "https://aka.ms/snapshotbugs?ref=game")).b(120, 20).a());
-      $$7.a(exg.a(l, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : eyr.a(m)).a()).j = $$6;
-      this.u.a($$7);
-      this.u.a(exg.a(ve.k, $$0x -> this.aE_()).b(120, 20).a());
-      this.u.a(this::d);
+   private static evu<?>[] a(evv $$0) {
+      return new evu[]{$$0.d(), $$0.O(), $$0.D(), $$0.P(), $$0.W()};
    }
 
-   private void a(evi $$0) {
-      Exception $$1 = this.a(this.y, false);
-      Exception $$2 = this.a(this.y, true);
-      if ($$1 != null && $$2 == null) {
-         $$0.d(new fch(vf.c("recover_world.restoring")));
-         fht.a(this.y);
-         if (this.y.l()) {
-            $$0.a(new fbu(this.t, n, o, ve.j, ve.k));
-         } else {
-            $$0.a(new fbo(() -> this.t.accept(false), n, p));
-         }
+   public fda(fdm $$0, evv $$1) {
+      super($$0, $$1, vg.c("options.mouse_settings.title"));
+   }
+
+   @Override
+   protected void aP_() {
+      this.c = this.d(new eyo(this.f, this.g, this.h - 64, 32, 25));
+      if (epf.a()) {
+         this.c.a(Stream.concat(Arrays.stream(a(this.b)), Stream.of(this.b.E())).toArray(evu[]::new));
       } else {
-         a.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            $$1 != null ? $$1.getMessage() : "no issues",
-            $$2 != null ? $$2.getMessage() : "no issues"
-         );
-         $$0.a(new fbo(() -> this.t.accept(false), n, p));
+         this.c.a(a(this.b));
       }
-   }
 
-   private vf a(egm.c $$0, boolean $$1, @Nullable Exception $$2) {
-      if ($$1 && $$2 instanceof FileNotFoundException) {
-         return vf.i();
-      } else {
-         vt $$3 = vf.i();
-         Instant $$4 = $$0.a($$1);
-         vt $$5 = $$4 != null ? vf.b(fic.a.format($$4)) : vf.c("recover_world.state_entry.unknown");
-         $$3.b(vf.a("recover_world.state_entry", $$5.a(n.h)));
-         if ($$2 == null) {
-            $$3.b(q);
-         } else if ($$2 instanceof FileNotFoundException) {
-            $$3.b(r);
-         } else if ($$2 instanceof te) {
-            $$3.b(vf.b($$2.getCause().toString()).a(n.m));
-         } else {
-            $$3.b(vf.b($$2.toString()).a(n.m));
-         }
-
-         return $$3;
-      }
-   }
-
-   @Nullable
-   private Exception a(egm.c $$0, boolean $$1) {
-      try {
-         if (!$$1) {
-            $$0.a($$0.f());
-         } else {
-            $$0.a($$0.g());
-         }
-
-         return null;
-      } catch (sy | te | IOException var4) {
-         return var4;
-      }
+      this.d(exr.a(vf.d, $$0 -> {
+         this.b.as();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.c();
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 5, 16777215);
    }
 
    @Override
-   protected void c() {
-      this.x.c(this.g - 50);
-      this.w.c(this.g - 50);
-      this.u.a();
-      fao.a(this.u, this.F());
-   }
-
-   @Override
-   public vf h() {
-      return ve.a(super.h(), this.v);
-   }
-
-   @Override
-   public void aE_() {
-      this.t.accept(false);
+   public void b(exe $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

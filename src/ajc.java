@@ -1,34 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import net.minecraft.server.MinecraftServer;
 
 public class ajc {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vf.b("commands.difficulty.failure", $$0));
-
    public static void a(CommandDispatcher<ds> $$0) {
-      LiteralArgumentBuilder<ds> $$1 = dt.a("difficulty");
-
-      for (bjy $$2 : bjy.values()) {
-         $$1.then(dt.a($$2.e()).executes($$1x -> a((ds)$$1x.getSource(), $$2)));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         bjy $$1x = ((ds)$$0x.getSource()).e().ak();
-         ((ds)$$0x.getSource()).a(() -> vf.a("commands.difficulty.query", $$1x.b()), false);
-         return $$1x.a();
-      }));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
+            .then(dt.a("gamemode", eg.a()).executes($$0x -> a((ds)$$0x.getSource(), eg.a($$0x, "gamemode"))))
+      );
    }
 
-   public static int a(ds $$0, bjy $$1) throws CommandSyntaxException {
-      MinecraftServer $$2 = $$0.l();
-      if ($$2.aY().s() == $$1) {
-         throw a.create($$1.e());
-      } else {
-         $$2.a($$1, true);
-         $$0.a(() -> vf.a("commands.difficulty.success", $$1.b()), true);
-         return 0;
+   private static int a(ds $$0, ctu $$1) {
+      int $$2 = 0;
+      MinecraftServer $$3 = $$0.l();
+      $$3.a($$1);
+      ctu $$4 = $$3.bb();
+      if ($$4 != null) {
+         for (anf $$5 : $$3.ae().t()) {
+            if ($$5.a($$4)) {
+               $$2++;
+            }
+         }
       }
+
+      $$0.a(() -> vg.a("commands.defaultgamemode.success", $$1.d()), true);
+      return $$2;
    }
 }

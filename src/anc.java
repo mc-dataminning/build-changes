@@ -1,273 +1,514 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.util.Either;
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
-import java.util.stream.Stream;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class anc {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 1;
-   private static final double d = 7.6293945E-6F;
-   public static final int a = 60;
-   private static final int e = 400;
-   private final and f;
-   private final blv g;
-   private final int h;
-   private final boolean i;
-   private final Consumer<xf<?>> j;
-   private final afg k = new afg();
-   private int l;
-   private int m;
-   private int n;
-   private elt o = elt.b;
-   private int p;
-   private int q;
-   private List<blv> r = Collections.emptyList();
-   private boolean s;
-   private boolean t;
+public class anc extends dlp {
+   private static final List<dlq> b = dlq.a();
+   private final amw c;
+   final ane d;
+   final Thread e;
+   final anh f;
+   private final anc.b g;
+   public final amo a;
+   private final egp h;
+   private long i;
+   private boolean j = true;
+   private boolean k = true;
+   private static final int l = 4;
+   private final long[] m = new long[4];
+   private final dlq[] n = new dlq[4];
+   private final dll[] o = new dll[4];
    @Nullable
-   private List<agp.b<?>> u;
+   @avu
+   private cui.d p;
 
-   public anc(and $$0, blv $$1, int $$2, boolean $$3, Consumer<xf<?>> $$4) {
-      this.f = $$0;
-      this.j = $$4;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.k.e($$1.dl());
-      this.l = auo.d($$1.dC() * 256.0F / 360.0F);
-      this.m = auo.d($$1.dE() * 256.0F / 360.0F);
-      this.n = auo.d($$1.cp() * 256.0F / 360.0F);
-      this.t = $$1.aC();
-      this.u = $$1.an().c();
+   public anc(ane $$0, egv.c $$1, DataFixer $$2, edp $$3, Executor $$4, dlm $$5, int $$6, int $$7, boolean $$8, ann $$9, dnf $$10, Supplier<egp> $$11) {
+      this.d = $$0;
+      this.g = new anc.b($$0);
+      this.e = Thread.currentThread();
+      File $$12 = $$1.a($$0.ae()).resolve("data").toFile();
+      $$12.mkdirs();
+      this.h = new egp($$12, $$2);
+      this.a = new amo($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, $$6, $$8);
+      this.f = this.a.e();
+      this.c = this.a.j();
+      this.c.b($$7);
+      this.r();
    }
 
-   public void a() {
-      List<blv> $$0 = this.g.cP();
-      if (!$$0.equals(this.r)) {
-         this.j.accept(new acj(this.g));
-         a($$0, this.r).forEach($$0x -> {
-            if ($$0x instanceof ane $$1) {
-               $$1.c.a($$1.dr(), $$1.dt(), $$1.dx(), $$1.dC(), $$1.dE());
+   public anh a() {
+      return this.f;
+   }
+
+   @Nullable
+   private amm b(long $$0) {
+      return this.a.b($$0);
+   }
+
+   public int b() {
+      return this.a.h();
+   }
+
+   private void a(long $$0, dll $$1, dlq $$2) {
+      for (int $$3 = 3; $$3 > 0; $$3--) {
+         this.m[$$3] = this.m[$$3 - 1];
+         this.n[$$3] = this.n[$$3 - 1];
+         this.o[$$3] = this.o[$$3 - 1];
+      }
+
+      this.m[0] = $$0;
+      this.n[0] = $$2;
+      this.o[0] = $$1;
+   }
+
+   @Nullable
+   @Override
+   public dll a(int $$0, int $$1, dlq $$2, boolean $$3) {
+      if (Thread.currentThread() != this.e) {
+         return CompletableFuture.<dll>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
+      } else {
+         bgt $$4 = this.d.af();
+         $$4.d("getChunk");
+         long $$5 = cte.c($$0, $$1);
+
+         for (int $$6 = 0; $$6 < 4; $$6++) {
+            if ($$5 == this.m[$$6] && $$2 == this.n[$$6]) {
+               dll $$7 = this.o[$$6];
+               if ($$7 != null || !$$3) {
+                  return $$7;
+               }
+            }
+         }
+
+         $$4.d("getChunkCacheMiss");
+         CompletableFuture<Either<dll, amm.a>> $$8 = this.c($$0, $$1, $$2, $$3);
+         this.g.c($$8::isDone);
+         dll $$9 = (dll)$$8.join().map($$0x -> $$0x, $$1x -> {
+            if ($$3) {
+               throw (IllegalStateException)ac.b(new IllegalStateException("Chunk not there when requested: " + $$1x));
+            } else {
+               return null;
             }
          });
-         this.r = $$0;
+         this.a($$5, $$9, $$2);
+         return $$9;
       }
+   }
 
-      if (this.g instanceof cbn $$1 && this.p % 10 == 0) {
-         cmy $$2 = $$1.G();
-         if ($$2.d() instanceof cnf) {
-            Integer $$3 = cnf.d($$2);
-            egb $$4 = cnf.a($$3, this.f);
-            if ($$4 != null) {
-               for (ane $$5 : this.f.x()) {
-                  $$4.a($$5, $$2);
-                  xf<?> $$6 = $$4.a($$3, $$5);
-                  if ($$6 != null) {
-                     $$5.c.b($$6);
-                  }
-               }
+   @Nullable
+   @Override
+   public dlw a(int $$0, int $$1) {
+      if (Thread.currentThread() != this.e) {
+         return null;
+      } else {
+         this.d.af().d("getChunkNow");
+         long $$2 = cte.c($$0, $$1);
+
+         for (int $$3 = 0; $$3 < 4; $$3++) {
+            if ($$2 == this.m[$$3] && this.n[$$3] == dlq.n) {
+               dll $$4 = this.o[$$3];
+               return $$4 instanceof dlw ? (dlw)$$4 : null;
             }
          }
 
-         this.b();
-      }
-
-      if (this.p % this.h == 0 || this.g.au || this.g.an().a()) {
-         if (this.g.bO()) {
-            int $$7 = auo.d(this.g.dC() * 256.0F / 360.0F);
-            int $$8 = auo.d(this.g.dE() * 256.0F / 360.0F);
-            boolean $$9 = Math.abs($$7 - this.l) >= 1 || Math.abs($$8 - this.m) >= 1;
-            if ($$9) {
-               this.j.accept(new aas.c(this.g.aj(), (byte)$$7, (byte)$$8, this.g.aC()));
-               this.l = $$7;
-               this.m = $$8;
-            }
-
-            this.k.e(this.g.dl());
-            this.b();
-            this.s = true;
+         amm $$5 = this.b($$2);
+         if ($$5 == null) {
+            return null;
          } else {
-            this.q++;
-            int $$10 = auo.d(this.g.dC() * 256.0F / 360.0F);
-            int $$11 = auo.d(this.g.dE() * 256.0F / 360.0F);
-            elt $$12 = this.g.dl();
-            boolean $$13 = this.k.d($$12).g() >= 7.6293945E-6F;
-            xf<?> $$14 = null;
-            boolean $$15 = $$13 || this.p % 60 == 0;
-            boolean $$16 = Math.abs($$10 - this.l) >= 1 || Math.abs($$11 - this.m) >= 1;
-            boolean $$17 = false;
-            boolean $$18 = false;
-            if (this.p > 0 || this.g instanceof cfo) {
-               long $$19 = this.k.a($$12);
-               long $$20 = this.k.b($$12);
-               long $$21 = this.k.c($$12);
-               boolean $$22 = $$19 < -32768L || $$19 > 32767L || $$20 < -32768L || $$20 > 32767L || $$21 < -32768L || $$21 > 32767L;
-               if ($$22 || this.q > 400 || this.s || this.t != this.g.aC()) {
-                  this.t = this.g.aC();
-                  this.q = 0;
-                  $$14 = new acz(this.g);
-                  $$17 = true;
-                  $$18 = true;
-               } else if ((!$$15 || !$$16) && !(this.g instanceof cfo)) {
-                  if ($$15) {
-                     $$14 = new aas.a(this.g.aj(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), this.g.aC());
-                     $$17 = true;
-                  } else if ($$16) {
-                     $$14 = new aas.c(this.g.aj(), (byte)$$10, (byte)$$11, this.g.aC());
-                     $$18 = true;
+            Either<dll, amm.a> $$6 = $$5.b(dlq.n).getNow(null);
+            if ($$6 == null) {
+               return null;
+            } else {
+               dll $$7 = (dll)$$6.left().orElse(null);
+               if ($$7 != null) {
+                  this.a($$2, $$7, dlq.n);
+                  if ($$7 instanceof dlw) {
+                     return (dlw)$$7;
                   }
-               } else {
-                  $$14 = new aas.b(this.g.aj(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), (byte)$$10, (byte)$$11, this.g.aC());
-                  $$17 = true;
-                  $$18 = true;
+               }
+
+               return null;
+            }
+         }
+      }
+   }
+
+   private void r() {
+      Arrays.fill(this.m, cte.a);
+      Arrays.fill(this.n, null);
+      Arrays.fill(this.o, null);
+   }
+
+   public CompletableFuture<Either<dll, amm.a>> b(int $$0, int $$1, dlq $$2, boolean $$3) {
+      boolean $$4 = Thread.currentThread() == this.e;
+      CompletableFuture<Either<dll, amm.a>> $$5;
+      if ($$4) {
+         $$5 = this.c($$0, $$1, $$2, $$3);
+         this.g.c($$5::isDone);
+      } else {
+         $$5 = CompletableFuture.<CompletableFuture<Either<dll, amm.a>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
+      }
+
+      return $$5;
+   }
+
+   private CompletableFuture<Either<dll, amm.a>> c(int $$0, int $$1, dlq $$2, boolean $$3) {
+      cte $$4 = new cte($$0, $$1);
+      long $$5 = $$4.a();
+      int $$6 = amn.a($$2);
+      amm $$7 = this.b($$5);
+      if ($$3) {
+         this.c.a(anj.h, $$4, $$6, $$4);
+         if (this.a($$7, $$6)) {
+            bgt $$8 = this.d.af();
+            $$8.a("chunkLoad");
+            this.s();
+            $$7 = this.b($$5);
+            $$8.c();
+            if (this.a($$7, $$6)) {
+               throw (IllegalStateException)ac.b(new IllegalStateException("No chunk holder after ticket has been added"));
+            }
+         }
+      }
+
+      return this.a($$7, $$6) ? amm.b : $$7.a($$2, this.a);
+   }
+
+   private boolean a(@Nullable amm $$0, int $$1) {
+      return $$0 == null || $$0.m() > $$1;
+   }
+
+   @Override
+   public boolean b(int $$0, int $$1) {
+      amm $$2 = this.b(new cte($$0, $$1).a());
+      int $$3 = amn.a(dlq.n);
+      return !this.a($$2, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dly c(int $$0, int $$1) {
+      long $$2 = cte.c($$0, $$1);
+      amm $$3 = this.b($$2);
+      if ($$3 == null) {
+         return null;
+      } else {
+         int $$4 = b.size() - 1;
+
+         while (true) {
+            dlq $$5 = b.get($$4);
+            Optional<dll> $$6 = $$3.a($$5).getNow(amm.a).left();
+            if ($$6.isPresent()) {
+               return $$6.get();
+            }
+
+            if ($$5 == dlq.k.d()) {
+               return null;
+            }
+
+            $$4--;
+         }
+      }
+   }
+
+   public ctx c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.g.x();
+   }
+
+   boolean s() {
+      boolean $$0 = this.c.a(this.a);
+      boolean $$1 = this.a.g();
+      if (!$$0 && !$$1) {
+         return false;
+      } else {
+         this.r();
+         return true;
+      }
+   }
+
+   public boolean a(long $$0) {
+      amm $$1 = this.b($$0);
+      if ($$1 == null) {
+         return false;
+      } else if (!this.d.a($$0)) {
+         return false;
+      } else {
+         Either<dlw, amm.a> $$2 = $$1.a().getNow(null);
+         return $$2 != null && $$2.left().isPresent();
+      }
+   }
+
+   public void a(boolean $$0) {
+      this.s();
+      this.a.a($$0);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.a(true);
+      this.f.close();
+      this.a.close();
+   }
+
+   @Override
+   public void a(BooleanSupplier $$0, boolean $$1) {
+      this.d.af().a("purge");
+      this.c.a();
+      this.s();
+      this.d.af().b("chunks");
+      if ($$1) {
+         this.t();
+         this.a.l();
+      }
+
+      this.d.af().b("unload");
+      this.a.a($$0);
+      this.d.af().c();
+      this.r();
+   }
+
+   private void t() {
+      long $$0 = this.d.X();
+      long $$1 = $$0 - this.i;
+      this.i = $$0;
+      if (!this.d.ah()) {
+         bgt $$2 = this.d.af();
+         $$2.a("pollingChunks");
+         $$2.a("filteringLoadedChunks");
+         List<anc.a> $$3 = Lists.newArrayListWithCapacity(this.a.i());
+
+         for (amm $$4 : this.a.k()) {
+            dlw $$5 = $$4.d();
+            if ($$5 != null) {
+               $$3.add(new anc.a($$5, $$4));
+            }
+         }
+
+         if (this.d.o().aO().i()) {
+            $$2.b("naturalSpawnCount");
+            int $$6 = this.c.b();
+            cui.d $$7 = cui.a($$6, this.d.A(), this::a, new cuh(this.a));
+            this.p = $$7;
+            $$2.b("spawnAndTick");
+            boolean $$8 = this.d.Z().b(ctt.e);
+            ac.c($$3, this.d.z);
+            int $$9 = this.d.Z().c(ctt.o);
+            boolean $$10 = this.d.B_().e() % 400L == 0L;
+
+            for (anc.a $$11 : $$3) {
+               dlw $$12 = $$11.a;
+               cte $$13 = $$12.f();
+               if (this.d.a($$13) && this.a.c($$13)) {
+                  $$12.a($$1);
+                  if ($$8 && (this.j || this.k) && this.d.D_().a($$13)) {
+                     cui.a(this.d, $$12, $$7, this.k, this.j, $$10);
+                  }
+
+                  if (this.d.a($$13.a())) {
+                     this.d.a($$12, $$9);
+                  }
                }
             }
 
-            if ((this.i || this.g.au || this.g instanceof bml && ((bml)this.g).fw()) && this.p > 0) {
-               elt $$23 = this.g.dp();
-               double $$24 = $$23.g(this.o);
-               if ($$24 > 1.0E-7 || $$24 > 0.0 && $$23.g() == 0.0) {
-                  this.o = $$23;
-                  this.j.accept(new ace(this.g.aj(), this.o));
-               }
-            }
-
-            if ($$14 != null) {
-               this.j.accept($$14);
-            }
-
-            this.b();
-            if ($$17) {
-               this.k.e($$12);
-            }
-
-            if ($$18) {
-               this.l = $$10;
-               this.m = $$11;
-            }
-
-            this.s = false;
-         }
-
-         int $$25 = auo.d(this.g.cp() * 256.0F / 360.0F);
-         if (Math.abs($$25 - this.n) >= 1) {
-            this.j.accept(new abm(this.g, (byte)$$25));
-            this.n = $$25;
-         }
-
-         this.g.au = false;
-      }
-
-      this.p++;
-      if (this.g.T) {
-         this.a(new ace(this.g));
-         this.g.T = false;
-      }
-   }
-
-   private static Stream<blv> a(List<blv> $$0, List<blv> $$1) {
-      return $$1.stream().filter($$1x -> !$$0.contains($$1x));
-   }
-
-   public void a(ane $$0) {
-      this.g.d($$0);
-      $$0.c.b(new abi(this.g.aj()));
-   }
-
-   public void b(ane $$0) {
-      List<xf<za>> $$1 = new ArrayList<>();
-      this.a($$0, $$1::add);
-      $$0.c.b(new zl($$1));
-      this.g.c($$0);
-   }
-
-   public void a(ane $$0, Consumer<xf<za>> $$1) {
-      if (this.g.dH()) {
-         b.warn("Fetching packet for removed entity {}", this.g);
-      }
-
-      xf<za> $$2 = this.g.dj();
-      this.n = auo.d(this.g.cp() * 256.0F / 360.0F);
-      $$1.accept($$2);
-      if (this.u != null) {
-         $$1.accept(new acc(this.g.aj(), this.u));
-      }
-
-      boolean $$3 = this.i;
-      if (this.g instanceof bml) {
-         Collection<bnn> $$4 = ((bml)this.g).eR().b();
-         if (!$$4.isEmpty()) {
-            $$1.accept(new add(this.g.aj(), $$4));
-         }
-
-         if (((bml)this.g).fw()) {
-            $$3 = true;
-         }
-      }
-
-      this.o = this.g.dp();
-      if ($$3 && !(this.g instanceof bml)) {
-         $$1.accept(new ace(this.g.aj(), this.o));
-      }
-
-      if (this.g instanceof bml) {
-         List<Pair<bma, cmy>> $$5 = Lists.newArrayList();
-
-         for (bma $$6 : bma.values()) {
-            cmy $$7 = ((bml)this.g).c($$6);
-            if (!$$7.b()) {
-               $$5.add(Pair.of($$6, $$7.p()));
+            $$2.b("customSpawners");
+            if ($$8) {
+               this.d.a(this.j, this.k);
             }
          }
 
-         if (!$$5.isEmpty()) {
-            $$1.accept(new acf(this.g.aj(), $$5));
-         }
-      }
-
-      if (!this.g.cP().isEmpty()) {
-         $$1.accept(new acj(this.g));
-      }
-
-      if (this.g.bO()) {
-         $$1.accept(new acj(this.g.cZ()));
-      }
-
-      if (this.g instanceof bmn $$8 && $$8.fS()) {
-         $$1.accept(new acd($$8, $$8.fT()));
+         $$2.b("broadcast");
+         $$3.forEach($$0x -> $$0x.b.a($$0x.a));
+         $$2.c();
+         $$2.c();
       }
    }
 
-   private void b() {
-      agp $$0 = this.g.an();
-      List<agp.b<?>> $$1 = $$0.b();
-      if ($$1 != null) {
-         this.u = $$0.c();
-         this.a(new acc(this.g.aj(), $$1));
-      }
-
-      if (this.g instanceof bml) {
-         Set<bnn> $$2 = ((bml)this.g).eR().a();
-         if (!$$2.isEmpty()) {
-            this.a(new add(this.g.aj(), $$2));
-         }
-
-         $$2.clear();
+   private void a(long $$0, Consumer<dlw> $$1) {
+      amm $$2 = this.b($$0);
+      if ($$2 != null) {
+         $$2.c().getNow(amm.c).left().ifPresent($$1);
       }
    }
 
-   private void a(xf<?> $$0) {
-      this.j.accept($$0);
-      if (this.g instanceof ane) {
-         ((ane)this.g).c.b($$0);
+   @Override
+   public String e() {
+      return Integer.toString(this.j());
+   }
+
+   @VisibleForTesting
+   public int f() {
+      return this.g.br();
+   }
+
+   public dlm g() {
+      return this.a.a();
+   }
+
+   public dln h() {
+      return this.a.b();
+   }
+
+   public dpm i() {
+      return this.a.c();
+   }
+
+   @Override
+   public int j() {
+      return this.a.i();
+   }
+
+   public void a(hx $$0) {
+      int $$1 = iz.a($$0.u());
+      int $$2 = iz.a($$0.w());
+      amm $$3 = this.b(cte.c($$1, $$2));
+      if ($$3 != null) {
+         $$3.a($$0);
+      }
+   }
+
+   @Override
+   public void a(cug $$0, iz $$1) {
+      this.g.execute(() -> {
+         amm $$2 = this.b($$1.r().a());
+         if ($$2 != null) {
+            $$2.a($$0, $$1.b());
+         }
+      });
+   }
+
+   public <T> void a(anj<T> $$0, cte $$1, int $$2, T $$3) {
+      this.c.c($$0, $$1, $$2, $$3);
+   }
+
+   public <T> void b(anj<T> $$0, cte $$1, int $$2, T $$3) {
+      this.c.d($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(cte $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+   }
+
+   public void a(anf $$0) {
+      if (!$$0.dG()) {
+         this.a.a($$0);
+      }
+   }
+
+   public void a(blw $$0) {
+      this.a.b($$0);
+   }
+
+   public void b(blw $$0) {
+      this.a.a($$0);
+   }
+
+   public void a(blw $$0, xg<?> $$1) {
+      this.a.b($$0, $$1);
+   }
+
+   public void b(blw $$0, xg<?> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   public void a(int $$0) {
+      this.a.a($$0);
+   }
+
+   public void b(int $$0) {
+      this.c.b($$0);
+   }
+
+   @Override
+   public void a(boolean $$0, boolean $$1) {
+      this.j = $$0;
+      this.k = $$1;
+   }
+
+   public String a(cte $$0) {
+      return this.a.a($$0);
+   }
+
+   public egp k() {
+      return this.h;
+   }
+
+   public bxq l() {
+      return this.a.m();
+   }
+
+   public dml m() {
+      return this.a.p();
+   }
+
+   @Nullable
+   @avu
+   public cui.d n() {
+      return this.p;
+   }
+
+   public void o() {
+      this.c.e();
+   }
+
+   static record a(dlw a, amm b) {
+   }
+
+   final class b extends bis<Runnable> {
+      b(ctx $$0) {
+         super("Chunk source main thread executor for " + $$0.ae().a());
+      }
+
+      @Override
+      protected Runnable f(Runnable $$0) {
+         return $$0;
+      }
+
+      @Override
+      protected boolean e(Runnable $$0) {
+         return true;
+      }
+
+      @Override
+      protected boolean av() {
+         return true;
+      }
+
+      @Override
+      protected Thread aw() {
+         return anc.this.e;
+      }
+
+      @Override
+      protected void d(Runnable $$0) {
+         anc.this.d.af().d("runTask");
+         super.d($$0);
+      }
+
+      @Override
+      protected boolean x() {
+         if (anc.this.s()) {
+            return true;
+         } else {
+            anc.this.f.b();
+            return super.x();
+         }
       }
    }
 }

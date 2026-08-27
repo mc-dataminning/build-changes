@@ -1,48 +1,25 @@
-public class gdi extends gcy<byy, fjp<byy>> {
-   private static final ahg a = new ahg("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final ahg b = new ahg("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final ahg c = new ahg("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final ahg d = new ahg("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final ahg e = new ahg("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final ahg f = new ahg("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final ahg g = new ahg("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final ahg h = new ahg("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final ahg i = new ahg("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final ahg j = new ahg("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final ahg k = new ahg("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final ahg l = new ahg("textures/entity/fish/tropical_b_pattern_6.png");
-   private final fmd<byy> m;
-   private final fme<byy> n;
+public class gdi<T extends cfq> extends gdl<T, flo<T>> {
+   private final flj a;
 
-   public gdi(gai<byy, fjp<byy>> $$0, fmt $$1) {
+   public gdi(gav<T, flo<T>> $$0, fnf $$1) {
       super($$0);
-      this.m = new fmd<>($$1.a(fmw.bJ));
-      this.n = new fme<>($$1.a(fmw.bH));
+      this.a = new flj($$1.a(fni.aC));
    }
 
-   public void a(eqb $$0, fth $$1, int $$2, byy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      byy.b $$10 = $$3.gp();
+   public void a(eqk $$0, ftt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
+   }
 
-      fjx<byy> $$11 = (fjx<byy>)(switch ($$10.a()) {
-         case a -> this.m;
-         case b -> this.n;
+   private void a(eqk $$0, ftt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
+      so $$9 = $$8 ? $$3.gj() : $$3.gk();
+      bmc.a($$9.l("id")).filter($$0x -> $$0x == bmc.av).ifPresent($$10 -> {
+         $$0.a();
+         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
+         bys.b $$11 = bys.b.a($$9.h("Variant"));
+         eqo $$12 = $$1.getBuffer(this.a.a(gam.a($$11)));
+         this.a.a($$0, $$12, $$2, ges.d, $$4, $$5, $$6, $$7, $$3.ah);
+         $$0.b();
       });
-
-      ahg $$12 = switch ($$10) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      float[] $$13 = $$3.go().d();
-      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
    }
 }

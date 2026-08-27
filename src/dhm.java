@@ -1,110 +1,120 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class dhm {
-   private static final String b = "decorated_pot_base";
-   public static final ahf<String> a = a("decorated_pot_base");
-   private static final String c = "decorated_pot_side";
-   private static final String d = "angler_pottery_pattern";
-   private static final String e = "archer_pottery_pattern";
-   private static final String f = "arms_up_pottery_pattern";
-   private static final String g = "blade_pottery_pattern";
-   private static final String h = "brewer_pottery_pattern";
-   private static final String i = "burn_pottery_pattern";
-   private static final String j = "danger_pottery_pattern";
-   private static final String k = "explorer_pottery_pattern";
-   private static final String l = "friend_pottery_pattern";
-   private static final String m = "heart_pottery_pattern";
-   private static final String n = "heartbreak_pottery_pattern";
-   private static final String o = "howl_pottery_pattern";
-   private static final String p = "miner_pottery_pattern";
-   private static final String q = "mourner_pottery_pattern";
-   private static final String r = "plenty_pottery_pattern";
-   private static final String s = "prize_pottery_pattern";
-   private static final String t = "sheaf_pottery_pattern";
-   private static final String u = "shelter_pottery_pattern";
-   private static final String v = "skull_pottery_pattern";
-   private static final String w = "snort_pottery_pattern";
-   private static final ahf<String> x = a("decorated_pot_side");
-   private static final ahf<String> y = a("angler_pottery_pattern");
-   private static final ahf<String> z = a("archer_pottery_pattern");
-   private static final ahf<String> A = a("arms_up_pottery_pattern");
-   private static final ahf<String> B = a("blade_pottery_pattern");
-   private static final ahf<String> C = a("brewer_pottery_pattern");
-   private static final ahf<String> D = a("burn_pottery_pattern");
-   private static final ahf<String> E = a("danger_pottery_pattern");
-   private static final ahf<String> F = a("explorer_pottery_pattern");
-   private static final ahf<String> G = a("friend_pottery_pattern");
-   private static final ahf<String> H = a("heart_pottery_pattern");
-   private static final ahf<String> I = a("heartbreak_pottery_pattern");
-   private static final ahf<String> J = a("howl_pottery_pattern");
-   private static final ahf<String> K = a("miner_pottery_pattern");
-   private static final ahf<String> L = a("mourner_pottery_pattern");
-   private static final ahf<String> M = a("plenty_pottery_pattern");
-   private static final ahf<String> N = a("prize_pottery_pattern");
-   private static final ahf<String> O = a("sheaf_pottery_pattern");
-   private static final ahf<String> P = a("shelter_pottery_pattern");
-   private static final ahf<String> Q = a("skull_pottery_pattern");
-   private static final ahf<String> R = a("snort_pottery_pattern");
-   private static final Map<cmt, ahf<String>> S = Map.ofEntries(
-      Map.entry(cnb.qI, x),
-      Map.entry(cnb.xA, y),
-      Map.entry(cnb.xB, z),
-      Map.entry(cnb.xC, A),
-      Map.entry(cnb.xD, B),
-      Map.entry(cnb.xE, C),
-      Map.entry(cnb.xF, D),
-      Map.entry(cnb.xG, E),
-      Map.entry(cnb.xH, F),
-      Map.entry(cnb.xI, G),
-      Map.entry(cnb.xJ, H),
-      Map.entry(cnb.xK, I),
-      Map.entry(cnb.xL, J),
-      Map.entry(cnb.xM, K),
-      Map.entry(cnb.xN, L),
-      Map.entry(cnb.xO, M),
-      Map.entry(cnb.xP, N),
-      Map.entry(cnb.xQ, O),
-      Map.entry(cnb.xR, P),
-      Map.entry(cnb.xS, Q),
-      Map.entry(cnb.xT, R)
-   );
+public class dhm extends dhd implements bjv {
+   public static final int c = 6;
+   private static final Logger d = LogUtils.getLogger();
+   private final iq<cng> e = iq.a(6, cng.f);
+   private int f = -1;
 
-   private static ahf<String> a(String $$0) {
-      return ahf.a(ke.ar, new ahg($$0));
+   public dhm(hx $$0, djp $$1) {
+      super(dhf.M, $$0, $$1);
    }
 
-   public static ahg a(ahf<String> $$0) {
-      return $$0.a().d("entity/decorated_pot/");
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.f = $$0;
+         djp $$1 = this.r();
+
+         for (int $$2 = 0; $$2 < cyc.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).b();
+            dkg $$4 = cyc.c.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
+         }
+
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(dnz.c, this.p, dnz.a.a($$1));
+      } else {
+         d.error("Expected slot 0-5, got {}", $$0);
+      }
    }
 
-   @Nullable
-   public static ahf<String> a(cmt $$0) {
-      return S.get($$0);
+   @Override
+   public void a(so $$0) {
+      this.e.clear();
+      bjw.b($$0, this.e);
+      this.f = $$0.h("last_interacted_slot");
    }
 
-   public static String a(it<String> $$0) {
-      it.a($$0, x, "decorated_pot_side");
-      it.a($$0, y, "angler_pottery_pattern");
-      it.a($$0, z, "archer_pottery_pattern");
-      it.a($$0, A, "arms_up_pottery_pattern");
-      it.a($$0, B, "blade_pottery_pattern");
-      it.a($$0, C, "brewer_pottery_pattern");
-      it.a($$0, D, "burn_pottery_pattern");
-      it.a($$0, E, "danger_pottery_pattern");
-      it.a($$0, F, "explorer_pottery_pattern");
-      it.a($$0, G, "friend_pottery_pattern");
-      it.a($$0, H, "heart_pottery_pattern");
-      it.a($$0, I, "heartbreak_pottery_pattern");
-      it.a($$0, J, "howl_pottery_pattern");
-      it.a($$0, K, "miner_pottery_pattern");
-      it.a($$0, L, "mourner_pottery_pattern");
-      it.a($$0, M, "plenty_pottery_pattern");
-      it.a($$0, N, "prize_pottery_pattern");
-      it.a($$0, O, "sheaf_pottery_pattern");
-      it.a($$0, P, "shelter_pottery_pattern");
-      it.a($$0, Q, "skull_pottery_pattern");
-      it.a($$0, R, "snort_pottery_pattern");
-      return it.a($$0, a, "decorated_pot_base");
+   @Override
+   protected void b(so $$0) {
+      bjw.a($$0, this.e, true);
+      $$0.a("last_interacted_slot", this.f);
+   }
+
+   public int f() {
+      return (int)this.e.stream().filter(Predicate.not(cng::b)).count();
+   }
+
+   @Override
+   public void a() {
+      this.e.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean aj_() {
+      return this.e.stream().allMatch(cng::b);
+   }
+
+   @Override
+   public cng a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Override
+   public cng a(int $$0, int $$1) {
+      cng $$2 = Objects.requireNonNullElse(this.e.get($$0), cng.f);
+      this.e.set($$0, cng.f);
+      if (!$$2.b()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cng b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, cng $$1) {
+      if ($$1.a(asq.av)) {
+         this.e.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.b()) {
+         this.a($$0, 1);
+      }
+   }
+
+   @Override
+   public boolean a(bjv $$0, int $$1, cng $$2) {
+      return $$0.a_($$2x -> $$2x.b() ? true : cng.c($$2, $$2x) && $$2x.L() + $$2.L() <= Math.min($$2x.g(), $$0.al_()));
+   }
+
+   @Override
+   public int al_() {
+      return 1;
+   }
+
+   @Override
+   public boolean a(cfq $$0) {
+      return bjv.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cng $$1) {
+      return $$1.a(asq.av) && this.a($$0).b() && $$1.L() == this.al_();
+   }
+
+   public int g() {
+      return this.f;
    }
 }

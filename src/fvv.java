@@ -1,176 +1,50 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
 
-public class fvv implements fvh<die> {
-   private static final String a = "stick";
-   private static final int b = -988212;
-   private static final int c = auo.h(16);
-   private static final float d = 0.6666667F;
-   private static final elt e = new elt(0.0, 0.33333334F, 0.046666667F);
-   private final Map<dku, fvv.a> f;
-   private final ews g;
+public class fvv {
+   private static final Map<dhf<?>, fvu<?>> a = Maps.newHashMap();
 
-   public fvv(fvi.a $$0) {
-      this.f = dku.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new fvv.a($$0.a(fmw.a($$1)))));
-      this.g = $$0.f();
+   private static <T extends dhd> void a(dhf<? extends T> $$0, fvu<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public void a(die $$0, float $$1, eqb $$2, fth $$3, int $$4, int $$5) {
-      djh $$6 = $$0.r();
-      ddp $$7 = (ddp)$$6.b();
-      dku $$8 = ddp.a($$7);
-      fvv.a $$9 = this.f.get($$8);
-      $$9.b.k = $$6.b() instanceof dek;
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   public float b() {
-      return 0.6666667F;
-   }
-
-   public float c() {
-      return 0.6666667F;
-   }
-
-   void a(die $$0, eqb $$1, fth $$2, int $$3, int $$4, djh $$5, ddp $$6, dku $$7, fkt $$8) {
-      $$1.a();
-      this.a($$1, -$$6.g($$5), $$5);
-      this.a($$1, $$2, $$3, $$4, $$7, $$8);
-      this.a($$0.aB_(), $$0.k(), $$1, $$2, $$3, $$0.c(), $$0.d(), true);
-      this.a($$0.aB_(), $$0.l(), $$1, $$2, $$3, $$0.c(), $$0.d(), false);
-      $$1.b();
-   }
-
-   void a(eqb $$0, float $$1, djh $$2) {
-      $$0.a(0.5F, 0.75F * this.b(), 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-      if (!($$2.b() instanceof dek)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
-      }
-   }
-
-   void a(eqb $$0, fth $$1, int $$2, int $$3, dku $$4, fkt $$5) {
-      $$0.a();
-      float $$6 = this.b();
-      $$0.b($$6, -$$6, -$$6);
-      ggq $$7 = this.a($$4);
-      eqf $$8 = $$7.a($$1, $$5::a);
-      this.a($$0, $$2, $$3, $$5, $$8);
-      $$0.b();
-   }
-
-   void a(eqb $$0, int $$1, int $$2, fkt $$3, eqf $$4) {
-      fvv.a $$5 = (fvv.a)$$3;
-      $$5.a.a($$0, $$4, $$1, $$2);
-   }
-
-   ggq a(dku $$0) {
-      return ftw.a($$0);
-   }
-
-   void a(hx $$0, dif $$1, eqb $$2, fth $$3, int $$4, int $$5, int $$6, boolean $$7) {
-      $$2.a();
-      this.a($$2, $$7, this.d());
-      int $$8 = a($$1);
-      int $$9 = 4 * $$5 / 2;
-      aua[] $$10 = $$1.a(evi.O().aQ(), $$1x -> {
-         List<aua> $$2x = this.g.c($$1x, $$6);
-         return $$2x.isEmpty() ? aua.a : $$2x.get(0);
+   public static Map<dhf<?>, fvt<?>> a(fvu.a $$0) {
+      Builder<dhf<?>, fvt<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + kd.k.b((dhf<?>)$$2), var5);
+         }
       });
-      int $$11;
-      boolean $$12;
-      int $$13;
-      if ($$1.a()) {
-         $$11 = $$1.b().g();
-         $$12 = a($$0, $$11);
-         $$13 = 15728880;
-      } else {
-         $$11 = $$8;
-         $$12 = false;
-         $$13 = $$4;
-      }
-
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         aua $$18 = $$10[$$17];
-         float $$19 = (float)(-this.g.a($$18) / 2);
-         if ($$12) {
-            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
-         } else {
-            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, ews.a.c, 0, $$13);
-         }
-      }
-
-      $$2.b();
+      return $$1.build();
    }
 
-   private void a(eqb $$0, boolean $$1, elt $$2) {
-      if (!$$1) {
-         $$0.a(a.d.rotationDegrees(180.0F));
-      }
-
-      float $$3 = 0.015625F * this.c();
-      $$0.a($$2.c, $$2.d, $$2.e);
-      $$0.b($$3, -$$3, $$3);
-   }
-
-   elt d() {
-      return e;
-   }
-
-   static boolean a(hx $$0, int $$1) {
-      if ($$1 == clm.p.g()) {
-         return true;
-      } else {
-         evi $$2 = evi.O();
-         fsj $$3 = $$2.s;
-         if ($$3 != null && $$2.m.ax().a() && $$3.gq()) {
-            return true;
-         } else {
-            blv $$4 = $$2.am();
-            return $$4 != null && $$4.f(elt.b($$0)) < (double)c;
-         }
-      }
-   }
-
-   public static int a(dif $$0) {
-      int $$1 = $$0.b().g();
-      if ($$1 == clm.p.g() && $$0.a()) {
-         return -988212;
-      } else {
-         double $$2 = 0.4;
-         int $$3 = (int)((double)aty.b.b($$1) * 0.4);
-         int $$4 = (int)((double)aty.b.c($$1) * 0.4);
-         int $$5 = (int)((double)aty.b.d($$1) * 0.4);
-         return aty.b.a(0, $$3, $$4, $$5);
-      }
-   }
-
-   public static fvv.a a(fmt $$0, dku $$1) {
-      return new fvv.a($$0.a(fmw.a($$1)));
-   }
-
-   public static fnd f() {
-      fnf $$0 = new fnf();
-      fng $$1 = $$0.a();
-      $$1.a("sign", fnc.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), fmz.a);
-      $$1.a("stick", fnc.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), fmz.a);
-      return fnd.a($$0, 64, 32);
-   }
-
-   public static final class a extends fkt {
-      public final fmx a;
-      public final fmx b;
-
-      public a(fmx $$0) {
-         super(ftp::e);
-         this.a = $$0;
-         this.b = $$0.b("stick");
-      }
-
-      @Override
-      public void a(eqb $$0, eqf $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   static {
+      a(dhf.h, fwh::new);
+      a(dhf.i, fwd::new);
+      a(dhf.j, fwj::new);
+      a(dhf.k, fwf::new);
+      a(dhf.b, fvz::new);
+      a(dhf.d, fvz::new);
+      a(dhf.c, fvz::new);
+      a(dhf.m, fwc::new);
+      a(dhf.D, fwe::new);
+      a(dhf.n, fwm::new);
+      a(dhf.v, fwl::new);
+      a(dhf.o, fvp::new);
+      a(dhf.p, fwi::new);
+      a(dhf.t, fvo::new);
+      a(dhf.u, fwk::new);
+      a(dhf.x, fwg::new);
+      a(dhf.y, fvq::new);
+      a(dhf.z, fwa::new);
+      a(dhf.E, fvr::new);
+      a(dhf.G, fvy::new);
+      a(dhf.N, fvx::new);
+      a(dhf.O, fwb::new);
+      a(dhf.Q, fwn::new);
    }
 }

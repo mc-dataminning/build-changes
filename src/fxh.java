@@ -1,45 +1,52 @@
-import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.util.List;
 
-public class fxh implements fws.a {
-   private final List<hx> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
+public class fxh implements fxe.a {
+   private static final int a = 160;
+   private final evr b;
+   private final Int2ObjectMap<fxh.a> c = new Int2ObjectOpenHashMap();
 
-   public void a(hx $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void a(int $$0, hx $$1, List<yh.a> $$2) {
+      this.c.put($$0, new fxh.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public fxh(evr $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(eqb $$0, fth $$1, double $$2, double $$3, double $$4) {
-      eqf $$5 = $$1.getBuffer(ftp.y());
+   public void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4) {
+      evc $$5 = this.b.j.m();
+      hx $$6 = hx.a($$5.b().c, 0.0, $$5.b().e);
+      ObjectIterator var11 = this.c.values().iterator();
 
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         hx $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         ftf.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
+      while (var11.hasNext()) {
+         fxh.a $$7 = (fxh.a)var11.next();
+         hx $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               yh.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               fxe.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
+         }
       }
+   }
+
+   static record a(hx a, List<yh.a> b) {
    }
 }

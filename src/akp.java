@@ -3,16 +3,16 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class akp {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("commands.save.alreadyOn"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.save.alreadyOff"));
 
    public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("save-off").requires($$0x -> $$0x.c(4))).executes($$0x -> {
          ds $$1 = (ds)$$0x.getSource();
          boolean $$2 = false;
 
-         for (and $$3 : $$1.l().H()) {
-            if ($$3 != null && $$3.e) {
-               $$3.e = false;
+         for (ane $$3 : $$1.l().H()) {
+            if ($$3 != null && !$$3.e) {
+               $$3.e = true;
                $$2 = true;
             }
          }
@@ -20,7 +20,7 @@ public class akp {
          if (!$$2) {
             throw a.create();
          } else {
-            $$1.a(() -> vf.c("commands.save.enabled"), true);
+            $$1.a(() -> vg.c("commands.save.disabled"), true);
             return 1;
          }
       }));

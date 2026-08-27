@@ -1,67 +1,58 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class drm extends dru<dtu> {
-   private static final ImmutableList<cwq> a = ImmutableList.of(cws.F, cws.fn, cws.fo, cws.fp, cws.fq, cws.cv, cws.ct);
-   private static final ic[] b = ic.values();
-   private static final double c = 0.9;
-
-   public drm(Codec<dtu> $$0) {
+public class drm extends dsc<dun> {
+   public drm(Codec<dun> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drw<dtu> $$0) {
-      boolean $$1 = false;
-      auv $$2 = $$0.d();
-      cuk $$3 = $$0.b();
-      dtu $$4 = $$0.f();
-      hx $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
-
-      for (hx $$13 : hx.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            hx $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private static boolean a(ctq $$0, hx $$1, dtu $$2) {
-      djh $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
+   public boolean a(dse<dun> $$0) {
+      hx $$1 = $$0.e();
+      cus $$2 = $$0.b();
+      auw $$3 = $$0.d();
+      if ($$1.v() > $$2.A_() - 1) {
          return false;
-      } else if (a.contains($$3.b())) {
+      } else if (!$$2.a_($$1).a(cxa.G) && !$$2.a_($$1.d()).a(cxa.G)) {
          return false;
       } else {
-         for (ic $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).i();
-            if ($$5 && $$4 != ic.b || !$$5 && $$4 == ic.b) {
-               return false;
+         boolean $$4 = false;
+
+         for (ic $$5 : ic.values()) {
+            if ($$5 != ic.a && $$2.a_($$1.a($$5)).a(cxa.iC)) {
+               $$4 = true;
+               break;
             }
          }
 
-         return true;
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, cxa.mW.o(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  hx $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  djp $$10 = $$2.a_($$9);
+                  if ($$10.i() || $$10.a(cxa.G) || $$10.a(cxa.iC) || $$10.a(cxa.dO)) {
+                     for (ic $$11 : ic.values()) {
+                        djp $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(cxa.mW)) {
+                           $$2.a($$9, cxa.mW.o(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
       }
    }
 }

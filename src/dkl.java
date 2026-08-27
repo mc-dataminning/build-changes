@@ -1,36 +1,28 @@
-public enum dkl implements avk {
-   a("north_south"),
-   b("east_west"),
-   c("ascending_east"),
-   d("ascending_west"),
-   e("ascending_north"),
-   f("ascending_south"),
-   g("south_east"),
-   h("south_west"),
-   i("north_west"),
-   j("north_east");
+public enum dkl implements avl {
+   a(ic.a),
+   b(ic.b);
 
-   private final String k;
+   private final ic c;
 
-   private dkl(String $$0) {
-      this.k = $$0;
+   private dkl(ic $$0) {
+      this.c = $$0;
    }
 
-   public String a() {
-      return this.k;
+   public ic a() {
+      return this.c;
    }
 
    @Override
    public String toString() {
-      return this.k;
-   }
-
-   public boolean b() {
-      return this == e || this == c || this == f || this == d;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.k;
+      return this == a ? "upper" : "lower";
+   }
+
+   public dkl b() {
+      return this == a ? b : a;
    }
 }

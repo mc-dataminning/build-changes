@@ -1,29 +1,25 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eak extends eam {
-   public static final Codec<eak> a = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, eak::new));
+public enum eak implements avl {
+   a("linear"),
+   b("triangular");
 
-   protected eak(Either<ahg, edg> $$0, ih<ede> $$1, eap.a $$2) {
-      super($$0, $$1, $$2);
+   public static final Codec<eak> c = avl.a(eak::values);
+   private final String d;
+
+   private eak(String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected edc a(ddc $$0, dyy $$1, boolean $$2) {
-      edc $$3 = super.a($$0, $$1, $$2);
-      $$3.b(eci.b);
-      $$3.a(eci.d);
-      return $$3;
+   public String c() {
+      return this.d;
    }
 
-   @Override
-   public eao<?> a() {
-      return eao.e;
-   }
-
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   public int a(auw $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
    }
 }

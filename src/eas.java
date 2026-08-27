@@ -1,15 +1,29 @@
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eas {
-   public static Codec<? extends ear> a(it<Codec<? extends ear>> $$0) {
-      it.a($$0, "random", eau.a);
-      it.a($$0, "random_group", eav.a);
-      return it.a($$0, "direct", eaq.a);
+public class eas extends eau {
+   public static final Codec<eas> a = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, eas::new));
+
+   protected eas(Either<ahh, edo> $$0, ih<edm> $$1, eax.a $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static void a(pe<eap> $$0, ih<eap> $$1, List<ear> $$2) {
-      $$2.stream().flatMap(ear::a).map($$0x -> $$0x.a().a()).forEach($$2x -> pl.a($$0, $$2x, new eap($$1, List.of(Pair.of(ean.b($$2x), 1)), eap.a.b)));
+   @Override
+   protected edk a(ddk $$0, dzg $$1, boolean $$2) {
+      edk $$3 = super.a($$0, $$1, $$2);
+      $$3.b(ecq.b);
+      $$3.a(ecq.d);
+      return $$3;
+   }
+
+   @Override
+   public eaw<?> a() {
+      return eaw.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bby extends baw {
    public bby(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Remove Golem Gossip Fix", bbw.x, "minecraft:villager");
+      super($$0, $$1, "Remove Golem Gossip Fix", bbw.y, "minecraft:villager");
    }
 
    @Override

@@ -1,72 +1,24 @@
+import java.util.OptionalLong;
+
 public class pi {
-   @Deprecated
-   public static final edu.a a = new edu.a(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void a(pe<edu.a> $$0) {
-      a($$0, 0, doz.a, doz.b, doz.c, doz.d);
-      a($$0, -2, doz.e, doz.f, doz.g, doz.h);
-      a($$0, doz.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(doz.j, a);
-      a($$0, doz.k, -3, 1.0);
-      a($$0, doz.l, -7, 1.0);
-      a($$0, doz.m, -1, 1.0);
-      a($$0, doz.n, -5, 1.0);
-      a($$0, doz.o, -7, 1.0, 1.0);
-      a($$0, doz.p, -8, 1.0);
-      a($$0, doz.q, -8, 1.0);
-      a($$0, doz.r, -7, 1.0);
-      a($$0, doz.s, -8, 1.0);
-      a($$0, doz.t, -11, 1.0);
-      a($$0, doz.u, -11, 1.0);
-      a($$0, doz.v, -7, 1.0);
-      a($$0, doz.w, -7, 1.0);
-      a($$0, doz.x, -11, 1.0);
-      a($$0, doz.y, -8, 1.0);
-      a($$0, doz.z, -5, 1.0);
-      a($$0, doz.A, -8, 1.0);
-      a($$0, doz.B, -7, 0.4, 0.5, 1.0);
-      a($$0, doz.C, -8, 1.0);
-      a($$0, doz.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, doz.E, -8, 1.0);
-      a($$0, doz.F, -7, 1.0);
-      a($$0, doz.G, -7, 1.0);
-      a($$0, doz.H, -5, 1.0);
-      a($$0, doz.I, -8, 1.0);
-      a($$0, doz.J, -8, 1.0);
-      a($$0, doz.K, -7, 1.0);
-      a($$0, doz.L, -7, 1.0);
-      a($$0, doz.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, doz.N, -6, 1.0, 1.0, 1.0);
-      a($$0, doz.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, doz.P, -8, 1.0);
-      a($$0, doz.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, doz.R, -8, 1.0);
-      a($$0, doz.S, -6, 1.0, 1.0, 1.0);
-      a($$0, doz.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, doz.U, -3, 1.0);
-      a($$0, doz.V, -6, 1.0, 1.0, 1.0);
-      a($$0, doz.W, -2, 1.0);
-      a($$0, doz.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, doz.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, doz.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, doz.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, doz.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, doz.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, doz.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, doz.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, doz.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, doz.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, doz.ah, -4, 1.0);
-   }
-
-   private static void a(pe<edu.a> $$0, int $$1, ahf<edu.a> $$2, ahf<edu.a> $$3, ahf<edu.a> $$4, ahf<edu.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(pe<edu.a> $$0, ahf<edu.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new edu.a($$2, $$3, $$4));
+   public static void a(pf<dmy> $$0) {
+      $$0.a(
+         dmw.a,
+         new dmy(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, asi.ba, dmw.e, 0.0F, new dmy.a(false, true, bjn.a(0, 7), 0))
+      );
+      $$0.a(
+         dmw.b,
+         new dmy(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, asi.bb, dmw.f, 0.1F, new dmy.a(true, false, bje.a(7), 15))
+      );
+      $$0.a(
+         dmw.c,
+         new dmy(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, asi.bc, dmw.g, 0.0F, new dmy.a(false, true, bjn.a(0, 7), 0)
+         )
+      );
+      $$0.a(
+         dmw.d,
+         new dmy(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, asi.ba, dmw.e, 0.0F, new dmy.a(false, true, bjn.a(0, 7), 0))
+      );
    }
 }

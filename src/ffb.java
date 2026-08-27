@@ -1,50 +1,50 @@
-public abstract class ffb<T extends cjd> extends fea<T> implements cin {
-   private final ahg x;
+import java.util.List;
 
-   public ffb(T $$0, cfh $$1, vf $$2, ahg $$3) {
-      super($$0, $$1, $$2);
-      this.x = $$3;
+public class ffb {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<ahh> e = List.of();
+   private int f;
+   private int g;
+
+   public ffb(int $$0) {
+      this.d = $$0;
    }
 
-   protected void H() {
+   public void a(List<ahh> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
+      }
+
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
+      }
    }
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.H();
-      this.p.a(this);
+   public void a(cij $$0, exe $$1, float $$2, int $$3, int $$4) {
+      cke $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.h()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+         }
+
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      }
    }
 
-   @Override
-   public void j() {
-      super.j();
-      this.p.b(this);
+   private void a(cke $$0, ahh $$1, float $$2, exe $$3, int $$4, int $$5) {
+      gfb $$6 = evr.O().a(gfa.e).apply($$1);
+      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
    }
 
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   protected void d(ewu $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   protected void a(ewu $$0, float $$1, int $$2, int $$3) {
-      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
-      this.c($$0, this.t, this.u);
-   }
-
-   protected abstract void c(ewu var1, int var2, int var3);
-
-   @Override
-   public void a(cib $$0, int $$1, int $$2) {
-   }
-
-   @Override
-   public void a(cib $$0, int $$1, cmy $$2) {
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

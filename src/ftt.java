@@ -1,64 +1,94 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
-public class ftt {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 4;
-   private final Queue<fts> c;
-   private volatile int d;
-
-   private ftt(List<fts> $$0) {
-      this.c = Queues.newArrayDeque($$0);
-      this.d = this.c.size();
+public interface ftt {
+   static ftt.a a(eqf $$0) {
+      return a(ImmutableMap.of(), $$0);
    }
 
-   public static ftt a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / fts.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<fts> $$3 = new ArrayList<>($$2);
+   static ftt.a a(Map<fub, eqf> $$0, eqf $$1) {
+      return new ftt.a($$1, $$0);
+   }
 
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new fts());
+   eqo getBuffer(fub var1);
+
+   public static class a implements ftt {
+      protected final eqf a;
+      protected final Map<fub, eqf> b;
+      protected Optional<fub> c = Optional.empty();
+      protected final Set<eqf> d = Sets.newHashSet();
+
+      protected a(eqf $$0, Map<fub, eqf> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public eqo getBuffer(fub $$0) {
+         Optional<fub> $$1 = $$0.N();
+         eqf $$2 = this.b($$0);
+         if (!Objects.equals(this.c, $$1) || !$$0.M()) {
+            if (this.c.isPresent()) {
+               fub $$3 = this.c.get();
+               if (!this.b.containsKey($$3)) {
+                  this.a($$3);
+               }
+            }
+
+            if (this.d.add($$2)) {
+               $$2.a($$0.I(), $$0.H());
+            }
+
+            this.c = $$1;
          }
-      } catch (OutOfMemoryError var7) {
-         b.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
+         return $$2;
+      }
+
+      private eqf b(fub $$0) {
+         return this.b.getOrDefault($$0, this.a);
+      }
+
+      public void a() {
+         if (this.c.isPresent()) {
+            fub $$0 = this.c.get();
+            if (!this.b.containsKey($$0)) {
+               this.a($$0);
+            }
+
+            this.c = Optional.empty();
          }
       }
 
-      return new ftt($$3);
-   }
+      public void b() {
+         this.c.ifPresent($$0x -> {
+            eqo $$1 = this.getBuffer($$0x);
+            if ($$1 == this.a) {
+               this.a($$0x);
+            }
+         });
 
-   @Nullable
-   public fts a() {
-      fts $$0 = this.c.poll();
-      if ($$0 != null) {
-         this.d = this.c.size();
-         return $$0;
-      } else {
-         return null;
+         for (fub $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
       }
-   }
 
-   public void a(fts $$0) {
-      this.c.add($$0);
-      this.d = this.c.size();
-   }
-
-   public boolean b() {
-      return this.c.isEmpty();
-   }
-
-   public int c() {
-      return this.d;
+      public void a(fub $$0) {
+         eqf $$1 = this.b($$0);
+         boolean $$2 = Objects.equals(this.c, $$0.N());
+         if ($$2 || $$1 != this.a) {
+            if (this.d.remove($$1)) {
+               $$0.a($$1, RenderSystem.getVertexSorting());
+               if ($$2) {
+                  this.c = Optional.empty();
+               }
+            }
+         }
+      }
    }
 }

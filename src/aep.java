@@ -1,40 +1,59 @@
-public class aep implements xf<adj> {
-   private final cjp a;
-   private final boolean b;
-   private final boolean c;
+public class aep implements xg<adk> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private final float c;
+   private final float d;
+   private final boolean e;
+   private final boolean f;
 
-   public aep(cjp $$0, boolean $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public aep(float $$0, float $$1, boolean $$2, boolean $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public aep(ui $$0) {
-      this.a = $$0.b(cjp.class);
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
+   public aep(uj $$0) {
+      this.c = $$0.readFloat();
+      this.d = $$0.readFloat();
+      byte $$1 = $$0.readByte();
+      this.e = ($$1 & 1) > 0;
+      this.f = ($$1 & 2) > 0;
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(uj $$0) {
       $$0.a(this.c);
+      $$0.a(this.d);
+      byte $$1 = 0;
+      if (this.e) {
+         $$1 = (byte)($$1 | 1);
+      }
+
+      if (this.f) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
-   public void a(adj $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   public cjp a() {
-      return this.a;
+   public float a() {
+      return this.c;
    }
 
-   public boolean d() {
-      return this.b;
+   public float d() {
+      return this.d;
    }
 
    public boolean e() {
-      return this.c;
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f;
    }
 }

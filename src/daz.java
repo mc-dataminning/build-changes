@@ -1,124 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
 
-public class daz extends cwq implements ddq {
-   public static final MapCodec<daz> b = b(daz::new);
-   public static final int c = 7;
-   public static final dkh d = djx.aC;
-   public static final djy e = djx.v;
-   public static final djy f = djx.C;
-   private static final int a = 1;
+public class daz extends cwy implements czq, dag {
+   public static final MapCodec<daz> a = b(daz::new);
+   public static final dkn<ie> b = dkf.T;
 
    @Override
-   public MapCodec<? extends daz> a() {
-      return b;
+   public MapCodec<daz> a() {
+      return a;
    }
 
-   public daz(djg.d $$0) {
+   protected daz(djo.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, ie.k));
    }
 
    @Override
-   public emm b_(djh $$0, csv $$1, hx $$2) {
-      return emj.a();
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   public boolean e_(djh $$0) {
-      return $$0.c(d) == 7 && !$$0.c(e);
+   public djp a(djp $$0, ddk $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
    }
 
    @Override
-   public void b(djh $$0, and $$1, hx $$2, auv $$3) {
-      if (this.h($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   protected boolean h(djh $$0) {
-      return !$$0.c(e) && $$0.c(d) == 7;
+   public djp a(djp $$0, dbu $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
    }
 
    @Override
-   public void a(djh $$0, and $$1, hx $$2, auv $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
-   }
-
-   @Override
-   public int g(djh $$0, csv $$1, hx $$2) {
-      return 1;
-   }
-
-   @Override
-   public djh a(djh $$0, ic $$1, djh $$2, ctq $$3, hx $$4, hx $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, ees.c, ees.c.a($$3));
-      }
-
-      int $$6 = o($$2) + 1;
-      if ($$6 != 1 || $$0.c(d) != $$6) {
-         $$3.a($$4, this, 1);
-      }
-
-      return $$0;
-   }
-
-   private static djh a(djh $$0, ctq $$1, hx $$2) {
-      int $$3 = 7;
-      hx.a $$4 = new hx.a();
-
-      for (ic $$5 : ic.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
-         }
-      }
-
-      return $$0.a(d, Integer.valueOf($$3));
-   }
-
-   private static int o(djh $$0) {
-      return n($$0).orElse(7);
-   }
-
-   public static OptionalInt n(djh $$0) {
-      if ($$0.a(ash.t)) {
-         return OptionalInt.of(0);
+   public djp a(cpp $$0) {
+      ic $$1 = $$0.k();
+      ic $$2;
+      if ($$1.o() == ic.a.b) {
+         $$2 = $$0.g().g();
       } else {
-         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
+         $$2 = ic.b;
+      }
+
+      return this.o().a(b, ie.a($$1, $$2));
+   }
+
+   @Override
+   public dhd a(hx $$0, djp $$1) {
+      return new did($$0, $$1);
+   }
+
+   @Override
+   public bkc a(djp $$0, ctx $$1, hx $$2, cfq $$3, ely $$4) {
+      dhd $$5 = $$1.c_($$2);
+      if ($$5 instanceof did && $$3.gp()) {
+         $$3.a((did)$$5);
+         return bkc.a($$1.B);
+      } else {
+         return bkc.d;
       }
    }
 
-   @Override
-   public eer c_(djh $$0) {
-      return $$0.c(f) ? ees.c.a(false) : super.c_($$0);
+   public static boolean a(edo.c $$0, edo.c $$1) {
+      ic $$2 = h($$0.b());
+      ic $$3 = h($$1.b());
+      ic $$4 = n($$0.b());
+      ic $$5 = n($$1.b());
+      did.a $$6 = did.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? did.a.b : did.a.a);
+      boolean $$7 = $$6 == did.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
    }
 
-   @Override
-   public void a(djh $$0, ctp $$1, hx $$2, auv $$3) {
-      if ($$1.r($$2.c())) {
-         if ($$3.a(15) == 1) {
-            hx $$4 = $$2.d();
-            djh $$5 = $$1.a_($$4);
-            if (!$$5.p() || !$$5.d($$1, $$4, ic.b)) {
-               aur.a($$1, $$2, $$3, jx.m);
-            }
-         }
-      }
+   public static ic h(djp $$0) {
+      return $$0.c(b).a();
    }
 
-   @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      $$0.a(d, e, f);
-   }
-
-   @Override
-   public djh a(cph $$0) {
-      eer $$1 = $$0.q().b_($$0.a());
-      djh $$2 = this.o().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == ees.c));
-      return a($$2, $$0.q(), $$0.a());
+   public static ic n(djp $$0) {
+      return $$0.c(b).b();
    }
 }

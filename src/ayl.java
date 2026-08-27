@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class ayl extends baw {
    public ayl(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityItemFrameDirectionFix", bbw.x, "minecraft:item_frame");
+      super($$0, $$1, "EntityItemFrameDirectionFix", bbw.y, "minecraft:item_frame");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

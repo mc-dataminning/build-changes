@@ -1,24 +1,13 @@
-public abstract class gcj<T extends blv & bmy, M extends fjx<T>> extends gcy<T, M> {
-   public gcj(gai<T, M> $$0) {
+public class gcj extends gdl<cds, fjs<cds>> {
+   private static final fub a = fub.q(new ahh("textures/entity/breeze/breeze_eyes.png"));
+
+   public gcj(gav<cds, fjs<cds>> $$0) {
       super($$0);
    }
 
-   @Override
-   public void a(eqb $$0, fth $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ah + $$6;
-         fjx<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         eqf $$12 = $$1.getBuffer(ftp.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, gee.d, 0.5F, 0.5F, 0.5F, 1.0F);
-      }
+   public void a(eqk $$0, ftt $$1, int $$2, cds $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      eqo $$10 = $$1.getBuffer(a);
+      fjs<cds> $$11 = this.c();
+      fyg.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, ges.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
-
-   protected abstract float a(float var1);
-
-   protected abstract ahg a();
-
-   protected abstract fjx<T> b();
 }

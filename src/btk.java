@@ -1,13 +1,57 @@
 import java.util.EnumSet;
 
-public class btk extends btp {
-   public btk(bmn $$0, Class<? extends bml> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(bth.a.b, bth.a.a));
+public abstract class btk {
+   private final EnumSet<btk.a> a = EnumSet.noneOf(btk.a.class);
+
+   public abstract boolean a();
+
+   public boolean b() {
+      return this.a();
    }
 
-   public btk(bmn $$0, Class<? extends bml> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(bth.a.b, bth.a.a));
+   public boolean S_() {
+      return true;
+   }
+
+   public void c() {
+   }
+
+   public void d() {
+   }
+
+   public boolean T_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<btk.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
+
+   public EnumSet<btk.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.T_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return aup.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

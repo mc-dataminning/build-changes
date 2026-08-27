@@ -1,75 +1,164 @@
-public class est extends gkp {
-   private static final vf a = vf.c("mco.selectServer.create");
-   private static final vf b = vf.c("mco.configure.world.name");
-   private static final vf c = vf.c("mco.configure.world.description");
-   private static final int v = 10;
-   private static final int w = 210;
-   private final eqm x;
-   private final faq y = new faq(this);
-   private exp z;
-   private exp A;
-   private final Runnable B;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   public est(eqm $$0, eri $$1) {
-      super(a);
-      this.x = $$0;
-      this.B = () -> this.a($$1);
+public class est extends exr {
+   private static final ahh t = new ahh("widget/slot_frame");
+   private static final ahh u = new ahh("icon/checkmark");
+   public static final ahh a = new ahh("textures/gui/realms/empty_frame.png");
+   public static final ahh b = new ahh("minecraft", "textures/gui/title/background/panorama_0.png");
+   public static final ahh c = new ahh("minecraft", "textures/gui/title/background/panorama_2.png");
+   public static final ahh d = new ahh("minecraft", "textures/gui/title/background/panorama_3.png");
+   private static final vg v = vg.c("mco.configure.world.slot.tooltip.active");
+   private static final vg w = vg.c("mco.configure.world.slot.tooltip.minigame");
+   private static final vg x = vg.c("mco.configure.world.slot.tooltip");
+   static final vg y = vg.c("mco.worldSlot.minigame");
+   private final int z;
+   @Nullable
+   private est.b A;
+   @Nullable
+   private ezc B;
+
+   public est(int $$0, int $$1, int $$2, int $$3, int $$4, exr.c $$5) {
+      super($$0, $$1, $$2, $$3, vf.a, $$5, p);
+      this.z = $$4;
    }
 
-   public est(eqm $$0, long $$1) {
-      super(a);
-      this.x = $$0;
-      this.B = () -> this.a($$1);
+   @Nullable
+   public est.b a() {
+      return this.A;
    }
 
-   @Override
-   public void aN_() {
-      this.y.a(new eyn(this.e, this.i));
-      fau $$0 = this.y.c(fau.d()).a(10);
-      exg $$1 = exg.a(ve.j, $$0x -> this.B.run()).a();
-      $$1.j = false;
-      this.z = new exp(this.i, 210, 20, b);
-      this.z.b($$1x -> $$1.j = !ac.b($$1x));
-      this.A = new exp(this.i, 210, 20, c);
-      $$0.a(fam.a(this.i, this.z, b));
-      $$0.a(fam.a(this.i, this.A, c));
-      fau $$2 = this.y.b(fau.e().a(10));
-      $$2.a($$1);
-      $$2.a(exg.a(ve.k, $$0x -> this.aE_()).a());
-      this.y.a($$1x -> {
-         exe var10000 = this.d($$1x);
-      });
-      this.c();
-      this.c(this.z);
+   public void a(err $$0) {
+      this.A = new est.b($$0, this.z);
+      this.a(this.A, $$0.o);
    }
 
-   @Override
-   protected void c() {
-      this.y.a();
-   }
-
-   private void a(eri $$0) {
-      euq $$1 = new euq($$0.a, this.z.a(), this.A.a());
-      etg $$2 = etg.a(this, $$0, $$1, () -> this.f.execute(() -> {
-            eqm.f();
-            this.f.a(this.x);
-         }));
-      this.f.a($$2);
-   }
-
-   private void a(long $$0) {
-      fdb $$1 = new etf($$1x -> {
-         if ($$1x == null) {
-            this.f.a(this);
+   private void a(est.b $$0, String $$1) {
+      vg $$2 = switch ($$0.c) {
+         case c -> v;
+         case b -> $$0.b ? w : x;
+         default -> null;
+      };
+      if ($$2 == null) {
+         this.b(vg.b($$0.e));
+      } else {
+         this.B = ezc.a($$2);
+         if ($$0.a) {
+            this.b($$2);
          } else {
-            this.f.a(new esy(this, new euf(this.x, $$0, $$1x, this.z.a(), this.A.a())));
+            vu $$3 = $$2.f().b(vf.a()).b(vg.b($$0.e));
+            if ($$0.b) {
+               $$3 = $$3.b(vf.u).f($$1);
+            }
+
+            this.b($$3);
          }
-      }, a);
-      this.f.a($$1);
+      }
+   }
+
+   static est.a a(err $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != err.c.c) {
+         return est.a.c;
+      } else {
+         return $$1 || $$2 && $$0.j ? est.a.a : est.a.b;
+      }
    }
 
    @Override
-   public void aE_() {
-      this.f.a(this.x);
+   public void b(exe $$0, int $$1, int $$2, float $$3) {
+      if (this.A != null) {
+         int $$4 = this.B();
+         int $$5 = this.C();
+         boolean $$6 = this.z();
+         if (this.B != null) {
+            this.B.a(this.y(), this.aK_(), this.F());
+         }
+
+         ahh $$7;
+         if (this.A.b) {
+            $$7 = eug.a(String.valueOf(this.A.h), this.A.i);
+         } else if (this.A.a) {
+            $$7 = a;
+         } else if (this.A.i != null && this.A.h != -1L) {
+            $$7 = eug.a(String.valueOf(this.A.h), this.A.i);
+         } else if (this.z == 1) {
+            $$7 = b;
+         } else if (this.z == 2) {
+            $$7 = c;
+         } else if (this.z == 3) {
+            $$7 = d;
+         } else {
+            $$7 = a;
+         }
+
+         if (this.A.d) {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a($$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
+         boolean $$14 = $$6 && this.A.c != est.a.a;
+         if ($$14) {
+            $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         } else if (this.A.d) {
+            $$0.a(0.8F, 0.8F, 0.8F, 1.0F);
+         } else {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a(t, $$4, $$5, 80, 80);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         if (this.A.d) {
+            RenderSystem.enableBlend();
+            $$0.a(u, $$4 + 67, $$5 + 4, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         exc $$15 = evr.O().h;
+         $$0.a($$15, this.A.e, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, eqv.a(this.A.f, this.A.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public static class b {
+      final boolean d;
+      final String e;
+      final String f;
+      final err.a g;
+      final long h;
+      @Nullable
+      final String i;
+      public final boolean a;
+      public final boolean b;
+      public final est.a c;
+
+      public b(err $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.d = $$0.m == err.d.b;
+            this.e = est.y.getString();
+            this.h = (long)$$0.p;
+            this.i = $$0.q;
+            this.a = $$0.p == -1;
+            this.f = "";
+            this.g = err.a.a;
+         } else {
+            ery $$2 = $$0.i.get($$1);
+            this.d = $$0.n == $$1 && $$0.m != err.d.b;
+            this.e = $$2.a($$1);
+            this.h = $$2.l;
+            this.i = $$2.m;
+            this.a = $$2.n;
+            this.f = $$2.j;
+            this.g = $$2.k;
+         }
+
+         this.c = est.a($$0, this.d, this.b);
+      }
    }
 }

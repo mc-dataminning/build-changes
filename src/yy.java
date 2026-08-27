@@ -1,18 +1,8 @@
-public record yy() implements xf<yx> {
-   public yy(ui $$0) {
-      this();
-   }
-
+public interface yy extends xr {
    @Override
-   public void a(ui $$0) {
+   default ui b() {
+      return ui.e;
    }
 
-   public void a(yx $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public uh c() {
-      return uh.b;
-   }
+   void a(yz var1);
 }

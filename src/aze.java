@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class aze extends baw {
    public aze(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityWolfColorFix", bbw.x, "minecraft:wolf");
+      super($$0, $$1, "EntityWolfColorFix", bbw.y, "minecraft:wolf");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

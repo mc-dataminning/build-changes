@@ -1,70 +1,23 @@
-public abstract class cuv {
-   public static final ahf<cuo> a = a("the_void");
-   public static final ahf<cuo> b = a("plains");
-   public static final ahf<cuo> c = a("sunflower_plains");
-   public static final ahf<cuo> d = a("snowy_plains");
-   public static final ahf<cuo> e = a("ice_spikes");
-   public static final ahf<cuo> f = a("desert");
-   public static final ahf<cuo> g = a("swamp");
-   public static final ahf<cuo> h = a("mangrove_swamp");
-   public static final ahf<cuo> i = a("forest");
-   public static final ahf<cuo> j = a("flower_forest");
-   public static final ahf<cuo> k = a("birch_forest");
-   public static final ahf<cuo> l = a("dark_forest");
-   public static final ahf<cuo> m = a("old_growth_birch_forest");
-   public static final ahf<cuo> n = a("old_growth_pine_taiga");
-   public static final ahf<cuo> o = a("old_growth_spruce_taiga");
-   public static final ahf<cuo> p = a("taiga");
-   public static final ahf<cuo> q = a("snowy_taiga");
-   public static final ahf<cuo> r = a("savanna");
-   public static final ahf<cuo> s = a("savanna_plateau");
-   public static final ahf<cuo> t = a("windswept_hills");
-   public static final ahf<cuo> u = a("windswept_gravelly_hills");
-   public static final ahf<cuo> v = a("windswept_forest");
-   public static final ahf<cuo> w = a("windswept_savanna");
-   public static final ahf<cuo> x = a("jungle");
-   public static final ahf<cuo> y = a("sparse_jungle");
-   public static final ahf<cuo> z = a("bamboo_jungle");
-   public static final ahf<cuo> A = a("badlands");
-   public static final ahf<cuo> B = a("eroded_badlands");
-   public static final ahf<cuo> C = a("wooded_badlands");
-   public static final ahf<cuo> D = a("meadow");
-   public static final ahf<cuo> E = a("cherry_grove");
-   public static final ahf<cuo> F = a("grove");
-   public static final ahf<cuo> G = a("snowy_slopes");
-   public static final ahf<cuo> H = a("frozen_peaks");
-   public static final ahf<cuo> I = a("jagged_peaks");
-   public static final ahf<cuo> J = a("stony_peaks");
-   public static final ahf<cuo> K = a("river");
-   public static final ahf<cuo> L = a("frozen_river");
-   public static final ahf<cuo> M = a("beach");
-   public static final ahf<cuo> N = a("snowy_beach");
-   public static final ahf<cuo> O = a("stony_shore");
-   public static final ahf<cuo> P = a("warm_ocean");
-   public static final ahf<cuo> Q = a("lukewarm_ocean");
-   public static final ahf<cuo> R = a("deep_lukewarm_ocean");
-   public static final ahf<cuo> S = a("ocean");
-   public static final ahf<cuo> T = a("deep_ocean");
-   public static final ahf<cuo> U = a("cold_ocean");
-   public static final ahf<cuo> V = a("deep_cold_ocean");
-   public static final ahf<cuo> W = a("frozen_ocean");
-   public static final ahf<cuo> X = a("deep_frozen_ocean");
-   public static final ahf<cuo> Y = a("mushroom_fields");
-   public static final ahf<cuo> Z = a("dripstone_caves");
-   public static final ahf<cuo> aa = a("lush_caves");
-   public static final ahf<cuo> ab = a("deep_dark");
-   public static final ahf<cuo> ac = a("nether_wastes");
-   public static final ahf<cuo> ad = a("warped_forest");
-   public static final ahf<cuo> ae = a("crimson_forest");
-   public static final ahf<cuo> af = a("soul_sand_valley");
-   public static final ahf<cuo> ag = a("basalt_deltas");
-   public static final ahf<cuo> ah = a("the_end");
-   public static final ahf<cuo> ai = a("end_highlands");
-   public static final ahf<cuo> aj = a("end_midlands");
-   public static final ahf<cuo> ak = a("small_end_islands");
-   public static final ahf<cuo> al = a("end_barrens");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static ahf<cuo> a(String $$0) {
-      return ahf.a(ke.at, new ahg($$0));
+public class cuv {
+   public static final Codec<cuv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jx.aX.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, cuv::new)
+   );
+   private final jv b;
+   private final float c;
+
+   public cuv(jv $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public jv a() {
+      return this.b;
+   }
+
+   public boolean a(auw $$0) {
+      return $$0.i() <= this.c;
    }
 }

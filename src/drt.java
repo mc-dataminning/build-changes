@@ -1,54 +1,42 @@
-public class drt extends dru<duf> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final hx an = hx.b;
-   private final boolean ao;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-   public static hx a(hx $$0) {
-      return an.a((jb)$$0);
-   }
-
-   public drt(boolean $$0) {
-      super(duf.a);
-      this.ao = $$0;
+public class drt extends drr {
+   public drt(Codec<dun> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(drw<duf> $$0) {
-      hx $$1 = $$0.e();
-      cuk $$2 = $$0.b();
+   protected boolean a(cty $$0, auw $$1, hx $$2, djp $$3) {
+      hx.a $$4 = $$2.j();
+      int $$5 = $$1.a(3) + 1;
 
-      for (hx $$3 : hx.a(new hx($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new hx($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, cws.F.o());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, cws.fz.o());
-               }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, cws.a.o());
-            } else if (!$$4) {
-               this.a($$2, $$3, cws.F.o());
-            } else if (this.ao) {
-               this.a($$2, new hx($$3), cws.fx.o());
-            } else {
-               this.a($$2, new hx($$3), cws.a.o());
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
+         }
+
+         $$4.c(ic.b);
+      }
+
+      hx $$7 = $$4.i();
+      int $$8 = $$1.a(3) + 2;
+      List<ic> $$9 = ic.c.a.c($$1);
+
+      for (ic $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(ic.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
             }
          }
-      }
-
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), cws.F.o());
-      }
-
-      hx $$6 = $$1.b(2);
-
-      for (ic $$7 : ic.c.a) {
-         this.a($$2, $$6.a($$7), cws.cq.o().a(dfq.g, $$7));
       }
 
       return true;

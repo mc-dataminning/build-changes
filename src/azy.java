@@ -16,8 +16,8 @@ public abstract class azy extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(bbw.z.typeName(), bde.a());
-      if (!Objects.equals(this.getInputSchema().getType(bbw.z), $$0)) {
+      Type<Pair<String, String>> $$0 = DSL.named(bbw.A.typeName(), bde.a());
+      if (!Objects.equals(this.getInputSchema().getType(bbw.A), $$0)) {
          throw new IllegalStateException("item name type is not what was expected.");
       } else {
          return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));

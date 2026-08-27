@@ -1,33 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+public class aoh implements agj {
+   private static final vg a = vg.c("multiplayer.status.request_handled");
+   private final agi b;
+   private final uh c;
+   private boolean d;
 
-public interface aoh {
-   aoh a = new aoh() {
-      @Override
-      public void a() {
+   public aoh(agi $$0, uh $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   public void a(vg $$0) {
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.k();
+   }
+
+   @Override
+   public void a(agl $$0) {
+      if (this.d) {
+         this.c.a(a);
+      } else {
+         this.d = true;
+         this.c.a(new agh(this.b));
       }
+   }
 
-      @Override
-      public void b() {
-      }
-
-      @Override
-      public CompletableFuture<anu> a(String $$0) {
-         return CompletableFuture.completedFuture(anu.a($$0));
-      }
-
-      @Override
-      public CompletableFuture<List<anu>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(anu::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   void a();
-
-   void b();
-
-   CompletableFuture<anu> a(String var1);
-
-   CompletableFuture<List<anu>> a(List<String> var1);
+   @Override
+   public void a(agk $$0) {
+      this.c.a(new agg($$0.a()));
+      this.c.a(a);
+   }
 }

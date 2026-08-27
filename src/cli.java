@@ -1,62 +1,135 @@
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
+import javax.annotation.Nullable;
 
-public class cli extends com implements cot {
-   private final asw<cwq> a;
-   protected final float b;
-   private final float c;
-   private final Multimap<bnm, bnp> d;
+public class cli extends cnb implements clt {
+   private final eey a;
 
-   protected cli(float $$0, float $$1, col $$2, asw<cwq> $$3, cmt.a $$4) {
-      super($$2, $$4);
-      this.a = $$3;
-      this.b = $$2.b();
-      this.c = $$0 + $$2.c();
-      Builder<bnm, bnp> $$5 = ImmutableMultimap.builder();
-      $$5.put(bnr.c, new bnp(m, "Tool modifier", (double)this.c, bnp.a.a));
-      $$5.put(bnr.e, new bnp(n, "Tool modifier", (double)$$1, bnp.a.a));
-      this.d = $$5.build();
+   public cli(eey $$0, cnb.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public float a(cmy $$0, djh $$1) {
-      return $$1.a(this.a) ? this.b : 1.0F;
-   }
+   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
+      cng $$3 = $$1.b($$2);
+      ely $$4 = a($$0, $$1, this.a == efa.a ? ctg.b.b : ctg.b.a);
+      if ($$4.c() == ema.a.a) {
+         return bkd.c($$3);
+      } else if ($$4.c() != ema.a.b) {
+         return bkd.c($$3);
+      } else {
+         hx $$5 = $$4.a();
+         ic $$6 = $$4.b();
+         hx $$7 = $$5.a($$6);
+         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
+            return bkd.d($$3);
+         } else if (this.a == efa.a) {
+            djp $$8 = $$0.a_($$5);
+            if ($$8.b() instanceof cxf $$9) {
+               cng $$10 = $$9.a($$1, $$0, $$5, $$8);
+               if (!$$10.b()) {
+                  $$1.b(asd.c.b(this));
+                  $$9.ax_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
+                  $$0.a($$1, dnz.y, $$5);
+                  cng $$11 = cni.a($$3, $$1, $$10);
+                  if (!$$0.B) {
+                     am.k.a((anf)$$1, $$10);
+                  }
 
-   @Override
-   public boolean a(cmy $$0, bml $$1, bml $$2) {
-      $$0.a(2, $$2, $$0x -> $$0x.d(bma.a));
-      return true;
-   }
+                  return bkd.a($$11, $$0.y_());
+               }
+            }
 
-   @Override
-   public boolean a(cmy $$0, ctp $$1, djh $$2, hx $$3, bml $$4) {
-      if (!$$1.B && $$2.h($$1, $$3) != 0.0F) {
-         $$0.a(1, $$4, $$0x -> $$0x.d(bma.a));
+            return bkd.d($$3);
+         } else {
+            djp $$12 = $$0.a_($$5);
+            hx $$13 = $$12.b() instanceof dbo && this.a == efa.c ? $$5 : $$7;
+            if (this.a($$1, $$0, $$13, $$4)) {
+               this.a($$1, $$0, $$3, $$13);
+               if ($$1 instanceof anf) {
+                  am.z.a((anf)$$1, $$13, $$3);
+               }
+
+               $$1.b(asd.c.b(this));
+               return bkd.a(a($$3, $$1), $$0.y_());
+            } else {
+               return bkd.d($$3);
+            }
+         }
       }
+   }
 
-      return true;
+   public static cng a(cng $$0, cfq $$1) {
+      return !$$1.fT().d ? new cng(cnj.qx) : $$0;
    }
 
    @Override
-   public Multimap<bnm, bnp> a(bma $$0) {
-      return $$0 == bma.a ? this.d : super.a($$0);
-   }
-
-   public float d() {
-      return this.c;
+   public void a(@Nullable cfq $$0, ctx $$1, cng $$2, hx $$3) {
    }
 
    @Override
-   public boolean a_(djh $$0) {
-      int $$1 = this.i().d();
-      if ($$1 < 3 && $$0.a(ash.bE)) {
-         return false;
-      } else if ($$1 < 2 && $$0.a(ash.bF)) {
+   public boolean a(@Nullable cfq $$0, ctx $$1, hx $$2, @Nullable ely $$3) {
+      if (!(this.a instanceof eex $$4)) {
          return false;
       } else {
-         return $$1 < 1 && $$0.a(ash.bG) ? false : $$0.a(this.a);
+         cwy $$7;
+         boolean $$8;
+         djp $$6;
+         boolean var10000;
+         label82: {
+            $$6 = $$1.a_($$2);
+            $$7 = $$6.b();
+            $$8 = $$6.a(this.a);
+            label70:
+            if (!$$6.i() && !$$8) {
+               if ($$7 instanceof dbo $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
+                  break label70;
+               }
+
+               var10000 = false;
+               break label82;
+            }
+
+            var10000 = true;
+         }
+
+         boolean $$10 = var10000;
+         if (!$$10) {
+            return $$3 != null && this.a($$0, $$1, $$3.a().a($$3.b()), null);
+         } else if ($$1.E_().i() && this.a.a(asn.a)) {
+            int $$11 = $$2.u();
+            int $$12 = $$2.v();
+            int $$13 = $$2.w();
+            $$1.a($$0, $$2, art.iF, aru.e, 0.5F, 2.6F + ($$1.z.i() - $$1.z.i()) * 0.8F);
+
+            for (int $$14 = 0; $$14 < 8; $$14++) {
+               $$1.a(jx.U, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
+            }
+
+            return true;
+         } else {
+            if ($$7 instanceof dbo $$15 && this.a == efa.c) {
+               $$15.a($$1, $$2, $$6, $$4.a(false));
+               this.a($$0, $$1, $$2);
+               return true;
+            }
+
+            if (!$$1.B && $$8 && !$$6.k()) {
+               $$1.b($$2, true);
+            }
+
+            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.u().b()) {
+               return false;
+            } else {
+               this.a($$0, $$1, $$2);
+               return true;
+            }
+         }
       }
+   }
+
+   protected void a(@Nullable cfq $$0, cty $$1, hx $$2) {
+      ars $$3 = this.a.a(asn.b) ? art.cW : art.cT;
+      $$1.a($$0, $$2, $$3, aru.e, 1.0F, 1.0F);
+      $$1.a($$0, dnz.z, $$2);
    }
 }

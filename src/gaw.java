@@ -1,26 +1,29 @@
-public class gaw extends fzt<cdc, fma<cdc>> {
-   private static final ahg a = new ahg("textures/entity/strider/strider.png");
-   private static final ahg i = new ahg("textures/entity/strider/strider_cold.png");
+public class gaw extends gag<byx, flx<byx>> {
+   private static final ahh a = new ahh("textures/entity/fish/salmon.png");
 
-   public gaw(fyn.a $$0) {
-      super($$0, new fma<>($$0.a(fmw.bA)), 0.5F);
-      this.a(new gcz<>(this, new fma<>($$0.a(fmw.bB)), new ahg("textures/entity/strider/strider_saddle.png")));
+   public gaw(fza.a $$0) {
+      super($$0, new flx<>($$0.a(fni.bc)), 0.4F);
    }
 
-   public ahg a(cdc $$0) {
-      return $$0.u() ? i : a;
+   public ahh a(byx $$0) {
+      return a;
    }
 
-   protected void a(cdc $$0, eqb $$1, float $$2) {
-      if ($$0.o_()) {
-         $$1.b(0.5F, 0.5F, 0.5F);
-         this.d = 0.25F;
-      } else {
-         this.d = 0.5F;
+   protected void a(byx $$0, eqk $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = 1.0F;
+      float $$6 = 1.0F;
+      if (!$$0.aZ()) {
+         $$5 = 1.3F;
+         $$6 = 1.7F;
       }
-   }
 
-   protected boolean b(cdc $$0) {
-      return super.a($$0) || $$0.u();
+      float $$7 = $$5 * 4.3F * aup.a($$6 * 0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$7));
+      $$1.a(0.0F, 0.0F, -0.4F);
+      if (!$$0.aZ()) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

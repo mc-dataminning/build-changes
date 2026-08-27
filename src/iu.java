@@ -13,30 +13,30 @@ public interface iu extends ij.b {
    Logger a = LogUtils.getLogger();
    iu.b b = new iu.c(Map.of()).d();
 
-   <E> Optional<it<E>> c(ahf<? extends it<? extends E>> var1);
+   <E> Optional<it<E>> c(ahg<? extends it<? extends E>> var1);
 
    @Override
-   default <T> Optional<ij.c<T>> a(ahf<? extends it<? extends T>> $$0) {
+   default <T> Optional<ij.c<T>> a(ahg<? extends it<? extends T>> $$0) {
       return this.c($$0).map(it::p);
    }
 
-   default <E> it<E> d(ahf<? extends it<? extends E>> $$0) {
+   default <E> it<E> d(ahg<? extends it<? extends E>> $$0) {
       return this.c($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
    }
 
    Stream<iu.d<?>> c();
 
    @Override
-   default Stream<ahf<? extends it<?>>> a() {
+   default Stream<ahg<? extends it<?>>> a() {
       return this.c().map(iu.d::a);
    }
 
    static iu.b a(final it<? extends it<?>> $$0) {
       return new iu.b() {
          @Override
-         public <T> Optional<it<T>> c(ahf<? extends it<? extends T>> $$0x) {
+         public <T> Optional<it<T>> c(ahg<? extends it<? extends T>> $$0x) {
             it<it<T>> $$1 = (it<it<T>>)$$0;
-            return $$1.d((ahf<it<T>>)$$0);
+            return $$1.d((ahg<it<T>>)$$0);
          }
 
          @Override
@@ -69,13 +69,13 @@ public interface iu extends ij.b {
    }
 
    public static class c implements iu {
-      private final Map<? extends ahf<? extends it<?>>, ? extends it<?>> c;
+      private final Map<? extends ahg<? extends it<?>>, ? extends it<?>> c;
 
       public c(List<? extends it<?>> $$0) {
          this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(it::c, $$0x -> $$0x));
       }
 
-      public c(Map<? extends ahf<? extends it<?>>, ? extends it<?>> $$0) {
+      public c(Map<? extends ahg<? extends it<?>>, ? extends it<?>> $$0) {
          this.c = Map.copyOf($$0);
       }
 
@@ -84,7 +84,7 @@ public interface iu extends ij.b {
       }
 
       @Override
-      public <E> Optional<it<E>> c(ahf<? extends it<? extends E>> $$0) {
+      public <E> Optional<it<E>> c(ahg<? extends it<? extends E>> $$0) {
          return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
       }
 
@@ -94,14 +94,14 @@ public interface iu extends ij.b {
       }
    }
 
-   public static record d<T>(ahf<? extends it<T>> a, it<T> b) {
+   public static record d<T>(ahg<? extends it<T>> a, it<T> b) {
 
-      private static <T, R extends it<? extends T>> iu.d<T> a(Entry<? extends ahf<? extends it<?>>, R> $$0) {
-         return a((ahf<? extends it<?>>)$$0.getKey(), $$0.getValue());
+      private static <T, R extends it<? extends T>> iu.d<T> a(Entry<? extends ahg<? extends it<?>>, R> $$0) {
+         return a((ahg<? extends it<?>>)$$0.getKey(), $$0.getValue());
       }
 
-      private static <T> iu.d<T> a(ahf<? extends it<?>> $$0, it<?> $$1) {
-         return new iu.d<>((ahf<? extends it<T>>)$$0, (it<T>)$$1);
+      private static <T> iu.d<T> a(ahg<? extends it<?>> $$0, it<?> $$1) {
+         return new iu.d<>((ahg<? extends it<T>>)$$0, (it<T>)$$1);
       }
 
       private iu.d<T> c() {

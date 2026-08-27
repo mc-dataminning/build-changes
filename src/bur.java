@@ -1,30 +1,48 @@
-public class bur extends bth {
-   private final bmu a;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public bur(bmu $$0) {
+public class bur extends btk {
+   private final cci a;
+   @Nullable
+   private bmo b;
+
+   public bur(cci $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(btk.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.aC() && !this.a.dM().b_(this.a.dm()).a(asm.a);
+      bmo $$0 = this.a.q();
+      return this.a.w() > 0 || $$0 != null && this.a.f((blw)$$0) < 9.0;
    }
 
    @Override
    public void c() {
-      hx $$0 = null;
+      this.a.N().n();
+      this.b = this.a.q();
+   }
 
-      for (hx $$2 : hx.b(
-         auo.a(this.a.dr() - 2.0), auo.a(this.a.dt() - 2.0), auo.a(this.a.dx() - 2.0), auo.a(this.a.dr() + 2.0), this.a.ds(), auo.a(this.a.dx() + 2.0)
-      )) {
-         if (this.a.dM().b_($$2).a(asm.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
+   @Override
+   public void d() {
+      this.b = null;
+   }
 
-      if ($$0 != null) {
-         this.a.K().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+   @Override
+   public boolean T_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.f((blw)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.O().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
       }
    }
 }

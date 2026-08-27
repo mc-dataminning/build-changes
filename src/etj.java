@@ -1,66 +1,167 @@
-public class etj extends gkp {
-   private static final int a = 212;
-   private static final vf b = vf.c("mco.configure.world.name");
-   private static final vf c = vf.c("mco.configure.world.description");
-   private final esr v;
-   private final eri w;
-   private exp x;
-   private exp y;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-   public etj(esr $$0, eri $$1) {
-      super(vf.c("mco.configure.world.settings.title"));
-      this.v = $$0;
-      this.w = $$1;
+public class etj extends gld {
+   private static final ahh a = new ahh("icon/unseen_notification");
+   private static final ahh b = new ahh("icon/news");
+   private static final ahh c = new ahh("icon/invite");
+   private static final ahh v = new ahh("icon/trial_available");
+   private final CompletableFuture<Boolean> w = equ.a().thenApply($$0 -> $$0.a() == equ.b.a);
+   @Nullable
+   private etz.c x;
+   @Nullable
+   private etj.a y;
+   private volatile int z;
+   private static boolean A;
+   private static boolean B;
+   private static boolean C;
+   private final etj.a D = new etj.a() {
+      @Override
+      public etz.c a(esq $$0) {
+         etz.c $$1 = $$0.a.a();
+         etj.this.a($$0, $$1);
+         etj.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final etj.a E = new etj.a() {
+      @Override
+      public etz.c a(esq $$0) {
+         etz.c $$1 = $$0.a.a();
+         etj.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public etj() {
+      super(evj.a);
    }
 
    @Override
-   public void aN_() {
-      int $$0 = this.g / 2 - 106;
-      String $$1 = this.w.e == eri.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-      exg $$2 = exg.a(vf.c($$1), $$0x -> {
-         if (this.w.e == eri.c.b) {
-            vf $$1x = vf.c("mco.configure.world.close.question.line1");
-            vf $$2x = vf.c("mco.configure.world.close.question.line2");
-            this.f.a(new esx($$0xx -> {
-               if ($$0xx) {
-                  this.v.a(this);
-               } else {
-                  this.f.a(this);
-               }
-            }, esx.a.b, $$1x, $$2x, true));
+   public void aP_() {
+      if (this.x != null) {
+         this.x.a();
+      }
+   }
+
+   @Override
+   public void aH_() {
+      super.aH_();
+      this.f.aZ().b.a();
+   }
+
+   @Nullable
+   private etj.a E() {
+      boolean $$0 = this.I() && this.w.getNow(false);
+      if (!$$0) {
+         return null;
+      } else {
+         return this.H() ? this.D : this.E;
+      }
+   }
+
+   @Override
+   public void e() {
+      etj.a $$0 = this.E();
+      if (!Objects.equals(this.y, $$0)) {
+         this.y = $$0;
+         if (this.y != null) {
+            this.x = this.y.a(this.f.aZ());
          } else {
-            this.v.a(false, this);
+            this.x = null;
          }
-      }).a(this.g / 2 - 53, g(0), 106, 20).a();
-      this.d($$2);
-      this.y = new exp(this.f.h, $$0, g(4), 212, 20, vf.c("mco.configure.world.name"));
-      this.y.f(32);
-      this.y.a(this.w.b());
-      this.d(this.y);
-      this.c(this.y);
-      this.x = new exp(this.f.h, $$0, g(8), 212, 20, vf.c("mco.configure.world.description"));
-      this.x.f(32);
-      this.x.a(this.w.a());
-      this.d(this.x);
-      exg $$3 = this.d(exg.a(vf.c("mco.configure.world.buttons.done"), $$0x -> this.f()).a($$0 - 2, g(12), 106, 20).a());
-      this.y.b($$1x -> $$3.j = !ac.b($$1x));
-      this.d(exg.a(ve.e, $$0x -> this.aE_()).a(this.g / 2 + 2, g(12), 106, 20).a());
+      }
+
+      if (this.x != null) {
+         this.x.b();
+      }
+   }
+
+   private boolean H() {
+      return this.f.m.Q().c();
+   }
+
+   private boolean I() {
+      return this.f.y instanceof fdr;
    }
 
    @Override
-   public void aE_() {
-      this.f.a(this.v);
-   }
-
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      $$0.a(this.i, b, this.g / 2 - 106, g(3), -1, false);
-      $$0.a(this.i, c, this.g / 2 - 106, g(7), -1, false);
+      if (this.w.getNow(false)) {
+         this.c($$0);
+      }
    }
 
-   public void f() {
-      this.v.a(this.y.a(), this.x.a());
+   @Override
+   public void b(exe $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(exe $$0) {
+      int $$1 = this.z;
+      int $$2 = 24;
+      int $$3 = this.h / 4 + 48;
+      int $$4 = this.g / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (C) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.y != null && this.y.a()) {
+         if (B) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (A) {
+            $$0.a(v, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(esq $$0, etz.c $$1) {
+      $$1.a($$0.d, $$0x -> this.z = $$0x);
+      $$1.a($$0.e, $$0x -> A = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.g.a($$1x);
+         B = $$0.g.a();
+      });
+   }
+
+   void b(esq $$0, etz.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         C = false;
+
+         for (erq $$1x : $$0x) {
+            if (!$$1x.a()) {
+               C = true;
+               break;
+            }
+         }
+      });
+   }
+
+   interface a {
+      etz.c a(esq var1);
+
+      boolean a();
    }
 }

@@ -1,82 +1,117 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class ddr extends cvm {
-   public static final MapCodec<ddr> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddr.a.b.fieldOf("kind").forGetter(cvm::b), u()).apply($$0, ddr::new));
-   public static final int d = dkn.a();
-   private static final int b = d + 1;
-   public static final dkh e = djx.ba;
-   protected static final emm f = cwq.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final emm g = cwq.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+public class ddr extends cwk implements ddy {
+   public static final MapCodec<ddr> a = b(ddr::new);
+   public static final dkg b = dkf.F;
+   public static final dkg c = dkf.C;
+   public static final dkg d = dkf.G;
+   protected static final emv e = cwy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   public static final double f = e.c(ic.a.b);
 
    @Override
-   public MapCodec<? extends ddr> a() {
-      return c;
+   public MapCodec<ddr> a() {
+      return a;
    }
 
-   protected ddr(ddr.a $$0, djg.d $$1) {
-      super($$0, $$1);
-      this.k(this.o().a(e, Integer.valueOf(0)));
+   public ddr(djo.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public emm a(djh $$0, csv $$1, hx $$2, ely $$3) {
-      return this.b() == ddr.b.h ? g : f;
+   protected void a(djq.a<cwy, djp> $$0) {
+      $$0.a(b);
+      $$0.a(c);
+      $$0.a(d);
    }
 
    @Override
-   public emm f(djh $$0, csv $$1, hx $$2) {
-      return emj.a();
-   }
-
-   @Override
-   public djh a(cph $$0) {
-      return super.a($$0).a(e, Integer.valueOf(dkn.a($$0.i())));
-   }
-
-   @Override
-   public djh a(djh $$0, ddc $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   public djh a(djh $$0, dbm $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(dji.a<cwq, djh> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   public interface a extends avk {
-      Map<String, ddr.a> a = new Object2ObjectArrayMap();
-      Codec<ddr.a> b = atw.a(avk::c, a::get);
-   }
-
-   public static enum b implements ddr.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   public void a(ctx $$0, hx $$1, djp $$2, blw $$3) {
+      if ($$0 instanceof ane $$4) {
+         anf $$5 = dik.a($$3);
+         if ($$5 != null) {
+            $$4.a($$1, dhf.L).ifPresent($$2x -> $$2x.a($$4, $$5));
+         }
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
+      if ($$1 instanceof ane $$5 && $$0.c(b) && !$$0.a($$3.b())) {
+         $$5.a($$2, dhf.L).ifPresent($$1x -> $$1x.a($$5));
       }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public void a(djp $$0, ane $$1, hx $$2, auw $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+         $$1.a($$2, dhf.L).ifPresent($$1x -> $$1x.a($$1));
+      }
+   }
+
+   @Override
+   public ddd b_(djp $$0) {
+      return ddd.c;
+   }
+
+   @Override
+   public emv b(djp $$0, ctd $$1, hx $$2, emh $$3) {
+      return e;
+   }
+
+   @Override
+   public emv f(djp $$0, ctd $$1, hx $$2) {
+      return e;
+   }
+
+   @Override
+   public boolean g_(djp $$0) {
+      return true;
+   }
+
+   @Nullable
+   @Override
+   public dhd a(hx $$0, djp $$1) {
+      return new dik($$0, $$1);
+   }
+
+   @Override
+   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, efa.c, efa.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   @Override
+   public djp a(cpp $$0) {
+      return this.o().a(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == efa.c));
+   }
+
+   @Override
+   public eez c_(djp $$0) {
+      return $$0.c(c) ? efa.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public void a(djp $$0, ane $$1, hx $$2, cng $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, bje.a(5));
+      }
+   }
+
+   @Nullable
+   @Override
+   public <T extends dhd> dhe<T> a(ctx $$0, djp $$1, dhf<T> $$2) {
+      return !$$0.B ? cwk.a($$2, dhf.L, ($$0x, $$1x, $$2x, $$3) -> doi.c.a($$0x, $$3.gh(), $$3.gi())) : null;
    }
 }

@@ -1,85 +1,67 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public final class fpf {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final fpf c = new fpf(HostAndPort.fromParts("server.invalid", 25565));
-
-   public fpf(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
-   }
-
-   private fpf(HostAndPort $$0) {
-      this.b = $$0;
-   }
-
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
-      }
-   }
-
-   public int b() {
-      return this.b.getPort();
+public record fpf(String a, @Nullable fpf.a b) {
+   public static fpf a() {
+      return a(null);
    }
 
    public static fpf a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new fpf($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
+      return a(new fpf.a.b($$0));
+   }
+
+   public static fpf a(err $$0) {
+      return a(new fpf.a.a($$0));
+   }
+
+   public static fpf a(@Nullable fpf.a $$0) {
+      return new fpf(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof fpf.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof fpf.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("23w51a");
+      if (evr.e().a()) {
+         $$0.append(" (modded)");
+      }
+
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public fpf.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements fpf.a {
+         public a(err $$0) {
+            this($$0.a, $$0.n);
          }
       }
-   }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
+      public static record b(String a) implements fpf.a {
       }
-
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof fpf ? this.b.equals(((fpf)$$0).b) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
    }
 }

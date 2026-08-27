@@ -1,70 +1,57 @@
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class eug extends eui {
+public class eug {
+   private static final Map<String, eug.a> a = Maps.newHashMap();
    private static final Logger b = LogUtils.getLogger();
-   private static final vf c = vf.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final fdb f;
-   private final String g;
+   private static final ahh c = new ahh("textures/gui/presets/isles.png");
 
-   public eug(long $$0, int $$1, String $$2, fdb $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public static ahh a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
    }
 
-   @Override
-   public void run() {
-      eqr $$0 = eqr.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            ery $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new esu(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (esf var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (ese var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new esv(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
+   private static ahh b(String $$0, String $$1) {
+      eug.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
+      } else {
+         epl $$3 = a($$1);
+         if ($$3 == null) {
+            ahh $$4 = ger.b();
+            a.put($$0, new eug.a($$1, $$4));
+            return $$4;
+         } else {
+            ahh $$5 = new ahh("realms", "dynamic/" + $$0);
+            evr.O().Y().a($$5, new geo($$3));
+            a.put($$0, new eug.a($$1, $$5));
+            return $$5;
          }
       }
    }
 
-   @Override
-   public vf a() {
-      return c;
+   @Nullable
+   private static epl a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+
+      try {
+         return epl.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
+      }
+
+      return null;
+   }
+
+   public static record a(String a, ahh b) {
    }
 }

@@ -1,25 +1,24 @@
-public class csh extends crj {
-   public csh(crj.a $$0, bma... $$1) {
-      super($$0, crk.n, $$1);
+public class csh extends crr {
+   public csh(crr.a $$0, bmd... $$1) {
+      super($$0, crs.f, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return 5 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 15;
    }
 
    @Override
-   public boolean b() {
-      return true;
+   public int a() {
+      return 3;
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public static float e(int $$0) {
+      return 1.0F - 1.0F / (float)($$0 + 1);
    }
 }

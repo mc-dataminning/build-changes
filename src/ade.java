@@ -1,92 +1,65 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import io.netty.handler.codec.DecoderException;
+import java.util.Collection;
+import java.util.List;
 
-public class ade implements xf<za> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private final int d;
-   private final blg e;
-   private final byte f;
-   private final int g;
-   private final byte h;
-   @Nullable
-   private final bli.a i;
+public class ade implements xg<zb> {
+   private final int a;
+   private final List<ade.a> b;
 
-   public ade(int $$0, bli $$1) {
-      this.d = $$0;
-      this.e = $$1.c();
-      this.f = (byte)($$1.e() & 0xFF);
-      this.g = $$1.d();
-      byte $$2 = 0;
-      if ($$1.f()) {
-         $$2 = (byte)($$2 | 1);
+   public ade(int $$0, Collection<bnq> $$1) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+
+      for (bnq $$2 : $$1) {
+         this.b.add(new ade.a($$2.a(), $$2.b(), $$2.c()));
       }
-
-      if ($$1.g()) {
-         $$2 = (byte)($$2 | 2);
-      }
-
-      if ($$1.h()) {
-         $$2 = (byte)($$2 | 4);
-      }
-
-      this.h = $$2;
-      this.i = $$1.a().orElse(null);
    }
 
-   public ade(ui $$0) {
-      this.d = $$0.n();
-      this.e = $$0.a(kd.d);
-      this.f = $$0.readByte();
-      this.g = $$0.n();
-      this.h = $$0.readByte();
-      this.i = $$0.c($$0x -> $$0x.a(tb.a, bli.a.a));
+   public ade(uj $$0) {
+      this.a = $$0.n();
+      this.b = $$0.a(
+         (uj.a<ade.a>)($$0x -> {
+            ih<bnp> $$1 = $$0x.a(kd.u.t());
+            if ($$1 == null) {
+               throw new DecoderException("Received unrecognized attribute id");
+            } else {
+               double $$2 = $$0x.readDouble();
+               List<bns> $$3 = $$0x.a(
+                  (uj.a<bns>)($$0xx -> new bns($$0xx.p(), "Unknown synced attribute modifier", $$0xx.readDouble(), bns.a.a($$0xx.readByte())))
+               );
+               return new ade.a($$1, $$2, $$3);
+            }
+         })
+      );
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.c(this.d);
-      $$0.a(kd.d, this.e);
-      $$0.k(this.f);
-      $$0.c(this.g);
-      $$0.k(this.h);
-      $$0.a(this.i, ($$0x, $$1) -> $$0x.a(tb.a, bli.a.a, $$1));
+   public void a(uj $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b, ($$0x, $$1) -> {
+         $$0x.a(kd.u.t(), $$1.a());
+         $$0x.a($$1.b());
+         $$0x.a($$1.c(), ($$0xx, $$1x) -> {
+            $$0xx.a($$1x.a());
+            $$0xx.a($$1x.c());
+            $$0xx.k($$1x.b().a());
+         });
+      });
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
    }
 
    public int a() {
-      return this.d;
+      return this.a;
    }
 
-   public blg d() {
-      return this.e;
+   public List<ade.a> d() {
+      return this.b;
    }
 
-   public byte e() {
-      return this.f;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return (this.h & 2) == 2;
-   }
-
-   public boolean h() {
-      return (this.h & 1) == 1;
-   }
-
-   public boolean i() {
-      return (this.h & 4) == 4;
-   }
-
-   @Nullable
-   public bli.a j() {
-      return this.i;
+   public static record a(ih<bnp> a, double b, Collection<bns> c) {
    }
 }

@@ -1,39 +1,37 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
-public class asb<T> implements Iterable<arz<T>> {
-   private final it<T> a;
-   private final Map<T, arz<T>> b = new IdentityHashMap<>();
-   private final vf c;
+public interface asb {
+   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   asb b = NumberFormat.getIntegerInstance(Locale.US)::format;
+   asb c = $$0 -> a.format((double)$$0 * 0.1);
+   asb d = $$0 -> {
+      double $$1 = (double)$$0 / 100.0;
+      double $$2 = $$1 / 1000.0;
+      if ($$2 > 0.5) {
+         return a.format($$2) + " km";
+      } else {
+         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
+      }
+   };
+   asb e = $$0 -> {
+      double $$1 = (double)$$0 / 20.0;
+      double $$2 = $$1 / 60.0;
+      double $$3 = $$2 / 60.0;
+      double $$4 = $$3 / 24.0;
+      double $$5 = $$4 / 365.0;
+      if ($$5 > 0.5) {
+         return a.format($$5) + " y";
+      } else if ($$4 > 0.5) {
+         return a.format($$4) + " d";
+      } else if ($$3 > 0.5) {
+         return a.format($$3) + " h";
+      } else {
+         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
+      }
+   };
 
-   public asb(it<T> $$0, vf $$1) {
-      this.a = $$0;
-      this.c = $$1;
-   }
-
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public arz<T> a(T $$0, asa $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new arz<>(this, (T)$$1x, $$1));
-   }
-
-   public it<T> a() {
-      return this.a;
-   }
-
-   @Override
-   public Iterator<arz<T>> iterator() {
-      return this.b.values().iterator();
-   }
-
-   public arz<T> b(T $$0) {
-      return this.a($$0, asa.b);
-   }
-
-   public vf b() {
-      return this.c;
-   }
+   String format(int var1);
 }

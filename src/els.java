@@ -1,60 +1,79 @@
+import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.List;
+
 public class els {
-   public static final els a = new els(0.0F, 0.0F);
-   public static final els b = new els(1.0F, 1.0F);
-   public static final els c = new els(1.0F, 0.0F);
-   public static final els d = new els(-1.0F, 0.0F);
-   public static final els e = new els(0.0F, 1.0F);
-   public static final els f = new els(0.0F, -1.0F);
-   public static final els g = new els(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final els h = new els(Float.MIN_VALUE, Float.MIN_VALUE);
-   public final float i;
-   public final float j;
+   private final PathMatcher a;
 
-   public els(float $$0, float $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   public els(PathMatcher $$0) {
+      this.a = $$0;
    }
 
-   public els a(float $$0) {
-      return new els(this.i * $$0, this.j * $$0);
+   public void a(Path $$0, List<elt> $$1) throws IOException {
+      Path $$2 = Files.readSymbolicLink($$0);
+      if (!this.a.matches($$2)) {
+         $$1.add(new elt($$0, $$2));
+      }
    }
 
-   public float a(els $$0) {
-      return this.i * $$0.i + this.j * $$0.j;
+   public List<elt> a(Path $$0) throws IOException {
+      List<elt> $$1 = new ArrayList<>();
+      this.a($$0, $$1);
+      return $$1;
    }
 
-   public els b(els $$0) {
-      return new els(this.i + $$0.i, this.j + $$0.j);
+   public List<elt> a(Path $$0, boolean $$1) throws IOException {
+      List<elt> $$2 = new ArrayList<>();
+
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return $$2;
+      }
+
+      if ($$3.isRegularFile()) {
+         throw new IOException("Path " + $$0 + " is not a directory");
+      } else {
+         if ($$3.isSymbolicLink()) {
+            if (!$$1) {
+               this.a($$0, $$2);
+               return $$2;
+            }
+
+            $$0 = Files.readSymbolicLink($$0);
+         }
+
+         this.b($$0, $$2);
+         return $$2;
+      }
    }
 
-   public els b(float $$0) {
-      return new els(this.i + $$0, this.j + $$0);
-   }
+   public void b(Path $$0, final List<elt> $$1) throws IOException {
+      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            if ($$1.isSymbolicLink()) {
+               els.this.a($$0, $$1);
+            }
+         }
 
-   public boolean c(els $$0) {
-      return this.i == $$0.i && this.j == $$0.j;
-   }
+         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.preVisitDirectory($$0, $$1);
+         }
 
-   public els a() {
-      float $$0 = auo.c(this.i * this.i + this.j * this.j);
-      return $$0 < 1.0E-4F ? a : new els(this.i / $$0, this.j / $$0);
-   }
-
-   public float b() {
-      return auo.c(this.i * this.i + this.j * this.j);
-   }
-
-   public float c() {
-      return this.i * this.i + this.j * this.j;
-   }
-
-   public float d(els $$0) {
-      float $$1 = $$0.i - this.i;
-      float $$2 = $$0.j - this.j;
-      return $$1 * $$1 + $$2 * $$2;
-   }
-
-   public els d() {
-      return new els(-this.i, -this.j);
+         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.visitFile($$0, $$1);
+         }
+      });
    }
 }

@@ -1,12 +1,14 @@
-import java.util.Collection;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
 
-public interface ggy {
-   Collection<ahg> f();
+public class ggy implements apj<ggx> {
+   public ggx b(JsonObject $$0) {
+      boolean $$1 = auf.a($$0, "blur", false);
+      boolean $$2 = auf.a($$0, "clamp", false);
+      return new ggx($$1, $$2);
+   }
 
-   void a(Function<ahg, ggy> var1);
-
-   @Nullable
-   ggn a(ggr var1, Function<ggq, gen> var2, ggv var3, ahg var4);
+   @Override
+   public String a() {
+      return "texture";
+   }
 }

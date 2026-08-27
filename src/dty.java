@@ -1,9 +1,10 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public interface dty {
-   duf m = duf.b;
+public class dty implements dug {
+   public static final Codec<dty> a = dwh.a.fieldOf("state_provider").xmap(dty::new, $$0 -> $$0.b).codec();
+   public final dwh b;
 
-   default Stream<drh<?, ?>> e() {
-      return Stream.empty();
+   public dty(dwh $$0) {
+      this.b = $$0;
    }
 }

@@ -1,11 +1,4 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public interface eky {
-   @Nullable
-   emw a(egw var1);
-
-   ekx a();
-
-   Set<eje<?>> b();
+public record eky(Codec<? extends ekz> a) {
 }

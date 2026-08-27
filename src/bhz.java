@@ -1,5 +1,6 @@
-import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
 
 public interface bhz {
-   List<bhw> bp();
+   Set<bhx> a(Supplier<bgr> var1);
 }

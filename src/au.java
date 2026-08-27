@@ -3,23 +3,23 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Collection;
 import java.util.Optional;
 
-public record au(Optional<asw<cwq>> b, Optional<il<cwq>> c, Optional<cz> d, Optional<cm> e) {
-   private static final Codec<il<cwq>> f = kd.e.r().listOf().xmap(il::a, $$0 -> $$0.a().toList());
+public record au(Optional<asx<cwy>> b, Optional<il<cwy>> c, Optional<cz> d, Optional<cm> e) {
+   private static final Codec<il<cwy>> f = kd.e.r().listOf().xmap(il::a, $$0 -> $$0.a().toList());
    public static final Codec<au> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               atw.a(asw.a(ke.f), "tag").forGetter(au::a),
-               atw.a(f, "blocks").forGetter(au::b),
-               atw.a(cz.a, "state").forGetter(au::c),
-               atw.a(cm.a, "nbt").forGetter(au::d)
+               atx.a(asx.a(ke.f), "tag").forGetter(au::a),
+               atx.a(f, "blocks").forGetter(au::b),
+               atx.a(cz.a, "state").forGetter(au::c),
+               atx.a(cm.a, "nbt").forGetter(au::d)
             )
             .apply($$0, au::new)
    );
 
-   public boolean a(and $$0, hx $$1) {
+   public boolean a(ane $$0, hx $$1) {
       if (!$$0.p($$1)) {
          return false;
       } else {
-         djh $$2 = $$0.a_($$1);
+         djp $$2 = $$0.a_($$1);
          if (this.b.isPresent() && !$$2.a(this.b.get())) {
             return false;
          } else if (this.c.isPresent() && !$$2.a(this.c.get())) {
@@ -28,7 +28,7 @@ public record au(Optional<asw<cwq>> b, Optional<il<cwq>> c, Optional<cz> d, Opti
             return false;
          } else {
             if (this.e.isPresent()) {
-               dgv $$3 = $$0.c_($$1);
+               dhd $$3 = $$0.c_($$1);
                if ($$3 == null || !this.e.get().a($$3.o())) {
                   return false;
                }
@@ -39,11 +39,11 @@ public record au(Optional<asw<cwq>> b, Optional<il<cwq>> c, Optional<cz> d, Opti
       }
    }
 
-   public Optional<asw<cwq>> a() {
+   public Optional<asx<cwy>> a() {
       return this.b;
    }
 
-   public Optional<il<cwq>> b() {
+   public Optional<il<cwy>> b() {
       return this.c;
    }
 
@@ -56,8 +56,8 @@ public record au(Optional<asw<cwq>> b, Optional<il<cwq>> c, Optional<cz> d, Opti
    }
 
    public static class a {
-      private Optional<il<cwq>> a = Optional.empty();
-      private Optional<asw<cwq>> b = Optional.empty();
+      private Optional<il<cwy>> a = Optional.empty();
+      private Optional<asx<cwy>> b = Optional.empty();
       private Optional<cz> c = Optional.empty();
       private Optional<cm> d = Optional.empty();
 
@@ -68,22 +68,22 @@ public record au(Optional<asw<cwq>> b, Optional<il<cwq>> c, Optional<cz> d, Opti
          return new au.a();
       }
 
-      public au.a a(cwq... $$0) {
-         this.a = Optional.of(il.a(cwq::r, $$0));
+      public au.a a(cwy... $$0) {
+         this.a = Optional.of(il.a(cwy::r, $$0));
          return this;
       }
 
-      public au.a a(Collection<cwq> $$0) {
-         this.a = Optional.of(il.a(cwq::r, $$0));
+      public au.a a(Collection<cwy> $$0) {
+         this.a = Optional.of(il.a(cwy::r, $$0));
          return this;
       }
 
-      public au.a a(asw<cwq> $$0) {
+      public au.a a(asx<cwy> $$0) {
          this.b = Optional.of($$0);
          return this;
       }
 
-      public au.a a(sn $$0) {
+      public au.a a(so $$0) {
          this.d = Optional.of(new cm($$0));
          return this;
       }

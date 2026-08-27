@@ -1,120 +1,154 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.Collection;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fhq extends fdb {
-   private static final vf a = vf.c("selectWorld.experimental.title");
-   private static final vf b = vf.c("selectWorld.experimental.message");
-   private static final vf c = vf.c("selectWorld.experimental.details");
-   private static final int k = 10;
-   private static final int l = 100;
-   private final BooleanConsumer m;
-   final Collection<apq> n;
-   private final fap o = new fap().a(10).b(20);
+public class fhq extends fdm {
+   private static final vg a = vg.c("gui.abuseReport.reason.title");
+   private static final vg b = vg.c("gui.abuseReport.reason.description");
+   private static final vg c = vg.c("gui.abuseReport.read_info");
+   private static final int k = 95;
+   private static final int l = 150;
+   private static final int m = 20;
+   private static final int n = 320;
+   private static final int o = 4;
+   @Nullable
+   private final fdm p;
+   @Nullable
+   private fhq.a q;
+   @Nullable
+   fpg r;
+   private final Consumer<fpg> t;
 
-   public fhq(Collection<apq> $$0, BooleanConsumer $$1) {
+   public fhq(@Nullable fdm $$0, @Nullable fpg $$1, Consumer<fpg> $$2) {
       super(a);
-      this.n = $$0;
-      this.m = $$1;
+      this.p = $$0;
+      this.r = $$1;
+      this.t = $$2;
    }
 
    @Override
-   public vf h() {
-      return ve.a(super.h(), b);
+   protected void aP_() {
+      this.q = this.d(new fhq.a(this.f));
+      fhq.a.a $$0 = x.a(this.r, this.q::a);
+      this.q.a($$0);
+      int $$1 = this.g / 2 - 150 - 5;
+      this.d(exr.a(c, fce.b(this, "https://aka.ms/aboutjavareporting")).a($$1, this.o(), 150, 20).a());
+      int $$2 = this.g / 2 + 5;
+      this.d(exr.a(vf.d, $$0x -> {
+         fhq.a.a $$1x = this.q.i();
+         if ($$1x != null) {
+            this.t.accept($$1x.b());
+         }
+
+         this.f.a(this.p);
+      }).a($$2, this.o(), 150, 20).a());
+      super.aP_();
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      fap.b $$0 = this.o.d(2);
-      fat $$1 = $$0.b().b();
-      $$0.a(new eyn(this.e, this.i), 2, $$1);
-      eya $$2 = $$0.a(new eya(b, this.i).b(true), 2, $$1);
-      $$2.c(310);
-      $$0.a(exg.a(c, $$0x -> this.f.a(new fhq.a())).a(100).a(), 2, $$1);
-      $$0.a(exg.a(ve.i, $$0x -> this.m.accept(true)).a());
-      $$0.a(exg.a(ve.k, $$0x -> this.m.accept(false)).a());
-      this.o.a($$1x -> {
-         exe var10000 = this.d($$1x);
-      });
-      this.o.a();
-      this.c();
+   public void a(exe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      $$0.a(this.E(), this.I(), this.H(), this.J(), 2130706432);
+      $$0.b(this.i, b, this.E() + 4, this.I() + 4, -8421505);
+      fhq.a.a $$4 = this.q.i();
+      if ($$4 != null) {
+         int $$5 = this.E() + 4 + 16;
+         int $$6 = this.H() - 4;
+         int $$7 = this.I() + 4 + 9 + 2;
+         int $$8 = this.J() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.i.b($$4.b.c(), $$9);
+         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
+      }
    }
 
    @Override
-   protected void c() {
-      fao.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
+   public void b(exe $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   private int o() {
+      return this.h - 20 - 4;
+   }
+
+   private int E() {
+      return (this.g - 320) / 2;
+   }
+
+   private int H() {
+      return (this.g + 320) / 2;
+   }
+
+   private int I() {
+      return this.h - 95 + 4;
+   }
+
+   private int J() {
+      return this.o() - 4;
    }
 
    @Override
-   public void aE_() {
-      this.m.accept(false);
+   public void d() {
+      this.f.a(this.p);
    }
 
-   class a extends fdb {
-      private fhq.a.a b;
+   public class a extends eyn<fhq.a.a> {
+      public a(evr $$1) {
+         super($$1, fhq.this.g, fhq.this.h - 95 - 40, 40, 18);
 
-      a() {
-         super(vf.c("selectWorld.experimental.details.title"));
+         for (fpg $$2 : fpg.values()) {
+            this.b(new fhq.a.a($$2));
+         }
+      }
+
+      @Nullable
+      public fhq.a.a a(fpg $$0) {
+         return this.l().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
       }
 
       @Override
-      public void aE_() {
-         this.f.a(fhq.this);
+      public int b() {
+         return 320;
       }
 
       @Override
-      protected void aN_() {
-         super.aN_();
-         this.d(exg.a(ve.k, $$0 -> this.aE_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
-         this.b = this.d(new fhq.a.a(this.f, fhq.this.n));
+      protected int c() {
+         return this.r() - 2;
       }
 
-      @Override
-      public void a(ewu $$0, int $$1, int $$2, float $$3) {
-         super.a($$0, $$1, $$2, $$3);
-         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
+      public void a(@Nullable fhq.a.a $$0) {
+         super.a($$0);
+         fhq.this.r = $$0 != null ? $$0.b() : null;
       }
 
-      class a extends eyc<fhq.a.b> {
-         public a(evi $$0, Collection<apq> $$1) {
-            super($$0, a.this.g, a.this.h - 96, 32, (9 + 2) * 3);
+      public class a extends eyn.a<fhq.a.a> {
+         final fpg b;
 
-            for (apq $$2 : $$1) {
-               String $$3 = chu.a(chu.g, $$2.d());
-               if (!$$3.isEmpty()) {
-                  vf $$4 = vi.a($$2.a().f(), wc.a.a(true));
-                  vf $$5 = vf.a("selectWorld.experimental.details.entry", $$3);
-                  this.b(a.this.new b($$4, $$5, exz.a(a.this.i, $$5, this.b())));
-               }
-            }
+         public a(fpg $$1) {
+            this.b = $$1;
          }
 
          @Override
-         public int b() {
-            return this.g * 3 / 4;
-         }
-      }
-
-      class b extends eyc.a<fhq.a.b> {
-         private final vf b;
-         private final vf c;
-         private final exz d;
-
-         b(vf $$0, vf $$1, exz $$2) {
-            this.b = $$0;
-            this.c = $$1;
-            this.d = $$2;
+         public void a(exe $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(fhq.this.i, this.b.b(), $$10, $$11, -1);
          }
 
          @Override
-         public void a(ewu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
-            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
+         public vg a() {
+            return vg.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
          }
 
          @Override
-         public vf a() {
-            return vf.a("narrator.select", ve.a(this.b, this.c));
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return true;
+         }
+
+         public fpg b() {
+            return this.b;
          }
       }
    }

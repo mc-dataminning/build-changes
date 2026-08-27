@@ -1,12 +1,8 @@
-import com.mojang.serialization.Codec;
+import net.minecraft.server.MinecraftServer;
 
-public interface eae<SP extends ead> {
-   eae<eab> a = a("random_spread", eab.a);
-   eae<eaa> b = a("concentric_rings", eaa.a);
-
-   Codec<SP> codec();
-
-   private static <SP extends ead> eae<SP> a(String $$0, Codec<SP> $$1) {
-      return it.a(kd.R, $$0, () -> $$1);
+public record eae(aqj a, iu b, edp c) {
+   public static eae a(ane $$0) {
+      MinecraftServer $$1 = $$0.o();
+      return new eae($$1.bc(), $$1.aZ(), $$1.aX());
    }
 }

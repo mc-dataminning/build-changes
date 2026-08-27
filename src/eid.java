@@ -1,125 +1,60 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class eid extends eii {
-   public static final asw<dzg> a = ass.l;
-   public static final efy.a b = efy.a.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final Codec<eid> f = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  atw.a(asw.a(ke.aD), "destination", a).forGetter($$0x -> $$0x.h),
-                  efy.a.I.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  atw.a(Codec.BYTE, "zoom", Byte.valueOf((byte)2)).forGetter($$0x -> $$0x.j),
-                  atw.a(Codec.INT, "search_radius", Integer.valueOf(50)).forGetter($$0x -> $$0x.k),
-                  atw.a(Codec.BOOL, "skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
-               )
-            )
+public class eid extends eia {
+   public static final Codec<eid> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(asx.a(ke.F).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
             .apply($$0, eid::new)
    );
-   private final asw<dzg> h;
-   private final efy.a i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+   private final asx<cnb> j;
+   private final boolean k;
 
-   eid(List<ejv> $$0, asw<dzg> $$1, efy.a $$2, byte $$3, int $$4, boolean $$5) {
-      super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+   private eid(asx<cnb> $$0, boolean $$1, int $$2, int $$3, List<eke> $$4, List<eis> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public eik b() {
-      return eil.m;
+   public ehz a() {
+      return ehw.f;
    }
 
    @Override
-   public Set<eje<?>> a() {
-      return ImmutableSet.of(ejh.f);
+   public void a(Consumer<cng> $$0, ehf $$1) {
+      kd.h.c(this.j).forEach($$1x -> $$0.accept(new cng($$1x)));
    }
 
-   @Override
-   public cmy a(cmy $$0, egw $$1) {
-      if (!$$0.a(cnb.uc)) {
-         return $$0;
+   private boolean a(ehf $$0, Consumer<ehx> $$1) {
+      if (!this.a($$0)) {
+         return false;
       } else {
-         elt $$2 = $$1.c(ejh.f);
-         if ($$2 != null) {
-            and $$3 = $$1.d();
-            hx $$4 = $$3.a(this.h, hx.a($$2), this.k, this.l);
-            if ($$4 != null) {
-               cmy $$5 = cnf.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               cnf.a($$3, $$5);
-               egb.a($$5, $$4, "+", this.i);
-               return $$5;
-            }
+         for (final ih<cnb> $$2 : kd.h.c(this.j)) {
+            $$1.accept(new eia.c() {
+               @Override
+               public void a(Consumer<cng> $$0, ehf $$1) {
+                  $$0.accept(new cng($$2));
+               }
+            });
          }
 
-         return $$0;
+         return true;
       }
    }
 
-   public static eid.a c() {
-      return new eid.a();
+   @Override
+   public boolean expand(ehf $$0, Consumer<ehx> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   public static class a extends eii.a<eid.a> {
-      private asw<dzg> a;
-      private efy.a b;
-      private byte c;
-      private int d;
-      private boolean e;
+   public static eia.a<?> a(asx<cnb> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eid($$0, false, $$1, $$2, $$3, $$4));
+   }
 
-      public a() {
-         this.a = eid.a;
-         this.b = eid.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
-      }
-
-      protected eid.a a() {
-         return this;
-      }
-
-      public eid.a a(asw<dzg> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public eid.a a(efy.a $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public eid.a a(byte $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eid.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eid.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      @Override
-      public eij b() {
-         return new eid(this.g(), this.a, this.b, this.c, this.d, this.e);
-      }
+   public static eia.a<?> b(asx<cnb> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eid($$0, true, $$1, $$2, $$3, $$4));
    }
 }

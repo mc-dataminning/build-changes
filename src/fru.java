@@ -1,67 +1,80 @@
-public class fru extends frv {
-   private final hx a;
-   private final float b;
-   private final float F;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   public fru(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, djh $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, hx.a($$1, $$2, $$3));
+public abstract class fru extends frh {
+   protected float D;
+   private final Quaternionf a = new Quaternionf();
+
+   protected fru(foe $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
    }
 
-   public fru(fns $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, djh $$7, hx $$8) {
+   protected fru(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(evi.O().an().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(cws.i)) {
-         int $$9 = evi.O().au().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
+   }
+
+   public fru.a p() {
+      return fru.a.a;
+   }
+
+   @Override
+   public void a(eqo $$0, evc $$1, float $$2) {
+      emc $$3 = $$1.b();
+      float $$4 = (float)(aup.d((double)$$2, this.d, this.g) - $$3.a());
+      float $$5 = (float)(aup.d((double)$$2, this.e, this.h) - $$3.b());
+      float $$6 = (float)(aup.d((double)$$2, this.f, this.i) - $$3.c());
+      this.p().setRotation(this.a, $$1, $$2);
+      if (this.z != 0.0F) {
+         this.a.rotateZ(aup.i($$2, this.A, this.z));
       }
 
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
-   }
+      Vector3f[] $$7 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$8 = this.b($$2);
 
-   @Override
-   public fqz b() {
-      return fqz.a;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.B(this.a) ? ftf.a(this.c, this.a) : $$1;
-   }
-
-   public static class a implements fqy<jp> {
-      public fqv a(jp $$0, fns $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         djh $$8 = $$0.c();
-         return !$$8.i() && !$$8.a(cws.bQ) && $$8.z() ? new fru($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+      for (int $$9 = 0; $$9 < 4; $$9++) {
+         Vector3f $$10 = $$7[$$9];
+         $$10.rotate(this.a);
+         $$10.mul($$8);
+         $$10.add($$4, $$5, $$6);
       }
+
+      float $$11 = this.c();
+      float $$12 = this.d();
+      float $$13 = this.e();
+      float $$14 = this.f();
+      int $$15 = this.a($$2);
+      $$0.a((double)$$7[0].x(), (double)$$7[0].y(), (double)$$7[0].z()).a($$12, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[1].x(), (double)$$7[1].y(), (double)$$7[1].z()).a($$12, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[2].x(), (double)$$7[2].y(), (double)$$7[2].z()).a($$11, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[3].x(), (double)$$7[3].y(), (double)$$7[3].z()).a($$11, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
+   }
+
+   public float b(float $$0) {
+      return this.D;
+   }
+
+   @Override
+   public frh d(float $$0) {
+      this.D *= $$0;
+      return super.d($$0);
+   }
+
+   protected abstract float c();
+
+   protected abstract float d();
+
+   protected abstract float e();
+
+   protected abstract float f();
+
+   public interface a {
+      fru.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
+      fru.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
+
+      void setRotation(Quaternionf var1, evc var2, float var3);
    }
 }

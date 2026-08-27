@@ -4,16 +4,16 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class ia<T> extends ip<T> implements ib<T> {
-   private final ahg b;
+   private final ahh b;
    private ih.c<T> c;
 
-   public ia(String $$0, ahf<? extends it<T>> $$1, Lifecycle $$2, boolean $$3) {
+   public ia(String $$0, ahg<? extends it<T>> $$1, Lifecycle $$2, boolean $$3) {
       super($$1, $$2, $$3);
-      this.b = new ahg($$0);
+      this.b = new ahh($$0);
    }
 
    @Override
-   public ih.c<T> a(int $$0, ahf<T> $$1, T $$2, Lifecycle $$3) {
+   public ih.c<T> a(int $$0, ahg<T> $$1, T $$2, Lifecycle $$3) {
       ih.c<T> $$4 = super.a($$0, $$1, $$2, $$3);
       if (this.b.equals($$1.a())) {
          this.c = $$4;
@@ -30,20 +30,20 @@ public class ia<T> extends ip<T> implements ib<T> {
 
    @Nonnull
    @Override
-   public ahg b(T $$0) {
-      ahg $$1 = super.b($$0);
+   public ahh b(T $$0) {
+      ahh $$1 = super.b($$0);
       return $$1 == null ? this.b : $$1;
    }
 
    @Nonnull
    @Override
-   public T a(@Nullable ahg $$0) {
+   public T a(@Nullable ahh $$0) {
       T $$1 = super.a($$0);
       return $$1 == null ? this.c.a() : $$1;
    }
 
    @Override
-   public Optional<T> b(@Nullable ahg $$0) {
+   public Optional<T> b(@Nullable ahh $$0) {
       return Optional.ofNullable(super.a($$0));
    }
 
@@ -55,12 +55,12 @@ public class ia<T> extends ip<T> implements ib<T> {
    }
 
    @Override
-   public Optional<ih.c<T>> a(auv $$0) {
+   public Optional<ih.c<T>> a(auw $$0) {
       return super.a($$0).or(() -> Optional.of(this.c));
    }
 
    @Override
-   public ahg a() {
+   public ahh a() {
       return this.b;
    }
 }

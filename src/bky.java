@@ -1,46 +1,96 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public interface bky {
+   ahg<bkx> a = ahg.a(ke.r, new ahh("in_fire"));
+   ahg<bkx> b = ahg.a(ke.r, new ahh("lightning_bolt"));
+   ahg<bkx> c = ahg.a(ke.r, new ahh("on_fire"));
+   ahg<bkx> d = ahg.a(ke.r, new ahh("lava"));
+   ahg<bkx> e = ahg.a(ke.r, new ahh("hot_floor"));
+   ahg<bkx> f = ahg.a(ke.r, new ahh("in_wall"));
+   ahg<bkx> g = ahg.a(ke.r, new ahh("cramming"));
+   ahg<bkx> h = ahg.a(ke.r, new ahh("drown"));
+   ahg<bkx> i = ahg.a(ke.r, new ahh("starve"));
+   ahg<bkx> j = ahg.a(ke.r, new ahh("cactus"));
+   ahg<bkx> k = ahg.a(ke.r, new ahh("fall"));
+   ahg<bkx> l = ahg.a(ke.r, new ahh("fly_into_wall"));
+   ahg<bkx> m = ahg.a(ke.r, new ahh("out_of_world"));
+   ahg<bkx> n = ahg.a(ke.r, new ahh("generic"));
+   ahg<bkx> o = ahg.a(ke.r, new ahh("magic"));
+   ahg<bkx> p = ahg.a(ke.r, new ahh("wither"));
+   ahg<bkx> q = ahg.a(ke.r, new ahh("dragon_breath"));
+   ahg<bkx> r = ahg.a(ke.r, new ahh("dry_out"));
+   ahg<bkx> s = ahg.a(ke.r, new ahh("sweet_berry_bush"));
+   ahg<bkx> t = ahg.a(ke.r, new ahh("freeze"));
+   ahg<bkx> u = ahg.a(ke.r, new ahh("stalagmite"));
+   ahg<bkx> v = ahg.a(ke.r, new ahh("falling_block"));
+   ahg<bkx> w = ahg.a(ke.r, new ahh("falling_anvil"));
+   ahg<bkx> x = ahg.a(ke.r, new ahh("falling_stalactite"));
+   ahg<bkx> y = ahg.a(ke.r, new ahh("sting"));
+   ahg<bkx> z = ahg.a(ke.r, new ahh("mob_attack"));
+   ahg<bkx> A = ahg.a(ke.r, new ahh("mob_attack_no_aggro"));
+   ahg<bkx> B = ahg.a(ke.r, new ahh("player_attack"));
+   ahg<bkx> C = ahg.a(ke.r, new ahh("arrow"));
+   ahg<bkx> D = ahg.a(ke.r, new ahh("trident"));
+   ahg<bkx> E = ahg.a(ke.r, new ahh("mob_projectile"));
+   ahg<bkx> F = ahg.a(ke.r, new ahh("spit"));
+   ahg<bkx> G = ahg.a(ke.r, new ahh("wind_charge"));
+   ahg<bkx> H = ahg.a(ke.r, new ahh("fireworks"));
+   ahg<bkx> I = ahg.a(ke.r, new ahh("fireball"));
+   ahg<bkx> J = ahg.a(ke.r, new ahh("unattributed_fireball"));
+   ahg<bkx> K = ahg.a(ke.r, new ahh("wither_skull"));
+   ahg<bkx> L = ahg.a(ke.r, new ahh("thrown"));
+   ahg<bkx> M = ahg.a(ke.r, new ahh("indirect_magic"));
+   ahg<bkx> N = ahg.a(ke.r, new ahh("thorns"));
+   ahg<bkx> O = ahg.a(ke.r, new ahh("explosion"));
+   ahg<bkx> P = ahg.a(ke.r, new ahh("player_explosion"));
+   ahg<bkx> Q = ahg.a(ke.r, new ahh("sonic_boom"));
+   ahg<bkx> R = ahg.a(ke.r, new ahh("bad_respawn_point"));
+   ahg<bkx> S = ahg.a(ke.r, new ahh("outside_border"));
+   ahg<bkx> T = ahg.a(ke.r, new ahh("generic_kill"));
 
-public record bky(String i) {
-   public static final bky a = new bky("generic");
-   public static final bky b = new bky("ladder");
-   public static final bky c = new bky("vines");
-   public static final bky d = new bky("weeping_vines");
-   public static final bky e = new bky("twisting_vines");
-   public static final bky f = new bky("scaffolding");
-   public static final bky g = new bky("other_climbable");
-   public static final bky h = new bky("water");
-
-   public static bky a(djh $$0) {
-      if ($$0.a(cws.cO) || $$0.a(ash.P)) {
-         return b;
-      } else if ($$0.a(cws.ff)) {
-         return c;
-      } else if ($$0.a(cws.oz) || $$0.a(cws.oA)) {
-         return d;
-      } else if ($$0.a(cws.oB) || $$0.a(cws.oC)) {
-         return e;
-      } else {
-         return $$0.a(cws.nS) ? f : g;
-      }
-   }
-
-   @Nullable
-   public static bky a(bml $$0) {
-      Optional<hx> $$1 = $$0.eH();
-      if ($$1.isPresent()) {
-         djh $$2 = $$0.dM().a_($$1.get());
-         return a($$2);
-      } else {
-         return $$0.aZ() ? h : null;
-      }
-   }
-
-   public String a() {
-      return "death.fell.accident." + this.i;
-   }
-
-   public String b() {
-      return this.i;
+   static void a(pf<bkx> $$0) {
+      $$0.a(a, new bkx("inFire", 0.1F, bkt.d));
+      $$0.a(b, new bkx("lightningBolt", 0.1F));
+      $$0.a(c, new bkx("onFire", 0.0F, bkt.d));
+      $$0.a(d, new bkx("lava", 0.1F, bkt.d));
+      $$0.a(e, new bkx("hotFloor", 0.1F, bkt.d));
+      $$0.a(f, new bkx("inWall", 0.0F));
+      $$0.a(g, new bkx("cramming", 0.0F));
+      $$0.a(h, new bkx("drown", 0.0F, bkt.c));
+      $$0.a(i, new bkx("starve", 0.0F));
+      $$0.a(j, new bkx("cactus", 0.1F));
+      $$0.a(k, new bkx("fall", bku.b, 0.0F, bkt.a, bkz.b));
+      $$0.a(l, new bkx("flyIntoWall", 0.0F));
+      $$0.a(m, new bkx("outOfWorld", 0.0F));
+      $$0.a(n, new bkx("generic", 0.0F));
+      $$0.a(o, new bkx("magic", 0.0F));
+      $$0.a(p, new bkx("wither", 0.0F));
+      $$0.a(q, new bkx("dragonBreath", 0.0F));
+      $$0.a(r, new bkx("dryout", 0.1F));
+      $$0.a(s, new bkx("sweetBerryBush", 0.1F, bkt.e));
+      $$0.a(t, new bkx("freeze", 0.0F, bkt.f));
+      $$0.a(u, new bkx("stalagmite", 0.0F));
+      $$0.a(v, new bkx("fallingBlock", 0.1F));
+      $$0.a(w, new bkx("anvil", 0.1F));
+      $$0.a(x, new bkx("fallingStalactite", 0.1F));
+      $$0.a(y, new bkx("sting", 0.1F));
+      $$0.a(z, new bkx("mob", 0.1F));
+      $$0.a(A, new bkx("mob", 0.1F));
+      $$0.a(B, new bkx("player", 0.1F));
+      $$0.a(C, new bkx("arrow", 0.1F));
+      $$0.a(D, new bkx("trident", 0.1F));
+      $$0.a(E, new bkx("mob", 0.1F));
+      $$0.a(F, new bkx("mob", 0.1F));
+      $$0.a(H, new bkx("fireworks", 0.1F));
+      $$0.a(J, new bkx("onFire", 0.1F, bkt.d));
+      $$0.a(I, new bkx("fireball", 0.1F, bkt.d));
+      $$0.a(K, new bkx("witherSkull", 0.1F));
+      $$0.a(L, new bkx("thrown", 0.1F));
+      $$0.a(M, new bkx("indirectMagic", 0.0F));
+      $$0.a(N, new bkx("thorns", 0.1F, bkt.b));
+      $$0.a(O, new bkx("explosion", bku.c, 0.1F));
+      $$0.a(P, new bkx("explosion.player", bku.c, 0.1F));
+      $$0.a(Q, new bkx("sonic_boom", bku.c, 0.0F));
+      $$0.a(R, new bkx("badRespawnPoint", bku.c, 0.1F, bkt.a, bkz.c));
+      $$0.a(S, new bkx("outsideBorder", 0.0F));
+      $$0.a(T, new bkx("genericKill", 0.0F));
    }
 }

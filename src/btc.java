@@ -1,84 +1,70 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public class btc extends bth {
-   private int a;
-   private final bmu b;
-   @Nullable
-   private cfi c;
-   private bsq d;
+public class btc extends btk {
+   private static final int a = 40;
+   private static final Predicate<djp> b = djy.a(cxa.bt);
+   private final bmq c;
+   private final ctx d;
+   private int e;
 
-   public btc(bmu $$0) {
-      this.b = $$0;
+   public btc(bmq $$0) {
+      this.c = $$0;
+      this.d = $$0.dL();
+      this.a(EnumSet.of(btk.a.a, btk.a.b, btk.a.c));
    }
 
    @Override
    public boolean a() {
-      List<chc> $$0 = this.b.dM().a(chc.class, this.b.cH().g(5.0));
-      boolean $$1 = false;
-
-      for (chc $$2 : $$0) {
-         blv $$3 = $$2.cN();
-         if ($$3 instanceof cfi && (auo.e(((cfi)$$3).bk) > 0.0F || auo.e(((cfi)$$3).bm) > 0.0F)) {
-            $$1 = true;
-            break;
-         }
+      if (this.c.eg().a(this.c.o_() ? 50 : 1000) != 0) {
+         return false;
+      } else {
+         hx $$0 = this.c.dl();
+         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(cxa.i);
       }
-
-      return this.c != null && (auo.e(this.c.bk) > 0.0F || auo.e(this.c.bm) > 0.0F) || $$1;
-   }
-
-   @Override
-   public boolean S_() {
-      return true;
-   }
-
-   @Override
-   public boolean b() {
-      return this.c != null && this.c.bO() && (auo.e(this.c.bk) > 0.0F || auo.e(this.c.bm) > 0.0F);
    }
 
    @Override
    public void c() {
-      for (chc $$1 : this.b.dM().a(chc.class, this.b.cH().g(5.0))) {
-         if ($$1.cN() instanceof cfi $$2) {
-            this.c = $$2;
-            break;
-         }
-      }
-
-      this.a = 0;
-      this.d = bsq.a;
+      this.e = this.a(40);
+      this.d.a(this.c, (byte)10);
+      this.c.N().n();
    }
 
    @Override
    public void d() {
-      this.c = null;
+      this.e = 0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.e > 0;
+   }
+
+   public int h() {
+      return this.e;
    }
 
    @Override
    public void e() {
-      boolean $$0 = auo.e(this.c.bk) > 0.0F || auo.e(this.c.bm) > 0.0F;
-      float $$1 = this.d == bsq.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new elt((double)this.b.bk, (double)this.b.bl, (double)this.b.bm));
-      this.b.a(bmr.a, this.b.dp());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == bsq.a) {
-            hx $$2 = this.c.dm().a(this.c.cE().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.N().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.e((blv)this.c) < 4.0F) {
-               this.a = 0;
-               this.d = bsq.b;
+      this.e = Math.max(0, this.e - 1);
+      if (this.e == this.a(4)) {
+         hx $$0 = this.c.dl();
+         if (b.test(this.d.a_($$0))) {
+            if (this.d.Z().b(ctt.c)) {
+               this.d.b($$0, false);
             }
-         } else if (this.d == bsq.b) {
-            ic $$3 = this.c.cF();
-            hx $$4 = this.c.dm().a($$3, 10);
-            this.b.N().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.e((blv)this.c) > 12.0F) {
-               this.a = 0;
-               this.d = bsq.a;
+
+            this.c.P();
+         } else {
+            hx $$1 = $$0.d();
+            if (this.d.a_($$1).a(cxa.i)) {
+               if (this.d.Z().b(ctt.c)) {
+                  this.d.c(2001, $$1, cwy.i(cxa.i.o()));
+                  this.d.a($$1, cxa.j.o(), 2);
+               }
+
+               this.c.P();
             }
          }
       }

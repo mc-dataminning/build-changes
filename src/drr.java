@@ -1,42 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class drr extends dru<dtx> {
-   public drr(Codec<dtx> $$0) {
+public abstract class drr extends dsc<dun> {
+   public drr(Codec<dun> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drw<dtx> $$0) {
-      hx $$1 = $$0.e();
-      cuk $$2 = $$0.b();
-      dtx $$3 = $$0.f();
+   public boolean a(dse<dun> $$0) {
+      auw $$1 = $$0.d();
+      cus $$2 = $$0.b();
+      hx $$3 = $$0.e();
+      Optional<cwy> $$4 = kd.e.b(asi.ap).flatMap($$1x -> $$1x.a($$1)).map(ih::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
+   }
 
-      for (hx $$4 : hx.a($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            hx $$9 = $$4.i();
-            this.a($$2, $$9, cws.kF.o());
-            $$3.b().ifPresent($$3x -> {
-               dgv $$4x = $$2.c_($$9);
-               if ($$4x instanceof dik $$5x) {
-                  $$5x.a($$3x, $$3.c());
-                  $$4x.e();
-               }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, cws.a.o());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, cws.F.o());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, cws.F.o());
-         } else {
-            this.a($$2, $$4, cws.a.o());
+   protected abstract boolean a(cty var1, auw var2, hx var3, djp var4);
+
+   protected boolean b(cty $$0, auw $$1, hx $$2, djp $$3) {
+      hx $$4 = $$2.c();
+      djp $$5 = $$0.a_($$2);
+      if (($$5.a(cxa.G) || $$5.a(asi.as)) && $$0.a_($$4).a(cxa.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            kd.e.b(asi.as).flatMap($$1x -> $$1x.a($$1)).map(ih::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, cxa.mV.o().a(ddu.c, Integer.valueOf($$1.a(4) + 1)), 2);
          }
-      }
 
-      return true;
+         for (ic $$6 : ic.c.a) {
+            if ($$1.i() < 0.2F) {
+               hx $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(cxa.G)) {
+                  kd.e.b(asi.aq).flatMap($$1x -> $$1x.a($$1)).map(ih::a).ifPresent($$3x -> {
+                     djp $$4x = $$3x.o();
+                     if ($$4x.b(cwj.c)) {
+                        $$4x = $$4x.a(cwj.c, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

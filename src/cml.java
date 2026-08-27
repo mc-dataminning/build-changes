@@ -1,73 +1,123 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public class cml extends cli {
-   protected static final Map<cwq, Pair<Predicate<cpj>, Consumer<cpj>>> a = Maps.newHashMap(
-      ImmutableMap.of(
-         cws.i,
-         Pair.of(cml::b, b(cws.cC.o())),
-         cws.kE,
-         Pair.of(cml::b, b(cws.cC.o())),
-         cws.j,
-         Pair.of(cml::b, b(cws.cC.o())),
-         cws.k,
-         Pair.of(cml::b, b(cws.j.o())),
-         cws.sH,
-         Pair.of((Predicate<cpj>)$$0 -> true, a(cws.j.o(), cnb.dN))
-      )
-   );
+public class cml extends cnb {
+   public static final byte[] a = new byte[]{1, 2, 3};
+   public static final String b = "Fireworks";
+   public static final String c = "Explosion";
+   public static final String d = "Explosions";
+   public static final String e = "Flight";
+   public static final String f = "Type";
+   public static final String g = "Trail";
+   public static final String h = "Flicker";
+   public static final String i = "Colors";
+   public static final String j = "FadeColors";
+   public static final double k = 0.15;
 
-   protected cml(col $$0, int $$1, float $$2, cmt.a $$3) {
-      super((float)$$1, $$2, $$0, ash.bA, $$3);
+   public cml(cnb.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bkb a(cpj $$0) {
-      ctp $$1 = $$0.q();
-      hx $$2 = $$0.a();
-      Pair<Predicate<cpj>, Consumer<cpj>> $$3 = a.get($$1.a_($$2).b());
-      if ($$3 == null) {
-         return bkb.d;
-      } else {
-         Predicate<cpj> $$4 = (Predicate<cpj>)$$3.getFirst();
-         Consumer<cpj> $$5 = (Consumer<cpj>)$$3.getSecond();
-         if ($$4.test($$0)) {
-            cfi $$6 = $$0.o();
-            $$1.a($$6, $$2, ars.lz, art.e, 1.0F, 1.0F);
-            if (!$$1.B) {
-               $$5.accept($$0);
-               if ($$6 != null) {
-                  $$0.n().a(1, $$6, $$1x -> $$1x.d($$0.p()));
-               }
+   public bkc a(cpr $$0) {
+      ctx $$1 = $$0.q();
+      if (!$$1.B) {
+         cng $$2 = $$0.n();
+         emc $$3 = $$0.l();
+         ic $$4 = $$0.k();
+         cgd $$5 = new cgd($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
+         $$1.b($$5);
+         $$2.h(1);
+      }
+
+      return bkc.a($$1.B);
+   }
+
+   @Override
+   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
+      if ($$1.fw()) {
+         cng $$3 = $$1.b($$2);
+         if (!$$0.B) {
+            cgd $$4 = new cgd($$0, $$3, $$1);
+            $$0.b($$4);
+            if (!$$1.fT().d) {
+               $$3.h(1);
             }
 
-            return bkb.a($$1.B);
-         } else {
-            return bkb.d;
+            $$1.b(asd.c.b(this));
+         }
+
+         return bkd.a($$1.b($$2), $$0.y_());
+      } else {
+         return bkd.c($$1.b($$2));
+      }
+   }
+
+   @Override
+   public void a(cng $$0, @Nullable ctx $$1, List<vg> $$2, coy $$3) {
+      so $$4 = $$0.b("Fireworks");
+      if ($$4 != null) {
+         if ($$4.b("Flight", 99)) {
+            $$2.add(vg.c("item.minecraft.firework_rocket.flight").b(vf.u).f(String.valueOf($$4.f("Flight"))).a(n.h));
+         }
+
+         su $$5 = $$4.c("Explosions", 10);
+         if (!$$5.isEmpty()) {
+            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
+               so $$7 = $$5.a($$6);
+               List<vg> $$8 = Lists.newArrayList();
+               cmm.a($$7, $$8);
+               if (!$$8.isEmpty()) {
+                  for (int $$9 = 1; $$9 < $$8.size(); $$9++) {
+                     $$8.set($$9, vg.b("  ").b($$8.get($$9)).a(n.h));
+                  }
+
+                  $$2.addAll($$8);
+               }
+            }
          }
       }
    }
 
-   public static Consumer<cpj> b(djh $$0) {
-      return $$1 -> {
-         $$1.q().a($$1.a(), $$0, 11);
-         $$1.q().a(dnr.c, $$1.a(), dnr.a.a($$1.o(), $$0));
-      };
+   public static void a(cng $$0, byte $$1) {
+      $$0.a("Fireworks").a("Flight", $$1);
    }
 
-   public static Consumer<cpj> a(djh $$0, cto $$1) {
-      return $$2 -> {
-         $$2.q().a($$2.a(), $$0, 11);
-         $$2.q().a(dnr.c, $$2.a(), dnr.a.a($$2.o(), $$0));
-         cwq.a($$2.q(), $$2.a(), $$2.k(), new cmy($$1));
-      };
+   @Override
+   public cng ao_() {
+      cng $$0 = new cng(this);
+      a($$0, (byte)1);
+      return $$0;
    }
 
-   public static boolean b(cpj $$0) {
-      return $$0.k() != ic.a && $$0.q().a_($$0.a().c()).i();
+   public static enum a {
+      a(0, "small_ball"),
+      b(1, "large_ball"),
+      c(2, "star"),
+      d(3, "creeper"),
+      e(4, "burst");
+
+      private static final IntFunction<cml.a> f = ath.a(cml.a::a, values(), ath.a.a);
+      private final int g;
+      private final String h;
+
+      private a(int $$0, String $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public int a() {
+         return this.g;
+      }
+
+      public String b() {
+         return this.h;
+      }
+
+      public static cml.a a(int $$0) {
+         return f.apply($$0);
+      }
    }
 }

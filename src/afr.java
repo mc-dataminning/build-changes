@@ -1,24 +1,24 @@
-public class afr implements xf<afm> {
-   private final vf a;
+public class afr implements xg<afn> {
+   private final int a;
 
-   public afr(vf $$0) {
+   public afr(int $$0) {
       this.a = $$0;
    }
 
-   public afr(ui $$0) {
-      this.a = vf.a.b($$0.d(262144));
+   public afr(uj $$0) {
+      this.a = $$0.n();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.a(vf.a.a(this.a));
+   public void a(uj $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(afm $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
-   public vf a() {
+   public int a() {
       return this.a;
    }
 }

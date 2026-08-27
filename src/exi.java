@@ -1,135 +1,46 @@
 import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
 
-public class exi extends ewx {
-   private static final ahg a = new ahg("widget/checkbox_selected_highlighted");
-   private static final ahg b = new ahg("widget/checkbox_selected");
-   private static final ahg c = new ahg("widget/checkbox_highlighted");
-   private static final ahg d = new ahg("widget/checkbox");
-   private static final int f = 14737632;
-   private static final int m = 4;
-   private static final int n = 8;
-   private boolean o;
-   private final exi.b p;
+public abstract class exi extends exp {
+   protected static final int e = 2;
+   private static final eze a = new eze(new ahh("widget/button"), new ahh("widget/button_disabled"), new ahh("widget/button_highlighted"));
 
-   exi(int $$0, int $$1, vf $$2, ews $$3, boolean $$4, exi.b $$5) {
-      super($$0, $$1, a($$3) + 4 + $$3.a($$2), a($$3), $$2);
-      this.o = $$4;
-      this.p = $$5;
+   public exi(int $$0, int $$1, int $$2, int $$3, vg $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static exi.a a(vf $$0, ews $$1) {
-      return new exi.a($$0, $$1);
-   }
-
-   private static int a(ews $$0) {
-      return 9 + 8;
-   }
+   public abstract void b();
 
    @Override
-   public void b() {
-      this.o = !this.o;
-      this.p.onValueChange(this, this.o);
-   }
-
-   public boolean a() {
-      return this.o;
-   }
-
-   @Override
-   public void a(faz $$0) {
-      $$0.a(fay.a, this.aK_());
-      if (this.j) {
-         if (this.aI_()) {
-            $$0.a(fay.d, vf.c("narration.checkbox.usage.focused"));
-         } else {
-            $$0.a(fay.d, vf.c("narration.checkbox.usage.hovered"));
-         }
-      }
-   }
-
-   @Override
-   public void b(ewu $$0, int $$1, int $$2, float $$3) {
-      evi $$4 = evi.O();
-      RenderSystem.enableDepthTest();
-      ews $$5 = $$4.h;
+   protected void b(exe $$0, int $$1, int $$2, float $$3) {
+      evr $$4 = evr.O();
       $$0.a(1.0F, 1.0F, 1.0F, this.l);
       RenderSystem.enableBlend();
-      ahg $$6;
-      if (this.o) {
-         $$6 = this.aI_() ? a : b;
-      } else {
-         $$6 = this.aI_() ? c : d;
-      }
-
-      int $$8 = a($$5);
-      int $$9 = this.B() + $$8 + 4;
-      int $$10 = this.C() + (this.h >> 1) - (9 >> 1);
-      $$0.a($$6, this.B(), this.C(), $$8, $$8);
+      RenderSystem.enableDepthTest();
+      $$0.a(a.a(this.j, this.z()), this.B(), this.C(), this.w(), this.u());
       $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      $$0.b($$5, this.x(), $$9, $$10, 14737632 | auo.f(this.l * 255.0F) << 24);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | aup.f(this.l * 255.0F) << 24);
    }
 
-   public static class a {
-      private final vf a;
-      private final ews b;
-      private int c = 0;
-      private int d = 0;
-      private exi.b e = exi.b.a;
-      private boolean f = false;
-      @Nullable
-      private evl<Boolean> g = null;
-      @Nullable
-      private eyr h = null;
-
-      a(vf $$0, ews $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public exi.a a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         return this;
-      }
-
-      public exi.a a(exi.b $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public exi.a a(boolean $$0) {
-         this.f = $$0;
-         this.g = null;
-         return this;
-      }
-
-      public exi.a a(evl<Boolean> $$0) {
-         this.g = $$0;
-         this.f = $$0.c();
-         return this;
-      }
-
-      public exi.a a(eyr $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public exi a() {
-         exi.b $$0 = this.g == null ? this.e : ($$0x, $$1x) -> {
-            this.g.a($$1x);
-            this.e.onValueChange($$0x, $$1x);
-         };
-         exi $$1 = new exi(this.c, this.d, this.a, this.b, this.f, $$0);
-         $$1.a(this.h);
-         return $$1;
-      }
+   public void a(exe $$0, exc $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
    }
 
-   public interface b {
-      exi.b a = ($$0, $$1) -> {
-      };
+   @Override
+   public void a(double $$0, double $$1) {
+      this.b();
+   }
 
-      void onValueChange(exi var1, boolean var2);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.j || !this.k) {
+         return false;
+      } else if (fbp.a($$0)) {
+         this.a(evr.O().ai());
+         this.b();
+         return true;
+      } else {
+         return false;
+      }
    }
 }

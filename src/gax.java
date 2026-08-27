@@ -1,11 +1,12 @@
-public class gax extends fzt<bzq, fmb<bzq>> {
-   private static final ahg a = new ahg("textures/entity/tadpole/tadpole.png");
+public class gax extends gag<byy, flz<byy>> {
+   private static final ahh a = new ahh("textures/entity/sheep/sheep.png");
 
-   public gax(fyn.a $$0) {
-      super($$0, new fmb<>($$0.a(fmw.bC)), 0.14F);
+   public gax(fza.a $$0) {
+      super($$0, new flz<>($$0.a(fni.bd)), 0.7F);
+      this.a(new gdn(this, $$0.f()));
    }
 
-   public ahg a(bzq $$0) {
+   public ahh a(byy $$0) {
       return a;
    }
 }

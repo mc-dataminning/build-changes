@@ -1,94 +1,91 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gji implements AutoCloseable {
-   private static final AtomicInteger a = new AtomicInteger(1);
-   private static final Executor b = Executors.newSingleThreadExecutor($$0 -> {
-      Thread $$1 = new Thread($$0);
-      $$1.setName("Telemetry-Sender-#" + a.getAndIncrement());
-      return $$1;
-   });
-   private final evi c;
-   private final UserApiService d;
-   private final gjq e;
-   private final Path f;
-   private final CompletableFuture<Optional<gjo>> g;
-   private final Supplier<gjm> h = Suppliers.memoize(this::c);
+public class gji extends Thread {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   private static final Logger d = LogUtils.getLogger();
+   public static final String a = "224.0.2.60";
+   public static final int b = 4445;
+   private static final long e = 1500L;
+   private final String f;
+   private final DatagramSocket g;
+   private boolean h = true;
+   private final String i;
 
-   public gji(evi $$0, UserApiService $$1, evx $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      gjq.a $$3 = gjq.a();
-      $$2.f().ifPresent($$1x -> $$3.a(gjp.a, $$1x));
-      $$2.e().ifPresent($$1x -> $$3.a(gjp.b, $$1x));
-      $$3.a(gjp.c, UUID.randomUUID());
-      $$3.a(gjp.d, aa.b().b());
-      $$3.a(gjp.e, ac.j().a());
-      $$3.a(gjp.f, System.getProperty("os.name"));
-      $$3.a(gjp.g, evi.e().a());
-      $$3.b(gjp.h, evi.bd());
-      this.e = $$3.a();
-      this.f = $$0.p.toPath().resolve("logs/telemetry");
-      this.g = gjo.a(this.f);
+   public gji(String $$0, String $$1) throws IOException {
+      super("LanServerPinger #" + c.incrementAndGet());
+      this.f = $$0;
+      this.i = $$1;
+      this.setDaemon(true);
+      this.setUncaughtExceptionHandler(new r(d));
+      this.g = new DatagramSocket();
    }
 
-   public gjr a(boolean $$0, @Nullable Duration $$1, @Nullable String $$2) {
-      return new gjr(this.c(), $$0, $$1, $$2);
-   }
+   @Override
+   public void run() {
+      String $$0 = a(this.f, this.i);
+      byte[] $$1 = $$0.getBytes(StandardCharsets.UTF_8);
 
-   public gjm a() {
-      return this.h.get();
-   }
+      while (!this.isInterrupted() && this.h) {
+         try {
+            InetAddress $$2 = InetAddress.getByName("224.0.2.60");
+            DatagramPacket $$3 = new DatagramPacket($$1, $$1.length, $$2, 4445);
+            this.g.send($$3);
+         } catch (IOException var6) {
+            d.warn("LanServerPinger: {}", var6.getMessage());
+            break;
+         }
 
-   private gjm c() {
-      if (!this.c.C()) {
-         return gjm.a;
-      } else {
-         TelemetrySession $$0 = this.d.newTelemetrySession(b);
-         if (!$$0.isEnabled()) {
-            return gjm.a;
-         } else {
-            CompletableFuture<Optional<gjl>> $$1 = this.g
-               .thenCompose($$0x -> $$0x.<CompletionStage<Optional<gjl>>>map(gjo::a).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
-            return ($$2, $$3) -> {
-               if (!$$2.d() || evi.O().A()) {
-                  gjq.a $$4 = gjq.a();
-                  $$4.a(this.e);
-                  $$4.a(gjp.m, Instant.now());
-                  $$4.a(gjp.l, $$2.d());
-                  $$3.accept($$4);
-                  gjj $$5 = new gjj($$2, $$4.a());
-                  $$1.thenAccept($$2x -> {
-                     if (!$$2x.isEmpty()) {
-                        ((gjl)$$2x.get()).log($$5);
-                        $$5.a($$0).send();
-                     }
-                  });
-               }
-            };
+         try {
+            sleep(1500L);
+         } catch (InterruptedException var5) {
          }
       }
    }
 
-   public Path b() {
-      return this.f;
+   @Override
+   public void interrupt() {
+      super.interrupt();
+      this.h = false;
    }
 
-   @Override
-   public void close() {
-      this.g.thenAccept($$0 -> $$0.ifPresent(gjo::close));
+   public static String a(String $$0, String $$1) {
+      return "[MOTD]" + $$0 + "[/MOTD][AD]" + $$1 + "[/AD]";
+   }
+
+   public static String a(String $$0) {
+      int $$1 = $$0.indexOf("[MOTD]");
+      if ($$1 < 0) {
+         return "missing no";
+      } else {
+         int $$2 = $$0.indexOf("[/MOTD]", $$1 + "[MOTD]".length());
+         return $$2 < $$1 ? "missing no" : $$0.substring($$1 + "[MOTD]".length(), $$2);
+      }
+   }
+
+   public static String b(String $$0) {
+      int $$1 = $$0.indexOf("[/MOTD]");
+      if ($$1 < 0) {
+         return null;
+      } else {
+         int $$2 = $$0.indexOf("[/MOTD]", $$1 + "[/MOTD]".length());
+         if ($$2 >= 0) {
+            return null;
+         } else {
+            int $$3 = $$0.indexOf("[AD]", $$1 + "[/MOTD]".length());
+            if ($$3 < 0) {
+               return null;
+            } else {
+               int $$4 = $$0.indexOf("[/AD]", $$3 + "[AD]".length());
+               return $$4 < $$3 ? null : $$0.substring($$3 + "[AD]".length(), $$4);
+            }
+         }
+      }
    }
 }

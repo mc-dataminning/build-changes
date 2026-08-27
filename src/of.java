@@ -3,32 +3,32 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 public abstract class of<T> extends ok<T> {
-   private final Function<T, ahf<T>> d;
+   private final Function<T, ahg<T>> d;
 
-   public of(km $$0, ahf<? extends it<T>> $$1, CompletableFuture<ij.b> $$2, Function<T, ahf<T>> $$3) {
+   public of(km $$0, ahg<? extends it<T>> $$1, CompletableFuture<ij.b> $$2, Function<T, ahg<T>> $$3) {
       super($$0, $$1, $$2);
       this.d = $$3;
    }
 
-   public of(km $$0, ahf<? extends it<T>> $$1, CompletableFuture<ij.b> $$2, CompletableFuture<ok.c<T>> $$3, Function<T, ahf<T>> $$4) {
+   public of(km $$0, ahg<? extends it<T>> $$1, CompletableFuture<ij.b> $$2, CompletableFuture<ok.c<T>> $$3, Function<T, ahg<T>> $$4) {
       super($$0, $$1, $$2, $$3);
       this.d = $$4;
    }
 
-   protected of.a<T> a(asw<T> $$0) {
-      ast $$1 = this.c($$0);
+   protected of.a<T> a(asx<T> $$0) {
+      asu $$1 = this.c($$0);
       return new of.a<>($$1, this.d);
    }
 
    protected static class a<T> extends ok.b<T> {
-      private final Function<T, ahf<T>> a;
+      private final Function<T, ahg<T>> a;
 
-      a(ast $$0, Function<T, ahf<T>> $$1) {
+      a(asu $$0, Function<T, ahg<T>> $$1) {
          super($$0);
          this.a = $$1;
       }
 
-      public of.a<T> a(asw<T> $$0) {
+      public of.a<T> a(asx<T> $$0) {
          super.b($$0);
          return this;
       }

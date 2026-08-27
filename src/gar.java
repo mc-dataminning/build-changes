@@ -1,12 +1,16 @@
-public class gar extends fzt<byw, flx<byw>> {
-   private static final ahg a = new ahg("textures/entity/snow_golem.png");
+public class gar extends gag<byu, flp<byu>> {
+   private static final ahh a = new ahh("textures/entity/bear/polarbear.png");
 
-   public gar(fyn.a $$0) {
-      super($$0, new flx<>($$0.a(fmw.bs)), 0.5F);
-      this.a(new gdd(this, $$0.c(), $$0.b()));
+   public gar(fza.a $$0) {
+      super($$0, new flp<>($$0.a(fni.aW)), 0.9F);
    }
 
-   public ahg a(byw $$0) {
+   public ahh a(byu $$0) {
       return a;
+   }
+
+   protected void a(byu $$0, eqk $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

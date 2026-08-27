@@ -1,23 +1,47 @@
-public class cok extends cnn {
-   public cok(cmt.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class cok extends cla implements clt {
+   private final ars c;
+
+   public cok(cwy $$0, ars $$1, cnb.a $$2) {
+      super($$0, $$2);
+      this.c = $$1;
    }
 
    @Override
-   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
-      cmy $$3 = $$1.b($$2);
-      if (!$$0.B) {
-         cgl $$4 = new cgl($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), -20.0F, 0.5F, 1.0F);
-         $$0.b($$4);
+   public bkc a(cpr $$0) {
+      bkc $$1 = super.a($$0);
+      cfq $$2 = $$0.o();
+      if ($$1.a() && $$2 != null && !$$2.f()) {
+         bkb $$3 = $$0.p();
+         $$2.a($$3, cnj.qx.ao_());
       }
 
-      $$1.b(asc.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
-      }
+      return $$1;
+   }
 
-      return bkc.a($$3, $$0.y_());
+   @Override
+   public String a() {
+      return this.p();
+   }
+
+   @Override
+   protected ars a(djp $$0) {
+      return this.c;
+   }
+
+   @Override
+   public boolean a(@Nullable cfq $$0, ctx $$1, hx $$2, @Nullable ely $$3) {
+      if ($$1.k($$2) && $$1.u($$2)) {
+         if (!$$1.B) {
+            $$1.a($$2, this.e().o(), 3);
+         }
+
+         $$1.a($$0, dnz.z, $$2);
+         $$1.a($$0, $$2, this.c, aru.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

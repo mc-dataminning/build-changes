@@ -1,44 +1,125 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bum extends bth {
-   private final bng a;
+public class bum extends btx {
+   private final cwy g;
+   private final bmq h;
+   private int i;
+   private static final int j = 20;
 
-   public bum(bng $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bth.a.c, bth.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.ge();
+   public bum(cwy $$0, bmx $$1, double $$2, int $$3) {
+      super($$1, $$2, 24, $$3);
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
    public boolean a() {
-      if (!this.a.u()) {
+      if (!this.h.dL().Z().b(ctt.c)) {
          return false;
-      } else if (this.a.bc()) {
+      } else if (this.c > 0) {
+         this.c--;
          return false;
-      } else if (!this.a.aC()) {
-         return false;
+      } else if (this.n()) {
+         this.c = b(20);
+         return true;
       } else {
-         bml $$0 = this.a.R_();
-         if ($$0 == null) {
-            return true;
-         } else {
-            return this.a.f($$0) < 144.0 && $$0.eh() != null ? false : this.a.ge();
-         }
+         this.c = this.a(this.a);
+         return false;
       }
    }
 
    @Override
-   public void c() {
-      this.a.N().n();
-      this.a.y(true);
+   public void d() {
+      super.d();
+      this.h.ab = 1.0F;
    }
 
    @Override
-   public void d() {
-      this.a.y(false);
+   public void c() {
+      super.c();
+      this.i = 0;
+   }
+
+   public void a(cty $$0, hx $$1) {
+   }
+
+   public void a(ctx $$0, hx $$1) {
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      ctx $$0 = this.h.dL();
+      hx $$1 = this.h.dl();
+      hx $$2 = this.a($$1, $$0);
+      auw $$3 = this.h.eg();
+      if (this.m() && $$2 != null) {
+         if (this.i > 0) {
+            emc $$4 = this.h.do();
+            this.h.o($$4.c, 0.3, $$4.e);
+            if (!$$0.B) {
+               double $$5 = 0.08;
+               ((ane)$$0)
+                  .a(
+                     new jt(jx.Q, new cng(cnj.qQ)),
+                     (double)$$2.u() + 0.5,
+                     (double)$$2.v() + 0.7,
+                     (double)$$2.w() + 0.5,
+                     3,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     0.15F
+                  );
+            }
+         }
+
+         if (this.i % 2 == 0) {
+            emc $$6 = this.h.do();
+            this.h.o($$6.c, -0.3, $$6.e);
+            if (this.i % 6 == 0) {
+               this.a((cty)$$0, this.e);
+            }
+         }
+
+         if (this.i > 60) {
+            $$0.a($$2, false);
+            if (!$$0.B) {
+               for (int $$7 = 0; $$7 < 20; $$7++) {
+                  double $$8 = $$3.k() * 0.02;
+                  double $$9 = $$3.k() * 0.02;
+                  double $$10 = $$3.k() * 0.02;
+                  ((ane)$$0).a(jx.Y, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
+               }
+
+               this.a($$0, $$2);
+            }
+         }
+
+         this.i++;
+      }
+   }
+
+   @Nullable
+   private hx a(hx $$0, ctd $$1) {
+      if ($$1.a_($$0).a(this.g)) {
+         return $$0;
+      } else {
+         hx[] $$2 = new hx[]{$$0.d(), $$0.g(), $$0.h(), $$0.e(), $$0.f(), $$0.d().d()};
+
+         for (hx $$3 : $$2) {
+            if ($$1.a_($$3).a(this.g)) {
+               return $$3;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   @Override
+   protected boolean a(cua $$0, hx $$1) {
+      dll $$2 = $$0.a(iz.a($$1.u()), iz.a($$1.w()), dlq.n, false);
+      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.c()).i() && $$2.a_($$1.b(2)).i();
    }
 }

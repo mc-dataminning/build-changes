@@ -1,14 +1,150 @@
-public record aae(csw a) implements xf<za> {
-   public aae(ui $$0) {
-      this($$0.f());
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class aae implements xg<zb> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final List<hx> e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final jv i;
+   private final jv j;
+   private final ctp.a k;
+   private final ars l;
+
+   public aae(double $$0, double $$1, double $$2, float $$3, List<hx> $$4, @Nullable emc $$5, ctp.a $$6, jv $$7, jv $$8, ars $$9) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = Lists.newArrayList($$4);
+      this.l = $$9;
+      if ($$5 != null) {
+         this.f = (float)$$5.c;
+         this.g = (float)$$5.d;
+         this.h = (float)$$5.e;
+      } else {
+         this.f = 0.0F;
+         this.g = 0.0F;
+         this.h = 0.0F;
+      }
+
+      this.k = $$6;
+      this.i = $$7;
+      this.j = $$8;
+   }
+
+   public aae(uj $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      int $$1 = aup.a(this.a);
+      int $$2 = aup.a(this.b);
+      int $$3 = aup.a(this.c);
+      this.e = $$0.a((uj.a<hx>)($$3x -> {
+         int $$4 = $$3x.readByte() + $$1;
+         int $$5 = $$3x.readByte() + $$2;
+         int $$6 = $$3x.readByte() + $$3;
+         return new hx($$4, $$5, $$6);
+      }));
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.k = $$0.b(ctp.a.class);
+      this.i = this.a($$0, $$0.a(kd.j));
+      this.j = this.a($$0, $$0.a(kd.j));
+      this.l = ars.b($$0);
+   }
+
+   public void a(uj $$0, jv $$1) {
+      $$0.a(kd.j, $$1.b());
+      $$1.a($$0);
+   }
+
+   private <T extends jv> T a(uj $$0, jw<T> $$1) {
+      return $$1.d().b($$1, $$0);
    }
 
    @Override
-   public void a(ui $$0) {
+   public void a(uj $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      int $$1 = aup.a(this.a);
+      int $$2 = aup.a(this.b);
+      int $$3 = aup.a(this.c);
+      $$0.a(this.e, ($$3x, $$4) -> {
+         int $$5 = $$4.u() - $$1;
+         int $$6 = $$4.v() - $$2;
+         int $$7 = $$4.w() - $$3;
+         $$3x.k($$5);
+         $$3x.k($$6);
+         $$3x.k($$7);
+      });
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.k);
+      this.a($$0, this.i);
+      this.a($$0, this.j);
+      this.l.a($$0);
    }
 
-   public void a(za $$0) {
+   public void a(zb $$0) {
       $$0.a(this);
+   }
+
+   public float a() {
+      return this.f;
+   }
+
+   public float d() {
+      return this.g;
+   }
+
+   public float e() {
+      return this.h;
+   }
+
+   public double f() {
+      return this.a;
+   }
+
+   public double g() {
+      return this.b;
+   }
+
+   public double h() {
+      return this.c;
+   }
+
+   public float i() {
+      return this.d;
+   }
+
+   public List<hx> j() {
+      return this.e;
+   }
+
+   public ctp.a k() {
+      return this.k;
+   }
+
+   public jv l() {
+      return this.i;
+   }
+
+   public jv m() {
+      return this.j;
+   }
+
+   public ars n() {
+      return this.l;
    }
 }

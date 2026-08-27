@@ -1,41 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public record cpc(String c, ih<cmt> d, float e, Map<ckk, String> f, vf g) {
-   public static final Codec<cpc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               atw.x.fieldOf("asset_name").forGetter(cpc::a),
-               ahd.a(ke.F).fieldOf("ingredient").forGetter(cpc::b),
-               Codec.FLOAT.fieldOf("item_model_index").forGetter(cpc::c),
-               Codec.unboundedMap(ckk.h, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cpc::d),
-               vh.a.fieldOf("description").forGetter(cpc::e)
-            )
-            .apply($$0, cpc::new)
-   );
-   public static final Codec<ih<cpc>> b = ahc.a(ke.aI, a);
-
-   public static cpc a(String $$0, cmt $$1, float $$2, vf $$3, Map<ckk, String> $$4) {
-      return new cpc($$0, kd.h.d($$1), $$2, $$4, $$3);
+public class cpc extends cnb {
+   public cpc(cnb.a $$0) {
+      super($$0);
    }
 
-   public String a() {
-      return this.c;
+   @Override
+   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
+      cng $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(asd.c.b(this));
+      return bkd.a($$3, $$0.y_());
    }
 
-   public ih<cmt> b() {
-      return this.d;
-   }
+   public static boolean a(@Nullable so $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if (!$$0.b("pages", 9)) {
+         return false;
+      } else {
+         su $$1 = $$0.c("pages", 8);
 
-   public float c() {
-      return this.e;
-   }
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            String $$3 = $$1.j($$2);
+            if ($$3.length() > 32767) {
+               return false;
+            }
+         }
 
-   public Map<ckk, String> d() {
-      return this.f;
-   }
-
-   public vf e() {
-      return this.g;
+         return true;
+      }
    }
 }

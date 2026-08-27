@@ -1,26 +1,30 @@
-@FunctionalInterface
-public interface ele<T> {
-   void handle(T var1, elg<T> var2, long var3);
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   public abstract static class a<T, C extends ele<T>> {
-      private final ahg a;
-      private final Class<?> b;
+public record ele(ehf.b c) implements elh {
+   public static final Codec<ele> a = RecordCodecBuilder.create($$0 -> $$0.group(ehf.b.e.fieldOf("target").forGetter(ele::c)).apply($$0, ele::new));
+   public static final Codec<ele> b = ehf.b.e.xmap(ele::new, ele::c);
 
-      public a(ahg $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public static elh a(ehf.b $$0) {
+      return new ele($$0);
+   }
 
-      public ahg a() {
-         return this.a;
-      }
+   @Override
+   public elg a() {
+      return eli.c;
+   }
 
-      public Class<?> b() {
-         return this.b;
-      }
+   @Nullable
+   @Override
+   public enf a(ehf $$0) {
+      return $$0.c(this.c.a());
+   }
 
-      public abstract void a(sn var1, C var2);
-
-      public abstract C b(sn var1);
+   @Override
+   public Set<ejn<?>> b() {
+      return ImmutableSet.of(this.c.a());
    }
 }

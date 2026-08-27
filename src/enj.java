@@ -1,90 +1,136 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public record enj<T>(T b, hx c, int d, eno e) {
-   private static final String f = "i";
-   private static final String g = "x";
-   private static final String h = "y";
-   private static final String i = "z";
-   private static final String j = "t";
-   private static final String k = "p";
-   public static final Strategy<enj<?>> a = new Strategy<enj<?>>() {
-      public int a(enj<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
-      }
-
-      public boolean a(@Nullable enj<?> $$0, @Nullable enj<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
-         }
-      }
+public class enj {
+   private static final Map<String, enj> n = Maps.newHashMap();
+   private static final Map<String, enj> o = Maps.newHashMap();
+   public static final enj a = b("dummy");
+   public static final enj b = b("trigger");
+   public static final enj c = b("deathCount");
+   public static final enj d = b("playerKillCount");
+   public static final enj e = b("totalKillCount");
+   public static final enj f = a("health", true, enj.a.b);
+   public static final enj g = a("food", true, enj.a.a);
+   public static final enj h = a("air", true, enj.a.a);
+   public static final enj i = a("armor", true, enj.a.a);
+   public static final enj j = a("xp", true, enj.a.a);
+   public static final enj k = a("level", true, enj.a.a);
+   public static final enj[] l = new enj[]{
+      b("teamkill." + n.a.g()),
+      b("teamkill." + n.b.g()),
+      b("teamkill." + n.c.g()),
+      b("teamkill." + n.d.g()),
+      b("teamkill." + n.e.g()),
+      b("teamkill." + n.f.g()),
+      b("teamkill." + n.g.g()),
+      b("teamkill." + n.h.g()),
+      b("teamkill." + n.i.g()),
+      b("teamkill." + n.j.g()),
+      b("teamkill." + n.k.g()),
+      b("teamkill." + n.l.g()),
+      b("teamkill." + n.m.g()),
+      b("teamkill." + n.n.g()),
+      b("teamkill." + n.o.g()),
+      b("teamkill." + n.p.g())
    };
+   public static final enj[] m = new enj[]{
+      b("killedByTeam." + n.a.g()),
+      b("killedByTeam." + n.b.g()),
+      b("killedByTeam." + n.c.g()),
+      b("killedByTeam." + n.d.g()),
+      b("killedByTeam." + n.e.g()),
+      b("killedByTeam." + n.f.g()),
+      b("killedByTeam." + n.g.g()),
+      b("killedByTeam." + n.h.g()),
+      b("killedByTeam." + n.i.g()),
+      b("killedByTeam." + n.j.g()),
+      b("killedByTeam." + n.k.g()),
+      b("killedByTeam." + n.l.g()),
+      b("killedByTeam." + n.m.g()),
+      b("killedByTeam." + n.n.g()),
+      b("killedByTeam." + n.o.g()),
+      b("killedByTeam." + n.p.g())
+   };
+   private final String p;
+   private final boolean q;
+   private final enj.a r;
 
-   public static <T> void a(st $$0, Function<String, Optional<T>> $$1, csw $$2, Consumer<enj<T>> $$3) {
-      long $$4 = $$2.a();
+   private static enj a(String $$0, boolean $$1, enj.a $$2) {
+      enj $$3 = new enj($$0, $$1, $$2);
+      n.put($$0, $$3);
+      return $$3;
+   }
 
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         sn $$6 = $$0.a($$5);
-         a($$6, $$1).ifPresent($$2x -> {
-            if (csw.a($$2x.b()) == $$4) {
-               $$3.accept($$2x);
-            }
-         });
+   private static enj b(String $$0) {
+      return a($$0, false, enj.a.a);
+   }
+
+   protected enj(String $$0) {
+      this($$0, false, enj.a.a);
+   }
+
+   protected enj(String $$0, boolean $$1, enj.a $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      o.put($$0, this);
+   }
+
+   public static Set<String> c() {
+      return ImmutableSet.copyOf(n.keySet());
+   }
+
+   public static Optional<enj> a(String $$0) {
+      enj $$1 = o.get($$0);
+      if ($$1 != null) {
+         return Optional.of($$1);
+      } else {
+         int $$2 = $$0.indexOf(58);
+         return $$2 < 0 ? Optional.empty() : kd.x.b(ahh.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, ahh.a($$0.substring($$2 + 1), '.')));
       }
    }
 
-   public static <T> Optional<enj<T>> a(sn $$0, Function<String, Optional<T>> $$1) {
-      return $$1.apply($$0.l("i")).map($$1x -> {
-         hx $$2 = new hx($$0.h("x"), $$0.h("y"), $$0.h("z"));
-         return new enj<>((T)$$1x, $$2, $$0.h("t"), eno.a($$0.h("p")));
-      });
+   private static <T> Optional<enj> a(asc<T> $$0, ahh $$1) {
+      return $$0.a().b($$1).map($$0::b);
    }
 
-   private static sn a(String $$0, hx $$1, int $$2, eno $$3) {
-      sn $$4 = new sn();
-      $$4.a("i", $$0);
-      $$4.a("x", $$1.u());
-      $$4.a("y", $$1.v());
-      $$4.a("z", $$1.w());
-      $$4.a("t", $$2);
-      $$4.a("p", $$3.a());
-      return $$4;
+   public String d() {
+      return this.p;
    }
 
-   public static <T> sn a(enk<T> $$0, Function<T, String> $$1, long $$2) {
-      return a($$1.apply($$0.a()), $$0.b(), (int)($$0.c() - $$2), $$0.d());
+   public boolean e() {
+      return this.q;
    }
 
-   public sn a(Function<T, String> $$0) {
-      return a($$0.apply(this.b), this.c, this.d, this.e);
+   public enj.a f() {
+      return this.r;
    }
 
-   public enk<T> a(long $$0, long $$1) {
-      return new enk<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
-   }
+   public static enum a implements avl {
+      a("integer"),
+      b("hearts");
 
-   public static <T> enj<T> a(T $$0, hx $$1) {
-      return new enj<>($$0, $$1, 0, eno.d);
-   }
+      private final String d;
+      public static final avl.a<enj.a> c = avl.a(enj.a::values);
 
-   public T a() {
-      return this.b;
-   }
+      private a(String $$0) {
+         this.d = $$0;
+      }
 
-   public hx b() {
-      return this.c;
-   }
+      public String a() {
+         return this.d;
+      }
 
-   public int c() {
-      return this.d;
-   }
+      @Override
+      public String c() {
+         return this.d;
+      }
 
-   public eno d() {
-      return this.e;
+      public static enj.a a(String $$0) {
+         return c.a($$0, a);
+      }
    }
 }

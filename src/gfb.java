@@ -1,123 +1,121 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class gfb implements ger {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<gfb> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ahg.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               atw.a(gfb.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, gfb::new)
-   );
-   private final ahg d;
-   private final List<gfb.a> e;
-   private final double f;
-   private final double g;
+public class gfb {
+   private final ahh a;
+   private final gev b;
+   final int c;
+   final int d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
 
-   public gfb(ahg $$0, List<gfb.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   protected gfb(ahh $$0, gev $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = (float)$$4 / (float)$$2;
+      this.f = (float)($$4 + $$1.a()) / (float)$$2;
+      this.g = (float)$$5 / (float)$$3;
+      this.h = (float)($$5 + $$1.b()) / (float)$$3;
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public float c() {
+      return this.e;
+   }
+
+   public float d() {
+      return this.f;
+   }
+
+   public gev e() {
+      return this.b;
+   }
+
+   @Nullable
+   public gfb.a f() {
+      final gex $$0 = this.b.e();
+      return $$0 != null ? new gfb.a() {
+         @Override
+         public void a() {
+            $$0.a(gfb.this.c, gfb.this.d);
+         }
+
+         @Override
+         public void close() {
+            $$0.close();
+         }
+      } : null;
+   }
+
+   public float a(float $$0) {
+      float $$1 = this.f - this.e;
+      return this.e + $$1 * $$0;
+   }
+
+   public float b(float $$0) {
+      float $$1 = this.f - this.e;
+      return ($$0 - this.e) / $$1;
+   }
+
+   public float g() {
+      return this.g;
+   }
+
+   public float h() {
+      return this.h;
+   }
+
+   public float c(float $$0) {
+      float $$1 = this.h - this.g;
+      return this.g + $$1 * $$0;
+   }
+
+   public float d(float $$0) {
+      float $$1 = this.h - this.g;
+      return ($$0 - this.g) / $$1;
+   }
+
+   public ahh i() {
+      return this.a;
    }
 
    @Override
-   public void a(aqi $$0, ger.a $$1) {
-      ahg $$2 = a.a(this.d);
-      Optional<aqg> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         gex $$4 = new gex($$2, $$3.get(), this.e.size());
-
-         for (gfb.a $$5 : this.e) {
-            $$1.a($$5.b, new gfb.b($$4, $$5, this.f, this.g));
-         }
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
+   public String toString() {
+      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
    }
 
-   @Override
-   public get a() {
-      return geu.d;
+   public void j() {
+      this.b.a(this.c, this.d);
    }
 
-   static record a(ahg b, double c, double d, double e, double f) {
-      public static final Codec<gfb.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ahg.a.fieldOf("sprite").forGetter(gfb.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(gfb.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(gfb.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(gfb.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(gfb.a::e)
-               )
-               .apply($$0, gfb.a::new)
-      );
-
-      public ahg a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
+   private float l() {
+      float $$0 = (float)this.b.a() / (this.f - this.e);
+      float $$1 = (float)this.b.b() / (this.h - this.g);
+      return Math.max($$1, $$0);
    }
 
-   static class b implements ger.b {
-      private final gex a;
-      private final gfb.a b;
-      private final double c;
-      private final double d;
+   public float k() {
+      return 4.0F / this.l();
+   }
 
-      b(gex $$0, gfb.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+   public eqo a(eqo $$0) {
+      return new fuj($$0, this);
+   }
 
-      public geh a(geq $$0) {
-         try {
-            epc $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = auo.a(this.b.c * $$2);
-            int $$5 = auo.a(this.b.d * $$3);
-            int $$6 = auo.a(this.b.e * $$2);
-            int $$7 = auo.a(this.b.f * $$3);
-            epc $$8 = new epc(epc.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new geh(this.b.b, new gfz($$6, $$7), $$8, aqk.a);
-         } catch (Exception var16) {
-            gfb.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
-         }
-
-         return ged.a();
-      }
+   public interface a extends AutoCloseable {
+      void a();
 
       @Override
-      public void a() {
-         this.a.b();
-      }
+      void close();
    }
 }

@@ -1,34 +1,68 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dcf extends ddr {
-   public static final MapCodec<dcf> b = b(dcf::new);
+public class dcf extends cwy implements cxb {
+   public static final MapCodec<dcf> a = b(dcf::new);
 
    @Override
    public MapCodec<dcf> a() {
-      return b;
+      return a;
    }
 
-   protected dcf(djg.d $$0) {
-      super(ddr.b.e, $$0);
+   public dcf(djo.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(ctp $$0, hx $$1, djh $$2, @Nullable bml $$3, cmy $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$0.c_($$1) instanceof dig $$6) {
-         GameProfile $$7 = null;
-         if ($$4.u()) {
-            sn $$8 = $$4.v();
-            if ($$8.b("SkullOwner", 10)) {
-               $$7 = tc.a($$8.p("SkullOwner"));
-            } else if ($$8.b("SkullOwner", 8) && !ac.b($$8.l("SkullOwner"))) {
-               $$7 = new GameProfile(ac.d, $$8.l("SkullOwner"));
+   public boolean b(cua $$0, hx $$1, djp $$2) {
+      if (!$$0.a_($$1.c()).a((ctd)$$0, $$1)) {
+         return false;
+      } else {
+         for (hx $$3 : hx.a($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
+            if ($$0.a_($$3).a(asi.aK)) {
+               return true;
             }
          }
 
-         $$6.a($$7);
+         return false;
       }
+   }
+
+   @Override
+   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (hx $$6 : hx.a($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
+         djp $$7 = $$0.a_($$6);
+         if ($$7.a(cxa.on)) {
+            $$5 = true;
+         }
+
+         if ($$7.a(cxa.ow)) {
+            $$4 = true;
+         }
+
+         if ($$5 && $$4) {
+            break;
+         }
+      }
+
+      if ($$5 && $$4) {
+         $$0.a($$2, $$1.h() ? cxa.on.o() : cxa.ow.o(), 3);
+      } else if ($$5) {
+         $$0.a($$2, cxa.on.o(), 3);
+      } else if ($$4) {
+         $$0.a($$2, cxa.ow.o(), 3);
+      }
+   }
+
+   @Override
+   public cxb.a av_() {
+      return cxb.a.a;
    }
 }

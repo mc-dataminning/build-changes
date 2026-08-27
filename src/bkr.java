@@ -1,28 +1,18 @@
-import com.mojang.serialization.Codec;
+public class bkr {
+   public static final float a = 20.0F;
+   public static final float b = 25.0F;
+   public static final float c = 2.0F;
+   public static final float d = 0.2F;
+   private static final int e = 4;
 
-public enum bkr implements avk {
-   a("hurt", ars.to),
-   b("thorns", ars.yA),
-   c("drowning", ars.tp),
-   d("burning", ars.tr),
-   e("poking", ars.ts),
-   f("freezing", ars.tq);
-
-   public static final Codec<bkr> g = avk.a(bkr::values);
-   private final String h;
-   private final arr i;
-
-   private bkr(String $$0, arr $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public static float a(float $$0, float $$1, float $$2) {
+      float $$3 = 2.0F + $$2 / 4.0F;
+      float $$4 = aup.a($$1 - $$0 / $$3, $$1 * 0.2F, 20.0F);
+      return $$0 * (1.0F - $$4 / 25.0F);
    }
 
-   @Override
-   public String c() {
-      return this.h;
-   }
-
-   public arr a() {
-      return this.i;
+   public static float a(float $$0, float $$1) {
+      float $$2 = aup.a($$1, 0.0F, 20.0F);
+      return $$0 * (1.0F - $$2 / 25.0F);
    }
 }

@@ -1,24 +1,19 @@
-public class cob extends cmt {
-   public cob(cmt.a $$0) {
-      super($$0);
+public class cob extends cnc {
+   private final anf a;
+
+   public cob(anf $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public bkc<cmy> a(ctp $$0, cfi $$1, bka $$2) {
-      cmy $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), ars.xD, art.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cge $$4 = new cge($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   protected void b(cnb $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.c.b(new zy($$0, $$1));
+   }
 
-      $$1.b(asc.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
-      }
-
-      return bkc.a($$3, $$0.y_());
+   @Override
+   protected void c(cnb $$0) {
+      super.c($$0);
+      this.a.c.b(new zy($$0, 0));
    }
 }

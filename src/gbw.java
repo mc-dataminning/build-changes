@@ -1,22 +1,18 @@
-public class gbw extends gcy<cdl, fjg<cdl>> {
-   private final ahg a;
-   private final fjg<cdl> b;
+public class gbw extends gag<cfj, fmu<cfj>> {
+   private static final ahh a = new ahh("textures/entity/wandering_trader.png");
 
-   public gbw(gai<cdl, fjg<cdl>> $$0, fmt $$1, ahg $$2) {
-      super($$0);
-      this.b = new fjg<>($$1.a(fmw.p));
-      this.a = $$2;
+   public gbw(fza.a $$0) {
+      super($$0, new fmu<>($$0.a(fni.bO)), 0.5F);
+      this.a(new gcq<>(this, $$0.f(), $$0.d()));
+      this.a(new gcp<>(this, $$0.d()));
    }
 
-   public void a(eqb $$0, fth $$1, int $$2, cdl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.b.a($$3, $$4, $$5, $$6);
-      this.c().a(this.b);
-      eqf $$10 = $$1.getBuffer(ftp.q(this.a));
-      this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      this.b.a().a($$0, $$10, $$2, gee.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public ahh a(cfj $$0) {
+      return a;
    }
 
-   protected ahg a(cdl $$0) {
-      return this.a;
+   protected void a(cfj $$0, eqk $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

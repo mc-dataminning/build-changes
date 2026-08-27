@@ -1,24 +1,30 @@
-import org.joml.Matrix4f;
+public class ffs extends fek {
+   private final csy m;
 
-public class ffs implements fft {
-   private final aua a;
-
-   public ffs(aua $$0) {
-      this.a = $$0;
+   public ffs(csy $$0) {
+      this.m = $$0;
    }
 
    @Override
-   public int a(ews $$0) {
-      return $$0.a(this.a);
+   public csy o() {
+      return this.m;
    }
 
    @Override
-   public int a() {
-      return 10;
+   int E() {
+      return 150;
    }
 
    @Override
-   public void a(ews $$0, int $$1, int $$2, Matrix4f $$3, fth.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, ews.a.a, 0, 15728880);
+   protected void aP_() {
+      super.aP_();
+      this.a.a(this.o().m());
+   }
+
+   @Override
+   protected void a(csy $$0) {
+      if ($$0 instanceof chq.a $$1) {
+         this.f.J().b(new aey($$1.h().aj(), this.a.a(), $$0.o()));
+      }
    }
 }

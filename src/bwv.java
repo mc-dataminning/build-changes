@@ -1,28 +1,37 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public class bwv extends bws<bml> {
-   @Override
-   public Set<bvn<?>> a() {
-      return ImmutableSet.of(bvn.i);
+public class bwv {
+   private final bmq a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
+
+   public bwv(bmq $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected void a(and $$0, bml $$1) {
-      $$1.dO().a(bvn.i, this.a($$1));
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   private List<bml> a(bml $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
+   public boolean a(blw $$0) {
+      int $$1 = $$0.aj();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
+      } else {
+         this.a.dL().af().a("hasLineOfSight");
+         boolean $$2 = this.a.D($$0);
+         this.a.dL().af().c();
+         if ($$2) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
 
-   private boolean b(bml $$0) {
-      return $$0.ai() == blz.bg && $$0.o_();
-   }
-
-   private bvp c(bml $$0) {
-      return $$0.dO().c(bvn.h).orElse(bvp.a());
+         return $$2;
+      }
    }
 }

@@ -1,24 +1,24 @@
-public class xm implements xf<xi> {
-   private final int a;
+public class xm implements xg<xj> {
+   private final long a;
 
-   public xm(int $$0) {
+   public xm(long $$0) {
       this.a = $$0;
    }
 
-   public xm(ui $$0) {
-      this.a = $$0.readInt();
+   public xm(uj $$0) {
+      this.a = $$0.readLong();
    }
 
    @Override
-   public void a(ui $$0) {
-      $$0.p(this.a);
+   public void a(uj $$0) {
+      $$0.b(this.a);
    }
 
-   public void a(xi $$0) {
+   public void a(xj $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public long a() {
       return this.a;
    }
 }

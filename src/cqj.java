@@ -1,114 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cqj implements cpt {
-   final cqk a;
-   final cmy b;
-   final String c;
-   final cps d;
-   final boolean e;
-
-   public cqj(String $$0, cps $$1, cqk $$2, cmy $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
-   }
-
-   public cqj(String $$0, cps $$1, cqk $$2, cmy $$3) {
-      this($$0, $$1, $$2, $$3, true);
+public class cqj extends cqr {
+   public cqj(cqa $$0) {
+      super("", $$0, cqs.a(Map.of('#', cqh.a(cnj.qN), 'x', cqh.a(cnj.rT)), "###", "#x#", "###"), new cng(cnj.uf));
    }
 
    @Override
-   public cqg<?> ar_() {
-      return cqg.a;
+   public boolean a(ciz $$0, ctx $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cng $$2 = a($$0);
+         if ($$2.b()) {
+            return false;
+         } else {
+            egj $$3 = cnn.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.f() ? false : $$3.f < 4;
+            }
+         }
+      }
    }
 
    @Override
-   public String c() {
-      return this.c;
+   public cng a(ciz $$0, iu $$1) {
+      cng $$2 = a($$0).c(1);
+      $$2.w().a("map_scale_direction", 1);
+      return $$2;
    }
 
-   @Override
-   public cps d() {
-      return this.d;
-   }
-
-   @Override
-   public cmy a(iu $$0) {
-      return this.b;
-   }
-
-   @Override
-   public iq<cpz> a() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean h() {
-      return this.e;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(cir $$0, ctp $$1) {
-      return this.a.a($$0);
-   }
-
-   public cmy a(cir $$0, iu $$1) {
-      return this.a($$1).p();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean i() {
-      iq<cpz> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
-   }
-
-   public static class a implements cqg<cqj> {
-      public static final Codec<cqj> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  atw.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.c),
-                  cps.e.fieldOf("category").orElse(cps.d).forGetter($$0x -> $$0x.d),
-                  cqk.a.forGetter($$0x -> $$0x.a),
-                  cmy.c.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  atw.a(Codec.BOOL, "show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, cqj::new)
-      );
-
-      @Override
-      public Codec<cqj> a() {
-         return x;
+   private static cng a(ciz $$0) {
+      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
+         cng $$2 = $$0.a($$1);
+         if ($$2.a(cnj.rT)) {
+            return $$2;
+         }
       }
 
-      public cqj b(ui $$0) {
-         String $$1 = $$0.s();
-         cps $$2 = $$0.b(cps.class);
-         cqk $$3 = cqk.b($$0);
-         cmy $$4 = $$0.r();
-         boolean $$5 = $$0.readBoolean();
-         return new cqj($$1, $$2, $$3, $$4, $$5);
-      }
+      return cng.f;
+   }
 
-      public void a(ui $$0, cqj $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         $$1.a.a($$0);
-         $$0.a($$1.b);
-         $$0.a($$1.e);
-      }
+   @Override
+   public boolean as_() {
+      return true;
+   }
+
+   @Override
+   public cqo<?> at_() {
+      return cqo.f;
    }
 }

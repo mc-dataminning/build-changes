@@ -1,82 +1,255 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
 import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
 public class fuy {
-   private final fuu a;
-   private final fur b;
+   public static final List<String> a = Lists.newArrayList(new String[]{"layer0", "layer1", "layer2", "layer3", "layer4"});
+   private static final float b = 7.5F;
+   private static final float c = 8.5F;
 
-   public fuy(fuu $$0, fur $$1) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Missing condition for selector");
-      } else if ($$1 == null) {
-         throw new IllegalArgumentException("Missing variant for selector");
-      } else {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
+   public fuv a(Function<ghe, gfb> $$0, fuv $$1) {
+      Map<String, Either<ghe, String>> $$2 = Maps.newHashMap();
+      List<fur> $$3 = Lists.newArrayList();
 
-   public fur a() {
-      return this.b;
-   }
+      for (int $$4 = 0; $$4 < a.size(); $$4++) {
+         String $$5 = a.get($$4);
+         if (!$$1.b($$5)) {
+            break;
+         }
 
-   public Predicate<djh> a(dji<cwq, djh> $$0) {
-      return this.a.getPredicate($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0;
-   }
-
-   @Override
-   public int hashCode() {
-      return System.identityHashCode(this);
-   }
-
-   public static class a implements JsonDeserializer<fuy> {
-      public fuy a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         return new fuy(this.b($$3), (fur)$$2.deserialize($$3.get("apply"), fur.class));
+         ghe $$6 = $$1.c($$5);
+         $$2.put($$5, Either.left($$6));
+         gev $$7 = $$0.apply($$6).e();
+         $$3.addAll(this.a($$4, $$5, $$7));
       }
 
-      private fuu b(JsonObject $$0) {
-         return $$0.has("when") ? a(aue.u($$0, "when")) : fuu.b;
-      }
+      $$2.put("particle", $$1.b("particle") ? Either.left($$1.c("particle")) : $$2.get("layer0"));
+      fuv $$8 = new fuv(null, $$3, $$2, false, $$1.c(), $$1.h(), $$1.e());
+      $$8.c = $$1.c;
+      return $$8;
+   }
 
-      @VisibleForTesting
-      static fuu a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<fuu> $$2 = Streams.stream(aue.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new fux($$2);
-            } else if ($$0.has("AND")) {
-               List<fuu> $$3 = Streams.stream(aue.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new fut($$3);
-            } else {
-               return a($$1.iterator().next());
-            }
-         } else {
-            return new fut($$1.stream().map(fuy.a::a).collect(Collectors.toList()));
+   private List<fur> a(int $$0, String $$1, gev $$2) {
+      Map<ic, fus> $$3 = Maps.newHashMap();
+      $$3.put(ic.d, new fus(null, $$0, $$1, new fuu(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0)));
+      $$3.put(ic.c, new fus(null, $$0, $$1, new fuu(new float[]{16.0F, 0.0F, 0.0F, 16.0F}, 0)));
+      List<fur> $$4 = Lists.newArrayList();
+      $$4.add(new fur(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3, null, true));
+      $$4.addAll(this.a($$2, $$1, $$0));
+      return $$4;
+   }
+
+   private List<fur> a(gev $$0, String $$1, int $$2) {
+      float $$3 = (float)$$0.a();
+      float $$4 = (float)$$0.b();
+      List<fur> $$5 = Lists.newArrayList();
+
+      for (fuy.a $$6 : this.a($$0)) {
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         float $$9 = 0.0F;
+         float $$10 = 0.0F;
+         float $$11 = 0.0F;
+         float $$12 = 0.0F;
+         float $$13 = 0.0F;
+         float $$14 = 0.0F;
+         float $$15 = 16.0F / $$3;
+         float $$16 = 16.0F / $$4;
+         float $$17 = (float)$$6.b();
+         float $$18 = (float)$$6.c();
+         float $$19 = (float)$$6.d();
+         fuy.b $$20 = $$6.a();
+         switch ($$20) {
+            case a:
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$13 = $$19;
+               $$8 = $$19;
+               $$10 = $$19;
+               $$14 = $$19 + 1.0F;
+               break;
+            case b:
+               $$13 = $$19;
+               $$14 = $$19 + 1.0F;
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$8 = $$19 + 1.0F;
+               $$10 = $$19 + 1.0F;
+               break;
+            case c:
+               $$11 = $$19;
+               $$7 = $$19;
+               $$9 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+               break;
+            case d:
+               $$11 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$7 = $$19 + 1.0F;
+               $$9 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+         }
+
+         $$7 *= $$15;
+         $$9 *= $$15;
+         $$8 *= $$16;
+         $$10 *= $$16;
+         $$8 = 16.0F - $$8;
+         $$10 = 16.0F - $$10;
+         $$11 *= $$15;
+         $$12 *= $$15;
+         $$13 *= $$16;
+         $$14 *= $$16;
+         Map<ic, fus> $$21 = Maps.newHashMap();
+         $$21.put($$20.a(), new fus(null, $$2, $$1, new fuu(new float[]{$$11, $$13, $$12, $$14}, 0)));
+         switch ($$20) {
+            case a:
+               $$5.add(new fur(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21, null, true));
+               break;
+            case b:
+               $$5.add(new fur(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
+               break;
+            case c:
+               $$5.add(new fur(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21, null, true));
+               break;
+            case d:
+               $$5.add(new fur(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
          }
       }
 
-      private static fuu a(Entry<String, JsonElement> $$0) {
-         return new fuv($$0.getKey(), $$0.getValue().getAsString());
+      return $$5;
+   }
+
+   private List<fuy.a> a(gev $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      List<fuy.a> $$3 = Lists.newArrayList();
+      $$0.d().forEach($$4 -> {
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            for (int $$6 = 0; $$6 < $$1; $$6++) {
+               boolean $$7 = !this.a($$0, $$4, $$6, $$5, $$1, $$2);
+               this.a(fuy.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(fuy.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(fuy.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(fuy.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+            }
+         }
+      });
+      return $$3;
+   }
+
+   private void a(fuy.b $$0, List<fuy.a> $$1, gev $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
+      boolean $$9 = this.a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
+      if ($$9) {
+         this.a($$1, $$0, $$4, $$5);
+      }
+   }
+
+   private void a(List<fuy.a> $$0, fuy.b $$1, int $$2, int $$3) {
+      fuy.a $$4 = null;
+
+      for (fuy.a $$5 : $$0) {
+         if ($$5.a() == $$1) {
+            int $$6 = $$1.d() ? $$3 : $$2;
+            if ($$5.d() == $$6) {
+               $$4 = $$5;
+               break;
+            }
+         }
+      }
+
+      int $$7 = $$1.d() ? $$3 : $$2;
+      int $$8 = $$1.d() ? $$2 : $$3;
+      if ($$4 == null) {
+         $$0.add(new fuy.a($$1, $$8, $$7));
+      } else {
+         $$4.a($$8);
+      }
+   }
+
+   private boolean a(gev $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
+   }
+
+   static class a {
+      private final fuy.b a;
+      private int b;
+      private int c;
+      private final int d;
+
+      public a(fuy.b $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(int $$0) {
+         if ($$0 < this.b) {
+            this.b = $$0;
+         } else if ($$0 > this.c) {
+            this.c = $$0;
+         }
+      }
+
+      public fuy.b a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public int c() {
+         return this.c;
+      }
+
+      public int d() {
+         return this.d;
+      }
+   }
+
+   static enum b {
+      a(ic.b, 0, -1),
+      b(ic.a, 0, 1),
+      c(ic.f, -1, 0),
+      d(ic.e, 1, 0);
+
+      private final ic e;
+      private final int f;
+      private final int g;
+
+      private b(ic $$0, int $$1, int $$2) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+      }
+
+      public ic a() {
+         return this.e;
+      }
+
+      public int b() {
+         return this.f;
+      }
+
+      public int c() {
+         return this.g;
+      }
+
+      boolean d() {
+         return this == b || this == a;
       }
    }
 }

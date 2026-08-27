@@ -1,55 +1,54 @@
 import java.util.List;
 
 public class qk {
-   public static final ahf<drh<?, ?>> a = qj.a("ice_spike");
-   public static final ahf<drh<?, ?>> b = qj.a("ice_patch");
-   public static final ahf<drh<?, ?>> c = qj.a("forest_rock");
-   public static final ahf<drh<?, ?>> d = qj.a("iceberg_packed");
-   public static final ahf<drh<?, ?>> e = qj.a("iceberg_blue");
-   public static final ahf<drh<?, ?>> f = qj.a("blue_ice");
-   public static final ahf<drh<?, ?>> g = qj.a("lake_lava");
-   public static final ahf<drh<?, ?>> h = qj.a("disk_clay");
-   public static final ahf<drh<?, ?>> i = qj.a("disk_gravel");
-   public static final ahf<drh<?, ?>> j = qj.a("disk_sand");
-   public static final ahf<drh<?, ?>> k = qj.a("freeze_top_layer");
-   public static final ahf<drh<?, ?>> l = qj.a("disk_grass");
-   public static final ahf<drh<?, ?>> m = qj.a("bonus_chest");
-   public static final ahf<drh<?, ?>> n = qj.a("void_start_platform");
-   public static final ahf<drh<?, ?>> o = qj.a("desert_well");
-   public static final ahf<drh<?, ?>> p = qj.a("spring_lava_overworld");
-   public static final ahf<drh<?, ?>> q = qj.a("spring_lava_frozen");
-   public static final ahf<drh<?, ?>> r = qj.a("spring_water");
+   public static void a(pf<drp<?, ?>> $$0) {
+      qh.a($$0);
+      qi.a($$0);
+      qj.a($$0);
+      ql.a($$0);
+      qm.a($$0);
+      qn.a($$0);
+      qo.a($$0);
+      qp.a($$0);
+      qq.a($$0);
+   }
 
-   public static void a(pe<drh<?, ?>> $$0) {
-      qj.a($$0, a, dru.s);
-      qj.a($$0, b, dru.G, new dtv(dwh.a(cws.iC), dpx.c(List.of(cws.j, cws.i, cws.l, cws.k, cws.fl, cws.dP, cws.dO)), bjm.a(2, 3), 1));
-      qj.a($$0, c, dru.F, new dtr(cws.cn.o()));
-      qj.a($$0, d, dru.E, new dtr(cws.iC.o()));
-      qj.a($$0, e, dru.E, new dtr(cws.mW.o()));
-      qj.a($$0, f, dru.D);
-      qj.a($$0, g, dru.H, new dsj.a(dvz.a(cws.H.o()), dvz.a(cws.b.o())));
-      qj.a($$0, h, dru.G, new dtv(dwh.a(cws.dR), dpx.c(List.of(cws.j, cws.dR)), bjm.a(2, 3), 1));
-      qj.a($$0, i, dru.G, new dtv(dwh.a(cws.L), dpx.c(List.of(cws.j, cws.i)), bjm.a(2, 5), 2));
-      qj.a(
-         $$0, j, dru.G, new dtv(new dwh(dvz.a(cws.I), List.of(new dwh.a(dpx.a(ic.a.q(), cws.a), dvz.a(cws.aV)))), dpx.c(List.of(cws.j, cws.i)), bjm.a(2, 6), 2)
-      );
-      qj.a($$0, k, dru.u);
-      qj.a(
-         $$0,
-         l,
-         dru.G,
-         new dtv(
-            new dwh(dvz.a(cws.j), List.of(new dwh.a(dpx.a(dpx.b(dpx.b(ic.b.q()), dpx.a(ic.b.q(), ees.c))), dvz.a(cws.i)))),
-            dpx.c(List.of(cws.j, cws.sI)),
-            bjm.a(2, 6),
-            2
-         )
-      );
-      qj.a($$0, m, dru.ac);
-      qj.a($$0, n, dru.n);
-      qj.a($$0, o, dru.o);
-      qj.a($$0, p, dru.k, new dut(ees.e.g(), true, 4, 1, il.a(cwq::r, cws.b, cws.c, cws.e, cws.g, cws.sJ, cws.qz, cws.qN, cws.j)));
-      qj.a($$0, q, dru.k, new dut(ees.e.g(), true, 4, 1, il.a(cwq::r, cws.dP, cws.qP, cws.iC)));
-      qj.a($$0, r, dru.k, new dut(ees.c.g(), true, 4, 1, il.a(cwq::r, cws.b, cws.c, cws.e, cws.g, cws.sJ, cws.qz, cws.qN, cws.j, cws.dP, cws.qP, cws.iC)));
+   private static dqf a(List<cwy> $$0) {
+      dqf $$1;
+      if (!$$0.isEmpty()) {
+         $$1 = dqf.a(dqf.c, dqf.a(ic.a.q(), $$0));
+      } else {
+         $$1 = dqf.c;
+      }
+
+      return $$1;
+   }
+
+   public static dut a(int $$0, ih<dys> $$1) {
+      return new dut($$0, 7, 3, $$1);
+   }
+
+   public static <FC extends dug, F extends dsc<FC>> dut a(F $$0, FC $$1, List<cwy> $$2, int $$3) {
+      return a($$3, qz.a($$0, $$1, a($$2)));
+   }
+
+   public static <FC extends dug, F extends dsc<FC>> dut a(F $$0, FC $$1, List<cwy> $$2) {
+      return a($$0, $$1, $$2, 96);
+   }
+
+   public static <FC extends dug, F extends dsc<FC>> dut a(F $$0, FC $$1) {
+      return a($$0, $$1, List.of(), 96);
+   }
+
+   public static ahg<drp<?, ?>> a(String $$0) {
+      return ahg.a(ke.aw, new ahh($$0));
+   }
+
+   public static void a(pf<drp<?, ?>> $$0, ahg<drp<?, ?>> $$1, dsc<dun> $$2) {
+      a($$0, $$1, $$2, dug.m);
+   }
+
+   public static <FC extends dug, F extends dsc<FC>> void a(pf<drp<?, ?>> $$0, ahg<drp<?, ?>> $$1, F $$2, FC $$3) {
+      $$0.a($$1, new drp($$2, $$3));
    }
 }

@@ -1,103 +1,29 @@
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.nio.file.FileSystem;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import org.slf4j.Logger;
+import net.minecraft.server.MinecraftServer;
 
-public class ell implements PathMatcher {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "#";
-   private final List<ell.a> c;
-   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
+public class ell implements eln<MinecraftServer> {
+   final ahh a;
 
-   public ell(List<ell.a> $$0) {
-      this.c = $$0;
+   public ell(ahh $$0) {
+      this.a = $$0;
    }
 
-   public PathMatcher a(FileSystem $$0) {
-      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
-         List<PathMatcher> $$2;
-         try {
-            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
-         } catch (Exception var5) {
-            a.error("Failed to compile file pattern list", var5);
-            return $$0xx -> false;
-         }
-         return switch ($$2.size()) {
-            case 0 -> $$0xx -> false;
-            case 1 -> (PathMatcher)$$2.get(0);
-            default -> $$1x -> {
-            for (PathMatcher $$2 : $$2) {
-               if ($$2.matches($$1x)) {
-                  return true;
-               }
-            }
-
-            return false;
-         };
-         };
-      });
+   public void a(MinecraftServer $$0, elp<MinecraftServer> $$1, long $$2) {
+      ahv $$3 = $$0.aC();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
    }
 
-   @Override
-   public boolean matches(Path $$0) {
-      return this.a($$0.getFileSystem()).matches($$0);
-   }
-
-   public static ell a(BufferedReader $$0) {
-      return new ell($$0.lines().flatMap($$0x -> ell.a.a($$0x).stream()).toList());
-   }
-
-   public static record a(ell.b a, String b) {
-      public PathMatcher a(FileSystem $$0) {
-         return this.a().compile($$0, this.b);
+   public static class a extends eln.a<MinecraftServer, ell> {
+      public a() {
+         super(new ahh("function"), ell.class);
       }
 
-      static Optional<ell.a> a(String $$0) {
-         if ($$0.isBlank() || $$0.startsWith("#")) {
-            return Optional.empty();
-         } else if (!$$0.startsWith("[")) {
-            return Optional.of(new ell.a(ell.b.b, $$0));
-         } else {
-            int $$1 = $$0.indexOf(93, 1);
-            if ($$1 == -1) {
-               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
-            } else {
-               String $$2 = $$0.substring(1, $$1);
-               String $$3 = $$0.substring($$1 + 1);
-
-               return switch ($$2) {
-                  case "glob", "regex" -> Optional.of(new ell.a(ell.b.a, $$2 + ":" + $$3));
-                  case "prefix" -> Optional.of(new ell.a(ell.b.b, $$3));
-                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
-               };
-            }
-         }
+      public void a(so $$0, ell $$1) {
+         $$0.a("Name", $$1.a.toString());
       }
 
-      static ell.a b(String $$0) {
-         return new ell.a(ell.b.a, "glob:" + $$0);
+      public ell a(so $$0) {
+         ahh $$1 = new ahh($$0.l("Name"));
+         return new ell($$1);
       }
-
-      static ell.a c(String $$0) {
-         return new ell.a(ell.b.a, "regex:" + $$0);
-      }
-
-      static ell.a d(String $$0) {
-         return new ell.a(ell.b.b, $$0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      ell.b a = FileSystem::getPathMatcher;
-      ell.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
-
-      PathMatcher compile(FileSystem var1, String var2);
    }
 }

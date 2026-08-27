@@ -1,62 +1,168 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ftn {
-   private final fts a = new fts();
-   private final ftt b;
-   private final fth.a c;
-   private final fth.a d;
-   private final fti e;
+public class ftn extends aqo<ftn.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ahh b = new ahh("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
 
-   public ftn(int $$0) {
-      this.b = ftt.a($$0);
-      SortedMap<ftp, epw> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(ftw.h(), this.a.a(ftp.c()));
-         $$0x.put(ftw.i(), this.a.a(ftp.e()));
-         $$0x.put(ftw.a(), this.a.a(ftp.d()));
-         $$0x.put(ftw.k(), this.a.a(ftp.f()));
-         a($$0x, ftw.b());
-         a($$0x, ftw.c());
-         a($$0x, ftw.d());
-         a($$0x, ftw.e());
-         a($$0x, ftw.f());
-         $$0x.put(ftw.g(), new epw(786432));
-         a($$0x, ftp.j());
-         a($$0x, ftp.k());
-         a($$0x, ftp.m());
-         a($$0x, ftp.n());
-         a($$0x, ftp.l());
-         a($$0x, ftp.o());
-         a($$0x, ftp.p());
-         a($$0x, ftp.i());
-         ggs.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = fth.a(new epw(1536));
-      this.c = fth.a($$1, new epw(786432));
-      this.e = new fti(this.c);
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<ftp, epw> $$0, ftp $$1) {
-      $$0.put($$1, new epw($$1.G()));
+   public boolean b() {
+      return this.a() && !this.e;
    }
 
-   public fts a() {
-      return this.a;
+   public void d() {
+      this.d = true;
    }
 
-   public ftt b() {
-      return this.b;
+   public void e() {
+      this.e = true;
    }
 
-   public fth.a c() {
-      return this.c;
+   public void f() {
+      this.e = true;
+      this.f = true;
    }
 
-   public fth.a d() {
-      return this.d;
+   public boolean g() {
+      return this.d && !this.e;
    }
 
-   public fti e() {
-      return this.e;
+   public boolean h() {
+      return this.f;
+   }
+
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
+
+   @Nullable
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected ftn.a a(aqj $$0, bgt $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      $$1.a();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         $$1.a("compile_regex");
+         a($$5.getAsJsonArray("renderer"), $$2);
+         a($$5.getAsJsonArray("version"), $$3);
+         a($$5.getAsJsonArray("vendor"), $$4);
+         $$1.c();
+      }
+
+      $$1.b();
+      return new ftn.a($$2, $$3, $$4);
+   }
+
+   protected void a(ftn.a $$0, aqj $$1, bgt $$2) {
+      this.c = $$0.a();
+   }
+
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(aqj $$0, bgt $$1) {
+      $$1.a("parse_json");
+      JsonObject $$2 = null;
+
+      try (Reader $$3 = $$0.openAsReader(b)) {
+         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
+      } catch (JsonSyntaxException | IOException var8) {
+         a.warn("Failed to load GPU warnlist");
+      }
+
+      $$1.c();
+      return $$2;
+   }
+
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
+
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
+
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
+
+            while ($$4.find()) {
+               $$2.add($$4.group());
+            }
+         }
+
+         return String.join(", ", $$2);
+      }
+
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, epd.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
+         }
+
+         String $$2 = a(this.b, epd.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
+
+         String $$3 = a(this.c, epd.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
+      }
    }
 }

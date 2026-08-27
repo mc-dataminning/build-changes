@@ -1,18 +1,19 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bsd {
-   private static final bjg a = bjm.a(100, 200);
-
-   public static bod<bml> a() {
-      return brp.a(
-         (Function<brp.b<bml>, ? extends App<brp.c<bml>, brs<bml>>>)($$0 -> $$0.group($$0.a(bvn.aA), $$0.a(bvn.m), $$0.c(bvn.aF), $$0.b(bvn.B), $$0.c(bvn.ay))
-               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     $$0x.a(avs.a);
-                     $$2.a(avs.a, (long)a.a($$3x.F_()));
-                     $$1.b();
-                     $$4x.b(bmx.m);
-                     return true;
+   public static bog<bmo> a() {
+      return brs.a(
+         (Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$0 -> $$0.group($$0.a(bvq.n), $$0.a(bvq.az), $$0.a(bvq.ay), $$0.c(bvq.o))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<hx> $$7 = $$0.<bmo>a($$3).map(blw::dl).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        $$1.a(new boi($$7.get()));
+                        return true;
+                     }
                   }))
       );
    }

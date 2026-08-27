@@ -1,35 +1,48 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public final class brq<F extends K1, Value> {
-   private final bnl<?> a;
-   private final bvn<Value> b;
-   private final App<F, Value> c;
+public class brq extends bof<cfd> {
+   private static final int c = 300;
+   private static final double d = 1.73;
+   private long e;
 
-   public brq(bnl<?> $$0, bvn<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public brq() {
+      super(ImmutableMap.of(bvq.c, bvr.a, bvq.n, bvr.c));
    }
 
-   public App<F, Value> a() {
-      return this.c;
+   protected boolean b(ane $$0, cfd $$1) {
+      if ($$0.X() - this.e < 300L) {
+         return false;
+      } else if ($$0.z.a(2) != 0) {
+         return false;
+      } else {
+         this.e = $$0.X();
+         ig $$2 = $$1.dN().c(bvq.c).get();
+         return $$2.a() == $$0.ae() && $$2.b().a($$1.dj(), 1.73);
+      }
    }
 
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
+   protected void a(ane $$0, cfd $$1, long $$2) {
+      bno<cfd> $$3 = $$1.dN();
+      $$3.a(bvq.J, $$2);
+      $$3.c(bvq.c).ifPresent($$1x -> $$3.a(bvq.n, new boi($$1x.b())));
+      $$1.gu();
+      this.a($$0, $$1);
+      if ($$1.gt()) {
+         $$1.gs();
+      }
    }
 
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
+   protected void a(ane $$0, cfd $$1) {
    }
 
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
-   }
-
-   public void b() {
-      this.a.b(this.b);
+   protected boolean b(ane $$0, cfd $$1, long $$2) {
+      Optional<ig> $$3 = $$1.dN().c(bvq.c);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         ig $$4 = $$3.get();
+         return $$4.a() == $$0.ae() && $$4.b().a($$1.dj(), 1.73);
+      }
    }
 }

@@ -1,60 +1,70 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class ehu extends ehr {
-   public static final Codec<ehu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asw.a(ke.F).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, ehu::new)
-   );
-   private final asw<cmt> j;
-   private final boolean k;
+   public static final Codec<ehu> a = a(ehu::new);
 
-   private ehu(asw<cmt> $$0, boolean $$1, int $$2, int $$3, List<ejv> $$4, List<eij> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   ehu(List<ehy> $$0, List<eke> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public ehq a() {
-      return ehn.f;
+   public ehz a() {
+      return ehw.i;
    }
 
    @Override
-   public void a(Consumer<cmy> $$0, egw $$1) {
-      kd.h.c(this.j).forEach($$1x -> $$0.accept(new cmy($$1x)));
-   }
-
-   private boolean a(egw $$0, Consumer<eho> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final ih<cmt> $$2 : kd.h.c(this.j)) {
-            $$1.accept(new ehr.c() {
-               @Override
-               public void a(Consumer<cmy> $$0, egw $$1) {
-                  $$0.accept(new cmy($$2));
-               }
-            });
+   protected ehq a(List<? extends ehq> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ehq)$$0.get(0);
+         case 2 -> {
+            ehq $$1 = $$0.get(0);
+            ehq $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (ehq $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
          }
 
          return true;
+      };
+      };
+   }
+
+   public static ehu.a a(ehy.a<?>... $$0) {
+      return new ehu.a($$0);
+   }
+
+   public static class a extends ehy.a<ehu.a> {
+      private final Builder<ehy> a = ImmutableList.builder();
+
+      public a(ehy.a<?>... $$0) {
+         for (ehy.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
-   }
 
-   @Override
-   public boolean expand(egw $$0, Consumer<eho> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
-   }
+      protected ehu.a a() {
+         return this;
+      }
 
-   public static ehr.a<?> a(asw<cmt> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ehu($$0, false, $$1, $$2, $$3, $$4));
-   }
+      @Override
+      public ehu.a b(ehy.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public static ehr.a<?> b(asw<cmt> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ehu($$0, true, $$1, $$2, $$3, $$4));
+      @Override
+      public ehy b() {
+         return new ehu(this.a.build(), this.f());
+      }
    }
 }

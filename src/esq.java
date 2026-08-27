@@ -1,43 +1,33 @@
-public class esq extends gkp {
-   private static final vf a = vf.c("mco.client.incompatible.title");
-   private static final vf[] b = new vf[]{
-      vf.c("mco.client.incompatible.msg.line1"), vf.c("mco.client.incompatible.msg.line2"), vf.c("mco.client.incompatible.msg.line3")
-   };
-   private static final vf[] c = new vf[]{vf.c("mco.client.incompatible.msg.line1"), vf.c("mco.client.incompatible.msg.line2")};
-   private final fdb v;
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-   public esq(fdb $$0) {
-      super(a);
-      this.v = $$0;
+public class esq {
+   public final etz a = new etz(ac.g(), TimeUnit.MILLISECONDS, ac.b);
+   private final List<etz.e<?>> h;
+   public final etz.e<List<erq>> b;
+   public final etz.e<esq.a> c;
+   public final etz.e<Integer> d;
+   public final etz.e<Boolean> e;
+   public final etz.e<erp> f;
+   public final esr g = new esr(new euf());
+
+   public esq(era $$0) {
+      this.c = this.a.a("server list", () -> {
+         ert $$1 = $$0.b();
+         return eqv.b() ? new esq.a($$1.a, $$0.c()) : new esq.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), eua.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), eua.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), eua.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), eua.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), eua.a);
+      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
    }
 
-   @Override
-   public void aN_() {
-      this.d(exg.a(ve.k, $$0 -> this.f.a(this.v)).a(this.g / 2 - 100, g(12), 200, 20).a());
+   public List<etz.e<?>> a() {
+      return this.h;
    }
 
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, g(3), -65536);
-      vf[] $$4 = this.D();
-
-      for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-         $$0.a(this.i, $$4[$$5], this.g / 2, g(5) + $$5 * 12, -1);
-      }
-   }
-
-   private vf[] D() {
-      return aa.b().g() ? c : b;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 != 257 && $$0 != 335 && $$0 != 256) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.f.a(this.v);
-         return true;
-      }
+   public static record a(List<err> a, List<err> b) {
    }
 }

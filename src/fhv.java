@@ -1,102 +1,160 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fhv extends fdb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<ahf<ctp>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(ctp.h, -13408734);
-      $$0.put(ctp.i, -10075085);
-      $$0.put(ctp.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bjp k;
-
+public class fhv extends exx<fht> {
+   private final fhw a;
+   private final List<fht> m = Lists.newArrayList();
    @Nullable
-   public static fhv a(evi $$0, BooleanConsumer $$1, DataFixer $$2, egm.c $$3, boolean $$4) {
-      try {
-         fib $$5 = $$0.w();
-         apt $$6 = apw.a($$3);
+   private String n;
 
-         fhv var10;
-         try (aic $$7 = $$5.a($$3.f(), false, $$6)) {
-            egs $$8 = $$7.d();
-            iu.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new fhv($$1, $$2, $$3, $$8.L(), $$4, $$9.d(ke.aN));
+   public fhv(fhw $$0, evr $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.a = $$0;
+      this.c(false);
+   }
+
+   @Override
+   protected void a(exe $$0) {
+      $$0.c(this.B(), this.C() + 4, this.D(), this.E());
+   }
+
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fht> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
+   }
+
+   private void a(Collection<UUID> $$0, Map<UUID, fht> $$1) {
+      fof $$2 = this.c.s.cr;
+
+      for (UUID $$3 : $$0) {
+         fon $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fht(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
          }
-
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
       }
    }
 
-   private fhv(BooleanConsumer $$0, DataFixer $$1, egm.c $$2, ctt $$3, boolean $$4, it<dmr> $$5) {
-      super(vf.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.k = new bjp($$2, $$1, $$5, $$4);
-   }
+   private void a(Map<UUID, fht> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.aY().b())) {
+         fht $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fht $$2 = new fht(this.c, this.a, $$3.getId(), $$3.getName(), this.c.al().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
+         }
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.d(exg.a(ve.e, $$0 -> {
-         this.k.a();
-         this.c.accept(false);
-      }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
-   }
-
-   @Override
-   public void d() {
-      if (this.k.b()) {
-         this.c.accept(true);
+         $$4.d(true);
       }
    }
 
-   @Override
-   public void aE_() {
-      this.c.accept(false);
+   private static Collection<GameProfile> a(fou $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         fow $$3 = $$0.b($$2);
+         if ($$3 instanceof fox.a) {
+            fox.a $$4 = (fox.a)$$3;
+            if ($$4.g().i()) {
+               $$1.add($$4.f());
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   @Override
-   public void j() {
-      this.k.a();
-   }
-
-   @Override
-   public void a(ewu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      int $$4 = this.g / 2 - 150;
-      int $$5 = this.g / 2 + 150;
-      int $$6 = this.h / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
-      if (this.k.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.i, vf.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
-         $$0.b(this.i, vf.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.i, vf.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
-
-         for (ahf<ctp> $$9 : this.k.c()) {
-            int $$10 = auo.d(this.k.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
+   private void e() {
+      this.m.sort(Comparator.<fht, Integer>comparing($$0 -> {
+         if (this.c.b($$0.c())) {
+            return 0;
+         } else if (this.c.aY().a($$0.c())) {
+            return 1;
+         } else if ($$0.c().version() == 2) {
+            return 4;
+         } else {
+            return $$0.i() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.b().isBlank()) {
+            int $$1 = $$0.b().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
          }
 
-         int $$11 = this.k.f() + this.k.g();
-         vf $$12 = vf.a("optimizeWorld.progress.counter", $$11, this.k.e());
-         vf $$13 = vf.a("optimizeWorld.progress.percentage", auo.d(this.k.d() * 100.0F));
-         $$0.a(this.i, $$12, this.g / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.i, $$13, this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+         return 1;
+      }).thenComparing(fht::b, String::compareToIgnoreCase));
+   }
+
+   private void a(Collection<fht> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.e();
+      this.H();
+      this.a(this.m);
+      this.a($$1);
+   }
+
+   private void H() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.b().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
+      this.n = $$0;
+   }
+
+   public boolean d() {
+      return this.m.isEmpty();
+   }
+
+   public void a(fon $$0, fhw.a $$1) {
+      UUID $$2 = $$0.a().getId();
+
+      for (fht $$3 : this.m) {
+         if ($$3.c().equals($$2)) {
+            $$3.c(false);
+            return;
+         }
+      }
+
+      if (($$1 == fhw.a.a || this.c.aK().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fht $$5 = new fht(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b($$5);
+         this.m.add($$5);
+      }
+   }
+
+   public void a(UUID $$0) {
+      for (fht $$1 : this.m) {
+         if ($$1.c().equals($$0)) {
+            $$1.c(true);
+            return;
+         }
       }
    }
 }

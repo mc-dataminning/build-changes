@@ -1,40 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dub implements dty {
-   public static final Codec<dub> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bjg.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bje.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bje.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bje.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bje.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, dub::new)
-   );
-   public final int b;
-   public final bjg c;
-   public final bje d;
-   public final float e;
-   public final bje f;
-   public final bje g;
-   public final bje h;
-   public final int i;
-   public final float j;
+public class dub implements dug {
+   public static final Codec<dub> a = bjh.b(0, 256).fieldOf("count").xmap(dub::new, dub::a).codec();
+   private final bjh b;
 
-   public dub(int $$0, bjg $$1, bje $$2, float $$3, bje $$4, bje $$5, bje $$6, int $$7, float $$8) {
+   public dub(int $$0) {
+      this.b = bje.a($$0);
+   }
+
+   public dub(bjh $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   }
+
+   public bjh a() {
+      return this.b;
    }
 }

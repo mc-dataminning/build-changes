@@ -1,208 +1,162 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.time.Duration;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.InputStreamEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.Args;
-import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
 
 public class eqp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private static final String c = "/upload";
-   private final File d;
-   private final long e;
-   private final int f;
-   private final erw g;
-   private final String h;
-   private final String i;
-   private final String j;
-   private final eqv k;
-   private final AtomicBoolean l = new AtomicBoolean(false);
+   private final ImmutableList<eqq> a;
+   private final ImmutableMap<String, eqq> b;
+   private final IntList c = new IntArrayList();
+   private final int d;
    @Nullable
-   private CompletableFuture<eto> m;
-   private final RequestConfig n = RequestConfig.custom()
-      .setSocketTimeout((int)TimeUnit.MINUTES.toMillis(10L))
-      .setConnectTimeout((int)TimeUnit.SECONDS.toMillis(15L))
-      .build();
+   private eqn e;
 
-   public eqp(File $$0, long $$1, int $$2, erw $$3, evx $$4, String $$5, eqv $$6) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4.a();
-      this.i = $$4.c();
-      this.j = $$5;
-      this.k = $$6;
-   }
+   public eqp(ImmutableMap<String, eqq> $$0) {
+      this.b = $$0;
+      this.a = $$0.values().asList();
+      int $$1 = 0;
+      UnmodifiableIterator var3 = $$0.values().iterator();
 
-   public void a(Consumer<eto> $$0) {
-      if (this.m == null) {
-         this.m = CompletableFuture.supplyAsync(() -> this.a(0));
-         this.m.thenAccept($$0);
+      while (var3.hasNext()) {
+         eqq $$2 = (eqq)var3.next();
+         this.c.add($$1);
+         $$1 += $$2.e();
       }
+
+      this.d = $$1;
    }
 
-   public void a() {
-      this.l.set(true);
-      if (this.m != null) {
-         this.m.cancel(false);
-         this.m = null;
-      }
+   @Override
+   public String toString() {
+      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
    }
 
-   private eto a(int $$0) {
-      eto.a $$1 = new eto.a();
-      if (this.l.get()) {
-         return $$1.a();
+   public int a() {
+      return this.b() / 4;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public ImmutableList<eqq> c() {
+      return this.a;
+   }
+
+   public ImmutableList<String> d() {
+      return this.b.keySet().asList();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         eqp $$1 = (eqp)$$0;
+         return this.d != $$1.d ? false : this.b.equals($$1.b);
       } else {
-         this.k.b = this.d.length();
-         HttpPost $$2 = new HttpPost(this.g.b().resolve("/upload/" + this.e + "/" + this.f));
-         CloseableHttpClient $$3 = HttpClientBuilder.create().setDefaultRequestConfig(this.n).build();
-
-         eto var8;
-         try {
-            this.a($$2);
-            HttpResponse $$4 = $$3.execute($$2);
-            long $$5 = this.a($$4);
-            if (!this.a($$5, $$0)) {
-               this.a($$4, $$1);
-               return $$1.a();
-            }
-
-            var8 = this.b($$5, $$0);
-         } catch (Exception var12) {
-            if (!this.l.get()) {
-               a.error("Caught exception while uploading: ", var12);
-            }
-
-            return $$1.a();
-         } finally {
-            this.a($$2, $$3);
-         }
-
-         return var8;
+         return false;
       }
    }
 
-   private void a(HttpPost $$0, @Nullable CloseableHttpClient $$1) {
-      $$0.releaseConnection();
-      if ($$1 != null) {
-         try {
-            $$1.close();
-         } catch (IOException var4) {
-            a.error("Failed to close Realms upload client");
-         }
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::h);
+      } else {
+         this.h();
       }
    }
 
-   private void a(HttpPost $$0) throws FileNotFoundException {
-      $$0.setHeader("Cookie", "sid=" + this.h + ";token=" + this.g.a() + ";user=" + this.i + ";version=" + this.j);
-      eqp.a $$1 = new eqp.a(new FileInputStream(this.d), this.d.length(), this.k);
-      $$1.setContentType("application/octet-stream");
-      $$0.setEntity($$1);
-   }
+   private void h() {
+      int $$0 = this.b();
+      List<eqq> $$1 = this.c();
 
-   private void a(HttpResponse $$0, eto.a $$1) throws IOException {
-      int $$2 = $$0.getStatusLine().getStatusCode();
-      if ($$2 == 401) {
-         a.debug("Realms server returned 401: {}", $$0.getFirstHeader("WWW-Authenticate"));
-      }
-
-      $$1.a($$2);
-      if ($$0.getEntity() != null) {
-         String $$3 = EntityUtils.toString($$0.getEntity(), "UTF-8");
-         if ($$3 != null) {
-            try {
-               JsonParser $$4 = new JsonParser();
-               JsonElement $$5 = $$4.parse($$3).getAsJsonObject().get("errorMsg");
-               Optional<String> $$6 = Optional.ofNullable($$5).map(JsonElement::getAsString);
-               $$1.a($$6.orElse(null));
-            } catch (Exception var8) {
-            }
-         }
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
       }
    }
 
-   private boolean a(long $$0, int $$1) {
-      return $$0 > 0L && $$1 + 1 < 5;
+   public void f() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::i);
+      } else {
+         this.i();
+      }
    }
 
-   private eto b(long $$0, int $$1) throws InterruptedException {
-      Thread.sleep(Duration.ofSeconds($$0).toMillis());
-      return this.a($$1 + 1);
+   private void i() {
+      ImmutableList<eqq> $$0 = this.c();
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         eqq $$2 = (eqq)$$0.get($$1);
+         $$2.a($$1);
+      }
    }
 
-   private long a(HttpResponse $$0) {
-      return Optional.ofNullable($$0.getFirstHeader("Retry-After")).<String>map(NameValuePair::getValue).map(Long::valueOf).orElse(0L);
-   }
-
-   public boolean b() {
-      return this.m.isDone() || this.m.isCancelled();
-   }
-
-   static class a extends InputStreamEntity {
-      private final long a;
-      private final InputStream b;
-      private final eqv c;
-
-      public a(InputStream $$0, long $$1, eqv $$2) {
-         super($$0);
-         this.b = $$0;
-         this.a = $$1;
-         this.c = $$2;
+   public eqn g() {
+      eqn $$0 = this.e;
+      if ($$0 == null) {
+         this.e = $$0 = new eqn(eqn.a.b);
       }
 
-      public void writeTo(OutputStream $$0) throws IOException {
-         Args.notNull($$0, "Output stream");
-         InputStream $$1 = this.b;
+      return $$0;
+   }
 
-         try {
-            byte[] $$2 = new byte[4096];
-            int $$3;
-            if (this.a < 0L) {
-               while (($$3 = $$1.read($$2)) != -1) {
-                  $$0.write($$2, 0, $$3);
-                  this.c.a += (long)$$3;
-               }
-            } else {
-               long $$4 = this.a;
+   public static enum a {
+      a(5123, 2),
+      b(5125, 4);
 
-               while ($$4 > 0L) {
-                  $$3 = $$1.read($$2, 0, (int)Math.min(4096L, $$4));
-                  if ($$3 == -1) {
-                     break;
-                  }
+      public final int c;
+      public final int d;
 
-                  $$0.write($$2, 0, $$3);
-                  this.c.a += (long)$$3;
-                  $$4 -= (long)$$3;
-                  $$0.flush();
-               }
-            }
-         } finally {
-            $$1.close();
-         }
+      private a(int $$0, int $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      public static eqp.a a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
+      }
+   }
+
+   public static enum b {
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
+
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
+
+      private b(int $$0, int $$1, int $$2, boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
+      }
+
+      public int a(int $$0) {
+         return switch (this) {
+            case b, c, d, e, f, g -> $$0;
+            case a, h -> $$0 / 4 * 6;
+            default -> 0;
+         };
       }
    }
 }

@@ -1,107 +1,29 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
-public class fxd implements fws.a {
-   private final evi a;
-   private final Map<ahf<ctp>, Map<String, dyy>> b = Maps.newIdentityHashMap();
-   private final Map<ahf<ctp>, Map<String, yo.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class fxd implements fxe.a {
+   private final evr a;
+   private double b = Double.MIN_VALUE;
+   private List<emv> c = Collections.emptyList();
 
-   public fxd(evi $$0) {
+   public fxd(evr $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(eqb $$0, fth $$1, double $$2, double $$3, double $$4) {
-      eut $$5 = this.a.j.m();
-      ahf<ctp> $$6 = this.a.r.ae();
-      hx $$7 = hx.a($$5.b().c, 0.0, $$5.b().e);
-      eqf $$8 = $$1.getBuffer(ftp.w());
-      if (this.b.containsKey($$6)) {
-         for (dyy $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               ftf.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
-         }
+   public void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         blw $$6 = this.a.j.m().g();
+         this.c = ImmutableList.copyOf($$6.dL().d($$6, $$6.cH().g(6.0)));
       }
 
-      Map<String, yo.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (yo.a $$11 : $$10.values()) {
-            dyy $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  ftf.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  ftf.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
-               }
-            }
-         }
+      eqo $$7 = $$1.getBuffer(fub.w());
+
+      for (emv $$8 : this.c) {
+         ftr.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
       }
-   }
-
-   public void a(dyy $$0, List<yo.a> $$1, ahf<ctp> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, yo.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (yo.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
    }
 }

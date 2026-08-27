@@ -1,49 +1,69 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvp extends dvk {
+public class dvp extends dvs {
    public static final Codec<dvp> a = RecordCodecBuilder.create(
       $$0 -> b($$0)
             .and(
                $$0.group(
-                  bjg.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+                  bjh.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
                )
             )
             .apply($$0, dvp::new)
    );
-   private final bjg b;
-   private final int c;
+   private final bjh b;
+   private final float c;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   public dvp(bjg $$0, bjg $$1, bjg $$2, int $$3) {
+   public dvp(bjh $$0, bjh $$1, bjh $$2, float $$3, float $$4, float $$5, float $$6) {
       super($$0, $$1);
       this.b = $$2;
       this.c = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
    @Override
-   protected dvl<?> a() {
-      return dvl.j;
+   protected dvt<?> a() {
+      return dvt.k;
    }
 
    @Override
-   protected void a(ctv $$0, dvk.b $$1, auv $$2, duu $$3, int $$4, dvk.a $$5, int $$6, int $$7, int $$8) {
-      hx $$9 = $$5.a();
-      hx.a $$10 = $$9.j();
+   protected void a(cud $$0, dvs.b $$1, auw $$2, dvc $$3, int $$4, dvs.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      hx $$10 = $$5.a().b($$8);
+      int $$11 = $$7 + $$5.b() - 1;
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
 
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
+      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
+         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
       }
+
+      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
    }
 
    @Override
-   public int a(auv $$0, int $$1, duu $$2) {
+   public int a(auw $$0, int $$1, dvc $$2) {
       return this.b.a($$0);
    }
 
    @Override
-   protected boolean a(auv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+   protected boolean a(auw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
+         return true;
+      } else {
+         boolean $$6 = $$1 == $$4 && $$3 == $$4;
+         boolean $$7 = $$4 > 2;
+         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
+      }
    }
 }

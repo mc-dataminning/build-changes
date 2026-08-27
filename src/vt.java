@@ -1,130 +1,63 @@
-import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public class vt implements vf {
-   private final vg c;
-   private final List<vf> d;
-   private wc e;
-   private aua f = aua.a;
+public class vt {
+   public static final int a = -1;
+   private static final int b = 128;
+   private final vs[] c;
+
+   public vt(int $$0) {
+      this.c = new vs[$$0];
+   }
+
+   public static vt a() {
+      return new vt(128);
+   }
+
+   public int a(vs $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
+            return $$1;
+         }
+      }
+
+      return -1;
+   }
+
    @Nullable
-   private si g;
-
-   vt(vg $$0, List<vf> $$1, wc $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public vs a(int $$0) {
+      return this.c[$$0];
    }
 
-   public static vt a(vg $$0) {
-      return new vt($$0, Lists.newArrayList(), wc.a);
-   }
-
-   @Override
-   public vg b() {
-      return this.c;
-   }
-
-   @Override
-   public List<vf> c() {
-      return this.d;
-   }
-
-   public vt b(wc $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public wc a() {
-      return this.e;
-   }
-
-   public vt f(String $$0) {
-      return this.b(vf.b($$0));
-   }
-
-   public vt b(vf $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public vt a(UnaryOperator<wc> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public vt c(wc $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public vt a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public vt a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public vt b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public aua g() {
-      si $$0 = si.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
+   public void a(vz $$0, @Nullable vs $$1) {
+      List<vs> $$2 = $$0.d().a();
+      ArrayDeque<vs> $$3 = new ArrayDeque<>($$2.size() + 1);
+      $$3.addAll($$2);
+      if ($$1 != null) {
+         $$3.add($$1);
       }
 
-      return this.f;
+      this.a($$3);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof vt $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+   @VisibleForTesting
+   void a(List<vs> $$0) {
+      this.a(new ArrayDeque<>($$0));
+   }
+
+   private void a(ArrayDeque<vs> $$0) {
+      Set<vs> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         vs $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
+         }
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.g();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
-
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
-
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
-
-         $$0.append(']');
-      }
-
-      return $$0.toString();
    }
 }

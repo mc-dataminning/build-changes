@@ -23,43 +23,43 @@ public class mb implements kk {
 
    @Override
    public CompletableFuture<?> a(ki $$0) {
-      Map<cwq, mc> $$1 = Maps.newHashMap();
+      Map<cwy, mc> $$1 = Maps.newHashMap();
       Consumer<mc> $$2 = $$1x -> {
-         cwq $$2x = $$1x.a();
+         cwy $$2x = $$1x.a();
          mc $$3x = $$1.put($$2x, $$1x);
          if ($$3x != null) {
             throw new IllegalStateException("Duplicate blockstate definition for " + $$2x);
          }
       };
-      Map<ahg, Supplier<JsonElement>> $$3 = Maps.newHashMap();
-      Set<cmt> $$4 = Sets.newHashSet();
-      BiConsumer<ahg, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
+      Map<ahh, Supplier<JsonElement>> $$3 = Maps.newHashMap();
+      Set<cnb> $$4 = Sets.newHashSet();
+      BiConsumer<ahh, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
          Supplier<JsonElement> $$3x = $$3.put($$1x, $$2x);
          if ($$3x != null) {
             throw new IllegalStateException("Duplicate model definition for " + $$1x);
          }
       };
-      Consumer<cmt> $$6 = $$4::add;
+      Consumer<cnb> $$6 = $$4::add;
       new lz($$2, $$5, $$6).a();
       new ma($$5).a();
-      List<cwq> $$7 = kd.e.g().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
+      List<cwy> $$7 = kd.e.g().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
       if (!$$7.isEmpty()) {
          throw new IllegalStateException("Missing blockstate definitions for: " + $$7);
       } else {
          kd.e.forEach($$2x -> {
-            cmt $$3x = cmt.l.get($$2x);
+            cnb $$3x = cnb.l.get($$2x);
             if ($$3x != null) {
                if ($$4.contains($$3x)) {
                   return;
                }
 
-               ahg $$4x = mn.a($$3x);
+               ahh $$4x = mn.a($$3x);
                if (!$$3.containsKey($$4x)) {
                   $$3.put($$4x, new mm(mn.a($$2x)));
                }
             }
          });
-         return CompletableFuture.allOf(this.a($$0, $$1, $$0x -> this.d.a($$0x.r().g().a())), this.a($$0, $$3, this.e::a));
+         return CompletableFuture.allOf(this.a($$0, $$1, $$0x -> this.d.a($$0x.r().h().a())), this.a($$0, $$3, this.e::a));
       }
    }
 

@@ -1,10 +1,13 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record duq(dvz b) implements dty {
-   public static final Codec<duq> a = RecordCodecBuilder.create($$0 -> $$0.group(dvz.a.fieldOf("to_place").forGetter($$0x -> $$0x.b)).apply($$0, duq::new));
+public class duq implements dug {
+   public static final Codec<duq> k = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, duq::new)
+   );
+   public final float l;
 
-   public dvz a() {
-      return this.b;
+   public duq(float $$0) {
+      this.l = $$0;
    }
 }

@@ -1,26 +1,23 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dya extends dyn {
-   public static final Codec<dya> a = dom.a.c.fieldOf("step").xmap(dya::new, $$0 -> $$0.c).codec();
-   private final dom.a c;
+public class dya extends dxv {
+   public static final Codec<dya> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bim.b(dxv.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dya::new)
+   );
+   private final bim<dxv> b;
 
-   private dya(dom.a $$0) {
-      this.c = $$0;
-   }
-
-   public static dya a(dom.a $$0) {
-      return new dya($$0);
-   }
-
-   @Override
-   public Stream<hx> a_(dyl $$0, auv $$1, hx $$2) {
-      csw $$3 = new csw($$2);
-      return $$0.a($$3, this.c).a($$3);
+   public dya(bim<dxv> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public dyo<?> b() {
-      return dyo.o;
+   public int a(auw $$0, dpv $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   }
+
+   @Override
+   public dxw<?> a() {
+      return dxw.f;
    }
 }

@@ -1,52 +1,172 @@
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
-public class dtm extends dtj {
-   public dtm(Codec<dux> $$0) {
+public class dtm extends dsc<dva> {
+   public static final int a = 10;
+   private static final int b = 42;
+   private static final LoadingCache<Long, List<dtm.a>> c = CacheBuilder.newBuilder().expireAfterWrite(5L, TimeUnit.MINUTES).build(new dtm.b());
+
+   public dtm(Codec<dva> $$0) {
       super($$0);
    }
 
-   @Override
-   protected Set<hx> a(cuk $$0, dux $$1, auv $$2, hx $$3, Predicate<djh> $$4, int $$5, int $$6) {
-      Set<hx> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<hx> $$8 = new HashSet<>();
-      hx.a $$9 = new hx.a();
-
-      for (hx $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
-         }
-      }
-
-      for (hx $$11 : $$8) {
-         $$0.a($$11, cws.G.o(), 2);
-      }
-
-      return $$8;
-   }
-
-   private static boolean a(cuk $$0, Set<hx> $$1, hx $$2, hx.a $$3) {
-      return a($$0, $$2, $$3, ic.c) || a($$0, $$2, $$3, ic.f) || a($$0, $$2, $$3, ic.d) || a($$0, $$2, $$3, ic.e) || a($$0, $$2, $$3, ic.a);
-   }
-
-   private static boolean a(cuk $$0, hx $$1, hx.a $$2, ic $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).d($$0, $$2, $$3.g());
+   public static List<dtm.a> a(cus $$0) {
+      auw $$1 = auw.a($$0.C());
+      long $$2 = $$1.g() & 65535L;
+      return (List<dtm.a>)c.getUnchecked($$2);
    }
 
    @Override
-   protected boolean a(cuk $$0, dux $$1, dle $$2, auv $$3, hx $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
-         djh $$5 = $$0.a_($$4);
-         if ($$5.b(djx.C) && !$$5.c(djx.C)) {
-            $$0.a($$4, $$5.a(djx.C, Boolean.valueOf(true)), 2);
+   public boolean a(dse<dva> $$0) {
+      dva $$1 = $$0.f();
+      cus $$2 = $$0.b();
+      auw $$3 = $$0.d();
+      hx $$4 = $$0.e();
+      List<dtm.a> $$5 = $$1.b();
+      if ($$5.isEmpty()) {
+         $$5 = a($$2);
+      }
+
+      for (dtm.a $$6 : $$5) {
+         if ($$6.a($$4)) {
+            this.a($$2, $$3, $$1, $$6);
+         }
+      }
+
+      return true;
+   }
+
+   private void a(cum $$0, auw $$1, dva $$2, dtm.a $$3) {
+      int $$4 = $$3.c();
+
+      for (hx $$5 : hx.a(new hx($$3.a() - $$4, $$0.J_(), $$3.b() - $$4), new hx($$3.a() + $$4, $$3.d() + 10, $$3.b() + $$4))) {
+         if ($$5.d((double)$$3.a(), (double)$$5.v(), (double)$$3.b()) <= (double)($$4 * $$4 + 1) && $$5.v() < $$3.d()) {
+            this.a($$0, $$5, cxa.co.o());
+         } else if ($$5.v() > 65) {
+            this.a($$0, $$5, cxa.a.o());
+         }
+      }
+
+      if ($$3.e()) {
+         int $$6 = -2;
+         int $$7 = 2;
+         int $$8 = 3;
+         hx.a $$9 = new hx.a();
+
+         for (int $$10 = -2; $$10 <= 2; $$10++) {
+            for (int $$11 = -2; $$11 <= 2; $$11++) {
+               for (int $$12 = 0; $$12 <= 3; $$12++) {
+                  boolean $$13 = aup.a($$10) == 2;
+                  boolean $$14 = aup.a($$11) == 2;
+                  boolean $$15 = $$12 == 3;
+                  if ($$13 || $$14 || $$15) {
+                     boolean $$16 = $$10 == -2 || $$10 == 2 || $$15;
+                     boolean $$17 = $$11 == -2 || $$11 == 2 || $$15;
+                     djp $$18 = cxa.eW
+                        .o()
+                        .a(day.a, Boolean.valueOf($$16 && $$11 != -2))
+                        .a(day.c, Boolean.valueOf($$16 && $$11 != 2))
+                        .a(day.d, Boolean.valueOf($$17 && $$10 != -2))
+                        .a(day.b, Boolean.valueOf($$17 && $$10 != 2));
+                     this.a($$0, $$9.d($$3.a() + $$10, $$3.d() + $$12, $$3.b() + $$11), $$18);
+                  }
+               }
+            }
+         }
+      }
+
+      cau $$19 = bmc.D.a((ctx)$$0.E());
+      if ($$19 != null) {
+         $$19.a($$2.c());
+         $$19.m($$2.a());
+         $$19.b((double)$$3.a() + 0.5, (double)($$3.d() + 1), (double)$$3.b() + 0.5, $$1.i() * 360.0F, 0.0F);
+         $$0.b($$19);
+         hx $$20 = $$19.dl();
+         this.a($$0, $$20.d(), cxa.F.o());
+         this.a($$0, $$20, czy.a($$0, $$20));
+      }
+   }
+
+   public static class a {
+      public static final Codec<dtm.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.INT.fieldOf("centerX").orElse(0).forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("centerZ").orElse(0).forGetter($$0x -> $$0x.c),
+                  Codec.INT.fieldOf("radius").orElse(0).forGetter($$0x -> $$0x.d),
+                  Codec.INT.fieldOf("height").orElse(0).forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.fieldOf("guarded").orElse(false).forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, dtm.a::new)
+      );
+      private final int b;
+      private final int c;
+      private final int d;
+      private final int e;
+      private final boolean f;
+      private final elx g;
+
+      public a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = new elx((double)($$0 - $$2), (double)dmy.e, (double)($$1 - $$2), (double)($$0 + $$2), (double)dmy.d, (double)($$1 + $$2));
+      }
+
+      public boolean a(hx $$0) {
+         return iz.a($$0.u()) == iz.a(this.b) && iz.a($$0.w()) == iz.a(this.c);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public elx f() {
+         return this.g;
+      }
+   }
+
+   static class b extends CacheLoader<Long, List<dtm.a>> {
+      public List<dtm.a> a(Long $$0) {
+         IntArrayList $$1 = ac.a(IntStream.range(0, 10), auw.a($$0));
+         List<dtm.a> $$2 = Lists.newArrayList();
+
+         for (int $$3 = 0; $$3 < 10; $$3++) {
+            int $$4 = aup.a(42.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
+            int $$5 = aup.a(42.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
+            int $$6 = $$1.get($$3);
+            int $$7 = 2 + $$6 / 3;
+            int $$8 = 76 + $$6 * 3;
+            boolean $$9 = $$6 == 1 || $$6 == 2;
+            $$2.add(new dtm.a($$4, $$5, $$7, $$8, $$9));
          }
 
-         return true;
-      } else {
-         return false;
+         return $$2;
       }
    }
 }

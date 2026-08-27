@@ -1,75 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class dtf extends dru<dut> {
-   public dtf(Codec<dut> $$0) {
+public class dtf extends dsc<duo> {
+   private static final int a = 7;
+
+   dtf(Codec<duo> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drw<dut> $$0) {
-      dut $$1 = $$0.f();
-      cuk $$2 = $$0.b();
-      hx $$3 = $$0.e();
-      if (!$$2.a_($$3.c()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
-         return false;
-      } else {
-         djh $$4 = $$2.a_($$3);
-         if (!$$4.i() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
-            }
+   public boolean a(dse<duo> $$0) {
+      cus $$1 = $$0.b();
+      auw $$2 = $$0.d();
+      duo $$3 = $$0.f();
+      hx $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      hx.a $$6 = new hx.a();
 
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
-            }
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         djp $$8 = $$1.a_($$6);
 
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
+         for (duo.a $$9 : $$3.b) {
+            if (dsx.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.d()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.u($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.e())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.d())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
          }
       }
+
+      return true;
+   }
+
+   private void a(hx.a $$0, auw $$1, hx $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(auw $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

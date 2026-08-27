@@ -1,54 +1,73 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class dsu extends dru<dun> {
-   public dsu(Codec<dun> $$0) {
+public class dsu extends dsc<dul> {
+   public dsu(Codec<dul> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drw<dun> $$0) {
-      dun $$1 = $$0.f();
-      cuk $$2 = $$0.b();
-      auv $$3 = $$0.d();
-      cwq $$4 = $$1.b.b();
-      hx $$5 = a($$2, $$0.e().j().a(ic.a.b, $$2.J_() + 1, $$2.al() - 1), $$4);
-      if ($$5 == null) {
+   public boolean a(dse<dul> $$0) {
+      cus $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      auw $$3 = $$0.d();
+      dul $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
          return false;
       } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+         List<ic> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            hx.a $$6 = $$2.j();
 
-         for (hx $$11 : hx.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
+            for (ic $$7 : $$5) {
+               $$6.g($$2);
+               List<ic> $$8 = $$4.a($$3, $$7.g());
+
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  djp $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
+               }
             }
 
-            djh $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
+            return false;
          }
-
-         return $$10;
       }
    }
 
-   @Nullable
-   private static hx a(ctq $$0, hx.a $$1, cwq $$2) {
-      while ($$1.v() > $$0.J_() + 1) {
-         djh $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
+   public static boolean a(cus $$0, hx $$1, djp $$2, dul $$3, auw $$4, List<ic> $$5) {
+      hx.a $$6 = $$1.j();
 
-         $$1.c(ic.a);
+      for (ic $$7 : $$5) {
+         djp $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            djp $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.y($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
+         }
       }
 
-      return null;
+      return false;
+   }
+
+   private static boolean c(djp $$0) {
+      return $$0.i() || $$0.a(cxa.G);
    }
 }

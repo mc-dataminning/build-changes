@@ -48,7 +48,7 @@ public class bcy extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("WorldGenSettings building", this.getInputSchema().getType(bbw.I), $$0 -> $$0.update(DSL.remainderFinder(), bcy::a));
+      return this.fixTypeEverywhereTyped("WorldGenSettings building", this.getInputSchema().getType(bbw.J), $$0 -> $$0.update(DSL.remainderFinder(), bcy::a));
    }
 
    private static <T> Dynamic<T> a(long $$0, DynamicLike<T> $$1, Dynamic<T> $$2, Dynamic<T> $$3) {
