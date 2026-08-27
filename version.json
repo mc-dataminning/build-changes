@@ -164,27 +164,27 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "fa74b7a5065b02c94955fbd2690a3a6000c9a3dc",
-      "size": 28696840,
-      "url": "https://piston-data.mojang.com/v1/objects/fa74b7a5065b02c94955fbd2690a3a6000c9a3dc/client.jar"
+      "sha1": "1077e46be47132c81e235d925c6f90881f319a0f",
+      "size": 28697309,
+      "url": "https://piston-data.mojang.com/v1/objects/1077e46be47132c81e235d925c6f90881f319a0f/client.jar"
     },
     "client_mappings": {
-      "sha1": "d3398a78e62da3eee3afbc7d17799519b468f4c0",
-      "size": 10489133,
-      "url": "https://piston-data.mojang.com/v1/objects/d3398a78e62da3eee3afbc7d17799519b468f4c0/client.txt"
+      "sha1": "54311498f219073dc8760b98ad4b5b7fef402855",
+      "size": 10509191,
+      "url": "https://piston-data.mojang.com/v1/objects/54311498f219073dc8760b98ad4b5b7fef402855/client.txt"
     },
     "server": {
-      "sha1": "f26930e08de4a4d8a0c6b6492b97bb51e63a369d",
-      "size": 57130771,
-      "url": "https://piston-data.mojang.com/v1/objects/f26930e08de4a4d8a0c6b6492b97bb51e63a369d/server.jar"
+      "sha1": "f264312044768694831ad285fdde1d55e2f16c92",
+      "size": 57169012,
+      "url": "https://piston-data.mojang.com/v1/objects/f264312044768694831ad285fdde1d55e2f16c92/server.jar"
     },
     "server_mappings": {
-      "sha1": "5010538b82dcba402bf9e9a752891ba58f704690",
-      "size": 7884519,
-      "url": "https://piston-data.mojang.com/v1/objects/5010538b82dcba402bf9e9a752891ba58f704690/server.txt"
+      "sha1": "b29591efa6c431f4d3c7c4926359fedff2b88b0c",
+      "size": 7906473,
+      "url": "https://piston-data.mojang.com/v1/objects/b29591efa6c431f4d3c7c4926359fedff2b88b0c/server.txt"
     }
   },
-  "id": "25w06a",
+  "id": "25w07a",
   "javaVersion": {
     "component": "java-runtime-delta",
     "majorVersion": 21
@@ -544,79 +544,79 @@
     {
       "downloads": {
         "artifact": {
-          "path": "io/netty/netty-buffer/4.1.115.Final/netty-buffer-4.1.115.Final.jar",
-          "sha1": "d5daf1030e5c36d198caf7562da2441a97ec0df6",
-          "size": 337801,
-          "url": "https://libraries.minecraft.net/io/netty/netty-buffer/4.1.115.Final/netty-buffer-4.1.115.Final.jar"
+          "path": "io/netty/netty-buffer/4.1.118.Final/netty-buffer-4.1.118.Final.jar",
+          "sha1": "7022990af1e0d449f9d5322035899745e19735c5",
+          "size": 339045,
+          "url": "https://libraries.minecraft.net/io/netty/netty-buffer/4.1.118.Final/netty-buffer-4.1.118.Final.jar"
         }
       },
-      "name": "io.netty:netty-buffer:4.1.115.Final"
+      "name": "io.netty:netty-buffer:4.1.118.Final"
     },
     {
       "downloads": {
         "artifact": {
-          "path": "io/netty/netty-codec/4.1.115.Final/netty-codec-4.1.115.Final.jar",
-          "sha1": "d326bf3a4c785b272da3db6941779a1bd5448378",
-          "size": 352900,
-          "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.115.Final/netty-codec-4.1.115.Final.jar"
+          "path": "io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar",
+          "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+          "size": 355199,
+          "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar"
         }
       },
-      "name": "io.netty:netty-codec:4.1.115.Final"
+      "name": "io.netty:netty-codec:4.1.118.Final"
     },
     {
       "downloads": {
         "artifact": {
-          "path": "io/netty/netty-common/4.1.115.Final/netty-common-4.1.115.Final.jar",
-          "sha1": "9da10a9f72e3f87e181d91b525174007a6fc4f11",
-          "size": 718162,
-          "url": "https://libraries.minecraft.net/io/netty/netty-common/4.1.115.Final/netty-common-4.1.115.Final.jar"
+          "path": "io/netty/netty-common/4.1.118.Final/netty-common-4.1.118.Final.jar",
+          "sha1": "4bb0f9899146484fa89f7b9bc27389d5b8e2ecde",
+          "size": 719225,
+          "url": "https://libraries.minecraft.net/io/netty/netty-common/4.1.118.Final/netty-common-4.1.118.Final.jar"
         }
       },
-      "name": "io.netty:netty-common:4.1.115.Final"
+      "name": "io.netty:netty-common:4.1.118.Final"
     },
     {
       "downloads": {
         "artifact": {
-          "path": "io/netty/netty-handler/4.1.115.Final/netty-handler-4.1.115.Final.jar",
-          "sha1": "d54dbf68b9d88a98240107758c6b63da5e46e23a",
-          "size": 578357,
-          "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.115.Final/netty-handler-4.1.115.Final.jar"
+          "path": "io/netty/netty-handler/4.1.118.Final/netty-handler-4.1.118.Final.jar",
+          "sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+          "size": 580162,
+          "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.118.Final/netty-handler-4.1.118.Final.jar"
         }
       },
-      "name": "io.netty:netty-handler:4.1.115.Final"
+      "name": "io.netty:netty-handler:4.1.118.Final"
     },
     {
       "downloads": {
         "artifact": {
-          "path": "io/netty/netty-resolver/4.1.115.Final/netty-resolver-4.1.115.Final.jar",
-          "sha1": "e33b4d476c03975957f5d8d0319d592bf2bc5e96",
-          "size": 37841,
-          "url": "https://libraries.minecraft.net/io/netty/netty-resolver/4.1.115.Final/netty-resolver-4.1.115.Final.jar"
+          "path": "io/netty/netty-resolver/4.1.118.Final/netty-resolver-4.1.118.Final.jar",
+          "sha1": "28c378c19c1779eca1104b400452627f3ebc4aea",
+          "size": 37842,
+          "url": "https://libraries.minecraft.net/io/netty/netty-resolver/4.1.118.Final/netty-resolver-4.1.118.Final.jar"
         }
       },
-      "name": "io.netty:netty-resolver:4.1.115.Final"
+      "name": "io.netty:netty-resolver:4.1.118.Final"
     },
     {
       "downloads": {
         "artifact": {
-          "path": "io/netty/netty-transport-classes-epoll/4.1.115.Final/netty-transport-classes-epoll-4.1.115.Final.jar",
-          "sha1": "11fea00408ecbd8b8d1f0698d708e37db4a01841",
-          "size": 147620,
-          "url": "https://libraries.minecraft.net/io/netty/netty-transport-classes-epoll/4.1.115.Final/netty-transport-classes-epoll-4.1.115.Final.jar"
+          "path": "io/netty/netty-transport-classes-epoll/4.1.118.Final/netty-transport-classes-epoll-4.1.118.Final.jar",
+          "sha1": "376ce95507066f0e755d97c1c8bcd6c33f657617",
+          "size": 147621,
+          "url": "https://libraries.minecraft.net/io/netty/netty-transport-classes-epoll/4.1.118.Final/netty-transport-classes-epoll-4.1.118.Final.jar"
         }
       },
-      "name": "io.netty:netty-transport-classes-epoll:4.1.115.Final"
+      "name": "io.netty:netty-transport-classes-epoll:4.1.118.Final"
     },
     {
       "downloads": {
         "artifact": {
-          "path": "io/netty/netty-transport-native-epoll/4.1.115.Final/netty-transport-native-epoll-4.1.115.Final-linux-aarch_64.jar",
-          "sha1": "a80b32f98ceb4e27958c0ceaf22ddad9ea6c0d4e",
-          "size": 42291,
-          "url": "https://libraries.minecraft.net/io/netty/netty-transport-native-epoll/4.1.115.Final/netty-transport-native-epoll-4.1.115.Final-linux-aarch_64.jar"
+          "path": "io/netty/netty-transport-native-epoll/4.1.118.Final/netty-transport-native-epoll-4.1.118.Final-linux-aarch_64.jar",
+          "sha1": "82f94d0a9d837f6b6a580379373310ff7288c0f8",
+          "size": 42321,
+          "url": "https://libraries.minecraft.net/io/netty/netty-transport-native-epoll/4.1.118.Final/netty-transport-native-epoll-4.1.118.Final-linux-aarch_64.jar"
         }
       },
-      "name": "io.netty:netty-transport-native-epoll:4.1.115.Final:linux-aarch_64",
+      "name": "io.netty:netty-transport-native-epoll:4.1.118.Final:linux-aarch_64",
       "rules": [
         {
           "action": "allow",
@@ -629,13 +629,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "io/netty/netty-transport-native-epoll/4.1.115.Final/netty-transport-native-epoll-4.1.115.Final-linux-x86_64.jar",
-          "sha1": "a6cc58c4a259bad159cbb06120cea9b3474e86a0",
-          "size": 40595,
-          "url": "https://libraries.minecraft.net/io/netty/netty-transport-native-epoll/4.1.115.Final/netty-transport-native-epoll-4.1.115.Final-linux-x86_64.jar"
+          "path": "io/netty/netty-transport-native-epoll/4.1.118.Final/netty-transport-native-epoll-4.1.118.Final-linux-x86_64.jar",
+          "sha1": "7e6b89e3746acb7cf6f0aad993bbd058fc6d912e",
+          "size": 40644,
+          "url": "https://libraries.minecraft.net/io/netty/netty-transport-native-epoll/4.1.118.Final/netty-transport-native-epoll-4.1.118.Final-linux-x86_64.jar"
         }
       },
-      "name": "io.netty:netty-transport-native-epoll:4.1.115.Final:linux-x86_64",
+      "name": "io.netty:netty-transport-native-epoll:4.1.118.Final:linux-x86_64",
       "rules": [
         {
           "action": "allow",
@@ -648,24 +648,24 @@
     {
       "downloads": {
         "artifact": {
-          "path": "io/netty/netty-transport-native-unix-common/4.1.115.Final/netty-transport-native-unix-common-4.1.115.Final.jar",
-          "sha1": "dc96c67d06cd6b5eb677f2728f27bf2e3d9a7284",
-          "size": 44158,
-          "url": "https://libraries.minecraft.net/io/netty/netty-transport-native-unix-common/4.1.115.Final/netty-transport-native-unix-common-4.1.115.Final.jar"
+          "path": "io/netty/netty-transport-native-unix-common/4.1.118.Final/netty-transport-native-unix-common-4.1.118.Final.jar",
+          "sha1": "9da25a94e6a0edac90da0bc7894e5a54efcb866b",
+          "size": 44157,
+          "url": "https://libraries.minecraft.net/io/netty/netty-transport-native-unix-common/4.1.118.Final/netty-transport-native-unix-common-4.1.118.Final.jar"
         }
       },
-      "name": "io.netty:netty-transport-native-unix-common:4.1.115.Final"
+      "name": "io.netty:netty-transport-native-unix-common:4.1.118.Final"
     },
     {
       "downloads": {
         "artifact": {
-          "path": "io/netty/netty-transport/4.1.115.Final/netty-transport-4.1.115.Final.jar",
-          "sha1": "39cef77c1a25908ac1abf4960c2e789f0bf70ff9",
-          "size": 521369,
-          "url": "https://libraries.minecraft.net/io/netty/netty-transport/4.1.115.Final/netty-transport-4.1.115.Final.jar"
+          "path": "io/netty/netty-transport/4.1.118.Final/netty-transport-4.1.118.Final.jar",
+          "sha1": "5a27232e5d08218722d94ca14f0b1b4576e7711c",
+          "size": 521428,
+          "url": "https://libraries.minecraft.net/io/netty/netty-transport/4.1.118.Final/netty-transport-4.1.118.Final.jar"
         }
       },
-      "name": "io.netty:netty-transport:4.1.115.Final"
+      "name": "io.netty:netty-transport:4.1.118.Final"
     },
     {
       "downloads": {
@@ -1880,7 +1880,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2025-02-05T12:41:17+00:00",
-  "time": "2025-02-05T12:41:17+00:00",
+  "releaseTime": "2025-02-13T12:55:37+00:00",
+  "time": "2025-02-13T12:55:37+00:00",
   "type": "snapshot"
 }
