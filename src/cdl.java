@@ -9,27 +9,28 @@ import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
 public abstract class cdl extends biq {
-   private static final float c = 0.1875F;
-   private static final aee<Integer> d = aeh.a(cdl.class, aeg.b);
+   private static final float c = 0.0F;
+   private static final float d = 0.1875F;
    private static final aee<Integer> e = aeh.a(cdl.class, aeg.b);
-   private static final aee<Float> f = aeh.a(cdl.class, aeg.d);
-   private static final aee<Integer> g = aeh.a(cdl.class, aeg.b);
+   private static final aee<Integer> f = aeh.a(cdl.class, aeg.b);
+   private static final aee<Float> g = aeh.a(cdl.class, aeg.d);
    private static final aee<Integer> h = aeh.a(cdl.class, aeg.b);
-   private static final aee<Boolean> i = aeh.a(cdl.class, aeg.k);
-   private static final ImmutableMap<bjs, ImmutableList<Integer>> j = ImmutableMap.of(
+   private static final aee<Integer> i = aeh.a(cdl.class, aeg.b);
+   private static final aee<Boolean> j = aeh.a(cdl.class, aeg.k);
+   private static final ImmutableMap<bjs, ImmutableList<Integer>> k = ImmutableMap.of(
       bjs.a, ImmutableList.of(0, 1, -1), bjs.f, ImmutableList.of(0, 1, -1), bjs.d, ImmutableList.of(0, 1)
    );
    protected static final float b = 0.95F;
-   private boolean k;
    private boolean l;
-   private int m;
-   private double n;
+   private boolean m;
+   private int n;
    private double o;
    private double p;
    private double q;
    private double r;
-   private ehn s = ehn.b;
-   private static final Map<dgn, Pair<hy, hy>> t = ac.a(Maps.newEnumMap(dgn.class), $$0 -> {
+   private double s;
+   private ehn t = ehn.b;
+   private static final Map<dgn, Pair<hy, hy>> u = ac.a(Maps.newEnumMap(dgn.class), $$0 -> {
       hy $$1 = ha.e.q();
       hy $$2 = ha.f.q();
       hy $$3 = ha.c.q();
@@ -86,12 +87,12 @@ public abstract class cdl extends biq {
 
    @Override
    protected void a_() {
-      this.an.a(d, 0);
-      this.an.a(e, 1);
-      this.an.a(f, 0.0F);
-      this.an.a(g, csv.i(csw.a.n()));
-      this.an.a(h, 6);
-      this.an.a(i, false);
+      this.an.a(e, 0);
+      this.an.a(f, 1);
+      this.an.a(g, 0.0F);
+      this.an.a(h, csv.i(csw.a.n()));
+      this.an.a(i, 6);
+      this.an.a(j, false);
    }
 
    @Override
@@ -111,7 +112,8 @@ public abstract class cdl extends biq {
 
    @Override
    protected Vector3f a(biq $$0, bir $$1, float $$2) {
-      return new Vector3f(0.0F, 0.1875F, 0.0F);
+      boolean $$3 = $$0 instanceof cbh || $$0 instanceof cbn;
+      return new Vector3f(0.0F, $$3 ? 0.0F : 0.1875F, 0.0F);
    }
 
    @Override
@@ -130,7 +132,7 @@ public abstract class cdl extends biq {
             bjs $$6 = (bjs)$$14.next();
             bir $$7 = $$0.a($$6);
             float $$8 = Math.min($$7.a, 1.0F) / 2.0F;
-            UnmodifiableIterator $$16 = ((ImmutableList)j.get($$6)).iterator();
+            UnmodifiableIterator $$16 = ((ImmutableList)k.get($$6)).iterator();
 
             while ($$16.hasNext()) {
                int $$9 = (Integer)$$16.next();
@@ -228,12 +230,12 @@ public abstract class cdl extends biq {
    }
 
    private static Pair<hy, hy> a(dgn $$0) {
-      return t.get($$0);
+      return u.get($$0);
    }
 
    @Override
    public ha cE() {
-      return this.k ? this.cD().g().h() : this.cD().h();
+      return this.l ? this.cD().g().h() : this.cD().h();
    }
 
    @Override
@@ -249,9 +251,9 @@ public abstract class cdl extends biq {
       this.ar();
       this.bH();
       if (this.dL().B) {
-         if (this.m > 0) {
-            this.a(this.m, this.n, this.o, this.p, this.q, this.r);
-            this.m--;
+         if (this.n > 0) {
+            this.a(this.n, this.o, this.p, this.q, this.r, this.s);
+            this.n--;
          } else {
             this.ap();
             this.a(this.dB(), this.dD());
@@ -271,8 +273,8 @@ public abstract class cdl extends biq {
 
          gw $$4 = new gw($$1, $$2, $$3);
          dfj $$5 = this.dL().a_($$4);
-         this.l = csl.g($$5);
-         if (this.l) {
+         this.m = csl.g($$5);
+         if (this.m) {
             this.c($$4, $$5);
             if ($$5.a(csw.hh)) {
                this.a($$1, $$2, $$3, $$5.c(cyq.e));
@@ -287,7 +289,7 @@ public abstract class cdl extends biq {
          double $$7 = this.M - this.dw();
          if ($$6 * $$6 + $$7 * $$7 > 0.001) {
             this.r((float)(arw.d($$7, $$6) * 180.0 / Math.PI));
-            if (this.k) {
+            if (this.l) {
                this.r(this.dB() + 180.0F);
             }
          }
@@ -295,7 +297,7 @@ public abstract class cdl extends biq {
          double $$8 = (double)arw.g(this.dB() - this.N);
          if ($$8 < -170.0 || $$8 >= 170.0) {
             this.r(this.dB() + 180.0F);
-            this.k = !this.k;
+            this.l = !this.l;
          }
 
          this.a(this.dB(), this.dD());
@@ -511,7 +513,7 @@ public abstract class cdl extends biq {
 
    @Override
    public boolean ce() {
-      return this.l;
+      return this.m;
    }
 
    private boolean a(gw $$0) {
@@ -704,74 +706,74 @@ public abstract class cdl extends biq {
 
    @Override
    public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
-      this.q = (double)$$3;
-      this.r = (double)$$4;
-      this.m = $$5 + 2;
-      this.f(this.s);
+      this.o = $$0;
+      this.p = $$1;
+      this.q = $$2;
+      this.r = (double)$$3;
+      this.s = (double)$$4;
+      this.n = $$5 + 2;
+      this.f(this.t);
    }
 
    @Override
    public double n_() {
-      return this.m > 0 ? this.n : this.dq();
+      return this.n > 0 ? this.o : this.dq();
    }
 
    @Override
    public double K_() {
-      return this.m > 0 ? this.o : this.ds();
+      return this.n > 0 ? this.p : this.ds();
    }
 
    @Override
    public double L_() {
-      return this.m > 0 ? this.p : this.dw();
+      return this.n > 0 ? this.q : this.dw();
    }
 
    @Override
    public float d_() {
-      return this.m > 0 ? (float)this.r : this.dD();
+      return this.n > 0 ? (float)this.s : this.dD();
    }
 
    @Override
    public float o_() {
-      return this.m > 0 ? (float)this.q : this.dB();
+      return this.n > 0 ? (float)this.r : this.dB();
    }
 
    @Override
    public void l(double $$0, double $$1, double $$2) {
-      this.s = new ehn($$0, $$1, $$2);
-      this.f(this.s);
+      this.t = new ehn($$0, $$1, $$2);
+      this.f(this.t);
    }
 
    public void a(float $$0) {
-      this.an.b(f, $$0);
+      this.an.b(g, $$0);
    }
 
    public float w() {
-      return this.an.b(f);
+      return this.an.b(g);
    }
 
    public void c(int $$0) {
-      this.an.b(d, $$0);
-   }
-
-   public int x() {
-      return this.an.b(d);
-   }
-
-   public void d(int $$0) {
       this.an.b(e, $$0);
    }
 
-   public int y() {
+   public int x() {
       return this.an.b(e);
+   }
+
+   public void d(int $$0) {
+      this.an.b(f, $$0);
+   }
+
+   public int y() {
+      return this.an.b(f);
    }
 
    public abstract cdl.a z();
 
    public dfj A() {
-      return !this.F() ? this.B() : csv.a(this.al().b(g));
+      return !this.F() ? this.B() : csv.a(this.al().b(h));
    }
 
    public dfj B() {
@@ -779,7 +781,7 @@ public abstract class cdl extends biq {
    }
 
    public int C() {
-      return !this.F() ? this.E() : this.al().b(h);
+      return !this.F() ? this.E() : this.al().b(i);
    }
 
    public int E() {
@@ -787,21 +789,21 @@ public abstract class cdl extends biq {
    }
 
    public void c(dfj $$0) {
-      this.al().b(g, csv.i($$0));
+      this.al().b(h, csv.i($$0));
       this.a(true);
    }
 
    public void m(int $$0) {
-      this.al().b(h, $$0);
+      this.al().b(i, $$0);
       this.a(true);
    }
 
    public boolean F() {
-      return this.al().b(i);
+      return this.al().b(j);
    }
 
    public void a(boolean $$0) {
-      this.al().b(i, $$0);
+      this.al().b(j, $$0);
    }
 
    @Override

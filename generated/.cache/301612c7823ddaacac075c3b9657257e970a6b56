@@ -1,4 +1,4 @@
-// 1.20.2 Release Candidate 1	2026-08-28T00:37:22.4812477	vanilla/Model Definitions
+// 1.20.2 Release Candidate 2	2026-08-28T00:39:24.6090098	vanilla/Model Definitions
 85eef47cc497a4ed9c6f57929bcaa6fbf0137caa assets\minecraft\models\block\cherry_trapdoor_open.json
 7f8c744a8192c2170705d5883fb064210e3d2c93 assets\minecraft\models\item\shulker_shell.json
 8c796e9df7e05371423917450a3dea834bdaa2fe assets\minecraft\models\block\light_07.json
@@ -694,7 +694,7 @@ ed0bae0bbefebb4fc90bdcc3401ad47ce79eeca1 assets\minecraft\blockstates\bamboo_fen
 ac66b7fa859cb4bbb645bfc9b26d67ebca9d8a64 assets\minecraft\models\block\shroomlight.json
 d6d75dd2ef818a490d5ed038b4445831c28b1157 assets\minecraft\models\block\soul_soil.json
 8b0c7cf2ddc160f2c308e8d30bbaf34ca4311e1e assets\minecraft\models\block\quartz_slab_top.json
-d1889aebaa8560dc02c4d45a64500c8a9132303b assets\minecraft\blockstates\chiseled_bookshelf.json
+b38df2f5b554a336c65f3014c93aaf47520d9984 assets\minecraft\blockstates\chiseled_bookshelf.json
 9d6404fc6563e65592e1f86cfa5c76e09b34b54c assets\minecraft\blockstates\flower_pot.json
 9a1b76b291dad794e154a56b35c561b5f4d6d3e1 assets\minecraft\blockstates\carved_pumpkin.json
 cbad9831263ea06ddd9bf265d8de944930115a74 assets\minecraft\models\item\netherite_shovel.json

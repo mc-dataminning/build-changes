@@ -1,4 +1,4 @@
-// 1.20.2 Release Candidate 1	2026-08-28T00:37:22.5003305	vanilla/Tags for minecraft:item
+// 1.20.2 Release Candidate 2	2026-08-28T00:39:24.6290923	vanilla/Tags for minecraft:item
 71180030d3ebe73ed7aa07473fb200e0aa359909 data\minecraft\tags\items\candles.json
 a91a14b0d844c2e8beb882a51072178e0667620c data\minecraft\tags\items\jungle_logs.json
 642497f10f9b4cd17f0596ccd068a662779a5143 data\minecraft\tags\items\logs_that_burn.json
@@ -23,8 +23,8 @@ a99c319e7583b7c567fddf608bde6dff744103b2 data\minecraft\tags\items\walls.json
 1ae902776b0942fb7f6424ba52eb2150950f973c data\minecraft\tags\items\acacia_logs.json
 c3344f6e568a707914a420dacbf9b082a8ff1787 data\minecraft\tags\items\stone_bricks.json
 74f68e22bf93a751191e1ec35390adcf191a2880 data\minecraft\tags\items\fences.json
-30cba093322f9f2391402da95a9ae4b07afeea00 data\minecraft\tags\items\stone_crafting_materials.json
 bdb1ff9fc8b24f737e3d121d711574e8d779a3ff data\minecraft\tags\items\beacon_payment_items.json
+30cba093322f9f2391402da95a9ae4b07afeea00 data\minecraft\tags\items\stone_crafting_materials.json
 4b024c07991b0127a93c4927165b70cbc739df3f data\minecraft\tags\items\stairs.json
 002a1f0e0b109cd883572ac23180e47312fdd8bb data\minecraft\tags\items\tall_flowers.json
 002646611f726ba21cc4b5060d0258c405ae2291 data\minecraft\tags\items\lectern_books.json
@@ -45,8 +45,8 @@ b659daa5aa6d07472c8191c9548c70e2239d56ac data\minecraft\tags\items\breaks_decora
 4b41342be611564da2a2009e3322c8fd08f20cdd data\minecraft\tags\items\warped_stems.json
 a6c8bad401aae8576742844c87f1b8717cf253b7 data\minecraft\tags\items\noteblock_top_instruments.json
 37c1e07dffc966dafe0401977955eba42bfaeccf data\minecraft\tags\items\copper_ores.json
-47be456ad97366b91300f74739cd8cac544f698d data\minecraft\tags\items\creeper_igniters.json
 7e7d3420a52ab3a414f357e405493da7fd6434ad data\minecraft\tags\items\chest_boats.json
+47be456ad97366b91300f74739cd8cac544f698d data\minecraft\tags\items\creeper_igniters.json
 31855d768b20e56a7ad007279733d27e91becc21 data\minecraft\tags\items\dark_oak_logs.json
 5a1da22b7562d3101cd95b2874ef21e709215ca8 data\minecraft\tags\items\beds.json
 f28dc9f2c7d071fef84fb760a59427d564938731 data\minecraft\tags\items\diamond_ores.json
